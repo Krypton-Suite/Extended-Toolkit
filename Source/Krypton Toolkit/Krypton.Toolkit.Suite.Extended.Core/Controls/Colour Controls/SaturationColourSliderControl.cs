@@ -50,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public SaturationColourSliderControl()
         {
-            this.BarStyle = ColourBarStyle.TWOCOLOUR;
+            this.BarStyle = ColourBarStyle.TwoColour;
             this.Colour = Color.Black;
         }
 

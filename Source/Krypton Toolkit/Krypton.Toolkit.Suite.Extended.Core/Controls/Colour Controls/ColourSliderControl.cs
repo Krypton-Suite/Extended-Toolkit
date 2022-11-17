@@ -1398,7 +1398,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 {
                     switch (this.BarStyle)
                     {
-                        case ColourBarStyle.TWOCOLOUR:
+                        case ColourBarStyle.TwoColour:
                             blend.Colors = new[]
                                            {
                                this.Colour1,
@@ -1410,7 +1410,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                   1F
                                 };
                             break;
-                        case ColourBarStyle.THREECOLOUR:
+                        case ColourBarStyle.ThreeColour:
                             blend.Colors = new[]
                                            {
                                this.Colour1,
@@ -1424,7 +1424,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                   1
                                 };
                             break;
-                        case ColourBarStyle.CUSTOM:
+                        case ColourBarStyle.Custom:
                             ColourCollection custom;
                             int count;
 

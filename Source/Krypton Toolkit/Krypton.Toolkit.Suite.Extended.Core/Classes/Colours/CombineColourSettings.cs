@@ -276,7 +276,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             try
             {
+                // ReSharper disable ConditionIsAlwaysTrueOrFalse
                 if (BaseColour != null || DarkColour != null || MiddleColour != null || LightColour != null || LightestColour != null || BorderColourPreview != null || AlternativeNormalTextColourPreview != null || NormalTextColourPreview != null || DisabledTextColourPreview != null || FocusedTextColourPreview != null || PressedTextColourPreview != null || DisabledColourPreview != null || LinkNormalColourPreview != null || LinkHoverColourPreview != null || LinkVisitedColourPreview != null || CustomColourOne != null || CustomColourTwo != null || CustomColourThree != null || CustomColourFour != null || CustomColourFive != null || CustomTextColourOne != null || CustomTextColourTwo != null || CustomTextColourThree != null || CustomTextColourFour != null || CustomTextColourFive != null || MenuTextColour != null || StatusTextColour != null || RibbonTabTextColour != null)
+                    // ReSharper restore ConditionIsAlwaysTrueOrFalse
                 {
                     _colourSettingsManager.SetBaseColour(BaseColour);
 

@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public LightnessColourSliderControl()
         {
-            this.BarStyle = ColourBarStyle.TWOCOLOUR;
+            this.BarStyle = ColourBarStyle.TwoColour;
             this.Colour = Color.Black;
         }
 

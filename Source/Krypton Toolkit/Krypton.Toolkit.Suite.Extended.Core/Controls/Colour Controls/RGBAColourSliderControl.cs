@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public RGBAColourSliderControl()
         {
-            base.BarStyle = ColourBarStyle.CUSTOM;
+            base.BarStyle = ColourBarStyle.Custom;
             base.Maximum = 255;
             this.Colour = Color.Black;
             this.CreateScale();
