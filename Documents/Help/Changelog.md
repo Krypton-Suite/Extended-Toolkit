@@ -6,6 +6,7 @@
 
 ## 2023-11-xx - Build 2311 - November 2023
 <!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
+* New `KryptonRunDialog`, a drop in replacement for the standard Windows dialog, with a few extra features
 * Implemented `CloseBox` in `KryptonManagerExtended` to fall in line with the standard toolkit
 * Add strong naming to assemblies
 * New `Krypton.Toolkit.Suite.Extended.Shared` module to open up internal APIs found in the standard toolkit

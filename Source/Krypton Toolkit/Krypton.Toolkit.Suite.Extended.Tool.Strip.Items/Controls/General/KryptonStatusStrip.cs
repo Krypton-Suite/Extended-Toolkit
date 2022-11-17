@@ -133,7 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             try
             {
-                // This is too buggy!!!
+                // Note: This is too buggy!!!
                 //if (ToolStripManager.Renderer is KryptonProfessionalRenderer kpr)
                 //{
                 //    ProgressBar.BackColor = kpr.KCT.StatusStripGradientEnd;
@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
             catch (Exception ex)
             {
-
+                ExceptionCapture.CaptureException(ex);
             }
 
             base.OnRendererChanged(e);

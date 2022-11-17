@@ -25,7 +25,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
@@ -34,9 +33,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     {
         #region ... Fields ...
 
-        private Color gradientTop = Color.FromArgb(255, 44, 85, 177);
-        private Color gradientBottom = Color.FromArgb(255, 153, 198, 241);
-        private Color gradientBorderColor = Color.FromArgb(255, 153, 198, 241);
+        private Color _gradientTop = Color.FromArgb(255, 44, 85, 177);
+        private Color _gradientBottom = Color.FromArgb(255, 153, 198, 241);
+        private Color _gradientBorderColor = Color.FromArgb(255, 153, 198, 241);
         private Color _hotGradientTop = Color.FromArgb(255, 234, 157);
         private Color _hotGradientBottom = Color.FromArgb(255, 213, 77);
         private Color _hotGradientBorderColor = Color.FromArgb(220, 205, 153);
@@ -45,16 +44,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private Color _pressedGradientBottom = Color.FromArgb(235, 122, 5);
         private Color _pressedGradientBorderColor = Color.FromArgb(185, 150, 82);
         private Color _pressedForeColor = Color.DarkGray;
-        private Color paintGradientTop;
-        private Color paintGradientBottom;
-        private Color paintGradientBorderColor;
-        private Color paintForeColor;
-        private Rectangle buttonRect;
-        private Rectangle highlightRect;
-        private int rectCornerRadius;
-        private float rectOutlineWidth;
-        private int highlightRectOffset;
-        private int defaultHighlightOffset;
+        private Color _paintGradientTop;
+        private Color _paintGradientBottom;
+        private Color _paintGradientBorderColor;
+        private Color _paintForeColor;
+        private Rectangle _buttonRect;
+        private Rectangle _highlightRect;
+        private int _rectCornerRadius;
+        private float _rectOutlineWidth;
+        private int _highlightRectOffset;
+        private int _defaultHighlightOffset;
         /*
         private int highlightAlphaTop = 255;
         private int highlightAlphaBottom;
@@ -62,8 +61,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private Timer animateResumeNormalTimer = new Timer();
         private bool increasingAlpha;
          */
-        private bool isHotTracking;
-        private bool isPressed = false;
+        private bool _isHotTracking;
+        private bool _isPressed = false;
 
         #endregion
 
@@ -84,10 +83,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(Color), "0x2C55B1")]
         public Color GradientTop
         {
-            get => gradientTop;
+            get => _gradientTop;
             set
             {
-                gradientTop = value;
+                _gradientTop = value;
                 SetPaintColors();
                 Invalidate();
             }
@@ -98,10 +97,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(Color), "0x99C6F1")]
         public Color GradientBottom
         {
-            get => gradientBottom;
+            get => _gradientBottom;
             set
             {
-                gradientBottom = value;
+                _gradientBottom = value;
                 SetPaintColors();
                 Invalidate();
             }
@@ -111,10 +110,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Description("The color to use for the bottom portion of the gradient fill of the component.")]
         public Color GradientBorderColour
         {
-            get => gradientBorderColor;
+            get => _gradientBorderColor;
             set
             {
-                gradientBorderColor = value;
+                _gradientBorderColor = value;
                 SetPaintColors();
                 Invalidate();
             }
@@ -260,12 +259,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void SetControlSizes()
         {
             int scalingDividend = Math.Min(ClientRectangle.Width, ClientRectangle.Height);
-            buttonRect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1);
-            rectCornerRadius = Math.Max(1, scalingDividend / 10);
-            rectOutlineWidth = Math.Max(1, scalingDividend / 50);
-            highlightRect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, (ClientRectangle.Height - 1));
-            highlightRectOffset = Math.Max(1, scalingDividend / 35);
-            defaultHighlightOffset = Math.Max(1, scalingDividend / 35);
+            _buttonRect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1);
+            _rectCornerRadius = Math.Max(1, scalingDividend / 10);
+            _rectOutlineWidth = Math.Max(1, scalingDividend / 50);
+            _highlightRect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, (ClientRectangle.Height - 1));
+            _highlightRectOffset = Math.Max(1, scalingDividend / 35);
+            _defaultHighlightOffset = Math.Max(1, scalingDividend / 35);
         }
 
         protected override void OnEnabledChanged(EventArgs e)
@@ -288,36 +287,36 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 if (SystemInformation.HighContrast)
                 {
-                    paintGradientTop = Color.Black;
-                    paintGradientBottom = Color.Black;
-                    paintGradientBorderColor = Color.Black;
-                    paintForeColor = Color.White;
+                    _paintGradientTop = Color.Black;
+                    _paintGradientBottom = Color.Black;
+                    _paintGradientBorderColor = Color.Black;
+                    _paintForeColor = Color.White;
                 }
                 else
                 {
-                    paintGradientTop = gradientTop;
-                    paintGradientBottom = gradientBottom;
-                    paintGradientBorderColor = gradientBorderColor;
-                    paintForeColor = ForeColor;
+                    _paintGradientTop = _gradientTop;
+                    _paintGradientBottom = _gradientBottom;
+                    _paintGradientBorderColor = _gradientBorderColor;
+                    _paintForeColor = ForeColor;
                 }
-                if (isHotTracking) paintForeColor = _hotForeColor;
-                if (isPressed) paintForeColor = _pressedForeColor;
+                if (_isHotTracking) _paintForeColor = _hotForeColor;
+                if (_isPressed) _paintForeColor = _pressedForeColor;
             }
             else
             {
                 if (SystemInformation.HighContrast)
                 {
-                    paintGradientTop = Color.Gray;
-                    paintGradientBottom = Color.White;
-                    paintGradientBorderColor = Color.Gray;
-                    paintForeColor = Color.Black;
+                    _paintGradientTop = Color.Gray;
+                    _paintGradientBottom = Color.White;
+                    _paintGradientBorderColor = Color.Gray;
+                    _paintForeColor = Color.Black;
                 }
                 else
                 {
-                    int grayscaleColorTop = (int)(gradientTop.GetBrightness() * 255);
-                    paintGradientTop = Color.FromArgb(grayscaleColorTop, grayscaleColorTop, grayscaleColorTop);
-                    int grayscaleGradientBottom = (int)(gradientBottom.GetBrightness() * 255);
-                    paintGradientBottom = Color.FromArgb(grayscaleGradientBottom, grayscaleGradientBottom, grayscaleGradientBottom);
+                    int grayscaleColorTop = (int)(_gradientTop.GetBrightness() * 255);
+                    _paintGradientTop = Color.FromArgb(grayscaleColorTop, grayscaleColorTop, grayscaleColorTop);
+                    int grayscaleGradientBottom = (int)(_gradientBottom.GetBrightness() * 255);
+                    _paintGradientBottom = Color.FromArgb(grayscaleGradientBottom, grayscaleGradientBottom, grayscaleGradientBottom);
                     int grayscaleForeColor = (int)(ForeColor.GetBrightness() * 255);
                     if (grayscaleForeColor > 255 / 2)
                     {
@@ -327,7 +326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     {
                         grayscaleForeColor += 60;
                     }
-                    paintForeColor = Color.FromArgb(grayscaleForeColor, grayscaleForeColor, grayscaleForeColor);
+                    _paintForeColor = Color.FromArgb(grayscaleForeColor, grayscaleForeColor, grayscaleForeColor);
                 }
             }
         }
@@ -346,45 +345,45 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         #region Custom Painting
 
-        private Point locPoint;
+        private Point _locPoint;
         protected override void OnPaint(PaintEventArgs pevent)
         {
             Graphics g = pevent.Graphics;
             ButtonRenderer.DrawParentBackground(g, ClientRectangle, this);
-            float Angle = 90F;
+            float angle = 90F;
 
-            if (!isHotTracking)
+            if (!_isHotTracking)
             {
-                paintGradientTop = gradientTop;
-                paintGradientBottom = gradientBottom;
-                paintGradientBorderColor = gradientBorderColor;
-                paintForeColor = ForeColor;
+                _paintGradientTop = _gradientTop;
+                _paintGradientBottom = _gradientBottom;
+                _paintGradientBorderColor = _gradientBorderColor;
+                _paintForeColor = ForeColor;
             }
             else
             {
-                paintGradientTop = _hotGradientTop;
-                paintGradientBottom = _hotGradientBottom;
-                paintGradientBorderColor = _hotGradientBorderColor;
-                paintForeColor = _hotForeColor;
+                _paintGradientTop = _hotGradientTop;
+                _paintGradientBottom = _hotGradientBottom;
+                _paintGradientBorderColor = _hotGradientBorderColor;
+                _paintForeColor = _hotForeColor;
             }
-            if (isPressed)
+            if (_isPressed)
             {
-                paintGradientTop = _pressedGradientTop;
-                paintGradientBottom = _pressedGradientBottom;
-                paintGradientBorderColor = _pressedGradientBorderColor;
-                paintForeColor = _pressedForeColor;
+                _paintGradientTop = _pressedGradientTop;
+                _paintGradientBottom = _pressedGradientBottom;
+                _paintGradientBorderColor = _pressedGradientBorderColor;
+                _paintForeColor = _pressedForeColor;
             }
 
 
             // Paint the outer rounded rectangle
             g.SmoothingMode = SmoothingMode.AntiAlias;
-            using (GraphicsPath outerPath = RoundedRectangle(buttonRect, rectCornerRadius, 0))
+            using (GraphicsPath outerPath = RoundedRectangle(_buttonRect, _rectCornerRadius, 0))
             {
-                using (LinearGradientBrush outerBrush = new LinearGradientBrush(buttonRect, Color.White, Color.White, LinearGradientMode.Vertical))
+                using (LinearGradientBrush outerBrush = new LinearGradientBrush(_buttonRect, Color.White, Color.White, LinearGradientMode.Vertical))
                 {
                     g.FillPath(outerBrush, outerPath);
                 }
-                using (Pen outlinePen = new Pen(paintGradientBorderColor, rectOutlineWidth))
+                using (Pen outlinePen = new Pen(_paintGradientBorderColor, _rectOutlineWidth))
                 {
                     outlinePen.Alignment = PenAlignment.Inset;
                     g.DrawPath(outlinePen, outerPath);
@@ -395,8 +394,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 using (GraphicsPath defaultPath = new GraphicsPath())
                 {
-                    defaultPath.AddPath(RoundedRectangle(buttonRect, rectCornerRadius, 0), false);
-                    defaultPath.AddPath(RoundedRectangle(buttonRect, rectCornerRadius, defaultHighlightOffset), false);
+                    defaultPath.AddPath(RoundedRectangle(_buttonRect, _rectCornerRadius, 0), false);
+                    defaultPath.AddPath(RoundedRectangle(_buttonRect, _rectCornerRadius, _defaultHighlightOffset), false);
                     using (PathGradientBrush defaultBrush = new PathGradientBrush(defaultPath))
                     {
                         defaultBrush.CenterColor = Color.FromArgb(50, Color.White);
@@ -406,11 +405,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 }
             }
             // Paint the gel highlight
-            using (GraphicsPath innerPath = RoundedRectangle(highlightRect, rectCornerRadius, highlightRectOffset))
+            using (GraphicsPath innerPath = RoundedRectangle(_highlightRect, _rectCornerRadius, _highlightRectOffset))
             {
                 //using (LinearGradientBrush innerBrush = new LinearGradientBrush(highlightRect, Color.FromArgb(highlightAlphaTop, Color.White), Color.FromArgb(highlightAlphaBottom, Color.White), LinearGradientMode.Vertical))
                 //{
-                g.FillPath(DrawingMethods.GetBrush(ClientRectangle, paintGradientTop, paintGradientBottom, DrawingMethods.PaletteColourStyle.Default, Angle, DrawingMethods.VisualOrientation.Top, false), innerPath);
+                g.FillPath(DrawingMethods.GetBrush(ClientRectangle, _paintGradientTop, _paintGradientBottom, DrawingMethods.PaletteColourStyle.Default, angle, DrawingMethods.VisualOrientation.Top, false), innerPath);
                 //g.FillPath(innerBrush, innerPath);
                 //}
             }
@@ -423,7 +422,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             SolidBrush brushText;
 
-            brushText = new SolidBrush(paintForeColor);
+            brushText = new SolidBrush(_paintForeColor);
 
             StringFormat sf = Utility.GetStringFormat(this.TextAlign);
             sf.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
@@ -434,7 +433,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             if (this.Image != null)
             {
                 Rectangle rc = new Rectangle();
-                Point ImagePoint = new Point(6, 4);
+                Point imagePoint = new Point(6, 4);
                 switch (this.ImageAlign)
                 {
                     case System.Drawing.ContentAlignment.MiddleRight:
@@ -443,14 +442,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                             rc.Height = this.ClientRectangle.Height;
                             rc.X = 0;
                             rc.Y = 0;
-                            ImagePoint.X = rc.Width;
-                            ImagePoint.Y = this.ClientRectangle.Height / 2 - Image.Height / 2;
+                            imagePoint.X = rc.Width;
+                            imagePoint.Y = this.ClientRectangle.Height / 2 - Image.Height / 2;
                             break;
                         }
                     case System.Drawing.ContentAlignment.TopCenter:
                         {
-                            ImagePoint.Y = 2;
-                            ImagePoint.X = (this.ClientRectangle.Width - this.Image.Width) / 2;
+                            imagePoint.Y = 2;
+                            imagePoint.X = (this.ClientRectangle.Width - this.Image.Width) / 2;
                             rc.Width = this.ClientRectangle.Width;
                             rc.Height = this.ClientRectangle.Height - this.Image.Height - 4;
                             rc.X = this.ClientRectangle.X;
@@ -460,8 +459,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         }
                     case System.Drawing.ContentAlignment.MiddleCenter:
                         { // no text in this alignment
-                            ImagePoint.X = (this.ClientRectangle.Width - this.Image.Width) / 2;
-                            ImagePoint.Y = (this.ClientRectangle.Height - this.Image.Height) / 2;
+                            imagePoint.X = (this.ClientRectangle.Width - this.Image.Width) / 2;
+                            imagePoint.Y = (this.ClientRectangle.Height - this.Image.Height) / 2;
                             rc.Width = 0;
                             rc.Height = 0;
                             rc.X = this.ClientRectangle.Width;
@@ -470,8 +469,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         }
                     default:
                         {
-                            ImagePoint.X = 6;
-                            ImagePoint.Y = this.ClientRectangle.Height / 2 - Image.Height / 2;
+                            imagePoint.X = 6;
+                            imagePoint.Y = this.ClientRectangle.Height / 2 - Image.Height / 2;
                             rc.Width = this.ClientRectangle.Width - this.Image.Width;
                             rc.Height = this.ClientRectangle.Height;
                             rc.X = this.Image.Width;
@@ -479,12 +478,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                             break;
                         }
                 }
-                ImagePoint.X += locPoint.X;
-                ImagePoint.Y += locPoint.Y;
+                imagePoint.X += _locPoint.X;
+                imagePoint.Y += _locPoint.Y;
                 if (this.Enabled)
-                    g.DrawImage(this.Image, ImagePoint.X, ImagePoint.Y);
+                    g.DrawImage(this.Image, imagePoint.X, imagePoint.Y);
                 else
-                    System.Windows.Forms.ControlPaint.DrawImageDisabled(g, this.Image, ImagePoint.X, ImagePoint.Y, this.BackColor);
+                    System.Windows.Forms.ControlPaint.DrawImageDisabled(g, this.Image, imagePoint.X, imagePoint.Y, this.BackColor);
                 if (System.Drawing.ContentAlignment.MiddleCenter != this.ImageAlign)
                 {
                     g.DrawString(this.Text, this.Font, brushText, rc, sf);
@@ -530,7 +529,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             if (Enabled)
             {
-                isHotTracking = true;
+                _isHotTracking = true;
                 /*
                 animateResumeNormalTimer.Stop();
                 animateButtonHighlightedTimer.Start();
@@ -565,7 +564,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
              */
             //Hot
-            isHotTracking = true;
+            _isHotTracking = true;
             //
             Invalidate();
         }
@@ -587,7 +586,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             if (Enabled)
             {
                 //Hot
-                isHotTracking = false;
+                _isHotTracking = false;
                 //
                 /*
                 animateButtonHighlightedTimer.Stop();
@@ -638,10 +637,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             if (Enabled)
             {
                 //Hot
-                isHotTracking = false;
+                _isHotTracking = false;
                 //
                 //Hot
-                isPressed = true;
+                _isPressed = true;
                 //
                 /*
                 animateButtonHighlightedTimer.Stop();
@@ -682,7 +681,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             if (Enabled && (mevent.Button & MouseButtons.Left) == MouseButtons.Left && !ClientRectangle.Contains(mevent.Location))
             {
                 //Hot
-                isHotTracking = false;
+                _isHotTracking = false;
                 //
                 ReleaseButton();
             }
@@ -693,8 +692,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             if (Enabled)
             {
-                isPressed = false;
-                highlightRect.Location = new Point(0, 0);
+                _isPressed = false;
+                _highlightRect.Location = new Point(0, 0);
                 /*
                 highlightAlphaTop = 255;
                 highlightAlphaBottom = 0;

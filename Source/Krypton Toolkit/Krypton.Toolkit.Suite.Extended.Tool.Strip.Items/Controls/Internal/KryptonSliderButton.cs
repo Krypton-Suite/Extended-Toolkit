@@ -36,11 +36,6 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// </summary>
         private IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-
         #region Component Designer generated code
 
         /// <summary> 
@@ -542,7 +537,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             m_innerColor = _palette.ColorTable.GripDark;
 
             // Ignore this color if the palette uses an Office2010-Renderer
-            if (_palette.GetRenderer() is RenderOffice2010 or RenderOffice2013 or RenderOffice365)
+            if (_palette.GetRenderer() is RenderOffice2010 or RenderOffice2013 or RenderMicrosoft365)
                 m_outerColor = Color.Transparent;
             else
                 m_outerColor = _palette.ColorTable.GripLight;

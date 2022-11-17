@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS0414
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     /// <summary>Allows the creation of a <see cref="KryptonMessageBoxExtended"/> through the designer.</summary>

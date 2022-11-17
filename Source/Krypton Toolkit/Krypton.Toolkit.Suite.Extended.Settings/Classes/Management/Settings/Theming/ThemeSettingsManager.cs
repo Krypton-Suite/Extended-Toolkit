@@ -136,11 +136,11 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             SetCustomThemePath(string.Empty);
 
-            SetDarkModeThemePaletteMode(PaletteMode.Office365Black);
+            SetDarkModeThemePaletteMode(PaletteMode.Microsoft365Black);
 
-            SetLightModeThemePaletteMode(PaletteMode.Office365Blue);
+            SetLightModeThemePaletteMode(PaletteMode.Microsoft365Blue);
 
-            SetSelectedThemePaletteMode(PaletteMode.Office365Blue);
+            SetSelectedThemePaletteMode(PaletteMode.Microsoft365Blue);
 
             SetShowImportButton(true);
 

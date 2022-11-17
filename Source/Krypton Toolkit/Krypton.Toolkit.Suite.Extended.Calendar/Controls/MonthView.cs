@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS1584, CS1658
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -535,7 +536,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Sets the value of the <see cref=""/> property
         /// </summary>
-        /// <param name="bounds">Value indicating if button is selected</param>
+        /// <param name="selected">Value indicating if button is selected</param>
         private void SetForwardButtonSelected(bool selected)
         {
             _forwardButtonSelected = selected;
@@ -545,7 +546,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Sets the value of the <see cref=""/> property
         /// </summary>
-        /// <param name="bounds">Value indicating if button is selected</param>
+        /// <param name="selected">Value indicating if button is selected</param>
         private void SetBackwardButtonSelected(bool selected)
         {
             _backwardButtonSelected = selected;

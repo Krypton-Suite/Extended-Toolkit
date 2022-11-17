@@ -25,8 +25,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Tools;
-
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonTextToSpeechDialog : CommonExtendedKryptonForm

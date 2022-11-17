@@ -36,6 +36,8 @@
 		<OutputType>library</OutputType>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.Dialogs</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.Dialogs</AssemblyName>
+		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
@@ -87,7 +89,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.10.275-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.11.318-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -107,7 +109,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
 			</ItemGroup>
 		</When>
 
@@ -117,7 +119,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="70.22.11.312" />
 			</ItemGroup>
 		</When>
 
@@ -160,10 +162,12 @@
   </PropertyGroup>
   <ItemGroup>
 	<Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-	<PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
+	<PackageReference Include="WindowsAPICodePackShell" Version="7.0.1" />
   </ItemGroup>
   
-  <ItemGroup>
+  <ItemGroup> 
+	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.CheckSum.Tools\Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj" /> 
+	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Forms\Krypton.Toolkit.Suite.Extended.Forms 2022.csproj" />
 	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
 	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
 	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
@@ -176,6 +180,11 @@
 	  <DesignTime>True</DesignTime>
 	  <AutoGen>True</AutoGen>
 	  <DependentUpon>Resources.resx</DependentUpon>
+	</Compile>
+	<Compile Update="Properties\Settings.Designer.cs">
+	  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+	  <AutoGen>True</AutoGen>
+	  <DependentUpon>Settings.settings</DependentUpon>
 	</Compile>
 	<Compile Update="UX\Exception\KryptonExceptionCaptureDialog.cs" />
   </ItemGroup>
@@ -207,13 +216,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Classes\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Update="License\License.txt">
 	    <PackagePath></PackagePath>
 	    <Pack>true</Pack>
+	  </None>
+	  <None Update="Properties\Settings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
 	  </None>
 	</ItemGroup>
 

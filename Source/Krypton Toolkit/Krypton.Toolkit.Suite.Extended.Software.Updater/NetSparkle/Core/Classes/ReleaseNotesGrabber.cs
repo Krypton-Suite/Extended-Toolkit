@@ -220,9 +220,13 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 {
                     webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
                     webClient.Encoding = Encoding.UTF8;
+                    // ReSharper disable ConditionIsAlwaysTrueOrFalse
                     if (cancellationToken != null)
+                    // ReSharper restore ConditionIsAlwaysTrueOrFalse
                     {
+                        // ReSharper disable AccessToDisposedClosure
                         using (cancellationToken.Register(() => webClient.CancelAsync()))
+                        // ReSharper restore AccessToDisposedClosure
                         {
                             return await webClient.DownloadStringTaskAsync(Utilities.GetAbsoluteURL(link, sparkle.AppCastUrl));
                         }

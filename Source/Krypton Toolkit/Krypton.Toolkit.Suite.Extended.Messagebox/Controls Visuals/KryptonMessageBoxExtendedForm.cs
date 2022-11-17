@@ -232,12 +232,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Shield:
-                    if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
+                    if (OSUtilities.IsWindowsEleven)
                     {
                         _messageIcon.Image = Properties.Resources.UAC_Shield_Windows_11;
                     }
                     // Windows 10
-                    else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19045 /* RTM - 22H2 */)
+                    else if (OSUtilities.IsWindowsTen)
                     {
                         _messageIcon.Image = Properties.Resources.UAC_Shield_Windows_10;
                     }

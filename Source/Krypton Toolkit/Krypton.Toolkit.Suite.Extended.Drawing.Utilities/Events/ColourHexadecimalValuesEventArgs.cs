@@ -58,13 +58,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         public Color TranslateHexadecimalToColour(string hexadecimalValue)
         {
-            Color result;
+            Color result = Color.Empty;
 
             try
             {
                 if (!hexadecimalValue.StartsWith("#"))
                 {
-                    string tempString = $"#{ hexadecimalValue }";
+                    string tempString = $"#{hexadecimalValue}";
 
                     return ColorTranslator.FromHtml(tempString);
                 }
@@ -75,10 +75,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
             catch (Exception e)
             {
+                ExceptionHandler.CaptureException(e);
+
                 return Color.Empty;
             }
-
-            return Color.Empty;
         }
         #endregion
     }

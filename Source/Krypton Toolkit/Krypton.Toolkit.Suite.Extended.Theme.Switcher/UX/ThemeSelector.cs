@@ -25,6 +25,7 @@
  */
 #endregion
 
+#nullable enable
 namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     public class ThemeSelector : KryptonForm
@@ -250,7 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void kbtnResetTheme_Click(object sender, EventArgs e)
         {
-            _settingsManager.SetSelectedTheme(PaletteModeManager.Office365Blue);
+            _settingsManager.SetSelectedTheme(PaletteModeManager.Microsoft365Blue);
 
             _settingsManager.SetCustomThemePath(string.Empty);
 
@@ -258,9 +259,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _manager.GlobalPalette = null;
 
-            _manager.GlobalPaletteMode = PaletteModeManager.Office365Blue;
+            _manager.GlobalPaletteMode = PaletteModeManager.Microsoft365Blue;
 
-            kcmbSelectedTheme.Text = "Office 365 - Blue";
+            kcmbSelectedTheme.Text = "Microsoft 365 - Blue";
 
             EnableResetButton(false);
         }

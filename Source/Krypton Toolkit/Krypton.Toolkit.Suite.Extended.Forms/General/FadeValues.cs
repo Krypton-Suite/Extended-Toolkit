@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private bool _useFade;
 
-        private FadeController _fadeController = new();
+        private FadeController _fadeController;
 
         private int _fadeInterval;
 
@@ -89,6 +89,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             CurrentVirtualWindow = null;
 
             NextVirtualWindow = null;
+
+            _fadeController = null;
         }
 
         #endregion

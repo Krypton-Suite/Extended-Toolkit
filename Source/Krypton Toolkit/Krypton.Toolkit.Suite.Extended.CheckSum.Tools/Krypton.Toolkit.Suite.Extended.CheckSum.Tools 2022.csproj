@@ -36,6 +36,8 @@
 		<OutputType>library</OutputType>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.CheckSum.Tools</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.CheckSum.Tools</AssemblyName>
+		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
@@ -87,7 +89,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.10.275-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.11.318-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -107,7 +109,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
 			</ItemGroup>
 		</When>
 
@@ -117,7 +119,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="70.22.11.312" />
 			</ItemGroup>
 		</When>
 
@@ -176,7 +178,9 @@
 		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
 		<!--TODO: Need to specify version here-->
 	</ItemGroup>
+
 	<ItemGroup>
+		<ProjectReference Include="..\\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2022.csproj" />
 	</ItemGroup>

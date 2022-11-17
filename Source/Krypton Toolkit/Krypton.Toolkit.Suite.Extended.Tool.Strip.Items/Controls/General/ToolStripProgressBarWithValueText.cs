@@ -36,7 +36,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private Color _displayTextColour;
 
-        private IPalette _palette;
+        // ReSharper disable PrivateFieldCanBeConvertedToLocalVariable
+        private readonly IPalette _palette;
+        // ReSharper restore PrivateFieldCanBeConvertedToLocalVariable
 
         #endregion
 
@@ -50,9 +52,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Identity
 
-        public ToolStripProgressBarWithValueText()
+        public ToolStripProgressBarWithValueText(IPalette palette)
         {
-            _displayTextColour = _palette.ColorTable.StatusStripText; 
+            _palette = palette;
+            _displayTextColour = _palette.ColorTable.StatusStripText;
 
             Font = _palette.ColorTable.StatusStripFont;
 
@@ -76,11 +79,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             #region Instance Fields
 
-            private bool _useDisplayText;
+            private readonly bool _useDisplayText;
 
-            private Color _displayTextColour;
+            private readonly Color _displayTextColour;
 
-            private ProgressBar _progressBar;
+            private readonly ProgressBar _progressBar;
 
             #endregion
 

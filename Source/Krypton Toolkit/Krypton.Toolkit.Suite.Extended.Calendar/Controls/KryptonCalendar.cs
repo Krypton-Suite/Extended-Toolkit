@@ -656,7 +656,6 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Activates the edit mode on the first selected item
         /// </summary>
-        /// <param name="item"></param>
         public void ActivateEditMode()
         {
             foreach (CalendarItemAlternative item in Items)
@@ -871,7 +870,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the time unit that starts with the specified date
         /// </summary>
-        /// <param name="dateTime">Date and time of the unit you want to extract</param>
+        /// <param name="d">Date and time of the unit you want to extract</param>
         /// <returns>Matching time unit. <c>null</c> If out of range.</returns>
         public CalendarTimeScaleUnit GetTimeUnit(DateTime d)
         {
@@ -911,6 +910,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Searches for the first hitted <see cref="ICalendarSelectableElement"/>
         /// </summary>
         /// <param name="p">Point to check for hit test</param>
+        /// <param name="ignoreItems"></param>
         /// <returns></returns>
         public ICalendarSelectableElement HitTest(Point p, bool ignoreItems)
         {
@@ -1876,10 +1876,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             CalendarRendererEventArgs evt = new CalendarRendererEventArgs(this, e.Graphics, e.ClipRectangle);
 
-            ///Calendar background
+            //Calendar background
             Renderer.OnDrawBackground(evt);
 
-            /// Headers / Timescale
+            // Headers / Timescale
             switch (DaysMode)
             {
                 case CalendarDaysMode.Short:
@@ -1893,13 +1893,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     throw new NotImplementedException("Current DaysMode not implemented");
             }
 
-            ///Days on view
+            //Days on view
             Renderer.OnDrawDays(evt);
 
-            ///Items
+            //Items
             Renderer.OnDrawItems(evt);
 
-            ///Overflow marks
+            //Overflow marks
             Renderer.OnDrawOverflows(evt);
         }
 

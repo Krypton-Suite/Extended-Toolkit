@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS0169
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class KryptonBlueValueNumericBox : KryptonNumericUpDown
@@ -34,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion 
 
         #region Variables
-        private bool _useAccessibleUI;
+        private bool _useAccessibleUi;
 
         private Color _backColour, _foreColour;
 
@@ -42,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Properties
-        public bool UseAccessibleUI { get => _useAccessibleUI; set { _useAccessibleUI = value; Invalidate(); } }
+        public bool UseAccessibleUi { get => _useAccessibleUi; set { _useAccessibleUi = value; Invalidate(); } }
 
         public Font Typeface { get => _typeface; set { _typeface = value; Invalidate(); } }
         #endregion
@@ -56,24 +57,28 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             Value = DEFAULT_VALUE;
 
-            UseAccessibleUI = false;
+            UseAccessibleUi = false;
 
             StateCommon.Content.Font = Typeface;
 
-            ToolTipValues.Description = "The blue value";
+            ToolTipValues.Description = @"The blue value";
 
-            ToolTipValues.Heading = "Blue Value";
+            ToolTipValues.Heading = @"Blue Value";
 
             ToolTipValues.EnableToolTips = true;
+
+            _backColour = Color.Empty;
+
+            _foreColour = Color.Empty;
 
             //ToolTipValues.Image = Properties.Resources.Blue;
         }
         #endregion
 
         #region Methods
-        private void AlterAppearance(bool useAccessibleUI)
+        private void AlterAppearance(bool useAccessibleUi)
         {
-            if (useAccessibleUI)
+            if (useAccessibleUi)
             {
                 StateCommon.Back.Color1 = Color.Empty;
 
@@ -93,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #region Overrides
         protected override void OnPaint(PaintEventArgs e)
         {
-            AlterAppearance(_useAccessibleUI);
+            AlterAppearance(_useAccessibleUi);
 
             AlterTypeface(_typeface);
 

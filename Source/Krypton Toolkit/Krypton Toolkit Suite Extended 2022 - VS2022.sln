@@ -135,10 +135,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Utilities 2022", "Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2022.csproj", "{E66AA060-36AC-4C48-98B5-41701F5524A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Buttons 2022", "Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj", "{C48F3629-606B-462A-9B98-6350A28F7B11}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Calendar 2022", "Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj", "{22AAB917-21B4-4FEF-B469-963B7AC5555B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022", "Krypton.Toolkit.Suite.Extended.CheckSum.Tools\Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj", "{95A40A73-54BB-4EBC-97C8-4D7C8150DB67}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2022", "Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2022.csproj", "{CAA5B746-A0AD-4B2B-8C0B-3EACA3213AB1}"
@@ -258,6 +254,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schemas", "Schemas", "{1AD4
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Themes 2022", "Krypton.Toolkit.Suite.Extended.Themes\Krypton.Toolkit.Suite.Extended.Themes 2022.csproj", "{A58A93DE-0CBF-495B-8D29-761B1143AD32}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Buttons 2022", "Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj", "{A7C0B094-539C-4283-AA9A-3959749886B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Calendar 2022", "Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj", "{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -401,30 +401,6 @@ Global
 		{E66AA060-36AC-4C48-98B5-41701F5524A6}.StableFull|Any CPU.Build.0 = StableFull|Any CPU
 		{E66AA060-36AC-4C48-98B5-41701F5524A6}.StableLite|Any CPU.ActiveCfg = StableLite|Any CPU
 		{E66AA060-36AC-4C48-98B5-41701F5524A6}.StableLite|Any CPU.Build.0 = StableLite|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.Canary|Any CPU.Build.0 = Canary|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.StableFull|Any CPU.ActiveCfg = StableFull|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.StableFull|Any CPU.Build.0 = StableFull|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.StableLite|Any CPU.ActiveCfg = StableLite|Any CPU
-		{C48F3629-606B-462A-9B98-6350A28F7B11}.StableLite|Any CPU.Build.0 = StableLite|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.Canary|Any CPU.Build.0 = Canary|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.StableFull|Any CPU.ActiveCfg = StableFull|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.StableFull|Any CPU.Build.0 = StableFull|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.StableLite|Any CPU.ActiveCfg = StableLite|Any CPU
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B}.StableLite|Any CPU.Build.0 = StableLite|Any CPU
 		{95A40A73-54BB-4EBC-97C8-4D7C8150DB67}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
 		{95A40A73-54BB-4EBC-97C8-4D7C8150DB67}.Canary|Any CPU.Build.0 = Canary|Any CPU
 		{95A40A73-54BB-4EBC-97C8-4D7C8150DB67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -941,6 +917,30 @@ Global
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.StableFull|Any CPU.Build.0 = Debug|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.StableLite|Any CPU.ActiveCfg = Debug|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.StableLite|Any CPU.Build.0 = Debug|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Canary|Any CPU.Build.0 = Canary|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.StableFull|Any CPU.ActiveCfg = StableFull|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.StableFull|Any CPU.Build.0 = StableFull|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.StableLite|Any CPU.ActiveCfg = StableLite|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.StableLite|Any CPU.Build.0 = StableLite|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Canary|Any CPU.Build.0 = Canary|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.StableFull|Any CPU.ActiveCfg = StableFull|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.StableFull|Any CPU.Build.0 = StableFull|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.StableLite|Any CPU.ActiveCfg = StableLite|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.StableLite|Any CPU.Build.0 = StableLite|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -971,8 +971,6 @@ Global
 		{C996C6FF-AC18-4C5C-BEB0-E5D48D7CF3FC} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{CA2FB62E-F7EE-45F4-BA59-15CB110D22F9} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{E66AA060-36AC-4C48-98B5-41701F5524A6} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
-		{C48F3629-606B-462A-9B98-6350A28F7B11} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
-		{22AAB917-21B4-4FEF-B469-963B7AC5555B} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{95A40A73-54BB-4EBC-97C8-4D7C8150DB67} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{CAA5B746-A0AD-4B2B-8C0B-3EACA3213AB1} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{9EC17540-EA20-4A60-8473-C984A8F8AED7} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
@@ -1021,6 +1019,8 @@ Global
 		{5DB6B467-9257-42D3-B81F-380B5D537C04} = {6B01F113-016E-445F-BE5E-80BA7144B928}
 		{1AD413AC-FAD3-4F79-A948-4FB66AF10685} = {5DB6B467-9257-42D3-B81F-380B5D537C04}
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{A7C0B094-539C-4283-AA9A-3959749886B7} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

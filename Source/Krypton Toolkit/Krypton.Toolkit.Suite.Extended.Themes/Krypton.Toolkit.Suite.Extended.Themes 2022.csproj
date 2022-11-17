@@ -36,6 +36,8 @@
 		<OutputType>library</OutputType>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.Themes</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.Themes</AssemblyName>
+		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
@@ -147,7 +149,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -157,6 +159,9 @@
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Themes\Krypton.Toolkit.Suite.Extended.Themes.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Themes\</OutputPath>
 	</PropertyGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
+	</ItemGroup>
 	<ItemGroup>
 	  <None Update="License\License.txt">
 	    <PackagePath></PackagePath>

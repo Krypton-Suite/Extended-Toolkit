@@ -37,6 +37,8 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.TreeGridView</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.TreeGridView</AssemblyName>
+		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<!--<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
@@ -90,7 +92,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.10.275-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.11.318-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -110,7 +112,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
 			</ItemGroup>
 		</When>
 
@@ -120,7 +122,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="70.22.11.312" />
 			</ItemGroup>
 		</When>
 
@@ -177,10 +179,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="License\License.txt">
-      <PackagePath></PackagePath>
-      <Pack>true</Pack>
-    </None>
+	<None Update="License\License.txt">
+	  <PackagePath></PackagePath>
+	  <Pack>true</Pack>
+	</None>
   </ItemGroup>
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>

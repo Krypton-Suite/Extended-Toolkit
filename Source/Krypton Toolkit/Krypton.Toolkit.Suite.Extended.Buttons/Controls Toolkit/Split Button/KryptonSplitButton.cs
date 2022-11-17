@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                     if (_useUACElevation)
                     {
-                        Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                        Values.Image = GraphicsExtensions.LoadIcon(GraphicsExtensions.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
                     }
                     else
                     {
@@ -117,6 +117,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             AutoSize = true;
 
             ShowSplitOption = true;
+
+            // Default size
+            Size = new Size(90, 25);
         }
         #endregion
 

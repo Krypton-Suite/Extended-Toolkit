@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS0649
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     /// <summary>
@@ -993,28 +994,11 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         protected override void OnLoad(EventArgs e)
         {
-            if (_fadeValues.UseFade)
-            {
-                _fadeController.FadeWindowIn(this, _fadeValues.FadeInterval);
-            }
-
             base.OnLoad(e);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (_fadeValues.UseFade)
-            {
-                if (_fadeValues.NextVirtualWindow != null)
-                {
-                    _fadeController.FadeWindowOut(this, _fadeValues.NextVirtualWindow, _fadeValues.FadeInterval);
-                }
-                else
-                {
-                    _fadeController.FadeWindowOut(this, null, _fadeValues.FadeInterval);
-                }
-            }
-
             base.OnFormClosing(e);
         }
 

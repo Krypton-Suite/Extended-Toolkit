@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
                     SetAskMe(true);
 
-                    SetSelectedTheme(PaletteModeManager.Office365Blue);
+                    SetSelectedTheme(PaletteModeManager.Microsoft365Blue);
 
                     SaveSettings(true);
                 }
@@ -188,7 +188,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
                 SetAskMe(true);
 
-                SetSelectedTheme(PaletteModeManager.Office365Blue);
+                SetSelectedTheme(PaletteModeManager.Microsoft365Blue);
 
                 SaveSettings(false);
             }

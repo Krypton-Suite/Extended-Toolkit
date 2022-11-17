@@ -26,6 +26,7 @@
 #endregion
 
 using System.Collections;
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
 
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {

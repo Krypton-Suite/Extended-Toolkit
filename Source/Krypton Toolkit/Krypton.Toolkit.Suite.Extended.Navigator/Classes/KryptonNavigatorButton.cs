@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             this.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Marlett", 11.00f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)2);
         }
         #region ...Krypton...
-        private void GlobalPaletteChanged(object sender, EventArgs e)
+        private new void GlobalPaletteChanged(object sender, EventArgs e)
         {
 
             if (_palette != null)

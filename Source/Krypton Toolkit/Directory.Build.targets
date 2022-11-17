@@ -160,6 +160,23 @@
 				</Description>
 			</PropertyGroup>
 		</When>
+
+		<When Condition="'$(Configuration)' == 'StableLite'">
+			<PropertyGroup>
+				<PackageId Condition="'$(TFMs)' == 'StableLite'">$(PackageId).Lite</PackageId>
+
+				<Description Condition="'$(TFMs)' == 'StableLite'">
+					An extension to the Standard Toolkit, which supports .NET Framework 4.8 and 4.8.1, .NET Core 3.1 and .NET 5 - 7. $(Description)
+
+					This package supports all .NET Framework versions starting .NET Framework 4.8 and 4.8.1, .NET Core 3.1 and .NET 5 - 7.
+					Also, all libraries are included targeting each specific framework version for performance purposes.
+
+					To view all of the standard toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Standard/Krypton-Toolkit-Suite-Standard-Modules.md
+
+					This package is for those who want to try out the latest cutting edge features before deployment. Please use $(PackageId) if deployment is intended.
+				</Description>
+			</PropertyGroup>
+		</When>
 		<Otherwise>
 			<PropertyGroup>
 				<PackageId Condition="'$(TFMs)' == 'all'">$(PackageId)</PackageId>

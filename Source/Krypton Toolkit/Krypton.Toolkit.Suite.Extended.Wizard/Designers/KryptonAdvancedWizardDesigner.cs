@@ -27,6 +27,7 @@
  */
 #endregion
 
+#pragma warning disable CS0618
 namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
@@ -195,14 +196,17 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void ChangeServiceComponentAdded(object sender, ComponentEventArgs e)
         {
-            if (((IDesignerHost)sender).Loading) {
+            if (((IDesignerHost)sender).Loading)
+            {
                 return;
             }
-            if (!(e.Component is KryptonAdvancedWizardPage)) {
+            if (!(e.Component is KryptonAdvancedWizardPage))
+            {
                 return;
             }
             var page = e.Component as KryptonAdvancedWizardPage;
-            if (_wizard.WizardPages.Contains(page)) {
+            if (_wizard.WizardPages.Contains(page))
+            {
                 return;
             }
 
@@ -214,11 +218,13 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void ChangeServiceComponentRemoved(object sender, ComponentEventArgs e)
         {
-            if (((IDesignerHost)sender).Loading) {
+            if (((IDesignerHost)sender).Loading)
+            {
                 return;
             }
             var advancedWizardPage = e.Component as KryptonAdvancedWizardPage;
-            if (advancedWizardPage == null) {
+            if (advancedWizardPage == null)
+            {
                 return;
             }
 

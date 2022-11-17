@@ -141,11 +141,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             }
         }
 
-        ///' <summary>
-        ///' Shortcut to one on CalendarColourTable
-        ///' </summary>
-        ///' <param name="color"></param>
-        ///' <returns></returns>
+        //' <summary>
+        //' Shortcut to one on CalendarColourTable
+        //' </summary>
+        //' <param name="color"></param>
+        //' <returns></returns>
         //Private Shared Function FromHex(ByVal color As String) As Color
         //    Return CalendarColourTable.FromHex(color)
         //End Function

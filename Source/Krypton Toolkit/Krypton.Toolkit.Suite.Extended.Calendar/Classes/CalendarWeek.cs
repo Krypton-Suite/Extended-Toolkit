@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Creates a new week for the specified calendar
         /// </summary>
         /// <param name="calendar">Calendar this week belongs to</param>
-        /// <param name="sunday">Start day of the week</param>
+        /// <param name="firstDay">Start day of the week</param>
         internal CalendarWeek(KryptonCalendar calendar, DateTime firstDay)
         {
             _calendar = calendar;

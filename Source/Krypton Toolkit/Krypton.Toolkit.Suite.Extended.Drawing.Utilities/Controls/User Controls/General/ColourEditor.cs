@@ -25,6 +25,7 @@
  */
 #endregion
 
+// ReSharper disable InconsistentNaming
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourEditor : UserControl, IColourEditor
@@ -1324,7 +1325,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private void AdjustUI()
         {
-            int height;
+            //int height = 0;
 
             //if (ShowAlphaChannel && ShowHexadecimal && ShowHSL)
             //{

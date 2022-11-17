@@ -12,7 +12,7 @@ namespace TestApp
 
         private DefaultNotificationButton _defaultNotificationButton = DefaultNotificationButton.None;
 
-        private IconType _iconType = IconType.None;
+        private Krypton.Toolkit.Suite.Extended.Toast.IconType _iconType = Krypton.Toolkit.Suite.Extended.Toast.IconType.None;
 
         private RightToLeftSupport _rightToLeftSupport = RightToLeftSupport.LeftToRight;
 
@@ -61,11 +61,11 @@ namespace TestApp
 
         /// <summary>Sets the IconType to value.</summary>
         /// <param name="value">The value of the IconType.</param>
-        public void SetIconType(IconType value) => _iconType = value;
+        public void SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType value) => _iconType = value;
 
         /// <summary>Gets the IconType value.</summary>
         /// <returns>The value of the IconType.</returns>
-        public IconType GetIconType() => _iconType;
+        public Krypton.Toolkit.Suite.Extended.Toast.IconType GetIconType() => _iconType;
 
         /// <summary>Sets the RightToLeftSupport to value.</summary>
         /// <param name="value">The value of the RightToLeftSupport.</param>
@@ -136,51 +136,51 @@ namespace TestApp
 
             if (krbIconTypeAsterisk.Checked)
             {
-                SetIconType(IconType.Asterisk);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.Asterisk);
             }
             else if (krbIconTypeCustom.Checked)
             {
-                SetIconType(IconType.Custom);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.Custom);
             }
             else if (krbIconTypeError.Checked)
             {
-                SetIconType(IconType.Error);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.Error);
             }
             else if (krbIconTypeExclamation.Checked)
             {
-                SetIconType(IconType.Exclamation);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.Exclamation);
             }
             else if (krbIconTypeHand.Checked)
             {
-                SetIconType(IconType.Hand);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.Hand);
             }
             else if (krbIconTypeNone.Checked)
             {
-                SetIconType(IconType.None);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.None);
             }
             else if (krbIconTypeOk.Checked)
             {
-                SetIconType(IconType.Ok);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.Ok);
             }
             else if (krbIconTypeShield.Checked)
             {
-                SetIconType(IconType.Shield);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.Shield);
             }
             else if (krbIconTypeStop.Checked)
             {
-                SetIconType(IconType.Stop);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.Stop);
             }
             else if (krbIconTypeInformation.Checked)
             {
-                SetIconType(IconType.Information);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.Information);
             }
             else if (krbIconTypeWarning.Checked)
             {
-                SetIconType(IconType.Warning);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.Warning);
             }
             else if (krbIconTypeWindowsLogo.Checked)
             {
-                SetIconType(IconType.WindowsLogo);
+                SetIconType(Krypton.Toolkit.Suite.Extended.Toast.IconType.WindowsLogo);
             }
         }
 

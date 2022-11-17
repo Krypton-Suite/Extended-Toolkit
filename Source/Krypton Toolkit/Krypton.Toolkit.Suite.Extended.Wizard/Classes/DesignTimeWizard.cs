@@ -27,6 +27,7 @@
  */
 #endregion
 
+#pragma warning disable CS0618
 namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     public class DesignTimeWizardStrategy : WizardStrategy

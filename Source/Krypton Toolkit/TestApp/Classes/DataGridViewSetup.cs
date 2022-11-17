@@ -3,6 +3,9 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 
 using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+#pragma warning disable CS8600
+#pragma warning disable CS8602
+#pragma warning disable CS8604
 
 namespace TestApp
 {
@@ -18,7 +21,7 @@ namespace TestApp
 
         #endregion
 
-        
+
         #region Implementaton
 
         public void SetupDataGridView(KryptonOutlookGrid grid, bool restoreIfPossible)
@@ -86,7 +89,7 @@ namespace TestApp
             grid.AddInternalColumn(columnsToAdd[3], new OutlookGridDefaultGroup(null), SortOrder.None, -1, -1);
             grid.AddInternalColumn(columnsToAdd[4], new OutlookGridDefaultGroup(null), SortOrder.None, -1, -1);
             grid.AddInternalColumn(columnsToAdd[5], new OutlookGridDateTimeGroup(null), SortOrder.None, -1, -1);
-            grid.AddInternalColumn(columnsToAdd[6], new OutlookGridDefaultGroup(null) {OneItemText = "1 product", XXXItemsText = " products"}, SortOrder.None, -1, -1);
+            grid.AddInternalColumn(columnsToAdd[6], new OutlookGridDefaultGroup(null) { OneItemText = "1 product", XXXItemsText = " products" }, SortOrder.None, -1, -1);
             grid.AddInternalColumn(columnsToAdd[7], new OutlookGridPriceGroup(null), SortOrder.None, -1, -1);
             grid.AddInternalColumn(columnsToAdd[8], new OutlookGridDefaultGroup(null), SortOrder.None, -1, -1);
             grid.AddInternalColumn(columnsToAdd[9], new OutlookGridDefaultGroup(null), SortOrder.None, -1, -1);
@@ -146,7 +149,7 @@ namespace TestApp
                     group.SortBySummaryCount = CommonHelper.StringToBool(node2.Element("SortBySummaryCount").Value);
                     if (!string.IsNullOrEmpty((node2.Element("ItemsComparer").Value)))
                     {
-                        Object comparer = Activator.CreateInstance(Type.GetType(TypeConverter.ProcessType(node2.Element("ItemsComparer").Value), true));
+                        object? comparer = Activator.CreateInstance(Type.GetType(TypeConverter.ProcessType(node2.Element("ItemsComparer").Value), true));
                         group.ItemsComparer = (IComparer)comparer;
                     }
                     if (node2.Element("Name").Value.Contains("OutlookGridDateTimeGroup"))

@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
+#pragma warning disable CS0414
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     /// <summary>
@@ -211,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             else
             {
                 _useWindows11StyleCornerRounding = false;
-                
+
                 // Set the CornerRoundingRadius to 'GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE', default value
                 CornerRoundingRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE;
             }
@@ -1755,7 +1757,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         private CreateParams GetCreateParams()
         {
             CreateParams cp = base.CreateParams;
-            
+
             return cp;
         }
 

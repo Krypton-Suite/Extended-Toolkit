@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS1574, CS0419
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -456,6 +457,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Creates a rectangle with item roundess
         /// </summary>
+        /// <param name="evtData"></param>
         /// <param name="bounds"></param>
         /// <returns></returns>
         public GraphicsPath ItemRectangle(CalendarRendererItemBoundsEventArgs evtData, Rectangle bounds)
@@ -530,7 +532,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Fills the specified rectangle with item border roundness
         /// </summary>
-        /// <param name="g"></param>
+        /// <param name="e"></param>
         /// <param name="bounds"></param>
         /// <param name="north"></param>
         /// <param name="south"></param>
@@ -570,7 +572,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Draws the specified rectangle with item border roundnesss
         /// </summary>
-        /// <param name="g"></param>
+        /// <param name="e"></param>
         /// <param name="bounds"></param>
         /// <param name="color"></param>
         /// <param name="width"></param>

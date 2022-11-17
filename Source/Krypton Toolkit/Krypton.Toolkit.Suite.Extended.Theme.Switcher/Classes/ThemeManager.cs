@@ -85,23 +85,23 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             manager._themeList.Add("Office 2013 - White");
 
-            manager._themeList.Add("Office 365 - Black");
+            manager._themeList.Add("Microsoft 365 - Black");
 
-            manager._themeList.Add("Office 365 - Black (Dark Mode)");
+            manager._themeList.Add("Microsoft 365 - Black (Dark Mode)");
 
-            manager._themeList.Add("Office 365 - Blue");
+            manager._themeList.Add("Microsoft 365 - Blue");
 
-            manager._themeList.Add("Office 365 - Blue (Dark Mode)");
+            manager._themeList.Add("Microsoft 365 - Blue (Dark Mode)");
 
-            manager._themeList.Add("Office 365 - Blue (Light Mode)");
+            manager._themeList.Add("Microsoft 365 - Blue (Light Mode)");
 
-            manager._themeList.Add("Office 365 - Silver");
+            manager._themeList.Add("Microsoft 365 - Silver");
 
-            manager._themeList.Add("Office 365 - Silver (Dark Mode)");
+            manager._themeList.Add("Microsoft 365 - Silver (Dark Mode)");
 
-            manager._themeList.Add("Office 365 - Silver (Light Mode)");
+            manager._themeList.Add("Microsoft 365 - Silver (Light Mode)");
 
-            manager._themeList.Add("Office 365 - White");
+            manager._themeList.Add("Microsoft 365 - White");
 
             manager._themeList.Add("Sparkle - Blue");
 
@@ -158,23 +158,23 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             themeList.Items.Add("Office 2013 - White");
 
-            themeList.Items.Add("Office 365 - Black");
+            themeList.Items.Add("Microsoft 365 - Black");
 
-            themeList.Items.Add("Office 365 - Black (Dark Mode)");
+            themeList.Items.Add("Microsoft 365 - Black (Dark Mode)");
 
-            themeList.Items.Add("Office 365 - Blue");
+            themeList.Items.Add("Microsoft 365 - Blue");
 
-            themeList.Items.Add("Office 365 - Blue (Dark Mode)");
+            themeList.Items.Add("Microsoft 365 - Blue (Dark Mode)");
 
-            themeList.Items.Add("Office 365 - Blue (Light Mode)");
+            themeList.Items.Add("Microsoft 365 - Blue (Light Mode)");
 
-            themeList.Items.Add("Office 365 - Silver");
+            themeList.Items.Add("Microsoft 365 - Silver");
 
-            themeList.Items.Add("Office 365 - Silver (Dark Mode)");
+            themeList.Items.Add("Microsoft 365 - Silver (Dark Mode)");
 
-            themeList.Items.Add("Office 365 - Silver (Light Mode)");
+            themeList.Items.Add("Microsoft 365 - Silver (Light Mode)");
 
-            themeList.Items.Add("Office 365 - White");
+            themeList.Items.Add("Microsoft 365 - White");
 
             themeList.Items.Add("Sparkle - Blue");
 
@@ -228,23 +228,23 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             themeList.AutoCompleteCustomSource.Add("Office 2013 - White");
 
-            themeList.AutoCompleteCustomSource.Add("Office 365 - Black");
+            themeList.AutoCompleteCustomSource.Add("Microsoft 365 - Black");
 
-            themeList.AutoCompleteCustomSource.Add("Office 365 - Black (Dark Mode)");
+            themeList.AutoCompleteCustomSource.Add("Microsoft 365 - Black (Dark Mode)");
 
-            themeList.AutoCompleteCustomSource.Add("Office 365 - Blue");
+            themeList.AutoCompleteCustomSource.Add("Microsoft 365 - Blue");
 
-            themeList.AutoCompleteCustomSource.Add("Office 365 - Blue (Dark Mode)");
+            themeList.AutoCompleteCustomSource.Add("Microsoft 365 - Blue (Dark Mode)");
 
-            themeList.AutoCompleteCustomSource.Add("Office 365 - Blue (Light Mode)");
+            themeList.AutoCompleteCustomSource.Add("Microsoft 365 - Blue (Light Mode)");
 
-            themeList.AutoCompleteCustomSource.Add("Office 365 - Silver");
+            themeList.AutoCompleteCustomSource.Add("Microsoft 365 - Silver");
 
-            themeList.AutoCompleteCustomSource.Add("Office 365 - Silver (Dark Mode)");
+            themeList.AutoCompleteCustomSource.Add("Microsoft 365 - Silver (Dark Mode)");
 
-            themeList.AutoCompleteCustomSource.Add("Office 365 - Silver (Light Mode)");
+            themeList.AutoCompleteCustomSource.Add("Microsoft 365 - Silver (Light Mode)");
 
-            themeList.AutoCompleteCustomSource.Add("Office 365 - White");
+            themeList.AutoCompleteCustomSource.Add("Microsoft 365 - White");
 
             themeList.AutoCompleteCustomSource.Add("Sparkle - Blue");
 
@@ -296,16 +296,16 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 case PaletteModeManager.Office2013White:
                     themeList.SelectedIndex = 10;
                     break;
-                case PaletteModeManager.Office365Black:
+                case PaletteModeManager.Microsoft365Black:
                     themeList.SelectedIndex = 11;
                     break;
-                case PaletteModeManager.Office365Blue:
+                case PaletteModeManager.Microsoft365Blue:
                     themeList.SelectedIndex = 12;
                     break;
-                case PaletteModeManager.Office365Silver:
+                case PaletteModeManager.Microsoft365Silver:
                     themeList.SelectedIndex = 13;
                     break;
-                case PaletteModeManager.Office365White:
+                case PaletteModeManager.Microsoft365White:
                     themeList.SelectedIndex = 14;
                     break;
                 case PaletteModeManager.SparkleBlue:
@@ -391,29 +391,29 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
                 ApplyTheme(PaletteModeManager.Office2013White);
             }
-            else if (themeType == "Office 365 - Black")
+            else if (themeType == "Microsoft 365 - Black")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office365Black;
+                manager.GlobalPaletteMode = PaletteModeManager.Microsoft365Black;
 
-                ApplyTheme(PaletteModeManager.Office365Black);
+                ApplyTheme(PaletteModeManager.Microsoft365Black);
             }
-            else if (themeType == "Office 365 - Blue")
+            else if (themeType == "Microsoft 365 - Blue")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office365Blue;
+                manager.GlobalPaletteMode = PaletteModeManager.Microsoft365Blue;
 
-                ApplyTheme(PaletteModeManager.Office365Blue);
+                ApplyTheme(PaletteModeManager.Microsoft365Blue);
             }
-            else if (themeType == "Office 365 - Silver")
+            else if (themeType == "Microsoft 365 - Silver")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office365Silver;
+                manager.GlobalPaletteMode = PaletteModeManager.Microsoft365Silver;
 
-                ApplyTheme(PaletteModeManager.Office365Silver);
+                ApplyTheme(PaletteModeManager.Microsoft365Silver);
             }
-            else if (themeType == "Office 365 - White")
+            else if (themeType == "Microsoft 365 - White")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office365White;
+                manager.GlobalPaletteMode = PaletteModeManager.Microsoft365White;
 
-                ApplyTheme(PaletteModeManager.Office365White);
+                ApplyTheme(PaletteModeManager.Microsoft365White);
             }
             else if (themeType == "Sparkle - Blue")
             {

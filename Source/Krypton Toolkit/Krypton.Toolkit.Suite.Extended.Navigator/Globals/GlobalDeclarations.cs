@@ -32,10 +32,12 @@ global using System.Drawing;
 global using System.Drawing.Design;
 global using System.Drawing.Drawing2D;
 global using System.Runtime.InteropServices;
+global using System.Security.Permissions;
 global using System.Windows.Forms;
 global using System.Windows.Forms.Design;
 global using System.Windows.Forms.VisualStyles;
 
-global using Microsoft.VisualBasic;
-
 global using Krypton.Navigator;
+global using Krypton.Toolkit.Suite.Extended.Drawing;
+
+global using Microsoft.VisualBasic;

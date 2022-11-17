@@ -172,7 +172,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             {
                 if (applicationInfo.ApplicationIcon != null) Icon = applicationInfo.ApplicationIcon;
 
+                // ReSharper disable VirtualMemberCallInConstructor
                 Text = Properties.Resources.SharpUpdateInfoForm_Title;
+                // ReSharper restore VirtualMemberCallInConstructor
 
                 klblVersions.Text = string.Format(Properties.Resources.SharpUpdateInfoForm_Version, applicationInfo.ApplicationAssembly.GetName().Version.ToString(), updateInfo.Version.ToString());
 
@@ -184,8 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             }
             catch (Exception e)
             {
-
-                throw;
+                ExceptionCapture.CaptureException(e);
             }
         }
         #endregion
