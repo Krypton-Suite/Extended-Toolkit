@@ -259,6 +259,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Calendar 2022", "Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj", "{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "License", "License", "{BA86BDC7-D11C-4E74-875C-B284E740B599}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Documents\License\License.md = ..\..\Documents\License\License.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Canary|Any CPU = Canary|Any CPU
@@ -1021,6 +1026,7 @@ Global
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{A7C0B094-539C-4283-AA9A-3959749886B7} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{BA86BDC7-D11C-4E74-875C-B284E740B599} = {A7A69BC2-7682-43FB-8E7C-C42FDAA2A215}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

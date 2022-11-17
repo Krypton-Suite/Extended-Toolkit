@@ -155,6 +155,8 @@
 		</Otherwise>
 	</Choose>
 
+	<!-- ReSharper disable once UnknownProperty -->
+	<!-- ReSharper disable once UnknownProperty -->
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
 		<Reference Include="System.IO.Compression" />
 		<Reference Include="System.IO.Compression.FileSystem" />
@@ -165,14 +167,6 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta1" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
 		<PackageReference Include="ZipStorer" Version="3.8.0" />
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1-beta1" />
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1-beta1" />
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->

@@ -19,7 +19,7 @@
 			<ItemGroup>
 				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
 			
-				<None Include="License\License.txt" Pack="true" PackagePath="" />
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -34,7 +34,7 @@
 
 				<!--Package generation-->
 				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-				<PackageLicenseFile>License.txt</PackageLicenseFile>
+				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
 				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Canary</PackageOutputPath>
@@ -47,7 +47,7 @@
 			<ItemGroup>
 				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Icon.png" Pack="true" PackagePath="" />
 			
-				<None Include="License\License.txt" Pack="true" PackagePath="" />
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -60,9 +60,9 @@
 				<RepositoryType>git</RepositoryType>
 				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
 				
-				<!--Package generation-->
+				<!--Package genebration-->
 				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-				<PackageLicenseFile>License.txt</PackageLicenseFile>
+				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
 				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Nightly</PackageOutputPath>
@@ -74,7 +74,7 @@
 			<ItemGroup>
 				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Icon.png" Pack="true" PackagePath="" />
 			
-				<None Include="License\License.txt" Pack="true" PackagePath="" />
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -82,7 +82,7 @@
 				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
 				<PackageIcon>Krypton Stable.png</PackageIcon>
 				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
-				<PackageLicenseFile>License.txt</PackageLicenseFile>
+				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
 				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
 				<RepositoryType>git</RepositoryType>
