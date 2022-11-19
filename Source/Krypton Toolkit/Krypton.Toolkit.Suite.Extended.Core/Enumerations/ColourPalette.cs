@@ -2,17 +2,17 @@
 
 public enum ColourPalette
 {
-    NONE,
+    None = 0,
 
-    NAMED,
+    Named = 1,
 
-    OFFICE2010,
+    Office2010 = 2,
 
-    PAINT,
+    Paint = 3,
 
-    STANDARD,
+    Standard = 4,
 
-    WEBSAFE,
+    Standard256 = 5,
 
-    STANDARD256
+    WebSafe = 6
 }

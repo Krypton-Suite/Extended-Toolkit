@@ -8,15 +8,15 @@ public enum ColourGridSelectedCellStyle
     /// <summary>
     /// The selected cell is drawn no differently to any other cell.
     /// </summary>
-    NONE,
+    None = 0,
 
     /// <summary>
     /// The selected cell displays a basic outline and focus rectangle.
     /// </summary>
-    STANDARD,
+    Standard = 1,
 
     /// <summary>
     /// The selected cell is displayed larger than other cells
     /// </summary>
-    ZOOMED
+    Zoomed = 2
 }

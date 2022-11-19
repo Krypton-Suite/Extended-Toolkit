@@ -2,14 +2,14 @@
 
 public enum ExtendedMessageBoxDialogResult
 {
-    NONE = 0,
-    OK = 1,
-    CANCEL = 2,
-    ABORT = 3,
-    RETRY = 4,
-    IGNORE = 5,
-    YES = 6,
-    NO = 7,
-    TRYAGAIN = 8,
-    CONTINUE = 9
+    None = 0,
+    Ok = 1,
+    Cancel = 2,
+    Abort = 3,
+    Retry = 4,
+    Ignore = 5,
+    Yes = 6,
+    No = 7,
+    TryAgain = 8,
+    Continue = 9
 }

@@ -128,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.Colour3 = Color.White;
             this.Minimum = 0;
             this.Maximum = 100;
-            this.NubStyle = ColourSliderNubStyle.BOTTOMRIGHT;
+            this.NubStyle = ColourSliderNubStyle.BottomRight;
             this.NubSize = new Size(8, 8);
             this.NubColor = Color.Black;
             this.SmallChange = 1;
@@ -694,7 +694,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 Point lastCorner;
                 Point tipCorner;
 
-                if (this.NubStyle == ColourSliderNubStyle.BOTTOMRIGHT)
+                if (this.NubStyle == ColourSliderNubStyle.BottomRight)
                 {
                     lastCorner = new Point(this.NubSize.Width, this.NubSize.Height);
 
@@ -758,7 +758,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             this.BarPadding = this.GetBarPadding();
             this.BarBounds = this.GetBarBounds();
-            this.SelectionGlyph = this.NubStyle != ColourSliderNubStyle.NONE ? this.CreateNubGlyph() : null;
+            this.SelectionGlyph = this.NubStyle != ColourSliderNubStyle.None ? this.CreateNubGlyph() : null;
         }
 
         /// <summary>
@@ -808,7 +808,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             switch (this.NubStyle)
             {
-                case ColourSliderNubStyle.BOTTOMRIGHT:
+                case ColourSliderNubStyle.BottomRight:
                     if (this.Orientation == Orientation.Horizontal)
                     {
                         bottom = this.NubSize.Height + 1;
@@ -822,7 +822,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         bottom = top;
                     }
                     break;
-                case ColourSliderNubStyle.TOPLEFT:
+                case ColourSliderNubStyle.TopLeft:
                     if (this.Orientation == Orientation.Horizontal)
                     {
                         top = this.NubSize.Height + 1;
@@ -1337,7 +1337,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
 
             // drag nub
-            if (this.NubStyle != ColourSliderNubStyle.NONE && this.SelectionGlyph != null)
+            if (this.NubStyle != ColourSliderNubStyle.None && this.SelectionGlyph != null)
             {
                 int x;
                 int y;
@@ -1345,7 +1345,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 if (this.Orientation == Orientation.Horizontal)
                 {
                     x = point.X - this.NubSize.Width / 2;
-                    if (this.NubStyle == ColourSliderNubStyle.BOTTOMRIGHT)
+                    if (this.NubStyle == ColourSliderNubStyle.BottomRight)
                     {
                         y = this.BarBounds.Bottom;
                     }
@@ -1357,7 +1357,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 else
                 {
                     y = point.Y - this.NubSize.Height / 2;
-                    if (this.NubStyle == ColourSliderNubStyle.BOTTOMRIGHT)
+                    if (this.NubStyle == ColourSliderNubStyle.BottomRight)
                     {
                         x = this.BarBounds.Right;
                     }

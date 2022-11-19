@@ -2,6 +2,6 @@
 
 public enum ColourDialogLayoutType
 {
-    STANDARD,
-    ENHANCED
+    Standard = 0,
+    Extended = 1
 }

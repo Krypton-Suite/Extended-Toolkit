@@ -858,25 +858,25 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             switch (palette)
             {
-                case ColourPalette.NAMED:
+                case ColourPalette.Named:
                     result = NamedColours;
                     break;
-                case ColourPalette.OFFICE2010:
+                case ColourPalette.Office2010:
                     result = Office2010Standard;
                     break;
-                case ColourPalette.PAINT:
+                case ColourPalette.Paint:
                     result = PaintPalette;
                     break;
-                case ColourPalette.STANDARD:
+                case ColourPalette.Standard:
                     result = QbColors;
                     break;
                 case ColourPalette.NONE:
                     result = new ColourCollection();
                     break;
-                case ColourPalette.WEBSAFE:
+                case ColourPalette.WebSafe:
                     result = WebSafe;
                     break;
-                case ColourPalette.STANDARD256:
+                case ColourPalette.Standard256:
                     result = StandardPalette;
                     break;
                 default:

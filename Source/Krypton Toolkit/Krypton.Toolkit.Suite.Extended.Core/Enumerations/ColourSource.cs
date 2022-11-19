@@ -2,7 +2,7 @@
 
 public enum ColourSource
 {
-    NONE,
-    STANDARD,
-    CUSTOM
+    None = 0,
+    Standard = 1,
+    Custom = 2
 }

@@ -4,17 +4,17 @@
 public enum Language
 {
     /// <summary>The Czech definition.</summary>
-    CZECH,
+    Czech = 0,
     /// <summary>The English definition.</summary>
-    ENGLISH,
+    English = 1,
     /// <summary>The Français definition.</summary>
-    FRANÇAIS,
+    Français = 2,
     /// <summary>The Deutsch definition.</summary>
-    DEUTSCH,
+    Deutsch = 3,
     /// <summary>The Slovakian definition.</summary>
-    SLOVAKIAN,
+    Slovakian = 4,
     /// <summary>The Español definition.</summary>
-    ESPAÑOL,
+    Español = 5,
     /// <summary>A custom language definition.</summary>
-    CUSTOM
+    Custom = 6
 }

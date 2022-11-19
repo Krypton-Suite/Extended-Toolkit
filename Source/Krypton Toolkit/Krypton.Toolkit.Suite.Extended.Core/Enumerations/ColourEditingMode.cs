@@ -8,15 +8,15 @@ public enum ColourEditingMode
     /// <summary>
     /// None. No editing is allowed.
     /// </summary>
-    NONE,
+    None = 0,
 
     /// <summary>
     /// Only custom colours can be edited.
     /// </summary>
-    CUSTOMONLY,
+    CustomOnly = 1,
 
     /// <summary>
     /// Custom or standard colours can be edited.
     /// </summary>
-    BOTH
+    Both = 2
 }

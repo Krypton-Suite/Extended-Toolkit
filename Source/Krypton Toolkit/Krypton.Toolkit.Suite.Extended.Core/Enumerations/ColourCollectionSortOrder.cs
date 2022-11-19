@@ -8,15 +8,15 @@ public enum ColourCollectionSortOrder
     /// <summary>
     /// Ordered by hue.
     /// </summary>
-    HUE,
+    Hue = 0,
 
     /// <summary>
     /// Ordered by brightness.
     /// </summary>
-    BRIGHTNESS,
+    Brightness = 1,
 
     /// <summary>
     /// Ordered by value
     /// </summary>
-    VALUE
+    Value = 2
 }

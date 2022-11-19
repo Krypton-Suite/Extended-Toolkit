@@ -3,6 +3,6 @@
 public enum ExtendedMessageBoxTimeoutButton
 {
     FirstButton = 0,
-    SECONDBUTTON = 1,
-    THIRDBUTTON = 2
+    SecondButton = 1,
+    ThirdButton = 2
 }

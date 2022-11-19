@@ -8,15 +8,15 @@ public enum ColourCellBorderStyle
     /// <summary>
     /// No border.
     /// </summary>
-    NONE,
+    None = 0,
 
     /// <summary>
     /// A single line border.
     /// </summary>
-    FIXEDSINGLE,
+    FixedSingle = 1,
 
     /// <summary>
     /// A contrasting double border with a soft inner outline using the colour of the cell.
     /// </summary>
-    DOUBLESOFT
+    DoubleSoft = 2
 }
