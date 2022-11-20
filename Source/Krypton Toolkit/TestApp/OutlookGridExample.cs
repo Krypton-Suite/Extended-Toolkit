@@ -1,7 +1,9 @@
 ﻿using System.Globalization;
 using System.Xml;
 
+using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+#pragma warning disable CS8603
 #pragma warning disable CS8602
 
 namespace TestApp
@@ -26,7 +28,7 @@ namespace TestApp
 
         private void LoadData()
         {
-            string fileName = null;
+            string? fileName = null;
 
             //Setup Rows
             OutlookGridRow row = new OutlookGridRow();
@@ -35,7 +37,7 @@ namespace TestApp
             kogExample.ClearInternalRows();
             kogExample.FillMode = FillMode.GroupsAndNodes;
 
-            List<Token> tokensList = new List<Token>();
+            List<Token?> tokensList = new List<Token?>();
             tokensList.Add(new Token("Best seller", Color.Orange, Color.Black));
             tokensList.Add(new Token("New", Color.LightGreen, Color.Black));
             tokensList.Add(null);
@@ -53,15 +55,19 @@ namespace TestApp
             }
 
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
-            IFormatProvider culture = new CultureInfo("en-US", true);
-            foreach (XmlNode customer in doc.SelectNodes("//invoice")) //TODO for instead foreach for perfs...
+            
+            try
             {
-                try
+                doc.Load(fileName);
+
+                IFormatProvider culture = new CultureInfo("en-US", true);
+                foreach (XmlNode customer in doc.SelectNodes("//invoice")) //TODO for instead foreach for perfs...
                 {
-                    row = new OutlookGridRow();
-                    row.CreateCells(kogExample, new object[]
+                    try
                     {
+                        row = new OutlookGridRow();
+                        row.CreateCells(kogExample, new object[]
+                        {
                         customer["CustomerID"].InnerText,
                         customer["CustomerName"].InnerText,
                         customer["Address"].InnerText,
@@ -73,13 +79,13 @@ namespace TestApp
                             CultureInfo.InvariantCulture), //We put a float the formatting in design does the rest
                         (double) random.Next(101) / 100,
                         tokensList[random.Next(5)]
-                    });
-                    if (random.Next(2) == 1)
-                    {
-                        //Sub row
-                        OutlookGridRow row2 = new OutlookGridRow();
-                        row2.CreateCells(kogExample, new object[]
+                        });
+                        if (random.Next(2) == 1)
                         {
+                            //Sub row
+                            OutlookGridRow row2 = new OutlookGridRow();
+                            row2.CreateCells(kogExample, new object[]
+                            {
                             customer["CustomerID"].InnerText + " 2",
                             customer["CustomerName"].InnerText + " 2",
                             customer["Address"].InnerText + "2",
@@ -90,29 +96,35 @@ namespace TestApp
                             (double) random.Next(1000),
                             (double) random.Next(101) / 100,
                             tokensList[random.Next(5)]
-                        });
-                        row.Nodes.Add(row2);
-                        ((KryptonDataGridViewTreeTextCell) row2.Cells[1])
-                            .UpdateStyle(); //Important : after added to the parent node
+                            });
+                            row.Nodes.Add(row2);
+                            ((KryptonDataGridViewTreeTextCell)row2.Cells[1])
+                                .UpdateStyle(); //Important : after added to the parent node
+                        }
+
+                        l.Add(row);
+                        ((KryptonDataGridViewTreeTextCell)row.Cells[1])
+                            .UpdateStyle(); //Important : after added to the rows list
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Gasp...Something went wrong ! " + ex.Message, "Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
 
-                    l.Add(row);
-                    ((KryptonDataGridViewTreeTextCell) row.Cells[1])
-                        .UpdateStyle(); //Important : after added to the rows list
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Gasp...Something went wrong ! " + ex.Message, "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
+
+
+                kogExample.ResumeLayout();
+                kogExample.AssignRows(l);
+                kogExample.ForceRefreshGroupBox();
+                kogExample.Fill();
             }
-
-
-
-            kogExample.ResumeLayout();
-            kogExample.AssignRows(l);
-            kogExample.ForceRefreshGroupBox();
-            kogExample.Fill();
+            catch (Exception e)
+            {
+               ExceptionCapture.CaptureException(e);
+            }
+            
         }
 
         private Image GetFlag(string country)

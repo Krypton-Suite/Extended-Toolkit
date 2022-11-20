@@ -21,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// <summary>
     /// Class for Node expanding events
     /// </summary>
-    /// <seealso cref="KryptonOutlookGrid.OutlookGridRowNodeEventBase" />
+    /// <seealso cref="OutlookGridRowNodeEventBase" />
     public class ExpandedEventArgs : OutlookGridRowNodeEventBase
     {
         /// <summary>

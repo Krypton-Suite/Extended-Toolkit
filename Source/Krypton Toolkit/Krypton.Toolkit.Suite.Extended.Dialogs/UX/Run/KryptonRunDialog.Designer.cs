@@ -136,6 +136,7 @@
             this.kbtnSettings.Size = new System.Drawing.Size(90, 25);
             this.kbtnSettings.TabIndex = 2;
             this.kbtnSettings.Values.Text = "&Settings";
+            this.kbtnSettings.Click += new System.EventHandler(this.kbtnSettings_Click);
             // 
             // kryptonBorderEdge1
             // 

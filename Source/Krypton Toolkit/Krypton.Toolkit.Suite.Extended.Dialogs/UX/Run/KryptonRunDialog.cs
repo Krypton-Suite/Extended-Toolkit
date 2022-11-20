@@ -113,6 +113,13 @@
         {
         }
 
+        private void kbtnSettings_Click(object sender, EventArgs e)
+        {
+            KryptonRunDialogOptions runDialogOptions = new KryptonRunDialogOptions();
+
+            runDialogOptions.ShowDialog();
+        }
+
         private string Browse(bool isFolderPicker = false)
         {
             string result = string.Empty;

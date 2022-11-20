@@ -572,7 +572,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Changes the currently active band to a given band
         /// </summary>
-        /// <param name="band">The band to activate</param>
+        /// <param name="newBand">The band to activate</param>
         public void SetActiveBand(NaviBand newBand)
         {
             NaviBandEventArgs e = new NaviBandEventArgs(newBand);
@@ -820,7 +820,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Overriden. Raises the PaintBackground
         /// </summary>
-        /// <param name="pevent">Additional paint info</param>
+        /// <param name="e">Additional paint info</param>
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             base.OnPaintBackground(e);

@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
-    // <summary>
+    /// <summary>
     /// A Message Loop filter which detect mouse events whilst the popup form is shown
     /// and notifies the owning <see cref="PopupWindowHelper"/> class when a mouse
     /// click outside the popup occurs.
