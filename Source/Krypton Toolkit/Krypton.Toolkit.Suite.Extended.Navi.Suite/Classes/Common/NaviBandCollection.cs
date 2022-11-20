@@ -25,6 +25,7 @@
  */
 #endregion
 
+// ReSharper disable ConvertTypeCheckToNullCheck
 namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     /// <summary>
@@ -33,8 +34,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
     public class NaviBandCollection : IList
     {
         // Fields
-        private NaviBar owner;
-        private ArrayList innerList;
+        private NaviBar _owner;
+        private ArrayList _innerList;
 
         #region Constructor
 
@@ -44,8 +45,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public NaviBandCollection(NaviBar owner)
            : base()
         {
-            this.owner = owner;
-            innerList = new ArrayList();
+            this._owner = owner;
+            _innerList = new ArrayList();
         }
 
         #endregion
@@ -56,12 +57,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// Adds a new NaviBand the the collection
         /// </summary>
         /// <param name="value">The new NaviBand to add</param>
-        /// <exception cref="ArgumentNullExceptions">Raised when the band argument is null</exception>
+        /// <exception>Raised when the band argument is null</exception>
         public int Add(NaviBand value)
         {
-            int result = innerList.Add(value);
-            owner.Controls.Add(value);
-            owner.Controls.SetChildIndex(value, result);
+            int result = _innerList.Add(value);
+            _owner.Controls.Add(value);
+            _owner.Controls.SetChildIndex(value, result);
             value.OriginalOrder = result;
             return result;
         }
@@ -69,15 +70,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Removes a band from the collection of bands
         /// </summary>
-        /// <param name="band">The band to remove</param>
-        /// <exception cref="ArgumentNullExceptions">Raised when the band argument is null</exception>
+        /// <param name="value">The band to remove</param>
+        /// <exception>Raised when the band argument is null</exception>
         public void Remove(NaviBand value)
         {
-            innerList.Remove(value);
-            owner.Controls.Remove(value);
+            _innerList.Remove(value);
+            _owner.Controls.Remove(value);
 
-            if (owner.Controls.Contains(value.Button))
-                owner.Controls.Remove(value.Button);
+            if (_owner.Controls.Contains(value.Button))
+                _owner.Controls.Remove(value.Button);
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <param name="value">The band to add</param>
         internal void AddInternal(NaviBand value)
         {
-            innerList.Add(value);
+            _innerList.Add(value);
         }
 
         /// <summary>
@@ -95,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <param name="value">The band to remove</param>
         internal void RemoveInternal(NaviBand value)
         {
-            innerList.Remove(value);
+            _innerList.Remove(value);
         }
 
         /// <summary>
@@ -105,24 +106,21 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <returns>The item if found</returns>
         public NaviBand this[int index]
         {
-            get => (NaviBand)innerList[index];
+            get => (NaviBand)_innerList[index];
             set
             {
                 if (!(value is NaviBand))
                     throw new ArgumentException("value");
-                innerList[index] = value;
+                _innerList[index] = value;
             }
         }
 
         /// <summary>
         /// Determines whether the list contains a specific value
         /// </summary>
-        /// <param name="band">The value</param>
+        /// <param name="value">The value</param>
         /// <returns>Returns true if the list contains the item; false otherwise</returns>
-        public bool Contains(NaviBand value)
-        {
-            return innerList.Contains(value);
-        }
+        public bool Contains(NaviBand value) => _innerList.Contains(value);
 
         /// <summary>
         /// Clears the items from the list
@@ -130,16 +128,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public void Clear()
         {
             for (int i = Count - 1; i >= 0; i--)
-                Remove((NaviBand)innerList[i]);
+            {
+                Remove((NaviBand)_innerList[i]);
+            }
         }
 
         /// <summary>
-        // Sorts the elements in the entire collection using the specified comparer.
+        /// Sorts the elements in the entire collection using the specified comparer.
         /// </summary>
         /// <param name="comparer">The IComparer implementation to use when comparing elements.</param>
         public virtual void Sort(IComparer comparer)
         {
-            innerList.Sort(comparer);
+            _innerList.Sort(comparer);
         }
 
         #endregion
@@ -163,21 +163,21 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             if (!(value is NaviBand))
                 throw new ArgumentException("value");
-            return ((IList)innerList).Contains(value);
+            return ((IList)_innerList).Contains(value);
         }
 
         int IList.IndexOf(object value)
         {
             if (!(value is NaviBand))
                 throw new ArgumentException("value");
-            return ((IList)innerList).IndexOf((NaviBand)value);
+            return ((IList)_innerList).IndexOf((NaviBand)value);
         }
 
         void IList.Insert(int index, object value)
         {
             if (!(value is NaviBand))
                 throw new ArgumentException("value");
-            ((IList)innerList).Insert(index, value);
+            ((IList)_innerList).Insert(index, value);
         }
 
         bool IList.IsFixedSize => false;
@@ -193,19 +193,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         void IList.RemoveAt(int index)
         {
-            if ((index < 0) || (index >= innerList.Count))
+            if ((index < 0) || (index >= _innerList.Count))
                 throw new IndexOutOfRangeException();
             Remove((NaviBand)this[index]);
         }
 
         Object IList.this[int index]
         {
-            get => ((IList)innerList)[index];
+            get => ((IList)_innerList)[index];
             set
             {
                 if (!(value is NaviBand))
                     throw new ArgumentException("value");
-                ((IList)innerList)[index] = value;
+                ((IList)_innerList)[index] = value;
             }
         }
 
@@ -215,10 +215,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         public void CopyTo(Array array, int index)
         {
-            innerList.CopyTo(array, index);
+            _innerList.CopyTo(array, index);
         }
 
-        public int Count => innerList.Count;
+        public int Count => _innerList.Count;
 
         public bool IsSynchronized => false;
 
@@ -235,7 +235,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         public IEnumerator GetEnumerator()
         {
-            return innerList.GetEnumerator();
+            return _innerList.GetEnumerator();
         }
 
         #endregion

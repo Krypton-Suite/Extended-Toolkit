@@ -855,7 +855,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public void Navigate(int offsetX, int offsetY)
         {
-            Navigate(offsetX, offsetY, NavigationOrigin.CURRENT);
+            Navigate(offsetX, offsetY, NavigationOrigin.Current);
         }
 
         public virtual void Navigate(int offsetX, int offsetY, NavigationOrigin origin)
@@ -868,10 +868,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             switch (origin)
             {
-                case NavigationOrigin.BEGIN:
+                case NavigationOrigin.Begin:
                     cellLocation = Point.Empty;
                     break;
-                case NavigationOrigin.END:
+                case NavigationOrigin.End:
                     cellLocation = new Point(ActualColumns - 1, PrimaryRows + CustomRows - 1);
                     break;
                 default:
@@ -1460,11 +1460,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     e.Handled = true;
                     break;
                 case Keys.Home:
-                    Navigate(0, 0, NavigationOrigin.BEGIN);
+                    Navigate(0, 0, NavigationOrigin.Begin);
                     e.Handled = true;
                     break;
                 case Keys.End:
-                    Navigate(0, 0, NavigationOrigin.END);
+                    Navigate(0, 0, NavigationOrigin.End);
                     e.Handled = true;
                     break;
             }

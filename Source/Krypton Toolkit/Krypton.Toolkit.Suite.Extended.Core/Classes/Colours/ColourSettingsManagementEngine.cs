@@ -422,22 +422,22 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 switch (settingType)
                 {
-                    case SettingTypes.BOOLEAN:
+                    case SettingTypes.Boolean:
                         globalBooleanSettingsManager.SaveBooleanSettings();
                         break;
-                    case SettingTypes.COLOUR:
+                    case SettingTypes.Colour:
                         colourSettingsManager.SaveAllMergedColourSettings();
                         break;
-                    case SettingTypes.COLOURSTRING:
+                    case SettingTypes.ColourString:
                         //colourStringSettingsManager.SaveColourStringSettings();
                         break;
-                    case SettingTypes.COLOURINTEGER:
+                    case SettingTypes.ColourInteger:
                         colourIntegerSettingsManager.SaveColourIntegerSettings();
                         break;
-                    case SettingTypes.STRING:
+                    case SettingTypes.String:
                         globalStringSettingsManager.SaveStringSettings();
                         break;
-                    case SettingTypes.INTEGER:
+                    case SettingTypes.Integer:
                         colourIntegerSettingsManager.SaveColourIntegerSettings();
                         break;
                 }

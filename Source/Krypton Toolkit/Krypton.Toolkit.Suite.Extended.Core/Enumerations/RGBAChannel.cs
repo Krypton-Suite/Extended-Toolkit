@@ -36,18 +36,18 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>
         /// The red channel.
         /// </summary>
-        RED,
+        Red = 0,
         /// <summary>
         /// The green channel.
         /// </summary>
-        GREEN,
+        Green = 1,
         /// <summary>
         /// The blue channel.
         /// </summary>
-        BLUE,
+        Blue = 2,
         /// <summary>
         /// The alpha channel.
         /// </summary>
-        ALPHA
+        Alpha = 3,
     }
 }

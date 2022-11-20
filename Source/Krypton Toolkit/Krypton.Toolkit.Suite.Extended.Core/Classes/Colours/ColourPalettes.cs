@@ -852,6 +852,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         #region Static Methods
 
+        /// <summary>Gets the palette.</summary>
+        /// <param name="palette">The palette.</param>
+        /// <returns>The <see cref="ColourCollection"/> of the palette.</returns>
+        /// <exception cref="System.ArgumentException">Invalid palette - palette</exception>
         public static ColourCollection GetPalette(ColourPalette palette)
         {
             ColourCollection result;
@@ -870,7 +874,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 case ColourPalette.Standard:
                     result = QbColors;
                     break;
-                case ColourPalette.NONE:
+                case ColourPalette.None:
                     result = new ColourCollection();
                     break;
                 case ColourPalette.WebSafe:
@@ -880,7 +884,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     result = StandardPalette;
                     break;
                 default:
-                    throw new ArgumentException("Invalid palette", nameof(palette));
+                    throw new ArgumentException(@"Invalid palette", nameof(palette));
             }
 
             return result;

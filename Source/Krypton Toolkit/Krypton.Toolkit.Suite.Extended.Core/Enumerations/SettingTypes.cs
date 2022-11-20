@@ -2,10 +2,10 @@
 
 public enum SettingTypes
 {
-    BOOLEAN,
-    COLOUR,
-    COLOURSTRING,
-    COLOURINTEGER,
-    STRING,
-    INTEGER
+    Boolean = 0,
+    Colour = 1,
+    ColourString = 2,
+    ColourInteger = 3,
+    String = 4,
+    Integer = 5,
 }

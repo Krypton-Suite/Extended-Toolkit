@@ -2,6 +2,7 @@
 using System.Xml;
 
 using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+#pragma warning disable CS8602
 
 namespace TestApp
 {

@@ -172,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             ColourIntensitySettingsManager colourBlendingSettingsManager = new ColourIntensitySettingsManager();
 
-            if (baseColour != null)
+            if (baseColour != Color.Empty || baseColour != Color.Transparent)
             {
                 darkestColour.BackColor = Darken(baseColour, colourBlendingSettingsManager.GetDarkestColourIntensity());
 
@@ -207,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             ColourIntensitySettingsManager colourBlendingSettingsManager = new ColourIntensitySettingsManager();
 
-            if (baseColour != null)
+            if (baseColour != Color.Empty || baseColour != Color.Transparent)
             {
                 darkestColour.BackColor = Darken(baseColour, colourBlendingSettingsManager.GetDarkestColourIntensity());
 
@@ -384,6 +384,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="pressedTextColourPreview">The pressed text colour preview.</param>
         /// <param name="disabledColourPreview">The disabled colour preview.</param>
         /// <param name="linkNormalColourPreview">The link normal colour preview.</param>
+        /// <param name="linkFocusedColourPreview">The link focused colour preview.</param>
         /// <param name="linkHoverColourPreview">The link hover colour preview.</param>
         /// <param name="linkVisitedColourPreview">The link visited colour preview.</param>
         /// <param name="customColourOne">The custom colour one.</param>
@@ -398,6 +399,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="customTextColourFive">The custom text colour five.</param>
         /// <param name="menuTextColour">The menu text colour.</param>
         /// <param name="statusTextColour">The status text colour.</param>
+        /// <param name="ribbonTabTextColourPreview">The ribbon tab text colour.</param>
         public static void GrabColourDefinitions(PictureBox baseColour, PictureBox darkColour, PictureBox middleColour, PictureBox lightColour, PictureBox lightestColour, PictureBox borderColourPreview, PictureBox alternativeNormalTextColourPreview, PictureBox normalTextColourPreview, PictureBox disabledTextColourPreview, PictureBox focusedTextColourPreview, PictureBox pressedTextColourPreview, PictureBox disabledColourPreview, PictureBox linkNormalColourPreview, PictureBox linkFocusedColourPreview, PictureBox linkHoverColourPreview, PictureBox linkVisitedColourPreview, PictureBox customColourOne, PictureBox customColourTwo, PictureBox customColourThree, PictureBox customColourFour, PictureBox customColourFive, PictureBox customTextColourOne, PictureBox customTextColourTwo, PictureBox customTextColourThree, PictureBox customTextColourFour, PictureBox customTextColourFive, PictureBox menuTextColour, PictureBox statusTextColour, PictureBox ribbonTabTextColourPreview)
         {
             AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
@@ -477,6 +479,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="pressedTextColourPreview">The pressed text colour preview.</param>
         /// <param name="disabledColourPreview">The disabled colour preview.</param>
         /// <param name="linkNormalColourPreview">The link normal colour preview.</param>
+        /// <param name="linkFocusedColourPreview">The link focused colour preview.</param>
         /// <param name="linkHoverColourPreview">The link hover colour preview.</param>
         /// <param name="linkVisitedColourPreview">The link visited colour preview.</param>
         /// <param name="customColourOne">The custom colour one.</param>
@@ -491,6 +494,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="customTextColourFive">The custom text colour five.</param>
         /// <param name="menuTextColour">The menu text colour.</param>
         /// <param name="statusTextColour">The status text colour.</param>
+        /// <param name="ribbonTabTextColourPreview">The ribbon tab text colour.</param>
         public static void GrabColourDefinitions(CircularPictureBox baseColour, CircularPictureBox darkColour, CircularPictureBox middleColour, CircularPictureBox lightColour, CircularPictureBox lightestColour, CircularPictureBox borderColourPreview, CircularPictureBox alternativeNormalTextColourPreview, CircularPictureBox normalTextColourPreview, CircularPictureBox disabledTextColourPreview, CircularPictureBox focusedTextColourPreview, CircularPictureBox pressedTextColourPreview, CircularPictureBox disabledColourPreview, CircularPictureBox linkNormalColourPreview, CircularPictureBox linkFocusedColourPreview, CircularPictureBox linkHoverColourPreview, CircularPictureBox linkVisitedColourPreview, CircularPictureBox customColourOne, CircularPictureBox customColourTwo, CircularPictureBox customColourThree, CircularPictureBox customColourFour, CircularPictureBox customColourFive, CircularPictureBox customTextColourOne, CircularPictureBox customTextColourTwo, CircularPictureBox customTextColourThree, CircularPictureBox customTextColourFour, CircularPictureBox customTextColourFive, CircularPictureBox menuTextColour, CircularPictureBox statusTextColour, CircularPictureBox ribbonTabTextColourPreview)
         {
             AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
@@ -1124,53 +1128,57 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             switch (colourDefinitions)
             {
-                case MiscellaneousColourDefinitions.BORDERCOLOUR:
+                case MiscellaneousColourDefinitions.BorderColour:
                     break;
-                case MiscellaneousColourDefinitions.ALTERNATIVENORMALTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.AlternativeNormalTextColour:
                     break;
-                case MiscellaneousColourDefinitions.NORMALTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.NormalTextColour:
                     break;
-                case MiscellaneousColourDefinitions.DISABLEDTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.DisabledTextColour:
                     break;
-                case MiscellaneousColourDefinitions.FOCUSEDTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.FocusedTextColour:
                     break;
-                case MiscellaneousColourDefinitions.PRESSEDTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.PressedTextColour:
                     break;
-                case MiscellaneousColourDefinitions.LINKNORMALTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.LinkNormalTextColour:
                     break;
-                case MiscellaneousColourDefinitions.LINKDISABLEDTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.LinkDisabledTextColour:
                     break;
-                case MiscellaneousColourDefinitions.LINKHOVERTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.LinkHoverTextColour:
                     break;
-                case MiscellaneousColourDefinitions.LINKVISITEDTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.LinkVisitedTextColour:
                     break;
-                case MiscellaneousColourDefinitions.DISABLEDCONTROLCOLOUR:
+                case MiscellaneousColourDefinitions.DisabledControlColour:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMCOLOURONE:
+                case MiscellaneousColourDefinitions.CustomColourOne:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMCOLOURTWO:
+                case MiscellaneousColourDefinitions.CustomColourTwo:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMCOLOURTHREE:
+                case MiscellaneousColourDefinitions.CustomColourThree:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMCOLOURFOUR:
+                case MiscellaneousColourDefinitions.CustomColourFour:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMCOLOURFIVE:
+                case MiscellaneousColourDefinitions.CustomColourFive:
                     break;
-                case MiscellaneousColourDefinitions.MENUTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.CustomColourSix:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURONE:
+                case MiscellaneousColourDefinitions.MenuTextColour:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURTWO:
+                case MiscellaneousColourDefinitions.CustomTextColourOne:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURTHREE:
+                case MiscellaneousColourDefinitions.CustomTextColourTwo:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURFOUR:
+                case MiscellaneousColourDefinitions.CustomTextColourThree:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURFIVE:
+                case MiscellaneousColourDefinitions.CustomTextColourFour:
                     break;
-                case MiscellaneousColourDefinitions.STATUSTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.CustomTextColourFive:
                     break;
-                case MiscellaneousColourDefinitions.RIBBONTABTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.CustomTextColourSix:
+                    break;
+                case MiscellaneousColourDefinitions.StatusTextColour:
+                    break;
+                case MiscellaneousColourDefinitions.RibbonTabTextColour:
                     break;
                 default:
                     break;

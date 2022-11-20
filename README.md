@@ -1,4 +1,4 @@
-# <img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Krypton.png"> Extended Toolkit
+# <img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Krypton.png?raw=true"> Extended Toolkit
 
 =======
 
@@ -16,12 +16,12 @@ Development of the Krypton Extended Toolkit is supported by these generous organ
 <tr>
 	<td width="200px">
 		<a href="https://www.jetbrains.com/">
-		<img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/PNG/Supporter%20Logos/jetbrains-logo.png" />
+		<img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/PNG/Supporter%20Logos/jetbrains-logo.png?raw=true" />
 		</a>
 	</td>
 	<td width="200px">
 		<a href="https://www.yourkit.com/">
-		<img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/PNG/Supporter%20Logos/yourkit-logo.png" />
+		<img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/PNG/Supporter%20Logos/yourkit-logo.png?raw=true" />
 		</a>
 	</td>
 </tr>

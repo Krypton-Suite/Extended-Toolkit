@@ -5,94 +5,96 @@ public enum MiscellaneousColourDefinitions
     /// <summary>
     /// The border colour
     /// </summary>
-    BORDERCOLOUR,
+    BorderColour = 0,
     /// <summary>
     /// The alternative normal text colour
     /// </summary>
-    ALTERNATIVENORMALTEXTCOLOUR,
+    AlternativeNormalTextColour = 1,
     /// <summary>
     /// The normal text colour
     /// </summary>
-    NORMALTEXTCOLOUR,
+    NormalTextColour = 2,
     /// <summary>
     /// The disabled text colour
     /// </summary>
-    DISABLEDTEXTCOLOUR,
+    DisabledTextColour = 3,
     /// <summary>
     /// The focused text colour
     /// </summary>
-    FOCUSEDTEXTCOLOUR,
+    FocusedTextColour = 4,
     /// <summary>
     /// The pressed text colour
     /// </summary>
-    PRESSEDTEXTCOLOUR,
+    PressedTextColour = 5,
     /// <summary>
     /// The link normal text colour
     /// </summary>
-    LINKNORMALTEXTCOLOUR,
+    LinkNormalTextColour = 6,
     /// <summary>
     /// The link disabled text colour
     /// </summary>
-    LINKDISABLEDTEXTCOLOUR,
+    LinkDisabledTextColour = 7,
     /// <summary>
     /// The link hover text colour
     /// </summary>
-    LINKHOVERTEXTCOLOUR,
+    LinkHoverTextColour = 8,
     /// <summary>
     /// The link visited text colour
     /// </summary>
-    LINKVISITEDTEXTCOLOUR,
+    LinkVisitedTextColour = 9,
     /// <summary>
     /// The disabled control colour
     /// </summary>
-    DISABLEDCONTROLCOLOUR,
+    DisabledControlColour = 10,
     /// <summary>
     /// The custom colour one
     /// </summary>
-    CUSTOMCOLOURONE,
+    CustomColourOne = 11,
     /// <summary>
     /// The custom colour two
     /// </summary>
-    CUSTOMCOLOURTWO,
+    CustomColourTwo = 12,
     /// <summary>
     /// The custom colour three
     /// </summary>
-    CUSTOMCOLOURTHREE,
+    CustomColourThree = 13,
     /// <summary>
     /// The custom colour four
     /// </summary>
-    CUSTOMCOLOURFOUR,
+    CustomColourFour = 14,
     /// <summary>
     /// The custom colour five
     /// </summary>
-    CUSTOMCOLOURFIVE,
+    CustomColourFive = 15,
+    CustomColourSix = 16,
     /// <summary>
     /// The menu text colour
     /// </summary>
-    MENUTEXTCOLOUR,
+    MenuTextColour = 17,
     /// <summary>
     /// The custom text colour one
     /// </summary>
-    CUSTOMTEXTCOLOURONE,
+    CustomTextColourOne = 18,
     /// <summary>
     /// The custom text colour two
     /// </summary>
-    CUSTOMTEXTCOLOURTWO,
+    CustomTextColourTwo = 19,
     /// <summary>
     /// The custom text colour three
     /// </summary>
-    CUSTOMTEXTCOLOURTHREE,
+    CustomTextColourThree = 20,
     /// <summary>
     /// The custom text colour four
     /// </summary>
-    CUSTOMTEXTCOLOURFOUR,
+    CustomTextColourFour = 21,
     /// <summary>
     /// The custom text colour five
     /// </summary>
-    CUSTOMTEXTCOLOURFIVE,
+    CustomTextColourFive = 22,
+    CustomTextColourSix = 23,
     /// <summary>
     /// The status text colour
     /// </summary>
-    STATUSTEXTCOLOUR,
-    RIBBONTABTEXTCOLOUR
+    StatusTextColour = 24,
+    RibbonTabTextColour = 25,
 }

@@ -419,7 +419,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (klstCustomColourSelector.SelectedItem.ToString() == "Border Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.BORDERCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.BorderColour, pbxColourPreview.BackColor);
 
                 //if (_globalBooleanSettingsManager.GetDisableListItem())
                 //{
@@ -428,110 +428,110 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Alternative Normal Text Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.ALTERNATIVENORMALTEXTCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.AlternativeNormalTextColour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Normal Text Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.NORMALTEXTCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.NormalTextColour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Disabled Text Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.DISABLEDTEXTCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.DisabledTextColour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Focused Text Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.FOCUSEDTEXTCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.FocusedTextColour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Pressed Text Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.PRESSEDTEXTCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.PressedTextColour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Link Normal Text Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.LINKNORMALTEXTCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.LinkNormalTextColour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Link Hover Text Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.LINKHOVERTEXTCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.LinkHoverTextColour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Link Visited Text Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.LINKVISITEDTEXTCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.LinkVisitedTextColour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Disabled Control Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.DISABLEDCONTROLCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.DisabledControlColour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Colour One")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CUSTOMCOLOURONE, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomColourOne, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Colour Two")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CUSTOMCOLOURTWO, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomColourTwo, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Colour Three")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CUSTOMCOLOURTHREE, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomColourThree, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Colour Four")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CUSTOMCOLOURFOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomColourFour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Colour Five")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CUSTOMCOLOURFIVE, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomColourFive, pbxColourPreview.BackColor);
+            }
+            else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Colour Six")
+            {
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomColourSix, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Menu Text Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.MENUTEXTCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.MenuTextColour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Text Colour One")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURONE, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomTextColourOne, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Text Colour Two")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURTWO, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomTextColourTwo, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Text Colour Three")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURTHREE, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomTextColourThree, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Text Colour Four")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURFOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomTextColourFour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Text Colour Five")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURFIVE, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomTextColourFive, pbxColourPreview.BackColor);
+            }
+            else if (klstCustomColourSelector.SelectedItem.ToString() == "Custom Text Colour Six")
+            {
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.CustomTextColourSix, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Status Text Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.STATUSTEXTCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.StatusTextColour, pbxColourPreview.BackColor);
             }
             else if (klstCustomColourSelector.SelectedItem.ToString() == "Ribbon Tab Text Colour")
             {
-                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.RIBBONTABTEXTCOLOUR, pbxColourPreview.BackColor);
+                ColourUtilities.DefineCustomColour(MiscellaneousColourDefinitions.RibbonTabTextColour, pbxColourPreview.BackColor);
             }
 
             kbtnSaveColour.Enabled = false;
         }
 
-        private void kbtnGenerateNormalTextRedValue_Click(object sender, EventArgs e)
-        {
-            knumRedChannelValue.Value = _randomNumberGenerator.RandomlyGenerateARedNumberBetween(0, 255);
-        }
+        private void kbtnGenerateNormalTextRedValue_Click(object sender, EventArgs e) => knumRedChannelValue.Value = _randomNumberGenerator.RandomlyGenerateARedNumberBetween(0, 255);
 
-        private void kbtnGenerateNormalTextGreenValue_Click(object sender, EventArgs e)
-        {
-            knumGreenChannelValue.Value = _randomNumberGenerator.RandomlyGenerateAGreenNumberBetween(0, 255);
-        }
+        private void kbtnGenerateNormalTextGreenValue_Click(object sender, EventArgs e) => knumGreenChannelValue.Value = _randomNumberGenerator.RandomlyGenerateAGreenNumberBetween(0, 255);
 
         private void kbtnGenerateNormalTextBlueValue_Click(object sender, EventArgs e)
-        {
-            knumBlueChannelValue.Value = _randomNumberGenerator.RandomlyGenerateABlueNumberBetween(0, 255);
-        }
+        => knumBlueChannelValue.Value = _randomNumberGenerator.RandomlyGenerateABlueNumberBetween(0, 255);
 
         private void pbxColourPreview_MouseEnter(object sender, EventArgs e)
         {
@@ -562,10 +562,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knumBlueChannelValue.Value = pbxColourPreview.BackColor.B;
         }
 
-        private void pbxColourPreview_BackColorChanged(object sender, EventArgs e)
-        {
-            kbtnSaveColour.Enabled = true;
-        }
+        private void pbxColourPreview_BackColorChanged(object sender, EventArgs e) => kbtnSaveColour.Enabled = true;
 
         private void pbxColourPreview_Click(object sender, EventArgs e)
         {
@@ -591,18 +588,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
 
         private void knumRedChannelValue_ValueChanged(object sender, EventArgs e)
-        {
-            pbxColourPreview.BackColor = ColourManager.ChangeColour(255, knumRedChannelValue.Value, knumGreenChannelValue.Value, knumBlueChannelValue.Value);
-        }
+        => pbxColourPreview.BackColor = ColourManager.ChangeColour(255, knumRedChannelValue.Value, knumGreenChannelValue.Value, knumBlueChannelValue.Value);
 
         private void knumGreenChannelValue_ValueChanged(object sender, EventArgs e)
-        {
-            pbxColourPreview.BackColor = ColourManager.ChangeColour(255, knumRedChannelValue.Value, knumGreenChannelValue.Value, knumBlueChannelValue.Value);
-        }
+        => pbxColourPreview.BackColor = ColourManager.ChangeColour(255, knumRedChannelValue.Value, knumGreenChannelValue.Value, knumBlueChannelValue.Value);
 
         private void knumBlueChannelValue_ValueChanged(object sender, EventArgs e)
-        {
-            pbxColourPreview.BackColor = ColourManager.ChangeColour(255, knumRedChannelValue.Value, knumGreenChannelValue.Value, knumBlueChannelValue.Value);
-        }
+        => pbxColourPreview.BackColor = ColourManager.ChangeColour(255, knumRedChannelValue.Value, knumGreenChannelValue.Value, knumBlueChannelValue.Value);
     }
 }

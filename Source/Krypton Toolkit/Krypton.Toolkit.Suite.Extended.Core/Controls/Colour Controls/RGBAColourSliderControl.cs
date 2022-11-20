@@ -194,16 +194,16 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 switch (channel)
                 {
-                    case RGBAChannel.RED:
+                    case RGBAChannel.Red:
                         r = i;
                         break;
-                    case RGBAChannel.GREEN:
+                    case RGBAChannel.Green:
                         g = i;
                         break;
-                    case RGBAChannel.BLUE:
+                    case RGBAChannel.Blue:
                         b = i;
                         break;
-                    case RGBAChannel.ALPHA:
+                    case RGBAChannel.Alpha:
                         a = i;
                         break;
                 }

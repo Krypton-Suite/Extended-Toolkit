@@ -235,13 +235,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.StatusTextColour, palette.ToolMenuStatus.StatusStrip.StatusStripText);
 
-                ColourSettingsManagementEngine.SaveSettings(SettingTypes.COLOUR);
+                ColourSettingsManagementEngine.SaveSettings(SettingTypes.Colour);
 
                 globalStringSettingsManager.SetBasePaletteMode(palette.BasePaletteMode.ToString());
 
                 globalStringSettingsManager.SetFeedbackText("The import was successful.");
 
-                ColourSettingsManagementEngine.SaveSettings(SettingTypes.STRING);
+                ColourSettingsManagementEngine.SaveSettings(SettingTypes.String);
             }
             catch (Exception exc)
             {
@@ -323,13 +323,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.StatusTextColour, palette.ToolMenuStatus.StatusStrip.StatusStripText);
 
-                ColourSettingsManagementEngine.SaveSettings(SettingTypes.COLOUR);
+                ColourSettingsManagementEngine.SaveSettings(SettingTypes.Colour);
 
                 globalStringSettingsManager.SetBasePaletteMode(palette.BasePaletteMode.ToString());
 
                 globalStringSettingsManager.SetFeedbackText("The import was successful.");
 
-                ColourSettingsManagementEngine.SaveSettings(SettingTypes.STRING);
+                ColourSettingsManagementEngine.SaveSettings(SettingTypes.String);
             }
             catch (Exception exc)
             {
