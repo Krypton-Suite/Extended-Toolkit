@@ -72,6 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <param name="bounds">The bounds of the drawing</param>
         /// <param name="text">The text that should appear into the bar</param>
         /// <param name="font">The font to use when drawing the text</param>
+        /// <param name="rightToLeft"></param>
         /// <param name="state">The inputstate of the collapsed band</param>
         public override void DrawNaviBandCollapsedBg(Graphics g, Rectangle bounds, string text, Font font,
            bool rightToLeft, InputState state)

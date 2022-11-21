@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // read the version, which occupies two bytes
             version = (AdobePhotoshopColourSwatchFileVersion)this.ReadInt16(stream);
 
-            if (version != AdobePhotoshopColourSwatchFileVersion.VERSION1 && version != AdobePhotoshopColourSwatchFileVersion.VERSION2)
+            if (version != AdobePhotoshopColourSwatchFileVersion.VersionOne && version != AdobePhotoshopColourSwatchFileVersion.VersionTwo)
             {
                 throw new InvalidDataException("Invalid version information.");
             }
@@ -114,10 +114,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // I noticed some files no longer include a version 1 palette
 
             results = this.ReadPalette(stream, version);
-            if (version == AdobePhotoshopColourSwatchFileVersion.VERSION1)
+            if (version == AdobePhotoshopColourSwatchFileVersion.VersionOne)
             {
                 version = (AdobePhotoshopColourSwatchFileVersion)this.ReadInt16(stream);
-                if (version == AdobePhotoshopColourSwatchFileVersion.VERSION2)
+                if (version == AdobePhotoshopColourSwatchFileVersion.VersionTwo)
                 {
                     results = this.ReadPalette(stream, version);
                 }
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public void Serialize(Stream stream, ColourCollection palette, AdobePhotoshopColourSwatchColourSpace colourSpace)
         {
-            this.Serialize(stream, palette, AdobePhotoshopColourSwatchFileVersion.VERSION2, colourSpace);
+            this.Serialize(stream, palette, AdobePhotoshopColourSwatchFileVersion.VersionTwo, colourSpace);
         }
 
         public void Serialize(Stream stream, ColourCollection palette, AdobePhotoshopColourSwatchFileVersion version)
@@ -158,9 +158,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 throw new ArgumentNullException(nameof(palette));
             }
 
-            if (version == AdobePhotoshopColourSwatchFileVersion.VERSION2)
+            if (version == AdobePhotoshopColourSwatchFileVersion.VersionTwo)
             {
-                this.WritePalette(stream, palette, AdobePhotoshopColourSwatchFileVersion.VERSION1, colourSpace);
+                this.WritePalette(stream, palette, AdobePhotoshopColourSwatchFileVersion.VersionOne, colourSpace);
             }
             this.WritePalette(stream, palette, version, colourSpace);
         }
@@ -191,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 value3 = this.ReadInt16(stream);
                 this.ReadInt16(stream); // only CMYK supports this field. As we can't handle CMYK colors, we read the value to advance the stream but don't do anything with it
 
-                if (version == AdobePhotoshopColourSwatchFileVersion.VERSION2)
+                if (version == AdobePhotoshopColourSwatchFileVersion.VersionTwo)
                 {
                     int length;
 
@@ -238,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         results.Add(new HSLColourStructure(hue, saturation, brightness).ToRgbColour());
                         break;
 
-                    case AdobePhotoshopColourSwatchColourSpace.GRAYSCALE:
+                    case AdobePhotoshopColourSwatchColourSpace.GreyScale:
 
                         int gray;
 
@@ -293,7 +293,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         value3 = (short)(colour.GetBrightness() * 655.35);
                         value4 = 0;
                         break;
-                    case AdobePhotoshopColourSwatchColourSpace.GRAYSCALE:
+                    case AdobePhotoshopColourSwatchColourSpace.GreyScale:
                         if (colour.R == colour.G && colour.R == colour.B)
                         {
                             // already grayscale
@@ -318,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 this.WriteInt16(stream, value3);
                 this.WriteInt16(stream, value4);
 
-                if (version == AdobePhotoshopColourSwatchFileVersion.VERSION2)
+                if (version == AdobePhotoshopColourSwatchFileVersion.VersionTwo)
                 {
                     string name;
 

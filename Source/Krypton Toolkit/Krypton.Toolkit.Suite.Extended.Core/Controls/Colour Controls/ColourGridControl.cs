@@ -136,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public ColourGridControl()
         {
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.Selectable | ControlStyles.StandardClick | ControlStyles.StandardDoubleClick | ControlStyles.SupportsTransparentBackColor, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.Selectable | ControlStyles.StandardClick | ControlStyles.StandardDoubleClick | ControlStyles.SupportsTransparentBackColor, true);
             _previousHotIndex = InvalidIndex;
             _previousColourIndex = InvalidIndex;
             _hotIndex = InvalidIndex;
@@ -149,20 +149,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             _spacing = new Size(3, 3);
             _columns = 16;
             base.AutoSize = true;
-            this.Padding = new Padding(5);
+            Padding = new Padding(5);
             _autoAddColors = true;
             _cellBorderColour = SystemColors.ButtonShadow;
             _showToolTips = true;
             _toolTip = new ToolTip();
-            this.SeparatorHeight = 8;
-            _editMode = ColourEditingMode.CUSTOMONLY;
+            SeparatorHeight = 8;
+            _editMode = ColourEditingMode.CustomOnly;
             _colour = Color.Black;
-            _cellBorderStyle = ColourCellBorderStyle.FIXEDSINGLE;
-            _selectedCellStyle = ColourGridSelectedCellStyle.ZOOMED;
-            _palette = ColourPalette.NAMED;
+            _cellBorderStyle = ColourCellBorderStyle.FixedSingle;
+            _selectedCellStyle = ColourGridSelectedCellStyle.Zoomed;
+            _palette = ColourPalette.Named;
 
-            this.SetScaledCellSize();
-            this.RefreshColours();
+            SetScaledCellSize();
+            RefreshColours();
         }
 
         #endregion
@@ -172,29 +172,29 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Property Changed")]
         public event EventHandler AutoAddColoursChanged
         {
-            add => this.Events.AddHandler(_eventAutoAddColoursChanged, value);
-            remove => this.Events.RemoveHandler(_eventAutoAddColoursChanged, value);
+            add => Events.AddHandler(_eventAutoAddColoursChanged, value);
+            remove => Events.RemoveHandler(_eventAutoAddColoursChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler AutoFitChanged
         {
-            add => this.Events.AddHandler(_eventAutoFitChanged, value);
-            remove => this.Events.RemoveHandler(_eventAutoFitChanged, value);
+            add => Events.AddHandler(_eventAutoFitChanged, value);
+            remove => Events.RemoveHandler(_eventAutoFitChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler CellBorderColourChanged
         {
-            add => this.Events.AddHandler(_eventCellBorderColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventCellBorderColourChanged, value);
+            add => Events.AddHandler(_eventCellBorderColourChanged, value);
+            remove => Events.RemoveHandler(_eventCellBorderColourChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler CellBorderStyleChanged
         {
-            add => this.Events.AddHandler(_eventCellBorderStyleChanged, value);
-            remove => this.Events.RemoveHandler(_eventCellBorderStyleChanged, value);
+            add => Events.AddHandler(_eventCellBorderStyleChanged, value);
+            remove => Events.RemoveHandler(_eventCellBorderStyleChanged, value);
         }
 
         /// <summary>
@@ -203,99 +203,99 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Property Changed")]
         public event EventHandler CellContextMenuStripChanged
         {
-            add => this.Events.AddHandler(_eventCellContextMenuStripChanged, value);
-            remove => this.Events.RemoveHandler(_eventCellContextMenuStripChanged, value);
+            add => Events.AddHandler(_eventCellContextMenuStripChanged, value);
+            remove => Events.RemoveHandler(_eventCellContextMenuStripChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler CellSizeChanged
         {
-            add => this.Events.AddHandler(_eventCellSizeChanged, value);
-            remove => this.Events.RemoveHandler(_eventCellSizeChanged, value);
+            add => Events.AddHandler(_eventCellSizeChanged, value);
+            remove => Events.RemoveHandler(_eventCellSizeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ColourIndexChanged
         {
-            add => this.Events.AddHandler(_eventColourIndexChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourIndexChanged, value);
+            add => Events.AddHandler(_eventColourIndexChanged, value);
+            remove => Events.RemoveHandler(_eventColourIndexChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ColoursChanged
         {
-            add => this.Events.AddHandler(_eventColorsChanged, value);
-            remove => this.Events.RemoveHandler(_eventColorsChanged, value);
+            add => Events.AddHandler(_eventColorsChanged, value);
+            remove => Events.RemoveHandler(_eventColorsChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ColumnsChanged
         {
-            add => this.Events.AddHandler(_eventColumnsChanged, value);
-            remove => this.Events.RemoveHandler(_eventColumnsChanged, value);
+            add => Events.AddHandler(_eventColumnsChanged, value);
+            remove => Events.RemoveHandler(_eventColumnsChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler CustomColoursChanged
         {
-            add => this.Events.AddHandler(_eventCustomColoursChanged, value);
-            remove => this.Events.RemoveHandler(_eventCustomColoursChanged, value);
+            add => Events.AddHandler(_eventCustomColoursChanged, value);
+            remove => Events.RemoveHandler(_eventCustomColoursChanged, value);
         }
 
         [Category("Action")]
         public event EventHandler<EditColourCancelEventArgs> EditingColour
         {
-            add => this.Events.AddHandler(_eventEditingColour, value);
-            remove => this.Events.RemoveHandler(_eventEditingColour, value);
+            add => Events.AddHandler(_eventEditingColour, value);
+            remove => Events.RemoveHandler(_eventEditingColour, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler EditModeChanged
         {
-            add => this.Events.AddHandler(_eventEditModeChanged, value);
-            remove => this.Events.RemoveHandler(_eventEditModeChanged, value);
+            add => Events.AddHandler(_eventEditModeChanged, value);
+            remove => Events.RemoveHandler(_eventEditModeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler HotIndexChanged
         {
-            add => this.Events.AddHandler(_eventHotIndexChanged, value);
-            remove => this.Events.RemoveHandler(_eventHotIndexChanged, value);
+            add => Events.AddHandler(_eventHotIndexChanged, value);
+            remove => Events.RemoveHandler(_eventHotIndexChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler PaletteChanged
         {
-            add => this.Events.AddHandler(_eventPaletteChanged, value);
-            remove => this.Events.RemoveHandler(_eventPaletteChanged, value);
+            add => Events.AddHandler(_eventPaletteChanged, value);
+            remove => Events.RemoveHandler(_eventPaletteChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler SelectedCellStyleChanged
         {
-            add => this.Events.AddHandler(_eventSelectedCellStyleChanged, value);
-            remove => this.Events.RemoveHandler(_eventSelectedCellStyleChanged, value);
+            add => Events.AddHandler(_eventSelectedCellStyleChanged, value);
+            remove => Events.RemoveHandler(_eventSelectedCellStyleChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowCustomColoursChanged
         {
-            add => this.Events.AddHandler(_eventShowCustomColoursChanged, value);
-            remove => this.Events.RemoveHandler(_eventShowCustomColoursChanged, value);
+            add => Events.AddHandler(_eventShowCustomColoursChanged, value);
+            remove => Events.RemoveHandler(_eventShowCustomColoursChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowToolTipsChanged
         {
-            add => this.Events.AddHandler(_eventShowToolTipsChanged, value);
-            remove => this.Events.RemoveHandler(_eventShowToolTipsChanged, value);
+            add => Events.AddHandler(_eventShowToolTipsChanged, value);
+            remove => Events.RemoveHandler(_eventShowToolTipsChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler SpacingChanged
         {
-            add => this.Events.AddHandler(_eventSpacingChanged, value);
-            remove => this.Events.RemoveHandler(_eventSpacingChanged, value);
+            add => Events.AddHandler(_eventSpacingChanged, value);
+            remove => Events.RemoveHandler(_eventSpacingChanged, value);
         }
 
         #endregion
@@ -313,11 +313,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _autoAddColors;
             set
             {
-                if (this.AutoAddColours != value)
+                if (AutoAddColours != value)
                 {
                     _autoAddColors = value;
 
-                    this.OnAutoAddColorsChanged(EventArgs.Empty);
+                    OnAutoAddColorsChanged(EventArgs.Empty);
                 }
             }
         }
@@ -329,11 +329,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _autoFit;
             set
             {
-                if (this.AutoFit != value)
+                if (AutoFit != value)
                 {
                     _autoFit = value;
 
-                    this.OnAutoFitChanged(EventArgs.Empty);
+                    OnAutoFitChanged(EventArgs.Empty);
                 }
             }
         }
@@ -354,11 +354,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _cellBorderColour;
             set
             {
-                if (this.CellBorderColour != value)
+                if (CellBorderColour != value)
                 {
                     _cellBorderColour = value;
 
-                    this.OnCellBorderColorChanged(EventArgs.Empty);
+                    OnCellBorderColorChanged(EventArgs.Empty);
                 }
             }
         }
@@ -370,11 +370,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _cellBorderStyle;
             set
             {
-                if (this.CellBorderStyle != value)
+                if (CellBorderStyle != value)
                 {
                     _cellBorderStyle = value;
 
-                    this.OnCellBorderStyleChanged(EventArgs.Empty);
+                    OnCellBorderStyleChanged(EventArgs.Empty);
                 }
             }
         }
@@ -390,7 +390,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 {
                     _cellContextMenuStrip = value;
 
-                    this.OnCellContextMenuStripChanged(EventArgs.Empty);
+                    OnCellContextMenuStripChanged(EventArgs.Empty);
                 }
             }
         }
@@ -406,7 +406,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 {
                     _cellSize = value;
 
-                    this.OnCellSizeChanged(EventArgs.Empty);
+                    OnCellSizeChanged(EventArgs.Empty);
                 }
             }
         }
@@ -418,17 +418,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _colorIndex;
             set
             {
-                if (this.ColourIndex != value)
+                if (ColourIndex != value)
                 {
                     _previousColourIndex = _colorIndex;
                     _colorIndex = value;
 
                     if (value != InvalidIndex)
                     {
-                        this.Colour = this.GetColour(value);
+                        Colour = GetColour(value);
                     }
 
-                    this.OnColorIndexChanged(EventArgs.Empty);
+                    OnColorIndexChanged(EventArgs.Empty);
                 }
             }
         }
@@ -445,13 +445,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     throw new ArgumentNullException(nameof(value));
                 }
 
-                if (this.Colours != value)
+                if (Colours != value)
                 {
-                    this.RemoveEventHandlers(_colours);
+                    RemoveEventHandlers(_colours);
 
                     _colours = value;
 
-                    this.OnColorsChanged(EventArgs.Empty);
+                    OnColorsChanged(EventArgs.Empty);
                 }
             }
         }
@@ -468,18 +468,18 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     throw new ArgumentOutOfRangeException(nameof(value), value, "Number of columns cannot be less than zero.");
                 }
 
-                if (this.Columns != value)
+                if (Columns != value)
                 {
                     _columns = value;
-                    this.CalculateGridSize();
+                    CalculateGridSize();
 
-                    this.OnColumnsChanged(EventArgs.Empty);
+                    OnColumnsChanged(EventArgs.Empty);
                 }
             }
         }
 
         [Browsable(false)]
-        public Point CurrentCell => this.GetCell(this.ColourIndex);
+        public Point CurrentCell => GetCell(ColourIndex);
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -488,13 +488,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _customColours;
             set
             {
-                if (this.CustomColours != value)
+                if (CustomColours != value)
                 {
-                    this.RemoveEventHandlers(_customColours);
+                    RemoveEventHandlers(_customColours);
 
                     _customColours = value;
 
-                    this.OnCustomColorsChanged(EventArgs.Empty);
+                    OnCustomColorsChanged(EventArgs.Empty);
                 }
             }
         }
@@ -506,11 +506,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _editMode;
             set
             {
-                if (this.EditMode != value)
+                if (EditMode != value)
                 {
                     _editMode = value;
 
-                    this.OnEditModeChanged(EventArgs.Empty);
+                    OnEditModeChanged(EventArgs.Empty);
                 }
             }
         }
@@ -538,12 +538,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _hotIndex;
             set
             {
-                if (this.HotIndex != value)
+                if (HotIndex != value)
                 {
-                    _previousHotIndex = this.HotIndex;
+                    _previousHotIndex = HotIndex;
                     _hotIndex = value;
 
-                    this.OnHotIndexChanged(EventArgs.Empty);
+                    OnHotIndexChanged(EventArgs.Empty);
                 }
             }
         }
@@ -562,11 +562,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _palette;
             set
             {
-                if (this.Palette != value)
+                if (Palette != value)
                 {
                     _palette = value;
 
-                    this.OnPaletteChanged(EventArgs.Empty);
+                    OnPaletteChanged(EventArgs.Empty);
                 }
             }
         }
@@ -578,11 +578,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _selectedCellStyle;
             set
             {
-                if (this.SelectedCellStyle != value)
+                if (SelectedCellStyle != value)
                 {
                     _selectedCellStyle = value;
 
-                    this.OnSelectedCellStyleChanged(EventArgs.Empty);
+                    OnSelectedCellStyleChanged(EventArgs.Empty);
                 }
             }
         }
@@ -594,11 +594,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _showCustomColours;
             set
             {
-                if (this.ShowCustomColors != value)
+                if (ShowCustomColors != value)
                 {
                     _showCustomColours = value;
 
-                    this.OnShowCustomColoursChanged(EventArgs.Empty);
+                    OnShowCustomColoursChanged(EventArgs.Empty);
                 }
             }
         }
@@ -610,11 +610,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _showToolTips;
             set
             {
-                if (this.ShowToolTips != value)
+                if (ShowToolTips != value)
                 {
                     _showToolTips = value;
 
-                    this.OnShowToolTipsChanged(EventArgs.Empty);
+                    OnShowToolTipsChanged(EventArgs.Empty);
                 }
             }
         }
@@ -626,11 +626,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _spacing;
             set
             {
-                if (this.Spacing != value)
+                if (Spacing != value)
                 {
                     _spacing = value;
 
-                    this.OnSpacingChanged(EventArgs.Empty);
+                    OnSpacingChanged(EventArgs.Empty);
                 }
             }
         }
@@ -669,30 +669,30 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             int newIndex;
 
-            newIndex = this.GetColourIndex(value);
+            newIndex = GetColourIndex(value);
 
             if (newIndex == InvalidIndex)
             {
-                if (this.AutoAddColours)
+                if (AutoAddColours)
                 {
-                    this.CustomColours.Add(value);
+                    CustomColours.Add(value);
                 }
                 else
                 {
-                    if (this.CustomColours == null)
+                    if (CustomColours == null)
                     {
-                        this.CustomColours = new ColourCollection();
-                        this.CustomColours.Add(value);
+                        CustomColours = new ColourCollection();
+                        CustomColours.Add(value);
                     }
                     else
                     {
-                        this.CustomColours[0] = value;
+                        CustomColours[0] = value;
                     }
 
-                    newIndex = this.GetColourIndex(value);
+                    newIndex = GetColourIndex(value);
                 }
 
-                this.RefreshColours();
+                RefreshColours();
             }
 
             return newIndex;
@@ -716,9 +716,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 _updateCount--;
             }
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -733,7 +733,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </returns>
         public Rectangle GetCellBounds(int index)
         {
-            if (index < 0 || index > this.Colours.Count + this.CustomColours.Count - 1)
+            if (index < 0 || index > Colours.Count + CustomColours.Count - 1)
             {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
@@ -747,8 +747,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int colorCount;
             int customColorCount;
 
-            colorCount = this.Colours != null ? this.Colours.Count : 0;
-            customColorCount = this.CustomColours != null ? this.CustomColours.Count : 0;
+            colorCount = Colours != null ? Colours.Count : 0;
+            customColorCount = CustomColours != null ? CustomColours.Count : 0;
 
             if (index < 0 || index > colorCount + customColorCount)
             {
@@ -756,7 +756,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else
             {
-                result = index > colorCount - 1 ? this.CustomColours[index - colorCount] : this.Colours[index];
+                result = index > colorCount - 1 ? CustomColours[index - colorCount] : Colours[index];
             }
 
             return result;
@@ -768,16 +768,16 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int colourCount;
             int customColourCount;
 
-            colourCount = this.Colours != null ? this.Colours.Count : 0;
-            customColourCount = this.CustomColours != null ? this.CustomColours.Count : 0;
+            colourCount = Colours != null ? Colours.Count : 0;
+            customColourCount = CustomColours != null ? CustomColours.Count : 0;
 
             if (colourCount < 0 || colourIndex > colourCount + customColourCount)
             {
-                result = ColourSource.NONE;
+                result = ColourSource.None;
             }
             else
             {
-                result = colourIndex > colourCount - 1 ? ColourSource.CUSTOM : ColourSource.STANDARD;
+                result = colourIndex > colourCount - 1 ? ColourSource.Custom : ColourSource.Standard;
             }
 
             return result;
@@ -788,15 +788,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int index;
             ColourSource result;
 
-            index = this.Colours.IndexOf(colour);
+            index = Colours.IndexOf(colour);
             if (index != InvalidIndex)
             {
-                result = ColourSource.STANDARD;
+                result = ColourSource.Standard;
             }
             else
             {
-                index = this.CustomColours.IndexOf(colour);
-                result = index != InvalidIndex ? ColourSource.CUSTOM : ColourSource.NONE;
+                index = CustomColours.IndexOf(colour);
+                result = index != InvalidIndex ? ColourSource.Custom : ColourSource.None;
             }
 
             return result;
@@ -804,7 +804,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public override Size GetPreferredSize(Size proposedSize)
         {
-            return this.AutoSize ? this.GetAutoSize() : base.GetPreferredSize(proposedSize);
+            return AutoSize ? GetAutoSize() : base.GetPreferredSize(proposedSize);
         }
 
         public ColourHitTestInfo HitTest(Point point)
@@ -824,12 +824,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             result.Index = colourIndex;
             if (colourIndex != InvalidIndex)
             {
-                result.Colour = colourIndex < this.Colours.Count + this.CustomColours.Count ? this.GetColour(colourIndex) : Color.White;
-                result.Source = this.GetColourSource(colourIndex);
+                result.Colour = colourIndex < Colours.Count + CustomColours.Count ? GetColour(colourIndex) : Color.White;
+                result.Source = GetColourSource(colourIndex);
             }
             else
             {
-                result.Source = ColourSource.NONE;
+                result.Source = ColourSource.None;
             }
 
             return result;
@@ -837,25 +837,25 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public void Invalidate(int index)
         {
-            if (this.AllowPainting && index != InvalidIndex)
+            if (AllowPainting && index != InvalidIndex)
             {
                 Rectangle bounds;
 
                 if (_colourRegions.TryGetValue(index, out bounds))
                 {
-                    if (this.SelectedCellStyle == ColourGridSelectedCellStyle.ZOOMED)
+                    if (SelectedCellStyle == ColourGridSelectedCellStyle.Zoomed)
                     {
-                        bounds.Inflate(this.Padding.Left, this.Padding.Top);
+                        bounds.Inflate(Padding.Left, Padding.Top);
                     }
 
-                    this.Invalidate(bounds);
+                    Invalidate(bounds);
                 }
             }
         }
 
         public void Navigate(int offsetX, int offsetY)
         {
-            this.Navigate(offsetX, offsetY, NavigationOrigin.CURRENT);
+            Navigate(offsetX, offsetY, NavigationOrigin.Current);
         }
 
         public virtual void Navigate(int offsetX, int offsetY, NavigationOrigin origin)
@@ -868,14 +868,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             switch (origin)
             {
-                case NavigationOrigin.BEGIN:
+                case NavigationOrigin.Begin:
                     cellLocation = Point.Empty;
                     break;
-                case NavigationOrigin.END:
-                    cellLocation = new Point(this.ActualColumns - 1, this.PrimaryRows + this.CustomRows - 1);
+                case NavigationOrigin.End:
+                    cellLocation = new Point(ActualColumns - 1, PrimaryRows + CustomRows - 1);
                     break;
                 default:
-                    cellLocation = this.CurrentCell;
+                    cellLocation = CurrentCell;
                     break;
             }
 
@@ -884,13 +884,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 cellLocation = Point.Empty; // If no cell is selected, assume the first one is for the purpose of keyboard navigation
             }
 
-            offsetCellLocation = this.GetCellOffset(cellLocation, offsetX, offsetY);
+            offsetCellLocation = GetCellOffset(cellLocation, offsetX, offsetY);
             row = offsetCellLocation.Y;
             column = offsetCellLocation.X;
-            index = this.GetCellIndex(column, row);
+            index = GetCellIndex(column, row);
             if (index != InvalidIndex)
             {
-                this.ColourIndex = index;
+                ColourIndex = index;
             }
         }
 
@@ -899,12 +899,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int w;
             int h;
 
-            w = (this.ClientSize.Width - this.Padding.Horizontal) / this.ActualColumns - this.Spacing.Width;
-            h = (this.ClientSize.Height - this.Padding.Vertical) / (this.PrimaryRows + this.CustomRows) - this.Spacing.Height;
+            w = (ClientSize.Width - Padding.Horizontal) / ActualColumns - Spacing.Width;
+            h = (ClientSize.Height - Padding.Vertical) / (PrimaryRows + CustomRows) - Spacing.Height;
 
             if (w > 0 && h > 0)
             {
-                this.CellSize = new Size(w, h);
+                CellSize = new Size(w, h);
             }
         }
 
@@ -913,22 +913,22 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int primaryRows;
             int customRows;
 
-            this.ActualColumns = this.Columns != 0 ? this.Columns : (this.ClientSize.Width + this.Spacing.Width - this.Padding.Vertical) / (_scaledCellSize.Width + this.Spacing.Width);
-            if (this.ActualColumns < 1)
+            ActualColumns = Columns != 0 ? Columns : (ClientSize.Width + Spacing.Width - Padding.Vertical) / (_scaledCellSize.Width + Spacing.Width);
+            if (ActualColumns < 1)
             {
-                this.ActualColumns = 1;
+                ActualColumns = 1;
             }
 
-            primaryRows = this.GetRows(this.Colours != null ? this.Colours.Count : 0);
+            primaryRows = GetRows(Colours != null ? Colours.Count : 0);
             if (primaryRows == 0)
             {
                 primaryRows = 1;
             }
 
-            customRows = this.ShowCustomColors ? this.GetRows(this.CustomColours != null ? this.CustomColours.Count : 0) : 0;
+            customRows = ShowCustomColors ? GetRows(CustomColours != null ? CustomColours.Count : 0) : 0;
 
-            this.PrimaryRows = primaryRows;
-            this.CustomRows = customRows;
+            PrimaryRows = primaryRows;
+            CustomRows = customRows;
         }
 
         protected virtual Brush CreateTransparencyBrush()
@@ -950,16 +950,16 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 int rows;
                 int index;
 
-                rows = this.GetRows(colours.Count);
+                rows = GetRows(colours.Count);
                 index = 0;
 
                 for (int row = 0; row < rows; row++)
                 {
-                    for (int column = 0; column < this.ActualColumns; column++)
+                    for (int column = 0; column < ActualColumns; column++)
                     {
                         if (index < colours.Count)
                         {
-                            _colourRegions.Add(rangeStart + index, new Rectangle(this.Padding.Left + column * (_scaledCellSize.Width + this.Spacing.Width), offset + row * (_scaledCellSize.Height + this.Spacing.Height), _scaledCellSize.Width, _scaledCellSize.Height));
+                            _colourRegions.Add(rangeStart + index, new Rectangle(Padding.Left + column * (_scaledCellSize.Width + Spacing.Width), offset + row * (_scaledCellSize.Height + Spacing.Height), _scaledCellSize.Width, _scaledCellSize.Height));
                         }
 
                         index++;
@@ -972,8 +972,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (disposing)
             {
-                this.RemoveEventHandlers(_colours);
-                this.RemoveEventHandlers(_customColours);
+                RemoveEventHandlers(_colours);
+                RemoveEventHandlers(_customColours);
 
                 _toolTip?.Dispose();
 
@@ -1003,44 +1003,44 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int offset;
             int width;
 
-            offset = this.CustomRows != 0 ? this.SeparatorHeight : 0;
-            if (this.Columns != 0)
+            offset = CustomRows != 0 ? SeparatorHeight : 0;
+            if (Columns != 0)
             {
-                width = (_scaledCellSize.Width + this.Spacing.Width) * this.ActualColumns + this.Padding.Horizontal - this.Spacing.Width;
+                width = (_scaledCellSize.Width + Spacing.Width) * ActualColumns + Padding.Horizontal - Spacing.Width;
             }
             else
             {
-                width = this.ClientSize.Width;
+                width = ClientSize.Width;
             }
 
-            return new Size(width, (_scaledCellSize.Height + this.Spacing.Height) * (this.PrimaryRows + this.CustomRows) + offset + this.Padding.Vertical - this.Spacing.Height);
+            return new Size(width, (_scaledCellSize.Height + Spacing.Height) * (PrimaryRows + CustomRows) + offset + Padding.Vertical - Spacing.Height);
         }
 
         protected int GetCellIndex(Point point)
         {
-            return this.GetCellIndex(point.X, point.Y);
+            return GetCellIndex(point.X, point.Y);
         }
 
         protected virtual int GetCellIndex(int column, int row)
         {
             int result;
 
-            if (column >= 0 && column < this.ActualColumns && row >= 0 && row < this.PrimaryRows + this.CustomRows)
+            if (column >= 0 && column < ActualColumns && row >= 0 && row < PrimaryRows + CustomRows)
             {
                 int lastStandardRowOffset;
 
-                lastStandardRowOffset = this.PrimaryRows * this.ActualColumns - this.Colours.Count;
-                result = row * this.ActualColumns + column;
-                if (row == this.PrimaryRows - 1 && column >= this.ActualColumns - lastStandardRowOffset)
+                lastStandardRowOffset = PrimaryRows * ActualColumns - Colours.Count;
+                result = row * ActualColumns + column;
+                if (row == PrimaryRows - 1 && column >= ActualColumns - lastStandardRowOffset)
                 {
                     result -= lastStandardRowOffset;
                 }
-                if (row >= this.PrimaryRows)
+                if (row >= PrimaryRows)
                 {
                     result -= lastStandardRowOffset;
                 }
 
-                if (result > this.Colours.Count + this.CustomColours.Count - 1)
+                if (result > Colours.Count + CustomColours.Count - 1)
                 {
                     result = InvalidIndex;
                 }
@@ -1055,7 +1055,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         protected Point GetCellOffset(int columnOffset, int rowOffset)
         {
-            return this.GetCellOffset(this.CurrentCell, columnOffset, rowOffset);
+            return GetCellOffset(CurrentCell, columnOffset, rowOffset);
         }
 
         protected Point GetCellOffset(Point cell, int columnOffset, int rowOffset)
@@ -1065,13 +1065,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int lastStandardRowOffset;
             int lastStandardRowLastColumn;
 
-            lastStandardRowOffset = this.PrimaryRows * this.ActualColumns - this.Colours.Count;
-            lastStandardRowLastColumn = this.ActualColumns - lastStandardRowOffset;
+            lastStandardRowOffset = PrimaryRows * ActualColumns - Colours.Count;
+            lastStandardRowLastColumn = ActualColumns - lastStandardRowOffset;
             column = cell.X + columnOffset;
             row = cell.Y + rowOffset;
 
             // if the row is the last row, but there aren't enough columns to fill the row - nudge it to the last available
-            if (row == this.PrimaryRows - 1 && column >= lastStandardRowLastColumn)
+            if (row == PrimaryRows - 1 && column >= lastStandardRowLastColumn)
             {
                 column = lastStandardRowLastColumn - 1;
             }
@@ -1079,16 +1079,16 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // wrap the column to the end of the previous row
             if (column < 0)
             {
-                column = this.ActualColumns - 1;
+                column = ActualColumns - 1;
                 row--;
-                if (row == this.PrimaryRows - 1)
+                if (row == PrimaryRows - 1)
                 {
-                    column = this.ActualColumns - (lastStandardRowOffset + 1);
+                    column = ActualColumns - (lastStandardRowOffset + 1);
                 }
             }
 
             // wrap to column to the start of the next row
-            if (row == this.PrimaryRows - 1 && column >= this.ActualColumns - lastStandardRowOffset || column >= this.ActualColumns)
+            if (row == PrimaryRows - 1 && column >= ActualColumns - lastStandardRowOffset || column >= ActualColumns)
             {
                 column = 0;
                 row++;
@@ -1101,13 +1101,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             int index;
 
-            index = this.Colours != null ? this.Colours.IndexOf(value) : InvalidIndex;
-            if (index == InvalidIndex && this.ShowCustomColors && this.CustomColours != null)
+            index = Colours != null ? Colours.IndexOf(value) : InvalidIndex;
+            if (index == InvalidIndex && ShowCustomColors && CustomColours != null)
             {
-                index = this.CustomColours.IndexOf(value);
+                index = CustomColours.IndexOf(value);
                 if (index != InvalidIndex)
                 {
-                    index += this.Colours.Count;
+                    index += Colours.Count;
                 }
             }
 
@@ -1116,17 +1116,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         protected virtual ColourCollection GetPredefinedPalette()
         {
-            return ColourPalettes.GetPalette(this.Palette);
+            return ColourPalettes.GetPalette(Palette);
         }
 
         protected int GetRows(int count)
         {
             int rows;
 
-            if (count != 0 && this.ActualColumns > 0)
+            if (count != 0 && ActualColumns > 0)
             {
-                rows = count / this.ActualColumns;
-                if (count % this.ActualColumns != 0)
+                rows = count / ActualColumns;
+                if (count % ActualColumns != 0)
                 {
                     rows++;
                 }
@@ -1163,7 +1163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            handler = (EventHandler)this.Events[_eventAutoAddColoursChanged];
+            handler = (EventHandler)Events[_eventAutoAddColoursChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1176,30 +1176,30 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            if (this.AutoFit && this.AutoSize)
+            if (AutoFit && AutoSize)
             {
-                this.AutoSize = false;
+                AutoSize = false;
             }
 
-            this.RefreshColours();
+            RefreshColours();
 
-            handler = (EventHandler)this.Events[_eventAutoFitChanged];
+            handler = (EventHandler)Events[_eventAutoFitChanged];
 
             handler?.Invoke(this, e);
         }
 
         protected override void OnAutoSizeChanged(EventArgs e)
         {
-            if (this.AutoSize && this.AutoFit)
+            if (AutoSize && AutoFit)
             {
-                this.AutoFit = false;
+                AutoFit = false;
             }
 
             base.OnAutoSizeChanged(e);
 
-            if (this.AutoSize)
+            if (AutoSize)
             {
-                this.SizeToFit();
+                SizeToFit();
             }
         }
 
@@ -1211,12 +1211,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.Invalidate();
+                Invalidate();
             }
 
-            handler = (EventHandler)this.Events[_eventCellBorderColourChanged];
+            handler = (EventHandler)Events[_eventCellBorderColourChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1229,12 +1229,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.Invalidate();
+                Invalidate();
             }
 
-            handler = (EventHandler)this.Events[_eventCellBorderStyleChanged];
+            handler = (EventHandler)Events[_eventCellBorderStyleChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1247,7 +1247,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            handler = (EventHandler)this.Events[_eventCellContextMenuStripChanged];
+            handler = (EventHandler)Events[_eventCellContextMenuStripChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1260,20 +1260,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            this.SetScaledCellSize();
+            SetScaledCellSize();
 
-            if (this.AutoSize)
+            if (AutoSize)
             {
-                this.SizeToFit();
+                SizeToFit();
             }
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.RefreshColours();
-                this.Invalidate();
+                RefreshColours();
+                Invalidate();
             }
 
-            handler = (EventHandler)this.Events[_eventCellSizeChanged];
+            handler = (EventHandler)Events[_eventCellSizeChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1308,7 +1308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            handler = (EventHandler)this.Events[_eventColourChanged];
+            handler = (EventHandler)Events[_eventColourChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1319,15 +1319,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColorIndexChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler handler = null;
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.Invalidate(_previousColourIndex);
-                this.Invalidate(this.ColourIndex);
+                Invalidate(_previousColourIndex);
+                Invalidate(ColourIndex);
             }
 
-            handler = (EventHandler)this.Events[_eventColourIndexChanged];
+            handler = (EventHandler)Events[_eventColourIndexChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1340,11 +1340,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            this.AddEventHandlers(this.Colours);
+            AddEventHandlers(Colours);
 
-            this.RefreshColours();
+            RefreshColours();
 
-            handler = (EventHandler)this.Events[_eventColorsChanged];
+            handler = (EventHandler)Events[_eventColorsChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1357,9 +1357,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            this.RefreshColours();
+            RefreshColours();
 
-            handler = (EventHandler)this.Events[_eventColumnsChanged];
+            handler = (EventHandler)Events[_eventColumnsChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1372,10 +1372,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            this.AddEventHandlers(this.CustomColours);
-            this.RefreshColours();
+            AddEventHandlers(CustomColours);
+            RefreshColours();
 
-            handler = (EventHandler)this.Events[_eventCustomColoursChanged];
+            handler = (EventHandler)Events[_eventCustomColoursChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1388,7 +1388,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler<EditColourCancelEventArgs> handler;
 
-            handler = (EventHandler<EditColourCancelEventArgs>)this.Events[_eventEditingColour];
+            handler = (EventHandler<EditColourCancelEventArgs>)Events[_eventEditingColour];
 
             handler?.Invoke(this, e);
         }
@@ -1401,7 +1401,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            handler = (EventHandler)this.Events[_eventEditModeChanged];
+            handler = (EventHandler)Events[_eventEditModeChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1410,9 +1410,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             base.OnGotFocus(e);
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.Invalidate(this.ColourIndex);
+                Invalidate(ColourIndex);
             }
         }
 
@@ -1424,47 +1424,47 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            this.SetToolTip();
+            SetToolTip();
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.Invalidate(_previousHotIndex);
-                this.Invalidate(this.HotIndex);
+                Invalidate(_previousHotIndex);
+                Invalidate(HotIndex);
             }
 
-            handler = (EventHandler)this.Events[_eventHotIndexChanged];
+            handler = (EventHandler)Events[_eventHotIndexChanged];
 
             handler?.Invoke(this, e);
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
         {
-            this.WasKeyPressed = true;
+            WasKeyPressed = true;
 
             switch (e.KeyData)
             {
                 case Keys.Down:
-                    this.Navigate(0, 1);
+                    Navigate(0, 1);
                     e.Handled = true;
                     break;
                 case Keys.Up:
-                    this.Navigate(0, -1);
+                    Navigate(0, -1);
                     e.Handled = true;
                     break;
                 case Keys.Left:
-                    this.Navigate(-1, 0);
+                    Navigate(-1, 0);
                     e.Handled = true;
                     break;
                 case Keys.Right:
-                    this.Navigate(1, 0);
+                    Navigate(1, 0);
                     e.Handled = true;
                     break;
                 case Keys.Home:
-                    this.Navigate(0, 0, NavigationOrigin.BEGIN);
+                    Navigate(0, 0, NavigationOrigin.Begin);
                     e.Handled = true;
                     break;
                 case Keys.End:
-                    this.Navigate(0, 0, NavigationOrigin.END);
+                    Navigate(0, 0, NavigationOrigin.End);
                     e.Handled = true;
                     break;
             }
@@ -1474,20 +1474,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         protected override void OnKeyUp(KeyEventArgs e)
         {
-            if (this.WasKeyPressed && this.ColourIndex != InvalidIndex)
+            if (WasKeyPressed && ColourIndex != InvalidIndex)
             {
                 switch (e.KeyData)
                 {
                     case Keys.Enter:
                         ColourSource source;
 
-                        source = this.GetColourSource(this.ColourIndex);
+                        source = GetColourSource(ColourIndex);
 
-                        if (source == ColourSource.CUSTOM && this.EditMode != ColourEditingMode.NONE || source == ColourSource.STANDARD && this.EditMode == ColourEditingMode.BOTH)
+                        if (source == ColourSource.Custom && EditMode != ColourEditingMode.None || source == ColourSource.Standard && EditMode == ColourEditingMode.Both)
                         {
                             e.Handled = true;
 
-                            this.StartColorEdit(this.ColourIndex);
+                            StartColorEdit(ColourIndex);
                         }
                         break;
                     case Keys.Apps:
@@ -1500,12 +1500,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         x = location.X;
                         y = location.Y + _cellSize.Height;
 
-                        this.ShowContextMenu(new Point(x, y));
+                        ShowContextMenu(new Point(x, y));
                         break;
                 }
             }
 
-            this.WasKeyPressed = false;
+            WasKeyPressed = false;
 
             base.OnKeyUp(e);
         }
@@ -1516,9 +1516,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             base.OnLostFocus(e);
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.Invalidate(this.ColourIndex);
+                Invalidate(ColourIndex);
             }
         }
 
@@ -1528,11 +1528,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             base.OnMouseDoubleClick(e);
 
-            hitTest = this.HitTest(e.Location);
+            hitTest = HitTest(e.Location);
 
-            if (e.Button == MouseButtons.Left && (hitTest.Source == ColourSource.CUSTOM && this.EditMode != ColourEditingMode.NONE || hitTest.Source == ColourSource.STANDARD && this.EditMode == ColourEditingMode.BOTH))
+            if (e.Button == MouseButtons.Left && (hitTest.Source == ColourSource.Custom && EditMode != ColourEditingMode.None || hitTest.Source == ColourSource.Standard && EditMode == ColourEditingMode.Both))
             {
-                this.StartColorEdit(hitTest.Index);
+                StartColorEdit(hitTest.Index);
             }
         }
 
@@ -1540,28 +1540,28 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             base.OnMouseDown(e);
 
-            if (!this.Focused && this.TabStop)
+            if (!Focused && TabStop)
             {
-                this.Focus();
+                Focus();
             }
 
-            this.ProcessMouseClick(e);
+            ProcessMouseClick(e);
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
 
-            this.HotIndex = InvalidIndex;
+            HotIndex = InvalidIndex;
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
 
-            this.HotIndex = this.HitTest(e.Location).Index;
+            HotIndex = HitTest(e.Location).Index;
 
-            this.ProcessMouseClick(e);
+            ProcessMouseClick(e);
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
@@ -1572,14 +1572,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 int index;
 
-                index = this.HitTest(e.Location).Index;
+                index = HitTest(e.Location).Index;
 
                 if (index != InvalidIndex)
                 {
-                    this.Focus();
-                    this.ColourIndex = index;
+                    Focus();
+                    ColourIndex = index;
 
-                    this.ShowContextMenu(e.Location);
+                    ShowContextMenu(e.Location);
                 }
             }
         }
@@ -1588,10 +1588,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             base.OnPaddingChanged(e);
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.RefreshColours();
-                this.Invalidate();
+                RefreshColours();
+                Invalidate();
             }
         }
 
@@ -1599,25 +1599,25 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             base.OnPaint(e);
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
                 int colorCount;
 
-                colorCount = this.Colours.Count;
+                colorCount = Colours.Count;
 
-                Debug.Print(e.ClipRectangle.Size == this.ClientSize ? "Performing full paint!" : "Performing partial paint!");
+                Debug.Print(e.ClipRectangle.Size == ClientSize ? "Performing full paint!" : "Performing partial paint!");
 
-                this.OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc as the PaintBackground event is no longer being called
+                OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc as the PaintBackground event is no longer being called
 
                 // draw a design time dotted grid
-                if (this.DesignMode)
+                if (DesignMode)
                 {
                     using (Pen pen = new Pen(SystemColors.ButtonShadow)
                     {
                         DashStyle = DashStyle.Dot
                     })
                     {
-                        e.Graphics.DrawRectangle(pen, 0, 0, this.Width - 1, this.Height - 1);
+                        e.Graphics.DrawRectangle(pen, 0, 0, Width - 1, Height - 1);
                     }
                 }
 
@@ -1629,35 +1629,35 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     bounds = _colourRegions[i];
                     if (e.ClipRectangle.IntersectsWith(bounds))
                     {
-                        this.PaintCell(e, i, i, this.Colours[i], bounds);
+                        PaintCell(e, i, i, Colours[i], bounds);
                     }
                 }
 
-                if (this.CustomColours.Count != 0 && this.ShowCustomColors)
+                if (CustomColours.Count != 0 && ShowCustomColors)
                 {
                     // draw a separator
-                    this.PaintSeparator(e);
+                    PaintSeparator(e);
 
                     // and the custom colors
-                    for (int i = 0; i < this.CustomColours.Count; i++)
+                    for (int i = 0; i < CustomColours.Count; i++)
                     {
                         Rectangle bounds;
 
                         if (_colourRegions.TryGetValue(colorCount + i, out bounds) && e.ClipRectangle.IntersectsWith(bounds))
                         {
-                            this.PaintCell(e, i, colorCount + i, this.CustomColours[i], bounds);
+                            PaintCell(e, i, colorCount + i, CustomColours[i], bounds);
                         }
                     }
                 }
 
                 // draw the selected color
-                if (this.SelectedCellStyle != ColourGridSelectedCellStyle.NONE && this.ColourIndex >= 0)
+                if (SelectedCellStyle != ColourGridSelectedCellStyle.None && ColourIndex >= 0)
                 {
                     Rectangle bounds;
 
-                    if (_colourRegions.TryGetValue(this.ColourIndex, out bounds) && e.ClipRectangle.IntersectsWith(bounds))
+                    if (_colourRegions.TryGetValue(ColourIndex, out bounds) && e.ClipRectangle.IntersectsWith(bounds))
                     {
-                        this.PaintSelectedCell(e, this.ColourIndex, this.Colour, bounds);
+                        PaintSelectedCell(e, ColourIndex, Colour, bounds);
                     }
                 }
             }
@@ -1671,16 +1671,16 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            this.Colours = this.GetPredefinedPalette();
+            Colours = GetPredefinedPalette();
 
-            handler = (EventHandler)this.Events[_eventPaletteChanged];
+            handler = (EventHandler)Events[_eventPaletteChanged];
 
             handler?.Invoke(this, e);
         }
 
         protected override void OnResize(EventArgs e)
         {
-            this.RefreshColours();
+            RefreshColours();
 
             base.OnResize(e);
         }
@@ -1693,12 +1693,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.Invalidate();
+                Invalidate();
             }
 
-            handler = (EventHandler)this.Events[_eventSelectedCellStyleChanged];
+            handler = (EventHandler)Events[_eventSelectedCellStyleChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1711,9 +1711,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            this.RefreshColours();
+            RefreshColours();
 
-            handler = (EventHandler)this.Events[_eventShowCustomColoursChanged];
+            handler = (EventHandler)Events[_eventShowCustomColoursChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1726,7 +1726,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            if (this.ShowToolTips)
+            if (ShowToolTips)
             {
                 _toolTip = new ToolTip();
             }
@@ -1736,7 +1736,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 _toolTip = null;
             }
 
-            handler = (EventHandler)this.Events[_eventShowToolTipsChanged];
+            handler = (EventHandler)Events[_eventShowToolTipsChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1749,18 +1749,18 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            if (this.AutoSize)
+            if (AutoSize)
             {
-                this.SizeToFit();
+                SizeToFit();
             }
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.RefreshColours();
-                this.Invalidate();
+                RefreshColours();
+                Invalidate();
             }
 
-            handler = (EventHandler)this.Events[_eventSpacingChanged];
+            handler = (EventHandler)Events[_eventSpacingChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1769,7 +1769,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (colour.A != 255)
             {
-                this.PaintTransparentCell(e, bounds);
+                PaintTransparentCell(e, bounds);
             }
 
             using (Brush brush = new SolidBrush(colour))
@@ -1777,15 +1777,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 e.Graphics.FillRectangle(brush, bounds);
             }
 
-            switch (this.CellBorderStyle)
+            switch (CellBorderStyle)
             {
-                case ColourCellBorderStyle.FIXEDSINGLE:
-                    using (Pen pen = new Pen(this.CellBorderColour))
+                case ColourCellBorderStyle.FixedSingle:
+                    using (Pen pen = new Pen(CellBorderColour))
                     {
                         e.Graphics.DrawRectangle(pen, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
                     }
                     break;
-                case ColourCellBorderStyle.DOUBLESOFT:
+                case ColourCellBorderStyle.DoubleSoft:
                     HSLColourStructure shadedOuter;
                     HSLColourStructure shadedInner;
 
@@ -1795,7 +1795,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     shadedInner = new HSLColourStructure(colour);
                     shadedInner.L -= 0.20;
 
-                    using (Pen pen = new Pen(this.CellBorderColour))
+                    using (Pen pen = new Pen(CellBorderColour))
                     {
                         e.Graphics.DrawRectangle(pen, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
                     }
@@ -1811,7 +1811,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     break;
             }
 
-            if (this.HotIndex != InvalidIndex && this.HotIndex == cellIndex)
+            if (HotIndex != InvalidIndex && HotIndex == cellIndex)
             {
                 e.Graphics.DrawRectangle(Pens.Black, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
                 e.Graphics.DrawRectangle(Pens.White, bounds.Left + 1, bounds.Top + 1, bounds.Width - 3, bounds.Height - 3);
@@ -1820,10 +1820,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         protected virtual void PaintSelectedCell(PaintEventArgs e, int colorIndex, Color color, Rectangle bounds)
         {
-            switch (this.SelectedCellStyle)
+            switch (SelectedCellStyle)
             {
-                case ColourGridSelectedCellStyle.STANDARD:
-                    if (this.Focused)
+                case ColourGridSelectedCellStyle.Standard:
+                    if (Focused)
                     {
                         ControlPaint.DrawFocusRectangle(e.Graphics, bounds);
                     }
@@ -1832,22 +1832,22 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         e.Graphics.DrawRectangle(Pens.Black, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
                     }
                     break;
-                case ColourGridSelectedCellStyle.ZOOMED:
+                case ColourGridSelectedCellStyle.Zoomed:
                     // make the cell larger according to the padding
-                    if (this.SelectedCellStyle == ColourGridSelectedCellStyle.ZOOMED)
+                    if (SelectedCellStyle == ColourGridSelectedCellStyle.Zoomed)
                     {
-                        bounds.Inflate(this.Padding.Left, this.Padding.Top);
+                        bounds.Inflate(Padding.Left, Padding.Top);
                     }
 
                     // fill the inner
                     e.Graphics.FillRectangle(Brushes.White, bounds);
-                    if (this.SelectedCellStyle == ColourGridSelectedCellStyle.ZOOMED)
+                    if (SelectedCellStyle == ColourGridSelectedCellStyle.Zoomed)
                     {
                         bounds.Inflate(-3, -3);
                     }
                     if (color.A != 255)
                     {
-                        this.PaintTransparentCell(e, bounds);
+                        PaintTransparentCell(e, bounds);
                     }
 
                     using (Brush brush = new SolidBrush(color))
@@ -1856,7 +1856,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     }
 
                     // draw a border
-                    if (this.Focused)
+                    if (Focused)
                     {
                         bounds = new Rectangle(bounds.Left - 2, bounds.Top - 2, bounds.Width + 4, bounds.Height + 4);
                         ControlPaint.DrawFocusRectangle(e.Graphics, bounds);
@@ -1865,7 +1865,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     {
                         bounds = new Rectangle(bounds.Left - 2, bounds.Top - 2, bounds.Width + 3, bounds.Height + 3);
 
-                        using (Pen pen = new Pen(this.CellBorderColour))
+                        using (Pen pen = new Pen(CellBorderColour))
                         {
                             e.Graphics.DrawRectangle(pen, bounds);
                         }
@@ -1881,12 +1881,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int x2;
             int y2;
 
-            x1 = this.Padding.Left;
-            x2 = this.ClientSize.Width - this.Padding.Right;
-            y1 = this.SeparatorHeight / 2 + this.Padding.Top + this.PrimaryRows * (_scaledCellSize.Height + this.Spacing.Height) + 1 - this.Spacing.Height;
+            x1 = Padding.Left;
+            x2 = ClientSize.Width - Padding.Right;
+            y1 = SeparatorHeight / 2 + Padding.Top + PrimaryRows * (_scaledCellSize.Height + Spacing.Height) + 1 - Spacing.Height;
             y2 = y1;
 
-            using (Pen pen = new Pen(this.CellBorderColour))
+            using (Pen pen = new Pen(CellBorderColour))
             {
                 e.Graphics.DrawLine(pen, x1, y1, x2, y2);
             }
@@ -1896,7 +1896,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (_cellBackgroundBrush == null)
             {
-                _cellBackgroundBrush = this.CreateTransparencyBrush();
+                _cellBackgroundBrush = CreateTransparencyBrush();
             }
 
             e.Graphics.FillRectangle(_cellBackgroundBrush, bounds);
@@ -1908,50 +1908,50 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 ColourHitTestInfo hitTest;
 
-                hitTest = this.HitTest(e.Location);
+                hitTest = HitTest(e.Location);
 
-                if (hitTest.Source != ColourSource.NONE)
+                if (hitTest.Source != ColourSource.None)
                 {
-                    this.Colour = hitTest.Colour;
-                    this.ColourIndex = hitTest.Index;
+                    Colour = hitTest.Colour;
+                    ColourIndex = hitTest.Index;
                 }
             }
         }
 
         protected virtual void RefreshColours()
         {
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
                 Debug.Print("Calculating colours...");
 
-                this.CalculateGridSize();
-                if (this.AutoFit)
+                CalculateGridSize();
+                if (AutoFit)
                 {
-                    this.CalculateCellSize();
+                    CalculateCellSize();
                 }
-                else if (this.AutoSize)
+                else if (AutoSize)
                 {
-                    this.SizeToFit();
+                    SizeToFit();
                 }
 
                 _colourRegions.Clear();
 
-                if (this.Colours != null)
+                if (Colours != null)
                 {
-                    this.DefineColourRegions(this.Colours, 0, this.Padding.Top);
-                    if (this.ShowCustomColors)
+                    DefineColourRegions(Colours, 0, Padding.Top);
+                    if (ShowCustomColors)
                     {
-                        this.DefineColourRegions(this.CustomColours, this.Colours.Count, this.Padding.Top + this.SeparatorHeight + (_scaledCellSize.Height + this.Spacing.Height) * this.PrimaryRows);
+                        DefineColourRegions(CustomColours, Colours.Count, Padding.Top + SeparatorHeight + (_scaledCellSize.Height + Spacing.Height) * PrimaryRows);
                     }
 
-                    this.ColourIndex = this.GetColourIndex(this.Colour);
+                    ColourIndex = GetColourIndex(Colour);
 
-                    if (!this.Colour.IsEmpty && this.ColourIndex == InvalidIndex && this.AutoAddColours && this.ShowCustomColors)
+                    if (!Colour.IsEmpty && ColourIndex == InvalidIndex && AutoAddColours && ShowCustomColors)
                     {
-                        this.AddCustomColor(this.Colour);
+                        AddCustomColor(Colour);
                     }
 
-                    this.Invalidate();
+                    Invalidate();
                 }
             }
         }
@@ -1960,20 +1960,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             int colourCount;
 
-            colourCount = this.Colours.Count;
+            colourCount = Colours.Count;
 
-            if (colourIndex < 0 || colourIndex > colourCount + this.CustomColours.Count)
+            if (colourIndex < 0 || colourIndex > colourCount + CustomColours.Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(colourIndex));
             }
 
             if (colourIndex > colourCount - 1)
             {
-                this.CustomColours[colourIndex - colourCount] = colour;
+                CustomColours[colourIndex - colourCount] = colour;
             }
             else
             {
-                this.Colours[colourIndex] = colour;
+                Colours[colourIndex] = colour;
             }
         }
 
@@ -1981,16 +1981,16 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (value != null)
             {
-                value.ItemInserted += this.ColoursCollectionChangedHandler;
-                value.ItemRemoved += this.ColoursCollectionChangedHandler;
-                value.ItemsCleared += this.ColoursCollectionChangedHandler;
-                value.ItemReplaced += this.ColoursCollectionItemReplacedHandler;
+                value.ItemInserted += ColoursCollectionChangedHandler;
+                value.ItemRemoved += ColoursCollectionChangedHandler;
+                value.ItemsCleared += ColoursCollectionChangedHandler;
+                value.ItemReplaced += ColoursCollectionItemReplacedHandler;
             }
         }
 
         private void ColoursCollectionChangedHandler(object sender, ColourCollectionEventArgs e)
         {
-            this.RefreshColours();
+            RefreshColours();
         }
 
         private void ColoursCollectionItemReplacedHandler(object sender, ColourCollectionEventArgs e)
@@ -2000,21 +2000,21 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             collection = (ColourCollection)sender;
             index = _colorIndex;
-            if (index != InvalidIndex && ReferenceEquals(collection, this.CustomColours))
+            if (index != InvalidIndex && ReferenceEquals(collection, CustomColours))
             {
-                index -= this.Colours.Count;
+                index -= Colours.Count;
             }
 
-            if (index >= 0 && index < collection.Count && collection[index] != this.Colour)
+            if (index >= 0 && index < collection.Count && collection[index] != Colour)
             {
                 Debug.Print("Replacing index {0} with {1}", index, collection[index]);
 
                 _previousColourIndex = index;
                 _colorIndex = -1;
-                this.ColourIndex = index;
+                ColourIndex = index;
             }
 
-            this.Invalidate(e.Index);
+            Invalidate(e.Index);
         }
 
         private Point GetCell(int index)
@@ -2027,19 +2027,19 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 row = -1;
                 column = -1;
             }
-            else if (index >= this.Colours.Count)
+            else if (index >= Colours.Count)
             {
                 // custom color
-                index -= this.Colours.Count;
-                row = index / this.ActualColumns;
-                column = index - row * this.ActualColumns;
-                row += this.PrimaryRows;
+                index -= Colours.Count;
+                row = index / ActualColumns;
+                column = index - row * ActualColumns;
+                row += PrimaryRows;
             }
             else
             {
                 // normal row
-                row = index / this.ActualColumns;
-                column = index - row * this.ActualColumns;
+                row = index / ActualColumns;
+                column = index - row * ActualColumns;
             }
 
             return new Point(column, row);
@@ -2049,18 +2049,18 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (value != null)
             {
-                value.ItemInserted -= this.ColoursCollectionChangedHandler;
-                value.ItemRemoved -= this.ColoursCollectionChangedHandler;
-                value.ItemsCleared -= this.ColoursCollectionChangedHandler;
-                value.ItemReplaced -= this.ColoursCollectionItemReplacedHandler;
+                value.ItemInserted -= ColoursCollectionChangedHandler;
+                value.ItemRemoved -= ColoursCollectionChangedHandler;
+                value.ItemsCleared -= ColoursCollectionChangedHandler;
+                value.ItemReplaced -= ColoursCollectionItemReplacedHandler;
             }
         }
 
         private void SetToolTip()
         {
-            if (this.ShowToolTips)
+            if (ShowToolTips)
             {
-                if (this.ShowToolTips)
+                if (ShowToolTips)
                 {
 #if USENAMEHACK
         string name;
@@ -2081,7 +2081,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         _toolTip.SetToolTip(this, name);
 #else
-                    _toolTip.SetToolTip(this, this.HotIndex != InvalidIndex ? this.GetColour(this.HotIndex).Name : null);
+                    _toolTip.SetToolTip(this, HotIndex != InvalidIndex ? GetColour(HotIndex).Name : null);
 #endif
                 }
             }
@@ -2094,19 +2094,19 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void SizeToFit()
         {
-            this.Size = this.GetAutoSize();
+            Size = GetAutoSize();
         }
 
         private void StartColorEdit(int index)
         {
             EditColourCancelEventArgs e;
 
-            e = new EditColourCancelEventArgs(this.GetColour(index), index);
-            this.OnEditingColour(e);
+            e = new EditColourCancelEventArgs(GetColour(index), index);
+            OnEditingColour(e);
 
             if (!e.Cancel)
             {
-                this.EditColour(index);
+                EditColour(index);
             }
         }
 
@@ -2117,8 +2117,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add => this.Events.AddHandler(_eventColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourChanged, value);
+            add => Events.AddHandler(_eventColourChanged, value);
+            remove => Events.RemoveHandler(_eventColourChanged, value);
         }
 
         [Category("Appearance")]
@@ -2137,11 +2137,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     // the new color matches the color at the current index, so don't change the index
                     // this stops the selection hopping about if you have duplicate colors in a palette
                     // otherwise, if the colors don't match, then find the index that does
-                    newIndex = this.GetColour(this.ColourIndex) == value ? this.ColourIndex : this.GetColourIndex(value);
+                    newIndex = GetColour(ColourIndex) == value ? ColourIndex : GetColourIndex(value);
 
                     if (newIndex == InvalidIndex)
                     {
-                        newIndex = this.AddCustomColor(value);
+                        newIndex = AddCustomColor(value);
                     }
                 }
                 else
@@ -2149,9 +2149,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     newIndex = InvalidIndex;
                 }
 
-                this.ColourIndex = newIndex;
+                ColourIndex = newIndex;
 
-                this.OnColorChanged(EventArgs.Empty);
+                OnColorChanged(EventArgs.Empty);
             }
         }
 

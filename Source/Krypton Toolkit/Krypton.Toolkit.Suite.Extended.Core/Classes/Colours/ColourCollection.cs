@@ -443,13 +443,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 switch (sortOrder)
                 {
-                    case ColourCollectionSortOrder.BRIGHTNESS:
+                    case ColourCollectionSortOrder.Brightness:
                         sortDelegate = ColourComparer.Brightness;
                         break;
-                    case ColourCollectionSortOrder.HUE:
+                    case ColourCollectionSortOrder.Hue:
                         sortDelegate = ColourComparer.Hue;
                         break;
-                    case ColourCollectionSortOrder.VALUE:
+                    case ColourCollectionSortOrder.Value:
                         sortDelegate = ColourComparer.Value;
                         break;
                     default:

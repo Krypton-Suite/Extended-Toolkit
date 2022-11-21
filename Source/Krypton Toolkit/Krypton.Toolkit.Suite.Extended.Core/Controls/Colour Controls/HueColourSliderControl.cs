@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public HueColourSliderControl()
         {
-            this.BarStyle = ColourBarStyle.CUSTOM;
+            this.BarStyle = ColourBarStyle.Custom;
             this.Maximum = 359;
             this.CustomColours = new ColourCollection(Enumerable.Range(0, 359).Select(h => new HSLColourStructure(h, 1, 0.5).ToRgbColour()));
         }

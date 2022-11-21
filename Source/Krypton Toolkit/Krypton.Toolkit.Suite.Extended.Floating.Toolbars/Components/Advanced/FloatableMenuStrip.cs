@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         private MenuStripContainerWindow _menuStripContainerWindow;
 
-        private FloatingContainerForm _floatingContainer;
+        private FloatingContainerForm _floatingContainer = null;
 
         private Control _originalParent = null;
 

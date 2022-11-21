@@ -137,8 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception ex)
             {
-
-                throw;
+                ExceptionCapture.CaptureException(ex);
             }
         }
 
@@ -166,8 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception e)
             {
-
-                throw;
+                ExceptionCapture.CaptureException(e);
             }
         }
         #endregion

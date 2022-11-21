@@ -36,8 +36,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
     {
         #region Fields
 
-        private NaviBand newActiveBand;
-        private bool cancel = false;
+        private NaviBand _newActiveBand;
+        private bool _cancel = false;
 
         #endregion
 
@@ -46,11 +46,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Initializes a new instance of the NaviBandEventArgs class
         /// </summary>
-        /// <param name="newActiveButton">The new active band</param>
+        /// <param name="newActiveBand">The new active band</param>
         public NaviBandEventArgs(NaviBand newActiveBand)
            : base()
         {
-            this.newActiveBand = newActiveBand;
+            _newActiveBand = newActiveBand;
         }
 
         #endregion
@@ -62,8 +62,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public NaviBand NewActiveBand
         {
-            get => newActiveBand;
-            set => newActiveBand = value;
+            get => _newActiveBand;
+            set => _newActiveBand = value;
         }
 
         /// <summary>
@@ -71,8 +71,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public bool Canceled
         {
-            get => cancel;
-            set => cancel = value;
+            get => _cancel;
+            set => _cancel = value;
         }
 
         #endregion

@@ -30,6 +30,7 @@ global using System;
 global using System.ComponentModel;
 global using System.Diagnostics.CodeAnalysis;
 global using System.Drawing;
+global using System.Diagnostics;
 global using System.Reflection;
 global using System.Runtime.InteropServices;
 global using System.Runtime.Versioning;

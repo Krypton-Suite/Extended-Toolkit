@@ -126,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Overriden. Raises the PaintBackground
         /// </summary>
-        /// <param name="pevent">Additional paint info</param>
+        /// <param name="e">Additional paint info</param>
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             base.OnPaintBackground(e);

@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // gColourBar
             // 
-            this.gColourBar.Channel = RGBAChannel.GREEN;
+            this.gColourBar.Channel = RGBAChannel.Green;
             this.gColourBar.Location = new System.Drawing.Point(27, 39);
             this.gColourBar.Name = "gColourBar";
             this.gColourBar.Size = new System.Drawing.Size(72, 20);
@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // bColourBar
             // 
-            this.bColourBar.Channel = RGBAChannel.BLUE;
+            this.bColourBar.Channel = RGBAChannel.Blue;
             this.bColourBar.Location = new System.Drawing.Point(27, 65);
             this.bColourBar.Name = "bColourBar";
             this.bColourBar.Size = new System.Drawing.Size(72, 20);
@@ -297,7 +297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // aColourBar
             // 
-            this.aColourBar.Channel = RGBAChannel.ALPHA;
+            this.aColourBar.Channel = RGBAChannel.Alpha;
             this.aColourBar.Location = new System.Drawing.Point(27, 216);
             this.aColourBar.Name = "aColourBar";
             this.aColourBar.Size = new System.Drawing.Size(72, 20);

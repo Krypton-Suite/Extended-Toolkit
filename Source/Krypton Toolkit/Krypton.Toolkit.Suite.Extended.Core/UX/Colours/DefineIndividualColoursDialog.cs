@@ -841,23 +841,23 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (kcmbDefinedColour.SelectedIndex == 0)
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BASECOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BaseColour);
             }
             else if (kcmbDefinedColour.SelectedIndex == 1)
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DARKESTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DarkestColour);
             }
             else if (kcmbDefinedColour.SelectedIndex == 2)
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MIDDLECOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MiddleColour);
             }
             else if (kcmbDefinedColour.SelectedIndex == 3)
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightColour);
             }
             else if (kcmbDefinedColour.SelectedIndex == 4)
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTESTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightestColour);
             }
         }
 
@@ -865,45 +865,45 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (kcmbDefinedColour.Text == "Basic Colour")
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BASECOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BaseColour);
             }
             else if (kcmbDefinedColour.Text == "Darkest Colour")
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DARKESTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DarkestColour);
             }
             else if (kcmbDefinedColour.Text == "Middle Colour")
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MIDDLECOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MiddleColour);
             }
             else if (kcmbDefinedColour.Text == "Light Colour")
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightColour);
             }
             else if (kcmbDefinedColour.Text == "Lightest Colour")
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTESTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightestColour);
             }
         }
 
         private void kbtnExportSelectedColour_Click(object sender, EventArgs e)
         {
-            if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.BASECOLOUR)
+            if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.BaseColour)
             {
 
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.DARKESTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.DarkestColour)
             {
 
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.MIDDLECOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.MiddleColour)
             {
 
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LIGHTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LightColour)
             {
 
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LIGHTESTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LightestColour)
             {
 
             }
@@ -935,32 +935,32 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Methods
         private void UpdateUI()
         {
-            if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.BASECOLOUR)
+            if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.BaseColour)
             {
 
                 ktbHexadecimal.Text = _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value)).ToUpper();
 
                 cpbBaseColourPreview.BackColor = Color.FromArgb(Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.DARKESTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.DarkestColour)
             {
                 ktbHexadecimal.Text = _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value)).ToUpper();
 
                 cpbDarkestColourPreview.BackColor = Color.FromArgb(Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.MIDDLECOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.MiddleColour)
             {
                 ktbHexadecimal.Text = _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value)).ToUpper();
 
                 cpbMiddleColourPreview.BackColor = Color.FromArgb(Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LIGHTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LightColour)
             {
                 ktbHexadecimal.Text = _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value)).ToUpper();
 
                 cpbLightColourPreview.BackColor = Color.FromArgb(Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LIGHTESTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LightestColour)
             {
                 ktbHexadecimal.Text = _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value)).ToUpper();
 
@@ -972,20 +972,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             switch (paletteColourDefinitions)
             {
-                case BasicPaletteColourDefinitions.BASECOLOUR:
-                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BASECOLOUR);
+                case BasicPaletteColourDefinitions.BaseColour:
+                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BaseColour);
                     break;
-                case BasicPaletteColourDefinitions.DARKESTCOLOUR:
-                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DARKESTCOLOUR);
+                case BasicPaletteColourDefinitions.DarkestColour:
+                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DarkestColour);
                     break;
-                case BasicPaletteColourDefinitions.MIDDLECOLOUR:
-                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MIDDLECOLOUR);
+                case BasicPaletteColourDefinitions.MiddleColour:
+                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MiddleColour);
                     break;
-                case BasicPaletteColourDefinitions.LIGHTCOLOUR:
-                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTCOLOUR);
+                case BasicPaletteColourDefinitions.LightColour:
+                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightColour);
                     break;
-                case BasicPaletteColourDefinitions.LIGHTESTCOLOUR:
-                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTESTCOLOUR);
+                case BasicPaletteColourDefinitions.LightestColour:
+                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightestColour);
                     break;
                 default:
                     break;
