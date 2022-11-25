@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.11.327-alpha" />
+    <PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.11.329-alpha" />
   </ItemGroup>
 
   <ItemGroup>

@@ -30,275 +30,210 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonInputBoxExtendedForm));
             this._panelMessage = new Krypton.Toolkit.KryptonPanel();
-            this.ktlpContents = new Krypton.Toolkit.KryptonTableLayoutPanel();
-            this.pbxIcon = new System.Windows.Forms.PictureBox();
-            this.kpnlInput = new Krypton.Toolkit.KryptonPanel();
-            this.ktxtInput = new Krypton.Toolkit.KryptonTextBox();
-            this.kdtpInput = new Krypton.Toolkit.KryptonDateTimePicker();
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
+            this.pbxIcon = new System.Windows.Forms.PictureBox();
+            this._labelPrompt = new Krypton.Toolkit.KryptonWrapLabel();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnActiveButton = new Krypton.Toolkit.KryptonButton();
-            this.kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.kryptonPanel4 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnOk = new Krypton.Toolkit.KryptonButton();
-            this.kpnlPrompt = new Krypton.Toolkit.KryptonPanel();
-            this.kwlPrompt = new Krypton.Toolkit.KryptonWrapLabel();
-            this.kryptonMaskedTextBox1 = new Krypton.Toolkit.KryptonMaskedTextBox();
-            this.kryptonRichTextBox1 = new Krypton.Toolkit.KryptonRichTextBox();
-            this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
+            this._kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this._buttonOk = new Krypton.Toolkit.KryptonButton();
+            this._buttonCancel = new Krypton.Toolkit.KryptonButton();
+            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kdtpResponse = new Krypton.Toolkit.KryptonDateTimePicker();
+            this.kmtxResponse = new Krypton.Toolkit.KryptonMaskedTextBox();
+            this.krtbResponse = new Krypton.Toolkit.KryptonRichTextBox();
+            this.ktxtResponse = new Krypton.Toolkit.KryptonTextBox();
+            this.kbtnActionButton = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this._panelMessage)).BeginInit();
             this._panelMessage.SuspendLayout();
-            this.ktlpContents.SuspendLayout();
+            this.kryptonTableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlInput)).BeginInit();
-            this.kpnlInput.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._kryptonPanel1)).BeginInit();
+            this._kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            this.kryptonTableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
-            this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
-            this.kryptonPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).BeginInit();
-            this.kryptonPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlPrompt)).BeginInit();
-            this.kpnlPrompt.SuspendLayout();
             this.SuspendLayout();
             // 
             // _panelMessage
             // 
-            this._panelMessage.Controls.Add(this.ktlpContents);
+            this._panelMessage.Controls.Add(this.kryptonTableLayoutPanel1);
             this._panelMessage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._panelMessage.Location = new System.Drawing.Point(0, 0);
             this._panelMessage.Name = "_panelMessage";
-            this._panelMessage.Size = new System.Drawing.Size(384, 161);
-            this._panelMessage.TabIndex = 3;
+            this._panelMessage.Size = new System.Drawing.Size(350, 109);
+            this._panelMessage.TabIndex = 2;
             // 
-            // ktlpContents
+            // kryptonTableLayoutPanel1
             // 
-            this.ktlpContents.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ktlpContents.BackgroundImage")));
-            this.ktlpContents.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ktlpContents.ColumnCount = 2;
-            this.ktlpContents.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.ktlpContents.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ktlpContents.Controls.Add(this.pbxIcon, 0, 0);
-            this.ktlpContents.Controls.Add(this.kpnlInput, 0, 1);
-            this.ktlpContents.Controls.Add(this.kryptonPanel1, 1, 1);
-            this.ktlpContents.Controls.Add(this.kpnlPrompt, 1, 0);
-            this.ktlpContents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ktlpContents.Location = new System.Drawing.Point(0, 0);
-            this.ktlpContents.Name = "ktlpContents";
-            this.ktlpContents.RowCount = 3;
-            this.ktlpContents.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ktlpContents.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ktlpContents.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ktlpContents.Size = new System.Drawing.Size(384, 161);
-            this.ktlpContents.TabIndex = 0;
+            this.kryptonTableLayoutPanel1.AutoSize = true;
+            this.kryptonTableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kryptonTableLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("kryptonTableLayoutPanel1.BackgroundImage")));
+            this.kryptonTableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.kryptonTableLayoutPanel1.ColumnCount = 2;
+            this.kryptonTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.kryptonTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.kryptonTableLayoutPanel1.Controls.Add(this._labelPrompt, 1, 0);
+            this.kryptonTableLayoutPanel1.Controls.Add(this.pbxIcon, 0, 0);
+            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonPanel1, 0, 1);
+            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonBorderEdge1, 0, 2);
+            this.kryptonTableLayoutPanel1.Controls.Add(this._kryptonPanel1, 0, 3);
+            this.kryptonTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonTableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonTableLayoutPanel1.Name = "kryptonTableLayoutPanel1";
+            this.kryptonTableLayoutPanel1.RowCount = 4;
+            this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.kryptonTableLayoutPanel1.Size = new System.Drawing.Size(350, 109);
+            this.kryptonTableLayoutPanel1.TabIndex = 3;
             // 
             // pbxIcon
             // 
             this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbxIcon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbxIcon.Location = new System.Drawing.Point(3, 3);
             this.pbxIcon.Name = "pbxIcon";
-            this.pbxIcon.Size = new System.Drawing.Size(64, 47);
-            this.pbxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxIcon.Size = new System.Drawing.Size(32, 34);
             this.pbxIcon.TabIndex = 0;
             this.pbxIcon.TabStop = false;
             // 
-            // kpnlInput
+            // _labelPrompt
             // 
-            this.ktlpContents.SetColumnSpan(this.kpnlInput, 2);
-            this.kpnlInput.Controls.Add(this.kryptonTextBox1);
-            this.kpnlInput.Controls.Add(this.kryptonRichTextBox1);
-            this.kpnlInput.Controls.Add(this.kryptonMaskedTextBox1);
-            this.kpnlInput.Controls.Add(this.ktxtInput);
-            this.kpnlInput.Controls.Add(this.kdtpInput);
-            this.kpnlInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kpnlInput.Location = new System.Drawing.Point(3, 56);
-            this.kpnlInput.Name = "kpnlInput";
-            this.kpnlInput.Size = new System.Drawing.Size(378, 47);
-            this.kpnlInput.TabIndex = 3;
-            // 
-            // ktxtInput
-            // 
-            this.ktxtInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ktxtInput.Location = new System.Drawing.Point(0, 0);
-            this.ktxtInput.Name = "ktxtInput";
-            this.ktxtInput.Size = new System.Drawing.Size(378, 23);
-            this.ktxtInput.TabIndex = 1;
-            // 
-            // kdtpInput
-            // 
-            this.kdtpInput.CornerRoundingRadius = -1F;
-            this.kdtpInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kdtpInput.Location = new System.Drawing.Point(0, 0);
-            this.kdtpInput.Name = "kdtpInput";
-            this.kdtpInput.Size = new System.Drawing.Size(378, 21);
-            this.kdtpInput.TabIndex = 0;
-            // 
-            // kryptonPanel1
-            // 
-            this.ktlpContents.SetColumnSpan(this.kryptonPanel1, 2);
-            this.kryptonPanel1.Controls.Add(this.kryptonTableLayoutPanel1);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(3, 109);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kryptonPanel1.Size = new System.Drawing.Size(378, 49);
-            this.kryptonPanel1.TabIndex = 2;
-            // 
-            // kryptonTableLayoutPanel1
-            // 
-            this.kryptonTableLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("kryptonTableLayoutPanel1.BackgroundImage")));
-            this.kryptonTableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.kryptonTableLayoutPanel1.ColumnCount = 3;
-            this.kryptonTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.kryptonTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.kryptonTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonBorderEdge1, 0, 0);
-            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonPanel2, 0, 1);
-            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonPanel3, 2, 1);
-            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonPanel4, 1, 1);
-            this.kryptonTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonTableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonTableLayoutPanel1.Name = "kryptonTableLayoutPanel1";
-            this.kryptonTableLayoutPanel1.RowCount = 2;
-            this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.kryptonTableLayoutPanel1.Size = new System.Drawing.Size(378, 49);
-            this.kryptonTableLayoutPanel1.TabIndex = 0;
+            this._labelPrompt.AutoSize = false;
+            this._labelPrompt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._labelPrompt.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this._labelPrompt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this._labelPrompt.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
+            this._labelPrompt.Location = new System.Drawing.Point(42, 4);
+            this._labelPrompt.Margin = new System.Windows.Forms.Padding(4);
+            this._labelPrompt.Name = "_labelPrompt";
+            this._labelPrompt.Size = new System.Drawing.Size(304, 32);
+            this._labelPrompt.Text = "Prompt";
+            this._labelPrompt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // kryptonBorderEdge1
             // 
-            this.kryptonTableLayoutPanel1.SetColumnSpan(this.kryptonBorderEdge1, 3);
-            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(3, 3);
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
+            this.kryptonTableLayoutPanel1.SetColumnSpan(this.kryptonBorderEdge1, 2);
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(3, 76);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(372, 1);
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(344, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
-            // kryptonPanel2
+            // _kryptonPanel1
             // 
-            this.kryptonPanel2.Controls.Add(this.kbtnActiveButton);
-            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(3, 10);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(100, 36);
-            this.kryptonPanel2.TabIndex = 1;
+            this.kryptonTableLayoutPanel1.SetColumnSpan(this._kryptonPanel1, 2);
+            this._kryptonPanel1.Controls.Add(this.kbtnActionButton);
+            this._kryptonPanel1.Controls.Add(this._buttonOk);
+            this._kryptonPanel1.Controls.Add(this._buttonCancel);
+            this._kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._kryptonPanel1.Location = new System.Drawing.Point(2, 82);
+            this._kryptonPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 8);
+            this._kryptonPanel1.Name = "_kryptonPanel1";
+            this._kryptonPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this._kryptonPanel1.Size = new System.Drawing.Size(346, 26);
+            this._kryptonPanel1.TabIndex = 6;
             // 
-            // kbtnActiveButton
+            // _buttonOk
             // 
-            this.kbtnActiveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.kbtnActiveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnActiveButton.CornerRoundingRadius = -1F;
-            this.kbtnActiveButton.Enabled = false;
-            this.kbtnActiveButton.Location = new System.Drawing.Point(3, 5);
-            this.kbtnActiveButton.Name = "kbtnActiveButton";
-            this.kbtnActiveButton.Size = new System.Drawing.Size(90, 25);
-            this.kbtnActiveButton.TabIndex = 0;
-            this.kbtnActiveButton.Values.Text = "kryptonButton1";
-            this.kbtnActiveButton.Visible = false;
+            this._buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._buttonOk.AutoSize = true;
+            this._buttonOk.CornerRoundingRadius = -1F;
+            this._buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this._buttonOk.Location = new System.Drawing.Point(213, 0);
+            this._buttonOk.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this._buttonOk.MinimumSize = new System.Drawing.Size(50, 26);
+            this._buttonOk.Name = "_buttonOk";
+            this._buttonOk.Size = new System.Drawing.Size(55, 26);
+            this._buttonOk.TabIndex = 1;
+            this._buttonOk.Values.Text = "&OK";
             // 
-            // kryptonPanel3
+            // _buttonCancel
             // 
-            this.kryptonPanel3.Controls.Add(this.kbtnCancel);
-            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel3.Location = new System.Drawing.Point(215, 10);
-            this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.Size = new System.Drawing.Size(160, 36);
-            this.kryptonPanel3.TabIndex = 2;
+            this._buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._buttonCancel.AutoSize = true;
+            this._buttonCancel.CornerRoundingRadius = -1F;
+            this._buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this._buttonCancel.Location = new System.Drawing.Point(285, 0);
+            this._buttonCancel.Margin = new System.Windows.Forms.Padding(0);
+            this._buttonCancel.MinimumSize = new System.Drawing.Size(50, 26);
+            this._buttonCancel.Name = "_buttonCancel";
+            this._buttonCancel.Size = new System.Drawing.Size(55, 26);
+            this._buttonCancel.TabIndex = 2;
+            this._buttonCancel.Values.Text = "Cance&l";
             // 
-            // kbtnCancel
+            // kryptonPanel1
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnCancel.CornerRoundingRadius = -1F;
-            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(70, 5);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCancel.TabIndex = 0;
-            this.kbtnCancel.Values.Text = "Cance&l";
+            this.kryptonTableLayoutPanel1.SetColumnSpan(this.kryptonPanel1, 2);
+            this.kryptonPanel1.Controls.Add(this.ktxtResponse);
+            this.kryptonPanel1.Controls.Add(this.krtbResponse);
+            this.kryptonPanel1.Controls.Add(this.kmtxResponse);
+            this.kryptonPanel1.Controls.Add(this.kdtpResponse);
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(3, 43);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(344, 27);
+            this.kryptonPanel1.TabIndex = 7;
             // 
-            // kryptonPanel4
+            // kdtpResponse
             // 
-            this.kryptonPanel4.Controls.Add(this.kbtnOk);
-            this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel4.Location = new System.Drawing.Point(109, 10);
-            this.kryptonPanel4.Name = "kryptonPanel4";
-            this.kryptonPanel4.Size = new System.Drawing.Size(100, 36);
-            this.kryptonPanel4.TabIndex = 3;
+            this.kdtpResponse.CornerRoundingRadius = -1F;
+            this.kdtpResponse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kdtpResponse.Location = new System.Drawing.Point(0, 0);
+            this.kdtpResponse.Name = "kdtpResponse";
+            this.kdtpResponse.Size = new System.Drawing.Size(344, 27);
+            this.kdtpResponse.TabIndex = 0;
+            this.kdtpResponse.ValueNullable = new System.DateTime(((long)(0)));
+            this.kdtpResponse.Visible = false;
             // 
-            // kbtnOk
+            // kmtxResponse
             // 
-            this.kbtnOk.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnOk.CornerRoundingRadius = -1F;
-            this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnOk.Location = new System.Drawing.Point(10, 5);
-            this.kbtnOk.Name = "kbtnOk";
-            this.kbtnOk.Size = new System.Drawing.Size(90, 25);
-            this.kbtnOk.TabIndex = 0;
-            this.kbtnOk.Values.Text = "O&K";
+            this.kmtxResponse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kmtxResponse.Location = new System.Drawing.Point(0, 0);
+            this.kmtxResponse.Name = "kmtxResponse";
+            this.kmtxResponse.Size = new System.Drawing.Size(344, 23);
+            this.kmtxResponse.TabIndex = 1;
+            this.kmtxResponse.Visible = false;
             // 
-            // kpnlPrompt
+            // krtbResponse
             // 
-            this.kpnlPrompt.Controls.Add(this.kwlPrompt);
-            this.kpnlPrompt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kpnlPrompt.Location = new System.Drawing.Point(73, 3);
-            this.kpnlPrompt.Name = "kpnlPrompt";
-            this.kpnlPrompt.Size = new System.Drawing.Size(308, 47);
-            this.kpnlPrompt.TabIndex = 4;
+            this.krtbResponse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.krtbResponse.Location = new System.Drawing.Point(0, 0);
+            this.krtbResponse.Name = "krtbResponse";
+            this.krtbResponse.Size = new System.Drawing.Size(344, 27);
+            this.krtbResponse.TabIndex = 2;
+            this.krtbResponse.Text = "";
+            this.krtbResponse.Visible = false;
             // 
-            // kwlPrompt
+            // ktxtResponse
             // 
-            this.kwlPrompt.AutoSize = false;
-            this.kwlPrompt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kwlPrompt.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.kwlPrompt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlPrompt.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kwlPrompt.Location = new System.Drawing.Point(0, 0);
-            this.kwlPrompt.Name = "kwlPrompt";
-            this.kwlPrompt.Size = new System.Drawing.Size(308, 47);
-            this.kwlPrompt.Text = "Prompt";
-            this.kwlPrompt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ktxtResponse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ktxtResponse.Location = new System.Drawing.Point(0, 0);
+            this.ktxtResponse.Name = "ktxtResponse";
+            this.ktxtResponse.Size = new System.Drawing.Size(344, 23);
+            this.ktxtResponse.TabIndex = 3;
             // 
-            // kryptonMaskedTextBox1
+            // kbtnActionButton
             // 
-            this.kryptonMaskedTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonMaskedTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonMaskedTextBox1.Name = "kryptonMaskedTextBox1";
-            this.kryptonMaskedTextBox1.Size = new System.Drawing.Size(378, 23);
-            this.kryptonMaskedTextBox1.TabIndex = 2;
-            this.kryptonMaskedTextBox1.Text = "kryptonMaskedTextBox1";
-            // 
-            // kryptonRichTextBox1
-            // 
-            this.kryptonRichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonRichTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonRichTextBox1.Name = "kryptonRichTextBox1";
-            this.kryptonRichTextBox1.Size = new System.Drawing.Size(378, 47);
-            this.kryptonRichTextBox1.TabIndex = 3;
-            this.kryptonRichTextBox1.Text = "kryptonRichTextBox1";
-            // 
-            // kryptonTextBox1
-            // 
-            this.kryptonTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.PasswordChar = '●';
-            this.kryptonTextBox1.Size = new System.Drawing.Size(378, 23);
-            this.kryptonTextBox1.TabIndex = 4;
-            this.kryptonTextBox1.Text = "kryptonTextBox1";
-            this.kryptonTextBox1.UseSystemPasswordChar = true;
+            this.kbtnActionButton.AutoSize = true;
+            this.kbtnActionButton.CornerRoundingRadius = -1F;
+            this.kbtnActionButton.Enabled = false;
+            this.kbtnActionButton.Location = new System.Drawing.Point(7, 0);
+            this.kbtnActionButton.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this.kbtnActionButton.MinimumSize = new System.Drawing.Size(50, 26);
+            this.kbtnActionButton.Name = "kbtnActionButton";
+            this.kbtnActionButton.Size = new System.Drawing.Size(55, 26);
+            this.kbtnActionButton.TabIndex = 3;
+            this.kbtnActionButton.Values.Text = "{0}";
+            this.kbtnActionButton.Visible = false;
             // 
             // KryptonInputBoxExtendedForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 161);
+            this.ClientSize = new System.Drawing.Size(350, 109);
             this.Controls.Add(this._panelMessage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
@@ -306,26 +241,19 @@
             this.Name = "KryptonInputBoxExtendedForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             ((System.ComponentModel.ISupportInitialize)(this._panelMessage)).EndInit();
             this._panelMessage.ResumeLayout(false);
-            this.ktlpContents.ResumeLayout(false);
-            this.ktlpContents.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlInput)).EndInit();
-            this.kpnlInput.ResumeLayout(false);
-            this.kpnlInput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
+            this._panelMessage.PerformLayout();
             this.kryptonTableLayoutPanel1.ResumeLayout(false);
             this.kryptonTableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
-            this.kryptonPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
-            this.kryptonPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).EndInit();
-            this.kryptonPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlPrompt)).EndInit();
-            this.kpnlPrompt.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._kryptonPanel1)).EndInit();
+            this._kryptonPanel1.ResumeLayout(false);
+            this._kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -333,24 +261,18 @@
         #endregion
 
         private KryptonPanel _panelMessage;
-        private KryptonTableLayoutPanel ktlpContents;
-        private PictureBox pbxIcon;
-        private KryptonPanel kpnlInput;
-        private KryptonTextBox ktxtInput;
-        private KryptonDateTimePicker kdtpInput;
-        private KryptonPanel kryptonPanel1;
         private KryptonTableLayoutPanel kryptonTableLayoutPanel1;
+        private KryptonWrapLabel _labelPrompt;
+        private PictureBox pbxIcon;
         private KryptonBorderEdge kryptonBorderEdge1;
-        private KryptonPanel kryptonPanel2;
-        private KryptonButton kbtnActiveButton;
-        private KryptonPanel kryptonPanel3;
-        private KryptonButton kbtnCancel;
-        private KryptonPanel kryptonPanel4;
-        private KryptonButton kbtnOk;
-        private KryptonPanel kpnlPrompt;
-        private KryptonWrapLabel kwlPrompt;
-        private KryptonTextBox kryptonTextBox1;
-        private KryptonRichTextBox kryptonRichTextBox1;
-        private KryptonMaskedTextBox kryptonMaskedTextBox1;
+        private KryptonPanel _kryptonPanel1;
+        private KryptonButton _buttonOk;
+        private KryptonButton _buttonCancel;
+        private KryptonPanel kryptonPanel1;
+        private KryptonTextBox ktxtResponse;
+        private KryptonRichTextBox krtbResponse;
+        private KryptonMaskedTextBox kmtxResponse;
+        private KryptonDateTimePicker kdtpResponse;
+        private KryptonButton kbtnActionButton;
     }
 }
