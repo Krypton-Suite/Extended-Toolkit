@@ -2,8 +2,8 @@
 
 public enum InputBoxButtons
 {
-    OK,
-    OKCANCEL,
-    YESNO,
-    YESNOCANCEL
+    Ok,
+    OkCancel,
+    YesNo,
+    YesNoCancel
 }

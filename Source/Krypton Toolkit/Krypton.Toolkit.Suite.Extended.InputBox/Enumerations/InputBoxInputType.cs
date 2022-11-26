@@ -2,8 +2,8 @@
 
 public enum InputBoxInputType
 {
-    COMBOBOX,
-    TEXTBOX,
-    MASKEDTEXTBOX,
-    NONE
+    ComboBox = 0,
+    TextBox = 1,
+    MaskedTextBox = 2,
+    None = 3
 }

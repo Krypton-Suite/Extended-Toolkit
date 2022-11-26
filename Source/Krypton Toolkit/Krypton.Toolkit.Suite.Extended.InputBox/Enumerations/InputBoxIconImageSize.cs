@@ -2,9 +2,9 @@
 
 public enum InputBoxIconImageSize
 {
-    CUSTOM = 0,
-    THIRTYTWO = 1,
-    FOURTYEIGHT = 2,
-    SIXTYFOUR = 3,
-    ONEHUNDREDANDTWENTYEIGHT = 4
+    Custom = 0,
+    ThirtyTwo = 1,
+    FourtyEight = 2,
+    SixtyFour = 3,
+    OneHundredAndTwentyEight = 4
 }

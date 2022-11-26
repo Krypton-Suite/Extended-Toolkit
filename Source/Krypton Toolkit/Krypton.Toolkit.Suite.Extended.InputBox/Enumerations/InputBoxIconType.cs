@@ -31,24 +31,26 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
     public enum InputBoxIconType
     {
         /// <summary>No icon.</summary>
-        NONE = 0,
+        None = 0,
         /// <summary>Specifies a custom icon.</summary>
-        CUSTOM = 1,
+        Custom = 1,
         /// <summary>Specifies the critical icon.</summary>
-        CRITICAL = 2,
+        Critical = 2,
         /// <summary>Specifies a hand icon.</summary>
-        HAND = 3,
+        Hand = 3,
         /// <summary>Specifies a information icon.</summary>
-        INFORMATION = 4,
+        Information = 4,
         /// <summary>Specifies a ok icon.</summary>
-        OK = 5,
+        Ok = 5,
         /// <summary>Specifies a question icon.</summary>
-        QUESTION = 6,
+        Question = 6,
         /// <summary>Specifies a stop icon.</summary>
-        STOP = 7,
+        Stop = 7,
         /// <summary>Specifies a error icon.</summary>
-        ERROR = 8,
+        Error = 8,
         /// <summary>Specifies a warning icon.</summary>
-        EXCLAMATION = 9
+        Exclamation = 9,
+        /// <summary>Specifies the asterisk icon.</summary>
+        Asterisk = 10
     }
 }

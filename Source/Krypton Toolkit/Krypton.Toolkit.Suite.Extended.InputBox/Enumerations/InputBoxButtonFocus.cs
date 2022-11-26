@@ -2,8 +2,8 @@
 
 public enum InputBoxButtonFocus
 {
-    BUTTONONE = 0,
-    BUTTONTWO = 1,
-    BUTTONTHREE = 2,
-    BUTTONFOUR = 3
+    ButtonOne = 0,
+    ButtonTwo = 1,
+    ButtonThree = 2,
+    ButtonFour = 3
 }

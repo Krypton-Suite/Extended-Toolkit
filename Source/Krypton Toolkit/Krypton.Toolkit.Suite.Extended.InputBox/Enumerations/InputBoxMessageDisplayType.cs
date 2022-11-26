@@ -2,7 +2,7 @@
 
 public enum InputBoxMessageDisplayType
 {
-    LABEL = 0,
-    BORDEREDLABEL = 1,
-    WRAPPEDLABEL = 2
+    Label = 0,
+    BorderedLabel = 1,
+    WrappedLabel = 2
 }

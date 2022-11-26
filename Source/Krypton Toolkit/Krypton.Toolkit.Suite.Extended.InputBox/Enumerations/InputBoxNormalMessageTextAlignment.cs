@@ -2,20 +2,20 @@
 
 public enum InputBoxNormalMessageTextAlignment
 {
-    INHERIT,
-    NEARNEAR,
-    NEARCENTRE,
-    NEARFAR,
-    CENTRENEAR,
-    CENTRECENTRE,
-    CENTREFAR,
-    FARNEAR,
-    FARCENTRE,
-    FARFAR,
-    INHERITNEAR,
-    INHERITCENTRE,
-    INHERITFAR,
-    NEARINHERIT,
-    CENTREINHERIT,
-    FARINHERIT
+    Inherit,
+    NearNear,
+    NearCentre,
+    NearFar,
+    CentreNear,
+    CentreCentre,
+    CentreFar,
+    FarNear,
+    FarCentre,
+    FarFar,
+    InheritNear,
+    InheritCentre,
+    InheritFar,
+    NearInherit,
+    CentreInherit,
+    FarInherit
 }

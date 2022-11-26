@@ -291,8 +291,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.ENGLISH, 
-            InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, 
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.English, 
+            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false, 
             Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes",
             string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
         {
@@ -304,13 +304,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
             SetTitle(title);
 
-            SetIconType(InputBoxIconType.NONE);
+            SetIconType(InputBoxIconType.None);
 
             SetLanguage(language, okText, yesText, noText, cancelText);
 
-            AdaptButtons(InputBoxButtons.OK, language);
+            AdaptButtons(InputBoxButtons.Ok, language);
 
-            ChangeButtonVisibility(InputBoxButtons.OK);
+            ChangeButtonVisibility(InputBoxButtons.Ok);
 
             AdaptUI(type, listItems);
 
@@ -341,9 +341,9 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.NONE, 
-            Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, 
-            InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, 
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.None, 
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.English, 
+            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, 
             bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, 
             string okText = "&Ok", string yesText = "&Yes", string noText = "N&o",
             string cancelText = "&Cancel", string hintText = "")
@@ -360,9 +360,9 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
             SetLanguage(language, okText, yesText, noText, cancelText);
 
-            AdaptButtons(InputBoxButtons.OK, language);
+            AdaptButtons(InputBoxButtons.Ok, language);
 
-            ChangeButtonVisibility(InputBoxButtons.OK);
+            ChangeButtonVisibility(InputBoxButtons.Ok);
 
             AdaptUI(type, listItems);
 
@@ -394,9 +394,9 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION,
-            Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, 
-            InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, 
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information,
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok, 
+            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false, 
             Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
             string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
             DialogResult buttonOneResult = DialogResult.None, DialogResult buttonTwoResult = DialogResult.None,
@@ -449,9 +449,9 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
         /// <param name="startPosition">The start position.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, 
-            Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, 
-            InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, 
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information, 
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.English, 
+            InputBoxButtons buttons = InputBoxButtons.Ok, InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, 
             bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok",
             string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
             FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation,
@@ -507,12 +507,12 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
         /// <param name="textAlignment">The text alignment.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, 
-            Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, 
-            InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, 
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information, 
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok, 
+            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false, 
             Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
             string noText = "N&o", string cancelText = "&Cancel", string hintText = "", 
-            InputBoxWrappedMessageTextAlignment textAlignment = InputBoxWrappedMessageTextAlignment.MIDDLELEFT,
+            InputBoxWrappedMessageTextAlignment textAlignment = InputBoxWrappedMessageTextAlignment.MiddleLeft,
             DialogResult buttonOneResult = DialogResult.None, DialogResult buttonTwoResult = DialogResult.None,
             DialogResult buttonThreeResult = DialogResult.None, DialogResult buttonFourResult = DialogResult.None)
         {
@@ -568,13 +568,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="startPosition">The start position.</param>
         /// <param name="textAlignment">The text alignment.</param>
         public KryptonInputBoxExtended(Point iconLocation, string message, string title = "", 
-            InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, 
-            InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, 
-            InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false,
+            InputBoxIconType icon = InputBoxIconType.Information, Image image = null, 
+            InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok, 
+            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false,
             Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
             string noText = "N&o", string cancelText = "&Cancel", string hintText = "", 
             FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, 
-            InputBoxTextAlignment textAlignment = InputBoxTextAlignment.LEFT,
+            InputBoxTextAlignment textAlignment = InputBoxTextAlignment.Left,
             DialogResult buttonOneResult = DialogResult.None, DialogResult buttonTwoResult = DialogResult.None,
             DialogResult buttonThreeResult = DialogResult.None, DialogResult buttonFourResult = DialogResult.None)
         {
@@ -665,22 +665,22 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             switch (language)
             {
-                case InputBoxLanguage.CZECH:
+                case InputBoxLanguage.Czech:
                     _buttonTextArray = "OK,Ano,Ne,Storno".Split(',');
                     break;
-                case InputBoxLanguage.FRENCH:
+                case InputBoxLanguage.Français:
                     _buttonTextArray = "OK,Oui,Non,Annuler".Split(',');
                     break;
-                case InputBoxLanguage.GERMAN:
+                case InputBoxLanguage.Deutsch:
                     _buttonTextArray = "OK,Ja,Nein,Stornieren".Split(',');
                     break;
-                case InputBoxLanguage.SLOVAKIAN:
+                case InputBoxLanguage.Slovakian:
                     _buttonTextArray = "OK,Áno,Nie,Zrušiť".Split(',');
                     break;
-                case InputBoxLanguage.SPANISH:
+                case InputBoxLanguage.Español:
                     _buttonTextArray = "OK,Sí,No,Cancelar".Split(',');
                     break;
-                case InputBoxLanguage.CUSTOM:
+                case InputBoxLanguage.Custom:
                     _buttonTextArray = SetCustomText(okText, yesText, noText, cancelText);
                     break;
                 default:
@@ -743,7 +743,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             switch (icon)
             {
-                case InputBoxIconType.CUSTOM:
+                case InputBoxIconType.Custom:
                     if (image != null)
                     {
                         AdaptUI(true);
@@ -755,40 +755,40 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                         throw new ArgumentNullException();
                     }
                     break;
-                case InputBoxIconType.OK:
+                case InputBoxIconType.Ok:
                     AdaptUI(true);
 
                     SetIconImage(Properties.Resources.Ok);
                     break;
-                case InputBoxIconType.ERROR:
+                case InputBoxIconType.Error:
                     AdaptUI(true);
 
                     SetIconImage(Properties.Resources.Critical);
                     break;
-                case InputBoxIconType.EXCLAMATION:
+                case InputBoxIconType.Exclamation:
                     AdaptUI(true);
 
                     SetIconImage(Properties.Resources.Warning);
                     break;
-                case InputBoxIconType.INFORMATION:
+                case InputBoxIconType.Information:
                     AdaptUI(true);
 
                     SetIconImage(Properties.Resources.Information);
                     break;
-                case InputBoxIconType.QUESTION:
+                case InputBoxIconType.Question:
                     AdaptUI(true);
 
                     SetIconImage(Properties.Resources.Question);
                     break;
-                case InputBoxIconType.NONE:
+                case InputBoxIconType.None:
                     AdaptUI(false);
                     break;
-                case InputBoxIconType.STOP:
+                case InputBoxIconType.Stop:
                     AdaptUI(true);
 
                     SetIconImage(Properties.Resources.Stop);
                     break;
-                case InputBoxIconType.HAND:
+                case InputBoxIconType.Hand:
                     AdaptUI(true);
 
                     SetIconImage(Properties.Resources.Hand);
@@ -822,12 +822,12 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
             switch (buttons)
             {
-                case InputBoxButtons.OK:
+                case InputBoxButtons.Ok:
                     kbtnButtonOne.Location = new Point(483, 9);
 
                     buttonArray[0] = kbtnButtonOne;
                     break;
-                case InputBoxButtons.OKCANCEL:
+                case InputBoxButtons.OkCancel:
                     kbtnButtonOne.Location = new Point(388, 9);
 
                     buttonArray[0] = kbtnButtonOne;
@@ -836,7 +836,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     buttonArray[1] = kbtnButtonThree;
                     break;
-                case InputBoxButtons.YESNO:
+                case InputBoxButtons.YesNo:
                     kbtnButtonTwo.Location = new Point(388, 9);
 
                     buttonArray[0] = kbtnButtonTwo;
@@ -845,7 +845,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     buttonArray[1] = kbtnButtonFour;
                     break;
-                case InputBoxButtons.YESNOCANCEL:
+                case InputBoxButtons.YesNoCancel:
                     kbtnButtonTwo.Location = new Point(293, 9);
 
                     buttonArray[0] = kbtnButtonTwo;
@@ -908,21 +908,21 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
             switch (type)
             {
-                case InputBoxInputType.COMBOBOX:
+                case InputBoxInputType.ComboBox:
                     ktxtInput.Visible = false;
 
                     kmtxtInput.Visible = false;
 
                     kcmbInput.Visible = true;
                     break;
-                case InputBoxInputType.TEXTBOX:
+                case InputBoxInputType.TextBox:
                     ktxtInput.Visible = true;
 
                     kmtxtInput.Visible = false;
 
                     kcmbInput.Visible = false;
                     break;
-                case InputBoxInputType.MASKEDTEXTBOX:
+                case InputBoxInputType.MaskedTextBox:
                     ktxtInput.Visible = false;
 
                     kmtxtInput.Visible = true;
@@ -938,19 +938,19 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             switch (displayType)
             {
-                case InputBoxMessageDisplayType.BORDEREDLABEL:
+                case InputBoxMessageDisplayType.BorderedLabel:
                     kblMessage.Visible = true;
 
                     kwlMessage.Visible = false;
                     break;
-                case InputBoxMessageDisplayType.LABEL:
+                case InputBoxMessageDisplayType.Label:
                     kblMessage.Visible = false;
 
                     kwlMessage.Visible = true;
 
                     kwlMessage.Visible = false;
                     break;
-                case InputBoxMessageDisplayType.WRAPPEDLABEL:
+                case InputBoxMessageDisplayType.WrappedLabel:
                     kblMessage.Visible = false;
 
                     kwlMessage.Visible = false;
@@ -990,13 +990,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             switch (textAlignment)
             {
-                case InputBoxTextAlignment.LEFT:
+                case InputBoxTextAlignment.Left:
                     ktxtInput.TextAlign = HorizontalAlignment.Left;
                     break;
-                case InputBoxTextAlignment.CENTRE:
+                case InputBoxTextAlignment.Centre:
                     ktxtInput.TextAlign = HorizontalAlignment.Center;
                     break;
-                case InputBoxTextAlignment.RIGHT:
+                case InputBoxTextAlignment.Right:
                     ktxtInput.TextAlign = HorizontalAlignment.Right;
                     break;
             }
@@ -1028,7 +1028,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             switch (buttons)
             {
-                case InputBoxButtons.OK:
+                case InputBoxButtons.Ok:
                     kbtnButtonOne.Visible = true;
 
                     kbtnButtonThree.Visible = false;
@@ -1037,7 +1037,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kbtnButtonTwo.Visible = false;
                     break;
-                case InputBoxButtons.OKCANCEL:
+                case InputBoxButtons.OkCancel:
                     kbtnButtonOne.Visible = true;
 
                     kbtnButtonThree.Visible = true;
@@ -1046,7 +1046,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kbtnButtonTwo.Visible = false;
                     break;
-                case InputBoxButtons.YESNO:
+                case InputBoxButtons.YesNo:
                     kbtnButtonOne.Visible = false;
 
                     kbtnButtonThree.Visible = false;
@@ -1055,7 +1055,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kbtnButtonTwo.Visible = true;
                     break;
-                case InputBoxButtons.YESNOCANCEL:
+                case InputBoxButtons.YesNoCancel:
                     kbtnButtonOne.Visible = false;
 
                     kbtnButtonThree.Visible = true;
@@ -1077,13 +1077,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             switch (alignment)
             {
-                case InputBoxTextAlignment.LEFT:
+                case InputBoxTextAlignment.Left:
                     kmtxtInput.TextAlign = HorizontalAlignment.Left;
                     break;
-                case InputBoxTextAlignment.CENTRE:
+                case InputBoxTextAlignment.Centre:
                     kmtxtInput.TextAlign = HorizontalAlignment.Center;
                     break;
-                case InputBoxTextAlignment.RIGHT:
+                case InputBoxTextAlignment.Right:
                     kmtxtInput.TextAlign = HorizontalAlignment.Right;
                     break;
             }
@@ -1186,31 +1186,31 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             switch (alignment)
             {
-                case InputBoxWrappedMessageTextAlignment.TOPLEFT:
+                case InputBoxWrappedMessageTextAlignment.TopLeft:
                     kwlMessage.TextAlign = ContentAlignment.TopLeft;
                     break;
-                case InputBoxWrappedMessageTextAlignment.TOPCENTRE:
+                case InputBoxWrappedMessageTextAlignment.TopCentre:
                     kwlMessage.TextAlign = ContentAlignment.TopCenter;
                     break;
-                case InputBoxWrappedMessageTextAlignment.TOPRIGHT:
+                case InputBoxWrappedMessageTextAlignment.TopRight:
                     kwlMessage.TextAlign = ContentAlignment.TopRight;
                     break;
-                case InputBoxWrappedMessageTextAlignment.MIDDLELEFT:
+                case InputBoxWrappedMessageTextAlignment.MiddleLeft:
                     kwlMessage.TextAlign = ContentAlignment.MiddleLeft;
                     break;
-                case InputBoxWrappedMessageTextAlignment.MIDDLECENTRE:
+                case InputBoxWrappedMessageTextAlignment.MiddleCentre:
                     kwlMessage.TextAlign = ContentAlignment.MiddleCenter;
                     break;
-                case InputBoxWrappedMessageTextAlignment.MIDDLERIGHT:
+                case InputBoxWrappedMessageTextAlignment.MiddleRight:
                     kwlMessage.TextAlign = ContentAlignment.MiddleRight;
                     break;
-                case InputBoxWrappedMessageTextAlignment.BOTTOMLEFT:
+                case InputBoxWrappedMessageTextAlignment.BottomLeft:
                     kwlMessage.TextAlign = ContentAlignment.BottomLeft;
                     break;
-                case InputBoxWrappedMessageTextAlignment.BOTTOMCENTRE:
+                case InputBoxWrappedMessageTextAlignment.BottomCentre:
                     kwlMessage.TextAlign = ContentAlignment.BottomCenter;
                     break;
-                case InputBoxWrappedMessageTextAlignment.BOTTOMRIGHT:
+                case InputBoxWrappedMessageTextAlignment.BottomRight:
                     kwlMessage.TextAlign = ContentAlignment.BottomRight;
                     break;
                 default:
@@ -1262,16 +1262,16 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             switch (buttons)
             {
-                case InputBoxButtonFocus.BUTTONONE:
+                case InputBoxButtonFocus.ButtonOne:
                     kbtnButtonOne.Focus();
                     break;
-                case InputBoxButtonFocus.BUTTONTWO:
+                case InputBoxButtonFocus.ButtonTwo:
                     kbtnButtonTwo.Focus();
                     break;
-                case InputBoxButtonFocus.BUTTONTHREE:
+                case InputBoxButtonFocus.ButtonThree:
                     kbtnButtonThree.Focus();
                     break;
-                case InputBoxButtonFocus.BUTTONFOUR:
+                case InputBoxButtonFocus.ButtonFour:
                     kbtnButtonFour.Focus();
                     break;
             }
@@ -1283,16 +1283,16 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             switch (inputType)
             {
-                case InputBoxInputType.COMBOBOX:
+                case InputBoxInputType.ComboBox:
                     kcmbInput.Focus();
                     break;
-                case InputBoxInputType.MASKEDTEXTBOX:
+                case InputBoxInputType.MaskedTextBox:
                     kmtxtInput.Focus();
                     break;
-                case InputBoxInputType.TEXTBOX:
+                case InputBoxInputType.TextBox:
                     ktxtInput.Focus();
                     break;
-                case InputBoxInputType.NONE:
+                case InputBoxInputType.None:
                     kwlMessage.Focus();
                     break;
             }
