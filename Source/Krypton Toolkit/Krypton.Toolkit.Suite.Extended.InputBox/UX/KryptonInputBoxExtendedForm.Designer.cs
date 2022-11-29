@@ -34,6 +34,7 @@
             this._labelPrompt = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxIcon = new System.Windows.Forms.PictureBox();
             this.kpnResponse = new Krypton.Toolkit.KryptonPanel();
+            this.kcmbResponse = new Krypton.Toolkit.KryptonComboBox();
             this.ktxtResponse = new Krypton.Toolkit.KryptonTextBox();
             this.krtbResponse = new Krypton.Toolkit.KryptonRichTextBox();
             this.kmtxResponse = new Krypton.Toolkit.KryptonMaskedTextBox();
@@ -43,16 +44,15 @@
             this.kbtnInputBoxButtonOne = new Krypton.Toolkit.KryptonButton();
             this.kbtnInputBoxButtonTwo = new Krypton.Toolkit.KryptonButton();
             this.kbtnInputBoxButtonThree = new Krypton.Toolkit.KryptonButton();
-            this.kcmbResponse = new Krypton.Toolkit.KryptonComboBox();
             ((System.ComponentModel.ISupportInitialize)(this._panelMessage)).BeginInit();
             this._panelMessage.SuspendLayout();
             this.kryptonTableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kpnResponse)).BeginInit();
             this.kpnResponse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbResponse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._kryptonPanel1)).BeginInit();
             this._kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbResponse)).BeginInit();
             this.SuspendLayout();
             // 
             // _panelMessage
@@ -128,6 +128,19 @@
             this.kpnResponse.Size = new System.Drawing.Size(344, 27);
             this.kpnResponse.TabIndex = 7;
             // 
+            // kcmbResponse
+            // 
+            this.kcmbResponse.CornerRoundingRadius = -1F;
+            this.kcmbResponse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kcmbResponse.DropDownWidth = 344;
+            this.kcmbResponse.IntegralHeight = false;
+            this.kcmbResponse.Location = new System.Drawing.Point(0, 0);
+            this.kcmbResponse.Name = "kcmbResponse";
+            this.kcmbResponse.Size = new System.Drawing.Size(344, 21);
+            this.kcmbResponse.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbResponse.TabIndex = 4;
+            this.kcmbResponse.Visible = false;
+            // 
             // ktxtResponse
             // 
             this.ktxtResponse.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -157,6 +170,7 @@
             // 
             // kdtpResponse
             // 
+            this.kdtpResponse.CornerRoundingRadius = -1F;
             this.kdtpResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kdtpResponse.Location = new System.Drawing.Point(0, 0);
             this.kdtpResponse.Name = "kdtpResponse";
@@ -193,6 +207,7 @@
             // 
             this.kbtnInputBoxButtonOne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnInputBoxButtonOne.AutoSize = true;
+            this.kbtnInputBoxButtonOne.CornerRoundingRadius = -1F;
             this.kbtnInputBoxButtonOne.Enabled = false;
             this.kbtnInputBoxButtonOne.Location = new System.Drawing.Point(145, 0);
             this.kbtnInputBoxButtonOne.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
@@ -207,6 +222,7 @@
             // 
             this.kbtnInputBoxButtonTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnInputBoxButtonTwo.AutoSize = true;
+            this.kbtnInputBoxButtonTwo.CornerRoundingRadius = -1F;
             this.kbtnInputBoxButtonTwo.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnInputBoxButtonTwo.Location = new System.Drawing.Point(213, 0);
             this.kbtnInputBoxButtonTwo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
@@ -220,6 +236,7 @@
             // 
             this.kbtnInputBoxButtonThree.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnInputBoxButtonThree.AutoSize = true;
+            this.kbtnInputBoxButtonThree.CornerRoundingRadius = -1F;
             this.kbtnInputBoxButtonThree.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnInputBoxButtonThree.Location = new System.Drawing.Point(285, 0);
             this.kbtnInputBoxButtonThree.Margin = new System.Windows.Forms.Padding(0);
@@ -228,19 +245,6 @@
             this.kbtnInputBoxButtonThree.Size = new System.Drawing.Size(55, 26);
             this.kbtnInputBoxButtonThree.TabIndex = 2;
             this.kbtnInputBoxButtonThree.Values.Text = "Cance&l";
-            // 
-            // kcmbResponse
-            // 
-            this.kcmbResponse.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kcmbResponse.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.kcmbResponse.DropDownWidth = 344;
-            this.kcmbResponse.IntegralHeight = false;
-            this.kcmbResponse.Location = new System.Drawing.Point(0, 0);
-            this.kcmbResponse.Name = "kcmbResponse";
-            this.kcmbResponse.Size = new System.Drawing.Size(344, 21);
-            this.kcmbResponse.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kcmbResponse.TabIndex = 4;
-            this.kcmbResponse.Visible = false;
             // 
             // KryptonInputBoxExtendedForm
             // 
@@ -264,10 +268,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.kpnResponse)).EndInit();
             this.kpnResponse.ResumeLayout(false);
             this.kpnResponse.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbResponse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._kryptonPanel1)).EndInit();
             this._kryptonPanel1.ResumeLayout(false);
             this._kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbResponse)).EndInit();
             this.ResumeLayout(false);
 
         }

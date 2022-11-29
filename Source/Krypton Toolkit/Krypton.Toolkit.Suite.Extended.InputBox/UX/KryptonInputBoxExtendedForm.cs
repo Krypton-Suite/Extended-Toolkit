@@ -33,6 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         private InputBoxButtons _buttons;
         private InputBoxButtonFocus _focusedButton;
         private Image _customImage;
+        private Properties.Resources _resources = new Properties.Resources();
         
         #endregion
 
@@ -217,19 +218,25 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             switch (iconType)
             {
                 case InputBoxIconType.Asterisk:
+                    pbxIcon.Image = Properties.Resources.Asterisk_Information_Box;
                     break;
                 case InputBoxIconType.Critical:
+                    pbxIcon.Image = Properties.Resources.Critical_Information_Box;
                     break;
                 case InputBoxIconType.Custom:
                     pbxIcon.Image = customImage;
                     break;
                 case InputBoxIconType.Error:
+                    pbxIcon.Image = Properties.Resources.Critical_Information_Box;
                     break;
                 case InputBoxIconType.Exclamation:
+                    pbxIcon.Image = Properties.Resources.Warning_Information_Box;
                     break;
                 case InputBoxIconType.Hand:
+                    pbxIcon.Image = Properties.Resources.Hand_Information_Box;
                     break;
                 case InputBoxIconType.Information:
+                    pbxIcon.Image = Properties.Resources.Information_Information_Box;
                     break;
                 case InputBoxIconType.None:
                     pbxIcon.SizeMode = PictureBoxSizeMode.Normal;
@@ -241,10 +248,17 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                     kryptonTableLayoutPanel1.SetColumnSpan(_labelPrompt, 2);
                     break;
                 case InputBoxIconType.Ok:
+                    pbxIcon.Image = Properties.Resources.Ok_Information_Box;
                     break;
                 case InputBoxIconType.Question:
+                    pbxIcon.Image = Properties.Resources.Question_Information_Box;
                     break;
                 case InputBoxIconType.Stop:
+                    pbxIcon.Image = Properties.Resources.Stop_Information_Box;
+                    break;
+                case InputBoxIconType.Shield:
+                    break;
+                case InputBoxIconType.WindowsLogo:
                     break;
             }
         }

@@ -51,6 +51,10 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <summary>Specifies a warning icon.</summary>
         Exclamation = 9,
         /// <summary>Specifies the asterisk icon.</summary>
-        Asterisk = 10
+        Asterisk = 10,
+        /// <summary>Specifies the UAC shield icon.</summary>
+        Shield = 11,
+        /// <summary>Specifies the Windows logo icon.</summary>
+        WindowsLogo = 12
     }
 }
