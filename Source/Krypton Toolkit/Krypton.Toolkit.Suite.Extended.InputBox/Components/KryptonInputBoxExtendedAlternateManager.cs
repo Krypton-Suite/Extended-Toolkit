@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.InputBox
 {
-    public class KryptonInputBoxExtendedManager : Component
+    public class KryptonInputBoxExtendedAlternateManager : Component
     {
         #region Variables
         private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult, _buttonFourResult;
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         #endregion
 
         #region Constructors
-        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedManager" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedAlternateManager" /> class.</summary>
         /// <param name="iconLocation">The icon location.</param>
         /// <param name="message">The message.</param>
         /// <param name="title">The title.</param>
@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="buttonTwoResult">The button two result.</param>
         /// <param name="buttonThreeResult">The button three result.</param>
         /// <param name="buttonFourResult">The button four result.</param>
-        public KryptonInputBoxExtendedManager(Point iconLocation, string message, string title, InputBoxIconType icon, 
+        public KryptonInputBoxExtendedAlternateManager(Point iconLocation, string message, string title, InputBoxIconType icon, 
             Image image, InputBoxLanguage language, InputBoxButtons buttons, InputBoxInputType type, string[] listItems,
             bool showInTaskBar, Font controlTypeface, Font messageTypeface, string okText, string yesText, string noText,
             string cancelText, string hintText, FormStartPosition startPosition, InputBoxButtons boxButtons, 
@@ -216,7 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             _buttonFourResult = buttonFourResult;
         }
 
-        public KryptonInputBoxExtendedManager()
+        public KryptonInputBoxExtendedAlternateManager()
         {
 
         }
@@ -225,7 +225,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         #region Methods
         public void DisplayInputBox()
         {
-            KryptonInputBoxExtended kryptonInputBox = new KryptonInputBoxExtended(_iconLocation, _message, _title, _icon, _image,
+            KryptonInputBoxExtendedAlternateForm kryptonInputBox = new KryptonInputBoxExtendedAlternateForm(_iconLocation, _message, _title, _icon, _image,
                                                                                   _language, _buttons, _type, _listItems,
                                                                                   _showInTaskBar, _controlTypeface, _messageTypeface,
                                                                                   _okText, _yesText, _noText, _cancelText, _hintText,

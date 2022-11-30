@@ -31,9 +31,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
     public class ThemeSettingsManager
     {
         #region Variables
-        private ThemeSettings _themeSettings = new ThemeSettings();
+        private ThemeSettings _themeSettings = new();
 
-        private GlobalThemeSettings _globalThemeSettings = new GlobalThemeSettings();
+        private GlobalThemeSettings _globalThemeSettings = new();
         #endregion
 
         #region Constuctor

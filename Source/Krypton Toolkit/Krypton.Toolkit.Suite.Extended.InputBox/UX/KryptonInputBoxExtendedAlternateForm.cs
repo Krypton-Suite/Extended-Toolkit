@@ -29,7 +29,7 @@ using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace Krypton.Toolkit.Suite.Extended.InputBox
 {
-    public class KryptonInputBoxExtended : KryptonForm
+    public class KryptonInputBoxExtendedAlternateForm : KryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
@@ -228,7 +228,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.Name = "KryptonInputBoxExtended";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KryptonInputBoxExtended_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KryptonInputBoxExtendedAlternateForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -277,7 +277,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         #endregion
 
         #region Constructor
-        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedAlternateForm"/> class.</summary>
         /// <param name="message">The message.</param>
         /// <param name="title">The title.</param>
         /// <param name="language">The language.</param>
@@ -291,7 +291,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.English, 
+        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.English, 
             InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false, 
             Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes",
             string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
@@ -325,7 +325,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             SetDialogResult(DialogResult.OK, DialogResult.None, DialogResult.None, DialogResult.None);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedAlternateForm"/> class.</summary>
         /// <param name="message">The message.</param>
         /// <param name="title">The title.</param>
         /// <param name="icon">The icon.</param>
@@ -341,7 +341,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.None, 
+        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.None, 
             Image image = null, InputBoxLanguage language = InputBoxLanguage.English, 
             InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, 
             bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, 
@@ -377,7 +377,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             SetDialogResult(DialogResult.None, DialogResult.None, DialogResult.None, DialogResult.OK);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedAlternateForm"/> class.</summary>
         /// <param name="message">The message.</param>
         /// <param name="title">The title.</param>
         /// <param name="icon">The icon.</param>
@@ -394,7 +394,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information,
+        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information,
             Image image = null, InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok, 
             InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false, 
             Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
@@ -431,7 +431,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             SetDialogResult(buttonOneResult, buttonTwoResult, buttonThreeResult, buttonFourResult);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedAlternateForm"/> class.</summary>
         /// <param name="message">The message.</param>
         /// <param name="title">The title.</param>
         /// <param name="icon">The icon.</param>
@@ -449,7 +449,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
         /// <param name="startPosition">The start position.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information, 
+        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information, 
             Image image = null, InputBoxLanguage language = InputBoxLanguage.English, 
             InputBoxButtons buttons = InputBoxButtons.Ok, InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, 
             bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok",
@@ -489,7 +489,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             SetDialogResult(buttonOneResult, buttonTwoResult, buttonThreeResult, buttonFourResult);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedAlternateForm"/> class.</summary>
         /// <param name="message">The message.</param>
         /// <param name="title">The title.</param>
         /// <param name="icon">The icon.</param>
@@ -507,7 +507,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
         /// <param name="textAlignment">The text alignment.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information, 
+        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information, 
             Image image = null, InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok, 
             InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false, 
             Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
@@ -547,7 +547,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             SetDialogResult(buttonOneResult, buttonTwoResult, buttonThreeResult, buttonFourResult);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedAlternateForm"/> class.</summary>
         /// <param name="iconLocation">The icon location.</param>
         /// <param name="message">The message.</param>
         /// <param name="title">The title.</param>
@@ -567,7 +567,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="hintText">The hint text.</param>
         /// <param name="startPosition">The start position.</param>
         /// <param name="textAlignment">The text alignment.</param>
-        public KryptonInputBoxExtended(Point iconLocation, string message, string title = "", 
+        public KryptonInputBoxExtendedAlternateForm(Point iconLocation, string message, string title = "", 
             InputBoxIconType icon = InputBoxIconType.Information, Image image = null, 
             InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok, 
             InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false,
@@ -1310,7 +1310,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         #endregion
 
         #region Event Handlers
-        private void KryptonInputBoxExtended_FormClosing(object sender, FormClosingEventArgs e)
+        private void KryptonInputBoxExtendedAlternateForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (Response != DialogResult.None)
             {

@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private TextFinderDialogSettings _textFinderDialogSettings = new TextFinderDialogSettings();
+        private TextFinderDialogSettings _textFinderDialogSettings = new();
         #endregion
 
         #region Properties

@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private ThemeSettings _themeSettings = new ThemeSettings();
+        private ThemeSettings _themeSettings = new();
         #endregion
 
         #region Properties
@@ -163,13 +163,14 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// </summary>
         public void ResetToDefaults()
         {
-            if (MessageBox.Show("WARNING! You are about to reset these settings back to their original state. This action cannot be undone!\nDo you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (MessageBox.Show(@"WARNING! You are about to reset these settings back to their original state. This action cannot be undone!
+Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 SetCurrentApplicationTheme(PaletteMode.Office2010Blue);
 
                 SetCustomThemePath("");
 
-                if (MessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show($@"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Application.Restart();
                 }
@@ -184,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (alwaysUsePrompt)
             {
-                if (MessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(@"You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     _themeSettings.Save();
 

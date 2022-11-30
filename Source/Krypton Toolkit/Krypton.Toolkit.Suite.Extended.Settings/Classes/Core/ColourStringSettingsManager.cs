@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
     public class ColourStringSettingsManager
     {
         #region Variables
-        private ColourStringSettings _colourStringSettings = new ColourStringSettings();
+        private ColourStringSettings _colourStringSettings = new();
         #endregion
 
         #region Constructors

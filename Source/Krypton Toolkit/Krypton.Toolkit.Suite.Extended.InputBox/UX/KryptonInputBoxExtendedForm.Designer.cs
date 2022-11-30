@@ -140,6 +140,7 @@
             this.kcmbResponse.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbResponse.TabIndex = 4;
             this.kcmbResponse.Visible = false;
+            this.kcmbResponse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Response_KeyDown);
             // 
             // ktxtResponse
             // 
@@ -148,6 +149,7 @@
             this.ktxtResponse.Name = "ktxtResponse";
             this.ktxtResponse.Size = new System.Drawing.Size(344, 23);
             this.ktxtResponse.TabIndex = 3;
+            this.ktxtResponse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Response_KeyDown);
             // 
             // krtbResponse
             // 
@@ -158,6 +160,7 @@
             this.krtbResponse.TabIndex = 2;
             this.krtbResponse.Text = "";
             this.krtbResponse.Visible = false;
+            this.krtbResponse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Response_KeyDown);
             // 
             // kmtxResponse
             // 
@@ -167,6 +170,7 @@
             this.kmtxResponse.Size = new System.Drawing.Size(344, 23);
             this.kmtxResponse.TabIndex = 1;
             this.kmtxResponse.Visible = false;
+            this.kmtxResponse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Response_KeyDown);
             // 
             // kdtpResponse
             // 
@@ -178,6 +182,7 @@
             this.kdtpResponse.TabIndex = 0;
             this.kdtpResponse.ValueNullable = new System.DateTime(((long)(0)));
             this.kdtpResponse.Visible = false;
+            this.kdtpResponse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Response_KeyDown);
             // 
             // kryptonBorderEdge1
             // 

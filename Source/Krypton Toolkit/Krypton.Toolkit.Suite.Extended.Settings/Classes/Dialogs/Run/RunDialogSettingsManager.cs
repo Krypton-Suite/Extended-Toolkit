@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private RunDialogSettings _runDialogSettings = new RunDialogSettings();
+        private RunDialogSettings _runDialogSettings = new();
         #endregion
 
         #region Properties

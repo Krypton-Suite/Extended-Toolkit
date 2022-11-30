@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private InternalApplicationUpdaterSettings _internalApplicationUpdaterSettings = new InternalApplicationUpdaterSettings();
+        private InternalApplicationUpdaterSettings _internalApplicationUpdaterSettings = new();
         #endregion
 
         #region Properties

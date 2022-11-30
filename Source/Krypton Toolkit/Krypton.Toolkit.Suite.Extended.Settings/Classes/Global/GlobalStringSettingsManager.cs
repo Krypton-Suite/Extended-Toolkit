@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
     public class GlobalStringSettingsManager
     {
         #region Variables
-        private GlobalStringSettings _globalStringSettings = new GlobalStringSettings();
+        private GlobalStringSettings _globalStringSettings = new();
         #endregion
 
         #region Constructor

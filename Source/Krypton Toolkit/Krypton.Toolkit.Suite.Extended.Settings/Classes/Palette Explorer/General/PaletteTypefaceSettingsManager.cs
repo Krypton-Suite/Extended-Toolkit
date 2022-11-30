@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
     public class PaletteTypefaceSettingsManager
     {
         #region Variables
-        private PaletteTypefaceSettings _paletteTypefaceSettings = new PaletteTypefaceSettings();
+        private PaletteTypefaceSettings _paletteTypefaceSettings = new();
         #endregion
 
         #region Constructors

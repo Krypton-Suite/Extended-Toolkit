@@ -174,10 +174,11 @@
 	</EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-	<Folder Include="Components\" />
+	<None Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" Link="Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" />
   </ItemGroup>
   <ItemGroup>
-	<None Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" Link="Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
   </ItemGroup>
   <ItemGroup>
 	<None Update="License\License.txt">

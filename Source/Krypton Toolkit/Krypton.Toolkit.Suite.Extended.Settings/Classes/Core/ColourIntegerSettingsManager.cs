@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
     public class ColourIntegerSettingsManager
     {
         #region Variables
-        private ColourIntegerSettings _colourIntegerSettings = new ColourIntegerSettings();
+        private ColourIntegerSettings _colourIntegerSettings = new();
         #endregion
 
         #region Setters and Getters

@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             }
         }
 
-        private static void OnVerbAbout(object sender, EventArgs e) => MessageBox.Show("Written by Steve Bate", "About AdvancedWizard", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private static void OnVerbAbout(object sender, EventArgs e) => MessageBox.Show(@"Written by Steve Bate", "About AdvancedWizard", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         private void OnVerbNew(object sender, EventArgs e)
         {

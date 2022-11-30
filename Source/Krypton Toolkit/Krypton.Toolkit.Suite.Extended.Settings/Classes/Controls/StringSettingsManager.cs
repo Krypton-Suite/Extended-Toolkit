@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private StringSettings _stringSettings = new StringSettings();
+        private StringSettings _stringSettings = new();
         #endregion
 
         #region Properties

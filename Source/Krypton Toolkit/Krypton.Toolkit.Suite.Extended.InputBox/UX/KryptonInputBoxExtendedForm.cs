@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.InputBox
+﻿namespace Krypton.Toolkit.Suite.Extended.InputBox
 {
     public partial class KryptonInputBoxExtendedForm : KryptonForm
     {
@@ -25,7 +15,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         private string _caption;
         private string _defaultResponse;
         private string _cueText;
-        private Font _cueTypeface;
+        private Font _cueTypeface, _promptTypeface, _buttonTypeface;
         private InputBoxIconType _iconType;
         private KryptonInputBoxType _inputType;
         private InputBoxTextAlignment _textAlignment;
@@ -33,8 +23,15 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         private InputBoxButtons _buttons;
         private InputBoxButtonFocus _focusedButton;
         private Image _customImage;
-        private Properties.Resources _resources = new Properties.Resources();
-        
+        private Properties.Resources _resources = new();
+        private GlobalTypefaceSettingsManager _typefaceSettings = new();
+
+        #endregion
+
+        #region Properties
+
+        internal string InputResponse => GetInputResponse();
+
         #endregion
 
         #region Identity
@@ -45,11 +42,11 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedForm" /> class.</summary>
-        /// <param name="cueColour">The cue colour.</param>
         /// <param name="prompt">The prompt.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="defaultResponse">The default response.</param>
         /// <param name="cueText">The cue text.</param>
+        /// <param name="cueColour">The cue colour.</param>
         /// <param name="cueTypeface">The cue typeface.</param>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="inputType">Type of the input.</param>
@@ -58,16 +55,52 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="buttons">The buttons.</param>
         /// <param name="focusedButton">The focused button.</param>
         /// <param name="customImage">The custom image.</param>
-        public KryptonInputBoxExtendedForm(Color cueColour, string prompt, string caption, string defaultResponse, string cueText, 
-                                          Font cueTypeface, InputBoxIconType iconType, KryptonInputBoxType inputType, 
-                                          InputBoxTextAlignment textAlignment, InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, 
-                                          InputBoxButtons buttons = InputBoxButtons.OkCancel, InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour, 
-                                          Image customImage = null)
+        public KryptonInputBoxExtendedForm(string prompt, string caption,
+                                           string defaultResponse, string cueText, 
+                                           Color cueColour, 
+                                           Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
+                                           InputBoxIconType iconType, KryptonInputBoxType inputType, 
+                                           InputBoxTextAlignment textAlignment, 
+                                           InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, 
+                                           InputBoxButtons buttons = InputBoxButtons.OkCancel, 
+                                           InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour, 
+                                           Image customImage = null)
         {
             InitializeComponent();
 
-            StoreValues(cueColour, prompt, caption, defaultResponse, cueText, cueTypeface, iconType, inputType,
-                        textAlignment, textWrappedMessageTextAlignment, buttons, focusedButton, customImage);
+            SetupUI(prompt, caption, defaultResponse, cueText, cueColour, cueTypeface, buttonTypeface, promptTypeface,
+                    iconType, inputType, textAlignment, textWrappedMessageTextAlignment,
+                    buttons, focusedButton, customImage);
+        }
+
+        #endregion
+
+        #region Implementation
+
+        /// <summary>Setups the UI.</summary>
+        /// <param name="prompt">The prompt.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="defaultResponse">The default response.</param>
+        /// <param name="cueText">The cue text.</param>
+        /// <param name="cueColour">The cue colour.</param>
+        /// <param name="cueTypeface">The cue typeface.</param>
+        /// <param name="buttonTypeface">The button typeface.</param>
+        /// <param name="promptTypeface">The prompt typeface.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="inputType">Type of the input.</param>
+        /// <param name="textAlignment">The text alignment.</param>
+        /// <param name="textWrappedMessageTextAlignment">The text wrapped message text alignment.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="focusedButton">The focused button.</param>
+        /// <param name="customImage">The custom image.</param>
+        private void SetupUI(string prompt, string caption, string defaultResponse, string cueText, Color cueColour,
+            Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface, InputBoxIconType iconType, KryptonInputBoxType inputType, InputBoxTextAlignment textAlignment,
+            InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, InputBoxButtons buttons,
+            InputBoxButtonFocus focusedButton, Image customImage)
+        {
+            StoreValues(cueColour, prompt, caption, defaultResponse, cueText, cueTypeface, buttonTypeface, promptTypeface,
+                        iconType, inputType, textAlignment, textWrappedMessageTextAlignment, 
+                        buttons, focusedButton, customImage);
 
             UpdateButtons(_buttons, _focusedButton);
 
@@ -81,11 +114,26 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             }
 
             UpdateResponseType(_inputType);
+
+            UpdateText();
+
+            if (!string.IsNullOrEmpty(_cueText))
+            {
+                SetPromptText(_cueText);
+            }
+
+            SetCueColour(_cueColour);
+
+            SetCueTypeface(_cueTypeface);
+
+            SetButtonTypeface(_buttonTypeface);
+
+            SetPromptTypeface(_promptTypeface);
+
+            SetTextAlignment(_textAlignment);
+
+            SetWrappedMessageTextAlignment(_textWrappedMessageTextAlignment);
         }
-
-        #endregion
-
-        #region Implementation
 
         /// <summary>Stores the values.</summary>
         /// <param name="cueColour">The cue colour.</param>
@@ -102,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="focusedButton">The focused button.</param>
         /// <param name="customImage">The custom image.</param>
         private void StoreValues(Color cueColour, string prompt, string caption, string defaultResponse, string cueText,
-            Font? cueTypeface, InputBoxIconType? iconType, KryptonInputBoxType? inputType, InputBoxTextAlignment? textAlignment,
+            Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface, InputBoxIconType? iconType, KryptonInputBoxType? inputType, InputBoxTextAlignment? textAlignment,
             InputBoxWrappedMessageTextAlignment? textWrappedMessageTextAlignment, InputBoxButtons? buttons, InputBoxButtonFocus? focusedButton, Image? customImage)
         {
             _cueColour = cueColour;
@@ -110,7 +158,9 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             _caption = caption;
             _defaultResponse = defaultResponse ?? @"";
             _cueText = cueText ?? @"";
-            _cueTypeface = cueTypeface ?? new("", 8f);
+            _cueTypeface = cueTypeface ?? _typefaceSettings.GetCueTypeface();
+            _buttonTypeface = buttonTypeface ?? _typefaceSettings.GetNormalTypeface();
+            _promptTypeface = promptTypeface ?? _typefaceSettings.GetBoldTypeface();
             _iconType = iconType ?? InputBoxIconType.None;
             _inputType = inputType ?? KryptonInputBoxType.TextBox;
             _textAlignment = textAlignment ?? InputBoxTextAlignment.Left;
@@ -343,37 +393,61 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             switch (buttonFocus)
             {
                 case InputBoxButtonFocus.ButtonOne:
+                    if (kbtnInputBoxButtonOne.Visible)
+                    {
+                        kbtnInputBoxButtonOne.Focus();
+                    }
+                    else
+                    {
+                        kbtnInputBoxButtonTwo.Focus();
+                    }
                     break;
                 case InputBoxButtonFocus.ButtonTwo:
+                    kbtnInputBoxButtonTwo.Focus();
                     break;
                 case InputBoxButtonFocus.ButtonThree:
+                    kbtnInputBoxButtonThree.Focus();
                     break;
                 case InputBoxButtonFocus.ButtonFour:
+                    kbtnInputBoxButtonThree.Focus();
                     break;
             }
         }
 
+        /// <summary>Sets the prompt text.</summary>
+        /// <param name="promptText">The prompt text.</param>
         private void SetPromptText(string promptText) => _labelPrompt.Text = promptText;
 
-        private void SetTypeface(Font typeface)
+        /// <summary>Sets the prompt typeface.</summary>
+        /// <param name="promptTypeface">The prompt typeface.</param>
+        private void SetPromptTypeface(Font promptTypeface) => _labelPrompt.Font = promptTypeface;
+
+        /// <summary>Sets the input typeface.</summary>
+        /// <param name="inputTypeface">The input typeface.</param>
+        private void SetInputTypeface(Font inputTypeface)
         {
-            _labelPrompt.Font = typeface;
+            kcmbResponse.Font = inputTypeface;
 
-            kcmbResponse.Font = typeface;
+            kdtpResponse.StateCommon.Content.Font = inputTypeface;
 
-            kdtpResponse.StateCommon.Content.Font = typeface;
+            kmtxResponse.StateCommon.Content.Font = inputTypeface;
 
-            kmtxResponse.StateCommon.Content.Font = typeface;
-
-            ktxtResponse.StateCommon.Content.Font = typeface;
-
-            kbtnInputBoxButtonOne.StateCommon.Content.ShortText.Font = typeface;
-
-            kbtnInputBoxButtonTwo.StateCommon.Content.ShortText.Font = typeface;
-
-            kbtnInputBoxButtonThree.StateCommon.Content.ShortText.Font = typeface;
+            ktxtResponse.StateCommon.Content.Font = inputTypeface;
         }
 
+        /// <summary>Sets the button typeface.</summary>
+        /// <param name="buttonTypeface">The button typeface.</param>
+        private void SetButtonTypeface(Font buttonTypeface)
+        {
+            kbtnInputBoxButtonOne.StateCommon.Content.ShortText.Font = buttonTypeface;
+
+            kbtnInputBoxButtonTwo.StateCommon.Content.ShortText.Font = buttonTypeface;
+
+            kbtnInputBoxButtonThree.StateCommon.Content.ShortText.Font = buttonTypeface;
+        }
+
+        /// <summary>Sets the cue colour.</summary>
+        /// <param name="cueColour">The cue colour.</param>
         private void SetCueColour(Color cueColour)
         {
             kcmbResponse.CueHint.Color1 = cueColour;
@@ -383,6 +457,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             ktxtResponse.CueHint.Color1 = cueColour;
         }
 
+        /// <summary>Sets the cue typeface.</summary>
+        /// <param name="cueTypeface">The cue typeface.</param>
         private void SetCueTypeface(Font cueTypeface)
         {
             kcmbResponse.CueHint.Font = cueTypeface;
@@ -390,6 +466,212 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             krtbResponse.CueHint.Font = cueTypeface;
 
             ktxtResponse.CueHint.Font = cueTypeface;
+        }
+
+        /// <summary>Gets the input response.</summary>
+        /// <returns>The input response string.</returns>
+        private string GetInputResponse()
+        {
+            string output = string.Empty;
+
+            if (_inputType == KryptonInputBoxType.ComboBox)
+            {
+                output = kcmbResponse.Text;
+            }
+            else if (_inputType == KryptonInputBoxType.DateTimePicker)
+            {
+                output = kdtpResponse.Text;
+            }
+            else if (_inputType == KryptonInputBoxType.MaskedTextBox)
+            {
+                output = kmtxResponse.Text;
+            }
+            else if (_inputType == KryptonInputBoxType.None)
+            {
+                output = string.Empty;
+            }
+            else if (_inputType == KryptonInputBoxType.PasswordBox)
+            {
+                output = ktxtResponse.Text;
+            }
+            else if (_inputType == KryptonInputBoxType.RichTextBox)
+            {
+                output = krtbResponse.Text;
+            }
+            else if (_inputType == KryptonInputBoxType.TextBox)
+            {
+                output = ktxtResponse.Text;
+            }
+
+            return output;
+        }
+
+        /// <summary>Updates the text.</summary>
+        private void UpdateText()
+        {
+            Text = _caption;
+
+            _labelPrompt.Text = _prompt;
+
+            if (_inputType == KryptonInputBoxType.ComboBox)
+            {
+                kcmbResponse.Text = _defaultResponse;
+            }
+            else if (_inputType == KryptonInputBoxType.DateTimePicker)
+            {
+                kdtpResponse.Value = DateTime.Now;
+            }
+            else if (_inputType == KryptonInputBoxType.MaskedTextBox)
+            {
+                kmtxResponse.Text = _defaultResponse;
+            }
+            else if (_inputType == KryptonInputBoxType.PasswordBox)
+            {
+                ktxtResponse.Text = _defaultResponse;
+            }
+            else if (_inputType == KryptonInputBoxType.RichTextBox)
+            {
+                krtbResponse.Text = _defaultResponse;
+            }
+            else if (_inputType == KryptonInputBoxType.TextBox)
+            {
+                ktxtResponse.Text = _defaultResponse;
+            }
+        }
+
+        /// <summary>Sets the text alignment.</summary>
+        /// <param name="textAlignment">The text alignment.</param>
+        private void SetTextAlignment(InputBoxTextAlignment textAlignment)
+        {
+            switch (textAlignment)
+            {
+                case InputBoxTextAlignment.Left:
+                    kcmbResponse.StateCommon.ComboBox.Content.TextH = PaletteRelativeAlign.Near;
+
+                    kdtpResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Near;
+
+                    kmtxResponse.TextAlign = HorizontalAlignment.Left;
+
+                    krtbResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Near;
+
+                    ktxtResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Near;
+                    break;
+                case InputBoxTextAlignment.Centre:
+                    kcmbResponse.StateCommon.ComboBox.Content.TextH = PaletteRelativeAlign.Center;
+
+                    kdtpResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Center;
+
+                    kmtxResponse.TextAlign = HorizontalAlignment.Center;
+
+                    krtbResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Center;
+
+                    ktxtResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Center;
+                    break;
+                case InputBoxTextAlignment.Right:
+                    kcmbResponse.StateCommon.ComboBox.Content.TextH = PaletteRelativeAlign.Far;
+
+                    kdtpResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Far;
+
+                    kmtxResponse.TextAlign = HorizontalAlignment.Right;
+
+                    krtbResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Far;
+
+                    ktxtResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Far;
+                    break;
+            }
+        }
+
+        /// <summary>Sets the wrapped message text alignment.</summary>
+        /// <param name="textAlignment">The text alignment.</param>
+        /// <exception cref="System.ArgumentOutOfRangeException">textAlignment - null</exception>
+        private void SetWrappedMessageTextAlignment(InputBoxWrappedMessageTextAlignment textAlignment)
+        {
+            switch (textAlignment)
+            {
+                case InputBoxWrappedMessageTextAlignment.TopLeft:
+                    _labelPrompt.TextAlign = ContentAlignment.TopLeft;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.TopCentre:
+                    _labelPrompt.TextAlign = ContentAlignment.TopCenter;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.TopRight:
+                    _labelPrompt.TextAlign = ContentAlignment.TopRight;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.MiddleLeft:
+                    _labelPrompt.TextAlign = ContentAlignment.MiddleLeft;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.MiddleCentre:
+                    _labelPrompt.TextAlign = ContentAlignment.MiddleCenter;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.MiddleRight:
+                    _labelPrompt.TextAlign = ContentAlignment.MiddleRight;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.BottomLeft:
+                    _labelPrompt.TextAlign = ContentAlignment.BottomLeft;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.BottomCentre:
+                    _labelPrompt.TextAlign = ContentAlignment.BottomCenter;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.BottomRight:
+                    _labelPrompt.TextAlign = ContentAlignment.BottomRight;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(textAlignment), textAlignment, null);
+            }
+        }
+
+        /// <summary>Shows the <see cref="KryptonInputBoxExtendedForm"/>, and returns the input string.</summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="prompt">The prompt.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="defaultResponse">The default response.</param>
+        /// <param name="cueText">The cue text.</param>
+        /// <param name="cueColour">The cue colour.</param>
+        /// <param name="cueTypeface">The cue typeface.</param>
+        /// <param name="buttonTypeface">The button typeface.</param>
+        /// <param name="promptTypeface">The prompt typeface.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="inputType">Type of the input.</param>
+        /// <param name="textAlignment">The text alignment.</param>
+        /// <param name="textWrappedMessageTextAlignment">The text wrapped message text alignment.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="focusedButton">The focused button.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <returns>The users input string.</returns>
+        internal static string InternalShow(IWin32Window owner, string prompt, string caption,
+                                            string defaultResponse, string cueText, Color cueColour,
+                                            Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
+                                            InputBoxIconType iconType,
+                                            KryptonInputBoxType inputType,
+                                            InputBoxTextAlignment textAlignment,
+                                            InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
+                                            InputBoxButtons buttons = InputBoxButtons.OkCancel,
+                                            InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
+                                            Image customImage = null)
+        {
+            IWin32Window showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
+
+            using KryptonInputBoxExtendedForm kibe = new(prompt, caption, defaultResponse, cueText, cueColour,
+                                                         cueTypeface, buttonTypeface, promptTypeface,
+                                                         iconType, inputType, textAlignment,
+                                                         textWrappedMessageTextAlignment, buttons,
+                                                         focusedButton, customImage);
+
+            kibe.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
+
+            return kibe.ShowDialog(showOwner) == DialogResult.OK ? kibe.InputResponse : string.Empty;
+        }
+
+        private void Response_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                kbtnInputBoxButtonTwo.PerformClick();
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                kbtnInputBoxButtonThree.PerformClick();
+            }
         }
 
         #endregion
