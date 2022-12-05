@@ -88,13 +88,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="80.22.12.337-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="80.22.12.338-alpha" />
 
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.12.337-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.12.338-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="80.22.12.337-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="80.22.12.338-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="80.22.12.337-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="80.22.12.338-alpha" />
 			</ItemGroup>
 		</When>
 

@@ -38,6 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         #region Instance Fields
 
         private Color _cueColour;
+        private DateTime _initialDateTime;
         private string _prompt;
         private string _caption;
         private string _defaultResponse;
@@ -75,6 +76,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="cueText">The cue text.</param>
         /// <param name="cueColour">The cue colour.</param>
         /// <param name="cueTypeface">The cue typeface.</param>
+        /// <param name="buttonTypeface">The button typeface.</param>
+        /// <param name="promptTypeface">The prompt typeface.</param>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="inputType">Type of the input.</param>
         /// <param name="textAlignment">The text alignment.</param>
@@ -82,29 +85,30 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="buttons">The buttons.</param>
         /// <param name="focusedButton">The focused button.</param>
         /// <param name="customImage">The custom image.</param>
+        /// <param name="initialDateTime">The initial date time.</param>
         public KryptonInputBoxExtendedForm(string prompt, string caption,
                                            string defaultResponse, string cueText, 
                                            Color cueColour, 
-                                           Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
+                                           Font cueTypeface, Font buttonTypeface, Font promptTypeface,
                                            InputBoxIconType iconType, KryptonInputBoxType inputType, 
                                            InputBoxTextAlignment textAlignment, 
                                            InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, 
                                            InputBoxButtons buttons = InputBoxButtons.OkCancel, 
                                            InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour, 
-                                           Image customImage = null)
+                                           Image customImage = null, DateTime? initialDateTime = null)
         {
             InitializeComponent();
 
             SetupUI(prompt, caption, defaultResponse, cueText, cueColour, cueTypeface, buttonTypeface, promptTypeface,
                     iconType, inputType, textAlignment, textWrappedMessageTextAlignment,
-                    buttons, focusedButton, customImage);
+                    buttons, focusedButton, customImage, initialDateTime);
         }
 
         #endregion
 
         #region Implementation
 
-        /// <summary>Setups the UI.</summary>
+        /// <summary>Setup the UI.</summary>
         /// <param name="prompt">The prompt.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="defaultResponse">The default response.</param>
@@ -120,14 +124,17 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="buttons">The buttons.</param>
         /// <param name="focusedButton">The focused button.</param>
         /// <param name="customImage">The custom image.</param>
+        /// <param name="initialDateTime">The initial date time.</param>
         private void SetupUI(string prompt, string caption, string defaultResponse, string cueText, Color cueColour,
-            Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface, InputBoxIconType iconType, KryptonInputBoxType inputType, InputBoxTextAlignment textAlignment,
-            InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, InputBoxButtons buttons,
-            InputBoxButtonFocus focusedButton, Image customImage)
+                             Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+                             InputBoxIconType iconType, KryptonInputBoxType inputType, 
+                             InputBoxTextAlignment textAlignment,
+                             InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, InputBoxButtons buttons,
+                             InputBoxButtonFocus focusedButton, Image customImage, DateTime? initialDateTime = null)
         {
             StoreValues(cueColour, prompt, caption, defaultResponse, cueText, cueTypeface, buttonTypeface, promptTypeface,
                         iconType, inputType, textAlignment, textWrappedMessageTextAlignment, 
-                        buttons, focusedButton, customImage);
+                        buttons, focusedButton, customImage, initialDateTime);
 
             UpdateButtons(_buttons, _focusedButton);
 
@@ -169,6 +176,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="defaultResponse">The default response.</param>
         /// <param name="cueText">The cue text.</param>
         /// <param name="cueTypeface">The cue typeface.</param>
+        /// <param name="buttonTypeface">The button typeface.</param>
+        /// <param name="promptTypeface">The prompt typeface.</param>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="inputType">Type of the input.</param>
         /// <param name="textAlignment">The text alignment.</param>
@@ -176,9 +185,14 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="buttons">The buttons.</param>
         /// <param name="focusedButton">The focused button.</param>
         /// <param name="customImage">The custom image.</param>
+        /// <param name="initialDateTime">The initial date time.</param>
         private void StoreValues(Color cueColour, string prompt, string caption, string defaultResponse, string cueText,
-            Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface, InputBoxIconType? iconType, KryptonInputBoxType? inputType, InputBoxTextAlignment? textAlignment,
-            InputBoxWrappedMessageTextAlignment? textWrappedMessageTextAlignment, InputBoxButtons? buttons, InputBoxButtonFocus? focusedButton, Image? customImage)
+                                 Font cueTypeface, Font buttonTypeface, Font promptTypeface, 
+                                 InputBoxIconType? iconType, KryptonInputBoxType? inputType, 
+                                 InputBoxTextAlignment? textAlignment,
+                                 InputBoxWrappedMessageTextAlignment? textWrappedMessageTextAlignment, 
+                                 InputBoxButtons? buttons, InputBoxButtonFocus? focusedButton, 
+                                 Image customImage, DateTime? initialDateTime)
         {
             _cueColour = cueColour;
             _prompt = prompt;
@@ -195,6 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             _buttons = buttons ?? InputBoxButtons.Ok;
             _focusedButton = focusedButton ?? InputBoxButtonFocus.ButtonFour;
             _customImage = customImage ?? null;
+            _initialDateTime = initialDateTime ?? DateTime.Now;
         }
 
         /// <summary>Updates the type of the response.</summary>
@@ -546,7 +561,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             }
             else if (_inputType == KryptonInputBoxType.DateTimePicker)
             {
-                kdtpResponse.Value = DateTime.Now;
+                kdtpResponse.Value = GetInitialDateTime();
             }
             else if (_inputType == KryptonInputBoxType.MaskedTextBox)
             {
@@ -565,6 +580,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                 ktxtResponse.Text = _defaultResponse;
             }
         }
+
+        private DateTime GetInitialDateTime() => _initialDateTime;
 
         /// <summary>Sets the text alignment.</summary>
         /// <param name="textAlignment">The text alignment.</param>
@@ -664,17 +681,18 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="buttons">The buttons.</param>
         /// <param name="focusedButton">The focused button.</param>
         /// <param name="customImage">The custom image.</param>
+        /// <param name="initialDateTime">The initial date time.</param>
         /// <returns>The users input string.</returns>
         internal static string InternalShow(IWin32Window owner, string prompt, string caption,
                                             string defaultResponse, string cueText, Color cueColour,
-                                            Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
+                                            Font cueTypeface, Font buttonTypeface, Font promptTypeface,
                                             InputBoxIconType iconType,
                                             KryptonInputBoxType inputType,
                                             InputBoxTextAlignment textAlignment,
                                             InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
                                             InputBoxButtons buttons = InputBoxButtons.OkCancel,
                                             InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
-                                            Image customImage = null)
+                                            Image customImage = null, DateTime? initialDateTime = null)
         {
             IWin32Window showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
 
@@ -682,7 +700,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                                                          cueTypeface, buttonTypeface, promptTypeface,
                                                          iconType, inputType, textAlignment,
                                                          textWrappedMessageTextAlignment, buttons,
-                                                         focusedButton, customImage);
+                                                         focusedButton, customImage, initialDateTime);
 
             kibe.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 

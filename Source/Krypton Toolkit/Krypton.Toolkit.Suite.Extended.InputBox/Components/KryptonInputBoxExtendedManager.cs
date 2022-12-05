@@ -32,6 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         #region Instance Fields
 
         private Color _cueColour;
+        private DateTime _initialDateTime;
         private string _prompt;
         private string _caption;
         private string _defaultResponse;
@@ -53,6 +54,9 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
         [DefaultValue(typeof(Color), "Color.Gray")]
         public Color CueColour { get => _cueColour; set => _cueColour = value; }
+
+        [DefaultValue(typeof(DateTime), "DateTime.Now")]
+        public DateTime InitialDateTime { get => _initialDateTime; set => _initialDateTime = value; }
 
         [DefaultValue(typeof(Font), "DefaultToolkitTypefaceTypes.DEFAULT_CUE_TYPEFACE")]
         public Font CueTypeface { get => _cueTypeface; set => _cueTypeface = value; }
@@ -137,6 +141,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             _prompt = @"";
 
             _owner = null;
+
+            _initialDateTime = DateTime.Now;
         }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedManager" /> class.</summary>
@@ -158,14 +164,14 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="customImage">The custom image.</param>
         public KryptonInputBoxExtendedManager(IWin32Window owner, string prompt, string caption,
                                               string defaultResponse, string cueText, Color cueColour,
-                                              Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
+                                              Font cueTypeface, Font buttonTypeface, Font promptTypeface,
                                               InputBoxIconType iconType,
                                               KryptonInputBoxType inputType,
                                               InputBoxTextAlignment textAlignment,
                                               InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
                                               InputBoxButtons buttons,
                                               InputBoxButtonFocus focusedButton,
-                                              Image customImage)
+                                              Image customImage, DateTime? initialDateTime = null)
         {
             _owner = owner;
 
@@ -198,6 +204,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             _buttons = buttons;
 
             _focusedButton = focusedButton;
+
+            _initialDateTime = initialDateTime ?? DateTime.Now;
         }
 
         #endregion

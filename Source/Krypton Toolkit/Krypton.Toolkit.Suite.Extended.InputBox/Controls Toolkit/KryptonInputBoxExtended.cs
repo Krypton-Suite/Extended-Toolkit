@@ -50,22 +50,23 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="buttons">The buttons.</param>
         /// <param name="focusedButton">The focused button.</param>
         /// <param name="customImage">The custom image.</param>
+        /// <param name="initialDateTime">The initial date and time.</param>
         /// <returns>The users input string.</returns>
         internal static string InternalShow(IWin32Window owner, string prompt, string caption,
             string defaultResponse, string cueText, Color cueColour,
-            Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
+            Font cueTypeface, Font buttonTypeface, Font promptTypeface,
             InputBoxIconType iconType,
             KryptonInputBoxType inputType,
             InputBoxTextAlignment textAlignment,
             InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
             InputBoxButtons buttons = InputBoxButtons.OkCancel,
             InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
-            Image customImage = null)
+            Image customImage = null, DateTime? initialDateTime = null)
             => KryptonInputBoxExtendedForm.InternalShow(owner, prompt, caption, defaultResponse, cueText, 
                                                         cueColour, cueTypeface, buttonTypeface, promptTypeface,
                                                         iconType, inputType, textAlignment,
                                                         textWrappedMessageTextAlignment,
-                                                        buttons, focusedButton, customImage);
+                                                        buttons, focusedButton, customImage, initialDateTime);
 
         #endregion
     }
