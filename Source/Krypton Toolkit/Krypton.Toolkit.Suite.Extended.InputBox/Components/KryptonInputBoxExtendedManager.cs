@@ -162,6 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="buttons">The buttons.</param>
         /// <param name="focusedButton">The focused button.</param>
         /// <param name="customImage">The custom image.</param>
+        /// <param name="initialDateTime">The initial date time.</param>
         public KryptonInputBoxExtendedManager(IWin32Window owner, string prompt, string caption,
                                               string defaultResponse, string cueText, Color cueColour,
                                               Font cueTypeface, Font buttonTypeface, Font promptTypeface,
@@ -217,20 +218,20 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         public string Show()
             => Show(_owner, _prompt, _caption, _defaultResponse, _cueText, _cueColour, _cueTypeface, _buttonTypeface,
                 _promptTypeface, _iconType, _inputType, _textAlignment, _textWrappedMessageTextAlignment, _buttons,
-                _focusedButton, _customImage);
+                _focusedButton, _customImage, _initialDateTime);
 
         public string ShowInputBox(IWin32Window owner, string prompt, string caption,
-            string defaultResponse, string cueText, Color cueColour,
-            Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
-            InputBoxIconType iconType,
-            KryptonInputBoxType inputType,
-            InputBoxTextAlignment textAlignment,
-            InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
-            InputBoxButtons buttons = InputBoxButtons.OkCancel,
-            InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
-            Image customImage = null)
+                                   string defaultResponse, string cueText,
+                                   Color cueColour, Font cueTypeface, Font buttonTypeface, 
+                                   Font promptTypeface, InputBoxIconType iconType,
+                                   KryptonInputBoxType inputType,
+                                   InputBoxTextAlignment textAlignment,
+                                   InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
+                                   InputBoxButtons buttons = InputBoxButtons.OkCancel,
+                                   InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
+                                   Image customImage = null, DateTime? initialDateTime = default)
         => Show(owner, prompt, caption, defaultResponse, cueText, cueColour, cueTypeface,  buttonTypeface, promptTypeface,
-            iconType,  inputType, textAlignment, textWrappedMessageTextAlignment, buttons, focusedButton, customImage);
+            iconType,  inputType, textAlignment, textWrappedMessageTextAlignment, buttons, focusedButton, customImage, initialDateTime);
 
         /// <summary>Shows the <see cref="KryptonInputBoxExtendedForm"/>, and returns the input string.</summary>
         /// <param name="owner">The owner.</param>
@@ -249,22 +250,24 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="buttons">The buttons.</param>
         /// <param name="focusedButton">The focused button.</param>
         /// <param name="customImage">The custom image.</param>
+        /// <param name="initialDateTime">The initial date time.</param>
         /// <returns>The users input string.</returns>
         public static string Show(IWin32Window owner, string prompt, string caption,
-            string defaultResponse, string cueText, Color cueColour,
-            Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
-            InputBoxIconType iconType,
-            KryptonInputBoxType inputType,
-            InputBoxTextAlignment textAlignment,
-            InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
-            InputBoxButtons buttons = InputBoxButtons.OkCancel,
-            InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
-            Image customImage = null)
+                                  string defaultResponse, string cueText,
+                                  Color cueColour, Font cueTypeface, Font buttonTypeface, 
+                                  Font promptTypeface, InputBoxIconType iconType,
+                                  KryptonInputBoxType inputType,
+                                  InputBoxTextAlignment textAlignment,
+                                  InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
+                                  InputBoxButtons buttons = InputBoxButtons.OkCancel,
+                                  InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
+                                  Image customImage = null, DateTime? initialDateTime = default)
             => KryptonInputBoxExtendedForm.InternalShow(owner, prompt, caption, defaultResponse,
-                cueText, cueColour, cueTypeface, buttonTypeface,
-                promptTypeface, iconType, inputType, textAlignment,
-                textWrappedMessageTextAlignment, buttons,
-                focusedButton, customImage);
+                                                        cueText, cueColour, cueTypeface, 
+                                                        buttonTypeface, promptTypeface, iconType,
+                                                        inputType, textAlignment,
+                                                        textWrappedMessageTextAlignment, buttons,
+                                                        focusedButton, customImage, initialDateTime);
 
         #endregion
     }
