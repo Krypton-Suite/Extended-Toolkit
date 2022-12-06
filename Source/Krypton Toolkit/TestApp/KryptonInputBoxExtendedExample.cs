@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 using Krypton.Toolkit.Suite.Extended.InputBox;
 
-using KryptonInputBoxType = Krypton.Toolkit.Suite.Extended.InputBox.KryptonInputBoxType;
+using KryptonInputBoxResponseType = Krypton.Toolkit.Suite.Extended.InputBox.KryptonInputBoxResponseType;
 
 namespace TestApp
 {
@@ -25,7 +25,7 @@ namespace TestApp
         private string _cueText;
         private Font _cueTypeface, _promptTypeface, _buttonTypeface;
         private InputBoxIconType _iconType;
-        private KryptonInputBoxType _inputType;
+        private KryptonInputBoxResponseType _inputType;
         private InputBoxTextAlignment _textAlignment;
         private InputBoxWrappedMessageTextAlignment _textWrappedMessageTextAlignment;
         private InputBoxButtons _buttons;

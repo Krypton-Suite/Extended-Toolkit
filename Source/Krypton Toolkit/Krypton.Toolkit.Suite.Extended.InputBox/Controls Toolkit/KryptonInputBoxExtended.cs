@@ -13,20 +13,20 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         public static string Show(string prompt, string caption)
             => InternalShow(null, prompt, caption, string.Empty, string.Empty,
                 Color.Empty, null, null, null, InputBoxIconType.None,
-                KryptonInputBoxType.TextBox, InputBoxTextAlignment.Left, InputBoxWrappedMessageTextAlignment.MiddleLeft,
+                KryptonInputBoxResponseType.TextBox, InputBoxTextAlignment.Left, InputBoxWrappedMessageTextAlignment.MiddleLeft,
                 InputBoxButtons.OkCancel, InputBoxButtonFocus.ButtonOne, null);
 
         public static string Show(string prompt, string caption, string defaultResponse, string cueText)
             => InternalShow(null, prompt, caption, defaultResponse, cueText,
                 Color.Empty, null, null, null, InputBoxIconType.None,
-                KryptonInputBoxType.TextBox, InputBoxTextAlignment.Left, InputBoxWrappedMessageTextAlignment.MiddleLeft,
+                KryptonInputBoxResponseType.TextBox, InputBoxTextAlignment.Left, InputBoxWrappedMessageTextAlignment.MiddleLeft,
                 InputBoxButtons.OkCancel, InputBoxButtonFocus.ButtonOne, null);
 
         public static string Show(string prompt, string caption, string defaultResponse, string cueText, 
                                   Color cueColour, Font cueTypeface)
             => InternalShow(null, prompt, caption, defaultResponse, cueText,
                 cueColour, cueTypeface, null, null, InputBoxIconType.None,
-                KryptonInputBoxType.TextBox, InputBoxTextAlignment.Left, InputBoxWrappedMessageTextAlignment.MiddleLeft,
+                KryptonInputBoxResponseType.TextBox, InputBoxTextAlignment.Left, InputBoxWrappedMessageTextAlignment.MiddleLeft,
                 InputBoxButtons.OkCancel, InputBoxButtonFocus.ButtonOne, null);
 
         #endregion
@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             string defaultResponse, string cueText, Color cueColour,
             Font cueTypeface, Font buttonTypeface, Font promptTypeface,
             InputBoxIconType iconType,
-            KryptonInputBoxType inputType,
+            KryptonInputBoxResponseType inputType,
             InputBoxTextAlignment textAlignment,
             InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
             InputBoxButtons buttons = InputBoxButtons.OkCancel,

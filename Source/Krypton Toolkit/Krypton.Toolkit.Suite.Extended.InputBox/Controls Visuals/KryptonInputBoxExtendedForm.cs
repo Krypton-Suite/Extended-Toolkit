@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         private string _cueText;
         private Font _cueTypeface, _promptTypeface, _buttonTypeface;
         private InputBoxIconType _iconType;
-        private KryptonInputBoxType _inputType;
+        private KryptonInputBoxResponseType _inputType;
         private InputBoxTextAlignment _textAlignment;
         private InputBoxWrappedMessageTextAlignment _textWrappedMessageTextAlignment;
         private InputBoxButtons _buttons;
@@ -87,14 +87,14 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="customImage">The custom image.</param>
         /// <param name="initialDateTime">The initial date time.</param>
         public KryptonInputBoxExtendedForm(string prompt, string caption,
-                                           string defaultResponse, string cueText, 
-                                           Color cueColour, 
+                                           string defaultResponse, string cueText,
+                                           Color cueColour,
                                            Font cueTypeface, Font buttonTypeface, Font promptTypeface,
-                                           InputBoxIconType iconType, KryptonInputBoxType inputType, 
-                                           InputBoxTextAlignment textAlignment, 
-                                           InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, 
-                                           InputBoxButtons buttons = InputBoxButtons.OkCancel, 
-                                           InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour, 
+                                           InputBoxIconType iconType, KryptonInputBoxResponseType inputType,
+                                           InputBoxTextAlignment textAlignment,
+                                           InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
+                                           InputBoxButtons buttons = InputBoxButtons.OkCancel,
+                                           InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
                                            Image customImage = null, DateTime? initialDateTime = null)
         {
             InitializeComponent();
@@ -127,13 +127,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="initialDateTime">The initial date time.</param>
         private void SetupUI(string prompt, string caption, string defaultResponse, string cueText, Color cueColour,
                              Font cueTypeface, Font buttonTypeface, Font promptTypeface,
-                             InputBoxIconType iconType, KryptonInputBoxType inputType, 
+                             InputBoxIconType iconType, KryptonInputBoxResponseType inputType,
                              InputBoxTextAlignment textAlignment,
                              InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, InputBoxButtons buttons,
                              InputBoxButtonFocus focusedButton, Image customImage, DateTime? initialDateTime = null)
         {
             StoreValues(cueColour, prompt, caption, defaultResponse, cueText, cueTypeface, buttonTypeface, promptTypeface,
-                        iconType, inputType, textAlignment, textWrappedMessageTextAlignment, 
+                        iconType, inputType, textAlignment, textWrappedMessageTextAlignment,
                         buttons, focusedButton, customImage, initialDateTime);
 
             UpdateButtons(_buttons, _focusedButton);
@@ -187,11 +187,11 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="customImage">The custom image.</param>
         /// <param name="initialDateTime">The initial date time.</param>
         private void StoreValues(Color cueColour, string prompt, string caption, string defaultResponse, string cueText,
-                                 Font cueTypeface, Font buttonTypeface, Font promptTypeface, 
-                                 InputBoxIconType? iconType, KryptonInputBoxType? inputType, 
+                                 Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+                                 InputBoxIconType? iconType, KryptonInputBoxResponseType? inputType,
                                  InputBoxTextAlignment? textAlignment,
-                                 InputBoxWrappedMessageTextAlignment? textWrappedMessageTextAlignment, 
-                                 InputBoxButtons? buttons, InputBoxButtonFocus? focusedButton, 
+                                 InputBoxWrappedMessageTextAlignment? textWrappedMessageTextAlignment,
+                                 InputBoxButtons? buttons, InputBoxButtonFocus? focusedButton,
                                  Image customImage, DateTime? initialDateTime)
         {
             _cueColour = cueColour;
@@ -203,7 +203,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             _buttonTypeface = buttonTypeface ?? _typefaceSettings.GetNormalTypeface();
             _promptTypeface = promptTypeface ?? _typefaceSettings.GetBoldTypeface();
             _iconType = iconType ?? InputBoxIconType.None;
-            _inputType = inputType ?? KryptonInputBoxType.TextBox;
+            _inputType = inputType ?? KryptonInputBoxResponseType.TextBox;
             _textAlignment = textAlignment ?? InputBoxTextAlignment.Left;
             _textWrappedMessageTextAlignment = textWrappedMessageTextAlignment ?? InputBoxWrappedMessageTextAlignment.MiddleLeft;
             _buttons = buttons ?? InputBoxButtons.Ok;
@@ -214,90 +214,148 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
         /// <summary>Updates the type of the response.</summary>
         /// <param name="inputType">Type of the input.</param>
-        private void UpdateResponseType(KryptonInputBoxType inputType)
+        private void UpdateResponseType(KryptonInputBoxResponseType inputType)
         {
             switch (inputType)
             {
-                case KryptonInputBoxType.ComboBox:
+                case KryptonInputBoxResponseType.ComboBox:
                     kcmbResponse.Visible = true;
+
+                    kdudResponse.Visible = false;
 
                     kdtpResponse.Visible = false;
 
-                    kmtxResponse.Visible = false;
+                    kmtxtResponse.Visible = false;
 
                     krtbResponse.Visible = false;
 
                     ktxtResponse.Visible = false;
+
+                    knudResponse.Visible = false;
                     break;
-                case KryptonInputBoxType.DateTimePicker:
+                case KryptonInputBoxResponseType.DomainUpDown:
                     kcmbResponse.Visible = false;
+
+                    kdudResponse.Visible = true;
+
+                    kdtpResponse.Visible = false;
+
+                    kmtxtResponse.Visible = false;
+
+                    krtbResponse.Visible = false;
+
+                    ktxtResponse.Visible = false;
+
+                    knudResponse.Visible = false;
+                    break;
+                case KryptonInputBoxResponseType.DateTimePicker:
+                    kcmbResponse.Visible = false;
+
+                    kdudResponse.Visible = false;
 
                     kdtpResponse.Visible = true;
 
-                    kmtxResponse.Visible = false;
-
-                    krtbResponse.Visible = false;
-
-                    ktxtResponse.Visible = false;
-                    break;
-                case KryptonInputBoxType.MaskedTextBox:
-                    kcmbResponse.Visible = false;
-
-                    kdtpResponse.Visible = false;
-
-                    kmtxResponse.Visible = true;
-
-                    krtbResponse.Visible = false;
-
-                    ktxtResponse.Visible = false;
-                    break;
-                case KryptonInputBoxType.None:
-                    kcmbResponse.Visible = false;
-
-                    kdtpResponse.Visible = false;
-
-                    kmtxResponse.Visible = false;
+                    kmtxtResponse.Visible = false;
 
                     krtbResponse.Visible = false;
 
                     ktxtResponse.Visible = false;
 
-                    kpnResponse.Visible = false;
+                    knudResponse.Visible = false;
                     break;
-                case KryptonInputBoxType.PasswordBox:
+                case KryptonInputBoxResponseType.MaskedTextBox:
                     kcmbResponse.Visible = false;
+
+                    kdudResponse.Visible = false;
 
                     kdtpResponse.Visible = false;
 
-                    kmtxResponse.Visible = false;
+                    kmtxtResponse.Visible = true;
+
+                    krtbResponse.Visible = false;
+
+                    ktxtResponse.Visible = false;
+
+                    knudResponse.Visible = false;
+                    break;
+                case KryptonInputBoxResponseType.None:
+                    kcmbResponse.Visible = false;
+
+                    kdudResponse.Visible = false;
+
+                    kdtpResponse.Visible = false;
+
+                    kmtxtResponse.Visible = false;
+
+                    krtbResponse.Visible = false;
+
+                    ktxtResponse.Visible = false;
+
+                    knudResponse.Visible = false;
+
+                    kpnlResponse.Visible = false;
+                    break;
+                case KryptonInputBoxResponseType.PasswordBox:
+                    kcmbResponse.Visible = false;
+
+                    kdudResponse.Visible = false;
+
+                    kdtpResponse.Visible = false;
+
+                    kmtxtResponse.Visible = false;
 
                     krtbResponse.Visible = false;
 
                     ktxtResponse.Visible = true;
 
                     ktxtResponse.UseSystemPasswordChar = true;
+
+                    knudResponse.Visible = false;
                     break;
-                case KryptonInputBoxType.RichTextBox:
+                case KryptonInputBoxResponseType.RichTextBox:
                     kcmbResponse.Visible = false;
+
+                    kdudResponse.Visible = false;
 
                     kdtpResponse.Visible = false;
 
-                    kmtxResponse.Visible = false;
+                    kmtxtResponse.Visible = false;
 
                     krtbResponse.Visible = true;
 
                     ktxtResponse.Visible = false;
+
+                    knudResponse.Visible = false;
                     break;
-                case KryptonInputBoxType.TextBox:
+                case KryptonInputBoxResponseType.TextBox:
                     kcmbResponse.Visible = false;
+
+                    kdudResponse.Visible = false;
 
                     kdtpResponse.Visible = false;
 
-                    kmtxResponse.Visible = false;
+                    kmtxtResponse.Visible = false;
 
                     krtbResponse.Visible = false;
 
                     ktxtResponse.Visible = true;
+
+                    kdudResponse.Visible = false;
+                    break;
+                case KryptonInputBoxResponseType.NumericUpDown:
+                    kcmbResponse.Visible = true;
+
+                    kdudResponse.Visible = false;
+
+                    kdtpResponse.Visible = false;
+
+                    kmtxtResponse.Visible = false;
+
+                    krtbResponse.Visible = false;
+
+                    ktxtResponse.Visible = false;
+
+                    knudResponse.Visible = true;
                     break;
             }
         }
@@ -334,10 +392,10 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                     pbxIcon.SizeMode = PictureBoxSizeMode.Normal;
 
                     pbxIcon.Size = new(0, 0);
-                    
-                    kryptonTableLayoutPanel1.Controls.Add(_labelPrompt, 0, 0);
-                    
-                    kryptonTableLayoutPanel1.SetColumnSpan(_labelPrompt, 2);
+
+                    tableLayoutPanel1.Controls.Add(kwlPrompt, 0, 0);
+
+                    tableLayoutPanel1.SetColumnSpan(kwlPrompt, 2);
                     break;
                 case InputBoxIconType.Ok:
                     pbxIcon.Image = Properties.Resources.Ok_Information_Box;
@@ -349,8 +407,36 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                     pbxIcon.Image = Properties.Resources.Stop_Information_Box;
                     break;
                 case InputBoxIconType.Shield:
+                    if (OSUtilities.IsWindowsEleven)
+                    {
+                        pbxIcon.Image = Properties.Resources.UAC_Shield_Windows_11_Information_Box;
+                    }
+                    else if (OSUtilities.IsWindowsTen)
+                    {
+                        pbxIcon.Image = Properties.Resources.UAC_Shield_Windows_10_Information_Box;
+                    }
+                    else
+                    {
+                        pbxIcon.Image = Properties.Resources.UAC_Shield_Windows_7_Information_Box;
+                    }
                     break;
                 case InputBoxIconType.WindowsLogo:
+                    if (OSUtilities.IsWindowsEleven)
+                    {
+                        pbxIcon.Image = Properties.Resources.Windows11_Information_Box;
+                    }
+                    else if (OSUtilities.IsWindowsTen || OSUtilities.IsWindowsEightPointOne || OSUtilities.IsWindowsEight)
+                    {
+                        pbxIcon.Image = Properties.Resources.Windows_8_and_10_Logo_Information_Box;
+                    }
+                    else if (OSUtilities.IsWindowsSeven)
+                    {
+                        pbxIcon.Image = Properties.Resources.Windows_7_Information_Box;
+                    }
+                    else
+                    {
+                        pbxIcon.Image = SystemIcons.WinLogo.ToBitmap();
+                    }
                     break;
             }
         }
@@ -363,106 +449,106 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             switch (buttons)
             {
                 case InputBoxButtons.Ok:
-                    kbtnInputBoxButtonOne.Visible = false;
+                    kbtnButtonOne.Visible = false;
 
-                    kbtnInputBoxButtonOne.DialogResult = DialogResult.None;
+                    kbtnButtonOne.DialogResult = DialogResult.None;
 
-                    kbtnInputBoxButtonTwo.Visible = false;
+                    kbtnButtonTwo.Visible = false;
 
-                    kbtnInputBoxButtonTwo.DialogResult = DialogResult.None;
+                    kbtnButtonTwo.DialogResult = DialogResult.None;
 
-                    kbtnInputBoxButtonThree.Text = KryptonManager.Strings.OK;
+                    kbtnButtonThree.Text = KryptonManager.Strings.OK;
 
-                    kbtnInputBoxButtonThree.DialogResult = DialogResult.OK;
+                    kbtnButtonThree.DialogResult = DialogResult.OK;
 
-                    AcceptButton = kbtnInputBoxButtonThree;
+                    AcceptButton = kbtnButtonThree;
 
                     CancelButton = null;
                     break;
                 case InputBoxButtons.OkCancel:
-                    kbtnInputBoxButtonOne.Visible = false;
+                    kbtnButtonOne.Visible = false;
 
-                    kbtnInputBoxButtonOne.DialogResult = DialogResult.None;
+                    kbtnButtonOne.DialogResult = DialogResult.None;
 
-                    kbtnInputBoxButtonTwo.Text = KryptonManager.Strings.OK;
+                    kbtnButtonTwo.Text = KryptonManager.Strings.OK;
 
-                    kbtnInputBoxButtonTwo.DialogResult = DialogResult.OK;
+                    kbtnButtonTwo.DialogResult = DialogResult.OK;
 
-                    kbtnInputBoxButtonThree.Text = KryptonManager.Strings.Cancel;
+                    kbtnButtonThree.Text = KryptonManager.Strings.Cancel;
 
-                    kbtnInputBoxButtonThree.DialogResult = DialogResult.Cancel;
+                    kbtnButtonThree.DialogResult = DialogResult.Cancel;
 
-                    AcceptButton = kbtnInputBoxButtonTwo;
+                    AcceptButton = kbtnButtonTwo;
 
-                    CancelButton = kbtnInputBoxButtonThree;
+                    CancelButton = kbtnButtonThree;
                     break;
                 case InputBoxButtons.YesNo:
-                    kbtnInputBoxButtonOne.Visible = false;
+                    kbtnButtonOne.Visible = false;
 
-                    kbtnInputBoxButtonOne.DialogResult = DialogResult.None;
+                    kbtnButtonOne.DialogResult = DialogResult.None;
 
-                    kbtnInputBoxButtonTwo.Text = KryptonManager.Strings.Yes;
+                    kbtnButtonTwo.Text = KryptonManager.Strings.Yes;
 
-                    kbtnInputBoxButtonTwo.DialogResult = DialogResult.Yes;
+                    kbtnButtonTwo.DialogResult = DialogResult.Yes;
 
-                    kbtnInputBoxButtonThree.Text = KryptonManager.Strings.No;
+                    kbtnButtonThree.Text = KryptonManager.Strings.No;
 
-                    kbtnInputBoxButtonThree.DialogResult = DialogResult.No;
+                    kbtnButtonThree.DialogResult = DialogResult.No;
 
-                    AcceptButton = kbtnInputBoxButtonTwo;
+                    AcceptButton = kbtnButtonTwo;
 
-                    CancelButton = kbtnInputBoxButtonThree;
+                    CancelButton = kbtnButtonThree;
                     break;
                 case InputBoxButtons.YesNoCancel:
-                    kbtnInputBoxButtonOne.Text = KryptonManager.Strings.Yes;
+                    kbtnButtonOne.Text = KryptonManager.Strings.Yes;
 
-                    kbtnInputBoxButtonOne.DialogResult = DialogResult.Yes;
+                    kbtnButtonOne.DialogResult = DialogResult.Yes;
 
-                    kbtnInputBoxButtonTwo.Text = KryptonManager.Strings.No;
+                    kbtnButtonTwo.Text = KryptonManager.Strings.No;
 
-                    kbtnInputBoxButtonTwo.DialogResult = DialogResult.No;
+                    kbtnButtonTwo.DialogResult = DialogResult.No;
 
-                    kbtnInputBoxButtonThree.Text = KryptonManager.Strings.Cancel;
+                    kbtnButtonThree.Text = KryptonManager.Strings.Cancel;
 
-                    kbtnInputBoxButtonThree.DialogResult = DialogResult.Cancel;
+                    kbtnButtonThree.DialogResult = DialogResult.Cancel;
 
-                    AcceptButton = kbtnInputBoxButtonOne;
+                    AcceptButton = kbtnButtonOne;
 
-                    CancelButton = kbtnInputBoxButtonThree;
+                    CancelButton = kbtnButtonThree;
                     break;
             }
 
             switch (buttonFocus)
             {
                 case InputBoxButtonFocus.ButtonOne:
-                    if (kbtnInputBoxButtonOne.Visible)
+                    if (kbtnButtonOne.Visible)
                     {
-                        kbtnInputBoxButtonOne.Focus();
+                        kbtnButtonOne.Focus();
                     }
                     else
                     {
-                        kbtnInputBoxButtonTwo.Focus();
+                        kbtnButtonTwo.Focus();
                     }
                     break;
                 case InputBoxButtonFocus.ButtonTwo:
-                    kbtnInputBoxButtonTwo.Focus();
+                    kbtnButtonTwo.Focus();
                     break;
                 case InputBoxButtonFocus.ButtonThree:
-                    kbtnInputBoxButtonThree.Focus();
+                    kbtnButtonThree.Focus();
                     break;
                 case InputBoxButtonFocus.ButtonFour:
-                    kbtnInputBoxButtonThree.Focus();
+                    kbtnButtonThree.Focus();
                     break;
             }
         }
 
         /// <summary>Sets the prompt text.</summary>
         /// <param name="promptText">The prompt text.</param>
-        private void SetPromptText(string promptText) => _labelPrompt.Text = promptText;
+        private void SetPromptText(string promptText) => kwlPrompt.Text = promptText;
 
         /// <summary>Sets the prompt typeface.</summary>
         /// <param name="promptTypeface">The prompt typeface.</param>
-        private void SetPromptTypeface(Font promptTypeface) => _labelPrompt.Font = promptTypeface;
+        private void SetPromptTypeface(Font promptTypeface) => kwlPrompt.Font = promptTypeface;
 
         /// <summary>Sets the input typeface.</summary>
         /// <param name="inputTypeface">The input typeface.</param>
@@ -472,7 +558,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
             kdtpResponse.StateCommon.Content.Font = inputTypeface;
 
-            kmtxResponse.StateCommon.Content.Font = inputTypeface;
+            kmtxtResponse.StateCommon.Content.Font = inputTypeface;
 
             ktxtResponse.StateCommon.Content.Font = inputTypeface;
         }
@@ -481,11 +567,11 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="buttonTypeface">The button typeface.</param>
         private void SetButtonTypeface(Font buttonTypeface)
         {
-            kbtnInputBoxButtonOne.StateCommon.Content.ShortText.Font = buttonTypeface;
+            kbtnButtonOne.StateCommon.Content.ShortText.Font = buttonTypeface;
 
-            kbtnInputBoxButtonTwo.StateCommon.Content.ShortText.Font = buttonTypeface;
+            kbtnButtonTwo.StateCommon.Content.ShortText.Font = buttonTypeface;
 
-            kbtnInputBoxButtonThree.StateCommon.Content.ShortText.Font = buttonTypeface;
+            kbtnButtonThree.StateCommon.Content.ShortText.Font = buttonTypeface;
         }
 
         /// <summary>Sets the cue colour.</summary>
@@ -516,33 +602,41 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             string output = string.Empty;
 
-            if (_inputType == KryptonInputBoxType.ComboBox)
+            if (_inputType == KryptonInputBoxResponseType.ComboBox)
             {
                 output = kcmbResponse.Text;
             }
-            else if (_inputType == KryptonInputBoxType.DateTimePicker)
+            else if (_inputType == KryptonInputBoxResponseType.DateTimePicker)
             {
                 output = kdtpResponse.Text;
             }
-            else if (_inputType == KryptonInputBoxType.MaskedTextBox)
+            else if (_inputType == KryptonInputBoxResponseType.MaskedTextBox)
             {
-                output = kmtxResponse.Text;
+                output = kmtxtResponse.Text;
             }
-            else if (_inputType == KryptonInputBoxType.None)
+            else if (_inputType == KryptonInputBoxResponseType.None)
             {
                 output = string.Empty;
             }
-            else if (_inputType == KryptonInputBoxType.PasswordBox)
+            else if (_inputType == KryptonInputBoxResponseType.PasswordBox)
             {
                 output = ktxtResponse.Text;
             }
-            else if (_inputType == KryptonInputBoxType.RichTextBox)
+            else if (_inputType == KryptonInputBoxResponseType.RichTextBox)
             {
                 output = krtbResponse.Text;
             }
-            else if (_inputType == KryptonInputBoxType.TextBox)
+            else if (_inputType == KryptonInputBoxResponseType.TextBox)
             {
                 output = ktxtResponse.Text;
+            }
+            else if (_inputType == KryptonInputBoxResponseType.DomainUpDown)
+            {
+                output = kdudResponse.Text;
+            }
+            else if (_inputType == KryptonInputBoxResponseType.NumericUpDown)
+            {
+                output = knudResponse.Text;
             }
 
             return output;
@@ -553,29 +647,29 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             Text = _caption;
 
-            _labelPrompt.Text = _prompt;
+            kwlPrompt.Text = _prompt;
 
-            if (_inputType == KryptonInputBoxType.ComboBox)
+            if (_inputType == KryptonInputBoxResponseType.ComboBox)
             {
                 kcmbResponse.Text = _defaultResponse;
             }
-            else if (_inputType == KryptonInputBoxType.DateTimePicker)
+            else if (_inputType == KryptonInputBoxResponseType.DateTimePicker)
             {
                 kdtpResponse.Value = GetInitialDateTime();
             }
-            else if (_inputType == KryptonInputBoxType.MaskedTextBox)
+            else if (_inputType == KryptonInputBoxResponseType.MaskedTextBox)
             {
-                kmtxResponse.Text = _defaultResponse;
+                kmtxtResponse.Text = _defaultResponse;
             }
-            else if (_inputType == KryptonInputBoxType.PasswordBox)
+            else if (_inputType == KryptonInputBoxResponseType.PasswordBox)
             {
                 ktxtResponse.Text = _defaultResponse;
             }
-            else if (_inputType == KryptonInputBoxType.RichTextBox)
+            else if (_inputType == KryptonInputBoxResponseType.RichTextBox)
             {
                 krtbResponse.Text = _defaultResponse;
             }
-            else if (_inputType == KryptonInputBoxType.TextBox)
+            else if (_inputType == KryptonInputBoxResponseType.TextBox)
             {
                 ktxtResponse.Text = _defaultResponse;
             }
@@ -594,7 +688,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kdtpResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Near;
 
-                    kmtxResponse.TextAlign = HorizontalAlignment.Left;
+                    kmtxtResponse.TextAlign = HorizontalAlignment.Left;
 
                     krtbResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Near;
 
@@ -605,7 +699,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kdtpResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Center;
 
-                    kmtxResponse.TextAlign = HorizontalAlignment.Center;
+                    kmtxtResponse.TextAlign = HorizontalAlignment.Center;
 
                     krtbResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Center;
 
@@ -616,7 +710,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kdtpResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Far;
 
-                    kmtxResponse.TextAlign = HorizontalAlignment.Right;
+                    kmtxtResponse.TextAlign = HorizontalAlignment.Right;
 
                     krtbResponse.StateCommon.Content.TextH = PaletteRelativeAlign.Far;
 
@@ -633,31 +727,31 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             switch (textAlignment)
             {
                 case InputBoxWrappedMessageTextAlignment.TopLeft:
-                    _labelPrompt.TextAlign = ContentAlignment.TopLeft;
+                    kwlPrompt.TextAlign = ContentAlignment.TopLeft;
                     break;
                 case InputBoxWrappedMessageTextAlignment.TopCentre:
-                    _labelPrompt.TextAlign = ContentAlignment.TopCenter;
+                    kwlPrompt.TextAlign = ContentAlignment.TopCenter;
                     break;
                 case InputBoxWrappedMessageTextAlignment.TopRight:
-                    _labelPrompt.TextAlign = ContentAlignment.TopRight;
+                    kwlPrompt.TextAlign = ContentAlignment.TopRight;
                     break;
                 case InputBoxWrappedMessageTextAlignment.MiddleLeft:
-                    _labelPrompt.TextAlign = ContentAlignment.MiddleLeft;
+                    kwlPrompt.TextAlign = ContentAlignment.MiddleLeft;
                     break;
                 case InputBoxWrappedMessageTextAlignment.MiddleCentre:
-                    _labelPrompt.TextAlign = ContentAlignment.MiddleCenter;
+                    kwlPrompt.TextAlign = ContentAlignment.MiddleCenter;
                     break;
                 case InputBoxWrappedMessageTextAlignment.MiddleRight:
-                    _labelPrompt.TextAlign = ContentAlignment.MiddleRight;
+                    kwlPrompt.TextAlign = ContentAlignment.MiddleRight;
                     break;
                 case InputBoxWrappedMessageTextAlignment.BottomLeft:
-                    _labelPrompt.TextAlign = ContentAlignment.BottomLeft;
+                    kwlPrompt.TextAlign = ContentAlignment.BottomLeft;
                     break;
                 case InputBoxWrappedMessageTextAlignment.BottomCentre:
-                    _labelPrompt.TextAlign = ContentAlignment.BottomCenter;
+                    kwlPrompt.TextAlign = ContentAlignment.BottomCenter;
                     break;
                 case InputBoxWrappedMessageTextAlignment.BottomRight:
-                    _labelPrompt.TextAlign = ContentAlignment.BottomRight;
+                    kwlPrompt.TextAlign = ContentAlignment.BottomRight;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(textAlignment), textAlignment, null);
@@ -687,7 +781,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                                             string defaultResponse, string cueText, Color cueColour,
                                             Font cueTypeface, Font buttonTypeface, Font promptTypeface,
                                             InputBoxIconType iconType,
-                                            KryptonInputBoxType inputType,
+                                            KryptonInputBoxResponseType inputType,
                                             InputBoxTextAlignment textAlignment,
                                             InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
                                             InputBoxButtons buttons = InputBoxButtons.OkCancel,
@@ -711,11 +805,11 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             if (e.KeyCode == Keys.Enter)
             {
-                kbtnInputBoxButtonTwo.PerformClick();
+                kbtnButtonThree.PerformClick();
             }
             else if (e.KeyCode == Keys.Escape)
             {
-                kbtnInputBoxButtonThree.PerformClick();
+                kbtnButtonThree.PerformClick();
             }
         }
 

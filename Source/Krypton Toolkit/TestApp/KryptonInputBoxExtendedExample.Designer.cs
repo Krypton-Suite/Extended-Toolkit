@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonInputBoxExtendedExample));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnQuickTest = new Krypton.Toolkit.KryptonButton();
             this.kbtnShow = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
@@ -59,7 +60,8 @@
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kibemTest = new Krypton.Toolkit.Suite.Extended.InputBox.KryptonInputBoxExtendedManager();
             this.kibemQuickTest = new Krypton.Toolkit.Suite.Extended.InputBox.KryptonInputBoxExtendedManager();
-            this.kbtnQuickTest = new Krypton.Toolkit.KryptonButton();
+            this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
+            this.buttonSpecAny1 = new Krypton.Toolkit.ButtonSpecAny();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -83,6 +85,17 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(800, 50);
             this.kryptonPanel1.TabIndex = 0;
             // 
+            // kbtnQuickTest
+            // 
+            this.kbtnQuickTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnQuickTest.CornerRoundingRadius = -1F;
+            this.kbtnQuickTest.Location = new System.Drawing.Point(556, 13);
+            this.kbtnQuickTest.Name = "kbtnQuickTest";
+            this.kbtnQuickTest.Size = new System.Drawing.Size(136, 25);
+            this.kbtnQuickTest.TabIndex = 28;
+            this.kbtnQuickTest.Values.Text = "&Quick Test";
+            this.kbtnQuickTest.Click += new System.EventHandler(this.kbtnQuickTest_Click);
+            // 
             // kbtnShow
             // 
             this.kbtnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -105,6 +118,7 @@
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.kryptonTextBox1);
             this.kryptonPanel2.Controls.Add(this.kbtnButtonTypeface);
             this.kryptonPanel2.Controls.Add(this.kbtnPromptTypeface);
             this.kryptonPanel2.Controls.Add(this.kbtnCueTypeface);
@@ -393,7 +407,7 @@
             this.kibemTest.FocusedButton = Krypton.Toolkit.Suite.Extended.InputBox.InputBoxButtonFocus.ButtonTwo;
             this.kibemTest.IconType = Krypton.Toolkit.Suite.Extended.InputBox.InputBoxIconType.None;
             this.kibemTest.InitialDateTime = new System.DateTime(2022, 12, 5, 17, 27, 12, 699);
-            this.kibemTest.InputType = Krypton.Toolkit.Suite.Extended.InputBox.KryptonInputBoxType.TextBox;
+            this.kibemTest.InputType = Krypton.Toolkit.Suite.Extended.InputBox.KryptonInputBoxResponseType.TextBox;
             this.kibemTest.Prompt = "";
             this.kibemTest.PromptTypeface = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.kibemTest.TextAlignment = Krypton.Toolkit.Suite.Extended.InputBox.InputBoxTextAlignment.Left;
@@ -409,24 +423,32 @@
             this.kibemQuickTest.CueTypeface = new System.Drawing.Font("Segoe UI", 8.25F);
             this.kibemQuickTest.DefaultResponse = "";
             this.kibemQuickTest.FocusedButton = Krypton.Toolkit.Suite.Extended.InputBox.InputBoxButtonFocus.ButtonTwo;
-            this.kibemQuickTest.IconType = Krypton.Toolkit.Suite.Extended.InputBox.InputBoxIconType.None;
+            this.kibemQuickTest.IconType = Krypton.Toolkit.Suite.Extended.InputBox.InputBoxIconType.Information;
             this.kibemQuickTest.InitialDateTime = new System.DateTime(2022, 12, 5, 17, 29, 20, 299);
-            this.kibemQuickTest.InputType = Krypton.Toolkit.Suite.Extended.InputBox.KryptonInputBoxType.TextBox;
+            this.kibemQuickTest.InputType = Krypton.Toolkit.Suite.Extended.InputBox.KryptonInputBoxResponseType.TextBox;
             this.kibemQuickTest.Prompt = "Hello World!";
             this.kibemQuickTest.PromptTypeface = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.kibemQuickTest.TextAlignment = Krypton.Toolkit.Suite.Extended.InputBox.InputBoxTextAlignment.Left;
             this.kibemQuickTest.WrappedMessageTextAlignment = Krypton.Toolkit.Suite.Extended.InputBox.InputBoxWrappedMessageTextAlignment.MiddleLeft;
             // 
-            // kbtnQuickTest
+            // kryptonTextBox1
             // 
-            this.kbtnQuickTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnQuickTest.CornerRoundingRadius = -1F;
-            this.kbtnQuickTest.Location = new System.Drawing.Point(556, 13);
-            this.kbtnQuickTest.Name = "kbtnQuickTest";
-            this.kbtnQuickTest.Size = new System.Drawing.Size(136, 25);
-            this.kbtnQuickTest.TabIndex = 28;
-            this.kbtnQuickTest.Values.Text = "&Quick Test";
-            this.kbtnQuickTest.Click += new System.EventHandler(this.kbtnQuickTest_Click);
+            this.kryptonTextBox1.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
+            this.buttonSpecAny1});
+            this.kryptonTextBox1.CueHint.Padding = new System.Windows.Forms.Padding(0);
+            this.kryptonTextBox1.Location = new System.Drawing.Point(535, 50);
+            this.kryptonTextBox1.Name = "kryptonTextBox1";
+            this.kryptonTextBox1.Size = new System.Drawing.Size(100, 24);
+            this.kryptonTextBox1.TabIndex = 27;
+            this.kryptonTextBox1.Text = "kryptonTextBox1";
+            // 
+            // buttonSpecAny1
+            // 
+            this.buttonSpecAny1.Style = Krypton.Toolkit.PaletteButtonStyle.Inherit;
+            this.buttonSpecAny1.Text = "...";
+            this.buttonSpecAny1.ToolTipStyle = Krypton.Toolkit.LabelStyle.ToolTip;
+            this.buttonSpecAny1.Type = Krypton.Toolkit.PaletteButtonSpecStyle.Generic;
+            this.buttonSpecAny1.UniqueName = "8fe6fd0835f643dcbb4ae1c06d8a3dfd";
             // 
             // KryptonInputBoxExtendedExample
             // 
@@ -485,5 +507,7 @@
         private KryptonButton kbtnButtonTypeface;
         private KryptonButton kbtnQuickTest;
         private Krypton.Toolkit.Suite.Extended.InputBox.KryptonInputBoxExtendedManager kibemQuickTest;
+        private KryptonTextBox kryptonTextBox1;
+        private ButtonSpecAny buttonSpecAny1;
     }
 }

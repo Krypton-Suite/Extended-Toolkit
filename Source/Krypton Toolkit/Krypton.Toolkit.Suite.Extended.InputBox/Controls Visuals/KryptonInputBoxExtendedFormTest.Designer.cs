@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.InputBox
 {
-    partial class KryptonInputBoxExtendedForm
+    partial class KryptonInputBoxExtendedFormTest
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonInputBoxExtendedForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonInputBoxExtendedFormTest));
             this._panelMessage = new Krypton.Toolkit.KryptonPanel();
             this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this._labelPrompt = new Krypton.Toolkit.KryptonWrapLabel();
@@ -131,6 +131,7 @@
             // kcmbResponse
             // 
             this.kcmbResponse.CornerRoundingRadius = -1F;
+            this.kcmbResponse.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kcmbResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kcmbResponse.DropDownWidth = 344;
             this.kcmbResponse.IntegralHeight = false;
@@ -144,6 +145,7 @@
             // 
             // ktxtResponse
             // 
+            this.ktxtResponse.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.ktxtResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ktxtResponse.Location = new System.Drawing.Point(0, 0);
             this.ktxtResponse.Name = "ktxtResponse";
@@ -153,6 +155,7 @@
             // 
             // krtbResponse
             // 
+            this.krtbResponse.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.krtbResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.krtbResponse.Location = new System.Drawing.Point(0, 0);
             this.krtbResponse.Name = "krtbResponse";
@@ -251,7 +254,7 @@
             this.kbtnInputBoxButtonThree.TabIndex = 2;
             this.kbtnInputBoxButtonThree.Values.Text = "Cance&l";
             // 
-            // KryptonInputBoxExtendedForm
+            // KryptonInputBoxExtendedFormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -260,7 +263,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "KryptonInputBoxExtendedForm";
+            this.Name = "KryptonInputBoxExtendedFormTest";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

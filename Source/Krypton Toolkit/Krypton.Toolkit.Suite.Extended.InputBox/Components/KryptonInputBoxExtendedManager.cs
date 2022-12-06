@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         private string _cueText;
         private Font _cueTypeface, _promptTypeface, _buttonTypeface;
         private InputBoxIconType _iconType;
-        private KryptonInputBoxType _inputType;
+        private KryptonInputBoxResponseType _inputType;
         private InputBoxTextAlignment _textAlignment;
         private InputBoxWrappedMessageTextAlignment _textWrappedMessageTextAlignment;
         private InputBoxButtons _buttons;
@@ -76,8 +76,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         [DefaultValue(typeof(InputBoxIconType), "InputBoxIconType.None")]
         public InputBoxIconType IconType { get => _iconType; set => _iconType = value; }
 
-        [DefaultValue(typeof(KryptonInputBoxType), "KryptonInputBoxType.TextBox")]
-        public KryptonInputBoxType InputType { get => _inputType; set => _inputType = value; }
+        [DefaultValue(typeof(KryptonInputBoxResponseType), "KryptonInputBoxType.TextBox")]
+        public KryptonInputBoxResponseType InputType { get => _inputType; set => _inputType = value; }
 
         [DefaultValue(typeof(InputBoxTextAlignment), "InputBoxTextAlignment.Left")]
         public InputBoxTextAlignment TextAlignment { get => _textAlignment; set => _textAlignment = value; }
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
             _iconType = InputBoxIconType.None;
 
-            _inputType = KryptonInputBoxType.TextBox;
+            _inputType = KryptonInputBoxResponseType.TextBox;
 
             _textAlignment = InputBoxTextAlignment.Left;
 
@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                                               string defaultResponse, string cueText, Color cueColour,
                                               Font cueTypeface, Font buttonTypeface, Font promptTypeface,
                                               InputBoxIconType iconType,
-                                              KryptonInputBoxType inputType,
+                                              KryptonInputBoxResponseType inputType,
                                               InputBoxTextAlignment textAlignment,
                                               InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
                                               InputBoxButtons buttons,
@@ -224,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                                    string defaultResponse, string cueText,
                                    Color cueColour, Font cueTypeface, Font buttonTypeface, 
                                    Font promptTypeface, InputBoxIconType iconType,
-                                   KryptonInputBoxType inputType,
+                                   KryptonInputBoxResponseType inputType,
                                    InputBoxTextAlignment textAlignment,
                                    InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
                                    InputBoxButtons buttons = InputBoxButtons.OkCancel,
@@ -256,7 +256,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                                   string defaultResponse, string cueText,
                                   Color cueColour, Font cueTypeface, Font buttonTypeface, 
                                   Font promptTypeface, InputBoxIconType iconType,
-                                  KryptonInputBoxType inputType,
+                                  KryptonInputBoxResponseType inputType,
                                   InputBoxTextAlignment textAlignment,
                                   InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
                                   InputBoxButtons buttons = InputBoxButtons.OkCancel,
