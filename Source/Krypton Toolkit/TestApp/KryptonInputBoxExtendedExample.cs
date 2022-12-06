@@ -66,6 +66,8 @@ namespace TestApp
                 (InputBoxWrappedMessageTextAlignment)Enum.Parse(typeof(InputBoxWrappedMessageTextAlignment),
                     kcmbWrappedTextAlignment.Text);
 
+        private void kbtnQuickTest_Click(object sender, EventArgs e) => kibemQuickTest.Show();
+
         public KryptonInputBoxExtendedExample()
         {
             InitializeComponent();
