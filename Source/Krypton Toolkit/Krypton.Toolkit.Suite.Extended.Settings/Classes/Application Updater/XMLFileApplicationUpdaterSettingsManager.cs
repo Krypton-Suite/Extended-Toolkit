@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private XMLFileApplicationUpdaterSettings _xmlFileApplicationUpdaterSettings = new XMLFileApplicationUpdaterSettings();
+        private XMLFileApplicationUpdaterSettings _xmlFileApplicationUpdaterSettings = new();
         #endregion
 
         #region Properties

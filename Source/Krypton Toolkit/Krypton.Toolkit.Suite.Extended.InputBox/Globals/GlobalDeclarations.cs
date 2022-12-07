@@ -29,3 +29,8 @@ global using System;
 global using System.ComponentModel;
 global using System.Drawing;
 global using System.Windows.Forms;
+
+global using Krypton.Toolkit.Suite.Extended.Common;
+global using Krypton.Toolkit.Suite.Extended.InputBox.Properties;
+global using Krypton.Toolkit.Suite.Extended.Shared;
+global using Krypton.Toolkit.Suite.Extended.Settings;

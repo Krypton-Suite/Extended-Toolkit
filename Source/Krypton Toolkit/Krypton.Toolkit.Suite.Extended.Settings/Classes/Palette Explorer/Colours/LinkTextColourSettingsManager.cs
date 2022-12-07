@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private LinkTextColourSettings _linkTextColourSettings = new LinkTextColourSettings();
+        private LinkTextColourSettings _linkTextColourSettings = new();
         #endregion
 
         #region Properties

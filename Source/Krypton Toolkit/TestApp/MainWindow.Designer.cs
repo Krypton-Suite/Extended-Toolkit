@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnDialogExamples = new Krypton.Toolkit.KryptonButton();
             this.kbtnKryptonFormExtendedExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnFloating = new Krypton.Toolkit.KryptonButton();
             this.kbtnNotificationExample = new Krypton.Toolkit.KryptonButton();
@@ -43,13 +44,14 @@
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
-            this.kbtnDialogExamples = new Krypton.Toolkit.KryptonButton();
+            this.kbtnInputBoxExamples = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnInputBoxExamples);
             this.kryptonPanel1.Controls.Add(this.kbtnDialogExamples);
             this.kryptonPanel1.Controls.Add(this.kbtnKryptonFormExtendedExample);
             this.kryptonPanel1.Controls.Add(this.kbtnFloating);
@@ -69,6 +71,16 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(620, 390);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnDialogExamples
+            // 
+            this.kbtnDialogExamples.CornerRoundingRadius = -1F;
+            this.kbtnDialogExamples.Location = new System.Drawing.Point(10, 98);
+            this.kbtnDialogExamples.Name = "kbtnDialogExamples";
+            this.kbtnDialogExamples.Size = new System.Drawing.Size(109, 22);
+            this.kbtnDialogExamples.TabIndex = 13;
+            this.kbtnDialogExamples.Values.Text = "Dialog Examples";
+            this.kbtnDialogExamples.Click += new System.EventHandler(this.kbtnDialogExamples_Click);
             // 
             // kbtnKryptonFormExtendedExample
             // 
@@ -199,15 +211,15 @@
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
-            // kbtnDialogExamples
+            // kbtnInputBoxExamples
             // 
-            this.kbtnDialogExamples.CornerRoundingRadius = -1F;
-            this.kbtnDialogExamples.Location = new System.Drawing.Point(10, 98);
-            this.kbtnDialogExamples.Name = "kbtnDialogExamples";
-            this.kbtnDialogExamples.Size = new System.Drawing.Size(109, 22);
-            this.kbtnDialogExamples.TabIndex = 13;
-            this.kbtnDialogExamples.Values.Text = "Dialog Examples";
-            this.kbtnDialogExamples.Click += new System.EventHandler(this.kbtnDialogExamples_Click);
+            this.kbtnInputBoxExamples.CornerRoundingRadius = -1F;
+            this.kbtnInputBoxExamples.Location = new System.Drawing.Point(125, 98);
+            this.kbtnInputBoxExamples.Name = "kbtnInputBoxExamples";
+            this.kbtnInputBoxExamples.Size = new System.Drawing.Size(150, 22);
+            this.kbtnInputBoxExamples.TabIndex = 14;
+            this.kbtnInputBoxExamples.Values.Text = "InputBox Examples";
+            this.kbtnInputBoxExamples.Click += new System.EventHandler(this.kbtnInputBoxExamples_Click);
             // 
             // MainWindow
             // 
@@ -241,5 +253,6 @@
         private Krypton.Toolkit.KryptonButton kbtnFloating;
         private KryptonButton kbtnKryptonFormExtendedExample;
         private KryptonButton kbtnDialogExamples;
+        private KryptonButton kbtnInputBoxExamples;
     }
 }

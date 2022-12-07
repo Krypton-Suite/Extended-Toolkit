@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
     public class PaletteThemeSettingsManager
     {
         #region Variables
-        private PaletteThemeSettings _paletteThemeSettings = new PaletteThemeSettings();
+        private PaletteThemeSettings _paletteThemeSettings = new();
         #endregion
 
         #region Constructor

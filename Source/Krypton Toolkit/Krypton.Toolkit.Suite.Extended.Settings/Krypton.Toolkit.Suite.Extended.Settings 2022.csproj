@@ -88,7 +88,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.11.318-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.12.340-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -181,6 +181,11 @@
 	  <AutoGen>True</AutoGen>
 	  <DependentUpon>GlobalStringSettings.settings</DependentUpon>
 	</Compile>
+	<Compile Update="Settings\Globals\GlobalTypefaceSettings.Designer.cs">
+	  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+	  <AutoGen>True</AutoGen>
+	  <DependentUpon>GlobalTypefaceSettings.settings</DependentUpon>
+	</Compile>
 	<Compile Update="Settings\Theming\GlobalThemeSettings.Designer.cs">
 	  <DesignTimeSharedInput>True</DesignTimeSharedInput>
 	  <AutoGen>True</AutoGen>
@@ -203,6 +208,10 @@
 	<None Update="Settings\Globals\GlobalStringSettings.settings">
 	  <Generator>SettingsSingleFileGenerator</Generator>
 	  <LastGenOutput>GlobalStringSettings.Designer.cs</LastGenOutput>
+	</None>
+	<None Update="Settings\Globals\GlobalTypefaceSettings.settings">
+	  <Generator>SettingsSingleFileGenerator</Generator>
+	  <LastGenOutput>GlobalTypefaceSettings.Designer.cs</LastGenOutput>
 	</None>
 	<None Update="Settings\Theming\GlobalThemeSettings.settings">
 	  <Generator>SettingsSingleFileGenerator</Generator>

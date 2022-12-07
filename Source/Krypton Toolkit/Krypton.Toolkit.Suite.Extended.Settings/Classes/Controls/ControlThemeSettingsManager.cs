@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private ControlThemeSettings _themeSettings = new ControlThemeSettings();
+        private ControlThemeSettings _themeSettings = new();
         #endregion
 
         #region Properties

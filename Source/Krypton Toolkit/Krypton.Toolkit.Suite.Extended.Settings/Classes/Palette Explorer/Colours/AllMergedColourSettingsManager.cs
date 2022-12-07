@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private AllMergedColourSettings _allMergedColourSettings = new AllMergedColourSettings();
+        private AllMergedColourSettings _allMergedColourSettings = new();
         #endregion
 
         #region Properties

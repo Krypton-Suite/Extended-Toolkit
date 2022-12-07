@@ -90,5 +90,12 @@ namespace TestApp
 
             dialogExamples.Show();
         }
+
+        private void kbtnInputBoxExamples_Click(object sender, EventArgs e)
+        {
+            KryptonInputBoxExtendedExample example = new KryptonInputBoxExtendedExample();
+
+            example.Show();
+        }
     }
 }

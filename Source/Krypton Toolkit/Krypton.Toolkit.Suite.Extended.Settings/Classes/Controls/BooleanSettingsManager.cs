@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private BooleanSettings _booleanSettings = new BooleanSettings();
+        private BooleanSettings _booleanSettings = new();
         #endregion
 
         #region Properties

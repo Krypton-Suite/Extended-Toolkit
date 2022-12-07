@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
     public class ColourIntensitySettingsManager
     {
         #region Variables
-        private ColourIntensitySettings _colourIntensitySettings = new ColourIntensitySettings();
+        private ColourIntensitySettings _colourIntensitySettings = new();
         #endregion
 
         #region Constructors

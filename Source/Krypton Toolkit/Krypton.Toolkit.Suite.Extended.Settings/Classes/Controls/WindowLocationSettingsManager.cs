@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private WindowLocationSettings _windowLocationSettings = new WindowLocationSettings();
+        private WindowLocationSettings _windowLocationSettings = new();
         #endregion
 
         #region Properties

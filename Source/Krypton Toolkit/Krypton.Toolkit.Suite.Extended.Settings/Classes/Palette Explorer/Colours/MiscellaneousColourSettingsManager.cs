@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private MiscellaneousColourSettings _miscellaneousColourSettings = new MiscellaneousColourSettings();
+        private MiscellaneousColourSettings _miscellaneousColourSettings = new();
         #endregion
 
         #region Properties

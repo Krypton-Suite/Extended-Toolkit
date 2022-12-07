@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
     public class ColourCollectionStringSettingsManager
     {
         #region Variables
-        private ColourCollectionStringSettings _colourCollectionStringSettings = new ColourCollectionStringSettings();
+        private ColourCollectionStringSettings _colourCollectionStringSettings = new();
         #endregion
 
         #region Constructor

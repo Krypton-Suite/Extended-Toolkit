@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private PaletteExplorerBooleanSettings _paletteExplorerBooleanSettings = new PaletteExplorerBooleanSettings();
+        private PaletteExplorerBooleanSettings _paletteExplorerBooleanSettings = new();
         #endregion
 
         #region Properties        
@@ -113,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (usePrompt)
             {
-                DialogResult result = MessageBox.Show("Do you want to save the current boolean settings?", "Save Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(@"Do you want to save the current boolean settings?", "Save Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (usePrompt)
             {
-                DialogResult result = MessageBox.Show("This action will reset the boolean values. Do you want to continue?", "Reset Boolean Values", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(@"This action will reset the boolean values. Do you want to continue?", "Reset Boolean Values", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
