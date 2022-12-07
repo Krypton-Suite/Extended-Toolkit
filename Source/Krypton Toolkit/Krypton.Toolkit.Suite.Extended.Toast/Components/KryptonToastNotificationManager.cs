@@ -408,7 +408,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         }
                         else if (_contentAreaType == ToastNotificationContentAreaType.RichTextBox)
                         {
-                            BasicNotification notification = new BasicNotification(ActionButtonLocation, ActionType,
+                            BasicNotificationTest notification = new BasicNotificationTest(ActionButtonLocation, ActionType,
                                                                                    IconType, Title, ContentText, 
                                                                                    UsePanelColourInTextArea,
                                                                                    ShowCloseButton, ShowActionButton,

@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    partial class BasicNotification
+    partial class BasicNotificationTest
     {
         /// <summary>
         /// Required designer variable.
@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasicNotification));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasicNotificationTest));
             this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
             this.krtbContent = new Krypton.Toolkit.KryptonRichTextBox();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();

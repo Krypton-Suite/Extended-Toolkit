@@ -27,16 +27,26 @@
 
 namespace Krypton.Toolkit.Suite.Extended.InputBox
 {
+    /// <summary>The response input type for the <see cref="KryptonInputBoxExtended"/>.</summary>
     public enum KryptonInputBoxResponseType
     {
+        /// <summary>No response input.</summary>
         None = 0,
+        /// <summary>Use a <see cref="KryptonComboBox"/> as the response input type.</summary>
         ComboBox = 1,
+        /// <summary>Use a <see cref="KryptonDateTimePicker"/> as the response input type.</summary>
         DateTimePicker = 2,
+        /// <summary>Use a <see cref="KryptonTextBox"/> as the response input type.</summary>
         TextBox = 3,
+        /// <summary>Use a <see cref="KryptonMaskedTextBox"/> as the response input type.</summary>
         MaskedTextBox = 4,
+        /// <summary>Use a <see cref="KryptonTextBox"/> with the password character facility turned on as the response input type.</summary>
         PasswordBox = 5,
+        /// <summary>Use a <see cref="KryptonRichTextBox"/> as the response input type.</summary>
         RichTextBox = 6,
+        /// <summary>Use a <see cref="KryptonNumericUpDown"/> as the response input type.</summary>
         NumericUpDown = 7,
+        /// <summary>Use a <see cref="KryptonDomainUpDown"/> as the response input type.</summary>
         DomainUpDown = 8,
     }
 }

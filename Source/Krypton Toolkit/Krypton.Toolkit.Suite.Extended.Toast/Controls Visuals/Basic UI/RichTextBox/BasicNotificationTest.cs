@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    public partial class BasicNotification : KryptonForm
+    public partial class BasicNotificationTest : KryptonForm
     {
         #region Variables
 
@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         #region Constructor
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationTest" /> class.</summary>
         /// <param name="actionButtonLocation">The action button location.</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="iconType">Type of the icon.</param>
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="openProcessInExplorer">The open process in explorer.</param>
         /// <param name="processPath">The process path.</param>
         /// <param name="optionalParameters">The optional parameters.</param>
-        public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+        public BasicNotificationTest(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea, bool? showCloseButton, bool? showActionButton,
                                  Image customImage = null,
@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             SetupBaseUI(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea, showCloseButton, showActionButton, customImage, dismissText, actionButtonText, rightToLeft, actionButtonCommand, openProcessInExplorer, processPath, optionalParameters);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationTest" /> class.</summary>
         /// <param name="actionButtonLocation">The action button location.</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="iconType">Type of the icon.</param>
@@ -156,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="actionButtonText">The action button text.</param>
         /// <param name="rightToLeft">The right to left.</param>
         /// <param name="actionButtonCommand">The action button command.</param>
-        public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+        public BasicNotificationTest(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea, bool? showCloseButton, bool? showActionButton,
                                  int seconds, Image customImage = null,
@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                    dismissText, actionButtonText,
                    rightToLeft, actionButtonCommand) => Seconds = seconds;
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationTest" /> class.</summary>
         /// <param name="actionButtonLocation">The action button location.</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="iconType">Type of the icon.</param>
@@ -185,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="actionButtonText">The action button text.</param>
         /// <param name="rightToLeft">The right to left.</param>
         /// <param name="actionButtonCommand">The action button command.</param>
-        public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
+        public BasicNotificationTest(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea,
                                  bool? showCloseButton, bool? showActionButton, int seconds,
@@ -201,7 +201,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                    dismissText, actionButtonText,
                    rightToLeft, actionButtonCommand) => SoundPath = soundPath;
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationTest" /> class.</summary>
         /// <param name="actionButtonLocation">The action button location.</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="iconType">Type of the icon.</param>
@@ -216,7 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="actionButtonText">The action button text.</param>
         /// <param name="rightToLeft">The right to left.</param>
         /// <param name="actionButtonCommand">The action button command.</param>
-        public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
+        public BasicNotificationTest(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea,
                                  bool? showCloseButton, bool? showActionButton,
@@ -232,7 +232,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                    dismissText, actionButtonText,
                    rightToLeft, actionButtonCommand) => SoundStream = soundStream;
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationTest" /> class.</summary>
         /// <param name="actionButtonLocation">The action button location.</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="iconType">Type of the icon.</param>
@@ -248,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="actionButtonText">The action button text.</param>
         /// <param name="rightToLeft">The right to left.</param>
         /// <param name="actionButtonCommand">The action button command.</param>
-        public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
+        public BasicNotificationTest(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea,
                                  bool? showCloseButton, bool? showActionButton,
