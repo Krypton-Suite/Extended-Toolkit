@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    public partial class BasicNotificationWithProgressBarAlternativeUI : KryptonForm
+    public partial class BasicNotificationWithProgressBarAlternativeUITest : KryptonForm
     {
         #region Variables
         private bool _showCloseButton;
@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #endregion
 
         #region Constructor
-        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUI" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUITest" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
-        public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
+        public BasicNotificationWithProgressBarAlternativeUITest(IconType iconType, string title, string contentText,
                                                              bool? showCloseButton, 
                                                              Image customImage = null, string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             SetupBaseUI(iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUI" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUITest" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
-        public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
+        public BasicNotificationWithProgressBarAlternativeUITest(IconType iconType, string title, string contentText,
                                                              bool? showCloseButton,
                                                              int seconds, Image customImage = null, 
                                                              string dismissText = "&Dismiss",
@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             }
         }
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUI" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUITest" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -133,14 +133,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
-        public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
+        public BasicNotificationWithProgressBarAlternativeUITest(IconType iconType, string title, string contentText,
                                                              bool? showCloseButton, 
                                                              int seconds, string soundPath, Image customImage = null, 
                                                              string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, showCloseButton, seconds, customImage, dismissText, rightToLeftSupport) => SoundPath = soundPath;
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUI" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUITest" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -149,14 +149,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
-        public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
+        public BasicNotificationWithProgressBarAlternativeUITest(IconType iconType, string title, string contentText,
                                                              bool? showCloseButton, 
                                                              Stream soundStream, Image customImage = null,
                                                              string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUI" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUITest" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -166,7 +166,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
-        public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
+        public BasicNotificationWithProgressBarAlternativeUITest(IconType iconType, string title, string contentText,
                                                              bool? showCloseButton,
                                                              int seconds, Stream soundStream, Image customImage = null,
                                                              string dismissText = "&Dismiss",

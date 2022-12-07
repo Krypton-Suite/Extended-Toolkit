@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    partial class BasicNotificationAlternativeUI
+    partial class BasicNotificationWithProgressBarAlternativeUITest
     {
         /// <summary>
         /// Required designer variable.
@@ -55,9 +55,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasicNotificationAlternativeUI));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasicNotificationWithProgressBarAlternativeUITest));
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
+            this.pbCountdown = new System.Windows.Forms.ProgressBar();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxToastImage = new System.Windows.Forms.PictureBox();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
@@ -92,6 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             // kryptonPanel2
             // 
             this.kryptonPanel2.Controls.Add(this.kwlContent);
+            this.kryptonPanel2.Controls.Add(this.pbCountdown);
             this.kryptonPanel2.Controls.Add(this.kwlTitle);
             this.kryptonPanel2.Controls.Add(this.pbxToastImage);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -109,12 +111,20 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kwlContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.kwlContent.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
-            this.kwlContent.Location = new System.Drawing.Point(146, 92);
+            this.kwlContent.Location = new System.Drawing.Point(146, 95);
             this.kwlContent.Name = "kwlContent";
-            this.kwlContent.Size = new System.Drawing.Size(451, 148);
+            this.kwlContent.Size = new System.Drawing.Size(451, 140);
             this.kwlContent.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kwlContent.Text = "{0}";
             this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pbCountdown
+            // 
+            this.pbCountdown.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbCountdown.Location = new System.Drawing.Point(0, 238);
+            this.pbCountdown.Name = "pbCountdown";
+            this.pbCountdown.Size = new System.Drawing.Size(609, 5);
+            this.pbCountdown.TabIndex = 4;
             // 
             // kwlTitle
             // 
@@ -326,7 +336,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnToastButton1.TabIndex = 0;
             this.kbtnToastButton1.Values.Text = "B1";
             // 
-            // BasicNotificationAlternativeUI
+            // BasicNotificationWithProgressBarAlternativeUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -336,11 +346,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BasicNotificationAlternativeUI";
+            this.Name = "BasicNotificationWithProgressBarAlternativeUI";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.BasicNotificationAlternativeUI_Load);
+            this.Load += new System.EventHandler(this.BasicNotificationWithProgressBarAlternativeUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).EndInit();
@@ -367,6 +377,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private KryptonPanel kryptonPanel2;
         private KryptonWrapLabel kwlContent;
+        private ProgressBar pbCountdown;
         private KryptonWrapLabel kwlTitle;
         private PictureBox pbxToastImage;
         private KryptonPanel kryptonPanel1;
