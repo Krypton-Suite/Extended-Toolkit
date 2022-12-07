@@ -431,8 +431,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         }
                         else if (_contentAreaType == ToastNotificationContentAreaType.WrappedLabel)
                         {
-                            BasicNotificationWithProgressBarAlternativeUI notification =
-                                new BasicNotificationWithProgressBarAlternativeUI(IconType, Title, ContentText, 
+                            BasicNotificationWithProgressBarAlternativeUITest notification =
+                                new BasicNotificationWithProgressBarAlternativeUITest(IconType, Title, ContentText, 
                                                                                   ShowCloseButton,
                                                                                   Seconds, SoundStream,
                                                                                   CustomImage, DismissText, RightToLeftSupport);
