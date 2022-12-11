@@ -14,6 +14,7 @@
 * Refactor code to eliminate duplication
 * Add support for .NET 8.0
 * Removed support for .NET Core 3.1 & .NET 5.0 for 'Lite' packages (See [package support information](https://github.com/Krypton-Suite/Documentation/blob/main/Documents/Development/Package-Support-Information.md) for details)
+* Removed support for .NET 5, in accordance with its official release cadence
 * Implemented [#354](https://github.com/Krypton-Suite/Extended-Toolkit/issues/354), Change the license from BSD-3-Clause to MIT
 * Updated standard toolkit to build `2311`
 
