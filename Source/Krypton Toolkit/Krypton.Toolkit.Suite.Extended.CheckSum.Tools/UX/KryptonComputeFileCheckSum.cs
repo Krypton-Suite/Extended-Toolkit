@@ -409,7 +409,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         {
             if (bgMD5Hash.IsBusy || bgSHA1Hash.IsBusy || bgSHA256Hash.IsBusy || bgSHA384Hash.IsBusy || bgSHA512Hash.IsBusy || bgRIPEMD160Hash.IsBusy)
             {
-                DialogResult result = KryptonMessageBox.Show("File hashing is still in progress.\nDo you want to cancel?", "Hashing in Progress", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("File hashing is still in progress.\nDo you want to cancel?", "Hashing in Progress", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {

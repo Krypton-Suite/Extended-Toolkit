@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                 SetGlobalManager(null);
 
-                if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question) == DialogResult.Yes)
+                if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Application.Restart();
                 }

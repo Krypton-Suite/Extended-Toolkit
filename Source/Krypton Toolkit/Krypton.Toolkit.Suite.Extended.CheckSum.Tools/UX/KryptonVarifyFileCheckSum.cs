@@ -788,7 +788,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
         private void clearTextBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = KryptonMessageBox.Show("Do you want to clear the textbox of its contents?", "Clear Hash Box", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+            DialogResult result = KryptonMessageBox.Show("Do you want to clear the textbox of its contents?", "Clear Hash Box", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {

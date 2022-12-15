@@ -133,7 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 ErrorMessage = "Invalid assembly specifier!";
 
-                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
 
                 return false;
             }
@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 ErrorMessage = "Invalid assembly specifier!";
 
-                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
 
                 return false;
             }

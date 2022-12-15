@@ -347,7 +347,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (usePrompt)
             {
-                DialogResult result = KryptonMessageBox.Show("Warning: This action will reset all settings back to their defaults, and is not reversible!\nDo you want to proceed?", "Nuke All Settings", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Warning, KryptonMessageBoxDefaultButton.Button2);
+                DialogResult result = KryptonMessageBox.Show("Warning: This action will reset all settings back to their defaults, and is not reversible!\nDo you want to proceed?", "Nuke All Settings", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Warning, KryptonMessageBoxDefaultButton.Button2);
 
                 if (result == DialogResult.Yes)
                 {
