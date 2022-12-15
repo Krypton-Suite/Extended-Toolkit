@@ -280,7 +280,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     break;
-                case ExtendedMessageBoxButtons.OkCancel:
+                case ExtendedMessageBoxButtons.OKCancel:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
@@ -352,14 +352,18 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button3.Enabled = true;
                     ControlBox = false;
                     break;
-#if NET60_OR_GREATER
-                case ExtendedMessageBoxButtons.CANCELTRYCONTINUE:
+                case ExtendedMessageBoxButtons.CancelTryContinue:
                     _button1.Text = KryptonManager.Strings.Cancel;
                     _button2.Text = KryptonManager.Strings.TryAgain;
                     _button3.Text = KryptonManager.Strings.Continue;
                     _button1.DialogResult = DialogResult.Cancel;
+#if NET6_0_OR_GREATER
                     _button2.DialogResult = DialogResult.TryAgain;
                     _button3.DialogResult = DialogResult.Continue;
+#else
+                    _button2.DialogResult = (DialogResult)10;
+                    _button2.DialogResult = (DialogResult)11; 
+#endif
                     _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
@@ -370,7 +374,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button3.Visible = true;
                     _button3.Enabled = true;
                     break;
-#endif
             }
 
             // Do we ignore the Alt+F4 on the buttons?
@@ -412,7 +415,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             MessageButton helpButton = _buttons switch
             {
                 ExtendedMessageBoxButtons.OK => _button2,
-                ExtendedMessageBoxButtons.OkCancel or ExtendedMessageBoxButtons.YesNo or ExtendedMessageBoxButtons.RetryCancel => _button3,
+                ExtendedMessageBoxButtons.OKCancel or ExtendedMessageBoxButtons.YesNo or ExtendedMessageBoxButtons.RetryCancel => _button3,
                 ExtendedMessageBoxButtons.AbortRetryIgnore or ExtendedMessageBoxButtons.YesNoCancel => _button4,
                 _ => throw new ArgumentOutOfRangeException()
             };
@@ -443,9 +446,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 {
                     mInfoMethod.Invoke(control, new object[] { new HelpEventArgs(MousePosition) });
                 }
-                if (string.IsNullOrWhiteSpace(_helpInfo.HelpFilePath))
+                if (_helpInfo != null)
                 {
-                    return;
+                    if (string.IsNullOrWhiteSpace(_helpInfo.HelpFilePath))
+                    {
+                        return;
+                    }
                 }
 
                 if (!string.IsNullOrWhiteSpace(_helpInfo.Keyword))

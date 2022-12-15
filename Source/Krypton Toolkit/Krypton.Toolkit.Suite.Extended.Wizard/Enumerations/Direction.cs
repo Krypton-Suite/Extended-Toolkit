@@ -22,16 +22,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
+ * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2023.
+ *
  */
 #endregion
 
-global using System;
-global using System.ComponentModel;
-global using System.Drawing;
-global using System.Drawing.Design;
-global using System.Media;
-global using System.Reflection;
-global using System.Text;
-global using System.Windows.Forms;
+namespace Krypton.Toolkit.Suite.Extended.Wizard;
 
-global using Krypton.Toolkit.Suite.Extended.Shared;
+public enum Direction
+{
+    Forward = 0,
+    Backward = 1
+}

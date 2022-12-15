@@ -35,10 +35,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
     /// </summary>
     public class WizardEventArgs : EventArgs
     {
-        public WizardEventArgs(int currentPageIndex, Direction direction = Direction.FORWARD)
+        public WizardEventArgs(int currentPageIndex, Direction direction = Direction.Forward)
         {
             CurrentPageIndex = currentPageIndex;
-            NextPageIndex = direction == Direction.FORWARD ? currentPageIndex + 1 : currentPageIndex - 1;
+            NextPageIndex = direction == Direction.Forward ? currentPageIndex + 1 : currentPageIndex - 1;
             AllowPageChange = true;
         }
 

@@ -25,13 +25,11 @@
  */
 #endregion
 
-global using System;
-global using System.ComponentModel;
-global using System.Drawing;
-global using System.Drawing.Design;
-global using System.Media;
-global using System.Reflection;
-global using System.Text;
-global using System.Windows.Forms;
+namespace Krypton.Toolkit.Suite.Extended.Messagebox;
 
-global using Krypton.Toolkit.Suite.Extended.Shared;
+public enum ExtendedMessageBoxTimeoutButton
+{
+    FirstButton = 0,
+    SecondButton = 1,
+    ThirdButton = 2
+}

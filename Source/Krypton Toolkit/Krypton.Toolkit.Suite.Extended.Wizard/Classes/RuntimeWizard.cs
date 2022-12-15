@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         public override void Back(ISelectionService selection)
         {
-            if (UserAllowsMoveToProceed(Direction.BACKWARD, out var args))
+            if (UserAllowsMoveToProceed(Direction.Backward, out var args))
             {
                 MoveToPreviousPage(args);
                 SetButtonStates();
@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         {
             if (Finishing()) return;
 
-            if (UserAllowsMoveToProceed(Direction.FORWARD, out var args) && _wizard.MoreThanOnePageExists())
+            if (UserAllowsMoveToProceed(Direction.Forward, out var args) && _wizard.MoreThanOnePageExists())
             {
                 MoveToNextPage(args);
                 SetButtonStates();
@@ -131,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private bool UserAllowsMoveToProceed(Direction direction, out WizardEventArgs eventArgs)
         {
-            eventArgs = direction == Direction.FORWARD
+            eventArgs = direction == Direction.Forward
                 ? AttemptMoveToNextPage()
                 : AttemptMoveToPreviousPage();
 

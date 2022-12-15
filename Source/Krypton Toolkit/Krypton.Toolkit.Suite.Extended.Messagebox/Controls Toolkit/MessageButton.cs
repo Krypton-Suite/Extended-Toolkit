@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     [ToolboxItem(false)]
     [DesignTimeVisible(false)]
-    internal class MessageButton : KryptonButton
+    internal class MessageButton : InternalKryptonButton
     {
 
         #region Instance Fields

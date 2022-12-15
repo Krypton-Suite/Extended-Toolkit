@@ -25,13 +25,18 @@
  */
 #endregion
 
-global using System;
-global using System.ComponentModel;
-global using System.Drawing;
-global using System.Drawing.Design;
-global using System.Media;
-global using System.Reflection;
-global using System.Text;
-global using System.Windows.Forms;
+namespace Krypton.Toolkit.Suite.Extended.Messagebox;
 
-global using Krypton.Toolkit.Suite.Extended.Shared;
+public enum ExtendedMessageBoxDialogResult
+{
+    None = 0,
+    Ok = 1,
+    Cancel = 2,
+    Abort = 3,
+    Retry = 4,
+    Ignore = 5,
+    Yes = 6,
+    No = 7,
+    TryAgain = 8,
+    Continue = 9
+}

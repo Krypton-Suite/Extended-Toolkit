@@ -25,13 +25,19 @@
  */
 #endregion
 
-global using System;
-global using System.ComponentModel;
-global using System.Drawing;
-global using System.Drawing.Design;
-global using System.Media;
-global using System.Reflection;
-global using System.Text;
-global using System.Windows.Forms;
+namespace Krypton.Toolkit.Suite.Extended.Messagebox;
 
-global using Krypton.Toolkit.Suite.Extended.Shared;
+/// <summary>Specifies a custom button layout.</summary>
+public enum ExtendedMessageBoxCustomButtonOptions
+{
+    /// <summary>Do not use custom buttons, instead default to an 'OK' only button.</summary>
+    None = 0,
+    /// <summary>Use a one button layout.</summary>
+    OneButton = 1,
+    /// <summary>Use a two button layout.</summary>
+    TwoButtons = 2,
+    /// <summary>Use a three button layout.</summary>
+    ThreeButtons = 3,
+    /// <summary>Use a four button layout.</summary>
+    FourButtons = 4
+}
