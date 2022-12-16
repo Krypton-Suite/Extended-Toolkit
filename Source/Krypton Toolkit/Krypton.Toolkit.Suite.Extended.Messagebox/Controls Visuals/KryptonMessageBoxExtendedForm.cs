@@ -77,6 +77,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly string _buttonThreeCustomText;
 
         private readonly string _buttonFourCustomText;
+
+        private readonly string _applicationPath;
+
         #endregion
 
         #region Identity
@@ -102,7 +105,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                DialogResult? buttonThreeCustomDialogResult, 
                                                DialogResult? buttonFourDialogResult,
                                                string buttonOneCustomText, string buttonTwoCustomText,
-                                               string buttonThreeCustomText, string buttonFourCustomText)
+                                               string buttonThreeCustomText, string buttonFourCustomText,
+                                               string applicationPath)
         {
             // Store incoming values
             _text = text;
@@ -128,6 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _buttonTwoCustomText = buttonTwoCustomText ?? KryptonManager.Strings.No;
             _buttonThreeCustomText = buttonThreeCustomText ?? KryptonManager.Strings.Cancel;
             _buttonFourCustomText = buttonFourCustomText ?? KryptonManager.Strings.Retry;
+            _applicationPath = applicationPath ?? string.Empty;
 
             // Create the form contents
             InitializeComponent();
@@ -187,49 +192,70 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             switch (_kryptonMessageBoxIcon)
             {
-                default:
+                case ExtendedKryptonMessageBoxIcon.Custom:
+                    if (_customKryptonMessageBoxIcon != null)
+                    {
+                        _messageIcon.Image = _customKryptonMessageBoxIcon;
+                    }
+                    else
+                    {
+                        _messageIcon.Image = SystemIcons.Application.ToBitmap();
+                    }
+                    break;
                 case ExtendedKryptonMessageBoxIcon.None:
                     // Windows XP and before will Beep, Vista and above do not!
                     if (OS_MAJOR_VERSION < 6)
                     {
                         SystemSounds.Beep.Play();
                     }
-
-                    break;
-                case ExtendedKryptonMessageBoxIcon.Custom:
-                    _messageIcon.Image = _customKryptonMessageBoxIcon;
-                    break;
-                case ExtendedKryptonMessageBoxIcon.Question:
-                    _messageIcon.Image = Properties.Resources.Question;
-                    SystemSounds.Question.Play();
-                    break;
-                case ExtendedKryptonMessageBoxIcon.Exclamation:
-                    _messageIcon.Image = Properties.Resources.Warning;
-                    SystemSounds.Exclamation.Play();
-                    break;
-                case ExtendedKryptonMessageBoxIcon.Information:
-                    _messageIcon.Image = Properties.Resources.Information;
-                    SystemSounds.Asterisk.Play();
-                    break;
-                case ExtendedKryptonMessageBoxIcon.Warning:
-                    _messageIcon.Image = Properties.Resources.Warning;
-                    SystemSounds.Exclamation.Play();
-                    break;
-                case ExtendedKryptonMessageBoxIcon.Error:
-                    _messageIcon.Image = Properties.Resources.Critical;
-                    SystemSounds.Hand.Play();
-                    break;
-                case ExtendedKryptonMessageBoxIcon.Asterisk:
-                    _messageIcon.Image = Properties.Resources.Asterisk;
-                    SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Hand:
                     _messageIcon.Image = Properties.Resources.Hand;
-                    SystemSounds.Hand.Play();
+                    PlayHandSound();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.SystemHand:
+                    _messageIcon.Image = SystemIcons.Hand.ToBitmap();
+                    PlayHandSound();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.Question:
+                    _messageIcon.Image = Properties.Resources.Question;
+                    PlayQuestionSound();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.SystemQuestion:
+                    _messageIcon.Image = SystemIcons.Question.ToBitmap();
+                    PlayQuestionSound();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.Exclamation:
+                    _messageIcon.Image = Properties.Resources.Warning;
+                    PlayExclamationSound();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.SystemExclamation:
+                    _messageIcon.Image = SystemIcons.Exclamation.ToBitmap();
+                    PlayExclamationSound();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.Asterisk:
+                    _messageIcon.Image = Properties.Resources.Asterisk;
+                    PlayAsteriskSound();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.SystemAsterisk:
+                    _messageIcon.Image = SystemIcons.Asterisk.ToBitmap();
+                    PlayAsteriskSound();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Stop:
                     _messageIcon.Image = Properties.Resources.Stop;
-                    SystemSounds.Hand.Play();
+                    PlayHandSound();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.Error:
+                    _messageIcon.Image = Properties.Resources.Critical;
+                    PlayHandSound();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.Warning:
+                    _messageIcon.Image = Properties.Resources.Warning;
+                    PlayExclamationSound();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.Information:
+                    _messageIcon.Image = Properties.Resources.Information;
+                    PlayAsteriskSound();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Shield:
                     if (OSUtilities.IsWindowsEleven)
@@ -249,12 +275,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 case ExtendedKryptonMessageBoxIcon.WindowsLogo:
                     // Because Windows 11 displays a generic application icon,
                     // we need to rely on a image instead
-                    if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
+                    if (OSUtilities.IsWindowsEleven)
                     {
                         _messageIcon.Image = Properties.Resources.Windows11;
                     }
-                    // Windows 10
-                    else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19045 /* RTM - 22H2 */)
+                    // Windows 10, 8.1 & 8
+                    else if (OSUtilities.IsWindowsTen || OSUtilities.IsWindowsEightPointOne || OSUtilities.IsWindowsEight)
                     {
                         _messageIcon.Image = Properties.Resources.Windows_8_and_10_Logo;
                     }
@@ -263,10 +289,46 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                         _messageIcon.Image = SystemIcons.WinLogo.ToBitmap();
                     }
                     break;
+                case ExtendedKryptonMessageBoxIcon.Application:
+                    if (!string.IsNullOrEmpty(_applicationPath))
+                    {
+                        Image tempImage = GraphicsExtensions.ExtractIconFromFilePath(_applicationPath).ToBitmap();
+                        Bitmap scaledImage = GraphicsExtensions.ScaleImage(tempImage, new Size(32, 32));
+
+                        _messageIcon.Image = scaledImage;
+                    }
+                    else
+                    {
+                        _messageIcon.Image = SystemIcons.Application.ToBitmap();
+                    }
+                    break;
+                case ExtendedKryptonMessageBoxIcon.SystemApplication:
+                    _messageIcon.Image = SystemIcons.Application.ToBitmap();
+                    break;
             }
 
             _messageIcon.Visible = (_kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None);
 
+        }
+
+        private static void PlayAsteriskSound()
+        {
+            SystemSounds.Asterisk.Play();
+        }
+
+        private static void PlayExclamationSound()
+        {
+            SystemSounds.Exclamation.Play();
+        }
+
+        private static void PlayQuestionSound()
+        {
+            SystemSounds.Question.Play();
+        }
+
+        private static void PlayHandSound()
+        {
+            SystemSounds.Hand.Play();
         }
 
         private void UpdateButtons()

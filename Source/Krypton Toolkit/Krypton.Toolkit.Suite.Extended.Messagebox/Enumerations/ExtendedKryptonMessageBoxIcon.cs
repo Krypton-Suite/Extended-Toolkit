@@ -36,22 +36,42 @@ public enum ExtendedKryptonMessageBoxIcon
     None = 1,
     /// <summary>Specify a hand icon.</summary>
     Hand = 2,
+    /// <summary>Specify the system hand icon.</summary>
+    SystemHand = MessageBoxIcon.Hand,
     /// <summary>Specify a question icon.</summary>
     Question = 3,
+    /// <summary>Specify the system question icon.</summary>
+    SystemQuestion = MessageBoxIcon.Question,
     /// <summary>Specify a exclamation icon.</summary>
     Exclamation = 4,
+    /// <summary>Specify the system exclamation icon.</summary>
+    SystemExclamation = MessageBoxIcon.Exclamation,
     /// <summary>Specify a asterisk icon.</summary>
     Asterisk = 5,
+    /// <summary>Specify the system asterisk icon.</summary>
+    SystemAsterisk = MessageBoxIcon.Asterisk,
     /// <summary>Specify a stop icon.</summary>
     Stop = 6,
+    /// <summary>Specify the system stop icon.</summary>
+    SystemStop = MessageBoxIcon.Stop,
     /// <summary>Specify a error icon.</summary>
     Error = 7,
+    /// <summary>Specify the system error icon.</summary>
+    SystemError = MessageBoxIcon.Error,
     /// <summary>Specify a warning icon.</summary>
     Warning = 8,
+    /// <summary>Specify the system warning icon.</summary>
+    SystemWarning = MessageBoxIcon.Warning,
     /// <summary>Specify a information icon.</summary>
     Information = 9,
+    /// <summary>Specify the system information icon.</summary>
+    SystemInformation = MessageBoxIcon.Information,
     /// <summary>Specify a UAC shield icon.</summary>
     Shield = 10,
     /// <summary>Specify a Windows logo icon.</summary>
-    WindowsLogo = 11
+    WindowsLogo = 11,
+    /// <summary>Specify your application icon.</summary>
+    Application = 12,
+    /// <summary>Specify the default system application icon. See <see cref="SystemIcons.Application"/>.</summary>
+    SystemApplication = 13
 }

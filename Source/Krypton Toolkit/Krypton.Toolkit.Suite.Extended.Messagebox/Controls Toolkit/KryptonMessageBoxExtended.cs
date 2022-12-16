@@ -38,12 +38,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
-                                        ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null)
+                                        ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null, string applicationPath = null)
             => ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
-                null, showCtrlCopy, null, null, null, Color.Empty, new [] {Color.Empty, Color.Empty, Color.Empty, Color.Empty},
+                null, showCtrlCopy, null, null, null, Color.Empty, new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                 null, null, null, null, string.Empty, string.Empty,
-                string.Empty, string.Empty);
+                string.Empty, string.Empty, applicationPath);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -56,9 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
+        /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
         public static DialogResult Show(string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                         ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
@@ -67,14 +66,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null,
                                         Font messageBoxTypeface = null,
-                                        Image customImageIcon = null)
+                                        Image customImageIcon = null, string applicationPath = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             messageBoxTypeface, customImageIcon, null, Color.Empty, 
+                             messageBoxTypeface, customImageIcon, null, Color.Empty,
                              new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                             null, null, null, null, string.Empty, string.Empty, 
-                             string.Empty, string.Empty);
+                             null, null, null, null, string.Empty, string.Empty,
+                             string.Empty, string.Empty, applicationPath);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -85,23 +84,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options">The options.</param>
         /// <param name="displayHelpButton">if set to <c>true</c> [display help button].</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
+        /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
         public static DialogResult Show(string messageText, string caption,
                                         ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon,
                                         KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                         MessageBoxOptions options = 0,
                                         bool displayHelpButton = false,
-                                        bool? showCtrlCopy = null)
+                                        bool? showCtrlCopy = null, string applicationPath = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                              null, null, null, Color.Empty,
                              new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                              null, null, null, null, string.Empty, string.Empty,
-                             string.Empty, string.Empty);
+                             string.Empty, string.Empty, applicationPath);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -115,9 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
+        /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
         public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                         ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
@@ -126,14 +121,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null,
                                         Font messageBoxTypeface = null,
-                                        Image customImageIcon = null)
+                                        Image customImageIcon = null, string applicationPath = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                              messageBoxTypeface, customImageIcon, null, Color.Empty,
                              new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                              null, null, null, null, string.Empty,
-                             string.Empty, string.Empty, string.Empty);
+                             string.Empty, string.Empty, string.Empty,
+                             applicationPath);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -145,23 +141,22 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options">The options.</param>
         /// <param name="displayHelpButton">if set to <c>true</c> [display help button].</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
+        /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
         public static DialogResult Show(IWin32Window owner, string messageText, string caption,
                                         ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon,
                                         KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                         MessageBoxOptions options = 0,
                                         bool displayHelpButton = false,
-                                        bool? showCtrlCopy = null)
+                                        bool? showCtrlCopy = null,
+                                        string applicationPath = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                     displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                     null, null, null, Color.Empty,
                     new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                     null, null, null, null, string.Empty,
-                    string.Empty, string.Empty, string.Empty);
+                    string.Empty, string.Empty, string.Empty, applicationPath);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -176,9 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
+        /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
         public static DialogResult Show(string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                         ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
@@ -189,18 +182,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         object param = null,
                                         bool? showCtrlCopy = null,
                                         Font messageBoxTypeface = null,
-                                        Image customImageIcon = null)
+                                        Image customImageIcon = null,
+                                        string applicationPath = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              new HelpInfo(helpFilePath, navigator, param), showCtrlCopy,
                              messageBoxTypeface, customImageIcon, null, Color.Empty,
                              new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                             null, null, null, null, string.Empty, 
-                             string.Empty, string.Empty, string.Empty);
+                             null, null, null, null, string.Empty,
+                             string.Empty, string.Empty, string.Empty, applicationPath);
 
-        /// <summary>Shows a messagebox.</summary>
+        /// <summary>Shows a message box.</summary>
         /// <param name="owner">The owner.</param>
-        /// <param name="messageText">The text.</param>
+        /// <param name="messageText">The message text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
@@ -209,12 +203,22 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="helpFilePath">The help file path.</param>
         /// <param name="navigator">The navigator.</param>
         /// <param name="param">The parameter.</param>
+        /// <param name="displayHelpButton">if set to <c>true</c> [display help button].</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
+        /// <param name="showHelpButton">The show help button.</param>
+        /// <param name="messageTextColour">The message text colour.</param>
+        /// <param name="buttonTextColours">The button text colours.</param>
+        /// <param name="buttonOneCustomDialogResult">The button one custom dialog result.</param>
+        /// <param name="buttonTwoCustomDialogResult">The button two custom dialog result.</param>
+        /// <param name="buttonThreeCustomDialogResult">The button three custom dialog result.</param>
+        /// <param name="buttonFourDialogResult">The button four dialog result.</param>
+        /// <param name="buttonOneCustomText">The button one custom text.</param>
+        /// <param name="buttonTwoCustomText">The button two custom text.</param>
+        /// <param name="buttonThreeCustomText">The button three custom text.</param>
+        /// <param name="buttonFourCustomText">The button four custom text.</param>
+        /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
         public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                         ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
@@ -237,7 +241,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null,
                                         string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null,
-                                        string buttonFourCustomText = null)
+                                        string buttonFourCustomText = null,
+                                        string applicationPath = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
@@ -245,12 +250,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          showHelpButton, messageTextColour, buttonTextColours, buttonOneCustomDialogResult,
                          buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
                          buttonFourDialogResult, buttonOneCustomText, buttonTwoCustomText,
-                         buttonThreeCustomText, buttonFourCustomText);
+                         buttonThreeCustomText, buttonFourCustomText, applicationPath);
         #endregion
 
         #region Implementation
 
-        /// <summary>Shows the messagebox.</summary>
+        /// <summary>Shows the message box.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -262,9 +267,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
+        /// <param name="showHelpButton">The show help button.</param>
+        /// <param name="messageTextColour">The message text colour.</param>
+        /// <param name="buttonTextColours">The button text colours.</param>
+        /// <param name="buttonOneCustomDialogResult">The button one custom dialog result.</param>
+        /// <param name="buttonTwoCustomDialogResult">The button two custom dialog result.</param>
+        /// <param name="buttonThreeCustomDialogResult">The button three custom dialog result.</param>
+        /// <param name="buttonFourDialogResult">The button four dialog result.</param>
+        /// <param name="buttonOneCustomText">The button one custom text.</param>
+        /// <param name="buttonTwoCustomText">The button two custom text.</param>
+        /// <param name="buttonThreeCustomText">The button three custom text.</param>
+        /// <param name="buttonFourCustomText">The button four custom text.</param>
+        /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
+        /// <returns>One of the <see cref="DialogResult"/> values.</returns>
         internal static DialogResult ShowCore(IWin32Window owner, string text, string caption,
                                               ExtendedMessageBoxButtons buttons,
                                               ExtendedKryptonMessageBoxIcon icon,
@@ -278,7 +293,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                               DialogResult? buttonThreeCustomDialogResult,
                                               DialogResult? buttonFourDialogResult,
                                               string buttonOneCustomText, string buttonTwoCustomText,
-                                              string buttonThreeCustomText, string buttonFourCustomText)
+                                              string buttonThreeCustomText, string buttonFourCustomText,
+                                              string applicationPath)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -296,7 +312,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                             buttonOneCustomText,
                                                             buttonTwoCustomText,
                                                             buttonThreeCustomText,
-                                                            buttonFourCustomText);
+                                                            buttonFourCustomText,
+                                                            applicationPath);
 
             return kmbe.ShowDialog(showOwner);
         }
