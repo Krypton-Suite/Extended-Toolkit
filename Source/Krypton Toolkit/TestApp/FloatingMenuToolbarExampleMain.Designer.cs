@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FloatingMenuToolbarExampleMain));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
             this.kbtnFloatingAdvanced = new Krypton.Toolkit.KryptonButton();
@@ -53,6 +54,7 @@
             this.kryptonButton2.Size = new System.Drawing.Size(281, 25);
             this.kryptonButton2.TabIndex = 1;
             this.kryptonButton2.Values.Text = "Floating Menu && Toolbar";
+            this.kryptonButton2.Click += new System.EventHandler(this.kryptonButton2_Click);
             // 
             // kbtnFloatingAdvanced
             // 
@@ -71,10 +73,12 @@
             this.ClientSize = new System.Drawing.Size(306, 83);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FloatingMenuToolbarExampleMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FloatingMenuToolbarExample";
+            this.Text = "Floating Menu Toolbar Example";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

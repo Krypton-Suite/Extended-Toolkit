@@ -34,10 +34,10 @@ Then "Smurf-IV", picked it up and
 - and Created this read me ;-)
 
 ## Progmatic Creation
-![](TreeGidViewTheming.gif)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/TreeGidViewTheming.gif?raw=true)
 
 ## DataSource Creation
-![](TreeGridViewDaataSource.gif)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/TreeGridViewDataSource.gif?raw=true)
 
 ## Notes from the original Author
 ### Design

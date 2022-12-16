@@ -92,7 +92,7 @@
             // 
             // floatableMenuStrip1
             // 
-            this.floatableMenuStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.floatableMenuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.floatableMenuStrip1.FloatingWindowText = "Example Menu";
             this.floatableMenuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.floatableMenuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
@@ -104,6 +104,7 @@
             this.floatableMenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.floatableMenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.floatableMenuStrip1.Name = "floatableMenuStrip1";
+            this.floatableMenuStrip1.ShowFloatingWindowControlBox = true;
             this.floatableMenuStrip1.Size = new System.Drawing.Size(521, 24);
             this.floatableMenuStrip1.TabIndex = 0;
             this.floatableMenuStrip1.Text = "floatableMenuStrip1";
@@ -461,10 +462,12 @@
             this.Controls.Add(this.toolStripPanelExtened1);
             this.Controls.Add(this.menuStripPanelExtened1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.floatableMenuStrip1;
             this.MaximizeBox = false;
             this.Name = "FloatingMenuToolbarAdvancedExample";
-            this.Text = "FloatingMenuToolbarAdvancedExample";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Floating Menu Toolbar Advanced Example";
             this.menuStripPanelExtened1.ResumeLayout(false);
             this.menuStripPanelExtened1.PerformLayout();
             this.floatableMenuStrip1.ResumeLayout(false);

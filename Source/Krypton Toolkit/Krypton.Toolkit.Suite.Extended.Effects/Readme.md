@@ -8,7 +8,7 @@
 <!-- End Document Outline -->
 
 # `FadeController`
-![](FadeInandOut.gif)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/FadeInandOut.gif?raw=true)
 
 ## Things of note in the picture
 - The Fade In is initiated from the Parent form
@@ -22,3 +22,4 @@
 # ToDo
 - Better documentation on the `speeds`
 - Better documentation on the `FadeController` API's
+- Apply options to `KryptonFormExtended` in the designer
