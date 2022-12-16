@@ -17,6 +17,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.12.350-alpha" />
+		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.117" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -72,13 +73,18 @@
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard 2022.csproj" />-->
 	</ItemGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
+		<Reference Include="Krypton.Toolkit.Suite.Extended.TreeGridView">
+			<HintPath>..\Krypton.Toolkit.Suite.Extended.TreeGridView\obj\Nightly\net462\Krypton.Toolkit.Suite.Extended.TreeGridView.dll</HintPath>
+		</Reference>
 		<Reference Include="Krypton.Toolkit.Suite.Extended.Wizard">
 			<HintPath>..\Krypton.Toolkit.Suite.Extended.Wizard\obj\Nightly\net462\Krypton.Toolkit.Suite.Extended.Wizard.dll</HintPath>
 		</Reference>
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<ItemGroup>
 		<Compile Update="Properties\Resources.Designer.cs">
@@ -93,6 +99,15 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Northwind_small.sqlite">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+
+		<!-- Needed to make the SQLite core work correctly - I Think !
+		<Prefer32Bit>true</Prefer32Bit>-->
 	</ItemGroup>
 
 </Project>

@@ -97,5 +97,12 @@ namespace Examples
 
             example.Show();
         }
+
+        private void kbtnTreeGridViewExample_Click(object sender, EventArgs e)
+        {
+            TreeGridViewExample treeGridView = new();
+
+            treeGridView.Show();
+        }
     }
 }

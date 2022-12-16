@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private Image _customImageIcon;
 
-        private string _text, _captionText, _helpFilePath, _optionalCheckBoxText, _optionalLinkLabelText, _optionalLinkLabelDestination;
+        private string _text, _captionText, _helpFilePath, _optionalCheckBoxText, _optionalLinkLabelText, _optionalLinkLabelDestination, _applicationPath;
 
         private object _parameters;
 
@@ -120,6 +120,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <value>The message box typeface.</value>
         [DefaultValue(typeof(Font), "Segoe UI, 8.25F"), Description(@"Specifies the font on all text surfaces.Specifies")]
         public Font MessageBoxTypeface { get => _messageBoxTypeface; set => _messageBoxTypeface = value; }
+
+        /// <summary>Gets or sets the application path.</summary>
+        /// <value>The application path.</value>
+        [DefaultValue(@""), Description(@"The application path.")]
+        public string ApplicationPath { get => _applicationPath; set => _applicationPath = value; }
 
         /// <summary>Gets or sets the custom image icon.</summary>
         /// <value>The custom image icon.</value>
@@ -200,6 +205,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             _customImageIcon = null;
 
+            _applicationPath = @"";
+
             _text = @"";
 
             _captionText = @"";
@@ -244,7 +251,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         object param, bool? showCtrlCopy,
                                         bool? displayHelpButton,
                                         Font messageBoxTypeface,
-                                        Image customImageIcon)
+                                        Image customImageIcon,
+                                        string applicationPath)
         {
             Owner = owner;
 
@@ -273,6 +281,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             ShowCtrlCopy = showCtrlCopy ?? showCtrlCopy.GetValueOrDefault();
 
             ShowHelpButton = displayHelpButton ?? displayHelpButton.GetValueOrDefault();
+
+            ApplicationPath = applicationPath;
         }
 
         #endregion
@@ -289,7 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton,
                                                       Options, false,
-                                                      ShowCtrlCopy);
+                                                      ShowCtrlCopy, ApplicationPath);
             }
             else if (MessageBoxTypeface != null)
             {
@@ -324,7 +334,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton,
                                                       Options, false,
-                                                      ShowCtrlCopy);
+                                                      ShowCtrlCopy, ApplicationPath);
             }
             else if (MessageBoxTypeface != null)
             {

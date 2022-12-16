@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 using Krypton.Toolkit.Suite.Extended.Dialogs;
 
-using TestApp.Properties;
+using Examples.Properties;
 
 namespace Examples
 {
