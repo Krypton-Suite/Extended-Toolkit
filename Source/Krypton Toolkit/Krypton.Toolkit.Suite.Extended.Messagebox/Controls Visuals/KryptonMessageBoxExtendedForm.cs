@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Instance Fields
         private readonly string _text;
         private readonly string _caption;
-        
+
         private readonly KryptonMessageBoxDefaultButton _defaultButton;
         private readonly MessageBoxOptions _options; // https://github.com/Krypton-Suite/Standard-Toolkit/issues/313
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
@@ -97,12 +97,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                KryptonMessageBoxDefaultButton defaultButton,
                                                MessageBoxOptions options,
                                                HelpInfo helpInfo, bool? showCtrlCopy,
-                                               Font messageBoxTypeface, 
+                                               Font messageBoxTypeface,
                                                Image customKryptonMessageBoxIcon, bool? showHelpButton,
                                                Color? messageTextColour, Color[] buttonTextColours,
-                                               DialogResult? buttonOneCustomDialogResult, 
-                                               DialogResult? buttonTwoCustomDialogResult, 
-                                               DialogResult? buttonThreeCustomDialogResult, 
+                                               DialogResult? buttonOneCustomDialogResult,
+                                               DialogResult? buttonTwoCustomDialogResult,
+                                               DialogResult? buttonThreeCustomDialogResult,
                                                DialogResult? buttonFourDialogResult,
                                                string buttonOneCustomText, string buttonTwoCustomText,
                                                string buttonThreeCustomText, string buttonFourCustomText,
@@ -152,7 +152,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         }
         #endregion Identity
 
-        #region Methods
+        #region Implementation
         private void UpdateText()
         {
             Text = string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0];
@@ -211,51 +211,51 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     break;
                 case ExtendedKryptonMessageBoxIcon.Hand:
                     _messageIcon.Image = Properties.Resources.Hand;
-                    PlayHandSound();
+                    SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.SystemHand:
                     _messageIcon.Image = SystemIcons.Hand.ToBitmap();
-                    PlayHandSound();
+                    SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Question:
                     _messageIcon.Image = Properties.Resources.Question;
-                    PlayQuestionSound();
+                    SystemSounds.Question.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.SystemQuestion:
                     _messageIcon.Image = SystemIcons.Question.ToBitmap();
-                    PlayQuestionSound();
+                    SystemSounds.Question.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Exclamation:
                     _messageIcon.Image = Properties.Resources.Warning;
-                    PlayExclamationSound();
+                    SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.SystemExclamation:
                     _messageIcon.Image = SystemIcons.Exclamation.ToBitmap();
-                    PlayExclamationSound();
+                    SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Asterisk:
                     _messageIcon.Image = Properties.Resources.Asterisk;
-                    PlayAsteriskSound();
+                    SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.SystemAsterisk:
                     _messageIcon.Image = SystemIcons.Asterisk.ToBitmap();
-                    PlayAsteriskSound();
+                    SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Stop:
                     _messageIcon.Image = Properties.Resources.Stop;
-                    PlayHandSound();
+                    SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Error:
                     _messageIcon.Image = Properties.Resources.Critical;
-                    PlayHandSound();
+                    SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Warning:
                     _messageIcon.Image = Properties.Resources.Warning;
-                    PlayExclamationSound();
+                    SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Information:
                     _messageIcon.Image = Properties.Resources.Information;
-                    PlayAsteriskSound();
+                    SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Shield:
                     if (OSUtilities.IsWindowsEleven)
@@ -309,26 +309,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             _messageIcon.Visible = (_kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None);
 
-        }
-
-        private static void PlayAsteriskSound()
-        {
-            SystemSounds.Asterisk.Play();
-        }
-
-        private static void PlayExclamationSound()
-        {
-            SystemSounds.Exclamation.Play();
-        }
-
-        private static void PlayQuestionSound()
-        {
-            SystemSounds.Question.Play();
-        }
-
-        private static void PlayHandSound()
-        {
-            SystemSounds.Hand.Play();
         }
 
         private void UpdateButtons()
@@ -424,7 +404,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button3.DialogResult = DialogResult.Continue;
 #else
                     _button2.DialogResult = (DialogResult)10;
-                    _button2.DialogResult = (DialogResult)11; 
+                    _button2.DialogResult = (DialogResult)11;
 #endif
                     _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
@@ -698,6 +678,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             Clipboard.SetText(sb.ToString(), TextDataFormat.Text);
             Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
         }
-#endregion
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using Krypton.Toolkit.Suite.Extended.Wizard;
+﻿using Krypton.Toolkit.Suite.Extended.TreeGridView;
+using Krypton.Toolkit.Suite.Extended.Wizard;
 
 namespace Examples
 {

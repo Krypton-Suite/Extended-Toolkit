@@ -25,11 +25,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Messagebox;
-
-public enum ExtendedMessageBoxTimeoutButton
+namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    FirstButton = 0,
-    SecondButton = 1,
-    ThirdButton = 2
+    public enum ExtendedMessageBoxTimeoutButton
+    {
+        FirstButton = 0,
+        SecondButton = 1,
+        ThirdButton = 2
+    }
 }

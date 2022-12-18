@@ -616,6 +616,9 @@
   <data name="ne" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="newGroupPostIconStrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newGroupPostIconStrip.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="nf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

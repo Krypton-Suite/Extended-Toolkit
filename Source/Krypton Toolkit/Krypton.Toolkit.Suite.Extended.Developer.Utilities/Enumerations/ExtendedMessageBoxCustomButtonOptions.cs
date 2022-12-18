@@ -1,5 +1,6 @@
 ﻿#region MIT License
 /*
+ *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -25,14 +26,21 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Messagebox
+namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
-    public enum ExtendedMessageBoxTimeoutAction
+    /// <summary>Specifies a custom button layout.</summary>
+    public enum ExtendedMessageBoxCustomButtonOptions
     {
-        Close = 0,
-        ButtonOne = 1,
-        ButtonTwo = 2,
-        ButtonThree = 3,
-        ButtonFour = 4
+        /// <summary>Do not use custom buttons, instead default to an 'OK' only button.</summary>
+        None = 0,
+
+        /// <summary>Use a one button layout.</summary>
+        OneButton = 1,
+
+        /// <summary>Use a two button layout.</summary>
+        TwoButtons = 2,
+
+        /// <summary>Use a three button layout.</summary>
+        ThreeButtons = 3
     }
 }

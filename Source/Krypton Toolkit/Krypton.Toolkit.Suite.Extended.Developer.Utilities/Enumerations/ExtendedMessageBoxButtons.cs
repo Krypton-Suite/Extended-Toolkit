@@ -1,5 +1,6 @@
 ﻿#region MIT License
 /*
+ *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -25,13 +26,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Messagebox
+namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
     /// <summary>Specifies the button layout in the <see cref="KryptonMessageBoxExtended"/>.</summary>
     public enum ExtendedMessageBoxButtons
     {
         /// <summary>Defines a custom button layout. Linked to <see cref="ExtendedMessageBoxCustomButtonOptions"/> values.</summary>
-        Custom = 13,
+        Custom = 0,
         /// <summary>
         ///  Specifies that the message box contains an OK button.
         /// </summary>

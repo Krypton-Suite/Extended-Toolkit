@@ -104,5 +104,12 @@ namespace Examples
 
             treeGridView.Show();
         }
+
+        private void kbtnTreeGridView2Example_Click(object sender, EventArgs e)
+        {
+            TreeGridViewAdvancedExample treeGridViewAdvanced = new TreeGridViewAdvancedExample();
+
+            treeGridViewAdvanced.Show();
+        }
     }
 }

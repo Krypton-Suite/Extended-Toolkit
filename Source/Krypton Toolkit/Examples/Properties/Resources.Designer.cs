@@ -1923,6 +1923,16 @@ namespace Examples.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap newGroupPostIconStrip {
+            get {
+                object obj = ResourceManager.GetObject("newGroupPostIconStrip", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap nf {
             get {
                 object obj = ResourceManager.GetObject("nf", resourceCulture);

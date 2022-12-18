@@ -463,7 +463,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
             _buttons = buttons;
 
-            _customButtonOptions = customButtonOptions ?? ExtendedMessageBoxCustomButtonOptions.ONEBUTTON;
+            _customButtonOptions = customButtonOptions ?? ExtendedMessageBoxCustomButtonOptions.OneButton;
 
             _icon = icon;
 
@@ -576,7 +576,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                         bool showCopyButton = false, string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
         {
-            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
+            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
         }
 
         /// <summary>
@@ -604,7 +604,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
         {
-            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
+            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
         }
 
         /// <summary>
@@ -632,7 +632,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
         {
-            return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
+            return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
         }
 
         /// <summary>
@@ -662,7 +662,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
         {
-            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
+            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
         }
 
         /// <summary>
@@ -704,7 +704,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1,
+            return InternalShow(null, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1,
                          0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
                                 isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
                 null, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
@@ -752,7 +752,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
         }
 
         /// <summary>
@@ -1639,8 +1639,8 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             {
                 switch (_icon)
                 {
-                    case ExtendedMessageBoxIcon.ERROR:
-                    case ExtendedMessageBoxIcon.EXCLAMATION:
+                    case ExtendedMessageBoxIcon.Error:
+                    case ExtendedMessageBoxIcon.Exclamation:
                         showCtrlCopy = true;
                         break;
                 }
@@ -1656,10 +1656,10 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         {
             switch (_icon)
             {
-                case ExtendedMessageBoxIcon.CUSTOM:
+                case ExtendedMessageBoxIcon.Custom:
                     _messageIcon.Image = _customMessageBoxIcon;
                     break;
-                case ExtendedMessageBoxIcon.NONE:
+                case ExtendedMessageBoxIcon.None:
                     _panelMessageIcon.Visible = false;
                     _panelMessageText.Left -= _messageIcon.Right;
 
@@ -1670,27 +1670,27 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                     }
 
                     break;
-                case ExtendedMessageBoxIcon.QUESTION:
+                case ExtendedMessageBoxIcon.Question:
                     _messageIcon.Image = Properties.Resources.Question_32_x_32;
                     SystemSounds.Question.Play();
                     break;
-                case ExtendedMessageBoxIcon.INFORMATION:
+                case ExtendedMessageBoxIcon.Information:
                     _messageIcon.Image = Properties.Resources.Information_32_x_32;
                     SystemSounds.Asterisk.Play();
                     break;
-                case ExtendedMessageBoxIcon.WARNING:
+                case ExtendedMessageBoxIcon.Warning:
                     _messageIcon.Image = Properties.Resources.Warning_32_x_32;
                     SystemSounds.Exclamation.Play();
                     break;
-                case ExtendedMessageBoxIcon.ERROR:
+                case ExtendedMessageBoxIcon.Error:
                     _messageIcon.Image = Properties.Resources.Critical_32_x_32;
                     SystemSounds.Asterisk.Play();
                     break;
-                case ExtendedMessageBoxIcon.HAND:
+                case ExtendedMessageBoxIcon.Hand:
                     _messageIcon.Image = Properties.Resources.Hand_32_x_32;
                     SystemSounds.Hand.Play();
                     break;
-                case ExtendedMessageBoxIcon.STOP:
+                case ExtendedMessageBoxIcon.Stop:
                     _messageIcon.Image = Properties.Resources.Stop_32_x_32;
                     SystemSounds.Asterisk.Play();
                     break;
@@ -1701,16 +1701,16 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         {
             switch (_buttons)
             {
-                case ExtendedMessageBoxButtons.CUSTOM:
+                /*case ExtendedMessageBoxButtons.Custom:
                     SetCustomButtonText(_customButtonOptions, _buttonOneText, _buttonOneResult, _buttonTwoText, _buttonTwoResult, _buttonThreeText, _buttonThreeResult);
-                    break;
+                    break; */
                 case ExtendedMessageBoxButtons.OK:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button1.DialogResult = DialogResult.OK;
                     _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     _button2.Visible = _button3.Visible = false;
                     break;
-                case ExtendedMessageBoxButtons.OKCANCEL:
+                case ExtendedMessageBoxButtons.OKCancel:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
@@ -1719,7 +1719,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                     _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     _button3.Visible = false;
                     break;
-                case ExtendedMessageBoxButtons.YESNO:
+                case ExtendedMessageBoxButtons.YesNo:
                     _button1.Text = KryptonManager.Strings.Yes;
                     _button2.Text = KryptonManager.Strings.No;
                     _button1.DialogResult = DialogResult.Yes;
@@ -1729,7 +1729,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                     _button3.Visible = false;
                     ControlBox = false;
                     break;
-                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                case ExtendedMessageBoxButtons.YesNoCancel:
                     _button1.Text = KryptonManager.Strings.Yes;
                     _button2.Text = KryptonManager.Strings.No;
                     _button3.Text = KryptonManager.Strings.Cancel;
@@ -1740,7 +1740,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                     _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     break;
-                case ExtendedMessageBoxButtons.RETRYCANCEL:
+                case ExtendedMessageBoxButtons.RetryCancel:
                     _button1.Text = KryptonManager.Strings.Retry;
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
@@ -1749,7 +1749,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                     _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     _button3.Visible = false;
                     break;
-                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                case ExtendedMessageBoxButtons.AbortRetryIgnore:
                     _button1.Text = KryptonManager.Strings.Abort;
                     _button2.Text = KryptonManager.Strings.Retry;
                     _button3.Text = KryptonManager.Strings.Ignore;
@@ -1863,12 +1863,12 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // If Button2 is visible
             switch (_buttons)
             {
-                case ExtendedMessageBoxButtons.CUSTOM:
+                //case ExtendedMessageBoxButtons.Custom:
                 case ExtendedMessageBoxButtons.OK:
-                case ExtendedMessageBoxButtons.YESNO:
-                case ExtendedMessageBoxButtons.YESNOCANCEL:
-                case ExtendedMessageBoxButtons.RETRYCANCEL:
-                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                case ExtendedMessageBoxButtons.YesNo:
+                case ExtendedMessageBoxButtons.YesNoCancel:
+                case ExtendedMessageBoxButtons.RetryCancel:
+                case ExtendedMessageBoxButtons.AbortRetryIgnore:
                     {
                         numButtons++;
                         Size button2Size = _button2.GetPreferredSize(Size.Empty);
@@ -1881,9 +1881,9 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // If Button3 is visible
             switch (_buttons)
             {
-                case ExtendedMessageBoxButtons.CUSTOM:
-                case ExtendedMessageBoxButtons.YESNOCANCEL:
-                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                case ExtendedMessageBoxButtons.Custom:
+                case ExtendedMessageBoxButtons.YesNoCancel:
+                case ExtendedMessageBoxButtons.AbortRetryIgnore:
                     {
                         numButtons++;
                         Size button3Size = _button2.GetPreferredSize(Size.Empty);
@@ -1899,9 +1899,9 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // If Button3 is visible
             switch (_buttons)
             {
-                case ExtendedMessageBoxButtons.CUSTOM:
-                case ExtendedMessageBoxButtons.YESNOCANCEL:
-                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                case ExtendedMessageBoxButtons.Custom:
+                case ExtendedMessageBoxButtons.YesNoCancel:
+                case ExtendedMessageBoxButtons.AbortRetryIgnore:
                     {
                         _button3.Location = new Point(right - maxButtonSize.Width, GAP);
                         _button3.Size = maxButtonSize;
@@ -1913,12 +1913,12 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // If Button2 is visible
             switch (_buttons)
             {
-                case ExtendedMessageBoxButtons.CUSTOM:
-                case ExtendedMessageBoxButtons.OKCANCEL:
-                case ExtendedMessageBoxButtons.YESNO:
-                case ExtendedMessageBoxButtons.YESNOCANCEL:
-                case ExtendedMessageBoxButtons.RETRYCANCEL:
-                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                case ExtendedMessageBoxButtons.Custom:
+                case ExtendedMessageBoxButtons.OKCancel:
+                case ExtendedMessageBoxButtons.YesNo:
+                case ExtendedMessageBoxButtons.YesNoCancel:
+                case ExtendedMessageBoxButtons.RetryCancel:
+                case ExtendedMessageBoxButtons.AbortRetryIgnore:
                     {
                         _button2.Location = new Point(right - maxButtonSize.Width, GAP);
                         _button2.Size = maxButtonSize;
@@ -2075,7 +2075,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // three button layout
             switch (customButtonOptions)
             {
-                case ExtendedMessageBoxCustomButtonOptions.NONE:
+                case ExtendedMessageBoxCustomButtonOptions.None:
                     _button3.Text = KryptonManager.Strings.OK;
 
                     _button3.DialogResult = DialogResult.OK;
@@ -2084,7 +2084,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
                     _button1.Visible = _button2.Visible = false;
                     break;
-                case ExtendedMessageBoxCustomButtonOptions.ONEBUTTON:
+                case ExtendedMessageBoxCustomButtonOptions.OneButton:
                     _button3.Text = buttonOneText;
 
                     _button3.DialogResult = buttonOneResult;
@@ -2093,7 +2093,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
                     _button1.Visible = _button2.Visible = false;
                     break;
-                case ExtendedMessageBoxCustomButtonOptions.TWOBUTTONS:
+                case ExtendedMessageBoxCustomButtonOptions.TwoButtons:
                     _button2.Text = buttonOneText;
 
                     _button2.DialogResult = buttonOneResult;
@@ -2108,7 +2108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
                     _button1.Visible = false;
                     break;
-                case ExtendedMessageBoxCustomButtonOptions.THREEBUTTONS:
+                case ExtendedMessageBoxCustomButtonOptions.ThreeButtons:
                     _button1.Text = buttonOneText;
 
                     _button1.DialogResult = buttonOneResult;

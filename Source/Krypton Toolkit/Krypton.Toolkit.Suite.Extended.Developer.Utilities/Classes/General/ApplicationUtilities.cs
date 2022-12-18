@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                 caption = "Under Construction";
             }
 
-            KryptonMessageBoxExtended.Show(message, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxCustomButtonOptions.NONE, ExtendedMessageBoxIcon.CUSTOM, messageboxTypeface: typeface, customMessageBoxIcon: _underConstruction);
+            KryptonMessageBoxExtended.Show(message, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxCustomButtonOptions.None, ExtendedMessageBoxIcon.Custom, messageboxTypeface: typeface, customMessageBoxIcon: _underConstruction);
         }
 
         /// <summary>Displays the developer information.</summary>
@@ -69,11 +69,11 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         {
             if (showBuild)
             {
-                window.TextExtra = $"{ developerText }: ({ applicationVersion.Build })";
+                window.TextExtra = $"{developerText}: ({applicationVersion.Build})";
             }
             else if (showFullVersion)
             {
-                window.TextExtra = $"{ developerText }: ({ applicationVersion })";
+                window.TextExtra = $"{developerText}: ({applicationVersion})";
             }
         }
         #endregion

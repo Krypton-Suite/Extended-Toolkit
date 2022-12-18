@@ -1,5 +1,6 @@
 ﻿#region MIT License
 /*
+ *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -25,14 +26,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Messagebox
+namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
     public enum ExtendedMessageBoxTimeoutAction
     {
-        Close = 0,
-        ButtonOne = 1,
-        ButtonTwo = 2,
-        ButtonThree = 3,
-        ButtonFour = 4
+        ButtonOne = 0,
+        ButtonTwo = 1,
+        ButtonThree = 2,
+        Close = 3
     }
 }
