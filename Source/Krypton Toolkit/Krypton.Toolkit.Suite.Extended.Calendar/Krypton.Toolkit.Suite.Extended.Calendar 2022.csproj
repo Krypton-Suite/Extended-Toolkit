@@ -13,15 +13,9 @@
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'StableFull'">
+		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
 				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'StableLite'">
-			<PropertyGroup>
-				<TargetFrameworks>net48;net481;net60-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -40,7 +34,7 @@
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite</Configurations>
+		<Configurations>Debug;Release;Nightly;Canary</Configurations>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -57,9 +51,9 @@
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Signed'">
+		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Calendar.Signed</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Calendar</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -87,7 +81,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.12.353-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.12.354-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -101,7 +95,7 @@
 			</ItemGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'StableFull'">
+		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
 				<LangVersion>preview</LangVersion>
 			</PropertyGroup>
