@@ -13,15 +13,9 @@
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'StableFull'">
+		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
 				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'StableLite'">
-			<PropertyGroup>
-				<TargetFrameworks>net48;net481;net60-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -42,7 +36,7 @@
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite</Configurations>
+		<Configurations>Debug;Release;Nightly;Canary</Configurations>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -59,9 +53,9 @@
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Signed'">
+		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.File.Explorer.Signed</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.File.Explorer</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -103,7 +97,7 @@
 			</ItemGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'StableFull'">
+		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
 				<LangVersion>preview</LangVersion>
 			</PropertyGroup>
