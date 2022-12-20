@@ -6,6 +6,7 @@
 
 ## 2023-11-xx - Build 2311 - November 2023
 <!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
+* `KryptonMessageBoxExtended` button states now fall in line with .NET 6.0
 * New `KryptonInputBoxExtended`, supports icons, and multiple response types, such as `ComboBox`, `DateTimePicker`, `DomainUpDown`, `TextBox`, `MaskedTextBox`, `PasswordBox`, `RichTextBox`, `NumericUpDown` & `None`
 * New `KryptonRunDialog`, a drop in replacement for the standard Windows dialog, with a few extra features
 * Implemented `CloseBox` in `KryptonManagerExtended` to fall in line with the standard toolkit
@@ -13,6 +14,7 @@
 * New `Krypton.Toolkit.Suite.Extended.Shared` module to open up internal APIs found in the standard toolkit
 * Refactor code to eliminate duplication
 * Add support for .NET 8.0
+* Removed support for .NET 5.0
 * Removed support for .NET Core 3.1 & .NET 5.0 for 'Lite' packages (See [package support information](https://github.com/Krypton-Suite/Documentation/blob/main/Documents/Development/Package-Support-Information.md) for details)
 * Implemented [#354](https://github.com/Krypton-Suite/Extended-Toolkit/issues/354), Change the license from BSD-3-Clause to MIT
 * Updated standard toolkit to build `2311`

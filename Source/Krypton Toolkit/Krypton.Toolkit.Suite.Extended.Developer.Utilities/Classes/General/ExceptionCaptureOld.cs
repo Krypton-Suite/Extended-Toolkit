@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="methodSignature">The method signature.</param>
         /// <param name="useDebugConsole">Use the debug console.</param>
         /// <param name="dumpException">Dumps the exception data to a file.</param>
-        public static void CaptureException(Exception exception, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, string className = "", string methodSignature = "", bool useDebugConsole = false, bool dumpException = false)
+        public static void CaptureException(Exception exception, string title = @"Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, string className = "", string methodSignature = "", bool useDebugConsole = false, bool dumpException = false, MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
         {
             if (className != "")
             {
@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="icon">The icon.</param>
         /// <param name="className">Name of the class.</param>
         /// <param name="methodSignature">The method signature.</param>
-        public static void CaptureException(Exception exception, KryptonForm currentWindow, Control control = null, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, string className = "", string methodSignature = "")
+        public static void CaptureException(Exception exception, KryptonForm currentWindow, Control control = null, string title = @"Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, string className = "", string methodSignature = "", MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
         {
             if (className != "")
             {
@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="defaultButton">The default button.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="options">The options.</param>
-        public void CaptureException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel toolStripLabel = null, object args = null, string caption = "Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button4, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, MessageBoxIcon winFormsIcon = MessageBoxIcon.Error, MessageBoxDefaultButton winFormsDefaultButton = MessageBoxDefaultButton.Button3)
+        public void CaptureException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel toolStripLabel = null, object args = null, string caption = "Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button4, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, MessageBoxIcon winFormsIcon = MessageBoxIcon.Error, MessageBoxDefaultButton winFormsDefaultButton = MessageBoxDefaultButton.Button3, MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
         {
             if (useKryptonMessageBox)
             {
@@ -134,11 +134,11 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             }
             else if (useWin32MessageBox)
             {
-                MessageBox.Show(exceptionMessage, caption, buttons, winFormsIcon, winFormsDefaultButton, options);
+                MessageBox.Show(exceptionMessage, caption, win32Buttons, winFormsIcon, winFormsDefaultButton, options);
             }
             else if (useConsole)
             {
-                Console.WriteLine($"[ { DateTime.Now } ]: { exceptionMessage }");
+                Console.WriteLine($@"[ { DateTime.Now } ]: { exceptionMessage }");
             }
         }
 
@@ -147,7 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="title">The title.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
-        public static void CaptureException(string exceptionMessage, string title, MessageBoxButtons buttons,
+        public static void CaptureException(string exceptionMessage, string title, KryptonMessageBoxButtons buttons,
                                      KryptonMessageBoxIcon icon) => KryptonMessageBox.Show(exceptionMessage, title, buttons, icon);
 
         /*
@@ -230,7 +230,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
                 writer.Dispose();
 
-                DialogResult result = KryptonMessageBox.Show($"Log file created at: '{Path.GetFullPath(fileName)}'. Open now?", "Log File Created", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Information);
+                DialogResult result = KryptonMessageBox.Show($"Log file created at: '{Path.GetFullPath(fileName)}'. Open now?", "Log File Created", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Information);
 
                 if (result == DialogResult.Yes)
                 {

@@ -126,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc, "Exception Thrown", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error, "GlobalMethods", "CheckIfTargetPlatformIsSupported(bool useLegacyVistaSupport = false)");
+                ExceptionCapture.CaptureException(exc, "Exception Thrown", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error, "GlobalMethods", "CheckIfTargetPlatformIsSupported(bool useLegacyVistaSupport = false)");
 
                 SetIsTargetPlatformSupported(false);
             }

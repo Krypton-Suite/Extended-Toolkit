@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
         public void ShowError(string message)
         {
-            KryptonMessageBox.Show(message, Properties.Resources.Failed_trying_to_report_an_Error, MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+            KryptonMessageBox.Show(message, Properties.Resources.Failed_trying_to_report_an_Error, KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 title = "Under Construction";
             }
 
-            DialogResult result = KryptonMessageBox.Show(message, title, MessageBoxButtons.OK, icon);
+            DialogResult result = KryptonMessageBox.Show(message, title, KryptonMessageBoxButtons.OK, icon);
 
             if (result == DialogResult.OK)
             {

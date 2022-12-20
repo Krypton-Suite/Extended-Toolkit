@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="defaultButton">The default button.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="options">The options.</param>
-        public void ShowException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel toolStripLabel = null, object args = null, string caption = "Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button3, MessageBoxIcon icon = MessageBoxIcon.Exclamation, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, KryptonMessageBoxIcon kryptonMessageBoxIcon = KryptonMessageBoxIcon.Error, KryptonMessageBoxDefaultButton kryptonMessageBoxDefaultButton = KryptonMessageBoxDefaultButton.Button4)
+        public void ShowException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel toolStripLabel = null, object args = null, string caption = "Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button3, MessageBoxIcon icon = MessageBoxIcon.Exclamation, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, KryptonMessageBoxIcon kryptonMessageBoxIcon = KryptonMessageBoxIcon.Error, KryptonMessageBoxDefaultButton kryptonMessageBoxDefaultButton = KryptonMessageBoxDefaultButton.Button4, MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
         {
             if (useKryptonMessageBox)
             {
@@ -103,11 +103,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else if (useWin32MessageBox)
             {
-                MessageBox.Show(exceptionMessage, caption, buttons, icon, defaultButton, options);
+                MessageBox.Show(exceptionMessage, caption, win32Buttons, icon, defaultButton, options);
             }
             else if (useConsole)
             {
-                Console.WriteLine($"[ { DateTime.Now} ]: { exceptionMessage }");
+                Console.WriteLine($@"[ { DateTime.Now} ]: { exceptionMessage }");
             }
         }
 

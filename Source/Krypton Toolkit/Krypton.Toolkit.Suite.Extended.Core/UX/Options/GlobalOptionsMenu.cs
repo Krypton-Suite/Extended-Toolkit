@@ -1100,7 +1100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void InitialiseWindow()
         {
-            DialogResult result = KryptonMessageBox.Show("This is for developmental use only. Do you want to continue?", "Global Options", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+            DialogResult result = KryptonMessageBox.Show("This is for developmental use only. Do you want to continue?", "Global Options", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
             if (result == DialogResult.No)
             {

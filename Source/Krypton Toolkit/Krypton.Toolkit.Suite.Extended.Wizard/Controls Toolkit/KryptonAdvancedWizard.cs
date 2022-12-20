@@ -54,16 +54,16 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         {
             switch (msg.Msg)
             {
-                case WmKeydown:
+                case WM_KEYDOWN:
                     if (!DesignMode && ProcessKeys)
                     {
                         switch ((int)msg.WParam)
                         {
-                            case VkEscape:
+                            case VK_ESCAPE:
                                 _wizardStrategy.Cancel();
                                 break;
 
-                            case VkReturn:
+                            case VK_RETURN:
                                 if (OnLastPage())
                                     _wizardStrategy.Finish();
                                 else if (NextButtonEnabled)
@@ -133,8 +133,8 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                 _buttonLayoutKind = value;
                 switch (value)
                 {
-                    case ButtonLayoutKind.DEFAULT:
-                        kpnlButtons.SuspendLayout();
+                    case ButtonLayoutKind.Default:
+                        _kpnlButtons.SuspendLayout();
                         try
                         {
                             SetButtonLocationsForDefaultLayout();
@@ -143,12 +143,12 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                         }
                         finally
                         {
-                            kpnlButtons.ResumeLayout();
+                            _kpnlButtons.ResumeLayout();
                         }
                         break;
 
-                    case ButtonLayoutKind.OFFICE97:
-                        kpnlButtons.SuspendLayout();
+                    case ButtonLayoutKind.Office97:
+                        _kpnlButtons.SuspendLayout();
                         try
                         {
                             SetButtonLocationsForOfficeLayout();
@@ -157,7 +157,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                         }
                         finally
                         {
-                            kpnlButtons.ResumeLayout();
+                            _kpnlButtons.ResumeLayout();
                         }
                         break;
                     default:
@@ -172,15 +172,15 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         public bool ButtonsVisible
         {
             get => _buttonsVisible;
-            set => kpnlButtons.Visible = _buttonsVisible = value;
+            set => _kpnlButtons.Visible = _buttonsVisible = value;
         }
 
         [Description("Shows or hides the Cancel button")]
         [Category("Wizard")]
         public bool CancelButton
         {
-            get => kbtnCancel.Visible;
-            set => kbtnCancel.Visible = value;
+            get => _kbtnCancel.Visible;
+            set => _kbtnCancel.Visible = value;
         }
 
         [Category("Wizard")]
@@ -207,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             {
                 _finishButton = value;
 
-                if (_buttonLayoutKind == ButtonLayoutKind.DEFAULT)
+                if (_buttonLayoutKind == ButtonLayoutKind.Default)
                     ChangeDefaultLayout(_finishButton);
                 else
                     ChangeOfficeLayout(_finishButton);
@@ -224,41 +224,41 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                 _helpButton = value;
                 switch (_buttonLayoutKind)
                 {
-                    case ButtonLayoutKind.DEFAULT:
+                    case ButtonLayoutKind.Default:
                         switch (_helpButton)
                         {
                             case true:
-                                kbtnHelp.Visible = true;
-                                kbtnHelp.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+                                _kbtnHelp.Visible = true;
+                                _kbtnHelp.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
                                 break;
 
                             case false:
-                                kbtnHelp.Visible = false;
-                                kbtnHelp.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+                                _kbtnHelp.Visible = false;
+                                _kbtnHelp.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
                                 break;
                         }
                         break;
 
-                    case ButtonLayoutKind.OFFICE97:
+                    case ButtonLayoutKind.Office97:
                         switch (_helpButton)
                         {
                             case true:
-                                kbtnHelp.Visible = true;
-                                kbtnHelp.Left = kpnlButtons.Width - kbtnHelp.Width - 12;
-                                kbtnHelp.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-                                kbtnCancel.Left = kbtnHelp.Left - kbtnCancel.Width - 5;
-                                kbtnFinish.Left = kbtnCancel.Left - kbtnFinish.Width - 5;
-                                kbtnNext.Left = kbtnFinish.Visible ? kbtnFinish.Left - kbtnFinish.Width - 5 : kbtnFinish.Left;
-                                kbtnBack.Left = kbtnNext.Left - kbtnNext.Width;
+                                _kbtnHelp.Visible = true;
+                                _kbtnHelp.Left = _kpnlButtons.Width - _kbtnHelp.Width - 12;
+                                _kbtnHelp.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+                                _kbtnCancel.Left = _kbtnHelp.Left - _kbtnCancel.Width - 5;
+                                _kbtnFinish.Left = _kbtnCancel.Left - _kbtnFinish.Width - 5;
+                                _kbtnNext.Left = _kbtnFinish.Visible ? _kbtnFinish.Left - _kbtnFinish.Width - 5 : _kbtnFinish.Left;
+                                _kbtnBack.Left = _kbtnNext.Left - _kbtnNext.Width;
                                 break;
 
                             case false:
-                                kbtnHelp.Visible = false;
-                                kbtnHelp.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-                                kbtnCancel.Left = kpnlButtons.Width - kbtnCancel.Width - 12;
-                                kbtnFinish.Left = kbtnCancel.Left - kbtnFinish.Width - 5;
-                                kbtnNext.Left = kbtnFinish.Visible ? kbtnFinish.Left - kbtnNext.Width - 5 : kbtnFinish.Left;
-                                kbtnBack.Left = kbtnNext.Left - kbtnBack.Width;
+                                _kbtnHelp.Visible = false;
+                                _kbtnHelp.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+                                _kbtnCancel.Left = _kpnlButtons.Width - _kbtnCancel.Width - 12;
+                                _kbtnFinish.Left = _kbtnCancel.Left - _kbtnFinish.Width - 5;
+                                _kbtnNext.Left = _kbtnFinish.Visible ? _kbtnFinish.Left - _kbtnNext.Width - 5 : _kbtnFinish.Left;
+                                _kbtnBack.Left = _kbtnNext.Left - _kbtnBack.Width;
                                 break;
                         }
                         break;
@@ -272,11 +272,11 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [DefaultValue(typeof(string), "KryptonManager.Strings.Help")]
         public string HelpButtonText
         {
-            get => kbtnHelp.Text;
+            get => _kbtnHelp.Text;
             set
             {
                 _helpButtonText = value;
-                kbtnHelp.Text = value;
+                _kbtnHelp.Text = value;
             }
         }
 
@@ -286,11 +286,11 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [DefaultValue(typeof(string), "KryptonManager.Strings.Cancel")]
         public string CancelButtonText
         {
-            get => kbtnCancel.Text;
+            get => _kbtnCancel.Text;
             set
             {
                 _cancelButtonText = value;
-                kbtnCancel.Text = value;
+                _kbtnCancel.Text = value;
             }
         }
 
@@ -300,11 +300,11 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [DefaultValue(typeof(string), "KryptonManager.Strings.Finish")]
         public string FinishButtonText
         {
-            get => kbtnFinish.Text;
+            get => _kbtnFinish.Text;
             set
             {
                 _finishButtonText = value;
-                kbtnFinish.Text = value;
+                _kbtnFinish.Text = value;
             }
         }
 
@@ -314,11 +314,11 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [DefaultValue(typeof(string), "KryptonManager.Strings.Back")]
         public string BackButtonText
         {
-            get => kbtnBack.Text;
+            get => _kbtnBack.Text;
             set
             {
                 _backButtonText = value;
-                kbtnBack.Text = value;
+                _kbtnBack.Text = value;
             }
         }
 
@@ -328,12 +328,12 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [DefaultValue(typeof(string), "KryptonManager.Strings.Next")]
         public string NextButtonText
         {
-            get => kbtnNext.Text;
+            get => _kbtnNext.Text;
             set
             {
                 _tempNextText = _nextButtonText;
                 _nextButtonText = value;
-                kbtnNext.Text = value;
+                _kbtnNext.Text = value;
             }
         }
 
@@ -343,11 +343,11 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Browsable(false)]
         public bool BackButtonEnabled
         {
-            get => kbtnBack.Enabled;
+            get => _kbtnBack.Enabled;
             set
             {
-                kbtnBack.Enabled = value;
-                kbtnBack.Invalidate();
+                _kbtnBack.Enabled = value;
+                _kbtnBack.Invalidate();
             }
         }
 
@@ -361,8 +361,8 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             set
             {
                 NextButtonEnabledState = value;
-                kbtnNext.Enabled = NextButtonEnabledState;
-                kbtnNext.Invalidate();
+                _kbtnNext.Enabled = NextButtonEnabledState;
+                _kbtnNext.Invalidate();
             }
         }
 
@@ -377,16 +377,16 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Browsable(false)]
         public bool FinishButtonEnabled
         {
-            get => _finishButton ? kbtnFinish.Enabled : kbtnNext.Enabled;
+            get => _finishButton ? _kbtnFinish.Enabled : _kbtnNext.Enabled;
             set
             {
                 if (_finishButton)
                 {
-                    kbtnFinish.Enabled = value;
+                    _kbtnFinish.Enabled = value;
                 }
                 else if (_finishButton == false)
                 {
-                    kbtnNext.Enabled = value;
+                    _kbtnNext.Enabled = value;
                     NextButtonEnabledState = value;
                 }
             }
@@ -403,7 +403,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                 if (HasExplicitFinishButton())
                     NextButtonEnabled = !value;
                 else
-                    kbtnNext.Text = value ? FinishButtonText : _tempNextText;
+                    _kbtnNext.Text = value ? FinishButtonText : _tempNextText;
             }
         }
 
@@ -425,7 +425,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         {
             base.OnLoad(e);
             _selectionService = (ISelectionService)GetService(typeof(ISelectionService));
-            kpnlButtons.SendToBack();
+            _kpnlButtons.SendToBack();
             _tempNextText = NextButtonText;
             _wizardStrategy.Loading();
             AllowKeyPressesToNavigateWizard();

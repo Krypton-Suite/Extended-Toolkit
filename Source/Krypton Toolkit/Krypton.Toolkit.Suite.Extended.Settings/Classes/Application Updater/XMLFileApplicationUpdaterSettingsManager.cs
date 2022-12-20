@@ -652,7 +652,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// </summary>
         public void ResetToDefaults()
         {
-            if (KryptonMessageBox.Show("WARNING! You are about to reset these settings back to their original state. This action cannot be undone!\nDo you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (KryptonMessageBox.Show("WARNING! You are about to reset these settings back to their original state. This action cannot be undone!\nDo you want to proceed?", "Reset Settings", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 SetStartUpdateInstallationUponDownloadCompletion(false);
 
@@ -710,7 +710,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                 SaveXMLFileApplicationUpdaterSettings(GetAlwaysUsePrompt());
 
-                if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question) == DialogResult.Yes)
+                if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Application.Restart();
                 }
@@ -725,7 +725,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (alwaysUsePrompt)
             {
-                if (KryptonMessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question) == DialogResult.Yes)
+                if (KryptonMessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     _xmlFileApplicationUpdaterSettings.Save();
 

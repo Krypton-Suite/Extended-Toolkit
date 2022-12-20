@@ -8,7 +8,7 @@
 <!-- End Document Outline -->
 
 # `ExtendedControls`
-![](Controls.png)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/Controls.png?raw=true)
 
 ## Things of note in the picture
 - Circular picture box

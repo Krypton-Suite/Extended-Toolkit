@@ -108,8 +108,8 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             }
             else
             {
-                Verbs[VerbPrevious].Enabled = false;
-                Verbs[VerbNext].Enabled = false;
+                Verbs[VERB_PREVIOUS].Enabled = false;
+                Verbs[VERB_NEXT].Enabled = false;
             }
         }
 
@@ -118,10 +118,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             if (!_wizard.WizardHasNoPages() && _wizard.IndexOfCurrentPage() > 0)
             {
                 _wizard.ClickBack();
-                Verbs[VerbNext].Enabled = true;
+                Verbs[VERB_NEXT].Enabled = true;
                 if (_wizard.OnFirstPage())
                 {
-                    Verbs[VerbPrevious].Enabled = false;
+                    Verbs[VERB_PREVIOUS].Enabled = false;
                 }
             }
         }
@@ -131,10 +131,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             if (((KryptonAdvancedWizard)Control).WizardPages.Count > 0)
             {
                 _wizard.ClickNext();
-                Verbs[VerbPrevious].Enabled = true;
+                Verbs[VERB_PREVIOUS].Enabled = true;
                 if (_wizard.OnLastPage())
                 {
-                    Verbs[VerbNext].Enabled = false;
+                    Verbs[VERB_NEXT].Enabled = false;
                 }
             }
         }
@@ -238,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         private ISelectionService _selectionService;
         private DesignerVerbCollection _verbs;
         private KryptonAdvancedWizard _wizard;
-        private const int VerbPrevious = 1;
-        private const int VerbNext = 2;
+        private const int VERB_PREVIOUS = 1;
+        private const int VERB_NEXT = 2;
     }
 }

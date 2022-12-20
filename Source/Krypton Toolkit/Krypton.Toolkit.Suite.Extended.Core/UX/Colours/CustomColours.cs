@@ -583,7 +583,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else
             {
-                KryptonMessageBox.Show("You must select another colour other than 'Transparent' in order to utilise this feature.", "Invalid Base Colour Detected", MessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
+                KryptonMessageBox.Show("You must select another colour other than 'Transparent' in order to utilise this feature.", "Invalid Base Colour Detected", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
             }
         }
 

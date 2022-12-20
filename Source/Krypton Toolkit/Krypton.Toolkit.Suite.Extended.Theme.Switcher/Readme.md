@@ -8,7 +8,7 @@
 <!-- End Document Outline -->
 
 # `ThemeSwitcher`
-![](ThemeSwitcher.gif)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/ThemeSwitcher.gif?raw=true)
 
 ## Things of note in the picture
 - The theme switcher in action

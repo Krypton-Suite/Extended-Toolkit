@@ -9,7 +9,7 @@
 
 # `VirtualTreeGrid`
 "Virtual Tree View" control that is also able to display multiple columns.
-![](example.png)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/VirtualTreeColumnView.png?raw=true)
 
 ## Things of note in the picture
 - Sparkle Theme has coloured the back of the grid

@@ -111,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal void SetButtonText(string buttonName, string text)
         {
-            foreach (Control c in kpnlButtons.Controls)
+            foreach (Control c in _kpnlButtons.Controls)
             {
                 if (c.Name == buttonName)
                     c.Text = text;
@@ -153,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal WizardEventArgs FireBackEvent(int currentTabIndex)
         {
-            var ev = new WizardEventArgs(currentTabIndex, Direction.BACKWARD);
+            var ev = new WizardEventArgs(currentTabIndex, Direction.Backward);
             Back?.Invoke(this, ev);
             return ev;
         }

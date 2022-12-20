@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             if (useKrypton)
             {
                 return KryptonMessageBox.Show($"WARNING! You are about to reset the {settingsType} settings back to their original state. This action cannot be undone!\nDo you want to proceed?",
-                                          $"Reset {settingsType} Settings", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                                          $"Reset {settingsType} Settings", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
             }
             else
             {
@@ -63,7 +63,7 @@ Do you want to proceed?",
             {
                 return KryptonMessageBox.Show(
                     $"You have changed a {settingsType} setting value. Do you want to save these changes?",
-                    $"{settingsType} Settings Changed", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                    $"{settingsType} Settings Changed", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
             }
             else
             {

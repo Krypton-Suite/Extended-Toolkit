@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             {
                 SetUseVirusTotalUseTLS(false);
 
-                if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question) == DialogResult.Yes)
+                if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Application.Restart();
                 }

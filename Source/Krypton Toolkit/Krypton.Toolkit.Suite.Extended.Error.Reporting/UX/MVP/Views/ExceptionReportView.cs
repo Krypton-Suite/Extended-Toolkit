@@ -761,7 +761,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
         public void ShowError(string message, Exception exception)
         {
-            KryptonMessageBox.Show(message, Properties.Resources.ExceptionReportView_ShowError_Error_sending_report, MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+            KryptonMessageBox.Show(message, Properties.Resources.ExceptionReportView_ShowError_Error_sending_report, KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
         }
         #endregion
 

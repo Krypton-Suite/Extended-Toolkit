@@ -325,7 +325,11 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         {
             [DebuggerStepThrough]
             get => _closeBoxVisible;
-            set => _closeBoxVisible = value;
+            set
+            {
+                _closeBoxVisible = value;
+                Invalidate();
+            }
         }
 
         /// <summary>

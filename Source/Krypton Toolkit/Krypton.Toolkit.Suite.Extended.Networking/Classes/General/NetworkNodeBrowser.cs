@@ -179,7 +179,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             catch (Exception ex)
             {
                 ExceptionCapture.CaptureException($"Problem with accessing network computers in NetworkBrowser\r\n\r\n\r\n{ ex.Message }",
-                    "Error", MessageBoxButtons.OK,
+                    "Error", KryptonMessageBoxButtons.OK,
                     KryptonMessageBoxIcon.Error);
 
                 return null;

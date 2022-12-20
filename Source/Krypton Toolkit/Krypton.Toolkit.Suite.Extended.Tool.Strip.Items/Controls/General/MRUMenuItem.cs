@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             if (!File.Exists(fileName))
             {
-                if (KryptonMessageBox.Show($"{fileName} doesn't exist. Remove from recent workspaces?", "File not found", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (KryptonMessageBox.Show($"{fileName} doesn't exist. Remove from recent workspaces?", "File not found", KryptonMessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     _recentlyUsedFileManager.RemoveRecentFile(fileName);
                 }

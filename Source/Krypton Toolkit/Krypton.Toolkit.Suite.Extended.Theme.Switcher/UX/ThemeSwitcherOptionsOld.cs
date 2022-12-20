@@ -388,7 +388,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         {
             if (kbtnReset.Enabled)
             {
-                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to cancel?", "Cancel Operation", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to cancel?", "Cancel Operation", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
