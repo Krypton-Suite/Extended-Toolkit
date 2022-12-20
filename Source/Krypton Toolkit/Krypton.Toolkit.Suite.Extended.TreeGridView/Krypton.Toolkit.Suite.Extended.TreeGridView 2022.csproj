@@ -120,7 +120,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
 			</ItemGroup>
 		</When>
 
@@ -130,7 +130,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="70.22.11.312" />
 			</ItemGroup>
 		</When>
 
