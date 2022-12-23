@@ -198,11 +198,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
         /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="showOptionalLinkLabel"></param>
+        /// <param name="optionalLinkLabelText"></param>
+        /// <param name="optionalLinkLabelDestination"></param>
         /// <returns>
         ///   <br />
         /// </returns>
         public static DialogResult Show(string text, string caption = @"",
-                                 ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
+                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                  ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
                                  KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                  MessageBoxOptions options = 0,
