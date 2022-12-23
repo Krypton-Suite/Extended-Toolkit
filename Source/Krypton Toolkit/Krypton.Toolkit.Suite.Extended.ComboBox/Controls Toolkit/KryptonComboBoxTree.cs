@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
 
             set
             {
-                if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(value) && value.Length > 0)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length > 0)
                 {
                     _branchSeparator = value.Substring(0, 1);
                 }
