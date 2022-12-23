@@ -608,17 +608,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Variables
-        private ConversionMethods _conversionMethods = new ConversionMethods();
+        private ConversionMethods _conversionMethods = new();
 
-        private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
+        private RandomNumberGenerator _randomNumberGenerator = new();
 
-        private HSLColour _hslColour = new HSLColour();
+        private HSLColour _hslColour = new();
 
-        private ColourControlManager _colourControlManager = new ColourControlManager();
+        private ColourControlManager _colourControlManager = new();
 
-        private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new GlobalBooleanSettingsManager();
+        private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new();
 
-        private AllMergedPaletteColourSettingsManager _colourSettingsManager = new AllMergedPaletteColourSettingsManager();
+        private AllMergedPaletteColourSettingsManager _colourSettingsManager = new();
 
         private Color _baseColour, _colourDark, _colourNormal, _colourLight, _colourLightness;
 

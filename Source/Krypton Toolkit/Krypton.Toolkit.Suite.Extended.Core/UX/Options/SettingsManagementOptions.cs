@@ -31,13 +31,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     public partial class SettingsManagementOptions : KryptonForm
     {
         #region Variables
-        private ColourIntensitySettingsManager _colourBlendingSettingsManager = new ColourIntensitySettingsManager();
-        private ColourIntegerSettingsManager _colourIntegerSettingsManager = new ColourIntegerSettingsManager();
-        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
-        private ColourStringSettingsManager _colourStringSettingsManager = new ColourStringSettingsManager();
-        private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new GlobalBooleanSettingsManager();
-        private GlobalStringSettingsManager _globalStringSettingsManager = new GlobalStringSettingsManager();
-        private PaletteTypefaceSettingsManager _paletteTypefaceSettingsManager = new PaletteTypefaceSettingsManager();
+        private ColourIntensitySettingsManager _colourBlendingSettingsManager = new();
+        private ColourIntegerSettingsManager _colourIntegerSettingsManager = new();
+        private AllMergedColourSettingsManager _colourSettingsManager = new();
+        private ColourStringSettingsManager _colourStringSettingsManager = new();
+        private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new();
+        private GlobalStringSettingsManager _globalStringSettingsManager = new();
+        private PaletteTypefaceSettingsManager _paletteTypefaceSettingsManager = new();
         #endregion
 
         #region System

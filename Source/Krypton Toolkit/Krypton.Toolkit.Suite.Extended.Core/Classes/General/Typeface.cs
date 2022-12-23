@@ -38,6 +38,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         /// <summary>Gets the default typeface.</summary>
         /// <returns>Microsoft Sans Serif, 8.25</returns>
-        public static Font GetDefaultTypeface() => new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular);
+        public static Font GetDefaultTypeface() => new("Microsoft Sans Serif", 8.25f, FontStyle.Regular);
     }
 }

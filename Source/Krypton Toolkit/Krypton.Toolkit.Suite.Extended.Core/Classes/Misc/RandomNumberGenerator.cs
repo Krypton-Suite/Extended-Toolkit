@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Variables
         private int _alphaValue, _redValue, _greenValue, _blueValue, _hueValue; //, _max = byte.MaxValue + 1;
 
-        private Random _randomColourGenerator = new Random();
+        private Random _randomColourGenerator = new();
         #endregion
 
         #region Properties

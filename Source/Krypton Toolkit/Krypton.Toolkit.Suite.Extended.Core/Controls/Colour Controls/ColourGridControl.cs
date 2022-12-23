@@ -42,43 +42,43 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private readonly IDictionary<int, Rectangle> _colourRegions;
 
-        private static readonly object _eventAutoAddColoursChanged = new object();
+        private static readonly object _eventAutoAddColoursChanged = new();
 
-        private static readonly object _eventAutoFitChanged = new object();
+        private static readonly object _eventAutoFitChanged = new();
 
-        private static readonly object _eventCellBorderColourChanged = new object();
+        private static readonly object _eventCellBorderColourChanged = new();
 
-        private static readonly object _eventCellBorderStyleChanged = new object();
+        private static readonly object _eventCellBorderStyleChanged = new();
 
-        private static readonly object _eventCellContextMenuStripChanged = new object();
+        private static readonly object _eventCellContextMenuStripChanged = new();
 
-        private static readonly object _eventCellSizeChanged = new object();
+        private static readonly object _eventCellSizeChanged = new();
 
-        private static readonly object _eventColourChanged = new object();
+        private static readonly object _eventColourChanged = new();
 
-        private static readonly object _eventColourIndexChanged = new object();
+        private static readonly object _eventColourIndexChanged = new();
 
-        private static readonly object _eventColorsChanged = new object();
+        private static readonly object _eventColorsChanged = new();
 
-        private static readonly object _eventColumnsChanged = new object();
+        private static readonly object _eventColumnsChanged = new();
 
-        private static readonly object _eventCustomColoursChanged = new object();
+        private static readonly object _eventCustomColoursChanged = new();
 
-        private static readonly object _eventEditingColour = new object();
+        private static readonly object _eventEditingColour = new();
 
-        private static readonly object _eventEditModeChanged = new object();
+        private static readonly object _eventEditModeChanged = new();
 
-        private static readonly object _eventHotIndexChanged = new object();
+        private static readonly object _eventHotIndexChanged = new();
 
-        private static readonly object _eventPaletteChanged = new object();
+        private static readonly object _eventPaletteChanged = new();
 
-        private static readonly object _eventSelectedCellStyleChanged = new object();
+        private static readonly object _eventSelectedCellStyleChanged = new();
 
-        private static readonly object _eventShowCustomColoursChanged = new object();
+        private static readonly object _eventShowCustomColoursChanged = new();
 
-        private static readonly object _eventShowToolTipsChanged = new object();
+        private static readonly object _eventShowToolTipsChanged = new();
 
-        private static readonly object _eventSpacingChanged = new object();
+        private static readonly object _eventSpacingChanged = new();
 
         #endregion
 

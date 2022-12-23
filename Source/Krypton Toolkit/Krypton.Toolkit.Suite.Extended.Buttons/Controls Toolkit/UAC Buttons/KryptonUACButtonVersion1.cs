@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     /// The shield is extracted from the system with LoadImage if possible. Otherwise the shield will be enabled by sending the BCM_SETSHIELD Message to the control.
     /// If the operating system is not Windows Vista or higher, no shield will be displayed as there's no such thing as UAC on the target system -> the shield is obsolete.
     /// </remarks>
-    [DefaultEvent("ExecuteProcessAsAdministrator"), DesignerCategory("code"), Description("Krypton UAC Elevated Button"), 
+    [DefaultEvent("ExecuteProcessAsAdministrator"), DesignerCategory("code"), Description("Krypton UAC Elevated Button"),
      ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.UACButton.bmp"), ToolboxItem(true)]
     public class KryptonUACButtonVersion1 : KryptonButton
     {
@@ -136,19 +136,19 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                     OnExecuteProcessAsAdministrator(this, administrativeTask);
                 }
-                else if (_assemblyToElevate != null && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(_extraArguments))
+                else if (_assemblyToElevate != null && !string.IsNullOrWhiteSpace(_extraArguments))
                 {
                     ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new ExecuteProcessAsAdministratorEventArgs(Path.GetFullPath(_assemblyToElevate.Location), _extraArguments);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTaskWithExtraArguments);
                 }
-                else if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(_processName))
+                else if (!string.IsNullOrWhiteSpace(_processName))
                 {
                     ExecuteProcessAsAdministratorEventArgs administrativeTask = new ExecuteProcessAsAdministratorEventArgs(_processName);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTask);
                 }
-                else if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(_processName) && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(_extraArguments))
+                else if (!string.IsNullOrWhiteSpace(_processName) && !string.IsNullOrWhiteSpace(_extraArguments))
                 {
                     ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new ExecuteProcessAsAdministratorEventArgs(_processName, _extraArguments);
 

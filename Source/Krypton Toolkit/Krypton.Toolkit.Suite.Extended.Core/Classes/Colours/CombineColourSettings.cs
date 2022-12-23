@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Variables
         private Color _baseColour, _darkColour, _middleColour, _lightColour, _lightestColour, _borderColourPreview, _alternativeNormalTextColourPreview, _normalTextColourPreview, _disabledTextColourPreview, _focusedTextColourPreview, _pressedTextColourPreview, _disabledColourPreview, _linkNormalColourPreview, _linkHoverColourPreview, _linkVisitedColourPreview, _customColourOne, _customColourTwo, _customColourThree, _customColourFour, _customColourFive, _customTextColourOne, _customTextColourTwo, _customTextColourThree, _customTextColourFour, _customTextColourFive, _menuTextColour, _statusTextColour, _ribbonTabTextColour;
 
-        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
+        private AllMergedColourSettingsManager _colourSettingsManager = new();
         #endregion
 
         #region Properties

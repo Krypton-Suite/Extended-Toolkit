@@ -27,6 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.ComboBox
 {
+    [Obsolete("Use 'string.IsNullOrWhiteSpace(string value)' instead")]
     internal static class MissingFrameWorkAPIs
     {
         /// <summary>

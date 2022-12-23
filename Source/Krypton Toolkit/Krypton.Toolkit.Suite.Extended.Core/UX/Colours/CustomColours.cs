@@ -395,7 +395,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Variables
-        private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
+        private RandomNumberGenerator _randomNumberGenerator = new();
         #endregion
 
         public CustomColours()

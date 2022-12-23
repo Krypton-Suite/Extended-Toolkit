@@ -31,9 +31,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     public partial class ThemeOptions : KryptonForm
     {
         #region Variables
-        private KryptonManager _manager = new KryptonManager();
-        private KryptonPalette _palette = new KryptonPalette();
-        private PaletteThemeSettingsManager _paletteThemeSettingsManager = new PaletteThemeSettingsManager();
+        private KryptonManager _manager = new();
+        private KryptonCustomPaletteBase _palette = new();
+        private PaletteThemeSettingsManager _paletteThemeSettingsManager = new();
         private PaletteMode _paletteMode;
         private Timer _paletteUpdateTimer;
         private ArrayList _themeList;
@@ -43,7 +43,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Properties        
         /// <summary>Gets or sets the palette mode.</summary>
         /// <value>The palette mode.</value>
-        public PaletteMode PaletteMode { get => _paletteMode;
+        public PaletteMode PaletteMode
+        {
+            get => _paletteMode;
             set => _paletteMode = value;
         }
         #endregion

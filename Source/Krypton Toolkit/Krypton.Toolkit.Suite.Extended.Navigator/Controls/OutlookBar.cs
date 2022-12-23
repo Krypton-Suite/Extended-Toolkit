@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     public class OutlookBar : Control
     {
 
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
         private PaletteBackInheritRedirect _paletteBack;
         private PaletteBorderInheritRedirect _paletteBorder;

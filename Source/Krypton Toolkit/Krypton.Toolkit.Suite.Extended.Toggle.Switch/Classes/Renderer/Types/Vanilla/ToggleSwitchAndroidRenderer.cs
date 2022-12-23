@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
     public class ToggleSwitchAndroidRenderer : ToggleSwitchRendererBase, IAndroidValues
     {
         #region Variables
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
 
         #endregion

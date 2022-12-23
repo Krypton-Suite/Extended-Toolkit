@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        public static Font DefaultTypeface() => new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular);
+        public static Font DefaultTypeface() => new("Microsoft Sans Serif", 8.25f, FontStyle.Regular);
 
         public static void UpdateTypefaceStyles()
         {

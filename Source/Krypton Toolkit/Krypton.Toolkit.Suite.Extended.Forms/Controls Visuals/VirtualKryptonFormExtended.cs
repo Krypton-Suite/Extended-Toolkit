@@ -844,7 +844,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         {
             private readonly VirtualKryptonFormExtended _kryptonForm;
 
-            public FormPaletteRedirect(IPalette palette, VirtualKryptonFormExtended kryptonForm)
+            public FormPaletteRedirect(PaletteBase palette, VirtualKryptonFormExtended kryptonForm)
                 : base(palette) =>
                 _kryptonForm = kryptonForm;
 

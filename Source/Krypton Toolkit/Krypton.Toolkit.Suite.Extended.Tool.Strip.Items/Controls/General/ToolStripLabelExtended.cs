@@ -34,12 +34,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Krypton
 
-        private IPalette _palette;
+        private PaletteBase _palette;
 
         private IRenderer _renderer;
 
         // This may not be needed, but oh well...
-        private KryptonPalette _kryptonPalette;
+        private KryptonCustomPaletteBase _kryptonPalette;
         #endregion
 
         private bool _alert, _enableBlinking, _bkClr, _fadeText;

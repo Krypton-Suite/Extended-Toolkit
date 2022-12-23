@@ -205,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private KryptonManager _manager;
 
-        private KryptonPalette _palette;
+        private KryptonCustomPaletteBase _palette;
         #endregion
 
         #region Constructor
@@ -215,7 +215,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _manager = manager;
 
-            _palette = new KryptonPalette();
+            _palette = new KryptonCustomPaletteBase();
 
             ThemeManager.PropagateThemeList(kcmbPaletteMode);
         }
@@ -273,7 +273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void kbtnOptions_Click(object sender, EventArgs e)
         {
-            ThemeSwitcherOptions options = new ThemeSwitcherOptions(_manager, _palette);
+            ThemeSwitcherOptions options = new(_manager, _palette);
 
             options.Show();
         }

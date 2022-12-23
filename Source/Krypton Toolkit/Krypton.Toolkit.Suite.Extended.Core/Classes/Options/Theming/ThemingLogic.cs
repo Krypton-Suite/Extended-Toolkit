@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     {
         #region Variables
         private IThemeOptions _themeOptions;
-        private PaletteThemeSettingsManager _paletteThemeSettingsManager = new PaletteThemeSettingsManager();
+        private PaletteThemeSettingsManager _paletteThemeSettingsManager = new();
         #endregion
 
         #region Constructors

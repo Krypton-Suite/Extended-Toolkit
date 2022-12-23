@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     [ToolboxBitmap(typeof(TabControl)), ToolboxItem(false)]
     public class SystemTabControl : TabControl
     {
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
         private bool FlagControl = false;
 

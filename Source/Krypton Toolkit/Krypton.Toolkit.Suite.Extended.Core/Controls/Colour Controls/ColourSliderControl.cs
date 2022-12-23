@@ -38,41 +38,41 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     {
         #region Constants
 
-        private static readonly object _eventBarBoundsChanged = new object();
+        private static readonly object _eventBarBoundsChanged = new();
 
-        private static readonly object _eventBarPaddingChanged = new object();
+        private static readonly object _eventBarPaddingChanged = new();
 
-        private static readonly object _eventBarStyleChanged = new object();
+        private static readonly object _eventBarStyleChanged = new();
 
-        private static readonly object _eventColour1Changed = new object();
+        private static readonly object _eventColour1Changed = new();
 
-        private static readonly object _eventColour2Changed = new object();
+        private static readonly object _eventColour2Changed = new();
 
-        private static readonly object _eventColour3Changed = new object();
+        private static readonly object _eventColour3Changed = new();
 
-        private static readonly object _eventCustomColoursChanged = new object();
+        private static readonly object _eventCustomColoursChanged = new();
 
-        private static readonly object _eventDividerStyleChanged = new object();
+        private static readonly object _eventDividerStyleChanged = new();
 
-        private static readonly object _eventLargeChangeChanged = new object();
+        private static readonly object _eventLargeChangeChanged = new();
 
-        private static readonly object _eventMaximumChanged = new object();
+        private static readonly object _eventMaximumChanged = new();
 
-        private static readonly object _eventMinimumChanged = new object();
+        private static readonly object _eventMinimumChanged = new();
 
-        private static readonly object _eventNubColourChanged = new object();
+        private static readonly object _eventNubColourChanged = new();
 
-        private static readonly object _eventNubSizeChanged = new object();
+        private static readonly object _eventNubSizeChanged = new();
 
-        private static readonly object _eventNubStyleChanged = new object();
+        private static readonly object _eventNubStyleChanged = new();
 
-        private static readonly object _eventOrientationChanged = new object();
+        private static readonly object _eventOrientationChanged = new();
 
-        private static readonly object _eventShowValueDividerChanged = new object();
+        private static readonly object _eventShowValueDividerChanged = new();
 
-        private static readonly object _eventSmallChangeChanged = new object();
+        private static readonly object _eventSmallChangeChanged = new();
 
-        private static readonly object _eventValueChanged = new object();
+        private static readonly object _eventValueChanged = new();
 
         #endregion
 

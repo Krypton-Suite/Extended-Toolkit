@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         private Brush bKnobPoint;
 
         //Palette State
-        private KryptonManager k_manager = new KryptonManager();
+        private KryptonManager k_manager = new();
         private PaletteBackInheritRedirect m_paletteBack;
         private PaletteBorderInheritRedirect m_paletteBorder;
         private PaletteContentInheritRedirect m_paletteContent;
@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         //private IDisposable m_mementoBack1;
         //private IDisposable m_mementoBack2;
 
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
 
         // declare Off screen image and Offscreen graphics

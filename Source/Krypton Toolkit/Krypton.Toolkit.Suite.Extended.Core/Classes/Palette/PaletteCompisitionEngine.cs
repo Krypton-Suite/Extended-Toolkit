@@ -35,7 +35,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public PaletteMode PaletteMode { get => _paletteMode;
+        public PaletteMode PaletteMode
+        {
+            get => _paletteMode;
             set => _paletteMode = value;
         }
         #endregion
@@ -83,9 +85,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="ribbonTabTextColour">The ribbon tab text colour.</param>
         /// <param name="statusState">State of the status.</param>
         /// <param name="invertColours">if set to <c>true</c> [invert colours].</param>
-        public static void CreatePalette(KryptonPalette palette, PaletteMode paletteMode, Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColourPreview, Color alternativeNormalTextColourPreview, Color normalTextColourPreview, Color disabledTextColourPreview, Color focusedTextColourPreview, Color pressedTextColourPreview, Color disabledControlColourPreview, Color linkDisabledColourPreview, Color linkFocusedColour, Color linkNormalColourPreview, Color linkHoverColourPreview, Color linkVisitedColourPreview, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour, ToolStripLabel statusState = null, bool invertColours = false)
+        public static void CreatePalette(KryptonCustomPaletteBase palette, PaletteMode paletteMode, Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColourPreview, Color alternativeNormalTextColourPreview, Color normalTextColourPreview, Color disabledTextColourPreview, Color focusedTextColourPreview, Color pressedTextColourPreview, Color disabledControlColourPreview, Color linkDisabledColourPreview, Color linkFocusedColour, Color linkNormalColourPreview, Color linkHoverColourPreview, Color linkVisitedColourPreview, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour, ToolStripLabel statusState = null, bool invertColours = false)
         {
-            palette = new KryptonPalette();
+            palette = new();
 
             try
             {
@@ -661,7 +663,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 palette.Export();
 
-                statusState.Text = $"Palette exported to: { palette.GetCustomisedKryptonPaletteFilePath() }";
+                statusState.Text = $"Palette exported to: {palette.GetCustomisedKryptonPaletteFilePath()}";
             }
             catch (Exception exc)
             {
@@ -669,7 +671,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        public static void ChangeTheme(KryptonComboBox themeChoice, KryptonPalette palette)
+        public static void ChangeTheme(KryptonComboBox themeChoice, KryptonCustomPaletteBase palette)
         {
             if (themeChoice.Text == "Global")
             {

@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     [Designer(typeof(KryptonTabPageDesigner), typeof(IDesigner)), ToolboxBitmap(typeof(TabPage))]
     public class KryptonTabPage : TabPage
     {
-        private IPalette m_Palette;
+        private PaletteBase m_Palette;
         private IRenderer m_Renderer;
         private PaletteMode m_PaletteMode;
         private PaletteRedirect m_PaletteRedirect;

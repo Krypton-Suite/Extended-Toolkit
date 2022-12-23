@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     [ToolboxBitmap(typeof(TabControl)), ToolboxItem(false)]
     public class KryptonEmptyTabControl : TabControl
     {
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
         private PaletteBorderInheritRedirect _paletteBorder;
         private IDisposable _mementoBack;

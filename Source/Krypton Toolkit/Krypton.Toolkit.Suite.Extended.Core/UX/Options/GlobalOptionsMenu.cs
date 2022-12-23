@@ -1081,11 +1081,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Variables
-        private KryptonManager _manager = new KryptonManager();
-        private KryptonPalette _palette = new KryptonPalette();
-        private ThemeManager _themeManager = new ThemeManager();
-        private ThemingLogic _themingLogic = new ThemingLogic();
-        private PaletteThemeSettingsManager _paletteThemeSettingsManager = new PaletteThemeSettingsManager();
+        private KryptonManager _manager = new();
+        private KryptonCustomPaletteBase _palette = new();
+        private ThemeManager _themeManager = new();
+        private ThemingLogic _themingLogic = new();
+        private PaletteThemeSettingsManager _paletteThemeSettingsManager = new();
         #endregion
 
         public GlobalOptionsMenu()

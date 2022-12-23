@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     public class KryptonNavigatorButton : KryptonButton
     {
 
-        private static IPalette _palette;
+        private static PaletteBase _palette;
         private static PaletteRedirect _paletteRedirect;
 
         public KryptonNavigatorButton()

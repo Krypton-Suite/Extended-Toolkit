@@ -150,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         private Color m_sliderlinebottom = Color.FromArgb(222, 226, 236);
 
         //Krypton
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
 
         private PaletteBackInheritRedirect m_paletteBack;

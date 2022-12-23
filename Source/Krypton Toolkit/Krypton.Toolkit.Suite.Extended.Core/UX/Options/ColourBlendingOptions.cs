@@ -31,11 +31,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     public partial class ColourBlendingOptions : KryptonForm
     {
         #region Variables
-        private ColourIntensitySettingsManager _colourBlendingSettingsManager = new ColourIntensitySettingsManager();
-        private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new GlobalBooleanSettingsManager();
-        private GlobalStringSettingsManager _globalStringSettingsManager = new GlobalStringSettingsManager();
+        private ColourIntensitySettingsManager _colourBlendingSettingsManager = new();
+        private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new();
+        private GlobalStringSettingsManager _globalStringSettingsManager = new();
 
-        private Timer _updateValues = new Timer();
+        private Timer _updateValues = new();
         #endregion
 
         #region System

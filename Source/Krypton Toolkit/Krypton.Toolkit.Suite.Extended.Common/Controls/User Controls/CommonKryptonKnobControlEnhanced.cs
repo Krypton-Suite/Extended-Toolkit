@@ -71,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         private KnobPointerStyles _pointerStyle = KnobPointerStyles.CIRCLE;
 
         #region Krypton
-        private KryptonManager _manager = new KryptonManager();
+        private KryptonManager _manager = new();
 
         private PaletteBackInheritRedirect _paletteBack;
 
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         private PaletteContentInheritRedirect _paletteContent;
 
-        private IPalette _palette;
+        private PaletteBase _palette;
 
         private PaletteRedirect _paletteRedirect;
         #endregion

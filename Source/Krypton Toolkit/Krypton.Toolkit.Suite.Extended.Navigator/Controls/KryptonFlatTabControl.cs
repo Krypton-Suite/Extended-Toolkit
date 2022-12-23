@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         #endregion
 
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
 
         public KryptonFlatTabControl()

@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         #region Variables
         private KryptonOutlookGridGroupBox groupBox;
         //Krypton
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
         private PaletteBackInheritRedirect _paletteBack;
         private PaletteBorderInheritRedirect _paletteBorder;
@@ -254,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Gets the Krypton Palette of the OutlookGrid
         /// </summary>
         [Browsable(false)]
-        public IPalette GridPalette => _palette;
+        public PaletteBase GridPalette => _palette;
 
         /// <summary>
         /// Gets or sets the group collection.
@@ -824,9 +824,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         }
 
                         // Note Can we remove this?
-//#if DEBUG
-//                        internalColumns.DebugOutput();
-//#endif
+                        //#if DEBUG
+                        //                        internalColumns.DebugOutput();
+                        //#endif
 
                         //Refresh the groupBox if the column is grouped
                         if (col.IsGrouped)

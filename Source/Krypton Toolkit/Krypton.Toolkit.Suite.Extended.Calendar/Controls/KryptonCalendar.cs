@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region ... Krypton ...
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
 
         //Kripton Palette Events

@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kchkAutoUpdate = new Krypton.Toolkit.KryptonCheckBox();
             this.kbtnConvert = new Krypton.Toolkit.KryptonButton();
             this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
-            this.kPal = new Krypton.Toolkit.KryptonPalette(this.components);
+            this.kPal = new Krypton.Toolkit.KryptonCustomPaletteBase(this.components);
             this.tmrUpdateValues = new System.Windows.Forms.Timer(this.components);
             this.ttInformation = new System.Windows.Forms.ToolTip(this.components);
             this.ep1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -184,7 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private Krypton.Toolkit.KryptonCheckBox kchkAutoUpdate;
         private Krypton.Toolkit.KryptonButton kbtnConvert;
         private Krypton.Toolkit.KryptonManager kryptonManager1;
-        private Krypton.Toolkit.KryptonPalette kPal;
+        private Krypton.Toolkit.KryptonCustomPaletteBase kPal;
         private System.Windows.Forms.Timer tmrUpdateValues;
         private System.Windows.Forms.ToolTip ttInformation;
         private System.Windows.Forms.ErrorProvider ep1;
@@ -196,7 +196,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                            "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "G", "H",
                                            "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 
-        private ConversionMethods _conversionMethods = new ConversionMethods();
+        private ConversionMethods _conversionMethods = new();
         #endregion
 
         #region Properties
@@ -240,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 if (content.Contains(disqualifiedCharacter))
                 {
-                    ep1.SetError((Control)ktxtHexColourValue, $"Cannot accept values: { DisallowedCharacters.ToString() }");
+                    ep1.SetError((Control)ktxtHexColourValue, $"Cannot accept values: {DisallowedCharacters.ToString()}");
                 }
             }
         }
@@ -264,7 +264,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             _conversionMethods.ConvertHexadecimalToRGB("#" + ktxtHexColourValue.Text);
 
-            klblRGBOutput.Text = $"RGB Value: Red: { _conversionMethods.GetRed() }, Green: { _conversionMethods.GetGreen() }, Blue: { _conversionMethods.GetBlue() }";
+            klblRGBOutput.Text = $"RGB Value: Red: {_conversionMethods.GetRed()}, Green: {_conversionMethods.GetGreen()}, Blue: {_conversionMethods.GetBlue()}";
 
             pnlPreview.BackColor = Color.FromArgb(_conversionMethods.GetRed(), _conversionMethods.GetGreen(), _conversionMethods.GetBlue());
         }

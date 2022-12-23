@@ -50,9 +50,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private const int BCM_SETSHIELD = 0x160C;
 
-        private GlobalMethods _globalMethods = new GlobalMethods();
+        private GlobalMethods _globalMethods = new();
 
-        private UtilityMethods _utilityMethods = new UtilityMethods();
+        private UtilityMethods _utilityMethods = new();
         #endregion
 
         #region Properties

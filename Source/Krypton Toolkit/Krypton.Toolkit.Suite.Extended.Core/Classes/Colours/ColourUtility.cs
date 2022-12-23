@@ -40,9 +40,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Variables
         private Color _colour;
 
-        private Random randomColour = new Random(DateTime.Now.Millisecond);
+        private Random randomColour = new(DateTime.Now.Millisecond);
 
-        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
+        private AllMergedColourSettingsManager _colourSettingsManager = new();
         #endregion
 
         #region Constructor

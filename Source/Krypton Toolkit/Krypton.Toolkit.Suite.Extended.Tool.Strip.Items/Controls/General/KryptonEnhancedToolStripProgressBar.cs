@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private Color _displayTextColour;
 
-        private IPalette _palette;
+        private PaletteBase _palette;
         #endregion
 
         #region Properties
