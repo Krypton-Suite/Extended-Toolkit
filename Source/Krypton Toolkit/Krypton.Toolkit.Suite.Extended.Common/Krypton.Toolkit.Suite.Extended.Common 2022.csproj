@@ -34,6 +34,7 @@
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<UseWindowsForms>true</UseWindowsForms>
 		<Configurations>Debug;Release;Nightly;Canary</Configurations>
 	</PropertyGroup>
@@ -148,38 +149,38 @@
 		</Otherwise>
 	</Choose>
 
-  <ItemGroup>
-	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
-	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects 2022.csproj" />
-	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-	<Compile Update="Resources\ImageResources.Designer.cs">
-	  <DesignTime>True</DesignTime>
-	  <AutoGen>True</AutoGen>
-	  <DependentUpon>ImageResources.resx</DependentUpon>
-	</Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Resources\ImageResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ImageResources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-	<EmbeddedResource Update="Resources\ImageResources.resx">
-	  <Generator>ResXFileCodeGenerator</Generator>
-	  <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
-	</EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\ImageResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
 
-  <ItemGroup>
-	<None Update="License\License.txt">
-	  <PackagePath></PackagePath>
-	  <Pack>true</Pack>
-	</None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="License\License.txt">
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
+		</None>
+	</ItemGroup>
 
-  <!--Binary/Documentation Output-->
-  <PropertyGroup>
-	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.xml</DocumentationFile>
-	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
-  </PropertyGroup>
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
+	</PropertyGroup>
 
 </Project>

@@ -152,6 +152,7 @@
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Shared.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Shared\</OutputPath>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Update="License\License.txt">
