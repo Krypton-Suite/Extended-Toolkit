@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private PaletteColourSettings _paletteColourSettings = new PaletteColourSettings();
+        private PaletteColourSettings _paletteColourSettings = new();
         #endregion
 
         #region Properties

@@ -693,7 +693,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
         private void kcmbAlgorithimType_TextChanged(object sender, EventArgs e)
         {
-            kbtnCancel.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
+            kbtnCancel.Enabled = string.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
         }
 
         private void kcbToggleCase_CheckedChanged(object sender, EventArgs e)

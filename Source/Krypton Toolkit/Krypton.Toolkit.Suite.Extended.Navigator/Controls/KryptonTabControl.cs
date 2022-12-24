@@ -381,7 +381,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         #region ... Constructor ...
 
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
         private PaletteBackInheritRedirect _paletteBack;
         private PaletteBorderInheritRedirect _paletteBorder;

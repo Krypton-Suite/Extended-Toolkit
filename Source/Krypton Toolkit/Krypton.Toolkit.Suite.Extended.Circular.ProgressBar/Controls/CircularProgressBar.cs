@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         private PaletteBorderInheritRedirect _paletteBorder;
         private PaletteContentInheritRedirect _paletteContent;
 
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
         #endregion
 

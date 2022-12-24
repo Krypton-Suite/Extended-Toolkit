@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Variables
         private ArrayList _themeList;
         private AutoCompleteStringCollection _themeCollection;
-        private PaletteThemeSettingsManager _themeSettingsManager = new PaletteThemeSettingsManager();
+        private PaletteThemeSettingsManager _themeSettingsManager = new();
         #endregion
 
         public ThemeManager()
@@ -201,7 +201,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="manager">The manager.</param>
         /// <param name="palette">The palette.</param>
         /// <param name="paletteFileName">Name of the palette file.</param>
-        public static void SetCustomTheme(KryptonManager manager, KryptonPalette palette, string paletteFileName)
+        public static void SetCustomTheme(KryptonManager manager, KryptonCustomPaletteBase palette, string paletteFileName)
         {
             PaletteThemeSettingsManager paletteThemeSettingsManager = new PaletteThemeSettingsManager();
 

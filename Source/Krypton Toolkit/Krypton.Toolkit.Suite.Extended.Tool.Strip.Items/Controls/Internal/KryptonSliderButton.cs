@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         private IDisposable m_mementoBack1;
         private IDisposable m_mementoBack2;
 
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
 
         //Colors

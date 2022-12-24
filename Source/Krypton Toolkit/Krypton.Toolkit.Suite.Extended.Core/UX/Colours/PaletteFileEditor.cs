@@ -180,7 +180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Variables
-        private FileCreator _fileCreator = new FileCreator();
+        private FileCreator _fileCreator = new();
         #endregion
 
         public PaletteFileEditor()

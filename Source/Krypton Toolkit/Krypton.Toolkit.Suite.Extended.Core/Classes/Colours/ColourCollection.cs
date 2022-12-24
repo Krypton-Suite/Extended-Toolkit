@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     {
         #region Instance Fields
 
-        private readonly object _lock = new object();
+        private readonly object _lock = new();
 
         private IDictionary<int, int> _indexedLookup;
 

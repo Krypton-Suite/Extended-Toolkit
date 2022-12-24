@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region "Krypton Members"
-        private IPalette _palette;
+        private PaletteBase _palette;
         //private PaletteRedirect _paletteRedirect;
         #endregion
 

@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         private PaletteContentInheritRedirect _paletteContent;
 
-        private IPalette _palette;
+        private PaletteBase _palette;
 
         private PaletteRedirect _paletteRedirect;
         #endregion

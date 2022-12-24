@@ -28,6 +28,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Tools
 {
+    [Obsolete("Use 'string.IsNullOrWhiteSpace(string value)' instead")]
     public static class MissingFrameWorkAPIs
     {
         /// <summary>

@@ -31,11 +31,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     public class PaletteImportManager
     {
         #region Variables
-        private KryptonPalette _palette;
+        private KryptonCustomPaletteBase _palette;
 
-        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
+        private AllMergedColourSettingsManager _colourSettingsManager = new();
 
-        private GlobalStringSettingsManager _globalStringSettingsManager = new GlobalStringSettingsManager();
+        private GlobalStringSettingsManager _globalStringSettingsManager = new();
         #endregion
 
         #region Constructors
@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Methods
-        public void ImportColourScheme(KryptonPalette palette)
+        public void ImportColourScheme(KryptonCustomPaletteBase palette)
         {
             try
             {
@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             try
             {
-                _palette = new KryptonPalette();
+                _palette = new();
 
                 _palette.Import();
 
@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
 
         #region New Methods
-        public static void ImportPaletteColourScheme(KryptonPalette palette)
+        public static void ImportPaletteColourScheme(KryptonCustomPaletteBase palette)
         {
             GlobalStringSettingsManager globalStringSettingsManager = new GlobalStringSettingsManager();
 
@@ -259,7 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             try
             {
-                KryptonPalette palette = new KryptonPalette();
+                KryptonCustomPaletteBase palette = new();
 
                 palette.Import();
 

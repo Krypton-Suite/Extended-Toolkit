@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     public class KryptonTabControlLite : TabControl
     {
         private static IRenderer Renderer;
-        private static IPalette Palette;
+        private static PaletteBase Palette;
         private static ViewLayoutContext ViewLayoutContext;
         private static Control ViewLayoutContextControl = new Control();
         private static PaletteBackInheritRedirect PaletteTabPageBackground;

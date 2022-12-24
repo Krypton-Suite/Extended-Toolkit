@@ -189,13 +189,13 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #endregion
 
         #region Variables
-        private SettingsManager _settingsManager = new SettingsManager();
+        private SettingsManager _settingsManager = new();
 
-        ThemeManager _themeManager = new ThemeManager();
+        ThemeManager _themeManager = new();
 
         private KryptonManager _manager;
 
-        private KryptonPalette _palette;
+        private KryptonCustomPaletteBase _palette;
         #endregion
 
         #region Constructor
@@ -205,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _manager = manager ?? new KryptonManager();
 
-            _palette = new KryptonPalette();
+            _palette = new KryptonCustomPaletteBase();
 
             ThemeManager.PropagateThemeList(kcmbSelectedTheme);
         }

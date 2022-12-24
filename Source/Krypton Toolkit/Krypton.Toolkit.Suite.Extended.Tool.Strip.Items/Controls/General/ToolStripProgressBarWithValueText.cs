@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         private Color _displayTextColour;
 
         // ReSharper disable PrivateFieldCanBeConvertedToLocalVariable
-        private readonly IPalette _palette;
+        private readonly PaletteBase _palette;
         // ReSharper restore PrivateFieldCanBeConvertedToLocalVariable
 
         #endregion
@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Identity
 
-        public ToolStripProgressBarWithValueText(IPalette palette)
+        public ToolStripProgressBarWithValueText(PaletteBase palette)
         {
             _palette = palette;
             _displayTextColour = _palette.ColorTable.StatusStripText;

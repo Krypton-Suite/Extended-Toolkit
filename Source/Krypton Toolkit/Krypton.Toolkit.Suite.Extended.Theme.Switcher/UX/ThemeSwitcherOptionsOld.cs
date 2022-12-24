@@ -292,26 +292,26 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #endregion
 
         #region Variables
-        private SettingsManager _settingsManager = new SettingsManager();
+        private SettingsManager _settingsManager = new();
 
-        private ThemeManager _themeManager = new ThemeManager();
+        private ThemeManager _themeManager = new();
 
         private KryptonManager _manager = null;
 
-        private KryptonPalette _palette = null;
+        private KryptonCustomPaletteBase _palette = null;
         #endregion
 
         #region Properties
         public KryptonManager KryptonManager { get => _manager; private set => _manager = value; }
 
-        public KryptonPalette KryptonPalette { get => _palette; private set => _palette = value; }
+        public KryptonCustomPaletteBase KryptonPalette { get => _palette; private set => _palette = value; }
         #endregion
 
         #region Constructor
         /// <summary>Initializes a new instance of the <see cref="ThemeSwitcherOptionsOld" /> class.</summary>
         /// <param name="manager">The manager.</param>
         /// <param name="palette">The palette.</param>
-        public ThemeSwitcherOptionsOld(KryptonManager manager, KryptonPalette palette)
+        public ThemeSwitcherOptionsOld(KryptonManager manager, KryptonCustomPaletteBase palette)
         {
             InitializeComponent();
 

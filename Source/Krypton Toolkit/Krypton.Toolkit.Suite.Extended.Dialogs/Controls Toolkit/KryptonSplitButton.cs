@@ -212,7 +212,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             Rectangle focusRectangle = new Rectangle(internalBorder, internalBorder, bounds.Width - _dropDownRectangle.Width - internalBorder, bounds.Height - (internalBorder * 2));
 
-            IPalette palette = KryptonManager.CurrentGlobalPalette;
+            PaletteBase palette = KryptonManager.CurrentGlobalPalette;
 
             Pen shadow = SystemPens.ButtonShadow, face = SystemPens.ButtonFace;
 

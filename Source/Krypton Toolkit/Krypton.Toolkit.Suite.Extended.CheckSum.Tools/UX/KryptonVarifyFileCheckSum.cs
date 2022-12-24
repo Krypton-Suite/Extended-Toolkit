@@ -698,7 +698,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         #endregion
 
         private string UpdateStatus(string status) => tsslStatus.Text = status;
-        
+
         private void kbtnValidate_Click(object sender, EventArgs e)
         {
             if (HelperMethods.IsValid(kwlCalculatedCheckSum.Text, ktxtVarifyCheckSum.Text.ToUpper()))
@@ -721,7 +721,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
         private void ktxtVarifyCheckSum_TextChanged(object sender, EventArgs e)
         {
-            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text))
+            if (string.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text))
             {
                 ktxtVarifyCheckSum.StateCommon.Border.Color1 = _settings.IntermediateColour;
 
@@ -730,7 +730,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
             kbtnValidate.Enabled = true; // MissingFrameWorkAPIs.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text);
 
-            clearTextBoxToolStripMenuItem.Enabled = !MissingFrameWorkAPIs.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text);
+            clearTextBoxToolStripMenuItem.Enabled = !string.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text);
         }
 
         private void kbtnCompute_Click(object sender, EventArgs e)
@@ -833,6 +833,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void kcmbAlgorithimType_TextChanged(object sender, EventArgs e) => kbtnCompute.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
+        private void kcmbAlgorithimType_TextChanged(object sender, EventArgs e) => kbtnCompute.Enabled = string.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
     }
 }

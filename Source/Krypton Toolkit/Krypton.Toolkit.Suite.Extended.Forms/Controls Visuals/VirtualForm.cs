@@ -55,8 +55,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         private int _compositionHeight;
         private int _ignoreCount;
         private ViewBase _capturedElement;
-        private IPalette _localPalette;
-        private IPalette _palette;
+        private PaletteBase _localPalette;
+        private PaletteBase _palette;
         private PaletteMode _paletteMode;
         private readonly IntPtr _screenDC;
         private ShadowValues _shadowValues;
@@ -499,7 +499,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         [Category(@"Visuals")]
         [Description(@"Custom palette applied to drawing.")]
         [DefaultValue(null)]
-        public IPalette Palette
+        public PaletteBase Palette
         {
             [DebuggerStepThrough]
             get => _localPalette;
@@ -510,7 +510,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 if (_localPalette != value)
                 {
                     // Remember the starting palette
-                    IPalette old = _localPalette;
+                    PaletteBase old = _localPalette;
 
                     // Use the provided palette value
                     SetPalette(value);
@@ -576,7 +576,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public IPalette GetResolvedPalette() => _palette;
+        public PaletteBase GetResolvedPalette() => _palette;
 
         /// <summary>
         /// Create a tool strip renderer appropriate for the current renderer/palette pair.
@@ -1937,7 +1937,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void SetPalette(IPalette palette)
+        private void SetPalette(PaletteBase palette)
         {
             if (palette != _palette)
             {

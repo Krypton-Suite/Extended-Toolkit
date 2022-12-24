@@ -633,7 +633,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Variables
-        private RandomNumberGenerator _rng = new RandomNumberGenerator();
+        private RandomNumberGenerator _rng = new();
         #endregion
 
         #region Constructors

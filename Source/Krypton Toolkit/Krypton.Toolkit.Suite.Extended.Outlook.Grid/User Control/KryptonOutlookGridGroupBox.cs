@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private string _dragColumnToGroupText;
 
         //Krypton
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
         private PaletteBackInheritRedirect _paletteBack;
         private PaletteBorderInheritRedirect _paletteBorder;

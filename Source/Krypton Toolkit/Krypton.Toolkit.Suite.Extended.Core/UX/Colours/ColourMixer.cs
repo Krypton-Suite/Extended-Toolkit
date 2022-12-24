@@ -545,17 +545,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Variables
         private int _alphaChannelValue, _redColourChannelValue, _greenColourChannelValue, _blueColourChannelValue, _max = byte.MaxValue + 1;
 
-        private ConversionMethods _conversionMethods = new ConversionMethods();
+        private ConversionMethods _conversionMethods = new();
 
-        private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
+        private RandomNumberGenerator _randomNumberGenerator = new();
 
-        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
+        private AllMergedColourSettingsManager _colourSettingsManager = new();
 
-        private ColourIntegerSettingsManager _colourIntegerSettingsManager = new ColourIntegerSettingsManager();
+        private ColourIntegerSettingsManager _colourIntegerSettingsManager = new();
 
-        private Random randomColour = new Random();
+        private Random randomColour = new();
 
-        private ColourUtility _colourUtility = new ColourUtility();
+        private ColourUtility _colourUtility = new();
 
         private bool _paletteColourSelector;
         #endregion

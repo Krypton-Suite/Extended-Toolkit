@@ -456,29 +456,29 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #region Variables
         private bool _modified;
 
-        private SettingsManager _settingsManager = new SettingsManager();
+        private SettingsManager _settingsManager = new();
 
-        private ThemeManager _themeManager = new ThemeManager();
+        private ThemeManager _themeManager = new();
 
         private KryptonManager _manager;
 
-        private KryptonPalette _palette;
+        private KryptonCustomPaletteBase _palette;
         #endregion
 
         #region Properties
         public KryptonManager KryptonManager { get => _manager; private set => _manager = value; }
 
-        public KryptonPalette KryptonPalette { get => _palette; private set => _palette = value; }
+        public KryptonCustomPaletteBase KryptonPalette { get => _palette; private set => _palette = value; }
         #endregion
 
         #region Constructors
-        public ThemeSwitcherOptions(KryptonManager? manager, KryptonPalette? palette)
+        public ThemeSwitcherOptions(KryptonManager? manager, KryptonCustomPaletteBase? palette)
         {
             InitializeComponent();
 
             _manager = manager ?? new KryptonManager();
 
-            _palette = palette ?? new KryptonPalette();
+            _palette = palette ?? new KryptonCustomPaletteBase();
 
             PropagateThemeLists();
         }

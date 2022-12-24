@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             this.components = new System.ComponentModel.Container();
             this.kManager = new Krypton.Toolkit.KryptonManager(this.components);
-            this.kPal = new Krypton.Toolkit.KryptonPalette(this.components);
+            this.kPal = new Krypton.Toolkit.KryptonCustomPaletteBase(this.components);
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnOk = new Krypton.Toolkit.KryptonButton();
             this.ktbHexadecimal = new Krypton.Toolkit.KryptonTextBox();
@@ -658,7 +658,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private CircularPictureBox cpbLightColourPreview;
         private Krypton.Toolkit.KryptonLabel kryptonLabel16;
         private Krypton.Toolkit.KryptonLabel kryptonLabel15;
-        private Krypton.Toolkit.KryptonPalette kPal;
+        private Krypton.Toolkit.KryptonCustomPaletteBase kPal;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private Krypton.Toolkit.KryptonTrackBar ktbRed;
         private Krypton.Toolkit.KryptonTrackBar ktbGreen;
@@ -687,15 +687,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Variables
-        private ConversionMethods _conversionMethods = new ConversionMethods();
+        private ConversionMethods _conversionMethods = new();
 
-        private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
+        private RandomNumberGenerator _randomNumberGenerator = new();
 
         private BasicPaletteColourDefinitions _basicPaletteColourDefinitions;
         #endregion
 
         #region Properties
-        public BasicPaletteColourDefinitions BasicPaletteColourDefinition { get => _basicPaletteColourDefinitions;
+        public BasicPaletteColourDefinitions BasicPaletteColourDefinition
+        {
+            get => _basicPaletteColourDefinitions;
             set => _basicPaletteColourDefinitions = value;
         }
         #endregion
@@ -918,7 +920,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void ktbHexadecimal_MouseHover(object sender, EventArgs e)
         {
-            ttInformation.SetToolTip(this, $"Hexadecimal Value: { ktbHexadecimal.Text.ToUpper() }");
+            ttInformation.SetToolTip(this, $"Hexadecimal Value: {ktbHexadecimal.Text.ToUpper()}");
         }
 
         private void kbtnOk_Click(object sender, EventArgs e)

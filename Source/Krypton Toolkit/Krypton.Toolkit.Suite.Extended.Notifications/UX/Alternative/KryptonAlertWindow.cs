@@ -175,7 +175,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             for (int i = 1; i < 10; i++)
             {
-                var windowName = $"Alert { i }";
+                var windowName = $"Alert {i}";
 
                 var window = (KryptonAlertWindow)Application.OpenForms[windowName];
 
@@ -224,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     break;
             }
 
-            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(headerText))
+            if (string.IsNullOrWhiteSpace(headerText))
             {
                 kwlContent.Visible = true;
 

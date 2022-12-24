@@ -160,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         public override string ToString()
         {
-            return $"ViewDrawButtonExtended: { Id }";
+            return $"ViewDrawButtonExtended: {Id}";
         }
         #endregion
 
@@ -241,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <summary>
         /// Gets and sets the drop down capability of the button.
         /// </summary>
-        public IPalette DropDownPalette
+        public PaletteBase DropDownPalette
         {
             get => _drawDropDownButton.Palette;
             set => _drawDropDownButton.Palette = value;

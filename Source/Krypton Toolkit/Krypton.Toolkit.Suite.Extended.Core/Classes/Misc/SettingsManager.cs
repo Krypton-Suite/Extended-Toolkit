@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     public class SettingsManagerAlternative
     {
         #region Variables
-        private CoreSettings _mySettings = new CoreSettings();
+        private CoreSettings _mySettings = new();
         #endregion
 
         #region Constructor

@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnConvert = new Toolkit.KryptonButton();
             this.kryptonLabel1 = new Toolkit.KryptonLabel();
             this.kryptonManager1 = new Toolkit.KryptonManager(this.components);
-            this.kPal = new Toolkit.KryptonPalette(this.components);
+            this.kPal = new Toolkit.KryptonCustomPaletteBase(this.components);
             this.tmrUpdateValues = new System.Windows.Forms.Timer(this.components);
             this.ttInformation = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -280,7 +280,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private Toolkit.KryptonNumericUpDown numRed;
         private Toolkit.KryptonButton kbtnConvert;
         private Toolkit.KryptonManager kryptonManager1;
-        private Toolkit.KryptonPalette kPal;
+        private Toolkit.KryptonCustomPaletteBase kPal;
         private System.Windows.Forms.Timer tmrUpdateValues;
         private Toolkit.KryptonNumericUpDown numAlpha;
         private Toolkit.KryptonLabel klblAlpha;
@@ -289,7 +289,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Variables
-        ConversionMethods conversionMethods = new ConversionMethods();
+        ConversionMethods conversionMethods = new();
 
         private bool _enableAlphaChannel = false;
         #endregion
@@ -301,7 +301,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         ///   <c>true</c> if [enable alpha channel]; otherwise, <c>false</c>.
         /// </value>
-        public bool EnableAlphaChannel { get => _enableAlphaChannel;
+        public bool EnableAlphaChannel
+        {
+            get => _enableAlphaChannel;
             set => _enableAlphaChannel = value;
         }
         #endregion
@@ -348,7 +350,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void UpdateUI()
         {
-            klblHexOutput.Text = $"Hex Value: #{ conversionMethods.ConvertRGBToHexadecimal(conversionMethods.ConvertDecimalToInteger(numRed.Value), conversionMethods.ConvertDecimalToInteger(numGreen.Value), conversionMethods.ConvertDecimalToInteger(numBlue.Value)).ToUpper() }";
+            klblHexOutput.Text = $"Hex Value: #{conversionMethods.ConvertRGBToHexadecimal(conversionMethods.ConvertDecimalToInteger(numRed.Value), conversionMethods.ConvertDecimalToInteger(numGreen.Value), conversionMethods.ConvertDecimalToInteger(numBlue.Value)).ToUpper()}";
 
             pnlPreview.BackColor = Color.FromArgb(conversionMethods.ConvertDecimalToInteger(numRed.Value), conversionMethods.ConvertDecimalToInteger(numGreen.Value), conversionMethods.ConvertDecimalToInteger(numBlue.Value));
 
@@ -361,7 +363,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             string knownName = pnlPreview.BackColor.ToKnownColor().ToString();
 
-            ttInformation.SetToolTip(pnlPreview, $"This colour is: { knownName }");
+            ttInformation.SetToolTip(pnlPreview, $"This colour is: {knownName}");
         }
 
         private void kchkEnableAlphaChannel_CheckedChanged(object sender, EventArgs e)

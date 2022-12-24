@@ -128,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             Size preferredSize = base.GetPreferredSize(proposedSize);
 
-            if (ShowSplitOption && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(Text) && TextRenderer.MeasureText(Text, Font).Width + PUSH_BUTTON_WIDTH > preferredSize.Width)
+            if (ShowSplitOption && !string.IsNullOrWhiteSpace(Text) && TextRenderer.MeasureText(Text, Font).Width + PUSH_BUTTON_WIDTH > preferredSize.Width)
             {
                 return preferredSize + new Size(PUSH_BUTTON_WIDTH + BORDER_SIZE * 2, 0);
             }
@@ -207,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             Rectangle focusRectangle = new Rectangle(internalBorder, internalBorder, bounds.Width - _dropDownRectangle.Width - internalBorder, bounds.Height - (internalBorder * 2));
 
-            IPalette palette = KryptonManager.CurrentGlobalPalette;
+            PaletteBase palette = KryptonManager.CurrentGlobalPalette;
 
             Pen shadow = SystemPens.ButtonShadow, face = SystemPens.ButtonFace;
 

@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private static Font g_TabFontRegular;
         #endregion
 
-        private IPalette m_Palette;
+        private PaletteBase m_Palette;
         private IRenderer m_Renderer;
         private ViewLayoutContext m_ViewLayoutContext;
         private PaletteMode m_PaletteMode;
