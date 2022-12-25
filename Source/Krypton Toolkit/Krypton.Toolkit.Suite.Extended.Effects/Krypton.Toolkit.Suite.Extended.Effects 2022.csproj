@@ -152,6 +152,7 @@
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Effects\</OutputPath>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Update="License\License.txt">
