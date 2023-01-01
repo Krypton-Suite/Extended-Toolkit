@@ -34,6 +34,7 @@ global using System.Drawing.Imaging;
 global using System.Diagnostics;
 global using System.Runtime.InteropServices;
 global using System.Reflection;
+global using System.Threading;
 global using System.Threading.Tasks;
 global using System.Windows.Forms;
 global using System.Windows.Forms.VisualStyles;

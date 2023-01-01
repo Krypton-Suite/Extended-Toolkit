@@ -1,6 +1,5 @@
 ﻿#region MIT License
 /*
- *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -26,19 +25,12 @@
  */
 #endregion
 
-global using System;
-global using System.ComponentModel;
-global using System.Diagnostics.CodeAnalysis;
-global using System.Drawing;
-global using System.Drawing.Drawing2D;
-global using System.Diagnostics;
-global using System.Collections.Generic;
-global using System.Runtime.CompilerServices;
-global using System.Runtime.InteropServices;
-global using System.Runtime.Serialization;
-global using System.Runtime.Serialization.Formatters.Binary;
-global using System.Reflection;
-global using System.Runtime.InteropServices;
-global using System.Runtime.Versioning;
-global using System.Text;
-global using System.Windows.Forms;
+namespace Krypton.Toolkit.Suite.Extended.Messagebox
+{
+    public enum ExtendedKryptonMessageBoxMessageContainerType
+    {
+        Normal = 0,
+        RichTextBox = 1,
+        HyperLink = 2
+    }
+}

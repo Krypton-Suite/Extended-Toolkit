@@ -24,6 +24,22 @@ namespace Examples
             }
 
             kcmbMessageBoxButtons.SelectedIndex = 1;
+
+            foreach (string value in Enum.GetNames(typeof(ExtendedKryptonMessageBoxMessageContainerType)))
+            {
+                kcmbMessageContentType.Items.Add(value);
+            }
+
+            kcmbMessageContentType.SelectedIndex = 1;
+        }
+
+        private void ktxtMessageContent_TextChanged(object sender, EventArgs e)
+        {
+            knudLinkAreaStart.Maximum = ktxtMessageContent.Text.Length;
+
+            knudLinkAreaEnd.Maximum = ktxtMessageContent.Text.Length;
+
+            knudLinkAreaEnd.Value = ktxtMessageContent.Text.Length;
         }
     }
 }

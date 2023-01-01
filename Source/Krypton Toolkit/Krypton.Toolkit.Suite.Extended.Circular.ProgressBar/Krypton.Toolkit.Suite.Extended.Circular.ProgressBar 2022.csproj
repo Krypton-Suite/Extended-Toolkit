@@ -175,7 +175,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Unofficial.WinFormAnimation-NET" Version="2.0.1" />
+		<PackageReference Include="Unofficial.WinFormAnimation" Version="2.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -80,6 +80,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly string _applicationPath;
 
+        private readonly ExtendedKryptonMessageBoxMessageContainerType _messageContainerType;
+
+        private readonly object _linkObjectDestination;
+
+        private readonly LinkArea _linkArea;
+
         #endregion
 
         #region Identity
@@ -106,7 +112,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                DialogResult? buttonFourDialogResult,
                                                string buttonOneCustomText, string buttonTwoCustomText,
                                                string buttonThreeCustomText, string buttonFourCustomText,
-                                               string applicationPath)
+                                               string applicationPath,
+                                               ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
+                                               object linkObjectDestination, LinkArea? linkArea)
         {
             // Store incoming values
             _text = text;
@@ -133,6 +141,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _buttonThreeCustomText = buttonThreeCustomText ?? KryptonManager.Strings.Cancel;
             _buttonFourCustomText = buttonFourCustomText ?? KryptonManager.Strings.Retry;
             _applicationPath = applicationPath ?? string.Empty;
+            _messageContainerType = messageContainerType ?? ExtendedKryptonMessageBoxMessageContainerType.Normal;
+            _linkObjectDestination = linkObjectDestination ?? null;
+            _linkArea = linkArea ?? new LinkArea(0, text.Length);
 
             // Create the form contents
             InitializeComponent();
@@ -157,16 +168,50 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             Text = string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0];
 
-            _messageText.StateCommon.Font = _messageBoxTypeface;
+            if (_messageContainerType == ExtendedKryptonMessageBoxMessageContainerType.Normal)
+            {
+                _messageText.Visible = true;
+                _messageText.Text = _text;
+                _messageText.StateCommon.Font = _messageBoxTypeface;
 
-            _messageText.StateCommon.TextColor = _messageTextColour;
+                _messageText.StateCommon.TextColor = _messageTextColour;
+                _messageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
+                    ? RightToLeft.Yes
+                    : _options.HasFlag(MessageBoxOptions.RtlReading)
+                        ? RightToLeft.Inherit
+                        : RightToLeft.No;
 
-            _messageText.Text = _text;
-            _messageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
-                ? RightToLeft.Yes
-                : _options.HasFlag(MessageBoxOptions.RtlReading)
-                    ? RightToLeft.Inherit
-                    : RightToLeft.No;
+                krtxtMessage.Visible = false;
+
+                _messageTextLink.Visible = false;
+            }
+            else if (_messageContainerType == ExtendedKryptonMessageBoxMessageContainerType.RichTextBox)
+            {
+                krtxtMessage.Visible = true;
+
+                krtxtMessage.Text = _text;
+
+                krtxtMessage.StateCommon.Content.Color1 = _messageTextColour;
+
+                krtxtMessage.StateCommon.Content.Font = _messageBoxTypeface;
+
+                krtxtMessage.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
+                    ? RightToLeft.Yes
+                    : _options.HasFlag(MessageBoxOptions.RtlReading)
+                        ? RightToLeft.Inherit
+                        : RightToLeft.No;
+
+                _messageText.Visible = false;
+
+                _messageTextLink.Visible = false;
+            }
+            else if (_messageContainerType == ExtendedKryptonMessageBoxMessageContainerType.HyperLink)
+            {
+
+            }
+            {
+
+            }
         }
 
         private void UpdateTextExtra(bool? showCtrlCopy)
