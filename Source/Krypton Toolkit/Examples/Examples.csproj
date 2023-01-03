@@ -116,7 +116,15 @@
 		<Reference Include="Krypton.Toolkit.Suite.Extended.AdvancedDataGridView">
 			<HintPath>..\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView\obj\Nightly\net462\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.dll</HintPath>
 		</Reference>
+		<Reference Include="PresentationCore" />
+		<Reference Include="PresentationFramework" />
 		<Reference Include="System.Web.Extensions" />
+		<Reference Include="System.Xaml" />
+		<Reference Include="UIAutomationProvider" />
+		<Reference Include="UIAutomationTypes" />
+		<Reference Include="WindowsFormsIntegration">
+		  <HintPath>C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\WindowsFormsIntegration\v4.0_4.0.0.0__31bf3856ad364e35\WindowsFormsIntegration.dll</HintPath>
+		</Reference>
 	</ItemGroup>
 
 	<!--<ItemGroup>

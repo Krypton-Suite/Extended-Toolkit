@@ -25,7 +25,7 @@
  */
 #endregion
 
-using System.Drawing;
+#pragma warning disable CS0649
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {

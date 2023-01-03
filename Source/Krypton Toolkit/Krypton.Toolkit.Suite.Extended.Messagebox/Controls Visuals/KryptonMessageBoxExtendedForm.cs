@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable NotAccessedField.Local
+#pragma warning disable IDE0031
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     internal partial class KryptonMessageBoxExtendedForm : KryptonForm
@@ -49,6 +51,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Extended Fields
 
         private readonly bool _showHelpButton;
+
+        private readonly bool _openInExplorer;
 
         private readonly Color _messageTextColour;
 
@@ -82,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly ExtendedKryptonMessageBoxMessageContainerType _messageContainerType;
 
-        private readonly string _linkObjectDestination;
+        private readonly string _linkDestination;
 
         private readonly LinkArea _linkArea;
 
@@ -114,7 +118,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                string buttonThreeCustomText, string buttonFourCustomText,
                                                string applicationPath,
                                                ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
-                                               string linkObjectDestination, LinkArea? linkArea)
+                                               string linkDestination, LinkArea? linkArea,
+                                               bool? openInExplorer)
         {
             // Store incoming values
             _text = text;
@@ -142,8 +147,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _buttonFourCustomText = buttonFourCustomText ?? KryptonManager.Strings.Retry;
             _applicationPath = applicationPath ?? string.Empty;
             _messageContainerType = messageContainerType ?? ExtendedKryptonMessageBoxMessageContainerType.Normal;
-            _linkObjectDestination = linkObjectDestination ?? null;
+            _linkDestination = linkDestination ?? null;
             _linkArea = linkArea ?? new LinkArea(0, text.Length);
+            _openInExplorer = openInExplorer ?? false;
 
             // Create the form contents
             InitializeComponent();
@@ -743,15 +749,34 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             try
             {
-                if (!string.IsNullOrEmpty(_linkObjectDestination))
+                if (!string.IsNullOrEmpty(_linkDestination))
                 {
-                    Process.Start(_linkObjectDestination);
+                    if (_openInExplorer)
+                    {
+                        OpenInExplorer(_linkDestination);
+                    }
+                    else
+                    {
+                        Process.Start(_linkDestination);
+                    }
                 }
             }
             catch (Exception exc)
             {
                 Console.WriteLine(exc);
                 throw;
+            }
+        }
+
+        private void OpenInExplorer(string path)
+        {
+            try
+            {
+                Process.Start(@"explorer.exe", path);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
         }
 

@@ -33,6 +33,7 @@ global using System.Diagnostics;
 global using System.Media;
 global using System.Reflection;
 global using System.Text;
+global using System.IO;
 global using System.Windows.Forms;
 
 global using Krypton.Toolkit.Suite.Extended.Shared;

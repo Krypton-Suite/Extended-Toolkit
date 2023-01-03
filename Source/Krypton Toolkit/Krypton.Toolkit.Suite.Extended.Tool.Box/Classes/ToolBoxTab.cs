@@ -1447,7 +1447,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
             catch (Exception ex)
             {
-                ex = ex;
+                ExceptionCapture.CaptureException(ex);
             }
         }
 

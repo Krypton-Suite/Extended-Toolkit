@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS0108, CS0114
 namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     public class NaviBandPopup : KryptonForm
@@ -190,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Overriden. Raises the PaintBackground and draws the background of the Navigation band
         /// </summary>
-        /// <param name="pevent">Additional paint info</param>
+        /// <param name="e">Additional paint info</param>
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             base.OnPaintBackground(e);

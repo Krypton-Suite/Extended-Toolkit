@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public DateInterval Interval { get; set; }
 
-        public static OutlookGridLanguageStrings Strings => KryptonOutlookGridGroupBox.Strings;
+        public static OutlookGridLanguageStrings LanguageStrings => KryptonOutlookGridGroupBox.Strings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OutlookGridDateTimeGroup"/> class.

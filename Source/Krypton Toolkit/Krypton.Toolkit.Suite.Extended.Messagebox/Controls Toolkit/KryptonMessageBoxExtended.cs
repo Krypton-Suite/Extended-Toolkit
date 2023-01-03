@@ -42,11 +42,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null, string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        string linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkDestination = null, LinkArea? linkArea = null, bool? openInExplorer = null)
             => ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
                 null, showCtrlCopy, null, null, null, Color.Empty, new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                 null, null, null, null, string.Empty, string.Empty,
-                string.Empty, string.Empty, applicationPath, containerType, linkObjectDestination, linkArea);
+                string.Empty, string.Empty, applicationPath, containerType, linkDestination, linkArea, openInExplorer);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Font messageBoxTypeface = null,
                                         Image customImageIcon = null, string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        string linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkDestination = null, LinkArea? linkArea = null, bool? openInExplorer = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                              null, null, null, null, string.Empty, string.Empty,
                              string.Empty, string.Empty, applicationPath,
-                             containerType, linkObjectDestination, linkArea);
+                             containerType, linkDestination, linkArea, openInExplorer);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null, string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        string linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkDestination = null, LinkArea? linkArea = null, bool? openInExplorer = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -106,7 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                              null, null, null, null, string.Empty, string.Empty,
                              string.Empty, string.Empty, applicationPath,
-                             containerType, linkObjectDestination, linkArea);
+                             containerType, linkDestination, linkArea, openInExplorer);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -131,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Font messageBoxTypeface = null,
                                         Image customImageIcon = null, string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        string linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkDestination = null, LinkArea? linkArea = null, bool? openInExplorer = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                              null, null, null, null, string.Empty,
                              string.Empty, string.Empty, string.Empty,
-                             applicationPath, containerType, linkObjectDestination, linkArea);
+                             applicationPath, containerType, linkDestination, linkArea, openInExplorer);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? showCtrlCopy = null,
                                         string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        string linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkDestination = null, LinkArea? linkArea = null, bool? openInExplorer = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          null, string.Empty,
                          string.Empty, string.Empty,
                          string.Empty, applicationPath,
-                         containerType, linkObjectDestination, linkArea);
+                         containerType, linkDestination, linkArea, openInExplorer);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -200,7 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Image customImageIcon = null,
                                         string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        string linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkDestination = null, LinkArea? linkArea = null, bool? openInExplorer = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              new HelpInfo(helpFilePath, navigator, param), showCtrlCopy,
@@ -209,7 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              null, null, null, null, string.Empty,
                              string.Empty, string.Empty,
                              string.Empty, applicationPath,
-                             containerType, linkObjectDestination, linkArea);
+                             containerType, linkDestination, linkArea, openInExplorer);
 
         /// <summary>Shows a message box.</summary>
         /// <param name="owner">The owner.</param>
@@ -263,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonFourCustomText = null,
                                         string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        string linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkDestination = null, LinkArea? linkArea = null, bool? openInExplorer = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
@@ -272,7 +272,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
                          buttonFourDialogResult, buttonOneCustomText, buttonTwoCustomText,
                          buttonThreeCustomText, buttonFourCustomText, applicationPath,
-                         containerType, linkObjectDestination, linkArea);
+                         containerType, linkDestination, linkArea, openInExplorer);
         #endregion
 
         #region Implementation
@@ -302,7 +302,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonFourCustomText">The button four custom text.</param>
         /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
         /// <param name="messageContainerType">Specifies a <see cref="T:ExtendedKryptonMessageBoxMessageContainerType"/> type.</param>
-        /// <param name="linkObjectDestination"></param>
+        /// <param name="linkDestination"></param>
         /// <param name="linkArea"></param>
         /// <returns>One of the <see cref="DialogResult"/> values.</returns>
         internal static DialogResult ShowCore(IWin32Window owner, string text, string caption,
@@ -321,8 +321,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                               string buttonThreeCustomText, string buttonFourCustomText,
                                               string applicationPath,
                                               ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
-                                              string linkObjectDestination,
-                                              LinkArea? linkArea)
+                                              string linkDestination,
+                                              LinkArea? linkArea,
+                                              bool? openInExplorer)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -343,8 +344,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                             buttonFourCustomText,
                                                             applicationPath,
                                                             messageContainerType,
-                                                            linkObjectDestination,
-                                                            linkArea);
+                                                            linkDestination,
+                                                            linkArea,
+                                                            openInExplorer);
 
             return kmbe.ShowDialog(showOwner);
         }
