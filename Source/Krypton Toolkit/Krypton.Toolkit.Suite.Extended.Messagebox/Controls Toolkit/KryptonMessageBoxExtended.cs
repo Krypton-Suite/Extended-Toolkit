@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null, string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        object linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkObjectDestination = null, LinkArea? linkArea = null)
             => ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
                 null, showCtrlCopy, null, null, null, Color.Empty, new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                 null, null, null, null, string.Empty, string.Empty,
@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Font messageBoxTypeface = null,
                                         Image customImageIcon = null, string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        object linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkObjectDestination = null, LinkArea? linkArea = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null, string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        object linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkObjectDestination = null, LinkArea? linkArea = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -131,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Font messageBoxTypeface = null,
                                         Image customImageIcon = null, string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        object linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkObjectDestination = null, LinkArea? linkArea = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? showCtrlCopy = null,
                                         string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        object linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkObjectDestination = null, LinkArea? linkArea = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -200,7 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Image customImageIcon = null,
                                         string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        object linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkObjectDestination = null, LinkArea? linkArea = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              new HelpInfo(helpFilePath, navigator, param), showCtrlCopy,
@@ -263,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonFourCustomText = null,
                                         string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType containerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        object linkObjectDestination = null, LinkArea? linkArea = null)
+                                        string linkObjectDestination = null, LinkArea? linkArea = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
@@ -321,7 +321,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                               string buttonThreeCustomText, string buttonFourCustomText,
                                               string applicationPath,
                                               ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
-                                              object linkObjectDestination,
+                                              string linkObjectDestination,
                                               LinkArea? linkArea)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
