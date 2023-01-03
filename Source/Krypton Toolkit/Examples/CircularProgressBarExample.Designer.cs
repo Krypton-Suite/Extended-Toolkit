@@ -138,7 +138,7 @@
             // 
             // circularProgressBar1
             // 
-            this.circularProgressBar1.AnimationFunction = WinFormAnimation_NET5.KnownAnimationFunctions.Linear;
+            this.circularProgressBar1.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Linear;
             this.circularProgressBar1.AnimationSpeed = 500;
             this.circularProgressBar1.BackColor = System.Drawing.Color.Transparent;
             this.circularProgressBar1.FirstValueColour = System.Drawing.Color.Red;

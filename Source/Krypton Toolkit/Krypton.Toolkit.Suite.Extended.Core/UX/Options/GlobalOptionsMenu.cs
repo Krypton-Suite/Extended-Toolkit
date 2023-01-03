@@ -528,7 +528,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.klblLightestColourIntensityValueOutput.Size = new System.Drawing.Size(98, 26);
             this.klblLightestColourIntensityValueOutput.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblLightestColourIntensityValueOutput.TabIndex = 56;
-            this.klblLightestColourIntensityValueOutput.Values.Text = "Output: {0}";
+            this.klblLightestColourIntensityValueOutput.Values.Text = @"Output: {0}";
             // 
             // kryptonLabel6
             // 
@@ -546,7 +546,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.klblLightColourIntensityValueOutput.Size = new System.Drawing.Size(98, 26);
             this.klblLightColourIntensityValueOutput.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblLightColourIntensityValueOutput.TabIndex = 55;
-            this.klblLightColourIntensityValueOutput.Values.Text = "Output: {0}";
+            this.klblLightColourIntensityValueOutput.Values.Text = @"Output: {0}";
             // 
             // kryptonLabel7
             // 
@@ -564,7 +564,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.klblMiddleColourIntensityValueOutput.Size = new System.Drawing.Size(98, 26);
             this.klblMiddleColourIntensityValueOutput.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblMiddleColourIntensityValueOutput.TabIndex = 54;
-            this.klblMiddleColourIntensityValueOutput.Values.Text = "Output: {0}";
+            this.klblMiddleColourIntensityValueOutput.Values.Text = @"Output: {0}";
             // 
             // kryptonLabel8
             // 
@@ -582,7 +582,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.klblDarkColourIntensityValueOutput.Size = new System.Drawing.Size(98, 26);
             this.klblDarkColourIntensityValueOutput.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblDarkColourIntensityValueOutput.TabIndex = 53;
-            this.klblDarkColourIntensityValueOutput.Values.Text = "Output: {0}";
+            this.klblDarkColourIntensityValueOutput.Values.Text = @"Output: {0}";
             // 
             // kbtnDarkColourIntensityValueMinus
             // 
@@ -1127,59 +1127,59 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             _manager = new KryptonManager();
 
-            if (kcmbPaletteTheme.Text == "Professional System")
+            if (kcmbPaletteTheme.Text == @"Professional System")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.ProfessionalSystem, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.ProfessionalSystem, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Professional Office 2003")
+            else if (kcmbPaletteTheme.Text == @"Professional Office 2003")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.ProfessionalOffice2003, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.ProfessionalOffice2003, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Office 2007 Black")
+            else if (kcmbPaletteTheme.Text == @"Office 2007 Black")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.Office2007Black, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.Office2007Black, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Office 2007 Blue")
+            else if (kcmbPaletteTheme.Text == @"Office 2007 Blue")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.Office2007Blue, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.Office2007Blue, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Office 2007 Silver")
+            else if (kcmbPaletteTheme.Text == @"Office 2007 Silver")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.Office2007Silver, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.Office2007Silver, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Office 2010 Black")
+            else if (kcmbPaletteTheme.Text == @"Office 2010 Black")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.Office2010Black, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.Office2010Black, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Office 2010 Blue")
+            else if (kcmbPaletteTheme.Text == @"Office 2010 Blue")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.Office2010Blue, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.Office2010Blue, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Office 2010 Silver")
+            else if (kcmbPaletteTheme.Text == @"Office 2010 Silver")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.Office2010Silver, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.Office2010Silver, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Office 2013 White")
+            else if (kcmbPaletteTheme.Text == @"Office 2013 White")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.Office2013White, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.Office2013White, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Sparkle Blue")
+            else if (kcmbPaletteTheme.Text == @"Sparkle Blue")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.SparkleBlue, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.SparkleBlue, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Sparkle Orange")
+            else if (kcmbPaletteTheme.Text == @"Sparkle Orange")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.SparkleOrange, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.SparkleOrange, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Sparkle Purple")
+            else if (kcmbPaletteTheme.Text == @"Sparkle Purple")
             {
-                ThemeManager.SwitchTheme(PaletteModeManager.SparklePurple, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.SparklePurple, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Custom")
+            else if (kcmbPaletteTheme.Text == @"Custom")
             {
                 ThemeManager.EnableCustomThemeControls(klblCustomTheme, ktxtCustomPath, kbtnImportPalette, true);
 
-                ThemeManager.SwitchTheme(PaletteModeManager.Custom, _manager);
+                ThemeManager.SwitchTheme(PaletteMode.Custom, _manager);
             }
         }
 

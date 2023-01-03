@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// Sets the Theme to the value of themeValue.
         /// </summary>
         /// <param name="themeValue">The value of themeValue.</param>
-        public void SetTheme(PaletteModeManager themeValue)
+        public void SetTheme(PaletteMode themeValue)
         {
             _paletteThemeSettings.CurrentTheme = themeValue;
         }
@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// Gets the Theme value.
         /// </summary>
         /// <returns>The value of themeValue.</returns>
-        public PaletteModeManager GetTheme()
+        public PaletteMode GetTheme()
         {
             return _paletteThemeSettings.CurrentTheme;
         }
@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
         private void ResetPaletteThemeSettings()
         {
-            SetTheme(PaletteModeManager.Office2010Blue);
+            SetTheme(PaletteMode.Microsoft365Blue);
 
             SetCustomThemeFilePath("");
         }

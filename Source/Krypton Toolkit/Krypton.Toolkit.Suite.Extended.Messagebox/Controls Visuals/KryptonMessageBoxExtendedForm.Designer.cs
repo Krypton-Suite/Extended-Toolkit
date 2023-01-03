@@ -58,6 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kpnlMessageContent = new Krypton.Toolkit.KryptonPanel();
+            this._messageTextLink = new Krypton.Toolkit.KryptonLinkWrapLabel();
             this._messageText = new Krypton.Toolkit.KryptonWrapLabel();
             this.krtxtMessage = new Krypton.Toolkit.KryptonRichTextBox();
             this._panelButtons = new Krypton.Toolkit.KryptonPanel();
@@ -110,12 +111,27 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // kpnlMessageContent
             // 
             this.kpnlMessageContent.Controls.Add(this._messageText);
+            this.kpnlMessageContent.Controls.Add(this._messageTextLink);
             this.kpnlMessageContent.Controls.Add(this.krtxtMessage);
             this.kpnlMessageContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kpnlMessageContent.Location = new System.Drawing.Point(48, 3);
             this.kpnlMessageContent.Name = "kpnlMessageContent";
             this.kpnlMessageContent.Size = new System.Drawing.Size(137, 36);
             this.kpnlMessageContent.TabIndex = 1;
+            // 
+            // _messageTextLink
+            // 
+            this._messageTextLink.AutoSize = false;
+            this._messageTextLink.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._messageTextLink.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this._messageTextLink.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this._messageTextLink.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
+            this._messageTextLink.Location = new System.Drawing.Point(0, 0);
+            this._messageTextLink.Name = "_messageTextLink";
+            this._messageTextLink.Size = new System.Drawing.Size(137, 36);
+            this._messageTextLink.Text = "Message Text";
+            this._messageTextLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._messageTextLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkClicked);
             // 
             // _messageText
             // 
@@ -285,5 +301,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private KryptonPanel kpnlMessageContent;
         private KryptonWrapLabel _messageText;
         private KryptonRichTextBox krtxtMessage;
+        private KryptonLinkWrapLabel _messageTextLink;
     }
 }

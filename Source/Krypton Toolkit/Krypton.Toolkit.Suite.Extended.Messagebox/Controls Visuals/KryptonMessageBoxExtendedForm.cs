@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly ExtendedKryptonMessageBoxMessageContainerType _messageContainerType;
 
-        private readonly object _linkObjectDestination;
+        private readonly string _linkObjectDestination;
 
         private readonly LinkArea _linkArea;
 
@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                string buttonThreeCustomText, string buttonFourCustomText,
                                                string applicationPath,
                                                ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
-                                               object linkObjectDestination, LinkArea? linkArea)
+                                               string linkObjectDestination, LinkArea? linkArea)
         {
             // Store incoming values
             _text = text;
@@ -207,10 +207,25 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
             else if (_messageContainerType == ExtendedKryptonMessageBoxMessageContainerType.HyperLink)
             {
+                _messageTextLink.Visible = true;
 
-            }
-            {
+                _messageTextLink.Text = _text;
 
+                _messageTextLink.StateCommon.TextColor = _messageTextColour;
+
+                _messageTextLink.StateCommon.Font = _messageBoxTypeface;
+
+                _messageTextLink.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
+                    ? RightToLeft.Yes
+                    : _options.HasFlag(MessageBoxOptions.RtlReading)
+                        ? RightToLeft.Inherit
+                        : RightToLeft.No;
+
+                _messageTextLink.LinkArea = _linkArea;
+
+                _messageText.Visible = false;
+
+                krtxtMessage.Visible = false;
             }
         }
 
@@ -723,6 +738,24 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             Clipboard.SetText(sb.ToString(), TextDataFormat.Text);
             Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
         }
+
+        private void LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(_linkObjectDestination))
+                {
+                    Process.Start(_linkObjectDestination);
+                }
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc);
+                throw;
+            }
+        }
+
         #endregion
+
     }
 }
