@@ -104,6 +104,9 @@
             // 
             // kryptonGroupBox3
             // 
+            this.kryptonGroupBox3.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.kryptonGroupBox3.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox3.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox3.Location = new System.Drawing.Point(721, 12);
             this.kryptonGroupBox3.Name = "kryptonGroupBox3";
             // 
@@ -114,20 +117,20 @@
             this.kryptonGroupBox3.Panel.Controls.Add(this.kryptonLabel4);
             this.kryptonGroupBox3.Panel.Controls.Add(this.kryptonLabel3);
             this.kryptonGroupBox3.Panel.Controls.Add(this.kcmbMessageContentType);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(311, 105);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(311, 134);
             this.kryptonGroupBox3.TabIndex = 15;
             this.kryptonGroupBox3.Values.Heading = "Message Content Type Options";
             // 
             // knudLinkAreaEnd
             // 
-            this.knudLinkAreaEnd.Location = new System.Drawing.Point(181, 35);
+            this.knudLinkAreaEnd.Location = new System.Drawing.Point(181, 63);
             this.knudLinkAreaEnd.Name = "knudLinkAreaEnd";
             this.knudLinkAreaEnd.Size = new System.Drawing.Size(69, 22);
             this.knudLinkAreaEnd.TabIndex = 5;
             // 
             // knudLinkAreaStart
             // 
-            this.knudLinkAreaStart.Location = new System.Drawing.Point(64, 35);
+            this.knudLinkAreaStart.Location = new System.Drawing.Point(64, 63);
             this.knudLinkAreaStart.Name = "knudLinkAreaStart";
             this.knudLinkAreaStart.Size = new System.Drawing.Size(69, 22);
             this.knudLinkAreaStart.TabIndex = 4;
@@ -135,7 +138,7 @@
             // kryptonLabel4
             // 
             this.kryptonLabel4.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel4.Location = new System.Drawing.Point(139, 35);
+            this.kryptonLabel4.Location = new System.Drawing.Point(139, 63);
             this.kryptonLabel4.Name = "kryptonLabel4";
             this.kryptonLabel4.Size = new System.Drawing.Size(36, 20);
             this.kryptonLabel4.TabIndex = 4;
@@ -144,7 +147,7 @@
             // kryptonLabel3
             // 
             this.kryptonLabel3.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel3.Location = new System.Drawing.Point(16, 35);
+            this.kryptonLabel3.Location = new System.Drawing.Point(16, 63);
             this.kryptonLabel3.Name = "kryptonLabel3";
             this.kryptonLabel3.Size = new System.Drawing.Size(42, 20);
             this.kryptonLabel3.TabIndex = 3;
@@ -177,6 +180,9 @@
             // 
             // kryptonGroupBox2
             // 
+            this.kryptonGroupBox2.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.kryptonGroupBox2.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox2.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox2.Location = new System.Drawing.Point(404, 40);
             this.kryptonGroupBox2.Name = "kryptonGroupBox2";
             // 
@@ -280,6 +286,9 @@
             // 
             // kryptonGroupBox1
             // 
+            this.kryptonGroupBox1.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.kryptonGroupBox1.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox1.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox1.Location = new System.Drawing.Point(112, 280);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
@@ -305,6 +314,9 @@
             // 
             // groupBoxIcon
             // 
+            this.groupBoxIcon.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.groupBoxIcon.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.groupBoxIcon.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.groupBoxIcon.Location = new System.Drawing.Point(112, 182);
             this.groupBoxIcon.Name = "groupBoxIcon";
             // 
@@ -324,12 +336,15 @@
             this.kryptonTextBox1.Enabled = false;
             this.kryptonTextBox1.Location = new System.Drawing.Point(12, 35);
             this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.Size = new System.Drawing.Size(256, 24);
+            this.kryptonTextBox1.Size = new System.Drawing.Size(256, 26);
             this.kryptonTextBox1.TabIndex = 1;
             // 
             // bsaBrowse
             // 
+            this.bsaBrowse.Style = Krypton.Toolkit.PaletteButtonStyle.Inherit;
             this.bsaBrowse.Text = "...";
+            this.bsaBrowse.ToolTipStyle = Krypton.Toolkit.LabelStyle.ToolTip;
+            this.bsaBrowse.Type = Krypton.Toolkit.PaletteButtonSpecStyle.Generic;
             this.bsaBrowse.UniqueName = "4d6b53a8282b4b7c9a9852c651792c06";
             // 
             // kcmbMessageBoxIcon
@@ -382,6 +397,10 @@
             this.kryptonLabel1.Size = new System.Drawing.Size(59, 20);
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
+            // 
+            // kryptonManager1
+            // 
+            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.SparkleBlueDarkMode;
             // 
             // MessageBoxExample
             // 
