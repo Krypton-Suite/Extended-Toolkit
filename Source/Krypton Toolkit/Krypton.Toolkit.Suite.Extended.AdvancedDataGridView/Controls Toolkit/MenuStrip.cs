@@ -433,7 +433,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         #endregion
 
 
-        #region costructors
+        #region Identity
 
         /// <summary>
         /// MenuStrip constructor
@@ -535,6 +535,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _textFilterTextChangedTimer = new Timer();
             _textFilterTextChangedTimer.Interval = _textFilterTextChangedDelayMs;
             _textFilterTextChangedTimer.Tick += new EventHandler(CheckTextFilterTextChangedTimer_Tick);
+
+            RenderMode = ToolStripRenderMode.ManagerRenderMode;
         }
 
         /// <summary>
