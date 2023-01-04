@@ -33,13 +33,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     [ToolboxBitmap(typeof(KryptonMessageBox), "ToolboxBitmaps.KryptonMessageBox.bmp"),
      DefaultEvent("ShowMessageBox"), DefaultProperty("MessageBoxContentText"),
      Description("Allows the creation of a KryptonMessageBoxExtended through the designer."),
-     ToolboxItem(false)]
+     ToolboxItem(true)]
     //, Designer(typeof(KryptonMessageBoxConfiguratorDesigner))]
     internal class KryptonMessageBoxManager : Component
     {
         #region Fields
 
-        private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showHelpButton, _showOptionalLinkLabel;
+        private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showHelpButton, _showOptionalLinkLabel, _openInExplorer;
 
         private CheckState _optionalCheckBoxCheckState;
 
@@ -49,19 +49,23 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private KryptonMessageBoxDefaultButton _defaultButton;
 
+        private ExtendedKryptonMessageBoxMessageContainerType _messageContainerType;
+
         private MessageBoxOptions _options;
 
         private Font _messageBoxTypeface;
 
         private Image _customImageIcon;
 
-        private string _text, _captionText, _helpFilePath, _optionalCheckBoxText, _optionalLinkLabelText, _optionalLinkLabelDestination, _applicationPath;
+        private string _text, _captionText, _helpFilePath, _optionalCheckBoxText, _optionalLinkLabelText, _optionalLinkLabelDestination, _applicationPath, _linkDestination;
 
         private object _parameters;
 
         private HelpNavigator _helpNavigator;
 
         private IWin32Window _owner;
+
+        private LinkArea _linkArea;
 
         #endregion
 
@@ -85,6 +89,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         [DefaultValue(false), Description(@"")]
         public bool ShowHelpButton { get => _showHelpButton; set => _showHelpButton = value; }
+
+        [DefaultValue(false), Description(@"")]
+        public bool OpenInExplorer { get => _openInExplorer; set => _openInExplorer = value; }
 
         /*
         [DefaultValue(false), Description(@"")]
@@ -111,6 +118,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(typeof(KryptonMessageBoxDefaultButton), "KryptonMessageBoxDefaultButton.Button1"), Description(@"The default selected message box button.")]
         public KryptonMessageBoxDefaultButton DefaultButton { get => _defaultButton; set => _defaultButton = value; }
 
+        [DefaultValue(typeof(ExtendedKryptonMessageBoxMessageContainerType), "ExtendedKryptonMessageBoxMessageContainerType.Normal"), Description(@"")]
+        public ExtendedKryptonMessageBoxMessageContainerType MessageContainerType { get => _messageContainerType; set => _messageContainerType = value; }
+
         /// <summary>Gets or sets the options.</summary>
         /// <value>The options.</value>
         [DefaultValue(typeof(MessageBoxOptions), "MessageBoxOptions.DefaultDesktopOnly"), Description(@"Specifies extra message box options.")]
@@ -125,6 +135,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <value>The application path.</value>
         [DefaultValue(@""), Description(@"The application path.")]
         public string ApplicationPath { get => _applicationPath; set => _applicationPath = value; }
+
+        [DefaultValue(@""), Description(@"")]
+        public string LinkDestination { get => _linkDestination; set => _linkDestination = value; }
 
         /// <summary>Gets or sets the custom image icon.</summary>
         /// <value>The custom image icon.</value>
@@ -174,6 +187,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(null), Description(@"Owner of the modal dialog box.")]
         public IWin32Window Owner { get => _owner; set => _owner = value; }
 
+        public LinkArea LinkArea { get => _linkArea; set => _linkArea = value; }
+
         #endregion
 
         #region Constructors
@@ -191,6 +206,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             _showOptionalLinkLabel = false;
 
+            _openInExplorer = false;
+
             _optionalCheckBoxCheckState = CheckState.Unchecked;
 
             _buttons = ExtendedMessageBoxButtons.OK;
@@ -199,6 +216,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             _defaultButton = KryptonMessageBoxDefaultButton.Button1;
 
+            _messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal;
+
             _options = 0;
 
             _messageBoxTypeface = new Font(@"Segoe UI", 8.25F);
@@ -206,6 +225,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _customImageIcon = null;
 
             _applicationPath = @"";
+
+            _linkDestination = @"";
 
             _text = @"";
 
@@ -224,6 +245,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _helpNavigator = 0;
 
             _owner = null;
+
+            _linkArea = new();
         }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxManagerTest" /> class.</summary>
@@ -242,17 +265,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
         public KryptonMessageBoxManager(IWin32Window owner, string text, string caption,
-                                        ExtendedMessageBoxButtons buttons,
-                                        ExtendedKryptonMessageBoxIcon icon,
-                                        KryptonMessageBoxDefaultButton defaultButton,
-                                        MessageBoxOptions options,
-                                        string helpFilePath,
-                                        HelpNavigator navigator,
-                                        object param, bool? showCtrlCopy,
-                                        bool? displayHelpButton,
-                                        Font messageBoxTypeface,
-                                        Image customImageIcon,
-                                        string applicationPath)
+                                                 ExtendedMessageBoxButtons buttons,
+                                                 ExtendedKryptonMessageBoxIcon icon,
+                                                 KryptonMessageBoxDefaultButton defaultButton,
+                                                 MessageBoxOptions options,
+                                                 string helpFilePath,
+                                                 HelpNavigator navigator,
+                                                 object param, bool? showCtrlCopy,
+                                                 bool? displayHelpButton,
+                                                 Font messageBoxTypeface,
+                                                 Image customImageIcon,
+                                                 string applicationPath,
+                                                 string linkDestination,
+                                                 bool openInExplorer,
+                                                 ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
+                                                 LinkArea linkArea)
         {
             Owner = owner;
 
@@ -283,6 +310,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             ShowHelpButton = displayHelpButton ?? displayHelpButton.GetValueOrDefault();
 
             ApplicationPath = applicationPath;
+
+            LinkDestination = linkDestination;
+
+            OpenInExplorer = openInExplorer;
+
+            MessageContainerType = messageContainerType ?? ExtendedKryptonMessageBoxMessageContainerType.Normal;
+
+            LinkArea = linkArea;
         }
 
         #endregion

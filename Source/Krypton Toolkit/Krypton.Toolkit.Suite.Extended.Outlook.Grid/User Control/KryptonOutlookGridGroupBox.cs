@@ -16,6 +16,7 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
@@ -178,7 +179,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             // Create storage that maps onto the inherit instances
             _border = new PaletteBorder(_paletteBorder, null);
             _dragColumnToGroupText = Strings.DragColumnToGroup;
-            
+
             using (Graphics g = CreateGraphics())
             {
                 _factorX = g.DpiX > 96 ? (1f * g.DpiX / 96) : 1f;

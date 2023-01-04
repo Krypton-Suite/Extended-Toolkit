@@ -345,7 +345,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
             }
 
             _animator.Paths =
-                new WinFormAnimation_NET5.Path(_animatedValue ?? Value, Value, (ulong)AnimationSpeed, CustomAnimationFunction).ToArray();
+                new Path(_animatedValue ?? Value, Value, (ulong)AnimationSpeed, CustomAnimationFunction).ToArray();
             _animator.Repeat = false;
             _animator.Play(
                 new SafeInvoker<float>(
@@ -389,7 +389,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
                 return;
             }
 
-            _animator.Paths = new WinFormAnimation_NET5.Path(0, 359, (ulong)MarqueeAnimationSpeed, CustomAnimationFunction).ToArray();
+            _animator.Paths = new Path(0, 359, (ulong)MarqueeAnimationSpeed, CustomAnimationFunction).ToArray();
             _animator.Repeat = true;
             _animator.Play(
                 new SafeInvoker<float>(

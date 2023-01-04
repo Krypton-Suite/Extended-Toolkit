@@ -36,6 +36,8 @@
 // - Remove public API
 // - Apply "Preview" coding style(s)
 
+#pragma warning disable CS0436
+
 #if NET35 || NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462
 
 namespace System
@@ -410,3 +412,4 @@ namespace System
 
 
 #endif
+#pragma warning restore CS0436

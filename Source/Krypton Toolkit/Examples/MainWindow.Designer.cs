@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnTreeGridView2Example = new Krypton.Toolkit.KryptonButton();
             this.kbtnTreeGridViewExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnInputBoxExamples = new Krypton.Toolkit.KryptonButton();
             this.kbtnDialogExamples = new Krypton.Toolkit.KryptonButton();
@@ -46,13 +47,14 @@
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
-            this.kbtnTreeGridView2Example = new Krypton.Toolkit.KryptonButton();
+            this.kbtnAdvancedDataGridExample = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnAdvancedDataGridExample);
             this.kryptonPanel1.Controls.Add(this.kbtnTreeGridView2Example);
             this.kryptonPanel1.Controls.Add(this.kbtnTreeGridViewExample);
             this.kryptonPanel1.Controls.Add(this.kbtnInputBoxExamples);
@@ -75,6 +77,16 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(620, 390);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnTreeGridView2Example
+            // 
+            this.kbtnTreeGridView2Example.CornerRoundingRadius = -1F;
+            this.kbtnTreeGridView2Example.Location = new System.Drawing.Point(437, 98);
+            this.kbtnTreeGridView2Example.Name = "kbtnTreeGridView2Example";
+            this.kbtnTreeGridView2Example.Size = new System.Drawing.Size(150, 22);
+            this.kbtnTreeGridView2Example.TabIndex = 16;
+            this.kbtnTreeGridView2Example.Values.Text = "TreeGridView 2 Example";
+            this.kbtnTreeGridView2Example.Click += new System.EventHandler(this.kbtnTreeGridView2Example_Click);
             // 
             // kbtnTreeGridViewExample
             // 
@@ -235,15 +247,15 @@
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
-            // kbtnTreeGridView2Example
+            // kbtnAdvancedDataGridExample
             // 
-            this.kbtnTreeGridView2Example.CornerRoundingRadius = -1F;
-            this.kbtnTreeGridView2Example.Location = new System.Drawing.Point(437, 98);
-            this.kbtnTreeGridView2Example.Name = "kbtnTreeGridView2Example";
-            this.kbtnTreeGridView2Example.Size = new System.Drawing.Size(150, 22);
-            this.kbtnTreeGridView2Example.TabIndex = 16;
-            this.kbtnTreeGridView2Example.Values.Text = "TreeGridView 2 Example";
-            this.kbtnTreeGridView2Example.Click += new System.EventHandler(this.kbtnTreeGridView2Example_Click);
+            this.kbtnAdvancedDataGridExample.CornerRoundingRadius = -1F;
+            this.kbtnAdvancedDataGridExample.Location = new System.Drawing.Point(10, 126);
+            this.kbtnAdvancedDataGridExample.Name = "kbtnAdvancedDataGridExample";
+            this.kbtnAdvancedDataGridExample.Size = new System.Drawing.Size(188, 22);
+            this.kbtnAdvancedDataGridExample.TabIndex = 17;
+            this.kbtnAdvancedDataGridExample.Values.Text = "Advanced Data Grid Example";
+            this.kbtnAdvancedDataGridExample.Click += new System.EventHandler(this.kbtnAdvancedDataGridExample_Click);
             // 
             // MainWindow
             // 
@@ -280,5 +292,6 @@
         private KryptonButton kbtnInputBoxExamples;
         private KryptonButton kbtnTreeGridViewExample;
         private KryptonButton kbtnTreeGridView2Example;
+        private KryptonButton kbtnAdvancedDataGridExample;
     }
 }

@@ -47,18 +47,18 @@ namespace Examples
             Random random = new Random();
             //.Next permet de retourner un nombre aléatoire contenu dans la plage spécifiée entre parenthèses.
 
-            OpenFileDialog ofd = new OpenFileDialog();
+            //OpenFileDialog ofd = new OpenFileDialog();
 
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                fileName = Path.GetFullPath(ofd.FileName);
-            }
+            //if (ofd.ShowDialog() == DialogResult.OK)
+            //{
+            //    fileName = Path.GetFullPath(ofd.FileName);
+            //}
 
             XmlDocument doc = new XmlDocument();
-            
+
             try
             {
-                doc.Load(fileName);
+                doc.Load("invoices.xml");
 
                 IFormatProvider culture = new CultureInfo("en-US", true);
                 foreach (XmlNode customer in doc.SelectNodes("//invoice")) //TODO for instead foreach for perfs...
@@ -122,9 +122,9 @@ namespace Examples
             }
             catch (Exception e)
             {
-               ExceptionCapture.CaptureException(e);
+                ExceptionCapture.CaptureException(e);
             }
-            
+
         }
 
         private Image GetFlag(string country)

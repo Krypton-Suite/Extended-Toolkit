@@ -251,7 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void kbtnResetTheme_Click(object sender, EventArgs e)
         {
-            _settingsManager.SetSelectedTheme(PaletteModeManager.Microsoft365Blue);
+            _settingsManager.SetSelectedTheme(PaletteMode.Microsoft365Blue);
 
             _settingsManager.SetCustomThemePath(string.Empty);
 
@@ -259,9 +259,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _manager.GlobalPalette = null;
 
-            _manager.GlobalPaletteMode = PaletteModeManager.Microsoft365Blue;
+            _manager.GlobalPaletteMode = PaletteMode.Microsoft365Blue;
 
-            kcmbSelectedTheme.Text = "Microsoft 365 - Blue";
+            kcmbSelectedTheme.Text = @"Microsoft 365 - Blue";
 
             EnableResetButton(false);
         }
@@ -272,9 +272,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _manager.GlobalPalette = _palette;
 
-            _manager.GlobalPaletteMode = PaletteModeManager.Custom;
+            _manager.GlobalPaletteMode = PaletteMode.Custom;
 
-            kcmbSelectedTheme.Text = "Custom";
+            kcmbSelectedTheme.Text = @"Custom";
 
             EnableResetButton(true);
         }

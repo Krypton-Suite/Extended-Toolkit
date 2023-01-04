@@ -25,6 +25,9 @@
  */
 #endregion
 
+// ReSharper disable AssignNullToNotNullAttribute
+#pragma warning disable CS8602
+#nullable enable
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     /// <summary>
@@ -138,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         {
             get
             {
-                KryptonTreeGridNodeRow row = OwningNode;
+                KryptonTreeGridNodeRow? row = OwningNode;
                 return row?.Level ?? -1;
             }
         }
@@ -150,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
 
-            KryptonTreeGridNodeRow node = OwningNode;
+            KryptonTreeGridNodeRow? node = OwningNode;
             if (node == null)
             {
                 return;
@@ -281,7 +284,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         {
             base.OnMouseUp(e);
 
-            KryptonTreeGridNodeRow node = OwningNode;
+            KryptonTreeGridNodeRow? node = OwningNode;
             if (node != null)
             {
                 node.Grid.InExpandCollapseMouseCapture = false;
@@ -297,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             {
                 // Expand the node
                 //TODO: Calculate more precise location
-                KryptonTreeGridNodeRow node = OwningNode;
+                KryptonTreeGridNodeRow? node = OwningNode;
                 if (node != null)
                 {
                     node.Grid.InExpandCollapseMouseCapture = true;
@@ -312,6 +315,6 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                 }
             }
         }
-        public KryptonTreeGridNodeRow OwningNode => OwningRow as KryptonTreeGridNodeRow;
+        public KryptonTreeGridNodeRow? OwningNode => OwningRow as KryptonTreeGridNodeRow;
     }
 }

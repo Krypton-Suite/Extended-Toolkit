@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable NotAccessedField.Local
+#pragma warning disable IDE0031
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     internal partial class KryptonMessageBoxExtendedForm : KryptonForm
@@ -49,6 +51,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Extended Fields
 
         private readonly bool _showHelpButton;
+
+        private readonly bool _openInExplorer;
 
         private readonly Color _messageTextColour;
 
@@ -80,6 +84,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly string _applicationPath;
 
+        private readonly ExtendedKryptonMessageBoxMessageContainerType _messageContainerType;
+
+        private readonly string _linkDestination;
+
+        private readonly LinkArea _linkArea;
+
         #endregion
 
         #region Identity
@@ -106,7 +116,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                DialogResult? buttonFourDialogResult,
                                                string buttonOneCustomText, string buttonTwoCustomText,
                                                string buttonThreeCustomText, string buttonFourCustomText,
-                                               string applicationPath)
+                                               string applicationPath,
+                                               ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
+                                               string linkDestination, LinkArea? linkArea,
+                                               bool? openInExplorer)
         {
             // Store incoming values
             _text = text;
@@ -133,6 +146,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _buttonThreeCustomText = buttonThreeCustomText ?? KryptonManager.Strings.Cancel;
             _buttonFourCustomText = buttonFourCustomText ?? KryptonManager.Strings.Retry;
             _applicationPath = applicationPath ?? string.Empty;
+            _messageContainerType = messageContainerType ?? ExtendedKryptonMessageBoxMessageContainerType.Normal;
+            _linkDestination = linkDestination ?? null;
+            _linkArea = linkArea ?? new LinkArea(0, text.Length);
+            _openInExplorer = openInExplorer ?? false;
 
             // Create the form contents
             InitializeComponent();
@@ -157,16 +174,65 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             Text = string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0];
 
-            _messageText.StateCommon.Font = _messageBoxTypeface;
+            if (_messageContainerType == ExtendedKryptonMessageBoxMessageContainerType.Normal)
+            {
+                _messageText.Visible = true;
+                _messageText.Text = _text;
+                _messageText.StateCommon.Font = _messageBoxTypeface;
 
-            _messageText.StateCommon.TextColor = _messageTextColour;
+                _messageText.StateCommon.TextColor = _messageTextColour;
+                _messageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
+                    ? RightToLeft.Yes
+                    : _options.HasFlag(MessageBoxOptions.RtlReading)
+                        ? RightToLeft.Inherit
+                        : RightToLeft.No;
 
-            _messageText.Text = _text;
-            _messageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
-                ? RightToLeft.Yes
-                : _options.HasFlag(MessageBoxOptions.RtlReading)
-                    ? RightToLeft.Inherit
-                    : RightToLeft.No;
+                krtxtMessage.Visible = false;
+
+                _messageTextLink.Visible = false;
+            }
+            else if (_messageContainerType == ExtendedKryptonMessageBoxMessageContainerType.RichTextBox)
+            {
+                krtxtMessage.Visible = true;
+
+                krtxtMessage.Text = _text;
+
+                krtxtMessage.StateCommon.Content.Color1 = _messageTextColour;
+
+                krtxtMessage.StateCommon.Content.Font = _messageBoxTypeface;
+
+                krtxtMessage.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
+                    ? RightToLeft.Yes
+                    : _options.HasFlag(MessageBoxOptions.RtlReading)
+                        ? RightToLeft.Inherit
+                        : RightToLeft.No;
+
+                _messageText.Visible = false;
+
+                _messageTextLink.Visible = false;
+            }
+            else if (_messageContainerType == ExtendedKryptonMessageBoxMessageContainerType.HyperLink)
+            {
+                _messageTextLink.Visible = true;
+
+                _messageTextLink.Text = _text;
+
+                _messageTextLink.StateCommon.TextColor = _messageTextColour;
+
+                _messageTextLink.StateCommon.Font = _messageBoxTypeface;
+
+                _messageTextLink.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
+                    ? RightToLeft.Yes
+                    : _options.HasFlag(MessageBoxOptions.RtlReading)
+                        ? RightToLeft.Inherit
+                        : RightToLeft.No;
+
+                _messageTextLink.LinkArea = _linkArea;
+
+                _messageText.Visible = false;
+
+                krtxtMessage.Visible = false;
+            }
         }
 
         private void UpdateTextExtra(bool? showCtrlCopy)
@@ -678,6 +744,43 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             Clipboard.SetText(sb.ToString(), TextDataFormat.Text);
             Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
         }
+
+        private void LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(_linkDestination))
+                {
+                    if (_openInExplorer)
+                    {
+                        OpenInExplorer(_linkDestination);
+                    }
+                    else
+                    {
+                        Process.Start(_linkDestination);
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc);
+                throw;
+            }
+        }
+
+        private void OpenInExplorer(string path)
+        {
+            try
+            {
+                Process.Start(@"explorer.exe", path);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
         #endregion
+
     }
 }

@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     /// <summary>
     /// This class contains additional info about an add or remove operation
-    /// For more information see <see cref="ChildControlCollection"/>
+    /// For more information see <see cref="T:ChildControlCollection"/>
     /// </summary>
     public class ExtCollectionEventArgs : EventArgs
     {

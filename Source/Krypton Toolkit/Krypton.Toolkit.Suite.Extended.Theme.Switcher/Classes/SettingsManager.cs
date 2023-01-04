@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
     public class SettingsManager
     {
         #region Variables
-        private Properties.Settings _settings = new Properties.Settings();
+        private Properties.Settings _settings = new();
         #endregion
 
         #region Constructor
@@ -43,29 +43,29 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #region Setters & Getters
         /// <summary>Sets the theme.</summary>
         /// <param name="value">The value.</param>
-        public void SetSelectedTheme(PaletteModeManager value) => _settings.SelectedTheme = value;
+        public void SetSelectedTheme(PaletteMode value) => _settings.SelectedTheme = value;
 
         /// <summary>Gets the theme.</summary>
         /// <returns>
         ///   <br />
         /// </returns>
-        public PaletteModeManager GetSelectedTheme() => _settings.SelectedTheme;
+        public PaletteMode GetSelectedTheme() => _settings.SelectedTheme;
 
         /// <summary>Sets the DarkTheme to the value of value.</summary>
         /// <param name="value">The desired value of DarkTheme.</param>
-        public void SetDarkTheme(PaletteModeManager value) => _settings.DarkTheme = value;
+        public void SetDarkTheme(PaletteMode value) => _settings.DarkTheme = value;
 
         /// <summary>Returns the value of the DarkTheme.</summary>
         /// <returns>The value of the DarkTheme.</returns>
-        public PaletteModeManager GetDarkTheme() => _settings.DarkTheme;
+        public PaletteMode GetDarkTheme() => _settings.DarkTheme;
 
         /// <summary>Sets the LightTheme to the value of value.</summary>
         /// <param name="value">The desired value of LightTheme.</param>
-        public void SetLightTheme(PaletteModeManager value) => _settings.LightTheme = value;
+        public void SetLightTheme(PaletteMode value) => _settings.LightTheme = value;
 
         /// <summary>Returns the value of the LightTheme.</summary>
         /// <returns>The value of the LightTheme.</returns>
-        public PaletteModeManager GetLightTheme() => _settings.LightTheme;
+        public PaletteMode GetLightTheme() => _settings.LightTheme;
 
         /// <summary>Sets the SelectedThemePaletteMode to the value of value.</summary>
         /// <param name="value">The desired value of SelectedThemePaletteMode.</param>
@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
                     SetAskMe(true);
 
-                    SetSelectedTheme(PaletteModeManager.Microsoft365Blue);
+                    SetSelectedTheme(PaletteMode.Microsoft365Blue);
 
                     SaveSettings(true);
                 }
@@ -188,7 +188,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
                 SetAskMe(true);
 
-                SetSelectedTheme(PaletteModeManager.Microsoft365Blue);
+                SetSelectedTheme(PaletteMode.Microsoft365Blue);
 
                 SaveSettings(false);
             }

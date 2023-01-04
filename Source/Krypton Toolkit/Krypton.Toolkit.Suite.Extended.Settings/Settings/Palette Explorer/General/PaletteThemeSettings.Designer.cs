@@ -73,11 +73,11 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("ProfessionalSystem")]
-        public global::Krypton.Toolkit.PaletteModeManager CurrentTheme
+        public global::Krypton.Toolkit.PaletteMode CurrentTheme
         {
             get
             {
-                return ((global::Krypton.Toolkit.PaletteModeManager)(this["CurrentTheme"]));
+                return ((global::Krypton.Toolkit.PaletteMode)(this["CurrentTheme"]));
             }
             set
             {

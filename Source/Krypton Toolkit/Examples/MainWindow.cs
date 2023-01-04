@@ -111,5 +111,12 @@ namespace Examples
 
             treeGridViewAdvanced.Show();
         }
+
+        private void kbtnAdvancedDataGridExample_Click(object sender, EventArgs e)
+        {
+            AdvancedDataGridView advancedDataGrid = new AdvancedDataGridView();
+
+            advancedDataGrid.Show();
+        }
     }
 }

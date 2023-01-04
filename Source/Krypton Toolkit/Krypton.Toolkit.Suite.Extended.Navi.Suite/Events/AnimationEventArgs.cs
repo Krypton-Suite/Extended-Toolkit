@@ -59,6 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// Initializes a new instance of the AnimationEventArgs class
         /// </summary>
         /// <param name="graphics"></param>
+        /// <param name="animatables"></param>
         public AnimationEventArgs(Graphics graphics, Dictionary<string, int> animatables)
            : this(graphics)
         {

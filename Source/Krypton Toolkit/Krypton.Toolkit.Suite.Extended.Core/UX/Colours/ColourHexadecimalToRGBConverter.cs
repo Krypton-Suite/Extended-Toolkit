@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kryptonManager1
             // 
             this.kryptonManager1.GlobalPalette = this.kPal;
-            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteModeManager.Custom;
+            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.Custom;
             // 
             // tmrUpdateValues
             // 

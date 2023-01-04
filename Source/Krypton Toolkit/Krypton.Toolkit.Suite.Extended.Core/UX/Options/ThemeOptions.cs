@@ -503,7 +503,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
 
         #region Methods
-        private void ChangeTheme(PaletteModeManager paletteMode)
+        private void ChangeTheme(PaletteMode paletteMode)
         {
             SetPaletteMode(paletteMode);
 
@@ -811,7 +811,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Sets the PaletteMode to the value of paletteMode.
         /// </summary>
         /// <param name="paletteMode">The value of paletteMode.</param>
-        public void SetPaletteMode(PaletteModeManager paletteMode)
+        public void SetPaletteMode(PaletteMode paletteMode)
         {
             //PaletteMode = paletteMode;
         }

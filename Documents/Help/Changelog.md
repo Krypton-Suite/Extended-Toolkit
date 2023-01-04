@@ -6,6 +6,12 @@
 
 ## 2023-11-xx - Build 2311 - November 2023
 <!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
+* Resolved [#389](https://github.com/Krypton-Suite/Extended-Toolkit/issues/389), Fix fallout from the removal of `PaletteModeManager` type
+* New `Krypton.Toolkit.Suite.Extended.AdvancedDataGridView` module. A krypton version of the [AdvancedDataGridView](https://github.com/davidegironi/advanceddatagridview) control
+* New `ExtendedKryptonMessageBoxMessageContainerType` for `KryptonMessageBoxExtended`. Choose between:-
+	- `Normal` - The normal message style
+	- `RichTextBox` - Uses a **read only** `KryptonRichTextBox` to display the message
+	- `HyperLink` - Uses the new `KryptonLinkWrapLabel` to display the message with optional links
 * Implemented [#386](https://github.com/Krypton-Suite/Extended-Toolkit/issues/386), Convert the shared projects over to libraries instead of NuGet packages
 * Implemented [#387](https://github.com/Krypton-Suite/Extended-Toolkit/issues/387), Fix fallout from the removal of `IPalette`
 * Implemented [#384](https://github.com/Krypton-Suite/Extended-Toolkit/issues/384), Reduce build configurations
@@ -21,6 +27,7 @@
 * Removed support for .NET 5.0
 * Removed support for .NET Core 3.1 & .NET 5.0 for 'Lite' packages (See [package support information](https://github.com/Krypton-Suite/Documentation/blob/main/Documents/Development/Package-Support-Information.md) for details)
 * Implemented [#354](https://github.com/Krypton-Suite/Extended-Toolkit/issues/354), Change the license from BSD-3-Clause to MIT
+* Implemented [#302](https://github.com/Krypton-Suite/Extended-Toolkit/issues/302), `KryptonMessageBox` Clickable Links
 * Updated standard toolkit to build `2311`
 
 =======

@@ -161,47 +161,47 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             switch (paletteMode)
             {
                 case PaletteMode.Global:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Custom;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.Custom;
                     break;
                 case PaletteMode.ProfessionalSystem:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.ProfessionalSystem;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.ProfessionalSystem;
                     break;
                 case PaletteMode.ProfessionalOffice2003:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.ProfessionalOffice2003;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.ProfessionalOffice2003;
                     break;
                 case PaletteMode.Office2007Blue:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Office2007Blue;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.Office2007Blue;
                     break;
                 case PaletteMode.Office2007Silver:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Office2007Silver;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.Office2007Silver;
                     break;
                 case PaletteMode.Office2007Black:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Office2007Black;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.Office2007Black;
                     break;
                 case PaletteMode.Office2010Blue:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Office2010Blue;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.Office2010Blue;
                     break;
                 case PaletteMode.Office2010Silver:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Office2010Silver;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.Office2010Silver;
                     break;
                 case PaletteMode.Office2010Black:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Office2010Black;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.Office2010Black;
                     break;
                     break;
                 case PaletteMode.Office2013White:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Office2013White;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.Office2013White;
                     break;
                 case PaletteMode.SparkleBlue:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.SparkleBlue;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.SparkleBlue;
                     break;
                 case PaletteMode.SparkleOrange:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.SparkleOrange;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.SparkleOrange;
                     break;
                 case PaletteMode.SparklePurple:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.SparklePurple;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.SparklePurple;
                     break;
                 case PaletteMode.Custom:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Custom;
+                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.Custom;
 
                     _paletteThemeSettingsManager.SetCustomThemeFilePath(_themeOptions.PaletteFilePathControl.Text);
                     break;

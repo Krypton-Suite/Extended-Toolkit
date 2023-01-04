@@ -259,65 +259,65 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             themeList.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
         }
 
-        public static void SetPaletteTheme(PaletteModeManager modeManager, KryptonComboBox themeList)
+        public static void SetPaletteTheme(PaletteMode modeManager, KryptonComboBox themeList)
         {
             switch (modeManager)
             {
-                case PaletteModeManager.ProfessionalSystem:
+                case PaletteMode.ProfessionalSystem:
                     themeList.SelectedIndex = 0;
                     break;
-                case PaletteModeManager.ProfessionalOffice2003:
+                case PaletteMode.ProfessionalOffice2003:
                     themeList.SelectedIndex = 1;
                     break;
-                case PaletteModeManager.Office2007Blue:
+                case PaletteMode.Office2007Blue:
                     themeList.SelectedIndex = 3;
                     break;
-                case PaletteModeManager.Office2007Silver:
+                case PaletteMode.Office2007Silver:
                     themeList.SelectedIndex = 4;
                     break;
-                case PaletteModeManager.Office2007White:
+                case PaletteMode.Office2007White:
                     themeList.SelectedIndex = 5;
                     break;
-                case PaletteModeManager.Office2007Black:
+                case PaletteMode.Office2007Black:
                     themeList.SelectedIndex = 2;
                     break;
-                case PaletteModeManager.Office2010Blue:
+                case PaletteMode.Office2010Blue:
                     themeList.SelectedIndex = 7;
                     break;
-                case PaletteModeManager.Office2010Silver:
+                case PaletteMode.Office2010Silver:
                     themeList.SelectedIndex = 8;
                     break;
-                case PaletteModeManager.Office2010White:
+                case PaletteMode.Office2010White:
                     themeList.SelectedIndex = 9;
                     break;
-                case PaletteModeManager.Office2010Black:
+                case PaletteMode.Office2010Black:
                     themeList.SelectedIndex = 6;
                     break;
-                case PaletteModeManager.Office2013White:
+                case PaletteMode.Office2013White:
                     themeList.SelectedIndex = 10;
                     break;
-                case PaletteModeManager.Microsoft365Black:
+                case PaletteMode.Microsoft365Black:
                     themeList.SelectedIndex = 11;
                     break;
-                case PaletteModeManager.Microsoft365Blue:
+                case PaletteMode.Microsoft365Blue:
                     themeList.SelectedIndex = 12;
                     break;
-                case PaletteModeManager.Microsoft365Silver:
+                case PaletteMode.Microsoft365Silver:
                     themeList.SelectedIndex = 13;
                     break;
-                case PaletteModeManager.Microsoft365White:
+                case PaletteMode.Microsoft365White:
                     themeList.SelectedIndex = 14;
                     break;
-                case PaletteModeManager.SparkleBlue:
+                case PaletteMode.SparkleBlue:
                     themeList.SelectedIndex = 15;
                     break;
-                case PaletteModeManager.SparkleOrange:
+                case PaletteMode.SparkleOrange:
                     themeList.SelectedIndex = 16;
                     break;
-                case PaletteModeManager.SparklePurple:
+                case PaletteMode.SparklePurple:
                     themeList.SelectedIndex = 17;
                     break;
-                case PaletteModeManager.Custom:
+                case PaletteMode.Custom:
                     themeList.SelectedIndex = 18;
                     break;
             }
@@ -327,123 +327,123 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         {
             if (themeType == "Professional - System")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.ProfessionalSystem;
+                manager.GlobalPaletteMode = PaletteMode.ProfessionalSystem;
 
-                ApplyTheme(PaletteModeManager.ProfessionalSystem);
+                ApplyTheme(PaletteMode.ProfessionalSystem);
             }
             else if (themeType == "Professional - Office 2003")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.ProfessionalOffice2003;
+                manager.GlobalPaletteMode = PaletteMode.ProfessionalOffice2003;
 
-                ApplyTheme(PaletteModeManager.ProfessionalOffice2003);
+                ApplyTheme(PaletteMode.ProfessionalOffice2003);
             }
             else if (themeType == "Office 2007 - Black")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office2007Black;
+                manager.GlobalPaletteMode = PaletteMode.Office2007Black;
 
-                ApplyTheme(PaletteModeManager.Office2007Black);
+                ApplyTheme(PaletteMode.Office2007Black);
             }
             else if (themeType == "Office 2007 - Blue")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office2007Blue;
+                manager.GlobalPaletteMode = PaletteMode.Office2007Blue;
 
-                ApplyTheme(PaletteModeManager.Office2007Blue);
+                ApplyTheme(PaletteMode.Office2007Blue);
             }
             else if (themeType == "Office 2007 - Silver")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office2007Silver;
+                manager.GlobalPaletteMode = PaletteMode.Office2007Silver;
 
-                ApplyTheme(PaletteModeManager.Office2007Silver);
+                ApplyTheme(PaletteMode.Office2007Silver);
             }
             else if (themeType == "Office 2007 - White")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office2007White;
+                manager.GlobalPaletteMode = PaletteMode.Office2007White;
 
-                ApplyTheme(PaletteModeManager.Office2007White);
+                ApplyTheme(PaletteMode.Office2007White);
             }
             else if (themeType == "Office 2010 - Black")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office2010Black;
+                manager.GlobalPaletteMode = PaletteMode.Office2010Black;
 
-                ApplyTheme(PaletteModeManager.Office2010Black);
+                ApplyTheme(PaletteMode.Office2010Black);
             }
             else if (themeType == "Office 2010 - Blue")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office2010Blue;
+                manager.GlobalPaletteMode = PaletteMode.Office2010Blue;
 
-                ApplyTheme(PaletteModeManager.Office2010Blue);
+                ApplyTheme(PaletteMode.Office2010Blue);
             }
             else if (themeType == "Office 2010 - Silver")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office2010Silver;
+                manager.GlobalPaletteMode = PaletteMode.Office2010Silver;
 
-                ApplyTheme(PaletteModeManager.Office2010Silver);
+                ApplyTheme(PaletteMode.Office2010Silver);
             }
             else if (themeType == "Office 2010 - White")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office2010White;
+                manager.GlobalPaletteMode = PaletteMode.Office2010White;
 
-                ApplyTheme(PaletteModeManager.Office2010White);
+                ApplyTheme(PaletteMode.Office2010White);
             }
             else if (themeType == "Office 2013 - White")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Office2013White;
+                manager.GlobalPaletteMode = PaletteMode.Office2013White;
 
-                ApplyTheme(PaletteModeManager.Office2013White);
+                ApplyTheme(PaletteMode.Office2013White);
             }
             else if (themeType == "Microsoft 365 - Black")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Microsoft365Black;
+                manager.GlobalPaletteMode = PaletteMode.Microsoft365Black;
 
-                ApplyTheme(PaletteModeManager.Microsoft365Black);
+                ApplyTheme(PaletteMode.Microsoft365Black);
             }
             else if (themeType == "Microsoft 365 - Blue")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Microsoft365Blue;
+                manager.GlobalPaletteMode = PaletteMode.Microsoft365Blue;
 
-                ApplyTheme(PaletteModeManager.Microsoft365Blue);
+                ApplyTheme(PaletteMode.Microsoft365Blue);
             }
             else if (themeType == "Microsoft 365 - Silver")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Microsoft365Silver;
+                manager.GlobalPaletteMode = PaletteMode.Microsoft365Silver;
 
-                ApplyTheme(PaletteModeManager.Microsoft365Silver);
+                ApplyTheme(PaletteMode.Microsoft365Silver);
             }
             else if (themeType == "Microsoft 365 - White")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Microsoft365White;
+                manager.GlobalPaletteMode = PaletteMode.Microsoft365White;
 
-                ApplyTheme(PaletteModeManager.Microsoft365White);
+                ApplyTheme(PaletteMode.Microsoft365White);
             }
             else if (themeType == "Sparkle - Blue")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.SparkleBlue;
+                manager.GlobalPaletteMode = PaletteMode.SparkleBlue;
 
-                ApplyTheme(PaletteModeManager.SparkleBlue);
+                ApplyTheme(PaletteMode.SparkleBlue);
             }
             else if (themeType == "Sparkle - Orange")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.SparkleOrange;
+                manager.GlobalPaletteMode = PaletteMode.SparkleOrange;
 
-                ApplyTheme(PaletteModeManager.SparkleOrange);
+                ApplyTheme(PaletteMode.SparkleOrange);
             }
             else if (themeType == "Sparkle - Purple")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.SparklePurple;
+                manager.GlobalPaletteMode = PaletteMode.SparklePurple;
 
-                ApplyTheme(PaletteModeManager.SparklePurple);
+                ApplyTheme(PaletteMode.SparklePurple);
             }
             else if (themeType == "Custom")
             {
-                manager.GlobalPaletteMode = PaletteModeManager.Custom;
+                manager.GlobalPaletteMode = PaletteMode.Custom;
 
-                ApplyTheme(PaletteModeManager.Custom);
+                ApplyTheme(PaletteMode.Custom);
             }
         }
 
         /// <summary>Applies the theme.</summary>
         /// <param name="theme">The theme.</param>
-        private void ApplyTheme(PaletteModeManager theme) => _settingsManager.SetSelectedTheme(theme);
+        private void ApplyTheme(PaletteMode theme) => _settingsManager.SetSelectedTheme(theme);
         #endregion
 
         #region Setters and Getters
