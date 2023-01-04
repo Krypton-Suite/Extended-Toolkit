@@ -50,18 +50,18 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             this.components = new System.ComponentModel.Container();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnLoadFromFile = new Krypton.Toolkit.KryptonButton();
+            this.kbtnExport = new Krypton.Toolkit.KryptonButton();
             this.kbtnOk = new Krypton.Toolkit.KryptonButton();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnConvertToRGB = new Krypton.Toolkit.KryptonButton();
             this.klbColours = new Krypton.Toolkit.KryptonListBox();
+            this.ctxColourList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeSelectedColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ktxtHexValue = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.kbtnExport = new Krypton.Toolkit.KryptonButton();
-            this.kbtnLoadFromFile = new Krypton.Toolkit.KryptonButton();
-            this.ctxColourList = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeSelectedColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -81,14 +81,39 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel1.Size = new System.Drawing.Size(816, 51);
             this.kryptonPanel1.TabIndex = 0;
             // 
+            // kbtnLoadFromFile
+            // 
+            this.kbtnLoadFromFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnLoadFromFile.AutoSize = true;
+            this.kbtnLoadFromFile.CornerRoundingRadius = -1F;
+            this.kbtnLoadFromFile.Location = new System.Drawing.Point(108, 14);
+            this.kbtnLoadFromFile.Name = "kbtnLoadFromFile";
+            this.kbtnLoadFromFile.Size = new System.Drawing.Size(90, 25);
+            this.kbtnLoadFromFile.TabIndex = 9;
+            this.kbtnLoadFromFile.Values.Text = "&Load from File";
+            this.kbtnLoadFromFile.Click += new System.EventHandler(this.kbtnLoadFromFile_Click);
+            // 
+            // kbtnExport
+            // 
+            this.kbtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnExport.AutoSize = true;
+            this.kbtnExport.CornerRoundingRadius = -1F;
+            this.kbtnExport.Enabled = false;
+            this.kbtnExport.Location = new System.Drawing.Point(12, 14);
+            this.kbtnExport.Name = "kbtnExport";
+            this.kbtnExport.Size = new System.Drawing.Size(90, 25);
+            this.kbtnExport.TabIndex = 8;
+            this.kbtnExport.Values.Text = "E&xport to File";
+            this.kbtnExport.Click += new System.EventHandler(this.kbtnExport_Click);
+            // 
             // kbtnOk
             // 
             this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnOk.AutoSize = true;
-            this.kbtnOk.Location = new System.Drawing.Point(618, 9);
+            this.kbtnOk.CornerRoundingRadius = -1F;
+            this.kbtnOk.Location = new System.Drawing.Point(618, 14);
             this.kbtnOk.Name = "kbtnOk";
-            this.kbtnOk.Size = new System.Drawing.Size(90, 30);
-            this.kbtnOk.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 6;
             this.kbtnOk.Values.Text = "&Ok";
             this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
@@ -97,11 +122,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnCancel.AutoSize = true;
+            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(714, 9);
+            this.kbtnCancel.Location = new System.Drawing.Point(714, 14);
             this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 30);
-            this.kbtnCancel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 7;
             this.kbtnCancel.Values.Text = "Ca&ncel";
             this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
@@ -120,13 +145,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnConvertToRGB
             // 
-            this.kbtnConvertToRGB.AutoSize = true;
-            this.kbtnConvertToRGB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnConvertToRGB.CornerRoundingRadius = -1F;
             this.kbtnConvertToRGB.Enabled = false;
-            this.kbtnConvertToRGB.Location = new System.Drawing.Point(308, 577);
+            this.kbtnConvertToRGB.Location = new System.Drawing.Point(277, 577);
             this.kbtnConvertToRGB.Name = "kbtnConvertToRGB";
-            this.kbtnConvertToRGB.Size = new System.Drawing.Size(124, 30);
-            this.kbtnConvertToRGB.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnConvertToRGB.Size = new System.Drawing.Size(113, 25);
             this.kbtnConvertToRGB.TabIndex = 32;
             this.kbtnConvertToRGB.Values.Text = "&Convert to RGB";
             this.kbtnConvertToRGB.Click += new System.EventHandler(this.kbtnConvertToRGB_Click);
@@ -137,26 +160,39 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.klbColours.Location = new System.Drawing.Point(12, 12);
             this.klbColours.Name = "klbColours";
             this.klbColours.Size = new System.Drawing.Size(792, 549);
-            this.klbColours.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klbColours.TabIndex = 0;
+            // 
+            // ctxColourList
+            // 
+            this.ctxColourList.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctxColourList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeSelectedColourToolStripMenuItem});
+            this.ctxColourList.Name = "ctxColourList";
+            this.ctxColourList.Size = new System.Drawing.Size(204, 26);
+            // 
+            // removeSelectedColourToolStripMenuItem
+            // 
+            this.removeSelectedColourToolStripMenuItem.Name = "removeSelectedColourToolStripMenuItem";
+            this.removeSelectedColourToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.removeSelectedColourToolStripMenuItem.Text = "&Remove Selected Colour";
+            this.removeSelectedColourToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedColourToolStripMenuItem_Click);
             // 
             // ktxtHexValue
             // 
-            this.ktxtHexValue.Location = new System.Drawing.Point(148, 576);
+            this.ktxtHexValue.Location = new System.Drawing.Point(117, 577);
             this.ktxtHexValue.MaxLength = 7;
             this.ktxtHexValue.Name = "ktxtHexValue";
-            this.ktxtHexValue.Size = new System.Drawing.Size(154, 29);
-            this.ktxtHexValue.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ktxtHexValue.Size = new System.Drawing.Size(154, 23);
             this.ktxtHexValue.TabIndex = 31;
             this.ktxtHexValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ktxtHexValue.TextChanged += new System.EventHandler(this.ktxtHexValue_TextChanged);
             // 
             // kryptonLabel5
             // 
+            this.kryptonLabel5.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel5.Location = new System.Drawing.Point(12, 577);
             this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(130, 26);
-            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel5.Size = new System.Drawing.Size(99, 20);
             this.kryptonLabel5.TabIndex = 30;
             this.kryptonLabel5.Values.Text = "Hexadecimal: #";
             // 
@@ -168,46 +204,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(816, 3);
             this.panel1.TabIndex = 2;
-            // 
-            // kbtnExport
-            // 
-            this.kbtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.kbtnExport.AutoSize = true;
-            this.kbtnExport.Enabled = false;
-            this.kbtnExport.Location = new System.Drawing.Point(12, 9);
-            this.kbtnExport.Name = "kbtnExport";
-            this.kbtnExport.Size = new System.Drawing.Size(147, 30);
-            this.kbtnExport.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kbtnExport.TabIndex = 8;
-            this.kbtnExport.Values.Text = "E&xport to File";
-            this.kbtnExport.Click += new System.EventHandler(this.kbtnExport_Click);
-            // 
-            // kbtnLoadFromFile
-            // 
-            this.kbtnLoadFromFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnLoadFromFile.AutoSize = true;
-            this.kbtnLoadFromFile.Location = new System.Drawing.Point(165, 9);
-            this.kbtnLoadFromFile.Name = "kbtnLoadFromFile";
-            this.kbtnLoadFromFile.Size = new System.Drawing.Size(137, 30);
-            this.kbtnLoadFromFile.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kbtnLoadFromFile.TabIndex = 9;
-            this.kbtnLoadFromFile.Values.Text = "&Load from File";
-            this.kbtnLoadFromFile.Click += new System.EventHandler(this.kbtnLoadFromFile_Click);
-            // 
-            // ctxColourList
-            // 
-            this.ctxColourList.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ctxColourList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removeSelectedColourToolStripMenuItem});
-            this.ctxColourList.Name = "ctxColourList";
-            this.ctxColourList.Size = new System.Drawing.Size(204, 48);
-            // 
-            // removeSelectedColourToolStripMenuItem
-            // 
-            this.removeSelectedColourToolStripMenuItem.Name = "removeSelectedColourToolStripMenuItem";
-            this.removeSelectedColourToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.removeSelectedColourToolStripMenuItem.Text = "&Remove Selected Colour";
-            this.removeSelectedColourToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedColourToolStripMenuItem_Click);
             // 
             // HexadecimalToRGBConverter
             // 
