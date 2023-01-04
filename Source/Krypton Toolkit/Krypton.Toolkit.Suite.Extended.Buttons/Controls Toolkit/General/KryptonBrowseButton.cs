@@ -6,6 +6,9 @@
  */
 #endregion
 
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
+
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     public class KryptonBrowseButton : KryptonButton
