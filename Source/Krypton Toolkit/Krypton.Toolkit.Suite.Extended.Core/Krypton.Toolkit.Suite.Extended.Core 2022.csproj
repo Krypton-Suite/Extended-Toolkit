@@ -199,7 +199,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="EasyScintilla" Version="1.0.5" />
 		<PackageReference Include="WindowsAPICodePack" Version="7.0.1" />
 	</ItemGroup>
 
