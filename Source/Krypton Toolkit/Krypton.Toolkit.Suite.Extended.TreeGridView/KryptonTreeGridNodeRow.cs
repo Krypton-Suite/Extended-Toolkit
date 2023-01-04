@@ -27,6 +27,7 @@
 
 // ReSharper disable ValueParameterNotUsed
 
+#pragma warning disable CS8632
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     /// <summary>
@@ -286,7 +287,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
                 if (treeCell != null)
                 {
-                    this._treeCell = treeCell;
+                    _treeCell = treeCell;
                 }
             }
         }

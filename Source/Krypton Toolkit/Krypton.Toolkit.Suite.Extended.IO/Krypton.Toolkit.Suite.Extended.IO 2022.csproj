@@ -183,6 +183,7 @@
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Suite.Extended.IO.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.IO\</OutputPath>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 </Project>

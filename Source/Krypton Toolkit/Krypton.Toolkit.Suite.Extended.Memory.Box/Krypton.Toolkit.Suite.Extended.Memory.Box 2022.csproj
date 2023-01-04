@@ -172,6 +172,7 @@
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Memory.Box\Krypton.Toolkit.Suite.Extended.Memory.Box.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Memory.Box\</OutputPath>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>

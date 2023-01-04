@@ -25,20 +25,23 @@
  */
 #endregion
 
+#pragma warning disable CS8766
+#pragma warning disable CS8602
+#nullable enable
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
-    public class TreeGridNodeCollection : IList<KryptonTreeGridNodeRow>, System.Collections.IList
+    public class TreeGridNodeCollection : IList<KryptonTreeGridNodeRow>, IList
     {
-        internal readonly List<KryptonTreeGridNodeRow> List;
+        internal readonly List<KryptonTreeGridNodeRow?> List;
         internal readonly KryptonTreeGridNodeRow Owner;
         internal TreeGridNodeCollection(KryptonTreeGridNodeRow owner)
         {
             Owner = owner;
-            List = new List<KryptonTreeGridNodeRow>();
+            List = new List<KryptonTreeGridNodeRow?>();
         }
 
         #region Public Members
-        public void Add(KryptonTreeGridNodeRow item)
+        public void Add(KryptonTreeGridNodeRow? item)
         {
             // The row needs to exist in the child collection before the parent is notified.
             if (item == null)
@@ -62,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             }
         }
 
-        public KryptonTreeGridNodeRow Add(string text)
+        public KryptonTreeGridNodeRow? Add(string text)
         {
             var node = new KryptonTreeGridNodeRow();
             Add(node);
@@ -71,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             return node;
         }
 
-        public KryptonTreeGridNodeRow Add(params object[] values)
+        public KryptonTreeGridNodeRow? Add(params object[] values)
         {
             var node = new KryptonTreeGridNodeRow();
             Add(node);
@@ -91,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             return node;
         }
 
-        public void Insert(int index, KryptonTreeGridNodeRow item)
+        public void Insert(int index, KryptonTreeGridNodeRow? item)
         {
             // The row needs to exist in the child collection before the parent is notified.
             if (item == null)
@@ -107,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             Owner.InsertChildNode(index, item);
         }
 
-        public bool Remove(KryptonTreeGridNodeRow item)
+        public bool Remove(KryptonTreeGridNodeRow? item)
         {
             if (item == null)
             {
@@ -121,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         public void RemoveAt(int index)
         {
-            KryptonTreeGridNodeRow row = List[index];
+            KryptonTreeGridNodeRow? row = List[index];
 
             // The parent is notified first then the row is removed from the child collection.
             Owner.RemoveChildNode(row);
@@ -136,9 +139,9 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             List.Clear();
         }
 
-        public KryptonTreeGridNodeRow GetNodeByUniqueValue(int uniqueValue)
+        public KryptonTreeGridNodeRow? GetNodeByUniqueValue(int uniqueValue)
         {
-            foreach (KryptonTreeGridNodeRow node in List.Where(node => node.UniqueValue == uniqueValue))
+            foreach (KryptonTreeGridNodeRow? node in List.Where(node => node.UniqueValue == uniqueValue))
             {
                 return node;
             }
@@ -149,7 +152,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             return returnNode;
         }
 
-        public int IndexOf(KryptonTreeGridNodeRow item) => List.IndexOf(item);
+        public int IndexOf(KryptonTreeGridNodeRow? item) => List.IndexOf(item);
 
         public KryptonTreeGridNodeRow? this[int index]
         {
@@ -157,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             set => throw new Exception(@"The method or operation is not implemented.");
         }
 
-        public bool Contains(KryptonTreeGridNodeRow item) => List.Contains(item);
+        public bool Contains(KryptonTreeGridNodeRow? item) => List.Contains(item);
 
         public void CopyTo(KryptonTreeGridNodeRow[] array, int arrayIndex) => throw new Exception(@"The method or operation is not implemented.");
 
@@ -168,38 +171,38 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         #endregion
 
         #region IList Interface
-        void System.Collections.IList.Remove(object value) => Remove(value as KryptonTreeGridNodeRow);
+        void IList.Remove(object value) => Remove(value as KryptonTreeGridNodeRow);
 
 
-        int System.Collections.IList.Add(object value)
+        int IList.Add(object value)
         {
             var item = value as KryptonTreeGridNodeRow;
             Add(item);
             return item.Index;
         }
 
-        void System.Collections.IList.RemoveAt(int index) => RemoveAt(index);
+        void IList.RemoveAt(int index) => RemoveAt(index);
 
 
-        void System.Collections.IList.Clear() => Clear();
+        void IList.Clear() => Clear();
 
-        bool System.Collections.IList.IsReadOnly => IsReadOnly;
+        bool IList.IsReadOnly => IsReadOnly;
 
-        bool System.Collections.IList.IsFixedSize => false;
+        bool IList.IsFixedSize => false;
 
-        int System.Collections.IList.IndexOf(object item) => IndexOf(item as KryptonTreeGridNodeRow);
+        int IList.IndexOf(object item) => IndexOf(item as KryptonTreeGridNodeRow);
 
-        void System.Collections.IList.Insert(int index, object value)
+        void IList.Insert(int index, object value)
         {
             Insert(index, value as KryptonTreeGridNodeRow);
         }
-        int System.Collections.ICollection.Count => Count;
+        int ICollection.Count => Count;
 
-        bool System.Collections.IList.Contains(object value) => Contains(value as KryptonTreeGridNodeRow);
+        bool IList.Contains(object value) => Contains(value as KryptonTreeGridNodeRow);
 
-        void System.Collections.ICollection.CopyTo(Array array, int index) => throw new Exception(@"The method or operation is not implemented.");
+        void ICollection.CopyTo(Array array, int index) => throw new Exception(@"The method or operation is not implemented.");
 
-        object System.Collections.IList.this[int index]
+        object IList.this[int index]
         {
             get => this[index];
             set => throw new Exception(@"The method or operation is not implemented.");
@@ -209,23 +212,23 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         #region IEnumerable<ExpandableRow> Members
 
-        public IEnumerator<KryptonTreeGridNodeRow> GetEnumerator() => List.GetEnumerator();
+        public IEnumerator<KryptonTreeGridNodeRow?> GetEnumerator() => List.GetEnumerator();
 
         #endregion
 
 
         #region IEnumerable Members
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         #endregion
         #endregion
 
         #region ICollection Members
 
-        bool System.Collections.ICollection.IsSynchronized => throw new Exception(@"The method or operation is not implemented.");
+        bool ICollection.IsSynchronized => throw new Exception(@"The method or operation is not implemented.");
 
-        object System.Collections.ICollection.SyncRoot => throw new Exception(@"The method or operation is not implemented.");
+        object ICollection.SyncRoot => throw new Exception(@"The method or operation is not implemented.");
 
         #endregion
     }

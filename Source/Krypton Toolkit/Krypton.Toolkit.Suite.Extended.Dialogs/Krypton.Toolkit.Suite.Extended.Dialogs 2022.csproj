@@ -153,6 +153,7 @@
   <PropertyGroup>
 	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.xml</DocumentationFile>
 	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Dialogs\</OutputPath>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
 	<Reference Include="System.Runtime.InteropServices.RuntimeInformation" />

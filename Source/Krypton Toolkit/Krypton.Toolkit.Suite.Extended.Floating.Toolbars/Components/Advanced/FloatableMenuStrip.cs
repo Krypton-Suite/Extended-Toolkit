@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS0414
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     [ToolboxBitmap(typeof(FloatableMenuStrip), "ToolboxBitmaps.FloatableToolStrip.bmp")]
@@ -36,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         private MenuStripContainerWindow _menuStripContainerWindow;
 
-        private FloatingContainerForm _floatingContainer = null;
+        private readonly FloatingContainerForm _floatingContainer = null;
 
         private Control _originalParent = null;
 

@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         private Control? _hideScrollBarControl;
         private bool _showLines = true;
         private DataTable _dataSource;
-        
+
         internal VisualStyleRenderer? ROpen; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Opened);
         internal VisualStyleRenderer? RClosed; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Closed);
 

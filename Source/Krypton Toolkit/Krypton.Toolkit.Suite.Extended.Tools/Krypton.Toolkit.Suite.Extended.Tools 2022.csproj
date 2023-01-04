@@ -153,6 +153,7 @@
 	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.xml</DocumentationFile>
 	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\</OutputPath>
 	<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
 	<None Update="License\License.txt">

@@ -153,6 +153,7 @@
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Suite.Extended.Resources.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Resources\</OutputPath>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>

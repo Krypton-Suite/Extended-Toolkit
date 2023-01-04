@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
-    public class ExpandingEventArgs : System.ComponentModel.CancelEventArgs
+    public class ExpandingEventArgs : CancelEventArgs
     {
         public ExpandingEventArgs(KryptonTreeGridNodeRow node) => Node = node;
         public KryptonTreeGridNodeRow Node { get; }

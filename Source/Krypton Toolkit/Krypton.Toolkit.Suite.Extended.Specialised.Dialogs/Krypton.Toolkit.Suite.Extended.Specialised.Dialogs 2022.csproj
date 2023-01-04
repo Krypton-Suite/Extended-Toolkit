@@ -153,6 +153,7 @@
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\</OutputPath>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>

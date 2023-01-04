@@ -27,7 +27,7 @@ namespace Examples
 
         private void TreeGridViewAdvancedExample_Shown(object sender, EventArgs e)
         {
-            KryptonTreeGridNodeRow node1 = kryptonTreeGridView1.GridNodes.Add("Using DataView filter when binding to DataGridView", "You", @"10/19/2005 1:02 AM");
+            KryptonTreeGridNodeRow? node1 = kryptonTreeGridView1.GridNodes.Add("Using DataView filter when binding to DataGridView", "You", @"10/19/2005 1:02 AM");
             node1.ImageIndex = 0;
             var node2 = node1.Nodes.Add("Re: Using DataView filter when binding to DataGridView", "Me", @"10/19/2005 1:04 AM");
             node2.ImageIndex = 1;
