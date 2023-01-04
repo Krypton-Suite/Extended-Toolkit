@@ -3,6 +3,7 @@ using System.Xml;
 
 using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+#pragma warning disable CS0219
 #pragma warning disable CS8603
 #pragma warning disable CS8602
 

@@ -63,6 +63,8 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8600, CS8622, CS8602
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
@@ -123,7 +125,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             _filterEnabled = filterEnabled;
 
-            KryptonColumnHeaderCell oldCellt = oldCell as KryptonColumnHeaderCell;
+            KryptonColumnHeaderCell? oldCellt = oldCell as KryptonColumnHeaderCell;
             if (oldCellt != null && oldCellt.MenuStrip != null)
             {
                 MenuStrip = oldCellt.MenuStrip;
@@ -242,7 +244,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             if (MenuStrip != null && FilterAndSortEnabled)
             {
-                MenuStrip.SortASC();
+                MenuStrip.SortAsc();
             }
         }
 
@@ -253,7 +255,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             if (MenuStrip != null && FilterAndSortEnabled)
             {
-                MenuStrip.SortDESC();
+                MenuStrip.SortDesc();
             }
         }
 
@@ -297,7 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get the Sort string
         /// </summary>
-        public string SortString
+        public string? SortString
         {
             get
             {
@@ -311,7 +313,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get the Filter string
         /// </summary>
-        public string FilterString
+        public string? FilterString
         {
             get
             {
@@ -401,11 +403,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             get
             {
-                return MenuStrip.IsFilterNOTINLogicEnabled;
+                return MenuStrip.IsFilterNotinLogicEnabled;
             }
             set
             {
-                MenuStrip.IsFilterNOTINLogicEnabled = value;
+                MenuStrip.IsFilterNotinLogicEnabled = value;
             }
         }
 
@@ -619,7 +621,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     if (ActiveSortType == MenuStrip.SortType.None)
                         _filterImage = Properties.Resources.ColumnHeader_UnFiltered;
-                    else if (ActiveSortType == MenuStrip.SortType.ASC)
+                    else if (ActiveSortType == MenuStrip.SortType.Asc)
                         _filterImage = Properties.Resources.ColumnHeader_OrderedASC;
                     else
                         _filterImage = Properties.Resources.ColumnHeader_OrderedDESC;
@@ -628,7 +630,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     if (ActiveSortType == MenuStrip.SortType.None)
                         _filterImage = Properties.Resources.ColumnHeader_Filtered;
-                    else if (ActiveSortType == MenuStrip.SortType.ASC)
+                    else if (ActiveSortType == MenuStrip.SortType.Asc)
                         _filterImage = Properties.Resources.ColumnHeader_FilteredAndOrderedASC;
                     else
                         _filterImage = Properties.Resources.ColumnHeader_FilteredAndOrderedDESC;

@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602, CS8622
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [ToolboxBitmap(typeof(KryptonButton))]
@@ -39,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private Rectangle _dropDownRectangle = new Rectangle();
 
-        private string _processPath;
+        private string? _processPath;
         #endregion
 
         #region Readonly
@@ -96,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <summary>Gets or sets the process path.</summary>
         /// <value>The process path.</value>
         [DefaultValue(null)]
-        public string ProcessPath { get => _processPath; set => _processPath = value; }
+        public string? ProcessPath { get => _processPath; set => _processPath = value; }
         #endregion
 
         #region Events
@@ -133,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             Size preferredSize = base.GetPreferredSize(proposedSize);
 
-            if (ShowSplitOption && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(Text) && TextRenderer.MeasureText(Text, Font).Width + PUSH_BUTTON_WIDTH > preferredSize.Width)
+            if (ShowSplitOption && !string.IsNullOrWhiteSpace(Text) && TextRenderer.MeasureText(Text, Font).Width + PUSH_BUTTON_WIDTH > preferredSize.Width)
             {
                 return preferredSize + new Size(PUSH_BUTTON_WIDTH + BORDER_SIZE * 2, 0);
             }
@@ -299,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #region Event Handlers
         private void KryptonContextMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
-            KryptonContextMenu kcm = sender as KryptonContextMenu;
+            KryptonContextMenu? kcm = sender as KryptonContextMenu;
             if (kcm != null)
             {
                 kcm.Closed -= KryptonContextMenu_Closed;
@@ -313,7 +314,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void ContextMenuStrip_Closing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            ContextMenuStrip cms = sender as ContextMenuStrip;
+            ContextMenuStrip? cms = sender as ContextMenuStrip;
             if (cms != null)
             {
                 cms.Closing -= ContextMenuStrip_Closing;

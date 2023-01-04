@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FloatingMenuToolbarAdvancedExample));
-            this.menuStripPanelExtened1 = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.MenuStripPanelExtened();
+            this.menuStripPanelExtened1 = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.MenuStripPanelExtended();
             this.floatableMenuStrip1 = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableMenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +60,7 @@
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripPanelExtened1 = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtened();
+            this.toolStripPanelExtened1 = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtended();
             this.floatableToolStrip1 = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -483,7 +483,7 @@
 
         #endregion
 
-        private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.MenuStripPanelExtened menuStripPanelExtened1;
+        private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.MenuStripPanelExtended menuStripPanelExtened1;
         private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableMenuStrip floatableMenuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem newToolStripMenuItem;
@@ -514,7 +514,7 @@
         private ToolStripMenuItem searchToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem aboutToolStripMenuItem;
-        private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtened toolStripPanelExtened1;
+        private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtended toolStripPanelExtened1;
         private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableToolStrip floatableToolStrip1;
         private ToolStripButton newToolStripButton;
         private ToolStripButton openToolStripButton;

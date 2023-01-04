@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
-    /// <summary>Handles the user account control event for the <see cref="KryptonUACElevatedButton" />.</summary>
+    /// <summary>Handles the user account control event for the <see cref="T:KryptonUACElevatedButton" />.</summary>
     public class ExecuteProcessAsAdministratorEventArgs : EventArgs
     {
         /// <summary></summary>
@@ -35,11 +35,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         /// <summary>Gets or sets the process path to execute.</summary>
         /// <value>The process path.</value>
-        public string ProcessPath { get; set; }
+        public string? ProcessPath { get; set; }
 
         /// <summary>Gets or sets the extra arguments.</summary>
         /// <value>The extra arguments.</value>
-        public string ExtraArguments { get; set; }
+        public string? ExtraArguments { get; set; }
 
         /// <summary>Gets or sets the object to elevate.</summary>
         /// <value>The object to elevate.</value>
@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         /// <summary>Initializes a new instance of the <see cref="ExecuteProcessAsAdministratorEventArgs"/> class.</summary>
         /// <param name="processPath">The process path.</param>
-        public ExecuteProcessAsAdministratorEventArgs(string processPath)
+        public ExecuteProcessAsAdministratorEventArgs(string? processPath)
         {
             ProcessPath = processPath;
 
@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <summary>Initializes a new instance of the <see cref="ExecuteProcessAsAdministratorEventArgs" /> class.</summary>
         /// <param name="processPath">The process path.</param>
         /// <param name="extraArguments">The extra arguments.</param>
-        public ExecuteProcessAsAdministratorEventArgs(string processPath, string extraArguments)
+        public ExecuteProcessAsAdministratorEventArgs(string? processPath, string? extraArguments)
         {
             ProcessPath = processPath;
 
@@ -82,7 +82,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             ElevateProcessWithAdministrativeRights(ObjectToElevate);
         }
 
-        private void ElevateProcessWithAdministrativeRights(object objectToElevate, string arguments = null)
+        /// <summary>Elevates the process with administrative rights.</summary>
+        /// <param name="objectToElevate">The object to elevate.</param>
+        /// <param name="arguments">The arguments.</param>
+        private void ElevateProcessWithAdministrativeRights(object objectToElevate, string? arguments = null)
         {
             try
             {
@@ -112,13 +115,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <param name="processName">Name of the process.</param>
         /// <param name="arguments">Extra arguments to execute.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public void ElevateProcessWithAdministrativeRights(string processName, string arguments = null)
+        public void ElevateProcessWithAdministrativeRights(string? processName, string? arguments = null)
         {
             WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
 
             bool hasAdministrativeRights = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
-            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(processName)) throw new ArgumentNullException();
+            if (string.IsNullOrWhiteSpace(processName)) throw new ArgumentNullException();
 
             if (!hasAdministrativeRights)
             {

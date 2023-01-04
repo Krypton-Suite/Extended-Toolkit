@@ -63,6 +63,7 @@
  */
 #endregion
 
+//#pragma warning disable 
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     [DesignerCategory("code")]
@@ -81,6 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
             if (disposing && (components != null))
             {
                 components.Dispose();

@@ -78,6 +78,6 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// of the passed-in string</param>
         /// <param name="data">the string whose signature you want to verify</param>
         /// <returns>the <see cref="ValidationResult"/> result of the verification process</returns>
-        ValidationResult VerifySignatureOfString(string signature, string data);
+        ValidationResult VerifySignatureOfString(string signature, string? data);
     }
 }

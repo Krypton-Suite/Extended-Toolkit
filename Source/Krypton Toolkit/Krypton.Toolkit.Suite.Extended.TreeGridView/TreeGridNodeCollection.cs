@@ -25,9 +25,7 @@
  */
 #endregion
 
-#pragma warning disable CS8766
-#pragma warning disable CS8602
-#nullable enable
+#pragma warning disable CS8613, CS8766, CS8602, CS8769
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     public class TreeGridNodeCollection : IList<KryptonTreeGridNodeRow>, IList
@@ -202,7 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         void ICollection.CopyTo(Array array, int index) => throw new Exception(@"The method or operation is not implemented.");
 
-        object IList.this[int index]
+        object? IList.this[int index]
         {
             get => this[index];
             set => throw new Exception(@"The method or operation is not implemented.");

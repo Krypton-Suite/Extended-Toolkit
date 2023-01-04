@@ -64,7 +64,10 @@
 #endregion
 
 using Timer = System.Windows.Forms.Timer;
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8602
 
+#pragma warning disable CS8625, CS8622
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     [DesignerCategory("code")]
@@ -99,30 +102,30 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.sortASCMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sortDESCMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cancelSortMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1MenuItem = new System.Windows.Forms.ToolStripSeparator();
-            this.cancelFilterMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customFilterLastFiltersListMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customFilterMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2MenuItem = new System.Windows.Forms.ToolStripSeparator();
-            this.customFilterLastFilter1MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customFilterLastFilter2MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customFilterLastFilter3MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customFilterLastFilter4MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customFilterLastFilter5MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3MenuItem = new System.Windows.Forms.ToolStripSeparator();
-            this.checkList = new System.Windows.Forms.TreeView();
-            this.button_filter = new System.Windows.Forms.Button();
-            this.button_undofilter = new System.Windows.Forms.Button();
-            this.checkFilterListPanel = new System.Windows.Forms.Panel();
-            this.checkFilterListButtonsPanel = new System.Windows.Forms.Panel();
-            this.checkFilterListButtonsControlHost = new System.Windows.Forms.ToolStripControlHost(checkFilterListButtonsPanel);
-            this.checkFilterListControlHost = new System.Windows.Forms.ToolStripControlHost(checkFilterListPanel);
-            this.checkTextFilter = new System.Windows.Forms.TextBox();
-            this.checkTextFilterControlHost = new System.Windows.Forms.ToolStripControlHost(checkTextFilter);
-            this.resizeBoxControlHost = new System.Windows.Forms.ToolStripControlHost(new System.Windows.Forms.Control());
+            this._sortAscMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._sortDescMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._cancelSortMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._toolStripSeparator1MenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this._cancelFilterMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._customFilterLastFiltersListMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._customFilterMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._toolStripSeparator2MenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this._customFilterLastFilter1MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._customFilterLastFilter2MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._customFilterLastFilter3MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._customFilterLastFilter4MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._customFilterLastFilter5MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._toolStripSeparator3MenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this._checkList = new System.Windows.Forms.TreeView();
+            this._buttonFilter = new System.Windows.Forms.Button();
+            this._buttonUndofilter = new System.Windows.Forms.Button();
+            this._checkFilterListPanel = new System.Windows.Forms.Panel();
+            this._checkFilterListButtonsPanel = new System.Windows.Forms.Panel();
+            this._checkFilterListButtonsControlHost = new System.Windows.Forms.ToolStripControlHost(_checkFilterListButtonsPanel);
+            this._checkFilterListControlHost = new System.Windows.Forms.ToolStripControlHost(_checkFilterListPanel);
+            this._checkTextFilter = new System.Windows.Forms.TextBox();
+            this._checkTextFilterControlHost = new System.Windows.Forms.ToolStripControlHost(_checkTextFilter);
+            this._resizeBoxControlHost = new System.Windows.Forms.ToolStripControlHost(new System.Windows.Forms.Control());
             this.SuspendLayout();
             //
             // MenuStrip
@@ -135,254 +138,254 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             this.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(MenuStrip_Closed);
             this.LostFocus += new System.EventHandler(MenuStrip_LostFocus);
             this.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            sortASCMenuItem,
-            sortDESCMenuItem,
-            cancelSortMenuItem,
-            toolStripSeparator1MenuItem,
-            cancelFilterMenuItem,
-            customFilterLastFiltersListMenuItem,
-            toolStripSeparator3MenuItem,
-            checkTextFilterControlHost,
-            checkFilterListControlHost,
-            checkFilterListButtonsControlHost,
-            resizeBoxControlHost});
+            _sortAscMenuItem,
+            _sortDescMenuItem,
+            _cancelSortMenuItem,
+            _toolStripSeparator1MenuItem,
+            _cancelFilterMenuItem,
+            _customFilterLastFiltersListMenuItem,
+            _toolStripSeparator3MenuItem,
+            _checkTextFilterControlHost,
+            _checkFilterListControlHost,
+            _checkFilterListButtonsControlHost,
+            _resizeBoxControlHost});
             //
             // sortASCMenuItem
             //
-            this.sortASCMenuItem.Name = "sortASCMenuItem";
-            this.sortASCMenuItem.AutoSize = false;
-            this.sortASCMenuItem.Size = new System.Drawing.Size(Width - 1, 22);
-            this.sortASCMenuItem.Click += new System.EventHandler(SortASCMenuItem_Click);
-            this.sortASCMenuItem.MouseEnter += new System.EventHandler(SortASCMenuItem_MouseEnter);
-            this.sortASCMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this._sortAscMenuItem.Name = "_sortAscMenuItem";
+            this._sortAscMenuItem.AutoSize = false;
+            this._sortAscMenuItem.Size = new System.Drawing.Size(Width - 1, 22);
+            this._sortAscMenuItem.Click += new System.EventHandler(SortASCMenuItem_Click);
+            this._sortAscMenuItem.MouseEnter += new System.EventHandler(SortASCMenuItem_MouseEnter);
+            this._sortAscMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             //
             // sortDESCMenuItem
             //
-            this.sortDESCMenuItem.Name = "sortDESCMenuItem";
-            this.sortDESCMenuItem.AutoSize = false;
-            this.sortDESCMenuItem.Size = new System.Drawing.Size(Width - 1, 22);
-            this.sortDESCMenuItem.Click += new System.EventHandler(SortDESCMenuItem_Click);
-            this.sortDESCMenuItem.MouseEnter += new System.EventHandler(SortDESCMenuItem_MouseEnter);
-            this.sortDESCMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this._sortDescMenuItem.Name = "_sortDescMenuItem";
+            this._sortDescMenuItem.AutoSize = false;
+            this._sortDescMenuItem.Size = new System.Drawing.Size(Width - 1, 22);
+            this._sortDescMenuItem.Click += new System.EventHandler(SortDESCMenuItem_Click);
+            this._sortDescMenuItem.MouseEnter += new System.EventHandler(SortDESCMenuItem_MouseEnter);
+            this._sortDescMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             //
             // cancelSortMenuItem
             //
-            this.cancelSortMenuItem.Name = "cancelSortMenuItem";
-            this.cancelSortMenuItem.Enabled = false;
-            this.cancelSortMenuItem.AutoSize = false;
-            this.cancelSortMenuItem.Size = new System.Drawing.Size(Width - 1, 22);
-            this.cancelSortMenuItem.Text = "Clear Sort";
-            this.cancelSortMenuItem.Click += new System.EventHandler(CancelSortMenuItem_Click);
-            this.cancelSortMenuItem.MouseEnter += new System.EventHandler(CancelSortMenuItem_MouseEnter);
+            this._cancelSortMenuItem.Name = "_cancelSortMenuItem";
+            this._cancelSortMenuItem.Enabled = false;
+            this._cancelSortMenuItem.AutoSize = false;
+            this._cancelSortMenuItem.Size = new System.Drawing.Size(Width - 1, 22);
+            this._cancelSortMenuItem.Text = "Clear Sort";
+            this._cancelSortMenuItem.Click += new System.EventHandler(CancelSortMenuItem_Click);
+            this._cancelSortMenuItem.MouseEnter += new System.EventHandler(CancelSortMenuItem_MouseEnter);
             //
             // toolStripSeparator1MenuItem
             //
-            this.toolStripSeparator1MenuItem.Name = "toolStripSeparator1MenuItem";
-            this.toolStripSeparator1MenuItem.Size = new System.Drawing.Size(Width - 4, 6);
+            this._toolStripSeparator1MenuItem.Name = "_toolStripSeparator1MenuItem";
+            this._toolStripSeparator1MenuItem.Size = new System.Drawing.Size(Width - 4, 6);
             //
             // cancelFilterMenuItem
             //
-            this.cancelFilterMenuItem.Name = "cancelFilterMenuItem";
-            this.cancelFilterMenuItem.Enabled = false;
-            this.cancelFilterMenuItem.AutoSize = false;
-            this.cancelFilterMenuItem.Size = new System.Drawing.Size(Width - 1, 22);
-            this.cancelFilterMenuItem.Text = "Clear Filter";
-            this.cancelFilterMenuItem.Click += new System.EventHandler(CancelFilterMenuItem_Click);
-            this.cancelFilterMenuItem.MouseEnter += new System.EventHandler(CancelFilterMenuItem_MouseEnter);
+            this._cancelFilterMenuItem.Name = "_cancelFilterMenuItem";
+            this._cancelFilterMenuItem.Enabled = false;
+            this._cancelFilterMenuItem.AutoSize = false;
+            this._cancelFilterMenuItem.Size = new System.Drawing.Size(Width - 1, 22);
+            this._cancelFilterMenuItem.Text = "Clear Filter";
+            this._cancelFilterMenuItem.Click += new System.EventHandler(CancelFilterMenuItem_Click);
+            this._cancelFilterMenuItem.MouseEnter += new System.EventHandler(CancelFilterMenuItem_MouseEnter);
             //
             // toolStripMenuItem2
             //
-            this.toolStripSeparator2MenuItem.Name = "toolStripSeparator2MenuItem";
-            this.toolStripSeparator2MenuItem.Size = new System.Drawing.Size(149, 6);
-            this.toolStripSeparator2MenuItem.Visible = false;
+            this._toolStripSeparator2MenuItem.Name = "_toolStripSeparator2MenuItem";
+            this._toolStripSeparator2MenuItem.Size = new System.Drawing.Size(149, 6);
+            this._toolStripSeparator2MenuItem.Visible = false;
             //
             // customFilterMenuItem
             //
-            this.customFilterMenuItem.Name = "customFilterMenuItem";
-            this.customFilterMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.customFilterMenuItem.Text = "Add a Custom Filter";
-            this.customFilterMenuItem.Click += new System.EventHandler(CustomFilterMenuItem_Click);
+            this._customFilterMenuItem.Name = "_customFilterMenuItem";
+            this._customFilterMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._customFilterMenuItem.Text = "Add a Custom Filter";
+            this._customFilterMenuItem.Click += new System.EventHandler(CustomFilterMenuItem_Click);
             //
             // customFilterLastFilter1MenuItem
             //
-            this.customFilterLastFilter1MenuItem.Name = "customFilterLastFilter1MenuItem";
-            this.customFilterLastFilter1MenuItem.Size = new System.Drawing.Size(152, 22);
-            this.customFilterLastFilter1MenuItem.Tag = "0";
-            this.customFilterLastFilter1MenuItem.Text = null;
-            this.customFilterLastFilter1MenuItem.Visible = false;
-            this.customFilterLastFilter1MenuItem.VisibleChanged += new System.EventHandler(CustomFilterLastFilter1MenuItem_VisibleChanged);
-            this.customFilterLastFilter1MenuItem.Click += new System.EventHandler(CustomFilterLastFilterMenuItem_Click);
-            this.customFilterLastFilter1MenuItem.TextChanged += new System.EventHandler(CustomFilterLastFilterMenuItem_TextChanged);
+            this._customFilterLastFilter1MenuItem.Name = "_customFilterLastFilter1MenuItem";
+            this._customFilterLastFilter1MenuItem.Size = new System.Drawing.Size(152, 22);
+            this._customFilterLastFilter1MenuItem.Tag = "0";
+            this._customFilterLastFilter1MenuItem.Text = null;
+            this._customFilterLastFilter1MenuItem.Visible = false;
+            this._customFilterLastFilter1MenuItem.VisibleChanged += new System.EventHandler(CustomFilterLastFilter1MenuItem_VisibleChanged);
+            this._customFilterLastFilter1MenuItem.Click += new System.EventHandler(CustomFilterLastFilterMenuItem_Click);
+            this._customFilterLastFilter1MenuItem.TextChanged += new System.EventHandler(CustomFilterLastFilterMenuItem_TextChanged);
             //
             // customFilterLastFilter2MenuItem
             //
-            this.customFilterLastFilter2MenuItem.Name = "customFilterLastFilter2MenuItem";
-            this.customFilterLastFilter2MenuItem.Size = new System.Drawing.Size(152, 22);
-            this.customFilterLastFilter2MenuItem.Tag = "1";
-            this.customFilterLastFilter2MenuItem.Text = null;
-            this.customFilterLastFilter2MenuItem.Visible = false;
-            this.customFilterLastFilter2MenuItem.Click += new System.EventHandler(CustomFilterLastFilterMenuItem_Click);
-            this.customFilterLastFilter2MenuItem.TextChanged += new System.EventHandler(CustomFilterLastFilterMenuItem_TextChanged);
+            this._customFilterLastFilter2MenuItem.Name = "_customFilterLastFilter2MenuItem";
+            this._customFilterLastFilter2MenuItem.Size = new System.Drawing.Size(152, 22);
+            this._customFilterLastFilter2MenuItem.Tag = "1";
+            this._customFilterLastFilter2MenuItem.Text = null;
+            this._customFilterLastFilter2MenuItem.Visible = false;
+            this._customFilterLastFilter2MenuItem.Click += new System.EventHandler(CustomFilterLastFilterMenuItem_Click);
+            this._customFilterLastFilter2MenuItem.TextChanged += new System.EventHandler(CustomFilterLastFilterMenuItem_TextChanged);
             //
             // customFilterLastFilter3MenuItem
             //
-            this.customFilterLastFilter3MenuItem.Name = "customFilterLastFilter3MenuItem";
-            this.customFilterLastFilter3MenuItem.Size = new System.Drawing.Size(152, 22);
-            this.customFilterLastFilter3MenuItem.Tag = "2";
-            this.customFilterLastFilter3MenuItem.Text = null;
-            this.customFilterLastFilter3MenuItem.Visible = false;
-            this.customFilterLastFilter3MenuItem.Click += new System.EventHandler(CustomFilterLastFilterMenuItem_Click);
-            this.customFilterLastFilter3MenuItem.TextChanged += new System.EventHandler(CustomFilterLastFilterMenuItem_TextChanged);
+            this._customFilterLastFilter3MenuItem.Name = "_customFilterLastFilter3MenuItem";
+            this._customFilterLastFilter3MenuItem.Size = new System.Drawing.Size(152, 22);
+            this._customFilterLastFilter3MenuItem.Tag = "2";
+            this._customFilterLastFilter3MenuItem.Text = null;
+            this._customFilterLastFilter3MenuItem.Visible = false;
+            this._customFilterLastFilter3MenuItem.Click += new System.EventHandler(CustomFilterLastFilterMenuItem_Click);
+            this._customFilterLastFilter3MenuItem.TextChanged += new System.EventHandler(CustomFilterLastFilterMenuItem_TextChanged);
             //
             // customFilterLastFilter3MenuItem
             //
-            this.customFilterLastFilter4MenuItem.Name = "lastfilter4MenuItem";
-            this.customFilterLastFilter4MenuItem.Size = new System.Drawing.Size(152, 22);
-            this.customFilterLastFilter4MenuItem.Tag = "3";
-            this.customFilterLastFilter4MenuItem.Text = null;
-            this.customFilterLastFilter4MenuItem.Visible = false;
-            this.customFilterLastFilter4MenuItem.Click += new System.EventHandler(CustomFilterLastFilterMenuItem_Click);
-            this.customFilterLastFilter4MenuItem.TextChanged += new System.EventHandler(CustomFilterLastFilterMenuItem_TextChanged);
+            this._customFilterLastFilter4MenuItem.Name = "lastfilter4MenuItem";
+            this._customFilterLastFilter4MenuItem.Size = new System.Drawing.Size(152, 22);
+            this._customFilterLastFilter4MenuItem.Tag = "3";
+            this._customFilterLastFilter4MenuItem.Text = null;
+            this._customFilterLastFilter4MenuItem.Visible = false;
+            this._customFilterLastFilter4MenuItem.Click += new System.EventHandler(CustomFilterLastFilterMenuItem_Click);
+            this._customFilterLastFilter4MenuItem.TextChanged += new System.EventHandler(CustomFilterLastFilterMenuItem_TextChanged);
             //
             // customFilterLastFilter5MenuItem
             //
-            this.customFilterLastFilter5MenuItem.Name = "customFilterLastFilter5MenuItem";
-            this.customFilterLastFilter5MenuItem.Size = new System.Drawing.Size(152, 22);
-            this.customFilterLastFilter5MenuItem.Tag = "4";
-            this.customFilterLastFilter5MenuItem.Text = null;
-            this.customFilterLastFilter5MenuItem.Visible = false;
-            this.customFilterLastFilter5MenuItem.Click += new System.EventHandler(CustomFilterLastFilterMenuItem_Click);
-            this.customFilterLastFilter5MenuItem.TextChanged += new System.EventHandler(CustomFilterLastFilterMenuItem_TextChanged);
+            this._customFilterLastFilter5MenuItem.Name = "_customFilterLastFilter5MenuItem";
+            this._customFilterLastFilter5MenuItem.Size = new System.Drawing.Size(152, 22);
+            this._customFilterLastFilter5MenuItem.Tag = "4";
+            this._customFilterLastFilter5MenuItem.Text = null;
+            this._customFilterLastFilter5MenuItem.Visible = false;
+            this._customFilterLastFilter5MenuItem.Click += new System.EventHandler(CustomFilterLastFilterMenuItem_Click);
+            this._customFilterLastFilter5MenuItem.TextChanged += new System.EventHandler(CustomFilterLastFilterMenuItem_TextChanged);
             //
             // customFilterLastFiltersListMenuItem
             //
-            this.customFilterLastFiltersListMenuItem.Name = "customFilterLastFiltersListMenuItem";
-            this.customFilterLastFiltersListMenuItem.AutoSize = false;
-            this.customFilterLastFiltersListMenuItem.Size = new System.Drawing.Size(Width - 1, 22);
-            this.customFilterLastFiltersListMenuItem.Image = Properties.Resources.ColumnHeader_Filtered;
-            this.customFilterLastFiltersListMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.customFilterLastFiltersListMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            customFilterMenuItem,
-            toolStripSeparator2MenuItem,
-            customFilterLastFilter1MenuItem,
-            customFilterLastFilter2MenuItem,
-            customFilterLastFilter3MenuItem,
-            customFilterLastFilter4MenuItem,
-            customFilterLastFilter5MenuItem});
-            this.customFilterLastFiltersListMenuItem.MouseEnter += new System.EventHandler(CustomFilterLastFiltersListMenuItem_MouseEnter);
-            this.customFilterLastFiltersListMenuItem.Paint += new System.Windows.Forms.PaintEventHandler(CustomFilterLastFiltersListMenuItem_Paint);
+            this._customFilterLastFiltersListMenuItem.Name = "_customFilterLastFiltersListMenuItem";
+            this._customFilterLastFiltersListMenuItem.AutoSize = false;
+            this._customFilterLastFiltersListMenuItem.Size = new System.Drawing.Size(Width - 1, 22);
+            this._customFilterLastFiltersListMenuItem.Image = Properties.Resources.ColumnHeader_Filtered;
+            this._customFilterLastFiltersListMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this._customFilterLastFiltersListMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            _customFilterMenuItem,
+            _toolStripSeparator2MenuItem,
+            _customFilterLastFilter1MenuItem,
+            _customFilterLastFilter2MenuItem,
+            _customFilterLastFilter3MenuItem,
+            _customFilterLastFilter4MenuItem,
+            _customFilterLastFilter5MenuItem});
+            this._customFilterLastFiltersListMenuItem.MouseEnter += new System.EventHandler(CustomFilterLastFiltersListMenuItem_MouseEnter);
+            this._customFilterLastFiltersListMenuItem.Paint += new System.Windows.Forms.PaintEventHandler(CustomFilterLastFiltersListMenuItem_Paint);
             //
             // toolStripMenuItem3
             //
-            this.toolStripSeparator3MenuItem.Name = "toolStripSeparator3MenuItem";
-            this.toolStripSeparator3MenuItem.Size = new System.Drawing.Size(Width - 4, 6);
+            this._toolStripSeparator3MenuItem.Name = "_toolStripSeparator3MenuItem";
+            this._toolStripSeparator3MenuItem.Size = new System.Drawing.Size(Width - 4, 6);
             //
             // button_filter
             //
-            this.button_filter.Name = "button_filter";
-            this.button_filter.BackColor = System.Windows.Forms.Button.DefaultBackColor;
-            this.button_filter.UseVisualStyleBackColor = true;
-            this.button_filter.Margin = new System.Windows.Forms.Padding(0);
-            this.button_filter.Size = new System.Drawing.Size(75, 23);
-            this.button_filter.Text = "Filter";
-            this.button_filter.Click += new System.EventHandler(Button_ok_Click);
-            this.button_filter.Location = new System.Drawing.Point(this.checkFilterListButtonsPanel.Width - 164, 0);
+            this._buttonFilter.Name = "_buttonFilter";
+            this._buttonFilter.BackColor = System.Windows.Forms.Button.DefaultBackColor;
+            this._buttonFilter.UseVisualStyleBackColor = true;
+            this._buttonFilter.Margin = new System.Windows.Forms.Padding(0);
+            this._buttonFilter.Size = new System.Drawing.Size(75, 23);
+            this._buttonFilter.Text = "Filter";
+            this._buttonFilter.Click += new System.EventHandler(Button_ok_Click);
+            this._buttonFilter.Location = new System.Drawing.Point(this._checkFilterListButtonsPanel.Width - 164, 0);
             //
             // button_undofilter
             //
-            this.button_undofilter.Name = "button_undofilter";
-            this.button_undofilter.BackColor = System.Windows.Forms.Button.DefaultBackColor;
-            this.button_undofilter.UseVisualStyleBackColor = true;
-            this.button_undofilter.Margin = new System.Windows.Forms.Padding(0);
-            this.button_undofilter.Size = new System.Drawing.Size(75, 23);
-            this.button_undofilter.Text = "Cancel";
-            this.button_undofilter.Click += new System.EventHandler(Button_cancel_Click);
-            this.button_undofilter.Location = new System.Drawing.Point(this.checkFilterListButtonsPanel.Width - 79, 0);
+            this._buttonUndofilter.Name = "_buttonUndofilter";
+            this._buttonUndofilter.BackColor = System.Windows.Forms.Button.DefaultBackColor;
+            this._buttonUndofilter.UseVisualStyleBackColor = true;
+            this._buttonUndofilter.Margin = new System.Windows.Forms.Padding(0);
+            this._buttonUndofilter.Size = new System.Drawing.Size(75, 23);
+            this._buttonUndofilter.Text = "Cancel";
+            this._buttonUndofilter.Click += new System.EventHandler(Button_cancel_Click);
+            this._buttonUndofilter.Location = new System.Drawing.Point(this._checkFilterListButtonsPanel.Width - 79, 0);
             //
             // resizeBoxControlHost
             //
-            this.resizeBoxControlHost.Name = "resizeBoxControlHost";
-            this.resizeBoxControlHost.Control.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.resizeBoxControlHost.AutoSize = false;
-            this.resizeBoxControlHost.Padding = new System.Windows.Forms.Padding(0);
-            this.resizeBoxControlHost.Margin = new System.Windows.Forms.Padding(Width - 45, 0, 0, 0);
-            this.resizeBoxControlHost.Size = new System.Drawing.Size(10, 10);
-            this.resizeBoxControlHost.Paint += new System.Windows.Forms.PaintEventHandler(ResizeBoxControlHost_Paint);
-            this.resizeBoxControlHost.MouseDown += new System.Windows.Forms.MouseEventHandler(ResizeBoxControlHost_MouseDown);
-            this.resizeBoxControlHost.MouseUp += new System.Windows.Forms.MouseEventHandler(ResizeBoxControlHost_MouseUp);
-            this.resizeBoxControlHost.MouseMove += new System.Windows.Forms.MouseEventHandler(ResizeBoxControlHost_MouseMove);
+            this._resizeBoxControlHost.Name = "_resizeBoxControlHost";
+            this._resizeBoxControlHost.Control.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this._resizeBoxControlHost.AutoSize = false;
+            this._resizeBoxControlHost.Padding = new System.Windows.Forms.Padding(0);
+            this._resizeBoxControlHost.Margin = new System.Windows.Forms.Padding(Width - 45, 0, 0, 0);
+            this._resizeBoxControlHost.Size = new System.Drawing.Size(10, 10);
+            this._resizeBoxControlHost.Paint += new System.Windows.Forms.PaintEventHandler(ResizeBoxControlHost_Paint);
+            this._resizeBoxControlHost.MouseDown += new System.Windows.Forms.MouseEventHandler(ResizeBoxControlHost_MouseDown);
+            this._resizeBoxControlHost.MouseUp += new System.Windows.Forms.MouseEventHandler(ResizeBoxControlHost_MouseUp);
+            this._resizeBoxControlHost.MouseMove += new System.Windows.Forms.MouseEventHandler(ResizeBoxControlHost_MouseMove);
             //
             // checkFilterListControlHost
             //
-            this.checkFilterListControlHost.Name = "checkFilterListControlHost";
-            this.checkFilterListControlHost.AutoSize = false;
-            this.checkFilterListControlHost.Size = new System.Drawing.Size(Width - 35, 194);
-            this.checkFilterListControlHost.Padding = new System.Windows.Forms.Padding(0);
-            this.checkFilterListControlHost.Margin = new System.Windows.Forms.Padding(0);
+            this._checkFilterListControlHost.Name = "_checkFilterListControlHost";
+            this._checkFilterListControlHost.AutoSize = false;
+            this._checkFilterListControlHost.Size = new System.Drawing.Size(Width - 35, 194);
+            this._checkFilterListControlHost.Padding = new System.Windows.Forms.Padding(0);
+            this._checkFilterListControlHost.Margin = new System.Windows.Forms.Padding(0);
             //
             // checkTextFilterControlHost
             //
-            this.checkTextFilterControlHost.Name = "checkTextFilterControlHost";
-            this.checkTextFilterControlHost.AutoSize = false;
-            this.checkTextFilterControlHost.Size = new System.Drawing.Size(Width - 35, 20);
-            this.checkTextFilterControlHost.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.checkTextFilterControlHost.Margin = new System.Windows.Forms.Padding(0);
+            this._checkTextFilterControlHost.Name = "_checkTextFilterControlHost";
+            this._checkTextFilterControlHost.AutoSize = false;
+            this._checkTextFilterControlHost.Size = new System.Drawing.Size(Width - 35, 20);
+            this._checkTextFilterControlHost.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._checkTextFilterControlHost.Margin = new System.Windows.Forms.Padding(0);
             //
             // checkFilterListButtonsControlHost
             //
-            this.checkFilterListButtonsControlHost.Name = "checkFilterListButtonsControlHost";
-            this.checkFilterListButtonsControlHost.AutoSize = false;
-            this.checkFilterListButtonsControlHost.Size = new System.Drawing.Size(Width - 35, 24);
-            this.checkFilterListButtonsControlHost.Padding = new System.Windows.Forms.Padding(0);
-            this.checkFilterListButtonsControlHost.Margin = new System.Windows.Forms.Padding(0);
+            this._checkFilterListButtonsControlHost.Name = "_checkFilterListButtonsControlHost";
+            this._checkFilterListButtonsControlHost.AutoSize = false;
+            this._checkFilterListButtonsControlHost.Size = new System.Drawing.Size(Width - 35, 24);
+            this._checkFilterListButtonsControlHost.Padding = new System.Windows.Forms.Padding(0);
+            this._checkFilterListButtonsControlHost.Margin = new System.Windows.Forms.Padding(0);
             //
             // checkFilterListPanel
             //
-            this.checkFilterListPanel.Name = "checkFilterListPanel";
-            this.checkFilterListPanel.AutoSize = false;
-            this.checkFilterListPanel.Size = checkFilterListControlHost.Size;
-            this.checkFilterListPanel.Padding = new System.Windows.Forms.Padding(0);
-            this.checkFilterListPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.checkFilterListPanel.BackColor = BackColor;
-            this.checkFilterListPanel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkFilterListPanel.Controls.Add(checkList);
+            this._checkFilterListPanel.Name = "_checkFilterListPanel";
+            this._checkFilterListPanel.AutoSize = false;
+            this._checkFilterListPanel.Size = _checkFilterListControlHost.Size;
+            this._checkFilterListPanel.Padding = new System.Windows.Forms.Padding(0);
+            this._checkFilterListPanel.Margin = new System.Windows.Forms.Padding(0);
+            this._checkFilterListPanel.BackColor = BackColor;
+            this._checkFilterListPanel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._checkFilterListPanel.Controls.Add(_checkList);
             //
             // checkList
             //
-            this.checkList.Name = "checkList";
-            this.checkList.AutoSize = false;
-            this.checkList.Padding = new System.Windows.Forms.Padding(0);
-            this.checkList.Margin = new System.Windows.Forms.Padding(0);
-            this.checkList.Bounds = new System.Drawing.Rectangle(4, 4, this.checkFilterListPanel.Width - 8, this.checkFilterListPanel.Height - 8);
-            this.checkList.StateImageList = GetCheckListStateImages();
-            this.checkList.CheckBoxes = false;
-            this.checkList.MouseLeave += new System.EventHandler(CheckList_MouseLeave);
-            this.checkList.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(CheckList_NodeMouseClick);
-            this.checkList.KeyDown += new System.Windows.Forms.KeyEventHandler(CheckList_KeyDown);
-            this.checkList.MouseEnter += CheckList_MouseEnter;
-            this.checkList.NodeMouseDoubleClick += CheckList_NodeMouseDoubleClick;
+            this._checkList.Name = "_checkList";
+            this._checkList.AutoSize = false;
+            this._checkList.Padding = new System.Windows.Forms.Padding(0);
+            this._checkList.Margin = new System.Windows.Forms.Padding(0);
+            this._checkList.Bounds = new System.Drawing.Rectangle(4, 4, this._checkFilterListPanel.Width - 8, this._checkFilterListPanel.Height - 8);
+            this._checkList.StateImageList = GetCheckListStateImages();
+            this._checkList.CheckBoxes = false;
+            this._checkList.MouseLeave += new System.EventHandler(CheckList_MouseLeave);
+            this._checkList.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(CheckList_NodeMouseClick);
+            this._checkList.KeyDown += new System.Windows.Forms.KeyEventHandler(CheckList_KeyDown);
+            this._checkList.MouseEnter += CheckList_MouseEnter;
+            this._checkList.NodeMouseDoubleClick += CheckList_NodeMouseDoubleClick;
             //
             // checkTextFilter
             //
-            this.checkTextFilter.Name = "checkTextFilter";
-            this.checkTextFilter.Padding = new System.Windows.Forms.Padding(0);
-            this.checkTextFilter.Margin = new System.Windows.Forms.Padding(0);
-            this.checkTextFilter.Size = checkTextFilterControlHost.Size;
-            this.checkTextFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkTextFilter.TextChanged += new System.EventHandler(CheckTextFilter_TextChanged);
+            this._checkTextFilter.Name = "_checkTextFilter";
+            this._checkTextFilter.Padding = new System.Windows.Forms.Padding(0);
+            this._checkTextFilter.Margin = new System.Windows.Forms.Padding(0);
+            this._checkTextFilter.Size = _checkTextFilterControlHost.Size;
+            this._checkTextFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._checkTextFilter.TextChanged += new System.EventHandler(CheckTextFilter_TextChanged);
             //
             // checkFilterListButtonsPanel
             //
-            this.checkFilterListButtonsPanel.Name = "checkFilterListButtonsPanel";
-            this.checkFilterListButtonsPanel.AutoSize = false;
-            this.checkFilterListButtonsPanel.Size = checkFilterListButtonsControlHost.Size;
-            this.checkFilterListButtonsPanel.Padding = new System.Windows.Forms.Padding(0);
-            this.checkFilterListButtonsPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.checkFilterListButtonsPanel.BackColor = BackColor;
-            this.checkFilterListButtonsPanel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkFilterListButtonsPanel.Controls.AddRange(new System.Windows.Forms.Control[] {
-            button_filter,
-            button_undofilter
+            this._checkFilterListButtonsPanel.Name = "_checkFilterListButtonsPanel";
+            this._checkFilterListButtonsPanel.AutoSize = false;
+            this._checkFilterListButtonsPanel.Size = _checkFilterListButtonsControlHost.Size;
+            this._checkFilterListButtonsPanel.Padding = new System.Windows.Forms.Padding(0);
+            this._checkFilterListButtonsPanel.Margin = new System.Windows.Forms.Padding(0);
+            this._checkFilterListButtonsPanel.BackColor = BackColor;
+            this._checkFilterListButtonsPanel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._checkFilterListButtonsPanel.Controls.AddRange(new System.Windows.Forms.Control[] {
+            _buttonFilter,
+            _buttonUndofilter
             });
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -391,30 +394,30 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
         #endregion
 
-        private ToolStripMenuItem sortASCMenuItem;
-        private ToolStripMenuItem sortDESCMenuItem;
-        private ToolStripMenuItem cancelSortMenuItem;
-        private ToolStripSeparator toolStripSeparator1MenuItem;
-        private ToolStripSeparator toolStripSeparator2MenuItem;
-        private ToolStripSeparator toolStripSeparator3MenuItem;
-        private ToolStripMenuItem cancelFilterMenuItem;
-        private ToolStripMenuItem customFilterLastFiltersListMenuItem;
-        private ToolStripMenuItem customFilterMenuItem;
-        private ToolStripMenuItem customFilterLastFilter1MenuItem;
-        private ToolStripMenuItem customFilterLastFilter2MenuItem;
-        private ToolStripMenuItem customFilterLastFilter3MenuItem;
-        private ToolStripMenuItem customFilterLastFilter4MenuItem;
-        private ToolStripMenuItem customFilterLastFilter5MenuItem;
-        private TreeView checkList;
-        private Button button_filter;
-        private Button button_undofilter;
-        private ToolStripControlHost checkFilterListControlHost;
-        private ToolStripControlHost checkFilterListButtonsControlHost;
-        private ToolStripControlHost resizeBoxControlHost;
-        private Panel checkFilterListPanel;
-        private Panel checkFilterListButtonsPanel;
-        private TextBox checkTextFilter;
-        private ToolStripControlHost checkTextFilterControlHost;
+        private ToolStripMenuItem _sortAscMenuItem;
+        private ToolStripMenuItem _sortDescMenuItem;
+        private ToolStripMenuItem _cancelSortMenuItem;
+        private ToolStripSeparator _toolStripSeparator1MenuItem;
+        private ToolStripSeparator _toolStripSeparator2MenuItem;
+        private ToolStripSeparator _toolStripSeparator3MenuItem;
+        private ToolStripMenuItem _cancelFilterMenuItem;
+        private ToolStripMenuItem _customFilterLastFiltersListMenuItem;
+        private ToolStripMenuItem _customFilterMenuItem;
+        private ToolStripMenuItem _customFilterLastFilter1MenuItem;
+        private ToolStripMenuItem _customFilterLastFilter2MenuItem;
+        private ToolStripMenuItem _customFilterLastFilter3MenuItem;
+        private ToolStripMenuItem _customFilterLastFilter4MenuItem;
+        private ToolStripMenuItem _customFilterLastFilter5MenuItem;
+        private TreeView _checkList;
+        private Button _buttonFilter;
+        private Button _buttonUndofilter;
+        private ToolStripControlHost _checkFilterListControlHost;
+        private ToolStripControlHost _checkFilterListButtonsControlHost;
+        private ToolStripControlHost _resizeBoxControlHost;
+        private Panel _checkFilterListPanel;
+        private Panel _checkFilterListButtonsPanel;
+        private TextBox _checkTextFilter;
+        private ToolStripControlHost _checkTextFilterControlHost;
 
         #endregion
 
@@ -438,8 +441,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public enum SortType : byte
         {
             None = 0,
-            ASC = 1,
-            DESC = 2
+            Asc = 1,
+            Desc = 2
         }
 
         #endregion
@@ -483,8 +486,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private TreeNodeItemSelector[] _startingNodes = new TreeNodeItemSelector[] { };
         private TreeNodeItemSelector[] _removedNodes = new TreeNodeItemSelector[] { };
         private TreeNodeItemSelector[] _removedsessionNodes = new TreeNodeItemSelector[] { };
-        private string _sortString = null;
-        private string _filterString = null;
+        private string? _sortString = null;
+        private string? _filterString = null;
         private static Point _resizeStartPoint = new Point(1, 1);
         private Point _resizeEndPoint = new Point(-1, -1);
         private bool _checkTextFilterChangedEnabled = true;
@@ -511,11 +514,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             InitializeComponent();
 
             //set component translations
-            cancelSortMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewClearSort.ToString()];
-            cancelFilterMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewClearFilter.ToString()];
-            customFilterMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewAddCustomFilter.ToString()];
-            button_filter.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewButtonFilter.ToString()];
-            button_undofilter.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewButtonUndofilter.ToString()];
+            _cancelSortMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewClearSort.ToString()];
+            _cancelFilterMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewClearFilter.ToString()];
+            _customFilterMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewAddCustomFilter.ToString()];
+            _buttonFilter.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewButtonFilter.ToString()];
+            _buttonUndofilter.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewButtonUndofilter.ToString()];
 
             //set type
             DataType = dataType;
@@ -523,46 +526,46 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             //set components values
             if (DataType == typeof(DateTime) || DataType == typeof(TimeSpan))
             {
-                customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
-                sortASCMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortDateTimeASC.ToString()];
-                sortDESCMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortDateTimeDESC.ToString()];
-                sortASCMenuItem.Image = Properties.Resources.MenuStrip_OrderASCnum;
-                sortDESCMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCnum;
+                _customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
+                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortDateTimeASC.ToString()];
+                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortDateTimeDESC.ToString()];
+                _sortAscMenuItem.Image = Properties.Resources.MenuStrip_OrderASCnum;
+                _sortDescMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCnum;
             }
             else if (DataType == typeof(bool))
             {
-                customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
-                sortASCMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortBoolASC.ToString()];
-                sortDESCMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortBoolDESC.ToString()];
-                sortASCMenuItem.Image = Properties.Resources.MenuStrip_OrderASCbool;
-                sortDESCMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCbool;
+                _customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
+                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortBoolASC.ToString()];
+                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortBoolDESC.ToString()];
+                _sortAscMenuItem.Image = Properties.Resources.MenuStrip_OrderASCbool;
+                _sortDescMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCbool;
             }
             else if (DataType == typeof(Int32) || DataType == typeof(Int64) || DataType == typeof(Int16) ||
                 DataType == typeof(UInt32) || DataType == typeof(UInt64) || DataType == typeof(UInt16) ||
                 DataType == typeof(Byte) || DataType == typeof(SByte) || DataType == typeof(Decimal) ||
                 DataType == typeof(Single) || DataType == typeof(Double))
             {
-                customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
-                sortASCMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortNumASC.ToString()];
-                sortDESCMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortNumDESC.ToString()];
-                sortASCMenuItem.Image = Properties.Resources.MenuStrip_OrderASCnum;
-                sortDESCMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCnum;
+                _customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
+                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortNumASC.ToString()];
+                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortNumDESC.ToString()];
+                _sortAscMenuItem.Image = Properties.Resources.MenuStrip_OrderASCnum;
+                _sortDescMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCnum;
             }
             else
             {
-                customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
-                sortASCMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortTextASC.ToString()];
-                sortDESCMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortTextDESC.ToString()];
-                sortASCMenuItem.Image = Properties.Resources.MenuStrip_OrderASCtxt;
-                sortDESCMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCtxt;
+                _customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
+                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortTextASC.ToString()];
+                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortTextDESC.ToString()];
+                _sortAscMenuItem.Image = Properties.Resources.MenuStrip_OrderASCtxt;
+                _sortDescMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCtxt;
             }
 
             //set check filter textbox
             if (DataType == typeof(DateTime) || DataType == typeof(TimeSpan) || DataType == typeof(bool))
-                checkTextFilter.Enabled = false;
+                _checkTextFilter.Enabled = false;
 
             //set default NOT IN logic
-            IsFilterNOTINLogicEnabled = false;
+            IsFilterNotinLogicEnabled = false;
 
             //sent enablers default
             IsSortEnabled = true;
@@ -571,29 +574,29 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             IsFilterDateAndTimeEnabled = true;
 
             //set default compoents
-            customFilterLastFiltersListMenuItem.Enabled = DataType != typeof(bool);
-            customFilterLastFiltersListMenuItem.Checked = ActiveFilterType == FilterType.Custom;
+            _customFilterLastFiltersListMenuItem.Enabled = DataType != typeof(bool);
+            _customFilterLastFiltersListMenuItem.Checked = ActiveFilterType == FilterType.Custom;
 
             //resize before hitting ResizeBox so the grip works correctly
             float scalingfactor = GetScalingFactor();
             MinimumSize = new Size(Scale(PreferredSize.Width, scalingfactor), Scale(PreferredSize.Height, scalingfactor));
             //once the size is set resize the ones that wont change      
-            resizeBoxControlHost.Height = Scale(resizeBoxControlHost.Height, scalingfactor);
-            resizeBoxControlHost.Width = Scale(resizeBoxControlHost.Width, scalingfactor);
-            toolStripSeparator1MenuItem.Height = Scale(toolStripSeparator1MenuItem.Height, scalingfactor);
-            toolStripSeparator2MenuItem.Height = Scale(toolStripSeparator2MenuItem.Height, scalingfactor);
-            toolStripSeparator3MenuItem.Height = Scale(toolStripSeparator3MenuItem.Height, scalingfactor);
-            sortASCMenuItem.Height = Scale(sortASCMenuItem.Height, scalingfactor);
-            sortDESCMenuItem.Height = Scale(sortDESCMenuItem.Height, scalingfactor);
-            cancelSortMenuItem.Height = Scale(cancelSortMenuItem.Height, scalingfactor);
-            cancelFilterMenuItem.Height = Scale(cancelFilterMenuItem.Height, scalingfactor);
-            customFilterMenuItem.Height = Scale(customFilterMenuItem.Height, scalingfactor);
-            customFilterLastFiltersListMenuItem.Height = Scale(customFilterLastFiltersListMenuItem.Height, scalingfactor);
-            checkTextFilterControlHost.Height = Scale(checkTextFilterControlHost.Height, scalingfactor);
-            button_filter.Width = Scale(button_filter.Width, scalingfactor);
-            button_filter.Height = Scale(button_filter.Height, scalingfactor);
-            button_undofilter.Width = Scale(button_undofilter.Width, scalingfactor);
-            button_undofilter.Height = Scale(button_undofilter.Height, scalingfactor);
+            _resizeBoxControlHost.Height = Scale(_resizeBoxControlHost.Height, scalingfactor);
+            _resizeBoxControlHost.Width = Scale(_resizeBoxControlHost.Width, scalingfactor);
+            _toolStripSeparator1MenuItem.Height = Scale(_toolStripSeparator1MenuItem.Height, scalingfactor);
+            _toolStripSeparator2MenuItem.Height = Scale(_toolStripSeparator2MenuItem.Height, scalingfactor);
+            _toolStripSeparator3MenuItem.Height = Scale(_toolStripSeparator3MenuItem.Height, scalingfactor);
+            _sortAscMenuItem.Height = Scale(_sortAscMenuItem.Height, scalingfactor);
+            _sortDescMenuItem.Height = Scale(_sortDescMenuItem.Height, scalingfactor);
+            _cancelSortMenuItem.Height = Scale(_cancelSortMenuItem.Height, scalingfactor);
+            _cancelFilterMenuItem.Height = Scale(_cancelFilterMenuItem.Height, scalingfactor);
+            _customFilterMenuItem.Height = Scale(_customFilterMenuItem.Height, scalingfactor);
+            _customFilterLastFiltersListMenuItem.Height = Scale(_customFilterLastFiltersListMenuItem.Height, scalingfactor);
+            _checkTextFilterControlHost.Height = Scale(_checkTextFilterControlHost.Height, scalingfactor);
+            _buttonFilter.Width = Scale(_buttonFilter.Width, scalingfactor);
+            _buttonFilter.Height = Scale(_buttonFilter.Height, scalingfactor);
+            _buttonUndofilter.Width = Scale(_buttonUndofilter.Width, scalingfactor);
+            _buttonUndofilter.Height = Scale(_buttonUndofilter.Height, scalingfactor);
             //resize
             ResizeBox(MinimumSize.Width, MinimumSize.Height);
 
@@ -621,7 +624,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _startingNodes = new TreeNodeItemSelector[] { };
 
             _checkTextFilterChangedEnabled = false;
-            checkTextFilter.Text = "";
+            _checkTextFilter.Text = "";
             _checkTextFilterChangedEnabled = true;
         }
 
@@ -773,7 +776,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get or Set the NOT IN logic for Filter
         /// </summary>
-        public bool IsFilterNOTINLogicEnabled { get; set; }
+        public bool IsFilterNotinLogicEnabled { get; set; }
 
         /// <summary>
         /// Set the text filter search nodes behaviour
@@ -833,9 +836,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             IsSortEnabled = enabled;
 
-            sortASCMenuItem.Enabled = enabled;
-            sortDESCMenuItem.Enabled = enabled;
-            cancelSortMenuItem.Enabled = enabled;
+            _sortAscMenuItem.Enabled = enabled;
+            _sortDescMenuItem.Enabled = enabled;
+            _cancelSortMenuItem.Enabled = enabled;
         }
 
         /// <summary>
@@ -846,12 +849,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             IsFilterEnabled = enabled;
 
-            cancelFilterMenuItem.Enabled = enabled;
-            customFilterLastFiltersListMenuItem.Enabled = (enabled && DataType != typeof(bool));
-            button_filter.Enabled = enabled;
-            button_undofilter.Enabled = enabled;
-            checkList.Enabled = enabled;
-            checkTextFilter.Enabled = enabled;
+            _cancelFilterMenuItem.Enabled = enabled;
+            _customFilterLastFiltersListMenuItem.Enabled = (enabled && DataType != typeof(bool));
+            _buttonFilter.Enabled = enabled;
+            _buttonUndofilter.Enabled = enabled;
+            _checkList.Enabled = enabled;
+            _checkTextFilter.Enabled = enabled;
         }
 
         /// <summary>
@@ -864,14 +867,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 enabled = false;
 
             IsFilterChecklistEnabled = enabled;
-            checkList.Enabled = enabled;
-            checkTextFilter.ReadOnly = !enabled;
+            _checkList.Enabled = enabled;
+            _checkTextFilter.ReadOnly = !enabled;
 
             if (!IsFilterChecklistEnabled)
             {
                 ChecklistClearNodes();
                 TreeNodeItemSelector disablednode = TreeNodeItemSelector.CreateNode(KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewFilterChecklistDisable.ToString()] + "            ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll);
-                disablednode.NodeFont = new Font(checkList.Font, FontStyle.Bold);
+                disablednode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
                 ChecklistAddNode(disablednode);
                 ChecklistReloadNodes();
             }
@@ -887,8 +890,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 enabled = false;
 
             IsFilterCustomEnabled = enabled;
-            customFilterMenuItem.Enabled = enabled;
-            customFilterLastFiltersListMenuItem.Enabled = enabled;
+            _customFilterMenuItem.Enabled = enabled;
+            _customFilterLastFiltersListMenuItem.Enabled = enabled;
 
             if (!IsFilterCustomEnabled)
             {
@@ -911,22 +914,22 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
         public void SetLoadedMode(bool enabled)
         {
-            customFilterMenuItem.Enabled = !enabled;
-            cancelFilterMenuItem.Enabled = enabled;
+            _customFilterMenuItem.Enabled = !enabled;
+            _cancelFilterMenuItem.Enabled = enabled;
             if (enabled)
             {
                 _activeFilterType = FilterType.Loaded;
                 _sortString = null;
                 _filterString = null;
-                customFilterLastFiltersListMenuItem.Checked = false;
-                for (int i = 2; i < customFilterLastFiltersListMenuItem.DropDownItems.Count - 1; i++)
+                _customFilterLastFiltersListMenuItem.Checked = false;
+                for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count - 1; i++)
                 {
-                    (customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                    (_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
                 }
 
                 ChecklistClearNodes();
                 TreeNodeItemSelector allnode = TreeNodeItemSelector.CreateNode(KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll.ToString()] + "            ", null, CheckState.Indeterminate, TreeNodeItemSelector.CustomNodeType.SelectAll);
-                allnode.NodeFont = new Font(checkList.Font, FontStyle.Bold);
+                allnode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
                 ChecklistAddNode(allnode);
                 ChecklistReloadNodes();
 
@@ -971,7 +974,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _filterclick = false;
 
             _checkTextFilterChangedEnabled = false;
-            checkTextFilter.Text = "";
+            _checkTextFilter.Text = "";
             _checkTextFilterChangedEnabled = true;
         }
 
@@ -981,13 +984,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="control"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        /// <param name="_restoreFilter"></param>
-        public void Show(Control control, int x, int y, bool _restoreFilter)
+        /// <param name="restoreFilter"></param>
+        public void Show(Control control, int x, int y, bool restoreFilter)
         {
             _checkTextFilterChangedEnabled = false;
-            checkTextFilter.Text = "";
+            _checkTextFilter.Text = "";
             _checkTextFilterChangedEnabled = true;
-            if (_restoreFilter || _checkTextFilterRemoveNodesOnSearch)
+            if (restoreFilter || _checkTextFilterRemoveNodesOnSearch)
             {
                 //reset the starting nodes
                 _startingNodes = DuplicateNodes(_loadedNodes);
@@ -1029,7 +1032,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Sort ASC
         /// </summary>
-        public void SortASC()
+        public void SortAsc()
         {
             SortASCMenuItem_Click(this, null);
         }
@@ -1037,7 +1040,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Sort DESC
         /// </summary>
-        public void SortDESC()
+        public void SortDesc()
         {
             SortDESCMenuItem_Click(this, null);
         }
@@ -1045,7 +1048,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get the Sorting String
         /// </summary>
-        public string SortString
+        public string? SortString
         {
             get
             {
@@ -1053,7 +1056,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             }
             private set
             {
-                cancelSortMenuItem.Enabled = (value != null && value.Length > 0);
+                _cancelSortMenuItem.Enabled = (value != null && value.Length > 0);
                 _sortString = value;
             }
         }
@@ -1063,8 +1066,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public void CleanSort()
         {
-            sortASCMenuItem.Checked = false;
-            sortDESCMenuItem.Checked = false;
+            _sortAscMenuItem.Checked = false;
+            _sortDescMenuItem.Checked = false;
             _activeSortType = SortType.None;
             SortString = null;
         }
@@ -1077,7 +1080,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get the Filter string
         /// </summary>
-        public string FilterString
+        public string? FilterString
         {
             get
             {
@@ -1085,7 +1088,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             }
             private set
             {
-                cancelFilterMenuItem.Enabled = (value != null && value.Length > 0);
+                _cancelFilterMenuItem.Enabled = (value != null && value.Length > 0);
                 _filterString = value;
             }
         }
@@ -1101,15 +1104,15 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 _removedsessionNodes = new TreeNodeItemSelector[] { };
             }
 
-            for (int i = 2; i < customFilterLastFiltersListMenuItem.DropDownItems.Count - 1; i++)
+            for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count - 1; i++)
             {
-                (customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                (_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
             }
             _activeFilterType = FilterType.None;
             SetNodesCheckState(_loadedNodes, true);
             FilterString = null;
-            customFilterLastFiltersListMenuItem.Checked = false;
-            button_filter.Enabled = true;
+            _customFilterLastFiltersListMenuItem.Checked = false;
+            _buttonFilter.Enabled = true;
         }
 
         /// <summary>
@@ -1152,8 +1155,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         private void ChecklistReloadNodes()
         {
-            checkList.BeginUpdate();
-            checkList.Nodes.Clear();
+            _checkList.BeginUpdate();
+            _checkList.Nodes.Clear();
             int nodecount = 0;
             foreach (TreeNodeItemSelector node in _loadedNodes)
             {
@@ -1162,14 +1165,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     if (_maxChecklistNodes == 0)
                     {
                         if (!_removedNodes.Contains(node))
-                            checkList.Nodes.Add(node);
+                            _checkList.Nodes.Add(node);
                     }
                     else
                     {
                         if (nodecount < _maxChecklistNodes && !_removedNodes.Contains(node))
-                            checkList.Nodes.Add(node);
+                            _checkList.Nodes.Add(node);
                         else if (nodecount == _maxChecklistNodes)
-                            checkList.Nodes.Add("...");
+                            _checkList.Nodes.Add("...");
                         if (!_removedNodes.Contains(node) || nodecount == _maxChecklistNodes)
                             nodecount++;
 
@@ -1177,11 +1180,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 }
                 else
                 {
-                    checkList.Nodes.Add(node);
+                    _checkList.Nodes.Add(node);
                 }
 
             }
-            checkList.EndUpdate();
+            _checkList.EndUpdate();
         }
 
         /// <summary>
@@ -1190,7 +1193,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <returns></returns>
         private TreeNodeCollection ChecklistNodes()
         {
-            return checkList.Nodes;
+            return _checkList.Nodes;
         }
 
         /// <summary>
@@ -1200,14 +1203,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             UnCheckCustomFilters();
 
-            TreeNodeItemSelector selectAllNode = GetSelectAllNode();
-            customFilterLastFiltersListMenuItem.Checked = false;
+            TreeNodeItemSelector? selectAllNode = GetSelectAllNode();
+            _customFilterLastFiltersListMenuItem.Checked = false;
 
-            if (selectAllNode != null && selectAllNode.Checked && String.IsNullOrEmpty(checkTextFilter.Text))
+            if (selectAllNode != null && selectAllNode.Checked && String.IsNullOrEmpty(_checkTextFilter.Text))
                 CancelFilterMenuItem_Click(null, new EventArgs());
             else
             {
-                string oldfilter = FilterString;
+                string? oldfilter = FilterString;
                 FilterString = "";
                 _activeFilterType = FilterType.CheckList;
 
@@ -1220,7 +1223,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     if (_loadedNodes.Length > 2 || selectAllNode == null)
                     {
                         string filter = BuildNodesFilterString(
-                            (IsFilterNOTINLogicEnabled && (DataType != typeof(DateTime) && DataType != typeof(TimeSpan) && DataType != typeof(bool)) ?
+                            (IsFilterNotinLogicEnabled && (DataType != typeof(DateTime) && DataType != typeof(TimeSpan) && DataType != typeof(bool)) ?
                                 _loadedNodes.AsParallel().Cast<TreeNodeItemSelector>().Where(
                                     n => n.NodeType != TreeNodeItemSelector.CustomNodeType.SelectAll
                                         && n.NodeType != TreeNodeItemSelector.CustomNodeType.SelectEmpty
@@ -1245,7 +1248,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                                      DataType == typeof(decimal) ||
                                      DataType == typeof(byte) || DataType == typeof(sbyte) || DataType == typeof(string))
                             {
-                                if (IsFilterNOTINLogicEnabled)
+                                if (IsFilterNotinLogicEnabled)
                                     FilterString += "[{0}] NOT IN (" + filter + ")";
                                 else
                                     FilterString += "[{0}] IN (" + filter + ")";
@@ -1254,7 +1257,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                             { }
                             else
                             {
-                                if (IsFilterNOTINLogicEnabled)
+                                if (IsFilterNotinLogicEnabled)
                                     FilterString += "Convert([{0}],System.String) NOT IN (" + filter + ")";
                                 else
                                     FilterString += "Convert([{0}],System.String) IN (" + filter + ")";
@@ -1380,7 +1383,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             {
                 //add select all node
                 TreeNodeItemSelector allnode = TreeNodeItemSelector.CreateNode(KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll.ToString()] + "            ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll);
-                allnode.NodeFont = new Font(checkList.Font, FontStyle.Bold);
+                allnode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
                 ChecklistAddNode(allnode);
 
                 if (vals.Any())
@@ -1391,7 +1394,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     if (vals.Count() != nonulls.Count())
                     {
                         TreeNodeItemSelector nullnode = TreeNodeItemSelector.CreateNode(KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectEmpty.ToString()] + "               ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectEmpty);
-                        nullnode.NodeFont = new Font(checkList.Font, FontStyle.Bold);
+                        nullnode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
                         ChecklistAddNode(nullnode);
                     }
 
@@ -1417,7 +1420,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                             foreach (var month in months)
                             {
-                                TreeNodeItemSelector monthnode = yearnode.CreateChildNode(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month.Key), month.Key);
+                                TreeNodeItemSelector? monthnode = yearnode.CreateChildNode(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month.Key), month.Key);
 
                                 var days =
                                     from day in month
@@ -1427,7 +1430,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                                 foreach (var day in days)
                                 {
-                                    TreeNodeItemSelector daysnode;
+                                    TreeNodeItemSelector? daysnode;
 
                                     if (!IsFilterDateAndTimeEnabled)
                                         daysnode = monthnode.CreateChildNode(day.Key.ToString("D2"), day.First().Value);
@@ -1443,7 +1446,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                                         foreach (var hour in hours)
                                         {
-                                            TreeNodeItemSelector hoursnode = daysnode.CreateChildNode(hour.Key.ToString("D2") + " " + "h", hour.Key);
+                                            TreeNodeItemSelector? hoursnode = daysnode.CreateChildNode(hour.Key.ToString("D2") + " " + "h", hour.Key);
 
                                             var mins =
                                                 from min in hour
@@ -1453,7 +1456,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                                             foreach (var min in mins)
                                             {
-                                                TreeNodeItemSelector minsnode = hoursnode.CreateChildNode(min.Key.ToString("D2") + " " + "m", min.Key);
+                                                TreeNodeItemSelector? minsnode = hoursnode.CreateChildNode(min.Key.ToString("D2") + " " + "m", min.Key);
 
                                                 var secs =
                                                     from sec in min
@@ -1463,7 +1466,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                                                 foreach (var sec in secs)
                                                 {
-                                                    TreeNodeItemSelector secsnode = minsnode.CreateChildNode(sec.Key.ToString("D2") + " " + "s", sec.First().Value);
+                                                    TreeNodeItemSelector? secsnode = minsnode.CreateChildNode(sec.Key.ToString("D2") + " " + "s", sec.First().Value);
                                                 }
                                             }
                                         }
@@ -1495,7 +1498,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                             foreach (var hour in hours)
                             {
-                                TreeNodeItemSelector hoursnode = daysnode.CreateChildNode(hour.Key.ToString("D2") + " " + "h", hour.Key);
+                                TreeNodeItemSelector? hoursnode = daysnode.CreateChildNode(hour.Key.ToString("D2") + " " + "h", hour.Key);
 
                                 var mins =
                                     from min in hour
@@ -1505,7 +1508,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                                 foreach (var min in mins)
                                 {
-                                    TreeNodeItemSelector minsnode = hoursnode.CreateChildNode(min.Key.ToString("D2") + " " + "m", min.Key);
+                                    TreeNodeItemSelector? minsnode = hoursnode.CreateChildNode(min.Key.ToString("D2") + " " + "m", min.Key);
 
                                     var secs =
                                         from sec in min
@@ -1515,7 +1518,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                                     foreach (var sec in secs)
                                     {
-                                        TreeNodeItemSelector secsnode = minsnode.CreateChildNode(sec.Key.ToString("D2") + " " + "s", sec.First().Value);
+                                        TreeNodeItemSelector? secsnode = minsnode.CreateChildNode(sec.Key.ToString("D2") + " " + "s", sec.First().Value);
                                     }
                                 }
                             }
@@ -1564,7 +1567,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         private void CheckFilterButtonEnabled()
         {
-            button_filter.Enabled = HasNodesChecked(_loadedNodes);
+            _buttonFilter.Enabled = HasNodesChecked(_loadedNodes);
         }
 
         /// <summary>
@@ -1575,9 +1578,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private bool HasNodesChecked(TreeNodeItemSelector[] nodes)
         {
             bool state = false;
-            if (!String.IsNullOrEmpty(checkTextFilter.Text))
+            if (!String.IsNullOrEmpty(_checkTextFilter.Text))
             {
-                state = nodes.Any(n => n.CheckState == CheckState.Checked && n.Text.ToLower().Contains(checkTextFilter.Text.ToLower()));
+                state = nodes.Any(n => n.CheckState == CheckState.Checked && n.Text.ToLower().Contains(_checkTextFilter.Text.ToLower()));
             }
             else
             {
@@ -1697,11 +1700,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Get the SelectAll Node
         /// </summary>
         /// <returns></returns>
-        private TreeNodeItemSelector GetSelectAllNode()
+        private TreeNodeItemSelector? GetSelectAllNode()
         {
-            TreeNodeItemSelector result = null;
+            TreeNodeItemSelector? result = null;
             int i = 0;
-            foreach (TreeNodeItemSelector n in ChecklistNodes().OfType<TreeNodeItemSelector>())
+            foreach (TreeNodeItemSelector? n in ChecklistNodes().OfType<TreeNodeItemSelector>())
             {
                 if (n.NodeType == TreeNodeItemSelector.CustomNodeType.SelectAll)
                 {
@@ -1721,11 +1724,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Get the SelectEmpty Node
         /// </summary>
         /// <returns></returns>
-        private TreeNodeItemSelector GetSelectEmptyNode()
+        private TreeNodeItemSelector? GetSelectEmptyNode()
         {
-            TreeNodeItemSelector result = null;
+            TreeNodeItemSelector? result = null;
             int i = 0;
-            foreach (TreeNodeItemSelector n in ChecklistNodes().OfType<TreeNodeItemSelector>())
+            foreach (TreeNodeItemSelector? n in ChecklistNodes().OfType<TreeNodeItemSelector>())
             {
                 if (n.NodeType == TreeNodeItemSelector.CustomNodeType.SelectEmpty)
                 {
@@ -1768,8 +1771,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CheckList_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            TreeViewHitTestInfo HitTestInfo = checkList.HitTest(e.X, e.Y);
-            if (HitTestInfo != null && HitTestInfo.Location == TreeViewHitTestLocations.StateImage)
+            TreeViewHitTestInfo hitTestInfo = _checkList.HitTest(e.X, e.Y);
+            if (hitTestInfo != null && hitTestInfo.Location == TreeViewHitTestLocations.StateImage)
             {
                 //check the node check status
                 NodeCheckChange(e.Node as TreeNodeItemSelector);
@@ -1788,7 +1791,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             if (e.KeyCode == Keys.Space)
             {
                 //check the node check status
-                NodeCheckChange(checkList.SelectedNode as TreeNodeItemSelector);
+                NodeCheckChange(_checkList.SelectedNode as TreeNodeItemSelector);
                 //set filter button enabled
                 CheckFilterButtonEnabled();
             }
@@ -1819,7 +1822,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CheckList_MouseEnter(object sender, EventArgs e)
         {
-            checkList.Focus();
+            _checkList.Focus();
         }
 
         /// <summary>
@@ -1866,9 +1869,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         private void UnCheckCustomFilters()
         {
-            for (int i = 2; i < customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
+            for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
             {
-                (customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                (_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
             }
         }
 
@@ -1881,29 +1884,29 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             if (_activeFilterType == FilterType.CheckList)
                 SetNodesCheckState(_loadedNodes, false);
 
-            string filterstring = customFilterLastFiltersListMenuItem.DropDownItems[filtersMenuItemIndex].Tag.ToString();
-            string viewfilterstring = customFilterLastFiltersListMenuItem.DropDownItems[filtersMenuItemIndex].Text;
+            string filterstring = _customFilterLastFiltersListMenuItem.DropDownItems[filtersMenuItemIndex].Tag.ToString();
+            string viewfilterstring = _customFilterLastFiltersListMenuItem.DropDownItems[filtersMenuItemIndex].Text;
 
             //do preset jobs
             if (filtersMenuItemIndex != 2)
             {
                 for (int i = filtersMenuItemIndex; i > 2; i--)
                 {
-                    customFilterLastFiltersListMenuItem.DropDownItems[i].Text = customFilterLastFiltersListMenuItem.DropDownItems[i - 1].Text;
-                    customFilterLastFiltersListMenuItem.DropDownItems[i].Tag = customFilterLastFiltersListMenuItem.DropDownItems[i - 1].Tag;
+                    _customFilterLastFiltersListMenuItem.DropDownItems[i].Text = _customFilterLastFiltersListMenuItem.DropDownItems[i - 1].Text;
+                    _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag = _customFilterLastFiltersListMenuItem.DropDownItems[i - 1].Tag;
                 }
 
-                customFilterLastFiltersListMenuItem.DropDownItems[2].Text = viewfilterstring;
-                customFilterLastFiltersListMenuItem.DropDownItems[2].Tag = filterstring;
+                _customFilterLastFiltersListMenuItem.DropDownItems[2].Text = viewfilterstring;
+                _customFilterLastFiltersListMenuItem.DropDownItems[2].Tag = filterstring;
             }
 
             //uncheck other preset
-            for (int i = 3; i < customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
+            for (int i = 3; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
             {
-                (customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                (_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
             }
 
-            (customFilterLastFiltersListMenuItem.DropDownItems[2] as ToolStripMenuItem).Checked = true;
+            (_customFilterLastFiltersListMenuItem.DropDownItems[2] as ToolStripMenuItem).Checked = true;
             _activeFilterType = FilterType.Custom;
 
             //get Filter string
@@ -1913,8 +1916,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             //set CheckList nodes
             SetNodesCheckState(_loadedNodes, false);
 
-            customFilterLastFiltersListMenuItem.Checked = true;
-            button_filter.Enabled = false;
+            _customFilterLastFiltersListMenuItem.Checked = true;
+            _buttonFilter.Enabled = false;
 
             //fire Filter changed
             if (oldfilter != FilterString && FilterChanged != null)
@@ -1972,16 +1975,16 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             {
                 //add the new Filter presets
 
-                string filterString = flt.FilterString;
+                string? filterString = flt.FilterString;
                 string viewFilterString = flt.FilterStringDescription;
 
                 int index = -1;
 
-                for (int i = 2; i < customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
+                for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
                 {
-                    if (customFilterLastFiltersListMenuItem.DropDown.Items[i].Available)
+                    if (_customFilterLastFiltersListMenuItem.DropDown.Items[i].Available)
                     {
-                        if (customFilterLastFiltersListMenuItem.DropDownItems[i].Text == viewFilterString && customFilterLastFiltersListMenuItem.DropDownItems[i].Tag.ToString() == filterString)
+                        if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Text == viewFilterString && _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag.ToString() == filterString)
                         {
                             index = i;
                             break;
@@ -1993,18 +1996,18 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                 if (index < 2)
                 {
-                    for (int i = customFilterLastFiltersListMenuItem.DropDownItems.Count - 2; i > 1; i--)
+                    for (int i = _customFilterLastFiltersListMenuItem.DropDownItems.Count - 2; i > 1; i--)
                     {
-                        if (customFilterLastFiltersListMenuItem.DropDownItems[i].Available)
+                        if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Available)
                         {
-                            customFilterLastFiltersListMenuItem.DropDownItems[i + 1].Text = customFilterLastFiltersListMenuItem.DropDownItems[i].Text;
-                            customFilterLastFiltersListMenuItem.DropDownItems[i + 1].Tag = customFilterLastFiltersListMenuItem.DropDownItems[i].Tag;
+                            _customFilterLastFiltersListMenuItem.DropDownItems[i + 1].Text = _customFilterLastFiltersListMenuItem.DropDownItems[i].Text;
+                            _customFilterLastFiltersListMenuItem.DropDownItems[i + 1].Tag = _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag;
                         }
                     }
                     index = 2;
 
-                    customFilterLastFiltersListMenuItem.DropDownItems[2].Text = viewFilterString;
-                    customFilterLastFiltersListMenuItem.DropDownItems[2].Tag = filterString;
+                    _customFilterLastFiltersListMenuItem.DropDownItems[2].Text = viewFilterString;
+                    _customFilterLastFiltersListMenuItem.DropDownItems[2].Tag = filterString;
                 }
 
                 //set the Custom Filter
@@ -2030,7 +2033,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CustomFilterLastFiltersListMenuItem_Paint(Object sender, PaintEventArgs e)
         {
-            Rectangle rect = new Rectangle(customFilterLastFiltersListMenuItem.Width - 12, 7, 10, 10);
+            Rectangle rect = new Rectangle(_customFilterLastFiltersListMenuItem.Width - 12, 7, 10, 10);
             ControlPaint.DrawMenuGlyph(e.Graphics, rect, MenuGlyph.Arrow, Color.Black, Color.Transparent);
         }
 
@@ -2041,7 +2044,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CustomFilterLastFilter1MenuItem_VisibleChanged(object sender, EventArgs e)
         {
-            toolStripSeparator2MenuItem.Visible = !customFilterLastFilter1MenuItem.Visible;
+            _toolStripSeparator2MenuItem.Visible = !_customFilterLastFilter1MenuItem.Visible;
             (sender as ToolStripMenuItem).VisibleChanged -= CustomFilterLastFilter1MenuItem_VisibleChanged;
         }
 
@@ -2054,9 +2057,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             ToolStripMenuItem menuitem = sender as ToolStripMenuItem;
 
-            for (int i = 2; i < customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
+            for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
             {
-                if (customFilterLastFiltersListMenuItem.DropDownItems[i].Text == menuitem.Text && customFilterLastFiltersListMenuItem.DropDownItems[i].Tag.ToString() == menuitem.Tag.ToString())
+                if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Text == menuitem.Text && _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag.ToString() == menuitem.Tag.ToString())
                 {
                     //set current filter preset as active
                     SetCustomFilter(i);
@@ -2111,12 +2114,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 }
                 _textFilterTextChangedTimer.Stop();
                 _textFilterTextChangedTimer.Interval = _textFilterTextChangedDelayMs;
-                _textFilterTextChangedTimer.Tag = checkTextFilter.Text.ToLower();
+                _textFilterTextChangedTimer.Tag = _checkTextFilter.Text.ToLower();
                 _textFilterTextChangedTimer.Start();
             }
             else
             {
-                CheckTextFilterHandleTextChanged(checkTextFilter.Text.ToLower());
+                CheckTextFilterHandleTextChanged(_checkTextFilter.Text.ToLower());
             }
         }
 
@@ -2191,12 +2194,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             if (DataType == typeof(Bitmap))
                 return;
 
-            sortASCMenuItem.Checked = true;
-            sortDESCMenuItem.Checked = false;
-            _activeSortType = SortType.ASC;
+            _sortAscMenuItem.Checked = true;
+            _sortDescMenuItem.Checked = false;
+            _activeSortType = SortType.Asc;
 
             //get Sort String
-            string oldsort = SortString;
+            string? oldsort = SortString;
             SortString = "[{0}] ASC";
 
             //fire Sort Changed
@@ -2226,12 +2229,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             if (DataType == typeof(Bitmap))
                 return;
 
-            sortASCMenuItem.Checked = false;
-            sortDESCMenuItem.Checked = true;
-            _activeSortType = SortType.DESC;
+            _sortAscMenuItem.Checked = false;
+            _sortDescMenuItem.Checked = true;
+            _activeSortType = SortType.Desc;
 
             //get Sort String
-            string oldsort = SortString;
+            string? oldsort = SortString;
             SortString = "[{0}] DESC";
 
             //fire Sort Changed
@@ -2257,7 +2260,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CancelSortMenuItem_Click(object sender, EventArgs e)
         {
-            string oldsort = SortString;
+            string? oldsort = SortString;
             //clean Sort
             CleanSort();
             //fire Sort changed
@@ -2288,11 +2291,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private float GetScalingFactor()
         {
             float ret = 1;
-            using (Graphics Gscale = CreateGraphics())
+            using (Graphics gscale = CreateGraphics())
             {
                 try
                 {
-                    ret = Gscale.DpiX / 96.0F;
+                    ret = gscale.DpiX / 96.0F;
                 }
                 catch { };
             }
@@ -2318,40 +2321,40 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// 
         private void ResizeBox(int w, int h)
         {
-            sortASCMenuItem.Width = w - 1;
-            sortDESCMenuItem.Width = w - 1;
-            cancelSortMenuItem.Width = w - 1; ;
-            cancelFilterMenuItem.Width = w - 1;
-            customFilterMenuItem.Width = w - 1;
-            customFilterLastFiltersListMenuItem.Width = w - 1;
-            checkTextFilterControlHost.Width = w - 35;
+            _sortAscMenuItem.Width = w - 1;
+            _sortDescMenuItem.Width = w - 1;
+            _cancelSortMenuItem.Width = w - 1; ;
+            _cancelFilterMenuItem.Width = w - 1;
+            _customFilterMenuItem.Width = w - 1;
+            _customFilterLastFiltersListMenuItem.Width = w - 1;
+            _checkTextFilterControlHost.Width = w - 35;
 
             //scale objects using original width and height
             float scalingfactor = GetScalingFactor();
             int w2 = (int)Math.Round(w / scalingfactor, 0);
             int h2 = (int)Math.Round(h / scalingfactor, 0);
-            checkFilterListControlHost.Size = new Size(Scale(w2 - 35, scalingfactor), Scale(h2 - 160 - 25, scalingfactor));
-            checkFilterListPanel.Size = checkFilterListControlHost.Size;
-            checkList.Bounds = new Rectangle(Scale(4, scalingfactor), Scale(4, scalingfactor), Scale(w2 - 35 - 8, scalingfactor), Scale(h2 - 160 - 25 - 8, scalingfactor));
-            checkFilterListButtonsControlHost.Size = new Size(Scale(w2 - 35, scalingfactor), Scale(24, scalingfactor));
-            button_filter.Location = new Point(Scale(w2 - 35 - 164, scalingfactor), 0);
-            button_undofilter.Location = new Point(Scale(w2 - 35 - 79, scalingfactor), 0);
-            resizeBoxControlHost.Margin = new Padding(Scale(w2 - 46, scalingfactor), 0, 0, 0);
+            _checkFilterListControlHost.Size = new Size(Scale(w2 - 35, scalingfactor), Scale(h2 - 160 - 25, scalingfactor));
+            _checkFilterListPanel.Size = _checkFilterListControlHost.Size;
+            _checkList.Bounds = new Rectangle(Scale(4, scalingfactor), Scale(4, scalingfactor), Scale(w2 - 35 - 8, scalingfactor), Scale(h2 - 160 - 25 - 8, scalingfactor));
+            _checkFilterListButtonsControlHost.Size = new Size(Scale(w2 - 35, scalingfactor), Scale(24, scalingfactor));
+            _buttonFilter.Location = new Point(Scale(w2 - 35 - 164, scalingfactor), 0);
+            _buttonUndofilter.Location = new Point(Scale(w2 - 35 - 79, scalingfactor), 0);
+            _resizeBoxControlHost.Margin = new Padding(Scale(w2 - 46, scalingfactor), 0, 0, 0);
 
             //get all objects height to make sure we have room for the grip
             int finalHeight =
-                sortASCMenuItem.Height +
-                sortDESCMenuItem.Height +
-                cancelSortMenuItem.Height +
-                cancelFilterMenuItem.Height +
-                toolStripSeparator1MenuItem.Height +
-                toolStripSeparator2MenuItem.Height +
-                customFilterLastFiltersListMenuItem.Height +
-                toolStripSeparator3MenuItem.Height +
-                checkFilterListControlHost.Height +
-                checkTextFilterControlHost.Height +
-                checkFilterListButtonsControlHost.Height +
-                resizeBoxControlHost.Height;
+                _sortAscMenuItem.Height +
+                _sortDescMenuItem.Height +
+                _cancelSortMenuItem.Height +
+                _cancelFilterMenuItem.Height +
+                _toolStripSeparator1MenuItem.Height +
+                _toolStripSeparator2MenuItem.Height +
+                _customFilterLastFiltersListMenuItem.Height +
+                _toolStripSeparator3MenuItem.Height +
+                _checkFilterListControlHost.Height +
+                _checkTextFilterControlHost.Height +
+                _checkFilterListButtonsControlHost.Height +
+                _resizeBoxControlHost.Height;
 
             // apply the needed height only when scaled
             if (scalingfactor == 1)
@@ -2419,28 +2422,28 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                     ResizeClean();
 
-                    x += Width - resizeBoxControlHost.Width;
-                    y += Height - resizeBoxControlHost.Height;
+                    x += Width - _resizeBoxControlHost.Width;
+                    y += Height - _resizeBoxControlHost.Height;
 
                     x = Math.Max(x, MinimumSize.Width - 1);
                     y = Math.Max(y, MinimumSize.Height - 1);
 
-                    Point StartPoint = PointToScreen(_resizeStartPoint);
-                    Point EndPoint = PointToScreen(new Point(x, y));
+                    Point startPoint = PointToScreen(_resizeStartPoint);
+                    Point endPoint = PointToScreen(new Point(x, y));
 
                     Rectangle rc = new Rectangle
                     {
-                        X = Math.Min(StartPoint.X, EndPoint.X),
-                        Width = Math.Abs(StartPoint.X - EndPoint.X),
+                        X = Math.Min(startPoint.X, endPoint.X),
+                        Width = Math.Abs(startPoint.X - endPoint.X),
 
-                        Y = Math.Min(StartPoint.Y, EndPoint.Y),
-                        Height = Math.Abs(StartPoint.Y - EndPoint.Y)
+                        Y = Math.Min(startPoint.Y, endPoint.Y),
+                        Height = Math.Abs(startPoint.Y - endPoint.Y)
                     };
 
                     ControlPaint.DrawReversibleFrame(rc, Color.Black, FrameStyle.Dashed);
 
-                    _resizeEndPoint.X = EndPoint.X;
-                    _resizeEndPoint.Y = EndPoint.Y;
+                    _resizeEndPoint.X = endPoint.X;
+                    _resizeEndPoint.Y = endPoint.Y;
                 }
             }
         }
@@ -2460,8 +2463,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     if (e.Button == MouseButtons.Left)
                     {
-                        int newWidth = e.X + Width - resizeBoxControlHost.Width;
-                        int newHeight = e.Y + Height - resizeBoxControlHost.Height;
+                        int newWidth = e.X + Width - _resizeBoxControlHost.Width;
+                        int newHeight = e.Y + Height - _resizeBoxControlHost.Height;
 
                         newWidth = Math.Max(newWidth, MinimumSize.Width);
                         newHeight = Math.Max(newHeight, MinimumSize.Height);

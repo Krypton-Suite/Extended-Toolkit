@@ -63,6 +63,8 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8602, CS8625, CS8622
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     internal partial class FormCustomFilter : KryptonForm
@@ -234,7 +236,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
         private bool _filterDateAndTimeEnabled = true;
 
-        private string _filterString = null;
+        private string? _filterString = null;
         private KryptonPanel kryptonPanel1;
         private string _filterStringDescription = null;
 
@@ -397,7 +399,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get the Filter string
         /// </summary>
-        public string FilterString
+        public string? FilterString
         {
             get
             {
@@ -430,11 +432,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="control1"></param>
         /// <param name="control2"></param>
         /// <returns></returns>
-        private string BuildCustomFilter(FilterType filterType, bool filterDateAndTimeEnabled, string filterTypeConditionText, Control control1, Control control2)
+        private string? BuildCustomFilter(FilterType filterType, bool filterDateAndTimeEnabled, string filterTypeConditionText, Control control1, Control control2)
         {
-            string filterString = "";
+            string? filterString = "";
 
-            string column = "[{0}] ";
+            string? column = "[{0}] ";
 
             if (filterType == FilterType.Unknown)
                 column = "Convert([{0}], 'System.String') ";
@@ -591,7 +593,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 return;
             }
 
-            string filterString = BuildCustomFilter(_filterType, _filterDateAndTimeEnabled, comboBox_filterType.Text, _valControl1, _valControl2);
+            string? filterString = BuildCustomFilter(_filterType, _filterDateAndTimeEnabled, comboBox_filterType.Text, _valControl1, _valControl2);
 
             if (!String.IsNullOrEmpty(filterString))
             {

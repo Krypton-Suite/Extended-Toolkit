@@ -28,26 +28,15 @@
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     [Serializable]
-    public class MenuStripPanelExtened : ToolStripPanel
+    public class ToolStripPanelExtended : ToolStripPanel
     {
         #region Variables
-        private FloatableMenuStrip _floatableMenuStrip;
-
         private Rectangle _activeRectangle;
         #endregion
 
         #region Property
-        public FloatableMenuStrip FloatableMenuStrip { get => _floatableMenuStrip; set => _floatableMenuStrip = value; }
-
         public Rectangle ActiveRectangle => _activeRectangle;
 
-        #endregion
-
-        #region Constructor
-        public MenuStripPanelExtened()
-        {
-            //MenuStrip = FloatableMenuStrip;
-        }
         #endregion
 
         #region Overrides
@@ -94,17 +83,17 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         {
             base.OnControlAdded(e);
 
-            MenuStrip menuStrip = e.Control as MenuStrip;
+            ToolStrip? toolStrip = e.Control as ToolStrip;
 
-            if (menuStrip != null)
+            if (toolStrip != null)
             {
                 if (Orientation == Orientation.Horizontal)
                 {
-                    menuStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
+                    toolStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
                 }
                 else
                 {
-                    menuStrip.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
+                    toolStrip.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
                 }
             }
         }

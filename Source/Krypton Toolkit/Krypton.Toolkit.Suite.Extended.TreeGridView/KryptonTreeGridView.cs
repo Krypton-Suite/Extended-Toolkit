@@ -28,6 +28,7 @@
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
+#pragma warning disable CS8602, CS8604, CS8603, CS8600
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     /// <summary>
@@ -40,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
     public class KryptonTreeGridView : KryptonDataGridView
     {
         //private int _indentWidth;
-        private readonly KryptonTreeGridNodeRow _root;
+        private readonly KryptonTreeGridNodeRow? _root;
         private KryptonTreeGridColumn? _expandableColumn;
 
         private bool _inExpandCollapse;
@@ -253,10 +254,8 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                         //-------------------------- 
                         //Init nodes
                         //-------------------------- 
-#pragma warning disable CA2000 // Dispose objects before losing scope
                         var node = new KryptonTreeGridNodeRow();
                         var parentNode = new KryptonTreeGridNodeRow();
-#pragma warning restore CA2000 // Dispose objects before losing scope
 
                         //-------------------------- 
                         //Columns Collection
@@ -356,7 +355,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
         EditorBrowsable(EditorBrowsableState.Never)]
 #pragma warning disable CA1061 // Do not hide base class methods
-        public new object DataMember
+        public new object? DataMember
         {
             get => null;
             set => throw new NotSupportedException(@"The TreeGridView does not support databinding");
@@ -630,12 +629,12 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             UnSiteNode(_root);
         }
 
-        protected internal virtual void UnSiteNode(KryptonTreeGridNodeRow node)
+        protected internal virtual void UnSiteNode(KryptonTreeGridNodeRow? node)
         {
             if (node.IsSited || node.IsRoot)
             {
                 // remove child rows first
-                foreach (KryptonTreeGridNodeRow childNode in node.Nodes)
+                foreach (KryptonTreeGridNodeRow? childNode in node.Nodes)
                 {
                     UnSiteNode(childNode);
                 }
@@ -673,7 +672,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                     _inExpandCollapse = true;
                     node.IsExpanded = false;
 
-                    foreach (KryptonTreeGridNodeRow childNode in node.Nodes)
+                    foreach (KryptonTreeGridNodeRow? childNode in node.Nodes)
                     {
                         Debug.Assert(childNode.RowIndex != -1, @"Row is NOT in the grid.");
                         UnSiteNode(childNode);
@@ -717,7 +716,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         private static extern IntPtr SendMessage(HandleRef hWnd, int msg, int wParam, int lParam);
 
-        protected internal virtual void SiteNode(KryptonTreeGridNodeRow node)
+        protected internal virtual void SiteNode(KryptonTreeGridNodeRow? node)
         {
             //TODO: Raise exception if parent node is not the root or is not sited.
             KryptonTreeGridNodeRow? currentRow;
@@ -777,7 +776,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             if (node.IsExpanded)
             {
                 // add all child rows to display
-                foreach (KryptonTreeGridNodeRow childNode in node.Nodes)
+                foreach (KryptonTreeGridNodeRow? childNode in node.Nodes)
                 {
                     //TODO: could use the more efficient SiteRow with index.
                     SiteNode(childNode);
@@ -786,7 +785,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         }
 
 
-        protected internal virtual void SiteNode(KryptonTreeGridNodeRow node, int index)
+        protected internal virtual void SiteNode(KryptonTreeGridNodeRow? node, int index)
         {
             if (index < base.Rows.Count)
             {
@@ -813,7 +812,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                     node.IsExpanded = true;
 
                     //TODO Convert this to a InsertRange
-                    foreach (KryptonTreeGridNodeRow childNode in node.Nodes)
+                    foreach (KryptonTreeGridNodeRow? childNode in node.Nodes)
                     {
                         Debug.Assert(childNode.RowIndex == -1, @"Row is already in the grid.");
 
@@ -856,13 +855,13 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         [Description("Expands all nodes")]
         public void ExpandAll()
         {
-            foreach (KryptonTreeGridNodeRow node in GridNodes)
+            foreach (KryptonTreeGridNodeRow? node in GridNodes)
             {
                 ExpandAllImp(node);
             }
         }
 
-        private void ExpandAllImp(KryptonTreeGridNodeRow node)
+        private void ExpandAllImp(KryptonTreeGridNodeRow? node)
         {
 
             if (node.Nodes.Count > 0)
@@ -884,7 +883,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             }
         }
 
-        private void CollapseAllImp(KryptonTreeGridNodeRow node)
+        private void CollapseAllImp(KryptonTreeGridNodeRow? node)
         {
             if (node.Nodes.Count > 0)
             {

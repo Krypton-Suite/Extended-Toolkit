@@ -25,7 +25,9 @@
  */
 #endregion
 
-#pragma warning disable CS1584, CS1658
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8602
+#pragma warning disable CS1584, CS1658, CS8765
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -73,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Fields
         private int _forwardMonthIndex;
-        private MonthViewDay _lastHitted;
+        private MonthViewDay? _lastHitted;
         private bool _mouseDown;
         private Size _daySize;
         private DateTime _selectionStart;
@@ -476,7 +478,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public MonthViewDay HitTest(Point p)
+        public MonthViewDay? HitTest(Point p)
         {
             for (int i = 0; i < Months.Length; i++)
             {
@@ -601,7 +603,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 }
             }
 
-            if (!e.TextColour.IsEmpty && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(e.Text))
+            if (!e.TextColour.IsEmpty && !string.IsNullOrWhiteSpace(e.Text))
             {
                 TextRenderer.DrawText(e.Graphics, e.Text, e.Font != null ? e.Font : Font, e.Bounds, e.TextColour, e.TextFlags);
             }
@@ -706,7 +708,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             _mouseDown = true;
 
-            MonthViewDay day = HitTest(e.Location);
+            MonthViewDay? day = HitTest(e.Location);
 
             if (day != null)
             {
@@ -744,7 +746,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             if (_mouseDown)
             {
-                MonthViewDay day = HitTest(e.Location);
+                MonthViewDay? day = HitTest(e.Location);
 
                 if (day != null && day != _lastHitted)
                 {
@@ -868,7 +870,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     #endregion
 
                     #region Days
-                    foreach (MonthViewDay day in Months[i].Days)
+                    foreach (MonthViewDay? day in Months[i].Days)
                     {
                         if (!day.Visible) continue;
 

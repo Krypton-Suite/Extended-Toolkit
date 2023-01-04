@@ -21,8 +21,8 @@ namespace Examples
         private DataTable _dataTable = null;
         private DataSet _dataSet = null;
 
-        private SortedDictionary<int, string> _filtersaved = new SortedDictionary<int, string>();
-        private SortedDictionary<int, string> _sortsaved = new SortedDictionary<int, string>();
+        private SortedDictionary<int, string?> _filtersaved = new SortedDictionary<int, string?>();
+        private SortedDictionary<int, string?> _sortsaved = new SortedDictionary<int, string?>();
 
         private bool _testtranslations = false;
         private bool _testtranslationsFromFile = false;
@@ -191,8 +191,8 @@ namespace Examples
             kadgvMain.SetFilterDateAndTimeEnabled(kadgvMain.Columns["datetime"], true);
             kadgvMain.SetSortEnabled(kadgvMain.Columns["guid"], false);
             kadgvMain.SetFilterChecklistEnabled(kadgvMain.Columns["guid"], false);
-            kadgvMain.SortASC(kadgvMain.Columns["datetime"]);
-            kadgvMain.SortDESC(kadgvMain.Columns["double"]);
+            kadgvMain.SortAsc(kadgvMain.Columns["datetime"]);
+            kadgvMain.SortDesc(kadgvMain.Columns["double"]);
             kadgvMain.SetTextFilterRemoveNodesOnSearch(kadgvMain.Columns["double"], false);
             kadgvMain.SetChecklistTextFilterRemoveNodesOnSearchMode(kadgvMain.Columns["decimal"], false);
             kadgvMain.SetFilterChecklistEnabled(kadgvMain.Columns["double"], false);

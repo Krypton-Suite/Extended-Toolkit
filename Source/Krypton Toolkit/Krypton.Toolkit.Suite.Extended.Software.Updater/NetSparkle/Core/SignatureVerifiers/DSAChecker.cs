@@ -160,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         }
 
         /// <inheritdoc/>
-        public ValidationResult VerifySignatureOfString(string signature, string data)
+        public ValidationResult VerifySignatureOfString(string signature, string? data)
         {
             // creating stream from string
             using (var stream = new MemoryStream())

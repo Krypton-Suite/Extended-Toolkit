@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// The embedded description
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
         /// <summary>
         /// The download link
         /// </summary>

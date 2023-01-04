@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Krypton.Toolkit.Suite.Extended.TreeGridView;
+#pragma warning disable CS8602
 
 namespace Examples
 {

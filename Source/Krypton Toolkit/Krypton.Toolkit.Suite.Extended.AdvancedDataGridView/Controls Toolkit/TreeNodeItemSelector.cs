@@ -63,6 +63,7 @@
  */
 #endregion
 
+// ReSharper disable ConvertTypeCheckToNullCheck
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     internal class TreeNodeItemSelector : TreeNode
@@ -83,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         #region class properties
 
         private CheckState _checkState = CheckState.Unchecked;
-        private TreeNodeItemSelector _parent;
+        private TreeNodeItemSelector? _parent;
 
         #endregion
 
@@ -116,15 +117,18 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <returns></returns>
         public new TreeNodeItemSelector Clone()
         {
-            TreeNodeItemSelector n = new TreeNodeItemSelector(Text, Value, _checkState, NodeType)
+            TreeNodeItemSelector? n = new TreeNodeItemSelector(Text, Value, _checkState, NodeType)
             {
                 NodeFont = NodeFont
             };
 
             if (GetNodeCount(false) > 0)
             {
-                foreach (TreeNodeItemSelector child in Nodes)
-                    n.AddChild(child.Clone());
+                foreach (TreeNodeItemSelector? child in Nodes)
+                    if (child != null)
+                    {
+                        n.AddChild(child.Clone());
+                    }
             }
 
             return n;
@@ -148,7 +152,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get Node parent
         /// </summary>
-        new public TreeNodeItemSelector Parent
+        new public TreeNodeItemSelector? Parent
         {
             get
             {
@@ -232,9 +236,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="value"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        public TreeNodeItemSelector CreateChildNode(string text, object value, CheckState state)
+        public TreeNodeItemSelector? CreateChildNode(string text, object value, CheckState state)
         {
-            TreeNodeItemSelector n = null;
+            TreeNodeItemSelector? n = null;
 
             //specific method for datetimenode
             if (NodeType == CustomNodeType.DateTimeNode)
@@ -247,7 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             return n;
         }
-        public TreeNodeItemSelector CreateChildNode(string text, object value)
+        public TreeNodeItemSelector? CreateChildNode(string text, object value)
         {
             return CreateChildNode(text, value, _checkState);
         }
