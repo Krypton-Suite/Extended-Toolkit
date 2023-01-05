@@ -26,8 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Tools;
-
 namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
     internal class KryptonMessageBoxExtended : KryptonForm
@@ -35,18 +33,18 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         #region System
         private void InitialiseComponent()
         {
-            _panelMessage = new KryptonPanel();
-            _panelMessageText = new KryptonPanel();
-            _messageText = new KryptonWrapLabel();
-            _panelMessageIcon = new KryptonPanel();
-            _messageIcon = new PictureBox();
-            _panelButtons = new KryptonPanel();
-            _borderEdge = new KryptonBorderEdge();
-            _button3 = new MessageButton();
-            _button1 = new MessageButton();
-            _button2 = new MessageButton();
-            _copyButton = new MessageButton();
-            _optionalCheckBox = new KryptonCheckBox();
+            _panelMessage = new();
+            _panelMessageText = new();
+            _messageText = new();
+            _panelMessageIcon = new();
+            _messageIcon = new();
+            _panelButtons = new();
+            _borderEdge = new();
+            _button3 = new();
+            _button1 = new();
+            _button2 = new();
+            _copyButton = new();
+            _optionalCheckBox = new();
             ((ISupportInitialize)(_panelMessage)).BeginInit();
             _panelMessage.SuspendLayout();
             ((ISupportInitialize)(_panelMessageText)).BeginInit();
@@ -65,32 +63,32 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             _panelMessage.Controls.Add(_panelMessageText);
             _panelMessage.Controls.Add(_panelMessageIcon);
             _panelMessage.Dock = DockStyle.Top;
-            _panelMessage.Location = new Point(0, 0);
+            _panelMessage.Location = new(0, 0);
             _panelMessage.Name = "_panelMessage";
-            _panelMessage.Size = new Size(156, 52);
+            _panelMessage.Size = new(156, 52);
             _panelMessage.TabIndex = 0;
             // 
             // _panelMessageText
             // 
             _panelMessageText.AutoSize = true;
             _panelMessageText.Controls.Add(_messageText);
-            _panelMessageText.Location = new Point(42, 0);
-            _panelMessageText.Margin = new Padding(0);
+            _panelMessageText.Location = new(42, 0);
+            _panelMessageText.Margin = new(0);
             _panelMessageText.Name = "_panelMessageText";
-            _panelMessageText.Padding = new Padding(5, 17, 5, 17);
-            _panelMessageText.Size = new Size(88, 52);
+            _panelMessageText.Padding = new(5, 17, 5, 17);
+            _panelMessageText.Size = new(88, 52);
             _panelMessageText.TabIndex = 1;
             // 
             // _messageText
             // 
             _messageText.AutoSize = false;
-            _messageText.StateCommon.Font = new Font(@"Segoe UI", 9F);
+            _messageText.StateCommon.Font = new(@"Segoe UI", 9F);
             _messageText.ForeColor = Color.FromArgb(30, 57, 91);
             _messageText.LabelStyle = LabelStyle.NormalPanel;
-            _messageText.Location = new Point(5, 18);
-            _messageText.Margin = new Padding(0);
+            _messageText.Location = new(5, 18);
+            _messageText.Margin = new(0);
             _messageText.Name = "_messageText";
-            _messageText.Size = new Size(78, 15);
+            _messageText.Size = new(78, 15);
             _messageText.Text = @"Message Text";
             // 
             // _panelMessageIcon
@@ -98,20 +96,20 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             _panelMessageIcon.AutoSize = true;
             _panelMessageIcon.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             _panelMessageIcon.Controls.Add(_messageIcon);
-            _panelMessageIcon.Location = new Point(0, 0);
-            _panelMessageIcon.Margin = new Padding(0);
+            _panelMessageIcon.Location = new(0, 0);
+            _panelMessageIcon.Margin = new(0);
             _panelMessageIcon.Name = "_panelMessageIcon";
-            _panelMessageIcon.Padding = new Padding(10, 10, 0, 10);
-            _panelMessageIcon.Size = new Size(42, 52);
+            _panelMessageIcon.Padding = new(10, 10, 0, 10);
+            _panelMessageIcon.Size = new(42, 52);
             _panelMessageIcon.TabIndex = 0;
             // 
             // _messageIcon
             // 
             _messageIcon.BackColor = Color.Transparent;
-            _messageIcon.Location = new Point(10, 10);
-            _messageIcon.Margin = new Padding(0);
+            _messageIcon.Location = new(10, 10);
+            _messageIcon.Margin = new(0);
             _messageIcon.Name = "_messageIcon";
-            _messageIcon.Size = new Size(32, 32);
+            _messageIcon.Size = new(32, 32);
             _messageIcon.TabIndex = 0;
             _messageIcon.TabStop = false;
             // 
@@ -124,20 +122,20 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             _panelButtons.Controls.Add(_copyButton);
             _panelButtons.Controls.Add(_optionalCheckBox);
             _panelButtons.Dock = DockStyle.Top;
-            _panelButtons.Location = new Point(0, 52);
-            _panelButtons.Margin = new Padding(0);
+            _panelButtons.Location = new(0, 52);
+            _panelButtons.Margin = new(0);
             _panelButtons.Name = "_panelButtons";
             _panelButtons.PanelBackStyle = PaletteBackStyle.PanelAlternate;
-            _panelButtons.Size = new Size(156, 26);
+            _panelButtons.Size = new(156, 26);
             _panelButtons.TabIndex = 0;
             // 
             // borderEdge
             // 
             _borderEdge.BorderStyle = PaletteBorderStyle.HeaderPrimary;
             _borderEdge.Dock = DockStyle.Top;
-            _borderEdge.Location = new Point(0, 0);
+            _borderEdge.Location = new(0, 0);
             _borderEdge.Name = "_borderEdge";
-            _borderEdge.Size = new Size(156, 1);
+            _borderEdge.Size = new(156, 1);
             _borderEdge.Text = @"kryptonBorderEdge1";
             // 
             // _button3
@@ -145,11 +143,11 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             _button3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _button3.AutoSize = true;
             _button3.IgnoreAltF4 = false;
-            _button3.Location = new Point(106, 0);
-            _button3.Margin = new Padding(0);
-            _button3.MinimumSize = new Size(50, 26);
+            _button3.Location = new(106, 0);
+            _button3.Margin = new(0);
+            _button3.MinimumSize = new(50, 26);
             _button3.Name = "_button3";
-            _button3.Size = new Size(50, 26);
+            _button3.Size = new(50, 26);
             _button3.TabIndex = 2;
             _button3.Values.Text = @"B3";
             _button3.KeyDown += button_keyDown;
@@ -159,11 +157,11 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             _button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _button1.AutoSize = true;
             _button1.IgnoreAltF4 = false;
-            _button1.Location = new Point(6, 0);
-            _button1.Margin = new Padding(0);
-            _button1.MinimumSize = new Size(50, 26);
+            _button1.Location = new(6, 0);
+            _button1.Margin = new(0);
+            _button1.MinimumSize = new(50, 26);
             _button1.Name = "_button1";
-            _button1.Size = new Size(50, 26);
+            _button1.Size = new(50, 26);
             _button1.TabIndex = 0;
             _button1.Values.Text = @"B1";
             _button1.KeyDown += button_keyDown;
@@ -173,11 +171,11 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             _button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _button2.AutoSize = true;
             _button2.IgnoreAltF4 = false;
-            _button2.Location = new Point(56, 0);
-            _button2.Margin = new Padding(0);
-            _button2.MinimumSize = new Size(50, 26);
+            _button2.Location = new(56, 0);
+            _button2.Margin = new(0);
+            _button2.MinimumSize = new(50, 26);
             _button2.Name = "_button2";
-            _button2.Size = new Size(50, 26);
+            _button2.Size = new(50, 26);
             _button2.TabIndex = 1;
             _button2.Values.Text = @"B2";
             _button2.KeyDown += button_keyDown;
@@ -187,11 +185,11 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             _copyButton.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             _copyButton.AutoSize = true;
             _copyButton.IgnoreAltF4 = false;
-            _copyButton.Location = new Point(12, 0);
-            _copyButton.Margin = new Padding(0);
-            _copyButton.MinimumSize = new Size(50, 26);
+            _copyButton.Location = new(12, 0);
+            _copyButton.Margin = new(0);
+            _copyButton.MinimumSize = new(50, 26);
             _copyButton.Name = "_copyButton";
-            _copyButton.Size = new Size(50, 26);
+            _copyButton.Size = new(50, 26);
             _copyButton.TabIndex = 5;
             _copyButton.Values.Text = @"B4";
             _copyButton.KeyDown += copyButton_KeyDown;
@@ -200,9 +198,9 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             //
             _optionalCheckBox.Anchor = AnchorStyles.Left;
             _optionalCheckBox.AutoSize = true;
-            _optionalCheckBox.Location = new Point(12, 0);
-            _optionalCheckBox.Margin = new Padding(0);
-            _optionalCheckBox.Size = new Size(50, 20);
+            _optionalCheckBox.Location = new(12, 0);
+            _optionalCheckBox.Margin = new(0);
+            _optionalCheckBox.Size = new(50, 20);
             _optionalCheckBox.Name = "_optionalCheckBox";
             _optionalCheckBox.TabIndex = 4;
             _optionalCheckBox.Text = @"CB1";
@@ -211,9 +209,9 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // 
             // KryptonMessageBox
             // 
-            AutoScaleDimensions = new SizeF(6F, 13F);
+            AutoScaleDimensions = new(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(156, 78);
+            ClientSize = new(156, 78);
             Controls.Add(_panelButtons);
             Controls.Add(_panelMessage);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -1140,7 +1138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
         }
 
         /// <summary>
@@ -1192,7 +1190,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
         }
 
         /// <summary>
@@ -1243,7 +1241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
         }
 
         /// <summary>
@@ -1294,7 +1292,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
         }
 
         /// <summary>
@@ -1347,7 +1345,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
         }
 
         /// <summary>
@@ -1400,7 +1398,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
         }
 
         /// <summary>
@@ -1453,7 +1451,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
         }
 
         /// <summary>
@@ -1507,7 +1505,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
         }
 
         /// <summary>
@@ -1610,7 +1608,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, customButtonOptions, icon, defaultButton,
+            using (KryptonMessageBoxExtended ekmb = new(showOwner, text, caption, buttons, customButtonOptions, icon, defaultButton,
                                                                                   options, helpInformation, showCtrlCopy, messageboxTypeface,
                                                                                   showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
                                                                                   optionalCheckBoxCheckState, optionalCheckBoxAnchor,
@@ -1628,7 +1626,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
         private void UpdateText()
         {
-            Text = (MissingFrameWorkAPIs.IsNullOrWhiteSpace(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0]);
+            Text = (string.IsNullOrWhiteSpace(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0]);
             _messageText.StateCommon.Font = _messageboxTypeface;
             _messageText.Text = _text;
         }
@@ -1795,7 +1793,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             Size buttonsSizing = UpdateButtonsSizing();
 
             // Size of window is calculated from the client area
-            ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
+            ClientSize = new(Math.Max(messageSizing.Width, buttonsSizing.Width),
                                   messageSizing.Height + buttonsSizing.Height);
         }
 
@@ -1841,7 +1839,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             }
 
             // Enforce a minimum size for the message area
-            panelSize = new Size(Math.Max(_panelMessage.Size.Width, panelSize.Width),
+            panelSize = new(Math.Max(_panelMessage.Size.Width, panelSize.Width),
                                  Math.Max(_panelMessage.Size.Height, panelSize.Height));
 
             // Note that the width will be ignored in this update, but that is fine as 
@@ -1856,7 +1854,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
             // Button1 is always visible
             Size button1Size = _button1.GetPreferredSize(Size.Empty);
-            Size maxButtonSize = new Size(button1Size.Width + GAP, button1Size.Height);
+            Size maxButtonSize = new(button1Size.Width + GAP, button1Size.Height);
 
             // TODO: Setup custom buttons
 
@@ -1903,7 +1901,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                 case ExtendedMessageBoxButtons.YesNoCancel:
                 case ExtendedMessageBoxButtons.AbortRetryIgnore:
                     {
-                        _button3.Location = new Point(right - maxButtonSize.Width, GAP);
+                        _button3.Location = new(right - maxButtonSize.Width, GAP);
                         _button3.Size = maxButtonSize;
                         right -= maxButtonSize.Width + GAP;
                     }
@@ -1920,7 +1918,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                 case ExtendedMessageBoxButtons.RetryCancel:
                 case ExtendedMessageBoxButtons.AbortRetryIgnore:
                     {
-                        _button2.Location = new Point(right - maxButtonSize.Width, GAP);
+                        _button2.Location = new(right - maxButtonSize.Width, GAP);
                         _button2.Size = maxButtonSize;
                         right -= maxButtonSize.Width + GAP;
                     }
@@ -1928,14 +1926,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             }
 
             // Button1 is always visible
-            _button1.Location = new Point(right - maxButtonSize.Width, GAP);
+            _button1.Location = new(right - maxButtonSize.Width, GAP);
             _button1.Size = maxButtonSize;
 
             // Size the panel for the buttons
-            _panelButtons.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            _panelButtons.Size = new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
 
             // Button area is the number of buttons with gaps between them and 10 pixels around all edges
-            return new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            return new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
         }
 
         private void button_keyDown(object sender, KeyEventArgs e)
@@ -1950,7 +1948,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                 // Pressing Ctrl+C should copy message text into the clipboard
                 if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.C))
                 {
-                    StringBuilder sb = new StringBuilder();
+                    StringBuilder sb = new();
 
                     sb.AppendLine("---------------------------");
                     sb.AppendLine(_caption);
@@ -2024,7 +2022,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <returns></returns>
         public static bool GetOptionalCheckBoxState()
         {
-            KryptonMessageBoxExtended box = new KryptonMessageBoxExtended();
+            KryptonMessageBoxExtended box = new();
 
             return box.GetOptionalCheckBoxValue();
         }

@@ -47,6 +47,5 @@ global using System.Text.RegularExpressions;
 global using System.Windows.Forms;
 
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-global using Krypton.Toolkit.Suite.Extended.Tools;
 
 global using Microsoft.Win32;

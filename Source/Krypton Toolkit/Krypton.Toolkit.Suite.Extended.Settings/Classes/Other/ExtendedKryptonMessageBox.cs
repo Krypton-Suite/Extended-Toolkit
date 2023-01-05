@@ -272,19 +272,27 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         ///   <c>true</c> if [do not show again option result]; otherwise, <c>false</c>.
         /// </value>
-        public bool DoNotShowAgainOptionResult { get => _doNotShowAgainOptionResult;
+        public bool DoNotShowAgainOptionResult
+        {
+            get => _doNotShowAgainOptionResult;
             set => _doNotShowAgainOptionResult = value;
         }
 
-        public bool ShowDoNotShowAgainOption { get => _showDoNotShowAgainOption;
+        public bool ShowDoNotShowAgainOption
+        {
+            get => _showDoNotShowAgainOption;
             set => _showDoNotShowAgainOption = value;
         }
 
-        public bool UseTimeOutOption { get => _useTimeOutOption;
+        public bool UseTimeOutOption
+        {
+            get => _useTimeOutOption;
             set => _useTimeOutOption = value;
         }
 
-        public DialogResult DefaultTimeOutResponse { get => _defaultTimeOutResponse;
+        public DialogResult DefaultTimeOutResponse
+        {
+            get => _defaultTimeOutResponse;
             set => _defaultTimeOutResponse = value;
         }
 
@@ -294,7 +302,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The message box typeface.
         /// </value>
-        public Font MessageBoxTypeface { get => _messageboxTypeface;
+        public Font MessageBoxTypeface
+        {
+            get => _messageboxTypeface;
             set => _messageboxTypeface = value;
         }
 
@@ -304,7 +314,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The time out.
         /// </value>
-        public int TimeOut { get => _timeOut;
+        public int TimeOut
+        {
+            get => _timeOut;
             set => _timeOut = value;
         }
 
@@ -314,7 +326,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The time out timer delay.
         /// </value>
-        public int TimeOutTimerDelay { get => _timeOutTimerDelay;
+        public int TimeOutTimerDelay
+        {
+            get => _timeOutTimerDelay;
             set => _timeOutTimerDelay = value;
         }
 
@@ -324,7 +338,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The do not show again option text.
         /// </value>
-        public string DoNotShowAgainOptionText { get => _doNotShowAgainOptionText;
+        public string DoNotShowAgainOptionText
+        {
+            get => _doNotShowAgainOptionText;
             set => _doNotShowAgainOptionText = value;
         }
         #endregion
@@ -1286,15 +1302,15 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             // Time out logic
             if (defaultTimeOutButton == MessageBoxDefaultButton.Button1)
             {
-                _button1.Text = $"{ _button1.Text } ({ timeOut.ToString() })";
+                _button1.Text = $"{_button1.Text} ({timeOut.ToString()})";
             }
             else if (defaultTimeOutButton == MessageBoxDefaultButton.Button2)
             {
-                _button2.Text = $"{ _button2.Text } ({ timeOut.ToString() })";
+                _button2.Text = $"{_button2.Text} ({timeOut.ToString()})";
             }
             else if (defaultTimeOutButton == MessageBoxDefaultButton.Button3)
             {
-                _button3.Text = $"{ _button3.Text } ({ timeOut.ToString() })";
+                _button3.Text = $"{_button3.Text} ({timeOut.ToString()})";
             }
 
             // Do we ignore the Alt+F4 on the buttons?

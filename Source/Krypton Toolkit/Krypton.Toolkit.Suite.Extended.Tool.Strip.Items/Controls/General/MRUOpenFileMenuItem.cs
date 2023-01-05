@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                     ofd.Filters.Add(new CommonFileDialogFilter(_rawFilterDisplayName, _rawExtensionList));
 
-                    if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(_startingDirectory))
+                    if (string.IsNullOrWhiteSpace(_startingDirectory))
                     {
                         ofd.InitialDirectory = Environment.CurrentDirectory;
                     }
@@ -225,7 +225,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                     ofd.Filter = _standardDialogFilter;
 
-                    if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(_startingDirectory))
+                    if (string.IsNullOrWhiteSpace(_startingDirectory))
                     {
                         ofd.InitialDirectory = Environment.CurrentDirectory;
                     }
