@@ -164,9 +164,9 @@
 	</Choose>
 
 	<ItemGroup>
-		<PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="7.0.1" />
 
-		<PackageReference Include="WindowsAPICodePackShellExtensions" Version="1.1.2" />
+		<PackageReference Include="WindowsAPICodePackShellExtensions" Version="7.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -6,6 +6,8 @@
  */
 #endregion
 
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+
 namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 {
     public class KryptonRunDialog : CommonExtendedKryptonForm

@@ -8,7 +8,7 @@
 
 				<!--Version layout schema:
 				70 = Major
-				22 = Minor - Year of release
+				23 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-beta = Indicates a pre-release package
@@ -39,7 +39,7 @@
 
 				<!--Version layout schema:
 				70 = Major
-				22 = Minor - Year of release
+				23 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-alpha = Indicates a pre-release package
@@ -70,7 +70,7 @@
 
 				<!--Version layout schema:
 				70 = Major
-				22 = Minor - Year of release
+				23 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-->
@@ -98,7 +98,7 @@
 
 				<!--Version layout schema:
 				70 = Major
-				22 = Minor - Year of release
+				23 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-->
@@ -125,7 +125,7 @@
 				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
 
 				<!--Version layout schema:
-				22 = Minor - Year of release
+				23 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-->
@@ -152,7 +152,7 @@
 
 				<!--Version layout schema:
 				70 = Major
-				22 = Minor - Year of release
+				23 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-->
@@ -178,7 +178,7 @@
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Authors>Peter Wagner (A.K.A Wagnerp) and Simon Coghlan (A.K.A Smurf-IV), Phil Wright (A.K.A ComponentFactory)</Authors>
-		<Copyright>© Krypton Suite (Peter Wagner (Wagnerp) and Simon Coghlan (Smurf-IV)), 2017 - 2022. Component Factory Pty Ltd (Phil Wright), 2006 - 2016. All rights reserved.</Copyright>
+		<Copyright>© Krypton Suite (Peter Wagner (Wagnerp) and Simon Coghlan (Smurf-IV)), 2017 - 2023. Component Factory Pty Ltd (Phil Wright), 2006 - 2016. All rights reserved.</Copyright>
 	</PropertyGroup>
 
 	<Choose>
@@ -222,9 +222,9 @@
 				<PackageId Condition="'$(TFMs)' == 'StableLite'">$(PackageId).Lite</PackageId>
 
 				<Description Condition="'$(TFMs)' == 'StableLite'">
-					An extension to the Standard Toolkit, which supports .NET Framework 4.8 & 4.8.1, .NET Core 3.1 and .NET 5 - 7. $(Description)
+					An extension to the Standard Toolkit, which supports .NET Framework 4.8 and 4.8.1, .NET Core 3.1 and .NET 5 - 7. $(Description)
 
-					This package supports all .NET Framework versions starting .NET Framework 4.8 & 4.8.1, .NET Core 3.1 and .NET 5 - 7.
+					This package supports all .NET Framework versions starting .NET Framework 4.8 and 4.8.1, .NET Core 3.1 and .NET 5 - 7.
 					Also, all libraries are included targeting each specific framework version for performance purposes.
 
 					To view all of the standard toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Standard/Krypton-Toolkit-Suite-Standard-Modules.md

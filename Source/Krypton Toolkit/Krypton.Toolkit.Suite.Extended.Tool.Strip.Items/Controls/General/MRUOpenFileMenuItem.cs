@@ -6,6 +6,8 @@
  */
 #endregion
 
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [ToolboxItem(false), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.MenuStrip)]
@@ -32,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         private string _startingDirectory;
 
         private MRUMenuItem _parentMruMenuItem;
-        
+
         private MostRecentlyUsedFileManager _recentlyUsedFileManager = null;
 
         #endregion
@@ -125,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         public MRUOpenFileMenuItem(string defaultText)
         {
-            
+
         }
 
         #endregion
