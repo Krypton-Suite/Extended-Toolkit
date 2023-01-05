@@ -516,11 +516,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private void UpdateLabels(Color colour)
         {
-            klblRed.Text = $"Red: { colour.R }";
+            klblRed.Text = $"Red: {colour.R}";
 
-            klblGreen.Text = $"Green: { colour.G }";
+            klblGreen.Text = $"Green: {colour.G}";
 
-            klblBlue.Text = $"Blue: { colour.B }";
+            klblBlue.Text = $"Blue: {colour.B}";
         }
         #endregion
     }

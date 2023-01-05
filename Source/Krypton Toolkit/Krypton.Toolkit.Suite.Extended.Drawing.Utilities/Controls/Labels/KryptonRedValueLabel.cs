@@ -77,15 +77,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             if (value)
             {
-                Text = $"{ text }: { RedValue }";
+                Text = $"{text}: {RedValue}";
             }
             else if (_showColon)
             {
-                Text = $"{ text }";
+                Text = $"{text}";
             }
             else
             {
-                Text = $"{ text }:";
+                Text = $"{text}:";
             }
         }
 

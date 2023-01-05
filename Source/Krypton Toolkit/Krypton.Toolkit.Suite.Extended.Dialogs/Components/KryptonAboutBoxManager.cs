@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         #region Methods
-       public void DisplayAboutBox()
+        public void DisplayAboutBox()
         {
             KryptonAboutDialog aboutDialog = new KryptonAboutDialog(_applicationIcon, _assembly, _showDescription, _showFrameworkVersion,
                                                                     _showSystemInformation, _applicationText, _aboutText, _copyrightText,

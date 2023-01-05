@@ -789,11 +789,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public Color BaseColour { get => _baseColour;
+        public Color BaseColour
+        {
+            get => _baseColour;
             set => _baseColour = value;
         }
 
-        public bool PaletteColourSelector { get => _paletteColourSelector;
+        public bool PaletteColourSelector
+        {
+            get => _paletteColourSelector;
             set => _paletteColourSelector = value;
         }
         #endregion
@@ -919,27 +923,27 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Event Handlers
         private void pbxBaseColour_MouseEnter(object sender, EventArgs e)
         {
-            ttInformation.SetToolTip(pbxBaseColour, $"Base Colour\nARGB: ({ pbxBaseColour.BackColor.A.ToString() }, { pbxBaseColour.BackColor.R.ToString() }, { pbxBaseColour.BackColor.G.ToString() }, { pbxBaseColour.BackColor.B.ToString() })\nRGB: ({ pbxBaseColour.BackColor.R.ToString() }, { pbxBaseColour.BackColor.G.ToString() }, { pbxBaseColour.BackColor.B.ToString() })\nHexadecimal Value: #{ _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxBaseColour.BackColor.R), Convert.ToInt32(pbxBaseColour.BackColor.G), Convert.ToInt32(pbxBaseColour.BackColor.B)).ToUpper() }");
+            ttInformation.SetToolTip(pbxBaseColour, $"Base Colour\nARGB: ({pbxBaseColour.BackColor.A.ToString()}, {pbxBaseColour.BackColor.R.ToString()}, {pbxBaseColour.BackColor.G.ToString()}, {pbxBaseColour.BackColor.B.ToString()})\nRGB: ({pbxBaseColour.BackColor.R.ToString()}, {pbxBaseColour.BackColor.G.ToString()}, {pbxBaseColour.BackColor.B.ToString()})\nHexadecimal Value: #{_conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxBaseColour.BackColor.R), Convert.ToInt32(pbxBaseColour.BackColor.G), Convert.ToInt32(pbxBaseColour.BackColor.B)).ToUpper()}");
         }
 
         private void pbxDarkColour_MouseEnter(object sender, EventArgs e)
         {
-            ttInformation.SetToolTip(pbxDarkColour, $"Dark Colour\nARGB: ({ pbxDarkColour.BackColor.A.ToString() }, { pbxDarkColour.BackColor.R.ToString() }, { pbxDarkColour.BackColor.G.ToString() }, { pbxDarkColour.BackColor.B.ToString() })\nRGB: ({ pbxDarkColour.BackColor.R.ToString() }, { pbxDarkColour.BackColor.G.ToString() }, { pbxDarkColour.BackColor.B.ToString() })\nHexadecimal Value: #{ _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxDarkColour.BackColor.R), Convert.ToInt32(pbxDarkColour.BackColor.G), Convert.ToInt32(pbxDarkColour.BackColor.B)).ToUpper() }\nHue: { pbxDarkColour.BackColor.GetHue().ToString() }\nSaturation: { pbxDarkColour.BackColor.GetSaturation().ToString() }\nBrightness: { pbxDarkColour.BackColor.GetBrightness().ToString() }");
+            ttInformation.SetToolTip(pbxDarkColour, $"Dark Colour\nARGB: ({pbxDarkColour.BackColor.A.ToString()}, {pbxDarkColour.BackColor.R.ToString()}, {pbxDarkColour.BackColor.G.ToString()}, {pbxDarkColour.BackColor.B.ToString()})\nRGB: ({pbxDarkColour.BackColor.R.ToString()}, {pbxDarkColour.BackColor.G.ToString()}, {pbxDarkColour.BackColor.B.ToString()})\nHexadecimal Value: #{_conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxDarkColour.BackColor.R), Convert.ToInt32(pbxDarkColour.BackColor.G), Convert.ToInt32(pbxDarkColour.BackColor.B)).ToUpper()}\nHue: {pbxDarkColour.BackColor.GetHue().ToString()}\nSaturation: {pbxDarkColour.BackColor.GetSaturation().ToString()}\nBrightness: {pbxDarkColour.BackColor.GetBrightness().ToString()}");
         }
 
         private void pbxMiddleColour_MouseEnter(object sender, EventArgs e)
         {
-            ttInformation.SetToolTip(pbxMiddleColour, $"Middle Colour\nARGB: ({ pbxMiddleColour.BackColor.A.ToString() }, { pbxMiddleColour.BackColor.R.ToString() }, { pbxMiddleColour.BackColor.G.ToString() }, { pbxMiddleColour.BackColor.B.ToString() })\nRGB: ({ pbxMiddleColour.BackColor.R.ToString() }, { pbxMiddleColour.BackColor.G.ToString() }, { pbxMiddleColour.BackColor.B.ToString() })\nHexadecimal Value: #{ _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxMiddleColour.BackColor.R), Convert.ToInt32(pbxMiddleColour.BackColor.G), Convert.ToInt32(pbxMiddleColour.BackColor.B)).ToUpper() }\nHue: { pbxMiddleColour.BackColor.GetHue().ToString() }\nSaturation: { pbxMiddleColour.BackColor.GetSaturation().ToString() }\nBrightness: { pbxMiddleColour.BackColor.GetBrightness().ToString() }");
+            ttInformation.SetToolTip(pbxMiddleColour, $"Middle Colour\nARGB: ({pbxMiddleColour.BackColor.A.ToString()}, {pbxMiddleColour.BackColor.R.ToString()}, {pbxMiddleColour.BackColor.G.ToString()}, {pbxMiddleColour.BackColor.B.ToString()})\nRGB: ({pbxMiddleColour.BackColor.R.ToString()}, {pbxMiddleColour.BackColor.G.ToString()}, {pbxMiddleColour.BackColor.B.ToString()})\nHexadecimal Value: #{_conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxMiddleColour.BackColor.R), Convert.ToInt32(pbxMiddleColour.BackColor.G), Convert.ToInt32(pbxMiddleColour.BackColor.B)).ToUpper()}\nHue: {pbxMiddleColour.BackColor.GetHue().ToString()}\nSaturation: {pbxMiddleColour.BackColor.GetSaturation().ToString()}\nBrightness: {pbxMiddleColour.BackColor.GetBrightness().ToString()}");
         }
 
         private void pbxLightColour_MouseEnter(object sender, EventArgs e)
         {
-            ttInformation.SetToolTip(pbxLightColour, $"Light Colour\nARGB: ({ pbxLightColour.BackColor.A.ToString() }, { pbxLightColour.BackColor.R.ToString() }, { pbxLightColour.BackColor.G.ToString() }, { pbxLightColour.BackColor.B.ToString() })\nRGB: ({ pbxLightColour.BackColor.R.ToString() }, { pbxLightColour.BackColor.G.ToString() }, { pbxLightColour.BackColor.B.ToString() })\nHexadecimal Value: #{ _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxLightColour.BackColor.R), Convert.ToInt32(pbxLightColour.BackColor.G), Convert.ToInt32(pbxLightColour.BackColor.B)).ToUpper() }\nHue: { pbxLightColour.BackColor.GetHue().ToString() }\nSaturation: { pbxLightColour.BackColor.GetSaturation().ToString() }\nBrightness: { pbxLightColour.BackColor.GetBrightness().ToString() }");
+            ttInformation.SetToolTip(pbxLightColour, $"Light Colour\nARGB: ({pbxLightColour.BackColor.A.ToString()}, {pbxLightColour.BackColor.R.ToString()}, {pbxLightColour.BackColor.G.ToString()}, {pbxLightColour.BackColor.B.ToString()})\nRGB: ({pbxLightColour.BackColor.R.ToString()}, {pbxLightColour.BackColor.G.ToString()}, {pbxLightColour.BackColor.B.ToString()})\nHexadecimal Value: #{_conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxLightColour.BackColor.R), Convert.ToInt32(pbxLightColour.BackColor.G), Convert.ToInt32(pbxLightColour.BackColor.B)).ToUpper()}\nHue: {pbxLightColour.BackColor.GetHue().ToString()}\nSaturation: {pbxLightColour.BackColor.GetSaturation().ToString()}\nBrightness: {pbxLightColour.BackColor.GetBrightness().ToString()}");
         }
 
         private void pbxLightestColour_MouseEnter(object sender, EventArgs e)
         {
-            ttInformation.SetToolTip(pbxLightestColour, $"Lightest Colour\nARGB: ({ pbxLightestColour.BackColor.A.ToString() }, { pbxLightestColour.BackColor.R.ToString() }, { pbxLightestColour.BackColor.G.ToString() }, { pbxLightestColour.BackColor.B.ToString() })\nRGB: ({ pbxLightestColour.BackColor.R.ToString() }, { pbxLightestColour.BackColor.G.ToString() }, { pbxLightestColour.BackColor.B.ToString() })\nHexadecimal Value: #{ _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxLightestColour.BackColor.R), Convert.ToInt32(pbxLightestColour.BackColor.G), Convert.ToInt32(pbxLightestColour.BackColor.B)).ToUpper() }\nHue: { pbxLightestColour.BackColor.GetHue().ToString() }\nSaturation: { pbxLightestColour.BackColor.GetSaturation().ToString() }\nBrightness: { pbxLightestColour.BackColor.GetBrightness().ToString() }");
+            ttInformation.SetToolTip(pbxLightestColour, $"Lightest Colour\nARGB: ({pbxLightestColour.BackColor.A.ToString()}, {pbxLightestColour.BackColor.R.ToString()}, {pbxLightestColour.BackColor.G.ToString()}, {pbxLightestColour.BackColor.B.ToString()})\nRGB: ({pbxLightestColour.BackColor.R.ToString()}, {pbxLightestColour.BackColor.G.ToString()}, {pbxLightestColour.BackColor.B.ToString()})\nHexadecimal Value: #{_conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxLightestColour.BackColor.R), Convert.ToInt32(pbxLightestColour.BackColor.G), Convert.ToInt32(pbxLightestColour.BackColor.B)).ToUpper()}\nHue: {pbxLightestColour.BackColor.GetHue().ToString()}\nSaturation: {pbxLightestColour.BackColor.GetSaturation().ToString()}\nBrightness: {pbxLightestColour.BackColor.GetBrightness().ToString()}");
         }
 
         private void pbxNormalTextColour_MouseEnter(object sender, EventArgs e)

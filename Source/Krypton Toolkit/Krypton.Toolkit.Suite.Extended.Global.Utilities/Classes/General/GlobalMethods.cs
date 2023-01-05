@@ -596,7 +596,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         {
             if (featureName != null)
             {
-                KryptonMessageBox.Show($"The feature: { featureName } is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
+                KryptonMessageBox.Show($"The feature: {featureName} is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
             }
             else
             {

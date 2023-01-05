@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
         public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
-                                                             bool? showCloseButton, 
+                                                             bool? showCloseButton,
                                                              Image customImage = null, string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
         {
@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="rightToLeftSupport">The right to left support.</param>
         public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
                                                              bool? showCloseButton,
-                                                             int seconds, Image customImage = null, 
+                                                             int seconds, Image customImage = null,
                                                              string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport)
@@ -134,8 +134,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
         public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
-                                                             bool? showCloseButton, 
-                                                             int seconds, string soundPath, Image customImage = null, 
+                                                             bool? showCloseButton,
+                                                             int seconds, string soundPath, Image customImage = null,
                                                              string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, showCloseButton, seconds, customImage, dismissText, rightToLeftSupport) => SoundPath = soundPath;
@@ -150,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
         public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
-                                                             bool? showCloseButton, 
+                                                             bool? showCloseButton,
                                                              Stream soundStream, Image customImage = null,
                                                              string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)

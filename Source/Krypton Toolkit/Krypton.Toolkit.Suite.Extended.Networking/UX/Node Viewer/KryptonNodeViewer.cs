@@ -182,7 +182,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException($"An error occurred trying to access the network computers.\n\n\n{ ex.Message }", "Error",
+                ExceptionCapture.CaptureException($"An error occurred trying to access the network computers.\n\n\n{ex.Message}", "Error",
                                                   KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
             }
         }
@@ -191,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         {
             try
             {
-                string defaultFileName = $"Network Node List - { DateTime.Now.ToShortDateString() }";
+                string defaultFileName = $"Network Node List - {DateTime.Now.ToShortDateString()}";
 
                 CommonSaveFileDialog csfd = new CommonSaveFileDialog();
 

@@ -628,11 +628,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public Color BaseColour { get => _baseColour;
+        public Color BaseColour
+        {
+            get => _baseColour;
             set => _baseColour = value;
         }
 
-        public bool PaletteColourSelector { get => _paletteColourSelector;
+        public bool PaletteColourSelector
+        {
+            get => _paletteColourSelector;
             set => _paletteColourSelector = value;
         }
         #endregion

@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="hueValue">The hue value.</param>
         public void DisplayToolTip(ToolTip information, PictureBox target, string colourType, int alphaValue, int redValue, int greenValue, int blueValue, string hexValue, double hueValue)
         {
-            information.SetToolTip(target, $"{ colourType } Colour\nARGB: ({ alphaValue.ToString() }, { redValue.ToString() }, { greenValue.ToString() }, { blueValue.ToString() })\nRGB: ({ redValue.ToString() }, { greenValue.ToString() }, { blueValue.ToString() })\nHexadecimal Value: #{ hexValue.ToUpper() }\nHue Value: { hueValue.ToString() }");
+            information.SetToolTip(target, $"{colourType} Colour\nARGB: ({alphaValue.ToString()}, {redValue.ToString()}, {greenValue.ToString()}, {blueValue.ToString()})\nRGB: ({redValue.ToString()}, {greenValue.ToString()}, {blueValue.ToString()})\nHexadecimal Value: #{hexValue.ToUpper()}\nHue Value: {hueValue.ToString()}");
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="hueValue">The hue value.</param>
         public static void DisplayToolTip(ToolTip information, CircularPictureBox target, string colourType, int alphaValue, int redValue, int greenValue, int blueValue, string hexValue, double hueValue)
         {
-            information.SetToolTip(target, $"{ colourType } Colour\nARGB: ({ alphaValue.ToString() }, { redValue.ToString() }, { greenValue.ToString() }, { blueValue.ToString() })\nRGB: ({ redValue.ToString() }, { greenValue.ToString() }, { blueValue.ToString() })\nHexadecimal Value: #{ hexValue.ToUpper() }\nHue Value: { hueValue.ToString() }");
+            information.SetToolTip(target, $"{colourType} Colour\nARGB: ({alphaValue.ToString()}, {redValue.ToString()}, {greenValue.ToString()}, {blueValue.ToString()})\nRGB: ({redValue.ToString()}, {greenValue.ToString()}, {blueValue.ToString()})\nHexadecimal Value: #{hexValue.ToUpper()}\nHue Value: {hueValue.ToString()}");
         }
 
         /// <summary>
@@ -127,12 +127,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private static string GetColourData(string colourDescription, Color selectedColour)
         {
-            return $"{ colourDescription } Colour\nARGB: ({ ConversionMethods.FormatColourARGBString(selectedColour) })\nRGB: ({ ConversionMethods.FormatColourRGBString(selectedColour) })\nHexadecimal: { ConversionMethods.FormatColourToHexadecimal(selectedColour) }";
+            return $"{colourDescription} Colour\nARGB: ({ConversionMethods.FormatColourARGBString(selectedColour)})\nRGB: ({ConversionMethods.FormatColourRGBString(selectedColour)})\nHexadecimal: {ConversionMethods.FormatColourToHexadecimal(selectedColour)}";
         }
 
         private static string GetColourDataExtra(string colourDescription, Color selectedColour)
         {
-            return $"{ colourDescription } Colour\nARGB: ({ ConversionMethods.FormatColourARGBString(selectedColour) })\nRGB: ({ ConversionMethods.FormatColourRGBString(selectedColour) })\nHexadecimal: { ConversionMethods.FormatColourToHexadecimal(selectedColour) }\n\nHue: { selectedColour.GetHue() }\nSaturation: { selectedColour.GetSaturation() }\nBrightness: { selectedColour.GetBrightness() }";
+            return $"{colourDescription} Colour\nARGB: ({ConversionMethods.FormatColourARGBString(selectedColour)})\nRGB: ({ConversionMethods.FormatColourRGBString(selectedColour)})\nHexadecimal: {ConversionMethods.FormatColourToHexadecimal(selectedColour)}\n\nHue: {selectedColour.GetHue()}\nSaturation: {selectedColour.GetSaturation()}\nBrightness: {selectedColour.GetBrightness()}";
         }
         #endregion
 

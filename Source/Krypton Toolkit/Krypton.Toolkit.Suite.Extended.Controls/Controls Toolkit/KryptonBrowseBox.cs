@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             _kcReset.Text = _resetText;
 
             _bsaReset.Enabled = ButtonEnabled.False;
-            
+
             _kcBrowse.Execute += Browse_Execute;
 
             _kcReset.ImageLarge = _largeResetImage;
@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             _kcReset.Execute += Reset_Execute;
 
-            ButtonSpecs.AddRange(new [] { _bsaBrowse, _bsaReset });
+            ButtonSpecs.AddRange(new[] { _bsaBrowse, _bsaReset });
         }
 
         #endregion
@@ -270,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
             else
             {
-                _bsaReset.Enabled =ButtonEnabled.False;
+                _bsaReset.Enabled = ButtonEnabled.False;
             }
 
             base.OnTextChanged(e);

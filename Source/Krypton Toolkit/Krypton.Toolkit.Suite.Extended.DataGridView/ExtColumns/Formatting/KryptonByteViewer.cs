@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 base.OnKeyDown(e);
             }
         }
-#endregion
+        #endregion
 
         #region Private Constants
         private const int DEFAULT_COLUMN_COUNT = 16;

@@ -217,9 +217,9 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                 pbCurrentFile.Value = Convert.ToInt32((100f / (totalFiles / 1024f)) * (copiedBytes / 1024f));
             }
 
-            klblTotalFiles.Text = $"Total Files: ({ copiedFiles } / { totalFiles })";
+            klblTotalFiles.Text = $"Total Files: ({copiedFiles} / {totalFiles})";
 
-            klblCurrentFile.Text = $"Current File: { currentFilename }";
+            klblCurrentFile.Text = $"Current File: {currentFilename}";
         }
         #endregion
 
