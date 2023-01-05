@@ -26,10 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal sealed class CfgGrammar
@@ -222,15 +218,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             internal object _comValue;
         }
 
-        internal static Guid _SPGDF_ContextFree = new Guid(1306301037, 27879, 19904, 153, 167, 175, 158, 107, 106, 78, 145);
+        internal static Guid _SPGDF_ContextFree = new(1306301037, 27879, 19904, 153, 167, 175, 158, 107, 106, 78, 145);
 
         internal const int INFINITE = -1;
 
-        internal static readonly Rule SPRULETRANS_TEXTBUFFER = new Rule(-1);
+        internal static readonly Rule SPRULETRANS_TEXTBUFFER = new(-1);
 
-        internal static readonly Rule SPRULETRANS_WILDCARD = new Rule(-2);
+        internal static readonly Rule SPRULETRANS_WILDCARD = new(-2);
 
-        internal static readonly Rule SPRULETRANS_DICTATION = new Rule(-3);
+        internal static readonly Rule SPRULETRANS_DICTATION = new(-3);
 
         internal const int SPTEXTBUFFERTRANSITION = 4194303;
 

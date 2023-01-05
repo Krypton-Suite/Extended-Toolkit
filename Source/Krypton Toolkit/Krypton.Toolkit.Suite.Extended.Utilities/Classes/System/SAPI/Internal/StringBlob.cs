@@ -26,17 +26,15 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal class StringBlob
     {
-        private Dictionary<string, int> _strings = new Dictionary<string, int>();
+        private Dictionary<string, int> _strings = new();
 
-        private List<string> _refStrings = new List<string>();
+        private List<string> _refStrings = new();
 
-        private List<int> _offsetStrings = new List<int>();
+        private List<int> _offsetStrings = new();
 
         private int _cWords;
 

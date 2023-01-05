@@ -26,10 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal sealed class State : IComparable<State>
@@ -42,9 +38,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             RF_IN_LEFT_RECUR_CHECK = 8u
         }
 
-        private ArcList _outArcs = new ArcList();
+        private ArcList _outArcs = new();
 
-        private ArcList _inArcs = new ArcList();
+        private ArcList _inArcs = new();
 
         private int _iSerialize;
 

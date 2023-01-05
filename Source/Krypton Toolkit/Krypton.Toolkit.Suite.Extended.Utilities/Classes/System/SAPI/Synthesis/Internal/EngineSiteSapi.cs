@@ -26,10 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     [ComVisible(true)]

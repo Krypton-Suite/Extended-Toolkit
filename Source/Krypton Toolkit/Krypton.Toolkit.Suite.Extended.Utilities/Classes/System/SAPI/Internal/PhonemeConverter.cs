@@ -26,8 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal sealed class PhonemeConverter
@@ -98,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
         {
             _phoneMapsCompressed = new PhoneMapCompressed[8]
             {
-                new PhoneMapCompressed(0, 207, new byte[720]
+                new(0, 207, new byte[720]
                 {
                     46,
                     0,
@@ -1072,7 +1070,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     'ʓ',
                     'ʐ'
                 }),
-                new PhoneMapCompressed(1028, 52, new byte[260]
+                new(1028, 52, new byte[260]
                 {
                     48,
                     48,
@@ -1389,7 +1387,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     'ㄨ',
                     'ㄩ'
                 }),
-                new PhoneMapCompressed(1031, 53, new byte[129]
+                new(1031, 53, new byte[129]
                 {
                     45,
                     0,
@@ -1576,7 +1574,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '4',
                     '5'
                 }),
-                new PhoneMapCompressed(1033, 49, new byte[121]
+                new(1033, 49, new byte[121]
                 {
                     45,
                     0,
@@ -1751,7 +1749,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '0',
                     '1'
                 }),
-                new PhoneMapCompressed(1034, 35, new byte[76]
+                new(1034, 35, new byte[76]
                 {
                     45,
                     0,
@@ -1867,7 +1865,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '"',
                     '\u0019'
                 }),
-                new PhoneMapCompressed(1036, 42, new byte[100]
+                new(1036, 42, new byte[100]
                 {
                     45,
                     0,
@@ -2014,7 +2012,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     ')',
                     '*'
                 }),
-                new PhoneMapCompressed(1041, 102, new byte[510]
+                new(1041, 102, new byte[510]
                 {
                     48,
                     48,
@@ -2631,7 +2629,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '\u30fd',
                     '\u30fe'
                 }),
-                new PhoneMapCompressed(2052, 422, new byte[1755]
+                new(2052, 422, new byte[1755]
                 {
                     45,
                     0,

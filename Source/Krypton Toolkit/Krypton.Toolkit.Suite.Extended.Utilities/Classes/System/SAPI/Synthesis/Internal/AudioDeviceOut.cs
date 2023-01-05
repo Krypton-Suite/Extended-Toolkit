@@ -26,8 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal class AudioDeviceOut : AudioBase, IDisposable
@@ -66,9 +64,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
         }
 
-        private List<InItem> _queueIn = new List<InItem>();
+        private List<InItem> _queueIn = new();
 
-        private List<InItem> _queueOut = new List<InItem>();
+        private List<InItem> _queueOut = new();
 
         private int _blockAlign;
 
@@ -80,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private int _curDevice;
 
-        private ManualResetEvent _evt = new ManualResetEvent(false);
+        private ManualResetEvent _evt = new(false);
 
         private SafeNativeMethods.WaveOutProc _delegate;
 
@@ -88,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private bool _deviceOpen;
 
-        private object _noWriteOutLock = new object();
+        private object _noWriteOutLock = new();
 
         private bool _fPaused;
 

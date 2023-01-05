@@ -26,13 +26,11 @@
  */
 #endregion
 
-using System.Resources;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech
 {
     internal static class SR
     {
-        private static ResourceManager _resourceManager = new ResourceManager("System.Speech.ExceptionStringTable", typeof(SR).Assembly);
+        private static ResourceManager _resourceManager = new("System.Speech.ExceptionStringTable", typeof(SR).Assembly);
 
         internal static string Get(SRID id, params object[] args)
         {

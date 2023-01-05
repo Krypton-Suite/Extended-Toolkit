@@ -26,9 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     [Serializable]
@@ -128,13 +125,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
         }
 
-        private Stack<StackElement> _elementStack = new Stack<StackElement>();
+        private Stack<StackElement> _elementStack = new();
 
         private CultureInfo _culture;
 
-        private List<Element> _elements = new List<Element>();
+        private List<Element> _elements = new();
 
-        private static ResourceLoader _resourceLoader = new ResourceLoader();
+        private static ResourceLoader _resourceLoader = new();
 
         private const string _xmlnsDefault = "http://www.w3.org/2001/10/synthesis";
 

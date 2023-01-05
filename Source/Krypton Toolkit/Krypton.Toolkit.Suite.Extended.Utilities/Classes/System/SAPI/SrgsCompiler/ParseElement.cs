@@ -26,8 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal abstract class ParseElement : IElement

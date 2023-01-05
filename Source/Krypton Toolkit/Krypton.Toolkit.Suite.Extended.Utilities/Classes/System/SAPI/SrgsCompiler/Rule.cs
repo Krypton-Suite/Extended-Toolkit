@@ -26,10 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal sealed class Rule : ParseElementCollection, IRule, IElement, IComparable<Rule>
@@ -48,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal int _iSerialize2;
 
-        internal List<Rule> _listRules = new List<Rule>();
+        internal List<Rule> _listRules = new();
 
         internal bool _fStaticRule;
 
@@ -56,9 +52,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private string _baseclass;
 
-        private StringBuilder _script = new StringBuilder();
+        private StringBuilder _script = new();
 
-        private StringBuilder _constructors = new StringBuilder();
+        private StringBuilder _constructors = new();
 
         internal string Name => _id;
 

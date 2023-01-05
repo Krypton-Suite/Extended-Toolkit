@@ -26,13 +26,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal sealed class PropertyTag : ParseElement, IPropertyTag, IElement
     {
-        private CfgGrammar.CfgProperty _propInfo = new CfgGrammar.CfgProperty();
+        private CfgGrammar.CfgProperty _propInfo = new();
 
         internal PropertyTag(ParseElement parent, Backend backend)
             : base(parent._rule)

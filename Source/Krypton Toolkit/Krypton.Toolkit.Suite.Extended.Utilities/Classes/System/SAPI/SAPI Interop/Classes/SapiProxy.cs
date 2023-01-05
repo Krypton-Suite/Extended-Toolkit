@@ -76,9 +76,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
         {
             private Thread _mta;
 
-            private AutoResetEvent _process = new AutoResetEvent(false);
+            private AutoResetEvent _process = new(false);
 
-            private AutoResetEvent _done = new AutoResetEvent(false);
+            private AutoResetEvent _done = new(false);
 
             private ObjectDelegate _doit;
 

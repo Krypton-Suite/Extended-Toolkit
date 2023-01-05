@@ -27,11 +27,6 @@
 #endregion
 
 #define TRACE
-using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     [Serializable]
@@ -100,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             }
         }
 
-        public ReadOnlyCollection<RecognizedPhrase> Alternates => new ReadOnlyCollection<RecognizedPhrase>(GetAlternates());
+        public ReadOnlyCollection<RecognizedPhrase> Alternates => new(GetAlternates());
 
         internal IRecognizerInternal Recognizer
         {

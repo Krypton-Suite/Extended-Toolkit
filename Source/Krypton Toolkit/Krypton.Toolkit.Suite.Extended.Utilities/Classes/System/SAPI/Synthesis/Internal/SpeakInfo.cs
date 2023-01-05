@@ -26,8 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal sealed class SpeakInfo
@@ -36,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private bool _fNotInTextSeg = true;
 
-        private List<SpeechSeg> _listSeg = new List<SpeechSeg>();
+        private List<SpeechSeg> _listSeg = new();
 
         private SpeechSeg _lastSeg;
 

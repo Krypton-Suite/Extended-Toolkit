@@ -95,8 +95,6 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
 
 namespace System
 {
-    using System.Runtime.Remoting;
-
     public static class AppDomainExtensions
     {
 

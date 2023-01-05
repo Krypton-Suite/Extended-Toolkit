@@ -26,10 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 {
     internal class XmlParser : ISrgsParser
@@ -70,9 +66,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 
         private bool _hasTagFormat;
 
-        private List<string> _rules = new List<string>();
+        private List<string> _rules = new();
 
-        private List<ForwardReference> _scripts = new List<ForwardReference>();
+        private List<ForwardReference> _scripts = new();
 
         private static readonly char[] _invalidRuleIdChars = new char[4]
         {

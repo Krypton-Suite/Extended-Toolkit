@@ -26,8 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 {
     [ImmutableObject(true)]

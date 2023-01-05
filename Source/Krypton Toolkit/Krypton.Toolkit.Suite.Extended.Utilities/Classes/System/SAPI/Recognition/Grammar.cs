@@ -26,11 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     [DebuggerDisplay("Grammar: {(_uri != null ? \"uri=\" + _uri.ToString () + \" \" : \"\") + \"rule=\" + _ruleName }")]
@@ -97,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         private Collection<Grammar> _ruleRefs;
 
-        private static ResourceLoader _resourceLoader = new ResourceLoader();
+        private static ResourceLoader _resourceLoader = new();
 
         public bool Enabled
         {

@@ -26,11 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
-
-using Microsoft.Win32;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
 {
     internal static class SAPICategories

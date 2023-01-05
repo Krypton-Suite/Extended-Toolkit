@@ -26,14 +26,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal sealed class SemanticTag : ParseElement, ISemanticTag, IElement
     {
-        private CfgGrammar.CfgProperty _propInfo = new CfgGrammar.CfgProperty();
+        private CfgGrammar.CfgProperty _propInfo = new();
 
         internal SemanticTag(ParseElement parent, Backend backend)
             : base(parent._rule)

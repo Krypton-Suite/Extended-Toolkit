@@ -27,6 +27,7 @@
 #endregion
 
 global using System;
+global using System.CodeDom.Compiler;
 global using System.Collections;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
@@ -41,9 +42,30 @@ global using System.Runtime.InteropServices;
 global using System.Runtime.InteropServices.ComTypes;
 global using System.Runtime.Serialization;
 global using System.Runtime.Versioning;
+global using System.Runtime.Remoting;
+global using System.Resources;
 global using System.Security;
 global using System.Security.Permissions;
+global using System.Security.Policy;
 global using System.Text;
 global using System.Threading;
 global using System.Xml;
 global using System.Xml.XPath;
+
+global using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
+global using Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding;
+global using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+global using Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens;
+global using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
+global using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+global using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+global using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
+global using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+global using Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+global using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+global using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.IO;
+global using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
+
+global using Microsoft.CSharp;
+global using Microsoft.VisualBasic;
+global using Microsoft.Win32;

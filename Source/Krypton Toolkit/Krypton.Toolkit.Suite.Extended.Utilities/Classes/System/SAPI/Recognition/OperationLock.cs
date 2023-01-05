@@ -30,11 +30,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     internal class OperationLock : IDisposable
     {
-        private ManualResetEvent _event = new ManualResetEvent(true);
+        private ManualResetEvent _event = new(true);
 
         private uint _operationCount;
 
-        private object _thisObjectLock = new object();
+        private object _thisObjectLock = new();
 
         public void Dispose()
         {

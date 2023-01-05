@@ -26,10 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 {
     [Serializable]
@@ -53,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         private SrgsTagFormat _tagFormat;
 
-        private Collection<string> _globalTags = new Collection<string>();
+        private Collection<string> _globalTags = new();
 
         private bool _isModeSet;
 
@@ -65,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         private string _language;
 
-        private Collection<string> _codebehind = new Collection<string>();
+        private Collection<string> _codebehind = new();
 
         private string _namespace;
 
@@ -73,11 +69,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         private string _script = string.Empty;
 
-        private List<XmlParser.ForwardReference> _scriptsForwardReference = new List<XmlParser.ForwardReference>();
+        private List<XmlParser.ForwardReference> _scriptsForwardReference = new();
 
-        private Collection<string> _usings = new Collection<string>();
+        private Collection<string> _usings = new();
 
-        private Collection<string> _assemblyReferences = new Collection<string>();
+        private Collection<string> _assemblyReferences = new();
 
         string IGrammar.Root
         {

@@ -27,9 +27,6 @@
 #endregion
 
 #define TRACE
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal class PhonemeEventMapper : TtsEventMapper

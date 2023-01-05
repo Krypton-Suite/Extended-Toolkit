@@ -26,9 +26,7 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
+using SpObjectToken = Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition.SpObjectToken;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
 {
