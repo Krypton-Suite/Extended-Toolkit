@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
     public class KryptonToolStripBrowseBox : ToolStripControlHostFixed
     {
         #region Public
-        
+
         [Category("Control")]
         public InternalBrowseBox KryptonBrowseBox => Control as InternalBrowseBox;
 
@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         public KryptonToolStripBrowseBox() : base(new InternalBrowseBox())
         {
-            
+
         }
 
         #endregion

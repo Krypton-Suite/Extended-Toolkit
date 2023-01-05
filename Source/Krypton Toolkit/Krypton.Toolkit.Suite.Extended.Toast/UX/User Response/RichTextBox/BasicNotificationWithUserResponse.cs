@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public bool UsePanelColourInTextArea { get => _usePanelColourInTextArea; set => _usePanelColourInTextArea = value; }
 
         public bool UseNativeBackColourInUserResponseArea { get => _useNativeBackColourInUserResponseArea; set => _useNativeBackColourInUserResponseArea = value; }
-        
+
         public bool ShowCloseButton { get => _showCloseButton; set => _showCloseButton = value; }
 
         public Color UserResponsePromptColour { get => _userResponsePromptColour; set => _userResponsePromptColour = value; }
@@ -140,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         {
             InitializeComponent();
 
-            SetupBaseUI(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea, 
+            SetupBaseUI(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea,
                         useNativeBackColourInUserResponseArea, showCloseButton, customImage, dismissText,
                         userResponseCueText, userResponseCueColour, userResponseCueAlignHorizontal,
                         userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
+        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                                  IconType iconType, string title, string contentText,
                                                  bool? usePanelColourInTextArea,
                                                  bool? useNativeBackColourInUserResponseArea,
@@ -193,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
+        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                                  IconType iconType, string title, string contentText,
                                                  bool? usePanelColourInTextArea,
                                                  bool? useNativeBackColourInUserResponseArea,
@@ -201,7 +201,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                  int seconds, string soundPath, Image customImage = null,
                                                  string dismissText = "&Dismiss", string userResponseCueText = "",
                                                  Color? userResponseCueColour = null,
-                                                 PaletteRelativeAlign? userResponseCueAlignHorizontal = null, 
+                                                 PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                  PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                  Font userResponseCueFont = null,
                                                  RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
@@ -227,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
+        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                                  IconType iconType, string title, string contentText,
                                                  bool? usePanelColourInTextArea,
                                                  bool? useNativeBackColourInUserResponseArea,
@@ -262,7 +262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
+        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                                  IconType iconType, string title, string contentText,
                                                  bool? usePanelColourInTextArea,
                                                  bool? useNativeBackColourInUserResponseArea,
@@ -533,7 +533,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private void SetupBaseUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                  IconType iconType, string title, string contentText,
-                                 bool? usePanelColourInTextArea, bool? useNativeBackColourInUserResponseArea, 
+                                 bool? usePanelColourInTextArea, bool? useNativeBackColourInUserResponseArea,
                                  bool? showCloseButton, Image customImage, string dismissText,
                                  string userResponseCueText, Color? userResponseCueColour,
                                  PaletteRelativeAlign? userResponseCueAlignHorizontal,

@@ -561,23 +561,33 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public int AlphaChannelValue { get => _alphaChannelValue;
+        public int AlphaChannelValue
+        {
+            get => _alphaChannelValue;
             set => _alphaChannelValue = value;
         }
 
-        public int RedColourChannelValue { get => _redColourChannelValue;
+        public int RedColourChannelValue
+        {
+            get => _redColourChannelValue;
             set => _redColourChannelValue = value;
         }
 
-        public int GreenColourChannelValue { get => _greenColourChannelValue;
+        public int GreenColourChannelValue
+        {
+            get => _greenColourChannelValue;
             set => _greenColourChannelValue = value;
         }
 
-        public int BlueColourChannelValue { get => _blueColourChannelValue;
+        public int BlueColourChannelValue
+        {
+            get => _blueColourChannelValue;
             set => _blueColourChannelValue = value;
         }
 
-        public bool PaletteColourSelector { get => _paletteColourSelector;
+        public bool PaletteColourSelector
+        {
+            get => _paletteColourSelector;
             set => _paletteColourSelector = value;
         }
         #endregion
@@ -935,7 +945,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             ConversionMethods conversionMethods = new ConversionMethods();
 
-            cpbColourPreview.BackColor = conversionMethods.ConvertHexadecimalToRGB($"#{ ktxtHexValue.Text }");
+            cpbColourPreview.BackColor = conversionMethods.ConvertHexadecimalToRGB($"#{ktxtHexValue.Text}");
         }
 
         private void ktxtHexValue_TextChanged(object sender, EventArgs e)

@@ -55,11 +55,11 @@ namespace Krypton.Toolkit.Suite.Extended.IO
 
         #region Identity
 
-        static MostRecentlyUsedFileManager() {}
+        static MostRecentlyUsedFileManager() { }
 
         public MostRecentlyUsedFileManager()
         {
-            
+
         }
 
         /// <summary>Initializes a new instance of the <see cref="MostRecentlyUsedFileManager" /> class.</summary>

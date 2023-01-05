@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         public KryptonNavigatorEditor()
         {
-            
+
         }
 
         #endregion

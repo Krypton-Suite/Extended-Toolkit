@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         }
 
         public BasicNotificationWithUserResponseWrappedLabel(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
-                                                             IconType iconType, string title, string contentText, 
+                                                             IconType iconType, string title, string contentText,
                                                              int seconds, Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                              Font userResponseCueFont = null,
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                                              KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType, iconType, title, contentText, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
                    customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                              Font userResponseCueFont = null,
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                                              KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType, iconType, title, contentText, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
                    seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                    actionButtonCommand) => SoundStream = soundStream;
 
         public BasicNotificationWithUserResponseWrappedLabel(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
-                                                             IconType iconType, string title, string contentText, 
+                                                             IconType iconType, string title, string contentText,
                                                              int seconds, Stream soundStream, Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,

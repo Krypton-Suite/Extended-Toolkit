@@ -265,8 +265,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             // ktxtExceptionMessageLarge2
             // 
-            this.ktxtExceptionMessageLarge2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ktxtExceptionMessageLarge2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ktxtExceptionMessageLarge2.Location = new System.Drawing.Point(84, 66);
             this.ktxtExceptionMessageLarge2.Multiline = true;
@@ -361,8 +361,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             // kryptonNavigator1
             // 
-            this.kryptonNavigator1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.kryptonNavigator1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonNavigator1.Button.CloseButtonAction = Krypton.Navigator.CloseButtonAction.None;
             this.kryptonNavigator1.Button.CloseButtonDisplay = Krypton.Navigator.ButtonDisplay.Hide;
@@ -801,7 +801,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             ktxtTime.Text = reportInfo.ExceptionDate.ToShortTimeString();
             ktxtApplicationName.Text = reportInfo.AppName;
             ktxtVersion.Text = reportInfo.AppVersion;
-            
+
             if (!reportInfo.ShowButtonIcons)
             {
                 RemoveButtonIcons();

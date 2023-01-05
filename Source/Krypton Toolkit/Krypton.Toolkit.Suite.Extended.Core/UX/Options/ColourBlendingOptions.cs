@@ -954,7 +954,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             float temp = Decimal.ToSingle(intensityPercentage);
 
-            output.Text = $"Output: { temp.ToString() }";
+            output.Text = $"Output: {temp.ToString()}";
         }
 
         private void SetApplyButton(bool enabled)

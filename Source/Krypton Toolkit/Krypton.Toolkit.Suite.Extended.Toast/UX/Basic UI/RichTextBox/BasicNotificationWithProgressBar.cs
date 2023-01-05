@@ -154,8 +154,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                 Image customImage = null, string dismissText = "&Dismiss",
                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                                 KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType, iconType, title, contentText, 
-                   usePanelColourInTextArea, showCloseButton, showActionButton, customImage, dismissText, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
+                   usePanelColourInTextArea, showCloseButton, showActionButton, customImage, dismissText,
                    rightToLeftSupport, actionButtonCommand)
         {
             Seconds = seconds;
@@ -219,9 +219,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                 Image customImage = null, string dismissText = "&Dismiss",
                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                                 KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType, iconType, title, contentText, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
                    usePanelColourInTextArea, showCloseButton, showActionButton,
-                   customImage, dismissText, 
+                   customImage, dismissText,
                    rightToLeftSupport, actionButtonCommand) => SoundStream = soundStream;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBar" /> class.</summary>
@@ -246,9 +246,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                 string dismissText = "&Dismiss",
                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                                 KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType, iconType, title, contentText, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
                    usePanelColourInTextArea, showCloseButton, showActionButton,
-                   seconds, customImage, 
+                   seconds, customImage,
                    dismissText, rightToLeftSupport, actionButtonCommand) => SoundStream = soundStream;
         #endregion
 
@@ -281,7 +281,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         private void BasicNotificationWithProgressBar_MouseLeave(object sender, EventArgs e) => _timer.Enabled = true;
 
         private void BasicNotificationWithProgressBar_MouseHover(object sender, EventArgs e) => _timer.Enabled = false;
-        
+
         private void BasicNotificationWithProgressBar_MouseEnter(object sender, EventArgs e) => _timer.Enabled = false;
 
         private void CountdownTimer_Tick(object sender, EventArgs e)

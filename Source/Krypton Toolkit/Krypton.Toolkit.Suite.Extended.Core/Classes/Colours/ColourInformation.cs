@@ -50,11 +50,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (colourHeader != null)
             {
-                builder.Append($"{ colourHeader }:\nARGB: { colour.ToArgb() }\nRGB: { colour.R }, { colour.G }, { colour.B }\nHex: { ColorTranslator.ToHtml(colour) }"); //Known Name: { Color.FromKnownColor(colour) }")
+                builder.Append($"{colourHeader}:\nARGB: {colour.ToArgb()}\nRGB: {colour.R}, {colour.G}, {colour.B}\nHex: {ColorTranslator.ToHtml(colour)}"); //Known Name: { Color.FromKnownColor(colour) }")
             }
             else
             {
-                builder.Append($"ARGB: { colour.ToArgb() }\nRGB: { colour.R }, { colour.G }, { colour.B }\nHex: { ColorTranslator.ToHtml(colour) }");
+                builder.Append($"ARGB: {colour.ToArgb()}\nRGB: {colour.R}, {colour.G}, {colour.B}\nHex: {ColorTranslator.ToHtml(colour)}");
             }
 
             return builder.ToString();
@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             ToolTip temp = new ToolTip();
 
-            temp.SetToolTip(control, ReturnColourInformtion(control.BackColor, $"{ colourHeader } Colour"));
+            temp.SetToolTip(control, ReturnColourInformtion(control.BackColor, $"{colourHeader} Colour"));
         }
         #endregion
     }

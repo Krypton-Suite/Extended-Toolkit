@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                Font userResponseCueFont = null,
                                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                                                KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea,
                    useNativeBackColourInUserResponseArea,
                    customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
@@ -221,7 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                Font userResponseCueFont = null,
                                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                                                KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea,
                    useNativeBackColourInUserResponseArea, seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
@@ -254,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                Font userResponseCueFont = null,
                                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                                                KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea,
                    useNativeBackColourInUserResponseArea, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
@@ -287,8 +287,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                Font userResponseCueFont = null,
                                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                                                KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType, iconType, title, contentText, 
-                   usePanelColourInTextArea, useNativeBackColourInUserResponseArea, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
+                   usePanelColourInTextArea, useNativeBackColourInUserResponseArea,
                    seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,

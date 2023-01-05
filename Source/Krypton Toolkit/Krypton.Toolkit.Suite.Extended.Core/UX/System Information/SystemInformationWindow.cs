@@ -810,7 +810,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public Control TargetControl { get => _targetControl;
+        public Control TargetControl
+        {
+            get => _targetControl;
             set => _targetControl = value;
         }
         #endregion
@@ -849,7 +851,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             try
             {
-                sb.AppendFormat($"Operating System: { Environment.OSVersion }\n");
+                sb.AppendFormat($"Operating System: {Environment.OSVersion}\n");
 
                 if (Environment.Is64BitOperatingSystem)
                 {
@@ -860,24 +862,24 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     sb.AppendFormat("\t\t x86 (32-bit) Operating System\n");
                 }
 
-                sb.AppendFormat($"System Directory: { Environment.SystemDirectory }\n");
+                sb.AppendFormat($"System Directory: {Environment.SystemDirectory}\n");
 
-                sb.AppendFormat($"Processor Count: { Environment.ProcessorCount }\n");
+                sb.AppendFormat($"Processor Count: {Environment.ProcessorCount}\n");
 
-                sb.AppendFormat($"User Domain Name: { Environment.UserDomainName }\n");
+                sb.AppendFormat($"User Domain Name: {Environment.UserDomainName}\n");
 
-                sb.AppendFormat($"User Name: { Environment.UserName }\n");
+                sb.AppendFormat($"User Name: {Environment.UserName}\n");
 
                 sb.AppendFormat("Logical Drives:\n");
 
                 foreach (DriveInfo driveInfo in DriveInfo.GetDrives())
                 {
-                    sb.AppendFormat($"\t Drive: { driveInfo.Name }\n\t\t Volume Label: { driveInfo.VolumeLabel }\n\t\t Drive Type: { driveInfo.DriveType }\n\t\t Drive Format: { driveInfo.DriveFormat }\n\t\t Total Size: { driveInfo.TotalSize }\n\t\t Available Free Space: { driveInfo.AvailableFreeSpace }\n");
+                    sb.AppendFormat($"\t Drive: {driveInfo.Name}\n\t\t Volume Label: {driveInfo.VolumeLabel}\n\t\t Drive Type: {driveInfo.DriveType}\n\t\t Drive Format: {driveInfo.DriveFormat}\n\t\t Total Size: {driveInfo.TotalSize}\n\t\t Available Free Space: {driveInfo.AvailableFreeSpace}\n");
                 }
 
-                sb.AppendFormat($"System Page Size: { Environment.SystemPageSize }\n");
+                sb.AppendFormat($"System Page Size: {Environment.SystemPageSize}\n");
 
-                sb.AppendFormat($"Version: { Environment.Version }");
+                sb.AppendFormat($"Version: {Environment.Version}");
             }
             catch (Exception error)
             {
