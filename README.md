@@ -56,32 +56,31 @@ Development of the Krypton Extended Toolkit is supported by these generous organ
 =======
 
 ## Install the `Ultimate` Package
-**Note:** These packages do not support anything newer than .NET Framework 4.8.1.
 
 ### Full
 
 #### Package Manager
 
 ```ps
-PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate -Version 70.22.11.312
+PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate -Version 70.23.1.5
 ```
 
 #### Package Reference
 
 ```xml
-<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate" Version="70.22.11.312" />
+<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate" Version="70.23.1.5" />
 ```
 
 ### Lite
 
 ```ps
-PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 70.22.11.312
+PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 70.23.1.5
 ```
 
 #### Package Reference
 
 ```xml
-<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate.Lite" Version="70.22.11.312" />
+<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate.Lite" Version="70.23.1.5" />
 ```
 
 =======
