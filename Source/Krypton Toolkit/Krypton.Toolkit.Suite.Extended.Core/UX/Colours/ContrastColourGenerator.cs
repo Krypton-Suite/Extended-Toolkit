@@ -49,7 +49,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kchkKeepOpacityValues = new Krypton.Toolkit.KryptonCheckBox();
             this.kchkAutomateColourContrastValues = new Krypton.Toolkit.KryptonCheckBox();
             this.kbtnOk = new Krypton.Toolkit.KryptonButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnUtiliseContrastColour = new Krypton.Toolkit.KryptonButton();
             this.kbtnUtiliseBaseColour = new Krypton.Toolkit.KryptonButton();
@@ -84,9 +83,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonLabel12 = new Krypton.Toolkit.KryptonLabel();
             this.tmrUpdateUI = new System.Windows.Forms.Timer(this.components);
             this.ttInformation = new System.Windows.Forms.ToolTip(this.components);
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cpbContrastColour)).BeginInit();
@@ -95,12 +94,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kchkKeepOpacityValues);
             this.kryptonPanel1.Controls.Add(this.kchkAutomateColourContrastValues);
             this.kryptonPanel1.Controls.Add(this.kbtnOk);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 560);
             this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(879, 52);
             this.kryptonPanel1.TabIndex = 0;
             // 
@@ -129,16 +130,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 92;
             this.kbtnOk.Values.Text = "&Ok";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 558);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(879, 2);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // kryptonPanel2
             // 
@@ -176,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(879, 558);
+            this.kryptonPanel2.Size = new System.Drawing.Size(879, 560);
             this.kryptonPanel2.TabIndex = 2;
             // 
             // kbtnUtiliseContrastColour
@@ -184,7 +175,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnUtiliseContrastColour.CornerRoundingRadius = -1F;
             this.kbtnUtiliseContrastColour.Location = new System.Drawing.Point(580, 516);
             this.kbtnUtiliseContrastColour.Name = "kbtnUtiliseContrastColour";
-            this.kbtnUtiliseContrastColour.Size = new System.Drawing.Size(90, 25);
+            this.kbtnUtiliseContrastColour.Size = new System.Drawing.Size(203, 25);
             this.kbtnUtiliseContrastColour.TabIndex = 93;
             this.ttInformation.SetToolTip(this.kbtnUtiliseContrastColour, "Utilise Contrast Colour for Palette Generation");
             this.kbtnUtiliseContrastColour.Values.Text = "Utilise &Contrast Colour for Palette";
@@ -194,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnUtiliseBaseColour.CornerRoundingRadius = -1F;
             this.kbtnUtiliseBaseColour.Location = new System.Drawing.Point(57, 516);
             this.kbtnUtiliseBaseColour.Name = "kbtnUtiliseBaseColour";
-            this.kbtnUtiliseBaseColour.Size = new System.Drawing.Size(90, 25);
+            this.kbtnUtiliseBaseColour.Size = new System.Drawing.Size(227, 25);
             this.kbtnUtiliseBaseColour.TabIndex = 92;
             this.ttInformation.SetToolTip(this.kbtnUtiliseBaseColour, "Utilise Base Colour for Palette Generation");
             this.kbtnUtiliseBaseColour.Values.Text = "Utilise &Base Colour for Palette";
@@ -203,27 +194,27 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kryptonButton1
             // 
             this.kryptonButton1.CornerRoundingRadius = -1F;
-            this.kryptonButton1.Location = new System.Drawing.Point(740, 470);
+            this.kryptonButton1.Location = new System.Drawing.Point(713, 470);
             this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(90, 25);
+            this.kryptonButton1.Size = new System.Drawing.Size(117, 25);
             this.kryptonButton1.TabIndex = 91;
             this.kryptonButton1.Values.Text = "Generate &Blue";
             // 
             // kryptonButton3
             // 
             this.kryptonButton3.CornerRoundingRadius = -1F;
-            this.kryptonButton3.Location = new System.Drawing.Point(740, 437);
+            this.kryptonButton3.Location = new System.Drawing.Point(713, 437);
             this.kryptonButton3.Name = "kryptonButton3";
-            this.kryptonButton3.Size = new System.Drawing.Size(90, 25);
+            this.kryptonButton3.Size = new System.Drawing.Size(117, 25);
             this.kryptonButton3.TabIndex = 90;
             this.kryptonButton3.Values.Text = "Generate &Green";
             // 
             // kryptonButton4
             // 
             this.kryptonButton4.CornerRoundingRadius = -1F;
-            this.kryptonButton4.Location = new System.Drawing.Point(740, 393);
+            this.kryptonButton4.Location = new System.Drawing.Point(713, 393);
             this.kryptonButton4.Name = "kryptonButton4";
-            this.kryptonButton4.Size = new System.Drawing.Size(90, 25);
+            this.kryptonButton4.Size = new System.Drawing.Size(117, 25);
             this.kryptonButton4.TabIndex = 89;
             this.kryptonButton4.Values.Text = "Generate &Red";
             // 
@@ -232,7 +223,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnGenerateBaseAlphaValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateBaseAlphaValue.Location = new System.Drawing.Point(222, 348);
             this.kbtnGenerateBaseAlphaValue.Name = "kbtnGenerateBaseAlphaValue";
-            this.kbtnGenerateBaseAlphaValue.Size = new System.Drawing.Size(90, 25);
+            this.kbtnGenerateBaseAlphaValue.Size = new System.Drawing.Size(135, 25);
             this.kbtnGenerateBaseAlphaValue.TabIndex = 88;
             this.kbtnGenerateBaseAlphaValue.Values.Text = "Generate &Alpha";
             this.kbtnGenerateBaseAlphaValue.Click += new System.EventHandler(this.kbtnGenerateBaseAlphaValue_Click);
@@ -264,7 +255,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnGenerateBlueValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateBlueValue.Location = new System.Drawing.Point(222, 470);
             this.kbtnGenerateBlueValue.Name = "kbtnGenerateBlueValue";
-            this.kbtnGenerateBlueValue.Size = new System.Drawing.Size(90, 25);
+            this.kbtnGenerateBlueValue.Size = new System.Drawing.Size(135, 25);
             this.kbtnGenerateBlueValue.TabIndex = 85;
             this.kbtnGenerateBlueValue.Values.Text = "Generate &Blue";
             this.kbtnGenerateBlueValue.Click += new System.EventHandler(this.kbtnGenerateBlueValue_Click);
@@ -274,7 +265,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnGenerateGreenValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateGreenValue.Location = new System.Drawing.Point(222, 437);
             this.kbtnGenerateGreenValue.Name = "kbtnGenerateGreenValue";
-            this.kbtnGenerateGreenValue.Size = new System.Drawing.Size(90, 25);
+            this.kbtnGenerateGreenValue.Size = new System.Drawing.Size(135, 25);
             this.kbtnGenerateGreenValue.TabIndex = 84;
             this.kbtnGenerateGreenValue.Values.Text = "Generate &Green";
             this.kbtnGenerateGreenValue.Click += new System.EventHandler(this.kbtnGenerateGreenValue_Click);
@@ -284,7 +275,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnGenerateRedValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateRedValue.Location = new System.Drawing.Point(222, 393);
             this.kbtnGenerateRedValue.Name = "kbtnGenerateRedValue";
-            this.kbtnGenerateRedValue.Size = new System.Drawing.Size(90, 25);
+            this.kbtnGenerateRedValue.Size = new System.Drawing.Size(135, 25);
             this.kbtnGenerateRedValue.TabIndex = 83;
             this.kbtnGenerateRedValue.Values.Text = "Generate &Red";
             this.kbtnGenerateRedValue.Click += new System.EventHandler(this.kbtnGenerateRedValue_Click);
@@ -525,6 +516,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.tmrUpdateUI.Interval = 250;
             this.tmrUpdateUI.Tick += new System.EventHandler(this.tmrUpdateUI_Tick);
             // 
+            // kryptonBorderEdge1
+            // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(879, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
             // ContrastColourGenerator
             // 
             this.AcceptButton = this.kbtnOk;
@@ -532,7 +532,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 612);
             this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -545,7 +544,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
@@ -558,7 +556,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private CircularPictureBox cpbContrastColour;
         private CircularPictureBox cpbBaseColour;
@@ -596,6 +593,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private Krypton.Toolkit.KryptonButton kbtnUtiliseContrastColour;
         private System.Windows.Forms.ToolTip ttInformation;
         private Krypton.Toolkit.KryptonButton kbtnUtiliseBaseColour;
+        private KryptonBorderEdge kryptonBorderEdge1;
         #endregion
 
         #region Variables

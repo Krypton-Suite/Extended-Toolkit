@@ -33,7 +33,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region System
         private KryptonPanel kryptonPanel2;
         private KryptonListBox klbColours;
-        private System.Windows.Forms.Panel panel1;
         private KryptonButton kbtnConvertToRGB;
         private KryptonTextBox ktxtHexValue;
         private KryptonLabel kryptonLabel5;
@@ -44,6 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private ContextMenuStrip ctxColourList;
         private System.ComponentModel.IContainer components;
         private ToolStripMenuItem removeSelectedColourToolStripMenuItem;
+        private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kryptonPanel1;
 
         private void InitializeComponent()
@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.removeSelectedColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ktxtHexValue = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -71,6 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kbtnLoadFromFile);
             this.kryptonPanel1.Controls.Add(this.kbtnExport);
             this.kryptonPanel1.Controls.Add(this.kbtnOk);
@@ -78,6 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 622);
             this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(816, 51);
             this.kryptonPanel1.TabIndex = 0;
             // 
@@ -196,21 +198,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonLabel5.TabIndex = 30;
             this.kryptonLabel5.Values.Text = "Hexadecimal: #";
             // 
-            // panel1
+            // kryptonBorderEdge1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 619);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(816, 3);
-            this.panel1.TabIndex = 2;
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(816, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // HexadecimalToRGBConverter
             // 
             this.AcceptButton = this.kbtnCancel;
             this.CancelButton = this.kbtnCancel;
             this.ClientSize = new System.Drawing.Size(816, 673);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

@@ -34,7 +34,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private KryptonPanel kryptonPanel1;
         private KryptonButton kbtnOk;
-        private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel2;
         private KryptonListBox klstCustomColourSelector;
         private System.Windows.Forms.PictureBox pbxColourPreview;
@@ -52,6 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private KryptonNumericUpDown knumRedChannelValue;
         private KryptonLabel kryptonLabel2;
         private KryptonButton kbtnUtiliseAsBaseColour;
+        private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonButton kbtnSaveColour;
 
         private void InitializeComponent()
@@ -60,7 +60,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnUtiliseAsBaseColour = new Krypton.Toolkit.KryptonButton();
             this.kbtnOk = new Krypton.Toolkit.KryptonButton();
             this.kbtnSaveColour = new Krypton.Toolkit.KryptonButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.klstCustomColourSelector = new Krypton.Toolkit.KryptonListBox();
             this.pbxColourPreview = new System.Windows.Forms.PictureBox();
@@ -77,6 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnGenerateNormalTextRedValue = new Krypton.Toolkit.KryptonButton();
             this.knumRedChannelValue = new Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -88,12 +88,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kbtnUtiliseAsBaseColour);
             this.kryptonPanel1.Controls.Add(this.kbtnOk);
             this.kryptonPanel1.Controls.Add(this.kbtnSaveColour);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 338);
             this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(1023, 49);
             this.kryptonPanel1.TabIndex = 1;
             // 
@@ -129,15 +131,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnSaveColour.Values.Text = "Save &Selected Colour";
             this.kbtnSaveColour.Click += new System.EventHandler(this.kbtnSaveColour_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 336);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1023, 2);
-            this.panel1.TabIndex = 2;
-            // 
             // kryptonPanel2
             // 
             this.kryptonPanel2.Controls.Add(this.klstCustomColourSelector);
@@ -158,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(1023, 336);
+            this.kryptonPanel2.Size = new System.Drawing.Size(1023, 338);
             this.kryptonPanel2.TabIndex = 3;
             // 
             // klstCustomColourSelector
@@ -349,12 +342,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonLabel2.TabIndex = 142;
             this.kryptonLabel2.Values.Text = "Red:";
             // 
+            // kryptonBorderEdge1
+            // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(1023, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
             // CustomColours
             // 
             this.AcceptButton = this.kbtnOk;
             this.ClientSize = new System.Drawing.Size(1023, 387);
             this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -366,6 +367,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.Load += new System.EventHandler(this.CustomColours_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();

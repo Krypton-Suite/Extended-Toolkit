@@ -46,12 +46,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             this.components = new System.ComponentModel.Container();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.ktxtHexColourValue = new Krypton.Toolkit.KryptonTextBox();
-            this.klblRGBOutput = new Krypton.Toolkit.KryptonLabel();
-            this.pnlPreview = new System.Windows.Forms.Panel();
             this.kchkAutoUpdate = new Krypton.Toolkit.KryptonCheckBox();
+            this.klblRGBOutput = new Krypton.Toolkit.KryptonLabel();
             this.kbtnConvert = new Krypton.Toolkit.KryptonButton();
+            this.pnlPreview = new System.Windows.Forms.Panel();
+            this.ktxtHexColourValue = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
             this.kPal = new Krypton.Toolkit.KryptonCustomPaletteBase(this.components);
             this.tmrUpdateValues = new System.Windows.Forms.Timer(this.components);
@@ -76,14 +76,47 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel1.Size = new System.Drawing.Size(750, 202);
             this.kryptonPanel1.TabIndex = 0;
             // 
-            // kryptonLabel1
+            // kchkAutoUpdate
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(43, 37);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(235, 26);
-            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel1.TabIndex = 1;
-            this.kryptonLabel1.Values.Text = "Hexadecimal Colour Value: #";
+            this.kchkAutoUpdate.Checked = true;
+            this.kchkAutoUpdate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.kchkAutoUpdate.Location = new System.Drawing.Point(237, 157);
+            this.kchkAutoUpdate.Name = "kchkAutoUpdate";
+            this.kchkAutoUpdate.Size = new System.Drawing.Size(234, 26);
+            this.kchkAutoUpdate.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kchkAutoUpdate.TabIndex = 6;
+            this.kchkAutoUpdate.Values.Text = "Automatically Update &Values";
+            this.kchkAutoUpdate.CheckedChanged += new System.EventHandler(this.kchkAutoUpdate_CheckedChanged);
+            // 
+            // klblRGBOutput
+            // 
+            this.klblRGBOutput.Location = new System.Drawing.Point(43, 104);
+            this.klblRGBOutput.Name = "klblRGBOutput";
+            this.klblRGBOutput.Size = new System.Drawing.Size(143, 37);
+            this.klblRGBOutput.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.klblRGBOutput.TabIndex = 8;
+            this.klblRGBOutput.Values.Text = "RGB Value:";
+            // 
+            // kbtnConvert
+            // 
+            this.kbtnConvert.CornerRoundingRadius = -1F;
+            this.kbtnConvert.Location = new System.Drawing.Point(43, 157);
+            this.kbtnConvert.Name = "kbtnConvert";
+            this.kbtnConvert.Size = new System.Drawing.Size(188, 25);
+            this.kbtnConvert.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnConvert.TabIndex = 7;
+            this.kbtnConvert.Values.Text = "&Convert Hex to RGB";
+            this.kbtnConvert.Click += new System.EventHandler(this.kbtnConvert_Click);
+            // 
+            // pnlPreview
+            // 
+            this.pnlPreview.BackColor = System.Drawing.Color.Transparent;
+            this.pnlPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlPreview.Location = new System.Drawing.Point(634, 37);
+            this.pnlPreview.Name = "pnlPreview";
+            this.pnlPreview.Size = new System.Drawing.Size(101, 89);
+            this.pnlPreview.TabIndex = 9;
+            this.pnlPreview.MouseEnter += new System.EventHandler(this.pnlPreview_MouseEnter);
             // 
             // ktxtHexColourValue
             // 
@@ -97,51 +130,24 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ktxtHexColourValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ktxtHexColourValue.TextChanged += new System.EventHandler(this.ktxtHexColourValue_TextChanged);
             // 
-            // klblRGBOutput
+            // kryptonLabel1
             // 
-            this.klblRGBOutput.Location = new System.Drawing.Point(43, 104);
-            this.klblRGBOutput.Name = "klblRGBOutput";
-            this.klblRGBOutput.Size = new System.Drawing.Size(143, 37);
-            this.klblRGBOutput.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.klblRGBOutput.TabIndex = 8;
-            this.klblRGBOutput.Values.Text = "RGB Value:";
-            // 
-            // pnlPreview
-            // 
-            this.pnlPreview.BackColor = System.Drawing.Color.Transparent;
-            this.pnlPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlPreview.Location = new System.Drawing.Point(634, 37);
-            this.pnlPreview.Name = "pnlPreview";
-            this.pnlPreview.Size = new System.Drawing.Size(101, 89);
-            this.pnlPreview.TabIndex = 9;
-            this.pnlPreview.MouseEnter += new System.EventHandler(this.pnlPreview_MouseEnter);
-            // 
-            // kchkAutoUpdate
-            // 
-            this.kchkAutoUpdate.Checked = true;
-            this.kchkAutoUpdate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.kchkAutoUpdate.Location = new System.Drawing.Point(237, 157);
-            this.kchkAutoUpdate.Name = "kchkAutoUpdate";
-            this.kchkAutoUpdate.Size = new System.Drawing.Size(234, 26);
-            this.kchkAutoUpdate.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kchkAutoUpdate.TabIndex = 6;
-            this.kchkAutoUpdate.Values.Text = "Automatically Update &Values";
-            this.kchkAutoUpdate.CheckedChanged += new System.EventHandler(this.kchkAutoUpdate_CheckedChanged);
-            // 
-            // kbtnConvert
-            // 
-            this.kbtnConvert.Location = new System.Drawing.Point(43, 157);
-            this.kbtnConvert.Name = "kbtnConvert";
-            this.kbtnConvert.Size = new System.Drawing.Size(188, 25);
-            this.kbtnConvert.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kbtnConvert.TabIndex = 7;
-            this.kbtnConvert.Values.Text = "&Convert Hex to RGB";
-            this.kbtnConvert.Click += new System.EventHandler(this.kbtnConvert_Click);
+            this.kryptonLabel1.Location = new System.Drawing.Point(43, 37);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(167, 20);
+            this.kryptonLabel1.TabIndex = 1;
+            this.kryptonLabel1.Values.Text = "Hexadecimal Colour Value: #";
             // 
             // kryptonManager1
             // 
             this.kryptonManager1.GlobalPalette = this.kPal;
             this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.Custom;
+            // 
+            // kPal
+            // 
+            this.kPal.BaseFontSize = 9F;
+            this.kPal.BasePaletteType = Krypton.Toolkit.BasePaletteType.Custom;
+            this.kPal.ThemeName = null;
             // 
             // tmrUpdateValues
             // 

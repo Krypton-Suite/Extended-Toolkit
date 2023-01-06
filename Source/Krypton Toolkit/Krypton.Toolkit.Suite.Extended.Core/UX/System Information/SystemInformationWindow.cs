@@ -45,7 +45,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SystemInformationWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnClose = new Krypton.Toolkit.KryptonButton();
             this.kryptonNavigator1 = new Krypton.Navigator.KryptonNavigator();
@@ -68,6 +67,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.copyInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrRealTimeUpdater = new System.Windows.Forms.Timer(this.components);
+            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
@@ -84,11 +85,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbClass)).BeginInit();
             this.ctxMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.kbtnClose);
             this.kryptonPanel1.Controls.Add(this.kryptonNavigator1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
@@ -98,21 +100,31 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnClose
             // 
-            this.kbtnClose.AutoSize = true;
-            this.kbtnClose.Location = new System.Drawing.Point(697, 756);
+            this.kbtnClose.CornerRoundingRadius = -1F;
+            this.kbtnClose.Location = new System.Drawing.Point(697, 13);
             this.kbtnClose.Name = "kbtnClose";
-            this.kbtnClose.Size = new System.Drawing.Size(90, 30);
-            this.kbtnClose.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnClose.Size = new System.Drawing.Size(90, 25);
             this.kbtnClose.TabIndex = 1;
             this.kbtnClose.Values.Text = "C&lose";
             this.kbtnClose.Click += new System.EventHandler(this.kbtnClose_Click);
             // 
             // kryptonNavigator1
             // 
+            this.kryptonNavigator1.Button.ButtonDisplayLogic = Krypton.Navigator.ButtonDisplayLogic.Context;
             this.kryptonNavigator1.Button.CloseButtonAction = Krypton.Navigator.CloseButtonAction.None;
             this.kryptonNavigator1.Button.CloseButtonDisplay = Krypton.Navigator.ButtonDisplay.Hide;
+            this.kryptonNavigator1.Button.ContextButtonAction = Krypton.Navigator.ContextButtonAction.SelectPage;
+            this.kryptonNavigator1.Button.ContextButtonDisplay = Krypton.Navigator.ButtonDisplay.Logic;
+            this.kryptonNavigator1.Button.ContextMenuMapImage = Krypton.Navigator.MapKryptonPageImage.Small;
+            this.kryptonNavigator1.Button.ContextMenuMapText = Krypton.Navigator.MapKryptonPageText.TextTitle;
+            this.kryptonNavigator1.Button.NextButtonAction = Krypton.Navigator.DirectionButtonAction.ModeAppropriateAction;
+            this.kryptonNavigator1.Button.NextButtonDisplay = Krypton.Navigator.ButtonDisplay.Logic;
+            this.kryptonNavigator1.Button.PreviousButtonAction = Krypton.Navigator.DirectionButtonAction.ModeAppropriateAction;
+            this.kryptonNavigator1.Button.PreviousButtonDisplay = Krypton.Navigator.ButtonDisplay.Logic;
             this.kryptonNavigator1.Location = new System.Drawing.Point(12, 12);
             this.kryptonNavigator1.Name = "kryptonNavigator1";
+            this.kryptonNavigator1.NavigatorMode = Krypton.Navigator.NavigatorMode.BarTabGroup;
+            this.kryptonNavigator1.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlClient;
             this.kryptonNavigator1.Pages.AddRange(new Krypton.Navigator.KryptonPage[] {
             this.kryptonPage1,
             this.kryptonPage2,
@@ -121,7 +133,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPage5});
             this.kryptonNavigator1.SelectedIndex = 4;
             this.kryptonNavigator1.Size = new System.Drawing.Size(776, 732);
-            this.kryptonNavigator1.StateCommon.Tab.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
             // 
@@ -133,7 +144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPage1.LastVisibleSet = true;
             this.kryptonPage1.MinimumSize = new System.Drawing.Size(50, 50);
             this.kryptonPage1.Name = "kryptonPage1";
-            this.kryptonPage1.Size = new System.Drawing.Size(774, 699);
+            this.kryptonPage1.Size = new System.Drawing.Size(774, 705);
             this.kryptonPage1.Text = "System";
             this.kryptonPage1.ToolTipTitle = "Page ToolTip";
             this.kryptonPage1.UniqueName = "52A80FE93F9648674DAA3B958E5EEAE3";
@@ -144,8 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.krtbSystemInformation.Location = new System.Drawing.Point(0, 0);
             this.krtbSystemInformation.Name = "krtbSystemInformation";
             this.krtbSystemInformation.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.krtbSystemInformation.Size = new System.Drawing.Size(774, 699);
-            this.krtbSystemInformation.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.krtbSystemInformation.Size = new System.Drawing.Size(774, 705);
             this.krtbSystemInformation.TabIndex = 1;
             this.krtbSystemInformation.Text = "";
             // 
@@ -157,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPage2.LastVisibleSet = true;
             this.kryptonPage2.MinimumSize = new System.Drawing.Size(50, 50);
             this.kryptonPage2.Name = "kryptonPage2";
-            this.kryptonPage2.Size = new System.Drawing.Size(774, 699);
+            this.kryptonPage2.Size = new System.Drawing.Size(774, 705);
             this.kryptonPage2.Text = "CPU";
             this.kryptonPage2.ToolTipTitle = "Page ToolTip";
             this.kryptonPage2.UniqueName = "AF3BD15EEE494D712799EDA8503D850E";
@@ -168,8 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.krtbCPUInformation.Location = new System.Drawing.Point(0, 0);
             this.krtbCPUInformation.Name = "krtbCPUInformation";
             this.krtbCPUInformation.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.krtbCPUInformation.Size = new System.Drawing.Size(774, 699);
-            this.krtbCPUInformation.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.krtbCPUInformation.Size = new System.Drawing.Size(774, 705);
             this.krtbCPUInformation.TabIndex = 1;
             this.krtbCPUInformation.Text = "";
             // 
@@ -181,7 +190,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPage3.LastVisibleSet = true;
             this.kryptonPage3.MinimumSize = new System.Drawing.Size(50, 50);
             this.kryptonPage3.Name = "kryptonPage3";
-            this.kryptonPage3.Size = new System.Drawing.Size(774, 699);
+            this.kryptonPage3.Size = new System.Drawing.Size(774, 705);
             this.kryptonPage3.Text = "Video";
             this.kryptonPage3.ToolTipTitle = "Page ToolTip";
             this.kryptonPage3.UniqueName = "2502D0D0948B48EAA1A4DF94B9393C51";
@@ -192,8 +201,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.krtbVideoInformation.Location = new System.Drawing.Point(0, 0);
             this.krtbVideoInformation.Name = "krtbVideoInformation";
             this.krtbVideoInformation.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.krtbVideoInformation.Size = new System.Drawing.Size(774, 699);
-            this.krtbVideoInformation.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.krtbVideoInformation.Size = new System.Drawing.Size(774, 705);
             this.krtbVideoInformation.TabIndex = 1;
             this.krtbVideoInformation.Text = "";
             // 
@@ -205,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPage4.LastVisibleSet = true;
             this.kryptonPage4.MinimumSize = new System.Drawing.Size(50, 50);
             this.kryptonPage4.Name = "kryptonPage4";
-            this.kryptonPage4.Size = new System.Drawing.Size(774, 699);
+            this.kryptonPage4.Size = new System.Drawing.Size(774, 705);
             this.kryptonPage4.Text = "Local Drives";
             this.kryptonPage4.ToolTipTitle = "Page ToolTip";
             this.kryptonPage4.UniqueName = "0E6E7473C4AF4658239BBFE1BE865410";
@@ -216,8 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.krtbLocalDrivesInformation.Location = new System.Drawing.Point(0, 0);
             this.krtbLocalDrivesInformation.Name = "krtbLocalDrivesInformation";
             this.krtbLocalDrivesInformation.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.krtbLocalDrivesInformation.Size = new System.Drawing.Size(774, 699);
-            this.krtbLocalDrivesInformation.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.krtbLocalDrivesInformation.Size = new System.Drawing.Size(774, 705);
             this.krtbLocalDrivesInformation.TabIndex = 1;
             this.krtbLocalDrivesInformation.Text = "";
             // 
@@ -232,7 +239,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPage5.LastVisibleSet = true;
             this.kryptonPage5.MinimumSize = new System.Drawing.Size(50, 50);
             this.kryptonPage5.Name = "kryptonPage5";
-            this.kryptonPage5.Size = new System.Drawing.Size(774, 699);
+            this.kryptonPage5.Size = new System.Drawing.Size(774, 706);
             this.kryptonPage5.Text = "More";
             this.kryptonPage5.ToolTipTitle = "Page ToolTip";
             this.kryptonPage5.UniqueName = "D7CDD629AF9D4B7AB886B5D66381737C";
@@ -240,42 +247,45 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // klstMoreInformation
             // 
             this.klstMoreInformation.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.klstMoreInformation.Location = new System.Drawing.Point(0, 49);
+            this.klstMoreInformation.Location = new System.Drawing.Point(0, 47);
             this.klstMoreInformation.Name = "klstMoreInformation";
             this.klstMoreInformation.ScrollAlwaysVisible = true;
-            this.klstMoreInformation.Size = new System.Drawing.Size(774, 650);
-            this.klstMoreInformation.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klstMoreInformation.Size = new System.Drawing.Size(774, 659);
             this.klstMoreInformation.TabIndex = 5;
             // 
             // kbtnSave
             // 
-            this.kbtnSave.AutoSize = true;
+            this.kbtnSave.CornerRoundingRadius = -1F;
             this.kbtnSave.Enabled = false;
-            this.kbtnSave.Location = new System.Drawing.Point(346, 15);
+            this.kbtnSave.Location = new System.Drawing.Point(326, 15);
             this.kbtnSave.Name = "kbtnSave";
-            this.kbtnSave.Size = new System.Drawing.Size(90, 28);
-            this.kbtnSave.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnSave.Size = new System.Drawing.Size(90, 25);
             this.kbtnSave.TabIndex = 4;
             this.kbtnSave.Values.Text = "&Save";
             // 
             // kcmbClass
             // 
+            this.kcmbClass.CornerRoundingRadius = -1F;
             this.kcmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbClass.DropDownWidth = 121;
-            this.kcmbClass.Location = new System.Drawing.Point(120, 16);
+            this.kcmbClass.IntegralHeight = false;
+            this.kcmbClass.Location = new System.Drawing.Point(101, 15);
             this.kcmbClass.Name = "kcmbClass";
-            this.kcmbClass.Size = new System.Drawing.Size(219, 25);
-            this.kcmbClass.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kcmbClass.Size = new System.Drawing.Size(219, 21);
             this.kcmbClass.TabIndex = 3;
             // 
             // kryptonLabel1
             // 
+            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel1.Location = new System.Drawing.Point(14, 15);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(100, 26);
-            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel1.Size = new System.Drawing.Size(81, 20);
             this.kryptonLabel1.TabIndex = 2;
             this.kryptonLabel1.Values.Text = "Select Class:";
+            // 
+            // kryptonManager1
+            // 
+            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.SparkleBlueDarkMode;
             // 
             // ctxMenu
             // 
@@ -285,38 +295,58 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.toolStripMenuItem1,
             this.copyInformationToolStripMenuItem});
             this.ctxMenu.Name = "ctxMenu";
-            this.ctxMenu.Size = new System.Drawing.Size(181, 54);
+            this.ctxMenu.Size = new System.Drawing.Size(180, 54);
             // 
             // updateInRealTimeToolStripMenuItem
             // 
             this.updateInRealTimeToolStripMenuItem.CheckOnClick = true;
             this.updateInRealTimeToolStripMenuItem.Name = "updateInRealTimeToolStripMenuItem";
-            this.updateInRealTimeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateInRealTimeToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.updateInRealTimeToolStripMenuItem.Text = "Update in &Real Time";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(176, 6);
             // 
             // copyInformationToolStripMenuItem
             // 
             this.copyInformationToolStripMenuItem.Name = "copyInformationToolStripMenuItem";
-            this.copyInformationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyInformationToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.copyInformationToolStripMenuItem.Text = "&Copy Information";
             // 
             // tmrRealTimeUpdater
             // 
             this.tmrRealTimeUpdater.Interval = 250;
             // 
+            // kryptonPanel2
+            // 
+            this.kryptonPanel2.Controls.Add(this.kbtnClose);
+            this.kryptonPanel2.Controls.Add(this.kryptonBorderEdge1);
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kryptonPanel2.Location = new System.Drawing.Point(0, 748);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
+            this.kryptonPanel2.Size = new System.Drawing.Size(800, 50);
+            this.kryptonPanel2.TabIndex = 1;
+            // 
+            // kryptonBorderEdge1
+            // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(800, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
             // SystemInformationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 798);
+            this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SystemInformationWindow";
@@ -326,7 +356,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.Load += new System.EventHandler(this.SystemInformationWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).EndInit();
             this.kryptonNavigator1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).EndInit();
@@ -342,6 +371,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbClass)).EndInit();
             this.ctxMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
+            this.kryptonPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -805,7 +837,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                                 "Win32_WMIElementSetting",
                                                 "Win32_WMISetting"
                                                 };
-
+        private KryptonPanel kryptonPanel2;
+        private KryptonBorderEdge kryptonBorderEdge1;
         private Control _targetControl = null;
         #endregion
 

@@ -55,6 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnGenerateNewFile = new Krypton.Toolkit.KryptonButton();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.krtbFile = new Krypton.Toolkit.KryptonRichTextBox();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -63,6 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kbtnClose);
             this.kryptonPanel1.Controls.Add(this.kbtnGenerateColours);
             this.kryptonPanel1.Controls.Add(this.kbtnSaveFile);
@@ -71,6 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 504);
             this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(631, 52);
             this.kryptonPanel1.TabIndex = 0;
             // 
@@ -93,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnGenerateColours.CornerRoundingRadius = -1F;
             this.kbtnGenerateColours.Location = new System.Drawing.Point(318, 15);
             this.kbtnGenerateColours.Name = "kbtnGenerateColours";
-            this.kbtnGenerateColours.Size = new System.Drawing.Size(103, 25);
+            this.kbtnGenerateColours.Size = new System.Drawing.Size(105, 25);
             this.kbtnGenerateColours.TabIndex = 30;
             this.kbtnGenerateColours.Values.Text = "Generate &Colours";
             // 
@@ -126,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnGenerateNewFile.CornerRoundingRadius = -1F;
             this.kbtnGenerateNewFile.Location = new System.Drawing.Point(12, 15);
             this.kbtnGenerateNewFile.Name = "kbtnGenerateNewFile";
-            this.kbtnGenerateNewFile.Size = new System.Drawing.Size(108, 25);
+            this.kbtnGenerateNewFile.Size = new System.Drawing.Size(110, 25);
             this.kbtnGenerateNewFile.TabIndex = 27;
             this.kbtnGenerateNewFile.Values.Text = "Generate &New File";
             this.kbtnGenerateNewFile.Click += new System.EventHandler(this.kbtnGenerateNewFile_Click);
@@ -142,14 +145,23 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // krtbFile
             // 
-            this.krtbFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.krtbFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.krtbFile.Location = new System.Drawing.Point(12, 12);
             this.krtbFile.Name = "krtbFile";
             this.krtbFile.Size = new System.Drawing.Size(606, 477);
             this.krtbFile.TabIndex = 0;
             this.krtbFile.Text = "kryptonRichTextBox1";
+            // 
+            // kryptonBorderEdge1
+            // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(631, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // PaletteFileEditor
             // 
@@ -183,6 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private Krypton.Toolkit.KryptonButton kbtnOpenFile;
         private KryptonButton kbtnClose;
         private KryptonRichTextBox krtbFile;
+        private KryptonBorderEdge kryptonBorderEdge1;
 
         //private AutocompleteMenuNS.AutocompleteMenu acmPalette;
         #endregion

@@ -45,22 +45,22 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.kryptonPanel1 = new Toolkit.KryptonPanel();
-            this.kchkEnableAlphaChannel = new Toolkit.KryptonCheckBox();
-            this.numAlpha = new Toolkit.KryptonNumericUpDown();
-            this.klblAlpha = new Toolkit.KryptonLabel();
-            this.numBlue = new Toolkit.KryptonNumericUpDown();
-            this.numGreen = new Toolkit.KryptonNumericUpDown();
-            this.kryptonLabel5 = new Toolkit.KryptonLabel();
-            this.kryptonLabel4 = new Toolkit.KryptonLabel();
-            this.klblHexOutput = new Toolkit.KryptonLabel();
+            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kchkEnableAlphaChannel = new Krypton.Toolkit.KryptonCheckBox();
+            this.numAlpha = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.klblAlpha = new Krypton.Toolkit.KryptonLabel();
+            this.numBlue = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.numGreen = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
+            this.klblHexOutput = new Krypton.Toolkit.KryptonLabel();
             this.pnlPreview = new System.Windows.Forms.Panel();
-            this.kchkAutoUpdate = new Toolkit.KryptonCheckBox();
-            this.numRed = new Toolkit.KryptonNumericUpDown();
-            this.kbtnConvert = new Toolkit.KryptonButton();
-            this.kryptonLabel1 = new Toolkit.KryptonLabel();
-            this.kryptonManager1 = new Toolkit.KryptonManager(this.components);
-            this.kPal = new Toolkit.KryptonCustomPaletteBase(this.components);
+            this.kchkAutoUpdate = new Krypton.Toolkit.KryptonCheckBox();
+            this.numRed = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.kbtnConvert = new Krypton.Toolkit.KryptonButton();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
+            this.kPal = new Krypton.Toolkit.KryptonCustomPaletteBase(this.components);
             this.tmrUpdateValues = new System.Windows.Forms.Timer(this.components);
             this.ttInformation = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -100,6 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // numAlpha
             // 
+            this.numAlpha.AllowDecimals = true;
             this.numAlpha.DecimalPlaces = 1;
             this.numAlpha.Enabled = false;
             this.numAlpha.Location = new System.Drawing.Point(605, 35);
@@ -123,8 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.klblAlpha.Enabled = false;
             this.klblAlpha.Location = new System.Drawing.Point(537, 37);
             this.klblAlpha.Name = "klblAlpha";
-            this.klblAlpha.Size = new System.Drawing.Size(62, 26);
-            this.klblAlpha.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblAlpha.Size = new System.Drawing.Size(45, 20);
             this.klblAlpha.TabIndex = 11;
             this.klblAlpha.Values.Text = "Alpha:";
             // 
@@ -158,8 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kryptonLabel5.Location = new System.Drawing.Point(200, 37);
             this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(62, 26);
-            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel5.Size = new System.Drawing.Size(46, 20);
             this.kryptonLabel5.TabIndex = 8;
             this.kryptonLabel5.Values.Text = "Green:";
             // 
@@ -167,8 +166,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kryptonLabel4.Location = new System.Drawing.Point(377, 37);
             this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(50, 26);
-            this.kryptonLabel4.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel4.Size = new System.Drawing.Size(37, 20);
             this.kryptonLabel4.TabIndex = 7;
             this.kryptonLabel4.Values.Text = "Blue:";
             // 
@@ -176,8 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.klblHexOutput.Location = new System.Drawing.Point(43, 92);
             this.klblHexOutput.Name = "klblHexOutput";
-            this.klblHexOutput.Size = new System.Drawing.Size(139, 37);
-            this.klblHexOutput.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.klblHexOutput.Size = new System.Drawing.Size(68, 20);
             this.klblHexOutput.TabIndex = 5;
             this.klblHexOutput.Values.Text = "Hex Value:";
             // 
@@ -218,6 +215,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnConvert
             // 
+            this.kbtnConvert.CornerRoundingRadius = -1F;
             this.kbtnConvert.Location = new System.Drawing.Point(43, 144);
             this.kbtnConvert.Name = "kbtnConvert";
             this.kbtnConvert.Size = new System.Drawing.Size(188, 25);
@@ -230,15 +228,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kryptonLabel1.Location = new System.Drawing.Point(43, 37);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(46, 26);
-            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel1.Size = new System.Drawing.Size(34, 20);
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Red:";
             // 
             // kryptonManager1
             // 
             this.kryptonManager1.GlobalPalette = this.kPal;
-            this.kryptonManager1.GlobalPaletteMode = Toolkit.PaletteMode.Custom;
+            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.Custom;
+            // 
+            // kPal
+            // 
+            this.kPal.BaseFontSize = 9F;
+            this.kPal.BasePaletteType = Krypton.Toolkit.BasePaletteType.Custom;
+            this.kPal.ThemeName = null;
             // 
             // tmrUpdateValues
             // 

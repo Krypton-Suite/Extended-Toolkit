@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ss = new System.Windows.Forms.StatusStrip();
             this.tsslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.kbtnOk = new Krypton.Toolkit.KryptonButton();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cpbLightestColourPreview)).BeginInit();
@@ -350,7 +350,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnFileExport.CornerRoundingRadius = -1F;
             this.kbtnFileExport.Location = new System.Drawing.Point(14, 582);
             this.kbtnFileExport.Name = "kbtnFileExport";
-            this.kbtnFileExport.Size = new System.Drawing.Size(86, 28);
+            this.kbtnFileExport.Size = new System.Drawing.Size(88, 30);
             this.kbtnFileExport.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnFileExport.TabIndex = 58;
             this.kbtnFileExport.Values.Text = "Export &File";
@@ -585,6 +585,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel2.Controls.Add(this.kbtnDebugConsole);
             this.kryptonPanel2.Controls.Add(this.kbtnOptions);
             this.kryptonPanel2.Controls.Add(this.kbtnDefineIndividualColours);
@@ -596,6 +597,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 427);
             this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel2.Size = new System.Drawing.Size(1028, 69);
             this.kryptonPanel2.TabIndex = 1;
             // 
@@ -666,14 +668,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnOk.TabIndex = 59;
             this.kbtnOk.Values.Text = "O&k";
             // 
-            // panel1
+            // kryptonBorderEdge1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 425);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1028, 2);
-            this.panel1.TabIndex = 2;
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(1028, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // PaletteColourCreator
             // 
@@ -681,7 +683,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 496);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -755,7 +756,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private Krypton.Toolkit.KryptonTrackBar ktbAlpha;
         private Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private Krypton.Toolkit.KryptonButton kbtnOk;
-        private System.Windows.Forms.Panel panel1;
         private CircularPictureBox cpbLightestColourPreview;
         private CircularPictureBox cpbDarkestColourPreview;
         private CircularPictureBox cpbMiddleColourPreview;
@@ -784,7 +784,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private AllMergedColourSettingsManager _colourSettingsManager = new();
 
         private Color _baseColour, _colourDark, _colourNormal, _colourLight, _colourLightness;
-
+        private KryptonBorderEdge kryptonBorderEdge1;
         private bool _paletteColourSelector;
         #endregion
 
