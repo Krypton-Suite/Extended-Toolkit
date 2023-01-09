@@ -34,15 +34,15 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         {
             switch (hashType)
             {
-                case HashType.MD5:
+                case HashType.Md5:
                     return MakeHashString(MD5.Create().ComputeHash(new FileStream(filePath, FileMode.Open)));
-                case HashType.SHA1:
+                case HashType.Sha1:
                     return MakeHashString(SHA1.Create().ComputeHash(new FileStream(filePath, FileMode.Open)));
-                case HashType.SHA256:
+                case HashType.Sha256:
                     return MakeHashString(SHA256.Create().ComputeHash(new FileStream(filePath, FileMode.Open)));
-                case HashType.SHA384:
+                case HashType.Sha384:
                     return MakeHashString(SHA384.Create().ComputeHash(new FileStream(filePath, FileMode.Open)));
-                case HashType.SHA512:
+                case HashType.Sha512:
                     return MakeHashString(SHA512.Create().ComputeHash(new FileStream(filePath, FileMode.Open)));
                 default:
                     return string.Empty;

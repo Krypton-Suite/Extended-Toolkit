@@ -213,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                 Icon = _applicationInfo.ApplicationIcon;
             }
 
-            kwlblNewVersion.Text = updateXmlInfo.Tag != JobType.REMOVE ? string.Format(updateXmlInfo.Tag == JobType.UPDATE ? "Update: {0}\nNew Version: {1}" : "New: {0}\nVersion: {1}", Path.GetFileName(_applicationInfo.ApplicationPath), _updateInfo.Version.ToString()) :
+            kwlblNewVersion.Text = updateXmlInfo.Tag != JobType.Remove ? string.Format(updateXmlInfo.Tag == JobType.Update ? "Update: {0}\nNew Version: {1}" : "New: {0}\nVersion: {1}", Path.GetFileName(_applicationInfo.ApplicationPath), _updateInfo.Version.ToString()) :
                 $"Remove: {Path.GetFileName(_applicationInfo.ApplicationPath)}";
         }
         #endregion

@@ -25,24 +25,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
-    public enum RunDialogIconVisibility
+    public enum JobType
     {
-        HIDDEN = 0,
-        VISIBLE = 1
-    }
-
-    /// <summary>The run dialog UI type.</summary>
-    public enum RunDialogType
-    {
-        /// <summary>
-        /// Show a combobox on the run dialog.
-        /// </summary>
-        COMBOBOX = 0,
-        /// <summary>
-        /// Show a textbox on the run dialog.
-        /// </summary>
-        TEXTBOX = 1
+        Update,
+        Add,
+        Remove
     }
 }

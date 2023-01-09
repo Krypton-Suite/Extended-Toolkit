@@ -302,7 +302,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             string updateMD5 = ((string[])e.Argument)[1];
 
             // Hash the file and compare to the hash in the update xml
-            if (Hasher.HashFile(file, HashType.MD5) != updateMD5.ToUpper())
+            if (Hasher.HashFile(file, HashType.Md5) != updateMD5.ToUpper())
                 e.Result = DialogResult.No;
             else
                 e.Result = DialogResult.OK;

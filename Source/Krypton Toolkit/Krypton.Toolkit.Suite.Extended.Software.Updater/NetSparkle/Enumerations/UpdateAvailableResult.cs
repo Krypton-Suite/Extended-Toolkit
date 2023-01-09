@@ -25,24 +25,31 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     /// <summary>
-    /// The type of hash to create
+    /// Possible Result values for IUpdateAvailable implementation.
     /// </summary>
-    internal enum HashType
+    public enum UpdateAvailableResult
     {
-        MD5,
-        SHA1,
-        SHA256,
-        SHA384,
-        SHA512
-    }
+        /// <summary>
+        /// No result specified. Default value.
+        /// </summary>
+        None = 0,
 
-    public enum JobType
-    {
-        UPDATE,
-        ADD,
-        REMOVE
+        /// <summary>
+        /// User chose to install the update immediately.
+        /// </summary>
+        InstallUpdate,
+
+        /// <summary>
+        /// User chose to skip the update.
+        /// </summary>
+        SkipUpdate,
+
+        /// <summary>
+        /// User chose to remind them later about this update.
+        /// </summary>
+        RemindMeLater
     }
 }
