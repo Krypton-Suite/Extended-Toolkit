@@ -51,7 +51,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.1.9-alpha" />
+		<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.1.10-alpha" />
 		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.117" />
 	</ItemGroup>
 
@@ -123,7 +123,7 @@
 		<Reference Include="UIAutomationProvider" />
 		<Reference Include="UIAutomationTypes" />
 		<Reference Include="WindowsFormsIntegration">
-		  <HintPath>C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\WindowsFormsIntegration\v4.0_4.0.0.0__31bf3856ad364e35\WindowsFormsIntegration.dll</HintPath>
+			<HintPath>C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\WindowsFormsIntegration\v4.0_4.0.0.0__31bf3856ad364e35\WindowsFormsIntegration.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 

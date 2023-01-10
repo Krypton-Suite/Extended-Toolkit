@@ -113,10 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="green">The green channel.</param>
         /// <param name="blue">The blue channel.</param>
         /// <returns></returns>
-        public string ConvertRGBToHexadecimal(int red, int green, int blue)
-        {
-            return ColorTranslator.FromHtml(String.Format("#{0:X2}{1:X2}{2:X2}", red, green, blue)).Name.Remove(0, 1);
-        }
+        public string ConvertRGBToHexadecimal(int red, int green, int blue) => ColorTranslator.FromHtml(String.Format("#{0:X2}{1:X2}{2:X2}", red, green, blue)).Name.Remove(0, 1);
 
         /// <summary>
         /// Converts the hexadecimal to RGB.
@@ -232,10 +229,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        public int ConvertDecimalToInteger(decimal value)
-        {
-            return Convert.ToInt32(value);
-        }
+        public int ConvertDecimalToInteger(decimal value) => Convert.ToInt32(value);
 
         /// <summary>
         /// Sets the RGB.
@@ -275,27 +269,22 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="colour">The colour.</param>
         /// <returns></returns>
-        public static String FormatColourRGBString(Color colour)
-        {
-            return $"{ colour.R.ToString() }, { colour.G.ToString() }, { colour.B.ToString() }";
-        }
+        public static string FormatColourRGBString(Color colour)
+        => $"{colour.R.ToString()}, {colour.G.ToString()}, {colour.B.ToString()}";
 
         /// <summary>
         /// Formats the colour ARGB string.
         /// </summary>
         /// <param name="colour">The colour.</param>
         /// <returns></returns>
-        public static String FormatColourARGBString(Color colour)
-        {
-            return $"{ colour.A.ToString() }, { colour.R.ToString() }, { colour.G.ToString() }, { colour.B.ToString() }";
-        }
+        public static string FormatColourARGBString(Color colour) => $"{colour.A.ToString()}, {colour.R.ToString()}, {colour.G.ToString()}, {colour.B.ToString()}";
 
         /// <summary>
         /// Formats the colour to hexadecimal.
         /// </summary>
         /// <param name="colour">The colour.</param>
         /// <returns></returns>
-        public static String FormatColourToHexadecimal(Color colour)
+        public static string FormatColourToHexadecimal(Color colour)
         {
             int redValue = colour.R, greenValue = colour.G, blueValue = colour.B;
 
@@ -307,20 +296,32 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        public static decimal ConvertFloatToDecimal(float value)
-        {
-            return (decimal)value;
-        }
+        public static decimal ConvertFloatToDecimal(float value) => (decimal)value;
 
         /// <summary>
         /// Converts the float to double.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        public static double ConvertFloatToDouble(float value)
+        public static double ConvertFloatToDouble(float value) => (double)value;
+
+        /// <summary>Converts the string array to string.</summary>
+        /// <param name="array">The string array.</param>
+        /// <returns></returns>
+        public static string ConvertStringArrayToString(string[] array)
         {
-            return (double)value;
+            StringBuilder builder = new StringBuilder();
+
+            foreach (string value in array)
+            {
+                builder.Append(value);
+
+                builder.Append(' ');
+            }
+
+            return builder.ToString();
         }
+
         #endregion
 
         #region Setters & Getters
