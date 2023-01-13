@@ -176,14 +176,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2022.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="License\License.txt">
-	    <PackagePath></PackagePath>
-	    <Pack>true</Pack>
-	  </None>
+		<None Update="License\License.txt">
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
+		</None>
 	</ItemGroup>
 
 </Project>

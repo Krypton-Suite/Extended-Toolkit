@@ -150,9 +150,9 @@
 	</Choose>
 
 	<ItemGroup>
-	  <None Include="..\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar.licenseheader" Link="Krypton.Toolkit.Suite.Extended.Calendar.licenseheader" />
+		<None Include="..\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar.licenseheader" Link="Krypton.Toolkit.Suite.Extended.Calendar.licenseheader" />
 	</ItemGroup>
-  
+
 	<ItemGroup>
 		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
 			<SpecificVersion>True</SpecificVersion>
@@ -176,7 +176,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
-		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2022.csproj" />
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->
@@ -206,8 +205,8 @@
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="License\License.txt">
-		  <PackagePath></PackagePath>
-		  <Pack>true</Pack>
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
 		</None>
 		<None Update="Properties\Settings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>
