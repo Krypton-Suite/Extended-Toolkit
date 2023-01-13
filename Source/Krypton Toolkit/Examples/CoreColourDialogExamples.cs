@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Examples
 {
-    public partial class CoreColourDialogExamples : Form
+    public partial class CoreColourDialogExamples : KryptonForm
     {
         public CoreColourDialogExamples()
         {
