@@ -6,6 +6,7 @@
 
 ## 2023-11-xx - Build 2311 - November 2023
 <!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
+* New `KryptonSecureTextBox` control, uses the [SecureString](https://learn.microsoft.com/en-us/dotnet/api/system.security.securestring?view=net-7.0) API to keep users input text confidential, thus removing the text from memory when no longer needed
 * Implemented [#390](https://github.com/Krypton-Suite/Extended-Toolkit/issues/390), Replace/modify `KryptonWrapLabel` in `KryptonMessageBoxExtended`
 * Resolved [#389](https://github.com/Krypton-Suite/Extended-Toolkit/issues/389), Fix fallout from the removal of `PaletteModeManager` type
 * New `Krypton.Toolkit.Suite.Extended.AdvancedDataGridView` module. A krypton version of the [AdvancedDataGridView](https://github.com/davidegironi/advanceddatagridview) control

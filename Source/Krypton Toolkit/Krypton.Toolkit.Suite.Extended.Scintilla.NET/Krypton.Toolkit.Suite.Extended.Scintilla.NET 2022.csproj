@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
@@ -28,8 +28,8 @@
 
 	<PropertyGroup>
 		<OutputType>library</OutputType>
-		<RootNamespace>Krypton.Toolkit.Suite.Extended.PDF</RootNamespace>
-		<AssemblyName>Krypton.Toolkit.Suite.Extended.PDF</AssemblyName>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.Scintilla.NET</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.Scintilla.NET</AssemblyName>
 		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
@@ -43,31 +43,31 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.PDF.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Scintilla.NET.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.PDF.Nightly</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Scintilla.NET.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.PDF</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Scintilla.NET</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.PDF</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Scintilla.NET</PackageId>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements PDF viewing controls.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements the ScintillaNET control and other extras.
 
 			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
@@ -151,8 +151,13 @@
 
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
-		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.PDF\Krypton.Toolkit.Suite.Extended.PDF.xml</DocumentationFile>
-		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.PDF\</OutputPath>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Scintilla.NET\Krypton.Toolkit.Suite.Extended.Scintilla.NET.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Scintilla.NET\</OutputPath>
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Update="License\License.txt">
+	    <Pack>true</Pack>
+	  </None>
+	</ItemGroup>
 
 </Project>

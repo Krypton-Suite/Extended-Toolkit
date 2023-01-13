@@ -28,207 +28,207 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtendedControlExamples));
+            System.Security.SecureString secureString1 = new System.Security.SecureString();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
             this.kryptonBorderedLabel1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonBorderedLabel();
-            this.kryptonBrowseBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonBrowseBox();
-            this.kkTest1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion1();
-            this.kkTest2 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2();
+            this.circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
+            this.kkcv1Test = new Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion1();
+            this.kkcv2Test = new Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2();
+            this.kryptonMarqueeLabel1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonMarqueeLabel();
             this.kryptonProgressBarExtendedVersion11 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion1();
             this.kryptonProgressBarExtendedVersion21 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion2();
-            this.kryptonRichTextBoxExtended1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonRichTextBoxExtended();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kcmbAlignment = new Krypton.Toolkit.KryptonComboBox();
+            this.kryptonSecureTextBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonSecureTextBox();
+            this.kryptonStarRatingControl1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonStarRatingControl();
+            this.kryptonValidationBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonValidationBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbAlignment)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.kcmbAlignment);
-            this.kryptonPanel1.Controls.Add(this.kryptonLabel1);
-            this.kryptonPanel1.Controls.Add(this.kryptonRichTextBoxExtended1);
+            this.kryptonPanel1.Controls.Add(this.kryptonValidationBox1);
+            this.kryptonPanel1.Controls.Add(this.kryptonStarRatingControl1);
+            this.kryptonPanel1.Controls.Add(this.kryptonSecureTextBox1);
             this.kryptonPanel1.Controls.Add(this.kryptonProgressBarExtendedVersion21);
             this.kryptonPanel1.Controls.Add(this.kryptonProgressBarExtendedVersion11);
-            this.kryptonPanel1.Controls.Add(this.kkTest2);
-            this.kryptonPanel1.Controls.Add(this.kkTest1);
-            this.kryptonPanel1.Controls.Add(this.kryptonBrowseBox1);
+            this.kryptonPanel1.Controls.Add(this.kryptonMarqueeLabel1);
+            this.kryptonPanel1.Controls.Add(this.kkcv2Test);
+            this.kryptonPanel1.Controls.Add(this.kkcv1Test);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderedLabel1);
             this.kryptonPanel1.Controls.Add(this.circularPictureBox1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1314, 759);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1123, 684);
             this.kryptonPanel1.TabIndex = 0;
-            // 
-            // circularPictureBox1
-            // 
-            this.circularPictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.circularPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("circularPictureBox1.Image")));
-            this.circularPictureBox1.Location = new System.Drawing.Point(357, 13);
-            this.circularPictureBox1.Name = "circularPictureBox1";
-            this.circularPictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.circularPictureBox1.TabIndex = 0;
-            this.circularPictureBox1.TabStop = false;
             // 
             // kryptonBorderedLabel1
             // 
             this.kryptonBorderedLabel1.BackColor = System.Drawing.Color.Transparent;
             this.kryptonBorderedLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
-            this.kryptonBorderedLabel1.Location = new System.Drawing.Point(357, 83);
+            this.kryptonBorderedLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.NormalPanel;
+            this.kryptonBorderedLabel1.Location = new System.Drawing.Point(275, 13);
             this.kryptonBorderedLabel1.Name = "kryptonBorderedLabel1";
             this.kryptonBorderedLabel1.Size = new System.Drawing.Size(139, 20);
             this.kryptonBorderedLabel1.TabIndex = 1;
             this.kryptonBorderedLabel1.Values.Text = "kryptonBorderedLabel1";
             // 
-            // kryptonBrowseBox1
+            // circularPictureBox1
             // 
-            this.kryptonBrowseBox1.LargeResetImage = ((System.Drawing.Image)(resources.GetObject("kryptonBrowseBox1.LargeResetImage")));
-            this.kryptonBrowseBox1.Location = new System.Drawing.Point(357, 118);
-            this.kryptonBrowseBox1.Name = "kryptonBrowseBox1";
-            this.kryptonBrowseBox1.ResetText = null;
-            this.kryptonBrowseBox1.ResetTextToolTipDescription = null;
-            this.kryptonBrowseBox1.ResetTextToolTipHeading = null;
-            this.kryptonBrowseBox1.ShowResetButton = true;
-            this.kryptonBrowseBox1.Size = new System.Drawing.Size(192, 24);
-            this.kryptonBrowseBox1.SmallResetImage = ((System.Drawing.Image)(resources.GetObject("kryptonBrowseBox1.SmallResetImage")));
-            this.kryptonBrowseBox1.TabIndex = 2;
-            this.kryptonBrowseBox1.Text = "kryptonBrowseBox1";
+            this.circularPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.circularPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("circularPictureBox1.Image")));
+            this.circularPictureBox1.Location = new System.Drawing.Point(13, 13);
+            this.circularPictureBox1.Name = "circularPictureBox1";
+            this.circularPictureBox1.Size = new System.Drawing.Size(256, 256);
+            this.circularPictureBox1.TabIndex = 0;
+            this.circularPictureBox1.TabStop = false;
             // 
-            // kkTest1
+            // kkcv1Test
             // 
-            this.kkTest1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kkTest1.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.kkTest1.KnobIndicatorBorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
-            this.kkTest1.KnobIndicatorColourBegin = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
-            this.kkTest1.KnobIndicatorColourEnd = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
-            this.kkTest1.LargeChange = 20;
-            this.kkTest1.Location = new System.Drawing.Point(590, 51);
-            this.kkTest1.Maximum = 100;
-            this.kkTest1.Minimum = 0;
-            this.kkTest1.Name = "kkTest1";
-            this.kkTest1.ShowLargeScale = true;
-            this.kkTest1.ShowSmallScale = true;
-            this.kkTest1.Size = new System.Drawing.Size(264, 183);
-            this.kkTest1.SizeLargeScaleMarker = 6;
-            this.kkTest1.SizeSmallScaleMarker = 3;
-            this.kkTest1.SmallChange = 5;
-            this.kkTest1.TabIndex = 3;
-            this.kkTest1.Value = 0;
-            this.kkTest1.ValueChanged += new Krypton.Toolkit.Suite.Extended.Controls.ValueChangedEventHandler(this.kkTest1_ValueChanged);
+            this.kkcv1Test.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kkcv1Test.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.kkcv1Test.KnobIndicatorBorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
+            this.kkcv1Test.KnobIndicatorColourBegin = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kkcv1Test.KnobIndicatorColourEnd = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kkcv1Test.LargeChange = 20;
+            this.kkcv1Test.Location = new System.Drawing.Point(276, 40);
+            this.kkcv1Test.Maximum = 100;
+            this.kkcv1Test.Minimum = 0;
+            this.kkcv1Test.Name = "kkcv1Test";
+            this.kkcv1Test.ShowLargeScale = true;
+            this.kkcv1Test.ShowSmallScale = true;
+            this.kkcv1Test.Size = new System.Drawing.Size(91, 91);
+            this.kkcv1Test.SizeLargeScaleMarker = 6;
+            this.kkcv1Test.SizeSmallScaleMarker = 3;
+            this.kkcv1Test.SmallChange = 5;
+            this.kkcv1Test.TabIndex = 2;
+            this.kkcv1Test.Value = 0;
+            this.kkcv1Test.ValueChanged += new Krypton.Toolkit.Suite.Extended.Controls.ValueChangedEventHandler(this.kkcv1Test_ValueChanged);
             // 
-            // kkTest2
+            // kkcv2Test
             // 
-            this.kkTest2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
-            this.kkTest2.EndAngle = 405F;
-            this.kkTest2.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.kkTest2.KnobBackColour = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
-            this.kkTest2.LargeChange = 5;
-            this.kkTest2.Location = new System.Drawing.Point(860, 51);
-            this.kkTest2.Maximum = 100;
-            this.kkTest2.Minimum = 0;
-            this.kkTest2.Name = "kkTest2";
-            this.kkTest2.PointerColour = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
-            this.kkTest2.PointerStyle = Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2.KnobPointerStyles.CIRCLE;
-            this.kkTest2.ScaleColour = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kkTest2.ScaleDivisions = 11;
-            this.kkTest2.ScaleSubDivisions = 4;
-            this.kkTest2.ScaleTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kkTest2.ShowLargeScale = true;
-            this.kkTest2.ShowSmallScale = true;
-            this.kkTest2.Size = new System.Drawing.Size(241, 241);
-            this.kkTest2.SmallChange = 1;
-            this.kkTest2.StartAngle = 135F;
-            this.kkTest2.TabIndex = 4;
-            this.kkTest2.Value = 0;
-            this.kkTest2.ValueChanged += new Krypton.Toolkit.Suite.Extended.Controls.ValueChangedEventHandler(this.kkTest2_ValueChanged);
+            this.kkcv2Test.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kkcv2Test.EndAngle = 405F;
+            this.kkcv2Test.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.kkcv2Test.KnobBackColour = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kkcv2Test.LargeChange = 5;
+            this.kkcv2Test.Location = new System.Drawing.Point(373, 40);
+            this.kkcv2Test.Maximum = 100;
+            this.kkcv2Test.Minimum = 0;
+            this.kkcv2Test.Name = "kkcv2Test";
+            this.kkcv2Test.PointerColour = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
+            this.kkcv2Test.PointerStyle = Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2.KnobPointerStyles.CIRCLE;
+            this.kkcv2Test.ScaleColour = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kkcv2Test.ScaleDivisions = 11;
+            this.kkcv2Test.ScaleSubDivisions = 4;
+            this.kkcv2Test.ScaleTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kkcv2Test.ShowLargeScale = true;
+            this.kkcv2Test.ShowSmallScale = false;
+            this.kkcv2Test.Size = new System.Drawing.Size(150, 150);
+            this.kkcv2Test.SmallChange = 1;
+            this.kkcv2Test.StartAngle = 135F;
+            this.kkcv2Test.TabIndex = 3;
+            this.kkcv2Test.Value = 0;
+            this.kkcv2Test.ValueChanged += new Krypton.Toolkit.Suite.Extended.Controls.ValueChangedEventHandler(this.kkcv2Test_ValueChanged);
+            // 
+            // kryptonMarqueeLabel1
+            // 
+            this.kryptonMarqueeLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.NormalPanel;
+            this.kryptonMarqueeLabel1.Location = new System.Drawing.Point(276, 211);
+            this.kryptonMarqueeLabel1.Name = "kryptonMarqueeLabel1";
+            this.kryptonMarqueeLabel1.Size = new System.Drawing.Size(137, 20);
+            this.kryptonMarqueeLabel1.Speed = 1;
+            this.kryptonMarqueeLabel1.TabIndex = 4;
+            this.kryptonMarqueeLabel1.Values.Text = "kryptonMarqueeLabel1";
+            this.kryptonMarqueeLabel1.YOffset = 0;
             // 
             // kryptonProgressBarExtendedVersion11
             // 
             this.kryptonProgressBarExtendedVersion11.BackColor = System.Drawing.Color.Transparent;
-            this.kryptonProgressBarExtendedVersion11.Location = new System.Drawing.Point(590, 13);
+            this.kryptonProgressBarExtendedVersion11.Location = new System.Drawing.Point(601, 13);
             this.kryptonProgressBarExtendedVersion11.Name = "kryptonProgressBarExtendedVersion11";
             this.kryptonProgressBarExtendedVersion11.Size = new System.Drawing.Size(264, 32);
             this.kryptonProgressBarExtendedVersion11.TabIndex = 5;
             // 
             // kryptonProgressBarExtendedVersion21
             // 
-            this.kryptonProgressBarExtendedVersion21.Location = new System.Drawing.Point(860, 13);
+            this.kryptonProgressBarExtendedVersion21.Location = new System.Drawing.Point(601, 52);
             this.kryptonProgressBarExtendedVersion21.Name = "kryptonProgressBarExtendedVersion21";
-            this.kryptonProgressBarExtendedVersion21.Size = new System.Drawing.Size(241, 32);
+            this.kryptonProgressBarExtendedVersion21.Size = new System.Drawing.Size(264, 23);
             this.kryptonProgressBarExtendedVersion21.TabIndex = 6;
             this.kryptonProgressBarExtendedVersion21.Text = "0%";
             // 
-            // kryptonRichTextBoxExtended1
+            // kryptonSecureTextBox1
             // 
-            this.kryptonRichTextBoxExtended1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonRichTextBoxExtended1.Location = new System.Drawing.Point(13, 13);
-            this.kryptonRichTextBoxExtended1.Multiline = true;
-            this.kryptonRichTextBoxExtended1.Name = "kryptonRichTextBoxExtended1";
-            this.kryptonRichTextBoxExtended1.Size = new System.Drawing.Size(338, 242);
-            this.kryptonRichTextBoxExtended1.TabIndex = 7;
-            this.kryptonRichTextBoxExtended1.Text = "kryptonRichTextBoxExtended1";
+            this.kryptonSecureTextBox1.Location = new System.Drawing.Point(601, 82);
+            this.kryptonSecureTextBox1.Name = "kryptonSecureTextBox1";
+            this.kryptonSecureTextBox1.PasswordChar = '●';
+            this.kryptonSecureTextBox1.SecuredText = secureString1;
+            this.kryptonSecureTextBox1.Size = new System.Drawing.Size(264, 23);
+            this.kryptonSecureTextBox1.TabIndex = 7;
+            this.kryptonSecureTextBox1.Text = "kryptonSecureTextBox1";
+            this.kryptonSecureTextBox1.UseSystemPasswordChar = true;
             // 
-            // kryptonLabel1
+            // kryptonStarRatingControl1
             // 
-            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel1.Location = new System.Drawing.Point(13, 262);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(75, 20);
-            this.kryptonLabel1.TabIndex = 8;
-            this.kryptonLabel1.Values.Text = "Alignment:";
+            this.kryptonStarRatingControl1.CurrentStarValue = 0;
+            this.kryptonStarRatingControl1.FirstColour = System.Drawing.Color.Red;
+            this.kryptonStarRatingControl1.FirstColourQuantity = 2;
+            this.kryptonStarRatingControl1.Location = new System.Drawing.Point(420, 211);
+            this.kryptonStarRatingControl1.Name = "kryptonStarRatingControl1";
+            this.kryptonStarRatingControl1.SecondColour = System.Drawing.Color.Blue;
+            this.kryptonStarRatingControl1.SecondColourQuantity = 1;
+            this.kryptonStarRatingControl1.Size = new System.Drawing.Size(75, 15);
+            this.kryptonStarRatingControl1.StarCount = 5;
+            this.kryptonStarRatingControl1.StartSize = 15;
+            this.kryptonStarRatingControl1.TabIndex = 8;
+            this.kryptonStarRatingControl1.ThirdColour = System.Drawing.Color.Green;
+            this.kryptonStarRatingControl1.ThirdColourQuantity = 2;
             // 
-            // kcmbAlignment
+            // kryptonValidationBox1
             // 
-            this.kcmbAlignment.CornerRoundingRadius = -1F;
-            this.kcmbAlignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kcmbAlignment.DropDownWidth = 121;
-            this.kcmbAlignment.IntegralHeight = false;
-            this.kcmbAlignment.Items.AddRange(new object[] {
-            "Left",
-            "Centre",
-            "Right",
-            "Justify"});
-            this.kcmbAlignment.Location = new System.Drawing.Point(95, 262);
-            this.kcmbAlignment.Name = "kcmbAlignment";
-            this.kcmbAlignment.Size = new System.Drawing.Size(121, 21);
-            this.kcmbAlignment.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kcmbAlignment.TabIndex = 9;
+            this.kryptonValidationBox1.IntermediateColour = System.Drawing.Color.Empty;
+            this.kryptonValidationBox1.Location = new System.Drawing.Point(601, 112);
+            this.kryptonValidationBox1.ModifyBackgroundColour = false;
+            this.kryptonValidationBox1.Name = "kryptonValidationBox1";
+            this.kryptonValidationBox1.Size = new System.Drawing.Size(264, 23);
+            this.kryptonValidationBox1.TabIndex = 9;
+            this.kryptonValidationBox1.Text = "kryptonValidationBox1";
+            this.kryptonValidationBox1.UseAccessibilityColours = false;
+            this.kryptonValidationBox1.UseIntermediateColour = false;
+            this.kryptonValidationBox1.ValidateEntry = false;
             // 
             // ExtendedControlExamples
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1314, 759);
+            this.ClientSize = new System.Drawing.Size(1123, 684);
             this.Controls.Add(this.kryptonPanel1);
             this.Name = "ExtendedControlExamples";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ExtendedControlExamples";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbAlignment)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        private Krypton.Toolkit.KryptonComboBox kcmbAlignment;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.Suite.Extended.Controls.KryptonRichTextBoxExtended kryptonRichTextBoxExtended1;
-        private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion2 kryptonProgressBarExtendedVersion21;
-        private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion1 kryptonProgressBarExtendedVersion11;
-        private Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2 kkTest2;
-        private Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion1 kkTest1;
-        private Krypton.Toolkit.Suite.Extended.Controls.KryptonBrowseBox kryptonBrowseBox1;
-        private Krypton.Toolkit.Suite.Extended.Controls.KryptonBorderedLabel kryptonBorderedLabel1;
+        private KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox circularPictureBox1;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonBorderedLabel kryptonBorderedLabel1;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion1 kkcv1Test;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2 kkcv2Test;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonMarqueeLabel kryptonMarqueeLabel1;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion1 kryptonProgressBarExtendedVersion11;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion2 kryptonProgressBarExtendedVersion21;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonSecureTextBox kryptonSecureTextBox1;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonStarRatingControl kryptonStarRatingControl1;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonValidationBox kryptonValidationBox1;
     }
 }
