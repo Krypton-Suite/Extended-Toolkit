@@ -1,6 +1,5 @@
 ﻿#region MIT License
 /*
- *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -26,37 +25,17 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tools
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
-    [Obsolete("Use 'string.IsNullOrWhiteSpace(string value)' instead")]
-    public static class MissingFrameWorkAPIs
+    /// <summary>
+    /// The type of hash to create
+    /// </summary>
+    internal enum HashType
     {
-        /// <summary>
-        /// Optimised Framework independent replacement for string.IsNullOrWhitespace
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-#if NET35 || NET40
-#else // NET45_OR_GREATER || CORE
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
-        public static bool IsNullOrWhiteSpace(string value)
-        {
-            // https://github.com/dotnet/runtime/issues/4207
-            // And do not allocate string from trim !
-
-            if (value == null) return true;
-
-            // ReSharper disable once ForCanBeConvertedToForeach
-            // ReSharper disable once LoopCanBeConvertedToQuery - use optimisation from array bounds
-            for (int i = 0; i < value.Length; i++)
-            {
-                if (!char.IsWhiteSpace(value[i]))
-                    return false;
-            }
-
-            return true;
-
-        }
+        Md5,
+        Sha1,
+        Sha256,
+        Sha384,
+        Sha512
     }
 }

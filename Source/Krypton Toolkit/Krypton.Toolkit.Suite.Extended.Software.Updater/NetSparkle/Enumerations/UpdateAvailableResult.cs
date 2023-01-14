@@ -25,24 +25,31 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
-    public enum RunDialogIconVisibility
+    /// <summary>
+    /// Possible Result values for IUpdateAvailable implementation.
+    /// </summary>
+    public enum UpdateAvailableResult
     {
-        HIDDEN = 0,
-        VISIBLE = 1
-    }
+        /// <summary>
+        /// No result specified. Default value.
+        /// </summary>
+        None = 0,
 
-    /// <summary>The run dialog UI type.</summary>
-    public enum RunDialogType
-    {
         /// <summary>
-        /// Show a combobox on the run dialog.
+        /// User chose to install the update immediately.
         /// </summary>
-        COMBOBOX = 0,
+        InstallUpdate,
+
         /// <summary>
-        /// Show a textbox on the run dialog.
+        /// User chose to skip the update.
         /// </summary>
-        TEXTBOX = 1
+        SkipUpdate,
+
+        /// <summary>
+        /// User chose to remind them later about this update.
+        /// </summary>
+        RemindMeLater
     }
 }

@@ -26,9 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     internal class EventNotify

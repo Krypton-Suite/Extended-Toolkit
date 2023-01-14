@@ -83,7 +83,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.1.3-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.1.10-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -153,6 +153,7 @@
   <PropertyGroup>
 	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.InputBox\Krypton.Toolkit.Suite.Extended.InputBox.xml</DocumentationFile>
 	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.InputBox\</OutputPath>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
 	<Compile Update="Properties\Resources.Designer.cs">

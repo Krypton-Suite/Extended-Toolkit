@@ -1048,7 +1048,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                     csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
 
-                    csfd.DefaultFileName = $"All Colour Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
+                    csfd.DefaultFileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
                     csfd.AlwaysAppendDefaultExtension = true;
 
@@ -1069,7 +1069,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                     dialog.DefaultExt = "ccf";
 
-                    dialog.FileName = $"All Colour Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
+                    dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
@@ -1100,7 +1100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                     csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
 
-                    csfd.DefaultFileName = $"All Colour Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
+                    csfd.DefaultFileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
                     csfd.AlwaysAppendDefaultExtension = true;
 
@@ -1121,7 +1121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                     dialog.DefaultExt = "ccf";
 
-                    dialog.FileName = $"All Colour Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
+                    dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
                     if (dialog.ShowDialog() == DialogResult.OK) WriteRGBColoursToFile(dialog.FileName);
                 }

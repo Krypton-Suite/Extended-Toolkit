@@ -26,11 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     [Serializable]

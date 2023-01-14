@@ -26,11 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
-
-using Microsoft.Win32;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
 {
     internal class RegistryDataKey : ISpDataKey, IEnumerable<RegistryDataKey>, IEnumerable, IDisposable

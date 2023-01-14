@@ -25,23 +25,24 @@
  */
 #endregion
 
+#pragma warning disable CS8622, CS8602
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourGridDialog : CommonExtendedKryptonForm
     {
         #region Designer Code
-        private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtened tspeColourGridActions;
+        private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtended tspeColourGridActions;
         private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableToolStrip ftsColourGridActions;
         private System.Windows.Forms.ToolStripButton tsbSavePalette;
         private System.Windows.Forms.ToolStripButton tsbLoadPalette;
         private KryptonPanel kryptonPanel1;
-        private ColorGrid cgColour;
+        private ColorGrid? cgColour;
 
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.cgColour = new Cyotek.Windows.Forms.ColorGrid();
-            this.tspeColourGridActions = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtened();
+            this.tspeColourGridActions = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtended();
             this.ftsColourGridActions = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableToolStrip();
             this.tsbSavePalette = new System.Windows.Forms.ToolStripButton();
             this.tsbLoadPalette = new System.Windows.Forms.ToolStripButton();
@@ -150,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private Color _colour, _colourToAdd;
 
-        private ColorGrid _grid;
+        private ColorGrid? _grid;
         #endregion
 
         #region Properties
@@ -160,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         public Color ColourToAdd { get => _colourToAdd; set => _colourToAdd = value; }
 
-        public ColorGrid ColourGrid { get => _grid; private set => _grid = value; }
+        public ColorGrid? ColourGrid { get => _grid; private set => _grid = value; }
         #endregion
 
         #region Constructors
@@ -235,7 +236,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     }
                     catch (Exception exc)
                     {
-                        KryptonMessageBox.Show($@"Sorry, unable to save palette. { exc.GetBaseException().Message }", "Save Palette", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                        KryptonMessageBox.Show($@"Sorry, unable to save palette. {exc.GetBaseException().Message}", "Save Palette", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
                     }
                 }
                 else

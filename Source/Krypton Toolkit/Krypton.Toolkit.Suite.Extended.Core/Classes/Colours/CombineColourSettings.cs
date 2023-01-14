@@ -37,115 +37,171 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public Color BaseColour { get => _baseColour;
+        public Color BaseColour
+        {
+            get => _baseColour;
             set => _baseColour = value;
         }
 
-        public Color DarkColour { get => _darkColour;
+        public Color DarkColour
+        {
+            get => _darkColour;
             set => _darkColour = value;
         }
 
-        public Color MiddleColour { get => _middleColour;
+        public Color MiddleColour
+        {
+            get => _middleColour;
             set => _middleColour = value;
         }
 
-        public Color LightColour { get => _lightColour;
+        public Color LightColour
+        {
+            get => _lightColour;
             set => _lightColour = value;
         }
 
-        public Color LightestColour { get => _lightestColour;
+        public Color LightestColour
+        {
+            get => _lightestColour;
             set => _lightestColour = value;
         }
 
-        public Color BorderColourPreview { get => _borderColourPreview;
+        public Color BorderColourPreview
+        {
+            get => _borderColourPreview;
             set => _borderColourPreview = value;
         }
 
-        public Color AlternativeNormalTextColourPreview { get => _alternativeNormalTextColourPreview;
+        public Color AlternativeNormalTextColourPreview
+        {
+            get => _alternativeNormalTextColourPreview;
             set => _alternativeNormalTextColourPreview = value;
         }
 
-        public Color NormalTextColourPreview { get => _normalTextColourPreview;
+        public Color NormalTextColourPreview
+        {
+            get => _normalTextColourPreview;
             set => _normalTextColourPreview = value;
         }
 
-        public Color DisabledTextColourPreview { get => _disabledTextColourPreview;
+        public Color DisabledTextColourPreview
+        {
+            get => _disabledTextColourPreview;
             set => _disabledTextColourPreview = value;
         }
 
-        public Color FocusedTextColourPreview { get => _focusedTextColourPreview;
+        public Color FocusedTextColourPreview
+        {
+            get => _focusedTextColourPreview;
             set => _focusedTextColourPreview = value;
         }
 
-        public Color PressedTextColourPreview { get => _pressedTextColourPreview;
+        public Color PressedTextColourPreview
+        {
+            get => _pressedTextColourPreview;
             set => _pressedTextColourPreview = value;
         }
 
-        public Color DisabledColourPreview { get => _disabledColourPreview;
+        public Color DisabledColourPreview
+        {
+            get => _disabledColourPreview;
             set => _disabledColourPreview = value;
         }
 
-        public Color LinkNormalColourPreview { get => _linkNormalColourPreview;
+        public Color LinkNormalColourPreview
+        {
+            get => _linkNormalColourPreview;
             set => _linkNormalColourPreview = value;
         }
 
-        public Color LinkHoverColourPreview { get => _linkHoverColourPreview;
+        public Color LinkHoverColourPreview
+        {
+            get => _linkHoverColourPreview;
             set => _linkHoverColourPreview = value;
         }
 
-        public Color LinkVisitedColourPreview { get => _linkVisitedColourPreview;
+        public Color LinkVisitedColourPreview
+        {
+            get => _linkVisitedColourPreview;
             set => _linkVisitedColourPreview = value;
         }
 
-        public Color CustomColourOne { get => _customColourOne;
+        public Color CustomColourOne
+        {
+            get => _customColourOne;
             set => _customColourOne = value;
         }
 
-        public Color CustomColourTwo { get => _customColourTwo;
+        public Color CustomColourTwo
+        {
+            get => _customColourTwo;
             set => _customColourTwo = value;
         }
 
-        public Color CustomColourThree { get => _customColourThree;
+        public Color CustomColourThree
+        {
+            get => _customColourThree;
             set => _customColourThree = value;
         }
 
-        public Color CustomColourFour { get => _customColourFour;
+        public Color CustomColourFour
+        {
+            get => _customColourFour;
             set => _customColourFour = value;
         }
 
-        public Color CustomColourFive { get => _customColourFive;
+        public Color CustomColourFive
+        {
+            get => _customColourFive;
             set => _customColourFive = value;
         }
 
-        public Color CustomTextColourOne { get => _customTextColourOne;
+        public Color CustomTextColourOne
+        {
+            get => _customTextColourOne;
             set => _customTextColourOne = value;
         }
 
-        public Color CustomTextColourTwo { get => _customTextColourTwo;
+        public Color CustomTextColourTwo
+        {
+            get => _customTextColourTwo;
             set => _customTextColourTwo = value;
         }
 
-        public Color CustomTextColourThree { get => _customTextColourThree;
+        public Color CustomTextColourThree
+        {
+            get => _customTextColourThree;
             set => _customTextColourThree = value;
         }
 
-        public Color CustomTextColourFour { get => _customTextColourFour;
+        public Color CustomTextColourFour
+        {
+            get => _customTextColourFour;
             set => _customTextColourFour = value;
         }
 
-        public Color CustomTextColourFive { get => _customTextColourFive;
+        public Color CustomTextColourFive
+        {
+            get => _customTextColourFive;
             set => _customTextColourFive = value;
         }
 
-        public Color MenuTextColour { get => _menuTextColour;
+        public Color MenuTextColour
+        {
+            get => _menuTextColour;
             set => _menuTextColour = value;
         }
 
-        public Color StatusTextColour { get => _statusTextColour;
+        public Color StatusTextColour
+        {
+            get => _statusTextColour;
             set => _statusTextColour = value;
         }
 
-        public Color RibbonTabTextColour { get => _ribbonTabTextColour;
+        public Color RibbonTabTextColour
+        {
+            get => _ribbonTabTextColour;
             set => _ribbonTabTextColour = value;
         }
         #endregion
@@ -278,7 +334,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 // ReSharper disable ConditionIsAlwaysTrueOrFalse
                 if (BaseColour != null || DarkColour != null || MiddleColour != null || LightColour != null || LightestColour != null || BorderColourPreview != null || AlternativeNormalTextColourPreview != null || NormalTextColourPreview != null || DisabledTextColourPreview != null || FocusedTextColourPreview != null || PressedTextColourPreview != null || DisabledColourPreview != null || LinkNormalColourPreview != null || LinkHoverColourPreview != null || LinkVisitedColourPreview != null || CustomColourOne != null || CustomColourTwo != null || CustomColourThree != null || CustomColourFour != null || CustomColourFive != null || CustomTextColourOne != null || CustomTextColourTwo != null || CustomTextColourThree != null || CustomTextColourFour != null || CustomTextColourFive != null || MenuTextColour != null || StatusTextColour != null || RibbonTabTextColour != null)
-                    // ReSharper restore ConditionIsAlwaysTrueOrFalse
+                // ReSharper restore ConditionIsAlwaysTrueOrFalse
                 {
                     _colourSettingsManager.SetBaseColour(BaseColour);
 

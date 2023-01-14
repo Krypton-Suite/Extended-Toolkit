@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             return tmp;
         }
-        
+
         public static void SetIconType(IconType iconType, Image customImage, PictureBox target)
         {
             switch (iconType)
@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             Timer timer = new Timer();
 
             timer.Interval = 10;
-            
+
             timer.Tick += (sender, args) =>
             {
                 if (activeWindow.Opacity == 1d)
@@ -156,13 +156,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             Timer timer = new Timer();
 
             timer.Interval = 10;
-            
+
             timer.Tick += (sender, args) =>
             {
                 if (activeWindow.Opacity == 0d)
                 {
                     timer.Stop();
-                  
+
                     activeWindow.Close();
                 }
 

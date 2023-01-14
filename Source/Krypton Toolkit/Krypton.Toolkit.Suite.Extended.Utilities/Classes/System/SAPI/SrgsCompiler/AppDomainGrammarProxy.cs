@@ -26,12 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
-using System.Security.Policy;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal class AppDomainGrammarProxy : MarshalByRefObject

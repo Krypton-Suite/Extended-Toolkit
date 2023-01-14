@@ -35,13 +35,13 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             return base.GetEditStyle(context);
         }
 
-        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
+        public override object? EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            IWindowsFormsEditorService service = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+            IWindowsFormsEditorService? service = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
 
-            FloatableMenuStrip floatableMenuStrip = context.Instance as FloatableMenuStrip;
+            FloatableMenuStrip? floatableMenuStrip = context.Instance as FloatableMenuStrip;
 
-            MenuStripExistingComponentChooser ecc = new MenuStripExistingComponentChooser(floatableMenuStrip.MenuStripPanelExtenedList);
+            MenuStripExistingComponentChooser? ecc = new MenuStripExistingComponentChooser(floatableMenuStrip.MenuStripPanelExtenedList);
 
             ecc.Text = "MenuStripPanelCollectionEditor";
 

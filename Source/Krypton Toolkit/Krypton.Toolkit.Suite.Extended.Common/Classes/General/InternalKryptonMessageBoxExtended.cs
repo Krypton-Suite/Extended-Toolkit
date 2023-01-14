@@ -242,7 +242,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         #endregion
 
         #region Properties
-        public Font MessageBoxTypeface { get => _messageboxTypeface;
+        public Font MessageBoxTypeface
+        {
+            get => _messageboxTypeface;
             set => _messageboxTypeface = value;
         }
         #endregion

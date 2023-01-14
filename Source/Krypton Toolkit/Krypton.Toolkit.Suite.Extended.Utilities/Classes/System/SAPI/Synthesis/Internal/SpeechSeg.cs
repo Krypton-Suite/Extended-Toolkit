@@ -26,15 +26,13 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal class SpeechSeg
     {
         private TTSVoice _voice;
 
-        private List<TextFragment> _textFragments = new List<TextFragment>();
+        private List<TextFragment> _textFragments = new();
 
         private AudioData _audio;
 

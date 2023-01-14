@@ -26,13 +26,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     public class DictationGrammar : Grammar
     {
-        private static Uri _defaultDictationUri = new Uri("grammar:dictation");
+        private static Uri _defaultDictationUri = new("grammar:dictation");
 
         public DictationGrammar()
             : base(_defaultDictationUri, null, null)

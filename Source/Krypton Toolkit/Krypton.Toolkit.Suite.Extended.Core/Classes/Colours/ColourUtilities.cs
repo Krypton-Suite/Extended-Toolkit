@@ -267,7 +267,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>A string containing the alpha, red, green and blue colour values of the selected <paramref name="colourInput"/>.</returns>
         public static string FormatColourARGBString(Color colourInput)
         {
-            return $"{ colourInput.A.ToString() }, { colourInput.R.ToString() }, { colourInput.G.ToString() }, { colourInput.B.ToString() }";
+            return $"{colourInput.A.ToString()}, {colourInput.R.ToString()}, {colourInput.G.ToString()}, {colourInput.B.ToString()}";
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>A string containing the red, green and blue colour values of the selected <paramref name="colourInput"/>.</returns>
         public static string FormatColourRGBString(Color colourInput)
         {
-            return $"{ colourInput.R.ToString() }, { colourInput.G.ToString() }, { colourInput.B.ToString() }";
+            return $"{colourInput.R.ToString()}, {colourInput.G.ToString()}, {colourInput.B.ToString()}";
         }
 
         /// <summary>

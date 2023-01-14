@@ -48,9 +48,9 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
         private static bool? _isSystemAbleToLoadShield = null;
 
-        private GlobalMethods _globalMethods = new GlobalMethods();
+        private GlobalMethods _globalMethods = new();
 
-        private UtilityMethods _utilityMethods = new UtilityMethods();
+        private UtilityMethods _utilityMethods = new();
         #endregion
 
         #region Constants
@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
         #region Constructor
         public KryptonUACButton() : base()
         {
-            this.Size = new Size((int)(this.Width * 1.5), this.Height + 1);
+            this.Size = new((int)(this.Width * 1.5), this.Height + 1);
             if (PlatformHelper.VistaOrHigher)
             {
                 //Only try to load the icon if it did not fail before
@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
                     }
                 }
 
-                NativeMethods.SendMessage(this.Handle, BCM_SETSHIELD, IntPtr.Zero, new IntPtr(1));
+                NativeMethods.SendMessage(this.Handle, BCM_SETSHIELD, IntPtr.Zero, new(1));
             }
         }
         #endregion
@@ -133,25 +133,25 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             {
                 if (_assemblyToElevate != null)
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new ExecuteProcessAsAdministratorEventArgs(_assemblyToElevate);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new(_assemblyToElevate);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTask);
                 }
-                else if (_assemblyToElevate != null && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(_extraArguments))
+                else if (_assemblyToElevate != null && !string.IsNullOrWhiteSpace(_extraArguments))
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new ExecuteProcessAsAdministratorEventArgs(Path.GetFullPath(_assemblyToElevate.Location), _extraArguments);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new(Path.GetFullPath(_assemblyToElevate.Location), _extraArguments);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTaskWithExtraArguments);
                 }
-                else if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(_processName))
+                else if (!string.IsNullOrWhiteSpace(_processName))
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new ExecuteProcessAsAdministratorEventArgs(_processName);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new(_processName);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTask);
                 }
-                else if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(_processName) && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(_extraArguments))
+                else if (!string.IsNullOrWhiteSpace(_processName) && !string.IsNullOrWhiteSpace(_extraArguments))
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new ExecuteProcessAsAdministratorEventArgs(_processName, _extraArguments);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new(_processName, _extraArguments);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTaskWithExtraArguments);
                 }

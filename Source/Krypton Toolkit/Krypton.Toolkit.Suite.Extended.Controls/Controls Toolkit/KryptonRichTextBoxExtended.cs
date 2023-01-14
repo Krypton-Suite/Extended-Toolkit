@@ -79,13 +79,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             get
             {
                 TextAlignment alignment;
-                
+
                 NativeMethods.PARAFORMAT pARAFORMAT = new NativeMethods.PARAFORMAT()
                 {
                     cbSize = Marshal.SizeOf<NativeMethods.PARAFORMAT>(_paraformat)
 
                 };
-                
+
                 _paraformat = pARAFORMAT;
 
                 SendMessage(new HandleRef(this, Handle), 1085, 1, ref _paraformat);
@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     alignment = TextAlignment.LEFT;
                 }
                 else
-{
+                {
                     alignment = (TextAlignment)_paraformat.wAlignment;
                 }
 

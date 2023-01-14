@@ -26,15 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.IO;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-using Microsoft.CSharp;
-using Microsoft.VisualBasic;
-
-using System.CodeDom.Compiler;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal class CustomGrammar
@@ -50,23 +41,23 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal string _namespace;
 
-        internal List<Rule> _rules = new List<Rule>();
+        internal List<Rule> _rules = new();
 
-        internal Collection<string> _codebehind = new Collection<string>();
+        internal Collection<string> _codebehind = new();
 
         internal bool _fDebugScript;
 
-        internal Collection<string> _assemblyReferences = new Collection<string>();
+        internal Collection<string> _assemblyReferences = new();
 
-        internal Collection<string> _importNamespaces = new Collection<string>();
+        internal Collection<string> _importNamespaces = new();
 
         internal string _keyFile;
 
-        internal Collection<ScriptRef> _scriptRefs = new Collection<ScriptRef>();
+        internal Collection<ScriptRef> _scriptRefs = new();
 
-        internal List<string> _types = new List<string>();
+        internal List<string> _types = new();
 
-        internal StringBuilder _script = new StringBuilder();
+        internal StringBuilder _script = new();
 
         private const string _preambuleMarker = "<Does Not Exist>";
 

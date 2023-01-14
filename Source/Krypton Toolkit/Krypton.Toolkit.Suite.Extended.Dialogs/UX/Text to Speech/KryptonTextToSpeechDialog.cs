@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8622
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonTextToSpeechDialog : CommonExtendedKryptonForm
@@ -255,7 +256,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             // kryptonGroupBox1
             // 
-            this.kryptonGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.kryptonGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroupBox1.Location = new System.Drawing.Point(13, 13);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
@@ -407,7 +408,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                 // The wait may not work! :(  
                 if (wait)
                 {
-                    p.WaitForExit();
+                    if (p != null)
+                    {
+                        p.WaitForExit();
+                    }
                 }
             }
         }
@@ -416,7 +420,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #region Event Handlers
         private void kbtnPreview_Click(object sender, EventArgs e)
         {
-            Speak($"Hello World! This is { kcmbInstalledVoices.Text } speaking. Testing 1... 2... 3 ...", kcmbInstalledVoices.Text, _speechRate, _speechVolume);
+            Speak($"Hello World! This is {kcmbInstalledVoices.Text} speaking. Testing 1... 2... 3 ...", kcmbInstalledVoices.Text, _speechRate, _speechVolume);
         }
 
         private void kcmbInstalledVoices_SelectedIndexChanged(object sender, EventArgs e)
@@ -447,7 +451,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void krtbInput_TextChanged(object sender, EventArgs e)
         {
-            kbtnSpeak.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(krtbInput.Text);
+            kbtnSpeak.Enabled = string.IsNullOrWhiteSpace(krtbInput.Text);
         }
 
         private void kbtnSpeak_Click(object sender, EventArgs e)
@@ -468,7 +472,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void kcmbInstalledVoices_TextChanged(object sender, EventArgs e)
         {
-            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbInstalledVoices.Text))
+            if (string.IsNullOrWhiteSpace(kcmbInstalledVoices.Text))
             {
                 kbtnPreview.Enabled = true;
             }
@@ -480,7 +484,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void kbtnCancel_Click(object sender, EventArgs e)
         {
-
+            Hide();
         }
         #endregion
     }

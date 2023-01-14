@@ -185,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private SoundPlayer _player;
 
-        private string _actionButtonText, _dismissButtonText, _title, _text, _process;        
+        private string _actionButtonText, _dismissButtonText, _title, _text, _process;
         #endregion
 
         #region Properties
@@ -223,7 +223,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             set
             {
                 _title = value;
-                
+
                 klblHeader.Text = value;
             }
         }
@@ -235,7 +235,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             set
             {
                 _text = value;
-                
+
                 kwlContent.Text = _text;
             }
         }
@@ -273,7 +273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             set
             {
                 _iconImage = value;
-            
+
                 Invalidate();
             }
         }
@@ -472,21 +472,21 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         private void FadeOutAndClose()
         {
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            
+
             timer.Interval = 10;
-            
+
             timer.Tick += (sender, args) =>
             {
                 if (Opacity == 0d)
                 {
                     timer.Stop();
-                
+
                     Close();
                 }
-            
+
                 Opacity -= 0.02d;
             };
-         
+
             timer.Start();
         }
 

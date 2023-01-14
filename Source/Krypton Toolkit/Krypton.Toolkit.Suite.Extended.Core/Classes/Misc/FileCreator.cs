@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Methods
-        public void GenerateNewFile(SimpleEditor editor) => editor.Text = string.Format(MiscellaneousResources.FreshFile, DateTime.Now.ToString());
+        public void GenerateNewFile(KryptonRichTextBox editor) => editor.Text = string.Format(MiscellaneousResources.FreshFile, DateTime.Now.ToString());
 
         /// <summary>
         /// Writes the colour file.
@@ -61,13 +61,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             StreamWriter writer = new StreamWriter(filePath);
 
-            writer.WriteLine($"Darkest Colour: ({ darkestColour })");
+            writer.WriteLine($"Darkest Colour: ({darkestColour})");
 
-            writer.WriteLine($"Medium Colour: ({ mediumColour })");
+            writer.WriteLine($"Medium Colour: ({mediumColour})");
 
-            writer.WriteLine($"Light Colour: ({ lightColour })");
+            writer.WriteLine($"Light Colour: ({lightColour})");
 
-            writer.WriteLine($"Lightest Colour: ({ lightestColour })");
+            writer.WriteLine($"Lightest Colour: ({lightestColour})");
 
             writer.Flush();
 

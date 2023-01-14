@@ -120,15 +120,18 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="kuacbtnRun.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAYRJREFUOE+NkztPwlAUx8/gakIYWFwYHB1w8FUQCEpI1KiTYpSHQVQisviYjZsJ
-        k4OJMT6ILhgTFheDiongc4AP4HdgcO/xnPZWaG81/JN/Qu49v1972wJ2iUQiQWqFiqL82yO2/w4Nuann
-        DA3MrqMrWcDaSRB30uOGiPfcYrwVWuQr1HnIPxXFnsQxQvYDYeMd1Scf1Yt3hwGMz4UNEc9WBK4JsHfx
-        AJ0r1wibBAoYMizwolpR9D6OYOPCh5f7AU0kcF0AuU8JhsybCVYfhvXeD9kIbGBYEwILrJYHZYEzVZRg
-        WH21hRtniixwJQoSDGkSWGBu7cgrCUr57THpgTEIqReE5RpCkpqoIsSr2Dezy4KSwDVBko1fxVHpzFa4
-        e+FGuzozAtdDC/VMLCyduR2G2DMqk3GG6wJrhRY91GZ+K/QL83nbYXHrTZ4VmDmGZC8bwu9bISC4a6mM
-        /dO5/2EjhoQ/28apgs7oFfon5juDjdCgg2r9NzrEduchiN+O+WmbAvADQWOC4qBCLEQAAAAASUVORK5C
-        YII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJaSURBVDhPtZLrSxRRGMbPOGOEWGoFmpmNJt1M2/+g/Wci
+        pKDtiwR9qQ/dNLtIYd52rCxty1a7iVRsaV7yNrprSu66UzutqxUuUlBgvU/vzk5o4Ic+1AM/Dmfm/T2c
+        M4z4LylxT+13uAM+R6M/vvBaxkK/7Iv5hGq/Xj0OTc/cW6M799WNaSUNfuy6HaEdd2L4GZLo+4RE8T4F
+        n1/IWuyp4jS8ItPWkimtH4+XslTsnqTdTUEUtcyisHWOCltioGnBSPjxRuDbqIR4j4JPz2TMd8lxW+cj
+        1+gsxCyh4NasxbabUQua4gIGUxIwKYi4iCYEYo8V2LoQxdVDUJuTQv6NKOVf/4CtTYxmWsNgKMAFE4IQ
+        4H1AotmOFQV7qvqTApPnNrGl0URuQ4II4GfBz/K4RDTGRTrvxwRF21KXC3ZWvIrn1RnIrY9YbK57j+xa
+        5to7QGdZlwijLFpItDQgwfSkLn+DuQey92t3Cg/yQGJ4hNcRCTQssOmKgY3VYWxIcDmMrEth5Jwexfby
+        J15bF8K8qzg/dihEg3zMIZaHuWSI7zsoWJhB1sUZZFyYoYwqXs+HoJZ3UZHrodPWk4l6ZG2xUyYa4IIB
+        LujnlcmoCmF9ZRDrKkOUfi6InOM9KDzSrtnacgxNZJrNir74SAb6uKCX794rWVL62WmknQlS9rGXKDh8
+        X1dd3j9/pN9JlEQ0xTffqtDScy7olijt1Fuknwwg92gn1EP3fKpLW11eGaNWOWG6U/GlPQVZ5b2UX9YG
+        tazVZb/+uxg1a9Xw1TWGetDjUw94HPbjfx0hfgGytpDUEYLkBgAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="cmsRunBox.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

@@ -26,8 +26,8 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+using SAPIGuids = Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop.SAPIGuids;
+using SPEAKFLAGS = Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine.SPEAKFLAGS;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {

@@ -1,4 +1,70 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
+﻿#region Original License
+/*
+ *
+ * Microsoft Public License (Ms-PL)
+ *
+ * This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
+ *
+ * 1. Definitions 
+ *
+ * The terms "reproduce," "reproduction," "derivative works," and "distribution" have the same meaning here as under U.S. copyright law.
+ *
+ * A "contribution" is the original software, or any additions or changes to the software.
+ *
+ * A "contributor" is any person that distributes its contribution under this license.
+ *
+ * "Licensed patents" are a contributor's patent claims that read directly on its contribution.
+ *
+ * 2. Grant of Rights
+ *
+ * (A) Copyright Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free copyright license to reproduce its contribution, prepare derivative works of its contribution, and distribute its contribution or any derivative works that you create.
+ *
+ * (B) Patent Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free license under its licensed patents to make, have made, use, sell, offer for sale, import, and/or otherwise dispose of its contribution in the software or derivative works of the contribution in the software.
+ *
+ * 3. Conditions and Limitations
+ *
+ * (A) No Trademark License- This license does not grant you rights to use any contributors' name, logo, or trademarks.
+ *
+ * (B) If you bring a patent claim against any contributor over patents that you claim are infringed by the software, your patent license from such contributor to the software ends automatically.
+ *
+ * (C) If you distribute any portion of the software, you must retain all copyright, patent, trademark, and attribution notices that are present in the software.
+ *
+ * (D) If you distribute any portion of the software in source code form, you may do so only under this license by including a complete copy of this license with your distribution. If you distribute any portion of the software in compiled or object code form, you may only do so under a license that complies with this license.
+ *
+ * (E) The software is licensed "as-is." You bear the risk of using it. The contributors give no express warranties, guarantees or conditions. You may have additional consumer rights under your local laws which this license cannot change. To the extent permitted under your local laws, the contributors exclude the implied warranties of merchantability, fitness for a particular purpose and non-infringement.
+ *
+ */
+#endregion
+
+#region MIT License
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+#endregion
+
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     [DesignerCategory("code")]
     public class KryptonAdvancedDataGridView : KryptonDataGridView
@@ -11,8 +77,8 @@
         private List<MenuStrip> _menuStripToDispose = new List<MenuStrip>();
 
         private bool _loadedFilter = false;
-        private string _sortString = null;
-        private string _filterString = null;
+        private string? _sortString = null;
+        private string? _filterString = null;
 
         private bool _sortStringChangedInvokeBeforeDatasourceUpdate = true;
         private bool _filterStringChangedInvokeBeforeDatasourceUpdate = true;
@@ -23,7 +89,7 @@
 
         public class SortEventArgs : EventArgs
         {
-            public string SortString { get; set; }
+            public string? SortString { get; set; }
             public bool Cancel { get; set; }
 
             public SortEventArgs()
@@ -35,7 +101,7 @@
 
         public class FilterEventArgs : EventArgs
         {
-            public string FilterString { get; set; }
+            public string? FilterString { get; set; }
             public bool Cancel { get; set; }
 
             public FilterEventArgs()
@@ -166,9 +232,11 @@
                 {
                     string jsontext = File.ReadAllText(filename);
 #if NETFRAMEWORK
-                    Dictionary<string, string> translations = new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(jsontext);
+                    Dictionary<string, string> translations =
+                        new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(jsontext);
 #else
-                    Dictionary<string, string> translations = JsonSerializer.Deserialize<Dictionary<string, string>>(jsontext);
+                    Dictionary<string, string> translations =
+ JsonSerializer.Deserialize<Dictionary<string, string>>(jsontext);
 #endif
                     foreach (KeyValuePair<string, string> translation in translations)
                     {
@@ -176,7 +244,10 @@
                             ret.Add(translation.Key, translation.Value);
                     }
                 }
-                catch { }
+                catch (Exception e)
+                {
+                    ExceptionCapture.CaptureException(e);
+                }
             }
 
             //add default translations if not in files
@@ -245,7 +316,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     if (cell.FilterAndSortEnabled == true && (cell.SortString.Length > 0 || cell.FilterString.Length > 0))
@@ -270,7 +341,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     if (!cell.FilterAndSortEnabled && (cell.FilterString.Length > 0 || cell.SortString.Length > 0))
@@ -319,7 +390,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.SetFilterChecklistEnabled(false);
@@ -335,7 +406,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.SetFilterChecklistEnabled(true);
@@ -365,7 +436,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.SetFilterChecklistNodesMax(maxnodes);
@@ -392,7 +463,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.EnabledFilterChecklistNodesMax(enabled);
@@ -418,7 +489,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.SetFilterCustomEnabled(false);
@@ -434,7 +505,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.SetFilterCustomEnabled(true);
@@ -464,7 +535,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.TextFilterTextChangedDelayNodes = numnodes;
@@ -475,11 +546,11 @@
         /// <summary>
         /// Set nodes to enable TextChanged delay on filter checklist
         /// </summary>
-        /// <param name="numnodes"></param>
-        public void SetFilterChecklistTextFilterTextChangedDelayNodes(int numnodes)
+        /// <param name="numNodes"></param>
+        public void SetFilterChecklistTextFilterTextChangedDelayNodes(int numNodes)
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
-                c.TextFilterTextChangedDelayNodes = numnodes;
+                c.TextFilterTextChangedDelayNodes = numNodes;
         }
 
         /// <summary>
@@ -490,7 +561,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.SetTextFilterTextChangedDelayNodesDisabled();
@@ -511,11 +582,12 @@
         /// Set TextChanged delay milliseconds on filter checklist on a DataGridViewColumn
         /// </summary>
         /// <param name="column"></param>
+        /// <param name="milliseconds"></param>
         public void SetFilterChecklistTextFilterTextChangedDelayMs(DataGridViewColumn column, int milliseconds)
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.SetTextFilterTextChangedDelayMs(milliseconds);
@@ -537,7 +609,7 @@
         /// </summary>
         /// <param name="filter"></param>
         /// <param name="sorting"></param>
-        public void LoadFilterAndSort(string filter, string sorting)
+        public void LoadFilterAndSort(string? filter, string? sorting)
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
                 c.SetLoadedMode(true);
@@ -577,7 +649,7 @@
         /// Set the NOTIN Logic for checkbox filter
         /// </summary>
         /// <param name="enabled"></param>
-        public void SetMenuStripFilterNOTINLogic(bool enabled)
+        public void SetMenuStripFilterNotInLogic(bool enabled)
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
                 c.IsMenuStripFilterNOTINLogicEnabled = enabled;
@@ -607,7 +679,7 @@
         /// <summary>
         /// Get the Sort string
         /// </summary>
-        public string SortString
+        public string? SortString
         {
             get
             {
@@ -615,7 +687,7 @@
             }
             private set
             {
-                string old = value;
+                string? old = value;
                 if (old != _sortString)
                 {
                     _sortString = value;
@@ -645,7 +717,7 @@
             //sort datasource
             if (sortEventArgs.Cancel == false)
             {
-                BindingSource datasource = DataSource as BindingSource;
+                BindingSource? datasource = DataSource as BindingSource;
                 if (datasource != null)
                     datasource.Sort = sortEventArgs.SortString;
             }
@@ -666,7 +738,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.SetSortEnabled(enabled);
@@ -677,11 +749,11 @@
         /// <summary>
         /// Sort ASC
         /// </summary>
-        public void SortASC(DataGridViewColumn column)
+        public void SortAsc(DataGridViewColumn column)
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.SortASC();
@@ -692,7 +764,7 @@
         /// <summary>
         /// Sort ASC
         /// </summary>
-        public void SortDESC(DataGridViewColumn column)
+        public void SortDesc(DataGridViewColumn column)
         {
             if (Columns.Contains(column))
             {
@@ -769,7 +841,7 @@
         /// <summary>
         /// Get the Filter string
         /// </summary>
-        public string FilterString
+        public string? FilterString
         {
             get
             {
@@ -777,7 +849,7 @@
             }
             private set
             {
-                string old = value;
+                string? old = value;
                 if (old != _filterString)
                 {
                     _filterString = value;
@@ -1046,7 +1118,7 @@
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     Cell_FilterPopup(cell, new ColumnHeaderCellEventArgs(cell.MenuStrip, column));
@@ -1174,23 +1246,23 @@
         /// Build the complete Filter string
         /// </summary>
         /// <returns></returns>
-        private string BuildFilterString()
+        private string? BuildFilterString()
         {
             StringBuilder sb = new StringBuilder("");
             string appx = "";
 
             foreach (string filterOrder in _filterOrderList)
             {
-                DataGridViewColumn Column = Columns[filterOrder];
+                DataGridViewColumn column = Columns[filterOrder];
 
-                if (Column != null)
+                if (column != null)
                 {
-                    KryptonColumnHeaderCell cell = Column.HeaderCell as KryptonColumnHeaderCell;
+                    KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
                     if (cell != null)
                     {
                         if (cell.FilterAndSortEnabled && cell.ActiveFilterType != MenuStrip.FilterType.None)
                         {
-                            sb.AppendFormat(appx + "(" + cell.FilterString + ")", Column.DataPropertyName);
+                            sb.AppendFormat(appx + "(" + cell.FilterString + ")", column.DataPropertyName);
                             appx = " AND ";
                         }
                     }
@@ -1262,7 +1334,7 @@
         /// Build the complete Sort string
         /// </summary>
         /// <returns></returns>
-        private string BuildSortString()
+        private string? BuildSortString()
         {
             StringBuilder sb = new StringBuilder("");
             string appx = "";

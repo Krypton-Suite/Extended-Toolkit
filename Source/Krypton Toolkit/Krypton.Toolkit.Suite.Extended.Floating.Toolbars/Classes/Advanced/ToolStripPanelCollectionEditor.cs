@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602, CS8765
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     internal class ToolStripPanelCollectionEditor : UITypeEditor
@@ -37,13 +38,13 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            IWindowsFormsEditorService service = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+            IWindowsFormsEditorService? service = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
 
-            FloatableToolStrip floatableToolStrip = context.Instance as FloatableToolStrip;
+            FloatableToolStrip? floatableToolStrip = context.Instance as FloatableToolStrip;
 
             ToolStripExistingComponentChooser ecc = new ToolStripExistingComponentChooser(floatableToolStrip.ToolStripPanelExtenedList);
 
-            ecc.Text = "ToolStripPanelCollectionEditor";
+            ecc.Text = @"ToolStripPanelCollectionEditor";
 
             if (floatableToolStrip.OriginalParent != null)
             {

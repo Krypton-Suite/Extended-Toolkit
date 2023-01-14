@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// The format parameters.
         /// </value>
         public IFormatParams FormatParams { get; set; }
-        
+
         /// <summary>
         /// Contrasts the color.
         /// </summary>
@@ -106,8 +106,8 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="cellStyle">The cell style.</param>
         /// <param name="advancedBorderStyle">The advanced border style.</param>
         /// <param name="paintParts">The paint parts.</param>
-        protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, 
-            DataGridViewElementStates cellState, object value, object formattedValue, string errorText, 
+        protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex,
+            DataGridViewElementStates cellState, object value, object formattedValue, string errorText,
             DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle,
         DataGridViewPaintParts paintParts)
         {

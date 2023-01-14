@@ -291,8 +291,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.English, 
-            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false, 
+        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.English,
+            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false,
             Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes",
             string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
         {
@@ -341,10 +341,10 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.None, 
-            Image image = null, InputBoxLanguage language = InputBoxLanguage.English, 
-            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, 
-            bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, 
+        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.None,
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.English,
+            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null,
+            bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null,
             string okText = "&Ok", string yesText = "&Yes", string noText = "N&o",
             string cancelText = "&Cancel", string hintText = "")
         {
@@ -395,9 +395,9 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
         public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information,
-            Image image = null, InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok, 
-            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false, 
-            Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok,
+            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false,
+            Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes",
             string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
             DialogResult buttonOneResult = DialogResult.None, DialogResult buttonTwoResult = DialogResult.None,
             DialogResult buttonThreeResult = DialogResult.None, DialogResult buttonFourResult = DialogResult.None)
@@ -449,9 +449,9 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
         /// <param name="startPosition">The start position.</param>
-        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information, 
-            Image image = null, InputBoxLanguage language = InputBoxLanguage.English, 
-            InputBoxButtons buttons = InputBoxButtons.Ok, InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, 
+        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information,
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.English,
+            InputBoxButtons buttons = InputBoxButtons.Ok, InputBoxInputType type = InputBoxInputType.None, string[] listItems = null,
             bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok",
             string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
             FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation,
@@ -507,11 +507,11 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
         /// <param name="textAlignment">The text alignment.</param>
-        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information, 
-            Image image = null, InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok, 
-            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false, 
-            Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
-            string noText = "N&o", string cancelText = "&Cancel", string hintText = "", 
+        public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information,
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok,
+            InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false,
+            Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes",
+            string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
             InputBoxWrappedMessageTextAlignment textAlignment = InputBoxWrappedMessageTextAlignment.MiddleLeft,
             DialogResult buttonOneResult = DialogResult.None, DialogResult buttonTwoResult = DialogResult.None,
             DialogResult buttonThreeResult = DialogResult.None, DialogResult buttonFourResult = DialogResult.None)
@@ -567,13 +567,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="hintText">The hint text.</param>
         /// <param name="startPosition">The start position.</param>
         /// <param name="textAlignment">The text alignment.</param>
-        public KryptonInputBoxExtendedAlternateForm(Point iconLocation, string message, string title = "", 
-            InputBoxIconType icon = InputBoxIconType.Information, Image image = null, 
-            InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok, 
+        public KryptonInputBoxExtendedAlternateForm(Point iconLocation, string message, string title = "",
+            InputBoxIconType icon = InputBoxIconType.Information, Image image = null,
+            InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok,
             InputBoxInputType type = InputBoxInputType.None, string[] listItems = null, bool showInTaskBar = false,
-            Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
-            string noText = "N&o", string cancelText = "&Cancel", string hintText = "", 
-            FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, 
+            Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes",
+            string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
+            FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation,
             InputBoxTextAlignment textAlignment = InputBoxTextAlignment.Left,
             DialogResult buttonOneResult = DialogResult.None, DialogResult buttonTwoResult = DialogResult.None,
             DialogResult buttonThreeResult = DialogResult.None, DialogResult buttonFourResult = DialogResult.None)
@@ -701,7 +701,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             string[] tempArray = new string[4];
 
-            tempArray = $"{ okText },{ yesText },{ noText },{ cancelText }".Split(',');
+            tempArray = $"{okText},{yesText},{noText},{cancelText}".Split(',');
 
             return tempArray;
         }

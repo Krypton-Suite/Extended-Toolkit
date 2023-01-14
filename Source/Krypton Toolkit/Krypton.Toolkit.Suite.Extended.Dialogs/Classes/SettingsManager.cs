@@ -19,7 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         public SettingsManager()
         {
-            
+
         }
 
         #endregion

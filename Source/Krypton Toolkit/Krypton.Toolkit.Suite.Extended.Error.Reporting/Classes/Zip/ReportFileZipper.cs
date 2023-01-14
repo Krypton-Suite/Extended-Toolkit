@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
-	internal class ReportFileZipper
+    internal class ReportFileZipper
     {
         private readonly IFileService _fileService;
         private readonly ReportGenerator _reportGenerator;

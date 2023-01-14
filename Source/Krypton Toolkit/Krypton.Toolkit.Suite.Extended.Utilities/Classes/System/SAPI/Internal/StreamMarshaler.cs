@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal sealed class StreamMarshaler : IDisposable
     {
-        private HGlobalSafeHandle _safeHMem = new HGlobalSafeHandle();
+        private HGlobalSafeHandle _safeHMem = new();
 
         private Stream _stream;
 

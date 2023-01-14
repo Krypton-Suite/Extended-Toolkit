@@ -26,15 +26,13 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal class SeekableReadStream : Stream
     {
         private long _virtualPosition;
 
-        private List<byte> _buffer = new List<byte>();
+        private List<byte> _buffer = new();
 
         private Stream _baseStream;
 

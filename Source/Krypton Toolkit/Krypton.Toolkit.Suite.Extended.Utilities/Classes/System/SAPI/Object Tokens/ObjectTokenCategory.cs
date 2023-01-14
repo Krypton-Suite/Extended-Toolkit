@@ -26,7 +26,9 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+using IEnumSpObjectTokens = Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition.IEnumSpObjectTokens;
+using ISpObjectTokenCategory = Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition.ISpObjectTokenCategory;
+using SpObjectTokenCategory = Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition.SpObjectTokenCategory;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
 {

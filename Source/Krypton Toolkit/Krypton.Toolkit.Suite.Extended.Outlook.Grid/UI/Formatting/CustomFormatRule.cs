@@ -157,7 +157,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             // 
             // kryptonGroup1
             // 
-            this.kryptonGroup1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.kryptonGroup1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroup1.Location = new System.Drawing.Point(13, 78);
             this.kryptonGroup1.Name = "kryptonGroup1";

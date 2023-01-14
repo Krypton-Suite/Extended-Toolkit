@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             ApplicationAssembly = ass;
             ApplicationIcon = f.Icon;
             Context = f;
-            Version = (job.Tag == JobType.UPDATE) ? ApplicationAssembly.GetName().Version : job.Version;
+            Version = (job.Tag == JobType.Update) ? ApplicationAssembly.GetName().Version : job.Version;
             Tag = job.Tag;
         }
 
@@ -84,10 +84,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         {
             ApplicationPath = job.FilePath;
             ApplicationName = Path.GetFileNameWithoutExtension(ApplicationPath);
-            ApplicationAssembly = (job.Tag == JobType.UPDATE) ? Assembly.Load(ApplicationName) : null;
+            ApplicationAssembly = (job.Tag == JobType.Update) ? Assembly.Load(ApplicationName) : null;
             ApplicationIcon = null;
             Context = null;
-            Version = (job.Tag == JobType.UPDATE) ? ApplicationAssembly.GetName().Version : job.Version;
+            Version = (job.Tag == JobType.Update) ? ApplicationAssembly.GetName().Version : job.Version;
             Tag = job.Tag;
         }
 

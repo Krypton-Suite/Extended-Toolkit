@@ -43,7 +43,6 @@ global using System.Windows.Forms.VisualStyles;
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 global using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 global using Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Resources;
-global using Krypton.Toolkit.Suite.Extended.Tools;
 
 global using Microsoft.Win32;
 global using Microsoft.WindowsAPICodePack.Dialogs;

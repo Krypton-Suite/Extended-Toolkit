@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         public bool UseConfirmClearListDialogue { get => _useConfirmClearListDialogue; set => _useConfirmClearListDialogue = value; }
 
-        public string ApplicationName { get => _applicationName;  set => _applicationName = value; }
+        public string ApplicationName { get => _applicationName; set => _applicationName = value; }
 
         public string FilePath { get => _filePath; set => _filePath = value; }
 

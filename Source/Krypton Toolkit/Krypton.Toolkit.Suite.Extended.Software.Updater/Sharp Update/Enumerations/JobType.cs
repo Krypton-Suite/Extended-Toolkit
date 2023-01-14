@@ -1,5 +1,4 @@
-﻿extensions: .cs
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -25,3 +24,13 @@
  *
  */
 #endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
+{
+    public enum JobType
+    {
+        Update,
+        Add,
+        Remove
+    }
+}

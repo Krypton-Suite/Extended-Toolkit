@@ -208,13 +208,13 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
         private struct Token
         {
-            public Token(TokenType type, string value)
+            public Token(TokenType type, string? value)
             {
                 this.Type = type;
                 this.Value = value;
             }
             public TokenType Type;
-            public string Value;
+            public string? Value;
         }
 
         /// <summary>
@@ -231,13 +231,13 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         private const string _markerUL = @"[*+-]";
         private const string _markerOL = @"\d+[.]";
 
-        private static readonly Dictionary<string, string> _escapeTable;
-        private static readonly Dictionary<string, string> _invertedEscapeTable;
+        private static readonly Dictionary<string?, string> _escapeTable;
+        private static readonly Dictionary<string, string?> _invertedEscapeTable;
         private static readonly Dictionary<string, string> _backslashEscapeTable;
 
-        private readonly Dictionary<string, string> _urls = new Dictionary<string, string>();
-        private readonly Dictionary<string, string> _titles = new Dictionary<string, string>();
-        private readonly Dictionary<string, string> _htmlBlocks = new Dictionary<string, string>();
+        private readonly Dictionary<string, string?> _urls = new Dictionary<string, string?>();
+        private readonly Dictionary<string, string?> _titles = new Dictionary<string, string?>();
+        private readonly Dictionary<string, string?> _htmlBlocks = new Dictionary<string, string?>();
 
         private int _listLevel;
         private static string AutoLinkPreventionMarker = "\x1AP"; // temporarily replaces "://" where auto-linking shouldn't happen;
@@ -248,8 +248,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         static Markdown()
         {
             // Table of hash values for escaped characters:
-            _escapeTable = new Dictionary<string, string>();
-            _invertedEscapeTable = new Dictionary<string, string>();
+            _escapeTable = new Dictionary<string?, string>();
+            _invertedEscapeTable = new Dictionary<string, string?>();
             // Table of hash value for backslash escaped characters:
             _backslashEscapeTable = new Dictionary<string, string>();
 
@@ -257,7 +257,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
             foreach (char c in @"\`*_{}[]()>#+-.!/")
             {
-                string key = c.ToString();
+                string? key = c.ToString();
                 string hash = GetHashKey(key, isHtmlBlock: false);
                 _escapeTable.Add(key, hash);
                 _invertedEscapeTable.Add(hash, key);
@@ -284,7 +284,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// EscapeSpecialChars(), so that any *'s or _'s in the a
         /// and img tags get encoded.
         /// </remarks>
-        public string Transform(string text)
+        public string? Transform(string? text)
         {
             if (String.IsNullOrEmpty(text)) return "";
 
@@ -306,7 +306,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Perform transformations that form block-level tags like paragraphs, headers, and list items.
         /// </summary>
-        private string RunBlockGamut(string text, bool unhash = true)
+        private string? RunBlockGamut(string? text, bool unhash = true)
         {
             text = DoHeaders(text);
             text = DoHorizontalRules(text);
@@ -329,7 +329,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Perform transformations that occur *within* block-level tags like paragraphs, headers, and list items.
         /// </summary>
-        private string RunSpanGamut(string text)
+        private string? RunSpanGamut(string? text)
         {
             text = DoCodeSpans(text);
             text = EscapeSpecialCharsWithinTagAttributes(text);
@@ -362,10 +362,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// splits on two or more newlines, to form "paragraphs";    
         /// each paragraph is then unhashed (if it is a hash and unhashing isn't turned off) or wrapped in HTML p tag
         /// </summary>
-        private string FormParagraphs(string text, bool unhash = true)
+        private string? FormParagraphs(string? text, bool unhash = true)
         {
             // split on two or more newlines
-            string[] grafs = _newlinesMultiple.Split(_newlinesLeadingTrailing.Replace(text, ""));
+            string?[] grafs = _newlinesMultiple.Split(_newlinesLeadingTrailing.Replace(text, ""));
 
             for (int i = 0; i < grafs.Length; i++)
             {
@@ -494,7 +494,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <remarks>
         /// ^[id]: url "optional title"
         /// </remarks>
-        private string StripLinkDefinitions(string text)
+        private string? StripLinkDefinitions(string? text)
         {
             return _linkDef.Replace(text, new MatchEvaluator(LinkEvaluator));
         }
@@ -659,21 +659,21 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// replaces any block-level HTML blocks with hash entries
         /// </summary>
-        private string HashHTMLBlocks(string text)
+        private string? HashHTMLBlocks(string? text)
         {
             return _blocksHtml.Replace(text, new MatchEvaluator(HtmlEvaluator));
         }
 
         private string HtmlEvaluator(Match match)
         {
-            string text = match.Groups[1].Value;
+            string? text = match.Groups[1].Value;
             string key = GetHashKey(text, isHtmlBlock: true);
             _htmlBlocks[key] = text;
 
             return string.Concat("\n\n", key, "\n\n");
         }
 
-        private static string GetHashKey(string s, bool isHtmlBlock)
+        private static string GetHashKey(string? s, bool isHtmlBlock)
         {
             var delim = isHtmlBlock ? 'H' : 'E';
             return "\x1A" + delim + Math.Abs(s.GetHashCode()).ToString() + delim;
@@ -694,7 +694,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// array is a two-element array; the first is either 'tag' or 'text'; the second is
         /// the actual value.
         /// </summary>
-        private List<Token> TokenizeHTML(string text)
+        private List<Token> TokenizeHTML(string? text)
         {
             int pos = 0;
             int tagStart = 0;
@@ -768,7 +768,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// [link text][id]
         /// [id]
         /// </remarks>
-        private string DoAnchors(string text)
+        private string? DoAnchors(string? text)
         {
             // First, handle reference-style links: [link text] [id]
             text = _anchorRef.Replace(text, new MatchEvaluator(AnchorRefEvaluator));
@@ -783,7 +783,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return text;
         }
 
-        private string SaveFromAutoLinking(string s)
+        private string? SaveFromAutoLinking(string? s)
         {
             return s.Replace("://", AutoLinkPreventionMarker);
         }
@@ -791,7 +791,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         private string AnchorRefEvaluator(Match match)
         {
             string wholeMatch = match.Groups[1].Value;
-            string linkText = SaveFromAutoLinking(match.Groups[2].Value);
+            string? linkText = SaveFromAutoLinking(match.Groups[2].Value);
             string linkID = match.Groups[3].Value.ToLowerInvariant();
 
             string result;
@@ -802,7 +802,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
             if (_urls.ContainsKey(linkID))
             {
-                string url = _urls[linkID];
+                string? url = _urls[linkID];
 
                 url = EncodeProblemUrlChars(url);
                 url = EscapeBoldItalic(url);
@@ -810,7 +810,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
                 if (_titles.ContainsKey(linkID))
                 {
-                    string title = AttributeEncode(_titles[linkID]);
+                    string? title = AttributeEncode(_titles[linkID]);
                     title = AttributeEncode(EscapeBoldItalic(title));
                     result += " title=\"" + title + "\"";
                 }
@@ -826,14 +826,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         private string AnchorRefShortcutEvaluator(Match match)
         {
             string wholeMatch = match.Groups[1].Value;
-            string linkText = SaveFromAutoLinking(match.Groups[2].Value);
+            string? linkText = SaveFromAutoLinking(match.Groups[2].Value);
             string linkID = Regex.Replace(linkText.ToLowerInvariant(), @"[ ]*\n[ ]*", " ");  // lower case and remove newlines / extra spaces
 
             string result;
 
             if (_urls.ContainsKey(linkID))
             {
-                string url = _urls[linkID];
+                string? url = _urls[linkID];
 
                 url = EncodeProblemUrlChars(url);
                 url = EscapeBoldItalic(url);
@@ -841,7 +841,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
                 if (_titles.ContainsKey(linkID))
                 {
-                    string title = AttributeEncode(_titles[linkID]);
+                    string? title = AttributeEncode(_titles[linkID]);
                     title = EscapeBoldItalic(title);
                     result += " title=\"" + title + "\"";
                 }
@@ -857,9 +857,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
         private string AnchorInlineEvaluator(Match match)
         {
-            string linkText = SaveFromAutoLinking(match.Groups[2].Value);
-            string url = match.Groups[3].Value;
-            string title = match.Groups[6].Value;
+            string? linkText = SaveFromAutoLinking(match.Groups[2].Value);
+            string? url = match.Groups[3].Value;
+            string? title = match.Groups[6].Value;
             string result;
 
             url = EncodeProblemUrlChars(url);
@@ -922,7 +922,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// ![alt text][id]
         /// ![alt text](url "optional title")
         /// </remarks>
-        private string DoImages(string text)
+        private string? DoImages(string? text)
         {
             // First, handle reference-style labeled images: ![alt text][id]
             text = _imagesRef.Replace(text, new MatchEvaluator(ImageReferenceEvaluator));
@@ -937,7 +937,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         // This prevents the creation of horribly broken HTML when some syntax ambiguities
         // collide. It likely still doesn't do what the user meant, but at least we're not
         // outputting garbage.
-        private string EscapeImageAltText(string s)
+        private string? EscapeImageAltText(string? s)
         {
             s = EscapeBoldItalic(s);
             s = Regex.Replace(s, @"[\[\]()]", m => _escapeTable[m.ToString()]);
@@ -947,7 +947,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         private string ImageReferenceEvaluator(Match match)
         {
             string wholeMatch = match.Groups[1].Value;
-            string altText = match.Groups[2].Value;
+            string? altText = match.Groups[2].Value;
             string linkID = match.Groups[3].Value.ToLowerInvariant();
 
             // for shortcut links like ![this][].
@@ -956,8 +956,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
             if (_urls.ContainsKey(linkID))
             {
-                string url = _urls[linkID];
-                string title = null;
+                string? url = _urls[linkID];
+                string? title = null;
 
                 if (_titles.ContainsKey(linkID))
                     title = _titles[linkID];
@@ -973,9 +973,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
         private string ImageInlineEvaluator(Match match)
         {
-            string alt = match.Groups[2].Value;
-            string url = match.Groups[3].Value;
-            string title = match.Groups[6].Value;
+            string? alt = match.Groups[2].Value;
+            string? url = match.Groups[3].Value;
+            string? title = match.Groups[6].Value;
 
             if (url.StartsWith("<") && url.EndsWith(">"))
                 url = url.Substring(1, url.Length - 2);    // Remove <>'s surrounding URL, if present
@@ -983,7 +983,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return ImageTag(url, alt, title);
         }
 
-        private string ImageTag(string url, string altText, string title)
+        private string ImageTag(string? url, string? altText, string? title)
         {
             altText = EscapeImageAltText(AttributeEncode(altText));
             url = EncodeProblemUrlChars(url);
@@ -1032,7 +1032,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// ...  
         /// ###### Header 6  
         /// </remarks>
-        private string DoHeaders(string text)
+        private string? DoHeaders(string? text)
         {
             text = _headerSetext.Replace(text, new MatchEvaluator(SetextHeaderEvaluator));
             text = _headerAtx.Replace(text, new MatchEvaluator(AtxHeaderEvaluator));
@@ -1041,14 +1041,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
         private string SetextHeaderEvaluator(Match match)
         {
-            string header = match.Groups[1].Value;
+            string? header = match.Groups[1].Value;
             int level = match.Groups[2].Value.StartsWith("=") ? 1 : 2;
             return string.Format("<h{1}>{0}</h{1}>\n\n", RunSpanGamut(header), level);
         }
 
         private string AtxHeaderEvaluator(Match match)
         {
-            string header = match.Groups[2].Value;
+            string? header = match.Groups[2].Value;
             int level = match.Groups[1].Value.Length;
             return string.Format("<h{1}>{0}</h{1}>\n\n", RunSpanGamut(header), level);
         }
@@ -1074,7 +1074,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// ---
         /// - - -
         /// </remarks>
-        private string DoHorizontalRules(string text)
+        private string? DoHorizontalRules(string? text)
         {
             return _horizontalRules.Replace(text, "<hr" + _emptyElementSuffix + "\n");
         }
@@ -1108,7 +1108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Turn Markdown lists into HTML ul and ol and li tags
         /// </summary>
-        private string DoLists(string text)
+        private string? DoLists(string? text)
         {
             // We use a different prefix before nested lists than top-level lists.
             // See extended comment in _ProcessListItems().
@@ -1176,7 +1176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             // has to be a closure, so subsequent invocations can share the bool
             MatchEvaluator ListItemEvaluator = (Match match) =>
             {
-                string item = match.Groups[3].Value;
+                string? item = match.Groups[3].Value;
 
                 bool endsWithDoubleNewline = item.EndsWith("\n\n");
                 bool containsDoubleNewline = endsWithDoubleNewline || item.Contains("\n\n");
@@ -1215,7 +1215,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// /// Turn Markdown 4-space indented code into HTML pre code blocks
         /// </summary>
-        private string DoCodeBlocks(string text)
+        private string? DoCodeBlocks(string? text)
         {
             text = _codeBlock.Replace(text, new MatchEvaluator(CodeBlockEvaluator));
             return text;
@@ -1223,7 +1223,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
         private string CodeBlockEvaluator(Match match)
         {
-            string codeBlock = match.Groups[1].Value;
+            string? codeBlock = match.Groups[1].Value;
 
             codeBlock = EncodeCode(Outdent(codeBlock));
             codeBlock = _newlinesLeadingTrailing.Replace(codeBlock, "");
@@ -1242,7 +1242,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Turn Markdown `code spans` into HTML code tags
         /// </summary>
-        private string DoCodeSpans(string text)
+        private string? DoCodeSpans(string? text)
         {
             //    * You can use multiple backticks as the delimiters if you want to
             //        include literal backticks in the code span. So, this input:
@@ -1271,7 +1271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
         private string CodeSpanEvaluator(Match match)
         {
-            string span = match.Groups[2].Value;
+            string? span = match.Groups[2].Value;
             span = Regex.Replace(span, @"^[ ]*", ""); // leading whitespace
             span = Regex.Replace(span, @"[ ]*$", ""); // trailing whitespace
             span = EncodeCode(span);
@@ -1294,7 +1294,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Turn Markdown *italics* and **bold** into HTML strong and em tags
         /// </summary>
-        private string DoItalicsAndBold(string text)
+        private string? DoItalicsAndBold(string? text)
         {
 
             // <strong> must go first, then <em>
@@ -1314,7 +1314,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Turn markdown line breaks (two space at end of line) into HTML break tags
         /// </summary>
-        private string DoHardBreaks(string text)
+        private string? DoHardBreaks(string? text)
         {
             if (_autoNewlines)
                 text = Regex.Replace(text, @"\n", string.Format("<br{0}\n", _emptyElementSuffix));
@@ -1336,14 +1336,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Turn Markdown > quoted blocks into HTML blockquote blocks
         /// </summary>
-        private string DoBlockQuotes(string text)
+        private string? DoBlockQuotes(string? text)
         {
             return _blockquote.Replace(text, new MatchEvaluator(BlockQuoteEvaluator));
         }
 
         private string BlockQuoteEvaluator(Match match)
         {
-            string bq = match.Groups[1].Value;
+            string? bq = match.Groups[1].Value;
 
             bq = Regex.Replace(bq, @"^[ ]*>[ ]?", "", RegexOptions.Multiline);       // trim one level of quoting
             bq = Regex.Replace(bq, @"^[ ]+$", "", RegexOptions.Multiline);           // trim whitespace-only lines
@@ -1412,7 +1412,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <remarks>
         /// &lt;http://www.example.com&gt;
         /// </remarks>
-        private string DoAutoLinks(string text)
+        private string? DoAutoLinks(string? text)
         {
 
             if (_autoHyperlink)
@@ -1450,9 +1450,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return string.Format("<a href=\"{0}\">{0}</a>", link);
         }
 
-        private string EmailEvaluator(Match match)
+        private string? EmailEvaluator(Match match)
         {
-            string email = Unescape(match.Groups[1].Value);
+            string? email = Unescape(match.Groups[1].Value);
 
             //
             //    Input: an email address, e.g. "foo@example.com"
@@ -1486,7 +1486,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Remove one level of line-leading spaces
         /// </summary>
-        private string Outdent(string block)
+        private string? Outdent(string? block)
         {
             return _outDent.Replace(block, "");
         }
@@ -1500,7 +1500,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// roughly 10% raw, 45% hex, 45% dec
         /// note that @ is always encoded and : never is
         /// </summary>
-        private string EncodeEmailAddress(string addr)
+        private string? EncodeEmailAddress(string? addr)
         {
             var sb = new StringBuilder(addr.Length * 5);
 #pragma warning disable SecurityIntelliSenseCS // MS Security rules violation
@@ -1525,7 +1525,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Encode/escape certain Markdown characters inside code blocks and spans where they are literals
         /// </summary>
-        private string EncodeCode(string code)
+        private string? EncodeCode(string? code)
         {
             return _codeEncoder.Replace(code, EncodeCodeEvaluator);
         }
@@ -1555,7 +1555,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Encode any ampersands (that aren't part of an HTML entity) and left or right angle brackets
         /// </summary>
-        private string EncodeAmpsAndAngles(string s)
+        private string? EncodeAmpsAndAngles(string? s)
         {
             s = _amps.Replace(s, "&amp;");
             s = _angles.Replace(s, "&lt;");
@@ -1567,7 +1567,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Encodes any escaped characters such as \`, \*, \[ etc
         /// </summary>
-        private string EscapeBackslashes(string s)
+        private string? EscapeBackslashes(string? s)
         {
             return _backslashEscapes.Replace(s, new MatchEvaluator(EscapeBackslashesEvaluator));
         }
@@ -1581,11 +1581,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// swap back in all the special characters we've hidden
         /// </summary>
-        private string Unescape(string s)
+        private string? Unescape(string? s)
         {
             return _unescapes.Replace(s, new MatchEvaluator(UnescapeEvaluator));
         }
-        private string UnescapeEvaluator(Match match)
+        private string? UnescapeEvaluator(Match match)
         {
             return _invertedEscapeTable[match.Value];
         }
@@ -1594,14 +1594,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// escapes Bold [ * ] and Italic [ _ ] characters
         /// </summary>
-        private string EscapeBoldItalic(string s)
+        private string? EscapeBoldItalic(string? s)
         {
             s = s.Replace("*", _escapeTable["*"]);
             s = s.Replace("_", _escapeTable["_"]);
             return s;
         }
 
-        private static string AttributeEncode(string s)
+        private static string? AttributeEncode(string? s)
         {
             return s.Replace(">", "&gt;").Replace("<", "&lt;").Replace("\"", "&quot;");
         }
@@ -1611,7 +1611,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// hex-encodes some unusual "problem" chars in URLs to avoid URL detection problems
         /// </summary>
-        private string EncodeProblemUrlChars(string url)
+        private string? EncodeProblemUrlChars(string? url)
         {
             if (!_encodeProblemUrlCharacters) return url;
 
@@ -1643,7 +1643,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// value; this is likely overkill, but it should prevent us from colliding
         /// with the escape values by accident.
         /// </summary>
-        private string EscapeSpecialCharsWithinTagAttributes(string text)
+        private string? EscapeSpecialCharsWithinTagAttributes(string? text)
         {
             var tokens = TokenizeHTML(text);
 
@@ -1652,7 +1652,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
             foreach (var token in tokens)
             {
-                string value = token.Value;
+                string? value = token.Value;
 
                 if (token.Type == TokenType.Tag)
                 {
@@ -1677,7 +1677,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// makes sure text ends with a couple of newlines;
         /// removes any blank lines (only spaces) in the text
         /// </summary>
-        private string Normalize(string text)
+        private string? Normalize(string? text)
         {
             var output = new StringBuilder(text.Length);
             var line = new StringBuilder();

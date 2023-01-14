@@ -169,8 +169,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         public KryptonToastNotificationManager(ActionType actionType, bool showActionButton, bool? showSubScript, bool? showControlBox,
                                                bool? showTimeOutProgress, Color? borderColourOne, Color? borderColourTwo,
                                                string soundPath, string contentText, string headerText, string actionButtonText,
-                                               string dismissButtonText, string processPath, Stream soundStream, 
-                                               Image customIconImage, IconType iconType, int? seconds, int? timeOutProgress, 
+                                               string dismissButtonText, string processPath, Stream soundStream,
+                                               Image customIconImage, IconType iconType, int? seconds, int? timeOutProgress,
                                                int? cornerRadius)
         {
             // Store values

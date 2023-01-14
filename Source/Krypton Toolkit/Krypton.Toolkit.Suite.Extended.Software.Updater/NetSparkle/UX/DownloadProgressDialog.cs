@@ -251,7 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
             kbtnInstall.Visible = false;
 
-            klblHeader.Text = $"Downloading { item.AppName } { item.Version }";
+            klblHeader.Text = $"Downloading {item.AppName} {item.Version}";
 
             klblDownloadProgress.Text = string.Empty;
 

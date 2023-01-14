@@ -25,24 +25,36 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
-    /// The type of hash to create
+    /// Enum of Date interval for the OutlookGridDateTimeGroup
     /// </summary>
-    internal enum HashType
+    public enum DateInterval
     {
-        MD5,
-        SHA1,
-        SHA256,
-        SHA384,
-        SHA512
-    }
+        /// <summary>
+        /// Day
+        /// </summary>
+        Day,
 
-    public enum JobType
-    {
-        UPDATE,
-        ADD,
-        REMOVE
+        /// <summary>
+        /// Month
+        /// </summary>
+        Month,
+
+        /// <summary>
+        /// Quarter
+        /// </summary>
+        Quarter,
+
+        /// <summary>
+        /// Year
+        /// </summary>
+        Year,
+
+        /// <summary>
+        /// Smart : intelligent grouping like Outlook for dates
+        /// </summary>
+        Smart
     }
 }

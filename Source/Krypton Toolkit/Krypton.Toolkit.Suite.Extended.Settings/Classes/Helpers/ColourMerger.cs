@@ -177,7 +177,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception exc)
             {
-                KryptonMessageBox.Show($"An exeption was thrown: { exc.Message }");
+                KryptonMessageBox.Show($"An exeption was thrown: {exc.Message}");
             }
         }
 

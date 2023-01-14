@@ -25,6 +25,7 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     public class FloatablePanelHost : ToolStripPanel
@@ -41,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         #region Public
 
-        public FloatableMenuStrip FloatableMenuStrip { get => _floatableMenuStrip; set => _floatableMenuStrip = value; } 
+        public FloatableMenuStrip FloatableMenuStrip { get => _floatableMenuStrip; set => _floatableMenuStrip = value; }
 
         public FloatableToolStrip FloatableToolStrip { get => _floatableToolStrip; set => _floatableToolStrip = value; }
 
@@ -55,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         {
             if (FloatableMenuStrip != null)
             {
-                MenuStrip ms = e.Control as MenuStrip;
+                MenuStrip? ms = e.Control as MenuStrip;
 
                 if (ms != null)
                 {
@@ -71,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
             else if (FloatableToolStrip != null)
             {
-                ToolStrip ts = e.Control as ToolStrip;
+                ToolStrip? ts = e.Control as ToolStrip;
 
                 if (ts != null)
                 {

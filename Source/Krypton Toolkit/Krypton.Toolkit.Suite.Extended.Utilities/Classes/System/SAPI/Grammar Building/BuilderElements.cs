@@ -26,14 +26,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 {
     internal abstract class BuilderElements : GrammarBuilderBase
     {
-        private readonly List<GrammarBuilderBase> _items = new List<GrammarBuilderBase>();
+        private readonly List<GrammarBuilderBase> _items = new();
 
         internal List<GrammarBuilderBase> Items => _items;
 

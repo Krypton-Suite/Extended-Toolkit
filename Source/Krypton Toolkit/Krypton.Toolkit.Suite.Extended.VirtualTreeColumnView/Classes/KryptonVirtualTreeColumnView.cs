@@ -88,8 +88,8 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         /// (VirtualTreeRowNode, int column)
         /// with row clicked (May be select on or off)
         /// </summary>
-        [Category("Code")] 
-        [Description("(VirtualTreeRowNode, int column)")] 
+        [Category("Code")]
+        [Description("(VirtualTreeRowNode, int column)")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Action<VirtualTreeRowNode, int> OnSelectionChanged;
 
@@ -217,7 +217,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         {
             // Contains another control and needs marking as such for validation to work
             SetStyle(ControlStyles.ContainerControl, true);
-            
+
             // Cannot select this control, only the child tree view and does not generate a click event
             SetStyle(ControlStyles.Selectable
                      /*| ControlStyles.StandardClick

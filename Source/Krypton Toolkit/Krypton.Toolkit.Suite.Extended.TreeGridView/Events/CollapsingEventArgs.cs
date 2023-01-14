@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
-    public class CollapsingEventArgs : System.ComponentModel.CancelEventArgs
+    public class CollapsingEventArgs : CancelEventArgs
     {
         public CollapsingEventArgs(KryptonTreeGridNodeRow node) => Node = node;
 

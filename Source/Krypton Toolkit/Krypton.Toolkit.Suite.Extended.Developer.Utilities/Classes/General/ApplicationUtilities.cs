@@ -76,6 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                 window.TextExtra = $"{developerText}: ({applicationVersion})";
             }
         }
+
         #endregion
 
         #region Destruction

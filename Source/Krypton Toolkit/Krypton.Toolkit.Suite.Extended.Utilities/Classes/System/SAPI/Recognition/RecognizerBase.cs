@@ -27,10 +27,7 @@
 #endregion
 
 #define TRACE
-using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
+using AudioFormatConverter = Krypton.Toolkit.Suite.Extended.Utilities.System.Internal.AudioFormatConverter;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
@@ -131,15 +128,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         private Stream _inputStream;
 
-        private Dictionary<int, object> _bookmarkTable = new Dictionary<int, object>();
+        private Dictionary<int, object> _bookmarkTable = new();
 
         private uint _nextBookmarkId = 3u;
 
         private uint _prevMaxBookmarkId = 2u;
 
-        private OperationLock _waitForGrammarsToLoad = new OperationLock();
+        private OperationLock _waitForGrammarsToLoad = new();
 
-        private object _grammarDataLock = new object();
+        private object _grammarDataLock = new();
 
         private const uint _nullBookmarkId = 0u;
 
@@ -153,9 +150,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         private AsyncSerializedWorker _asyncWorkerUI;
 
-        private AutoResetEvent _handlerWaitHandle = new AutoResetEvent(false);
+        private AutoResetEvent _handlerWaitHandle = new(false);
 
-        private object _thisObjectLock = new object();
+        private object _thisObjectLock = new();
 
         private Exception _loadException;
 

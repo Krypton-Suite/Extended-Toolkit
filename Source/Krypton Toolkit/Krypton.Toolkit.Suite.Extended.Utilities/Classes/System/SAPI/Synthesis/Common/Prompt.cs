@@ -26,9 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     [DebuggerDisplay("{_text}")]
@@ -48,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private object _synthesizer;
 
-        private static ResourceLoader _resourceLoader = new ResourceLoader();
+        private static ResourceLoader _resourceLoader = new();
 
         public bool IsCompleted
         {

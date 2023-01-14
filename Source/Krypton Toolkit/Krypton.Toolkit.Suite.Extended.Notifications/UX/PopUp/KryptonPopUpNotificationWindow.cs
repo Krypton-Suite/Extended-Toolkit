@@ -150,17 +150,17 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         public KryptonPopUpNotificationWindow(KryptonToastNotificationPopup popup)
         {
             PopUp = popup;
-            
+
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
-            
+
             ShowInTaskbar = false;
 
             VisibleChanged += new EventHandler(PopupNotifierForm_VisibleChanged);
-            
+
             MouseMove += new MouseEventHandler(PopupNotifierForm_MouseMove);
-            
+
             MouseUp += new MouseEventHandler(PopupNotifierForm_MouseUp);
-            
+
             Paint += new PaintEventHandler(PopupNotifierForm_Paint);
         }
         #endregion
@@ -174,9 +174,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             if (Visible)
             {
                 mouseOnClose = false;
-             
+
                 mouseOnLink = false;
-                
+
                 mouseOnOptions = false;
             }
         }

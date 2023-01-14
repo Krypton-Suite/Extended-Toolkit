@@ -168,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             base.OnPaint(e);
         }
         #endregion
-        
+
         /// <summary>Called when [execute process as administrator].</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>

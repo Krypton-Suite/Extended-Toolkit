@@ -26,6 +26,9 @@
  */
 #endregion
 
+using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
+
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public partial class PaletteFileEditor : KryptonForm
@@ -44,15 +47,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaletteFileEditor));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnClose = new Krypton.Toolkit.KryptonButton();
             this.kbtnGenerateColours = new Krypton.Toolkit.KryptonButton();
             this.kbtnSaveFile = new Krypton.Toolkit.KryptonButton();
             this.kbtnOpenFile = new Krypton.Toolkit.KryptonButton();
             this.kbtnGenerateNewFile = new Krypton.Toolkit.KryptonButton();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.filePane = new EasyScintilla.SimpleEditor();
-            //this.acmPalette = new AutocompleteMenuNS.AutocompleteMenu();
+            this.krtbFile = new Krypton.Toolkit.KryptonRichTextBox();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -61,95 +64,110 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
+            this.kryptonPanel1.Controls.Add(this.kbtnClose);
             this.kryptonPanel1.Controls.Add(this.kbtnGenerateColours);
             this.kryptonPanel1.Controls.Add(this.kbtnSaveFile);
             this.kryptonPanel1.Controls.Add(this.kbtnOpenFile);
             this.kryptonPanel1.Controls.Add(this.kbtnGenerateNewFile);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 723);
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 504);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(948, 52);
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
+            this.kryptonPanel1.Size = new System.Drawing.Size(631, 52);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnClose
+            // 
+            this.kbtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnClose.CornerRoundingRadius = -1F;
+            this.kbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnClose.Location = new System.Drawing.Point(529, 15);
+            this.kbtnClose.Name = "kbtnClose";
+            this.kbtnClose.Size = new System.Drawing.Size(90, 25);
+            this.kbtnClose.TabIndex = 31;
+            this.kbtnClose.UseAsADialogButton = true;
+            this.kbtnClose.Values.Text = "Cance&l";
             // 
             // kbtnGenerateColours
             // 
+            this.kbtnGenerateColours.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnGenerateColours.AutoSize = true;
-            this.kbtnGenerateColours.Location = new System.Drawing.Point(531, 10);
+            this.kbtnGenerateColours.CornerRoundingRadius = -1F;
+            this.kbtnGenerateColours.Location = new System.Drawing.Point(318, 15);
             this.kbtnGenerateColours.Name = "kbtnGenerateColours";
-            this.kbtnGenerateColours.Size = new System.Drawing.Size(167, 30);
-            this.kbtnGenerateColours.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnGenerateColours.Size = new System.Drawing.Size(105, 25);
             this.kbtnGenerateColours.TabIndex = 30;
             this.kbtnGenerateColours.Values.Text = "Generate &Colours";
             // 
             // kbtnSaveFile
             // 
+            this.kbtnSaveFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnSaveFile.AutoSize = true;
-            this.kbtnSaveFile.Location = new System.Drawing.Point(358, 10);
+            this.kbtnSaveFile.CornerRoundingRadius = -1F;
+            this.kbtnSaveFile.Location = new System.Drawing.Point(222, 15);
             this.kbtnSaveFile.Name = "kbtnSaveFile";
-            this.kbtnSaveFile.Size = new System.Drawing.Size(167, 30);
-            this.kbtnSaveFile.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnSaveFile.Size = new System.Drawing.Size(90, 25);
             this.kbtnSaveFile.TabIndex = 29;
             this.kbtnSaveFile.Values.Text = "S&ave File";
             // 
             // kbtnOpenFile
             // 
+            this.kbtnOpenFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnOpenFile.AutoSize = true;
-            this.kbtnOpenFile.Location = new System.Drawing.Point(185, 10);
+            this.kbtnOpenFile.CornerRoundingRadius = -1F;
+            this.kbtnOpenFile.Location = new System.Drawing.Point(126, 15);
             this.kbtnOpenFile.Name = "kbtnOpenFile";
-            this.kbtnOpenFile.Size = new System.Drawing.Size(167, 30);
-            this.kbtnOpenFile.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnOpenFile.Size = new System.Drawing.Size(90, 25);
             this.kbtnOpenFile.TabIndex = 28;
             this.kbtnOpenFile.Values.Text = "&Open File";
             // 
             // kbtnGenerateNewFile
             // 
+            this.kbtnGenerateNewFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnGenerateNewFile.AutoSize = true;
-            this.kbtnGenerateNewFile.Location = new System.Drawing.Point(12, 10);
+            this.kbtnGenerateNewFile.CornerRoundingRadius = -1F;
+            this.kbtnGenerateNewFile.Location = new System.Drawing.Point(12, 15);
             this.kbtnGenerateNewFile.Name = "kbtnGenerateNewFile";
-            this.kbtnGenerateNewFile.Size = new System.Drawing.Size(167, 30);
-            this.kbtnGenerateNewFile.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnGenerateNewFile.Size = new System.Drawing.Size(110, 25);
             this.kbtnGenerateNewFile.TabIndex = 27;
             this.kbtnGenerateNewFile.Values.Text = "Generate &New File";
             this.kbtnGenerateNewFile.Click += new System.EventHandler(this.kbtnGenerateNewFile_Click);
             // 
             // kryptonPanel2
             // 
-            this.kryptonPanel2.Controls.Add(this.filePane);
+            this.kryptonPanel2.Controls.Add(this.krtbFile);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(948, 723);
+            this.kryptonPanel2.Size = new System.Drawing.Size(631, 504);
             this.kryptonPanel2.TabIndex = 1;
             // 
-            // filePane
+            // krtbFile
             // 
-            this.filePane.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.krtbFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePane.FontQuality = ScintillaNET.FontQuality.AntiAliased;
-            this.filePane.IndentationGuides = ScintillaNET.IndentView.LookBoth;
-            this.filePane.Lexer = ScintillaNET.Lexer.Xml;
-            this.filePane.Location = new System.Drawing.Point(12, 12);
-            this.filePane.Name = "filePane";
-            this.filePane.Size = new System.Drawing.Size(924, 695);
-            this.filePane.Styler = null;
-            this.filePane.TabIndex = 0;
-            /*
+            this.krtbFile.Location = new System.Drawing.Point(12, 12);
+            this.krtbFile.Name = "krtbFile";
+            this.krtbFile.Size = new System.Drawing.Size(606, 477);
+            this.krtbFile.TabIndex = 0;
+            this.krtbFile.Text = "kryptonRichTextBox1";
             // 
-            // acmPalette
+            // kryptonBorderEdge1
             // 
-            this.acmPalette.Colors = ((AutocompleteMenuNS.Colors)(resources.GetObject("acmPalette.Colors")));
-            this.acmPalette.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.acmPalette.ImageList = null;
-            this.acmPalette.Items = new string[0];
-            this.acmPalette.TargetControlWrapper = null;
-            */
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(631, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // PaletteFileEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(948, 775);
+            this.ClientSize = new System.Drawing.Size(631, 556);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -172,10 +190,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonButton kbtnGenerateNewFile;
         private Krypton.Toolkit.KryptonPanel kryptonPanel2;
-        private EasyScintilla.SimpleEditor filePane;
         private Krypton.Toolkit.KryptonButton kbtnGenerateColours;
         private Krypton.Toolkit.KryptonButton kbtnSaveFile;
         private Krypton.Toolkit.KryptonButton kbtnOpenFile;
+        private KryptonButton kbtnClose;
+        private KryptonRichTextBox krtbFile;
+        private KryptonBorderEdge kryptonBorderEdge1;
+
         //private AutocompleteMenuNS.AutocompleteMenu acmPalette;
         #endregion
 
@@ -198,7 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 string fileContents = reader.ReadToEnd();
 
-                filePane.Text = fileContents;
+                krtbFile.Text = fileContents;
             }
             catch (Exception error)
             {
@@ -208,7 +229,29 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void kbtnGenerateNewFile_Click(object sender, EventArgs e)
         {
-            _fileCreator.GenerateNewFile(filePane);
+            if (!string.IsNullOrEmpty(krtbFile.Text))
+            {
+                SaveFileDialog sfd = new()
+                {
+                    Title = @"Save palette file:",
+                    Filter = @"Palette Files|*.xml"
+                };
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    StreamWriter writer = new StreamWriter(sfd.FileName);
+
+                    writer.WriteAsync(krtbFile.Text);
+
+                    writer.Close();
+
+                    writer.Dispose();
+                }
+            }
+            else
+            {
+                _fileCreator.GenerateNewFile(krtbFile);
+            }
         }
 
         private void PaletteFileEditor_Load(object sender, EventArgs e)

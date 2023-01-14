@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                     List<int> validJobs = new List<int>();
                     for (int i = 0; i < Num_Jobs; ++i)
                     {
-                        if (JobsFromXML[i].Tag == JobType.UPDATE)
+                        if (JobsFromXML[i].Tag == JobType.Update)
                         {
                             if (!JobsFromXML[i].IsNewerThan(LocalApplicationInfos[i].Version))
                                 continue;
@@ -210,7 +210,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// <param name="applicationInfo">An SharpUpdateInfo object containing application's info</param>
         private void DownloadUpdate(SharpUpdateXml update, SharpUpdateLocalAppInfo applicationInfo)
         {
-            if (update.Tag == JobType.REMOVE)
+            if (update.Tag == JobType.Remove)
             {
                 tempFilePaths.Add("");
                 currentPaths.Add("");
@@ -225,8 +225,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 
             if (result == DialogResult.OK)
             {
-                string currentPath = (update.Tag == JobType.UPDATE) ? applicationInfo.ApplicationAssembly.Location : "";
-                string newPath = (update.Tag == JobType.UPDATE) ? Path.GetFullPath(Path.GetDirectoryName(currentPath).ToString() + update.FilePath) : Path.GetFullPath(applicationInfo.ApplicationPath);
+                string currentPath = (update.Tag == JobType.Update) ? applicationInfo.ApplicationAssembly.Location : "";
+                string newPath = (update.Tag == JobType.Update) ? Path.GetFullPath(Path.GetDirectoryName(currentPath).ToString() + update.FilePath) : Path.GetFullPath(applicationInfo.ApplicationPath);
                 Directory.CreateDirectory(Path.GetDirectoryName(newPath));
 
                 tempFilePaths.Add(form.TempFilePath);
@@ -282,12 +282,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                     continue;
                 }
 
-                if (jobtypes[i] == JobType.ADD)
+                if (jobtypes[i] == JobType.Add)
                 {
                     argument_complete = string.Format(argument_add, tempFilePaths[i], newPaths[i]);
                     Console.WriteLine("add: " + argument_complete);
                 }
-                else if (jobtypes[i] == JobType.UPDATE)
+                else if (jobtypes[i] == JobType.Update)
                 {
                     argument_complete = string.Format(argument_update, currentPaths[i], tempFilePaths[i], newPaths[i]);
                     Console.WriteLine("update: " + argument_complete);

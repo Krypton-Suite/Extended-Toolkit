@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         public FormStartPosition StartPosition { get => _startPosition; set => _startPosition = value; }
 
         public InputBoxNormalMessageTextAlignment NormalMessageTextAlignment { get => _normalMessageTextAlignment; set => _normalMessageTextAlignment = value; }
-        
+
         public InputBoxMessageDisplayType MessageDisplayType { get => _displayType; set => _displayType = value; }
 
         public InputBoxButtonFocus ButtonFocus { get => _buttonFocus; set => _buttonFocus = value; }
@@ -139,12 +139,12 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="buttonTwoResult">The button two result.</param>
         /// <param name="buttonThreeResult">The button three result.</param>
         /// <param name="buttonFourResult">The button four result.</param>
-        public KryptonInputBoxExtendedAlternateManager(Point iconLocation, string message, string title, InputBoxIconType icon, 
+        public KryptonInputBoxExtendedAlternateManager(Point iconLocation, string message, string title, InputBoxIconType icon,
             Image image, InputBoxLanguage language, InputBoxButtons buttons, InputBoxInputType type, string[] listItems,
             bool showInTaskBar, Font controlTypeface, Font messageTypeface, string okText, string yesText, string noText,
-            string cancelText, string hintText, FormStartPosition startPosition, InputBoxButtons boxButtons, 
+            string cancelText, string hintText, FormStartPosition startPosition, InputBoxButtons boxButtons,
             InputBoxButtonFocus buttonFocus, InputBoxMessageDisplayType messageDisplayType,
-            InputBoxNormalMessageTextAlignment normalMessageTextAlignment, InputBoxWrappedMessageTextAlignment wrappedMessageTextAlignment, 
+            InputBoxNormalMessageTextAlignment normalMessageTextAlignment, InputBoxWrappedMessageTextAlignment wrappedMessageTextAlignment,
             InputBoxTextAlignment textAlignment,
             DialogResult buttonOneResult, DialogResult buttonTwoResult,
             DialogResult buttonThreeResult, DialogResult buttonFourResult)

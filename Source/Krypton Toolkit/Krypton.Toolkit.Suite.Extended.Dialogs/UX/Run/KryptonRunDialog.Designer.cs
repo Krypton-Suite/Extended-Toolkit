@@ -1,4 +1,5 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿#pragma warning disable CS0169
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     partial class KryptonRunDialog
     {
@@ -245,8 +246,8 @@
             this.MinimizeBox = false;
             this.Name = "KryptonRunDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            this.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom)
+            | Krypton.Toolkit.PaletteDrawBorders.Left)
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.StateCommon.Border.Rounding = 5F;
             this.Text = "Run";

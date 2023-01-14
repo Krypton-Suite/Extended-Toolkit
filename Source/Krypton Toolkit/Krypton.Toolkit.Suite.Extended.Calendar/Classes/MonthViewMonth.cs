@@ -25,6 +25,10 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+using System.Diagnostics;
+#pragma warning disable CS8602
+
 #pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
@@ -37,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private DateTime _date;
         private Rectangle monthNameBounds;
         private Rectangle[] dayNamesBounds;
-        private MonthViewDay[] days;
+        private MonthViewDay?[] days;
         private string[] _dayHeaders;
         //private Size _size;
         private Point _location;
@@ -58,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             _date = date;
 
             int preDays = (new int[] { 0, 1, 2, 3, 4, 5, 6 })[(int)date.DayOfWeek] - (int)MonthView.FirstDayOfWeek;
-            days = new MonthViewDay[6 * 7];
+            days = new MonthViewDay?[6 * 7];
             DateTime curDate = date.AddDays(-preDays);
             DayHeaders = new string[7];
 
@@ -87,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public Size Size => MonthView.MonthSize;
 
-        public MonthViewDay[] Days
+        public MonthViewDay?[] Days
         {
             get => days;
             set => days = value;
@@ -162,7 +166,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             for (int i = 0; i < Days.Length; i++)
             {
-                Days[i].SetBounds(new Rectangle(new Point(curX, curY), MonthView.DaySize));
+                if (Days != null)
+                {
+                    Debug.Assert(Days != null, nameof(Days) + " != null");
+                    Days[i].SetBounds(new Rectangle(new Point(curX, curY), MonthView.DaySize));
+                }
 
                 curX += MonthView.DaySize.Width;
 

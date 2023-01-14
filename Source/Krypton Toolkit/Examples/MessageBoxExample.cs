@@ -1,4 +1,9 @@
-﻿using Krypton.Toolkit.Suite.Extended.Messagebox;
+﻿using Krypton.Toolkit.Suite.Extended.Core;
+using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+using Krypton.Toolkit.Suite.Extended.Messagebox;
+
+using ExtendedKryptonMessageBoxIcon = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedKryptonMessageBoxIcon;
+using ExtendedMessageBoxButtons = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxButtons;
 
 namespace Examples
 {
@@ -103,6 +108,13 @@ namespace Examples
             {
                 ktxtHyperlinkDestination.Text = Path.GetFullPath(ofd.FileName);
             }
+        }
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+            string dummyText = LoremIpsumGenerator.Paragraph(5, 6, 4, 10);
+
+            ktxtMessageContent.Text = dummyText;
         }
     }
 }

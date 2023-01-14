@@ -43,8 +43,6 @@ global using System.Text;
 global using System.Windows.Forms;
 global using System.Linq;
 
-global using EasyScintilla;
-
 global using Krypton.Ribbon;
 global using Krypton.Toolkit.Suite.Extended.Common;
 global using Krypton.Toolkit.Suite.Extended.Core.Resources;

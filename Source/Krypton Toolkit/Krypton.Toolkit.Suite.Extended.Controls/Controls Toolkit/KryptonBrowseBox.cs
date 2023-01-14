@@ -37,17 +37,19 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private bool _showResetButton;
 
-        private bool _isFolderPicker;
+        //private bool _isFolderPicker;
 
-        private bool _isExpandedMode;
+        //private bool _isExpandedMode;
 
         private ButtonSpecAny _bsaBrowse;
 
         private ButtonSpecAny _bsaReset;
 
-        private CommonFileDialogFilter _filter;
+        private CommonFileDialogFilter _commonFileDialogFilter;
 
         private CommonFileDialogFilterCollection _filterCollection;
+
+        private string _filter;
 
         private string _initialDirectory;
 
@@ -79,6 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue(false), Description(@"Gets or sets a value indicating whether to show the reset button.")]
         public bool ShowResetButton { get => _showResetButton; set { _showResetButton = value; Invalidate(); } }
 
+        /*
         /// <summary>Gets or sets a value indicating whether the open file dialog is a folder picker.</summary>
         /// <value><c>true</c> if the open file dialog is a folder picker; otherwise, <c>false</c>.</value>
         [DefaultValue(false), Description(@"Gets or sets a value indicating whether the open file dialog is a folder picker.")]
@@ -88,11 +91,15 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <value><c>true</c> if the save file dialog is in expanded mode; otherwise, <c>false</c>.</value>
         [DefaultValue(false), Description(@"Gets or sets a value indicating whether the save file dialog is in expanded mode.")]
         public bool IsExpandedMode { get => _isExpandedMode; set => _isExpandedMode = value; }
+        */
 
         /// <summary>Gets or sets the file dialog filter. Please see <see cref="CommonFileDialogFilter"/> for more information.</summary>
         /// <value> The file dialog filter.</value>
         [DefaultValue(null), Description(@"Gets or sets the file dialog filter. Please see 'Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogFilter' for more information.")]
-        public CommonFileDialogFilter FileDialogFilter { get => _filter; set => _filter = value; }
+        public CommonFileDialogFilter FileDialogFilter { get => _commonFileDialogFilter; set => _commonFileDialogFilter = value; }
+
+        [DefaultValue(null), Description(@"")]
+        public string Filter { get => _filter; set => _filter = value; }
 
         /// <summary>Gets or sets the file dialog filter collection. Please see <see cref="CommonFileDialogFilterCollection"/> for more information.</summary>
         /// <value>The file dialog filter collection.</value>
@@ -169,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             _kcReset.Text = _resetText;
 
             _bsaReset.Enabled = ButtonEnabled.False;
-            
+
             _kcBrowse.Execute += Browse_Execute;
 
             _kcReset.ImageLarge = _largeResetImage;
@@ -178,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             _kcReset.Execute += Reset_Execute;
 
-            ButtonSpecs.AddRange(new [] { _bsaBrowse, _bsaReset });
+            ButtonSpecs.AddRange(new[] { _bsaBrowse, _bsaReset });
         }
 
         #endregion
@@ -192,9 +199,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             if (_useSaveDialog)
             {
-                CommonSaveFileDialog saveFileDialog = new CommonSaveFileDialog();
+                SaveFileDialog saveFileDialog = new();
 
-                saveFileDialog.IsExpandedMode = _isExpandedMode;
+                //saveFileDialog.IsExpandedMode = _isExpandedMode;
 
                 if (!string.IsNullOrEmpty(_initialDirectory))
                 {
@@ -203,19 +210,19 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
                 if (_filter != null)
                 {
-                    saveFileDialog.Filters.Add(_filter);
+                    saveFileDialog.Filter = _filter;
                 }
 
-                if (saveFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     Text = Path.GetFullPath(saveFileDialog.FileName);
                 }
             }
             else
             {
-                CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+                OpenFileDialog dialog = new();
 
-                dialog.IsFolderPicker = _isFolderPicker;
+                //dialog.IsFolderPicker = _isFolderPicker;
 
                 if (!string.IsNullOrEmpty(_initialDirectory))
                 {
@@ -224,10 +231,10 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
                 if (_filter != null)
                 {
-                    dialog.Filters.Add(_filter);
+                    dialog.Filter = _filter;
                 }
 
-                if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     Text = Path.GetFullPath(dialog.FileName);
                 }
@@ -270,7 +277,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
             else
             {
-                _bsaReset.Enabled =ButtonEnabled.False;
+                _bsaReset.Enabled = ButtonEnabled.False;
             }
 
             base.OnTextChanged(e);

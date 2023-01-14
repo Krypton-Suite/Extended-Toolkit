@@ -175,7 +175,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// This object can be used to modify advanced behaior and customization of this user control.
         /// </summary>
         public readonly Configuration Configuration;
-      
+
         private readonly ControlBackEnd Backend;
         private readonly Dictionary<Cursor, System.Windows.Forms.Cursor> Cursors;
         private readonly bool IsDesignerMode = Process.GetCurrentProcess().ProcessName == "devenv";
@@ -255,7 +255,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     Configuration.WarnIfRenderNotCalledManually = false;
 
                     Plot.Title($"ScottPlot {Plot.Version}");
-                    
+
                     Plot.Render();
                 }
                 catch (Exception e)
@@ -272,7 +272,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                                             "This may be due to incompatible System.Drawing.Common versions or a 32-bit/64-bit mismatch.\n\n" +
                                             "Although rendering failed at design time, it may still function normally at runtime.\n\n" +
                                             $"Exception details:\n{e}";
-                    
+
                     return;
                 }
             }
@@ -287,15 +287,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 [ScottPlot.Cursor.Hand] = System.Windows.Forms.Cursors.Hand,
                 [ScottPlot.Cursor.Question] = System.Windows.Forms.Cursors.Help,
             };
-            
+
             InitializeComponent();
 
             krtbErrorMessage.Visible = false;
 
             pictureBox1.BackColor = Color.Transparent;
-            
+
             BackColor = Color.Transparent;
-            
+
             Plot.Style(BackColor);
 
             pictureBox1.MouseWheel += PictureBox1_MouseWheel;
@@ -440,9 +440,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         private void Backend_BitmapUpdated(object sender, EventArgs e)
         {
-           Application.DoEvents();
+            Application.DoEvents();
 
-           pictureBox1.Invalidate();
+            pictureBox1.Invalidate();
         }
 
         private void OnSizeChanged(object sender, EventArgs e) => Backend.Resize(Width, Height, true);

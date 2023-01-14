@@ -26,10 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 {
     [Serializable]
@@ -44,15 +40,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             Garbage
         }
 
-        public static readonly SrgsRuleRef Null = new SrgsRuleRef(SpecialRuleRefType.Null);
+        public static readonly SrgsRuleRef Null = new(SpecialRuleRefType.Null);
 
-        public static readonly SrgsRuleRef Void = new SrgsRuleRef(SpecialRuleRefType.Void);
+        public static readonly SrgsRuleRef Void = new(SpecialRuleRefType.Void);
 
-        public static readonly SrgsRuleRef Garbage = new SrgsRuleRef(SpecialRuleRefType.Garbage);
+        public static readonly SrgsRuleRef Garbage = new(SpecialRuleRefType.Garbage);
 
-        public static readonly SrgsRuleRef Dictation = new SrgsRuleRef(new Uri("grammar:dictation"));
+        public static readonly SrgsRuleRef Dictation = new(new Uri("grammar:dictation"));
 
-        public static readonly SrgsRuleRef MnemonicSpelling = new SrgsRuleRef(new Uri("grammar:dictation#spelling"));
+        public static readonly SrgsRuleRef MnemonicSpelling = new(new Uri("grammar:dictation#spelling"));
 
         private Uri _uri;
 

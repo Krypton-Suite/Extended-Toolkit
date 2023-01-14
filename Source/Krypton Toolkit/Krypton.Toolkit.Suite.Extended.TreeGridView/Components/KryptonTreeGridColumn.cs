@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable AssignNullToNotNullAttribute
+#nullable enable
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     /// <summary>

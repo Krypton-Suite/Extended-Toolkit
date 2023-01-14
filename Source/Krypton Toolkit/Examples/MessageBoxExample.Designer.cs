@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageBoxExample));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnShow = new Krypton.Toolkit.KryptonButton();
             this.kryptonGroupBox3 = new Krypton.Toolkit.KryptonGroupBox();
             this.kchkOpenInExplorer = new Krypton.Toolkit.KryptonCheckBox();
             this.ktxtHyperlinkDestination = new Krypton.Toolkit.KryptonTextBox();
@@ -62,7 +63,8 @@
             this.ktxtCaption = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
-            this.kbtnShow = new Krypton.Toolkit.KryptonButton();
+            this.kmbFillText = new Krypton.Toolkit.KryptonButton();
+            this.kbtnFillText = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
@@ -93,6 +95,7 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kmbFillText);
             this.kryptonPanel1.Controls.Add(this.kbtnShow);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox3);
             this.kryptonPanel1.Controls.Add(this.kryptonThemeComboBox1);
@@ -108,6 +111,16 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(1577, 429);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnShow
+            // 
+            this.kbtnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnShow.CornerRoundingRadius = -1F;
+            this.kbtnShow.Location = new System.Drawing.Point(1475, 392);
+            this.kbtnShow.Name = "kbtnShow";
+            this.kbtnShow.Size = new System.Drawing.Size(90, 25);
+            this.kbtnShow.TabIndex = 16;
+            this.kbtnShow.Values.Text = "S&how";
             // 
             // kryptonGroupBox3
             // 
@@ -144,7 +157,7 @@
             this.ktxtHyperlinkDestination.CueHint.CueHintText = "Enter a URL or resource path here...";
             this.ktxtHyperlinkDestination.Location = new System.Drawing.Point(16, 37);
             this.ktxtHyperlinkDestination.Name = "ktxtHyperlinkDestination";
-            this.ktxtHyperlinkDestination.Size = new System.Drawing.Size(277, 24);
+            this.ktxtHyperlinkDestination.Size = new System.Drawing.Size(277, 26);
             this.ktxtHyperlinkDestination.TabIndex = 6;
             this.ktxtHyperlinkDestination.TextChanged += new System.EventHandler(this.ktxtHyperlinkDestination_TextChanged);
             // 
@@ -431,15 +444,28 @@
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
             // 
-            // kbtnShow
+            // kryptonManager1
             // 
-            this.kbtnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnShow.CornerRoundingRadius = -1F;
-            this.kbtnShow.Location = new System.Drawing.Point(1475, 392);
-            this.kbtnShow.Name = "kbtnShow";
-            this.kbtnShow.Size = new System.Drawing.Size(90, 25);
-            this.kbtnShow.TabIndex = 16;
-            this.kbtnShow.Values.Text = "S&how";
+            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.SparkleBlueDarkMode;
+            // 
+            // kmbFillText
+            // 
+            this.kmbFillText.CornerRoundingRadius = -1F;
+            this.kmbFillText.Location = new System.Drawing.Point(13, 66);
+            this.kmbFillText.Name = "kmbFillText";
+            this.kmbFillText.Size = new System.Drawing.Size(90, 25);
+            this.kmbFillText.TabIndex = 17;
+            this.kmbFillText.Values.Text = "Fill Text";
+            this.kmbFillText.Click += new System.EventHandler(this.kryptonButton1_Click);
+            // 
+            // kbtnFillText
+            // 
+            this.kbtnFillText.CornerRoundingRadius = -1F;
+            this.kbtnFillText.Location = new System.Drawing.Point(13, 66);
+            this.kbtnFillText.Name = "kbtnFillText";
+            this.kbtnFillText.Size = new System.Drawing.Size(90, 25);
+            this.kbtnFillText.TabIndex = 17;
+            this.kbtnFillText.Values.Text = "Fill Text";
             // 
             // MessageBoxExample
             // 
@@ -521,5 +547,7 @@
         private ButtonSpecAny bsaBrowseForResource;
         private KryptonCheckBox kchkOpenInExplorer;
         private KryptonButton kbtnShow;
+        private KryptonButton kmbFillText;
+        private KryptonButton kbtnFillText;
     }
 }

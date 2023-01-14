@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                 preferredSize = GetPreferredSize(g, InheritedStyle, RowIndex, new Size(0, 0));
             }
 
-            Image image = OwningNode.Image;
+            Image? image = OwningNode.Image;
 
             if (image != null)
             {
@@ -159,7 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                 return;
             }
 
-            Image image = node.Image;
+            Image? image = node.Image;
 
             if (_imageHeight == 0 && image != null)
             {

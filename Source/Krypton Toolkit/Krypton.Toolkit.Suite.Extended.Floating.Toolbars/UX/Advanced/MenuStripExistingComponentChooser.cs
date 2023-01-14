@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     public class MenuStripExistingComponentChooser : KryptonForm
@@ -233,11 +234,11 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Variables
-        private List<MenuStripPanelExtened> _srcComponentList = new List<MenuStripPanelExtened>();
+        private List<MenuStripPanelExtended?> _srcComponentList = new();
         #endregion
 
         #region Properties
-        public Control SourceComponentContainer
+        public Control? SourceComponentContainer
         {
             set
             {
@@ -245,9 +246,9 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                 {
                     foreach (Control item in value.Controls)
                     {
-                        if ((item is MenuStripPanelExtened))
+                        if ((item is MenuStripPanelExtended))
                         {
-                            _srcComponentList.Add(item as MenuStripPanelExtened);
+                            _srcComponentList.Add(item as MenuStripPanelExtended);
                         }
                     }
 
@@ -256,15 +257,15 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
-        public List<MenuStripPanelExtened> SelectedComponents
+        public List<MenuStripPanelExtended>? SelectedComponents
         {
             get
             {
-                List<MenuStripPanelExtened> tspe = new List<MenuStripPanelExtened>();
+                List<MenuStripPanelExtended?> tspe = new List<MenuStripPanelExtended?>();
 
                 if (klbSelected.Items.Count > 0)
                 {
-                    foreach (MenuStripPanelExtened toolStripPanel in _srcComponentList)
+                    foreach (MenuStripPanelExtended? toolStripPanel in _srcComponentList)
                     {
                         if (klbSelected.Items.Contains(toolStripPanel.Name))
                         {
@@ -279,13 +280,13 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Constructor
-        public MenuStripExistingComponentChooser(List<MenuStripPanelExtened> panels)
+        public MenuStripExistingComponentChooser(List<MenuStripPanelExtended>? panels)
         {
             InitializeComponent();
 
             if (panels != null)
             {
-                foreach (MenuStripPanelExtened item in panels)
+                foreach (MenuStripPanelExtended item in panels)
                 {
                     klbSelected.Items.Add(item.Name);
                 }
@@ -296,7 +297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #region Methods
         private void InitialSettings()
         {
-            foreach (MenuStripPanelExtened menuStripPanel in _srcComponentList)
+            foreach (MenuStripPanelExtended? menuStripPanel in _srcComponentList)
             {
                 if (!klbSelected.Items.Contains(menuStripPanel.Name))
                 {

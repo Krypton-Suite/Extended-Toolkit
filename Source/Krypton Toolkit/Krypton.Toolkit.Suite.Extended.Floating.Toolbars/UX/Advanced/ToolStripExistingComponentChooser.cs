@@ -233,11 +233,11 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Variables
-        private List<ToolStripPanelExtened> _srcComponentList = new List<ToolStripPanelExtened>();
+        private List<ToolStripPanelExtended> _srcComponentList = new List<ToolStripPanelExtended>();
         #endregion
 
         #region Properties
-        public Control SourceComponentContainer
+        public Control? SourceComponentContainer
         {
             set
             {
@@ -245,9 +245,9 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                 {
                     foreach (Control item in value.Controls)
                     {
-                        if ((item is ToolStripPanelExtened))
+                        if ((item is ToolStripPanelExtended))
                         {
-                            _srcComponentList.Add(item as ToolStripPanelExtened);
+                            _srcComponentList.Add(item as ToolStripPanelExtended);
                         }
                     }
 
@@ -256,15 +256,15 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
-        public List<ToolStripPanelExtened> SelectedComponents
+        public List<ToolStripPanelExtended> SelectedComponents
         {
             get
             {
-                List<ToolStripPanelExtened> tspe = new List<ToolStripPanelExtened>();
+                List<ToolStripPanelExtended> tspe = new List<ToolStripPanelExtended>();
 
                 if (klbSelected.Items.Count > 0)
                 {
-                    foreach (ToolStripPanelExtened toolStripPanel in _srcComponentList)
+                    foreach (ToolStripPanelExtended toolStripPanel in _srcComponentList)
                     {
                         if (klbSelected.Items.Contains(toolStripPanel.Name))
                         {
@@ -279,13 +279,13 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Constructor
-        public ToolStripExistingComponentChooser(List<ToolStripPanelExtened> panels)
+        public ToolStripExistingComponentChooser(List<ToolStripPanelExtended> panels)
         {
             InitializeComponent();
 
             if (panels != null)
             {
-                foreach (ToolStripPanelExtened item in panels)
+                foreach (ToolStripPanelExtended item in panels)
                 {
                     klbSelected.Items.Add(item.Name);
                 }
@@ -296,7 +296,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #region Methods
         private void InitialSettings()
         {
-            foreach (ToolStripPanelExtened ToolStripPanel in _srcComponentList)
+            foreach (ToolStripPanelExtended ToolStripPanel in _srcComponentList)
             {
                 if (!klbSelected.Items.Contains(ToolStripPanel.Name))
                 {

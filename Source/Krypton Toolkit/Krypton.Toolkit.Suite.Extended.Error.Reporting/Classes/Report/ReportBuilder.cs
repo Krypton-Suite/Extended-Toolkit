@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
-	internal class ReportBuilder
+    internal class ReportBuilder
     {
         private readonly ExceptionReportInfo _info;
         private readonly IAssemblyDigger _assemblyDigger;

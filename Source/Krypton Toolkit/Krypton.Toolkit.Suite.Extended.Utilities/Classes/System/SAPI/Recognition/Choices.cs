@@ -26,15 +26,12 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     [DebuggerDisplay("{_oneOf.DebugSummary}")]
     public class Choices
     {
-        private OneOfElement _oneOf = new OneOfElement();
+        private OneOfElement _oneOf = new();
 
         internal OneOfElement OneOf => _oneOf;
 

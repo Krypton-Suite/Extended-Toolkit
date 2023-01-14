@@ -26,8 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal class AlphabetConverter
@@ -148,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
         private static PhoneMapData[] _phoneMaps = new PhoneMapData[7];
 
-        private static object _staticLock = new object();
+        private static object _staticLock = new();
 
         internal AlphabetConverter(int langId)
         {

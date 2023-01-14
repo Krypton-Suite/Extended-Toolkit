@@ -26,10 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal sealed class Backend
@@ -44,13 +40,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private bool _fNeedWeightTable;
 
-        private Graph _states = new Graph();
+        private Graph _states = new();
 
-        private List<Rule> _rules = new List<Rule>();
+        private List<Rule> _rules = new();
 
         private int _ruleIndex;
 
-        private Dictionary<int, Rule> _nameOffsetRules = new Dictionary<int, Rule>();
+        private Dictionary<int, Rule> _nameOffsetRules = new();
 
         private Rule _rootRule;
 
@@ -60,13 +56,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private string _basePath;
 
-        private List<Tag> _tags = new List<Tag>();
+        private List<Tag> _tags = new();
 
         private GrammarType _grammarMode;
 
         private AlphabetType _alphabet;
 
-        private Collection<string> _globalTags = new Collection<string>();
+        private Collection<string> _globalTags = new();
 
         private static byte[] _abZero3 = new byte[3];
 
@@ -76,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private int _cImportedRules;
 
-        private Collection<ScriptRef> _scriptRefs = new Collection<ScriptRef>();
+        private Collection<ScriptRef> _scriptRefs = new();
 
         private byte[] _il;
 

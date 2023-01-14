@@ -215,17 +215,17 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             {
                 FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
 
-                Text = $"About { assembly.FullName }";
+                Text = $"About {assembly.FullName}";
 
                 pbxApplicationIcon.Image = applicationIcon;
 
-                klblApplicationName.Text = $"Application: { fvi.ProductName }";
+                klblApplicationName.Text = $"Application: {fvi.ProductName}";
 
-                klblApplicationVersion.Text = $"Version: { fvi.FileVersion }";
+                klblApplicationVersion.Text = $"Version: {fvi.FileVersion}";
 
-                klblCopyright.Text = $"Copyright: { fvi.LegalCopyright }";
+                klblCopyright.Text = $"Copyright: {fvi.LegalCopyright}";
 
-                klblFrameworkVersion.Text = $"Framework Version: { FileUtilityMethodsExtended.GetFrameworkVersion(assembly) }";
+                klblFrameworkVersion.Text = $"Framework Version: {FileUtilityMethodsExtended.GetFrameworkVersion(assembly)}";
 
                 krtbMoreDetails.Text = fvi.FileDescription;
             }
@@ -235,7 +235,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
 
-        public KryptonAboutDialog(Image applicationIcon, Assembly assembly, bool showDescription, bool showFrameworkVersion, bool showSystemInformation, string applicationText, 
+        public KryptonAboutDialog(Image applicationIcon, Assembly assembly, bool showDescription, bool showFrameworkVersion, bool showSystemInformation, string applicationText,
                                  string aboutText, string copyrightText, string frameworkVersionText, string showSystemInformationText, string versionText)
         {
             InitializeComponent();

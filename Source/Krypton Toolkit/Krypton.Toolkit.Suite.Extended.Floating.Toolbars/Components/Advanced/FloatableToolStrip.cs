@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8602, CS8622
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     [ToolboxBitmap(typeof(FloatableToolStrip), "ToolboxBitmaps.FloatableToolStrip.bmp")]
@@ -33,17 +35,17 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #region Variables
         private ToolStripContainerWindow _toolStripContainerWindow;
 
-        private Control _originalParent = null;
+        private Control? _originalParent = null;
 
         private bool _aboutToFloat = false, _isFloating = false, _parentChanged = false;
 
-        private List<ToolStripPanelExtened> _toolStripPanelExtenedList = new List<ToolStripPanelExtened>();
+        private List<ToolStripPanelExtended> _toolStripPanelExtendedList = new();
 
         private string _floatingToolBarWindowText;
         #endregion
 
         #region Properties
-        internal Control OriginalParent => _originalParent;
+        internal Control? OriginalParent => _originalParent;
 
         /// <summary>
         /// Gets or sets the tool strip panel extened list.
@@ -52,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         /// The tool strip panel extened list.
         /// </value>
         [Editor(typeof(ToolStripPanelCollectionEditor), typeof(UITypeEditor)), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<ToolStripPanelExtened> ToolStripPanelExtenedList { get => _toolStripPanelExtenedList; set => _toolStripPanelExtenedList = value; }
+        public List<ToolStripPanelExtended> ToolStripPanelExtenedList { get => _toolStripPanelExtendedList; set => _toolStripPanelExtendedList = value; }
 
         /// <summary>
         /// Gets a value indicating whether this instance is floating.
@@ -197,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
             GetCursorPos(out point);
 
-            foreach (ToolStripPanelExtened item in _toolStripPanelExtenedList)
+            foreach (ToolStripPanelExtended item in _toolStripPanelExtendedList)
             {
                 if (item.ActiveRectangle.Contains(item.PointToClient(point)))
                 {

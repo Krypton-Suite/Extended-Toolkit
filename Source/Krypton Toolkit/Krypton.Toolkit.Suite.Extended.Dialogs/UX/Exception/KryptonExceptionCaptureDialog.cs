@@ -25,8 +25,7 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Tools;
-
+#pragma warning disable CS8602, CS8622
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     /// <summary>
@@ -253,7 +252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void kbtnExportException_Click(object sender, EventArgs e)
         {
-            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(ktxtException.Text))
+            if (string.IsNullOrWhiteSpace(ktxtException.Text))
             {
                 KryptonMessageBox.Show("No content was found!", "Save Information", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
             }
@@ -263,7 +262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
                 csfd.FileName = "Exception Capture";
 
-                csfd.Filter = "Text Files|*.txt";
+                csfd.Filter = @"Text Files|*.txt";
 
                 if (csfd.ShowDialog() == DialogResult.OK)
                 {

@@ -26,20 +26,15 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal class GrammarElement : ParseElement, IGrammar, IElement
     {
         private Backend _backend;
 
-        private List<Rule> _undefRules = new List<Rule>();
+        private List<Rule> _undefRules = new();
 
-        private List<Rule> _rules = new List<Rule>();
+        private List<Rule> _rules = new();
 
         private CustomGrammar _cg;
 

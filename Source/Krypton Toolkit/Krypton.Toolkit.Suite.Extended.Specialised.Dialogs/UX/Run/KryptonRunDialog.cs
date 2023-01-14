@@ -70,8 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             this.kbtnBrowse = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kwlMessage = new Krypton.Toolkit.KryptonWrapLabel();
-            this.kcmbOpenBox = new Krypton.Toolkit.KryptonComboBox();
+            this.ktxtOpenBox = new Krypton.Toolkit.KryptonTextBox();
             this.cmsRunBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,18 +81,19 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.clearHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pbxInputIcon = new System.Windows.Forms.PictureBox();
+            this.kwlMessage = new Krypton.Toolkit.KryptonWrapLabel();
+            this.kcmbOpenBox = new Krypton.Toolkit.KryptonComboBox();
             this.klblOpen = new Krypton.Toolkit.KryptonLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pbxInputIcon = new System.Windows.Forms.PictureBox();
-            this.ktxtOpenBox = new Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbOpenBox)).BeginInit();
             this.cmsRunBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInputIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbOpenBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -113,6 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             // 
             // kbtnLocate
             // 
+            this.kbtnLocate.CornerRoundingRadius = -1F;
             this.kbtnLocate.Location = new System.Drawing.Point(12, 14);
             this.kbtnLocate.Name = "kbtnLocate";
             this.kbtnLocate.Size = new System.Drawing.Size(90, 25);
@@ -123,18 +124,21 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             // kuacbtnRun
             // 
             this.kuacbtnRun.AssemblyToElevate = null;
+            this.kuacbtnRun.CornerRoundingRadius = -1F;
             this.kuacbtnRun.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kuacbtnRun.Enabled = false;
             this.kuacbtnRun.Location = new System.Drawing.Point(125, 13);
             this.kuacbtnRun.Name = "kuacbtnRun";
             this.kuacbtnRun.Size = new System.Drawing.Size(90, 26);
             this.kuacbtnRun.TabIndex = 3;
+            this.kuacbtnRun.UseAsUACElevationButton = true;
             this.kuacbtnRun.Values.Image = ((System.Drawing.Image)(resources.GetObject("kuacbtnRun.Values.Image")));
             this.kuacbtnRun.Values.Text = "&Run";
             this.kuacbtnRun.ExecuteProcessAsAdministrator += new Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.KryptonUACButton.ExecuteProcessAsAdministratorEventHandler(this.kuacbtnRun_ExecuteProcessAsAdministrator);
             // 
             // kbtnRun
             // 
+            this.kbtnRun.CornerRoundingRadius = -1F;
             this.kbtnRun.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnRun.Enabled = false;
             this.kbtnRun.Location = new System.Drawing.Point(125, 13);
@@ -146,6 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             // 
             // kbtnCancel
             // 
+            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(221, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -156,6 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             // 
             // kbtnBrowse
             // 
+            this.kbtnBrowse.CornerRoundingRadius = -1F;
             this.kbtnBrowse.Location = new System.Drawing.Point(317, 13);
             this.kbtnBrowse.Name = "kbtnBrowse";
             this.kbtnBrowse.Size = new System.Drawing.Size(90, 25);
@@ -186,30 +192,14 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             this.kryptonPanel2.Size = new System.Drawing.Size(419, 117);
             this.kryptonPanel2.TabIndex = 1;
             // 
-            // kwlMessage
+            // ktxtOpenBox
             // 
-            this.kwlMessage.AutoSize = false;
-            this.kwlMessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.kwlMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlMessage.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kwlMessage.Location = new System.Drawing.Point(83, 12);
-            this.kwlMessage.Name = "kwlMessage";
-            this.kwlMessage.Size = new System.Drawing.Size(324, 64);
-            this.kwlMessage.Text = "Type the name of a program, folder, document or Internet resource, and Windows wi" +
-    "ll open it for you.";
-            this.kwlMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // kcmbOpenBox
-            // 
-            this.kcmbOpenBox.ContextMenuStrip = this.cmsRunBox;
-            this.kcmbOpenBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.kcmbOpenBox.DropDownWidth = 309;
-            this.kcmbOpenBox.IntegralHeight = false;
-            this.kcmbOpenBox.Location = new System.Drawing.Point(62, 83);
-            this.kcmbOpenBox.Name = "kcmbOpenBox";
-            this.kcmbOpenBox.Size = new System.Drawing.Size(307, 21);
-            this.kcmbOpenBox.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kcmbOpenBox.TabIndex = 2;
+            this.ktxtOpenBox.ContextMenuStrip = this.cmsRunBox;
+            this.ktxtOpenBox.CueHint.CueHintText = "Type a path to launch...";
+            this.ktxtOpenBox.Location = new System.Drawing.Point(62, 83);
+            this.ktxtOpenBox.Name = "ktxtOpenBox";
+            this.ktxtOpenBox.Size = new System.Drawing.Size(307, 23);
+            this.ktxtOpenBox.TabIndex = 2;
             // 
             // cmsRunBox
             // 
@@ -278,6 +268,40 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.clearHistoryToolStripMenuItem.Text = "Clear &History";
             // 
+            // pbxInputIcon
+            // 
+            this.pbxInputIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbxInputIcon.Location = new System.Drawing.Point(375, 79);
+            this.pbxInputIcon.Name = "pbxInputIcon";
+            this.pbxInputIcon.Size = new System.Drawing.Size(32, 32);
+            this.pbxInputIcon.TabIndex = 3;
+            this.pbxInputIcon.TabStop = false;
+            // 
+            // kwlMessage
+            // 
+            this.kwlMessage.AutoSize = false;
+            this.kwlMessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.kwlMessage.ForeColor = System.Drawing.Color.Black;
+            this.kwlMessage.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kwlMessage.Location = new System.Drawing.Point(83, 12);
+            this.kwlMessage.Name = "kwlMessage";
+            this.kwlMessage.Size = new System.Drawing.Size(324, 64);
+            this.kwlMessage.Text = "Type the name of a program, folder, document or Internet resource, and Windows wi" +
+    "ll open it for you.";
+            this.kwlMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // kcmbOpenBox
+            // 
+            this.kcmbOpenBox.ContextMenuStrip = this.cmsRunBox;
+            this.kcmbOpenBox.CornerRoundingRadius = -1F;
+            this.kcmbOpenBox.DropDownWidth = 309;
+            this.kcmbOpenBox.IntegralHeight = false;
+            this.kcmbOpenBox.Location = new System.Drawing.Point(62, 83);
+            this.kcmbOpenBox.Name = "kcmbOpenBox";
+            this.kcmbOpenBox.Size = new System.Drawing.Size(307, 21);
+            this.kcmbOpenBox.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbOpenBox.TabIndex = 2;
+            // 
             // klblOpen
             // 
             this.klblOpen.Location = new System.Drawing.Point(12, 83);
@@ -295,24 +319,6 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // pbxInputIcon
-            // 
-            this.pbxInputIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxInputIcon.Location = new System.Drawing.Point(375, 79);
-            this.pbxInputIcon.Name = "pbxInputIcon";
-            this.pbxInputIcon.Size = new System.Drawing.Size(32, 32);
-            this.pbxInputIcon.TabIndex = 3;
-            this.pbxInputIcon.TabStop = false;
-            // 
-            // ktxtOpenBox
-            // 
-            this.ktxtOpenBox.ContextMenuStrip = this.cmsRunBox;
-            this.ktxtOpenBox.CueHint.CueHintText = "Type a path to launch...";
-            this.ktxtOpenBox.Location = new System.Drawing.Point(62, 83);
-            this.ktxtOpenBox.Name = "ktxtOpenBox";
-            this.ktxtOpenBox.Size = new System.Drawing.Size(307, 23);
-            this.ktxtOpenBox.TabIndex = 2;
             // 
             // KryptonRunDialog
             // 
@@ -333,10 +339,10 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbOpenBox)).EndInit();
             this.cmsRunBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInputIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbOpenBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -353,7 +359,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
         #region Constructor
         public KryptonRunDialog(bool showUACRunButton = false, bool showLocateButton = false, string message = "Type the name of a program, folder, document or Internet resource, and Windows will open it for you.",
-                                RunDialogType type = RunDialogType.COMBOBOX, RunDialogIconVisibility iconVisibility = RunDialogIconVisibility.VISIBLE,
+                                RunDialogType type = RunDialogType.Combobox, RunDialogIconVisibility iconVisibility = RunDialogIconVisibility.Visible,
                                 string openText = "O&pen", string locateText = "L&ocate", string runUACText = "&Run", string runText = "&Run",
                                 string browseText = "Br&owse", string cancelText = "C&ancel")
         {
@@ -476,10 +482,10 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
         {
             switch (type)
             {
-                case RunDialogType.COMBOBOX:
+                case RunDialogType.Combobox:
                     switch (iconVisibility)
                     {
-                        case RunDialogIconVisibility.HIDDEN:
+                        case RunDialogIconVisibility.Hidden:
                             pbxInputIcon.Visible = false;
 
                             kcmbOpenBox.Visible = true;
@@ -489,7 +495,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
                             kcmbOpenBox.Size = new Size(345, 25);
 
                             break;
-                        case RunDialogIconVisibility.VISIBLE:
+                        case RunDialogIconVisibility.Visible:
                             pbxInputIcon.Visible = true;
 
                             kcmbOpenBox.Visible = true;
@@ -501,10 +507,10 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
                     }
                     break;
-                case RunDialogType.TEXTBOX:
+                case RunDialogType.Textbox:
                     switch (iconVisibility)
                     {
-                        case RunDialogIconVisibility.HIDDEN:
+                        case RunDialogIconVisibility.Hidden:
                             pbxInputIcon.Visible = false;
 
                             ktxtOpenBox.Visible = true;
@@ -513,7 +519,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
                             ktxtOpenBox.Size = new Size(345, 25);
                             break;
-                        case RunDialogIconVisibility.VISIBLE:
+                        case RunDialogIconVisibility.Visible:
                             pbxInputIcon.Visible = true;
 
                             ktxtOpenBox.Visible = true;

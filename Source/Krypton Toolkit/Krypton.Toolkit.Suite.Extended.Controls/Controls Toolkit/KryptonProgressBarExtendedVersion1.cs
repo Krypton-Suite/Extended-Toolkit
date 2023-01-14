@@ -193,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 Invalidate();
             }
         }
-        
+
         /// <summary>
         /// The start color for the progress bar.
         /// 210, 000, 000 = Red

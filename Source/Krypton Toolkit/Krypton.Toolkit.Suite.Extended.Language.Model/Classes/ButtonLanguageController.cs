@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
             {
                 foreach (string value in _buttonTextArray)
                 {
-                    if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(value))
+                    if (!string.IsNullOrWhiteSpace(value))
                     {
                         switch (language)
                         {
@@ -369,7 +369,7 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
         {
             string[] tempArray = new string[7];
 
-            tempArray = $"{ okText },{ yesText },{ noText },{ cancelText },{ abortText },{ ignoreText },{ retryText }".Split(',');
+            tempArray = $"{okText},{yesText},{noText},{cancelText},{abortText},{ignoreText},{retryText}".Split(',');
 
             return tempArray;
         }

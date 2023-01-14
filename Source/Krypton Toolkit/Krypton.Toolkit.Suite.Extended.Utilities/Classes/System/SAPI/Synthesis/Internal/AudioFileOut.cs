@@ -26,20 +26,17 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal class AudioFileOut : AudioBase, IDisposable
     {
-        protected ManualResetEvent _evt = new ManualResetEvent(false);
+        protected ManualResetEvent _evt = new(false);
 
         protected bool _deviceOpen;
 
         protected Stream _stream;
 
-        protected PcmConverter _pcmConverter = new PcmConverter();
+        protected PcmConverter _pcmConverter = new();
 
         protected bool _doConversion;
 
@@ -51,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private IAsyncDispatch _asyncDispatch;
 
-        private object _noWriteOutLock = new object();
+        private object _noWriteOutLock = new();
 
         private WAVEFORMATEX _wfxIn;
 

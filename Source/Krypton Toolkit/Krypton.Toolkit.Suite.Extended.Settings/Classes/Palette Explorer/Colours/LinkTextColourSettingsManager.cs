@@ -300,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                 csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
 
-                csfd.DefaultFileName = $"Custom Colours Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
+                csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
                 csfd.AlwaysAppendDefaultExtension = true;
 
@@ -313,7 +313,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception exc)
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{ exc.Message }'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
             }
         }
 
@@ -332,7 +332,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                 csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
 
-                csfd.DefaultFileName = $"Custom Colours Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
+                csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
                 csfd.AlwaysAppendDefaultExtension = true;
 
@@ -345,7 +345,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception exc)
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{ exc.Message }'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
             }
         }
         #endregion

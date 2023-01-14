@@ -1,4 +1,5 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿#pragma warning disable CS0219, CS8602
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public partial class KryptonRunDialog : KryptonFormExtended
     {
@@ -73,7 +74,7 @@
 
                 pbxProcessIcon.Image = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(kcmbFilePath.Text).ToBitmap(), new Size(32, 32));
 
-                FileVersionInfo info;
+                FileVersionInfo? info = null;
 
                 //info
 

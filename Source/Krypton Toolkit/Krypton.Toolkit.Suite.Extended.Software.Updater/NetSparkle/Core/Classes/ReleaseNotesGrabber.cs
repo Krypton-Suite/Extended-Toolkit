@@ -126,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <param name="cancellationToken">token that can be used to cancel a release notes 
         /// grabbing operation</param>
         /// <returns></returns>
-        protected virtual async Task<string> GetReleaseNotes(AppCastItem item, SparkleUpdater sparkle, CancellationToken cancellationToken)
+        protected virtual async Task<string?> GetReleaseNotes(AppCastItem item, SparkleUpdater sparkle, CancellationToken cancellationToken)
         {
             string criticalUpdate = item.IsCriticalUpdate ? "Critical Update" : "";
             // at first try to use embedded description
@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
             // download release notes
             sparkle.LogWriter.PrintMessage("Downloading release notes for {0} at {1}", item.Version, item.ReleaseNotesLink);
-            string notes = await DownloadReleaseNotes(item.ReleaseNotesLink, cancellationToken, sparkle);
+            string? notes = await DownloadReleaseNotes(item.ReleaseNotesLink, cancellationToken, sparkle);
             sparkle.LogWriter.PrintMessage("Done downloading release notes for {0}", item.Version);
             if (string.IsNullOrEmpty(notes))
             {
@@ -212,27 +212,25 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <param name="sparkle"><see cref="SparkleUpdater"/> that can be used for logging information
         /// about the download process (or its failures)</param>
         /// <returns></returns>
-        protected virtual async Task<string> DownloadReleaseNotes(string link, CancellationToken cancellationToken, SparkleUpdater sparkle)
+        protected virtual async Task<string?> DownloadReleaseNotes(string link, CancellationToken cancellationToken, SparkleUpdater sparkle)
         {
             try
             {
-                using (var webClient = new WebClient())
+                using var webClient = new WebClient();
+                webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                webClient.Encoding = Encoding.UTF8;
+                // ReSharper disable ConditionIsAlwaysTrueOrFalse
+                if (cancellationToken != null)
+                // ReSharper restore ConditionIsAlwaysTrueOrFalse
                 {
-                    webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
-                    webClient.Encoding = Encoding.UTF8;
-                    // ReSharper disable ConditionIsAlwaysTrueOrFalse
-                    if (cancellationToken != null)
-                    // ReSharper restore ConditionIsAlwaysTrueOrFalse
+                    // ReSharper disable AccessToDisposedClosure
+                    using (cancellationToken.Register(() => webClient.CancelAsync()))
+                    // ReSharper restore AccessToDisposedClosure
                     {
-                        // ReSharper disable AccessToDisposedClosure
-                        using (cancellationToken.Register(() => webClient.CancelAsync()))
-                        // ReSharper restore AccessToDisposedClosure
-                        {
-                            return await webClient.DownloadStringTaskAsync(Utilities.GetAbsoluteURL(link, sparkle.AppCastUrl));
-                        }
+                        return await webClient.DownloadStringTaskAsync(Utilities.GetAbsoluteURL(link, sparkle.AppCastUrl));
                     }
-                    return await webClient.DownloadStringTaskAsync(Utilities.GetAbsoluteURL(link, sparkle.AppCastUrl));
                 }
+                return await webClient.DownloadStringTaskAsync(Utilities.GetAbsoluteURL(link, sparkle.AppCastUrl));
             }
             catch (WebException ex)
             {

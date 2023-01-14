@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                     description = updateNode["description"].InnerText;
                     launchArgs = updateNode["launchArgs"].InnerText;
 
-                    result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs, JobType.UPDATE));
+                    result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs, JobType.Update));
                 }
 
                 XmlNodeList addNodes = doc.DocumentElement.SelectNodes("/sharpUpdate/add");
@@ -173,7 +173,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                     description = addNode["description"].InnerText;
                     launchArgs = addNode["launchArgs"].InnerText;
 
-                    result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs, JobType.ADD));
+                    result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs, JobType.Add));
                 }
 
                 XmlNodeList removeNodes = doc.DocumentElement.SelectNodes("/sharpUpdate/remove");
@@ -188,7 +188,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                     description = removeNode["description"].InnerText;
                     launchArgs = removeNode["launchArgs"].InnerText;
 
-                    result.Add(new SharpUpdateXml(null, null, filePath, null, description, launchArgs, JobType.REMOVE));
+                    result.Add(new SharpUpdateXml(null, null, filePath, null, description, launchArgs, JobType.Remove));
                 }
 
                 return result.ToArray();

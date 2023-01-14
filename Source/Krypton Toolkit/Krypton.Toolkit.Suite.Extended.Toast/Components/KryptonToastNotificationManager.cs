@@ -290,7 +290,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                PaletteRelativeAlign userResponsePromptAlignHorizontal = PaletteRelativeAlign.Near,
                                                PaletteRelativeAlign userResponsePromptAlignVertical = PaletteRelativeAlign.Near,
                                                Font contentTypeface = null, Font headerTypeface = null,
-                                               Font userResponsePromptFont = null, 
+                                               Font userResponsePromptFont = null,
                                                IconType iconType = IconType.None,
                                                int time = 0, int seconds = 0, string actionButtonText = @"O&pen",
                                                string soundPath = null, string dismissText = "Di&smiss",
@@ -298,7 +298,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                Stream soundStream = null,
                                                Image customImage = null,
                                                RightToLeftSupport rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                               bool useProgressBar = false, 
+                                               bool useProgressBar = false,
                                                ToastNotificationContentAreaType contentAreaType = ToastNotificationContentAreaType.WrappedLabel,
                                                ToastNotificationSystemSounds? notificationSystemSound = ToastNotificationSystemSounds.None,
                                                KryptonCommand actionButtonCommand = null,
@@ -409,7 +409,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         else if (_contentAreaType == ToastNotificationContentAreaType.RichTextBox)
                         {
                             BasicNotification notification = new BasicNotification(ActionButtonLocation, ActionType,
-                                                                                   IconType, Title, ContentText, 
+                                                                                   IconType, Title, ContentText,
                                                                                    UsePanelColourInTextArea,
                                                                                    ShowCloseButton, ShowActionButton,
                                                                                    CustomImage, DismissText,
@@ -432,7 +432,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         else if (_contentAreaType == ToastNotificationContentAreaType.WrappedLabel)
                         {
                             BasicNotificationWithProgressBarAlternativeUI notification =
-                                new BasicNotificationWithProgressBarAlternativeUI(IconType, Title, ContentText, 
+                                new BasicNotificationWithProgressBarAlternativeUI(IconType, Title, ContentText,
                                                                                   ShowCloseButton,
                                                                                   Seconds, SoundStream,
                                                                                   CustomImage, DismissText, RightToLeftSupport);
@@ -447,8 +447,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         {
                             BasicNotificationWithProgressBar notification = new BasicNotificationWithProgressBar(ActionButtonLocation, ActionType,
                                                                                                                  IconType, Title, ContentText,
-                                                                                                                 UsePanelColourInTextArea, 
-                                                                                                                 ShowCloseButton, ShowActionButton, 
+                                                                                                                 UsePanelColourInTextArea,
+                                                                                                                 ShowCloseButton, ShowActionButton,
                                                                                                                  SoundStream, CustomImage, DismissText,
                                                                                                                  RightToLeftSupport, ActionButtonCommand);
 
@@ -467,13 +467,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         else if (_contentAreaType == ToastNotificationContentAreaType.WrappedLabel)
                         {
                             BasicNotificationWithUserResponseWrappedLabel notification = new BasicNotificationWithUserResponseWrappedLabel(ActionButtonLocation, ActionType,
-                                                                                                                                           IconType, Title, ContentText, 
+                                                                                                                                           IconType, Title, ContentText,
                                                                                                                                            Seconds, SoundPath, CustomImage,
                                                                                                                                            DismissText, UserResponsePromptText,
                                                                                                                                            UserResponsePromptColour,
-                                                                                                                                           UserResponsePromptAlignHorizontal, 
+                                                                                                                                           UserResponsePromptAlignHorizontal,
                                                                                                                                            UserResponsePromptAlignVertical,
-                                                                                                                                           UserResponsePromptFont, 
+                                                                                                                                           UserResponsePromptFont,
                                                                                                                                            RightToLeftSupport,
                                                                                                                                            ActionButtonCommand);
 
@@ -487,12 +487,12 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         {
                             BasicNotificationWithUserResponse notification = new BasicNotificationWithUserResponse(ActionButtonLocation, ActionType,
                                                                                                                    IconType, Title, ContentText,
-                                                                                                                   UsePanelColourInTextArea, 
-                                                                                                                   UseNativeBackColourInUserResponseArea, 
+                                                                                                                   UsePanelColourInTextArea,
+                                                                                                                   UseNativeBackColourInUserResponseArea,
                                                                                                                    ShowCloseButton,
                                                                                                                    Seconds,
                                                                                                                    SoundPath, CustomImage,
-                                                                                                                   DismissText, UserResponsePromptText, 
+                                                                                                                   DismissText, UserResponsePromptText,
                                                                                                                    UserResponsePromptColour,
                                                                                                                    UserResponsePromptAlignHorizontal, UserResponsePromptAlignVertical,
                                                                                                                    UserResponsePromptFont, RightToLeftSupport,
@@ -507,11 +507,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             {
                 if (!_useUserResponse)
                 {
-                    
+
                 }
                 else
                 {
-                    
+
                 }
             }
         }

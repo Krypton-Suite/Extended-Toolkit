@@ -57,19 +57,19 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (className != "")
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.", title, buttons, icon);
+                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: {exception.Message}.\n\nError in class: '{className}.cs'.", title, buttons, icon);
             }
             else if (methodSignature != "")
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
+                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: {exception.Message}.\n\nError in method: '{methodSignature}'.", title, buttons, icon);
             }
             else if (className != "" && methodSignature != "")
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
+                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: {exception.Message}.\n\nError in class: '{className}.cs'.\n\nError in method: '{methodSignature}'.", title, buttons, icon);
             }
             else
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon);
+                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: {exception.Message}.", title, buttons, icon);
             }
         }
 
@@ -105,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             else if (useConsole)
             {
-                Console.WriteLine($"[ { DateTime.Now.ToString() } ]: { exceptionMessage }");
+                Console.WriteLine($"[ {DateTime.Now.ToString()} ]: {exceptionMessage}");
             }
         }
 

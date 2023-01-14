@@ -126,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             }
 
             var noDetails = true;
-            var s = string.Format( CultureInfo.InvariantCulture, FilterFormat, this[ForeignKey, rowIndex].Value);
+            var s = string.Format(CultureInfo.InvariantCulture, FilterFormat, this[ForeignKey, rowIndex].Value);
             foreach (var cGrid in ChildView.ChildGrids)
             {
                 var bindingListView = (IBindingListView)cGrid.Key.DataSource;

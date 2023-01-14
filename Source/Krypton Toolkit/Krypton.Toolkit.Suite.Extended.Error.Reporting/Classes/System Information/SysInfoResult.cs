@@ -28,7 +28,7 @@
 #pragma warning disable 1591
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
-	/// <summary>
+    /// <summary>
     /// SysInfoResult holds results from a (ultimately WMI) query into system information
     /// </summary>
     public class SysInfoResult

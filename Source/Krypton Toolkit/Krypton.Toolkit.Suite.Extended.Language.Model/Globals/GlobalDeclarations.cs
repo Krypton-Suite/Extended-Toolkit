@@ -29,4 +29,3 @@
 global using System;
 
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-global using Krypton.Toolkit.Suite.Extended.Tools;
