@@ -69,7 +69,7 @@
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs 2022.csproj" />
-		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender 2022.csproj" />-->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\Krypton.Toolkit.Suite.Extended.Drawing.Utilities 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects 2022.csproj" />
