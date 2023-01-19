@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
 {
-    internal partial class KryptonFloatableForm : KryptonForm, IFloatable
+    public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
     {
         #region API Stuff
 

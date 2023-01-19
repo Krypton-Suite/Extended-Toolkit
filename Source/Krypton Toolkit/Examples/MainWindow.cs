@@ -118,5 +118,12 @@ namespace Examples
 
             advancedDataGrid.Show();
         }
+
+        private void kbtnDockExtenderExample_Click(object sender, EventArgs e)
+        {
+            DockExtenderExample dockExtenderExample = new DockExtenderExample();
+
+            dockExtenderExample.Show();
+        }
     }
 }

@@ -74,7 +74,7 @@
         /// <param name="container">control to be dockable</param>
         /// <param name="handle">handle to be used to track the mouse movement (e.g. caption of the container)</param>
         /// <param name="splitter">splitter to resize the docked container (optional)</param>
-        public IFloatable Attach(ScrollableControl container, Control handle, Splitter splitter)
+        public IFloatable Attach(ScrollableControl container, Control handle, KryptonSeparator splitter)
         {
             if (container == null) throw new ArgumentException("container cannot be null");
             if (handle == null) throw new ArgumentException("handle cannot be null");

@@ -21,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
         /// splitter that is attached to this panel for resizing.
         /// this is optional
         /// </summary>
-        public Splitter Splitter;
+        public KryptonSeparator Splitter;
 
         /// <summary>
         /// the parent of the container
