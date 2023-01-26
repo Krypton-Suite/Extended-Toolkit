@@ -197,10 +197,6 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		
-		<EmbeddedResource Update="Sharp Update\Resources\SharpUpdateResources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-		</EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -228,6 +224,10 @@
 	    <PackagePath></PackagePath>
 	    <Pack>true</Pack>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Sharp Update\Resources\" />
 	</ItemGroup>
 
 </Project>
