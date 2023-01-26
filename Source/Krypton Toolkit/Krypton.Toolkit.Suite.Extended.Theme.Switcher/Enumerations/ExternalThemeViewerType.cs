@@ -25,18 +25,11 @@
  */
 #endregion
 
-global using System;
-global using System.Collections;
-global using System.ComponentModel;
-global using System.Diagnostics;
-global using System.Drawing;
-global using System.IO;
-global using System.Net;
-global using System.Windows.Forms;
-
-global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-global using Krypton.Toolkit.Suite.Extended.Settings;
-
-global using Krypton.Navigator;
-
-global using Microsoft.WindowsAPICodePack.Dialogs;
+namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+{
+    public enum ExternalThemeViewerType
+    {
+        ListBox = 0,
+        ListView = 1
+    }
+}

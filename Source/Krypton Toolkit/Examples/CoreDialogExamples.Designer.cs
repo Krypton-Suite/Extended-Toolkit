@@ -46,12 +46,10 @@
             // kbtnColourDialogExamples
             // 
             this.kbtnColourDialogExamples.CornerRoundingRadius = -1F;
-            this.kbtnColourDialogExamples.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kbtnColourDialogExamples.Location = new System.Drawing.Point(12, 12);
             this.kbtnColourDialogExamples.Name = "kbtnColourDialogExamples";
             this.kbtnColourDialogExamples.Size = new System.Drawing.Size(154, 25);
             this.kbtnColourDialogExamples.TabIndex = 0;
-            this.kbtnColourDialogExamples.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kbtnColourDialogExamples.Values.Text = "Colour Dialog Examples";
             // 
             // CoreDialogExamples

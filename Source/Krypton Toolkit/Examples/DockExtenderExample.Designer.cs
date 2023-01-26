@@ -250,13 +250,11 @@
             // kbtnLeftClose
             // 
             this.kbtnLeftClose.CornerRoundingRadius = -1F;
-            this.kbtnLeftClose.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kbtnLeftClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kbtnLeftClose.Location = new System.Drawing.Point(230, 3);
             this.kbtnLeftClose.Name = "kbtnLeftClose";
             this.kbtnLeftClose.Size = new System.Drawing.Size(14, 14);
             this.kbtnLeftClose.TabIndex = 0;
-            this.kbtnLeftClose.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kbtnLeftClose.Values.Text = "X";
             this.kbtnLeftClose.Click += new System.EventHandler(this.kbtnLeftClose_Click);
             // 
@@ -291,13 +289,11 @@
             // kbtnBottomClose
             // 
             this.kbtnBottomClose.CornerRoundingRadius = -1F;
-            this.kbtnBottomClose.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kbtnBottomClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kbtnBottomClose.Location = new System.Drawing.Point(607, 3);
             this.kbtnBottomClose.Name = "kbtnBottomClose";
             this.kbtnBottomClose.Size = new System.Drawing.Size(14, 14);
             this.kbtnBottomClose.TabIndex = 0;
-            this.kbtnBottomClose.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kbtnBottomClose.Values.Text = "X";
             this.kbtnBottomClose.Click += new System.EventHandler(this.kbtnBottomClose_Click);
             // 
