@@ -256,7 +256,10 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             themeList.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
-            themeList.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            if (themeList.DropDownStyle == ComboBoxStyle.DropDownList)
+            {
+                themeList.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            }
         }
 
         public static void SetPaletteTheme(PaletteMode modeManager, KryptonComboBox themeList)

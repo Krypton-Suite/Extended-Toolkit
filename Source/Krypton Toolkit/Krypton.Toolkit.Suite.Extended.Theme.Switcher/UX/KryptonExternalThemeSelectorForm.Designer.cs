@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonExternalThemeSelectorForm));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnOk = new Krypton.Toolkit.KryptonButton();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.kbtnApply = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
@@ -46,6 +43,10 @@
             this.bsaBrowse = new Krypton.Toolkit.ButtonSpecAny();
             this.kmanCustom = new Krypton.Toolkit.KryptonManager(this.components);
             this.kcpbCustom = new Krypton.Toolkit.KryptonCustomPaletteBase(this.components);
+            this.kchkSilent = new Krypton.Toolkit.KryptonCheckBox();
+            this.kbtnApply = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
+            this.kbtnOk = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -60,6 +61,7 @@
             this.kryptonPanel1.Controls.Add(this.kbtnOk);
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Controls.Add(this.kbtnApply);
+            this.kryptonPanel1.Controls.Add(this.kchkSilent);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 400);
@@ -67,40 +69,6 @@
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(800, 50);
             this.kryptonPanel1.TabIndex = 0;
-            // 
-            // kbtnOk
-            // 
-            this.kbtnOk.CornerRoundingRadius = -1F;
-            this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnOk.Location = new System.Drawing.Point(506, 13);
-            this.kbtnOk.Name = "kbtnOk";
-            this.kbtnOk.Size = new System.Drawing.Size(90, 25);
-            this.kbtnOk.TabIndex = 3;
-            this.kbtnOk.Values.Image = ((System.Drawing.Image)(resources.GetObject("kbtnOk.Values.Image")));
-            this.kbtnOk.Values.Text = "kryptonButton3";
-            // 
-            // kbtnCancel
-            // 
-            this.kbtnCancel.CornerRoundingRadius = -1F;
-            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(602, 13);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCancel.TabIndex = 2;
-            this.kbtnCancel.Values.Image = ((System.Drawing.Image)(resources.GetObject("kbtnCancel.Values.Image")));
-            this.kbtnCancel.Values.Text = "kryptonButton2";
-            // 
-            // kbtnApply
-            // 
-            this.kbtnApply.CornerRoundingRadius = -1F;
-            this.kbtnApply.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnApply.Enabled = false;
-            this.kbtnApply.Location = new System.Drawing.Point(698, 13);
-            this.kbtnApply.Name = "kbtnApply";
-            this.kbtnApply.Size = new System.Drawing.Size(90, 25);
-            this.kbtnApply.TabIndex = 1;
-            this.kbtnApply.Values.Image = ((System.Drawing.Image)(resources.GetObject("kbtnApply.Values.Image")));
-            this.kbtnApply.Values.Text = "kryptonButton1";
             // 
             // kryptonBorderEdge1
             // 
@@ -163,8 +131,8 @@
             // 
             // klvThemesList
             // 
-            this.klvThemesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.klvThemesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.klvThemesList.HideSelection = false;
             this.klvThemesList.ItemStyle = Krypton.Toolkit.ButtonStyle.ListItem;
@@ -180,8 +148,8 @@
             // 
             // klbThemesList
             // 
-            this.klbThemesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.klbThemesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.klbThemesList.Location = new System.Drawing.Point(10, 4);
             this.klbThemesList.Name = "klbThemesList";
@@ -219,6 +187,45 @@
             this.kcpbCustom.BasePaletteType = Krypton.Toolkit.BasePaletteType.Custom;
             this.kcpbCustom.ThemeName = null;
             // 
+            // kchkSilent
+            // 
+            this.kchkSilent.Location = new System.Drawing.Point(13, 17);
+            this.kchkSilent.Name = "kchkSilent";
+            this.kchkSilent.Size = new System.Drawing.Size(54, 20);
+            this.kchkSilent.TabIndex = 5;
+            this.kchkSilent.Values.Text = "&Silent";
+            // 
+            // kbtnApply
+            // 
+            this.kbtnApply.CornerRoundingRadius = -1F;
+            this.kbtnApply.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnApply.Enabled = false;
+            this.kbtnApply.Location = new System.Drawing.Point(698, 13);
+            this.kbtnApply.Name = "kbtnApply";
+            this.kbtnApply.Size = new System.Drawing.Size(90, 25);
+            this.kbtnApply.TabIndex = 6;
+            this.kbtnApply.Values.Text = "kryptonButton1";
+            // 
+            // kbtnCancel
+            // 
+            this.kbtnCancel.CornerRoundingRadius = -1F;
+            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnCancel.Location = new System.Drawing.Point(602, 13);
+            this.kbtnCancel.Name = "kbtnCancel";
+            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCancel.TabIndex = 7;
+            this.kbtnCancel.Values.Text = "kryptonButton2";
+            // 
+            // kbtnOk
+            // 
+            this.kbtnOk.CornerRoundingRadius = -1F;
+            this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.kbtnOk.Location = new System.Drawing.Point(506, 13);
+            this.kbtnOk.Name = "kbtnOk";
+            this.kbtnOk.Size = new System.Drawing.Size(90, 25);
+            this.kbtnOk.TabIndex = 8;
+            this.kbtnOk.Values.Text = "kryptonButton3";
+            // 
             // KryptonExternalThemeSelectorForm
             // 
             this.AcceptButton = this.kbtnOk;
@@ -254,11 +261,8 @@
         private KryptonPanel kryptonPanel1;
         private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kryptonPanel2;
-        private KryptonButton kbtnApply;
         private KryptonManager kmanCustom;
         private KryptonCustomPaletteBase kcpbCustom;
-        private KryptonButton kbtnCancel;
-        private KryptonButton kbtnOk;
         private KryptonTableLayoutPanel kryptonTableLayoutPanel1;
         private KryptonLabel klblPath;
         private KryptonPanel kryptonPanel3;
@@ -267,5 +271,9 @@
         private ButtonSpecAny bsaBrowse;
         private KryptonListBox klbThemesList;
         private KryptonListView klvThemesList;
+        private KryptonCheckBox kchkSilent;
+        private KryptonButton kbtnApply;
+        private KryptonButton kbtnCancel;
+        private KryptonButton kbtnOk;
     }
 }

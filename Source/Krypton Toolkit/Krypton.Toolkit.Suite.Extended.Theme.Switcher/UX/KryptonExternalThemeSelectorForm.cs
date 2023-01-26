@@ -189,7 +189,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void klvThemesList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            kcpbCustom.Import(klvThemesList.SelectedItems.ToString());
+            kcpbCustom.Import(klvThemesList.SelectedItems.ToString(), kchkSilent.Checked);
 
             kmanCustom.GlobalPaletteMode = PaletteMode.Custom;
 

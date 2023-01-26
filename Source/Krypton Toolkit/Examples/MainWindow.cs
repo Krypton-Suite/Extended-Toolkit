@@ -125,5 +125,12 @@ namespace Examples
 
             dockExtenderExample.Show();
         }
+
+        private void kbtnThemeTools_Click(object sender, EventArgs e)
+        {
+            ThemeTools themeTools = new();
+
+            themeTools.Show();
+        }
     }
 }
