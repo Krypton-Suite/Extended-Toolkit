@@ -132,5 +132,12 @@ namespace Examples
 
             themeTools.Show();
         }
+
+        private void kbtnRibbonExtended_Click(object sender, EventArgs e)
+        {
+            KryptonRibbonExtendedExample ribbonExtendedExample = new KryptonRibbonExtendedExample();
+
+            ribbonExtendedExample.Show();
+        }
     }
 }

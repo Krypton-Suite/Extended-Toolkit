@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnThemeTools = new Krypton.Toolkit.KryptonButton();
             this.kbtnDockExtenderExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnAdvancedDataGridExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnTreeGridView2Example = new Krypton.Toolkit.KryptonButton();
@@ -49,13 +50,14 @@
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
-            this.kbtnThemeTools = new Krypton.Toolkit.KryptonButton();
+            this.kbtnRibbonExtended = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnRibbonExtended);
             this.kryptonPanel1.Controls.Add(this.kbtnThemeTools);
             this.kryptonPanel1.Controls.Add(this.kbtnDockExtenderExample);
             this.kryptonPanel1.Controls.Add(this.kbtnAdvancedDataGridExample);
@@ -81,6 +83,16 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(620, 390);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnThemeTools
+            // 
+            this.kbtnThemeTools.CornerRoundingRadius = -1F;
+            this.kbtnThemeTools.Location = new System.Drawing.Point(398, 126);
+            this.kbtnThemeTools.Name = "kbtnThemeTools";
+            this.kbtnThemeTools.Size = new System.Drawing.Size(111, 22);
+            this.kbtnThemeTools.TabIndex = 19;
+            this.kbtnThemeTools.Values.Text = "Theme Tools";
+            this.kbtnThemeTools.Click += new System.EventHandler(this.kbtnThemeTools_Click);
             // 
             // kbtnDockExtenderExample
             // 
@@ -176,7 +188,7 @@
             // 
             this.kbtnOutlookGrid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.kbtnOutlookGrid.CornerRoundingRadius = -1F;
-            this.kbtnOutlookGrid.Location = new System.Drawing.Point(13, 67);
+            this.kbtnOutlookGrid.Location = new System.Drawing.Point(10, 67);
             this.kbtnOutlookGrid.Name = "kbtnOutlookGrid";
             this.kbtnOutlookGrid.Size = new System.Drawing.Size(127, 25);
             this.kbtnOutlookGrid.TabIndex = 9;
@@ -271,15 +283,15 @@
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
-            // kbtnThemeTools
+            // kbtnRibbonExtended
             // 
-            this.kbtnThemeTools.CornerRoundingRadius = -1F;
-            this.kbtnThemeTools.Location = new System.Drawing.Point(398, 126);
-            this.kbtnThemeTools.Name = "kbtnThemeTools";
-            this.kbtnThemeTools.Size = new System.Drawing.Size(111, 22);
-            this.kbtnThemeTools.TabIndex = 19;
-            this.kbtnThemeTools.Values.Text = "Theme Tools";
-            this.kbtnThemeTools.Click += new System.EventHandler(this.kbtnThemeTools_Click);
+            this.kbtnRibbonExtended.CornerRoundingRadius = -1F;
+            this.kbtnRibbonExtended.Location = new System.Drawing.Point(10, 154);
+            this.kbtnRibbonExtended.Name = "kbtnRibbonExtended";
+            this.kbtnRibbonExtended.Size = new System.Drawing.Size(111, 22);
+            this.kbtnRibbonExtended.TabIndex = 20;
+            this.kbtnRibbonExtended.Values.Text = "Ribbon Extended";
+            this.kbtnRibbonExtended.Click += new System.EventHandler(this.kbtnRibbonExtended_Click);
             // 
             // MainWindow
             // 
@@ -319,5 +331,6 @@
         private KryptonButton kbtnAdvancedDataGridExample;
         private KryptonButton kbtnDockExtenderExample;
         private KryptonButton kbtnThemeTools;
+        private KryptonButton kbtnRibbonExtended;
     }
 }
