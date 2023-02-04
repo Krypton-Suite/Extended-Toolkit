@@ -118,5 +118,26 @@ namespace Examples
 
             advancedDataGrid.Show();
         }
+
+        private void kbtnDockExtenderExample_Click(object sender, EventArgs e)
+        {
+            DockExtenderExample dockExtenderExample = new DockExtenderExample();
+
+            dockExtenderExample.Show();
+        }
+
+        private void kbtnThemeTools_Click(object sender, EventArgs e)
+        {
+            ThemeTools themeTools = new();
+
+            themeTools.Show();
+        }
+
+        private void kbtnRibbonExtended_Click(object sender, EventArgs e)
+        {
+            KryptonRibbonExtendedExample ribbonExtendedExample = new KryptonRibbonExtendedExample();
+
+            ribbonExtendedExample.Show();
+        }
     }
 }

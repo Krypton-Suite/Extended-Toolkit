@@ -38,3 +38,5 @@ global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 global using Krypton.Toolkit.Suite.Extended.Settings;
 
 global using Krypton.Navigator;
+
+global using Microsoft.WindowsAPICodePack.Dialogs;

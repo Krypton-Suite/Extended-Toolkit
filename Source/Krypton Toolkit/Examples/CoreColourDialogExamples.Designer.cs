@@ -62,100 +62,82 @@
             // kryptonButton1
             // 
             this.kryptonButton1.CornerRoundingRadius = -1F;
-            this.kryptonButton1.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kryptonButton1.Location = new System.Drawing.Point(13, 13);
             this.kryptonButton1.Name = "kryptonButton1";
             this.kryptonButton1.Size = new System.Drawing.Size(250, 25);
             this.kryptonButton1.TabIndex = 0;
-            this.kryptonButton1.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kryptonButton1.Values.Text = "kryptonButton1";
             // 
             // kryptonButton2
             // 
             this.kryptonButton2.CornerRoundingRadius = -1F;
-            this.kryptonButton2.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kryptonButton2.Location = new System.Drawing.Point(13, 44);
             this.kryptonButton2.Name = "kryptonButton2";
             this.kryptonButton2.Size = new System.Drawing.Size(250, 25);
             this.kryptonButton2.TabIndex = 1;
-            this.kryptonButton2.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kryptonButton2.Values.Text = "kryptonButton2";
             // 
             // kryptonButton3
             // 
             this.kryptonButton3.CornerRoundingRadius = -1F;
-            this.kryptonButton3.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kryptonButton3.Location = new System.Drawing.Point(13, 75);
             this.kryptonButton3.Name = "kryptonButton3";
             this.kryptonButton3.Size = new System.Drawing.Size(250, 25);
             this.kryptonButton3.TabIndex = 2;
-            this.kryptonButton3.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kryptonButton3.Values.Text = "kryptonButton3";
             // 
             // kryptonButton4
             // 
             this.kryptonButton4.CornerRoundingRadius = -1F;
-            this.kryptonButton4.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kryptonButton4.Location = new System.Drawing.Point(13, 106);
             this.kryptonButton4.Name = "kryptonButton4";
             this.kryptonButton4.Size = new System.Drawing.Size(250, 25);
             this.kryptonButton4.TabIndex = 3;
-            this.kryptonButton4.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kryptonButton4.Values.Text = "kryptonButton4";
             // 
             // kryptonButton5
             // 
             this.kryptonButton5.CornerRoundingRadius = -1F;
-            this.kryptonButton5.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kryptonButton5.Location = new System.Drawing.Point(13, 137);
             this.kryptonButton5.Name = "kryptonButton5";
             this.kryptonButton5.Size = new System.Drawing.Size(250, 25);
             this.kryptonButton5.TabIndex = 4;
-            this.kryptonButton5.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kryptonButton5.Values.Text = "kryptonButton5";
             // 
             // kryptonButton6
             // 
             this.kryptonButton6.CornerRoundingRadius = -1F;
-            this.kryptonButton6.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kryptonButton6.Location = new System.Drawing.Point(13, 168);
             this.kryptonButton6.Name = "kryptonButton6";
             this.kryptonButton6.Size = new System.Drawing.Size(250, 25);
             this.kryptonButton6.TabIndex = 5;
-            this.kryptonButton6.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kryptonButton6.Values.Text = "kryptonButton6";
             // 
             // kryptonButton7
             // 
             this.kryptonButton7.CornerRoundingRadius = -1F;
-            this.kryptonButton7.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kryptonButton7.Location = new System.Drawing.Point(13, 199);
             this.kryptonButton7.Name = "kryptonButton7";
             this.kryptonButton7.Size = new System.Drawing.Size(250, 25);
             this.kryptonButton7.TabIndex = 6;
-            this.kryptonButton7.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kryptonButton7.Values.Text = "kryptonButton7";
             // 
             // kryptonButton8
             // 
             this.kryptonButton8.CornerRoundingRadius = -1F;
-            this.kryptonButton8.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kryptonButton8.Location = new System.Drawing.Point(13, 230);
             this.kryptonButton8.Name = "kryptonButton8";
             this.kryptonButton8.Size = new System.Drawing.Size(250, 25);
             this.kryptonButton8.TabIndex = 7;
-            this.kryptonButton8.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kryptonButton8.Values.Text = "kryptonButton8";
             // 
             // kryptonButton9
             // 
             this.kryptonButton9.CornerRoundingRadius = -1F;
-            this.kryptonButton9.CustomUACShieldSize = new System.Drawing.Size(16, 16);
             this.kryptonButton9.Location = new System.Drawing.Point(13, 261);
             this.kryptonButton9.Name = "kryptonButton9";
             this.kryptonButton9.Size = new System.Drawing.Size(250, 25);
             this.kryptonButton9.TabIndex = 8;
-            this.kryptonButton9.UACShieldIconSize = Krypton.Toolkit.UACShieldIconSize.ExtraSmall;
             this.kryptonButton9.Values.Text = "kryptonButton9";
             // 
             // CoreColourDialogExamples

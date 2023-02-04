@@ -4,7 +4,7 @@
 
 # NuGet Information 
 
-<a href="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Documents/Modules/NuGet%20Package%20Information.md"><img src="https://img.shields.io/badge/NuGet-Version Information-orange.svg?label=Version&logo=nuget&style=flat-square" alt="Version information" /></a>
+<a href="https://github.com/Krypton-Suite/Documentation/blob/main/Documents/Packages/Extended/Krypton-Toolkit-Suite-Extended-Modules.md"><img src="https://img.shields.io/badge/NuGet-Version Information-orange.svg?label=Version&logo=nuget&style=flat-square" alt="Version information" /></a>
 
 =======
 

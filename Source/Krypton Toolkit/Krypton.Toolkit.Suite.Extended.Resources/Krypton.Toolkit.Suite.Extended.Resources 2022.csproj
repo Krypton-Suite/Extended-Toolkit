@@ -82,7 +82,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.1.10-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.1.30-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -92,7 +92,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="70.22.8.234-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.1.23-beta" />
 			</ItemGroup>
 		</When>
 
@@ -162,12 +162,21 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>ImageResources.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Images\UACShieldIconResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>UACShieldIconResources.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
   
 	<ItemGroup>
 		<EmbeddedResource Update="Images\ImageResources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Images\UACShieldIconResources.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>UACShieldIconResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
   

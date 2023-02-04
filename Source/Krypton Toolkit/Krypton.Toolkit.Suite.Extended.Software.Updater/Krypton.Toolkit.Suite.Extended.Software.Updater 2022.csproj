@@ -83,7 +83,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.1.10-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.1.30-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -93,7 +93,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="70.22.8.234-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.1.23-beta" />
 			</ItemGroup>
 		</When>
 
@@ -197,10 +197,6 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		
-		<EmbeddedResource Update="Sharp Update\Resources\SharpUpdateResources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-		</EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -228,6 +224,10 @@
 	    <PackagePath></PackagePath>
 	    <Pack>true</Pack>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Sharp Update\Resources\" />
 	</ItemGroup>
 
 </Project>

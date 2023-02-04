@@ -83,9 +83,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.1.10-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.1.30-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="80.23.1.10-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="80.23.1.30-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -95,9 +95,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="70.22.8.234-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.1.23-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="70.22.8.234-beta" />
+				<PackageReference Include="Krypton.Navigator.Canary" Version="80.23.1.23-beta" />
 			</ItemGroup>
 		</When>
 
@@ -162,6 +162,10 @@
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
+
+	<ItemGroup>
+	  <PackageReference Include="WindowsAPICodePackShell" Version="7.0.1" />
+	</ItemGroup>
   
 	<ItemGroup>
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
