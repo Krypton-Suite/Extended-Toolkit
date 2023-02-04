@@ -42,3 +42,5 @@ global using System.Runtime.InteropServices;
 global using System.Runtime.Versioning;
 global using System.Text;
 global using System.Windows.Forms;
+
+global using Microsoft.Win32.SafeHandles;

@@ -3,25 +3,25 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<!--If all else fails-->
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
@@ -181,7 +181,7 @@
 	</PropertyGroup>
   
 	<ItemGroup>
-		<PackageReference Include="WindowsAPICodePackShell" Version="7.0.1" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="7.0.2" />
 	</ItemGroup>
   
 	<ItemGroup>
