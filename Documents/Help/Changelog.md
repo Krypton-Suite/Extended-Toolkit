@@ -6,6 +6,7 @@
 
 ## 2023-11-xx - Build 2311 - November 2023
 <!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
+* Add backwards support for `AllowNull`
 * Implemented [#394](https://github.com/Krypton-Suite/Extended-Toolkit/issues/394), Fix UI of certain dialogs
 * New `KryptonSecureTextBox` control, uses the [SecureString](https://learn.microsoft.com/en-us/dotnet/api/system.security.securestring?view=net-7.0) API to keep users input text confidential, thus removing the text from memory when no longer needed
 * Implemented [#390](https://github.com/Krypton-Suite/Extended-Toolkit/issues/390), Replace/modify `KryptonWrapLabel` in `KryptonMessageBoxExtended`
@@ -28,7 +29,7 @@
 * Refactor code to eliminate duplication
 * Add support for .NET 8.0
 * Removed support for .NET 5.0
-* Removed support for .NET Core 3.1 & .NET 5.0 for 'Lite' packages (See [package support information](https://github.com/Krypton-Suite/Documentation/blob/main/Documents/Development/Package-Support-Information.md) for details)
+* Removed support for .NET Core 3.1
 * Implemented [#354](https://github.com/Krypton-Suite/Extended-Toolkit/issues/354), Change the license from BSD-3-Clause to MIT
 * Implemented [#302](https://github.com/Krypton-Suite/Extended-Toolkit/issues/302), `KryptonMessageBox` Clickable Links
 * Updated standard toolkit to build `2311`
