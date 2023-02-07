@@ -132,9 +132,9 @@
 
 
 				<Description Condition="'$(TFMs)' == 'all'">
-					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8 and .NET 5/6. $(Description)
+					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7. $(Description)
 
-					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8 and .NET 5/6.
+					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7.
 					Also, all libraries are included targeting each specific framework version for performance purposes.
 
 					To view all of the standard toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Standard/Krypton-Toolkit-Suite-Standard-Modules.md
@@ -149,9 +149,9 @@
 				<PackageId Condition="'$(TFMs)' == 'all'">$(PackageId).Nightly</PackageId>
 
 				<Description Condition="'$(TFMs)' == 'all'">
-					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8 and .NET 5/6. $(Description)
+					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7. $(Description)
 
-					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8 and .NET 5/6.
+					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7.
 					Also, all libraries are included targeting each specific framework version for performance purposes.
 
 					To view all of the standard toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Standard/Krypton-Toolkit-Suite-Standard-Modules.md
@@ -181,9 +181,9 @@
 			<PropertyGroup>
 				<PackageId Condition="'$(TFMs)' == 'all'">$(PackageId)</PackageId>
 				<Description Condition="'$(TFMs)' == 'all'">
-					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8 and .NET 5/6. $(Description)
+					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7. $(Description)
 
-					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8 and .NET 5/6.
+					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7.
 					Also, all libraries are included targeting each specific framework version for performance purposes.
 
 					To view all of the standard toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Standard/Krypton-Toolkit-Suite-Standard-Modules.md
