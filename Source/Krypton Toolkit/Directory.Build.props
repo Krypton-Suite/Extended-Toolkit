@@ -27,7 +27,7 @@
 				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
 				<PackageIcon>Krypton Canary.png</PackageIcon>
 				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
-				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .NET Toolkit</PackageTags>
 				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
 				<RepositoryType>git</RepositoryType>
 				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
@@ -55,7 +55,7 @@
 				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
 				<PackageIcon>Krypton Nightly.png</PackageIcon>
 				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
-				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .NET Toolkit</PackageTags>
 				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
 				<RepositoryType>git</RepositoryType>
 				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
@@ -83,7 +83,7 @@
 				<PackageIcon>Krypton Stable.png</PackageIcon>
 				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
-				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .NET Toolkit</PackageTags>
 				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
 				<RepositoryType>git</RepositoryType>
 				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
