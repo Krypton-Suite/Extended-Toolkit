@@ -268,10 +268,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                     krtbErrorMessage.Dock = DockStyle.Fill;
 
-                    krtbErrorMessage.Text = "ERROR: ScottPlot failed to render in design mode.\n\n" +
-                                            "This may be due to incompatible System.Drawing.Common versions or a 32-bit/64-bit mismatch.\n\n" +
-                                            "Although rendering failed at design time, it may still function normally at runtime.\n\n" +
-                                            $"Exception details:\n{e}";
+                    krtbErrorMessage.Text = @"ERROR: ScottPlot failed to render in design mode.\n\n" +
+                                            @"This may be due to incompatible System.Drawing.Common versions or a 32-bit/64-bit mismatch.\n\n" +
+                                            @"Although rendering failed at design time, it may still function normally at runtime.\n\n" +
+                                            @$"Exception details:\n{e}";
 
                     return;
                 }
@@ -283,7 +283,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 [ScottPlot.Cursor.WE] = System.Windows.Forms.Cursors.SizeWE,
                 [ScottPlot.Cursor.NS] = System.Windows.Forms.Cursors.SizeNS,
                 [ScottPlot.Cursor.All] = System.Windows.Forms.Cursors.SizeAll,
-                [ScottPlot.Cursor.Crosshair] = System.Windows.Forms.Cursors.Cross,
+                [ScottPlot.Cursor.CrossHair] = System.Windows.Forms.Cursors.Cross,
                 [ScottPlot.Cursor.Hand] = System.Windows.Forms.Cursors.Hand,
                 [ScottPlot.Cursor.Question] = System.Windows.Forms.Cursors.Help,
             };

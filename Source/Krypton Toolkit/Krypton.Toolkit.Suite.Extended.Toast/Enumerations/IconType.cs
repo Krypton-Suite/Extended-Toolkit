@@ -27,30 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    public enum ActionType
-    {
-        Default = 0,
-        Dismiss = 1,
-        LaunchProcess = 2,
-        Open = 3
-    }
-
-    public enum ActionButtonLocation
-    {
-        Left = 0,
-        Right = 1
-    }
-
-    public enum DefaultNotificationButton
-    {
-        /// <summary>Use the 'action' button as the default button.</summary>
-        ActionButton = 0,
-        /// <summary>Use the 'dismiss' button as the default button.</summary>
-        DismissButton = 1,
-        /// <summary>Use neither button as the default button.</summary>
-        None = 2
-    }
-
+    // Note: Assign these to 'MessageBoxIcon'
     public enum IconType
     {
         /// <summary>Specify no icon.</summary>
@@ -79,56 +56,5 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         Custom = 11,
         /// <summary>Use a Ok icon.</summary>
         Ok = 12
-    }
-
-    public enum RightToLeftSupport
-    {
-        Inherit = 0,
-        LeftToRight = 1,
-        RightToLeft = 2
-    }
-
-    public enum ToastNotificationSystemSounds
-    {
-        Asterisk = 0,
-        Beep = 1,
-        Exclamation = 2,
-        Hand = 3,
-        Question = 4,
-        Custom = 5,
-        None = 6
-    }
-
-    public enum ToastNotificationContentAreaType
-    {
-        Label = 0,
-        WrappedLabel = 1,
-        MultiLinedTextBox = 2,
-        RichTextBox = 3
-    }
-
-    public enum KryptonButtonBuiltInDisplayString
-    {
-        Abort = 0,
-        Apply = 1,
-        Cancel = 2,
-        Collapse = 3,
-        Continue = 4,
-        Close = 5,
-        Custom = 6,
-        Yes = 7,
-        No = 8,
-        Ok = 9,
-        Retry = 10,
-        Ignore = 11,
-        Help = 12,
-        TryAgain = 13,
-        Expand = 14,
-        Today = 15,
-        Back = 16,
-        Exit = 17,
-        Finish = 18,
-        Next = 19,
-        Previous = 20
     }
 }

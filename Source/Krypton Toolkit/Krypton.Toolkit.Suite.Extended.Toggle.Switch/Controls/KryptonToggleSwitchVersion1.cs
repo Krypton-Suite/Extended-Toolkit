@@ -25,8 +25,6 @@
  */
 #endregion
 
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
     [DefaultValue("Checked"), DefaultEvent("CheckedChanged"), ToolboxBitmap(typeof(CheckBox)), ToolboxItem(false)]
@@ -49,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         private readonly System.Windows.Forms.Timer _animationTimer = new System.Windows.Forms.Timer();
         private ToggleSwitchRendererBase _renderer;
 
-        private ToggleSwitchStyle _style = ToggleSwitchStyle.METRO;
+        private ToggleSwitchStyle _style = ToggleSwitchStyle.Metro;
         private bool _checked = false;
         private bool _moving = false;
         private bool _animating = false;
@@ -80,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         private MouseEventArgs _lastMouseEventArgs = null;
 
         private bool _buttonScaleImage;
-        private ToggleSwitchButtonAlignment _buttonAlignment = ToggleSwitchButtonAlignment.CENTER;
+        private ToggleSwitchButtonAlignment _buttonAlignment = ToggleSwitchButtonAlignment.Center;
         private Image _buttonImage = null;
 
         private string _offText = "";
@@ -88,20 +86,20 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         private Font _offFont;
         private Image _offSideImage = null;
         private bool _offSideScaleImage;
-        private ToggleSwitchAlignment _offSideAlignment = ToggleSwitchAlignment.CENTER;
+        private ToggleSwitchAlignment _offSideAlignment = ToggleSwitchAlignment.Center;
         private Image _offButtonImage = null;
         private bool _offButtonScaleImage;
-        private ToggleSwitchButtonAlignment _offButtonAlignment = ToggleSwitchButtonAlignment.CENTER;
+        private ToggleSwitchButtonAlignment _offButtonAlignment = ToggleSwitchButtonAlignment.Center;
 
         private string _onText = "";
         private Color _onForeColour = Color.Black;
         private Font _onFont;
         private Image _onSideImage = null;
         private bool _onSideScaleImage;
-        private ToggleSwitchAlignment _onSideAlignment = ToggleSwitchAlignment.CENTER;
+        private ToggleSwitchAlignment _onSideAlignment = ToggleSwitchAlignment.Center;
         private Image _onButtonImage = null;
         private bool _onButtonScaleImage;
-        private ToggleSwitchButtonAlignment _onButtonAlignment = ToggleSwitchButtonAlignment.CENTER;
+        private ToggleSwitchButtonAlignment _onButtonAlignment = ToggleSwitchButtonAlignment.Center;
 
         #endregion
 
@@ -238,7 +236,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
                     switch (_style)
                     {
-                        case ToggleSwitchStyle.METRO:
+                        case ToggleSwitchStyle.Metro:
                             if (_useKryptonRender)
                             {
                                 SetRenderer(new ToggleSwitchMetroKryptonRenderer());
@@ -248,7 +246,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                                 SetRenderer(new ToggleSwitchMetroRenderer());
                             }
                             break;
-                        case ToggleSwitchStyle.ANDROID:
+                        case ToggleSwitchStyle.Android:
                             if (_useKryptonRender)
                             {
                                 SetRenderer(new ToggleSwitchAndroidKryptonRenderer());
@@ -258,7 +256,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                                 SetRenderer(new ToggleSwitchAndroidRenderer());
                             }
                             break;
-                        case ToggleSwitchStyle.IOS5:
+                        case ToggleSwitchStyle.iOS5:
 
                             if (_useKryptonRender)
                             {
@@ -269,7 +267,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                                 SetRenderer(new ToggleSwitchIOS5Renderer());
                             }
                             break;
-                        case ToggleSwitchStyle.BRUSHEDMETAL:
+                        case ToggleSwitchStyle.BrushedMetal:
 
                             if (_useKryptonRender)
                             {
@@ -280,7 +278,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                                 SetRenderer(new ToggleSwitchBrushedMetalRenderer());
                             }
                             break;
-                        case ToggleSwitchStyle.OSX:
+                        case ToggleSwitchStyle.macOS:
 
                             if (_useKryptonRender)
                             {
@@ -291,7 +289,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                                 SetRenderer(new ToggleSwitchOSXRenderer());
                             }
                             break;
-                        case ToggleSwitchStyle.CARBON:
+                        case ToggleSwitchStyle.Carbon:
 
                             if (_useKryptonRender)
                             {
@@ -302,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                                 SetRenderer(new ToggleSwitchCarbonRenderer());
                             }
                             break;
-                        case ToggleSwitchStyle.IPHONE:
+                        case ToggleSwitchStyle.iPhone:
 
                             if (_useKryptonRender)
                             {
@@ -313,7 +311,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                                 SetRenderer(new ToggleSwitchIphoneRenderer());
                             }
                             break;
-                        case ToggleSwitchStyle.FANCY:
+                        case ToggleSwitchStyle.Fancy:
 
                             if (_useKryptonRender)
                             {
@@ -324,7 +322,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                                 SetRenderer(new ToggleSwitchFancyRenderer());
                             }
                             break;
-                        case ToggleSwitchStyle.MODERN:
+                        case ToggleSwitchStyle.Modern:
 
                             if (_useKryptonRender)
                             {
@@ -335,7 +333,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                                 SetRenderer(new ToggleSwitchModernRenderer());
                             }
                             break;
-                        case ToggleSwitchStyle.PLAINANDSIMPLE:
+                        case ToggleSwitchStyle.PlainAndSimple:
 
                             if (_useKryptonRender)
                             {

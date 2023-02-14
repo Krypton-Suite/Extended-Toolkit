@@ -137,22 +137,22 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Internationalization strings
         /// </summary>
-        public static Dictionary<string, string> Translations = new Dictionary<string, string>()
+        public static Dictionary<string, string> Translations = new()
         {
-            { TranslationKey.KryptonAdvancedDataGridViewSortDateTimeASC.ToString(), "Sort Oldest to Newest" },
-            { TranslationKey.KryptonAdvancedDataGridViewSortDateTimeDESC.ToString(), "Sort Newest to Oldest" },
-            { TranslationKey.KryptonAdvancedDataGridViewSortBoolASC.ToString(), "Sort by False/True" },
-            { TranslationKey.KryptonAdvancedDataGridViewSortBoolDESC.ToString(), "Sort by True/False" },
-            { TranslationKey.KryptonAdvancedDataGridViewSortNumASC.ToString(), "Sort Smallest to Largest" },
-            { TranslationKey.KryptonAdvancedDataGridViewSortNumDESC.ToString(), "Sort Largest to Smallest" },
-            { TranslationKey.KryptonAdvancedDataGridViewSortTextASC.ToString(), "Sort А to Z" },
-            { TranslationKey.KryptonAdvancedDataGridViewSortTextDESC.ToString(), "Sort Z to A" },
+            { TranslationKey.KryptonAdvancedDataGridViewSortDateTimeAscending.ToString(), "Sort Oldest to Newest" },
+            { TranslationKey.KryptonAdvancedDataGridViewSortDateTimeDescending.ToString(), "Sort Newest to Oldest" },
+            { TranslationKey.KryptonAdvancedDataGridViewSortBoolAscending.ToString(), "Sort by False/True" },
+            { TranslationKey.KryptonAdvancedDataGridViewSortBoolDescending.ToString(), "Sort by True/False" },
+            { TranslationKey.KryptonAdvancedDataGridViewSortNumAscending.ToString(), "Sort Smallest to Largest" },
+            { TranslationKey.KryptonAdvancedDataGridViewSortNumDescending.ToString(), "Sort Largest to Smallest" },
+            { TranslationKey.KryptonAdvancedDataGridViewSortTextAscending.ToString(), "Sort А to Z" },
+            { TranslationKey.KryptonAdvancedDataGridViewSortTextDescending.ToString(), "Sort Z to A" },
             { TranslationKey.KryptonAdvancedDataGridViewAddCustomFilter.ToString(), "Add a Custom Filter" },
             { TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString(), "Custom Filter" },
             { TranslationKey.KryptonAdvancedDataGridViewClearFilter.ToString(), "Clear Filter" },
             { TranslationKey.KryptonAdvancedDataGridViewClearSort.ToString(), "Clear Sort" },
             { TranslationKey.KryptonAdvancedDataGridViewButtonFilter.ToString(), "Filter" },
-            { TranslationKey.KryptonAdvancedDataGridViewButtonUndofilter.ToString(), "Cancel" },
+            { TranslationKey.KryptonAdvancedDataGridViewButtonUndoFilter.ToString(), "Cancel" },
             { TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll.ToString(), "(Select All)" },
             { TranslationKey.KryptonAdvancedDataGridViewNodeSelectEmpty.ToString(), "(Blanks)" },
             { TranslationKey.KryptonAdvancedDataGridViewNodeSelectTrue.ToString(), "True" },
@@ -747,9 +747,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         }
 
         /// <summary>
-        /// Sort ASC
+        /// Sort Ascending
         /// </summary>
-        public void SortAsc(DataGridViewColumn column)
+        public void SortAscending(DataGridViewColumn column)
         {
             if (Columns.Contains(column))
             {
@@ -762,9 +762,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         }
 
         /// <summary>
-        /// Sort ASC
+        /// Sort Ascending
         /// </summary>
-        public void SortDesc(DataGridViewColumn column)
+        public void SortDescending(DataGridViewColumn column)
         {
             if (Columns.Contains(column))
             {

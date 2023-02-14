@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     [Obsolete("This plot type is deprecated: Use a regular scatter plot and call GetPointNearest(). See examples in documentation.", true)]
     public class ScatterPlotHighlight : ScatterPlot, IPlottable, IHasPoints, IHasHighlightablePoints
     {
-        public MarkerShape highlightedShape = MarkerShape.OPENCIRCLE;
+        public MarkerShape highlightedShape = MarkerShape.OpenCircle;
         public float highlightedMarkerSize = 10;
         public Color highlightedColor = Color.Red;
         protected bool[] isHighlighted;

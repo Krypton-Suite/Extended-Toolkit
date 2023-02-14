@@ -518,7 +518,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _cancelFilterMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewClearFilter.ToString()];
             _customFilterMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewAddCustomFilter.ToString()];
             _buttonFilter.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewButtonFilter.ToString()];
-            _buttonUndofilter.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewButtonUndofilter.ToString()];
+            _buttonUndofilter.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewButtonUndoFilter.ToString()];
 
             //set type
             DataType = dataType;
@@ -527,16 +527,16 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             if (DataType == typeof(DateTime) || DataType == typeof(TimeSpan))
             {
                 _customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
-                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortDateTimeASC.ToString()];
-                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortDateTimeDESC.ToString()];
+                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortDateTimeAscending.ToString()];
+                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortDateTimeDescending.ToString()];
                 _sortAscMenuItem.Image = Properties.Resources.MenuStrip_OrderASCnum;
                 _sortDescMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCnum;
             }
             else if (DataType == typeof(bool))
             {
                 _customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
-                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortBoolASC.ToString()];
-                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortBoolDESC.ToString()];
+                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortBoolAscending.ToString()];
+                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortBoolDescending.ToString()];
                 _sortAscMenuItem.Image = Properties.Resources.MenuStrip_OrderASCbool;
                 _sortDescMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCbool;
             }
@@ -546,16 +546,16 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 DataType == typeof(Single) || DataType == typeof(Double))
             {
                 _customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
-                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortNumASC.ToString()];
-                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortNumDESC.ToString()];
+                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortNumAscending.ToString()];
+                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortNumDescending.ToString()];
                 _sortAscMenuItem.Image = Properties.Resources.MenuStrip_OrderASCnum;
                 _sortDescMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCnum;
             }
             else
             {
                 _customFilterLastFiltersListMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewCustomFilter.ToString()];
-                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortTextASC.ToString()];
-                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortTextDESC.ToString()];
+                _sortAscMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortTextAscending.ToString()];
+                _sortDescMenuItem.Text = KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewSortTextDescending.ToString()];
                 _sortAscMenuItem.Image = Properties.Resources.MenuStrip_OrderASCtxt;
                 _sortDescMenuItem.Image = Properties.Resources.MenuStrip_OrderDESCtxt;
             }

@@ -1,6 +1,5 @@
 ﻿#region MIT License
 /*
- *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -26,50 +25,48 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Forms
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public enum FadeDirection
-    {
-        In = 0,
-        Out = 1
-    }
-
     /// <summary>
-    /// Chooses the fading speed of a <see cref="KryptonFormExtended"/>
+    /// Defines if/how axis scales (units per pixel) are matched between horizontal and vertical axes.
     /// </summary>
-    public enum FadeSpeedChoice
+    public enum EqualScaleMode
     {
         /// <summary>
-        /// Use the slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 1.
+        /// Horizontal and vertical axes can be scaled independently. 
+        /// Squares and circles may stretch to rectangles and ovals.
         /// </summary>
-        Slowest = 0,
+        Disabled,
+
         /// <summary>
-        /// Use the second slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 10.
+        /// Axis scales are locked so geometry of squares and circles is preserved.
+        /// After axes are set, the vertical scale (units per pixel) is applied to the horizontal axis.
         /// </summary>
-        Slower = 1,
+        PreserveY,
+
         /// <summary>
-        /// Use the third slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 25.
+        /// Axis scales are locked so geometry of squares and circles is preserved.
+        /// After axes are set, the horizontal scale (units per pixel) is applied to the vertical axis.
         /// </summary>
-        Slow = 2,
+        PreserveX,
+
         /// <summary>
-        /// Use a normal fade speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 50.
+        /// Axis scales are locked so geometry of squares and circles is preserved.
+        /// After axes are set, the largest scale (most units per pixel) is applied to both axes.
+        /// Apply the most zoomed-out scale to both axes.
         /// </summary>
-        Normal = 3,
+        ZoomOut,
+
+
         /// <summary>
-        /// Use a fast fading speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 60.
+        /// Apply the scale of the larger axis to both axes.
         /// </summary>
-        Fast = 4,
+        PreserveLargest,
+
+
         /// <summary>
-        /// Use a slightly faster fading speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 75.
+        /// Apply the scale of the smaller axis to both axes.
         /// </summary>
-        Faster = 5,
-        /// <summary>
-        /// Use the fastest fading speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 100.
-        /// </summary>
-        Fastest = 6,
-        /// <summary>
-        /// Define your own fading speed.
-        /// </summary>
-        Custom = 7
+        PreserveSmallest
     }
 }

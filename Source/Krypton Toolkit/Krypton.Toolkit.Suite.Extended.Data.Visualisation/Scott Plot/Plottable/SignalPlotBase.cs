@@ -746,7 +746,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 color = Color,
                 lineStyle = LineStyle,
                 lineWidth = LineWidth,
-                markerShape = ShowMarkersInLegend ? MarkerShape.FILLEDCIRCLE : MarkerShape.NONE,
+                markerShape = ShowMarkersInLegend ? MarkerShape.FilledCircle : MarkerShape.None,
                 markerSize = ShowMarkersInLegend ? MarkerSize : 0
             };
             return new LegendItem[] { singleLegendItem };

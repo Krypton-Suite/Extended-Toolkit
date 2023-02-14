@@ -25,24 +25,15 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
-{
-    public enum SupportedHashAlgorithims
-    {
-        MD5,
-        SHA1,
-        SHA256,
-        SHA384,
-        SHA512,
-        RIPEMD160
-    }
 
-    public enum SafeNETCoreAndNewerSupportedHashAlgorithims
+namespace Krypton.Toolkit.Suite.Extended.Memory.Box
+{
+    public enum KryptonMemoryBoxDefaultButton
     {
-        MD5,
-        SHA1,
-        SHA256,
-        SHA384,
-        SHA512
+        ButtonOne = 0,
+        ButtonTwo = 1,
+        ButtonThree = 2,
+        ButtonFour = 3,
+        ButtonFive = 4
     }
 }

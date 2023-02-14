@@ -25,36 +25,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Box
+namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
-    // The value of the enumerations are the char values
-    // of marlett font which will be used to draw scroll arrow
-    // for each direction. Only up and down directions are used now.
-    //
-    // 01/10/2005 - Marlett font is no longer used for scroll buttons.
-
-    [Serializable]
-    public enum ToolBoxScrollDirection
+    /// <summary>Defines the <see cref="KryptonToastNotificationVersion1"/> action button location.</summary>
+    public enum ActionButtonLocation
     {
-        LEFT = 3,
-        RIGHT = 4,
-        UP = 5,
-        DOWN = 6,
-    }
-
-    [Serializable]
-    public enum ToolBoxViewMode
-    {
-        LARGEICONS,
-        SMALLICONS,
-        LIST,
-    }
-
-    [Serializable]
-    public enum ToolBoxTextPosition
-    {
-        TOP,
-        BOTTOM,
-        HIDDEN,
+        /// <summary>Place the action button to the left.</summary>
+        Left,
+        /// <summary>Place the action button to the right.</summary>
+        Right
     }
 }

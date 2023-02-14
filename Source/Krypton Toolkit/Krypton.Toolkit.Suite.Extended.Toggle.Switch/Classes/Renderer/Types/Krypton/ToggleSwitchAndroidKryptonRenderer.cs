@@ -195,11 +195,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         Size canvasSize = adjustedButtonRect.Size;
                         Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                        if (alignment == ToggleSwitchButtonAlignment.CENTER)
+                        if (alignment == ToggleSwitchButtonAlignment.Center)
                         {
                             imageXPos = (int)((float)adjustedButtonRect.X + (((float)adjustedButtonRect.Width - (float)resizedImageSize.Width) / 2));
                         }
-                        else if (alignment == ToggleSwitchButtonAlignment.RIGHT)
+                        else if (alignment == ToggleSwitchButtonAlignment.Right)
                         {
                             imageXPos = (int)((float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)resizedImageSize.Width);
                         }
@@ -213,11 +213,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                     }
                     else
                     {
-                        if (alignment == ToggleSwitchButtonAlignment.CENTER)
+                        if (alignment == ToggleSwitchButtonAlignment.Center)
                         {
                             imageXPos = (int)((float)adjustedButtonRect.X + (((float)adjustedButtonRect.Width - (float)imageSize.Width) / 2));
                         }
-                        else if (alignment == ToggleSwitchButtonAlignment.RIGHT)
+                        else if (alignment == ToggleSwitchButtonAlignment.Right)
                         {
                             imageXPos = (int)((float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)imageSize.Width);
                         }
@@ -242,11 +242,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
                     float textXPos = adjustedButtonRect.X;
 
-                    if (alignment == ToggleSwitchButtonAlignment.CENTER)
+                    if (alignment == ToggleSwitchButtonAlignment.Center)
                     {
                         textXPos = (float)adjustedButtonRect.X + (((float)adjustedButtonRect.Width - (float)textSize.Width) / 2);
                     }
-                    else if (alignment == ToggleSwitchButtonAlignment.RIGHT)
+                    else if (alignment == ToggleSwitchButtonAlignment.Right)
                     {
                         textXPos = (float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)textSize.Width;
                     }

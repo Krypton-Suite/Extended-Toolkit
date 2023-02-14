@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                         // and perhaps a marker in the middle of the line
                         float lineXcenter = (lineX1 + lineX2) / 2;
                         PointF markerPoint = new PointF(lineXcenter, lineY);
-                        if ((item.markerShape != MarkerShape.NONE) && (item.markerSize > 0))
+                        if ((item.markerShape != MarkerShape.None) && (item.markerSize > 0))
                             MarkerTools.DrawMarker(gfx, markerPoint, item.markerShape, MarkerWidth, item.color);
                     }
                 }

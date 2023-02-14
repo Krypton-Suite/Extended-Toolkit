@@ -1,5 +1,6 @@
 ﻿#region MIT License
 /*
+ *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -25,36 +26,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Memory.Box
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
-    public enum KryptonMemoryBoxDialogResult
+    public enum ShowResetOnRunDialog
     {
-        YES,
-        YESTOALL,
-        NO,
-        NOTOALL,
-        CANCEL
-    }
-
-    public enum KryptonMemoryBoxIcon
-    {
-        CUSTOM,
-        OK,
-        ERROR,
-        EXCLAMATION,
-        INFORMATION,
-        QUESTION,
-        NONE,
-        STOP,
-        HAND
-    }
-
-    public enum KryptonMemoryBoxDefaultButton
-    {
-        BUTTONONE = 0,
-        BUTTONTWO = 1,
-        BUTTONTHREE = 2,
-        BUTTONFOUR = 3,
-        BUTTONFIVE = 4
+        False = 0,
+        True = 1
     }
 }

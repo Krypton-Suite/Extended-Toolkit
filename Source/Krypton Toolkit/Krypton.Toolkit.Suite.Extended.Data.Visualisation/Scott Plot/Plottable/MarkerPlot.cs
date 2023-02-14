@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Marker to draw at this point
         /// </summary>
-        public MarkerShape MarkerShape { get; set; } = MarkerShape.FILLEDCIRCLE;
+        public MarkerShape MarkerShape { get; set; } = MarkerShape.FilledCircle;
 
         /// <summary>
         /// Size of the marker in pixel units

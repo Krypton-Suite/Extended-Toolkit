@@ -28,48 +28,6 @@
 namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     /// <summary>
-    /// Indicates in what state the control currently is. 
-    /// </summary>
-    public enum ControlState
-    {
-        /// <summary>
-        /// Indicates that the control is in it's normal state
-        /// </summary>
-        Normal,
-
-        /// <summary>
-        /// Indicates that the control is the active control
-        /// </summary>
-        Active,
-
-        /// <summary>
-        /// Indicates that the control is the focused control
-        /// </summary>
-        Focused
-    }
-
-    /// <summary>
-    /// Indicates what input has been given to the control
-    /// </summary>
-    public enum InputState
-    {
-        /// <summary>
-        /// Indicates that no input has been given
-        /// </summary>
-        Normal,
-
-        /// <summary>
-        /// Indicates that the user is currently clicking on the control
-        /// </summary>
-        Clicked,
-
-        /// <summary>
-        /// Indicates that the user is currently hovering the control with the mouse
-        /// </summary>
-        Hovered
-    }
-
-    /// <summary>
     /// Indicates how a control is presented to the user. 
     /// </summary>
     public enum NaviLayoutStyle

@@ -1,5 +1,6 @@
 ﻿#region MIT License
 /*
+ *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -25,39 +26,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
-    public enum ToggleSwitchStyle
+    public enum RunDialogStartPosition
     {
-        METRO,
-        ANDROID,
-        IOS5,
-        BRUSHEDMETAL,
-        OSX,
-        CARBON,
-        IPHONE,
-        FANCY,
-        MODERN,
-        PLAINANDSIMPLE
-    }
-
-    public enum ToggleSwitchAlignment
-    {
-        NEAR,
-        CENTER,
-        FAR
-    }
-
-    public enum ToggleSwitchButtonAlignment
-    {
-        LEFT,
-        CENTER,
-        RIGHT
-    }
-
-    public enum ToggleValueState
-    {
-        OFF = 0,
-        ON = 1
+        CentreScreen = 0,
+        BottomLeft = 1,
+        BottomRight = 2,
     }
 }

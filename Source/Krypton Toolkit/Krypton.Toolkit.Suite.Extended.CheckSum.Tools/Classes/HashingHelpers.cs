@@ -30,15 +30,64 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
     public class HashingHelpers
     {
         #region Methods
+
+#if !NETCOREAPP3_1_OR_GREATER
         public static SupportedHashAlgorithims ReturnHashType(string hashType)
         {
-            if (hashType == "MD-5")
+            if (hashType == @"MD-5" || hashType == @"md-5" || hashType == @"MD5" || hashType == @"md5")
             {
                 return SupportedHashAlgorithims.MD5;
+            }
+            else if (hashType == @"SHA-1" || hashType == @"sha-1" || hashType == @"SHA1" || hashType == @"sha1")
+            {
+                return SupportedHashAlgorithims.SHA1;
+            }
+            else if (hashType == @"SHA-256" || hashType == @"sha-256" || hashType == @"SHA256" || hashType == @"sha256")
+            {
+                return SupportedHashAlgorithims.SHA256;
+            }
+            else if (hashType == @"SHA-384" || hashType == @"sha-384" || hashType == @"SHA384" || hashType == @"sha384")
+            {
+                return SupportedHashAlgorithims.SHA384;
+            }
+            else if (hashType == @"SHA-512" || hashType == @"sha-512" || hashType == @"SHA512" || hashType == @"sha512")
+            {
+                return SupportedHashAlgorithims.SHA512;
+            }
+            else if (hashType == @"RIPEMD-160" || hashType == @"ripemd-160" || hashType == @"RIPEMD160" || hashType == @"ripemd160")
+            {
+                return SupportedHashAlgorithims.RIPEMD160;
             }
 
             return SupportedHashAlgorithims.MD5;
         }
+#else
+        public static SafeNETCoreAndNewerSupportedHashAlgorithims ReturnHashType(string hashType)
+        {
+            if (hashType == @"MD-5" || hashType == @"md-5" || hashType == @"MD5" || hashType == @"md5")
+            {
+                return SafeNETCoreAndNewerSupportedHashAlgorithims.MD5;
+            }
+            else if (hashType == @"SHA-1" || hashType == @"sha-1" || hashType == @"SHA1" || hashType == @"sha1")
+            {
+                return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA1;
+            }
+            else if (hashType == @"SHA-256" || hashType == @"sha-256" || hashType == @"SHA256" || hashType == @"sha256")
+            {
+                return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA256;
+            }
+            else if (hashType == @"SHA-384" || hashType == @"sha-384" || hashType == @"SHA384" || hashType == @"sha384")
+            {
+                return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA384;
+            }
+            else if (hashType == @"SHA-512" || hashType == @"sha-512" || hashType == @"SHA512" || hashType == @"sha512")
+            {
+                return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA512;
+            }
+
+            return SafeNETCoreAndNewerSupportedHashAlgorithims.MD5;
+        }
+#endif
 
         public static string BuildMD5HashString(byte[] hashBytes)
         {

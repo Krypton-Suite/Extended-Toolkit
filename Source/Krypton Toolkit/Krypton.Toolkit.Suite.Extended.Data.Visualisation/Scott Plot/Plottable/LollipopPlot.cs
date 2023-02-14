@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 label = Label,
                 color = LollipopColor,
                 lineWidth = 10,
-                markerShape = MarkerShape.NONE,
+                markerShape = MarkerShape.None,
                 borderColor = BorderColor,
                 borderWith = 1
             };

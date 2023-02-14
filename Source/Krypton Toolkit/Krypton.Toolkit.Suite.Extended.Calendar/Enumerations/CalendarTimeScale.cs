@@ -28,48 +28,6 @@
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
-    /// Enumerates the possible modes of the days visualization on the <see cref="KryptonCalendar"/>
-    /// </summary>
-    public enum CalendarDaysMode
-    {
-        /// <summary>
-        /// A short version of the day is visible without time scale.
-        /// </summary>
-        Short,
-
-        /// <summary>
-        /// The day is fully visible with time scale.
-        /// </summary>
-        Expanded
-    }
-
-    /// <summary>
-    /// Possible alignment for <see cref="CalendarItemAlternative"/> images
-    /// </summary>
-    public enum CalendarItemImageAlign
-    {
-        /// <summary>
-        /// Image is drawn at north of text
-        /// </summary>
-        North,
-
-        /// <summary>
-        /// Image is drawn at south of text
-        /// </summary>
-        South,
-
-        /// <summary>
-        /// Image is drawn at east of text
-        /// </summary>
-        East,
-
-        /// <summary>
-        /// Image is drawn at west of text
-        /// </summary>
-        West,
-    }
-
-    /// <summary>
     /// Enumerates possible timescales for <see cref="KryptonCalendar"/> control
     /// </summary>
     public enum CalendarTimeScale

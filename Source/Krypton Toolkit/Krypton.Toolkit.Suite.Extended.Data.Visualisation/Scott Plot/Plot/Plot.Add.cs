@@ -635,7 +635,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Add a marker at a specific X/Y position.
         /// This method really creates a scatter plot with a single point.
         /// </summary>
-        public MarkerPlot AddMarker(double x, double y, MarkerShape shape = MarkerShape.FILLEDCIRCLE, double size = 10, Color? color = null, string label = null)
+        public MarkerPlot AddMarker(double x, double y, MarkerShape shape = MarkerShape.FilledCircle, double size = 10, Color? color = null, string label = null)
         {
             var plottable = new MarkerPlot()
             {
@@ -699,7 +699,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// The scatter plot that was created and added to the plot. 
         /// Interact with its public fields and methods to customize style and update data.
         /// </returns>
-        public MarkerPlot AddPoint(double x, double y, Color? color = null, float size = 5, MarkerShape shape = MarkerShape.FILLEDCIRCLE, string label = null)
+        public MarkerPlot AddPoint(double x, double y, Color? color = null, float size = 5, MarkerShape shape = MarkerShape.FilledCircle, string label = null)
         {
             var plottable = new MarkerPlot()
             {
@@ -878,7 +878,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color? color = null,
             float lineWidth = 1,
             float markerSize = 5,
-            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
+            MarkerShape markerShape = MarkerShape.FilledCircle,
             LineStyle lineStyle = LineStyle.Solid,
             string label = null)
         {
@@ -928,7 +928,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double[] ys,
             Color? color = null,
             float markerSize = 5,
-            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
+            MarkerShape markerShape = MarkerShape.FilledCircle,
             string label = null)
         {
             var plottable = new ScatterPlot(xs, ys, null, null)
@@ -973,7 +973,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             float lineWidth = 1,
             float markerSize = 5,
             string label = null,
-            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
+            MarkerShape markerShape = MarkerShape.FilledCircle,
             LineStyle lineStyle = LineStyle.Solid)
         {
             var spl = new ScatterPlotList()
