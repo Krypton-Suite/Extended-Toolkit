@@ -27,27 +27,29 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    // Note: Assign these to 'MessageBoxIcon'
+    /// <summary>
+    ///   <br />
+    /// </summary>
     public enum IconType
     {
         /// <summary>Specify no icon.</summary>
-        None = 0,
+        None = MessageBoxIcon.None,
         /// <summary>Specify a hand icon.</summary>
-        Hand = 1,
+        Hand = MessageBoxIcon.Hand,
         /// <summary>Specify a question icon.</summary>
-        Question = 2,
+        Question = MessageBoxIcon.Question,
         /// <summary>Specify a exclamation icon.</summary>
-        Exclamation = 3,
+        Exclamation = MessageBoxIcon.Exclamation,
         /// <summary>Specify a asterisk icon.</summary>
-        Asterisk = 4,
+        Asterisk = MessageBoxIcon.Hand,
         /// <summary>Specify a stop icon.</summary>
-        Stop = 5,
+        Stop = MessageBoxIcon.Stop,
         /// <summary>Specify a error icon.</summary>
-        Error = 6,
+        Error = MessageBoxIcon.Error,
         /// <summary>Specify a warning icon.</summary>
-        Warning = 7,
+        Warning = MessageBoxIcon.Warning,
         /// <summary>Specify a information icon.</summary>
-        Information = 8,
+        Information = MessageBoxIcon.Information,
         /// <summary>Specify a UAC shield icon.</summary>
         Shield = 9,
         /// <summary>Specify a Windows logo icon.</summary>
