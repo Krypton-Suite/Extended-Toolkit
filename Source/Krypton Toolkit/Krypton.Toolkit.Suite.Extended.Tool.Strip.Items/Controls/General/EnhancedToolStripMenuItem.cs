@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary>
         /// Switches between CheckkBox or RadioButton style.
         /// </summary>
-        [RefreshProperties(RefreshProperties.Repaint), NotifyParentProperty(true), DefaultValue(CheckMarkDisplayStyle.RADIOBUTTON)]
+        [RefreshProperties(RefreshProperties.Repaint), NotifyParentProperty(true), DefaultValue(CheckMarkDisplayStyle.RadioButton)]
         public CheckMarkDisplayStyle DisplayStyle
         {
             set
@@ -77,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region Constructor
         public EnhancedToolStripMenuItem()
         {
-            DisplayStyle = CheckMarkDisplayStyle.RADIOBUTTON;
+            DisplayStyle = CheckMarkDisplayStyle.RadioButton;
 
             CheckOnClick = true;
         }
@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region Overrides
         protected override void OnClick(EventArgs e)
         {
-            if ((DisplayStyle == CheckMarkDisplayStyle.RADIOBUTTON) && (CheckOnClick))
+            if ((DisplayStyle == CheckMarkDisplayStyle.RadioButton) && (CheckOnClick))
             {
                 ToolStrip toolStrip = GetCurrentParent();
 
@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     {
                         EnhancedToolStripMenuItem menuItem = (EnhancedToolStripMenuItem)items;
 
-                        if ((menuItem.DisplayStyle == CheckMarkDisplayStyle.RADIOBUTTON) && (menuItem.CheckOnClick) && (menuItem.RadioButtonGroupName == RadioButtonGroupName))
+                        if ((menuItem.DisplayStyle == CheckMarkDisplayStyle.RadioButton) && (menuItem.CheckOnClick) && (menuItem.RadioButtonGroupName == RadioButtonGroupName))
                         {
                             menuItem.Checked = false;
                         }
@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             base.OnPaint(e);
 
             //if CheckMarkDisplayStyle is equal RadioButton additional paining or radio button is needed
-            if ((DisplayStyle == CheckMarkDisplayStyle.RADIOBUTTON))
+            if ((DisplayStyle == CheckMarkDisplayStyle.RadioButton))
             {
                 //Find location of radio button
                 Size radioButtonSize = RadioButtonRenderer.GetGlyphSize(e.Graphics, RadioButtonState.CheckedNormal);

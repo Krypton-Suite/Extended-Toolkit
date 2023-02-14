@@ -1,5 +1,6 @@
 ﻿#region MIT License
 /*
+ *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -25,26 +26,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+namespace Krypton.Toolkit.Suite.Extended.Effects
 {
-    public enum BlinkState
+    public enum FadeDirection
     {
-        NormalBlink = 0,
-        SoftBlink = 1
-    }
-
-    /// <summary>
-    /// Check mark display style. 
-    /// </summary>
-    public enum CheckMarkDisplayStyle
-    {
-        CHECKBOX = 0,
-        RADIOBUTTON = 1
-    }
-
-    public enum MarqueeScrollDirection
-    {
-        RIGHTTOLEFT,
-        LEFTTORIGHT
+        In = 0,
+        Out = 1
     }
 }

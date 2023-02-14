@@ -46,32 +46,4 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
         /// <summary>A custom language definition.</summary>
         Custom = 6
     }
-
-    /// <summary>The type of buttons.</summary>
-    public enum DialogButtonsType
-    {
-        /// <summary>Ok button only.</summary>
-        OK,
-        /// <summary>A ok/cancel button.</summary>
-        OKCancel,
-        /// <summary>A yes/no button.</summary>
-        YesNo,
-        /// <summary>A yes/no/cancel button.</summary>
-        YesNoCancel,
-        /// <summary>A retry/cancel button.</summary>
-        RetryCancel,
-        /// <summary>A abort/retry/ignore button.</summary>
-        AbortRetryIgnore
-    }
-
-    public enum DialogButtonType
-    {
-        Abort = 0,
-        Cancel = 1,
-        Ignore = 2,
-        No = 3,
-        OK = 4,
-        Retry = 5,
-        Yes = 6
-    }
 }

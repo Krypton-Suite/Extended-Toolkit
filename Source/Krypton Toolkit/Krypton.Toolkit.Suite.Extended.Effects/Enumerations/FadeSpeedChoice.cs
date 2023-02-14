@@ -1,6 +1,5 @@
 ﻿#region MIT License
 /*
- *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -28,12 +27,6 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Effects
 {
-    public enum FadeDirection
-    {
-        In = 0,
-        Out = 1
-    }
-
     /// <summary>
     /// Chooses the fading speed of a <see cref="KryptonForm"/>
     /// </summary>
@@ -43,30 +36,37 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         /// Use the slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 1.
         /// </summary>
         Slowest = 0,
+
         /// <summary>
         /// Use the second slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 10.
         /// </summary>
         Slower = 1,
+
         /// <summary>
         /// Use the third slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 25.
         /// </summary>
         Slow = 2,
+
         /// <summary>
         /// Use a normal fade speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 50.
         /// </summary>
         Normal = 3,
+
         /// <summary>
         /// Use a fast fading speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 60.
         /// </summary>
         Fast = 4,
+
         /// <summary>
         /// Use a slightly faster fading speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 75.
         /// </summary>
         Faster = 5,
+
         /// <summary>
         /// Use the fastest fading speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 100.
         /// </summary>
         Fastest = 6,
+
         /// <summary>
         /// Define your own fading speed.
         /// </summary>

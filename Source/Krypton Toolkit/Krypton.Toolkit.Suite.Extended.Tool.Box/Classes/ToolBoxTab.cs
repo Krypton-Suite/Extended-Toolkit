@@ -1168,7 +1168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     case ToolBoxViewMode.LargeIcons:
                         imgList = _parent.LargeImageList;
                         break;
-                    case ToolBoxViewMode.Smallicons:
+                    case ToolBoxViewMode.SmallIcons:
                     case ToolBoxViewMode.List:
                     default:
                         imgList = _parent.SmallImageList;
@@ -1264,7 +1264,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                         case ToolBoxViewMode.LargeIcons:
                             imageIndex = item.LargeImageIndex;
                             break;
-                        case ToolBoxViewMode.Smallicons:
+                        case ToolBoxViewMode.SmallIcons:
                         case ToolBoxViewMode.List:
                         default:
                             imageIndex = item.SmallImageIndex;
@@ -1342,7 +1342,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                                 rect.Inflate(-2, -2);
                             }
                         }
-                        else if (ToolBoxViewMode.Smallicons == _viewMode)
+                        else if (ToolBoxViewMode.SmallIcons == _viewMode)
                         {
                             if (drewImage)
                             {
@@ -1414,7 +1414,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     }
                     else
                     {
-                        if (ToolBoxViewMode.Smallicons == _viewMode && !item.CaptionChecked)
+                        if (ToolBoxViewMode.SmallIcons == _viewMode && !item.CaptionChecked)
                         {
                             item.CheckCaption(g, _parent.Font, strFormat, Rectangle.Empty);
                         }
@@ -2089,7 +2089,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     itemSize = _parent.LargeItemSize;
                     maxWidth -= 4;
                     break;
-                case ToolBoxViewMode.Smallicons:
+                case ToolBoxViewMode.SmallIcons:
                     itemSize = _parent.SmallItemSize;
                     maxWidth -= 4;
                     break;
@@ -2122,7 +2122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     switch (this._viewMode)
                     {
                         case ToolBoxViewMode.LargeIcons:
-                        case ToolBoxViewMode.Smallicons:
+                        case ToolBoxViewMode.SmallIcons:
 
                             itemLoc.X += itemWidth + this.ItemSpacingEx;
 
