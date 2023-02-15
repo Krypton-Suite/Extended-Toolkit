@@ -43,16 +43,14 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
 
         #region Identity
 
-        public KryptonMemoryBox() => InitializeComponent();
+        public KryptonMemoryBox()
+        {
+            InitializeComponent();
+        }
 
         #endregion
 
         #region Implementation
-
-        private void KryptonMemoryBox_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void SetupButtonText()
         {

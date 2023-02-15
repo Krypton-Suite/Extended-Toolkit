@@ -191,8 +191,8 @@ namespace Examples
             kadgvMain.SetFilterDateAndTimeEnabled(kadgvMain.Columns["datetime"], true);
             kadgvMain.SetSortEnabled(kadgvMain.Columns["guid"], false);
             kadgvMain.SetFilterChecklistEnabled(kadgvMain.Columns["guid"], false);
-            kadgvMain.SortAsc(kadgvMain.Columns["datetime"]);
-            kadgvMain.SortDesc(kadgvMain.Columns["double"]);
+            kadgvMain.SortAscending(kadgvMain.Columns["datetime"]);
+            kadgvMain.SortDescending(kadgvMain.Columns["double"]);
             kadgvMain.SetTextFilterRemoveNodesOnSearch(kadgvMain.Columns["double"], false);
             kadgvMain.SetChecklistTextFilterRemoveNodesOnSearchMode(kadgvMain.Columns["decimal"], false);
             kadgvMain.SetFilterChecklistEnabled(kadgvMain.Columns["double"], false);
