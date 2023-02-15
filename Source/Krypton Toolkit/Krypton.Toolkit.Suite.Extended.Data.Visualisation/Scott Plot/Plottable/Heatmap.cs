@@ -300,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 label = Label,
                 color = Color.Gray,
                 lineWidth = 10,
-                markerShape = MarkerShape.NONE
+                markerShape = MarkerShape.None
             };
             return new LegendItem[] { singleLegendItem };
         }

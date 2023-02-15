@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     {
         public DateTimeTickCentisecond(CultureInfo culture, int maxTickCount, int? manualSpacing) : base(culture, maxTickCount, manualSpacing)
         {
-            kind = DateTimeUnit.Centisecond;
+            kind = DateTimeUnit.CentiSecond;
             if (manualSpacing == null)
                 deltas = new int[] { 1, 2, 5 };
         }

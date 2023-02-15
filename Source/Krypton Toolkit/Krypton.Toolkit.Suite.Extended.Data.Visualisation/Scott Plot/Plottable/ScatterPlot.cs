@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public string Label;
         public Color Color = Color.Black;
         public LineStyle LineStyle = LineStyle.Solid;
-        public MarkerShape MarkerShape = MarkerShape.FILLEDCIRCLE;
+        public MarkerShape MarkerShape = MarkerShape.FilledCircle;
         public double LineWidth = 1;
         public float ErrorLineWidth = 1;
         public float ErrorCapSize = 3;
@@ -300,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 }
 
                 // draw a marker at each point
-                if ((MarkerSize > 0) && (MarkerShape != MarkerShape.NONE))
+                if ((MarkerSize > 0) && (MarkerShape != MarkerShape.None))
                     for (int i = 0; i < points.Length; i++)
                         MarkerTools.DrawMarker(gfx, points[i], MarkerShape, MarkerSize, Color);
             }

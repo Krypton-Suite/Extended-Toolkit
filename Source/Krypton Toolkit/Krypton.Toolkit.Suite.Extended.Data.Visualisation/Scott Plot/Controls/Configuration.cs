@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Manual override to set anti-aliasing (high quality) behavior for all renders.
         /// Refer to the QualityConfiguration field for more control over quality in response to specific interactions.
         /// </summary>
-        public QualityMode Quality = QualityMode.LOWWHILEDRAGGING;
+        public QualityMode Quality = QualityMode.LowWhileDragging;
 
         /// <summary>
         /// This module customizes anti-aliasing (high quality) behavior in response to interactive events.

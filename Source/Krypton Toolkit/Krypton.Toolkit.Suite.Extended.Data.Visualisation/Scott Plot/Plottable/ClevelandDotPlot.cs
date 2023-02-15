@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Marker to use for the series 1 data
         /// </summary>
-        private MarkerShape MarkerShape1 = MarkerShape.FILLEDCIRCLE;
+        private MarkerShape MarkerShape1 = MarkerShape.FilledCircle;
 
         /// <summary>
         /// Text to display in the legend associated with the series 2 data
@@ -104,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Marker to use for the series 2 data
         /// </summary>
-        private MarkerShape MarkerShape2 = MarkerShape.FILLEDCIRCLE;
+        private MarkerShape MarkerShape2 = MarkerShape.FilledCircle;
 
         /// <summary>
         /// Allows customizing the first point (set by ys1)

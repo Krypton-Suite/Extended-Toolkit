@@ -37,6 +37,9 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Configurations>Debug;Release;Nightly;Canary</Configurations>
+		<LangVersion>preview</LangVersion>
+		<Nullable>enable</Nullable>
+		<WarningLevel>6</WarningLevel>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -83,7 +86,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.37-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.45-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -149,37 +152,63 @@
 		</Otherwise>
 	</Choose>
 
-  <!--Binary/Documentation Output-->
-  <PropertyGroup>
-	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.InputBox\Krypton.Toolkit.Suite.Extended.InputBox.xml</DocumentationFile>
-	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.InputBox\</OutputPath>
-	<Nullable>enable</Nullable>
-  </PropertyGroup>
-  <ItemGroup>
-	<Compile Update="Properties\Resources.Designer.cs">
-	  <DesignTime>True</DesignTime>
-	  <AutoGen>True</AutoGen>
-	  <DependentUpon>Resources.resx</DependentUpon>
-	</Compile>
-  </ItemGroup>
-  <ItemGroup>
-	<EmbeddedResource Update="Properties\Resources.resx">
-	  <Generator>ResXFileCodeGenerator</Generator>
-	  <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-	</EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-	<None Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" Link="Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-	<None Update="License\License.txt">
-	  <PackagePath></PackagePath>
-	  <Pack>true</Pack>
-	</None>
-  </ItemGroup>
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.InputBox\Krypton.Toolkit.Suite.Extended.InputBox.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.InputBox\</OutputPath>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" Link="Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="License\License.txt">
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
+		</None>
+	</ItemGroup>
+
+	<!--Optimisation-->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
 
 </Project>

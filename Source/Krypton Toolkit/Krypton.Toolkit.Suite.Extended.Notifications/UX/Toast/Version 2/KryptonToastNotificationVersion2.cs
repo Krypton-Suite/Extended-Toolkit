@@ -333,7 +333,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             CornerRadius = cornerRadius ?? -1;
 
-            ActionButtonType = actionButtonType ?? ActionButtonType.NORMAL;
+            ActionButtonType = actionButtonType ?? ActionButtonType.Normal;
 
             ActionType = actionType ?? ActionType.Default;
 
@@ -410,10 +410,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             switch (_actionButtonType)
             {
-                case ActionButtonType.NORMAL:
+                case ActionButtonType.Normal:
                     kbtnAction.Values.Image = null;
                     break;
-                case ActionButtonType.UACELEVATED:
+                case ActionButtonType.UACElevated:
                     kbtnAction.Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
                     break;
                 default:
@@ -425,7 +425,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             switch (_actionButtonType)
             {
-                case ActionButtonType.NORMAL:
+                case ActionButtonType.Normal:
                     switch (_actionType)
                     {
                         case ActionType.Default:
@@ -437,7 +437,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                             break;
                     }
                     break;
-                case ActionButtonType.UACELEVATED:
+                case ActionButtonType.UACElevated:
                     switch (_actionType)
                     {
                         case ActionType.Default:

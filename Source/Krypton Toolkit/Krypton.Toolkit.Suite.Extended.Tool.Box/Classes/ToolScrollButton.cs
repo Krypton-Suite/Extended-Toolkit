@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         {
             _rectangle = new Rectangle(0, 0, width, height);
             _direction = direction;
-            _toolTip = (ToolBoxScrollDirection.UP == direction) ? "Scroll Up" : "Scroll Down";
+            _toolTip = (ToolBoxScrollDirection.Up == direction) ? "Scroll Up" : "Scroll Down";
         }
         #endregion //Construction
 
@@ -127,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 p1 = rect.Location;
                 p2 = rect.Location;
 
-                if (ToolBoxScrollDirection.DOWN == _direction)
+                if (ToolBoxScrollDirection.Down == _direction)
                 {
                     p2.X = rect.Right;
 
@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     g.DrawLine(pen, p1, p2);
                 }
-                else if (ToolBoxScrollDirection.UP == _direction)
+                else if (ToolBoxScrollDirection.Up == _direction)
                 {
                     p1.X = rect.Left + rect.Width / 2;
                     p1.Y = rect.Top;

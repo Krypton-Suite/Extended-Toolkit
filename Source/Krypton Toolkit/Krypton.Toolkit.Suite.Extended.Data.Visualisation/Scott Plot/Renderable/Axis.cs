@@ -166,7 +166,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// DateTime format assumes axis represents DateTime.ToOATime() units and displays tick labels accordingly.
         /// </summary>
         public void DateTimeFormat(bool enable) => AxisTicks.TickCollection.LabelFormat =
-            enable 
+            enable
             ? TickLabelFormatOptions.DateTime
             : TickLabelFormatOptions.Numeric;
 
@@ -403,7 +403,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public void MinorLogScale(bool enable, bool roundMajorTicks = true)
         {
-            AxisTicks.TickCollection.MinorTickDistribution = enable ? MinorTickDistribution.log : MinorTickDistribution.even;
+            AxisTicks.TickCollection.MinorTickDistribution = enable ? MinorTickDistribution.Log : MinorTickDistribution.Even;
             if (roundMajorTicks)
                 AxisTicks.TickCollection.IntegerPositionsOnly = roundMajorTicks;
         }
@@ -459,8 +459,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             AxisTicks.MinorGridStyle = lineStyle ?? AxisTicks.MinorGridStyle;
             if (logScale.HasValue)
                 AxisTicks.TickCollection.MinorTickDistribution = logScale.Value
-                    ? MinorTickDistribution.log
-                    : MinorTickDistribution.even;
+                    ? MinorTickDistribution.Log
+                    : MinorTickDistribution.Even;
         }
 
         /// <summary>

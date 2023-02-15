@@ -413,11 +413,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double lineWidth = 1,
             double markerSize = 0,
             string label = "f(x)",
-            MarkerShape markerShape = MarkerShape.NONE,
+            MarkerShape markerShape = MarkerShape.None,
             LineStyle lineStyle = LineStyle.Solid
         )
         {
-            if (markerShape != MarkerShape.NONE || markerSize != 0)
+            if (markerShape != MarkerShape.None || markerSize != 0)
                 throw new ArgumentException("function plots do not use markers");
 
             FunctionPlot functionPlot = new FunctionPlot(function)
@@ -642,7 +642,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         [Obsolete("Use AddPoint() and customize the object it returns")]
         public ScatterPlot PlotPoint(double x, double y, Color? color = null, double markerSize = 5, string label = null,
             double? errorX = null, double? errorY = null, double errorLineWidth = 1, double errorCapSize = 3,
-            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE, LineStyle lineStyle = LineStyle.Solid)
+            MarkerShape markerShape = MarkerShape.FilledCircle, LineStyle lineStyle = LineStyle.Solid)
             => throw new NotImplementedException();
 
         [Obsolete("Use AddScatter() and customize the object it returns")]
@@ -657,7 +657,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double[] errorY = null,
             double errorLineWidth = 1,
             double errorCapSize = 3,
-            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
+            MarkerShape markerShape = MarkerShape.FilledCircle,
             LineStyle lineStyle = LineStyle.Solid
             )
         {
@@ -689,9 +689,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
            double[] errorY = null,
            double errorLineWidth = 1,
            double errorCapSize = 3,
-           MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
+           MarkerShape markerShape = MarkerShape.FilledCircle,
            LineStyle lineStyle = LineStyle.Solid,
-           MarkerShape highlightedShape = MarkerShape.OPENCIRCLE,
+           MarkerShape highlightedShape = MarkerShape.OpenCircle,
            Color? highlightedColor = null,
            double? highlightedMarkerSize = null
            )
@@ -887,7 +887,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 ErrorLineWidth = 0,
                 ErrorCapSize = 0,
                 StepDisplay = true,
-                MarkerShape = MarkerShape.NONE,
+                MarkerShape = MarkerShape.None,
                 LineStyle = LineStyle.Solid
             };
 

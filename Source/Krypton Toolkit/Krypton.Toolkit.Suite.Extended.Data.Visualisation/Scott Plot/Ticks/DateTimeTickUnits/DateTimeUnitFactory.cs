@@ -51,9 +51,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     return new DateTimeTickMinute(culture, maxTickCount, manualSpacing);
                 case DateTimeUnit.Second:
                     return new DateTimeTickSecond(culture, maxTickCount, manualSpacing);
-                case DateTimeUnit.Decisecond:
+                case DateTimeUnit.DeciSecond:
                     return new DateTimeTickDecisecond(culture, maxTickCount, manualSpacing);
-                case DateTimeUnit.Centisecond:
+                case DateTimeUnit.CentiSecond:
                     return new DateTimeTickCentisecond(culture, maxTickCount, manualSpacing);
                 case DateTimeUnit.Millisecond:
                     return new DateTimeTickMillisecond(culture, maxTickCount, manualSpacing);
@@ -80,8 +80,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 (DateTimeUnit.Hour, 1.0 / 24 * halfDensity),
                 (DateTimeUnit.Minute, 1.0 / 24 / 60 * halfDensity),
                 (DateTimeUnit.Second, 1.0 / 24 / 3600 * halfDensity),
-                (DateTimeUnit.Decisecond, 1.0 / 24 / 3600 / 10 * halfDensity),
-                (DateTimeUnit.Centisecond, 1.0 / 24 / 3600 / 100 * halfDensity),
+                (DateTimeUnit.DeciSecond, 1.0 / 24 / 3600 / 10 * halfDensity),
+                (DateTimeUnit.CentiSecond, 1.0 / 24 / 3600 / 100 * halfDensity),
                 (DateTimeUnit.Millisecond, 1.0 / 24 / 3600 / 1000 * halfDensity),
             };
 

@@ -27,194 +27,44 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Memory.Box
 {
-    public class KryptonMemoryBox : CommonExtendedKryptonForm
+    public partial class KryptonMemoryBox : CommonExtendedKryptonForm
     {
-        #region Designer Code
-        private KryptonPanel kryptonPanel1;
-        private KryptonButton kbtnButtonFive;
-        private KryptonButton kbtnButtonFour;
-        private KryptonButton kbtnButtonThree;
-        private KryptonButton kbtnButtonTwo;
-        private KryptonButton kbtnButtonOne;
-        private KryptonBorderEdge kryptonBorderEdge1;
-        private PictureBox pbxIcon;
-        private KryptonWrapLabel kwlBody;
-        private KryptonPanel kryptonPanel2;
+        #region Instance Fields
 
-        private void InitializeComponent()
-        {
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnButtonOne = new Krypton.Toolkit.KryptonButton();
-            this.kbtnButtonTwo = new Krypton.Toolkit.KryptonButton();
-            this.kbtnButtonThree = new Krypton.Toolkit.KryptonButton();
-            this.kbtnButtonFour = new Krypton.Toolkit.KryptonButton();
-            this.kbtnButtonFive = new Krypton.Toolkit.KryptonButton();
-            this.kwlBody = new Krypton.Toolkit.KryptonWrapLabel();
-            this.pbxIcon = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
-            this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // kryptonPanel1
-            // 
-            this.kryptonPanel1.Controls.Add(this.kbtnButtonFive);
-            this.kryptonPanel1.Controls.Add(this.kbtnButtonFour);
-            this.kryptonPanel1.Controls.Add(this.kbtnButtonThree);
-            this.kryptonPanel1.Controls.Add(this.kbtnButtonTwo);
-            this.kryptonPanel1.Controls.Add(this.kbtnButtonOne);
-            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 225);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kryptonPanel1.Size = new System.Drawing.Size(505, 50);
-            this.kryptonPanel1.TabIndex = 0;
-            // 
-            // kryptonBorderEdge1
-            // 
-            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
-            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(505, 1);
-            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
-            // 
-            // kryptonPanel2
-            // 
-            this.kryptonPanel2.Controls.Add(this.pbxIcon);
-            this.kryptonPanel2.Controls.Add(this.kwlBody);
-            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(505, 225);
-            this.kryptonPanel2.TabIndex = 1;
-            // 
-            // kbtnButtonOne
-            // 
-            this.kbtnButtonOne.Location = new System.Drawing.Point(12, 13);
-            this.kbtnButtonOne.Name = "kbtnButtonOne";
-            this.kbtnButtonOne.Size = new System.Drawing.Size(90, 25);
-            this.kbtnButtonOne.TabIndex = 1;
-            this.kbtnButtonOne.Values.Text = "&Yes";
-            this.kbtnButtonOne.Click += new System.EventHandler(this.kbtnButtonOne_Click);
-            // 
-            // kbtnButtonTwo
-            // 
-            this.kbtnButtonTwo.Location = new System.Drawing.Point(109, 13);
-            this.kbtnButtonTwo.Name = "kbtnButtonTwo";
-            this.kbtnButtonTwo.Size = new System.Drawing.Size(90, 25);
-            this.kbtnButtonTwo.TabIndex = 2;
-            this.kbtnButtonTwo.Values.Text = "Ye&s to All";
-            this.kbtnButtonTwo.Click += new System.EventHandler(this.kbtnButtonTwo_Click);
-            // 
-            // kbtnButtonThree
-            // 
-            this.kbtnButtonThree.Location = new System.Drawing.Point(206, 13);
-            this.kbtnButtonThree.Name = "kbtnButtonThree";
-            this.kbtnButtonThree.Size = new System.Drawing.Size(90, 25);
-            this.kbtnButtonThree.TabIndex = 3;
-            this.kbtnButtonThree.Values.Text = "&No";
-            this.kbtnButtonThree.Click += new System.EventHandler(this.kbtnButtonThree_Click);
-            // 
-            // kbtnButtonFour
-            // 
-            this.kbtnButtonFour.Location = new System.Drawing.Point(303, 13);
-            this.kbtnButtonFour.Name = "kbtnButtonFour";
-            this.kbtnButtonFour.Size = new System.Drawing.Size(90, 25);
-            this.kbtnButtonFour.TabIndex = 4;
-            this.kbtnButtonFour.Values.Text = "N&o to All";
-            this.kbtnButtonFour.Click += new System.EventHandler(this.kbtnButtonFour_Click);
-            // 
-            // kbtnButtonFive
-            // 
-            this.kbtnButtonFive.Location = new System.Drawing.Point(400, 13);
-            this.kbtnButtonFive.Name = "kbtnButtonFive";
-            this.kbtnButtonFive.Size = new System.Drawing.Size(90, 25);
-            this.kbtnButtonFive.TabIndex = 5;
-            this.kbtnButtonFive.Values.Text = "&Cancel";
-            this.kbtnButtonFive.Click += new System.EventHandler(this.kbtnButtonFive_Click);
-            // 
-            // kwlBody
-            // 
-            this.kwlBody.AutoSize = false;
-            this.kwlBody.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kwlBody.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlBody.Location = new System.Drawing.Point(83, 13);
-            this.kwlBody.Name = "kwlBody";
-            this.kwlBody.Size = new System.Drawing.Size(410, 199);
-            this.kwlBody.Text = "kryptonWrapLabel1";
-            this.kwlBody.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pbxIcon
-            // 
-            this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxIcon.Location = new System.Drawing.Point(13, 13);
-            this.pbxIcon.Name = "pbxIcon";
-            this.pbxIcon.Size = new System.Drawing.Size(64, 64);
-            this.pbxIcon.TabIndex = 1;
-            this.pbxIcon.TabStop = false;
-            // 
-            // KryptonMemoryBox
-            // 
-            this.ClientSize = new System.Drawing.Size(505, 275);
-            this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.kryptonPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "KryptonMemoryBox";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
-            this.kryptonPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).EndInit();
-            this.ResumeLayout(false);
-
-        }
-        #endregion
-
-        #region Variables
         private KryptonMemoryBoxDialogResult _defaultDialogResult, _lastResult;
+
         #endregion
 
-        #region Property
+        #region Public
+
         public KryptonMemoryBoxDialogResult DefaultDialogResult { get => _defaultDialogResult; set => _defaultDialogResult = value; }
+
         #endregion
 
-        #region Constructors
-        public KryptonMemoryBox()
+        #region Identity
+
+        public KryptonMemoryBox() => InitializeComponent();
+
+        #endregion
+
+        #region Implementation
+
+        private void KryptonMemoryBox_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
+
         }
-        #endregion
 
-        #region Methods
-        /// <summary>Sets the button text.</summary>
-        /// <param name="yesText">The yes text.</param>
-        /// <param name="yesToAllText">The yes to all text.</param>
-        /// <param name="noText">The no text.</param>
-        /// <param name="noToAllText">The no to all text.</param>
-        /// <param name="cancelText">The cancel text.</param>
-        private void SetButtonText(string yesText, string yesToAllText, string noText, string noToAllText, string cancelText)
+        private void SetupButtonText()
         {
-            kbtnButtonOne.Text = yesText;
+            kbtnButtonOne.Text = KryptonManager.Strings.Yes;
 
-            kbtnButtonTwo.Text = yesToAllText;
+            kbtnButtonTwo.Text = KryptonManager.Strings.YesToAll;
 
-            kbtnButtonThree.Text = noText;
+            kbtnButtonThree.Text = KryptonManager.Strings.No;
 
-            kbtnButtonFour.Text = noToAllText;
+            kbtnButtonFour.Text = KryptonManager.Strings.NoToAll;
 
-            kbtnButtonFive.Text = cancelText;
+            kbtnButtonFive.Text = KryptonManager.Strings.Cancel;
         }
 
         /// <summary>Sets the default dialog result.</summary>
@@ -223,19 +73,19 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
         {
             switch (dialogResult)
             {
-                case KryptonMemoryBoxDialogResult.YES:
+                case KryptonMemoryBoxDialogResult.Yes:
                     AcceptButton = kbtnButtonOne;
                     break;
-                case KryptonMemoryBoxDialogResult.YESTOALL:
+                case KryptonMemoryBoxDialogResult.YesToAll:
                     AcceptButton = kbtnButtonTwo;
                     break;
-                case KryptonMemoryBoxDialogResult.NO:
+                case KryptonMemoryBoxDialogResult.No:
                     AcceptButton = kbtnButtonThree;
                     break;
-                case KryptonMemoryBoxDialogResult.NOTOALL:
+                case KryptonMemoryBoxDialogResult.NoToAll:
                     AcceptButton = kbtnButtonFour;
                     break;
-                case KryptonMemoryBoxDialogResult.CANCEL:
+                case KryptonMemoryBoxDialogResult.Cancel:
                     AcceptButton = kbtnButtonFive;
                     break;
             }
@@ -245,15 +95,15 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
         /// <returns></returns>
         private KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult()
         {
-            _defaultDialogResult = KryptonMemoryBoxDialogResult.CANCEL;
+            _defaultDialogResult = KryptonMemoryBoxDialogResult.Cancel;
 
-            if (_lastResult == KryptonMemoryBoxDialogResult.NOTOALL)
+            if (_lastResult == KryptonMemoryBoxDialogResult.NoToAll)
             {
-                _defaultDialogResult = KryptonMemoryBoxDialogResult.NO;
+                _defaultDialogResult = KryptonMemoryBoxDialogResult.No;
             }
-            else if (_lastResult == KryptonMemoryBoxDialogResult.YESTOALL)
+            else if (_lastResult == KryptonMemoryBoxDialogResult.YesToAll)
             {
-                _defaultDialogResult = KryptonMemoryBoxDialogResult.YES;
+                _defaultDialogResult = KryptonMemoryBoxDialogResult.Yes;
             }
             else
             {
@@ -271,41 +121,43 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
         /// <param name="defaultButton">The default button.</param>
         /// <param name="defaultDialogResult">The default dialog result.</param>
         /// <returns></returns>
-        private KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult(string title, string message, KryptonMemoryBoxIcon icon = KryptonMemoryBoxIcon.NONE, string iconPath = null, KryptonMemoryBoxDefaultButton defaultButton = KryptonMemoryBoxDefaultButton.BUTTONONE, KryptonMemoryBoxDialogResult defaultDialogResult = KryptonMemoryBoxDialogResult.CANCEL)
+        private KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult(string title, string message, KryptonMemoryBoxIcon icon = KryptonMemoryBoxIcon.None, string iconPath = null, KryptonMemoryBoxDefaultButton defaultButton = KryptonMemoryBoxDefaultButton.ButtonOne, KryptonMemoryBoxDialogResult defaultDialogResult = KryptonMemoryBoxDialogResult.Cancel)
         {
             Text = title;
 
             kwlBody.Text = message;
 
+            SetupButtonText();
+
             switch (icon)
             {
-                case KryptonMemoryBoxIcon.CUSTOM:
+                case KryptonMemoryBoxIcon.Custom:
                     pbxIcon.Image = new Bitmap(iconPath);
                     break;
                 case KryptonMemoryBoxIcon.OK:
                     pbxIcon.Image = Properties.Resources.Input_Box_Ok_64_x_64;
                     break;
-                case KryptonMemoryBoxIcon.ERROR:
+                case KryptonMemoryBoxIcon.Error:
                     pbxIcon.Image = Properties.Resources.Input_Box_Critical_64_x_64;
                     break;
-                case KryptonMemoryBoxIcon.EXCLAMATION:
+                case KryptonMemoryBoxIcon.Exclamation:
                     pbxIcon.Image = Properties.Resources.Input_Box_Warning_64_x_58;
                     break;
-                case KryptonMemoryBoxIcon.INFORMATION:
+                case KryptonMemoryBoxIcon.Information:
                     pbxIcon.Image = Properties.Resources.Input_Box_Information_64_x_64;
                     break;
-                case KryptonMemoryBoxIcon.QUESTION:
+                case KryptonMemoryBoxIcon.Question:
                     pbxIcon.Image = Properties.Resources.Input_Box_Question_64_x_64;
                     break;
-                case KryptonMemoryBoxIcon.NONE:
+                case KryptonMemoryBoxIcon.None:
                     pbxIcon.Image = null;
 
                     UpdateUI();
                     break;
-                case KryptonMemoryBoxIcon.STOP:
+                case KryptonMemoryBoxIcon.Stop:
                     pbxIcon.Image = Properties.Resources.Input_Box_Stop_64_x_64;
                     break;
-                case KryptonMemoryBoxIcon.HAND:
+                case KryptonMemoryBoxIcon.Hand:
                     pbxIcon.Image = Properties.Resources.Input_Box_Hand_64_x_64;
                     break;
             }
@@ -325,9 +177,9 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
         /// <param name="defaultButton">The default button.</param>
         /// <param name="defaultDialogResult">The default dialog result.</param>
         /// <returns></returns>
-        public static KryptonMemoryBoxDialogResult Show(string title, string message, KryptonMemoryBoxIcon icon = KryptonMemoryBoxIcon.NONE, string iconPath = null, KryptonMemoryBoxDefaultButton defaultButton = KryptonMemoryBoxDefaultButton.BUTTONONE, KryptonMemoryBoxDialogResult defaultDialogResult = KryptonMemoryBoxDialogResult.CANCEL)
+        public static KryptonMemoryBoxDialogResult Show(string title, string message, KryptonMemoryBoxIcon icon = KryptonMemoryBoxIcon.None, string iconPath = null, KryptonMemoryBoxDefaultButton defaultButton = KryptonMemoryBoxDefaultButton.ButtonOne, KryptonMemoryBoxDialogResult defaultDialogResult = KryptonMemoryBoxDialogResult.Cancel)
         {
-            KryptonMemoryBox memoryBox = new KryptonMemoryBox();
+            KryptonMemoryBox memoryBox = new();
 
             return memoryBox.ShowKryptonMemoryBoxDialogResult(title, message, icon, iconPath, defaultButton, defaultDialogResult);
         }
@@ -348,20 +200,6 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
             }
         }
 
-        /*
-        private DialogResult ConvertKryptonMemoryBoxDialogResult(KryptonMemoryBoxDialogResult dialogResult)
-        {
-            DialogResult result;
-
-            if (dialogResult == KryptonMemoryBoxDialogResult.CANCEL)
-            {
-                result = DialogResult.Cancel;
-            }
-
-            return result;
-        }
-        */
-
         private DialogResult ReturnDialogResult(DialogResult result) => result;
 
         private void SetAcceptButton(KryptonButton button) => AcceptButton = button;
@@ -370,19 +208,19 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
         {
             switch (defaultButton)
             {
-                case KryptonMemoryBoxDefaultButton.BUTTONONE:
+                case KryptonMemoryBoxDefaultButton.ButtonOne:
                     SetAcceptButton(kbtnButtonOne);
                     break;
-                case KryptonMemoryBoxDefaultButton.BUTTONTWO:
+                case KryptonMemoryBoxDefaultButton.ButtonTwo:
                     SetAcceptButton(kbtnButtonTwo);
                     break;
-                case KryptonMemoryBoxDefaultButton.BUTTONTHREE:
+                case KryptonMemoryBoxDefaultButton.ButtonThree:
                     SetAcceptButton(kbtnButtonThree);
                     break;
-                case KryptonMemoryBoxDefaultButton.BUTTONFOUR:
+                case KryptonMemoryBoxDefaultButton.ButtonFour:
                     SetAcceptButton(kbtnButtonFour);
                     break;
-                case KryptonMemoryBoxDefaultButton.BUTTONFIVE:
+                case KryptonMemoryBoxDefaultButton.ButtonFive:
                     SetAcceptButton(kbtnButtonFive);
                     break;
                 default:
@@ -390,6 +228,16 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
                     break;
             }
         }
+
+        private void kbtnButtonOne_Click(object sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.Yes, DialogResult.Yes);
+
+        private void kbtnButtonTwo_Click(object sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.YesToAll, DialogResult.Yes);
+
+        private void kbtnButtonThree_Click(object sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.No, DialogResult.No);
+
+        private void kbtnButtonFour_Click(object sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.NoToAll, DialogResult.No);
+
+        private void kbtnButtonFive_Click(object sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.Cancel, DialogResult.Cancel);
 
         private void SetDialogResult(KryptonMemoryBoxDialogResult memoryBoxDialogResult, DialogResult dialogResult)
         {
@@ -399,31 +247,7 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
 
             DialogResult = dialogResult;
         }
+
         #endregion
-
-        private void kbtnButtonOne_Click(object sender, EventArgs e)
-        {
-            SetDialogResult(KryptonMemoryBoxDialogResult.YES, DialogResult.Yes);
-        }
-
-        private void kbtnButtonTwo_Click(object sender, EventArgs e)
-        {
-            SetDialogResult(KryptonMemoryBoxDialogResult.YESTOALL, DialogResult.Yes);
-        }
-
-        private void kbtnButtonThree_Click(object sender, EventArgs e)
-        {
-            SetDialogResult(KryptonMemoryBoxDialogResult.NO, DialogResult.No);
-        }
-
-        private void kbtnButtonFour_Click(object sender, EventArgs e)
-        {
-            SetDialogResult(KryptonMemoryBoxDialogResult.NOTOALL, DialogResult.No);
-        }
-
-        private void kbtnButtonFive_Click(object sender, EventArgs e)
-        {
-            SetDialogResult(KryptonMemoryBoxDialogResult.CANCEL, DialogResult.Cancel);
-        }
     }
 }

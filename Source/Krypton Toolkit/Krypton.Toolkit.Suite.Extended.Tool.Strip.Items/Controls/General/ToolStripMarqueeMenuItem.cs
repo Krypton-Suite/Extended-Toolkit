@@ -30,7 +30,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
     public class ToolStripMarqueeMenuItem : EnhancedToolStripMenuItem
     {
         #region Constants
-        const MarqueeScrollDirection DEFAULT_MARQUEE_SCROLL_DIRECTION = MarqueeScrollDirection.RIGHTTOLEFT;
+
+        private const MarqueeScrollDirection DEFAULT_MARQUEE_SCROLL_DIRECTION = MarqueeScrollDirection.RightToLeft;
         const int DEFAULT_REFRESH_INTERVAL = 30;
         const int DEFAULT_SCROLL_STEP = 1;
         const bool DEFAULT_STOP_SCROLL_ON_MOUSE_OVER = true;
@@ -156,12 +157,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             _timer.Tick += new EventHandler(timer_Tick);
             _timer.Enabled = true;
 
-            if (MarqueeScrollDirection == MarqueeScrollDirection.RIGHTTOLEFT)
+            if (MarqueeScrollDirection == MarqueeScrollDirection.RightToLeft)
                 _pixelOffest = -_textSize.Width;
             else
                 _pixelOffest = _textSize.Width;
 
-            DisplayStyle = CheckMarkDisplayStyle.CHECKBOX;
+            DisplayStyle = CheckMarkDisplayStyle.CheckBox;
             CheckOnClick = false;
             CheckState = CheckState.Unchecked;
 
@@ -253,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             Region savedClip = e.Graphics.Clip;
             Region clipRegion = new Region(clipRectangle);
             e.Graphics.Clip = clipRegion;
-            if (MarqueeScrollDirection == MarqueeScrollDirection.RIGHTTOLEFT)
+            if (MarqueeScrollDirection == MarqueeScrollDirection.RightToLeft)
                 e.Graphics.DrawString(_text, Font, Brushes.Black, -_pixelOffest + horizPadding, textYPosition);
             else
                 e.Graphics.DrawString(_text, Font, Brushes.Black, +_pixelOffest + horizPadding, textYPosition);

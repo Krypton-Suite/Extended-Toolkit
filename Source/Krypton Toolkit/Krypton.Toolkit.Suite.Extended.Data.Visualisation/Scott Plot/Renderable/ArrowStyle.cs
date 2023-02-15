@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Marker drawn at each coordinate
         /// </summary>
-        public MarkerShape MarkerShape = MarkerShape.FILLEDCIRCLE;
+        public MarkerShape MarkerShape = MarkerShape.FilledCircle;
 
         /// <summary>
         /// Size of markers to be drawn at each coordinate
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     else
                         gfx.DrawLine(pen, tailX, tailY, endX, endY);
 
-                    if (MarkerShape != MarkerShape.NONE && MarkerSize > 0)
+                    if (MarkerShape != MarkerShape.None && MarkerSize > 0)
                     {
                         PointF markerPoint = new PointF(dims.GetPixelX(xs[i]), dims.GetPixelY(ys[j]));
                         MarkerTools.DrawMarker(gfx, markerPoint, MarkerShape, MarkerSize, pen.Color);

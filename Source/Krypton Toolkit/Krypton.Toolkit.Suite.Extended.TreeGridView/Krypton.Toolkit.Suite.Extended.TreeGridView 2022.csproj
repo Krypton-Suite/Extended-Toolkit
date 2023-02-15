@@ -40,6 +40,9 @@
 		<AnalysisLevel>latest</AnalysisLevel>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Configurations>Debug;Release;Nightly;Canary</Configurations>
+		<LangVersion>preview</LangVersion>
+		<Nullable>enable</Nullable>
+		<WarningLevel>6</WarningLevel>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -86,7 +89,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.37-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.45-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -152,37 +155,63 @@
 		</Otherwise>
 	</Choose>
 
-  <ItemGroup>
-	  <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
-		  <SpecificVersion>True</SpecificVersion>
-		  <Version>4.0.0.0</Version>
-		  <TreatAsUsed>True</TreatAsUsed>
-	  </Reference>
-	  <Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
-		  <SpecificVersion>True</SpecificVersion>
-		  <Version>5.0.0.0</Version>
-		  <TreatAsUsed>True</TreatAsUsed>
-	  </Reference>
-	  <Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
-		  <SpecificVersion>True</SpecificVersion>
-		  <Version>6.0.0.0</Version>
-		  <TreatAsUsed>True</TreatAsUsed>
-	  </Reference>
-	  <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
-	  <!--TODO: Need to specify version here-->
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>4.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>5.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>6.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+		<!--TODO: Need to specify version here-->
+	</ItemGroup>
 
-  <ItemGroup>
-	<None Update="License\License.txt">
-	  <PackagePath></PackagePath>
-	  <Pack>true</Pack>
-	</None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="License\License.txt">
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
+		</None>
+	</ItemGroup>
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.TreeGridView\</OutputPath>
 		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<!--Optimisation-->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
 	</PropertyGroup>
 
 </Project>

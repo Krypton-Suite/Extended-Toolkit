@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 LineWidth = LineWidth,
                 MarkerSize = 0,
                 Label = Label,
-                MarkerShape = MarkerShape.NONE,
+                MarkerShape = MarkerShape.None,
                 LineStyle = LineStyle
             };
             scatter.Render(dims, bmp, lowQuality);
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 color = Color,
                 lineStyle = LineStyle,
                 lineWidth = LineWidth,
-                markerShape = MarkerShape.NONE
+                markerShape = MarkerShape.None
             };
             return new LegendItem[] { singleLegendItem };
         }

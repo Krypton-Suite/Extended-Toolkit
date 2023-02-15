@@ -37,6 +37,9 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Configurations>Debug;Release;Nightly;Canary</Configurations>
+		<LangVersion>preview</LangVersion>
+		<Nullable>enable</Nullable>
+		<WarningLevel>6</WarningLevel>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -83,7 +86,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.37-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.45-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -178,10 +181,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="License\License.txt">
-	    <PackagePath></PackagePath>
-	    <Pack>true</Pack>
-	  </None>
+		<None Update="License\License.txt">
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
+		</None>
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->
@@ -189,6 +192,31 @@
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Networking\Krypton.Toolkit.Suite.Extended.Networking.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Networking\</OutputPath>
 		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<!--Optimisation-->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
 	</PropertyGroup>
 
 </Project>

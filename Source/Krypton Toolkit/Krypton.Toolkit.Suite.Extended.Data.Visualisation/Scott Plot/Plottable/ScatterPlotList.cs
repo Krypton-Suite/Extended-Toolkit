@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public float LineWidth = 1;
         public LineStyle LineStyle = LineStyle.Solid;
         public float MarkerSize = 3;
-        public MarkerShape MarkerShape = MarkerShape.FILLEDCIRCLE;
+        public MarkerShape MarkerShape = MarkerShape.FilledCircle;
 
         public void ValidateData(bool deep = false)
         {
@@ -134,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     gfx.DrawLines(linePen, points);
                 }
 
-                if (MarkerShape != MarkerShape.NONE && MarkerSize > 0 && Count > 0)
+                if (MarkerShape != MarkerShape.None && MarkerSize > 0 && Count > 0)
                 {
                     foreach (PointF point in points)
                         MarkerTools.DrawMarker(gfx, point, MarkerShape, MarkerSize, Color);

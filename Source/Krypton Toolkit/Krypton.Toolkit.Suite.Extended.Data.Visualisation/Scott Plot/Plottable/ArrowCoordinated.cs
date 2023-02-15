@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Marker to be drawn at the base (if MarkerSize > 0)
         /// </summary>
-        public MarkerShape MarkerShape = MarkerShape.FILLEDCIRCLE;
+        public MarkerShape MarkerShape = MarkerShape.FilledCircle;
 
         /// <summary>
         /// Size of marker (in pixels) to draw at the base

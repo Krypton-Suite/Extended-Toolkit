@@ -365,9 +365,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 return;
             currentlyRendering = true;
 
-            if (Configuration.Quality == QualityMode.HIGH)
+            if (Configuration.Quality == QualityMode.High)
                 lowQuality = false;
-            else if (Configuration.Quality == QualityMode.LOW)
+            else if (Configuration.Quality == QualityMode.Low)
                 lowQuality = true;
 
             Plot.Render(Bmp, lowQuality);

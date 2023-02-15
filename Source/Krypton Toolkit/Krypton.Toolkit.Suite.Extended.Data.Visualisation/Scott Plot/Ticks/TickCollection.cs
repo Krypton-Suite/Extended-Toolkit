@@ -307,7 +307,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     culture: Culture
                 );
 
-            if (MinorTickDistribution == MinorTickDistribution.log)
+            if (MinorTickDistribution == MinorTickDistribution.Log)
                 TickCollectionStorage.tickPositionsMinor = MinorFromMajorLog(TickCollectionStorage.tickPositionsMajor, low, high);
             else
                 TickCollectionStorage.tickPositionsMinor = MinorFromMajor(TickCollectionStorage.tickPositionsMajor, 5, low, high);

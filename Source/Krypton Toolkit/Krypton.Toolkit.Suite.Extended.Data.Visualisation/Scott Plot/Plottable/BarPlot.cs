@@ -172,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 label = Label,
                 color = FillColor,
                 lineWidth = 10,
-                markerShape = MarkerShape.NONE,
+                markerShape = MarkerShape.None,
                 hatchColor = FillColorHatch,
                 hatchStyle = HatchStyle,
                 borderColor = BorderColor,

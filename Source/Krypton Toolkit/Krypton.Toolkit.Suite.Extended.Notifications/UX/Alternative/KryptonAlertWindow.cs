@@ -197,27 +197,27 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             switch (alertType)
             {
-                case AlertType.SUCESS:
+                case AlertType.Sucess:
                     pbxLogo.Image = Properties.Resources.sucess48px;
 
                     ChangeColour(Color.SeaGreen, Color.White);
                     break;
-                case AlertType.INFORMATION:
+                case AlertType.Information:
                     pbxLogo.Image = Properties.Resources.information48px;
 
                     ChangeColour(Color.RoyalBlue, Color.White);
                     break;
-                case AlertType.WARNING:
+                case AlertType.Warning:
                     pbxLogo.Image = Properties.Resources.warning48px;
 
                     ChangeColour(Color.FromArgb(230, 126, 34), Color.White);
                     break;
-                case AlertType.ERROR:
+                case AlertType.Error:
                     pbxLogo.Image = Properties.Resources.error48px;
 
                     ChangeColour(Color.FromArgb(231, 76, 60), Color.White);
                     break;
-                case AlertType.CUSTOM:
+                case AlertType.Custom:
                     pbxLogo.Image = image ?? Properties.Resources.information48px;
 
                     ChangeColour(backColour, textColour);
@@ -241,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             _interval = interval;
 
-            _action = AlertAction.START;
+            _action = AlertAction.Start;
 
             _tmrAlert.Interval = 1;
 
@@ -282,7 +282,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             switch (_action)
             {
-                case AlertAction.START:
+                case AlertAction.Start:
                     _tmrAlert.Interval = 1;
 
                     Opacity += 1;
@@ -293,15 +293,15 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     }
                     else if (Opacity == 1.0)
                     {
-                        _action = AlertAction.WAIT;
+                        _action = AlertAction.Wait;
                     }
                     break;
-                case AlertAction.WAIT:
+                case AlertAction.Wait:
                     _tmrAlert.Interval = _interval;
 
-                    _action = AlertAction.CLOSE;
+                    _action = AlertAction.Close;
                     break;
-                case AlertAction.CLOSE:
+                case AlertAction.Close:
                     _tmrAlert.Interval = 1;
 
                     Opacity -= 1;
@@ -320,7 +320,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             _tmrAlert.Interval = 1;
 
-            _action = AlertAction.CLOSE;
+            _action = AlertAction.Close;
         }
         #endregion
 
