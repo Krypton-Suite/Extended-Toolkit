@@ -29,6 +29,12 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
 {
     public partial class KryptonMemoryBox : CommonExtendedKryptonForm
     {
+        #region Constants
+
+        private const int GAP = 10;
+
+        #endregion
+
         #region Instance Fields
 
         private KryptonMemoryBoxDialogResult _defaultDialogResult, _lastResult;
@@ -280,6 +286,97 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
             }
 
             return textSize;
+        }
+
+        private Size UpdateButtonsSizing()
+        {
+            var numberOfButtons = 1;
+
+            Size buttonOneSize = kbtnButtonOne.GetPreferredSize(Size.Empty);
+
+            Size maximumButtonSize = new(buttonOneSize.Width + GAP, buttonOneSize.Height);
+
+            if (kbtnButtonTwo.Enabled)
+            {
+                numberOfButtons++;
+                Size buttonTwoSize = kbtnButtonTwo.GetPreferredSize(Size.Empty);
+                maximumButtonSize.Width = Math.Max(maximumButtonSize.Width, buttonTwoSize.Width + GAP);
+                maximumButtonSize.Height = Math.Max(maximumButtonSize.Height, buttonTwoSize.Height);
+            }
+
+            // If Button3 is visible
+            if (kbtnButtonThree.Enabled)
+            {
+                numberOfButtons++;
+                Size buttonThreeSize = kbtnButtonThree.GetPreferredSize(Size.Empty);
+                maximumButtonSize.Width = Math.Max(maximumButtonSize.Width, buttonThreeSize.Width + GAP);
+                maximumButtonSize.Height = Math.Max(maximumButtonSize.Height, buttonThreeSize.Height);
+            }
+            // If Button4 is visible
+            if (kbtnButtonFour.Enabled)
+            {
+                numberOfButtons++;
+                Size buttonFourSize = kbtnButtonFour.GetPreferredSize(Size.Empty);
+                maximumButtonSize.Width = Math.Max(maximumButtonSize.Width, buttonFourSize.Width + GAP);
+                maximumButtonSize.Height = Math.Max(maximumButtonSize.Height, buttonFourSize.Height);
+            }
+
+            if (kbtnButtonFive.Enabled)
+            {
+                numberOfButtons++;
+
+                Size buttonFiveSize = kbtnButtonFive.GetPreferredSize(Size.Empty);
+
+                maximumButtonSize.Width = Math.Max(maximumButtonSize.Width, kbtnButtonFive.Width + GAP);
+
+                maximumButtonSize.Height = Math.Max(maximumButtonSize.Height, kbtnButtonFive.Height);
+            }
+
+            // Start positioning buttons 10 pixels from right edge
+            var right = kpnlButtons.Right - GAP;
+
+            if (kbtnButtonFive.Enabled)
+            {
+                kbtnButtonFive.Location = new(right - maximumButtonSize.Width, GAP);
+
+                kbtnButtonFive.Size = maximumButtonSize;
+
+                right -= maximumButtonSize.Width + GAP;
+            }
+
+            // If Button4 is visible
+            if (kbtnButtonFour.Enabled)
+            {
+                kbtnButtonFour.Location = new Point(right - maximumButtonSize.Width, GAP);
+                kbtnButtonFour.Size = maximumButtonSize;
+                right -= maximumButtonSize.Width + GAP;
+            }
+
+            // If Button3 is visible
+            if (kbtnButtonThree.Enabled)
+            {
+                kbtnButtonThree.Location = new Point(right - maximumButtonSize.Width, GAP);
+                kbtnButtonThree.Size = maximumButtonSize;
+                right -= maximumButtonSize.Width + GAP;
+            }
+
+            // If Button2 is visible
+            if (kbtnButtonTwo.Enabled)
+            {
+                kbtnButtonTwo.Location = new Point(right - maximumButtonSize.Width, GAP);
+                kbtnButtonTwo.Size = maximumButtonSize;
+                right -= maximumButtonSize.Width + GAP;
+            }
+
+            // Button1 is always visible
+            kbtnButtonOne.Location = new Point(right - maximumButtonSize.Width, GAP);
+            kbtnButtonOne.Size = maximumButtonSize;
+
+            // Size the panel for the buttons
+            kpnlButtons.Size = new Size((maximumButtonSize.Width * numberOfButtons) + (GAP * (numberOfButtons + 1)), maximumButtonSize.Height + (GAP * 2));
+
+            // Button area is the number of buttons with gaps between them and 10 pixels around all edges
+            return new Size((maximumButtonSize.Width * numberOfButtons) + (GAP * (numberOfButtons + 1)), maximumButtonSize.Height + (GAP * 2));
         }
 
         #endregion
