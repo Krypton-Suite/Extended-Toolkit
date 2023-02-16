@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
             internal override IElement CreateElement(IElementFactory elementFactory, IElement parent, IRule rule, IdentifierCollection ruleIds)
             {
-                Collection<RuleElement> collection = new Collection<RuleElement>();
+                Collection<RuleElement> collection = new();
                 CalcCount(null);
                 Optimize(collection);
                 foreach (RuleElement item in collection)

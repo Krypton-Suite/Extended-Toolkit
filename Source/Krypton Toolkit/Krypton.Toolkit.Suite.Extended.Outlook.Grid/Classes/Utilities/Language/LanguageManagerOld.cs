@@ -26,12 +26,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     {        
         private static LanguageManager _mInstance = null;
 
-        private static readonly object _mylock = new object();
+        private static readonly object _mylock = new();
         private ResourceManager _rm;
 
         private CultureInfo _ci;
         //Used for blocking critical sections on updates
-        private object _locker = new object();
+        private object _locker = new();
 
         private LanguageManager()
         {

@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns>List of Column indexes and SortDirection ordered by SortIndex.</returns>
         public List<Tuple<int, SortOrder, IComparer>> GetIndexAndSortGroupedColumns()
         {
-            List<Tuple<int, SortOrder, IComparer>> res = new List<Tuple<int, SortOrder, IComparer>>();
+            List<Tuple<int, SortOrder, IComparer>> res = new();
             var tmp = this.OrderBy(x => x.GroupIndex);
             foreach (OutlookGridColumn col in tmp)
             {

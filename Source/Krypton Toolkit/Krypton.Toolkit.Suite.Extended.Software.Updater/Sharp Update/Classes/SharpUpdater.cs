@@ -65,11 +65,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// <summary>
         /// Lists containing all informtion for files update
         /// </summary>
-        private List<string> tempFilePaths = new List<string>();
-        private List<string> currentPaths = new List<string>();
-        private List<string> newPaths = new List<string>();
-        private List<string> launchArgss = new List<string>();
-        private List<JobType> jobtypes = new List<JobType>();
+        private List<string> tempFilePaths = new();
+        private List<string> currentPaths = new();
+        private List<string> newPaths = new();
+        private List<string> launchArgss = new();
+        private List<JobType> jobtypes = new();
 
         private int acceptJobs = 0;
 

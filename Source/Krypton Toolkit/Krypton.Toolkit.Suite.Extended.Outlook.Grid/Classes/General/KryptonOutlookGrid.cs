@@ -639,7 +639,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                             SourceColumn.DisplayIndex = TargetColumn.DisplayIndex;
 
                             //Debug
-                            List<DataGridViewColumn> listcol = new List<DataGridViewColumn>();
+                            List<DataGridViewColumn> listcol = new();
                             foreach (DataGridViewColumn col in Columns)
                             {
                                 listcol.Add(col);
@@ -1808,7 +1808,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 ImageList imgListFormatting = new ImageList();
                 imgListFormatting.ColorDepth = ColorDepth.Depth32Bit;
                 imgListFormatting.ImageSize = new Size(32, 32);
-                List<ConditionalFormatting> tmpTag = new List<ConditionalFormatting>();
+                List<ConditionalFormatting> tmpTag = new();
                 imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_blue_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(76, 118, 255), false)));
                 imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_green_32);

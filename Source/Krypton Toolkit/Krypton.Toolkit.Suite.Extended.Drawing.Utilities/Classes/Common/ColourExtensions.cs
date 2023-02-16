@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
     public static class ColourExtensions
     {
         #region Variables
-        private static Random _randomiser = new Random();
+        private static Random _randomiser = new();
         #endregion
 
         #region Structures        

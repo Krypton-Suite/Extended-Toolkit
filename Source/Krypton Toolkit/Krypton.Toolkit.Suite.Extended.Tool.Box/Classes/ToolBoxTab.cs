@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         #region Krypton Variables
         //Palette State
-        private KryptonManager _manager = new KryptonManager();
+        private KryptonManager _manager = new();
 
         private PaletteBackInheritRedirect _paletteBack;
 
@@ -740,7 +740,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         {
             bool bFound = false;
             int index = -1;
-            ToolBoxItem item = null;
+            ToolBoxItem? item = null;
 
             if (_itemArea.Contains(e.X, e.Y))
             {
@@ -786,7 +786,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         private bool DragSelectedItem(MouseEventArgs e)
         {
             bool bDragged = false;
-            ToolBoxItem item = null;
+            ToolBoxItem? item = null;
             DragDropEffects effect = DragDropEffects.None;
 
             if (MouseButtons.Left == e.Button && _parent.Focused && -1 != _selItemIndex)
@@ -944,7 +944,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             Rectangle r = e.ClipRectangle;
             Rectangle rImage = Rectangle.Empty;
             StringFormat strFormat = new StringFormat();
-            ImageList imgList = null;
+            ImageList? imgList = null;
             Brush[] txBrushes = null;
             Brush txBrush = null;
 
@@ -1097,7 +1097,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
         }
 
-        private void DrawImage(Graphics g, ImageList imgList, int index, Rectangle rImage, bool bEnabled, bool bPartial)
+        private void DrawImage(Graphics g, ImageList? imgList, int index, Rectangle rImage, bool bEnabled, bool bPartial)
         {
             if (0 < rImage.Height)
             {
@@ -1155,7 +1155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             Brush[] bgBrushes = null;
             Brush[] txBrushes = null;
             Brush txBrush = null;
-            ImageList imgList = null;
+            ImageList? imgList = null;
             int imageIndex = -1;
 
             if (!(0 >= _itemArea.Height) && null != _toolItems)

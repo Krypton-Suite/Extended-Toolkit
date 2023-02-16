@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private Color DEFAULT_BACK_COLOUR = Color.Red, DEFAULT_FORECOLOUR = Color.White;
 
-        private Font DEFAULT_TYPEFACE = new Font("Segoe UI", 11f);
+        private Font DEFAULT_TYPEFACE = new("Segoe UI", 11f);
         #endregion
 
         #region Variables

@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public int YAxisIndex { get; set; } = 0;
         public bool BackgroundFill = false;
         public Color BackgroundColor;
-        public Font Font = new Font();
+        public Font Font = new();
         public Color Color { set => Font.Color = value; }
         public string FontName { set => Font.Name = value; }
         public float FontSize { set => Font.Size = value; }
@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public float Rotation { set => Font.Rotation = value; }
 
         public override string ToString() => $"PlottableText \"{Label}\" at ({X}, {Y})";
-        public AxisLimits GetAxisLimits() => new AxisLimits(X, X, Y, Y);
+        public AxisLimits GetAxisLimits() => new(X, X, Y, Y);
         public LegendItem[] GetLegendItems() => null;
 
         public void ValidateData(bool deep = false)

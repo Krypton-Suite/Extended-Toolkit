@@ -610,13 +610,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         #region Constants
 
-        private static readonly object _eventColourChanged = new object();
+        private static readonly object _eventColourChanged = new();
 
-        private static readonly object _eventOrientationChanged = new object();
+        private static readonly object _eventOrientationChanged = new();
 
-        private static readonly object _eventShowAlphaChannelChanged = new object();
+        private static readonly object _eventShowAlphaChannelChanged = new();
 
-        private static readonly object _eventShowColourSpaceLabelsChanged = new object();
+        private static readonly object _eventShowColourSpaceLabelsChanged = new();
 
         private const int _minimumBarWidth = 30;
 

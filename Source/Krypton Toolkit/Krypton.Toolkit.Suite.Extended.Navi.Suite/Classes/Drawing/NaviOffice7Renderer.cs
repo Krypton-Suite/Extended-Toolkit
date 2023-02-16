@@ -373,26 +373,26 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 if (((rightToLeft) && (!collapsed)) || (!rightToLeft) && (collapsed))
                 {
-                    PointF[] points = {new PointF(x -3, y),
-                               new PointF(x,y + 3),
-                               new PointF(x-3, y + 3 + 3) };
+                    PointF[] points = {new(x -3, y),
+                               new(x,y + 3),
+                               new(x-3, y + 3 + 3) };
                     g.DrawLines(pen, points);
 
-                    PointF[] points2 = {new PointF(x + 1, y),
-                               new PointF(x + 4,y + 3),
-                               new PointF(x + 1, y + 3 + 3) };
+                    PointF[] points2 = {new(x + 1, y),
+                               new(x + 4,y + 3),
+                               new(x + 1, y + 3 + 3) };
                     g.DrawLines(pen, points2);
                 }
                 else
                 {
-                    PointF[] points = {new PointF(x, y),
-                               new PointF(x - 3,y + 3),
-                               new PointF(x, y + 3 + 3) };
+                    PointF[] points = {new(x, y),
+                               new(x - 3,y + 3),
+                               new(x, y + 3 + 3) };
                     g.DrawLines(pen, points);
 
-                    PointF[] points2 = {new PointF(x + 4, y),
-                               new PointF(x + 1,y + 3),
-                               new PointF(x + 4, y + 3 + 3) };
+                    PointF[] points2 = {new(x + 4, y),
+                               new(x + 1,y + 3),
+                               new(x + 4, y + 3 + 3) };
                     g.DrawLines(pen, points2);
                 }
             }
@@ -410,14 +410,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public override void DrawOptionsTriangle(Graphics g, Rectangle bounds)
         {
             Point[] points = new Point[] {
-            new Point(bounds.Width /2 +3,bounds.Height /2 -1),
-            new Point(bounds.Width /2, bounds.Height /2 +2),
-            new Point(bounds.Width /2 -2,bounds.Height /2 -1) };
+            new(bounds.Width /2 +3,bounds.Height /2 -1),
+            new(bounds.Width /2, bounds.Height /2 +2),
+            new(bounds.Width /2 -2,bounds.Height /2 -1) };
 
             Point[] pointsRec2 = new Point[] {
-            new Point(bounds.Width /2 +3,bounds.Height /2),
-            new Point(bounds.Width /2, bounds.Height /2 +3),
-            new Point(bounds.Width /2 -2,bounds.Height /2) };
+            new(bounds.Width /2 +3,bounds.Height /2),
+            new(bounds.Width /2, bounds.Height /2 +3),
+            new(bounds.Width /2 -2,bounds.Height /2) };
 
             using (SolidBrush b = new SolidBrush(ColourTable.BorderInner))
             {
@@ -523,26 +523,26 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 if (expanded)
                 {
-                    PointF[] points = { new PointF(x, y + 3 + 4),
-                               new PointF(x + 3,y + 4),
-                               new PointF(x + 3 + 3, y + 3 + 4) };
+                    PointF[] points = { new(x, y + 3 + 4),
+                               new(x + 3,y + 4),
+                               new(x + 3 + 3, y + 3 + 4) };
                     g.DrawLines(pen, points);
 
-                    PointF[] points2 = { new PointF(x, y + 3),
-                               new PointF(x + 3,y ),
-                               new PointF(x + 3 + 3, y + 3) };
+                    PointF[] points2 = { new(x, y + 3),
+                               new(x + 3,y ),
+                               new(x + 3 + 3, y + 3) };
                     g.DrawLines(pen, points2);
                 }
                 else
                 {
-                    PointF[] points = { new PointF(x, y + 4),
-                               new PointF(x + 3,y + 3 + 4),
-                               new PointF(x + 3 + 3, y + 4) };
+                    PointF[] points = { new(x, y + 4),
+                               new(x + 3,y + 3 + 4),
+                               new(x + 3 + 3, y + 4) };
                     g.DrawLines(pen, points);
 
-                    PointF[] points2 = { new PointF(x, y ),
-                               new PointF(x + 3,y + 3 ),
-                               new PointF(x + 3 + 3, y) };
+                    PointF[] points2 = { new(x, y ),
+                               new(x + 3,y + 3 ),
+                               new(x + 3 + 3, y) };
                     g.DrawLines(pen, points2);
                 }
             }

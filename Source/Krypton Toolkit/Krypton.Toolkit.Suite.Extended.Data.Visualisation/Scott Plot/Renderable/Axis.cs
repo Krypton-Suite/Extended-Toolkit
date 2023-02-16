@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Axis dimensions and methods for pixel/unit conversions
         /// </summary>
-        public readonly AxisDimensions Dims = new AxisDimensions();
+        public readonly AxisDimensions Dims = new();
 
         /// <summary>
         /// Plottables with this axis index will use pixel/unit conversions from this axis
@@ -77,9 +77,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public bool IsVertical => Edge == Edge.Left || Edge == Edge.Right;
 
         // private renderable components
-        private readonly AxisLabel AxisLabel = new AxisLabel();
-        private readonly AxisTicks AxisTicks = new AxisTicks();
-        private readonly AxisLineOptional AxisLine = new AxisLineOptional();
+        private readonly AxisLabel AxisLabel = new();
+        private readonly AxisTicks AxisTicks = new();
+        private readonly AxisLineOptional AxisLine = new();
 
         /// <summary>
         /// Return configuration objects to allow deep customization of axis settings.

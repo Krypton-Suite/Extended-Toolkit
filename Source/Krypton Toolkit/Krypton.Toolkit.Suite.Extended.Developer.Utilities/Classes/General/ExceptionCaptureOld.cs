@@ -41,17 +41,17 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         #endregion
 
         #region Methods
-        /// <summary>
-        /// Captures the exception.
-        /// </summary>
+
+        /// <summary>Captures the exception.</summary>
         /// <param name="exception">The exception.</param>
         /// <param name="title">The title.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="className">Name of the class.</param>
         /// <param name="methodSignature">The method signature.</param>
-        /// <param name="useDebugConsole">Use the debug console.</param>
-        /// <param name="dumpException">Dumps the exception data to a file.</param>
+        /// <param name="useDebugConsole">if set to <c>true</c> [use debug console].</param>
+        /// <param name="dumpException">if set to <c>true</c> [dump exception].</param>
+        /// <param name="win32Buttons">The win32 buttons.</param>
         public static void CaptureException(Exception exception, string title = @"Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, string className = "", string methodSignature = "", bool useDebugConsole = false, bool dumpException = false, MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
         {
             if (className != "")
@@ -88,6 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="icon">The icon.</param>
         /// <param name="className">Name of the class.</param>
         /// <param name="methodSignature">The method signature.</param>
+        /// <param name="win32Buttons">The win32 buttons.</param>
         public static void CaptureException(Exception exception, KryptonForm currentWindow, Control? control = null, string title = @"Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, string className = "", string methodSignature = "", MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
         {
             if (className != "")

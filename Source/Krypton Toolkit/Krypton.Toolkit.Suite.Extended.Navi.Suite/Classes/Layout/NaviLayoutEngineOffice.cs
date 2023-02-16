@@ -45,9 +45,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         private ToolStripMenuItem miAddOrRemoveButtons;
         private ToolStripSeparator miSep;
         private PopupWindowHelper popupHelper = null;
-        private readonly object threadLock = new object();
+        private readonly object threadLock = new();
         private NaviBandEnumerator ienum;
-        private Font headerFont = new Font("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+        private Font headerFont = new("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
         private NaviRenderer renderer;
         private int splitterHeight = 8;
         private int optionButtonWidth = 18;

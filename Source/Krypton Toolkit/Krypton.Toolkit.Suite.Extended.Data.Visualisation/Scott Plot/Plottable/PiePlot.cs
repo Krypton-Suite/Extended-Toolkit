@@ -48,8 +48,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public double DonutSize;
         public string DonutLabel;
-        public readonly Font CenterFont = new Font();
-        public readonly Font SliceFont = new Font();
+        public readonly Font CenterFont = new();
+        public readonly Font SliceFont = new();
 
         public float OutlineSize = 0;
         public Color OutlineColor = Color.Black;
@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 .ToArray();
         }
 
-        public AxisLimits GetAxisLimits() => new AxisLimits(-0.5, 0.5, -1, 1);
+        public AxisLimits GetAxisLimits() => new(-0.5, 0.5, -1, 1);
 
         public int PointCount => Values.Length;
 

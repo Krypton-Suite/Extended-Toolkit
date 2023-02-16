@@ -37,9 +37,9 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
     public class CopyFiles
     {
         #region Variables
-        private List<string> _files = new List<string>(), _newFileNames = new List<string>();
+        private List<string> _files = new(), _newFileNames = new();
 
-        private List<ST_CopyFileDetails> _filesCopied = new List<ST_CopyFileDetails>();
+        private List<ST_CopyFileDetails> _filesCopied = new();
 
         private int _totalFiles = 0, _totalFilesCopied = 0;
 
@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         {
 
             // Variables
-            List<string> foundFiles = new List<string>();
+            List<string> foundFiles = new();
             string[] fileEntries;
             string[] subdirEntries;
 

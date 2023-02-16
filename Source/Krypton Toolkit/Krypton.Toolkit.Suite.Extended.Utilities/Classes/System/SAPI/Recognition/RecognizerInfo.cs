@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             _sapiObjectTokenId = token.Id;
             _name = token.TokenName();
             _culture = culture;
-            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            Dictionary<string, string> dictionary = new();
             string[] valueNames = token.Attributes.GetValueNames();
             foreach (string text in valueNames)
             {

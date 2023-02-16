@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Font options for the axis title
         /// </summary>
-        public Font Font = new Font() { Size = 16 };
+        public Font Font = new() { Size = 16 };
 
         /// <summary>
         /// Set this field to display a bitmap instead of a text axis label

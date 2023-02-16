@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
             TcpConnectionInformation[] connections = properties.GetActiveTcpConnections();
 
-            List<ConnectionDetails> list = new List<ConnectionDetails>();
+            List<ConnectionDetails> list = new();
 
             foreach (TcpConnectionInformation info in connections)
             {

@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     /// </summary>
     public class Animator2D : IAnimator
     {
-        private readonly List<Path2D> _paths = new List<Path2D>();
+        private readonly List<Path2D> _paths = new();
 
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     Gets the currently active path.
         /// </summary>
-        public Path2D ActivePath => new Path2D(HorizontalAnimator.ActivePath, VerticalAnimator.ActivePath);
+        public Path2D ActivePath => new(HorizontalAnimator.ActivePath, VerticalAnimator.ActivePath);
 
         /// <summary>
         ///     Gets the horizontal animator.

@@ -11,7 +11,7 @@ namespace Examples
 {
     public partial class OutlookGridExample : KryptonForm
     {
-        private static Random rand = new Random();
+        private static Random rand = new();
 
         public OutlookGridExample()
         {
@@ -33,12 +33,12 @@ namespace Examples
 
             //Setup Rows
             OutlookGridRow row = new OutlookGridRow();
-            List<OutlookGridRow> l = new List<OutlookGridRow>();
+            List<OutlookGridRow> l = new();
             kogExample.SuspendLayout();
             kogExample.ClearInternalRows();
             kogExample.FillMode = FillMode.GroupsAndNodes;
 
-            List<Token?> tokensList = new List<Token?>();
+            List<Token?> tokensList = new();
             tokensList.Add(new Token("Best seller", Color.Orange, Color.Black));
             tokensList.Add(new Token("New", Color.LightGreen, Color.Black));
             tokensList.Add(null);

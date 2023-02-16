@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         }
         public GraphicsPath Path => grPath;
 
-        public RectangleF Rect => new RectangleF(x, y, width, height);
+        public RectangleF Rect => new(x, y, width, height);
 
         public float Radius
         {

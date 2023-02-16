@@ -163,7 +163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <summary>
         /// Gets and sets the button image.
         /// </summary>
-        public Image Image
+        public Image? Image
         {
             get => _colourButton.Values.Image;
 

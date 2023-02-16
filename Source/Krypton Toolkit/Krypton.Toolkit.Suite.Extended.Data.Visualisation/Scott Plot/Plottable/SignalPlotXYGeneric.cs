@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 {
                     PointBefore = new PointF[]
                     {
-                        new PointF(dims.GetPixelX(Convert.ToDouble(Xs[pointBeforeIndex - 1]) + OffsetX),
+                        new(dims.GetPixelX(Convert.ToDouble(Xs[pointBeforeIndex - 1]) + OffsetX),
                                    dims.GetPixelY(Strategy.SourceElement(pointBeforeIndex - 1) + Convert.ToDouble(OffsetY)))
                     };
                     searchFrom = pointBeforeIndex;
@@ -168,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 {
                     PointAfter = new PointF[]
                     {
-                        new PointF(dims.GetPixelX(Convert.ToDouble(Xs[pointAfterIndex]) + OffsetX),
+                        new(dims.GetPixelX(Convert.ToDouble(Xs[pointAfterIndex]) + OffsetX),
                                    dims.GetPixelY(Strategy.SourceElement(pointAfterIndex) + Convert.ToDouble(OffsetY)))
                     };
                     searchTo = pointAfterIndex;

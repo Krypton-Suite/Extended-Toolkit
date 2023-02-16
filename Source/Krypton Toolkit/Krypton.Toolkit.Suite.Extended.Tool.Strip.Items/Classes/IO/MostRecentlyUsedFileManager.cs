@@ -43,9 +43,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private ToolStripMenuItemUACSheld _clearListItem;
 
-        private UtilityMethods _utilityMethods = new UtilityMethods();
+        private UtilityMethods _utilityMethods = new();
 
-        private GlobalMethods _globalMethods = new GlobalMethods();
+        private GlobalMethods _globalMethods = new();
 
         #endregion
 

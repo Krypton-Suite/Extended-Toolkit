@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     /// </summary>
     public class Animator3D : IAnimator
     {
-        private readonly List<Path3D> _paths = new List<Path3D>();
+        private readonly List<Path3D> _paths = new();
 
         /// <summary>
         ///     The callback to get invoked at the end of the animation
@@ -149,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     Gets the currently active path.
         /// </summary>
-        public Path3D ActivePath => new Path3D(
+        public Path3D ActivePath => new(
             HorizontalAnimator.ActivePath,
             VerticalAnimator.ActivePath,
             DepthAnimator.ActivePath);

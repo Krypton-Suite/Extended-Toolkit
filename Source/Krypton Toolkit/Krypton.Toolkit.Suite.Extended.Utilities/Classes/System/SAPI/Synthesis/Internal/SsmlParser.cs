@@ -335,7 +335,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             string dest2 = null;
             string dest3 = null;
             CultureInfo cultureInfo = null;
-            List<SsmlXmlAttribute> list = new List<SsmlXmlAttribute>();
+            List<SsmlXmlAttribute> list = new();
             Exception innerException = null;
             while (reader.MoveToNextAttribute())
             {

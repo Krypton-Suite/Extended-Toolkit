@@ -133,7 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
         }
 
-        public static FileInfo GetFileInfomation(string filePath) => new FileInfo(filePath);
+        public static FileInfo GetFileInfomation(string filePath) => new(filePath);
 
         public static FileVersionInfo GetFileVersionInformation(string filePath) => FileVersionInfo.GetVersionInfo(filePath);
 

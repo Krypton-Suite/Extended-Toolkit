@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         internal void Commit(StreamMarshaler streamBuffer)
         {
             long position = streamBuffer.Stream.Position;
-            List<State> list = new List<State>(_states);
+            List<State> list = new(_states);
             _states = null;
             list.Sort();
             ValidateAndTagRules();
@@ -241,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             backend._fNeedWeightTable = org._fNeedWeightTable;
             backend._grammarMode = org._grammarMode;
             backend._grammarOptions = org._grammarOptions;
-            Dictionary<State, State> srcToDestHash = new Dictionary<State, State>();
+            Dictionary<State, State> srcToDestHash = new();
             foreach (Rule rule in org._rules)
             {
                 if (rule.Name == ruleName)
@@ -409,9 +409,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal State CloneSubGraph(State srcFromState, State srcEndState, State destFromState)
         {
-            Dictionary<State, State> dictionary = new Dictionary<State, State>();
-            Stack<State> stack = new Stack<State>();
-            Dictionary<Tag, Tag> endArcs = new Dictionary<Tag, Tag>();
+            Dictionary<State, State> dictionary = new();
+            Stack<State> stack = new();
+            Dictionary<Tag, Tag> endArcs = new();
             dictionary.Add(srcFromState, destFromState);
             stack.Push(srcFromState);
             while (stack.Count > 0)
@@ -447,8 +447,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         internal void CloneSubGraph(Rule rule, Backend org, Backend extra, Dictionary<State, State> srcToDestHash, bool fromOrg)
         {
             Backend backend = fromOrg ? org : extra;
-            List<State> list = new List<State>();
-            Dictionary<Tag, Tag> endArcs = new Dictionary<Tag, Tag>();
+            List<State> list = new();
+            Dictionary<Tag, Tag> endArcs = new();
             CloneState(rule._firstState, list, srcToDestHash);
             while (list.Count > 0)
             {
@@ -526,9 +526,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal void DeleteSubGraph(State state)
         {
-            Stack<State> stack = new Stack<State>();
-            Collection<Arc> collection = new Collection<Arc>();
-            Collection<State> collection2 = new Collection<State>();
+            Stack<State> stack = new();
+            Collection<Arc> collection = new();
+            Collection<State> collection2 = new();
             stack.Push(state);
             while (stack.Count > 0)
             {
@@ -625,7 +625,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             _symbols = header.pszSymbols;
             _grammarOptions = header.GrammarOptions;
             State[] array = new State[header.arcs.Length];
-            SortedDictionary<int, Rule> sortedDictionary = new SortedDictionary<int, Rule>();
+            SortedDictionary<int, Rule> sortedDictionary = new();
             int count = _rules.Count;
             BuildRulesFromBinaryGrammar(header, array, sortedDictionary, count);
             Arc[] array2 = new Arc[header.arcs.Length];

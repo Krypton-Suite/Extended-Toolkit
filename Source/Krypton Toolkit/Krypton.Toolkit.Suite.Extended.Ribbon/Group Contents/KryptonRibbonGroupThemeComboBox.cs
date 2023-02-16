@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         {
             get;
 
-        } = new KryptonManager();
+        } = new();
 
         #endregion
 

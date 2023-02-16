@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     public class ReportGenerator
     {
         private readonly ExceptionReportInfo _info;
-        private readonly List<SysInfoResult> _sysInfoResults = new List<SysInfoResult>();
+        private readonly List<SysInfoResult> _sysInfoResults = new();
 
         /// <summary>
         /// Initialises some ExceptionReportInfo properties related to the application/system

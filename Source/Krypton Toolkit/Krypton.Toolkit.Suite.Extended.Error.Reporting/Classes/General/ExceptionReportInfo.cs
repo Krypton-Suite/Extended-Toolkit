@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     /// </summary>
     public class ExceptionReportInfo
     {
-        private readonly List<Exception> _exceptions = new List<Exception>();
+        private readonly List<Exception> _exceptions = new();
 
         /// <summary>
         /// The Main (usually the 'only') exception, which is the subject of this exception 'report'

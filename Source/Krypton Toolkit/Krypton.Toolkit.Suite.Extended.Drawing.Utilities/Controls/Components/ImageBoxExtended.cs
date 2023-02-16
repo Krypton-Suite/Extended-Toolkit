@@ -38,89 +38,89 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
     {
         #region Constants
 
-        private static readonly object _eventAllowClickZoomChanged = new object();
+        private static readonly object _eventAllowClickZoomChanged = new();
 
-        private static readonly object _eventAllowDoubleClickChanged = new object();
+        private static readonly object _eventAllowDoubleClickChanged = new();
 
-        private static readonly object _eventAllowUnfocusedMouseWheelChanged = new object();
+        private static readonly object _eventAllowUnfocusedMouseWheelChanged = new();
 
-        private static readonly object _eventAllowZoomChanged = new object();
+        private static readonly object _eventAllowZoomChanged = new();
 
-        private static readonly object _eventAutoCenterChanged = new object();
+        private static readonly object _eventAutoCenterChanged = new();
 
-        private static readonly object _eventAutoPanChanged = new object();
+        private static readonly object _eventAutoPanChanged = new();
 
-        private static readonly object _eventDropShadowSizeChanged = new object();
+        private static readonly object _eventDropShadowSizeChanged = new();
 
-        private static readonly object _eventGridCellSizeChanged = new object();
+        private static readonly object _eventGridCellSizeChanged = new();
 
-        private static readonly object _eventGridColorAlternateChanged = new object();
+        private static readonly object _eventGridColorAlternateChanged = new();
 
-        private static readonly object _eventGridColorChanged = new object();
+        private static readonly object _eventGridColorChanged = new();
 
-        private static readonly object _eventGridDisplayModeChanged = new object();
+        private static readonly object _eventGridDisplayModeChanged = new();
 
-        private static readonly object _eventGridScaleChanged = new object();
+        private static readonly object _eventGridScaleChanged = new();
 
-        private static readonly object _eventImageBorderColorChanged = new object();
+        private static readonly object _eventImageBorderColorChanged = new();
 
-        private static readonly object _eventImageBorderStyleChanged = new object();
+        private static readonly object _eventImageBorderStyleChanged = new();
 
-        private static readonly object _eventImageChanged = new object();
+        private static readonly object _eventImageChanged = new();
 
-        private static readonly object _eventInterpolationModeChanged = new object();
+        private static readonly object _eventInterpolationModeChanged = new();
 
-        private static readonly object _eventInvertMouseChanged = new object();
+        private static readonly object _eventInvertMouseChanged = new();
 
-        private static readonly object _eventLimitSelectionToImageChanged = new object();
+        private static readonly object _eventLimitSelectionToImageChanged = new();
 
-        private static readonly object _eventPanEnd = new object();
+        private static readonly object _eventPanEnd = new();
 
-        private static readonly object _eventPanStart = new object();
+        private static readonly object _eventPanStart = new();
 
-        private static readonly object _eventPixelGridColorChanged = new object();
+        private static readonly object _eventPixelGridColorChanged = new();
 
-        private static readonly object _eventPixelGridThresholdChanged = new object();
+        private static readonly object _eventPixelGridThresholdChanged = new();
 
-        private static readonly object _eventScaleTextChanged = new object();
+        private static readonly object _eventScaleTextChanged = new();
 
-        private static readonly object _eventSelected = new object();
+        private static readonly object _eventSelected = new();
 
-        private static readonly object _eventSelecting = new object();
+        private static readonly object _eventSelecting = new();
 
-        private static readonly object _eventSelectionColorChanged = new object();
+        private static readonly object _eventSelectionColorChanged = new();
 
-        private static readonly object _eventSelectionModeChanged = new object();
+        private static readonly object _eventSelectionModeChanged = new();
 
-        private static readonly object _eventSelectionRegionChanged = new object();
+        private static readonly object _eventSelectionRegionChanged = new();
 
-        private static readonly object _eventShortcutsEnabledChanged = new object();
+        private static readonly object _eventShortcutsEnabledChanged = new();
 
-        private static readonly object _eventShowPixelGridChanged = new object();
+        private static readonly object _eventShowPixelGridChanged = new();
 
-        private static readonly object _eventSizeModeChanged = new object();
+        private static readonly object _eventSizeModeChanged = new();
 
-        private static readonly object _eventSizeToFitChanged = new object();
+        private static readonly object _eventSizeToFitChanged = new();
 
-        private static readonly object _eventTextAlignChanged = new object();
+        private static readonly object _eventTextAlignChanged = new();
 
-        private static readonly object _eventTextBackColorChanged = new object();
+        private static readonly object _eventTextBackColorChanged = new();
 
-        private static readonly object _eventTextDisplayModeChanged = new object();
+        private static readonly object _eventTextDisplayModeChanged = new();
 
-        private static readonly object _eventTextPaddingChanged = new object();
+        private static readonly object _eventTextPaddingChanged = new();
 
-        private static readonly object _eventVirtualDraw = new object();
+        private static readonly object _eventVirtualDraw = new();
 
-        private static readonly object _eventVirtualModeChanged = new object();
+        private static readonly object _eventVirtualModeChanged = new();
 
-        private static readonly object _eventVirtualSizeChanged = new object();
+        private static readonly object _eventVirtualSizeChanged = new();
 
-        private static readonly object _eventZoomChanged = new object();
+        private static readonly object _eventZoomChanged = new();
 
-        private static readonly object _eventZoomed = new object();
+        private static readonly object _eventZoomed = new();
 
-        private static readonly object _eventZoomLevelsChanged = new object();
+        private static readonly object _eventZoomLevelsChanged = new();
 
         private const int MaxZoom = 3500;
 

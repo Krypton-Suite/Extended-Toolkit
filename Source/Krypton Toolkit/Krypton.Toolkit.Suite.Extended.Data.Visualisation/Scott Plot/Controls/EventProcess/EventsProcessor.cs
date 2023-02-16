@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// This timer is used for delayed rendering.
         /// It is restarted whenever an event is processed which requests a delayed render.
         /// </summary>
-        private readonly Stopwatch RenderDelayTimer = new Stopwatch();
+        private readonly Stopwatch RenderDelayTimer = new();
 
         /// <summary>
         /// This is true while the processor is processing events and/or waiting for a delayed render.

@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #region Variables
         private bool _skipNextOpen = false, _showSplitOption = true, _useUACElevation;
 
-        private Rectangle _dropDownRectangle = new Rectangle();
+        private Rectangle _dropDownRectangle = new();
 
         private string? _processPath;
         #endregion
@@ -266,7 +266,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             midPoint.X += (rectangle.Width % 2);
 
-            Point[] arrow = new Point[] { new Point(midPoint.X - 2, midPoint.Y - 1), new Point(midPoint.X + 3, midPoint.Y - 1), new Point(midPoint.X, midPoint.Y + 2) };
+            Point[] arrow = new Point[] { new(midPoint.X - 2, midPoint.Y - 1), new(midPoint.X + 3, midPoint.Y - 1), new(midPoint.X, midPoint.Y + 2) };
 
             graphics.FillPolygon(SystemBrushes.ControlText, arrow);
         }

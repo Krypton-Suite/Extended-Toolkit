@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// The settings object stores all state (configuration and data) for a plot
         /// </summary>
-        private readonly Settings settings = new Settings();
+        private readonly Settings settings = new();
 
         /// <summary>
         /// Plot image width (pixels)

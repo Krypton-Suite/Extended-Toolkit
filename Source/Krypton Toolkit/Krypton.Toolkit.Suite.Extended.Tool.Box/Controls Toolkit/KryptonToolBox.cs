@@ -115,9 +115,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         #region Static Methods
 
-        public static ImageList CreateImageListFromImage(Image image, Size size, Color transparentColor)
+        public static ImageList? CreateImageListFromImage(Image image, Size size, Color transparentColor)
         {
-            ImageList imgList = null;
+            ImageList? imgList = null;
             Rectangle rImage = Rectangle.Empty;
             Rectangle rBmp = Rectangle.Empty;
             Graphics gmp = null;
@@ -195,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         #region Private Attributes
 
-        private ToolBoxTabCollection _toolBoxTabs = null;
+        private ToolBoxTabCollection? _toolBoxTabs = null;
 
         private int _tabHeight = 18;
         private int _itemHeight = 20;
@@ -203,10 +203,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         private int _origTabHeight = 18;
         private int _origItemHeight = 20;
 
-        private Size _largeItemSize = new Size(64, 64);
-        private Size _smallItemSize = new Size(32, 32);
-        private Size _origLargeItemSize = new Size(64, 64);
-        private Size _origSmallItemSize = new Size(32, 32);
+        private Size _largeItemSize = new(64, 64);
+        private Size _smallItemSize = new(32, 32);
+        private Size _origLargeItemSize = new(64, 64);
+        private Size _origSmallItemSize = new(32, 32);
 
         private int _itemSpacing = 2;
         private int _tabSpacing = 1;
@@ -214,14 +214,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         private int _scrollWait = 500;
         private int _scrollDelay = 60;
 
-        private ToolScrollButton _upScroll = null;
-        private ToolScrollButton _dnScroll = null;
-        private ToolTip _toolTip = null;
-        private ToolBoxTab _selectedTab = null;
-        private ToolBoxTab _oldselectedTab = null;
-        private ToolBoxItem _patBltItem = null;
-        private ToolBoxItem _dragItem = null;
-        private ToolBoxItem _dropItem = null;
+        private ToolScrollButton? _upScroll = null;
+        private ToolScrollButton? _dnScroll = null;
+        private ToolTip? _toolTip = null;
+        private ToolBoxTab? _selectedTab = null;
+        private ToolBoxTab? _oldselectedTab = null;
+        private ToolBoxItem? _patBltItem = null;
+        private ToolBoxItem? _dragItem = null;
+        private ToolBoxItem? _dropItem = null;
 
         private Color _itemBgColour = Color.Empty;
         private Color _itemBorderColour = Color.Empty;         // #0A246A XP
@@ -247,20 +247,20 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         private bool _allowDragSwap = true;
         private bool _useItemClrInRename = false;
 
-        private ImageList _smallImageList = null;
-        private ImageList _largeImageList = null;
+        private ImageList? _smallImageList = null;
+        private ImageList? _largeImageList = null;
 
         [NonSerialized]
-        private TextBox _textBox = null;
+        private TextBox? _textBox = null;
 
         [NonSerialized]
-        private System.Windows.Forms.Timer _timer = null;
+        private Timer? _timer = null;
 
         [NonSerialized]
-        private ImageAttributes _dImgAttr = null;
+        private ImageAttributes? _dImgAttr = null;
 
         [NonSerialized]
-        private LayoutFinished _layoutFinished = null;
+        private LayoutFinished? _layoutFinished = null;
 
         #region Krypton Variables
         private KryptonManager _manager = new();
@@ -634,7 +634,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         }
 
         [Category("ToolBox"), XmlIgnore]
-        public ImageList SmallImageList
+        public ImageList? SmallImageList
         {
             get => _smallImageList;
             set
@@ -650,7 +650,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         }
 
         [Category("ToolBox"), XmlIgnore]
-        public ImageList LargeImageList
+        public ImageList? LargeImageList
         {
             get => _largeImageList;
             set
@@ -825,7 +825,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         }
 
         [Category("ToolBox"), XmlIgnore]
-        public ToolBoxTab SelectedTab => _selectedTab;
+        public ToolBoxTab? SelectedTab => _selectedTab;
 
         [Category("ToolBox"), Browsable(false), XmlIgnore]
         public ToolBoxItem EditingItem => _textBox.Tag as ToolBoxItem;
@@ -885,7 +885,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         public int SmallImageHeight => _smallImageList.ImageSize.Height;
 
         [Category("ToolBox"), Browsable(false), XmlIgnore]
-        public ImageAttributes DisabledImageAttribs
+        public ImageAttributes? DisabledImageAttribs
         {
             get
             {
@@ -911,10 +911,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         }
 
         [Category("ToolBox"), Browsable(false)]
-        public ToolScrollButton UpScroll => _upScroll;
+        public ToolScrollButton? UpScroll => _upScroll;
 
         [Category("ToolBox"), Browsable(false)]
-        public ToolScrollButton DownScroll => _dnScroll;
+        public ToolScrollButton? DownScroll => _dnScroll;
 
         [Category("ToolBox"), Browsable(false), XmlIgnore]
         public bool LayoutTimerActive => null != _timer && _timerIsForLayout;
@@ -1044,7 +1044,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             _timer = null;
         }
 
-        internal void UpdateToolTip(ToolObject obj)
+        internal void UpdateToolTip(ToolObject? obj)
         {
             if (null == obj.ToolTip || 0 >= obj.ToolTip.Length && obj.ForceCaptionToolTip || !obj.FullyVisible)
             {
@@ -1064,9 +1064,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
         }
 
-        internal void OnTabSelectionChanged(ToolBoxTab tab, LayoutFinished layoutFinished)
+        internal void OnTabSelectionChanged(ToolBoxTab? tab, LayoutFinished? layoutFinished)
         {
-            ToolBoxTab oldTab = _selectedTab;
+            ToolBoxTab? oldTab = _selectedTab;
 
             if (!_isLoading)
             {
@@ -1188,7 +1188,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             bool bIsTab = true;
             bool imageFound = false;
             ToolBoxTab tab = null;
-            ImageList imgList = null;
+            ImageList? imgList = null;
 
             try
             {
@@ -1319,7 +1319,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         #region Public Methods
 
-        public DragDropEffects DoDragDropItem(ToolBoxItem item, DragDropEffects allowedEffects)
+        public DragDropEffects DoDragDropItem(ToolBoxItem? item, DragDropEffects allowedEffects)
         {
             DragDropEffects e = DragDropEffects.None;
             DataObject dobj = null;
@@ -1388,12 +1388,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return index;
         }
 
-        public int IndexOfTab(ToolBoxTab tab)
+        public int IndexOfTab(ToolBoxTab? tab)
         {
             return _toolBoxTabs.IndexOf(tab);
         }
 
-        public bool CanMoveTabUp(ToolBoxTab tab)
+        public bool CanMoveTabUp(ToolBoxTab? tab)
         {
             bool bCanMoveUp = false;
             int index1 = -1;
@@ -1413,7 +1413,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bCanMoveUp;
         }
 
-        public bool CanMoveTabDown(ToolBoxTab tab)
+        public bool CanMoveTabDown(ToolBoxTab? tab)
         {
             bool bCanMoveDn = false;
             int index1 = -1;
@@ -1433,7 +1433,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bCanMoveDn;
         }
 
-        public bool MoveTabUp(ToolBoxTab tab)
+        public bool MoveTabUp(ToolBoxTab? tab)
         {
             bool bMoved = false;
             int index1 = -1;
@@ -1450,7 +1450,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bMoved;
         }
 
-        public bool MoveTabDown(ToolBoxTab tab)
+        public bool MoveTabDown(ToolBoxTab? tab)
         {
             bool bMoved = false;
             int index1 = -1;
@@ -1467,7 +1467,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bMoved;
         }
 
-        public bool SwapTabs(ToolBoxTab tab1, ToolBoxTab tab2)
+        public bool SwapTabs(ToolBoxTab? tab1, ToolBoxTab? tab2)
         {
             bool bSwaped = false;
             int index1 = -1;
@@ -1607,12 +1607,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return index;
         }
 
-        public bool DeleteTab(ToolBoxTab tab)
+        public bool DeleteTab(ToolBoxTab? tab)
         {
             return DeleteTab(tab, true);
         }
 
-        public bool DeleteTab(ToolBoxTab tab, bool bRedraw)
+        public bool DeleteTab(ToolBoxTab? tab, bool bRedraw)
         {
             bool bOK = true;
             int index = -1;
@@ -1637,7 +1637,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         {
             bool bOK = true;
             bool bSel = false;
-            ToolBoxTab tab = null;
+            ToolBoxTab? tab = null;
 
             try
             {
@@ -1897,7 +1897,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             _timer.Enabled = true;
         }
 
-        private void HandleScrollTimerElapsed(ToolBoxScrollDirection dir, ToolBoxTab? tab, ToolScrollButton sb)
+        private void HandleScrollTimerElapsed(ToolBoxScrollDirection dir, ToolBoxTab? tab, ToolScrollButton? sb)
         {
             if (null != tab)
             {
@@ -1918,7 +1918,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
         }
 
-        private bool DoTimedLayout(ToolBoxTab oldSelectedTab)
+        private bool DoTimedLayout(ToolBoxTab? oldSelectedTab)
         {
             bool bFinished = false;
             bool selItemAreaBad = false;
@@ -2338,7 +2338,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             LayoutTabs(redraw, null);
         }
 
-        private void LayoutTabs(bool redraw, ToolBoxTab skipTab)
+        private void LayoutTabs(bool redraw, ToolBoxTab? skipTab)
         {
             int iLoop = 0;
 
@@ -2624,7 +2624,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         private void HandleToolBoxTabDrop(DragEventArgs e)
         {
-            ToolBoxTab dragTab = null;
+            ToolBoxTab? dragTab = null;
 
             try
             {

@@ -115,7 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
 
         //Palette State
-        private KryptonManager k_manager = new KryptonManager();
+        private KryptonManager k_manager = new();
         private PaletteBackInheritRedirect m_paletteBack;
         private PaletteBorderInheritRedirect m_paletteBorder;
         private PaletteContentInheritRedirect m_paletteContent;

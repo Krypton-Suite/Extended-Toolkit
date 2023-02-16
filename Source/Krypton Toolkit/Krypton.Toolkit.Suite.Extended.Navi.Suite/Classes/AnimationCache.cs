@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         Image[] cache;
         System.Windows.Forms.Timer animationTimer;
         Control control;
-        Dictionary<string, int> animatables = new Dictionary<string, int>();
+        Dictionary<string, int> animatables = new();
         AnimationEventHandler paintFrame;
 
         int frameRate = 24;

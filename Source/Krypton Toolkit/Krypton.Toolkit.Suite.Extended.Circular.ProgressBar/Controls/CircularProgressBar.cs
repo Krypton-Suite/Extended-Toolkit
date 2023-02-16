@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 
         #region Krypton
         //Palette State
-        private KryptonManager _manager = new KryptonManager();
+        private KryptonManager _manager = new();
         private PaletteBackInheritRedirect _paletteBack;
         private PaletteBorderInheritRedirect _paletteBorder;
         private PaletteContentInheritRedirect _paletteContent;
@@ -318,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
             return size;
         }
 
-        private static Rectangle ToRectangle(RectangleF rectangle) => new Rectangle((int)rectangle.X, (int)rectangle.Y, (int)rectangle.Width, (int)rectangle.Height);
+        private static Rectangle ToRectangle(RectangleF rectangle) => new((int)rectangle.X, (int)rectangle.Y, (int)rectangle.Width, (int)rectangle.Height);
 
         /// <summary>
         ///     Initialize the animation for the continues styling

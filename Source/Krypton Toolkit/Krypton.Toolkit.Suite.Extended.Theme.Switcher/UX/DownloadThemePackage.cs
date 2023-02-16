@@ -165,7 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #region Variables
         private WebClient _client;
 
-        private Stopwatch _stopwatch = new Stopwatch();
+        private Stopwatch _stopwatch = new();
 
         private string _downloadLocation;
         #endregion

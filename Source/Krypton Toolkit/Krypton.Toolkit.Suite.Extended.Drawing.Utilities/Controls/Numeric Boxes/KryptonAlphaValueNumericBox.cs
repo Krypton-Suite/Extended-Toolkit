@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #region Constants
         private const int DEFAULT_VALUE = 0, MINIMUM_DEFAULT_VALUE = 0, MAXIMUM_DEFAULT_VALUE = 255;
 
-        private Font DEFAULT_TYPEFACE = new Font("Segoe UI", 11f);
+        private Font DEFAULT_TYPEFACE = new("Segoe UI", 11f);
         #endregion
 
         #region Variable

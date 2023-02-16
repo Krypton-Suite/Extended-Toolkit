@@ -37,12 +37,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     public class AxisTicks : IRenderable
     {
         // the tick collection determines where ticks should go and what tick labels should say
-        public readonly TickCollection TickCollection = new TickCollection();
+        public readonly TickCollection TickCollection = new();
 
         // tick label styling
         public bool TickLabelVisible = true;
         public float TickLabelRotation = 0;
-        public Font TickLabelFont = new Font() { Size = 11 };
+        public Font TickLabelFont = new() { Size = 11 };
 
         // major tick/grid styling
         public bool MajorTickVisible = true;

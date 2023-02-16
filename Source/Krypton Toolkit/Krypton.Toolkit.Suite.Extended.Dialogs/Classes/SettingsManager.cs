@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
     {
         #region Instance Fields
 
-        private Properties.Settings _mySettings = new Properties.Settings();
+        private Properties.Settings _mySettings = new();
 
         #endregion
 

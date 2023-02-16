@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public int YAxisIndex { get; set; } = 0;
 
         public override string ToString() => $"PlottableImage Size(\"{Bitmap.Size}\") at ({X}, {Y})";
-        public AxisLimits GetAxisLimits() => new AxisLimits(X, X, Y, Y);
+        public AxisLimits GetAxisLimits() => new(X, X, Y, Y);
         public LegendItem[] GetLegendItems() => null;
 
         public void ValidateData(bool deep = false)

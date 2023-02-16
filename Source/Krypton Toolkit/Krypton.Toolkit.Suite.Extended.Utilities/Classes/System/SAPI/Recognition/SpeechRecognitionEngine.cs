@@ -326,7 +326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         public static ReadOnlyCollection<RecognizerInfo> InstalledRecognizers()
         {
-            List<RecognizerInfo> list = new List<RecognizerInfo>();
+            List<RecognizerInfo> list = new();
             using (ObjectTokenCategory objectTokenCategory = ObjectTokenCategory.Create("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Recognizers"))
             {
                 if (objectTokenCategory != null)

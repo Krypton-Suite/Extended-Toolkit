@@ -203,7 +203,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         #region Variables
         private string _promptText, _openFileDialogTitle;
 
-        private List<string> _directoryContents = new List<string>();
+        private List<string> _directoryContents = new();
 
         private object _fileListItem;
         #endregion
@@ -270,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             FileInfo[] files = directoryInfo.GetFiles();
 
             // Create a temporary list
-            List<string> temporaryList = new List<string>();
+            List<string> temporaryList = new();
 
             int index1 = 0, index2 = 0, numberOfFiles = Directory.GetFiles(directory, fileType, searchOption).Count(), numberOfDirectories = Directory.GetDirectories(directory, "*", searchOption).Count(), totalNumberOfContents;
 

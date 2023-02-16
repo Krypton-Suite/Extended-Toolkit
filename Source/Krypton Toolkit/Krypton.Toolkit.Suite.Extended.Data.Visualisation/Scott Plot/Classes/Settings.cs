@@ -49,12 +49,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public Color GetNextColor() => PlottablePalette.GetColour(Plottables.Count);
 
-        public readonly FigureBackground FigureBackground = new FigureBackground();
-        public readonly DataBackground DataBackground = new DataBackground();
-        public readonly BenchmarkMessage BenchmarkMessage = new BenchmarkMessage();
-        public readonly ErrorMessage ErrorMessage = new ErrorMessage();
-        public readonly Legend CornerLegend = new Legend();
-        public readonly ZoomRectangle ZoomRectangle = new ZoomRectangle();
+        public readonly FigureBackground FigureBackground = new();
+        public readonly DataBackground DataBackground = new();
+        public readonly BenchmarkMessage BenchmarkMessage = new();
+        public readonly ErrorMessage ErrorMessage = new();
+        public readonly Legend CornerLegend = new();
+        public readonly ZoomRectangle ZoomRectangle = new();
         public ScottPlotPalette PlottablePalette = Palette.Category10;
 
         /// <summary>

@@ -32,17 +32,17 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
     {
         #region Constants
 
-        private static readonly object _eventColourChanged = new object();
+        private static readonly object _eventColourChanged = new();
 
-        private static readonly object _eventColourStepChanged = new object();
+        private static readonly object _eventColourStepChanged = new();
 
-        private static readonly object _eventHslColourChanged = new object();
+        private static readonly object _eventHslColourChanged = new();
 
-        private static readonly object _eventLargeChangeChanged = new object();
+        private static readonly object _eventLargeChangeChanged = new();
 
-        private static readonly object _eventSelectionSizeChanged = new object();
+        private static readonly object _eventSelectionSizeChanged = new();
 
-        private static readonly object _eventSmallChangeChanged = new object();
+        private static readonly object _eventSmallChangeChanged = new();
 
         #endregion
 

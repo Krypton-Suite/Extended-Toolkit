@@ -573,7 +573,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>
         /// Gets the default size of the control.
         /// </summary>
-        protected override Size DefaultSize => new Size(250, 55);
+        protected override Size DefaultSize => new(250, 55);
 
         /// <summary>
         /// Gets the default Input Method Editor (IME) mode supported by this control.

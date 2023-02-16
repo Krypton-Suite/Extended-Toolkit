@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
     {
         #region Instance Fields
 
-        private readonly object _lock = new object();
+        private readonly object _lock = new();
 
         private IDictionary<int, int> _indexedLookup;
 

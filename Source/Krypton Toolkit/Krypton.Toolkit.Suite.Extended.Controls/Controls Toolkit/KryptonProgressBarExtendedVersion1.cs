@@ -94,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private int _minimumValue = 0;
 
-        private Timer _glowAnimationTimer = new Timer();
+        private Timer _glowAnimationTimer = new();
 
         private string _displayText = "";
 

@@ -447,9 +447,9 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         #region Variables
         private char[] _validDriveLetters;
 
-        private NetworkDrives _networkDrives = new NetworkDrives();
+        private NetworkDrives _networkDrives = new();
 
-        private NetworkUtilities _utilities = new NetworkUtilities();
+        private NetworkUtilities _utilities = new();
         #endregion
 
         #region Constructors

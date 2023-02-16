@@ -32,23 +32,23 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region "   Members   "
 
-        private Font _fontStd = new Font("Tahoma", 8);
+        private Font _fontStd = new("Tahoma", 8);
         private Color _borderColor = Color.FromArgb(6, 80, 70); //Color.Black;
-        private SolidBrush _borderBrush = new SolidBrush(Color.FromArgb(6, 80, 70));
+        private SolidBrush _borderBrush = new(Color.FromArgb(6, 80, 70));
         private Color _foreColor = Color.FromArgb(6, 80, 70); //Color.Black;
-        private SolidBrush _foreBrush = new SolidBrush(Color.FromArgb(6, 80, 70));
+        private SolidBrush _foreBrush = new(Color.FromArgb(6, 80, 70));
         private Color _separatorDark = Color.FromArgb(76, 118, 112);//ColorTable.BackColorDark;
         private Color _selectionColor = Color.FromArgb(83, 122, 117);//ColorTable.SelectionColor;
         private Color _backColor = Color.FromArgb(194, 225, 222);//ColorTable.BackColor;
         private Color _headerDark = Color.Orange;//ColorTable.HaederDark;
         private Color _headerLight = Color.LightYellow;//ColorTable.HaederLight;
         private Color _headerText = Color.FromArgb(255, 255, 255); //Color.White
-        private SolidBrush _headerBrush = new SolidBrush(Color.FromArgb(255, 255, 255));
+        private SolidBrush _headerBrush = new(Color.FromArgb(255, 255, 255));
         private Color _dayBackColor = Color.FromArgb(194, 225, 222);//Color.FromArgb(250, 240, 200)
         private Color _newMonth = Color.FromArgb(141, 197, 190); //ColorTable.NewMonth;
         private Color _currentMonth = Color.FromArgb(199, 227, 223); //ColorTable.CurrentMonth;
         private Color _todayGradient = Color.DarkOrange;
-        private SolidBrush _todayGradientBrush = new SolidBrush(Color.DarkOrange);
+        private SolidBrush _todayGradientBrush = new(Color.DarkOrange);
         private Color _workingColor = Color.FromArgb(226, 238, 237);//Color.LightYellow;
         private Color _nonWorkingColor = Color.FromArgb(184, 215, 212);
         private Color _halfHourEndingColour = Color.FromArgb(117, 184, 174);

@@ -110,12 +110,16 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #endregion
 
         #region Constructors
+
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponse" /> class.</summary>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="actionType">Type of the action.</param>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
         /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
         /// <param name="useNativeBackColourInUserResponseArea">The use native back colour in user response area.</param>
+        /// <param name="showCloseButton">The show close button.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="userResponseCueText">The user response cue text.</param>
@@ -123,6 +127,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
+        /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                                  IconType iconType, string title, string contentText,
                                                  bool? usePanelColourInTextArea,

@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public int XAxisIndex { get; set; }
         public int YAxisIndex { get; set; }
 
-        public readonly Font Font = new Font();
+        public readonly Font Font = new();
         public int ArrowSize = 5;
         public int LabelPadding = 10;
 
@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public LegendItem[] GetLegendItems() => null;
 
-        public AxisLimits GetAxisLimits() => new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
+        public AxisLimits GetAxisLimits() => new(double.NaN, double.NaN, double.NaN, double.NaN);
 
         public void ValidateData(bool deep = false)
         {
@@ -100,10 +100,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 {
                     arrowHeadLocation,
                     upperArrowVertex,
-                    new PointF(contentBoxInsideEdgeX, upperArrowVertex.Y - LabelPadding),
-                    new PointF(contentBoxInsideEdgeX + sign * (labelSize.Width + LabelPadding), upperArrowVertex.Y - LabelPadding),
-                    new PointF(contentBoxInsideEdgeX + sign * (labelSize.Width + LabelPadding), contentBoxBottomEdge),
-                    new PointF(contentBoxInsideEdgeX, contentBoxBottomEdge),
+                    new(contentBoxInsideEdgeX, upperArrowVertex.Y - LabelPadding),
+                    new(contentBoxInsideEdgeX + sign * (labelSize.Width + LabelPadding), upperArrowVertex.Y - LabelPadding),
+                    new(contentBoxInsideEdgeX + sign * (labelSize.Width + LabelPadding), contentBoxBottomEdge),
+                    new(contentBoxInsideEdgeX, contentBoxBottomEdge),
                     lowerArrowVertex,
                     arrowHeadLocation,
                     // add one more point to prevent render artifacts where thick line ends meet

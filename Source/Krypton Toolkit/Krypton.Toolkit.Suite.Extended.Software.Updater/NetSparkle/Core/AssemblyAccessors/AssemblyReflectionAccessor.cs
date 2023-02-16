@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
     public class AssemblyReflectionAccessor : IAssemblyAccessor
     {
         private Assembly _assembly;
-        private List<Attribute> _assemblyAttributes = new List<Attribute>();
+        private List<Attribute> _assemblyAttributes = new();
 
         /// <summary>
         /// Constructor

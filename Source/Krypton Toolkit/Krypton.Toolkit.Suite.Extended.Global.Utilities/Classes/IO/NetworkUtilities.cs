@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
     public class NetworkUtilities
     {
         #region Variables
-        private GlobalMethods globalMethods = new GlobalMethods();
+        private GlobalMethods globalMethods = new();
         #endregion
 
         #region Constructor

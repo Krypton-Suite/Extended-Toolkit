@@ -138,12 +138,12 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <summary>
         /// gets the rectangle of the close button.
         /// </summary>
-        private Rectangle RectClose => new Rectangle(Width - 5 - 16, PopUp.HeaderHeight + 3, 16, 16);
+        private Rectangle RectClose => new(Width - 5 - 16, PopUp.HeaderHeight + 3, 16, 16);
 
         /// <summary>
         /// Gets the rectangle of the options button.
         /// </summary>
-        private Rectangle RectOptions => new Rectangle(Width - 5 - 16, PopUp.HeaderHeight + 3 + 16 + 5, 16, 16);
+        private Rectangle RectOptions => new(Width - 5 - 16, PopUp.HeaderHeight + 3 + 16 + 5, 16, 16);
         #endregion
 
         #region Constructor
@@ -281,7 +281,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     e.Graphics.FillRectangle(brushButtonHover, RectOptions);
                     e.Graphics.DrawRectangle(penButtonBorder, RectOptions);
                 }
-                e.Graphics.FillPolygon(brushForeColour, new Point[] { new Point(RectOptions.Left + 4, RectOptions.Top + 6), new Point(RectOptions.Left + 12, RectOptions.Top + 6), new Point(RectOptions.Left + 8, RectOptions.Top + 4 + 6) });
+                e.Graphics.FillPolygon(brushForeColour, new Point[] { new(RectOptions.Left + 4, RectOptions.Top + 6), new(RectOptions.Left + 12, RectOptions.Top + 6), new(RectOptions.Left + 8, RectOptions.Top + 4 + 6) });
             }
 
             // draw icon

@@ -25,6 +25,8 @@
  */
 #endregion
 
+#pragma warning disable CS8625
+#pragma warning disable CS8604
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ViewDrawButtonExtended : ViewComposite
@@ -287,7 +289,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <summary>
         /// Gets and sets the source for button values.
         /// </summary>
-        public IContentValues ButtonValues
+        public IContentValues? ButtonValues
         {
             get => _drawContent.Values;
             set => _drawContent.Values = value;

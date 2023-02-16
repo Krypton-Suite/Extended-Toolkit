@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public string VerticalLabel;
         public float LineWidth = 2;
         public Color LineColor = Color.Black;
-        public readonly Font Font = new Font();
+        public readonly Font Font = new();
         public float FontSize { set => Font.Size = value; }
         public Color FontColor { set => Font.Color = value; }
         public bool FontBold { set => Font.Bold = value; }
@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public int YAxisIndex { get; set; } = 0;
 
         public override string ToString() => $"PlottableScaleBar ({HorizontalLabel}={Width}, {VerticalLabel}={Height})";
-        public AxisLimits GetAxisLimits() => new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
+        public AxisLimits GetAxisLimits() => new(double.NaN, double.NaN, double.NaN, double.NaN);
         public LegendItem[] GetLegendItems() => null;
 
         public void ValidateData(bool deep = false)

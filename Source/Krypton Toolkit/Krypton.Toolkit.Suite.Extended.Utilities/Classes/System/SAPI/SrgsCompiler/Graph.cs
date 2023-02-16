@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private void MergeDuplicateTransitions()
         {
-            List<Arc> identicalWords = new List<Arc>();
+            List<Arc> identicalWords = new();
             foreach (State item in (IEnumerable<State>)this)
             {
                 if (item.OutArcs.ContainsMoreThanOneItem)
@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     MergeIdenticalTransitions(item.OutArcs, identicalWords);
                 }
             }
-            Stack<State> mergeStates = new Stack<State>();
+            Stack<State> mergeStates = new();
             RecursiveMergeDuplicatedOutputTransition(mergeStates);
             RecursiveMergeDuplicatedInputTransition(mergeStates);
         }
@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     MergeDuplicateInputTransitions(item.InArcs, mergeStates);
                 }
             }
-            List<Arc> identicalWords = new List<Arc>();
+            List<Arc> identicalWords = new();
             while (mergeStates.Count > 0)
             {
                 State state = mergeStates.Pop();
@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     MergeDuplicateOutputTransitions(item.OutArcs, mergeStates);
                 }
             }
-            List<Arc> identicalWords = new List<Arc>();
+            List<Arc> identicalWords = new();
             while (mergeStates.Count > 0)
             {
                 State state = mergeStates.Pop();

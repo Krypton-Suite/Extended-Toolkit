@@ -366,14 +366,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public override void DrawOptionsTriangle(Graphics g, Rectangle bounds)
         {
             Point[] points = new Point[] {
-            new Point(bounds.Width /2 +3,bounds.Height /2 -1),
-            new Point(bounds.Width /2, bounds.Height /2 +2),
-            new Point(bounds.Width /2 -2,bounds.Height /2 -1) };
+            new(bounds.Width /2 +3,bounds.Height /2 -1),
+            new(bounds.Width /2, bounds.Height /2 +2),
+            new(bounds.Width /2 -2,bounds.Height /2 -1) };
 
             Point[] pointsRec2 = new Point[] {
-            new Point(bounds.Width /2 +3,bounds.Height /2),
-            new Point(bounds.Width /2, bounds.Height /2 +3),
-            new Point(bounds.Width /2 -2,bounds.Height /2) };
+            new(bounds.Width /2 +3,bounds.Height /2),
+            new(bounds.Width /2, bounds.Height /2 +3),
+            new(bounds.Width /2 -2,bounds.Height /2) };
 
             using (SolidBrush b = new SolidBrush(ColourTable.BorderInner))
             {
@@ -419,9 +419,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             if (expanded)
             {
                 Point[] points = new Point[] {
-                  new Point(triBounds.Width/2-3,triBounds.Height/2+1),
-                  new Point(triBounds.Width/2+2,triBounds.Height/2+1),
-                  new Point(triBounds.Width/2+2,triBounds.Height/2-4) };
+                  new(triBounds.Width/2-3,triBounds.Height/2+1),
+                  new(triBounds.Width/2+2,triBounds.Height/2+1),
+                  new(triBounds.Width/2+2,triBounds.Height/2-4) };
 
                 using (Pen pen = new Pen(ColourTable.GroupExpandedColor1))
                 using (SolidBrush b = new SolidBrush(ColourTable.GroupExpandedColor2))
@@ -433,9 +433,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             else
             {
                 Point[] points = new Point[] {
-                  new Point(triBounds.Width/2-2, triBounds.Height/2+3),
-                  new Point(triBounds.Width/2+2, triBounds.Height/2),
-                  new Point(triBounds.Width/2-2, triBounds.Height/2-4) };
+                  new(triBounds.Width/2-2, triBounds.Height/2+3),
+                  new(triBounds.Width/2+2, triBounds.Height/2),
+                  new(triBounds.Width/2-2, triBounds.Height/2-4) };
 
                 using (Pen pen = new Pen(ColourTable.Border))
                 using (SolidBrush b = new SolidBrush(Color.White))
@@ -609,17 +609,17 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 if (((rightToLeft) && (!collapsed)) || (!rightToLeft) && (collapsed))
                 {
-                    PointF[] points = {new PointF(x -2, y),
-                               new PointF(x+1,y + 3),
-                               new PointF(x-2, y + 3 + 3) };
+                    PointF[] points = {new(x -2, y),
+                               new(x+1,y + 3),
+                               new(x-2, y + 3 + 3) };
 
                     g.DrawLines(pen, points);
                 }
                 else
                 {
-                    PointF[] points = {new PointF(x + 1, y),
-                               new PointF(x - 2,y + 3),
-                               new PointF(x + 1, y + 3 + 3) };
+                    PointF[] points = {new(x + 1, y),
+                               new(x - 2,y + 3),
+                               new(x + 1, y + 3 + 3) };
                     g.DrawLines(pen, points);
                 }
             }

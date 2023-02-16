@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private Size _customShieldSize;
 
-        private GlobalMethods _globalMethods = new GlobalMethods();
+        private GlobalMethods _globalMethods = new();
 
         private UACShieldSize _shieldSize;
         #endregion

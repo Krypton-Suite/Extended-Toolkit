@@ -834,7 +834,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         #region IObservable Members
 
-        private List<IObserver> observers = new List<IObserver>();
+        private List<IObserver> observers = new();
 
         /// <summary>
         /// Gets the list of observers

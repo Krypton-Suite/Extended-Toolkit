@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Props
 
-        public Rectangle Bounds => new Rectangle(Location, Size);
+        public Rectangle Bounds => new(Location, Size);
 
         public MonthView MonthView => _monthview;
 

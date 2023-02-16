@@ -357,13 +357,13 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     Gets the starting point of the path
         /// </summary>
-        public Float3D Start => new Float3D(HorizontalPath.Start, VerticalPath.Start, DepthPath.Start);
+        public Float3D Start => new(HorizontalPath.Start, VerticalPath.Start, DepthPath.Start);
 
 
         /// <summary>
         ///     Gets the ending point of the path
         /// </summary>
-        public Float3D End => new Float3D(HorizontalPath.End, VerticalPath.End, DepthPath.End);
+        public Float3D End => new(HorizontalPath.End, VerticalPath.End, DepthPath.End);
 
         /// <summary>
         ///     Creates and returns a new <see cref="Path3D" /> based on the current path but in reverse order

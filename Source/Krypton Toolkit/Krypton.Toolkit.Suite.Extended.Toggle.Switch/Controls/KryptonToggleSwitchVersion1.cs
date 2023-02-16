@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         #region Private Members
 
-        private readonly System.Windows.Forms.Timer _animationTimer = new System.Windows.Forms.Timer();
+        private readonly System.Windows.Forms.Timer _animationTimer = new();
         private ToggleSwitchRendererBase _renderer;
 
         private ToggleSwitchStyle _style = ToggleSwitchStyle.Metro;
@@ -957,7 +957,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         #endregion
 
         #region Overrides
-        protected override Size DefaultSize => new Size(50, 19);
+        protected override Size DefaultSize => new(50, 19);
 
         protected override void OnPaintBackground(PaintEventArgs pevent)
         {

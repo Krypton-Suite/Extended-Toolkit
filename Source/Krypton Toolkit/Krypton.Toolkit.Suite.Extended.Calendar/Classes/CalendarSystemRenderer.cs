@@ -384,9 +384,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 int top = e.Day.OverflowEndBounds.Top + e.Day.OverflowEndBounds.Height / 2;
                 path.AddPolygon(new Point[] {
-                    new Point(e.Day.OverflowEndBounds.Left, top),
-                    new Point(e.Day.OverflowEndBounds.Right, top),
-                    new Point(e.Day.OverflowEndBounds.Left + e.Day.OverflowEndBounds.Width / 2, e.Day.OverflowEndBounds.Bottom),
+                    new(e.Day.OverflowEndBounds.Left, top),
+                    new(e.Day.OverflowEndBounds.Right, top),
+                    new(e.Day.OverflowEndBounds.Left + e.Day.OverflowEndBounds.Width / 2, e.Day.OverflowEndBounds.Bottom),
                 });
 
                 using (Brush b = new SolidBrush(e.Day.OverflowEndSelected ? ColourTable.DayOverflowSelectedBackground : ColourTable.DayOverflowBackground))

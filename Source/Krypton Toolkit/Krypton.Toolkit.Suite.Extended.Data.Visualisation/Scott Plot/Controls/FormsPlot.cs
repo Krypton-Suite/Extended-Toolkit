@@ -461,7 +461,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         #region Methods
 
-        private InputState GetInputState(MouseEventArgs mea) => new InputState()
+        private InputState GetInputState(MouseEventArgs mea) => new()
         {
             X = mea.X,
             Y = mea.Y,

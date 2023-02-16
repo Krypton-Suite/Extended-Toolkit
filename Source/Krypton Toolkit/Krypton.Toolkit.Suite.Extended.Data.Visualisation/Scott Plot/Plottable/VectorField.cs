@@ -125,7 +125,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return new LegendItem[] { singleLegendItem };
         }
 
-        public AxisLimits GetAxisLimits() => new AxisLimits(Xs.Min() - 1, Xs.Max() + 1, Ys.Min() - 1, Ys.Max() + 1);
+        public AxisLimits GetAxisLimits() => new(Xs.Min() - 1, Xs.Max() + 1, Ys.Min() - 1, Ys.Max() + 1);
 
         public int PointCount => Vectors.Length;
 

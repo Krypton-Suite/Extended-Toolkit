@@ -240,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (GroupLabels is null)
                 return null;
 
-            List<LegendItem> legendItems = new List<LegendItem>();
+            List<LegendItem> legendItems = new();
             for (int i = 0; i < GroupLabels.Length; i++)
             {
                 var item = new LegendItem()

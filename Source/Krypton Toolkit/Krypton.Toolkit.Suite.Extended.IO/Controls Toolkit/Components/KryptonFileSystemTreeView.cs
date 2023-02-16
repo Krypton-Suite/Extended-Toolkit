@@ -35,9 +35,9 @@ namespace Krypton.Toolkit.Suite.Extended.IO
 
         private DriveInfo[] _drives;
 
-        private ImageList _imageList = new ImageList();
+        private ImageList _imageList = new();
 
-        private Hashtable _systemIcons = new Hashtable();
+        private Hashtable _systemIcons = new();
 
         private Icon _folderIcon = null;
 

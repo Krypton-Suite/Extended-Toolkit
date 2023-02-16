@@ -25,6 +25,7 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourButtonValues : Storage, IContentValues
@@ -32,7 +33,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #region Fields
         private Color _transparent, _selectedColour, _emptyBorderColour;
 
-        private Image _image, _sourceImage, _compositeImage;
+        private Image? _image;
+        private Image? _sourceImage;
+        private Image _compositeImage;
 
         private Rectangle _selectedRect;
 
@@ -44,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private static readonly string _defaultExtraText = string.Empty;
 
-        private static readonly Image _defaultImage = Properties.Resources.ColourButton;
+        private static readonly Image? _defaultImage = Properties.Resources.ColourButton;
         #endregion
 
         #region Events        
@@ -100,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Visuals")]
         [Description("Button image.")]
         [RefreshPropertiesAttribute(RefreshProperties.All)]
-        public Image Image
+        public Image? Image
         {
             get => _image;
 
@@ -323,7 +326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// Create the storage for the image states.
         /// </summary>
         /// <returns>Storage object.</returns>
-        protected virtual ButtonImageStates CreateImageStates() => new ButtonImageStates();
+        protected virtual ButtonImageStates CreateImageStates() => new();
         #endregion
 
         #region IContentValues
@@ -335,7 +338,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         public virtual Image GetImage(PaletteState state)
         {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-            Image image = null;
+            Image? image = null;
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
             // Try and find a state specific image

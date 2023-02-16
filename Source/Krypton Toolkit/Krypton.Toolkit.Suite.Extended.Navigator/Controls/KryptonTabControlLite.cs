@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private static IRenderer Renderer;
         private static PaletteBase Palette;
         private static ViewLayoutContext ViewLayoutContext;
-        private static Control ViewLayoutContextControl = new Control();
+        private static Control ViewLayoutContextControl = new();
         private static PaletteBackInheritRedirect PaletteTabPageBackground;
         private static PaletteBorderInheritRedirect PaletteTabPageBorder;
         private static PaletteBackInheritRedirect PaletteTabButtonBackground;

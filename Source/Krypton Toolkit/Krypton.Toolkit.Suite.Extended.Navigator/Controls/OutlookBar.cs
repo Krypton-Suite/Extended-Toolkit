@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         #region " Members... "
 
         //Private Members...
-        private ToolTip oToolTip = new ToolTip();
+        private ToolTip oToolTip = new();
         private ContextMenuStrip oContextMenuStrip;
         private OutlookBarButtonCollection _Buttons;
         private Renderer _Renderer = Renderer.Custom;
@@ -165,7 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         }
         public override Size MinimumSize
         {
-            get => new Size(this.GetBottomContainerLeftMargin(), this.GetBottomContainerRectangle().Height + GetGripRectangle().Height);
+            get => new(this.GetBottomContainerLeftMargin(), this.GetBottomContainerRectangle().Height + GetGripRectangle().Height);
             //do nothing...
             set { }
         }

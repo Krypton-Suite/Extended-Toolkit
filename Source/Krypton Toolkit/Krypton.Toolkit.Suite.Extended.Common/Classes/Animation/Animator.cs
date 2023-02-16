@@ -38,9 +38,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     public class Animator : IAnimator
     {
 
-        private readonly List<AnimationPath> _paths = new List<AnimationPath>();
+        private readonly List<AnimationPath> _paths = new();
 
-        private readonly List<AnimationPath> _tempPaths = new List<AnimationPath>();
+        private readonly List<AnimationPath> _tempPaths = new();
 
         private readonly AnimationTimer _timer;
 

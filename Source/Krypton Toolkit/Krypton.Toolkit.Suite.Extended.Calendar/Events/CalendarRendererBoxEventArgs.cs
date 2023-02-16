@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -42,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private Size _textSize;
         #endregion
 
-        #region Ctor
+        #region Identity
 
         /// <summary>
         /// Initializes some fields

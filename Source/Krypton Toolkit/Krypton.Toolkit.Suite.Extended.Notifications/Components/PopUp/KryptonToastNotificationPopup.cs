@@ -183,7 +183,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             return (!imageSize.Equals(Size.Empty));
         }
 
-        private Size imageSize = new Size(0, 0);
+        private Size imageSize = new(0, 0);
 
         [Category("Image")]
         [Description("Icon image to display.")]

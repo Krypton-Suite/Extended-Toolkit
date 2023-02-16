@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         private EventHandler layoutStyleChanged;
         private NaviRenderer renderer;
 
-        protected readonly object threadLock = new object();
+        protected readonly object threadLock = new();
 
         #region Constructors
 

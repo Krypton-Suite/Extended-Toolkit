@@ -71,10 +71,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
     {
         #region Instance Fields
 
-        private List<string> _sortOrderList = new List<string>();
-        private List<string> _filterOrderList = new List<string>();
-        private List<string> _filteredColumns = new List<string>();
-        private List<MenuStrip> _menuStripToDispose = new List<MenuStrip>();
+        private List<string> _sortOrderList = new();
+        private List<string> _filterOrderList = new();
+        private List<string> _filteredColumns = new();
+        private List<MenuStrip> _menuStripToDispose = new();
 
         private bool _loadedFilter = false;
         private string? _sortString = null;

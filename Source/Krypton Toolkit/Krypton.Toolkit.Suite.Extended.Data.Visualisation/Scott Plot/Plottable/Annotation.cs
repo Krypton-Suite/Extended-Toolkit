@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public string Label;
 
-        public readonly Font Font = new Font();
+        public readonly Font Font = new();
 
         public bool Background = true;
         public Color BackgroundColor = Color.Yellow;
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public override string ToString() => $"PlottableAnnotation at ({X} px, {Y} px)";
         public LegendItem[] GetLegendItems() => null;
-        public AxisLimits GetAxisLimits() => new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
+        public AxisLimits GetAxisLimits() => new(double.NaN, double.NaN, double.NaN, double.NaN);
 
         public void ValidateData(bool deep = false)
         {

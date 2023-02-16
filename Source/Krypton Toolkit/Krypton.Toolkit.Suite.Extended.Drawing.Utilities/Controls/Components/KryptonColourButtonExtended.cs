@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         private Color _selectedColour;
         private Color _emptyBorderColour;
         private readonly List<Color> _recentColours;
-        private Image _wasImage;
+        private Image? _wasImage;
         private bool _wasEnabled;
         private bool _isDefault;
         private bool _useMnemonic;
@@ -843,7 +843,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Protected Overrides
-        protected override Size DefaultSize => new Size(90, 25);
+        protected override Size DefaultSize => new(90, 25);
 
         protected override ImeMode DefaultImeMode => ImeMode.Disable;
 
@@ -1027,7 +1027,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <returns>Set of color button values.</returns>
         /// <param name="needPaint">Delegate for notifying paint requests.</param>
-        protected virtual ColourButtonValues CreateButtonValues(NeedPaintHandler needPaint) => new ColourButtonValues(needPaint);
+        protected virtual ColourButtonValues CreateButtonValues(NeedPaintHandler needPaint) => new(needPaint);
 
         /// <summary>
         /// Gets access to the view element for the color button.

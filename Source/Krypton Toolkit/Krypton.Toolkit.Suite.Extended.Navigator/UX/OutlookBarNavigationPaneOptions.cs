@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     {
         #region Fields
 
-        private Collection _originalItemCollection = new Collection();
+        private Collection _originalItemCollection = new();
 
         private OutlookBarButtonCollection _items;
 

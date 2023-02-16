@@ -273,7 +273,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Internationalization strings
         /// </summary>
-        public static Dictionary<string, string> Translations = new Dictionary<string, string>()
+        public static Dictionary<string, string> Translations = new()
         {
             { TranslationKey.ADGVSTBLabelSearch.ToString(), "Search:" },
             { TranslationKey.ADGVSTBButtonFromBegin.ToString(), "From Begin" },
@@ -288,7 +288,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Used to check if components translations has to be updated
         /// </summary>
-        private Dictionary<string, string> _translationsRefreshComponentTranslationsCheck = new Dictionary<string, string>() { };
+        private Dictionary<string, string> _translationsRefreshComponentTranslationsCheck = new() { };
 
         #endregion
 

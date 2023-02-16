@@ -38,8 +38,8 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         private float fadeSpeed;                                                     // The speed at which to fade.
         private FadeCompleted? fadeFinished;                                          // The delegate to call when a fade has completed.
         private bool shouldClose;                                                    // If set to true, the form will close after fading out.
-        private readonly System.Threading.Tasks.TaskCompletionSource<DialogResult> showDialogResult         // The Async Task Completion Source for displaying as a dialog.
-            = new System.Threading.Tasks.TaskCompletionSource<DialogResult>();
+        private readonly System.Threading.Tasks.TaskCompletionSource<DialogResult> showDialogResult // The Async Task Completion Source for displaying as a dialog.
+            = new();
         #endregion
 
         #region Delegate

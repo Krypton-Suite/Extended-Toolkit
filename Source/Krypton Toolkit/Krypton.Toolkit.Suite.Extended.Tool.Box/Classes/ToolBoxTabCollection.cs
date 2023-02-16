@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             base.InnerList.Remove(tab);
         }
 
-        public int IndexOf(ToolBoxTab tab)
+        public int IndexOf(ToolBoxTab? tab)
         {
             return base.InnerList.IndexOf(tab);
         }

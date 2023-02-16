@@ -314,7 +314,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         ///   Gets the view port rectangle.
         /// </summary>
         /// <value>The view port rectangle.</value>
-        protected Rectangle ViewPortRectangle => new Rectangle(-_autoScrollPosition.X, -_autoScrollPosition.Y, this.DisplayRectangle.Width, this.DisplayRectangle.Height);
+        protected Rectangle ViewPortRectangle => new(-_autoScrollPosition.X, -_autoScrollPosition.Y, this.DisplayRectangle.Width, this.DisplayRectangle.Height);
 
         #endregion
 

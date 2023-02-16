@@ -30,9 +30,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
     public class ThemeManager
     {
         #region Variables
-        private ArrayList _themeList = new ArrayList();
+        private ArrayList _themeList = new();
 
-        private SettingsManager _settingsManager = new SettingsManager();
+        private SettingsManager _settingsManager = new();
         #endregion
 
         #region Methods

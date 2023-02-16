@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         {
             get
             {
-                List<MenuStripPanelExtended?> tspe = new List<MenuStripPanelExtended?>();
+                List<MenuStripPanelExtended?> tspe = new();
 
                 if (klbSelected.Items.Count > 0)
                 {

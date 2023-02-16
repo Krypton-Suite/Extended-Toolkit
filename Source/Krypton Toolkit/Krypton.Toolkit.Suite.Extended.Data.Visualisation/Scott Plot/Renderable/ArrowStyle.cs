@@ -152,11 +152,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             PointF[] arrowPoints =
             {
-                new PointF(x1, y1),
-                new PointF(x2, y2),
-                new PointF(corner1X, corner1Y),
-                new PointF(x2, y2),
-                new PointF(corner2X, corner2Y),
+                new(x1, y1),
+                new(x2, y2),
+                new(corner1X, corner1Y),
+                new(x2, y2),
+                new(corner2X, corner2Y),
             };
             gfx.DrawLines(pen, arrowPoints);
         }

@@ -72,12 +72,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         #region Instance Fields
 
         private Image _filterImage = Properties.Resources.ColumnHeader_UnFiltered;
-        private Size _filterButtonImageSize = new Size(16, 16);
+        private Size _filterButtonImageSize = new(16, 16);
         private bool _filterButtonPressed = false;
         private bool _filterButtonOver = false;
         private Rectangle _filterButtonOffsetBounds = Rectangle.Empty;
         private Rectangle _filterButtonImageBounds = Rectangle.Empty;
-        private Padding _filterButtonMargin = new Padding(3, 4, 3, 4);
+        private Padding _filterButtonMargin = new(3, 4, 3, 4);
         private bool _filterEnabled = false;
 
         /// <summary>

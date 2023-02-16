@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                                             new float[] {0, 0, 0, 0, 1}
                                         };
 
-        private static ColorMatrix _grayscaleColourMatrix = new ColorMatrix(_colourMatrixElements);
+        private static ColorMatrix _grayscaleColourMatrix = new(_colourMatrixElements);
 
         public static ImageAttributes GetGrayscaleAttributes()
         {

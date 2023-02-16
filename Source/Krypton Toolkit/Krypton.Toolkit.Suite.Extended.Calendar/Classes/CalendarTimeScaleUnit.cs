@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the duration of the unit.
         /// </summary>
-        public TimeSpan Duration => new TimeSpan(0, (int)Calendar.TimeScale, 0);
+        public TimeSpan Duration => new(0, (int)Calendar.TimeScale, 0);
 
         /// <summary>
         /// Gets if the unit is highlighted because it fits in some of the calendar's highlight ranges

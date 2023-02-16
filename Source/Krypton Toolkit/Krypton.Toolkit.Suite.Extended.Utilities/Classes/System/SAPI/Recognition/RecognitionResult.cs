@@ -294,7 +294,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         private Collection<RecognizedPhrase> ExtractAlternates(int numberOfAlternates, bool isSapi53Header)
         {
-            Collection<RecognizedPhrase> collection = new Collection<RecognizedPhrase>();
+            Collection<RecognizedPhrase> collection = new();
             if (numberOfAlternates > 0)
             {
                 GCHandle gCHandle = GCHandle.Alloc(_sapiAlternatesBlob, GCHandleType.Pinned);

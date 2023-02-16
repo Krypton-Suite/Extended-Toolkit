@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Overrides
-        protected override Size DefaultSize => new Size(160, 60);
+        protected override Size DefaultSize => new(160, 60);
 
         protected override CreateParams CreateParams
         {

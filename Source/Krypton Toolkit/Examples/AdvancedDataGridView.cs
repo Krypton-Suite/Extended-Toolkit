@@ -21,8 +21,8 @@ namespace Examples
         private DataTable _dataTable = null;
         private DataSet _dataSet = null;
 
-        private SortedDictionary<int, string?> _filtersaved = new SortedDictionary<int, string?>();
-        private SortedDictionary<int, string?> _sortsaved = new SortedDictionary<int, string?>();
+        private SortedDictionary<int, string?> _filtersaved = new();
+        private SortedDictionary<int, string?> _sortsaved = new();
 
         private bool _testtranslations = false;
         private bool _testtranslationsFromFile = false;
@@ -59,7 +59,7 @@ namespace Examples
             _timermemoryusage_Tick(null, null);
 
             //set localization strings
-            Dictionary<string, string> translations = new Dictionary<string, string>();
+            Dictionary<string, string> translations = new();
             foreach (KeyValuePair<string, string> translation in KryptonAdvancedDataGridView.Translations)
             {
                 if (!translations.ContainsKey(translation.Key))

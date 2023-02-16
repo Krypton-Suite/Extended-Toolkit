@@ -212,7 +212,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 {
                     int ulCountOfElements = (int)_serializedPhrase.Rule.ulCountOfElements;
                     int elementsOffset = (int)_serializedPhrase.ElementsOffset;
-                    List<RecognizedWordUnit> list = new List<RecognizedWordUnit>(ulCountOfElements);
+                    List<RecognizedWordUnit> list = new(ulCountOfElements);
                     int num = Marshal.SizeOf(typeof(SPSERIALIZEDPHRASEELEMENT));
                     GCHandle gCHandle = GCHandle.Alloc(_phraseBuffer, GCHandleType.Pinned);
                     try
@@ -292,7 +292,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 }
                 if (_homophones == null)
                 {
-                    List<RecognizedPhrase> list = new List<RecognizedPhrase>(_recoResult.Alternates.Count);
+                    List<RecognizedPhrase> list = new(_recoResult.Alternates.Count);
                     for (int i = 0; i < _recoResult.Alternates.Count; i++)
                     {
                         if (_recoResult.Alternates[i]._homophoneGroupId == _homophoneGroupId && _recoResult.Alternates[i].Text != Text)

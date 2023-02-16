@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             ChildResults.AddRange(children);
         }
 
-        public List<string> Nodes { get; } = new List<string>();
+        public List<string> Nodes { get; } = new();
 
         private void Clear()
         {
@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
         public string Name { get; }
 
-        public List<SysInfoResult> ChildResults { get; } = new List<SysInfoResult>();
+        public List<SysInfoResult> ChildResults { get; } = new();
 
         public SysInfoResult Filter(string[] filterStrings)
         {

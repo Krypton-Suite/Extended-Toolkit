@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #region Variables
         private SettingsManager _settingsManager;
 
-        private ThemeSettingsManager _themeSettings = new ThemeSettingsManager();
+        private ThemeSettingsManager _themeSettings = new();
         #endregion
 
         #region Constructor

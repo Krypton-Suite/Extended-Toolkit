@@ -33,8 +33,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     /// </summary>
     public class ScatterPlotList : IPlottable
     {
-        private readonly List<double> Xs = new List<double>();
-        private readonly List<double> Ys = new List<double>();
+        private readonly List<double> Xs = new();
+        private readonly List<double> Ys = new();
         public int Count => Xs.Count;
 
         public string Label;

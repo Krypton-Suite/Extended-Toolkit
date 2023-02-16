@@ -32,9 +32,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
     {
         #region Constants
 
-        private static readonly object _eventChannelChanged = new object();
+        private static readonly object _eventChannelChanged = new();
 
-        private static readonly object _eventColourChanged = new object();
+        private static readonly object _eventColourChanged = new();
 
         #endregion
 

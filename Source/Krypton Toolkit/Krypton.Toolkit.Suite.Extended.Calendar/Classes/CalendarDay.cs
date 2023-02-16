@@ -35,8 +35,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
     {
         #region Static
 
-        private Size overflowSize = new Size(16, 16);
-        private Padding overflowPadding = new Padding(5);
+        private Size overflowSize = new(16, 16);
+        private Padding overflowPadding = new(5);
 
         #endregion
 
@@ -133,7 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the bounds of the <see cref="OverflowStart"/> indicator
         /// </summary>
-        public virtual Rectangle OverflowStartBounds => new Rectangle(new Point(Bounds.Right - overflowPadding.Right - overflowSize.Width, Bounds.Top + overflowPadding.Top), overflowSize);
+        public virtual Rectangle OverflowStartBounds => new(new Point(Bounds.Right - overflowPadding.Right - overflowSize.Width, Bounds.Top + overflowPadding.Top), overflowSize);
 
         /// <summary>
         /// Gets a value indicating if the <see cref="OverflowStart"/> indicator is currently selected
@@ -152,7 +152,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the bounds of the <see cref="OverflowEnd"/> indicator
         /// </summary>
-        public virtual Rectangle OverflowEndBounds => new Rectangle(new Point(Bounds.Right - overflowPadding.Right - overflowSize.Width, Bounds.Bottom - overflowPadding.Bottom - overflowSize.Height), overflowSize);
+        public virtual Rectangle OverflowEndBounds => new(new Point(Bounds.Right - overflowPadding.Right - overflowSize.Width, Bounds.Bottom - overflowPadding.Bottom - overflowSize.Height), overflowSize);
 
         /// <summary>
         /// Gets a value indicating if the <see cref="OverflowEnd"/> indicator is currently selected

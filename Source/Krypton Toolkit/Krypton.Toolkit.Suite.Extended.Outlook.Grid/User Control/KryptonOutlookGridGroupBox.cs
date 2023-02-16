@@ -381,7 +381,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">A MouseEventArgs that contains the event data.</param>
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            List<OutlookGridGroupBoxColumn> l = new List<OutlookGridGroupBoxColumn>();
+            List<OutlookGridGroupBoxColumn> l = new();
             OutlookGridGroupBoxColumn columnMovingInsideGroupBox = null;
 
             foreach (OutlookGridGroupBoxColumn c in this._columnsList)

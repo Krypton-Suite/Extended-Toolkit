@@ -126,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// <returns>The SharpUpdateXml object with the data, or null of any errors</returns>
         public static SharpUpdateXml[] Parse(Uri location)
         {
-            List<SharpUpdateXml> result = new List<SharpUpdateXml>();
+            List<SharpUpdateXml> result = new();
             Version version = null;
             string url = "", filePath = "", md5 = "", description = "", launchArgs = "";
 

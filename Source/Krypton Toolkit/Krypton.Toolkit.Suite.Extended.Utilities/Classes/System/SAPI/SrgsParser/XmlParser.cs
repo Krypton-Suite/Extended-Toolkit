@@ -1590,7 +1590,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                     ThrowSrgsException(SRID.InvalidScriptDefinition, script._name);
                 }
             }
-            List<string> list = new List<string>();
+            List<string> list = new();
             foreach (string rule in _rules)
             {
                 if (list.Contains(rule))

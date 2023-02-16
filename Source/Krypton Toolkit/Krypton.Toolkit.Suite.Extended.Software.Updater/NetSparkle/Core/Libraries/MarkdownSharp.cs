@@ -235,9 +235,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         private static readonly Dictionary<string, string?> _invertedEscapeTable;
         private static readonly Dictionary<string, string> _backslashEscapeTable;
 
-        private readonly Dictionary<string, string?> _urls = new Dictionary<string, string?>();
-        private readonly Dictionary<string, string?> _titles = new Dictionary<string, string?>();
-        private readonly Dictionary<string, string?> _htmlBlocks = new Dictionary<string, string?>();
+        private readonly Dictionary<string, string?> _urls = new();
+        private readonly Dictionary<string, string?> _titles = new();
+        private readonly Dictionary<string, string?> _htmlBlocks = new();
 
         private int _listLevel;
         private static string AutoLinkPreventionMarker = "\x1AP"; // temporarily replaces "://" where auto-linking shouldn't happen;
@@ -352,11 +352,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return text;
         }
 
-        private static Regex _newlinesLeadingTrailing = new Regex(@"^\n+|\n+\z", RegexOptions.Compiled);
-        private static Regex _newlinesMultiple = new Regex(@"\n{2,}", RegexOptions.Compiled);
-        private static Regex _leadingWhitespace = new Regex(@"^[ ]*", RegexOptions.Compiled);
+        private static Regex _newlinesLeadingTrailing = new(@"^\n+|\n+\z", RegexOptions.Compiled);
+        private static Regex _newlinesMultiple = new(@"\n{2,}", RegexOptions.Compiled);
+        private static Regex _leadingWhitespace = new(@"^[ ]*", RegexOptions.Compiled);
 
-        private static Regex _htmlBlockHash = new Regex("\x1AH\\d+H", RegexOptions.Compiled);
+        private static Regex _htmlBlockHash = new("\x1AH\\d+H", RegexOptions.Compiled);
 
         /// <summary>
         /// splits on two or more newlines, to form "paragraphs";    
@@ -470,7 +470,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return _nestedParensPattern;
         }
 
-        private static Regex _linkDef = new Regex(string.Format(@"
+        private static Regex _linkDef = new(string.Format(@"
                         ^[ ]{{0,{0}}}\[(.+)\]:  # id = $1
                           [ ]*
                           \n?                   # maybe *one* newline
@@ -511,7 +511,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         }
 
         // compiling this monster regex results in worse performance. trust me.
-        private static Regex _blocksHtml = new Regex(GetBlockPattern(), RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+        private static Regex _blocksHtml = new(GetBlockPattern(), RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
 
 
         /// <summary>
@@ -679,12 +679,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return "\x1A" + delim + Math.Abs(s.GetHashCode()).ToString() + delim;
         }
 
-        private static Regex _htmlTokens = new Regex(@"
+        private static Regex _htmlTokens = new(@"
             (<!--(?:|(?:[^>-]|-[^>])(?:[^-]|-[^-])*)-->)|        # match <!-- foo -->
             (<\?.*?\?>)|                 # match <?foo?> " +
-            RepeatString(@"
+                                               RepeatString(@"
             (<[A-Za-z\/!$](?:[^<>]|", _nestDepth) + RepeatString(@")*>)", _nestDepth) +
-                                       " # match <tag> and </tag>",
+                                               " # match <tag> and </tag>",
             RegexOptions.Multiline | RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
         /// <summary>
@@ -720,7 +720,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         }
 
 
-        private static Regex _anchorRef = new Regex(string.Format(@"
+        private static Regex _anchorRef = new(string.Format(@"
             (                               # wrap whole match in $1
                 \[
                     ({0})                   # link text = $2
@@ -734,7 +734,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 \]
             )", GetNestedBracketsPattern()), RegexOptions.Singleline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
-        private static Regex _anchorInline = new Regex(string.Format(@"
+        private static Regex _anchorInline = new(string.Format(@"
                 (                           # wrap whole match in $1
                     \[
                         ({0})               # link text = $2
@@ -753,7 +753,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 )", GetNestedBracketsPattern(), GetNestedParensPattern()),
                   RegexOptions.Singleline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
-        private static Regex _anchorRefShortcut = new Regex(@"
+        private static Regex _anchorRefShortcut = new(@"
             (                               # wrap whole match in $1
               \[
                  ([^\[\]]+)                 # link text = $2; can't contain [ or ]
@@ -880,7 +880,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return result;
         }
 
-        private static Regex _imagesRef = new Regex(@"
+        private static Regex _imagesRef = new(@"
                     (               # wrap whole match in $1
                     !\[
                         (.*?)       # alt text = $2
@@ -895,7 +895,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
                     )", RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline | RegexOptions.Compiled);
 
-        private static Regex _imagesInline = new Regex(String.Format(@"
+        private static Regex _imagesInline = new(String.Format(@"
               (                     # wrap whole match in $1
                 !\[
                     (.*?)           # alt text = $2
@@ -998,7 +998,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return result;
         }
 
-        private static Regex _headerSetext = new Regex(@"
+        private static Regex _headerSetext = new(@"
                 ^(.+?)
                 [ ]*
                 \n
@@ -1007,7 +1007,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 \n+",
             RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
-        private static Regex _headerAtx = new Regex(@"
+        private static Regex _headerAtx = new(@"
                 ^(\#{1,6})  # $1 = string of #'s
                 [ ]*
                 (.+?)       # $2 = Header text
@@ -1054,7 +1054,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         }
 
 
-        private static Regex _horizontalRules = new Regex(@"
+        private static Regex _horizontalRules = new(@"
             ^[ ]{0,3}         # Leading space
                 ([-*_])       # $1: First marker
                 (?>           # Repeated marker group
@@ -1099,10 +1099,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
               )
             )", string.Format("(?:{0}|{1})", _markerUL, _markerOL), _tabWidth - 1);
 
-        private static Regex _listNested = new Regex(@"^" + _wholeList,
+        private static Regex _listNested = new(@"^" + _wholeList,
             RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
-        private static Regex _listTopLevel = new Regex(@"(?:(?<=\n\n)|\A\n?)" + _wholeList,
+        private static Regex _listTopLevel = new(@"(?:(?<=\n\n)|\A\n?)" + _wholeList,
             RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
         /// <summary>
@@ -1201,7 +1201,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return list;
         }
 
-        private static Regex _codeBlock = new Regex(string.Format(@"
+        private static Regex _codeBlock = new(string.Format(@"
                     (?:\n\n|\A\n?)
                     (                        # $1 = the code block -- one or more lines, starting with a space
                     (?:
@@ -1231,7 +1231,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return string.Concat("\n\n<pre><code>", codeBlock, "\n</code></pre>\n\n");
         }
 
-        private static Regex _codeSpan = new Regex(@"
+        private static Regex _codeSpan = new(@"
                     (?<!\\)   # Character before opening ` can't be a backslash
                     (`+)      # $1 = Opening run of `
                     (.+?)     # $2 = The code block
@@ -1281,14 +1281,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         }
 
 
-        private static Regex _bold = new Regex(@"(\*\*|__) (?=\S) (.+?[*_]*) (?<=\S) \1",
+        private static Regex _bold = new(@"(\*\*|__) (?=\S) (.+?[*_]*) (?<=\S) \1",
             RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline | RegexOptions.Compiled);
-        private static Regex _strictBold = new Regex(@"([\W_]|^) (\*\*|__) (?=\S) ([^\r]*?\S[\*_]*) \2 ([\W_]|$)",
+        private static Regex _strictBold = new(@"([\W_]|^) (\*\*|__) (?=\S) ([^\r]*?\S[\*_]*) \2 ([\W_]|$)",
             RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline | RegexOptions.Compiled);
 
-        private static Regex _italic = new Regex(@"(\*|_) (?=\S) (.+?) (?<=\S) \1",
+        private static Regex _italic = new(@"(\*|_) (?=\S) (.+?) (?<=\S) \1",
             RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline | RegexOptions.Compiled);
-        private static Regex _strictItalic = new Regex(@"([\W_]|^) (\*|_) (?=\S) ([^\r\*_]*?\S) \2 ([\W_]|$)",
+        private static Regex _strictItalic = new(@"([\W_]|^) (\*|_) (?=\S) ([^\r\*_]*?\S) \2 ([\W_]|$)",
             RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline | RegexOptions.Compiled);
 
         /// <summary>
@@ -1323,7 +1323,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return text;
         }
 
-        private static Regex _blockquote = new Regex(@"
+        private static Regex _blockquote = new(@"
             (                           # Wrap whole match in $1
                 (
                 ^[ ]*>[ ]?              # '>' at the start of a line
@@ -1366,7 +1366,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return Regex.Replace(match.Groups[1].Value, @"^  ", "", RegexOptions.Multiline);
         }
 
-        private static Regex _autolinkBare = new Regex(@"(<|="")?\b(https?|ftp)(://[-A-Z0-9+&@#/%?=~_|\[\]\(\)!:,\.;]*[-A-Z0-9+&@#/%=~_|\[\])])(?=$|\W)",
+        private static Regex _autolinkBare = new(@"(<|="")?\b(https?|ftp)(://[-A-Z0-9+&@#/%?=~_|\[\]\(\)!:,\.;]*[-A-Z0-9+&@#/%=~_|\[\])])(?=$|\W)",
             RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
         private static string handleTrailingParens(Match match)
@@ -1481,7 +1481,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         }
 
 
-        private static Regex _outDent = new Regex(@"^[ ]{1," + _tabWidth + @"}", RegexOptions.Multiline | RegexOptions.Compiled);
+        private static Regex _outDent = new(@"^[ ]{1," + _tabWidth + @"}", RegexOptions.Multiline | RegexOptions.Compiled);
 
         /// <summary>
         /// Remove one level of line-leading spaces
@@ -1520,7 +1520,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return sb.ToString();
         }
 
-        private static Regex _codeEncoder = new Regex(@"&|<|>|\\|\*|_|\{|\}|\[|\]", RegexOptions.Compiled);
+        private static Regex _codeEncoder = new(@"&|<|>|\\|\*|_|\{|\}|\[|\]", RegexOptions.Compiled);
 
         /// <summary>
         /// Encode/escape certain Markdown characters inside code blocks and spans where they are literals
@@ -1549,8 +1549,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         }
 
 
-        private static Regex _amps = new Regex(@"&(?!((#[0-9]+)|(#[xX][a-fA-F0-9]+)|([a-zA-Z][a-zA-Z0-9]*));)", RegexOptions.ExplicitCapture | RegexOptions.Compiled);
-        private static Regex _angles = new Regex(@"<(?![A-Za-z/?\$!])", RegexOptions.ExplicitCapture | RegexOptions.Compiled);
+        private static Regex _amps = new(@"&(?!((#[0-9]+)|(#[xX][a-fA-F0-9]+)|([a-zA-Z][a-zA-Z0-9]*));)", RegexOptions.ExplicitCapture | RegexOptions.Compiled);
+        private static Regex _angles = new(@"<(?![A-Za-z/?\$!])", RegexOptions.ExplicitCapture | RegexOptions.Compiled);
 
         /// <summary>
         /// Encode any ampersands (that aren't part of an HTML entity) and left or right angle brackets
@@ -1576,7 +1576,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return _backslashEscapeTable[match.Value];
         }
 
-        private static Regex _unescapes = new Regex("\x1A" + "E\\d+E", RegexOptions.Compiled);
+        private static Regex _unescapes = new("\x1A" + "E\\d+E", RegexOptions.Compiled);
 
         /// <summary>
         /// swap back in all the special characters we've hidden

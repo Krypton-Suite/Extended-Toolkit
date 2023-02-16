@@ -67,7 +67,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="item">The object to be added to the end of the collection. The value can be null for reference types.</param>
         public new void Add(CalendarItemAlternative? item)
         {
-            base.Add(item); CollectionChanged();
+            if (item != null)
+            {
+                base.Add(item);
+            }
+
+            CollectionChanged();
         }
 
         /// <summary>

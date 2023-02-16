@@ -300,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
 
         internal string[] GetValueNames()
         {
-            List<string> list = new List<string>();
+            List<string> list = new();
             string valueName;
             for (uint num = 0u; _sapiRegKey.EnumValues(num, out valueName) == 0; num++)
             {

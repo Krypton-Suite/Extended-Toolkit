@@ -302,13 +302,13 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     Gets the starting point of the path
         /// </summary>
-        public Float2D Start => new Float2D(HorizontalPath.Start, VerticalPath.Start);
+        public Float2D Start => new(HorizontalPath.Start, VerticalPath.Start);
 
 
         /// <summary>
         ///     Gets the ending point of the path
         /// </summary>
-        public Float2D End => new Float2D(HorizontalPath.End, VerticalPath.End);
+        public Float2D End => new(HorizontalPath.End, VerticalPath.End);
 
         /// <summary>
         ///     Creates and returns a new <see cref="Path2D" /> based on the current path but in reverse order

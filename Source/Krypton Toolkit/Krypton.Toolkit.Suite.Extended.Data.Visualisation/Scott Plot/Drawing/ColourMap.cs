@@ -29,37 +29,37 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class ColourMap
     {
-        public static ColourMap Algae => new ColourMap(new Algae());
-        public static ColourMap Amp => new ColourMap(new Amp());
-        public static ColourMap Balance => new ColourMap(new Balance());
-        public static ColourMap Blues => new ColourMap(new Blues());
-        public static ColourMap Curl => new ColourMap(new Curl());
-        public static ColourMap Deep => new ColourMap(new Deep());
-        public static ColourMap Delta => new ColourMap(new Delta());
-        public static ColourMap Dense => new ColourMap(new Dense());
-        public static ColourMap Diff => new ColourMap(new Diff());
-        public static ColourMap Grayscale => new ColourMap(new Grayscale());
-        public static ColourMap GrayscaleR => new ColourMap(new GrayscaleR());
-        public static ColourMap Greens => new ColourMap(new Greens());
-        public static ColourMap Haline => new ColourMap(new Haline());
-        public static ColourMap Ice => new ColourMap(new Ice());
-        public static ColourMap Inferno => new ColourMap(new Inferno());
-        public static ColourMap Jet => new ColourMap(new Jet());
-        public static ColourMap Magma => new ColourMap(new Magma());
-        public static ColourMap Matter => new ColourMap(new Matter());
-        public static ColourMap Oxy => new ColourMap(new Oxy());
-        public static ColourMap Phase => new ColourMap(new Phase());
-        public static ColourMap Plasma => new ColourMap(new Plasma());
-        public static ColourMap Rain => new ColourMap(new Rain());
-        public static ColourMap Solar => new ColourMap(new Solar());
-        public static ColourMap Speed => new ColourMap(new Speed());
-        public static ColourMap Tarn => new ColourMap(new Tarn());
-        public static ColourMap Tempo => new ColourMap(new Tempo());
-        public static ColourMap Thermal => new ColourMap(new Thermal());
-        public static ColourMap Topo => new ColourMap(new Topo());
-        public static ColourMap Turbid => new ColourMap(new Turbid());
-        public static ColourMap Turbo => new ColourMap(new Turbo());
-        public static ColourMap Viridis => new ColourMap(new Viridis());
+        public static ColourMap Algae => new(new Algae());
+        public static ColourMap Amp => new(new Amp());
+        public static ColourMap Balance => new(new Balance());
+        public static ColourMap Blues => new(new Blues());
+        public static ColourMap Curl => new(new Curl());
+        public static ColourMap Deep => new(new Deep());
+        public static ColourMap Delta => new(new Delta());
+        public static ColourMap Dense => new(new Dense());
+        public static ColourMap Diff => new(new Diff());
+        public static ColourMap Grayscale => new(new Grayscale());
+        public static ColourMap GrayscaleR => new(new GrayscaleR());
+        public static ColourMap Greens => new(new Greens());
+        public static ColourMap Haline => new(new Haline());
+        public static ColourMap Ice => new(new Ice());
+        public static ColourMap Inferno => new(new Inferno());
+        public static ColourMap Jet => new(new Jet());
+        public static ColourMap Magma => new(new Magma());
+        public static ColourMap Matter => new(new Matter());
+        public static ColourMap Oxy => new(new Oxy());
+        public static ColourMap Phase => new(new Phase());
+        public static ColourMap Plasma => new(new Plasma());
+        public static ColourMap Rain => new(new Rain());
+        public static ColourMap Solar => new(new Solar());
+        public static ColourMap Speed => new(new Speed());
+        public static ColourMap Tarn => new(new Tarn());
+        public static ColourMap Tempo => new(new Tempo());
+        public static ColourMap Thermal => new(new Thermal());
+        public static ColourMap Topo => new(new Topo());
+        public static ColourMap Turbid => new(new Turbid());
+        public static ColourMap Turbo => new(new Turbo());
+        public static ColourMap Viridis => new(new Viridis());
 
         private readonly IColourMap ThisColourMap;
 
@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public string Name => ThisColourMap.Name;
 
-        private static readonly ColourMapFactory ColourMapFactory = new ColourMapFactory();
+        private static readonly ColourMapFactory ColourMapFactory = new();
 
         public ColourMap(IColourMap? colormap)
         {

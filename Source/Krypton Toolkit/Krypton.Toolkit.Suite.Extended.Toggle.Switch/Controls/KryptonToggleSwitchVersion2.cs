@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                       _enabledBackColour, _disabledBackColour, _disabledControlColour,
                       _knobColour, _penColour, _gradientStartColour,
                       _gradientEndColour;
-        private System.Windows.Forms.Timer _paintTicker = new System.Windows.Forms.Timer();
+        private System.Windows.Forms.Timer _paintTicker = new();
         private LinearGradientMode _mode;
         private string _onText, _offText;
         #endregion
@@ -347,7 +347,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             base.OnResize(e);
         }
 
-        protected override Size DefaultSize => new Size(60, 35);
+        protected override Size DefaultSize => new(60, 35);
 
 
         protected override void OnPaint(PaintEventArgs e)
@@ -364,7 +364,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
                 string on = OnText, off = OffText;
 
-                SolidBrush onColour = new SolidBrush(TextEnabledForeColour), offBrush = new SolidBrush(TextDisabledForeColour);
+                SolidBrush onColour = new(TextEnabledForeColour), offBrush = new(TextDisabledForeColour);
 
                 if (TextEnabled)
                     using (Font font = new Font(Font.FontFamily, Font.Size * _diameter / 30, Font.Style))

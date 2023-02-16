@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private ImageList leftRightImages = null;
         private const int nMargin = 5;
 
-        private Rectangle m_closeRect = new Rectangle();
+        private Rectangle m_closeRect = new();
         private bool bFirtsLoad = true;
         #endregion
 

@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private ImageList leftRightImages = null;
         private const int nMargin = 5;
 
-        private Rectangle m_closeRect = new Rectangle();
+        private Rectangle m_closeRect = new();
 
         #endregion
 
@@ -1218,8 +1218,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         #region ... Overidden WndProc / Custom Scroller ...
         private NativeUpDown UpDown = null;
-        private TabScroller Scroller = new TabScroller();
-        private Point pt = new Point();
+        private TabScroller Scroller = new();
+        private Point pt = new();
 
         private int ScrollPosition
         {

@@ -181,7 +181,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             NativeMethods.FORMATRANGE fORMATRANGE = new NativeMethods.FORMATRANGE();
 
-            NativeMethods.KryptonRichTextBoxExtendedRECT rECT, rECT1 = new NativeMethods.KryptonRichTextBoxExtendedRECT();
+            NativeMethods.KryptonRichTextBoxExtendedRECT rECT, rECT1 = new();
 
             cHARRANGE.cpMin = charFrom;
 

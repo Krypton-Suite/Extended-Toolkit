@@ -439,7 +439,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         #region Variables
         private string _fileName = string.Empty, _fileNameWithoutExtension = string.Empty;
 
-        private Settings _settings = new Settings();
+        private Settings _settings = new();
         #endregion
 
         #region Properties

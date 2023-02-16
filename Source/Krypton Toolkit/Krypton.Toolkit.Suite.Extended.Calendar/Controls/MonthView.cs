@@ -896,9 +896,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         using (Brush b = new SolidBrush(BackwardButtonSelected ? ArrowsSelectedColour : ArrowsColour))
                         {
                             e.Graphics.FillPolygon(b, new Point[] {
-                                new Point(r.Right, r.Top),
-                                new Point(r.Right, r.Bottom - 1),
-                                new Point(r.Left + r.Width / 2, r.Top + r.Height / 2),
+                                new(r.Right, r.Top),
+                                new(r.Right, r.Bottom - 1),
+                                new(r.Left + r.Width / 2, r.Top + r.Height / 2),
                             });
                         }
                     }
@@ -909,9 +909,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         using (Brush b = new SolidBrush(ForwardButtonSelected ? ArrowsSelectedColour : ArrowsColour))
                         {
                             e.Graphics.FillPolygon(b, new Point[] {
-                                new Point(r.X, r.Top),
-                                new Point(r.X, r.Bottom - 1),
-                                new Point(r.Left + r.Width / 2, r.Top + r.Height / 2),
+                                new(r.X, r.Top),
+                                new(r.X, r.Bottom - 1),
+                                new(r.Left + r.Width / 2, r.Top + r.Height / 2),
                             });
                         }
                     }

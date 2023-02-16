@@ -488,8 +488,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private TreeNodeItemSelector[] _removedsessionNodes = new TreeNodeItemSelector[] { };
         private string? _sortString = null;
         private string? _filterString = null;
-        private static Point _resizeStartPoint = new Point(1, 1);
-        private Point _resizeEndPoint = new Point(-1, -1);
+        private static Point _resizeStartPoint = new(1, 1);
+        private Point _resizeEndPoint = new(-1, -1);
         private bool _checkTextFilterChangedEnabled = true;
         private bool _checkTextFilterRemoveNodesOnSearch = DefaultCheckTextFilterRemoveNodesOnSearch;
         private int _maxChecklistNodes = DefaultMaxChecklistNodes;

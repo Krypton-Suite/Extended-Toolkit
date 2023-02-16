@@ -38,11 +38,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     {
         private static Thread _timerThread;
 
-        private static readonly object LockHandle = new object();
+        private static readonly object LockHandle = new();
 
         private static readonly long StartTimeAsMs = DateTime.Now.Ticks;
 
-        private static readonly List<AnimationTimer> Subscribers = new List<AnimationTimer>();
+        private static readonly List<AnimationTimer> Subscribers = new();
 
         private readonly Action<ulong> _callback;
 

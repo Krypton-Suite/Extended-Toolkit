@@ -154,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="listBox">The list box.</param>
         public static void ImportContentFromFile(string filePath, KryptonListBox listBox)
         {
-            List<string> fileData = new List<string>();
+            List<string> fileData = new();
 
             using (StreamReader reader = new StreamReader(filePath))
             {

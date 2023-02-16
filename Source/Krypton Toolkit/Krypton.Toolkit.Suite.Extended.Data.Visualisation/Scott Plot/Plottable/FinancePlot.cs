@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     /// </summary>
     public class FinancePlot : IPlottable
     {
-        private readonly List<OHLC> OHLCs = new List<OHLC>();
+        private readonly List<OHLC> OHLCs = new();
 
         /// <summary>
         /// Returns the last element of OHLCs so users can modify FinancePlots in real time.

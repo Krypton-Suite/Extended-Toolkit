@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Properties
 
-        public override DateTime Date => new DateTime(Day.Date.Year, Day.Date.Month, Day.Date.Day);
+        public override DateTime Date => new(Day.Date.Year, Day.Date.Month, Day.Date.Day);
 
         /// <summary>
         /// Gets the Day of this DayTop

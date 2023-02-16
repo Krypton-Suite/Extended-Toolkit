@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class BenchmarkMessage : Message
     {
-        private readonly Stopwatch Sw = new Stopwatch();
+        private readonly Stopwatch Sw = new();
         public double MSec => Sw.ElapsedTicks * 1000.0 / Stopwatch.Frequency;
         public double Hz => (MSec > 0) ? 1000.0 / MSec : 0;
         public string Message => $"Rendered in {MSec:00.00} ms ({Hz:0000.00} Hz)";

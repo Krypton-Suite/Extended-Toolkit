@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public float ShadowOffsetX = 2;
         public float ShadowOffsetY = 2;
 
-        public Font Font = new Font();
+        public Font Font = new();
         public string FontName { set => Font.Name = value; }
         public float FontSize { set => Font.Size = value; }
         public Color FontColor { set => Font.Color = value; }

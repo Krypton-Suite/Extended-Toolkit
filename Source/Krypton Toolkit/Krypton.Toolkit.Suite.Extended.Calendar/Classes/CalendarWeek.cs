@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Gets the bounds of the week header
         /// </summary>
         public Rectangle HeaderBounds =>
-            new Rectangle(
+            new(
                 Bounds.Left,
                 Bounds.Top + Calendar.Renderer.DayHeaderHeight,
                 Calendar.Renderer.WeekHeaderWidth,

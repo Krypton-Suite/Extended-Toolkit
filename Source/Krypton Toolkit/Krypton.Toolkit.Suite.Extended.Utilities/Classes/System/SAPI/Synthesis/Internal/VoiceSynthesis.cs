@@ -650,7 +650,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             {
                 return new ReadOnlyCollection<InstalledVoice>(_installedVoices);
             }
-            Collection<InstalledVoice> collection = new Collection<InstalledVoice>();
+            Collection<InstalledVoice> collection = new();
             foreach (InstalledVoice installedVoice in _installedVoices)
             {
                 if (culture.Equals(installedVoice.VoiceInfo.Culture))
@@ -735,7 +735,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                                     InjectEvent(TtsEventId.StartInputStream, parametersSpeak2._prompt, parametersSpeak2._prompt._exception, null);
                                     if (parametersSpeak2._prompt._exception == null)
                                     {
-                                        List<LexiconEntry> list = new List<LexiconEntry>();
+                                        List<LexiconEntry> list = new();
                                         TTSVoice ttsVoice = (_currentVoice != null) ? _currentVoice : GetVoice(false);
                                         SpeakInfo speakInfo = new SpeakInfo(this, ttsVoice);
                                         if (parametersSpeak2._textToSpeak != null)
@@ -1057,7 +1057,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         private TTSVoice MatchVoice(CultureInfo culture, VoiceGender gender, VoiceAge age, int variant, bool switchContext, ref InstalledVoice viDefault)
         {
             TTSVoice tTSVoice = null;
-            List<InstalledVoice> list = new List<InstalledVoice>(_installedVoices);
+            List<InstalledVoice> list = new(_installedVoices);
             for (int num = list.Count - 1; num >= 0; num--)
             {
                 if (!list[num].Enabled)
@@ -1320,7 +1320,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private static List<InstalledVoice> BuildInstalledVoices(VoiceSynthesis voiceSynthesizer)
         {
-            List<InstalledVoice> list = new List<InstalledVoice>();
+            List<InstalledVoice> list = new();
             using (ObjectTokenCategory objectTokenCategory = ObjectTokenCategory.Create("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices"))
             {
                 if (objectTokenCategory != null)

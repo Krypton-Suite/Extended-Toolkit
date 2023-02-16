@@ -50,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
         internal static List<SpeechAudioFormatInfo> GetAudioFormatsFromString(string valueString)
         {
-            List<SpeechAudioFormatInfo> list = new List<SpeechAudioFormatInfo>();
+            List<SpeechAudioFormatInfo> list = new();
             string[] array = valueString.Split(';');
             for (int i = 0; i < array.Length; i++)
             {

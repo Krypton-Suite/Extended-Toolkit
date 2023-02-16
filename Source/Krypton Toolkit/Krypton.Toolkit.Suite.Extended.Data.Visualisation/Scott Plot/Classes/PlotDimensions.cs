@@ -59,11 +59,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public readonly double UnitsPerPxX;
         public readonly double UnitsPerPxY;
 
-        public Pixel GetPixel(Coordinate coordinate) => new Pixel(GetPixelX(coordinate.X), GetPixelY(coordinate.Y));
+        public Pixel GetPixel(Coordinate coordinate) => new(GetPixelX(coordinate.X), GetPixelY(coordinate.Y));
         public float GetPixelX(double position) => (float)(DataOffsetX + ((position - XMin) * PxPerUnitX));
         public float GetPixelY(double position) => (float)(DataOffsetY + ((YMax - position) * PxPerUnitY));
 
-        public Coordinate GetCoordinate(Pixel pixel) => new Coordinate(GetCoordinateX(pixel.X), GetCoordinateY(pixel.Y));
+        public Coordinate GetCoordinate(Pixel pixel) => new(GetCoordinateX(pixel.X), GetCoordinateY(pixel.Y));
         public double GetCoordinateX(float pixel) => (pixel - DataOffsetX) / PxPerUnitX + XMin;
         public double GetCoordinateY(float pixel) => DataHeight - ((pixel - YMin) * PxPerUnitY);
 

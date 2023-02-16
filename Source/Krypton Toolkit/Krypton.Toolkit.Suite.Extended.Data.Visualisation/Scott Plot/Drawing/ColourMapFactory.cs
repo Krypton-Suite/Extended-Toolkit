@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     public class ColourMapFactory
     {
         private readonly Dictionary<string, Func<IColourMap>> ColourMaps =
-            new Dictionary<string, Func<IColourMap>>()
+            new()
             {
                 { "Algae", () => new Algae()},
                 { "Amp", () => new Amp()},

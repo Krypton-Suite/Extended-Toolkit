@@ -177,7 +177,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 .ToArray();
         }
 
-        public AxisLimits GetAxisLimits() => new AxisLimits(-2.5, 2.5, -2.5, 2.5);
+        public AxisLimits GetAxisLimits() => new(-2.5, 2.5, -2.5, 2.5);
 
         public override string ToString()
         {

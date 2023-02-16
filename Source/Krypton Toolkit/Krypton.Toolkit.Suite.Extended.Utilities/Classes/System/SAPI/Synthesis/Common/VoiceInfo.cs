@@ -152,7 +152,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
             if (token.Attributes != null)
             {
-                Dictionary<string, string> dictionary = new Dictionary<string, string>();
+                Dictionary<string, string> dictionary = new();
                 string[] valueNames = token.Attributes.GetValueNames();
                 foreach (string text in valueNames)
                 {

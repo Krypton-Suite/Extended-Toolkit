@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 
         protected void Optimize(Collection<RuleElement> newRules)
         {
-            SortedDictionary<int, Collection<BuilderElements>> sortedDictionary = new SortedDictionary<int, Collection<BuilderElements>>();
+            SortedDictionary<int, Collection<BuilderElements>> sortedDictionary = new();
             GetDictionaryElements(sortedDictionary);
             int[] array = new int[sortedDictionary.Keys.Count];
             int num = array.Length - 1;
