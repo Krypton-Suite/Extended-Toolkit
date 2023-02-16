@@ -1276,7 +1276,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="nodes"></param>
         /// <returns></returns>
-        private string BuildNodesFilterString(IEnumerable<TreeNodeItemSelector> nodes)
+        private string BuildNodesFilterString(IEnumerable<TreeNodeItemSelector>? nodes)
         {
             StringBuilder sb = new StringBuilder("");
 
@@ -1372,7 +1372,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Add nodes to checkList
         /// </summary>
         /// <param name="vals"></param>
-        private void BuildNodes(IEnumerable<DataGridViewCell> vals)
+        private void BuildNodes(IEnumerable<DataGridViewCell>? vals)
         {
             if (!IsFilterChecklistEnabled)
                 return;

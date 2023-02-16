@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="rowIndex">Index of the row.</param>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        protected override bool SetValue(int rowIndex, object value)
+        protected override bool SetValue(int rowIndex, object? value)
         {
             if (value != null && !((OutlookGridRow)OwningRow).IsGroupRow) //Test to catch crash when first column is text and image when grouping
             {

@@ -1485,7 +1485,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="col">The name of the column.</param>
         /// <param name="sortDirection">The sort direction of the group./</param>
         /// <param name="gr">The IOutlookGridGroup object.</param>
-        public void GroupColumn(OutlookGridColumn col, SortOrder sortDirection, IOutlookGridGroup gr)
+        public void GroupColumn(OutlookGridColumn col, SortOrder sortDirection, IOutlookGridGroup? gr)
         {
             if (!col.IsGrouped)
             {

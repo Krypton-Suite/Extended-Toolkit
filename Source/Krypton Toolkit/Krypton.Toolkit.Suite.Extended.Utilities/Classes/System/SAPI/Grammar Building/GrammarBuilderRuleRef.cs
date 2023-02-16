@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 
         internal override string DebugSummary => "#" + _uri;
 
-        internal GrammarBuilderRuleRef(Uri uri, string rule)
+        internal GrammarBuilderRuleRef(Uri uri, string? rule)
         {
             _uri = uri.OriginalString + ((rule != null) ? ("#" + rule) : "");
         }

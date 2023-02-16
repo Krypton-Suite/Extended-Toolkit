@@ -153,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Implementation
 
-        private void OpenFile(string filePath, Control outputControl)
+        private void OpenFile(string filePath, Control? outputControl)
         {
             try
             {

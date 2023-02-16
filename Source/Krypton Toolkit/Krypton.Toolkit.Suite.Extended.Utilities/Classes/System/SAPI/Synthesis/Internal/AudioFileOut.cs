@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         internal override byte[] WaveFormat => _wfxOut.ToBytes();
 
-        internal AudioFileOut(Stream stream, SpeechAudioFormatInfo formatInfo, bool headerInfo, IAsyncDispatch asyncDispatch)
+        internal AudioFileOut(Stream stream, SpeechAudioFormatInfo? formatInfo, bool headerInfo, IAsyncDispatch asyncDispatch)
         {
             _asyncDispatch = asyncDispatch;
             _stream = stream;

@@ -222,7 +222,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             }
         }
 
-        private void CompileScript(string outputFile, bool debug, string code, string[] codeFiles, List<CfgResource> cfgResouces)
+        private void CompileScript(string outputFile, bool debug, string code, string[]? codeFiles, List<CfgResource> cfgResouces)
         {
             using (CodeDomProvider codeDomProvider = CodeProvider())
             {
@@ -378,7 +378,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             return null;
         }
 
-        private static void WrapClassCSharp(StringBuilder sb, string classname, string baseclass, CultureInfo culture, string script, string constructor)
+        private static void WrapClassCSharp(StringBuilder sb, string classname, string baseclass, CultureInfo? culture, string script, string constructor)
         {
             sb.Append("public partial class ");
             sb.Append(classname);
@@ -443,7 +443,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             return null;
         }
 
-        private static void WrapClassVB(StringBuilder sb, string classname, string baseclass, CultureInfo culture, string script, string constructor)
+        private static void WrapClassVB(StringBuilder sb, string classname, string baseclass, CultureInfo? culture, string script, string constructor)
         {
             sb.Append("Public Partial class ");
             sb.Append(classname);
@@ -488,7 +488,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             XmlParser.ThrowSrgsException(SRID.GrammarCompilerError, stringBuilder.ToString());
         }
 
-        private static CompilerParameters GetCompilerParameters(string outputFile, List<CfgResource> cfgResources, bool debug, Collection<string> assemblyReferences, string keyfile)
+        private static CompilerParameters GetCompilerParameters(string outputFile, List<CfgResource>? cfgResources, bool debug, Collection<string> assemblyReferences, string? keyfile)
         {
             CompilerParameters compilerParameters = new CompilerParameters();
             StringBuilder stringBuilder = new StringBuilder();

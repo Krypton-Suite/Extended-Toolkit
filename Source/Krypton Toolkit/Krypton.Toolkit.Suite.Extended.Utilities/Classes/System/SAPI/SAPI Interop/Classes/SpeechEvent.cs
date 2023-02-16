@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             }
         }
 
-        private SpeechEvent(SPEVENT sapiEvent, SpeechAudioFormatInfo audioFormat)
+        private SpeechEvent(SPEVENT sapiEvent, SpeechAudioFormatInfo? audioFormat)
             : this(sapiEvent.eEventId, sapiEvent.elParamType, sapiEvent.ullAudioStreamOffset, sapiEvent.wParam, sapiEvent.lParam)
         {
             if (audioFormat == null || audioFormat.EncodingFormat == (EncodingFormat)0)

@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
         }
 
-        internal byte[] WaveFormat(byte[] targetWaveFormat)
+        internal byte[] WaveFormat(byte[]? targetWaveFormat)
         {
             if (targetWaveFormat == null && _waveFormat == null && VoiceInfo.SupportedAudioFormats.Count > 0)
             {

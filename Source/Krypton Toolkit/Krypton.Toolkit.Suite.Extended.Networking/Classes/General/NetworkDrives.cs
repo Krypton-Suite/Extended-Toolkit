@@ -193,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             if (i > 0) { throw new Win32Exception(i); }
         }
         // Display windows dialog
-        private void zDisplayDialog(KryptonForm poParentForm, int piDialog)
+        private void zDisplayDialog(KryptonForm? poParentForm, int piDialog)
         {
             int i = -1;
             int iHandle = 0;

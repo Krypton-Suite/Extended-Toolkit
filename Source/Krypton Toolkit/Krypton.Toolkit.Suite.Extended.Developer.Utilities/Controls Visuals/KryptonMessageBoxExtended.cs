@@ -445,12 +445,12 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                           ExtendedMessageBoxIcon icon,
                                           MessageBoxDefaultButton defaultButton,
                                           MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy,
-                                          Font messageboxTypeface, bool showOptionalCheckBox, string optionalCheckBoxText,
+                                          Font? messageboxTypeface, bool showOptionalCheckBox, string optionalCheckBoxText,
                                           bool isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
                                           AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
                                           Image customMessageBoxIcon, bool showCopyButton, string copyButtonText,
-                                          bool? fade, int? fadeSleepTimer, string buttonOneCustomText,
-                                          string buttonTwoCustomText, string buttonThreeCustomText,
+                                          bool? fade, int? fadeSleepTimer, string? buttonOneCustomText,
+                                          string? buttonTwoCustomText, string? buttonThreeCustomText,
                                           DialogResult? buttonOneCustomDialogResult, DialogResult? buttonTwoCustomDialogResult,
                                           DialogResult? buttonThreeCustomDialogResult, bool? showToolTips)
         {
@@ -1797,7 +1797,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                   messageSizing.Height + buttonsSizing.Height);
         }
 
-        private Size UpdateMessageSizing(IWin32Window showOwner)
+        private Size UpdateMessageSizing(IWin32Window? showOwner)
         {
             // Update size of the message label but with a maximum width
             using (Graphics g = CreateGraphics())

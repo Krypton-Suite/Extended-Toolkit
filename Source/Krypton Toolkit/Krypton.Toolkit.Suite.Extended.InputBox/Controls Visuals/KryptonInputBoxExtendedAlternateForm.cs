@@ -739,7 +739,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="icon">The icon.</param>
         /// <param name="image">The image.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        private void SetIconType(InputBoxIconType icon, Image image = null)
+        private void SetIconType(InputBoxIconType icon, Image? image = null)
         {
             switch (icon)
             {
@@ -894,7 +894,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <summary>Adapts the UI.</summary>
         /// <param name="type">The type.</param>
         /// <param name="itemList">The item list.</param>
-        private void AdaptUI(InputBoxInputType type, string[] itemList)
+        private void AdaptUI(InputBoxInputType type, string[]? itemList)
         {
             if (itemList != null)
             {

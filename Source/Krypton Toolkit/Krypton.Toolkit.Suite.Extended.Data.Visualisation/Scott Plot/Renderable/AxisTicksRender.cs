@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         private static bool EdgeIsHorizontal(Edge edge) => (edge == Edge.Top || edge == Edge.Bottom);
 
-        public static void RenderGridLines(PlotDimensions dims, Graphics gfx, double[] positions,
+        public static void RenderGridLines(PlotDimensions dims, Graphics gfx, double[]? positions,
             LineStyle gridLineStyle, Color gridLineColor, float gridLineWidth, Edge edge)
         {
             if (positions is null || positions.Length == 0 || gridLineStyle == LineStyle.None)
@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
         }
 
-        public static void RenderTickMarks(PlotDimensions dims, Graphics gfx, double[] positions, float tickLength, Color tickColor, Edge edge, float pixelOffset)
+        public static void RenderTickMarks(PlotDimensions dims, Graphics gfx, double[]? positions, float tickLength, Color tickColor, Edge edge, float pixelOffset)
         {
             if (positions is null || positions.Length == 0)
                 return;

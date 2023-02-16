@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech
     {
         private static ResourceManager _resourceManager = new("System.Speech.ExceptionStringTable", typeof(SR).Assembly);
 
-        internal static string Get(SRID id, params object[] args)
+        internal static string Get(SRID id, params object[]? args)
         {
             string text = _resourceManager.GetString(id.ToString());
             if (string.IsNullOrEmpty(text))

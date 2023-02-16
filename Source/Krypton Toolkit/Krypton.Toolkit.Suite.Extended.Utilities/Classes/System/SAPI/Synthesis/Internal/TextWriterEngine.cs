@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _culture = culture;
         }
 
-        public object ProcessSpeak(string sVersion, string baseUri, CultureInfo culture, List<SsmlXmlAttribute> extraNamespace)
+        public object ProcessSpeak(string sVersion, string baseUri, CultureInfo? culture, List<SsmlXmlAttribute> extraNamespace)
         {
             if (!string.IsNullOrEmpty(baseUri))
             {
@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
         }
 
-        public void ProcessDesc(CultureInfo culture)
+        public void ProcessDesc(CultureInfo? culture)
         {
             _writer.WriteStartElement("desc");
             if (culture != null)
@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _writer.WriteAttributeString("name", name);
         }
 
-        public object ProcessTextBlock(bool isParagraph, object voice, ref FragmentState fragmentState, CultureInfo culture, bool newCulture, VoiceGender gender, VoiceAge age)
+        public object ProcessTextBlock(bool isParagraph, object voice, ref FragmentState fragmentState, CultureInfo? culture, bool newCulture, VoiceGender gender, VoiceAge age)
         {
             _writer.WriteStartElement(isParagraph ? "p" : "s");
             if (culture != null)
@@ -211,7 +211,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _writer.WriteAttributeString("alias", alias);
         }
 
-        public object ProcessVoice(string name, CultureInfo culture, VoiceGender gender, VoiceAge age, int variant, bool fNewCulture, List<SsmlXmlAttribute> extraNamespace)
+        public object ProcessVoice(string name, CultureInfo? culture, VoiceGender gender, VoiceAge age, int variant, bool fNewCulture, List<SsmlXmlAttribute>? extraNamespace)
         {
             _writer.WriteStartElement("voice");
             if (!string.IsNullOrEmpty(name))
@@ -291,7 +291,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _pexmlPrefix = pexmlPrefix;
         }
 
-        private bool ProcessPromptEngine(string element, params KeyValuePair<string, string>[] attributes)
+        private bool ProcessPromptEngine(string element, params KeyValuePair<string, string>[]? attributes)
         {
             _writer.WriteStartElement(_pexmlPrefix, element, "http://schemas.microsoft.com/Speech/2003/03/PromptEngine");
             if (attributes != null)

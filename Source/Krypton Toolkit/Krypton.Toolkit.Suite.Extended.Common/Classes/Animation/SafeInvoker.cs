@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="targetControl">
         ///     The control to be used to invoke the callback in UI thread
         /// </param>
-        protected SafeInvoker(Delegate action, object targetControl)
+        protected SafeInvoker(Delegate action, object? targetControl)
         {
             UnderlyingDelegate = action;
             if (targetControl != null)
@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Invoke the referenced callback
         /// </summary>
         /// <param name="value">The argument to send to the callback</param>
-        protected void Invoke(object value)
+        protected void Invoke(object? value)
         {
             try
             {

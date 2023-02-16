@@ -143,9 +143,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         }
 
         public void SetCulture(
-            string shortDatePattern = null,
-            string decimalSeparator = null,
-            string numberGroupSeparator = null,
+            string? shortDatePattern = null,
+            string? decimalSeparator = null,
+            string? numberGroupSeparator = null,
             int? decimalDigits = null,
             int? numberNegativePattern = null,
 #pragma warning disable CS8632
@@ -430,7 +430,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         }
 
 #pragma warning disable CS8632
-        public double[]? MinorFromMajor(double[] majorTicks, double minorTicksPerMajorTick, double lowerLimit, double upperLimit)
+        public double[]? MinorFromMajor(double[]? majorTicks, double minorTicksPerMajorTick, double lowerLimit, double upperLimit)
 #pragma warning restore CS8632
         {
             if ((majorTicks == null) || (majorTicks.Length < 2))
@@ -465,7 +465,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="max">Do not include minor ticks greater than this value.</param>
         /// <param name="divisions">Number of minor ranges to divide each major range into. (A range is the space between tick marks)</param>
         /// <returns>Array of minor tick positions (empty at positions occupied by major ticks)</returns>
-        public double[] MinorFromMajorLog(double[] majorTickPositions, double min, double max, int divisions = 5)
+        public double[] MinorFromMajorLog(double[]? majorTickPositions, double min, double max, int divisions = 5)
         {
             if ((majorTickPositions is null) || (majorTickPositions.Length < 2))
             {

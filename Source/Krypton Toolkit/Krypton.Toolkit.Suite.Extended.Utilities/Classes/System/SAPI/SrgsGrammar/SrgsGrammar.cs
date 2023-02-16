@@ -354,7 +354,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             Validate();
         }
 
-        internal void AddScript(string rule, string code)
+        internal void AddScript(string? rule, string code)
         {
             if (rule == null)
             {

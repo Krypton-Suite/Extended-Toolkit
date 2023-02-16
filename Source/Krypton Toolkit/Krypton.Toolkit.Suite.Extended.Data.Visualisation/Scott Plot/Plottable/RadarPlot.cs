@@ -174,7 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Normalize a 2D array by dividing all values by the maximum value.
         /// </summary>
         /// <returns>maximum value in the array before normalization</returns>
-        private double NormalizeInPlace(double[,] input, double[] maxValues = null)
+        private double NormalizeInPlace(double[,] input, double[]? maxValues = null)
         {
             double max;
             if (maxValues != null && maxValues.Length == 1)
@@ -200,7 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Normalize each row of a 2D array independently by dividing all values by the maximum value.
         /// </summary>
         /// <returns>maximum value in each row of the array before normalization</returns>
-        private double[] NormalizeSeveralInPlace(double[,] input, double[] maxValues = null)
+        private double[] NormalizeSeveralInPlace(double[,] input, double[]? maxValues = null)
         {
             double[] maxes;
             if (maxValues != null && input.GetLength(1) == maxValues.Length)

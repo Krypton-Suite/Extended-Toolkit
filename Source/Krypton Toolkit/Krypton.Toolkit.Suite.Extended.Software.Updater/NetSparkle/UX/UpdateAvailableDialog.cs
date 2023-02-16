@@ -251,7 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         #endregion
 
         #region Constructor
-        public UpdateAvailableDialog(SparkleUpdater sparkle, List<AppCastItem> items, Icon applicationIcon = null, bool isUpdateAlreadyDownloaded = false, string separatorTemplate = "", string headAddition = "")
+        public UpdateAvailableDialog(SparkleUpdater sparkle, List<AppCastItem> items, Icon? applicationIcon = null, bool isUpdateAlreadyDownloaded = false, string separatorTemplate = "", string headAddition = "")
         {
             _sparkle = sparkle;
             _updates = items;

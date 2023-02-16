@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private readonly IPalette cset;
         public readonly string Name;
 
-        public ScottPlotPalette(IPalette colorset)
+        public ScottPlotPalette(IPalette? colorset)
         {
             cset = colorset ?? new Category10();
             Name = cset.GetType().Name;

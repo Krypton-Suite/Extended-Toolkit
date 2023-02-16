@@ -186,13 +186,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="focusedButton">The focused button.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="initialDateTime">The initial date time.</param>
-        private void StoreValues(Color cueColour, string prompt, string caption, string defaultResponse, string cueText,
-                                 Font cueTypeface, Font buttonTypeface, Font promptTypeface, 
+        private void StoreValues(Color cueColour, string prompt, string caption, string? defaultResponse, string? cueText,
+                                 Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface, 
                                  InputBoxIconType? iconType, KryptonInputBoxResponseType? inputType, 
                                  InputBoxTextAlignment? textAlignment,
                                  InputBoxWrappedMessageTextAlignment? textWrappedMessageTextAlignment, 
                                  InputBoxButtons? buttons, InputBoxButtonFocus? focusedButton, 
-                                 Image customImage, DateTime? initialDateTime)
+                                 Image? customImage, DateTime? initialDateTime)
         {
             _cueColour = cueColour;
             _prompt = prompt;
@@ -683,7 +683,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="customImage">The custom image.</param>
         /// <param name="initialDateTime">The initial date time.</param>
         /// <returns>The users input string.</returns>
-        internal static string InternalShow(IWin32Window owner, string prompt, string caption,
+        internal static string InternalShow(IWin32Window? owner, string prompt, string caption,
                                             string defaultResponse, string cueText, Color cueColour,
                                             Font cueTypeface, Font buttonTypeface, Font promptTypeface,
                                             InputBoxIconType iconType,

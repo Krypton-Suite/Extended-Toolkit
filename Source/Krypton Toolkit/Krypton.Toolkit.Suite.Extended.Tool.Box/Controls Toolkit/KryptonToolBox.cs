@@ -957,7 +957,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             _mouseMoveFreezed = false;
         }
 
-        internal void PatBltOnItem(ToolBoxItem item)
+        internal void PatBltOnItem(ToolBoxItem? item)
         {
             Graphics g = null;
             IntPtr hdc = IntPtr.Zero;
@@ -1512,7 +1512,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             Invalidate();
         }
 
-        public bool SetImageList(Image image, Size size, Color transparentColor, bool small)
+        public bool SetImageList(Image? image, Size size, Color transparentColor, bool small)
         {
             bool bOk = false;
 
@@ -1897,7 +1897,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             _timer.Enabled = true;
         }
 
-        private void HandleScrollTimerElapsed(ToolBoxScrollDirection dir, ToolBoxTab tab, ToolScrollButton sb)
+        private void HandleScrollTimerElapsed(ToolBoxScrollDirection dir, ToolBoxTab? tab, ToolScrollButton sb)
         {
             if (null != tab)
             {
@@ -2463,7 +2463,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return color;
         }
 
-        private Color ColorFromHtmlString(string color, Color defColor)
+        private Color ColorFromHtmlString(string? color, Color defColor)
         {
             Color c = defColor;
             int rgb = -1;

@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         }
 
-        private void OpenFile(string filePath, Control outputControl)
+        private void OpenFile(string filePath, Control? outputControl)
         {
             try
             {

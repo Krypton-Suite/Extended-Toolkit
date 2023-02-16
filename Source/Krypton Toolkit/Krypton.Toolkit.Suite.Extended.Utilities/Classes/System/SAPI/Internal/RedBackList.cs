@@ -257,7 +257,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
             return parent.Left;
         }
 
-        private static NodeColor GetColor(TreeNode node)
+        private static NodeColor GetColor(TreeNode? node)
         {
             if (node != null)
             {
@@ -270,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
             return NodeColor.BLACK;
         }
 
-        private static void SetColor(TreeNode node, NodeColor color)
+        private static void SetColor(TreeNode? node, NodeColor color)
         {
             if (node != null)
             {
@@ -278,7 +278,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
             }
         }
 
-        private static void TakeParent(TreeNode node, TreeNode newNode)
+        private static void TakeParent(TreeNode node, TreeNode? newNode)
         {
             if (node.Parent == null)
             {
@@ -363,7 +363,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
             return treeNode;
         }
 
-        private TreeNode InsertNode(TreeNode node, TreeNode newNode)
+        private TreeNode InsertNode(TreeNode? node, TreeNode newNode)
         {
             if (node == null)
             {
@@ -381,7 +381,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
             return node;
         }
 
-        private TreeNode FindItem(TreeNode node, object key)
+        private TreeNode FindItem(TreeNode? node, object key)
         {
             if (node == null)
             {

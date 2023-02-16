@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <typeparam name="T">
         ///     Any object containing a property
         /// </typeparam>
-        public virtual void Play<T>(T targetObject, Expression<Func<T, object>> propertySetter, SafeInvoker endCallback)
+        public virtual void Play<T>(T targetObject, Expression<Func<T, object>>? propertySetter, SafeInvoker endCallback)
         {
             if (propertySetter == null)
                 return;

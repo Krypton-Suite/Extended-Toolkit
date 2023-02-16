@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         #endregion
 
         #region Constructor
-        internal SharpUpdateDownloadForm(Uri location, string md5, Icon applicationIcon)
+        internal SharpUpdateDownloadForm(Uri location, string md5, Icon? applicationIcon)
         {
             InitializeComponent();
 

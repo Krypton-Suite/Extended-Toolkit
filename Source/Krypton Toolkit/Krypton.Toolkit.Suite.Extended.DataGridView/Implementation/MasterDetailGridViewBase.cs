@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="tableName"></param>
         /// <param name="masterColumn">The foreign key fieldname to be used for the master -> child relationship</param>
         /// <param name="columns">optional columns if not already added via designer</param>
-        public void SetMasterSource(string tableName, string masterColumn, DataGridViewColumn[] columns = null)
+        public void SetMasterSource(string tableName, string masterColumn, DataGridViewColumn[]? columns = null)
         {
             if (DataSet == null)
             {
@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="source"></param>
         /// <param name="masterColumn">The foreign key fieldname to be used for the master -> child relationship</param>
         /// <param name="columns">optional columns if not already added via designer</param>
-        public void SetMasterSource(BindingSource source, string masterColumn, DataGridViewColumn[] columns = null)
+        public void SetMasterSource(BindingSource source, string masterColumn, DataGridViewColumn[]? columns = null)
         {
             if (columns != null)
             {

@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// If null, a file named "NetSparkle_DSA.pub" is used instead.</param>
         /// <param name="referenceAssembly">the name of the assembly to use for comparison when checking update versions</param>
         /// <param name="factory">a UI factory to use in place of the default UI</param>
-        public SparkleUpdater(string appcastUrl, SecurityMode securityMode, string dsaPublicKey, string referenceAssembly, IUIFactory factory)
+        public SparkleUpdater(string appcastUrl, SecurityMode securityMode, string dsaPublicKey, string? referenceAssembly, IUIFactory factory)
         {
             _latestDownloadedUpdateInfo = null;
             _hasAttemptedFileRedownload = false;
@@ -584,7 +584,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         /// <param name="updates">updates to show UI for</param>
         /// <param name="isUpdateAlreadyDownloaded">If true, make sure UI text shows that the user is about to install the file instead of download it.</param>
-        public void ShowUpdateNeededUI(List<AppCastItem> updates, bool isUpdateAlreadyDownloaded = false)
+        public void ShowUpdateNeededUI(List<AppCastItem>? updates, bool isUpdateAlreadyDownloaded = false)
         {
             if (updates != null)
             {
@@ -1039,7 +1039,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         /// <param name="item">AppCastItem to install</param>
         /// <param name="installPath">Install path to the executable. If not provided, will ask the server for the download path.</param>
-        public async void InstallUpdate(AppCastItem item, string installPath = null)
+        public async void InstallUpdate(AppCastItem item, string? installPath = null)
         {
             ProgressWindow?.SetDownloadAndInstallButtonEnabled(false); // disable while we ask if we can close up the software
             if (await AskApplicationToSafelyCloseUp())
@@ -1519,7 +1519,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// is always on the main thread.
         /// </summary>
         /// <param name="action"></param>
-        private void CallFuncConsideringUIThreads(Action action)
+        private void CallFuncConsideringUIThreads(Action? action)
         {
             if (ShowsUIOnMainThread)
             {
@@ -1540,7 +1540,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// is always on the main thread.
         /// </summary>
         /// <param name="action"></param>
-        private async Task CallFuncConsideringUIThreadsAsync(Func<Task> action)
+        private async Task CallFuncConsideringUIThreadsAsync(Func<Task>? action)
         {
             if (ShowsUIOnMainThread)
             {
@@ -1805,7 +1805,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// Updates from appcast have been downloaded from the server
         /// </summary>
         /// <param name="updates">updates to be installed</param>
-        private async void UpdatesHaveBeenDownloaded(List<AppCastItem> updates)
+        private async void UpdatesHaveBeenDownloaded(List<AppCastItem>? updates)
         {
             if (updates != null)
             {

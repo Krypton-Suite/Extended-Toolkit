@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// Constructor
         /// </summary>
         /// <param name="assemblyName">the assembly name</param>
-        public AssemblyDiagnosticsAccessor(string assemblyName)
+        public AssemblyDiagnosticsAccessor(string? assemblyName)
         {
             if (assemblyName != null)
             {

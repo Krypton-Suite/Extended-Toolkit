@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="backColour">The back colour.</param>
         /// <param name="textColour">The text colour.</param>
         /// <param name="headerText">Define the header text.</param>
-        internal void DisplayAlert(string message, AlertType alertType, int interval, Image image = null, Color backColour = default, Color textColour = default, string headerText = "")
+        internal void DisplayAlert(string message, AlertType alertType, int interval, Image? image = null, Color backColour = default, Color textColour = default, string headerText = "")
         {
             Opacity = 0.0;
 

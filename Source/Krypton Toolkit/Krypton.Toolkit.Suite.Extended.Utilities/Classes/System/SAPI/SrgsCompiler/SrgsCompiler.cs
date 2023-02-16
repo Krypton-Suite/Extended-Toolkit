@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             }
         }
 
-        private static object CompileStream(int iCfg, ISrgsParser srgsParser, string srgsPath, string filename, Stream stream, bool fOutputCfg, StringBuilder innerCode, object cfgResources, out CultureInfo culture, string[] referencedAssemblies, string keyFile)
+        private static object CompileStream(int iCfg, ISrgsParser srgsParser, string srgsPath, string filename, Stream stream, bool fOutputCfg, StringBuilder innerCode, object cfgResources, out CultureInfo culture, string[]? referencedAssemblies, string keyFile)
         {
             Backend backend = new Backend();
             CustomGrammar customGrammar = new CustomGrammar();

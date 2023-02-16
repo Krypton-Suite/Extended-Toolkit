@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         #endregion
 
         #region Constructor
-        public MessageNotificationDialog(string title = "Updater Notification", string message = "Sorry, either our server is having a\nproblem, or your internet connection is\ninvalid.", Icon applicationIcon = null)
+        public MessageNotificationDialog(string title = "Updater Notification", string message = "Sorry, either our server is having a\nproblem, or your internet connection is\ninvalid.", Icon? applicationIcon = null)
         {
             InitializeComponent();
 

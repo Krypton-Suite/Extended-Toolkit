@@ -360,7 +360,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             return new Arc(text, null, _words, 1f, 0, null, matchMode, ref _fNeedWeightTable);
         }
 
-        internal Arc RuleTransition(Rule rule, Rule parentRule, float flWeight)
+        internal Arc RuleTransition(Rule rule, Rule? parentRule, float flWeight)
         {
             Rule rule2 = null;
             if (flWeight < 0f)

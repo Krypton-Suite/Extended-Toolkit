@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             return CreateZipReport(reportInfo, zipFilePath, additionalFiles);
         }
 
-        public string CreateZipReport(ExceptionReportInfo reportInfo, string zipFilePath, IList<string> additionalFiles = null)
+        public string CreateZipReport(ExceptionReportInfo reportInfo, string zipFilePath, IList<string>? additionalFiles = null)
         {
             if (string.IsNullOrWhiteSpace(zipFilePath)) return string.Empty;
 

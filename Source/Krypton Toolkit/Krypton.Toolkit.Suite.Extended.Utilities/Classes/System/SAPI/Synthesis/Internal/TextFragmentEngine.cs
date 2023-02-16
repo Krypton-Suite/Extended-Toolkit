@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
         }
 
-        public object ProcessTextBlock(bool isParagraph, object voice, ref FragmentState fragmentState, CultureInfo culture, bool newCulture, VoiceGender gender, VoiceAge age)
+        public object ProcessTextBlock(bool isParagraph, object voice, ref FragmentState fragmentState, CultureInfo? culture, bool newCulture, VoiceGender gender, VoiceAge age)
         {
             if (culture != null && newCulture)
             {

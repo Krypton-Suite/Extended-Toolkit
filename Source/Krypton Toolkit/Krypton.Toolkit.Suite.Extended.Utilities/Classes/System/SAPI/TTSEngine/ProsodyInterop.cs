@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
         internal IntPtr _contourPoints;
 
-        internal static IntPtr ProsodyToPtr(Prosody prosody, Collection<IntPtr> memoryBlocks)
+        internal static IntPtr ProsodyToPtr(Prosody? prosody, Collection<IntPtr> memoryBlocks)
         {
             if (prosody == null)
             {

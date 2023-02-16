@@ -305,7 +305,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="actionButtonType">Type of the action button.</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="showActionButton">The show action button.</param>
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string? actionButtonText, string? dismissButtonText, IconType? iconType)
         {
             InitializeComponent();
 
@@ -608,7 +608,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private void StartProcessInExplorer(string process) => Process.Start("explorer.exe", process);
 
-        private void SetIconType(IconType iconType, Image customImage = null)
+        private void SetIconType(IconType iconType, Image? customImage = null)
         {
             switch (iconType)
             {
@@ -658,7 +658,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
         }
 
-        private void SetActionText(ActionType? type, string buttonText = null)
+        private void SetActionText(ActionType? type, string? buttonText = null)
         {
             switch (type)
             {

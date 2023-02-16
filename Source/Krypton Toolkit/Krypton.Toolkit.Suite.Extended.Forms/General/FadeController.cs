@@ -195,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <summary>
         /// Fade the form out at the defined speed.
         /// </summary>
-        private void FadeOut(float fadeSpeed, FadeCompleted finished)
+        private void FadeOut(float fadeSpeed, FadeCompleted? finished)
         {
             if (form.Opacity < 0.1)
             {
@@ -211,7 +211,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             BeginFade();
         }
 
-        private void FadeOut(FadeSpeedChoice fadeSpeedChoice, FadeCompleted finished, float fadeSpeed = 0)
+        private void FadeOut(FadeSpeedChoice fadeSpeedChoice, FadeCompleted? finished, float fadeSpeed = 0)
         {
             if (form.Opacity < 0.1)
             {

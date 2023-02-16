@@ -354,7 +354,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="control">The <see cref="IColourEditor"/> to update.</param>
         /// <param name="sender">The <see cref="IColourEditor"/> triggering the update.</param>
-        protected virtual void SetColour(IColourEditor control, IColourEditor sender)
+        protected virtual void SetColour(IColourEditor? control, IColourEditor sender)
         {
             if (control != null && control != sender)
             {

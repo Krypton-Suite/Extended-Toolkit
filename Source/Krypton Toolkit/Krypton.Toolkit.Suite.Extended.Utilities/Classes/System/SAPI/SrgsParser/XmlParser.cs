@@ -206,7 +206,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
             throw new FormatException(SR.Get(id, args));
         }
 
-        internal static void ThrowSrgsExceptionWithPosition(string filename, XmlReader xmlReader, string sError, Exception innerException)
+        internal static void ThrowSrgsExceptionWithPosition(string? filename, XmlReader xmlReader, string sError, Exception innerException)
         {
             XmlTextReader xmlTextReader = xmlReader as XmlTextReader;
             if (xmlTextReader != null)
@@ -1102,7 +1102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
             }
         }
 
-        private bool ProcessChildNodes(XmlReader reader, IElement parent, IRule rule, string parentName)
+        private bool ProcessChildNodes(XmlReader reader, IElement? parent, IRule rule, string parentName)
         {
             bool flag = true;
             List<IPropertyTag> list = null;
@@ -1257,7 +1257,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
             return result;
         }
 
-        private bool ParseChildNodeElement(IElement parent, bool isInvalidNode, IElement child)
+        private bool ParseChildNodeElement(IElement parent, bool isInvalidNode, IElement? child)
         {
             if (child != null)
             {

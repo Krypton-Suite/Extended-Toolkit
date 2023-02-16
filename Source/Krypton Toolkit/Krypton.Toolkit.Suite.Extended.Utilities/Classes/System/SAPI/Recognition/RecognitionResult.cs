@@ -328,7 +328,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             return collection;
         }
 
-        private void ExtractDictationAlternates(ISpRecoResult recoResult, int maxAlternates)
+        private void ExtractDictationAlternates(ISpRecoResult? recoResult, int maxAlternates)
         {
             if (recoResult != null && base.Grammar is DictationGrammar)
             {

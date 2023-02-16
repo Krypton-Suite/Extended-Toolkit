@@ -326,15 +326,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                                KryptonMessageBoxDefaultButton defaultButton,
                                                MessageBoxOptions options,
                                                HelpInfo helpInfo, bool? showCtrlCopy,
-                                               Font messageBoxTypeface,
+                                               Font? messageBoxTypeface,
                                                Image customkryptonMessageBoxIcon, bool? showHelpButton,
                                                Color? messageTextColour, Color[] buttonTextColours,
                                                DialogResult? buttonOneCustomDialogResult,
                                                DialogResult? buttonTwoCustomDialogResult,
                                                DialogResult? buttonThreeCustomDialogResult,
                                                DialogResult? buttonFourDialogResult,
-                                               string buttonOneCustomText, string buttonTwoCustomText,
-                                               string buttonThreeCustomText, string buttonFourCustomText)
+                                               string? buttonOneCustomText, string? buttonTwoCustomText,
+                                               string? buttonThreeCustomText, string? buttonFourCustomText)
         {
             // Store incoming values
             _text = text;
@@ -706,7 +706,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                   messageSizing.Height + buttonsSizing.Height);
         }
 
-        private Size UpdateMessageSizing(IWin32Window showOwner)
+        private Size UpdateMessageSizing(IWin32Window? showOwner)
         {
             // Update size of the message label but with a maximum width
             Size textSize;

@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="PaletteMode">The palette mode manager.</param>
         /// <param name="manager">The manager.</param>
         /// <returns>The chosen theme as a string.</returns>
-        public static string ReturnPaletteModeAsString(PaletteMode PaletteMode, KryptonManager manager = null)
+        public static string ReturnPaletteModeAsString(PaletteMode PaletteMode, KryptonManager? manager = null)
         {
             var paletteMode = manager?.GlobalPaletteMode ?? PaletteMode;
 

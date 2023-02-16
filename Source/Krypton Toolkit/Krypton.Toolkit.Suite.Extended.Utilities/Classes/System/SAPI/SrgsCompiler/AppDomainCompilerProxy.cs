@@ -165,7 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             }
         }
 
-        private static string WrapConstructorCSharp(int iCfg, ParameterInfo[] parameters, string classname)
+        private static string WrapConstructorCSharp(int iCfg, ParameterInfo[]? parameters, string classname)
         {
             StringBuilder stringBuilder = new StringBuilder(200);
             stringBuilder.Append(" public ");
@@ -218,7 +218,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             return stringBuilder.ToString();
         }
 
-        private static string WrapConstructorVB(int iCfg, ParameterInfo[] parameters, string classname)
+        private static string WrapConstructorVB(int iCfg, ParameterInfo[]? parameters, string classname)
         {
             StringBuilder stringBuilder = new StringBuilder(200);
             stringBuilder.Append("Public Sub New");

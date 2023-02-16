@@ -442,7 +442,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             StartParagraph(null);
         }
 
-        public void StartParagraph(CultureInfo culture)
+        public void StartParagraph(CultureInfo? culture)
         {
             StackElement stackElement = _elementStack.Peek();
             ValidateElement(stackElement, SsmlElement.Paragraph);
@@ -478,7 +478,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             StartSentence(null);
         }
 
-        public void StartSentence(CultureInfo culture)
+        public void StartSentence(CultureInfo? culture)
         {
             StackElement stackElement = _elementStack.Peek();
             ValidateElement(stackElement, SsmlElement.Sentence);

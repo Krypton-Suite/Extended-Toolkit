@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <exception cref="ArgumentOutOfRangeException">
         ///     Duration is less than zero
         /// </exception>
-        public AnimationPath(float start, float end, ulong duration, ulong delay, AnimationFunctions.Function function)
+        public AnimationPath(float start, float end, ulong duration, ulong delay, AnimationFunctions.Function? function)
         {
             Start = start;
             End = end;

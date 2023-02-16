@@ -512,7 +512,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             RecoBase.RequestRecognizerUpdate(userToken, audioPositionAheadToRaiseUpdate);
         }
 
-        private void Initialize(RecognizerInfo recognizerInfo)
+        private void Initialize(RecognizerInfo? recognizerInfo)
         {
             try
             {

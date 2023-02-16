@@ -592,7 +592,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// Not the implemented yet.
         /// </summary>
         /// <param name="featureName">Name of the feature.</param>
-        public static void NotImplementedYet(string featureName = null)
+        public static void NotImplementedYet(string? featureName = null)
         {
             if (featureName != null)
             {

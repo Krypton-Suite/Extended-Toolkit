@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             return new RegistryDataKey(keyId, hkey);
         }
 
-        private static RegistryDataKey OpenSubKey(RegistryDataKey baseKey, string registryPath, bool createIfNotExist)
+        private static RegistryDataKey OpenSubKey(RegistryDataKey? baseKey, string registryPath, bool createIfNotExist)
         {
             if (string.IsNullOrEmpty(registryPath) || baseKey == null)
             {
@@ -246,7 +246,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             return _sapiRegKey.EnumValues(index, out valueName);
         }
 
-        internal bool TryGetString(string valueName, out string value)
+        internal bool TryGetString(string? valueName, out string value)
         {
             if (valueName == null)
             {

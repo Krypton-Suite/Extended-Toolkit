@@ -474,7 +474,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
         }
 
-        internal void SetOutput(Stream stream, SpeechAudioFormatInfo formatInfo, bool headerInfo)
+        internal void SetOutput(Stream? stream, SpeechAudioFormatInfo formatInfo, bool headerInfo)
         {
             lock (_pendingSpeakQueue)
             {
@@ -644,7 +644,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             return GetEngineWithVoice(defaultVoice, null, name, culture, gender, age, variant, switchContext);
         }
 
-        internal ReadOnlyCollection<InstalledVoice> GetInstalledVoices(CultureInfo culture)
+        internal ReadOnlyCollection<InstalledVoice> GetInstalledVoices(CultureInfo? culture)
         {
             if (culture == null || culture == CultureInfo.InvariantCulture)
             {
@@ -977,7 +977,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _evtPendingGetProxy.WaitOne();
         }
 
-        private TTSVoice GetEngineWithVoice(TTSVoice defaultVoice, VoiceInfo defaultVoiceId, string name, CultureInfo culture, VoiceGender gender, VoiceAge age, int variant, bool switchContext)
+        private TTSVoice GetEngineWithVoice(TTSVoice? defaultVoice, VoiceInfo? defaultVoiceId, string name, CultureInfo culture, VoiceGender gender, VoiceAge age, int variant, bool switchContext)
         {
             TTSVoice tTSVoice = null;
             lock (_enabledVoicesLock)
@@ -1142,7 +1142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             return installedVoice;
         }
 
-        private static int CalcMatchValue(CultureInfo culture, VoiceGender gender, VoiceAge age, VoiceInfo voiceInfo)
+        private static int CalcMatchValue(CultureInfo? culture, VoiceGender gender, VoiceAge age, VoiceInfo? voiceInfo)
         {
             int num;
             if (voiceInfo != null)

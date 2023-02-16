@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public HatchStyle HatchStyle = HatchStyle.None;
         public float BorderLineWidth = 1;
 
-        public BarPlot(double[] xs, double[] ys, double[] yErr, double[] yOffsets) : base()
+        public BarPlot(double[] xs, double[] ys, double[]? yErr, double[]? yOffsets) : base()
         {
             if (ys is null || ys.Length == 0)
                 throw new InvalidOperationException("ys must be an array that contains elements");

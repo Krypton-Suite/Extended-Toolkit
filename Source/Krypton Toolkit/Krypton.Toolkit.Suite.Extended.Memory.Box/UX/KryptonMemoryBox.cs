@@ -259,7 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
             DialogResult = dialogResult;
         }
 
-        private Size UpdateMessageSizing(IWin32Window showOwner)
+        private Size UpdateMessageSizing(IWin32Window? showOwner)
         {
             Size textSize;
 

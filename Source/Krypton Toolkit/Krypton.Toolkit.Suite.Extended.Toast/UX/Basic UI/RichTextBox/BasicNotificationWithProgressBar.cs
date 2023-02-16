@@ -405,8 +405,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                  RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                  KryptonCommand actionButtonCommand = null,
                                  bool? openProcessInExplorer = null,
-                                 string processPath = null,
-                                 object optionalParameters = null)
+                                 string? processPath = null,
+                                 object? optionalParameters = null)
         {
             ActionButtonLocation = actionButtonLocation ?? ActionButtonLocation.Left;
 

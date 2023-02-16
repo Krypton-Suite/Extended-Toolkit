@@ -149,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="multiplier">The maximum number above offset that may be generated.</param>
         /// <param name="offset">The minimum number that may be generated.</param>
         /// <returns>An array of random numbers.</returns>
-        public static double[] Random(Random rand, int pointCount, double multiplier = 1, double offset = 0)
+        public static double[] Random(Random? rand, int pointCount, double multiplier = 1, double offset = 0)
         {
             if (rand is null)
                 rand = new Random();
@@ -190,7 +190,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="multiplier">The maximum number above offset that may be generated.</param>
         /// <param name="offset">The minimum number that may be generated.</param>
         /// <returns>An array of random numbers.</returns>
-        public static int[] RandomInts(Random rand, int pointCount, double multiplier = 1, double offset = 0)
+        public static int[] RandomInts(Random? rand, int pointCount, double multiplier = 1, double offset = 0)
         {
             if (rand is null)
                 rand = new Random();
@@ -241,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="stdDev">The standard deviation of the distribution.</param>
         /// <param name="maxSdMultiple">The maximum distance from the mean to generate, given as a multiple of the standard deviation.</param>
         /// <returns>An array of values from a normal distribution.</returns>
-        public static double[] RandomNormal(Random rand, int pointCount, double mean = .5, double stdDev = .5, double maxSdMultiple = 10)
+        public static double[] RandomNormal(Random? rand, int pointCount, double mean = .5, double stdDev = .5, double maxSdMultiple = 10)
         {
             if (rand == null)
                 rand = new Random(0);
@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="offset">The y-intercept of the line. Default 0.</param>
         /// <param name="noise">The standard deviation of the residuals. Default 0.1</param>
         /// <returns>An array of approximately linear data.</returns>
-        public static double[] NoisyLinear(Random rand, int pointCount = 100, double slope = 1, double offset = 0, double noise = 0.1)
+        public static double[] NoisyLinear(Random? rand, int pointCount = 100, double slope = 1, double offset = 0, double noise = 0.1)
         {
             if (rand is null)
                 rand = new Random(0);
@@ -282,7 +282,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="noiseLevel">Twice the maximum residual, in units of mult. Default 0.5</param>
         /// <param name="mult">The number to multiply the residuals by. Default 1.</param>
         /// <returns>An array of approximately sinusoidal data.</returns>
-        public static double[] NoisySin(Random rand, int pointCount, double oscillations = 1, double noiseLevel = .5, double mult = 1)
+        public static double[] NoisySin(Random? rand, int pointCount, double oscillations = 1, double noiseLevel = .5, double mult = 1)
         {
             if (rand is null)
                 rand = new Random(0);
@@ -299,7 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="min">The min of each component. Default 0.</param>
         /// <param name="max">The max of each component. Default 255.</param>
         /// <returns>A random color.</returns>
-        public static Color RandomColor(Random rand, int min = 0, int max = 255)
+        public static Color RandomColor(Random? rand, int min = 0, int max = 255)
         {
             if (rand is null)
                 rand = new Random();
@@ -327,7 +327,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="mult">The max difference between points in the walk. Default 1.</param>
         /// <param name="offset">The first point in the walk. Default 0.</param>
         /// <returns>The cumulative sum of a random set of numbers.</returns>
-        public static double[] RandomWalk(Random rand, int pointCount, double mult = 1, double offset = 0)
+        public static double[] RandomWalk(Random? rand, int pointCount, double mult = 1, double offset = 0)
         {
             if (rand is null)
                 rand = new Random(0);
@@ -392,7 +392,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="mult">The max difference between base prices around which that day's prices independently vary. Default 10.</param>
         /// <param name="startingPrice">The initial base price. Default 123.45</param>
         /// <returns>OHLC array with random prices</returns>
-        private static OHLC[] RandomStockPrices(Random rand, int pointCount, double mult = 10, double startingPrice = 123.45)
+        private static OHLC[] RandomStockPrices(Random? rand, int pointCount, double mult = 10, double startingPrice = 123.45)
         {
             if (rand is null)
                 rand = new Random(0);
@@ -447,7 +447,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="high">Tge naximum of the span. Default 100.</param>
         /// <param name="minimumSpacing">The minimum length of the span. Default 10.</param>
         /// <returns>A random span.</returns>
-        public static (double, double) RandomSpan(Random rand = null, double low = 0, double high = 100, double minimumSpacing = 10)
+        public static (double, double) RandomSpan(Random? rand = null, double low = 0, double high = 100, double minimumSpacing = 10)
         {
             if (rand is null)
                 rand = new Random();

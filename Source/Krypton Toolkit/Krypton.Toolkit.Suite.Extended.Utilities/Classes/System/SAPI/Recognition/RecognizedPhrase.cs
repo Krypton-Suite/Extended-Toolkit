@@ -585,7 +585,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             }
         }
 
-        private void RecursivelyExtractSemanticValue(IntPtr phraseBuffer, int semanticsOffset, SemanticValue semanticValue, IList<RecognizedWordUnit> words, bool isSapi53Header, GrammarOptions semanticTag)
+        private void RecursivelyExtractSemanticValue(IntPtr phraseBuffer, int semanticsOffset, SemanticValue? semanticValue, IList<RecognizedWordUnit> words, bool isSapi53Header, GrammarOptions semanticTag)
         {
             IntPtr ptr = new IntPtr((long)phraseBuffer + semanticsOffset);
             SPSERIALIZEDPHRASEPROPERTY sPSERIALIZEDPHRASEPROPERTY = (SPSERIALIZEDPHRASEPROPERTY)Marshal.PtrToStructure(ptr, typeof(SPSERIALIZEDPHRASEPROPERTY));
@@ -717,7 +717,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             return new SemanticValue(propertyName, obj, property.SREngineConfidence);
         }
 
-        private static RuleNode ExtractRules(Grammar grammar, SPSERIALIZEDPHRASERULE rule, IntPtr phraseBuffer)
+        private static RuleNode ExtractRules(Grammar? grammar, SPSERIALIZEDPHRASERULE rule, IntPtr phraseBuffer)
         {
             IntPtr ptr = new IntPtr((long)phraseBuffer + (int)rule.pszNameOffset);
             string text = Marshal.PtrToStringUni(ptr);
@@ -889,7 +889,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             return result;
         }
 
-        private static object TryExecuteOnRecognition(Grammar grammar, RecognitionResult result, string rootRule)
+        private static object TryExecuteOnRecognition(Grammar? grammar, RecognitionResult result, string rootRule)
         {
             object result2 = result.Semantics.Value;
             if (grammar != null && grammar._scripts != null)
@@ -979,7 +979,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             AppendPropertiesSML(document, xmlElement, _semantics, nfo);
         }
 
-        private void AppendPropertiesSML(XmlDocument document, XmlElement alternateNode, SemanticValue semanticsNode, NumberFormatInfo nfo)
+        private void AppendPropertiesSML(XmlDocument document, XmlElement alternateNode, SemanticValue? semanticsNode, NumberFormatInfo nfo)
         {
             if (semanticsNode != null)
             {

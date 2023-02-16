@@ -588,7 +588,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         /// <param name="mode"></param>
         /// <param name="data"></param>
         /// <returns>Row for the data object provided</returns>
-        internal VirtualTreeRowNode Add(VirtualTreeRowNode parentNode, NodeAttachPlacement mode, object data)
+        internal VirtualTreeRowNode Add(VirtualTreeRowNode? parentNode, NodeAttachPlacement mode, object data)
         {
             VirtualTreeRowNode newNode = new(data);
 
@@ -1038,7 +1038,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
             return nodeIndent;
         }
 
-        internal void ViewDrawRowNode(VirtualTreeRowNode rowNode, Graphics graphics, Rectangle bounds, int rowOffset)
+        internal void ViewDrawRowNode(VirtualTreeRowNode? rowNode, Graphics graphics, Rectangle bounds, int rowOffset)
         {
             // We cannot do anything without a valid node
             if (rowNode == null)

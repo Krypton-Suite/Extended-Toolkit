@@ -1521,7 +1521,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void UpdateBorderRegion(Region newRegion)
+        private void UpdateBorderRegion(Region? newRegion)
         {
             if ((newRegion != null)
                 && (newRegion.IsEmpty(this.CreateGraphics()))

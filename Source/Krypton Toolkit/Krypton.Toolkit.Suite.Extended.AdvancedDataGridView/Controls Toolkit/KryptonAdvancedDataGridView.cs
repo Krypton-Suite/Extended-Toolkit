@@ -194,7 +194,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Set translation dictionary
         /// </summary>
         /// <param name="translations"></param>
-        public static void SetTranslations(IDictionary<string, string> translations)
+        public static void SetTranslations(IDictionary<string, string>? translations)
         {
             //set localization strings
             if (translations != null)
@@ -1054,7 +1054,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="isWholeWordSearch"></param>
         /// <param name="isCaseSensitive"></param>
         /// <returns></returns>
-        public DataGridViewCell FindCell(string valueToFind, string columnName, int rowIndex, int columnIndex, bool isWholeWordSearch, bool isCaseSensitive)
+        public DataGridViewCell FindCell(string? valueToFind, string? columnName, int rowIndex, int columnIndex, bool isWholeWordSearch, bool isCaseSensitive)
         {
             if (valueToFind != null && RowCount > 0 && ColumnCount > 0 && (columnName == null || (Columns.Contains(columnName) && Columns[columnName].Visible)))
             {

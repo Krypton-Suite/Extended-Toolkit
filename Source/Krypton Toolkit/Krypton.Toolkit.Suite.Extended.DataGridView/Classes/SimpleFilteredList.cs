@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             return FindCore(0, prop, key);
         }
 
-        private int FindCore(int startIndex, PropertyDescriptor prop, object key)
+        private int FindCore(int startIndex, PropertyDescriptor prop, object? key)
         {
             // Get the property info for the specified property.
             PropertyInfo propInfo = typeof(T).GetProperty(prop.Name);

@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public static class Tools
     {
-        public static Color GetRandomColor(Random rand = null)
+        public static Color GetRandomColor(Random? rand = null)
         {
             if (rand is null)
                 rand = new Random();

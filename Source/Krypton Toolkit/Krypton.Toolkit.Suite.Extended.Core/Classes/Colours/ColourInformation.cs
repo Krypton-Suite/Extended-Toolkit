@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>
         ///   <br />
         /// </returns>
-        public static string ReturnColourInformtion(Color colour, string colourHeader = null)
+        public static string ReturnColourInformtion(Color colour, string? colourHeader = null)
         {
             StringBuilder builder = new StringBuilder();
 

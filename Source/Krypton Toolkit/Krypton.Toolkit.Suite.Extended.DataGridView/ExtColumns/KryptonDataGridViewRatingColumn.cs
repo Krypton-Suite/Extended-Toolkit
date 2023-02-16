@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="formattedValueTypeConverter"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        protected override object GetFormattedValue(object value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
+        protected override object GetFormattedValue(object? value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
         {
             if (value == null)
             {

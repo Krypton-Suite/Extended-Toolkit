@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 
         private Guid _formatType;
 
-        internal SpAudioStreamWrapper(Stream stream, SpeechAudioFormatInfo audioFormat)
+        internal SpAudioStreamWrapper(Stream stream, SpeechAudioFormatInfo? audioFormat)
             : base(stream)
         {
             _formatType = SAPIGuids.SPDFID_WaveFormatEx;

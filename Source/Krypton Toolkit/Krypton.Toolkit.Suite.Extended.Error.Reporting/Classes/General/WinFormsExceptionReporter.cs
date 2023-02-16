@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 		/// <remarks>The <see cref="ExceptionReporter"/> will analyze the <see cref="Exception"/>s and 
 		/// create and show the report dialog.</remarks>
 		/// <param name="exceptions">The <see cref="Exception"/>s to show.</param>
-		public bool Show(params Exception[] exceptions)
+		public bool Show(params Exception[]? exceptions)
 		{
 			// silently ignore the mistake of passing null
 			if (exceptions == null || exceptions.Length == 0 || exceptions.Length >= 1 && exceptions[0] == null) return false;

@@ -462,7 +462,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         [Obsolete("Create this plottable manually with new, then Add() it to the plot.")]
         public Heatmap PlotHeatmap(
             double?[,] intensities,
-            ColourMap colormap = null,
+            ColourMap? colormap = null,
             string label = null,
             double[] axisOffsets = null,
             double[] axisMultipliers = null,
@@ -616,7 +616,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public PiePlot PlotPie(
             double[] values,
             string[] sliceLabels = null,
-            Color[] colors = null,
+            Color[]? colors = null,
             bool explodedChart = false,
             bool showValues = false,
             bool showPercentages = false,
@@ -961,7 +961,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         }
 
         [Obsolete("Use AddPopulations() and customize the object it returns")]
-        public PopulationPlot PlotPopulations(PopulationSeries series, string label = null)
+        public PopulationPlot PlotPopulations(PopulationSeries series, string? label = null)
         {
             series.color = settings.GetNextColor();
             if (label != null)
@@ -987,7 +987,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double[,] values,
             string[] categoryNames = null,
             string[] groupNames = null,
-            Color[] fillColors = null,
+            Color[]? fillColors = null,
             double fillAlpha = .4,
             Color? webColor = null,
             bool independentAxes = false,

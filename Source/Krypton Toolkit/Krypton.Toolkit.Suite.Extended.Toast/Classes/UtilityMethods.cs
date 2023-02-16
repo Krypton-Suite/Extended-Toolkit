@@ -200,7 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="text">The text.</param>
         public static void ConfigureToastNotificationButton(KryptonToastButton toastButton, ActionType actionType,
             bool? isAcceptButton, bool? isDenyButton, bool? openInExplorer, object optionalParameters = null,
-            string processName = null, string text = null)
+            string? processName = null, string? text = null)
         {
             toastButton.ActionType = actionType;
 

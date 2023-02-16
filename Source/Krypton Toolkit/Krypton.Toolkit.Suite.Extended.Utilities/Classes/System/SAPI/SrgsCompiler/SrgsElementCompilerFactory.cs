@@ -177,7 +177,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         {
         }
 
-        private void ParseToken(ParseElementCollection parent, string sToken, string pronunciation, string display, float reqConfidence)
+        private void ParseToken(ParseElementCollection? parent, string sToken, string? pronunciation, string? display, float reqConfidence)
         {
             int requiredConfidence = parent?._confidence ?? 0;
             sToken = Backend.NormalizeTokenWhiteSpace(sToken);

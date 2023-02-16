@@ -232,7 +232,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         #endregion
 
         #region Constructors
-        public DownloadProgressDialog(AppCastItem item, Icon applicationIcon = null)
+        public DownloadProgressDialog(AppCastItem item, Icon? applicationIcon = null)
         {
             InitializeComponent();
 

@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// Constructor
         /// </summary>
         /// <param name="assemblyName">the assembly name</param>
-        public AssemblyReflectionAccessor(string assemblyName)
+        public AssemblyReflectionAccessor(string? assemblyName)
         {
             if (assemblyName == null)
             {

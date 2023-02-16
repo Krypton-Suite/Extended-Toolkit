@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
         {
         }
 
-        internal ItemElement(GrammarBuilderBase builder, int minRepeat, int maxRepeat)
+        internal ItemElement(GrammarBuilderBase? builder, int minRepeat, int maxRepeat)
         {
             if (builder != null)
             {

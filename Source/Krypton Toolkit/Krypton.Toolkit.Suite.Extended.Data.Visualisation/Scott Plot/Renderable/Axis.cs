@@ -173,7 +173,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Configure the label of this axis
         /// </summary>
-        public string Label(string label = null, Color? color = null, float? size = null, bool? bold = null, string fontName = null)
+        public string Label(string? label = null, Color? color = null, float? size = null, bool? bold = null, string? fontName = null)
         {
             AxisLabel.IsVisible = true;
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
@@ -248,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             bool? exponential = null,
             bool? invertSign = null,
             int? radix = null,
-            string prefix = null)
+            string? prefix = null)
         {
             AxisTicks.TickCollection.useMultiplierNotation = multiplier ?? AxisTicks.TickCollection.useMultiplierNotation;
             AxisTicks.TickCollection.useOffsetNotation = offset ?? AxisTicks.TickCollection.useOffsetNotation;
@@ -334,7 +334,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public void TickLabelStyle(
             Color? color = null,
-            string fontName = null,
+            string? fontName = null,
             float? fontSize = null,
             bool? fontBold = null,
             float? rotation = null)
@@ -351,7 +351,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public void LabelStyle(
             Color? color = null,
-            string fontName = null,
+            string? fontName = null,
             float? fontSize = null)
         {
             AxisLabel.Font.Color = color ?? AxisLabel.Font.Color;

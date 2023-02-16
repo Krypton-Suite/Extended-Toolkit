@@ -106,7 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="value">The value of the group</param>
         /// <returns>The IOutlookGridGroup.</returns>
-        public IOutlookGridGroup FindGroup(object value)
+        public IOutlookGridGroup FindGroup(object? value)
         {
             //We must return null if no group exist, then the OutlookGrid will create one. But we must return a group even for a null value.
             if (value == null)

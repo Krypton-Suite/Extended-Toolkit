@@ -127,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         #endregion
 
         #region Constructor
-        public NetSparkleToastNotifier(Icon applicationIcon = null)
+        public NetSparkleToastNotifier(Icon? applicationIcon = null)
         {
             InitializeComponent();
             // We want our window to be the top most

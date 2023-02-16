@@ -105,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor
         /// </summary>
         /// <param name="parentGroup">The parent group if any.</param>
-        public OutlookGridDefaultGroup(IOutlookGridGroup parentGroup) : this()
+        public OutlookGridDefaultGroup(IOutlookGridGroup? parentGroup) : this()
         {
             if (parentGroup != null)
                 Children.ParentGroup = parentGroup;

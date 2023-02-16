@@ -719,7 +719,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             return null;
         }
 
-        void IRecognizerInternal.SetDictationContext(Grammar grammar, string precedingText, string subsequentText)
+        void IRecognizerInternal.SetDictationContext(Grammar grammar, string? precedingText, string? subsequentText)
         {
             if (precedingText == null)
             {
@@ -1031,7 +1031,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             _inputStream = stream;
         }
 
-        internal void SetInput(Stream stream, SpeechAudioFormatInfo audioFormat)
+        internal void SetInput(Stream? stream, SpeechAudioFormatInfo audioFormat)
         {
             lock (SapiRecognizer)
             {
@@ -1546,7 +1546,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             return result;
         }
 
-        private void InternalEmulateRecognizeAsync(string phrase, SpeechEmulationCompareFlags flag, bool useReco2, RecognizedWordUnit[] wordUnits)
+        private void InternalEmulateRecognizeAsync(string phrase, SpeechEmulationCompareFlags flag, bool useReco2, RecognizedWordUnit[]? wordUnits)
         {
             lock (SapiRecognizer)
             {
@@ -2116,7 +2116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             }
         }
 
-        private uint AddBookmarkItem(object userToken)
+        private uint AddBookmarkItem(object? userToken)
         {
             uint result = 0u;
             if (userToken != null)

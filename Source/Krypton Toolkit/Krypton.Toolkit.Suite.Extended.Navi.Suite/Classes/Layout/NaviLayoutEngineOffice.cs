@@ -667,7 +667,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// Handles the MouseDown event
         /// </summary>
         /// <param name="e">Additional event info</param>
-        private void HandleMouseDown(MouseEventArgs e)
+        private void HandleMouseDown(MouseEventArgs? e)
         {
             if (e != null)
             {
@@ -688,7 +688,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// Handles the MouseMove event
         /// </summary>
         /// <param name="e">Additional event info</param>
-        private void HandleMouseMove(MouseEventArgs e)
+        private void HandleMouseMove(MouseEventArgs? e)
         {
             if (e != null)
             {

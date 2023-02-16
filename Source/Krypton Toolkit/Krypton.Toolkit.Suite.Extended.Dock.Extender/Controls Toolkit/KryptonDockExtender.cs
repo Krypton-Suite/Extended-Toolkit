@@ -117,7 +117,7 @@
         }
 
         // finds the potential dockhost control at the specified location
-        internal bool FormIsHit(Control c, Point pt)
+        internal bool FormIsHit(Control? c, Point pt)
         {
             if (c == null) return false;
 

@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat
             }
         }
 
-        private SpeechAudioFormatInfo(EncodingFormat encodingFormat, int samplesPerSecond, short bitsPerSample, short channelCount, byte[] formatSpecificData)
+        private SpeechAudioFormatInfo(EncodingFormat encodingFormat, int samplesPerSecond, short bitsPerSample, short channelCount, byte[]? formatSpecificData)
         {
             if (encodingFormat == (EncodingFormat)0)
             {

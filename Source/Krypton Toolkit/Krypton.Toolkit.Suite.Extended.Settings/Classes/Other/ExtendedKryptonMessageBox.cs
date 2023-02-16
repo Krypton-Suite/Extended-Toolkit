@@ -502,9 +502,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         private ExtendedKryptonMessageBox(IWin32Window showOwner, string text, string caption,
             MessageBoxButtons buttons, KryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
             MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy, bool topMost,
-            Font messageboxTypeface, bool showDoNotShowAgainOption, string doNotShowAgainOptionText,
+            Font? messageboxTypeface, bool showDoNotShowAgainOption, string doNotShowAgainOptionText,
             bool useTimeOutOption, int timeOut, int timeOutDelay, DialogResult defaultTimeOutResponse,
-            string button1Text, string button2Text, string button3Text)
+            string? button1Text, string? button2Text, string? button3Text)
         {
             #region Store Values
             _text = text;
@@ -551,7 +551,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             else
             {
-                // More work needed
+                // Note: More work needed
                 UpdateButtons(button1Text, button2Text, button3Text);
             }
 
@@ -1322,7 +1322,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
         }
 
-        private void UpdateButtons(string button1Text, string button2Text, string button3Text)
+        private void UpdateButtons(string? button1Text, string? button2Text, string? button3Text)
         {
             switch (_buttons)
             {
@@ -1451,7 +1451,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                                   messageSizing.Height + buttonsSizing.Height);
         }
 
-        private Size UpdateMessageSizing(IWin32Window showOwner)
+        private Size UpdateMessageSizing(IWin32Window? showOwner)
         {
             // Update size of the message label but with a maximum width
             using (Graphics g = CreateGraphics())

@@ -107,18 +107,18 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                KryptonMessageBoxDefaultButton defaultButton,
                                                MessageBoxOptions options,
                                                HelpInfo helpInfo, bool? showCtrlCopy,
-                                               Font messageBoxTypeface,
+                                               Font? messageBoxTypeface,
                                                Image customKryptonMessageBoxIcon, bool? showHelpButton,
                                                Color? messageTextColour, Color[] buttonTextColours,
                                                DialogResult? buttonOneCustomDialogResult,
                                                DialogResult? buttonTwoCustomDialogResult,
                                                DialogResult? buttonThreeCustomDialogResult,
                                                DialogResult? buttonFourDialogResult,
-                                               string buttonOneCustomText, string buttonTwoCustomText,
-                                               string buttonThreeCustomText, string buttonFourCustomText,
-                                               string applicationPath,
+                                               string? buttonOneCustomText, string? buttonTwoCustomText,
+                                               string? buttonThreeCustomText, string? buttonFourCustomText,
+                                               string? applicationPath,
                                                ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
-                                               string linkDestination, LinkArea? linkArea,
+                                               string? linkDestination, LinkArea? linkArea,
                                                bool? openInExplorer)
         {
             // Store incoming values
@@ -588,7 +588,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                   messageSizing.Height + buttonsSizing.Height);
         }
 
-        private Size UpdateMessageSizing(IWin32Window showOwner)
+        private Size UpdateMessageSizing(IWin32Window? showOwner)
         {
             // Update size of the message label but with a maximum width
             Size textSize;

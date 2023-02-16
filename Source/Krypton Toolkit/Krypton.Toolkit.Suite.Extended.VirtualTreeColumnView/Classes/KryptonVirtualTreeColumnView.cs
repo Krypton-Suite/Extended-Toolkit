@@ -1350,7 +1350,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
             }
         }
 
-        private void UpdateContentFromNode(VirtualTreeRowNode node)
+        private void UpdateContentFromNode(VirtualTreeRowNode? node)
         {
             if (node != null)
             {

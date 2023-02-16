@@ -192,7 +192,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <param name="item">The item XML node</param>
         /// <param name="logWriter">logwriter instance</param>
         /// <returns>AppCastItem from Xml Node</returns>
-        public static AppCastItem Parse(string installedVersion, string applicationName, string castUrl, XElement item, LogWriter logWriter)
+        public static AppCastItem Parse(string installedVersion, string applicationName, string castUrl, XElement item, LogWriter? logWriter)
         {
 
             var newAppCastItem = new AppCastItem()
@@ -394,7 +394,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <param name="left">AppCastItem to compare</param>
         /// <param name="right">AppCastItem to compare</param>
         /// <returns>True if items are the same</returns>
-        public static bool operator ==(AppCastItem left, AppCastItem right)
+        public static bool operator ==(AppCastItem? left, AppCastItem? right)
         {
             if (left is null)
             {
@@ -420,7 +420,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <param name="left">AppCastItem to compare</param>
         /// <param name="right">AppCastItem to compare</param>
         /// <returns>True if left version is less than right version</returns>
-        public static bool operator <(AppCastItem left, AppCastItem right)
+        public static bool operator <(AppCastItem? left, AppCastItem? right)
         {
             return left is null ? !(right is null) : left.CompareTo(right) < 0;
         }
@@ -431,7 +431,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <param name="left">AppCastItem to compare</param>
         /// <param name="right">AppCastItem to compare</param>
         /// <returns>True if left version is less than or equal to right version</returns>
-        public static bool operator <=(AppCastItem left, AppCastItem right)
+        public static bool operator <=(AppCastItem? left, AppCastItem right)
         {
             return left is null || left.CompareTo(right) <= 0;
         }
@@ -442,7 +442,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <param name="left">AppCastItem to compare</param>
         /// <param name="right">AppCastItem to compare</param>
         /// <returns>True if left version is greater than right version</returns>
-        public static bool operator >(AppCastItem left, AppCastItem right)
+        public static bool operator >(AppCastItem? left, AppCastItem right)
         {
             return !(left is null) && left.CompareTo(right) > 0;
         }
@@ -453,7 +453,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <param name="left">AppCastItem to compare</param>
         /// <param name="right">AppCastItem to compare</param>
         /// <returns>True if left version is greater than or equal to right version</returns>
-        public static bool operator >=(AppCastItem left, AppCastItem right)
+        public static bool operator >=(AppCastItem? left, AppCastItem? right)
         {
             return left is null ? right is null : left.CompareTo(right) >= 0;
         }

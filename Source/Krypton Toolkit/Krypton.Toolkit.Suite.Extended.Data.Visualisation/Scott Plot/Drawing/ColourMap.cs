@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         private static readonly ColourMapFactory ColourMapFactory = new ColourMapFactory();
 
-        public ColourMap(IColourMap colormap)
+        public ColourMap(IColourMap? colormap)
         {
             ThisColourMap = colormap ?? ColourMapFactory.GetDefaultColourMap();
         }

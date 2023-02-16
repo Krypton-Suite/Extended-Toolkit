@@ -441,7 +441,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             engine.EndSpeakElement();
         }
 
-        private static void ProcessElement(XmlReader reader, ISsmlParser engine, string sElement, SsmlElement possibleElements, SsmlAttributes ssmAttributesParent, bool fIgnore, List<SsmlXmlAttribute> extraAttributes)
+        private static void ProcessElement(XmlReader reader, ISsmlParser engine, string sElement, SsmlElement possibleElements, SsmlAttributes ssmAttributesParent, bool fIgnore, List<SsmlXmlAttribute>? extraAttributes)
         {
             SsmlAttributes ssmlAttributes = default(SsmlAttributes);
             ssmlAttributes = ssmAttributesParent;

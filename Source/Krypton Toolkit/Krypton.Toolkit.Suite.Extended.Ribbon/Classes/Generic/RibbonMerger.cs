@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="tagValue">The value for the tag.</param>
         /// <param name="maxValue">The maximum value for the items.</param>
         /// <returns>The sorting index.</returns>
-        private int GetSortIndexFromTag(object tagValue, int maxValue)
+        private int GetSortIndexFromTag(object? tagValue, int maxValue)
         {
             if (maxValue < 0)
             {
@@ -318,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// Function to merge a ribbon with the target ribbon
         /// </summary>
         /// <param name="ribbon">The ribbon to merge.</param>
-        public void Merge(KryptonRibbon ribbon)
+        public void Merge(KryptonRibbon? ribbon)
         {
             if (ribbon is null)
             {
@@ -346,7 +346,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// Function to unmerge the specified ribbon from the target ribbon.
         /// </summary>
         /// <param name="ribbon">The ribbon to unmerge.</param>
-        public void Unmerge(KryptonRibbon ribbon)
+        public void Unmerge(KryptonRibbon? ribbon)
         {
             if (ribbon is null)
             {

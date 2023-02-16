@@ -189,7 +189,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         {
         }
 
-        private Arc(string sWord, Rule ruleRef, StringBlob words, float flWeight, int confidence, Rule specialRule, uint iSerialize, MatchMode matchMode, ref bool fNeedWeightTable)
+        private Arc(string sWord, Rule ruleRef, StringBlob words, float flWeight, int confidence, Rule? specialRule, uint iSerialize, MatchMode matchMode, ref bool fNeedWeightTable)
             : this(0, flWeight, confidence, 0, matchMode, ref fNeedWeightTable)
         {
             _ruleRef = ruleRef;

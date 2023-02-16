@@ -279,7 +279,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Constructor
-        public ToolStripExistingComponentChooser(List<ToolStripPanelExtended> panels)
+        public ToolStripExistingComponentChooser(List<ToolStripPanelExtended>? panels)
         {
             InitializeComponent();
 

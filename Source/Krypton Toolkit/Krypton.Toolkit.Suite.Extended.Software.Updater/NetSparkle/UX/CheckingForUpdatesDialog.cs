@@ -156,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         #endregion
 
         #region Constructor
-        public CheckingForUpdatesDialog(Icon appIcon = null)
+        public CheckingForUpdatesDialog(Icon? appIcon = null)
         {
             InitializeComponent();
 

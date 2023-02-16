@@ -393,7 +393,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         private InternalKryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
             MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
             MessageBoxOptions options, HelPlatformInvokenformation helPlatformInvokenformation, bool? showCtrlCopy,
-            Font messageboxTypeface)
+            Font? messageboxTypeface)
         {
             #region Store Values
             _text = text;
@@ -1044,7 +1044,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                   messageSizing.Height + buttonsSizing.Height);
         }
 
-        private Size UpdateMessageSizing(IWin32Window showOwner)
+        private Size UpdateMessageSizing(IWin32Window? showOwner)
         {
             // Update size of the message label but with a maximum width
             using (Graphics g = CreateGraphics())

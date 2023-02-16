@@ -321,7 +321,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Set translation dictionary
         /// </summary>
         /// <param name="translations"></param>
-        public static void SetTranslations(IDictionary<string, string> translations)
+        public static void SetTranslations(IDictionary<string, string>? translations)
         {
             //set localization strings
             if (translations != null)

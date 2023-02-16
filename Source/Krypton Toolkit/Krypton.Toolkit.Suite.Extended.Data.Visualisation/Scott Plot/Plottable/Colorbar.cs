@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         private IHasColormap Plottable;
 
-        public Colorbar(ColourMap colormap = null)
+        public Colorbar(ColourMap? colormap = null)
         {
             UpdateColormap(colormap ?? ColourMap.Viridis);
         }
@@ -113,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="enable"></param>
         /// <param name="minimumSpacing">Minimum number of vertical pixels between tick positions</param>
         /// <param name="formatter">Optional custom string formatter to translate tick positions to labels</param>
-        public void AutomaticTicks(bool enable = true, int? minimumSpacing = null, Func<double, string> formatter = null)
+        public void AutomaticTicks(bool enable = true, int? minimumSpacing = null, Func<double, string>? formatter = null)
         {
             if (enable)
                 ManualTicks.Clear();
@@ -181,7 +181,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Re-Render the colorbar using a new colormap
         /// </summary>
-        public void UpdateColormap(ColourMap newColormap)
+        public void UpdateColormap(ColourMap? newColormap)
         {
             Colormap = newColormap ?? ColourMap.Viridis;
             UpdateBitmap();

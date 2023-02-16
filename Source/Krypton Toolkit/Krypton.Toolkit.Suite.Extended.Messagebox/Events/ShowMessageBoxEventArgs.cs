@@ -372,7 +372,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                        int? blurRadius, Color? contentMessageColour, Color? buttonOneTextColour,
                                        Color? buttonTwoTextColour, Color? buttonThreeTextColour,
                                        Color? yesButtonColour, Color? noButtonColour, Color? textColour,
-                                       Color? yesNoButtonTextColour, KryptonForm parentWindow = null)
+                                       Color? yesNoButtonTextColour, KryptonForm? parentWindow = null)
         {
             Owner = owner;
 

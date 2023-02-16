@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             streamBuffer.WriteStream(cfgScriptRef);
         }
 
-        internal static string OnInitMethod(ScriptRef[] scriptRefs, string rule)
+        internal static string OnInitMethod(ScriptRef[]? scriptRefs, string rule)
         {
             if (scriptRefs != null)
             {
