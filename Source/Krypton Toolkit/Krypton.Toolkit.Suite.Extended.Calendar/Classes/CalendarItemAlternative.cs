@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 #pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
@@ -70,8 +71,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private int _minuteEndTop;
         private HatchStyle _pattern;
         private Color _patternColor;
-        private List<CalendarTimeScaleUnit> _unitsPassing;
-        private List<CalendarDayTop> _topsPassing;
+        private List<CalendarTimeScaleUnit?> _unitsPassing;
+        private List<CalendarDayTop?> _topsPassing;
         private object _tag;
         private string _text;
         #endregion
@@ -84,8 +85,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="calendar">Calendar to reference item</param>
         public CalendarItemAlternative(KryptonCalendar calendar) : base(calendar)
         {
-            _unitsPassing = new List<CalendarTimeScaleUnit>();
-            _topsPassing = new List<CalendarDayTop>();
+            _unitsPassing = new List<CalendarTimeScaleUnit?>();
+            _topsPassing = new List<CalendarDayTop?>();
             _backgroundColour = Color.Empty;
             _borderColour = Color.Empty;
             _oreColour = Color.Empty;
@@ -175,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// since this date can be out of the range of the current view.
         /// <para>If Item is not on view date range this property will return null.</para>
         /// </remarks>
-        public CalendarDay DayEnd
+        public CalendarDay? DayEnd
         {
             get
             {
@@ -202,7 +203,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// since start date can be out of the range of the current view.
         /// <para>If Item is not on view date range this property will return null.</para>
         /// </remarks>
-        public CalendarDay DayStart
+        public CalendarDay? DayStart
         {
             get
             {
@@ -388,7 +389,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets or sets the units that this item passes by
         /// </summary>
-        internal List<CalendarTimeScaleUnit> UnitsPassing
+        internal List<CalendarTimeScaleUnit?> UnitsPassing
         {
             get => _unitsPassing;
             set => _unitsPassing = value;
@@ -417,7 +418,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the list of DayTops that this item passes thru
         /// </summary>
-        internal List<CalendarDayTop> TopsPassing => _topsPassing;
+        internal List<CalendarDayTop?> TopsPassing => _topsPassing;
 
         /// <summary>
         /// Gets a value indicating if the item should show the time of the <see cref="StartDate"/>
@@ -648,7 +649,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Adds the specified unit as a passing unit
         /// </summary>
         /// <param name="calendarTimeScaleUnit"></param>
-        internal void AddUnitPassing(CalendarTimeScaleUnit calendarTimeScaleUnit)
+        internal void AddUnitPassing(CalendarTimeScaleUnit? calendarTimeScaleUnit)
         {
             if (!UnitsPassing.Contains(calendarTimeScaleUnit))
             {
@@ -660,7 +661,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Adds the specified <see cref="CalendarDayTop"/> as a passing one
         /// </summary>
         /// <param name="top"></param>
-        internal void AddTopPassing(CalendarDayTop top)
+        internal void AddTopPassing(CalendarDayTop? top)
         {
             if (!TopsPassing.Contains(top))
             {
@@ -673,7 +674,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         internal void ClearPassings()
         {
-            foreach (CalendarTimeScaleUnit unit in UnitsPassing)
+            foreach (CalendarTimeScaleUnit? unit in UnitsPassing)
             {
                 unit.ClearItemExistance(this);
             }

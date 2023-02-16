@@ -25,6 +25,9 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8604
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     [DefaultEvent("LoadItems")]
@@ -39,21 +42,21 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region ... Krypton ...
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
         private PaletteRedirect _paletteRedirect;
 
         //Kripton Palette Events
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= new(OnPalettePaint);
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += new(OnPalettePaint);
                 //repaint with new values
 
             }
@@ -244,14 +247,14 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region Fields
-        private KryptonCalendarTextBox _textBox;
+        private KryptonCalendarTextBox? _textBox;
         private bool _allowNew;
         private bool _allowItemEdit;
         private bool _allowItemResize;
         private bool _creatingItem;
-        private CalendarDay[] _days;
+        private CalendarDay?[] _days;
         private CalendarDaysMode _daysMode;
-        private CalendarItemAlternative _editModeItem;
+        private CalendarItemAlternative? _editModeItem;
         private bool _finalizingEdition;
         private DayOfWeek _firstDayOfWeek;
         private CalendarHighlightRange[] _highlightRanges;
@@ -269,11 +272,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private DateTime _viewEnd;
         private DateTime _viewStart;
         private CalendarWeek[] _weeks;
-        private List<CalendarSelectableElement> _selectedElements;
-        private ICalendarSelectableElement _selectedElementEnd;
-        private ICalendarSelectableElement _selectedElementStart;
+        private List<CalendarSelectableElement?> _selectedElements;
+        private ICalendarSelectableElement? _selectedElementEnd;
+        private ICalendarSelectableElement? _selectedElementStart;
         private Rectangle _selectedElementSquare;
-        private CalendarItemAlternative itemOnState;
+        private CalendarItemAlternative? itemOnState;
         private bool itemOnStateChanged;
         #endregion
 
@@ -291,34 +294,34 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             DoubleBuffered = true;
 
-            _selectedElements = new List<CalendarSelectableElement>();
-            _items = new CalendarItemCollection(this);
+            _selectedElements = new();
+            _items = new(this);
             //_renderer = new CalendarProfessionalRenderer(this);
             _renderer = new CalendarKryptonRenderer(this);
             _maximumFullDays = 8;
             _maximumViewDays = 35;
 
             HighlightRanges = new CalendarHighlightRange[] {
-                new CalendarHighlightRange( DayOfWeek.Monday, new TimeSpan(8,0,0), new TimeSpan(17,0,0)),
-                new CalendarHighlightRange( DayOfWeek.Tuesday, new TimeSpan(8,0,0), new TimeSpan(17,0,0)),
-                new CalendarHighlightRange( DayOfWeek.Wednesday, new TimeSpan(8,0,0), new TimeSpan(17,0,0)),
-                new CalendarHighlightRange( DayOfWeek.Thursday, new TimeSpan(8,0,0), new TimeSpan(17,0,0)),
-                new CalendarHighlightRange( DayOfWeek.Friday, new TimeSpan(8,0,0), new TimeSpan(17,0,0)),
+                new( DayOfWeek.Monday, new(8,0,0), new(17,0,0)),
+                new( DayOfWeek.Tuesday, new(8,0,0), new(17,0,0)),
+                new( DayOfWeek.Wednesday, new(8,0,0), new(17,0,0)),
+                new( DayOfWeek.Thursday, new(8,0,0), new(17,0,0)),
+                new( DayOfWeek.Friday, new(8,0,0), new(17,0,0)),
             };
 
             _timeScale = CalendarTimeScale.ThirtyMinutes;
             SetViewRange(DateTime.Now, DateTime.Now.AddDays(2));
 
-            InvalidateEventHandler IEH = new InvalidateEventHandler(Calendar_Invalidated);
+            InvalidateEventHandler IEH = new(Calendar_Invalidated);
 
             // add Palette Handler
             if (_palette != null)
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += new(OnPalettePaint);
 
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += new(OnGlobalPaletteChanged);
 
             _palette = KryptonManager.CurrentGlobalPalette;
-            _paletteRedirect = new PaletteRedirect(_palette);
+            _paletteRedirect = new(_palette);
 
             _itemsDateFormat = "dd/MMM";
             _itemsTimeFormat = "hh:mm tt";
@@ -372,7 +375,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Gets the days visible on the ccurrent view
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public CalendarDay[] Days => _days;
+        public CalendarDay?[] Days => _days;
 
         /// <summary>
         /// Gets the mode in which days are drawn.
@@ -404,7 +407,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the item being edited (if any)
         /// </summary>
-        public CalendarItemAlternative EditModeItem => _editModeItem;
+        public CalendarItemAlternative? EditModeItem => _editModeItem;
 
         /// <summary>
         /// Gets or sets the first day of weeks
@@ -480,7 +483,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 if (value % 7 != 0)
                 {
-                    throw new Exception("MaximumViewDays must be multiple of 7");
+                    throw new("MaximumViewDays must be multiple of 7");
                 }
                 _maximumViewDays = value;
             }
@@ -499,7 +502,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 if (value != null && Created)
                 {
-                    value.OnInitialize(new CalendarRendererEventArgs(null, null, Rectangle.Empty));
+                    value.OnInitialize(new(null, null, Rectangle.Empty));
                 }
             }
         }
@@ -508,7 +511,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Gets the last selected element
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ICalendarSelectableElement SelectedElementEnd
+        public ICalendarSelectableElement? SelectedElementEnd
         {
             get => _selectedElementEnd;
             set
@@ -523,7 +526,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Gets the first selected element
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ICalendarSelectableElement SelectedElementStart
+        public ICalendarSelectableElement? SelectedElementStart
         {
             get => _selectedElementStart;
             set
@@ -563,7 +566,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the TextBox of the edit mode
         /// </summary>
-        internal KryptonCalendarTextBox TextBox
+        internal KryptonCalendarTextBox? TextBox
         {
             get => _textBox;
             set => _textBox = value;
@@ -617,7 +620,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             get => _viewEnd;
             set
             {
-                _viewEnd = value.Date.Add(new TimeSpan(23, 59, 59));
+                _viewEnd = value.Date.Add(new(23, 59, 59));
                 ClearItems();
                 UpdateDaysAndWeeks();
                 Renderer.PerformLayout();
@@ -658,7 +661,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public void ActivateEditMode()
         {
-            foreach (CalendarItemAlternative item in Items)
+            foreach (CalendarItemAlternative? item in Items)
             {
                 if (item.Selected)
                 {
@@ -672,9 +675,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Activates the edit mode on the specified item
         /// </summary>
         /// <param name="item"></param>
-        public void ActivateEditMode(CalendarItemAlternative item)
+        public void ActivateEditMode(CalendarItemAlternative? item)
         {
-            CalendarItemCancelEventArgs evt = new CalendarItemCancelEventArgs(item);
+            CalendarItemCancelEventArgs evt = new(item);
 
             if (!_creatingItem)
             {
@@ -687,9 +690,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             }
 
             _editModeItem = item;
-            TextBox = new KryptonCalendarTextBox(this);
-            TextBox.KeyDown += new KeyEventHandler(TextBox_KeyDown);
-            TextBox.LostFocus += new EventHandler(TextBox_LostFocus);
+            TextBox = new(this);
+            TextBox.KeyDown += new(TextBox_KeyDown);
+            TextBox.LostFocus += new(TextBox_LostFocus);
             Rectangle r = item.Bounds;
             r.Inflate(-2, -2);
             TextBox.Bounds = r;
@@ -715,11 +718,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             if (SelectedElementEnd == null || SelectedElementStart == null) return;
 
-            CalendarTimeScaleUnit unitEnd = SelectedElementEnd as CalendarTimeScaleUnit;
-            CalendarDayTop dayTop = SelectedElementEnd as CalendarDayTop;
-            CalendarDay day = SelectedElementEnd as CalendarDay;
-            TimeSpan duration = unitEnd != null ? unitEnd.Duration : new TimeSpan(23, 59, 59);
-            CalendarItemAlternative item = new CalendarItemAlternative(this);
+            CalendarTimeScaleUnit? unitEnd = SelectedElementEnd as CalendarTimeScaleUnit;
+            CalendarDayTop? dayTop = SelectedElementEnd as CalendarDayTop;
+            CalendarDay? day = SelectedElementEnd as CalendarDay;
+            TimeSpan duration = unitEnd != null ? unitEnd.Duration : new(23, 59, 59);
+            CalendarItemAlternative? item = new(this);
 
             DateTime dstart = SelectedElementStart.Date;
             DateTime dend = SelectedElementEnd.Date;
@@ -735,7 +738,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             item.EndDate = dend.Add(duration);
             item.Text = itemText;
 
-            CalendarItemCancelEventArgs evtA = new CalendarItemCancelEventArgs(item);
+            CalendarItemCancelEventArgs evtA = new(item);
 
             OnItemCreating(evtA);
 
@@ -785,9 +788,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             _finalizingEdition = true;
 
             string cancelText = _editModeItem.Text;
-            CalendarItemAlternative itemBuffer = _editModeItem;
+            CalendarItemAlternative? itemBuffer = _editModeItem;
             _editModeItem = null;
-            CalendarItemCancelEventArgs evt = new CalendarItemCancelEventArgs(itemBuffer);
+            CalendarItemCancelEventArgs evt = new(itemBuffer);
 
             if (!cancel)
                 itemBuffer.Text = TextBox.Text.Trim();
@@ -833,7 +836,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="d">Date to find day</param>
         /// <returns><see cref="CalendarDay"/> object that matches the date, <c>null</c> if day was not found.</returns>
-        public CalendarDay FindDay(DateTime d)
+        public CalendarDay? FindDay(DateTime d)
         {
             if (Days == null) return null;
 
@@ -854,7 +857,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <returns></returns>
         public IEnumerable<CalendarItemAlternative> GetSelectedItems()
         {
-            List<CalendarItemAlternative> items = new List<CalendarItemAlternative>();
+            List<CalendarItemAlternative> items = new();
 
             foreach (CalendarItemAlternative item in Items)
             {
@@ -872,11 +875,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="d">Date and time of the unit you want to extract</param>
         /// <returns>Matching time unit. <c>null</c> If out of range.</returns>
-        public CalendarTimeScaleUnit GetTimeUnit(DateTime d)
+        public CalendarTimeScaleUnit? GetTimeUnit(DateTime d)
         {
             if (Days != null)
             {
-                foreach (CalendarDay day in Days)
+                foreach (CalendarDay? day in Days)
                 {
                     if (day.Date.Equals(d.Date))
                     {
@@ -901,7 +904,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="p">Point to check for hit test</param>
         /// <returns></returns>
-        public ICalendarSelectableElement HitTest(Point p)
+        public ICalendarSelectableElement? HitTest(Point p)
         {
             return HitTest(p, false);
         }
@@ -912,10 +915,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="p">Point to check for hit test</param>
         /// <param name="ignoreItems"></param>
         /// <returns></returns>
-        public ICalendarSelectableElement HitTest(Point p, bool ignoreItems)
+        public ICalendarSelectableElement? HitTest(Point p, bool ignoreItems)
         {
             if (!ignoreItems)
-                foreach (CalendarItemAlternative item in Items)
+                foreach (CalendarItemAlternative? item in Items)
                 {
                     foreach (Rectangle r in item.GetAllBounds())
                     {
@@ -965,34 +968,25 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="p">Location to serach for items</param>
         /// <returns>Hitted item at the location. Null if no item hitted.</returns>
-        public CalendarItemAlternative ItemAt(Point p)
-        {
-            return HitTest(p) as CalendarItemAlternative;
-        }
+        public CalendarItemAlternative? ItemAt(Point p) => HitTest(p) as CalendarItemAlternative;
 
         /// <summary>
         /// Invalidates the bounds of the specified day
         /// </summary>
         /// <param name="day"></param>
-        public void Invalidate(CalendarDay day)
-        {
-            Invalidate(day.Bounds);
-        }
+        public void Invalidate(CalendarDay day) => Invalidate(day.Bounds);
 
         /// <summary>
         /// Ivalidates the bounds of the specified unit
         /// </summary>
         /// <param name="unit"></param>
-        public void Invalidate(CalendarTimeScaleUnit unit)
-        {
-            Invalidate(unit.Bounds);
-        }
+        public void Invalidate(CalendarTimeScaleUnit unit) => Invalidate(unit.Bounds);
 
         /// <summary>
         /// Invalidates the area of the specified item
         /// </summary>
         /// <param name="item"></param>
-        public void Invalidate(CalendarItemAlternative item)
+        public void Invalidate(CalendarItemAlternative? item)
         {
             Rectangle r = item.Bounds;
 
@@ -1010,7 +1004,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="selectionStart">Fisrt selected element</param>
         /// <param name="selectionEnd">Last selection element</param>
-        public void SetSelectionRange(ICalendarSelectableElement selectionStart, ICalendarSelectableElement selectionEnd)
+        public void SetSelectionRange(ICalendarSelectableElement? selectionStart, ICalendarSelectableElement? selectionEnd)
         {
             _selectedElementStart = selectionStart;
             SelectedElementEnd = selectionEnd;
@@ -1109,13 +1103,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         private void DeleteSelectedItems()
         {
-            Stack<CalendarItemAlternative> toDelete = new Stack<CalendarItemAlternative>();
+            Stack<CalendarItemAlternative?> toDelete = new();
 
-            foreach (CalendarItemAlternative item in Items)
+            foreach (CalendarItemAlternative? item in Items)
             {
                 if (item.Selected)
                 {
-                    CalendarItemCancelEventArgs evt = new CalendarItemCancelEventArgs(item);
+                    CalendarItemCancelEventArgs evt = new(item);
 
                     OnItemDeleting(evt);
 
@@ -1130,11 +1124,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 while (toDelete.Count > 0)
                 {
-                    CalendarItemAlternative item = toDelete.Pop();
+                    CalendarItemAlternative? item = toDelete.Pop();
 
                     Items.Remove(item);
 
-                    OnItemDeleted(new CalendarItemEventArgs(item));
+                    OnItemDeleted(new(item));
                 }
 
                 Renderer.PerformItemsLayout();
@@ -1146,7 +1140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         private void ReloadItems()
         {
-            OnLoadItems(new CalendarLoadEventArgs(this, ViewStart, ViewEnd));
+            OnLoadItems(new(this, ViewStart, ViewEnd));
         }
 
         /// <summary>
@@ -1170,7 +1164,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         private void ClearSelectedComponents()
         {
-            foreach (CalendarSelectableElement element in _selectedElements)
+            foreach (CalendarSelectableElement? element in _selectedElements)
             {
                 element.SetSelected(false);
             }
@@ -1304,43 +1298,43 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             TimeSpan span = (new DateTime(ViewEnd.Year, ViewEnd.Month, ViewEnd.Day, 23, 59, 59)).Subtract(ViewStart.Date);
             int preDays = 0;
-            span = span.Add(new TimeSpan(0, 0, 0, 1, 0));
+            span = span.Add(new(0, 0, 0, 1, 0));
 
             if (span.Days < 1 || span.Days > MaximumViewDays)
             {
-                throw new Exception("Days between ViewStart and ViewEnd should be between 1 and MaximumViewDays");
+                throw new("Days between ViewStart and ViewEnd should be between 1 and MaximumViewDays");
             }
 
             if (span.Days > MaximumFullDays)
             {
                 SetDaysMode(CalendarDaysMode.Short);
                 preDays = (new int[] { 0, 1, 2, 3, 4, 5, 6 })[(int)ViewStart.DayOfWeek] - (int)FirstDayOfWeek;
-                span = span.Add(new TimeSpan(preDays, 0, 0, 0));
+                span = span.Add(new(preDays, 0, 0, 0));
 
                 while (span.Days % 7 != 0)
-                    span = span.Add(new TimeSpan(1, 0, 0, 0));
+                    span = span.Add(new(1, 0, 0, 0));
             }
             else
             {
                 SetDaysMode(CalendarDaysMode.Expanded);
             }
 
-            _days = new CalendarDay[span.Days];
+            _days = new CalendarDay?[span.Days];
 
             for (int i = 0; i < Days.Length; i++)
-                Days[i] = new CalendarDay(this, ViewStart.AddDays(-preDays + i), i);
+                Days[i] = new(this, ViewStart.AddDays(-preDays + i), i);
 
 
             //Weeks
             if (DaysMode == CalendarDaysMode.Short)
             {
-                List<CalendarWeek> weeks = new List<CalendarWeek>();
+                List<CalendarWeek> weeks = new();
 
                 for (int i = 0; i < Days.Length; i++)
                 {
                     if (Days[i].Date.DayOfWeek == FirstDayOfWeek)
                     {
-                        weeks.Add(new CalendarWeek(this, Days[i].Date));
+                        weeks.Add(new(this, Days[i].Date));
                     }
                 }
 
@@ -1373,12 +1367,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         private void UpdateSelectionElements()
         {
-            CalendarTimeScaleUnit unitStart = _selectedElementStart as CalendarTimeScaleUnit;
-            CalendarDayTop topStart = _selectedElementStart as CalendarDayTop;
-            CalendarDay dayStart = _selectedElementStart as CalendarDay;
-            CalendarTimeScaleUnit unitEnd = _selectedElementEnd as CalendarTimeScaleUnit;
-            CalendarDayTop topEnd = _selectedElementEnd as CalendarDayTop;
-            CalendarDay dayEnd = _selectedElementEnd as CalendarDay;
+            CalendarTimeScaleUnit? unitStart = _selectedElementStart as CalendarTimeScaleUnit;
+            CalendarDayTop? topStart = _selectedElementStart as CalendarDayTop;
+            CalendarDay? dayStart = _selectedElementStart as CalendarDay;
+            CalendarTimeScaleUnit? unitEnd = _selectedElementEnd as CalendarTimeScaleUnit;
+            CalendarDayTop? topEnd = _selectedElementEnd as CalendarDayTop;
+            CalendarDay? dayEnd = _selectedElementEnd as CalendarDay;
 
             ClearSelectedComponents();
 
@@ -1402,7 +1396,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 {
                     for (int j = (i == unitStart.Day.Index ? unitStart.Index : 0); i < Days.Length && j < Days[i].TimeUnits.Length; j++)
                     {
-                        CalendarTimeScaleUnit unit = Days[i].TimeUnits[j];
+                        CalendarTimeScaleUnit? unit = Days[i].TimeUnits[j];
                         unit.SetSelected(true);
                         GrowSquare(unit.Bounds);
                         _selectedElements.Add(unit);
@@ -1419,7 +1413,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 for (int i = topStart.Day.Index; i <= topEnd.Day.Index; i++)
                 {
-                    CalendarDayTop top = Days[i].DayTop;
+                    CalendarDayTop? top = Days[i].DayTop;
 
                     top.SetSelected(true);
                     GrowSquare(top.Bounds);
@@ -1430,7 +1424,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 for (int i = dayStart.Index; i <= dayEnd.Index; i++)
                 {
-                    CalendarDay day = Days[i];
+                    CalendarDay? day = Days[i];
 
                     day.SetSelected(true);
                     GrowSquare(day.Bounds);
@@ -1449,7 +1443,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnCreateControl();
 
-            Renderer.OnInitialize(new CalendarRendererEventArgs(new CalendarRendererEventArgs(this, null, Rectangle.Empty)));
+            Renderer.OnInitialize(new(new(this, null, Rectangle.Empty)));
         }
 
         protected override void OnClick(EventArgs e)
@@ -1576,8 +1570,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             bool shiftPressed = (ModifierKeys & Keys.Shift) == Keys.Shift;
             int jump = (int)TimeScale;
-            ICalendarSelectableElement sStart = null;
-            ICalendarSelectableElement sEnd = null;
+            ICalendarSelectableElement? sStart = null;
+            ICalendarSelectableElement? sEnd = null;
 
             if (e.KeyCode == Keys.F2)
             {
@@ -1597,22 +1591,22 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 if (e.Shift)
                     sStart = SelectedElementStart;
 
-                sEnd = GetTimeUnit(SelectedElementEnd.Date.Add(new TimeSpan(0, (int)TimeScale, 0)));
+                sEnd = GetTimeUnit(SelectedElementEnd.Date.Add(new(0, (int)TimeScale, 0)));
             }
             else if (e.KeyCode == Keys.Up)
             {
                 if (e.Shift)
                     sStart = SelectedElementStart;
 
-                sEnd = GetTimeUnit(SelectedElementEnd.Date.Add(new TimeSpan(0, -(int)TimeScale, 0)));
+                sEnd = GetTimeUnit(SelectedElementEnd.Date.Add(new(0, -(int)TimeScale, 0)));
             }
             else if (e.KeyCode == Keys.Right)
             {
-                sEnd = GetTimeUnit(SelectedElementEnd.Date.Add(new TimeSpan(24, 0, 0)));
+                sEnd = GetTimeUnit(SelectedElementEnd.Date.Add(new(24, 0, 0)));
             }
             else if (e.KeyCode == Keys.Left)
             {
-                sEnd = GetTimeUnit(SelectedElementEnd.Date.Add(new TimeSpan(-24, 0, 0)));
+                sEnd = GetTimeUnit(SelectedElementEnd.Date.Add(new(-24, 0, 0)));
             }
             else if (e.KeyCode == Keys.PageDown)
             {
@@ -1657,11 +1651,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnMouseDoubleClick(e);
 
-            CalendarItemAlternative item = ItemAt(e.Location);
+            CalendarItemAlternative? item = ItemAt(e.Location);
 
             if (item != null)
             {
-                OnItemDoubleClick(new CalendarItemEventArgs(item));
+                OnItemDoubleClick(new(item));
             }
         }
 
@@ -1669,8 +1663,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnMouseDown(e);
 
-            ICalendarSelectableElement hitted = HitTest(e.Location);
-            CalendarItemAlternative hittedItem = hitted as CalendarItemAlternative;
+            ICalendarSelectableElement? hitted = HitTest(e.Location);
+            CalendarItemAlternative? hittedItem = hitted as CalendarItemAlternative;
             bool shiftPressed = (ModifierKeys & Keys.Shift) == Keys.Shift;
 
             if (!Focused)
@@ -1688,7 +1682,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                         hittedItem.SetSelected(true);
                         Invalidate(hittedItem);
-                        OnItemSelected(new CalendarItemEventArgs(hittedItem));
+                        OnItemSelected(new(hittedItem));
 
                         itemOnState = hittedItem;
                         itemOnStateChanged = false;
@@ -1749,9 +1743,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnMouseMove(e);
 
-            ICalendarSelectableElement hitted = HitTest(e.Location, State != CalendarState.Idle);
-            CalendarItemAlternative hittedItem = hitted as CalendarItemAlternative;
-            CalendarDayTop hittedTop = hitted as CalendarDayTop;
+            ICalendarSelectableElement? hitted = HitTest(e.Location, State != CalendarState.Idle);
+            CalendarItemAlternative? hittedItem = hitted as CalendarItemAlternative;
+            CalendarDayTop? hittedTop = hitted as CalendarDayTop;
             bool shiftPressed = (ModifierKeys & Keys.Shift) == Keys.Shift;
 
             if (hitted != null)
@@ -1768,7 +1762,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                                 should = hittedItem.IsOnDayTop || DaysMode == CalendarDaysMode.Short ? Cursors.SizeWE : Cursors.SizeNS;
                             }
 
-                            OnItemMouseHover(new CalendarItemEventArgs(hittedItem));
+                            OnItemMouseHover(new(hittedItem));
 
                         }
                         if (!Cursor.Equals(should)) Cursor = should;
@@ -1789,7 +1783,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     case CalendarState.ResizingItem:
                         if (itemOnState.IsResizingEndDate && hitted.Date.CompareTo(itemOnState.StartDate) >= 0)
                         {
-                            itemOnState.EndDate = hitted.Date.Add(hittedTop != null || DaysMode == CalendarDaysMode.Short ? new TimeSpan(23, 59, 59) : Days[0].TimeUnits[0].Duration);
+                            itemOnState.EndDate = hitted.Date.Add(hittedTop != null || DaysMode == CalendarDaysMode.Short ? new(23, 59, 59) : Days[0].TimeUnits[0].Duration);
                         }
                         else if (itemOnState.IsResizingStartDate && hitted.Date.CompareTo(itemOnState.EndDate) <= 0)
                         {
@@ -1809,9 +1803,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnMouseUp(e);
 
-            ICalendarSelectableElement hitted = HitTest(e.Location, State == CalendarState.DraggingTimeSelection);
-            CalendarItemAlternative hittedItem = hitted as CalendarItemAlternative;
-            CalendarDay hittedDay = hitted as CalendarDay;
+            ICalendarSelectableElement? hitted = HitTest(e.Location, State == CalendarState.DraggingTimeSelection);
+            CalendarItemAlternative? hittedItem = hitted as CalendarItemAlternative;
+            CalendarDay? hittedDay = hitted as CalendarDay;
             bool shiftPressed = (ModifierKeys & Keys.Shift) == Keys.Shift;
 
             switch (State)
@@ -1828,17 +1822,17 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     {
                         if (hittedDay.HeaderBounds.Contains(e.Location))
                         {
-                            OnDayHeaderClick(new CalendarDayEventArgs(hittedDay));
+                            OnDayHeaderClick(new(hittedDay));
                         }
                     }
                     break;
                 case CalendarState.DraggingItem:
                     if (itemOnStateChanged)
-                        OnItemDatesChanged(new CalendarItemEventArgs(itemOnState));
+                        OnItemDatesChanged(new(itemOnState));
                     break;
                 case CalendarState.ResizingItem:
                     if (itemOnStateChanged)
-                        OnItemDatesChanged(new CalendarItemEventArgs(itemOnState));
+                        OnItemDatesChanged(new(itemOnState));
                     break;
                 case CalendarState.EditingItemText:
                     break;
@@ -1850,7 +1844,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 itemOnState.SetIsResizingEndDate(false);
                 itemOnState.SetIsResizingStartDate(false);
                 Invalidate(itemOnState);
-                OnItemClick(new CalendarItemEventArgs(itemOnState));
+                OnItemClick(new(itemOnState));
                 itemOnState = null;
             }
             SetState(CalendarState.Idle);
@@ -1874,7 +1868,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnPaint(e);
 
-            CalendarRendererEventArgs evt = new CalendarRendererEventArgs(this, e.Graphics, e.ClipRectangle);
+            CalendarRendererEventArgs evt = new(this, e.Graphics, e.ClipRectangle);
 
             //Calendar background
             Renderer.OnDrawBackground(evt);

@@ -30,7 +30,6 @@
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pbxIcon = new System.Windows.Forms.PictureBox();
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
             this.kbtnButtonFive = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonFour = new Krypton.Toolkit.KryptonButton();
@@ -40,14 +39,18 @@
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
             this.kwlBody = new Krypton.Toolkit.KryptonWrapLabel();
+            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.pbxIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
             this.kryptonPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -65,9 +68,9 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.pbxIcon, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.kpnlButtons, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.kryptonPanel3, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.kryptonPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -76,16 +79,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(509, 279);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // pbxIcon
-            // 
-            this.pbxIcon.Location = new System.Drawing.Point(8, 4);
-            this.pbxIcon.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
-            this.pbxIcon.Name = "pbxIcon";
-            this.pbxIcon.Size = new System.Drawing.Size(64, 64);
-            this.pbxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbxIcon.TabIndex = 0;
-            this.pbxIcon.TabStop = false;
             // 
             // kpnlButtons
             // 
@@ -161,9 +154,9 @@
             // 
             this.kryptonPanel3.Controls.Add(this.kwlBody);
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel3.Location = new System.Drawing.Point(79, 3);
+            this.kryptonPanel3.Location = new System.Drawing.Point(84, 3);
             this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.Size = new System.Drawing.Size(427, 217);
+            this.kryptonPanel3.Size = new System.Drawing.Size(422, 217);
             this.kryptonPanel3.TabIndex = 2;
             // 
             // kwlBody
@@ -175,9 +168,28 @@
             this.kwlBody.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
             this.kwlBody.Location = new System.Drawing.Point(0, 0);
             this.kwlBody.Name = "kwlBody";
-            this.kwlBody.Size = new System.Drawing.Size(427, 217);
+            this.kwlBody.Size = new System.Drawing.Size(422, 217);
             this.kwlBody.Text = "kryptonWrapLabel1";
             this.kwlBody.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // kryptonPanel2
+            // 
+            this.kryptonPanel2.Controls.Add(this.pbxIcon);
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel2.Location = new System.Drawing.Point(3, 3);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.Size = new System.Drawing.Size(75, 217);
+            this.kryptonPanel2.TabIndex = 3;
+            // 
+            // pbxIcon
+            // 
+            this.pbxIcon.Location = new System.Drawing.Point(8, 76);
+            this.pbxIcon.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
+            this.pbxIcon.Name = "pbxIcon";
+            this.pbxIcon.Size = new System.Drawing.Size(64, 64);
+            this.pbxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxIcon.TabIndex = 1;
+            this.pbxIcon.TabStop = false;
             // 
             // KryptonMemoryBox
             // 
@@ -185,7 +197,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(509, 279);
             this.Controls.Add(this.kryptonPanel1);
-            this.FadeSpeedChoice = Krypton.Toolkit.Suite.Extended.Effects.FadeSpeedChoice.Normal;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -196,13 +207,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
             this.kpnlButtons.ResumeLayout(false);
             this.kpnlButtons.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
             this.kryptonPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
+            this.kryptonPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -211,7 +224,6 @@
 
         private KryptonPanel kryptonPanel1;
         private TableLayoutPanel tableLayoutPanel1;
-        private PictureBox pbxIcon;
         private KryptonPanel kpnlButtons;
         private KryptonPanel kryptonPanel3;
         private KryptonWrapLabel kwlBody;
@@ -221,5 +233,7 @@
         private KryptonButton kbtnButtonThree;
         private KryptonButton kbtnButtonTwo;
         private KryptonButton kbtnButtonOne;
+        private KryptonPanel kryptonPanel2;
+        private PictureBox pbxIcon;
     }
 }

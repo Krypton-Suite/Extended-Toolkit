@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Adds an item to the end of the list
         /// </summary>
         /// <param name="item">The object to be added to the end of the collection. The value can be null for reference types.</param>
-        public new void Add(CalendarItemAlternative item)
+        public new void Add(CalendarItemAlternative? item)
         {
             base.Add(item); CollectionChanged();
         }
@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="item">The item to remove from the collection. The value can be null for reference types.</param>
         /// <returns><c>true</c> if item is successfully removed; otherwise, <c>false</c>. This method also returns false if item was not found in the collection.</returns>
-        public new bool Remove(CalendarItemAlternative item)
+        public new bool Remove(CalendarItemAlternative? item)
         {
             bool result = base.Remove(item);
 

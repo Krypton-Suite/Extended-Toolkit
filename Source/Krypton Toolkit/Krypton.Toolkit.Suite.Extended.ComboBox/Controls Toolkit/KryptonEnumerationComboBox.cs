@@ -1,32 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.ComboBox
+﻿namespace Krypton.Toolkit.Suite.Extended.ComboBox
 {
     public class KryptonEnumerationComboBox : KryptonComboBox
     {
         #region Instance Fields
 
-        private Type _targetEnum;
+        private Type? _targetEnum;
 
         #endregion
 
         #region Public
 
         [DefaultValue(null)]
-        public Type TargetEnum { get => _targetEnum; set => _targetEnum = value; }
+        public Type? TargetEnum { get => _targetEnum; set => _targetEnum = value; }
 
         #endregion
 
         #region Identity
 
-        public KryptonEnumerationComboBox()
-        {
-            _targetEnum = null;
-        }
+        public KryptonEnumerationComboBox() => _targetEnum = null;
 
         #endregion
 

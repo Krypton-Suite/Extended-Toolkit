@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     public class CalendarKryptonRenderer : CalendarSystemRenderer
@@ -43,18 +44,15 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region "Krypton Members"
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
         //private PaletteRedirect _paletteRedirect;
         #endregion
 
         #region "Ctor"
 
         public CalendarKryptonRenderer(KryptonCalendar c)
-            : base(c)
-        {
-
+            : base(c) =>
             ReloadPalette();
-        }
 
         public override void ReloadPalette()
         {
@@ -133,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region "Private Method"
 
-        public void GlossyRect(Graphics g, Rectangle bounds, Color a, Color b, float backColorAngle)
+        public void GlossyRect(Graphics? g, Rectangle bounds, Color a, Color b, float backColorAngle)
         {
             using (LinearGradientBrush backBrush = new LinearGradientBrush(bounds, a, b, HeaderBackColourAngle))
             {

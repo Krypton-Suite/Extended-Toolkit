@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     public class CalendarProfessionalRenderer : CalendarSystemRenderer
@@ -90,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Private Method
 
-        public static void GradientRect(Graphics g, Rectangle bounds, Color a, Color b)
+        public static void GradientRect(Graphics? g, Rectangle bounds, Color a, Color b)
         {
             using (LinearGradientBrush br = new LinearGradientBrush(bounds, b, a, -90))
             {
@@ -98,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             }
         }
 
-        public static void GlossyRect(Graphics g, Rectangle bounds, Color a, Color b, Color c, Color d)
+        public static void GlossyRect(Graphics? g, Rectangle bounds, Color a, Color b, Color c, Color d)
         {
             Rectangle top = new Rectangle(bounds.Left, bounds.Top, bounds.Width, bounds.Height / 2);
             Rectangle bot = Rectangle.FromLTRB(bounds.Left, top.Bottom, bounds.Right, bounds.Bottom);

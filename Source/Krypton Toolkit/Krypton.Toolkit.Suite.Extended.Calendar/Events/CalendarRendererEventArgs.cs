@@ -37,10 +37,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region Fields
-        private KryptonCalendar _calendar;
+        private KryptonCalendar? _calendar;
         private Rectangle _clip;
-        private Graphics _graphics;
-        private object _tag;
+        private Graphics? _graphics;
+        private object? _tag;
         #endregion
 
         #region Ctor
@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="calendar">Calendar where painting</param>
         /// <param name="g">Device where to paint</param>
         /// <param name="clipRectangle">Paint event clip area</param>
-        public CalendarRendererEventArgs(KryptonCalendar calendar, Graphics g, Rectangle clipRectangle)
+        public CalendarRendererEventArgs(KryptonCalendar? calendar, Graphics? g, Rectangle clipRectangle)
         {
             _calendar = calendar;
             _graphics = g;
@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="g">Device where to paint</param>
         /// <param name="clipRectangle">Paint event clip area</param>
         /// <param name="tag"></param>
-        public CalendarRendererEventArgs(KryptonCalendar calendar, Graphics g, Rectangle clipRectangle, object tag)
+        public CalendarRendererEventArgs(KryptonCalendar? calendar, Graphics? g, Rectangle clipRectangle, object? tag)
         {
             _calendar = calendar;
             _graphics = g;
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar where painting
         /// </summary>
-        public KryptonCalendar Calendar => _calendar;
+        public KryptonCalendar? Calendar => _calendar;
 
         /// <summary>
         /// Gets the clip of the paint event
@@ -110,12 +110,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the device where to paint
         /// </summary>
-        public Graphics Graphics => _graphics;
+        public Graphics? Graphics => _graphics;
 
         /// <summary>
         /// Gets or sets a tag for the event
         /// </summary>
-        public object Tag
+        public object? Tag
         {
             get => _tag;
             set => _tag = value;

@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -216,9 +218,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             for (int i = 0; i < e.Calendar.Days[0].TimeUnits.Length; i++)
             {
-                CalendarTimeScaleUnit unit = e.Calendar.Days[0].TimeUnits[i];
+                CalendarTimeScaleUnit? unit = e.Calendar.Days[0].TimeUnits[i];
 
-                if (!unit.Visible) continue;
+                if (!unit!.Visible) continue;
 
                 top = unit.Bounds.Top;
 
@@ -346,7 +348,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public override void OnDrawItemText(CalendarRendererBoxEventArgs e)
         {
-            CalendarItemAlternative item = e.Tag as CalendarItemAlternative;
+            CalendarItemAlternative? item = e.Tag as CalendarItemAlternative;
 
             if (item != null)
             {

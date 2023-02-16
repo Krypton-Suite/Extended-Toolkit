@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
         public KryptonComboBox ComboBox { get => combobox; set => combobox = value; }
 
         [Browsable(true), Description("Gets or sets the TreeView's Selected Node"), Category("TreeView")]
-        public ImageList Imagelist { get => tvTreeView.ImageList; set => tvTreeView.ImageList = value; }
+        public ImageList? Imagelist { get => tvTreeView.ImageList; set => tvTreeView.ImageList = value; }
 
         [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Appearance")]
         public string BranchSeparator

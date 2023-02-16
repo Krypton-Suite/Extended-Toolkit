@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Creates a new <see cref="CalendarItemEventArgs"/>
         /// </summary>
         /// <param name="item">Related Item</param>
-        public CalendarItemCancelEventArgs(CalendarItemAlternative item)
+        public CalendarItemCancelEventArgs(CalendarItemAlternative? item)
         {
             _item = item;
         }
@@ -44,12 +44,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Props
 
-        private CalendarItemAlternative _item;
+        private CalendarItemAlternative? _item;
 
         /// <summary>
         /// Gets the <see cref="CalendarItemAlternative"/> related to the event
         /// </summary>
-        public CalendarItemAlternative Item => _item;
+        public CalendarItemAlternative? Item => _item;
 
         #endregion
     }

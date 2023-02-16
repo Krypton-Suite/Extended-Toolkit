@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable AssignNullToNotNullAttribute
+#pragma warning disable CS8602
 #pragma warning disable CS1574, CS0419
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
@@ -74,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="item1"></param>
         /// <param name="item2"></param>
         /// <returns></returns>
-        private static int CompareUnits(CalendarTimeScaleUnit item1, CalendarTimeScaleUnit item2)
+        private static int CompareUnits(CalendarTimeScaleUnit? item1, CalendarTimeScaleUnit? item2)
         {
             return item1.Date.CompareTo(item2.Date);
         }
@@ -85,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="top1"></param>
         /// <param name="top2"></param>
         /// <returns></returns>
-        private static int CompareTops(CalendarDayTop top1, CalendarDayTop top2)
+        private static int CompareTops(CalendarDayTop? top1, CalendarDayTop? top2)
         {
             return top1.Date.CompareTo(top2.Date);
         }
@@ -439,14 +441,14 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             if (Calendar.Days == null || Calendar.Days.Length == 0)
                 return 0;
 
-            CalendarDay fisrtDay = Calendar.Days[0];
-            CalendarTimeScaleUnit firstUnit = fisrtDay.TimeUnits[0];
+            CalendarDay? fisrtDay = Calendar.Days[0];
+            CalendarTimeScaleUnit? firstUnit = fisrtDay.TimeUnits[0];
             double duration = Convert.ToDouble(firstUnit.Duration.TotalMinutes);
             double totalmins = time.TotalMinutes;
             int unitIndex = Convert.ToInt32(Math.Floor(totalmins / duration));
             double module = Convert.ToInt32(Math.Floor(totalmins % duration));
 
-            CalendarTimeScaleUnit unit = Calendar.Days[0].TimeUnits[unitIndex];
+            CalendarTimeScaleUnit? unit = Calendar.Days[0].TimeUnits[unitIndex];
 
             int minuteHeight = Convert.ToInt32(Convert.ToDouble(unit.Bounds.Height) / duration);
 
@@ -626,7 +628,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 for (int i = 0; i < Calendar.Days.Length; i++)
                 {
-                    CalendarDay day = Calendar.Days[i];
+                    CalendarDay? day = Calendar.Days[i];
                     day.SetBounds(new Rectangle(curLeft, curTop, dayWidth, dayHeight));
                     day.DayTop.SetBounds(new Rectangle(curLeft, day.HeaderBounds.Bottom, dayWidth, DayTopHeight));
                     curLeft += dayWidth + 1;
@@ -635,7 +637,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                     for (int j = 0; j < day.TimeUnits.Length; j++)
                     {
-                        CalendarTimeScaleUnit unit = day.TimeUnits[j];
+                        CalendarTimeScaleUnit? unit = day.TimeUnits[j];
 
                         if (Calendar.TimeUnitsOffset * -1 >= (j + 1))
                         {
@@ -701,7 +703,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             int offset = Math.Abs(Calendar.TimeUnitsOffset);
             List<CalendarItemAlternative> itemsOnScene = new List<CalendarItemAlternative>();
 
-            foreach (CalendarDay day in Calendar.Days)
+            foreach (CalendarDay? day in Calendar.Days)
                 day.ContainedItems.Clear();
 
             if (Calendar.DaysMode == CalendarDaysMode.Expanded)
@@ -721,8 +723,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     {
                         #region Among day tops
 
-                        CalendarDay dayStart = item.DayStart;
-                        CalendarDay dayEnd = item.DayEnd;
+                        CalendarDay? dayStart = item.DayStart;
+                        CalendarDay? dayEnd = item.DayEnd;
 
                         if (dayStart == null) dayStart = Calendar.Days[0];
                         if (dayEnd == null) dayEnd = Calendar.Days[Calendar.Days.Length - 1];
@@ -741,7 +743,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     {
                         #region Among time units
 
-                        CalendarDay day = item.DayStart; if (day == null) continue;
+                        CalendarDay? day = item.DayStart; if (day == null) continue;
                         double unitDurationMinutes = Convert.ToDouble((int)Calendar.TimeScale);
                         DateTime date1 = item.StartDate;
                         DateTime date2 = item.EndDate;
@@ -769,7 +771,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 #endregion
 
                 #region Items on DayTops
-                foreach (CalendarDay day in Calendar.Days)
+                foreach (CalendarDay? day in Calendar.Days)
                 {
                     maxItemsOnDayTop = Math.Max(maxItemsOnDayTop, day.DayTop.PassingItems.Count);
                 }
@@ -820,7 +822,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     PerformLayout(false);
                 #endregion
 
-                foreach (CalendarDay day in Calendar.Days)
+                foreach (CalendarDay? day in Calendar.Days)
                 {
                     #region Create groups
 
@@ -988,8 +990,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 foreach (CalendarItemAlternative item in Calendar.Items)
                 {
-                    CalendarDay dayStart = item.DayStart;
-                    CalendarDay dayEnd = item.DayEnd;
+                    CalendarDay? dayStart = item.DayStart;
+                    CalendarDay? dayEnd = item.DayEnd;
                     item.ClearBounds();
 
                     for (int i = dayStart.Index; i <= dayEnd.Index; i++)
@@ -1003,8 +1005,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 int curIndex = 0;
                 foreach (CalendarItemAlternative item in Calendar.Items)
                 {
-                    CalendarDay dayStart = item.DayStart;
-                    CalendarDay dayEnd = item.DayEnd;
+                    CalendarDay? dayStart = item.DayStart;
+                    CalendarDay? dayEnd = item.DayEnd;
 
                     PlaceInMatrix(ref matix, curIndex + 1, dayStart.Index, dayEnd.Index);
                     curIndex++;
@@ -1017,7 +1019,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     int xEnd = xStart + 6;
                     int index = 0;
                     int[,] wmatix = new int[7, matix.GetLength(1)];
-                    CalendarDay sunday = Calendar.FindDay(Calendar.Weeks[week].StartDate);
+                    CalendarDay? sunday = Calendar.FindDay(Calendar.Weeks[week].StartDate);
 
                     #region Fill week matrix
 
@@ -1042,8 +1044,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                                 break;
 
 
-                        CalendarDay dayStart = Calendar.Days[xStart + left];
-                        CalendarDay dayEnd = Calendar.Days[xStart + left + width - 1];
+                        CalendarDay? dayStart = Calendar.Days[xStart + left];
+                        CalendarDay? dayEnd = Calendar.Days[xStart + left + width - 1];
                         Rectangle rStart = dayStart.Bounds;
                         Rectangle rEnd = dayEnd.Bounds;
                         int rtop = rStart.Top + DayHeaderHeight + top * StandardItemHeight;
@@ -1164,28 +1166,19 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Sets the value of the <see cref="TimeScaleUnitHeight"/> property
         /// </summary>
         /// <param name="height">Height of the time scale unit</param>
-        protected void SetTimeScaleUnitHeight(int height)
-        {
-            _timeScaleUnitHeight = height;
-        }
+        protected void SetTimeScaleUnitHeight(int height) => _timeScaleUnitHeight = height;
 
         /// <summary>
         /// Sets the value of the <see cref="TimeScaleWidth"/> property
         /// </summary>
         /// <param name="width">New width for the time scale</param>
-        protected void SetTimeScaleWidth(int width)
-        {
-            _timeScaleWidth = width;
-        }
+        protected void SetTimeScaleWidth(int width) => _timeScaleWidth = width;
 
         /// <summary>
         /// Draws text using the information of the <see cref="CalendarRendererBoxEventArgs"/>
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void DrawStandarBoxText(CalendarRendererBoxEventArgs e)
-        {
-            TextRenderer.DrawText(e.Graphics, e.Text, e.Font, e.Bounds, e.TextColour, e.Format);
-        }
+        protected virtual void DrawStandardBoxText(CalendarRendererBoxEventArgs e) => TextRenderer.DrawText(e.Graphics, e.Text, e.Font, e.Bounds, e.TextColour, e.Format);
 
         /// <summary>
         /// Outs the location of the specified number in the matrix
@@ -1225,7 +1218,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             foreach (CalendarItemAlternative item in group)
             {
-                foreach (CalendarTimeScaleUnit unit in item.UnitsPassing)
+                foreach (CalendarTimeScaleUnit? unit in item.UnitsPassing)
                 {
                     startIndex = Math.Min(startIndex, unit.Index);
                     endIndex = Math.Max(endIndex, unit.Index);
@@ -1319,7 +1312,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             for (int i = 0; i < e.Calendar.Days[0].TimeUnits.Length; i++)
             {
-                CalendarTimeScaleUnit unit = e.Calendar.Days[0].TimeUnits[i];
+                CalendarTimeScaleUnit? unit = e.Calendar.Days[0].TimeUnits[i];
 
                 if (!unit.Visible) continue;
 
@@ -1353,7 +1346,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Paint Info</param>
         public virtual void OnDrawTimeScaleHour(CalendarRendererBoxEventArgs e)
         {
-            DrawStandarBoxText(e);
+            DrawStandardBoxText(e);
         }
 
         /// <summary>
@@ -1362,7 +1355,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Paint Info</param>
         public virtual void OnDrawTimeScaleMinutes(CalendarRendererBoxEventArgs e)
         {
-            DrawStandarBoxText(e);
+            DrawStandardBoxText(e);
         }
 
         /// <summary>
@@ -1373,7 +1366,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             for (int i = 0; i < e.Calendar.Days.Length; i++)
             {
-                CalendarDay day = e.Calendar.Days[i];
+                CalendarDay? day = e.Calendar.Days[i];
 
                 e.Tag = day;
 
@@ -1388,7 +1381,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Paint info</param>
         public virtual void OnDrawDay(CalendarRendererDayEventArgs e)
         {
-            CalendarDay day = e.Day;
+            CalendarDay? day = e.Day;
 
             CalendarRendererBoxEventArgs hevt = new CalendarRendererBoxEventArgs(e,
                     day.HeaderBounds,
@@ -1455,7 +1448,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Paint info</param>
         public virtual void OnDrawDayHeaderText(CalendarRendererBoxEventArgs e)
         {
-            DrawStandarBoxText(e);
+            DrawStandardBoxText(e);
         }
 
         /// <summary>
@@ -1467,7 +1460,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             for (int i = 0; i < e.Day.TimeUnits.Length; i++)
             {
-                CalendarTimeScaleUnit unit = e.Day.TimeUnits[i];
+                CalendarTimeScaleUnit? unit = e.Day.TimeUnits[i];
 
                 if (unit.Visible)
                     OnDrawDayTimeUnit(new CalendarRendererTimeUnitEventArgs(e, unit));
@@ -1507,7 +1500,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Paint info</param>
         public virtual void OnDrawDayNameHeader(CalendarRendererBoxEventArgs e)
         {
-            DrawStandarBoxText(e);
+            DrawStandardBoxText(e);
         }
 
         /// <summary>
@@ -1522,7 +1515,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             bool clipped = false;
 
             #region Shadows
-            foreach (CalendarItemAlternative item in e.Calendar.Items)
+            foreach (CalendarItemAlternative? item in e.Calendar.Items)
             {
                 clipped = false;
 
@@ -1550,7 +1543,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             #endregion
 
             #region Items
-            foreach (CalendarItemAlternative item in e.Calendar.Items)
+            foreach (CalendarItemAlternative? item in e.Calendar.Items)
             {
                 clipped = false;
 
@@ -1568,7 +1561,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             #endregion
 
             #region Borders of selected items
-            foreach (CalendarItemAlternative item in e.Calendar.Items)
+            foreach (CalendarItemAlternative? item in e.Calendar.Items)
             {
                 if (!item.Selected) continue;
 
@@ -1770,7 +1763,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e"></param>
         public virtual void OnDrawItemText(CalendarRendererBoxEventArgs e)
         {
-            DrawStandarBoxText(e);
+            DrawStandardBoxText(e);
         }
 
         /// <summary>
@@ -1793,7 +1786,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Event data</param>
         public virtual void OnDrawItemStartTime(CalendarRendererBoxEventArgs e)
         {
-            DrawStandarBoxText(e);
+            DrawStandardBoxText(e);
         }
 
         /// <summary>
@@ -1802,7 +1795,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Event data</param>
         public virtual void OnDrawItemEndTime(CalendarRendererBoxEventArgs e)
         {
-            DrawStandarBoxText(e);
+            DrawStandardBoxText(e);
         }
 
         /// <summary>
@@ -1831,7 +1824,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             for (int i = 0; i < e.Calendar.Days.Length; i++)
             {
-                CalendarDay day = e.Calendar.Days[i];
+                CalendarDay? day = e.Calendar.Days[i];
 
                 if (day.OverflowStart)
                 {
