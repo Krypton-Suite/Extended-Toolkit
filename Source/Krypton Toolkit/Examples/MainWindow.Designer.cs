@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnRibbonExtended = new Krypton.Toolkit.KryptonButton();
             this.kbtnThemeTools = new Krypton.Toolkit.KryptonButton();
             this.kbtnDockExtenderExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnAdvancedDataGridExample = new Krypton.Toolkit.KryptonButton();
@@ -50,13 +51,14 @@
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
-            this.kbtnRibbonExtended = new Krypton.Toolkit.KryptonButton();
+            this.kbtnMemoryBoxExample = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnMemoryBoxExample);
             this.kryptonPanel1.Controls.Add(this.kbtnRibbonExtended);
             this.kryptonPanel1.Controls.Add(this.kbtnThemeTools);
             this.kryptonPanel1.Controls.Add(this.kbtnDockExtenderExample);
@@ -84,9 +86,17 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(620, 390);
             this.kryptonPanel1.TabIndex = 0;
             // 
+            // kbtnRibbonExtended
+            // 
+            this.kbtnRibbonExtended.Location = new System.Drawing.Point(10, 154);
+            this.kbtnRibbonExtended.Name = "kbtnRibbonExtended";
+            this.kbtnRibbonExtended.Size = new System.Drawing.Size(111, 22);
+            this.kbtnRibbonExtended.TabIndex = 20;
+            this.kbtnRibbonExtended.Values.Text = "Ribbon Extended";
+            this.kbtnRibbonExtended.Click += new System.EventHandler(this.kbtnRibbonExtended_Click);
+            // 
             // kbtnThemeTools
             // 
-            this.kbtnThemeTools.CornerRoundingRadius = -1F;
             this.kbtnThemeTools.Location = new System.Drawing.Point(398, 126);
             this.kbtnThemeTools.Name = "kbtnThemeTools";
             this.kbtnThemeTools.Size = new System.Drawing.Size(111, 22);
@@ -96,7 +106,6 @@
             // 
             // kbtnDockExtenderExample
             // 
-            this.kbtnDockExtenderExample.CornerRoundingRadius = -1F;
             this.kbtnDockExtenderExample.Location = new System.Drawing.Point(204, 126);
             this.kbtnDockExtenderExample.Name = "kbtnDockExtenderExample";
             this.kbtnDockExtenderExample.Size = new System.Drawing.Size(188, 22);
@@ -106,7 +115,6 @@
             // 
             // kbtnAdvancedDataGridExample
             // 
-            this.kbtnAdvancedDataGridExample.CornerRoundingRadius = -1F;
             this.kbtnAdvancedDataGridExample.Location = new System.Drawing.Point(10, 126);
             this.kbtnAdvancedDataGridExample.Name = "kbtnAdvancedDataGridExample";
             this.kbtnAdvancedDataGridExample.Size = new System.Drawing.Size(188, 22);
@@ -116,7 +124,6 @@
             // 
             // kbtnTreeGridView2Example
             // 
-            this.kbtnTreeGridView2Example.CornerRoundingRadius = -1F;
             this.kbtnTreeGridView2Example.Location = new System.Drawing.Point(437, 98);
             this.kbtnTreeGridView2Example.Name = "kbtnTreeGridView2Example";
             this.kbtnTreeGridView2Example.Size = new System.Drawing.Size(150, 22);
@@ -126,7 +133,6 @@
             // 
             // kbtnTreeGridViewExample
             // 
-            this.kbtnTreeGridViewExample.CornerRoundingRadius = -1F;
             this.kbtnTreeGridViewExample.Location = new System.Drawing.Point(281, 98);
             this.kbtnTreeGridViewExample.Name = "kbtnTreeGridViewExample";
             this.kbtnTreeGridViewExample.Size = new System.Drawing.Size(150, 22);
@@ -136,7 +142,6 @@
             // 
             // kbtnInputBoxExamples
             // 
-            this.kbtnInputBoxExamples.CornerRoundingRadius = -1F;
             this.kbtnInputBoxExamples.Location = new System.Drawing.Point(125, 98);
             this.kbtnInputBoxExamples.Name = "kbtnInputBoxExamples";
             this.kbtnInputBoxExamples.Size = new System.Drawing.Size(150, 22);
@@ -146,7 +151,6 @@
             // 
             // kbtnDialogExamples
             // 
-            this.kbtnDialogExamples.CornerRoundingRadius = -1F;
             this.kbtnDialogExamples.Location = new System.Drawing.Point(10, 98);
             this.kbtnDialogExamples.Name = "kbtnDialogExamples";
             this.kbtnDialogExamples.Size = new System.Drawing.Size(109, 22);
@@ -156,7 +160,6 @@
             // 
             // kbtnKryptonFormExtendedExample
             // 
-            this.kbtnKryptonFormExtendedExample.CornerRoundingRadius = -1F;
             this.kbtnKryptonFormExtendedExample.Location = new System.Drawing.Point(315, 67);
             this.kbtnKryptonFormExtendedExample.Name = "kbtnKryptonFormExtendedExample";
             this.kbtnKryptonFormExtendedExample.Size = new System.Drawing.Size(203, 25);
@@ -166,7 +169,6 @@
             // 
             // kbtnFloating
             // 
-            this.kbtnFloating.CornerRoundingRadius = -1F;
             this.kbtnFloating.Location = new System.Drawing.Point(376, 38);
             this.kbtnFloating.Name = "kbtnFloating";
             this.kbtnFloating.Size = new System.Drawing.Size(110, 22);
@@ -176,7 +178,6 @@
             // 
             // kbtnNotificationExample
             // 
-            this.kbtnNotificationExample.CornerRoundingRadius = -1F;
             this.kbtnNotificationExample.Location = new System.Drawing.Point(147, 67);
             this.kbtnNotificationExample.Name = "kbtnNotificationExample";
             this.kbtnNotificationExample.Size = new System.Drawing.Size(162, 25);
@@ -187,7 +188,6 @@
             // kbtnOutlookGrid
             // 
             this.kbtnOutlookGrid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnOutlookGrid.CornerRoundingRadius = -1F;
             this.kbtnOutlookGrid.Location = new System.Drawing.Point(10, 67);
             this.kbtnOutlookGrid.Name = "kbtnOutlookGrid";
             this.kbtnOutlookGrid.Size = new System.Drawing.Size(127, 25);
@@ -197,7 +197,6 @@
             // 
             // kryptonButton7
             // 
-            this.kryptonButton7.CornerRoundingRadius = -1F;
             this.kryptonButton7.Location = new System.Drawing.Point(261, 38);
             this.kryptonButton7.Name = "kryptonButton7";
             this.kryptonButton7.Size = new System.Drawing.Size(109, 22);
@@ -207,7 +206,6 @@
             // 
             // kbtnExtendedControls
             // 
-            this.kbtnExtendedControls.CornerRoundingRadius = -1F;
             this.kbtnExtendedControls.Location = new System.Drawing.Point(146, 38);
             this.kbtnExtendedControls.Name = "kbtnExtendedControls";
             this.kbtnExtendedControls.Size = new System.Drawing.Size(109, 22);
@@ -217,7 +215,6 @@
             // 
             // kryptonButton5
             // 
-            this.kryptonButton5.CornerRoundingRadius = -1F;
             this.kryptonButton5.Location = new System.Drawing.Point(10, 38);
             this.kryptonButton5.Name = "kryptonButton5";
             this.kryptonButton5.Size = new System.Drawing.Size(130, 22);
@@ -226,7 +223,6 @@
             // 
             // kryptonButton4
             // 
-            this.kryptonButton4.CornerRoundingRadius = -1F;
             this.kryptonButton4.Location = new System.Drawing.Point(498, 10);
             this.kryptonButton4.Name = "kryptonButton4";
             this.kryptonButton4.Size = new System.Drawing.Size(109, 22);
@@ -235,7 +231,6 @@
             // 
             // kbtnCheckSum
             // 
-            this.kbtnCheckSum.CornerRoundingRadius = -1F;
             this.kbtnCheckSum.Location = new System.Drawing.Point(240, 10);
             this.kbtnCheckSum.Name = "kbtnCheckSum";
             this.kbtnCheckSum.Size = new System.Drawing.Size(109, 22);
@@ -245,7 +240,6 @@
             // 
             // kbtnCalendarItems
             // 
-            this.kbtnCalendarItems.CornerRoundingRadius = -1F;
             this.kbtnCalendarItems.Location = new System.Drawing.Point(125, 10);
             this.kbtnCalendarItems.Name = "kbtnCalendarItems";
             this.kbtnCalendarItems.Size = new System.Drawing.Size(109, 22);
@@ -255,7 +249,6 @@
             // 
             // kbtnCircularProgressBarItem
             // 
-            this.kbtnCircularProgressBarItem.CornerRoundingRadius = -1F;
             this.kbtnCircularProgressBarItem.Location = new System.Drawing.Point(358, 10);
             this.kbtnCircularProgressBarItem.Name = "kbtnCircularProgressBarItem";
             this.kbtnCircularProgressBarItem.Size = new System.Drawing.Size(134, 22);
@@ -265,7 +258,6 @@
             // 
             // ktnToolStripItems
             // 
-            this.ktnToolStripItems.CornerRoundingRadius = -1F;
             this.ktnToolStripItems.Location = new System.Drawing.Point(492, 38);
             this.ktnToolStripItems.Name = "ktnToolStripItems";
             this.ktnToolStripItems.Size = new System.Drawing.Size(110, 22);
@@ -275,7 +267,6 @@
             // 
             // kbtnButtonItems
             // 
-            this.kbtnButtonItems.CornerRoundingRadius = -1F;
             this.kbtnButtonItems.Location = new System.Drawing.Point(10, 10);
             this.kbtnButtonItems.Name = "kbtnButtonItems";
             this.kbtnButtonItems.Size = new System.Drawing.Size(109, 22);
@@ -283,15 +274,14 @@
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
-            // kbtnRibbonExtended
+            // kbtnMemoryBoxExample
             // 
-            this.kbtnRibbonExtended.CornerRoundingRadius = -1F;
-            this.kbtnRibbonExtended.Location = new System.Drawing.Point(10, 154);
-            this.kbtnRibbonExtended.Name = "kbtnRibbonExtended";
-            this.kbtnRibbonExtended.Size = new System.Drawing.Size(111, 22);
-            this.kbtnRibbonExtended.TabIndex = 20;
-            this.kbtnRibbonExtended.Values.Text = "Ribbon Extended";
-            this.kbtnRibbonExtended.Click += new System.EventHandler(this.kbtnRibbonExtended_Click);
+            this.kbtnMemoryBoxExample.Location = new System.Drawing.Point(127, 154);
+            this.kbtnMemoryBoxExample.Name = "kbtnMemoryBoxExample";
+            this.kbtnMemoryBoxExample.Size = new System.Drawing.Size(148, 22);
+            this.kbtnMemoryBoxExample.TabIndex = 21;
+            this.kbtnMemoryBoxExample.Values.Text = "MemoryBox Example";
+            this.kbtnMemoryBoxExample.Click += new System.EventHandler(this.kbtnMemoryBoxExample_Click);
             // 
             // MainWindow
             // 
@@ -332,5 +322,6 @@
         private KryptonButton kbtnDockExtenderExample;
         private KryptonButton kbtnThemeTools;
         private KryptonButton kbtnRibbonExtended;
+        private KryptonButton kbtnMemoryBoxExample;
     }
 }

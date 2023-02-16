@@ -197,7 +197,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             switch (alertType)
             {
-                case AlertType.Sucess:
+                case AlertType.Success:
                     pbxLogo.Image = Properties.Resources.sucess48px;
 
                     ChangeColour(Color.SeaGreen, Color.White);

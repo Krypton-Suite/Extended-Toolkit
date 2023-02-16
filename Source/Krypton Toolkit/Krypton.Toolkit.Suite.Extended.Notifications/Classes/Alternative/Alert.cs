@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             KryptonAlertWindow alertWindow = new KryptonAlertWindow();
 
-            alertWindow.DisplayAlert(message, AlertType.Sucess, interval, headerText: headerText);
+            alertWindow.DisplayAlert(message, AlertType.Success, interval, headerText: headerText);
         }
         #endregion
 

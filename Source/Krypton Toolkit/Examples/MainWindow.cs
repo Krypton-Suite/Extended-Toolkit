@@ -139,5 +139,12 @@ namespace Examples
 
             ribbonExtendedExample.Show();
         }
+
+        private void kbtnMemoryBoxExample_Click(object sender, EventArgs e)
+        {
+            MemoryBoxExample memoryBoxExample = new MemoryBoxExample();
+
+            memoryBoxExample.Show();
+        }
     }
 }

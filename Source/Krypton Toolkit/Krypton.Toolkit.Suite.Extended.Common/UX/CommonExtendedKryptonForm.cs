@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public FadeSpeedChoice FadeSpeedChoice { get => _fadeSpeedChoice; set => _fadeSpeedChoice = value; }
         #endregion
 
-        #region Constructor
+        #region Identity
         public CommonExtendedKryptonForm()
         {
             UseBlur = false;
@@ -62,6 +62,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             UseFade = true;
 
             SleepInterval = 50;
+
+            _fadeSpeedChoice = FadeSpeedChoice.Normal;
         }
         #endregion
 
