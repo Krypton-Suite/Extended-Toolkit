@@ -568,11 +568,11 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+        public static DialogResult Show(string text, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        bool showCopyButton = false, string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
+                                        bool showCopyButton = false, string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
         {
             return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
         }
@@ -595,12 +595,12 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+        public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
         {
             return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
         }
@@ -623,12 +623,12 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+        public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
         {
             return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
         }
@@ -653,12 +653,12 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        string text, string caption, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
         {
             return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
         }
@@ -691,14 +691,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -739,14 +739,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -784,15 +784,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons,
                                         ExtendedMessageBoxCustomButtonOptions customButtonOptions, ExtendedMessageBoxIcon icon,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -831,15 +831,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        ExtendedMessageBoxIcon icon, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -878,14 +878,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon, MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
-                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        Font? messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string? optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
                                         CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        Image customMessageBoxIcon = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        Image? customMessageBoxIcon = null, bool showCopyButton = false,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -927,14 +927,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
-                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        Font? messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string? optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
                                         CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        Image customMessageBoxIcon = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        Image? customMessageBoxIcon = null, bool showCopyButton = false,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -975,15 +975,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1026,15 +1026,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1076,15 +1076,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        bool displayHelpButton, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool displayHelpButton, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1126,15 +1126,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        string helpFilePath, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1178,15 +1178,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        string helpFilePath, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1230,14 +1230,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
-                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        Font? messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string? optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
                                         CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        Image customMessageBoxIcon = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        Image? customMessageBoxIcon = null, bool showCopyButton = false,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1280,15 +1280,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1334,14 +1334,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
-                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        Font? messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string? optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
                                         CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        Image customMessageBoxIcon = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        Image? customMessageBoxIcon = null, bool showCopyButton = false,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1386,15 +1386,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1439,15 +1439,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1494,14 +1494,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null, AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1550,9 +1550,9 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                           CheckState? optionalCheckBoxCheckState,
                                           AnchorStyles optionalCheckBoxAnchor, Point optionalCheckBoxLocation,
                                           Image customMessageBoxIcon, bool showCopyButton = false,
-                                          string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                          string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                          string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                          string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                          string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                          string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                           DialogResult? buttonTwoCustomDialogResult = null,
                                           DialogResult? buttonThreeCustomDialogResult = null)
         {
@@ -1570,14 +1570,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                                  ExtendedMessageBoxIcon icon,
                                                  MessageBoxDefaultButton defaultButton,
                                                  MessageBoxOptions options,
-                                                 HelpInformation helpInformation, bool? showCtrlCopy, Font messageboxTypeface = null,
-                                                 bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                                 HelpInformation helpInformation, bool? showCtrlCopy, Font? messageboxTypeface = null,
+                                                 bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                                  bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                                  AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                                 Image customMessageBoxIcon = null, bool showCopyButton = false,
-                                                 string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                                 string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                                 string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                                 Image? customMessageBoxIcon = null, bool showCopyButton = false,
+                                                 string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                                 string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                                 string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                                  DialogResult? buttonTwoCustomDialogResult = null,
                                                  DialogResult? buttonThreeCustomDialogResult = null, bool? showToolTips = null)
         {

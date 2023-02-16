@@ -247,7 +247,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="colormap">Colormap to display in this colorbar</param>
         /// <param name="space">The size of the right axis will be set to this number of pixels to make room for the colorbar</param>
         /// <returns>the colorbar that was just created</returns>
-        public Colorbar AddColorbar(ColourMap colormap = null, int space = 100)
+        public Colorbar AddColorbar(ColourMap? colormap = null, int space = 100)
         {
             var cb = new Colorbar(colormap);
             Add(cb);
@@ -389,7 +389,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Returns the heatmap that was added to the plot.
         /// Act on its public fields and methods to customize it or update its data.
         /// </returns>
-        public Heatmap AddHeatmap(double?[,] intensities, ColourMap colormap = null, bool lockScales = true)
+        public Heatmap AddHeatmap(double?[,] intensities, ColourMap? colormap = null, bool lockScales = true)
         {
             var plottable = new Heatmap();
             plottable.Update(intensities, colormap);
@@ -412,7 +412,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Returns the heatmap that was added to the plot.
         /// Act on its public fields and methods to customize it or update its data.
         /// </returns>
-        public Heatmap AddHeatmap(double[,] intensities, ColourMap colormap = null, bool lockScales = true)
+        public Heatmap AddHeatmap(double[,] intensities, ColourMap? colormap = null, bool lockScales = true)
         {
             var plottable = new Heatmap();
             plottable.Update(intensities, colormap);
@@ -441,7 +441,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Act on its public fields and methods to customize it or update its data.
         /// </returns>
         [Obsolete("This plot type has been deprecated. (min/max functionality now exists in Heatmap)")]
-        public CoordinatedHeatmap AddHeatmapCoordinated(double?[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap colormap = null)
+        public CoordinatedHeatmap AddHeatmapCoordinated(double?[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap? colormap = null)
         {
             var plottable = new CoordinatedHeatmap();
 
@@ -511,7 +511,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Act on its public fields and methods to customize it or update its data.
         /// </returns>
         [Obsolete("This plot type has been deprecated. Use a regular heatmap and modify its Offset and CellSize fields.")]
-        public CoordinatedHeatmap AddHeatmapCoordinated(double[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap colormap = null)
+        public CoordinatedHeatmap AddHeatmapCoordinated(double[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap? colormap = null)
         {
             var plottable = new CoordinatedHeatmap();
 
@@ -567,7 +567,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add a horizontal axis line at a specific Y position
         /// </summary>
-        public HLine AddHorizontalLine(double y, Color? color = null, float width = 1, LineStyle style = LineStyle.Solid, string label = null)
+        public HLine AddHorizontalLine(double y, Color? color = null, float width = 1, LineStyle style = LineStyle.Solid, string? label = null)
         {
             HLine plottable = new HLine()
             {
@@ -584,7 +584,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add a horizontal span (shades the region between two X positions)
         /// </summary>
-        public HSpan AddHorizontalSpan(double xMin, double xMax, Color? color = null, string label = null)
+        public HSpan AddHorizontalSpan(double xMin, double xMax, Color? color = null, string? label = null)
         {
             var plottable = new HSpan()
             {
@@ -635,7 +635,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Add a marker at a specific X/Y position.
         /// This method really creates a scatter plot with a single point.
         /// </summary>
-        public MarkerPlot AddMarker(double x, double y, MarkerShape shape = MarkerShape.FilledCircle, double size = 10, Color? color = null, string label = null)
+        public MarkerPlot AddMarker(double x, double y, MarkerShape shape = MarkerShape.FilledCircle, double size = 10, Color? color = null, string? label = null)
         {
             var plottable = new MarkerPlot()
             {
@@ -699,7 +699,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// The scatter plot that was created and added to the plot. 
         /// Interact with its public fields and methods to customize style and update data.
         /// </returns>
-        public MarkerPlot AddPoint(double x, double y, Color? color = null, float size = 5, MarkerShape shape = MarkerShape.FilledCircle, string label = null)
+        public MarkerPlot AddPoint(double x, double y, Color? color = null, float size = 5, MarkerShape shape = MarkerShape.FilledCircle, string? label = null)
         {
             var plottable = new MarkerPlot()
             {
@@ -747,7 +747,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add a population to the plot
         /// </summary>
-        public PopulationPlot AddPopulation(Population population, string label = null)
+        public PopulationPlot AddPopulation(Population population, string? label = null)
         {
             var plottable = new PopulationPlot(population, label, settings.GetNextColor());
             Add(plottable);
@@ -757,7 +757,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add multiple populations to the plot as a single series
         /// </summary>
-        public PopulationPlot AddPopulations(Population[] populations, string label = null)
+        public PopulationPlot AddPopulations(Population[] populations, string? label = null)
         {
             var plottable = new PopulationPlot(populations, label, settings.GetNextColor());
             Add(plottable);
@@ -785,7 +785,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="maxValues">if provided, each category (column) is normalized to these values</param>
         /// <param name="disableFrameAndGrid">also make the plot frameless and disable its grid</param>
         /// <returns>the radar plot that was just created and added to the plot</returns>
-        public RadarPlot AddRadar(double[,] values, bool independentAxes = false, double[] maxValues = null, bool disableFrameAndGrid = true)
+        public RadarPlot AddRadar(double[,] values, bool independentAxes = false, double[]? maxValues = null, bool disableFrameAndGrid = true)
         {
 
             Color[] colors = Enumerable.Range(0, values.Length)
@@ -854,7 +854,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add an L-shaped scalebar to the corner of the plot
         /// </summary>
-        public ScaleBar AddScaleBar(double width, double height, string xLabel = null, string yLabel = null)
+        public ScaleBar AddScaleBar(double width, double height, string? xLabel = null, string? yLabel = null)
         {
             var scalebar = new ScaleBar()
             {
@@ -880,7 +880,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             float markerSize = 5,
             MarkerShape markerShape = MarkerShape.FilledCircle,
             LineStyle lineStyle = LineStyle.Solid,
-            string label = null)
+            string? label = null)
         {
             var plottable = new ScatterPlot(xs, ys, null, null)
             {
@@ -905,7 +905,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color? color = null,
             float lineWidth = 1,
             LineStyle lineStyle = LineStyle.Solid,
-            string label = null)
+            string? label = null)
         {
             var plottable = new ScatterPlot(xs, ys, null, null)
             {
@@ -929,7 +929,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color? color = null,
             float markerSize = 5,
             MarkerShape markerShape = MarkerShape.FilledCircle,
-            string label = null)
+            string? label = null)
         {
             var plottable = new ScatterPlot(xs, ys, null, null)
             {
@@ -951,7 +951,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double[] ys,
             Color? color = null,
             float lineWidth = 1,
-            string label = null)
+            string? label = null)
         {
             var plottable = new ScatterPlot(xs, ys, null, null)
             {
@@ -972,7 +972,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color? color = null,
             float lineWidth = 1,
             float markerSize = 5,
-            string label = null,
+            string? label = null,
             MarkerShape markerShape = MarkerShape.FilledCircle,
             LineStyle lineStyle = LineStyle.Solid)
         {
@@ -993,7 +993,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Signal plots have evenly-spaced X points and render very fast.
         /// </summary>
-        public SignalPlot AddSignal(double[] ys, double sampleRate = 1, Color? color = null, string label = null)
+        public SignalPlot AddSignal(double[] ys, double sampleRate = 1, Color? color = null, string? label = null)
         {
             SignalPlot signal = new SignalPlot()
             {
@@ -1015,7 +1015,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// but data in source arrays cannot be changed after it is loaded.
         /// Methods can be used to update all or portions of the data.
         /// </summary>
-        public SignalPlotConst<T> AddSignalConst<T>(T[] ys, double sampleRate = 1, Color? color = null, string label = null) where T : struct, IComparable
+        public SignalPlotConst<T> AddSignalConst<T>(T[] ys, double sampleRate = 1, Color? color = null, string? label = null) where T : struct, IComparable
         {
             SignalPlotConst<T> plottable = new SignalPlotConst<T>()
             {
@@ -1033,7 +1033,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Speed-optimized plot for Ys with unevenly-spaced ascending Xs
         /// </summary>
-        public SignalPlotXY AddSignalXY(double[] xs, double[] ys, Color? color = null, string label = null)
+        public SignalPlotXY AddSignalXY(double[] xs, double[] ys, Color? color = null, string? label = null)
         {
             SignalPlotXY plottable = new SignalPlotXY()
             {
@@ -1053,7 +1053,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Speed-optimized plot for Ys with unevenly-spaced ascending Xs.
         /// Faster than SignalXY but values cannot be modified after loading.
         /// </summary>
-        public SignalPlotXYConst<TX, TY> AddSignalXYConst<TX, TY>(TX[] xs, TY[] ys, Color? color = null, string label = null)
+        public SignalPlotXYConst<TX, TY> AddSignalXYConst<TX, TY>(TX[] xs, TY[] ys, Color? color = null, string? label = null)
             where TX : struct, IComparable where TY : struct, IComparable
         {
             SignalPlotXYConst<TX, TY> signal = new SignalPlotXYConst<TX, TY>()
@@ -1108,9 +1108,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Vector2[,] vectors,
             double[] xs,
             double[] ys,
-            string label = null,
+            string? label = null,
             Color? color = null,
-            ColourMap colormap = null,
+            ColourMap? colormap = null,
             double scaleFactor = 1
             )
         {
@@ -1126,7 +1126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add a vertical axis line at a specific Y position
         /// </summary>
-        public VLine AddVerticalLine(double x, Color? color = null, float width = 1, LineStyle style = LineStyle.Solid, string label = null)
+        public VLine AddVerticalLine(double x, Color? color = null, float width = 1, LineStyle style = LineStyle.Solid, string? label = null)
         {
             VLine plottable = new VLine()
             {
@@ -1143,7 +1143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add a horizontal span (shades the region between two X positions)
         /// </summary>
-        public VSpan AddVerticalSpan(double yMin, double yMax, Color? color = null, string label = null)
+        public VSpan AddVerticalSpan(double yMin, double yMax, Color? color = null, string? label = null)
         {
             var plottable = new VSpan()
             {

@@ -285,7 +285,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             fader.FadeIn(fadeSpeed, finished);
         }
 
-        public static void FadeIn(KryptonFormExtended form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted finished = null)
+        public static void FadeIn(KryptonFormExtended form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted? finished = null)
         {
             FadeController fader = new FadeController(form);
 
@@ -301,7 +301,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             fader.FadeOut(fadeSpeed, finished);
         }
 
-        public static void FadeOut(KryptonFormExtended form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted finished = null)
+        public static void FadeOut(KryptonFormExtended form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted? finished = null)
         {
             FadeController fader = new FadeController(form);
 
@@ -353,7 +353,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             fader.FadeOut(fadeSpeed, finished);
         }
 
-        public static void FadeOutAndClose(KryptonFormExtended form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted finished = null)
+        public static void FadeOutAndClose(KryptonFormExtended form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted? finished = null)
         {
             FadeController fader = new FadeController(form) { shouldClose = true };
 

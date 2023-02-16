@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public int? MinRenderIndex { get; set; }
         public int? MaxRenderIndex { get; set; }
 
-        public ScatterPlot(double[] xs, double[] ys, double[] errorX = null, double[] errorY = null)
+        public ScatterPlot(double[] xs, double[] ys, double[]? errorX = null, double[]? errorY = null)
         {
             Xs = xs;
             Ys = ys;

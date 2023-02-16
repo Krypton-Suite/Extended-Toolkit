@@ -63,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>Sets the tooltip.</summary>
         /// <param name="control">The control.</param>
         /// <param name="colourHeader">The colour header.</param>
-        public static void SetTooltip(Control control, string colourHeader = null)
+        public static void SetTooltip(Control control, string? colourHeader = null)
         {
             ToolTip temp = new ToolTip();
 

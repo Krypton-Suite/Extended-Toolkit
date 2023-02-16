@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <param name="onClearRecentFilesClick">The on clear recent files click.</param>
         /// <param name="useConfirmClearListDialogue">if set to <c>true</c> [use confirm clear list dialogue].</param>
         /// <exception cref="System.ArgumentException">Bad argument.</exception>
-        public MostRecentlyUsedFileManager(MRUMenuItem parentMenuItem, string applicationName, Action<object, EventArgs> onRecentFileClick, Action<object, EventArgs> onClearRecentFilesClick = null, bool useConfirmClearListDialogue = false)
+        public MostRecentlyUsedFileManager(MRUMenuItem parentMenuItem, string applicationName, Action<object, EventArgs> onRecentFileClick, Action<object, EventArgs>? onClearRecentFilesClick = null, bool useConfirmClearListDialogue = false)
         {
             if (parentMenuItem == null || onRecentFileClick == null || applicationName == null || applicationName.Length == 0 || applicationName.Contains("\\"))
             {

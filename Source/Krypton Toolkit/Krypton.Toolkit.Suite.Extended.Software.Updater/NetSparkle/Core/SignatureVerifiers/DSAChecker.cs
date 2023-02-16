@@ -50,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// an app cast and its items.</param>
         /// <param name="publicKey">the public key as string (will be preferred before the file)</param>
         /// <param name="publicKeyFile">the public key file</param>
-        public DSAChecker(SecurityMode mode, string publicKey = null, string publicKeyFile = "NetSparkle_DSA.pub")
+        public DSAChecker(SecurityMode mode, string? publicKey = null, string publicKeyFile = "NetSparkle_DSA.pub")
         {
             SecurityMode = mode;
 

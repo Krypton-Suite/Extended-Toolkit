@@ -121,13 +121,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                 IconType iconType, string title, string contentText,
                                                 bool? usePanelColourInTextArea, bool? showCloseButton,
                                                 bool? showActionButton,
-                                                Image customImage = null,
+                                                Image? customImage = null,
                                                 string dismissText = "&Dismiss",
                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                KryptonCommand actionButtonCommand = null,
+                                                KryptonCommand? actionButtonCommand = null,
                                                 bool? openProcessInExplorer = null,
-                                                string processPath = null,
-                                                object optionalParameters = null)
+                                                string? processPath = null,
+                                                object? optionalParameters = null)
         {
             InitializeComponent();
 
@@ -151,9 +151,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                 IconType iconType, string title, string contentText,
                                                 bool? usePanelColourInTextArea, bool? showCloseButton,
                                                 bool? showActionButton, int seconds,
-                                                Image customImage = null, string dismissText = "&Dismiss",
+                                                Image? customImage = null, string dismissText = "&Dismiss",
                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                KryptonCommand actionButtonCommand = null)
+                                                KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    usePanelColourInTextArea, showCloseButton, showActionButton, customImage, dismissText,
                    rightToLeftSupport, actionButtonCommand)
@@ -191,10 +191,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                 IconType iconType, string title, string contentText,
                                                 bool? usePanelColourInTextArea, bool? showCloseButton,
                                                 bool? showActionButton, int seconds,
-                                                string soundPath, Image customImage = null,
+                                                string soundPath, Image? customImage = null,
                                                 string dismissText = "&Dismiss",
                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                KryptonCommand actionButtonCommand = null)
+                                                KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    usePanelColourInTextArea, showCloseButton, showActionButton, seconds, customImage,
                    dismissText, rightToLeftSupport, actionButtonCommand) => SoundPath = soundPath;
@@ -216,9 +216,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                 IconType iconType, string title, string contentText,
                                                 bool? usePanelColourInTextArea, bool? showCloseButton,
                                                 bool? showActionButton, Stream soundStream,
-                                                Image customImage = null, string dismissText = "&Dismiss",
+                                                Image? customImage = null, string dismissText = "&Dismiss",
                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                KryptonCommand actionButtonCommand = null)
+                                                KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    usePanelColourInTextArea, showCloseButton, showActionButton,
                    customImage, dismissText,
@@ -242,10 +242,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                 IconType iconType, string title, string contentText,
                                                 bool? usePanelColourInTextArea, bool? showCloseButton,
                                                 bool? showActionButton, int seconds,
-                                                Stream soundStream, Image customImage = null,
+                                                Stream soundStream, Image? customImage = null,
                                                 string dismissText = "&Dismiss",
                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                KryptonCommand actionButtonCommand = null)
+                                                KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    usePanelColourInTextArea, showCloseButton, showActionButton,
                    seconds, customImage,
@@ -400,10 +400,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea, bool? showCloseButton,
                                  bool? showActionButton,
-                                 Image customImage = null,
+                                 Image? customImage = null,
                                  string dismissText = "&Dismiss",
                                  RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                 KryptonCommand actionButtonCommand = null,
+                                 KryptonCommand? actionButtonCommand = null,
                                  bool? openProcessInExplorer = null,
                                  string? processPath = null,
                                  object? optionalParameters = null)

@@ -247,7 +247,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="colormap">update the Colormap to use this colormap</param>
         /// <param name="min">minimum intensity (according to the colormap)</param>
         /// <param name="max">maximum intensity (according to the colormap)</param>
-        public void Update(double[,] intensities, ColourMap colormap = null, double? min = null, double? max = null)
+        public void Update(double[,] intensities, ColourMap? colormap = null, double? min = null, double? max = null)
         {
             double?[,] tmp = new double?[intensities.GetLength(0), intensities.GetLength(1)];
             for (int i = 0; i < intensities.GetLength(0); i++)

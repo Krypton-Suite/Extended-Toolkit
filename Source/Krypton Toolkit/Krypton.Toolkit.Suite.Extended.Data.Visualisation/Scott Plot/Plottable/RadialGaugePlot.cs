@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Replace gauge levels with new ones.
         /// </summary>
-        public void Update(double[] levels, Color[] colors = null)
+        public void Update(double[] levels, Color[]? colors = null)
         {
             if (levels is null || levels.Length == 0)
                 throw new ArgumentException("values must not be null or empty");

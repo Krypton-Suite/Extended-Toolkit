@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="tableName"></param>
         /// <param name="targetKeyColumn"></param>
         /// <param name="columns">optional columns if not already added via designer</param>
-        public void AddSingleDetail(string tableName, string targetKeyColumn, DataGridViewColumn[] columns = null)
+        public void AddSingleDetail(string tableName, string targetKeyColumn, DataGridViewColumn[]? columns = null)
         {
             AddSingleDetail(new DataView(DataSet.Tables[tableName]), targetKeyColumn, columns);
         }

@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             FileService = fileService;
         }
 
-        public string CreateZipReport(ExceptionReportInfo reportInfo, IList<string> additionalFiles = null)
+        public string CreateZipReport(ExceptionReportInfo reportInfo, IList<string>? additionalFiles = null)
         {
             var zipFilePath = FileService.TempFile(reportInfo.AttachmentFilename);
             return CreateZipReport(reportInfo, zipFilePath, additionalFiles);

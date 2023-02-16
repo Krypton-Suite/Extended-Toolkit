@@ -293,19 +293,19 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                Font? userResponsePromptFont = null,
                                                IconType iconType = IconType.None,
                                                int time = 0, int seconds = 0, string actionButtonText = @"O&pen",
-                                               string soundPath = null, string dismissText = "Di&smiss",
+                                               string? soundPath = null, string dismissText = "Di&smiss",
                                                string userResponsePromptText = "Type response here...",
-                                               Stream soundStream = null,
-                                               Image customImage = null,
+                                               Stream? soundStream = null,
+                                               Image? customImage = null,
                                                RightToLeftSupport rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                                bool useProgressBar = false,
                                                ToastNotificationContentAreaType contentAreaType = ToastNotificationContentAreaType.WrappedLabel,
                                                ToastNotificationSystemSounds? notificationSystemSound = ToastNotificationSystemSounds.None,
                                                KryptonCommand? actionButtonCommand = null,
-                                               string processName = null,
-                                               string processPath = null,
+                                               string? processName = null,
+                                               string? processPath = null,
                                                bool? openProcessInExplorer = null,
-                                               object optionalParameters = null)
+                                               object? optionalParameters = null)
         {
             ActionButtonLocation = actionButtonLocation ?? ActionButtonLocation.Left;
 

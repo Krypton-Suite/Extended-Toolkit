@@ -324,8 +324,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Manually define culture to use for unit-to-string tick mark conversion
         /// </summary>
         public void SetCulture(
-            string shortDatePattern = null, string decimalSeparator = null, string numberGroupSeparator = null,
-            int? decimalDigits = null, int? numberNegativePattern = null, int[] numberGroupSizes = null) =>
+            string? shortDatePattern = null, string? decimalSeparator = null, string? numberGroupSeparator = null,
+            int? decimalDigits = null, int? numberNegativePattern = null, int[]? numberGroupSizes = null) =>
             AxisTicks.TickCollection.SetCulture(shortDatePattern, decimalSeparator, numberGroupSeparator,
                 decimalDigits, numberNegativePattern, numberGroupSizes);
 

@@ -105,9 +105,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                               IconType iconType, string title, string contentText,
                                               bool? showCloseButton,
-                                              Image customImage = null, string dismissText = "&Dismiss",
+                                              Image? customImage = null, string dismissText = "&Dismiss",
                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                              KryptonCommand actionButtonCommand = null)
+                                              KryptonCommand? actionButtonCommand = null)
         {
             InitializeComponent();
 
@@ -129,9 +129,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                               IconType iconType, string title, string contentText,
                                               bool? showCloseButton, int seconds,
-                                              Image customImage = null, string dismissText = "&Dismiss",
+                                              Image? customImage = null, string dismissText = "&Dismiss",
                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                              KryptonCommand actionButtonCommand = null)
+                                              KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    showCloseButton, customImage, dismissText,
                    rightToLeftSupport, actionButtonCommand) => Seconds = seconds;
@@ -152,10 +152,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                               IconType iconType, string title, string contentText,
                                               bool? showCloseButton, int seconds,
-                                              string soundPath, Image customImage = null,
+                                              string soundPath, Image? customImage = null,
                                               string dismissText = "&Dismiss",
                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                              KryptonCommand actionButtonCommand = null)
+                                              KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    showCloseButton, seconds, customImage, dismissText,
                    rightToLeftSupport, actionButtonCommand) => SoundPath = soundPath;
@@ -175,10 +175,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                               IconType iconType, string title, string contentText,
                                               bool? showCloseButton,
-                                              Stream soundStream, Image customImage = null,
+                                              Stream soundStream, Image? customImage = null,
                                               string dismissText = "&Dismiss",
                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                              KryptonCommand actionButtonCommand = null)
+                                              KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    showCloseButton, customImage, dismissText,
                    rightToLeftSupport, actionButtonCommand) => SoundStream = soundStream;
@@ -199,10 +199,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                               IconType iconType, string title, string contentText,
                                               bool? showCloseButton, int seconds,
-                                              Stream soundStream, Image customImage = null,
+                                              Stream soundStream, Image? customImage = null,
                                               string dismissText = "&Dismiss",
                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                              KryptonCommand actionButtonCommand = null)
+                                              KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    showCloseButton, seconds, customImage, dismissText,
                    rightToLeftSupport, actionButtonCommand) => SoundStream = soundStream;

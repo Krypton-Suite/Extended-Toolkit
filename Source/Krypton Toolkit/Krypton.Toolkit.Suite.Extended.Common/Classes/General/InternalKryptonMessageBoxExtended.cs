@@ -457,7 +457,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+        public static DialogResult Show(string text, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(null, text, string.Empty, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface);
         }
@@ -469,7 +469,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+        public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(owner, text, string.Empty, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface);
         }
@@ -481,7 +481,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+        public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(null, text, caption, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface);
         }
@@ -495,7 +495,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        string text, string caption, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(owner, text, caption, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface);
         }
@@ -509,7 +509,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        MessageBoxButtons buttons, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(null, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface);
         }
@@ -525,7 +525,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
-                                        MessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        MessageBoxButtons buttons, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(owner, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface);
         }
@@ -540,7 +540,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, MessageBoxIcon icon, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        MessageBoxButtons buttons, MessageBoxIcon icon, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(null, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface);
         }
@@ -557,7 +557,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
-                                        MessageBoxButtons buttons, MessageBoxIcon icon, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        MessageBoxButtons buttons, MessageBoxIcon icon, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(owner, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface);
         }
@@ -574,7 +574,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(null, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface);
         }
@@ -593,7 +593,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(owner, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface);
         }
@@ -611,7 +611,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(null, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface);
         }
@@ -631,7 +631,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface);
         }
@@ -651,7 +651,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        bool displayHelpButton, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        bool displayHelpButton, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(null, text, caption, buttons, icon, defaultButton, options, displayHelpButton ? new HelPlatformInvokenformation() : null, showCtrlCopy, messageboxTypeface);
         }
@@ -671,7 +671,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        string helpFilePath, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath), showCtrlCopy, messageboxTypeface);
         }
@@ -693,7 +693,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        string helpFilePath, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath), showCtrlCopy, messageboxTypeface);
         }
@@ -714,7 +714,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface);
         }
@@ -735,7 +735,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface);
         }
@@ -758,7 +758,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface);
         }
@@ -781,7 +781,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface);
         }
@@ -803,7 +803,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface);
         }
@@ -828,7 +828,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         string text, string caption,
                                         MessageBoxButtons buttons, MessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, Font messageboxTypeface = null)
+                                        string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, Font? messageboxTypeface = null)
         {
             return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface);
         }
@@ -841,7 +841,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                                  MessageBoxIcon icon,
                                                  MessageBoxDefaultButton defaultButton,
                                                  MessageBoxOptions options,
-                                                 HelPlatformInvokenformation helPlatformInvokenformation, bool? showCtrlCopy, Font messageboxTypeface = null)
+                                                 HelPlatformInvokenformation helPlatformInvokenformation, bool? showCtrlCopy, Font? messageboxTypeface = null)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))

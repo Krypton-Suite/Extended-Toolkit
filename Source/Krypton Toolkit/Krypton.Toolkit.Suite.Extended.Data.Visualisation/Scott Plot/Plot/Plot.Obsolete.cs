@@ -31,14 +31,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     {
         [Obsolete("Use AddHeatmapCoordinated (note capitalization)")]
         [EditorBrowsable(EditorBrowsableState.Never)] // Prevents suggestions in Intellisense for downstream users. Still shows up while editing this assembly.
-        public CoordinatedHeatmap AddHeatMapCoordinated(double?[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap colormap = null)
+        public CoordinatedHeatmap AddHeatMapCoordinated(double?[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap? colormap = null)
         {
             return AddHeatmapCoordinated(intensities, xMin, xMax, yMin, yMax, colormap);
         }
 
         [Obsolete("Use AddHeatmapCoordinated (note capitalization)")]
         [EditorBrowsable(EditorBrowsableState.Never)] // Prevents suggestions in Intellisense for downstream users. Still shows up while editing this assembly.
-        public CoordinatedHeatmap AddHeatMapCoordinated(double[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap colormap = null)
+        public CoordinatedHeatmap AddHeatMapCoordinated(double[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap? colormap = null)
         {
             return AddHeatmapCoordinated(intensities, xMin, xMax, yMin, yMax, colormap);
         }
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             float arrowheadWidth = 3,
             float arrowheadLength = 3,
             Color? color = null,
-            string label = null
+            string? label = null
             )
         {
             var scatter = PlotScatter(
@@ -121,8 +121,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public BarPlot PlotBar(
             double[] xs,
             double[] ys,
-            double[] errorY = null,
-            string label = null,
+            double[]? errorY = null,
+            string? label = null,
             double barWidth = .8,
             double xOffset = 0,
             bool fill = true,
@@ -136,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             bool showValues = false,
             Color? valueColor = null,
             bool autoAxis = true,
-            double[] yOffsets = null,
+            double[]? yOffsets = null,
             Color? negativeColor = null
             )
         {
@@ -196,7 +196,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 string[] groupLabels,
                 string[] seriesLabels,
                 double[][] ys,
-                double[][] yErr = null,
+                double[][]? yErr = null,
                 double groupWidthFraction = 0.8,
                 double barWidthFraction = 0.8,
                 double errorCapSize = 0.38,
@@ -241,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
            Bitmap bitmap,
            double x,
            double y,
-           string label = null,
+           string? label = null,
            Alignment alignment = Alignment.MiddleLeft,
            double rotation = 0,
            Color? frameColor = null,
@@ -288,21 +288,21 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void PlotErrorBars(
             double[] xs,
             double[] ys,
-            double[] xPositiveError = null,
-            double[] xNegativeError = null,
-            double[] yPositiveError = null,
-            double[] yNegativeError = null,
+            double[]? xPositiveError = null,
+            double[]? xNegativeError = null,
+            double[]? yPositiveError = null,
+            double[]? yNegativeError = null,
             Color? color = null,
             double lineWidth = 1,
             double capWidth = 3,
-            string label = null
+            string? label = null
             ) => throw new NotImplementedException();
 
         [Obsolete("Use AddFill() and customize the object it returns")]
         public Polygon PlotFill(
             double[] xs,
             double[] ys,
-            string label = null,
+            string? label = null,
             double lineWidth = 0,
             Color? lineColor = null,
             bool fill = true,
@@ -326,7 +326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double[] ys1,
             double[] xs2,
             double[] ys2,
-            string label = null,
+            string? label = null,
             double lineWidth = 0,
             Color? lineColor = null,
             bool fill = true,
@@ -360,8 +360,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public (Polygon, Polygon) PlotFillAboveBelow(
             double[] xs,
             double[] ys,
-            string labelAbove = null,
-            string labelBelow = null,
+            string? labelAbove = null,
+            string? labelBelow = null,
             double lineWidth = 1,
             Color? lineColor = null,
             bool fill = true,
@@ -435,14 +435,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         [Obsolete("Use AddHeatmap() and customize the object it returns")]
         public Heatmap PlotHeatmap(
             double[,] intensities,
-            ColourMap colormap = null,
-            string label = null,
-            double[] axisOffsets = null,
-            double[] axisMultipliers = null,
+            ColourMap? colormap = null,
+            string? label = null,
+            double[]? axisOffsets = null,
+            double[]? axisMultipliers = null,
             double? scaleMin = null,
             double? scaleMax = null,
             double? transparencyThreshold = null,
-            Bitmap backgroundImage = null,
+            Bitmap? backgroundImage = null,
             bool displayImageAbove = false,
             bool drawAxisLabels = true
             )
@@ -463,13 +463,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Heatmap PlotHeatmap(
             double?[,] intensities,
             ColourMap? colormap = null,
-            string label = null,
-            double[] axisOffsets = null,
-            double[] axisMultipliers = null,
+            string? label = null,
+            double[]? axisOffsets = null,
+            double[]? axisMultipliers = null,
             double? scaleMin = null,
             double? scaleMax = null,
             double? transparencyThreshold = null,
-            Bitmap backgroundImage = null,
+            Bitmap? backgroundImage = null,
             bool displayImageAbove = false,
             bool drawAxisLabels = true
             )
@@ -495,7 +495,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double y,
             Color? color = null,
             double lineWidth = 1,
-            string label = null,
+            string? label = null,
             bool draggable = false,
             double dragLimitLower = double.NegativeInfinity,
             double dragLimitUpper = double.PositiveInfinity,
@@ -523,7 +523,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double x2,
             Color? color = null,
             double alpha = .5,
-            string label = null,
+            string? label = null,
             bool draggable = false,
             bool dragFixedSize = false,
             double dragLimitLower = double.NegativeInfinity,
@@ -553,7 +553,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double y2,
             Color? color = null,
             double lineWidth = 1,
-            string label = null,
+            string? label = null,
             LineStyle lineStyle = LineStyle.Solid
             )
         {
@@ -575,7 +575,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             (double x1, double x2) xLimits,
             Color? color = null,
             double lineWidth = 1,
-            string label = null,
+            string? label = null,
             LineStyle lineStyle = LineStyle.Solid
             )
         {
@@ -615,13 +615,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         [Obsolete("use AddPie() and customize the object it returns")]
         public PiePlot PlotPie(
             double[] values,
-            string[] sliceLabels = null,
+            string[]? sliceLabels = null,
             Color[]? colors = null,
             bool explodedChart = false,
             bool showValues = false,
             bool showPercentages = false,
             bool showLabels = true,
-            string label = null
+            string? label = null
             )
         {
             colors ??= Enumerable.Range(0, values.Length).Select(i => settings.PlottablePalette.GetColor(i)).ToArray();
@@ -640,7 +640,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         }
 
         [Obsolete("Use AddPoint() and customize the object it returns")]
-        public ScatterPlot PlotPoint(double x, double y, Color? color = null, double markerSize = 5, string label = null,
+        public ScatterPlot PlotPoint(double x, double y, Color? color = null, double markerSize = 5, string? label = null,
             double? errorX = null, double? errorY = null, double errorLineWidth = 1, double errorCapSize = 3,
             MarkerShape markerShape = MarkerShape.FilledCircle, LineStyle lineStyle = LineStyle.Solid)
             => throw new NotImplementedException();
@@ -652,9 +652,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color? color = null,
             double lineWidth = 1,
             double markerSize = 5,
-            string label = null,
-            double[] errorX = null,
-            double[] errorY = null,
+            string? label = null,
+            double[]? errorX = null,
+            double[]? errorY = null,
             double errorLineWidth = 1,
             double errorCapSize = 3,
             MarkerShape markerShape = MarkerShape.FilledCircle,
@@ -684,9 +684,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
            Color? color = null,
            double lineWidth = 1,
            double markerSize = 5,
-           string label = null,
-           double[] errorX = null,
-           double[] errorY = null,
+           string? label = null,
+           double[]? errorX = null,
+           double[]? errorY = null,
            double errorLineWidth = 1,
            double errorCapSize = 3,
            MarkerShape markerShape = MarkerShape.FilledCircle,
@@ -734,8 +734,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color? color = null,
             double lineWidth = 1,
             double markerSize = 5,
-            string label = null,
-            Color[] colorByDensity = null,
+            string? label = null,
+            Color[]? colorByDensity = null,
             int? minRenderIndex = null,
             int? maxRenderIndex = null,
             LineStyle lineStyle = LineStyle.Solid,
@@ -772,8 +772,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color? color = null,
             double lineWidth = 1,
             double markerSize = 5,
-            string label = null,
-            Color[] colorByDensity = null,
+            string? label = null,
+            Color[]? colorByDensity = null,
             int? minRenderIndex = null,
             int? maxRenderIndex = null,
             LineStyle lineStyle = LineStyle.Solid,
@@ -808,7 +808,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color? color = null,
             double lineWidth = 1,
             double markerSize = 5,
-            string label = null,
+            string? label = null,
             int? minRenderIndex = null,
             int? maxRenderIndex = null,
             LineStyle lineStyle = LineStyle.Solid,
@@ -840,7 +840,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color? color = null,
             double lineWidth = 1,
             double markerSize = 5,
-            string label = null,
+            string? label = null,
             int? minRenderIndex = null,
             int? maxRenderIndex = null,
             LineStyle lineStyle = LineStyle.Solid,
@@ -872,7 +872,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double[] ys,
             Color? color = null,
             double lineWidth = 1,
-            string label = null
+            string? label = null
             )
         {
             if (color == null)
@@ -899,7 +899,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Polygon PlotPolygon(
             double[] xs,
             double[] ys,
-            string label = null,
+            string? label = null,
             double lineWidth = 0,
             Color? lineColor = null,
             bool fill = true,
@@ -923,7 +923,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         [Obsolete("Use AddPolygons() and customize the object it returns")]
         public Polygons PlotPolygons(
             List<List<(double x, double y)>> polys,
-            string label = null,
+            string? label = null,
             double lineWidth = 0,
             Color? lineColor = null,
             bool fill = true,
@@ -945,7 +945,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         }
 
         [Obsolete("Use AddPopulation() and customize the object it returns")]
-        public PopulationPlot PlotPopulations(Population population, string label = null)
+        public PopulationPlot PlotPopulations(Population population, string? label = null)
         {
             var plottable = new PopulationPlot(population, label, settings.GetNextColor());
             Add(plottable);
@@ -953,7 +953,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         }
 
         [Obsolete("Use AddPopulations() and customize the object it returns")]
-        public PopulationPlot PlotPopulations(Population[] populations, string label = null)
+        public PopulationPlot PlotPopulations(Population[] populations, string? label = null)
         {
             var plottable = new PopulationPlot(populations, label);
             Add(plottable);
@@ -985,13 +985,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         [Obsolete("Use AddRader() and customize the object it returns")]
         public RadarPlot PlotRadar(
             double[,] values,
-            string[] categoryNames = null,
-            string[] groupNames = null,
+            string[]? categoryNames = null,
+            string[]? groupNames = null,
             Color[]? fillColors = null,
             double fillAlpha = .4,
             Color? webColor = null,
             bool independentAxes = false,
-            double[] maxValues = null
+            double[]? maxValues = null
             )
         {
             Color[] colors = fillColors ?? Enumerable.Range(0, values.Length).Select(i => settings.PlottablePalette.GetColor(i)).ToArray();
@@ -1012,8 +1012,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public ScaleBar PlotScaleBar(
             double sizeX,
             double sizeY,
-            string labelX = null,
-            string labelY = null,
+            string? labelX = null,
+            string? labelY = null,
             double thickness = 2,
             double fontSize = 12,
             Color? color = null,
@@ -1042,10 +1042,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double x,
             double y,
             Color? color = null,
-            string fontName = null,
+            string? fontName = null,
             double fontSize = 12,
             bool bold = false,
-            string label = null,
+            string? label = null,
             Alignment alignment = Alignment.MiddleLeft,
             double rotation = 0,
             bool frame = false,
@@ -1078,9 +1078,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Vector2[,] vectors,
             double[] xs,
             double[] ys,
-            string label = null,
+            string? label = null,
             Color? color = null,
-            ColourMap colormap = null,
+            ColourMap? colormap = null,
             double scaleFactor = 1
             )
         {
@@ -1097,7 +1097,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double x,
             Color? color = null,
             double lineWidth = 1,
-            string label = null,
+            string? label = null,
             bool draggable = false,
             double dragLimitLower = double.NegativeInfinity,
             double dragLimitUpper = double.PositiveInfinity,
@@ -1125,7 +1125,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double y2,
             Color? color = null,
             double alpha = .5,
-            string label = null,
+            string? label = null,
             bool draggable = false,
             bool dragFixedSize = false,
             double dragLimitLower = double.NegativeInfinity,
@@ -1151,8 +1151,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public BarPlot PlotWaterfall(
             double[] xs,
             double[] ys,
-            double[] errorY = null,
-            string label = null,
+            double[]? errorY = null,
+            string? label = null,
             double barWidth = .8,
             double xOffset = 0,
             bool fill = true,

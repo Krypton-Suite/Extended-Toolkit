@@ -124,14 +124,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotificationWithUserResponseWrappedLabelAndProgressBar(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                                              IconType iconType, string title, string contentText,
-                                                             Image customImage = null,
+                                                             Image? customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                             Font userResponseCueFont = null,
+                                                             Font? userResponseCueFont = null,
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                             KryptonCommand actionButtonCommand = null)
+                                                             KryptonCommand? actionButtonCommand = null)
         {
             InitializeComponent();
 
@@ -156,14 +156,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotificationWithUserResponseWrappedLabelAndProgressBar(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                                              IconType iconType, string title, string contentText,
-                                                             int seconds, Image customImage = null,
+                                                             int seconds, Image? customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                             Font userResponseCueFont = null,
+                                                             Font? userResponseCueFont = null,
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                             KryptonCommand actionButtonCommand = null)
+                                                             KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
@@ -189,14 +189,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotificationWithUserResponseWrappedLabelAndProgressBar(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                                              IconType iconType, string title, string contentText,
-                                                             int seconds, string soundPath, Image customImage = null,
+                                                             int seconds, string soundPath, Image? customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                             Font userResponseCueFont = null,
+                                                             Font? userResponseCueFont = null,
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                             KryptonCommand actionButtonCommand = null)
+                                                             KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
@@ -221,14 +221,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotificationWithUserResponseWrappedLabelAndProgressBar(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                                              IconType iconType, string title, string contentText,
-                                                             Stream soundStream, Image customImage = null,
+                                                             Stream soundStream, Image? customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                             Font userResponseCueFont = null,
+                                                             Font? userResponseCueFont = null,
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                             KryptonCommand actionButtonCommand = null)
+                                                             KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
@@ -254,14 +254,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotificationWithUserResponseWrappedLabelAndProgressBar(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                                              IconType iconType, string title, string contentText,
-                                                             int seconds, Stream soundStream, Image customImage = null,
+                                                             int seconds, Stream soundStream, Image? customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                             Font userResponseCueFont = null,
+                                                             Font? userResponseCueFont = null,
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                             KryptonCommand actionButtonCommand = null)
+                                                             KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                 seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,

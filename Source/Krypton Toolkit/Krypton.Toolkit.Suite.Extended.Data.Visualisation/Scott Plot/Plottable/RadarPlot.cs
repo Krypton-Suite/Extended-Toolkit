@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public int XAxisIndex { get; set; } = 0;
         public int YAxisIndex { get; set; } = 0;
 
-        public RadarPlot(double[,] values, Color[] lineColors, Color[] fillColors, bool independentAxes, double[] maxValues = null)
+        public RadarPlot(double[,] values, Color[] lineColors, Color[] fillColors, bool independentAxes, double[]? maxValues = null)
         {
             LineColors = lineColors;
             FillColors = fillColors;
@@ -149,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="values">2D array of groups (rows) of values for each category (columns)</param>
         /// <param name="independentAxes">Controls if values along each category axis are scaled independently or uniformly across all axes</param>
         /// <param name="maxValues">If provided, these values will be used to normalize each category (columns)</param>
-        public void Update(double[,] values, bool independentAxes = false, double[] maxValues = null)
+        public void Update(double[,] values, bool independentAxes = false, double[]? maxValues = null)
         {
             IndependentAxes = independentAxes;
             Norm = new double[values.GetLength(0), values.GetLength(1)];

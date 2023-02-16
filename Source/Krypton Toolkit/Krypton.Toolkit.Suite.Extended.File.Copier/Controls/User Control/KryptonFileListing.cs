@@ -310,7 +310,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             }
         }
 
-        private void PropagateFileList(List<string> directoryContents, string directory, string fileType = null)
+        private void PropagateFileList(List<string> directoryContents, string directory, string? fileType = null)
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(directory);
 

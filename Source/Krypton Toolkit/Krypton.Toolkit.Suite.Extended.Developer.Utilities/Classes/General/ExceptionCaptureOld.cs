@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="icon">The icon.</param>
         /// <param name="className">Name of the class.</param>
         /// <param name="methodSignature">The method signature.</param>
-        public static void CaptureException(Exception exception, KryptonForm currentWindow, Control control = null, string title = @"Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, string className = "", string methodSignature = "", MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
+        public static void CaptureException(Exception exception, KryptonForm currentWindow, Control? control = null, string title = @"Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, string className = "", string methodSignature = "", MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
         {
             if (className != "")
             {
@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="defaultButton">The default button.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="options">The options.</param>
-        public void CaptureException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel toolStripLabel = null, object args = null, string caption = "Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button4, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, MessageBoxIcon winFormsIcon = MessageBoxIcon.Error, MessageBoxDefaultButton winFormsDefaultButton = MessageBoxDefaultButton.Button3, MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
+        public void CaptureException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel? toolStripLabel = null, object? args = null, string caption = "Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button4, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, MessageBoxIcon winFormsIcon = MessageBoxIcon.Error, MessageBoxDefaultButton winFormsDefaultButton = MessageBoxDefaultButton.Button3, MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
         {
             if (useKryptonMessageBox)
             {

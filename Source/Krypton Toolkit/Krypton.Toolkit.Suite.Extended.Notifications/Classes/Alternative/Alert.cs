@@ -45,9 +45,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <summary>Displays a success message.</summary>
         /// <param name="message">The message.</param>
         /// <param name="headerText">The header text.</param>
-        public static void DisplaySuccessMessage(string message, string headerText = null) => DisplaySuccessMessage(message, IntervalDefault, headerText);
+        public static void DisplaySuccessMessage(string message, string? headerText = null) => DisplaySuccessMessage(message, IntervalDefault, headerText);
 
-        private static void DisplaySuccessMessage(string message, int interval, string headerText = null)
+        private static void DisplaySuccessMessage(string message, int interval, string? headerText = null)
         {
             KryptonAlertWindow alertWindow = new KryptonAlertWindow();
 
@@ -60,9 +60,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <summary>Shows a information message.</summary>
         /// <param name="message">The message.</param>
         /// <param name="headerText">The header text.</param>
-        public static void ShowInformationMessage(string message, string headerText = null) => ShowInformationMessage(message, IntervalDefault, headerText);
+        public static void ShowInformationMessage(string message, string? headerText = null) => ShowInformationMessage(message, IntervalDefault, headerText);
 
-        private static void ShowInformationMessage(string message, int interval, string headerText = null)
+        private static void ShowInformationMessage(string message, int interval, string? headerText = null)
         {
             KryptonAlertWindow alertWindow = new KryptonAlertWindow();
 
@@ -76,9 +76,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <summary>Shows a warning message.</summary>
         /// <param name="message">The message.</param>
         /// <param name="headerText">The header text.</param>
-        public static void ShowWarningMessage(string message, string headerText = null) => ShowWarningMessage(message, IntervalDefault, headerText);
+        public static void ShowWarningMessage(string message, string? headerText = null) => ShowWarningMessage(message, IntervalDefault, headerText);
 
-        private static void ShowWarningMessage(string message, int interval, string headerText = null)
+        private static void ShowWarningMessage(string message, int interval, string? headerText = null)
         {
             KryptonAlertWindow alertWindow = new KryptonAlertWindow();
 
@@ -92,9 +92,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <summary>Shows a error message.</summary>
         /// <param name="message">The message.</param>
         /// <param name="headerText">The header text.</param>
-        public static void ShowErrorMessage(string message, string headerText = null) => ShowErrorMessage(message, IntervalDefault, headerText);
+        public static void ShowErrorMessage(string message, string? headerText = null) => ShowErrorMessage(message, IntervalDefault, headerText);
 
-        private static void ShowErrorMessage(string message, int interval, string headerText = null)
+        private static void ShowErrorMessage(string message, int interval, string? headerText = null)
         {
             KryptonAlertWindow alertWindow = new KryptonAlertWindow();
 
@@ -111,9 +111,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="backColour">The back colour.</param>
         /// <param name="textColour">The text colour.</param>
         /// <param name="headerText">The header text.</param>
-        public static void ShowCustomMessage(string message, Image image = null, Color backColour = default, Color textColour = default, string headerText = null) => ShowCustomMessage(message, IntervalDefault, image, backColour, textColour, headerText);
+        public static void ShowCustomMessage(string message, Image? image = null, Color backColour = default, Color textColour = default, string? headerText = null) => ShowCustomMessage(message, IntervalDefault, image, backColour, textColour, headerText);
 
-        private static void ShowCustomMessage(string message, int interval, Image image = null, Color backColour = default, Color textColour = default, string headerText = null)
+        private static void ShowCustomMessage(string message, int interval, Image? image = null, Color backColour = default, Color textColour = default, string? headerText = null)
         {
             KryptonAlertWindow alertWindow = new KryptonAlertWindow();
 

@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="rightToLeftSupport">The right to left support.</param>
         public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
                                                              bool? showCloseButton,
-                                                             Image customImage = null, string dismissText = "&Dismiss",
+                                                             Image? customImage = null, string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
         {
             InitializeComponent();
@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="rightToLeftSupport">The right to left support.</param>
         public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
                                                              bool? showCloseButton,
-                                                             int seconds, Image customImage = null,
+                                                             int seconds, Image? customImage = null,
                                                              string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport)
@@ -135,7 +135,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="rightToLeftSupport">The right to left support.</param>
         public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
                                                              bool? showCloseButton,
-                                                             int seconds, string soundPath, Image customImage = null,
+                                                             int seconds, string soundPath, Image? customImage = null,
                                                              string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, showCloseButton, seconds, customImage, dismissText, rightToLeftSupport) => SoundPath = soundPath;
@@ -151,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="rightToLeftSupport">The right to left support.</param>
         public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
                                                              bool? showCloseButton,
-                                                             Stream soundStream, Image customImage = null,
+                                                             Stream soundStream, Image? customImage = null,
                                                              string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
@@ -168,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="rightToLeftSupport">The right to left support.</param>
         public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
                                                              bool? showCloseButton,
-                                                             int seconds, Stream soundStream, Image customImage = null,
+                                                             int seconds, Stream soundStream, Image? customImage = null,
                                                              string dismissText = "&Dismiss",
                                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, showCloseButton, seconds, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;

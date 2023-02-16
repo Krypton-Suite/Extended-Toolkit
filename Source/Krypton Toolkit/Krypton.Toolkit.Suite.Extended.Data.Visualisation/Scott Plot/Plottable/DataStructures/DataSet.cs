@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public double[] values;
         public double[] errors;
 
-        public DataSet(string label, double[] values, double[] errors = null)
+        public DataSet(string label, double[] values, double[]? errors = null)
         {
             this.values = values;
             this.label = label;

@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             MultiSeries = groupedSeries;
         }
 
-        public PopulationPlot(Population[] populations, string label = null, Color? color = null)
+        public PopulationPlot(Population[] populations, string? label = null, Color? color = null)
         {
             var ps = new PopulationSeries(populations, label, color ?? Color.LightGray);
             MultiSeries = new PopulationMultiSeries(new PopulationSeries[] { ps });
@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             MultiSeries = new PopulationMultiSeries(new PopulationSeries[] { populationSeries });
         }
 
-        public PopulationPlot(Population population, string label = null, Color? color = null)
+        public PopulationPlot(Population population, string? label = null, Color? color = null)
         {
             var populations = new Population[] { population };
             var ps = new PopulationSeries(populations, label, color ?? Color.LightGray);

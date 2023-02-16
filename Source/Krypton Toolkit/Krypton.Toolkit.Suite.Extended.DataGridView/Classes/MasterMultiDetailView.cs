@@ -38,14 +38,14 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
     // TODO: Replace the TabControl with the Krypton Equivalent
     public class MasterMultiDetailView : MasterDetailGridView<TabControl>
     {
-        private readonly MultiDetailView childViews;
+        private readonly MultiDetailView _childViews;
 
-        internal override IDetailView<TabControl> ChildView => childViews;
+        internal override IDetailView<TabControl> ChildView => _childViews;
 
         public MasterMultiDetailView()
         {
-            childViews = new MultiDetailView();
-            Controls.Add(childViews);
+            _childViews = new MultiDetailView();
+            Controls.Add(_childViews);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="targetKeyColumn"></param>
         /// <param name="tabPageCaption"></param>
         /// <param name="columns">optional columns if not already added via designer</param>
-        public void AddMultiDetail(string tableName, string targetKeyColumn, string tabPageCaption, DataGridViewColumn[] columns = null)
+        public void AddMultiDetail(string tableName, string targetKeyColumn, string tabPageCaption, DataGridViewColumn[]? columns = null)
         {
             AddMultiDetail(new DataView(DataSet.Tables[tableName]), targetKeyColumn, tabPageCaption, columns);
         }
@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             }
 
             TabPage tPage = new() { Text = tabPageCaption };
-            childViews.TabPages.Add(tPage);
+            _childViews.TabPages.Add(tPage);
             KryptonDataGridView newGrid = new()
             {
                 Dock = DockStyle.Fill
@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             }
             newGrid.DataSource = source;
             tPage.Controls.Add(newGrid);
-            childViews.ChildGrids[newGrid] = targetKeyColumn;
+            _childViews.ChildGrids[newGrid] = targetKeyColumn;
         }
 
     }

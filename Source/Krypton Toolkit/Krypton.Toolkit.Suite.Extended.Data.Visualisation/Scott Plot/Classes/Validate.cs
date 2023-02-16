@@ -164,8 +164,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Throw an exception if non-null arrays have different lengths
         /// </summary>
         public static void AssertEqualLength(string label,
-            double[] a, double[] b = null, double[] c = null,
-            double[] d = null, double[] e = null, double[] f = null)
+            double[] a, double[]? b = null, double[]? c = null,
+            double[]? d = null, double[]? e = null, double[]? f = null)
         {
             label = ValidLabel(label);
 
@@ -187,8 +187,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Returns true if all non-null arguments have equal length
         /// </summary>
-        public static bool IsEqualLength(double[] a, double[] b = null, double[] c = null,
-                                         double[] d = null, double[] e = null, double[] f = null)
+        public static bool IsEqualLength(double[] a, double[]? b = null, double[]? c = null,
+                                         double[]? d = null, double[]? e = null, double[]? f = null)
         {
             if (a is null)
                 throw new InvalidOperationException($"first array must not be null");

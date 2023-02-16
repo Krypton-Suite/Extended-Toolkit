@@ -128,15 +128,15 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                IconType iconType, string title, string contentText,
                                                                bool? usePanelColourInTextArea,
                                                                bool? useNativeBackColourInUserResponseArea,
-                                                               Image customImage = null,
+                                                               Image? customImage = null,
                                                                string dismissText = "&Dismiss",
                                                                string userResponseCueText = "",
                                                                Color? userResponseCueColour = null,
                                                                PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                                PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                               Font userResponseCueFont = null,
+                                                               Font? userResponseCueFont = null,
                                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                               KryptonCommand actionButtonCommand = null)
+                                                               KryptonCommand? actionButtonCommand = null)
         {
             InitializeComponent();
 
@@ -161,15 +161,15 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                IconType iconType, string title, string contentText,
                                                                bool? usePanelColourInTextArea,
                                                                bool? useNativeBackColourInUserResponseArea,
-                                                               int seconds, Image customImage = null,
+                                                               int seconds, Image? customImage = null,
                                                                string dismissText = "&Dismiss",
                                                                string userResponseCueText = "",
                                                                Color? userResponseCueColour = null,
                                                                PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                                PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                               Font userResponseCueFont = null,
+                                                               Font? userResponseCueFont = null,
                                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                               KryptonCommand actionButtonCommand = null)
+                                                               KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea,
                    useNativeBackColourInUserResponseArea,
                    customImage, dismissText, userResponseCueText,
@@ -212,15 +212,15 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                bool? usePanelColourInTextArea,
                                                                bool? useNativeBackColourInUserResponseArea,
                                                                int seconds, string soundPath,
-                                                               Image customImage = null,
+                                                               Image? customImage = null,
                                                                string dismissText = "&Dismiss",
                                                                string userResponseCueText = "",
                                                                Color? userResponseCueColour = null,
                                                                PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                                PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                               Font userResponseCueFont = null,
+                                                               Font? userResponseCueFont = null,
                                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                               KryptonCommand actionButtonCommand = null)
+                                                               KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea,
                    useNativeBackColourInUserResponseArea, seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
@@ -245,15 +245,15 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                IconType iconType, string title, string contentText,
                                                                bool? usePanelColourInTextArea,
                                                                bool? useNativeBackColourInUserResponseArea,
-                                                               Stream soundStream, Image customImage = null,
+                                                               Stream soundStream, Image? customImage = null,
                                                                string dismissText = "&Dismiss",
                                                                string userResponseCueText = "",
                                                                Color? userResponseCueColour = null,
                                                                PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                                PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                               Font userResponseCueFont = null,
+                                                               Font? userResponseCueFont = null,
                                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                               KryptonCommand actionButtonCommand = null)
+                                                               KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea,
                    useNativeBackColourInUserResponseArea, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
@@ -279,14 +279,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                IconType iconType, string title, string contentText,
                                                                bool? usePanelColourInTextArea,
                                                                bool? useNativeBackColourInUserResponseArea,
-                                                               int seconds, Stream soundStream, Image customImage = null,
+                                                               int seconds, Stream soundStream, Image? customImage = null,
                                                                string dismissText = "&Dismiss", string userResponseCueText = "",
                                                                Color? userResponseCueColour = null,
                                                                PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                                PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                               Font userResponseCueFont = null,
+                                                               Font? userResponseCueFont = null,
                                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
-                                                               KryptonCommand actionButtonCommand = null)
+                                                               KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    usePanelColourInTextArea, useNativeBackColourInUserResponseArea,
                    seconds, customImage, dismissText, userResponseCueText,

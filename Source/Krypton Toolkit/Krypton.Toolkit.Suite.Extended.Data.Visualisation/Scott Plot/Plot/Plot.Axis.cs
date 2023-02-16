@@ -206,7 +206,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         /// <param name="positions">positions on the X axis</param>
         /// <param name="labels">new tick labels for the X axis</param>
-        public void XTicks(double[] positions = null, string[] labels = null) =>
+        public void XTicks(double[]? positions = null, string[]? labels = null) =>
             XAxis.ManualTickPositions(positions, labels);
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         /// <param name="positions">positions on the Y axis</param>
         /// <param name="labels">new tick labels for the Y axis</param>
-        public void YTicks(double[] positions = null, string[] labels = null) =>
+        public void YTicks(double[]? positions = null, string[]? labels = null) =>
             YAxis.ManualTickPositions(positions, labels);
 
         /// <summary>
@@ -244,8 +244,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="decimalDigits">Number of digits after the numberDecimalSeparator</param>
         /// <param name="numberNegativePattern">Appearance of negative numbers</param>
         /// <param name="numberGroupSizes">Sizes of decimal groups which are separated by the numberGroupSeparator</param>
-        public void SetCulture(string shortDatePattern = null, string decimalSeparator = null, string numberGroupSeparator = null,
-            int? decimalDigits = null, int? numberNegativePattern = null, int[] numberGroupSizes = null)
+        public void SetCulture(string? shortDatePattern = null, string? decimalSeparator = null, string? numberGroupSeparator = null,
+            int? decimalDigits = null, int? numberNegativePattern = null, int[]? numberGroupSizes = null)
         {
             foreach (var axis in settings.Axes)
                 axis.SetCulture(shortDatePattern, decimalSeparator, numberGroupSeparator, decimalDigits, numberNegativePattern, numberGroupSizes);
@@ -263,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="title">defualt label to use for the axis</param>
         /// <param name="color">defualt color to use for the axis</param>
         /// <returns>The axis that was just created and added to the plot. You can further customize it by interacting with it.</returns>
-        public Axis AddAxis(Edge edge, int axisIndex, string title = null, Color? color = null)
+        public Axis AddAxis(Edge edge, int axisIndex, string? title = null, Color? color = null)
         {
             if (axisIndex <= 1)
                 throw new ArgumentException("The default axes already occupy indexes 0 and 1. Additional axes require higher indexes.");
@@ -695,20 +695,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             bool? rulerModeY = null,
             bool? invertSignX = null,
             bool? invertSignY = null,
-            string fontName = null,
+            string? fontName = null,
             float? fontSize = null,
             float? xTickRotation = null,
             bool? logScaleX = null,
             bool? logScaleY = null,
-            string numericFormatStringX = null,
-            string numericFormatStringY = null,
+            string? numericFormatStringX = null,
+            string? numericFormatStringY = null,
             bool? snapToNearestPixel = null,
             int? baseX = null,
             int? baseY = null,
-            string prefixX = null,
-            string prefixY = null,
-            string dateTimeFormatStringX = null,
-            string dateTimeFormatStringY = null
+            string? prefixX = null,
+            string? prefixY = null,
+            string? dateTimeFormatStringX = null,
+            string? dateTimeFormatStringY = null
             ) => throw new NotImplementedException();
 
         #endregion

@@ -127,14 +127,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea, bool? showCloseButton, bool? showActionButton,
-                                 Image customImage = null,
+                                 Image? customImage = null,
                                  string dismissText = "&Dismiss", 
                                  string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
-                                 KryptonCommand actionButtonCommand = null,
+                                 KryptonCommand? actionButtonCommand = null,
                                  bool? openProcessInExplorer = null,
-                                 string processPath = null,
-                                 object optionalParameters = null)
+                                 string? processPath = null,
+                                 object? optionalParameters = null)
         {
             InitializeComponent();
 
@@ -159,11 +159,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea, bool? showCloseButton, bool? showActionButton,
-                                 int seconds, Image customImage = null,
+                                 int seconds, Image? customImage = null,
                                  string dismissText = "&Dismiss",
                                  string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
-                                 KryptonCommand actionButtonCommand = null)
+                                 KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    usePanelColourInTextArea, showCloseButton, showActionButton, customImage, 
                    dismissText, actionButtonText,
@@ -189,11 +189,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea,
                                  bool? showCloseButton, bool? showActionButton, int seconds,
-                                 string soundPath, Image customImage = null,
+                                 string soundPath, Image? customImage = null,
                                  string dismissText = "&Dismiss",
                                  string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
-                                 KryptonCommand actionButtonCommand = null)
+                                 KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    usePanelColourInTextArea, showCloseButton,
                    showActionButton,
@@ -221,11 +221,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                  bool? usePanelColourInTextArea,
                                  bool? showCloseButton, bool? showActionButton,
                                  Stream soundStream,
-                                 Image customImage = null,
+                                 Image? customImage = null,
                                  string dismissText = "&Dismiss",
                                  string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
-                                 KryptonCommand actionButtonCommand = null)
+                                 KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText, 
                    usePanelColourInTextArea, showCloseButton, showActionButton,
                    customImage,
@@ -253,11 +253,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                  bool? usePanelColourInTextArea,
                                  bool? showCloseButton, bool? showActionButton,
                                  int seconds,
-                                 Stream soundStream, Image customImage = null,
+                                 Stream soundStream, Image? customImage = null,
                                  string dismissText = "&Dismiss",
                                  string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
-                                 KryptonCommand actionButtonCommand = null)
+                                 KryptonCommand? actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
                    usePanelColourInTextArea, showCloseButton, showActionButton,
                    seconds, customImage,
@@ -477,11 +477,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         private void SetupBaseUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea, bool? showCloseButton, bool? showActionButton,
-                                 Image customImage = null,
+                                 Image? customImage = null,
                                  string dismissText = "&Dismiss", 
                                  string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
-                                 KryptonCommand actionButtonCommand = null,
+                                 KryptonCommand? actionButtonCommand = null,
                                  bool? openProcessInExplorer = null,
                                  string? processPath = null,
                                  object? optionalParameters = null)

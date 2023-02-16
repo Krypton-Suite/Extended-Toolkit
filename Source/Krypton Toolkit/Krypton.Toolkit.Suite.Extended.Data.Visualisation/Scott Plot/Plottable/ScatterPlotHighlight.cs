@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Color highlightedColor = Color.Red;
         protected bool[] isHighlighted;
 
-        public ScatterPlotHighlight(double[] xs, double[] ys, double[] xErr = null, double[] yErr = null) :
+        public ScatterPlotHighlight(double[] xs, double[] ys, double[]? xErr = null, double[]? yErr = null) :
                                     base(xs, ys, xErr, yErr) => HighlightClear();
 
         public new void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false) => throw new NotImplementedException();

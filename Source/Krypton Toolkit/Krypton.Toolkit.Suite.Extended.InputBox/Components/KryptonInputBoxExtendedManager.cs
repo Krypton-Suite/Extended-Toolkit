@@ -229,7 +229,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                                    InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
                                    InputBoxButtons buttons = InputBoxButtons.OkCancel,
                                    InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
-                                   Image customImage = null, DateTime? initialDateTime = default)
+                                   Image? customImage = null, DateTime? initialDateTime = default)
         => Show(owner, prompt, caption, defaultResponse, cueText, cueColour, cueTypeface,  buttonTypeface, promptTypeface,
             iconType,  inputType, textAlignment, textWrappedMessageTextAlignment, buttons, focusedButton, customImage, initialDateTime);
 
@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                                   InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
                                   InputBoxButtons buttons = InputBoxButtons.OkCancel,
                                   InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
-                                  Image customImage = null, DateTime? initialDateTime = default)
+                                  Image? customImage = null, DateTime? initialDateTime = default)
             => KryptonInputBoxExtendedForm.InternalShow(owner, prompt, caption, defaultResponse,
                                                         cueText, cueColour, cueTypeface, 
                                                         buttonTypeface, promptTypeface, iconType,
