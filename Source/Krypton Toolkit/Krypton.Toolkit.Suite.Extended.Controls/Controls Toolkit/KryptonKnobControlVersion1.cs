@@ -89,9 +89,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             //Create redirection object to the base palette
             if (((_palette != null)))
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
             }
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new PaletteRedirect(_palette);
 
@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             ImeMode = ImeMode.On;
             Name = "Knob";
-            Resize += new EventHandler(Knob_Resize);
+            Resize += Knob_Resize;
             //ValueChanged += new ValueChangedEventHandler(ValueChanged);
 
             DottedPen = new Pen(getDarkColor(_KnobBorderColour, 40));
@@ -697,13 +697,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             if (((_palette != null)))
             {
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
             }
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
             if (((_palette != null)))
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 InitColours();
             }
             base.Invalidate();

@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 1;
             this.kbtnOk.Values.Text = "O&K";
-            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
+            this.kbtnOk.Click += this.kbtnOk_Click;
             // 
             // kryptonBorderEdge1
             // 

@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnOptions.TabIndex = 6;
             this.kbtnOptions.Values.Image = global::Krypton.Toolkit.Suite.Extended.Theme.Switcher.Properties.Resources.Property_16x;
             this.kbtnOptions.Values.Text = "&Options";
-            this.kbtnOptions.Click += new System.EventHandler(this.kbtnOptions_Click);
+            this.kbtnOptions.Click += this.kbtnOptions_Click;
             // 
             // kbtnResetTheme
             // 
@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnResetTheme.Size = new System.Drawing.Size(90, 25);
             this.kbtnResetTheme.TabIndex = 4;
             this.kbtnResetTheme.Values.Text = "&Reset Theme";
-            this.kbtnResetTheme.Click += new System.EventHandler(this.kbtnResetTheme_Click);
+            this.kbtnResetTheme.Click += this.kbtnResetTheme_Click;
             // 
             // kbtnLoadTheme
             // 
@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnLoadTheme.Size = new System.Drawing.Size(90, 25);
             this.kbtnLoadTheme.TabIndex = 2;
             this.kbtnLoadTheme.Values.Text = "Load Th&eme";
-            this.kbtnLoadTheme.Click += new System.EventHandler(this.kbtnLoadTheme_Click);
+            this.kbtnLoadTheme.Click += this.kbtnLoadTheme_Click;
             // 
             // kbtnCancel
             // 
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 1;
             this.kbtnCancel.Values.Text = "C&ancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -173,8 +173,8 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select a Theme";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThemeSelector_FormClosing);
-            this.Load += new System.EventHandler(this.ThemeSelector_Load);
+            this.FormClosing += this.ThemeSelector_FormClosing;
+            this.Load += this.ThemeSelector_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

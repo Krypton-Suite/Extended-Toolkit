@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             this.kbtnCopy.Size = new System.Drawing.Size(90, 25);
             this.kbtnCopy.TabIndex = 3;
             this.kbtnCopy.Values.Text = "&Copy";
-            this.kbtnCopy.Click += new System.EventHandler(this.kbtnCopy_Click);
+            this.kbtnCopy.Click += this.kbtnCopy_Click;
             // 
             // kbtnClose
             // 
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             this.kbtnClose.Size = new System.Drawing.Size(90, 25);
             this.kbtnClose.TabIndex = 1;
             this.kbtnClose.Values.Text = "Cl&ose";
-            this.kbtnClose.Click += new System.EventHandler(this.kbtnClose_Click);
+            this.kbtnClose.Click += this.kbtnClose_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             this.Name = "KryptonSystemInformation";
             this.ShowInTaskbar = false;
             this.Text = "System Information";
-            this.Load += new System.EventHandler(this.KryptonSystemInformation_Load);
+            this.Load += this.KryptonSystemInformation_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

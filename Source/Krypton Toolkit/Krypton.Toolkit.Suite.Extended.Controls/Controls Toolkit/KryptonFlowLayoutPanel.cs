@@ -46,10 +46,10 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             _palette = KryptonManager.CurrentGlobalPalette;
 
             if (_palette != null)
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
 
 
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             _paletteRedirect = new PaletteRedirect(_palette);
             _paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
 
             if (_palette != null)
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
 
 
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
 
                 BackColor = _palette.ColorTable.ToolStripGradientBegin;
             }

@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             this.ClientSize = new System.Drawing.Size(1055, 631);
             this.Name = "UploadThemeBrowser";
-            this.Load += new System.EventHandler(this.UploadThemeBrowser_Load);
+            this.Load += this.UploadThemeBrowser_Load;
             this.ResumeLayout(false);
 
         }

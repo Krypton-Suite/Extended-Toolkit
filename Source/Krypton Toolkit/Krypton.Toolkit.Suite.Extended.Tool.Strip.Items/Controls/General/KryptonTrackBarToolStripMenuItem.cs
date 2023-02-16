@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             base.OnSubscribeControlEvents(control);
 
             //Add your code here to subsribe to Control Events
-            ((KryptonTrackBar)control).ValueChanged += new EventHandler(OnValueChanged);
+            ((KryptonTrackBar)control).ValueChanged += OnValueChanged;
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             base.OnUnsubscribeControlEvents(control);
 
             //Add your code here to unsubscribe from control events.
-            ((KryptonTrackBar)control).ValueChanged -= new EventHandler(OnValueChanged);
+            ((KryptonTrackBar)control).ValueChanged -= OnValueChanged;
         }
 
         #region ... exposed properties ...

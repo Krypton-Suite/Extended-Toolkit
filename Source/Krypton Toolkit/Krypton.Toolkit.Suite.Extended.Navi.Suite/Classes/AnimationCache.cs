@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public AnimationCache()
         {
             animationTimer = new System.Windows.Forms.Timer();
-            animationTimer.Tick += new EventHandler(AnimationTick);
+            animationTimer.Tick += AnimationTick;
         }
 
         #endregion

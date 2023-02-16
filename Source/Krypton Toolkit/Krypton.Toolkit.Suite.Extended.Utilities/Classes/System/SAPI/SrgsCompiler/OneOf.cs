@@ -30,9 +30,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal class OneOf : ParseElementCollection, IOneOf, IElement
     {
-        private State _startState;
+        private State? _startState;
 
-        private State _endState;
+        private State? _endState;
 
         public OneOf(Rule rule, Backend backend)
             : base(backend, rule)
@@ -60,8 +60,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         {
             start = ParseElementCollection.TrimStart(start, _backend);
             end = ParseElementCollection.TrimEnd(end, _backend);
-            State start2 = end.Start;
-            State end2 = start.End;
+            State? start2 = end.Start;
+            State? end2 = start.End;
             if ((start.IsEpsilonTransition & start.IsPropertylessTransition) && end2 != null && end2.InArcs.IsEmpty)
             {
                 start.End = null;

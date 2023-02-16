@@ -49,14 +49,14 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
-                _palette.PalettePaint -= new(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 //repaint with new values
 
             }
@@ -312,13 +312,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             _timeScale = CalendarTimeScale.ThirtyMinutes;
             SetViewRange(DateTime.Now, DateTime.Now.AddDays(2));
 
-            InvalidateEventHandler IEH = new(Calendar_Invalidated);
+            InvalidateEventHandler IEH = Calendar_Invalidated;
 
             // add Palette Handler
             if (_palette != null)
-                _palette.PalettePaint += new(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
 
-            KryptonManager.GlobalPaletteChanged += new(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new(_palette);
@@ -691,8 +691,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             _editModeItem = item;
             TextBox = new(this);
-            TextBox.KeyDown += new(TextBox_KeyDown);
-            TextBox.LostFocus += new(TextBox_LostFocus);
+            TextBox.KeyDown += TextBox_KeyDown;
+            TextBox.LostFocus += TextBox_LostFocus;
             Rectangle r = item.Bounds;
             r.Inflate(-2, -2);
             TextBox.Bounds = r;

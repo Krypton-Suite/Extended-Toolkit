@@ -371,7 +371,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _valControl2.Width = comboBox_filterType.Width - 20;
             _valControl2.TabIndex = 5;
             _valControl2.Visible = false;
-            _valControl2.VisibleChanged += new EventHandler(valControl2_VisibleChanged);
+            _valControl2.VisibleChanged += valControl2_VisibleChanged;
             _valControl2.KeyDown += valControl_KeyDown;
 
             Controls.Add(_valControl1);

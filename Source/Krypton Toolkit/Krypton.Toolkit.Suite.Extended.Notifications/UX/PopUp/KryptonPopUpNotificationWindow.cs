@@ -155,13 +155,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             ShowInTaskbar = false;
 
-            VisibleChanged += new EventHandler(PopupNotifierForm_VisibleChanged);
+            VisibleChanged += PopupNotifierForm_VisibleChanged;
 
-            MouseMove += new MouseEventHandler(PopupNotifierForm_MouseMove);
+            MouseMove += PopupNotifierForm_MouseMove;
 
-            MouseUp += new MouseEventHandler(PopupNotifierForm_MouseUp);
+            MouseUp += PopupNotifierForm_MouseUp;
 
-            Paint += new PaintEventHandler(PopupNotifierForm_Paint);
+            Paint += PopupNotifierForm_Paint;
         }
         #endregion
 
@@ -224,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                         ContextMenuOpened(this, EventArgs.Empty);
                     }
                     PopUp.OptionsMenu.Show(this, new Point(RectOptions.Right - PopUp.OptionsMenu.Width, RectOptions.Bottom));
-                    PopUp.OptionsMenu.Closed += new ToolStripDropDownClosedEventHandler(OptionsMenu_Closed);
+                    PopUp.OptionsMenu.Closed += OptionsMenu_Closed;
                 }
             }
         }
@@ -236,7 +236,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void OptionsMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
-            PopUp.OptionsMenu.Closed -= new ToolStripDropDownClosedEventHandler(OptionsMenu_Closed);
+            PopUp.OptionsMenu.Closed -= OptionsMenu_Closed;
 
             if (ContextMenuClosed != null)
             {

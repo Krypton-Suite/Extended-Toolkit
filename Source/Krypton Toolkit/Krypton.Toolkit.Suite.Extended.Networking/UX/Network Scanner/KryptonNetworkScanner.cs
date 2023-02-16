@@ -71,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.kbtnScan.Size = new System.Drawing.Size(101, 25);
             this.kbtnScan.TabIndex = 2;
             this.kbtnScan.Values.Text = "St&art Scan";
-            this.kbtnScan.Click += new System.EventHandler(this.kbtnScan_Click);
+            this.kbtnScan.Click += this.kbtnScan_Click;
             // 
             // ktxtWorkGroupName
             // 

@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.kbtnExportNodeList.Size = new System.Drawing.Size(166, 25);
             this.kbtnExportNodeList.TabIndex = 2;
             this.kbtnExportNodeList.Values.Text = "Export Node List to &File...";
-            this.kbtnExportNodeList.Click += new System.EventHandler(this.kbtnExportNodeList_Click);
+            this.kbtnExportNodeList.Click += this.kbtnExportNodeList_Click;
             // 
             // kbtnOk
             // 
@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 1;
             this.kbtnOk.Values.Text = "O&k";
-            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
+            this.kbtnOk.Click += this.kbtnOk_Click;
             // 
             // kryptonPanel2
             // 
@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.kcmbNodeList.Size = new System.Drawing.Size(392, 21);
             this.kcmbNodeList.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbNodeList.TabIndex = 1;
-            this.kcmbNodeList.SelectedIndexChanged += new System.EventHandler(this.kcmbNodeList_SelectedIndexChanged);
+            this.kcmbNodeList.SelectedIndexChanged += this.kcmbNodeList_SelectedIndexChanged;
             // 
             // kryptonLabel1
             // 
@@ -145,7 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View Network Nodes";
-            this.Load += new System.EventHandler(this.NodeViewer_Load);
+            this.Load += this.NodeViewer_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnReset.Size = new System.Drawing.Size(121, 25);
             this.kbtnReset.TabIndex = 3;
             this.kbtnReset.Values.Text = "Reset to &Defaults";
-            this.kbtnReset.Click += new System.EventHandler(this.kbtnReset_Click);
+            this.kbtnReset.Click += this.kbtnReset_Click;
             // 
             // kbtnApply
             // 
@@ -111,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnApply.Size = new System.Drawing.Size(90, 25);
             this.kbtnApply.TabIndex = 2;
             this.kbtnApply.Values.Text = "A&pply";
-            this.kbtnApply.Click += new System.EventHandler(this.kbtnApply_Click);
+            this.kbtnApply.Click += this.kbtnApply_Click;
             // 
             // kbtnCancel
             // 
@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 1;
             this.kbtnCancel.Values.Text = "C&ancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -156,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnDownload.Size = new System.Drawing.Size(189, 25);
             this.kbtnDownload.TabIndex = 7;
             this.kbtnDownload.Values.Text = "&Download Additional Themes";
-            this.kbtnDownload.Click += new System.EventHandler(this.kbtnDownload_Click);
+            this.kbtnDownload.Click += this.kbtnDownload_Click;
             // 
             // kbtnSubmit
             // 
@@ -165,7 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnSubmit.Size = new System.Drawing.Size(138, 25);
             this.kbtnSubmit.TabIndex = 6;
             this.kbtnSubmit.Values.Text = "&Submit a Theme";
-            this.kbtnSubmit.Click += new System.EventHandler(this.kbtnSubmit_Click);
+            this.kbtnSubmit.Click += this.kbtnSubmit_Click;
             // 
             // kwlPaletteName
             // 
@@ -187,7 +187,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnLocate.Size = new System.Drawing.Size(138, 25);
             this.kbtnLocate.TabIndex = 5;
             this.kbtnLocate.Values.Text = "&Locate Theme File";
-            this.kbtnLocate.Click += new System.EventHandler(this.kbtnLocate_Click);
+            this.kbtnLocate.Click += this.kbtnLocate_Click;
             // 
             // kbtnImport
             // 
@@ -196,7 +196,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnImport.Size = new System.Drawing.Size(90, 25);
             this.kbtnImport.TabIndex = 4;
             this.kbtnImport.Values.Text = "Im&port";
-            this.kbtnImport.Click += new System.EventHandler(this.kbtnImport_Click);
+            this.kbtnImport.Click += this.kbtnImport_Click;
             // 
             // kryptonGroupBox1
             // 
@@ -227,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kchkReset.Size = new System.Drawing.Size(182, 20);
             this.kchkReset.TabIndex = 4;
             this.kchkReset.Values.Text = "Allow a user to re&set a theme";
-            this.kchkReset.CheckedChanged += new System.EventHandler(this.kchkReset_CheckedChanged);
+            this.kchkReset.CheckedChanged += this.kchkReset_CheckedChanged;
             // 
             // kchkImport
             // 
@@ -236,7 +236,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kchkImport.Size = new System.Drawing.Size(192, 20);
             this.kchkImport.TabIndex = 3;
             this.kchkImport.Values.Text = "Allow a user to &import a theme";
-            this.kchkImport.CheckedChanged += new System.EventHandler(this.kchkImport_CheckedChanged);
+            this.kchkImport.CheckedChanged += this.kchkImport_CheckedChanged;
             // 
             // kcmbPaletteMode
             // 
@@ -249,7 +249,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kcmbPaletteMode.Size = new System.Drawing.Size(506, 21);
             this.kcmbPaletteMode.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbPaletteMode.TabIndex = 1;
-            this.kcmbPaletteMode.SelectedIndexChanged += new System.EventHandler(this.kcmbPaletteMode_SelectedIndexChanged);
+            this.kcmbPaletteMode.SelectedIndexChanged += this.kcmbPaletteMode_SelectedIndexChanged;
             // 
             // kryptonLabel1
             // 
@@ -273,7 +273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Theme Switcher Options";
-            this.Load += new System.EventHandler(this.ThemeSwitcherOptions_Load);
+            this.Load += this.ThemeSwitcherOptions_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

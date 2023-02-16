@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbtnOpenPalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_load;
             this.kbtnOpenPalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_load;
             this.kbtnOpenPalette.Values.Text = "";
-            this.kbtnOpenPalette.Click += new System.EventHandler(this.kbtnOpenPalette_Click);
+            this.kbtnOpenPalette.Click += this.kbtnOpenPalette_Click;
             // 
             // kbtnSavePalette
             // 
@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbtnSavePalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_save;
             this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_save;
             this.kbtnSavePalette.Values.Text = "";
-            this.kbtnSavePalette.Click += new System.EventHandler(this.kbtnSavePalette_Click);
+            this.kbtnSavePalette.Click += this.kbtnSavePalette_Click;
             // 
             // panel2
             // 

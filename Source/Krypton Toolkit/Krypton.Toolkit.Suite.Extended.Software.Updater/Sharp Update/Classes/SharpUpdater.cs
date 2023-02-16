@@ -101,8 +101,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 
             // Set up backgroundworker
             BgWorker = new BackgroundWorker();
-            BgWorker.DoWork += new DoWorkEventHandler(BgWorker_DoWork);
-            BgWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BgWorker_RunWorkerCompleted);
+            BgWorker.DoWork += BgWorker_DoWork;
+            BgWorker.RunWorkerCompleted += BgWorker_RunWorkerCompleted;
         }
 
         /// <summary>

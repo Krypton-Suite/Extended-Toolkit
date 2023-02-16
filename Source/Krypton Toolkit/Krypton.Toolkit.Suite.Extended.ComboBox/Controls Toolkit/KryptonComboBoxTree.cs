@@ -106,14 +106,14 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             lblSizingGrip.Size = new Size(9, 9);
             lblSizingGrip.Cursor = Cursors.SizeNWSE;
             lblSizingGrip.Text = "";
-            lblSizingGrip.MouseMove += new MouseEventHandler(SizingGripMouseMove);
-            lblSizingGrip.MouseDown += new MouseEventHandler(SizingGripMouseDown);
+            lblSizingGrip.MouseMove += SizingGripMouseMove;
+            lblSizingGrip.MouseDown += SizingGripMouseDown;
 
             tvTreeView = new KryptonTreeView();
             tvTreeView.BorderStyle = PaletteBorderStyle.ControlClient;
-            tvTreeView.DoubleClick += new EventHandler(TreeViewNodeSelect);
+            tvTreeView.DoubleClick += TreeViewNodeSelect;
             tvTreeView.Location = new Point(0, 0);
-            tvTreeView.LostFocus += new EventHandler(TreeViewLostFocus);
+            tvTreeView.LostFocus += TreeViewLostFocus;
             //tvTreeView.Scrollable = false;
 
             frmTreeView = new Form();
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             combobox = new KryptonComboBox();
             combobox.DropDownStyle = ComboBoxStyle.DropDownList;
             combobox.Dock = DockStyle.Fill;
-            combobox.ComboBox.Click += new EventHandler(ToggleTreeView);
+            combobox.ComboBox.Click += ToggleTreeView;
 
             // Adding Controls to UserControl
             pnlTree.Controls.Add(lblSizingGrip);
@@ -275,7 +275,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             //
             Name = "ComboBoxTree";
             _absoluteChildrenSelectableOnly = true;
-            Layout += new LayoutEventHandler(ComboBoxTree_Layout);
+            Layout += ComboBoxTree_Layout;
 
         }
 

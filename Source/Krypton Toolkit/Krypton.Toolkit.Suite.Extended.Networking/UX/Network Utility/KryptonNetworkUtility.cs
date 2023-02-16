@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.klblPortScan.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Far;
             this.klblPortScan.TabIndex = 4;
             this.klblPortScan.Values.Text = "Port Scan";
-            this.klblPortScan.LinkClicked += new System.EventHandler(this.klblPortScan_LinkClicked);
+            this.klblPortScan.LinkClicked += this.klblPortScan_LinkClicked;
             // 
             // klblPing
             // 
@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.klblPing.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Far;
             this.klblPing.TabIndex = 3;
             this.klblPing.Values.Text = "Ping";
-            this.klblPing.LinkClicked += new System.EventHandler(this.klblPing_LinkClicked);
+            this.klblPing.LinkClicked += this.klblPing_LinkClicked;
             // 
             // klblNetStatWithoutDNS
             // 
@@ -108,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.klblNetStatWithoutDNS.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Far;
             this.klblNetStatWithoutDNS.TabIndex = 2;
             this.klblNetStatWithoutDNS.Values.Text = "Net Stat without DNS";
-            this.klblNetStatWithoutDNS.LinkClicked += new System.EventHandler(this.klblNetStatWithoutDNS_LinkClicked);
+            this.klblNetStatWithoutDNS.LinkClicked += this.klblNetStatWithoutDNS_LinkClicked;
             // 
             // klblNetStat
             // 
@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.klblNetStat.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Far;
             this.klblNetStat.TabIndex = 1;
             this.klblNetStat.Values.Text = "Net Stat";
-            this.klblNetStat.LinkClicked += new System.EventHandler(this.klblNetStat_LinkClicked);
+            this.klblNetStat.LinkClicked += this.klblNetStat_LinkClicked;
             // 
             // kryptonPanel1
             // 
@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Network Utility";
-            this.Load += new System.EventHandler(this.KryptonNetworkUtility_Load);
+            this.Load += this.KryptonNetworkUtility_Load;
             ((System.ComponentModel.ISupportInitialize)(this.ksc.Panel1)).EndInit();
             this.ksc.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ksc.Panel2)).EndInit();

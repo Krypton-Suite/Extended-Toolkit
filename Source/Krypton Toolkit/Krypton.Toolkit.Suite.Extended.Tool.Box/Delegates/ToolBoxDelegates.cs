@@ -31,8 +31,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
     public delegate void TabMouseEventHandler(ToolBoxTab sender, MouseEventArgs e);
     public delegate void ItemSelectionChangedHandler(ToolBoxItem sender, EventArgs e);
     public delegate void ItemMouseEventHandler(ToolBoxItem sender, MouseEventArgs e);
-    public delegate void ItemKeyEventHandler(ToolBoxItem sender, KeyEventArgs e);
-    public delegate void ItemKeyPressEventHandler(ToolBoxItem sender, KeyPressEventArgs e);
+    public delegate void ItemKeyEventHandler(ToolBoxItem? sender, KeyEventArgs e);
+    public delegate void ItemKeyPressEventHandler(ToolBoxItem? sender, KeyPressEventArgs e);
     public delegate void DragDropFinishedHandler(ToolBoxItem? sender, DragDropEffects e);
     public delegate void RenameFinishedHandler(ToolBoxItem sender, ToolBoxRenameFinishedEventArgs e);
     public delegate void XmlSerializerHandler(ToolBoxItem sender, ToolBoxXmlSerializationEventArgs e);

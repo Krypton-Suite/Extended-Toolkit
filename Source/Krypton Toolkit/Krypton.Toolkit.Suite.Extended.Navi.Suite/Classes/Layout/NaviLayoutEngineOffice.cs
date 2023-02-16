@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 if (band.Button == null)
                 {
                     band.Button = new NaviButton();
-                    band.Button.Click += new EventHandler(Button_Click);
+                    band.Button.Click += Button_Click;
                 }
 
                 band.OwnerBar = OwnerBar;
@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 optionsButton = new NaviButtonOptions();
                 optionsButton.Small = true;
-                optionsButton.Click += new EventHandler(optionsButton_Click);
+                optionsButton.Click += optionsButton_Click;
             }
 
             if (collapseButton == null)
@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 collapseButton = new NaviButtonCollapse();
                 collapseButton.Size = new Size(18, 18);
                 collapseButton.Name = "navigationBarCollapseButton1";
-                collapseButton.Click += new EventHandler(collapseButton_Click);
+                collapseButton.Click += collapseButton_Click;
             }
 
             if (collapsedBand == null)
@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 collapsedBand = new NaviBandCollapsed();
                 collapsedBand.Name = "navigationBarBar.CollapsedBand1";
                 collapsedBand.Visible = false;
-                collapsedBand.MouseUp += new MouseEventHandler(CollapsedBand_MouseUp);
+                collapsedBand.MouseUp += CollapsedBand_MouseUp;
             }
 
             InitializeMenu();
@@ -531,7 +531,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 menuitem.Name = "";
                 menuitem.Size = new System.Drawing.Size(234, 22);
                 menuitem.Text = band.Text;
-                menuitem.Click += new EventHandler(menuitem_Click);
+                menuitem.Click += menuitem_Click;
 
                 if (band.SmallImage != null)
                     menuitem.Image = band.SmallImage;
@@ -806,7 +806,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             this.miShowMoreButtons.Name = "showMoreButtonsToolStripMenuItem";
             this.miShowMoreButtons.Size = new System.Drawing.Size(234, 22);
             this.miShowMoreButtons.Text = rm.GetString("BarShowMore");
-            this.miShowMoreButtons.Click += new EventHandler(miShowMoreButtons_Click);
+            this.miShowMoreButtons.Click += miShowMoreButtons_Click;
             this.miShowMoreButtons.Image = ProjectResources.Up;
             this.miShowMoreButtons.Enabled = largeButtonCount < visibleButtonCount;
             this.miShowMoreButtons.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText;
@@ -816,7 +816,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             this.miShowLessButtons.Name = "showLessButtonsToolStripMenuItem";
             this.miShowLessButtons.Size = new System.Drawing.Size(234, 22);
             this.miShowLessButtons.Text = rm.GetString("BarShowLess");
-            this.miShowLessButtons.Click += new EventHandler(miShowLessButtons_Click);
+            this.miShowLessButtons.Click += miShowLessButtons_Click;
             this.miShowLessButtons.Image = ProjectResources.Down;
             this.miShowLessButtons.Enabled = largeButtonCount > 0;
             this.miShowLessButtons.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText;
@@ -826,7 +826,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             this.miShowMoreOptions.Name = "optionsOfTheNavigationPaneToolStripMenuItem";
             this.miShowMoreOptions.Size = new System.Drawing.Size(234, 22);
             this.miShowMoreOptions.Text = rm.GetString("BarOptions");
-            this.miShowMoreOptions.Click += new EventHandler(miShowMoreOptions_Click);
+            this.miShowMoreOptions.Click += miShowMoreOptions_Click;
             // 
             // miAddOrRemoveButtons
             //          
@@ -871,7 +871,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                     menuItem.CheckState = System.Windows.Forms.CheckState.Unchecked;
                 }
                 menuItem.CheckOnClick = true;
-                menuItem.CheckedChanged += new EventHandler(menuItem_CheckedChanged);
+                menuItem.CheckedChanged += menuItem_CheckedChanged;
 
                 this.miAddOrRemoveButtons.DropDownItems.Add(menuItem);
             }
@@ -1002,7 +1002,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 popupHelper = new PopupWindowHelper();
                 KryptonForm parent = (KryptonForm)Bar.FindForm();
-                popupHelper.PopupClosed += new PopupClosedEventHandler(popupHelper_PopupClosed);
+                popupHelper.PopupClosed += popupHelper_PopupClosed;
 
                 popupHelper.AssignHandle(parent.Handle);
                 popup.Resizable = true;

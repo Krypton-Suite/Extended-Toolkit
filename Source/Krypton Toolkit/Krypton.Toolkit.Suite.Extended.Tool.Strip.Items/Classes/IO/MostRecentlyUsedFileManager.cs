@@ -237,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             tSI = _parentMenuItem.DropDownItems.Add("&Clear list");
 
-            tSI.Click += new EventHandler(OnClearRecentFiles_Click);
+            tSI.Click += OnClearRecentFiles_Click;
 
             _parentMenuItem.Enabled = true;
         }

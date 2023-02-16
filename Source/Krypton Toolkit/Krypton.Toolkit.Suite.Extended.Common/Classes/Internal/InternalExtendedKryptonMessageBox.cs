@@ -1404,7 +1404,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             _doNotShowAgainOption.StateCommon.ShortText.Font = MessageBoxTypeface;
 
             // Set up checked changed event
-            _doNotShowAgainOption.CheckedChanged += new EventHandler(DoNotShowAgainOption_CheckedChanged);
+            _doNotShowAgainOption.CheckedChanged += DoNotShowAgainOption_CheckedChanged;
         }
 
         private void SetUpTimeOutDelayTimer(bool enabled, int ticksInMilliseconds, Timer timeOutTimer)
@@ -1419,7 +1419,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             timeOutTimer.Interval = ticksInMilliseconds;
 
             // Setup the Tick event for the 'timeOutTimer'
-            timeOutTimer.Tick += new EventHandler(TimeOutTimer_Tick);
+            timeOutTimer.Tick += TimeOutTimer_Tick;
         }
 
         private void UpdateSizing(IWin32Window showOwner)

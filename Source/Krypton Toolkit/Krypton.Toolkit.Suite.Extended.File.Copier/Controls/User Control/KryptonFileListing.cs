@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.ktxtDirectory.Name = "ktxtDirectory";
             this.ktxtDirectory.Size = new System.Drawing.Size(224, 23);
             this.ktxtDirectory.TabIndex = 0;
-            this.ktxtDirectory.TextChanged += new System.EventHandler(this.ktxtDirectory_TextChanged);
+            this.ktxtDirectory.TextChanged += this.ktxtDirectory_TextChanged;
             // 
             // panel3
             // 
@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.kbtnBrowse.Size = new System.Drawing.Size(44, 24);
             this.kbtnBrowse.TabIndex = 0;
             this.kbtnBrowse.Values.Text = "&...";
-            this.kbtnBrowse.Click += new System.EventHandler(this.kbtnBrowse_Click);
+            this.kbtnBrowse.Click += this.kbtnBrowse_Click;
             // 
             // panel2
             // 
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.klbFileListing.Name = "klbFileListing";
             this.klbFileListing.Size = new System.Drawing.Size(268, 363);
             this.klbFileListing.TabIndex = 0;
-            this.klbFileListing.SelectedIndexChanged += new System.EventHandler(this.klbFileListing_SelectedIndexChanged);
+            this.klbFileListing.SelectedIndexChanged += this.klbFileListing_SelectedIndexChanged;
             // 
             // ctxActions
             // 
@@ -157,7 +157,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.openInExplorerToolStripMenuItem.Name = "openInExplorerToolStripMenuItem";
             this.openInExplorerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openInExplorerToolStripMenuItem.Text = "Open in &Explorer";
-            this.openInExplorerToolStripMenuItem.Click += new System.EventHandler(this.openInExplorerToolStripMenuItem_Click);
+            this.openInExplorerToolStripMenuItem.Click += this.openInExplorerToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.renameFileToolStripMenuItem.Name = "renameFileToolStripMenuItem";
             this.renameFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.renameFileToolStripMenuItem.Text = "&Rename File...";
-            this.renameFileToolStripMenuItem.Click += new System.EventHandler(this.renameFileToolStripMenuItem_Click);
+            this.renameFileToolStripMenuItem.Click += this.renameFileToolStripMenuItem_Click;
             // 
             // toolStripMenuItem2
             // 
@@ -181,7 +181,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.deleteFileToolStripMenuItem.Name = "deleteFileToolStripMenuItem";
             this.deleteFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteFileToolStripMenuItem.Text = "Delete &File...";
-            this.deleteFileToolStripMenuItem.Click += new System.EventHandler(this.deleteFileToolStripMenuItem_Click);
+            this.deleteFileToolStripMenuItem.Click += this.deleteFileToolStripMenuItem_Click;
             // 
             // KryptonFileListing
             // 

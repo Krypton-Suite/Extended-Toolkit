@@ -47,11 +47,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             KryptonTextBox kryptonTextBox = control as KryptonTextBox;
 
-            kryptonTextBox.TextAlignChanged += new EventHandler(TextAlignChanged);
+            kryptonTextBox.TextAlignChanged += TextAlignChanged;
 
-            kryptonTextBox.TextChanged += new EventHandler(Text_Changed);
+            kryptonTextBox.TextChanged += Text_Changed;
 
-            kryptonTextBox.FontChanged += new EventHandler(FontChanged);
+            kryptonTextBox.FontChanged += FontChanged;
 
             base.OnSubscribeControlEvents(control);
         }
@@ -60,11 +60,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             KryptonTextBox kryptonTextBox = control as KryptonTextBox;
 
-            kryptonTextBox.TextAlignChanged -= new EventHandler(TextAlignChanged);
+            kryptonTextBox.TextAlignChanged -= TextAlignChanged;
 
-            kryptonTextBox.TextChanged -= new EventHandler(Text_Changed);
+            kryptonTextBox.TextChanged -= Text_Changed;
 
-            kryptonTextBox.FontChanged -= new EventHandler(FontChanged);
+            kryptonTextBox.FontChanged -= FontChanged;
 
             base.OnUnsubscribeControlEvents(control);
         }

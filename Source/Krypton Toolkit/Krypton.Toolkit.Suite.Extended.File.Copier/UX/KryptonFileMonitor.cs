@@ -151,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 1;
             this.kbtnCancel.Values.Text = "&Cancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // pbCurrentFile
             // 
@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.Name = "KryptonFileMonitor";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.KryptonFileMonitor_FormClosed);
+            this.FormClosed += this.KryptonFileMonitor_FormClosed;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

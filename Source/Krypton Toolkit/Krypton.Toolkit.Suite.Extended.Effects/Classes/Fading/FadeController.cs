@@ -126,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         /// </summary>
         private async System.Threading.Tasks.Task<DialogResult> ShowDialog(float fadeSpeed, FadeCompleted? finished)
         {
-            parentForm.BeginInvoke(new Action(() => showDialogResult.SetResult(form.ShowDialog(parentForm))));
+            parentForm.BeginInvoke(() => showDialogResult.SetResult(form.ShowDialog(parentForm)));
 
             fadeFinished = finished;
             form.Opacity = 0;

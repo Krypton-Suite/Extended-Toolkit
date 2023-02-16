@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Values.Text = "&Cancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += this.btnCancel_Click;
             // 
             // kryptonPanel1
             // 
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Checking for Updates";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CheckingForUpdatesDialog_FormClosing);
+            this.FormClosing += this.CheckingForUpdatesDialog_FormClosing;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();

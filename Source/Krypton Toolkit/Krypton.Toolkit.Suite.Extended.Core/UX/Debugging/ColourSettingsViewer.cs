@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnAllColoursAsRGB.Size = new System.Drawing.Size(292, 30);
             this.kbtnAllColoursAsRGB.TabIndex = 4;
             this.kbtnAllColoursAsRGB.Values.Text = "Get all Colour Settings as &RGB";
-            this.kbtnAllColoursAsRGB.Click += new System.EventHandler(this.kbtnAllColoursAsRGB_Click);
+            this.kbtnAllColoursAsRGB.Click += this.kbtnAllColoursAsRGB_Click;
             // 
             // kbtnAllColoursAsHex
             // 
@@ -180,7 +180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnAllColoursAsHex.Size = new System.Drawing.Size(292, 30);
             this.kbtnAllColoursAsHex.TabIndex = 3;
             this.kbtnAllColoursAsHex.Values.Text = "&Get all Colour Settings as Hexadecimal";
-            this.kbtnAllColoursAsHex.Click += new System.EventHandler(this.kbtnAllColoursAsHex_Click);
+            this.kbtnAllColoursAsHex.Click += this.kbtnAllColoursAsHex_Click;
             // 
             // klblRGBValues
             // 

@@ -282,10 +282,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             GetControlCenterPoint();
 
             m_Timer = new Timer();
-            m_Timer.Tick += new EventHandler(aTimer_Tick);
+            m_Timer.Tick += aTimer_Tick;
             ActiveTimer();
 
-            Resize += new EventHandler(LoadingCircle_Resize);
+            Resize += LoadingCircle_Resize;
         }
 
         // Events ============================================================

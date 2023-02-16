@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable InconsistentNaming
+#pragma warning disable CS8602
 #pragma warning disable CS0649
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
@@ -1656,10 +1658,10 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             Point windowPoint = ScreenToWindow(screenPoint);
 
             // Find the view element under the mouse
-            ViewBase pointView = ViewManager.Root.ViewFromPoint(windowPoint);
+            ViewBase? pointView = ViewManager.Root.ViewFromPoint(windowPoint);
 
             // Try and find a mouse controller for the active view
-            IMouseController controller = pointView?.FindMouseController();
+            IMouseController? controller = pointView?.FindMouseController();
 
             // Eat the message
             return controller != null;

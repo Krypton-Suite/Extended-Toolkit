@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 if (_maxRepeat == 0 && _startArc != null && _startArc.End != null)
                 {
-                    State end = _startArc.End;
+                    State? end = _startArc.End;
                     _startArc.End = null;
                     _backend.DeleteSubGraph(end);
                 }
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             else if (_minRepeat != 1 || _maxRepeat != 1)
             {
                 _startArc = InsertState(_startArc, _repeatProbability, Position.Before);
-                State end2 = _startArc.End;
+                State? end2 = _startArc.End;
                 if (_maxRepeat == int.MaxValue && _minRepeat == 1)
                 {
                     _endArc = InsertState(_endArc, 1f, Position.After);
@@ -73,11 +73,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 }
                 else
                 {
-                    State srcFromState = end2;
+                    State? srcFromState = end2;
                     for (uint num = 1u; num < _maxRepeat && num < 255; num++)
                     {
-                        State state = _backend.CreateNewState(_endArc.Start.Rule);
-                        State state2 = _backend.CloneSubGraph(srcFromState, _endArc.Start, state);
+                        State? state = _backend.CreateNewState(_endArc.Start.Rule);
+                        State? state2 = _backend.CloneSubGraph(srcFromState, _endArc.Start, state);
                         _endArc.End = state;
                         _endArc = state2.OutArcs.First;
                         if (_maxRepeat == int.MaxValue)
@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             PostParse((ParseElementCollection)parentElement);
         }
 
-        private void AddEpsilonTransition(State start, State end, float weigth)
+        private void AddEpsilonTransition(State? start, State? end, float weigth)
         {
             Arc arc = _backend.EpsilonTransition(weigth);
             arc.Start = start;

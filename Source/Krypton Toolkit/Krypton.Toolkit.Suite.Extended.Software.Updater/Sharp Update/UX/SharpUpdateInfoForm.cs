@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             this.kbtnBack.Size = new System.Drawing.Size(90, 25);
             this.kbtnBack.TabIndex = 1;
             this.kbtnBack.Values.Text = "B&ack";
-            this.kbtnBack.Click += new System.EventHandler(this.kbtnBack_Click);
+            this.kbtnBack.Click += this.kbtnBack_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             this.ktxtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.ktxtDescription.Size = new System.Drawing.Size(260, 95);
             this.ktxtDescription.TabIndex = 12;
-            this.ktxtDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ktxtDescription_KeyDown);
+            this.ktxtDescription.KeyDown += this.ktxtDescription_KeyDown;
             // 
             // klblDescription
             // 

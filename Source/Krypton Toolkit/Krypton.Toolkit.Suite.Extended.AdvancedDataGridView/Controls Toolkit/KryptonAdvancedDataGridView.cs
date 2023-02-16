@@ -358,9 +358,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     column.SortMode = DataGridViewColumnSortMode.Programmatic;
                     cell = new KryptonColumnHeaderCell(column.HeaderCell, true);
-                    cell.SortChanged += new ColumnHeaderCellEventHandler(Cell_SortChanged);
-                    cell.FilterChanged += new ColumnHeaderCellEventHandler(Cell_FilterChanged);
-                    cell.FilterPopup += new ColumnHeaderCellEventHandler(Cell_FilterPopup);
+                    cell.SortChanged += Cell_SortChanged;
+                    cell.FilterChanged += Cell_FilterChanged;
+                    cell.FilterPopup += Cell_FilterPopup;
                     column.MinimumWidth = cell.MinimumSize.Width;
                     if (ColumnHeadersHeight < cell.MinimumSize.Height)
                         ColumnHeadersHeight = cell.MinimumSize.Height;
@@ -1157,9 +1157,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             e.Column.SortMode = DataGridViewColumnSortMode.Programmatic;
             KryptonColumnHeaderCell cell = new KryptonColumnHeaderCell(e.Column.HeaderCell, FilterAndSortEnabled);
-            cell.SortChanged += new ColumnHeaderCellEventHandler(Cell_SortChanged);
-            cell.FilterChanged += new ColumnHeaderCellEventHandler(Cell_FilterChanged);
-            cell.FilterPopup += new ColumnHeaderCellEventHandler(Cell_FilterPopup);
+            cell.SortChanged += Cell_SortChanged;
+            cell.FilterChanged += Cell_FilterChanged;
+            cell.FilterPopup += Cell_FilterPopup;
             e.Column.MinimumWidth = cell.MinimumSize.Width;
             if (ColumnHeadersHeight < cell.MinimumSize.Height)
                 ColumnHeadersHeight = cell.MinimumSize.Height;

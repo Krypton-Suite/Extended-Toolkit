@@ -134,14 +134,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 _filterButtonOver = oldCellt._filterButtonOver;
                 _filterButtonOffsetBounds = oldCellt._filterButtonOffsetBounds;
                 _filterButtonImageBounds = oldCellt._filterButtonImageBounds;
-                MenuStrip.FilterChanged += new EventHandler(MenuStrip_FilterChanged);
-                MenuStrip.SortChanged += new EventHandler(MenuStrip_SortChanged);
+                MenuStrip.FilterChanged += MenuStrip_FilterChanged;
+                MenuStrip.SortChanged += MenuStrip_SortChanged;
             }
             else
             {
                 MenuStrip = new MenuStrip(oldCell.OwningColumn.ValueType);
-                MenuStrip.FilterChanged += new EventHandler(MenuStrip_FilterChanged);
-                MenuStrip.SortChanged += new EventHandler(MenuStrip_SortChanged);
+                MenuStrip.FilterChanged += MenuStrip_FilterChanged;
+                MenuStrip.SortChanged += MenuStrip_SortChanged;
             }
 
             IsFilterDateAndTimeEnabled = FILTER_DATE_AND_TIME_DEFAULT_ENABLED;

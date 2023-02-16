@@ -48,15 +48,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private Rule _rule;
 
-        private State _next;
+        private State? _next;
 
-        private State _prev;
+        private State? _prev;
 
         private RecurFlag _recurseFlag;
 
-        internal State Next => _next;
+        internal State? Next => _next;
 
-        internal State Prev => _prev;
+        internal State? Prev => _prev;
 
         internal int NumArcs
         {
@@ -184,7 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         {
         }
 
-        internal State Add(State state)
+        internal State? Add(State? state)
         {
             _next = state;
             state._prev = this;
@@ -219,7 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     bool fReachedEndState2 = false;
                     if (outArc.RuleRef != null && outArc.RuleRef._firstState != null)
                     {
-                        State firstState = outArc.RuleRef._firstState;
+                        State? firstState = outArc.RuleRef._firstState;
                         if ((firstState._recurseFlag & RecurFlag.RF_IN_LEFT_RECUR_CHECK) != 0 || (firstState._recurseFlag & RecurFlag.RF_CHECKED_LEFT_RECURSION) == 0)
                         {
                             firstState.CheckLeftRecursion(out fReachedEndState2);

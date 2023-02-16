@@ -30,11 +30,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal class Graph : IEnumerable<State>, IEnumerable
     {
-        private State _startState;
+        private State? _startState;
 
-        private State _curState;
+        private State? _curState;
 
-        internal void Add(State state)
+        internal void Add(State? state)
         {
             state.Init();
             if (_startState == null)
@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             }
         }
 
-        internal void Remove(State state)
+        internal void Remove(State? state)
         {
             if (state == _startState)
             {
@@ -62,43 +62,43 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            for (State item = _startState; item != null; item = item.Next)
+            for (State? item = _startState; item != null; item = item.Next)
             {
                 yield return item;
             }
         }
 
-        IEnumerator<State> IEnumerable<State>.GetEnumerator()
+        IEnumerator<State?> IEnumerable<State>.GetEnumerator()
         {
-            for (State item = _startState; item != null; item = item.Next)
+            for (State? item = _startState; item != null; item = item.Next)
             {
                 yield return item;
             }
         }
 
-        internal State CreateNewState(Rule rule)
+        internal State? CreateNewState(Rule rule)
         {
             uint nextHandle = CfgGrammar.NextHandle;
-            State state = new State(rule, nextHandle);
+            State? state = new State(rule, nextHandle);
             Add(state);
             return state;
         }
 
-        internal void DeleteState(State state)
+        internal void DeleteState(State? state)
         {
             Remove(state);
         }
 
         internal void Optimize()
         {
-            foreach (State item in (IEnumerable<State>)this)
+            foreach (State? item in (IEnumerable<State?>)this)
             {
                 NormalizeTransitionWeights(item);
             }
             MergeDuplicateTransitions();
         }
 
-        internal void MoveInputTransitionsAndDeleteState(State srcState, State destState)
+        internal void MoveInputTransitionsAndDeleteState(State? srcState, State? destState)
         {
             List<Arc> list = srcState.InArcs.ToList();
             foreach (Arc item in list)
@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             DeleteState(srcState);
         }
 
-        internal void MoveOutputTransitionsAndDeleteState(State srcState, State destState)
+        internal void MoveOutputTransitionsAndDeleteState(State? srcState, State? destState)
         {
             List<Arc> list = srcState.OutArcs.ToList();
             foreach (Arc item in list)
@@ -132,12 +132,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     MergeIdenticalTransitions(item.OutArcs, identicalWords);
                 }
             }
-            Stack<State> mergeStates = new();
+            Stack<State?> mergeStates = new();
             RecursiveMergeDuplicatedOutputTransition(mergeStates);
             RecursiveMergeDuplicatedInputTransition(mergeStates);
         }
 
-        private void RecursiveMergeDuplicatedInputTransition(Stack<State> mergeStates)
+        private void RecursiveMergeDuplicatedInputTransition(Stack<State?> mergeStates)
         {
             foreach (State item in (IEnumerable<State>)this)
             {
@@ -149,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             List<Arc> identicalWords = new();
             while (mergeStates.Count > 0)
             {
-                State state = mergeStates.Pop();
+                State? state = mergeStates.Pop();
                 if (state.InArcs.ContainsMoreThanOneItem)
                 {
                     MergeIdenticalTransitions(state.InArcs, identicalWords);
@@ -158,7 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             }
         }
 
-        private void RecursiveMergeDuplicatedOutputTransition(Stack<State> mergeStates)
+        private void RecursiveMergeDuplicatedOutputTransition(Stack<State?> mergeStates)
         {
             foreach (State item in (IEnumerable<State>)this)
             {
@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             List<Arc> identicalWords = new();
             while (mergeStates.Count > 0)
             {
-                State state = mergeStates.Pop();
+                State? state = mergeStates.Pop();
                 if (state.OutArcs.ContainsMoreThanOneItem)
                 {
                     MergeIdenticalTransitions(state.OutArcs, identicalWords);
@@ -179,7 +179,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             }
         }
 
-        private void MergeDuplicateInputTransitions(ArcList arcs, Stack<State> mergeStates)
+        private void MergeDuplicateInputTransitions(ArcList arcs, Stack<State?> mergeStates)
         {
             List<Arc> list = null;
             Arc arc = null;
@@ -214,7 +214,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 list.Sort(Arc.CompareForDuplicateInputTransitions);
                 arc = null;
                 Arc arc3 = null;
-                State state = null;
+                State? state = null;
                 bool flag3 = false;
                 foreach (Arc item in list)
                 {
@@ -230,7 +230,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                         flag3 = false;
                     }
                     Arc arc4 = item;
-                    State start = arc4.Start;
+                    State? start = arc4.Start;
                     if (MoveSemanticTagLeft(arc4))
                     {
                         if (arc3 != null)
@@ -263,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             }
         }
 
-        private void MergeDuplicateOutputTransitions(ArcList arcs, Stack<State> mergeStates)
+        private void MergeDuplicateOutputTransitions(ArcList arcs, Stack<State?> mergeStates)
         {
             List<Arc> list = null;
             Arc arc = null;
@@ -298,7 +298,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 list.Sort(Arc.CompareForDuplicateOutputTransitions);
                 arc = null;
                 Arc arc3 = null;
-                State state = null;
+                State? state = null;
                 bool flag3 = false;
                 foreach (Arc item in list)
                 {
@@ -314,7 +314,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                         flag3 = false;
                     }
                     Arc arc4 = item;
-                    State end = arc4.End;
+                    State? end = arc4.End;
                     if (end != end.Rule._firstState && MoveSemanticTagRight(arc4))
                     {
                         if (arc3 != null)
@@ -347,7 +347,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             }
         }
 
-        private static void AddToMergeStateList(Stack<State> mergeStates, State commonEndState)
+        private static void AddToMergeStateList(Stack<State?> mergeStates, State? commonEndState)
         {
             NormalizeTransitionWeights(commonEndState);
             if (!mergeStates.Contains(commonEndState))
@@ -358,7 +358,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal static bool MoveSemanticTagLeft(Arc arc)
         {
-            State start = arc.Start;
+            State? start = arc.Start;
             Arc first = start.InArcs.First;
             if (start.InArcs.CountIsOne && start.OutArcs.CountIsOne && CanTagsBeMoved(first, arc))
             {
@@ -370,7 +370,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal static bool MoveSemanticTagRight(Arc arc)
         {
-            State end = arc.End;
+            State? end = arc.End;
             Arc first = end.OutArcs.First;
             if (end.InArcs.CountIsOne && end.OutArcs.CountIsOne && CanTagsBeMoved(arc, first))
             {
@@ -457,7 +457,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             }
         }
 
-        private static void NormalizeTransitionWeights(State state)
+        private static void NormalizeTransitionWeights(State? state)
         {
             float num = 0f;
             foreach (Arc outArc in state.OutArcs)

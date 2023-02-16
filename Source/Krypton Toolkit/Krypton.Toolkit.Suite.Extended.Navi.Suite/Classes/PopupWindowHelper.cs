@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             owner.AddOwnedForm(popup);
             // Respond to the Closed event in case the popup
             // is closed by its own internal means
-            popClosedHandler = new EventHandler(popup_Closed);
+            popClosedHandler = popup_Closed;
             popup.Closed += popClosedHandler;
 
             // Show the popup:
@@ -274,7 +274,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public PopupWindowHelper()
         {
             filter = new PopupWindowHelperMessageFilter(this);
-            filter.PopupCancel += new PopupCancelEventHandler(popup_Cancel);
+            filter.PopupCancel += popup_Cancel;
         }
     }
 }

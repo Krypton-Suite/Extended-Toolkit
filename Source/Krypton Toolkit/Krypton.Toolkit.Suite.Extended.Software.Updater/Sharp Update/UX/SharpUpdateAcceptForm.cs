@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             this.kbtnYes.Size = new System.Drawing.Size(90, 25);
             this.kbtnYes.TabIndex = 2;
             this.kbtnYes.Values.Text = "&Yes";
-            this.kbtnYes.Click += new System.EventHandler(this.kbtnYes_Click);
+            this.kbtnYes.Click += this.kbtnYes_Click;
             // 
             // kbtnNo
             // 
@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             this.kbtnNo.Size = new System.Drawing.Size(90, 25);
             this.kbtnNo.TabIndex = 1;
             this.kbtnNo.Values.Text = "&No";
-            this.kbtnNo.Click += new System.EventHandler(this.kbtnNo_Click);
+            this.kbtnNo.Click += this.kbtnNo_Click;
             // 
             // kbtnDetails
             // 
@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             this.kbtnDetails.Size = new System.Drawing.Size(90, 25);
             this.kbtnDetails.TabIndex = 0;
             this.kbtnDetails.Values.Text = "Detai&ls";
-            this.kbtnDetails.Click += new System.EventHandler(this.kbtnDetails_Click);
+            this.kbtnDetails.Click += this.kbtnDetails_Click;
             // 
             // kryptonBorderEdge1
             // 

@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             this.kbtnLocate.Size = new System.Drawing.Size(90, 25);
             this.kbtnLocate.TabIndex = 5;
             this.kbtnLocate.Values.Text = "Lo&cate";
-            this.kbtnLocate.Click += new System.EventHandler(this.kbtnLocate_Click);
+            this.kbtnLocate.Click += this.kbtnLocate_Click;
             // 
             // kuacbtnRun
             // 
@@ -134,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             this.kuacbtnRun.UseAsUACElevationButton = true;
             this.kuacbtnRun.Values.Image = ((System.Drawing.Image)(resources.GetObject("kuacbtnRun.Values.Image")));
             this.kuacbtnRun.Values.Text = "&Run";
-            this.kuacbtnRun.ExecuteProcessAsAdministrator += new Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.KryptonUACButton.ExecuteProcessAsAdministratorEventHandler(this.kuacbtnRun_ExecuteProcessAsAdministrator);
+            this.kuacbtnRun.ExecuteProcessAsAdministrator += this.kuacbtnRun_ExecuteProcessAsAdministrator;
             // 
             // kbtnRun
             // 
@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             this.kbtnRun.Size = new System.Drawing.Size(90, 25);
             this.kbtnRun.TabIndex = 3;
             this.kbtnRun.Values.Text = "&Run";
-            this.kbtnRun.Click += new System.EventHandler(this.kbtnRun_Click);
+            this.kbtnRun.Click += this.kbtnRun_Click;
             // 
             // kbtnCancel
             // 
@@ -157,7 +157,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 2;
             this.kbtnCancel.Values.Text = "&Cancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // kbtnBrowse
             // 
@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             this.kbtnBrowse.Size = new System.Drawing.Size(90, 25);
             this.kbtnBrowse.TabIndex = 1;
             this.kbtnBrowse.Values.Text = "B&rowse...";
-            this.kbtnBrowse.Click += new System.EventHandler(this.kbtnBrowse_Click);
+            this.kbtnBrowse.Click += this.kbtnBrowse_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -332,7 +332,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             this.MinimizeBox = false;
             this.Name = "KryptonRunDialog";
             this.Text = "Run";
-            this.Load += new System.EventHandler(this.KryptonRunDialog_Load);
+            this.Load += this.KryptonRunDialog_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

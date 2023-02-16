@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnUtiliseAsBaseColour.Size = new System.Drawing.Size(142, 25);
             this.kbtnUtiliseAsBaseColour.TabIndex = 79;
             this.kbtnUtiliseAsBaseColour.Values.Text = "Utilise as Base &Colour";
-            this.kbtnUtiliseAsBaseColour.Click += new System.EventHandler(this.kbtnUtiliseAsBaseColour_Click);
+            this.kbtnUtiliseAsBaseColour.Click += this.kbtnUtiliseAsBaseColour_Click;
             // 
             // kbtnOk
             // 
@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 77;
             this.kbtnOk.Values.Text = "O&k";
-            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
+            this.kbtnOk.Click += this.kbtnOk_Click;
             // 
             // kbtnSaveColour
             // 
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnSaveColour.Size = new System.Drawing.Size(137, 25);
             this.kbtnSaveColour.TabIndex = 78;
             this.kbtnSaveColour.Values.Text = "Save &Selected Colour";
-            this.kbtnSaveColour.Click += new System.EventHandler(this.kbtnSaveColour_Click);
+            this.kbtnSaveColour.Click += this.kbtnSaveColour_Click;
             // 
             // kryptonPanel2
             // 
@@ -195,9 +195,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.pbxColourPreview.Size = new System.Drawing.Size(650, 180);
             this.pbxColourPreview.TabIndex = 155;
             this.pbxColourPreview.TabStop = false;
-            this.pbxColourPreview.BackColorChanged += new System.EventHandler(this.pbxColourPreview_BackColorChanged);
-            this.pbxColourPreview.Click += new System.EventHandler(this.pbxColourPreview_Click);
-            this.pbxColourPreview.MouseEnter += new System.EventHandler(this.pbxColourPreview_MouseEnter);
+            this.pbxColourPreview.BackColorChanged += this.pbxColourPreview_BackColorChanged;
+            this.pbxColourPreview.Click += this.pbxColourPreview_Click;
+            this.pbxColourPreview.MouseEnter += this.pbxColourPreview_MouseEnter;
             // 
             // kcmbNormalTextSystemColours
             // 
@@ -209,7 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kcmbNormalTextSystemColours.Name = "kcmbNormalTextSystemColours";
             this.kcmbNormalTextSystemColours.Size = new System.Drawing.Size(173, 21);
             this.kcmbNormalTextSystemColours.TabIndex = 154;
-            this.kcmbNormalTextSystemColours.SelectedIndexChanged += new System.EventHandler(this.kcmbNormalTextSystemColours_SelectedIndexChanged);
+            this.kcmbNormalTextSystemColours.SelectedIndexChanged += this.kcmbNormalTextSystemColours_SelectedIndexChanged;
             // 
             // kryptonLabel22
             // 
@@ -230,7 +230,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kcmbNormalTextColour.Name = "kcmbNormalTextColour";
             this.kcmbNormalTextColour.Size = new System.Drawing.Size(173, 21);
             this.kcmbNormalTextColour.TabIndex = 152;
-            this.kcmbNormalTextColour.SelectedIndexChanged += new System.EventHandler(this.kcmbNormalTextColour_SelectedIndexChanged);
+            this.kcmbNormalTextColour.SelectedIndexChanged += this.kcmbNormalTextColour_SelectedIndexChanged;
             // 
             // kryptonLabel21
             // 
@@ -249,7 +249,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnGenerateNormalTextBlueValue.Size = new System.Drawing.Size(90, 25);
             this.kbtnGenerateNormalTextBlueValue.TabIndex = 150;
             this.kbtnGenerateNormalTextBlueValue.Values.Text = "Generate &Blue";
-            this.kbtnGenerateNormalTextBlueValue.Click += new System.EventHandler(this.kbtnGenerateNormalTextBlueValue_Click);
+            this.kbtnGenerateNormalTextBlueValue.Click += this.kbtnGenerateNormalTextBlueValue_Click;
             // 
             // knumBlueChannelValue
             // 
@@ -264,7 +264,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knumBlueChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
             this.knumBlueChannelValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
             this.knumBlueChannelValue.TabIndex = 149;
-            this.knumBlueChannelValue.ValueChanged += new System.EventHandler(this.knumBlueChannelValue_ValueChanged);
+            this.knumBlueChannelValue.ValueChanged += this.knumBlueChannelValue_ValueChanged;
             // 
             // kryptonLabel4
             // 
@@ -283,7 +283,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnGenerateNormalTextGreenValue.Size = new System.Drawing.Size(106, 25);
             this.kbtnGenerateNormalTextGreenValue.TabIndex = 147;
             this.kbtnGenerateNormalTextGreenValue.Values.Text = "Generate &Green";
-            this.kbtnGenerateNormalTextGreenValue.Click += new System.EventHandler(this.kbtnGenerateNormalTextGreenValue_Click);
+            this.kbtnGenerateNormalTextGreenValue.Click += this.kbtnGenerateNormalTextGreenValue_Click;
             // 
             // knumGreenChannelValue
             // 
@@ -297,7 +297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knumGreenChannelValue.Size = new System.Drawing.Size(80, 22);
             this.knumGreenChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Lime;
             this.knumGreenChannelValue.TabIndex = 146;
-            this.knumGreenChannelValue.ValueChanged += new System.EventHandler(this.knumGreenChannelValue_ValueChanged);
+            this.knumGreenChannelValue.ValueChanged += this.knumGreenChannelValue_ValueChanged;
             // 
             // kryptonLabel3
             // 
@@ -316,7 +316,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnGenerateNormalTextRedValue.Size = new System.Drawing.Size(90, 25);
             this.kbtnGenerateNormalTextRedValue.TabIndex = 144;
             this.kbtnGenerateNormalTextRedValue.Values.Text = "Generate &Red";
-            this.kbtnGenerateNormalTextRedValue.Click += new System.EventHandler(this.kbtnGenerateNormalTextRedValue_Click);
+            this.kbtnGenerateNormalTextRedValue.Click += this.kbtnGenerateNormalTextRedValue_Click;
             // 
             // knumRedChannelValue
             // 
@@ -331,7 +331,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knumRedChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Red;
             this.knumRedChannelValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
             this.knumRedChannelValue.TabIndex = 143;
-            this.knumRedChannelValue.ValueChanged += new System.EventHandler(this.knumRedChannelValue_ValueChanged);
+            this.knumRedChannelValue.ValueChanged += this.knumRedChannelValue_ValueChanged;
             // 
             // kryptonLabel2
             // 
@@ -364,7 +364,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Define Custom Colours";
-            this.Load += new System.EventHandler(this.CustomColours_Load);
+            this.Load += this.CustomColours_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

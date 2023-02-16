@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 1;
             this.kbtnOk.Values.Text = "&Ok";
-            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
+            this.kbtnOk.Click += this.kbtnOk_Click;
             // 
             // kbtnCancel
             // 
@@ -206,7 +206,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kKnobBlue.StartAngle = 135F;
             this.kKnobBlue.TabIndex = 2;
             this.kKnobBlue.Value = 0;
-            this.kKnobBlue.ValueChanged += new Krypton.Toolkit.Suite.Extended.Common.ValueChangedEventHandler(this.kKnobBlue_ValueChanged);
+            this.kKnobBlue.ValueChanged += this.kKnobBlue_ValueChanged;
             // 
             // kKnobGreen
             // 
@@ -232,7 +232,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kKnobGreen.StartAngle = 135F;
             this.kKnobGreen.TabIndex = 1;
             this.kKnobGreen.Value = 0;
-            this.kKnobGreen.ValueChanged += new Krypton.Toolkit.Suite.Extended.Common.ValueChangedEventHandler(this.kKnobGreen_ValueChanged);
+            this.kKnobGreen.ValueChanged += this.kKnobGreen_ValueChanged;
             // 
             // kKnobRed
             // 
@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kKnobRed.StartAngle = 135F;
             this.kKnobRed.TabIndex = 0;
             this.kKnobRed.Value = 0;
-            this.kKnobRed.ValueChanged += new Krypton.Toolkit.Suite.Extended.Common.ValueChangedEventHandler(this.kKnobRed_ValueChanged);
+            this.kKnobRed.ValueChanged += this.kKnobRed_ValueChanged;
             // 
             // kryptonBorderEdge1
             // 
@@ -282,7 +282,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.Name = "ColourKnobDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Load += new System.EventHandler(this.ColourKnobDialog_Load);
+            this.Load += this.ColourKnobDialog_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

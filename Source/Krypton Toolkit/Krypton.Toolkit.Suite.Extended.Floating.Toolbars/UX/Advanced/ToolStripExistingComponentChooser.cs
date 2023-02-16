@@ -130,7 +130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             this.klbSelected.StateCommon.Item.Content.LongText.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klbSelected.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klbSelected.TabIndex = 1;
-            this.klbSelected.SelectedIndexChanged += new System.EventHandler(this.KlbSelected_SelectedIndexChanged);
+            this.klbSelected.SelectedIndexChanged += this.KlbSelected_SelectedIndexChanged;
             // 
             // kbtnAddAll
             // 
@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             this.kbtnAddAll.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnAddAll.TabIndex = 5;
             this.kbtnAddAll.Values.Text = ">>";
-            this.kbtnAddAll.Click += new System.EventHandler(this.KbtnAddAll_Click);
+            this.kbtnAddAll.Click += this.KbtnAddAll_Click;
             // 
             // kbtnRemoveSelected
             // 
@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             this.kbtnRemoveSelected.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnRemoveSelected.TabIndex = 4;
             this.kbtnRemoveSelected.Values.Text = "<";
-            this.kbtnRemoveSelected.Click += new System.EventHandler(this.KbtnRemoveSelected_Click);
+            this.kbtnRemoveSelected.Click += this.KbtnRemoveSelected_Click;
             // 
             // kbtnRemoveAll
             // 
@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             this.kbtnRemoveAll.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnRemoveAll.TabIndex = 3;
             this.kbtnRemoveAll.Values.Text = "<<";
-            this.kbtnRemoveAll.Click += new System.EventHandler(this.KbtnRemoveAll_Click);
+            this.kbtnRemoveAll.Click += this.KbtnRemoveAll_Click;
             // 
             // kbtnAddSelected
             // 
@@ -180,7 +180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             this.kbtnAddSelected.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnAddSelected.TabIndex = 2;
             this.kbtnAddSelected.Values.Text = ">";
-            this.kbtnAddSelected.Click += new System.EventHandler(this.KbtnAddSelected_Click);
+            this.kbtnAddSelected.Click += this.KbtnAddSelected_Click;
             // 
             // kgbAvailable
             // 
@@ -205,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             this.klblAvailable.StateCommon.Item.Content.LongText.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblAvailable.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblAvailable.TabIndex = 1;
-            this.klblAvailable.SelectedIndexChanged += new System.EventHandler(this.KlblAvailable_SelectedIndexChanged);
+            this.klblAvailable.SelectedIndexChanged += this.KlblAvailable_SelectedIndexChanged;
             // 
             // ToolStripExistingComponentChooser
             // 

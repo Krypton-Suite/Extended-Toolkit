@@ -43,8 +43,8 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MenuStripContainerForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuStripContainerWindow_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuStripContainerWindow_FormClosed);
+            this.FormClosing += this.MenuStripContainerWindow_FormClosing;
+            this.FormClosed += this.MenuStripContainerWindow_FormClosed;
             this.ResumeLayout(false);
 
         }

@@ -625,7 +625,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.MinimizeBox = false;
             this.Name = "InternalBasicPaletteCreator";
             this.ShowInTaskbar = false;
-            this.Load += new System.EventHandler(this.InternalBasicPaletteCreator_Load);
+            this.Load += this.InternalBasicPaletteCreator_Load;
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();

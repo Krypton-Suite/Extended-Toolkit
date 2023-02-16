@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 Arc arc = _backend.EpsilonTransition(1f);
                 _backend.AddSemanticInterpretationTag(arc, propertyInfo);
-                State end = arc.Start = _backend.CreateNewState(_rule);
+                State? end = arc.Start = _backend.CreateNewState(_rule);
                 _endArc.End = end;
                 _endArc = arc;
             }
@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 }
             }
             Arc arc2 = _backend.EpsilonTransition(weight);
-            State state = _backend.CreateNewState(_rule);
+            State? state = _backend.CreateNewState(_rule);
             if (position == Position.Before)
             {
                 arc2.End = state;
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             Arc arc = start;
             if (start.End != null)
             {
-                State end = arc.End;
+                State? end = arc.End;
                 while (arc.IsEpsilonTransition && end != null && Graph.MoveSemanticTagRight(arc) && end.InArcs.CountIsOne && end.OutArcs.CountIsOne)
                 {
                     arc.End = null;
@@ -128,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             Arc arc = end;
             if (arc != null)
             {
-                State start = arc.Start;
+                State? start = arc.Start;
                 while (arc.IsEpsilonTransition && start != null && Graph.MoveSemanticTagLeft(arc) && start.InArcs.CountIsOne && start.OutArcs.CountIsOne)
                 {
                     arc.Start = null;
@@ -156,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal virtual void AddArc(Arc start, Arc end)
         {
-            State state = null;
+            State? state = null;
             if (_startArc == null)
             {
                 _startArc = start;
@@ -172,8 +172,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     _endArc = TrimEnd(_endArc, _backend);
                     if (_endArc.IsEpsilonTransition)
                     {
-                        State start2 = _endArc.Start;
-                        State end2 = start.End;
+                        State? start2 = _endArc.Start;
+                        State? end2 = start.End;
                         flag = true;
                         if (start2 == null)
                         {

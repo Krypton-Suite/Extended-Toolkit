@@ -103,14 +103,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             this.copyMenuItem.Name = "copyMenuItem";
             this.copyMenuItem.Size = new System.Drawing.Size(190, 22);
             this.copyMenuItem.Text = "Copy Image";
-            this.copyMenuItem.Click += new System.EventHandler(this.copyMenuItem_Click);
+            this.copyMenuItem.Click += this.copyMenuItem_Click;
             // 
             // saveImageMenuItem
             // 
             this.saveImageMenuItem.Name = "saveImageMenuItem";
             this.saveImageMenuItem.Size = new System.Drawing.Size(190, 22);
             this.saveImageMenuItem.Text = "Save Image As...";
-            this.saveImageMenuItem.Click += new System.EventHandler(this.saveImageMenuItem_Click);
+            this.saveImageMenuItem.Click += this.saveImageMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             this.autoAxisMenuItem.Name = "autoAxisMenuItem";
             this.autoAxisMenuItem.Size = new System.Drawing.Size(190, 22);
             this.autoAxisMenuItem.Text = "Zoom to Fit Data";
-            this.autoAxisMenuItem.Click += new System.EventHandler(this.autoAxisMenuItem_Click);
+            this.autoAxisMenuItem.Click += this.autoAxisMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
@@ -134,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             this.helpMenuItem.Name = "helpMenuItem";
             this.helpMenuItem.Size = new System.Drawing.Size(190, 22);
             this.helpMenuItem.Text = "Help";
-            this.helpMenuItem.Click += new System.EventHandler(this.helpMenuItem_Click);
+            this.helpMenuItem.Click += this.helpMenuItem_Click;
             // 
             // toolStripSeparator3
             // 
@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             this.openInNewWindowMenuItem.Name = "openInNewWindowMenuItem";
             this.openInNewWindowMenuItem.Size = new System.Drawing.Size(190, 22);
             this.openInNewWindowMenuItem.Text = "Open in New Window";
-            this.openInNewWindowMenuItem.Click += new System.EventHandler(this.openInNewWindowMenuItem_Click);
+            this.openInNewWindowMenuItem.Click += this.openInNewWindowMenuItem_Click;
             // 
             // FormsPlot
             // 
@@ -154,8 +154,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             this.Controls.Add(this.pictureBox1);
             this.Name = "FormsPlot";
             this.Size = new System.Drawing.Size(400, 300);
-            this.Load += new System.EventHandler(this.FormsPlot_Load);
-            this.SizeChanged += new System.EventHandler(this.OnSizeChanged);
+            this.Load += this.FormsPlot_Load;
+            this.SizeChanged += this.OnSizeChanged;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.DefaultRightClickMenu.ResumeLayout(false);
             this.ResumeLayout(false);

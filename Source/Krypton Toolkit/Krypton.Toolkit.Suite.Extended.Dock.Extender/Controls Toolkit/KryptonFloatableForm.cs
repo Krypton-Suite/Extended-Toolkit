@@ -303,9 +303,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
             // track the handle's mouse movements
             _dockState = dockState;
             Text = _dockState.Handle.Text;
-            _dockState.Handle.MouseMove += new MouseEventHandler(Handle_MouseMove);
-            _dockState.Handle.MouseHover += new EventHandler(Handle_MouseHover);
-            _dockState.Handle.MouseLeave += new EventHandler(Handle_MouseLeave);
+            _dockState.Handle.MouseMove += Handle_MouseMove;
+            _dockState.Handle.MouseHover += Handle_MouseHover;
+            _dockState.Handle.MouseLeave += Handle_MouseLeave;
         }
 
         /// <summary>
@@ -404,9 +404,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
 
         private void DetachHandle()
         {
-            _dockState.Handle.MouseMove -= new MouseEventHandler(Handle_MouseMove);
-            _dockState.Handle.MouseHover -= new EventHandler(Handle_MouseHover);
-            _dockState.Handle.MouseLeave -= new EventHandler(Handle_MouseLeave);
+            _dockState.Handle.MouseMove -= Handle_MouseMove;
+            _dockState.Handle.MouseHover -= Handle_MouseHover;
+            _dockState.Handle.MouseLeave -= Handle_MouseLeave;
             _dockState.Container = null;
             _dockState.Handle = null;
         }

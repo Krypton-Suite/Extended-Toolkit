@@ -404,20 +404,20 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             InitializeComponent();
 
 
-            this.Scroller.ScrollLeft += new EventHandler(Scroller_ScrollLeft);
-            this.Scroller.ScrollRight += new EventHandler(Scroller_ScrollRight);
-            this.Scroller.TabClose += new EventHandler(Scroller_TabClose);
-            this.Scroller.ContextualMenu += new EventHandler(Scroller_ContextMenuButton);
+            this.Scroller.ScrollLeft += Scroller_ScrollLeft;
+            this.Scroller.ScrollRight += Scroller_ScrollRight;
+            this.Scroller.TabClose += Scroller_TabClose;
+            this.Scroller.ContextualMenu += Scroller_ContextMenuButton;
 
             // Cache the current global palette setting
             _palette = KryptonManager.CurrentGlobalPalette;
 
             // Hook into palette events
             if (_palette != null)
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
 
             // We want to be notified whenever the global palette changes
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             // Create redirection object to the base palette
             _paletteRedirect = new PaletteRedirect(_palette);
@@ -446,7 +446,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             // Unhook events from old palette
             if (_palette != null)
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
 
             // Cache the new IPalette that is the global palette
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -455,7 +455,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             // Hook into events for the new palette
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 InitColours();
             }
 
@@ -638,7 +638,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             try
             {
-                this.Parent.MouseClick += new MouseEventHandler(this_MouseClick);
+                this.Parent.MouseClick += this_MouseClick;
             }
             catch (Exception ex)
             {
@@ -1314,12 +1314,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 // Unhook from the palette events
                 if (_palette != null)
                 {
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette.PalettePaint -= OnPalettePaint;
                     _palette = null;
                 }
 
                 // Unhook from the static events, otherwise we cannot be garbage collected
-                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
 
                 if (UpDown != null)
                     UpDown.ReleaseHandle();

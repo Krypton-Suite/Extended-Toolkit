@@ -30,9 +30,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal class Arc : IComparer<Arc>, IComparable<Arc>
     {
-        private State _start;
+        private State? _start;
 
-        private State _end;
+        private State? _end;
 
         private int _iWord;
 
@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             }
         }
 
-        internal State Start
+        internal State? Start
         {
             get => _start;
             set
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             }
         }
 
-        internal State End
+        internal State? End
         {
             get => _end;
             set
@@ -171,14 +171,14 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             _matchMode = arc._matchMode;
         }
 
-        internal Arc(Arc arc, State start, State end)
+        internal Arc(Arc arc, State? start, State? end)
             : this(arc)
         {
             _start = start;
             _end = end;
         }
 
-        internal Arc(Arc arc, State start, State end, int wordId)
+        internal Arc(Arc arc, State? start, State? end, int wordId)
             : this(arc, start, end)
         {
             _iWord = wordId;

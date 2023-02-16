@@ -93,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnLoadFromFile.Size = new System.Drawing.Size(90, 25);
             this.kbtnLoadFromFile.TabIndex = 9;
             this.kbtnLoadFromFile.Values.Text = "&Load from File";
-            this.kbtnLoadFromFile.Click += new System.EventHandler(this.kbtnLoadFromFile_Click);
+            this.kbtnLoadFromFile.Click += this.kbtnLoadFromFile_Click;
             // 
             // kbtnExport
             // 
@@ -106,7 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnExport.Size = new System.Drawing.Size(90, 25);
             this.kbtnExport.TabIndex = 8;
             this.kbtnExport.Values.Text = "E&xport to File";
-            this.kbtnExport.Click += new System.EventHandler(this.kbtnExport_Click);
+            this.kbtnExport.Click += this.kbtnExport_Click;
             // 
             // kbtnOk
             // 
@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 6;
             this.kbtnOk.Values.Text = "&Ok";
-            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
+            this.kbtnOk.Click += this.kbtnOk_Click;
             // 
             // kbtnCancel
             // 
@@ -131,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 7;
             this.kbtnCancel.Values.Text = "Ca&ncel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // kryptonPanel2
             // 
@@ -154,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnConvertToRGB.Size = new System.Drawing.Size(113, 25);
             this.kbtnConvertToRGB.TabIndex = 32;
             this.kbtnConvertToRGB.Values.Text = "&Convert to RGB";
-            this.kbtnConvertToRGB.Click += new System.EventHandler(this.kbtnConvertToRGB_Click);
+            this.kbtnConvertToRGB.Click += this.kbtnConvertToRGB_Click;
             // 
             // klbColours
             // 
@@ -177,7 +177,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.removeSelectedColourToolStripMenuItem.Name = "removeSelectedColourToolStripMenuItem";
             this.removeSelectedColourToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.removeSelectedColourToolStripMenuItem.Text = "&Remove Selected Colour";
-            this.removeSelectedColourToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedColourToolStripMenuItem_Click);
+            this.removeSelectedColourToolStripMenuItem.Click += this.removeSelectedColourToolStripMenuItem_Click;
             // 
             // ktxtHexValue
             // 
@@ -187,7 +187,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ktxtHexValue.Size = new System.Drawing.Size(154, 23);
             this.ktxtHexValue.TabIndex = 31;
             this.ktxtHexValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ktxtHexValue.TextChanged += new System.EventHandler(this.ktxtHexValue_TextChanged);
+            this.ktxtHexValue.TextChanged += this.ktxtHexValue_TextChanged;
             // 
             // kryptonLabel5
             // 
@@ -222,7 +222,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hexadecimal to RGB Converter";
-            this.Load += new System.EventHandler(this.HexadecimalToRGBConverter_Load);
+            this.Load += this.HexadecimalToRGBConverter_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

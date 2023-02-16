@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
     {
         internal CfgRule _cfgRule;
 
-        internal State _firstState;
+        internal State? _firstState;
 
         internal bool _fHasExitPath;
 
@@ -210,7 +210,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private static void TrimEndEpsilons(Arc end, Backend backend)
         {
-            State start = end.Start;
+            State? start = end.Start;
             if (start != null && end.IsEpsilonTransition && start.OutArcs.CountIsOne && Graph.MoveSemanticTagLeft(end))
             {
                 end.Start = null;

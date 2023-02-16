@@ -108,8 +108,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Downloading Update";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SharpUpdateDownloadForm_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SharpUpdateDownloadForm_FormClosed);
+            this.FormClosing += this.SharpUpdateDownloadForm_FormClosing;
+            this.FormClosed += this.SharpUpdateDownloadForm_FormClosed;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -162,13 +162,13 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 
             // Set up WebClient to download file
             _webClient = new WebClient();
-            _webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webClient_DownloadProgressChanged);
-            _webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(webClient_DownloadFileCompleted);
+            _webClient.DownloadProgressChanged += webClient_DownloadProgressChanged;
+            _webClient.DownloadFileCompleted += webClient_DownloadFileCompleted;
 
             // Set up backgroundworker to hash file
             _bgWorker = new BackgroundWorker();
-            _bgWorker.DoWork += new DoWorkEventHandler(bgWorker_DoWork);
-            _bgWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgWorker_RunWorkerCompleted);
+            _bgWorker.DoWork += bgWorker_DoWork;
+            _bgWorker.RunWorkerCompleted += bgWorker_RunWorkerCompleted;
 
             // Download file
             try { _webClient.DownloadFileAsync(location, this.TempFilePath); }

@@ -85,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             selectionService = GetService(typeof(ISelectionService)) as ISelectionService;
             if (selectionService != null)
             {
-                selectionService.SelectionChanged += new System.EventHandler(selectionService_SelectionChanged);
+                selectionService.SelectionChanged += selectionService_SelectionChanged;
             }
 
             componentChangeService = GetService(typeof(IComponentChangeService))
@@ -144,7 +144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 DesignerVerb[] verbs = new DesignerVerb[] {
                new("Add band..",
-                  new EventHandler(AddBandVerbClicked)) };
+                  AddBandVerbClicked) };
                 return new DesignerVerbCollection(verbs);
             }
         }
@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
             if (selectionService != null)
             {
-                selectionService.SelectionChanged -= new System.EventHandler(selectionService_SelectionChanged);
+                selectionService.SelectionChanged -= selectionService_SelectionChanged;
             }
         }
 

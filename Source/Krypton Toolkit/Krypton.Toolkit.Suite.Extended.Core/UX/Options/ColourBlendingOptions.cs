@@ -193,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnResetValues.Size = new System.Drawing.Size(90, 25);
             this.kbtnResetValues.TabIndex = 1;
             this.kbtnResetValues.Values.Text = "Re&set Values";
-            this.kbtnResetValues.Click += new System.EventHandler(this.kbtnResetValues_Click);
+            this.kbtnResetValues.Click += this.kbtnResetValues_Click;
             // 
             // kbtnOk
             // 
@@ -739,7 +739,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Colour Blending Options";
-            this.Load += new System.EventHandler(this.ColourBlendingOptions_Load);
+            this.Load += this.ColourBlendingOptions_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

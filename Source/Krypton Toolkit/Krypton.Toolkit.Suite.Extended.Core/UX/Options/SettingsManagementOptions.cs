@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnResetPaletteTypefaceSettings.Size = new System.Drawing.Size(226, 25);
             this.kbtnResetPaletteTypefaceSettings.TabIndex = 71;
             this.kbtnResetPaletteTypefaceSettings.Values.Text = "Reset &Palette Typeface Settings";
-            this.kbtnResetPaletteTypefaceSettings.Click += new System.EventHandler(this.kbtnResetPaletteTypefaceSettings_Click);
+            this.kbtnResetPaletteTypefaceSettings.Click += this.kbtnResetPaletteTypefaceSettings_Click;
             // 
             // kbtnResetGlobalStringSettings
             // 
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnResetGlobalStringSettings.Size = new System.Drawing.Size(226, 25);
             this.kbtnResetGlobalStringSettings.TabIndex = 70;
             this.kbtnResetGlobalStringSettings.Values.Text = "Reset &Global String Settings";
-            this.kbtnResetGlobalStringSettings.Click += new System.EventHandler(this.kbtnResetGlobalStringSettings_Click);
+            this.kbtnResetGlobalStringSettings.Click += this.kbtnResetGlobalStringSettings_Click;
             // 
             // kbtnResetGlobalBooleanSettings
             // 
@@ -120,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnResetGlobalBooleanSettings.Size = new System.Drawing.Size(226, 25);
             this.kbtnResetGlobalBooleanSettings.TabIndex = 69;
             this.kbtnResetGlobalBooleanSettings.Values.Text = "Reset Global B&oolean Settings";
-            this.kbtnResetGlobalBooleanSettings.Click += new System.EventHandler(this.kbtnResetGlobalBooleanSettings_Click);
+            this.kbtnResetGlobalBooleanSettings.Click += this.kbtnResetGlobalBooleanSettings_Click;
             // 
             // kbtnResetColourStringSettings
             // 
@@ -130,7 +130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnResetColourStringSettings.Size = new System.Drawing.Size(226, 25);
             this.kbtnResetColourStringSettings.TabIndex = 68;
             this.kbtnResetColourStringSettings.Values.Text = "Reset Colour &String Settings";
-            this.kbtnResetColourStringSettings.Click += new System.EventHandler(this.kbtnResetColourStringSettings_Click);
+            this.kbtnResetColourStringSettings.Click += this.kbtnResetColourStringSettings_Click;
             // 
             // kbtnResetColourSettings
             // 
@@ -140,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnResetColourSettings.Size = new System.Drawing.Size(226, 25);
             this.kbtnResetColourSettings.TabIndex = 67;
             this.kbtnResetColourSettings.Values.Text = "Reset &Colour Settings";
-            this.kbtnResetColourSettings.Click += new System.EventHandler(this.kbtnResetColourSettings_Click);
+            this.kbtnResetColourSettings.Click += this.kbtnResetColourSettings_Click;
             // 
             // kbtnResetColourIntegerSettings
             // 
@@ -150,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnResetColourIntegerSettings.Size = new System.Drawing.Size(226, 25);
             this.kbtnResetColourIntegerSettings.TabIndex = 66;
             this.kbtnResetColourIntegerSettings.Values.Text = "Reset Colour &Integer Settings";
-            this.kbtnResetColourIntegerSettings.Click += new System.EventHandler(this.kbtnResetColourIntegerSettings_Click);
+            this.kbtnResetColourIntegerSettings.Click += this.kbtnResetColourIntegerSettings_Click;
             // 
             // kbtnResetColourBlendingSettings
             // 
@@ -160,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnResetColourBlendingSettings.Size = new System.Drawing.Size(226, 25);
             this.kbtnResetColourBlendingSettings.TabIndex = 65;
             this.kbtnResetColourBlendingSettings.Values.Text = "Reset Colour &Blending Settings";
-            this.kbtnResetColourBlendingSettings.Click += new System.EventHandler(this.kbtnResetColourBlendingSettings_Click);
+            this.kbtnResetColourBlendingSettings.Click += this.kbtnResetColourBlendingSettings_Click;
             // 
             // kbtnNukeAllSettings
             // 
@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnNukeAllSettings.Size = new System.Drawing.Size(226, 25);
             this.kbtnNukeAllSettings.TabIndex = 64;
             this.kbtnNukeAllSettings.Values.Text = "&Nuke All Settings";
-            this.kbtnNukeAllSettings.Click += new System.EventHandler(this.kbtnNukeAllSettings_Click);
+            this.kbtnNukeAllSettings.Click += this.kbtnNukeAllSettings_Click;
             // 
             // kryptonPanel2
             // 
@@ -204,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 4;
             this.kbtnCancel.Values.Text = "Ca&ncel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // kchkAskForConfirmation
             // 
@@ -227,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reset Settings";
-            this.Load += new System.EventHandler(this.SettingsManagementOptions_Load);
+            this.Load += this.SettingsManagementOptions_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();

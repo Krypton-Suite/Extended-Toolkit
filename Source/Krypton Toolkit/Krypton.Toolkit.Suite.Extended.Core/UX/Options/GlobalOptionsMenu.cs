@@ -1015,7 +1015,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Global Options Menu";
             this.TextExtra = "(For Development Use Only)";
-            this.Load += new System.EventHandler(this.GlobalOptionsMenu_Load);
+            this.Load += this.GlobalOptionsMenu_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

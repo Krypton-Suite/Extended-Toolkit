@@ -435,7 +435,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 _fadeAnimationTimer.Enabled = true;
 
-                _fadeAnimationTimer.Tick += new EventHandler(FadeAnimationTimer_Tick);
+                _fadeAnimationTimer.Tick += FadeAnimationTimer_Tick;
             }
         }
         #endregion

@@ -25,6 +25,8 @@
  */
 #endregion
 
+#pragma warning disable CS8600
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 {
     /// <summary>A Visual Studio toolbox like control for your application. Adapted from: https://www.codeproject.com/Articles/8658/Another-ToolBox-Control.</summary>
@@ -271,7 +273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         private PaletteContentInheritRedirect _paletteContent;
 
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
 
         private PaletteRedirect _paletteRedirect;
         #endregion
@@ -332,8 +334,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             //_textBox.Multiline    = true;
             _textBox.WordWrap = false;
             _textBox.ScrollBars = ScrollBars.None;//RichTextBox
-            _textBox.KeyDown += new KeyEventHandler(OnTextBox_KeyDown);
-            _textBox.LostFocus += new EventHandler(OnTextBox_LostFocus);
+            _textBox.KeyDown += OnTextBox_KeyDown;
+            _textBox.LostFocus += OnTextBox_LostFocus;
 
             //Prepare richTextbox's context menu.
 
@@ -381,9 +383,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             //Create redirection object to the base palette
             if (((_palette != null)))
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
             }
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new PaletteRedirect(_palette);
 
@@ -1093,7 +1095,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     if (this.Created)
                     {
                         _timer = new System.Windows.Forms.Timer();
-                        _timer.Tick += new EventHandler(OnTimer_LayoutElapsed);
+                        _timer.Tick += OnTimer_LayoutElapsed;
                         _timer.Interval = _layoutDelay;
                         _timer.Enabled = true;
                         _timerIsForLayout = true;
@@ -1181,7 +1183,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
         }
 
-        internal void RenameItem(ToolBoxItem item)
+        internal void RenameItem(ToolBoxItem? item)
         {
             Point ptLocation = Point.Empty;
             bool bOK = true;
@@ -1888,11 +1890,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             _timerIsForLayout = false;
             if (ToolBoxScrollDirection.Up == dir)
             {
-                _timer.Tick += new EventHandler(OnTimer_UpScrollElapsed);
+                _timer.Tick += OnTimer_UpScrollElapsed;
             }
             else
             {
-                _timer.Tick += new EventHandler(OnTimer_DnScrollElapsed);
+                _timer.Tick += OnTimer_DnScrollElapsed;
             }
             _timer.Enabled = true;
         }
@@ -2633,20 +2635,22 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
             catch
             {
+                throw;
             }
         }
 
         private void HandleToolBoxItemDrop(DragEventArgs e)
         {
-            ToolBoxItem dragItem = null;
+            ToolBoxItem? dragItem = null;
 
             try
             {
                 dragItem = (ToolBoxItem)e.Data.GetData(typeof(ToolBoxItem));
-                _selectedTab.SwapItems(dragItem, (ToolBoxItem)_dropItem);
+                _selectedTab.SwapItems(dragItem, _dropItem);
             }
             catch
             {
+                throw;
             }
         }
 
@@ -4052,13 +4056,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         {
             if (((_palette != null)))
             {
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
             }
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
             if (((_palette != null)))
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 InitColours();
             }
             base.Invalidate();

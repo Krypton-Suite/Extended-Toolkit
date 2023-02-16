@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnPreview.Size = new System.Drawing.Size(90, 25);
             this.kbtnPreview.TabIndex = 2;
             this.kbtnPreview.Values.Text = "Pr&eview";
-            this.kbtnPreview.Click += new System.EventHandler(this.kbtnPreview_Click);
+            this.kbtnPreview.Click += this.kbtnPreview_Click;
             // 
             // kbtnSpeak
             // 
@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnSpeak.Size = new System.Drawing.Size(90, 25);
             this.kbtnSpeak.TabIndex = 2;
             this.kbtnSpeak.Values.Text = "Spea&k";
-            this.kbtnSpeak.Click += new System.EventHandler(this.kbtnSpeak_Click);
+            this.kbtnSpeak.Click += this.kbtnSpeak_Click;
             // 
             // kbtnCancel
             // 
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 1;
             this.kbtnCancel.Values.Text = "C&ancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -172,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.krtbInput.Size = new System.Drawing.Size(405, 96);
             this.krtbInput.TabIndex = 0;
             this.krtbInput.Text = "";
-            this.krtbInput.TextChanged += new System.EventHandler(this.krtbInput_TextChanged);
+            this.krtbInput.TextChanged += this.krtbInput_TextChanged;
             // 
             // kgbAdjustments
             // 
@@ -212,7 +212,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ktrkVolume.Size = new System.Drawing.Size(405, 33);
             this.ktrkVolume.TabIndex = 5;
             this.ktrkVolume.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.ktrkVolume.ValueChanged += new System.EventHandler(this.ktrkVolume_ValueChanged);
+            this.ktrkVolume.ValueChanged += this.ktrkVolume_ValueChanged;
             // 
             // kryptonLabel2
             // 
@@ -243,7 +243,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ktrkRate.Size = new System.Drawing.Size(405, 33);
             this.ktrkRate.TabIndex = 1;
             this.ktrkRate.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.ktrkRate.ValueChanged += new System.EventHandler(this.ktrkRate_ValueChanged);
+            this.ktrkRate.ValueChanged += this.ktrkRate_ValueChanged;
             // 
             // kryptonLabel1
             // 
@@ -279,8 +279,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kcmbInstalledVoices.Size = new System.Drawing.Size(405, 21);
             this.kcmbInstalledVoices.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbInstalledVoices.TabIndex = 0;
-            this.kcmbInstalledVoices.SelectedIndexChanged += new System.EventHandler(this.kcmbInstalledVoices_SelectedIndexChanged);
-            this.kcmbInstalledVoices.TextChanged += new System.EventHandler(this.kcmbInstalledVoices_TextChanged);
+            this.kcmbInstalledVoices.SelectedIndexChanged += this.kcmbInstalledVoices_SelectedIndexChanged;
+            this.kcmbInstalledVoices.TextChanged += this.kcmbInstalledVoices_TextChanged;
             // 
             // KryptonTextToSpeechDialog
             // 
@@ -294,7 +294,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Text to Speech";
-            this.Load += new System.EventHandler(this.KryptonTextToSpeechDialog_Load);
+            this.Load += this.KryptonTextToSpeechDialog_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

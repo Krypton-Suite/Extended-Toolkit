@@ -378,10 +378,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             InitializeComponent();
 
 
-            Scroller.ScrollLeft += new EventHandler(Scroller_ScrollLeft);
-            Scroller.ScrollRight += new EventHandler(Scroller_ScrollRight);
-            Scroller.TabClose += new EventHandler(Scroller_TabClose);
-            Scroller.ContextualMenu += new EventHandler(Scroller_ContextMenuButton);
+            Scroller.ScrollLeft += Scroller_ScrollLeft;
+            Scroller.ScrollRight += Scroller_ScrollRight;
+            Scroller.TabClose += Scroller_TabClose;
+            Scroller.ContextualMenu += Scroller_ContextMenuButton;
 
             InitColors();
         }
@@ -543,7 +543,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             try
             {
-                Parent.MouseClick += new MouseEventHandler(this_MouseClick);
+                Parent.MouseClick += this_MouseClick;
             }
             catch (Exception ex)
             {

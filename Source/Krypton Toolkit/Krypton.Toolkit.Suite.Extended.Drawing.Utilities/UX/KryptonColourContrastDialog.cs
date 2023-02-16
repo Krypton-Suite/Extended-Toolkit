@@ -201,7 +201,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.useBaseColourToolStripMenuItem.Name = "useBaseColourToolStripMenuItem";
             this.useBaseColourToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.useBaseColourToolStripMenuItem.Text = "Use &Base colour";
-            this.useBaseColourToolStripMenuItem.Click += new System.EventHandler(this.useBaseColourToolStripMenuItem_Click);
+            this.useBaseColourToolStripMenuItem.Click += this.useBaseColourToolStripMenuItem_Click;
             // 
             // toolStripMenuItem7
             // 
@@ -213,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.useContrastColourToolStripMenuItem.Name = "useContrastColourToolStripMenuItem";
             this.useContrastColourToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.useContrastColourToolStripMenuItem.Text = "Use C&ontrast Colour";
-            this.useContrastColourToolStripMenuItem.Click += new System.EventHandler(this.useContrastColourToolStripMenuItem_Click);
+            this.useContrastColourToolStripMenuItem.Click += this.useContrastColourToolStripMenuItem_Click;
             // 
             // kbtnOk
             // 
@@ -224,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 2;
             this.kbtnOk.Values.Text = "&OK";
-            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
+            this.kbtnOk.Click += this.kbtnOk_Click;
             // 
             // kbtnCancel
             // 
@@ -235,7 +235,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 1;
             this.kbtnCancel.Values.Text = "&Cancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -287,7 +287,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.cbContrastColour.Size = new System.Drawing.Size(432, 380);
             this.cbContrastColour.TabIndex = 7;
             this.cbContrastColour.TabStop = false;
-            this.cbContrastColour.BackColorChanged += new System.EventHandler(this.cbContrastColour_BackColorChanged);
+            this.cbContrastColour.BackColorChanged += this.cbContrastColour_BackColorChanged;
             // 
             // cmsContrast
             // 
@@ -304,7 +304,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.makeThisTheBaseColourToolStripMenuItem.Name = "makeThisTheBaseColourToolStripMenuItem";
             this.makeThisTheBaseColourToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.makeThisTheBaseColourToolStripMenuItem.Text = "Make this the &Base Colour";
-            this.makeThisTheBaseColourToolStripMenuItem.Click += new System.EventHandler(this.makeThisTheBaseColourToolStripMenuItem_Click);
+            this.makeThisTheBaseColourToolStripMenuItem.Click += this.makeThisTheBaseColourToolStripMenuItem_Click;
             // 
             // toolStripMenuItem4
             // 
@@ -328,7 +328,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.aRGBToolStripMenuItem1.Name = "aRGBToolStripMenuItem1";
             this.aRGBToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.aRGBToolStripMenuItem1.Text = "&ARGB";
-            this.aRGBToolStripMenuItem1.Click += new System.EventHandler(this.aRGBToolStripMenuItem1_Click);
+            this.aRGBToolStripMenuItem1.Click += this.aRGBToolStripMenuItem1_Click;
             // 
             // toolStripMenuItem5
             // 
@@ -340,7 +340,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.rGBToolStripMenuItem1.Name = "rGBToolStripMenuItem1";
             this.rGBToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.rGBToolStripMenuItem1.Text = "R&GB";
-            this.rGBToolStripMenuItem1.Click += new System.EventHandler(this.rGBToolStripMenuItem1_Click);
+            this.rGBToolStripMenuItem1.Click += this.rGBToolStripMenuItem1_Click;
             // 
             // toolStripMenuItem6
             // 
@@ -352,7 +352,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.hexadecimalToolStripMenuItem1.Name = "hexadecimalToolStripMenuItem1";
             this.hexadecimalToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.hexadecimalToolStripMenuItem1.Text = "He&xadecimal";
-            this.hexadecimalToolStripMenuItem1.Click += new System.EventHandler(this.hexadecimalToolStripMenuItem1_Click);
+            this.hexadecimalToolStripMenuItem1.Click += this.hexadecimalToolStripMenuItem1_Click;
             // 
             // cbBaseColour
             // 
@@ -364,7 +364,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.cbBaseColour.Size = new System.Drawing.Size(432, 380);
             this.cbBaseColour.TabIndex = 6;
             this.cbBaseColour.TabStop = false;
-            this.cbBaseColour.BackColorChanged += new System.EventHandler(this.cbBaseColour_BackColorChanged);
+            this.cbBaseColour.BackColorChanged += this.cbBaseColour_BackColorChanged;
             // 
             // cmsBase
             // 
@@ -381,7 +381,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.makeThisTheContrastColourToolStripMenuItem.Name = "makeThisTheContrastColourToolStripMenuItem";
             this.makeThisTheContrastColourToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.makeThisTheContrastColourToolStripMenuItem.Text = "Make this the &Contrast Colour";
-            this.makeThisTheContrastColourToolStripMenuItem.Click += new System.EventHandler(this.makeThisTheContrastColourToolStripMenuItem_Click);
+            this.makeThisTheContrastColourToolStripMenuItem.Click += this.makeThisTheContrastColourToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
@@ -405,7 +405,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.aRGBToolStripMenuItem.Name = "aRGBToolStripMenuItem";
             this.aRGBToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.aRGBToolStripMenuItem.Text = "&ARGB";
-            this.aRGBToolStripMenuItem.Click += new System.EventHandler(this.aRGBToolStripMenuItem_Click);
+            this.aRGBToolStripMenuItem.Click += this.aRGBToolStripMenuItem_Click;
             // 
             // toolStripMenuItem2
             // 
@@ -417,7 +417,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.rGBToolStripMenuItem.Name = "rGBToolStripMenuItem";
             this.rGBToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.rGBToolStripMenuItem.Text = "R&GB";
-            this.rGBToolStripMenuItem.Click += new System.EventHandler(this.rGBToolStripMenuItem_Click);
+            this.rGBToolStripMenuItem.Click += this.rGBToolStripMenuItem_Click;
             // 
             // toolStripMenuItem3
             // 
@@ -429,7 +429,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.hexadecimalToolStripMenuItem.Name = "hexadecimalToolStripMenuItem";
             this.hexadecimalToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.hexadecimalToolStripMenuItem.Text = "He&xadecimal";
-            this.hexadecimalToolStripMenuItem.Click += new System.EventHandler(this.hexadecimalToolStripMenuItem_Click);
+            this.hexadecimalToolStripMenuItem.Click += this.hexadecimalToolStripMenuItem_Click;
             // 
             // kwlContrastColourHeader
             // 
@@ -575,7 +575,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kavnumBase.Size = new System.Drawing.Size(210, 22);
             this.kavnumBase.TabIndex = 5;
             this.kavnumBase.Typeface = null;
-            this.kavnumBase.ValueChanged += new System.EventHandler(this.kavnumBase_ValueChanged);
+            this.kavnumBase.ValueChanged += this.kavnumBase_ValueChanged;
             // 
             // krvnumBase
             // 
@@ -597,7 +597,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.krvnumBase.ToolTipValues.Heading = "Red Value";
             this.krvnumBase.Typeface = null;
             this.krvnumBase.UseAccessibleUI = false;
-            this.krvnumBase.ValueChanged += new System.EventHandler(this.krvnumBase_ValueChanged);
+            this.krvnumBase.ValueChanged += this.krvnumBase_ValueChanged;
             // 
             // kgvnumBase
             // 
@@ -619,7 +619,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kgvnumBase.ToolTipValues.Heading = "Green Value";
             this.kgvnumBase.Typeface = null;
             this.kgvnumBase.UseAccessibleUI = false;
-            this.kgvnumBase.ValueChanged += new System.EventHandler(this.kgvnumBase_ValueChanged);
+            this.kgvnumBase.ValueChanged += this.kgvnumBase_ValueChanged;
             // 
             // kbvnumBase
             // 
@@ -641,7 +641,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbvnumBase.ToolTipValues.Heading = "Blue Value";
             this.kbvnumBase.Typeface = null;
             this.kbvnumBase.UseAccessibleUi = false;
-            this.kbvnumBase.ValueChanged += new System.EventHandler(this.kbvnumBase_ValueChanged);
+            this.kbvnumBase.ValueChanged += this.kbvnumBase_ValueChanged;
             // 
             // kryptonLabel1
             // 
@@ -669,7 +669,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.chtxtBase.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.chtxtBase.TabIndex = 10;
             this.chtxtBase.Text = "000000";
-            this.chtxtBase.TextChanged += new System.EventHandler(this.chtxtBase_TextChanged);
+            this.chtxtBase.TextChanged += this.chtxtBase_TextChanged;
             // 
             // tableLayoutPanel3
             // 
@@ -791,7 +791,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kavnumContrast.Size = new System.Drawing.Size(210, 22);
             this.kavnumContrast.TabIndex = 4;
             this.kavnumContrast.Typeface = null;
-            this.kavnumContrast.ValueChanged += new System.EventHandler(this.kavnumContrast_ValueChanged);
+            this.kavnumContrast.ValueChanged += this.kavnumContrast_ValueChanged;
             // 
             // krvnumContrast
             // 
@@ -813,7 +813,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.krvnumContrast.ToolTipValues.Heading = "Red Value";
             this.krvnumContrast.Typeface = null;
             this.krvnumContrast.UseAccessibleUI = false;
-            this.krvnumContrast.ValueChanged += new System.EventHandler(this.krvnumContrast_ValueChanged);
+            this.krvnumContrast.ValueChanged += this.krvnumContrast_ValueChanged;
             // 
             // kgvnumContrast
             // 
@@ -835,7 +835,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kgvnumContrast.ToolTipValues.Heading = "Green Value";
             this.kgvnumContrast.Typeface = null;
             this.kgvnumContrast.UseAccessibleUI = false;
-            this.kgvnumContrast.ValueChanged += new System.EventHandler(this.kgvnumContrast_ValueChanged);
+            this.kgvnumContrast.ValueChanged += this.kgvnumContrast_ValueChanged;
             // 
             // kbvnumContrast
             // 
@@ -857,7 +857,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbvnumContrast.ToolTipValues.Heading = "Blue Value";
             this.kbvnumContrast.Typeface = null;
             this.kbvnumContrast.UseAccessibleUi = false;
-            this.kbvnumContrast.ValueChanged += new System.EventHandler(this.kbvnumContrast_ValueChanged);
+            this.kbvnumContrast.ValueChanged += this.kbvnumContrast_ValueChanged;
             // 
             // kryptonLabel2
             // 

@@ -137,10 +137,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kcmbHex.StateCommon.Item.Content.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcmbHex.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcmbHex.TabIndex = 29;
-            this.kcmbHex.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.kcmbHex_DrawItem);
-            this.kcmbHex.DropDown += new System.EventHandler(this.kcmbHex_DropDown);
-            this.kcmbHex.SelectedIndexChanged += new System.EventHandler(this.kcmbHex_SelectedIndexChanged);
-            this.kcmbHex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.kcmbHex_KeyDown);
+            this.kcmbHex.DrawItem += this.kcmbHex_DrawItem;
+            this.kcmbHex.DropDown += this.kcmbHex_DropDown;
+            this.kcmbHex.SelectedIndexChanged += this.kcmbHex_SelectedIndexChanged;
+            this.kcmbHex.KeyDown += this.kcmbHex_KeyDown;
             // 
             // knudHue
             // 
@@ -579,7 +579,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.Controls.Add(this.panel1);
             this.Name = "ColourEditorUserControl";
             this.Size = new System.Drawing.Size(261, 303);
-            this.Load += new System.EventHandler(this.ColourEditorUserControl_Load);
+            this.Load += this.ColourEditorUserControl_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kcmbHex)).EndInit();
             this.pnlRGB.ResumeLayout(false);
             this.pnlRGB.PerformLayout();

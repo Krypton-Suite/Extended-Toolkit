@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnRestoreToDefaults.Size = new System.Drawing.Size(142, 25);
             this.kbtnRestoreToDefaults.TabIndex = 3;
             this.kbtnRestoreToDefaults.Values.Text = "&Restore to Defaults";
-            this.kbtnRestoreToDefaults.Click += new System.EventHandler(this.kbtnRestoreToDefaults_Click);
+            this.kbtnRestoreToDefaults.Click += this.kbtnRestoreToDefaults_Click;
             // 
             // kbtnCancel
             // 
@@ -135,7 +135,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 2;
             this.kbtnCancel.Values.Text = "&Cancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // kbtnOk
             // 
@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 1;
             this.kbtnOk.Values.Text = "&Ok";
-            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
+            this.kbtnOk.Click += this.kbtnOk_Click;
             // 
             // kbtnApply
             // 
@@ -158,7 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnApply.Size = new System.Drawing.Size(90, 25);
             this.kbtnApply.TabIndex = 0;
             this.kbtnApply.Values.Text = "A&pply";
-            this.kbtnApply.Click += new System.EventHandler(this.kbtnApply_Click);
+            this.kbtnApply.Click += this.kbtnApply_Click;
             // 
             // kpnlContent
             // 
@@ -183,7 +183,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ktcmbTheme.Size = new System.Drawing.Size(198, 21);
             this.ktcmbTheme.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.ktcmbTheme.TabIndex = 6;
-            this.ktcmbTheme.TextChanged += new System.EventHandler(this.ktcmbTheme_TextChanged);
+            this.ktcmbTheme.TextChanged += this.ktcmbTheme_TextChanged;
             // 
             // kbtnLoadTheme
             // 
@@ -194,7 +194,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnLoadTheme.Size = new System.Drawing.Size(90, 25);
             this.kbtnLoadTheme.TabIndex = 5;
             this.kbtnLoadTheme.Values.Text = "&Load";
-            this.kbtnLoadTheme.Click += new System.EventHandler(this.kbtnLoadTheme_Click);
+            this.kbtnLoadTheme.Click += this.kbtnLoadTheme_Click;
             // 
             // ktxtCustomPath
             // 
@@ -206,20 +206,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ktxtCustomPath.Name = "ktxtCustomPath";
             this.ktxtCustomPath.Size = new System.Drawing.Size(490, 26);
             this.ktxtCustomPath.TabIndex = 3;
-            this.ktxtCustomPath.TextChanged += new System.EventHandler(this.ktxtCustomPath_TextChanged);
+            this.ktxtCustomPath.TextChanged += this.ktxtCustomPath_TextChanged;
             // 
             // bsaReset
             // 
             this.bsaReset.Image = ((System.Drawing.Image)(resources.GetObject("bsaReset.Image")));
             this.bsaReset.UniqueName = "1f0247d059a64ff792fa7879355b8bf1";
-            this.bsaReset.Click += new System.EventHandler(this.bsaReset_Click);
+            this.bsaReset.Click += this.bsaReset_Click;
             // 
             // bsaBrowse
             // 
             this.bsaBrowse.Enabled = Krypton.Toolkit.ButtonEnabled.False;
             this.bsaBrowse.Text = "...";
             this.bsaBrowse.UniqueName = "71736a3a0e124395bcca501caca11870";
-            this.bsaBrowse.Click += new System.EventHandler(this.bsaBrowse_Click);
+            this.bsaBrowse.Click += this.bsaBrowse_Click;
             // 
             // klblCustomTheme
             // 
@@ -253,7 +253,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.Name = "ThemeOptions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Palette Theme Options";
-            this.Load += new System.EventHandler(this.ThemeOptions_Load);
+            this.Load += this.ThemeOptions_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
             this.kpnlButtons.ResumeLayout(false);
             this.kpnlButtons.PerformLayout();

@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.tsbSavePalette.Name = "tsbSavePalette";
             this.tsbSavePalette.Size = new System.Drawing.Size(23, 22);
             this.tsbSavePalette.Text = "Save Palette";
-            this.tsbSavePalette.Click += new System.EventHandler(this.tsbSavePalette_Click);
+            this.tsbSavePalette.Click += this.tsbSavePalette_Click;
             // 
             // tsbLoadPalette
             // 
@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.tsbLoadPalette.Name = "tsbLoadPalette";
             this.tsbLoadPalette.Size = new System.Drawing.Size(23, 22);
             this.tsbLoadPalette.Text = "Load Palette";
-            this.tsbLoadPalette.Click += new System.EventHandler(this.tsbLoadPalette_Click);
+            this.tsbLoadPalette.Click += this.tsbLoadPalette_Click;
             // 
             // ColourGridDialog
             // 
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.MinimizeBox = false;
             this.Name = "ColourGridDialog";
             this.Text = "Colour Grid";
-            this.Load += new System.EventHandler(this.ColourGridDialog_Load);
+            this.Load += this.ColourGridDialog_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

@@ -125,9 +125,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             _palette = KryptonManager.CurrentGlobalPalette;
 
             if (_palette != null)
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
 
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             _paletteRedirect = new PaletteRedirect(_palette);
             _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
@@ -219,7 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
 
             if (_palette != null)
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
 
 
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -228,7 +228,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 InitColours();
             }
 
@@ -256,12 +256,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
                 if (_palette != null)
                 {
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette.PalettePaint -= OnPalettePaint;
                     _palette = null;
                 }
 
 
-                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
             }
 
             base.Dispose(disposing);

@@ -602,7 +602,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             _textFilterTextChangedTimer = new Timer();
             _textFilterTextChangedTimer.Interval = _textFilterTextChangedDelayMs;
-            _textFilterTextChangedTimer.Tick += new EventHandler(CheckTextFilterTextChangedTimer_Tick);
+            _textFilterTextChangedTimer.Tick += CheckTextFilterTextChangedTimer_Tick;
 
             RenderMode = ToolStripRenderMode.ManagerRenderMode;
         }
@@ -2110,7 +2110,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 if (_textFilterTextChangedTimer == null)
                 {
                     _textFilterTextChangedTimer = new Timer();
-                    _textFilterTextChangedTimer.Tick += new EventHandler(CheckTextFilterTextChangedTimer_Tick);
+                    _textFilterTextChangedTimer.Tick += CheckTextFilterTextChangedTimer_Tick;
                 }
                 _textFilterTextChangedTimer.Stop();
                 _textFilterTextChangedTimer.Interval = _textFilterTextChangedDelayMs;

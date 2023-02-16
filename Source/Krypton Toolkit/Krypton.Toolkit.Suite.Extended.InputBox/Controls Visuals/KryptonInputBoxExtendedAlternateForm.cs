@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kbtnButtonOne.Size = new System.Drawing.Size(134, 25);
             this.kbtnButtonOne.TabIndex = 1;
             this.kbtnButtonOne.Values.Text = "{0}";
-            this.kbtnButtonOne.Click += new System.EventHandler(this.kbtnButtonOne_Click);
+            this.kbtnButtonOne.Click += this.kbtnButtonOne_Click;
             // 
             // kbtnButtonTwo
             // 
@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kbtnButtonTwo.Size = new System.Drawing.Size(134, 25);
             this.kbtnButtonTwo.TabIndex = 2;
             this.kbtnButtonTwo.Values.Text = "{1}";
-            this.kbtnButtonTwo.Click += new System.EventHandler(this.kbtnButtonTwo_Click);
+            this.kbtnButtonTwo.Click += this.kbtnButtonTwo_Click;
             // 
             // kbtnButtonThree
             // 
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kbtnButtonThree.Size = new System.Drawing.Size(134, 25);
             this.kbtnButtonThree.TabIndex = 3;
             this.kbtnButtonThree.Values.Text = "{2}";
-            this.kbtnButtonThree.Click += new System.EventHandler(this.kbtnButtonThree_Click);
+            this.kbtnButtonThree.Click += this.kbtnButtonThree_Click;
             // 
             // kbtnButtonFour
             // 
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kbtnButtonFour.Size = new System.Drawing.Size(134, 25);
             this.kbtnButtonFour.TabIndex = 5;
             this.kbtnButtonFour.Values.Text = "{3}";
-            this.kbtnButtonFour.Click += new System.EventHandler(this.kbtnButtonFour_Click);
+            this.kbtnButtonFour.Click += this.kbtnButtonFour_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -174,7 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.ktxtInput.Name = "ktxtInput";
             this.ktxtInput.Size = new System.Drawing.Size(425, 23);
             this.ktxtInput.TabIndex = 4;
-            this.ktxtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ktxtInput_KeyDown);
+            this.ktxtInput.KeyDown += this.ktxtInput_KeyDown;
             // 
             // kmtxtInput
             // 
@@ -182,7 +182,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kmtxtInput.Name = "kmtxtInput";
             this.kmtxtInput.Size = new System.Drawing.Size(425, 23);
             this.kmtxtInput.TabIndex = 3;
-            this.kmtxtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.kmtxtInput_KeyDown);
+            this.kmtxtInput.KeyDown += this.kmtxtInput_KeyDown;
             // 
             // kcmbInput
             // 
@@ -194,7 +194,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kcmbInput.Size = new System.Drawing.Size(425, 21);
             this.kcmbInput.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbInput.TabIndex = 2;
-            this.kcmbInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.kcmbInput_KeyDown);
+            this.kcmbInput.KeyDown += this.kcmbInput_KeyDown;
             // 
             // kwlMessage
             // 
@@ -228,7 +228,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.Name = "KryptonInputBoxExtended";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KryptonInputBoxExtendedAlternateForm_FormClosing);
+            this.FormClosing += this.KryptonInputBoxExtendedAlternateForm_FormClosing;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

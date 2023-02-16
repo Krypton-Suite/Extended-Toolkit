@@ -93,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.kbtnSkip.TabIndex = 16;
             this.kbtnSkip.Values.Image = ((System.Drawing.Image)(resources.GetObject("kbtnSkip.Values.Image")));
             this.kbtnSkip.Values.Text = "Skip this version";
-            this.kbtnSkip.Click += new System.EventHandler(this.kbtnSkip_Click);
+            this.kbtnSkip.Click += this.kbtnSkip_Click;
             // 
             // kbtnUpdate
             // 
@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.kbtnUpdate.TabIndex = 17;
             this.kbtnUpdate.Values.Image = ((System.Drawing.Image)(resources.GetObject("kbtnUpdate.Values.Image")));
             this.kbtnUpdate.Values.Text = "Update";
-            this.kbtnUpdate.Click += new System.EventHandler(this.kbtnUpdate_Click);
+            this.kbtnUpdate.Click += this.kbtnUpdate_Click;
             // 
             // kbtnRemindLater
             // 
@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.kbtnRemindLater.TabIndex = 18;
             this.kbtnRemindLater.Values.Image = ((System.Drawing.Image)(resources.GetObject("kbtnRemindLater.Values.Image")));
             this.kbtnRemindLater.Values.Text = "Remind &me later";
-            this.kbtnRemindLater.Click += new System.EventHandler(this.kbtnRemindLater_Click);
+            this.kbtnRemindLater.Click += this.kbtnRemindLater_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -213,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Software Update";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateAvailableDialog_FormClosing);
+            this.FormClosing += this.UpdateAvailableDialog_FormClosing;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -387,7 +387,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         public void EnsureDialogShown()
         {
             _ensureDialogShownTimer = new System.Windows.Forms.Timer();
-            _ensureDialogShownTimer.Tick += new EventHandler(EnsureDialogeShown_tick);
+            _ensureDialogShownTimer.Tick += EnsureDialogeShown_tick;
             _ensureDialogShownTimer.Interval = 250; // in milliseconds
             _ensureDialogShownTimer.Start();
         }

@@ -390,7 +390,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         }
 
         [Category("ToolBoxTab"), XmlIgnore]
-        public ToolBoxItem SelectedItem
+        public ToolBoxItem? SelectedItem
         {
             get => this[_selItemIndex];
             set
@@ -1501,7 +1501,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bVisible;
         }
 
-        public bool Contains(ToolBoxItem item)
+        public bool Contains(ToolBoxItem? item)
         {
             bool bContains = false;
             if (null != _toolItems)
@@ -1511,7 +1511,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bContains;
         }
 
-        public int IndexOfItem(ToolBoxItem item)
+        public int IndexOfItem(ToolBoxItem? item)
         {
             int index = -1;
 
@@ -1522,7 +1522,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return index;
         }
 
-        public bool DeleteItem(ToolBoxItem item)
+        public bool DeleteItem(ToolBoxItem? item)
         {
             bool bDeleted = false;
 
@@ -1622,7 +1622,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
         }
 
-        public bool CanMoveItemUp(ToolBoxItem item)
+        public bool CanMoveItemUp(ToolBoxItem? item)
         {
             bool bCanMoveUp = false;
             int index1 = -1;
@@ -1642,7 +1642,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bCanMoveUp;
         }
 
-        public bool CanMoveItemDown(ToolBoxItem item)
+        public bool CanMoveItemDown(ToolBoxItem? item)
         {
             bool bCanMoveDn = false;
             int index1 = -1;
@@ -1662,7 +1662,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bCanMoveDn;
         }
 
-        public bool MoveItemUp(ToolBoxItem item)
+        public bool MoveItemUp(ToolBoxItem? item)
         {
             bool bMoved = false;
             int index1 = -1;
@@ -1680,7 +1680,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bMoved;
         }
 
-        public bool MoveItemDown(ToolBoxItem item)
+        public bool MoveItemDown(ToolBoxItem? item)
         {
             bool bMoved = false;
             int index1 = -1;
@@ -1698,7 +1698,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bMoved;
         }
 
-        public bool SwapItems(ToolBoxItem item1, ToolBoxItem item2)
+        public bool SwapItems(ToolBoxItem? item1, ToolBoxItem? item2)
         {
             bool bSwaped = false;
 
@@ -1824,7 +1824,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     {
                         _selected = true;
                         _newItemIndex = index;
-                        _parent.OnTabSelectionChanged(this, new LayoutFinished(OnLayoutFinished));
+                        _parent.OnTabSelectionChanged(this, OnLayoutFinished);
                     }
                     else
                     {
@@ -1924,7 +1924,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bScrolled;
         }
 
-        public bool EnsureItemVisible(ToolBoxItem item)
+        public bool EnsureItemVisible(ToolBoxItem? item)
         {
             bool bScrolled = false;
             int index = -1;
@@ -2048,9 +2048,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             //Create redirection object to the base palette
             if (((_palette != null)))
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
             }
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new PaletteRedirect(_palette);
 
@@ -2537,9 +2537,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         private bool SwapItems(int index1, int index2)
         {
             bool bSwaped = false;
-            ToolBoxItem item1 = null;
-            ToolBoxItem item2 = null;
-            ToolBoxItem selItem = null;
+            ToolBoxItem? item1 = null;
+            ToolBoxItem? item2 = null;
+            ToolBoxItem? selItem = null;
             Rectangle rcTmp = Rectangle.Empty;
 
             try
@@ -2713,13 +2713,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         {
             if (((_palette != null)))
             {
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
             }
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
             if (((_palette != null)))
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 InitColours();
             }
             base.Invalidate();

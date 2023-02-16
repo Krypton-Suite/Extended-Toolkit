@@ -62,12 +62,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             base.InnerList.Remove(item);
         }
 
-        public int IndexOf(ToolBoxItem item)
+        public int IndexOf(ToolBoxItem? item)
         {
             return base.InnerList.IndexOf(item);
         }
 
-        public bool Contains(ToolBoxItem item)
+        public bool Contains(ToolBoxItem? item)
         {
             return base.InnerList.Contains(item);
         }

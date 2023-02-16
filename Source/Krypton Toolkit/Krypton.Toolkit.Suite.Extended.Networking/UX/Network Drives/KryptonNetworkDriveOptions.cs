@@ -308,7 +308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.kbtnDisconnect.Size = new System.Drawing.Size(105, 25);
             this.kbtnDisconnect.TabIndex = 9;
             this.kbtnDisconnect.Values.Text = "D&isconnect";
-            this.kbtnDisconnect.Click += new System.EventHandler(this.kbtnDisconnect_Click);
+            this.kbtnDisconnect.Click += this.kbtnDisconnect_Click;
             // 
             // kbtnMapDrive
             // 
@@ -318,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.kbtnMapDrive.Size = new System.Drawing.Size(105, 25);
             this.kbtnMapDrive.TabIndex = 3;
             this.kbtnMapDrive.Values.Text = "&Map Drive";
-            this.kbtnMapDrive.Click += new System.EventHandler(this.kbtnMapDrive_Click);
+            this.kbtnMapDrive.Click += this.kbtnMapDrive_Click;
             // 
             // ktxtPassword
             // 
@@ -420,7 +420,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connect to a Network Share";
-            this.Load += new System.EventHandler(this.KryptonNetworkDriveOptions_Load);
+            this.Load += this.KryptonNetworkDriveOptions_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

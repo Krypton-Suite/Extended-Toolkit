@@ -26,13 +26,14 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     // <summary>
     /// Base class used for implementation of actual controls.
     /// </summary>
     [ToolboxItem(false), DesignerCategory("code")]
-    public abstract class VisualControlBaseExtended : Control, IKryptonDebug
+    public sealed class VisualControlBaseExtended : Control, IKryptonDebug
     {
         #region Static Field
         private static MethodInfo _miPTB;
@@ -45,13 +46,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private bool _paintTransparent;
         private bool _evalTransparent;
         private bool _globalEvents;
-        private PaletteBase _localPalette;
-        private PaletteBase _palette;
+        private PaletteBase? _localPalette;
+        private PaletteBase? _palette;
         private PaletteMode _paletteMode;
         private readonly SimpleCall _refreshCall;
         private readonly SimpleCall _layoutCall;
         private KryptonContextMenu _kryptonContextMenu;
-        protected VisualPopupToolTip _visualBasePopupToolTip;
+        private VisualPopupToolTip _visualBasePopupToolTip;
         private ToolTipManager _toolTipManager;
         #endregion
 
@@ -75,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>
         /// Initialize a new instance of the VisualControl class.
         /// </summary>
-        protected VisualControlBaseExtended()
+        private VisualControlBaseExtended()
         {
             #region Default ControlStyle Values
             // Default style values for Control are:-
@@ -219,7 +220,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Behavior")]
         [Description("The KryptonContextMenu to show when the user right-clicks the Control.")]
         [DefaultValue(null)]
-        public virtual KryptonContextMenu KryptonContextMenu
+        public KryptonContextMenu KryptonContextMenu
         {
             get => _kryptonContextMenu;
 
@@ -250,7 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="needLayout">Does the palette change require a layout.</param>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public virtual void PerformNeedPaint(bool needLayout)
+        public void PerformNeedPaint(bool needLayout)
         {
             OnNeedPaint(this, new NeedLayoutEventArgs(needLayout));
         }
@@ -345,7 +346,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Visuals")]
         [Description("Custom palette applied to drawing.")]
         [DefaultValue(null)]
-        public PaletteBase Palette
+        public PaletteBase? Palette
         {
             [DebuggerStepThrough]
             get => _localPalette;
@@ -356,7 +357,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 if (_localPalette != value)
                 {
                     // Remember the starting palette
-                    PaletteBase old = _localPalette;
+                    PaletteBase? old = _localPalette;
 
                     // Use the provided palette value
                     SetPalette(value);
@@ -405,7 +406,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IRenderer Renderer
+        public IRenderer? Renderer
         {
             [DebuggerStepThrough]
             get;
@@ -459,7 +460,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public PaletteBase GetResolvedPalette()
+        public PaletteBase? GetResolvedPalette()
         {
             return _palette;
         }
@@ -574,7 +575,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>
         /// Gets access to the palette redirector.
         /// </summary>
-        protected PaletteRedirect Redirector
+        private PaletteRedirect Redirector
         {
             [DebuggerStepThrough]
             get;
@@ -583,18 +584,18 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>
         /// Gets access to the need paint delegate.
         /// </summary>
-        protected NeedPaintHandler NeedPaintDelegate { get; }
+        private NeedPaintHandler NeedPaintDelegate { get; }
 
         /// <summary>
         /// Gets access to the need paint palette delegate.
         /// </summary>
-        protected NeedPaintHandler NeedPaintPaletteDelegate { get; }
+        private NeedPaintHandler NeedPaintPaletteDelegate { get; }
 
         /// <summary>
         /// Force the control to perform a krypton layout to calculate size and positioning.
         /// </summary>
         /// <returns>True if layout was p</returns>
-        protected bool ForceViewLayout()
+        private bool ForceViewLayout()
         {
             // Cannot process a message for a disposed control
             if (!IsDisposed && !Disposing)
@@ -616,7 +617,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>
         /// Request a layout be performed before any painting occurs.
         /// </summary>
-        protected void InvokeLayout()
+        private void InvokeLayout()
         {
             // We want a layout to occur but not until the message loop
             // is spun. So this will happen before any painting because
@@ -627,7 +628,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>
         /// Mark the layout as being dirty and needing to be performed.
         /// </summary>
-        protected void MarkLayoutDirty()
+        private void MarkLayoutDirty()
         {
             _layoutDirty = true;
         }
@@ -635,7 +636,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>
         /// Gets a value indicating if transparent paint is needed
         /// </summary>
-        protected bool NeedTransparentPaint
+        private bool NeedTransparentPaint
         {
             get
             {
@@ -658,7 +659,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="g">Graphics reference for drawing.</param>
         /// <param name="backBrush">Brush to use when painting.</param>
         /// <param name="backRect">Client area to paint.</param>
-        protected virtual void PaintBackground(Graphics g, Brush backBrush, Rectangle backRect)
+        private void PaintBackground(Graphics g, Brush backBrush, Rectangle backRect)
         {
             g.FillRectangle(backBrush, backRect);
         }
@@ -667,7 +668,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets a value indicating is processing of mnemonics should be allowed.
         /// </summary>
         /// <returns>True to allow; otherwise false.</returns>
-        protected bool CanProcessMnemonic()
+        private bool CanProcessMnemonic()
         {
             Control c = this;
 
@@ -695,7 +696,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Work out if this control needs to paint transparent areas.
         /// </summary>
         /// <returns>True if paint required; otherwise false.</returns>
-        protected virtual bool EvalTransparentPaint()
+        private bool EvalTransparentPaint()
         {
             // Do we have a manager to use for asking about painting?
             return ViewManager != null && ViewManager.EvalTransparentPaint(Renderer);
@@ -704,12 +705,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>
         /// Work out if this control needs to use Invoke to force a repaint.
         /// </summary>
-        protected virtual bool EvalInvokePaint => false;
+        private bool EvalInvokePaint => false;
 
         /// <summary>
         /// Gets the control reference that is the parent for transparent drawing.
         /// </summary>
-        protected virtual Control TransparentParent => Parent;
+        private Control TransparentParent => Parent;
 
         /// <summary>
         /// Processes a notification from palette storage of a button spec change.
@@ -717,7 +718,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An EventArgs containing event data.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        protected virtual void OnButtonSpecChanged(object sender, EventArgs e)
+        private void OnButtonSpecChanged(object sender, EventArgs e)
         {
             Debug.Assert(e != null);
 
@@ -732,7 +733,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Raises the PaletteChanged event.
         /// </summary>
         /// <param name="e">An EventArgs containing the event data.</param>
-        protected virtual void OnPaletteChanged(EventArgs e)
+        private void OnPaletteChanged(EventArgs e)
         {
             // Update the redirector with latest palette
             Redirector.Target = _palette;
@@ -751,7 +752,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
-        protected virtual void OnPaletteNeedPaint(object sender, NeedLayoutEventArgs e)
+        private void OnPaletteNeedPaint(object? sender, NeedLayoutEventArgs e)
         {
             // Need to recalculate anything relying on the palette
             DirtyPaletteCounter++;
@@ -764,7 +765,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        protected virtual void OnNeedPaint(object sender, NeedLayoutEventArgs e)
+        private void OnNeedPaint(object? sender, NeedLayoutEventArgs e)
         {
             Debug.Assert(e != null);
 
@@ -815,7 +816,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Create the redirector instance.
         /// </summary>
         /// <returns>PaletteRedirect derived class.</returns>
-        protected virtual PaletteRedirect CreateRedirector()
+        private PaletteRedirect CreateRedirector()
         {
             return new PaletteRedirect(_palette);
         }
@@ -824,7 +825,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Update global event attachments.
         /// </summary>
         /// <param name="attach">True if attaching; otherwise false.</param>
-        protected virtual void UpdateGlobalEvents(bool attach)
+        private void UpdateGlobalEvents(bool attach)
         {
             if (attach)
             {
@@ -1129,7 +1130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="sender">Source of the event.</param>
         /// <param name="e">An EventArgs that contains the event data.</param>
-        protected virtual void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             // We only care if we are using the global palette
             if (PaletteMode == PaletteMode.Global)
@@ -1157,7 +1158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="sender">Source of the event.</param>
         /// <param name="e">Event details.</param>
-        protected virtual void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
         {
             // Need to recalculate anything relying on the palette
             DirtyPaletteCounter++;
@@ -1232,13 +1233,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>
         /// Called when a context menu has just been closed.
         /// </summary>
-        protected virtual void ContextMenuClosed()
+        private void ContextMenuClosed()
         {
         }
         #endregion
 
         #region Implementation
-        private void SetPalette(PaletteBase palette)
+        private void SetPalette(PaletteBase? palette)
         {
             if (palette != _palette)
             {
@@ -1268,11 +1269,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void OnBaseChanged(object sender, EventArgs e)
-        {
+        private void OnBaseChanged(object sender, EventArgs e) =>
             // Change in base renderer or base palette require we fetch the latest renderer
             Renderer = _palette.GetRenderer();
-        }
 
         private void PaintTransparentBackground(PaintEventArgs e)
         {

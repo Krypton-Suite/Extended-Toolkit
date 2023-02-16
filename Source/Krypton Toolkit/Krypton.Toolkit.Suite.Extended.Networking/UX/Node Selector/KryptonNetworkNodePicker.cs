@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.kchkAllServers.Size = new System.Drawing.Size(71, 20);
             this.kchkAllServers.TabIndex = 7;
             this.kchkAllServers.Values.Text = "&Show All";
-            this.kchkAllServers.CheckedChanged += new System.EventHandler(this.kchkAllServers_CheckedChanged);
+            this.kchkAllServers.CheckedChanged += this.kchkAllServers_CheckedChanged;
             // 
             // kchkDialInServers
             // 
@@ -238,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.klstServers.Name = "klstServers";
             this.klstServers.Size = new System.Drawing.Size(315, 125);
             this.klstServers.TabIndex = 0;
-            this.klstServers.SelectedIndexChanged += new System.EventHandler(this.klstServers_SelectedIndexChanged);
+            this.klstServers.SelectedIndexChanged += this.klstServers_SelectedIndexChanged;
             // 
             // kbeEdge
             // 

@@ -317,10 +317,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             bUpDown = true;
 
-            VisibleChanged += new EventHandler(FlatTabControl_VisibleChanged);
-            ControlAdded += new ControlEventHandler(FlatTabControl_ControlAdded);
-            ControlRemoved += new ControlEventHandler(FlatTabControl_ControlRemoved);
-            SelectedIndexChanged += new EventHandler(FlatTabControl_SelectedIndexChanged);
+            VisibleChanged += FlatTabControl_VisibleChanged;
+            ControlAdded += FlatTabControl_ControlAdded;
+            ControlRemoved += FlatTabControl_ControlRemoved;
+            SelectedIndexChanged += FlatTabControl_SelectedIndexChanged;
 
             leftRightImages = new ImageList();
             //leftRightImages.ImageSize = new Size(16, 16); // default
@@ -336,7 +336,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             //allow Close
-            ParentChanged += new EventHandler(this_ParentChanged);
+            ParentChanged += this_ParentChanged;
 
 
         }
@@ -467,7 +467,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             try
             {
-                Parent.MouseClick += new MouseEventHandler(this_MouseClick);
+                Parent.MouseClick += this_MouseClick;
             }
             catch (Exception ex)
             {
@@ -1059,7 +1059,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         //----------------------------
                         // Subclass it
                         scUpDown = new SubClass(pWnd, true);
-                        scUpDown.SubClassedWndProc += new SubClass.SubClassWndProcEventHandler(scUpDown_SubClassedWndProc);
+                        scUpDown.SubClassedWndProc += scUpDown_SubClassedWndProc;
                         //----------------------------
 
                         //Update position

@@ -496,7 +496,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </remarks>
         private string? StripLinkDefinitions(string? text)
         {
-            return _linkDef.Replace(text, new MatchEvaluator(LinkEvaluator));
+            return _linkDef.Replace(text, LinkEvaluator);
         }
 
         private string LinkEvaluator(Match match)
@@ -661,7 +661,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         private string? HashHTMLBlocks(string? text)
         {
-            return _blocksHtml.Replace(text, new MatchEvaluator(HtmlEvaluator));
+            return _blocksHtml.Replace(text, HtmlEvaluator);
         }
 
         private string HtmlEvaluator(Match match)
@@ -771,15 +771,15 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         private string? DoAnchors(string? text)
         {
             // First, handle reference-style links: [link text] [id]
-            text = _anchorRef.Replace(text, new MatchEvaluator(AnchorRefEvaluator));
+            text = _anchorRef.Replace(text, AnchorRefEvaluator);
 
             // Next, inline-style links: [link text](url "optional title") or [link text](url "optional title")
-            text = _anchorInline.Replace(text, new MatchEvaluator(AnchorInlineEvaluator));
+            text = _anchorInline.Replace(text, AnchorInlineEvaluator);
 
             //  Last, handle reference-style shortcuts: [link text]
             //  These must come last in case you've also got [link test][1]
             //  or [link test](/foo)
-            text = _anchorRefShortcut.Replace(text, new MatchEvaluator(AnchorRefShortcutEvaluator));
+            text = _anchorRefShortcut.Replace(text, AnchorRefShortcutEvaluator);
             return text;
         }
 
@@ -925,11 +925,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         private string? DoImages(string? text)
         {
             // First, handle reference-style labeled images: ![alt text][id]
-            text = _imagesRef.Replace(text, new MatchEvaluator(ImageReferenceEvaluator));
+            text = _imagesRef.Replace(text, ImageReferenceEvaluator);
 
             // Next, handle inline images:  ![alt text](url "optional title")
             // Don't forget: encode * and _
-            text = _imagesInline.Replace(text, new MatchEvaluator(ImageInlineEvaluator));
+            text = _imagesInline.Replace(text, ImageInlineEvaluator);
 
             return text;
         }
@@ -1034,8 +1034,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </remarks>
         private string? DoHeaders(string? text)
         {
-            text = _headerSetext.Replace(text, new MatchEvaluator(SetextHeaderEvaluator));
-            text = _headerAtx.Replace(text, new MatchEvaluator(AtxHeaderEvaluator));
+            text = _headerSetext.Replace(text, SetextHeaderEvaluator);
+            text = _headerAtx.Replace(text, AtxHeaderEvaluator);
             return text;
         }
 
@@ -1113,9 +1113,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             // We use a different prefix before nested lists than top-level lists.
             // See extended comment in _ProcessListItems().
             if (_listLevel > 0)
-                text = _listNested.Replace(text, new MatchEvaluator(ListEvaluator));
+                text = _listNested.Replace(text, ListEvaluator);
             else
-                text = _listTopLevel.Replace(text, new MatchEvaluator(ListEvaluator));
+                text = _listTopLevel.Replace(text, ListEvaluator);
 
             return text;
         }
@@ -1195,7 +1195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 return string.Format("<li>{0}</li>\n", item);
             };
 
-            list = Regex.Replace(list, pattern, new MatchEvaluator(ListItemEvaluator),
+            list = Regex.Replace(list, pattern, ListItemEvaluator,
                                   RegexOptions.IgnorePatternWhitespace | RegexOptions.Multiline);
             _listLevel--;
             return list;
@@ -1217,7 +1217,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         private string? DoCodeBlocks(string? text)
         {
-            text = _codeBlock.Replace(text, new MatchEvaluator(CodeBlockEvaluator));
+            text = _codeBlock.Replace(text, CodeBlockEvaluator);
             return text;
         }
 
@@ -1266,7 +1266,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             //          ... type <code>`bar`</code> ...         
             //
 
-            return _codeSpan.Replace(text, new MatchEvaluator(CodeSpanEvaluator));
+            return _codeSpan.Replace(text, CodeSpanEvaluator);
         }
 
         private string CodeSpanEvaluator(Match match)
@@ -1338,7 +1338,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         private string? DoBlockQuotes(string? text)
         {
-            return _blockquote.Replace(text, new MatchEvaluator(BlockQuoteEvaluator));
+            return _blockquote.Replace(text, BlockQuoteEvaluator);
         }
 
         private string BlockQuoteEvaluator(Match match)
@@ -1352,7 +1352,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             bq = Regex.Replace(bq, @"^", "  ", RegexOptions.Multiline);
 
             // These leading spaces screw with <pre> content, so we need to fix that:
-            bq = Regex.Replace(bq, @"(\s*<pre>.+?</pre>)", new MatchEvaluator(BlockQuoteEvaluator2), RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline);
+            bq = Regex.Replace(bq, @"(\s*<pre>.+?</pre>)", BlockQuoteEvaluator2, RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline);
 
             bq = string.Format("<blockquote>\n{0}\n</blockquote>", bq);
             string key = GetHashKey(bq, isHtmlBlock: true);
@@ -1424,7 +1424,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             }
 
             // Hyperlinks: <http://foo.com>
-            text = Regex.Replace(text, "<((https?|ftp):[^'\">\\s]+)>", new MatchEvaluator(HyperlinkEvaluator));
+            text = Regex.Replace(text, "<((https?|ftp):[^'\">\\s]+)>", HyperlinkEvaluator);
 
             if (_linkEmails)
             {
@@ -1438,7 +1438,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                         [-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+
                       )
                       >";
-                text = Regex.Replace(text, pattern, new MatchEvaluator(EmailEvaluator), RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+                text = Regex.Replace(text, pattern, EmailEvaluator, RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
             }
 
             return text;
@@ -1569,7 +1569,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         private string? EscapeBackslashes(string? s)
         {
-            return _backslashEscapes.Replace(s, new MatchEvaluator(EscapeBackslashesEvaluator));
+            return _backslashEscapes.Replace(s, EscapeBackslashesEvaluator);
         }
         private string EscapeBackslashesEvaluator(Match match)
         {
@@ -1583,7 +1583,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         private string? Unescape(string? s)
         {
-            return _unescapes.Replace(s, new MatchEvaluator(UnescapeEvaluator));
+            return _unescapes.Replace(s, UnescapeEvaluator);
         }
         private string? UnescapeEvaluator(Match match)
         {

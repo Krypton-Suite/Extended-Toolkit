@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.kbtnCopyFiles.Size = new System.Drawing.Size(293, 25);
             this.kbtnCopyFiles.TabIndex = 6;
             this.kbtnCopyFiles.Values.Text = "&Copy Files";
-            this.kbtnCopyFiles.Click += new System.EventHandler(this.kbtnCopyFiles_Click);
+            this.kbtnCopyFiles.Click += this.kbtnCopyFiles_Click;
             // 
             // kryptonGroupBox2
             // 

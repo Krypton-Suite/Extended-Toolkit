@@ -343,7 +343,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                 {
                     fixed (bool* cancelp = &_cancel)
                     {
-                        CopyFileEx(filename, tempFilepath, new CopyProgressRoutine(CopyProgressHandler), IntPtr.Zero, cancelp, 0);
+                        CopyFileEx(filename, tempFilepath, CopyProgressHandler, IntPtr.Zero, cancelp, 0);
                     }
                 }
                 _filesCopied.Add(new ST_CopyFileDetails(filename, tempFilepath));
@@ -459,7 +459,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                 throw new Exception("Dialog window sent with no SynchronizationObject");
             }
 
-            _delCopy = new DEL_CopyFiles(Copyfiles);
+            _delCopy = Copyfiles;
             CopyResult = _delCopy.BeginInvoke(CopyfilesCallback, null);
         }
 

@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 2;
             this.kbtnCancel.Values.Text = "C&ancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // kbtnExportException
             // 
@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnExportException.Size = new System.Drawing.Size(119, 25);
             this.kbtnExportException.TabIndex = 1;
             this.kbtnExportException.Values.Text = "Export &Exception";
-            this.kbtnExportException.Click += new System.EventHandler(this.kbtnExportException_Click);
+            this.kbtnExportException.Click += this.kbtnExportException_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kchkDarkMode.Size = new System.Drawing.Size(84, 20);
             this.kchkDarkMode.TabIndex = 4;
             this.kchkDarkMode.Values.Text = "D&ark Mode";
-            this.kchkDarkMode.CheckedChanged += new System.EventHandler(this.kchkDarkMode_CheckedChanged);
+            this.kchkDarkMode.CheckedChanged += this.kchkDarkMode_CheckedChanged;
             // 
             // ktxtException
             // 

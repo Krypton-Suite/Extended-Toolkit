@@ -77,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             this.kbtnClose.Size = new(90, 25);
             this.kbtnClose.TabIndex = 2;
             this.kbtnClose.Values.Text = "&Close";
-            this.kbtnClose.Click += new(this.kbtnClose_Click);
+            this.kbtnClose.Click += this.kbtnClose_Click;
             // 
             // kbtnCopy
             // 
@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             this.kbtnCopy.Size = new(90, 25);
             this.kbtnCopy.TabIndex = 1;
             this.kbtnCopy.Values.Text = "Co&py";
-            this.kbtnCopy.Click += new(this.kbtnCopy_Click);
+            this.kbtnCopy.Click += this.kbtnCopy_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             this.krtbDebugBox.Size = new(702, 480);
             this.krtbDebugBox.TabIndex = 0;
             this.krtbDebugBox.Text = "";
-            this.krtbDebugBox.TextChanged += new(this.krtbDebugBox_TextChanged);
+            this.krtbDebugBox.TextChanged += this.krtbDebugBox_TextChanged;
             // 
             // kbtnSaveToFile
             // 
@@ -128,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             this.kbtnSaveToFile.Size = new(127, 25);
             this.kbtnSaveToFile.TabIndex = 4;
             this.kbtnSaveToFile.Values.Text = "&Save to File";
-            this.kbtnSaveToFile.Click += new(this.kbtnSaveToFile_Click);
+            this.kbtnSaveToFile.Click += this.kbtnSaveToFile_Click;
             // 
             // KryptonDeveloperDebugConsole
             // 

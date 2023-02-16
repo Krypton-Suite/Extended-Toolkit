@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.kbtnAction.TabIndex = 2;
             this.kbtnAction.Values.Text = "";
             this.kbtnAction.Visible = false;
-            this.kbtnAction.Click += new System.EventHandler(this.kbtnAction_Click);
+            this.kbtnAction.Click += this.kbtnAction_Click;
             // 
             // kbtnDismiss
             // 
@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.kbtnDismiss.Size = new System.Drawing.Size(204, 25);
             this.kbtnDismiss.TabIndex = 1;
             this.kbtnDismiss.Values.Text = "{0} ({1})";
-            this.kbtnDismiss.Click += new System.EventHandler(this.kbtnDismiss_Click);
+            this.kbtnDismiss.Click += this.kbtnDismiss_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -154,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.KryptonToastNotificationVersion1_Load);
+            this.Load += this.KryptonToastNotificationVersion1_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

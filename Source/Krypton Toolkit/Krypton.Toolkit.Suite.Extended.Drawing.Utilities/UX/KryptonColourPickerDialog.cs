@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kdbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kdbtnOk.TabIndex = 3;
             this.kdbtnOk.Values.Text = "&OK";
-            this.kdbtnOk.Click += new System.EventHandler(this.kdbtnOk_Click);
+            this.kdbtnOk.Click += this.kdbtnOk_Click;
             // 
             // kdbtnCancel
             // 
@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kdbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kdbtnCancel.TabIndex = 3;
             this.kdbtnCancel.Values.Text = "C&ancel";
-            this.kdbtnCancel.Click += new System.EventHandler(this.kdbtnCancel_Click);
+            this.kdbtnCancel.Click += this.kdbtnCancel_Click;
             // 
             // kryptonPanel2
             // 
@@ -133,7 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbtnSavePalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_save;
             this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_save;
             this.kbtnSavePalette.Values.Text = "";
-            this.kbtnSavePalette.Click += new System.EventHandler(this.kbtnSavePalette_Click);
+            this.kbtnSavePalette.Click += this.kbtnSavePalette_Click;
             // 
             // kbtnLoadPalette
             // 
@@ -150,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbtnLoadPalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_load;
             this.kbtnLoadPalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_load;
             this.kbtnLoadPalette.Values.Text = "";
-            this.kbtnLoadPalette.Click += new System.EventHandler(this.kbtnLoadPalette_Click);
+            this.kbtnLoadPalette.Click += this.kbtnLoadPalette_Click;
             // 
             // cgColour
             // 
@@ -159,8 +159,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.cgColour.Name = "cgColour";
             this.cgColour.Size = new System.Drawing.Size(247, 165);
             this.cgColour.TabIndex = 3;
-            this.cgColour.EditingColor += new System.EventHandler<Cyotek.Windows.Forms.EditColorCancelEventArgs>(this.cgColour_EditingColor);
-            this.cgColour.ColorChanged += new System.EventHandler(this.cgColour_ColorChanged);
+            this.cgColour.EditingColor += this.cgColour_EditingColor;
+            this.cgColour.ColorChanged += this.cgColour_ColorChanged;
             // 
             // ceColour
             // 
@@ -177,15 +177,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.cwColour.Name = "cwColour";
             this.cwColour.Size = new System.Drawing.Size(249, 183);
             this.cwColour.TabIndex = 0;
-            this.cwColour.ColourChanged += new System.EventHandler(this.cwColour_ColourChanged);
+            this.cwColour.ColourChanged += this.cwColour_ColourChanged;
             // 
             // cem
             // 
             this.cem.Color = System.Drawing.Color.Empty;
             this.cem.ColourEditor = this.ceColour;
             this.cem.ColourWheel = this.cwColour;
-            this.cem.ColorChanged += new System.EventHandler(this.cem_ColorChanged);
-            this.cem.ColourChanged += new System.EventHandler(this.cem_ColourChanged);
+            this.cem.ColorChanged += this.cem_ColorChanged;
+            this.cem.ColourChanged += this.cem_ColourChanged;
             // 
             // cpbColour
             // 

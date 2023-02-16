@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnSystemInformation.TabIndex = 1;
             this.kbtnSystemInformation.Values.Text = "System &Information";
             this.kbtnSystemInformation.Visible = false;
-            this.kbtnSystemInformation.Click += new System.EventHandler(this.kbtnSystemInformation_Click);
+            this.kbtnSystemInformation.Click += this.kbtnSystemInformation_Click;
             // 
             // kbtnOk
             // 
@@ -187,7 +187,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.KryptonAboutDialog_Load);
+            this.Load += this.KryptonAboutDialog_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

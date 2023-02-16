@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.ktxtHexValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.ktxtHexValue.TabIndex = 9;
             this.ktxtHexValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ktxtHexValue.TextChanged += new System.EventHandler(this.ktxtHexValue_TextChanged);
+            this.ktxtHexValue.TextChanged += this.ktxtHexValue_TextChanged;
             // 
             // kryptonLabel4
             // 
@@ -182,7 +182,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kkcBlue.StartAngle = 135F;
             this.kkcBlue.TabIndex = 7;
             this.kkcBlue.Value = 0;
-            this.kkcBlue.ValueChanged += new Krypton.Toolkit.Suite.Extended.Common.ValueChangedEventHandler(this.kkcBlue_ValueChanged);
+            this.kkcBlue.ValueChanged += this.kkcBlue_ValueChanged;
             // 
             // kkcGreen
             // 
@@ -209,7 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kkcGreen.StartAngle = 135F;
             this.kkcGreen.TabIndex = 6;
             this.kkcGreen.Value = 0;
-            this.kkcGreen.ValueChanged += new Krypton.Toolkit.Suite.Extended.Common.ValueChangedEventHandler(this.kkcGreen_ValueChanged);
+            this.kkcGreen.ValueChanged += this.kkcGreen_ValueChanged;
             // 
             // kkcRed
             // 
@@ -236,7 +236,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kkcRed.StartAngle = 135F;
             this.kkcRed.TabIndex = 3;
             this.kkcRed.Value = 0;
-            this.kkcRed.ValueChanged += new Krypton.Toolkit.Suite.Extended.Common.ValueChangedEventHandler(this.kkcRed_ValueChanged);
+            this.kkcRed.ValueChanged += this.kkcRed_ValueChanged;
             // 
             // knudGreen
             // 
@@ -253,7 +253,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudGreen.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.knudGreen.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudGreen.TabIndex = 5;
-            this.knudGreen.ValueChanged += new System.EventHandler(this.knudGreen_ValueChanged);
+            this.knudGreen.ValueChanged += this.knudGreen_ValueChanged;
             // 
             // knudBlue
             // 
@@ -270,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudBlue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.knudBlue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudBlue.TabIndex = 4;
-            this.knudBlue.ValueChanged += new System.EventHandler(this.knudBlue_ValueChanged);
+            this.knudBlue.ValueChanged += this.knudBlue_ValueChanged;
             // 
             // knudRed
             // 
@@ -287,7 +287,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudRed.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.knudRed.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudRed.TabIndex = 3;
-            this.knudRed.ValueChanged += new System.EventHandler(this.knudRed_ValueChanged);
+            this.knudRed.ValueChanged += this.knudRed_ValueChanged;
             // 
             // cwColour
             // 
@@ -335,7 +335,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.cem.Color = System.Drawing.Color.Empty;
             this.cem.ColourWheel = this.cwColour;
             this.cem.ScreenColourPicker = this.scp;
-            this.cem.ColourChanged += new System.EventHandler(this.cem_ColourChanged);
+            this.cem.ColourChanged += this.cem_ColourChanged;
             // 
             // cpbSelectedColour
             // 

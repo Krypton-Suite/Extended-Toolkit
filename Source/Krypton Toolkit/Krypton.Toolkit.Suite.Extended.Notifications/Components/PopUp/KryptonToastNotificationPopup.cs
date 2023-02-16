@@ -315,19 +315,19 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             frmPopup.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             frmPopup.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             frmPopup.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            frmPopup.MouseEnter += new EventHandler(frmPopup_MouseEnter);
-            frmPopup.MouseLeave += new EventHandler(frmPopup_MouseLeave);
-            frmPopup.CloseClick += new EventHandler(frmPopup_CloseClick);
-            frmPopup.LinkClick += new EventHandler(frmPopup_LinkClick);
-            frmPopup.ContextMenuOpened += new EventHandler(frmPopup_ContextMenuOpened);
-            frmPopup.ContextMenuClosed += new EventHandler(frmPopup_ContextMenuClosed);
-            frmPopup.VisibleChanged += new EventHandler(frmPopup_VisibleChanged);
+            frmPopup.MouseEnter += frmPopup_MouseEnter;
+            frmPopup.MouseLeave += frmPopup_MouseLeave;
+            frmPopup.CloseClick += frmPopup_CloseClick;
+            frmPopup.LinkClick += frmPopup_LinkClick;
+            frmPopup.ContextMenuOpened += frmPopup_ContextMenuOpened;
+            frmPopup.ContextMenuClosed += frmPopup_ContextMenuClosed;
+            frmPopup.VisibleChanged += frmPopup_VisibleChanged;
 
             tmrAnimation = new System.Windows.Forms.Timer();
-            tmrAnimation.Tick += new EventHandler(tmAnimation_Tick);
+            tmrAnimation.Tick += tmAnimation_Tick;
 
             tmrWait = new System.Windows.Forms.Timer();
-            tmrWait.Tick += new EventHandler(tmWait_Tick);
+            tmrWait.Tick += tmWait_Tick;
         }
         #endregion
 

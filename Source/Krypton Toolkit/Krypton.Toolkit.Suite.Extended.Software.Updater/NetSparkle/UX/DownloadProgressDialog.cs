@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.kbtnInstall.Size = new System.Drawing.Size(167, 25);
             this.kbtnInstall.TabIndex = 3;
             this.kbtnInstall.Values.Text = "Install && &Relaunch";
-            this.kbtnInstall.Click += new System.EventHandler(this.kbtnInstall_Click);
+            this.kbtnInstall.Click += this.kbtnInstall_Click;
             // 
             // btnCancel
             // 
@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Values.Text = "&Cancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += this.btnCancel_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Downloading Update";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DownloadProgressDialog_FormClosing);
+            this.FormClosing += this.DownloadProgressDialog_FormClosing;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

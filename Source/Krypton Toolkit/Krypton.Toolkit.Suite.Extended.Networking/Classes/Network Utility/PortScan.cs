@@ -146,8 +146,8 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                     _worker = new BackgroundWorker();
                     _worker.WorkerReportsProgress = true;
                     _worker.WorkerSupportsCancellation = true;
-                    _worker.DoWork += new DoWorkEventHandler(_worker_DoWork);
-                    _worker.ProgressChanged += new ProgressChangedEventHandler(_worker_ProgressChanged);
+                    _worker.DoWork += _worker_DoWork;
+                    _worker.ProgressChanged += _worker_ProgressChanged;
                     _worker.RunWorkerCompleted += _worker_RunWorkerCompleted;
                     _worker.RunWorkerAsync();
 

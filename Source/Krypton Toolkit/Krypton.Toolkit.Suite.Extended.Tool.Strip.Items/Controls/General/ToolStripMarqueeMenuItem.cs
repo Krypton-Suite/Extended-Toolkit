@@ -154,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             MarqueeScrollDirection = DEFAULT_MARQUEE_SCROLL_DIRECTION;
             _timer = new Timer();
             _timer.Interval = DEFAULT_REFRESH_INTERVAL;
-            _timer.Tick += new EventHandler(timer_Tick);
+            _timer.Tick += timer_Tick;
             _timer.Enabled = true;
 
             if (MarqueeScrollDirection == MarqueeScrollDirection.RightToLeft)

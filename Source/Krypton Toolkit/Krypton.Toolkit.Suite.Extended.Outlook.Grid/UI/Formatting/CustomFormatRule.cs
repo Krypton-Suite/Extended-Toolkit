@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.kbtnOk.TabIndex = 3;
             this.kbtnOk.Values.Image = ((System.Drawing.Image)(resources.GetObject("kbtnOk.Values.Image")));
             this.kbtnOk.Values.Text = "&OK";
-            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
+            this.kbtnOk.Click += this.kbtnOk_Click;
             // 
             // kbtnCancel
             // 
@@ -104,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.kbtnCancel.TabIndex = 2;
             this.kbtnCancel.Values.Image = ((System.Drawing.Image)(resources.GetObject("kbtnCancel.Values.Image")));
             this.kbtnCancel.Values.Text = "Cance&l";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -144,7 +144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.kcmbFillMode.Size = new System.Drawing.Size(198, 21);
             this.kcmbFillMode.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbFillMode.TabIndex = 6;
-            this.kcmbFillMode.SelectedIndexChanged += new System.EventHandler(this.kcmbFillMode_SelectedIndexChanged);
+            this.kcmbFillMode.SelectedIndexChanged += this.kcmbFillMode_SelectedIndexChanged;
             // 
             // klblFill
             // 
@@ -184,7 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.kcbMaxColour.Values.RoundedCorners = 8;
             this.kcbMaxColour.Values.Text = "M&ax Colour";
             this.kcbMaxColour.VisibleNoColor = false;
-            this.kcbMaxColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbMaxColour_SelectedColorChanged);
+            this.kcbMaxColour.SelectedColorChanged += this.kcbMaxColour_SelectedColorChanged;
             // 
             // kcbMediumColour
             // 
@@ -200,7 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.kcbMediumColour.Values.RoundedCorners = 8;
             this.kcbMediumColour.Values.Text = "M&edium Colour";
             this.kcbMediumColour.VisibleNoColor = false;
-            this.kcbMediumColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbMediumColour_SelectedColorChanged);
+            this.kcbMediumColour.SelectedColorChanged += this.kcbMediumColour_SelectedColorChanged;
             // 
             // kcbMinColour
             // 
@@ -216,7 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.kcbMinColour.Values.RoundedCorners = 8;
             this.kcbMinColour.Values.Text = "Mi&n Colour";
             this.kcbMinColour.VisibleNoColor = false;
-            this.kcbMinColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbMinColour_SelectedColorChanged);
+            this.kcbMinColour.SelectedColorChanged += this.kcbMinColour_SelectedColorChanged;
             // 
             // pbxPreview
             // 
@@ -226,7 +226,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.pbxPreview.Size = new System.Drawing.Size(290, 20);
             this.pbxPreview.TabIndex = 3;
             this.pbxPreview.TabStop = false;
-            this.pbxPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.pbxPreview_Paint);
+            this.pbxPreview.Paint += this.pbxPreview_Paint;
             // 
             // klblPreview
             // 
@@ -248,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.kcmbStyle.Size = new System.Drawing.Size(290, 21);
             this.kcmbStyle.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbStyle.TabIndex = 1;
-            this.kcmbStyle.SelectedIndexChanged += new System.EventHandler(this.kcmbStyle_SelectedIndexChanged);
+            this.kcmbStyle.SelectedIndexChanged += this.kcmbStyle_SelectedIndexChanged;
             // 
             // klblFormat
             // 
@@ -273,7 +273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Custom Rule";
-            this.Load += new System.EventHandler(this.CustomFormatRule_Load);
+            this.Load += this.CustomFormatRule_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

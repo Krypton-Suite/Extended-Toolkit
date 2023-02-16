@@ -1334,7 +1334,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                                 // If you have better ideas on how to figure out if they've shut all other windows, let me know...
             try
             {
-                await CallFuncConsideringUIThreadsAsync(new Func<Task>(async () =>
+                await CallFuncConsideringUIThreadsAsync(async () =>
                 {
                     if (CloseApplicationAsync != null)
                     {
@@ -1351,7 +1351,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                         // and the current thread (kills current thread)
                         UIFactory?.Shutdown();
                     }
-                }));
+                });
             }
             catch (Exception e)
             {

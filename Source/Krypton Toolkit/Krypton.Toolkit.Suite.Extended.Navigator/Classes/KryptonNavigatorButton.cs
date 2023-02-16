@@ -39,9 +39,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             // add Palette Handler
             if (_palette != null)
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
 
-            KryptonManager.GlobalPaletteChanged += new EventHandler(GlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += GlobalPaletteChanged;
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new PaletteRedirect(_palette);
@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
 
             if (_palette != null)
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
 
 
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 //repaint with new values
                 this.StateNormal.Back.Color1 = _palette.ColorTable.ToolStripContentPanelGradientEnd;
                 this.StateNormal.Back.Color2 = _palette.ColorTable.ToolStripContentPanelGradientEnd;
@@ -104,12 +104,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
                 if (_palette != null)
                 {
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette.PalettePaint -= OnPalettePaint;
                     _palette = null;
                 }
 
 
-                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
             }
 
             base.Dispose(disposing);

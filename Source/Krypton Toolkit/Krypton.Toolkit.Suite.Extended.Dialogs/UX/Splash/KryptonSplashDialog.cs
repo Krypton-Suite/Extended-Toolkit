@@ -75,9 +75,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.klblClose.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblClose.TabIndex = 6;
             this.klblClose.Values.Text = "X";
-            this.klblClose.Click += new System.EventHandler(this.klblClose_Click);
-            this.klblClose.MouseEnter += new System.EventHandler(this.klblClose_MouseEnter);
-            this.klblClose.MouseLeave += new System.EventHandler(this.klblClose_MouseLeave);
+            this.klblClose.Click += this.klblClose_Click;
+            this.klblClose.MouseEnter += this.klblClose_MouseEnter;
+            this.klblClose.MouseLeave += this.klblClose_MouseLeave;
             // 
             // pbAppIcon
             // 

@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.ptbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbClose.TabIndex = 5;
             this.ptbClose.TabStop = false;
-            this.ptbClose.Click += new System.EventHandler(this.ptbClose_Click);
+            this.ptbClose.Click += this.ptbClose_Click;
             // 
             // klblContent
             // 

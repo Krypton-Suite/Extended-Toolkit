@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="renderer">Drawing renderer.</param>
         public VisualPopupToolTip(PaletteRedirect redirector,
                                   IContentValues contentValues,
-                                  IRenderer renderer)
+                                  IRenderer? renderer)
             : this(redirector, contentValues, renderer,
                    PaletteBackStyle.ControlToolTip,
                    PaletteBorderStyle.ControlToolTip,
@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="contentStyle">Style for the tooltip content.</param>
         public VisualPopupToolTip(PaletteRedirect redirector,
                                   IContentValues contentValues,
-                                  IRenderer renderer,
+                                  IRenderer? renderer,
                                   PaletteBackStyle backStyle,
                                   PaletteBorderStyle borderStyle,
                                   PaletteContentStyle contentStyle)

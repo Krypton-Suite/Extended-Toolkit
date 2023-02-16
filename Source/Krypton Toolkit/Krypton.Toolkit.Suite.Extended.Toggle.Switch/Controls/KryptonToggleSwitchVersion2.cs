@@ -318,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             OffText = "Off";
 
-            _paintTicker.Tick += new EventHandler(ticker_Tick);
+            _paintTicker.Tick += ticker_Tick;
 
             _paintTicker.Interval = 1;
 

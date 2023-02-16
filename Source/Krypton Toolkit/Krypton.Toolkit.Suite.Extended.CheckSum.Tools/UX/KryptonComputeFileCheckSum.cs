@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kcbToggleCase.Size = new System.Drawing.Size(90, 20);
             this.kcbToggleCase.TabIndex = 4;
             this.kcbToggleCase.Values.Text = "Toggle &Case";
-            this.kcbToggleCase.CheckedChanged += new System.EventHandler(this.kcbToggleCase_CheckedChanged);
+            this.kcbToggleCase.CheckedChanged += this.kcbToggleCase_CheckedChanged;
             // 
             // kbtnSaveToFile
             // 
@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kbtnSaveToFile.Size = new System.Drawing.Size(90, 25);
             this.kbtnSaveToFile.TabIndex = 3;
             this.kbtnSaveToFile.Values.Text = "Save to &File";
-            this.kbtnSaveToFile.Click += new System.EventHandler(this.kbtnSaveToFile_Click);
+            this.kbtnSaveToFile.Click += this.kbtnSaveToFile_Click;
             // 
             // kbtnCancel
             // 
@@ -159,7 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 2;
             this.kbtnCancel.Values.Text = "C&ancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += this.kbtnCancel_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -235,7 +235,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kbtnCompute.Size = new System.Drawing.Size(90, 25);
             this.kbtnCompute.TabIndex = 9;
             this.kbtnCompute.Values.Text = "&Compute";
-            this.kbtnCompute.Click += new System.EventHandler(this.kbtnCompute_Click);
+            this.kbtnCompute.Click += this.kbtnCompute_Click;
             // 
             // kcmbAlgorithimType
             // 
@@ -249,8 +249,8 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kcmbAlgorithimType.Size = new System.Drawing.Size(121, 21);
             this.kcmbAlgorithimType.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbAlgorithimType.TabIndex = 8;
-            this.kcmbAlgorithimType.SelectedIndexChanged += new System.EventHandler(this.kcmbAlgorithimType_SelectedIndexChanged);
-            this.kcmbAlgorithimType.TextChanged += new System.EventHandler(this.kcmbAlgorithimType_TextChanged);
+            this.kcmbAlgorithimType.SelectedIndexChanged += this.kcmbAlgorithimType_SelectedIndexChanged;
+            this.kcmbAlgorithimType.TextChanged += this.kcmbAlgorithimType_TextChanged;
             // 
             // kryptonLabel2
             // 
@@ -274,49 +274,49 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             this.bgMD5Hash.WorkerReportsProgress = true;
             this.bgMD5Hash.WorkerSupportsCancellation = true;
-            this.bgMD5Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgMD5Hash_DoWork);
-            this.bgMD5Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
-            this.bgMD5Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
+            this.bgMD5Hash.DoWork += this.bgMD5Hash_DoWork;
+            this.bgMD5Hash.ProgressChanged += this.ProgressChanged;
+            this.bgMD5Hash.RunWorkerCompleted += this.RunWorkerCompleted;
             // 
             // bgSHA1Hash
             // 
             this.bgSHA1Hash.WorkerReportsProgress = true;
             this.bgSHA1Hash.WorkerSupportsCancellation = true;
-            this.bgSHA1Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA1Hash_DoWork);
-            this.bgSHA1Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
-            this.bgSHA1Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
+            this.bgSHA1Hash.DoWork += this.bgSHA1Hash_DoWork;
+            this.bgSHA1Hash.ProgressChanged += this.ProgressChanged;
+            this.bgSHA1Hash.RunWorkerCompleted += this.RunWorkerCompleted;
             // 
             // bgSHA256Hash
             // 
             this.bgSHA256Hash.WorkerReportsProgress = true;
             this.bgSHA256Hash.WorkerSupportsCancellation = true;
-            this.bgSHA256Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA256Hash_DoWork);
-            this.bgSHA256Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
-            this.bgSHA256Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
+            this.bgSHA256Hash.DoWork += this.bgSHA256Hash_DoWork;
+            this.bgSHA256Hash.ProgressChanged += this.ProgressChanged;
+            this.bgSHA256Hash.RunWorkerCompleted += this.RunWorkerCompleted;
             // 
             // bgSHA384Hash
             // 
             this.bgSHA384Hash.WorkerReportsProgress = true;
             this.bgSHA384Hash.WorkerSupportsCancellation = true;
-            this.bgSHA384Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA384Hash_DoWork);
-            this.bgSHA384Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
-            this.bgSHA384Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
+            this.bgSHA384Hash.DoWork += this.bgSHA384Hash_DoWork;
+            this.bgSHA384Hash.ProgressChanged += this.ProgressChanged;
+            this.bgSHA384Hash.RunWorkerCompleted += this.RunWorkerCompleted;
             // 
             // bgSHA512Hash
             // 
             this.bgSHA512Hash.WorkerReportsProgress = true;
             this.bgSHA512Hash.WorkerSupportsCancellation = true;
-            this.bgSHA512Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA512Hash_DoWork);
-            this.bgSHA512Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
-            this.bgSHA512Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
+            this.bgSHA512Hash.DoWork += this.bgSHA512Hash_DoWork;
+            this.bgSHA512Hash.ProgressChanged += this.ProgressChanged;
+            this.bgSHA512Hash.RunWorkerCompleted += this.RunWorkerCompleted;
             // 
             // bgRIPEMD160Hash
             // 
             this.bgRIPEMD160Hash.WorkerReportsProgress = true;
             this.bgRIPEMD160Hash.WorkerSupportsCancellation = true;
-            this.bgRIPEMD160Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgRIPEMD160Hash_DoWork);
-            this.bgRIPEMD160Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
-            this.bgRIPEMD160Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
+            this.bgRIPEMD160Hash.DoWork += this.bgRIPEMD160Hash_DoWork;
+            this.bgRIPEMD160Hash.ProgressChanged += this.ProgressChanged;
+            this.bgRIPEMD160Hash.RunWorkerCompleted += this.RunWorkerCompleted;
             // 
             // KryptonComputeFileCheckSum
             // 

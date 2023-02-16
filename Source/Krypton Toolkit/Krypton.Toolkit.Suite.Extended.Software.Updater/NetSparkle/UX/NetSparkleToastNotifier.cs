@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.kllCallToAction.Size = new System.Drawing.Size(216, 20);
             this.kllCallToAction.TabIndex = 2;
             this.kllCallToAction.Values.Text = "kryptonLinkLabel1";
-            this.kllCallToAction.LinkClicked += new System.EventHandler(this.kllCallToAction_LinkClicked);
+            this.kllCallToAction.LinkClicked += this.kllCallToAction_LinkClicked;
             // 
             // klblMessage
             // 
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.NetSparkleToastNotifier_Load);
+            this.Load += this.NetSparkleToastNotifier_Load;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
