@@ -28,6 +28,7 @@
 
 // ReSharper disable IdentifierTypo
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Shared
 {
     public class CommonDialogHandler

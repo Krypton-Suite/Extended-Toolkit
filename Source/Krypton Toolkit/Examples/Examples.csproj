@@ -54,6 +54,7 @@
 		<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.45-alpha" />
 		<PackageReference Include="Krypton.Ribbon.Nightly" Version="80.23.2.45-alpha" />
 		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.117" />
+		<PackageReference Include="StrongNamer" Version="0.2.5" />
 	</ItemGroup>
 
 	<ItemGroup>

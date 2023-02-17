@@ -35,11 +35,11 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new OwnerWindowChangedEventArgs(this, value); OnParentWindowChanged(null, e); } }
 
         #region Custom Events
-        public delegate void ParentWindowChangedEventHandler(object sender, OwnerWindowChangedEventArgs e);
+        public delegate void ParentWindowChangedEventHandler(object? sender, OwnerWindowChangedEventArgs e);
 
         public event ParentWindowChangedEventHandler ParentWindowChanged;
 
-        protected virtual void OnParentWindowChanged(object sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
+        protected virtual void OnParentWindowChanged(object? sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
         #endregion
 
         public KryptonCancelDialogButton()
@@ -53,12 +53,12 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private void KryptonCancelDialogButton_TextChanged(object sender, EventArgs e)
         {
-            if (Text == Name) Text = "C&ancel";
+            if (Text == Name) Text = @"C&ancel";
         }
 
         private void KryptonCancelDialogButton_ParentChanged(object sender, EventArgs e)
         {
-            Control parent = Parent;
+            Control? parent = Parent;
 
             while (!(Parent is KryptonForm) && !(parent == null))
             {

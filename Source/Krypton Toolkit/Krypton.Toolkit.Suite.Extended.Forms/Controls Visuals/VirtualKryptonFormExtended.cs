@@ -26,7 +26,14 @@
 #endregion
 
 // ReSharper disable ConditionIsAlwaysTrueOrFalse
+// ReSharper disable AssignNullToNotNullAttribute
+#pragma warning disable CS8602
+#pragma warning disable CS8073
+#pragma warning disable CS8601
+#pragma warning disable CS8625
 #pragma warning disable CS0414
+#pragma warning disable CS8765
+#pragma warning disable CS8622
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     /// <summary>
@@ -87,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private readonly FormFixedButtonSpecCollection _buttonSpecsFixed;
         private readonly ButtonSpecManagerDraw _buttonManager;
-        private VisualPopupToolTip _visualPopupToolTip;
+        private VisualPopupToolTip? _visualPopupToolTip;
         private readonly ViewDrawForm _drawDocker;
         private readonly ViewDrawDocker _drawHeading;
         private readonly ViewDrawContent _drawContent;
@@ -108,9 +115,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         private bool _lastNotNormal;
         private bool _useDropShadow;
         private bool _useWindows11StyleCornerRounding;
-        private StatusStrip _statusStrip;
-        private Bitmap _cacheBitmap;
-        private Icon _cacheIcon;
+        private StatusStrip? _statusStrip;
+        private Bitmap? _cacheBitmap;
+        private Icon? _cacheIcon;
         private float _cornerRoundingRadius;
         private Control _activeControl;
 
@@ -745,9 +752,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         /// <param name="state">Form state.</param>
         /// <returns>Image.</returns>
-        public Image GetImage(PaletteState state)
+        public Image? GetImage(PaletteState state)
         {
-            Icon displayIcon = GetDefinedIcon();
+            Icon? displayIcon = GetDefinedIcon();
 
             // Has the icon to be Displayed changed since the last time around?
             if (displayIcon != _cacheIcon)
@@ -779,7 +786,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 var currentHeight = (int)(CAPTION_ICON_SIZE.Height * FactorDpiY);
                 //}
 
-                Bitmap resizedBitmap = null;
+                Bitmap? resizedBitmap = null;
                 try
                 {
                     using var temp = new Icon(_cacheIcon, currentWidth, currentHeight);
@@ -844,7 +851,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         {
             private readonly VirtualKryptonFormExtended _kryptonForm;
 
-            public FormPaletteRedirect(PaletteBase palette, VirtualKryptonFormExtended kryptonForm)
+            public FormPaletteRedirect(PaletteBase? palette, VirtualKryptonFormExtended kryptonForm)
                 : base(palette) =>
                 _kryptonForm = kryptonForm;
 
@@ -1060,7 +1067,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                     || _buttonManager.GetButtonRectangle(ButtonSpecClose).Contains(pt))
                 {
                     // Get the mouse controller for this button
-                    ViewBase viewBase = ViewManager.Root.ViewFromPoint(pt);
+                    ViewBase? viewBase = ViewManager.Root.ViewFromPoint(pt);
                     IMouseController controller = viewBase.FindMouseController();
 
                     // Ensure the button shows as 'normal' state when mouse not over and pressed
@@ -1112,7 +1119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
 
             // Get the elements that contains the mouse point
-            ViewBase mouseView = ViewManager.Root.ViewFromPoint(pt);
+            ViewBase? mouseView = ViewManager.Root.ViewFromPoint(pt);
 
             // Scan up the view hierarchy until a recognized element is found
             while (mouseView != null)
@@ -1255,7 +1262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         #endregion
 
         #region Implementation
-        private Icon GetDefinedIcon()
+        private Icon? GetDefinedIcon()
         {
             // Are we allowed to try and show an icon?
             if (AllowIconDisplay)
@@ -1345,6 +1352,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             if (!IsDisposed && !Disposing)
             {
                 // Do we have a manager to use for laying out?
+                // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
                 if (ViewManager != null)
                 {
                     // Make sure the max/restore setting is correct
@@ -1450,7 +1458,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
                             // Get the path for the border so we can shape the form using it
                             using RenderContext context = new(this, null, Bounds, Renderer);
-                            using GraphicsPath path = _drawDocker.GetOuterBorderPath(context);
+                            using GraphicsPath? path = _drawDocker.GetOuterBorderPath(context);
                             if (!_firstCheckView)
                             {
                                 SuspendPaint();
@@ -1566,7 +1574,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                                             && (_statusStrip.RenderMode == ToolStripRenderMode.ManagerRenderMode)
                                             && (ToolStripManager.Renderer is KryptonOffice2007Renderer or KryptonSparkleRenderer);
 
-        private void MonitorStatusStrip(StatusStrip statusStrip)
+        private void MonitorStatusStrip(StatusStrip? statusStrip)
         {
             if (_statusStrip != null)
             {
@@ -1604,12 +1612,12 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 // Never show tooltips are design time
                 if (!DesignMode)
                 {
-                    IContentValues sourceContent = null;
+                    IContentValues? sourceContent = null;
                     LabelStyle toolTipStyle = LabelStyle.ToolTip;
                     bool shadow = true;
 
                     // Find the button spec associated with the tooltip request
-                    ButtonSpec buttonSpec = _buttonManager.ButtonSpecFromView(e.Target);
+                    ButtonSpec? buttonSpec = _buttonManager.ButtonSpecFromView(e.Target);
 
                     // If the tooltip is for a button spec
                     if (buttonSpec != null)
@@ -1618,7 +1626,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                         if (AllowButtonSpecToolTips)
                         {
                             // Create a helper object to provide tooltip values
-                            ButtonSpecToContent buttonSpecMapping = new(Redirector, buttonSpec);
+                            ButtonSpecToContent? buttonSpecMapping = new(Redirector, buttonSpec);
 
                             // Is there actually anything to show for the tooltip
                             if (buttonSpecMapping.HasContent)
@@ -1667,7 +1675,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _visualPopupToolTip = null;
         }
 
-        private void OnButtonManagerNeedPaint(object sender, NeedLayoutEventArgs e)
+        private void OnButtonManagerNeedPaint(object? sender, NeedLayoutEventArgs e)
         {
             // Only interested in optimizing specific button spec changes
             if (sender is ButtonSpecView bsView)

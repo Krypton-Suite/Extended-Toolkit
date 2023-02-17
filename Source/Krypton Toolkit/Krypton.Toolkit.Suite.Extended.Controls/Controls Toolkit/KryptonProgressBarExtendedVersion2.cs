@@ -58,13 +58,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private int _fade = 150;
 
-        private SolidBrush _fadeBrush;
+        private SolidBrush? _fadeBrush;
 
         #endregion
 
         #region Public Properties
 
-        // <summary>
+        /// <summary>
         /// Gets or sets the opacity of the white overlay brush which fades 
         /// the background colors of the <see cref="KryptonProgressBarExtendedVersion2" />.
         /// </summary>

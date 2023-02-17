@@ -25,6 +25,7 @@
  */
 #endregion
 
+// ReSharper disable InconsistentNaming
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     /// <summary>
@@ -234,6 +235,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             try
             {
+                // ReSharper disable once AssignNullToNotNullAttribute
                 RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(path);
 
                 if (registryKey == null)

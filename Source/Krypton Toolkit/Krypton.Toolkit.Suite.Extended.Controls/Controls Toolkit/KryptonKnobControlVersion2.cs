@@ -26,6 +26,7 @@
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Common;
+#pragma warning disable CS8602
 
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
@@ -44,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         #endregion
 
         #region Designer Code
-        private Container components = null;
+        private Container? components = null;
         #endregion
 
         #region Variables
@@ -81,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private PaletteContentInheritRedirect _paletteContent;
 
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
 
         private PaletteRedirect _paletteRedirect;
         #endregion
@@ -99,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         // Invoke the ValueChanged event; called  when value     
         // is changed                                            
         //-------------------------------------------------------
-        protected virtual void OnValueChanged(object sender, KnobValueChangedEventArgs e) => ValueChanged?.Invoke(sender, e);
+        protected virtual void OnValueChanged(object? sender, KnobValueChangedEventArgs e) => ValueChanged?.Invoke(sender, e);
         #endregion
 
         #region Properties

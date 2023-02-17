@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private VirtualForm _currentVirtualWindow;
 
-        private VirtualForm _nextVirtualWindow;
+        private VirtualForm? _nextVirtualWindow;
 
         #endregion
 
@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <param name="fadeInterval">The fade interval.</param>
         /// <param name="fadeValues">The fade values.</param>
         /// <param name="fadeController">The fade controller.</param>
-        public FadeManager(VirtualForm currentWindow, VirtualForm nextWindow, bool useFade, int fadeInterval, FadeValues fadeValues, FadeController fadeController)
+        public FadeManager(VirtualForm currentWindow, VirtualForm? nextWindow, bool useFade, int fadeInterval, FadeValues fadeValues, FadeController fadeController)
         {
             _fadeController = fadeController;
 

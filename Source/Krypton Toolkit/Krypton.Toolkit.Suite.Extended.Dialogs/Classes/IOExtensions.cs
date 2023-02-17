@@ -9,16 +9,16 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <summary>Initializes a new instance of the <see cref="IOExtensions" /> class.</summary>
         public IOExtensions()
         {
-            
+
         }
 
         #endregion
 
         #region Implementation
 
-        internal static Image ExtractIconFromFilePath(string filePath)
+        internal static Image? ExtractIconFromFilePath(string filePath)
         {
-            Image icon = null;
+            Image? icon = null;
 
             try
             {

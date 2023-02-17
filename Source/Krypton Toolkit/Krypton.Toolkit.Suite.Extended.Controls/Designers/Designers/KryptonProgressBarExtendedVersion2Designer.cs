@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     internal class KryptonProgressBarExtendedVersion2Designer : ControlDesigner
@@ -35,12 +36,12 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         /* Gets a list of System.Windows.Forms.Design.Behavior.SnapLine 
         objects, representing alignment points for the edited control. */
-        public override IList SnapLines
+        public override IList? SnapLines
         {
             get
             {
                 // Get the SnapLines collection from the base class
-                ArrayList snapList = base.SnapLines as ArrayList;
+                ArrayList? snapList = base.SnapLines as ArrayList;
 
                 // Calculate the Baseline for the Font used by the Control and add it to the SnapLines
                 int textBaseline = GetBaseline(base.Control, ContentAlignment.MiddleCenter);

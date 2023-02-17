@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable InconsistentNaming
+#pragma warning disable CS8602
 #pragma warning disable CS0618
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
@@ -46,13 +48,13 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         private readonly ButtonController _buttonController;
         private VisualOrientation _orientation;
         private readonly PaletteTripleOverride _overrideFocus;
-        private readonly PaletteTripleOverride _overrideNormal;
-        private readonly PaletteTripleOverride _overrideTracking;
-        private readonly PaletteTripleOverride _overridePressed;
+        private readonly PaletteTripleOverride? _overrideNormal;
+        private readonly PaletteTripleOverride? _overrideTracking;
+        private readonly PaletteTripleOverride? _overridePressed;
         private IKryptonCommand _command;
         private bool _isDefault, _useMnemonic, _wasEnabled, _useAsUACElevatedButton;
         private string _processToElevate;
-        private Image _originalImage;
+        private Image? _originalImage;
         private Size _uacShieldSize;
         #endregion
 
@@ -316,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         [Category("Visuals")]
         [Description("Overrides for defining disabled button appearance.")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public PaletteTriple StateDisabled { get; }
+        public PaletteTriple? StateDisabled { get; }
 
         private bool ShouldSerializeStateDisabled()
         {
@@ -515,7 +517,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             set => base.ImeMode = value;
         }
 
-        public Image OriginalImage { get => _originalImage; private set => _originalImage = value; }
+        public Image? OriginalImage { get => _originalImage; private set => _originalImage = value; }
 
         /// <summary>Gets or sets a value indicating whether [use as uac elevated button].</summary>
         /// <value>
@@ -529,7 +531,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 _useAsUACElevatedButton = value;
 
-                // TODO: Store the original icon
+                // Note: Store the original icon
                 OriginalImage = CommandLinkImageValue.Image;
 
                 if (!_useAsUACElevatedButton)

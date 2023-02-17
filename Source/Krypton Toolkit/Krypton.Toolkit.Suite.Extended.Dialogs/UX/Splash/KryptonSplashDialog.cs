@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #region Properties
         public bool ShowProgressBar { get; set; } = false;
 
-        public string ApplicationName { get; set; } = null;
+        public string? ApplicationName { get; set; } = null;
 
         public int LoadingBarMaximum { get; set; } = 100;
 
@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         public int LoadingBarIncrement { get; set; } = 1;
 
-        public Image ApplicationIcon { get; set; } = null;
+        public Image? ApplicationIcon { get; set; } = null;
         #endregion
 
         #region Constructors
@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
 
-        public KryptonSplashDialog(bool showProgressBar, string applicationName, Image applicationIcon)
+        public KryptonSplashDialog(bool showProgressBar, string? applicationName, Image? applicationIcon)
         {
             InitializeComponent();
 
@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         #region Methods
-        private void UpdateUI(bool showProgressBar, string applicationName, Image applicationIcon)
+        private void UpdateUI(bool showProgressBar, string? applicationName, Image? applicationIcon)
         {
             pbLoading.Visible = showProgressBar;
 

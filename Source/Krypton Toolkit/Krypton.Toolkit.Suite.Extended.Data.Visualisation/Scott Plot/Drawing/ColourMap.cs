@@ -196,7 +196,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return rgbas;
         }
 
-        public static Color[] GetColours(double[] intensities, ColourMap colorMap)
+        public static Color[] GetColours(double[] intensities, ColourMap? colorMap)
         {
             Color[] colors = new Color[intensities.Length];
             for (int i = 0; i < intensities.Length; i++)

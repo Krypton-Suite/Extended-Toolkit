@@ -26,6 +26,7 @@
  */
 #endregion
 
+#pragma warning disable CS8604
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class ToolTipManager
@@ -139,8 +140,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Instance Fields
         private readonly Timer _startTimer;
         private readonly Timer _stopTimer;
-        private ViewBase _startTarget;
-        private ViewBase _currentTarget;
+        private ViewBase? _startTarget;
+        private ViewBase? _currentTarget;
         private bool _showingToolTips;
         #endregion
 
@@ -202,7 +203,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="targetElement">Target element for the mouse message.</param>
         /// <param name="c">Reference to the source control instance.</param>
-        public void MouseEnter(ViewBase targetElement, Control c)
+        public void MouseEnter(ViewBase? targetElement, Control c)
         {
             // Remember the current target
             _currentTarget = targetElement;

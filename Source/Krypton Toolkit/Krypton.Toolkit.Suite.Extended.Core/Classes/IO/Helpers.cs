@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         #region Methods
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public static string GetCurrentMethod()
+        public static string? GetCurrentMethod()
         {
             var stackTrace = new StackTrace();
 

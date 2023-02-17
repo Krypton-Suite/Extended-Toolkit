@@ -26,12 +26,13 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
     public class MethodHelpers
     {
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public static string GetCurrentMethod()
+        public static string? GetCurrentMethod()
         {
             var stackTrace = new StackTrace();
 

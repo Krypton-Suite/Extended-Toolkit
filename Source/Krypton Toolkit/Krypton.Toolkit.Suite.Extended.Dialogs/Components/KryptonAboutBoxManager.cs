@@ -25,6 +25,7 @@
  */
 #endregion
 
+// ReSharper disable PossibleNullReferenceException
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonAboutBoxManager : Component
@@ -36,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private bool _showDescription, _showFrameworkVersion, _showSystemInformation;
 
-        private Image _applicationIcon;
+        private Image? _applicationIcon;
 
         private string _aboutText, _applicationText, _applicationDescription, _versionText, _copyrightText, _frameworkVersionText, _showSystemInformationText;
         #endregion
@@ -52,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         public bool ShowSystemInformation { get => _showSystemInformation; set => _showSystemInformation = value; }
 
-        public Image ApplicationIcon { get => _applicationIcon; set => _applicationIcon = value; }
+        public Image? ApplicationIcon { get => _applicationIcon; set => _applicationIcon = value; }
 
         public string AboutText { get => _aboutText; set => _aboutText = value; }
 
@@ -82,11 +83,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             _showSystemInformation = false;
 
-            _applicationIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath).ToBitmap();
+            _applicationIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath).ToBitmap() ?? null;
 
             _applicationText = "Application";
 
-            _applicationDescription = fvi.FileDescription;
+            _applicationDescription = fvi.FileDescription ?? string.Empty;
 
             _aboutText = "About";
 

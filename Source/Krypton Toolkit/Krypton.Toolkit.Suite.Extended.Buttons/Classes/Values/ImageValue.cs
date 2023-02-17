@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     public class ImageValue : Storage, IContentValues
     {
         #region Static Fields
-        private static readonly Image defaultImage = Properties.Resources.Question_32_x_32;
+        private static readonly Image? defaultImage = Properties.Resources.Question_32_x_32;
         #endregion
 
         #region Identity
@@ -52,13 +52,13 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Instance Fields
         private Color _transparent;
 
-        private Image _image;
+        private Image? _image;
 
         [Localizable(true)]
         [Category("Visuals")]
         [Description("Image.")]
         [RefreshProperties(RefreshProperties.All)]
-        public Image Image
+        public Image? Image
         {
             get => _image;
             set
@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// Gets the content short text.
         /// </summary>
         /// <returns>String value.</returns>
-        public Image GetImage(PaletteState state)
+        public Image? GetImage(PaletteState state)
         {
             return Image;
         }

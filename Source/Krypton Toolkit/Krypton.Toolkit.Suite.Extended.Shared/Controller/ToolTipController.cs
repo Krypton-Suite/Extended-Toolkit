@@ -26,6 +26,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Shared
 {
     /// <summary>
@@ -35,8 +36,8 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
                                      IMouseController
     {
         #region Instance Fields
-        private readonly ToolTipManager _manager;
-        private readonly ViewBase _targetElement;
+        private readonly ToolTipManager? _manager;
+        private readonly ViewBase? _targetElement;
         private readonly IMouseController _targetController;
         #endregion
 
@@ -47,8 +48,8 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
         /// <param name="manager">Reference to manager of all tooltip functionality.</param>
         /// <param name="targetElement">Target element that controller is for.</param>
         /// <param name="targetController">Target controller that we are snooping.</param>
-        public ToolTipController(ToolTipManager manager,
-                                 ViewBase targetElement,
+        public ToolTipController(ToolTipManager? manager,
+                                 ViewBase? targetElement,
                                  IMouseController targetController)
         {
             Debug.Assert(manager != null);

@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable InconsistentNaming
+// ReSharper disable RedundantAssignment
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     public class KryptonRichTextBoxExtended : KryptonTextBox
@@ -82,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
                 NativeMethods.PARAFORMAT pARAFORMAT = new NativeMethods.PARAFORMAT()
                 {
-                    cbSize = Marshal.SizeOf<NativeMethods.PARAFORMAT>(_paraformat)
+                    cbSize = Marshal.SizeOf(_paraformat)
 
                 };
 
@@ -106,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             {
                 NativeMethods.PARAFORMAT pARAFORMAT = new NativeMethods.PARAFORMAT()
                 {
-                    cbSize = Marshal.SizeOf<NativeMethods.PARAFORMAT>(_paraformat),
+                    cbSize = Marshal.SizeOf(_paraformat),
                     dwMask = 8,
                     wAlignment = (short)value
                 };
@@ -189,35 +191,35 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             Rectangle marginBounds = e.MarginBounds;
 
-            rECT1.Top = checked((int)Math.Round((double)marginBounds.Top * 14.4));
+            rECT1.Top = checked((int)Math.Round(marginBounds.Top * 14.4));
 
             marginBounds = e.MarginBounds;
 
-            rECT1.Bottom = checked((int)Math.Round((double)marginBounds.Bottom * 14.4));
+            rECT1.Bottom = checked((int)Math.Round(marginBounds.Bottom * 14.4));
 
             marginBounds = e.MarginBounds;
 
-            rECT1.Left = checked((int)Math.Round((double)marginBounds.Left * 14.4));
+            rECT1.Left = checked((int)Math.Round(marginBounds.Left * 14.4));
 
             marginBounds = e.MarginBounds;
 
-            rECT1.Right = checked((int)Math.Round((double)marginBounds.Right * 14.4));
+            rECT1.Right = checked((int)Math.Round(marginBounds.Right * 14.4));
 
             marginBounds = e.PageBounds;
 
-            rECT.Top = checked((int)Math.Round((double)marginBounds.Top * 14.4));
+            rECT.Top = checked((int)Math.Round(marginBounds.Top * 14.4));
 
             marginBounds = e.PageBounds;
 
-            rECT.Bottom = checked((int)Math.Round((double)marginBounds.Bottom * 14.4));
+            rECT.Bottom = checked((int)Math.Round(marginBounds.Bottom * 14.4));
 
             marginBounds = e.PageBounds;
 
-            rECT.Left = checked((int)Math.Round((double)marginBounds.Left * 14.4));
+            rECT.Left = checked((int)Math.Round(marginBounds.Left * 14.4));
 
             marginBounds = e.PageBounds;
 
-            rECT.Right = checked((int)Math.Round((double)marginBounds.Right * 14.4));
+            rECT.Right = checked((int)Math.Round(marginBounds.Right * 14.4));
 
             IntPtr hdc = e.Graphics.GetHdc();
 
@@ -237,9 +239,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             IntPtr zero1 = IntPtr.Zero;
 
-            zero1 = Marshal.AllocCoTaskMem(Marshal.SizeOf<NativeMethods.FORMATRANGE>(fORMATRANGE));
+            zero1 = Marshal.AllocCoTaskMem(Marshal.SizeOf(fORMATRANGE));
 
-            Marshal.StructureToPtr<NativeMethods.FORMATRANGE>(fORMATRANGE, zero1, false);
+            Marshal.StructureToPtr(fORMATRANGE, zero1, false);
 
             zero = SendMessage(Handle, 1081, intPtr, zero1);
 

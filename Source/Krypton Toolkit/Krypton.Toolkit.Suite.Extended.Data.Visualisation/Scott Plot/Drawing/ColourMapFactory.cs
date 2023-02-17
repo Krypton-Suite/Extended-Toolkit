@@ -25,11 +25,12 @@
  */
 #endregion
 
+// ReSharper disable SuggestVarOrType_Elsewhere
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class ColourMapFactory
     {
-        private readonly Dictionary<string, Func<IColourMap>> ColourMaps =
+        private readonly Dictionary<string, Func<IColourMap>> _colourMaps =
             new()
             {
                 { "Algae", () => new Algae()},
@@ -67,25 +68,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public IColourMap GetDefaultColourMap() => new Grayscale();
 
-        public ColourMap CreateOrDefault(string Name)
+        public ColourMap CreateOrDefault(string name)
         {
-            if (ColourMaps.TryGetValue(Name, out Func<IColourMap> cmap))
+            if (_colourMaps.TryGetValue(name, out Func<IColourMap> cmap))
                 return new ColourMap(cmap());
             else
                 return new ColourMap(GetDefaultColourMap());
         }
 
-        public ColourMap CreateOrThrow(string Name)
+        public ColourMap CreateOrThrow(string name)
         {
-            if (ColourMaps.TryGetValue(Name, out Func<IColourMap> cmap))
+            if (_colourMaps.TryGetValue(name, out Func<IColourMap> cmap))
                 return new ColourMap(cmap());
             else
-                throw new ArgumentOutOfRangeException($"No colormap with name '{Name}'");
+                throw new ArgumentOutOfRangeException($"No colormap with name '{name}'");
         }
 
-        public IEnumerable<string> GetAvailableNames() => ColourMaps.Keys;
+        public IEnumerable<string> GetAvailableNames() => _colourMaps.Keys;
 
         public IEnumerable<ColourMap> GetAvailableColourMaps() =>
-            ColourMaps.Values.Select(f => new ColourMap(f()));
+            _colourMaps.Values.Select(f => new ColourMap(f()));
     }
 }

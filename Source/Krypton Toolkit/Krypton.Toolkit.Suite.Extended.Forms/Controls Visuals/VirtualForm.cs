@@ -56,9 +56,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         private bool _disposing;
         private int _compositionHeight;
         private int _ignoreCount;
-        private ViewBase _capturedElement;
-        private PaletteBase _localPalette;
-        private PaletteBase _palette;
+        private ViewBase? _capturedElement;
+        private PaletteBase? _localPalette;
+        private PaletteBase? _palette;
         private PaletteMode _paletteMode;
         private readonly IntPtr _screenDC;
         private ShadowValues _shadowValues;
@@ -143,6 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _closeBoxVisible = true;
 
             // Create constant target for resolving palette delegates
+            // ReSharper disable once VirtualMemberCallInConstructor
             Redirector = CreateRedirector();
 
             // Hook into global static events
@@ -501,7 +502,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         [Category(@"Visuals")]
         [Description(@"Custom palette applied to drawing.")]
         [DefaultValue(null)]
-        public PaletteBase Palette
+        public PaletteBase? Palette
         {
             [DebuggerStepThrough]
             get => _localPalette;
@@ -512,7 +513,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 if (_localPalette != value)
                 {
                     // Remember the starting palette
-                    PaletteBase old = _localPalette;
+                    PaletteBase? old = _localPalette;
 
                     // Use the provided palette value
                     SetPalette(value);
@@ -558,7 +559,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IRenderer Renderer
+        public IRenderer? Renderer
         {
             [DebuggerStepThrough]
             get;
@@ -578,14 +579,14 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public PaletteBase GetResolvedPalette() => _palette;
+        public PaletteBase? GetResolvedPalette() => _palette;
 
         /// <summary>
         /// Create a tool strip renderer appropriate for the current renderer/palette pair.
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public ToolStripRenderer CreateToolStripRenderer() => Renderer.RenderToolStrip(GetResolvedPalette());
+        public ToolStripRenderer CreateToolStripRenderer() => Renderer.RenderToolStrip(GetResolvedPalette()!);
 
         /// <summary>
         /// Send the provided system command to the window for processing.
@@ -885,7 +886,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// Start capturing mouse input for a particular element that is inside the chrome.
         /// </summary>
         /// <param name="element">Target element for the capture events.</param>
-        protected void StartCapture(ViewBase element)
+        protected void StartCapture(ViewBase? element)
         {
             // Capture mouse input so we notice the WM_LBUTTONUP when the mouse is released
             Capture = true;
@@ -1079,7 +1080,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        protected virtual void OnNeedPaint(object sender, NeedLayoutEventArgs e)
+        protected virtual void OnNeedPaint(object? sender, NeedLayoutEventArgs e)
         {
             Debug.Assert(e != null);
 
@@ -1814,7 +1815,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
             // If we moused down on a active view element
             // Ask the controller if the mouse down should be ignored by wnd proc processing
-            IMouseController controller = ViewManager.ActiveView?.FindMouseController();
+            IMouseController? controller = ViewManager.ActiveView?.FindMouseController();
             return controller is { IgnoreVisualFormLeftButtonDown: true };
         }
 
@@ -1939,7 +1940,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void SetPalette(PaletteBase palette)
+        private void SetPalette(PaletteBase? palette)
         {
             if (palette != _palette)
             {
@@ -1960,6 +1961,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 Renderer = _palette.GetRenderer();
 
                 // Hook to new palette events
+                // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
                 if (_palette != null)
                 {
                     _palette.PalettePaint += OnNeedPaint;

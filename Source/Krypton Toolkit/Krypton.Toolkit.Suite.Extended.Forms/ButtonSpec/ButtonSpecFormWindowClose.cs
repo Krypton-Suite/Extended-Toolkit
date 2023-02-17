@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     /// <summary>
@@ -66,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// Initialize a new instance of the ButtonSpecFormWindowClose class.
         /// </summary>
         /// <param name="form">Reference to owning krypton form instance.</param>
-        public ButtonSpecFormWindowClose(VirtualKryptonFormExtended form)
+        public ButtonSpecFormWindowClose(VirtualKryptonFormExtended? form)
             : base(form, PaletteButtonSpecStyle.FormClose)
         {
         }
@@ -126,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                     MouseEventArgs mea = (MouseEventArgs)e;
                     if (GetView().ClientRectangle.Contains(mea.Location))
                     {
-                        PropertyInfo pi = typeof(Form).GetProperty(@"CloseReason",
+                        PropertyInfo? pi = typeof(Form).GetProperty(@"CloseReason",
                                                                     BindingFlags.Instance |
                                                                     BindingFlags.SetProperty |
                                                                     BindingFlags.NonPublic);

@@ -64,6 +64,10 @@
 #endregion
 
 //#pragma warning disable 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+// ReSharper disable InconsistentNaming
+#pragma warning disable CS8622
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     [DesignerCategory("code")]
@@ -74,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private IContainer components = null;
+        private IContainer? components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -246,7 +250,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
         #region class properties
 
-        private DataGridViewColumnCollection _columnsList = null;
+        private DataGridViewColumnCollection? _columnsList = null;
 
         private const bool ButtonCloseEnabled = false;
 
@@ -361,7 +365,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 #if NETFRAMEWORK
                     Dictionary<string, string> translations = new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(jsontext);
 #else
-                    Dictionary<string, string> translations = JsonSerializer.Deserialize<Dictionary<string, string>>(jsontext);
+                    Dictionary<string, string>? translations = JsonSerializer.Deserialize<Dictionary<string, string>>(jsontext);
 #endif
                     foreach (KeyValuePair<string, string> translation in translations)
                     {
@@ -420,10 +424,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             if (textBox_search.TextLength > 0 && textBox_search.Text != textBox_search.ToolTipText && Search != null)
             {
-                DataGridViewColumn c = null;
+                DataGridViewColumn? c = null;
                 if (comboBox_columns.SelectedIndex > 0 && _columnsList != null && _columnsList.GetColumnCount(DataGridViewElementStates.Visible) > 0)
                 {
-                    DataGridViewColumn[] cols = _columnsList.Cast<DataGridViewColumn>().Where(col => col.Visible).ToArray<DataGridViewColumn>();
+                    DataGridViewColumn?[] cols = _columnsList.Cast<DataGridViewColumn>().Where(col => col.Visible).ToArray<DataGridViewColumn>();
 
                     if (cols.Length == comboBox_columns.Items.Count - 1)
                     {
@@ -523,7 +527,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Set Columns to search in
         /// </summary>
         /// <param name="columns"></param>
-        public void SetColumns(DataGridViewColumnCollection columns)
+        public void SetColumns(DataGridViewColumnCollection? columns)
         {
             _columnsList = columns;
             comboBox_columns.BeginUpdate();

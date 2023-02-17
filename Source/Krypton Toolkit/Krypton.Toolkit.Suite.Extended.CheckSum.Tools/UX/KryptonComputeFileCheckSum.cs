@@ -25,6 +25,11 @@
  */
 #endregion
 
+// ReSharper disable InconsistentNaming
+// ReSharper disable AssignNullToNotNullAttribute
+// ReSharper disable ArrangeRedundantParentheses
+#pragma warning disable CS8602
+
 namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
     public class KryptonComputeFileCheckSum : KryptonForm
@@ -39,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         private KryptonGroupBox kryptonGroupBox1;
         private KryptonWrapLabel kwlHash;
         private KryptonButton kbtnCompute;
-        private KryptonComboBox kcmbAlgorithimType;
+        private KryptonComboBox? kcmbAlgorithimType;
         private KryptonLabel kryptonLabel2;
         private KryptonButton kbtnCancel;
         private BackgroundWorker bgMD5Hash;

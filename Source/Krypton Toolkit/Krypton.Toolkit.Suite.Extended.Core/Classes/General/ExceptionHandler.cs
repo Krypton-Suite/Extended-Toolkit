@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="icon">The icon.</param>
         /// <param name="className">Name of the class.</param>
         /// <param name="methodSignature">The method signature.</param>
-        public static void CaptureException(Exception exception, string title = @"Exception Caught", ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK, ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.Error, string className = "", string methodSignature = "")
+        public static void CaptureException(Exception exception, string title = @"Exception Caught", ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK, ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.Error, string className = "", string? methodSignature = "")
         {
             if (className != "")
             {

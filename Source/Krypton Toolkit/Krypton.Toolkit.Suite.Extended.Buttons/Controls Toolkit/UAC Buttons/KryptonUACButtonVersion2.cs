@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable InconsistentNaming
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     /// <summary>

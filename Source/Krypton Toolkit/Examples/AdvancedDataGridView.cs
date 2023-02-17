@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 using Krypton.Toolkit.Suite.Extended.AdvancedDataGridView;
 
 using Timer = System.Windows.Forms.Timer;
+// ReSharper disable AssignNullToNotNullAttribute
+#pragma warning disable CS8622
+#pragma warning disable CS8601
+#pragma warning disable CS8602
 
 namespace Examples
 {
@@ -18,8 +15,8 @@ namespace Examples
     {
         #region Instance Fields
 
-        private DataTable _dataTable = null;
-        private DataSet _dataSet = null;
+        private DataTable? _dataTable;
+        private DataSet? _dataSet;
 
         private SortedDictionary<int, string?> _filtersaved = new();
         private SortedDictionary<int, string?> _sortsaved = new();
@@ -27,17 +24,17 @@ namespace Examples
         private bool _testtranslations = false;
         private bool _testtranslationsFromFile = false;
 
-        private static int DisplayItemsCounter = 100;
+        private static int _displayItemsCounter = 100;
 
-        private static bool MemoryTestEnabled = true;
+        private static bool _memoryTestEnabled = true;
         private const int MEMORY_TEST_NUM = 100;
-        private bool _memorytest = false;
-        private object[][] _inrows = new object[][] { };
+        private bool _memorytest;
+        private object[][] _inrows;
 
-        private Timer _memorytestclosetimer = null;
-        private Timer _timermemoryusage = null;
+        private Timer _memorytestclosetimer;
+        private Timer _timermemoryusage;
 
-        private static bool CollectGarbageOnTimerMemoryUsageUpdate = true;
+        private static bool _collectGarbageOnTimerMemoryUsageUpdate = true;
 
         #endregion
 
@@ -94,7 +91,7 @@ namespace Examples
             kcmbSortSaved.SelectedIndex = -1;
 
             //set memory test button
-            kbtnMemoryTest.Enabled = MemoryTestEnabled;
+            kbtnMemoryTest.Enabled = _memoryTestEnabled;
 
             //initialize dataset
             _dataTable = new DataTable();
@@ -154,15 +151,15 @@ namespace Examples
 
             if (_inrows.Length == 0)
             {
-                for (int i = 0; i < DisplayItemsCounter; i++)
+                for (int i = 0; i < _displayItemsCounter; i++)
                 {
-                    object[] newrow = new object[] {
+                    object[] newrow = {
                         i,
                         Math.Round((decimal)i*2/3, 6),
                         Math.Round(i % 2 == 0 ? (double)i*2/3 : (double)i/2, 6),
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0).Date,
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0),
-                        i*2 % 3 == 0 ? null : i.ToString()+" str",
+                        i*2 % 3 == 0 ? null : i+" str",
                         i % 2 == 0 ? true:false,
                         Guid.NewGuid(),
                         sampleimages[r.Next(0, 2)],
@@ -319,9 +316,9 @@ namespace Examples
                 kadgvMain.CurrentCell = c;
         }
 
-        private void _timermemoryusage_Tick(object sender, EventArgs e)
+        private void _timermemoryusage_Tick(object? sender, EventArgs? e)
         {
-            if (CollectGarbageOnTimerMemoryUsageUpdate)
+            if (_collectGarbageOnTimerMemoryUsageUpdate)
                 GC.Collect();
             tsslMemoryUsage.Text = String.Format("Memory Usage: {0}Mb", GC.GetTotalMemory(false) / (1024 * 1024));
         }
@@ -339,13 +336,13 @@ namespace Examples
                 object[][] testrows = new object[100][];
                 for (int i = 0; i < 100; i++)
                 {
-                    object[] newrow = new object[] {
+                    object[] newrow = {
                         i,
                         Math.Round((decimal)i*2/3, 6),
                         Math.Round(i % 2 == 0 ? (double)i*2/3 : (double)i/2, 6),
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0).Date,
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0),
-                        i*2 % 3 == 0 ? null : i.ToString()+" str",
+                        i*2 % 3 == 0 ? null : i+" str",
                         i % 2 == 0 ? true:false,
                         Guid.NewGuid(),
                         sampleimages[r.Next(0, 2)],
@@ -364,7 +361,7 @@ namespace Examples
                     while (!formtest.IsDisposed)
                     {
                         Application.DoEvents();
-                        System.Threading.Thread.Sleep(100);
+                        Thread.Sleep(100);
                     }
                 }
             }
@@ -382,7 +379,7 @@ namespace Examples
                 //add data
                 for (int i = 0; i < 100; i++)
                 {
-                    object[] newrow = new object[] {
+                    object[] newrow = {
                             i,
                             Math.Round((decimal)i*2/3, 6),
                             Math.Round(i % 2 == 0 ? (double)i*2/3 : (double)i/2, 6)
@@ -418,7 +415,7 @@ namespace Examples
         private void _memorytestclosetimer_Tick(object sender, EventArgs e)
         {
             _dataTable.Rows.Clear();
-            this.Close();
+            Close();
         }
     }
 }

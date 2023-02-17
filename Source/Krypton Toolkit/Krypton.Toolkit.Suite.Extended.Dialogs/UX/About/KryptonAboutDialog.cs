@@ -26,6 +26,7 @@
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Effects;
+#pragma warning disable CS8602
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
@@ -215,7 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             {
                 FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
 
-                Text = $"About {assembly.FullName}";
+                Text = $@"About {assembly.FullName}";
 
                 pbxApplicationIcon.Image = applicationIcon;
 
@@ -235,7 +236,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
 
-        public KryptonAboutDialog(Image applicationIcon, Assembly assembly, bool showDescription, bool showFrameworkVersion, bool showSystemInformation, string applicationText,
+        public KryptonAboutDialog(Image? applicationIcon, Assembly assembly, bool showDescription, bool showFrameworkVersion, bool showSystemInformation, string applicationText,
                                  string aboutText, string copyrightText, string frameworkVersionText, string showSystemInformationText, string versionText)
         {
             InitializeComponent();

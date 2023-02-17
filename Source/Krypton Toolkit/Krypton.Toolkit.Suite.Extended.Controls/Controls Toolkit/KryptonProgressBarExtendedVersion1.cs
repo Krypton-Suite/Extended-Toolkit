@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.Container components = null;
+        private Container? components = null;
 
         /// <summary> 
         /// Required method for Designer support - do not modify 

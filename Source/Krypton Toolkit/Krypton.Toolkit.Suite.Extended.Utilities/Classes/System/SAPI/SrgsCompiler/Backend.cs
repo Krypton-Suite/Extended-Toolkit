@@ -304,6 +304,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             rule._iSerialize2 = _ruleIndex++;
             if ((attributes & SPCFGRULEATTRIBUTES.SPRAF_Root) != 0)
             {
+                // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
                 if (_rootRule != null)
                 {
                     LogError(name, SRID.RootRuleAlreadyDefined);

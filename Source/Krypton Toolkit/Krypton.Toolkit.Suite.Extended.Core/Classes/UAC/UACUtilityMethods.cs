@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="width">The width to resize to.</param>
         /// <param name="height">The height to resize to.</param>
         /// <returns>The resized image.</returns>
-        public static Bitmap ResizeImage(Image image, int width, int height)
+        public static Bitmap? ResizeImage(Image image, int width, int height)
         {
             var destRect = new Rectangle(0, 0, width, height);
 

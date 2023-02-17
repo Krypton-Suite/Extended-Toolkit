@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         #endregion
 
         #region Methods
-        public static void PropagateHashBox(KryptonComboBox hashBox)
+        public static void PropagateHashBox(KryptonComboBox? hashBox)
         {
             HelperMethods helperMethods = new HelperMethods();
 

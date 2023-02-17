@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         private readonly KryptonFormExtended parentForm;                                     // The parent form if being displayed as a dialog.
         private FadeDirection fadeDirection;                                         // The direction in which to fade.
         private float fadeSpeed;                                                     // The speed at which to fade.
-        private FadeCompleted fadeFinished;                                          // The delegate to call when a fade has completed.
+        private FadeCompleted? fadeFinished;                                          // The delegate to call when a fade has completed.
         private bool shouldClose;                                                    // If set to true, the form will close after fading out.
         private readonly System.Threading.Tasks.TaskCompletionSource<DialogResult> showDialogResult // The Async Task Completion Source for displaying as a dialog.
             = new();
@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// Fade the form in at the defined speed as a dialog
         /// based on parent form.
         /// </summary>
-        private async System.Threading.Tasks.Task<DialogResult> ShowDialog(float fadeSpeed, FadeCompleted finished)
+        private async System.Threading.Tasks.Task<DialogResult> ShowDialog(float fadeSpeed, FadeCompleted? finished)
         {
             parentForm.BeginInvoke(() => showDialogResult.SetResult(form.ShowDialog(parentForm)));
 
@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <summary>
         /// Fade the form in at the defined speed.
         /// </summary>
-        private void FadeIn(float fadeSpeed, FadeCompleted finished)
+        private void FadeIn(float fadeSpeed, FadeCompleted? finished)
         {
             form.Opacity = 0;
             form.Show();
@@ -151,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             BeginFade();
         }
 
-        private void FadeIn(FadeSpeedChoice fadeSpeedChoice, FadeCompleted finished, float fadeSpeed = 0)
+        private void FadeIn(FadeSpeedChoice fadeSpeedChoice, FadeCompleted? finished, float fadeSpeed = 0)
         {
             form.Opacity = 0;
 
@@ -270,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// Fades a dialog in using parent form and defined fade speed
         /// and call the finished delegate.)
         /// </summary>
-        public static async System.Threading.Tasks.Task<DialogResult> ShowDialog(KryptonFormExtended form, KryptonFormExtended parent, float fadeSpeed, FadeCompleted finished)
+        public static async System.Threading.Tasks.Task<DialogResult> ShowDialog(KryptonFormExtended form, KryptonFormExtended parent, float fadeSpeed, FadeCompleted? finished)
         {
             FadeController fader = new FadeController(form, parent);
             return await fader.ShowDialog(fadeSpeed, finished);
@@ -279,7 +279,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <summary>
         /// Fade a form in at the defined speed.
         /// </summary>
-        public static void FadeIn(KryptonFormExtended form, float fadeSpeed, FadeCompleted finished)
+        public static void FadeIn(KryptonFormExtended form, float fadeSpeed, FadeCompleted? finished)
         {
             FadeController fader = new FadeController(form);
             fader.FadeIn(fadeSpeed, finished);

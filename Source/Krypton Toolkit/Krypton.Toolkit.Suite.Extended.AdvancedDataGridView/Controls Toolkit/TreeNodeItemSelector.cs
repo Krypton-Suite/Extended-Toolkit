@@ -115,7 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Clone a Node
         /// </summary>
         /// <returns></returns>
-        public new TreeNodeItemSelector Clone()
+        public new TreeNodeItemSelector? Clone()
         {
             TreeNodeItemSelector? n = new TreeNodeItemSelector(Text, Value, _checkState, NodeType)
             {
@@ -251,19 +251,19 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             return n;
         }
-        public TreeNodeItemSelector? CreateChildNode(string text, object value)
-        {
-            return CreateChildNode(text, value, _checkState);
-        }
+        public TreeNodeItemSelector? CreateChildNode(string text, object value) => CreateChildNode(text, value, _checkState);
 
         /// <summary>
         /// Add a child Node to this Node
         /// </summary>
         /// <param name="child"></param>
-        protected void AddChild(TreeNodeItemSelector child)
+        protected void AddChild(TreeNodeItemSelector? child)
         {
-            child.Parent = this;
-            Nodes.Add(child);
+            if (child != null)
+            {
+                child.Parent = this;
+                Nodes.Add(child);
+            }
         }
 
         #endregion

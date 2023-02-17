@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         private KryptonGroupBox kryptonGroupBox1;
         private KryptonWrapLabel kwlCalculatedCheckSum;
         private KryptonButton kbtnCompute;
-        private KryptonComboBox kcmbAlgorithimType;
+        private KryptonComboBox? kcmbAlgorithimType;
         private KryptonLabel kryptonLabel2;
         private KryptonButton kbtnValidate;
         private KryptonTextBox ktxtVarifyCheckSum;

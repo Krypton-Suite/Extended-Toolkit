@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8601, CS8602
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     /// <summary>Allows the user to browse for files.</summary>
@@ -53,11 +54,11 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private string _initialDirectory;
 
-        private string _resetText;
+        private string? _resetText;
 
-        private string _resetTextToolTipHeading;
+        private string? _resetTextToolTipHeading;
 
-        private string _resetTextToolTipDescription;
+        private string? _resetTextToolTipDescription;
 
         private Image _smallResetImage;
 
@@ -112,17 +113,17 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>Gets or sets the reset text.</summary>
         /// <value>The reset text.</value>
         [DefaultValue(@"&Reset"), Description(@"Gets or sets the reset text.")]
-        public new string ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
+        public new string? ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
 
         /// <summary>Gets or sets the reset text tool tip heading.</summary>
         /// <value>The reset text tool tip heading.</value>
         [DefaultValue(@"Reset"), Description(@"Gets or sets the reset text tool tip heading.")]
-        public string ResetTextToolTipHeading { get => _resetTextToolTipHeading; set => _resetTextToolTipHeading = value; }
+        public string? ResetTextToolTipHeading { get => _resetTextToolTipHeading; set => _resetTextToolTipHeading = value; }
 
         /// <summary>Gets or sets the reset text tool tip description.</summary>
         /// <value>The reset text tool tip description.</value>
         [DefaultValue(@"Resets the text of the text box."), Description(@">Gets or sets the reset text tool tip description.")]
-        public string ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
+        public string? ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
 
         /// <summary>Gets or sets the small reset image.</summary>
         /// <value>The small reset image.</value>
@@ -153,11 +154,11 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             _largeResetImage = Properties.Resources.Reset_32_x_32;
 
-            _bsaBrowse.Text = "...";
+            _bsaBrowse.Text = @"...";
 
             _bsaBrowse.KryptonCommand = _kcBrowse;
 
-            _kcBrowse.Text = "...";
+            _kcBrowse.Text = @"...";
 
             _bsaReset.ToolTipImage = _smallResetImage;
 

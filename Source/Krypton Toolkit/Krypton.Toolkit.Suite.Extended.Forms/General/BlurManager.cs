@@ -117,6 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             var visited = new HashSet<IntPtr> { hWnd };
             try
             {
+                // ReSharper disable once AssignNullToNotNullAttribute
                 Form activeForm = Form.ActiveForm;
                 if (activeForm != null)
                 {

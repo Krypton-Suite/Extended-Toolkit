@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption = @"",
+        public static DialogResult Show(IWin32Window? owner, string text, string caption = @"",
             ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
             ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
             KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption,
+        public static DialogResult Show(IWin32Window? owner, string text, string caption,
             ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon,
             KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
@@ -228,7 +228,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              optionalCheckBoxText, showOptionalLinkLabel,
                              optionalLinkLabelText, optionalLinkLabelDestination);
 
-        /// <summary>Shows a messagebox.</summary>
+        /// <summary>Shows the specified owner.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -239,6 +239,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="helpFilePath">The help file path.</param>
         /// <param name="navigator">The navigator.</param>
         /// <param name="param">The parameter.</param>
+        /// <param name="displayHelpButton">if set to <c>true</c> [display help button].</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
@@ -246,10 +247,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
         /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="showOptionalLinkLabel">if set to <c>true</c> [show optional link label].</param>
+        /// <param name="optionalLinkLabelText">The optional link label text.</param>
+        /// <param name="optionalLinkLabelDestination">The optional link label destination.</param>
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption = @"",
+        public static DialogResult Show(IWin32Window? owner, string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                  ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
                                  KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
@@ -300,20 +304,20 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>
         ///   <br />
         /// </returns>
-        internal static DialogResult InternalShow(IWin32Window owner, string text, string caption,
+        internal static DialogResult InternalShow(IWin32Window? owner, string text, string caption,
                                                   ExtendedMessageBoxButtons buttons,
                                                   ExtendedKryptonMessageBoxIcon icon,
                                                   KryptonMessageBoxDefaultButton defaultButton,
                                                   MessageBoxOptions options,
-                                                  HelpInfo helpInfo,
-                                                  bool? showCtrlCopy, Font messageBoxTypeface,
-                                                  Image customImageIcon, bool? showOptionalCheckBox,
+                                                  HelpInfo? helpInfo,
+                                                  bool? showCtrlCopy, Font? messageBoxTypeface,
+                                                  Image? customImageIcon, bool? showOptionalCheckBox,
                                                   bool? optionalCheckBoxChecked,
                                                   CheckState? optionalCheckBoxCheckState,
                                                   string optionalCheckBoxText, bool? showOptionalLinkLabel,
                                                   string optionalLinkLabelText, string optionalLinkLabelDestination)
         {
-            IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
+            IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
             //using KryptonMessageBoxExtendedFormDeveloperTest kmbef = new(showOwner, text, caption, buttons,
             //                                                icon, defaultButton, options,
@@ -331,7 +335,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region WinForm Compatibility
-        private static IWin32Window ValidateOptions(IWin32Window owner, MessageBoxOptions options, HelpInfo helpInfo)
+        private static IWin32Window? ValidateOptions(IWin32Window? owner, MessageBoxOptions options, HelpInfo? helpInfo)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive &&
@@ -354,7 +358,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 throw new ArgumentException(@"Cannot show message box from a service with help specified", nameof(options));
             }
 
-            IWin32Window showOwner = null;
+            IWin32Window? showOwner = null;
             if ((helpInfo != null) ||
                 ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
             {

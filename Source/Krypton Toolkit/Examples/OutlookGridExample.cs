@@ -3,6 +3,7 @@ using System.Xml;
 
 using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+#pragma warning disable CS8601
 #pragma warning disable CS0219
 #pragma warning disable CS8603
 #pragma warning disable CS8602
@@ -67,37 +68,13 @@ namespace Examples
                     try
                     {
                         row = new OutlookGridRow();
-                        row.CreateCells(kogExample, new object[]
-                        {
-                        customer["CustomerID"].InnerText,
-                        customer["CustomerName"].InnerText,
-                        customer["Address"].InnerText,
-                        customer["City"].InnerText,
-                        new TextAndImage(customer["Country"].InnerText, GetFlag(customer["Country"].InnerText)),
-                        DateTime.Parse(customer["OrderDate"].InnerText, culture),
-                        customer["ProductName"].InnerText,
-                        double.Parse(customer["Price"].InnerText,
-                            CultureInfo.InvariantCulture), //We put a float the formatting in design does the rest
-                        (double) random.Next(101) / 100,
-                        tokensList[random.Next(5)]
-                        });
+                        row.CreateCells(kogExample, customer["CustomerID"].InnerText, customer["CustomerName"].InnerText, customer["Address"].InnerText, customer["City"].InnerText, new TextAndImage(customer["Country"].InnerText, GetFlag(customer["Country"].InnerText)), DateTime.Parse(customer["OrderDate"].InnerText, culture), customer["ProductName"].InnerText, double.Parse(customer["Price"].InnerText,
+                            CultureInfo.InvariantCulture), (double)random.Next(101) / 100, tokensList[random.Next(5)]);
                         if (random.Next(2) == 1)
                         {
                             //Sub row
                             OutlookGridRow row2 = new OutlookGridRow();
-                            row2.CreateCells(kogExample, new object[]
-                            {
-                            customer["CustomerID"].InnerText + " 2",
-                            customer["CustomerName"].InnerText + " 2",
-                            customer["Address"].InnerText + "2",
-                            customer["City"].InnerText + " 2",
-                            new TextAndImage(customer["Country"].InnerText, GetFlag(customer["Country"].InnerText)),
-                            DateTime.Now,
-                            customer["ProductName"].InnerText + " 2",
-                            (double) random.Next(1000),
-                            (double) random.Next(101) / 100,
-                            tokensList[random.Next(5)]
-                            });
+                            row2.CreateCells(kogExample, customer["CustomerID"].InnerText + " 2", customer["CustomerName"].InnerText + " 2", customer["Address"].InnerText + "2", customer["City"].InnerText + " 2", new TextAndImage(customer["Country"].InnerText, GetFlag(customer["Country"].InnerText)), DateTime.Now, customer["ProductName"].InnerText + " 2", (double)random.Next(1000), (double)random.Next(101) / 100, tokensList[random.Next(5)]);
                             row.Nodes.Add(row2);
                             ((KryptonDataGridViewTreeTextCell)row2.Cells[1])
                                 .UpdateStyle(); //Important : after added to the parent node
@@ -109,7 +86,7 @@ namespace Examples
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Gasp...Something went wrong ! " + ex.Message, "Error", MessageBoxButtons.OK,
+                        MessageBox.Show(@"Gasp...Something went wrong ! " + ex.Message, @"Error", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                 }

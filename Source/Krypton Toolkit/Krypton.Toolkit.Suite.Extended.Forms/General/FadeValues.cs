@@ -34,17 +34,17 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private bool _useFade;
 
-        private FadeController _fadeController;
+        private FadeController? _fadeController;
 
         private int _fadeInterval;
 
-        private KryptonFormExtended _currentWindow;
+        private KryptonFormExtended? _currentWindow;
 
-        private KryptonFormExtended _nextWindow;
+        private KryptonFormExtended? _nextWindow;
 
-        private VirtualForm _currentVirtualWindow;
+        private VirtualForm? _currentVirtualWindow;
 
-        private VirtualForm _nextVirtualWindow;
+        private VirtualForm? _nextVirtualWindow;
 
         #endregion
 
@@ -53,22 +53,22 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         [DefaultValue(false)]
         public bool UseFade { get => _useFade; set => _useFade = value; }
 
-        internal FadeController FadeController => _fadeController;
+        internal FadeController? FadeController => _fadeController;
 
         [DefaultValue(50)]
         public int FadeInterval { get => _fadeInterval; set => _fadeInterval = value; }
 
         [DefaultValue(null)]
-        public KryptonFormExtended CurrentWindow { get => _currentWindow; set => _currentWindow = value; }
+        public KryptonFormExtended? CurrentWindow { get => _currentWindow; set => _currentWindow = value; }
 
         [DefaultValue(null)]
-        public KryptonFormExtended NextWindow { get => _nextWindow; set => _nextWindow = value; }
+        public KryptonFormExtended? NextWindow { get => _nextWindow; set => _nextWindow = value; }
 
         [DefaultValue(null)]
-        public VirtualForm CurrentVirtualWindow { get => _currentVirtualWindow; set => _currentVirtualWindow = value; }
+        public VirtualForm? CurrentVirtualWindow { get => _currentVirtualWindow; set => _currentVirtualWindow = value; }
 
         [DefaultValue(null)]
-        public VirtualForm NextVirtualWindow { get => _nextVirtualWindow; set => _nextVirtualWindow = value; }
+        public VirtualForm? NextVirtualWindow { get => _nextVirtualWindow; set => _nextVirtualWindow = value; }
 
         #endregion
 
@@ -78,17 +78,17 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         internal void Reset()
         {
-            UseFade = false;
+            _useFade = false;
 
-            FadeInterval = 50;
+            _fadeInterval = 50;
 
-            CurrentWindow = null;
+            _currentWindow = null;
 
-            NextWindow = null;
+            _nextWindow = null;
 
-            CurrentVirtualWindow = null;
+            _currentVirtualWindow = null;
 
-            NextVirtualWindow = null;
+            _nextVirtualWindow = null;
 
             _fadeController = null;
         }

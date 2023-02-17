@@ -25,6 +25,8 @@
  */
 #endregion
 
+#pragma warning disable CS8602
+
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     public class KryptonMarqueeLabel : KryptonLabel
@@ -33,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         /// <summary>Gets or sets the marquee timer.</summary>
         /// <value>The marquee timer.</value>
-        public System.Windows.Forms.Timer MarqueeTimer { get; set; }
+        public Timer MarqueeTimer { get; set; }
 
         /// <summary>Gets or sets the speed of the marquee.</summary>
         /// <value>The speed.</value>
@@ -50,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             Speed = 1;
 
-            MarqueeTimer = new System.Windows.Forms.Timer();
+            MarqueeTimer = new();
 
             MarqueeTimer.Interval = 25;
 

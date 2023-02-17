@@ -37,13 +37,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     {
         private readonly float X;
         private readonly float Y;
-        private readonly IDraggable PlottableBeingDragged;
+        private readonly IDraggable? PlottableBeingDragged;
         private readonly Plot Plot;
         private readonly bool ShiftDown;
         private readonly Configuration Configuration;
         public RenderType RenderType => Configuration.QualityConfiguration.MouseInteractiveDragged;
 
-        public PlottableDragEvent(float x, float y, bool shiftDown, IDraggable plottable, Plot plt, Configuration config)
+        public PlottableDragEvent(float x, float y, bool shiftDown, IDraggable? plottable, Plot plt, Configuration config)
         {
             X = x;
             Y = y;

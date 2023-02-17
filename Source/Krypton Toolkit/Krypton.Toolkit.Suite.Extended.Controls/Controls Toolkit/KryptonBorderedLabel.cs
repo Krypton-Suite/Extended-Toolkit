@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     public class KryptonBorderedLabel : KryptonLabel

@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 {
     /// <summary>The circular progress bar windows form control.</summary>
@@ -34,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
     public class CircularProgressBar : System.Windows.Forms.ProgressBar
     {
         #region Variables
-        private readonly Animator _animator;
+        private readonly Animator? _animator;
         private int? _animatedStartAngle;
         private float? _animatedValue;
         private AnimationFunctions.Function _animationFunction;
@@ -52,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         private PaletteBorderInheritRedirect _paletteBorder;
         private PaletteContentInheritRedirect _paletteContent;
 
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
         private PaletteRedirect _paletteRedirect;
         #endregion
 
@@ -289,7 +290,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 
             InitialiseKrypton();
 
-            Text = "0";
+            Text = @"0";
 
             FirstValueColour = Color.Red;
 

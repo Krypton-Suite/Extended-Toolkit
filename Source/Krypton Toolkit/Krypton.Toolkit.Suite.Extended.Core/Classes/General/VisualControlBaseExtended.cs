@@ -27,9 +27,10 @@
 #endregion
 
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8604
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
-    // <summary>
+    /// <summary>
     /// Base class used for implementation of actual controls.
     /// </summary>
     [ToolboxItem(false), DesignerCategory("code")]
@@ -569,7 +570,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             [DebuggerStepThrough]
             get;
-            protected set;
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
+            private set;
         }
 
         /// <summary>

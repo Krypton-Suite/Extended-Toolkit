@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
     public class KryptonFlowLayoutPanel : FlowLayoutPanel
     {
         #region Variables
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
         private PaletteRedirect _paletteRedirect;
         private PaletteBackInheritRedirect _paletteBack;
         private PaletteBorderInheritRedirect _paletteBorder;

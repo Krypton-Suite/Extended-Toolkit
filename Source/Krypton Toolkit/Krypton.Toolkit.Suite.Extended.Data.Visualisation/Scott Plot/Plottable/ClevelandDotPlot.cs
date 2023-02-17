@@ -25,6 +25,9 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+// ReSharper disable AssignNullToNotNullAttribute
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
@@ -59,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
         }
 
-        public double[] Ys2
+        public double[]? Ys2
         {
             get
             {
@@ -132,7 +135,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color2 = color ?? Color2;
         }
 
-        public ClevelandDotPlot(double[] xs, double[] ys1, double[] ys2) : base()
+        public ClevelandDotPlot(double[] xs, double[] ys1, double[]? ys2) : base()
         {
             Ys1 = ys1;
             Ys2 = ys2;

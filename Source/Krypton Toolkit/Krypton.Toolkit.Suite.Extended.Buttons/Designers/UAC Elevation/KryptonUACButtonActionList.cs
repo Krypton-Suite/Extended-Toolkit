@@ -25,12 +25,13 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     internal class KryptonUACButtonActionList : DesignerActionList
     {
         #region Instance Fields
-        private readonly KryptonUACButtonVersion2 _uacButton;
+        private readonly KryptonUACButtonVersion2? _uacButton;
         private readonly IComponentChangeService _service;
         #endregion
 
@@ -46,6 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             _uacButton = owner.Component as KryptonUACButtonVersion2;
 
             // Cache service used to notify when a property has changed
+            // ReSharper disable once AssignNullToNotNullAttribute
             _service = (IComponentChangeService)GetService(typeof(IComponentChangeService));
         }
         #endregion
@@ -85,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         /// <summary>Gets or sets the context menu strip.</summary>
         /// <value>The context menu strip.</value>
-        public ContextMenuStrip ContextMenuStrip
+        public ContextMenuStrip? ContextMenuStrip
         {
             get => _uacButton.ContextMenuStrip;
 
@@ -154,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>
         /// Gets and sets the button image.
         /// </summary>
-        public Image Image
+        public Image? Image
         {
             get => _uacButton.Values.Image;
 
@@ -187,7 +189,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         /// <summary>Gets or sets the font.</summary>
         /// <value>The font.</value>
-        public Font ShortTextFont
+        public Font? ShortTextFont
         {
             get => _uacButton.StateCommon.Content.ShortText.Font;
 
@@ -204,7 +206,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         /// <summary>Gets or sets the font.</summary>
         /// <value>The font.</value>
-        public Font LongTextFont
+        public Font? LongTextFont
         {
             get => _uacButton.StateCommon.Content.LongText.Font;
 

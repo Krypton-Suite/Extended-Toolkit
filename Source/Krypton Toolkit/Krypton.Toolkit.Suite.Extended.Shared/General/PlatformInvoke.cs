@@ -4006,7 +4006,7 @@ BS_ICON or BS_BITMAP set? 	BM_SETIMAGE called? 	Result
 
         [DllImport(@"uxtheme.dll", CharSet = CharSet.Unicode)]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
-        public static extern int SetWindowTheme(IntPtr hWnd, string subAppName, string subIdList);
+        public static extern int SetWindowTheme(IntPtr hWnd, string? subAppName, string? subIdList);
         #endregion
 
         #region Static Kernel32

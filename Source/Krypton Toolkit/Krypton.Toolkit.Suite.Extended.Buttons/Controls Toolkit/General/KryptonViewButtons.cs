@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable InconsistentNaming
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     [ToolboxItem(true), ToolboxBitmap(typeof(Button))]
@@ -34,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer? components = null;
 
         /// <summary> 
         /// Clean up any resources being used.

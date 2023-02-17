@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     [ToolboxBitmap(typeof(KryptonButton))]
@@ -70,6 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>Gets or sets a value indicating whether [use uac elevation].</summary>
         /// <value>
         ///   <c>true</c> if [use uac elevation]; otherwise, <c>false</c>.</value>
+        // ReSharper disable once InconsistentNaming
         public bool UseUACElevation
         {
             get => _useUACElevation;
@@ -207,7 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             Rectangle focusRectangle = new Rectangle(internalBorder, internalBorder, bounds.Width - _dropDownRectangle.Width - internalBorder, bounds.Height - (internalBorder * 2));
 
-            PaletteBase palette = KryptonManager.CurrentGlobalPalette;
+            PaletteBase? palette = KryptonManager.CurrentGlobalPalette;
 
             Pen shadow = SystemPens.ButtonShadow, face = SystemPens.ButtonFace;
 
@@ -278,6 +280,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             if (KryptonContextMenu != null)
             {
+                // ReSharper disable once PossibleNullReferenceException
                 KryptonContextMenu.Show(FindForm().PointToScreen(Location) + new Size(0, Height));
 
                 KryptonContextMenu.Closed += KryptonContextMenu_Closed;
@@ -294,7 +297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Event Handlers
         private void KryptonContextMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
-            KryptonContextMenu kcm = sender as KryptonContextMenu;
+            KryptonContextMenu? kcm = sender as KryptonContextMenu;
             if (kcm != null)
             {
                 kcm.Closed -= KryptonContextMenu_Closed;
@@ -308,7 +311,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private void ContextMenuStrip_Closing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            ContextMenuStrip cms = sender as ContextMenuStrip;
+            ContextMenuStrip? cms = sender as ContextMenuStrip;
             if (cms != null)
             {
                 cms.Closing -= ContextMenuStrip_Closing;

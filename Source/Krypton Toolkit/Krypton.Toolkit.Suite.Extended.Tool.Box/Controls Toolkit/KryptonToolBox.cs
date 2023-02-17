@@ -781,11 +781,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         */
 
         [Category("ToolBox"), Browsable(false), XmlIgnore]
-        public ToolBoxTab this[int tabIndex]
+        public ToolBoxTab? this[int tabIndex]
         {
             get
             {
-                ToolBoxTab tab = null;
+                ToolBoxTab? tab = null;
                 try
                 {
                     if (0 <= tabIndex && tabIndex < _toolBoxTabs.Count)
@@ -802,11 +802,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         }
 
         [Category("ToolBox"), Browsable(false), XmlIgnore]
-        public ToolBoxTab this[string caption]
+        public ToolBoxTab? this[string caption]
         {
             get
             {
-                ToolBoxTab tab = null;
+                ToolBoxTab? tab = null;
                 int iLoop = 0;
                 try
                 {
@@ -821,6 +821,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 }
                 catch
                 {
+                    tab = null;
                 }
                 return tab;
             }
@@ -830,7 +831,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         public ToolBoxTab? SelectedTab => _selectedTab;
 
         [Category("ToolBox"), Browsable(false), XmlIgnore]
-        public ToolBoxItem EditingItem => _textBox.Tag as ToolBoxItem;
+        public ToolBoxItem? EditingItem => _textBox.Tag as ToolBoxItem;
 
         [Category("ToolBox")]
         public int SelectedTabIndex
@@ -868,6 +869,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     try
                     {
+                        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
                         if (null != TabSelectionChanged)
                         {
                             TabSelectionChanged(_selectedTab, EventArgs.Empty);
@@ -875,6 +877,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     }
                     catch
                     {
+                        _oldselectedTab = null;
                     }
                 }
             }

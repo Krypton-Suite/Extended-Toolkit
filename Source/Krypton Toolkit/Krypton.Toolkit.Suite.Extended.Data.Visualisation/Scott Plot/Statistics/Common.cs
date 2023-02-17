@@ -25,11 +25,12 @@
  */
 #endregion
 
+// ReSharper disable ArrangeModifiersOrder
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public static class Common
     {
-        private readonly static RNGCryptoServiceProvider Rand = new();
+        private readonly static RNGCryptoServiceProvider _rand = new();
 
         /// <summary>
         /// Return the minimum, and maximum, and sum of a given array.
@@ -243,7 +244,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static int GetRandomInt(int min, int max)
         {
             byte[] randomBytes = new byte[sizeof(int)];
-            Rand.GetBytes(randomBytes);
+            _rand.GetBytes(randomBytes);
             int randomInt = BitConverter.ToInt32(randomBytes, 0);
             return Math.Abs(randomInt % (max - min + 1)) + min;
         }

@@ -274,7 +274,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private readonly MessageBoxOptions _options; // https://github.com/Krypton-Suite/Standard-Toolkit/issues/313
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
         private readonly IWin32Window _showOwner;
-        private readonly HelpInfo _helpInfo;
+        private readonly HelpInfo? _helpInfo;
 
         #endregion
 
@@ -284,7 +284,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private readonly Color _messageTextColour;
 
-        private readonly Color[] _buttonTextColours = new Color[4];
+        private readonly Color[]? _buttonTextColours = new Color[4];
 
         private readonly DialogResult _buttonOneCustomDialogResult;
 
@@ -300,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
 
-        private readonly Image _customkryptonMessageBoxIcon;
+        private readonly Image? _customkryptonMessageBoxIcon;
 
         private readonly string _buttonOneCustomText;
 
@@ -325,10 +325,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                                ExtendedKryptonMessageBoxIcon kryptonMessageBoxIcon,
                                                KryptonMessageBoxDefaultButton defaultButton,
                                                MessageBoxOptions options,
-                                               HelpInfo helpInfo, bool? showCtrlCopy,
+                                               HelpInfo? helpInfo, bool? showCtrlCopy,
                                                Font? messageBoxTypeface,
-                                               Image customkryptonMessageBoxIcon, bool? showHelpButton,
-                                               Color? messageTextColour, Color[] buttonTextColours,
+                                               Image? customkryptonMessageBoxIcon, bool? showHelpButton,
+                                               Color? messageTextColour, Color[]? buttonTextColours,
                                                DialogResult? buttonOneCustomDialogResult,
                                                DialogResult? buttonTwoCustomDialogResult,
                                                DialogResult? buttonThreeCustomDialogResult,

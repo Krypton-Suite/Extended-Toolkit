@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add a Cleveland Dot plot for the given values. Cleveland Dots will be placed at X positions 0, 1, 2, etc.
         /// </summary>
-        public ClevelandDotPlot AddClevelandDot(double[] ys1, double[] ys2)
+        public ClevelandDotPlot AddClevelandDot(double[] ys1, double[]? ys2)
         {
             double[] xs = DataGen.Consecutive(ys1.Length);
             var plottable = new ClevelandDotPlot(xs, ys1, ys2);
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add a Cleveland Dot plot for the given values using defined dot positions.
         /// </summary>
-        public ClevelandDotPlot AddClevelandDot(double[] ys1, double[] ys2, double[] positions)
+        public ClevelandDotPlot AddClevelandDot(double[] ys1, double[]? ys2, double[] positions)
         {
             var plottable = new ClevelandDotPlot(positions, ys1, ys2);
             Add(plottable);

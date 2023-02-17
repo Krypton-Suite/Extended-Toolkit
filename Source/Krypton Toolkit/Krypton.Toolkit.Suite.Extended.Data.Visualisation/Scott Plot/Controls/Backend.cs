@@ -125,43 +125,43 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// True if the middle mouse button is pressed
         /// </summary>
-        private bool IsMiddleDown;
+        private bool _isMiddleDown;
 
         /// <summary>
         /// True if the right mouse button is pressed
         /// </summary>
-        private bool IsRightDown;
+        private bool _isRightDown;
 
         /// <summary>
         /// True if the left mouse button is pressed
         /// </summary>
-        private bool IsLeftDown;
+        private bool _isLeftDown;
 
         /// <summary>
         /// Current position of the mouse in pixels
         /// </summary>
-        private float MouseLocationX;
+        private float _mouseLocationX;
 
         /// <summary>
         /// Current position of the mouse in pixels
         /// </summary>
-        private float MouseLocationY;
+        private float _mouseLocationY;
 
         /// <summary>
         /// Holds the plottable actively being dragged with the mouse.
         /// Contains null if no plottable is being dragged.
         /// </summary>
-        private IDraggable PlottableBeingDragged = null;
+        private IDraggable? _plottableBeingDragged = null;
 
         /// <summary>
         /// True when a zoom rectangle is being drawn and the mouse button is still down
         /// </summary>
-        private bool IsZoomingRectangle;
+        private bool _isZoomingRectangle;
 
         /// <summary>
         /// True if a zoom rectangle is being actively drawn using ALT + left click
         /// </summary>
-        private bool IsZoomingWithAlt;
+        private bool _isZoomingWithAlt;
 
         /// <summary>
         /// The plot underlying this control.
@@ -171,38 +171,38 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// The settings object underlying the plot.
         /// </summary>
-        private Settings Settings;
+        private Settings _settings;
 
         /// <summary>
         /// The latest render is stored in this bitmap.
         /// New renders may be performed on this existing bitmap.
         /// When a new bitmap is created, this bitmap will be stored in OldBitmaps and eventually disposed.
         /// </summary>
-        private System.Drawing.Bitmap Bmp;
+        private System.Drawing.Bitmap _bmp;
 
         /// <summary>
         /// Bitmaps that are created are stored here so they can be kept track of and
         /// disposed properly when new bitmaps are created.
         /// </summary>
-        private readonly Queue<System.Drawing.Bitmap> OldBitmaps = new();
+        private readonly Queue<System.Drawing.Bitmap> _oldBitmaps = new();
 
         /// <summary>
         /// Store last render limits so new renders can know whether the axis limits
         /// have changed and decide whether to invoke the AxesChanged event or not.
         /// </summary>
-        private AxisLimits LimitsOnLastRender = new();
+        private AxisLimits _limitsOnLastRender = new();
 
         /// <summary>
         /// Unique identifier of the plottables list that was last rendered.
         /// This value is used to determine if the plottables list was modified (requiring a re-render).
         /// </summary>
-        private int PlottablesIdentifierAtLastRender = 0;
+        private int _plottablesIdentifierAtLastRender = 0;
 
         /// <summary>
         /// This is set to True while the render loop is running.
         /// This prevents multiple renders from occurring at the same time.
         /// </summary>
-        private bool currentlyRendering = false;
+        private bool _currentlyRendering = false;
 
         /// <summary>
         /// The style of cursor the control should display
@@ -212,17 +212,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// The events processor invokes renders in response to custom events
         /// </summary>
-        private readonly EventsProcessor EventsProcessor;
+        private readonly EventsProcessor _eventsProcessor;
 
         /// <summary>
         /// The event factor creates event objects to be handled by the event processor
         /// </summary>
-        private UIEventFactory EventFactory;
+        private UIEventFactory _eventFactory;
 
         /// <summary>
         /// Number of times the current bitmap has been rendered on.
         /// </summary>
-        private int BitmapRenderCount = 0;
+        private int _bitmapRenderCount = 0;
 
         /// <summary>
         /// Total number of renders performed.
@@ -234,12 +234,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Tracks the total distance the mouse was click-dragged (rectangular pixel units)
         /// </summary>
-        private float MouseDownTravelDistance;
+        private float _mouseDownTravelDistance;
 
         /// <summary>
         /// True if the mouse was dragged (with a button down) long enough to quality as a drag instead of a click
         /// </summary>
-        private bool MouseDownDragged => MouseDownTravelDistance > Configuration.IgnoreMouseDragDistance;
+        private bool MouseDownDragged => _mouseDownTravelDistance > Configuration.IgnoreMouseDragDistance;
 
 
         /// <summary>
@@ -261,8 +261,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="name">variable name of the user control using this backend</param>
         public ControlBackEnd(float width, float height, string name = "UnamedControl")
         {
-            EventFactory = new UIEventFactory(Configuration, Settings, Plot);
-            EventsProcessor = new EventsProcessor(
+            _eventFactory = new UIEventFactory(Configuration, _settings, Plot);
+            _eventsProcessor = new EventsProcessor(
                     renderAction: (lowQuality) => Render(lowQuality),
                     renderDelay: (int)Configuration.ScrollWheelZoomHighQualityDelay);
             ControlName = name;
@@ -274,7 +274,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// before it has fully connected its event handlers. To prevent processing events before
         /// the host is control is ready, the processor will be stopped until is called by the host control.
         /// </summary>
-        public void StartProcessingEvents() => EventsProcessor.Enable = true;
+        public void StartProcessingEvents() => _eventsProcessor.Enable = true;
 
         /// <summary>
         /// Reset the back-end by creating an entirely new plot of the given dimensions
@@ -287,8 +287,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Reset(float width, float height, Plot newPlot)
         {
             Plot = newPlot;
-            Settings = Plot.GetSettings(false);
-            EventFactory = new UIEventFactory(Configuration, Settings, Plot);
+            _settings = Plot.GetSettings(false);
+            _eventFactory = new UIEventFactory(Configuration, _settings, Plot);
             WasManuallyRendered = false;
             Resize(width, height, useDelayedRendering: false);
         }
@@ -296,18 +296,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Return a copy of the list of draggable plottables
         /// </summary>
-        private IDraggable[] GetDraggables() =>
-            Settings.Plottables.Where(x => x is IDraggable).Select(x => (IDraggable)x).ToArray();
+        private IDraggable?[] GetDraggables() =>
+            _settings.Plottables.Where(x => x is IDraggable).Select(x => (IDraggable)x).ToArray();
 
         /// <summary>
         /// Return the draggable plottable under the mouse cursor (or null if there isn't one)
         /// </summary>
-        private IDraggable GetDraggableUnderMouse(double pixelX, double pixelY, int snapDistancePixels = 5)
+        private IDraggable? GetDraggableUnderMouse(double pixelX, double pixelY, int snapDistancePixels = 5)
         {
-            double snapWidth = Settings.XAxis.Dims.UnitsPerPx * snapDistancePixels;
-            double snapHeight = Settings.YAxis.Dims.UnitsPerPx * snapDistancePixels;
+            double snapWidth = _settings.XAxis.Dims.UnitsPerPx * snapDistancePixels;
+            double snapHeight = _settings.YAxis.Dims.UnitsPerPx * snapDistancePixels;
 
-            foreach (IDraggable draggable in GetDraggables())
+            foreach (IDraggable? draggable in GetDraggables())
                 if (draggable.IsUnderMouse(Plot.GetCoordinateX((float)pixelX), Plot.GetCoordinateY((float)pixelY), snapWidth, snapHeight))
                     if (draggable.DragEnabled)
                         return draggable;
@@ -347,9 +347,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public System.Drawing.Bitmap GetLatestBitmap()
         {
-            while (OldBitmaps.Count > 3)
-                OldBitmaps.Dequeue()?.Dispose();
-            return Bmp;
+            while (_oldBitmaps.Count > 3)
+                _oldBitmaps.Dequeue()?.Dispose();
+            return _bmp;
         }
 
         /// <summary>
@@ -358,25 +358,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public void Render(bool lowQuality = false, bool skipIfCurrentlyRendering = false)
         {
-            if (Bmp is null)
+            if (_bmp is null)
                 return;
 
-            if (currentlyRendering && skipIfCurrentlyRendering)
+            if (_currentlyRendering && skipIfCurrentlyRendering)
                 return;
-            currentlyRendering = true;
+            _currentlyRendering = true;
 
             if (Configuration.Quality == QualityMode.High)
                 lowQuality = false;
             else if (Configuration.Quality == QualityMode.Low)
                 lowQuality = true;
 
-            Plot.Render(Bmp, lowQuality);
-            BitmapRenderCount += 1;
+            Plot.Render(_bmp, lowQuality);
+            _bitmapRenderCount += 1;
             RenderCount += 1;
-            PlottablesIdentifierAtLastRender = Settings.PlottablesIdentifier;
+            _plottablesIdentifierAtLastRender = _settings.PlottablesIdentifier;
 
             if (WasManuallyRendered == false &&
-                Settings.Plottables.Count > 0 &&
+                _settings.Plottables.Count > 0 &&
                 Configuration.WarnIfRenderNotCalledManually &&
                 Debugger.IsAttached)
             {
@@ -384,15 +384,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     $"{ControlName}.Refresh() must be called\n" +
                     $"after modifying the plot or its data.";
                 Debug.WriteLine(message.Replace("\n", " "));
-                AddErrorMessage(Bmp, message);
+                AddErrorMessage(_bmp, message);
             }
 
             AxisLimits newLimits = Plot.GetAxisLimits();
-            if (!newLimits.Equals(LimitsOnLastRender) && Configuration.AxesChangedEventEnabled)
+            if (!newLimits.Equals(_limitsOnLastRender) && Configuration.AxesChangedEventEnabled)
                 AxesChanged(null, EventArgs.Empty);
-            LimitsOnLastRender = newLimits;
+            _limitsOnLastRender = newLimits;
 
-            if (BitmapRenderCount == 1)
+            if (_bitmapRenderCount == 1)
             {
                 // a new bitmap was rendered on for the first time
                 BitmapChanged(this, EventArgs.Empty);
@@ -403,7 +403,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 BitmapUpdated(null, EventArgs.Empty);
             }
 
-            currentlyRendering = false;
+            _currentlyRendering = false;
         }
 
         /// <summary>
@@ -468,24 +468,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             switch (renderType)
             {
                 case RenderType.LowQuality:
-                    ProcessEvent(EventFactory.CreateManualLowQualityRender());
+                    ProcessEvent(_eventFactory.CreateManualLowQualityRender());
                     return;
 
                 case RenderType.HighQuality:
-                    ProcessEvent(EventFactory.CreateManualHighQualityRender());
+                    ProcessEvent(_eventFactory.CreateManualHighQualityRender());
                     return;
 
                 case RenderType.HighQualityDelayed:
-                    ProcessEvent(EventFactory.CreateManualDelayedHighQualityRender());
+                    ProcessEvent(_eventFactory.CreateManualDelayedHighQualityRender());
                     return;
 
                 case RenderType.LowQualityThenHighQuality:
-                    ProcessEvent(EventFactory.CreateManualLowQualityRender());
-                    ProcessEvent(EventFactory.CreateManualHighQualityRender());
+                    ProcessEvent(_eventFactory.CreateManualLowQualityRender());
+                    ProcessEvent(_eventFactory.CreateManualHighQualityRender());
                     return;
 
                 case RenderType.LowQualityThenHighQualityDelayed:
-                    ProcessEvent(EventFactory.CreateManualDelayedHighQualityRender());
+                    ProcessEvent(_eventFactory.CreateManualDelayedHighQualityRender());
                     return;
 
                 case RenderType.ProcessMouseEventsOnly:
@@ -506,10 +506,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (Configuration.RenderIfPlottableListChanges == false)
                 return;
 
-            if (Bmp is null)
+            if (_bmp is null)
                 return;
 
-            if (Settings.PlottablesIdentifier != PlottablesIdentifierAtLastRender)
+            if (_settings.PlottablesIdentifier != _plottablesIdentifierAtLastRender)
                 Render();
         }
 
@@ -526,14 +526,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 return;
 
             // don't render if the request is so early that the processor hasn't started
-            if (EventsProcessor is null)
+            if (_eventsProcessor is null)
                 return;
 
             // Disposing a Bitmap the GUI is displaying will cause an exception.
             // Keep track of old bitmaps so they can be disposed of later.
-            OldBitmaps.Enqueue(Bmp);
-            Bmp = new System.Drawing.Bitmap((int)width, (int)height);
-            BitmapRenderCount = 0;
+            _oldBitmaps.Enqueue(_bmp);
+            _bmp = new System.Drawing.Bitmap((int)width, (int)height);
+            _bitmapRenderCount = 0;
 
             if (useDelayedRendering)
                 RenderRequest(RenderType.HighQualityDelayed);
@@ -546,14 +546,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public void MouseDown(InputState input)
         {
-            if (!Settings.AllAxesHaveBeenSet)
+            if (!_settings.AllAxesHaveBeenSet)
                 Plot.SetAxisLimits(Plot.GetAxisLimits());
-            IsMiddleDown = input.MiddleWasJustPressed;
-            IsRightDown = input.RightWasJustPressed;
-            IsLeftDown = input.LeftWasJustPressed;
-            PlottableBeingDragged = GetDraggableUnderMouse(input.X, input.Y);
-            Settings.MouseDown(input.X, input.Y);
-            MouseDownTravelDistance = 0;
+            _isMiddleDown = input.MiddleWasJustPressed;
+            _isRightDown = input.RightWasJustPressed;
+            _isLeftDown = input.LeftWasJustPressed;
+            _plottableBeingDragged = GetDraggableUnderMouse(input.X, input.Y);
+            _settings.MouseDown(input.X, input.Y);
+            _mouseDownTravelDistance = 0;
         }
 
         /// <summary>
@@ -561,45 +561,45 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public (double x, double y) GetMouseCoordinates()
         {
-            (double x, double y) = Plot.GetCoordinate(MouseLocationX, MouseLocationY);
+            (double x, double y) = Plot.GetCoordinate(_mouseLocationX, _mouseLocationY);
             return (double.IsNaN(x) ? 0 : x, double.IsNaN(y) ? 0 : y);
         }
 
         /// <summary>
         /// Return the mouse position (in pixel space) for the last observed mouse position
         /// </summary>
-        public (float x, float y) GetMousePixel() => (MouseLocationX, MouseLocationY);
+        public (float x, float y) GetMousePixel() => (_mouseLocationX, _mouseLocationY);
 
         /// <summary>
         /// Indicate the mouse has moved to a new position
         /// </summary>
         public void MouseMove(InputState input)
         {
-            bool altWasLifted = IsZoomingWithAlt && !input.AltDown;
-            bool middleButtonLifted = IsZoomingRectangle && !input.MiddleWasJustPressed;
-            if (IsZoomingRectangle && (altWasLifted || middleButtonLifted))
-                Settings.ZoomRectangle.Clear();
+            bool altWasLifted = _isZoomingWithAlt && !input.AltDown;
+            bool middleButtonLifted = _isZoomingRectangle && !input.MiddleWasJustPressed;
+            if (_isZoomingRectangle && (altWasLifted || middleButtonLifted))
+                _settings.ZoomRectangle.Clear();
 
-            IsZoomingWithAlt = IsLeftDown && input.AltDown;
-            bool isMiddleClickDragZooming = IsMiddleDown && !middleButtonLifted;
-            bool isZooming = IsZoomingWithAlt || isMiddleClickDragZooming;
-            IsZoomingRectangle = isZooming && Configuration.MiddleClickDragZoom && MouseDownDragged;
+            _isZoomingWithAlt = _isLeftDown && input.AltDown;
+            bool isMiddleClickDragZooming = _isMiddleDown && !middleButtonLifted;
+            bool isZooming = _isZoomingWithAlt || isMiddleClickDragZooming;
+            _isZoomingRectangle = isZooming && Configuration.MiddleClickDragZoom && MouseDownDragged;
 
-            MouseDownTravelDistance += Math.Abs(input.X - MouseLocationX);
-            MouseDownTravelDistance += Math.Abs(input.Y - MouseLocationY);
+            _mouseDownTravelDistance += Math.Abs(input.X - _mouseLocationX);
+            _mouseDownTravelDistance += Math.Abs(input.Y - _mouseLocationY);
 
-            MouseLocationX = input.X;
-            MouseLocationY = input.Y;
+            _mouseLocationX = input.X;
+            _mouseLocationY = input.Y;
 
             IUIEvent mouseMoveEvent = null;
-            if (PlottableBeingDragged != null)
-                mouseMoveEvent = EventFactory.CreatePlottableDrag(input.X, input.Y, input.ShiftDown, PlottableBeingDragged);
-            else if (IsLeftDown && !input.AltDown && Configuration.LeftClickDragPan)
-                mouseMoveEvent = EventFactory.CreateMousePan(input);
-            else if (IsRightDown && Configuration.RightClickDragZoom)
-                mouseMoveEvent = EventFactory.CreateMouseZoom(input);
-            else if (IsZoomingRectangle)
-                mouseMoveEvent = EventFactory.CreateMouseMovedToZoomRectangle(input.X, input.Y);
+            if (_plottableBeingDragged != null)
+                mouseMoveEvent = _eventFactory.CreatePlottableDrag(input.X, input.Y, input.ShiftDown, _plottableBeingDragged);
+            else if (_isLeftDown && !input.AltDown && Configuration.LeftClickDragPan)
+                mouseMoveEvent = _eventFactory.CreateMousePan(input);
+            else if (_isRightDown && Configuration.RightClickDragZoom)
+                mouseMoveEvent = _eventFactory.CreateMouseZoom(input);
+            else if (_isZoomingRectangle)
+                mouseMoveEvent = _eventFactory.CreateMouseMovedToZoomRectangle(input.X, input.Y);
 
             if (mouseMoveEvent != null)
                 ProcessEvent(mouseMoveEvent);
@@ -617,7 +617,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 // TODO: refactor to better support async
                 // TODO: document that draggable events aren't supported by the render queue
-                _ = EventsProcessor.ProcessAsync(uiEvent);
+                _ = _eventsProcessor.ProcessAsync(uiEvent);
             }
             else
             {
@@ -639,7 +639,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 Render(lowQuality: lowQuality, skipIfCurrentlyRendering: allowSkip);
 
                 if (uiEvent is PlottableDragEvent)
-                    PlottableDragged(PlottableBeingDragged, EventArgs.Empty);
+                    PlottableDragged(_plottableBeingDragged, EventArgs.Empty);
             }
         }
 
@@ -670,32 +670,32 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="input"></param>
         public void MouseUp(InputState input)
         {
-            var droppedPlottable = PlottableBeingDragged;
+            var droppedPlottable = _plottableBeingDragged;
 
             IUIEvent mouseEvent;
-            if (IsZoomingRectangle && MouseDownDragged && Configuration.MiddleClickDragZoom)
-                mouseEvent = EventFactory.CreateApplyZoomRectangleEvent(input.X, input.Y);
-            else if (IsMiddleDown && Configuration.MiddleClickAutoAxis && MouseDownDragged == false)
-                mouseEvent = EventFactory.CreateMouseAutoAxis();
+            if (_isZoomingRectangle && MouseDownDragged && Configuration.MiddleClickDragZoom)
+                mouseEvent = _eventFactory.CreateApplyZoomRectangleEvent(input.X, input.Y);
+            else if (_isMiddleDown && Configuration.MiddleClickAutoAxis && MouseDownDragged == false)
+                mouseEvent = _eventFactory.CreateMouseAutoAxis();
             else
-                mouseEvent = EventFactory.CreateMouseUpClearRender();
+                mouseEvent = _eventFactory.CreateMouseUpClearRender();
             ProcessEvent(mouseEvent);
 
-            if (IsRightDown && MouseDownDragged == false)
+            if (_isRightDown && MouseDownDragged == false)
                 RightClicked(null, EventArgs.Empty);
 
-            IsMiddleDown = false;
-            IsRightDown = false;
-            IsLeftDown = false;
+            _isMiddleDown = false;
+            _isRightDown = false;
+            _isLeftDown = false;
 
             UpdateCursor(input);
 
             if (droppedPlottable != null)
                 PlottableDropped(droppedPlottable, EventArgs.Empty);
 
-            PlottableBeingDragged = null;
+            _plottableBeingDragged = null;
             if (droppedPlottable != null)
-                ProcessEvent(EventFactory.CreateMouseUpClearRender());
+                ProcessEvent(_eventFactory.CreateMouseUpClearRender());
         }
 
         /// <summary>
@@ -706,7 +706,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             if (Configuration.DoubleClickBenchmark)
             {
-                IUIEvent mouseEvent = EventFactory.CreateBenchmarkToggle();
+                IUIEvent mouseEvent = _eventFactory.CreateBenchmarkToggle();
                 ProcessEvent(mouseEvent);
             }
         }
@@ -716,12 +716,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public void MouseWheel(InputState input)
         {
-            if (!Settings.AllAxesHaveBeenSet)
+            if (!_settings.AllAxesHaveBeenSet)
                 Plot.SetAxisLimits(Plot.GetAxisLimits());
 
             if (Configuration.ScrollWheelZoom)
             {
-                IUIEvent mouseEvent = EventFactory.CreateMouseScroll(input.X, input.Y, input.WheelScrolledUp);
+                IUIEvent mouseEvent = _eventFactory.CreateMouseScroll(input.X, input.Y, input.WheelScrolledUp);
                 ProcessEvent(mouseEvent);
             }
         }

@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public IUIEvent CreateMouseZoom(InputState input) =>
             new MouseZoomEvent(input, Configuration, Settings, Plot);
 
-        public IUIEvent CreatePlottableDrag(float x, float y, bool shiftDown, IDraggable draggable) =>
+        public IUIEvent CreatePlottableDrag(float x, float y, bool shiftDown, IDraggable? draggable) =>
              new PlottableDragEvent(x, y, shiftDown, draggable, Plot, Configuration);
 
         public IUIEvent CreateManualLowQualityRender() => new RenderLowQuality();

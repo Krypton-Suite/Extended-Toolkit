@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
+        public static DialogResult Show(IWin32Window? owner, string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                         ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
                                         KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
@@ -149,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(IWin32Window owner, string messageText, string caption,
+        public static DialogResult Show(IWin32Window? owner, string messageText, string caption,
                                         ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon,
                                         KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
@@ -199,9 +199,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                              null, null, null, null, string.Empty,
                              string.Empty, string.Empty, string.Empty);
 
-        /// <summary>Shows a messagebox.</summary>
+
+        /// <summary>Shows the specified owner.</summary>
         /// <param name="owner">The owner.</param>
-        /// <param name="messageText">The text.</param>
+        /// <param name="messageText">The message text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
@@ -210,13 +211,25 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="helpFilePath">The help file path.</param>
         /// <param name="navigator">The navigator.</param>
         /// <param name="param">The parameter.</param>
+        /// <param name="displayHelpButton">if set to <c>true</c> [display help button].</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
+        /// <param name="showHelpButton">The show help button.</param>
+        /// <param name="messageTextColour">The message text colour.</param>
+        /// <param name="buttonTextColours">The button text colours.</param>
+        /// <param name="buttonOneCustomDialogResult">The button one custom dialog result.</param>
+        /// <param name="buttonTwoCustomDialogResult">The button two custom dialog result.</param>
+        /// <param name="buttonThreeCustomDialogResult">The button three custom dialog result.</param>
+        /// <param name="buttonFourDialogResult">The button four dialog result.</param>
+        /// <param name="buttonOneCustomText">The button one custom text.</param>
+        /// <param name="buttonTwoCustomText">The button two custom text.</param>
+        /// <param name="buttonThreeCustomText">The button three custom text.</param>
+        /// <param name="buttonFourCustomText">The button four custom text.</param>
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
+        public static DialogResult Show(IWin32Window? owner, string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                         ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
                                         KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
@@ -266,20 +279,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>
         ///   <br />
         /// </returns>
-        internal static DialogResult ShowCore(IWin32Window owner, string text, string caption,
+        internal static DialogResult ShowCore(IWin32Window? owner, string text, string caption,
                                               ExtendedMessageBoxButtons buttons,
                                               ExtendedKryptonMessageBoxIcon icon,
                                               KryptonMessageBoxDefaultButton defaultButton,
-                                              MessageBoxOptions options, HelpInfo helpInfo,
-                                              bool? showCtrlCopy, Font messageBoxTypeface,
-                                              Image customImageIcon, bool? showHelpButton,
-                                              Color? messageTextColour, Color[] buttonTextColours,
+                                              MessageBoxOptions options, HelpInfo? helpInfo,
+                                              bool? showCtrlCopy, Font? messageBoxTypeface,
+                                              Image? customImageIcon, bool? showHelpButton,
+                                              Color? messageTextColour, Color[]? buttonTextColours,
                                               DialogResult? buttonOneCustomDialogResult,
                                               DialogResult? buttonTwoCustomDialogResult,
                                               DialogResult? buttonThreeCustomDialogResult,
                                               DialogResult? buttonFourDialogResult,
-                                              string buttonOneCustomText, string buttonTwoCustomText,
-                                              string buttonThreeCustomText, string buttonFourCustomText)
+                                              string? buttonOneCustomText, string? buttonTwoCustomText,
+                                              string? buttonThreeCustomText, string? buttonFourCustomText)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -304,7 +317,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region WinForm Compatibility
-        private static IWin32Window ValidateOptions(IWin32Window owner, MessageBoxOptions options, HelpInfo helpInfo)
+        private static IWin32Window ValidateOptions(IWin32Window? owner, MessageBoxOptions options, HelpInfo? helpInfo)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive &&

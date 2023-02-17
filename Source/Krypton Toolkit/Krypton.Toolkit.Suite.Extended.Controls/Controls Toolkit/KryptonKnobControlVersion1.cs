@@ -25,12 +25,13 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     // Delegate type for hooking up ValueChanged notifications.
-    public delegate void ValueChangedEventHandler(object sender, KnobValueChangedEventArgs e);
+    public delegate void ValueChangedEventHandler(object? sender, KnobValueChangedEventArgs e);
 
-    [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(System.Windows.Forms.Timer))]
+    [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(Timer))]
     public class KryptonKnobControlVersion1 : UserControl
     {
         #region " constructor "
@@ -60,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         //private IDisposable m_mementoBack1;
         //private IDisposable m_mementoBack2;
 
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
         private PaletteRedirect _paletteRedirect;
 
         // declare Off screen image and Offscreen graphics
@@ -358,7 +359,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         #endregion
 
         #region " Events and sub management "
-        protected object OnValueChanged(object sender, KnobValueChangedEventArgs e)
+        protected object? OnValueChanged(object? sender, KnobValueChangedEventArgs e)
         {
             if (ValueChanged != null)
             {

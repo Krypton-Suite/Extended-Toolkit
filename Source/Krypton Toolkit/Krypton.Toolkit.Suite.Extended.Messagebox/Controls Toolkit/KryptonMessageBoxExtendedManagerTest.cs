@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private HelpNavigator _helpNavigator;
 
-        private IWin32Window _owner;
+        private IWin32Window? _owner;
 
         #endregion
 
@@ -160,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Gets or sets the owner of the modal dialog box.</summary>
         /// <value>The owner of the modal dialog box.</value>
         [DefaultValue(null), Description(@"Owner of the modal dialog box.")]
-        public IWin32Window Owner { get => _owner; set => _owner = value; }
+        public IWin32Window? Owner { get => _owner; set => _owner = value; }
 
         #endregion
 
@@ -231,7 +231,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
         /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
-        public KryptonMessageBoxManagerTest(IWin32Window owner, string text, string caption,
+        public KryptonMessageBoxManagerTest(IWin32Window? owner, string text, string caption,
                                         ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon,
                                         KryptonMessageBoxDefaultButton defaultButton,

@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     /// <summary>
@@ -37,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// Initialize a new instance of the ButtonSpecFormWindowMax class.
         /// </summary>
         /// <param name="form">Reference to owning krypton form instance.</param>
-        public ButtonSpecFormWindowMax(VirtualKryptonFormExtended form)
+        public ButtonSpecFormWindowMax(VirtualKryptonFormExtended? form)
             : base(form, PaletteButtonSpecStyle.FormMax)
         {
         }

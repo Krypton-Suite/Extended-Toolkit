@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public float MarkerSize { get => ArrowStyle.MarkerSize; set => ArrowStyle.MarkerSize = value; }
 
-        public VectorField(Vector2[,] vectors, double[] xs, double[] ys, ColourMap colormap, double scaleFactor, Color defaultColor)
+        public VectorField(Vector2[,] vectors, double[] xs, double[] ys, ColourMap? colormap, double scaleFactor, Color defaultColor)
         {
             double minMagnitudeSquared = vectors[0, 0].LengthSquared();
             double maxMagnitudeSquared = vectors[0, 0].LengthSquared();
