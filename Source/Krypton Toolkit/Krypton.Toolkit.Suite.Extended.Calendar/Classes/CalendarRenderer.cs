@@ -1178,7 +1178,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Draws text using the information of the <see cref="CalendarRendererBoxEventArgs"/>
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void DrawStandardBoxText(CalendarRendererBoxEventArgs e) => TextRenderer.DrawText(e.Graphics, e.Text, e.Font, e.Bounds, e.TextColour, e.Format);
+        protected virtual void DrawStandardBoxText(CalendarRendererBoxEventArgs? e)
+        {
+            if (e != null)
+            {
+                TextRenderer.DrawText(e.Graphics, e.Text, e.Font, e.Bounds, e.TextColour, e.Format);
+            }
+        }
 
         /// <summary>
         /// Outs the location of the specified number in the matrix

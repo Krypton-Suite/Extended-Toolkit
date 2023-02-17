@@ -47,13 +47,19 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
 #if NETCOREAPP3_0_OR_GREATER
             foreach (string hashType in helperMethods.SafeNetCoreAndNewerHashTypes)
-	        {
-                hashBox.Items.Add(hashType);
-	        }
+            {
+                if (hashBox != null)
+                {
+                    hashBox.Items.Add(hashType);
+                }
+            }
 #else
             foreach (string hashType in helperMethods.HashTypes)
             {
-                hashBox.Items.Add(hashType);
+                if (hashBox != null)
+                {
+                    hashBox.Items.Add(hashType);
+                }
             }
 #endif
         }

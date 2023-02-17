@@ -25,12 +25,14 @@
  */
 #endregion
 
+// ReSharper disable AssignNullToNotNullAttribute
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     internal class KryptonCommandLinkButtonActionList : DesignerActionList
     {
         #region Instance Fields
-        private readonly KryptonCommandLinkButton _button;
+        private readonly KryptonCommandLinkButton? _button;
         private readonly IComponentChangeService _service;
         #endregion
 

@@ -25,6 +25,10 @@
  */
 #endregion
 
+#pragma warning disable CS8602
+#pragma warning disable CS8601
+#pragma warning disable CS8600
+#pragma warning disable CS8622
 namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
     public class KryptonVarifyFileCheckSum : KryptonForm
@@ -460,7 +464,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         #region Hashing Work
         private void bgMD5Hash_DoWork(object sender, DoWorkEventArgs e)
         {
-            string filePath = e.Argument.ToString();
+            string? filePath = e.Argument.ToString();
 
             byte[] buffer;
 
@@ -468,28 +472,31 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
             long size, totalBytesRead = 0;
 
-            using (Stream file = File.OpenRead(filePath))
+            if (filePath != null)
             {
-                size = file.Length;
-
-                using (HashAlgorithm hasher = MD5.Create())
+                using (Stream file = File.OpenRead(filePath))
                 {
-                    do
+                    size = file.Length;
+
+                    using (HashAlgorithm hasher = MD5.Create())
                     {
-                        buffer = new byte[4096];
+                        do
+                        {
+                            buffer = new byte[4096];
 
-                        bytesRead = file.Read(buffer, 0, buffer.Length);
+                            bytesRead = file.Read(buffer, 0, buffer.Length);
 
-                        totalBytesRead += bytesRead;
+                            totalBytesRead += bytesRead;
 
-                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+                            hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
 
-                        bgMD5Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
-                    } while (bytesRead != 0);
+                            bgMD5Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                        } while (bytesRead != 0);
 
-                    hasher.TransformFinalBlock(buffer, 0, 0);
+                        hasher.TransformFinalBlock(buffer, 0, 0);
 
-                    e.Result = HashingHelpers.BuildMD5HashString(hasher.Hash);
+                        e.Result = HashingHelpers.BuildMD5HashString(hasher.Hash);
+                    }
                 }
             }
 
@@ -498,7 +505,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
         private void bgSHA1Hash_DoWork(object sender, DoWorkEventArgs e)
         {
-            string filePath = e.Argument.ToString();
+            string? filePath = e.Argument.ToString();
 
             byte[] buffer;
 
@@ -506,35 +513,38 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
             long size, totalBytesRead = 0;
 
-            using (Stream file = File.OpenRead(filePath))
+            if (filePath != null)
             {
-                size = file.Length;
-
-                using (HashAlgorithm hasher = SHA1.Create())
+                using (Stream file = File.OpenRead(filePath))
                 {
-                    do
+                    size = file.Length;
+
+                    using (HashAlgorithm hasher = SHA1.Create())
                     {
-                        buffer = new byte[4096];
+                        do
+                        {
+                            buffer = new byte[4096];
 
-                        bytesRead = file.Read(buffer, 0, buffer.Length);
+                            bytesRead = file.Read(buffer, 0, buffer.Length);
 
-                        totalBytesRead += bytesRead;
+                            totalBytesRead += bytesRead;
 
-                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+                            hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
 
-                        bgSHA1Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
-                    } while (bytesRead != 0);
+                            bgSHA1Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                        } while (bytesRead != 0);
 
-                    hasher.TransformFinalBlock(buffer, 0, 0);
+                        hasher.TransformFinalBlock(buffer, 0, 0);
 
-                    e.Result = HashingHelpers.BuildSHA1HashString(hasher.Hash);
+                        e.Result = HashingHelpers.BuildSHA1HashString(hasher.Hash);
+                    }
                 }
             }
         }
 
         private void bgSHA256Hash_DoWork(object sender, DoWorkEventArgs e)
         {
-            string filePath = e.Argument.ToString();
+            string? filePath = e.Argument.ToString();
 
             byte[] buffer;
 
@@ -542,35 +552,38 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
             long size, totalBytesRead = 0;
 
-            using (Stream file = File.OpenRead(filePath))
+            if (filePath != null)
             {
-                size = file.Length;
-
-                using (HashAlgorithm hasher = SHA256.Create())
+                using (Stream file = File.OpenRead(filePath))
                 {
-                    do
+                    size = file.Length;
+
+                    using (HashAlgorithm hasher = SHA256.Create())
                     {
-                        buffer = new byte[4096];
+                        do
+                        {
+                            buffer = new byte[4096];
 
-                        bytesRead = file.Read(buffer, 0, buffer.Length);
+                            bytesRead = file.Read(buffer, 0, buffer.Length);
 
-                        totalBytesRead += bytesRead;
+                            totalBytesRead += bytesRead;
 
-                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+                            hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
 
-                        bgSHA256Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
-                    } while (bytesRead != 0);
+                            bgSHA256Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                        } while (bytesRead != 0);
 
-                    hasher.TransformFinalBlock(buffer, 0, 0);
+                        hasher.TransformFinalBlock(buffer, 0, 0);
 
-                    e.Result = HashingHelpers.BuildSHA256HashString(hasher.Hash);
+                        e.Result = HashingHelpers.BuildSHA256HashString(hasher.Hash);
+                    }
                 }
             }
         }
 
         private void bgSHA384Hash_DoWork(object sender, DoWorkEventArgs e)
         {
-            string filePath = e.Argument.ToString();
+            string? filePath = e.Argument.ToString();
 
             byte[] buffer;
 
@@ -578,35 +591,38 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
             long size, totalBytesRead = 0;
 
-            using (Stream file = File.OpenRead(filePath))
+            if (filePath != null)
             {
-                size = file.Length;
-
-                using (HashAlgorithm hasher = SHA384.Create())
+                using (Stream file = File.OpenRead(filePath))
                 {
-                    do
+                    size = file.Length;
+
+                    using (HashAlgorithm hasher = SHA384.Create())
                     {
-                        buffer = new byte[4096];
+                        do
+                        {
+                            buffer = new byte[4096];
 
-                        bytesRead = file.Read(buffer, 0, buffer.Length);
+                            bytesRead = file.Read(buffer, 0, buffer.Length);
 
-                        totalBytesRead += bytesRead;
+                            totalBytesRead += bytesRead;
 
-                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+                            hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
 
-                        bgSHA384Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
-                    } while (bytesRead != 0);
+                            bgSHA384Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                        } while (bytesRead != 0);
 
-                    hasher.TransformFinalBlock(buffer, 0, 0);
+                        hasher.TransformFinalBlock(buffer, 0, 0);
 
-                    e.Result = HashingHelpers.BuildSHA384HashString(hasher.Hash);
+                        e.Result = HashingHelpers.BuildSHA384HashString(hasher.Hash);
+                    }
                 }
             }
         }
 
         private void bgSHA512Hash_DoWork(object sender, DoWorkEventArgs e)
         {
-            string filePath = e.Argument.ToString();
+            string? filePath = e.Argument.ToString();
 
             byte[] buffer;
 
@@ -614,28 +630,31 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
             long size, totalBytesRead = 0;
 
-            using (Stream file = File.OpenRead(filePath))
+            if (filePath != null)
             {
-                size = file.Length;
-
-                using (HashAlgorithm hasher = SHA512.Create())
+                using (Stream file = File.OpenRead(filePath))
                 {
-                    do
+                    size = file.Length;
+
+                    using (HashAlgorithm hasher = SHA512.Create())
                     {
-                        buffer = new byte[4096];
+                        do
+                        {
+                            buffer = new byte[4096];
 
-                        bytesRead = file.Read(buffer, 0, buffer.Length);
+                            bytesRead = file.Read(buffer, 0, buffer.Length);
 
-                        totalBytesRead += bytesRead;
+                            totalBytesRead += bytesRead;
 
-                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+                            hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
 
-                        bgSHA512Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
-                    } while (bytesRead != 0);
+                            bgSHA512Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                        } while (bytesRead != 0);
 
-                    hasher.TransformFinalBlock(buffer, 0, 0);
+                        hasher.TransformFinalBlock(buffer, 0, 0);
 
-                    e.Result = HashingHelpers.BuildSHA512HashString(hasher.Hash);
+                        e.Result = HashingHelpers.BuildSHA512HashString(hasher.Hash);
+                    }
                 }
             }
         }

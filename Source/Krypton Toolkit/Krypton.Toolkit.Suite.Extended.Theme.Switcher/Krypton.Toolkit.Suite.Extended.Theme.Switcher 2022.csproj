@@ -167,7 +167,7 @@
 	</Choose>
 
 	<ItemGroup>
-	  <PackageReference Include="WindowsAPICodePackShell" Version="7.0.2" />
+	  <PackageReference Include="WindowsAPICodePackShell" Version="7.0.3" />
 	</ItemGroup>
   
 	<ItemGroup>

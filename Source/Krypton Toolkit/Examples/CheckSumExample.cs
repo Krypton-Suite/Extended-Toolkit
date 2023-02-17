@@ -11,7 +11,7 @@ namespace Examples
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-            KryptonComputeFileCheckSum computeFileCheckSum = new KryptonComputeFileCheckSum();
+            KryptonComputeFileCheckSumOld computeFileCheckSum = new KryptonComputeFileCheckSumOld();
 
             computeFileCheckSum.ShowDialog();
         }

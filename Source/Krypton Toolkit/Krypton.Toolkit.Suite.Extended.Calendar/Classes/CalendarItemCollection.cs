@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8604
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     public class CalendarItemCollection : List<CalendarItemAlternative>
