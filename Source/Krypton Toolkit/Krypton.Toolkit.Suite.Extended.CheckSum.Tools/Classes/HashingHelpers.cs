@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             return builder.ToString();
         }
 
-        public static string BuildRIPEMD160HashString(byte[] hashBytes)
+        public static string BuildRIPEMD160HashString(byte[]? hashBytes)
         {
             // Set aside 40 bits in memory, for the total string length of the RIPEMD-160 hash
             StringBuilder builder = new StringBuilder(40);

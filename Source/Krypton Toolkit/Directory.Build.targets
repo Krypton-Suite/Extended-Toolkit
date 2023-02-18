@@ -192,4 +192,9 @@
 		</Otherwise>
 	</Choose>
 
+	<PropertyGroup>
+		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
+	</PropertyGroup>
+
 </Project>
