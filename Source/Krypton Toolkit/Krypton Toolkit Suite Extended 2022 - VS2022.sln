@@ -214,7 +214,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "License", "License", "{BA86
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects to Work On", "Projects to Work On", "{ADF53878-BE1F-43A3-A890-E11190BE5465}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.PDF 2022", "Krypton.Toolkit.Suite.Extended.PDF\Krypton.Toolkit.Suite.Extended.PDF 2022.csproj", "{A59A87BE-E92A-4717-92DC-A2286EE812EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.PDF 2022", "Krypton.Toolkit.Suite.Extended.PDF\Krypton.Toolkit.Suite.Extended.PDF 2022.csproj", "{A59A87BE-E92A-4717-92DC-A2286EE812EC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Examples", "Examples\Examples.csproj", "{744D6A50-F8DB-4D5F-B571-34B0597E03B8}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -223,7 +223,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Examples", "Examples\Exampl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.AdvancedDataGridView 2022", "Krypton.Toolkit.Suite.Extended.AdvancedDataGridView\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView 2022.csproj", "{5E23D530-6349-4786-AA2D-F1DD9CC1586E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022", "Krypton.Toolkit.Suite.Extended.Scintilla.NET\Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022.csproj", "{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022", "Krypton.Toolkit.Suite.Extended.Scintilla.NET\Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022.csproj", "{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022", "Krypton.Toolkit.Suite.Extended.CheckSum.Tools\Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj", "{26A8A753-BC4B-4E42-B124-8EA3FA64303F}"
 EndProject
@@ -519,8 +519,8 @@ Global
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Canary|Any CPU.Build.0 = Debug|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
-		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Nightly|Any CPU.Build.0 = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A7C0B094-539C-4283-AA9A-3959749886B7}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
@@ -543,8 +543,8 @@ Global
 		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Canary|Any CPU.Build.0 = Debug|Any CPU
 		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
-		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Nightly|Any CPU.Build.0 = Debug|Any CPU
+		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
 		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{744D6A50-F8DB-4D5F-B571-34B0597E03B8}.Canary|Any CPU.ActiveCfg = Debug|Any CPU
@@ -567,8 +567,8 @@ Global
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Canary|Any CPU.Build.0 = Debug|Any CPU
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Nightly|Any CPU.Build.0 = Debug|Any CPU
+		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{26A8A753-BC4B-4E42-B124-8EA3FA64303F}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
