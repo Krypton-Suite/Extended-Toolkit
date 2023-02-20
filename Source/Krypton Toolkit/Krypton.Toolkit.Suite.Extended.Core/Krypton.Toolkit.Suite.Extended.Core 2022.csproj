@@ -101,13 +101,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Canary" Version="80.23.1.23-beta" />
+				<PackageReference Include="Krypton.Docking.Canary" Version="80.23.2.51-beta" />
 
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.1.23-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.2.51-beta" />
 
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="80.23.1.23-beta" />
+				<PackageReference Include="Krypton.Ribbon.Canary" Version="80.23.2.51-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="80.23.1.23-beta" />
+				<PackageReference Include="Krypton.Navigator.Canary" Version="80.23.2.51-beta" />
 			</ItemGroup>
 		</When>
 
