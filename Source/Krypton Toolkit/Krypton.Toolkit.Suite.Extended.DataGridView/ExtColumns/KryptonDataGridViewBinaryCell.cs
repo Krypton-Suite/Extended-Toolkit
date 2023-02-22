@@ -25,6 +25,12 @@
  */
 #endregion
 
+// ReSharper disable UsePatternMatching
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+// ReSharper disable AssignNullToNotNullAttribute
+// ReSharper disable SuggestVarOrType_BuiltInTypes
+// ReSharper disable IdentifierTypo
+#pragma warning disable IDE0019
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
@@ -34,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
     {
         #region Instance Fields
         private static readonly Type _defaultValueType = typeof(object);
-        private Type _editorType;
+        private Type? _editorType;
         #endregion
 
         #region Identity
@@ -42,20 +48,24 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <summary>
         /// Returns a standard textual representation of the cell.
         /// </summary>
-        public override string ToString()
-        {
-            return $"KryptonDataGridViewBinaryCell {{ ColumnIndex={ColumnIndex.ToString(CultureInfo.CurrentCulture)}, RowIndex={RowIndex.ToString(CultureInfo.CurrentCulture)} }}";
-        }
+        public override string ToString() => $"KryptonDataGridViewBinaryCell {{ ColumnIndex={ColumnIndex.ToString(CultureInfo.CurrentCulture)}, RowIndex={RowIndex.ToString(CultureInfo.CurrentCulture)} }}";
 
         /// <summary>
         /// Creates an exact copy of this cell.
         /// </summary>
         /// <returns></returns>
-        public override object Clone()
+        public override object? Clone()
         {
-            KryptonDataGridViewBinaryCell cloned = base.Clone() as KryptonDataGridViewBinaryCell;
-            cloned._editorType = _editorType;
-            return cloned;
+            KryptonDataGridViewBinaryCell? cloned = base.Clone() as KryptonDataGridViewBinaryCell;
+            if (cloned != null)
+            {
+                cloned._editorType = _editorType;
+                return cloned;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -77,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <summary>
         /// Define the type of the cell's editing control
         /// </summary>
-        public override Type EditType => null;
+        public override Type? EditType => null;
 
         /// <summary>
         /// Returns the type of the cell's Value property
@@ -95,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <summary>
         /// Gets or sets the type of the editor-widget to use. If this is null, the default editor will be used-
         /// </summary>
-        public Type EditorType
+        public Type? EditorType
         {
             get => _editorType;
             set
@@ -148,7 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         {
             base.OnClick(e);
 #if NETFRAMEWORK // https://docs.microsoft.com/en-us/dotnet/standard/frameworks#how-to-specify-target-frameworks
-            Form editor;
+            Form? editor;
             // If the user has provided a custom editor type, use that instead of the default
             // form.
             if (_editorType != null)
@@ -161,12 +171,16 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             }
             // We re-use the Tag property as input/output mechanism, so we don't have to create
             // a new interface just for that. Kind of a hack, I know.
-            editor.Tag = Value;
-            if (editor.ShowDialog(DataGridView) == DialogResult.OK)
+            if (editor != null)
             {
-                object result = editor.Tag;
-                Value = result;
+                editor.Tag = Value;
+                if (editor.ShowDialog(DataGridView) == DialogResult.OK)
+                {
+                    object result = editor.Tag;
+                    Value = result;
+                }
             }
+
 #endif // NETFRAMEWORK
         }
         #endregion
@@ -192,7 +206,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         #region Internal
 
-        internal void SetEditorType(int rowIndex, Type editorType)
+        internal void SetEditorType(int rowIndex, Type? editorType)
         {
             _editorType = editorType;
         }

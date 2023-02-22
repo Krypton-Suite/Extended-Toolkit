@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public KryptonDataGridViewTextAndImageColumn()
             : base(new KryptonDataGridViewTextAndImageCell())
         {
-            _buttonSpecs = new DataGridViewColumnSpecCollection(this);
+            _buttonSpecs = new(this);
             SortMode = DataGridViewColumnSortMode.Automatic;
         }
 
@@ -55,11 +55,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns>A String that represents the current Object.</returns>
         public override string ToString()
         {
-            StringBuilder builder = new StringBuilder(0x40);
+            StringBuilder builder = new(0x40);
             builder.Append("KryptonDataGridViewTextAndImageColumn { Name=");
-            builder.Append(base.Name);
+            builder.Append(Name);
             builder.Append(", Index=");
-            builder.Append(base.Index.ToString(CultureInfo.CurrentCulture));
+            builder.Append(Index.ToString(CultureInfo.CurrentCulture));
             builder.Append(" }");
             return builder.ToString();
         }

@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
                     }
                     stringBuilder.Append(item.DebugSummary);
                 }
-                return "[" + stringBuilder.ToString() + "]";
+                return "[" + stringBuilder + "]";
             }
         }
 

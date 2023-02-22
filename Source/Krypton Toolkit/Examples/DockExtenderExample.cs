@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Krypton.Toolkit.Suite.Extended.Dock.Extender;
+// ReSharper disable UsePatternMatching
+// ReSharper disable PossibleInvalidCastExceptionInForeachLoop
 
 namespace Examples
 {
@@ -16,11 +18,11 @@ namespace Examples
     {
         #region Instance Fields
 
-        private string _someText =
+        private readonly string _someText =
             @"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).";
-        private string[] _someWords;
-        private Random _rnd;
-        private KryptonDockExtender _dockExtender;
+        private readonly string[] _someWords;
+        private readonly Random _rnd;
+        private readonly KryptonDockExtender _dockExtender;
 
         #endregion
 
@@ -68,11 +70,17 @@ namespace Examples
 
         private void Item_MouseUp(object sender, MouseEventArgs e)
         {
-            ToolStripItem item = sender as ToolStripItem;
+            ToolStripItem? item = sender as ToolStripItem;
 
-            KryptonFloatableForm floatable = item.Tag as KryptonFloatableForm;
+            if (item != null)
+            {
+                KryptonFloatableForm? floatable = item.Tag as KryptonFloatableForm;
 
-            floatable.Show();
+                if (floatable != null)
+                {
+                    floatable.Show();
+                }
+            }
         }
 
         private void Floatable_Docking(object sender, EventArgs e)

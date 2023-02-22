@@ -39,21 +39,21 @@
             this.bgwSHA512 = new System.ComponentModel.BackgroundWorker();
             this.bgwRIPEMD160 = new System.ComponentModel.BackgroundWorker();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnSaveToFile = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
+            this.kchkToggleCasing = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kwlHashOutput = new Krypton.Toolkit.KryptonWrapLabel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtFilePath = new Krypton.Toolkit.KryptonTextBox();
-            this.kcmbHashTypes = new Krypton.Toolkit.KryptonComboBox();
-            this.kbtnCompute = new Krypton.Toolkit.KryptonButton();
-            this.kwlHashOutput = new Krypton.Toolkit.KryptonWrapLabel();
             this.bsaReset = new Krypton.Toolkit.ButtonSpecAny();
             this.bsaBrowse = new Krypton.Toolkit.ButtonSpecAny();
-            this.kchkToggleCasing = new Krypton.Toolkit.KryptonCheckBox();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.kbtnSaveToFile = new Krypton.Toolkit.KryptonButton();
+            this.kcmbHashTypes = new Krypton.Toolkit.KryptonComboBox();
+            this.kbtnCompute = new Krypton.Toolkit.KryptonButton();
             this.ss.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -161,6 +161,36 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(730, 50);
             this.kryptonPanel1.TabIndex = 1;
             // 
+            // kbtnSaveToFile
+            // 
+            this.kbtnSaveToFile.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.kbtnSaveToFile.Enabled = false;
+            this.kbtnSaveToFile.Location = new System.Drawing.Point(489, 13);
+            this.kbtnSaveToFile.Name = "kbtnSaveToFile";
+            this.kbtnSaveToFile.Size = new System.Drawing.Size(133, 25);
+            this.kbtnSaveToFile.TabIndex = 3;
+            this.kbtnSaveToFile.Values.Text = "Save to &File";
+            this.kbtnSaveToFile.Click += new System.EventHandler(this.kbtnSaveToFile_Click);
+            // 
+            // kbtnCancel
+            // 
+            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnCancel.Location = new System.Drawing.Point(628, 13);
+            this.kbtnCancel.Name = "kbtnCancel";
+            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCancel.TabIndex = 2;
+            this.kbtnCancel.Values.Text = "kryptonButton1";
+            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            // 
+            // kchkToggleCasing
+            // 
+            this.kchkToggleCasing.Location = new System.Drawing.Point(13, 19);
+            this.kchkToggleCasing.Name = "kchkToggleCasing";
+            this.kchkToggleCasing.Size = new System.Drawing.Size(101, 20);
+            this.kchkToggleCasing.TabIndex = 1;
+            this.kchkToggleCasing.Values.Text = "Toggle &Casing";
+            this.kchkToggleCasing.CheckedChanged += new System.EventHandler(this.kchkToggleCasing_CheckedChanged);
+            // 
             // kryptonBorderEdge1
             // 
             this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
@@ -206,15 +236,28 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.kryptonGroupBox1, 3);
             this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(3, 63);
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(3, 64);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
             // kryptonGroupBox1.Panel
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.kwlHashOutput);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(724, 169);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(724, 168);
             this.kryptonGroupBox1.TabIndex = 0;
             this.kryptonGroupBox1.Values.Heading = "Hash Output";
+            // 
+            // kwlHashOutput
+            // 
+            this.kwlHashOutput.AutoSize = false;
+            this.kwlHashOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kwlHashOutput.Font = new System.Drawing.Font("Segoe UI", 13.5F, System.Drawing.FontStyle.Bold);
+            this.kwlHashOutput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlHashOutput.LabelStyle = Krypton.Toolkit.LabelStyle.TitleControl;
+            this.kwlHashOutput.Location = new System.Drawing.Point(0, 0);
+            this.kwlHashOutput.Name = "kwlHashOutput";
+            this.kwlHashOutput.Size = new System.Drawing.Size(720, 144);
+            this.kwlHashOutput.Text = "{0}";
+            this.kwlHashOutput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // kryptonLabel1
             // 
@@ -222,7 +265,7 @@
             this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel1.Location = new System.Drawing.Point(3, 3);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(75, 23);
+            this.kryptonLabel1.Size = new System.Drawing.Size(75, 24);
             this.kryptonLabel1.TabIndex = 1;
             this.kryptonLabel1.Values.Text = "File Path:";
             // 
@@ -230,7 +273,7 @@
             // 
             this.kryptonLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonLabel2.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel2.Location = new System.Drawing.Point(3, 32);
+            this.kryptonLabel2.Location = new System.Drawing.Point(3, 33);
             this.kryptonLabel2.Name = "kryptonLabel2";
             this.kryptonLabel2.Size = new System.Drawing.Size(75, 25);
             this.kryptonLabel2.TabIndex = 2;
@@ -252,41 +295,6 @@
             this.ktxtFilePath.Size = new System.Drawing.Size(643, 24);
             this.ktxtFilePath.TabIndex = 3;
             // 
-            // kcmbHashTypes
-            // 
-            this.kcmbHashTypes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kcmbHashTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kcmbHashTypes.DropDownWidth = 210;
-            this.kcmbHashTypes.IntegralHeight = false;
-            this.kcmbHashTypes.Location = new System.Drawing.Point(84, 32);
-            this.kcmbHashTypes.Name = "kcmbHashTypes";
-            this.kcmbHashTypes.Size = new System.Drawing.Size(210, 21);
-            this.kcmbHashTypes.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kcmbHashTypes.TabIndex = 4;
-            // 
-            // kbtnCompute
-            // 
-            this.kbtnCompute.Enabled = false;
-            this.kbtnCompute.Location = new System.Drawing.Point(300, 32);
-            this.kbtnCompute.Name = "kbtnCompute";
-            this.kbtnCompute.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCompute.TabIndex = 5;
-            this.kbtnCompute.Values.Text = "C&ompute";
-            this.kbtnCompute.Click += new System.EventHandler(this.kbtnCompute_Click);
-            // 
-            // kwlHashOutput
-            // 
-            this.kwlHashOutput.AutoSize = false;
-            this.kwlHashOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kwlHashOutput.Font = new System.Drawing.Font("Segoe UI", 13.5F, System.Drawing.FontStyle.Bold);
-            this.kwlHashOutput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlHashOutput.LabelStyle = Krypton.Toolkit.LabelStyle.TitleControl;
-            this.kwlHashOutput.Location = new System.Drawing.Point(0, 0);
-            this.kwlHashOutput.Name = "kwlHashOutput";
-            this.kwlHashOutput.Size = new System.Drawing.Size(720, 145);
-            this.kwlHashOutput.Text = "{0}";
-            this.kwlHashOutput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // bsaReset
             // 
             this.bsaReset.Enabled = Krypton.Toolkit.ButtonEnabled.False;
@@ -298,35 +306,27 @@
             this.bsaBrowse.Text = "...";
             this.bsaBrowse.UniqueName = "e238d0a40bb9429d9001ad448b7c376c";
             // 
-            // kchkToggleCasing
+            // kcmbHashTypes
             // 
-            this.kchkToggleCasing.Location = new System.Drawing.Point(13, 19);
-            this.kchkToggleCasing.Name = "kchkToggleCasing";
-            this.kchkToggleCasing.Size = new System.Drawing.Size(101, 20);
-            this.kchkToggleCasing.TabIndex = 1;
-            this.kchkToggleCasing.Values.Text = "Toggle &Casing";
-            this.kchkToggleCasing.CheckedChanged += new System.EventHandler(this.kchkToggleCasing_CheckedChanged);
+            this.kcmbHashTypes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kcmbHashTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kcmbHashTypes.DropDownWidth = 210;
+            this.kcmbHashTypes.IntegralHeight = false;
+            this.kcmbHashTypes.Location = new System.Drawing.Point(84, 33);
+            this.kcmbHashTypes.Name = "kcmbHashTypes";
+            this.kcmbHashTypes.Size = new System.Drawing.Size(210, 21);
+            this.kcmbHashTypes.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbHashTypes.TabIndex = 4;
             // 
-            // kbtnCancel
+            // kbtnCompute
             // 
-            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(628, 13);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCancel.TabIndex = 2;
-            this.kbtnCancel.Values.Text = "kryptonButton1";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
-            // 
-            // kbtnSaveToFile
-            // 
-            this.kbtnSaveToFile.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnSaveToFile.Enabled = false;
-            this.kbtnSaveToFile.Location = new System.Drawing.Point(489, 13);
-            this.kbtnSaveToFile.Name = "kbtnSaveToFile";
-            this.kbtnSaveToFile.Size = new System.Drawing.Size(133, 25);
-            this.kbtnSaveToFile.TabIndex = 3;
-            this.kbtnSaveToFile.Values.Text = "Save to &File";
-            this.kbtnSaveToFile.Click += new System.EventHandler(this.kbtnSaveToFile_Click);
+            this.kbtnCompute.Enabled = false;
+            this.kbtnCompute.Location = new System.Drawing.Point(300, 33);
+            this.kbtnCompute.Name = "kbtnCompute";
+            this.kbtnCompute.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCompute.TabIndex = 5;
+            this.kbtnCompute.Values.Text = "C&ompute";
+            this.kbtnCompute.Click += new System.EventHandler(this.kbtnCompute_Click);
             // 
             // KryptonComputeFileCheckSum
             // 

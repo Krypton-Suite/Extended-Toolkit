@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable ConvertToAutoProperty
+#pragma warning disable CS8622, CS8767
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>

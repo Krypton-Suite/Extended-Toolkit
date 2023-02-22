@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable ConvertToNullCoalescingCompoundAssignment
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>
@@ -32,11 +34,11 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     /// </summary>
     internal class AssemblyDigger : IAssemblyDigger
     {
-        private static Assembly _assembly;
-        private static IEnumerable<AssemblyRef> _assemblyRefs;
+        private static Assembly? _assembly;
+        private static IEnumerable<AssemblyRef>? _assemblyRefs;
 
         ///<summary>Initialise with root/main assembly</summary>
-        public AssemblyDigger(Assembly assembly)
+        public AssemblyDigger(Assembly? assembly)
         {
             var isSame = _assembly != null && _assembly.FullName == assembly.FullName;
 
@@ -51,9 +53,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// Returns all referenced assemblies in a customized array used in <see cref="ReportModel"/>
         /// Memoized
         /// </summary>
-        public IEnumerable<AssemblyRef> GetAssemblyRefs()
-        {
-            return _assemblyRefs ?? (_assemblyRefs =
+        public IEnumerable<AssemblyRef> GetAssemblyRefs() =>
+            _assemblyRefs ?? (_assemblyRefs =
                 from a in _assembly.GetReferencedAssemblies()
                     .Concat(new List<AssemblyName>
                     {
@@ -65,6 +66,5 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
                     Name = a.Name,
                     Version = a.Version.ToString()
                 });
-        }
     }
 }

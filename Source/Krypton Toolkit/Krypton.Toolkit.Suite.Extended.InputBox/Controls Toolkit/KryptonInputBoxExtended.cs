@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <returns>The users input string.</returns>
         internal static string InternalShow(IWin32Window owner, string prompt, string caption,
             string defaultResponse, string cueText, Color cueColour,
-            Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+            Font cueTypeface, Font buttonTypeface, Font? promptTypeface,
             InputBoxIconType iconType,
             KryptonInputBoxResponseType inputType,
             InputBoxTextAlignment textAlignment,

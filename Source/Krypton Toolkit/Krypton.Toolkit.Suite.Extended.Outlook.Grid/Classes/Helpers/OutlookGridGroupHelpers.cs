@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             char[] a = s.ToCharArray();
             a[0] = char.ToUpper(a[0]);
-            return new string(a);
+            return new(a);
         }
 
         /// <summary>

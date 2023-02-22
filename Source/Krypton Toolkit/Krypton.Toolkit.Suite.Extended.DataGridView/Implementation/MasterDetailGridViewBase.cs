@@ -28,6 +28,8 @@
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
+// ReSharper disable AssignNullToNotNullAttribute
+#pragma warning disable CS8622
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
@@ -267,7 +269,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         protected readonly Dictionary<int, (int Height, int divider)> RowCurrent = new();
 
-        private int rowExpandedHeight = 300;
+        private int _rowExpandedHeight = 300;
 
         private void MasterDetailGridView_Scroll(object sender, ScrollEventArgs e)
         {
@@ -371,7 +373,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         [Description("Detail DataGridView MaxHeight, Min is 100")]
         public int DetailRowExpandedMaxHeight
         {
-            get => rowExpandedHeight;
+            get => _rowExpandedHeight;
             set
             {
                 if (value < 100)
@@ -379,7 +381,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                     throw new ArgumentOutOfRangeException(nameof(DetailRowExpandedMaxHeight));
                 }
 
-                rowExpandedHeight = value;
+                _rowExpandedHeight = value;
             }
         }
 

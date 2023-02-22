@@ -401,7 +401,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             if (base.Semantics.Value != null)
             {
                 stringBuilder.Append(" - Semantic Value  = ");
-                stringBuilder.Append(base.Semantics.Value.ToString());
+                stringBuilder.Append(base.Semantics.Value);
             }
             if (base.Semantics.Count > 0)
             {

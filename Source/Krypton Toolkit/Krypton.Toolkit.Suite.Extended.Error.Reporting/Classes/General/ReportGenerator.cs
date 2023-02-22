@@ -27,6 +27,7 @@
 
 #if NET462_OR_GREATER
 using System.Deployment.Application;
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 #endif
 
 #pragma warning disable 1591
@@ -55,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
                 _info.AppAssembly = Assembly.GetEntryAssembly() ?? Assembly.GetCallingAssembly();
             }
 
-            _info.AppName = _info.AppName.IsEmpty() ? _info.AppAssembly.GetName().Name : _info.AppName;
+            _info.AppName = _info != null && _info.AppName.IsEmpty() ? _info.AppAssembly.GetName().Name : _info.AppName;
             _info.AppVersion = _info.AppVersion.IsEmpty() ? GetAppVersion() : _info.AppVersion;
             _info.ExceptionDate = _info.ExceptionDateKind != DateTimeKind.Local ? DateTime.UtcNow : DateTime.Now;
         }
@@ -63,10 +64,18 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         private string GetAppVersion()
         {
 #if NET462_OR_GREATER
-            return ApplicationDeployment.IsNetworkDeployed ?
-                ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() : _info.AppAssembly.GetName().Version.ToString();
+            if (_info.AppAssembly != null)
+            {
+                return ApplicationDeployment.IsNetworkDeployed
+                    ? ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString()
+                    : _info.AppAssembly.GetName().Version.ToString();
+            }
+            else
+            {
+                return string.Empty;
+            }
 #else
-			return Assembly.GetExecutingAssembly().ImageRuntimeVersion.ToString();
+			return Assembly.GetExecutingAssembly().ImageRuntimeVersion;
 #endif
         }
 

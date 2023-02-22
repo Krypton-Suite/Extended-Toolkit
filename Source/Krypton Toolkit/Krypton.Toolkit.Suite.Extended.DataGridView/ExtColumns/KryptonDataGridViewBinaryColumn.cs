@@ -25,6 +25,9 @@
  */
 #endregion
 
+// ReSharper disable UsePatternMatching
+#pragma warning disable IDE0019
+#pragma warning disable CS8764
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
@@ -79,13 +82,20 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// Create a cloned copy of the column.
         /// </summary>
         /// <returns></returns>
-        public override object Clone()
+        public override object? Clone()
         {
-            KryptonDataGridViewBinaryColumn cloned = base.Clone() as KryptonDataGridViewBinaryColumn;
+            KryptonDataGridViewBinaryColumn? cloned = base.Clone() as KryptonDataGridViewBinaryColumn;
 
             // Move the button specs over to the new clone
-            cloned._editorType = _editorType;
-            return cloned;
+            if (cloned != null)
+            {
+                cloned._editorType = _editorType;
+                return cloned;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -141,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         [Category("Data")]
         [DefaultValue(null)]
         [Description("The type of the editor widget to bring up when editing a cell's content.")]
-        public Type EditorType
+        public Type? EditorType
         {
             get =>
                 BinaryCellTemplate == null

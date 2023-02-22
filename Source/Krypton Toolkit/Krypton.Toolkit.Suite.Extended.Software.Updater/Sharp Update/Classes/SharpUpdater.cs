@@ -226,7 +226,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             if (result == DialogResult.OK)
             {
                 string currentPath = (update.Tag == JobType.Update) ? applicationInfo.ApplicationAssembly.Location : "";
-                string newPath = (update.Tag == JobType.Update) ? Path.GetFullPath(Path.GetDirectoryName(currentPath).ToString() + update.FilePath) : Path.GetFullPath(applicationInfo.ApplicationPath);
+                string newPath = (update.Tag == JobType.Update) ? Path.GetFullPath(Path.GetDirectoryName(currentPath) + update.FilePath) : Path.GetFullPath(applicationInfo.ApplicationPath);
                 Directory.CreateDirectory(Path.GetDirectoryName(newPath));
 
                 tempFilePaths.Add(form.TempFilePath);

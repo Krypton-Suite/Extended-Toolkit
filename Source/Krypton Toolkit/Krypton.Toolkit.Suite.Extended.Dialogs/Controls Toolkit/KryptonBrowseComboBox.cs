@@ -25,7 +25,7 @@
  */
 #endregion
 
-#pragma warning disable CS8601, CS8602
+#pragma warning disable CS8601, CS8602, CS8622
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     /// <summary>Allows the user to browse for files.</summary>

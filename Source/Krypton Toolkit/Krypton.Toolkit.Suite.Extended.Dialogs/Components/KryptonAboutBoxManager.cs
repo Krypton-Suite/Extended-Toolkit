@@ -26,6 +26,8 @@
 #endregion
 
 // ReSharper disable PossibleNullReferenceException
+// ReSharper disable NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonAboutBoxManager : Component

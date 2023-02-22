@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public static string GetFrameworkVersionString()
         {
-            return $".NET {Environment.Version.ToString()}";
+            return $".NET {Environment.Version}";
         }
 
         public static string BitmapHash(Bitmap bmp)

@@ -37,20 +37,20 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
     [Description("This is a MasterDetail DataGridView that allows a single detail block to be displayed under each master row.")]
     public class MasterSingleDetailView : MasterDetailGridView<KryptonDataGridView>
     {
-        private readonly SingleDetailView childView;
+        private readonly SingleDetailView _childView;
 
-        internal override IDetailView<KryptonDataGridView> ChildView => childView;
+        internal override IDetailView<KryptonDataGridView> ChildView => _childView;
 
         /// <summary>
         /// 
         /// </summary>
         public MasterSingleDetailView()
         {
-            childView = new SingleDetailView();
-            Controls.Add(childView);
+            _childView = new SingleDetailView();
+            Controls.Add(_childView);
         }
 
-        public SingleDetailView SingleChildView => childView;
+        public SingleDetailView SingleChildView => _childView;
 
         /// <summary>
         /// Add the tableName to be used for the Details from within the DataSource
@@ -76,15 +76,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 throw new NotImplementedException(@"'source' must implement Filtering. Use SimpleFilteredList class");
             }
 
-            SetStyles(childView);
+            SetStyles(_childView);
             if (columns != null)
             {
-                childView.AutoGenerateColumns = false;
-                childView.Columns.Clear();
-                childView.Columns.AddRange(columns);
+                _childView.AutoGenerateColumns = false;
+                _childView.Columns.Clear();
+                _childView.Columns.AddRange(columns);
             }
-            childView.DataSource = source;
-            childView.ChildGrids[childView] = targetKeyColumn;
+            _childView.DataSource = source;
+            _childView.ChildGrids[_childView] = targetKeyColumn;
         }
 
     }

@@ -26,8 +26,10 @@
 #endregion
 
 // ReSharper disable AssignNullToNotNullAttribute
-#pragma warning disable CS8602
-#pragma warning disable CS1574, CS0419
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+// ReSharper disable MergeIntoPattern
+#pragma warning disable CS8602, CS8604
+#pragma warning disable CS1574, CS0419, CS8767
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -1139,28 +1141,19 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Sets the value of the <see cref="DayTopHeight"/> property
         /// </summary>
         /// <param name="height">Height of all <see cref="CalendarDayTop"/> elements</param>
-        protected void SetDayTopHeight(int height)
-        {
-            _dayTopHeight = height;
-        }
+        protected void SetDayTopHeight(int height) => _dayTopHeight = height;
 
         /// <summary>
         /// Sets the value of the <see cref="DayHeaderHeight"/> property
         /// </summary>
         /// <param name="height">Height of the day header</param>
-        protected void SetDayHeaderHeight(int height)
-        {
-            _dayHeaderHeight = height;
-        }
+        protected void SetDayHeaderHeight(int height) => _dayHeaderHeight = height;
 
         /// <summary>
         /// Sets the value of the <see cref="DayNameHeadersHeight"/> property
         /// </summary>
         /// <param name="height">Height of the day name headers</param>
-        protected void SetDayNameHeadersHeight(int height)
-        {
-            _dayNameHeadersHeight = height;
-        }
+        protected void SetDayNameHeadersHeight(int height) => _dayNameHeadersHeight = height;
 
         /// <summary>
         /// Sets the value of the <see cref="TimeScaleUnitHeight"/> property
@@ -1267,7 +1260,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 for (int j = 0; j < m.GetLength(0); j++)
                 {
-                    Console.Write(string.Format(" {0}", m[j, i]));
+                    Console.Write($" {m[j, i]}");
                 }
                 Console.WriteLine(" ");
             }

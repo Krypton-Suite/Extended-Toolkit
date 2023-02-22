@@ -818,7 +818,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 rem = (number % 16);
 
-                result += hexvalues[rem].ToString();
+                result += hexvalues[rem];
 
                 if (number < 16)
                 {

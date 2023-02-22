@@ -57,9 +57,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int nextPosition = cellBounds.X + (int)(1 * factorX);
             Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
-            foreach (Token tok in (List<Token>)this.Value)
+            foreach (Token tok in (List<Token>)Value)
             {
-                Rectangle rectangle = new Rectangle();
+                Rectangle rectangle = new();
                 Size s = TextRenderer.MeasureText(tok.Text, f);
                 rectangle.Width = s.Width + (int)(10 * factorX);
                 rectangle.X = nextPosition;
@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int nextPosition = (int)(1 * factorX);
             if (Value != null)
             {
-                foreach (Token tok in (List<Token>)this.Value)
+                foreach (Token tok in (List<Token>)Value)
                 {
                     Size s = TextRenderer.MeasureText(tok.Text, f);
                     nextPosition += s.Width + (int)(10 * factorX) + (int)(5 * factorX);

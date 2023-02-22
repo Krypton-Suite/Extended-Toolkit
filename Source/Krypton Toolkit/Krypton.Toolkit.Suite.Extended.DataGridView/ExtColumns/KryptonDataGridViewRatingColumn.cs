@@ -25,12 +25,14 @@
  */
 #endregion
 
+// ReSharper disable AssignNullToNotNullAttribute
+#pragma warning disable CS8600, CS8602
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
     /// Class for a rating column
     /// </summary>
-    public class KryptonDataGridViewRatingColumn : DataGridViewImageColumn
+    public sealed class KryptonDataGridViewRatingColumn : DataGridViewImageColumn
     {
         /// <summary>
         /// Constructor
@@ -46,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
     /// <summary>
     /// Class for a rating celle
     /// </summary>
-    public class RatingCell : DataGridViewImageCell
+    public sealed class RatingCell : DataGridViewImageCell
     {
         /// <summary>
         /// Constructor
@@ -68,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="formattedValueTypeConverter"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        protected override object GetFormattedValue(object? value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
+        protected override object? GetFormattedValue(object? value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
         {
             if (value == null)
             {
@@ -76,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             }
             else
             {
-                return starImages[(int)value];
+                return _starImages[(int)value];
             }
         }
 
@@ -110,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
                 if (starNumber != -1)
                 {
-                    cellImage = starHotImages[starNumber];
+                    cellImage = _starHotImages[starNumber];
                 }
             }
             // suppress painting of selection 
@@ -160,23 +162,23 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         #region Private Implementation
 
-        static Image[] starImages;
-        static Image[] starHotImages;
-        const int Imagewidth = 58;
+        static Image?[] _starImages;
+        static Image[] _starHotImages;
+        const int IMAGEWIDTH = 58;
 
         private int GetStarFromMouse(Rectangle cellBounds, Point mouseLocation)
         {
             if (cellBounds.Contains(mouseLocation))
             {
                 int mouseXRelativeToCell = (mouseLocation.X - cellBounds.X);
-                int imageXArea = (cellBounds.Width / 2) - (Imagewidth / 2);
-                if (((mouseXRelativeToCell + 4) < imageXArea) || (mouseXRelativeToCell >= (imageXArea + Imagewidth)))
+                int imageXArea = (cellBounds.Width / 2) - (IMAGEWIDTH / 2);
+                if (((mouseXRelativeToCell + 4) < imageXArea) || (mouseXRelativeToCell >= (imageXArea + IMAGEWIDTH)))
                 {
                     return -1;
                 }
                 else
                 {
-                    int oo = (int)Math.Round((((float)(mouseXRelativeToCell - imageXArea + 2) / (float)Imagewidth) * 10f), MidpointRounding.AwayFromZero);
+                    int oo = (int)Math.Round((((float)(mouseXRelativeToCell - imageXArea + 2) / (float)IMAGEWIDTH) * 10f), MidpointRounding.AwayFromZero);
                     if (oo > 10 || oo < 0)
                     {
                         System.Diagnostics.Debugger.Break();
@@ -196,20 +198,20 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         static RatingCell()
         {
-            starImages = new Image[11];
-            starHotImages = new Image[11];
+            _starImages = new Image?[11];
+            _starHotImages = new Image[11];
             var resources = new ComponentResourceManager(typeof(KryptonDataGridViewRatingColumn));
 
             // load normal stars 
             for (int i = 0; i <= 10; i++)
             {
-                starImages[i] = (Image)resources.GetObject("star" + i.ToString());
+                _starImages[i] = (Image)resources.GetObject("star" + i);
             }
 
             // load hot normal stars 
             for (int i = 0; i <= 10; i++)
             {
-                starHotImages[i] = (Image)resources.GetObject("starhot" + i.ToString());
+                _starHotImages[i] = (Image)resources.GetObject("starhot" + i);
             }
         }
         #endregion

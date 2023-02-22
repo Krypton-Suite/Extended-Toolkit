@@ -16,6 +16,8 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable UsePatternMatching
+#pragma warning disable CS8764
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
@@ -59,12 +61,19 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Overrides Clone
         /// </summary>
         /// <returns>The cloned KryptonDataGridViewTextAndImageCell</returns>
-        public override object Clone()
+        public override object? Clone()
         {
-            KryptonDataGridViewTextAndImageCell c = base.Clone() as KryptonDataGridViewTextAndImageCell;
-            c._imageValue = _imageValue;
-            c._imageSize = _imageSize;
-            return c;
+            KryptonDataGridViewTextAndImageCell? c = base.Clone() as KryptonDataGridViewTextAndImageCell;
+            if (c != null)
+            {
+                c._imageValue = _imageValue;
+                c._imageSize = _imageSize;
+                return c;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -88,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     //{
                     Padding inheritedPadding = Style.Padding;
                     //Padding inheritedPadding = this.InheritedStyle.Padding;
-                    Style.Padding = new Padding(_imageSize.Width + 2,
+                    Style.Padding = new(_imageSize.Width + 2,
                         inheritedPadding.Top, inheritedPadding.Right,
                         inheritedPadding.Bottom);
                     //}
@@ -116,7 +125,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (Value != null && ((TextAndImage)Value).Image != null)
             {
                 Padding inheritedPadding = Style.Padding;
-                Style.Padding = new Padding(_imageSize.Width + 2,
+                Style.Padding = new(_imageSize.Width + 2,
                     inheritedPadding.Top, inheritedPadding.Right,
                     inheritedPadding.Bottom);
                 //To be in phase with highlight feature who forces the style.

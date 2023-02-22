@@ -16,25 +16,25 @@ namespace Examples
         #region Instance Fields
 
         private DataTable? _dataTable;
-        private DataSet? _dataSet;
+        private readonly DataSet? _dataSet;
 
-        private SortedDictionary<int, string?> _filtersaved = new();
-        private SortedDictionary<int, string?> _sortsaved = new();
+        private readonly SortedDictionary<int, string?> _filtersaved = new();
+        private readonly SortedDictionary<int, string?> _sortsaved = new();
 
-        private bool _testtranslations = false;
-        private bool _testtranslationsFromFile = false;
+        private readonly bool _testtranslations = false;
+        private readonly bool _testtranslationsFromFile = false;
 
-        private static int _displayItemsCounter = 100;
+        private static readonly int _displayItemsCounter = 100;
 
-        private static bool _memoryTestEnabled = true;
+        private static readonly bool _memoryTestEnabled = true;
         private const int MEMORY_TEST_NUM = 100;
-        private bool _memorytest;
-        private object[][] _inrows;
+        private readonly bool _memorytest;
+        private readonly object[][] _inrows;
 
-        private Timer _memorytestclosetimer;
-        private Timer _timermemoryusage;
+        private readonly Timer _memorytestclosetimer;
+        private readonly Timer _timermemoryusage;
 
-        private static bool _collectGarbageOnTimerMemoryUsageUpdate = true;
+        private static readonly bool _collectGarbageOnTimerMemoryUsageUpdate = true;
 
         #endregion
 
@@ -227,7 +227,8 @@ namespace Examples
             //sample use of the override string filter
             string stringcolumnfilter = ktxtStringFilter.Text;
             if (!String.IsNullOrEmpty(stringcolumnfilter))
-                e.FilterString += (!String.IsNullOrEmpty(e.FilterString) ? " AND " : "") + String.Format("string LIKE '%{0}%'", stringcolumnfilter.Replace("'", "''"));
+                e.FilterString += (!String.IsNullOrEmpty(e.FilterString) ? " AND " : "") +
+                                  $"string LIKE '%{stringcolumnfilter.Replace("'", "''")}%'";
 
             ktxtFilterString.Text = e.FilterString;
         }
@@ -297,7 +298,7 @@ namespace Examples
                     startRow = kadgvMain.CurrentCell.RowIndex + (endcol ? 1 : 0);
                 }
             }
-            DataGridViewCell c = kadgvMain.FindCell(
+            DataGridViewCell? c = kadgvMain.FindCell(
                 e.ValueToSearch,
                 e.ColumnToSearch != null ? e.ColumnToSearch.Name : null,
                 startRow,
@@ -320,7 +321,7 @@ namespace Examples
         {
             if (_collectGarbageOnTimerMemoryUsageUpdate)
                 GC.Collect();
-            tsslMemoryUsage.Text = String.Format("Memory Usage: {0}Mb", GC.GetTotalMemory(false) / (1024 * 1024));
+            tsslMemoryUsage.Text = $"Memory Usage: {GC.GetTotalMemory(false) / (1024 * 1024)}Mb";
         }
 
         private void kbtnMemoryTest_Click(object sender, EventArgs e)

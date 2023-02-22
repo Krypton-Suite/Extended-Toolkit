@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
                 }
                 else
                 {
-                    stringBuilder.Append(Value.ToString());
+                    stringBuilder.Append(Value);
                 }
             }
             writer.WriteString(stringBuilder.ToString());
@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
                 }
                 else
                 {
-                    stringBuilder.Append(_value.ToString());
+                    stringBuilder.Append(_value);
                 }
             }
             else

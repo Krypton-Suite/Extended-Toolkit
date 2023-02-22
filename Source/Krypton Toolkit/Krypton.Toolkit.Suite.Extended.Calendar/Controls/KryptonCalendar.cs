@@ -26,8 +26,9 @@
 #endregion
 
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+// ReSharper disable FieldCanBeMadeReadOnly.Local
 #pragma warning disable CS8604
-#pragma warning disable CS8602
+#pragma warning disable CS8602, CS8622
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     [DefaultEvent("LoadItems")]
@@ -45,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private PaletteBase? _palette;
         private PaletteRedirect _paletteRedirect;
 
-        //Kripton Palette Events
+        //Krypton Palette Events
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
@@ -64,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             Invalidate();
         }
 
-        //Kripton Palette Events
+        //Krypton Palette Events
         private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
         {
             Renderer.ReloadPalette();

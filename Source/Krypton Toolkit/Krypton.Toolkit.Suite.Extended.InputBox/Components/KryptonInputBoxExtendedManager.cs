@@ -37,7 +37,9 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         private string _caption;
         private string _defaultResponse;
         private string _cueText;
-        private Font _cueTypeface, _promptTypeface, _buttonTypeface;
+        private Font _cueTypeface;
+        private Font? _promptTypeface;
+        private Font _buttonTypeface;
         private InputBoxIconType _iconType;
         private KryptonInputBoxResponseType _inputType;
         private InputBoxTextAlignment _textAlignment;
@@ -65,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         public Font ButtonTypeface { get => _buttonTypeface; set => _buttonTypeface = value; }
 
         [DefaultValue(typeof(Font), "DefaultToolkitTypefaceTypes.DEFAULT_BOLD_TYPEFACE")]
-        public Font PromptTypeface { get => _promptTypeface; set => _promptTypeface = value; }
+        public Font? PromptTypeface { get => _promptTypeface; set => _promptTypeface = value; }
 
         [DefaultValue(typeof(InputBoxButtons), "InputBoxButtons.OkCancel")]
         public InputBoxButtons Buttons { get => _buttons; set => _buttons = value; }
@@ -223,7 +225,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         public string ShowInputBox(IWin32Window owner, string prompt, string caption,
                                    string defaultResponse, string cueText,
                                    Color cueColour, Font cueTypeface, Font buttonTypeface, 
-                                   Font promptTypeface, InputBoxIconType iconType,
+                                   Font? promptTypeface, InputBoxIconType iconType,
                                    KryptonInputBoxResponseType inputType,
                                    InputBoxTextAlignment textAlignment,
                                    InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
@@ -255,7 +257,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         public static string Show(IWin32Window owner, string prompt, string caption,
                                   string defaultResponse, string cueText,
                                   Color cueColour, Font cueTypeface, Font buttonTypeface, 
-                                  Font promptTypeface, InputBoxIconType iconType,
+                                  Font? promptTypeface, InputBoxIconType iconType,
                                   KryptonInputBoxResponseType inputType,
                                   InputBoxTextAlignment textAlignment,
                                   InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,

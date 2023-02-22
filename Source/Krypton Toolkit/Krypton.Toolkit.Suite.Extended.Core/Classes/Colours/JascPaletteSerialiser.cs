@@ -136,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                     if (!int.TryParse(parts[0], out r) || !int.TryParse(parts[1], out g) || !int.TryParse(parts[2], out b))
                     {
-                        throw new InvalidDataException(string.Format("Invalid palette contents found with data '{0}'", data));
+                        throw new InvalidDataException($"Invalid palette contents found with data '{data}'");
                     }
 
                     results.Add(Color.FromArgb(r, g, b));

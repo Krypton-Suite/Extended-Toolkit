@@ -1329,7 +1329,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     foreach (TreeNodeItemSelector n in treeNodeItemSelectors)
                     {
-                        sb.Append(n.Value.ToString());
+                        sb.Append(n.Value);
                         break;
                     }
                 }
@@ -1338,7 +1338,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                          DataType == typeof(byte) || DataType == typeof(sbyte))
                 {
                     foreach (TreeNodeItemSelector n in treeNodeItemSelectors)
-                        sb.Append(n.Value.ToString() + appx);
+                        sb.Append(n.Value + appx);
                 }
                 else if (DataType == typeof(float) || DataType == typeof(double) || DataType == typeof(decimal))
                 {

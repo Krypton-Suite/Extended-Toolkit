@@ -12,7 +12,7 @@ namespace Examples
 {
     public partial class OutlookGridExample : KryptonForm
     {
-        private static Random rand = new();
+        private static readonly Random rand = new();
 
         public OutlookGridExample()
         {

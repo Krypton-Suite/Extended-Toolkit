@@ -20,7 +20,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     internal class OutlookGridRowComparer2 : IComparer<OutlookGridRow>
     {
-        List<Tuple<int, SortOrder, IComparer>> sortColumnIndexAndOrder;
+        List<Tuple<int, SortOrder, IComparer>> _sortColumnIndexAndOrder;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OutlookGridRowComparer2"/> class.
@@ -28,7 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="sortList">The sort list, tuple (column index, sortorder, Icomparer)</param>
         public OutlookGridRowComparer2(List<Tuple<int, SortOrder, IComparer>> sortList)
         {
-            sortColumnIndexAndOrder = sortList;
+            _sortColumnIndexAndOrder = sortList;
         }
 
         #region IComparer Members
@@ -46,17 +46,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             try
             {
-                for (int i = 0; i < sortColumnIndexAndOrder.Count; i++)
+                for (int i = 0; i < _sortColumnIndexAndOrder.Count; i++)
                 {
                     if (compareResult == 0)
                     {
-                        orderModifier = (sortColumnIndexAndOrder[i].Item2 == SortOrder.Ascending ? 1 : -1);
+                        orderModifier = (_sortColumnIndexAndOrder[i].Item2 == SortOrder.Ascending ? 1 : -1);
 
-                        object o1 = x.Cells[sortColumnIndexAndOrder[i].Item1].Value;
-                        object o2 = y.Cells[sortColumnIndexAndOrder[i].Item1].Value;
-                        if (sortColumnIndexAndOrder[i].Item3 != null)
+                        object o1 = x.Cells[_sortColumnIndexAndOrder[i].Item1].Value;
+                        object o2 = y.Cells[_sortColumnIndexAndOrder[i].Item1].Value;
+                        if (_sortColumnIndexAndOrder[i].Item3 != null)
                         {
-                            compareResult = sortColumnIndexAndOrder[i].Item3.Compare(o1, o2) * orderModifier;
+                            compareResult = _sortColumnIndexAndOrder[i].Item3.Compare(o1, o2) * orderModifier;
                         }
                         else
                         {
@@ -134,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             catch (Exception ex)
             {
-                throw new Exception("OutlookGridRowComparer: " + ToString(), ex);
+                throw new("OutlookGridRowComparer: " + ToString(), ex);
             }
         }
         #endregion

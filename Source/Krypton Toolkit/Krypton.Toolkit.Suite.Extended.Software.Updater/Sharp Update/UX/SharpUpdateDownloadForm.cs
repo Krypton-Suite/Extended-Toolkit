@@ -259,7 +259,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         private void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             // Update progressbar on download
-            klblProgress.Text = string.Format("Downloaded {0} of {1}", FormatBytes(e.BytesReceived, 1, true), FormatBytes(e.TotalBytesToReceive, 1, true));
+            klblProgress.Text =
+                $"Downloaded {FormatBytes(e.BytesReceived, 1, true)} of {FormatBytes(e.TotalBytesToReceive, 1, true)}";
             progressBar.Value = e.ProgressPercentage;
         }
 

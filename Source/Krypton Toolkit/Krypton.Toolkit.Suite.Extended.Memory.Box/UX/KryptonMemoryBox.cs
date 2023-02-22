@@ -259,6 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
             DialogResult = dialogResult;
         }
 
+        /*
         private Size UpdateMessageSizing(IWin32Window? showOwner)
         {
             Size textSize;
@@ -267,23 +268,26 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
             {
                 // Find size of the label, with a max of 2/3 screen width
                 Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
-                SizeF scaledMonitorSize = screen.Bounds.Size;
-                scaledMonitorSize.Width *= 2 / 3.0f;
-                scaledMonitorSize.Height *= 0.95f;
-                kwlBody.UpdateFont();
-                SizeF messageSize = g.MeasureString(kwlBody.Text, kwlBody.Font, scaledMonitorSize);
-                // SKC: Don't forget to add the TextExtra into the calculation
-                SizeF captionSize = g.MeasureString($@"{Text} {TextExtra}", kwlBody.Font, scaledMonitorSize);
+                if (screen != null)
+                {
+                    SizeF scaledMonitorSize = screen.Bounds.Size;
+                    scaledMonitorSize.Width *= 2 / 3.0f;
+                    scaledMonitorSize.Height *= 0.95f;
+                    kwlBody.UpdateFont();
+                    SizeF messageSize = g.MeasureString(kwlBody.Text, kwlBody.Font, scaledMonitorSize);
+                    // SKC: Don't forget to add the TextExtra into the calculation
+                    SizeF captionSize = g.MeasureString($@"{Text} {TextExtra}", kwlBody.Font, scaledMonitorSize);
 
-                var messageXSize = Math.Max(messageSize.Width, captionSize.Width);
-                // Work out DPI adjustment factor
-                messageSize.Width = messageXSize * FactorDpiX;
-                messageSize.Height *= FactorDpiY;
+                    var messageXSize = Math.Max(messageSize.Width, captionSize.Width);
+                    // Work out DPI adjustment factor
+                    messageSize.Width = messageXSize * FactorDpiX;
+                    messageSize.Height *= FactorDpiY;
 
-                // Always add on ad extra 5 pixels as sometimes the measure size does not draw the last 
-                // character it contains, this ensures there is always definitely enough space for it all
-                messageSize.Width += 5;
-                textSize = Size.Ceiling(messageSize);
+                    // Always add on ad extra 5 pixels as sometimes the measure size does not draw the last 
+                    // character it contains, this ensures there is always definitely enough space for it all
+                    messageSize.Width += 5;
+                    textSize = Size.Ceiling(messageSize);
+                }
             }
 
             // Find size of icon area plus the text area added together
@@ -294,6 +298,7 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
 
             return textSize;
         }
+        */
 
         private Size UpdateButtonsSizing()
         {

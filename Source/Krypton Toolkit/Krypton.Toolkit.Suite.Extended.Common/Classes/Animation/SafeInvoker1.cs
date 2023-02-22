@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="targetControl">
         ///     The control to be used to invoke the callback in UI thread
         /// </param>
-        public SafeInvoker(Action<T> action, object targetControl) : base(action, targetControl)
+        public SafeInvoker(Action<T> action, object? targetControl) : base(action, targetControl)
         {
         }
 

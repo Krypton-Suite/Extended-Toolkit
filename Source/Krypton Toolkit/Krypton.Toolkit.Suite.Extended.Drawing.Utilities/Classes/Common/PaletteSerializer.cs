@@ -106,7 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             if (!File.Exists(fileName))
             {
-                throw new FileNotFoundException(string.Format("Cannot find file '{0}'.", fileName), fileName);
+                throw new FileNotFoundException($"Cannot find file '{fileName}'.", fileName);
             }
 
             if (_serializerCache.Count == 0)
@@ -316,7 +316,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             if (!File.Exists(fileName))
             {
-                throw new FileNotFoundException(string.Format("Cannot find file '{0}'", fileName), fileName);
+                throw new FileNotFoundException($"Cannot find file '{fileName}'", fileName);
             }
 
             using (Stream stream = File.OpenRead(fileName))

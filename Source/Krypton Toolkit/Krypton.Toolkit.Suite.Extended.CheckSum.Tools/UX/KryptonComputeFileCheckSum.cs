@@ -35,6 +35,8 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
         private readonly bool _useWindowsAPICodePackFeatures;
 
+        private Timer _computeButtonTimer;
+
         private string _fileName;
 
         private string _filePath;
@@ -92,6 +94,19 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 #endif
 
             kcmbHashTypes.SelectedIndex = 0;
+
+            _computeButtonTimer = new();
+
+            _computeButtonTimer.Enabled = true;
+
+            _computeButtonTimer.Interval = 1000;
+
+            _computeButtonTimer.Tick += ComputeButtonTimer_Tick;
+        }
+
+        private void ComputeButtonTimer_Tick(object sender, EventArgs e)
+        {
+            kbtnCompute.Enabled = !string.IsNullOrEmpty(ktxtFilePath.Text);
         }
 
         private void ComputeCheckSum()

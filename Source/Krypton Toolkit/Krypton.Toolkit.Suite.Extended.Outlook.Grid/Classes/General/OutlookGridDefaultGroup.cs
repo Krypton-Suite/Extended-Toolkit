@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         private bool _sortBySummaryCount;
 
-        private IComparer _itemsComparer;
+        private IComparer? _itemsComparer;
         #endregion
 
         public static OutlookGridLanguageStrings Strings => KryptonOutlookGridGroupBox.Strings;
@@ -91,9 +91,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderMicrosoft365)
                 _height = StaticValues._2013GroupRowHeight; // special height for office 2013
             else
-                _height = StaticValues._defaultGroupRowHeight; // default height
-            Rows = new List<OutlookGridRow>();
-            Children = new OutlookGridGroupCollection();
+                _height = StaticValues.DefaultGroupRowHeight; // default height
+            Rows = new();
+            Children = new();
             _formatStyle = "";
             _oneItemText = Strings.OneItem;
             _xXxItemsText = Strings.NumberOfItems;
@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Gets or sets the parent group.
         /// </summary>
         /// <value>The parent group.</value>
-        public IOutlookGridGroup ParentGroup { get; set; }
+        public IOutlookGridGroup? ParentGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the level.
@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 {
                     if (_val is string)
                     {
-                        formattedValue = string.Format(_formatStyle, Value.ToString());
+                        formattedValue = string.Format(_formatStyle, Value);
                     }
                     else if (_val is DateTime)
                     {
@@ -195,7 +195,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     formattedValue = Value.ToString();
                 }
 
-                res = string.Format("{0}: {1} ({2})", _column.DataGridViewColumn.HeaderText, formattedValue, _itemCount == 1 ? _oneItemText : _itemCount.ToString() + XXXItemsText);
+                res =
+                    $"{_column.DataGridViewColumn.HeaderText}: {formattedValue} ({(_itemCount == 1 ? _oneItemText : _itemCount + XxxItemsText)})";
                 //if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                 //    return res.ToUpper();
                 //else
@@ -258,7 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the text associated to several Items
         /// </summary>
-        public virtual string XXXItemsText
+        public virtual string XxxItemsText
         {
             get => _xXxItemsText;
             set => _xXxItemsText = value;
@@ -288,7 +289,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         ///// <value>
         ///// The items comparer.
         ///// </value>
-        public virtual IComparer ItemsComparer
+        public virtual IComparer? ItemsComparer
         {
             get => _itemsComparer;
             set => _itemsComparer = value;
@@ -312,7 +313,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 _height = _height,
                 _groupImage = _groupImage,
                 _formatStyle = _formatStyle,
-                _xXxItemsText = XXXItemsText,
+                _xXxItemsText = XxxItemsText,
                 _oneItemText = OneItemText,
                 _allowHiddenWhenGrouped = _allowHiddenWhenGrouped,
                 _sortBySummaryCount = _sortBySummaryCount

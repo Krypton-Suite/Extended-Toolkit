@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
             KryptonLabel lblSpeedValue = new KryptonLabel();
             lblSpeedValue.StateCommon.ShortText.TextV = PaletteRelativeAlign.Near;
-            lblSpeedValue.Text = selectedNic.Speed.ToString() + " bits";
+            lblSpeedValue.Text = selectedNic.Speed + " bits";
 
             KryptonLabel lblMachineName = new KryptonLabel();
             lblMachineName.StateCommon.ShortText.TextV = PaletteRelativeAlign.Near;

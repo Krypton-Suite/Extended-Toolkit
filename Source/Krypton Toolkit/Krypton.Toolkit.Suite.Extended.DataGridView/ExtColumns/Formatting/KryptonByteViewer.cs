@@ -25,6 +25,8 @@
  */
 #endregion
 
+// ReSharper disable RedundantCheckBeforeAssignment
+#pragma warning disable CS8602
 #if NETFRAMEWORK // https://docs.microsoft.com/en-us/dotnet/standard/frameworks#how-to-specify-target-frameworks
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
@@ -82,19 +84,19 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         #endregion
 
         #region Static Fields
-        private static readonly Font ADDRESS_FONT = new("Microsoft Sans Serif", 8f);
-        private static readonly Font HEXDUMP_FONT = new("Consolas", 9.75f);
+        private static readonly Font _addressFont = new("Microsoft Sans Serif", 8f);
+        private static readonly Font _hexdumpFont = new("Consolas", 9.75f);
         #endregion
 
         #region Instance Fields
-        private readonly int SCROLLBAR_HEIGHT = SystemInformation.HorizontalScrollBarHeight;
-        private readonly int SCROLLBAR_WIDTH = SystemInformation.VerticalScrollBarWidth;
+        private readonly int _scrollbarHeight = SystemInformation.HorizontalScrollBarHeight;
+        private readonly int _scrollbarWidth = SystemInformation.VerticalScrollBarWidth;
 
         private VScrollBarEx _scrollBar;
         private TextBox _edit;
         private readonly int _columnCount = 16;
         private int _rowCount = 25;
-        private byte[] _dataBuf;
+        private byte[]? _dataBuf;
         private int _startLine;
         private int _displayLinesCount;
         private int _linesCount;
@@ -113,7 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
             RowCount = 1;
             RowStyles.Add(new RowStyle(SizeType.Percent, 100f));
-            InitUI();
+            InitUi();
             ResumeLayout();
             _displayMode = DisplayMode.Hexdump;
             DoubleBuffered = true;
@@ -132,12 +134,19 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         private byte[] ComposeLineBuffer(int startLine, int line)
         {
             int num = startLine * _columnCount;
-            byte[] array = (num + (line + 1) * _columnCount <= _dataBuf.Length) ? new byte[_columnCount] : new byte[_dataBuf.Length % _columnCount];
-            for (int i = 0; i < array.Length; i++)
+            if (_dataBuf != null)
             {
-                array[i] = _dataBuf[num + CellToIndex(i, line)];
+                byte[] array = _dataBuf != null && (num + (line + 1) * _columnCount <= _dataBuf.Length) ? new byte[_columnCount] : new byte[_dataBuf.Length % _columnCount];
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = _dataBuf[num + CellToIndex(i, line)];
+                }
+                return array;
             }
-            return array;
+            else
+            {
+                return Array.Empty<byte>();
+            }
         }
 
         private void DrawAddress(Graphics g, int startLine, int line)
@@ -146,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             Brush brush = new SolidBrush(ForeColor);
             try
             {
-                g.DrawString(s, ADDRESS_FONT, brush, 5f, 7 + line * 21);
+                g.DrawString(s, _addressFont, brush, 5f, 7 + line * 21);
             }
             finally
             {
@@ -191,7 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             Brush brush = new SolidBrush(ForeColor);
             try
             {
-                g.DrawString(stringBuilder.ToString(), HEXDUMP_FONT, brush, 479f, 7 + line * 21);
+                g.DrawString(stringBuilder.ToString(), _hexdumpFont, brush, 479f, 7 + line * 21);
             }
             finally
             {
@@ -215,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             Brush brush = new SolidBrush(ForeColor);
             try
             {
-                g.DrawString(stringBuilder.ToString(), HEXDUMP_FONT, brush, 76f, 7 + line * 21);
+                g.DrawString(stringBuilder.ToString(), _hexdumpFont, brush, 76f, 7 + line * 21);
             }
             finally
             {
@@ -252,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         [DllImport(@"kernel32.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
-        private static extern int MultiByteToWideChar(int codePage, int dwFlags, byte[] lpMultiByteStr,
+        private static extern int MultiByteToWideChar(int codePage, int dwFlags, byte[]? lpMultiByteStr,
             int cchMultiByte, char[] lpWideCharStr, int cchWideChar);
 
         private void InitUnicode()
@@ -270,9 +279,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             _edit.Text = new string(array);
         }
 
-        private void InitUI()
+        private void InitUi()
         {
-            Size = new Size(612 + SCROLLBAR_WIDTH + 2 + 3, 10 + _rowCount * 21);
+            Size = new Size(612 + _scrollbarWidth + 2 + 3, 10 + _rowCount * 21);
             _scrollBar = new VScrollBarEx();
             _scrollBar.ValueChanged += ScrollChanged;
             _scrollBar.TabStop = false;
@@ -291,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 Margin = Padding.Empty,
                 WordWrap = true,
                 Visible = false,
-                Font = HEXDUMP_FONT
+                Font = _hexdumpFont
             };
             Controls.Add(_scrollBar, 0, 0);
             Controls.Add(_edit, 0, 0);
@@ -413,7 +422,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 _rowCount = num;
                 if (Dock == DockStyle.None)
                 {
-                    Size = new Size(612 + SCROLLBAR_WIDTH + 2 + 3, 10 + _rowCount * 21);
+                    Size = new Size(612 + _scrollbarWidth + 2 + 3, 10 + _rowCount * 21);
                 }
                 if (_scrollBar != null)
                 {
@@ -451,7 +460,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         #region Public Virtual
         /// <summary>Gets the bytes in the buffer.</summary>
         /// <returns>The unsigned byte array reference.</returns>
-        public virtual byte[] GetBytes()
+        public virtual byte[]? GetBytes()
         {
             return _dataBuf;
         }
@@ -494,7 +503,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <summary>Sets the byte array to display in the viewer.</summary>
         /// <param name="bytes">The byte array to display. </param>
         /// <exception cref="T:System.ArgumentNullException">The specified byte array is null. </exception>
-        public virtual void SetBytes(byte[] bytes)
+        public virtual void SetBytes(byte[]? bytes)
         {
             if (_dataBuf != null)
             {
@@ -578,7 +587,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             try
             {
                 int num = (int)fileStream.Length;
-                byte[] array = new byte[num + 1];
+                byte[]? array = new byte[num + 1];
                 fileStream.Read(array, 0, num);
                 SetBytes(array);
                 fileStream.Close();

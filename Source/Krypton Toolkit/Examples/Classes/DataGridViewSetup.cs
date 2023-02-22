@@ -3,6 +3,12 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 
 using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+// ReSharper disable ArrangeRedundantParentheses
+// ReSharper disable PossibleNullReferenceException
+// ReSharper disable AssignNullToNotNullAttribute
+// ReSharper disable PossibleInvalidCastExceptionInForeachLoop
+// ReSharper disable InconsistentNaming
+#pragma warning disable CS8601
 #pragma warning disable CS8600
 #pragma warning disable CS8602
 #pragma warning disable CS8604
@@ -67,7 +73,7 @@ namespace Examples
                 SandBoxGridColumn.ColumnToken
             };
 
-            DataGridViewColumn[] columnsToAdd = new DataGridViewColumn[10]
+            DataGridViewColumn?[] columnsToAdd = new DataGridViewColumn[10]
             {
                 SetupColumn(SandBoxGridColumn.ColumnCustomerID),
                 SetupColumn(SandBoxGridColumn.ColumnCustomerName),
@@ -89,7 +95,7 @@ namespace Examples
             grid.AddInternalColumn(columnsToAdd[3], new OutlookGridDefaultGroup(null), SortOrder.None, -1, -1);
             grid.AddInternalColumn(columnsToAdd[4], new OutlookGridDefaultGroup(null), SortOrder.None, -1, -1);
             grid.AddInternalColumn(columnsToAdd[5], new OutlookGridDateTimeGroup(null), SortOrder.None, -1, -1);
-            grid.AddInternalColumn(columnsToAdd[6], new OutlookGridDefaultGroup(null) { OneItemText = "1 product", XXXItemsText = " products" }, SortOrder.None, -1, -1);
+            grid.AddInternalColumn(columnsToAdd[6], new OutlookGridDefaultGroup(null) { OneItemText = "1 product", XxxItemsText = " products" }, SortOrder.None, -1, -1);
             grid.AddInternalColumn(columnsToAdd[7], new OutlookGridPriceGroup(null), SortOrder.None, -1, -1);
             grid.AddInternalColumn(columnsToAdd[8], new OutlookGridDefaultGroup(null), SortOrder.None, -1, -1);
             grid.AddInternalColumn(columnsToAdd[9], new OutlookGridDefaultGroup(null), SortOrder.None, -1, -1);
@@ -119,14 +125,14 @@ namespace Examples
 
             //Initialize
             int NbColsInFile = doc.XPathSelectElements("//Column").Count();
-            DataGridViewColumn[] columnsToAdd = new DataGridViewColumn[NbColsInFile];
+            DataGridViewColumn?[] columnsToAdd = new DataGridViewColumn[NbColsInFile];
             SandBoxGridColumn[] enumCols = new SandBoxGridColumn[NbColsInFile];
             OutlookGridColumn[] OutlookColumnsToAdd = new OutlookGridColumn[columnsToAdd.Length];
             SortedList<int, int> hash = new SortedList<int, int>();// (DisplayIndex , Index)
 
 
             int i = 0;
-            IOutlookGridGroup group;
+            IOutlookGridGroup? group;
             XElement node2;
 
             foreach (XElement node in doc.XPathSelectElement("OutlookGrid/Columns").Nodes())
@@ -145,12 +151,12 @@ namespace Examples
                     node2 = node.Element("GroupingType");
                     group = (IOutlookGridGroup)Activator.CreateInstance(Type.GetType(TypeConverter.ProcessType(node2.Element("Name").Value), true));
                     group.OneItemText = node2.Element("OneItemText").Value;
-                    group.XXXItemsText = node2.Element("XXXItemsText").Value;
+                    group.XxxItemsText = node2.Element("XXXItemsText").Value;
                     group.SortBySummaryCount = CommonHelper.StringToBool(node2.Element("SortBySummaryCount").Value);
                     if (!string.IsNullOrEmpty((node2.Element("ItemsComparer").Value)))
                     {
                         object? comparer = Activator.CreateInstance(Type.GetType(TypeConverter.ProcessType(node2.Element("ItemsComparer").Value), true));
-                        group.ItemsComparer = (IComparer)comparer;
+                        group.ItemsComparer = comparer as IComparer;
                     }
                     if (node2.Element("Name").Value.Contains("OutlookGridDateTimeGroup"))
                     {
@@ -258,9 +264,9 @@ namespace Examples
         /// </summary>
         /// <param name="colType"></param>
         /// <returns></returns>
-        private DataGridViewColumn SetupColumn(SandBoxGridColumn colType)
+        private DataGridViewColumn? SetupColumn(SandBoxGridColumn colType)
         {
-            DataGridViewColumn column = null;
+            DataGridViewColumn? column = null;
             switch (colType)
             {
                 case SandBoxGridColumn.ColumnCustomerID:

@@ -470,8 +470,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             return _nestedParensPattern;
         }
 
-        private static Regex _linkDef = new(string.Format(@"
-                        ^[ ]{{0,{0}}}\[(.+)\]:  # id = $1
+        private static Regex _linkDef = new($@"
+                        ^[ ]{{0,{_tabWidth - 1}}}\[(.+)\]:  # id = $1
                           [ ]*
                           \n?                   # maybe *one* newline
                           [ ]*
@@ -486,7 +486,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                             ["")]
                             [ ]*
                         )?                      # title is optional
-                        (?:\n+|\Z)", _tabWidth - 1), RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
+                        (?:\n+|\Z)", RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
         /// <summary>
         /// Strips link definitions from text, stores the URLs and titles in hash references.
@@ -676,7 +676,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         private static string GetHashKey(string? s, bool isHtmlBlock)
         {
             var delim = isHtmlBlock ? 'H' : 'E';
-            return "\x1A" + delim + Math.Abs(s.GetHashCode()).ToString() + delim;
+            return "\x1A" + delim + Math.Abs(s.GetHashCode()) + delim;
         }
 
         private static Regex _htmlTokens = new(@"
@@ -720,10 +720,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         }
 
 
-        private static Regex _anchorRef = new(string.Format(@"
+        private static Regex _anchorRef = new($@"
             (                               # wrap whole match in $1
                 \[
-                    ({0})                   # link text = $2
+                    ({GetNestedBracketsPattern()})                   # link text = $2
                 \]
 
                 [ ]?                        # one optional space
@@ -732,16 +732,16 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 \[
                     (.*?)                   # id = $3
                 \]
-            )", GetNestedBracketsPattern()), RegexOptions.Singleline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
+            )", RegexOptions.Singleline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
-        private static Regex _anchorInline = new(string.Format(@"
+        private static Regex _anchorInline = new($@"
                 (                           # wrap whole match in $1
                     \[
-                        ({0})               # link text = $2
+                        ({GetNestedBracketsPattern()})               # link text = $2
                     \]
                     \(                      # literal paren
                         [ ]*
-                        ({1})               # href = $3
+                        ({GetNestedParensPattern()})               # href = $3
                         [ ]*
                         (                   # $4
                         (['""])           # quote char = $5
@@ -750,7 +750,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                         [ ]*                # ignore any spaces between closing quote and )
                         )?                  # title is optional
                     \)
-                )", GetNestedBracketsPattern(), GetNestedParensPattern()),
+                )",
                   RegexOptions.Singleline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
         private static Regex _anchorRefShortcut = new(@"
@@ -867,16 +867,16 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             if (url.StartsWith("<") && url.EndsWith(">"))
                 url = url.Substring(1, url.Length - 2); // remove <>'s surrounding URL, if present            
 
-            result = string.Format("<a href=\"{0}\"", url);
+            result = $"<a href=\"{url}\"";
 
             if (!String.IsNullOrEmpty(title))
             {
                 title = AttributeEncode(title);
                 title = EscapeBoldItalic(title);
-                result += string.Format(" title=\"{0}\"", title);
+                result += $" title=\"{title}\"";
             }
 
-            result += string.Format(">{0}</a>", linkText);
+            result += $">{linkText}</a>";
             return result;
         }
 
@@ -895,7 +895,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
                     )", RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline | RegexOptions.Compiled);
 
-        private static Regex _imagesInline = new(String.Format(@"
+        private static Regex _imagesInline = new($@"
               (                     # wrap whole match in $1
                 !\[
                     (.*?)           # alt text = $2
@@ -903,7 +903,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 \s?                 # one optional whitespace character
                 \(                  # literal paren
                     [ ]*
-                    ({0})           # href = $3
+                    ({GetNestedParensPattern()})           # href = $3
                     [ ]*
                     (               # $4
                     (['""])       # quote char = $5
@@ -912,7 +912,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                     [ ]*
                     )?              # title is optional
                 \)
-              )", GetNestedParensPattern()),
+              )",
                   RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline | RegexOptions.Compiled);
 
         /// <summary>
@@ -988,11 +988,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             altText = EscapeImageAltText(AttributeEncode(altText));
             url = EncodeProblemUrlChars(url);
             url = EscapeBoldItalic(url);
-            var result = string.Format("<img src=\"{0}\" alt=\"{1}\"", url, altText);
+            var result = $"<img src=\"{url}\" alt=\"{altText}\"";
             if (!String.IsNullOrEmpty(title))
             {
                 title = AttributeEncode(EscapeBoldItalic(title));
-                result += string.Format(" title=\"{0}\"", title);
+                result += $" title=\"{title}\"";
             }
             result += _emptyElementSuffix;
             return result;
@@ -1097,7 +1097,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                     {0}[ ]+
                   )
               )
-            )", string.Format("(?:{0}|{1})", _markerUL, _markerOL), _tabWidth - 1);
+            )", $"(?:{_markerUL}|{_markerOL})", _tabWidth - 1);
 
         private static Regex _listNested = new(@"^" + _wholeList,
             RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
@@ -1192,7 +1192,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                     item = RunSpanGamut(item);
                 }
                 lastItemHadADoubleNewline = endsWithDoubleNewline;
-                return string.Format("<li>{0}</li>\n", item);
+                return $"<li>{item}</li>\n";
             };
 
             list = Regex.Replace(list, pattern, ListItemEvaluator,
@@ -1317,9 +1317,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         private string? DoHardBreaks(string? text)
         {
             if (_autoNewlines)
-                text = Regex.Replace(text, @"\n", string.Format("<br{0}\n", _emptyElementSuffix));
+                text = Regex.Replace(text, @"\n", $"<br{_emptyElementSuffix}\n");
             else
-                text = Regex.Replace(text, @" {2,}\n", string.Format("<br{0}\n", _emptyElementSuffix));
+                text = Regex.Replace(text, @" {2,}\n", $"<br{_emptyElementSuffix}\n");
             return text;
         }
 
@@ -1354,7 +1354,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             // These leading spaces screw with <pre> content, so we need to fix that:
             bq = Regex.Replace(bq, @"(\s*<pre>.+?</pre>)", BlockQuoteEvaluator2, RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline);
 
-            bq = string.Format("<blockquote>\n{0}\n</blockquote>", bq);
+            bq = $"<blockquote>\n{bq}\n</blockquote>";
             string key = GetHashKey(bq, isHtmlBlock: true);
             _htmlBlocks[key] = bq;
 
@@ -1627,7 +1627,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                     encode = !(url[i + 1] == '/') && !(url[i + 1] >= '0' && url[i + 1] <= '9');
 
                 if (encode)
-                    sb.Append("%" + String.Format("{0:x}", (byte)c));
+                    sb.Append("%" + $"{(byte) c:x}");
                 else
                     sb.Append(c);
             }

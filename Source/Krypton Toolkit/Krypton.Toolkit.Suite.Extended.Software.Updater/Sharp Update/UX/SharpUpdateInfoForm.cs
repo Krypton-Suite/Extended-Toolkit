@@ -176,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                 Text = Properties.Resources.SharpUpdateInfoForm_Title;
                 // ReSharper restore VirtualMemberCallInConstructor
 
-                klblVersions.Text = string.Format(Properties.Resources.SharpUpdateInfoForm_Version, applicationInfo.ApplicationAssembly.GetName().Version.ToString(), updateInfo.Version.ToString());
+                klblVersions.Text = string.Format(Properties.Resources.SharpUpdateInfoForm_Version, applicationInfo.ApplicationAssembly.GetName().Version, updateInfo.Version);
 
                 klblDescription.Text = Properties.Resources.SharpUpdateInfoForm_lblDescription;
 

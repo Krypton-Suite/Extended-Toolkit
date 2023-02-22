@@ -1692,7 +1692,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     // HTML
                     if (!(userAction && kcmbHexadecimalValue.Focused))
                     {
-                        kcmbHexadecimalValue.Text = this.Colour.IsNamedColor ? this.Colour.Name : string.Format("{0:X2}{1:X2}{2:X2}", this.Colour.R, this.Colour.G, this.Colour.B);
+                        kcmbHexadecimalValue.Text = this.Colour.IsNamedColor ? this.Colour.Name : $"{this.Colour.R:X2}{this.Colour.G:X2}{this.Colour.B:X2}";
                     }
 
                     // HSL

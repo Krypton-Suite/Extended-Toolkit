@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
 
             public override string ToString()
             {
-                return String.Format("({0}, {1}, {2})", Red, Green, Blue);
+                return $"({Red}, {Green}, {Blue})";
             }
         }
 
@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
 
             public override string ToString()
             {
-                return String.Format("({0}, {1}, {2})", Hue, Saturation, value);
+                return $"({Hue}, {Saturation}, {value})";
             }
         }
 

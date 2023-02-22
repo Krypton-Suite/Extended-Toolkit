@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="kbtnOk.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="_kbtnOk.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EQAACxEBf2RfkQAAAAd0SU1FB9gEDw0NJB4vi7sAAAJPSURBVDhPlZNdSFNhGMdf2Tn7sjwfa2bUGEu0
@@ -134,7 +134,7 @@
         FskuYqOjzbMtaL1sfJTvomaJ0tY6EPILlWTDR0GvXnQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="kbtnCancel.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="_kbtnCancel.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EQAACxEBf2RfkQAAAAd0SU1FB9gEDw0NJWkouy0AAAK4SURBVDhPdVNbSFRRFN3jYxwHxbcovt9+KOiH
@@ -152,21 +152,21 @@
         h7m2uNydReQPiLFB/uRDeL0AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="kcbMaxColour.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="_kcbMaxColour.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EQAACxEBf2RfkQAAAAd0SU1FB9gBEgI0L+a2mIYAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxj
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="kcbMediumColour.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="_kcbMediumColour.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EQAACxEBf2RfkQAAAAd0SU1FB9gBEgI0L+a2mIYAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxj
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="kcbMinColour.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="_kcbMinColour.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EQAACxEBf2RfkQAAAAd0SU1FB9gBEgI0L+a2mIYAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxj

@@ -95,12 +95,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         {
             string head = "========== SharpUpdateLocalAppInfo ==========";
             string tail = "=============================================";
-            string toPrint = string.Format("{0}\nJob type: {1}\nApplicationPath: {2}\nApplicationName: {3}\nAssemblyName: {4}\nFormName: {5}\nVersion: {6}\n{7}",
-                head, Tag.ToString(), ApplicationPath == null ? "null" : ApplicationPath,
-                ApplicationName == null ? "null" : ApplicationName,
-                ApplicationAssembly == null ? "null" : ApplicationAssembly.FullName,
-                Context == null ? "null" : Context.Name,
-                Version == null ? "null" : Version.ToString(), tail);
+            string toPrint =
+                $"{head}\nJob type: {Tag.ToString()}\nApplicationPath: {(ApplicationPath == null ? "null" : ApplicationPath)}\nApplicationName: {(ApplicationName == null ? "null" : ApplicationName)}\nAssemblyName: {(ApplicationAssembly == null ? "null" : ApplicationAssembly.FullName)}\nFormName: {(Context == null ? "null" : Context.Name)}\nVersion: {(Version == null ? "null" : Version.ToString())}\n{tail}";
             Console.WriteLine(toPrint);
         }
     }

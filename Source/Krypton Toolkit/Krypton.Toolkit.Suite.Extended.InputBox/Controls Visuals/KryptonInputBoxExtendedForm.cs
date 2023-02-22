@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         public KryptonInputBoxExtendedForm(string prompt, string caption,
                                            string defaultResponse, string cueText,
                                            Color cueColour,
-                                           Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+                                           Font cueTypeface, Font buttonTypeface, Font? promptTypeface,
                                            InputBoxIconType iconType, KryptonInputBoxResponseType inputType,
                                            InputBoxTextAlignment textAlignment,
                                            InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
@@ -126,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="customImage">The custom image.</param>
         /// <param name="initialDateTime">The initial date time.</param>
         private void SetupUI(string prompt, string caption, string defaultResponse, string cueText, Color cueColour,
-                             Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+                             Font cueTypeface, Font buttonTypeface, Font? promptTypeface,
                              InputBoxIconType iconType, KryptonInputBoxResponseType inputType,
                              InputBoxTextAlignment textAlignment,
                              InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, InputBoxButtons buttons,
@@ -779,7 +779,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <returns>The users input string.</returns>
         internal static string InternalShow(IWin32Window? owner, string prompt, string caption,
                                             string defaultResponse, string cueText, Color cueColour,
-                                            Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+                                            Font cueTypeface, Font buttonTypeface, Font? promptTypeface,
                                             InputBoxIconType iconType,
                                             KryptonInputBoxResponseType inputType,
                                             InputBoxTextAlignment textAlignment,

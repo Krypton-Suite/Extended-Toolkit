@@ -294,7 +294,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             else
             {
                 // TODO: string translations (even though I guess this window should never be called with 0 app cast items...)
-                klblInfo.Text = string.Format("Would you like to {0} it now?", downloadInstallText);
+                klblInfo.Text = $"Would you like to {downloadInstallText} it now?";
             }
 
             bool isUserMissingCriticalUpdate = items.Any(x => x.IsCriticalUpdate);

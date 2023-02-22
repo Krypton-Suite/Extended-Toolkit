@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
         /// <summary>Gets the bold typeface.</summary>
         /// <returns></returns>
-        public Font GetBoldTypeface() => _globalTypefaceSettings.BoldTypeface;
+        public Font? GetBoldTypeface() => _globalTypefaceSettings.BoldTypeface;
 
         /// <summary>Sets the cue typeface.</summary>
         /// <param name="value">The value.</param>

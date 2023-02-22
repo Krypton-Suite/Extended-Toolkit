@@ -100,25 +100,25 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             {
                 size = decimal.Divide(fileSize, 1073741824);
 
-                output = string.Format("{0:##.##} GB", size);
+                output = $"{size:##.##} GB";
             }
             else if (fileSize >= 1048576)
             {
                 size = decimal.Divide(fileSize, 1048576);
 
-                output = string.Format("{0:##.##} MB", size);
+                output = $"{size:##.##} MB";
             }
             else if (fileSize >= 1024)
             {
                 size = decimal.Divide(fileSize, 1024);
 
-                output = output = string.Format("{0:##.##} KB", size);
+                output = output = $"{size:##.##} KB";
             }
             else if (fileSize > 0 & fileSize < 1024)
             {
                 size = fileSize;
 
-                output = output = string.Format("{0:##.##} Bytes", size);
+                output = output = $"{size:##.##} Bytes";
             }
             else
             {
@@ -206,25 +206,25 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 {
                     result = contentLength / 1073741824;
 
-                    fileSize.Text = string.Format("Package Size: {0:##.##} GB", result);
+                    fileSize.Text = $"Package Size: {result:##.##} GB";
                 }
                 else if (contentLength >= 1048576)
                 {
                     result = contentLength / 1048576;
 
-                    fileSize.Text = string.Format("Package Size: {0:##.##} MB", result);
+                    fileSize.Text = $"Package Size: {result:##.##} MB";
                 }
                 else if (contentLength >= 1024)
                 {
                     result = contentLength / 1024;
 
-                    fileSize.Text = string.Format("Package Size: {0:##.##} KB", result);
+                    fileSize.Text = $"Package Size: {result:##.##} KB";
                 }
                 else
                 {
                     result = contentLength;
 
-                    fileSize.Text = string.Format("Package Size: {0:##:##} Bytes", result);
+                    fileSize.Text = $"Package Size: {result:##:##} Bytes";
                 }
             }
         }
@@ -242,19 +242,19 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             {
                 result = fileSize / 1073741824;
 
-                Output.Text = string.Format("File Size: {0:##:##} GB", result);
+                Output.Text = $"File Size: {result:##:##} GB";
             }
             else if (fileSize >= 1048576)
             {
                 result = fileSize / 1048576;
 
-                Output.Text = string.Format("File Size: {0:##:##} MB", result);
+                Output.Text = $"File Size: {result:##:##} MB";
             }
             else if (fileSize >= 1024)
             {
                 result = fileSize / 1024;
 
-                Output.Text = string.Format("File Size: {0:##:##} KB", result);
+                Output.Text = $"File Size: {result:##:##} KB";
             }
         }
 

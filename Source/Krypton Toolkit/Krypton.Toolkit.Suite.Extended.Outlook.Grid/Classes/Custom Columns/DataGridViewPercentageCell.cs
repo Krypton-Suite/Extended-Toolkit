@@ -77,14 +77,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             if ((double)value > 0 && barWidth > 0)
             {
-                Rectangle r = new Rectangle(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
+                Rectangle r = new(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
 
-                using (LinearGradientBrush linearBrush = new LinearGradientBrush(r, KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), KryptonManager.CurrentGlobalPalette.GetBackColor2(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), LinearGradientMode.Vertical))
+                using (LinearGradientBrush linearBrush = new(r, KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), KryptonManager.CurrentGlobalPalette.GetBackColor2(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), LinearGradientMode.Vertical))
                 {
                     graphics.FillRectangle(linearBrush, r);
                 }
 
-                using (Pen pen = new Pen(KryptonManager.CurrentGlobalPalette.GetBorderColor1(PaletteBorderStyle.GridHeaderColumnList, PaletteState.Normal)))
+                using (Pen pen = new(KryptonManager.CurrentGlobalPalette.GetBorderColor1(PaletteBorderStyle.GridHeaderColumnList, PaletteState.Normal)))
                 {
                     graphics.DrawRectangle(pen, r);
                 }

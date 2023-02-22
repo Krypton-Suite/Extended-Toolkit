@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         internal override string DebuggerDisplayString()
         {
-            return _text + " [" + _matchMode.ToString() + "]";
+            return _text + " [" + _matchMode + "]";
         }
     }
 }

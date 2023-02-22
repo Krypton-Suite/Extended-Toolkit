@@ -23,9 +23,11 @@ namespace Examples
         private string _caption;
         private string _defaultResponse;
         private string _cueText;
-        private Font _cueTypeface, _promptTypeface, _buttonTypeface;
+        private Font _cueTypeface;
+        private readonly Font? _promptTypeface;
+        private Font _buttonTypeface;
         private InputBoxIconType _iconType;
-        private KryptonInputBoxResponseType _inputType;
+        private readonly KryptonInputBoxResponseType _inputType;
         private InputBoxTextAlignment _textAlignment;
         private InputBoxWrappedMessageTextAlignment _textWrappedMessageTextAlignment;
         private InputBoxButtons _buttons;
@@ -68,8 +70,10 @@ namespace Examples
 
         private void kbtnQuickTest_Click(object sender, EventArgs e) => kibemQuickTest.Show();
 
-        public KryptonInputBoxExtendedExample()
+        public KryptonInputBoxExtendedExample(KryptonInputBoxResponseType? inputType, Font? promptTypeface)
         {
+            _inputType = inputType ?? KryptonInputBoxResponseType.TextBox;
+            _promptTypeface = promptTypeface;
             InitializeComponent();
         }
 

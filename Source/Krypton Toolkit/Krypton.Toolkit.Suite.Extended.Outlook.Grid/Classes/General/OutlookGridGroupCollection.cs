@@ -25,7 +25,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     {
         #region "Variables"
         private IOutlookGridGroup _parentGroup;
-        private List<IOutlookGridGroup> _groupList;
+        private List<IOutlookGridGroup?> _groupList;
         #endregion
 
         #region "Constructor"        
@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public OutlookGridGroupCollection()
         {
-            _groupList = new List<IOutlookGridGroup>();
+            _groupList = new();
         }
 
         /// <summary>
@@ -43,8 +43,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="parentGroup">The parent group, if any.</param>
         public OutlookGridGroupCollection(IOutlookGridGroup parentGroup)
         {
-            _groupList = new List<IOutlookGridGroup>();
-            this._parentGroup = parentGroup;
+            _groupList = new();
+            _parentGroup = parentGroup;
         }
         #endregion
 
@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets the list of IOutlookGridGroup.
         /// </summary>
-        public List<IOutlookGridGroup> List => _groupList;
+        public List<IOutlookGridGroup?> List => _groupList;
 
         /// <summary>
         /// Gets the number of groups
@@ -74,13 +74,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="index">Index in the list of groups.</param>
         /// <returns>The IOutlookGridGroup.</returns>
-        public IOutlookGridGroup this[int index] => _groupList[index];
+        public IOutlookGridGroup? this[int index] => _groupList[index];
 
         /// <summary>
         /// Adds a new group
         /// </summary>
         /// <param name="group">The IOutlookGridGroup.</param>
-        public void Add(IOutlookGridGroup group)
+        public void Add(IOutlookGridGroup? group)
         {
             _groupList.Add(group);
         }
@@ -106,7 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="value">The value of the group</param>
         /// <returns>The IOutlookGridGroup.</returns>
-        public IOutlookGridGroup FindGroup(object? value)
+        public IOutlookGridGroup? FindGroup(object? value)
         {
             //We must return null if no group exist, then the OutlookGrid will create one. But we must return a group even for a null value.
             if (value == null)

@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The parent group if any
         /// </summary>
-        IOutlookGridGroup ParentGroup { get; set; }
+        IOutlookGridGroup? ParentGroup { get; set; }
 
         /// <summary>
         /// The level in the depth of groups 
@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The text associated for the group text (XXX items)
         /// </summary>
-        string XXXItemsText { get; set; }
+        string XxxItemsText { get; set; }
 
         /// <summary>
         /// Allows the column to be hidden when it is grouped by
@@ -118,6 +118,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         ///// <summary>
         ///// Gets or sets the items comparer, if overriding the default IComparable<T> is needed
         ///// </summary>
-        IComparer ItemsComparer { get; set; }
+        IComparer? ItemsComparer { get; set; }
     }
 }

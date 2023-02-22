@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor.
         /// </summary>
         /// <param name="parentGroup">The parentGroup if any.</param>
-        public OutlookGridAlphabeticGroup(IOutlookGridGroup parentGroup)
+        public OutlookGridAlphabeticGroup(IOutlookGridGroup? parentGroup)
             : base(parentGroup)
         {
             AllowHiddenWhenGrouped = false;
@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the displayed text.
         /// </summary>
-        public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount.ToString() + XXXItemsText)})";
+        public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount + XxxItemsText)})";
 
         /// <summary>
         /// Gets or sets the Alphabetic value
@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns>OutlookGridAlphabeticGroup</returns>
         public override object Clone()
         {
-            OutlookGridAlphabeticGroup gr = new OutlookGridAlphabeticGroup(ParentGroup)
+            OutlookGridAlphabeticGroup gr = new(ParentGroup)
             {
                 Column = Column,
                 Value = Value,
@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 Height = Height,
                 GroupImage = GroupImage,
                 FormatStyle = FormatStyle,
-                XXXItemsText = XXXItemsText,
+                XxxItemsText = XxxItemsText,
                 OneItemText = OneItemText,
                 AllowHiddenWhenGrouped = AllowHiddenWhenGrouped,
                 SortBySummaryCount = SortBySummaryCount

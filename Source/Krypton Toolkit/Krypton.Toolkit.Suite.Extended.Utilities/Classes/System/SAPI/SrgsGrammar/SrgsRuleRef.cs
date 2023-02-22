@@ -201,7 +201,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             if (_uri != null)
             {
                 stringBuilder.Append(" uri='");
-                stringBuilder.Append(_uri.ToString());
+                stringBuilder.Append(_uri);
                 stringBuilder.Append("'");
             }
             else
@@ -222,7 +222,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             }
             else
             {
-                _uri = new Uri(uri.ToString() + "#" + rule, UriKind.RelativeOrAbsolute);
+                _uri = new Uri(uri + "#" + rule, UriKind.RelativeOrAbsolute);
             }
             _semanticKey = semanticKey;
             _params = initParameters;

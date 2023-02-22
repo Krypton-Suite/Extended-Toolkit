@@ -25,6 +25,9 @@
  */
 #endregion
 
+// ReSharper disable MoreSpecificForeachVariableTypeAvailable
+// ReSharper disable UsePatternMatching
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
@@ -34,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
     {
         #region Instance Fields
 
-        private Image imageValue;
+        private Image _imageValue;
 
         #endregion
 
@@ -75,10 +78,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// Create a cloned copy of the column.
         /// </summary>
         /// <returns></returns>
-        public override object Clone()
+        public override object? Clone()
         {
-            KryptonDataGridViewTextAndImageColumn cloned = base.Clone() as KryptonDataGridViewTextAndImageColumn;
-            cloned.imageValue = imageValue;
+            KryptonDataGridViewTextAndImageColumn? cloned = base.Clone() as KryptonDataGridViewTextAndImageColumn;
+            cloned._imageValue = _imageValue;
             cloned.ImageSize = ImageSize;
             // Move the button specs over to the new clone
             foreach (ButtonSpec bs in ButtonSpecs)
@@ -157,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                         int count = rows.Count;
                         for (int i = 0; i < count; i++)
                         {
-                            DataGridViewTextBoxCell cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
+                            DataGridViewTextBoxCell? cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
                             if (cell != null)
                             {
                                 cell.MaxInputLength = value;
@@ -299,8 +302,8 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
     /// </summary>
     public class KryptonDataGridViewTextAndImageCell : KryptonDataGridViewTextBoxCell
     {
-        private Image imageValue;
-        private Size imageSize;
+        private Image _imageValue;
+        private Size _imageSize;
 
         /// <summary>
         /// Constructor
@@ -337,8 +340,8 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         public override object Clone()
         {
             KryptonDataGridViewTextAndImageCell c = base.Clone() as KryptonDataGridViewTextAndImageCell;
-            c.imageValue = imageValue;
-            c.imageSize = imageSize;
+            c._imageValue = _imageValue;
+            c._imageSize = _imageSize;
             return c;
         }
 
@@ -350,19 +353,19 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// </value>
         public Image Image
         {
-            get => imageValue;
+            get => _imageValue;
             set
             {
                 if (Image != value)
                 {
-                    imageValue = value;
-                    imageSize = value.Size;
+                    _imageValue = value;
+                    _imageSize = value.Size;
 
                     //if (this.InheritedStyle != null)
                     //{
                     Padding inheritedPadding = Style.Padding;
                     //Padding inheritedPadding = this.InheritedStyle.Padding;
-                    Style.Padding = new Padding(imageSize.Width + 2,
+                    Style.Padding = new Padding(_imageSize.Width + 2,
                      inheritedPadding.Top, inheritedPadding.Right,
                      inheritedPadding.Bottom);
                     //}

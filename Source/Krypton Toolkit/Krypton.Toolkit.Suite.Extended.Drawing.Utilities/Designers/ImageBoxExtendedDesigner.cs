@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             if (control != null && host != null)
             {
-                using (DesignerTransaction transaction = host.CreateTransaction(string.Format("Add TabListPage to '{0}'", control.Name)))
+                using (DesignerTransaction transaction = host.CreateTransaction($"Add TabListPage to '{control.Name}'"))
                 {
                     try
                     {

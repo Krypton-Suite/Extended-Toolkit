@@ -93,7 +93,7 @@ namespace Examples
 
         private void kbtnInputBoxExamples_Click(object sender, EventArgs e)
         {
-            KryptonInputBoxExtendedExample example = new KryptonInputBoxExtendedExample();
+            KryptonInputBoxExtendedExample example = new KryptonInputBoxExtendedExample(null, null);
 
             example.Show();
         }

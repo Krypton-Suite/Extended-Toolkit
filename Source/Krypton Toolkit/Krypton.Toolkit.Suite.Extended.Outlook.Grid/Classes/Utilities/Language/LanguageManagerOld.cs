@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         private LanguageManager()
         {
-            _rm = new ResourceManager("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Resources.Language.Strings.en-Neutral", Assembly.GetExecutingAssembly());
+            _rm = new("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Resources.Language.Strings.en-Neutral", Assembly.GetExecutingAssembly());
             _ci = Thread.CurrentThread.CurrentCulture; //CultureInfo.CurrentCulture;
         }
 
@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     {
                         if (_mInstance == null)
                         {
-                            _mInstance = new LanguageManager();
+                            _mInstance = new();
                         }
                     }
                 }

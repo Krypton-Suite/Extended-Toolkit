@@ -177,11 +177,11 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
             if (state.IsOpen)
             {
-                _txtScanOutput.AppendText("Port: " + state.Port.ToString() + ", open" + Environment.NewLine);
+                _txtScanOutput.AppendText("Port: " + state.Port + ", open" + Environment.NewLine);
             }
             else
             {
-                _txtScanOutput.AppendText("Port: " + state.Port.ToString() + ", closed" + Environment.NewLine);
+                _txtScanOutput.AppendText("Port: " + state.Port + ", closed" + Environment.NewLine);
             }
         }
 
