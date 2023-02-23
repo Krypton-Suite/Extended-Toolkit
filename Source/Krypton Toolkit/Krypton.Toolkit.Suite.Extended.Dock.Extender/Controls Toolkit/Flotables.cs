@@ -4,11 +4,12 @@
     {
         #region Implementation
 
-        public IFloatable FindFloatables(Control control)
+        public IFloatable? FindFloatables(Control control)
         {
-            foreach (KryptonFloatableForm floatable in this)
+            foreach (var floatable1 in this)
             {
-                if (floatable.DockState.Container.Equals(control))
+                var floatable = (KryptonFloatableForm?)floatable1;
+                if (floatable!.DockState.Container != null && floatable.DockState.Container.Equals(control))
                 {
                     return floatable;
                 }

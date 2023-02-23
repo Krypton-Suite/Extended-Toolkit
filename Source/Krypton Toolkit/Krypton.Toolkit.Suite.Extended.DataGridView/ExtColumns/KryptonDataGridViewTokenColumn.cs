@@ -29,7 +29,7 @@
 // ReSharper disable BaseObjectGetHashCodeCallInGetHashCode
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 // ReSharper disable SuggestVarOrType_SimpleTypes
-#pragma warning disable CS8767
+#pragma warning disable CS8767, CS8765
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
@@ -264,20 +264,23 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
 
             int nextPosition = cellBounds.X + (int)(1 * factorX);
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
-
-            foreach (Token tok in (List<Token>)Value)
+            if (KryptonManager.CurrentGlobalPalette != null)
             {
-                Rectangle rectangle = new Rectangle();
-                Size s = TextRenderer.MeasureText(tok.Text, f);
-                rectangle.Width = s.Width + (int)(10 * factorX);
-                rectangle.X = nextPosition;
-                rectangle.Y = cellBounds.Y + (int)(2 * factorY);
-                rectangle.Height = (int)(17 * factorY);
-                nextPosition += rectangle.Width + (int)(5 * factorX);
+                Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
-                graphics.FillRectangle(new SolidBrush(tok.BackColour), rectangle);
-                TextRenderer.DrawText(graphics, tok.Text, f, rectangle, tok.ForeColour);
+                foreach (Token tok in (List<Token>)Value)
+                {
+                    Rectangle rectangle = new Rectangle();
+                    Size s = TextRenderer.MeasureText(tok.Text, f);
+                    rectangle.Width = s.Width + (int)(10 * factorX);
+                    rectangle.X = nextPosition;
+                    rectangle.Y = cellBounds.Y + (int)(2 * factorY);
+                    rectangle.Height = (int)(17 * factorY);
+                    nextPosition += rectangle.Width + (int)(5 * factorX);
+
+                    graphics.FillRectangle(new SolidBrush(tok.BackColour), rectangle);
+                    TextRenderer.DrawText(graphics, tok.Text, f, rectangle, tok.ForeColour);
+                }
             }
         }
 
@@ -295,7 +298,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
 
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+            Font f = KryptonManager.CurrentGlobalPalette!.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
             int nextPosition = (int)(1 * factorX);
             if (Value != null)
             {

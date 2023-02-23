@@ -25,6 +25,9 @@
  */
 #endregion
 
+// ReSharper disable InconsistentNaming
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8622, CS8604
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     internal partial class ExceptionDetailControl : UserControl
@@ -39,96 +42,96 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
         private void InitializeComponent()
         {
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.klvExceptions = new Krypton.Toolkit.KryptonListView();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.ktxtExceptionTabMessage = new Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.ktxtStackTrace = new Krypton.Toolkit.KryptonTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
-            this.SuspendLayout();
+            kryptonPanel1 = new KryptonPanel();
+            klvExceptions = new KryptonListView();
+            kryptonLabel1 = new KryptonLabel();
+            ktxtExceptionTabMessage = new KryptonTextBox();
+            kryptonLabel2 = new KryptonLabel();
+            ktxtStackTrace = new KryptonTextBox();
+            ((System.ComponentModel.ISupportInitialize)(kryptonPanel1)).BeginInit();
+            kryptonPanel1.SuspendLayout();
+            SuspendLayout();
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.ktxtStackTrace);
-            this.kryptonPanel1.Controls.Add(this.kryptonLabel2);
-            this.kryptonPanel1.Controls.Add(this.ktxtExceptionTabMessage);
-            this.kryptonPanel1.Controls.Add(this.kryptonLabel1);
-            this.kryptonPanel1.Controls.Add(this.klvExceptions);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(614, 535);
-            this.kryptonPanel1.TabIndex = 0;
+            kryptonPanel1.Controls.Add(ktxtStackTrace);
+            kryptonPanel1.Controls.Add(kryptonLabel2);
+            kryptonPanel1.Controls.Add(ktxtExceptionTabMessage);
+            kryptonPanel1.Controls.Add(kryptonLabel1);
+            kryptonPanel1.Controls.Add(klvExceptions);
+            kryptonPanel1.Dock = DockStyle.Fill;
+            kryptonPanel1.Location = new Point(0, 0);
+            kryptonPanel1.Name = "kryptonPanel1";
+            kryptonPanel1.Size = new Size(614, 535);
+            kryptonPanel1.TabIndex = 0;
             // 
             // klvExceptions
             // 
-            this.klvExceptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.klvExceptions.HideSelection = false;
-            this.klvExceptions.ItemStyle = Krypton.Toolkit.ButtonStyle.ListItem;
-            this.klvExceptions.Location = new System.Drawing.Point(4, 4);
-            this.klvExceptions.Name = "klvExceptions";
-            this.klvExceptions.OwnerDraw = true;
-            this.klvExceptions.Size = new System.Drawing.Size(607, 120);
-            this.klvExceptions.StateCommon.Item.Content.ShortText.MultiLine = Krypton.Toolkit.InheritBool.True;
-            this.klvExceptions.StateCommon.Item.Content.ShortText.MultiLineH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klvExceptions.StateCommon.Item.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klvExceptions.TabIndex = 0;
+            klvExceptions.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right)));
+            klvExceptions.HideSelection = false;
+            klvExceptions.ItemStyle = ButtonStyle.ListItem;
+            klvExceptions.Location = new Point(4, 4);
+            klvExceptions.Name = "klvExceptions";
+            klvExceptions.OwnerDraw = true;
+            klvExceptions.Size = new Size(607, 120);
+            klvExceptions.StateCommon.Item.Content.ShortText.MultiLine = InheritBool.True;
+            klvExceptions.StateCommon.Item.Content.ShortText.MultiLineH = PaletteRelativeAlign.Center;
+            klvExceptions.StateCommon.Item.Content.ShortText.TextH = PaletteRelativeAlign.Center;
+            klvExceptions.TabIndex = 0;
             // 
             // kryptonLabel1
             // 
-            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel1.Location = new System.Drawing.Point(4, 131);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(64, 20);
-            this.kryptonLabel1.TabIndex = 1;
-            this.kryptonLabel1.Values.Text = "Message:";
+            kryptonLabel1.LabelStyle = LabelStyle.BoldControl;
+            kryptonLabel1.Location = new Point(4, 131);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new Size(64, 20);
+            kryptonLabel1.TabIndex = 1;
+            kryptonLabel1.Values.Text = "Message:";
             // 
             // ktxtExceptionTabMessage
             // 
-            this.ktxtExceptionTabMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ktxtExceptionTabMessage.Location = new System.Drawing.Point(20, 158);
-            this.ktxtExceptionTabMessage.Multiline = true;
-            this.ktxtExceptionTabMessage.Name = "ktxtExceptionTabMessage";
-            this.ktxtExceptionTabMessage.ReadOnly = true;
-            this.ktxtExceptionTabMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ktxtExceptionTabMessage.Size = new System.Drawing.Size(591, 52);
-            this.ktxtExceptionTabMessage.TabIndex = 2;
+            ktxtExceptionTabMessage.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left)
+            | AnchorStyles.Right)));
+            ktxtExceptionTabMessage.Location = new Point(20, 158);
+            ktxtExceptionTabMessage.Multiline = true;
+            ktxtExceptionTabMessage.Name = "ktxtExceptionTabMessage";
+            ktxtExceptionTabMessage.ReadOnly = true;
+            ktxtExceptionTabMessage.ScrollBars = ScrollBars.Vertical;
+            ktxtExceptionTabMessage.Size = new Size(591, 52);
+            ktxtExceptionTabMessage.TabIndex = 2;
             // 
             // kryptonLabel2
             // 
-            this.kryptonLabel2.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel2.Location = new System.Drawing.Point(4, 216);
-            this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(70, 20);
-            this.kryptonLabel2.TabIndex = 3;
-            this.kryptonLabel2.Values.Text = "Call Stack:";
+            kryptonLabel2.LabelStyle = LabelStyle.BoldControl;
+            kryptonLabel2.Location = new Point(4, 216);
+            kryptonLabel2.Name = "kryptonLabel2";
+            kryptonLabel2.Size = new Size(70, 20);
+            kryptonLabel2.TabIndex = 3;
+            kryptonLabel2.Values.Text = "Call Stack:";
             // 
             // ktxtStackTrace
             // 
-            this.ktxtStackTrace.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ktxtStackTrace.Location = new System.Drawing.Point(20, 243);
-            this.ktxtStackTrace.Multiline = true;
-            this.ktxtStackTrace.Name = "ktxtStackTrace";
-            this.ktxtStackTrace.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ktxtStackTrace.Size = new System.Drawing.Size(591, 289);
-            this.ktxtStackTrace.TabIndex = 4;
+            ktxtStackTrace.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left)
+            | AnchorStyles.Right)));
+            ktxtStackTrace.Location = new Point(20, 243);
+            ktxtStackTrace.Multiline = true;
+            ktxtStackTrace.Name = "ktxtStackTrace";
+            ktxtStackTrace.ScrollBars = ScrollBars.Vertical;
+            ktxtStackTrace.Size = new Size(591, 289);
+            ktxtStackTrace.TabIndex = 4;
             // 
             // ExceptionDetailControl
             // 
-            this.Controls.Add(this.kryptonPanel1);
-            this.Name = "ExceptionDetailControl";
-            this.Size = new System.Drawing.Size(614, 535);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
-            this.ResumeLayout(false);
+            Controls.Add(kryptonPanel1);
+            Name = "ExceptionDetailControl";
+            Size = new Size(614, 535);
+            ((System.ComponentModel.ISupportInitialize)(kryptonPanel1)).EndInit();
+            kryptonPanel1.ResumeLayout(false);
+            kryptonPanel1.PerformLayout();
+            ResumeLayout(false);
 
         }
         #endregion

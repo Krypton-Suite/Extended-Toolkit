@@ -1,8 +1,9 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
+﻿// ReSharper disable InconsistentNaming
+namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
 {
     public sealed class KryptonDockExtender
     {
-        private Control _dockHost;
+        private Control? _dockHost;
         private Flotables _floaties;
 
         // this is the blue overlay that presents a preview how the control will be docked
@@ -11,7 +12,7 @@
 
         public Flotables Floaties => _floaties;
 
-        public KryptonDockExtender(Control dockHost)
+        public KryptonDockExtender(Control? dockHost)
         {
             _dockHost = dockHost;
             _floaties = new();
@@ -23,7 +24,7 @@
         /// <param name="container"></param>
         public void Show(Control container)
         {
-            IFloatable f = _floaties.FindFloatables(container);
+            IFloatable? f = _floaties.FindFloatables(container);
             if (f != null)
             {
                 f.Show();
@@ -37,7 +38,7 @@
         /// <param name="container"></param>
         public void Hide(Control container)
         {
-            IFloatable f = _floaties.FindFloatables(container);
+            IFloatable? f = _floaties.FindFloatables(container);
             if (f != null)
             {
                 f.Hide();
@@ -49,7 +50,7 @@
         /// </summary>
         /// <param name="container">container to make dockable/floatable</param>
         /// <returns>the floaty that manages the container's behaviour</returns>
-        public IFloatable Attach(ScrollableControl container)
+        public IFloatable Attach(ScrollableControl? container)
         {
             return Attach(container, container, null);
         }
@@ -60,7 +61,7 @@
         /// <param name="container">container to make dockable/floatable</param>
         /// <param name="handle">grip handle used to drag the container</param>
         /// <returns>the floaty that manages the container's behaviour</returns>
-        public IFloatable Attach(ScrollableControl container, Control handle)
+        public IFloatable Attach(ScrollableControl? container, Control? handle)
         {
             return Attach(container, handle, null);
         }
@@ -74,7 +75,7 @@
         /// <param name="container">control to be dockable</param>
         /// <param name="handle">handle to be used to track the mouse movement (e.g. caption of the container)</param>
         /// <param name="splitter">splitter to resize the docked container (optional)</param>
-        public IFloatable Attach(ScrollableControl container, Control handle, KryptonSeparator splitter)
+        public IFloatable Attach(ScrollableControl? container, Control? handle, KryptonSeparator? splitter)
         {
             if (container == null) throw new ArgumentException("container cannot be null");
             if (handle == null) throw new ArgumentException("handle cannot be null");
@@ -92,18 +93,19 @@
         }
 
         // finds the potential dockhost control at the specified location
-        internal Control FindDockHost(KryptonFloatableForm floaty, Point pt)
+        internal Control? FindDockHost(KryptonFloatableForm floaty, Point pt)
         {
-            Control c = null;
+            Control? c = null;
             if (FormIsHit(floaty.DockState.OrgDockHost, pt))
                 c = floaty.DockState.OrgDockHost; //assume toplevel control
 
             if (floaty.DockOnHostOnly)
                 return c;
 
-            foreach (KryptonFloatableForm f in Floaties)
+            foreach (var floatable in Floaties)
             {
-                if (f.DockState.Container.Visible && FormIsHit(f.DockState.Container, pt))
+                var f = (KryptonFloatableForm)floatable;
+                if (f.DockState.Container != null && f.DockState.Container.Visible && FormIsHit(f.DockState.Container, pt))
                 {
                     // add this line to dissallow docking inside floaties
                     //if (f.Visible) continue;

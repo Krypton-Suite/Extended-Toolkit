@@ -20,8 +20,11 @@
 // ReSharper disable SuggestVarOrType_SimpleTypes
 // ReSharper disable UseNameOfInsteadOfTypeOf
 // ReSharper disable TooWideLocalVariableScope
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8073
+#pragma warning disable CS8625
 #pragma warning disable CS8600
-#pragma warning disable CS8602
+#pragma warning disable CS8602, CS8604, CS8622
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
@@ -30,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     public partial class KryptonOutlookGridGroupBox : UserControl
     {
         #region Design Code
-        private IContainer components = null;
+        private IContainer? components = null;
 
         private void InitializeComponent()
         {
@@ -53,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private string _dragColumnToGroupText;
 
         //Krypton
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
         private PaletteRedirect _paletteRedirect;
         private PaletteBackInheritRedirect _paletteBack;
         private PaletteBorderInheritRedirect _paletteBorder;

@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="date">The DateTime </param>
         /// <returns>The text to display</returns>
-        public static string GetDayText(DateTime date)
+        public static string? GetDayText(DateTime date)
         {
             switch (GetDateCode(date))
             {
@@ -250,7 +250,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="s">The string.</param>
         /// <returns>The tring with the first letter uppercased.</returns>
-        private static string UppercaseFirst(string s)
+        private static string? UppercaseFirst(string s)
         {
             if (string.IsNullOrEmpty(s))
             {

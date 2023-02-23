@@ -55,17 +55,17 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 		public string RenderPreset(TemplateFormat format = TemplateFormat.Text)
 		{
 			var template = GetTemplate(format);
-			return this.Render(template);
+			return Render(template);
 		}
 
 		public string RenderCustom(string template)
 		{
-			return this.Render(template);
+			return Render(template);
 		}
 
 		private string GetTemplate(TemplateFormat format)
 		{
-			var resource = $"{this.GetType().Namespace}.{_name}.{format.ToString().ToLower()}";
+			var resource = $"{GetType().Namespace}.{_name}.{format.ToString().ToLower()}";
 			var assembly = Assembly.GetExecutingAssembly();
 
 			using (var stream = assembly.GetManifestResourceStream(resource))

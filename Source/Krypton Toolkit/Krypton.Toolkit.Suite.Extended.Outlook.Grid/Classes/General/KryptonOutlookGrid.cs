@@ -2677,7 +2677,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                         //Gets the stored value
                         object value = list[j].Cells[groupedColumns[i].DataGridViewColumn.Index].Value;
-                        object formattedValue;
+                        object? formattedValue;
 
                         //We get the formatting value according to the type of group (Alphabetic, DateTime,...)
                         groupedColumns[i].GroupingType.Value = value;

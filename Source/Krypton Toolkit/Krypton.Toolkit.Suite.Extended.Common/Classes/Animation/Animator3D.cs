@@ -299,7 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public virtual void Play(object? targetObject, string propertyName, SafeInvoker? endCallback)
         {
             TargetObject = targetObject;
-            var prop = TargetObject.GetType()
+            var prop = TargetObject!.GetType()
                 .GetProperty(
                     propertyName,
                     BindingFlags.IgnoreCase | BindingFlags.Static | BindingFlags.Public | BindingFlags.Instance |
@@ -401,10 +401,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="property">
         ///     The property to change
         /// </param>
-        public void Play(object? targetObject, KnownColourProperties property)
-        {
-            Play(targetObject, property, null);
-        }
+        public void Play(object? targetObject, KnownColourProperties property) => Play(targetObject, property, null);
 
         /// <summary>
         ///     Starts the playing of the animation
@@ -418,10 +415,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="endCallback">
         ///     The callback to get invoked at the end of the animation
         /// </param>
-        public void Play(object? targetObject, KnownColourProperties property, SafeInvoker? endCallback)
-        {
-            Play(targetObject, property.ToString(), endCallback);
-        }
+        public void Play(object? targetObject, KnownColourProperties property, SafeInvoker? endCallback) => Play(targetObject, property.ToString(), endCallback);
 
         /// <summary>
         ///     Starts the playing of the animation
@@ -429,10 +423,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="frameCallback">
         ///     The callback to get invoked at each frame
         /// </param>
-        public void Play(SafeInvoker<Float3D> frameCallback)
-        {
-            Play(frameCallback, (SafeInvoker)null);
-        }
+        public void Play(SafeInvoker<Float3D> frameCallback) => Play(frameCallback, (SafeInvoker)null!);
 
         /// <summary>
         ///     Starts the playing of the animation

@@ -26,7 +26,7 @@
 #endregion
 
 // ReSharper disable AssignNullToNotNullAttribute
-#pragma warning disable CS8600, CS8602
+#pragma warning disable CS8600, CS8602, CS8601
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>

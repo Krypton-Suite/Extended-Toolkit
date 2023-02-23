@@ -18,6 +18,7 @@
 
 // ReSharper disable InconsistentNaming
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>

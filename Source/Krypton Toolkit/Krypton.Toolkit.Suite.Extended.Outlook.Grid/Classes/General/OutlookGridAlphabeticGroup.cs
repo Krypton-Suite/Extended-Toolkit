@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the Alphabetic value
         /// </summary>
-        public override object Value
+        public override object? Value
         {
             get => base.Value;
             set

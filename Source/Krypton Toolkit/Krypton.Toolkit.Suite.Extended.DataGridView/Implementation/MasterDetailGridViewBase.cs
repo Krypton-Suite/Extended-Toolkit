@@ -29,7 +29,7 @@
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
 // ReSharper disable AssignNullToNotNullAttribute
-#pragma warning disable CS8622
+#pragma warning disable CS8622, CS8601, CS8602, CS8600
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>

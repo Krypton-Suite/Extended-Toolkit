@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     ///<summary>
@@ -44,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             {
                 nodeRoot.Nodes.Add(nodeLeaf);
 
-                foreach (var nodeValue in result.ChildResults.SelectMany(childResult => childResult.Nodes))
+                foreach (var nodeValue in result.ChildResults.SelectMany(childResult => childResult.Nodes)!)
                 {
                     nodeLeaf.Nodes.Add(new TreeNode(nodeValue));
                 }

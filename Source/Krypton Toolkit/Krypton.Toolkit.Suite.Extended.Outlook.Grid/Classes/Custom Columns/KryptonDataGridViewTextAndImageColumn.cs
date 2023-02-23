@@ -16,6 +16,7 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable UsePatternMatching
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
@@ -68,14 +69,16 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Create a cloned copy of the column.
         /// </summary>
         /// <returns></returns>
-        public override object Clone()
+        public override object? Clone()
         {
-            KryptonDataGridViewTextAndImageColumn cloned = base.Clone() as KryptonDataGridViewTextAndImageColumn;
-            cloned._imageValue = _imageValue;
+            KryptonDataGridViewTextAndImageColumn? cloned = base.Clone() as KryptonDataGridViewTextAndImageColumn;
+            cloned!._imageValue = _imageValue;
             cloned._imageSize = _imageSize;
             // Move the button specs over to the new clone
             foreach (ButtonSpec bs in ButtonSpecs)
+            {
                 cloned.ButtonSpecs.Add(bs.Clone());
+            }
 
             return cloned;
         }
@@ -146,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         int count = rows.Count;
                         for (int i = 0; i < count; i++)
                         {
-                            DataGridViewTextBoxCell cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
+                            DataGridViewTextBoxCell? cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
                             if (cell != null)
                                 cell.MaxInputLength = value;
                         }

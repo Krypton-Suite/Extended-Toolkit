@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using Krypton.Toolkit.Suite.Extended.Dock.Extender;
 // ReSharper disable UsePatternMatching
 // ReSharper disable PossibleInvalidCastExceptionInForeachLoop
-
+#pragma warning disable CS8622
 namespace Examples
 {
     public partial class DockExtenderExample : KryptonForm

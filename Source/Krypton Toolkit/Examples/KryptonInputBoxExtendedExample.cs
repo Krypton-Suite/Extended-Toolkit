@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Krypton.Toolkit.Suite.Extended.InputBox;
 
 using KryptonInputBoxResponseType = Krypton.Toolkit.Suite.Extended.InputBox.KryptonInputBoxResponseType;
+#pragma warning disable CS0649
 
 namespace Examples
 {

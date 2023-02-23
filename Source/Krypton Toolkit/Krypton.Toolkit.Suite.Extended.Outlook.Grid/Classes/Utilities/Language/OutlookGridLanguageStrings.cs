@@ -426,7 +426,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [Description(@"AfterNextMonth string used for Krypton Outlook Grid.")]
         [DefaultValue(DEFAULT_AFTER_NEXT_MONTH)]
         [RefreshProperties(RefreshProperties.All)]
-        public string AfterNextMonth { get; set; }
+        public string? AfterNextMonth { get; set; }
 
         /// <summary>Gets or sets the alphabetic group string for the KryptonOutlookGrid.</summary>
         public string AlphabeticGroupText { get; set; }
@@ -435,7 +435,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public string Bar { get; set; }
 
         /// <summary>Gets or sets the before previous month string for the KryptonOutlookGrid.</summary>
-        public string BeforePreviousMonth { get; set; }
+        public string? BeforePreviousMonth { get; set; }
 
         /// <summary>Gets or sets the best fit all string for the KryptonOutlookGrid.</summary>
         public string BestFitAll { get; set; }
@@ -477,10 +477,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public string DragColumnToGroup { get; set; }
 
         /// <summary>Gets or sets the earlier during this month string for the KryptonOutlookGrid.</summary>
-        public string EarlierDuringThisMonth { get; set; }
+        public string? EarlierDuringThisMonth { get; set; }
 
         /// <summary>Gets or sets the earlier during this year string for the KryptonOutlookGrid.</summary>
-        public string EarlierDuringThisYear { get; set; }
+        public string? EarlierDuringThisYear { get; set; }
 
         /// <summary>Gets or sets the expand string for the KryptonOutlookGrid.</summary>
         public string Expand { get; set; }
@@ -507,28 +507,28 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public string HideGroupBox { get; set; }
 
         /// <summary>Gets or sets the in three weeks string for the KryptonOutlookGrid.</summary>
-        public string InThreeWeeks { get; set; }
+        public string? InThreeWeeks { get; set; }
 
         /// <summary>Gets or sets the in two weeks string for the KryptonOutlookGrid.</summary>
-        public string InTwoWeeks { get; set; }
+        public string? InTwoWeeks { get; set; }
 
         /// <summary>Gets or sets the later during this month string for the KryptonOutlookGrid.</summary>
-        public string LaterDuringThisMonth { get; set; }
+        public string? LaterDuringThisMonth { get; set; }
 
         /// <summary>Gets or sets the month string for the KryptonOutlookGrid.</summary>
         public string Month { get; set; }
 
         /// <summary>Gets or sets the next month string for the KryptonOutlookGrid.</summary>
-        public string NextMonth { get; set; }
+        public string? NextMonth { get; set; }
 
         /// <summary>Gets or sets the next week string for the KryptonOutlookGrid.</summary>
-        public string NextWeek { get; set; }
+        public string? NextWeek { get; set; }
 
         /// <summary>Gets or sets the no date string for the KryptonOutlookGrid.</summary>
-        public string NoDate { get; set; }
+        public string? NoDate { get; set; }
 
         /// <summary>Gets or sets the older string for the KryptonOutlookGrid.</summary>
-        public string Older { get; set; }
+        public string? Older { get; set; }
 
         /// <summary>Gets or sets the one item string for the KryptonOutlookGrid.</summary>
         public string OneItem { get; set; }
@@ -543,13 +543,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public string PaletteCustomHeading { get; set; }
 
         /// <summary>Gets or sets the previous month string for the KryptonOutlookGrid.</summary>
-        public string PreviousMonth { get; set; }
+        public string? PreviousMonth { get; set; }
 
         /// <summary>Gets or sets the previous week string for the KryptonOutlookGrid.</summary>
-        public string PreviousWeek { get; set; }
+        public string? PreviousWeek { get; set; }
 
         /// <summary>Gets or sets the previous year string for the KryptonOutlookGrid.</summary>
-        public string PreviousYear { get; set; }
+        public string? PreviousYear { get; set; }
 
         /// <summary>Gets or sets the quarter one string for the KryptonOutlookGrid.</summary>
         public string QuarterOne { get; set; }
@@ -588,19 +588,19 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public string ThreeColoursRange { get; set; }
 
         /// <summary>Gets or sets the three weeks ago string for the KryptonOutlookGrid.</summary>
-        public string ThreeWeeksAgo { get; set; }
+        public string? ThreeWeeksAgo { get; set; }
 
         /// <summary>Gets or sets the today string for the KryptonOutlookGrid.</summary>
-        public string Today { get; set; }
+        public string? Today { get; set; }
 
         /// <summary>Gets or sets the tomorrow string for the KryptonOutlookGrid.</summary>
-        public string Tomorrow { get; set; }
+        public string? Tomorrow { get; set; }
 
         /// <summary>Gets or sets the two colours range string for the KryptonOutlookGrid.</summary>
         public string TwoColoursRange { get; set; }
 
         /// <summary>Gets or sets the two weeks ago string for the KryptonOutlookGrid.</summary>
-        public string TwoWeeksAgo { get; set; }
+        public string? TwoWeeksAgo { get; set; }
 
         /// <summary>Gets or sets the UnGroup string for the KryptonOutlookGrid.</summary>
         public string UnGroup { get; set; }
@@ -618,19 +618,19 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public string YearGroupText { get; set; }
 
         /// <summary>Gets or sets the yesterday string for the KryptonOutlookGrid.</summary>
-        public string Yesterday { get; set; }
+        public string? Yesterday { get; set; }
 
-        public string Monday { get; set; }
+        public string? Monday { get; set; }
 
-        public string Tuesday { get; set; }
+        public string? Tuesday { get; set; }
 
-        public string Wednesday { get; set; }
+        public string? Wednesday { get; set; }
 
-        public string Thursday { get; set; }
+        public string? Thursday { get; set; }
 
-        public string Friday { get; set; }
+        public string? Friday { get; set; }
 
-        public string Saturday { get; set; }
+        public string? Saturday { get; set; }
 
         public string Sunday { get; set; }
 

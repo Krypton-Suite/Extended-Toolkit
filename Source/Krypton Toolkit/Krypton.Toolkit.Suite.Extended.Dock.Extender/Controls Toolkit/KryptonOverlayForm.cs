@@ -6,7 +6,7 @@
 
         public new DockStyle Dock;
 
-        public Control DockHostControl;
+        public Control? DockHostControl;
 
         #endregion
 

@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
             foreach (var exception in _exceptions)
             {
-                sb.AppendLine(this.StackTrace(exception));
+                sb.AppendLine(StackTrace(exception));
             }
 
             return sb.ToString();

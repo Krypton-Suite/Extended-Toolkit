@@ -24,7 +24,7 @@ namespace Examples
 
         private PaletteRelativeAlign _userResponsePromptAlignVertical;
 
-        private KryptonCommand _actionButtonCommand = null;
+        private KryptonCommand? _actionButtonCommand = null;
 
         #endregion
 

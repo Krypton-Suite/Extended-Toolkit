@@ -499,6 +499,5 @@
         private ToolStrip toolStrip1;
         private Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonColourButtonToolStripMenuItem kryptonColourButtonToolStripMenuItem1;
         private Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonSlider kryptonSlider1;
-        private Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonToolStripBrowseBox kryptonToolStripBrowseBox1;
     }
 }

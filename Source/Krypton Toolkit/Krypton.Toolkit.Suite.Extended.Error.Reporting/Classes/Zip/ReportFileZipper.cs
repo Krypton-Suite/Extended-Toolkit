@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             var reportPath = Path.Combine(Path.GetTempPath(), $"ExceptionReporter{Path.DirectorySeparatorChar}report.{fileExtension}");
             if (!Directory.Exists(reportPath))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(reportPath));
+                Directory.CreateDirectory(Path.GetDirectoryName(reportPath)!);
             }
 
             var report = _reportGenerator.Generate();

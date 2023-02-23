@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
         public string Report()
         {
-            var renderer = new TemplateRenderer(this.ReportModel());
+            var renderer = new TemplateRenderer(ReportModel());
             return _info.ReportCustomTemplate.IsEmpty()
                 ? renderer.RenderPreset(_info.ReportTemplateFormat)
                 : renderer.RenderCustom(_info.ReportCustomTemplate);

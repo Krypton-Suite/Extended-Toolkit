@@ -16,6 +16,9 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+// ReSharper disable RedundantBaseConstructorCall
+#pragma warning disable CS8600, CS8602, CS8764
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
@@ -41,9 +44,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Overrides Clone
         /// </summary>
         /// <returns>The cloned KryptonDataGridViewTextAndImageCell</returns>
-        public override object Clone()
+        public override object? Clone()
         {
-            KryptonDataGridViewTreeTextCell c = base.Clone() as KryptonDataGridViewTreeTextCell;
+            KryptonDataGridViewTreeTextCell? c = base.Clone() as KryptonDataGridViewTreeTextCell;
             return c;
         }
 
@@ -83,9 +86,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <remarks>padding especially.</remarks>
         public void UpdateStyle()
         {
-            OutlookGridRow node = OwningNode;
+            OutlookGridRow? node = OwningNode;
             //Console.WriteLine(DateTime.Now.ToString() + " " + node.ToString());
-            bool hasChildNodes = node.HasChildren;
+            bool hasChildNodes = node!.HasChildren;
             int level = Level;
             int plus = 0;
             //if (hasChildNodes)
@@ -112,7 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="paintParts">The paint parts.</param>
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
-            OutlookGridRow node = OwningNode;
+            OutlookGridRow? node = OwningNode;
             // Console.WriteLine(DateTime.Now.ToString() + " " + node.ToString());
             //bool hasChildNodes = node.HasChildren;
             //int level = this.Level ;
@@ -174,7 +177,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             //}
 
             // Paint tree lines			
-            if (((KryptonOutlookGrid)node.DataGridView).ShowLines)
+            if (((KryptonOutlookGrid)node!.DataGridView).ShowLines)
             {
                 using (Pen linePen = new(SystemBrushes.ControlDark, 1.0f))
                 {
@@ -248,7 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 // Paint node glyphs	
                 if (node.Collapsed)
                 {
-                    if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2010 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
+                    if (KryptonManager.CurrentGlobalPalette!.GetRenderer() == KryptonManager.RenderOffice2010 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                     {
                         graphics.DrawImage(Resources.OutlookGridImageResources.CollapseIcon2010, glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 11, 11);
                     }
@@ -259,7 +262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 }
                 else
                 {
-                    if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2010 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
+                    if (KryptonManager.CurrentGlobalPalette!.GetRenderer() == KryptonManager.RenderOffice2010 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                     {
                         graphics.DrawImage(Resources.OutlookGridImageResources.ExpandIcon2010, glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 11, 11);
                     }
@@ -280,7 +283,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             base.OnMouseUp(e);
 
-            OutlookGridRow node = OwningNode;
+            OutlookGridRow? node = OwningNode;
             if (node != null)
                 ((KryptonOutlookGrid)node.DataGridView).InExpandCollapseMouseCapture = false;
         }
@@ -300,7 +303,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 // Expand the node
                 //TODO: Calculate more precise location
-                OutlookGridRow node = OwningNode;
+                OutlookGridRow? node = OwningNode;
                 if (node != null)
                 {
                     ((KryptonOutlookGrid)node.DataGridView).InExpandCollapseMouseCapture = true;
@@ -323,6 +326,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <value>
         /// The owning node.
         /// </value>
-        public OutlookGridRow OwningNode => OwningRow as OutlookGridRow;
+        public OutlookGridRow? OwningNode => OwningRow as OutlookGridRow;
     }
 }

@@ -4,12 +4,12 @@ using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
 
 namespace Examples
 {
-    public class OutlookGridPriceGroup : OutlookGridDefaultGroup
+    public sealed class OutlookGridPriceGroup : OutlookGridDefaultGroup
     {
         private int _priceCode;
         private string _currency;
 
-        private object val;
+        private object? val;
 
         private const int noPrice = 999999;
         public OutlookGridPriceGroup() : base()
@@ -36,7 +36,7 @@ namespace Examples
             get
             {
                 return
-                $"{Column.DataGridViewColumn.HeaderText}: {GetPriceString(_priceCode)} ({(ItemCount == 1 ? OneItemText : ItemCount + XxxItemsText)})";
+                $"{Column.DataGridViewColumn!.HeaderText}: {GetPriceString(_priceCode)} ({(ItemCount == 1 ? OneItemText : ItemCount + XxxItemsText)})";
             }
         }
 
@@ -118,7 +118,7 @@ namespace Examples
         /// <summary>
         /// Gets or sets the Alphabetic value
         /// </summary>
-        public override object Value
+        public override object? Value
         {
             get { return val; }
             set
@@ -130,7 +130,7 @@ namespace Examples
                 }
                 else
                 {
-                    _priceCode = GetPriceCode(decimal.Parse(value.ToString()));
+                    _priceCode = GetPriceCode(decimal.Parse(value.ToString()!));
                     val = _priceCode;
                 }
             }

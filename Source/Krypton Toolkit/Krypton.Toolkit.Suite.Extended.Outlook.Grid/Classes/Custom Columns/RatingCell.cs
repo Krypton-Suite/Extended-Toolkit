@@ -16,12 +16,14 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable AssignNullToNotNullAttribute
+#pragma warning disable CS8602, CS8604
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// Class for a rating celle
     /// </summary>
-    public class RatingCell : DataGridViewImageCell
+    public sealed class RatingCell : DataGridViewImageCell
     {
         /// <summary>
         /// Constructor
@@ -43,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="formattedValueTypeConverter"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        protected override object GetFormattedValue(object? value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
+        protected override object? GetFormattedValue(object? value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
         {
             if (value == null)
             {
@@ -135,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         #region Private Implementation
 
-        static Image[] _starImages;
+        static Image?[] _starImages;
         static Image[] _starHotImages;
         const int IMAGEWIDTH = 58;
 
@@ -163,11 +165,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         static RatingCell()
         {
-            _starImages = new Image[11];
+            _starImages = new Image?[11];
             _starHotImages = new Image[11];
             // load normal stars 
             for (int i = 0; i <= 10; i++)
-                _starImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject("star" + i);
+                _starImages[i] = (((Image)Resources.OutlookGridImageResources.ResourceManager.GetObject("star" + i))!);
 
             // load hot normal stars 
             for (int i = 0; i <= 10; i++)

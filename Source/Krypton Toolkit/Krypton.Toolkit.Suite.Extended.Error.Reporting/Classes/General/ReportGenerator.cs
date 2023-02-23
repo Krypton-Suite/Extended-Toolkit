@@ -30,7 +30,7 @@ using System.Deployment.Application;
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 #endif
 
-#pragma warning disable 1591
+#pragma warning disable 1591, CS8601
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>
@@ -56,7 +56,9 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
                 _info.AppAssembly = Assembly.GetEntryAssembly() ?? Assembly.GetCallingAssembly();
             }
 
-            _info.AppName = _info != null && _info.AppName.IsEmpty() ? _info.AppAssembly.GetName().Name : _info.AppName;
+            _info.AppName = _info != null && _info.AppName.IsEmpty()
+                ? _info.AppAssembly.GetName().Name
+                : _info!.AppName;
             _info.AppVersion = _info.AppVersion.IsEmpty() ? GetAppVersion() : _info.AppVersion;
             _info.ExceptionDate = _info.ExceptionDateKind != DateTimeKind.Local ? DateTime.UtcNow : DateTime.Now;
         }

@@ -26,7 +26,7 @@
 #endregion
 
 // ReSharper disable ConvertToNullCoalescingCompoundAssignment
-#pragma warning disable CS8602
+#pragma warning disable CS8601, CS8602
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>

@@ -63,7 +63,7 @@ namespace System
             /// <summary>
             /// Get the element at position <param name="index"/>.
             /// </summary>
-            object this[int index] { get; }
+            object? this[int index] { get; }
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace System
         /// <summary>
         /// Get the element at position <param name="index"/>.
         /// </summary>
-        object ITuple.this[int index] => throw new IndexOutOfRangeException();
+        object? ITuple.this[int index] => throw new IndexOutOfRangeException();
 
         /// <summary>Creates a new struct 0-tuple.</summary>
         /// <returns>A 0-tuple.</returns>
@@ -217,7 +217,7 @@ namespace System
         /// <param name="item1">The value of the first component of the tuple.</param>
         /// <param name="item2">The value of the second component of the tuple.</param>
         /// <returns>A 2-tuple (pair) whose value is (item1, item2).</returns>
-        public static ValueTuple<T1, T2> Create<T1, T2>(T1 item1, T2 item2) => new(item1, item2);
+        public static (T1?, T2) Create<T1, T2>(T1 item1, T2 item2) => new(item1, item2);
 
         internal static int CombineHashCodes(int h1, int h2) => Combine(Combine(_randomSeed, h1), h2);
 
@@ -248,19 +248,19 @@ namespace System
         /// <summary>
         /// The current <see cref="ValueTuple{T1,T2}"/> instance's first component.
         /// </summary>
-        public readonly T1 Item1;
+        public readonly T1? Item1;
 
         /// <summary>
         /// The current <see cref="ValueTuple{T1,T2}"/> instance's first component.
         /// </summary>
-        public readonly T2 Item2;
+        public readonly T2? Item2;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueTuple{T1,T2}"/> value type.
         /// </summary>
         /// <param name="item1">The value of the tuple's first component.</param>
         /// <param name="item2">The value of the tuple's second component.</param>
-        public ValueTuple(T1 item1, T2 item2)
+        public ValueTuple(T1? item1, T2? item2)
         {
             Item1 = item1;
             Item2 = item2;
@@ -294,10 +294,10 @@ namespace System
         /// The <paramref name="other"/> parameter is considered to be equal to the current instance if each of its fields
         /// are equal to that of the current instance, using the default comparer for that field's type.
         /// </remarks>
-        public bool Equals(ValueTuple<T1, T2> other)
+        public bool Equals((T1?, T2) other)
         {
-            return EqualityComparer<T1>.Default.Equals(Item1, other.Item1)
-                   && EqualityComparer<T2>.Default.Equals(Item2, other.Item2);
+            return EqualityComparer<T1>.Default.Equals(Item1!, other.Item1!)
+                   && EqualityComparer<T2>.Default.Equals(Item2!, other.Item2!);
         }
 
         int IComparable.CompareTo(object other)
@@ -306,7 +306,7 @@ namespace System
             {
                 null => 1,
                 not ValueTuple<T1, T2> => throw new ArgumentException(),
-                _ => CompareTo((ValueTuple<T1, T2>)other)
+                _ => CompareTo(((T1?, T2))other)
             };
         }
 
@@ -318,10 +318,10 @@ namespace System
         /// instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater
         /// than <paramref name="other"/>.
         /// </returns>
-        public int CompareTo(ValueTuple<T1, T2> other)
+        public int CompareTo((T1?, T2) other)
         {
-            var c = Comparer<T1>.Default.Compare(Item1, other.Item1);
-            return c != 0 ? c : Comparer<T2>.Default.Compare(Item2, other.Item2);
+            var c = Comparer<T1>.Default.Compare(Item1!, other.Item1!);
+            return c != 0 ? c : Comparer<T2>.Default.Compare(Item2!, other.Item2!);
         }
 
 #if !NET35
@@ -342,11 +342,11 @@ namespace System
                 case null:
                     return 1;
                 case ValueTuple<T1, T2>(var item1, var item2):
-                {
-                    var c = comparer.Compare(Item1, item1);
+                    {
+                        var c = comparer.Compare(Item1, item1);
 
-                    return c != 0 ? c : comparer.Compare(Item2, item2);
-                }
+                        return c != 0 ? c : comparer.Compare(Item2, item2);
+                    }
                 default:
                     throw new ArgumentException();
             }
@@ -395,7 +395,7 @@ namespace System
         /// <summary>
         /// Get the element at position <param name="index"/>.
         /// </summary>
-        object ITuple.this[int index]
+        object? ITuple.this[int index]
         {
             get
             {

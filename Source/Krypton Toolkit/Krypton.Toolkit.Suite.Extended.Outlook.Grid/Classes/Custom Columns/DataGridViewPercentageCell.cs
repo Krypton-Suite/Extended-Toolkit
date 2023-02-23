@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 Rectangle r = new(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
 
-                using (LinearGradientBrush linearBrush = new(r, KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), KryptonManager.CurrentGlobalPalette.GetBackColor2(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), LinearGradientMode.Vertical))
+                using (LinearGradientBrush linearBrush = new(r, KryptonManager.CurrentGlobalPalette!.GetBackColor1(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), KryptonManager.CurrentGlobalPalette.GetBackColor2(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), LinearGradientMode.Vertical))
                 {
                     graphics.FillRectangle(linearBrush, r);
                 }
