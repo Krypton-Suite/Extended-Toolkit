@@ -86,7 +86,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.45-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.49-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -179,7 +179,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<!--<PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />-->
-		<PackageReference Include="Unofficial.Cyotek.Windows.Forms.NET" Version="1.8.1" />
+		<PackageReference Include="Unofficial.Cyotek.Windows.Forms.NET" Version="2.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj" />
