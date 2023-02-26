@@ -113,7 +113,7 @@ PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 
 | Gages                    | This package implements additional gage controls. (Under Development)                                                                       | 19            |
 | Input Box                | This package implements a input box dialog.                                                                                                 | 20            |
 | IO                       | This package implements IO controls and features.                                                                                           | 21            |
-| Memory Box               | This package implements a memory box dialog.                                                                                                | 22            |
+| Memory Box               | This package implements a memory box dialog.                                                                                                | ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/KryptonMemoryBoxExample.gif?raw=true)            |
 | Message Box              | This package implements additional `KryptonMessageBox` features and functionality.                                                          | 23            |
 | Navi Suite               | This package implements the 'NaviSuite' control.                                                                                            | 24            |
 | Navigator                | This package implements additional `KryptonNavigator` designs and features.                                                                 | 25            |
