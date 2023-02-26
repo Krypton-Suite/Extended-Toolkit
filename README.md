@@ -53,6 +53,10 @@ Development of the Krypton Extended Toolkit is supported by these generous organ
 ## Support Information
 <a href="https://github.com/Krypton-Suite/Documentation/blob/main/Documents/Development/Package-Support-Information.md"><img src="https://img.shields.io/badge/NuGet-Package Support Information-informational.svg?style=flat-square" alt="Package Support Information" /></a>
 
+## Enabling preview SDK usage
+
+If you want to try out the latest .NET SDK (currently .NET 8), but just have the stable version of Visual Studio installed, please read this [article](https://github.com/Krypton-Suite/Documentation/blob/main/Documents/Development/Enable-Preview-SDK.md).
+
 =======
 
 ## Install the `Ultimate` Package
