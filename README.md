@@ -92,7 +92,7 @@ PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 
 
 | Module Name              | Description                                                                                                                                 | Example Image |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| Advanced Data Grid View  | This package implements the advanced data grid view controls.                                                                               | 1             |  
+| Advanced Data Grid View  | This package implements the advanced data grid view controls.                                                                               | ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/AdvancedDataGridView.gif?raw=true)             |  
 | Buttons                  | This package holds extensions to the standard `KryptonButton` controls.                                                                     | ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/Buttons.png?raw=true)             |
 | Calendar                 | This package implements a `KryptonCalendar` control.                                                                                        | 2             |
 | CheckSum Tools           | This package holds utilities to compute and verify checksums.                                                                               | 3             |
@@ -114,7 +114,7 @@ PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 
 | Gages                    | This package implements additional gage controls. (Under Development)                                                                       | 19            |
 | Input Box                | This package implements a input box dialog.                                                                                                 | 20            |
 | IO                       | This package implements IO controls and features.                                                                                           | 21            |
-| Memory Box               | This package implements a memory box dialog.                                                                                                | ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/KryptonMemoryBoxExample.gif?raw=true)            |
+| Memory Box               | This package implements a memory box dialog.                                                                                                | ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/MemoryBoxExample.gif?raw=true)            |
 | Message Box              | This package implements additional `KryptonMessageBox` features and functionality.                                                          | 23            |
 | Navi Suite               | This package implements the 'NaviSuite' control.                                                                                            | 24            |
 | Navigator                | This package implements additional `KryptonNavigator` designs and features.                                                                 | 25            |

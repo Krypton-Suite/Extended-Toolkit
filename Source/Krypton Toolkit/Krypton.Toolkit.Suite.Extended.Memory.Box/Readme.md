@@ -10,7 +10,7 @@ The original idea for the `KryptonMemoryBox` came from the following [article](h
 
 ### Demonstration
 
-![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/KryptonMemoryBoxExample.gif?raw=true)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/MemoryBoxExample.gif?raw=true)
 
 ## ToDo
 
