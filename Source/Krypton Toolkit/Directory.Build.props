@@ -12,6 +12,7 @@
 	<PropertyGroup>
 		<!-- common project data -->
 		<Version>$(LibraryVersion)</Version>
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 	</PropertyGroup>
 
 	<Choose>
