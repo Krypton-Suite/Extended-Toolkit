@@ -86,9 +86,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.45-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.49-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="80.23.2.45-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="80.23.2.49-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -167,7 +167,7 @@
 	</Choose>
 
 	<ItemGroup>
-	  <PackageReference Include="WindowsAPICodePackShell" Version="7.0.2" />
+	  <PackageReference Include="WindowsAPICodePackShell" Version="7.0.3" />
 	</ItemGroup>
   
 	<ItemGroup>

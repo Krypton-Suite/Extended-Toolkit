@@ -70,7 +70,7 @@
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements additional docking operations.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements the advanced data grid view controls.
 
 			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
@@ -86,7 +86,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.45-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.2.49-alpha" />
 			</ItemGroup>
 		</When>
 

@@ -125,7 +125,7 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
         /// <param name="defaultButton">The default button.</param>
         /// <param name="defaultDialogResult">The default dialog result.</param>
         /// <returns></returns>
-        private KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult(string title, string message, KryptonMemoryBoxIcon icon = KryptonMemoryBoxIcon.None, string iconPath = null, KryptonMemoryBoxDefaultButton defaultButton = KryptonMemoryBoxDefaultButton.ButtonOne, KryptonMemoryBoxDialogResult defaultDialogResult = KryptonMemoryBoxDialogResult.Cancel)
+        private KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult(string title, string message, KryptonMemoryBoxIcon icon = KryptonMemoryBoxIcon.None, string? iconPath = null, KryptonMemoryBoxDefaultButton defaultButton = KryptonMemoryBoxDefaultButton.ButtonOne, KryptonMemoryBoxDialogResult defaultDialogResult = KryptonMemoryBoxDialogResult.Cancel)
         {
             Text = title;
 
@@ -136,7 +136,18 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
             switch (icon)
             {
                 case KryptonMemoryBoxIcon.Custom:
-                    pbxIcon.Image = new Bitmap(iconPath);
+                    if (iconPath != null)
+                    {
+                        pbxIcon.Image = new Bitmap(iconPath);
+
+                        kpnlImage.Size = new(70, 217);
+                    }
+                    else
+                    {
+                        pbxIcon.Visible = false;
+
+                        kpnlImage.Size = new(0, 217);
+                    }
                     break;
                 case KryptonMemoryBoxIcon.OK:
                     pbxIcon.Image = Properties.Resources.Input_Box_Ok_64_x_64;
@@ -208,27 +219,41 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
 
         private void SetAcceptButton(KryptonButton button) => AcceptButton = button;
 
+        private void SetFocusButton(KryptonButton button) => button.Focus();
+
         private void SetDefaultButton(KryptonMemoryBoxDefaultButton defaultButton)
         {
             switch (defaultButton)
             {
                 case KryptonMemoryBoxDefaultButton.ButtonOne:
                     SetAcceptButton(kbtnButtonOne);
+
+                    SetFocusButton(kbtnButtonOne);
                     break;
                 case KryptonMemoryBoxDefaultButton.ButtonTwo:
                     SetAcceptButton(kbtnButtonTwo);
+
+                    SetFocusButton(kbtnButtonTwo);
                     break;
                 case KryptonMemoryBoxDefaultButton.ButtonThree:
                     SetAcceptButton(kbtnButtonThree);
+
+                    SetFocusButton(kbtnButtonThree);
                     break;
                 case KryptonMemoryBoxDefaultButton.ButtonFour:
                     SetAcceptButton(kbtnButtonFour);
+
+                    SetFocusButton(kbtnButtonFour);
                     break;
                 case KryptonMemoryBoxDefaultButton.ButtonFive:
                     SetAcceptButton(kbtnButtonFive);
+
+                    SetFocusButton(kbtnButtonFive);
                     break;
                 default:
                     SetAcceptButton(kbtnButtonOne);
+
+                    SetFocusButton(kbtnButtonOne);
                     break;
             }
         }
