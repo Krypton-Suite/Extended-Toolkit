@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
-    public class KryptonVarifyFileCheckSum : KryptonForm
+    public class KryptonVarifyFileCheckSumOld : KryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonVarifyFileCheckSum));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonVarifyFileCheckSumOld));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnValidate = new Krypton.Toolkit.KryptonButton();
             this.kbtnImportHash = new Krypton.Toolkit.KryptonButton();
@@ -449,7 +449,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         #endregion
 
         #region Constructor
-        public KryptonVarifyFileCheckSum()
+        public KryptonVarifyFileCheckSumOld()
         {
             InitializeComponent();
 

@@ -28,78 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonComputeFileCheckSum));
-            this.kryptonStatusStrip1 = new Krypton.Toolkit.KryptonStatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnSaveToFile = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
+            this.kchkToggleCasing = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonComboBox1 = new Krypton.Toolkit.KryptonComboBox();
-            this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
-            this.kbtnCalculateCheckSum = new Krypton.Toolkit.KryptonButton();
-            this.ktxtFilePath = new Krypton.Toolkit.KryptonTextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonWrapLabel1 = new Krypton.Toolkit.KryptonWrapLabel();
+            this.kryptonWrapLabel2 = new Krypton.Toolkit.KryptonWrapLabel();
+            this.ktxtFilePath = new Krypton.Toolkit.KryptonTextBox();
             this.bsaBrowse = new Krypton.Toolkit.ButtonSpecAny();
-            this.kryptonCheckBox1 = new Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
-            this.kbtnSaveToFile = new Krypton.Toolkit.KryptonButton();
-            this.kryptonStatusStrip1.SuspendLayout();
+            this.kcmbHashType = new Krypton.Toolkit.KryptonComboBox();
+            this.kbtnCalculate = new Krypton.Toolkit.KryptonButton();
+            this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kwlHashOutput = new Krypton.Toolkit.KryptonWrapLabel();
+            this.ss = new System.Windows.Forms.StatusStrip();
+            this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tspbCalculationProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.tslCalculationProgress = new System.Windows.Forms.ToolStripStatusLabel();
+            this.bgwMD5 = new System.ComponentModel.BackgroundWorker();
+            this.bgwSHA1 = new System.ComponentModel.BackgroundWorker();
+            this.bgwSHA256 = new System.ComponentModel.BackgroundWorker();
+            this.bgwSHA384 = new System.ComponentModel.BackgroundWorker();
+            this.bgwSHA512 = new System.ComponentModel.BackgroundWorker();
+            this.bgwRIPEMD160 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            this.kryptonTableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbHashType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
+            this.ss.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // kryptonStatusStrip1
-            // 
-            this.kryptonStatusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kryptonStatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripProgressBar1,
-            this.toolStripStatusLabel2});
-            this.kryptonStatusStrip1.Location = new System.Drawing.Point(0, 262);
-            this.kryptonStatusStrip1.Name = "kryptonStatusStrip1";
-            this.kryptonStatusStrip1.ProgressBars = null;
-            this.kryptonStatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.kryptonStatusStrip1.Size = new System.Drawing.Size(709, 22);
-            this.kryptonStatusStrip1.TabIndex = 0;
-            this.kryptonStatusStrip1.Text = "kryptonStatusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(474, 17);
-            this.toolStripStatusLabel1.Spring = true;
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
             // kryptonPanel1
             // 
             this.kryptonPanel1.Controls.Add(this.kbtnSaveToFile);
-            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
-            this.kryptonPanel1.Controls.Add(this.kryptonCheckBox1);
+            this.kryptonPanel1.Controls.Add(this.kbtnCancel);
+            this.kryptonPanel1.Controls.Add(this.kchkToggleCasing);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 212);
@@ -107,6 +78,34 @@
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(709, 50);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kbtnSaveToFile
+            // 
+            this.kbtnSaveToFile.Enabled = false;
+            this.kbtnSaveToFile.Location = new System.Drawing.Point(511, 17);
+            this.kbtnSaveToFile.Name = "kbtnSaveToFile";
+            this.kbtnSaveToFile.Size = new System.Drawing.Size(90, 25);
+            this.kbtnSaveToFile.TabIndex = 3;
+            this.kbtnSaveToFile.Values.Text = "Save to &File";
+            this.kbtnSaveToFile.Click += new System.EventHandler(this.kbtnSaveToFile_Click);
+            // 
+            // kbtnCancel
+            // 
+            this.kbtnCancel.Location = new System.Drawing.Point(607, 17);
+            this.kbtnCancel.Name = "kbtnCancel";
+            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCancel.TabIndex = 2;
+            this.kbtnCancel.Values.Text = "kryptonButton1";
+            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            // 
+            // kchkToggleCasing
+            // 
+            this.kchkToggleCasing.Location = new System.Drawing.Point(13, 19);
+            this.kchkToggleCasing.Name = "kchkToggleCasing";
+            this.kchkToggleCasing.Size = new System.Drawing.Size(101, 20);
+            this.kchkToggleCasing.TabIndex = 1;
+            this.kchkToggleCasing.Values.Text = "Toggle &Casing";
+            this.kchkToggleCasing.CheckedChanged += new System.EventHandler(this.kchkToggleCasing_CheckedChanged);
             // 
             // kryptonBorderEdge1
             // 
@@ -119,150 +118,206 @@
             // 
             // kryptonPanel2
             // 
-            this.kryptonPanel2.Controls.Add(this.kryptonTableLayoutPanel1);
+            this.kryptonPanel2.Controls.Add(this.tableLayoutPanel1);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(709, 212);
             this.kryptonPanel2.TabIndex = 2;
             // 
-            // kryptonTableLayoutPanel1
+            // tableLayoutPanel1
             // 
-            this.kryptonTableLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("kryptonTableLayoutPanel1.BackgroundImage")));
-            this.kryptonTableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.kryptonTableLayoutPanel1.ColumnCount = 3;
-            this.kryptonTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.kryptonTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.kryptonTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
-            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonLabel1, 0, 0);
-            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonLabel2, 0, 1);
-            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonComboBox1, 1, 1);
-            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonGroupBox1, 0, 2);
-            this.kryptonTableLayoutPanel1.Controls.Add(this.kbtnCalculateCheckSum, 2, 1);
-            this.kryptonTableLayoutPanel1.Controls.Add(this.ktxtFilePath, 1, 0);
-            this.kryptonTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonTableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonTableLayoutPanel1.Name = "kryptonTableLayoutPanel1";
-            this.kryptonTableLayoutPanel1.RowCount = 3;
-            this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.kryptonTableLayoutPanel1.Size = new System.Drawing.Size(709, 212);
-            this.kryptonTableLayoutPanel1.TabIndex = 2;
-            // 
-            // kryptonLabel1
-            // 
-            this.kryptonLabel1.AutoSize = false;
-            this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel1.Location = new System.Drawing.Point(3, 3);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(161, 25);
-            this.kryptonLabel1.TabIndex = 0;
-            this.kryptonLabel1.Values.Text = "File Path:";
-            // 
-            // kryptonLabel2
-            // 
-            this.kryptonLabel2.AutoSize = false;
-            this.kryptonLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonLabel2.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel2.Location = new System.Drawing.Point(3, 34);
-            this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(161, 25);
-            this.kryptonLabel2.TabIndex = 1;
-            this.kryptonLabel2.Values.Text = "Algorithim Type:";
-            // 
-            // kryptonComboBox1
-            // 
-            this.kryptonComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kryptonComboBox1.DropDownWidth = 200;
-            this.kryptonComboBox1.IntegralHeight = false;
-            this.kryptonComboBox1.Location = new System.Drawing.Point(170, 34);
-            this.kryptonComboBox1.Name = "kryptonComboBox1";
-            this.kryptonComboBox1.Size = new System.Drawing.Size(200, 21);
-            this.kryptonComboBox1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonComboBox1.TabIndex = 2;
-            // 
-            // kryptonGroupBox1
-            // 
-            this.kryptonTableLayoutPanel1.SetColumnSpan(this.kryptonGroupBox1, 3);
-            this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(3, 65);
-            this.kryptonGroupBox1.Name = "kryptonGroupBox1";
-            // 
-            // kryptonGroupBox1.Panel
-            // 
-            this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonWrapLabel1);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(703, 144);
-            this.kryptonGroupBox1.TabIndex = 3;
-            this.kryptonGroupBox1.Values.Heading = "Calculated CheckSum";
-            // 
-            // kbtnCalculateCheckSum
-            // 
-            this.kbtnCalculateCheckSum.Location = new System.Drawing.Point(376, 34);
-            this.kbtnCalculateCheckSum.Name = "kbtnCalculateCheckSum";
-            this.kbtnCalculateCheckSum.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCalculateCheckSum.TabIndex = 4;
-            this.kbtnCalculateCheckSum.Values.Text = "&Calculate";
-            // 
-            // ktxtFilePath
-            // 
-            this.ktxtFilePath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.ktxtFilePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.ktxtFilePath.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
-            this.bsaBrowse});
-            this.kryptonTableLayoutPanel1.SetColumnSpan(this.ktxtFilePath, 2);
-            this.ktxtFilePath.CueHint.CueHintText = "Enter a file path here...";
-            this.ktxtFilePath.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.ktxtFilePath.CueHint.TextV = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.ktxtFilePath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ktxtFilePath.Location = new System.Drawing.Point(170, 3);
-            this.ktxtFilePath.Name = "ktxtFilePath";
-            this.ktxtFilePath.Size = new System.Drawing.Size(536, 24);
-            this.ktxtFilePath.TabIndex = 5;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.kryptonWrapLabel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.kryptonWrapLabel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ktxtFilePath, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.kcmbHashType, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.kbtnCalculate, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.kryptonGroupBox1, 0, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(709, 212);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // kryptonWrapLabel1
             // 
             this.kryptonWrapLabel1.AutoSize = false;
             this.kryptonWrapLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonWrapLabel1.Font = new System.Drawing.Font("Segoe UI", 13.5F, System.Drawing.FontStyle.Bold);
+            this.kryptonWrapLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.kryptonWrapLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kryptonWrapLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.TitlePanel;
-            this.kryptonWrapLabel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonWrapLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonWrapLabel1.Location = new System.Drawing.Point(3, 0);
             this.kryptonWrapLabel1.Name = "kryptonWrapLabel1";
-            this.kryptonWrapLabel1.Size = new System.Drawing.Size(699, 120);
-            this.kryptonWrapLabel1.Text = "kryptonWrapLabel1";
-            this.kryptonWrapLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.kryptonWrapLabel1.Size = new System.Drawing.Size(100, 30);
+            this.kryptonWrapLabel1.Text = "File Path:";
+            this.kryptonWrapLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // kryptonWrapLabel2
+            // 
+            this.kryptonWrapLabel2.AutoSize = false;
+            this.kryptonWrapLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonWrapLabel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.kryptonWrapLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kryptonWrapLabel2.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonWrapLabel2.Location = new System.Drawing.Point(3, 30);
+            this.kryptonWrapLabel2.Name = "kryptonWrapLabel2";
+            this.kryptonWrapLabel2.Size = new System.Drawing.Size(100, 31);
+            this.kryptonWrapLabel2.Text = "Hash Type:";
+            this.kryptonWrapLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ktxtFilePath
+            // 
+            this.ktxtFilePath.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
+            this.bsaBrowse});
+            this.tableLayoutPanel1.SetColumnSpan(this.ktxtFilePath, 2);
+            this.ktxtFilePath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ktxtFilePath.Location = new System.Drawing.Point(109, 3);
+            this.ktxtFilePath.Name = "ktxtFilePath";
+            this.ktxtFilePath.Size = new System.Drawing.Size(597, 23);
+            this.ktxtFilePath.TabIndex = 2;
             // 
             // bsaBrowse
             // 
-            this.bsaBrowse.Text = "...";
-            this.bsaBrowse.UniqueName = "bbb41abf96394c8a8cc6b033785a8c25";
+            this.bsaBrowse.Image = global::Krypton.Toolkit.Suite.Extended.CheckSum.Tools.Properties.Resources.Open;
+            this.bsaBrowse.UniqueName = "2efda73a4eff4dea8684b6fe1ad4324f";
+            this.bsaBrowse.Click += new System.EventHandler(this.bsaBrowse_Click);
             // 
-            // kryptonCheckBox1
+            // kcmbHashType
             // 
-            this.kryptonCheckBox1.Location = new System.Drawing.Point(13, 19);
-            this.kryptonCheckBox1.Name = "kryptonCheckBox1";
-            this.kryptonCheckBox1.Size = new System.Drawing.Size(125, 20);
-            this.kryptonCheckBox1.TabIndex = 1;
-            this.kryptonCheckBox1.Values.Text = "kryptonCheckBox1";
+            this.kcmbHashType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kcmbHashType.DropDownWidth = 200;
+            this.kcmbHashType.IntegralHeight = false;
+            this.kcmbHashType.Location = new System.Drawing.Point(109, 33);
+            this.kcmbHashType.Name = "kcmbHashType";
+            this.kcmbHashType.Size = new System.Drawing.Size(200, 21);
+            this.kcmbHashType.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbHashType.TabIndex = 3;
             // 
-            // kryptonButton1
+            // kbtnCalculate
             // 
-            this.kryptonButton1.Location = new System.Drawing.Point(607, 17);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(90, 25);
-            this.kryptonButton1.TabIndex = 2;
-            this.kryptonButton1.Values.Text = "kryptonButton1";
+            this.kbtnCalculate.Enabled = false;
+            this.kbtnCalculate.Location = new System.Drawing.Point(315, 33);
+            this.kbtnCalculate.Name = "kbtnCalculate";
+            this.kbtnCalculate.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCalculate.TabIndex = 4;
+            this.kbtnCalculate.Values.Text = "&Calculate";
+            this.kbtnCalculate.Click += new System.EventHandler(this.kbtnCalculate_Click);
             // 
-            // kbtnSaveToFile
+            // kryptonGroupBox1
             // 
-            this.kbtnSaveToFile.Enabled = false;
-            this.kbtnSaveToFile.Location = new System.Drawing.Point(511, 17);
-            this.kbtnSaveToFile.Name = "kbtnSaveToFile";
-            this.kbtnSaveToFile.Size = new System.Drawing.Size(90, 25);
-            this.kbtnSaveToFile.TabIndex = 3;
-            this.kbtnSaveToFile.Values.Text = "Save to &File";
+            this.tableLayoutPanel1.SetColumnSpan(this.kryptonGroupBox1, 3);
+            this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(3, 64);
+            this.kryptonGroupBox1.Name = "kryptonGroupBox1";
+            // 
+            // kryptonGroupBox1.Panel
+            // 
+            this.kryptonGroupBox1.Panel.Controls.Add(this.kwlHashOutput);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(703, 145);
+            this.kryptonGroupBox1.TabIndex = 5;
+            this.kryptonGroupBox1.Values.Heading = "CheckSum Output";
+            // 
+            // kwlHashOutput
+            // 
+            this.kwlHashOutput.AutoSize = false;
+            this.kwlHashOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kwlHashOutput.Font = new System.Drawing.Font("Segoe UI", 13.5F, System.Drawing.FontStyle.Bold);
+            this.kwlHashOutput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlHashOutput.LabelStyle = Krypton.Toolkit.LabelStyle.TitlePanel;
+            this.kwlHashOutput.Location = new System.Drawing.Point(0, 0);
+            this.kwlHashOutput.Name = "kwlHashOutput";
+            this.kwlHashOutput.Size = new System.Drawing.Size(699, 121);
+            this.kwlHashOutput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ss
+            // 
+            this.ss.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ss.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslStatus,
+            this.tspbCalculationProgress,
+            this.tslCalculationProgress});
+            this.ss.Location = new System.Drawing.Point(0, 262);
+            this.ss.Name = "ss";
+            this.ss.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
+            this.ss.Size = new System.Drawing.Size(709, 22);
+            this.ss.TabIndex = 3;
+            this.ss.Text = "statusStrip1";
+            // 
+            // tslStatus
+            // 
+            this.tslStatus.Name = "tslStatus";
+            this.tslStatus.Size = new System.Drawing.Size(694, 17);
+            this.tslStatus.Spring = true;
+            this.tslStatus.Text = "Ready";
+            this.tslStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tspbCalculationProgress
+            // 
+            this.tspbCalculationProgress.Name = "tspbCalculationProgress";
+            this.tspbCalculationProgress.Size = new System.Drawing.Size(100, 16);
+            this.tspbCalculationProgress.Visible = false;
+            // 
+            // tslCalculationProgress
+            // 
+            this.tslCalculationProgress.Name = "tslCalculationProgress";
+            this.tslCalculationProgress.Size = new System.Drawing.Size(0, 17);
+            // 
+            // bgwMD5
+            // 
+            this.bgwMD5.WorkerReportsProgress = true;
+            this.bgwMD5.WorkerSupportsCancellation = true;
+            this.bgwMD5.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMD5_DoWork);
+            this.bgwMD5.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Calculation_ProgressChanged);
+            this.bgwMD5.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Calculation_RunWorkerCompleted);
+            // 
+            // bgwSHA1
+            // 
+            this.bgwSHA1.WorkerReportsProgress = true;
+            this.bgwSHA1.WorkerSupportsCancellation = true;
+            this.bgwSHA1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwSHA1_DoWork);
+            this.bgwSHA1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Calculation_ProgressChanged);
+            this.bgwSHA1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Calculation_RunWorkerCompleted);
+            // 
+            // bgwSHA256
+            // 
+            this.bgwSHA256.WorkerReportsProgress = true;
+            this.bgwSHA256.WorkerSupportsCancellation = true;
+            this.bgwSHA256.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwSHA256_DoWork);
+            this.bgwSHA256.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Calculation_ProgressChanged);
+            this.bgwSHA256.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Calculation_RunWorkerCompleted);
+            // 
+            // bgwSHA384
+            // 
+            this.bgwSHA384.WorkerReportsProgress = true;
+            this.bgwSHA384.WorkerSupportsCancellation = true;
+            this.bgwSHA384.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwSHA384_DoWork);
+            this.bgwSHA384.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Calculation_ProgressChanged);
+            this.bgwSHA384.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Calculation_RunWorkerCompleted);
+            // 
+            // bgwSHA512
+            // 
+            this.bgwSHA512.WorkerReportsProgress = true;
+            this.bgwSHA512.WorkerSupportsCancellation = true;
+            this.bgwSHA512.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwSHA512_DoWork);
+            this.bgwSHA512.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Calculation_ProgressChanged);
+            this.bgwSHA512.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Calculation_RunWorkerCompleted);
+            // 
+            // bgwRIPEMD160
+            // 
+            this.bgwRIPEMD160.WorkerReportsProgress = true;
+            this.bgwRIPEMD160.WorkerSupportsCancellation = true;
+            this.bgwRIPEMD160.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwRIPEMD160_DoWork);
+            this.bgwRIPEMD160.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Calculation_ProgressChanged);
+            this.bgwRIPEMD160.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Calculation_RunWorkerCompleted);
             // 
             // KryptonComputeFileCheckSum
             // 
@@ -271,51 +326,57 @@
             this.ClientSize = new System.Drawing.Size(709, 284);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
-            this.Controls.Add(this.kryptonStatusStrip1);
+            this.Controls.Add(this.ss);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonComputeFileCheckSum";
             this.Text = "KryptonComputeFileCheckSum";
-            this.kryptonStatusStrip1.ResumeLayout(false);
-            this.kryptonStatusStrip1.PerformLayout();
+            this.Load += new System.EventHandler(this.KryptonComputeFileCheckSum_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
-            this.kryptonTableLayoutPanel1.ResumeLayout(false);
-            this.kryptonTableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbHashType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
+            this.ss.ResumeLayout(false);
+            this.ss.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private KryptonStatusStrip kryptonStatusStrip1;
-        private ToolStripStatusLabel toolStripStatusLabel1;
-        private ToolStripProgressBar toolStripProgressBar1;
-        private ToolStripStatusLabel toolStripStatusLabel2;
         private KryptonPanel kryptonPanel1;
         private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kryptonPanel2;
-        private KryptonTableLayoutPanel kryptonTableLayoutPanel1;
-        private KryptonLabel kryptonLabel1;
-        private KryptonLabel kryptonLabel2;
-        private KryptonComboBox kryptonComboBox1;
-        private KryptonGroupBox kryptonGroupBox1;
-        private KryptonButton kbtnCalculateCheckSum;
-        private KryptonTextBox ktxtFilePath;
-        private KryptonWrapLabel kryptonWrapLabel1;
-        private ButtonSpecAny bsaBrowse;
-        private KryptonCheckBox kryptonCheckBox1;
-        private KryptonButton kryptonButton1;
+        private KryptonCheckBox kchkToggleCasing;
+        private KryptonButton kbtnCancel;
         private KryptonButton kbtnSaveToFile;
+        private TableLayoutPanel tableLayoutPanel1;
+        private KryptonWrapLabel kryptonWrapLabel1;
+        private KryptonWrapLabel kryptonWrapLabel2;
+        private KryptonTextBox ktxtFilePath;
+        private KryptonComboBox kcmbHashType;
+        private KryptonButton kbtnCalculate;
+        private KryptonGroupBox kryptonGroupBox1;
+        private KryptonWrapLabel kwlHashOutput;
+        private ButtonSpecAny bsaBrowse;
+        private StatusStrip ss;
+        private ToolStripStatusLabel tslStatus;
+        private ToolStripProgressBar tspbCalculationProgress;
+        private ToolStripStatusLabel tslCalculationProgress;
+        private BackgroundWorker bgwMD5;
+        private BackgroundWorker bgwSHA1;
+        private BackgroundWorker bgwSHA256;
+        private BackgroundWorker bgwSHA384;
+        private BackgroundWorker bgwSHA512;
+        private BackgroundWorker bgwRIPEMD160;
     }
 }

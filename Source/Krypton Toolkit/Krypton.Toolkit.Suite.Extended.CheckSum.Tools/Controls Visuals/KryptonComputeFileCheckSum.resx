@@ -117,35 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="kryptonStatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="ss.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="kryptonTableLayoutPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
+  <metadata name="bgwMD5.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>79, 17</value>
+  </metadata>
+  <metadata name="bgwSHA1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>180, 17</value>
+  </metadata>
+  <metadata name="bgwSHA256.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>285, 17</value>
+  </metadata>
+  <metadata name="bgwSHA384.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>403, 17</value>
+  </metadata>
+  <metadata name="bgwSHA512.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>521, 17</value>
+  </metadata>
+  <metadata name="bgwRIPEMD160.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>639, 17</value>
+  </metadata>
 </root>
