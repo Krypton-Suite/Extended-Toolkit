@@ -333,6 +333,9 @@
             this.Name = "KryptonComputeFileCheckSum";
             this.Text = "KryptonComputeFileCheckSum";
             this.Load += new System.EventHandler(this.KryptonComputeFileCheckSum_Load);
+            this.Controls.SetChildIndex(this.ss, 0);
+            this.Controls.SetChildIndex(this.kryptonPanel1, 0);
+            this.Controls.SetChildIndex(this.kryptonPanel2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

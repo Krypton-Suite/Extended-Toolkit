@@ -192,7 +192,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                                                        OnButtonManagerNeedPaint);
 
             // Create the manager for handling tooltips
-            ToolTipManager = new ToolTipManager();
+            ToolTipManager = new ToolTipManager(new(null));
             ToolTipManager.ShowToolTip += OnShowToolTip;
             ToolTipManager.CancelToolTip += OnCancelToolTip;
             _buttonManager.ToolTipManager = ToolTipManager;
