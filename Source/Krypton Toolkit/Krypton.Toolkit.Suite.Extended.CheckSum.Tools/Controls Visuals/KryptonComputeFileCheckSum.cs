@@ -1,6 +1,4 @@
-﻿using Microsoft.WindowsAPICodePack.Taskbar;
-
-namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
+﻿namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
     public partial class KryptonComputeFileCheckSum : KryptonForm
     {

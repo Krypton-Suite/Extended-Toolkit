@@ -37,3 +37,4 @@ global using Krypton.Toolkit.Suite.Extended.CheckSum.Tools.Properties;
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 
 global using Microsoft.WindowsAPICodePack.Dialogs;
+global using Microsoft.WindowsAPICodePack.Taskbar;

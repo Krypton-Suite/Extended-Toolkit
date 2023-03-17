@@ -264,6 +264,7 @@
             // bsaBrowse
             // 
             this.bsaBrowse.ToolTipStyle = Krypton.Toolkit.LabelStyle.SuperTip;
+            this.bsaBrowse.Type = Krypton.Toolkit.PaletteButtonSpecStyle.Open;
             this.bsaBrowse.UniqueName = "2efda73a4eff4dea8684b6fe1ad4324f";
             this.bsaBrowse.Click += new System.EventHandler(this.bsaBrowse_Click);
             // 

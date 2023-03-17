@@ -188,6 +188,9 @@
             // bsaBrowse
             // 
             this.bsaBrowse.Image = global::Krypton.Toolkit.Suite.Extended.CheckSum.Tools.Properties.Resources.Open;
+            this.bsaBrowse.Style = Krypton.Toolkit.PaletteButtonStyle.Inherit;
+            this.bsaBrowse.ToolTipStyle = Krypton.Toolkit.LabelStyle.ToolTip;
+            this.bsaBrowse.Type = Krypton.Toolkit.PaletteButtonSpecStyle.Open;
             this.bsaBrowse.UniqueName = "2efda73a4eff4dea8684b6fe1ad4324f";
             this.bsaBrowse.Click += new System.EventHandler(this.bsaBrowse_Click);
             // 
@@ -214,8 +217,11 @@
             // 
             // kryptonGroupBox1
             // 
+            this.kryptonGroupBox1.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
             this.tableLayoutPanel1.SetColumnSpan(this.kryptonGroupBox1, 3);
             this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox1.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox1.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox1.Location = new System.Drawing.Point(3, 64);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
