@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
             CancelButton = kbtnCancel;
 
-            kbtnCalculate.Text = KryptonManager.Strings.Cancel;
+            kbtnCancel.Text = KryptonManager.Strings.Cancel;
 
             _useAPICodePackFeatures = useAPICodePackFeatures ?? true;
 
@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
             kcmbHashType.SelectedIndex = 0;
 
-            kbtnCalculate.Enabled = true;
+            kbtnCancel.Enabled = true;
 #else
             foreach (string hashType in Enum.GetNames(typeof(SupportedHashAlgorithims)))
             {
@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
             kcmbHashType.SelectedIndex = 0;
 
-            kbtnCalculate.Enabled = true;
+            kbtnCancel.Enabled = true;
 #endif
         }
 
@@ -181,9 +181,12 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
         private void kbtnCancel_Click(object sender, EventArgs e)
         {
-            if (bgwMD5.IsBusy || bgwSHA1.IsBusy || bgwSHA256.IsBusy || bgwSHA384.IsBusy || bgwSHA512.IsBusy || bgwRIPEMD160.IsBusy)
+            if (bgwMD5.IsBusy || bgwSHA1.IsBusy || bgwSHA256.IsBusy || bgwSHA384.IsBusy || bgwSHA512.IsBusy ||
+                bgwRIPEMD160.IsBusy)
             {
-                DialogResult result = KryptonMessageBox.Show("File hashing is still in progress.\nDo you want to cancel?", "Hashing in Progress", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show(
+                    "File hashing is still in progress.\nDo you want to cancel?", "Hashing in Progress",
+                    KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -221,7 +224,8 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private bool VerifyCheckSum(string fileCheckSum, string importedCheckSum) => fileCheckSum.Equals(importedCheckSum);
+        private bool VerifyCheckSum(string fileCheckSum, string importedCheckSum) =>
+            fileCheckSum.Equals(importedCheckSum);
 
         private void ImportCheckSumFromFile(string filePath)
         {
@@ -320,6 +324,20 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
                     }
                 }
             }
+        }
+
+        private void bsaReset_Click(object sender, EventArgs e) => ktxtFilePath.Text = string.Empty;
+
+        private void ktxtFilePath_TextChanged(object sender, EventArgs e)
+        {
+            // if (string.IsNullOrEmpty(ktxtFilePath.Text))
+            // {
+            //     bsaReset.Enabled = ButtonEnabled.False;
+            // }
+            // else
+            // {
+            //     bsaReset.Enabled = ButtonEnabled.True;
+            // }
         }
     }
 }

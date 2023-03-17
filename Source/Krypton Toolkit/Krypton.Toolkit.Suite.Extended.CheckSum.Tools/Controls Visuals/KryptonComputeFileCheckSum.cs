@@ -615,5 +615,7 @@
 
             UpdateStatus(CheckSumStatus.Ready);
         }
+
+        private void bsaReset_Click(object sender, EventArgs e) => ktxtFilePath.Text = string.Empty;
     }
 }

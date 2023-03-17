@@ -53,6 +53,7 @@
             this.bgwSHA384 = new System.ComponentModel.BackgroundWorker();
             this.bgwSHA512 = new System.ComponentModel.BackgroundWorker();
             this.bgwRIPEMD160 = new System.ComponentModel.BackgroundWorker();
+            this.bsaReset = new Krypton.Toolkit.ButtonSpecAny();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -176,7 +177,10 @@
             // 
             // ktxtFilePath
             // 
+            this.ktxtFilePath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ktxtFilePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.ktxtFilePath.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
+            this.bsaReset,
             this.bsaBrowse});
             this.tableLayoutPanel1.SetColumnSpan(this.ktxtFilePath, 2);
             this.ktxtFilePath.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -249,8 +253,8 @@
             this.ss.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ss.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslStatus,
-            this.tspbCalculationProgress,
-            this.tslCalculationProgress});
+            this.tslCalculationProgress,
+            this.tspbCalculationProgress});
             this.ss.Location = new System.Drawing.Point(0, 262);
             this.ss.Name = "ss";
             this.ss.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
@@ -325,6 +329,14 @@
             this.bgwRIPEMD160.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Calculation_ProgressChanged);
             this.bgwRIPEMD160.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Calculation_RunWorkerCompleted);
             // 
+            // bsaReset
+            // 
+            this.bsaReset.Style = Krypton.Toolkit.PaletteButtonStyle.Inherit;
+            this.bsaReset.ToolTipStyle = Krypton.Toolkit.LabelStyle.ToolTip;
+            this.bsaReset.Type = Krypton.Toolkit.PaletteButtonSpecStyle.Undo;
+            this.bsaReset.UniqueName = "f7abb2bddee245e9b00ebbe01ac8b5f2";
+            this.bsaReset.Click += new System.EventHandler(this.bsaReset_Click);
+            // 
             // KryptonComputeFileCheckSum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,5 +399,6 @@
         private BackgroundWorker bgwSHA384;
         private BackgroundWorker bgwSHA512;
         private BackgroundWorker bgwRIPEMD160;
+        private ButtonSpecAny bsaReset;
     }
 }

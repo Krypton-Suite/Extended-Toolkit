@@ -40,20 +40,21 @@
             this.bgwRIPEMD160 = new System.ComponentModel.BackgroundWorker();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnVerify = new Krypton.Toolkit.KryptonButton();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
+            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonWrapLabel1 = new Krypton.Toolkit.KryptonWrapLabel();
             this.kryptonWrapLabel2 = new Krypton.Toolkit.KryptonWrapLabel();
             this.ktxtFilePath = new Krypton.Toolkit.KryptonTextBox();
+            this.bsaReset = new Krypton.Toolkit.ButtonSpecAny();
             this.bsaBrowse = new Krypton.Toolkit.ButtonSpecAny();
             this.kcmbHashType = new Krypton.Toolkit.KryptonComboBox();
-            this.kbtnCalculate = new Krypton.Toolkit.KryptonButton();
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
             this.kwlHashOutput = new Krypton.Toolkit.KryptonWrapLabel();
             this.kryptonGroupBox2 = new Krypton.Toolkit.KryptonGroupBox();
             this.ktxtVarifyCheckSum = new Krypton.Toolkit.KryptonTextBox();
+            this.bsaVerifyReset = new Krypton.Toolkit.ButtonSpecAny();
             this.bsaVerifyBrowse = new Krypton.Toolkit.ButtonSpecAny();
             this.kcmHashVerify = new Krypton.Toolkit.KryptonContextMenu();
             this.kryptonContextMenuItems1 = new Krypton.Toolkit.KryptonContextMenuItems();
@@ -68,6 +69,7 @@
             this.kryptonContextMenuSeparator3 = new Krypton.Toolkit.KryptonContextMenuSeparator();
             this.kryptonContextMenuItem4 = new Krypton.Toolkit.KryptonContextMenuItem();
             this.kcmdLoad = new Krypton.Toolkit.KryptonCommand();
+            this.kbtnCalculate = new Krypton.Toolkit.KryptonButton();
             this.ss.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -151,8 +153,8 @@
             // kryptonPanel1
             // 
             this.kryptonPanel1.Controls.Add(this.kbtnVerify);
-            this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
+            this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 257);
             this.kryptonPanel1.Name = "kryptonPanel1";
@@ -162,6 +164,7 @@
             // 
             // kbtnVerify
             // 
+            this.kbtnVerify.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnVerify.Enabled = false;
             this.kbtnVerify.Location = new System.Drawing.Point(491, 13);
             this.kbtnVerify.Name = "kbtnVerify";
@@ -169,16 +172,6 @@
             this.kbtnVerify.TabIndex = 2;
             this.kbtnVerify.Values.Text = "&Verify";
             this.kbtnVerify.Click += new System.EventHandler(this.kbtnVerify_Click);
-            // 
-            // kbtnCancel
-            // 
-            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(587, 13);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCancel.TabIndex = 1;
-            this.kbtnCancel.Values.Text = "kryptonButton1";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
             // 
             // kryptonBorderEdge1
             // 
@@ -188,6 +181,16 @@
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
             this.kryptonBorderEdge1.Size = new System.Drawing.Size(689, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
+            // kbtnCancel
+            // 
+            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnCancel.Location = new System.Drawing.Point(587, 13);
+            this.kbtnCancel.Name = "kbtnCancel";
+            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCancel.TabIndex = 4;
+            this.kbtnCancel.Values.Text = "C&ancel";
+            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCalculate_Click);
             // 
             // kryptonPanel2
             // 
@@ -209,9 +212,9 @@
             this.tableLayoutPanel1.Controls.Add(this.kryptonWrapLabel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.ktxtFilePath, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.kcmbHashType, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.kbtnCalculate, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.kryptonGroupBox1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.kryptonGroupBox2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.kbtnCalculate, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -253,6 +256,7 @@
             // ktxtFilePath
             // 
             this.ktxtFilePath.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
+            this.bsaReset,
             this.bsaBrowse});
             this.tableLayoutPanel1.SetColumnSpan(this.ktxtFilePath, 2);
             this.ktxtFilePath.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -260,9 +264,19 @@
             this.ktxtFilePath.Name = "ktxtFilePath";
             this.ktxtFilePath.Size = new System.Drawing.Size(577, 23);
             this.ktxtFilePath.TabIndex = 2;
+            this.ktxtFilePath.TextChanged += new System.EventHandler(this.ktxtFilePath_TextChanged);
+            // 
+            // bsaReset
+            // 
+            this.bsaReset.Style = Krypton.Toolkit.PaletteButtonStyle.Inherit;
+            this.bsaReset.ToolTipStyle = Krypton.Toolkit.LabelStyle.ToolTip;
+            this.bsaReset.Type = Krypton.Toolkit.PaletteButtonSpecStyle.Undo;
+            this.bsaReset.UniqueName = "d153dbd03a8c4bedaca0d851db1492dc";
+            this.bsaReset.Click += new System.EventHandler(this.bsaReset_Click);
             // 
             // bsaBrowse
             // 
+            this.bsaBrowse.Style = Krypton.Toolkit.PaletteButtonStyle.Inherit;
             this.bsaBrowse.ToolTipStyle = Krypton.Toolkit.LabelStyle.SuperTip;
             this.bsaBrowse.Type = Krypton.Toolkit.PaletteButtonSpecStyle.Open;
             this.bsaBrowse.UniqueName = "2efda73a4eff4dea8684b6fe1ad4324f";
@@ -279,20 +293,13 @@
             this.kcmbHashType.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbHashType.TabIndex = 3;
             // 
-            // kbtnCalculate
-            // 
-            this.kbtnCalculate.Enabled = false;
-            this.kbtnCalculate.Location = new System.Drawing.Point(315, 33);
-            this.kbtnCalculate.Name = "kbtnCalculate";
-            this.kbtnCalculate.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCalculate.TabIndex = 4;
-            this.kbtnCalculate.Values.Text = "&Calculate";
-            this.kbtnCalculate.Click += new System.EventHandler(this.kbtnCalculate_Click);
-            // 
             // kryptonGroupBox1
             // 
+            this.kryptonGroupBox1.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
             this.tableLayoutPanel1.SetColumnSpan(this.kryptonGroupBox1, 3);
             this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox1.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox1.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox1.Location = new System.Drawing.Point(3, 64);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
@@ -317,8 +324,11 @@
             // 
             // kryptonGroupBox2
             // 
+            this.kryptonGroupBox2.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
             this.tableLayoutPanel1.SetColumnSpan(this.kryptonGroupBox2, 3);
             this.kryptonGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox2.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox2.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox2.Location = new System.Drawing.Point(3, 162);
             this.kryptonGroupBox2.Name = "kryptonGroupBox2";
             // 
@@ -332,6 +342,7 @@
             // ktxtVarifyCheckSum
             // 
             this.ktxtVarifyCheckSum.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
+            this.bsaVerifyReset,
             this.bsaVerifyBrowse});
             this.ktxtVarifyCheckSum.KryptonContextMenu = this.kcmHashVerify;
             this.ktxtVarifyCheckSum.Location = new System.Drawing.Point(8, 22);
@@ -340,8 +351,18 @@
             this.ktxtVarifyCheckSum.TabIndex = 0;
             this.ktxtVarifyCheckSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // bsaVerifyReset
+            // 
+            this.bsaVerifyReset.Style = Krypton.Toolkit.PaletteButtonStyle.Inherit;
+            this.bsaVerifyReset.ToolTipStyle = Krypton.Toolkit.LabelStyle.ToolTip;
+            this.bsaVerifyReset.Type = Krypton.Toolkit.PaletteButtonSpecStyle.Undo;
+            this.bsaVerifyReset.UniqueName = "b92f7a2ea9f441ffb60df6dc3e1d6d88";
+            // 
             // bsaVerifyBrowse
             // 
+            this.bsaVerifyBrowse.Style = Krypton.Toolkit.PaletteButtonStyle.Inherit;
+            this.bsaVerifyBrowse.ToolTipStyle = Krypton.Toolkit.LabelStyle.ToolTip;
+            this.bsaVerifyBrowse.Type = Krypton.Toolkit.PaletteButtonSpecStyle.Open;
             this.bsaVerifyBrowse.UniqueName = "2313891785e94e2c8ff9adc2d90ed55b";
             this.bsaVerifyBrowse.Click += new System.EventHandler(this.bsaVerifyBrowse_Click);
             // 
@@ -401,10 +422,22 @@
             // 
             this.kcmdLoad.Text = "Load from &File";
             // 
+            // kbtnCalculate
+            // 
+            this.kbtnCalculate.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnCalculate.Location = new System.Drawing.Point(315, 33);
+            this.kbtnCalculate.Name = "kbtnCalculate";
+            this.kbtnCalculate.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCalculate.TabIndex = 7;
+            this.kbtnCalculate.Values.Text = "&Calculate";
+            this.kbtnCalculate.Click += new System.EventHandler(this.kbtnCalculate_Click);
+            // 
             // KryptonVerifyFileCheckSum
             // 
+            this.AcceptButton = this.kbtnVerify;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.kbtnCancel;
             this.ClientSize = new System.Drawing.Size(689, 329);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
@@ -412,6 +445,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "KryptonVerifyFileCheckSum";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Verify File CheckSum";
             this.Load += new System.EventHandler(this.KryptonVerifyFileCheckSum_Load);
             this.Controls.SetChildIndex(this.ss, 0);
@@ -462,7 +496,7 @@
         private KryptonTextBox ktxtFilePath;
         private ButtonSpecAny bsaBrowse;
         private KryptonComboBox kcmbHashType;
-        private KryptonButton kbtnCalculate;
+        private KryptonButton kbtnCancel;
         private KryptonGroupBox kryptonGroupBox1;
         private KryptonWrapLabel kwlHashOutput;
         private KryptonGroupBox kryptonGroupBox2;
@@ -480,8 +514,10 @@
         private KryptonCommand kcmdCopy;
         private KryptonCommand kcmdPaste;
         private KryptonCommand kcmdLoad;
-        private KryptonButton kbtnCancel;
         private KryptonButton kbtnVerify;
         private ButtonSpecAny bsaVerifyBrowse;
+        private ButtonSpecAny bsaReset;
+        private ButtonSpecAny bsaVerifyReset;
+        private KryptonButton kbtnCalculate;
     }
 }
