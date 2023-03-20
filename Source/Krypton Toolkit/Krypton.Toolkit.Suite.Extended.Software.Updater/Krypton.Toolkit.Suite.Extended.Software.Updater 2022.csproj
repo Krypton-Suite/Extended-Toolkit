@@ -86,7 +86,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.3.72-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.3.79-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -96,7 +96,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.1.23-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.3.79-beta" />
 			</ItemGroup>
 		</When>
 
@@ -161,7 +161,7 @@
   
 	<ItemGroup>
 		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
 		<PackageReference Include="ZipStorer" Version="3.8.0" />
 	</ItemGroup>
