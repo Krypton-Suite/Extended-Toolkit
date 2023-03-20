@@ -55,8 +55,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         private int _compositionHeight;
         private int _ignoreCount;
         private ViewBase _capturedElement;
-        private PaletteBase _localPalette;
-        private PaletteBase _palette;
+        private PaletteBase? _localPalette;
+        private PaletteBase? _palette;
         private PaletteMode _paletteMode;
         private readonly IntPtr _screenDC;
         private ShadowValues _shadowValues;
@@ -499,7 +499,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         [Category(@"Visuals")]
         [Description(@"Custom palette applied to drawing.")]
         [DefaultValue(null)]
-        public PaletteBase Palette
+        public PaletteBase? Palette
         {
             [DebuggerStepThrough]
             get => _localPalette;
@@ -510,7 +510,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 if (_localPalette != value)
                 {
                     // Remember the starting palette
-                    PaletteBase old = _localPalette;
+                    PaletteBase? old = _localPalette;
 
                     // Use the provided palette value
                     SetPalette(value);
@@ -576,7 +576,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public PaletteBase GetResolvedPalette() => _palette;
+        public PaletteBase? GetResolvedPalette() => _palette;
 
         /// <summary>
         /// Create a tool strip renderer appropriate for the current renderer/palette pair.
@@ -1077,7 +1077,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        protected virtual void OnNeedPaint(object sender, NeedLayoutEventArgs e)
+        protected virtual void OnNeedPaint(object? sender, NeedLayoutEventArgs e)
         {
             Debug.Assert(e != null);
 
@@ -1656,10 +1656,10 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             Point windowPoint = ScreenToWindow(screenPoint);
 
             // Find the view element under the mouse
-            ViewBase pointView = ViewManager.Root.ViewFromPoint(windowPoint);
+            ViewBase? pointView = ViewManager.Root!.ViewFromPoint(windowPoint);
 
             // Try and find a mouse controller for the active view
-            IMouseController controller = pointView?.FindMouseController();
+            IMouseController? controller = pointView?.FindMouseController();
 
             // Eat the message
             return controller != null;
@@ -1937,7 +1937,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void SetPalette(PaletteBase palette)
+        private void SetPalette(PaletteBase? palette)
         {
             if (palette != _palette)
             {

@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
-    public class KryptonComputeFileCheckSum : KryptonForm
+    public class KryptonComputeFileCheckSumOld : KryptonForm
     {
         #region Design Code
         private StatusStrip statusStrip1;
@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonComputeFileCheckSum));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonComputeFileCheckSumOld));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tspbHashProgress = new System.Windows.Forms.ToolStripProgressBar();
@@ -361,7 +361,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         #endregion
 
         #region Constructor
-        public KryptonComputeFileCheckSum()
+        public KryptonComputeFileCheckSumOld()
         {
             InitializeComponent();
 

@@ -11,14 +11,14 @@ namespace Examples
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-            KryptonComputeFileCheckSum computeFileCheckSum = new KryptonComputeFileCheckSum();
+            KryptonComputeFileCheckSum computeFileCheckSum = new(true);
 
             computeFileCheckSum.ShowDialog();
         }
 
         private void kryptonButton2_Click(object sender, EventArgs e)
         {
-            KryptonVarifyFileCheckSum varifyFileCheckSum = new KryptonVarifyFileCheckSum();
+            KryptonVerifyFileCheckSum varifyFileCheckSum = new(true);
 
             varifyFileCheckSum.ShowDialog();
         }
