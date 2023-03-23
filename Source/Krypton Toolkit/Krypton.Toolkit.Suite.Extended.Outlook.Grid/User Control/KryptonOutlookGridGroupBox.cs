@@ -160,7 +160,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // Hook into palette events
             if (_palette != null)
+            {
                 _palette.PalettePaint += OnPalettePaint;
+            }
 
             // (4) We want to be notified whenever the global palette changes
             KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
@@ -304,11 +306,18 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         current.Rect = rectangle;
 
                         if (current.IsHovered)
+                        {
                             state = PaletteState.Tracking;
+                        }
                         else if (current.Pressed)
+                        {
                             state = PaletteState.Pressed;
+                        }
                         else
+                        {
                             state = PaletteState.Normal;
+                        }
+
                         // Do we need to draw the background?
                         if (_paletteBack.GetBackDraw(PaletteState.Normal) == InheritBool.True)
                         {
@@ -467,7 +476,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 foreach (OutlookGridGroupBoxColumn c in _columnsList)
                 {
                     if (c.IsMoving)
+                    {
                         somethingIsMoving = true;
+                    }
                 }
 
                 if (!somethingIsMoving)
@@ -537,7 +548,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             // (5) Unhook events from old palette
             if (_palette != null)
+            {
                 _palette.PalettePaint -= OnPalettePaint;
+            }
 
             // (6) Cache the new IPalette that is the global palette
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -545,7 +558,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // (7) Hook into events for the new palette
             if (_palette != null)
+            {
                 _palette.PalettePaint += OnPalettePaint;
+            }
 
             // (8) Change of palette means we should repaint to show any changes
             Invalidate();
@@ -558,7 +573,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnColumnSortChanged(OutlookGridColumnEventArgs e)
         {
             if (ColumnSortChanged != null)
+            {
                 ColumnSortChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -568,7 +585,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnColumnGroupAdded(OutlookGridColumnEventArgs e)
         {
             if (ColumnGroupAdded != null)
+            {
                 ColumnGroupAdded(this, e);
+            }
         }
 
         /// <summary>
@@ -578,7 +597,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnColumnGroupRemoved(OutlookGridColumnEventArgs e)
         {
             if (ColumnGroupRemoved != null)
+            {
                 ColumnGroupRemoved(this, e);
+            }
         }
 
         /// <summary>
@@ -588,7 +609,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnColumnGroupOrderChanged(OutlookGridColumnEventArgs e)
         {
             if (ColumnGroupOrderChanged != null)
+            {
                 ColumnGroupOrderChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -598,7 +621,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnClearGrouping(EventArgs e)
         {
             if (ClearGrouping != null)
+            {
                 ClearGrouping(this, e);
+            }
         }
 
         /// <summary>
@@ -608,7 +633,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnFullExpand(EventArgs e)
         {
             if (FullExpand != null)
+            {
                 FullExpand(this, e);
+            }
         }
 
         /// <summary>
@@ -618,7 +645,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnFullCollapse(EventArgs e)
         {
             if (FullCollapse != null)
+            {
                 FullCollapse(this, e);
+            }
         }
 
         /// <summary>
@@ -628,7 +657,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnGroupExpand(OutlookGridColumnEventArgs e)
         {
             if (GroupExpand != null)
+            {
                 GroupExpand(this, e);
+            }
         }
 
         /// <summary>
@@ -638,7 +669,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnGroupCollapse(OutlookGridColumnEventArgs e)
         {
             if (GroupCollapse != null)
+            {
                 GroupCollapse(this, e);
+            }
         }
 
         /// <summary>
@@ -648,7 +681,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void OnGroupIntervalClick(OutlookGridColumnEventArgs e)
         {
             if (GroupIntervalClick != null)
+            {
                 GroupIntervalClick(this, e);
+            }
         }
 
         /// <summary>
@@ -658,7 +693,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void OnSortBySummaryCount(OutlookGridColumnEventArgs e)
         {
             if (SortBySummaryCount != null)
+            {
                 SortBySummaryCount(this, e);
+            }
         }
 
         /// <summary>
@@ -817,7 +854,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             columnText = res[1];
             sortOrder = (SortOrder)Enum.Parse(typeof(SortOrder), res[2]);//SortOrder.Ascending;
             if (sortOrder == SortOrder.None)
+            {
                 sortOrder = SortOrder.Ascending;
+            }
+
             sortMode = (DataGridViewColumnSortMode)Enum.Parse(typeof(DataGridViewColumnSortMode), res[3]);
             OutlookGridGroupBoxColumn colToAdd = new OutlookGridGroupBoxColumn(columnName, columnText, sortOrder, res[4]);
             //if (res[4] == typeof(OutlookGridDateTimeGroup).Name)
@@ -983,13 +1023,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // Ensure we have a krypton context menu if not already present
             if (this.KCtxMenu == null)
+            {
                 KCtxMenu = new KryptonContextMenu();
+            }
 
 
             // Update the individual menu options
             OutlookGridGroupBoxColumn col = null;
             if (_indexselected > -1)
+            {
                 col = _columnsList[_indexselected];
+            }
 
             _menuSortAscending.Visible = col != null;
             _menuSortDescending.Visible = col != null;
@@ -1017,7 +1061,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             _menuSeparator3.Visible = (_menuFullExpand.Visible || _menuFullCollapse.Visible);
 
             if (!KCtxMenu.Items.Contains(_menuItems))
+            {
                 KCtxMenu.Items.Add(_menuItems);
+            }
 
             // Show the menu!
             KCtxMenu.Show(this);
@@ -1038,7 +1084,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 {
                     colToAdd = new OutlookGridGroupBoxColumn(list[i].DataGridViewColumn.Name, list[i].DataGridViewColumn.HeaderText, list[i].SortDirection, list[i].GroupingType.GetType().Name);
                     if (colToAdd.GroupingType == typeof(OutlookGridDateTimeGroup).Name)
+                    {
                         colToAdd.GroupInterval = ((OutlookGridDateTimeGroup)list[i].GroupingType).Interval.ToString();
+                    }
+
                     _columnsList.Add(colToAdd);
                 }
             }
@@ -1056,7 +1105,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             for (int i = 0; i < _columnsList.Count; i++)
             {
                 if (_columnsList[i].ColumnName == columnName)
+                {
                     return true;
+                }
             }
             return false;
         }

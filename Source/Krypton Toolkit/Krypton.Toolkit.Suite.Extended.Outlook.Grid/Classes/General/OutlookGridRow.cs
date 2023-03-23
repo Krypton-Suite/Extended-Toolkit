@@ -229,9 +229,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             //For the TreeGridView project if the selection mode is FullRow subnodes that where collapsed disappear when parent collapse/expands
             //because for an unknown reason the state becomes None instead of at least visible.
             if (base.GetState(rowIndex) == DataGridViewElementStates.None)
+            {
                 return DataGridViewElementStates.Visible;
+            }
             else
+            {
                 return base.GetState(rowIndex);
+            }
         }
 
         /// <summary>
@@ -263,7 +267,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 PaletteState state = PaletteState.Normal;
                 if (grid.PreviousSelectedGroupRow == rowIndex && (KryptonManager.CurrentGlobalPalette.GetRenderer() != KryptonManager.RenderOffice2013))
+                {
                     state = PaletteState.CheckedNormal;
+                }
 
                 using (RenderContext renderContext = new RenderContext(grid, graphics, myRowBounds, grid.Renderer))
                 {
@@ -404,7 +410,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected override void PaintCells(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle rowBounds, int rowIndex, DataGridViewElementStates rowState, bool isFirstDisplayedRow, bool isLastVisibleRow, DataGridViewPaintParts paintParts)
         {
             if (!isGroupRow)
+            {
                 base.PaintCells(graphics, clipBounds, rowBounds, rowIndex, rowState, isFirstDisplayedRow, isLastVisibleRow, paintParts);
+            }
         }
 
 
@@ -423,7 +431,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 foreach (DataGridViewCell c in Cells)
                 {
                     if (c.Value != null)
+                    {
                         res += c.Value.ToString() ?? string.Empty;
+                    }
                 }
             }
             catch { }
@@ -449,17 +459,25 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //no need to look further to the parents (one of the parents can be expanded...)
                 //if (i > 1 && gr.Collapsed)
                 if (gr.ParentGroup.Collapsed)
+                {
                     return true;
+                }
                 else
+                {
                     return IsAParentCollapsed(gr.ParentGroup, i);
+                }
             }
             else
             {
                 //if 1 that means there is no parent
                 if (i == 1)
+                {
                     return false;
+                }
                 else
+                {
                     return gr.Collapsed;
+                }
             }
         }
 
@@ -479,9 +497,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //if it is not the original group but it is one parent and if it is collapsed just stop here
                 //no need to look further to the parents (one of the parents can be expanded...)
                 if (row.ParentNode.Collapsed)
+                {
                     return true;
+                }
                 else
+                {
                     return IsAParentNodeOrGroupCollapsed(row.ParentNode, i);
+                }
             }
             else //no parent
             {
@@ -532,7 +554,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 //When collapsing the first row still seeing it.
                 if (Index < DataGridView.FirstDisplayedScrollingRowIndex)
+                {
                     DataGridView.FirstDisplayedScrollingRowIndex = Index;
+                }
             }
         }
 
@@ -550,7 +574,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 //When collapsing the first row still seeing it.
                 if (Index < DataGridView.FirstDisplayedScrollingRowIndex)
+                {
                     DataGridView.FirstDisplayedScrollingRowIndex = Index;
+                }
             }
         }
 
@@ -582,8 +608,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns>returns true if the icon was hit, false otherwise</returns>
         internal bool IsIconHit(DataGridViewCellMouseEventArgs e)
         {
-            if (e.ColumnIndex < 0) return false;
-            if (!isGroupRow) return false;
+            if (e.ColumnIndex < 0)
+            {
+                return false;
+            }
+
+            if (!isGroupRow)
+            {
+                return false;
+            }
 
             KryptonOutlookGrid grid = (KryptonOutlookGrid)DataGridView;
             Rectangle rowBounds = grid.GetRowDisplayRectangle(Index, false);
@@ -595,7 +628,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 (l <= rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + group.Level * StaticValues._groupLevelMultiplier + 11) &&
                 (e.Y >= rowBounds.Height - 18) &&
                 (e.Y <= rowBounds.Height - 7))
+            {
                 return true;
+            }
 
             return false;
         }
@@ -632,8 +667,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         internal bool IsGroupImageHit(DataGridViewCellMouseEventArgs e)
         {
-            if (e.ColumnIndex < 0) return false;
-            if (!isGroupRow || group.GroupImage == null) return false;
+            if (e.ColumnIndex < 0)
+            {
+                return false;
+            }
+
+            if (!isGroupRow || group.GroupImage == null)
+            {
+                return false;
+            }
 
 
             KryptonOutlookGrid grid = (KryptonOutlookGrid)DataGridView;
@@ -643,15 +685,22 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int l = e.X + grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Left;
             int offsetHeight;
             if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
+            {
                 offsetHeight = StaticValues._2013OffsetHeight;
+            }
             else
+            {
                 offsetHeight = StaticValues._defaultOffsetHeight;
+            }
+
             if (isGroupRow &&
                 (l >= rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 18 + group.Level * StaticValues._groupLevelMultiplier) &&
                 (l <= rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 18 + group.Level * StaticValues._groupLevelMultiplier + 16) &&
                 (e.Y >= rowBounds.Height - offsetHeight) &&
                 (e.Y <= rowBounds.Height - 6))
+            {
                 return true;
+            }
 
             return false;
         }

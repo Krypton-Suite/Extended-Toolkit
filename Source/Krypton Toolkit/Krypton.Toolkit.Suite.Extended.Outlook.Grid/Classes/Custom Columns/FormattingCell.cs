@@ -24,6 +24,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// <seealso cref="KryptonDataGridViewTextBoxCell" />
     public class FormattingCell : KryptonDataGridViewTextBoxCell
     {
+        #region Instance Fields
+
+        private DataGridViewCell _cell;
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the type of the format.
@@ -40,6 +45,21 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </value>
         public IFormatParams FormatParams { get; set; }
 
+        #region Identity
+
+        public FormattingCell()
+        {
+
+        }
+
+        public FormattingCell(DataGridViewCell cell) => _cell = cell;
+
+        public FormattingCell(KryptonDataGridViewTextBoxCell textBoxCell) : base()
+        {
+
+        }
+
+        #endregion
 
         /// <summary>
         /// Contrasts the color.

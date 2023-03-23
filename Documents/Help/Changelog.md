@@ -6,6 +6,7 @@
 
 ## 2023-11-xx - Build 2311 - November 2023
 <!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
+* Resolved [#414](https://github.com/Krypton-Suite/Extended-Toolkit/issues/414), `OutloookGrid` casts error when executing `.Fill()` (Thanks to [Shaun](https://github.com/Bonio55) for the fix)
 * Faster building when using [Visual Studio](https://aka.ms/vs-build-acceleration)
 * Enabled `nullable` for projects
 * De-listed 'shared' NuGet packages to clean up search results

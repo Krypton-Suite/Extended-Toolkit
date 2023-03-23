@@ -146,16 +146,24 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 int mouseXRelativeToCell = (mouseLocation.X - cellBounds.X);
                 int imageXArea = (cellBounds.Width / 2) - (IMAGEWIDTH / 2);
                 if (((mouseXRelativeToCell + 4) < imageXArea) || (mouseXRelativeToCell >= (imageXArea + IMAGEWIDTH)))
+                {
                     return -1;
+                }
                 else
                 {
                     int oo = (int)Math.Round((((float)(mouseXRelativeToCell - imageXArea + 2) / (float)IMAGEWIDTH) * 10f), MidpointRounding.AwayFromZero);
-                    if (oo > 10 || oo < 0) System.Diagnostics.Debugger.Break();
+                    if (oo > 10 || oo < 0)
+                    {
+                        System.Diagnostics.Debugger.Break();
+                    }
+
                     return oo;
                 }
             }
             else
+            {
                 return -1;
+            }
         }
 
         //setup star images 

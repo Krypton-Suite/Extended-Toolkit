@@ -130,7 +130,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             get
             {
                 if (TextBoxCellTemplate == null)
+                {
                     throw new InvalidOperationException("KryptonDataGridViewTextAndImageColumn cell template required");
+                }
 
                 return TextBoxCellTemplate.MaxInputLength;
             }
@@ -148,7 +150,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         {
                             DataGridViewTextBoxCell cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
                             if (cell != null)
+                            {
                                 cell.MaxInputLength = value;
+                            }
                         }
                     }
                 }
@@ -177,7 +181,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             set
             {
                 if ((value != null) && !(value is KryptonDataGridViewTextAndImageCell))
+                {
                     throw new InvalidCastException("Can only assign a object of type KryptonDataGridViewTextAndImageCell");
+                }
 
                 base.CellTemplate = value;
             }

@@ -282,7 +282,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             OutlookGridRow node = OwningNode;
             if (node != null)
+            {
                 ((KryptonOutlookGrid)node.DataGridView)._inExpandCollapseMouseCapture = false;
+            }
         }
         /// <summary>
         /// Raises the <see cref="E:MouseDown" /> event.
@@ -306,9 +308,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     ((KryptonOutlookGrid)node.DataGridView)._inExpandCollapseMouseCapture = true;
 
                     if (node.Collapsed)
+                    {
                         node.Expand();
+                    }
                     else
+                    {
                         node.Collapse();
+                    }
                 }
             }
             else

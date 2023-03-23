@@ -89,9 +89,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             _val = null;
             _column = null;
             if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderMicrosoft365)
+            {
                 _height = StaticValues._2013GroupRowHeight; // special height for office 2013
+            }
             else
+            {
                 _height = StaticValues._defaultGroupRowHeight; // default height
+            }
+
             Rows = new List<OutlookGridRow>();
             Children = new OutlookGridGroupCollection();
             _formatStyle = "";
@@ -108,7 +113,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public OutlookGridDefaultGroup(IOutlookGridGroup parentGroup) : this()
         {
             if (parentGroup != null)
+            {
                 Children.ParentGroup = parentGroup;
+            }
         }
         #endregion
 

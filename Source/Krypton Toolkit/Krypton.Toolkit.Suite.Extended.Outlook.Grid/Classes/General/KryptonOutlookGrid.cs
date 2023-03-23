@@ -148,7 +148,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // Hook into palette events
             if (_palette != null)
+            {
                 _palette.PalettePaint += OnPalettePaint;
+            }
 
             // (4) We want to be notified whenever the global palette changes
             KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
@@ -406,9 +408,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             OutlookGridRow row = (OutlookGridRow)base.Rows[e.RowIndex];
             if (row.IsGroupRow)
+            {
                 e.Cancel = true;
+            }
             else
+            {
                 base.OnCellBeginEdit(e);
+            }
         }
 
         /// <summary>
@@ -527,7 +533,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                                 {
                                     groupType = col.GroupingType.GetType().Name.ToString();
                                     if (groupType == typeof(OutlookGridDateTimeGroup).Name)
+                                    {
                                         groupInterval = ((OutlookGridDateTimeGroup)col.GroupingType).Interval.ToString();
+                                    }
+
                                     groupSortBySummaryCount = CommonHelper.BoolToString(col.GroupingType.SortBySummaryCount);
                                 }
                                 //column drag/drop
@@ -546,7 +555,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 }
                 base.OnMouseMove(e);
                 if (dragdropdone)
+                {
                     CellOver = new Point(-2, -2);//To avoid that the column header appears in a pressed state - Modification of ToolKit
+                }
             }
         }
 
@@ -744,7 +755,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             OutlookGridRow row = (OutlookGridRow)base.Rows[e.RowIndex];
             //System.Diagnostics.Debug.WriteLine("OnCellMouseDown " + DateTime.Now.Ticks.ToString() + "IsIconHit" + row.IsIconHit(e).ToString());
             if (_previousGroupRowSelected != -1 && _previousGroupRowSelected != e.RowIndex)
+            {
                 InvalidateRow(PreviousSelectedGroupRow);
+            }
 
             PreviousSelectedGroupRow = -1;
             if (row.IsGroupRow)
@@ -762,7 +775,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     row.Visible = true;
                     //When collapsing the first row still seeing it.
                     if (row.Index < FirstDisplayedScrollingRowIndex)
+                    {
                         FirstDisplayedScrollingRowIndex = row.Index;
+                    }
                 }
                 else if (row.IsGroupImageHit(e))
                 {
@@ -892,7 +907,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             // (5) Unhook events from old palette
             if (_palette != null)
+            {
                 _palette.PalettePaint -= OnPalettePaint;
+            }
 
             // (6) Cache the new IPalette that is the global palette
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -901,18 +918,24 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             //Reflect changes for the grouped heights
             int h = StaticValues._defaultGroupRowHeight; // default height
             if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
+            {
                 h = StaticValues._2013GroupRowHeight; // special height for office 2013         
+            }
 
             //For each outlookgridcolumn
             for (int j = 0; j < _internalColumns.Count; j++)
             {
                 if (_internalColumns[j].GroupingType != null)
+                {
                     _internalColumns[j].GroupingType.Height = h;
+                }
             }
 
             // (7) Hook into events for the new palette
             if (_palette != null)
+            {
                 _palette.PalettePaint += OnPalettePaint;
+            }
 
             // (8) Change of palette means we should repaint to show any changes
             Invalidate();
@@ -1151,8 +1174,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void OnShowGroupBox(object sender, EventArgs e)
         {
             if (groupBox != null)
+            {
                 groupBox.Show();
-
+            }
         }
 
         /// <summary>
@@ -1163,7 +1187,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void OnHideGroupBox(object sender, EventArgs e)
         {
             if (groupBox != null)
+            {
                 groupBox.Hide();
+            }
         }
 
         /// <summary>
@@ -1336,7 +1362,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnGroupImageClick(OutlookGridGroupImageEventArgs e)
         {
             if (GroupImageClick != null)
+            {
                 GroupImageClick(this, e);
+            }
         }
 
         /// <summary>
@@ -1436,7 +1464,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //Already reflect the SortOrder on the column
                 col.DataGridViewColumn.HeaderCell.SortGlyphDirection = col.SortDirection;
                 if (_hideColumnOnGrouping && col.GroupIndex > -1 && col.GroupingType.AllowHiddenWhenGrouped)
+                {
                     col.DataGridViewColumn.Visible = false;
+                }
             }
         }
 
@@ -1491,13 +1521,21 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 col.GroupIndex = ++_internalColumns.MaxGroupIndex;
                 if (col.SortIndex > -1)
+                {
                     _internalColumns.RemoveSortIndex(col);
+                }
+
                 col.SortDirection = sortDirection;
                 col.DataGridViewColumn.HeaderCell.SortGlyphDirection = sortDirection;
                 if (gr != null)
+                {
                     col.GroupingType = gr;
+                }
+
                 if (_hideColumnOnGrouping && col.GroupingType.AllowHiddenWhenGrouped)
+                {
                     col.DataGridViewColumn.Visible = false;
+                }
             }
 
             // Note Can we remove this?
@@ -1528,7 +1566,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 col.DataGridViewColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
                 col.GroupingType.Collapsed = false;
                 if (_hideColumnOnGrouping && col.GroupingType.AllowHiddenWhenGrouped)
+                {
                     col.DataGridViewColumn.Visible = true;
+                }
             }
 #if DEBUG
             internalColumns.DebugOutput();
@@ -1544,7 +1584,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             //Change the SortIndex and MaxSortIndex only if it is not a grouped column
             if (!col.IsGrouped && col.SortIndex == -1)
+            {
                 col.SortIndex = ++_internalColumns.MaxSortIndex;
+            }
+
             //Change the order in all cases
             col.SortDirection = sort;
             col.DataGridViewColumn.HeaderCell.SortGlyphDirection = sort;
@@ -1645,7 +1688,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             for (int i = 0; i < _internalColumns.Count; i++)
             {
                 if (_internalColumns[i].IsGrouped)
+                {
                     _internalColumns[i].DataGridViewColumn.Visible = true;
+                }
+
                 _internalColumns[i].GroupIndex = -1;
             }
         }
@@ -1680,7 +1726,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             for (int i = 0; i < grouprow.Children.Count; i++)
             {
                 if (grouprow.Children.Count > 0)
+                {
                     GetSubRows(ref list, grouprow.Children[i]);
+                }
             }
 
             return list;
@@ -1714,7 +1762,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public void ForceRefreshGroupBox()
         {
             if (groupBox != null)
+            {
                 groupBox.UpdateGroupingColumns(_internalColumns.FindGroupedColumns());
+            }
         }
 
         /// <summary>
@@ -2023,7 +2073,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // Ensure we have a krypton context menu if not already present
             if (KCtxMenu == null)
+            {
                 KCtxMenu = new KryptonContextMenu();
+            }
 
             // Update the individual menu options
             if (col != null)
@@ -2034,7 +2086,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 _menuSortDescending.Visible = col.DataGridViewColumn.SortMode != DataGridViewColumnSortMode.NotSortable;
                 _menuSortBySummary.Visible = col.IsGrouped && col.GroupingType != null;
                 if (_menuSortBySummary.Visible)
+                {
                     _menuSortBySummary.Checked = col.GroupingType.SortBySummaryCount;
+                }
+
                 _menuClearSorting.Enabled = col.SortDirection != SortOrder.None && !col.IsGrouped;
                 _menuClearSorting.Visible = col.DataGridViewColumn.SortMode != DataGridViewColumnSortMode.NotSortable;
                 _menuSeparator1.Visible = (_menuSortAscending.Visible || _menuSortDescending.Visible || _menuClearSorting.Visible);
@@ -2073,7 +2128,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             if (((KryptonContextMenuItems)_menuConditionalFormatting.Items[0]).Items[i].GetType() != typeof(KryptonContextMenuSeparator))
+                            {
                                 ((KryptonContextMenuItem)((KryptonContextMenuItems)_menuConditionalFormatting.Items[0]).Items[i]).Checked = false;
+                            }
                         }
                     }
                 }
@@ -2106,7 +2163,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
 
             if (!KCtxMenu.Items.Contains(_menuItems))
+            {
                 KCtxMenu.Items.Add(_menuItems);
+            }
 
             // Show the menu!
             KCtxMenu.Show(this);
@@ -2175,7 +2234,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void SetGroupCollapse(bool collapsed)
         {
             if (!IsGridGrouped || _internalRows.Count == 0)
+            {
                 return;
+            }
 
             //// loop through all rows to find the GroupRows
             //for (int i = 0; i < this.Rows.Count; i++)
@@ -2191,7 +2252,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             //When collapsing the first row still seeing it.
             if (Rows[0].Index < FirstDisplayedScrollingRowIndex)
+            {
                 FirstDisplayedScrollingRowIndex = Rows[0].Index;
+            }
         }
 
         private void RecursiveSetGroupCollapse(OutlookGridGroupCollection col, bool collapsed)
@@ -2206,7 +2269,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void SetGroupCollapse(string c, bool collapsed)
         {
             if (!IsGridGrouped || _internalRows.Count == 0)
+            {
                 return;
+            }
 
             // loop through all rows to find the GroupRows
             //for (int i = 0; i < this.Rows.Count; i++)
@@ -2222,7 +2287,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             //When collapsing the first row still seeing it.
             if (Rows[0].Index < FirstDisplayedScrollingRowIndex)
+            {
                 FirstDisplayedScrollingRowIndex = Rows[0].Index;
+            }
         }
 
         private void RecursiveSetGroupCollapse(string c, OutlookGridGroupCollection col, bool collapsed)
@@ -2230,7 +2297,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             for (int i = 0; i < col.Count; i++)
             {
                 if (col[i].Column.Name == c)
+                {
                     col[i].Collapsed = collapsed;
+                }
+
                 RecursiveSetGroupCollapse(c, col[i].Children, collapsed);
             }
         }
@@ -2243,7 +2313,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void SetGroupCollapse(int rowindex, bool collapsed)
         {
             if (!IsGridGrouped || _internalRows.Count == 0 || rowindex < 0)
+            {
                 return;
+            }
 
             OutlookGridRow row = (OutlookGridRow)base.Rows[rowindex];
             if (row.IsGroupRow)
@@ -2258,7 +2330,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 //When collapsing the first row still seeing it.
                 if (row.Index < FirstDisplayedScrollingRowIndex)
+                {
                     FirstDisplayedScrollingRowIndex = row.Index;
+                }
             }
         }
 
@@ -2278,7 +2352,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 //When collapsing the first row still seeing it.
                 if (Rows[0].Index < FirstDisplayedScrollingRowIndex)
+                {
                     FirstDisplayedScrollingRowIndex = Rows[0].Index;
+                }
             }
         }
 
@@ -2298,7 +2374,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 //When collapsing the first row still seeing it.
                 if (Rows[0].Index < FirstDisplayedScrollingRowIndex)
+                {
                     FirstDisplayedScrollingRowIndex = Rows[0].Index;
+                }
             }
         }
 
@@ -2465,12 +2543,19 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     {
 
                         if (((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes < formatConditions[j].MinValue)
+                        {
                             formatConditions[j].MinValue = ((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes;
+                        }
+
                         if (((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes > formatConditions[j].MaxValue)
+                        {
                             formatConditions[j].MaxValue = ((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes;
+                        }
                     }
                     if (list[i].HasChildren)
+                    {
                         FillMinMaxFormatConditions(typeColumn, j, list[i].Nodes.Nodes, formatColumn);
+                    }
                 }
             }
             else if (typeColumn == typeof(Decimal))
@@ -2480,12 +2565,19 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     if (list[i].Cells[formatColumn].Value != null)
                     {
                         if (Convert.ToDouble(list[i].Cells[formatColumn].Value) < formatConditions[j].MinValue)
+                        {
                             formatConditions[j].MinValue = Convert.ToDouble(list[i].Cells[formatColumn].Value);
+                        }
+
                         if (Convert.ToDouble(list[i].Cells[formatColumn].Value) > formatConditions[j].MaxValue)
+                        {
                             formatConditions[j].MaxValue = Convert.ToDouble(list[i].Cells[formatColumn].Value);
+                        }
                     }
                     if (list[i].HasChildren)
+                    {
                         FillMinMaxFormatConditions(typeColumn, j, list[i].Nodes.Nodes, formatColumn);
+                    }
                 }
             }
             else
@@ -2494,13 +2586,20 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 {
                     if (list[i].Cells[formatColumn].Value != null)
                     {
-                        if ((double)list[i].Cells[formatColumn].Value < formatConditions[j].MinValue)
+                        if (Convert.ToDouble(list[i].Cells[formatColumn].Value) < formatConditions[j].MinValue)
+                        {
                             formatConditions[j].MinValue = (double)list[i].Cells[formatColumn].Value;
-                        if ((double)list[i].Cells[formatColumn].Value > formatConditions[j].MaxValue)
+                        }
+
+                        if (Convert.ToDouble(list[i].Cells[formatColumn].Value) > formatConditions[j].MaxValue)
+                        {
                             formatConditions[j].MaxValue = (double)list[i].Cells[formatColumn].Value;
+                        }
                     }
                     if (list[i].HasChildren)
+                    {
                         FillMinMaxFormatConditions(typeColumn, j, list[i].Nodes.Nodes, formatColumn);
+                    }
                 }
             }
         }
@@ -2515,9 +2614,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     if (list[i].Cells[formatColumn].Value != null)
                     {
                         typeColumn = Columns[formatConditions[j].ColumnName].ValueType;
-                        FormattingCell fCell = (FormattingCell)list[i].Cells[formatColumn];
-                        fCell.FormatType = formatConditions[j].FormatType;
-                        fCell.FormatParams = (IFormatParams)formatConditions[j].FormatParams.Clone();
+                        FormattingCell fCell = new(list[i].Cells[formatColumn])
+                        {
+                            FormatType = formatConditions[j].FormatType,
+                            FormatParams = (IFormatParams)formatConditions[j].FormatParams.Clone()
+                        };
+
                         switch (formatConditions[j].FormatType)
                         {
                             case EnumConditionalFormatType.Bar:
@@ -2545,7 +2647,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                                 }
                                 else
                                 {
-                                    ((TwoColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertTwoRange((double)list[i].Cells[formatColumn].Value, formatConditions[j].MinValue, formatConditions[j].MaxValue, (TwoColoursParams)formatConditions[j].FormatParams);
+                                    ((TwoColoursParams)fCell.FormatParams).ValueColour =
+                                        ColourFormatting.ConvertTwoRange(
+                                            Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].MinValue, formatConditions[j].MaxValue, (TwoColoursParams)formatConditions[j].FormatParams);
                                 }
                                 //list[i].Cells[formatColumn].Style.SelectionBackColor = list[i].Cells[formatColumn].Style.BackColor;
                                 break;
@@ -2560,7 +2664,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                                 }
                                 else
                                 {
-                                    ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange((double)list[i].Cells[formatColumn].Value, formatConditions[j].MinValue, formatConditions[j].MaxValue, (ThreeColoursParams)formatConditions[j].FormatParams);
+                                    ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange(Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].MinValue, formatConditions[j].MaxValue, (ThreeColoursParams)formatConditions[j].FormatParams);
                                 }
                                 //list[i].Cells[formatColumn].Style.SelectionBackColor = list[i].Cells[formatColumn].Style.BackColor;
                                 break;
@@ -2569,7 +2673,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 }
 
                 if (list[i].HasChildren)
+                {
                     FillValueFormatConditions(formatColumn, typeColumn, list[i].Nodes.Nodes);
+                }
             }
         }
 
@@ -2591,7 +2697,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             _groupCollection.Clear();
 
             if (_internalRows.Count == 0)
+            {
                 return;
+            }
+
             list = _internalRows;
 
 
@@ -2670,7 +2779,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     for (int i = 0; i < groupedColumns.Count; i++)
                     {
                         if (i == 0)
+                        {
                             grParent = null;
+                        }
 
                         //Gets the stored value
                         object value = list[j].Cells[groupedColumns[i].DataGridViewColumn.Index].Value;
@@ -2690,7 +2801,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                             gr.Value = value;
                             gr.FormatStyle = groupedColumns[i].DataGridViewColumn.DefaultCellStyle.Format; //We can the formatting applied to the cell to the group
                             if (value is TextAndImage)
+                            {
                                 gr.GroupImage = ((TextAndImage)value).Image;
+                            }
                             else if (value is Token)
                             {
                                 Bitmap bmp = new Bitmap(13, 13);
@@ -2704,7 +2817,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                                 gr.GroupImage = bmp;
                             }
                             else if (value is Bitmap)
+                            {
                                 gr.GroupImage = (Bitmap)value;
+                            }
                             //else if (groupedColumns[i].DataGridViewColumn.GetType() == typeof(KryptonDataGridViewRatingColumn))
                             //{
                             //    gr.GroupImage = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject("star" + value.ToString());
@@ -2746,9 +2861,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //RecursiveSort(this.groupCollection, index, (index == -1) ? SortOrder.None : internalColumns.FindFromColumnIndex(index).SortDirection);
                 List<Tuple<int, SortOrder, IComparer>> sortList = _internalColumns.GetIndexAndSortSortedOnlyColumns();
                 if (sortList.Count > 0)
+                {
                     RecursiveSort(_groupCollection, sortList);
+                }
                 else
+                {
                     RecursiveSort(_groupCollection, _internalColumns.GetIndexAndSortGroupedColumns());
+                }
                 //}
                 //catch (Exception e)
                 //{
@@ -2784,9 +2903,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (groupCollection.Count > 0)
             {
                 if (groupCollection[0].Column.GroupingType.SortBySummaryCount)
+                {
                     groupCollection.Sort(new OutlookGridGroupCountComparer());
+                }
                 else
+                {
                     groupCollection.Sort();
+                }
             }
 
             //Sort the rows inside each group

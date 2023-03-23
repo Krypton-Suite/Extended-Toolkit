@@ -79,9 +79,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     case DateInterval.Smart:
                         //If no date Time let the valDateTime to the min value !
                         if (value != null && value != DBNull.Value)
+                        {
                             valDateTime = DateTime.Parse(value.ToString());
+                        }
                         else
+                        {
                             valDateTime = DateTime.MinValue;
+                        }
 
                         base.Value = OutlookGridGroupHelpers.GetDayText(valDateTime);
                         break;

@@ -183,7 +183,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
 
             if (currentGroupIndex == -1)
+            {
                 throw new Exception("OutlookGrid : Unable to interpret the change of GroupIndex!");
+            }
 
 #if (DEBUG)
             Console.WriteLine("currentGroupIndex=" + currentGroupIndex.ToString());
