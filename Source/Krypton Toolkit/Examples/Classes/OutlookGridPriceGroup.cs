@@ -22,7 +22,7 @@ namespace Examples
         /// Constructor.
         /// </summary>
         /// <param name="parentGroup">The parentGroup if any.</param>
-        public OutlookGridPriceGroup(IOutlookGridGroup parentGroup) : base(parentGroup)
+        public OutlookGridPriceGroup(IOutlookGridGroup? parentGroup) : base(parentGroup)
         {
             AllowHiddenWhenGrouped = false;
             _currency = CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol;
@@ -33,7 +33,7 @@ namespace Examples
         /// </summary>
         public override string Text
         {
-            get { return string.Format("{0}: {1} ({2})", Column.DataGridViewColumn.HeaderText, GetPriceString(_priceCode), ItemCount == 1 ? OneItemText : ItemCount.ToString() + XXXItemsText); }
+            get { return string.Format("{0}: {1} ({2})", Column.DataGridViewColumn.HeaderText, GetPriceString(_priceCode), ItemCount == 1 ? OneItemText : ItemCount.ToString() + XxxItemsText); }
         }
 
         private int GetPriceCode(decimal price)
@@ -148,7 +148,7 @@ namespace Examples
             gr.Height = this.Height;
             gr.GroupImage = this.GroupImage;
             gr.FormatStyle = this.FormatStyle;
-            gr.XXXItemsText = this.XXXItemsText;
+            gr.XxxItemsText = this.XxxItemsText;
             gr.OneItemText = this.OneItemText;
             gr.AllowHiddenWhenGrouped = this.AllowHiddenWhenGrouped;
             gr.SortBySummaryCount = this.SortBySummaryCount;

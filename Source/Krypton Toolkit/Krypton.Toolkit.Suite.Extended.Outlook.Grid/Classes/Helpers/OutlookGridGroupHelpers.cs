@@ -115,51 +115,51 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 return "TOMORROW";
             }
-            else if ((date.Date >= GetFirstDayOfWeek(DateTime.Now)) && (date.Date <= GetLastDayOfWeek(DateTime.Now)))
+            else if (date.Date >= GetFirstDayOfWeek(DateTime.Now) && date.Date <= GetLastDayOfWeek(DateTime.Now))
             {
                 return date.Date.DayOfWeek.ToString();//"DAYOFWEEK";
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now)) && (date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(6)))
+            else if (date.Date > GetLastDayOfWeek(DateTime.Now) && date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(6))
             {
                 return "NEXTWEEK";
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(6)) && (date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(12)))
+            else if (date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(6) && date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(12))
             {
                 return "INTWOWEEKS"; //dans les deux semaines a venir
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(12)) && (date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(18)))
+            else if (date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(12) && date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(18))
             {
                 return "INTHREEWEEKS"; //dans les trois semaines à venir
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18)) && (date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1)))//AddDays(DateTime.DaysInMonth(DateTime.Now.Year,DateTime.Now.Month)-1)))
+            else if (date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18) && date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1))//AddDays(DateTime.DaysInMonth(DateTime.Now.Year,DateTime.Now.Month)-1)))
             {
                 return "LATERDURINGTHISMONTH"; //Plus tard au cours de ce mois 
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18)) && (date.Date > new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1)) && (date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(2).AddDays(-1)))
+            else if (date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18) && date.Date > new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1) && date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(2).AddDays(-1))
             {
                 return "NEXTMONTH"; //Prochain mois
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18)) && (date.Date > new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(2).AddDays(-1)))
+            else if (date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18) && date.Date > new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(2).AddDays(-1))
             {
                 return "AFTERNEXTMONTH";  //Au-delà du prochain mois 
             }
-            else if ((date.Date < GetFirstDayOfWeek(DateTime.Now)) && (date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-7)))
+            else if (date.Date < GetFirstDayOfWeek(DateTime.Now) && date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-7))
             {
                 return "PREVIOUSWEEK";
             }
-            else if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-7)) && (date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-14)))
+            else if (date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-7) && date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-14))
             {
                 return "TWOWEEKSAGO"; //Il y a deux semaines
             }
-            else if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-14)) && (date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-21)))
+            else if (date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-14) && date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-21))
             {
                 return "THREEWEEKSAGO"; //Il y a trois semaines
             }
-            else if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-21)) && (date.Date >= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)))
+            else if (date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-21) && date.Date >= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1))
             {
                 return "EARLIERDURINGTHISMONTH"; //Plus tôt durant ce mois
             }
-            else if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-21)) && (date.Date >= new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(-1).Month, 1)) && (date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddDays(-1)))
+            else if (date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-21) && date.Date >= new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(-1).Month, 1) && date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddDays(-1))
             {
                 return "PREVIOUSMONTH"; //Mois précédent
             }
@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             char[] a = s.ToCharArray();
             a[0] = char.ToUpper(a[0]);
-            return new string(a);
+            return new(a);
         }
 
         /// <summary>
@@ -293,7 +293,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             DayOfWeek firstDay = cultureInfo.DateTimeFormat.FirstDayOfWeek;
             DateTime firstDayInWeek = dayInWeek.Date;
-            int difference = ((int)dayInWeek.DayOfWeek) - ((int)firstDay);
+            int difference = (int)dayInWeek.DayOfWeek - (int)firstDay;
             difference = (7 + difference) % 7;
             return dayInWeek.AddDays(-difference).Date;
         }

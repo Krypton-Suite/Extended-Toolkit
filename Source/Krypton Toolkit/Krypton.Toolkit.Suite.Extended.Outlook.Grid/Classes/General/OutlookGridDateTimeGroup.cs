@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor
         /// </summary>
         /// <param name="parentGroup">The parentGroup if any.</param>
-        public OutlookGridDateTimeGroup(IOutlookGridGroup parentGroup)
+        public OutlookGridDateTimeGroup(IOutlookGridGroup? parentGroup)
             : base(parentGroup)
         {
             AllowHiddenWhenGrouped = true;
@@ -61,9 +61,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         ///<summary>
         ///Gets or sets the displayed text.
         ///</summary>
-        public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount.ToString() + XXXItemsText)})";
+        public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount + XxxItemsText)})";
 
-        private DateTime valDateTime;
+        private DateTime _valDateTime;
 
         /// <summary>
         /// Gets or sets the Date value
@@ -80,25 +80,25 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         //If no date Time let the valDateTime to the min value !
                         if (value != null && value != DBNull.Value)
                         {
-                            valDateTime = DateTime.Parse(value.ToString());
+                            _valDateTime = DateTime.Parse(value.ToString());
                         }
                         else
                         {
-                            valDateTime = DateTime.MinValue;
+                            _valDateTime = DateTime.MinValue;
                         }
 
-                        base.Value = OutlookGridGroupHelpers.GetDayText(valDateTime);
+                        base.Value = OutlookGridGroupHelpers.GetDayText(_valDateTime);
                         break;
                     case DateInterval.Year:
                         //If no date Time let the valDateTime to the min value !
                         if (value != null && value != DBNull.Value)
                         {
-                            valDateTime = DateTime.Parse(value.ToString());
-                            base.Value = valDateTime.Year;
+                            _valDateTime = DateTime.Parse(value.ToString());
+                            base.Value = _valDateTime.Year;
                         }
                         else
                         {
-                            valDateTime = DateTime.MinValue;
+                            _valDateTime = DateTime.MinValue;
                             base.Value = Strings.NoDate;
                         }
                         break;
@@ -106,41 +106,41 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         //If no date Time let the valDateTime to the min value !
                         if (value != null && value != DBNull.Value)
                         {
-                            valDateTime = DateTime.Parse(value.ToString());
-                            base.Value = _ti.ToTitleCase(valDateTime.ToString("MMMM")) + " " + valDateTime.Year;
+                            _valDateTime = DateTime.Parse(value.ToString());
+                            base.Value = _ti.ToTitleCase(_valDateTime.ToString("MMMM")) + " " + _valDateTime.Year;
                         }
                         else
                         {
-                            valDateTime = DateTime.MinValue;
+                            _valDateTime = DateTime.MinValue;
                             base.Value = Strings.NoDate;
                         }
                         break;
                     case DateInterval.Day:
                         if (value != null && value != DBNull.Value)
                         {
-                            valDateTime = DateTime.Parse(value.ToString());
-                            base.Value = valDateTime.Date.ToShortDateString();
+                            _valDateTime = DateTime.Parse(value.ToString());
+                            base.Value = _valDateTime.Date.ToShortDateString();
                         }
                         else
                         {
-                            valDateTime = DateTime.MinValue;
+                            _valDateTime = DateTime.MinValue;
                             base.Value = Strings.NoDate;
                         }
                         break;
                     case DateInterval.Quarter:
                         if (value != null && value != DBNull.Value)
                         {
-                            valDateTime = DateTime.Parse(value.ToString());
-                            base.Value = OutlookGridGroupHelpers.GetQuarterAsString(valDateTime) + " " + valDateTime.Year;
+                            _valDateTime = DateTime.Parse(value.ToString());
+                            base.Value = OutlookGridGroupHelpers.GetQuarterAsString(_valDateTime) + " " + _valDateTime.Year;
                         }
                         else
                         {
-                            valDateTime = DateTime.MinValue;
+                            _valDateTime = DateTime.MinValue;
                             base.Value = Strings.NoDate;
                         }
                         break;
                     default:
-                        throw new Exception("Unknown Interval !");
+                        throw new("Unknown Interval !");
 
                 }
 
@@ -155,14 +155,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns>OutlookGridDateTimeGroup</returns>
         public override object Clone()
         {
-            OutlookGridDateTimeGroup gr = new OutlookGridDateTimeGroup(ParentGroup);
+            OutlookGridDateTimeGroup gr = new(ParentGroup);
             gr.Column = Column;
-            gr.Value = valDateTime; //thx Resharper !
+            gr.Value = _valDateTime; //thx Resharper !
             gr.Collapsed = Collapsed;
             gr.Height = Height;
             gr.GroupImage = GroupImage;
             gr.FormatStyle = FormatStyle;
-            gr.XXXItemsText = XXXItemsText;
+            gr.XxxItemsText = XxxItemsText;
             gr.OneItemText = OneItemText;
             gr.AllowHiddenWhenGrouped = AllowHiddenWhenGrouped;
             gr.SortBySummaryCount = SortBySummaryCount;
@@ -182,7 +182,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns></returns>
         public override int CompareTo(object obj)
         {
-            int orderModifier = (Column.SortDirection == SortOrder.Ascending ? 1 : -1);
+            int orderModifier = Column.SortDirection == SortOrder.Ascending ? 1 : -1;
             DateTime val;
             if (obj is DateTime)
             {
@@ -191,11 +191,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             else if (obj is OutlookGridDateTimeGroup)
             {
-                val = ((OutlookGridDateTimeGroup)obj).valDateTime;
+                val = ((OutlookGridDateTimeGroup)obj)._valDateTime;
             }
             else
             {
-                val = new DateTime();
+                val = new();
             }
 
             switch (Interval)
@@ -209,45 +209,45 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     //{
                     //    return DateTime.Compare(valDateTime.Date, val.Date) * orderModifier;
                     //}
-                    return OutlookGridGroupHelpers.GetDateCodeNumeric(valDateTime).CompareTo(OutlookGridGroupHelpers.GetDateCodeNumeric(val)) * orderModifier;
+                    return OutlookGridGroupHelpers.GetDateCodeNumeric(_valDateTime).CompareTo(OutlookGridGroupHelpers.GetDateCodeNumeric(val)) * orderModifier;
                 case DateInterval.Year:
-                    if (valDateTime.Year == val.Year)
+                    if (_valDateTime.Year == val.Year)
                     {
                         return 0;
                     }
                     else
                     {
-                        return valDateTime.Year.CompareTo(val.Year) * orderModifier;
+                        return _valDateTime.Year.CompareTo(val.Year) * orderModifier;
                     }
                 case DateInterval.Month:
-                    if (valDateTime.Month == val.Month && valDateTime.Year == val.Year)
+                    if (_valDateTime.Month == val.Month && _valDateTime.Year == val.Year)
                     {
                         return 0;
                     }
                     else
                     {
-                        return valDateTime.Date.CompareTo(val.Date) * orderModifier;
+                        return _valDateTime.Date.CompareTo(val.Date) * orderModifier;
                     }
                 case DateInterval.Day:
-                    if (valDateTime.Date == val.Date)
+                    if (_valDateTime.Date == val.Date)
                     {
                         return 0;
                     }
                     else
                     {
-                        return valDateTime.Date.CompareTo(val.Date) * orderModifier;
+                        return _valDateTime.Date.CompareTo(val.Date) * orderModifier;
                     }
                 case DateInterval.Quarter:
-                    if (OutlookGridGroupHelpers.GetQuarter(valDateTime) == OutlookGridGroupHelpers.GetQuarter(val) && valDateTime.Year == val.Year)
+                    if (OutlookGridGroupHelpers.GetQuarter(_valDateTime) == OutlookGridGroupHelpers.GetQuarter(val) && _valDateTime.Year == val.Year)
                     {
                         return 0;
                     }
                     else
                     {
-                        return valDateTime.Date.CompareTo(val.Date) * orderModifier;
+                        return _valDateTime.Date.CompareTo(val.Date) * orderModifier;
                     }
                 default:
-                    throw new Exception("Unknown Interval !");
+                    throw new("Unknown Interval !");
 
             }
         }

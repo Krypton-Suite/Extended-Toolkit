@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int compareResult = 0;
             try
             {
-                int orderModifier = (x.Column.SortDirection == SortOrder.Ascending ? 1 : -1);
+                int orderModifier = x.Column.SortDirection == SortOrder.Ascending ? 1 : -1;
 
                 int c1 = x.ItemCount;
                 int c2 = y.ItemCount;
@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             catch (Exception ex)
             {
-                throw new Exception("OutlookGridGroupCountComparer: " + this.ToString(), ex);
+                throw new("OutlookGridGroupCountComparer: " + this, ex);
             }
         }
         #endregion

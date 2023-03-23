@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     //{
                     Padding inheritedPadding = Style.Padding;
                     //Padding inheritedPadding = this.InheritedStyle.Padding;
-                    Style.Padding = new Padding(_imageSize.Width + 2,
+                    Style.Padding = new(_imageSize.Width + 2,
                         inheritedPadding.Top, inheritedPadding.Right,
                         inheritedPadding.Bottom);
                     //}
@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (Value != null && ((TextAndImage)Value).Image != null)
             {
                 Padding inheritedPadding = Style.Padding;
-                Style.Padding = new Padding(_imageSize.Width + 2,
+                Style.Padding = new(_imageSize.Width + 2,
                     inheritedPadding.Top, inheritedPadding.Right,
                     inheritedPadding.Bottom);
                 //To be in phase with highlight feature who forces the style.
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 // Draw the image clipped to the cell.
                 GraphicsContainer container = graphics.BeginContainer();
                 graphics.SetClip(cellBounds);
-                graphics.DrawImage(((TextAndImage)Value).Image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + ((cellBounds.Height - 16) / 2) - 1, 16, 16));
+                graphics.DrawImage(((TextAndImage)Value).Image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + (cellBounds.Height - 16) / 2 - 1, 16, 16));
                 graphics.EndContainer(container);
             }
 

@@ -147,7 +147,7 @@ namespace Examples
                     node2 = node.Element("GroupingType");
                     group = (IOutlookGridGroup)Activator.CreateInstance(Type.GetType(TypeConverter.ProcessType(node2.Element("Name").Value), true));
                     group.OneItemText = node2.Element("OneItemText").Value;
-                    group.XXXItemsText = node2.Element("XXXItemsText").Value;
+                    group.XxxItemsText = node2.Element("XXXItemsText").Value;
                     group.SortBySummaryCount = CommonHelper.StringToBool(node2.Element("SortBySummaryCount").Value);
                     if (!string.IsNullOrEmpty((node2.Element("ItemsComparer").Value)))
                     {

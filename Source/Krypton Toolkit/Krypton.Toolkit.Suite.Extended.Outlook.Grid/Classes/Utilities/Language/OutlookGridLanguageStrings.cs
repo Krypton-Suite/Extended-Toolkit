@@ -24,155 +24,155 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     {
         #region Static Fields
 
-        private const string DEFAULT_AFTER_NEXT_MONTH = "After next month";
+        private const string DefaultAfterNextMonth = "After next month";
 
-        private const string DEFAULT_ALPHABETIC_GROUP_TEXT = "Alphabetic";
+        private const string DefaultAlphabeticGroupText = "Alphabetic";
 
-        private const string DEFAULT_BAR = "Data Bars";
+        private const string DefaultBar = "Data Bars";
 
-        private const string DEFAULT_BEFORE_PREVIOUS_MONTH = "Before previous month";
+        private const string DefaultBeforePreviousMonth = "Before previous month";
 
-        private const string DEFAULT_BEST_FIT_ALL = "Best fit (all columns)";
+        private const string DefaultBestFitAll = "Best fit (all columns)";
 
-        private const string DEFAULT_BEST_FIT = "Best fit";
+        private const string DefaultBestFit = "Best fit";
 
-        private const string DEFAULT_CANCEL = "Cancel";
+        private const string DefaultCancel = "Cancel";
 
-        private const string DEFAULT_CLEAR_GROUPING = "Clear grouping";
+        private const string DefaultClearGrouping = "Clear grouping";
 
-        private const string DEFAULT_CLEAR_RULES = "Clear rules...";
+        private const string DefaultClearRules = "Clear rules...";
 
-        private const string DEFAULT_CLEAR_SORTING = "Clear sorting";
+        private const string DefaultClearSorting = "Clear sorting";
 
-        private const string DEFAULT_COLLAPSE = "Collapse";
+        private const string DefaultCollapse = "Collapse";
 
-        private const string DEFAULT_COLUMNS = "Columns";
+        private const string DefaultColumns = "Columns";
 
-        private const string DEFAULT_CONDITIONAL_FORMATTING = "Conditional formatting";
+        private const string DefaultConditionalFormatting = "Conditional formatting";
 
-        private const string DEFAULT_CUSTOM_THREE_DOTS = "Custom...";
+        private const string DefaultCustomThreeDots = "Custom...";
 
-        private const string DEFAULT_DATE_GROUP_TEXT = "Date";
+        private const string DefaultDateGroupText = "Date";
 
-        private const string DEFAULT_DAY = "Day";
+        private const string DefaultDay = "Day";
 
-        private const string DEFAULT_DRAG_COLUMN_TO_GROUP = "Drag a column header here to group by that column";
+        private const string DefaultDragColumnToGroup = "Drag a column header here to group by that column";
 
-        private const string DEFAULT_EARLIER_DURING_THIS_MONTH = "Earlier during this month";
+        private const string DefaultEarlierDuringThisMonth = "Earlier during this month";
 
-        private const string DEFAULT_EARLIER_THIS_YEAR = "Earlier this year";
+        private const string DefaultEarlierThisYear = "Earlier this year";
 
-        private const string DEFAULT_EXPAND = "Expand";
+        private const string DefaultExpand = "Expand";
 
-        private const string DEFAULT_FINISH = "Finish";
+        private const string DefaultFinish = "Finish";
 
-        private const string DEFAULT_FULL_COLLAPSE = "Full collapse";
+        private const string DefaultFullCollapse = "Full collapse";
 
-        private const string DEFAULT_FULL_EXPAND = "Full expand";
+        private const string DefaultFullExpand = "Full expand";
 
-        private const string DEFAULT_GRADIENT_FILL = "Gradient Fill";
+        private const string DefaultGradientFill = "Gradient Fill";
 
-        private const string DEFAULT_GROUP = "Group by this column";
+        private const string DefaultGroup = "Group by this column";
 
-        private const string DEFAULT_GROUP_INTERVAL = "Group interval";
+        private const string DefaultGroupInterval = "Group interval";
 
-        private const string DEFAULT_HIDE_GROUP_BOX = "Hide GroupBox";
+        private const string DefaultHideGroupBox = "Hide GroupBox";
 
-        private const string DEFAULT_IN_THREE_WEEKS = "In three weeks";
+        private const string DefaultInThreeWeeks = "In three weeks";
 
-        private const string DEFAULT_IN_TWO_WEEKS = "In two weeks";
+        private const string DefaultInTwoWeeks = "In two weeks";
 
-        private const string DEFAULT_LATER_DURING_THIS_MONTH = "Later during this month";
+        private const string DefaultLaterDuringThisMonth = "Later during this month";
 
-        private const string DEFAULT_MONTH = "Month";
+        private const string DefaultMonth = "Month";
 
-        private const string DEFAULT_NEXT_MONTH = "Next month";
+        private const string DefaultNextMonth = "Next month";
 
-        private const string DEFAULT_NEXT_WEEK = "Next week";
+        private const string DefaultNextWeek = "Next week";
 
-        private const string DEFAULT_NO_DATE = "No date";
+        private const string DefaultNoDate = "No date";
 
-        private const string DEFAULT_OLDER = "Older";
+        private const string DefaultOlder = "Older";
 
-        private const string DEFAULT_ONE_ITEM = "1 item";
+        private const string DefaultOneItem = "1 item";
 
-        private const string DEFAULT_OTHER = "Other";
+        private const string DefaultOther = "Other";
 
-        private const string DEFAULT_PALETTE_CUSTOM = "Custom...";
+        private const string DefaultPaletteCustom = "Custom...";
 
-        private const string DEFAULT_PALETTE_CUSTOM_HEADING = "Custom palettes";
+        private const string DefaultPaletteCustomHeading = "Custom palettes";
 
-        private const string DEFAULT_PREVIOUS_MONTH = "Previous month";
+        private const string DefaultPreviousMonth = "Previous month";
 
-        private const string DEFAULT_PREVIOUS_WEEK = "Previous week";
+        private const string DefaultPreviousWeek = "Previous week";
 
-        private const string DEFAULT_PREVIOUS_YEAR = "Previous year";
+        private const string DefaultPreviousYear = "Previous year";
 
-        private const string DEFAULT_QUARTER_ONE = "Q1";
+        private const string DefaultQuarterOne = "Q1";
 
-        private const string DEFAULT_QUARTER_TWO = "Q2";
+        private const string DefaultQuarterTwo = "Q2";
 
-        private const string DEFAULT_QUARTER_THREE = "Q3";
+        private const string DefaultQuarterThree = "Q3";
 
-        private const string DEFAULT_QUARTER_FOUR = "Q4";
+        private const string DefaultQuarterFour = "Q4";
 
-        private const string DEFAULT_QUARTER = "Quarter";
+        private const string DefaultQuarter = "Quarter";
 
-        private const string DEFAULT_SHOW_GROUP_BOX = "Show GroupBox";
+        private const string DefaultShowGroupBox = "Show GroupBox";
 
-        private const string DEFAULT_SMART = "Smart";
+        private const string DefaultSmart = "Smart";
 
-        private const string DEFAULT_SOLID_FILL = "Solid Fill";
+        private const string DefaultSolidFill = "Solid Fill";
 
-        private const string DEFAULT_SORT_ASCENDING = "Sort ascending";
+        private const string DefaultSortAscending = "Sort ascending";
 
-        private const string DEFAULT_SORT_BY_SUMMARY_COUNT = "Sort by summary count";
+        private const string DefaultSortBySummaryCount = "Sort by summary count";
 
-        private const string DEFAULT_SORT_DESCENDING = "Sort descending";
+        private const string DefaultSortDescending = "Sort descending";
 
-        private const string DEFAULT_THREE_COLOURS_RANGE = "Three Colour Scale";
+        private const string DefaultThreeColoursRange = "Three Colour Scale";
 
-        private const string DEFAULT_THREE_WEEKS_AGO = "Three weeks ago";
+        private const string DefaultThreeWeeksAgo = "Three weeks ago";
 
-        private const string DEFAULT_TODAY = "Today";
+        private const string DefaultToday = "Today";
 
-        private const string DEFAULT_TOMORROW = "Tomorrow";
+        private const string DefaultTomorrow = "Tomorrow";
 
-        private const string DEFAULT_TWO_COLOURS_RANGE = "Two Colour Scale";
+        private const string DefaultTwoColoursRange = "Two Colour Scale";
 
-        private const string DEFAULT_TWO_WEEKS_AGO = "Two weeks ago";
+        private const string DefaultTwoWeeksAgo = "Two weeks ago";
 
-        private const string DEFAULT_UNGROUP = "Ungroup";
+        private const string DefaultUngroup = "Ungroup";
 
-        private const string DEFAULT_UNKNOWN = "Unknown";
+        private const string DefaultUnknown = "Unknown";
 
-        private const string DEFAULT_NUMBER_OF_ITEMS = " items";
+        private const string DefaultNumberOfItems = " items";
 
-        private const string DEFAULT_YEAR = "Year";
+        private const string DefaultYear = "Year";
 
-        private const string DEFAULT_YEAR_GROUP_TEXT = "Year";
+        private const string DefaultYearGroupText = "Year";
 
-        private const string DEFAULT_YESTERDAY = "Yesterday";
+        private const string DefaultYesterday = "Yesterday";
 
-        private const string DEFAULT_MONDAY = "Monday";
+        private const string DefaultMonday = "Monday";
 
-        private const string DEFAULT_TUESDAY = "Tuesday";
+        private const string DefaultTuesday = "Tuesday";
 
-        private const string DEFAULT_WEDNESDAY = "Wednesday";
+        private const string DefaultWednesday = "Wednesday";
 
-        private const string DEFAULT_THURSDAY = "Thursday";
+        private const string DefaultThursday = "Thursday";
 
-        private const string DEFAULT_FRIDAY = "Friday";
+        private const string DefaultFriday = "Friday";
 
-        private const string DEFAULT_SATURDAY = "Saturday";
+        private const string DefaultSaturday = "Saturday";
 
-        private const string DEFAULT_SUNDAY = "Sunday";
+        private const string DefaultSunday = "Sunday";
 
-        private const string DEFAULT_MINIMUM_COLOUR = "Min Colour";
+        private const string DefaultMinimumColour = "Min Colour";
 
-        private const string DEFAULT_MEDIUM_COLOUR = "Medium Colour";
+        private const string DefaultMediumColour = "Medium Colour";
 
-        private const string DEFAULT_MAXIMUM_COLOUR = "Max Colour";
+        private const string DefaultMaximumColour = "Max Colour";
 
         #endregion
 
@@ -187,233 +187,233 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         #region Public
 
         [Browsable(false)]
-        public bool IsDefault => AfterNextMonth.Equals(DEFAULT_AFTER_NEXT_MONTH) &&
-                                 AlphabeticGroupText.Equals(DEFAULT_ALPHABETIC_GROUP_TEXT) &&
-                                 Bar.Equals(DEFAULT_BAR) &&
-                                 BeforePreviousMonth.Equals(DEFAULT_BEFORE_PREVIOUS_MONTH) &&
-                                 BestFitAll.Equals(DEFAULT_BEST_FIT_ALL) &&
-                                 BestFit.Equals(DEFAULT_BEST_FIT) &&
-                                 Cancel.Equals(DEFAULT_CANCEL) &&
-                                 ClearGrouping.Equals(DEFAULT_CLEAR_GROUPING) &&
-                                 ClearRules.Equals(DEFAULT_CLEAR_RULES) &&
-                                 ClearSorting.Equals(DEFAULT_CLEAR_SORTING) &&
-                                 Collapse.Equals(DEFAULT_COLLAPSE) &&
-                                 Columns.Equals(DEFAULT_COLUMNS) &&
-                                 ConditionalFormatting.Equals(DEFAULT_CONDITIONAL_FORMATTING) &&
-                                 CustomThreeDots.Equals(DEFAULT_CUSTOM_THREE_DOTS) &&
-                                 DateGroupText.Equals(DEFAULT_DATE_GROUP_TEXT) &&
-                                 Day.Equals(DEFAULT_DAY) &&
-                                 DragColumnToGroup.Equals(DEFAULT_DRAG_COLUMN_TO_GROUP) &&
-                                 EarlierDuringThisMonth.Equals(DEFAULT_EARLIER_DURING_THIS_MONTH) &&
-                                 EarlierDuringThisYear.Equals(DEFAULT_EARLIER_THIS_YEAR) &&
-                                 Expand.Equals(DEFAULT_EXPAND) &&
-                                 Finish.Equals(DEFAULT_FINISH) &&
-                                 FullCollapse.Equals(DEFAULT_FULL_COLLAPSE) &&
-                                 FullExpand.Equals(DEFAULT_FULL_EXPAND) &&
-                                 GradientFill.Equals(DEFAULT_GRADIENT_FILL) &&
-                                 Group.Equals(DEFAULT_GROUP) &&
-                                 GroupInterval.Equals(DEFAULT_GROUP_INTERVAL) &&
-                                 HideGroupBox.Equals(DEFAULT_HIDE_GROUP_BOX) &&
-                                 InThreeWeeks.Equals(DEFAULT_IN_THREE_WEEKS) &&
-                                 InTwoWeeks.Equals(DEFAULT_IN_TWO_WEEKS) &&
-                                 LaterDuringThisMonth.Equals(DEFAULT_LATER_DURING_THIS_MONTH) &&
-                                 Month.Equals(DEFAULT_MONTH) &&
-                                 NextMonth.Equals(DEFAULT_NEXT_MONTH) &&
-                                 NextWeek.Equals(DEFAULT_NEXT_WEEK) &&
-                                 NoDate.Equals(DEFAULT_NO_DATE) &&
-                                 Older.Equals(DEFAULT_OLDER) &&
-                                 OneItem.Equals(DEFAULT_ONE_ITEM) &&
-                                 Other.Equals(DEFAULT_OTHER) &&
-                                 PaletteCustom.Equals(DEFAULT_PALETTE_CUSTOM) &&
-                                 PaletteCustomHeading.Equals(DEFAULT_PALETTE_CUSTOM_HEADING) &&
-                                 PreviousMonth.Equals(DEFAULT_PREVIOUS_MONTH) &&
-                                 PreviousWeek.Equals(DEFAULT_PREVIOUS_WEEK) &&
-                                 PreviousYear.Equals(DEFAULT_PREVIOUS_YEAR) &&
-                                 QuarterOne.Equals(DEFAULT_QUARTER_ONE) &&
-                                 QuarterTwo.Equals(DEFAULT_QUARTER_TWO) &&
-                                 QuarterThree.Equals(DEFAULT_QUARTER_THREE) &&
-                                 QuarterFour.Equals(DEFAULT_QUARTER_FOUR) &&
-                                 Quarter.Equals(DEFAULT_QUARTER) &&
-                                 ShowGroupBox.Equals(DEFAULT_SHOW_GROUP_BOX) &&
-                                 Smart.Equals(DEFAULT_SMART) &&
-                                 SolidFill.Equals(DEFAULT_SOLID_FILL) &&
-                                 SortAscending.Equals(DEFAULT_SORT_ASCENDING) &&
-                                 SortBySummaryCount.Equals(DEFAULT_SORT_BY_SUMMARY_COUNT) &&
-                                 SortDescending.Equals(DEFAULT_SORT_DESCENDING) &&
-                                 ThreeColoursRange.Equals(DEFAULT_THREE_COLOURS_RANGE) &&
-                                 ThreeWeeksAgo.Equals(DEFAULT_THREE_WEEKS_AGO) &&
-                                 Today.Equals(DEFAULT_TODAY) &&
-                                 Tomorrow.Equals(DEFAULT_TOMORROW) &&
-                                 TwoColoursRange.Equals(DEFAULT_TWO_COLOURS_RANGE) &&
-                                 TwoWeeksAgo.Equals(DEFAULT_TWO_WEEKS_AGO) &&
-                                 UnGroup.Equals(DEFAULT_UNGROUP) &&
-                                 Unknown.Equals(DEFAULT_UNKNOWN) &&
-                                 NumberOfItems.Equals(DEFAULT_NUMBER_OF_ITEMS) &&
-                                 Year.Equals(DEFAULT_YEAR) &&
-                                 YearGroupText.Equals(DEFAULT_YEAR_GROUP_TEXT) &&
-                                 Yesterday.Equals(DEFAULT_YESTERDAY) &&
-                                 Monday.Equals(DEFAULT_MONDAY) &&
-                                 Tuesday.Equals(DEFAULT_TUESDAY) &&
-                                 Wednesday.Equals(DEFAULT_WEDNESDAY) &&
-                                 Thursday.Equals(DEFAULT_THURSDAY) &&
-                                 Friday.Equals(DEFAULT_FRIDAY) &&
-                                 Saturday.Equals(DEFAULT_SATURDAY) &&
-                                 Sunday.Equals(DEFAULT_SUNDAY) &&
-                                 MinimumColour.Equals(DEFAULT_MINIMUM_COLOUR) &&
-                                 MediumColour.Equals(DEFAULT_MEDIUM_COLOUR) &&
-                                 MaximumColour.Equals(DEFAULT_MAXIMUM_COLOUR);
+        public bool IsDefault => AfterNextMonth.Equals(DefaultAfterNextMonth) &&
+                                 AlphabeticGroupText.Equals(DefaultAlphabeticGroupText) &&
+                                 Bar.Equals(DefaultBar) &&
+                                 BeforePreviousMonth.Equals(DefaultBeforePreviousMonth) &&
+                                 BestFitAll.Equals(DefaultBestFitAll) &&
+                                 BestFit.Equals(DefaultBestFit) &&
+                                 Cancel.Equals(DefaultCancel) &&
+                                 ClearGrouping.Equals(DefaultClearGrouping) &&
+                                 ClearRules.Equals(DefaultClearRules) &&
+                                 ClearSorting.Equals(DefaultClearSorting) &&
+                                 Collapse.Equals(DefaultCollapse) &&
+                                 Columns.Equals(DefaultColumns) &&
+                                 ConditionalFormatting.Equals(DefaultConditionalFormatting) &&
+                                 CustomThreeDots.Equals(DefaultCustomThreeDots) &&
+                                 DateGroupText.Equals(DefaultDateGroupText) &&
+                                 Day.Equals(DefaultDay) &&
+                                 DragColumnToGroup.Equals(DefaultDragColumnToGroup) &&
+                                 EarlierDuringThisMonth.Equals(DefaultEarlierDuringThisMonth) &&
+                                 EarlierDuringThisYear.Equals(DefaultEarlierThisYear) &&
+                                 Expand.Equals(DefaultExpand) &&
+                                 Finish.Equals(DefaultFinish) &&
+                                 FullCollapse.Equals(DefaultFullCollapse) &&
+                                 FullExpand.Equals(DefaultFullExpand) &&
+                                 GradientFill.Equals(DefaultGradientFill) &&
+                                 Group.Equals(DefaultGroup) &&
+                                 GroupInterval.Equals(DefaultGroupInterval) &&
+                                 HideGroupBox.Equals(DefaultHideGroupBox) &&
+                                 InThreeWeeks.Equals(DefaultInThreeWeeks) &&
+                                 InTwoWeeks.Equals(DefaultInTwoWeeks) &&
+                                 LaterDuringThisMonth.Equals(DefaultLaterDuringThisMonth) &&
+                                 Month.Equals(DefaultMonth) &&
+                                 NextMonth.Equals(DefaultNextMonth) &&
+                                 NextWeek.Equals(DefaultNextWeek) &&
+                                 NoDate.Equals(DefaultNoDate) &&
+                                 Older.Equals(DefaultOlder) &&
+                                 OneItem.Equals(DefaultOneItem) &&
+                                 Other.Equals(DefaultOther) &&
+                                 PaletteCustom.Equals(DefaultPaletteCustom) &&
+                                 PaletteCustomHeading.Equals(DefaultPaletteCustomHeading) &&
+                                 PreviousMonth.Equals(DefaultPreviousMonth) &&
+                                 PreviousWeek.Equals(DefaultPreviousWeek) &&
+                                 PreviousYear.Equals(DefaultPreviousYear) &&
+                                 QuarterOne.Equals(DefaultQuarterOne) &&
+                                 QuarterTwo.Equals(DefaultQuarterTwo) &&
+                                 QuarterThree.Equals(DefaultQuarterThree) &&
+                                 QuarterFour.Equals(DefaultQuarterFour) &&
+                                 Quarter.Equals(DefaultQuarter) &&
+                                 ShowGroupBox.Equals(DefaultShowGroupBox) &&
+                                 Smart.Equals(DefaultSmart) &&
+                                 SolidFill.Equals(DefaultSolidFill) &&
+                                 SortAscending.Equals(DefaultSortAscending) &&
+                                 SortBySummaryCount.Equals(DefaultSortBySummaryCount) &&
+                                 SortDescending.Equals(DefaultSortDescending) &&
+                                 ThreeColoursRange.Equals(DefaultThreeColoursRange) &&
+                                 ThreeWeeksAgo.Equals(DefaultThreeWeeksAgo) &&
+                                 Today.Equals(DefaultToday) &&
+                                 Tomorrow.Equals(DefaultTomorrow) &&
+                                 TwoColoursRange.Equals(DefaultTwoColoursRange) &&
+                                 TwoWeeksAgo.Equals(DefaultTwoWeeksAgo) &&
+                                 UnGroup.Equals(DefaultUngroup) &&
+                                 Unknown.Equals(DefaultUnknown) &&
+                                 NumberOfItems.Equals(DefaultNumberOfItems) &&
+                                 Year.Equals(DefaultYear) &&
+                                 YearGroupText.Equals(DefaultYearGroupText) &&
+                                 Yesterday.Equals(DefaultYesterday) &&
+                                 Monday.Equals(DefaultMonday) &&
+                                 Tuesday.Equals(DefaultTuesday) &&
+                                 Wednesday.Equals(DefaultWednesday) &&
+                                 Thursday.Equals(DefaultThursday) &&
+                                 Friday.Equals(DefaultFriday) &&
+                                 Saturday.Equals(DefaultSaturday) &&
+                                 Sunday.Equals(DefaultSunday) &&
+                                 MinimumColour.Equals(DefaultMinimumColour) &&
+                                 MediumColour.Equals(DefaultMediumColour) &&
+                                 MaximumColour.Equals(DefaultMaximumColour);
 
         public void Reset()
         {
-            AfterNextMonth = DEFAULT_AFTER_NEXT_MONTH;
+            AfterNextMonth = DefaultAfterNextMonth;
 
-            AlphabeticGroupText = DEFAULT_ALPHABETIC_GROUP_TEXT;
+            AlphabeticGroupText = DefaultAlphabeticGroupText;
 
-            Bar = DEFAULT_BAR;
+            Bar = DefaultBar;
 
-            BeforePreviousMonth = DEFAULT_BEFORE_PREVIOUS_MONTH;
+            BeforePreviousMonth = DefaultBeforePreviousMonth;
 
-            BestFitAll = DEFAULT_BEST_FIT_ALL;
+            BestFitAll = DefaultBestFitAll;
 
-            BestFit = DEFAULT_BEST_FIT;
+            BestFit = DefaultBestFit;
 
-            Cancel = DEFAULT_CANCEL;
+            Cancel = DefaultCancel;
 
-            ClearGrouping = DEFAULT_CLEAR_GROUPING;
+            ClearGrouping = DefaultClearGrouping;
 
-            ClearRules = DEFAULT_CLEAR_RULES;
+            ClearRules = DefaultClearRules;
 
-            ClearSorting = DEFAULT_CLEAR_SORTING;
+            ClearSorting = DefaultClearSorting;
 
-            Collapse = DEFAULT_COLLAPSE;
+            Collapse = DefaultCollapse;
 
-            Columns = DEFAULT_COLUMNS;
+            Columns = DefaultColumns;
 
-            ConditionalFormatting = DEFAULT_CONDITIONAL_FORMATTING;
+            ConditionalFormatting = DefaultConditionalFormatting;
 
-            CustomThreeDots = DEFAULT_CUSTOM_THREE_DOTS;
+            CustomThreeDots = DefaultCustomThreeDots;
 
-            DateGroupText = DEFAULT_DATE_GROUP_TEXT;
+            DateGroupText = DefaultDateGroupText;
 
-            Day = DEFAULT_DAY;
+            Day = DefaultDay;
 
-            DragColumnToGroup = DEFAULT_DRAG_COLUMN_TO_GROUP;
+            DragColumnToGroup = DefaultDragColumnToGroup;
 
-            EarlierDuringThisMonth = DEFAULT_EARLIER_DURING_THIS_MONTH;
+            EarlierDuringThisMonth = DefaultEarlierDuringThisMonth;
 
-            EarlierDuringThisYear = DEFAULT_EARLIER_THIS_YEAR;
+            EarlierDuringThisYear = DefaultEarlierThisYear;
 
-            Expand = DEFAULT_EXPAND;
+            Expand = DefaultExpand;
 
-            Finish = DEFAULT_FINISH;
+            Finish = DefaultFinish;
 
-            FullCollapse = DEFAULT_FULL_COLLAPSE;
+            FullCollapse = DefaultFullCollapse;
 
-            FullExpand = DEFAULT_FULL_EXPAND;
+            FullExpand = DefaultFullExpand;
 
-            GradientFill = DEFAULT_GRADIENT_FILL;
+            GradientFill = DefaultGradientFill;
 
-            Group = DEFAULT_GROUP;
+            Group = DefaultGroup;
 
-            GroupInterval = DEFAULT_GROUP_INTERVAL;
+            GroupInterval = DefaultGroupInterval;
 
-            HideGroupBox = DEFAULT_HIDE_GROUP_BOX;
+            HideGroupBox = DefaultHideGroupBox;
 
-            InThreeWeeks = DEFAULT_IN_THREE_WEEKS;
+            InThreeWeeks = DefaultInThreeWeeks;
 
-            InTwoWeeks = DEFAULT_IN_TWO_WEEKS;
+            InTwoWeeks = DefaultInTwoWeeks;
 
-            LaterDuringThisMonth = DEFAULT_LATER_DURING_THIS_MONTH;
+            LaterDuringThisMonth = DefaultLaterDuringThisMonth;
 
-            Month = DEFAULT_MONTH;
+            Month = DefaultMonth;
 
-            NextMonth = DEFAULT_NEXT_MONTH;
+            NextMonth = DefaultNextMonth;
 
-            NextWeek = DEFAULT_NEXT_WEEK;
+            NextWeek = DefaultNextWeek;
 
-            NoDate = DEFAULT_NO_DATE;
+            NoDate = DefaultNoDate;
 
-            Older = DEFAULT_OLDER;
+            Older = DefaultOlder;
 
-            OneItem = DEFAULT_ONE_ITEM;
+            OneItem = DefaultOneItem;
 
-            Other = DEFAULT_OTHER;
+            Other = DefaultOther;
 
-            PaletteCustom = DEFAULT_PALETTE_CUSTOM;
+            PaletteCustom = DefaultPaletteCustom;
 
-            PaletteCustomHeading = DEFAULT_PALETTE_CUSTOM_HEADING;
+            PaletteCustomHeading = DefaultPaletteCustomHeading;
 
-            PreviousMonth = DEFAULT_PREVIOUS_MONTH;
+            PreviousMonth = DefaultPreviousMonth;
 
-            PreviousWeek = DEFAULT_PREVIOUS_WEEK;
+            PreviousWeek = DefaultPreviousWeek;
 
-            PreviousYear = DEFAULT_PREVIOUS_YEAR;
+            PreviousYear = DefaultPreviousYear;
 
-            QuarterOne = DEFAULT_QUARTER_ONE;
+            QuarterOne = DefaultQuarterOne;
 
-            QuarterTwo = DEFAULT_QUARTER_TWO;
+            QuarterTwo = DefaultQuarterTwo;
 
-            QuarterThree = DEFAULT_QUARTER_THREE;
+            QuarterThree = DefaultQuarterThree;
 
-            QuarterFour = DEFAULT_QUARTER_FOUR;
+            QuarterFour = DefaultQuarterFour;
 
-            Quarter = DEFAULT_QUARTER;
+            Quarter = DefaultQuarter;
 
-            ShowGroupBox = DEFAULT_SHOW_GROUP_BOX;
+            ShowGroupBox = DefaultShowGroupBox;
 
-            Smart = DEFAULT_SMART;
+            Smart = DefaultSmart;
 
-            SolidFill = DEFAULT_SOLID_FILL;
+            SolidFill = DefaultSolidFill;
 
-            SortAscending = DEFAULT_SORT_ASCENDING;
+            SortAscending = DefaultSortAscending;
 
-            SortBySummaryCount = DEFAULT_SORT_BY_SUMMARY_COUNT;
+            SortBySummaryCount = DefaultSortBySummaryCount;
 
-            SortDescending = DEFAULT_SORT_DESCENDING;
+            SortDescending = DefaultSortDescending;
 
-            ThreeColoursRange = DEFAULT_THREE_COLOURS_RANGE;
+            ThreeColoursRange = DefaultThreeColoursRange;
 
-            ThreeWeeksAgo = DEFAULT_THREE_WEEKS_AGO;
+            ThreeWeeksAgo = DefaultThreeWeeksAgo;
 
-            Today = DEFAULT_TODAY;
+            Today = DefaultToday;
 
-            Tomorrow = DEFAULT_TOMORROW;
+            Tomorrow = DefaultTomorrow;
 
-            TwoColoursRange = DEFAULT_TWO_COLOURS_RANGE;
+            TwoColoursRange = DefaultTwoColoursRange;
 
-            TwoWeeksAgo = DEFAULT_TWO_WEEKS_AGO;
+            TwoWeeksAgo = DefaultTwoWeeksAgo;
 
-            UnGroup = DEFAULT_UNGROUP;
+            UnGroup = DefaultUngroup;
 
-            Unknown = DEFAULT_UNKNOWN;
+            Unknown = DefaultUnknown;
 
-            NumberOfItems = DEFAULT_NUMBER_OF_ITEMS;
+            NumberOfItems = DefaultNumberOfItems;
 
-            Year = DEFAULT_YEAR;
+            Year = DefaultYear;
 
-            YearGroupText = DEFAULT_YEAR_GROUP_TEXT;
+            YearGroupText = DefaultYearGroupText;
 
-            Yesterday = DEFAULT_YESTERDAY;
+            Yesterday = DefaultYesterday;
 
-            Monday = DEFAULT_MONDAY;
+            Monday = DefaultMonday;
 
-            Tuesday = DEFAULT_TUESDAY;
+            Tuesday = DefaultTuesday;
 
-            Wednesday = DEFAULT_WEDNESDAY;
+            Wednesday = DefaultWednesday;
 
-            Thursday = DEFAULT_THURSDAY;
+            Thursday = DefaultThursday;
 
-            Friday = DEFAULT_FRIDAY;
+            Friday = DefaultFriday;
 
-            Saturday = DEFAULT_SATURDAY;
+            Saturday = DefaultSaturday;
 
-            Sunday = DEFAULT_SUNDAY;
+            Sunday = DefaultSunday;
 
-            MinimumColour = DEFAULT_MINIMUM_COLOUR;
+            MinimumColour = DefaultMinimumColour;
 
-            MediumColour = DEFAULT_MEDIUM_COLOUR;
+            MediumColour = DefaultMediumColour;
 
-            MaximumColour = DEFAULT_MAXIMUM_COLOUR;
+            MaximumColour = DefaultMaximumColour;
         }
 
         #endregion
@@ -424,7 +424,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [Localizable(true)]
         [Category(@"Visuals")]
         [Description(@"AfterNextMonth string used for Krypton Outlook Grid.")]
-        [DefaultValue(DEFAULT_AFTER_NEXT_MONTH)]
+        [DefaultValue(DefaultAfterNextMonth)]
         [RefreshProperties(RefreshProperties.All)]
         public string AfterNextMonth { get; set; }
 

@@ -94,11 +94,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             else
             {
-                _height = StaticValues._defaultGroupRowHeight; // default height
+                _height = StaticValues.DefaultGroupRowHeight; // default height
             }
 
-            Rows = new List<OutlookGridRow>();
-            Children = new OutlookGridGroupCollection();
+            Rows = new();
+            Children = new();
             _formatStyle = "";
             _oneItemText = Strings.OneItem;
             _xXxItemsText = Strings.NumberOfItems;
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor
         /// </summary>
         /// <param name="parentGroup">The parent group if any.</param>
-        public OutlookGridDefaultGroup(IOutlookGridGroup parentGroup) : this()
+        public OutlookGridDefaultGroup(IOutlookGridGroup? parentGroup) : this()
         {
             if (parentGroup != null)
             {
@@ -130,7 +130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Gets or sets the parent group.
         /// </summary>
         /// <value>The parent group.</value>
-        public IOutlookGridGroup ParentGroup { get; set; }
+        public IOutlookGridGroup? ParentGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the level.
@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 {
                     if (_val is string)
                     {
-                        formattedValue = string.Format(_formatStyle, Value.ToString());
+                        formattedValue = string.Format(_formatStyle, Value);
                     }
                     else if (_val is DateTime)
                     {
@@ -202,7 +202,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     formattedValue = Value.ToString();
                 }
 
-                res = string.Format("{0}: {1} ({2})", _column.DataGridViewColumn.HeaderText, formattedValue, _itemCount == 1 ? _oneItemText : _itemCount.ToString() + XXXItemsText);
+                res =
+                    $"{_column.DataGridViewColumn.HeaderText}: {formattedValue} ({(_itemCount == 1 ? _oneItemText : _itemCount + XxxItemsText)})";
                 //if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                 //    return res.ToUpper();
                 //else
@@ -265,7 +266,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the text associated to several Items
         /// </summary>
-        public virtual string XXXItemsText
+        public virtual string XxxItemsText
         {
             get => _xXxItemsText;
             set => _xXxItemsText = value;
@@ -319,7 +320,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 _height = _height,
                 _groupImage = _groupImage,
                 _formatStyle = _formatStyle,
-                _xXxItemsText = XXXItemsText,
+                _xXxItemsText = XxxItemsText,
                 _oneItemText = OneItemText,
                 _allowHiddenWhenGrouped = _allowHiddenWhenGrouped,
                 _sortBySummaryCount = _sortBySummaryCount
@@ -339,15 +340,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns></returns>
         public virtual int CompareTo(object obj)
         {
-            int orderModifier = (Column.SortDirection == SortOrder.Ascending ? 1 : -1);
+            int orderModifier = Column.SortDirection == SortOrder.Ascending ? 1 : -1;
             int compareResult = 0;
             object o2 = ((OutlookGridDefaultGroup)obj).Value;
 
-            if ((_val == null || _val == DBNull.Value) && (o2 != null && o2 != DBNull.Value))
+            if ((_val == null || _val == DBNull.Value) && o2 != null && o2 != DBNull.Value)
             {
                 compareResult = 1;
             }
-            else if ((_val != null && _val != DBNull.Value) && (o2 == null || o2 == DBNull.Value))
+            else if (_val != null && _val != DBNull.Value && (o2 == null || o2 == DBNull.Value))
             {
                 compareResult = -1;
             }

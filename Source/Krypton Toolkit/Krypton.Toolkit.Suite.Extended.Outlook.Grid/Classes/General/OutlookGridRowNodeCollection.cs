@@ -25,7 +25,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     {
         #region "Variables"
         private OutlookGridRow _parentNode;
-        private List<OutlookGridRow> subNodes;
+        private List<OutlookGridRow> _subNodes;
         #endregion
 
         #region "Constructor"
@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public OutlookGridRowNodeCollection(OutlookGridRow parentNode)
         {
             _parentNode = parentNode;
-            subNodes = new List<OutlookGridRow>();
+            _subNodes = new();
         }
         #endregion
 
@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <value>
         /// The nodes.
         /// </value>
-        public List<OutlookGridRow> Nodes => subNodes;
+        public List<OutlookGridRow> Nodes => _subNodes;
 
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <value>
         /// The count.
         /// </value>
-        public int Count => subNodes.Count;
+        public int Count => _subNodes.Count;
 
         #endregion
 
@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </value>
         /// <param name="index">The index.</param>
         /// <returns>The IOutlookGridGroup.</returns>
-        public OutlookGridRow this[int index] => subNodes[index];
+        public OutlookGridRow this[int index] => _subNodes[index];
 
         /// <summary>
         /// Adds the specified row.
@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             row.ParentNode = _parentNode;
             row.NodeLevel = ParentNode.NodeLevel + 1; //Not ++
-            subNodes.Add(row);
+            _subNodes.Add(row);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public void Sort()
         {
-            subNodes.Sort();
+            _subNodes.Sort();
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="comparer">The comparer.</param>
         internal void Sort(OutlookGridRowComparer2 comparer)
         {
-            subNodes.Sort(comparer);
+            _subNodes.Sort(comparer);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns></returns>
         public int IndexOf(OutlookGridRow row)
         {
-            return subNodes.IndexOf(row);
+            return _subNodes.IndexOf(row);
         }
 
         #endregion
@@ -131,11 +131,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             _parentNode = null;
             //If a group is collapsed the rows will not appear. Then if we clear the group the rows should not remain "collapsed"
-            for (int i = 0; i < subNodes.Count; i++)
+            for (int i = 0; i < _subNodes.Count; i++)
             {
-                subNodes[i].Collapsed = false;
+                _subNodes[i].Collapsed = false;
             }
-            subNodes.Clear();
+            _subNodes.Clear();
         }
 
         #endregion
