@@ -157,7 +157,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         public override void OnInitialize(CalendarRendererEventArgs e)
         {
             if (_palette != null)
+            {
                 e.Calendar.Font = _palette.GetContentShortTextFont(PaletteContentStyle.InputControlStandalone, PaletteState.Normal);
+            }
+
             base.OnInitialize(e);
         }
 
@@ -239,7 +242,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         public override void OnDrawDayHeaderText(CalendarRendererBoxEventArgs e)
         {
             if (_palette != null)
+            {
                 e.TextColour = _palette.GetContentShortTextColor1(PaletteContentStyle.HeaderForm, PaletteState.Normal);
+            }
+
             base.OnDrawDayHeaderText(e);
         }
 

@@ -33,7 +33,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             kind = DateTimeUnit.Year;
             if (manualSpacing != null)
+            {
                 throw new NotImplementedException("can't display years with fixed spacing (use numeric axis instead)");
+            }
+
             deltas = new int[] { 1, 2, 5 };
         }
 

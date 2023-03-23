@@ -409,7 +409,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             set
             {
                 if (_command == value)
+                {
                     return;
+                }
+
                 if (_command != null)
                 {
                     _command.PropertyChanged -= OnCommandPropertyChanged;

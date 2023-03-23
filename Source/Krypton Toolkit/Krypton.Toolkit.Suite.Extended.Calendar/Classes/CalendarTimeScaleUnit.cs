@@ -161,7 +161,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 CalendarHighlightRange range = Day.Calendar.HighlightRanges[i];
 
                 if (range.DayOfWeek != Date.DayOfWeek)
+                {
                     continue;
+                }
 
                 if (Date.TimeOfDay.CompareTo(range.StartTime) >= 0
                     && Date.TimeOfDay.CompareTo(range.EndTime) < 0)

@@ -33,7 +33,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             kind = DateTimeUnit.Month;
             if (manualSpacing == null)
+            {
                 deltas = new int[] { 1, 2, 3, 6 };
+            }
         }
 
         protected override DateTime Floor(DateTime value)
@@ -53,9 +55,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             // replace only first space " "
             int pos = localizedLabel.IndexOf(" ");
             if (pos < 0)
+            {
                 return localizedLabel + "\n";
+            }
             else
+            {
                 return localizedLabel.Substring(0, pos) + "\n" + localizedLabel.Substring(pos + 1, localizedLabel.Length - pos - 1);
+            }
         }
     }
 }

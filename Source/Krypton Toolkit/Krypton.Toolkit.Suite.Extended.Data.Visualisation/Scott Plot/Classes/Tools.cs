@@ -32,7 +32,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static Color GetRandomColor(Random rand = null)
         {
             if (rand is null)
+            {
                 rand = new Random();
+            }
+
             Color randomColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
             return randomColor;
         }
@@ -57,9 +60,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             Version ver = typeof(Plot).Assembly.GetName().Version;
             if (justThreeDigits)
+            {
                 return $"{ver.Major}.{ver.Minor}.{ver.Build}";
+            }
             else
+            {
                 return ver.ToString();
+            }
         }
 
         public static string GetFrameworkVersionString()
@@ -125,7 +132,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (preceedWithPlus && !output.StartsWith("-"))
+            {
                 output = "+" + output;
+            }
 
             return output;
         }
@@ -222,13 +231,21 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             catch
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
                     Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
                     Process.Start("xdg-open", url);
+                }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
                     Process.Start("open", url);
+                }
                 else
+                {
                     throw;
+                }
             }
         }
 
@@ -269,14 +286,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             string name = "Unknown";
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
                 name = "Linux";
+            }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
                 name = "MacOS";
+            }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
                 name = "Windows";
+            }
 
             if (details)
+            {
                 name += $" ({System.Environment.OSVersion})";
+            }
 
             return name;
         }

@@ -872,7 +872,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     #region Days
                     foreach (MonthViewDay? day in Months[i].Days)
                     {
-                        if (!day.Visible) continue;
+                        if (!day.Visible)
+                        {
+                            continue;
+                        }
 
                         MonthViewBoxEventArgs evtDay = new MonthViewBoxEventArgs(e.Graphics, day.Bounds, day.Date.Day.ToString(),
                             StringAlignment.Far,

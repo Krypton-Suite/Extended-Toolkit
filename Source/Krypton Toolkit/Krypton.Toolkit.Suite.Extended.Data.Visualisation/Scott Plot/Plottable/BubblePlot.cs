@@ -82,10 +82,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Add(double[] xs, double[] ys, double size, Color fillColor, double edgeWidth, Color edgeColor)
         {
             if (xs is null || ys is null)
+            {
                 throw new ArgumentException("xs and ys cannot be null");
+            }
 
             if (xs.Length != ys.Length)
+            {
                 throw new ArgumentException("xs and ys must have the same number of elements");
+            }
 
             for (int i = 0; i < xs.Length; i++)
             {
@@ -106,7 +110,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public AxisLimits GetAxisLimits()
         {
             if (Bubbles.Count == 0)
+            {
                 return new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
+            }
 
             var xs = Bubbles.Select(b => b.X);
             var ys = Bubbles.Select(b => b.Y);
@@ -118,20 +124,28 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (Bubble bubble in Bubbles)
             {
                 if (double.IsNaN(bubble.X) || double.IsNaN(bubble.Y) || double.IsNaN(bubble.Radius) || double.IsNaN(bubble.EdgeWidth))
+                {
                     throw new InvalidOperationException("Bubble positions and sizes must not be NaN");
+                }
 
                 if (double.IsInfinity(bubble.X) || double.IsInfinity(bubble.Y) || double.IsInfinity(bubble.Radius) || double.IsInfinity(bubble.EdgeWidth))
+                {
                     throw new InvalidOperationException("Bubble position and size must real");
+                }
 
                 if (bubble.Radius < 0 || bubble.EdgeWidth < 0)
+                {
                     throw new InvalidOperationException("Bubble sizes cannot be negative");
+                }
             }
         }
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             using Graphics gfx = GDI.Graphics(bmp, dims, lowQuality);
             using Brush brush = GDI.Brush(Color.Magenta);

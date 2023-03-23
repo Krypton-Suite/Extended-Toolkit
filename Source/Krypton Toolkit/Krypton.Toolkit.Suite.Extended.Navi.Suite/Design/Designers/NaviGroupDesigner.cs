@@ -66,7 +66,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 if (m_designingControl.HeaderRegion.IsVisible(location))
                 {
                     if (selectionService.PrimarySelection == m_designingControl)
+                    {
                         SetControlProperty("Expanded", !m_designingControl.Expanded);
+                    }
                 }
             }
         }

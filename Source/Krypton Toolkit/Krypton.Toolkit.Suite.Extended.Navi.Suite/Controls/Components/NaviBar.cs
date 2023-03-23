@@ -119,9 +119,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             internal set
             {
                 if (value == null)
+                {
                     layoutEngineDirty = true;
+                }
+
                 if (naviLayoutEngine != null)
+                {
                     naviLayoutEngine.Cleanup();
+                }
+
                 naviLayoutEngine = value;
                 observers.Add(naviLayoutEngine);
             }
@@ -342,7 +348,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 bool raise = collapsed != value;
                 collapsed = value;
 
-                if (raise) OnCollapsedChanged(new EventArgs());
+                if (raise)
+                {
+                    OnCollapsedChanged(new EventArgs());
+                }
 
                 PerformLayout();
                 Invalidate();
@@ -405,7 +414,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             get
             {
                 if (settings == null)
+                {
                     settings = new NaviBarSettings();
+                }
+
                 settings.BandSettings.Clear();
                 settings.VisibleButtons = visibleLargeButtons;
                 settings.Collapsed = collapsed;
@@ -618,7 +630,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             SuspendLayout();
 
             if (settings == null)
+            {
                 return;
+            }
 
             foreach (NaviBand band in bands)
             {
@@ -627,7 +641,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 foreach (NaviBandSetting tmpSetting in settings.BandSettings)
                 {
                     if (tmpSetting.Name.ToLower() == band.Text.ToLower())
+                    {
                         setting = tmpSetting;
+                    }
                 }
 
                 // It's possible that no setting exist for this particular band. For example a new
@@ -647,7 +663,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
             VisibleLargeButtons = settings.VisibleButtons;
             if (settings.Collapsed != collapsed)
+            {
                 Collapsed = settings.Collapsed;
+            }
+
             bands.Sort(new NaviBandOrderComparer());
 
             // Rebuild ordering values. This is to prevent 999 and duplicate values from showing 
@@ -876,7 +895,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                : base(owner)
             {
                 if (owner is NaviBar)
+                {
                     ownerBar = (NaviBar)owner;
+                }
             }
 
             /// <summary>
@@ -894,7 +915,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                     NaviBand newBand = value as NaviBand;
 
                     if (!ownerBar.bands.Contains(newBand))
+                    {
                         ownerBar.Bands.AddInternal(newBand);
+                    }
 
                     newBand.OwnerBar = ownerBar;
                     ownerBar.BandInitRequired = true;

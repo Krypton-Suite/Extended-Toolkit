@@ -108,7 +108,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             Color leftColour = LeftSideColour;
 
             if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            {
                 leftColour = leftColour.ToGrayScale();
+            }
 
             Rectangle controlRectangle = GetInnerControlRectangle();
 
@@ -133,7 +135,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             Color rightColour = RightSideColour;
 
             if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            {
                 rightColour = rightColour.ToGrayScale();
+            }
 
             Rectangle controlRectangle = GetInnerControlRectangle();
 
@@ -235,9 +239,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + (((float)adjustedButtonRect.Height - (float)resizedImageSize.Height) / 2)), resizedImageSize.Width, resizedImageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        {
                             g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
+                        }
                         else
+                        {
                             g.DrawImage(buttonImage, imageRectangle);
+                        }
                     }
                     else
                     {
@@ -253,9 +261,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + (((float)adjustedButtonRect.Height - (float)imageSize.Height) / 2)), imageSize.Width, imageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        {
                             g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
+                        }
                         else
+                        {
                             g.DrawImageUnscaled(buttonImage, imageRectangle);
+                        }
                     }
                 }
                 else if (!string.IsNullOrEmpty(buttonText))
@@ -264,7 +276,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                     Color buttonForeColour = ToggleSwitch.Checked ? ToggleSwitch.OnForeColour : ToggleSwitch.OffForeColour;
 
                     if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    {
                         buttonForeColour = buttonForeColour.ToGrayScale();
+                    }
 
                     SizeF textSize = g.MeasureString(buttonText, buttonFont);
 
@@ -303,7 +317,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public int GetCathetusLengthBasedOnAngle()
         {
             if (SlantAngle == 0)
+            {
                 return 0;
+            }
 
             double degrees = Math.Abs(SlantAngle);
             double radians = degrees * (Math.PI / 180);
@@ -315,7 +331,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public int GetHalfCathetusLengthBasedOnAngle()
         {
             if (SlantAngle == 0)
+            {
                 return 0;
+            }
 
             double degrees = Math.Abs(SlantAngle);
             double radians = degrees * (Math.PI / 180);
@@ -349,7 +367,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
+            {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;

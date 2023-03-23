@@ -99,7 +99,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (var plottable in settings.Plottables)
             {
                 if (plottable.IsVisible == false)
+                {
                     continue;
+                }
 
                 plottable.ValidateData(deep: false);
 
@@ -235,20 +237,32 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             filePath = System.IO.Path.GetFullPath(filePath);
             string fileFolder = System.IO.Path.GetDirectoryName(filePath);
             if (!System.IO.Directory.Exists(fileFolder))
+            {
                 throw new Exception($"ERROR: folder does not exist: {fileFolder}");
+            }
 
             ImageFormat imageFormat;
             string extension = System.IO.Path.GetExtension(filePath).ToUpper();
             if (extension == ".JPG" || extension == ".JPEG")
+            {
                 imageFormat = ImageFormat.Jpeg; // TODO: use jpgEncoder to set custom compression level
+            }
             else if (extension == ".PNG")
+            {
                 imageFormat = ImageFormat.Png;
+            }
             else if (extension == ".TIF" || extension == ".TIFF")
+            {
                 imageFormat = ImageFormat.Tiff;
+            }
             else if (extension == ".BMP")
+            {
                 imageFormat = ImageFormat.Bmp;
+            }
             else
+            {
                 throw new NotImplementedException("Extension not supported: " + extension);
+            }
 
             bmp.Save(filePath, imageFormat);
             return filePath;

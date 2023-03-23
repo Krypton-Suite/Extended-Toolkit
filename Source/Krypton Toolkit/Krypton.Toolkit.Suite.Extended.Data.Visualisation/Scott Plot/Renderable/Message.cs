@@ -86,7 +86,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (!IsVisible || string.IsNullOrWhiteSpace(Text))
+            {
                 return;
+            }
 
             using (var gfx = GDI.Graphics(bmp, dims, lowQuality, false))
             using (var font = GDI.Font(FontName, FontSize, FontBold))
@@ -100,19 +102,31 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                 float textY = 0;
                 if (VAlign == VerticalAlignment.Upper)
+                {
                     textY = dims.DataOffsetY + Padding;
+                }
                 else if (VAlign == VerticalAlignment.Middle)
+                {
                     textY = dims.DataOffsetY + dims.DataHeight / 2 - textHeight / 2;
+                }
                 else if (VAlign == VerticalAlignment.Lower)
+                {
                     textY = dims.DataOffsetY + dims.DataHeight - textHeight - Padding;
+                }
 
                 float textX = 0;
                 if (HAlign == HorizontalAlignment.Left)
+                {
                     textX = dims.DataOffsetX + Padding;
+                }
                 else if (HAlign == HorizontalAlignment.Center)
+                {
                     textX = dims.DataOffsetX + dims.DataWidth / 2 - textWidth / 2;
+                }
                 else if (HAlign == HorizontalAlignment.Right)
+                {
                     textX = dims.DataOffsetX + dims.DataWidth - textWidth - Padding;
+                }
 
                 RectangleF textRect = new RectangleF(textX, textY, textWidth, textHeight);
                 gfx.FillRectangle(fillBrush, textRect);

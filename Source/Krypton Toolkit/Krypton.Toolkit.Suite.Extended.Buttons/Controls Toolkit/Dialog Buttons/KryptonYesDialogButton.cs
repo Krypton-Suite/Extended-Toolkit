@@ -53,7 +53,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private void KryptonYesDialogButton_TextChanged(object sender, EventArgs e)
         {
-            if (Text == Name) Text = "&Yes";
+            if (Text == Name)
+            {
+                Text = "&Yes";
+            }
         }
 
         private void KryptonYesDialogButton_ParentChanged(object sender, EventArgs e)

@@ -46,12 +46,16 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             attr.SetWrapMode(WrapMode.TileFlipXY);
 
             if (BackgroundImage != null && !DisplayImageAbove)
+            {
                 gfx.DrawImage(BackgroundImage, destRect, 0, 0, BackgroundImage.Width, BackgroundImage.Height, GraphicsUnit.Pixel, attr);
+            }
 
             gfx.DrawImage(BmpHeatmap, destRect, 0, 0, BmpHeatmap.Width, BmpHeatmap.Height, GraphicsUnit.Pixel, attr);
 
             if (BackgroundImage != null && DisplayImageAbove)
+            {
                 gfx.DrawImage(BackgroundImage, destRect, 0, 0, BackgroundImage.Width, BackgroundImage.Height, GraphicsUnit.Pixel, attr);
+            }
         }
 
         public override AxisLimits GetAxisLimits()

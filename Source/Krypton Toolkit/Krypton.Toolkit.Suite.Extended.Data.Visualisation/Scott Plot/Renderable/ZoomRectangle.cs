@@ -46,7 +46,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (!IsVisible)
+            {
                 return;
+            }
 
             using (var gfx = GDI.Graphics(bmp, dims, lowQuality: true, false))
             using (var fillBrush = GDI.Brush(FillColor))

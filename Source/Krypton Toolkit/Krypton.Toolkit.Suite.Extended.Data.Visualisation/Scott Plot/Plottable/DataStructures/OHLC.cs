@@ -45,10 +45,26 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             get
             {
-                if (IsNanOrInfinity(Open)) return false;
-                if (IsNanOrInfinity(High)) return false;
-                if (IsNanOrInfinity(Low)) return false;
-                if (IsNanOrInfinity(Close)) return false;
+                if (IsNanOrInfinity(Open))
+                {
+                    return false;
+                }
+
+                if (IsNanOrInfinity(High))
+                {
+                    return false;
+                }
+
+                if (IsNanOrInfinity(Low))
+                {
+                    return false;
+                }
+
+                if (IsNanOrInfinity(Close))
+                {
+                    return false;
+                }
+
                 return true;
             }
         }

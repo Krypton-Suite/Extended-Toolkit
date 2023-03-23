@@ -33,7 +33,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             kind = DateTimeUnit.Minute;
             if (manualSpacing == null)
+            {
                 deltas = new int[] { 1, 2, 5, 10, 15, 30 };
+            }
         }
 
         protected override DateTime Floor(DateTime value)

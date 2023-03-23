@@ -215,14 +215,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static Bitmap Colorbar(ColourMap cmap, int width, int height, bool vertical = false, double min = 0, double max = 1)
         {
             if (width < 1 || height < 1)
+            {
                 return null;
+            }
 
             if (min < 0)
+            {
                 throw new ArgumentException($"{nameof(min)} must be >= 0");
+            }
+
             if (max > 1)
+            {
                 throw new ArgumentException($"{nameof(max)} must be <= 1");
+            }
+
             if (min >= max)
+            {
                 throw new ArgumentException($"{nameof(min)} must < {nameof(max)}");
+            }
 
             Bitmap bmp = new(width, height);
             using Graphics gfx = Graphics.FromImage(bmp);

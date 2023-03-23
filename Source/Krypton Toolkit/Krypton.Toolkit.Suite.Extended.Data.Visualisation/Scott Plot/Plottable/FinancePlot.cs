@@ -112,7 +112,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Add(OHLC ohlc)
         {
             if (ohlc is null)
+            {
                 throw new ArgumentNullException();
+            }
+
             OHLCs.Add(ohlc);
         }
 
@@ -123,11 +126,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void AddRange(OHLC[] ohlcs)
         {
             if (ohlcs is null)
+            {
                 throw new ArgumentNullException();
+            }
 
             foreach (var ohlc in ohlcs)
                 if (ohlc is null)
+                {
                     throw new ArgumentNullException("no OHLCs may be null");
+                }
 
             OHLCs.AddRange(ohlcs);
         }
@@ -154,13 +161,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             for (int i = 1; i < OHLCs.Count; i++)
             {
                 if (OHLCs[i].DateTime.ToOADate() < limits[0])
+                {
                     limits[0] = OHLCs[i].DateTime.ToOADate();
+                }
+
                 if (OHLCs[i].DateTime.ToOADate() > limits[1])
+                {
                     limits[1] = OHLCs[i].DateTime.ToOADate();
+                }
+
                 if (OHLCs[i].Low < limits[2])
+                {
                     limits[2] = OHLCs[i].Low;
+                }
+
                 if (OHLCs[i].High > limits[3])
+                {
                     limits[3] = OHLCs[i].High;
+                }
             }
 
             if (Sequential)
@@ -175,22 +193,33 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (Candle)
+            {
                 RenderCandles(dims, bmp, lowQuality);
+            }
             else
+            {
                 RenderOhlc(dims, bmp, lowQuality);
+            }
         }
 
         public void ValidateData(bool deepValidation = false)
         {
             if (OHLCs is null)
+            {
                 throw new InvalidOperationException("ohlcs cannot be null");
+            }
 
             for (int i = 0; i < OHLCs.Count; i++)
             {
                 if (OHLCs[i] is null)
+                {
                     throw new InvalidOperationException($"ohlcs[{i}] cannot be null");
+                }
+
                 if (!OHLCs[i].IsValid)
+                {
                     throw new InvalidOperationException($"ohlcs[{i}] does not contain valid data");
+                }
             }
         }
 
@@ -248,12 +277,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                         height: boxLowerLeft.Y - boxUpperRight.Y);
 
                     if (WickColor != null)
+                    {
                         gfx.DrawRectangle(
                             pen: pen,
                             x: boxLowerLeft.X - boxWidth,
                             y: boxUpperRight.Y,
                             width: boxWidth * 2,
                             height: boxLowerLeft.Y - boxUpperRight.Y);
+                    }
                 }
             }
         }
@@ -303,7 +334,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public (double[] xs, double[] ys) GetSMA(int N)
         {
             if (N >= OHLCs.Count)
+            {
                 throw new ArgumentException("can not analyze more points than are available in the OHLCs");
+            }
 
             double[] xs = OHLCs.Skip(N).Select(x => x.DateTime.ToOADate()).ToArray();
             double[] ys = Finance.SMA(OHLCs.ToArray(), N);
@@ -320,7 +353,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public (double[] xs, double[] sma, double[] lower, double[] upper) GetBollingerBands(int N)
         {
             if (N >= OHLCs.Count)
+            {
                 throw new ArgumentException("can not analyze more points than are available in the OHLCs");
+            }
 
             double[] xs = OHLCs.Skip(N).Select(x => x.DateTime.ToOADate()).ToArray();
             (var sma, var lower, var upper) = Finance.Bollinger(OHLCs.ToArray(), N);

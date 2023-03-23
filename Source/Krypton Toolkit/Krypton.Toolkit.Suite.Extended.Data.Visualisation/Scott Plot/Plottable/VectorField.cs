@@ -82,9 +82,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 for (int j = 0; j < ys.Length; j++)
                 {
                     if (vectors[i, j].LengthSquared() > maxMagnitudeSquared)
+                    {
                         maxMagnitudeSquared = vectors[i, j].LengthSquared();
+                    }
                     else if (vectors[i, j].LengthSquared() < minMagnitudeSquared)
+                    {
                         minMagnitudeSquared = vectors[i, j].LengthSquared();
+                    }
                 }
             }
             double minMagnitude = Math.Sqrt(minMagnitudeSquared);
@@ -96,7 +100,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 for (int j = 0; j < ys.Length; j++)
                 {
                     if (colormap != null)
+                    {
                         intensities[i, j] = (vectors[i, j].Length() - minMagnitude) / (maxMagnitude - minMagnitude);
+                    }
+
                     vectors[i, j] = Vector2.Multiply(vectors[i, j], (float)(scaleFactor / (maxMagnitude * 1.2)));
                 }
             }
@@ -132,7 +139,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             using Graphics gfx = GDI.Graphics(bmp, dims, lowQuality);
 

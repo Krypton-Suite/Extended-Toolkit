@@ -70,17 +70,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public ColourMap CreateOrDefault(string Name)
         {
             if (ColourMaps.TryGetValue(Name, out Func<IColourMap> cmap))
+            {
                 return new ColourMap(cmap());
+            }
             else
+            {
                 return new ColourMap(GetDefaultColourMap());
+            }
         }
 
         public ColourMap CreateOrThrow(string Name)
         {
             if (ColourMaps.TryGetValue(Name, out Func<IColourMap> cmap))
+            {
                 return new ColourMap(cmap());
+            }
             else
+            {
                 throw new ArgumentOutOfRangeException($"No colormap with name '{Name}'");
+            }
         }
 
         public IEnumerable<string> GetAvailableNames() => ColourMaps.Keys;

@@ -111,9 +111,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         public override Size GetPreferredSize(Size constrainingSize)
         {
             if (string.IsNullOrEmpty(Text))
+            {
                 return new Size(base.GetPreferredSize(constrainingSize).Width, 5);
+            }
             else
+            {
                 return base.GetPreferredSize(constrainingSize);
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -169,12 +173,16 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             using (Pen pen = new Pen(ForeColor))
             {
                 if (ShowSeparatorLine)
+                {
                     e.Graphics.DrawLine(pen, ts.Padding.Horizontal, yLinePosition, textLeft, yLinePosition);
+                }
 
                 TextRenderer.DrawText(e.Graphics, Text, Font, new Point(textLeft, yTextPosition), ForeColor);
 
                 if (ShowSeparatorLine)
+                {
                     e.Graphics.DrawLine(pen, textLeft + textSize.Width, yLinePosition, ContentRectangle.Right, yLinePosition);
+                }
             }
         }
         #endregion

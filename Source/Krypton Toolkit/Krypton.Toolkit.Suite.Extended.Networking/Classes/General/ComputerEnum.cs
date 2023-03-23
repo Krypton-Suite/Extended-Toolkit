@@ -367,9 +367,15 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             public bool MoveNext()
             {
                 if (aryComputers == null)
+                {
                     return false;
+                }
+
                 if (indexer < aryComputers.Length)
+                {
                     indexer++;
+                }
+
                 return (!(indexer == aryComputers.Length));
             }
         }

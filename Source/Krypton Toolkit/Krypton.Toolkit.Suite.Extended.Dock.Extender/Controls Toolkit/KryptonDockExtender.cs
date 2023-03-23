@@ -76,8 +76,15 @@
         /// <param name="splitter">splitter to resize the docked container (optional)</param>
         public IFloatable Attach(ScrollableControl container, Control handle, KryptonSeparator splitter)
         {
-            if (container == null) throw new ArgumentException("container cannot be null");
-            if (handle == null) throw new ArgumentException("handle cannot be null");
+            if (container == null)
+            {
+                throw new ArgumentException("container cannot be null");
+            }
+
+            if (handle == null)
+            {
+                throw new ArgumentException("handle cannot be null");
+            }
 
             DockState _dockState = new DockState();
             _dockState.Container = container;
@@ -96,10 +103,14 @@
         {
             Control c = null;
             if (FormIsHit(floaty.DockState.OrgDockHost, pt))
+            {
                 c = floaty.DockState.OrgDockHost; //assume toplevel control
+            }
 
             if (floaty.DockOnHostOnly)
+            {
                 return c;
+            }
 
             foreach (KryptonFloatableForm f in Floaties)
             {
@@ -119,7 +130,10 @@
         // finds the potential dockhost control at the specified location
         internal bool FormIsHit(Control c, Point pt)
         {
-            if (c == null) return false;
+            if (c == null)
+            {
+                return false;
+            }
 
             Point pc = c.PointToClient(pt);
             bool hit = c.ClientRectangle.IntersectsWith(new Rectangle(pc,

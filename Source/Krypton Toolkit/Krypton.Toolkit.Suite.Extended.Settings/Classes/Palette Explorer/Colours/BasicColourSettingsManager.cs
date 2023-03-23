@@ -370,7 +370,10 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
 
                     dialog.FileName = $"Basic Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
-                    if (dialog.ShowDialog() == DialogResult.OK) WriteARGBColoursToFile(dialog.FileName);
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        WriteARGBColoursToFile(dialog.FileName);
+                    }
                 }
             }
             catch (Exception exc)
@@ -419,7 +422,10 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
 
                     dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
-                    if (dialog.ShowDialog() == DialogResult.OK) WriteRGBColoursToFile(dialog.FileName);
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        WriteRGBColoursToFile(dialog.FileName);
+                    }
                 }
             }
             catch (Exception exc)

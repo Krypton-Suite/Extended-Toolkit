@@ -218,7 +218,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 CalendarTimeScaleUnit unit = e.Calendar.Days[0].TimeUnits[i];
 
-                if (!unit.Visible) continue;
+                if (!unit.Visible)
+                {
+                    continue;
+                }
 
                 top = unit.Bounds.Top;
 

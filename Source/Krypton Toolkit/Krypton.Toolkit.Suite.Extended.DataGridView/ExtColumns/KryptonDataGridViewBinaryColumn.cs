@@ -151,8 +151,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             set
             {
                 if (BinaryCellTemplate == null)
+                {
                     throw new InvalidOperationException(
                         "Operation cannot be completed because this DataGridViewColumn does not have a CellTemplate.");
+                }
+
                 BinaryCellTemplate.EditorType = value;
                 if (DataGridView != null)
                 {
@@ -162,7 +165,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                     {
                         DataGridViewRow dataGridViewRow = dataGridViewRows.SharedRow(rowIndex);
                         if (dataGridViewRow.Cells[Index] is KryptonDataGridViewBinaryCell dataGridViewCell)
+                        {
                             dataGridViewCell.SetEditorType(rowIndex, value);
+                        }
                     }
 
                     DataGridView.InvalidateColumn(Index);

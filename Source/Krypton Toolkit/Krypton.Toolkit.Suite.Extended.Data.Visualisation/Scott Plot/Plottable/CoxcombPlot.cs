@@ -169,7 +169,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public LegendItem[] GetLegendItems()
         {
             if (SliceLabels is null)
+            {
                 return null;
+            }
 
             return Enumerable
                 .Range(0, Values.Length)

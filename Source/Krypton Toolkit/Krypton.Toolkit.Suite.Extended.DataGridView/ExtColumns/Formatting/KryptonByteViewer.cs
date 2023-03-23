@@ -340,7 +340,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         {
             //         scrollBar.Select();
             if (_scrollBar.Enabled)
+            {
                 _scrollBar._OnKeyDown(e);
+            }
         }
 
         /// <summary>
@@ -353,7 +355,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         {
             base.OnMouseWheel(e);
             if (_scrollBar.Enabled)
+            {
                 _scrollBar._OnMouseWheel(e);
+            }
         }
 
         /// <summary>
@@ -367,7 +371,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             base.OnPaintBackground(e);
             var palette = KryptonManager.CurrentGlobalPalette;
             if (palette == null)
+            {
                 return;
+            }
+
             // We use the background color of KryptonPanels.
             var backColor = palette.GetBackColor1(PaletteBackStyle.PanelClient,
                 PaletteState.Normal);

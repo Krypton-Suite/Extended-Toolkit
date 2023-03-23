@@ -215,7 +215,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 }
             }
             else
+            {
                 dragging = false;
+            }
         }
 
         /// <summary>

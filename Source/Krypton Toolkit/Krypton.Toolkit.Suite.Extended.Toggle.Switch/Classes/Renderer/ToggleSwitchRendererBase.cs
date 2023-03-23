@@ -53,7 +53,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public void RenderBackground(PaintEventArgs e)
         {
             if (_toggleSwitch == null)
+            {
                 return;
+            }
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
@@ -67,7 +69,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public void RenderControl(PaintEventArgs e)
         {
             if (_toggleSwitch == null)
+            {
                 return;
+            }
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
@@ -79,7 +83,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 Rectangle leftRectangle = new Rectangle(0, 0, buttonRectangle.X, ToggleSwitch.Height);
 
                 if (leftRectangle.Width > 0)
+                {
                     RenderLeftToggleField(e.Graphics, leftRectangle, totalToggleFieldWidth);
+                }
             }
 
             if (buttonRectangle.X + buttonRectangle.Width < e.ClipRectangle.Width)
@@ -87,7 +93,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 Rectangle rightRectangle = new Rectangle(buttonRectangle.X + buttonRectangle.Width, 0, ToggleSwitch.Width - buttonRectangle.X - buttonRectangle.Width, ToggleSwitch.Height);
 
                 if (rightRectangle.Width > 0)
+                {
                     RenderRightToggleField(e.Graphics, rightRectangle, totalToggleFieldWidth);
+                }
             }
 
             RenderButton(e.Graphics, buttonRectangle);

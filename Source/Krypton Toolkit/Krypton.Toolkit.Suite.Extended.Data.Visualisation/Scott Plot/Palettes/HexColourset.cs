@@ -37,10 +37,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             string hexColor = hexColors[index];
             if (!hexColor.StartsWith("#"))
+            {
                 hexColor = "#" + hexColor;
+            }
 
             if (hexColor.Length != 7)
+            {
                 throw new InvalidOperationException("invalid hex color string");
+            }
 
             Color color = ColorTranslator.FromHtml(hexColor);
 

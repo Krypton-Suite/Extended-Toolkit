@@ -61,9 +61,13 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             while (currentException != null)
             {
                 if (count++ == 0)
+                {
                     stringBuilder.AppendLine("Top-level Exception");
+                }
                 else
+                {
                     stringBuilder.AppendLine("Inner Exception " + (count - 1));
+                }
 
                 stringBuilder
                     .AppendLine("Type:    " + currentException.GetType())

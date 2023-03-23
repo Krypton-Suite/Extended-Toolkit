@@ -68,9 +68,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (double.IsNaN(Width) || double.IsNaN(Height))
+            {
                 throw new InvalidOperationException("Width and Height cannot be NaN");
+            }
+
             if (double.IsInfinity(Width) || double.IsInfinity(Height))
+            {
                 throw new InvalidOperationException("Width and Height cannot be Infinity");
+            }
         }
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)

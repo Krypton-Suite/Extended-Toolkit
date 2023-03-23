@@ -116,7 +116,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void AutomaticTicks(bool enable = true, int? minimumSpacing = null, Func<double, string> formatter = null)
         {
             if (enable)
+            {
                 ManualTicks.Clear();
+            }
 
             AutomaticTickEnable = enable;
             AutomaticTickMinimumSpacing = minimumSpacing ?? AutomaticTickMinimumSpacing;
@@ -150,7 +152,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void AddTicks(double[] fractions, string[] labels)
         {
             if (fractions.Length != labels.Length)
+            {
                 throw new("fractions and labels must have the same length");
+            }
 
             for (int i = 0; i < fractions.Length; i++)
             {
@@ -166,7 +170,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void SetTicks(double[] fractions, string[] labels)
         {
             if (fractions.Length != labels.Length)
+            {
                 throw new("fractions and labels must have the same length");
+            }
 
             ClearTicks();
             AddTicks(fractions, labels);
@@ -215,7 +221,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (BmpScale is null)
+            {
                 UpdateBitmap();
+            }
 
             RectangleF colorbarRect = RenderColorbar(dims, bmp);
 
@@ -242,9 +250,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                 string tickLabel = AutomaticTickFormatter(tickPosition);
                 if (MinIsClipped && i == 0)
+                {
                     tickLabel = "≤" + tickLabel;
+                }
+
                 if (MaxIsClipped && i == tickCount)
+                {
                     tickLabel = "≥" + tickLabel;
+                }
 
                 Tick tick = new(colorbarFraction, tickLabel, isMajor: true, isDateTime: false);
                 ticks.Add(tick);

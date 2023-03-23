@@ -159,7 +159,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         {
             t /= d / 2;
             if (t < 1)
+            {
                 return c / 2 * t * t * t + b;
+            }
 
             t -= 2;
             return c / 2 * (t * t * t + 2) + b;
@@ -235,7 +237,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         {
             t /= d / 2;
             if (t < 1)
+            {
                 return (float)(-c / 2 * (Math.Sqrt(1 - t * t) - 1) + b);
+            }
+
             t -= 2;
             return (float)(c / 2 * (Math.Sqrt(1 - t * t) + 1) + b);
         }
@@ -363,7 +368,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static float QuadraticEaseInOut(float t, float b, float c, float d)
         {
             t /= d / 2;
-            if (t < 1) return c / 2 * t * t + b;
+            if (t < 1)
+            {
+                return c / 2 * t * t + b;
+            }
+
             t--;
             return -c / 2 * (t * (t - 2) - 1) + b;
         }
@@ -438,7 +447,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static float QuarticEaseInOut(float t, float b, float c, float d)
         {
             t /= d / 2;
-            if (t < 1) return c / 2 * t * t * t * t + b;
+            if (t < 1)
+            {
+                return c / 2 * t * t * t * t + b;
+            }
+
             t -= 2;
             return -c / 2 * (t * t * t * t - 2) + b;
         }
@@ -464,7 +477,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static float QuinticEaseInOut(float t, float b, float c, float d)
         {
             t /= d / 2;
-            if (t < 1) return c / 2 * t * t * t * t * t + b;
+            if (t < 1)
+            {
+                return c / 2 * t * t * t * t * t + b;
+            }
+
             t -= 2;
             return c / 2 * (t * t * t * t * t + 2) + b;
         }
@@ -656,7 +673,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         {
             t /= d / 2;
             if (t < 1)
+            {
                 return (float)(c / 2 * Math.Pow(2, 10 * (t - 1)) + b);
+            }
+
             t--;
             return (float)(c / 2 * (-Math.Pow(2, -10 * t) + 2) + b);
         }

@@ -59,10 +59,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Settings.MouseZoomRect(X, Y, finalize: true);
 
             if (Configuration.LockHorizontalAxis)
+            {
                 Plot.SetAxisLimitsX(originalLimits.XMin, originalLimits.XMax);
+            }
 
             if (Configuration.LockVerticalAxis)
+            {
                 Plot.SetAxisLimitsY(originalLimits.YMin, originalLimits.YMax);
+            }
         }
     }
 }

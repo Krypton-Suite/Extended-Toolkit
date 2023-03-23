@@ -47,7 +47,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             foreach (FontFamily installedFont in FontFamily.Families)
                 if (string.Equals(installedFont.Name, fontName, System.StringComparison.OrdinalIgnoreCase))
+                {
                     return installedFont.Name;
+                }
+
             return SystemFonts.DefaultFont.Name;
         }
 
@@ -59,7 +62,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (string preferredFont in fontNames)
                 foreach (FontFamily font in FontFamily.Families)
                     if (string.Equals(preferredFont, font.Name, System.StringComparison.OrdinalIgnoreCase))
+                    {
                         return font.Name;
+                    }
+
             return SystemFonts.DefaultFont.Name;
         }
     }

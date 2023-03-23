@@ -81,9 +81,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value <= 0)
+                {
                     throw new ArgumentOutOfRangeException("ScrollWheelZoomFraction", "must be positive");
+                }
+
                 if (value >= 1)
+                {
                     throw new ArgumentOutOfRangeException("ScrollWheelZoomFraction", "must be less than 1");
+                }
 
                 _scrollWheelZoomFraction = value;
             }

@@ -64,7 +64,11 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// <param name="zipFilePath">the filename to save to</param>
         public void SaveZipReportToFile(string zipFilePath)
         {
-            if (string.IsNullOrEmpty(zipFilePath)) return;
+            if (string.IsNullOrEmpty(zipFilePath))
+            {
+                return;
+            }
+
             var result = _reportFileZipper.Save(zipFilePath);
             if (!result.Saved)
             {

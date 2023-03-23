@@ -158,13 +158,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Update(double[] levels, Color[] colors = null)
         {
             if (levels is null || levels.Length == 0)
+            {
                 throw new ArgumentException("values must not be null or empty");
+            }
 
             bool numberOfGroupsChanged = (Levels is null) || (levels.Length != Levels.Length);
             if (numberOfGroupsChanged)
             {
                 if (colors is null || colors.Length != levels.Length)
+                {
                     throw new ArgumentException("when changing the number of values a new colors array must be provided");
+                }
 
                 Colors = new Color[colors.Length];
                 Array.Copy(colors, 0, Colors, 0, colors.Length);
@@ -204,10 +208,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 double angleSwept = 0;
                 if (scaleRange > 0)
+                {
                     angleSwept = angleRange * values[i] / scaleRange;
+                }
 
                 if (!clockwise)
+                {
                     angleSwept *= -1;
+                }
 
                 double initialAngle = (mode == RadialGaugeMode.Stacked) ? angleStart : angleSum;
                 angleSum += angleSwept;
@@ -218,7 +226,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             double backOffset = angleRange * scaleMin / scaleRange;
             if (!clockwise)
+            {
                 backOffset *= -1;
+            }
 
             double backStartAngle = angleStart + backOffset;
 
@@ -228,25 +238,37 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (Colors.Length != GaugeCount)
+            {
                 throw new InvalidOperationException($"{nameof(Colors)} must be an array with length equal to number of values");
+            }
 
             if (Labels != null && Labels.Length != GaugeCount)
+            {
                 throw new InvalidOperationException($"If {nameof(Labels)} is not null, it must be the same length as the number of values");
+            }
 
             if (MaximumAngle < 0 || MaximumAngle > 360)
+            {
                 throw new InvalidOperationException($"{nameof(MaximumAngle)} must be [0-360]");
+            }
 
             if (LabelPositionFraction < 0 || LabelPositionFraction > 1)
+            {
                 throw new InvalidOperationException($"{nameof(LabelPositionFraction)} must be a value from 0 to 1");
+            }
 
             if (SpaceFraction < 0 || SpaceFraction > 1)
+            {
                 throw new InvalidOperationException($"{nameof(SpaceFraction)} must be from 0 to 1");
+            }
         }
 
         public LegendItem[] GetLegendItems()
         {
             if (Labels is null)
+            {
                 return null;
+            }
 
             List<LegendItem> legendItems = new();
             for (int i = 0; i < Labels.Length; i++)

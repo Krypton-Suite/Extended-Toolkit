@@ -178,7 +178,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public virtual void Pause()
         {
             if (CurrentStatus != AnimatorStatus.OnHold && CurrentStatus != AnimatorStatus.Playing)
+            {
                 return;
+            }
+
             _timer.Stop();
             CurrentStatus = AnimatorStatus.Paused;
         }
@@ -217,7 +220,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     propertyName,
                     BindingFlags.IgnoreCase | BindingFlags.Static | BindingFlags.Public | BindingFlags.Instance |
                     BindingFlags.SetProperty);
-            if (prop == null) return;
+            if (prop == null)
+            {
+                return;
+            }
+
             Play(
                 new SafeInvoker<float>(
                     value => prop.SetValue(TargetObject, Convert.ChangeType(value, prop.PropertyType), null),
@@ -261,7 +268,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public virtual void Play<T>(T targetObject, Expression<Func<T, object>> propertySetter, SafeInvoker endCallback)
         {
             if (propertySetter == null)
+            {
                 return;
+            }
+
             TargetObject = targetObject;
 
             var property =

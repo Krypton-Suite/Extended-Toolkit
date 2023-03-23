@@ -102,9 +102,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     m.y[k] = m.y[k] - m.x[l] * m.a[k, l];
                 }
                 if (m.a[k, k] != 0)
+                {
                     m.x[k] = m.y[k] / m.a[k, k];
+                }
                 else
+                {
                     m.x[k] = 0;
+                }
             }
         }
     }

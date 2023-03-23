@@ -146,15 +146,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             }
             else if (lineStyle == LineStyle.Dash)
+            {
                 pen.DashPattern = new float[] { 8.0F, 4.0F };
+            }
             else if (lineStyle == LineStyle.DashDot)
+            {
                 pen.DashPattern = new float[] { 8.0F, 4.0F, 2.0F, 4.0F };
+            }
             else if (lineStyle == LineStyle.DashDotDot)
+            {
                 pen.DashPattern = new float[] { 8.0F, 4.0F, 2.0F, 4.0F, 2.0F, 4.0F };
+            }
             else if (lineStyle == LineStyle.Dot)
+            {
                 pen.DashPattern = new float[] { 2.0F, 4.0F };
+            }
             else
+            {
                 throw new NotImplementedException("line style not supported");
+            }
 
             if (rounded)
             {
@@ -175,10 +185,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (isHatched)
             {
                 if (hatchColor is null)
+                {
                     throw new ArgumentException("hatch color must be defined if hatch style is used");
+                }
                 else
 #pragma warning disable CS8629 // Nullable value type may be null.
+                {
                     return new HatchBrush(ConvertToSDHatchStyle(hatchStyle).Value, hatchColor.Value, color);
+                }
 #pragma warning restore CS8629 // Nullable value type may be null.
             }
             else
@@ -191,9 +205,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static Brush HatchBrush(HatchStyle pattern, Color fillColor, Color hatchColor)
         {
             if (pattern == HatchStyle.None)
+            {
                 return new SolidBrush(fillColor);
+            }
             else
+            {
                 return new HatchBrush(ConvertToSDHatchStyle(pattern)!.Value, hatchColor, fillColor);
+            }
         }
 
         public static System.Drawing.Drawing2D.HatchStyle? ConvertToSDHatchStyle(HatchStyle pattern)
@@ -261,20 +279,34 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             var sf = new StringFormat();
 
             if (h == HorizontalAlignment.Left)
+            {
                 sf.Alignment = StringAlignment.Near;
+            }
             else if (h == HorizontalAlignment.Center)
+            {
                 sf.Alignment = StringAlignment.Center;
+            }
             else if (h == HorizontalAlignment.Right)
+            {
                 sf.Alignment = StringAlignment.Far;
+            }
             else
+            {
                 throw new NotImplementedException();
+            }
 
             if (v == VerticalAlignment.Upper)
+            {
                 sf.LineAlignment = StringAlignment.Near;
+            }
             else if (v == VerticalAlignment.Middle)
+            {
                 sf.LineAlignment = StringAlignment.Center;
+            }
             else if (v == VerticalAlignment.Lower)
+            {
                 sf.LineAlignment = StringAlignment.Far;
+            }
 
             return sf;
         }

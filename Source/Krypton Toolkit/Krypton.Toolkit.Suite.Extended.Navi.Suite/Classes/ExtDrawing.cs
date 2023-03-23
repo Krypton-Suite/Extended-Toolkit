@@ -46,9 +46,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
             // To prevent out of memory exceptions when the width or height is 0
             if (bounds.Height == 0)
+            {
                 bounds.Height = 1;
+            }
+
             if (bounds.Width == 0)
+            {
                 bounds.Width = 1;
+            }
 
             // Make the linear brush and assign the custom blend to it
             using (LinearGradientBrush brush = new LinearGradientBrush(new Point(bounds.Left, bounds.Bottom),
@@ -78,9 +83,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
             // To prevent out of memory exceptions when the width or height is 0
             if (bounds.Height == 0)
+            {
                 bounds.Height = 1;
+            }
+
             if (bounds.Width == 0)
+            {
                 bounds.Width = 1;
+            }
 
             // Make the linear brush and assign the custom blend to it
             using (LinearGradientBrush brush = new LinearGradientBrush(new Point(bounds.Left, bounds.Bottom),

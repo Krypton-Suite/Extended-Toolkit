@@ -38,11 +38,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public PopulationMultiSeries(PopulationSeries[] multiSeries)
         {
             if (multiSeries is null)
+            {
                 throw new ArgumentException("groupedSeries cannot be null");
+            }
 
             foreach (var series in multiSeries)
                 if (series.populations.Length != multiSeries[0].populations.Length)
+                {
                     throw new ArgumentException("All series must have the same number of populations");
+                }
 
             this.multiSeries = multiSeries;
         }

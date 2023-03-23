@@ -562,7 +562,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             //set check filter textbox
             if (DataType == typeof(DateTime) || DataType == typeof(TimeSpan) || DataType == typeof(bool))
+            {
                 _checkTextFilter.Enabled = false;
+            }
 
             //set default NOT IN logic
             IsFilterNotinLogicEnabled = false;
@@ -636,7 +638,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void MenuStrip_LostFocus(Object sender, EventArgs e)
         {
             if (!ContainsFocus)
+            {
                 Close();
+            }
         }
 
         /// <summary>
@@ -650,7 +654,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _removedNodes = new TreeNodeItemSelector[] { };
             _removedsessionNodes = new TreeNodeItemSelector[] { };
             if (_textFilterTextChangedTimer != null)
+            {
                 _textFilterTextChangedTimer.Stop();
+            }
 
             base.OnControlRemoved(e);
         }
@@ -864,7 +870,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void SetFilterChecklistEnabled(bool enabled)
         {
             if (!IsFilterEnabled)
+            {
                 enabled = false;
+            }
 
             IsFilterChecklistEnabled = enabled;
             _checkList.Enabled = enabled;
@@ -887,7 +895,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void SetFilterCustomEnabled(bool enabled)
         {
             if (!IsFilterEnabled)
+            {
                 enabled = false;
+            }
 
             IsFilterCustomEnabled = enabled;
             _customFilterMenuItem.Enabled = enabled;
@@ -968,7 +978,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _startingNodes = DuplicateNodes(_loadedNodes);
 
             if (_activeFilterType == FilterType.Custom)
+            {
                 SetNodesCheckState(_loadedNodes, false);
+            }
+
             base.Show(control, x, y);
 
             _filterclick = false;
@@ -1165,17 +1178,25 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     if (_maxChecklistNodes == 0)
                     {
                         if (!_removedNodes.Contains(node))
+                        {
                             _checkList.Nodes.Add(node);
+                        }
                     }
                     else
                     {
                         if (nodecount < _maxChecklistNodes && !_removedNodes.Contains(node))
+                        {
                             _checkList.Nodes.Add(node);
+                        }
                         else if (nodecount == _maxChecklistNodes)
+                        {
                             _checkList.Nodes.Add("...");
-                        if (!_removedNodes.Contains(node) || nodecount == _maxChecklistNodes)
-                            nodecount++;
+                        }
 
+                        if (!_removedNodes.Contains(node) || nodecount == _maxChecklistNodes)
+                        {
+                            nodecount++;
+                        }
                     }
                 }
                 else
@@ -1207,7 +1228,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _customFilterLastFiltersListMenuItem.Checked = false;
 
             if (selectAllNode != null && selectAllNode.Checked && String.IsNullOrEmpty(_checkTextFilter.Text))
+            {
                 CancelFilterMenuItem_Click(null, new EventArgs());
+            }
             else
             {
                 string? oldfilter = FilterString;
@@ -1218,7 +1241,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     selectAllNode = GetSelectEmptyNode();
                     if (selectAllNode != null && selectAllNode.Checked)
+                    {
                         FilterString = "[{0}] IS NULL";
+                    }
 
                     if (_loadedNodes.Length > 2 || selectAllNode == null)
                     {
@@ -1239,35 +1264,49 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         if (filter.Length > 0)
                         {
                             if (FilterString.Length > 0)
+                            {
                                 FilterString += " OR ";
+                            }
 
                             if (DataType == typeof(bool))
+                            {
                                 FilterString += "[{0}] =" + filter;
+                            }
                             else if (DataType == typeof(int) || DataType == typeof(long) || DataType == typeof(short) ||
                                      DataType == typeof(uint) || DataType == typeof(ulong) || DataType == typeof(ushort) ||
                                      DataType == typeof(decimal) ||
                                      DataType == typeof(byte) || DataType == typeof(sbyte) || DataType == typeof(string))
                             {
                                 if (IsFilterNotinLogicEnabled)
+                                {
                                     FilterString += "[{0}] NOT IN (" + filter + ")";
+                                }
                                 else
+                                {
                                     FilterString += "[{0}] IN (" + filter + ")";
+                                }
                             }
                             else if (DataType == typeof(Bitmap))
                             { }
                             else
                             {
                                 if (IsFilterNotinLogicEnabled)
+                                {
                                     FilterString += "Convert([{0}],System.String) NOT IN (" + filter + ")";
+                                }
                                 else
+                                {
                                     FilterString += "Convert([{0}],System.String) IN (" + filter + ")";
+                                }
                             }
                         }
                     }
                 }
 
                 if (oldfilter != FilterString && FilterChanged != null)
+                {
                     FilterChanged(this, new EventArgs());
+                }
             }
         }
 
@@ -1297,7 +1336,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         {
                             string subnode = BuildNodesFilterString(n.Nodes.AsParallel().Cast<TreeNodeItemSelector>().Where(sn => sn.CheckState != CheckState.Unchecked));
                             if (subnode.Length > 0)
+                            {
                                 sb.Append(subnode + appx);
+                            }
                         }
                     }
                 }
@@ -1319,7 +1360,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         {
                             string subnode = BuildNodesFilterString(n.Nodes.AsParallel().Cast<TreeNodeItemSelector>().Where(sn => sn.CheckState != CheckState.Unchecked));
                             if (subnode.Length > 0)
+                            {
                                 sb.Append(subnode + appx);
+                            }
                         }
                     }
                 }
@@ -1353,7 +1396,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             }
 
             if (sb.Length > appx.Length && DataType != typeof(bool))
+            {
                 sb.Remove(sb.Length - appx.Length, appx.Length);
+            }
 
             return sb.ToString();
         }
@@ -1375,7 +1420,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void BuildNodes(IEnumerable<DataGridViewCell> vals)
         {
             if (!IsFilterChecklistEnabled)
+            {
                 return;
+            }
 
             ChecklistClearNodes();
 
@@ -1433,7 +1480,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                                     TreeNodeItemSelector? daysnode;
 
                                     if (!IsFilterDateAndTimeEnabled)
+                                    {
                                         daysnode = monthnode.CreateChildNode(day.Key.ToString("D2"), day.First().Value);
+                                    }
                                     else
                                     {
                                         daysnode = monthnode.CreateChildNode(day.Key.ToString("D2"), day.Key);
@@ -1588,7 +1637,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             }
 
             if (state)
+            {
                 return state;
+            }
 
             foreach (TreeNodeItemSelector node in nodes)
             {
@@ -1596,10 +1647,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     state = HasNodesChecked(new TreeNodeItemSelector[] { nodesel });
                     if (state)
+                    {
                         break;
+                    }
                 }
                 if (state)
+                {
                     break;
+                }
             }
 
             return state;
@@ -1612,9 +1667,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void NodeCheckChange(TreeNodeItemSelector node)
         {
             if (node.CheckState == CheckState.Checked)
+            {
                 node.CheckState = CheckState.Unchecked;
+            }
             else
+            {
                 node.CheckState = CheckState.Checked;
+            }
 
             if (node.NodeType == TreeNodeItemSelector.CustomNodeType.SelectAll)
             {
@@ -1671,7 +1730,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             foreach (TreeNodeItemSelector n in nodes.OfType<TreeNodeItemSelector>())
             {
                 if (n.NodeType == TreeNodeItemSelector.CustomNodeType.SelectAll)
+                {
                     continue;
+                }
 
                 if (n.Nodes.Count > 0)
                 {
@@ -1686,14 +1747,20 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 else
                 {
                     if (result != n.CheckState)
+                    {
                         isAllNodesSomeCheckState = false;
+                    }
                 }
             }
 
             if (isAllNodesSomeCheckState)
+            {
                 return result;
+            }
             else
+            {
                 return CheckState.Indeterminate;
+            }
         }
 
         /// <summary>
@@ -1712,9 +1779,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     break;
                 }
                 else if (i > 2)
+                {
                     break;
+                }
                 else
+                {
                     i++;
+                }
             }
 
             return result;
@@ -1736,9 +1807,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     break;
                 }
                 else if (i > 2)
+                {
                     break;
+                }
                 else
+                {
                     i++;
+                }
             }
 
             return result;
@@ -1882,7 +1957,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void SetCustomFilter(int filtersMenuItemIndex)
         {
             if (_activeFilterType == FilterType.CheckList)
+            {
                 SetNodesCheckState(_loadedNodes, false);
+            }
 
             string filterstring = _customFilterLastFiltersListMenuItem.DropDownItems[filtersMenuItemIndex].Tag.ToString();
             string viewfilterstring = _customFilterLastFiltersListMenuItem.DropDownItems[filtersMenuItemIndex].Text;
@@ -1921,7 +1998,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             //fire Filter changed
             if (oldfilter != FilterString && FilterChanged != null)
+            {
                 FilterChanged(this, new EventArgs());
+            }
         }
 
         #endregion
@@ -1943,7 +2022,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             //fire Filter changed
             if (oldfilter != FilterString && FilterChanged != null)
+            {
                 FilterChanged(this, new EventArgs());
+            }
         }
 
         /// <summary>
@@ -1954,7 +2035,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void CancelFilterMenuItem_MouseEnter(object sender, EventArgs e)
         {
             if ((sender as ToolStripMenuItem).Enabled)
+            {
                 (sender as ToolStripMenuItem).Select();
+            }
         }
 
         /// <summary>
@@ -1966,7 +2049,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             //ignore image nodes
             if (DataType == typeof(Bitmap))
+            {
                 return;
+            }
 
             //open a new Custom filter window
             FormCustomFilter flt = new FormCustomFilter(DataType, IsFilterDateAndTimeEnabled);
@@ -1991,7 +2076,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         }
                     }
                     else
+                    {
                         break;
+                    }
                 }
 
                 if (index < 2)
@@ -2023,7 +2110,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void CustomFilterLastFiltersListMenuItem_MouseEnter(object sender, EventArgs e)
         {
             if ((sender as ToolStripMenuItem).Enabled)
+            {
                 (sender as ToolStripMenuItem).Select();
+            }
         }
 
         /// <summary>
@@ -2088,7 +2177,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             Timer timer = sender as Timer;
             if (timer == null)
+            {
                 return;
+            }
 
             CheckTextFilterHandleTextChanged(timer.Tag.ToString());
 
@@ -2103,7 +2194,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void CheckTextFilter_TextChanged(object sender, EventArgs e)
         {
             if (!_checkTextFilterChangedEnabled)
+            {
                 return;
+            }
 
             if (_textFilterTextChangedDelayNodes != TextFilterTextChangedDelayNodesDisabled && _loadedNodes.Length > _textFilterTextChangedDelayNodes)
             {
@@ -2150,11 +2243,19 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 else
                 {
                     if (node.Text.ToLower().Contains(text))
+                    {
                         node.CheckState = CheckState.Unchecked;
+                    }
                     else
+                    {
                         node.CheckState = CheckState.Checked;
+                    }
+
                     if (removednodesText.Contains(node.Text.ToLower()))
+                    {
                         node.CheckState = CheckState.Checked;
+                    }
+
                     NodeCheckChange(node);
                 }
             }
@@ -2192,7 +2293,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             //ignore image nodes
             if (DataType == typeof(Bitmap))
+            {
                 return;
+            }
 
             _sortAscMenuItem.Checked = true;
             _sortDescMenuItem.Checked = false;
@@ -2204,7 +2307,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             //fire Sort Changed
             if (oldsort != SortString && SortChanged != null)
+            {
                 SortChanged(this, new EventArgs());
+            }
         }
 
         /// <summary>
@@ -2215,7 +2320,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void SortASCMenuItem_MouseEnter(object sender, EventArgs e)
         {
             if ((sender as ToolStripMenuItem).Enabled)
+            {
                 (sender as ToolStripMenuItem).Select();
+            }
         }
 
         /// <summary>
@@ -2227,7 +2334,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             //ignore image nodes
             if (DataType == typeof(Bitmap))
+            {
                 return;
+            }
 
             _sortAscMenuItem.Checked = false;
             _sortDescMenuItem.Checked = true;
@@ -2239,7 +2348,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             //fire Sort Changed
             if (oldsort != SortString && SortChanged != null)
+            {
                 SortChanged(this, new EventArgs());
+            }
         }
 
         /// <summary>
@@ -2250,7 +2361,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void SortDESCMenuItem_MouseEnter(object sender, EventArgs e)
         {
             if ((sender as ToolStripMenuItem).Enabled)
+            {
                 (sender as ToolStripMenuItem).Select();
+            }
         }
 
         /// <summary>
@@ -2265,7 +2378,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             CleanSort();
             //fire Sort changed
             if (oldsort != SortString && SortChanged != null)
+            {
                 SortChanged(this, new EventArgs());
+            }
         }
 
         /// <summary>
@@ -2276,7 +2391,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void CancelSortMenuItem_MouseEnter(object sender, EventArgs e)
         {
             if ((sender as ToolStripMenuItem).Enabled)
+            {
                 (sender as ToolStripMenuItem).Select();
+            }
         }
 
         #endregion
@@ -2358,10 +2475,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             // apply the needed height only when scaled
             if (scalingfactor == 1)
+            {
                 Size = new Size(w, h);
+            }
             else
+            {
                 Size = new Size(w, h + (finalHeight - h < 0 ? 0 : finalHeight - h));
-
+            }
         }
 
         /// <summary>

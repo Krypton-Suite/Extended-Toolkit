@@ -157,9 +157,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             get
             {
                 if (_parent is TreeNodeItemSelector)
+                {
                     return _parent;
+                }
                 else
+                {
                     return null;
+                }
             }
             set
             {
@@ -247,7 +251,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             }
 
             if (n != null)
+            {
                 AddChild(n);
+            }
 
             return n;
         }

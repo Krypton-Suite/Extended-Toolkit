@@ -40,9 +40,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             if (checkHandled)
             {
                 if (itemChecked)
+                {
                     ice.NewValue = CheckState.Checked;
+                }
                 else
+                {
                     ice.NewValue = CheckState.Unchecked;
+                }
             }
         }
 

@@ -152,7 +152,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double[] Random(Random rand, int pointCount, double multiplier = 1, double offset = 0)
         {
             if (rand is null)
+            {
                 rand = new Random();
+            }
+
             double[] ys = new double[pointCount];
             for (int i = 0; i < pointCount; i++)
                 ys[i] = rand.NextDouble() * multiplier + offset;
@@ -171,7 +174,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double[,] Random2D(Random rand, int rows, int columns, double multiplier = 1, double offset = 0)
         {
             if (rand is null)
+            {
                 throw new ArgumentNullException();
+            }
 
             double[,] data = new double[rows, columns];
 
@@ -193,7 +198,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static int[] RandomInts(Random rand, int pointCount, double multiplier = 1, double offset = 0)
         {
             if (rand is null)
+            {
                 rand = new Random();
+            }
+
             int[] ys = new int[pointCount];
             for (int i = 0; i < pointCount; i++)
                 ys[i] = (int)(rand.NextDouble() * multiplier + offset);
@@ -216,7 +224,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 double u2 = 1.0 - rand.NextDouble();
                 double randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
                 if (Math.Abs(randStdNormal) < maxSdMultiple)
+                {
                     return mean + stdDev * randStdNormal;
+                }
             }
         }
 
@@ -244,7 +254,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double[] RandomNormal(Random rand, int pointCount, double mean = .5, double stdDev = .5, double maxSdMultiple = 10)
         {
             if (rand == null)
+            {
                 rand = new Random(0);
+            }
+
             double[] values = new double[pointCount];
             for (int i = 0; i < values.Length; i++)
                 values[i] = RandomNormalValue(rand, mean, stdDev, maxSdMultiple);
@@ -264,7 +277,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double[] NoisyLinear(Random rand, int pointCount = 100, double slope = 1, double offset = 0, double noise = 0.1)
         {
             if (rand is null)
+            {
                 rand = new Random(0);
+            }
 
             double[] data = new double[pointCount];
             for (int i = 0; i < data.Length; i++)
@@ -285,7 +300,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double[] NoisySin(Random rand, int pointCount, double oscillations = 1, double noiseLevel = .5, double mult = 1)
         {
             if (rand is null)
+            {
                 rand = new Random(0);
+            }
+
             double[] values = Sin(pointCount, oscillations);
             for (int i = 0; i < values.Length; i++)
                 values[i] += (rand.NextDouble() - .5) * noiseLevel * mult;
@@ -302,7 +320,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static Color RandomColor(Random rand, int min = 0, int max = 255)
         {
             if (rand is null)
+            {
                 rand = new Random();
+            }
+
             int r = rand.Next(min, max);
             int g = rand.Next(min, max);
             int b = rand.Next(min, max);
@@ -330,7 +351,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double[] RandomWalk(Random rand, int pointCount, double mult = 1, double offset = 0)
         {
             if (rand is null)
+            {
                 rand = new Random(0);
+            }
+
             var data = new double[pointCount];
             data[0] = offset;
             for (int i = 1; i < data.Length; i++)
@@ -395,7 +419,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private static OHLC[] RandomStockPrices(Random rand, int pointCount, double mult = 10, double startingPrice = 123.45)
         {
             if (rand is null)
+            {
                 rand = new Random(0);
+            }
 
             double[] basePrices = RandomWalk(rand, pointCount, mult, startingPrice);
 
@@ -434,9 +460,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             TimeSpan ts = TimeSpan.FromMinutes(deltaMinutes) + TimeSpan.FromDays(deltaDays);
             if (sequential)
+            {
                 return RandomStockPrices(rand, pointCount, mult, startingPrice);
+            }
             else
+            {
                 return RandomStockPrices(rand, pointCount, ts, mult, startingPrice);
+            }
         }
 
         /// <summary>
@@ -450,7 +480,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static (double, double) RandomSpan(Random rand = null, double low = 0, double high = 100, double minimumSpacing = 10)
         {
             if (rand is null)
+            {
                 rand = new Random();
+            }
 
             double span = Math.Abs(high - low);
 
@@ -461,9 +493,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 if (Math.Abs(valA - valB) >= minimumSpacing)
                 {
                     if (valA < valB)
+                    {
                         return (valA, valB);
+                    }
                     else
+                    {
                         return (valB, valA);
+                    }
                 }
             }
 
@@ -502,13 +538,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double[] Range(double start, double stop, double step, bool includeStop = false)
         {
             if (step <= 0)
+            {
                 throw new ArgumentException("step must be >0. To make a descending series make stop < start.");
+            }
 
             double valueSpan = Math.Abs(start - stop);
             int valueCount = (int)(valueSpan / step);
             double stepSize = (stop > start) ? step : -step;
             if (includeStop)
+            {
                 valueCount += 1;
+            }
+
             double[] values = new double[valueCount];
 
             for (int i = 0; i < valueCount; i++)

@@ -90,10 +90,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (double.IsNaN(Position1) || double.IsInfinity(Position1))
+            {
                 throw new InvalidOperationException("position1 must be a valid number");
+            }
 
             if (double.IsNaN(Position2) || double.IsInfinity(Position2))
+            {
                 throw new InvalidOperationException("position2 must be a valid number");
+            }
         }
 
         public LegendItem[] GetLegendItems()
@@ -111,12 +115,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public AxisLimits GetAxisLimits()
         {
             if (IgnoreAxisAuto)
+            {
                 return new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
+            }
 
             if (IsHorizontal)
+            {
                 return new AxisLimits(Min, Max, double.NaN, double.NaN);
+            }
             else
+            {
                 return new AxisLimits(double.NaN, double.NaN, Min, Max);
+            }
         }
 
         private enum Edge { Edge1, Edge2, Neither };
@@ -135,20 +145,32 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (IsHorizontal)
             {
                 if (Math.Abs(Position1 - coordinateX) <= snapX)
+                {
                     edgeUnderMouse = Edge.Edge1;
+                }
                 else if (Math.Abs(Position2 - coordinateX) <= snapX)
+                {
                     edgeUnderMouse = Edge.Edge2;
+                }
                 else
+                {
                     edgeUnderMouse = Edge.Neither;
+                }
             }
             else
             {
                 if (Math.Abs(Position1 - coordinateY) <= snapY)
+                {
                     edgeUnderMouse = Edge.Edge1;
+                }
                 else if (Math.Abs(Position2 - coordinateY) <= snapY)
+                {
                     edgeUnderMouse = Edge.Edge2;
+                }
                 else
+                {
                     edgeUnderMouse = Edge.Neither;
+                }
             }
 
             return edgeUnderMouse != Edge.Neither;
@@ -163,7 +185,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void DragTo(double coordinateX, double coordinateY, bool fixedSize)
         {
             if (!DragEnabled)
+            {
                 return;
+            }
 
             if (IsHorizontal)
             {
@@ -181,13 +205,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 Position1 = IsHorizontal ? coordinateX : coordinateY;
                 if (DragFixedSize || fixedSize)
+                {
                     Position2 = Position1 + sizeBeforeDrag;
+                }
             }
             else if (edgeUnderMouse == Edge.Edge2)
             {
                 Position2 = IsHorizontal ? coordinateX : coordinateY;
                 if (DragFixedSize || fixedSize)
+                {
                     Position1 = Position2 - sizeBeforeDrag;
+                }
             }
             else
             {

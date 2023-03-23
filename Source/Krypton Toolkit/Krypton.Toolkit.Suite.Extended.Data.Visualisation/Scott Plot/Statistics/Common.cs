@@ -37,10 +37,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static (double min, double max, double sum) MinMaxSum(double[] values)
         {
             if (values is null)
+            {
                 throw new ArgumentNullException(nameof(values));
+            }
 
             if (values.Length == 0)
+            {
                 throw new ArgumentException("input cannot be empty");
+            }
 
             double min = double.MaxValue;
             double max = double.MinValue;
@@ -102,7 +106,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double NthOrderStatistic(double[] values, int n)
         {
             if (n < 1 || n > values.Length)
+            {
                 throw new ArgumentException("n must be a number from 1 to the length of the array");
+            }
 
             double[] valuesCopy = new double[values.Length];
             Array.Copy(values, valuesCopy, values.Length);
@@ -115,11 +121,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double Quantile(double[] values, int n, int quantileCount)
         {
             if (n == 0)
+            {
                 return values.Min();
+            }
             else if (n == quantileCount)
+            {
                 return values.Max();
+            }
             else
+            {
                 return NthOrderStatistic(values, n * values.Length / quantileCount);
+            }
         }
 
         /// <summary>
@@ -145,9 +157,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double Percentile(double[] values, double percentile)
         {
             if (percentile == 0)
+            {
                 return values.Min();
+            }
             else if (percentile == 100)
+            {
                 return values.Max();
+            }
+
             int percentileIndex = (int)(percentile / 100.0 * (values.Length - 1));
 
             double[] copiedValues = new double[values.Length];
@@ -193,7 +210,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
              */
 
             if (leftIndex == rightIndex)
+            {
                 return values[leftIndex];
+            }
 
             if (k == 0)
             {
@@ -227,11 +246,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             int pivotIndex = partitionIndex - leftIndex;
 
             if (k == pivotIndex)
+            {
                 return values[partitionIndex];
+            }
             else if (k < pivotIndex)
+            {
                 return QuickSelect(values, leftIndex, partitionIndex - 1, k);
+            }
             else
+            {
                 return QuickSelect(values, partitionIndex + 1, rightIndex, k - pivotIndex - 1);
+            }
         }
 
         /// <summary>
@@ -314,7 +339,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 #pragma warning restore CS8629 // Nullable value type may be null.
             double sum = ys.Sum();
             if (percent)
+            {
                 sum /= 100;
+            }
+
             for (int i = 0; i < ys.Length; i++)
                 ys[i] /= sum;
             return ys;
@@ -373,9 +401,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 var stats = new BasicStats(values);
                 if (double.IsNaN(min))
+                {
                     min = stats.Min;
+                }
+
                 if (double.IsNaN(max))
+                {
                     max = stats.Max;
+                }
             }
 
             // create evenly sized bins

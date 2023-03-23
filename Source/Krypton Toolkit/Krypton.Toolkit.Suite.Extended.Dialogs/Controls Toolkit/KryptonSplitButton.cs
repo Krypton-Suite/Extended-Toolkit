@@ -201,7 +201,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             base.OnPaint(e);
 
-            if (!ShowSplitOption) return;
+            if (!ShowSplitOption)
+            {
+                return;
+            }
 
             Graphics g = e.Graphics;
 

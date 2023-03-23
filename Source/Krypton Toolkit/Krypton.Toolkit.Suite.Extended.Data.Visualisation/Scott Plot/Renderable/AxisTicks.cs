@@ -78,7 +78,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (!IsVisible)
+            {
                 return;
+            }
 
             using Graphics gfx = GDI.Graphics(bmp, dims, lowQuality, false);
 
@@ -91,19 +93,29 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 .ToArray();
 
             if (MajorTickVisible)
+            {
                 AxisTicksRender.RenderTickMarks(dims, gfx, visibleMajorTicks, RulerMode ? MajorTickLength * 4 : MajorTickLength, MajorTickColor, Edge, PixelOffset);
+            }
 
             if (TickLabelVisible)
+            {
                 AxisTicksRender.RenderTickLabels(dims, gfx, TickCollection, TickLabelFont, Edge, TickLabelRotation, RulerMode, PixelOffset, MajorTickLength, MinorTickLength);
+            }
 
             if (MinorTickVisible)
+            {
                 AxisTicksRender.RenderTickMarks(dims, gfx, visibleMinorTicks, MinorTickLength, MinorTickColor, Edge, PixelOffset);
+            }
 
             if (MajorGridVisible)
+            {
                 AxisTicksRender.RenderGridLines(dims, gfx, visibleMajorTicks, MajorGridStyle, MajorGridColor, MajorGridWidth, Edge);
+            }
 
             if (MinorGridVisible)
+            {
                 AxisTicksRender.RenderGridLines(dims, gfx, visibleMinorTicks, MinorGridStyle, MinorGridColor, MinorGridWidth, Edge);
+            }
         }
     }
 }

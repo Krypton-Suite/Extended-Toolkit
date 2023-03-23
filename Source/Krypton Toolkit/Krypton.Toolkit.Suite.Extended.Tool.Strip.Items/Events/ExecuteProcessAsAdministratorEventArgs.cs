@@ -51,7 +51,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             bool hasAdministrativeRights = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
-            if (string.IsNullOrEmpty(processName)) throw new ArgumentNullException();
+            if (string.IsNullOrEmpty(processName))
+            {
+                throw new ArgumentNullException();
+            }
 
             if (!hasAdministrativeRights)
             {

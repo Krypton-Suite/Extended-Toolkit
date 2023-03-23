@@ -305,7 +305,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             //set default values
             if (!ButtonCloseEnabled)
+            {
                 Items.RemoveAt(0);
+            }
+
             comboBox_columns.SelectedIndex = 0;
 
             // Use Krypton
@@ -329,7 +332,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 foreach (KeyValuePair<string, string> translation in translations)
                 {
                     if (Translations.ContainsKey(translation.Key))
+                    {
                         Translations[translation.Key] = translation.Value;
+                    }
                 }
             }
         }
@@ -366,7 +371,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     foreach (KeyValuePair<string, string> translation in translations)
                     {
                         if (!ret.ContainsKey(translation.Key) && Translations.ContainsKey(translation.Key))
+                        {
                             ret.Add(translation.Key, translation.Value);
+                        }
                     }
                 }
                 catch { }
@@ -376,7 +383,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             foreach (KeyValuePair<string, string> translation in GetTranslations())
             {
                 if (!ret.ContainsKey(translation.Key))
+                {
                     ret.Add(translation.Key, translation.Value);
+                }
             }
 
             return ret;
@@ -391,9 +400,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             comboBox_columns.Items.Clear();
             comboBox_columns.Items.AddRange(new object[] { Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()] });
             if (_columnsList != null)
+            {
                 foreach (DataGridViewColumn c in _columnsList)
                     if (c.Visible)
+                    {
                         comboBox_columns.Items.Add(c.HeaderText);
+                    }
+            }
+
             comboBox_columns.SelectedIndex = 0;
             comboBox_columns.EndUpdate();
             button_close.ToolTipText = Translations[TranslationKey.ADGVSTBButtonCloseToolTip.ToString()];
@@ -428,7 +442,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     if (cols.Length == comboBox_columns.Items.Count - 1)
                     {
                         if (cols[comboBox_columns.SelectedIndex - 1].HeaderText == comboBox_columns.SelectedItem.ToString())
+                        {
                             c = cols[comboBox_columns.SelectedIndex - 1];
+                        }
                     }
                 }
 
@@ -477,9 +493,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         void textBox_search_Enter(object sender, EventArgs e)
         {
             if (textBox_search.Text == textBox_search.ToolTipText && textBox_search.ForeColor == Color.LightGray)
+            {
                 textBox_search.Text = "";
+            }
             else
+            {
                 textBox_search.SelectAll();
+            }
 
             textBox_search.ForeColor = SystemColors.WindowText;
         }
@@ -530,9 +550,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             comboBox_columns.Items.Clear();
             comboBox_columns.Items.AddRange(new object[] { Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()] });
             if (_columnsList != null)
+            {
                 foreach (DataGridViewColumn c in _columnsList)
                     if (c.Visible)
+                    {
                         comboBox_columns.Items.Add(c.HeaderText);
+                    }
+            }
+
             comboBox_columns.SelectedIndex = 0;
             comboBox_columns.EndUpdate();
         }
@@ -629,9 +654,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             }
 
             if (comboBox_columns.Width != w1)
+            {
                 comboBox_columns.Width = w1;
+            }
+
             if (textBox_search.Width != w2)
+            {
                 textBox_search.Width = w2;
+            }
 
             ResumeLayout();
         }

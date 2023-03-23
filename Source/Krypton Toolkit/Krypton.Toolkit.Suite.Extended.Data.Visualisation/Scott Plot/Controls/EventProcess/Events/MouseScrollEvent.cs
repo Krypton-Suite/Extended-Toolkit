@@ -57,9 +57,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double yFrac = ScrolledUp ? increment : decrement;
 
             if (Configuration.LockHorizontalAxis)
+            {
                 xFrac = 1;
+            }
+
             if (Configuration.LockVerticalAxis)
+            {
                 yFrac = 1;
+            }
 
             Settings.AxesZoomTo(xFrac, yFrac, X, Y);
         }

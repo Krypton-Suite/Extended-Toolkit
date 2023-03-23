@@ -58,19 +58,27 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (double.IsNaN(X) || double.IsNaN(Y))
+            {
                 throw new InvalidOperationException("X and Y cannot be NaN");
+            }
 
             if (double.IsInfinity(X) || double.IsInfinity(Y))
+            {
                 throw new InvalidOperationException("X and Y cannot be Infinity");
+            }
 
             if (string.IsNullOrWhiteSpace(Label))
+            {
                 throw new InvalidOperationException("text cannot be null or whitespace");
+            }
         }
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (string.IsNullOrWhiteSpace(Label) || IsVisible == false)
+            {
                 return;
+            }
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
             using (var font = GDI.Font(Font))

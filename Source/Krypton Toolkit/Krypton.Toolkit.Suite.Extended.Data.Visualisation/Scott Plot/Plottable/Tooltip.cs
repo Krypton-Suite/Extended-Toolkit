@@ -62,19 +62,27 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (string.IsNullOrEmpty(Label))
+            {
                 throw new InvalidOperationException("Label may not be empty");
+            }
 
             if (double.IsNaN(X) || double.IsInfinity(X))
+            {
                 throw new InvalidOperationException("X must be a real number");
+            }
 
             if (double.IsNaN(Y) || double.IsInfinity(Y))
+            {
                 throw new InvalidOperationException("Y must be a real number");
+            }
         }
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (!IsVisible)
+            {
                 return;
+            }
 
             using (var gfx = GDI.Graphics(bmp, dims, lowQuality, clipToDataArea: true))
             using (var font = GDI.Font(Font))

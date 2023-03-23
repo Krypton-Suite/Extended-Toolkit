@@ -81,7 +81,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public LegendItem[] GetLegendItems()
         {
             if (SliceLabels is null)
+            {
                 return null;
+            }
 
             return Enumerable
                 .Range(0, Values.Length)
@@ -193,23 +195,29 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     if (!string.IsNullOrWhiteSpace(labelStrings[i]))
                     {
                         if (useCustomLabelColors)
+                        {
                             sliceFontBrush.Color = SliceLabelColors[i];
+                        }
 
                         gfx.DrawString(labelStrings[i], sliceFont, sliceFontBrush, (float)labelXs[i], (float)labelYs[i], sfCenter);
                     }
 
                 if (OutlineSize > 0)
+                {
                     gfx.DrawEllipse(
                         outlinePen,
                         boundingRectangle.X,
                         boundingRectangle.Y,
                         boundingRectangle.Width,
                         boundingRectangle.Height);
+                }
 
                 gfx.ResetClip();
 
                 if (DonutLabel != null)
+                {
                     gfx.DrawString(DonutLabel, centerFont, centerFontBrush, dims.GetPixelX(0), dims.GetPixelY(0), sfCenter);
+                }
 
                 if (Explode)
                 {

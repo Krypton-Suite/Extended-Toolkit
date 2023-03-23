@@ -73,7 +73,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             InitializeComponent();
             // add Palette Handler
             if (_palette != null)
+            {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
 
@@ -90,7 +92,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             InitializeComponent();
             // add Palette Handler
             if (_palette != null)
+            {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
 
@@ -106,7 +110,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
+            {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;

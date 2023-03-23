@@ -39,7 +39,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             // add Palette Handler
             if (_palette != null)
+            {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             KryptonManager.GlobalPaletteChanged += new EventHandler(GlobalPaletteChanged);
 
@@ -72,7 +74,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
 
             if (_palette != null)
+            {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
 
             _palette = KryptonManager.CurrentGlobalPalette;

@@ -35,7 +35,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.Drawing
         public static (double[] xs, double[] ysAbove, double[] ysBelow) PolyAboveAndBelow(double[] xs, double[] ys, double baseline)
         {
             if (xs.Length != ys.Length)
+            {
                 throw new ArgumentException("xs and ys must have same length");
+            }
 
             double[] intersectionsX = new double[ys.Length - 1];
             double[] intersectionsY = new double[ys.Length - 1];
@@ -50,7 +52,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.Drawing
                 double y2 = ys[i + 1];
 
                 if ((y1 <= baseline && y2 <= baseline) || (y1 >= baseline && y2 >= baseline))
+                {
                     continue;
+                }
 
                 double deltaX = x2 - x1;
                 double deltaY = y2 - y1;

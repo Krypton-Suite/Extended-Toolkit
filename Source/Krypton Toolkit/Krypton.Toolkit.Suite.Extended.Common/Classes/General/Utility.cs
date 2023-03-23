@@ -72,8 +72,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static StringFormat GetStringFormat(ContentAlignment contentAlignment)
         {
             if (!Enum.IsDefined(typeof(ContentAlignment), (int)contentAlignment))
+            {
                 throw new System.ComponentModel.InvalidEnumArgumentException(
                     "contentAlignment", (int)contentAlignment, typeof(ContentAlignment));
+            }
 
             StringFormat stringFormat = new StringFormat();
 

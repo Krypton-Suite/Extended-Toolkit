@@ -40,10 +40,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public BasicStats(double[] values)
         {
             if (values is null)
+            {
                 throw new ArgumentNullException();
+            }
 
             if (values.Length == 0)
+            {
                 throw new ArgumentException("input cannot be empty");
+            }
 
             Count = values.Length;
             (Min, Max, Sum) = Common.MinMaxSum(values);

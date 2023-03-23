@@ -1478,9 +1478,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             Debug.Assert(cols != null);
             // All columns with DisplayIndex != -1 are put into the initialColumns array
-            foreach (OutlookGridColumn col in cols)
+            if (cols != null)
             {
-                AddInternalColumn(col);
+                foreach (OutlookGridColumn col in cols)
+                {
+                    AddInternalColumn(col);
+                }
             }
         }
 
@@ -1492,9 +1495,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             Debug.Assert(cols != null);
             // All columns with DisplayIndex != -1 are put into the initialColumns array
-            foreach (OutlookGridColumn col in cols)
+            if (cols != null)
             {
-                AddInternalColumn(col);
+                foreach (OutlookGridColumn col in cols)
+                {
+                    AddInternalColumn(col);
+                }
             }
         }
 

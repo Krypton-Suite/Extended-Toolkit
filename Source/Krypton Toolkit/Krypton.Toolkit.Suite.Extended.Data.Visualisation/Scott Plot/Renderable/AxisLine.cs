@@ -38,7 +38,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             using (var gfx = GDI.Graphics(bmp, dims, lowQuality, false))
             using (var pen = GDI.Pen(Color, Width))
@@ -49,15 +51,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 float bottom = dims.DataOffsetY + dims.DataHeight;
 
                 if (Edge == Edge.Bottom)
+                {
                     gfx.DrawLine(pen, left, bottom + PixelOffset, right, bottom + PixelOffset);
+                }
                 else if (Edge == Edge.Left)
+                {
                     gfx.DrawLine(pen, left - PixelOffset, bottom, left - PixelOffset, top);
+                }
                 else if (Edge == Edge.Right)
+                {
                     gfx.DrawLine(pen, right + PixelOffset, bottom, right + PixelOffset, top);
+                }
                 else if (Edge == Edge.Top)
+                {
                     gfx.DrawLine(pen, left, top - PixelOffset, right, top - PixelOffset);
+                }
                 else
+                {
                     throw new NotImplementedException();
+                }
             }
         }
     }

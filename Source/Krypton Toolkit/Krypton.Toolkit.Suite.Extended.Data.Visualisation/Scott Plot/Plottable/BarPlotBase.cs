@@ -128,7 +128,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             valueMax = Math.Max(valueMax, ValueBase);
 
             if (ShowValuesAboveBars)
+            {
                 valueMax += (valueMax - valueMin) * .1; // increase by 10% to accommodate label
+            }
 
             positionMin -= BarWidth / 2;
             positionMax += BarWidth / 2;

@@ -86,7 +86,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             Axis[] axes = Axes.Where(x => x.IsHorizontal && x.AxisIndex == xAxisIndex).ToArray();
             if (axes.Length == 0)
+            {
                 throw new InvalidOperationException($"There no X axes with an axis index of {xAxisIndex}");
+            }
+
             return axes[0];
         }
 
@@ -97,7 +100,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             Axis[] axes = Axes.Where(x => x.IsVertical && x.AxisIndex == yAxisIndex).ToArray();
             if (axes.Length == 0)
+            {
                 throw new InvalidOperationException($"There no Y axes with an axis index of {yAxisIndex}");
+            }
+
             return axes[0];
         }
 
@@ -249,7 +255,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void AxesZoomPx(float xPx, float yPx, bool lockRatio = false)
         {
             if (lockRatio)
+            {
                 (xPx, yPx) = (Math.Max(xPx, yPx), Math.Max(xPx, yPx));
+            }
 
             foreach (Axis axis in Axes)
             {
@@ -403,13 +411,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (var limits in plottableLimits)
             {
                 if (!double.IsNaN(limits.XMin))
+                {
                     min = double.IsNaN(min) ? limits.XMin : Math.Min(min, limits.XMin);
+                }
+
                 if (!double.IsNaN(limits.XMax))
+                {
                     max = double.IsNaN(max) ? limits.XMax : Math.Max(max, limits.XMax);
+                }
             }
 
             if (double.IsNaN(min) && double.IsNaN(max))
+            {
                 return;
+            }
 
             var xAxis = GetXAxis(xAxisIndex);
             xAxis.Dims.SetAxis(min, max);
@@ -432,13 +447,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (var limits in plottableLimits)
             {
                 if (!double.IsNaN(limits.YMin))
+                {
                     min = double.IsNaN(min) ? limits.YMin : Math.Min(min, limits.YMin);
+                }
+
                 if (!double.IsNaN(limits.YMax))
+                {
                     max = double.IsNaN(max) ? limits.YMax : Math.Max(max, limits.YMax);
+                }
             }
 
             if (double.IsNaN(min) && double.IsNaN(max))
+            {
                 return;
+            }
 
             var yAxis = GetYAxis(yAxisIndex);
             yAxis.Dims.SetAxis(min, max);
@@ -528,9 +550,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (Axis axis in Axes)
             {
                 if (axis.IsHorizontal)
+                {
                     axis.Dims.Resize(Width, XAxis.Dims.DataSizePx, XAxis.Dims.DataOffsetPx);
+                }
                 else
+                {
                     axis.Dims.Resize(Height, YAxis.Dims.DataSizePx, YAxis.Dims.DataOffsetPx);
+                }
             }
         }
 
@@ -558,7 +584,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             // TODO: separate this into distinct X and Y functions (requires refactoring plottable interface)
             bool atLeastOneAxisIsZero = xAxisIndex == 0 || yAxisIndex == 0;
             if (!atLeastOneAxisIsZero)
+            {
                 throw new InvalidOperationException();
+            }
 
             // Adjust padding around the data area to accommodate title and tick labels.
             //
@@ -633,9 +661,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (Axis axis in Axes)
             {
                 if (axis.IsHorizontal)
+                {
                     axis.Dims.SetPadding(padLeft, padRight);
+                }
                 else
+                {
                     axis.Dims.SetPadding(padTop, padBottom);
+                }
             }
         }
     }

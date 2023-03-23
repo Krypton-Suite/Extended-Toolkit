@@ -60,9 +60,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void RefreshPalette()
         {
             if (m_PaletteMode == PaletteMode.Global)
+            {
                 m_Palette = KryptonManager.CurrentGlobalPalette;
+            }
             else
+            {
                 m_Palette = KryptonManager.GetPaletteForMode(m_PaletteMode);
+            }
 
             m_Renderer = m_Palette.GetRenderer();
             m_PaletteRedirect = new PaletteRedirect(m_Palette);
@@ -143,7 +147,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_DesignerHost == null)
+                {
                     m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
+                }
+
                 return m_DesignerHost;
             }
         }
@@ -153,7 +160,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_SelectionService == null)
+                {
                     m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                }
+
                 return m_SelectionService;
             }
         }
@@ -207,7 +217,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_DesignerHost == null)
+                {
                     m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
+                }
+
                 return m_DesignerHost;
             }
         }
@@ -217,7 +230,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_SelectionService == null)
+                {
                     m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                }
+
                 return m_SelectionService;
             }
         }

@@ -124,7 +124,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             //(5) Create redirection object to the base palette
             // add Palette Handler
             if (_palette != null)
+            {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
 
@@ -588,8 +590,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
 
             //Check Invalidation
-            if (DoInvalidate) Invalidate();
-
+            if (DoInvalidate)
+            {
+                Invalidate();
+            }
         }
         private void KryptonSliderButton_MouseUp(object sender, MouseEventArgs e)
         {
@@ -786,7 +790,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
+            {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;

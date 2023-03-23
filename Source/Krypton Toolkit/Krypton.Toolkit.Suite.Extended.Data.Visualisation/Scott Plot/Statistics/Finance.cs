@@ -38,10 +38,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double[] SMA(double[] values, int period, bool trimNan = true)
         {
             if (period < 2)
+            {
                 throw new ArgumentException("period must be 2 or greater");
+            }
 
             if (period > values.Length)
+            {
                 throw new ArgumentException("period cannot be longer than number of values");
+            }
 
             double[] sma = new double[values.Length];
             for (int i = 0; i < values.Length; i++)
@@ -71,10 +75,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double[] SMStDev(double[] values, int period)
         {
             if (period < 2)
+            {
                 throw new ArgumentException("period must be 2 or greater");
+            }
 
             if (period > values.Length)
+            {
                 throw new ArgumentException("period cannot be longer than number of values");
+            }
 
             double[] stDev = new double[values.Length];
             for (int i = 0; i < values.Length; i++)

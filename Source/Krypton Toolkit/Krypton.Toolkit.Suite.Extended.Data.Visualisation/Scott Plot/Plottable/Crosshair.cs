@@ -155,7 +155,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             HorizontalLine.Render(dims, bmp, lowQuality);
             VerticalLine.Render(dims, bmp, lowQuality);

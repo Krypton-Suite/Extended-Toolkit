@@ -126,13 +126,17 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             _renderer = renderer;
 
             if (_renderer != null)
+            {
                 Refresh();
+            }
         }
 
         private void SetValueInternal(bool checkedValue)
         {
             if (checkedValue == _checked)
+            {
                 return;
+            }
 
             while (_animating)
             {
@@ -170,7 +174,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 newButtonValue = ButtonValue + _animationStep;
 
                 if (newButtonValue > _animationTarget)
+                {
                     newButtonValue = _animationTarget;
+                }
 
                 ButtonValue = newButtonValue;
 
@@ -181,7 +187,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 newButtonValue = ButtonValue - _animationStep;
 
                 if (newButtonValue < _animationTarget)
+                {
                     newButtonValue = _animationTarget;
+                }
 
                 ButtonValue = newButtonValue;
 
@@ -189,9 +197,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             }
 
             if (animationDone)
+            {
                 AnimationComplete();
+            }
             else
+            {
                 _animationTimer.Enabled = true;
+            }
         }
 
         private void AnimationComplete()
@@ -210,10 +222,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             Refresh();
 
             if (CheckedChanged != null)
+            {
                 CheckedChanged(this, new EventArgs());
+            }
 
             if (_lastMouseEventArgs != null)
+            {
                 OnMouseMove(_lastMouseEventArgs);
+            }
 
             _lastMouseEventArgs = null;
         }
@@ -414,7 +430,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                     _grayWhenDisabled = value;
 
                     if (!Enabled)
+                    {
                         Refresh();
+                    }
                 }
             }
         }
@@ -918,11 +936,17 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             get
             {
                 if (_animating || _moving)
+                {
                     return _buttonValue;
+                }
                 else if (_checked)
+                {
                     return Width - _renderer.GetButtonWidth();
+                }
                 else
+                {
                     return 0;
+                }
             }
             set
             {
@@ -1000,10 +1024,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 int val = _xValue + (e.Location.X - _xOffset);
 
                 if (val < 0)
+                {
                     val = 0;
+                }
 
                 if (val > Width - buttonWidth)
+                {
                     val = Width - buttonWidth;
+                }
 
                 ButtonValue = val;
                 Refresh();
@@ -1038,7 +1066,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         protected override void OnMouseDown(MouseEventArgs e)
         {
             if (_animating || !AllowUserChange)
+            {
                 return;
+            }
 
             int buttonWidth = _renderer.GetButtonWidth();
             Rectangle buttonRectangle = _renderer.GetButtonRectangle(buttonWidth);
@@ -1078,7 +1108,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         protected override void OnMouseUp(MouseEventArgs e)
         {
             if (_animating || !AllowUserChange)
+            {
                 return;
+            }
 
             int buttonWidth = _renderer.GetButtonWidth();
 

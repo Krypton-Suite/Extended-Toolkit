@@ -59,9 +59,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public bool MoveNext()
         {
             if (++curIndex >= collection.Count)
+            {
                 return false;
+            }
             else
+            {
                 current = collection[curIndex];
+            }
+
             return true;
         }
 

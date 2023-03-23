@@ -79,19 +79,27 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     m.a[i, i - 1] = h[i];
                     m.a[i, i] = 2.0 * (h[i] + h[i + 1]);
                     if (i < n - 2)
+                    {
                         m.a[i, i + 1] = h[i + 1];
+                    }
                 }
                 if ((h[i] != 0.0) && (h[i + 1] != 0.0))
+                {
                     m.y[i] = ((a[i + 2] - a[i + 1]) / h[i + 1] - (a[i + 1] - a[i]) / h[i]) * 3.0;
+                }
                 else
+                {
                     m.y[i] = 0.0;
+                }
             }
 
             m.a[0, n - 2] = h[0];
             m.a[n - 2, 0] = h[0];
 
             if (gauss.Eliminate() == false)
+            {
                 throw new InvalidOperationException();
+            }
 
             gauss.Solve();
 

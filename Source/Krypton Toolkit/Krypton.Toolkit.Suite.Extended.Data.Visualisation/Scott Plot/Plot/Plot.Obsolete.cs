@@ -172,16 +172,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 if (horizontal)
                 {
                     if (tightAxisLimits.XMin == 0)
+                    {
                         SetAxisLimits(xMin: 0);
+                    }
                     else if (tightAxisLimits.XMax == 0)
+                    {
                         SetAxisLimits(xMax: 0);
+                    }
                 }
                 else
                 {
                     if (tightAxisLimits.YMin == 0)
+                    {
                         SetAxisLimits(yMin: 0);
+                    }
                     else if (tightAxisLimits.YMax == 0)
+                    {
                         SetAxisLimits(yMax: 0);
+                    }
                 }
             }
 
@@ -204,14 +212,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             )
         {
             if (groupLabels is null || seriesLabels is null || ys is null)
+            {
                 throw new ArgumentException("labels and ys cannot be null");
+            }
 
             if (seriesLabels.Length != ys.Length)
+            {
                 throw new ArgumentException("groupLabels and ys must be the same length");
+            }
 
             foreach (double[] subArray in ys)
                 if (subArray.Length != groupLabels.Length)
+                {
                     throw new ArgumentException("all arrays inside ys must be the same length as groupLabels");
+                }
 
             int seriesCount = ys.Length;
             double barWidth = groupWidthFraction / seriesCount;
@@ -228,7 +242,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (containsNegativeY)
+            {
                 AxisAuto();
+            }
 
             double[] groupPositions = DataGen.Consecutive(groupLabels.Length, offset: (groupWidthFraction - barWidth) / 2);
             XTicks(groupPositions, groupLabels);
@@ -312,7 +328,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             )
         {
             if (xs.Length != ys.Length)
+            {
                 throw new ArgumentException("xs and ys must all have the same length");
+            }
 
             double[] xs2 = Tools.Pad(xs, cloneEdges: true);
             double[] ys2 = Tools.Pad(ys, padWithLeft: baseline, padWithRight: baseline);
@@ -336,7 +354,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             )
         {
             if ((xs1.Length != ys1.Length) || (xs2.Length != ys2.Length))
+            {
                 throw new ArgumentException("xs and ys for each dataset must have the same length");
+            }
 
             int pointCount = xs1.Length + xs2.Length;
             double[] bothX = new double[pointCount];
@@ -372,7 +392,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             )
         {
             if (xs.Length != ys.Length)
+            {
                 throw new ArgumentException("xs and ys must all have the same length");
+            }
 
             double[] xs2 = Tools.Pad(xs, cloneEdges: true);
             double[] ys2 = Tools.Pad(ys, padWithLeft: baseline, padWithRight: baseline);
@@ -394,11 +416,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (fillColorAbove is null)
+            {
                 fillColorAbove = Color.Green;
+            }
+
             if (fillColorBelow is null)
+            {
                 fillColorBelow = Color.Red;
+            }
+
             if (lineColor is null)
+            {
                 lineColor = Color.Black;
+            }
 
             var polyAbove = PlotPolygon(xs2, ys2above, labelAbove, lineWidth, lineColor, fill, fillColorAbove, fillAlpha);
             var polyBelow = PlotPolygon(xs2, ys2below, labelBelow, lineWidth, lineColor, fill, fillColorBelow, fillAlpha);
@@ -418,7 +448,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         )
         {
             if (markerShape != MarkerShape.None || markerSize != 0)
+            {
                 throw new ArgumentException("function plots do not use markers");
+            }
 
             FunctionPlot functionPlot = new FunctionPlot(function)
             {
@@ -697,13 +729,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
            )
         {
             if (color is null)
+            {
                 color = settings.GetNextColor();
+            }
 
             if (highlightedColor is null)
+            {
                 highlightedColor = Color.Red;
+            }
 
             if (highlightedMarkerSize is null)
+            {
                 highlightedMarkerSize = 2 * markerSize;
+            }
 
             var scatterPlot = new ScatterPlotHighlight(xs, ys, errorX, errorY)
             {
@@ -876,7 +914,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             )
         {
             if (color == null)
+            {
                 color = settings.GetNextColor();
+            }
 
             ScatterPlot stepPlot = new ScatterPlot(xs, ys)
             {
@@ -965,7 +1005,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             series.color = settings.GetNextColor();
             if (label != null)
+            {
                 series.seriesLabel = label;
+            }
+
             var plottable = new PopulationPlot(series);
             Add(plottable);
             return plottable;
@@ -1053,7 +1096,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             )
         {
             if (!string.IsNullOrWhiteSpace(label))
+            {
                 Debug.WriteLine("WARNING: the PlotText() label argument is ignored");
+            }
 
             Text plottableText = new Text()
             {

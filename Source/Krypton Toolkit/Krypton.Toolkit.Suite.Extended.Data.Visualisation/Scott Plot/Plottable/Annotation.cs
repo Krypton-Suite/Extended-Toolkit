@@ -70,10 +70,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (double.IsNaN(X) || double.IsInfinity(X))
+            {
                 throw new InvalidOperationException("xPixel must be a valid number");
+            }
 
             if (double.IsNaN(Y) || double.IsInfinity(Y))
+            {
                 throw new InvalidOperationException("xPixel must be a valid number");
+            }
         }
 
         // TODO: the negative coordiante thing is silly. Use alignment fields to control this behavior.
@@ -81,7 +85,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (!IsVisible)
+            {
                 return;
+            }
 
             using var gfx = GDI.Graphics(bmp, dims, lowQuality, false);
             using var font = GDI.Font(Font);
@@ -97,13 +103,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             PointF location = new PointF((float)x + dims.DataOffsetX, (float)y + dims.DataOffsetY);
 
             if (Background && Shadow)
+            {
                 gfx.FillRectangle(shadowBrush, location.X + 5, location.Y + 5, size.Width, size.Height);
+            }
 
             if (Background)
+            {
                 gfx.FillRectangle(backgroundBrush, location.X, location.Y, size.Width, size.Height);
+            }
 
             if (Border)
+            {
                 gfx.DrawRectangle(borderPen, location.X, location.Y, size.Width, size.Height);
+            }
 
             gfx.DrawString(Label, font, fontBrush, location);
         }

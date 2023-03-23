@@ -36,7 +36,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         protected virtual void OnSelectedColourChanged()
         {
-            if (SelectedColourChanged != null) SelectedColourChanged(this, EventArgs.Empty);
+            if (SelectedColourChanged != null)
+            {
+                SelectedColourChanged(this, EventArgs.Empty);
+            }
         }
     }
 }

@@ -160,14 +160,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public BarPlot[] AddBarGroups(string[] groupLabels, string[] seriesLabels, double[][] ys, double[][] yErr)
         {
             if (groupLabels is null || seriesLabels is null || ys is null)
+            {
                 throw new ArgumentException("labels and ys cannot be null");
+            }
 
             if (seriesLabels.Length != ys.Length)
+            {
                 throw new ArgumentException("groupLabels and ys must be the same length");
+            }
 
             foreach (double[] subArray in ys)
                 if (subArray.Length != groupLabels.Length)
+                {
                     throw new ArgumentException("all arrays inside ys must be the same length as groupLabels");
+                }
 
             double groupWidthFraction = 0.8;
             double barWidthFraction = 0.8;
@@ -196,7 +202,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (containsNegativeY)
+            {
                 AxisAuto();
+            }
 
             double[] groupPositions = DataGen.Consecutive(groupLabels.Length, offset: (groupWidthFraction - barWidth) / 2);
             XTicks(groupPositions, groupLabels);
@@ -396,7 +404,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Add(plottable);
 
             if (lockScales)
+            {
                 AxisScaleLock(true);
+            }
 
             return plottable;
         }
@@ -419,7 +429,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Add(plottable);
 
             if (lockScales)
+            {
                 AxisScaleLock(true);
+            }
 
             return plottable;
         }

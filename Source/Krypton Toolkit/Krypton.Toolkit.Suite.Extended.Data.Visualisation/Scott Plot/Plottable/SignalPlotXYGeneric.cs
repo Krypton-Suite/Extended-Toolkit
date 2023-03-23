@@ -43,13 +43,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value == null)
+                {
                     throw new ArgumentException("XS cannot be null");
+                }
+
                 if (value.Length == 0)
+                {
                     throw new ArgumentException("XS must have at least one element");
+                }
 
                 for (int i = 1; i < value.Length; i++)
                     if (value[i].CompareTo(value[i - 1]) < 0)
+                    {
                         throw new ArgumentException("Xs must only contain ascending values");
+                    }
 
                 _Xs = value;
             }
@@ -61,7 +68,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value.Length == 0)
+                {
                     throw new ArgumentException("YS must have at least one element");
+                }
 
                 base.Ys = value;
             }
@@ -243,7 +252,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     ValidatePoints(pointsArray);
 
                     if (StepDisplay)
+                    {
                         pointsArray = GetStepPoints(pointsArray);
+                    }
 
                     gfx.DrawLines(penHD, pointsArray);
                 }
@@ -312,16 +323,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 return GetPointByIndex(index);
             }
             if (index <= MinRenderIndex) // x lower then any MinRenderIndex
+            {
                 return GetPointByIndex(MinRenderIndex);
+            }
+
             if (index > MaxRenderIndex) // x higher then MaxRenderIndex
+            {
                 return GetPointByIndex(MaxRenderIndex);
+            }
 
             TX distLeft = SubstractExp(x, Xs[index - 1]);
             TX distRight = SubstractExp(Xs[index], x);
             if (LessThanOrEqualExp(distLeft, distRight)) // x closer to XS[index -1]
+            {
                 return GetPointByIndex(index - 1);
+            }
             else // x closer to XS[index]
+            {
                 return GetPointByIndex(index);
+            }
         }
 
         /// <summary>

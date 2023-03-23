@@ -92,9 +92,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void UpdateX(double[] xs)
         {
             if (xs is null)
+            {
                 throw new ArgumentException("xs must not be null");
+            }
+
             if (xs.Length != Ys.Length)
+            {
                 throw new ArgumentException("xs and ys must have the same length");
+            }
 
             Xs = xs;
         }
@@ -105,9 +110,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void UpdateY(double[] ys)
         {
             if (ys is null)
+            {
                 throw new ArgumentException("ys must not be null");
+            }
+
             if (Xs.Length != ys.Length)
+            {
                 throw new ArgumentException("xs and ys must have the same length");
+            }
 
             Ys = ys;
         }
@@ -118,11 +128,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Update(double[] xs, double[] ys)
         {
             if (xs is null)
+            {
                 throw new ArgumentException("xs must not be null");
+            }
+
             if (ys is null)
+            {
                 throw new ArgumentException("ys must not be null");
+            }
+
             if (xs.Length != ys.Length)
+            {
                 throw new ArgumentException("xs and ys must have the same length");
+            }
 
             Xs = xs;
             Ys = ys;
@@ -137,15 +155,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (MaxRenderIndex != null)
             {
                 if ((MaxRenderIndex > Ys.Length - 1) || MaxRenderIndex < 0)
+                {
                     throw new IndexOutOfRangeException("maxRenderIndex must be a valid index for ys[]");
+                }
             }
 
             if (MinRenderIndex != null)
             {
                 if (MinRenderIndex < 0)
+                {
                     throw new IndexOutOfRangeException("minRenderIndex must be between 0 and maxRenderIndex");
+                }
+
                 if (MaxRenderIndex != null && MinRenderIndex > MaxRenderIndex)
+                {
                     throw new IndexOutOfRangeException("minRenderIndex must be between 0 and maxRenderIndex");
+                }
             }
 
 
@@ -167,10 +192,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 Validate.AssertAllReal("ys", Ys);
 
                 if (XError != null)
+                {
                     Validate.AssertAllReal("errorX", XError);
+                }
 
                 if (YError != null)
+                {
                     Validate.AssertAllReal("errorY", YError);
+                }
             }
         }
 
@@ -216,14 +245,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (double.IsNaN(limits[0]) || double.IsNaN(limits[1]))
+            {
                 throw new InvalidOperationException("X data must not contain NaN");
+            }
+
             if (double.IsNaN(limits[2]) || double.IsNaN(limits[3]))
+            {
                 throw new InvalidOperationException("Y data must not contain NaN");
+            }
 
             if (double.IsInfinity(limits[0]) || double.IsInfinity(limits[1]))
+            {
                 throw new InvalidOperationException("X data must not contain Infinity");
+            }
+
             if (double.IsInfinity(limits[2]) || double.IsInfinity(limits[3]))
+            {
                 throw new InvalidOperationException("Y data must not contain Infinity");
+            }
 
             return new AxisLimits(
                 xMin: limits[0] + OffsetX,
@@ -235,7 +274,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             using (var gfx = GDI.Graphics(bmp, dims, lowQuality))
             using (var penLine = GDI.Pen(Color, LineWidth, LineStyle, true))
@@ -249,7 +290,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     float x = dims.GetPixelX(Xs[i] + OffsetX);
                     float y = dims.GetPixelY(Ys[i] + OffsetY);
                     if (float.IsNaN(x) || float.IsNaN(y))
+                    {
                         throw new NotImplementedException("Data must not contain NaN");
+                    }
+
                     points[i - from] = new PointF(x, y);
                 }
 
@@ -301,8 +345,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                 // draw a marker at each point
                 if ((MarkerSize > 0) && (MarkerShape != MarkerShape.None))
+                {
                     for (int i = 0; i < points.Length; i++)
                         MarkerTools.DrawMarker(gfx, points[i], MarkerShape, MarkerSize, Color);
+                }
             }
         }
 

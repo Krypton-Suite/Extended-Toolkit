@@ -83,9 +83,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void RefreshPalette()
         {
             if (m_PaletteMode == PaletteMode.Global)
+            {
                 m_Palette = KryptonManager.CurrentGlobalPalette;
+            }
             else
+            {
                 m_Palette = KryptonManager.GetPaletteForMode(m_PaletteMode);
+            }
 
             m_Renderer = m_Palette.GetRenderer();
 
@@ -179,10 +183,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     for (int index = 0; index <= this.TabCount - 1; index++)
                     {
                         if (index != selectedIndex)
+                        {
                             this.PaintTab(index, renderContext);
+                        }
                     }
                     if (selectedIndex >= 0)
+                    {
                         this.PaintTab(selectedIndex, renderContext);
+                    }
                 }
             }
 
@@ -285,9 +293,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             if (m_TabFont == null || (!object.ReferenceEquals(m_TabFont, g_TabFontBold) & !object.ReferenceEquals(m_TabFont, g_TabFontRegular)))
             {
                 if (renderContext.Graphics.MeasureString(TabPages[index].Text, g_TabFontBold, tabRect.X, g_StringFormat).Width <= tabRect.Width)
+                {
                     m_TabFont = g_TabFontBold;
+                }
                 else
+                {
                     m_TabFont = g_TabFontRegular;
+                }
             }
 
             renderContext.Graphics.DrawString(TabPages[index].Text, m_TabFont, m_TabBrush, tabRect, g_StringFormat);
@@ -321,7 +333,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (this.Control.Dock == DockStyle.Fill)
+                {
                     return SelectionRules.Visible;
+                }
+
                 return base.SelectionRules;
             }
         }
@@ -350,7 +365,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_DesignerHost == null)
+                {
                     m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
+                }
+
                 return m_DesignerHost;
             }
         }
@@ -360,7 +378,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_SelectionService == null)
+                {
                     m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                }
+
                 return m_SelectionService;
             }
         }
@@ -384,7 +405,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 // Select tabcontrol when TabControl clicked outside of TabItem.
                 if (m.Result.ToInt32() == HTTRANSPARENT)
+                {
                     m.Result = (IntPtr)HTCLIENT;
+                }
             }
 
         }
@@ -426,8 +449,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 Marshal.FreeHGlobal(lparam);
 
                 if (m.Result.ToInt32() != -1)
+                {
                     return hti.flags != TabControlHitTest.TCHT_NOWHERE;
-
+                }
             }
 
             return false;
@@ -480,7 +504,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         public void RemoveTab()
         {
-            if (this.KryptonTabControl.SelectedTab == null) return;
+            if (this.KryptonTabControl.SelectedTab == null)
+            {
+                return;
+            }
 
             TabPage page = this.KryptonTabControl.SelectedTab;
             DesignerHost.DestroyComponent(page);
@@ -516,9 +543,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private string GetDockStyleText()
         {
             if (this.KryptonTabControl.Dock == DockStyle.Fill)
+            {
                 return "Undock in parent container";
+            }
             else
+            {
                 return "Dock in parent container";
+            }
         }
 
         private void SetProperty(string propertyName, object value)
@@ -532,7 +563,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_DesignerHost == null)
+                {
                     m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
+                }
+
                 return m_DesignerHost;
             }
         }
@@ -542,7 +576,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_SelectionService == null)
+                {
                     m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                }
+
                 return m_SelectionService;
             }
         }

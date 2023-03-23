@@ -53,7 +53,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private void KryptonCancelDialogButton_TextChanged(object sender, EventArgs e)
         {
-            if (Text == Name) Text = "C&ancel";
+            if (Text == Name)
+            {
+                Text = "C&ancel";
+            }
         }
 
         private void KryptonCancelDialogButton_ParentChanged(object sender, EventArgs e)

@@ -156,18 +156,26 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Array.Copy(values, 0, Norm, 0, values.Length);
 
             if (IndependentAxes)
+            {
                 NormMaxes = NormalizeSeveralInPlace(Norm, maxValues);
+            }
             else
+            {
                 NormMax = NormalizeInPlace(Norm, maxValues);
+            }
         }
 
         public void ValidateData(bool deep = false)
         {
             if (GroupLabels != null && GroupLabels.Length != Norm.GetLength(0))
+            {
                 throw new InvalidOperationException("group names must match size of values");
+            }
 
             if (CategoryLabels != null && CategoryLabels.Length != Norm.GetLength(1))
+            {
                 throw new InvalidOperationException("category names must match size of values");
+            }
         }
 
         /// <summary>
@@ -226,9 +234,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 for (int j = 0; j < input.GetLength(1); j++)
                 {
                     if (maxes[j] == 0)
+                    {
                         input[i, j] = 0;
+                    }
                     else
+                    {
                         input[i, j] /= maxes[j];
+                    }
                 }
             }
 
@@ -238,7 +250,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public LegendItem[] GetLegendItems()
         {
             if (GroupLabels is null)
+            {
                 return null;
+            }
 
             List<LegendItem> legendItems = new List<LegendItem>();
             for (int i = 0; i < GroupLabels.Length; i++)

@@ -50,17 +50,23 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (Xs.Count != Ys.Count)
+            {
                 throw new InvalidOperationException("Xs and Ys must be same length");
+            }
 
             if (deep)
             {
                 for (int i = 0; i < Xs.Count; i++)
                 {
                     if (double.IsNaN(Xs[i]) || double.IsNaN(Ys[i]))
+                    {
                         throw new InvalidOperationException("Xs and Ys cannot contain NaN");
+                    }
 
                     if (double.IsInfinity(Xs[i]) || double.IsInfinity(Ys[i]))
+                    {
                         throw new InvalidOperationException("Xs and Ys cannot contain Infinity");
+                    }
                 }
             }
         }
@@ -89,11 +95,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void AddRange(double[] xs, double[] ys)
         {
             if (xs is null)
+            {
                 throw new ArgumentException("xs must not be null");
+            }
+
             if (ys is null)
+            {
                 throw new ArgumentException("ys must not be null");
+            }
+
             if (xs.Length != ys.Length)
+            {
                 throw new ArgumentException("xs and ys must have the same length");
+            }
 
             Xs.AddRange(xs);
             Ys.AddRange(ys);
@@ -102,7 +116,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public AxisLimits GetAxisLimits()
         {
             if (Count == 0)
+            {
                 return new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
+            }
 
             double xMin = Xs[0];
             double xMax = Xs[0];

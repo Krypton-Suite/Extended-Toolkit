@@ -76,12 +76,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         private void InitializeCanvas()
         {
             if (backgroundCanvas != null)
+            {
                 backgroundCanvas.Dispose();
+            }
 
             if (Size.Width == 0)
+            {
                 Size = new System.Drawing.Size(1, Size.Height);
+            }
+
             if (Size.Height == 0)
+            {
                 Size = new System.Drawing.Size(Size.Width, 1);
+            }
 
             backgroundCanvas = new Bitmap(Size.Width, Size.Height, PixelFormat.Format32bppPArgb);
         }
@@ -94,7 +101,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             using (Graphics bitGraphics = Graphics.FromImage(backgroundCanvas))
             {
                 if (Renderer != null)
+                {
                     Renderer.DrawNaviBandClientAreaBg(bitGraphics, ClientRectangle);
+                }
             }
         }
 
@@ -120,7 +129,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             base.OnPaintBackground(e);
             PaintCanvas();
             if (backgroundCanvas == null)
+            {
                 InitializeCanvas();
+            }
+
             e.Graphics.DrawImageUnscaled(backgroundCanvas, new Point(0, 0));
         }
 

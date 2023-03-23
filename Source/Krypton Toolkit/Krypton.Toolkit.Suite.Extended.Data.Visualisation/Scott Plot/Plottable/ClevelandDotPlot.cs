@@ -55,7 +55,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 ValueOffsets = value;
 
                 if (Ys2 != null)
+                {
                     Ys2 = (Ys2 ?? DataGen.Zeros(value.Length)).Zip(diff, (y, v) => y + v).ToArray();
+                }
             }
         }
 
@@ -64,7 +66,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             get
             {
                 if (Values == null)
+                {
                     return null;
+                }
 
                 double[] offsets = Ys1 ?? DataGen.Zeros(Values.Length);
                 return Values.Select((y, i) => y + offsets[i]).ToArray();
@@ -159,7 +163,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             valueMax = Math.Max(valueMax, ValueBase);
 
             if (ShowValuesAboveBars)
+            {
                 valueMax += (valueMax - valueMin) * .1; // increase by 10% to accomodate label
+            }
 
             positionMin -= BarWidth / 2;
             positionMax += BarWidth / 2;
@@ -205,9 +211,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             for (int barIndex = 0; barIndex < Values.Length; barIndex++)
             {
                 if (Orientation == PlotOrientation.Vertical)
+                {
                     RenderBarVertical(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
+                }
                 else
+                {
                     RenderBarHorizontal(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
+                }
             }
         }
 
@@ -271,10 +281,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (ShowValuesAboveBars)
+            {
                 using (var valueTextFont = GDI.Font(Font))
                 using (var valueTextBrush = GDI.Brush(Font.Color))
                 using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
                     gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+            }
         }
 
         private void RenderBarHorizontal(PlotDimensions dims, Graphics gfx, double position, double value, double valueError, double yOffset)
@@ -310,10 +322,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (ShowValuesAboveBars)
+            {
                 using (var valueTextFont = GDI.Font(Font))
                 using (var valueTextBrush = GDI.Brush(Font.Color))
                 using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
                     gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+            }
         }
 
         #endregion

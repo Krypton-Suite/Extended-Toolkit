@@ -78,7 +78,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             _owner.Controls.Remove(value);
 
             if (_owner.Controls.Contains(value.Button))
+            {
                 _owner.Controls.Remove(value.Button);
+            }
         }
 
         /// <summary>
@@ -110,7 +112,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             set
             {
                 if (!(value is NaviBand))
+                {
                     throw new ArgumentException("value");
+                }
+
                 _innerList[index] = value;
             }
         }
@@ -149,7 +154,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         int IList.Add(object value)
         {
             if (!(value is NaviBand))
+            {
                 throw new ArgumentException("value");
+            }
 
             return Add((NaviBand)value);
         }
@@ -162,21 +169,30 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         bool IList.Contains(object value)
         {
             if (!(value is NaviBand))
+            {
                 throw new ArgumentException("value");
+            }
+
             return ((IList)_innerList).Contains(value);
         }
 
         int IList.IndexOf(object value)
         {
             if (!(value is NaviBand))
+            {
                 throw new ArgumentException("value");
+            }
+
             return ((IList)_innerList).IndexOf((NaviBand)value);
         }
 
         void IList.Insert(int index, object value)
         {
             if (!(value is NaviBand))
+            {
                 throw new ArgumentException("value");
+            }
+
             ((IList)_innerList).Insert(index, value);
         }
 
@@ -187,14 +203,20 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         void IList.Remove(object value)
         {
             if (!(value is NaviBand))
+            {
                 throw new ArgumentException("value");
+            }
+
             Remove((NaviBand)value);
         }
 
         void IList.RemoveAt(int index)
         {
             if ((index < 0) || (index >= _innerList.Count))
+            {
                 throw new IndexOutOfRangeException();
+            }
+
             Remove((NaviBand)this[index]);
         }
 
@@ -204,7 +226,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             set
             {
                 if (!(value is NaviBand))
+                {
                     throw new ArgumentException("value");
+                }
+
                 ((IList)_innerList)[index] = value;
             }
         }

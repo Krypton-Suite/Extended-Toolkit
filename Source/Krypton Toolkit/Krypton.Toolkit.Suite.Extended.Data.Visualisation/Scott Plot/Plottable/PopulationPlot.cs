@@ -95,7 +95,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (MultiSeries is null)
+            {
                 throw new InvalidOperationException("population multi-series cannot be null");
+            }
         }
 
         public LegendItem[] GetLegendItems() => MultiSeries.multiSeries
@@ -169,7 +171,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     Scatter(dims, bmp, lowQuality, population, rand, popLeft, popWidth, series.color, ScatterOutlineColor, 128, scatterPos);
 
                     if (DistributionCurve)
+                    {
                         Distribution(dims, bmp, lowQuality, population, rand, popLeft, popWidth, DistributionCurveColor, scatterPos, DistributionCurveLineStyle);
+                    }
 
                     switch (DataBoxStyle)
                     {
@@ -204,9 +208,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double popLeft, double popWidth, Color fillColor, Color edgeColor, byte alpha, Position position)
         {
             // adjust edges to accomodate special positions
-            if (position == Position.Hide) return;
-            if (position == Position.Left || position == Position.Right) popWidth /= 2;
-            if (position == Position.Right) popLeft += popWidth;
+            if (position == Position.Hide)
+            {
+                return;
+            }
+
+            if (position == Position.Left || position == Position.Right)
+            {
+                popWidth /= 2;
+            }
+
+            if (position == Position.Right)
+            {
+                popLeft += popWidth;
+            }
 
             // contract edges slightly to encourage padding between elements
             double edgePaddingFrac = 0.2;
@@ -233,9 +248,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double popLeft, double popWidth, Color color, Position position, LineStyle lineStyle)
         {
             // adjust edges to accomodate special positions
-            if (position == Position.Hide) return;
-            if (position == Position.Left || position == Position.Right) popWidth /= 2;
-            if (position == Position.Right) popLeft += popWidth;
+            if (position == Position.Hide)
+            {
+                return;
+            }
+
+            if (position == Position.Left || position == Position.Right)
+            {
+                popWidth /= 2;
+            }
+
+            if (position == Position.Right)
+            {
+                popLeft += popWidth;
+            }
 
             // contract edges slightly to encourage padding between elements
             double edgePaddingFrac = 0.2;
@@ -244,7 +270,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             double[] ys = DataGen.Range(pop.minus3stDev, pop.plus3stDev, dims.UnitsPerPxY);
             if (ys.Length == 0)
+            {
                 return;
+            }
+
             double[] ysFrac = pop.GetDistribution(ys, normalize: false);
 
             PointF[] points = new PointF[ys.Length];
@@ -266,9 +295,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double popLeft, double popWidth, Color color, Position position, bool useStdErr = false)
         {
             // adjust edges to accomodate special positions
-            if (position == Position.Hide) return;
-            if (position == Position.Left || position == Position.Right) popWidth /= 2;
-            if (position == Position.Right) popLeft += popWidth;
+            if (position == Position.Hide)
+            {
+                return;
+            }
+
+            if (position == Position.Left || position == Position.Right)
+            {
+                popWidth /= 2;
+            }
+
+            if (position == Position.Right)
+            {
+                popLeft += popWidth;
+            }
 
             // determine the center point and calculate bounds
             double centerX = popLeft + popWidth / 2;
@@ -309,9 +349,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double popLeft, double popWidth, Color color, Position position, bool useStdErr = false)
         {
             // adjust edges to accomodate special positions
-            if (position == Position.Hide) return;
-            if (position == Position.Left || position == Position.Right) popWidth /= 2;
-            if (position == Position.Right) popLeft += popWidth;
+            if (position == Position.Hide)
+            {
+                return;
+            }
+
+            if (position == Position.Left || position == Position.Right)
+            {
+                popWidth /= 2;
+            }
+
+            if (position == Position.Right)
+            {
+                popLeft += popWidth;
+            }
 
             // determine the center point and calculate bounds
             double centerX = popLeft + popWidth / 2;
@@ -366,9 +417,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             HorizontalAlignment errorAlignment = HorizontalAlignment.Right)
         {
             // adjust edges to accomodate special positions
-            if (position == Position.Hide) return;
-            if (position == Position.Left || position == Position.Right) popWidth /= 2;
-            if (position == Position.Right) popLeft += popWidth;
+            if (position == Position.Hide)
+            {
+                return;
+            }
+
+            if (position == Position.Left || position == Position.Right)
+            {
+                popWidth /= 2;
+            }
+
+            if (position == Position.Right)
+            {
+                popLeft += popWidth;
+            }
 
             double errorMaxPx, errorMinPx;
             double yPxTop, yPxBase;

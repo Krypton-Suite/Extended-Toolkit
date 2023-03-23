@@ -43,7 +43,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             // If we didn't get anything, return null.
             if ((attributes == null) || (attributes.Length == 0))
+            {
                 return null;
+            }
 
             // Convert the first attribute value into
             // the desired type and return it.

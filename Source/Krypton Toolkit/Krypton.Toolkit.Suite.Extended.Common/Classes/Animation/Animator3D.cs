@@ -307,7 +307,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     propertyName,
                     BindingFlags.IgnoreCase | BindingFlags.Static | BindingFlags.Public | BindingFlags.Instance |
                     BindingFlags.SetProperty);
-            if (prop == null) return;
+            if (prop == null)
+            {
+                return;
+            }
 
             Play(
                 new SafeInvoker<Float3D>(
@@ -352,7 +355,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public virtual void Play<T>(T targetObject, Expression<Func<T, object>> propertySetter, SafeInvoker endCallback)
         {
             if (propertySetter == null)
+            {
                 return;
+            }
+
             TargetObject = targetObject;
 
             var property =

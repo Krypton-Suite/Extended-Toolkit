@@ -65,9 +65,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             for (int i = l; i <= r; i++)
             {
                 if (LessThanExp(sourceArray[i], lowestValueT))
+                {
                     lowestValueT = sourceArray[i];
+                }
+
                 if (GreaterThanExp(sourceArray[i], highestValueT))
+                {
                     highestValueT = sourceArray[i];
+                }
             }
             lowestValue = Convert.ToDouble(lowestValueT);
             highestValue = Convert.ToDouble(highestValueT);

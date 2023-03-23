@@ -47,7 +47,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="calendar"></param>
         public CalendarSelectableElement(KryptonCalendar calendar)
         {
-            if (calendar == null) throw new ArgumentNullException("calendar");
+            if (calendar == null)
+            {
+                throw new ArgumentNullException("calendar");
+            }
 
             _calendar = calendar;
         }

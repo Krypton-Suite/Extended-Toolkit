@@ -208,9 +208,20 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             byte g = 0;
             byte b = 0;
 
-            if ((c.R > d)) r = (byte)(c.R - d);
-            if ((c.G > d)) g = (byte)(c.G - d);
-            if ((c.B > d)) b = (byte)(c.B - d);
+            if ((c.R > d))
+            {
+                r = (byte)(c.R - d);
+            }
+
+            if ((c.G > d))
+            {
+                g = (byte)(c.G - d);
+            }
+
+            if ((c.B > d))
+            {
+                b = (byte)(c.B - d);
+            }
 
             Color c1 = Color.FromArgb(r, g, b);
             return c1;
@@ -221,9 +232,20 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             byte g = 255;
             byte b = 255;
 
-            if (((int)c.R + (int)d <= 255)) r = (byte)(c.R + d);
-            if (((int)c.G + (int)d <= 255)) g = (byte)(c.G + d);
-            if (((int)c.B + (int)d <= 255)) b = (byte)(c.B + d);
+            if (((int)c.R + (int)d <= 255))
+            {
+                r = (byte)(c.R + d);
+            }
+
+            if (((int)c.G + (int)d <= 255))
+            {
+                g = (byte)(c.G + d);
+            }
+
+            if (((int)c.B + (int)d <= 255))
+            {
+                b = (byte)(c.B + d);
+            }
 
             Color c2 = Color.FromArgb(r, g, b);
             return c2;

@@ -71,7 +71,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Population(double[] values)
         {
             if (values is null)
+            {
                 throw new ArgumentException("values cannot be null");
+            }
 
             this.values = values;
             Recalculate();
@@ -81,11 +83,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Population(double[] values, bool fullAnalysis = true)
         {
             if (values is null)
+            {
                 throw new ArgumentException("values cannot be null");
+            }
 
             this.values = values;
             if (fullAnalysis)
+            {
                 Recalculate();
+            }
         }
 
         public void Recalculate()

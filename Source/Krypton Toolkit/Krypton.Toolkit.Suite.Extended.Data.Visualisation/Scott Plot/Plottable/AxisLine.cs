@@ -134,32 +134,46 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public AxisLimits GetAxisLimits()
         {
             if (IgnoreAxisAuto)
+            {
                 return new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
+            }
 
             if (IsHorizontal)
+            {
                 return new AxisLimits(double.NaN, double.NaN, Position, Position);
+            }
             else
+            {
                 return new AxisLimits(Position, Position, double.NaN, double.NaN);
+            }
         }
 
         public void ValidateData(bool deep = false)
         {
             if (double.IsNaN(Position) || double.IsInfinity(Position))
+            {
                 throw new InvalidOperationException("position must be a valid number");
+            }
 
             if (PositionFormatter is null)
+            {
                 throw new NullReferenceException(nameof(PositionFormatter));
+            }
         }
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (!IsVisible)
+            {
                 return;
+            }
 
             RenderLine(dims, bmp, lowQuality);
 
             if (PositionLabel)
+            {
                 RenderPositionLabel(dims, bmp, lowQuality);
+            }
         }
 
         public void RenderLine(PlotDimensions dims, Bitmap bmp, bool lowQuality)
@@ -203,7 +217,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (IsHorizontal)
             {
                 if (Position > dims.YMax || Position < dims.YMin)
+                {
                     return;
+                }
 
                 float pixelY = dims.GetPixelY(Position);
                 string yLabel = PositionFormatter(Position);
@@ -218,7 +234,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             else
             {
                 if (Position > dims.XMax || Position < dims.XMin)
+                {
                     return;
+                }
 
                 float pixelX = dims.GetPixelX(Position);
                 string xLabel = PositionFormatter(Position);
@@ -241,18 +259,36 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void DragTo(double coordinateX, double coordinateY, bool fixedSize)
         {
             if (!DragEnabled)
+            {
                 return;
+            }
 
             if (IsHorizontal)
             {
-                if (coordinateY < DragLimitMin) coordinateY = DragLimitMin;
-                if (coordinateY > DragLimitMax) coordinateY = DragLimitMax;
+                if (coordinateY < DragLimitMin)
+                {
+                    coordinateY = DragLimitMin;
+                }
+
+                if (coordinateY > DragLimitMax)
+                {
+                    coordinateY = DragLimitMax;
+                }
+
                 Position = coordinateY;
             }
             else
             {
-                if (coordinateX < DragLimitMin) coordinateX = DragLimitMin;
-                if (coordinateX > DragLimitMax) coordinateX = DragLimitMax;
+                if (coordinateX < DragLimitMin)
+                {
+                    coordinateX = DragLimitMin;
+                }
+
+                if (coordinateX > DragLimitMax)
+                {
+                    coordinateX = DragLimitMax;
+                }
+
                 Position = coordinateX;
             }
 

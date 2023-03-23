@@ -246,9 +246,13 @@ namespace Examples
         private void buttonSpecHeaderGroup3_Click(object sender, EventArgs e)
         {
             if (expand)
+            {
                 kogExample.ExpandAllNodes();
+            }
             else
+            {
                 kogExample.CollapseAllNodes();
+            }
 
             expand = !expand;
         }

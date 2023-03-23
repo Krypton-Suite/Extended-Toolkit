@@ -32,7 +32,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static void DrawMarker(Graphics gfx, PointF pixelLocation, MarkerShape shape, float size, Color color)
         {
             if (size == 0 || shape == MarkerShape.None)
+            {
                 return;
+            }
 
             Pen pen = new Pen(color);
 

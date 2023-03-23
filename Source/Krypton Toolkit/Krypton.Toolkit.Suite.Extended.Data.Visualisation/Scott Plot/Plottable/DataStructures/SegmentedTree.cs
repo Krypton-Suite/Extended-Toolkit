@@ -52,7 +52,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value == null)
+                {
                     throw new Exception("Source Array cannot be null");
+                }
+
                 sourceArray = value;
                 UpdateTrees();
             }
@@ -129,14 +132,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 candidate = MinExp(TreeMin[i * 2], TreeMin[i * 2 + 1]);
                 if (EqualExp(TreeMin[i], candidate)) // if node same then new value don't need to recalc all upper
+                {
                     break;
+                }
+
                 TreeMin[i] = candidate;
             }
             for (int i = (n / 2 + index / 2) / 2; i > 0; i /= 2)
             {
                 candidate = MaxExp(TreeMax[i * 2], TreeMax[i * 2 + 1]);
                 if (EqualExp(TreeMax[i], candidate)) // if node same then new value don't need to recalc all upper
+                {
                     break;
+                }
+
                 TreeMax[i] = candidate;
             }
         }
@@ -186,7 +195,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     {
                         candidate = MinExp(TreeMin[i * 2], TreeMin[i * 2 + 1]);
                         if (EqualExp(TreeMin[i], candidate)) // if node same then new value don't need to recalc all upper
+                        {
                             break;
+                        }
+
                         TreeMin[i] = candidate;
                     }
 
@@ -194,7 +206,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     {
                         candidate = MaxExp(TreeMax[i * 2], TreeMax[i * 2 + 1]);
                         if (EqualExp(TreeMax[i], candidate)) // if node same then new value don't need to recalc all upper
+                        {
                             break;
+                        }
+
                         TreeMax[i] = candidate;
                     }
                     // all work done exit while loop
@@ -228,10 +243,16 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             try
             {
                 if (sourceArray.Length == 0)
+                {
                     throw new ArgumentOutOfRangeException($"Array cant't be empty");
+                }
+
                 // Size up to pow2
                 if (sourceArray.Length > 0x40_00_00_00) // pow 2 must be more then int.MaxValue
+                {
                     throw new ArgumentOutOfRangeException($"Array higher than {0x40_00_00_00} not supported by SignalConst");
+                }
+
                 int pow2 = 1;
                 while (pow2 < 0x40_00_00_00 && pow2 < sourceArray.Length)
                     pow2 <<= 1;
@@ -288,9 +309,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 for (int i = l; i < r; i++)
                 {
                     if (LessThanExp(sourceArray[i], lowestValueT))
+                    {
                         lowestValueT = sourceArray[i];
+                    }
+
                     if (GreaterThanExp(sourceArray[i], highestValueT))
+                    {
                         highestValueT = sourceArray[i];
+                    }
                 }
                 lowestValue = Convert.ToDouble(lowestValueT);
                 highestValue = Convert.ToDouble(highestValueT);

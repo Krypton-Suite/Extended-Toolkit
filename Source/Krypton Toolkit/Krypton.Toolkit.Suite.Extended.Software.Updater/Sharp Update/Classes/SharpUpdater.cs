@@ -112,7 +112,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         public void DoUpdate()
         {
             if (!BgWorker.IsBusy)
+            {
                 BgWorker.RunWorkerAsync();
+            }
         }
 
         /// <summary>
@@ -122,9 +124,13 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         {
             // Check for update on server
             if (!SharpUpdateXml.ExistsOnServer(UpdateXmlLocation))
+            {
                 e.Cancel = true;
+            }
             else // Parse update xml
+            {
                 e.Result = SharpUpdateXml.Parse(UpdateXmlLocation);
+            }
         }
 
         /// <summary>
@@ -165,7 +171,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                         if (JobsFromXML[i].Tag == JobType.Update)
                         {
                             if (!JobsFromXML[i].IsNewerThan(LocalApplicationInfos[i].Version))
+                            {
                                 continue;
+                            }
                         }
                         validJobs.Add(i);
                     }
@@ -193,14 +201,20 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                     else
                     {
                         if (acceptJobs > 0)
+                        {
                             InstallUpdate();
+                        }
                     }
                 }
                 else
+                {
                     KryptonMessageBox.Show(ParentForm, "You have the latest versions already!");
+                }
             }
             else
+            {
                 KryptonMessageBox.Show(ParentForm, "No update information found!");
+            }
         }
 
         /// <summary>

@@ -106,7 +106,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             // Make sure that input parameters are valid.
             if (minLength <= 0 || maxLength <= 0 || minLength > maxLength)
+            {
                 return null;
+            }
 
             // Create a local array containing supported password characters
             // grouped by types. You can remove character groups from this
@@ -160,9 +162,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             // Allocate appropriate memory for the password.
             if (minLength < maxLength)
+            {
                 password = new char[random.Next(minLength, maxLength + 1)];
+            }
             else
+            {
                 password = new char[minLength];
+            }
 
             // Index of the next character to be added to password.
             int nextCharIdx;
@@ -188,10 +194,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 // first position, increment the second parameter of the Next
                 // function call by one, i.e. lastLeftGroupsOrderIdx + 1.
                 if (lastLeftGroupsOrderIdx == 0)
+                {
                     nextLeftGroupsOrderIdx = 0;
+                }
                 else
+                {
                     nextLeftGroupsOrderIdx = random.Next(0,
-                                                         lastLeftGroupsOrderIdx);
+                        lastLeftGroupsOrderIdx);
+                }
 
                 // Get the actual index of the character group, from which we will
                 // pick the next character.
@@ -203,17 +213,23 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 // If only one unprocessed character is left, pick it; otherwise,
                 // get a random character from the unused character list.
                 if (lastCharIdx == 0)
+                {
                     nextCharIdx = 0;
+                }
                 else
+                {
                     nextCharIdx = random.Next(0, lastCharIdx + 1);
+                }
 
                 // Add this character to the password.
                 password[i] = charGroups[nextGroupIdx][nextCharIdx];
 
                 // If we processed the last character in this group, start over.
                 if (lastCharIdx == 0)
+                {
                     charsLeftInGroup[nextGroupIdx] =
-                                              charGroups[nextGroupIdx].Length;
+                        charGroups[nextGroupIdx].Length;
+                }
                 // There are more unprocessed characters left.
                 else
                 {
@@ -234,7 +250,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 // If we processed the last group, start all over.
                 if (lastLeftGroupsOrderIdx == 0)
+                {
                     lastLeftGroupsOrderIdx = leftGroupsOrder.Length - 1;
+                }
                 // There are more unprocessed groups left.
                 else
                 {

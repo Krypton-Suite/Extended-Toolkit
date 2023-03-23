@@ -266,23 +266,37 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Axis AddAxis(Edge edge, int axisIndex, string title = null, Color? color = null)
         {
             if (axisIndex <= 1)
+            {
                 throw new ArgumentException("The default axes already occupy indexes 0 and 1. Additional axes require higher indexes.");
+            }
 
             Axis axis;
 
             if (edge == Edge.Left)
+            {
                 axis = new AdditionalLeftAxis(axisIndex, title);
+            }
             else if (edge == Edge.Right)
+            {
                 axis = new AdditionalRightAxis(axisIndex, title);
+            }
             else if (edge == Edge.Bottom)
+            {
                 axis = new AdditionalBottomAxis(axisIndex, title);
+            }
             else if (edge == Edge.Top)
+            {
                 axis = new AdditionalTopAxis(axisIndex, title);
+            }
             else
+            {
                 throw new NotImplementedException("unsupported edge");
+            }
 
             if (color.HasValue)
+            {
                 axis.Color(color.Value);
+            }
 
             settings.Axes.Add(axis);
             return axis;
@@ -371,7 +385,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             bool notAllAxesDefined = xMin is null || xMax is null || yMin is null || yMax is null;
             if (notAllAxesDefined)
+            {
                 settings.AxisAutoUnsetAxes();
+            }
+
             settings.AxisSet(xMin, xMax, yMin, yMax, xAxisIndex, yAxisIndex);
         }
 
@@ -585,7 +602,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             var yAxis = settings.GetYAxis(yAxisIndex);
 
             if (xAxis.Dims.HasBeenSet == false || yAxis.Dims.HasBeenSet == false)
+            {
                 settings.AxisAutoAll();
+            }
 
             xAxis.Dims.Zoom(xFrac, zoomToX ?? xAxis.Dims.Center);
             yAxis.Dims.Zoom(yFrac, zoomToY ?? yAxis.Dims.Center);
@@ -599,7 +618,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void AxisPan(double dx = 0, double dy = 0)
         {
             if (!settings.AllAxesHaveBeenSet)
+            {
                 settings.AxisAutoAll();
+            }
 
             settings.XAxis.Dims.Pan(dx);
             settings.YAxis.Dims.Pan(dy);

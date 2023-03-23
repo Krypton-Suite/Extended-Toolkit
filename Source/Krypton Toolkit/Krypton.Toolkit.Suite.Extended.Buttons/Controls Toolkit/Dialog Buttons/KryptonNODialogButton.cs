@@ -70,7 +70,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private void KryptonNODialogButton_TextChanged(object sender, EventArgs e)
         {
-            if (Text == Name) Text = "&No";
+            if (Text == Name)
+            {
+                Text = "&No";
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e)

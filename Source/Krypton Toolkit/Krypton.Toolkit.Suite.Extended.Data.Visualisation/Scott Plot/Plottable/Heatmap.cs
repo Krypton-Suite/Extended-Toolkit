@@ -205,13 +205,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (double? curr in intensitiesFlattened)
             {
                 if (curr.HasValue && double.IsNaN(curr.Value))
+                {
                     throw new ArgumentException("Heatmaps do not support intensities of double.NaN");
+                }
 
                 if (curr.HasValue && curr.Value < Min)
+                {
                     Min = curr.Value;
+                }
 
                 if (curr.HasValue && curr.Value > Max)
+                {
                     Max = curr.Value;
+                }
             }
 
             ColormapMinIsClipped = ScaleMin.HasValue && ScaleMin > Min;
@@ -221,7 +227,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double normalizeMax = (ScaleMax.HasValue && ScaleMax.Value > Max) ? ScaleMax.Value : Max;
 
             if (TransparencyThreshold.HasValue)
+            {
                 TransparencyThreshold = Normalize(TransparencyThreshold.Value, Min, Max, ScaleMin, ScaleMax);
+            }
 
             double?[] NormalizedIntensities = Normalize(intensitiesFlattened, null, null, ScaleMin, ScaleMax);
 
@@ -308,7 +316,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public virtual AxisLimits GetAxisLimits()
         {
             if (BmpHeatmap is null)
+            {
                 return new AxisLimits();
+            }
 
             return new AxisLimits(
                 xMin: OffsetX,
@@ -320,14 +330,21 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deepValidation = false)
         {
             if (BmpHeatmap is null)
+            {
                 throw new InvalidOperationException("Update() was not called prior to rendering");
+            }
 
             if (deepValidation)
             {
                 if (DataWidth > 1e6 || DataHeight > 1e6)
+                {
                     throw new ArgumentException("Heatmaps may be unreliable for arrays with edges larger than 1 million values");
+                }
+
                 if (DataWidth * DataHeight > 1e7)
+                {
                     throw new ArgumentException("Heatmaps may be unreliable for arrays with more than 10 million values");
+                }
             }
         }
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)

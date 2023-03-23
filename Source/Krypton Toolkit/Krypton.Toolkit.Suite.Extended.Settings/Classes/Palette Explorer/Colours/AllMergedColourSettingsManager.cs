@@ -1123,7 +1123,10 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                     dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
-                    if (dialog.ShowDialog() == DialogResult.OK) WriteRGBColoursToFile(dialog.FileName);
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        WriteRGBColoursToFile(dialog.FileName);
+                    }
                 }
             }
             catch (Exception exc)

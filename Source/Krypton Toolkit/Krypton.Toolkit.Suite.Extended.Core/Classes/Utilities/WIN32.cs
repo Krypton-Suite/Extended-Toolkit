@@ -411,7 +411,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             if (this.IsSubClassed)
             {
                 if (OnSubClassedWndProc(ref m) != 0)
+                {
                     return;
+                }
             }
             base.WndProc(ref m);
         }

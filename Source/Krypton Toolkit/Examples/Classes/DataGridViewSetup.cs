@@ -105,7 +105,9 @@ namespace Examples
         private void LoadConfigFromFile(string file, KryptonOutlookGrid grid)
         {
             if (string.IsNullOrEmpty(file))
+            {
                 throw new Exception("Grid config file is missing !");
+            }
 
             XDocument doc = XDocument.Load(file);
             int versionGrid = -1;

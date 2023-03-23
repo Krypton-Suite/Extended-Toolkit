@@ -90,7 +90,10 @@ namespace Krypton.Toolkit.Suite.Extended.IO
         #region Event Handlers
         private void KryptonFileSystemTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
-            if (e.Node is KryptonTreeNode) return;
+            if (e.Node is KryptonTreeNode)
+            {
+                return;
+            }
 
             //KryptonDirectoryNode
         }

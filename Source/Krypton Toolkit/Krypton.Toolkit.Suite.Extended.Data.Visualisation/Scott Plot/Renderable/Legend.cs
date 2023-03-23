@@ -55,7 +55,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible is false || LegendItems is null || LegendItems.Length == 0)
+            {
                 return;
+            }
 
             using (var gfx = GDI.Graphics(bmp, dims, lowQuality, false))
             using (var font = GDI.Font(Font))
@@ -69,10 +71,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Bitmap GetBitmap(bool lowQuality = false, double scale = 1.0)
         {
             if (LegendItems is null)
+            {
                 throw new InvalidOperationException("must render the plot at least once before getting the legend bitmap");
+            }
 
             if (LegendItems.Length == 0)
+            {
                 throw new InvalidOperationException("The legend is empty (there are no visible plot objects with a label)");
+            }
 
             // use a temporary bitmap and graphics (without scaling) to measure how large the final image should be
             using var tempBitmap = new Bitmap(1, 1);
@@ -122,12 +128,16 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 RectangleF rectFill = new RectangleF(locationX, locationY, width, height);
 
                 if (shadow)
+                {
                     gfx.FillRectangle(shadowBrush, rectShadow);
+                }
 
                 gfx.FillRectangle(fillBrush, rectFill);
 
                 if (outline)
+                {
                     gfx.DrawRectangle(outlinePen, Rectangle.Round(rectFill));
+                }
 
                 for (int i = 0; i < items.Length; i++)
                 {
@@ -172,7 +182,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                         float lineXcenter = (lineX1 + lineX2) / 2;
                         PointF markerPoint = new PointF(lineXcenter, lineY);
                         if ((item.markerShape != MarkerShape.None) && (item.markerSize > 0))
+                        {
                             MarkerTools.DrawMarker(gfx, markerPoint, item.markerShape, MarkerWidth, item.color);
+                        }
                     }
                 }
             }
@@ -187,7 +199,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                                      .Where(x => !string.IsNullOrWhiteSpace(x.label))
                                      .ToArray();
             if (ReverseOrder)
+            {
                 Array.Reverse(LegendItems);
+            }
         }
 
         private (float x, float y) GetLocationPx(PlotDimensions dims, float width, float height)

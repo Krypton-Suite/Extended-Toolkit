@@ -309,8 +309,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             foreach (IDraggable draggable in GetDraggables())
                 if (draggable.IsUnderMouse(Plot.GetCoordinateX((float)pixelX), Plot.GetCoordinateY((float)pixelY), snapWidth, snapHeight))
+                {
                     if (draggable.DragEnabled)
+                    {
                         return draggable;
+                    }
+                }
 
             return null;
         }
@@ -359,16 +363,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(bool lowQuality = false, bool skipIfCurrentlyRendering = false)
         {
             if (Bmp is null)
+            {
                 return;
+            }
 
             if (currentlyRendering && skipIfCurrentlyRendering)
+            {
                 return;
+            }
+
             currentlyRendering = true;
 
             if (Configuration.Quality == QualityMode.High)
+            {
                 lowQuality = false;
+            }
             else if (Configuration.Quality == QualityMode.Low)
+            {
                 lowQuality = true;
+            }
 
             Plot.Render(Bmp, lowQuality);
             BitmapRenderCount += 1;
@@ -389,7 +402,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             AxisLimits newLimits = Plot.GetAxisLimits();
             if (!newLimits.Equals(LimitsOnLastRender) && Configuration.AxesChangedEventEnabled)
+            {
                 AxesChanged(null, EventArgs.Empty);
+            }
+
             LimitsOnLastRender = newLimits;
 
             if (BitmapRenderCount == 1)
@@ -504,13 +520,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void RenderIfPlottableListChanged()
         {
             if (Configuration.RenderIfPlottableListChanges == false)
+            {
                 return;
+            }
 
             if (Bmp is null)
+            {
                 return;
+            }
 
             if (Settings.PlottablesIdentifier != PlottablesIdentifierAtLastRender)
+            {
                 Render();
+            }
         }
 
         /// <summary>
@@ -523,11 +545,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             // don't render if the requested size cannot produce a valid bitmap
             if (width < 1 || height < 1)
+            {
                 return;
+            }
 
             // don't render if the request is so early that the processor hasn't started
             if (EventsProcessor is null)
+            {
                 return;
+            }
 
             // Disposing a Bitmap the GUI is displaying will cause an exception.
             // Keep track of old bitmaps so they can be disposed of later.
@@ -536,9 +562,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             BitmapRenderCount = 0;
 
             if (useDelayedRendering)
+            {
                 RenderRequest(RenderType.HighQualityDelayed);
+            }
             else
+            {
                 Render();
+            }
         }
 
         /// <summary>
@@ -547,7 +577,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void MouseDown(InputState input)
         {
             if (!Settings.AllAxesHaveBeenSet)
+            {
                 Plot.SetAxisLimits(Plot.GetAxisLimits());
+            }
+
             IsMiddleDown = input.MiddleWasJustPressed;
             IsRightDown = input.RightWasJustPressed;
             IsLeftDown = input.LeftWasJustPressed;
@@ -578,7 +611,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             bool altWasLifted = IsZoomingWithAlt && !input.AltDown;
             bool middleButtonLifted = IsZoomingRectangle && !input.MiddleWasJustPressed;
             if (IsZoomingRectangle && (altWasLifted || middleButtonLifted))
+            {
                 Settings.ZoomRectangle.Clear();
+            }
 
             IsZoomingWithAlt = IsLeftDown && input.AltDown;
             bool isMiddleClickDragZooming = IsMiddleDown && !middleButtonLifted;
@@ -593,18 +628,30 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             IUIEvent mouseMoveEvent = null;
             if (PlottableBeingDragged != null)
+            {
                 mouseMoveEvent = EventFactory.CreatePlottableDrag(input.X, input.Y, input.ShiftDown, PlottableBeingDragged);
+            }
             else if (IsLeftDown && !input.AltDown && Configuration.LeftClickDragPan)
+            {
                 mouseMoveEvent = EventFactory.CreateMousePan(input);
+            }
             else if (IsRightDown && Configuration.RightClickDragZoom)
+            {
                 mouseMoveEvent = EventFactory.CreateMouseZoom(input);
+            }
             else if (IsZoomingRectangle)
+            {
                 mouseMoveEvent = EventFactory.CreateMouseMovedToZoomRectangle(input.X, input.Y);
+            }
 
             if (mouseMoveEvent != null)
+            {
                 ProcessEvent(mouseMoveEvent);
+            }
             else
+            {
                 MouseMovedWithoutInteraction(input);
+            }
         }
 
         /// <summary>
@@ -625,7 +672,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 uiEvent.ProcessEvent();
 
                 if (uiEvent.RenderType == RenderType.ProcessMouseEventsOnly)
+                {
                     return;
+                }
 
                 bool lowQuality =
                     uiEvent is MouseMovedToZoomRectangle ||
@@ -639,7 +688,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 Render(lowQuality: lowQuality, skipIfCurrentlyRendering: allowSkip);
 
                 if (uiEvent is PlottableDragEvent)
+                {
                     PlottableDragged(PlottableBeingDragged, EventArgs.Empty);
+                }
             }
         }
 
@@ -674,15 +725,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             IUIEvent mouseEvent;
             if (IsZoomingRectangle && MouseDownDragged && Configuration.MiddleClickDragZoom)
+            {
                 mouseEvent = EventFactory.CreateApplyZoomRectangleEvent(input.X, input.Y);
+            }
             else if (IsMiddleDown && Configuration.MiddleClickAutoAxis && MouseDownDragged == false)
+            {
                 mouseEvent = EventFactory.CreateMouseAutoAxis();
+            }
             else
+            {
                 mouseEvent = EventFactory.CreateMouseUpClearRender();
+            }
+
             ProcessEvent(mouseEvent);
 
             if (IsRightDown && MouseDownDragged == false)
+            {
                 RightClicked(null, EventArgs.Empty);
+            }
 
             IsMiddleDown = false;
             IsRightDown = false;
@@ -691,11 +751,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             UpdateCursor(input);
 
             if (droppedPlottable != null)
+            {
                 PlottableDropped(droppedPlottable, EventArgs.Empty);
+            }
 
             PlottableBeingDragged = null;
             if (droppedPlottable != null)
+            {
                 ProcessEvent(EventFactory.CreateMouseUpClearRender());
+            }
         }
 
         /// <summary>
@@ -717,7 +781,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void MouseWheel(InputState input)
         {
             if (!Settings.AllAxesHaveBeenSet)
+            {
                 Plot.SetAxisLimits(Plot.GetAxisLimits());
+            }
 
             if (Configuration.ScrollWheelZoom)
             {

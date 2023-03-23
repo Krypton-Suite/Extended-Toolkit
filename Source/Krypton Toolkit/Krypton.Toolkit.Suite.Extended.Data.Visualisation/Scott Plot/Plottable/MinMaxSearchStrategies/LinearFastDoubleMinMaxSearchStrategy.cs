@@ -50,9 +50,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 for (int i = l; i <= r; i++)
                 {
                     if (sourceArrayDouble[i] < lowestValue)
+                    {
                         lowestValue = sourceArrayDouble[i];
+                    }
+
                     if (sourceArrayDouble[i] > highestValue)
+                    {
                         highestValue = sourceArrayDouble[i];
+                    }
                 }
                 return;
             }
@@ -65,7 +70,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public override double SourceElement(int index)
         {
             if (sourceArrayDouble != null)
+            {
                 return sourceArrayDouble[index];
+            }
+
             return Convert.ToDouble(SourceArray[index]);
         }
     }

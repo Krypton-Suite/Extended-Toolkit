@@ -99,7 +99,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value == null)
+                {
                     throw new Exception("Y data cannot be null");
+                }
 
                 MaxRenderIndexLowerYSPromise = MaxRenderIndex > value.Length - 1;
 
@@ -115,7 +117,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value <= 0)
+                {
                     throw new Exception("SampleRate must be greater then zero");
+                }
+
                 _SampleRate = value;
                 _SamplePeriod = 1.0 / value;
             }
@@ -128,7 +133,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (_SamplePeriod <= 0)
+                {
                     throw new Exception("SamplePeriod must be greater then zero");
+                }
+
                 _SamplePeriod = value;
                 _SampleRate = 1.0 / value;
             }
@@ -141,7 +149,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value < 0)
+                {
                     throw new ArgumentException("MinRenderIndex must be positive");
+                }
 
                 MaxRenderIndexHigherMinRenderIndexPromise = value > MaxRenderIndex;
 
@@ -155,7 +165,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value < 0)
+                {
                     throw new ArgumentException("MaxRenderIndex must be positive");
+                }
 
                 MaxRenderIndexHigherMinRenderIndexPromise = MinRenderIndex > value;
 
@@ -283,9 +295,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Strategy.MinMaxRangeQuery(MinRenderIndex, MaxRenderIndex, out double yMin, out double yMax);
 
             if (double.IsNaN(yMin) || double.IsNaN(yMax))
+            {
                 throw new InvalidOperationException("Signal data must not contain NaN");
+            }
+
             if (double.IsInfinity(yMin) || double.IsInfinity(yMax))
+            {
                 throw new InvalidOperationException("Signal data must not contain Infinity");
+            }
 
             double offsetY = Convert.ToDouble(OffsetY);
             return new AxisLimits(
@@ -317,13 +334,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             int capacity = visibleIndex2 - visibleIndex1 + 2;
             List<PointF> linePoints = new(capacity);
             if (visibleIndex2 > _Ys.Length - 2)
+            {
                 visibleIndex2 = _Ys.Length - 2;
+            }
+
             if (visibleIndex2 > MaxRenderIndex - 1)
+            {
                 visibleIndex2 = MaxRenderIndex - 1;
+            }
+
             if (visibleIndex1 < 0)
+            {
                 visibleIndex1 = 0;
+            }
+
             if (visibleIndex1 < MinRenderIndex)
+            {
                 visibleIndex1 = MinRenderIndex;
+            }
 
             for (int i = visibleIndex1; i <= visibleIndex2 + 1; i++)
             {
@@ -341,10 +369,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 ValidatePoints(pointsArray);
 
                 if (StepDisplay)
+                {
                     pointsArray = GetStepPoints(pointsArray);
+                }
 
                 if (penLD.Width > 0)
+                {
                     gfx.DrawLines(penLD, pointsArray);
+                }
 
                 switch (_FillType)
                 {
@@ -432,14 +464,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             int index2 = (int)(offsetPoints + columnPointCount * (xPx + 1));
 
             if (index1 < 0)
+            {
                 index1 = 0;
+            }
+
             if (index1 < MinRenderIndex)
+            {
                 index1 = MinRenderIndex;
+            }
 
             if (index2 > _Ys.Length - 1)
+            {
                 index2 = _Ys.Length - 1;
+            }
+
             if (index2 > MaxRenderIndex)
+            {
                 index2 = MaxRenderIndex;
+            }
 
             // get the min and max value for this column                
             Strategy.MinMaxRangeQuery(index1, index2, out double lowestValue, out double highestValue);
@@ -460,7 +502,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             dataColumnFirst = Math.Max(0, dataColumnFirst);
             dataColumnLast = Math.Min((int)dims.DataWidth, dataColumnLast);
             if (dataColumnFirst >= dataColumnLast)
+            {
                 return;
+            }
 
             var columns = Enumerable.Range(dataColumnFirst, dataColumnLast - dataColumnFirst);
             float xPixelStart = dataColumnFirst + dims.DataOffsetX;
@@ -653,7 +697,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             xPxStart = Math.Max(0, xPxStart);
             xPxEnd = Math.Min((int)dims.DataWidth, xPxEnd);
             if (xPxStart >= xPxEnd)
+            {
                 return;
+            }
 
             int capacity = (xPxEnd - xPxStart) * 2 + 1;
             List<PointF> linePoints = new(capacity);
@@ -668,11 +714,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     int index2 = (int)(offsetPoints + columnPointCount * (xPx + 1));
 
                     if (index1 < 0)
+                    {
                         index1 = 0;
+                    }
+
                     if (index1 > _Ys.Length - 1)
+                    {
                         index1 = _Ys.Length - 1;
+                    }
+
                     if (index2 > _Ys.Length - 1)
+                    {
                         index2 = _Ys.Length - 1;
+                    }
 
                     var indexes = Enumerable.Range(0, DensityLevelCount + 1).Select(x => x * (index2 - index1 - 1) / (DensityLevelCount));
 
@@ -782,9 +836,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             else if (pointsPerPixelColumn > 1)
             {
                 if (densityLevelsAvailable)
+                {
                     RenderHighDensityDistributionParallel(dims, gfx, offsetPoints, columnPointCount);
+                }
                 else
+                {
                     RenderHighDensity(dims, gfx, offsetPoints, columnPointCount, penHD);
+                }
             }
             else
             {
@@ -796,32 +854,55 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             foreach (PointF pt in points)
                 if (float.IsNaN(pt.Y))
+                {
                     throw new InvalidOperationException("Data must not contain NaN");
+                }
         }
 
         public void ValidateData(bool deep = false)
         {
             // check Y values
             if (Ys is null)
+            {
                 throw new InvalidOperationException("ys cannot be null");
+            }
+
             if (deep)
+            {
                 Validate.AssertAllReal("ys", Ys);
+            }
 
             // check render indexes
             if (MinRenderIndex < 0 || MinRenderIndex > MaxRenderIndex)
+            {
                 throw new IndexOutOfRangeException("minRenderIndex must be between 0 and maxRenderIndex");
+            }
+
             if ((MaxRenderIndex > Ys.Length - 1) || MaxRenderIndex < 0)
+            {
                 throw new IndexOutOfRangeException("maxRenderIndex must be a valid index for ys[]");
+            }
+
             if (MaxRenderIndexLowerYSPromise)
+            {
                 throw new IndexOutOfRangeException("maxRenderIndex must be a valid index for ys[]");
+            }
+
             if (MaxRenderIndexHigherMinRenderIndexPromise)
+            {
                 throw new IndexOutOfRangeException("minRenderIndex must be lower maxRenderIndex");
+            }
 
             // check misc styling options
             if (FillColor1MustBeSetPromise)
+            {
                 throw new InvalidOperationException($"A Color must be assigned to FillColor1 to use fill type '{_FillType}'");
+            }
+
             if (FillColor2MustBeSetPromise)
+            {
                 throw new InvalidOperationException($"A Color must be assigned to FillColor2 to use fill type '{_FillType}'");
+            }
         }
 
         /// <summary>

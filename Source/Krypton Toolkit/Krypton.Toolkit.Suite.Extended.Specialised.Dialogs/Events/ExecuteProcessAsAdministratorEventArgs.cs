@@ -118,7 +118,10 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
             bool hasAdministrativeRights = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
-            if (string.IsNullOrWhiteSpace(processName)) throw new ArgumentNullException();
+            if (string.IsNullOrWhiteSpace(processName))
+            {
+                throw new ArgumentNullException();
+            }
 
             if (!hasAdministrativeRights)
             {

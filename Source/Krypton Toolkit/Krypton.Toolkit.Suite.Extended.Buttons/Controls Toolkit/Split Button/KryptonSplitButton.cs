@@ -195,7 +195,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             base.OnPaint(e);
 
-            if (!ShowSplitOption) return;
+            if (!ShowSplitOption)
+            {
+                return;
+            }
 
             Graphics g = e.Graphics;
 

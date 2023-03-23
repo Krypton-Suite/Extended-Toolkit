@@ -145,7 +145,10 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
         private void kbtnScan_Click(object sender, EventArgs e)
         {
-            if (ktxtWorkGroupName.Text == "") return;
+            if (ktxtWorkGroupName.Text == "")
+            {
+                return;
+            }
 
             DataTable dt = new DataTable();
 

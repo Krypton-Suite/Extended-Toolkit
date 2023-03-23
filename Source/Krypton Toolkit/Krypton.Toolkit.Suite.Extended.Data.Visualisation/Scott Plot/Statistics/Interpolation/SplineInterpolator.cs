@@ -41,16 +41,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         protected SplineInterpolator(double[] xs, double[] ys, int resolution = 10)
         {
             if (xs is null || ys is null)
+            {
                 throw new ArgumentException("xs and ys cannot be null");
+            }
 
             if (xs.Length != ys.Length)
+            {
                 throw new ArgumentException("xs and ys must have the same length");
+            }
 
             if (xs.Length < 4)
+            {
                 throw new ArgumentException("xs and ys must have a length of 4 or greater");
+            }
 
             if (resolution < 1)
+            {
                 throw new ArgumentException("resolution must be 1 or greater");
+            }
 
             givenXs = xs;
             givenYs = ys;

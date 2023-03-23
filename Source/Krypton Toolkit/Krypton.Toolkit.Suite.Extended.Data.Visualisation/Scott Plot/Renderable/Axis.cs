@@ -146,7 +146,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             AxisLabel.PixelSizePadding = PixelSizePadding;
             AxisTicks.PixelOffset = PixelOffset;
@@ -405,7 +407,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             AxisTicks.TickCollection.MinorTickDistribution = enable ? MinorTickDistribution.Log : MinorTickDistribution.Even;
             if (roundMajorTicks)
+            {
                 AxisTicks.TickCollection.IntegerPositionsOnly = roundMajorTicks;
+            }
         }
 
         /// <summary>
@@ -458,9 +462,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             AxisTicks.MinorGridWidth = lineWidth ?? AxisTicks.MinorGridWidth;
             AxisTicks.MinorGridStyle = lineStyle ?? AxisTicks.MinorGridStyle;
             if (logScale.HasValue)
+            {
                 AxisTicks.TickCollection.MinorTickDistribution = logScale.Value
                     ? MinorTickDistribution.Log
                     : MinorTickDistribution.Even;
+            }
         }
 
         /// <summary>
@@ -498,7 +504,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 PixelSize = 0;
 
                 if (AxisLabel.IsVisible)
+                {
                     PixelSize += AxisLabel.Measure().Height;
+                }
 
                 if (AxisTicks.TickLabelVisible)
                 {
@@ -519,7 +527,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 }
 
                 if (AxisTicks.MajorTickVisible)
+                {
                     PixelSize += AxisTicks.MajorTickLength;
+                }
 
                 PixelSize = Math.Max(PixelSize, PixelSizeMinimum);
                 PixelSize = Math.Min(PixelSize, PixelSizeMaximum);

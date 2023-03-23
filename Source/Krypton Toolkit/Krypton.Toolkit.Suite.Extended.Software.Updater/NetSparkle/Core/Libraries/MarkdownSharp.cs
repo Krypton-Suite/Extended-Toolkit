@@ -94,7 +94,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         public Markdown(bool loadOptionsFromConfigFile)
         {
-            if (!loadOptionsFromConfigFile) return;
+            if (!loadOptionsFromConfigFile)
+            {
+                return;
+            }
             //
             //            var settings = ConfigurationManager.AppSettings;
             //            foreach (string key in settings.Keys)
@@ -286,7 +289,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </remarks>
         public string? Transform(string? text)
         {
-            if (String.IsNullOrEmpty(text)) return "";
+            if (String.IsNullOrEmpty(text))
+            {
+                return "";
+            }
 
             Setup();
 
@@ -433,6 +439,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             // in other words [this] and [this[also]] and [this[also[too]]]
             // up to _nestDepth
             if (_nestedBracketsPattern == null)
+            {
                 _nestedBracketsPattern =
                     RepeatString(@"
                     (?>              # Atomic matching
@@ -440,9 +447,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                      |
                        \[
                            ", _nestDepth) + RepeatString(
-                    @" \]
+                        @" \]
                     )*"
-                    , _nestDepth);
+                        , _nestDepth);
+            }
+
             return _nestedBracketsPattern;
         }
 
@@ -457,6 +466,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             // in other words (this) and (this(also)) and (this(also(too)))
             // up to _nestDepth
             if (_nestedParensPattern == null)
+            {
                 _nestedParensPattern =
                     RepeatString(@"
                     (?>              # Atomic matching
@@ -464,9 +474,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                      |
                        \(
                            ", _nestDepth) + RepeatString(
-                    @" \)
+                        @" \)
                     )*"
-                    , _nestDepth);
+                        , _nestDepth);
+            }
+
             return _nestedParensPattern;
         }
 
@@ -505,7 +517,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             _urls[linkID] = EncodeAmpsAndAngles(match.Groups[2].Value);
 
             if (match.Groups[3] != null && match.Groups[3].Length > 0)
+            {
                 _titles[linkID] = match.Groups[3].Value.Replace("\"", "&quot;");
+            }
 
             return "";
         }
@@ -707,14 +721,18 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 tagStart = m.Index;
 
                 if (pos < tagStart)
+                {
                     tokens.Add(new Token(TokenType.Text, text.Substring(pos, tagStart - pos)));
+                }
 
                 tokens.Add(new Token(TokenType.Tag, m.Value));
                 pos = tagStart + m.Length;
             }
 
             if (pos < text.Length)
+            {
                 tokens.Add(new Token(TokenType.Text, text.Substring(pos, text.Length - pos)));
+            }
 
             return tokens;
         }
@@ -798,7 +816,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
             // for shortcut links like [this][].
             if (linkID == "")
+            {
                 linkID = linkText.ToLowerInvariant();
+            }
 
             if (_urls.ContainsKey(linkID))
             {
@@ -818,7 +838,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 result += ">" + linkText + "</a>";
             }
             else
+            {
                 result = wholeMatch;
+            }
 
             return result;
         }
@@ -849,7 +871,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 result += ">" + linkText + "</a>";
             }
             else
+            {
                 result = wholeMatch;
+            }
 
             return result;
         }
@@ -865,7 +889,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             url = EncodeProblemUrlChars(url);
             url = EscapeBoldItalic(url);
             if (url.StartsWith("<") && url.EndsWith(">"))
+            {
                 url = url.Substring(1, url.Length - 2); // remove <>'s surrounding URL, if present            
+            }
 
             result = string.Format("<a href=\"{0}\"", url);
 
@@ -952,7 +978,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
             // for shortcut links like ![this][].
             if (linkID == "")
+            {
                 linkID = altText.ToLowerInvariant();
+            }
 
             if (_urls.ContainsKey(linkID))
             {
@@ -960,7 +988,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 string? title = null;
 
                 if (_titles.ContainsKey(linkID))
+                {
                     title = _titles[linkID];
+                }
 
                 return ImageTag(url, altText, title);
             }
@@ -978,7 +1008,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             string? title = match.Groups[6].Value;
 
             if (url.StartsWith("<") && url.EndsWith(">"))
+            {
                 url = url.Substring(1, url.Length - 2);    // Remove <>'s surrounding URL, if present
+            }
 
             return ImageTag(url, alt, title);
         }
@@ -1113,9 +1145,13 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             // We use a different prefix before nested lists than top-level lists.
             // See extended comment in _ProcessListItems().
             if (_listLevel > 0)
+            {
                 text = _listNested.Replace(text, new MatchEvaluator(ListEvaluator));
+            }
             else
+            {
                 text = _listTopLevel.Replace(text, new MatchEvaluator(ListEvaluator));
+            }
 
             return text;
         }
@@ -1183,7 +1219,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
                 if (containsDoubleNewline || lastItemHadADoubleNewline)
                     // we could correct any bad indentation here..
+                {
                     item = RunBlockGamut(Outdent(item) + "\n", unhash: false);
+                }
                 else
                 {
                     // recursion for sub-lists
@@ -1317,9 +1355,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         private string? DoHardBreaks(string? text)
         {
             if (_autoNewlines)
+            {
                 text = Regex.Replace(text, @"\n", string.Format("<br{0}\n", _emptyElementSuffix));
+            }
             else
+            {
                 text = Regex.Replace(text, @" {2,}\n", string.Format("<br{0}\n", _emptyElementSuffix));
+            }
+
             return text;
         }
 
@@ -1377,21 +1420,30 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             // With the simulated lookbehind, the full link *is* matched (just not handled, because of this early return), causing
             // the google link to not be matched again.
             if (match.Groups[1].Success)
+            {
                 return match.Value;
+            }
 
             var protocol = match.Groups[2].Value;
             var link = match.Groups[3].Value;
             if (!link.EndsWith(")"))
+            {
                 return "<" + protocol + link + ">";
+            }
+
             var level = 0;
             foreach (Match c in Regex.Matches(link, "[()]"))
             {
                 if (c.Value == "(")
                 {
                     if (level <= 0)
+                    {
                         level = 1;
+                    }
                     else
+                    {
                         level++;
+                    }
                 }
                 else
                 {
@@ -1511,11 +1563,17 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             {
                 r = rand.Next(1, 100);
                 if ((r > 90 || c == ':') && c != '@')
+                {
                     sb.Append(c);                         // m
+                }
                 else if (r < 45)
+                {
                     sb.AppendFormat("&#x{0:x};", (int)c); // &#x6D
+                }
                 else
+                {
                     sb.AppendFormat("&#{0};", (int)c);    // &#109
+                }
             }
             return sb.ToString();
         }
@@ -1613,7 +1671,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         private string? EncodeProblemUrlChars(string? url)
         {
-            if (!_encodeProblemUrlCharacters) return url;
+            if (!_encodeProblemUrlCharacters)
+            {
+                return url;
+            }
 
             var sb = new StringBuilder(url.Length);
             bool encode;
@@ -1624,12 +1685,18 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 c = url[i];
                 encode = Array.IndexOf(_problemUrlChars, c) != -1;
                 if (encode && c == ':' && i < url.Length - 1)
+                {
                     encode = !(url[i + 1] == '/') && !(url[i + 1] >= '0' && url[i + 1] <= '9');
+                }
 
                 if (encode)
+                {
                     sb.Append("%" + String.Format("{0:x}", (byte)c));
+                }
                 else
+                {
                     sb.Append(c);
+                }
             }
 
             return sb.ToString();
@@ -1659,7 +1726,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                     value = value.Replace(@"\", _escapeTable[@"\"]);
 
                     if (_autoHyperlink && value.StartsWith("<!")) // escape slashes in comments to prevent autolinking there -- http://meta.stackoverflow.com/questions/95987/html-comment-containing-url-breaks-if-followed-by-another-html-comment
+                    {
                         value = value.Replace("/", _escapeTable["/"]);
+                    }
 
                     value = Regex.Replace(value, "(?<=.)</?code>(?=.)", _escapeTable[@"`"]);
                     value = EscapeBoldItalic(value);
@@ -1688,14 +1757,22 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 switch (text[i])
                 {
                     case '\n':
-                        if (valid) output.Append(line);
+                        if (valid)
+                        {
+                            output.Append(line);
+                        }
+
                         output.Append('\n');
                         line.Length = 0; valid = false;
                         break;
                     case '\r':
                         if ((i < text.Length - 1) && (text[i + 1] != '\n'))
                         {
-                            if (valid) output.Append(line);
+                            if (valid)
+                            {
+                                output.Append(line);
+                            }
+
                             output.Append('\n');
                             line.Length = 0; valid = false;
                         }
@@ -1708,13 +1785,21 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                     case '\x1A':
                         break;
                     default:
-                        if (!valid && text[i] != ' ') valid = true;
+                        if (!valid && text[i] != ' ')
+                        {
+                            valid = true;
+                        }
+
                         line.Append(text[i]);
                         break;
                 }
             }
 
-            if (valid) output.Append(line);
+            if (valid)
+            {
+                output.Append(line);
+            }
+
             output.Append('\n');
 
             // add two newlines to the end before return

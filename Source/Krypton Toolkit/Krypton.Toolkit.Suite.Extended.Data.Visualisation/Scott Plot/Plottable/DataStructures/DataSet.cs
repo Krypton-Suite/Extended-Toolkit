@@ -43,7 +43,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             this.errors = errors;
 
             if (errors != null && errors.Length != values.Length)
+            {
                 throw new ArgumentException("values and errors must have identical length");
+            }
         }
     }
 }

@@ -56,7 +56,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             // add Palette Handler
             if (_palette != null)
+            {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
 
@@ -67,7 +69,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
 
             //only if Krypton
-            if (Renderer == Renderer.Krypton) InitColors();
+            if (Renderer == Renderer.Krypton)
+            {
+                InitColors();
+            }
         }
 
         public event ButtonClickedEventHandler ButtonClicked;
@@ -185,7 +190,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get => this._ButtonHeight;
             set
             {
-                if (value < 5) value = 5;
+                if (value < 5)
+                {
+                    value = 5;
+                }
+
                 this._ButtonHeight = value;
                 this.Invalidate();
             }
@@ -469,7 +478,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             //string EmptyLineVar = null;
             this.MaxLargeButtonCount = (int)Math.Round(Math.Floor((double)(((double)((this.Height - this.GetBottomContainerRectangle().Height) - this.GetGripRectangle().Height)) / ((double)this.GetButtonHeight()))));
-            if (this.Buttons.CountVisible() < MaxLargeButtonCount) MaxLargeButtonCount = this.Buttons.CountVisible();
+            if (this.Buttons.CountVisible() < MaxLargeButtonCount)
+            {
+                MaxLargeButtonCount = this.Buttons.CountVisible();
+            }
 
             CanShrink = (MaxLargeButtonCount != 0);
             CanGrow = (MaxLargeButtonCount < this.Buttons.CountVisible());
@@ -490,7 +502,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     Buttons[IterateLargeButtons].Rectangle = rec;
                     Buttons[IterateLargeButtons].isLarge = true;
                     this.PaintButton(Buttons[IterateLargeButtons], e.Graphics, (MaxLargeButtonCount != SyncLargeButtons));
-                    if (SyncLargeButtons == MaxLargeButtonCount) break; // TODO: might not be correct. Was : Exit For
+                    if (SyncLargeButtons == MaxLargeButtonCount)
+                    {
+                        break; // TODO: might not be correct. Was : Exit For
+                    }
 
                     SyncLargeButtons += 1;
                 }
@@ -516,7 +531,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             for (IterateSmallButtons = IterateLargeButtons; IterateSmallButtons <= this.Buttons.Count - 1; IterateSmallButtons++)
             {
-                if (SyncSmallButtons == MaxSmallButtonCount) break; // TODO: might not be correct. Was : Exit For
+                if (SyncSmallButtons == MaxSmallButtonCount)
+                {
+                    break; // TODO: might not be correct. Was : Exit For
+                }
 
                 if (this.Buttons[IterateSmallButtons].Visible)
                 {
@@ -608,11 +626,21 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
                     break;
             }
-            if (Button.isLarge & IsLastLarge == true) graphics.DrawImage(Button.Image.ToBitmap(), recIma);
-            if (Button.isLarge == false) graphics.DrawImage(Button.Image.ToBitmap(), recIma);
+            if (Button.isLarge & IsLastLarge == true)
+            {
+                graphics.DrawImage(Button.Image.ToBitmap(), recIma);
+            }
+
+            if (Button.isLarge == false)
+            {
+                graphics.DrawImage(Button.Image.ToBitmap(), recIma);
+            }
 
             //Debug
-            if (isDebugMode) graphics.DrawRectangle(new Pen(Color.Red), recIma);
+            if (isDebugMode)
+            {
+                graphics.DrawRectangle(new Pen(Color.Red), recIma);
+            }
         }
 
         private void FillButton(Rectangle rectangle, Graphics graphics, ButtonState buttonState, bool DrawTopBorder, bool DrawLeftBorder, bool DrawRightBorder)
@@ -698,15 +726,25 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             //Draw Top Border...
-            if (DrawTopBorder) graphics.DrawLine(new Pen(GetOutlookBarLineColour()), rectangle.X, rectangle.Y, rectangle.Width + rectangle.X, rectangle.Y);
+            if (DrawTopBorder)
+            {
+                graphics.DrawLine(new Pen(GetOutlookBarLineColour()), rectangle.X, rectangle.Y, rectangle.Width + rectangle.X, rectangle.Y);
+            }
 
             //DrawBorders?
             if (_DrawBorders)
             {
                 //Draw Left Border...
-                if (DrawLeftBorder) graphics.DrawLine(new Pen(GetOutlookBarLineColour()), rectangle.X, rectangle.Y, rectangle.X, rectangle.Y + rectangle.Height);
+                if (DrawLeftBorder)
+                {
+                    graphics.DrawLine(new Pen(GetOutlookBarLineColour()), rectangle.X, rectangle.Y, rectangle.X, rectangle.Y + rectangle.Height);
+                }
+
                 //Draw Right Border...
-                if (DrawRightBorder) graphics.DrawLine(new Pen(GetOutlookBarLineColour()), rectangle.X + rectangle.Width - 1, rectangle.Y, rectangle.X + rectangle.Width - 1, rectangle.Y + rectangle.Height);
+                if (DrawRightBorder)
+                {
+                    graphics.DrawLine(new Pen(GetOutlookBarLineColour()), rectangle.X + rectangle.Width - 1, rectangle.Y, rectangle.X + rectangle.Width - 1, rectangle.Y + rectangle.Height);
+                }
             }
         }
 
@@ -788,7 +826,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
             //Debug
-            if (isDebugMode) graphics.DrawRectangle(new Pen(Color.Green), this.GetDropDownRectangle());
+            if (isDebugMode)
+            {
+                graphics.DrawRectangle(new Pen(Color.Green), this.GetDropDownRectangle());
+            }
 
             //Draw the icon...
             Icon oIcon = this.GetDropDownIcon();
@@ -804,7 +845,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 PaintDropDown(graphics, RectangleIcon, _GridColourDark, _GridColourLight);
             }
             //Debug
-            if (isDebugMode) graphics.DrawRectangle(new Pen(Color.Red), RectangleIcon);
+            if (isDebugMode)
+            {
+                graphics.DrawRectangle(new Pen(Color.Red), RectangleIcon);
+            }
 
             //graphics.DrawIcon(oIcon, RectangleIcon);
             oIcon.Dispose();
@@ -903,20 +947,52 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     switch (buttonstate)
                     {
                         case ButtonState.Hovering | ButtonState.Selected:
-                            if (colorIndex == 0) return Color.FromArgb(232, 127, 8);
-                            if (colorIndex == 1) return Color.FromArgb(247, 218, 124);
+                            if (colorIndex == 0)
+                            {
+                                return Color.FromArgb(232, 127, 8);
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return Color.FromArgb(247, 218, 124);
+                            }
+
                             break;
                         case ButtonState.Hovering:
-                            if (colorIndex == 0) return Color.FromArgb(255, 255, 220);
-                            if (colorIndex == 1) return Color.FromArgb(247, 192, 91);
+                            if (colorIndex == 0)
+                            {
+                                return Color.FromArgb(255, 255, 220);
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return Color.FromArgb(247, 192, 91);
+                            }
+
                             break;
                         case ButtonState.Selected:
-                            if (colorIndex == 0) return Color.FromArgb(247, 218, 124);
-                            if (colorIndex == 1) return Color.FromArgb(232, 127, 8);
+                            if (colorIndex == 0)
+                            {
+                                return Color.FromArgb(247, 218, 124);
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return Color.FromArgb(232, 127, 8);
+                            }
+
                             break;
                         case ButtonState.Passive:
-                            if (colorIndex == 0) return Color.FromArgb(203, 225, 252);
-                            if (colorIndex == 1) return Color.FromArgb(125, 166, 223);
+                            if (colorIndex == 0)
+                            {
+                                return Color.FromArgb(203, 225, 252);
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return Color.FromArgb(125, 166, 223);
+                            }
+
                             break;
                     }
                     break;
@@ -924,28 +1000,92 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     switch (buttonstate)
                     {
                         case ButtonState.Hovering | ButtonState.Selected:
-                            if (colorIndex == 0) return Color.FromArgb(255, 189, 105);
-                            if (colorIndex == 1) return Color.FromArgb(255, 172, 66);
-                            if (colorIndex == 2) return Color.FromArgb(251, 140, 60);
-                            if (colorIndex == 3) return Color.FromArgb(254, 211, 101);
+                            if (colorIndex == 0)
+                            {
+                                return Color.FromArgb(255, 189, 105);
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return Color.FromArgb(255, 172, 66);
+                            }
+
+                            if (colorIndex == 2)
+                            {
+                                return Color.FromArgb(251, 140, 60);
+                            }
+
+                            if (colorIndex == 3)
+                            {
+                                return Color.FromArgb(254, 211, 101);
+                            }
+
                             break;
                         case ButtonState.Hovering:
-                            if (colorIndex == 0) return Color.FromArgb(255, 254, 228);
-                            if (colorIndex == 1) return Color.FromArgb(255, 232, 166);
-                            if (colorIndex == 2) return Color.FromArgb(255, 215, 103);
-                            if (colorIndex == 3) return Color.FromArgb(255, 230, 159);
+                            if (colorIndex == 0)
+                            {
+                                return Color.FromArgb(255, 254, 228);
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return Color.FromArgb(255, 232, 166);
+                            }
+
+                            if (colorIndex == 2)
+                            {
+                                return Color.FromArgb(255, 215, 103);
+                            }
+
+                            if (colorIndex == 3)
+                            {
+                                return Color.FromArgb(255, 230, 159);
+                            }
+
                             break;
                         case ButtonState.Selected:
-                            if (colorIndex == 0) return Color.FromArgb(255, 217, 170);
-                            if (colorIndex == 1) return Color.FromArgb(255, 187, 109);
-                            if (colorIndex == 2) return Color.FromArgb(255, 171, 63);
-                            if (colorIndex == 3) return Color.FromArgb(254, 225, 123);
+                            if (colorIndex == 0)
+                            {
+                                return Color.FromArgb(255, 217, 170);
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return Color.FromArgb(255, 187, 109);
+                            }
+
+                            if (colorIndex == 2)
+                            {
+                                return Color.FromArgb(255, 171, 63);
+                            }
+
+                            if (colorIndex == 3)
+                            {
+                                return Color.FromArgb(254, 225, 123);
+                            }
+
                             break;
                         case ButtonState.Passive:
-                            if (colorIndex == 0) return Color.FromArgb(227, 239, 255);
-                            if (colorIndex == 1) return Color.FromArgb(196, 221, 255);
-                            if (colorIndex == 2) return Color.FromArgb(173, 209, 255);
-                            if (colorIndex == 3) return Color.FromArgb(193, 219, 255);
+                            if (colorIndex == 0)
+                            {
+                                return Color.FromArgb(227, 239, 255);
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return Color.FromArgb(196, 221, 255);
+                            }
+
+                            if (colorIndex == 2)
+                            {
+                                return Color.FromArgb(173, 209, 255);
+                            }
+
+                            if (colorIndex == 3)
+                            {
+                                return Color.FromArgb(193, 219, 255);
+                            }
+
                             break;
                     }
                     break;
@@ -953,20 +1093,52 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     switch (buttonstate)
                     {
                         case ButtonState.Hovering | ButtonState.Selected:
-                            if (colorIndex == 0) return this.ButtonColourSelectedAndHoveringTop;
-                            if (colorIndex == 1) return this.ButtonColourSelectedAndHoveringBottom;
+                            if (colorIndex == 0)
+                            {
+                                return this.ButtonColourSelectedAndHoveringTop;
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return this.ButtonColourSelectedAndHoveringBottom;
+                            }
+
                             break;
                         case ButtonState.Hovering:
-                            if (colorIndex == 0) return this.ButtonColourHoveringTop;
-                            if (colorIndex == 1) return this.ButtonColourHoveringBottom;
+                            if (colorIndex == 0)
+                            {
+                                return this.ButtonColourHoveringTop;
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return this.ButtonColourHoveringBottom;
+                            }
+
                             break;
                         case ButtonState.Selected:
-                            if (colorIndex == 0) return this.ButtonColourSelectedTop;
-                            if (colorIndex == 1) return this.ButtonColourSelectedBottom;
+                            if (colorIndex == 0)
+                            {
+                                return this.ButtonColourSelectedTop;
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return this.ButtonColourSelectedBottom;
+                            }
+
                             break;
                         case ButtonState.Passive:
-                            if (colorIndex == 0) return this.ButtonColourPassiveTop;
-                            if (colorIndex == 1) return this.ButtonColourPassiveBottom;
+                            if (colorIndex == 0)
+                            {
+                                return this.ButtonColourPassiveTop;
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return this.ButtonColourPassiveBottom;
+                            }
+
                             break;
                     }
                     break;
@@ -974,20 +1146,52 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     switch (buttonstate)
                     {
                         case ButtonState.Hovering | ButtonState.Selected:
-                            if (colorIndex == 0) return this.ButtonColourSelectedAndHoveringTop;
-                            if (colorIndex == 1) return this.ButtonColourSelectedAndHoveringBottom;
+                            if (colorIndex == 0)
+                            {
+                                return this.ButtonColourSelectedAndHoveringTop;
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return this.ButtonColourSelectedAndHoveringBottom;
+                            }
+
                             break;
                         case ButtonState.Hovering:
-                            if (colorIndex == 0) return this.ButtonColourHoveringTop;
-                            if (colorIndex == 1) return this.ButtonColourHoveringBottom;
+                            if (colorIndex == 0)
+                            {
+                                return this.ButtonColourHoveringTop;
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return this.ButtonColourHoveringBottom;
+                            }
+
                             break;
                         case ButtonState.Selected:
-                            if (colorIndex == 0) return this.ButtonColourSelectedTop;
-                            if (colorIndex == 1) return this.ButtonColourSelectedBottom;
+                            if (colorIndex == 0)
+                            {
+                                return this.ButtonColourSelectedTop;
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return this.ButtonColourSelectedBottom;
+                            }
+
                             break;
                         case ButtonState.Passive:
-                            if (colorIndex == 0) return this.ButtonColourPassiveTop;
-                            if (colorIndex == 1) return this.ButtonColourPassiveBottom;
+                            if (colorIndex == 0)
+                            {
+                                return this.ButtonColourPassiveTop;
+                            }
+
+                            if (colorIndex == 1)
+                            {
+                                return this.ButtonColourPassiveBottom;
+                            }
+
                             break;
                     }
 
@@ -1143,8 +1347,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             this.oContextMenuStrip = new ContextMenuStrip();
             this.oContextMenuStrip.Items.Add("Show &More Buttons", Properties.Resources.Arrow_Up.ToBitmap(), ShowMoreButtons);
             this.oContextMenuStrip.Items.Add("Show Fe&wer Buttons", Properties.Resources.Arrow_Down.ToBitmap(), ShowFewerButtons);
-            if (this.MaxLargeButtonCount >= this.Buttons.CountVisible()) this.oContextMenuStrip.Items[0].Enabled = false;
-            if (this.MaxLargeButtonCount == 0) this.oContextMenuStrip.Items[1].Enabled = false;
+            if (this.MaxLargeButtonCount >= this.Buttons.CountVisible())
+            {
+                this.oContextMenuStrip.Items[0].Enabled = false;
+            }
+
+            if (this.MaxLargeButtonCount == 0)
+            {
+                this.oContextMenuStrip.Items[1].Enabled = false;
+            }
+
             this.oContextMenuStrip.Items.Add("Na&vigation Pane Options...", null, NavigationPaneOptions);
             ToolStripMenuItem mnuAdd = new ToolStripMenuItem("&Add or Remove Buttons", null);
             this.oContextMenuStrip.Items.Add(mnuAdd);
@@ -1169,10 +1381,17 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 if (oButton.Visible)
                 {
-                    if (oButton.Rectangle == null) c += 1;
+                    if (oButton.Rectangle == null)
+                    {
+                        c += 1;
+                    }
                 }
             }
-            if (c > 0) this.oContextMenuStrip.Items.Add(new ToolStripSeparator());
+            if (c > 0)
+            {
+                this.oContextMenuStrip.Items.Add(new ToolStripSeparator());
+            }
+
             foreach (OutlookBarButton oButton in this.Buttons)
             {
                 if (oButton.Rectangle == null)
@@ -1187,7 +1406,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                             mnu.CheckOnClick = true;
                             if ((this.SelectedButton != null))
                             {
-                                if (this.SelectedButton.Equals(oButton)) mnu.Checked = true;
+                                if (this.SelectedButton.Equals(oButton))
+                                {
+                                    mnu.Checked = true;
+                                }
                             }
                         }
                         mnu.Click += MnuClicked;
@@ -1264,7 +1486,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
+            {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;

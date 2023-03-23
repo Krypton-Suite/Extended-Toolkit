@@ -494,7 +494,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             };
 
             if (sfd.ShowDialog() == DialogResult.OK)
+            {
                 Plot.SaveFig(sfd.FileName);
+            }
         }
 
         private void autoAxisMenuItem_Click(object sender, EventArgs e)

@@ -57,10 +57,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public LollipopPlot(double[] positions, double[] values) : base()
         {
             if (positions is null || positions.Length == 0 || values is null || values.Length == 0)
+            {
                 throw new InvalidOperationException("xs and ys must be arrays that contains elements");
+            }
 
             if (values.Length != positions.Length)
+            {
                 throw new InvalidOperationException("xs and ys must have the same number of elements");
+            }
 
             ValueErrors = DataGen.Zeros(values.Length);
             ValueOffsets = DataGen.Zeros(values.Length);
@@ -93,9 +97,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             for (int barIndex = 0; barIndex < Values.Length; barIndex++)
             {
                 if (Orientation == PlotOrientation.Vertical)
+                {
                     RenderBarVertical(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
+                }
                 else
+                {
                     RenderBarHorizontal(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
+                }
             }
         }
 
@@ -154,10 +162,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (ShowValuesAboveBars)
+            {
                 using (var valueTextFont = GDI.Font(Font))
                 using (var valueTextBrush = GDI.Brush(Font.Color))
                 using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
                     gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+            }
         }
 
         private void RenderBarHorizontal(PlotDimensions dims, Graphics gfx, double position, double value, double valueError, double yOffset)
@@ -193,10 +203,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (ShowValuesAboveBars)
+            {
                 using (var valueTextFont = GDI.Font(Font))
                 using (var valueTextBrush = GDI.Brush(Font.Color))
                 using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
                     gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+            }
         }
 
         #endregion

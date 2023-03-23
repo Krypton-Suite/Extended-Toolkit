@@ -289,7 +289,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         {
                             ColorCollection colours;
 
-                            if (!serializer.CanRead) throw new InvalidOperationException("Serializer does not support reading palettes.");
+                            if (!serializer.CanRead)
+                            {
+                                throw new InvalidOperationException("Serializer does not support reading palettes.");
+                            }
 
                             using (FileStream fs = File.OpenRead(fd.FileName))
                             {
@@ -339,7 +342,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
                     if (serializer != null)
                     {
-                        if (!serializer.CanWrite) throw new InvalidOperationException("Serializer does not support writing palettes.");
+                        if (!serializer.CanWrite)
+                        {
+                            throw new InvalidOperationException("Serializer does not support writing palettes.");
+                        }
                     }
 
                     try

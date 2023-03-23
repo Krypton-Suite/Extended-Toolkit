@@ -66,7 +66,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             get
             {
                 double maxBackAngle = CircularBackground ? 360 : MaximumSizeAngle;
-                if (!Clockwise) maxBackAngle = -maxBackAngle;
+                if (!Clockwise)
+                {
+                    maxBackAngle = -maxBackAngle;
+                }
+
                 return maxBackAngle;
             }
         }
@@ -148,7 +152,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private void RenderBackground(Graphics gfx, PointF center, float radius)
         {
             if (Mode == RadialGaugeMode.SingleGauge)
+            {
                 return;
+            }
 
             using Pen backgroundPen = GDI.Pen(BackgroundColor);
             backgroundPen.Width = (float)Width;
@@ -186,7 +192,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private void RenderGaugeLabels(Graphics gfx, PointF center, float radius)
         {
             if (!ShowLabels)
+            {
                 return;
+            }
 
             // TODO: use this so font size is in pixels not pt
             //Font.Size = lineWidth * (float)FontSizeFraction;
@@ -266,7 +274,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             angle %= 360;
 
             if (angle < 0)
+            {
                 angle += 360;
+            }
 
             return angle;
         }

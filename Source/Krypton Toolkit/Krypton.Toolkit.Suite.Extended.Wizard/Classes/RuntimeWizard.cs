@@ -95,7 +95,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         public override void Next(ISelectionService selection)
         {
-            if (Finishing()) return;
+            if (Finishing())
+            {
+                return;
+            }
 
             if (UserAllowsMoveToProceed(Direction.Forward, out var args) && _wizard.MoreThanOnePageExists())
             {
@@ -140,7 +143,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void MoveToPreviousPage(WizardEventArgs args)
         {
-            if (!CanMoveToPreviousPage(args)) return;
+            if (!CanMoveToPreviousPage(args))
+            {
+                return;
+            }
 
             int pageIndex = _wizard.IndexOfCurrentPage();
             _wizard.SelectWizardPage(_wizard.ReadIndexOfPreviousPage());
@@ -151,7 +157,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void MoveToNextPage(WizardEventArgs args)
         {
-            if (!CanMoveToNextPage(args)) return;
+            if (!CanMoveToNextPage(args))
+            {
+                return;
+            }
 
             _wizard.SelectWizardPage(args.NextPageIndex);
             _wizard.StoreIndexOfCurrentPage(args.CurrentPageIndex);

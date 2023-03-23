@@ -70,7 +70,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal void SelectWizardPage(int index)
         {
-            if (index < 0 || index > WizardPages.Count) return;
+            if (index < 0 || index > WizardPages.Count)
+            {
+                return;
+            }
 
             _selectedPage = index;
             KryptonAdvancedWizardPage page = WizardPages[index];
@@ -80,7 +83,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal void SelectWizardPage(KryptonAdvancedWizardPage page)
         {
-            if (!WizardPages.Contains(page)) return;
+            if (!WizardPages.Contains(page))
+            {
+                return;
+            }
 
             _selectedPage = WizardPages.IndexOf(page);
             page.BringToFront();
@@ -89,7 +95,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal void SelectPreviousPage()
         {
-            if (_selectedPage <= 0) return;
+            if (_selectedPage <= 0)
+            {
+                return;
+            }
 
             _selectedPage--;
             KryptonAdvancedWizardPage page = WizardPages[_selectedPage];
@@ -99,7 +108,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal void SelectNextPage()
         {
-            if (_selectedPage >= WizardPages.Count - 1) return;
+            if (_selectedPage >= WizardPages.Count - 1)
+            {
+                return;
+            }
 
             _selectedPage++;
             KryptonAdvancedWizardPage page = WizardPages[_selectedPage];
@@ -114,7 +126,9 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             foreach (Control c in _kpnlButtons.Controls)
             {
                 if (c.Name == buttonName)
+                {
                     c.Text = text;
+                }
             }
         }
 
@@ -130,10 +144,16 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         internal bool UserClickedAButtonAtDesignTime(Point point)
         {
             Control c = GetChildAtPoint(point);
-            if (c == null || c.Name != "kpnlButtons") return false;
+            if (c == null || c.Name != "kpnlButtons")
+            {
+                return false;
+            }
 
             Control b = c.GetChildAtPoint(c.PointToClient(Cursor.Position));
-            if (b != null) return WizardButtonWasClicked(b);
+            if (b != null)
+            {
+                return WizardButtonWasClicked(b);
+            }
 
             return false;
         }

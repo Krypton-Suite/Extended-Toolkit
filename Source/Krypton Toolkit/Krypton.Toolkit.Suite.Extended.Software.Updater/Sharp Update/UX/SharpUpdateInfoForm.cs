@@ -170,7 +170,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 
             try
             {
-                if (applicationInfo.ApplicationIcon != null) Icon = applicationInfo.ApplicationIcon;
+                if (applicationInfo.ApplicationIcon != null)
+                {
+                    Icon = applicationInfo.ApplicationIcon;
+                }
 
                 // ReSharper disable VirtualMemberCallInConstructor
                 Text = Properties.Resources.SharpUpdateInfoForm_Title;

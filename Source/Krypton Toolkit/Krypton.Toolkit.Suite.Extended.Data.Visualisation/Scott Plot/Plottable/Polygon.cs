@@ -102,7 +102,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Validate.AssertEqualLength("xs and ys", Xs, Ys);
 
             if (Xs.Length < 3)
+            {
                 throw new InvalidOperationException("polygons must contain at least 3 points");
+            }
 
             if (deep)
             {
@@ -122,10 +124,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using (Pen outlinePen = GDI.Pen(LineColor, (float)LineWidth))
             {
                 if (Fill)
+                {
                     gfx.FillPolygon(fillBrush, points);
+                }
 
                 if (LineWidth > 0)
+                {
                     gfx.DrawPolygon(outlinePen, points);
+                }
             }
         }
     }

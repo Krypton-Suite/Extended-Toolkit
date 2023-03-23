@@ -52,7 +52,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             bool hasAdministrativeRights = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
-            if (string.IsNullOrEmpty(processName)) throw new ArgumentNullException();
+            if (string.IsNullOrEmpty(processName))
+            {
+                throw new ArgumentNullException();
+            }
 
             if (!hasAdministrativeRights)
             {

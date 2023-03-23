@@ -235,7 +235,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 
             // Show decimals
             if (decimalPlaces > 0)
+            {
                 formatString += ":0.";
+            }
 
             // Add decimals
             for (int i = 0; i < decimalPlaces; i++)
@@ -246,7 +248,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 
             // Add byte type
             if (showByteType)
+            {
                 formatString += byteType;
+            }
 
             return String.Format(formatString, newBytes);
         }
@@ -303,9 +307,13 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 
             // Hash the file and compare to the hash in the update xml
             if (Hasher.HashFile(file, HashType.Md5) != updateMD5.ToUpper())
+            {
                 e.Result = DialogResult.No;
+            }
             else
+            {
                 e.Result = DialogResult.OK;
+            }
         }
 
         /// <summary>

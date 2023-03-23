@@ -339,7 +339,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             BindingFlags bindingAttr = BindingFlags.Instance | BindingFlags.NonPublic;
             FieldInfo field = typeFromHandle.GetField("hkey", bindingAttr);
             if (field == null)
+            {
                 field = typeFromHandle.GetField("_hkey", bindingAttr);
+            }
 
             SafeHandle safeHandle = (SafeHandle)field.GetValue(regKey);
             return safeHandle.DangerousGetHandle();

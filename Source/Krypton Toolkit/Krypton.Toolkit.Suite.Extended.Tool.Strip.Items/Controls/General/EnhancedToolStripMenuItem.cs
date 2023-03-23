@@ -124,18 +124,28 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 if (Checked)
                 {
                     if (Pressed)
+                    {
                         state = RadioButtonState.CheckedPressed;
+                    }
                     else if (Selected)
+                    {
                         state = RadioButtonState.CheckedHot;
+                    }
                 }
                 else
                 {
                     if (Pressed)
+                    {
                         state = RadioButtonState.UncheckedPressed;
+                    }
                     else if (Selected)
+                    {
                         state = RadioButtonState.UncheckedHot;
+                    }
                     else
+                    {
                         state = RadioButtonState.UncheckedNormal;
+                    }
                 }
 
                 //Draw RadioButton in proper state (Checked/Unchecked; Hot/Normal/Pressed)

@@ -51,16 +51,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (double.IsNaN(X) || double.IsInfinity(X))
+            {
                 throw new InvalidOperationException("x must be a real value");
+            }
 
             if (double.IsNaN(Y) || double.IsInfinity(Y))
+            {
                 throw new InvalidOperationException("y must be a real value");
+            }
 
             if (double.IsNaN(Rotation) || double.IsInfinity(Rotation))
+            {
                 throw new InvalidOperationException("rotation must be a real value");
+            }
 
             if (Bitmap is null)
+            {
                 throw new InvalidOperationException("image cannot be null");
+            }
         }
 
         private PointF TextLocation(PointF input)
@@ -92,7 +100,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 gfx.RotateTransform((float)Rotation);
 
                 if (BorderSize > 0)
+                {
                     gfx.DrawRectangle(framePen, new Rectangle(0, 0, Bitmap.Width - 1, Bitmap.Height - 1));
+                }
 
                 gfx.DrawImage(Bitmap, new PointF(0, 0));
                 gfx.ResetTransform();
