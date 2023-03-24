@@ -308,6 +308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double snapHeight = Settings.YAxis.Dims.UnitsPerPx * snapDistancePixels;
 
             foreach (IDraggable draggable in GetDraggables())
+            {
                 if (draggable.IsUnderMouse(Plot.GetCoordinateX((float)pixelX), Plot.GetCoordinateY((float)pixelY), snapWidth, snapHeight))
                 {
                     if (draggable.DragEnabled)
@@ -315,6 +316,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                         return draggable;
                     }
                 }
+            }
 
             return null;
         }

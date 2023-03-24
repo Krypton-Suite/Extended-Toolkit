@@ -131,10 +131,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             foreach (var ohlc in ohlcs)
+            {
                 if (ohlc is null)
                 {
                     throw new ArgumentNullException("no OHLCs may be null");
                 }
+            }
 
             OHLCs.AddRange(ohlcs);
         }

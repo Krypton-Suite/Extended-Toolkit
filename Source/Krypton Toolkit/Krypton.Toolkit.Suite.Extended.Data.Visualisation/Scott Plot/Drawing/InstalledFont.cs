@@ -46,10 +46,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static string ValidFontName(string fontName)
         {
             foreach (FontFamily installedFont in FontFamily.Families)
+            {
                 if (string.Equals(installedFont.Name, fontName, StringComparison.OrdinalIgnoreCase))
                 {
                     return installedFont.Name;
                 }
+            }
 
             return SystemFonts.DefaultFont.Name;
         }
@@ -60,11 +62,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static string ValidFontName(string[] fontNames)
         {
             foreach (string preferredFont in fontNames)
+            {
                 foreach (FontFamily font in FontFamily.Families)
+                {
                     if (string.Equals(preferredFont, font.Name, StringComparison.OrdinalIgnoreCase))
                     {
                         return font.Name;
                     }
+                }
+            }
 
             return SystemFonts.DefaultFont.Name;
         }

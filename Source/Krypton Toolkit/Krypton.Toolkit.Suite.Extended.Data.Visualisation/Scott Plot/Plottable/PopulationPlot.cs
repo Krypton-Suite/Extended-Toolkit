@@ -86,8 +86,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 int pointCount = 0;
                 foreach (var group in MultiSeries.multiSeries)
+                {
                     foreach (var population in group.populations)
+                    {
                         pointCount += population.count;
+                    }
+                }
+
                 return pointCount;
             }
         }
@@ -231,15 +236,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             float radius = 5;
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen penEdge = GDI.Pen(Color.FromArgb(alpha, edgeColor)))
-            using (Brush brushFill = GDI.Brush(Color.FromArgb(alpha, fillColor)))
             {
-                foreach (double value in pop.values)
+                using (Pen penEdge = GDI.Pen(Color.FromArgb(alpha, edgeColor)))
                 {
-                    double yPx = dims.GetPixelY(value);
-                    double xPx = dims.GetPixelX(popLeft + rand.NextDouble() * popWidth);
-                    gfx.FillEllipse(brushFill, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
-                    gfx.DrawEllipse(penEdge, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
+                    using (Brush brushFill = GDI.Brush(Color.FromArgb(alpha, fillColor)))
+                    {
+                        foreach (double value in pop.values)
+                        {
+                            double yPx = dims.GetPixelY(value);
+                            double xPx = dims.GetPixelX(popLeft + rand.NextDouble() * popWidth);
+                            gfx.FillEllipse(brushFill, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
+                            gfx.DrawEllipse(penEdge, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
+                        }
+                    }
                 }
             }
         }
@@ -285,9 +294,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen pen = GDI.Pen(color, 1, lineStyle, true))
             {
-                gfx.DrawLines(pen, points);
+                using (Pen pen = GDI.Pen(color, 1, lineStyle, true))
+                {
+                    gfx.DrawLines(pen, points);
+                }
             }
         }
 
@@ -335,13 +346,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             float radius = 5;
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen pen = GDI.Pen(color, 2))
-            using (Brush brush = GDI.Brush(color))
             {
-                gfx.FillEllipse(brush, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
-                gfx.DrawLine(pen, (float)xPx, (float)errorMinPx, (float)xPx, (float)errorMaxPx);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                using (Pen pen = GDI.Pen(color, 2))
+                {
+                    using (Brush brush = GDI.Brush(color))
+                    {
+                        gfx.FillEllipse(brush, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
+                        gfx.DrawLine(pen, (float)xPx, (float)errorMinPx, (float)xPx, (float)errorMaxPx);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                    }
+                }
             }
         }
 
@@ -398,14 +413,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             RectangleF rect = new RectangleF((float)leftPx, (float)yPxTop, (float)(rightPx - leftPx), (float)(yPxBase - yPxTop));
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen pen = GDI.Pen(Color.Black))
-            using (Brush brush = GDI.Brush(color))
             {
-                gfx.FillRectangle(brush, rect.X, rect.Y, rect.Width, rect.Height);
-                gfx.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
-                gfx.DrawLine(pen, (float)xPx, (float)errorMinPx, (float)xPx, (float)errorMaxPx);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                using (Pen pen = GDI.Pen(Color.Black))
+                {
+                    using (Brush brush = GDI.Brush(color))
+                    {
+                        gfx.FillRectangle(brush, rect.X, rect.Y, rect.Width, rect.Height);
+                        gfx.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
+                        gfx.DrawLine(pen, (float)xPx, (float)errorMinPx, (float)xPx, (float)errorMaxPx);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                    }
+                }
             }
         }
 
@@ -497,21 +516,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen pen = GDI.Pen(Color.Black))
-            using (Brush brush = GDI.Brush(color))
             {
-                // draw the box
-                gfx.FillRectangle(brush, rect.X, rect.Y, rect.Width, rect.Height);
-                gfx.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
+                using (Pen pen = GDI.Pen(Color.Black))
+                {
+                    using (Brush brush = GDI.Brush(color))
+                    {
+                        // draw the box
+                        gfx.FillRectangle(brush, rect.X, rect.Y, rect.Width, rect.Height);
+                        gfx.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
 
-                // draw the line in the center
-                gfx.DrawLine(pen, rect.X, (float)yPx, rect.X + rect.Width, (float)yPx);
+                        // draw the line in the center
+                        gfx.DrawLine(pen, rect.X, (float)yPx, rect.X + rect.Width, (float)yPx);
 
-                // draw errorbars and caps
-                gfx.DrawLine(pen, (float)errorPxX, (float)errorMinPx, (float)errorPxX, rect.Y + rect.Height);
-                gfx.DrawLine(pen, (float)errorPxX, (float)errorMaxPx, (float)errorPxX, rect.Y);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                        // draw errorbars and caps
+                        gfx.DrawLine(pen, (float)errorPxX, (float)errorMinPx, (float)errorPxX, rect.Y + rect.Height);
+                        gfx.DrawLine(pen, (float)errorPxX, (float)errorMaxPx, (float)errorPxX, rect.Y);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                    }
+                }
             }
         }
     }

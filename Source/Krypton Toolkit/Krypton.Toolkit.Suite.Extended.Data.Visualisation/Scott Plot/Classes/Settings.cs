@@ -191,7 +191,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Resize(float width, float height)
         {
             foreach (Axis axis in Axes)
+            {
                 axis.Dims.Resize(axis.IsHorizontal ? width : height);
+            }
         }
 
         /// <summary>
@@ -200,7 +202,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ResetAxisLimits()
         {
             foreach (Axis axis in Axes)
+            {
                 axis.Dims.ResetLimits();
+            }
         }
 
         /// <summary>
@@ -382,7 +386,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             int[] xAxisIndexes = Axes.Where(x => x.IsHorizontal).Select(x => x.AxisIndex).Distinct().ToArray();
             foreach (int i in xAxisIndexes)
+            {
                 AxisAutoX(i, margin);
+            }
         }
 
         /// <summary>
@@ -392,7 +398,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             int[] yAxisIndexes = Axes.Where(x => x.IsVertical).Select(x => x.AxisIndex).Distinct().ToArray();
             foreach (int i in yAxisIndexes)
+            {
                 AxisAutoY(i, margin);
+            }
         }
 
         public void AxisAutoX(int xAxisIndex, double margin = .1)
@@ -474,7 +482,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             AxisAutoUnsetAxes();
             foreach (Axis axis in Axes)
+            {
                 axis.Dims.Remember();
+            }
         }
 
         /// <summary>
@@ -483,7 +493,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void RecallAxisLimits()
         {
             foreach (Axis axis in Axes)
+            {
                 axis.Dims.Recall();
+            }
         }
 
         public float MouseDownX { get; private set; }

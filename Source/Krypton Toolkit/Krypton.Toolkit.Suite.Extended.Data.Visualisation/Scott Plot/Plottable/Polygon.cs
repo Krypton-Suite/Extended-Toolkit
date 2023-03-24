@@ -120,17 +120,21 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 points[i] = new PointF(dims.GetPixelX(Xs[i]), dims.GetPixelY(Ys[i]));
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Brush fillBrush = GDI.Brush(FillColor, HatchColor, HatchStyle))
-            using (Pen outlinePen = GDI.Pen(LineColor, (float)LineWidth))
             {
-                if (Fill)
+                using (Brush fillBrush = GDI.Brush(FillColor, HatchColor, HatchStyle))
                 {
-                    gfx.FillPolygon(fillBrush, points);
-                }
+                    using (Pen outlinePen = GDI.Pen(LineColor, (float)LineWidth))
+                    {
+                        if (Fill)
+                        {
+                            gfx.FillPolygon(fillBrush, points);
+                        }
 
-                if (LineWidth > 0)
-                {
-                    gfx.DrawPolygon(outlinePen, points);
+                        if (LineWidth > 0)
+                        {
+                            gfx.DrawPolygon(outlinePen, points);
+                        }
+                    }
                 }
             }
         }

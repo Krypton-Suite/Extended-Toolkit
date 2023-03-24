@@ -499,41 +499,43 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             using (var tickFont = GDI.Font(AxisTicks.TickLabelFont))
-            using (var titleFont = GDI.Font(AxisLabel.Font))
             {
-                PixelSize = 0;
-
-                if (AxisLabel.IsVisible)
+                using (var titleFont = GDI.Font(AxisLabel.Font))
                 {
-                    PixelSize += AxisLabel.Measure().Height;
+                    PixelSize = 0;
+
+                    if (AxisLabel.IsVisible)
+                    {
+                        PixelSize += AxisLabel.Measure().Height;
+                    }
+
+                    if (AxisTicks.TickLabelVisible)
+                    {
+                        // determine how many pixels the largest tick label occupies
+                        float maxHeight = AxisTicks.TickCollection.LargestLabelHeight;
+                        float maxWidth = AxisTicks.TickCollection.LargestLabelWidth * 1.2f;
+
+                        // calculate the width and height of the rotated label
+                        float largerEdgeLength = Math.Max(maxWidth, maxHeight);
+                        float shorterEdgeLength = Math.Min(maxWidth, maxHeight);
+                        float differenceInEdgeLengths = largerEdgeLength - shorterEdgeLength;
+                        double radians = AxisTicks.TickLabelRotation * Math.PI / 180;
+                        double fraction = IsHorizontal ? Math.Sin(radians) : Math.Cos(radians);
+                        double rotatedSize = shorterEdgeLength + differenceInEdgeLengths * fraction;
+
+                        // add the rotated label size to the size of this axis
+                        PixelSize += (float)rotatedSize;
+                    }
+
+                    if (AxisTicks.MajorTickVisible)
+                    {
+                        PixelSize += AxisTicks.MajorTickLength;
+                    }
+
+                    PixelSize = Math.Max(PixelSize, PixelSizeMinimum);
+                    PixelSize = Math.Min(PixelSize, PixelSizeMaximum);
+                    PixelSize += PixelSizePadding;
                 }
-
-                if (AxisTicks.TickLabelVisible)
-                {
-                    // determine how many pixels the largest tick label occupies
-                    float maxHeight = AxisTicks.TickCollection.LargestLabelHeight;
-                    float maxWidth = AxisTicks.TickCollection.LargestLabelWidth * 1.2f;
-
-                    // calculate the width and height of the rotated label
-                    float largerEdgeLength = Math.Max(maxWidth, maxHeight);
-                    float shorterEdgeLength = Math.Min(maxWidth, maxHeight);
-                    float differenceInEdgeLengths = largerEdgeLength - shorterEdgeLength;
-                    double radians = AxisTicks.TickLabelRotation * Math.PI / 180;
-                    double fraction = IsHorizontal ? Math.Sin(radians) : Math.Cos(radians);
-                    double rotatedSize = shorterEdgeLength + differenceInEdgeLengths * fraction;
-
-                    // add the rotated label size to the size of this axis
-                    PixelSize += (float)rotatedSize;
-                }
-
-                if (AxisTicks.MajorTickVisible)
-                {
-                    PixelSize += AxisTicks.MajorTickLength;
-                }
-
-                PixelSize = Math.Max(PixelSize, PixelSizeMinimum);
-                PixelSize = Math.Min(PixelSize, PixelSizeMaximum);
-                PixelSize += PixelSizePadding;
             }
         }
 

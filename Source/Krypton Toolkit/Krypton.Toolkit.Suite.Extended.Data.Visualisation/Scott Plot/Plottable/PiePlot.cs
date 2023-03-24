@@ -106,129 +106,145 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen backgroundPen = GDI.Pen(BackgroundColor))
-            using (Pen outlinePen = GDI.Pen(OutlineColor, OutlineSize))
-            using (Brush sliceFillBrush = GDI.Brush(Color.Black))
-            using (var sliceFont = GDI.Font(SliceFont))
-            using (SolidBrush sliceFontBrush = (SolidBrush)GDI.Brush(SliceFont.Color))
-            using (var centerFont = GDI.Font(CenterFont))
-            using (Brush centerFontBrush = GDI.Brush(CenterFont.Color))
-            using (StringFormat sfCenter = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Center })
             {
-                double[] proportions = Values.Select(x => x / Values.Sum()).ToArray();
-
-                double centreX = 0;
-                double centreY = 0;
-                float diameterPixels = .9f * Math.Min(dims.DataWidth, dims.DataHeight);
-
-                // record label details and draw them after slices to prevent cover-ups
-                double[] labelXs = new double[Values.Length];
-                double[] labelYs = new double[Values.Length];
-                string[] labelStrings = new string[Values.Length];
-
-                RectangleF boundingRectangle = new RectangleF(
-                    dims.GetPixelX(centreX) - diameterPixels / 2,
-                    dims.GetPixelY(centreY) - diameterPixels / 2,
-                    diameterPixels,
-                    diameterPixels);
-
-                if (DonutSize > 0)
+                using (Pen backgroundPen = GDI.Pen(BackgroundColor))
                 {
-                    GraphicsPath graphicsPath = new GraphicsPath();
-                    float donutDiameterPixels = (float)DonutSize * diameterPixels;
-                    RectangleF donutHoleBoundingRectangle = new RectangleF(
-                        dims.GetPixelX(centreX) - donutDiameterPixels / 2,
-                        dims.GetPixelY(centreY) - donutDiameterPixels / 2,
-                        donutDiameterPixels,
-                        donutDiameterPixels);
-                    graphicsPath.AddEllipse(donutHoleBoundingRectangle);
-                    Region excludedRegion = new Region(graphicsPath);
-                    gfx.ExcludeClip(excludedRegion);
-                }
-
-                double start = -90;
-                for (int i = 0; i < Values.Length; i++)
-                {
-                    // determine where the slice is to be drawn
-                    double sweep = proportions[i] * 360;
-                    double sweepOffset = Explode ? -1 : 0;
-                    double angle = (Math.PI / 180) * ((sweep + 2 * start) / 2);
-                    double xOffset = Explode ? 3 * Math.Cos(angle) : 0;
-                    double yOffset = Explode ? 3 * Math.Sin(angle) : 0;
-
-                    // record where and what to label the slice
-                    double sliceLabelR = 0.35 * diameterPixels;
-                    labelXs[i] = (boundingRectangle.X + diameterPixels / 2 + xOffset + Math.Cos(angle) * sliceLabelR);
-                    labelYs[i] = (boundingRectangle.Y + diameterPixels / 2 + yOffset + Math.Sin(angle) * sliceLabelR);
-                    string sliceLabelValue = (ShowValues) ? $"{Values[i]}" : "";
-                    string sliceLabelPercentage = ShowPercentages ? $"{proportions[i] * 100:f1}%" : "";
-                    string sliceLabelName = (ShowLabels && SliceLabels != null) ? SliceLabels[i] : "";
-                    labelStrings[i] = $"{sliceLabelValue}\n{sliceLabelPercentage}\n{sliceLabelName}".Trim();
-
-                    ((SolidBrush)sliceFillBrush).Color = SliceFillColors[i];
-                    gfx.FillPie(brush: sliceFillBrush,
-                        x: (int)(boundingRectangle.X + xOffset),
-                        y: (int)(boundingRectangle.Y + yOffset),
-                        width: boundingRectangle.Width,
-                        height: boundingRectangle.Height,
-                        startAngle: (float)start,
-                        sweepAngle: (float)(sweep + sweepOffset));
-
-                    if (Explode)
+                    using (Pen outlinePen = GDI.Pen(OutlineColor, OutlineSize))
                     {
-                        gfx.DrawPie(
-                            pen: backgroundPen,
-                            x: (int)(boundingRectangle.X + xOffset),
-                            y: (int)(boundingRectangle.Y + yOffset),
-                            width: boundingRectangle.Width,
-                            height: boundingRectangle.Height,
-                            startAngle: (float)start,
-                            sweepAngle: (float)(sweep + sweepOffset));
-                    }
-                    start += sweep;
-                }
-
-                // TODO: move length checking logic into new validation system (triaged March, 2021)
-                bool useCustomLabelColors = SliceLabelColors is not null && SliceLabelColors.Length == Values.Length;
-
-                for (int i = 0; i < Values.Length; i++)
-                    if (!string.IsNullOrWhiteSpace(labelStrings[i]))
-                    {
-                        if (useCustomLabelColors)
+                        using (Brush sliceFillBrush = GDI.Brush(Color.Black))
                         {
-                            sliceFontBrush.Color = SliceLabelColors[i];
+                            using (var sliceFont = GDI.Font(SliceFont))
+                            {
+                                using (SolidBrush sliceFontBrush = (SolidBrush)GDI.Brush(SliceFont.Color))
+                                {
+                                    using (var centerFont = GDI.Font(CenterFont))
+                                    {
+                                        using (Brush centerFontBrush = GDI.Brush(CenterFont.Color))
+                                        {
+                                            using (StringFormat sfCenter = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Center })
+                                            {
+                                                double[] proportions = Values.Select(x => x / Values.Sum()).ToArray();
+
+                                                double centreX = 0;
+                                                double centreY = 0;
+                                                float diameterPixels = .9f * Math.Min(dims.DataWidth, dims.DataHeight);
+
+                                                // record label details and draw them after slices to prevent cover-ups
+                                                double[] labelXs = new double[Values.Length];
+                                                double[] labelYs = new double[Values.Length];
+                                                string[] labelStrings = new string[Values.Length];
+
+                                                RectangleF boundingRectangle = new RectangleF(
+                                                    dims.GetPixelX(centreX) - diameterPixels / 2,
+                                                    dims.GetPixelY(centreY) - diameterPixels / 2,
+                                                    diameterPixels,
+                                                    diameterPixels);
+
+                                                if (DonutSize > 0)
+                                                {
+                                                    GraphicsPath graphicsPath = new GraphicsPath();
+                                                    float donutDiameterPixels = (float)DonutSize * diameterPixels;
+                                                    RectangleF donutHoleBoundingRectangle = new RectangleF(
+                                                        dims.GetPixelX(centreX) - donutDiameterPixels / 2,
+                                                        dims.GetPixelY(centreY) - donutDiameterPixels / 2,
+                                                        donutDiameterPixels,
+                                                        donutDiameterPixels);
+                                                    graphicsPath.AddEllipse(donutHoleBoundingRectangle);
+                                                    Region excludedRegion = new Region(graphicsPath);
+                                                    gfx.ExcludeClip(excludedRegion);
+                                                }
+
+                                                double start = -90;
+                                                for (int i = 0; i < Values.Length; i++)
+                                                {
+                                                    // determine where the slice is to be drawn
+                                                    double sweep = proportions[i] * 360;
+                                                    double sweepOffset = Explode ? -1 : 0;
+                                                    double angle = (Math.PI / 180) * ((sweep + 2 * start) / 2);
+                                                    double xOffset = Explode ? 3 * Math.Cos(angle) : 0;
+                                                    double yOffset = Explode ? 3 * Math.Sin(angle) : 0;
+
+                                                    // record where and what to label the slice
+                                                    double sliceLabelR = 0.35 * diameterPixels;
+                                                    labelXs[i] = (boundingRectangle.X + diameterPixels / 2 + xOffset + Math.Cos(angle) * sliceLabelR);
+                                                    labelYs[i] = (boundingRectangle.Y + diameterPixels / 2 + yOffset + Math.Sin(angle) * sliceLabelR);
+                                                    string sliceLabelValue = (ShowValues) ? $"{Values[i]}" : "";
+                                                    string sliceLabelPercentage = ShowPercentages ? $"{proportions[i] * 100:f1}%" : "";
+                                                    string sliceLabelName = (ShowLabels && SliceLabels != null) ? SliceLabels[i] : "";
+                                                    labelStrings[i] = $"{sliceLabelValue}\n{sliceLabelPercentage}\n{sliceLabelName}".Trim();
+
+                                                    ((SolidBrush)sliceFillBrush).Color = SliceFillColors[i];
+                                                    gfx.FillPie(brush: sliceFillBrush,
+                                                        x: (int)(boundingRectangle.X + xOffset),
+                                                        y: (int)(boundingRectangle.Y + yOffset),
+                                                        width: boundingRectangle.Width,
+                                                        height: boundingRectangle.Height,
+                                                        startAngle: (float)start,
+                                                        sweepAngle: (float)(sweep + sweepOffset));
+
+                                                    if (Explode)
+                                                    {
+                                                        gfx.DrawPie(
+                                                            pen: backgroundPen,
+                                                            x: (int)(boundingRectangle.X + xOffset),
+                                                            y: (int)(boundingRectangle.Y + yOffset),
+                                                            width: boundingRectangle.Width,
+                                                            height: boundingRectangle.Height,
+                                                            startAngle: (float)start,
+                                                            sweepAngle: (float)(sweep + sweepOffset));
+                                                    }
+                                                    start += sweep;
+                                                }
+
+                                                // TODO: move length checking logic into new validation system (triaged March, 2021)
+                                                bool useCustomLabelColors = SliceLabelColors is not null && SliceLabelColors.Length == Values.Length;
+
+                                                for (int i = 0; i < Values.Length; i++)
+                                                    if (!string.IsNullOrWhiteSpace(labelStrings[i]))
+                                                    {
+                                                        if (useCustomLabelColors)
+                                                        {
+                                                            sliceFontBrush.Color = SliceLabelColors[i];
+                                                        }
+
+                                                        gfx.DrawString(labelStrings[i], sliceFont, sliceFontBrush, (float)labelXs[i], (float)labelYs[i], sfCenter);
+                                                    }
+
+                                                if (OutlineSize > 0)
+                                                {
+                                                    gfx.DrawEllipse(
+                                                        outlinePen,
+                                                        boundingRectangle.X,
+                                                        boundingRectangle.Y,
+                                                        boundingRectangle.Width,
+                                                        boundingRectangle.Height);
+                                                }
+
+                                                gfx.ResetClip();
+
+                                                if (DonutLabel != null)
+                                                {
+                                                    gfx.DrawString(DonutLabel, centerFont, centerFontBrush, dims.GetPixelX(0), dims.GetPixelY(0), sfCenter);
+                                                }
+
+                                                if (Explode)
+                                                {
+                                                    // draw a background-colored circle around the perimeter to make it look like all pieces are the same size
+                                                    backgroundPen.Width = 20;
+                                                    gfx.DrawEllipse(
+                                                        pen: backgroundPen,
+                                                        x: boundingRectangle.X,
+                                                        y: boundingRectangle.Y,
+                                                        width: boundingRectangle.Width,
+                                                        height: boundingRectangle.Height);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-
-                        gfx.DrawString(labelStrings[i], sliceFont, sliceFontBrush, (float)labelXs[i], (float)labelYs[i], sfCenter);
                     }
-
-                if (OutlineSize > 0)
-                {
-                    gfx.DrawEllipse(
-                        outlinePen,
-                        boundingRectangle.X,
-                        boundingRectangle.Y,
-                        boundingRectangle.Width,
-                        boundingRectangle.Height);
-                }
-
-                gfx.ResetClip();
-
-                if (DonutLabel != null)
-                {
-                    gfx.DrawString(DonutLabel, centerFont, centerFontBrush, dims.GetPixelX(0), dims.GetPixelY(0), sfCenter);
-                }
-
-                if (Explode)
-                {
-                    // draw a background-colored circle around the perimeter to make it look like all pieces are the same size
-                    backgroundPen.Width = 20;
-                    gfx.DrawEllipse(
-                        pen: backgroundPen,
-                        x: boundingRectangle.X,
-                        y: boundingRectangle.Y,
-                        width: boundingRectangle.Width,
-                        height: boundingRectangle.Height);
                 }
             }
         }

@@ -188,7 +188,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Validate(bool deep = true)
         {
             foreach (var plottable in settings.Plottables)
+            {
                 plottable.ValidateData(deep);
+            }
         }
 
         #endregion
@@ -348,7 +350,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Plot newPlot = new Plot(oldSettings.Width, oldSettings.Height);
 
             foreach (IPlottable oldPlottable in oldPlot.GetPlottables())
+            {
                 newPlot.Add(oldPlottable);
+            }
+
             newPlot.AxisAuto();
 
             newPlot.XLabel(oldSettings.XAxis.Label());

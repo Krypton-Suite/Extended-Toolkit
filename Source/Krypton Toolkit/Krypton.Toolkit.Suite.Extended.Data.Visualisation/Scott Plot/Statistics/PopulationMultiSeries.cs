@@ -43,10 +43,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             foreach (var series in multiSeries)
+            {
                 if (series.populations.Length != multiSeries[0].populations.Length)
                 {
                     throw new ArgumentException("All series must have the same number of populations");
                 }
+            }
 
             this.multiSeries = multiSeries;
         }

@@ -243,25 +243,29 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             ImageFormat imageFormat;
             string extension = Path.GetExtension(filePath).ToUpper();
-            if (extension == ".JPG" || extension == ".JPEG")
+
+            switch (extension)
             {
-                imageFormat = ImageFormat.Jpeg; // TODO: use jpgEncoder to set custom compression level
-            }
-            else if (extension == ".PNG")
-            {
-                imageFormat = ImageFormat.Png;
-            }
-            else if (extension == ".TIF" || extension == ".TIFF")
-            {
-                imageFormat = ImageFormat.Tiff;
-            }
-            else if (extension == ".BMP")
-            {
-                imageFormat = ImageFormat.Bmp;
-            }
-            else
-            {
-                throw new NotImplementedException($"Extension not supported: {extension}");
+                case @".JPG":
+                    imageFormat = ImageFormat.Jpeg;
+                    break;
+                case @".JPEG":
+                    imageFormat = ImageFormat.Jpeg;
+                    break;
+                case @".PNG":
+                    imageFormat = ImageFormat.Png;
+                    break;
+                case @".TIF":
+                    imageFormat = ImageFormat.Tiff;
+                    break;
+                case @".TIFF":
+                    imageFormat = ImageFormat.Tiff;
+                    break;
+                case @".BMP":
+                    imageFormat = ImageFormat.Bmp;
+                    break;
+                default:
+                    throw new NotImplementedException($"Extension not supported: {extension}");
             }
 
             bmp.Save(filePath, imageFormat);

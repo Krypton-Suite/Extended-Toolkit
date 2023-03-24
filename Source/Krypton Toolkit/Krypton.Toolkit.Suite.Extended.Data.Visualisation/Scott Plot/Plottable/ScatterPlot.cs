@@ -279,75 +279,79 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             using (var gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (var penLine = GDI.Pen(Color, LineWidth, LineStyle, true))
-            using (var penLineError = GDI.Pen(Color, ErrorLineWidth, LineStyle.Solid, true))
             {
-                int from = MinRenderIndex ?? 0;
-                int to = MaxRenderIndex ?? (Xs.Length - 1);
-                PointF[] points = new PointF[to - from + 1];
-                for (int i = from; i <= to; i++)
+                using (var penLine = GDI.Pen(Color, LineWidth, LineStyle, true))
                 {
-                    float x = dims.GetPixelX(Xs[i] + OffsetX);
-                    float y = dims.GetPixelY(Ys[i] + OffsetY);
-                    if (float.IsNaN(x) || float.IsNaN(y))
+                    using (var penLineError = GDI.Pen(Color, ErrorLineWidth, LineStyle.Solid, true))
                     {
-                        throw new NotImplementedException("Data must not contain NaN");
-                    }
-
-                    points[i - from] = new PointF(x, y);
-                }
-
-                if (YError != null)
-                {
-                    for (int i = 0; i < points.Count(); i++)
-                    {
-                        double yWithOffset = Ys[i] + OffsetY;
-                        float yBot = dims.GetPixelY(yWithOffset - YError[i + from]);
-                        float yTop = dims.GetPixelY(yWithOffset + YError[i + from]);
-                        gfx.DrawLine(penLineError, points[i].X, yBot, points[i].X, yTop);
-                        gfx.DrawLine(penLineError, points[i].X - ErrorCapSize, yBot, points[i].X + ErrorCapSize, yBot);
-                        gfx.DrawLine(penLineError, points[i].X - ErrorCapSize, yTop, points[i].X + ErrorCapSize, yTop);
-                    }
-                }
-
-                if (XError != null)
-                {
-                    for (int i = 0; i < points.Length; i++)
-                    {
-                        double xWithOffset = Xs[i] + OffsetX;
-                        float xLeft = dims.GetPixelX(xWithOffset - XError[i + from]);
-                        float xRight = dims.GetPixelX(xWithOffset + XError[i + from]);
-                        gfx.DrawLine(penLineError, xLeft, points[i].Y, xRight, points[i].Y);
-                        gfx.DrawLine(penLineError, xLeft, points[i].Y - ErrorCapSize, xLeft, points[i].Y + ErrorCapSize);
-                        gfx.DrawLine(penLineError, xRight, points[i].Y - ErrorCapSize, xRight, points[i].Y + ErrorCapSize);
-                    }
-                }
-
-                // draw the lines connecting points
-                if (LineWidth > 0 && points.Length > 1 && LineStyle != LineStyle.None)
-                {
-                    if (StepDisplay)
-                    {
-                        PointF[] pointsStep = new PointF[points.Length * 2 - 1];
-                        for (int i = 0; i < points.Length - 1; i++)
+                        int from = MinRenderIndex ?? 0;
+                        int to = MaxRenderIndex ?? (Xs.Length - 1);
+                        PointF[] points = new PointF[to - from + 1];
+                        for (int i = from; i <= to; i++)
                         {
-                            pointsStep[i * 2] = points[i];
-                            pointsStep[i * 2 + 1] = new PointF(points[i + 1].X, points[i].Y);
-                        }
-                        pointsStep[pointsStep.Length - 1] = points[points.Length - 1];
-                        gfx.DrawLines(penLine, pointsStep);
-                    }
-                    else
-                    {
-                        gfx.DrawLines(penLine, points);
-                    }
-                }
+                            float x = dims.GetPixelX(Xs[i] + OffsetX);
+                            float y = dims.GetPixelY(Ys[i] + OffsetY);
+                            if (float.IsNaN(x) || float.IsNaN(y))
+                            {
+                                throw new NotImplementedException("Data must not contain NaN");
+                            }
 
-                // draw a marker at each point
-                if ((MarkerSize > 0) && (MarkerShape != MarkerShape.None))
-                {
-                    for (int i = 0; i < points.Length; i++)
-                        MarkerTools.DrawMarker(gfx, points[i], MarkerShape, MarkerSize, Color);
+                            points[i - from] = new PointF(x, y);
+                        }
+
+                        if (YError != null)
+                        {
+                            for (int i = 0; i < points.Count(); i++)
+                            {
+                                double yWithOffset = Ys[i] + OffsetY;
+                                float yBot = dims.GetPixelY(yWithOffset - YError[i + from]);
+                                float yTop = dims.GetPixelY(yWithOffset + YError[i + from]);
+                                gfx.DrawLine(penLineError, points[i].X, yBot, points[i].X, yTop);
+                                gfx.DrawLine(penLineError, points[i].X - ErrorCapSize, yBot, points[i].X + ErrorCapSize, yBot);
+                                gfx.DrawLine(penLineError, points[i].X - ErrorCapSize, yTop, points[i].X + ErrorCapSize, yTop);
+                            }
+                        }
+
+                        if (XError != null)
+                        {
+                            for (int i = 0; i < points.Length; i++)
+                            {
+                                double xWithOffset = Xs[i] + OffsetX;
+                                float xLeft = dims.GetPixelX(xWithOffset - XError[i + from]);
+                                float xRight = dims.GetPixelX(xWithOffset + XError[i + from]);
+                                gfx.DrawLine(penLineError, xLeft, points[i].Y, xRight, points[i].Y);
+                                gfx.DrawLine(penLineError, xLeft, points[i].Y - ErrorCapSize, xLeft, points[i].Y + ErrorCapSize);
+                                gfx.DrawLine(penLineError, xRight, points[i].Y - ErrorCapSize, xRight, points[i].Y + ErrorCapSize);
+                            }
+                        }
+
+                        // draw the lines connecting points
+                        if (LineWidth > 0 && points.Length > 1 && LineStyle != LineStyle.None)
+                        {
+                            if (StepDisplay)
+                            {
+                                PointF[] pointsStep = new PointF[points.Length * 2 - 1];
+                                for (int i = 0; i < points.Length - 1; i++)
+                                {
+                                    pointsStep[i * 2] = points[i];
+                                    pointsStep[i * 2 + 1] = new PointF(points[i + 1].X, points[i].Y);
+                                }
+                                pointsStep[pointsStep.Length - 1] = points[points.Length - 1];
+                                gfx.DrawLines(penLine, pointsStep);
+                            }
+                            else
+                            {
+                                gfx.DrawLines(penLine, points);
+                            }
+                        }
+
+                        // draw a marker at each point
+                        if ((MarkerSize > 0) && (MarkerShape != MarkerShape.None))
+                        {
+                            for (int i = 0; i < points.Length; i++)
+                                MarkerTools.DrawMarker(gfx, points[i], MarkerShape, MarkerSize, Color);
+                        }
+                    }
                 }
             }
         }

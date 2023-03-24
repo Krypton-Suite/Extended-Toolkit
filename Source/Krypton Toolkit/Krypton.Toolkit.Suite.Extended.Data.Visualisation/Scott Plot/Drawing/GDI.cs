@@ -50,9 +50,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static SizeF MeasureString(string text, Font font)
         {
             using (Bitmap bmp = new Bitmap(1, 1))
-            using (Graphics gfx = Graphics(bmp, lowQuality: true))
             {
-                return MeasureString(gfx, text, font.Name, font.Size, font.Bold);
+                using (Graphics gfx = Graphics(bmp, lowQuality: true))
+                {
+                    return MeasureString(gfx, text, font.Name, font.Size, font.Bold);
+                }
             }
         }
 
@@ -277,34 +279,34 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             var sf = new StringFormat();
 
-            if (h == HorizontalAlignment.Left)
+            switch (h)
             {
-                sf.Alignment = StringAlignment.Near;
-            }
-            else if (h == HorizontalAlignment.Center)
-            {
-                sf.Alignment = StringAlignment.Center;
-            }
-            else if (h == HorizontalAlignment.Right)
-            {
-                sf.Alignment = StringAlignment.Far;
-            }
-            else
-            {
-                throw new NotImplementedException();
+                case HorizontalAlignment.Left:
+                    sf.Alignment = StringAlignment.Near;
+                    break;
+                case HorizontalAlignment.Right:
+                    sf.Alignment = StringAlignment.Far;
+                    break;
+                case HorizontalAlignment.Center:
+                    sf.Alignment = StringAlignment.Center;
+                    break;
+                default:
+                    throw new NotImplementedException();
             }
 
-            if (v == VerticalAlignment.Upper)
+            switch (v)
             {
-                sf.LineAlignment = StringAlignment.Near;
-            }
-            else if (v == VerticalAlignment.Middle)
-            {
-                sf.LineAlignment = StringAlignment.Center;
-            }
-            else if (v == VerticalAlignment.Lower)
-            {
-                sf.LineAlignment = StringAlignment.Far;
+                case VerticalAlignment.Upper:
+                    sf.LineAlignment = StringAlignment.Near;
+                    break;
+                case VerticalAlignment.Lower:
+                    sf.LineAlignment = StringAlignment.Far;
+                    break;
+                case VerticalAlignment.Middle:
+                    sf.LineAlignment = StringAlignment.Center;
+                    break;
+                default:
+                    throw new NotImplementedException();
             }
 
             return sf;
@@ -316,15 +318,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             var rect = new Rectangle(0, 0, width, height);
 
             using (var gfx = System.Drawing.Graphics.FromImage(bmp2))
-            using (var attribs = new ImageAttributes())
             {
-                gfx.CompositingMode = CompositingMode.SourceCopy;
-                gfx.CompositingQuality = CompositingQuality.HighQuality;
-                gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                gfx.SmoothingMode = SmoothingMode.HighQuality;
-                gfx.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                attribs.SetWrapMode(WrapMode.TileFlipXY);
-                gfx.DrawImage(bmp, rect, 0, 0, bmp.Width, bmp.Height, GraphicsUnit.Pixel, attribs);
+                using (var attribs = new ImageAttributes())
+                {
+                    gfx.CompositingMode = CompositingMode.SourceCopy;
+                    gfx.CompositingQuality = CompositingQuality.HighQuality;
+                    gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    gfx.SmoothingMode = SmoothingMode.HighQuality;
+                    gfx.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    attribs.SetWrapMode(WrapMode.TileFlipXY);
+                    gfx.DrawImage(bmp, rect, 0, 0, bmp.Width, bmp.Height, GraphicsUnit.Pixel, attribs);
+                }
             }
 
             return bmp2;

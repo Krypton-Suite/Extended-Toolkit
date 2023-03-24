@@ -283,9 +283,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (ShowValuesAboveBars)
             {
                 using (var valueTextFont = GDI.Font(Font))
-                using (var valueTextBrush = GDI.Brush(Font.Color))
-                using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
-                    gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+                {
+                    using (var valueTextBrush = GDI.Brush(Font.Color))
+                    {
+                        using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
+                        {
+                            gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+                        }
+                    }
+                }
             }
         }
 
@@ -324,9 +330,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (ShowValuesAboveBars)
             {
                 using (var valueTextFont = GDI.Font(Font))
-                using (var valueTextBrush = GDI.Brush(Font.Color))
-                using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
-                    gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+                {
+                    using (var valueTextBrush = GDI.Brush(Font.Color))
+                    {
+                        using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
+                        {
+                            gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+                        }
+                    }
+                }
             }
         }
 

@@ -181,10 +181,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             string largestString = "";
             foreach (string s in TickCollectionStorage.tickLabels.Where(x => string.IsNullOrEmpty(x) == false))
+            {
                 if (s.Length > largestString.Length)
                 {
                     largestString = s;
                 }
+            }
 
             if (LabelFormat == TickLabelFormatOptions.DateTime)
             {

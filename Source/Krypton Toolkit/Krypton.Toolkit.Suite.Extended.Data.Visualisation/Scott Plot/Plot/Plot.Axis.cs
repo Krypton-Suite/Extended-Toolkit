@@ -92,7 +92,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             var primaryAxes = new Axis[] { XAxis, XAxis2, YAxis, YAxis2 };
 
             foreach (var axis in primaryAxes)
+            {
                 axis.Line(visible, color);
+            }
 
             YAxis.Line(visible: left);
             YAxis2.Line(visible: right);
@@ -108,7 +110,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Frameless(bool hideAllAxes = true)
         {
             foreach (var axis in settings.Axes)
+            {
                 axis.Hide(hideAllAxes);
+            }
         }
 
         /// <summary>
@@ -230,7 +234,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void SetCulture(CultureInfo culture)
         {
             foreach (var axis in settings.Axes)
+            {
                 axis.SetCulture(culture);
+            }
         }
 
         /// <summary>
@@ -248,7 +254,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             int? decimalDigits = null, int? numberNegativePattern = null, int[] numberGroupSizes = null)
         {
             foreach (var axis in settings.Axes)
+            {
                 axis.SetCulture(shortDatePattern, decimalSeparator, numberGroupSeparator, decimalDigits, numberNegativePattern, numberGroupSizes);
+            }
         }
 
         #endregion

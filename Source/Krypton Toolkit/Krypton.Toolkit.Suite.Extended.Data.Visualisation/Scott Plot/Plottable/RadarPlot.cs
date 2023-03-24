@@ -284,27 +284,39 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             PointF origin = new PointF(dims.GetPixelX(0), dims.GetPixelY(0));
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen pen = GDI.Pen(WebColor, OutlineWidth))
-            using (Brush brush = GDI.Brush(Color.Black))
-            using (StringFormat sf = new StringFormat() { LineAlignment = StringAlignment.Center })
-            using (StringFormat sf2 = new StringFormat())
-            using (System.Drawing.Font font = GDI.Font(Font))
-            using (Brush fontBrush = GDI.Brush(Font.Color))
             {
-                RenderAxis(gfx, dims, bmp, lowQuality);
-
-                for (int i = 0; i < numGroups; i++)
+                using (Pen pen = GDI.Pen(WebColor, OutlineWidth))
                 {
-                    PointF[] points = new PointF[numCategories];
-                    for (int j = 0; j < numCategories; j++)
-                        points[j] = new PointF(
-                            (float)(Norm[i, j] * Math.Cos(sweepAngle * j - Math.PI / 2) * minScale + origin.X),
-                            (float)(Norm[i, j] * Math.Sin(sweepAngle * j - Math.PI / 2) * minScale + origin.Y));
+                    using (Brush brush = GDI.Brush(Color.Black))
+                    {
+                        using (StringFormat sf = new StringFormat() { LineAlignment = StringAlignment.Center })
+                        {
+                            using (StringFormat sf2 = new StringFormat())
+                            {
+                                using (System.Drawing.Font font = GDI.Font(Font))
+                                {
+                                    using (Brush fontBrush = GDI.Brush(Font.Color))
+                                    {
+                                        RenderAxis(gfx, dims, bmp, lowQuality);
 
-                    ((SolidBrush)brush).Color = FillColors[i];
-                    pen.Color = LineColors[i];
-                    gfx.FillPolygon(brush, points);
-                    gfx.DrawPolygon(pen, points);
+                                        for (int i = 0; i < numGroups; i++)
+                                        {
+                                            PointF[] points = new PointF[numCategories];
+                                            for (int j = 0; j < numCategories; j++)
+                                                points[j] = new PointF(
+                                                    (float)(Norm[i, j] * Math.Cos(sweepAngle * j - Math.PI / 2) * minScale + origin.X),
+                                                    (float)(Norm[i, j] * Math.Sin(sweepAngle * j - Math.PI / 2) * minScale + origin.Y));
+
+                                            ((SolidBrush)brush).Color = FillColors[i];
+                                            pen.Color = LineColors[i];
+                                            gfx.FillPolygon(brush, points);
+                                            gfx.DrawPolygon(pen, points);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

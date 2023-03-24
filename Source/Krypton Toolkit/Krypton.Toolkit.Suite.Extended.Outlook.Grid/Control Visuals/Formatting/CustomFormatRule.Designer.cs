@@ -30,31 +30,31 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomFormatRule));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnOk = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonGroup1 = new Krypton.Toolkit.KryptonGroup();
-            this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            this.kcolbtnMinimumColour = new Krypton.Toolkit.KryptonColorButton();
-            this.kcolbtnIntermediateColour = new Krypton.Toolkit.KryptonColorButton();
-            this.kcolbtnMaximumColour = new Krypton.Toolkit.KryptonColorButton();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.kbtnOk = new Krypton.Toolkit.KryptonButton();
-            this.kcmbFormatStyle = new Krypton.Toolkit.KryptonComboBox();
-            this.pbxPreview = new System.Windows.Forms.PictureBox();
             this.kcmbFillMode = new Krypton.Toolkit.KryptonComboBox();
+            this.pbxPreview = new System.Windows.Forms.PictureBox();
+            this.kcmbFormatStyle = new Krypton.Toolkit.KryptonComboBox();
+            this.klblFill = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonGroup1 = new Krypton.Toolkit.KryptonGroup();
+            this.kcolbtnMaximumColour = new Krypton.Toolkit.KryptonColorButton();
+            this.kcolbtnIntermediateColour = new Krypton.Toolkit.KryptonColorButton();
+            this.kcolbtnMinimumColour = new Krypton.Toolkit.KryptonColorButton();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbFillMode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPreview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbFormatStyle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1.Panel)).BeginInit();
             this.kryptonGroup1.Panel.SuspendLayout();
             this.kryptonGroup1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbFormatStyle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbFillMode)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -68,6 +68,27 @@
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(638, 50);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kbtnOk
+            // 
+            this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.kbtnOk.Enabled = false;
+            this.kbtnOk.Location = new System.Drawing.Point(310, 13);
+            this.kbtnOk.Name = "kbtnOk";
+            this.kbtnOk.Size = new System.Drawing.Size(155, 25);
+            this.kbtnOk.TabIndex = 2;
+            this.kbtnOk.Values.Text = "kryptonButton2";
+            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
+            // 
+            // kbtnCancel
+            // 
+            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnCancel.Location = new System.Drawing.Point(471, 13);
+            this.kbtnCancel.Name = "kbtnCancel";
+            this.kbtnCancel.Size = new System.Drawing.Size(155, 25);
+            this.kbtnCancel.TabIndex = 1;
+            this.kbtnCancel.Values.Text = "kryptonButton1";
+            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
             // 
             // kryptonBorderEdge1
             // 
@@ -83,7 +104,7 @@
             this.kryptonPanel2.Controls.Add(this.kcmbFillMode);
             this.kryptonPanel2.Controls.Add(this.pbxPreview);
             this.kryptonPanel2.Controls.Add(this.kcmbFormatStyle);
-            this.kryptonPanel2.Controls.Add(this.kryptonLabel3);
+            this.kryptonPanel2.Controls.Add(this.klblFill);
             this.kryptonPanel2.Controls.Add(this.kryptonGroup1);
             this.kryptonPanel2.Controls.Add(this.kryptonLabel2);
             this.kryptonPanel2.Controls.Add(this.kryptonLabel1);
@@ -93,23 +114,48 @@
             this.kryptonPanel2.Size = new System.Drawing.Size(638, 150);
             this.kryptonPanel2.TabIndex = 2;
             // 
-            // kryptonLabel1
+            // kcmbFillMode
             // 
-            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel1.Location = new System.Drawing.Point(13, 13);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(56, 20);
-            this.kryptonLabel1.TabIndex = 0;
-            this.kryptonLabel1.Values.Text = "Format:";
+            this.kcmbFillMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kcmbFillMode.DropDownWidth = 208;
+            this.kcmbFillMode.IntegralHeight = false;
+            this.kcmbFillMode.Location = new System.Drawing.Point(48, 115);
+            this.kcmbFillMode.Name = "kcmbFillMode";
+            this.kcmbFillMode.Size = new System.Drawing.Size(208, 21);
+            this.kcmbFillMode.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbFillMode.TabIndex = 7;
             // 
-            // kryptonLabel2
+            // pbxPreview
             // 
-            this.kryptonLabel2.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel2.Location = new System.Drawing.Point(13, 40);
-            this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(60, 20);
-            this.kryptonLabel2.TabIndex = 1;
-            this.kryptonLabel2.Values.Text = "Preview:";
+            this.pbxPreview.BackColor = System.Drawing.Color.Transparent;
+            this.pbxPreview.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pbxPreview.Location = new System.Drawing.Point(79, 40);
+            this.pbxPreview.Name = "pbxPreview";
+            this.pbxPreview.Size = new System.Drawing.Size(318, 22);
+            this.pbxPreview.TabIndex = 6;
+            this.pbxPreview.TabStop = false;
+            this.pbxPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.pbxPreview_Paint);
+            // 
+            // kcmbFormatStyle
+            // 
+            this.kcmbFormatStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kcmbFormatStyle.DropDownWidth = 318;
+            this.kcmbFormatStyle.IntegralHeight = false;
+            this.kcmbFormatStyle.Location = new System.Drawing.Point(79, 12);
+            this.kcmbFormatStyle.Name = "kcmbFormatStyle";
+            this.kcmbFormatStyle.Size = new System.Drawing.Size(318, 21);
+            this.kcmbFormatStyle.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbFormatStyle.TabIndex = 4;
+            this.kcmbFormatStyle.SelectedIndexChanged += new System.EventHandler(this.kcmbFormatStyle_SelectedIndexChanged);
+            // 
+            // klblFill
+            // 
+            this.klblFill.LabelStyle = Krypton.Toolkit.LabelStyle.NormalPanel;
+            this.klblFill.Location = new System.Drawing.Point(13, 115);
+            this.klblFill.Name = "klblFill";
+            this.klblFill.Size = new System.Drawing.Size(28, 20);
+            this.klblFill.TabIndex = 3;
+            this.klblFill.Values.Text = "Fill:";
             // 
             // kryptonGroup1
             // 
@@ -125,26 +171,18 @@
             this.kryptonGroup1.Size = new System.Drawing.Size(613, 36);
             this.kryptonGroup1.TabIndex = 2;
             // 
-            // kryptonLabel3
+            // kcolbtnMaximumColour
             // 
-            this.kryptonLabel3.LabelStyle = Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.kryptonLabel3.Location = new System.Drawing.Point(13, 115);
-            this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(28, 20);
-            this.kryptonLabel3.TabIndex = 3;
-            this.kryptonLabel3.Values.Text = "Fill:";
-            // 
-            // kcolbtnMinimumColour
-            // 
-            this.kcolbtnMinimumColour.CustomColorPreviewShape = Krypton.Toolkit.KryptonColorButtonCustomColorPreviewShape.Circle;
-            this.kcolbtnMinimumColour.Location = new System.Drawing.Point(4, 4);
-            this.kcolbtnMinimumColour.Name = "kcolbtnMinimumColour";
-            this.kcolbtnMinimumColour.SelectedColor = System.Drawing.Color.Transparent;
-            this.kcolbtnMinimumColour.Size = new System.Drawing.Size(171, 25);
-            this.kcolbtnMinimumColour.TabIndex = 0;
-            this.kcolbtnMinimumColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton1.Values.Image")));
-            this.kcolbtnMinimumColour.Values.RoundedCorners = 8;
-            this.kcolbtnMinimumColour.Values.Text = "M&inimum Colour";
+            this.kcolbtnMaximumColour.CustomColorPreviewShape = Krypton.Toolkit.KryptonColorButtonCustomColorPreviewShape.Circle;
+            this.kcolbtnMaximumColour.Location = new System.Drawing.Point(373, 4);
+            this.kcolbtnMaximumColour.Name = "kcolbtnMaximumColour";
+            this.kcolbtnMaximumColour.SelectedColor = System.Drawing.Color.Transparent;
+            this.kcolbtnMaximumColour.Size = new System.Drawing.Size(182, 25);
+            this.kcolbtnMaximumColour.TabIndex = 2;
+            this.kcolbtnMaximumColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcolbtnMaximumColour.Values.Image")));
+            this.kcolbtnMaximumColour.Values.RoundedCorners = 8;
+            this.kcolbtnMaximumColour.Values.Text = "Ma&ximum Colour";
+            this.kcolbtnMaximumColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcolbtnMaximumColour_SelectedColorChanged);
             // 
             // kcolbtnIntermediateColour
             // 
@@ -154,72 +192,41 @@
             this.kcolbtnIntermediateColour.SelectedColor = System.Drawing.Color.Transparent;
             this.kcolbtnIntermediateColour.Size = new System.Drawing.Size(185, 25);
             this.kcolbtnIntermediateColour.TabIndex = 1;
-            this.kcolbtnIntermediateColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton2.Values.Image1")));
+            this.kcolbtnIntermediateColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcolbtnIntermediateColour.Values.Image")));
             this.kcolbtnIntermediateColour.Values.RoundedCorners = 8;
             this.kcolbtnIntermediateColour.Values.Text = "Inter&mediate Colour";
+            this.kcolbtnIntermediateColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcolbtnIntermediateColour_SelectedColorChanged);
             // 
-            // kcolbtnMaximumColour
+            // kcolbtnMinimumColour
             // 
-            this.kcolbtnMaximumColour.CustomColorPreviewShape = Krypton.Toolkit.KryptonColorButtonCustomColorPreviewShape.Circle;
-            this.kcolbtnMaximumColour.Location = new System.Drawing.Point(373, 4);
-            this.kcolbtnMaximumColour.Name = "kcolbtnMaximumColour";
-            this.kcolbtnMaximumColour.SelectedColor = System.Drawing.Color.Transparent;
-            this.kcolbtnMaximumColour.Size = new System.Drawing.Size(182, 25);
-            this.kcolbtnMaximumColour.TabIndex = 2;
-            this.kcolbtnMaximumColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton2.Values.Image")));
-            this.kcolbtnMaximumColour.Values.RoundedCorners = 8;
-            this.kcolbtnMaximumColour.Values.Text = "Ma&ximum Colour";
+            this.kcolbtnMinimumColour.CustomColorPreviewShape = Krypton.Toolkit.KryptonColorButtonCustomColorPreviewShape.Circle;
+            this.kcolbtnMinimumColour.Location = new System.Drawing.Point(4, 4);
+            this.kcolbtnMinimumColour.Name = "kcolbtnMinimumColour";
+            this.kcolbtnMinimumColour.SelectedColor = System.Drawing.Color.Transparent;
+            this.kcolbtnMinimumColour.Size = new System.Drawing.Size(171, 25);
+            this.kcolbtnMinimumColour.TabIndex = 0;
+            this.kcolbtnMinimumColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcolbtnMinimumColour.Values.Image")));
+            this.kcolbtnMinimumColour.Values.RoundedCorners = 8;
+            this.kcolbtnMinimumColour.Values.Text = "M&inimum Colour";
+            this.kcolbtnMinimumColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcolbtnMinimumColour_SelectedColorChanged);
             // 
-            // kbtnCancel
+            // kryptonLabel2
             // 
-            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(471, 13);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(155, 25);
-            this.kbtnCancel.TabIndex = 1;
-            this.kbtnCancel.Values.Text = "kryptonButton1";
+            this.kryptonLabel2.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonLabel2.Location = new System.Drawing.Point(13, 40);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(60, 20);
+            this.kryptonLabel2.TabIndex = 1;
+            this.kryptonLabel2.Values.Text = "Preview:";
             // 
-            // kbtnOk
+            // kryptonLabel1
             // 
-            this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnOk.Enabled = false;
-            this.kbtnOk.Location = new System.Drawing.Point(310, 13);
-            this.kbtnOk.Name = "kbtnOk";
-            this.kbtnOk.Size = new System.Drawing.Size(155, 25);
-            this.kbtnOk.TabIndex = 2;
-            this.kbtnOk.Values.Text = "kryptonButton2";
-            // 
-            // kcmbFormatStyle
-            // 
-            this.kcmbFormatStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kcmbFormatStyle.DropDownWidth = 318;
-            this.kcmbFormatStyle.IntegralHeight = false;
-            this.kcmbFormatStyle.Location = new System.Drawing.Point(79, 12);
-            this.kcmbFormatStyle.Name = "kcmbFormatStyle";
-            this.kcmbFormatStyle.Size = new System.Drawing.Size(318, 21);
-            this.kcmbFormatStyle.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kcmbFormatStyle.TabIndex = 4;
-            // 
-            // pbxPreview
-            // 
-            this.pbxPreview.BackColor = System.Drawing.Color.Transparent;
-            this.pbxPreview.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pbxPreview.Location = new System.Drawing.Point(79, 40);
-            this.pbxPreview.Name = "pbxPreview";
-            this.pbxPreview.Size = new System.Drawing.Size(318, 22);
-            this.pbxPreview.TabIndex = 6;
-            this.pbxPreview.TabStop = false;
-            // 
-            // kcmbFillMode
-            // 
-            this.kcmbFillMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kcmbFillMode.DropDownWidth = 208;
-            this.kcmbFillMode.IntegralHeight = false;
-            this.kcmbFillMode.Location = new System.Drawing.Point(48, 115);
-            this.kcmbFillMode.Name = "kcmbFillMode";
-            this.kcmbFillMode.Size = new System.Drawing.Size(208, 21);
-            this.kcmbFillMode.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kcmbFillMode.TabIndex = 7;
+            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonLabel1.Location = new System.Drawing.Point(13, 13);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(56, 20);
+            this.kryptonLabel1.TabIndex = 0;
+            this.kryptonLabel1.Values.Text = "Format:";
             // 
             // CustomFormatRule
             // 
@@ -236,6 +243,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Custom Rule";
+            this.Load += new System.EventHandler(this.CustomFormatRule_Load);
             this.Controls.SetChildIndex(this.kryptonPanel1, 0);
             this.Controls.SetChildIndex(this.kryptonPanel2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
@@ -244,13 +252,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbFillMode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPreview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbFormatStyle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1.Panel)).EndInit();
             this.kryptonGroup1.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1)).EndInit();
             this.kryptonGroup1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbFormatStyle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbFillMode)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -260,7 +268,7 @@
         private KryptonPanel kryptonPanel1;
         private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kryptonPanel2;
-        private KryptonLabel kryptonLabel3;
+        private KryptonLabel klblFill;
         private KryptonGroup kryptonGroup1;
         private KryptonColorButton kcolbtnIntermediateColour;
         private KryptonColorButton kcolbtnMinimumColour;

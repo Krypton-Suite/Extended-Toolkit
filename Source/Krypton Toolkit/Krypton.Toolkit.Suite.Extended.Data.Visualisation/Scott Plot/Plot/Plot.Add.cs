@@ -143,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add a bar plot (values +/- errors) using defined positions
         /// </summary>
-        public BarPlot AddBar(double[] values, double[] errors, double[] positions, Color? color = null)
+        public BarPlot AddBar(double[] values, double[]? errors, double[] positions, Color? color = null)
         {
             var plottable = new BarPlot(positions, values, errors, null)
             {
@@ -170,10 +170,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             foreach (double[] subArray in ys)
+            {
                 if (subArray.Length != groupLabels.Length)
                 {
                     throw new ArgumentException("all arrays inside ys must be the same length as groupLabels");
                 }
+            }
 
             double groupWidthFraction = 0.8;
             double barWidthFraction = 0.8;
@@ -186,7 +188,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             for (int i = 0; i < seriesCount; i++)
             {
                 double[] barYs = ys[i];
-                double[] barYerr = yErr?[i];
+                double[]? barYerr = yErr?[i];
                 double[] barXs = DataGen.Consecutive(barYs.Length);
                 containsNegativeY |= barYs.Where(y => y < 0).Any();
                 var bar = new BarPlot(barXs, barYs, barYerr, null)
@@ -255,7 +257,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="colormap">Colormap to display in this colorbar</param>
         /// <param name="space">The size of the right axis will be set to this number of pixels to make room for the colorbar</param>
         /// <returns>the colorbar that was just created</returns>
-        public Colorbar AddColorbar(ColourMap colormap = null, int space = 100)
+        public Colorbar AddColourbar(ColourMap? colormap = null, int space = 100)
         {
             var cb = new Colorbar(colormap);
             Add(cb);
@@ -269,7 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="heatmap">A heatmap-containing plottable to connect with this colorbar</param>
         /// <param name="space">The size of the right axis will be set to this number of pixels to make room for the colorbar</param>
         /// <returns>the colorbar that was just created</returns>
-        public Colorbar AddColorbar(IHasColormap heatmap, int space = 100)
+        public Colorbar AddColourbar(IHasColormap heatmap, int space = 100)
         {
             var cb = new Colorbar(heatmap);
             Add(cb);

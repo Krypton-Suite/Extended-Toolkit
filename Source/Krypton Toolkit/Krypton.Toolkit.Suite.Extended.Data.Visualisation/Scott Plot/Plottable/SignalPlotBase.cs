@@ -409,9 +409,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                         // adjust marker offset to improve rendering on Linux and MacOS
                         float markerOffsetX = (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) ? 0 : 1;
                         foreach (PointF point in linePoints)
+                        {
                             gfx.FillEllipse(brush: brush,
                                 x: point.X - markerPxRadius + markerOffsetX, y: point.Y - markerPxRadius,
                                 width: markerPxDiameter, height: markerPxDiameter);
+                        }
                     }
                     else
                     {
@@ -853,10 +855,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         protected void ValidatePoints(PointF[] points)
         {
             foreach (PointF pt in points)
+            {
                 if (float.IsNaN(pt.Y))
                 {
                     throw new InvalidOperationException("Data must not contain NaN");
                 }
+            }
         }
 
         public void ValidateData(bool deep = false)

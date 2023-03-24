@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public BarPlot PlotBar(
             double[] xs,
             double[] ys,
-            double[] errorY = null,
+            double[]? errorY = null,
             string label = null,
             double barWidth = .8,
             double xOffset = 0,
@@ -136,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             bool showValues = false,
             Color? valueColor = null,
             bool autoAxis = true,
-            double[] yOffsets = null,
+            double[]? yOffsets = null,
             Color? negativeColor = null
             )
         {
@@ -222,10 +222,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             foreach (double[] subArray in ys)
+            {
                 if (subArray.Length != groupLabels.Length)
                 {
                     throw new ArgumentException("all arrays inside ys must be the same length as groupLabels");
                 }
+            }
 
             int seriesCount = ys.Length;
             double barWidth = groupWidthFraction / seriesCount;
@@ -235,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 double offset = i * barWidth;
                 double[] barYs = ys[i];
-                double[] barYerr = yErr?[i];
+                double[]? barYerr = yErr?[i];
                 double[] barXs = DataGen.Consecutive(barYs.Length);
                 containsNegativeY |= barYs.Where(y => y < 0).Any();
                 bars[i] = PlotBar(barXs, barYs, barYerr, seriesLabels[i], barWidth * barWidthFraction, offset, errorCapSize: errorCapSize, showValues: showValues);
@@ -1196,7 +1198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public BarPlot PlotWaterfall(
             double[] xs,
             double[] ys,
-            double[] errorY = null,
+            double[]? errorY = null,
             string label = null,
             double barWidth = .8,
             double xOffset = 0,
@@ -1214,7 +1216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color? negativeColor = null
             )
         {
-            double[] yOffsets = Enumerable.Range(0, ys.Length).Select(count => ys.Take(count).Sum()).ToArray();
+            double[]? yOffsets = Enumerable.Range(0, ys.Length).Select(count => ys.Take(count).Sum()).ToArray();
             return PlotBar(
                 xs,
                 ys,

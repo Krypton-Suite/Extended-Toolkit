@@ -311,7 +311,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             byte[] bytes = input.SelectMany(n => { return BitConverter.GetBytes(n); }).ToArray();
             int hash = 0;
             foreach (byte b in bytes)
+            {
                 hash = (hash * 31) ^ b;
+            }
+
             return hash;
         }
 

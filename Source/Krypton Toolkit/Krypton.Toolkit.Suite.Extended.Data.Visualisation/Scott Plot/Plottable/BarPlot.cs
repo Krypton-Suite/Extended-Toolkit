@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public HatchStyle HatchStyle = HatchStyle.None;
         public float BorderLineWidth = 1;
 
-        public BarPlot(double[] xs, double[] ys, double[] yErr, double[] yOffsets) : base()
+        public BarPlot(double[] xs, double[] ys, double[]? yErr, double[]? yOffsets) : base()
         {
             if (ys is null || ys.Length == 0)
             {
@@ -111,9 +111,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (ShowValuesAboveBars)
             {
                 using (var valueTextFont = GDI.Font(Font))
-                using (var valueTextBrush = GDI.Brush(Font.Color))
-                using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
-                    gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+                {
+                    using (var valueTextBrush = GDI.Brush(Font.Color))
+                    {
+                        using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
+                        {
+                            gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+                        }
+                    }
+                }
             }
         }
 
@@ -152,21 +158,29 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (ShowValuesAboveBars)
             {
                 using (var valueTextFont = GDI.Font(Font))
-                using (var valueTextBrush = GDI.Brush(Font.Color))
-                using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
-                    gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+                {
+                    using (var valueTextBrush = GDI.Brush(Font.Color))
+                    {
+                        using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
+                        {
+                            gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+                        }
+                    }
+                }
             }
         }
 
         protected void RenderBarFromRect(RectangleF rect, bool negative, Graphics gfx)
         {
             using (var outlinePen = new Pen(BorderColor, BorderLineWidth))
-            using (var fillBrush = GDI.Brush(negative ? FillColorNegative : FillColor, FillColorHatch, HatchStyle))
             {
-                gfx.FillRectangle(fillBrush, rect.X, rect.Y, rect.Width, rect.Height);
-                if (BorderLineWidth > 0)
+                using (var fillBrush = GDI.Brush(negative ? FillColorNegative : FillColor, FillColorHatch, HatchStyle))
                 {
-                    gfx.DrawRectangle(outlinePen, rect.X, rect.Y, rect.Width, rect.Height);
+                    gfx.FillRectangle(fillBrush, rect.X, rect.Y, rect.Width, rect.Height);
+                    if (BorderLineWidth > 0)
+                    {
+                        gfx.DrawRectangle(outlinePen, rect.X, rect.Y, rect.Width, rect.Height);
+                    }
                 }
             }
         }

@@ -433,7 +433,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 OutlookGridRow row = (OutlookGridRow)Rows[e.RowIndex];
                 if (row.IsGroupRow)
                 {
-                    row.Group.Collapsed = !row.Group.Collapsed;
+                    if (row.Group != null)
+                    {
+                        row.Group.Collapsed = !row.Group.Collapsed;
+                    }
 
                     //this is a workaround to make the grid re-calculate it's contents and background bounds
                     // so the background is updated correctly.
@@ -519,7 +522,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             // supressed to keep selections from being messed up.
             if (!InExpandCollapseMouseCapture)
             {
-                bool dragdropdone = false;
+                bool dragDropDone = false;
                 //handles drag/drop operations
                 if (AllowDrop)
                 {
@@ -537,7 +540,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                                 if (col.GroupingType != null)
                                 {
                                     groupType = col.GroupingType.GetType().Name;
-                                    if (groupType == typeof(OutlookGridDateTimeGroup).Name)
+                                    if (groupType == nameof(OutlookGridDateTimeGroup))
                                     {
                                         groupInterval = ((OutlookGridDateTimeGroup)col.GroupingType).Interval.ToString();
                                     }
@@ -548,19 +551,19 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                                 string info =
                                     $"{col.Name}|{col.DataGridViewColumn.HeaderText}|{col.DataGridViewColumn.HeaderCell.SortGlyphDirection.ToString()}|{col.DataGridViewColumn.SortMode.ToString()}|{groupType}|{groupInterval}|{groupSortBySummaryCount}";
                                 DragDropEffects dropEffect = DoDragDrop(info, DragDropEffects.Move);
-                                dragdropdone = true;
+                                dragDropDone = true;
                             }
                             else if (_dragDropType == 1)
                             {
                                 //row drag/drop
                                 DragDropEffects dropEffect = DoDragDrop(Rows[_dragDropSourceIndex], DragDropEffects.Move);
-                                dragdropdone = true;
+                                dragDropDone = true;
                             }
                         }
                     }
                 }
                 base.OnMouseMove(e);
-                if (dragdropdone)
+                if (dragDropDone)
                 {
                     CellOver = new(-2, -2);//To avoid that the column header appears in a pressed state - Modification of ToolKit
                 }
@@ -785,7 +788,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 ClearSelection(); //unselect
                 if (row.IsIconHit(e))
                 {
-                    row.Group.Collapsed = !row.Group.Collapsed;
+                    if (row.Group != null)
+                    {
+                        row.Group.Collapsed = !row.Group.Collapsed;
+                    }
 
                     //this is a workaround to make the grid re-calculate it's contents and backgroun bounds
                     // so the background is updated correctly.
@@ -829,8 +835,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 }
                 else if (e.Button == MouseButtons.Left)
                 {
-                    OutlookGridColumn? col = _internalColumns.FindFromColumnIndex(e.ColumnIndex);
-                    if (col != null && col.DataGridViewColumn.SortMode != DataGridViewColumnSortMode.NotSortable)
+                    OutlookGridColumn col = _internalColumns.FindFromColumnIndex(e.ColumnIndex);
+                    if (col.DataGridViewColumn.SortMode != DataGridViewColumnSortMode.NotSortable)
                     {
                         SortOrder previousSort = col.SortDirection;
                         //Reset all sorting column only if not Ctrl or Shift or the column is grouped
@@ -1082,9 +1088,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 if (item != null)
                 {
-
-                    ((OutlookGridDateTimeGroup)col.GroupingType).Interval =
-                        (DateInterval)Enum.Parse(typeof(DateInterval), item.Tag.ToString());
+                    if (item.Tag != null)
+                    {
+                        ((OutlookGridDateTimeGroup)col.GroupingType).Interval =
+                            (DateInterval)Enum.Parse(typeof(DateInterval), item.Tag.ToString());
+                    }
                 }
             }
             ForceRefreshGroupBox();
@@ -1096,7 +1104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             KryptonContextMenuImageSelect item = (KryptonContextMenuImageSelect)sender;
             OutlookGridColumn col = _internalColumns.FindFromColumnIndex(_colSelected);
             ConditionalFormatting format = _formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
-            ConditionalFormatting newformat = ((List<ConditionalFormatting>)item.Tag)[item.SelectedIndex];
+            ConditionalFormatting newformat = (((List<ConditionalFormatting>)item.Tag)!)[item.SelectedIndex];
             if (format == null)
             {
                 _formatConditions.Add(new(col.DataGridViewColumn.Name, newformat.FormatType, newformat.FormatParams));
@@ -1120,13 +1128,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 ConditionalFormatting? format = _formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
                 if (format == null)
                 {
-                    ConditionalFormatting newformat = new(col.DataGridViewColumn.Name, EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(fm.ColMin, fm.ColMax));
+                    ConditionalFormatting newformat = new(col.DataGridViewColumn.Name, EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(fm.MinimumColour, fm.MaximumColour));
                     _formatConditions.Add(newformat);
                 }
                 else
                 {
                     format.FormatType = EnumConditionalFormatType.TwoColoursRange;
-                    format.FormatParams = new TwoColoursParams(fm.ColMin, fm.ColMax);
+                    format.FormatParams = new TwoColoursParams(fm.MinimumColour, fm.MaximumColour);
                 }
                 Fill();
             }
@@ -1167,13 +1175,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 ConditionalFormatting? format = _formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
                 if (format == null)
                 {
-                    ConditionalFormatting newformat = new(col.DataGridViewColumn.Name, EnumConditionalFormatType.Bar, new BarParams(fm.ColMin, fm.Gradient));
+                    ConditionalFormatting newformat = new(col.DataGridViewColumn.Name, EnumConditionalFormatType.Bar, new BarParams(fm.MinimumColour, fm.Gradient));
                     _formatConditions.Add(newformat);
                 }
                 else
                 {
                     format.FormatType = EnumConditionalFormatType.Bar;
-                    format.FormatParams = new BarParams(fm.ColMin, fm.Gradient);
+                    format.FormatParams = new BarParams(fm.MinimumColour, fm.Gradient);
                 }
                 Fill();
             }

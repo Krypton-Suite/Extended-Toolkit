@@ -55,8 +55,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 if (gridLineStyle != LineStyle.None)
                 {
                     using (var pen = GDI.Pen(gridLineColor, gridLineWidth, gridLineStyle))
+                    {
                         foreach (float y in ys)
+                        {
                             gfx.DrawLine(pen, x, y, x2, y);
+                        }
+                    }
                 }
             }
 
@@ -68,8 +72,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 if (gridLineStyle != LineStyle.None)
                 {
                     using (var pen = GDI.Pen(gridLineColor, gridLineWidth, gridLineStyle))
+                    {
                         foreach (float x in xs)
+                        {
                             gfx.DrawLine(pen, x, y, x, y2);
+                        }
+                    }
                 }
             }
         }
@@ -88,8 +96,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                 var ys = positions.Select(i => dims.GetPixelY(i));
                 using (var pen = GDI.Pen(tickColor))
+                {
                     foreach (float y in ys)
+                    {
                         gfx.DrawLine(pen, x, y, x + tickDelta, y);
+                    }
+                }
             }
 
             if (EdgeIsHorizontal(edge))
@@ -99,8 +111,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                 var xs = positions.Select(i => dims.GetPixelX(i));
                 using (var pen = GDI.Pen(tickColor))
+                {
                     foreach (float x in xs)
+                    {
                         gfx.DrawLine(pen, x, y, x, y + tickDelta);
+                    }
+                }
             }
         }
 

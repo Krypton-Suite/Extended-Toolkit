@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         private IHasColormap Plottable;
 
-        public Colorbar(ColourMap colormap = null)
+        public Colorbar(ColourMap? colormap = null)
         {
             UpdateColormap(colormap ?? ColourMap.Viridis);
         }
@@ -275,10 +275,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             RectangleF rect = new(location, size);
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality: true, clipToDataArea: false))
-            using (var pen = GDI.Pen(Color.Black))
             {
-                gfx.DrawImage(BmpScale, location.X, location.Y, size.Width, size.Height + 1);
-                gfx.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
+                using (var pen = GDI.Pen(Color.Black))
+                {
+                    gfx.DrawImage(BmpScale, location.X, location.Y, size.Width, size.Height + 1);
+                    gfx.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
+                }
             }
 
             return rect;

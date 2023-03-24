@@ -81,27 +81,33 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (var font = GDI.Font(Font))
-            using (var fontBrush = new SolidBrush(Font.Color))
-            using (var frameBrush = new SolidBrush(BackgroundColor))
             {
-                float pixelX = dims.GetPixelX(X);
-                float pixelY = dims.GetPixelY(Y);
-                SizeF stringSize = GDI.MeasureString(gfx, Label, font);
-
-                gfx.TranslateTransform(pixelX, pixelY);
-                gfx.RotateTransform(Font.Rotation);
-
-                if (BackgroundFill)
+                using (var font = GDI.Font(Font))
                 {
-                    RectangleF stringRect = new RectangleF(0, 0, stringSize.Width, stringSize.Height);
-                    gfx.FillRectangle(frameBrush, stringRect);
+                    using (var fontBrush = new SolidBrush(Font.Color))
+                    {
+                        using (var frameBrush = new SolidBrush(BackgroundColor))
+                        {
+                            float pixelX = dims.GetPixelX(X);
+                            float pixelY = dims.GetPixelY(Y);
+                            SizeF stringSize = GDI.MeasureString(gfx, Label, font);
+
+                            gfx.TranslateTransform(pixelX, pixelY);
+                            gfx.RotateTransform(Font.Rotation);
+
+                            if (BackgroundFill)
+                            {
+                                RectangleF stringRect = new RectangleF(0, 0, stringSize.Width, stringSize.Height);
+                                gfx.FillRectangle(frameBrush, stringRect);
+                            }
+
+                            StringFormat sf = GDI.StringFormat(Font.Alignment);
+                            gfx.DrawString(Label, font, fontBrush, new PointF(0, 0), sf);
+
+                            gfx.ResetTransform();
+                        }
+                    }
                 }
-
-                StringFormat sf = GDI.StringFormat(Font.Alignment);
-                gfx.DrawString(Label, font, fontBrush, new PointF(0, 0), sf);
-
-                gfx.ResetTransform();
             }
         }
     }
