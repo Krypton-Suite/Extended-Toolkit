@@ -51,21 +51,27 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void CalcParameters()
         {
             for (int i = 0; i < n; i++)
+            {
                 a[i] = givenYs[i];
+            }
 
             for (int i = 0; i < n - 1; i++)
+            {
                 h[i] = givenXs[i + 1] - givenXs[i];
+            }
 
             a[n] = givenYs[1];
             h[n - 1] = h[0];
 
             for (int i = 0; i < n - 1; i++)
+            {
                 for (int k = 0; k < n - 1; k++)
                 {
                     m.a[i, k] = 0.0;
                     m.y[i] = 0.0;
                     m.x[i] = 0.0;
                 }
+            }
 
             for (int i = 0; i < n - 1; i++)
             {
@@ -104,7 +110,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             gauss.Solve();
 
             for (int i = 1; i < n; i++)
+            {
                 c[i] = m.x[i - 1];
+            }
+
             c[0] = c[n - 1];
 
             for (int i = 0; i < n; i++)

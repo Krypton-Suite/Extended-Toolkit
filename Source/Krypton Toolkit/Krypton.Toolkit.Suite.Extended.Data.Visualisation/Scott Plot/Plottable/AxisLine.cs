@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Indicates whether the line is horizontal (position in Y units) or vertical (position in X units)
         /// </summary>
-        private readonly bool IsHorizontal;
+        private readonly bool _isHorizontal;
 
         /// <summary>
         /// If true, AxisAuto() will ignore the position of this line when determining axis limits
@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Cursor to display while hovering over this line if dragging is enabled.
         /// </summary>
-        public Cursor DragCursor => IsHorizontal ? Cursor.NS : Cursor.WE;
+        public Cursor DragCursor => _isHorizontal ? Cursor.NS : Cursor.WE;
 
         /// <summary>
         /// If dragging is enabled the line cannot be dragged more negative than this position
@@ -128,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public AxisLine(bool isHorizontal)
         {
-            IsHorizontal = isHorizontal;
+            _isHorizontal = isHorizontal;
         }
 
         public AxisLimits GetAxisLimits()
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 return new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
             }
 
-            if (IsHorizontal)
+            if (_isHorizontal)
             {
                 return new AxisLimits(double.NaN, double.NaN, Position, Position);
             }
@@ -181,7 +181,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using var gfx = GDI.Graphics(bmp, dims, lowQuality);
             using var pen = GDI.Pen(Color, LineWidth, LineStyle, true);
 
-            if (IsHorizontal)
+            if (_isHorizontal)
             {
                 float pixelY = dims.GetPixelY(Position);
 
@@ -214,7 +214,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using var fillBrush = GDI.Brush(PositionLabelBackground);
             using var fontBrush = GDI.Brush(PositionLabelFont.Color);
 
-            if (IsHorizontal)
+            if (_isHorizontal)
             {
                 if (Position > dims.YMax || Position < dims.YMin)
                 {
@@ -263,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 return;
             }
 
-            if (IsHorizontal)
+            if (_isHorizontal)
             {
                 if (coordinateY < DragLimitMin)
                 {
@@ -304,7 +304,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="snapY">snap distance (pixels)</param>
         /// <returns></returns>
         public bool IsUnderMouse(double coordinateX, double coordinateY, double snapX, double snapY) =>
-            IsHorizontal ?
+            _isHorizontal ?
             Math.Abs(Position - coordinateY) <= snapY :
             Math.Abs(Position - coordinateX) <= snapX;
 
@@ -318,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 lineWidth = LineWidth,
                 markerShape = MarkerShape.None
             };
-            return new LegendItem[] { singleItem };
+            return new[] { singleItem };
         }
     }
 }

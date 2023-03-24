@@ -58,7 +58,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             subplots = new Plot[subplotCount];
             for (int i = 0; i < subplotCount; i++)
+            {
                 subplots[i] = new Plot(subplotWidth, subplotHeight);
+            }
         }
 
         private void Render()

@@ -53,10 +53,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 }
 
                 for (int i = 1; i < value.Length; i++)
+                {
                     if (value[i].CompareTo(value[i - 1]) < 0)
                     {
                         throw new ArgumentException("Xs must only contain ascending values");
                     }
+                }
 
                 _Xs = value;
             }

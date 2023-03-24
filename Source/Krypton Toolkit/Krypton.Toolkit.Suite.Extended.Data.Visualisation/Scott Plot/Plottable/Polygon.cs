@@ -117,7 +117,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             PointF[] points = new PointF[Xs.Length];
             for (int i = 0; i < Xs.Length; i++)
+            {
                 points[i] = new PointF(dims.GetPixelX(Xs[i]), dims.GetPixelY(Ys[i]));
+            }
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
             {

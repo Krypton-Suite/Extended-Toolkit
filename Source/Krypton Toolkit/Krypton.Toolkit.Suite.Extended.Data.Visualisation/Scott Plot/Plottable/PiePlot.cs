@@ -200,6 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                                                 bool useCustomLabelColors = SliceLabelColors is not null && SliceLabelColors.Length == Values.Length;
 
                                                 for (int i = 0; i < Values.Length; i++)
+                                                {
                                                     if (!string.IsNullOrWhiteSpace(labelStrings[i]))
                                                     {
                                                         if (useCustomLabelColors)
@@ -209,6 +210,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                                                         gfx.DrawString(labelStrings[i], sliceFont, sliceFontBrush, (float)labelXs[i], (float)labelYs[i], sfCenter);
                                                     }
+                                                }
 
                                                 if (OutlineSize > 0)
                                                 {

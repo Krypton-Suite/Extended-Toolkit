@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 label = Label
             };
-            return new LegendItem[] { item };
+            return new[] { item };
         }
 
         public void ValidateData(bool deep = false)

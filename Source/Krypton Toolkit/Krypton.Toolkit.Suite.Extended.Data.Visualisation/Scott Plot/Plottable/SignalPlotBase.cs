@@ -544,7 +544,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             for (int i = 0; i < linePoints.Length; i++)
+            {
                 linePoints[i].X += dims.DataOffsetX;
+            }
 
             if (linePoints.Length > 0)
             {

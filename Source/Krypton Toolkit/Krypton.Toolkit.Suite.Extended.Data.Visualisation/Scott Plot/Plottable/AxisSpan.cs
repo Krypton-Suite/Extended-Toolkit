@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         protected double Position2;
         private double Min => Math.Min(Position1, Position2);
         private double Max => Math.Max(Position1, Position2);
-        readonly bool IsHorizontal;
+        readonly bool _isHorizontal;
 
         /// <summary>
         /// If true, AxisAuto() will ignore the position of this span when determining axis limits
@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public bool DragFixedSize { get; set; }
         public double DragLimitMin = double.NegativeInfinity;
         public double DragLimitMax = double.PositiveInfinity;
-        public Cursor DragCursor => IsHorizontal ? Cursor.WE : Cursor.NS;
+        public Cursor DragCursor => _isHorizontal ? Cursor.WE : Cursor.NS;
 
         /// <summary>
         /// This event is invoked after the line is dragged 
@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public AxisSpan(bool isHorizontal)
         {
-            IsHorizontal = isHorizontal;
+            _isHorizontal = isHorizontal;
         }
 
         public void ValidateData(bool deep = false)
@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 markerSize = 0,
                 lineWidth = 10
             };
-            return new LegendItem[] { singleItem };
+            return new[] { singleItem };
         }
 
         public AxisLimits GetAxisLimits()
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 return new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
             }
 
-            if (IsHorizontal)
+            if (_isHorizontal)
             {
                 return new AxisLimits(Min, Max, double.NaN, double.NaN);
             }
@@ -130,7 +130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         }
 
         private enum Edge { Edge1, Edge2, Neither };
-        Edge edgeUnderMouse = Edge.Neither;
+        Edge _edgeUnderMouse = Edge.Neither;
 
         /// <summary>
         /// Return True if either span edge is within a certain number of pixels (snap) to the mouse
@@ -142,38 +142,38 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <returns></returns>
         public bool IsUnderMouse(double coordinateX, double coordinateY, double snapX, double snapY)
         {
-            if (IsHorizontal)
+            if (_isHorizontal)
             {
                 if (Math.Abs(Position1 - coordinateX) <= snapX)
                 {
-                    edgeUnderMouse = Edge.Edge1;
+                    _edgeUnderMouse = Edge.Edge1;
                 }
                 else if (Math.Abs(Position2 - coordinateX) <= snapX)
                 {
-                    edgeUnderMouse = Edge.Edge2;
+                    _edgeUnderMouse = Edge.Edge2;
                 }
                 else
                 {
-                    edgeUnderMouse = Edge.Neither;
+                    _edgeUnderMouse = Edge.Neither;
                 }
             }
             else
             {
                 if (Math.Abs(Position1 - coordinateY) <= snapY)
                 {
-                    edgeUnderMouse = Edge.Edge1;
+                    _edgeUnderMouse = Edge.Edge1;
                 }
                 else if (Math.Abs(Position2 - coordinateY) <= snapY)
                 {
-                    edgeUnderMouse = Edge.Edge2;
+                    _edgeUnderMouse = Edge.Edge2;
                 }
                 else
                 {
-                    edgeUnderMouse = Edge.Neither;
+                    _edgeUnderMouse = Edge.Neither;
                 }
             }
 
-            return edgeUnderMouse != Edge.Neither;
+            return _edgeUnderMouse != Edge.Neither;
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 return;
             }
 
-            if (IsHorizontal)
+            if (_isHorizontal)
             {
                 coordinateX = Math.Max(coordinateX, DragLimitMin);
                 coordinateX = Math.Min(coordinateX, DragLimitMax);
@@ -201,17 +201,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             double sizeBeforeDrag = Position2 - Position1;
-            if (edgeUnderMouse == Edge.Edge1)
+            if (_edgeUnderMouse == Edge.Edge1)
             {
-                Position1 = IsHorizontal ? coordinateX : coordinateY;
+                Position1 = _isHorizontal ? coordinateX : coordinateY;
                 if (DragFixedSize || fixedSize)
                 {
                     Position2 = Position1 + sizeBeforeDrag;
                 }
             }
-            else if (edgeUnderMouse == Edge.Edge2)
+            else if (_edgeUnderMouse == Edge.Edge2)
             {
-                Position2 = IsHorizontal ? coordinateX : coordinateY;
+                Position2 = _isHorizontal ? coordinateX : coordinateY;
                 if (DragFixedSize || fixedSize)
                 {
                     Position1 = Position2 - sizeBeforeDrag;
@@ -245,10 +245,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             float ClippedPixelX(double x) => dims.GetPixelX(Math.Max(dims.XMin, Math.Min(x, dims.XMax)));
             float ClippedPixelY(double y) => dims.GetPixelY(Math.Max(dims.YMin, Math.Min(y, dims.YMax)));
 
-            float left = IsHorizontal ? ClippedPixelX(Min) : dims.DataOffsetX;
-            float right = IsHorizontal ? ClippedPixelX(Max) : dims.DataOffsetX + dims.DataWidth;
-            float top = IsHorizontal ? dims.DataOffsetY : ClippedPixelY(Max);
-            float bottom = IsHorizontal ? dims.DataOffsetY + dims.DataHeight : ClippedPixelY(Min);
+            float left = _isHorizontal ? ClippedPixelX(Min) : dims.DataOffsetX;
+            float right = _isHorizontal ? ClippedPixelX(Max) : dims.DataOffsetX + dims.DataWidth;
+            float top = _isHorizontal ? dims.DataOffsetY : ClippedPixelY(Max);
+            float bottom = _isHorizontal ? dims.DataOffsetY + dims.DataHeight : ClippedPixelY(Min);
 
             float width = right - left + 1;
             float height = bottom - top + 1;

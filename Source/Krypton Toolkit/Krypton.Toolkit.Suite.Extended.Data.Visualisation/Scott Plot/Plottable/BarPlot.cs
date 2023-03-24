@@ -204,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 borderColor = BorderColor,
                 borderWith = BorderLineWidth
             };
-            return new LegendItem[] { singleItem };
+            return new[] { singleItem };
         }
 
         public void ValidateData(bool deep = false)

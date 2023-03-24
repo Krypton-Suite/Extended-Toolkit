@@ -1020,7 +1020,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public PopulationPlot PlotPopulations(PopulationMultiSeries multiSeries)
         {
             for (int i = 0; i < multiSeries.multiSeries.Length; i++)
+            {
                 multiSeries.multiSeries[i].color = settings.PlottablePalette.GetColor(i);
+            }
 
             var plottable = new PopulationPlot(multiSeries);
             Add(plottable);

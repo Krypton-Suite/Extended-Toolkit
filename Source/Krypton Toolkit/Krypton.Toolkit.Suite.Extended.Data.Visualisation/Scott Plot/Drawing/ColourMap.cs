@@ -141,7 +141,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             ColorPalette pal = bmp.Palette;
             for (int i = 0; i < 256; i++)
+            {
                 pal.Entries[i] = GetColor((byte)i);
+            }
+
             bmp.Palette = pal;
         }
 

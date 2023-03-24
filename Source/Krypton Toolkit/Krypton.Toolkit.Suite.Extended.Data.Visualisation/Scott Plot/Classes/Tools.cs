@@ -81,7 +81,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             StringBuilder hashString = new StringBuilder();
             byte[] hashBytes = md5.ComputeHash(bmpBytes);
             for (int i = 0; i < hashBytes.Length; i++)
+            {
                 hashString.Append(hashBytes[i].ToString("X2"));
+            }
+
             return hashString.ToString();
         }
 
@@ -158,7 +161,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] positions = new double[dateTimeArray.Length];
             for (int i = 0; i < positions.Length; i++)
+            {
                 positions[i] = dateTimeArray[i].ToOADate();
+            }
+
             return positions;
         }
 
@@ -166,7 +172,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] dataOut = new double[dataIn.Length];
             for (int i = 0; i < dataIn.Length; i++)
+            {
                 dataOut[i] = Convert.ToDouble(dataIn[i]);
+            }
+
             return dataOut;
         }
 
@@ -189,17 +198,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double baselineSum = 0;
             for (int i = index1; i < index2; i++)
+            {
                 baselineSum += data[i];
+            }
+
             double baselineAverage = baselineSum / (index2 - index1);
             for (int i = 0; i < data.Length; i++)
+            {
                 data[i] -= baselineAverage;
+            }
         }
 
         public static double[] Log10(double[] dataIn)
         {
             double[] dataOut = new double[dataIn.Length];
             for (int i = 0; i < dataOut.Length; i++)
+            {
                 dataOut[i] = dataIn[i] > 0 ? Math.Log10(dataIn[i]) : 0;
+            }
+
             return dataOut;
         }
 
@@ -253,7 +270,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] rounded = new double[data.Length];
             for (int i = 0; i < data.Length; i++)
+            {
                 rounded[i] = Math.Round(data[i], decimals);
+            }
+
             return rounded;
         }
 

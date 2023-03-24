@@ -95,7 +95,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double sum = 0;
             for (int i = 0; i < values.Length; i++)
+            {
                 sum += values[i];
+            }
+
             double mean = sum / values.Length;
             return mean;
         }
@@ -344,7 +347,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             for (int i = 0; i < ys.Length; i++)
+            {
                 ys[i] /= sum;
+            }
+
             return ys;
         }
 
@@ -415,7 +421,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double binWidth = (max - min) / binCount;
             double[] binEdges = new double[binCount + 1];
             for (int i = 0; i < binEdges.Length; i++)
+            {
                 binEdges[i] = min + binWidth * i;
+            }
 
             // place values in histogram
             double[] hist = new double[binCount];
@@ -442,7 +450,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 double binScale = hist.Sum() * binWidth;
                 for (int i = 0; i < hist.Length; i++)
+                {
                     hist[i] /= binScale;
+                }
             }
 
             return (hist, binEdges);

@@ -112,7 +112,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] closingPrices = new double[ohlcs.Length];
             for (int i = 0; i < ohlcs.Length; i++)
+            {
                 closingPrices[i] = ohlcs[i].Close;
+            }
+
             return SMA(closingPrices, N);
         }
 
@@ -150,7 +153,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] closingPrices = new double[ohlcs.Length];
             for (int i = 0; i < ohlcs.Length; i++)
+            {
                 closingPrices[i] = ohlcs[i].Close;
+            }
+
             var (sma, lower, upper) = Bollinger(closingPrices, N, sdCoeff);
 
             // skip the first points which all contain NaN

@@ -63,10 +63,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             for (int i = 0; i < values.Length; i++)
+            {
                 if (double.IsNaN(values[i]) || double.IsInfinity(values[i]))
                 {
                     throw new InvalidOperationException($"{label} index {i} is invalid ({values[i]})");
                 }
+            }
         }
 
         /// <summary>
@@ -101,10 +103,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             for (int i = 0; i < values.Length - 1; i++)
+            {
                 if (values[i] >= values[i + 1])
                 {
                     throw new InvalidOperationException($"{label} must be ascending values (index {i} >= {i + 1}");
                 }
+            }
         }
 
         /// <summary>
@@ -120,10 +124,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             for (int i = 0; i < values.Length - 1; i++)
+            {
                 if (Convert.ToDouble(values[i]) >= Convert.ToDouble(values[i + 1]))
                 {
                     throw new InvalidOperationException($"{label} must be ascending values (index {i} >= {i + 1}");
                 }
+            }
         }
 
         /// <summary>

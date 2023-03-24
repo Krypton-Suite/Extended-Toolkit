@@ -32,15 +32,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     /// </summary>
     public class DataSet
     {
-        public string label;
-        public double[] values;
-        public double[] errors;
+        public string _label;
+        public double[] _values;
+        public double[]? _errors;
 
-        public DataSet(string label, double[] values, double[] errors = null)
+        public DataSet(string label, double[] values, double[]? errors = null)
         {
-            this.values = values;
-            this.label = label;
-            this.errors = errors;
+            _values = values;
+            _label = label;
+            _errors = errors;
 
             if (errors != null && errors.Length != values.Length)
             {

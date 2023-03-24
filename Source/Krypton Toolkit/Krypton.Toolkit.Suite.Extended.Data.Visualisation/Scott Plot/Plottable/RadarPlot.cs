@@ -193,13 +193,21 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 max = input[0, 0];
                 for (int i = 0; i < input.GetLength(0); i++)
+                {
                     for (int j = 0; j < input.GetLength(1); j++)
+                    {
                         max = Math.Max(max, input[i, j]);
+                    }
+                }
             }
 
             for (int i = 0; i < input.GetLength(0); i++)
+            {
                 for (int j = 0; j < input.GetLength(1); j++)
+                {
                     input[i, j] /= max;
+                }
+            }
 
             return max;
         }
@@ -303,9 +311,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                                         {
                                             PointF[] points = new PointF[numCategories];
                                             for (int j = 0; j < numCategories; j++)
+                                            {
                                                 points[j] = new PointF(
                                                     (float)(Norm[i, j] * Math.Cos(sweepAngle * j - Math.PI / 2) * minScale + origin.X),
                                                     (float)(Norm[i, j] * Math.Sin(sweepAngle * j - Math.PI / 2) * minScale + origin.Y));
+                                            }
 
                                             ((SolidBrush)brush).Color = FillColors[i];
                                             pen.Color = LineColors[i];

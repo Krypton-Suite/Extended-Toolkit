@@ -40,7 +40,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] ys = new double[pointCount];
             for (int i = 0; i < ys.Length; i++)
+            {
                 ys[i] = i * spacing + offset;
+            }
+
             return ys;
         }
 
@@ -54,7 +57,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] ys = new double[xs.Length];
             for (int i = 0; i < xs.Length; i++)
+            {
                 ys[i] = Math.Sin(xs[i]) * mult;
+            }
+
             return ys;
         }
 
@@ -72,7 +78,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double sinScale = 2 * Math.PI * oscillations / (pointCount - 1);
             double[] ys = new double[pointCount];
             for (int i = 0; i < ys.Length; i++)
+            {
                 ys[i] = Math.Sin(i * sinScale + phase * Math.PI * 2) * mult + offset;
+            }
+
             return ys;
         }
 
@@ -105,7 +114,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] ys = new double[xs.Length];
             for (int i = 0; i < xs.Length; i++)
+            {
                 ys[i] = Math.Cos(xs[i]) * mult;
+            }
+
             return ys;
         }
 
@@ -123,7 +135,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double sinScale = 2 * Math.PI * oscillations / (pointCount - 1);
             double[] ys = new double[pointCount];
             for (int i = 0; i < ys.Length; i++)
+            {
                 ys[i] = Math.Cos(i * sinScale + phase * Math.PI * 2) * mult + offset;
+            }
+
             return ys;
         }
 
@@ -137,7 +152,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] ys = new double[xs.Length];
             for (int i = 0; i < xs.Length; i++)
+            {
                 ys[i] = Math.Tan(xs[i]) * mult;
+            }
+
             return ys;
         }
 
@@ -158,7 +176,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             double[] ys = new double[pointCount];
             for (int i = 0; i < pointCount; i++)
+            {
                 ys[i] = rand.NextDouble() * multiplier + offset;
+            }
+
             return ys;
         }
 
@@ -181,8 +202,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double[,] data = new double[rows, columns];
 
             for (int y = 0; y < data.GetLength(0); y++)
+            {
                 for (int x = 0; x < data.GetLength(1); x++)
+                {
                     data[y, x] = rand.NextDouble() * multiplier + offset;
+                }
+            }
 
             return data;
         }
@@ -204,7 +229,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             int[] ys = new int[pointCount];
             for (int i = 0; i < pointCount; i++)
+            {
                 ys[i] = (int)(rand.NextDouble() * multiplier + offset);
+            }
+
             return ys;
         }
 
@@ -260,7 +288,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             double[] values = new double[pointCount];
             for (int i = 0; i < values.Length; i++)
+            {
                 values[i] = RandomNormalValue(rand, mean, stdDev, maxSdMultiple);
+            }
 
             return values;
         }
@@ -283,7 +313,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             double[] data = new double[pointCount];
             for (int i = 0; i < data.Length; i++)
+            {
                 data[i] = slope * i + offset + RandomNormalValue(rand, 0, noise);
+            }
 
             return data;
         }
@@ -306,7 +338,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             double[] values = Sin(pointCount, oscillations);
             for (int i = 0; i < values.Length; i++)
+            {
                 values[i] += (rand.NextDouble() - .5) * noiseLevel * mult;
+            }
+
             return values;
         }
 
@@ -358,7 +393,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             var data = new double[pointCount];
             data[0] = offset;
             for (int i = 1; i < data.Length; i++)
+            {
                 data[i] = data[i - 1] + (rand.NextDouble() * 2 - 1) * mult;
+            }
+
             return data;
         }
 
@@ -553,7 +591,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double[] values = new double[valueCount];
 
             for (int i = 0; i < valueCount; i++)
+            {
                 values[i] = start + i * stepSize;
+            }
 
             return values;
         }
@@ -578,7 +618,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] values = new double[pointCount];
             for (int i = 0; i < pointCount; i++)
+            {
                 values[i] = 1;
+            }
+
             return values;
         }
 
@@ -599,8 +642,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             byte[] bytes = new byte[bmpData.Stride * height];
             for (int y = 0; y < height; y++)
+            {
                 for (int x = 0; x < width; x++)
+                {
                     bytes[y * bmpData.Stride + x] = (byte)data[y, x];
+                }
+            }
 
             Marshal.Copy(bytes, 0, bmpData.Scan0, bytes.Length);
             bmp.UnlockBits(bmpData);
@@ -849,7 +896,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double[] waveform = new double[raw.Length + 1];
             waveform[0] = firstValue;
             for (int i = 0; i < raw.Length; i++)
+            {
                 waveform[i + 1] = waveform[i] + raw[i] / rawScale;
+            }
 
             return waveform;
         }

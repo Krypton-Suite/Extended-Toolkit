@@ -349,7 +349,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                         if ((MarkerSize > 0) && (MarkerShape != MarkerShape.None))
                         {
                             for (int i = 0; i < points.Length; i++)
+                            {
                                 MarkerTools.DrawMarker(gfx, points[i], MarkerShape, MarkerSize, Color);
+                            }
                         }
                     }
                 }
