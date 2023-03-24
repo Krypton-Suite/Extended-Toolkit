@@ -118,9 +118,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     upperArrowVertex,
                 };
 
-                byte[] pathPointTypes = Enumerable.Range(0, points.Length).Select(_ => (byte)System.Drawing.Drawing2D.PathPointType.Line).ToArray();
+                byte[] pathPointTypes = Enumerable.Range(0, points.Length).Select(_ => (byte)PathPointType.Line).ToArray();
 
-                var path = new System.Drawing.Drawing2D.GraphicsPath(points, pathPointTypes);
+                var path = new GraphicsPath(points, pathPointTypes);
 
                 gfx.FillPath(fillBrush, path);
                 gfx.DrawPath(pen, path);

@@ -152,29 +152,16 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get Node parent
         /// </summary>
-        new public TreeNodeItemSelector? Parent
+        public new TreeNodeItemSelector? Parent
         {
-            get
-            {
-                if (_parent is TreeNodeItemSelector)
-                {
-                    return _parent;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            set
-            {
-                _parent = value;
-            }
+            get => _parent;
+            set => _parent = value;
         }
 
         /// <summary>
         /// Node is Checked
         /// </summary>
-        new public bool Checked
+        public new bool Checked
         {
             get
             {

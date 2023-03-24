@@ -471,7 +471,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
             // set the address field to a share name for the current computer
 
-            ktxtShareAddress.Text = "\\\\" + SystemInformation.ComputerName + "\\C$";
+            ktxtShareAddress.Text = $"\\\\{SystemInformation.ComputerName}\\C$";
         }
 
         private void kbtnMapDrive_Click(object sender, EventArgs e)
@@ -511,7 +511,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             {
                 UpdateStatus($"Cannot map drive! - { exc.Message }");
 
-                InternalKryptonMessageBoxExtended.Show(this, "Cannot map drive!\nError: " + exc.Message);
+                InternalKryptonMessageBoxExtended.Show(this, $"Cannot map drive!\nError: {exc.Message}");
             }
 
             _networkDrives = null;
@@ -536,9 +536,9 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             catch (Exception err)
             {
                 //report error
-                UpdateStatus("Cannot disconnect drive! - " + err.Message);
+                UpdateStatus($"Cannot disconnect drive! - {err.Message}");
 
-                InternalKryptonMessageBoxExtended.Show(this, "Cannot disconnect drive!\nError: " + err.Message);
+                InternalKryptonMessageBoxExtended.Show(this, $"Cannot disconnect drive!\nError: {err.Message}");
             }
 
             _networkDrives = null;

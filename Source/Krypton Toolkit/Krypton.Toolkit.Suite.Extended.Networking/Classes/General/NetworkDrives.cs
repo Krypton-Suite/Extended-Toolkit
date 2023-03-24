@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             {
                 if (value.Length >= 1)
                 {
-                    ls_Drive = value.Substring(0, 1) + ":";
+                    ls_Drive = $"{value.Substring(0, 1)}:";
                 }
                 else
                 {

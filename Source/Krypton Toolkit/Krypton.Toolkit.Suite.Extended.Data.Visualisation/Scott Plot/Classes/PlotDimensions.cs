@@ -83,8 +83,6 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         }
 
         public override string ToString() =>
-            $"Dimensions for figure ({Width}x{Height}), " +
-            $"data area ({DataWidth}x{DataHeight}), " +
-            $"and axes ({XMin}, {XMax}, {YMin}, {YMax})";
+            $"Dimensions for figure ({Width}x{Height}), data area ({DataWidth}x{DataHeight}), and axes ({XMin}, {XMax}, {YMin}, {YMax})";
     }
 }

@@ -365,7 +365,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
             else
             {
-                InternalKryptonMessageBoxExtended.Show(this, "Error \"" + _computerEnum.LastError + "\"was returned", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                InternalKryptonMessageBoxExtended.Show(this, $"Error \"{_computerEnum.LastError}\"was returned", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             Cursor.Current = Cursors.Default;

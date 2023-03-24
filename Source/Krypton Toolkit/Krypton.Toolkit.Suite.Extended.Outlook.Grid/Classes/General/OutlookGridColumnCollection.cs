@@ -225,9 +225,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             for (int i = 0; i < Count; i++)
             {
-                Console.WriteLine(this[i].Name + " , GroupIndex=" + this[i].GroupIndex + ", SortIndex=" + this[i].SortIndex);
+                Console.WriteLine($"{this[i].Name} , GroupIndex={this[i].GroupIndex}, SortIndex={this[i].SortIndex}");
             }
-            Console.WriteLine("MaxGroupIndex=" + _maxGroupIndex + ", MaxSortIndex=" + _maxSortIndex);
+            Console.WriteLine($"MaxGroupIndex={_maxGroupIndex}, MaxSortIndex={_maxSortIndex}");
         }
     }
 }

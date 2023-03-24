@@ -385,7 +385,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             void Execute(string command)
             {
                 // create a temp file with .ps1 extension  
-                var cFile = Path.GetTempPath() + Guid.NewGuid() + ".ps1";
+                var cFile = $"{Path.GetTempPath()}{Guid.NewGuid()}.ps1";
 
                 //Write the .ps1  
                 using var tw = new StreamWriter(cFile, false, Encoding.UTF8);

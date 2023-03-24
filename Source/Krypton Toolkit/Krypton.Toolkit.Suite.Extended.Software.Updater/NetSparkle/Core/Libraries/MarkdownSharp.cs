@@ -264,8 +264,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 string hash = GetHashKey(key, isHtmlBlock: false);
                 _escapeTable.Add(key, hash);
                 _invertedEscapeTable.Add(hash, key);
-                _backslashEscapeTable.Add(@"\" + key, hash);
-                backslashPattern += Regex.Escape(@"\" + key) + "|";
+                _backslashEscapeTable.Add($@"\{key}", hash);
+                backslashPattern += $"{Regex.Escape($@"\{key}")}|";
             }
 
             _backslashEscapes = new Regex(backslashPattern.Substring(0, backslashPattern.Length - 1), RegexOptions.Compiled);
@@ -305,7 +305,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
             Cleanup();
 
-            return text + "\n";
+            return $"{text}\n";
         }
 
 
@@ -403,7 +403,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 else
                 {
                     // do span level processing inside the block, then wrap result in <p> tags
-                    grafs[i] = _leadingWhitespace.Replace(RunSpanGamut(grafs[i]), "<p>") + "</p>";
+                    grafs[i] = $"{_leadingWhitespace.Replace(RunSpanGamut(grafs[i]), "<p>")}</p>";
                 }
             }
 
@@ -566,24 +566,22 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             )?﻿  
             ";
 
-            string content = RepeatString(@"
+            string content = $"{RepeatString($@"
                 (?>
                   [^<]+﻿  ﻿  ﻿          # content without tag
                 |
                   <\2﻿  ﻿  ﻿          # nested opening tag
-                    " + attr + @"       # attributes
+                    {attr}       # attributes
                   (?>
                       />
                   |
-                      >", _nestDepth) +   // end of opening tag
-                      ".*?" +             // last level nested tag content
-            RepeatString(@"
+                      >", _nestDepth)}.*?{RepeatString(@"
                       </\2\s*>﻿          # closing nested tag
                   )
                   |﻿  ﻿  ﻿  ﻿  
                   <(?!/\2\s*>           # other tags with a different name
                   )
-                )*", _nestDepth);
+                )*", _nestDepth)}";
 
             string content2 = content.Replace(@"\2", @"\3");
 
@@ -684,21 +682,19 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             string key = GetHashKey(text, isHtmlBlock: true);
             _htmlBlocks[key] = text;
 
-            return string.Concat("\n\n", key, "\n\n");
+            return $"\n\n{key}\n\n";
         }
 
         private static string GetHashKey(string? s, bool isHtmlBlock)
         {
             var delim = isHtmlBlock ? 'H' : 'E';
-            return "\x1A" + delim + Math.Abs(s.GetHashCode()).ToString() + delim;
+            return $"\u001a{delim}{Math.Abs(s.GetHashCode())}{delim}";
         }
 
-        private static Regex _htmlTokens = new Regex(@"
+        private static Regex _htmlTokens = new Regex($@"
             (<!--(?:|(?:[^>-]|-[^>])(?:[^-]|-[^-])*)-->)|        # match <!-- foo -->
-            (<\?.*?\?>)|                 # match <?foo?> " +
-            RepeatString(@"
-            (<[A-Za-z\/!$](?:[^<>]|", _nestDepth) + RepeatString(@")*>)", _nestDepth) +
-                                       " # match <tag> and </tag>",
+            (<\?.*?\?>)|                 # match <?foo?> {RepeatString(@"
+            (<[A-Za-z\/!$](?:[^<>]|", _nestDepth)}{RepeatString(@")*>)", _nestDepth)} # match <tag> and </tag>",
             RegexOptions.Multiline | RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
         /// <summary>
@@ -826,16 +822,16 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
                 url = EncodeProblemUrlChars(url);
                 url = EscapeBoldItalic(url);
-                result = "<a href=\"" + url + "\"";
+                result = $"<a href=\"{url}\"";
 
                 if (_titles.ContainsKey(linkID))
                 {
                     string? title = AttributeEncode(_titles[linkID]);
                     title = AttributeEncode(EscapeBoldItalic(title));
-                    result += " title=\"" + title + "\"";
+                    result += $" title=\"{title}\"";
                 }
 
-                result += ">" + linkText + "</a>";
+                result += $">{linkText}</a>";
             }
             else
             {
@@ -859,16 +855,16 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
                 url = EncodeProblemUrlChars(url);
                 url = EscapeBoldItalic(url);
-                result = "<a href=\"" + url + "\"";
+                result = $"<a href=\"{url}\"";
 
                 if (_titles.ContainsKey(linkID))
                 {
                     string? title = AttributeEncode(_titles[linkID]);
                     title = EscapeBoldItalic(title);
-                    result += " title=\"" + title + "\"";
+                    result += $" title=\"{title}\"";
                 }
 
-                result += ">" + linkText + "</a>";
+                result += $">{linkText}</a>";
             }
             else
             {
@@ -1108,7 +1104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </remarks>
         private string? DoHorizontalRules(string? text)
         {
-            return _horizontalRules.Replace(text, "<hr" + _emptyElementSuffix + "\n");
+            return _horizontalRules.Replace(text, $"<hr{_emptyElementSuffix}\n");
         }
 
         private static string _wholeList = string.Format(@"
@@ -1131,10 +1127,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
               )
             )", string.Format("(?:{0}|{1})", _markerUL, _markerOL), _tabWidth - 1);
 
-        private static Regex _listNested = new Regex(@"^" + _wholeList,
+        private static Regex _listNested = new Regex($@"^{_wholeList}",
             RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
-        private static Regex _listTopLevel = new Regex(@"(?:(?<=\n\n)|\A\n?)" + _wholeList,
+        private static Regex _listTopLevel = new Regex($@"(?:(?<=\n\n)|\A\n?){_wholeList}",
             RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
         /// <summary>
@@ -1220,7 +1216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 if (containsDoubleNewline || lastItemHadADoubleNewline)
                     // we could correct any bad indentation here..
                 {
-                    item = RunBlockGamut(Outdent(item) + "\n", unhash: false);
+                    item = RunBlockGamut($"{Outdent(item)}\n", unhash: false);
                 }
                 else
                 {
@@ -1266,7 +1262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             codeBlock = EncodeCode(Outdent(codeBlock));
             codeBlock = _newlinesLeadingTrailing.Replace(codeBlock, "");
 
-            return string.Concat("\n\n<pre><code>", codeBlock, "\n</code></pre>\n\n");
+            return $"\n\n<pre><code>{codeBlock}\n</code></pre>\n\n";
         }
 
         private static Regex _codeSpan = new Regex(@"
@@ -1315,7 +1311,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             span = EncodeCode(span);
             span = SaveFromAutoLinking(span); // to prevent auto-linking. Not necessary in code *blocks*, but in code spans.
 
-            return string.Concat("<code>", span, "</code>");
+            return $"<code>{span}</code>";
         }
 
 
@@ -1401,7 +1397,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             string key = GetHashKey(bq, isHtmlBlock: true);
             _htmlBlocks[key] = bq;
 
-            return "\n\n" + key + "\n\n";
+            return $"\n\n{key}\n\n";
         }
 
         private string BlockQuoteEvaluator2(Match match)
@@ -1428,7 +1424,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             var link = match.Groups[3].Value;
             if (!link.EndsWith(")"))
             {
-                return "<" + protocol + link + ">";
+                return $"<{protocol}{link}>";
             }
 
             var level = 0;
@@ -1453,9 +1449,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             var tail = "";
             if (level < 0)
             {
-                link = Regex.Replace(link, @"\){1," + (-level) + "}$", m => { tail = m.Value; return ""; });
+                link = Regex.Replace(link, $@"\){{1,{(-level)}}}$", m => { tail = m.Value; return ""; });
             }
-            return "<" + protocol + link + ">" + tail;
+            return $"<{protocol}{link}>{tail}";
         }
 
         /// <summary>
@@ -1520,7 +1516,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             //    Based by a filter by Matthew Wickline, posted to the BBEdit-Talk
             //    mailing list: <http://tinyurl.com/yu7ue>
             //
-            email = "mailto:" + email;
+            email = $"mailto:{email}";
 
             // leave ':' alone (to spot mailto: later)
             email = EncodeEmailAddress(email);
@@ -1533,7 +1529,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         }
 
 
-        private static Regex _outDent = new Regex(@"^[ ]{1," + _tabWidth + @"}", RegexOptions.Multiline | RegexOptions.Compiled);
+        private static Regex _outDent = new Regex($@"^[ ]{{1,{_tabWidth}}}", RegexOptions.Multiline | RegexOptions.Compiled);
 
         /// <summary>
         /// Remove one level of line-leading spaces
@@ -1691,7 +1687,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
                 if (encode)
                 {
-                    sb.Append("%" + String.Format("{0:x}", (byte)c));
+                    sb.Append($"%{String.Format("{0:x}", (byte) c)}");
                 }
                 else
                 {

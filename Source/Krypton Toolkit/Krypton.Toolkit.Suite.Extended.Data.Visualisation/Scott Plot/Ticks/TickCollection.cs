@@ -191,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 // widen largest string based on the longest month name
                 foreach (string s in new DateTimeFormatInfo().MonthGenitiveNames)
                 {
-                    string s2 = s + "\n" + "1985";
+                    string s2 = $"{s}\n1985";
                     if (s2.Length > largestString.Length)
                     {
                         largestString = s2;
@@ -474,7 +474,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                 if (offset != 0)
                 {
-                    cornerLabel += " +" + FormatLocal(offset, culture);
+                    cornerLabel += $" +{FormatLocal(offset, culture)}";
                 }
 
                 cornerLabel = cornerLabel.Replace("+-", "-");

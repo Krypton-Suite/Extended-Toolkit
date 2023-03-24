@@ -846,9 +846,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             _globalBooleanSettingsManager.SetAutomaticallyUpdateColours(true);
 
-            _globalStringSettingsManager.SetPaletteExportPath(Environment.SpecialFolder.MyDocuments + "\\Krypton Palettes");
+            _globalStringSettingsManager.SetPaletteExportPath(
+                $"{Environment.SpecialFolder.MyDocuments}\\Krypton Palettes");
 
-            kmtxtFilePath.Text = Environment.SpecialFolder.MyDocuments + "\\Krypton Palettes";
+            kmtxtFilePath.Text = $"{Environment.SpecialFolder.MyDocuments}\\Krypton Palettes";
         }
 
         private void UpdateValues_Tick(object sender, EventArgs e)

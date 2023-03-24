@@ -77,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static string BitmapHash(Bitmap bmp)
         {
             byte[] bmpBytes = BitmapToBytes(bmp);
-            var md5 = System.Security.Cryptography.MD5.Create();
+            var md5 = MD5.Create();
             StringBuilder hashString = new StringBuilder();
             byte[] hashBytes = md5.ComputeHash(bmpBytes);
             for (int i = 0; i < hashBytes.Length; i++)
@@ -133,19 +133,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             if (preceedWithPlus && !output.StartsWith("-"))
             {
-                output = "+" + output;
+                output = $"+{output}";
             }
 
             return output;
         }
 
-        public static void DesignerModeDemoPlot(ScottPlot.Plot plt)
+        public static void DesignerModeDemoPlot(Plot plt)
         {
             int pointCount = 101;
             double pointSpacing = .01;
-            double[] dataXs = ScottPlot.DataGen.Consecutive(pointCount, pointSpacing);
-            double[] dataSin = ScottPlot.DataGen.Sin(pointCount);
-            double[] dataCos = ScottPlot.DataGen.Cos(pointCount);
+            double[] dataXs = DataGen.Consecutive(pointCount, pointSpacing);
+            double[] dataSin = DataGen.Sin(pointCount);
+            double[] dataCos = DataGen.Cos(pointCount);
 
             plt.AddScatter(dataXs, dataSin);
             plt.AddScatter(dataXs, dataCos);
@@ -300,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             if (details)
             {
-                name += $" ({System.Environment.OSVersion})";
+                name += $" ({Environment.OSVersion})";
             }
 
             return name;
@@ -436,7 +436,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             if (number < 0)
             {
-                return "-" + ToDifferentBase(Math.Abs(number), radix, decimalPlaces, padInteger, dropTrailingZeroes, decimalSymbol);
+                return
+                    $"-{ToDifferentBase(Math.Abs(number), radix, decimalPlaces, padInteger, dropTrailingZeroes, decimalSymbol)}";
             }
             else if (number == 0)
             {
@@ -465,7 +466,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 if (number == radix && padInteger == 0)
                 {
-                    output = "10" + output;
+                    output = $"10{output}";
                 }
                 else
                 {
@@ -476,7 +477,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             while (output.Length < padInteger)
             {
-                output = "0" + output;
+                output = $"0{output}";
             }
 
             if (decimalLength != 0)

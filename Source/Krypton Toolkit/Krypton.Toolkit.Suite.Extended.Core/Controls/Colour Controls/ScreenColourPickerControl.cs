@@ -436,7 +436,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 if (_eyedropperCursor == null)
                 {
                     // ReSharper disable AssignNullToNotNullAttribute
-                    _eyedropperCursor = new Cursor(this.GetType().Assembly.GetManifestResourceStream(string.Concat(this.GetType().Namespace, ".Resources.eyedropper.cur")));
+                    _eyedropperCursor = new Cursor(this.GetType().Assembly.GetManifestResourceStream(
+                        $"{this.GetType().Namespace}.Resources.eyedropper.cur"));
                 }
                 // ReSharper restore AssignNullToNotNullAttribute
 

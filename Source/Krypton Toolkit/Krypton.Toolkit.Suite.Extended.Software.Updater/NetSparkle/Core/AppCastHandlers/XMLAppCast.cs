@@ -106,7 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                     var signature = "";
                     try
                     {
-                        signature = _dataDownloader.DownloadAndGetAppCastData(_castUrl + ".signature");
+                        signature = _dataDownloader.DownloadAndGetAppCastData($"{_castUrl}.signature");
                     }
                     catch (Exception e)
                     {
@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                         // legacy: check for .dsa file
                         try
                         {
-                            signature = _dataDownloader.DownloadAndGetAppCastData(_castUrl + ".dsa");
+                            signature = _dataDownloader.DownloadAndGetAppCastData($"{_castUrl}.dsa");
                         }
                         catch (Exception e)
                         {

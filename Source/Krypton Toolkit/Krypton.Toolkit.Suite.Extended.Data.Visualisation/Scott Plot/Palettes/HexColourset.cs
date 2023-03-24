@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             string hexColor = hexColors[index];
             if (!hexColor.StartsWith("#"))
             {
-                hexColor = "#" + hexColor;
+                hexColor = $"#{hexColor}";
             }
 
             if (hexColor.Length != 7)

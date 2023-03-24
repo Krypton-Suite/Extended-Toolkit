@@ -668,7 +668,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                                     foreach (DataGridViewColumn col in listcol.OrderBy(x => x.DisplayIndex))
                                     {
-                                        Console.WriteLine(col.Name + @" " + col.DisplayIndex);
+                                        Console.WriteLine($@"{col.Name} {col.DisplayIndex}");
                                     }
 
                                     Console.WriteLine(@"-----------------");

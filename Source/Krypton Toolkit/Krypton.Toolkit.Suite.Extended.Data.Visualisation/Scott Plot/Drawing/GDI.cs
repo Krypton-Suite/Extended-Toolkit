@@ -29,11 +29,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public static class GDI
     {
-        private const float xMultiplierLinux = 1;
-        private const float yMultiplierLinux = 27.16f / 22;
+        private const float X_MULTIPLIER_LINUX = 1;
+        private const float Y_MULTIPLIER_LINUX = 27.16f / 22;
 
-        private const float xMultiplierMacOS = 82.82f / 72;
-        private const float yMultiplierMacOS = 27.16f / 20;
+        private const float X_MULTIPLIER_MACOS = 82.82f / 72;
+        private const float Y_MULTIPLIER_MACOS = 27.16f / 20;
 
         /// <summary>
         /// Return the display scale ratio being used.
@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             const int DEFAULT_DPI = 96;
             using Bitmap bmp = new(1, 1);
-            using Graphics gfx = GDI.Graphics(bmp);
+            using Graphics gfx = Graphics(bmp);
             return gfx.DpiX / DEFAULT_DPI;
         }
 
@@ -72,13 +72,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             // compensate for OS-specific differences in font scaling
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                size.Width *= xMultiplierLinux;
-                size.Height *= yMultiplierLinux;
+                size.Width *= X_MULTIPLIER_LINUX;
+                size.Height *= Y_MULTIPLIER_LINUX;
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                size.Width *= xMultiplierMacOS;
-                size.Height *= yMultiplierMacOS;
+                size.Width *= X_MULTIPLIER_MACOS;
+                size.Height *= Y_MULTIPLIER_MACOS;
             }
 
             // ensure the measured height is at least the font size
@@ -87,22 +87,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return size;
         }
 
-        public static System.Drawing.Color Mix(System.Drawing.Color colorA, System.Drawing.Color colorB, double fracA)
+        public static Color Mix(Color colorA, Color colorB, double fracA)
         {
             byte r = (byte)((colorA.R * (1 - fracA)) + colorB.R * fracA);
             byte g = (byte)((colorA.G * (1 - fracA)) + colorB.G * fracA);
             byte b = (byte)((colorA.B * (1 - fracA)) + colorB.B * fracA);
-            return System.Drawing.Color.FromArgb(r, g, b);
+            return Color.FromArgb(r, g, b);
         }
 
-        public static System.Drawing.Color Mix(string hexA, string hexB, double fracA)
+        public static Color Mix(string hexA, string hexB, double fracA)
         {
-            var colorA = System.Drawing.ColorTranslator.FromHtml(hexA);
-            var colorB = System.Drawing.ColorTranslator.FromHtml(hexB);
+            var colorA = ColorTranslator.FromHtml(hexA);
+            var colorB = ColorTranslator.FromHtml(hexB);
             return Mix(colorA, colorB, fracA);
         }
 
-        public static System.Drawing.Graphics Graphics(Bitmap bmp, bool lowQuality = false, double scale = 1.0)
+        public static Graphics Graphics(Bitmap bmp, bool lowQuality = false, double scale = 1.0)
         {
             Graphics gfx = System.Drawing.Graphics.FromImage(bmp);
             gfx.SmoothingMode = lowQuality ? SmoothingMode.HighSpeed : SmoothingMode.AntiAlias;
@@ -111,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return gfx;
         }
 
-        public static System.Drawing.Graphics Graphics(Bitmap bmp, PlotDimensions dims, bool lowQuality = false, bool clipToDataArea = true)
+        public static Graphics Graphics(Bitmap bmp, PlotDimensions dims, bool lowQuality = false, bool clipToDataArea = true)
         {
             Graphics gfx = Graphics(bmp, lowQuality, dims.ScaleFactor);
 
@@ -130,47 +130,46 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return gfx;
         }
 
-        public static System.Drawing.Pen Pen(System.Drawing.Color color, double width = 1, LineStyle lineStyle = LineStyle.Solid, bool rounded = false)
+        public static Pen Pen(Color color, double width = 1, LineStyle lineStyle = LineStyle.Solid, bool rounded = false)
         {
-            var pen = new System.Drawing.Pen(color, (float)width);
+            var pen = new Pen(color, (float)width);
 
-            if (lineStyle == LineStyle.Solid || lineStyle == LineStyle.None)
-            {
-                /* WARNING: Do NOT apply a solid DashPattern!
+            /* WARNING: Do NOT apply a solid DashPattern!
                  * Setting DashPattern automatically sets a pen's DashStyle to custom.
                  * Custom DashStyles are slower and can cause diagonal rendering artifacts.
                  * Instead use the solid DashStyle.
                  * https://github.com/ScottPlot/ScottPlot/issues/327
                  * https://github.com/ScottPlot/ScottPlot/issues/401
-                 */
-                pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            }
-            else if (lineStyle == LineStyle.Dash)
+              */
+            switch (lineStyle)
             {
-                pen.DashPattern = new float[] { 8.0F, 4.0F };
-            }
-            else if (lineStyle == LineStyle.DashDot)
-            {
-                pen.DashPattern = new float[] { 8.0F, 4.0F, 2.0F, 4.0F };
-            }
-            else if (lineStyle == LineStyle.DashDotDot)
-            {
-                pen.DashPattern = new float[] { 8.0F, 4.0F, 2.0F, 4.0F, 2.0F, 4.0F };
-            }
-            else if (lineStyle == LineStyle.Dot)
-            {
-                pen.DashPattern = new float[] { 2.0F, 4.0F };
-            }
-            else
-            {
-                throw new NotImplementedException("line style not supported");
+                case LineStyle.None:
+                    pen.DashStyle = DashStyle.Solid;
+                    break;
+                case LineStyle.Solid:
+                    pen.DashStyle = DashStyle.Solid;
+                    break;
+                case LineStyle.Dash:
+                    pen.DashPattern = new[] { 8.0F, 4.0F };
+                    break;
+                case LineStyle.DashDot:
+                    pen.DashPattern = new[] { 8.0F, 4.0F, 2.0F, 4.0F };
+                    break;
+                case LineStyle.DashDotDot:
+                    pen.DashPattern = new[] { 8.0F, 4.0F, 2.0F, 4.0F, 2.0F, 4.0F };
+                    break;
+                case LineStyle.Dot:
+                    pen.DashPattern = new[] { 2.0F, 4.0F };
+                    break;
+                default:
+                    throw new NotImplementedException("line style not supported");
             }
 
             if (rounded)
             {
-                pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
-                pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-                pen.LineJoin = System.Drawing.Drawing2D.LineJoin.Round;
+                pen.StartCap = LineCap.Round;
+                pen.EndCap = LineCap.Round;
+                pen.LineJoin = LineJoin.Round;
             }
 
             return pen;
@@ -331,15 +330,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return bmp2;
         }
 
-        public static System.Drawing.Color Semitransparent(System.Drawing.Color color, double alpha)
+        public static Color Semitransparent(Color color, double alpha)
         {
-            return (alpha == 1) ? color : System.Drawing.Color.FromArgb((int)(color.A * alpha), color);
+            return (alpha == 1) ? color : Color.FromArgb((int)(color.A * alpha), color);
         }
 
-        public static System.Drawing.Color Semitransparent(string htmlColor, double alpha)
+        public static Color Semitransparent(string htmlColor, double alpha)
         {
-            System.Drawing.Color color = ColorTranslator.FromHtml(htmlColor);
-            return (alpha == 1) ? color : System.Drawing.Color.FromArgb((int)(color.A * alpha), color);
+            Color color = ColorTranslator.FromHtml(htmlColor);
+            return (alpha == 1) ? color : Color.FromArgb((int)(color.A * alpha), color);
         }
     }
 }

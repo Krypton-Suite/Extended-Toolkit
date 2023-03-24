@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
         public SrgsRuleRef(SrgsRule rule)
         {
             Helpers.ThrowIfNull(rule, "rule");
-            _uri = new Uri("#" + rule.Id, UriKind.Relative);
+            _uri = new Uri($"#{rule.Id}", UriKind.Relative);
         }
 
         public SrgsRuleRef(SrgsRule rule, string semanticKey)
@@ -222,7 +222,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             }
             else
             {
-                _uri = new Uri(uri.ToString() + "#" + rule, UriKind.RelativeOrAbsolute);
+                _uri = new Uri($"{uri}#{rule}", UriKind.RelativeOrAbsolute);
             }
             _semanticKey = semanticKey;
             _params = initParameters;

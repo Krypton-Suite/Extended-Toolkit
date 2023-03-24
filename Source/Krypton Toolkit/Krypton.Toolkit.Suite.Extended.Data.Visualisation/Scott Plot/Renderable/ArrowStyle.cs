@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using Pen pen = GDI.Pen(Color.Black);
             if (!ScaledArrowheads)
             {
-                pen.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(NonScaledArrowheadWidth, NonScaledArrowheadLength);
+                pen.CustomEndCap = new AdjustableArrowCap(NonScaledArrowheadWidth, NonScaledArrowheadLength);
             }
 
             for (int i = 0; i < xs.Length; i++)

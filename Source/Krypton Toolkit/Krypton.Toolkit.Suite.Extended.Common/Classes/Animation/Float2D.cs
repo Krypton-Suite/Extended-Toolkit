@@ -588,7 +588,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </returns>
         public override string ToString()
         {
-            return "(" + X.ToString("0.00") + "," + Y.ToString("0.00") + ")";
+            return $"({X:0.00},{Y:0.00})";
         }
 
         /// <summary>

@@ -210,7 +210,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     case Edge.Bottom:
                         sf.Alignment = StringAlignment.Far;
                         sf.LineAlignment = StringAlignment.Near;
-                        gfx.DrawString(s: "\n" + tc.CornerLabel,
+                        gfx.DrawString(s: $"\n{tc.CornerLabel}",
                             x: dims.DataOffsetX + dims.DataWidth,
                             y: dims.DataOffsetY + dims.DataHeight + MajorTickLength,
                             font: font, brush: brush, format: sf);
@@ -219,7 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     case Edge.Left:
                         sf.Alignment = StringAlignment.Near;
                         sf.LineAlignment = StringAlignment.Far;
-                        gfx.DrawString(s: "\n" + tc.CornerLabel,
+                        gfx.DrawString(s: $"\n{tc.CornerLabel}",
                             x: dims.DataOffsetX,
                             y: dims.DataOffsetY,
                             font: font, brush: brush, format: sf);

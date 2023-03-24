@@ -136,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             if (referenceAssembly != null)
             {
                 _appReferenceAssembly = referenceAssembly;
-                LogWriter.PrintMessage("Checking the following file: " + _appReferenceAssembly);
+                LogWriter.PrintMessage($"Checking the following file: {_appReferenceAssembly}");
             }
 
             // adjust the delegates
@@ -1101,15 +1101,15 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             string installerExt = Path.GetExtension(downloadFilePath);
             if (DoExtensionsMatch(installerExt, ".exe"))
             {
-                return "\"" + downloadFilePath + "\"";
+                return $"\"{downloadFilePath}\"";
             }
             if (DoExtensionsMatch(installerExt, ".msi"))
             {
-                return "msiexec /i \"" + downloadFilePath + "\"";
+                return $"msiexec /i \"{downloadFilePath}\"";
             }
             if (DoExtensionsMatch(installerExt, ".msp"))
             {
-                return "msiexec /p \"" + downloadFilePath + "\"";
+                return $"msiexec /p \"{downloadFilePath}\"";
             }
             return downloadFilePath;
         }
@@ -1203,7 +1203,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 installerCmd = GetInstallerCommand(downloadFilePath);
                 if (!string.IsNullOrEmpty(CustomInstallerArguments))
                 {
-                    installerCmd += " " + CustomInstallerArguments;
+                    installerCmd += $" {CustomInstallerArguments}";
                 }
             }
             catch (InvalidDataException)

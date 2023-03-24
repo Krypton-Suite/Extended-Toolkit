@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             if (showWarning)
             {
-                System.Diagnostics.Debug.WriteLine(
+                Debug.WriteLine(
                     "WARNING: GetSettings() is only for development and testing. " +
                     "Not all features may be fully implemented. " +
                     "Its API may not be stable across future versions.");
@@ -320,7 +320,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Set the culture to use for unit-to-string tick mark conversion
         /// </summary>
-        public void SetCulture(System.Globalization.CultureInfo culture) => AxisTicks.TickCollection.Culture = culture;
+        public void SetCulture(CultureInfo culture) => AxisTicks.TickCollection.Culture = culture;
 
         /// <summary>
         /// Manually define culture to use for unit-to-string tick mark conversion

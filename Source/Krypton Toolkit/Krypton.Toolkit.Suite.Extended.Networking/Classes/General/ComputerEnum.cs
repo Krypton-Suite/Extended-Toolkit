@@ -244,7 +244,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                             _lastError = "Access was denied";
                             break;
                         default:
-                            _lastError = "Unknown error code " + result;
+                            _lastError = $"Unknown error code {result}";
                             break;
                     }
                     return;

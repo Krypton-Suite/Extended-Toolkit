@@ -730,7 +730,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 subsequentText = string.Empty;
             }
             SPTEXTSELECTIONINFO info = new SPTEXTSELECTIONINFO(0u, 0u, (uint)precedingText.Length, 0u);
-            string text = precedingText + subsequentText + "\0\0";
+            string text = $"{precedingText}{subsequentText}\0\0";
             SapiGrammar sapiGrammar = grammar.InternalData._sapiGrammar;
             sapiGrammar.SetWordSequenceData(text, info);
         }

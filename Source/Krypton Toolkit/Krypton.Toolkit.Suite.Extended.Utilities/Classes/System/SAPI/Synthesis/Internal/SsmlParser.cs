@@ -1257,7 +1257,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             Uri uri = new Uri(dest, UriKind.RelativeOrAbsolute);
             if (!uri.IsAbsoluteUri && ssmlAttributes._baseUri != null)
             {
-                dest = ssmlAttributes._baseUri + "/" + dest;
+                dest = $"{ssmlAttributes._baseUri}/{dest}";
                 uri = new Uri(dest, UriKind.RelativeOrAbsolute);
             }
             engine.ProcessLexicon(uri, dest2);

@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 
         private IRule _rule;
 
-        internal override string DebugSummary => _name + "=" + base.DebugSummary;
+        internal override string DebugSummary => $"{_name}={base.DebugSummary}";
 
         internal string Name => _name;
 

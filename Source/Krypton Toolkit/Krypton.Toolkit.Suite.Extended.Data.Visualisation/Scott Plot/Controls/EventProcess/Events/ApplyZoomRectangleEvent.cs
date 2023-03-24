@@ -37,11 +37,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private readonly float X;
         private readonly float Y;
         private readonly Configuration Configuration;
-        private readonly ScottPlot.Settings Settings;
+        private readonly Settings Settings;
         private readonly Plot Plot;
         public RenderType RenderType => Configuration.QualityConfiguration.MouseInteractiveDropped;
 
-        public ApplyZoomRectangleEvent(float x, float y, Configuration config, ScottPlot.Settings settings, Plot plt)
+        public ApplyZoomRectangleEvent(float x, float y, Configuration config, Settings settings, Plot plt)
         {
             X = x;
             Y = y;

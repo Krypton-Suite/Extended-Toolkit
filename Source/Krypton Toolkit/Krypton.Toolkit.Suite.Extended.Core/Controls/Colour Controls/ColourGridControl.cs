@@ -937,7 +937,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             type = typeof(ColourGridControl);
 
-            using (Bitmap background = new Bitmap(type.Assembly.GetManifestResourceStream(string.Concat(type.Namespace, ".Resources.cellbackground.png"))))
+            using (Bitmap background = new Bitmap(type.Assembly.GetManifestResourceStream(
+                       $"{type.Namespace}.Resources.cellbackground.png")))
             {
                 return new TextureBrush(background, WrapMode.Tile);
             }

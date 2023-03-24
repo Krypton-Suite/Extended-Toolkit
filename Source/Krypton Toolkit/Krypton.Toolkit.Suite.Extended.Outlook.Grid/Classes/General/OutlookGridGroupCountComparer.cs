@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             catch (Exception ex)
             {
-                throw new("OutlookGridGroupCountComparer: " + this, ex);
+                throw new($"OutlookGridGroupCountComparer: {this}", ex);
             }
         }
         #endregion

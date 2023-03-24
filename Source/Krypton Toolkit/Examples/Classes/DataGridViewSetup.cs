@@ -26,15 +26,15 @@ namespace Examples
 
         public void SetupDataGridView(KryptonOutlookGrid grid, bool restoreIfPossible)
         {
-            if (File.Exists(Application.StartupPath + "/grid.xml") & restoreIfPossible)
+            if (File.Exists($"{Application.StartupPath}/grid.xml") & restoreIfPossible)
             {
                 try
                 {
-                    LoadConfigFromFile(Application.StartupPath + "/grid.xml", grid);
+                    LoadConfigFromFile($"{Application.StartupPath}/grid.xml", grid);
                 }
                 catch (Exception ex)
                 {
-                    KryptonMessageBox.Show("Error when retrieving configuration : " + ex.Message, "Error", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                    KryptonMessageBox.Show($"Error when retrieving configuration : {ex.Message}", "Error", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
                     grid.ClearEverything();
                     LoadDefaultConfiguration(grid);
                 }

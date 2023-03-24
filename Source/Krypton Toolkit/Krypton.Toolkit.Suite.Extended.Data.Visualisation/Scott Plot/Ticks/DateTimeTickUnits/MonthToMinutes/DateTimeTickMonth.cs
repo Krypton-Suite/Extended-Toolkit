@@ -56,11 +56,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             int pos = localizedLabel.IndexOf(" ");
             if (pos < 0)
             {
-                return localizedLabel + "\n";
+                return $"{localizedLabel}\n";
             }
             else
             {
-                return localizedLabel.Substring(0, pos) + "\n" + localizedLabel.Substring(pos + 1, localizedLabel.Length - pos - 1);
+                return
+                    $"{localizedLabel.Substring(0, pos)}\n{localizedLabel.Substring(pos + 1, localizedLabel.Length - pos - 1)}";
             }
         }
     }

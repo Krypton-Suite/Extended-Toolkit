@@ -25,7 +25,6 @@
  */
 #endregion
 
-#pragma warning disable CS1574, CS0419
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -110,7 +109,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <returns></returns>
         public static GraphicsPath RoundRectangle(Rectangle r, float radius, Corners corners)
         {
-            GraphicsPath path = new GraphicsPath(); if (r.Width <= 0 || r.Height <= 0)
+            GraphicsPath path = new GraphicsPath();
+
+            if (r.Width <= 0 || r.Height <= 0)
             {
                 return path;
             }

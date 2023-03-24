@@ -352,7 +352,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns></returns>
         public static string SimpleQualifiedName(Type t)
         {
-            return string.Concat(t.FullName, ", ", t.Assembly.GetName().Name);
+            return $"{t.FullName}, {t.Assembly.GetName().Name}";
         }
     }
 }

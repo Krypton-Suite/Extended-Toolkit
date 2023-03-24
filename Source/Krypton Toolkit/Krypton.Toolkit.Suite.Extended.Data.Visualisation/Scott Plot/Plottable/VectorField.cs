@@ -113,9 +113,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 Enumerable.Range(0, flattenedIntensities.Length).Select(x => defaultColor).ToArray() :
                 ColourMap.GetColours(flattenedIntensities, colormap);
 
-            this.Vectors = vectors;
-            this.Xs = xs;
-            this.Ys = ys;
+            Vectors = vectors;
+            Xs = xs;
+            Ys = ys;
         }
 
         public void ValidateData(bool deep = false) { /* validation occurs in constructor */ }
@@ -150,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottableVectorField{label} with {PointCount} vectors";
         }
     }

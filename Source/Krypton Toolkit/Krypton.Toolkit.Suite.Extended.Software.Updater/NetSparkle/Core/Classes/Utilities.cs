@@ -115,11 +115,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                     {
                         // Put in GB
                         numBytesDecimal /= 1024;
-                        return numBytesDecimal.ToString("F2") + " GB";
+                        return $"{numBytesDecimal:F2} GB";
                     }
-                    return numBytesDecimal.ToString("F2") + " MB";
+                    return $"{numBytesDecimal:F2} MB";
                 }
-                return numBytesDecimal.ToString("F2") + " KB";
+                return $"{numBytesDecimal:F2} KB";
             }
             return numBytes.ToString();
         }

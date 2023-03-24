@@ -163,7 +163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 {
                     string mask;
 
-                    mask = "*." + extension;
+                    mask = $"*.{extension}";
 
                     if (!openExtensions.Contains(mask))
                     {

@@ -87,13 +87,13 @@ namespace Examples
                             OutlookGridRow row2 = new OutlookGridRow();
                             row2.CreateCells(kogExample, new object[]
                             {
-                            customer["CustomerID"].InnerText + " 2",
-                            customer["CustomerName"].InnerText + " 2",
-                            customer["Address"].InnerText + "2",
-                            customer["City"].InnerText + " 2",
+                                $"{customer["CustomerID"].InnerText} 2",
+                                $"{customer["CustomerName"].InnerText} 2",
+                                $"{customer["Address"].InnerText}2",
+                                $"{customer["City"].InnerText} 2",
                             new TextAndImage(customer["Country"].InnerText, GetFlag(customer["Country"].InnerText)),
                             DateTime.Now,
-                            customer["ProductName"].InnerText + " 2",
+                            $"{customer["ProductName"].InnerText} 2",
                             (double) random.Next(1000),
                             (double) random.Next(101) / 100,
                             tokensList[random.Next(5)]
@@ -109,7 +109,7 @@ namespace Examples
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Gasp...Something went wrong ! " + ex.Message, "Error", MessageBoxButtons.OK,
+                        MessageBox.Show($"Gasp...Something went wrong ! {ex.Message}", "Error", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                 }
@@ -225,7 +225,7 @@ namespace Examples
 
         private void kogExample_GroupImageClick(object sender, OutlookGridGroupImageEventArgs e)
         {
-            MessageBox.Show("Group Image clicked for group row : " + e.Row.Group.Text);
+            MessageBox.Show($"Group Image clicked for group row : {e.Row.Group.Text}");
         }
 
         private void buttonSpecHeaderGroup1_Click(object sender, EventArgs e)
@@ -238,7 +238,7 @@ namespace Examples
 
         private void buttonSpecHeaderGroup2_Click(object sender, EventArgs e)
         {
-            kogExample.PersistConfiguration(Application.StartupPath + "/grid.xml", StaticInfos.GRIDCONFIG_VERSION.ToString());
+            kogExample.PersistConfiguration($"{Application.StartupPath}/grid.xml", StaticInfos.GRIDCONFIG_VERSION.ToString());
         }
 
         bool expand = true;

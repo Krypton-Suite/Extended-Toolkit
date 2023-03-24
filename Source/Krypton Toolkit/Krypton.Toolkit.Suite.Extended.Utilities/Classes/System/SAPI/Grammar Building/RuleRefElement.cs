@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 
         internal RuleElement Rule => _rule;
 
-        internal override string DebugSummary => "#" + Rule.Name + ((_semanticKey != null) ? (":" + _semanticKey) : "");
+        internal override string DebugSummary => $"#{Rule.Name}{((_semanticKey != null) ? (":" + _semanticKey) : "")}";
 
         internal RuleRefElement(RuleElement rule)
         {
@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 
         internal override IElement CreateElement(IElementFactory elementFactory, IElement parent, IRule rule, IdentifierCollection ruleIds)
         {
-            return elementFactory.CreateRuleRef(parent, new Uri("#" + Rule.RuleName, UriKind.Relative), _semanticKey, null);
+            return elementFactory.CreateRuleRef(parent, new Uri($"#{Rule.RuleName}", UriKind.Relative), _semanticKey, null);
         }
     }
 }

@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         if (value != null && value != DBNull.Value)
                         {
                             _valDateTime = DateTime.Parse(value.ToString());
-                            base.Value = _ti.ToTitleCase(_valDateTime.ToString("MMMM")) + " " + _valDateTime.Year;
+                            base.Value = $"{_ti.ToTitleCase(_valDateTime.ToString("MMMM"))} {_valDateTime.Year}";
                         }
                         else
                         {
@@ -131,7 +131,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         if (value != null && value != DBNull.Value)
                         {
                             _valDateTime = DateTime.Parse(value.ToString());
-                            base.Value = OutlookGridGroupHelpers.GetQuarterAsString(_valDateTime) + " " + _valDateTime.Year;
+                            base.Value =
+                                $"{OutlookGridGroupHelpers.GetQuarterAsString(_valDateTime)} {_valDateTime.Year}";
                         }
                         else
                         {

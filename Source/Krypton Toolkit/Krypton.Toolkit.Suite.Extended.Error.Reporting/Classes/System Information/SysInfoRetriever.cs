@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             {
                 if (childResult == null)
                 {
-                    childResult = new SysInfoResult(_sysInfoQuery.Name + "_Child");
+                    childResult = new SysInfoResult($"{_sysInfoQuery.Name}_Child");
                     childList.Add(childResult);
                 }
 

@@ -251,12 +251,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 string tickLabel = AutomaticTickFormatter(tickPosition);
                 if (MinIsClipped && i == 0)
                 {
-                    tickLabel = "≤" + tickLabel;
+                    tickLabel = $"\u2264{tickLabel}";
                 }
 
                 if (MaxIsClipped && i == tickCount)
                 {
-                    tickLabel = "≥" + tickLabel;
+                    tickLabel = $"\u2265{tickLabel}";
                 }
 
                 Tick tick = new(colorbarFraction, tickLabel, isMajor: true, isDateTime: false);

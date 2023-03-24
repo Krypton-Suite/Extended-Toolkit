@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             var result = _reportFileZipper.Save(zipFilePath);
             if (!result.Saved)
             {
-                View.ShowError(Properties.Resources.Unable_to_save_file + $"'{result}'", result.Exception);
+                View.ShowError($"{Properties.Resources.Unable_to_save_file}'{result}'", result.Exception);
             }
         }
 
@@ -95,8 +95,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             catch (Exception exception)
             {
                 View.Completed(false);
-                View.ShowError(Properties.Resources.Unable_to_setup + $" {sender.Description}" +
-                               Environment.NewLine + exception.Message, exception);
+                View.ShowError(
+                    $"{Properties.Resources.Unable_to_setup} {sender.Description}{Environment.NewLine}{exception.Message}", exception);
             }
             finally
             {

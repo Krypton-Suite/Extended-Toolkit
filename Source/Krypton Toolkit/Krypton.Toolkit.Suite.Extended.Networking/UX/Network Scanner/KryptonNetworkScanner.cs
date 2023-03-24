@@ -159,7 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             try
             {
                 // Use Your work Group WinNT://&&&&(Work Group Name)
-                DirectoryEntry DomainEntry = new DirectoryEntry("WinNT://" + ktxtWorkGroupName.Text + "");
+                DirectoryEntry DomainEntry = new DirectoryEntry($"WinNT://{ktxtWorkGroupName.Text}");
                 DomainEntry.Children.SchemaFilter.Add("Computer");
 
                 ///*************************************************
@@ -233,7 +233,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
             catch (Exception ex)
             {
-                InternalKryptonMessageBoxExtended.Show("Unable to connect with the system: " + strMachineName);
+                InternalKryptonMessageBoxExtended.Show($"Unable to connect with the system: {strMachineName}");
                 throw ex;
             }
         }//getIPByName()

@@ -137,10 +137,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
                 if (string.IsNullOrEmpty(accessor.AssemblyCompany) || string.IsNullOrEmpty(accessor.AssemblyProduct))
                 {
-                    throw new NetSparkleException("Error: NetSparkle is missing the company or productname tag in " + ReferenceAssembly);
+                    throw new NetSparkleException(
+                        $"Error: NetSparkle is missing the company or productname tag in {ReferenceAssembly}");
                 }
 
-                _registryPath = "Software\\" + accessor.AssemblyCompany + "\\" + accessor.AssemblyProduct + "\\AutoUpdate";
+                _registryPath = $"Software\\{accessor.AssemblyCompany}\\{accessor.AssemblyProduct}\\AutoUpdate";
                 return _registryPath;
             }
         }

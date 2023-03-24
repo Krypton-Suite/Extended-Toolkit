@@ -33,9 +33,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     public class LegendItem
     {
         public string label;
-        public System.Drawing.Color color;
-        public System.Drawing.Color hatchColor;
-        public System.Drawing.Color borderColor;
+        public Color color;
+        public Color hatchColor;
+        public Color borderColor;
         public float borderWith;
 
         public LineStyle lineStyle;

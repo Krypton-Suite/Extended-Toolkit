@@ -245,7 +245,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             Text = string.Empty;
 
             /* todo: resource strings */
-            MessageBox.Show("Secure password error: Reached critical endpoint: " + e.Message);
+            MessageBox.Show($"Secure password error: Reached critical endpoint: {e.Message}");
         }
         #endregion
     }

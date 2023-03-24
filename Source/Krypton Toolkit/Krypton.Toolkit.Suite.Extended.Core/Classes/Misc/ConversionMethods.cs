@@ -209,7 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 if (!hexColour.StartsWith("#"))
                 {
-                    hexColour = string.Concat("#", hexColour);
+                    hexColour = $"#{hexColour}";
                 }
 
                 Color colourResult = ColorTranslator.FromHtml(hexColour);

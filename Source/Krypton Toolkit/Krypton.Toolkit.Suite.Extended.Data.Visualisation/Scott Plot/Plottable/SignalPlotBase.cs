@@ -786,7 +786,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottableSignalBase{label} with {PointCount} points ({typeof(T).Name})";
         }
 
@@ -931,7 +931,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Show a solid color beneath the curve
         /// </summary>
-        public void FillBelow(System.Drawing.Color? color = null, double alpha = .2)
+        public void FillBelow(Color? color = null, double alpha = .2)
         {
             _FillType = FillType.FillBelow;
             _FillColor1 = GDI.Semitransparent(color ?? Color, alpha);
@@ -940,7 +940,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Show a two-color gradient beneath the curve
         /// </summary>
-        public void FillBelow(System.Drawing.Color upperColor, System.Drawing.Color lowerColor, double alpha = .2)
+        public void FillBelow(Color upperColor, Color lowerColor, double alpha = .2)
         {
             _FillType = FillType.FillBelow;
             _FillColor1 = GDI.Semitransparent(upperColor, alpha);
@@ -950,7 +950,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Show a solid color above the curve
         /// </summary>
-        public void FillAbove(System.Drawing.Color? color = null, double alpha = .2)
+        public void FillAbove(Color? color = null, double alpha = .2)
         {
             _FillType = FillType.FillAbove;
             _FillColor1 = GDI.Semitransparent(color ?? Color, alpha);
@@ -959,7 +959,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Show a two-color gradient above the curve
         /// </summary>
-        public void FillAbove(System.Drawing.Color lowerColor, System.Drawing.Color upperColor, double alpha = .2)
+        public void FillAbove(Color lowerColor, Color upperColor, double alpha = .2)
         {
             _FillType = FillType.FillAbove;
             _FillColor1 = GDI.Semitransparent(upperColor, alpha);
@@ -969,7 +969,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Fill the area between the curve and the <see cref="BaselineY"/> value
         /// </summary>
-        public void FillAboveAndBelow(System.Drawing.Color colorAbove, System.Drawing.Color colorBelow, double alpha = .2)
+        public void FillAboveAndBelow(Color colorAbove, Color colorBelow, double alpha = .2)
         {
             _FillType = FillType.FillAboveAndBelow;
             _FillColor1 = GDI.Semitransparent(colorAbove, alpha);
@@ -984,8 +984,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="below1">Color below the line next to the curve</param>
         /// <param name="below2">Color below the line next to the lower edge of the plot area</param>
         /// <param name="alpha">Apply this opacity to all colors</param>
-        public void FillAboveAndBelow(System.Drawing.Color above1, System.Drawing.Color above2,
-            System.Drawing.Color below1, System.Drawing.Color below2, double alpha = .2)
+        public void FillAboveAndBelow(Color above1, Color above2,
+            Color below1, Color below2, double alpha = .2)
         {
             _FillType = FillType.FillAboveAndBelow;
 

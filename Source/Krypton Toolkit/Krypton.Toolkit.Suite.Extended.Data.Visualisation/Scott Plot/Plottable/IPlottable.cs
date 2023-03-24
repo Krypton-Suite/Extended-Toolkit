@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     public interface IPlottable
     {
         bool IsVisible { get; set; }
-        void Render(PlotDimensions dims, System.Drawing.Bitmap bmp, bool lowQuality = false);
+        void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false);
 
         int XAxisIndex { get; set; }
         int YAxisIndex { get; set; }

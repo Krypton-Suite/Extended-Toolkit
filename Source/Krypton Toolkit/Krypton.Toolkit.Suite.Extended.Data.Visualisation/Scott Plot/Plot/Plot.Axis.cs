@@ -227,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Set the culture to use for number-to-string converstion for tick labels of all axes.
         /// </summary>
         /// <param name="culture">standard culture</param>
-        public void SetCulture(System.Globalization.CultureInfo culture)
+        public void SetCulture(CultureInfo culture)
         {
             foreach (var axis in settings.Axes)
                 axis.SetCulture(culture);
@@ -646,25 +646,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public double CoordinateFromPixelY(double pixelY) => throw new NotImplementedException();
 
         [Obsolete("use GetCoordinate(), GetCoordinateX() or GetCoordinateY()", true)]
-        public System.Drawing.PointF CoordinateFromPixel(int pixelX, int pixelY) => throw new NotImplementedException();
+        public PointF CoordinateFromPixel(int pixelX, int pixelY) => throw new NotImplementedException();
 
         [Obsolete("use GetCoordinate(), GetCoordinateX() or GetCoordinateY()", true)]
-        public System.Drawing.PointF CoordinateFromPixel(float pixelX, float pixelY) => throw new NotImplementedException();
+        public PointF CoordinateFromPixel(float pixelX, float pixelY) => throw new NotImplementedException();
 
         [Obsolete("use GetCoordinate(), GetCoordinateX() or GetCoordinateY()", true)]
-        public System.Drawing.PointF CoordinateFromPixel(double pixelX, double pixelY) => throw new NotImplementedException();
+        public PointF CoordinateFromPixel(double pixelX, double pixelY) => throw new NotImplementedException();
 
         [Obsolete("use GetCoordinate(), GetCoordinateX() or GetCoordinateY()", true)]
-        public System.Drawing.PointF CoordinateFromPixel(System.Drawing.Point pixel) => throw new NotImplementedException();
+        public PointF CoordinateFromPixel(Point pixel) => throw new NotImplementedException();
 
         [Obsolete("use GetCoordinate(), GetCoordinateX() or GetCoordinateY()", true)]
-        public System.Drawing.PointF CoordinateFromPixel(System.Drawing.PointF pixel) => throw new NotImplementedException();
+        public PointF CoordinateFromPixel(PointF pixel) => throw new NotImplementedException();
 
         [Obsolete("use GetPixel, GetPixelX(), or GetPixelY()", true)]
-        public System.Drawing.PointF CoordinateToPixel(System.Drawing.PointF location) => throw new NotImplementedException();
+        public PointF CoordinateToPixel(PointF location) => throw new NotImplementedException();
 
         [Obsolete("use GetPixel, GetPixelX(), or GetPixelY()", true)]
-        public System.Drawing.PointF CoordinateToPixel(double locationX, double locationY) => throw new NotImplementedException();
+        public PointF CoordinateToPixel(double locationX, double locationY) => throw new NotImplementedException();
 
         [Obsolete("use GetPixelX()", true)]
         public float CoordinateToPixelX(double locationX) => throw new NotImplementedException();

@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             }
             else
             {
-                Debug.WriteLine(tag + " " + message, arguments);
+                Debug.WriteLine($"{tag} {message}", arguments);
             }
         }
     }

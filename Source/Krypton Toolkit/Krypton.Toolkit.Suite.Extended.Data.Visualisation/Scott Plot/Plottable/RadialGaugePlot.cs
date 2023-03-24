@@ -134,12 +134,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Style of the tip of the gauge
         /// </summary>
-        public System.Drawing.Drawing2D.LineCap EndCap { get; set; } = System.Drawing.Drawing2D.LineCap.Triangle;
+        public LineCap EndCap { get; set; } = LineCap.Triangle;
 
         /// <summary>
         /// Style of the base of the gauge
         /// </summary>
-        public System.Drawing.Drawing2D.LineCap StartCap { get; set; } = System.Drawing.Drawing2D.LineCap.Round;
+        public LineCap StartCap { get; set; } = LineCap.Round;
 
         public bool IsVisible { get; set; } = true;
         public int XAxisIndex { get; set; } = 0;

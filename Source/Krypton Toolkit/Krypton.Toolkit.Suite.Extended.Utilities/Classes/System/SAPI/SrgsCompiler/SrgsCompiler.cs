@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 {
                     if (!File.Exists(customGrammar._codebehind[i]))
                     {
-                        customGrammar._codebehind[i] = srgsPath + "\\" + customGrammar._codebehind[i];
+                        customGrammar._codebehind[i] = $"{srgsPath}\\{customGrammar._codebehind[i]}";
                     }
                 }
             }
@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 CustomGrammar.CfgResource cfgResource = new CustomGrammar.CfgResource();
                 cfgResource.data = BuildCfg(backend).ToArray();
-                cfgResource.name = iCfg.ToString(CultureInfo.InvariantCulture) + ".CFG";
+                cfgResource.name = $"{iCfg.ToString(CultureInfo.InvariantCulture)}.CFG";
                 ((List<CustomGrammar.CfgResource>)cfgResources).Add(cfgResource);
                 innerCode.Append(customGrammar.CreateAssembly(iCfg, filename, culture));
                 return customGrammar;

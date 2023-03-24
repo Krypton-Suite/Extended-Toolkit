@@ -64,14 +64,14 @@ namespace Examples
             {
                 if (!translations.ContainsKey(translation.Key))
                 {
-                    translations.Add(translation.Key, "." + translation.Value);
+                    translations.Add(translation.Key, $".{translation.Value}");
                 }
             }
             foreach (KeyValuePair<string, string> translation in KryptonAdvancedDataGridViewSearchToolBar.Translations)
             {
                 if (!translations.ContainsKey(translation.Key))
                 {
-                    translations.Add(translation.Key, "." + translation.Value);
+                    translations.Add(translation.Key, $".{translation.Value}");
                 }
             }
             if (_testtranslations)
@@ -166,7 +166,7 @@ namespace Examples
                         Math.Round(i % 2 == 0 ? (double)i*2/3 : (double)i/2, 6),
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0).Date,
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0),
-                        i*2 % 3 == 0 ? null : i.ToString()+" str",
+                        i*2 % 3 == 0 ? null : $"{i} str",
                         i % 2 == 0 ? true:false,
                         Guid.NewGuid(),
                         sampleimages[r.Next(0, 2)],
@@ -361,7 +361,7 @@ namespace Examples
                         Math.Round(i % 2 == 0 ? (double)i*2/3 : (double)i/2, 6),
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0).Date,
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0),
-                        i*2 % 3 == 0 ? null : i.ToString()+" str",
+                        i*2 % 3 == 0 ? null : $"{i} str",
                         i % 2 == 0 ? true:false,
                         Guid.NewGuid(),
                         sampleimages[r.Next(0, 2)],

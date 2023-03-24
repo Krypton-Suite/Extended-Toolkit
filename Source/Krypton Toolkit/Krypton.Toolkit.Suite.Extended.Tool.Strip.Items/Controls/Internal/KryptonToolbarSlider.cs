@@ -766,11 +766,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             public override string ToString()
             {
                 string RetStr = "";
-                RetStr += "Values: " + DateTime.Now.ToLongTimeString() + Environment.NewLine;
-                RetStr += "NewValue: " + m_newvalue + Environment.NewLine;
-                RetStr += "OldValue: " + m_oldvalue + Environment.NewLine;
-                RetStr += "Range: " + m_range + Environment.NewLine;
-                RetStr += "Steps: " + m_steps + Environment.NewLine;
+                RetStr += $"Values: {DateTime.Now.ToLongTimeString()}{Environment.NewLine}";
+                RetStr += $"NewValue: {m_newvalue}{Environment.NewLine}";
+                RetStr += $"OldValue: {m_oldvalue}{Environment.NewLine}";
+                RetStr += $"Range: {m_range}{Environment.NewLine}";
+                RetStr += $"Steps: {m_steps}{Environment.NewLine}";
                 return RetStr;
             }
 

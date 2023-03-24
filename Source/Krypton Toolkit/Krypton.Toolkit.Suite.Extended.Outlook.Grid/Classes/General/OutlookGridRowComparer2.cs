@@ -134,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             catch (Exception ex)
             {
-                throw new("OutlookGridRowComparer: " + ToString(), ex);
+                throw new($"OutlookGridRowComparer: {ToString()}", ex);
             }
         }
         #endregion

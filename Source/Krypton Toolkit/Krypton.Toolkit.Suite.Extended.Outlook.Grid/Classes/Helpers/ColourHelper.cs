@@ -28,7 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// HSV Structure
         /// </summary>
-        public struct HsvColour
+        public struct HSVColour
         {
             private float _hue;
 
@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             /// <param name="hue">The hue.</param>
             /// <param name="saturation">The saturation.</param>
             /// <param name="value">The value.</param>
-            public HsvColour(float hue, float saturation, float value)
+            public HSVColour(float hue, float saturation, float value)
             {
                 _hue = hue;
                 _saturation = saturation;
@@ -243,7 +243,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="green">Green component from 0 to 255</param>
         /// <param name="blue">Blue component from 0 to 255</param>
         /// <returns></returns>
-        public static HsvColour ToHsv(int red, int green, int blue)
+        public static HSVColour ToHSV(int red, int green, int blue)
         {
             float varR = red / 255f; //RGB from 0 to 255
             float varG = green / 255f;

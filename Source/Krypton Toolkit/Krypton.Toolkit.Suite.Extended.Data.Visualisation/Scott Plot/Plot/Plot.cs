@@ -65,8 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         /// <returns>plot description</returns>
         public override string ToString() =>
-            $"ScottPlot ({settings.Width}x{settings.Height}) " +
-            $"with {settings.Plottables.Count:n0} plottables";
+            $"ScottPlot ({settings.Width}x{settings.Height}) with {settings.Plottables.Count:n0} plottables";
 
         /// <summary>
         /// ScottPlot version in the format "1.2.3" (or "1.2.3-beta" for pre-releases)

@@ -51,10 +51,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
         {
             Helpers.ThrowIfEmptyOrNull(category, "category");
             ObjectToken objectToken = null;
-            objectToken = DefaultToken("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Speech\\" + category, "DefaultTokenId");
+            objectToken = DefaultToken($"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Speech\\{category}", "DefaultTokenId");
             if (objectToken == null)
             {
-                objectToken = DefaultToken("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\" + category, "DefaultTokenId");
+                objectToken = DefaultToken($"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\{category}", "DefaultTokenId");
             }
             return objectToken;
         }

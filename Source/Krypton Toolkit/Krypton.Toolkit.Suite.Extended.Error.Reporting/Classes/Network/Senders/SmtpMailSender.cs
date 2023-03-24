@@ -88,7 +88,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 					else
 					{
 						_sendEvent.Completed(success: false);
-						_sendEvent.ShowError($"{Description}: " + (e.Error.InnerException != null ? e.Error.InnerException.Message : e.Error.Message), e.Error);
+						_sendEvent.ShowError(
+                            $"{Description}: {(e.Error.InnerException != null ? e.Error.InnerException.Message : e.Error.Message)}", e.Error);
 					}
 				}
 				finally

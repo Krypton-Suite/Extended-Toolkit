@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                 // Check if the update is not null and is a newer version than the current application
                 if (JobsFromXML != null)
                 {
-                    Console.WriteLine("Number of updates from XML: " + JobsFromXML.Length);
+                    Console.WriteLine($"Number of updates from XML: {JobsFromXML.Length}");
 
                     // create local app info according to update xml
                     Num_Jobs = JobsFromXML.Length;
@@ -281,7 +281,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         {
             string argument_start = "/C choice /C Y /N /D Y /T 4 & Start \"\" /D \"{0}\" \"{1}\"";
             string argument_update = "/C choice /C Y /N /D Y /T 4 & Del /F /Q \"{0}\" & choice /C Y /N /D Y /T 2 & Move /Y \"{1}\" \"{2}\"";
-            string argument_update_start = argument_update + " & Start \"\" /D \"{3}\" \"{4}\" {5}";
+            string argument_update_start = $"{argument_update} & Start \"\" /D \"{{3}}\" \"{{4}}\" {{5}}";
             string argument_add = "/C choice /C Y /N /D Y /T 4 & Move /Y \"{0}\" \"{1}\"";
             string argument_remove = "/C choice /C Y /N /D Y /T 4 & Del /F /Q \"{0}\"";
             string argument_complete = "";
@@ -299,17 +299,17 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                 if (jobtypes[i] == JobType.Add)
                 {
                     argument_complete = string.Format(argument_add, tempFilePaths[i], newPaths[i]);
-                    Console.WriteLine("add: " + argument_complete);
+                    Console.WriteLine($"add: {argument_complete}");
                 }
                 else if (jobtypes[i] == JobType.Update)
                 {
                     argument_complete = string.Format(argument_update, currentPaths[i], tempFilePaths[i], newPaths[i]);
-                    Console.WriteLine("update: " + argument_complete);
+                    Console.WriteLine($"update: {argument_complete}");
                 }
                 else
                 {
                     argument_complete = string.Format(argument_remove, newPaths[i]);
-                    Console.WriteLine("remove: " + argument_complete);
+                    Console.WriteLine($"remove: {argument_complete}");
                 }
 
                 ProcessStartInfo cmd = new ProcessStartInfo
@@ -325,12 +325,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             if (curAppidx > -1)
             {
                 argument_complete = string.Format(argument_update_start, currentPaths[curAppidx], tempFilePaths[curAppidx], newPaths[curAppidx], Path.GetDirectoryName(newPaths[curAppidx]), Path.GetFileName(newPaths[curAppidx]), launchArgss[curAppidx]);
-                Console.WriteLine("Update and run main app: " + argument_complete);
+                Console.WriteLine($"Update and run main app: {argument_complete}");
             }
             else
             {
                 argument_complete = string.Format(argument_start, Path.GetDirectoryName(ParentPath), Path.GetFileName(ParentPath));
-                Console.WriteLine("Run main app: " + argument_complete);
+                Console.WriteLine($"Run main app: {argument_complete}");
             }
 
             ProcessStartInfo cmd_main = new ProcessStartInfo

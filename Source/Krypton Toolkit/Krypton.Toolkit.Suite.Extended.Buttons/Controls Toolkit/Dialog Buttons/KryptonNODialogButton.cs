@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             Control parent = Parent;
 
-            while (!(Parent is KryptonForm) && !(parent == null))
+            while (!(Parent is KryptonForm) && parent != null)
             {
                 parent = parent.Parent;
             }
@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             if (Text == Name)
             {
-                Text = "&No";
+                Text = KryptonManager.Strings.No;
             }
         }
 

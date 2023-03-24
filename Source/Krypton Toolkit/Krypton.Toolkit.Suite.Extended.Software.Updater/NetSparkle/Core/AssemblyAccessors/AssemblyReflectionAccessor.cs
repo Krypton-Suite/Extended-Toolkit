@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
                 if (_assembly == null)
                 {
-                    throw new ArgumentNullException("Unable to load assembly " + absolutePath);
+                    throw new ArgumentNullException($"Unable to load assembly {absolutePath}");
                 }
             }
 
@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 
             if (_assemblyAttributes == null || _assemblyAttributes.Count == 0)
             {
-                throw new ArgumentOutOfRangeException("Unable to load assembly attributes from " + _assembly.FullName);
+                throw new ArgumentOutOfRangeException($"Unable to load assembly attributes from {_assembly.FullName}");
             }
         }
 

@@ -881,7 +881,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             if (!IsFilterChecklistEnabled)
             {
                 ChecklistClearNodes();
-                TreeNodeItemSelector disablednode = TreeNodeItemSelector.CreateNode(KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewFilterChecklistDisable.ToString()] + "            ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll);
+                TreeNodeItemSelector disablednode = TreeNodeItemSelector.CreateNode(
+                    $"{KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewFilterChecklistDisable.ToString()]}            ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll);
                 disablednode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
                 ChecklistAddNode(disablednode);
                 ChecklistReloadNodes();
@@ -938,7 +939,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 }
 
                 ChecklistClearNodes();
-                TreeNodeItemSelector allnode = TreeNodeItemSelector.CreateNode(KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll.ToString()] + "            ", null, CheckState.Indeterminate, TreeNodeItemSelector.CustomNodeType.SelectAll);
+                TreeNodeItemSelector allnode = TreeNodeItemSelector.CreateNode(
+                    $"{KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll.ToString()]}            ", null, CheckState.Indeterminate, TreeNodeItemSelector.CustomNodeType.SelectAll);
                 allnode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
                 ChecklistAddNode(allnode);
                 ChecklistReloadNodes();
@@ -1270,7 +1272,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                             if (DataType == typeof(bool))
                             {
-                                FilterString += "[{0}] =" + filter;
+                                FilterString += $"[{{0}}] ={filter}";
                             }
                             else if (DataType == typeof(int) || DataType == typeof(long) || DataType == typeof(short) ||
                                      DataType == typeof(uint) || DataType == typeof(ulong) || DataType == typeof(ushort) ||
@@ -1279,11 +1281,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                             {
                                 if (IsFilterNotinLogicEnabled)
                                 {
-                                    FilterString += "[{0}] NOT IN (" + filter + ")";
+                                    FilterString += $"[{{0}}] NOT IN ({filter})";
                                 }
                                 else
                                 {
-                                    FilterString += "[{0}] IN (" + filter + ")";
+                                    FilterString += $"[{{0}}] IN ({filter})";
                                 }
                             }
                             else if (DataType == typeof(Bitmap))
@@ -1292,11 +1294,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                             {
                                 if (IsFilterNotinLogicEnabled)
                                 {
-                                    FilterString += "Convert([{0}],System.String) NOT IN (" + filter + ")";
+                                    FilterString += $"Convert([{{0}}],System.String) NOT IN ({filter})";
                                 }
                                 else
                                 {
-                                    FilterString += "Convert([{0}],System.String) IN (" + filter + ")";
+                                    FilterString += $"Convert([{{0}}],System.String) IN ({filter})";
                                 }
                             }
                         }
@@ -1330,7 +1332,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         if (n.Checked && (n.Nodes.AsParallel().Cast<TreeNodeItemSelector>().Where(sn => sn.CheckState != CheckState.Unchecked).Count() == 0))
                         {
                             DateTime dt = (DateTime)n.Value;
-                            sb.Append("'" + Convert.ToString((IsFilterDateAndTimeEnabled ? dt : dt.Date), CultureInfo.CurrentCulture) + "'" + appx);
+                            sb.Append(
+                                $"'{Convert.ToString((IsFilterDateAndTimeEnabled ? dt : dt.Date), CultureInfo.CurrentCulture)}'{appx}");
                         }
                         else if (n.CheckState != CheckState.Unchecked && n.Nodes.Count > 0)
                         {
@@ -1349,12 +1352,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         if (n.Checked && (n.Nodes.AsParallel().Cast<TreeNodeItemSelector>().Where(sn => sn.CheckState != CheckState.Unchecked).Count() == 0))
                         {
                             TimeSpan ts = (TimeSpan)n.Value;
-                            sb.Append("'P" +
-                                (ts.Days > 0 ? ts.Days + "D" : "") +
-                                (ts.TotalHours > 0 ? "T" : "") + (ts.Hours > 0 ? ts.Hours + "H" : "") +
-                                (ts.Minutes > 0 ? ts.Minutes + "M" : "") +
-                                (ts.Seconds > 0 ? ts.Seconds + "S" : "") + "'" +
-                                appx);
+                            sb.Append(
+                                $"'P{(ts.Days > 0 ? $"{ts.Days}D" : "")}{(ts.TotalHours > 0 ? "T" : "")}{(ts.Hours > 0 ? $"{ts.Hours}H" : "")}{(ts.Minutes > 0 ? $"{ts.Minutes}M" : "")}{(ts.Seconds > 0 ? $"{ts.Seconds}S" : "")}'{appx}");
                         }
                         else if (n.CheckState != CheckState.Unchecked && n.Nodes.Count > 0)
                         {
@@ -1391,7 +1390,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 else
                 {
                     foreach (TreeNodeItemSelector n in nodes)
-                        sb.Append("'" + FormatFilterString(n.Value.ToString()) + "'" + appx);
+                        sb.Append($"'{FormatFilterString(n.Value.ToString())}'{appx}");
                 }
             }
 
@@ -1429,7 +1428,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             if (vals != null)
             {
                 //add select all node
-                TreeNodeItemSelector allnode = TreeNodeItemSelector.CreateNode(KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll.ToString()] + "            ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll);
+                TreeNodeItemSelector allnode = TreeNodeItemSelector.CreateNode(
+                    $"{KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll.ToString()]}            ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll);
                 allnode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
                 ChecklistAddNode(allnode);
 
@@ -1440,7 +1440,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     //add select empty node
                     if (vals.Count() != nonulls.Count())
                     {
-                        TreeNodeItemSelector nullnode = TreeNodeItemSelector.CreateNode(KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectEmpty.ToString()] + "               ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectEmpty);
+                        TreeNodeItemSelector nullnode = TreeNodeItemSelector.CreateNode(
+                            $"{KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectEmpty.ToString()]}               ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectEmpty);
                         nullnode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
                         ChecklistAddNode(nullnode);
                     }
@@ -1495,7 +1496,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                                         foreach (var hour in hours)
                                         {
-                                            TreeNodeItemSelector? hoursnode = daysnode.CreateChildNode(hour.Key.ToString("D2") + " " + "h", hour.Key);
+                                            TreeNodeItemSelector? hoursnode = daysnode.CreateChildNode(
+                                                $"{hour.Key:D2} h", hour.Key);
 
                                             var mins =
                                                 from min in hour
@@ -1505,7 +1507,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                                             foreach (var min in mins)
                                             {
-                                                TreeNodeItemSelector? minsnode = hoursnode.CreateChildNode(min.Key.ToString("D2") + " " + "m", min.Key);
+                                                TreeNodeItemSelector? minsnode = hoursnode.CreateChildNode(
+                                                    $"{min.Key:D2} m", min.Key);
 
                                                 var secs =
                                                     from sec in min
@@ -1515,7 +1518,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                                                 foreach (var sec in secs)
                                                 {
-                                                    TreeNodeItemSelector? secsnode = minsnode.CreateChildNode(sec.Key.ToString("D2") + " " + "s", sec.First().Value);
+                                                    TreeNodeItemSelector? secsnode = minsnode.CreateChildNode(
+                                                        $"{sec.Key:D2} s", sec.First().Value);
                                                 }
                                             }
                                         }
@@ -1547,7 +1551,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                             foreach (var hour in hours)
                             {
-                                TreeNodeItemSelector? hoursnode = daysnode.CreateChildNode(hour.Key.ToString("D2") + " " + "h", hour.Key);
+                                TreeNodeItemSelector? hoursnode = daysnode.CreateChildNode($"{hour.Key:D2} h", hour.Key);
 
                                 var mins =
                                     from min in hour
@@ -1557,7 +1561,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                                 foreach (var min in mins)
                                 {
-                                    TreeNodeItemSelector? minsnode = hoursnode.CreateChildNode(min.Key.ToString("D2") + " " + "m", min.Key);
+                                    TreeNodeItemSelector? minsnode = hoursnode.CreateChildNode($"{min.Key:D2} m", min.Key);
 
                                     var secs =
                                         from sec in min
@@ -1567,7 +1571,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                                     foreach (var sec in secs)
                                     {
-                                        TreeNodeItemSelector? secsnode = minsnode.CreateChildNode(sec.Key.ToString("D2") + " " + "s", sec.First().Value);
+                                        TreeNodeItemSelector? secsnode = minsnode.CreateChildNode($"{sec.Key:D2} s", sec.First().Value);
                                     }
                                 }
                             }
@@ -2222,8 +2226,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="text"></param>
         private void CheckTextFilterHandleTextChanged(string text)
         {
-            TreeNodeItemSelector allnode = TreeNodeItemSelector.CreateNode(KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll.ToString()] + "            ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll);
-            TreeNodeItemSelector nullnode = TreeNodeItemSelector.CreateNode(KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectEmpty.ToString()] + "               ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectEmpty);
+            TreeNodeItemSelector allnode = TreeNodeItemSelector.CreateNode(
+                $"{KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll.ToString()]}            ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll);
+            TreeNodeItemSelector nullnode = TreeNodeItemSelector.CreateNode(
+                $"{KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectEmpty.ToString()]}               ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectEmpty);
             string[] removednodesText = new string[] { };
             if (_checkTextFilterRemoveNodesOnSearch)
             {

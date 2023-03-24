@@ -158,8 +158,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             MarkerTools.DrawMarker(gfx, new(basePixel.X, basePixel.Y), MarkerShape, MarkerSize, Color);
 
-            penLine.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap((float)ArrowheadWidth, (float)ArrowheadLength, true);
-            penLine.StartCap = System.Drawing.Drawing2D.LineCap.Flat;
+            penLine.CustomEndCap = new AdjustableArrowCap((float)ArrowheadWidth, (float)ArrowheadLength, true);
+            penLine.StartCap = LineCap.Flat;
             gfx.DrawLine(penLine, basePixel.X, basePixel.Y, tipPixel.X, tipPixel.Y);
         }
     }

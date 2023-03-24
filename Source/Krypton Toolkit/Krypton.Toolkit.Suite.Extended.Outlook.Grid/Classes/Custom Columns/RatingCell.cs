@@ -175,11 +175,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             _starHotImages = new Image[11];
             // load normal stars 
             for (int i = 0; i <= 10; i++)
-                _starImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject("star" + i);
+                _starImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject($"star{i}");
 
             // load hot normal stars 
             for (int i = 0; i <= 10; i++)
-                _starHotImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject("starhot" + i);
+                _starHotImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject($"starhot{i}");
         }
         #endregion
 

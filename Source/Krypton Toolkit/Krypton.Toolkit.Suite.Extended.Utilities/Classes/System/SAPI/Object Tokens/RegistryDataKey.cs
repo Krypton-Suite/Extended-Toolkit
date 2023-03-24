@@ -284,7 +284,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             {
                 return null;
             }
-            return new RegistryDataKey(_sKeyId + "\\" + keyName, ppSubKey, true);
+            return new RegistryDataKey($"{_sKeyId}\\{keyName}", ppSubKey, true);
         }
 
         internal RegistryDataKey CreateKey(string keyName)
@@ -295,7 +295,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             {
                 return null;
             }
-            return new RegistryDataKey(_sKeyId + "\\" + keyName, ppSubKey, true);
+            return new RegistryDataKey($"{_sKeyId}\\{keyName}", ppSubKey, true);
         }
 
         internal string[] GetValueNames()

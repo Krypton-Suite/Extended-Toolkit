@@ -152,7 +152,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                             case "date":
                                 if (!string.IsNullOrEmpty(format))
                                 {
-                                    text = text + ":" + format;
+                                    text = $"{text}:{format}";
                                 }
                                 state.Context.pCategory = SapiCategory(sPVTEXTFRAG, text, null);
                                 break;
