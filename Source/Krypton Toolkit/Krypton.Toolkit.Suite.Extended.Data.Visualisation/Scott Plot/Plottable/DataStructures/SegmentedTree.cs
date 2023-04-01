@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             get => _sourceArray;
             set
             {
-                _sourceArray = value ?? throw new Exception("Source Array cannot be null");
+                _sourceArray = value ?? throw new ArgumentNullException("Source Array cannot be null");
                 UpdateTrees();
             }
         }
