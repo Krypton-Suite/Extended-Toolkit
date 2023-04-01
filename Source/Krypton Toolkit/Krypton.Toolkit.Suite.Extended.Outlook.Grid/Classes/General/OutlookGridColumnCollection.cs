@@ -160,6 +160,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         internal void RemoveSortIndex(OutlookGridColumn col)
         {
             int removed = col.SortIndex;
+
+            // TODO: Turn this into a foreach loop
             for (int i = 0; i < Count; i++)
             {
                 if (this[i].SortIndex > removed)
