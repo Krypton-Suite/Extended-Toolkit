@@ -90,6 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public void updateRange(int from, int to, T[] newData, int fromData = 0)
         {
+            // TODO: Turn this into a foreach loop
             for (int i = from; i < to; i++)
             {
                 sourceArray[i] = newData[i - from + fromData];

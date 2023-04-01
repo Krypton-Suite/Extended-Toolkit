@@ -2065,7 +2065,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 //add the new Filter presets
 
                 string? filterString = flt.FilterString;
-                string viewFilterString = flt.FilterStringDescription;
+                string? viewFilterString = flt.FilterStringDescription;
 
                 int index = -1;
 
