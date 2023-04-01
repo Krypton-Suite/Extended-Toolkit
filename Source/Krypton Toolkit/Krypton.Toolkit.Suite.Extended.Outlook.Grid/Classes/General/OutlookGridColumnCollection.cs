@@ -140,6 +140,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         internal void RemoveGroupIndex(OutlookGridColumn col)
         {
             int removed = col.GroupIndex;
+
+            // TODO: Turn this into a foreach loop
             for (int i = 0; i < Count; i++)
             {
                 if (this[i].GroupIndex > removed)
@@ -174,6 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int currentGroupIndex = -1;
             int newGroupIndex = outlookGridColumn.GroupIndex;
 
+            // TODO: Turn this into a foreach loop
             for (int i = 0; i < Count; i++)
             {
                 if (this[i].Name == outlookGridColumn.Name)

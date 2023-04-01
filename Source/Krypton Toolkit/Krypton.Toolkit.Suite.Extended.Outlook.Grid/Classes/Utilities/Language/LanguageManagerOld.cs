@@ -26,7 +26,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     {
         private static LanguageManager? _mInstance = null;
 
-        private static readonly object Mylock = new();
+        private static readonly object _myLock = new();
         private ResourceManager _rm;
 
         private CultureInfo _ci;
@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 if (_mInstance == null)
                 {
-                    lock (Mylock)
+                    lock (_myLock)
                     {
                         if (_mInstance == null)
                         {
