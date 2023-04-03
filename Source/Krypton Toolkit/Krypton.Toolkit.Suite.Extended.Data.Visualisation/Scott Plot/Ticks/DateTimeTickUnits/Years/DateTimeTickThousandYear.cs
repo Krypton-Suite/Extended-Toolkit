@@ -33,7 +33,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             kind = DateTimeUnit.ThousandYear;
             if (manualSpacing == null)
+            {
                 deltas = new int[] { 1, 2, 5 };
+            }
         }
 
         protected override DateTime Floor(DateTime value)
@@ -50,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             var dt = new DateTime(value.Year, 1, 1);
             string localizedLabel = dt.ToString("yyyy", culture); // year only
-            return localizedLabel + "\n ";
+            return $"{localizedLabel}\n ";
         }
     }
 }

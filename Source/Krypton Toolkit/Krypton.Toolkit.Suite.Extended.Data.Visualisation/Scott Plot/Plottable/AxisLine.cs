@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Indicates whether the line is horizontal (position in Y units) or vertical (position in X units)
         /// </summary>
-        private readonly bool IsHorizontal;
+        private readonly bool _isHorizontal;
 
         /// <summary>
         /// If true, AxisAuto() will ignore the position of this line when determining axis limits
@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Cursor to display while hovering over this line if dragging is enabled.
         /// </summary>
-        public Cursor DragCursor => IsHorizontal ? Cursor.NS : Cursor.WE;
+        public Cursor DragCursor => _isHorizontal ? Cursor.NS : Cursor.WE;
 
         /// <summary>
         /// If dragging is enabled the line cannot be dragged more negative than this position
@@ -128,38 +128,52 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public AxisLine(bool isHorizontal)
         {
-            IsHorizontal = isHorizontal;
+            _isHorizontal = isHorizontal;
         }
 
         public AxisLimits GetAxisLimits()
         {
             if (IgnoreAxisAuto)
+            {
                 return new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
+            }
 
-            if (IsHorizontal)
+            if (_isHorizontal)
+            {
                 return new AxisLimits(double.NaN, double.NaN, Position, Position);
+            }
             else
+            {
                 return new AxisLimits(Position, Position, double.NaN, double.NaN);
+            }
         }
 
         public void ValidateData(bool deep = false)
         {
             if (double.IsNaN(Position) || double.IsInfinity(Position))
+            {
                 throw new InvalidOperationException("position must be a valid number");
+            }
 
             if (PositionFormatter is null)
+            {
                 throw new NullReferenceException(nameof(PositionFormatter));
+            }
         }
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (!IsVisible)
+            {
                 return;
+            }
 
             RenderLine(dims, bmp, lowQuality);
 
             if (PositionLabel)
+            {
                 RenderPositionLabel(dims, bmp, lowQuality);
+            }
         }
 
         public void RenderLine(PlotDimensions dims, Bitmap bmp, bool lowQuality)
@@ -167,7 +181,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using var gfx = GDI.Graphics(bmp, dims, lowQuality);
             using var pen = GDI.Pen(Color, LineWidth, LineStyle, true);
 
-            if (IsHorizontal)
+            if (_isHorizontal)
             {
                 float pixelY = dims.GetPixelY(Position);
 
@@ -200,10 +214,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using var fillBrush = GDI.Brush(PositionLabelBackground);
             using var fontBrush = GDI.Brush(PositionLabelFont.Color);
 
-            if (IsHorizontal)
+            if (_isHorizontal)
             {
                 if (Position > dims.YMax || Position < dims.YMin)
+                {
                     return;
+                }
 
                 float pixelY = dims.GetPixelY(Position);
                 string yLabel = PositionFormatter(Position);
@@ -218,7 +234,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             else
             {
                 if (Position > dims.XMax || Position < dims.XMin)
+                {
                     return;
+                }
 
                 float pixelX = dims.GetPixelX(Position);
                 string xLabel = PositionFormatter(Position);
@@ -241,18 +259,36 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void DragTo(double coordinateX, double coordinateY, bool fixedSize)
         {
             if (!DragEnabled)
-                return;
-
-            if (IsHorizontal)
             {
-                if (coordinateY < DragLimitMin) coordinateY = DragLimitMin;
-                if (coordinateY > DragLimitMax) coordinateY = DragLimitMax;
+                return;
+            }
+
+            if (_isHorizontal)
+            {
+                if (coordinateY < DragLimitMin)
+                {
+                    coordinateY = DragLimitMin;
+                }
+
+                if (coordinateY > DragLimitMax)
+                {
+                    coordinateY = DragLimitMax;
+                }
+
                 Position = coordinateY;
             }
             else
             {
-                if (coordinateX < DragLimitMin) coordinateX = DragLimitMin;
-                if (coordinateX > DragLimitMax) coordinateX = DragLimitMax;
+                if (coordinateX < DragLimitMin)
+                {
+                    coordinateX = DragLimitMin;
+                }
+
+                if (coordinateX > DragLimitMax)
+                {
+                    coordinateX = DragLimitMax;
+                }
+
                 Position = coordinateX;
             }
 
@@ -268,7 +304,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="snapY">snap distance (pixels)</param>
         /// <returns></returns>
         public bool IsUnderMouse(double coordinateX, double coordinateY, double snapX, double snapY) =>
-            IsHorizontal ?
+            _isHorizontal ?
             Math.Abs(Position - coordinateY) <= snapY :
             Math.Abs(Position - coordinateX) <= snapX;
 
@@ -282,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 lineWidth = LineWidth,
                 markerShape = MarkerShape.None
             };
-            return new LegendItem[] { singleItem };
+            return new[] { singleItem };
         }
     }
 }

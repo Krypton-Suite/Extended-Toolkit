@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             if (showWarning)
             {
-                System.Diagnostics.Debug.WriteLine(
+                Debug.WriteLine(
                     "WARNING: GetSettings() is only for development and testing. " +
                     "Not all features may be fully implemented. " +
                     "Its API may not be stable across future versions.");
@@ -146,7 +146,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             AxisLabel.PixelSizePadding = PixelSizePadding;
             AxisTicks.PixelOffset = PixelOffset;
@@ -318,7 +320,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Set the culture to use for unit-to-string tick mark conversion
         /// </summary>
-        public void SetCulture(System.Globalization.CultureInfo culture) => AxisTicks.TickCollection.Culture = culture;
+        public void SetCulture(CultureInfo culture) => AxisTicks.TickCollection.Culture = culture;
 
         /// <summary>
         /// Manually define culture to use for unit-to-string tick mark conversion
@@ -405,7 +407,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             AxisTicks.TickCollection.MinorTickDistribution = enable ? MinorTickDistribution.Log : MinorTickDistribution.Even;
             if (roundMajorTicks)
+            {
                 AxisTicks.TickCollection.IntegerPositionsOnly = roundMajorTicks;
+            }
         }
 
         /// <summary>
@@ -458,9 +462,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             AxisTicks.MinorGridWidth = lineWidth ?? AxisTicks.MinorGridWidth;
             AxisTicks.MinorGridStyle = lineStyle ?? AxisTicks.MinorGridStyle;
             if (logScale.HasValue)
+            {
                 AxisTicks.TickCollection.MinorTickDistribution = logScale.Value
                     ? MinorTickDistribution.Log
                     : MinorTickDistribution.Even;
+            }
         }
 
         /// <summary>
@@ -493,37 +499,43 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             using (var tickFont = GDI.Font(AxisTicks.TickLabelFont))
-            using (var titleFont = GDI.Font(AxisLabel.Font))
             {
-                PixelSize = 0;
-
-                if (AxisLabel.IsVisible)
-                    PixelSize += AxisLabel.Measure().Height;
-
-                if (AxisTicks.TickLabelVisible)
+                using (var titleFont = GDI.Font(AxisLabel.Font))
                 {
-                    // determine how many pixels the largest tick label occupies
-                    float maxHeight = AxisTicks.TickCollection.LargestLabelHeight;
-                    float maxWidth = AxisTicks.TickCollection.LargestLabelWidth * 1.2f;
+                    PixelSize = 0;
 
-                    // calculate the width and height of the rotated label
-                    float largerEdgeLength = Math.Max(maxWidth, maxHeight);
-                    float shorterEdgeLength = Math.Min(maxWidth, maxHeight);
-                    float differenceInEdgeLengths = largerEdgeLength - shorterEdgeLength;
-                    double radians = AxisTicks.TickLabelRotation * Math.PI / 180;
-                    double fraction = IsHorizontal ? Math.Sin(radians) : Math.Cos(radians);
-                    double rotatedSize = shorterEdgeLength + differenceInEdgeLengths * fraction;
+                    if (AxisLabel.IsVisible)
+                    {
+                        PixelSize += AxisLabel.Measure().Height;
+                    }
 
-                    // add the rotated label size to the size of this axis
-                    PixelSize += (float)rotatedSize;
+                    if (AxisTicks.TickLabelVisible)
+                    {
+                        // determine how many pixels the largest tick label occupies
+                        float maxHeight = AxisTicks.TickCollection.LargestLabelHeight;
+                        float maxWidth = AxisTicks.TickCollection.LargestLabelWidth * 1.2f;
+
+                        // calculate the width and height of the rotated label
+                        float largerEdgeLength = Math.Max(maxWidth, maxHeight);
+                        float shorterEdgeLength = Math.Min(maxWidth, maxHeight);
+                        float differenceInEdgeLengths = largerEdgeLength - shorterEdgeLength;
+                        double radians = AxisTicks.TickLabelRotation * Math.PI / 180;
+                        double fraction = IsHorizontal ? Math.Sin(radians) : Math.Cos(radians);
+                        double rotatedSize = shorterEdgeLength + differenceInEdgeLengths * fraction;
+
+                        // add the rotated label size to the size of this axis
+                        PixelSize += (float)rotatedSize;
+                    }
+
+                    if (AxisTicks.MajorTickVisible)
+                    {
+                        PixelSize += AxisTicks.MajorTickLength;
+                    }
+
+                    PixelSize = Math.Max(PixelSize, PixelSizeMinimum);
+                    PixelSize = Math.Min(PixelSize, PixelSizeMaximum);
+                    PixelSize += PixelSizePadding;
                 }
-
-                if (AxisTicks.MajorTickVisible)
-                    PixelSize += AxisTicks.MajorTickLength;
-
-                PixelSize = Math.Max(PixelSize, PixelSizeMinimum);
-                PixelSize = Math.Min(PixelSize, PixelSizeMaximum);
-                PixelSize += PixelSizePadding;
             }
         }
 

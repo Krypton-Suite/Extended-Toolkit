@@ -82,9 +82,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 for (int j = 0; j < ys.Length; j++)
                 {
                     if (vectors[i, j].LengthSquared() > maxMagnitudeSquared)
+                    {
                         maxMagnitudeSquared = vectors[i, j].LengthSquared();
+                    }
                     else if (vectors[i, j].LengthSquared() < minMagnitudeSquared)
+                    {
                         minMagnitudeSquared = vectors[i, j].LengthSquared();
+                    }
                 }
             }
             double minMagnitude = Math.Sqrt(minMagnitudeSquared);
@@ -96,7 +100,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 for (int j = 0; j < ys.Length; j++)
                 {
                     if (colormap != null)
+                    {
                         intensities[i, j] = (vectors[i, j].Length() - minMagnitude) / (maxMagnitude - minMagnitude);
+                    }
+
                     vectors[i, j] = Vector2.Multiply(vectors[i, j], (float)(scaleFactor / (maxMagnitude * 1.2)));
                 }
             }
@@ -106,9 +113,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 Enumerable.Range(0, flattenedIntensities.Length).Select(x => defaultColor).ToArray() :
                 ColourMap.GetColours(flattenedIntensities, colormap);
 
-            this.Vectors = vectors;
-            this.Xs = xs;
-            this.Ys = ys;
+            Vectors = vectors;
+            Xs = xs;
+            Ys = ys;
         }
 
         public void ValidateData(bool deep = false) { /* validation occurs in constructor */ }
@@ -132,7 +139,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             using Graphics gfx = GDI.Graphics(bmp, dims, lowQuality);
 
@@ -141,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottableVectorField{label} with {PointCount} vectors";
         }
     }

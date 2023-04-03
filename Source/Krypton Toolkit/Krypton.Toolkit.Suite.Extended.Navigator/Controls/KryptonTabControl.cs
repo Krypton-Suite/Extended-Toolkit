@@ -414,7 +414,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             // Hook into palette events
             if (_palette != null)
+            {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             // We want to be notified whenever the global palette changes
             KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
@@ -446,7 +448,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             // Unhook events from old palette
             if (_palette != null)
+            {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             // Cache the new IPalette that is the global palette
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -552,7 +556,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         {
                             //DrawTab(g, this.TabPages[i], i, true);
                             //Redraw only if the state has changed
-                            if ((bool)this.TabPages[i].Tag == false) Invalidate();
+                            if ((bool)this.TabPages[i].Tag == false)
+                            {
+                                Invalidate();
+                            }
+
                             this.TabPages[i].Tag = true;
                         }
                     }
@@ -560,7 +568,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     {
                         //DrawTab(g, this.TabPages[i], i, false);
                         //Redraw only if the state has changed
-                        if ((bool)this.TabPages[i].Tag == true) Invalidate();
+                        if ((bool)this.TabPages[i].Tag == true)
+                        {
+                            Invalidate();
+                        }
+
                         this.TabPages[i].Tag = false;
                     }
                 }
@@ -694,7 +706,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         internal void DrawControl(Graphics g)
         {
             if (!Visible)
+            {
                 return;
+            }
 
             Rectangle TabControlArea = this.ClientRectangle;
             Rectangle TabArea = this.DisplayRectangle;
@@ -777,10 +791,25 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             //debug --> to be fixed
-            if (recBounds.Width == 0) recBounds.Width = 50;
-            if (tabTextArea.Width == 0) tabTextArea.Width = 50;
-            if (recBounds.Height == 0) recBounds.Width = 22;
-            if (tabTextArea.Height == 0) tabTextArea.Width = 22;
+            if (recBounds.Width == 0)
+            {
+                recBounds.Width = 50;
+            }
+
+            if (tabTextArea.Width == 0)
+            {
+                tabTextArea.Width = 50;
+            }
+
+            if (recBounds.Height == 0)
+            {
+                recBounds.Width = 22;
+            }
+
+            if (tabTextArea.Height == 0)
+            {
+                tabTextArea.Width = 22;
+            }
 
             bool bSelected = (this.SelectedIndex == nIndex);
             bool bHot = false;
@@ -811,14 +840,24 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
             //maximum radius
-            if (_cornerRoundRadiusWidth > 32) _cornerRoundRadiusWidth = 32;
+            if (_cornerRoundRadiusWidth > 32)
+            {
+                _cornerRoundRadiusWidth = 32;
+            }
 
             //bool bHotselected = false;
 
             //Tab Hedaer Status
             DrawingMethods.TabHeaderStatus Status = DrawingMethods.TabHeaderStatus.Normal;
-            if (_preserveTabColour) Status = DrawingMethods.TabHeaderStatus.NormalPreserve;
-            if (bHot) Status = DrawingMethods.TabHeaderStatus.Hot;
+            if (_preserveTabColour)
+            {
+                Status = DrawingMethods.TabHeaderStatus.NormalPreserve;
+            }
+
+            if (bHot)
+            {
+                Status = DrawingMethods.TabHeaderStatus.Hot;
+            }
 
             if ((bSelected) && (!bHot))
             {
@@ -1160,7 +1199,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
             //Disabled
-            if (!this.Enabled) br = new SolidBrush(SystemColors.GrayText);
+            if (!this.Enabled)
+            {
+                br = new SolidBrush(SystemColors.GrayText);
+            }
 
 
             if (this.Alignment == TabAlignment.Right || this.Alignment == TabAlignment.Left)
@@ -1205,7 +1247,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         internal void DrawIcons(Graphics g)
         {
             if ((leftRightImages == null) || (leftRightImages.Images.Count != 4))
+            {
                 return;
+            }
 
             //----------------------------
             // calc positions
@@ -1246,12 +1290,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 {
                     Rectangle r3 = this.GetTabRect(0);
                     if (r3.Left < TabControlArea.Left)
+                    {
                         g.DrawImage(img, r1);
+                    }
                     else
                     {
                         img = leftRightImages.Images[3];
                         if (img != null)
+                        {
                             g.DrawImage(img, r1);
+                        }
                     }
                 }
             }
@@ -1263,12 +1311,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 {
                     Rectangle r3 = this.GetTabRect(this.TabCount - 1);
                     if (r3.Right > (TabControlArea.Width - r0.Width))
+                    {
                         g.DrawImage(img, r2);
+                    }
                     else
                     {
                         img = leftRightImages.Images[2];
                         if (img != null)
+                        {
                             g.DrawImage(img, r2);
+                        }
                     }
                 }
             }
@@ -1322,7 +1374,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
 
                 if (UpDown != null)
+                {
                     UpDown.ReleaseHandle();
+                }
             }
             base.Dispose(disposing);
         }
@@ -1512,7 +1566,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
             //multiline, no navigator
-            if (this.Multiline == true) _allowNavigatorButtons = false;
+            if (this.Multiline == true)
+            {
+                _allowNavigatorButtons = false;
+            }
 
             //which buttons to display
             if (_allowCloseButton == true)
@@ -1579,13 +1636,21 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
             if (this.Alignment == TabAlignment.Top)
+            {
                 Scroller.Location = new Point(this.Width - Scroller.Width - 1, 2);
+            }
             else if (this.Alignment == TabAlignment.Bottom)
+            {
                 Scroller.Location = new Point(this.Width - Scroller.Width - 1, this.Height - Scroller.Height - 1);
+            }
             else if (this.Alignment == TabAlignment.Right)
+            {
                 Scroller.Location = new Point(this.Width - Scroller.Width - 1, this.Height - Scroller.Height - 1);
+            }
             else if (this.Alignment == TabAlignment.Left)
+            {
                 Scroller.Location = new Point(2, this.Height - Scroller.Height - 1);
+            }
 
 
             //For Context Menu
@@ -1599,9 +1664,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             //if (this.Multiline)
             //    return;
             if (this.Alignment == TabAlignment.Top)
+            {
                 Scroller.Location = new Point(this.Width - Scroller.Width - 1, 2);
+            }
             else
+            {
                 Scroller.Location = new Point(this.Width - Scroller.Width, this.Height - Scroller.Height - 1);
+            }
         }
 
         protected override void OnControlAdded(ControlEventArgs e)
@@ -1636,7 +1705,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void Scroller_ScrollLeft(Object sender, System.EventArgs e)
         {
             if (this.TabCount == 0)
+            {
                 return;
+            }
+
             int scrollPos = Math.Max(0, (ScrollPosition - 1) * 0x10000);
             WIN32.SendMessage(this.Handle, WIN32.WM_HSCROLL, (IntPtr)(scrollPos | 0x4), IntPtr.Zero);
             WIN32.SendMessage(this.Handle, WIN32.WM_HSCROLL, (IntPtr)(scrollPos | 0x8), IntPtr.Zero);
@@ -1647,9 +1719,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void Scroller_ScrollRight(Object sender, System.EventArgs e)
         {
             if (this.TabCount == 0)
+            {
                 return;
+            }
+
             if (GetTabRect(this.TabCount - 1).Right <= this.Scroller.Left)
+            {
                 return;
+            }
+
             int scrollPos = Math.Max(0, (ScrollPosition + 1) * 0x10000);
             WIN32.SendMessage(this.Handle, WIN32.WM_HSCROLL, (IntPtr)(scrollPos | 0x4), IntPtr.Zero);
             WIN32.SendMessage(this.Handle, WIN32.WM_HSCROLL, (IntPtr)(scrollPos | 0x8), IntPtr.Zero);
@@ -1660,7 +1738,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void Scroller_TabClose(Object sender, System.EventArgs e)
         {
             if (this.SelectedTab != null)
+            {
                 this.TabPages.Remove(this.SelectedTab);
+            }
         }
 
         private void Scroller_ContextMenuButton(Object sender, System.EventArgs e)
@@ -1692,7 +1772,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
                     //show checked
-                    if (this.SelectedIndex == i) item.Checked = true;
+                    if (this.SelectedIndex == i)
+                    {
+                        item.Checked = true;
+                    }
                 }
                 catch
                 {
@@ -1848,21 +1931,27 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             private void LeftScroller_Click(Object sender, System.EventArgs e)
             {
                 if (ScrollLeft != null)
+                {
                     ScrollLeft(this, EventArgs.Empty);
+                }
             }
 
 
             private void RightScroller_Click(Object sender, System.EventArgs e)
             {
                 if (ScrollRight != null)
+                {
                     ScrollRight(this, EventArgs.Empty);
+                }
             }
 
 
             private void CloseButton_Click(Object sender, System.EventArgs e)
             {
                 if (TabClose != null)
+                {
                     TabClose(this, EventArgs.Empty);
+                }
             }
 
             private void ContextMenuButton_Click(Object sender, System.EventArgs e)
@@ -1900,7 +1989,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             protected override void WndProc(ref System.Windows.Forms.Message m)
             {
                 if (m.Msg == WM_DESTROY || m.Msg == WM_NCDESTROY)
+                {
                     this.ReleaseHandle();
+                }
                 else if (m.Msg == WM_WINDOWPOSCHANGING)
                 {
                     //Move the updown control off the edge so it's not visible

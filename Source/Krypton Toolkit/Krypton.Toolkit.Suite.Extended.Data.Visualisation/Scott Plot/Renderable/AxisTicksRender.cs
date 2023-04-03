@@ -37,7 +37,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             LineStyle gridLineStyle, Color gridLineColor, float gridLineWidth, Edge edge)
         {
             if (positions is null || positions.Length == 0 || gridLineStyle == LineStyle.None)
+            {
                 return;
+            }
 
             // don't draw grid lines on the last pixel to prevent drawing over the data frame
             float xEdgeLeft = dims.DataOffsetX + 1;
@@ -51,9 +53,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 float x2 = (edge == Edge.Left) ? dims.DataOffsetX + dims.DataWidth : dims.DataOffsetX;
                 var ys = positions.Select(i => dims.GetPixelY(i)).Where(y => yEdgeTop < y && y < yEdgeBottom);
                 if (gridLineStyle != LineStyle.None)
+                {
                     using (var pen = GDI.Pen(gridLineColor, gridLineWidth, gridLineStyle))
+                    {
                         foreach (float y in ys)
+                        {
                             gfx.DrawLine(pen, x, y, x2, y);
+                        }
+                    }
+                }
             }
 
             if (EdgeIsHorizontal(edge))
@@ -62,16 +70,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 float y2 = (edge == Edge.Top) ? dims.DataOffsetY + dims.DataHeight : dims.DataOffsetY;
                 var xs = positions.Select(i => dims.GetPixelX(i)).Where(x => xEdgeLeft < x && x < xEdgeRight);
                 if (gridLineStyle != LineStyle.None)
+                {
                     using (var pen = GDI.Pen(gridLineColor, gridLineWidth, gridLineStyle))
+                    {
                         foreach (float x in xs)
+                        {
                             gfx.DrawLine(pen, x, y, x, y2);
+                        }
+                    }
+                }
             }
         }
 
         public static void RenderTickMarks(PlotDimensions dims, Graphics gfx, double[] positions, float tickLength, Color tickColor, Edge edge, float pixelOffset)
         {
             if (positions is null || positions.Length == 0)
+            {
                 return;
+            }
 
             if (EdgeIsVertical(edge))
             {
@@ -80,8 +96,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                 var ys = positions.Select(i => dims.GetPixelY(i));
                 using (var pen = GDI.Pen(tickColor))
+                {
                     foreach (float y in ys)
+                    {
                         gfx.DrawLine(pen, x, y, x + tickDelta, y);
+                    }
+                }
             }
 
             if (EdgeIsHorizontal(edge))
@@ -91,15 +111,21 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                 var xs = positions.Select(i => dims.GetPixelX(i));
                 using (var pen = GDI.Pen(tickColor))
+                {
                     foreach (float x in xs)
+                    {
                         gfx.DrawLine(pen, x, y, x, y + tickDelta);
+                    }
+                }
             }
         }
 
         public static void RenderTickLabels(PlotDimensions dims, Graphics gfx, TickCollection tc, Font tickFont, Edge edge, float rotation, bool rulerMode, float PixelOffset, float MajorTickLength, float MinorTickLength)
         {
             if (TickCollectionStorage.tickLabels is null || TickCollectionStorage.tickLabels.Length == 0)
+            {
                 return;
+            }
 
             using var font = GDI.Font(tickFont);
             using var brush = GDI.Brush(tickFont.Color);
@@ -118,7 +144,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                         gfx.TranslateTransform(x, y);
                         gfx.RotateTransform(-rotation);
                         sf.Alignment = rotation == 0 ? StringAlignment.Center : StringAlignment.Far;
-                        if (rulerMode) sf.Alignment = StringAlignment.Near;
+                        if (rulerMode)
+                        {
+                            sf.Alignment = StringAlignment.Near;
+                        }
+
                         sf.LineAlignment = rotation == 0 ? StringAlignment.Near : StringAlignment.Center;
                         gfx.DrawString(visibleMajorTicks[i].Label, font, brush, 0, 0, sf);
                         gfx.ResetTransform();
@@ -134,7 +164,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                         gfx.TranslateTransform(x, y);
                         gfx.RotateTransform(-rotation);
                         sf.Alignment = rotation == 0 ? StringAlignment.Center : StringAlignment.Near;
-                        if (rulerMode) sf.Alignment = StringAlignment.Near;
+                        if (rulerMode)
+                        {
+                            sf.Alignment = StringAlignment.Near;
+                        }
+
                         sf.LineAlignment = rotation == 0 ? StringAlignment.Far : StringAlignment.Center;
                         gfx.DrawString(visibleMajorTicks[i].Label, font, brush, 0, 0, sf);
                         gfx.ResetTransform();
@@ -192,7 +226,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     case Edge.Bottom:
                         sf.Alignment = StringAlignment.Far;
                         sf.LineAlignment = StringAlignment.Near;
-                        gfx.DrawString(s: "\n" + tc.CornerLabel,
+                        gfx.DrawString(s: $"\n{tc.CornerLabel}",
                             x: dims.DataOffsetX + dims.DataWidth,
                             y: dims.DataOffsetY + dims.DataHeight + MajorTickLength,
                             font: font, brush: brush, format: sf);
@@ -201,7 +235,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     case Edge.Left:
                         sf.Alignment = StringAlignment.Near;
                         sf.LineAlignment = StringAlignment.Far;
-                        gfx.DrawString(s: "\n" + tc.CornerLabel,
+                        gfx.DrawString(s: $"\n{tc.CornerLabel}",
                             x: dims.DataOffsetX,
                             y: dims.DataOffsetY,
                             font: font, brush: brush, format: sf);

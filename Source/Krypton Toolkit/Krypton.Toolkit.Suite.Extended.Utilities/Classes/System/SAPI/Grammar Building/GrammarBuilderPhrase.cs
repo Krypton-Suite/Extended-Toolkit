@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 
         private readonly MatchMode _matchMode;
 
-        internal override string DebugSummary => "‘" + _phrase + "’";
+        internal override string DebugSummary => $"‘{_phrase}’";
 
         internal GrammarBuilderPhrase(string phrase)
             : this(phrase, false, SubsetMatchingMode.OrderedSubset)

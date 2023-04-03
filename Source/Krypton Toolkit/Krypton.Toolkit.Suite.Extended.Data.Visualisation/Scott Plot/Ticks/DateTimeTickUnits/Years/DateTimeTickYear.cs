@@ -33,7 +33,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             kind = DateTimeUnit.Year;
             if (manualSpacing != null)
+            {
                 throw new NotImplementedException("can't display years with fixed spacing (use numeric axis instead)");
+            }
+
             deltas = new int[] { 1, 2, 5 };
         }
 
@@ -51,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             var dt = new DateTime(value.Year, 1, 1);
             string localizedLabel = dt.ToString("yyyy", culture); // year only
-            return localizedLabel + "\n ";
+            return $"{localizedLabel}\n ";
         }
     }
 }

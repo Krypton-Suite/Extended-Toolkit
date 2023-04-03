@@ -191,7 +191,9 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
                 }
 
                 if (!nodeFound)
+                {
                     return false;
+                }
             }
 
             return true;
@@ -209,9 +211,14 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
                 TvHeight = TvHeight + DragOffset.Y;
 
                 if (TvWidth < 50)
+                {
                     TvWidth = 50;
+                }
+
                 if (TvHeight < 50)
+                {
                     TvHeight = 50;
+                }
 
                 frmTreeView.Size = new Size(TvWidth, TvHeight);
                 pnlTree.Size = frmTreeView.Size;

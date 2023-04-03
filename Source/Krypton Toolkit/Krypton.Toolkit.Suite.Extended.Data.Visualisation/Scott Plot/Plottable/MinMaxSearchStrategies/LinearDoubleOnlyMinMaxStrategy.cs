@@ -43,9 +43,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             for (int i = l; i <= r; i++)
             {
                 if (sourceArray[i] < lowestValue)
+                {
                     lowestValue = sourceArray[i];
+                }
+
                 if (sourceArray[i] > highestValue)
+                {
                     highestValue = sourceArray[i];
+                }
             }
         }
 

@@ -222,8 +222,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         private void OnDownloadProgressChanged(object sender, long bytesReceived, long totalBytesToReceive, int percentage)
         {
             pbDownload.Value = percentage;
-            klblDownloadProgress.Text = "(" + Utilities.ConvertNumBytesToUserReadableString(bytesReceived) + " / " +
-                Utilities.ConvertNumBytesToUserReadableString(totalBytesToReceive) + ")";
+            klblDownloadProgress.Text =
+                $"({Utilities.ConvertNumBytesToUserReadableString(bytesReceived)} / {Utilities.ConvertNumBytesToUserReadableString(totalBytesToReceive)})";
         }
         #endregion
 

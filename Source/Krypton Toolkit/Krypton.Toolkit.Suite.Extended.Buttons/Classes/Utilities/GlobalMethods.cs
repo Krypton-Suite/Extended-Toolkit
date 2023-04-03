@@ -208,7 +208,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 }
                 catch (Win32Exception wexc)
                 {
-                    MessageBox.Show("Error: " + wexc.Message, "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error: {wexc.Message}", "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 return;
@@ -224,7 +224,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             if (productName != string.Empty)
             {
-                return (productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? " " + csdVersion : "");
+                return (productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? $" {csdVersion}"
+                    : "");
             }
 
             return string.Empty;

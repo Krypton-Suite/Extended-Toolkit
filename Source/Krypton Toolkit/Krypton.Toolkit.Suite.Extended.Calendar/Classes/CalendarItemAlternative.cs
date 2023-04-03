@@ -630,7 +630,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="r"></param>
         internal void AddBounds(Rectangle r)
         {
-            if (r.IsEmpty) throw new ArgumentException("r can't be empty");
+            if (r.IsEmpty)
+            {
+                throw new ArgumentException("r can't be empty");
+            }
 
             if (Bounds.IsEmpty)
             {
@@ -700,8 +703,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         internal void FirstAndLastRectangleGapping()
         {
             if (!IsOpenStart)
+            {
                 SetBounds(Rectangle.FromLTRB(Bounds.Left + Calendar.Renderer.ItemsPadding,
                     Bounds.Top, Bounds.Right, Bounds.Bottom));
+            }
 
             if (!IsOpenEnd)
             {

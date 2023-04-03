@@ -267,7 +267,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         internal void UpdateHighlights()
         {
             if (TimeUnits == null)
+            {
                 return;
+            }
 
             for (int i = 0; i < TimeUnits.Length; i++)
             {

@@ -52,7 +52,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Plot(int width = 800, int height = 600)
         {
             if (width <= 0 || height <= 0)
+            {
                 throw new ArgumentException("width and height must each be greater than 0");
+            }
 
             Style(ScottPlot.Style.Default);
             Resize(width, height);
@@ -63,8 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         /// <returns>plot description</returns>
         public override string ToString() =>
-            $"ScottPlot ({settings.Width}x{settings.Height}) " +
-            $"with {settings.Plottables.Count:n0} plottables";
+            $"ScottPlot ({settings.Width}x{settings.Height}) with {settings.Plottables.Count:n0} plottables";
 
         /// <summary>
         /// ScottPlot version in the format "1.2.3" (or "1.2.3-beta" for pre-releases)
@@ -114,7 +115,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (settings.Plottables.Count == 0)
+            {
                 settings.ResetAxisLimits();
+            }
         }
 
         /// <summary>
@@ -126,7 +129,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             settings.Plottables.Remove(plottable);
 
             if (settings.Plottables.Count == 0)
+            {
                 settings.ResetAxisLimits();
+            }
         }
 
         /// <summary>
@@ -138,7 +143,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             settings.Plottables.RemoveAt(index);
 
             if (settings.Plottables.Count == 0)
+            {
                 settings.ResetAxisLimits();
+            }
         }
 
         /// <summary>
@@ -181,7 +188,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Validate(bool deep = true)
         {
             foreach (var plottable in settings.Plottables)
+            {
                 plottable.ValidateData(deep);
+            }
         }
 
         #endregion
@@ -198,8 +207,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Settings GetSettings(bool showWarning = true)
         {
             if (showWarning)
+            {
                 Debug.WriteLine("WARNING: GetSettings() is only for development and testing. " +
                                 "Be aware its class structure changes frequently!");
+            }
+
             return settings;
         }
 
@@ -233,7 +245,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Style(IStyle style)
         {
             if (style is null)
+            {
                 throw new ArgumentException(nameof(style));
+            }
 
             settings.FigureBackground.Color = style.FigureBackgroundColor;
             settings.DataBackground.Color = style.DataBackgroundColor;
@@ -278,7 +292,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 axis.MajorGrid(color: grid);
                 axis.MinorGrid(color: grid);
                 if (tick.HasValue)
+                {
                     axis.TickMarkColor(color: tick.Value);
+                }
+
                 axis.Line(color: tick);
             }
 
@@ -296,7 +313,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public bool Benchmark(bool? enable = true)
         {
             if (enable.HasValue)
+            {
                 settings.BenchmarkMessage.IsVisible = enable.Value;
+            }
 
             return settings.BenchmarkMessage.IsVisible;
         }
@@ -331,7 +350,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Plot newPlot = new Plot(oldSettings.Width, oldSettings.Height);
 
             foreach (IPlottable oldPlottable in oldPlot.GetPlottables())
+            {
                 newPlot.Add(oldPlottable);
+            }
+
             newPlot.AxisAuto();
 
             newPlot.XLabel(oldSettings.XAxis.Label());

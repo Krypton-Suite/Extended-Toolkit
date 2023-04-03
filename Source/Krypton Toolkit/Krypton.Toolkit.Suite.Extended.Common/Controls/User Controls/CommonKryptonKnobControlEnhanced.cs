@@ -212,8 +212,13 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             set
             {
                 if (value > 0)
+                {
                     _mouseWheelBarPartitions = value;
-                else throw new ArgumentOutOfRangeException("MouseWheelBarPartitions has to be greather than zero");
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("MouseWheelBarPartitions has to be greather than zero");
+                }
             }
         }
 
@@ -512,7 +517,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             SetDimensions();
 
-            if (((_palette != null))) _palette.PalettePaint += OnPalettePaint;
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint += OnPalettePaint;
+            }
 
             KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
@@ -671,12 +679,20 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 //--------------------------------------------------------
                 if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Right)
                 {
-                    if (_value < _maximum) Value = _value + 1;
+                    if (_value < _maximum)
+                    {
+                        Value = _value + 1;
+                    }
+
                     this.Refresh();
                 }
                 else if (e.KeyCode == Keys.Down || e.KeyCode == Keys.Left)
                 {
-                    if (_value > _minimum) Value = _value - 1;
+                    if (_value > _minimum)
+                    {
+                        Value = _value - 1;
+                    }
+
                     this.Refresh();
                 }
             }
@@ -686,7 +702,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         {
             if (disposing)
             {
-                if (components != null) components.Dispose();
+                if (components != null)
+                {
+                    components.Dispose();
+                }
             }
 
             base.Dispose(disposing);
@@ -751,7 +770,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                         // Use font family = _scaleTypeface, but size = automatic
                         fSize = (float)(6F * _drawRatio);
                         if (fSize < 6)
+                        {
                             fSize = 6;
+                        }
+
                         strsize = Gr.MeasureString(str, new Font(_scaleTypeface.FontFamily, fSize));
                     }
                     else
@@ -797,7 +819,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         private bool DrawDivisions(Graphics Gr, RectangleF rc)
         {
             if (this == null)
+            {
                 return false;
+            }
 
             float cx = _pKnob.X;
             float cy = _pKnob.Y;
@@ -841,7 +865,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 {
                     fSize = (float)(6F * _drawRatio);
                     if (fSize < 6)
+                    {
                         fSize = 6;
+                    }
                 }
                 else
                 {
@@ -876,10 +902,13 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
                     // If autosize
                     if (_scaleTypefaceAutoSize)
+                    {
                         strsize = Gr.MeasureString(str, new Font(_scaleTypeface.FontFamily, fSize));
+                    }
                     else
+                    {
                         strsize = Gr.MeasureString(str, new Font(_scaleTypeface.FontFamily, _scaleTypeface.Size));
-
+                    }
 
 
                     if (_drawDivInside)
@@ -921,7 +950,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     #region SubDivisions
 
                     if (_scaleDivisions <= 0)
+                    {
                         currentAngle += incr;
+                    }
                     else
                     {
 
@@ -965,7 +996,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             // Calculate ratio
             _drawRatio = w / 150;
             if (_drawRatio == 0.0)
+            {
                 _drawRatio = 1;
+            }
 
 
             if (_showLargeScale)
@@ -985,7 +1018,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 {
                     fSize = (float)(6F * _drawRatio);
                     if (fSize < 6)
+                    {
                         fSize = 6;
+                    }
+
                     font = new Font(_scaleTypeface.FontFamily, fSize);
                 }
                 else
@@ -1020,7 +1056,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 }
 
                 if (w <= 0)
+                {
                     w = 1;
+                }
+
                 h = w;
 
                 // Rectangle of the rounded knob
@@ -1060,9 +1099,18 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="val">The value.</param>
         private void SetProperValue(int val)
         {
-            if (val < _minimum) Value = _minimum;
-            else if (val > _maximum) Value = _maximum;
-            else Value = val;
+            if (val < _minimum)
+            {
+                Value = _minimum;
+            }
+            else if (val > _maximum)
+            {
+                Value = _maximum;
+            }
+            else
+            {
+                Value = val;
+            }
         }
 
         /// <summary>
@@ -1123,7 +1171,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             {
                 fSize = (float)(6F * _drawRatio);
                 if (fSize < 6)
+                {
                     fSize = 6;
+                }
 
                 _knobTypeface = new Font(_scaleTypeface.FontFamily, fSize);
                 strsize = Gr.MeasureString(str, _knobTypeface);
@@ -1196,8 +1246,16 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             // FAB: 25/08/18            
             v = _minimum + (int)Math.Round(degree * (_maximum - _minimum) / _deltaAngle);
 
-            if (v > _maximum) v = _maximum;
-            if (v < _minimum) v = _minimum;
+            if (v > _maximum)
+            {
+                v = _maximum;
+            }
+
+            if (v < _minimum)
+            {
+                v = _minimum;
+            }
+
             return v;
         }
 
@@ -1226,7 +1284,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            if (((_palette != null))) _palette.PalettePaint -= OnPalettePaint;
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint -= OnPalettePaint;
+            }
 
             _palette = KryptonManager.CurrentGlobalPalette;
 

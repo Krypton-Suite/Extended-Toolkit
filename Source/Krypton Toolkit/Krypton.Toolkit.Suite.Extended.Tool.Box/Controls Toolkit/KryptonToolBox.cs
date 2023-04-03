@@ -1951,7 +1951,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
             if (null != _selectedTab.Control)
             {
-                System.Diagnostics.Debug.WriteLine("Control Location " + _selectedTab.Control.Location + " Item Area " + _selectedTab.ItemArea);
+                System.Diagnostics.Debug.WriteLine(
+                    $"Control Location {_selectedTab.Control.Location} Item Area {_selectedTab.ItemArea}");
             }
 
             if (null != _oldselectedTab)
@@ -2449,13 +2450,25 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             {
                 color = "#";
 
-                if (c.R < 16) color += "0";
+                if (c.R < 16)
+                {
+                    color += "0";
+                }
+
                 color += Convert.ToString(c.R, 16);
 
-                if (c.G < 16) color += "0";
+                if (c.G < 16)
+                {
+                    color += "0";
+                }
+
                 color += Convert.ToString(c.G, 16);
 
-                if (c.B < 16) color += "0";
+                if (c.B < 16)
+                {
+                    color += "0";
+                }
+
                 color += Convert.ToString(c.B, 16);
 
             }
@@ -3123,7 +3136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 Focus();
             }
 
-            System.Diagnostics.Debug.WriteLine("Control is Focused ? " + Focused);
+            System.Diagnostics.Debug.WriteLine($"Control is Focused ? {Focused}");
 
             if (_upScroll.HitTest(e.X, e.Y))
             {

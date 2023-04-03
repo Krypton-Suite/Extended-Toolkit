@@ -72,7 +72,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 layoutStyle = value;
                 if (layoutStyle != NaviLayoutStyle.StyleFromOwner)
+                {
                     renderer = null;
+                }
+
                 OnLayoutStyleChanged(new EventArgs());
             }
         }
@@ -149,7 +152,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             EventHandler handler = layoutStyleChanged;
             if (handler != null)
+            {
                 handler(this, e);
+            }
+
             Invalidate();
         }
 

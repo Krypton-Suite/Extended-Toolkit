@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 pdb = null;
                 if (_fDebugScript)
                 {
-                    string text = filePath.Substring(0, filePath.LastIndexOf('.')) + ".pdb";
+                    string text = $"{filePath.Substring(0, filePath.LastIndexOf('.'))}.pdb";
                     pdb = ExtractCodeGenerated(text);
                     FileHelper.DeleteTemporaryFile(text);
                 }

@@ -178,13 +178,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// New renders may be performed on this existing bitmap.
         /// When a new bitmap is created, this bitmap will be stored in OldBitmaps and eventually disposed.
         /// </summary>
-        private System.Drawing.Bitmap Bmp;
+        private Bitmap Bmp;
 
         /// <summary>
         /// Bitmaps that are created are stored here so they can be kept track of and
         /// disposed properly when new bitmaps are created.
         /// </summary>
-        private readonly Queue<System.Drawing.Bitmap> OldBitmaps = new();
+        private readonly Queue<Bitmap> OldBitmaps = new();
 
         /// <summary>
         /// Store last render limits so new renders can know whether the axis limits
@@ -308,9 +308,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double snapHeight = Settings.YAxis.Dims.UnitsPerPx * snapDistancePixels;
 
             foreach (IDraggable draggable in GetDraggables())
+            {
                 if (draggable.IsUnderMouse(Plot.GetCoordinateX((float)pixelX), Plot.GetCoordinateY((float)pixelY), snapWidth, snapHeight))
+                {
                     if (draggable.DragEnabled)
+                    {
                         return draggable;
+                    }
+                }
+            }
 
             return null;
         }
@@ -321,7 +327,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public static string GetHelpMessage()
         {
-            var sb = new System.Text.StringBuilder();
+            var sb = new StringBuilder();
             sb.AppendLine("Left-click-drag: pan");
             sb.AppendLine("Right-click-drag: zoom");
             sb.AppendLine("Middle-click-drag: zoom region");
@@ -345,7 +351,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Return the most recently rendered Bitmap.
         /// This method also disposes old Bitmaps if they exist.
         /// </summary>
-        public System.Drawing.Bitmap GetLatestBitmap()
+        public Bitmap GetLatestBitmap()
         {
             while (OldBitmaps.Count > 3)
                 OldBitmaps.Dequeue()?.Dispose();
@@ -359,16 +365,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(bool lowQuality = false, bool skipIfCurrentlyRendering = false)
         {
             if (Bmp is null)
+            {
                 return;
+            }
 
             if (currentlyRendering && skipIfCurrentlyRendering)
+            {
                 return;
+            }
+
             currentlyRendering = true;
 
             if (Configuration.Quality == QualityMode.High)
+            {
                 lowQuality = false;
+            }
             else if (Configuration.Quality == QualityMode.Low)
+            {
                 lowQuality = true;
+            }
 
             Plot.Render(Bmp, lowQuality);
             BitmapRenderCount += 1;
@@ -380,16 +395,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 Configuration.WarnIfRenderNotCalledManually &&
                 Debugger.IsAttached)
             {
-                string message = $"ScottPlot {Plot.Version} WARNING:\n" +
-                    $"{ControlName}.Refresh() must be called\n" +
-                    $"after modifying the plot or its data.";
+                string message =
+                    $"ScottPlot {Plot.Version} WARNING:\n{ControlName}.Refresh() must be called\nafter modifying the plot or its data.";
                 Debug.WriteLine(message.Replace("\n", " "));
                 AddErrorMessage(Bmp, message);
             }
 
             AxisLimits newLimits = Plot.GetAxisLimits();
             if (!newLimits.Equals(LimitsOnLastRender) && Configuration.AxesChangedEventEnabled)
+            {
                 AxesChanged(null, EventArgs.Empty);
+            }
+
             LimitsOnLastRender = newLimits;
 
             if (BitmapRenderCount == 1)
@@ -409,44 +426,44 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add error text on top of the rendered plot
         /// </summary>
-        private static void AddErrorMessage(System.Drawing.Bitmap bmp, string message)
+        private static void AddErrorMessage(Bitmap bmp, string message)
         {
-            System.Drawing.Color foreColor = System.Drawing.Color.Red;
-            System.Drawing.Color backColor = System.Drawing.Color.Yellow;
-            System.Drawing.Color shadowColor = System.Drawing.Color.FromArgb(50, System.Drawing.Color.Black);
+            Color foreColor = Color.Red;
+            Color backColor = Color.Yellow;
+            Color shadowColor = Color.FromArgb(50, Color.Black);
             int padding = 10;
             int shadowOffset = 7;
 
-            using var gfx = System.Drawing.Graphics.FromImage(bmp);
-            gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            using var gfx = Graphics.FromImage(bmp);
+            gfx.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-            using System.Drawing.StringFormat sf = GDI.StringFormat(HorizontalAlignment.Center, VerticalAlignment.Middle);
-            using System.Drawing.Font font = new(System.Drawing.FontFamily.GenericSansSerif, 16, System.Drawing.FontStyle.Bold);
-            System.Drawing.SizeF messageSize = gfx.MeasureString(message, font);
-            System.Drawing.RectangleF messageRect = new(
+            using StringFormat sf = GDI.StringFormat(HorizontalAlignment.Center, VerticalAlignment.Middle);
+            using System.Drawing.Font font = new(FontFamily.GenericSansSerif, 16, FontStyle.Bold);
+            SizeF messageSize = gfx.MeasureString(message, font);
+            RectangleF messageRect = new(
                 x: bmp.Width / 2 - messageSize.Width / 2 - padding,
                 y: bmp.Height / 2 - messageSize.Height / 2 - padding,
                 width: messageSize.Width + padding * 2,
                 height: messageSize.Height + padding * 2);
-            System.Drawing.RectangleF shadowRect = new(
+            RectangleF shadowRect = new(
                 x: messageRect.X + shadowOffset,
                 y: messageRect.Y + shadowOffset,
                 width: messageRect.Width,
                 height: messageRect.Height);
 
-            using System.Drawing.SolidBrush foreBrush = new(foreColor);
-            using System.Drawing.Pen forePen = new(foreColor, width: 5);
-            using System.Drawing.SolidBrush backBrush = new(backColor);
-            using System.Drawing.SolidBrush shadowBrush = new(shadowColor);
+            using SolidBrush foreBrush = new(foreColor);
+            using Pen forePen = new(foreColor, width: 5);
+            using SolidBrush backBrush = new(backColor);
+            using SolidBrush shadowBrush = new(shadowColor);
 
             if (messageSize.Width > bmp.Width || messageSize.Height > bmp.Height)
             {
-                System.Drawing.RectangleF plotRect = new(0, 0, bmp.Width, bmp.Height);
-                sf.Alignment = System.Drawing.StringAlignment.Near;
-                sf.LineAlignment = System.Drawing.StringAlignment.Near;
+                RectangleF plotRect = new(0, 0, bmp.Width, bmp.Height);
+                sf.Alignment = StringAlignment.Near;
+                sf.LineAlignment = StringAlignment.Near;
                 message = message.Replace("\n", " ");
 
-                using System.Drawing.Font fontSmall = new(System.Drawing.FontFamily.GenericSansSerif, 12, System.Drawing.FontStyle.Bold);
+                using System.Drawing.Font fontSmall = new(FontFamily.GenericSansSerif, 12, FontStyle.Bold);
                 gfx.Clear(backColor);
                 gfx.DrawString(message, fontSmall, foreBrush, plotRect, sf);
             }
@@ -454,7 +471,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 gfx.FillRectangle(shadowBrush, shadowRect);
                 gfx.FillRectangle(backBrush, messageRect);
-                gfx.DrawRectangle(forePen, System.Drawing.Rectangle.Round(messageRect));
+                gfx.DrawRectangle(forePen, Rectangle.Round(messageRect));
                 gfx.DrawString(message, font, foreBrush, messageRect, sf);
             }
         }
@@ -504,13 +521,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void RenderIfPlottableListChanged()
         {
             if (Configuration.RenderIfPlottableListChanges == false)
+            {
                 return;
+            }
 
             if (Bmp is null)
+            {
                 return;
+            }
 
             if (Settings.PlottablesIdentifier != PlottablesIdentifierAtLastRender)
+            {
                 Render();
+            }
         }
 
         /// <summary>
@@ -523,22 +546,30 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             // don't render if the requested size cannot produce a valid bitmap
             if (width < 1 || height < 1)
+            {
                 return;
+            }
 
             // don't render if the request is so early that the processor hasn't started
             if (EventsProcessor is null)
+            {
                 return;
+            }
 
             // Disposing a Bitmap the GUI is displaying will cause an exception.
             // Keep track of old bitmaps so they can be disposed of later.
             OldBitmaps.Enqueue(Bmp);
-            Bmp = new System.Drawing.Bitmap((int)width, (int)height);
+            Bmp = new Bitmap((int)width, (int)height);
             BitmapRenderCount = 0;
 
             if (useDelayedRendering)
+            {
                 RenderRequest(RenderType.HighQualityDelayed);
+            }
             else
+            {
                 Render();
+            }
         }
 
         /// <summary>
@@ -547,7 +578,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void MouseDown(InputState input)
         {
             if (!Settings.AllAxesHaveBeenSet)
+            {
                 Plot.SetAxisLimits(Plot.GetAxisLimits());
+            }
+
             IsMiddleDown = input.MiddleWasJustPressed;
             IsRightDown = input.RightWasJustPressed;
             IsLeftDown = input.LeftWasJustPressed;
@@ -578,7 +612,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             bool altWasLifted = IsZoomingWithAlt && !input.AltDown;
             bool middleButtonLifted = IsZoomingRectangle && !input.MiddleWasJustPressed;
             if (IsZoomingRectangle && (altWasLifted || middleButtonLifted))
+            {
                 Settings.ZoomRectangle.Clear();
+            }
 
             IsZoomingWithAlt = IsLeftDown && input.AltDown;
             bool isMiddleClickDragZooming = IsMiddleDown && !middleButtonLifted;
@@ -593,18 +629,30 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             IUIEvent mouseMoveEvent = null;
             if (PlottableBeingDragged != null)
+            {
                 mouseMoveEvent = EventFactory.CreatePlottableDrag(input.X, input.Y, input.ShiftDown, PlottableBeingDragged);
+            }
             else if (IsLeftDown && !input.AltDown && Configuration.LeftClickDragPan)
+            {
                 mouseMoveEvent = EventFactory.CreateMousePan(input);
+            }
             else if (IsRightDown && Configuration.RightClickDragZoom)
+            {
                 mouseMoveEvent = EventFactory.CreateMouseZoom(input);
+            }
             else if (IsZoomingRectangle)
+            {
                 mouseMoveEvent = EventFactory.CreateMouseMovedToZoomRectangle(input.X, input.Y);
+            }
 
             if (mouseMoveEvent != null)
+            {
                 ProcessEvent(mouseMoveEvent);
+            }
             else
+            {
                 MouseMovedWithoutInteraction(input);
+            }
         }
 
         /// <summary>
@@ -625,7 +673,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 uiEvent.ProcessEvent();
 
                 if (uiEvent.RenderType == RenderType.ProcessMouseEventsOnly)
+                {
                     return;
+                }
 
                 bool lowQuality =
                     uiEvent is MouseMovedToZoomRectangle ||
@@ -639,7 +689,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 Render(lowQuality: lowQuality, skipIfCurrentlyRendering: allowSkip);
 
                 if (uiEvent is PlottableDragEvent)
+                {
                     PlottableDragged(PlottableBeingDragged, EventArgs.Empty);
+                }
             }
         }
 
@@ -674,15 +726,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             IUIEvent mouseEvent;
             if (IsZoomingRectangle && MouseDownDragged && Configuration.MiddleClickDragZoom)
+            {
                 mouseEvent = EventFactory.CreateApplyZoomRectangleEvent(input.X, input.Y);
+            }
             else if (IsMiddleDown && Configuration.MiddleClickAutoAxis && MouseDownDragged == false)
+            {
                 mouseEvent = EventFactory.CreateMouseAutoAxis();
+            }
             else
+            {
                 mouseEvent = EventFactory.CreateMouseUpClearRender();
+            }
+
             ProcessEvent(mouseEvent);
 
             if (IsRightDown && MouseDownDragged == false)
+            {
                 RightClicked(null, EventArgs.Empty);
+            }
 
             IsMiddleDown = false;
             IsRightDown = false;
@@ -691,11 +752,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             UpdateCursor(input);
 
             if (droppedPlottable != null)
+            {
                 PlottableDropped(droppedPlottable, EventArgs.Empty);
+            }
 
             PlottableBeingDragged = null;
             if (droppedPlottable != null)
+            {
                 ProcessEvent(EventFactory.CreateMouseUpClearRender());
+            }
         }
 
         /// <summary>
@@ -717,7 +782,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void MouseWheel(InputState input)
         {
             if (!Settings.AllAxesHaveBeenSet)
+            {
                 Plot.SetAxisLimits(Plot.GetAxisLimits());
+            }
 
             if (Configuration.ScrollWheelZoom)
             {

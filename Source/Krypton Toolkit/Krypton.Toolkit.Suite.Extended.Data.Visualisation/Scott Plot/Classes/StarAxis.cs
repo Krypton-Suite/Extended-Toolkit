@@ -227,9 +227,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     (float)(1.3 * Math.Sin(sweepAngle * i - Math.PI / 2) * minScale + origin.Y));
 
                 if (Math.Abs(textDestination.X - origin.X) < 0.1)
+                {
                     sf.Alignment = StringAlignment.Center;
+                }
                 else
+                {
                     sf.Alignment = dims.GetCoordinateX(textDestination.X) < 0 ? StringAlignment.Far : StringAlignment.Near;
+                }
 
                 Graphics.DrawString(CategoryLabels[i], font, fontBrush, textDestination, sf);
             }

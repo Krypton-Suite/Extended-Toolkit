@@ -95,9 +95,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             currentFrame = currentFrame + direction;
             if ((currentFrame <= 0) && (direction < 0))
+            {
                 Stop();
+            }
             else if ((currentFrame >= (length - 1)) && (direction > 0))
+            {
                 Stop();
+            }
             else { }
         }
 
@@ -172,7 +176,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             currentFrame = 0;
             if (!animationTimer.Enabled)
+            {
                 animationTimer.Start();
+            }
         }
 
         /// <summary>

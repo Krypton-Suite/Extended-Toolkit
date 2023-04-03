@@ -688,7 +688,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             Element element = new Element(ElementType.Break);
             _elements.Add(element);
             element._attributes = new Collection<AttributeItem>();
-            element._attributes.Add(new AttributeItem("time", duration.TotalMilliseconds + "ms"));
+            element._attributes.Add(new AttributeItem("time", $"{duration.TotalMilliseconds}ms"));
         }
 
         public void AppendAudio(string path)

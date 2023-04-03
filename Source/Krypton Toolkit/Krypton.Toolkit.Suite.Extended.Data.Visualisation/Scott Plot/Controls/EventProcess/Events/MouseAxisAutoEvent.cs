@@ -50,7 +50,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Settings.ZoomRectangle.Clear();
 
             if (Configuration.LockVerticalAxis)
+            {
                 return;
+            }
 
             Plot.AxisAuto();
         }

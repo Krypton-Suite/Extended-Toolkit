@@ -44,7 +44,10 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
                 // Calculate the Baseline for the Font used by the Control and add it to the SnapLines
                 int textBaseline = GetBaseline(base.Control, ContentAlignment.MiddleCenter);
-                if (textBaseline > 0) snapList.Add(new SnapLine(SnapLineType.Baseline, textBaseline, SnapLinePriority.Medium));
+                if (textBaseline > 0)
+                {
+                    snapList.Add(new SnapLine(SnapLineType.Baseline, textBaseline, SnapLinePriority.Medium));
+                }
 
                 return snapList;
             }

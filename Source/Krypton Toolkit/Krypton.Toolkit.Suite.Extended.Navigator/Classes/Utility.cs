@@ -71,8 +71,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         public static StringFormat GetStringFormat(System.Drawing.ContentAlignment contentAlignment)
         {
             if (!Enum.IsDefined(typeof(System.Drawing.ContentAlignment), (int)contentAlignment))
+            {
                 throw new System.ComponentModel.InvalidEnumArgumentException(
                     "contentAlignment", (int)contentAlignment, typeof(System.Drawing.ContentAlignment));
+            }
 
             StringFormat stringFormat = new StringFormat();
 

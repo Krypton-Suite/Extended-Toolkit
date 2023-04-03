@@ -1047,10 +1047,20 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 }
 
                 // Dispose brushes.
-                if (null != txBrushes[0]) txBrushes[0].Dispose();
-                if (null != txBrushes[1]) txBrushes[1].Dispose();
-                if (null != txBrushes[2]) txBrushes[2].Dispose();
+                if (null != txBrushes[0])
+                {
+                    txBrushes[0].Dispose();
+                }
 
+                if (null != txBrushes[1])
+                {
+                    txBrushes[1].Dispose();
+                }
+
+                if (null != txBrushes[2])
+                {
+                    txBrushes[2].Dispose();
+                }
             }
 
             strFormat.FormatFlags = (StringFormatFlags)0;
@@ -1428,14 +1438,35 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 }
 
                 // Dispose brushes..
-                if (null != bgBrushes[0]) bgBrushes[0].Dispose();
-                if (null != bgBrushes[1]) bgBrushes[1].Dispose();
-                if (null != bgBrushes[2]) bgBrushes[2].Dispose();
+                if (null != bgBrushes[0])
+                {
+                    bgBrushes[0].Dispose();
+                }
 
-                if (null != txBrushes[0]) txBrushes[0].Dispose();
-                if (null != txBrushes[1]) txBrushes[1].Dispose();
-                if (null != txBrushes[2]) txBrushes[2].Dispose();
+                if (null != bgBrushes[1])
+                {
+                    bgBrushes[1].Dispose();
+                }
 
+                if (null != bgBrushes[2])
+                {
+                    bgBrushes[2].Dispose();
+                }
+
+                if (null != txBrushes[0])
+                {
+                    txBrushes[0].Dispose();
+                }
+
+                if (null != txBrushes[1])
+                {
+                    txBrushes[1].Dispose();
+                }
+
+                if (null != txBrushes[2])
+                {
+                    txBrushes[2].Dispose();
+                }
             }
         }
 

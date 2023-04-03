@@ -50,7 +50,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             if (this.IsSubClassed)
             {
                 if (OnSubClassedWndProc(ref m) != 0)
+                {
                     return;
+                }
             }
             base.WndProc(ref m);
         }

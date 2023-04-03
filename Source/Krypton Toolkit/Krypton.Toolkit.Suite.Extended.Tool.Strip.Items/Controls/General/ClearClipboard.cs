@@ -47,7 +47,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region Overrides
         protected override void OnClick(EventArgs e)
         {
-            if (!IsClipboardEmpty()) Clipboard.Clear();
+            if (!IsClipboardEmpty())
+            {
+                Clipboard.Clear();
+            }
 
             base.OnClick(e);
         }

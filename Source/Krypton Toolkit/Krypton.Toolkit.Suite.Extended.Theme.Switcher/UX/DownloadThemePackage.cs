@@ -186,7 +186,8 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
                 _client.DownloadProgressChanged += ProgressChanged;
 
-                Uri url = urlAddress.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ? new Uri(urlAddress) : new Uri("http://" + urlAddress);
+                Uri url = urlAddress.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ? new Uri(urlAddress) : new Uri(
+                    $"http://{urlAddress}");
 
                 _stopwatch.Start();
 

@@ -168,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 if (Days != null)
                 {
-                    Debug.Assert(Days != null, nameof(Days) + " != null");
+                    Debug.Assert(Days != null, $"{nameof(Days)} != null");
                     Days[i].SetBounds(new Rectangle(new Point(curX, curY), MonthView.DaySize));
                 }
 

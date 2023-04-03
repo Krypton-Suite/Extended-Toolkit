@@ -46,14 +46,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (!IsVisible)
+            {
                 return;
+            }
 
             using (var gfx = GDI.Graphics(bmp, dims, lowQuality: true, false))
-            using (var fillBrush = GDI.Brush(FillColor))
-            using (var borderPen = GDI.Pen(BorderColor))
             {
-                gfx.FillRectangle(fillBrush, X + dims.DataOffsetX, Y + dims.DataOffsetY, Width, Height);
-                gfx.DrawRectangle(borderPen, X + dims.DataOffsetX, Y + dims.DataOffsetY, Width, Height);
+                using (var fillBrush = GDI.Brush(FillColor))
+                {
+                    using (var borderPen = GDI.Pen(BorderColor))
+                    {
+                        gfx.FillRectangle(fillBrush, X + dims.DataOffsetX, Y + dims.DataOffsetY, Width, Height);
+                        gfx.DrawRectangle(borderPen, X + dims.DataOffsetX, Y + dims.DataOffsetY, Width, Height);
+                    }
+                }
             }
         }
     }

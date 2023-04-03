@@ -40,7 +40,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             this.culture = culture;
             this.maxTickCount = maxTickCount;
             if (manualSpacing.HasValue)
+            {
                 deltas = new int[] { manualSpacing.Value };
+            }
         }
 
         protected virtual DateTime Floor(DateTime value)
@@ -76,7 +78,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 result = GetTicks(from, to, delta);
                 if (result.Length <= maxTickCount)
+                {
                     return result;
+                }
             }
             return result;
         }
@@ -88,7 +92,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             while (dt <= to)
             {
                 if (dt >= from)
+                {
                     dates.Add(dt);
+                }
+
                 try
                 {
                     dt = Increment(dt, delta);

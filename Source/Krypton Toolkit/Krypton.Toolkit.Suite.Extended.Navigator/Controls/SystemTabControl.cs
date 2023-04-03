@@ -43,7 +43,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 TabAppearance ta = value;
                 if (ta != TabAppearance.Normal)
+                {
                     ta = TabAppearance.Normal;
+                }
 
                 base.Appearance = ta;
             }
@@ -123,7 +125,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             // add Palette Handler
             if (_palette != null)
+            {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
 
@@ -136,7 +140,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 _globalBackColour = _palette.ColorTable.ToolStripContentPanelGradientEnd;
                 _backColor = _palette.ColorTable.ToolStripGradientMiddle;
                 _hotForeColour = _palette.ColorTable.MenuStripText;
-                if (_hotForeColour == Color.White) _hotForeColour = Color.DarkGray;
+                if (_hotForeColour == Color.White)
+                {
+                    _hotForeColour = Color.DarkGray;
+                }
             }
 
             //Visual styles enabled? 
@@ -171,7 +178,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
+            {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
@@ -185,7 +194,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     _globalBackColour = _palette.ColorTable.ToolStripContentPanelGradientEnd;
                     _backColor = _palette.ColorTable.ToolStripGradientBegin;
                     _hotForeColour = _palette.ColorTable.MenuStripText;
-                    if (_hotForeColour == Color.White) _hotForeColour = Color.DarkGray;
+                    if (_hotForeColour == Color.White)
+                    {
+                        _hotForeColour = Color.DarkGray;
+                    }
                 }
             }
 

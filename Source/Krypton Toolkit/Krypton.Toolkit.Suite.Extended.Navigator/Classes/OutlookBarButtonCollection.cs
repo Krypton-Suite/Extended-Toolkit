@@ -65,7 +65,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 foreach (OutlookBarButton b in List)
                 {
-                    if (b.Text.Equals(text)) return b;
+                    if (b.Text.Equals(text))
+                    {
+                        return b;
+                    }
                 }
                 return null;
             }
@@ -79,11 +82,17 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 {
                     if (!(b.Rectangle == null))
                     {
-                        if (b.Rectangle.Contains(new Point(x, y))) return b;
+                        if (b.Rectangle.Contains(new Point(x, y)))
+                        {
+                            return b;
+                        }
                     }
                     if (!(b.Rectangle == null))
                     {
-                        if (b.Rectangle.Contains(new Point(x, y))) return b;
+                        if (b.Rectangle.Contains(new Point(x, y)))
+                        {
+                            return b;
+                        }
                     }
                 }
                 return null;
@@ -134,7 +143,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             int functionReturnValue = 0;
             foreach (OutlookBarButton b in this.List)
             {
-                if (b.Visible & b.Allowed) functionReturnValue += 1;
+                if (b.Visible & b.Allowed)
+                {
+                    functionReturnValue += 1;
+                }
             }
             return functionReturnValue;
         }

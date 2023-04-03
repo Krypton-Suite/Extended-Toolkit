@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 int count = Math.Min(bytes.Length, firstBytes.Length);
                 Array.Copy(bytes, firstBytes, count);
                 string strval = BitConverter.ToString(firstBytes, 0, count).Replace("-", " ");
-                return Regex.Replace(strval, "(.{23})", "$1" + Environment.NewLine);
+                return Regex.Replace(strval, "(.{23})", $"$1{Environment.NewLine}");
             }
             return base.GetFormattedValue(value, rowIndex, ref cellStyle, valueTypeConverter,
                 formattedValueTypeConverter, context);

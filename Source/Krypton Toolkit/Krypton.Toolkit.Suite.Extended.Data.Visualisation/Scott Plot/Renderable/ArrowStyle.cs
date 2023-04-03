@@ -85,7 +85,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             using Pen pen = GDI.Pen(Color.Black);
             if (!ScaledArrowheads)
-                pen.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(NonScaledArrowheadWidth, NonScaledArrowheadLength);
+            {
+                pen.CustomEndCap = new AdjustableArrowCap(NonScaledArrowheadWidth, NonScaledArrowheadLength);
+            }
 
             for (int i = 0; i < xs.Length; i++)
             {
@@ -120,9 +122,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                     pen.Color = colors[i * ys.Length + j];
                     if (ScaledArrowheads)
+                    {
                         DrawFancyArrow(gfx, pen, tailX, tailY, endX, endY, headAngle, tipScale);
+                    }
                     else
+                    {
                         gfx.DrawLine(pen, tailX, tailY, endX, endY);
+                    }
 
                     if (MarkerShape != MarkerShape.None && MarkerSize > 0)
                     {

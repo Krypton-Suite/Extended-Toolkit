@@ -73,7 +73,9 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             {
                 var page = value as KryptonAdvancedWizardPage;
                 if (page != null)
+                {
                     this[index] = page;
+                }
             }
         }
 
@@ -111,7 +113,11 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         int IList.Add(object @object)
         {
             var o = @object as KryptonAdvancedWizardPage;
-            if (o == null) return -1;
+            if (o == null)
+            {
+                return -1;
+            }
+
             return Add(o);
         }
 
@@ -127,7 +133,11 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         void IList.Remove(object @object)
         {
-            if (!(@object is KryptonAdvancedWizardPage)) return;
+            if (!(@object is KryptonAdvancedWizardPage))
+            {
+                return;
+            }
+
             _items.Remove(@object);
         }
 

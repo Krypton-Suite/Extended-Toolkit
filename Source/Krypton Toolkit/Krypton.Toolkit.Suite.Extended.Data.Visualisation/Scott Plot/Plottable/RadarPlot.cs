@@ -156,18 +156,26 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Array.Copy(values, 0, Norm, 0, values.Length);
 
             if (IndependentAxes)
+            {
                 NormMaxes = NormalizeSeveralInPlace(Norm, maxValues);
+            }
             else
+            {
                 NormMax = NormalizeInPlace(Norm, maxValues);
+            }
         }
 
         public void ValidateData(bool deep = false)
         {
             if (GroupLabels != null && GroupLabels.Length != Norm.GetLength(0))
+            {
                 throw new InvalidOperationException("group names must match size of values");
+            }
 
             if (CategoryLabels != null && CategoryLabels.Length != Norm.GetLength(1))
+            {
                 throw new InvalidOperationException("category names must match size of values");
+            }
         }
 
         /// <summary>
@@ -185,13 +193,21 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 max = input[0, 0];
                 for (int i = 0; i < input.GetLength(0); i++)
+                {
                     for (int j = 0; j < input.GetLength(1); j++)
+                    {
                         max = Math.Max(max, input[i, j]);
+                    }
+                }
             }
 
             for (int i = 0; i < input.GetLength(0); i++)
+            {
                 for (int j = 0; j < input.GetLength(1); j++)
+                {
                     input[i, j] /= max;
+                }
+            }
 
             return max;
         }
@@ -226,9 +242,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 for (int j = 0; j < input.GetLength(1); j++)
                 {
                     if (maxes[j] == 0)
+                    {
                         input[i, j] = 0;
+                    }
                     else
+                    {
                         input[i, j] /= maxes[j];
+                    }
                 }
             }
 
@@ -238,7 +258,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public LegendItem[] GetLegendItems()
         {
             if (GroupLabels is null)
+            {
                 return null;
+            }
 
             List<LegendItem> legendItems = new List<LegendItem>();
             for (int i = 0; i < GroupLabels.Length; i++)
@@ -270,27 +292,41 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             PointF origin = new PointF(dims.GetPixelX(0), dims.GetPixelY(0));
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen pen = GDI.Pen(WebColor, OutlineWidth))
-            using (Brush brush = GDI.Brush(Color.Black))
-            using (StringFormat sf = new StringFormat() { LineAlignment = StringAlignment.Center })
-            using (StringFormat sf2 = new StringFormat())
-            using (System.Drawing.Font font = GDI.Font(Font))
-            using (Brush fontBrush = GDI.Brush(Font.Color))
             {
-                RenderAxis(gfx, dims, bmp, lowQuality);
-
-                for (int i = 0; i < numGroups; i++)
+                using (Pen pen = GDI.Pen(WebColor, OutlineWidth))
                 {
-                    PointF[] points = new PointF[numCategories];
-                    for (int j = 0; j < numCategories; j++)
-                        points[j] = new PointF(
-                            (float)(Norm[i, j] * Math.Cos(sweepAngle * j - Math.PI / 2) * minScale + origin.X),
-                            (float)(Norm[i, j] * Math.Sin(sweepAngle * j - Math.PI / 2) * minScale + origin.Y));
+                    using (Brush brush = GDI.Brush(Color.Black))
+                    {
+                        using (StringFormat sf = new StringFormat() { LineAlignment = StringAlignment.Center })
+                        {
+                            using (StringFormat sf2 = new StringFormat())
+                            {
+                                using (System.Drawing.Font font = GDI.Font(Font))
+                                {
+                                    using (Brush fontBrush = GDI.Brush(Font.Color))
+                                    {
+                                        RenderAxis(gfx, dims, bmp, lowQuality);
 
-                    ((SolidBrush)brush).Color = FillColors[i];
-                    pen.Color = LineColors[i];
-                    gfx.FillPolygon(brush, points);
-                    gfx.DrawPolygon(pen, points);
+                                        for (int i = 0; i < numGroups; i++)
+                                        {
+                                            PointF[] points = new PointF[numCategories];
+                                            for (int j = 0; j < numCategories; j++)
+                                            {
+                                                points[j] = new PointF(
+                                                    (float)(Norm[i, j] * Math.Cos(sweepAngle * j - Math.PI / 2) * minScale + origin.X),
+                                                    (float)(Norm[i, j] * Math.Sin(sweepAngle * j - Math.PI / 2) * minScale + origin.Y));
+                                            }
+
+                                            ((SolidBrush)brush).Color = FillColors[i];
+                                            pen.Color = LineColors[i];
+                                            gfx.FillPolygon(brush, points);
+                                            gfx.DrawPolygon(pen, points);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

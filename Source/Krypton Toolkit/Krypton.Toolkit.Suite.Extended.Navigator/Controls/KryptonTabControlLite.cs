@@ -102,7 +102,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         TP.Paint += TabPage_Paint;
                     }
                     if (SelectedTab != null)
+                    {
                         SelectedTab.Invalidate();
+                    }
                 }
                 else
                 {
@@ -111,7 +113,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         TP.Paint -= TabPage_Paint;
                     }
                     if (SelectedTab != null)
+                    {
                         SelectedTab.Invalidate();
+                    }
                 }
             }
         }
@@ -137,10 +141,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     for (int index = 0; index <= this.TabCount - 1; index++)
                     {
                         if (index != selectedIndex)
+                        {
                             this.PaintTab(index, renderContext);
+                        }
                     }
                     if (selectedIndex >= 0)
+                    {
                         this.PaintTab(SelectedIndex, renderContext);
+                    }
                 }
             }
 
@@ -260,14 +268,20 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         protected override void OnControlAdded(System.Windows.Forms.ControlEventArgs e)
         {
             if (_DrawTabPage)
+            {
                 e.Control.Paint += TabPage_Paint;
+            }
+
             base.OnControlAdded(e);
         }
 
         protected override void OnControlRemoved(System.Windows.Forms.ControlEventArgs e)
         {
             if (_DrawTabPage)
+            {
                 e.Control.Paint -= TabPage_Paint;
+            }
+
             base.OnControlRemoved(e);
         }
 

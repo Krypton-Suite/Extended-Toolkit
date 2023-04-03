@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         internal override string DebuggerDisplayString()
         {
-            return "'" + _text + "'";
+            return $"'{_text}'";
         }
     }
 }

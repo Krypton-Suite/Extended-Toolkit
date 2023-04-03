@@ -61,18 +61,22 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             while (currentException != null)
             {
                 if (count++ == 0)
+                {
                     stringBuilder.AppendLine("Top-level Exception");
+                }
                 else
-                    stringBuilder.AppendLine("Inner Exception " + (count - 1));
+                {
+                    stringBuilder.AppendLine($"Inner Exception {(count - 1)}");
+                }
 
                 stringBuilder
-                    .AppendLine("Type:    " + currentException.GetType())
-                    .AppendLine("Message: " + currentException.Message)
-                    .AppendLine("Source:  " + currentException.Source);
+                    .AppendLine($"Type:    {currentException.GetType()}")
+                    .AppendLine($"Message: {currentException.Message}")
+                    .AppendLine($"Source:  {currentException.Source}");
 
                 if (currentException.StackTrace != null)
                 {
-                    stringBuilder.AppendLine("Stack Trace: " + currentException.StackTrace.Trim());
+                    stringBuilder.AppendLine($"Stack Trace: {currentException.StackTrace.Trim()}");
                 }
 
                 currentException = currentException.InnerException;

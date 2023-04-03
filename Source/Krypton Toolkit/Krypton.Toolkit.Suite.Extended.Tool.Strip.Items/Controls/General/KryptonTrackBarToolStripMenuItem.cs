@@ -156,7 +156,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         protected void OnValueChanged(object sender, EventArgs e)
         {
             if (ValueChanged != null)
+            {
                 ValueChanged(this, e);
+            }
         }
 
         #endregion

@@ -481,11 +481,17 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             if (frmPopup.Visible)
             {
-                if (Appear != null) Appear(this, EventArgs.Empty);
+                if (Appear != null)
+                {
+                    Appear(this, EventArgs.Empty);
+                }
             }
             else
             {
-                if (Disappear != null) Disappear(this, EventArgs.Empty);
+                if (Disappear != null)
+                {
+                    Disappear(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -556,7 +562,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 {
                     frmPopup.Hide();
                     if (markedForDisposed)
+                    {
                         Dispose();
+                    }
                 }
             }
         }

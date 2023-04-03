@@ -66,7 +66,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             get
             {
                 double maxBackAngle = CircularBackground ? 360 : MaximumSizeAngle;
-                if (!Clockwise) maxBackAngle = -maxBackAngle;
+                if (!Clockwise)
+                {
+                    maxBackAngle = -maxBackAngle;
+                }
+
                 return maxBackAngle;
             }
         }
@@ -115,12 +119,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Style of the base of the gauge
         /// </summary>
-        public System.Drawing.Drawing2D.LineCap StartCap = System.Drawing.Drawing2D.LineCap.Round;
+        public LineCap StartCap = LineCap.Round;
 
         /// <summary>
         /// Style of the tip of the gauge
         /// </summary>
-        public System.Drawing.Drawing2D.LineCap EndCap = System.Drawing.Drawing2D.LineCap.Round;
+        public LineCap EndCap = LineCap.Round;
 
         /// <summary>
         /// Defines the location of each gauge relative to the start angle and distance from the center
@@ -148,12 +152,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private void RenderBackground(Graphics gfx, PointF center, float radius)
         {
             if (Mode == RadialGaugeMode.SingleGauge)
+            {
                 return;
+            }
 
             using Pen backgroundPen = GDI.Pen(BackgroundColor);
             backgroundPen.Width = (float)Width;
-            backgroundPen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
-            backgroundPen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+            backgroundPen.StartCap = LineCap.Round;
+            backgroundPen.EndCap = LineCap.Round;
 
             gfx.DrawArc(backgroundPen,
                         (center.X - radius),
@@ -186,7 +192,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private void RenderGaugeLabels(Graphics gfx, PointF center, float radius)
         {
             if (!ShowLabels)
+            {
                 return;
+            }
 
             // TODO: use this so font size is in pixels not pt
             //Font.Size = lineWidth * (float)FontSizeFraction;
@@ -219,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 float y = center.Y + radius * (float)Math.Sin(theta);
 
                 gfx.RotateTransform((float)rotation);
-                gfx.TranslateTransform(x, y, System.Drawing.Drawing2D.MatrixOrder.Append);
+                gfx.TranslateTransform(x, y, MatrixOrder.Append);
                 gfx.DrawString(Label[i].ToString(), font, brush, 0, 0, sf);
                 gfx.ResetTransform();
 
@@ -266,7 +274,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             angle %= 360;
 
             if (angle < 0)
+            {
                 angle += 360;
+            }
 
             return angle;
         }

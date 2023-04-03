@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottableSignalConst{label} with {PointCount} points ({typeof(T).Name})";
         }
     }

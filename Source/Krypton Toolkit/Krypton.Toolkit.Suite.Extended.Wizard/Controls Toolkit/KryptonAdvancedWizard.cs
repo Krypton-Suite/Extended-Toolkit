@@ -65,9 +65,14 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
                             case VK_RETURN:
                                 if (OnLastPage())
+                                {
                                     _wizardStrategy.Finish();
+                                }
                                 else if (NextButtonEnabled)
+                                {
                                     _wizardStrategy.Next(null);
+                                }
+
                                 break;
                             default:
                                 break;
@@ -208,9 +213,13 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                 _finishButton = value;
 
                 if (_buttonLayoutKind == ButtonLayoutKind.Default)
+                {
                     ChangeDefaultLayout(_finishButton);
+                }
                 else
+                {
                     ChangeOfficeLayout(_finishButton);
+                }
             }
         }
 
@@ -401,9 +410,13 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                 _pageSetAsFinishPage = value;
                 _lastPage = value ? CurrentPage : null;
                 if (HasExplicitFinishButton())
+                {
                     NextButtonEnabled = !value;
+                }
                 else
+                {
                     _kbtnNext.Text = value ? FinishButtonText : _tempNextText;
+                }
             }
         }
 

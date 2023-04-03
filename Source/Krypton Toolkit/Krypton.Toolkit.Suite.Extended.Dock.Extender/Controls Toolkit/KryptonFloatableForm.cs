@@ -105,12 +105,22 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
 
         protected override void OnMove(EventArgs e)
         {
-            if (IsDisposed) return;
+            if (IsDisposed)
+            {
+                return;
+            }
 
             Point pt = Cursor.Position;
             Point pc = PointToClient(pt);
-            if (pc.Y < -21 || pc.Y > 0) return;
-            if (pc.X < -1 || pc.X > Width) return;
+            if (pc.Y < -21 || pc.Y > 0)
+            {
+                return;
+            }
+
+            if (pc.X < -1 || pc.X > Width)
+            {
+                return;
+            }
 
             Control t = _dockExtender.FindDockHost(this, pt);
             if (t == null)
@@ -174,7 +184,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
             Rectangle r = c.Bounds;
 
             if (c.Parent != null)
+            {
                 r = c.Parent.RectangleToScreen(r);
+            }
 
             Rectangle rc = c.ClientRectangle;
 
@@ -191,7 +203,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
 
             foreach (Control cs in c.Controls)
             {
-                if (!cs.Visible) continue;
+                if (!cs.Visible)
+                {
+                    continue;
+                }
+
                 switch (cs.Dock)
                 {
                     case DockStyle.Left:
@@ -252,7 +268,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
             {
                 r.Width = r.Width / 2;
                 if (r.Width > Width)
+                {
                     r.Width = Width;
+                }
 
                 _dockExtender._overlay.Dock = DockStyle.Left; // dock to left
             }
@@ -262,7 +280,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
             {
                 r.Width = r.Width / 2;
                 if (r.Width > Width)
+                {
                     r.Width = Width;
+                }
+
                 r.X = rc.X + rc.Width - r.Width;
                 _dockExtender._overlay.Dock = DockStyle.Right;
             }
@@ -272,7 +293,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
             {
                 r.Height = r.Height / 2;
                 if (r.Height > Height)
+                {
                     r.Height = Height;
+                }
+
                 _dockExtender._overlay.Dock = DockStyle.Top;
             }
 
@@ -281,14 +305,21 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
             {
                 r.Height = r.Height / 2;
                 if (r.Height > Height)
+                {
                     r.Height = Height;
+                }
+
                 r.Y = rc.Y + rc.Height - r.Height;
                 _dockExtender._overlay.Dock = DockStyle.Bottom;
             }
             if (_dockExtender._overlay.Dock != DockStyle.None)
+            {
                 _dockExtender._overlay.Bounds = r;
+            }
             else
+            {
                 _dockExtender._overlay.Hide();
+            }
 
             if (!_dockExtender._overlay.Visible && _dockExtender._overlay.Dock != DockStyle.None)
             {
@@ -326,9 +357,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
                 sz.Width += 18;
                 sz.Height += 28;
             }
-            if (sz.Width > 600) sz.Width = 600;
-            if (sz.Height > 600) sz.Height = 600;
+            if (sz.Width > 600)
+            {
+                sz.Width = 600;
+            }
 
+            if (sz.Height > 600)
+            {
+                sz.Height = 600;
+            }
 
 
             _dockState.OrgDockingParent = _dockState.Container.Parent;
@@ -378,7 +415,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
             _dockState.Container.Visible = true; // it's good, show it
 
             if (_dockOnInside)
+            {
                 _dockState.Container.BringToFront(); // set to front
+            }
 
             //show splitter
             if (_dockState.Splitter != null && _dockState.OrgDockStyle != DockStyle.Fill && _dockState.OrgDockStyle != DockStyle.None)
@@ -388,18 +427,26 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
                 _dockState.Splitter.Visible = true; // show splitter
 
                 if (_dockOnInside)
+                {
                     _dockState.Splitter.BringToFront();
+                }
                 else
+                {
                     _dockState.Splitter.SendToBack();
+                }
             }
 
             if (!_dockOnInside)
+            {
                 _dockState.Container.SendToBack(); // set to back
+            }
 
             _isFloating = false;
 
             if (Docking != null)
+            {
                 Docking.Invoke(this, new EventArgs());
+            }
         }
 
         private void DetachHandle()

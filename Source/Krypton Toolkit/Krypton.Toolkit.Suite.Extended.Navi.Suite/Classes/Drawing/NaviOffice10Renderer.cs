@@ -75,9 +75,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             Color[] endColors = new Color[] { ColourTable.BandCollapsedBgColor1, ColourTable.BandCollapsedBgColor2 };
 
             if (state == InputState.Clicked)
+            {
                 endColors = new Color[] { ColourTable.BandCollapsedClickedColor1, ColourTable.BandCollapsedClickedColor1 };
+            }
             else if (state == InputState.Hovered)
+            {
                 endColors = new Color[] { ColourTable.BandCollapsedHoveredColor1, ColourTable.BandCollapsedHoveredColor1 };
+            }
 
             float[] ColorPositions = { 0.0f, 1.0f };
             ExtDrawing.DrawVertGradient(g, bounds, endColors, ColorPositions);
@@ -97,11 +101,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 // Background gradient 
                 if (state == InputState.Hovered)
+                {
                     endColors = new Color[] { ColourTable.ButtonHoveredColor1, ColourTable.ButtonHoveredColor2,
-                     ColourTable.ButtonHoveredColor3 };
+                        ColourTable.ButtonHoveredColor3 };
+                }
                 else
+                {
                     endColors = new Color[] { ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2,
-                     ColourTable.ButtonActiveColor3 };
+                        ColourTable.ButtonActiveColor3 };
+                }
 
                 float[] ColorPositions2 = { 0.0f, 0.4f, 1.0f };
                 ExtDrawing.DrawHorGradient(g, bounds, endColors, ColorPositions2);
@@ -302,11 +310,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 // Background gradient 
                 if (inputState == InputState.Hovered)
+                {
                     endColors = new Color[] { ColourTable.ButtonHoveredColor1, ColourTable.ButtonHoveredColor2,
-                     ColourTable.ButtonHoveredColor3 };
+                        ColourTable.ButtonHoveredColor3 };
+                }
                 else
+                {
                     endColors = new Color[] { ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2,
-                     ColourTable.ButtonActiveColor3 };
+                        ColourTable.ButtonActiveColor3 };
+                }
 
                 float[] ColorPositions = { 0.0f, 0.4f, 1.0f };
                 ExtDrawing.DrawVertGradient(g, bounds, endColors, ColorPositions);
@@ -314,15 +326,23 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 // Draws a nice shiney glow on the bottom of the button
 
                 if (inputState == InputState.Hovered)
+                {
                     endColors = new Color[] { Color.FromArgb(1, ColourTable.ButtonHoveredColor4) };
+                }
                 else
+                {
                     endColors = new Color[] { Color.FromArgb(1, ColourTable.ButtonActiveColor4) };
+                }
 
                 Color startColor;
                 if (inputState == InputState.Hovered)
+                {
                     startColor = Color.FromArgb(150, ColourTable.ButtonHoveredColor4);
+                }
                 else
+                {
                     startColor = Color.FromArgb(150, ColourTable.ButtonActiveColor4);
+                }
 
                 GraphicsPath path = new GraphicsPath();
                 path.AddEllipse(0, bounds.Height / 2, bounds.Width, bounds.Height);
@@ -493,9 +513,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             blend.Positions = ColorPositions;
 
             if (bounds.Height == 0)
+            {
                 bounds.Height = 1;
+            }
+
             if (bounds.Width == 0)
+            {
                 bounds.Width = 1; // its to prevent an out of memory exception
+            }
 
             Point beginPoint;
             Point endPoint;
@@ -602,10 +627,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 float y = 0;
 
                 if (bounds.Height != 0)
+                {
                     y = (bounds.Height / 2) - 3;
+                }
 
                 if (bounds.Width != 0)
+                {
                     x = (bounds.Width / 2) - 1;
+                }
 
                 if (((rightToLeft) && (!collapsed)) || (!rightToLeft) && (collapsed))
                 {

@@ -68,41 +68,56 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (double.IsNaN(Width) || double.IsNaN(Height))
+            {
                 throw new InvalidOperationException("Width and Height cannot be NaN");
+            }
+
             if (double.IsInfinity(Width) || double.IsInfinity(Height))
+            {
                 throw new InvalidOperationException("Width and Height cannot be Infinity");
+            }
         }
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             using (var gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (var font = GDI.Font(Font))
-            using (var fontBrush = new SolidBrush(Font.Color))
-            using (var linePen = new Pen(LineColor, LineWidth))
-            using (var sfNorth = new StringFormat() { LineAlignment = StringAlignment.Near, Alignment = StringAlignment.Center })
-            using (var sfWest = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
             {
-                // determine where the corner of the scalebar will be
-                float widthPx = (float)(Width * dims.PxPerUnitX);
-                float heightPx = (float)(Height * dims.PxPerUnitY);
-                PointF cornerPoint = new PointF(dims.GetPixelX(dims.XMax) - Padding, dims.GetPixelY(dims.YMin) - Padding);
+                using (var font = GDI.Font(Font))
+                {
+                    using (var fontBrush = new SolidBrush(Font.Color))
+                    {
+                        using (var linePen = new Pen(LineColor, LineWidth))
+                        {
+                            using (var sfNorth = new StringFormat() { LineAlignment = StringAlignment.Near, Alignment = StringAlignment.Center })
+                            {
+                                using (var sfWest = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
+                                {
+                                    // determine where the corner of the scalebar will be
+                                    float widthPx = (float)(Width * dims.PxPerUnitX);
+                                    float heightPx = (float)(Height * dims.PxPerUnitY);
+                                    PointF cornerPoint = new PointF(dims.GetPixelX(dims.XMax) - Padding, dims.GetPixelY(dims.YMin) - Padding);
 
-                // move the corner point away from the edge to accommodate label size
-                var xLabelSize = GDI.MeasureString(gfx, HorizontalLabel, font);
-                var yLabelSize = GDI.MeasureString(gfx, VerticalLabel, font);
-                cornerPoint.X -= yLabelSize.Width * 1.2f;
-                cornerPoint.Y -= yLabelSize.Height;
+                                    // move the corner point away from the edge to accommodate label size
+                                    var xLabelSize = GDI.MeasureString(gfx, HorizontalLabel, font);
+                                    var yLabelSize = GDI.MeasureString(gfx, VerticalLabel, font);
+                                    cornerPoint.X -= yLabelSize.Width * 1.2f;
+                                    cornerPoint.Y -= yLabelSize.Height;
 
-                // determine all other points relative to the corner point
-                PointF horizPoint = new PointF(cornerPoint.X - widthPx, cornerPoint.Y);
-                PointF vertPoint = new PointF(cornerPoint.X, cornerPoint.Y - heightPx);
-                PointF horizMidPoint = new PointF((cornerPoint.X + horizPoint.X) / 2, cornerPoint.Y);
-                PointF vertMidPoint = new PointF(cornerPoint.X, (cornerPoint.Y + vertPoint.Y) / 2);
+                                    // determine all other points relative to the corner point
+                                    PointF horizPoint = new PointF(cornerPoint.X - widthPx, cornerPoint.Y);
+                                    PointF vertPoint = new PointF(cornerPoint.X, cornerPoint.Y - heightPx);
+                                    PointF horizMidPoint = new PointF((cornerPoint.X + horizPoint.X) / 2, cornerPoint.Y);
+                                    PointF vertMidPoint = new PointF(cornerPoint.X, (cornerPoint.Y + vertPoint.Y) / 2);
 
-                // draw the scalebar
-                gfx.DrawLines(linePen, new PointF[] { horizPoint, cornerPoint, vertPoint });
-                gfx.DrawString(HorizontalLabel, font, fontBrush, horizMidPoint.X, cornerPoint.Y, sfNorth);
-                gfx.DrawString(VerticalLabel, font, fontBrush, cornerPoint.X, vertMidPoint.Y, sfWest);
+                                    // draw the scalebar
+                                    gfx.DrawLines(linePen, new PointF[] { horizPoint, cornerPoint, vertPoint });
+                                    gfx.DrawString(HorizontalLabel, font, fontBrush, horizMidPoint.X, cornerPoint.Y, sfNorth);
+                                    gfx.DrawString(VerticalLabel, font, fontBrush, cornerPoint.X, vertMidPoint.Y, sfWest);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

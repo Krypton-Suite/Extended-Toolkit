@@ -409,8 +409,16 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="obj">The <see cref="T:System.Object" /> to compare with the current <see cref="T:System.Object" />. </param>
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
             var conversionType = obj.GetType();
             if (conversionType == typeof(Color))
             {
@@ -491,7 +499,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </returns>
         public override string ToString()
         {
-            return "(" + X.ToString("0.00") + "," + Y.ToString("0.00") + "," + Z.ToString("0.00") + ")";
+            return $"({X:0.00},{Y:0.00},{Z:0.00})";
         }
 
         /// <summary>

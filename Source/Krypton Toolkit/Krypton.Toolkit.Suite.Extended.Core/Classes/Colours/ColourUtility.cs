@@ -148,10 +148,22 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 h += 1;
             }
 
-            if (h * 6 < 1) return m1 + (m2 - m1) * 6 * h;
-            else if (h * 2 < 1) return m2;
-            else if (h * 3 < 2) return m1 + (m2 - m1) * 6 * (2d / 3d - h);
-            else return m1;
+            if (h * 6 < 1)
+            {
+                return m1 + (m2 - m1) * 6 * h;
+            }
+            else if (h * 2 < 1)
+            {
+                return m2;
+            }
+            else if (h * 3 < 2)
+            {
+                return m1 + (m2 - m1) * 6 * (2d / 3d - h);
+            }
+            else
+            {
+                return m1;
+            }
         }
 
         /// <summary>

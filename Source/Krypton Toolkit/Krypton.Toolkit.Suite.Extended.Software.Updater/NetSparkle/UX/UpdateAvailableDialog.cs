@@ -355,7 +355,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         public void RemoveReleaseNotesControls()
         {
             if (klblReleaseNotes.Parent == null)
+            {
                 return;
+            }
 
             // calc new size
             Size newSize = new Size(Size.Width, Size.Height - klblReleaseNotes.Height - kpnlNotes.Height);

@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             Control parent = Parent;
 
-            while (!(Parent is KryptonForm) && !(parent == null))
+            while (!(Parent is KryptonForm) && parent != null)
             {
                 parent = parent.Parent;
             }
@@ -70,7 +70,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private void KryptonNODialogButton_TextChanged(object sender, EventArgs e)
         {
-            if (Text == Name) Text = "&No";
+            if (Text == Name)
+            {
+                Text = KryptonManager.Strings.No;
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e)

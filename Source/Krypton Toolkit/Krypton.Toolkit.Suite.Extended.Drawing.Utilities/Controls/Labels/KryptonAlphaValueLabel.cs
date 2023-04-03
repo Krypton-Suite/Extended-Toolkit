@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             {
                 if (!tmpText.EndsWith(":"))
                 {
-                    Text = tmpText + ":";
+                    Text = $"{tmpText}:";
                 }
             }
             else

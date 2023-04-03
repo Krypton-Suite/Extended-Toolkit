@@ -1326,7 +1326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         {
                             Color colour;
 
-                            colour = namedIndex != -1 ? Color.FromName(text) : ColorTranslator.FromHtml("#" + text);
+                            colour = namedIndex != -1 ? Color.FromName(text) : ColorTranslator.FromHtml($"#{text}");
                             knudAlpha.Value = colour.A;
                             knudRed.Value = colour.R;
                             knudBlue.Value = colour.B;

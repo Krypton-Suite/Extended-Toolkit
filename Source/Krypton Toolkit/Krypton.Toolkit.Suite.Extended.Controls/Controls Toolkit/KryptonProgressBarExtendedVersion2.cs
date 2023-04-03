@@ -165,7 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Browsable(false),
          EditorBrowsable(EditorBrowsableState.Always),
          Bindable(false)]
-        public override string Text => Value.ToString(CultureInfo.CurrentCulture) + "%";
+        public override string Text => $"{Value.ToString(CultureInfo.CurrentCulture)}%";
 
         #endregion
 

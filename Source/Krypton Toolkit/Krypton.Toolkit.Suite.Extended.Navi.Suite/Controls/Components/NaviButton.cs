@@ -241,7 +241,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             EventHandler handler = activated;
             if (handler != null)
+            {
                 handler(this, e);
+            }
         }
 
         #endregion
@@ -261,11 +263,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 Image imageSmall = null;
                 if (smallImage != null)
+                {
                     imageSmall = smallImage;
+                }
                 else if ((band != null) && (band.SmallImage != null))
+                {
                     imageSmall = band.SmallImage;
+                }
                 else if ((band != null) && (band.SmallImageIndex >= 0) && (band.SmallImages != null)
-                   && (band.SmallImageIndex < band.SmallImages.Images.Count))
+                         && (band.SmallImageIndex < band.SmallImages.Images.Count))
                 {
                     imageSmall = band.SmallImages.Images[band.SmallImageIndex];
                 }
@@ -283,11 +289,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 Image imageLarge = null;
                 if (largeImage != null)
+                {
                     imageLarge = largeImage;
+                }
                 else if ((band != null) && (band.LargeImage != null))
+                {
                     imageLarge = band.LargeImage;
+                }
                 else if ((band != null) && (band.LargeImageIndex >= 0)
-                   && (band.LargeImageIndex < band.LargeImages.Images.Count))
+                                        && (band.LargeImageIndex < band.LargeImages.Images.Count))
                 {
                     imageLarge = band.LargeImages.Images[band.LargeImageIndex];
                 }
@@ -298,12 +308,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                     int margin = 10;
                     if (collapsed)
+                    {
                         margin = 4;
+                    }
 
                     if (RightToLeft == RightToLeft.Yes)
+                    {
                         location = new Point(Width - margin - imageLarge.Width, (int)((Height / 2) - (imageLarge.Height / 2)));
+                    }
                     else
+                    {
                         location = new Point(margin, (int)((Height / 2) - (imageLarge.Height / 2)));
+                    }
 
                     Renderer.DrawImage(e.Graphics, location, imageLarge);
 
@@ -317,8 +333,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 bounds.X += 10;
                 bounds.Width -= 10;
                 if (!collapsed)
+                {
                     Renderer.DrawText(e.Graphics, bounds, Font, Renderer.ColourTable.Text, Text,
-                       RightToLeft == RightToLeft.Yes);
+                        RightToLeft == RightToLeft.Yes);
+                }
             }
         }
 

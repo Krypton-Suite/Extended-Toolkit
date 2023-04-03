@@ -599,7 +599,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         internal void DrawControl(Graphics g)
         {
             if (!Visible)
+            {
                 return;
+            }
 
             Rectangle TabControlArea = ClientRectangle;
             Rectangle TabArea = DisplayRectangle;
@@ -696,10 +698,25 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             RectangleF tabTextArea = (RectangleF)GetTabRect(nIndex);
 
             //debug --> to be fixed
-            if (recBounds.Width == 0) recBounds.Width = 50;
-            if (tabTextArea.Width == 0) tabTextArea.Width = 50;
-            if (recBounds.Height == 0) recBounds.Width = 22;
-            if (tabTextArea.Height == 0) tabTextArea.Width = 22;
+            if (recBounds.Width == 0)
+            {
+                recBounds.Width = 50;
+            }
+
+            if (tabTextArea.Width == 0)
+            {
+                tabTextArea.Width = 50;
+            }
+
+            if (recBounds.Height == 0)
+            {
+                recBounds.Width = 22;
+            }
+
+            if (tabTextArea.Height == 0)
+            {
+                tabTextArea.Width = 22;
+            }
 
 
             bool bSelected = (SelectedIndex == nIndex);
@@ -721,8 +738,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //Tab Hedaer Status
             DrawingMethods.TabHeaderStatus Status = DrawingMethods.TabHeaderStatus.Normal;
-            if (_preserveTabColour) Status = DrawingMethods.TabHeaderStatus.NormalPreserve;
-            if (bHot) Status = DrawingMethods.TabHeaderStatus.Hot;
+            if (_preserveTabColour)
+            {
+                Status = DrawingMethods.TabHeaderStatus.NormalPreserve;
+            }
+
+            if (bHot)
+            {
+                Status = DrawingMethods.TabHeaderStatus.Hot;
+            }
 
             //bool bHotselected = false;
 
@@ -861,10 +885,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             stringFormat.LineAlignment = StringAlignment.Center;
 
             //rtl
-            if (RightToLeft == RightToLeft.Yes) stringFormat.FormatFlags = StringFormatFlags.DirectionRightToLeft;
+            if (RightToLeft == RightToLeft.Yes)
+            {
+                stringFormat.FormatFlags = StringFormatFlags.DirectionRightToLeft;
+            }
 
             //Disabled
-            if (!Enabled) br = new SolidBrush(SystemColors.GrayText);
+            if (!Enabled)
+            {
+                br = new SolidBrush(SystemColors.GrayText);
+            }
 
             if (Alignment == TabAlignment.Right || Alignment == TabAlignment.Left)
             {
@@ -907,7 +937,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         internal void DrawIcons(Graphics g)
         {
             if ((leftRightImages == null) || (leftRightImages.Images.Count != 4))
+            {
                 return;
+            }
 
             //----------------------------
             // calc positions
@@ -950,12 +982,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 {
                     Rectangle r3 = GetTabRect(0);
                     if (r3.Left < TabControlArea.Left)
+                    {
                         g.DrawImage(img, r1);
+                    }
                     else
                     {
                         img = leftRightImages.Images[3];
                         if (img != null)
+                        {
                             g.DrawImage(img, r1);
+                        }
                     }
                 }
             }
@@ -967,12 +1003,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 {
                     Rectangle r3 = GetTabRect(TabCount - 1);
                     if (r3.Right > (TabControlArea.Width - r0.Width))
+                    {
                         g.DrawImage(img, r2);
+                    }
                     else
                     {
                         img = leftRightImages.Images[2];
                         if (img != null)
+                        {
                             g.DrawImage(img, r2);
+                        }
                     }
                 }
             }
@@ -1049,7 +1089,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         try
                         {
                             if (scUpDown.Handle != null)
+                            {
                                 scUpDown.DestroyHandle();
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -1074,7 +1116,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
             if ((!bFound) && (bUpDown))
+            {
                 bUpDown = false;
+            }
         }
 
         private void UpdateUpDown()

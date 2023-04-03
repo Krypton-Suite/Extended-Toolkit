@@ -52,10 +52,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public void ReinitializeLayout()
         {
             if (ownerBar.NaviLayoutEngine != null)
+            {
                 ownerBar.NaviLayoutEngine.Cleanup();
+            }
 
             if (ownerBar.LayoutStyle == NaviLayoutStyle.StyleFromOwner)
+            {
                 ownerBar.LayoutStyle = NaviLayoutStyle.Office2007Blue;
+            }
 
             switch (ownerBar.LayoutStyle)
             {

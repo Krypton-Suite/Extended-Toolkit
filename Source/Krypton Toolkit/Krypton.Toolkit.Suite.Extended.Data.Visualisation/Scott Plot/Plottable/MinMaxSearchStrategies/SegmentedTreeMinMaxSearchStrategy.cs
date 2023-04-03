@@ -60,12 +60,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public void updateElement(int index, T newValue)
         {
-            segmentedTree.updateElement(index, newValue);
+            segmentedTree.UpdateElement(index, newValue);
         }
 
         public void updateRange(int from, int to, T[] newData, int fromData = 0)
         {
-            segmentedTree.updateRange(from, to, newData, fromData);
+            segmentedTree.UpdateRange(from, to, newData, fromData);
         }
     }
 }

@@ -284,7 +284,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             {
                 return null;
             }
-            return new RegistryDataKey(_sKeyId + "\\" + keyName, ppSubKey, true);
+            return new RegistryDataKey($"{_sKeyId}\\{keyName}", ppSubKey, true);
         }
 
         internal RegistryDataKey CreateKey(string keyName)
@@ -295,7 +295,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             {
                 return null;
             }
-            return new RegistryDataKey(_sKeyId + "\\" + keyName, ppSubKey, true);
+            return new RegistryDataKey($"{_sKeyId}\\{keyName}", ppSubKey, true);
         }
 
         internal string[] GetValueNames()
@@ -339,7 +339,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             BindingFlags bindingAttr = BindingFlags.Instance | BindingFlags.NonPublic;
             FieldInfo field = typeFromHandle.GetField("hkey", bindingAttr);
             if (field == null)
+            {
                 field = typeFromHandle.GetField("_hkey", bindingAttr);
+            }
 
             SafeHandle safeHandle = (SafeHandle)field.GetValue(regKey);
             return safeHandle.DangerousGetHandle();

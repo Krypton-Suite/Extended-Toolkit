@@ -767,7 +767,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             Type t = typeof(SR);
             Assembly assembly = t.Assembly;
 
-            Stream manifestResourceStream = assembly.GetManifestResourceStream(t.Namespace + "." + this.ResourceName);
+            Stream manifestResourceStream = assembly.GetManifestResourceStream($"{t.Namespace}.{this.ResourceName}");
 
             if (manifestResourceStream == null)
             {

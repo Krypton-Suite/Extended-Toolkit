@@ -1122,7 +1122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         {
                             Color color;
 
-                            color = namedIndex != -1 ? Color.FromName(text) : ColorTranslator.FromHtml("#" + text);
+                            color = namedIndex != -1 ? Color.FromName(text) : ColorTranslator.FromHtml($"#{text}");
                             aNumericUpDown.Value = color.A;
                             rNumericUpDown.Value = color.R;
                             bNumericUpDown.Value = color.B;

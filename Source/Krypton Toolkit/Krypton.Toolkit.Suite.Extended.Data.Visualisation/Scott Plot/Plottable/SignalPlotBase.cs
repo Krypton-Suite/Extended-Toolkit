@@ -99,7 +99,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value == null)
+                {
                     throw new Exception("Y data cannot be null");
+                }
 
                 MaxRenderIndexLowerYSPromise = MaxRenderIndex > value.Length - 1;
 
@@ -115,7 +117,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value <= 0)
+                {
                     throw new Exception("SampleRate must be greater then zero");
+                }
+
                 _SampleRate = value;
                 _SamplePeriod = 1.0 / value;
             }
@@ -128,7 +133,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (_SamplePeriod <= 0)
+                {
                     throw new Exception("SamplePeriod must be greater then zero");
+                }
+
                 _SamplePeriod = value;
                 _SampleRate = 1.0 / value;
             }
@@ -141,7 +149,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value < 0)
+                {
                     throw new ArgumentException("MinRenderIndex must be positive");
+                }
 
                 MaxRenderIndexHigherMinRenderIndexPromise = value > MaxRenderIndex;
 
@@ -155,7 +165,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 if (value < 0)
+                {
                     throw new ArgumentException("MaxRenderIndex must be positive");
+                }
 
                 MaxRenderIndexHigherMinRenderIndexPromise = MinRenderIndex > value;
 
@@ -283,9 +295,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Strategy.MinMaxRangeQuery(MinRenderIndex, MaxRenderIndex, out double yMin, out double yMax);
 
             if (double.IsNaN(yMin) || double.IsNaN(yMax))
+            {
                 throw new InvalidOperationException("Signal data must not contain NaN");
+            }
+
             if (double.IsInfinity(yMin) || double.IsInfinity(yMax))
+            {
                 throw new InvalidOperationException("Signal data must not contain Infinity");
+            }
 
             double offsetY = Convert.ToDouble(OffsetY);
             return new AxisLimits(
@@ -317,13 +334,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             int capacity = visibleIndex2 - visibleIndex1 + 2;
             List<PointF> linePoints = new(capacity);
             if (visibleIndex2 > _Ys.Length - 2)
+            {
                 visibleIndex2 = _Ys.Length - 2;
+            }
+
             if (visibleIndex2 > MaxRenderIndex - 1)
+            {
                 visibleIndex2 = MaxRenderIndex - 1;
+            }
+
             if (visibleIndex1 < 0)
+            {
                 visibleIndex1 = 0;
+            }
+
             if (visibleIndex1 < MinRenderIndex)
+            {
                 visibleIndex1 = MinRenderIndex;
+            }
 
             for (int i = visibleIndex1; i <= visibleIndex2 + 1; i++)
             {
@@ -341,10 +369,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 ValidatePoints(pointsArray);
 
                 if (StepDisplay)
+                {
                     pointsArray = GetStepPoints(pointsArray);
+                }
 
                 if (penLD.Width > 0)
+                {
                     gfx.DrawLines(penLD, pointsArray);
+                }
 
                 switch (_FillType)
                 {
@@ -377,9 +409,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                         // adjust marker offset to improve rendering on Linux and MacOS
                         float markerOffsetX = (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) ? 0 : 1;
                         foreach (PointF point in linePoints)
+                        {
                             gfx.FillEllipse(brush: brush,
                                 x: point.X - markerPxRadius + markerOffsetX, y: point.Y - markerPxRadius,
                                 width: markerPxDiameter, height: markerPxDiameter);
+                        }
                     }
                     else
                     {
@@ -432,14 +466,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             int index2 = (int)(offsetPoints + columnPointCount * (xPx + 1));
 
             if (index1 < 0)
+            {
                 index1 = 0;
+            }
+
             if (index1 < MinRenderIndex)
+            {
                 index1 = MinRenderIndex;
+            }
 
             if (index2 > _Ys.Length - 1)
+            {
                 index2 = _Ys.Length - 1;
+            }
+
             if (index2 > MaxRenderIndex)
+            {
                 index2 = MaxRenderIndex;
+            }
 
             // get the min and max value for this column                
             Strategy.MinMaxRangeQuery(index1, index2, out double lowestValue, out double highestValue);
@@ -460,7 +504,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             dataColumnFirst = Math.Max(0, dataColumnFirst);
             dataColumnLast = Math.Min((int)dims.DataWidth, dataColumnLast);
             if (dataColumnFirst >= dataColumnLast)
+            {
                 return;
+            }
 
             var columns = Enumerable.Range(dataColumnFirst, dataColumnLast - dataColumnFirst);
             float xPixelStart = dataColumnFirst + dims.DataOffsetX;
@@ -498,7 +544,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             for (int i = 0; i < linePoints.Length; i++)
+            {
                 linePoints[i].X += dims.DataOffsetX;
+            }
 
             if (linePoints.Length > 0)
             {
@@ -653,7 +701,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             xPxStart = Math.Max(0, xPxStart);
             xPxEnd = Math.Min((int)dims.DataWidth, xPxEnd);
             if (xPxStart >= xPxEnd)
+            {
                 return;
+            }
 
             int capacity = (xPxEnd - xPxStart) * 2 + 1;
             List<PointF> linePoints = new(capacity);
@@ -668,11 +718,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     int index2 = (int)(offsetPoints + columnPointCount * (xPx + 1));
 
                     if (index1 < 0)
+                    {
                         index1 = 0;
+                    }
+
                     if (index1 > _Ys.Length - 1)
+                    {
                         index1 = _Ys.Length - 1;
+                    }
+
                     if (index2 > _Ys.Length - 1)
+                    {
                         index2 = _Ys.Length - 1;
+                    }
 
                     var indexes = Enumerable.Range(0, DensityLevelCount + 1).Select(x => x * (index2 - index1 - 1) / (DensityLevelCount));
 
@@ -732,7 +790,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottableSignalBase{label} with {PointCount} points ({typeof(T).Name})";
         }
 
@@ -782,9 +840,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             else if (pointsPerPixelColumn > 1)
             {
                 if (densityLevelsAvailable)
+                {
                     RenderHighDensityDistributionParallel(dims, gfx, offsetPoints, columnPointCount);
+                }
                 else
+                {
                     RenderHighDensity(dims, gfx, offsetPoints, columnPointCount, penHD);
+                }
             }
             else
             {
@@ -795,33 +857,58 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         protected void ValidatePoints(PointF[] points)
         {
             foreach (PointF pt in points)
+            {
                 if (float.IsNaN(pt.Y))
+                {
                     throw new InvalidOperationException("Data must not contain NaN");
+                }
+            }
         }
 
         public void ValidateData(bool deep = false)
         {
             // check Y values
             if (Ys is null)
+            {
                 throw new InvalidOperationException("ys cannot be null");
+            }
+
             if (deep)
+            {
                 Validate.AssertAllReal("ys", Ys);
+            }
 
             // check render indexes
             if (MinRenderIndex < 0 || MinRenderIndex > MaxRenderIndex)
+            {
                 throw new IndexOutOfRangeException("minRenderIndex must be between 0 and maxRenderIndex");
+            }
+
             if ((MaxRenderIndex > Ys.Length - 1) || MaxRenderIndex < 0)
+            {
                 throw new IndexOutOfRangeException("maxRenderIndex must be a valid index for ys[]");
+            }
+
             if (MaxRenderIndexLowerYSPromise)
+            {
                 throw new IndexOutOfRangeException("maxRenderIndex must be a valid index for ys[]");
+            }
+
             if (MaxRenderIndexHigherMinRenderIndexPromise)
+            {
                 throw new IndexOutOfRangeException("minRenderIndex must be lower maxRenderIndex");
+            }
 
             // check misc styling options
             if (FillColor1MustBeSetPromise)
+            {
                 throw new InvalidOperationException($"A Color must be assigned to FillColor1 to use fill type '{_FillType}'");
+            }
+
             if (FillColor2MustBeSetPromise)
+            {
                 throw new InvalidOperationException($"A Color must be assigned to FillColor2 to use fill type '{_FillType}'");
+            }
         }
 
         /// <summary>
@@ -850,7 +937,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Show a solid color beneath the curve
         /// </summary>
-        public void FillBelow(System.Drawing.Color? color = null, double alpha = .2)
+        public void FillBelow(Color? color = null, double alpha = .2)
         {
             _FillType = FillType.FillBelow;
             _FillColor1 = GDI.Semitransparent(color ?? Color, alpha);
@@ -859,7 +946,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Show a two-color gradient beneath the curve
         /// </summary>
-        public void FillBelow(System.Drawing.Color upperColor, System.Drawing.Color lowerColor, double alpha = .2)
+        public void FillBelow(Color upperColor, Color lowerColor, double alpha = .2)
         {
             _FillType = FillType.FillBelow;
             _FillColor1 = GDI.Semitransparent(upperColor, alpha);
@@ -869,7 +956,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Show a solid color above the curve
         /// </summary>
-        public void FillAbove(System.Drawing.Color? color = null, double alpha = .2)
+        public void FillAbove(Color? color = null, double alpha = .2)
         {
             _FillType = FillType.FillAbove;
             _FillColor1 = GDI.Semitransparent(color ?? Color, alpha);
@@ -878,7 +965,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Show a two-color gradient above the curve
         /// </summary>
-        public void FillAbove(System.Drawing.Color lowerColor, System.Drawing.Color upperColor, double alpha = .2)
+        public void FillAbove(Color lowerColor, Color upperColor, double alpha = .2)
         {
             _FillType = FillType.FillAbove;
             _FillColor1 = GDI.Semitransparent(upperColor, alpha);
@@ -888,7 +975,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Fill the area between the curve and the <see cref="BaselineY"/> value
         /// </summary>
-        public void FillAboveAndBelow(System.Drawing.Color colorAbove, System.Drawing.Color colorBelow, double alpha = .2)
+        public void FillAboveAndBelow(Color colorAbove, Color colorBelow, double alpha = .2)
         {
             _FillType = FillType.FillAboveAndBelow;
             _FillColor1 = GDI.Semitransparent(colorAbove, alpha);
@@ -903,8 +990,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="below1">Color below the line next to the curve</param>
         /// <param name="below2">Color below the line next to the lower edge of the plot area</param>
         /// <param name="alpha">Apply this opacity to all colors</param>
-        public void FillAboveAndBelow(System.Drawing.Color above1, System.Drawing.Color above2,
-            System.Drawing.Color below1, System.Drawing.Color below2, double alpha = .2)
+        public void FillAboveAndBelow(Color above1, Color above2,
+            Color below1, Color below2, double alpha = .2)
         {
             _FillType = FillType.FillAboveAndBelow;
 

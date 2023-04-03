@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
     {
         private readonly string _uri;
 
-        internal override string DebugSummary => "#" + _uri;
+        internal override string DebugSummary => $"#{_uri}";
 
         internal GrammarBuilderRuleRef(Uri uri, string rule)
         {

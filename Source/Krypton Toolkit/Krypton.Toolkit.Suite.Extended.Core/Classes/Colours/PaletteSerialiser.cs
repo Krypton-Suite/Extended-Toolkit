@@ -166,7 +166,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 {
                     string mask;
 
-                    mask = "*." + extension;
+                    mask = $"*.{extension}";
 
                     if (!openExtensions.Contains(mask))
                     {

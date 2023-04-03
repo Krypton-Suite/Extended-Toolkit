@@ -145,7 +145,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                 {
                     // If the node doesn't exist, there is no update
                     if (updateNode == null)
+                    {
                         return null;
+                    }
 
                     // Parse data
                     version = Version.Parse(updateNode["version"].InnerText);
@@ -163,7 +165,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                 {
                     // If the node doesn't exist, there is no add
                     if (addNode == null)
+                    {
                         return null;
+                    }
 
                     // Parse data
                     version = Version.Parse(addNode["version"].InnerText);
@@ -181,7 +185,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                 {
                     // If the node doesn't exist, there is no remove
                     if (removeNode == null)
+                    {
                         return null;
+                    }
 
                     // Parse data
                     filePath = removeNode["filePath"].InnerText;

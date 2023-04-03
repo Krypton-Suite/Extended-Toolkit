@@ -221,7 +221,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             type = typeof(RGBAColourSliderControl);
 
-            using (Bitmap background = new Bitmap(type.Assembly.GetManifestResourceStream(string.Concat(type.Namespace, ".Resources.cellbackground.png"))))
+            using (Bitmap background = new Bitmap(type.Assembly.GetManifestResourceStream(
+                       $"{type.Namespace}.Resources.cellbackground.png")))
             {
                 return new TextureBrush(background, WrapMode.Tile);
             }

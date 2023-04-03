@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// <value>The attachment filename, extension .zip applied automatically if not provided</value>
         public string AttachmentFilename
         {
-            get => _attachmentFilename.ToLower().EndsWith(".zip") ? _attachmentFilename : _attachmentFilename + ".zip";
+            get => _attachmentFilename.ToLower().EndsWith(".zip") ? _attachmentFilename : $"{_attachmentFilename}.zip";
             set => _attachmentFilename = value;
         }
 

@@ -44,7 +44,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public MultiPlot(int width = 800, int height = 600, int rows = 1, int cols = 1)
         {
             if (rows < 1 || cols < 1)
+            {
                 throw new ArgumentException("must have at least 1 row and column");
+            }
 
             this.width = width;
             this.height = height;
@@ -56,7 +58,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             subplots = new Plot[subplotCount];
             for (int i = 0; i < subplotCount; i++)
+            {
                 subplots[i] = new Plot(subplotWidth, subplotHeight);
+            }
         }
 
         private void Render()
@@ -82,23 +86,35 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public void SaveFig(string filePath)
         {
-            filePath = System.IO.Path.GetFullPath(filePath);
-            string fileFolder = System.IO.Path.GetDirectoryName(filePath);
-            if (!System.IO.Directory.Exists(fileFolder))
+            filePath = Path.GetFullPath(filePath);
+            string fileFolder = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(fileFolder))
+            {
                 throw new Exception($"ERROR: folder does not exist: {fileFolder}");
+            }
 
             ImageFormat imageFormat;
-            string extension = System.IO.Path.GetExtension(filePath).ToUpper();
+            string extension = Path.GetExtension(filePath).ToUpper();
             if (extension == ".JPG" || extension == ".JPEG")
+            {
                 imageFormat = ImageFormat.Jpeg; // TODO: use jpgEncoder to set custom compression level
+            }
             else if (extension == ".PNG")
+            {
                 imageFormat = ImageFormat.Png;
+            }
             else if (extension == ".TIF" || extension == ".TIFF")
+            {
                 imageFormat = ImageFormat.Tiff;
+            }
             else if (extension == ".BMP")
+            {
                 imageFormat = ImageFormat.Bmp;
+            }
             else
-                throw new NotImplementedException("Extension not supported: " + extension);
+            {
+                throw new NotImplementedException($"Extension not supported: {extension}");
+            }
 
             Render();
             bmp.Save(filePath, imageFormat);
@@ -107,10 +123,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Plot GetSubplot(int rowIndex, int columnIndex)
         {
             if (rowIndex < 0 || rowIndex >= rows)
+            {
                 throw new ArgumentException("invalid row index");
+            }
 
             if (columnIndex < 0 || columnIndex >= cols)
+            {
                 throw new ArgumentException("invalid column index");
+            }
 
             int subplotIndex = rowIndex * cols + columnIndex;
             return subplots[subplotIndex];

@@ -385,7 +385,8 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
             {
                 foreach (KryptonRibbonGroup grp in tab.Groups)
                 {
-                    Drawing.Size size = TextRenderer.MeasureText(g, grp.TextLine1 + (string.IsNullOrWhiteSpace(grp.TextLine2) ? " " + grp.TextLine2 : string.Empty), TargetRibbon.Parent.Font);
+                    Drawing.Size size = TextRenderer.MeasureText(g, grp.TextLine1 + (string.IsNullOrWhiteSpace(grp.TextLine2) ? $" {grp.TextLine2}"
+                        : string.Empty), TargetRibbon.Parent.Font);
                     grp.MinimumWidth = size.Width + (int)(8 * dpi);
                 }
             }

@@ -316,7 +316,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 heightOfTitle = (int)e.Graphics.MeasureString("A", PopUp.TitleFont).Height;
                 int titleX = PopUp.TitlePadding.Left;
                 if (PopUp.Image != null)
+                {
                     titleX += PopUp.ImagePadding.Left + PopUp.ImageSize.Width + PopUp.ImagePadding.Right;
+                }
+
                 e.Graphics.DrawString(PopUp.TitleText, PopUp.TitleFont, brushTitle, titleX, PopUp.HeaderHeight + PopUp.TitlePadding.Top);
                 // draw content text, optionally with a bold part
                 this.Cursor = mouseOnLink ? Cursors.Hand : Cursors.Default;

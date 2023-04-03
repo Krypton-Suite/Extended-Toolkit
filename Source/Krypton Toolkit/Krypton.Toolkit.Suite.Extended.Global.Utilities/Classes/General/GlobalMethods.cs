@@ -207,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 }
                 catch (Win32Exception wexc)
                 {
-                    MessageBox.Show("Error: " + wexc.Message, "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error: {wexc.Message}", "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 return;
@@ -225,7 +225,8 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 
             if (productName != string.Empty)
             {
-                return (productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? " " + csdVersion : "");
+                return (productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? $" {csdVersion}"
+                    : "");
             }
 
             return string.Empty;
@@ -446,7 +447,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.Message, "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {exc.Message}", "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 SetIsTargetPlatformSupported(false);
             }
@@ -544,7 +545,8 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 
             if (productName != string.Empty)
             {
-                return (productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? " " + csdVersion : "");
+                return (productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? $" {csdVersion}"
+                    : "");
             }
 
             return string.Empty;

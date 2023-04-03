@@ -71,7 +71,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Population(double[] values)
         {
             if (values is null)
+            {
                 throw new ArgumentException("values cannot be null");
+            }
 
             this.values = values;
             Recalculate();
@@ -81,11 +83,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Population(double[] values, bool fullAnalysis = true)
         {
             if (values is null)
+            {
                 throw new ArgumentException("values cannot be null");
+            }
 
             this.values = values;
             if (fullAnalysis)
+            {
                 Recalculate();
+            }
         }
 
         public void Recalculate()
@@ -168,13 +174,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] ys = new double[xs.Length];
             for (int i = 0; i < xs.Length; i++)
+            {
                 ys[i] = Math.Exp(-.5 * Math.Pow((xs[i] - mean) / stDev, 2));
+            }
 
             if (normalize)
             {
                 double sum = ys.Sum();
                 for (int i = 0; i < ys.Length; i++)
+                {
                     ys[i] /= sum;
+                }
             }
 
             return ys;

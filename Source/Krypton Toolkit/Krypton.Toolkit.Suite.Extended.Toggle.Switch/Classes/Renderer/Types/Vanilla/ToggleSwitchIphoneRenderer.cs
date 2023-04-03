@@ -70,7 +70,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public void Dispose()
         {
             if (_innerControlPath != null)
+            {
                 _innerControlPath.Dispose();
+            }
         }
 
         #endregion Constructor
@@ -241,9 +243,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + (((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2)), resizedImageSize.Width, resizedImageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
+                        }
                         else
+                        {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle);
+                        }
                     }
                     else
                     {
@@ -259,9 +265,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + (((float)fullRectangle.Height - (float)imageSize.Height) / 2)), imageSize.Width, imageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
+                        }
                         else
+                        {
                             g.DrawImageUnscaled(ToggleSwitch.OnSideImage, imageRectangle);
+                        }
                     }
                 }
                 else if (!string.IsNullOrEmpty(ToggleSwitch.OnText))
@@ -284,7 +294,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                     Color textForeColour = ToggleSwitch.OnForeColour;
 
                     if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    {
                         textForeColour = textForeColour.ToGrayScale();
+                    }
 
                     using (Brush textBrush = new SolidBrush(textForeColour))
                     {
@@ -390,9 +402,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + (((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2)), resizedImageSize.Width, resizedImageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
+                        }
                         else
+                        {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle);
+                        }
                     }
                     else
                     {
@@ -408,9 +424,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + (((float)fullRectangle.Height - (float)imageSize.Height) / 2)), imageSize.Width, imageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
+                        }
                         else
+                        {
                             g.DrawImageUnscaled(ToggleSwitch.OffSideImage, imageRectangle);
+                        }
                     }
                 }
                 else if (!string.IsNullOrEmpty(ToggleSwitch.OffText))
@@ -433,7 +453,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                     Color textForeColour = ToggleSwitch.OffForeColour;
 
                     if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    {
                         textForeColour = textForeColour.ToGrayScale();
+                    }
 
                     using (Brush textBrush = new SolidBrush(textForeColour))
                     {
@@ -554,9 +576,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + (((float)buttonRectangle.Height - (float)resizedImageSize.Height) / 2)), resizedImageSize.Width, resizedImageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        {
                             g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
+                        }
                         else
+                        {
                             g.DrawImage(buttonImage, imageRectangle);
+                        }
                     }
                     else
                     {
@@ -572,9 +598,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + (((float)buttonRectangle.Height - (float)imageSize.Height) / 2)), imageSize.Width, imageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        {
                             g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
+                        }
                         else
+                        {
                             g.DrawImageUnscaled(buttonImage, imageRectangle);
+                        }
                     }
 
                     g.ResetClip();
@@ -592,10 +622,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             int diameter = 2 * radius;
 
             if (diameter > ToggleSwitch.Height)
+            {
                 diameter = ToggleSwitch.Height;
+            }
 
             if (diameter > ToggleSwitch.Width)
+            {
                 diameter = ToggleSwitch.Width;
+            }
 
             gp.AddArc(rectangle.X, rectangle.Y, diameter, diameter, 180, 90);
             gp.AddArc(rectangle.X + rectangle.Width - diameter, rectangle.Y, diameter, diameter, 270, 90);

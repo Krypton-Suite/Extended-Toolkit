@@ -26,15 +26,15 @@ namespace Examples
 
         public void SetupDataGridView(KryptonOutlookGrid grid, bool restoreIfPossible)
         {
-            if (File.Exists(Application.StartupPath + "/grid.xml") & restoreIfPossible)
+            if (File.Exists($"{Application.StartupPath}/grid.xml") & restoreIfPossible)
             {
                 try
                 {
-                    LoadConfigFromFile(Application.StartupPath + "/grid.xml", grid);
+                    LoadConfigFromFile($"{Application.StartupPath}/grid.xml", grid);
                 }
                 catch (Exception ex)
                 {
-                    KryptonMessageBox.Show("Error when retrieving configuration : " + ex.Message, "Error", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                    KryptonMessageBox.Show($"Error when retrieving configuration : {ex.Message}", "Error", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
                     grid.ClearEverything();
                     LoadDefaultConfiguration(grid);
                 }
@@ -105,7 +105,9 @@ namespace Examples
         private void LoadConfigFromFile(string file, KryptonOutlookGrid grid)
         {
             if (string.IsNullOrEmpty(file))
+            {
                 throw new Exception("Grid config file is missing !");
+            }
 
             XDocument doc = XDocument.Load(file);
             int versionGrid = -1;
@@ -145,7 +147,7 @@ namespace Examples
                     node2 = node.Element("GroupingType");
                     group = (IOutlookGridGroup)Activator.CreateInstance(Type.GetType(TypeConverter.ProcessType(node2.Element("Name").Value), true));
                     group.OneItemText = node2.Element("OneItemText").Value;
-                    group.XXXItemsText = node2.Element("XXXItemsText").Value;
+                    group.XxxItemsText = node2.Element("XXXItemsText").Value;
                     group.SortBySummaryCount = CommonHelper.StringToBool(node2.Element("SortBySummaryCount").Value);
                     if (!string.IsNullOrEmpty((node2.Element("ItemsComparer").Value)))
                     {

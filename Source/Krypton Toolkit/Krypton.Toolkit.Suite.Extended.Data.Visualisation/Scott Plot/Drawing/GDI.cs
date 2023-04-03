@@ -29,11 +29,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public static class GDI
     {
-        private const float xMultiplierLinux = 1;
-        private const float yMultiplierLinux = 27.16f / 22;
+        private const float X_MULTIPLIER_LINUX = 1;
+        private const float Y_MULTIPLIER_LINUX = 27.16f / 22;
 
-        private const float xMultiplierMacOS = 82.82f / 72;
-        private const float yMultiplierMacOS = 27.16f / 20;
+        private const float X_MULTIPLIER_MACOS = 82.82f / 72;
+        private const float Y_MULTIPLIER_MACOS = 27.16f / 20;
 
         /// <summary>
         /// Return the display scale ratio being used.
@@ -43,16 +43,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             const int DEFAULT_DPI = 96;
             using Bitmap bmp = new(1, 1);
-            using Graphics gfx = GDI.Graphics(bmp);
+            using Graphics gfx = Graphics(bmp);
             return gfx.DpiX / DEFAULT_DPI;
         }
 
         public static SizeF MeasureString(string text, Font font)
         {
             using (Bitmap bmp = new Bitmap(1, 1))
-            using (Graphics gfx = Graphics(bmp, lowQuality: true))
             {
-                return MeasureString(gfx, text, font.Name, font.Size, font.Bold);
+                using (Graphics gfx = Graphics(bmp, lowQuality: true))
+                {
+                    return MeasureString(gfx, text, font.Name, font.Size, font.Bold);
+                }
             }
         }
 
@@ -72,13 +74,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             // compensate for OS-specific differences in font scaling
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                size.Width *= xMultiplierLinux;
-                size.Height *= yMultiplierLinux;
+                size.Width *= X_MULTIPLIER_LINUX;
+                size.Height *= Y_MULTIPLIER_LINUX;
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                size.Width *= xMultiplierMacOS;
-                size.Height *= yMultiplierMacOS;
+                size.Width *= X_MULTIPLIER_MACOS;
+                size.Height *= Y_MULTIPLIER_MACOS;
             }
 
             // ensure the measured height is at least the font size
@@ -87,22 +89,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return size;
         }
 
-        public static System.Drawing.Color Mix(System.Drawing.Color colorA, System.Drawing.Color colorB, double fracA)
+        public static Color Mix(Color colorA, Color colorB, double fracA)
         {
             byte r = (byte)((colorA.R * (1 - fracA)) + colorB.R * fracA);
             byte g = (byte)((colorA.G * (1 - fracA)) + colorB.G * fracA);
             byte b = (byte)((colorA.B * (1 - fracA)) + colorB.B * fracA);
-            return System.Drawing.Color.FromArgb(r, g, b);
+            return Color.FromArgb(r, g, b);
         }
 
-        public static System.Drawing.Color Mix(string hexA, string hexB, double fracA)
+        public static Color Mix(string hexA, string hexB, double fracA)
         {
-            var colorA = System.Drawing.ColorTranslator.FromHtml(hexA);
-            var colorB = System.Drawing.ColorTranslator.FromHtml(hexB);
+            var colorA = ColorTranslator.FromHtml(hexA);
+            var colorB = ColorTranslator.FromHtml(hexB);
             return Mix(colorA, colorB, fracA);
         }
 
-        public static System.Drawing.Graphics Graphics(Bitmap bmp, bool lowQuality = false, double scale = 1.0)
+        public static Graphics Graphics(Bitmap bmp, bool lowQuality = false, double scale = 1.0)
         {
             Graphics gfx = System.Drawing.Graphics.FromImage(bmp);
             gfx.SmoothingMode = lowQuality ? SmoothingMode.HighSpeed : SmoothingMode.AntiAlias;
@@ -111,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return gfx;
         }
 
-        public static System.Drawing.Graphics Graphics(Bitmap bmp, PlotDimensions dims, bool lowQuality = false, bool clipToDataArea = true)
+        public static Graphics Graphics(Bitmap bmp, PlotDimensions dims, bool lowQuality = false, bool clipToDataArea = true)
         {
             Graphics gfx = Graphics(bmp, lowQuality, dims.ScaleFactor);
 
@@ -130,37 +132,46 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return gfx;
         }
 
-        public static System.Drawing.Pen Pen(System.Drawing.Color color, double width = 1, LineStyle lineStyle = LineStyle.Solid, bool rounded = false)
+        public static Pen Pen(Color color, double width = 1, LineStyle lineStyle = LineStyle.Solid, bool rounded = false)
         {
-            var pen = new System.Drawing.Pen(color, (float)width);
+            var pen = new Pen(color, (float)width);
 
-            if (lineStyle == LineStyle.Solid || lineStyle == LineStyle.None)
-            {
-                /* WARNING: Do NOT apply a solid DashPattern!
+            /* WARNING: Do NOT apply a solid DashPattern!
                  * Setting DashPattern automatically sets a pen's DashStyle to custom.
                  * Custom DashStyles are slower and can cause diagonal rendering artifacts.
                  * Instead use the solid DashStyle.
                  * https://github.com/ScottPlot/ScottPlot/issues/327
                  * https://github.com/ScottPlot/ScottPlot/issues/401
-                 */
-                pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+              */
+            switch (lineStyle)
+            {
+                case LineStyle.None:
+                    pen.DashStyle = DashStyle.Solid;
+                    break;
+                case LineStyle.Solid:
+                    pen.DashStyle = DashStyle.Solid;
+                    break;
+                case LineStyle.Dash:
+                    pen.DashPattern = new[] { 8.0F, 4.0F };
+                    break;
+                case LineStyle.DashDot:
+                    pen.DashPattern = new[] { 8.0F, 4.0F, 2.0F, 4.0F };
+                    break;
+                case LineStyle.DashDotDot:
+                    pen.DashPattern = new[] { 8.0F, 4.0F, 2.0F, 4.0F, 2.0F, 4.0F };
+                    break;
+                case LineStyle.Dot:
+                    pen.DashPattern = new[] { 2.0F, 4.0F };
+                    break;
+                default:
+                    throw new NotImplementedException("line style not supported");
             }
-            else if (lineStyle == LineStyle.Dash)
-                pen.DashPattern = new float[] { 8.0F, 4.0F };
-            else if (lineStyle == LineStyle.DashDot)
-                pen.DashPattern = new float[] { 8.0F, 4.0F, 2.0F, 4.0F };
-            else if (lineStyle == LineStyle.DashDotDot)
-                pen.DashPattern = new float[] { 8.0F, 4.0F, 2.0F, 4.0F, 2.0F, 4.0F };
-            else if (lineStyle == LineStyle.Dot)
-                pen.DashPattern = new float[] { 2.0F, 4.0F };
-            else
-                throw new NotImplementedException("line style not supported");
 
             if (rounded)
             {
-                pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
-                pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-                pen.LineJoin = System.Drawing.Drawing2D.LineJoin.Round;
+                pen.StartCap = LineCap.Round;
+                pen.EndCap = LineCap.Round;
+                pen.LineJoin = LineJoin.Round;
             }
 
             return pen;
@@ -175,10 +186,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (isHatched)
             {
                 if (hatchColor is null)
+                {
                     throw new ArgumentException("hatch color must be defined if hatch style is used");
+                }
                 else
 #pragma warning disable CS8629 // Nullable value type may be null.
+                {
                     return new HatchBrush(ConvertToSDHatchStyle(hatchStyle).Value, hatchColor.Value, color);
+                }
 #pragma warning restore CS8629 // Nullable value type may be null.
             }
             else
@@ -191,9 +206,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static Brush HatchBrush(HatchStyle pattern, Color fillColor, Color hatchColor)
         {
             if (pattern == HatchStyle.None)
+            {
                 return new SolidBrush(fillColor);
+            }
             else
+            {
                 return new HatchBrush(ConvertToSDHatchStyle(pattern)!.Value, hatchColor, fillColor);
+            }
         }
 
         public static System.Drawing.Drawing2D.HatchStyle? ConvertToSDHatchStyle(HatchStyle pattern)
@@ -260,21 +279,35 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             var sf = new StringFormat();
 
-            if (h == HorizontalAlignment.Left)
-                sf.Alignment = StringAlignment.Near;
-            else if (h == HorizontalAlignment.Center)
-                sf.Alignment = StringAlignment.Center;
-            else if (h == HorizontalAlignment.Right)
-                sf.Alignment = StringAlignment.Far;
-            else
-                throw new NotImplementedException();
+            switch (h)
+            {
+                case HorizontalAlignment.Left:
+                    sf.Alignment = StringAlignment.Near;
+                    break;
+                case HorizontalAlignment.Right:
+                    sf.Alignment = StringAlignment.Far;
+                    break;
+                case HorizontalAlignment.Center:
+                    sf.Alignment = StringAlignment.Center;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
 
-            if (v == VerticalAlignment.Upper)
-                sf.LineAlignment = StringAlignment.Near;
-            else if (v == VerticalAlignment.Middle)
-                sf.LineAlignment = StringAlignment.Center;
-            else if (v == VerticalAlignment.Lower)
-                sf.LineAlignment = StringAlignment.Far;
+            switch (v)
+            {
+                case VerticalAlignment.Upper:
+                    sf.LineAlignment = StringAlignment.Near;
+                    break;
+                case VerticalAlignment.Lower:
+                    sf.LineAlignment = StringAlignment.Far;
+                    break;
+                case VerticalAlignment.Middle:
+                    sf.LineAlignment = StringAlignment.Center;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
 
             return sf;
         }
@@ -285,29 +318,31 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             var rect = new Rectangle(0, 0, width, height);
 
             using (var gfx = System.Drawing.Graphics.FromImage(bmp2))
-            using (var attribs = new ImageAttributes())
             {
-                gfx.CompositingMode = CompositingMode.SourceCopy;
-                gfx.CompositingQuality = CompositingQuality.HighQuality;
-                gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                gfx.SmoothingMode = SmoothingMode.HighQuality;
-                gfx.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                attribs.SetWrapMode(WrapMode.TileFlipXY);
-                gfx.DrawImage(bmp, rect, 0, 0, bmp.Width, bmp.Height, GraphicsUnit.Pixel, attribs);
+                using (var attribs = new ImageAttributes())
+                {
+                    gfx.CompositingMode = CompositingMode.SourceCopy;
+                    gfx.CompositingQuality = CompositingQuality.HighQuality;
+                    gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    gfx.SmoothingMode = SmoothingMode.HighQuality;
+                    gfx.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    attribs.SetWrapMode(WrapMode.TileFlipXY);
+                    gfx.DrawImage(bmp, rect, 0, 0, bmp.Width, bmp.Height, GraphicsUnit.Pixel, attribs);
+                }
             }
 
             return bmp2;
         }
 
-        public static System.Drawing.Color Semitransparent(System.Drawing.Color color, double alpha)
+        public static Color Semitransparent(Color color, double alpha)
         {
-            return (alpha == 1) ? color : System.Drawing.Color.FromArgb((int)(color.A * alpha), color);
+            return (alpha == 1) ? color : Color.FromArgb((int)(color.A * alpha), color);
         }
 
-        public static System.Drawing.Color Semitransparent(string htmlColor, double alpha)
+        public static Color Semitransparent(string htmlColor, double alpha)
         {
-            System.Drawing.Color color = ColorTranslator.FromHtml(htmlColor);
-            return (alpha == 1) ? color : System.Drawing.Color.FromArgb((int)(color.A * alpha), color);
+            Color color = ColorTranslator.FromHtml(htmlColor);
+            return (alpha == 1) ? color : Color.FromArgb((int)(color.A * alpha), color);
         }
     }
 }

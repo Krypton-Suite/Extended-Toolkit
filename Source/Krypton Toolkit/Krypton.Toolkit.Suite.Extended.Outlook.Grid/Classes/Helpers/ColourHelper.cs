@@ -30,50 +30,50 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public struct HSVColour
         {
-            private float hue;
+            private float _hue;
 
             /// <summary>
             /// Hue value, from 0° to 360°
             /// </summary>
             public float Hue
             {
-                get => hue;
-                set => hue = value;
+                get => _hue;
+                set => _hue = value;
             }
 
-            private float saturation;
+            private float _saturation;
 
             /// <summary>
             /// Saturation value, from 0 to 1
             /// </summary>
             public float Saturation
             {
-                get => saturation;
-                set => saturation = value;
+                get => _saturation;
+                set => _saturation = value;
             }
 
-            private float valueOrBrightness;
+            private float _valueOrBrightness;
 
             /// <summary>
             /// Value or Brightness value, from 0 to 1
             /// </summary>
             public float ValueOrBrightness
             {
-                get => valueOrBrightness;
-                set => valueOrBrightness = value;
+                get => _valueOrBrightness;
+                set => _valueOrBrightness = value;
             }
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="HSVColour"/> struct.
+            /// Initializes a new instance of the <see cref="HsvColour"/> struct.
             /// </summary>
             /// <param name="hue">The hue.</param>
             /// <param name="saturation">The saturation.</param>
             /// <param name="value">The value.</param>
             public HSVColour(float hue, float saturation, float value)
             {
-                this.hue = hue;
-                this.saturation = saturation;
-                this.valueOrBrightness = value;
+                _hue = hue;
+                _saturation = saturation;
+                _valueOrBrightness = value;
             }
         }
 
@@ -82,37 +82,37 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public struct HSLColour
         {
-            private float hue;
+            private float _hue;
 
             /// <summary>
             /// Hue value, from 0° to 360°
             /// </summary>
             public float Hue
             {
-                get => hue;
-                set => hue = value;
+                get => _hue;
+                set => _hue = value;
             }
 
-            private float saturation;
+            private float _saturation;
 
             /// <summary>
             /// Saturation value, from 0 to 1
             /// </summary>
             public float Saturation
             {
-                get => saturation;
-                set => saturation = value;
+                get => _saturation;
+                set => _saturation = value;
             }
 
-            private float lightness;
+            private float _lightness;
 
             /// <summary>
             /// Value or Lightness value, from 0 to 1
             /// </summary>
             public float Lightness
             {
-                get => lightness;
-                set => lightness = value;
+                get => _lightness;
+                set => _lightness = value;
             }
 
             /// <summary>
@@ -123,9 +123,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             /// <param name="lightness">The lightness.</param>
             public HSLColour(float hue, float saturation, float lightness)
             {
-                this.hue = hue;
-                this.saturation = saturation;
-                this.lightness = lightness;
+                _hue = hue;
+                _saturation = saturation;
+                _lightness = lightness;
             }
         }
 
@@ -142,16 +142,34 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public static Color FromHSV(float h, float s, float v)
         {
             // Hue checking
-            if (h < 0f) h = 0f;
-            else if (h > 360f) h = 360f;
+            if (h < 0f)
+            {
+                h = 0f;
+            }
+            else if (h > 360f)
+            {
+                h = 360f;
+            }
 
             // Saturation checking
-            if (s < 0f) s = 0f;
-            else if (s > 1f) s = 1f;
+            if (s < 0f)
+            {
+                s = 0f;
+            }
+            else if (s > 1f)
+            {
+                s = 1f;
+            }
 
             // Value/Brightness checking
-            if (v < 0f) v = 0f;
-            else if (v > 1f) v = 1f;
+            if (v < 0f)
+            {
+                v = 0f;
+            }
+            else if (v > 1f)
+            {
+                v = 1f;
+            }
 
             // === Conversion ===
             float fRed = 0f;
@@ -169,7 +187,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 float hVal = h / 360f; // 0 <= hVah < 1
 
                 float varH = hVal * 6f;
-                if (varH == 6f) varH = 0f;
+                if (varH == 6f)
+                {
+                    varH = 0f;
+                }
+
                 int i = (int)varH; //Or ... vari = floor( varh )
                 float var1 = v * (1f - s);
                 float var2 = v * (1f - s * (varH - (float)i));
@@ -250,19 +272,35 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 s = deltaMax / varMax;
 
                 // Hue
-                float deltaR = (((varMax - varR) / 6f) + (deltaMax / 2f)) / deltaMax;
-                float deltaG = (((varMax - varG) / 6f) + (deltaMax / 2f)) / deltaMax;
-                float deltaB = (((varMax - varB) / 6f) + (deltaMax / 2f)) / deltaMax;
+                float deltaR = ((varMax - varR) / 6f + deltaMax / 2f) / deltaMax;
+                float deltaG = ((varMax - varG) / 6f + deltaMax / 2f) / deltaMax;
+                float deltaB = ((varMax - varB) / 6f + deltaMax / 2f) / deltaMax;
 
-                if (varR == varMax) h = deltaB - deltaG;
-                else if (varG == varMax) h = (1f / 3f) + deltaR - deltaB;
-                else if (varB == varMax) h = (2f / 3f) + deltaG - deltaR;
+                if (varR == varMax)
+                {
+                    h = deltaB - deltaG;
+                }
+                else if (varG == varMax)
+                {
+                    h = 1f / 3f + deltaR - deltaB;
+                }
+                else if (varB == varMax)
+                {
+                    h = 2f / 3f + deltaG - deltaR;
+                }
 
-                if (h < 0f) h += 1;
-                if (h > 1f) h -= 1;
+                if (h < 0f)
+                {
+                    h += 1;
+                }
+
+                if (h > 1f)
+                {
+                    h -= 1;
+                }
             }
 
-            return new HSVColour(h * 360f, s, v);
+            return new(h * 360f, s, v);
         }
 
 
@@ -276,16 +314,34 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public static Color FromHSL(float h, float s, float l)
         {
             // Hue checking
-            if (h < 0f) h = 0f;
-            else if (h > 360f) h = 360f;
+            if (h < 0f)
+            {
+                h = 0f;
+            }
+            else if (h > 360f)
+            {
+                h = 360f;
+            }
 
             // Saturation checking
-            if (s < 0f) s = 0f;
-            else if (s > 1f) s = 1f;
+            if (s < 0f)
+            {
+                s = 0f;
+            }
+            else if (s > 1f)
+            {
+                s = 1f;
+            }
 
             // Lightness checking
-            if (l < 0f) l = 0f;
-            else if (l > 1f) l = 1f;
+            if (l < 0f)
+            {
+                l = 0f;
+            }
+            else if (l > 1f)
+            {
+                l = 1f;
+            }
 
             // === Conversion ===
             if (s == 0)
@@ -298,16 +354,20 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             float var1, var2, hval;
 
             if (l < 0.5f)
+            {
                 var2 = l * (1f + s);
+            }
             else
-                var2 = (l + s) - (s * l);
+            {
+                var2 = l + s - s * l;
+            }
 
             var1 = 2f * l - var2;
             hval = h / 360f;
 
-            int red = Convert.ToInt32(255f * FromHueToRGB(var1, var2, hval + (1f / 3f)));
+            int red = Convert.ToInt32(255f * FromHueToRGB(var1, var2, hval + 1f / 3f));
             int green = Convert.ToInt32(255f * FromHueToRGB(var1, var2, hval));
-            int blue = Convert.ToInt32(255f * FromHueToRGB(var1, var2, hval - (1f / 3f)));
+            int blue = Convert.ToInt32(255f * FromHueToRGB(var1, var2, hval - 1f / 3f));
 
             return Color.FromArgb(red, green, blue);
         }
@@ -316,17 +376,32 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             float rgbColor;
 
-            if (hue < 0f) hue += 1f;
-            if (hue > 1f) hue -= 1f;
+            if (hue < 0f)
+            {
+                hue += 1f;
+            }
 
-            if ((6f * hue) < 1f)
-                rgbColor = (var1 + (var2 - var1) * 6f * hue);
-            else if ((2f * hue) < 1f)
+            if (hue > 1f)
+            {
+                hue -= 1f;
+            }
+
+            if (6f * hue < 1f)
+            {
+                rgbColor = var1 + (var2 - var1) * 6f * hue;
+            }
+            else if (2f * hue < 1f)
+            {
                 rgbColor = var2;
-            else if ((3f * hue) < 2f)
-                rgbColor = (var1 + (var2 - var1) * ((2f / 3f) - hue) * 6f);
+            }
+            else if (3f * hue < 2f)
+            {
+                rgbColor = var1 + (var2 - var1) * (2f / 3f - hue) * 6f;
+            }
             else
+            {
                 rgbColor = var1;
+            }
 
             return rgbColor;
         }
@@ -364,23 +439,45 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             else
             {
                 // Saturation
-                if (l < 0.5f) s = deltaMax / (varMax + varMin);
-                else s = deltaMax / (2f - varMax - varMin);
+                if (l < 0.5f)
+                {
+                    s = deltaMax / (varMax + varMin);
+                }
+                else
+                {
+                    s = deltaMax / (2f - varMax - varMin);
+                }
 
                 // Hue
-                float deltaR = (((varMax - varR) / 6f) + (deltaMax / 2f)) / deltaMax;
-                float deltaG = (((varMax - varG) / 6f) + (deltaMax / 2f)) / deltaMax;
-                float deltaB = (((varMax - varB) / 6f) + (deltaMax / 2f)) / deltaMax;
+                float deltaR = ((varMax - varR) / 6f + deltaMax / 2f) / deltaMax;
+                float deltaG = ((varMax - varG) / 6f + deltaMax / 2f) / deltaMax;
+                float deltaB = ((varMax - varB) / 6f + deltaMax / 2f) / deltaMax;
 
-                if (varR == varMax) h = deltaB - deltaG;
-                else if (varG == varMax) h = (1f / 3f) + deltaR - deltaB;
-                else if (varB == varMax) h = (2f / 3f) + deltaG - deltaR;
+                if (varR == varMax)
+                {
+                    h = deltaB - deltaG;
+                }
+                else if (varG == varMax)
+                {
+                    h = 1f / 3f + deltaR - deltaB;
+                }
+                else if (varB == varMax)
+                {
+                    h = 2f / 3f + deltaG - deltaR;
+                }
 
-                if (h < 0f) h += 1f;
-                if (h > 1f) h -= 1f;
+                if (h < 0f)
+                {
+                    h += 1f;
+                }
+
+                if (h > 1f)
+                {
+                    h -= 1f;
+                }
             }
 
-            return new HSLColour(h * 360f, s, l);
+            return new(h * 360f, s, l);
         }
 
     }

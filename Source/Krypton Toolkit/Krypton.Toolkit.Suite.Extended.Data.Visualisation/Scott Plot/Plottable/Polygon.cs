@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottablePolygon{label} with {PointCount} points";
         }
 
@@ -102,7 +102,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Validate.AssertEqualLength("xs and ys", Xs, Ys);
 
             if (Xs.Length < 3)
+            {
                 throw new InvalidOperationException("polygons must contain at least 3 points");
+            }
 
             if (deep)
             {
@@ -115,17 +117,27 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             PointF[] points = new PointF[Xs.Length];
             for (int i = 0; i < Xs.Length; i++)
+            {
                 points[i] = new PointF(dims.GetPixelX(Xs[i]), dims.GetPixelY(Ys[i]));
+            }
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Brush fillBrush = GDI.Brush(FillColor, HatchColor, HatchStyle))
-            using (Pen outlinePen = GDI.Pen(LineColor, (float)LineWidth))
             {
-                if (Fill)
-                    gfx.FillPolygon(fillBrush, points);
+                using (Brush fillBrush = GDI.Brush(FillColor, HatchColor, HatchStyle))
+                {
+                    using (Pen outlinePen = GDI.Pen(LineColor, (float)LineWidth))
+                    {
+                        if (Fill)
+                        {
+                            gfx.FillPolygon(fillBrush, points);
+                        }
 
-                if (LineWidth > 0)
-                    gfx.DrawPolygon(outlinePen, points);
+                        if (LineWidth > 0)
+                        {
+                            gfx.DrawPolygon(outlinePen, points);
+                        }
+                    }
+                }
             }
         }
     }

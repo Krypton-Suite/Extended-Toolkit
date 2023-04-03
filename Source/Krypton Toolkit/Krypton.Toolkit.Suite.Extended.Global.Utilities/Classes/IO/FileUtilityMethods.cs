@@ -77,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             else
             {
-                return fileSize.ToString(sign + "0 B"); // Byte
+                return fileSize.ToString($"{sign}0 B"); // Byte
             }
 
             readable = readable / 1024;

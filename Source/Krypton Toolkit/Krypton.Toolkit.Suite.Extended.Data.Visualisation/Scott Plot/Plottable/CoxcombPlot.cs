@@ -169,7 +169,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public LegendItem[] GetLegendItems()
         {
             if (SliceLabels is null)
+            {
                 return null;
+            }
 
             return Enumerable
                 .Range(0, Values.Length)
@@ -181,7 +183,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottableCoxcomb {label} with {Values.Length} categories";
         }
 

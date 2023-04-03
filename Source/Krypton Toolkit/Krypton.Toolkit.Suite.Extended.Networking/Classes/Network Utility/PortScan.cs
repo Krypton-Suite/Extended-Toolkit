@@ -152,8 +152,8 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                     _worker.RunWorkerAsync();
 
                     _txtScanOutput.Text = "";
-                    _txtScanOutput.AppendText("Starting port scan..." + Environment.NewLine);
-                    _txtScanOutput.AppendText("Port scanning host: " + _txtHost.Text + Environment.NewLine);
+                    _txtScanOutput.AppendText($"Starting port scan...{Environment.NewLine}");
+                    _txtScanOutput.AppendText($"Port scanning host: {_txtHost.Text}{Environment.NewLine}");
                     _txtScanOutput.AppendText(Environment.NewLine);
 
                     btn.Text = "Stop";
@@ -177,11 +177,11 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
             if (state.IsOpen)
             {
-                _txtScanOutput.AppendText("Port: " + state.Port.ToString() + ", open" + Environment.NewLine);
+                _txtScanOutput.AppendText($"Port: {state.Port}, open{Environment.NewLine}");
             }
             else
             {
-                _txtScanOutput.AppendText("Port: " + state.Port.ToString() + ", closed" + Environment.NewLine);
+                _txtScanOutput.AppendText($"Port: {state.Port}, closed{Environment.NewLine}");
             }
         }
 

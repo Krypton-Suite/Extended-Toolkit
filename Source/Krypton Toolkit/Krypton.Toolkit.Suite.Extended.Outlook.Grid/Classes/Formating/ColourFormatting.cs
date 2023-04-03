@@ -55,8 +55,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns></returns>
         public static Color ConvertTwoRange(double value, double min, double max, TwoColoursParams par)
         {
-            ColourHelper.HSVColour A = ColourToHSV(par.MinimumColour);
-            ColourHelper.HSVColour B = ColourToHSV(par.MaximumColour);
+            ColourHelper.HSVColour a = ColourToHSV(par.MinimumColour);
+            ColourHelper.HSVColour b = ColourToHSV(par.MaximumColour);
 
             //Ratio
             double percent;
@@ -82,9 +82,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns></returns>
         public static Color ConvertThreeRange(double value, double min, double max, ThreeColoursParams par)
         {
-            ColourHelper.HSVColour A = ColourToHSV(par.MinimumColour);
-            ColourHelper.HSVColour B = ColourToHSV(par.MaximumColour);
-            ColourHelper.HSVColour C = ColourToHSV(par.MediumColour);
+            ColourHelper.HSVColour a = ColourToHSV(par.MinimumColour);
+            ColourHelper.HSVColour b = ColourToHSV(par.MaximumColour);
+            ColourHelper.HSVColour c = ColourToHSV(par.MediumColour);
 
             //Ratio
             double percent;
@@ -118,10 +118,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int min = Math.Min(colour.R, Math.Min(colour.G, colour.B));
 
             double hue = colour.GetHue();
-            double saturation = (max == 0) ? 0 : 1d - (1d * min / max);
+            double saturation = max == 0 ? 0 : 1d - 1d * min / max;
             double value = max / 255d;
 
-            return new ColourHelper.HSVColour((float)hue, (float)saturation, (float)value);
+            return new((float)hue, (float)saturation, (float)value);
         }
 
         private static Color ColourFromHSV(double hue, double saturation, double value)
@@ -135,18 +135,21 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int q = Convert.ToInt32(value * (1 - f * saturation));
             int t = Convert.ToInt32(value * (1 - (1 - f) * saturation));
 
-            if (hi == 0)
-                return Color.FromArgb(255, v, t, p);
-            else if (hi == 1)
-                return Color.FromArgb(255, q, v, p);
-            else if (hi == 2)
-                return Color.FromArgb(255, p, v, t);
-            else if (hi == 3)
-                return Color.FromArgb(255, p, q, v);
-            else if (hi == 4)
-                return Color.FromArgb(255, t, p, v);
-            else
-                return Color.FromArgb(255, v, p, q);
+            switch (hi)
+            {
+                case 0:
+                    return Color.FromArgb(255, v, t, p);
+                case 1:
+                    return Color.FromArgb(255, q, v, p);
+                case 2:
+                    return Color.FromArgb(255, p, v, t);
+                case 3:
+                    return Color.FromArgb(255, p, q, v);
+                case 4:
+                    return Color.FromArgb(255, t, p, v);
+                default:
+                    return Color.FromArgb(255, v, p, q);
+            }
         }
         /// <summary>
         /// Interpolate colors 0.0 - 1.0        
@@ -159,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             Color colorRight = colorus[right];
 
             double step = 1.0 / (colorus.Length - 1);
-            double percentRight = (percent - (left * step)) / step;
+            double percentRight = (percent - left * step) / step;
             double percentLeft = 1.0 - percentRight;
             return Color.FromArgb((byte)(colorLeft.A * percentLeft + colorRight.A * percentRight), (byte)(colorLeft.R * percentLeft + colorRight.R * percentRight), (byte)(colorLeft.G * percentLeft + colorRight.G * percentRight), (byte)(colorLeft.B * percentLeft + colorRight.B * percentRight));
         }

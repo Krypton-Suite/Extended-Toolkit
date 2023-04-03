@@ -1148,7 +1148,9 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         protected override void OnPaint(PaintEventArgs e)
         {
             if (IsDisposed || Disposing || ViewManager == null)
+            {
                 return;
+            }
 
             Paint?.Invoke(this, e);
             base.OnPaint(e);
@@ -1222,7 +1224,9 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         protected override void OnLayout(LayoutEventArgs levent)
         {
             if (IsDisposed || Disposing || ViewManager == null)
+            {
                 return;
+            }
 
             if (IsHandleCreated)
             {

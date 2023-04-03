@@ -96,7 +96,9 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         internal IEnumerable<SysInfoResult> GetOrFetchSysInfoResults()
         {
             if (_sysInfoResults.Count == 0)
+            {
                 _sysInfoResults.AddRange(CreateSysInfoResults());
+            }
 
             return _sysInfoResults.AsReadOnly();
         }

@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the group
         /// </summary>
-        public IOutlookGridGroup GroupingType { get; set; }
+        public IOutlookGridGroup? GroupingType { get; set; }
 
         /// <summary>
         /// Gets or sets the column's position in grouping and at which level

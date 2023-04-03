@@ -69,10 +69,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (Configuration.LockHorizontalAxis)
+            {
                 Plot.SetAxisLimitsX(originalLimits.XMin, originalLimits.XMax);
+            }
 
             if (Configuration.LockVerticalAxis)
+            {
                 Plot.SetAxisLimitsY(originalLimits.YMin, originalLimits.YMax);
+            }
         }
     }
 }

@@ -98,7 +98,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             // start a new processor only if one is not already running
             if (!QueueProcessorIsRunning)
+            {
                 await RunQueueProcessor();
+            }
         }
 
         /// <summary>
@@ -107,7 +109,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private void RenderPreview(RenderType renderType)
         {
             if (renderType == RenderType.HighQuality)
+            {
                 return;
+            }
 
             RenderLowQuality();
         }
@@ -138,7 +142,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     // A LQ version has been rendered, but we need a HQ version after a delay
 
                     if (RenderDelayTimer.IsRunning == false)
+                    {
                         RenderDelayTimer.Restart();
+                    }
 
                     if (RenderDelayTimer.ElapsedMilliseconds > RenderDelayMilliseconds)
                     {
@@ -179,7 +185,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     uiEvent.ProcessEvent();
 
                     if (uiEvent.RenderType == RenderType.LowQualityThenHighQualityDelayed)
+                    {
                         RenderDelayTimer.Restart();
+                    }
 
                     if (uiEvent.RenderType != RenderType.ProcessMouseEventsOnly)
                     {
@@ -189,7 +197,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 }
 
                 if (eventRenderRequested)
+                {
                     RenderPreview(lastEventRenderType);
+                }
 
                 await Task.Delay(1);
 
@@ -198,7 +208,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 {
                     bool finalRenderExecuted = RenderFinal(lastEventRenderType);
                     if (finalRenderExecuted)
+                    {
                         break;
+                    }
                 }
             };
 

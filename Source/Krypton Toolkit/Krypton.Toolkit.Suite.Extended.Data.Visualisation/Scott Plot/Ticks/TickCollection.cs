@@ -114,16 +114,24 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 // first pass uses forced density with manual label sizes to consistently approximate labels
                 if (LabelFormat == TickLabelFormatOptions.DateTime)
+                {
                     RecalculatePositionsAutomaticDatetime(dims, 20, 24, (int)(10 * TickDensity));
+                }
                 else
+                {
                     RecalculatePositionsAutomaticNumeric(dims, 15, 12, (int)(10 * TickDensity));
+                }
 
                 // second pass calculates density using measured labels produced by the first pass
                 (LargestLabelWidth, LargestLabelHeight) = MaxLabelSize(tickFont);
                 if (LabelFormat == TickLabelFormatOptions.DateTime)
+                {
                     RecalculatePositionsAutomaticDatetime(dims, LargestLabelWidth, LargestLabelHeight, null);
+                }
                 else
+                {
                     RecalculatePositionsAutomaticNumeric(dims, LargestLabelWidth, LargestLabelHeight, null);
+                }
             }
             else
             {
@@ -167,21 +175,29 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private (float width, float height) MaxLabelSize(Font tickFont)
         {
             if (TickCollectionStorage.tickLabels is null || TickCollectionStorage.tickLabels.Length == 0)
+            {
                 return (0, 0);
+            }
 
             string largestString = "";
             foreach (string s in TickCollectionStorage.tickLabels.Where(x => string.IsNullOrEmpty(x) == false))
+            {
                 if (s.Length > largestString.Length)
+                {
                     largestString = s;
+                }
+            }
 
             if (LabelFormat == TickLabelFormatOptions.DateTime)
             {
                 // widen largest string based on the longest month name
                 foreach (string s in new DateTimeFormatInfo().MonthGenitiveNames)
                 {
-                    string s2 = s + "\n" + "1985";
+                    string s2 = $"{s}\n1985";
                     if (s2.Length > largestString.Length)
+                    {
                         largestString = s2;
+                    }
                 }
             }
 
@@ -195,7 +211,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             int tickCount;
 
             if (MinimumTickSpacing > 0)
+            {
                 throw new InvalidOperationException("minimum tick spacing does not support DateTime ticks");
+            }
 
             if (Orientation == AxisOrientation.Vertical)
             {
@@ -295,7 +313,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 TickCollectionStorage.tickPositionsMajor = TickCollectionStorage.tickPositionsMajor.Where(x => x == (int)x).Distinct().ToArray();
 
                 if (TickCollectionStorage.tickPositionsMajor.Length < 2)
+                {
                     TickCollectionStorage.tickPositionsMajor = new double[] { firstTick - 1, firstTick, firstTick + 1 };
+                }
             }
 
             (TickCollectionStorage.tickLabels, CornerLabel) = GetPrettyTickLabels(
@@ -308,9 +328,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 );
 
             if (MinorTickDistribution == MinorTickDistribution.Log)
+            {
                 TickCollectionStorage.tickPositionsMinor = MinorFromMajorLog(TickCollectionStorage.tickPositionsMajor, low, high);
+            }
             else
+            {
                 TickCollectionStorage.tickPositionsMinor = MinorFromMajor(TickCollectionStorage.tickPositionsMajor, 5, low, high);
+            }
         }
 
         public override string ToString()
@@ -329,11 +353,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             double[] divBy;
             if (radix == 10)
+            {
                 divBy = new double[] { 2, 2, 2.5 }; // 10, 5, 2.5, 1
+            }
             else if (radix == 16)
+            {
                 divBy = new double[] { 2, 2, 2, 2 }; // 16, 8, 4, 2, 1
+            }
             else
+            {
                 throw new ArgumentException($"radix {radix} is not supported");
+            }
 
             int divisions = 0;
             int tickCount = 0;
@@ -350,14 +380,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             // if a custom format string exists use it
             if (numericFormatString != null)
+            {
                 return value.ToString(numericFormatString, culture);
+            }
 
             // if the number is round or large, use the numeric format
             // https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings#the-numeric-n-format-specifier
             bool isRoundNumber = ((int)value == value);
             bool isLargeNumber = (Math.Abs(value) > 1000);
             if (isRoundNumber || isLargeNumber)
+            {
                 return value.ToString("N0", culture);
+            }
 
             // otherwise the number is probably small or very precise to use the general format (with slight rounding)
             // https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings#the-general-g-format-specifier
@@ -379,7 +413,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             string cornerLabel = "";
 
             if (positions.Length == 0)
+            {
                 return (labels, cornerLabel);
+            }
 
             double range = positions.Last() - positions.First();
 
@@ -389,7 +425,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             if (useMultiplierNotation)
             {
                 if (Math.Abs(exponent) > 2)
+                {
                     multiplier = Math.Pow(10, exponent);
+                }
             }
 
             double offset = 0;
@@ -397,32 +435,50 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 offset = positions.First();
                 if (Math.Abs(offset / range) < 10)
+                {
                     offset = 0;
+                }
             }
 
             for (int i = 0; i < positions.Length; i++)
             {
                 double adjustedPosition = (positions[i] - offset) / multiplier;
                 if (invertSign)
+                {
                     adjustedPosition *= -1;
+                }
+
                 labels[i] = ManualTickFormatter is null ? FormatLocal(adjustedPosition, culture) : ManualTickFormatter(adjustedPosition);
                 if (labels[i] == "-0")
+                {
                     labels[i] = "0";
+                }
             }
 
             if (useExponentialNotation)
             {
                 if (multiplier != 1)
+                {
                     cornerLabel += $"e{exponent} ";
+                }
+
                 if (offset != 0)
+                {
                     cornerLabel += Tools.ScientificNotation(offset);
+                }
             }
             else
             {
                 if (multiplier != 1)
+                {
                     cornerLabel += FormatLocal(multiplier, culture);
+                }
+
                 if (offset != 0)
-                    cornerLabel += " +" + FormatLocal(offset, culture);
+                {
+                    cornerLabel += $" +{FormatLocal(offset, culture)}";
+                }
+
                 cornerLabel = cornerLabel.Replace("+-", "-");
             }
 
@@ -434,7 +490,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 #pragma warning restore CS8632
         {
             if ((majorTicks == null) || (majorTicks.Length < 2))
+            {
                 return null;
+            }
 
             double majorTickSpacing = majorTicks[1] - majorTicks[0];
             double minorTickSpacing = majorTickSpacing / minorTicksPerMajorTick;
@@ -450,7 +508,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 {
                     double minorTickPosition = majorTickPosition + minorTickSpacing * i;
                     if ((minorTickPosition > lowerLimit) && (minorTickPosition < upperLimit))
+                    {
                         minorTicks.Add(minorTickPosition);
+                    }
                 }
             }
 
@@ -499,15 +559,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 // TODO: replace this with culture-aware format
                 dtTickSep = DateTime.FromOADate(ticksOADate[1]) - DateTime.FromOADate(ticksOADate[0]);
                 if (dtTickSep.TotalDays > 365 * 5)
+                {
                     dtFmt = "{0:yyyy}";
+                }
                 else if (dtTickSep.TotalDays > 365)
+                {
                     dtFmt = "{0:yyyy-MM}";
+                }
                 else if (dtTickSep.TotalDays > .5)
+                {
                     dtFmt = "{0:yyyy-MM-dd}";
+                }
                 else if (dtTickSep.TotalMinutes > .5)
+                {
                     dtFmt = "{0:yyyy-MM-dd\nH:mm}";
+                }
                 else
+                {
                     dtFmt = "{0:yyyy-MM-dd\nH:mm:ss}";
+                }
             }
             catch
             {
@@ -533,7 +603,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private Tick[] GetMajorTicks()
         {
             if (TickCollectionStorage.tickPositionsMajor is null || TickCollectionStorage.tickPositionsMajor.Length == 0)
+            {
                 return new Tick[] { };
+            }
 
             Tick[] ticks = new Tick[TickCollectionStorage.tickPositionsMajor.Length];
             for (int i = 0; i < ticks.Length; i++)
@@ -551,7 +623,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private Tick[] GetMinorTicks()
         {
             if (TickCollectionStorage.tickPositionsMinor is null || TickCollectionStorage.tickPositionsMinor.Length == 0)
+            {
                 return new Tick[] { };
+            }
 
             Tick[] ticks = new Tick[TickCollectionStorage.tickPositionsMinor.Length];
             for (int i = 0; i < ticks.Length; i++)

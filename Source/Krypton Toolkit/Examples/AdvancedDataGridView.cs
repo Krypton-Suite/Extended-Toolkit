@@ -63,12 +63,16 @@ namespace Examples
             foreach (KeyValuePair<string, string> translation in KryptonAdvancedDataGridView.Translations)
             {
                 if (!translations.ContainsKey(translation.Key))
-                    translations.Add(translation.Key, "." + translation.Value);
+                {
+                    translations.Add(translation.Key, $".{translation.Value}");
+                }
             }
             foreach (KeyValuePair<string, string> translation in KryptonAdvancedDataGridViewSearchToolBar.Translations)
             {
                 if (!translations.ContainsKey(translation.Key))
-                    translations.Add(translation.Key, "." + translation.Value);
+                {
+                    translations.Add(translation.Key, $".{translation.Value}");
+                }
             }
             if (_testtranslations)
             {
@@ -162,7 +166,7 @@ namespace Examples
                         Math.Round(i % 2 == 0 ? (double)i*2/3 : (double)i/2, 6),
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0).Date,
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0),
-                        i*2 % 3 == 0 ? null : i.ToString()+" str",
+                        i*2 % 3 == 0 ? null : $"{i} str",
                         i % 2 == 0 ? true:false,
                         Guid.NewGuid(),
                         sampleimages[r.Next(0, 2)],
@@ -230,7 +234,9 @@ namespace Examples
             //sample use of the override string filter
             string stringcolumnfilter = ktxtStringFilter.Text;
             if (!String.IsNullOrEmpty(stringcolumnfilter))
+            {
                 e.FilterString += (!String.IsNullOrEmpty(e.FilterString) ? " AND " : "") + String.Format("string LIKE '%{0}%'", stringcolumnfilter.Replace("'", "''"));
+            }
 
             ktxtFilterString.Text = e.FilterString;
         }
@@ -269,7 +275,9 @@ namespace Examples
         private void kbtnApplySavedFilters_Click(object sender, EventArgs e)
         {
             if (kcmbSavedFilters.SelectedIndex != -1 && kcmbSortSaved.SelectedIndex != -1)
+            {
                 kadgvMain.LoadFilterAndSort(kcmbSavedFilters.SelectedValue.ToString(), kcmbSortSaved.SelectedValue.ToString());
+            }
         }
 
         private void kbtnClearFilters_Click(object sender, EventArgs e)
@@ -308,6 +316,7 @@ namespace Examples
                 e.WholeWord,
                 e.CaseSensitive);
             if (c == null && restartsearch)
+            {
                 c = kadgvMain.FindCell(
                     e.ValueToSearch,
                     e.ColumnToSearch != null ? e.ColumnToSearch.Name : null,
@@ -315,14 +324,21 @@ namespace Examples
                     0,
                     e.WholeWord,
                     e.CaseSensitive);
+            }
+
             if (c != null)
+            {
                 kadgvMain.CurrentCell = c;
+            }
         }
 
         private void _timermemoryusage_Tick(object sender, EventArgs e)
         {
             if (CollectGarbageOnTimerMemoryUsageUpdate)
+            {
                 GC.Collect();
+            }
+
             tsslMemoryUsage.Text = String.Format("Memory Usage: {0}Mb", GC.GetTotalMemory(false) / (1024 * 1024));
         }
 
@@ -345,7 +361,7 @@ namespace Examples
                         Math.Round(i % 2 == 0 ? (double)i*2/3 : (double)i/2, 6),
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0).Date,
                         DateTime.Today.AddHours(i*2).AddHours(i%2 == 0 ?i*10+1:0).AddMinutes(i%2 == 0 ?i*10+1:0).AddSeconds(i%2 == 0 ?i*10+1:0).AddMilliseconds(i%2 == 0 ?i*10+1:0),
-                        i*2 % 3 == 0 ? null : i.ToString()+" str",
+                        i*2 % 3 == 0 ? null : $"{i} str",
                         i % 2 == 0 ? true:false,
                         Guid.NewGuid(),
                         sampleimages[r.Next(0, 2)],

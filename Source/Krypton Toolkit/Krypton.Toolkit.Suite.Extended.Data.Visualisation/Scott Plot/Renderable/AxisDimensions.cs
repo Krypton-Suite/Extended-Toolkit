@@ -238,10 +238,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (Min > InnerBoundaryMin)
+            {
                 Min = InnerBoundaryMin;
+            }
 
             if (Max < InnerBoundaryMax)
+            {
                 Max = InnerBoundaryMax;
+            }
         }
 
         /// <summary>
@@ -250,7 +254,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void SetAxis(double? min, double? max)
         {
             if (LockedLimits)
+            {
                 return;
+            }
 
             HasBeenSet = true;
             Min = min ?? Min;
@@ -264,7 +270,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Pan(double units)
         {
             if (LockedLimits)
+            {
                 return;
+            }
 
             Min += units;
             Max += units;
@@ -277,7 +285,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void PanPx(float pixels)
         {
             if (LockedLimits)
+            {
                 return;
+            }
 
             Pan(pixels * UnitsPerPx);
         }
@@ -290,7 +300,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Zoom(double frac = 1, double? zoomTo = null)
         {
             if (LockedLimits)
+            {
                 return;
+            }
 
             zoomTo ??= Center;
             (Min, Max) = RationalLimits();

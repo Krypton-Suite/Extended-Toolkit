@@ -58,24 +58,30 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottablePolygons {label} with {PointCount} polygons";
         }
 
         public void ValidateData(bool deep = false)
         {
             if (deep == false)
+            {
                 return;
+            }
 
             foreach (var poly in Polys)
             {
                 foreach (var point in poly)
                 {
                     if (double.IsNaN(point.x) || double.IsNaN(point.y))
+                    {
                         throw new InvalidOperationException("points cannot contain NaN");
+                    }
 
                     if (double.IsInfinity(point.x) || double.IsInfinity(point.y))
+                    {
                         throw new InvalidOperationException("points cannot contain Infinity");
+                    }
                 }
             }
         }
@@ -131,25 +137,33 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 {
                     minX = poly[i].x;
                     if (maxX - minX > smallerThenPixelX)
+                    {
                         return true;
+                    }
                 }
                 if (poly[i].x > maxX)
                 {
                     maxX = poly[i].x;
                     if (maxX - minX > smallerThenPixelX)
+                    {
                         return true;
+                    }
                 }
                 if (poly[i].y < minX)
                 {
                     minY = poly[i].y;
                     if (maxY - minY > smallerThenPixelY)
+                    {
                         return true;
+                    }
                 }
                 if (poly[i].y > maxX)
                 {
                     maxY = poly[i].y;
                     if (maxY - minY > smallerThenPixelY)
+                    {
                         return true;
+                    }
                 }
             }
             return (maxX - minX > smallerThenPixelX || maxY - minY > smallerThenPixelY);
@@ -158,31 +172,43 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Brush brush = GDI.Brush(FillColor, HatchColor, HatchStyle))
-            using (Pen pen = GDI.Pen(LineColor, LineWidth))
             {
-                foreach (List<(double x, double y)> poly in Polys)
+                using (Brush brush = GDI.Brush(FillColor, HatchColor, HatchStyle))
                 {
-                    if (SkipOffScreenPolygons &&
-                        poly.Where(pt => pt.x >= dims.XMin && pt.x <= dims.XMax &&
-                                         pt.y >= dims.YMin && pt.y <= dims.YMax)
-                            .Count() == 0)
-                        continue;
-
-                    var polyArray = RenderSmallPolygonsAsSinglePixels && !IsBiggerThenPixel(poly, dims.UnitsPerPxX, dims.UnitsPerPxY) ?
-                        new PointF[] { new PointF(dims.GetPixelX(poly[0].x), dims.GetPixelY(poly[0].y)) } :
-                        poly.Select(point => new PointF(dims.GetPixelX(point.x), dims.GetPixelY(point.y))).ToArray();
-
-                    if (Fill)
+                    using (Pen pen = GDI.Pen(LineColor, LineWidth))
                     {
-                        if (polyArray.Length >= 3)
-                            gfx.FillPolygon(brush, polyArray);
-                        else
-                            gfx.FillRectangle(brush, polyArray[0].X, polyArray[0].Y, 1, 1);
-                    }
+                        foreach (List<(double x, double y)> poly in Polys)
+                        {
+                            if (SkipOffScreenPolygons &&
+                                poly.Where(pt => pt.x >= dims.XMin && pt.x <= dims.XMax &&
+                                                 pt.y >= dims.YMin && pt.y <= dims.YMax)
+                                    .Count() == 0)
+                            {
+                                continue;
+                            }
 
-                    if (LineWidth > 0)
-                        gfx.DrawPolygon(pen, polyArray);
+                            var polyArray = RenderSmallPolygonsAsSinglePixels && !IsBiggerThenPixel(poly, dims.UnitsPerPxX, dims.UnitsPerPxY) ?
+                                new PointF[] { new PointF(dims.GetPixelX(poly[0].x), dims.GetPixelY(poly[0].y)) } :
+                                poly.Select(point => new PointF(dims.GetPixelX(point.x), dims.GetPixelY(point.y))).ToArray();
+
+                            if (Fill)
+                            {
+                                if (polyArray.Length >= 3)
+                                {
+                                    gfx.FillPolygon(brush, polyArray);
+                                }
+                                else
+                                {
+                                    gfx.FillRectangle(brush, polyArray[0].X, polyArray[0].Y, 1, 1);
+                                }
+                            }
+
+                            if (LineWidth > 0)
+                            {
+                                gfx.DrawPolygon(pen, polyArray);
+                            }
+                        }
+                    }
                 }
             }
         }

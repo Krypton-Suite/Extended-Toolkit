@@ -50,11 +50,16 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 			};
 
 			if (_config.SmtpPort != 0)      // the default port is used if not set in config
-				smtp.Port = _config.SmtpPort;
-			if (!_config.SmtpUseDefaultCredentials)
-				smtp.Credentials = new NetworkCredential(_config.SmtpUsername, _config.SmtpPassword);
+            {
+                smtp.Port = _config.SmtpPort;
+            }
 
-			var message = new MailMessage(_config.SmtpFromAddress, _config.EmailReportAddress)
+            if (!_config.SmtpUseDefaultCredentials)
+            {
+                smtp.Credentials = new NetworkCredential(_config.SmtpUsername, _config.SmtpPassword);
+            }
+
+            var message = new MailMessage(_config.SmtpFromAddress, _config.EmailReportAddress)
 			{
 				BodyEncoding = Encoding.UTF8,
 				SubjectEncoding = Encoding.UTF8,
@@ -83,7 +88,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 					else
 					{
 						_sendEvent.Completed(success: false);
-						_sendEvent.ShowError($"{Description}: " + (e.Error.InnerException != null ? e.Error.InnerException.Message : e.Error.Message), e.Error);
+						_sendEvent.ShowError(
+                            $"{Description}: {(e.Error.InnerException != null ? e.Error.InnerException.Message : e.Error.Message)}", e.Error);
 					}
 				}
 				finally

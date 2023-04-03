@@ -108,7 +108,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             get
             {
                 if (m_OuterCircleRadius == 0)
+                {
                     m_OuterCircleRadius = DefaultOuterCircleRadius;
+                }
 
                 return m_OuterCircleRadius;
             }
@@ -130,7 +132,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             get
             {
                 if (m_InnerCircleRadius == 0)
+                {
                     m_InnerCircleRadius = DefaultInnerCircleRadius;
+                }
 
                 return m_InnerCircleRadius;
             }
@@ -152,7 +156,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             get
             {
                 if (m_NumberOfSpoke == 0)
+                {
                     m_NumberOfSpoke = DefaultNumberOfSpoke;
+                }
 
                 return m_NumberOfSpoke;
             }
@@ -196,7 +202,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             get
             {
                 if (m_SpokeThickness <= 0)
+                {
                     m_SpokeThickness = DefaultSpokeThickness;
+                }
 
                 return m_SpokeThickness;
             }
@@ -219,7 +227,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             set
             {
                 if (value > 0)
+                {
                     m_Timer.Interval = value;
+                }
             }
         }
 
@@ -396,7 +406,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 if (_blnShadeColor)
                 {
                     if (intCursor == 0 || intCursor < NumberSpoke - _intNbSpoke)
+                    {
                         objColors[intCursor] = _objColor;
+                    }
                     else
                     {
                         // Increment alpha channel color
@@ -405,14 +417,18 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                         // Ensure that we don't exceed the maximum alpha
                         // channel value (255)
                         if (PERCENTAGE_OF_DARKEN > byte.MaxValue)
+                        {
                             PERCENTAGE_OF_DARKEN = byte.MaxValue;
+                        }
 
                         // Determine the spoke forecolor
                         objColors[intCursor] = Darken(_objColor, PERCENTAGE_OF_DARKEN);
                     }
                 }
                 else
+                {
                     objColors[intCursor] = _objColor;
+                }
             }
 
             return objColors;
@@ -499,7 +515,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         private void ActiveTimer()
         {
             if (m_IsTimerActive)
+            {
                 m_Timer.Start();
+            }
             else
             {
                 m_Timer.Stop();

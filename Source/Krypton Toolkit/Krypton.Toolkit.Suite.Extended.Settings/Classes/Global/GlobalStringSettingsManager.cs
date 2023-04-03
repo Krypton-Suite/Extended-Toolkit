@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
             SetFeedbackText("This will become informative...");
 
-            SetPaletteExportPath(Environment.SpecialFolder.MyDocuments + "\\Krypton Palettes");
+            SetPaletteExportPath($"{Environment.SpecialFolder.MyDocuments}\\Krypton Palettes");
         }
         #endregion
     }

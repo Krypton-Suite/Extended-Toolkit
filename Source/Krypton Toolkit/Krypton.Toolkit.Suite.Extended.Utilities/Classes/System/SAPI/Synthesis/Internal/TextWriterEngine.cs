@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _writer.WriteStartElement("break");
             if (time > 0 && eBreak == EmphasisBreak.None)
             {
-                _writer.WriteAttributeString("time", time.ToString(CultureInfo.InvariantCulture) + "ms");
+                _writer.WriteAttributeString("time", $"{time.ToString(CultureInfo.InvariantCulture)}ms");
                 return;
             }
             string value = null;

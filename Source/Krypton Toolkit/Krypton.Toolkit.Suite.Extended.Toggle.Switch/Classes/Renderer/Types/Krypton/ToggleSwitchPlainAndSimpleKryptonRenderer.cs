@@ -218,10 +218,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             Rectangle buttonRect = new Rectangle(ToggleSwitch.ButtonValue, BorderWidth, buttonWidth, buttonWidth);
 
             if (buttonRect.X < BorderWidth + ButtonMargin - 1)
+            {
                 buttonRect.X = BorderWidth + ButtonMargin - 1;
+            }
 
             if (buttonRect.X + buttonRect.Width > ToggleSwitch.Width - BorderWidth - ButtonMargin + 1)
+            {
                 buttonRect.X = ToggleSwitch.Width - buttonRect.Width - BorderWidth - ButtonMargin + 1;
+            }
 
             return buttonRect;
         }

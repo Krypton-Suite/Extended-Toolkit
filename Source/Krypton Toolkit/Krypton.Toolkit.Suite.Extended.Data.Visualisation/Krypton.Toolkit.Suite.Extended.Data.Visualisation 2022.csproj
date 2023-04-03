@@ -153,6 +153,10 @@
 	</Choose>
 
 	<ItemGroup>
+	  <None Remove="Scott Plot\Plottable\3yzteoeo.knu~" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2022.csproj" />
 	</ItemGroup>
 

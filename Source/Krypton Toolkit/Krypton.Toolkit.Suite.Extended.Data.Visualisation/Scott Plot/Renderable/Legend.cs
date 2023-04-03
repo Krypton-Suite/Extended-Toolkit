@@ -55,24 +55,32 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible is false || LegendItems is null || LegendItems.Length == 0)
+            {
                 return;
+            }
 
             using (var gfx = GDI.Graphics(bmp, dims, lowQuality, false))
-            using (var font = GDI.Font(Font))
             {
-                var (maxLabelWidth, maxLabelHeight, width, height) = GetDimensions(gfx, LegendItems, font);
-                var (x, y) = GetLocationPx(dims, width, height);
-                RenderOnBitmap(gfx, LegendItems, font, x, y, width, height, maxLabelHeight);
+                using (var font = GDI.Font(Font))
+                {
+                    var (maxLabelWidth, maxLabelHeight, width, height) = GetDimensions(gfx, LegendItems, font);
+                    var (x, y) = GetLocationPx(dims, width, height);
+                    RenderOnBitmap(gfx, LegendItems, font, x, y, width, height, maxLabelHeight);
+                }
             }
         }
 
         public Bitmap GetBitmap(bool lowQuality = false, double scale = 1.0)
         {
             if (LegendItems is null)
+            {
                 throw new InvalidOperationException("must render the plot at least once before getting the legend bitmap");
+            }
 
             if (LegendItems.Length == 0)
+            {
                 throw new InvalidOperationException("The legend is empty (there are no visible plot objects with a label)");
+            }
 
             // use a temporary bitmap and graphics (without scaling) to measure how large the final image should be
             using var tempBitmap = new Bitmap(1, 1);
@@ -114,65 +122,79 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             bool shadow = true, bool outline = true)
         {
             using (var fillBrush = new SolidBrush(FillColor))
-            using (var shadowBrush = new SolidBrush(ShadowColor))
-            using (var textBrush = new SolidBrush(Font.Color))
-            using (var outlinePen = new Pen(OutlineColor))
             {
-                RectangleF rectShadow = new RectangleF(locationX + ShadowOffsetX, locationY + ShadowOffsetY, width, height);
-                RectangleF rectFill = new RectangleF(locationX, locationY, width, height);
-
-                if (shadow)
-                    gfx.FillRectangle(shadowBrush, rectShadow);
-
-                gfx.FillRectangle(fillBrush, rectFill);
-
-                if (outline)
-                    gfx.DrawRectangle(outlinePen, Rectangle.Round(rectFill));
-
-                for (int i = 0; i < items.Length; i++)
+                using (var shadowBrush = new SolidBrush(ShadowColor))
                 {
-                    var item = items[i];
-                    float verticalOffset = i * maxLabelHeight;
-
-                    // draw text
-                    gfx.DrawString(item.label, font, textBrush, locationX + SymbolWidth, locationY + verticalOffset);
-
-                    // prepare values for drawing a line
-                    outlinePen.Color = item.color;
-                    outlinePen.Width = 1;
-                    float lineY = locationY + verticalOffset + maxLabelHeight / 2;
-                    float lineX1 = locationX + SymbolPad;
-                    float lineX2 = lineX1 + SymbolWidth - SymbolPad * 2;
-
-                    // prepare values for drawing a rectangle
-                    PointF rectOrigin = new PointF(lineX1, (float)(lineY - item.lineWidth / 2));
-                    SizeF rectSize = new SizeF(lineX2 - lineX1, (float)item.lineWidth);
-                    RectangleF rect = new RectangleF(rectOrigin, rectSize);
-
-                    if (item.IsRectangle)
+                    using (var textBrush = new SolidBrush(Font.Color))
                     {
-                        // draw a rectangle
-                        using (var legendItemFillBrush = GDI.Brush(item.color, item.hatchColor, item.hatchStyle))
-                        using (var legendItemOutlinePen = new Pen(item.borderColor, item.borderWith))
+                        using (var outlinePen = new Pen(OutlineColor))
                         {
-                            gfx.FillRectangle(legendItemFillBrush, rect);
-                            gfx.DrawRectangle(legendItemOutlinePen, rect.X, rect.Y, rect.Width, rect.Height);
-                        }
-                    }
-                    else
-                    {
-                        // draw a line
-                        if (item.lineWidth > 0 && item.lineStyle != LineStyle.None)
-                        {
-                            using var linePen = GDI.Pen(item.color, item.lineWidth, item.lineStyle, false);
-                            gfx.DrawLine(linePen, lineX1, lineY, lineX2, lineY);
-                        }
+                            RectangleF rectShadow = new RectangleF(locationX + ShadowOffsetX, locationY + ShadowOffsetY, width, height);
+                            RectangleF rectFill = new RectangleF(locationX, locationY, width, height);
 
-                        // and perhaps a marker in the middle of the line
-                        float lineXcenter = (lineX1 + lineX2) / 2;
-                        PointF markerPoint = new PointF(lineXcenter, lineY);
-                        if ((item.markerShape != MarkerShape.None) && (item.markerSize > 0))
-                            MarkerTools.DrawMarker(gfx, markerPoint, item.markerShape, MarkerWidth, item.color);
+                            if (shadow)
+                            {
+                                gfx.FillRectangle(shadowBrush, rectShadow);
+                            }
+
+                            gfx.FillRectangle(fillBrush, rectFill);
+
+                            if (outline)
+                            {
+                                gfx.DrawRectangle(outlinePen, Rectangle.Round(rectFill));
+                            }
+
+                            for (int i = 0; i < items.Length; i++)
+                            {
+                                var item = items[i];
+                                float verticalOffset = i * maxLabelHeight;
+
+                                // draw text
+                                gfx.DrawString(item.label, font, textBrush, locationX + SymbolWidth, locationY + verticalOffset);
+
+                                // prepare values for drawing a line
+                                outlinePen.Color = item.color;
+                                outlinePen.Width = 1;
+                                float lineY = locationY + verticalOffset + maxLabelHeight / 2;
+                                float lineX1 = locationX + SymbolPad;
+                                float lineX2 = lineX1 + SymbolWidth - SymbolPad * 2;
+
+                                // prepare values for drawing a rectangle
+                                PointF rectOrigin = new PointF(lineX1, (float)(lineY - item.lineWidth / 2));
+                                SizeF rectSize = new SizeF(lineX2 - lineX1, (float)item.lineWidth);
+                                RectangleF rect = new RectangleF(rectOrigin, rectSize);
+
+                                if (item.IsRectangle)
+                                {
+                                    // draw a rectangle
+                                    using (var legendItemFillBrush = GDI.Brush(item.color, item.hatchColor, item.hatchStyle))
+                                    {
+                                        using (var legendItemOutlinePen = new Pen(item.borderColor, item.borderWith))
+                                        {
+                                            gfx.FillRectangle(legendItemFillBrush, rect);
+                                            gfx.DrawRectangle(legendItemOutlinePen, rect.X, rect.Y, rect.Width, rect.Height);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // draw a line
+                                    if (item.lineWidth > 0 && item.lineStyle != LineStyle.None)
+                                    {
+                                        using var linePen = GDI.Pen(item.color, item.lineWidth, item.lineStyle, false);
+                                        gfx.DrawLine(linePen, lineX1, lineY, lineX2, lineY);
+                                    }
+
+                                    // and perhaps a marker in the middle of the line
+                                    float lineXcenter = (lineX1 + lineX2) / 2;
+                                    PointF markerPoint = new PointF(lineXcenter, lineY);
+                                    if ((item.markerShape != MarkerShape.None) && (item.markerSize > 0))
+                                    {
+                                        MarkerTools.DrawMarker(gfx, markerPoint, item.markerShape, MarkerWidth, item.color);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -187,7 +209,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                                      .Where(x => !string.IsNullOrWhiteSpace(x.label))
                                      .ToArray();
             if (ReverseOrder)
+            {
                 Array.Reverse(LegendItems);
+            }
         }
 
         private (float x, float y) GetLocationPx(PlotDimensions dims, float width, float height)

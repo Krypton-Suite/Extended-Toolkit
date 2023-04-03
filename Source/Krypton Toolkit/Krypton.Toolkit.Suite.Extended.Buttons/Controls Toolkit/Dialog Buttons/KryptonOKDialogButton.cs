@@ -53,14 +53,17 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private void KryptonOKDialogButton_TextChanged(object sender, EventArgs e)
         {
-            if (Text == Name) Text = "&OK";
+            if (Text == Name)
+            {
+                Text = KryptonManager.Strings.OK;
+            }
         }
 
         private void KryptonOKDialogButton_ParentChanged(object sender, EventArgs e)
         {
             Control parent = Parent;
 
-            while (!(Parent is KryptonForm) && !(parent == null))
+            while (!(Parent is KryptonForm) && parent != null)
             {
                 parent = parent.Parent;
             }

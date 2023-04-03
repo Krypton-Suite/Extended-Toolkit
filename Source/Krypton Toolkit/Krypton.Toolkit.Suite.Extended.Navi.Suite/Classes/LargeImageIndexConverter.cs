@@ -42,7 +42,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 return result;
             }
             else
+            {
                 return null;
+            }
         }
 
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
@@ -51,12 +53,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 int number = (int)value;
                 if (number >= 0)
+                {
                     return number.ToString();
+                }
                 else
+                {
                     return "(none)";
+                }
             }
             else
+            {
                 return null;
+            }
         }
 
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
@@ -68,7 +76,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
             PropertyDescriptor property;
             if ((property = PropertyCollection.Find("LargeImages", false)) != null)
+            {
                 imageList = (ImageList)property.GetValue(context.Instance);
+            }
 
             if (imageList != null)
             {
@@ -88,9 +98,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
         {
             if (context.Instance != null)
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
 
     }

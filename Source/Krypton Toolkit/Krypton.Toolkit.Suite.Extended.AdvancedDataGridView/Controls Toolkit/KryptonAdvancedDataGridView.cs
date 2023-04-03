@@ -202,7 +202,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 foreach (KeyValuePair<string, string> translation in translations)
                 {
                     if (Translations.ContainsKey(translation.Key))
+                    {
                         Translations[translation.Key] = translation.Value;
+                    }
                 }
             }
         }
@@ -241,7 +243,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     foreach (KeyValuePair<string, string> translation in translations)
                     {
                         if (!ret.ContainsKey(translation.Key) && Translations.ContainsKey(translation.Key))
+                        {
                             ret.Add(translation.Key, translation.Value);
+                        }
                     }
                 }
                 catch (Exception e)
@@ -254,7 +258,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             foreach (KeyValuePair<string, string> translation in GetTranslations())
             {
                 if (!ret.ContainsKey(translation.Key))
+                {
                     ret.Add(translation.Key, translation.Value);
+                }
             }
 
             return ret;
@@ -325,7 +331,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         cell.FilterAndSortEnabled = false;
                     }
                     else
+                    {
                         cell.FilterAndSortEnabled = false;
+                    }
+
                     _filterOrderList.Remove(column.Name);
                     _sortOrderList.Remove(column.Name);
                     _filteredColumns.Remove(column.Name);
@@ -345,7 +354,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 if (cell != null)
                 {
                     if (!cell.FilterAndSortEnabled && (cell.FilterString.Length > 0 || cell.SortString.Length > 0))
+                    {
                         CleanFilter(true);
+                    }
 
                     cell.FilterAndSortEnabled = true;
                     _filteredColumns.Remove(column.Name);
@@ -363,7 +374,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     cell.FilterPopup += new ColumnHeaderCellEventHandler(Cell_FilterPopup);
                     column.MinimumWidth = cell.MinimumSize.Width;
                     if (ColumnHeadersHeight < cell.MinimumSize.Height)
+                    {
                         ColumnHeadersHeight = cell.MinimumSize.Height;
+                    }
+
                     column.HeaderCell = cell;
                 }
             }
@@ -377,9 +391,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void SetFilterAndSortEnabled(DataGridViewColumn column, bool enabled)
         {
             if (enabled)
+            {
                 EnableFilterAndSort(column);
+            }
             else
+            {
                 DisableFilterAndSort(column);
+            }
         }
 
         /// <summary>
@@ -422,9 +440,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void SetFilterChecklistEnabled(DataGridViewColumn column, bool enabled)
         {
             if (enabled)
+            {
                 EnableFilterChecklist(column);
+            }
             else
+            {
                 DisableFilterChecklist(column);
+            }
         }
 
         /// <summary>
@@ -521,9 +543,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void SetFilterCustomEnabled(DataGridViewColumn column, bool enabled)
         {
             if (enabled)
+            {
                 EnableFilterCustom(column);
+            }
             else
+            {
                 DisableFilterCustom(column);
+            }
         }
 
         /// <summary>
@@ -620,9 +646,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _sortOrderList.Clear();
 
             if (filter != null)
+            {
                 FilterString = filter;
+            }
+
             if (sorting != null)
+            {
                 SortString = sorting;
+            }
 
             _loadedFilter = true;
         }
@@ -712,20 +743,26 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             if (_sortStringChangedInvokeBeforeDatasourceUpdate)
             {
                 if (SortStringChanged != null)
+                {
                     SortStringChanged.Invoke(this, sortEventArgs);
+                }
             }
             //sort datasource
             if (sortEventArgs.Cancel == false)
             {
                 BindingSource? datasource = DataSource as BindingSource;
                 if (datasource != null)
+                {
                     datasource.Sort = sortEventArgs.SortString;
+                }
             }
             //invoke SortStringChanged
             if (!_sortStringChangedInvokeBeforeDatasourceUpdate)
             {
                 if (SortStringChanged != null)
+                {
                     SortStringChanged.Invoke(this, sortEventArgs);
+                }
             }
         }
 
@@ -795,9 +832,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             }
 
             if (fireEvent)
+            {
                 SortString = BuildSortString();
+            }
             else
+            {
                 _sortString = BuildSortString();
+            }
         }
 
         /// <summary>
@@ -820,9 +861,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _sortOrderList.Clear();
 
             if (fireEvent)
+            {
                 SortString = null;
+            }
             else
+            {
                 _sortString = null;
+            }
         }
 
         /// <summary>
@@ -874,7 +919,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             if (_filterStringChangedInvokeBeforeDatasourceUpdate)
             {
                 if (FilterStringChanged != null)
+                {
                     FilterStringChanged.Invoke(this, filterEventArgs);
+                }
             }
             //filter datasource
             if (filterEventArgs.Cancel == false)
@@ -890,14 +937,18 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 else if (DataSource is DataTable datatable)
                 {
                     if (datatable.DefaultView != null)
+                    {
                         datatable.DefaultView.RowFilter = filterEventArgs.FilterString;
+                    }
                 }
             }
             //invoke FilterStringChanged
             if (!_filterStringChangedInvokeBeforeDatasourceUpdate)
             {
                 if (FilterStringChanged != null)
+                {
                     FilterStringChanged.Invoke(this, filterEventArgs);
+                }
             }
         }
 
@@ -971,9 +1022,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             }
 
             if (fireEvent)
+            {
                 FilterString = BuildFilterString();
+            }
             else
+            {
                 _filterString = BuildFilterString();
+            }
         }
 
         /// <summary>
@@ -998,9 +1053,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _filterOrderList.Clear();
 
             if (fireEvent)
+            {
                 FilterString = null;
+            }
             else
+            {
                 _filterString = null;
+            }
         }
 
         /// <summary>
@@ -1020,7 +1079,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             {
                 KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
+                {
                     cell.DoesTextFilterRemoveNodesOnSearch = enabled;
+                }
             }
         }
 
@@ -1034,7 +1095,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             {
                 KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
+                {
                     ret = cell.DoesTextFilterRemoveNodesOnSearch;
+                }
             }
             return ret;
         }
@@ -1061,21 +1124,30 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 rowIndex = Math.Max(0, rowIndex);
 
                 if (!isCaseSensitive)
+                {
                     valueToFind = valueToFind.ToLower();
+                }
 
                 if (columnName != null)
                 {
                     int c = Columns[columnName].Index;
                     if (columnIndex > c)
+                    {
                         rowIndex++;
+                    }
+
                     for (int r = rowIndex; r < RowCount; r++)
                     {
                         string value = Rows[r].Cells[c].FormattedValue.ToString();
                         if (!isCaseSensitive)
+                        {
                             value = value.ToLower();
+                        }
 
                         if ((!isWholeWordSearch && value.Contains(valueToFind)) || value.Equals(valueToFind))
+                        {
                             return Rows[r].Cells[c];
+                        }
                     }
                 }
                 else
@@ -1087,14 +1159,20 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         for (int c = columnIndex; c < ColumnCount; c++)
                         {
                             if (!Rows[r].Cells[c].Visible)
+                            {
                                 continue;
+                            }
 
                             string value = Rows[r].Cells[c].FormattedValue.ToString();
                             if (!isCaseSensitive)
+                            {
                                 value = value.ToLower();
+                            }
 
                             if ((!isWholeWordSearch && value.Contains(valueToFind)) || value.Equals(valueToFind))
+                            {
                                 return Rows[r].Cells[c];
+                            }
                         }
 
                         columnIndex = 0;
@@ -1162,7 +1240,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             cell.FilterPopup += new ColumnHeaderCellEventHandler(Cell_FilterPopup);
             e.Column.MinimumWidth = cell.MinimumSize.Width;
             if (ColumnHeadersHeight < cell.MinimumSize.Height)
+            {
                 ColumnHeadersHeight = cell.MinimumSize.Height;
+            }
+
             e.Column.HeaderCell = cell;
 
             base.OnColumnAdded(e);
@@ -1187,9 +1268,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                 cell.CleanEvents();
                 if (!e.Column.IsDataBound)
+                {
                     cell.MenuStrip.Dispose();
+                }
                 else
+                {
                     _menuStripToDispose.Add(cell.MenuStrip);
+                }
             }
             base.OnColumnRemoved(e);
         }
@@ -1206,7 +1291,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         protected override void OnRowsAdded(DataGridViewRowsAddedEventArgs e)
         {
             if (e.RowIndex >= 0)
+            {
                 _filteredColumns.Clear();
+            }
+
             base.OnRowsAdded(e);
         }
 
@@ -1217,7 +1305,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         protected override void OnRowsRemoved(DataGridViewRowsRemovedEventArgs e)
         {
             if (e.RowIndex >= 0)
+            {
                 _filteredColumns.Clear();
+            }
+
             base.OnRowsRemoved(e);
         }
 
@@ -1233,7 +1324,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         protected override void OnCellValueChanged(DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
                 _filteredColumns.Remove(Columns[e.ColumnIndex].Name);
+            }
+
             base.OnCellValueChanged(e);
         }
 
@@ -1286,14 +1380,20 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 Rectangle rect = GetCellDisplayRectangle(column.Index, -1, true);
 
                 if (_filteredColumns.Contains(column.Name))
+                {
                     filterMenu.Show(this, rect.Left, rect.Bottom, false);
+                }
                 else
                 {
                     _filteredColumns.Add(column.Name);
                     if (_filterOrderList.Count() > 0 && _filterOrderList.Last() == column.Name)
+                    {
                         filterMenu.Show(this, rect.Left, rect.Bottom, true);
+                    }
                     else
+                    {
                         filterMenu.Show(this, rect.Left, rect.Bottom, MenuStrip.GetValuesForFilter(this, column.Name));
+                    }
                 }
             }
         }
@@ -1312,7 +1412,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                 _filterOrderList.Remove(column.Name);
                 if (filterMenu.ActiveFilterType != MenuStrip.FilterType.None)
+                {
                     _filterOrderList.Add(column.Name);
+                }
 
                 FilterString = BuildFilterString();
 
@@ -1374,7 +1476,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                 _sortOrderList.Remove(column.Name);
                 if (filterMenu.ActiveSortType != MenuStrip.SortType.None)
+                {
                     _sortOrderList.Add(column.Name);
+                }
+
                 SortString = BuildSortString();
             }
         }

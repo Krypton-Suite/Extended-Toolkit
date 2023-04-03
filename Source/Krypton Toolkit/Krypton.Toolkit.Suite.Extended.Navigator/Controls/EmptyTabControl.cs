@@ -140,12 +140,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
 
             if (!Visible)
+            {
                 return;
+            }
 
             base.OnPaint(e);
 
             if (DesignMode)
+            {
                 return;
+            }
 
             Graphics g = e.Graphics;
 

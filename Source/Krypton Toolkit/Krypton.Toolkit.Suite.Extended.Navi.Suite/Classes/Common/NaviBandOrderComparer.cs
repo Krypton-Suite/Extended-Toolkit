@@ -34,7 +34,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public int Compare(object x, object y)
         {
             if (!(x is NaviBand) || !(y is NaviBand))
+            {
                 throw new ArgumentException("Both of the argument should be of type NaviBand");
+            }
 
             NaviBand bandx = (NaviBand)x;
             NaviBand bandy = (NaviBand)y;

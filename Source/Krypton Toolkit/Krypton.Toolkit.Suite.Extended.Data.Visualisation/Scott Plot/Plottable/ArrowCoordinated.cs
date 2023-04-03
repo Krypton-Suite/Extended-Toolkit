@@ -122,19 +122,23 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 label = Label
             };
-            return new LegendItem[] { item };
+            return new[] { item };
         }
 
         public void ValidateData(bool deep = false)
         {
             if (!Base.IsFinite() || !Tip.IsFinite())
+            {
                 throw new InvalidOperationException("Base and Tip coordinates must be finite");
+            }
         }
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             using Graphics gfx = GDI.Graphics(bmp, dims, lowQuality);
             using Pen penLine = GDI.Pen(Color, LineWidth, LineStyle, true);
@@ -154,8 +158,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             MarkerTools.DrawMarker(gfx, new(basePixel.X, basePixel.Y), MarkerShape, MarkerSize, Color);
 
-            penLine.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap((float)ArrowheadWidth, (float)ArrowheadLength, true);
-            penLine.StartCap = System.Drawing.Drawing2D.LineCap.Flat;
+            penLine.CustomEndCap = new AdjustableArrowCap((float)ArrowheadWidth, (float)ArrowheadLength, true);
+            penLine.StartCap = LineCap.Flat;
             gfx.DrawLine(penLine, basePixel.X, basePixel.Y, tipPixel.X, tipPixel.Y);
         }
     }

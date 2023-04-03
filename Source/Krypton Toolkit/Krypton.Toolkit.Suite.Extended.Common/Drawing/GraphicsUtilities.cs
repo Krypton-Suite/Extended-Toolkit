@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         public static void GrabFavIcon(PictureBox container, string url)
         {
-            container.ImageLocation = url + "/favicon.ico";
+            container.ImageLocation = $"{url}/favicon.ico";
 
             container.SizeMode = PictureBoxSizeMode.CenterImage;
         }

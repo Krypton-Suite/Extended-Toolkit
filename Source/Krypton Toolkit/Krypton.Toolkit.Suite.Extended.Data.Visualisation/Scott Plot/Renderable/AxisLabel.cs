@@ -106,15 +106,21 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false || (string.IsNullOrWhiteSpace(Label) && ImageLabel == null))
+            {
                 return;
+            }
 
             using var gfx = GDI.Graphics(bmp, dims, lowQuality, false);
             (float x, float y) = GetAxisCenter(dims);
 
             if (ImageLabel is null)
+            {
                 RenderTextLabel(gfx, x, y);
+            }
             else
+            {
                 RenderImageLabel(gfx, x, y);
+            }
         }
 
         private void RenderImageLabel(Graphics gfx, float x, float y)

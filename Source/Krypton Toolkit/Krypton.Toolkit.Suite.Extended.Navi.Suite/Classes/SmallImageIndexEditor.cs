@@ -43,7 +43,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             int imageIndex = 0;
 
             if (!int.TryParse(pe.Value.ToString(), out imageIndex))
+            {
                 return;
+            }
 
             ImageList imageList = null;
 
@@ -52,7 +54,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
             PropertyDescriptor property;
             if ((property = PropertyCollection.Find("SmallImages", false)) != null)
+            {
                 imageList = (ImageList)property.GetValue(instance);
+            }
 
             if ((imageList != null) && (imageList.Images.Count > imageIndex) && (imageIndex >= 0))
             {

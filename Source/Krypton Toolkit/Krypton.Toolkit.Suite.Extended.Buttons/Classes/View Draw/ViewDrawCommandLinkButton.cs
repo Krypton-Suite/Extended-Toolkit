@@ -156,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 		public override string ToString()
 		{
 			// Return the class name and instance identifier
-			return "ViewDrawButton:" + Id;
+			return $"ViewDrawButton:{Id}";
 		}
 		#endregion
 

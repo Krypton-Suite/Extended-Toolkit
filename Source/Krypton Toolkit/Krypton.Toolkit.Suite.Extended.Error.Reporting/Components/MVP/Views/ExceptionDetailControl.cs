@@ -223,7 +223,11 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             var displayException = CapturedException;
             foreach (ListViewItem lvi in klvExceptions.Items)
             {
-                if (!lvi.Selected) continue;
+                if (!lvi.Selected)
+                {
+                    continue;
+                }
+
                 for (var count = 0; count < int.Parse(lvi.Tag.ToString()); count++)
                 {
                     displayException = displayException?.InnerException;

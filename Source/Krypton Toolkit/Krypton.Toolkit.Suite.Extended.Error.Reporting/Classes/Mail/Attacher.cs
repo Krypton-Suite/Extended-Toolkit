@@ -54,7 +54,10 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
             try
             {
-                if (_config.TakeScreenshot) files.Add(ScreenShooter.TakeScreenShot());
+                if (_config.TakeScreenshot)
+                {
+                    files.Add(ScreenShooter.TakeScreenShot());
+                }
             }
             catch { /* ignored */ }
 

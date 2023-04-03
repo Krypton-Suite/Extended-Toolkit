@@ -299,8 +299,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     _paintGradientBorderColor = _gradientBorderColor;
                     _paintForeColor = ForeColor;
                 }
-                if (_isHotTracking) _paintForeColor = _hotForeColor;
-                if (_isPressed) _paintForeColor = _pressedForeColor;
+                if (_isHotTracking)
+                {
+                    _paintForeColor = _hotForeColor;
+                }
+
+                if (_isPressed)
+                {
+                    _paintForeColor = _pressedForeColor;
+                }
             }
             else
             {
@@ -481,16 +488,23 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 imagePoint.X += _locPoint.X;
                 imagePoint.Y += _locPoint.Y;
                 if (this.Enabled)
+                {
                     g.DrawImage(this.Image, imagePoint.X, imagePoint.Y);
+                }
                 else
+                {
                     System.Windows.Forms.ControlPaint.DrawImageDisabled(g, this.Image, imagePoint.X, imagePoint.Y, this.BackColor);
+                }
+
                 if (System.Drawing.ContentAlignment.MiddleCenter != this.ImageAlign)
                 {
                     g.DrawString(this.Text, this.Font, brushText, rc, sf);
                 }
             }
             else
+            {
                 g.DrawString(this.Text, this.Font, brushText, this.ClientRectangle, sf);
+            }
 
             brushText.Dispose();
 

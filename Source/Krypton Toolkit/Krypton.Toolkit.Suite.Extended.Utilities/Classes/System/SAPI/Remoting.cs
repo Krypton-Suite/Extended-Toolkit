@@ -130,7 +130,9 @@ namespace System
 
             // Log(o != null, "CreateInstanceFrom:: ", "Created Instance of class " + typeName, "Failed to create instance of class " + typeName);
             if (o == null)
+            {
                 return null;
+            }
             else
             {
                 ObjectHandle Handle = new ObjectHandle(o);
@@ -188,7 +190,9 @@ namespace System
         {
             // the jit doesn't check for that, so we should 
             if (appDomain == null)
+            {
                 throw new System.NullReferenceException();
+            }
 
             Diagnostics.Contracts.Contract.EndContractBlock();
 
@@ -201,7 +205,9 @@ namespace System
         {
             ObjectHandle oh = CreateInstanceFrom(appDomain, assemblyName, typeName);
             if (oh == null)
+            {
                 return null;
+            }
 
             return oh.Unwrap();
         }

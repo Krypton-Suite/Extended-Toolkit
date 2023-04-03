@@ -158,9 +158,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             _timer.Enabled = true;
 
             if (MarqueeScrollDirection == MarqueeScrollDirection.RightToLeft)
+            {
                 _pixelOffest = -_textSize.Width;
+            }
             else
+            {
                 _pixelOffest = _textSize.Width;
+            }
 
             DisplayStyle = CheckMarkDisplayStyle.CheckBox;
             CheckOnClick = false;
@@ -255,9 +259,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             Region clipRegion = new Region(clipRectangle);
             e.Graphics.Clip = clipRegion;
             if (MarqueeScrollDirection == MarqueeScrollDirection.RightToLeft)
+            {
                 e.Graphics.DrawString(_text, Font, Brushes.Black, -_pixelOffest + horizPadding, textYPosition);
+            }
             else
+            {
                 e.Graphics.DrawString(_text, Font, Brushes.Black, +_pixelOffest + horizPadding, textYPosition);
+            }
 
             clipRegion.Dispose();
             e.Graphics.Clip = savedClip;

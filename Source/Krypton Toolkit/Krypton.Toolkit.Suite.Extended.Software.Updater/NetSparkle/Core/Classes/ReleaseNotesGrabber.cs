@@ -74,7 +74,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                     separatorTemplate :
                     "<div style=\"border: #ccc 1px solid;\"><div style=\"background: {3}; padding: 5px;\"><span style=\"float: right; display:float;\">" +
                     "{1}</span>{0}</div><div style=\"padding: 5px;\">{2}</div></div><br>";
-            _initialHTML = "<html><head><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>" + htmlHeadAddition + "</head><body>";
+            _initialHTML =
+                $"<html><head><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>{htmlHeadAddition}</head><body>";
             _sparkle = sparkle;
             ChecksReleaseNotesSignature = false;
         }
@@ -85,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <returns>HTML to show to the user while release notes are loading</returns>
         public virtual string GetLoadingText()
         {
-            return _initialHTML + "<p><em>Loading release notes...</em></p></body></html>"; ;
+            return $"{_initialHTML}<p><em>Loading release notes...</em></p></body></html>"; ;
         }
 
         /// <summary>
@@ -138,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 {
                     if (item.IsCriticalUpdate)
                     {
-                        item.Description = "<p><em>" + criticalUpdate + "</em></p>" + "<br>" + item.Description;
+                        item.Description = $"<p><em>{criticalUpdate}</em></p><br>{item.Description}";
                     }
                     return item.Description;
                 }
@@ -147,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                     var md = new Markdown();
                     if (item.IsCriticalUpdate)
                     {
-                        item.Description = "*" + criticalUpdate + "*" + "\n\n" + item.Description;
+                        item.Description = $"*{criticalUpdate}*\n\n{item.Description}";
                     }
                     var temp = md.Transform(item.Description);
                     return temp;
@@ -190,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                     var md = new Markdown();
                     if (item.IsCriticalUpdate)
                     {
-                        notes = "*" + criticalUpdate + "*" + "\n\n" + notes;
+                        notes = $"*{criticalUpdate}*\n\n{notes}";
                     }
                     notes = md.Transform(notes);
                 }

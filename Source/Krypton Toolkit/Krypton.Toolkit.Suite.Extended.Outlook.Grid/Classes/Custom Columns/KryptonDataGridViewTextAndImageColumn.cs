@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public KryptonDataGridViewTextAndImageColumn()
             : base(new KryptonDataGridViewTextAndImageCell())
         {
-            _buttonSpecs = new DataGridViewColumnSpecCollection(this);
+            _buttonSpecs = new(this);
             SortMode = DataGridViewColumnSortMode.Automatic;
         }
 
@@ -55,11 +55,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns>A String that represents the current Object.</returns>
         public override string ToString()
         {
-            StringBuilder builder = new StringBuilder(0x40);
+            StringBuilder builder = new(0x40);
             builder.Append("KryptonDataGridViewTextAndImageColumn { Name=");
-            builder.Append(base.Name);
+            builder.Append(Name);
             builder.Append(", Index=");
-            builder.Append(base.Index.ToString(CultureInfo.CurrentCulture));
+            builder.Append(Index.ToString(CultureInfo.CurrentCulture));
             builder.Append(" }");
             return builder.ToString();
         }
@@ -130,7 +130,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             get
             {
                 if (TextBoxCellTemplate == null)
+                {
                     throw new InvalidOperationException("KryptonDataGridViewTextAndImageColumn cell template required");
+                }
 
                 return TextBoxCellTemplate.MaxInputLength;
             }
@@ -148,7 +150,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         {
                             DataGridViewTextBoxCell cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
                             if (cell != null)
+                            {
                                 cell.MaxInputLength = value;
+                            }
                         }
                     }
                 }
@@ -176,8 +180,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             set
             {
-                if ((value != null) && !(value is KryptonDataGridViewTextAndImageCell))
+                if (value != null && !(value is KryptonDataGridViewTextAndImageCell))
+                {
                     throw new InvalidCastException("Can only assign a object of type KryptonDataGridViewTextAndImageCell");
+                }
 
                 base.CellTemplate = value;
             }

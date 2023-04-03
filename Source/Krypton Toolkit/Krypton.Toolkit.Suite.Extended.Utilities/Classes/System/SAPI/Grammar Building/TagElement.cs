@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
     {
         private readonly object _value;
 
-        internal override string DebugSummary => string.Concat(base.DebugSummary, " {", _value, "}");
+        internal override string DebugSummary => $"{base.DebugSummary} {{{_value}}}";
 
         internal TagElement(object value)
         {

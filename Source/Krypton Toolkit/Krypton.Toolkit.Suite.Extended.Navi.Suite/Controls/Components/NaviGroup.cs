@@ -155,7 +155,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 // Make sure expanded hight is always as much as the height when a control 
                 // is expanded. 
                 if (expanded)
+                {
                     expandedHeight = value;
+                }
             }
         }
 

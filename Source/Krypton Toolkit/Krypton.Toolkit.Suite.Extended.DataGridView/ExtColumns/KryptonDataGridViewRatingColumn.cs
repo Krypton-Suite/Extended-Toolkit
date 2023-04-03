@@ -203,13 +203,13 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             // load normal stars 
             for (int i = 0; i <= 10; i++)
             {
-                starImages[i] = (Image)resources.GetObject("star" + i.ToString());
+                starImages[i] = (Image)resources.GetObject($"star{i}");
             }
 
             // load hot normal stars 
             for (int i = 0; i <= 10; i++)
             {
-                starHotImages[i] = (Image)resources.GetObject("starhot" + i.ToString());
+                starHotImages[i] = (Image)resources.GetObject($"starhot{i}");
             }
         }
         #endregion

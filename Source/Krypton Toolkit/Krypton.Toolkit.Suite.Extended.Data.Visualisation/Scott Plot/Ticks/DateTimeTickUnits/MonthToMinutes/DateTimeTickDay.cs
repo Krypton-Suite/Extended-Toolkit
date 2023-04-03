@@ -33,7 +33,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             kind = DateTimeUnit.Day;
             if (manualSpacing == null)
+            {
                 deltas = new int[] { 1, 2, 5, 10, 20 };
+            }
         }
 
         protected override DateTime Floor(DateTime value)
@@ -50,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             var dt = new DateTime(value.Year, value.Month, value.Day);
             string localizedLabel = dt.ToString("d", culture); // short date pattern
-            return localizedLabel.Replace("T", "\n") + "\n ";
+            return $"{localizedLabel.Replace("T", "\n")}\n ";
         }
     }
 }

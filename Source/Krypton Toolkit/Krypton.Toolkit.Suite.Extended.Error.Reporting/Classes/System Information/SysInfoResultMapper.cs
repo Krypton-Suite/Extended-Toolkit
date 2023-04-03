@@ -55,11 +55,11 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
                 foreach (var nodeValueParent in result.Nodes)
                 {
-                    sb.AppendLine("-" + nodeValueParent);
+                    sb.AppendLine($"-{nodeValueParent}");
 
                     foreach (var nodeValue in result.ChildResults.SelectMany(childResult => childResult.Nodes))
                     {
-                        sb.AppendLine("--" + nodeValue);        // the max no. of levels is 2, ie '--' is as deep as we go
+                        sb.AppendLine($"--{nodeValue}");        // the max no. of levels is 2, ie '--' is as deep as we go
                     }
                 }
                 sb.AppendLine();

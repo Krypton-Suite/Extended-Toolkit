@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
             get
             {
                 string str = (_category != null) ? (":" + _category) : string.Empty;
-                return "dictation" + str;
+                return $"dictation{str}";
             }
         }
 

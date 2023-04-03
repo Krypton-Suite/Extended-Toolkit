@@ -53,14 +53,17 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private void KryptonCancelDialogButton_TextChanged(object sender, EventArgs e)
         {
-            if (Text == Name) Text = "C&ancel";
+            if (Text == Name)
+            {
+                Text = KryptonManager.Strings.Cancel;
+            }
         }
 
         private void KryptonCancelDialogButton_ParentChanged(object sender, EventArgs e)
         {
             Control parent = Parent;
 
-            while (!(Parent is KryptonForm) && !(parent == null))
+            while (!(Parent is KryptonForm) && parent != null)
             {
                 parent = parent.Parent;
             }

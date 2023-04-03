@@ -322,7 +322,9 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                     domainName = _computerEnum[i].Name;
                     kcmbDomainList.Items.Add(domainName);
                     if (domainName.CompareTo(currentDomain) == 0)
+                    {
                         index = i;
+                    }
                 }
             }
             kcmbDomainList.SelectedIndex = index;
@@ -356,12 +358,14 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                 for (int j = 0; j < _sqlServerList.Length; j++)
                 {
                     if (!klstServers.Items.Contains(_sqlServerList[j]))
+                    {
                         klstServers.Items.Add(_sqlServerList[j]);
+                    }
                 }
             }
             else
             {
-                InternalKryptonMessageBoxExtended.Show(this, "Error \"" + _computerEnum.LastError + "\"was returned", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                InternalKryptonMessageBoxExtended.Show(this, $"Error \"{_computerEnum.LastError}\"was returned", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             Cursor.Current = Cursors.Default;
@@ -466,7 +470,9 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                 kchkAllServers.Checked = true;
 
                 if (!TestForSQLDMOAbility())
+                {
                     DisplayComputerTypes(0xFFFFFFFF);  // show me everything (eww baby!)
+                }
                 else
                 {
                     GetSqlServersUsingSQLDMO(sender, e);
@@ -474,7 +480,9 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                 }
             }
             else
+            {
                 GetServerTypeValues(sender, e);
+            }
         }
     }
 }

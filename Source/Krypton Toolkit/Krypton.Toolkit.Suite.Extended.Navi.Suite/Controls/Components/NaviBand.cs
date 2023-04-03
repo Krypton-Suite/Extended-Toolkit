@@ -112,7 +112,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 largeImage = value;
                 if (button != null)
+                {
                     button.LargeImage = value;
+                }
+
                 Invalidate();
             }
         }
@@ -132,7 +135,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 smallImage = value;
                 if (button != null)
+                {
                     button.SmallImage = value;
+                }
+
                 Invalidate();
             }
         }
@@ -153,7 +159,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 largeImageIndex = value;
                 if (button != null)
+                {
                     button.Invalidate();
+                }
             }
         }
 
@@ -173,7 +181,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 smallImageIndex = value;
                 if (button != null)
+                {
                     button.Invalidate();
+                }
             }
         }
 
@@ -264,7 +274,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             SetStyle(ControlStyles.ResizeRedraw, true);
 
             if (clientArea == null)
+            {
                 clientArea = new NaviBandClientArea();
+            }
 
             clientArea.Name = "ClientArea";
             clientArea.Location = new Point(0, 0);
@@ -272,7 +284,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             clientArea.Renderer = Renderer;
 
             if (!Controls.Contains(clientArea))
+            {
                 Controls.Add(clientArea);
+            }
 
             ResizeRedraw = true;
         }
@@ -319,7 +333,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             base.OnTextChanged(e);
             if (button != null)
+            {
                 button.Text = Text;
+            }
         }
 
         /// <summary>
@@ -330,7 +346,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             base.OnVisibleChanged(e);
             if (button != null)
+            {
                 button.Visible = Visible;
+            }
         }
 
         #endregion

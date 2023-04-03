@@ -56,8 +56,12 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 		public bool Show(params Exception[] exceptions)
 		{
 			// silently ignore the mistake of passing null
-			if (exceptions == null || exceptions.Length == 0 || exceptions.Length >= 1 && exceptions[0] == null) return false;
-			if (ViewMaker == null)
+			if (exceptions == null || exceptions.Length == 0 || exceptions.Length >= 1 && exceptions[0] == null)
+            {
+                return false;
+            }
+
+            if (ViewMaker == null)
 			{
 				Debug.WriteLine("DefaultWinFormsViewmaker must be initialized (not null). Add `er.DefaultWinFormsViewmaker = new DefaultWinFormsViewmaker(er.Config);` where 'er' is the ExceptionReporter object");
 				return false;

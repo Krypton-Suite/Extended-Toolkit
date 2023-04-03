@@ -538,10 +538,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             // Ignore this color if the palette uses an Office2010-Renderer
             if (_palette.GetRenderer() is RenderOffice2010 or RenderOffice2013 or RenderMicrosoft365)
+            {
                 m_outerColor = Color.Transparent;
+            }
             else
+            {
                 m_outerColor = _palette.ColorTable.GripLight;
-
+            }
         }
 
     }

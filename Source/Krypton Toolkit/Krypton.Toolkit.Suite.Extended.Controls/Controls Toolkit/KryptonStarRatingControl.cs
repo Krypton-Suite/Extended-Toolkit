@@ -213,7 +213,10 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             foreach (Control ctrl in this.Controls)
             {
                 Star s = ctrl as Star;
-                if (s != null) s.ToggleStar(starNumber);
+                if (s != null)
+                {
+                    s.ToggleStar(starNumber);
+                }
             }
         }
 

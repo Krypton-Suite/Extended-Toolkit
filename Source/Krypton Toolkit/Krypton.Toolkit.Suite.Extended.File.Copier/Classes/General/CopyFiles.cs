@@ -311,7 +311,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                 filepath = tempFilepath.Split('\\');
                 for (int i = 0; i < filepath.Length - 1; i++)
                 {
-                    tempDirPath += filepath[i] + "\\";
+                    tempDirPath += $"{filepath[i]}\\";
                 }
                 if (!Directory.Exists(tempDirPath))
                 {
@@ -406,7 +406,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                             //insert the duplicate number into the new filename e.g (2) and clear
                             //the current name.
                             tempFileNameArr = new List<string>(fileNames[innerIndex].Split('.'));
-                            tempFileNameArr.Insert(tempFileNameArr.Count - 1, "[*REMOVEME*] (" + filenameNumber + ")");
+                            tempFileNameArr.Insert(tempFileNameArr.Count - 1, $"[*REMOVEME*] ({filenameNumber})");
                             fileNames[innerIndex] = "";
 
                             //Rebuild the new filename

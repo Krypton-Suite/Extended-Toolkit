@@ -145,7 +145,10 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
         private void kbtnScan_Click(object sender, EventArgs e)
         {
-            if (ktxtWorkGroupName.Text == "") return;
+            if (ktxtWorkGroupName.Text == "")
+            {
+                return;
+            }
 
             DataTable dt = new DataTable();
 
@@ -156,7 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             try
             {
                 // Use Your work Group WinNT://&&&&(Work Group Name)
-                DirectoryEntry DomainEntry = new DirectoryEntry("WinNT://" + ktxtWorkGroupName.Text + "");
+                DirectoryEntry DomainEntry = new DirectoryEntry($"WinNT://{ktxtWorkGroupName.Text}");
                 DomainEntry.Children.SchemaFilter.Add("Computer");
 
                 ///*************************************************
@@ -230,7 +233,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
             catch (Exception ex)
             {
-                InternalKryptonMessageBoxExtended.Show("Unable to connect with the system: " + strMachineName);
+                InternalKryptonMessageBoxExtended.Show($"Unable to connect with the system: {strMachineName}");
                 throw ex;
             }
         }//getIPByName()

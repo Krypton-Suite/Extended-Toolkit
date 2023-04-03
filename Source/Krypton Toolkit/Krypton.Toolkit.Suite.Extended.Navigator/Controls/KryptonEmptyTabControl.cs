@@ -125,7 +125,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             _palette = KryptonManager.CurrentGlobalPalette;
 
             if (_palette != null)
+            {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
 
@@ -167,12 +169,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
 
             if (!Visible)
+            {
                 return;
+            }
 
             base.OnPaint(e);
 
             if (DesignMode)
+            {
                 return;
+            }
 
             InitColours();
 
@@ -194,7 +200,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
                 using (RenderContext context = new RenderContext(this, e.Graphics, rect, renderer))
                 {
-                    if (_drawBorder) renderer.RenderStandardBorder.DrawBorder(context, rect, _paletteBorder, VisualOrientation.Top, PaletteState.Normal);
+                    if (_drawBorder)
+                    {
+                        renderer.RenderStandardBorder.DrawBorder(context, rect, _paletteBorder, VisualOrientation.Top, PaletteState.Normal);
+                    }
                 }
             }
 
@@ -219,7 +228,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
 
             if (_palette != null)
+            {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
 
             _palette = KryptonManager.CurrentGlobalPalette;

@@ -88,10 +88,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     double? y = Function(x);
 
                     if (y is null)
+                    {
                         throw new NoNullAllowedException();
+                    }
 
                     if (double.IsNaN(y.Value) || double.IsInfinity(y.Value))
+                    {
                         throw new ArithmeticException("not a real number");
+                    }
 
                     xList.Add(x);
                     yList.Add(y.Value);
@@ -121,12 +125,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deepValidation = false)
         {
             if (Function is null)
+            {
                 throw new InvalidOperationException("function cannot be null");
+            }
         }
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottableFunction{label} displaying {PointCount} points";
         }
 

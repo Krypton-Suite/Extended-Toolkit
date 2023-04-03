@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Gets the list of grouped columns
         /// </summary>
         /// <returns>The list of grouped columns.</returns>
-        public List<OutlookGridColumn> FindGroupedColumns() => this.Where(c => c.IsGrouped).OrderBy(c => c.GroupIndex).ToList();
+        public List<OutlookGridColumn>? FindGroupedColumns() => this.Where(c => c.IsGrouped).OrderBy(c => c.GroupIndex).ToList();
 
         /// <summary>
         /// Gets a list of columns which are sorted and not grouped.
@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns>List of Column indexes and SortDirection ordered by SortIndex.</returns>
         public List<Tuple<int, SortOrder, IComparer>> GetIndexAndSortGroupedColumns()
         {
-            List<Tuple<int, SortOrder, IComparer>> res = new List<Tuple<int, SortOrder, IComparer>>();
+            List<Tuple<int, SortOrder, IComparer>> res = new();
             var tmp = this.OrderBy(x => x.GroupIndex);
             foreach (OutlookGridColumn col in tmp)
             {
@@ -140,7 +140,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         internal void RemoveGroupIndex(OutlookGridColumn col)
         {
             int removed = col.GroupIndex;
-            for (int i = 0; i < this.Count; i++)
+
+            // TODO: Turn this into a foreach loop
+            for (int i = 0; i < Count; i++)
             {
                 if (this[i].GroupIndex > removed)
                 {
@@ -158,7 +160,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         internal void RemoveSortIndex(OutlookGridColumn col)
         {
             int removed = col.SortIndex;
-            for (int i = 0; i < this.Count; i++)
+
+            // TODO: Turn this into a foreach loop
+            for (int i = 0; i < Count; i++)
             {
                 if (this[i].SortIndex > removed)
                 {
@@ -174,7 +178,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int currentGroupIndex = -1;
             int newGroupIndex = outlookGridColumn.GroupIndex;
 
-            for (int i = 0; i < this.Count; i++)
+            // TODO: Turn this into a foreach loop
+            for (int i = 0; i < Count; i++)
             {
                 if (this[i].Name == outlookGridColumn.Name)
                 {
@@ -183,7 +188,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
 
             if (currentGroupIndex == -1)
-                throw new Exception("OutlookGrid : Unable to interpret the change of GroupIndex!");
+            {
+                throw new("OutlookGrid : Unable to interpret the change of GroupIndex!");
+            }
 
 #if (DEBUG)
             Console.WriteLine("currentGroupIndex=" + currentGroupIndex.ToString());
@@ -192,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             DebugOutput();
 #endif
 
-            for (int i = 0; i < this.Count; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (this[i].IsGrouped)
                 {
@@ -200,11 +207,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     {
                         this[i].GroupIndex = newGroupIndex;
                     }
-                    else if ((this[i].GroupIndex >= newGroupIndex) && (this[i].GroupIndex < currentGroupIndex))
+                    else if (this[i].GroupIndex >= newGroupIndex && this[i].GroupIndex < currentGroupIndex)
                     {
                         this[i].GroupIndex++;
                     }
-                    else if ((this[i].GroupIndex <= newGroupIndex) && (this[i].GroupIndex > currentGroupIndex))
+                    else if (this[i].GroupIndex <= newGroupIndex && this[i].GroupIndex > currentGroupIndex)
                     {
                         this[i].GroupIndex--;
                     }
@@ -221,11 +228,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public void DebugOutput()
         {
-            for (int i = 0; i < this.Count; i++)
+            for (int i = 0; i < Count; i++)
             {
-                Console.WriteLine(this[i].Name + " , GroupIndex=" + this[i].GroupIndex.ToString() + ", SortIndex=" + this[i].SortIndex.ToString());
+                Console.WriteLine($"{this[i].Name} , GroupIndex={this[i].GroupIndex}, SortIndex={this[i].SortIndex}");
             }
-            Console.WriteLine("MaxGroupIndex=" + _maxGroupIndex.ToString() + ", MaxSortIndex=" + _maxSortIndex.ToString());
+            Console.WriteLine($"MaxGroupIndex={_maxGroupIndex}, MaxSortIndex={_maxSortIndex}");
         }
     }
 }

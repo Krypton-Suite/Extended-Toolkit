@@ -93,7 +93,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 }
 
                 if (SliderValueChanged != null)
+                {
                     SliderValueChanged(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -367,6 +369,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 SolidBrush onColour = new SolidBrush(TextEnabledForeColour), offBrush = new SolidBrush(TextDisabledForeColour);
 
                 if (TextEnabled)
+                {
                     using (Font font = new Font(Font.FontFamily, Font.Size * _diameter / 30, Font.Style))
                     {
                         int height = TextRenderer.MeasureText(on, font).Height;
@@ -377,6 +380,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         y = (_diameter - height) / 2f;
                         e.Graphics.DrawString(off, font, offBrush, _diameter + 2, y + 1);
                     }
+                }
 
                 if (UseGradientOnKnob)
                 {
@@ -414,7 +418,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         protected override void OnMouseDown(MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)
+            {
                 return;
+            }
+
             _toggled = !_toggled;
             Toggled = _toggled;
 

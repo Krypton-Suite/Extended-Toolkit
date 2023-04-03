@@ -22,7 +22,7 @@ namespace Examples
         /// Constructor.
         /// </summary>
         /// <param name="parentGroup">The parentGroup if any.</param>
-        public OutlookGridPriceGroup(IOutlookGridGroup parentGroup) : base(parentGroup)
+        public OutlookGridPriceGroup(IOutlookGridGroup? parentGroup) : base(parentGroup)
         {
             AllowHiddenWhenGrouped = false;
             _currency = CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol;
@@ -33,7 +33,7 @@ namespace Examples
         /// </summary>
         public override string Text
         {
-            get { return string.Format("{0}: {1} ({2})", Column.DataGridViewColumn.HeaderText, GetPriceString(_priceCode), ItemCount == 1 ? OneItemText : ItemCount.ToString() + XXXItemsText); }
+            get { return string.Format("{0}: {1} ({2})", Column.DataGridViewColumn.HeaderText, GetPriceString(_priceCode), ItemCount == 1 ? OneItemText : ItemCount.ToString() + XxxItemsText); }
         }
 
         private int GetPriceCode(decimal price)
@@ -88,21 +88,21 @@ namespace Examples
                 case 0:
                     return "Free";
                 case 100:
-                    return "Below 100 " + _currency;
+                    return $"Below 100 {_currency}";
                 case 200:
-                    return "Between 100 and 200 " + _currency;
+                    return $"Between 100 and 200 {_currency}";
                 case 300:
-                    return "Between 200 and 300 " + _currency;
+                    return $"Between 200 and 300 {_currency}";
                 case 600:
-                    return "Between 300 and 600 " + _currency;
+                    return $"Between 300 and 600 {_currency}";
                 case 1000:
-                    return "Between 600 and 1000 " + _currency;
+                    return $"Between 600 and 1000 {_currency}";
                 case 5000:
-                    return "Between 1000 and 5000 " + _currency;
+                    return $"Between 1000 and 5000 {_currency}";
                 case 10000:
-                    return "Between 5000 and 10000 " + _currency;
+                    return $"Between 5000 and 10000 {_currency}";
                 case 20000:
-                    return "Above 10000 " + _currency;
+                    return $"Above 10000 {_currency}";
                 case 999999:
                     return "No price";
                 default:
@@ -148,7 +148,7 @@ namespace Examples
             gr.Height = this.Height;
             gr.GroupImage = this.GroupImage;
             gr.FormatStyle = this.FormatStyle;
-            gr.XXXItemsText = this.XXXItemsText;
+            gr.XxxItemsText = this.XxxItemsText;
             gr.OneItemText = this.OneItemText;
             gr.AllowHiddenWhenGrouped = this.AllowHiddenWhenGrouped;
             gr.SortBySummaryCount = this.SortBySummaryCount;

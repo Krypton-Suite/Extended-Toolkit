@@ -254,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
             Type t = typeof(SR);
             Assembly assembly = t.Assembly;
 
-            Stream manifestResourceStream = assembly.GetManifestResourceStream(t.Namespace + "." + resourceName);
+            Stream manifestResourceStream = assembly.GetManifestResourceStream($"{t.Namespace}.{resourceName}");
             if (manifestResourceStream == null)
             {
                 throw new FileLoadException(SR.Get(SRID.CannotLoadResourceFromManifest, resourceName, assembly.FullName));

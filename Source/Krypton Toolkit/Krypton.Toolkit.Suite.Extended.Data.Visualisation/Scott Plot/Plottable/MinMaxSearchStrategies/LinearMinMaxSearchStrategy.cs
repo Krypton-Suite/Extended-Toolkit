@@ -65,9 +65,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             for (int i = l; i <= r; i++)
             {
                 if (LessThanExp(sourceArray[i], lowestValueT))
+                {
                     lowestValueT = sourceArray[i];
+                }
+
                 if (GreaterThanExp(sourceArray[i], highestValueT))
+                {
                     highestValueT = sourceArray[i];
+                }
             }
             lowestValue = Convert.ToDouble(lowestValueT);
             highestValue = Convert.ToDouble(highestValueT);
@@ -85,6 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public void updateRange(int from, int to, T[] newData, int fromData = 0)
         {
+            // TODO: Turn this into a foreach loop
             for (int i = from; i < to; i++)
             {
                 sourceArray[i] = newData[i - from + fromData];
