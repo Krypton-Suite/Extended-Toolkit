@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public bool IsVisible { get; set; } = true;
         public override string ToString() => $"FinancePlot with {OHLCs.Count} OHLC indicators";
-        public LegendItem[] GetLegendItems() => null;
+        public LegendItem[]? GetLegendItems() => null;
         public int XAxisIndex { get; set; } = 0;
         public int YAxisIndex { get; set; } = 0;
 

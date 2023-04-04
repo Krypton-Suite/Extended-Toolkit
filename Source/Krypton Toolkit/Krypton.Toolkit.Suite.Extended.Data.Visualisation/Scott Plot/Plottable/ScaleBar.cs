@@ -61,9 +61,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public int XAxisIndex { get; set; } = 0;
         public int YAxisIndex { get; set; } = 0;
 
-        public override string ToString() => $"PlottableScaleBar ({HorizontalLabel}={Width}, {VerticalLabel}={Height})";
+        public override string ToString() => $@"PlottableScaleBar ({HorizontalLabel}={Width}, {VerticalLabel}={Height})";
         public AxisLimits GetAxisLimits() => new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
-        public LegendItem[] GetLegendItems() => null;
+        public LegendItem[]? GetLegendItems() => null;
 
         public void ValidateData(bool deep = false)
         {
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                                     PointF vertMidPoint = new PointF(cornerPoint.X, (cornerPoint.Y + vertPoint.Y) / 2);
 
                                     // draw the scalebar
-                                    gfx.DrawLines(linePen, new PointF[] { horizPoint, cornerPoint, vertPoint });
+                                    gfx.DrawLines(linePen, new[] { horizPoint, cornerPoint, vertPoint });
                                     gfx.DrawString(HorizontalLabel, font, fontBrush, horizMidPoint.X, cornerPoint.Y, sfNorth);
                                     gfx.DrawString(VerticalLabel, font, fontBrush, cornerPoint.X, vertMidPoint.Y, sfWest);
                                 }

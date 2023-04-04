@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             AddTicks(fractions, labels);
         }
 
-        public LegendItem[] GetLegendItems() => null;
+        public LegendItem[]? GetLegendItems() => null;
 
         public AxisLimits GetAxisLimits() => new(double.NaN, double.NaN, double.NaN, double.NaN);
 

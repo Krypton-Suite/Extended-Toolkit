@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public double Y;
 
-        public LegendItem[] GetLegendItems() => null;
+        public LegendItem[]? GetLegendItems() => null;
 
         public AxisLimits GetAxisLimits() => new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
 

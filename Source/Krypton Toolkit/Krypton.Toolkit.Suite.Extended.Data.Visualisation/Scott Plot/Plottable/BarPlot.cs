@@ -191,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return $"PlottableBar{label} with {Values.Length} bars";
         }
 
-        public LegendItem[] GetLegendItems()
+        public LegendItem[]? GetLegendItems()
         {
             var singleItem = new LegendItem()
             {

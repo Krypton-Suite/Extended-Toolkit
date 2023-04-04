@@ -166,7 +166,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return values.Select(v => v / Max).ToArray();
         }
 
-        public LegendItem[] GetLegendItems()
+        public LegendItem[]? GetLegendItems()
         {
             if (SliceLabels is null)
             {

@@ -255,7 +255,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return maxes;
         }
 
-        public LegendItem[] GetLegendItems()
+        public LegendItem[]? GetLegendItems()
         {
             if (GroupLabels is null)
             {

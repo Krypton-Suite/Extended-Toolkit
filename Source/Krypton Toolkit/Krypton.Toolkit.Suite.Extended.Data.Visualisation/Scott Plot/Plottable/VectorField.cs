@@ -120,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public void ValidateData(bool deep = false) { /* validation occurs in constructor */ }
 
-        public LegendItem[] GetLegendItems()
+        public LegendItem[]? GetLegendItems()
         {
             var singleLegendItem = new LegendItem()
             {

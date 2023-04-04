@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public AxisLimits GetAxisLimits() => new(double.NaN, double.NaN, double.NaN, double.NaN);
 
-        public LegendItem[] GetLegendItems() => null;
+        public LegendItem[]? GetLegendItems() => null;
 
         public void ValidateData(bool deep = false) { }
 

@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
     public class CalendarRendererDayEventArgs : CalendarRendererEventArgs
     {
         #region Fields
-        private CalendarDay _day;
+        private CalendarDay? _day;
         #endregion
 
         #region Ctor
@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="original">Orignal object to copy basic paramters</param>
         /// <param name="day">Day to render</param>
-        public CalendarRendererDayEventArgs(CalendarRendererEventArgs original, CalendarDay day)
+        public CalendarRendererDayEventArgs(CalendarRendererEventArgs original, CalendarDay? day)
             : base(original)
         {
             _day = day;
@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the day to paint
         /// </summary>
-        public CalendarDay Day => _day;
+        public CalendarDay? Day => _day;
 
         #endregion
     }

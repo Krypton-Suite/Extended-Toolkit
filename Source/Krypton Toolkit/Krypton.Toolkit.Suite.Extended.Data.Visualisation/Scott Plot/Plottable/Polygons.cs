@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return new AxisLimits(xMin, xMax, yMin, yMax);
         }
 
-        public LegendItem[] GetLegendItems()
+        public LegendItem[]? GetLegendItems()
         {
             var singleLegendItem = new LegendItem()
             {

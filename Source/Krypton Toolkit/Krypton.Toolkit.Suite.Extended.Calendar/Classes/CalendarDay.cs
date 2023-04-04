@@ -47,13 +47,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private List<CalendarItemAlternative> _containedItems;
         private KryptonCalendar _calendar;
         private DateTime _date;
-        private CalendarDayTop _dayTop;
+        private CalendarDayTop? _dayTop;
         private int _index;
         private bool _overflowStart;
         private bool _overflowEnd;
         private bool _overflowStartSelected;
         private bool _overlowEndSelected;
-        private CalendarTimeScaleUnit[] _timeUnits;
+        private CalendarTimeScaleUnit?[] _timeUnits;
         #endregion
 
         #region Constructor
@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the DayTop of the day, the place where multi-day and all-day items are placed
         /// </summary>
-        public CalendarDayTop DayTop => _dayTop;
+        public CalendarDayTop? DayTop => _dayTop;
 
         /// <summary>
         /// Gets the bounds of the body of the day (where time-based CalendarItems are placed)
@@ -120,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the time units contained on the day
         /// </summary>
-        public CalendarTimeScaleUnit[] TimeUnits => _timeUnits;
+        public CalendarTimeScaleUnit?[] TimeUnits => _timeUnits;
 
         /// <summary>
         /// /// <summary>

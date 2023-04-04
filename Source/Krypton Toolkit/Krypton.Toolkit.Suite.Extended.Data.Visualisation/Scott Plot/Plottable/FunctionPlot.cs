@@ -136,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return $"PlottableFunction{label} displaying {PointCount} points";
         }
 
-        public LegendItem[] GetLegendItems()
+        public LegendItem[]? GetLegendItems()
         {
             var singleLegendItem = new LegendItem()
             {
