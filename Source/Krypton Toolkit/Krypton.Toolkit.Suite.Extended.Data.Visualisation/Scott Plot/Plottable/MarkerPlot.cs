@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public AxisLimits GetAxisLimits() => new(X, X, Y, Y);
 
-        public LegendItem[]? GetLegendItems()
+        public LegendItem[] GetLegendItems()
         {
             LegendItem item = new()
             {
@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 color = Color
             };
 
-            return new LegendItem[] { item };
+            return new[] { item };
         }
 
         public void ValidateData(bool deep = false)

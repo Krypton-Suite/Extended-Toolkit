@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return new AxisLimits(xMin, xMax, yMin, yMax);
         }
 
-        public LegendItem[]? GetLegendItems()
+        public LegendItem[] GetLegendItems()
         {
             var singleLegendItem = new LegendItem()
             {
@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 hatchColor = HatchColor,
                 hatchStyle = HatchStyle
             };
-            return new LegendItem[] { singleLegendItem };
+            return new[] { singleLegendItem };
         }
 
         public void ValidateData(bool deep = false)

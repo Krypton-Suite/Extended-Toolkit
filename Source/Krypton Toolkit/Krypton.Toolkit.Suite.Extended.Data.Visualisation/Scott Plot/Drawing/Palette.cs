@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return Color.FromArgb(alpha: (int)(alpha * 255), baseColor: GetColour(index));
         }
 
-        public Color[] GetColors(int count, int offset = 0, double alpha = 1)
+        public Color[]? GetColors(int count, int offset = 0, double alpha = 1)
         {
             return Enumerable.Range(offset, count)
                 .Select(x => GetColor(x, alpha))

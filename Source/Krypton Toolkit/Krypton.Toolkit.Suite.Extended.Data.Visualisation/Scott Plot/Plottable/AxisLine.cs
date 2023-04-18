@@ -308,7 +308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Math.Abs(Position - coordinateY) <= snapY :
             Math.Abs(Position - coordinateX) <= snapX;
 
-        public LegendItem[]? GetLegendItems()
+        public LegendItem[] GetLegendItems()
         {
             var singleItem = new LegendItem()
             {

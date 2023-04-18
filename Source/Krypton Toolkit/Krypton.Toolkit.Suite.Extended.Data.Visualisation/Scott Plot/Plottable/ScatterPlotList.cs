@@ -33,9 +33,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     /// </summary>
     public class ScatterPlotList : IPlottable
     {
-        private readonly List<double> Xs = new List<double>();
-        private readonly List<double> Ys = new List<double>();
-        public int Count => Xs.Count;
+        private readonly List<double> _xs = new();
+        private readonly List<double> _ys = new();
+        public int Count => _xs.Count;
 
         public string Label;
         public bool IsVisible { get; set; } = true;
@@ -49,21 +49,21 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public void ValidateData(bool deep = false)
         {
-            if (Xs.Count != Ys.Count)
+            if (_xs.Count != _ys.Count)
             {
                 throw new InvalidOperationException("Xs and Ys must be same length");
             }
 
             if (deep)
             {
-                for (int i = 0; i < Xs.Count; i++)
+                for (int i = 0; i < _xs.Count; i++)
                 {
-                    if (double.IsNaN(Xs[i]) || double.IsNaN(Ys[i]))
+                    if (double.IsNaN(_xs[i]) || double.IsNaN(_ys[i]))
                     {
                         throw new InvalidOperationException("Xs and Ys cannot contain NaN");
                     }
 
-                    if (double.IsInfinity(Xs[i]) || double.IsInfinity(Ys[i]))
+                    if (double.IsInfinity(_xs[i]) || double.IsInfinity(_ys[i]))
                     {
                         throw new InvalidOperationException("Xs and Ys cannot contain Infinity");
                     }
@@ -76,8 +76,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public void Clear()
         {
-            Xs.Clear();
-            Ys.Clear();
+            _xs.Clear();
+            _ys.Clear();
         }
 
         /// <summary>
@@ -85,8 +85,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public void Add(double x, double y)
         {
-            Xs.Add(x);
-            Ys.Add(y);
+            _xs.Add(x);
+            _ys.Add(y);
         }
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 throw new ArgumentException("xs and ys must have the same length");
             }
 
-            Xs.AddRange(xs);
-            Ys.AddRange(ys);
+            _xs.AddRange(xs);
+            _ys.AddRange(ys);
         }
 
         public AxisLimits GetAxisLimits()
@@ -120,17 +120,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 return new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
             }
 
-            double xMin = Xs[0];
-            double xMax = Xs[0];
-            double yMin = Ys[0];
-            double yMax = Ys[0];
+            double xMin = _xs[0];
+            double xMax = _xs[0];
+            double yMin = _ys[0];
+            double yMax = _ys[0];
 
             for (int i = 1; i < Count; i++)
             {
-                xMin = Math.Min(xMin, Xs[i]);
-                xMax = Math.Max(xMax, Xs[i]);
-                yMin = Math.Min(yMin, Ys[i]);
-                yMax = Math.Max(yMax, Ys[i]);
+                xMin = Math.Min(xMin, _xs[i]);
+                xMax = Math.Max(xMax, _xs[i]);
+                yMin = Math.Min(yMin, _ys[i]);
+                yMax = Math.Max(yMax, _ys[i]);
             }
 
             return new AxisLimits(xMin, xMax, yMin, yMax);
@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             PointF[] points = new PointF[Count];
             for (int i = 0; i < Count; i++)
             {
-                points[i] = new PointF(dims.GetPixelX(Xs[i]), dims.GetPixelY(Ys[i]));
+                points[i] = new PointF(dims.GetPixelX(_xs[i]), dims.GetPixelY(_ys[i]));
             }
 
             using (var gfx = GDI.Graphics(bmp, dims, lowQuality))
@@ -164,7 +164,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
         }
 
-        public LegendItem[]? GetLegendItems()
+        public LegendItem[] GetLegendItems()
         {
             var singleLegendItem = new LegendItem()
             {
@@ -175,7 +175,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 markerShape = MarkerShape,
                 markerSize = MarkerSize
             };
-            return new LegendItem[] { singleLegendItem };
+            return new[] { singleLegendItem };
         }
     }
 }

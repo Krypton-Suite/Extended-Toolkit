@@ -830,7 +830,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <returns>The radial gaugle plot that was just created and added to the plot</returns>
         public RadialGaugePlot AddRadialGauge(double[] values, bool disableFrameAndGrid = true)
         {
-            Color[] colors = Palette.GetColors(values.Length);
+            Color[]? colors = Palette.GetColors(values.Length);
             RadialGaugePlot plottable = new(values, colors);
             Add(plottable);
 

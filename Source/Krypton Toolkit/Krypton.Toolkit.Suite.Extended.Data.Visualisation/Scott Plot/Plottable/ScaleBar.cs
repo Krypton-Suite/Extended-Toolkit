@@ -25,6 +25,7 @@
  */
 #endregion
 
+// ReSharper disable UnusedVariable
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
