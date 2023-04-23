@@ -41,23 +41,33 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public int AlphaValue { get => _alphaValue;
+        public int AlphaValue
+        {
+            get => _alphaValue;
             set => _alphaValue = value;
         }
 
-        public int RedValue { get => _redValue;
+        public int RedValue
+        {
+            get => _redValue;
             set => _redValue = value;
         }
 
-        public int GreenValue { get => _greenValue;
+        public int GreenValue
+        {
+            get => _greenValue;
             set => _greenValue = value;
         }
 
-        public int BlueValue { get => _blueValue;
+        public int BlueValue
+        {
+            get => _blueValue;
             set => _blueValue = value;
         }
 
-        public int HueValue { get => _hueValue;
+        public int HueValue
+        {
+            get => _hueValue;
             set => _hueValue = value;
         }
         #endregion
@@ -80,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             int alphaOutput;
 
-            Random random = new Random();
+            Random random = new();
 
             alphaOutput = random.Next(startNumber, endNumber + 1);
 
@@ -99,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             int output1;
 
-            Random random = new Random();
+            Random random = new();
 
             output1 = random.Next(startNumber, endNumber + 1);
 
@@ -117,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             int output2;
 
-            Random random = new Random();
+            Random random = new();
 
             output2 = random.Next(startNumber, endNumber + 1);
 
@@ -135,7 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             int output3;
 
-            Random random = new Random();
+            Random random = new();
 
             output3 = random.Next(startNumber, endNumber + 1);
 
@@ -153,7 +163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             int hueOutputValue;
 
-            Random random = new Random();
+            Random random = new();
 
             hueOutputValue = random.Next(startNumber, endNumber + 1);
 

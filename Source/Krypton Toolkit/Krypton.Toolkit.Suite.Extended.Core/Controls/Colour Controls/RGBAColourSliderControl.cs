@@ -176,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             Color colour;
             RGBAChannel channel;
 
-            custom = new ColourCollection();
+            custom = new();
             colour = this.Colour;
             channel = this.Channel;
 
@@ -220,7 +220,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             type = typeof(RGBAColourSliderControl);
 
-            using (Bitmap background = new Bitmap(type.Assembly.GetManifestResourceStream(
+            using (Bitmap background = new(type.Assembly.GetManifestResourceStream(
                        $"{type.Namespace}.Resources.cellbackground.png")))
             {
                 return new TextureBrush(background, WrapMode.Tile);

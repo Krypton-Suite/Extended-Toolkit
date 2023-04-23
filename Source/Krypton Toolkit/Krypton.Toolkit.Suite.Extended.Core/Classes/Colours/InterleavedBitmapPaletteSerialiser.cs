@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 throw new ArgumentNullException(nameof(stream));
             }
 
-            results = new ColourCollection();
+            results = new();
 
             // read the FORM header that identifies the document as an IFF file
             buffer = new byte[4];

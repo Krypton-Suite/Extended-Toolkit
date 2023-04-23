@@ -413,7 +413,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public static void KeepColoursBasic(Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, bool saveSettings = true)
         {
             #region Assign variables
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
             #endregion
 
             if (saveSettings)
@@ -499,7 +499,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="statusTextColour">The status text colour.</param>
         public static void CombineColourValues(Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColourPreview, Color alternativeNormalTextColourPreview, Color normalTextColourPreview, Color disabledTextColourPreview, Color focusedTextColourPreview, Color pressedTextColourPreview, Color disabledColourPreview, Color linkNormalColourPreview, Color linkHoverColourPreview, Color linkVisitedColourPreview, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color menuTextColour, Color statusTextColour)
         {
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             colourSettingsManager.SetBaseColour(baseColour);
 

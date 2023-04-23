@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 ReleaseDC(hWnd, hDC);
             }
 
-            return new Point(dpix, dpiy);
+            return new(dpix, dpiy);
         }
 
         [DllImport(_user32DllName)]

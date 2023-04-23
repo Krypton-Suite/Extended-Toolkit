@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             try
             {
-                AllMergedColourSettingsManager manager = new AllMergedColourSettingsManager();
+                AllMergedColourSettingsManager manager = new();
 
                 if (SettingsVarifier.AreAllMergedColourSettingsDefault())
                 {
@@ -217,7 +217,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="ribbonTabTextColour">The ribbon tab text colour.</param>
         private static void MergeAllPaletteColoursIntoOneSettingsFile(Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColour, Color alternativeNormalTextColour, Color normalTextColour, Color disabledTextColour, Color focusedTextColour, Color pressedTextColour, Color disabledControlColour, Color linkNormalColour, Color linkFocusedColour, Color linkHoverColour, Color linkVisitedColour, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customColourSix, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color customTextColourSix, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour)
         {
-            AllMergedColourSettingsManager manager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager manager = new();
 
             manager.SetBaseColour(baseColour);
 

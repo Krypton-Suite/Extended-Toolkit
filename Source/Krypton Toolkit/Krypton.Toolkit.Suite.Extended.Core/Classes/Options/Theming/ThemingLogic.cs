@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Methods
         public void InitialisePaletteCollection(ArrayList paletteCollection)
         {
-            paletteCollection = new ArrayList();
+            paletteCollection = new();
 
             paletteCollection.Add("Global");
 
@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public void InitialisePaletteCollection(AutoCompleteStringCollection paletteCollection)
         {
-            paletteCollection = new AutoCompleteStringCollection();
+            paletteCollection = new();
 
             paletteCollection.Add("Global");
 

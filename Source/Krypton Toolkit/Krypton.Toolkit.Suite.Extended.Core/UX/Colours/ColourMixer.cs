@@ -900,21 +900,21 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void kbtnUtiliseAsBaseColour_Click(object sender, EventArgs e)
         {
-            PaletteColourCreator paletteColourCreator = new PaletteColourCreator(PaletteColourSelector, Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
+            PaletteColourCreator paletteColourCreator = new(PaletteColourSelector, Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
 
             paletteColourCreator.Show();
         }
 
         private void kbtnOptions_Click(object sender, EventArgs e)
         {
-            ColourBlendingOptions colourBlendingOptions = new ColourBlendingOptions();
+            ColourBlendingOptions colourBlendingOptions = new();
 
             colourBlendingOptions.Show();
         }
 
         private void kbtnConvertToRGB_Click(object sender, EventArgs e)
         {
-            ConversionMethods conversionMethods = new ConversionMethods();
+            ConversionMethods conversionMethods = new();
 
             cpbColourPreview.BackColor = conversionMethods.ConvertHexadecimalToRGB($"#{ktxtHexValue.Text}");
         }
@@ -929,7 +929,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void kbtnDefineOtherColours_Click(object sender, EventArgs e)
         {
-            CustomColours customColours = new CustomColours();
+            CustomColours customColours = new();
 
             customColours.Show();
         }

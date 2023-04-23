@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         #region Methods
         public static List<string> PopulateDirectoryListing(string inputPath)
         {
-            List<string> tempList = new List<string>();
+            List<string> tempList = new();
 
             foreach (string directory in Directory.GetDirectories(inputPath))
             {

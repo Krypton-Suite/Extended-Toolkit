@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #region Methods
         public void DisplayAboutBox()
         {
-            KryptonAboutDialog aboutDialog = new KryptonAboutDialog(_applicationIcon, _assembly, _showDescription, _showFrameworkVersion,
+            KryptonAboutDialog aboutDialog = new(_applicationIcon, _assembly, _showDescription, _showFrameworkVersion,
                                                                     _showSystemInformation, _applicationText, _aboutText, _copyrightText,
                                                                     _frameworkVersionText, _showSystemInformationText, _versionText);
 

@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             try
             {
-                WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+                WindowsPrincipal principal = new(WindowsIdentity.GetCurrent());
 
                 bool hasAdministrativeRights = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
@@ -94,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                 if (!hasAdministrativeRights)
                 {
-                    ProcessStartInfo psi = new ProcessStartInfo()
+                    ProcessStartInfo psi = new()
                     {
                         Verb = "runas",
                         Arguments = arguments,
@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <exception cref="ArgumentNullException"></exception>
         public void ElevateProcessWithAdministrativeRights(string processName, string arguments = null)
         {
-            WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+            WindowsPrincipal principal = new(WindowsIdentity.GetCurrent());
 
             bool hasAdministrativeRights = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
@@ -125,7 +125,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             if (!hasAdministrativeRights)
             {
-                ProcessStartInfo process = new ProcessStartInfo()
+                ProcessStartInfo process = new()
                 {
                     Verb = "runas",
                     Arguments = arguments,

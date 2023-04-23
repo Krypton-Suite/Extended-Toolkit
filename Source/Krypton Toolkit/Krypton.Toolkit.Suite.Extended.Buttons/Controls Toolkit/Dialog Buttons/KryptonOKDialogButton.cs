@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     {
         private KryptonForm _parent;
 
-        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new OwnerWindowChangedEventArgs(this, value); OnParentWindowChanged(null, e); } }
+        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new(this, value); OnParentWindowChanged(null, e); } }
 
         #region Custom Events
         public delegate void ParentWindowChangedEventHandler(object sender, OwnerWindowChangedEventArgs e);
@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             if (ParentWindow != null)
             {
-                OwnerWindowChangedEventArgs ev = new OwnerWindowChangedEventArgs(this, ParentWindow);
+                OwnerWindowChangedEventArgs ev = new(this, ParentWindow);
 
                 ev.AssociateAcceptButton(this);
             }

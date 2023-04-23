@@ -132,10 +132,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             AttachGlobalEvents();
 
             // Do the Tooltip Magic
-            ToolTipValues = new ToolTipValues(NeedPaintDelegate);
+            ToolTipValues = new(NeedPaintDelegate);
             // Create the manager for handling tooltips
             // ReSharper disable once UseObjectOrCollectionInitializer
-            _toolTipManager = new ToolTipManager();
+            _toolTipManager = new();
             _toolTipManager.ShowToolTip += OnShowToolTip;
             _toolTipManager.CancelToolTip += OnCancelToolTip;
         }
@@ -252,7 +252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public virtual void PerformNeedPaint(bool needLayout)
         {
-            OnNeedPaint(this, new NeedLayoutEventArgs(needLayout));
+            OnNeedPaint(this, new(needLayout));
         }
 
         /// <summary>
@@ -741,7 +741,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             DirtyPaletteCounter++;
 
             // A new palette source means we need to layout and redraw
-            OnNeedPaint(Palette, new NeedLayoutEventArgs(true));
+            OnNeedPaint(Palette, new(true));
 
             PaletteChanged?.Invoke(this, e);
         }
@@ -817,7 +817,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>PaletteRedirect derived class.</returns>
         protected virtual PaletteRedirect CreateRedirector()
         {
-            return new PaletteRedirect(_palette);
+            return new(_palette);
         }
 
         /// <summary>
@@ -851,7 +851,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             DirtyPaletteCounter++;
 
             // Need relayout to reflect change of layout
-            OnNeedPaint(null, new NeedLayoutEventArgs(true));
+            OnNeedPaint(null, new(true));
 
             base.OnRightToLeftChanged(e);
         }
@@ -1143,7 +1143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 DirtyPaletteCounter++;
 
                 // A new palette source means we need to layout and redraw
-                OnNeedPaint(Palette, new NeedLayoutEventArgs(true));
+                OnNeedPaint(Palette, new(true));
 
                 // Must raise event to change palette in redirector
                 OnPaletteChanged(EventArgs.Empty);
@@ -1197,12 +1197,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 if (KryptonContextMenu != null)
                 {
                     // Extract the screen mouse position (if might not actually be provided)
-                    Point mousePt = new Point(PlatformInvoke.LOWORD(m.LParam), PlatformInvoke.HIWORD(m.LParam));
+                    Point mousePt = new(PlatformInvoke.LOWORD(m.LParam), PlatformInvoke.HIWORD(m.LParam));
 
                     // If keyboard activated, the menu position is centered
                     if (((int)((long)m.LParam)) == -1)
                     {
-                        mousePt = new Point(Width / 2, Height / 2);
+                        mousePt = new(Width / 2, Height / 2);
                     }
                     else
                     {
@@ -1380,7 +1380,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                     // Create the actual tooltip popup object
                     // ReSharper disable once UseObjectOrCollectionInitializer
-                    _visualBasePopupToolTip = new VisualPopupToolTip(Redirector,
+                    _visualBasePopupToolTip = new(Redirector,
                         ToolTipValues,
                         Renderer,
                         PaletteBackStyle.ControlToolTip,

@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region New Methods
         public static void ImportPaletteColourScheme(KryptonCustomPaletteBase palette)
         {
-            GlobalStringSettingsManager globalStringSettingsManager = new GlobalStringSettingsManager();
+            GlobalStringSettingsManager globalStringSettingsManager = new();
 
             try
             {
@@ -255,7 +255,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void ImportPaletteColourScheme()
         {
-            GlobalStringSettingsManager globalStringSettingsManager = new GlobalStringSettingsManager();
+            GlobalStringSettingsManager globalStringSettingsManager = new();
 
             try
             {

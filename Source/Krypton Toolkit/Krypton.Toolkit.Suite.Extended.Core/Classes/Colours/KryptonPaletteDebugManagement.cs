@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void PropagateHEXColourValues(KryptonListBox hexValues, bool useUppercase)
         {
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             if (useUppercase)
             {

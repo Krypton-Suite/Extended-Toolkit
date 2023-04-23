@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
 
         /// <summary>The execute process as administrator</summary>
-        public ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
+        public ExecuteProcessAsAdministratorEventHandler? ExecuteProcessAsAdministrator;
         #endregion
 
         #region Constructor
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         public KryptonUACElevatedButton() : base()
         {
-            Size = new Size((int)(Width * 1.5), Height + 1);
+            Size = new((int)(Width * 1.5), Height + 1);
 
             _globalMethods.CheckIfTargetPlatformIsSupported(true);
 
@@ -154,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected override void OnClick(EventArgs e)
         {
-            ExecuteProcessAsAdministratorEventArgs evt = new ExecuteProcessAsAdministratorEventArgs(ProcessName);
+            ExecuteProcessAsAdministratorEventArgs evt = new(ProcessName);
 
             OnExecuteProcessAsAdministrator(this, evt);
 

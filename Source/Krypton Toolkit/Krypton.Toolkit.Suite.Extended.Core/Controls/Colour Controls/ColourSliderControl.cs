@@ -26,7 +26,6 @@
  */
 #endregion
 
-using System.Linq;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -129,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.Minimum = 0;
             this.Maximum = 100;
             this.NubStyle = ColourSliderNubStyle.BottomRight;
-            this.NubSize = new Size(8, 8);
+            this.NubSize = new(8, 8);
             this.NubColor = Color.Black;
             this.SmallChange = 1;
             this.LargeChange = 10;
@@ -696,17 +695,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 if (this.NubStyle == ColourSliderNubStyle.BottomRight)
                 {
-                    lastCorner = new Point(this.NubSize.Width, this.NubSize.Height);
+                    lastCorner = new(this.NubSize.Width, this.NubSize.Height);
 
                     if (this.Orientation == Orientation.Horizontal)
                     {
-                        firstCorner = new Point(0, this.NubSize.Height);
-                        tipCorner = new Point(this.NubSize.Width / 2, 0);
+                        firstCorner = new(0, this.NubSize.Height);
+                        tipCorner = new(this.NubSize.Width / 2, 0);
                     }
                     else
                     {
-                        firstCorner = new Point(this.NubSize.Width, 0);
-                        tipCorner = new Point(0, this.NubSize.Height / 2);
+                        firstCorner = new(this.NubSize.Width, 0);
+                        tipCorner = new(0, this.NubSize.Height / 2);
                     }
                 }
                 else
@@ -715,13 +714,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                     if (this.Orientation == Orientation.Horizontal)
                     {
-                        lastCorner = new Point(this.NubSize.Width, 0);
-                        tipCorner = new Point(this.NubSize.Width / 2, this.NubSize.Height);
+                        lastCorner = new(this.NubSize.Width, 0);
+                        tipCorner = new(this.NubSize.Width / 2, this.NubSize.Height);
                     }
                     else
                     {
-                        lastCorner = new Point(0, this.NubSize.Height);
-                        tipCorner = new Point(this.NubSize.Width, this.NubSize.Height / 2);
+                        lastCorner = new(0, this.NubSize.Height);
+                        tipCorner = new(this.NubSize.Width, this.NubSize.Height / 2);
                     }
                 }
 
@@ -787,7 +786,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             clientRectangle = this.ClientRectangle;
             padding = this.BarPadding + this.Padding;
 
-            return new Rectangle(clientRectangle.Left + padding.Left, clientRectangle.Top + padding.Top, clientRectangle.Width - padding.Horizontal, clientRectangle.Height - padding.Vertical);
+            return new(clientRectangle.Left + padding.Left, clientRectangle.Top + padding.Top, clientRectangle.Width - padding.Horizontal, clientRectangle.Height - padding.Vertical);
         }
 
         /// <summary>
@@ -838,7 +837,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     break;
             }
 
-            return new Padding(left, top, right, bottom);
+            return new(left, top, right, bottom);
         }
 
         /// <summary>
@@ -1319,13 +1318,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 if (this.Orientation == Orientation.Horizontal)
                 {
-                    start = new Point(point.X, this.BarBounds.Top);
-                    end = new Point(point.X, this.BarBounds.Bottom);
+                    start = new(point.X, this.BarBounds.Top);
+                    end = new(point.X, this.BarBounds.Bottom);
                 }
                 else
                 {
-                    start = new Point(this.BarBounds.Left, point.Y);
-                    end = new Point(this.BarBounds.Right, point.Y);
+                    start = new(this.BarBounds.Left, point.Y);
+                    end = new(this.BarBounds.Right, point.Y);
                 }
 
                 // draw a XOR'd line using Win32 API as this functionality isn't part of .NET
@@ -1393,8 +1392,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 // HACK: Inflating the brush rectangle by 1 seems to get rid of a odd issue where the last color is drawn on the first pixel
 
-                blend = new ColorBlend();
-                using (LinearGradientBrush brush = new LinearGradientBrush(Rectangle.Inflate(this.BarBounds, 1, 1), Color.Empty, Color.Empty, angle, false))
+                blend = new();
+                using (LinearGradientBrush brush = new(Rectangle.Inflate(this.BarBounds, 1, 1), Color.Empty, Color.Empty, angle, false))
                 {
                     switch (this.BarStyle)
                     {
@@ -1517,7 +1516,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     break;
             }
 
-            return new Point((int)x + padding.Left, (int)y + padding.Top);
+            return new((int)x + padding.Left, (int)y + padding.Top);
         }
 
         #endregion

@@ -38,14 +38,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="processName">The process name that you wish to elevate.</param>
         public static void ElevateProcessWithAdministrativeRights(string processName)
         {
-            WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+            WindowsPrincipal principal = new(WindowsIdentity.GetCurrent());
 
             bool hasAdministrativeRight = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
             if (!hasAdministrativeRight)
             {
                 // Relaunch the application with administrative rights
-                ProcessStartInfo processStartInfo = new ProcessStartInfo();
+                ProcessStartInfo processStartInfo = new();
 
                 processStartInfo.Verb = "runas";
 
@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>True if the current process has launched with administrative rights, false if not.</returns>
         public static bool GetHasElevateProcessWithAdministrativeRights()
         {
-            WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+            WindowsPrincipal principal = new(WindowsIdentity.GetCurrent());
 
             bool hasAdministrativeRight = principal.IsInRole(WindowsBuiltInRole.Administrator);
 

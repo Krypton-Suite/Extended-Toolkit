@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 sourceAlphaValue = Math.Max(source.A, (byte)127);
             }
 
-            RGB rgb = new RGB { R = inputColourSource.R, G = inputColourSource.G, B = inputColourSource.B };
+            RGB rgb = new() { R = inputColourSource.R, G = inputColourSource.G, B = inputColourSource.B };
 
             HSB hsb = ConvertToHSB(rgb);
 
@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public static Color GenerateRandomColour()
         {
             // Create a new random instance
-            Random r = new Random();
+            Random r = new();
 
             return Color.FromArgb(r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
         }
@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="baseColour">The base colour.</param>
         public static void UseAsBaseColour(Color baseColour)
         {
-            InternalBasicPaletteCreator colourCreator = new InternalBasicPaletteCreator(baseColour);
+            InternalBasicPaletteCreator colourCreator = new(baseColour);
 
             colourCreator.Show();
         }
@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="control">The control.</param>
         public static void UseAsBaseColour(Control control)
         {
-            InternalBasicPaletteCreator colourCreator = new InternalBasicPaletteCreator(control.BackColor);
+            InternalBasicPaletteCreator colourCreator = new(control.BackColor);
 
             colourCreator.Show();
         }
@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             double m = hsb.B - chroma;
 
-            return new RGB()
+            return new()
             {
                 R = r1 + m,
                 G = g1 + m,
@@ -220,7 +220,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 saturation = chroma / brightness;
             }
 
-            return new HSB()
+            return new()
             {
                 H = hue,
                 S = saturation,

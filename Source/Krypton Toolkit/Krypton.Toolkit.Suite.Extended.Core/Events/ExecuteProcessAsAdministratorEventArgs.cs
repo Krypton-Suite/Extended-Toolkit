@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <exception cref="ArgumentNullException"></exception>
         private void ElevateProcessWithAdministrativeRights(string processName)
         {
-            WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+            WindowsPrincipal principal = new(WindowsIdentity.GetCurrent());
 
             bool hasAdministrativeRights = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (!hasAdministrativeRights)
             {
-                ProcessStartInfo process = new ProcessStartInfo();
+                ProcessStartInfo process = new();
 
                 process.Verb = "runas";
 

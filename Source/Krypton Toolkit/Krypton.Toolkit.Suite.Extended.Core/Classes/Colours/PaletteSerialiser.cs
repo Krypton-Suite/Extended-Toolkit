@@ -26,8 +26,6 @@
  */
 #endregion
 
-using System.Linq;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public abstract class PaletteSerialiser : IPaletteSerialiser
@@ -45,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         static PaletteSerialiser()
         {
-            _serializerCache = new List<IPaletteSerialiser>();
+            _serializerCache = new();
         }
 
         #endregion
@@ -143,9 +141,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             StringBuilder saveFilter;
             List<string> openExtensions;
 
-            openExtensions = new List<string>();
-            openFilter = new StringBuilder();
-            saveFilter = new StringBuilder();
+            openExtensions = new();
+            openFilter = new();
+            saveFilter = new();
 
             if (_serializerCache.Count == 0)
             {
@@ -157,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 StringBuilder extensionMask;
                 string filter;
 
-                extensionMask = new StringBuilder();
+                extensionMask = new();
 
                 foreach (string extension in serialiser.DefaultExtension.Split(new[]
                                                                                {

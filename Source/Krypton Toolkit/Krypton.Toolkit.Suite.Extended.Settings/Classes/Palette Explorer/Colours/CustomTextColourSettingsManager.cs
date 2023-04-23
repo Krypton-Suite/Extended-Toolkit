@@ -295,7 +295,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Detection
         public static bool AreCustomPaletteTextColoursEmpty()
         {
-            CustomTextColourSettingsManager customPaletteTextColourManager = new CustomTextColourSettingsManager();
+            CustomTextColourSettingsManager customPaletteTextColourManager = new();
 
             if (customPaletteTextColourManager.GetCustomTextColourOne() == Color.Empty || customPaletteTextColourManager.GetCustomTextColourTwo() == Color.Empty || customPaletteTextColourManager.GetCustomTextColourThree() == Color.Empty || customPaletteTextColourManager.GetCustomTextColourFour() == Color.Empty || customPaletteTextColourManager.GetCustomTextColourFive() == Color.Empty || customPaletteTextColourManager.GetCustomTextColourSix() == Color.Empty)
             {
@@ -312,47 +312,66 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <summary>
         /// Creates a ARGB colour configuration file.
         /// </summary>
-        public static void CreateARGBConfigurationFile()
+        public static void CreateARGBConfigurationFile(FileDialogType fileDialogType = FileDialogType.Standard)
         {
             try
             {
-                if (OSHelper.IsSevenOrHigher())
+                switch (fileDialogType)
                 {
-                    CommonSaveFileDialog csfd = new CommonSaveFileDialog();
+                    case FileDialogType.Krypton:
+                        KryptonSaveFileDialog sfd = new();
 
-                    csfd.Title = "Save Colours To:";
+                        sfd.Title = @"Save Colours To:";
 
-                    csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
+                        sfd.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
 
-                    csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
+                        sfd.DefaultExt = "ccf";
 
-                    csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+                        sfd.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
-                    csfd.AlwaysAppendDefaultExtension = true;
+                        if (sfd.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteARGBColoursToFile(sfd.FileName);
+                        }
+                        break;
+                    case FileDialogType.Standard:
+                        SaveFileDialog dialog = new();
 
-                    csfd.DefaultExtension = "ccf";
+                        dialog.Title = @"Save Colours To:";
 
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
-                    {
-                        WriteARGBColoursToFile(csfd.FileName);
-                    }
-                }
-                else
-                {
-                    SaveFileDialog dialog = new SaveFileDialog();
+                        dialog.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
 
-                    dialog.Title = "Save Colours To:";
+                        dialog.DefaultExt = "ccf";
 
-                    dialog.Filter = "Colour Configuration File | *.ccf | Normal Text Files | *.txt";
+                        dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
-                    dialog.DefaultExt = "ccf";
+                        if (dialog.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteARGBColoursToFile(dialog.FileName);
+                        }
+                        break;
+                    case FileDialogType.WindowsAPICodePack:
+                        CommonSaveFileDialog csfd = new();
 
-                    dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+                        csfd.Title = "Save Colours To:";
 
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        WriteARGBColoursToFile(dialog.FileName);
-                    }
+                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+
+                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+
+                        csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                        csfd.AlwaysAppendDefaultExtension = true;
+
+                        csfd.DefaultExtension = "ccf";
+
+                        if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                        {
+                            WriteARGBColoursToFile(csfd.FileName);
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(fileDialogType), fileDialogType, null);
                 }
             }
             catch (Exception exc)
@@ -364,47 +383,66 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <summary>
         /// Creates a RGB colour configuration file.
         /// </summary>
-        public static void CreateRGBConfigurationFile()
+        public static void CreateRGBConfigurationFile(FileDialogType fileDialogType = FileDialogType.Standard)
         {
             try
             {
-                if (OSHelper.IsSevenOrHigher())
+                switch (fileDialogType)
                 {
-                    CommonSaveFileDialog csfd = new CommonSaveFileDialog();
+                    case FileDialogType.Krypton:
+                        KryptonSaveFileDialog sfd = new();
 
-                    csfd.Title = "Save Colours To:";
+                        sfd.Title = @"Save Colours To:";
 
-                    csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
+                        sfd.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
 
-                    csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
+                        sfd.DefaultExt = "ccf";
 
-                    csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+                        sfd.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
-                    csfd.AlwaysAppendDefaultExtension = true;
+                        if (sfd.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteRGBColoursToFile(sfd.FileName);
+                        }
+                        break;
+                    case FileDialogType.Standard:
+                        SaveFileDialog dialog = new();
 
-                    csfd.DefaultExtension = "ccf";
+                        dialog.Title = @"Save Colours To:";
 
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
-                    {
-                        WriteRGBColoursToFile(csfd.FileName);
-                    }
-                }
-                else
-                {
-                    SaveFileDialog dialog = new SaveFileDialog();
+                        dialog.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
 
-                    dialog.Title = "Save Colours To:";
+                        dialog.DefaultExt = "ccf";
 
-                    dialog.Filter = "Colour Configuration File | *.ccf | Normal Text Files | *.txt";
+                        dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
-                    dialog.DefaultExt = "ccf";
+                        if (dialog.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteRGBColoursToFile(dialog.FileName);
+                        }
+                        break;
+                    case FileDialogType.WindowsAPICodePack:
+                        CommonSaveFileDialog csfd = new();
 
-                    dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+                        csfd.Title = "Save Colours To:";
 
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        WriteRGBColoursToFile(dialog.FileName);
-                    }
+                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+
+                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+
+                        csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                        csfd.AlwaysAppendDefaultExtension = true;
+
+                        csfd.DefaultExtension = "ccf";
+
+                        if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                        {
+                            WriteRGBColoursToFile(csfd.FileName);
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(fileDialogType), fileDialogType, null);
                 }
             }
             catch (Exception exc)

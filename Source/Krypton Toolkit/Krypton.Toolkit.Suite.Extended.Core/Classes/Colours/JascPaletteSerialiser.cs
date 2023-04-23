@@ -67,10 +67,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             try
             {
-                using (StreamReader reader = new StreamReader(stream))
+                using (StreamReader reader = new(stream))
                 {
-                    string header;
-                    string version;
+                    string? header;
+                    string? version;
 
                     // check signature
                     header = reader.ReadLine();
@@ -101,12 +101,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 throw new ArgumentNullException(nameof(stream));
             }
 
-            results = new ColourCollection();
+            results = new();
 
-            using (StreamReader reader = new StreamReader(stream))
+            using (StreamReader reader = new(stream))
             {
-                string header;
-                string version;
+                string? header;
+                string? version;
                 int colorCount;
 
                 // check signature
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     int r;
                     int g;
                     int b;
-                    string data;
+                    string? data;
                     string[] parts;
 
                     data = reader.ReadLine();
@@ -155,15 +155,23 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (stream == null)
             {
+#if !NETCOREAPP3_0_OR_GREATER
                 throw new ArgumentNullException(nameof(stream));
+#else
+                ArgumentNullException.ThrowIfNull(stream);
+#endif
             }
 
+#if !NETCOREAPP3_0_OR_GREATER
             if (palette == null)
             {
                 throw new ArgumentNullException(nameof(palette));
             }
+#else
+            ArgumentNullException.ThrowIfNull(palette);
+#endif
 
-            using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8))
+            using (StreamWriter writer = new(stream, Encoding.UTF8))
             {
                 writer.WriteLine("JASC-PAL");
                 writer.WriteLine("0100");

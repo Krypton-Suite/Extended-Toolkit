@@ -26,7 +26,6 @@
  */
 #endregion
 
-using System.Linq;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -143,17 +142,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             _colourRegions = new Dictionary<int, Rectangle>();
             _colours = ColourPalettes.NamedColours;
-            _customColours = new ColourCollection(Enumerable.Repeat(Color.White, 16));
+            _customColours = new(Enumerable.Repeat(Color.White, 16));
             _showCustomColours = true;
-            _cellSize = new Size(12, 12);
-            _spacing = new Size(3, 3);
+            _cellSize = new(12, 12);
+            _spacing = new(3, 3);
             _columns = 16;
             base.AutoSize = true;
-            Padding = new Padding(5);
+            Padding = new(5);
             _autoAddColors = true;
             _cellBorderColour = SystemColors.ButtonShadow;
             _showToolTips = true;
-            _toolTip = new ToolTip();
+            _toolTip = new();
             SeparatorHeight = 8;
             _editMode = ColourEditingMode.CustomOnly;
             _colour = Color.Black;
@@ -681,7 +680,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 {
                     if (CustomColours == null)
                     {
-                        CustomColours = new ColourCollection();
+                        CustomColours = new();
                         CustomColours.Add(value);
                     }
                     else
@@ -812,7 +811,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             ColourHitTestInfo result;
             int colourIndex;
 
-            result = new ColourHitTestInfo();
+            result = new();
             colourIndex = InvalidIndex;
 
             foreach (KeyValuePair<int, Rectangle> pair in _colourRegions.Where(pair => pair.Value.Contains(point)))
@@ -872,7 +871,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     cellLocation = Point.Empty;
                     break;
                 case NavigationOrigin.End:
-                    cellLocation = new Point(ActualColumns - 1, PrimaryRows + CustomRows - 1);
+                    cellLocation = new(ActualColumns - 1, PrimaryRows + CustomRows - 1);
                     break;
                 default:
                     cellLocation = CurrentCell;
@@ -904,7 +903,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (w > 0 && h > 0)
             {
-                CellSize = new Size(w, h);
+                CellSize = new(w, h);
             }
         }
 
@@ -937,7 +936,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             type = typeof(ColourGridControl);
 
-            using (Bitmap background = new Bitmap(type.Assembly.GetManifestResourceStream(
+            using (Bitmap background = new(type.Assembly.GetManifestResourceStream(
                        $"{type.Namespace}.Resources.cellbackground.png")))
             {
                 return new TextureBrush(background, WrapMode.Tile);
@@ -960,7 +959,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     {
                         if (index < colours.Count)
                         {
-                            _colourRegions.Add(rangeStart + index, new Rectangle(Padding.Left + column * (_scaledCellSize.Width + Spacing.Width), offset + row * (_scaledCellSize.Height + Spacing.Height), _scaledCellSize.Width, _scaledCellSize.Height));
+                            _colourRegions.Add(rangeStart + index, new(Padding.Left + column * (_scaledCellSize.Width + Spacing.Width), offset + row * (_scaledCellSize.Height + Spacing.Height), _scaledCellSize.Width, _scaledCellSize.Height));
                         }
 
                         index++;
@@ -1014,7 +1013,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 width = ClientSize.Width;
             }
 
-            return new Size(width, (_scaledCellSize.Height + Spacing.Height) * (PrimaryRows + CustomRows) + offset + Padding.Vertical - Spacing.Height);
+            return new(width, (_scaledCellSize.Height + Spacing.Height) * (PrimaryRows + CustomRows) + offset + Padding.Vertical - Spacing.Height);
         }
 
         protected int GetCellIndex(Point point)
@@ -1095,7 +1094,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 row++;
             }
 
-            return new Point(column, row);
+            return new(column, row);
         }
 
         protected virtual int GetColourIndex(Color value)
@@ -1291,7 +1290,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (scaleX > 1 && scaleY > 1)
             {
-                _scaledCellSize = new Size((int)(_cellSize.Width * scaleX), (int)(_cellSize.Height * scaleY));
+                _scaledCellSize = new((int)(_cellSize.Width * scaleX), (int)(_cellSize.Height * scaleY));
             }
             else
             {
@@ -1501,7 +1500,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         x = location.X;
                         y = location.Y + _cellSize.Height;
 
-                        ShowContextMenu(new Point(x, y));
+                        ShowContextMenu(new(x, y));
                         break;
                 }
             }
@@ -1613,7 +1612,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 // draw a design time dotted grid
                 if (DesignMode)
                 {
-                    using (Pen pen = new Pen(SystemColors.ButtonShadow)
+                    using (Pen pen = new(SystemColors.ButtonShadow)
                     {
                         DashStyle = DashStyle.Dot
                     })
@@ -1729,7 +1728,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (ShowToolTips)
             {
-                _toolTip = new ToolTip();
+                _toolTip = new();
             }
             else if (_toolTip != null)
             {
@@ -1781,7 +1780,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             switch (CellBorderStyle)
             {
                 case ColourCellBorderStyle.FixedSingle:
-                    using (Pen pen = new Pen(CellBorderColour))
+                    using (Pen pen = new(CellBorderColour))
                     {
                         e.Graphics.DrawRectangle(pen, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
                     }
@@ -1790,22 +1789,22 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     HSLColourStructure shadedOuter;
                     HSLColourStructure shadedInner;
 
-                    shadedOuter = new HSLColourStructure(colour);
+                    shadedOuter = new(colour);
                     shadedOuter.L -= 0.50;
 
-                    shadedInner = new HSLColourStructure(colour);
+                    shadedInner = new(colour);
                     shadedInner.L -= 0.20;
 
-                    using (Pen pen = new Pen(CellBorderColour))
+                    using (Pen pen = new(CellBorderColour))
                     {
                         e.Graphics.DrawRectangle(pen, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
                     }
                     e.Graphics.DrawRectangle(Pens.White, bounds.Left + 1, bounds.Top + 1, bounds.Width - 3, bounds.Height - 3);
-                    using (Pen pen = new Pen(Color.FromArgb(32, shadedOuter.ToRgbColour())))
+                    using (Pen pen = new(Color.FromArgb(32, shadedOuter.ToRgbColour())))
                     {
                         e.Graphics.DrawRectangle(pen, bounds.Left + 2, bounds.Top + 2, bounds.Width - 5, bounds.Height - 5);
                     }
-                    using (Pen pen = new Pen(Color.FromArgb(32, shadedInner.ToRgbColour())))
+                    using (Pen pen = new(Color.FromArgb(32, shadedInner.ToRgbColour())))
                     {
                         e.Graphics.DrawRectangle(pen, bounds.Left + 3, bounds.Top + 3, bounds.Width - 7, bounds.Height - 7);
                     }
@@ -1859,14 +1858,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     // draw a border
                     if (Focused)
                     {
-                        bounds = new Rectangle(bounds.Left - 2, bounds.Top - 2, bounds.Width + 4, bounds.Height + 4);
+                        bounds = new(bounds.Left - 2, bounds.Top - 2, bounds.Width + 4, bounds.Height + 4);
                         ControlPaint.DrawFocusRectangle(e.Graphics, bounds);
                     }
                     else
                     {
-                        bounds = new Rectangle(bounds.Left - 2, bounds.Top - 2, bounds.Width + 3, bounds.Height + 3);
+                        bounds = new(bounds.Left - 2, bounds.Top - 2, bounds.Width + 3, bounds.Height + 3);
 
-                        using (Pen pen = new Pen(CellBorderColour))
+                        using (Pen pen = new(CellBorderColour))
                         {
                             e.Graphics.DrawRectangle(pen, bounds);
                         }
@@ -1887,7 +1886,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             y1 = SeparatorHeight / 2 + Padding.Top + PrimaryRows * (_scaledCellSize.Height + Spacing.Height) + 1 - Spacing.Height;
             y2 = y1;
 
-            using (Pen pen = new Pen(CellBorderColour))
+            using (Pen pen = new(CellBorderColour))
             {
                 e.Graphics.DrawLine(pen, x1, y1, x2, y2);
             }
@@ -2043,7 +2042,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 column = index - row * ActualColumns;
             }
 
-            return new Point(column, row);
+            return new(column, row);
         }
 
         private void RemoveEventHandlers(ColourCollection value)
@@ -2102,7 +2101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EditColourCancelEventArgs e;
 
-            e = new EditColourCancelEventArgs(GetColour(index), index);
+            e = new(GetColour(index), index);
             OnEditingColour(e);
 
             if (!e.Cancel)

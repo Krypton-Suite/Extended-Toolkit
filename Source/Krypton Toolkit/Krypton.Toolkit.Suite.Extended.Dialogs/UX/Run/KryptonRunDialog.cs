@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS0219, CS8602
+﻿
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public partial class KryptonRunDialog : KryptonFormExtended
@@ -54,9 +54,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             kcmdOpenInExplorer.Text = Properties.Resources.OpenInExplorerCommandText;
 
-            kcmdOpenInExplorer.ImageLarge = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new Size(64, 64));
+            kcmdOpenInExplorer.ImageLarge = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new(64, 64));
 
-            kcmdOpenInExplorer.ImageSmall = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new Size(16, 16));
+            kcmdOpenInExplorer.ImageSmall = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new(16, 16));
         }
 
         private void bsBrowse_Click(object sender, EventArgs e)
@@ -72,13 +72,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
                 ksbRun.Enabled = true;
 
-                pbxProcessIcon.Image = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(kcmbFilePath.Text).ToBitmap(), new Size(32, 32));
+                pbxProcessIcon.Image = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(kcmbFilePath.Text).ToBitmap(), new(32, 32));
 
                 FileVersionInfo? info = null;
 
                 //info
 
-                FileInfo fi = new FileInfo(kcmbFilePath.Text);
+                FileInfo fi = new(kcmbFilePath.Text);
 
                 ttAppIcon.SetToolTip(pbxProcessIcon, $"Name: {Path.GetFileName(kcmbFilePath.Text)}");
             }
@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             switch (startPosition)
             {
                 case RunDialogStartPosition.BottomLeft:
-                    Location = new Point(0, Screen.PrimaryScreen.WorkingArea.Bottom - Height);
+                    Location = new(0, Screen.PrimaryScreen.WorkingArea.Bottom - Height);
                     break;
                 case RunDialogStartPosition.BottomRight:
                     break;
@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void kbtnSettings_Click(object sender, EventArgs e)
         {
-            KryptonRunDialogOptions runDialogOptions = new KryptonRunDialogOptions();
+            KryptonRunDialogOptions runDialogOptions = new();
 
             runDialogOptions.ShowDialog();
         }
@@ -127,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             try
             {
-                CommonOpenFileDialog cofd = new CommonOpenFileDialog();
+                CommonOpenFileDialog cofd = new();
 
                 cofd.IsFolderPicker = isFolderPicker;
 

@@ -310,7 +310,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns></returns>
         public static string ConvertStringArrayToString(string[] array)
         {
-            StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new();
 
             foreach (string value in array)
             {

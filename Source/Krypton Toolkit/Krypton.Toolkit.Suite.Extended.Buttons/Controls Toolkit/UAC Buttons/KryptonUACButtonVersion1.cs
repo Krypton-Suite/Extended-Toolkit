@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Constructor
         public KryptonUACButtonVersion1() : base()
         {
-            Size = new Size((int)(this.Width * 1.5), this.Height + 1);
+            Size = new((int)(this.Width * 1.5), this.Height + 1);
 
             if (PlatformHelper.VistaOrHigher)
             {
@@ -120,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     }
                 }
 
-                NativeMethods.SendMessage(this.Handle, BCM_SETSHIELD, IntPtr.Zero, new IntPtr(1));
+                NativeMethods.SendMessage(this.Handle, BCM_SETSHIELD, IntPtr.Zero, new(1));
             }
         }
         #endregion
@@ -132,25 +132,25 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 if (_assemblyToElevate != null)
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new ExecuteProcessAsAdministratorEventArgs(_assemblyToElevate);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new(_assemblyToElevate);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTask);
                 }
                 else if (_assemblyToElevate != null && !string.IsNullOrWhiteSpace(_extraArguments))
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new ExecuteProcessAsAdministratorEventArgs(Path.GetFullPath(_assemblyToElevate.Location), _extraArguments);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new(Path.GetFullPath(_assemblyToElevate.Location), _extraArguments);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTaskWithExtraArguments);
                 }
                 else if (!string.IsNullOrWhiteSpace(_processName))
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new ExecuteProcessAsAdministratorEventArgs(_processName);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new(_processName);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTask);
                 }
                 else if (!string.IsNullOrWhiteSpace(_processName) && !string.IsNullOrWhiteSpace(_extraArguments))
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new ExecuteProcessAsAdministratorEventArgs(_processName, _extraArguments);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new(_processName, _extraArguments);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTaskWithExtraArguments);
                 }

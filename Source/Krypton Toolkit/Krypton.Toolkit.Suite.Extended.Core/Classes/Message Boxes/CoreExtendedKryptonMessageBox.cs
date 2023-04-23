@@ -193,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                         Image customImageIcon = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
-                             new HelpInfo(helpFilePath, navigator, param), showCtrlCopy,
+                             new(helpFilePath, navigator, param), showCtrlCopy,
                              messageBoxTypeface, customImageIcon, null, Color.Empty,
                              new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                              null, null, null, null, string.Empty,

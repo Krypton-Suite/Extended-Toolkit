@@ -153,6 +153,12 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         }
         #endregion
 
+        #region Instance Fields
+
+        private FileDialogType _fileDialogType;
+
+        #endregion
+
         #region Constructors
         public KryptonDeveloperDebugConsole(string message)
         {
@@ -209,15 +215,47 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
         private void kbtnSaveToFile_Click(object sender, EventArgs e)
         {
-            CommonSaveFileDialog csfd = new();
-
-            csfd.Filters.Add(new("Exception Captures", "txt"));
-
-            csfd.DefaultFileName = $"Exception Capture - {DateTime.Now}";
-
-            if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+            switch (_fileDialogType)
             {
-                krtbDebugBox.SaveFile(csfd.FileName);
+                case FileDialogType.Krypton:
+                    KryptonSaveFileDialog kdlg = new();
+
+                    kdlg.Filter = @"Exception Captures|*.txt";
+
+                    kdlg.FileName = $"Exception Capture - {DateTime.Now}";
+
+                    if (kdlg.ShowDialog() == DialogResult.OK)
+                    {
+                        krtbDebugBox.SaveFile(kdlg.FileName);
+                    }
+                    break;
+                case FileDialogType.Standard:
+                    SaveFileDialog dlg = new();
+
+                    dlg.Filter = @"Exception Captures|*.txt";
+
+                    dlg.FileName = $"Exception Capture - {DateTime.Now}";
+
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        krtbDebugBox.SaveFile(dlg.FileName);
+                    }
+                    break;
+                case FileDialogType.WindowsAPICodePack:
+
+                    CommonSaveFileDialog csfd = new();
+
+                    csfd.Filters.Add(new("Exception Captures", "txt"));
+
+                    csfd.DefaultFileName = $"Exception Capture - {DateTime.Now}";
+
+                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        krtbDebugBox.SaveFile(csfd.FileName);
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }

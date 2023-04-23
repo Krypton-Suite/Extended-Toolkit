@@ -65,9 +65,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else
             {
-                using (GraphicsPath path = new GraphicsPath())
+                using (GraphicsPath path = new())
                 {
-                    path.AddString(e.Text, e.TextFont.FontFamily, (int)e.TextFont.Style, e.TextFont.Size + 2, e.TextRectangle.Location, new StringFormat());
+                    path.AddString(e.Text, e.TextFont.FontFamily, (int)e.TextFont.Style, e.TextFont.Size + 2, e.TextRectangle.Location, new());
 
                     e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
 
@@ -89,14 +89,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (e.Item.RightToLeft == RightToLeft.Yes)
             {
-                r = new Rectangle(0, e.Item.Height - 8, 9, 5);
+                r = new(0, e.Item.Height - 8, 9, 5);
             }
             else
             {
-                r = new Rectangle(e.Item.Width - 12, e.Item.Height - 16, 9, 5);
+                r = new(e.Item.Width - 12, e.Item.Height - 16, 9, 5);
             }
 
-            base.DrawArrow(new ToolStripArrowRenderEventArgs(e.Graphics, e.Item, r, SystemColors.ControlText, ArrowDirection.Down));
+            base.DrawArrow(new(e.Graphics, e.Item, r, SystemColors.ControlText, ArrowDirection.Down));
 
             e.Graphics.DrawLine(SystemPens.ControlText, (int)(r.Right - 7), (int)(r.Y - 2), (int)(r.Right - 3), (int)(r.Y - 2));
         }

@@ -702,7 +702,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             Size buttonsSizing = UpdateButtonsSizing();
 
             // Size of window is calculated from the client area
-            ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
+            ClientSize = new(Math.Max(messageSizing.Width, buttonsSizing.Width),
                                   messageSizing.Height + buttonsSizing.Height);
         }
 
@@ -736,7 +736,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // Find size of icon area plus the text area added together
             if (_messageIcon.Image != null)
             {
-                return new Size(textSize.Width + _messageIcon.Width, Math.Max(_messageIcon.Height + 10, textSize.Height));
+                return new(textSize.Width + _messageIcon.Width, Math.Max(_messageIcon.Height + 10, textSize.Height));
             }
 
             return textSize;
@@ -782,7 +782,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // If Button4 is visible
             if (_button4.Enabled)
             {
-                _button4.Location = new Point(right - maxButtonSize.Width, GAP);
+                _button4.Location = new(right - maxButtonSize.Width, GAP);
                 _button4.Size = maxButtonSize;
                 right -= maxButtonSize.Width + GAP;
             }
@@ -790,7 +790,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // If Button3 is visible
             if (_button3.Enabled)
             {
-                _button3.Location = new Point(right - maxButtonSize.Width, GAP);
+                _button3.Location = new(right - maxButtonSize.Width, GAP);
                 _button3.Size = maxButtonSize;
                 right -= maxButtonSize.Width + GAP;
             }
@@ -798,20 +798,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // If Button2 is visible
             if (_button2.Enabled)
             {
-                _button2.Location = new Point(right - maxButtonSize.Width, GAP);
+                _button2.Location = new(right - maxButtonSize.Width, GAP);
                 _button2.Size = maxButtonSize;
                 right -= maxButtonSize.Width + GAP;
             }
 
             // Button1 is always visible
-            _button1.Location = new Point(right - maxButtonSize.Width, GAP);
+            _button1.Location = new(right - maxButtonSize.Width, GAP);
             _button1.Size = maxButtonSize;
 
             // Size the panel for the buttons
-            _panelButtons.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            _panelButtons.Size = new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
 
             // Button area is the number of buttons with gaps between them and 10 pixels around all edges
-            return new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            return new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
         }
 
         private void AnyKeyDown(object sender, KeyEventArgs e)

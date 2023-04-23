@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     internal class SettingsManager
     {
         #region Instance Fields
 
-        private Properties.Settings _mySettings = new Properties.Settings();
+        private Properties.Settings _mySettings = new();
 
         #endregion
 

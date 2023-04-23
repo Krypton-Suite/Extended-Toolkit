@@ -147,7 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             HSLColourStructure colour;
 
-            colour = new HSLColourStructure(this.Colour);
+            colour = new(this.Colour);
 
             colour.S = 0;
             this.Colour1 = colour.ToRgbColour();

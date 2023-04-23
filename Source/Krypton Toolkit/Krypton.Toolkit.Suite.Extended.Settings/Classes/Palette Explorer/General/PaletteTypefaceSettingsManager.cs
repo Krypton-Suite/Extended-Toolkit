@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
         private void ResetPaletteTypefaceSettings()
         {
-            SetGlobalPaletteTypeface(new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular));
+            SetGlobalPaletteTypeface(new("Microsoft Sans Serif", 8.25f, FontStyle.Regular));
         }
         #endregion
     }

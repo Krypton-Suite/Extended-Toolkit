@@ -127,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                 exceptionInfo = ExceptionDispatchInfo.Capture(exc);
 
-                StreamWriter writer = new StreamWriter(fileName);
+                StreamWriter writer = new(fileName);
 
                 writer.Write(exc.ToString());
 
@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     File.Create(fileName);
                 }
 
-                StreamWriter writer = new StreamWriter(fileName);
+                StreamWriter writer = new(fileName);
 
                 writer.Write(exc.StackTrace);
 

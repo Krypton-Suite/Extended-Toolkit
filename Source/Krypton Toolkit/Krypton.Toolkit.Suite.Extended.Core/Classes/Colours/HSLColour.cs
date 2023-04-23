@@ -203,7 +203,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static implicit operator HSLColour(Color colour)
         {
-            HSLColour hslColour = new HSLColour();
+            HSLColour hslColour = new();
             hslColour._hue = colour.GetHue() / 360.0; // we store hue as 0-1 as opposed to 0-360 
             hslColour._luminosity = colour.GetBrightness();
             hslColour._saturation = colour.GetSaturation();

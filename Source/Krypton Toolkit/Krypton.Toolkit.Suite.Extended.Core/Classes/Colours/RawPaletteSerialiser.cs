@@ -104,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 throw new ArgumentNullException(nameof(stream));
             }
 
-            results = new ColourCollection();
+            results = new();
 
             for (int i = 0; i < stream.Length / 3; i++)
             {

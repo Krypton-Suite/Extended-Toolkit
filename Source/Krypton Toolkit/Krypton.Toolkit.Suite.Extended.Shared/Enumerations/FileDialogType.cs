@@ -1,5 +1,6 @@
 ﻿#region MIT License
 /*
+ *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -25,25 +26,16 @@
  */
 #endregion
 
-global using System;
-global using System.Collections.Generic;
-global using System.ComponentModel;
-global using System.ComponentModel.Design;
-global using System.Diagnostics;
-global using System.Drawing;
-global using System.Drawing.Design;
-global using System.IO;
-global using System.Reflection;
-global using System.Runtime.InteropServices;
-global using System.Security.Principal;
-global using System.Text;
-global using System.Windows.Forms;
-global using System.Windows.Forms.Design;
-global using System.Windows.Forms.VisualStyles;
-
-global using Krypton.Toolkit.Suite.Extended.Core;
-global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-global using Krypton.Toolkit.Suite.Extended.Shared;
-
-global using Microsoft.Win32;
-global using Microsoft.WindowsAPICodePack.Dialogs;
+// ReSharper disable InconsistentNaming
+namespace Krypton.Toolkit.Suite.Extended.Shared
+{
+    public enum FileDialogType
+    {
+        /// <summary>The Krypton dialog types.</summary>
+        Krypton = 0,
+        /// <summary>The standard Windows dialog types.</summary>
+        Standard = 1,
+        /// <summary>The Windows API Code Pack dialog types.</summary>
+        WindowsAPICodePack = 2
+    }
+}

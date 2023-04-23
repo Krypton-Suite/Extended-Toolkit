@@ -761,14 +761,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private static void SwitchPaletteMode(PaletteMode mode)
         {
-            PaletteCompisitionEngine pce = new PaletteCompisitionEngine();
+            PaletteCompisitionEngine pce = new();
 
             pce.SetPaletteMode(mode);
         }
 
         public static void PropagateThemes(KryptonComboBox themeList, bool sort = true)
         {
-            ArrayList themeCollection = new ArrayList(15);
+            ArrayList themeCollection = new(15);
 
             themeCollection.Add("Global");
 
@@ -813,7 +813,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void PropagateThemes(KryptonRibbonGroupComboBox themeList, bool sort = true)
         {
-            ArrayList themeCollection = new ArrayList(15);
+            ArrayList themeCollection = new(15);
 
             themeCollection.Add("Global");
 

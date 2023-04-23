@@ -38,15 +38,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Methods
-        /// <summary>Returns the colour informtion.</summary>
+        /// <summary>Returns the colour information.</summary>
         /// <param name="colour">The colour.</param>
         /// <param name="colourHeader">The colour header.</param>
         /// <returns>
         ///   <br />
         /// </returns>
-        public static string ReturnColourInformtion(Color colour, string colourHeader = null)
+        public static string ReturnColourInformation(Color colour, string? colourHeader = null)
         {
-            StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new();
 
             if (colourHeader != null)
             {
@@ -63,11 +63,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>Sets the tooltip.</summary>
         /// <param name="control">The control.</param>
         /// <param name="colourHeader">The colour header.</param>
-        public static void SetTooltip(Control control, string colourHeader = null)
+        public static void SetTooltip(Control control, string? colourHeader = null)
         {
-            ToolTip temp = new ToolTip();
+            ToolTip temp = new();
 
-            temp.SetToolTip(control, ReturnColourInformtion(control.BackColor, $"{colourHeader} Colour"));
+            temp.SetToolTip(control, ReturnColourInformation(control.BackColor, $"{colourHeader} Colour"));
         }
         #endregion
     }

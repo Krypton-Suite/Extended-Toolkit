@@ -35,6 +35,8 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private ExternalThemeViewerType _externalThemeViewerType;
 
+        private FileDialogType _fileDialogType;
+
         #endregion
 
         #region Identity
@@ -123,26 +125,71 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void bsaBrowse_Click(object sender, EventArgs e)
         {
-            CommonOpenFileDialog commonOpenFileDialog;
-
-            if (_externalThemeType == ExternalThemeType.Binary)
+            switch (_fileDialogType)
             {
+                case FileDialogType.Krypton:
+                    KryptonFolderBrowserDialog kfbd = new();
 
-            }
-            else
-            {
-                commonOpenFileDialog = new()
-                {
-                    Title = @"Open themes directory:",
-                    IsFolderPicker = true
-                };
+                    if (_externalThemeType == ExternalThemeType.Binary)
+                    {
 
-                if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
-                {
-                    ktxtThemeLocation.Text = Path.GetFullPath(commonOpenFileDialog.FileName);
+                    }
+                    else
+                    {
+                        kfbd.Title = @"Open themes directory:";
 
-                    LoadThemesFromDirectory(Path.GetFullPath(commonOpenFileDialog.FileName));
-                }
+                        if (kfbd.ShowDialog() == DialogResult.OK)
+                        {
+                            ktxtThemeLocation.Text = Path.GetFullPath(kfbd.SelectedPath);
+
+                            LoadThemesFromDirectory(Path.GetFullPath(kfbd.SelectedPath));
+                        }
+                    }
+                    break;
+                case FileDialogType.Standard:
+                    FolderBrowserDialog fbd = new();
+
+                    if (_externalThemeType == ExternalThemeType.Binary)
+                    {
+
+                    }
+                    else
+                    {
+                        fbd.Description = @"Open themes directory:";
+
+                        if (fbd.ShowDialog() == DialogResult.OK)
+                        {
+                            ktxtThemeLocation.Text = Path.GetFullPath(fbd.SelectedPath);
+
+                            LoadThemesFromDirectory(Path.GetFullPath(fbd.SelectedPath));
+                        }
+                    }
+                    break;
+                case FileDialogType.WindowsAPICodePack:
+                    CommonOpenFileDialog commonOpenFileDialog;
+
+                    if (_externalThemeType == ExternalThemeType.Binary)
+                    {
+
+                    }
+                    else
+                    {
+                        commonOpenFileDialog = new()
+                        {
+                            Title = @"Open themes directory:",
+                            IsFolderPicker = true
+                        };
+
+                        if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+                        {
+                            ktxtThemeLocation.Text = Path.GetFullPath(commonOpenFileDialog.FileName);
+
+                            LoadThemesFromDirectory(Path.GetFullPath(commonOpenFileDialog.FileName));
+                        }
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 

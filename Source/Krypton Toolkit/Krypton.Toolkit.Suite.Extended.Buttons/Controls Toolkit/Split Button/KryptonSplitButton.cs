@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Variables
         private bool _skipNextOpen = false, _showSplitOption = true, _useUACElevation;
 
-        private Rectangle _dropDownRectangle = new Rectangle();
+        private Rectangle _dropDownRectangle = new();
 
         private string _processPath;
         #endregion
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             ShowSplitOption = true;
 
             // Default size
-            Size = new Size(90, 25);
+            Size = new(90, 25);
         }
         #endregion
 
@@ -204,11 +204,11 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             Rectangle bounds = ClientRectangle;
 
-            _dropDownRectangle = new Rectangle(bounds.Right - PUSH_BUTTON_WIDTH - 1, BORDER_SIZE, PUSH_BUTTON_WIDTH, bounds.Height - BORDER_SIZE * 2);
+            _dropDownRectangle = new(bounds.Right - PUSH_BUTTON_WIDTH - 1, BORDER_SIZE, PUSH_BUTTON_WIDTH, bounds.Height - BORDER_SIZE * 2);
 
             int internalBorder = BORDER_SIZE;
 
-            Rectangle focusRectangle = new Rectangle(internalBorder, internalBorder, bounds.Width - _dropDownRectangle.Width - internalBorder, bounds.Height - (internalBorder * 2));
+            Rectangle focusRectangle = new(internalBorder, internalBorder, bounds.Width - _dropDownRectangle.Width - internalBorder, bounds.Height - (internalBorder * 2));
 
             PaletteBase palette = KryptonManager.CurrentGlobalPalette;
 
@@ -216,9 +216,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             if (palette != null)
             {
-                shadow = new Pen(palette.ColorTable.GripDark);
+                shadow = new(palette.ColorTable.GripDark);
 
-                face = new Pen(palette.ColorTable.GripLight);
+                face = new(palette.ColorTable.GripLight);
             }
 
             if (RightToLeft == RightToLeft.Yes)
@@ -247,7 +247,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             if (_useUACElevation)
             {
-                ExecuteProcessAsAdministratorEventArgs administrativeTask = new ExecuteProcessAsAdministratorEventArgs(_processPath);
+                ExecuteProcessAsAdministratorEventArgs administrativeTask = new(_processPath);
 
                 OnExecuteProcessAsAdministrator(this, administrativeTask);
             }
@@ -259,11 +259,11 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Methods
         private static void PaintArrow(Graphics graphics, Rectangle rectangle)
         {
-            Point midPoint = new Point(Convert.ToInt32(rectangle.Left + rectangle.Width / 2), Convert.ToInt32(rectangle.Top + rectangle.Height / 2));
+            Point midPoint = new(Convert.ToInt32(rectangle.Left + rectangle.Width / 2), Convert.ToInt32(rectangle.Top + rectangle.Height / 2));
 
             midPoint.X += (rectangle.Width % 2);
 
-            Point[] arrow = new Point[] { new Point(midPoint.X - 2, midPoint.Y - 1), new Point(midPoint.X + 3, midPoint.Y - 1), new Point(midPoint.X, midPoint.Y + 2) };
+            Point[] arrow = new Point[] { new(midPoint.X - 2, midPoint.Y - 1), new(midPoint.X + 3, midPoint.Y - 1), new(midPoint.X, midPoint.Y + 2) };
 
             graphics.FillPolygon(SystemBrushes.ControlText, arrow);
         }
@@ -289,7 +289,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 ContextMenuStrip.Closing += ContextMenuStrip_Closing;
 
-                ContextMenuStrip.Show(this, new Point(0, Height), ToolStripDropDownDirection.BelowRight);
+                ContextMenuStrip.Show(this, new(0, Height), ToolStripDropDownDirection.BelowRight);
             }
         }
         #endregion
