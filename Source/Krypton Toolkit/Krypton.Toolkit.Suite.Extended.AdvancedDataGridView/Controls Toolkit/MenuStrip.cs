@@ -2058,7 +2058,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             }
 
             //open a new Custom filter window
-            FormCustomFilter flt = new FormCustomFilter(DataType, IsFilterDateAndTimeEnabled);
+            FormCustomFilter flt = new(DataType, IsFilterDateAndTimeEnabled);
 
             if (flt.ShowDialog() == DialogResult.OK)
             {

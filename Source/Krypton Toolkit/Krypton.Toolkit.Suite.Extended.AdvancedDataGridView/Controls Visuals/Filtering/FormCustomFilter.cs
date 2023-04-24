@@ -63,7 +63,6 @@
  */
 #endregion
 
-// ReSharper disable VirtualMemberCallInConstructor
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     public partial class FormCustomFilter : KryptonForm
