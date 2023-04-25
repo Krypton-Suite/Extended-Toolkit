@@ -1778,7 +1778,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             } while (goIntoLoop);
 
             // reset the islooping handle
-            _loopingHandle.Reset();
+            if (!_disposed)
+            {
+                _loopingHandle?.Reset();
+            }
         }
 
         /// <summary>

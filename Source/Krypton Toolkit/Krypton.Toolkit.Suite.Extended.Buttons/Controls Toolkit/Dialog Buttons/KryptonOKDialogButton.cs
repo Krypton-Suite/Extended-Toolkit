@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             if (Text == Name)
             {
-                Text = KryptonManager.Strings.OK;
+                Text = KryptonLanguageManager.Strings.OK;
             }
         }
 

@@ -25,155 +25,11 @@
  */
 #endregion
 
+// ReSharper disable VirtualMemberCallInConstructor
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
-    public class KryptonToastNotificationVersion2 : KryptonForm
+    public partial class KryptonToastNotificationVersion2 : KryptonForm
     {
-        #region Design Code
-        private KryptonPanel kryptonPanel1;
-        private KryptonButton kbtnAction;
-        private KryptonButton kbtnDismiss;
-        private KryptonPanel kryptonPanel2;
-        private System.Windows.Forms.ProgressBar pbTimeOut;
-        private KryptonLabel klblHeader;
-        private KryptonWrapLabel kwlContent;
-        private System.Windows.Forms.PictureBox pbxIcon;
-        private KryptonBorderEdge kryptonBorderEdge1;
-
-        private void InitializeComponent()
-        {
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnAction = new Krypton.Toolkit.KryptonButton();
-            this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
-            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.pbTimeOut = new System.Windows.Forms.ProgressBar();
-            this.klblHeader = new Krypton.Toolkit.KryptonLabel();
-            this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
-            this.pbxIcon = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
-            this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // kryptonPanel1
-            // 
-            this.kryptonPanel1.Controls.Add(this.kbtnAction);
-            this.kryptonPanel1.Controls.Add(this.kbtnDismiss);
-            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 271);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kryptonPanel1.Size = new System.Drawing.Size(621, 50);
-            this.kryptonPanel1.TabIndex = 1;
-            // 
-            // kbtnAction
-            // 
-            this.kbtnAction.AutoSize = true;
-            this.kbtnAction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnAction.Location = new System.Drawing.Point(12, 13);
-            this.kbtnAction.Name = "kbtnAction";
-            this.kbtnAction.Size = new System.Drawing.Size(6, 6);
-            this.kbtnAction.TabIndex = 2;
-            this.kbtnAction.Values.Text = "";
-            this.kbtnAction.Visible = false;
-            // 
-            // kbtnDismiss
-            // 
-            this.kbtnDismiss.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnDismiss.Location = new System.Drawing.Point(405, 13);
-            this.kbtnDismiss.Name = "kbtnDismiss";
-            this.kbtnDismiss.Size = new System.Drawing.Size(204, 25);
-            this.kbtnDismiss.TabIndex = 1;
-            this.kbtnDismiss.Values.Text = "{0}";
-            // 
-            // kryptonBorderEdge1
-            // 
-            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
-            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(621, 1);
-            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
-            // 
-            // kryptonPanel2
-            // 
-            this.kryptonPanel2.Controls.Add(this.pbTimeOut);
-            this.kryptonPanel2.Controls.Add(this.klblHeader);
-            this.kryptonPanel2.Controls.Add(this.kwlContent);
-            this.kryptonPanel2.Controls.Add(this.pbxIcon);
-            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(621, 271);
-            this.kryptonPanel2.TabIndex = 2;
-            // 
-            // pbTimeOut
-            // 
-            this.pbTimeOut.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pbTimeOut.Location = new System.Drawing.Point(0, 261);
-            this.pbTimeOut.Name = "pbTimeOut";
-            this.pbTimeOut.Size = new System.Drawing.Size(621, 10);
-            this.pbTimeOut.TabIndex = 4;
-            // 
-            // klblHeader
-            // 
-            this.klblHeader.AutoSize = false;
-            this.klblHeader.Location = new System.Drawing.Point(145, 13);
-            this.klblHeader.Name = "klblHeader";
-            this.klblHeader.Size = new System.Drawing.Size(468, 67);
-            this.klblHeader.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.klblHeader.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klblHeader.TabIndex = 2;
-            this.klblHeader.Values.Text = "{0}";
-            // 
-            // kwlContent
-            // 
-            this.kwlContent.AutoSize = false;
-            this.kwlContent.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlContent.Location = new System.Drawing.Point(145, 83);
-            this.kwlContent.Name = "kwlContent";
-            this.kwlContent.Size = new System.Drawing.Size(468, 174);
-            this.kwlContent.Text = "{0}";
-            this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pbxIcon
-            // 
-            this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxIcon.Location = new System.Drawing.Point(13, 13);
-            this.pbxIcon.Name = "pbxIcon";
-            this.pbxIcon.Size = new System.Drawing.Size(125, 125);
-            this.pbxIcon.TabIndex = 0;
-            this.pbxIcon.TabStop = false;
-            // 
-            // KryptonToastNotificationVersion2
-            // 
-            this.ClientSize = new System.Drawing.Size(621, 321);
-            this.ControlBox = false;
-            this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.kryptonPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "KryptonToastNotificationVersion2";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
-            this.kryptonPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).EndInit();
-            this.ResumeLayout(false);
-
-        }
-        #endregion
-
         #region Variables
         private ActionButtonType _actionButtonType;
 
@@ -189,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private IconType _iconType;
 
-        private System.Windows.Forms.Timer _timer;
+        private Timer? _timer;
 
         private SoundPlayer _player;
 
@@ -303,6 +159,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #endregion
 
         #region Constructors
+
+
         /// <summary>Initializes a new instance of the <see cref="KryptonToastNotificationVersion2" /> class.</summary>
         /// <param name="image">The image.</param>
         /// <param name="header">The header.</param>
@@ -313,6 +171,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="actionButtonType">Type of the action button.</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="showActionButton">The show action button.</param>
+        /// <param name="actionButtonText">The action button text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
+        /// <param name="iconType">Type of the icon.</param>
         public KryptonToastNotificationVersion2(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType)
         {
             InitializeComponent();
@@ -392,7 +253,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
         }
 
-        private void KryptonToastNotificationVersion1_Load(object sender, EventArgs e)
+        private void KryptonToastNotificationVersion2_Load(object sender, EventArgs e)
         {
             Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
 
@@ -527,11 +388,11 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             {
                 if (_dismissButtonText != null)
                 {
-                    kbtnDismiss.Text = $"{_dismissButtonText}";
+                    kbtnDismiss.Text = $@"{_dismissButtonText}";
                 }
                 else
                 {
-                    kbtnDismiss.Text = $"&Dismiss";
+                    kbtnDismiss.Text = $@"&Dismiss";
                 }
 
                 _timer = new System.Windows.Forms.Timer();
@@ -546,11 +407,11 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
                     if (_dismissButtonText != null)
                     {
-                        kbtnDismiss.Text = $"{_dismissButtonText}";
+                        kbtnDismiss.Text = $@"{_dismissButtonText}";
                     }
                     else
                     {
-                        kbtnDismiss.Text = $"&Dismiss";
+                        kbtnDismiss.Text = $@"&Dismiss";
                     }
 
                     if (_time == TimeOut)
@@ -618,7 +479,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private void StartProcessInExplorer(string process) => Process.Start("explorer.exe", process);
 
-        private void SetIconType(IconType iconType, Image customImage = null)
+        private void SetIconType(IconType iconType, Image? customImage = null)
         {
             switch (iconType)
             {
@@ -668,38 +529,38 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
         }
 
-        private void SetActionText(ActionType? type, string buttonText = null)
+        private void SetActionText(ActionType? type, string? buttonText = null)
         {
             switch (type)
             {
                 case ActionType.Default:
                     if (buttonText != null)
                     {
-                        kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";
+                        kbtnAction.Text = $@"{buttonText} {Path.GetFileName(ProcessToStart)}";
                     }
                     else
                     {
-                        kbtnAction.Text = $"&Open {Path.GetFileName(ProcessToStart)}";
+                        kbtnAction.Text = $@"&Open {Path.GetFileName(ProcessToStart)}";
                     }
                     break;
                 case ActionType.LaunchProcess:
                     if (buttonText != null)
                     {
-                        kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";
+                        kbtnAction.Text = $@"{buttonText} {Path.GetFileName(ProcessToStart)}";
                     }
                     else
                     {
-                        kbtnAction.Text = $"L&aunch {Path.GetFileName(ProcessToStart)}";
+                        kbtnAction.Text = $@"L&aunch {Path.GetFileName(ProcessToStart)}";
                     }
                     break;
                 case ActionType.Open:
                     if (buttonText != null)
                     {
-                        kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";
+                        kbtnAction.Text = $@"{buttonText} {Path.GetFileName(ProcessToStart)}";
                     }
                     else
                     {
-                        kbtnAction.Text = $"&Open {Path.GetFileName(ProcessToStart)}";
+                        kbtnAction.Text = $@"&Open {Path.GetFileName(ProcessToStart)}";
                     }
                     break;
             }
