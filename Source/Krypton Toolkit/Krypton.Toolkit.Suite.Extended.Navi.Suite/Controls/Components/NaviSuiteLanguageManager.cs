@@ -25,33 +25,54 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
-    public partial class KryptonSystemInformation : KryptonForm
+    public class NaviSuiteLanguageManager : Component
     {
-        #region Identity
-        public KryptonSystemInformation()
-        {
-            InitializeComponent();
-        }
+        #region Public
+
+        /// <summary>Gets the navi suite strings.</summary>
+        /// <value>The navi suite strings.</value>
+        [Category(@"Visuals")]
+        [Description(@"Collection of navi suite strings.")]
+        [MergableProperty(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Localizable(true)]
+        public NaviSuiteStrings NaviSuiteStrings => SuiteStrings;
+
+        private bool ShouldSerializeNaviSuiteStrings() => !SuiteStrings.IsDefault;
+
+        public void ResetNaviSuiteStrings() => SuiteStrings.Reset();
+
         #endregion
 
-        private void kbtnCopy_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(krtbSystemInformation.Text))
-            {
-                Clipboard.SetText(krtbSystemInformation.Text);
-            }
-        }
+        #region Static Strings
 
-        private void kbtnClose_Click(object sender, EventArgs e)
-        {
-            Hide();
-        }
+        public static NaviSuiteStrings SuiteStrings
+        { get; } = new();
 
-        private void KryptonSystemInformation_Load(object sender, EventArgs e)
+        #endregion
+
+        #region Identity
+
+        public NaviSuiteLanguageManager()
         {
 
         }
+
+        #endregion
+
+        #region Implementation
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool IsDefault => !(ShouldSerializeNaviSuiteStrings());
+
+        public void Reset()
+        {
+            ResetNaviSuiteStrings();
+        }
+
+        #endregion
     }
 }

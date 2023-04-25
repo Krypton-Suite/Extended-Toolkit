@@ -25,7 +25,6 @@
  */
 #endregion
 
-#pragma warning disable CS0649
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     /// <summary>

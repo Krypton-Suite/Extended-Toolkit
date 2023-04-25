@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         #region Constructor
 
-        
+
         public OutlookBarNavigationPaneOptions(OutlookBarButtonCollection items)
         {
             InitializeComponent();
