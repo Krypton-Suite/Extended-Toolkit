@@ -35,8 +35,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public DateInterval Interval { get; set; }
 
-        public static OutlookGridLanguageStrings LanguageStrings => KryptonOutlookGridGroupBox.Strings;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="OutlookGridDateTimeGroup"/> class.
         /// </summary>
@@ -99,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             _valDateTime = DateTime.MinValue;
-                            base.Value = Strings.NoDate;
+                            base.Value = KryptonOutlookGridLanguageManager.GeneralStrings.NoDate;
                         }
                         break;
                     case DateInterval.Month:
@@ -112,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             _valDateTime = DateTime.MinValue;
-                            base.Value = Strings.NoDate;
+                            base.Value = KryptonOutlookGridLanguageManager.GeneralStrings.NoDate;
                         }
                         break;
                     case DateInterval.Day:
@@ -124,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             _valDateTime = DateTime.MinValue;
-                            base.Value = Strings.NoDate;
+                            base.Value = KryptonOutlookGridLanguageManager.GeneralStrings.NoDate;
                         }
                         break;
                     case DateInterval.Quarter:
@@ -137,7 +135,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             _valDateTime = DateTime.MinValue;
-                            base.Value = Strings.NoDate;
+                            base.Value = KryptonOutlookGridLanguageManager.GeneralStrings.NoDate;
                         }
                         break;
                     default:

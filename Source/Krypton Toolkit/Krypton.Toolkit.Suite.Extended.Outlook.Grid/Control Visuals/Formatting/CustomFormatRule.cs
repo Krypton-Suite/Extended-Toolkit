@@ -38,8 +38,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         public bool Gradient => _gradient;
 
-        public static OutlookGridLanguageStrings Strings => KryptonOutlookGrid.Strings;
-
         public Color MaximumColour => _maximumColour;
 
         public Color MinimumColour => _minimumColour;

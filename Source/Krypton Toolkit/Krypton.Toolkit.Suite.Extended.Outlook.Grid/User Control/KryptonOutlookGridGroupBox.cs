@@ -132,12 +132,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public event EventHandler<OutlookGridColumnEventArgs> SortBySummaryCount;
         #endregion
 
-        #region Static Strings
-
-        public static OutlookGridLanguageStrings Strings => KryptonOutlookGrid.Strings;
-
-        #endregion
-
         #region Constructor
 
         /// <summary>
@@ -180,7 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // Create storage that maps onto the inherit instances
             _border = new(_paletteBorder, null);
-            _dragColumnToGroupText = Strings.DragColumnToGroup;
+            _dragColumnToGroupText = KryptonOutlookGridLanguageManager.GeneralStrings.DragColumnToGroup;
 
             using (Graphics g = CreateGraphics())
             {
@@ -969,20 +963,20 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 #region Localisation
 
-                _menuSortAscending = new(Strings.SortAscending, Resources.OutlookGridImageResources.sort_az_ascending2, OnSortAscending);
-                _menuSortDescending = new(Strings.SortDescending, Resources.OutlookGridImageResources.sort_az_descending2, OnSortDescending);
+                _menuSortAscending = new(KryptonOutlookGridLanguageManager.GeneralStrings.SortAscending, Resources.OutlookGridImageResources.sort_az_ascending2, OnSortAscending);
+                _menuSortDescending = new(KryptonOutlookGridLanguageManager.GeneralStrings.SortDescending, Resources.OutlookGridImageResources.sort_az_descending2, OnSortDescending);
                 _menuSeparator1 = new();
-                _menuExpand = new(Strings.Expand, Resources.OutlookGridImageResources.element_plus_16, OnGroupExpand);
-                _menuCollapse = new(Strings.Collapse, Resources.OutlookGridImageResources.element_minus_16, OnGroupCollapse);
-                _menuUnGroup = new(Strings.UnGroup, Resources.OutlookGridImageResources.element_delete, OnUngroup);
+                _menuExpand = new(KryptonOutlookGridLanguageManager.GeneralStrings.Expand, Resources.OutlookGridImageResources.element_plus_16, OnGroupExpand);
+                _menuCollapse = new(KryptonOutlookGridLanguageManager.GeneralStrings.Collapse, Resources.OutlookGridImageResources.element_minus_16, OnGroupCollapse);
+                _menuUnGroup = new(KryptonOutlookGridLanguageManager.GeneralStrings.UnGroup, Resources.OutlookGridImageResources.element_delete, OnUngroup);
                 _menuSeparator2 = new();
-                _menuFullExpand = new(Strings.FullExpand, Resources.OutlookGridImageResources.elements_plus_16, OnFullExpand);
-                _menuFullCollapse = new(Strings.FullCollapse, Resources.OutlookGridImageResources.elements_minus_16, OnFullCollapse);
+                _menuFullExpand = new(KryptonOutlookGridLanguageManager.GeneralStrings.FullExpand, Resources.OutlookGridImageResources.elements_plus_16, OnFullExpand);
+                _menuFullCollapse = new(KryptonOutlookGridLanguageManager.GeneralStrings.FullCollapse, Resources.OutlookGridImageResources.elements_minus_16, OnFullCollapse);
                 _menuSeparator3 = new();
-                _menuClearGrouping = new(Strings.ClearGrouping, Resources.OutlookGridImageResources.element_selection_delete, OnClearGrouping);
-                _menuHideGroupBox = new(Strings.HideGroupBox, null, OnHideGroupBox);
-                _menuGroupInterval = new(Strings.GroupInterval);
-                _menuSortBySummary = new(Strings.SortBySummaryCount, null, OnSortBySummaryCount);
+                _menuClearGrouping = new(KryptonOutlookGridLanguageManager.GeneralStrings.ClearGrouping, Resources.OutlookGridImageResources.element_selection_delete, OnClearGrouping);
+                _menuHideGroupBox = new(KryptonOutlookGridLanguageManager.GeneralStrings.HideGroupBox, null, OnHideGroupBox);
+                _menuGroupInterval = new(KryptonOutlookGridLanguageManager.GeneralStrings.GroupInterval);
+                _menuSortBySummary = new(KryptonOutlookGridLanguageManager.GeneralStrings.SortBySummaryCount, null, OnSortBySummaryCount);
 
                 #endregion
 

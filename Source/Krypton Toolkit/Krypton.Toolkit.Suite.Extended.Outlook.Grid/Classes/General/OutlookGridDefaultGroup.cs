@@ -77,8 +77,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private IComparer _itemsComparer;
         #endregion
 
-        public static OutlookGridLanguageStrings Strings => KryptonOutlookGridGroupBox.Strings;
-
         #region "Constructor"
 
         /// <summary>
@@ -100,8 +98,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             Rows = new();
             Children = new();
             _formatStyle = "";
-            _oneItemText = Strings.OneItem;
-            _xXxItemsText = Strings.NumberOfItems;
+            _oneItemText = KryptonOutlookGridLanguageManager.GeneralStrings.OneItem;
+            _xXxItemsText = KryptonOutlookGridLanguageManager.GeneralStrings.NumberOfItems;
             _allowHiddenWhenGrouped = true;
             _sortBySummaryCount = false;
         }
@@ -156,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //For formatting number we need to cast the object value to the number before applying formatting
                 if (_val == null || string.IsNullOrEmpty(_val.ToString()))
                 {
-                    formattedValue = Strings.Unknown;
+                    formattedValue = KryptonOutlookGridLanguageManager.GeneralStrings.Unknown;
                 }
                 else if (!String.IsNullOrEmpty(_formatStyle))
                 {
