@@ -16,6 +16,7 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable VirtualMemberCallInConstructor
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// this group simple example of an implementation which groups the items into day categories
@@ -66,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the Date value
         /// </summary>
-        public override object Value
+        public override object? Value
         {
             get => base.Value;
 

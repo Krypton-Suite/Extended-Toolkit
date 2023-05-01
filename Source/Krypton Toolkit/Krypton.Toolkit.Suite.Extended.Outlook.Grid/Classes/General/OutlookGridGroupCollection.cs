@@ -96,9 +96,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Sorts the groups
         /// </summary>
-        internal void Sort(OutlookGridGroupCountComparer comparer)
+        internal void Sort(OutlookGridGroupCountComparer? comparer)
         {
-            _groupList.Sort(comparer);
+            if (comparer != null)
+            {
+                _groupList.Sort(comparer!);
+            }
         }
 
         /// <summary>
@@ -106,16 +109,16 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="value">The value of the group</param>
         /// <returns>The IOutlookGridGroup.</returns>
-        public IOutlookGridGroup? FindGroup(object value)
+        public IOutlookGridGroup? FindGroup(object? value)
         {
             //We must return null if no group exist, then the OutlookGrid will create one. But we must return a group even for a null value.
             if (value == null)
             {
-                return _groupList.Find(x => x.Value == null);
+                return _groupList.Find(x => x != null && x.Value == null);
                 //return null;
             }
             //return groupList.Find(x => x.Value.Equals(value));
-            return _groupList.Find(x => x.Value != null && x.Value.Equals(value));
+            return _groupList.Find(x => x != null && x.Value != null && x.Value.Equals(value));
         }
 
         #endregion
@@ -128,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             //If a group is collapsed the rows will not appear. Then if we clear the group the rows should not remain "collapsed"
             for (int i = 0; i < _groupList.Count; i++)
             {
-                _groupList[i].Collapsed = false;
+                _groupList[i]!.Collapsed = false;
             }
             _groupList.Clear();
         }

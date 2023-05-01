@@ -113,8 +113,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         int barWidth;
                         BarParams par = (BarParams)FormatParams;
                         barWidth = (int)((cellBounds.Width - 10) * par.ProportionValue);
-                        Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
-                        Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                        if (DataGridView != null)
+                        {
+                            Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
+                            Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                        }
 
                         if (barWidth > 0) //(double)value > 0 &&
                         {
@@ -153,15 +156,22 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         Style.ForeColor = ContrastColour(thCpar.ValueColour);
                         break;
                     default:
-                        Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
-                        Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                        if (DataGridView != null)
+                        {
+                            Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
+                            Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                        }
+
                         break;
                 }
             }
             else
             {
-                Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
-                Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                if (DataGridView != null)
+                {
+                    Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
+                    Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                }
             }
 
             base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle,

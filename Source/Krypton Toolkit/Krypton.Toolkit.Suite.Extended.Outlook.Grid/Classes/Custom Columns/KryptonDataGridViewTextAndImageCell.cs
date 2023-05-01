@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="rowIndex">Index of the row.</param>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        protected override bool SetValue(int rowIndex, object value)
+        protected override bool SetValue(int rowIndex, object? value)
         {
             if (value != null && !((OutlookGridRow)OwningRow).IsGroupRow) //Test to catch crash when first column is text and image when grouping
             {
@@ -59,12 +59,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Overrides Clone
         /// </summary>
         /// <returns>The cloned KryptonDataGridViewTextAndImageCell</returns>
-        public override object Clone()
+        public override object? Clone()
         {
-            KryptonDataGridViewTextAndImageCell c = base.Clone() as KryptonDataGridViewTextAndImageCell;
-            c._imageValue = _imageValue;
-            c._imageSize = _imageSize;
-            return c;
+            KryptonDataGridViewTextAndImageCell? c = base.Clone() as KryptonDataGridViewTextAndImageCell;
+            if (c != null)
+            {
+                c._imageValue = _imageValue;
+                c._imageSize = _imageSize;
+                return c;
+            }
+
+            return null;
         }
 
         /// <summary>
