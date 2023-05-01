@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <returns></returns>
         public static bool AreInternalApplicationUpdaterSettingsDefault()
         {
-            InternalApplicationUpdaterSettingsManager manager = new InternalApplicationUpdaterSettingsManager();
+            InternalApplicationUpdaterSettingsManager manager = new();
 
             if (manager.GetAlwaysUsePrompt() == false && manager.GetAlwaysUseUACElevation() == false && manager.GetBetaFlag() == false && manager.GetDisableAutomaticUpdates() == false && manager.GetDateOfLastCheck() == DateTime.Now && manager.GetDateOfLastUpdateInstallation() == DateTime.Now && manager.GetDateOfNextCheck() == DateTime.Now && manager.GetApplicationIdentification() == string.Empty && manager.GetApplicationName() == string.Empty && manager.GetCurrentApplicationVersion() == string.Empty && manager.GetDestinationDownloadPath() == string.Empty && manager.GetVersionXMLFileURL() == string.Empty)
             {
@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <returns></returns>
         public static bool AreApplicationUpdaterThemeSettingsDefault()
         {
-            ApplicationUpdaterThemeSettingsManager manager = new ApplicationUpdaterThemeSettingsManager();
+            ApplicationUpdaterThemeSettingsManager manager = new();
 
             if (manager.GetCurrentApplicationTheme() == PaletteMode.Office2010Blue && manager.GetCustomThemePath() == string.Empty)
             {
@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <returns></returns>
         public static bool AreXMLFileApplicationUpdaterSettingsDefault()
         {
-            XMLFileApplicationUpdaterSettingsManager manager = new XMLFileApplicationUpdaterSettingsManager();
+            XMLFileApplicationUpdaterSettingsManager manager = new();
 
             if (manager.GetBetaFlag() == false && manager.GetStartUpdateInstallationUponDownloadCompletion() == false && manager.GetUpdatePackageBuildDate() == DateTime.Now && manager.GetUpdatePackageReleaseDate() == DateTime.Now && manager.GetInstallCountdown() == 60 && manager.GetUpdatePackageFileSize() == 0 && manager.GetApplicationIdentifier() == string.Empty && manager.GetChangelogServerURLDownloadLocation() == string.Empty && manager.GetCheckSumFileURL() == string.Empty && manager.GetKnowledgebaseArticleNumber() == string.Empty && manager.GetKnowledgebaseArticleNumberURL() == string.Empty && manager.GetMD5CheckSum() == string.Empty && manager.GetOptionalArguments() == string.Empty && manager.GetRIPEMD160CheckSum() == string.Empty && manager.GetServerApplicatonVersion() == string.Empty && manager.GetSHA1CheckSum() == string.Empty && manager.GetSHA256CheckSum() == string.Empty && manager.GetSHA384CheckSum() == string.Empty && manager.GetSHA512CheckSum() == string.Empty && manager.GetSpecialisedUpdateIconURL() == string.Empty && manager.GetUpdatePackageBuildString() == string.Empty && manager.GetUpdatePackageDescription() == string.Empty && manager.GetUpdatePackageName() == string.Empty && manager.GetUpdatePackageServerURLDownloadLocation() == string.Empty && manager.GetUpdatePackageSeverity() == string.Empty && manager.GetUpdatePackageType() == string.Empty && manager.GetVirusTotalScanURL() == string.Empty)
             {
@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <returns></returns>
         public static bool AreExtendedControlsBooleanSettingsDefault()
         {
-            BooleanSettingsManager manager = new BooleanSettingsManager();
+            BooleanSettingsManager manager = new();
 
             if (manager.GetUseVirusTotalUseTLS() == false)
             {
@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <returns></returns>
         public static bool AreExtendedControlsStringSettingsDefault()
         {
-            StringSettingsManager manager = new StringSettingsManager();
+            StringSettingsManager manager = new();
 
             if (manager.GetPaletteExplorerLocation() == string.Empty && manager.GetVirusTotalAPIKey() == string.Empty)
             {
@@ -134,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <returns></returns>
         public static bool AreExtendedControlsThemeSettingsDefault()
         {
-            ControlThemeSettingsManager manager = new ControlThemeSettingsManager();
+            ControlThemeSettingsManager manager = new();
 
             if (manager.GetDefaultTheme() == PaletteMode.Office2010Blue && manager.GetGlobalManager() == null)
             {
@@ -152,7 +152,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <returns></returns>
         public static bool AreExtendedControlsWindowLocationDefault()
         {
-            WindowLocationSettingsManager manager = new WindowLocationSettingsManager();
+            WindowLocationSettingsManager manager = new();
 
             if (manager.GetDefaultWindowPosition() == new Point(0, 0))
             {
@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <returns></returns>
         public static bool AreGlobalBooleanSettingsDefault()
         {
-            GlobalBooleanSettingsManager manager = new GlobalBooleanSettingsManager();
+            GlobalBooleanSettingsManager manager = new();
 
             if (manager.GetIsInDeveloperMode() == false)
             {

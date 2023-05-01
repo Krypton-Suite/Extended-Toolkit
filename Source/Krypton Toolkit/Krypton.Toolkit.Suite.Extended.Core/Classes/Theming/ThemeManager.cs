@@ -56,9 +56,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void InitialiseThemes()
         {
-            _themeCollection = new AutoCompleteStringCollection();
+            _themeCollection = new();
 
-            _themeList = new ArrayList();
+            _themeList = new();
 
             #region Autocomplete
             _themeCollection.Add("Professional System");
@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             #endregion
 
             #region ArrayList
-            _themeList = new ArrayList();
+            _themeList = new();
 
             _themeList.Add("Professional System");
 
@@ -144,7 +144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="manager">The manager.</param>
         public static void SwitchTheme(PaletteMode mode, KryptonManager manager)
         {
-            ThemeManager themeManager = new ThemeManager();
+            ThemeManager themeManager = new();
 
             switch (mode)
             {
@@ -203,9 +203,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="paletteFileName">Name of the palette file.</param>
         public static void SetCustomTheme(KryptonManager manager, KryptonCustomPaletteBase palette, string paletteFileName)
         {
-            PaletteThemeSettingsManager paletteThemeSettingsManager = new PaletteThemeSettingsManager();
+            PaletteThemeSettingsManager paletteThemeSettingsManager = new();
 
-            ThemeManager themeManager = new ThemeManager();
+            ThemeManager themeManager = new();
 
             themeManager.SetTheme(PaletteMode.Custom, manager);
 

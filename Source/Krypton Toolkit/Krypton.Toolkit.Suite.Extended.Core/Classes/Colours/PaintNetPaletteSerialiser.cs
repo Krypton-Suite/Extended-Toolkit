@@ -26,8 +26,6 @@
  */
 #endregion
 
-using System.Globalization;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class PaintNetPaletteSerialiser : PaletteSerialiser
@@ -74,9 +72,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             try
             {
-                using (StreamReader reader = new StreamReader(stream))
+                using (StreamReader reader = new(stream))
                 {
-                    string firstLine;
+                    string? firstLine;
 
                     firstLine = reader.ReadLine();
 
@@ -105,9 +103,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 throw new ArgumentNullException(nameof(stream));
             }
 
-            results = new ColourCollection();
+            results = new();
 
-            using (StreamReader reader = new StreamReader(stream))
+            using (StreamReader reader = new(stream))
             {
                 while (!reader.EndOfStream)
                 {
@@ -153,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             // TODO: Not writing 96 colors, but the entire contents of the palette, wether that's less than 96 or more
 
-            using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8))
+            using (StreamWriter writer = new(stream, Encoding.UTF8))
             {
                 writer.WriteLine(@"; Paint.NET Palette File
 ; Lines that start with a semicolon are comments

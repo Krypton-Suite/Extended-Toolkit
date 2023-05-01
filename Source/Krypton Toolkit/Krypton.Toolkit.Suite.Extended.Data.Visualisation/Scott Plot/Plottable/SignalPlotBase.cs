@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     public abstract class SignalPlotBase<T> : IPlottable, IHasPointsGenericX<double, T> where T : struct, IComparable
     {
         protected IMinMaxSearchStrategy<T> Strategy = new SegmentedTreeMinMaxSearchStrategy<T>();
-        protected bool MaxRenderIndexLowerYSPromise = false;
+        protected bool MaxRenderIndexLowerYsPromise = false;
         protected bool MaxRenderIndexHigherMinRenderIndexPromise = false;
         protected bool FillColor1MustBeSetPromise = false;
         protected bool FillColor2MustBeSetPromise = false;
@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public double OffsetX { get; set; } = 0;
         public T OffsetY { get; set; } = default;
         public double LineWidth { get; set; } = 1;
-        public string Label { get; set; } = null;
+        public string? Label { get; set; } = null;
         public Color Color { get; set; } = Color.Green;
         public LineStyle LineStyle { get; set; } = LineStyle.Solid;
 
@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     throw new Exception("Y data cannot be null");
                 }
 
-                MaxRenderIndexLowerYSPromise = MaxRenderIndex > value.Length - 1;
+                MaxRenderIndexLowerYsPromise = MaxRenderIndex > value.Length - 1;
 
                 _Ys = value;
                 Strategy.SourceArray = _Ys;
@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                 MaxRenderIndexHigherMinRenderIndexPromise = MinRenderIndex > value;
 
-                MaxRenderIndexLowerYSPromise = value > _Ys.Length - 1;
+                MaxRenderIndexLowerYsPromise = value > _Ys.Length - 1;
 
                 _maxRenderIndex = value;
             }
@@ -796,7 +796,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public int PointCount => _Ys.Length;
 
-        public LegendItem[] GetLegendItems()
+        public LegendItem[]? GetLegendItems()
         {
             var singleLegendItem = new LegendItem()
             {
@@ -889,7 +889,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 throw new IndexOutOfRangeException("maxRenderIndex must be a valid index for ys[]");
             }
 
-            if (MaxRenderIndexLowerYSPromise)
+            if (MaxRenderIndexLowerYsPromise)
             {
                 throw new IndexOutOfRangeException("maxRenderIndex must be a valid index for ys[]");
             }

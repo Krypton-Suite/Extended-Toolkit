@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         static HSLColourStructure()
         {
-            Empty = new HSLColourStructure
+            Empty = new()
             {
                 IsEmpty = true
             };
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static implicit operator HSLColourStructure(Color colour)
         {
-            return new HSLColourStructure(colour);
+            return new(colour);
         }
 
         public static implicit operator Color(HSLColourStructure colour)
@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             StringBuilder builder;
 
-            builder = new StringBuilder();
+            builder = new();
             builder.Append(this.GetType().Name);
             builder.Append(" [");
             builder.Append("H=");

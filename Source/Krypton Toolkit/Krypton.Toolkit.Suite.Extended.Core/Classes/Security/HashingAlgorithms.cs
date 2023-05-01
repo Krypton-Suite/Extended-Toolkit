@@ -26,8 +26,6 @@
  */
 #endregion
 
-using System.Security.Cryptography;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class HashingAlgorithms
@@ -90,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Methods
         public static void GenerateMD5Hash(BackgroundWorker md5Worker, string filePath)
         {
-            md5Worker = new BackgroundWorker();
+            md5Worker = new();
 
             md5Worker.WorkerReportsProgress = true;
 
@@ -112,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Event Handlers
         private static void MD5Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            HashingAlgorithms algorithims = new HashingAlgorithms();
+            HashingAlgorithms algorithims = new();
 
             algorithims.HashingProgress.Value = 0;
 
@@ -128,15 +126,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private static void MD5Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            HashingAlgorithms algorithims = new HashingAlgorithms();
+            HashingAlgorithms algorithims = new();
 
             algorithims.HashingProgress.Value = e.ProgressPercentage;
 
             algorithims.HashingProgressBar.Value = e.ProgressPercentage;
 
-            algorithims.HashingProgressValueLabel.Text = $"{ e.ProgressPercentage.ToString() }%";
+            algorithims.HashingProgressValueLabel.Text = $"{e.ProgressPercentage.ToString()}%";
 
-            algorithims.ProgressValueLabel.Text = $"{ e.ProgressPercentage.ToString() }%";
+            algorithims.ProgressValueLabel.Text = $"{e.ProgressPercentage.ToString()}%";
         }
 
         private static void MD5Worker_DoWork(object sender, DoWorkEventArgs e)
@@ -184,7 +182,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="value">The value of MD5Worker.</param>
         public static void SetMD5Worker(BackgroundWorker value)
         {
-            HashingAlgorithms algorithims = new HashingAlgorithms();
+            HashingAlgorithms algorithims = new();
 
             algorithims.MD5Worker = value;
         }
@@ -195,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>The value of MD5Worker.</returns>
         public static BackgroundWorker GetMD5Worker()
         {
-            HashingAlgorithms algorithims = new HashingAlgorithms();
+            HashingAlgorithms algorithims = new();
 
             return algorithims.MD5Worker;
         }

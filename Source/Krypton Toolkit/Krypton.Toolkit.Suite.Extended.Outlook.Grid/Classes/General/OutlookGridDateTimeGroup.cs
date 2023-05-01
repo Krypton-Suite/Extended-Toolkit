@@ -16,6 +16,7 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable VirtualMemberCallInConstructor
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// this group simple example of an implementation which groups the items into day categories
@@ -34,8 +35,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// The Date Interval of OutlookGridDateTimeGroup
         /// </summary>
         public DateInterval Interval { get; set; }
-
-        public static OutlookGridLanguageStrings LanguageStrings => KryptonOutlookGridGroupBox.Strings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OutlookGridDateTimeGroup"/> class.
@@ -68,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the Date value
         /// </summary>
-        public override object Value
+        public override object? Value
         {
             get => base.Value;
 
@@ -99,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             _valDateTime = DateTime.MinValue;
-                            base.Value = Strings.NoDate;
+                            base.Value = KryptonOutlookGridLanguageManager.GeneralStrings.NoDate;
                         }
                         break;
                     case DateInterval.Month:
@@ -112,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             _valDateTime = DateTime.MinValue;
-                            base.Value = Strings.NoDate;
+                            base.Value = KryptonOutlookGridLanguageManager.GeneralStrings.NoDate;
                         }
                         break;
                     case DateInterval.Day:
@@ -124,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             _valDateTime = DateTime.MinValue;
-                            base.Value = Strings.NoDate;
+                            base.Value = KryptonOutlookGridLanguageManager.GeneralStrings.NoDate;
                         }
                         break;
                     case DateInterval.Quarter:
@@ -137,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             _valDateTime = DateTime.MinValue;
-                            base.Value = Strings.NoDate;
+                            base.Value = KryptonOutlookGridLanguageManager.GeneralStrings.NoDate;
                         }
                         break;
                     default:

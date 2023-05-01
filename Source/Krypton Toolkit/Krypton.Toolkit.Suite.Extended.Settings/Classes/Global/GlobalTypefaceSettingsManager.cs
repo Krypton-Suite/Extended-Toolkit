@@ -191,15 +191,15 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <summary>Resets the typeface settings.</summary>
         private void ResetTypefaceSettings()
         {
-            SetBoldTypeface(new Font(@"Segoe UI", 8.25f, FontStyle.Bold));
+            SetBoldTypeface(new(@"Segoe UI", 8.25f, FontStyle.Bold));
 
-            SetCueTypeface(new Font(@"Segoe UI", 8.25f, FontStyle.Regular));
+            SetCueTypeface(new(@"Segoe UI", 8.25f, FontStyle.Regular));
 
-            SetNormalTypeface(new Font(@"Segoe UI", 8.25f, FontStyle.Regular));
+            SetNormalTypeface(new(@"Segoe UI", 8.25f, FontStyle.Regular));
 
-            SetMessageBoxButtonsTypeface(new Font(@"Segoe UI", 8.25f, FontStyle.Regular));
+            SetMessageBoxButtonsTypeface(new(@"Segoe UI", 8.25f, FontStyle.Regular));
 
-            SetMessageBoxContentTypeface(new Font(@"Segoe UI", 8.25f, FontStyle.Regular));
+            SetMessageBoxContentTypeface(new(@"Segoe UI", 8.25f, FontStyle.Regular));
         }
         #endregion
     }

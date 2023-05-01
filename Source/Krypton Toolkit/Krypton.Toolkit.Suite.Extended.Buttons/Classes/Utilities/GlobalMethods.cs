@@ -189,14 +189,14 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <param name="processName">The process name that you wish to elevate.</param>
         public void ElevateProcessWithAdministrativeRights(string processName)
         {
-            WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+            WindowsPrincipal principal = new(WindowsIdentity.GetCurrent());
 
             bool hasAdministrativeRight = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
             if (!hasAdministrativeRight)
             {
                 // Relaunch the application with administrative rights
-                ProcessStartInfo processStartInfo = new ProcessStartInfo();
+                ProcessStartInfo processStartInfo = new();
 
                 processStartInfo.Verb = "runas";
 

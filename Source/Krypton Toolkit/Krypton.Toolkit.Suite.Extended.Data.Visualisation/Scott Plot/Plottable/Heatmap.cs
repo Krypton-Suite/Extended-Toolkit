@@ -217,13 +217,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                         throw new ArgumentException("Heatmaps do not support intensities of double.NaN");
                     }
 
-                    // Note: Should `curr.HasValue` be removed?
-                    if (curr.HasValue && curr.Value < _min)
+                    if (curr.Value < _min)
                     {
                         _min = curr.Value;
                     }
 
-                    if (curr.HasValue && curr.Value > _max)
+                    if (curr.Value > _max)
                     {
                         _max = curr.Value;
                     }

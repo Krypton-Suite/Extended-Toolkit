@@ -16,6 +16,10 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnusedVariable
+// ReSharper disable UselessBinaryOperation
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
@@ -32,7 +36,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor
         /// </summary>
         public KryptonDataGridViewTreeTextCell()
-            : base()
         {
             _defaultPadding = Style.Padding;
         }
@@ -41,10 +44,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Overrides Clone
         /// </summary>
         /// <returns>The cloned KryptonDataGridViewTextAndImageCell</returns>
-        public override object? Clone()
+        public override object Clone()
         {
             KryptonDataGridViewTreeTextCell? c = base.Clone() as KryptonDataGridViewTreeTextCell;
-            return c;
+            return c!;
         }
 
         /// <summary>
@@ -65,15 +68,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             get
             {
-                OutlookGridRow? row = (OutlookGridRow)OwningRow;
-                if (row != null)
-                {
-                    return row.NodeLevel + 1; //during calculation 0 level must be 1 for multiplication
-                }
-                else
-                {
-                    return -1;
-                }
+                OutlookGridRow row = (OutlookGridRow)OwningRow;
+                return row.NodeLevel + 1; //during calculation 0 level must be 1 for multiplication
             }
         }
 
@@ -85,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             OutlookGridRow? node = OwningNode;
             //Console.WriteLine(DateTime.Now.ToString() + " " + node.ToString());
-            bool hasChildNodes = node.HasChildren;
+            bool hasChildNodes = node != null && node.HasChildren;
             int level = Level;
             int plus = 0;
             //if (hasChildNodes)
@@ -174,9 +170,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             //}
 
             // Paint tree lines			
-            if (((KryptonOutlookGrid)node.DataGridView).ShowLines)
+            if (node != null && ((KryptonOutlookGrid)node.DataGridView).ShowLines)
             {
-                using (Pen? linePen = new(SystemBrushes.ControlDark, 1.0f))
+                using (Pen linePen = new(SystemBrushes.ControlDark, 1.0f))
                 {
                     linePen.DashStyle = DashStyle.Dot;
                     bool isLastSibling = node.IsLastSibling;
@@ -243,7 +239,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 }
             }
 
-            if (node.HasChildren)
+            if (node != null && node.HasChildren)
             {
                 // Paint node glyphs	
                 if (node.Collapsed)

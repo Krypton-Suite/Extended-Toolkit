@@ -683,7 +683,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void kbtnUtiliseBaseColour_Click(object sender, EventArgs e)
         {
-            PaletteColourCreator paletteColourCreator = new PaletteColourCreator(cpbBaseColour.BackColor);
+            PaletteColourCreator paletteColourCreator = new(cpbBaseColour.BackColor);
 
             paletteColourCreator.Show();
         }

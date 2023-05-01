@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         /// <param name="positions">position of each lollipop</param>
         /// <param name="values">height of each lollipop</param>
-        public LollipopPlot(double[] positions, double[] values) : base()
+        public LollipopPlot(double[] positions, double[] values)
         {
             if (positions is null || positions.Length == 0 || values is null || values.Length == 0)
             {
@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             ValueErrors = DataGen.Zeros(values.Length);
             ValueOffsets = DataGen.Zeros(values.Length);
             Values = values;
-            Positions = positions ?? DataGen.Consecutive(values.Length);
+            Positions = positions;
         }
 
         public LegendItem[] GetLegendItems()
@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 borderColor = BorderColor,
                 borderWith = 1
             };
-            return new LegendItem[] { singleItem };
+            return new[] { singleItem };
         }
 
         #region Render Implementation
@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     {
                         using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
                         {
-                            gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+                            gfx.DrawString(value.ToString(CultureInfo.InvariantCulture), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
                         }
                     }
                 }
@@ -216,7 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     {
                         using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
                         {
-                            gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+                            gfx.DrawString(value.ToString(CultureInfo.InvariantCulture), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
                         }
                     }
                 }

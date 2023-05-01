@@ -28,6 +28,7 @@
 // This plot type was inspired by MicroCharts:
 // https://github.com/dotnet-ad/Microcharts/blob/main/Sources/Microcharts/Charts/RadialGaugeChart.cs
 
+// ReSharper disable PossibleLossOfFraction
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
@@ -145,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public int XAxisIndex { get; set; } = 0;
         public int YAxisIndex { get; set; } = 0;
 
-        public RadialGaugePlot(double[] levels, Color[] colors)
+        public RadialGaugePlot(double[] levels, Color[]? colors)
         {
             Update(levels, colors);
         }
@@ -155,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Replace gauge levels with new ones.
         /// </summary>
-        public void Update(double[] levels, Color[] colors = null)
+        public void Update(double[] levels, Color[]? colors = null)
         {
             if (levels is null || levels.Length == 0)
             {
@@ -265,11 +266,6 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public LegendItem[] GetLegendItems()
         {
-            if (Labels is null)
-            {
-                return null;
-            }
-
             List<LegendItem> legendItems = new();
             for (int i = 0; i < Labels.Length; i++)
             {
@@ -296,7 +292,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             ValidateData();
 
-            (double[] startAngles, double[] sweepAngles, double StartingAngleBackGauges) = GetGaugeAngles(
+            (double[] startAngles, double[] sweepAngles, double startingAngleBackGauges) = GetGaugeAngles(
                 values: Levels,
                 angleStart: StartingAngle,
                 angleRange: MaximumAngle,
@@ -339,7 +335,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     Width = gaugeWidthPx,
                     CircularBackground = CircularBackground,
                     Clockwise = Clockwise,
-                    BackStartAngle = StartingAngleBackGauges,
+                    BackStartAngle = startingAngleBackGauges,
                     StartCap = StartCap,
                     EndCap = EndCap,
                     Mode = GaugeMode,

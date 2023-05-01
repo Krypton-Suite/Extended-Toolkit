@@ -26,8 +26,6 @@
 #endregion
 
 // ReSharper disable ConditionIsAlwaysTrueOrFalse
-#pragma warning disable CS8073
-#pragma warning disable CS0414
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     /// <summary>

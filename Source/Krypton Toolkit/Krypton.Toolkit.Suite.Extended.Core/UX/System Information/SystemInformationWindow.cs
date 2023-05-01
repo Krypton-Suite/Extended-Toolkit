@@ -866,9 +866,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 kcmbClass.Items.Add(win32Class);
 
-                KryptonCheckBox classCheckBox = new KryptonCheckBox();
+                KryptonCheckBox classCheckBox = new();
 
-                classCheckBox.StateCommon.ShortText.Font = new Font("Segoe UI", 11.25f, FontStyle.Regular, GraphicsUnit.Point);
+                classCheckBox.StateCommon.ShortText.Font = new("Segoe UI", 11.25f, FontStyle.Regular, GraphicsUnit.Point);
 
                 classCheckBox.Text = win32Class;
 
@@ -880,7 +880,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private string GetSystemDetails()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
             try
             {
@@ -924,7 +924,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private string DeviceInformation(string stringIn)
         {
-            StringBuilder StringBuilder1 = new StringBuilder(string.Empty);
+            StringBuilder StringBuilder1 = new(string.Empty);
             try
             {
                 //ManagementClass ManagementClass1 = new ManagementClass(stringIn);

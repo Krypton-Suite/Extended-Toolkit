@@ -27,29 +27,8 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
-    public class MenuStripContainerWindow : KryptonForm
+    public partial class MenuStripContainerWindow : Form
     {
-        #region Designer Code
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // MenuStripContainerWindow
-            // 
-            this.ClientSize = new System.Drawing.Size(710, 26);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "MenuStripContainerWindow";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "MenuStripContainerForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuStripContainerWindow_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuStripContainerWindow_FormClosed);
-            this.ResumeLayout(false);
-
-        }
-        #endregion
-
         #region Variables
 
         private bool _showWindowFrame;

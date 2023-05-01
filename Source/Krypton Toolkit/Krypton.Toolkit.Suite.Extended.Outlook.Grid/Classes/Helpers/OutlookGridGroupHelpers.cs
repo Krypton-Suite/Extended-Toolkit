@@ -23,69 +23,67 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// </summary>
     public class OutlookGridGroupHelpers
     {
-        public static OutlookGridLanguageStrings Strings => KryptonOutlookGridGroupBox.Strings;
-
         /// <summary>
         /// Gets the title for a specific datetime
         /// </summary>
         /// <param name="date">The DateTime </param>
         /// <returns>The text to display</returns>
-        public static string GetDayText(DateTime date)
+        public static string? GetDayText(DateTime date)
         {
             switch (GetDateCode(date))
             {
                 case "NODATE":
-                    return Strings.NoDate;// "Today";
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.NoDate;// "Today";
                 case "TODAY":
-                    return Strings.Today;// "Today";
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.Today;// "Today";
                 case "YESTERDAY":
-                    return Strings.Yesterday;//"Yesterday";
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.Yesterday;//"Yesterday";
                 case "TOMORROW":
-                    return Strings.Tomorrow;//"Tomorrow";
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.Tomorrow;//"Tomorrow";
                 case "Monday":
-                    return Strings.Monday;
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.Monday;
                 case "Tuesday":
-                    return Strings.Tuesday;
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.Tuesday;
                 case "Wednesday":
-                    return Strings.Wednesday;
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.Wednesday;
                 case "Thursday":
-                    return Strings.Thursday;
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.Thursday;
                 case "Friday":
-                    return Strings.Friday;
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.Friday;
                 case "Saturday":
-                    return Strings.Saturday;
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.Saturday;
                 case "Sunday":
                     return UppercaseFirst(date.ToString("dddd"));
                 case "NEXTWEEK":
-                    return Strings.NextWeek;//"Next Week";
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.NextWeek;//"Next Week";
                 case "INTWOWEEKS": //dans le deux semaines a venir
-                    return Strings.InTwoWeeks;//"In two weeks"; //dans le deux semaines a venir
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.InTwoWeeks;//"In two weeks"; //dans le deux semaines a venir
                 case "INTHREEWEEKS": //dans les trois semaines à venir
-                    return Strings.InThreeWeeks;//"In three weeks"; //dans les trois semaines à venir
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.InThreeWeeks;//"In three weeks"; //dans les trois semaines à venir
                 case "LATERDURINGTHISMONTH": //Plus tard au cours de ce mois 
-                    return Strings.LaterDuringThisMonth;//"Later during this month"; //Plus tard au cours de ce mois 
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.LaterDuringThisMonth;//"Later during this month"; //Plus tard au cours de ce mois 
                 case "NEXTMONTH": //Prochain mois
-                    return Strings.NextMonth;//"Next month"; //Prochain mois
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.NextMonth;//"Next month"; //Prochain mois
                 case "AFTERNEXTMONTH":  //Au-delà du prochain mois 
-                    return Strings.AfterNextMonth;//"After next month";  //Au-delà du prochain mois 
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.AfterNextMonth;//"After next month";  //Au-delà du prochain mois 
                 case "PREVIOUSWEEK":
-                    return Strings.PreviousWeek;//"Previous Week";
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.PreviousWeek;//"Previous Week";
                 case "TWOWEEKSAGO": //Il y a deux semaines
-                    return Strings.TwoWeeksAgo;//"Two weeks ago"; //Il y a deux semaines
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.TwoWeeksAgo;//"Two weeks ago"; //Il y a deux semaines
                 case "THREEWEEKSAGO": //Il y a trois semaines
-                    return Strings.ThreeWeeksAgo;//"Three weeks ago"; //Il y a deux semaines
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.ThreeWeeksAgo;//"Three weeks ago"; //Il y a deux semaines
                 case "EARLIERDURINGTHISMONTH": //Plus tôt durant ce mois
-                    return Strings.EarlierDuringThisMonth;//"Earlier during this month";  //Plus tot au cours de ce mois
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.EarlierDuringThisMonth;//"Earlier during this month";  //Plus tot au cours de ce mois
                 case "PREVIOUSMONTH": //Mois précédent
-                    return Strings.PreviousMonth;//"Previous Month";  //Mois dernier
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.PreviousMonth;//"Previous Month";  //Mois dernier
                 case "BEFOREPREVIOUSMONTH":  //Mois dernier // no longer exist
-                    return Strings.BeforePreviousMonth;//"Before Previous Month";   //Avant le mois dernier
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.BeforePreviousMonth;//"Before Previous Month";   //Avant le mois dernier
                 case "EARLIERTHISYEAR":  //Mois dernier // no longer exist
-                    return Strings.EarlierDuringThisYear;//"Before Previous Month";   //Avant le mois dernier
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.EarlierDuringThisYear;//"Before Previous Month";   //Avant le mois dernier
                 case "PREVIOUSYEAR":  //Mois dernier // no longer exist
-                    return Strings.PreviousYear;//"Before Previous Month";   //Avant le mois dernier
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.PreviousYear;//"Before Previous Month";   //Avant le mois dernier
                 case "OLDER":  //Mois dernier // no longer exist
-                    return Strings.Older;//"Before Previous Month";   //Avant le mois dernier
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.Older;//"Before Previous Month";   //Avant le mois dernier
 
                 default:
                     return date.Date.ToShortDateString();
@@ -250,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="s">The string.</param>
         /// <returns>The tring with the first letter uppercased.</returns>
-        private static string UppercaseFirst(string s)
+        private static string? UppercaseFirst(string s)
         {
             if (string.IsNullOrEmpty(s))
             {
@@ -308,13 +306,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             switch (GetQuarter(dateTime))
             {
                 case 1:
-                    return Strings.QuarterOne;
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.QuarterOne;
                 case 2:
-                    return Strings.QuarterTwo;
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.QuarterTwo;
                 case 3:
-                    return Strings.QuarterThree;
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.QuarterThree;
                 case 4:
-                    return Strings.QuarterFour;
+                    return KryptonOutlookGridLanguageManager.GeneralStrings.QuarterFour;
                 default:
                     return "";
             }

@@ -37,9 +37,9 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
     public class CopyFiles
     {
         #region Variables
-        private List<string> _files = new List<string>(), _newFileNames = new List<string>();
+        private List<string> _files = new(), _newFileNames = new();
 
-        private List<ST_CopyFileDetails> _filesCopied = new List<ST_CopyFileDetails>();
+        private List<ST_CopyFileDetails> _filesCopied = new();
 
         private int _totalFiles = 0, _totalFilesCopied = 0;
 
@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         {
 
             // Variables
-            List<string> foundFiles = new List<string>();
+            List<string> foundFiles = new();
             string[] fileEntries;
             string[] subdirEntries;
 
@@ -343,10 +343,10 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                 {
                     fixed (bool* cancelp = &_cancel)
                     {
-                        CopyFileEx(filename, tempFilepath, new CopyProgressRoutine(CopyProgressHandler), IntPtr.Zero, cancelp, 0);
+                        CopyFileEx(filename, tempFilepath, new(CopyProgressHandler), IntPtr.Zero, cancelp, 0);
                     }
                 }
-                _filesCopied.Add(new ST_CopyFileDetails(filename, tempFilepath));
+                _filesCopied.Add(new(filename, tempFilepath));
                 _totalFilesCopied += 1;
                 index += 1;
 
@@ -405,7 +405,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                         {
                             //insert the duplicate number into the new filename e.g (2) and clear
                             //the current name.
-                            tempFileNameArr = new List<string>(fileNames[innerIndex].Split('.'));
+                            tempFileNameArr = new(fileNames[innerIndex].Split('.'));
                             tempFileNameArr.Insert(tempFileNameArr.Count - 1, $"[*REMOVEME*] ({filenameNumber})");
                             fileNames[innerIndex] = "";
 
@@ -440,7 +440,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             }
 
             //Update the list of new filenames.
-            _newFileNames = new List<string>(fileNames);
+            _newFileNames = new(fileNames);
 
         }
 
@@ -456,10 +456,10 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
 
             if (_digWindow != null && _digWindow.SynchronizationObject == null)
             {
-                throw new Exception("Dialog window sent with no SynchronizationObject");
+                throw new("Dialog window sent with no SynchronizationObject");
             }
 
-            _delCopy = new DEL_CopyFiles(Copyfiles);
+            _delCopy = new(Copyfiles);
             CopyResult = _delCopy.BeginInvoke(CopyfilesCallback, null);
         }
 

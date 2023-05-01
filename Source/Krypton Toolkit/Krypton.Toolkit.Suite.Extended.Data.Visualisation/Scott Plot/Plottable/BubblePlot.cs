@@ -105,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
         }
 
-        public LegendItem[] GetLegendItems() => null; // does not appear in legend
+        public LegendItem[]? GetLegendItems() => null; // does not appear in legend
 
         public AxisLimits GetAxisLimits()
         {

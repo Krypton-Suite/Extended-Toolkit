@@ -31,16 +31,16 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class LinearMinMaxSearchStrategy<T> : IMinMaxSearchStrategy<T> where T : struct, IComparable
     {
-        private T[] sourceArray;
+        private T[] _sourceArray;
         public virtual T[] SourceArray
         {
-            get => sourceArray;
-            set => sourceArray = value;
+            get => _sourceArray;
+            set => _sourceArray = value;
         }
 
         // precompiled lambda expressions for fast math on generic
-        private static Func<T, T, bool> LessThanExp;
-        private static Func<T, T, bool> GreaterThanExp;
+        private static Func<T, T, bool> _lessThanExp;
+        private static Func<T, T, bool> _greaterThanExp;
         private void InitExp()
         {
             ParameterExpression paramA = Expression.Parameter(typeof(T), "a");
@@ -49,8 +49,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             BinaryExpression bodyLessThan = Expression.LessThan(paramA, paramB);
             BinaryExpression bodyGreaterThan = Expression.GreaterThan(paramA, paramB);
             // compile it
-            LessThanExp = Expression.Lambda<Func<T, T, bool>>(bodyLessThan, paramA, paramB).Compile();
-            GreaterThanExp = Expression.Lambda<Func<T, T, bool>>(bodyGreaterThan, paramA, paramB).Compile();
+            _lessThanExp = Expression.Lambda<Func<T, T, bool>>(bodyLessThan, paramA, paramB).Compile();
+            _greaterThanExp = Expression.Lambda<Func<T, T, bool>>(bodyGreaterThan, paramA, paramB).Compile();
         }
 
         public LinearMinMaxSearchStrategy()
@@ -60,18 +60,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public virtual void MinMaxRangeQuery(int l, int r, out double lowestValue, out double highestValue)
         {
-            T lowestValueT = sourceArray[l];
-            T highestValueT = sourceArray[l];
+            T lowestValueT = _sourceArray[l];
+            T highestValueT = _sourceArray[l];
             for (int i = l; i <= r; i++)
             {
-                if (LessThanExp(sourceArray[i], lowestValueT))
+                if (_lessThanExp(_sourceArray[i], lowestValueT))
                 {
-                    lowestValueT = sourceArray[i];
+                    lowestValueT = _sourceArray[i];
                 }
 
-                if (GreaterThanExp(sourceArray[i], highestValueT))
+                if (_greaterThanExp(_sourceArray[i], highestValueT))
                 {
-                    highestValueT = sourceArray[i];
+                    highestValueT = _sourceArray[i];
                 }
             }
             lowestValue = Convert.ToDouble(lowestValueT);
@@ -80,12 +80,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public virtual double SourceElement(int index)
         {
-            return Convert.ToDouble(sourceArray[index]);
+            return Convert.ToDouble(_sourceArray[index]);
         }
 
         public void updateElement(int index, T newValue)
         {
-            sourceArray[index] = newValue;
+            _sourceArray[index] = newValue;
         }
 
         public void updateRange(int from, int to, T[] newData, int fromData = 0)
@@ -93,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             // TODO: Turn this into a foreach loop
             for (int i = from; i < to; i++)
             {
-                sourceArray[i] = newData[i - from + fromData];
+                _sourceArray[i] = newData[i - from + fromData];
             }
         }
     }

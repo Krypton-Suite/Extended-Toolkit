@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="lightestColour"></param>
         public static void SetBasicPaletteColours(CircularPictureBox baseColour, CircularPictureBox darkestColour, CircularPictureBox mediumColour, CircularPictureBox lightColour, CircularPictureBox lightestColour)
         {
-            BasicColourSettingsManager basicPaletteColourManager = new BasicColourSettingsManager();
+            BasicColourSettingsManager basicPaletteColourManager = new();
 
             try
             {
@@ -93,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void SetBasicPaletteColours(PictureBox baseColour, PictureBox darkestColour, PictureBox mediumColour, PictureBox lightColour, PictureBox lightestColour)
         {
-            BasicColourSettingsManager basicPaletteColourManager = new BasicColourSettingsManager();
+            BasicColourSettingsManager basicPaletteColourManager = new();
 
             try
             {

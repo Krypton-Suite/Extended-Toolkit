@@ -26,8 +26,6 @@
  */
 #endregion
 
-using System.Security.Cryptography;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class SecurityMethods
@@ -40,12 +38,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public static string CreatePassword(int length)
         {
             const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            StringBuilder res = new StringBuilder();
+            StringBuilder res = new();
 
 
-            RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
+            RNGCryptoServiceProvider rnd = new();
 
-            Random random = new Random();
+            Random random = new();
 
             while (0 < length--)
             {

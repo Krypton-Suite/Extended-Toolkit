@@ -24,7 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     public class OutlookGridRowNodeCollection
     {
         #region "Variables"
-        private OutlookGridRow _parentNode;
+        private OutlookGridRow? _parentNode;
         private List<OutlookGridRow> _subNodes;
         #endregion
 
@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Initializes a new instance of the <see cref="OutlookGridRowNodeCollection"/> class.
         /// </summary>
         /// <param name="parentNode">The parent node.</param>
-        public OutlookGridRowNodeCollection(OutlookGridRow parentNode)
+        public OutlookGridRowNodeCollection(OutlookGridRow? parentNode)
         {
             _parentNode = parentNode;
             _subNodes = new();
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <value>
         /// The parent node.
         /// </value>
-        public OutlookGridRow ParentNode { get => _parentNode; set => _parentNode = value; }
+        public OutlookGridRow? ParentNode { get => _parentNode; set => _parentNode = value; }
 
         /// <summary>
         /// Gets the nodes.
@@ -89,7 +89,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public void Add(OutlookGridRow row)
         {
             row.ParentNode = _parentNode;
-            row.NodeLevel = ParentNode.NodeLevel + 1; //Not ++
+            if (ParentNode != null)
+            {
+                row.NodeLevel = ParentNode.NodeLevel + 1; //Not ++
+            }
             _subNodes.Add(row);
         }
 

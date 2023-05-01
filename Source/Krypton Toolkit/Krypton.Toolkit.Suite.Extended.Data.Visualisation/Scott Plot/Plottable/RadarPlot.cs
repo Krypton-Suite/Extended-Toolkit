@@ -25,6 +25,7 @@
  */
 #endregion
 
+// ReSharper disable UnusedVariable
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
@@ -39,18 +40,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Values for every group (rows) and category (columns) normalized from 0 to 1.
         /// </summary>
-        private double[,] Norm;
+        private double[,] _norm;
 
         /// <summary>
         /// Single value to normalize all values against for all groups/categories.
         /// </summary>
-        private double NormMax;
+        private double _normMax;
 
         /// <summary>
         /// Individual values (one per category) to use for normalization.
         /// Length must be equal to the number of columns (categories) in the original data.
         /// </summary>
-        private double[] NormMaxes;
+        private double[]? _normMaxes;
 
         /// <summary>
         /// Labels for each category.
@@ -74,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Labels for each group.
         /// Length must be equal to the number of rows (groups) in the original data.
         /// </summary>
-        public string[] GroupLabels;
+        public string[]? GroupLabels;
 
         /// <summary>
         /// Colors (typically semi-transparent) to shade the inner area of each group.
@@ -132,7 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public int XAxisIndex { get; set; } = 0;
         public int YAxisIndex { get; set; } = 0;
 
-        public RadarPlot(double[,] values, Color[] lineColors, Color[] fillColors, bool independentAxes, double[] maxValues = null)
+        public RadarPlot(double[,] values, Color[] lineColors, Color[] fillColors, bool independentAxes, double[]? maxValues = null)
         {
             LineColors = lineColors;
             FillColors = fillColors;
@@ -141,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         }
 
         public override string ToString() =>
-            $"PlottableRadar with {PointCount} points and {Norm.GetUpperBound(1) + 1} categories.";
+            $@"PlottableRadar with {PointCount} points and {_norm.GetUpperBound(1) + 1} categories.";
 
         /// <summary>
         /// Replace the data values with new ones.
@@ -149,30 +150,30 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="values">2D array of groups (rows) of values for each category (columns)</param>
         /// <param name="independentAxes">Controls if values along each category axis are scaled independently or uniformly across all axes</param>
         /// <param name="maxValues">If provided, these values will be used to normalize each category (columns)</param>
-        public void Update(double[,] values, bool independentAxes = false, double[] maxValues = null)
+        public void Update(double[,] values, bool independentAxes = false, double[]? maxValues = null)
         {
             IndependentAxes = independentAxes;
-            Norm = new double[values.GetLength(0), values.GetLength(1)];
-            Array.Copy(values, 0, Norm, 0, values.Length);
+            _norm = new double[values.GetLength(0), values.GetLength(1)];
+            Array.Copy(values, 0, _norm, 0, values.Length);
 
             if (IndependentAxes)
             {
-                NormMaxes = NormalizeSeveralInPlace(Norm, maxValues);
+                _normMaxes = NormalizeSeveralInPlace(_norm, maxValues);
             }
             else
             {
-                NormMax = NormalizeInPlace(Norm, maxValues);
+                _normMax = NormalizeInPlace(_norm, maxValues);
             }
         }
 
         public void ValidateData(bool deep = false)
         {
-            if (GroupLabels != null && GroupLabels.Length != Norm.GetLength(0))
+            if (GroupLabels != null && GroupLabels.Length != _norm.GetLength(0))
             {
                 throw new InvalidOperationException("group names must match size of values");
             }
 
-            if (CategoryLabels != null && CategoryLabels.Length != Norm.GetLength(1))
+            if (CategoryLabels != null && CategoryLabels.Length != _norm.GetLength(1))
             {
                 throw new InvalidOperationException("category names must match size of values");
             }
@@ -182,7 +183,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Normalize a 2D array by dividing all values by the maximum value.
         /// </summary>
         /// <returns>maximum value in the array before normalization</returns>
-        private double NormalizeInPlace(double[,] input, double[] maxValues = null)
+        private double NormalizeInPlace(double[,] input, double[]? maxValues = null)
         {
             double max;
             if (maxValues != null && maxValues.Length == 1)
@@ -216,9 +217,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Normalize each row of a 2D array independently by dividing all values by the maximum value.
         /// </summary>
         /// <returns>maximum value in each row of the array before normalization</returns>
-        private double[] NormalizeSeveralInPlace(double[,] input, double[] maxValues = null)
+        private double[] NormalizeSeveralInPlace(double[,] input, double[]? maxValues = null)
         {
-            double[] maxes;
+            double[]? maxes;
             if (maxValues != null && input.GetLength(1) == maxValues.Length)
             {
                 maxes = maxValues;
@@ -255,7 +256,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return maxes;
         }
 
-        public LegendItem[] GetLegendItems()
+        public LegendItem[]? GetLegendItems()
         {
             if (GroupLabels is null)
             {
@@ -281,14 +282,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public AxisLimits GetAxisLimits() =>
             (GroupLabels != null) ? new AxisLimits(-3.5, 3.5, -3.5, 3.5) : new AxisLimits(-2.5, 2.5, -2.5, 2.5);
 
-        public int PointCount => Norm.Length;
+        public int PointCount => _norm.Length;
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
-            int numGroups = Norm.GetUpperBound(0) + 1;
-            int numCategories = Norm.GetUpperBound(1) + 1;
+            int numGroups = _norm.GetUpperBound(0) + 1;
+            int numCategories = _norm.GetUpperBound(1) + 1;
             double sweepAngle = 2 * Math.PI / numCategories;
-            double minScale = new double[] { dims.PxPerUnitX, dims.PxPerUnitX }.Min();
+            double minScale = new[] { dims.PxPerUnitX, dims.PxPerUnitX }.Min();
             PointF origin = new PointF(dims.GetPixelX(0), dims.GetPixelY(0));
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
@@ -313,8 +314,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                                             for (int j = 0; j < numCategories; j++)
                                             {
                                                 points[j] = new PointF(
-                                                    (float)(Norm[i, j] * Math.Cos(sweepAngle * j - Math.PI / 2) * minScale + origin.X),
-                                                    (float)(Norm[i, j] * Math.Sin(sweepAngle * j - Math.PI / 2) * minScale + origin.Y));
+                                                    (float)(_norm[i, j] * Math.Cos(sweepAngle * j - Math.PI / 2) * minScale + origin.X),
+                                                    (float)(_norm[i, j] * Math.Sin(sweepAngle * j - Math.PI / 2) * minScale + origin.Y));
                                             }
 
                                             ((SolidBrush)brush).Color = FillColors[i];
@@ -333,8 +334,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         private StarAxisTick GetTick(double location) =>
             IndependentAxes
-                ? new StarAxisTick(location, NormMaxes.Select(x => x * location).ToArray())
-                : new StarAxisTick(location, NormMax);
+                ? new StarAxisTick(location, _normMaxes!.Select(x => x * location).ToArray())
+                : new StarAxisTick(location, _normMax);
 
         private void RenderAxis(Graphics gfx, PlotDimensions dims, Bitmap bmp, bool lowQuality)
         {
@@ -346,7 +347,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 Ticks = ticks,
                 CategoryLabels = CategoryLabels,
                 CategoryImages = CategoryImages,
-                NumberOfSpokes = Norm.GetLength(1),
+                NumberOfSpokes = _norm.GetLength(1),
                 AxisType = AxisType,
                 WebColor = WebColor,
                 LineWidth = LineWidth,

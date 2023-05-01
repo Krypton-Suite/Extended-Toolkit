@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The Value of the group
         /// </summary>
-        private object _val;
+        private object? _val;
         /// <summary>
         /// Boolean if the group is collapsed or not
         /// </summary>
@@ -77,8 +77,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private IComparer _itemsComparer;
         #endregion
 
-        public static OutlookGridLanguageStrings Strings => KryptonOutlookGridGroupBox.Strings;
-
         #region "Constructor"
 
         /// <summary>
@@ -100,8 +98,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             Rows = new();
             Children = new();
             _formatStyle = "";
-            _oneItemText = Strings.OneItem;
-            _xXxItemsText = Strings.NumberOfItems;
+            _oneItemText = KryptonOutlookGridLanguageManager.GeneralStrings.OneItem;
+            _xXxItemsText = KryptonOutlookGridLanguageManager.GeneralStrings.NumberOfItems;
             _allowHiddenWhenGrouped = true;
             _sortBySummaryCount = false;
         }
@@ -156,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //For formatting number we need to cast the object value to the number before applying formatting
                 if (_val == null || string.IsNullOrEmpty(_val.ToString()))
                 {
-                    formattedValue = Strings.Unknown;
+                    formattedValue = KryptonOutlookGridLanguageManager.GeneralStrings.Unknown;
                 }
                 else if (!String.IsNullOrEmpty(_formatStyle))
                 {
@@ -218,7 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the Value of the group
         /// </summary>
-        public virtual object Value { get => _val; set => _val = value; }
+        public virtual object? Value { get => _val; set => _val = value; }
 
         /// <summary>
         /// Boolean if the group is collapsed or not
@@ -342,7 +340,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             int orderModifier = Column.SortDirection == SortOrder.Ascending ? 1 : -1;
             int compareResult = 0;
-            object o2 = ((OutlookGridDefaultGroup)obj).Value;
+            object? o2 = ((OutlookGridDefaultGroup)obj).Value;
 
             if ((_val == null || _val == DBNull.Value) && o2 != null && o2 != DBNull.Value)
             {

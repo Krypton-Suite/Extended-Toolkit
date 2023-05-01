@@ -103,7 +103,6 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 catch (Exception e) //Domain error, such log(-1) or 1/0
                 {
                     Debug.WriteLine($"Y({x}) failed because {e}");
-                    continue;
                 }
             }
 
@@ -146,7 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 lineWidth = LineWidth,
                 markerShape = MarkerShape.None
             };
-            return new LegendItem[] { singleLegendItem };
+            return new[] { singleLegendItem };
         }
     }
 }

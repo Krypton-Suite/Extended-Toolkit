@@ -26,8 +26,6 @@
  */
 #endregion
 
-using System.Security.Cryptography;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
@@ -147,7 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             // Generate 4 random bytes.
 #pragma warning disable SYSLIB00
-            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            RNGCryptoServiceProvider rng = new();
 #pragma warning restore SYSLIB00
             rng.GetBytes(randomBytes);
 
@@ -155,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int seed = BitConverter.ToInt32(randomBytes, 0);
 
             // Now, this is real randomization.
-            Random random = new Random(seed);
+            Random random = new(seed);
 
             // This array will hold password characters.
             char[]? password = null;
@@ -271,7 +269,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
 
             // Convert password characters into a string and return the result.
-            return new string(password);
+            return new(password);
         }
     }
 }

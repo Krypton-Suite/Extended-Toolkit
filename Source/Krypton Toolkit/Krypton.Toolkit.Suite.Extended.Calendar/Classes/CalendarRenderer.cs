@@ -25,6 +25,12 @@
  */
 #endregion
 
+// ReSharper disable InlineOutVariableDeclaration
+// ReSharper disable NotAccessedVariable
+// ReSharper disable UnusedVariable
+// ReSharper disable RedundantAssignment
+// ReSharper disable UnusedMember.Local
+#pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -443,28 +449,28 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             }
 
             //If no days, no Y
-            if (Calendar.Days == null || Calendar.Days.Length == 0)
+            if (Calendar.Days.Length == 0)
             {
                 return 0;
             }
 
-            CalendarDay fisrtDay = Calendar.Days[0];
-            CalendarTimeScaleUnit firstUnit = fisrtDay.TimeUnits[0];
-            double duration = Convert.ToDouble(firstUnit.Duration.TotalMinutes);
+            CalendarDay? fisrtDay = Calendar.Days[0];
+            CalendarTimeScaleUnit? firstUnit = fisrtDay!.TimeUnits[0];
+            double duration = Convert.ToDouble(firstUnit!.Duration.TotalMinutes);
             double totalmins = time.TotalMinutes;
             int unitIndex = Convert.ToInt32(Math.Floor(totalmins / duration));
             double module = Convert.ToInt32(Math.Floor(totalmins % duration));
 
-            CalendarTimeScaleUnit unit = Calendar.Days[0].TimeUnits[unitIndex];
+            CalendarTimeScaleUnit? unit = Calendar.Days[0]!.TimeUnits[unitIndex];
 
-            int minuteHeight = Convert.ToInt32(Convert.ToDouble(unit.Bounds.Height) / duration);
+            int minuteHeight = Convert.ToInt32(Convert.ToDouble(unit!.Bounds.Height) / duration);
 
             return unit.Bounds.Top + minuteHeight * Convert.ToInt32(module);
 
         }
 
         /// <summary>
-        /// Creates a rectangle with item roundess
+        /// Creates a rectangle with item roundness
         /// </summary>
         /// <param name="evtData"></param>
         /// <param name="bounds"></param>
@@ -474,8 +480,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             int pointerPadding = 5;
 
 
-            if ((evtData.Item.Bounds.Top != evtData.Item.MinuteStartTop ||
-                evtData.Item.Bounds.Bottom != evtData.Item.MinuteEndTop) &&
+            if (evtData.Calendar != null &&
+                evtData.Item != null &&
+                (evtData.Item.Bounds.Top != evtData.Item.MinuteStartTop ||
+                 evtData.Item.Bounds.Bottom != evtData.Item.MinuteEndTop) &&
                 (evtData.Item.MinuteEndTop != 0 && evtData.Item.MinuteStartTop != 0) &&
                 !evtData.Item.IsOnDayTop && evtData.Calendar.DaysMode == CalendarDaysMode.Expanded)
             {
@@ -557,7 +565,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 using (LinearGradientBrush b = new LinearGradientBrush(bounds, north, south, 90))
                 {
-                    e.Graphics.FillPath(b, r);
+                    if (e.Graphics != null)
+                    {
+                        e.Graphics.FillPath(b, r);
+                    }
                 }
             }
         }
@@ -571,9 +582,15 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             using (GraphicsPath r = ItemRectangle(e, bounds))
             {
-                using (Brush b = new HatchBrush(e.Item.Pattern, patternColor, Color.Transparent))
+                if (e.Item != null)
                 {
-                    e.Graphics.FillPath(b, r);
+                    using (Brush b = new HatchBrush(e.Item.Pattern, patternColor, Color.Transparent))
+                    {
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.FillPath(b, r);
+                        }
+                    }
                 }
             }
         }
@@ -592,18 +609,15 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 using (Pen p = new Pen(color, width))
                 {
-                    e.Graphics.DrawPath(p, r);
+                    e.Graphics?.DrawPath(p, r);
                 }
             }
         }
 
         /// <summary>
-        /// Peform layout of elements and items of the calendar
+        /// Preform layout of elements and items of the calendar
         /// </summary>
-        public void PerformLayout()
-        {
-            PerformLayout(true);
-        }
+        public void PerformLayout() => PerformLayout(true);
 
         /// <summary>
         /// Updates the bounds of graphical elements.
@@ -614,16 +628,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </remarks>
         public void PerformLayout(bool performItemsLayout)
         {
-            if (Calendar.Days == null)
-            {
-                return;
-            }
-
-            int leftStart = 0;
-            int curLeft = 0;
+            int leftStart;
+            int curLeft;
             int curTop = 0;
-            int dayWidth = 0;
-            int dayHeight = 0;
+            int dayWidth;
+            int dayHeight;
             int scrollBarWidth = 20;
 
             TimeScaleBounds = Rectangle.Empty;
@@ -638,28 +647,37 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 for (int i = 0; i < Calendar.Days.Length; i++)
                 {
-                    CalendarDay day = Calendar.Days[i];
-                    day.SetBounds(new Rectangle(curLeft, curTop, dayWidth, dayHeight));
-                    day.DayTop.SetBounds(new Rectangle(curLeft, day.HeaderBounds.Bottom, dayWidth, DayTopHeight));
-                    curLeft += dayWidth + 1;
-                    //int k = 0;
-                    int utop = day.BodyBounds.Top + Calendar.TimeUnitsOffset * TimeScaleUnitHeight;
-
-                    for (int j = 0; j < day.TimeUnits.Length; j++)
+                    CalendarDay? day = Calendar.Days[i];
+                    if (day != null)
                     {
-                        CalendarTimeScaleUnit unit = day.TimeUnits[j];
+                        day.SetBounds(new Rectangle(curLeft, curTop, dayWidth, dayHeight));
+                        day.DayTop!.SetBounds(new Rectangle(curLeft, day.HeaderBounds.Bottom, dayWidth, DayTopHeight));
+                        curLeft += dayWidth + 1;
+                        //int k = 0;
+                        int utop = day.BodyBounds.Top + Calendar.TimeUnitsOffset * TimeScaleUnitHeight;
 
-                        if (Calendar.TimeUnitsOffset * -1 >= (j + 1))
+                        for (int j = 0; j < day.TimeUnits.Length; j++)
                         {
-                            unit.SetVisible(false);
+                            CalendarTimeScaleUnit? unit = day.TimeUnits[j];
+
+                            if (unit != null)
+                            {
+                                if (Calendar.TimeUnitsOffset * -1 >= (j + 1))
+                                {
+                                    unit.SetVisible(false);
+                                }
+                                else
+                                {
+                                    unit.SetVisible(true);
+                                    //unit.SetBounds(new Rectangle(day.Bounds.Left, day.BodyBounds.Top + k++ * TimeScaleUnitHeight, day.Bounds.Width, TimeScaleUnitHeight));
+                                }
+
+                                unit.SetBounds(new Rectangle(day.Bounds.Left, utop, day.Bounds.Width,
+                                    TimeScaleUnitHeight));
+                            }
+
+                            utop += TimeScaleUnitHeight;
                         }
-                        else
-                        {
-                            unit.SetVisible(true);
-                            //unit.SetBounds(new Rectangle(day.Bounds.Left, day.BodyBounds.Top + k++ * TimeScaleUnitHeight, day.Bounds.Width, TimeScaleUnitHeight));
-                        }
-                        unit.SetBounds(new Rectangle(day.Bounds.Left, utop, day.Bounds.Width, TimeScaleUnitHeight));
-                        utop += TimeScaleUnitHeight;
                     }
                 }
                 #endregion
@@ -677,7 +695,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 for (int i = 0; i < Calendar.Days.Length; i++)
                 {
-                    Calendar.Days[i].SetBounds(new Rectangle(curLeft, curTop, dayWidth, dayHeight));
+                    Calendar.Days[i]!.SetBounds(new Rectangle(curLeft, curTop, dayWidth, dayHeight));
                     curLeft += dayWidth + 1;
 
                     if ((i + 1) % 7 == 0)
@@ -691,7 +709,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         _dayNameHeaderColumns[i] = new Rectangle(curLeft, 0, dayWidth, DayNameHeadersHeight);
                     }
 
-                    if (Calendar.Days[i].Date.DayOfWeek == Calendar.FirstDayOfWeek)
+                    if (Calendar.Days[i]!.Date.DayOfWeek == Calendar.FirstDayOfWeek)
                     {
                         Calendar.Weeks[j++].SetBounds(new Rectangle(0, curTop, Calendar.ClientSize.Width, dayHeight));
                     }
@@ -710,17 +728,18 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public void PerformItemsLayout()
         {
-            if (Calendar.Days == null || Calendar.Items.Count == 0)
-            {
-                return;
-            }
-
             bool alldaychanged = false;
             int offset = Math.Abs(Calendar.TimeUnitsOffset);
             List<CalendarItemAlternative> itemsOnScene = new List<CalendarItemAlternative>();
+            if (itemsOnScene == null)
+            {
+                throw new ArgumentNullException(nameof(itemsOnScene));
+            }
 
-            foreach (CalendarDay day in Calendar.Days)
-                day.ContainedItems.Clear();
+            foreach (CalendarDay? day in Calendar.Days)
+            {
+                day?.ContainedItems.Clear();
+            }
 
             if (Calendar.DaysMode == CalendarDaysMode.Expanded)
             {
@@ -739,8 +758,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     {
                         #region Among day tops
 
-                        CalendarDay dayStart = item.DayStart;
-                        CalendarDay dayEnd = item.DayEnd;
+                        CalendarDay? dayStart = item.DayStart;
+                        CalendarDay? dayEnd = item.DayEnd;
 
                         if (dayStart == null)
                         {
@@ -752,13 +771,24 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                             dayEnd = Calendar.Days[Calendar.Days.Length - 1];
                         }
 
-                        for (int i = dayStart.Index; i <= dayEnd.Index; i++)
+                        if (dayStart != null && dayEnd != null)
                         {
-                            item.AddTopPassing(Calendar.Days[i].DayTop);
-                            Calendar.Days[i].DayTop.AddPassingItem(item);
-                        }
+                            for (int i = dayStart.Index; i <= dayEnd.Index; i++)
+                            {
+                                item.AddTopPassing(Calendar.Days[i]!.DayTop);
+                                var calendarDayTop = Calendar.Days[i]!.DayTop;
+                                if (calendarDayTop != null)
+                                {
+                                    calendarDayTop.AddPassingItem(item);
+                                }
+                            }
 
-                        item.SetBounds(Rectangle.FromLTRB(dayStart.DayTop.Bounds.Left, 0, dayEnd.DayTop.Bounds.Right, 1));
+                            if (dayStart.DayTop != null && dayEnd.DayTop != null)
+                            {
+                                item.SetBounds(Rectangle.FromLTRB(dayStart.DayTop.Bounds.Left, 0,
+                                    dayEnd.DayTop.Bounds.Right, 1));
+                            }
+                        }
 
                         #endregion
                     }
@@ -766,7 +796,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     {
                         #region Among time units
 
-                        CalendarDay day = item.DayStart; if (day == null)
+                        CalendarDay? day = item.DayStart; if (day == null)
                         {
                             continue;
                         }
@@ -782,7 +812,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         {
                             if (i >= indexStart && i < indexEnd)
                             {
-                                day.TimeUnits[i].AddPassingItem(item);
+                                day.TimeUnits[i]!.AddPassingItem(item);
                                 item.AddUnitPassing(day.TimeUnits[i]);
                             }
                         }
@@ -798,9 +828,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 #endregion
 
                 #region Items on DayTops
-                foreach (CalendarDay day in Calendar.Days)
+                foreach (CalendarDay? day in Calendar.Days)
                 {
-                    maxItemsOnDayTop = Math.Max(maxItemsOnDayTop, day.DayTop.PassingItems.Count);
+                    if (day != null && day.DayTop != null)
+                    {
+                        maxItemsOnDayTop = Math.Max(maxItemsOnDayTop, day.DayTop.PassingItems.Count);
+                    }
                 }
 
                 int[,] tmatix = new int[Calendar.Days.Length, maxItemsOnDayTop];
@@ -814,10 +847,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                             continue;
                         }
 
-                        item.TopsPassing.Sort(CompareTops);
+                        item.TopsPassing.Sort(CompareTops!);
 
-                        int topStart = item.TopsPassing[0].Day.Index;
-                        int topEnd = item.TopsPassing[item.TopsPassing.Count - 1].Day.Index;
+                        int topStart = item.TopsPassing[0]!.Day.Index;
+                        int topEnd = item.TopsPassing[item.TopsPassing.Count - 1]!.Day.Index;
 
                         PlaceInMatrix(ref tmatix, Calendar.Items.IndexOf(item) + 1, topStart, topEnd);
                     }
@@ -845,7 +878,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         FindInMatrix(tmatix, index + 1, out left, out top);
 
                         Rectangle r = item.Bounds;
-                        r.Y = Calendar.Days[0].DayTop.Bounds.Top + top * itemHeight;
+                        var calendarDayTop = Calendar.Days[0]!.DayTop;
+                        if (calendarDayTop != null)
+                        {
+                            r.Y = calendarDayTop.Bounds.Top + top * itemHeight;
+                        }
                         r.Height = itemHeight;
                         item.SetBounds(r);
                         item.FirstAndLastRectangleGapping();
@@ -858,156 +895,167 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 #endregion
 
-                foreach (CalendarDay day in Calendar.Days)
+                foreach (CalendarDay? day in Calendar.Days)
                 {
                     #region Create groups
 
-                    maxItemsOnDayTop = Math.Max(maxItemsOnDayTop, day.DayTop.PassingItems.Count);
-
-                    List<List<CalendarItemAlternative>> groups = new List<List<CalendarItemAlternative>>();
-                    List<CalendarItemAlternative> items = new List<CalendarItemAlternative>(day.ContainedItems);
-
-                    while (items.Count > 0)
+                    if (day != null && day.DayTop != null)
                     {
-                        List<CalendarItemAlternative> group = new List<CalendarItemAlternative>();
+                        maxItemsOnDayTop = Math.Max(maxItemsOnDayTop, day.DayTop.PassingItems.Count);
 
-                        CollectIntersectingGroup(items[0], items, group);
+                        List<List<CalendarItemAlternative>> groups = new List<List<CalendarItemAlternative>>();
+                        List<CalendarItemAlternative> items = new List<CalendarItemAlternative>(day.ContainedItems);
 
-                        groups.Add(group);
-
-                        foreach (CalendarItemAlternative item in group)
-                            items.Remove(item);
-                    }
-
-                    #endregion
-
-                    foreach (List<CalendarItemAlternative> group in groups)
-                    {
-                        #region Create group matrix
-
-                        int maxConcurrent = 0;
-                        int startIndex, endIndex;
-                        GetGroupBoundUnits(group, out startIndex, out endIndex);
-
-                        //Get the maximum concurrent items
-                        for (int i = startIndex; i <= endIndex; i++) maxConcurrent = Math.Max(day.TimeUnits[i].PassingItems.Count, maxConcurrent);
-
-                        int[,] matix = new int[maxConcurrent, endIndex - startIndex + 1];
-
-                        foreach (CalendarItemAlternative item in group)
+                        while (items.Count > 0)
                         {
-                            int x = 0;
-                            item.UnitsPassing.Sort(CompareUnits);
-                            int unitStart = item.UnitsPassing[0].Index - startIndex;
-                            int unitEnd = unitStart + item.UnitsPassing.Count - 1;
-                            bool xFound = false;
+                            List<CalendarItemAlternative> group = new List<CalendarItemAlternative>();
 
-                            //if (startIndex + unitEnd < offset)
-                            //{
-                            //    item.SetIsOnView(false);
-                            //    continue;
-                            //}
-                            //else
-                            //{
-                            //    item.SetIsOnView(true);
-                            //}
+                            CollectIntersectingGroup(items[0], items, group);
 
-                            while (!xFound)
+                            groups.Add(group);
+
+                            foreach (CalendarItemAlternative item in group)
+                                items.Remove(item);
+                        }
+
+                        #endregion
+
+                        foreach (List<CalendarItemAlternative> group in groups)
+                        {
+                            #region Create group matrix
+
+                            int maxConcurrent = 0;
+                            int startIndex, endIndex;
+                            GetGroupBoundUnits(group, out startIndex, out endIndex);
+
+                            //Get the maximum concurrent items
+                            for (int i = startIndex; i <= endIndex; i++)
+                                maxConcurrent = Math.Max(day.TimeUnits[i]!.PassingItems.Count, maxConcurrent);
+
+                            int[,] matix = new int[maxConcurrent, endIndex - startIndex + 1];
+
+                            foreach (CalendarItemAlternative item in group)
                             {
-                                xFound = true;
+                                int x = 0;
+                                item.UnitsPassing.Sort(CompareUnits!);
+                                int unitStart = item.UnitsPassing[0]!.Index - startIndex;
+                                int unitEnd = unitStart + item.UnitsPassing.Count - 1;
+                                bool xFound = false;
+
+                                //if (startIndex + unitEnd < offset)
+                                //{
+                                //    item.SetIsOnView(false);
+                                //    continue;
+                                //}
+                                //else
+                                //{
+                                //    item.SetIsOnView(true);
+                                //}
+
+                                while (!xFound)
+                                {
+                                    xFound = true;
+
+                                    for (int i = unitStart; i <= unitEnd; i++)
+                                    {
+                                        if (matix[x, i] != 0)
+                                        {
+                                            xFound = false;
+                                            break;
+                                        }
+                                    }
+
+                                    if (!xFound)
+                                    {
+                                        x++;
+                                    }
+                                }
 
                                 for (int i = unitStart; i <= unitEnd; i++)
                                 {
-                                    if (matix[x, i] != 0)
-                                    {
-                                        xFound = false;
-                                        break;
-                                    }
-                                }
-                                if (!xFound)
-                                {
-                                    x++;
+                                    matix[x, i] = group.IndexOf(item) + 1;
                                 }
                             }
 
-                            for (int i = unitStart; i <= unitEnd; i++)
+                            #endregion
+
+                            #region Expand Items
+
+                            foreach (CalendarItemAlternative item in group)
                             {
-                                matix[x, i] = group.IndexOf(item) + 1;
-                            }
-                        }
-                        #endregion
-
-                        #region Expand Items
-                        foreach (CalendarItemAlternative item in group)
-                        {
-                            int index = group.IndexOf(item);
-                            int left, top;
-                            int height = item.UnitsPassing.Count;
-                            int width = 1;
-                            FindInMatrix(matix, index + 1, out left, out top);
+                                int index = group.IndexOf(item);
+                                int left, top;
+                                int height = item.UnitsPassing.Count;
+                                int width = 1;
+                                FindInMatrix(matix, index + 1, out left, out top);
 
 
-                            bool canExpand = left >= 0 && top >= 0;
-                            while (canExpand)
-                            {
-                                for (int i = top; i < top + height; i++)
-                                {
-                                    if (matix.GetLength(0) <= left + width || matix[left + width, i] != 0)
-                                    {
-                                        canExpand = false;
-                                        break;
-                                    }
-                                }
-
-                                if (canExpand)
+                                bool canExpand = left >= 0 && top >= 0;
+                                while (canExpand)
                                 {
                                     for (int i = top; i < top + height; i++)
                                     {
-                                        matix[left + width, i] = index + 1;
+                                        if (matix.GetLength(0) <= left + width || matix[left + width, i] != 0)
+                                        {
+                                            canExpand = false;
+                                            break;
+                                        }
                                     }
-                                    width++;
-                                }
-                            }
-                        }
-                        #endregion
 
-                        #region Matrix to rectangles
-
-                        int itemWidth = Convert.ToInt32(Math.Floor(Convert.ToSingle(day.Bounds.Width - ItemsPadding) / Convert.ToSingle(matix.GetLength(0))));
-
-                        foreach (CalendarItemAlternative item in group)
-                        {
-                            int index = group.IndexOf(item);
-                            int top, left;
-                            int width = 1;
-                            FindInMatrix(matix, index + 1, out left, out top);
-
-                            if (left >= 0 && top >= 0)
-                            {
-                                for (int i = left + 1; i < matix.GetLength(0); i++)
-                                {
-                                    if (matix[i, top] == index + 1)
+                                    if (canExpand)
                                     {
+                                        for (int i = top; i < top + height; i++)
+                                        {
+                                            matix[left + width, i] = index + 1;
+                                        }
+
                                         width++;
                                     }
-                                    else
-                                    {
-                                        break;
-                                    }
                                 }
                             }
 
-                            int rtop = day.TimeUnits[item.UnitsPassing[0].Index].Bounds.Top;
-                            int bottom = day.TimeUnits[item.UnitsPassing[item.UnitsPassing.Count - 1].Index].Bounds.Bottom;
-                            int rleft = day.Bounds.Left + left * itemWidth;
-                            int right = rleft + itemWidth * width;
-                            item.SetBounds(Rectangle.FromLTRB(rleft, rtop, right, bottom));
-                            item.SetMinuteStartTop(GetTimeY(item.StartDate.TimeOfDay));
-                            item.SetMinuteEndTop(GetTimeY(item.EndDate.TimeOfDay));
+                            #endregion
 
+                            #region Matrix to rectangles
+
+                            int itemWidth = Convert.ToInt32(Math.Floor(
+                                Convert.ToSingle(day.Bounds.Width - ItemsPadding) /
+                                Convert.ToSingle(matix.GetLength(0))));
+
+                            foreach (CalendarItemAlternative item in group)
+                            {
+                                int index = group.IndexOf(item);
+                                int top, left;
+                                int width = 1;
+                                FindInMatrix(matix, index + 1, out left, out top);
+
+                                if (left >= 0 && top >= 0)
+                                {
+                                    for (int i = left + 1; i < matix.GetLength(0); i++)
+                                    {
+                                        if (matix[i, top] == index + 1)
+                                        {
+                                            width++;
+                                        }
+                                        else
+                                        {
+                                            break;
+                                        }
+                                    }
+                                }
+
+                                int rtop = day.TimeUnits[item.UnitsPassing[0]!.Index]!.Bounds.Top;
+                                int bottom = day.TimeUnits[item.UnitsPassing[item.UnitsPassing.Count - 1]!.Index]!.Bounds
+                                    .Bottom;
+                                int rleft = day.Bounds.Left + left * itemWidth;
+                                int right = rleft + itemWidth * width;
+                                item.SetBounds(Rectangle.FromLTRB(rleft, rtop, right, bottom));
+                                item.SetMinuteStartTop(GetTimeY(item.StartDate.TimeOfDay));
+                                item.SetMinuteEndTop(GetTimeY(item.EndDate.TimeOfDay));
+                            }
+
+                            #endregion
                         }
-
-                        #endregion
                     }
                 }
                 #endregion
@@ -1020,23 +1068,26 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 for (int i = 0; i < Calendar.Days.Length; i++)
                 {
-                    Calendar.Days[i].ContainedItems.Clear();
-                    Calendar.Days[i].SetOverflowEnd(false);
-                    Calendar.Days[i].SetOverflowStart(false);
+                    Calendar.Days[i]!.ContainedItems.Clear();
+                    Calendar.Days[i]!.SetOverflowEnd(false);
+                    Calendar.Days[i]!.SetOverflowStart(false);
                 }
 
                 int maxItems = 0;
 
                 foreach (CalendarItemAlternative item in Calendar.Items)
                 {
-                    CalendarDay dayStart = item.DayStart;
-                    CalendarDay dayEnd = item.DayEnd;
+                    CalendarDay? dayStart = item.DayStart;
+                    CalendarDay? dayEnd = item.DayEnd;
                     item.ClearBounds();
 
-                    for (int i = dayStart.Index; i <= dayEnd.Index; i++)
+                    if (dayStart != null && dayEnd != null)
                     {
-                        Calendar.Days[i].AddContainedItem(item);
-                        maxItems = Math.Max(maxItems, Calendar.Days[i].ContainedItems.Count);
+                        for (int i = dayStart.Index; i <= dayEnd.Index; i++)
+                        {
+                            Calendar.Days[i]!.AddContainedItem(item);
+                            maxItems = Math.Max(maxItems, Calendar.Days[i]!.ContainedItems.Count);
+                        }
                     }
                 }
 
@@ -1044,10 +1095,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 int curIndex = 0;
                 foreach (CalendarItemAlternative item in Calendar.Items)
                 {
-                    CalendarDay dayStart = item.DayStart;
-                    CalendarDay dayEnd = item.DayEnd;
+                    CalendarDay? dayStart = item.DayStart;
+                    CalendarDay? dayEnd = item.DayEnd;
 
-                    PlaceInMatrix(ref matix, curIndex + 1, dayStart.Index, dayEnd.Index);
+                    if (dayStart != null && dayEnd != null)
+                    {
+                        PlaceInMatrix(ref matix, curIndex + 1, dayStart.Index, dayEnd.Index);
+                    }
                     curIndex++;
                 }
 
@@ -1058,7 +1112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     int xEnd = xStart + 6;
                     int index = 0;
                     int[,] wmatix = new int[7, matix.GetLength(1)];
-                    CalendarDay sunday = Calendar.FindDay(Calendar.Weeks[week].StartDate);
+                    CalendarDay? sunday = Calendar.FindDay(Calendar.Weeks[week].StartDate);
 
                     #region Fill week matrix
 
@@ -1090,21 +1144,24 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                             }
 
 
-                        CalendarDay dayStart = Calendar.Days[xStart + left];
-                        CalendarDay dayEnd = Calendar.Days[xStart + left + width - 1];
-                        Rectangle rStart = dayStart.Bounds;
-                        Rectangle rEnd = dayEnd.Bounds;
-                        int rtop = rStart.Top + DayHeaderHeight + top * StandardItemHeight;
-                        Rectangle r = Rectangle.FromLTRB(rStart.Left, rtop, rEnd.Right, rtop + StandardItemHeight);
+                        CalendarDay? dayStart = Calendar.Days[xStart + left];
+                        CalendarDay? dayEnd = Calendar.Days[xStart + left + width - 1];
+                        if (dayStart != null && dayEnd != null)
+                        {
+                            Rectangle rStart = dayStart.Bounds;
+                            Rectangle rEnd = dayEnd.Bounds;
+                            int rtop = rStart.Top + DayHeaderHeight + top * StandardItemHeight;
+                            Rectangle r = Rectangle.FromLTRB(rStart.Left, rtop, rEnd.Right, rtop + StandardItemHeight);
 
-                        if (r.Bottom <= sunday.Bounds.Bottom)
-                        {
-                            item.AddBounds(r);
-                        }
-                        else
-                        {
-                            for (int i = dayStart.Index; i <= dayEnd.Index; i++)
-                                Calendar.Days[i].SetOverflowEnd(true);
+                            if (r.Bottom <= sunday!.Bounds.Bottom)
+                            {
+                                item.AddBounds(r);
+                            }
+                            else
+                            {
+                                for (int i = dayStart.Index; i <= dayEnd.Index; i++)
+                                    Calendar.Days[i]!.SetOverflowEnd(true);
+                            }
                         }
                     }
                 }
@@ -1175,10 +1232,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 return 0;
             }
-            else if (Calendar.Days != null && Calendar.Days.Length > 0)
+            else if (Calendar.Days.Length > 0)
             {
                 return Convert.ToInt32(Math.Floor(
-                    Convert.ToSingle(Calendar.Days[0].BodyBounds.Height) / Convert.ToSingle(TimeScaleUnitHeight)
+                    Convert.ToSingle(Calendar.Days[0]!.BodyBounds.Height) / Convert.ToSingle(TimeScaleUnitHeight)
                     ));
             }
             else
@@ -1238,7 +1295,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e"></param>
         protected virtual void DrawStandarBoxText(CalendarRendererBoxEventArgs e)
         {
-            TextRenderer.DrawText(e.Graphics, e.Text, e.Font, e.Bounds, e.TextColour, e.Format);
+            if (e.Graphics != null)
+            {
+                TextRenderer.DrawText(e.Graphics, e.Text, e.Font, e.Bounds, e.TextColour, e.Format);
+            }
         }
 
         /// <summary>
@@ -1279,10 +1339,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             foreach (CalendarItemAlternative item in group)
             {
-                foreach (CalendarTimeScaleUnit unit in item.UnitsPassing)
+                foreach (CalendarTimeScaleUnit? unit in item.UnitsPassing)
                 {
-                    startIndex = Math.Min(startIndex, unit.Index);
-                    endIndex = Math.Max(endIndex, unit.Index);
+                    if (unit != null)
+                    {
+                        startIndex = Math.Min(startIndex, unit.Index);
+                        endIndex = Math.Max(endIndex, unit.Index);
+                    }
                 }
             }
         }
@@ -1324,7 +1387,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 for (int j = 0; j < m.GetLength(0); j++)
                 {
-                    Console.Write(string.Format(" {0}", m[j, i]));
+                    Console.Write($@" {m[j, i]}");
                 }
                 Console.WriteLine(" ");
             }
@@ -1359,10 +1422,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Paint info</param>
         public virtual void OnDrawTimeScale(CalendarRendererEventArgs e)
         {
-            if (e.Calendar.DaysMode == CalendarDaysMode.Short
-                || e.Calendar.Days == null
+            if (e.Calendar?.DaysMode == CalendarDaysMode.Short
+                || e.Calendar?.Days == null
                 || e.Calendar.Days.Length == 0
-                || e.Calendar.Days[0].TimeUnits == null
+                || e.Calendar?.Days[0]?.TimeUnits == null
                 )
             {
                 return;
@@ -1376,9 +1439,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             int minuteWidth = hourWidth;
             int k = 0;
 
-            for (int i = 0; i < e.Calendar.Days[0].TimeUnits.Length; i++)
+            for (int i = 0; i < e.Calendar?.Days[0]?.TimeUnits.Length; i++)
             {
-                CalendarTimeScaleUnit unit = e.Calendar.Days[0].TimeUnits[i];
+                CalendarTimeScaleUnit? unit = e.Calendar.Days[0]?.TimeUnits[i];
 
                 if (!unit.Visible)
                 {
@@ -1439,9 +1502,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Paint Info</param>
         public virtual void OnDrawDays(CalendarRendererEventArgs e)
         {
-            for (int i = 0; i < e.Calendar.Days.Length; i++)
+            for (int i = 0; i < e.Calendar?.Days.Length; i++)
             {
-                CalendarDay day = e.Calendar.Days[i];
+                CalendarDay? day = e.Calendar?.Days[i];
 
                 e.Tag = day;
 
@@ -1456,34 +1519,38 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Paint info</param>
         public virtual void OnDrawDay(CalendarRendererDayEventArgs e)
         {
-            CalendarDay day = e.Day;
+            CalendarDay? day = e.Day;
 
-            CalendarRendererBoxEventArgs hevt = new CalendarRendererBoxEventArgs(e,
+            if (day != null)
+            {
+                CalendarRendererBoxEventArgs hevt = new CalendarRendererBoxEventArgs(e,
                     day.HeaderBounds,
                     day.Date.Day.ToString(),
                     TextFormatFlags.VerticalCenter);
-            hevt.Font = new Font(Calendar.Font, FontStyle.Bold);
+                {
+                    hevt.Font = new Font(Calendar.Font, FontStyle.Bold);
 
-            CalendarRendererBoxEventArgs devt = new CalendarRendererBoxEventArgs(e,
-                    day.HeaderBounds,
-                    day.Date.ToString("dddd"),
-                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+                    CalendarRendererBoxEventArgs devt = new CalendarRendererBoxEventArgs(e,
+                        day.HeaderBounds,
+                        day.Date.ToString("dddd"),
+                        TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
 
-            OnDrawDayHeaderBackground(e);
+                    OnDrawDayHeaderBackground(e);
 
-            if (Calendar.DaysMode == CalendarDaysMode.Short && (day.Index == 0 || day.Date.Day == 1))
-            {
-                hevt.Text = day.Date.ToString("dd MMM");
+                    if (Calendar.DaysMode == CalendarDaysMode.Short && (day.Index == 0 || day.Date.Day == 1))
+                    {
+                        hevt.Text = day.Date.ToString("dd MMM");
+                    }
+
+                    OnDrawDayHeaderText(hevt);
+
+                    if (devt.TextSize.Width < day.HeaderBounds.Width - hevt.TextSize.Width * 2
+                        && e.Calendar?.DaysMode == CalendarDaysMode.Expanded)
+                    {
+                        OnDrawDayHeaderText(devt);
+                    }
+                }
             }
-
-            OnDrawDayHeaderText(hevt);
-
-            if (devt.TextSize.Width < day.HeaderBounds.Width - hevt.TextSize.Width * 2
-                && e.Calendar.DaysMode == CalendarDaysMode.Expanded)
-            {
-                OnDrawDayHeaderText(devt);
-            }
-
 
 
             OnDrawDayTimeUnits(e);
@@ -1533,13 +1600,16 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e"></param>
         public virtual void OnDrawDayTimeUnits(CalendarRendererDayEventArgs e)
         {
-            for (int i = 0; i < e.Day.TimeUnits.Length; i++)
+            if (e.Day != null)
             {
-                CalendarTimeScaleUnit unit = e.Day.TimeUnits[i];
-
-                if (unit.Visible)
+                for (int i = 0; i < e.Day.TimeUnits.Length; i++)
                 {
-                    OnDrawDayTimeUnit(new CalendarRendererTimeUnitEventArgs(e, unit));
+                    CalendarTimeScaleUnit? unit = e.Day.TimeUnits[i];
+
+                    if (unit != null && unit.Visible)
+                    {
+                        OnDrawDayTimeUnit(new CalendarRendererTimeUnitEventArgs(e, unit));
+                    }
                 }
             }
         }
@@ -1559,15 +1629,17 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Paint Info</param>
         public virtual void OnDrawDayNameHeaders(CalendarRendererEventArgs e)
         {
-            DateTime startDate = DateTime.Now.AddDays(-((int)DateTime.Now.DayOfWeek % 7) + 1 + (int)Calendar.FirstDayOfWeek);
-
-            for (int i = 0; i < DayNameHeaderColumns.Length; i++)
             {
-                OnDrawDayNameHeader(new CalendarRendererBoxEventArgs(e,
-                    DayNameHeaderColumns[i],
-                    startDate.AddDays(i).ToString("dddd"),
-                    TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter));
+                DateTime startDate = DateTime.Now.AddDays(-((int)DateTime.Now.DayOfWeek % 7) + 1 + (int)Calendar.FirstDayOfWeek);
 
+                for (int i = 0; i < DayNameHeaderColumns.Length; i++)
+                {
+                    OnDrawDayNameHeader(new CalendarRendererBoxEventArgs(e,
+                        DayNameHeaderColumns[i],
+                        startDate.AddDays(i).ToString("dddd"),
+                        TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter));
+
+                }
             }
         }
 
@@ -1586,88 +1658,99 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Event info</param>
         public virtual void OnDrawItems(CalendarRendererEventArgs e)
         {
-            Rectangle days = e.Calendar.DaysBodyRectangle; days.Inflate(-1, -1);
-            Region oldclip = e.Graphics.Clip;
-            bool doClip = e.Calendar.DaysMode == CalendarDaysMode.Expanded;
-            bool clipped = false;
-
-            #region Shadows
-            foreach (CalendarItemAlternative item in e.Calendar.Items)
+            if (e.Calendar != null && e.Graphics != null)
             {
-                clipped = false;
+                Rectangle days = e.Calendar.DaysBodyRectangle; days.Inflate(-1, -1);
+                Region oldclip = e.Graphics.Clip;
+                bool doClip = e.Calendar.DaysMode == CalendarDaysMode.Expanded;
+                bool clipped;
 
-                if (doClip && !item.IsOnDayTop && item.Bounds.Top < days.Top)
+                #region Shadows
+                foreach (CalendarItemAlternative? item in e.Calendar.Items)
                 {
-                    e.Graphics.SetClip(days, CombineMode.Intersect);
-                    clipped = true;
+                    clipped = false;
+
+                    if (doClip && !item.IsOnDayTop && item.Bounds.Top < days.Top)
+                    {
+                        e.Graphics.SetClip(days, CombineMode.Intersect);
+                        clipped = true;
+                    }
+
+                    List<Rectangle> rects = new List<Rectangle>(item.GetAllBounds());
+
+                    for (int i = 0; i < rects.Count; i++)
+                    {
+                        CalendarRendererItemBoundsEventArgs evt = new CalendarRendererItemBoundsEventArgs(
+                            new CalendarRendererItemEventArgs(e, item),
+                            rects[i],
+                            i == 0 && !item.IsOpenStart,
+                            (i == rects.Count - 1) && !item.IsOpenEnd);
+                        OnDrawItemShadow(evt);
+                    }
+
+                    if (clipped)
+                    {
+                        e.Graphics.SetClip(oldclip, CombineMode.Replace);
+                    }
                 }
+                #endregion
 
-                List<Rectangle> rects = new List<Rectangle>(item.GetAllBounds());
-
-                for (int i = 0; i < rects.Count; i++)
+                #region Items
+                foreach (CalendarItemAlternative? item in e.Calendar.Items)
                 {
-                    CalendarRendererItemBoundsEventArgs evt = new CalendarRendererItemBoundsEventArgs(
-                        new CalendarRendererItemEventArgs(e, item),
-                        rects[i],
-                        i == 0 && !item.IsOpenStart,
-                        (i == rects.Count - 1) && !item.IsOpenEnd);
-                    OnDrawItemShadow(evt);
-                }
+                    clipped = false;
 
-                if (clipped)
-                {
-                    e.Graphics.SetClip(oldclip, CombineMode.Replace);
+                    if (doClip && !item.IsOnDayTop && item.Bounds.Top < days.Top)
+                    {
+                        e.Graphics.SetClip(days, CombineMode.Intersect);
+                        clipped = true;
+                    }
+
+                    OnDrawItem(new CalendarRendererItemEventArgs(e, item));
+
+                    if (clipped)
+                    {
+                        e.Graphics.SetClip(oldclip, CombineMode.Replace);
+                    }
                 }
             }
-            #endregion
 
-            #region Items
-            foreach (CalendarItemAlternative item in e.Calendar.Items)
-            {
-                clipped = false;
-
-                if (doClip && !item.IsOnDayTop && item.Bounds.Top < days.Top)
-                {
-                    e.Graphics.SetClip(days, CombineMode.Intersect);
-                    clipped = true;
-                }
-
-                OnDrawItem(new CalendarRendererItemEventArgs(e, item));
-
-                if (clipped)
-                {
-                    e.Graphics.SetClip(oldclip, CombineMode.Replace);
-                }
-            }
             #endregion
 
             #region Borders of selected items
-            foreach (CalendarItemAlternative item in e.Calendar.Items)
+
+            if (e.Calendar?.Items != null)
             {
-                if (!item.Selected)
+                foreach (CalendarItemAlternative? item in e.Calendar?.Items!)
                 {
-                    continue;
+                    if (!item.Selected)
+                    {
+                        continue;
+                    }
+
+                    List<Rectangle> rects = new List<Rectangle>(item.GetAllBounds());
+
+                    for (int i = 0; i < rects.Count; i++)
+                    {
+                        CalendarRendererItemBoundsEventArgs evt = new CalendarRendererItemBoundsEventArgs(
+                            new CalendarRendererItemEventArgs(e, item),
+                            rects[i],
+                            i == 0 && !item.IsOpenStart,
+                            (i == rects.Count - 1) && !item.IsOpenEnd);
+
+                        if (e.Graphics != null)
+                        {
+                            SmoothingMode smbuff = e.Graphics.SmoothingMode;
+                            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
+
+                            OnDrawItemBorder(evt);
+
+                            e.Graphics.SmoothingMode = smbuff;
+                        }
+                    }
                 }
-
-                List<Rectangle> rects = new List<Rectangle>(item.GetAllBounds());
-
-                for (int i = 0; i < rects.Count; i++)
-                {
-                    CalendarRendererItemBoundsEventArgs evt = new CalendarRendererItemBoundsEventArgs(
-                        new CalendarRendererItemEventArgs(e, item),
-                        rects[i],
-                        i == 0 && !item.IsOpenStart,
-                        (i == rects.Count - 1) && !item.IsOpenEnd);
-
-                    SmoothingMode smbuff = e.Graphics.SmoothingMode;
-                    e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-
-                    OnDrawItemBorder(evt);
-
-                    e.Graphics.SmoothingMode = smbuff;
-                }
-
             }
+
             #endregion
         }
 
@@ -1677,37 +1760,42 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Event Info</param>
         public virtual void OnDrawItem(CalendarRendererItemEventArgs e)
         {
-            List<Rectangle> rects = new List<Rectangle>(e.Item.GetAllBounds());
-
-            for (int i = 0; i < rects.Count; i++)
+            if (e.Item != null)
             {
-                CalendarRendererItemBoundsEventArgs evt = new CalendarRendererItemBoundsEventArgs(
-                    e,
-                    rects[i],
-                    i == 0 && !e.Item.IsOpenStart,
-                    (i == rects.Count - 1) && !e.Item.IsOpenEnd);
+                List<Rectangle> rects = new List<Rectangle>(e.Item.GetAllBounds());
 
-                //OnDrawItemShadow(evt);
-
-                OnDrawItemBackground(evt);
-
-                if (!evt.Item.PatternColor.IsEmpty)
+                for (int i = 0; i < rects.Count; i++)
                 {
-                    OnDrawItemPattern(evt);
+                    CalendarRendererItemBoundsEventArgs evt = new CalendarRendererItemBoundsEventArgs(
+                        e,
+                        rects[i],
+                        i == 0 && !e.Item.IsOpenStart,
+                        (i == rects.Count - 1) && !e.Item.IsOpenEnd);
+
+                    //OnDrawItemShadow(evt);
+
+                    OnDrawItemBackground(evt);
+
+                    if (evt.Item != null && !evt.Item.PatternColor.IsEmpty)
+                    {
+                        OnDrawItemPattern(evt);
+                    }
+
+                    if (!e.Item.IsEditing)
+                    {
+                        OnDrawItemContent(evt);
+                    }
+
+                    if (e.Graphics != null)
+                    {
+                        SmoothingMode smbuff = e.Graphics.SmoothingMode;
+                        e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
+
+                        OnDrawItemBorder(evt);
+
+                        e.Graphics.SmoothingMode = smbuff;
+                    }
                 }
-
-                if (!e.Item.IsEditing)
-                {
-                    OnDrawItemContent(evt);
-                }
-
-                SmoothingMode smbuff = e.Graphics.SmoothingMode;
-                e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-
-                OnDrawItemBorder(evt);
-
-                e.Graphics.SmoothingMode = smbuff;
-
             }
         }
 
@@ -1722,129 +1810,135 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public virtual void OnDrawItemPattern(CalendarRendererItemBoundsEventArgs e)
         {
-            foreach (Rectangle bounds in e.Item.GetAllBounds())
+            if (e.Item != null)
             {
-                ItemPattern(e, bounds, e.Item.PatternColor);
+                foreach (Rectangle bounds in e.Item.GetAllBounds())
+                {
+                    ItemPattern(e, bounds, e.Item.PatternColor);
+                }
             }
         }
 
         /// <summary>
-        /// Draws the strings of an item. Strings inlude StartTime, EndTime and Text
+        /// Draws the strings of an item. Strings include StartTime, EndTime and Text
         /// </summary>
         /// <param name="e">Event Info</param>
         public virtual void OnDrawItemContent(CalendarRendererItemBoundsEventArgs e)
         {
-            if (e.Item == e.Calendar.EditModeItem)
+            if (e.Calendar != null && e.Item == e.Calendar?.EditModeItem)
             {
                 return;
             }
 
-            List<Rectangle> rectangles = new List<Rectangle>(e.Item.GetAllBounds());
-
-            for (int i = 0; i < rectangles.Count; i++)
+            if (e.Item != null)
             {
-                Rectangle bounds = rectangles[i];
-                Rectangle imageBounds = Rectangle.Empty;
-                Rectangle rStartTime = new Rectangle();
-                Rectangle rEndTime = new Rectangle();
-                string endTime = string.Empty;
-                string startTime = string.Empty;
-                Color secondaryForecolour = e.Item.ForeColour;
+                List<Rectangle> rectangles = new List<Rectangle>(e.Item.GetAllBounds());
 
-                if (e.Item.ShowEndTime && i == rectangles.Count - 1)
+                for (int i = 0; i < rectangles.Count; i++)
                 {
-                    endTime = e.Item.EndDateText;
-                    rEndTime = new Rectangle(Point.Empty, TextRenderer.MeasureText(endTime, e.Calendar.Font));
-                    rEndTime = Rectangle.FromLTRB(bounds.Right - rEndTime.Width - ItemTextMargin.Right,
+                    Rectangle bounds = rectangles[i];
+                    Rectangle imageBounds = Rectangle.Empty;
+                    Rectangle rStartTime = new Rectangle();
+                    Rectangle rEndTime = new Rectangle();
+                    string endTime = string.Empty;
+                    string startTime = string.Empty;
+                    Color secondaryForecolour = e.Item.ForeColour;
+
+                    if (e.Item.ShowEndTime && i == rectangles.Count - 1)
+                    {
+                        endTime = e.Item.EndDateText;
+                        rEndTime = new Rectangle(Point.Empty, TextRenderer.MeasureText(endTime, e.Calendar?.Font));
+                        rEndTime = Rectangle.FromLTRB(bounds.Right - rEndTime.Width - ItemTextMargin.Right,
+                            bounds.Top + ItemTextMargin.Top,
+                            bounds.Right - ItemTextMargin.Right,
+                            bounds.Bottom - ItemTextMargin.Bottom);
+                        OnDrawItemEndTime(new CalendarRendererBoxEventArgs(e, rEndTime, endTime, secondaryForecolour));
+                    }
+
+                    if (e.Item.ShowStartTime && i == 0)
+                    {
+                        startTime = e.Item.StartDateText;
+                        rStartTime = new Rectangle(Point.Empty, TextRenderer.MeasureText(startTime, e.Calendar?.Font));
+                        rStartTime.X = bounds.Left + ItemTextMargin.Left;
+                        rStartTime.Y = bounds.Top + ItemTextMargin.Top;
+                        rStartTime.Height = bounds.Height - ItemTextMargin.Vertical;
+                        OnDrawItemStartTime(new CalendarRendererBoxEventArgs(e, rStartTime, startTime, secondaryForecolour));
+                    }
+
+                    Rectangle r = Rectangle.FromLTRB(
+                        bounds.Left + ItemTextMargin.Left + rStartTime.Width,
                         bounds.Top + ItemTextMargin.Top,
-                        bounds.Right - ItemTextMargin.Right,
+                        bounds.Right - ItemTextMargin.Right - rEndTime.Width,
                         bounds.Bottom - ItemTextMargin.Bottom);
-                    OnDrawItemEndTime(new CalendarRendererBoxEventArgs(e, rEndTime, endTime, secondaryForecolour));
-                }
 
-                if (e.Item.ShowStartTime && i == 0)
-                {
-                    startTime = e.Item.StartDateText;
-                    rStartTime = new Rectangle(Point.Empty, TextRenderer.MeasureText(startTime, e.Calendar.Font));
-                    rStartTime.X = bounds.Left + ItemTextMargin.Left;
-                    rStartTime.Y = bounds.Top + ItemTextMargin.Top;
-                    rStartTime.Height = bounds.Height - ItemTextMargin.Vertical;
-                    OnDrawItemStartTime(new CalendarRendererBoxEventArgs(e, rStartTime, startTime, secondaryForecolour));
-                }
+                    CalendarRendererBoxEventArgs evt = new CalendarRendererBoxEventArgs(e, r, e.Item.Text, TextFormatFlags.Left | TextFormatFlags.Top);
 
-                Rectangle r = Rectangle.FromLTRB(
-                    bounds.Left + ItemTextMargin.Left + rStartTime.Width,
-                    bounds.Top + ItemTextMargin.Top,
-                    bounds.Right - ItemTextMargin.Right - rEndTime.Width,
-                    bounds.Bottom - ItemTextMargin.Bottom);
-
-                CalendarRendererBoxEventArgs evt = new CalendarRendererBoxEventArgs(e, r, e.Item.Text, TextFormatFlags.Left | TextFormatFlags.Top);
-
-                if (e.Item.ShowStartTime || e.Item.ShowEndTime)
-                {
-                    evt.Font = new Font(evt.Font, FontStyle.Bold);
-                }
-
-                if (e.Item.IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.Short)
-                {
-                    evt.Format |= TextFormatFlags.HorizontalCenter;
-                }
-
-                if (!e.Item.ForeColour.IsEmpty)
-                {
-                    evt.TextColour = e.Item.ForeColour;
-                }
-
-                evt.Tag = e.Item;
-
-                #region Image
-
-                if (e.Item.Image != null)
-                {
-                    Rectangle tBounds = e.Item.Bounds;
-                    imageBounds.Size = e.Item.Image.Size;
-
-                    switch (e.Item.ImageAlign)
+                    if (e.Item.ShowStartTime || e.Item.ShowEndTime)
                     {
-                        case CalendarItemImageAlign.North:
-                            tBounds.Height -= imageBounds.Height;
-                            tBounds.Y += imageBounds.Height;
-                            imageBounds.Y = tBounds.Y - imageBounds.Height;
-                            break;
-                        case CalendarItemImageAlign.South:
-                            tBounds.Height -= imageBounds.Height;
-                            imageBounds.Y = tBounds.Bottom;
-                            break;
-                        case CalendarItemImageAlign.East:
-                            tBounds.Width -= imageBounds.Width;
-                            imageBounds.X = tBounds.Right;
-                            break;
-                        case CalendarItemImageAlign.West:
-                            tBounds.Width -= imageBounds.Width;
-                            tBounds.X += imageBounds.Width;
-                            imageBounds.X = tBounds.Left - imageBounds.Width;
-                            break;
+                        evt.Font = new Font(evt.Font, FontStyle.Bold);
                     }
 
-                    switch (e.Item.ImageAlign)
+                    if (Calendar != null && (e.Item.IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.Short))
                     {
-                        case CalendarItemImageAlign.North:
-                        case CalendarItemImageAlign.South:
-                            imageBounds.X = e.Item.Bounds.X + ((e.Item.Bounds.Width - imageBounds.Width) / 2);
-                            break;
-                        case CalendarItemImageAlign.East:
-                        case CalendarItemImageAlign.West:
-                            imageBounds.Y = e.Item.Bounds.Y + ((e.Item.Bounds.Height - imageBounds.Height) / 2);
-                            break;
+                        evt.Format |= TextFormatFlags.HorizontalCenter;
                     }
 
-                    evt.Bounds = tBounds;
-                    OnDrawItemImage(new CalendarRendererItemBoundsEventArgs(e, imageBounds, false, false));
+                    if (!e.Item.ForeColour.IsEmpty)
+                    {
+                        evt.TextColour = e.Item.ForeColour;
+                    }
+
+                    evt.Tag = e.Item;
+
+                    #region Image
+
+                    if (e.Item.Image != null)
+                    {
+                        Rectangle tBounds = e.Item.Bounds;
+                        imageBounds.Size = e.Item.Image.Size;
+
+                        switch (e.Item.ImageAlign)
+                        {
+                            case CalendarItemImageAlign.North:
+                                tBounds.Height -= imageBounds.Height;
+                                tBounds.Y += imageBounds.Height;
+                                imageBounds.Y = tBounds.Y - imageBounds.Height;
+                                break;
+                            case CalendarItemImageAlign.South:
+                                tBounds.Height -= imageBounds.Height;
+                                imageBounds.Y = tBounds.Bottom;
+                                break;
+                            case CalendarItemImageAlign.East:
+                                tBounds.Width -= imageBounds.Width;
+                                imageBounds.X = tBounds.Right;
+                                break;
+                            case CalendarItemImageAlign.West:
+                                tBounds.Width -= imageBounds.Width;
+                                tBounds.X += imageBounds.Width;
+                                imageBounds.X = tBounds.Left - imageBounds.Width;
+                                break;
+                        }
+
+                        switch (e.Item.ImageAlign)
+                        {
+                            case CalendarItemImageAlign.North:
+                            case CalendarItemImageAlign.South:
+                                imageBounds.X = e.Item.Bounds.X + ((e.Item.Bounds.Width - imageBounds.Width) / 2);
+                                break;
+                            case CalendarItemImageAlign.East:
+                            case CalendarItemImageAlign.West:
+                                imageBounds.Y = e.Item.Bounds.Y + ((e.Item.Bounds.Height - imageBounds.Height) / 2);
+                                break;
+                        }
+
+                        evt.Bounds = tBounds;
+                        OnDrawItemImage(new CalendarRendererItemBoundsEventArgs(e, imageBounds, false, false));
+                    }
+
+                    #endregion
+
+                    OnDrawItemText(evt);
                 }
-
-                #endregion
-
-                OnDrawItemText(evt);
             }
         }
 
@@ -1863,9 +1957,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e"></param>
         public virtual void OnDrawItemImage(CalendarRendererItemBoundsEventArgs e)
         {
-            if (e.Item.Image != null)
+            if (e.Item?.Image != null)
             {
-                e.Graphics.DrawImage(e.Item.Image, e.Bounds);
+                e.Graphics?.DrawImage(e.Item.Image, e.Bounds);
 
                 //e.Graphics.FillRectangle(Brushes.Red, e.Bounds);
             }
@@ -1913,16 +2007,16 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e"></param>
         public virtual void OnDrawOverflows(CalendarRendererEventArgs e)
         {
-            for (int i = 0; i < e.Calendar.Days.Length; i++)
+            for (int i = 0; i < e.Calendar?.Days.Length; i++)
             {
-                CalendarDay day = e.Calendar.Days[i];
+                CalendarDay? day = e.Calendar?.Days[i];
 
-                if (day.OverflowStart)
+                if (day != null && day.OverflowStart)
                 {
                     OnDrawDayOverflowStart(new CalendarRendererDayEventArgs(e, day));
                 }
 
-                if (day.OverflowEnd)
+                if (day != null && day.OverflowEnd)
                 {
                     OnDrawDayOverflowEnd(new CalendarRendererDayEventArgs(e, day));
                 }
@@ -1953,19 +2047,17 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e"></param>
         public virtual void OnDrawWeekHeaders(CalendarRendererEventArgs e)
         {
-            if (Calendar.Weeks == null)
-            {
-                return;
-            }
-
             for (int i = 0; i < Calendar.Weeks.Length; i++)
             {
                 string str = Calendar.Weeks[i].ToStringLarge();
-                SizeF sz = e.Graphics.MeasureString(str, e.Calendar.Font);
-
-                if (sz.Width > Calendar.Weeks[i].HeaderBounds.Height)
+                if (e.Graphics != null)
                 {
-                    str = Calendar.Weeks[i].ToStringShort();
+                    SizeF sz = e.Graphics.MeasureString(str, e.Calendar?.Font);
+
+                    if (sz.Width > Calendar.Weeks[i].HeaderBounds.Height)
+                    {
+                        str = Calendar.Weeks[i].ToStringShort();
+                    }
                 }
 
                 OnDrawWeekHeader(new CalendarRendererBoxEventArgs(e,
@@ -1986,10 +2078,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             using (SolidBrush b = new SolidBrush(e.TextColour))
             {
-                e.Graphics.DrawString(e.Text, e.Font, b, e.Bounds, sf);
+                e.Graphics?.DrawString(e.Text, e.Font, b, e.Bounds, sf);
             }
 
-            e.Graphics.ResetTransform();
+            e.Graphics?.ResetTransform();
 
             sf.Dispose();
         }

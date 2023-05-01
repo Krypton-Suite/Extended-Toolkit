@@ -26,8 +26,6 @@
  */
 #endregion
 
-using System.Runtime.ExceptionServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
@@ -63,15 +61,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else if (methodSignature != "")
             {
-                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
+                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: {exception.Message}.\n\nError in method: '{methodSignature}'.", title, buttons, icon);
             }
             else if (className != "" && methodSignature != "")
             {
-                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
+                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: {exception.Message}.\n\nError in class: '{className}.cs'.\n\nError in method: '{methodSignature}'.", title, buttons, icon);
             }
             else
             {
-                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon);
+                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: {exception.Message}.", title, buttons, icon);
             }
         }
 
@@ -107,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else if (useConsole)
             {
-                Console.WriteLine($@"[ { DateTime.Now} ]: { exceptionMessage }");
+                Console.WriteLine($@"[ {DateTime.Now} ]: {exceptionMessage}");
             }
         }
 
@@ -129,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 exceptionInfo = ExceptionDispatchInfo.Capture(exc);
 
-                StreamWriter writer = new StreamWriter(fileName);
+                StreamWriter writer = new(fileName);
 
                 writer.Write(exc.ToString());
 
@@ -158,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     File.Create(fileName);
                 }
 
-                StreamWriter writer = new StreamWriter(fileName);
+                StreamWriter writer = new(fileName);
 
                 writer.Write(exc.StackTrace);
 

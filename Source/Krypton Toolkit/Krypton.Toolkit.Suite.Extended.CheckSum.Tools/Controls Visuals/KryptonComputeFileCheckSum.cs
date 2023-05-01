@@ -18,7 +18,7 @@
 
             CancelButton = kbtnCancel;
 
-            kbtnCancel.Text = KryptonManager.Strings.Cancel;
+            kbtnCancel.Text = KryptonLanguageManager.Strings.Cancel;
 
             _useAPICodePackFeatures = useAPICodePackFeatures ?? true;
 

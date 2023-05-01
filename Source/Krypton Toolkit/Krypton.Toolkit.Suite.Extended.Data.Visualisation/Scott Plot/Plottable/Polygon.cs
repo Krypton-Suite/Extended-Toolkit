@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 hatchColor = HatchColor,
                 hatchStyle = HatchStyle
             };
-            return new LegendItem[] { singleLegendItem };
+            return new[] { singleLegendItem };
         }
 
         public void ValidateData(bool deep = false)

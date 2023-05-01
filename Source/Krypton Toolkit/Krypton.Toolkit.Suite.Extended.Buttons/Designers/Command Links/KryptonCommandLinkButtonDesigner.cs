@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             get
             {
                 // Create a collection of action lists
-                DesignerActionListCollection actionLists = new DesignerActionListCollection
+                DesignerActionListCollection actionLists = new()
                 {
                     // Add the button specific list
                     new KryptonCommandLinkButtonActionList(this)

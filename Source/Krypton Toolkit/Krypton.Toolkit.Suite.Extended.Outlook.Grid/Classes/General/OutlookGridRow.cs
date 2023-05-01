@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private bool _collapsed; //For TreeNode
         private OutlookGridRowNodeCollection _nodeCollection; //For TreeNode
         private int _nodeLevel; //For TreeNode
-        private OutlookGridRow _parentNode; //for TreeNode
+        private OutlookGridRow? _parentNode; //for TreeNode
         #endregion
 
         #region "Properties"
@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             get
             {
-                OutlookGridRow parent = _parentNode;
+                OutlookGridRow? parent = _parentNode;
                 if (parent != null && parent.HasChildren)
                 {
                     return NodeIndex == parent.Nodes.Count - 1;
@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </value>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public OutlookGridRow ParentNode { get => _parentNode; set => _parentNode = value; }
+        public OutlookGridRow? ParentNode { get => _parentNode; set => _parentNode = value; }
 
         /// <summary>
         /// Gets the index of the node.
@@ -488,7 +488,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="row">The specified row.</param>
         /// <param name="i">The i.</param>
         /// <returns></returns>
-        public bool IsAParentNodeOrGroupCollapsed(OutlookGridRow row, int i)
+        public bool IsAParentNodeOrGroupCollapsed(OutlookGridRow? row, int i)
         {
             i++;
             //Console.WriteLine(row.ToString());

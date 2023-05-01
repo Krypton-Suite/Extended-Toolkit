@@ -45,11 +45,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         protected override void OnResize(EventArgs e)
         {
-            using (GraphicsPath graphicsPath = new GraphicsPath())
+            using (GraphicsPath graphicsPath = new())
             {
-                graphicsPath.AddEllipse(new Rectangle(0, 0, Width - 1, Height - 1));
+                graphicsPath.AddEllipse(new(0, 0, Width - 1, Height - 1));
 
-                Region = new Region(graphicsPath);
+                Region = new(graphicsPath);
             }
 
             base.OnResize(e);
@@ -57,15 +57,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         protected override void OnPaint(PaintEventArgs pe)
         {
-            using (GraphicsPath graphicsPath = new GraphicsPath())
+            using (GraphicsPath graphicsPath = new())
             {
                 graphicsPath.AddEllipse(0, 0, Width - 1, Height - 1);
 
-                Region = new Region(graphicsPath);
+                Region = new(graphicsPath);
 
                 pe.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-                pe.Graphics.DrawEllipse(new Pen(new SolidBrush(BackColor), 1), 0, 0, Width - 1, Height - 1);
+                pe.Graphics.DrawEllipse(new(new SolidBrush(BackColor), 1), 0, 0, Width - 1, Height - 1);
             }
 
             base.OnPaint(pe);

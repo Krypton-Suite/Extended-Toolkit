@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 File.Create(filePath);
             }
 
-            StreamWriter writer = new StreamWriter(filePath);
+            StreamWriter writer = new(filePath);
 
             writer.WriteLine($"Darkest Colour: ({darkestColour})");
 

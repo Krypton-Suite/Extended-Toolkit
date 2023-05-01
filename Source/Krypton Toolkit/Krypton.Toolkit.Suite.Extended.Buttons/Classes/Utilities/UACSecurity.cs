@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         static internal bool IsAdmin()
         {
             WindowsIdentity id = WindowsIdentity.GetCurrent();
-            WindowsPrincipal p = new WindowsPrincipal(id);
+            WindowsPrincipal p = new(id);
             return p.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// </summary>
         internal static void RestartElevated()
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo()
+            ProcessStartInfo startInfo = new()
             {
                 UseShellExecute = true,
                 WorkingDirectory = Environment.CurrentDirectory,

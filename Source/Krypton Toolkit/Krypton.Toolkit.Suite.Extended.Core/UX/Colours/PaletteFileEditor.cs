@@ -28,7 +28,6 @@
 
 using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
 
-#pragma warning disable CS8602
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public partial class PaletteFileEditor : KryptonForm
@@ -145,8 +144,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // krtbFile
             // 
-            this.krtbFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.krtbFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.krtbFile.Location = new System.Drawing.Point(12, 12);
             this.krtbFile.Name = "krtbFile";
@@ -215,7 +214,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             try
             {
-                StreamReader reader = new StreamReader(paletteFilePath);
+                StreamReader reader = new(paletteFilePath);
 
                 string fileContents = reader.ReadToEnd();
 
@@ -239,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    StreamWriter writer = new StreamWriter(sfd.FileName);
+                    StreamWriter writer = new(sfd.FileName);
 
                     writer.WriteAsync(krtbFile.Text);
 

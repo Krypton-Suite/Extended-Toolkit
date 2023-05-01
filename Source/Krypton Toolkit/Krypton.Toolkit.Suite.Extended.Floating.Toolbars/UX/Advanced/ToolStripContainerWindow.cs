@@ -27,27 +27,8 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
-    public class ToolStripContainerWindow : KryptonForm
+    public partial class ToolStripContainerWindow : KryptonForm
     {
-        #region Designer Code
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // ToolStripContainerWindow
-            // 
-            this.ClientSize = new System.Drawing.Size(710, 26);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "ToolStripContainerWindow";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "ToolStripContainerForm";
-            this.ResumeLayout(false);
-
-        }
-        #endregion
-
         #region Variables
         private FloatableToolStrip _floatableToolStrip;
 

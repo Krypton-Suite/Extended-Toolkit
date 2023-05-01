@@ -902,9 +902,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 kbtnDefineIndividualColours.Enabled = true;
 
-                kbtnOptions.Location = new Point(609, 7);
+                kbtnOptions.Location = new(609, 7);
 
-                kbtnDebugConsole.Location = new Point(684, 7);
+                kbtnDebugConsole.Location = new(684, 7);
             }
             else
             {
@@ -912,9 +912,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 kbtnDefineIndividualColours.Enabled = false;
 
-                kbtnOptions.Location = new Point(409, 7);
+                kbtnOptions.Location = new(409, 7);
 
-                kbtnDebugConsole.Location = new Point(484, 7);
+                kbtnDebugConsole.Location = new(484, 7);
             }
 
             tmrAutomateColourSwatchValues.Enabled = _globalBooleanSettingsManager.GetAutomaticallyUpdateColours();
@@ -1055,14 +1055,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void kbtnDefineCustomColours_Click(object sender, EventArgs e)
         {
-            CustomColours customColours = new CustomColours();
+            CustomColours customColours = new();
 
             customColours.Show();
         }
 
         private void kbtnImportColours_Click(object sender, EventArgs e)
         {
-            PaletteImportManager paletteImportManager = new PaletteImportManager();
+            PaletteImportManager paletteImportManager = new();
 
             paletteImportManager.ImportColourScheme();
         }
@@ -1129,14 +1129,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void kbtnDefineIndividualColours_Click(object sender, EventArgs e)
         {
-            DefineIndividualColoursDialog defineIndividualColours = new DefineIndividualColoursDialog();
+            DefineIndividualColoursDialog defineIndividualColours = new();
 
             defineIndividualColours.Show();
         }
 
         private void kbtnOptions_Click(object sender, EventArgs e)
         {
-            ColourBlendingOptions colourBlendingOptions = new ColourBlendingOptions();
+            ColourBlendingOptions colourBlendingOptions = new();
 
             colourBlendingOptions.Show();
         }
@@ -1180,7 +1180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void kbtnDebugConsole_Click(object sender, EventArgs e)
         {
-            ColourSettingsViewer colourSettingsViewer = new ColourSettingsViewer();
+            ColourSettingsViewer colourSettingsViewer = new();
 
             colourSettingsViewer.Show();
         }
@@ -1197,7 +1197,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private Color SetHue(Color baseColour, double hueValue)
         {
-            HSLColour hslColour = new HSLColour(hue: hueValue * 240, saturation: 240, luminosity: 240);
+            HSLColour hslColour = new(hue: hueValue * 240, saturation: 240, luminosity: 240);
 
             return hslColour;
         }

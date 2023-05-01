@@ -67,9 +67,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             try
             {
-                using (StreamReader reader = new StreamReader(stream))
+                using (StreamReader reader = new(stream))
                 {
-                    string header;
+                    string? header;
 
                     header = reader.ReadLine();
 
@@ -98,9 +98,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 throw new ArgumentNullException(nameof(stream));
             }
 
-            results = new ColourCollection();
+            results = new();
 
-            using (StreamReader reader = new StreamReader(stream))
+            using (StreamReader reader = new(stream))
             {
                 string header;
                 int swatchIndex;
@@ -195,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             // TODO: Allow name and columns attributes to be specified
 
-            using (StreamWriter writer = new StreamWriter(stream, Encoding.ASCII))
+            using (StreamWriter writer = new(stream, Encoding.ASCII))
             {
                 writer.WriteLine("GIMP Palette");
                 writer.WriteLine("Name: ");

@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     {
                         using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
                         {
-                            gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+                            gfx.DrawString(value.ToString(CultureInfo.InvariantCulture), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
                         }
                     }
                 }
@@ -163,7 +163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     {
                         using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
                         {
-                            gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+                            gfx.DrawString(value.ToString(CultureInfo.InvariantCulture), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
                         }
                     }
                 }

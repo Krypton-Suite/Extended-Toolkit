@@ -266,9 +266,9 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         /// <param name="colourFileName">Name of the colour file.</param>
         public static void WriteARGBColoursToFile(string colourFileName)
         {
-            BasicColourSettingsManager manager = new BasicColourSettingsManager();
+            BasicColourSettingsManager manager = new();
 
-            StreamWriter writer = new StreamWriter(colourFileName);
+            StreamWriter writer = new(colourFileName);
 
             writer.WriteLine(TranslationMethods.ColourARGBToString(manager.GetBaseColour()));
 
@@ -289,9 +289,9 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
 
         public static void WriteRGBColoursToFile(string colourFilePath)
         {
-            BasicColourSettingsManager manager = new BasicColourSettingsManager();
+            BasicColourSettingsManager manager = new();
 
-            StreamWriter writer = new StreamWriter(colourFilePath);
+            StreamWriter writer = new(colourFilePath);
 
             writer.WriteLine(TranslationMethods.RGBColourToString(manager.GetBaseColour()));
 
@@ -316,7 +316,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         /// <returns></returns>
         public static bool AreBasicPaletteColoursEmpty()
         {
-            BasicColourSettingsManager basicPaletteColourManager = new BasicColourSettingsManager();
+            BasicColourSettingsManager basicPaletteColourManager = new();
 
             if (basicPaletteColourManager.GetBaseColour() == Color.Empty || basicPaletteColourManager.GetDarkColour() == Color.Empty || basicPaletteColourManager.GetMediumColour() == Color.Empty || basicPaletteColourManager.GetLightColour() == Color.Empty || basicPaletteColourManager.GetLightestColour() == Color.Empty)
             {
@@ -333,47 +333,72 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         /// <summary>
         /// Creates a ARGB colour configuration file.
         /// </summary>
-        public static void CreateARGBConfigurationFile()
+        public static void CreateARGBConfigurationFile(FileDialogType fileDialogType = FileDialogType.Standard)
         {
             try
             {
+                switch (fileDialogType)
+                {
+                    case FileDialogType.Krypton:
+                        KryptonSaveFileDialog sfd = new();
+
+                        sfd.Title = @"Save Colours To:";
+
+                        sfd.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
+
+                        sfd.DefaultExt = "ccf";
+
+                        sfd.FileName = $"Basic Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                        if (sfd.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteARGBColoursToFile(sfd.FileName);
+                        }
+                        break;
+                    case FileDialogType.Standard:
+                        SaveFileDialog dialog = new();
+
+                        dialog.Title = @"Save Colours To:";
+
+                        dialog.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
+
+                        dialog.DefaultExt = "ccf";
+
+                        dialog.FileName = $"Basic Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                        if (dialog.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteARGBColoursToFile(dialog.FileName);
+                        }
+                        break;
+                    case FileDialogType.WindowsAPICodePack:
+                        CommonSaveFileDialog csfd = new();
+
+                        csfd.Title = "Save Colours To:";
+
+                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+
+                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+
+                        csfd.DefaultFileName = $"Basic Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                        csfd.AlwaysAppendDefaultExtension = true;
+
+                        csfd.DefaultExtension = "ccf";
+
+                        if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                        {
+                            WriteARGBColoursToFile(csfd.FileName);
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(fileDialogType), fileDialogType, null);
+                }
                 if (OSHelper.IsSevenOrHigher())
                 {
-                    CommonSaveFileDialog csfd = new CommonSaveFileDialog();
-
-                    csfd.Title = "Save Colours To:";
-
-                    csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
-
-                    csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
-
-                    csfd.DefaultFileName = $"Basic Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
-
-                    csfd.AlwaysAppendDefaultExtension = true;
-
-                    csfd.DefaultExtension = "ccf";
-
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
-                    {
-                        WriteARGBColoursToFile(csfd.FileName);
-                    }
                 }
                 else
                 {
-                    SaveFileDialog dialog = new SaveFileDialog();
-
-                    dialog.Title = "Save Colours To:";
-
-                    dialog.Filter = "Colour Configuration File | *.ccf | Normal Text Files | *.txt";
-
-                    dialog.DefaultExt = "ccf";
-
-                    dialog.FileName = $"Basic Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
-
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        WriteARGBColoursToFile(dialog.FileName);
-                    }
                 }
             }
             catch (Exception exc)
@@ -385,47 +410,66 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         /// <summary>
         /// Creates a RGB colour configuration file.
         /// </summary>
-        public static void CreateRGBConfigurationFile()
+        public static void CreateRGBConfigurationFile(FileDialogType fileDialogType = FileDialogType.Standard)
         {
             try
             {
-                if (OSHelper.IsSevenOrHigher())
+                switch (fileDialogType)
                 {
-                    CommonSaveFileDialog csfd = new CommonSaveFileDialog();
+                    case FileDialogType.Krypton:
+                        KryptonSaveFileDialog sfd = new();
 
-                    csfd.Title = "Save Colours To:";
+                        sfd.Title = @"Save Colours To:";
 
-                    csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
+                        sfd.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
 
-                    csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
+                        sfd.DefaultExt = "ccf";
 
-                    csfd.DefaultFileName = $"Basic Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+                        sfd.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
-                    csfd.AlwaysAppendDefaultExtension = true;
+                        if (sfd.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteRGBColoursToFile(sfd.FileName);
+                        }
+                        break;
+                    case FileDialogType.Standard:
+                        SaveFileDialog dialog = new();
 
-                    csfd.DefaultExtension = "ccf";
+                        dialog.Title = @"Save Colours To:";
 
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
-                    {
-                        WriteRGBColoursToFile(csfd.FileName);
-                    }
-                }
-                else
-                {
-                    SaveFileDialog dialog = new SaveFileDialog();
+                        dialog.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
 
-                    dialog.Title = "Save Colours To:";
+                        dialog.DefaultExt = "ccf";
 
-                    dialog.Filter = "Colour Configuration File | *.ccf | Normal Text Files | *.txt";
+                        dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
-                    dialog.DefaultExt = "ccf";
+                        if (dialog.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteRGBColoursToFile(dialog.FileName);
+                        }
+                        break;
+                    case FileDialogType.WindowsAPICodePack:
+                        CommonSaveFileDialog csfd = new();
 
-                    dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+                        csfd.Title = "Save Colours To:";
 
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        WriteRGBColoursToFile(dialog.FileName);
-                    }
+                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+
+                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+
+                        csfd.DefaultFileName = $"Basic Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                        csfd.AlwaysAppendDefaultExtension = true;
+
+                        csfd.DefaultExtension = "ccf";
+
+                        if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                        {
+                            WriteRGBColoursToFile(csfd.FileName);
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(fileDialogType), fileDialogType, null);
                 }
             }
             catch (Exception exc)

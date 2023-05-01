@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 color = Color
             };
 
-            return new LegendItem[] { item };
+            return new[] { item };
         }
 
         public void ValidateData(bool deep = false)

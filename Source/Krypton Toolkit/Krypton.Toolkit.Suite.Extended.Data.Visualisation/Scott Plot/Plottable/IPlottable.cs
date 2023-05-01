@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Returns items to show in the legend. Most plottables return a single item. in this array will appear in the legend.
         /// Plottables which never appear in the legend can return null.
         /// </summary>
-        LegendItem[] GetLegendItems();
+        LegendItem[]? GetLegendItems();
 
         /// <summary>
         /// Return min and max of the horizontal and vertical data contained in this plottable.

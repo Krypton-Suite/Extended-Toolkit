@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Overrides
-        protected override Size DefaultSize => new Size(160, 60);
+        protected override Size DefaultSize => new(160, 60);
 
         protected override CreateParams CreateParams
         {
@@ -168,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 {
                     try
                     {
-                        ExecuteProcessAsAdministratorEventArgs executeProcessAsAdministrator = new ExecuteProcessAsAdministratorEventArgs(_processToElevate);
+                        ExecuteProcessAsAdministratorEventArgs executeProcessAsAdministrator = new(_processToElevate);
 
                         executeProcessAsAdministrator.ElevateProcessWithAdministrativeRights(_processToElevate);
                     }
@@ -195,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <param name="value">The desired value of NoteText.</param>
         private void SetNoteText(string value)
         {
-            SendMessage(new HandleRef(this, this.Handle), BCM_SETNOTE, IntPtr.Zero, value);
+            SendMessage(new(this, this.Handle), BCM_SETNOTE, IntPtr.Zero, value);
         }
 
         /// <summary>
@@ -204,11 +204,11 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <returns>The value of the NoteText.</returns>
         private string GetNoteText()
         {
-            int _length = SendMessage(new HandleRef(this, this.Handle), BCM_GETNOTELENGTH, IntPtr.Zero, IntPtr.Zero) + 1;
+            int _length = SendMessage(new(this, this.Handle), BCM_GETNOTELENGTH, IntPtr.Zero, IntPtr.Zero) + 1;
 
-            StringBuilder stringBuilder = new StringBuilder(_length);
+            StringBuilder stringBuilder = new(_length);
 
-            SendMessage(new HandleRef(this, this.Handle), BCM_GETNOTE, ref _length, stringBuilder);
+            SendMessage(new(this, this.Handle), BCM_GETNOTE, ref _length, stringBuilder);
 
             return stringBuilder.ToString();
         }

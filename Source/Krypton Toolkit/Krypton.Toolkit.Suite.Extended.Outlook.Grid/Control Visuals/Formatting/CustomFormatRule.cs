@@ -16,8 +16,6 @@
 //--------------------------------------------------------------------------------
 #endregion
 
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     public partial class CustomFormatRule : KryptonForm
@@ -39,8 +37,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         #region Public
 
         public bool Gradient => _gradient;
-
-        public static OutlookGridLanguageStrings Strings => KryptonOutlookGrid.Strings;
 
         public Color MaximumColour => _maximumColour;
 
@@ -67,9 +63,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         private void StartUp()
         {
-            kbtnCancel.Text = KryptonManager.Strings.Cancel;
+            kbtnCancel.Text = KryptonLanguageManager.Strings.Cancel;
 
-            kbtnOk.Text = KryptonManager.Strings.OK;
+            kbtnOk.Text = KryptonLanguageManager.Strings.OK;
 
             kcmbFillMode.SelectedIndex = 0;
 

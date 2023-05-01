@@ -48,21 +48,21 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public static void MergeAllColourSettings(bool usePrompt = false)
         {
             #region Variables
-            BasicColourSettingsManager basicPaletteColourManager = new BasicColourSettingsManager();
+            BasicColourSettingsManager basicPaletteColourManager = new();
 
-            CustomColourSettingsManager customPaletteColourManager = new CustomColourSettingsManager();
+            CustomColourSettingsManager customPaletteColourManager = new();
 
-            CustomTextColourSettingsManager customPaletteTextColourManager = new CustomTextColourSettingsManager();
+            CustomTextColourSettingsManager customPaletteTextColourManager = new();
 
-            LinkTextColourSettingsManager linkTextPaletteColourManager = new LinkTextColourSettingsManager();
+            LinkTextColourSettingsManager linkTextPaletteColourManager = new();
 
-            MiscellaneousColourSettingsManager miscellaneousPaletteColourManager = new MiscellaneousColourSettingsManager();
+            MiscellaneousColourSettingsManager miscellaneousPaletteColourManager = new();
 
-            StandardControlTextColourSettingsManager standardControlTextColourSettingsManager = new StandardControlTextColourSettingsManager();
+            StandardControlTextColourSettingsManager standardControlTextColourSettingsManager = new();
 
-            TextColourSettingsManager textPaletteColourManager = new TextColourSettingsManager();
+            TextColourSettingsManager textPaletteColourManager = new();
 
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
             #endregion
 
             try
@@ -252,7 +252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public static void MergeAllColours(Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColour, Color alternativeNormalTextColour, Color normalTextColour, Color disabledTextColour, Color focusedTextColour, Color pressedTextColour, Color disabledControlColour, Color linkDisabledColour, Color linkFocusedColour, Color linkNormalColour, Color linkHoverColour, Color linkVisitedColour, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customColourSix, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color customTextColourSix, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour, bool usePrompt = false)
         {
             #region Variables
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
             #endregion
 
             try

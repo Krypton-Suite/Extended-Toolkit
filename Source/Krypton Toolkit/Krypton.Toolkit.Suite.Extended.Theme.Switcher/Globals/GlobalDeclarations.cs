@@ -34,9 +34,9 @@ global using System.IO;
 global using System.Net;
 global using System.Windows.Forms;
 
+global using Krypton.Navigator;
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 global using Krypton.Toolkit.Suite.Extended.Settings;
-
-global using Krypton.Navigator;
+global using Krypton.Toolkit.Suite.Extended.Shared;
 
 global using Microsoft.WindowsAPICodePack.Dialogs;

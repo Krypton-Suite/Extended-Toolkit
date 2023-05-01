@@ -160,7 +160,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBox_filterType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ep)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion

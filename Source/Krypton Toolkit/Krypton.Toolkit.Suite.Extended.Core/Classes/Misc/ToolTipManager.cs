@@ -33,13 +33,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Constructors
         public ToolTipManager()
         {
-            _startTimer = new Timer
+            _startTimer = new()
             {
                 Interval = 1200
             };
             _startTimer.Tick += OnStartTimerTick;
 
-            _stopTimer = new Timer
+            _stopTimer = new()
             {
                 Interval = 100
             };
@@ -358,7 +358,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 _showingToolTips = true;
 
                 // Raise event requesting the tooltip be shown
-                OnShowToolTip(new ToolTipEventArgs(_startTarget, Control.MousePosition));
+                OnShowToolTip(new(_startTarget, Control.MousePosition));
             }
             else
             {
@@ -395,7 +395,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     _startTarget = _currentTarget;
 
                     // Raise event requesting the tooltip be shown
-                    OnShowToolTip(new ToolTipEventArgs(_startTarget, Control.MousePosition));
+                    OnShowToolTip(new(_startTarget, Control.MousePosition));
                 }
             }
         }

@@ -26,8 +26,6 @@
  */
 #endregion
 
-using System.Collections.Specialized;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class SecurityAssistant
@@ -35,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Variables
         private string[] _supportedHashAlgorithims = new string[] { "MD-5", "SHA-1", "SHA-256", "SHA-384", "SHA-512", "RIPEMD-160" };
 
-        private StringCollection _supportedHashAlgorithimCollection = null;
+        private StringCollection? _supportedHashAlgorithimCollection = null;
         #endregion
 
         #region Constructor
@@ -52,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public void PropagateSupportedHashAlgorithimCollection()
         {
-            _supportedHashAlgorithimCollection = new StringCollection();
+            _supportedHashAlgorithimCollection = new();
 
             foreach (string item in ReturnSupportedHashAlgorithims())
             {

@@ -74,22 +74,22 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             Values.TextChanged += OnButtonTextChanged;
 
             // Create the palette storage
-            StateCommon = new PaletteTripleRedirect(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
-            StateDisabled = new PaletteTriple(StateCommon, NeedPaintDelegate);
-            StateNormal = new PaletteTriple(StateCommon, NeedPaintDelegate);
-            StateTracking = new PaletteTriple(StateCommon, NeedPaintDelegate);
-            StatePressed = new PaletteTriple(StateCommon, NeedPaintDelegate);
-            OverrideDefault = new PaletteTripleRedirect(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
-            OverrideFocus = new PaletteTripleRedirect(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
+            StateCommon = new(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
+            StateDisabled = new(StateCommon, NeedPaintDelegate);
+            StateNormal = new(StateCommon, NeedPaintDelegate);
+            StateTracking = new(StateCommon, NeedPaintDelegate);
+            StatePressed = new(StateCommon, NeedPaintDelegate);
+            OverrideDefault = new(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
+            OverrideFocus = new(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
 
             // Create the override handling classes
-            _overrideFocus = new PaletteTripleOverride(OverrideFocus, StateNormal, PaletteState.FocusOverride);
-            _overrideNormal = new PaletteTripleOverride(OverrideDefault, _overrideFocus, PaletteState.NormalDefaultOverride);
-            _overrideTracking = new PaletteTripleOverride(OverrideFocus, StateTracking, PaletteState.FocusOverride);
-            _overridePressed = new PaletteTripleOverride(OverrideFocus, StatePressed, PaletteState.FocusOverride);
+            _overrideFocus = new(OverrideFocus, StateNormal, PaletteState.FocusOverride);
+            _overrideNormal = new(OverrideDefault, _overrideFocus, PaletteState.NormalDefaultOverride);
+            _overrideTracking = new(OverrideFocus, StateTracking, PaletteState.FocusOverride);
+            _overridePressed = new(OverrideFocus, StatePressed, PaletteState.FocusOverride);
 
             // Create the view button instance
-            _drawButton = new ViewDrawButton(StateDisabled,
+            _drawButton = new(StateDisabled,
                                              _overrideNormal,
                                              _overrideTracking,
                                              _overridePressed,
@@ -104,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             };
 
             // Create a button controller to handle button style behaviour
-            _buttonController = new ButtonController(_drawButton, NeedPaintDelegate);
+            _buttonController = new(_drawButton, NeedPaintDelegate);
 
             // Assign the controller to the view element to treat as a button
             _drawButton.MouseController = _buttonController;
@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             _buttonController.MouseSelect += OnButtonSelect;
 
             // Create the view manager instance
-            ViewManager = new ViewManager(this, _drawButton);
+            ViewManager = new(this, _drawButton);
 
             _useAsDialogButton = false;
 
@@ -593,7 +593,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 var rawUACShield = SystemIcons.Shield.ToBitmap();
 
                 // Resize rawUACShield down to 16 x 16 to make it fit
-                var resizedUACShield = new Bitmap(rawUACShield, new Size(16, 16));
+                var resizedUACShield = new Bitmap(rawUACShield, new(16, 16));
 
                 if (Values.Image == null)
                 {
@@ -640,37 +640,37 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 if (DialogResult == DialogResult.Abort)
                 {
-                    Text = KryptonManager.Strings.Abort;
+                    Text = KryptonLanguageManager.Strings.Abort;
                 }
 
                 if (DialogResult == DialogResult.Cancel)
                 {
-                    Text = KryptonManager.Strings.Cancel;
+                    Text = KryptonLanguageManager.Strings.Cancel;
                 }
 
                 if (DialogResult == DialogResult.OK)
                 {
-                    Text = KryptonManager.Strings.OK;
+                    Text = KryptonLanguageManager.Strings.OK;
                 }
 
                 if (DialogResult == DialogResult.Yes)
                 {
-                    Text = KryptonManager.Strings.Yes;
+                    Text = KryptonLanguageManager.Strings.Yes;
                 }
 
                 if (DialogResult == DialogResult.No)
                 {
-                    Text = KryptonManager.Strings.No;
+                    Text = KryptonLanguageManager.Strings.No;
                 }
 
                 if (DialogResult == DialogResult.Retry)
                 {
-                    Text = KryptonManager.Strings.Retry;
+                    Text = KryptonLanguageManager.Strings.Retry;
                 }
 
                 if (DialogResult == DialogResult.Ignore)
                 {
-                    Text = KryptonManager.Strings.Ignore;
+                    Text = KryptonLanguageManager.Strings.Ignore;
                 }
             }
 

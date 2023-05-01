@@ -35,8 +35,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     {
         public Edge Edge = Edge.Right;
 
-        private ColourMap Colormap;
-        private Bitmap BmpScale;
+        private ColourMap _colormap;
+        private Bitmap? _bmpScale;
 
         public bool IsVisible { get; set; } = true;
         public int XAxisIndex { get => 0; set { } }
@@ -52,49 +52,49 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public float TickMarkLength = 3;
         public float TickMarkWidth = 1;
 
-        private readonly List<Tick> ManualTicks = new();
-        private bool AutomaticTickEnable = true;
-        private int AutomaticTickMinimumSpacing = 40;
-        private Func<double, string> AutomaticTickFormatter = position => $"{position:F2}";
+        private readonly List<Tick> _manualTicks = new();
+        private bool _automaticTickEnable = true;
+        private int _automaticTickMinimumSpacing = 40;
+        private Func<double, string> _automaticTickFormatter = position => $"{position:F2}";
 
-        private double _MinValue = 0;
+        private double _minValue;
         public double MinValue
         {
-            get => (Plottable is IHasColormap p) ? p.ColormapMin : _MinValue;
-            set => _MinValue = value;
+            get => (_plottable is IHasColormap p) ? p.ColormapMin : _minValue;
+            set => _minValue = value;
         }
 
-        private double _MaxValue = 1;
+        private double _maxValue = 1;
         public double MaxValue
         {
-            get => (Plottable is IHasColormap p) ? p.ColormapMax : _MaxValue;
-            set => _MaxValue = value;
+            get => (_plottable is IHasColormap p) ? p.ColormapMax : _maxValue;
+            set => _maxValue = value;
         }
 
-        private bool _MinIsClipped = false;
+        private bool _minIsClipped = false;
         public bool MinIsClipped
         {
-            get => (Plottable is IHasColormap p) ? p.ColormapMinIsClipped : _MinIsClipped;
-            set => _MinIsClipped = value;
+            get => (_plottable is IHasColormap p) ? p.ColormapMinIsClipped : _minIsClipped;
+            set => _minIsClipped = value;
         }
 
-        private bool _MaxIsClipped = false;
+        private bool _maxIsClipped = false;
         public bool MaxIsClipped
         {
-            get => (Plottable is IHasColormap p) ? p.ColormapMaxIsClipped : _MaxIsClipped;
-            set => _MaxIsClipped = value;
+            get => (_plottable is IHasColormap p) ? p.ColormapMaxIsClipped : _maxIsClipped;
+            set => _maxIsClipped = value;
         }
 
-        private double _MinColor = 0;
-        public double MinColor { get => _MinColor; set { _MinColor = value; UpdateBitmap(); } }
+        private double _minColor;
+        public double MinColor { get => _minColor; set { _minColor = value; UpdateBitmap(); } }
 
-        private double _MaxColor = 1;
-        public double MaxColor { get => _MaxColor; set { _MaxColor = value; UpdateBitmap(); } }
+        private double _maxColor = 1;
+        public double MaxColor { get => _maxColor; set { _maxColor = value; UpdateBitmap(); } }
 
         /// <summary>
         /// If populated, this object holds the plottable containing the heatmap and value data this colorbar represents
         /// </summary>
-        private IHasColormap Plottable;
+        private IHasColormap? _plottable;
 
         public Colorbar(ColourMap? colormap = null)
         {
@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public Colorbar(IHasColormap plottable)
         {
-            Plottable = plottable;
+            _plottable = plottable;
             UpdateColormap(plottable.Colormap);
         }
 
@@ -113,16 +113,16 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="enable"></param>
         /// <param name="minimumSpacing">Minimum number of vertical pixels between tick positions</param>
         /// <param name="formatter">Optional custom string formatter to translate tick positions to labels</param>
-        public void AutomaticTicks(bool enable = true, int? minimumSpacing = null, Func<double, string> formatter = null)
+        public void AutomaticTicks(bool enable = true, int? minimumSpacing = null, Func<double, string>? formatter = null)
         {
             if (enable)
             {
-                ManualTicks.Clear();
+                _manualTicks.Clear();
             }
 
-            AutomaticTickEnable = enable;
-            AutomaticTickMinimumSpacing = minimumSpacing ?? AutomaticTickMinimumSpacing;
-            AutomaticTickFormatter = formatter ?? AutomaticTickFormatter;
+            _automaticTickEnable = enable;
+            _automaticTickMinimumSpacing = minimumSpacing ?? _automaticTickMinimumSpacing;
+            _automaticTickFormatter = formatter ?? _automaticTickFormatter;
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public void ClearTicks()
         {
-            ManualTicks.Clear();
+            _manualTicks.Clear();
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="label">string displayed beside the tick</param>
         public void AddTick(double fraction, string label)
         {
-            ManualTicks.Add(new(fraction, label, true, false));
+            _manualTicks.Add(new(fraction, label, true, false));
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             for (int i = 0; i < fractions.Length; i++)
             {
-                ManualTicks.Add(new(fractions[i], labels[i], true, false));
+                _manualTicks.Add(new(fractions[i], labels[i], true, false));
             }
         }
 
@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             AddTicks(fractions, labels);
         }
 
-        public LegendItem[] GetLegendItems() => null;
+        public LegendItem[]? GetLegendItems() => null;
 
         public AxisLimits GetAxisLimits() => new(double.NaN, double.NaN, double.NaN, double.NaN);
 
@@ -187,16 +187,16 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Re-Render the colorbar using a new colormap
         /// </summary>
-        public void UpdateColormap(ColourMap newColormap)
+        public void UpdateColormap(ColourMap? newColormap)
         {
-            Colormap = newColormap ?? ColourMap.Viridis;
+            _colormap = newColormap ?? ColourMap.Viridis;
             UpdateBitmap();
         }
 
         private void UpdateBitmap()
         {
-            BmpScale?.Dispose();
-            BmpScale = GetBitmap();
+            _bmpScale?.Dispose();
+            _bmpScale = GetBitmap();
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         /// <returns></returns>
         public Bitmap GetBitmap() =>
-            ColourMap.Colorbar(Colormap, Width, 256, true, MinColor, MaxColor);
+            ColourMap.Colorbar(_colormap, Width, 256, true, MinColor, MaxColor);
 
         /// <summary>
         /// Return a Bitmap of just the color portion of the colorbar
@@ -216,11 +216,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="vertical">if true, colormap will be vertically oriented (tall and skinny)</param>
         /// <returns></returns>
         public Bitmap GetBitmap(int width, int height, bool vertical = true) =>
-            ColourMap.Colorbar(Colormap, width, height, vertical, MinColor, MaxColor);
+            ColourMap.Colorbar(_colormap, width, height, vertical, MinColor, MaxColor);
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
-            if (BmpScale is null)
+            if (_bmpScale is null)
             {
                 UpdateBitmap();
             }
@@ -248,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 double colorbarFraction = tickSpacingFraction * i;
                 double tickPosition = MinValue + colorbarFraction * valueSpan;
 
-                string tickLabel = AutomaticTickFormatter(tickPosition);
+                string tickLabel = _automaticTickFormatter(tickPosition);
                 if (MinIsClipped && i == 0)
                 {
                     tickLabel = $"\u2264{tickLabel}";
@@ -278,7 +278,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 using (var pen = GDI.Pen(Color.Black))
                 {
-                    gfx.DrawImage(BmpScale, location.X, location.Y, size.Width, size.Height + 1);
+                    if (_bmpScale != null)
+                    {
+                        gfx.DrawImage(_bmpScale, location.X, location.Y, size.Width, size.Height + 1);
+                    }
                     gfx.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
                 }
             }
@@ -298,8 +301,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using var tickFont = GDI.Font(TickLabelFont);
             using var sf = new StringFormat() { LineAlignment = StringAlignment.Center };
 
-            bool useManualTicks = (ManualTicks.Count > 0 || AutomaticTickEnable == false);
-            List<Tick> ticks = useManualTicks ? ManualTicks : GetEvenlySpacedTicks(colorbarRect.Height, AutomaticTickMinimumSpacing);
+            bool useManualTicks = (_manualTicks.Count > 0 || _automaticTickEnable == false);
+            List<Tick> ticks = useManualTicks ? _manualTicks : GetEvenlySpacedTicks(colorbarRect.Height, _automaticTickMinimumSpacing);
 
             foreach (Tick tick in ticks)
             {

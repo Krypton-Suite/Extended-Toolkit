@@ -45,8 +45,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         static extern bool SetWindowPos(
          int hWnd,             // Window handle
          int hWndInsertAfter,  // Placement-order handle
-         int X,                // Horizontal position
-         int Y,                // Vertical position
+         int x,                // Horizontal position
+         int y,                // Vertical position
          int cx,               // Width
          int cy,               // Height
          uint uFlags);         // Window positioning flags
@@ -86,21 +86,21 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #endregion
 
         #region Variables
-        private bool disposed = false;
-        private KryptonPopUpNotificationWindow frmPopup;
-        private System.Windows.Forms.Timer tmrAnimation, tmrWait;
+        private bool _disposed = false;
+        private KryptonPopUpNotificationWindow _frmPopup;
+        private Timer _tmrAnimation, _tmrWait;
 
-        private bool isAppearing = true;
-        private bool markedForDisposed = false;
-        private bool mouseIsOn = false;
-        private int maxPosition;
-        private double maxOpacity;
-        private int posStart;
-        private int posStop;
-        private double opacityStart;
-        private double opacityStop;
-        private int realAnimationDuration;
-        private Stopwatch sw;
+        private bool _isAppearing = true;
+        private bool _markedForDisposed = false;
+        private bool _mouseIsOn = false;
+        private int _maxPosition;
+        private double _maxOpacity;
+        private int _posStart;
+        private int _posStop;
+        private double _opacityStart;
+        private double _opacityStop;
+        private int _realAnimationDuration;
+        private Stopwatch _sw;
         #endregion
 
         #region Properties
@@ -154,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             get
             {
-                if (imageSize.Width == 0)
+                if (_imageSize.Width == 0)
                 {
                     if (Image != null)
                     {
@@ -167,27 +167,27 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 }
                 else
                 {
-                    return imageSize;
+                    return _imageSize;
                 }
             }
-            set => imageSize = value;
+            set => _imageSize = value;
         }
 
         public void ResetImageSize()
         {
-            imageSize = Size.Empty;
+            _imageSize = Size.Empty;
         }
 
         private bool ShouldSerializeImageSize()
         {
-            return (!imageSize.Equals(Size.Empty));
+            return (!_imageSize.Equals(Size.Empty));
         }
 
-        private Size imageSize = new Size(0, 0);
+        private Size _imageSize = new Size(0, 0);
 
         [Category("Image")]
         [Description("Icon image to display.")]
-        public Image Image { get; set; }
+        public Image? Image { get; set; }
 
         [Category("Header"), DefaultValue(true)]
         [Description("Whether to show a 'grip' image within the window header.")]
@@ -311,23 +311,23 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             AnimationDuration = 1000;
             Size = new Size(400, 100);
 
-            frmPopup = new KryptonPopUpNotificationWindow(this);
-            frmPopup.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            frmPopup.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            frmPopup.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            frmPopup.MouseEnter += new EventHandler(frmPopup_MouseEnter);
-            frmPopup.MouseLeave += new EventHandler(frmPopup_MouseLeave);
-            frmPopup.CloseClick += new EventHandler(frmPopup_CloseClick);
-            frmPopup.LinkClick += new EventHandler(frmPopup_LinkClick);
-            frmPopup.ContextMenuOpened += new EventHandler(frmPopup_ContextMenuOpened);
-            frmPopup.ContextMenuClosed += new EventHandler(frmPopup_ContextMenuClosed);
-            frmPopup.VisibleChanged += new EventHandler(frmPopup_VisibleChanged);
+            _frmPopup = new KryptonPopUpNotificationWindow(this);
+            _frmPopup.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            _frmPopup.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            _frmPopup.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            _frmPopup.MouseEnter += new EventHandler(frmPopup_MouseEnter);
+            _frmPopup.MouseLeave += new EventHandler(frmPopup_MouseLeave);
+            _frmPopup.CloseClick += new EventHandler(frmPopup_CloseClick);
+            _frmPopup.LinkClick += new EventHandler(frmPopup_LinkClick);
+            _frmPopup.ContextMenuOpened += new EventHandler(frmPopup_ContextMenuOpened);
+            _frmPopup.ContextMenuClosed += new EventHandler(frmPopup_ContextMenuClosed);
+            _frmPopup.VisibleChanged += new EventHandler(frmPopup_VisibleChanged);
 
-            tmrAnimation = new System.Windows.Forms.Timer();
-            tmrAnimation.Tick += new EventHandler(tmAnimation_Tick);
+            _tmrAnimation = new System.Windows.Forms.Timer();
+            _tmrAnimation.Tick += new EventHandler(tmAnimation_Tick);
 
-            tmrWait = new System.Windows.Forms.Timer();
-            tmrWait.Tick += new EventHandler(tmWait_Tick);
+            _tmrWait = new System.Windows.Forms.Timer();
+            _tmrWait.Tick += new EventHandler(tmWait_Tick);
         }
         #endregion
 
@@ -338,59 +338,59 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         public void PopUp()
         {
-            if (!disposed)
+            if (!_disposed)
             {
-                if (!frmPopup.Visible)
+                if (!_frmPopup.Visible)
                 {
-                    frmPopup.Size = Size;
+                    _frmPopup.Size = Size;
                     if (Scroll)
                     {
-                        posStart = Screen.PrimaryScreen.WorkingArea.Bottom;
-                        posStop = Screen.PrimaryScreen.WorkingArea.Bottom - frmPopup.Height;
+                        _posStart = Screen.PrimaryScreen.WorkingArea.Bottom;
+                        _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
                     }
                     else
                     {
-                        posStart = Screen.PrimaryScreen.WorkingArea.Bottom - frmPopup.Height;
-                        posStop = Screen.PrimaryScreen.WorkingArea.Bottom - frmPopup.Height;
+                        _posStart = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
+                        _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
                     }
-                    opacityStart = 0;
-                    opacityStop = 1;
+                    _opacityStart = 0;
+                    _opacityStop = 1;
 
-                    frmPopup.Opacity = opacityStart;
-                    frmPopup.Location = new Point(Screen.PrimaryScreen.WorkingArea.Right - frmPopup.Size.Width - 1, posStart);
-                    ShowInactiveTopmost(frmPopup);
-                    isAppearing = true;
+                    _frmPopup.Opacity = _opacityStart;
+                    _frmPopup.Location = new Point(Screen.PrimaryScreen.WorkingArea.Right - _frmPopup.Size.Width - 1, _posStart);
+                    ShowInactiveTopmost(_frmPopup);
+                    _isAppearing = true;
 
-                    tmrWait.Interval = Delay;
-                    tmrAnimation.Interval = AnimationInterval;
-                    realAnimationDuration = AnimationDuration;
-                    tmrAnimation.Start();
-                    sw = Stopwatch.StartNew();
+                    _tmrWait.Interval = Delay;
+                    _tmrAnimation.Interval = AnimationInterval;
+                    _realAnimationDuration = AnimationDuration;
+                    _tmrAnimation.Start();
+                    _sw = Stopwatch.StartNew();
                     Debug.WriteLine("Animation started.");
                 }
                 else
                 {
-                    if (!isAppearing)
+                    if (!_isAppearing)
                     {
-                        frmPopup.Size = Size;
+                        _frmPopup.Size = Size;
                         if (Scroll)
                         {
-                            posStart = frmPopup.Top;
-                            posStop = Screen.PrimaryScreen.WorkingArea.Bottom - frmPopup.Height;
+                            _posStart = _frmPopup.Top;
+                            _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
                         }
                         else
                         {
-                            posStart = Screen.PrimaryScreen.WorkingArea.Bottom - frmPopup.Height;
-                            posStop = Screen.PrimaryScreen.WorkingArea.Bottom - frmPopup.Height;
+                            _posStart = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
+                            _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
                         }
-                        opacityStart = frmPopup.Opacity;
-                        opacityStop = 1;
-                        isAppearing = true;
-                        realAnimationDuration = Math.Max((int)sw.ElapsedMilliseconds, 1);
-                        sw.Restart();
+                        _opacityStart = _frmPopup.Opacity;
+                        _opacityStop = 1;
+                        _isAppearing = true;
+                        _realAnimationDuration = Math.Max((int)_sw.ElapsedMilliseconds, 1);
+                        _sw.Restart();
                         Debug.WriteLine("Animation direction changed.");
                     }
-                    frmPopup.Invalidate();
+                    _frmPopup.Invalidate();
                 }
             }
         }
@@ -402,10 +402,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             Debug.WriteLine("Animation stopped.");
             Debug.WriteLine("Wait timer stopped.");
-            tmrAnimation.Stop();
-            tmrWait.Stop();
-            frmPopup.Hide();
-            if (markedForDisposed)
+            _tmrAnimation.Stop();
+            _tmrWait.Stop();
+            _frmPopup.Hide();
+            if (_markedForDisposed)
             {
                 Dispose();
             }
@@ -422,10 +422,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         private void frmPopup_ContextMenuClosed(object sender, EventArgs e)
         {
             Debug.WriteLine("Menu closed.");
-            if (!mouseIsOn)
+            if (!_mouseIsOn)
             {
-                tmrWait.Interval = Delay;
-                tmrWait.Start();
+                _tmrWait.Interval = Delay;
+                _tmrWait.Start();
                 Debug.WriteLine("Wait timer started.");
             }
         }
@@ -440,7 +440,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         private void frmPopup_ContextMenuOpened(object sender, EventArgs e)
         {
             Debug.WriteLine("Menu opened.");
-            tmrWait.Stop();
+            _tmrWait.Stop();
             Debug.WriteLine("Wait timer stopped.");
         }
 
@@ -479,7 +479,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void frmPopup_VisibleChanged(object sender, EventArgs e)
         {
-            if (frmPopup.Visible)
+            if (_frmPopup.Visible)
             {
                 if (Appear != null)
                 {
@@ -502,66 +502,66 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void tmAnimation_Tick(object sender, EventArgs e)
         {
-            long elapsed = sw.ElapsedMilliseconds;
+            long elapsed = _sw.ElapsedMilliseconds;
 
-            int posCurrent = (int)(posStart + ((posStop - posStart) * elapsed / realAnimationDuration));
-            bool neg = (posStop - posStart) < 0;
-            if ((neg && posCurrent < posStop) ||
-                (!neg && posCurrent > posStop))
+            int posCurrent = (int)(_posStart + ((_posStop - _posStart) * elapsed / _realAnimationDuration));
+            bool neg = (_posStop - _posStart) < 0;
+            if ((neg && posCurrent < _posStop) ||
+                (!neg && posCurrent > _posStop))
             {
-                posCurrent = posStop;
+                posCurrent = _posStop;
             }
 
-            double opacityCurrent = opacityStart + ((opacityStop - opacityStart) * elapsed / realAnimationDuration);
-            neg = (opacityStop - opacityStart) < 0;
-            if ((neg && opacityCurrent < opacityStop) ||
-                (!neg && opacityCurrent > opacityStop))
+            double opacityCurrent = _opacityStart + ((_opacityStop - _opacityStart) * elapsed / _realAnimationDuration);
+            neg = (_opacityStop - _opacityStart) < 0;
+            if ((neg && opacityCurrent < _opacityStop) ||
+                (!neg && opacityCurrent > _opacityStop))
             {
-                opacityCurrent = opacityStop;
+                opacityCurrent = _opacityStop;
             }
 
-            frmPopup.Top = posCurrent;
-            frmPopup.Opacity = opacityCurrent;
+            _frmPopup.Top = posCurrent;
+            _frmPopup.Opacity = opacityCurrent;
 
             // animation has ended
-            if (elapsed > realAnimationDuration)
+            if (elapsed > _realAnimationDuration)
             {
 
-                sw.Reset();
-                tmrAnimation.Stop();
+                _sw.Reset();
+                _tmrAnimation.Stop();
                 Debug.WriteLine("Animation stopped.");
 
-                if (isAppearing)
+                if (_isAppearing)
                 {
                     if (Scroll)
                     {
-                        posStart = Screen.PrimaryScreen.WorkingArea.Bottom - frmPopup.Height;
-                        posStop = Screen.PrimaryScreen.WorkingArea.Bottom;
+                        _posStart = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
+                        _posStop = Screen.PrimaryScreen.WorkingArea.Bottom;
                     }
                     else
                     {
-                        posStart = Screen.PrimaryScreen.WorkingArea.Bottom - frmPopup.Height;
-                        posStop = Screen.PrimaryScreen.WorkingArea.Bottom - frmPopup.Height;
+                        _posStart = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
+                        _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
                     }
-                    opacityStart = 1;
-                    opacityStop = 0;
+                    _opacityStart = 1;
+                    _opacityStop = 0;
 
-                    realAnimationDuration = AnimationDuration;
+                    _realAnimationDuration = AnimationDuration;
 
-                    isAppearing = false;
-                    maxPosition = frmPopup.Top;
-                    maxOpacity = frmPopup.Opacity;
-                    if (!mouseIsOn)
+                    _isAppearing = false;
+                    _maxPosition = _frmPopup.Top;
+                    _maxOpacity = _frmPopup.Opacity;
+                    if (!_mouseIsOn)
                     {
-                        tmrWait.Stop();
-                        tmrWait.Start();
+                        _tmrWait.Stop();
+                        _tmrWait.Start();
                         Debug.WriteLine("Wait timer started.");
                     }
                 }
                 else
                 {
-                    frmPopup.Hide();
-                    if (markedForDisposed)
+                    _frmPopup.Hide();
+                    if (_markedForDisposed)
                     {
                         Dispose();
                     }
@@ -577,10 +577,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         private void tmWait_Tick(object sender, EventArgs e)
         {
             Debug.WriteLine("Wait timer elapsed.");
-            tmrWait.Stop();
-            tmrAnimation.Interval = AnimationInterval;
-            tmrAnimation.Start();
-            sw.Restart();
+            _tmrWait.Stop();
+            _tmrAnimation.Interval = AnimationInterval;
+            _tmrAnimation.Start();
+            _sw.Restart();
             Debug.WriteLine("Animation started.");
         }
 
@@ -592,13 +592,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         private void frmPopup_MouseLeave(object sender, EventArgs e)
         {
             Debug.WriteLine("MouseLeave");
-            if (frmPopup.Visible && (OptionsMenu == null || !OptionsMenu.Visible))
+            if (_frmPopup.Visible && (OptionsMenu == null || !OptionsMenu.Visible))
             {
-                tmrWait.Interval = Delay;
-                tmrWait.Start();
+                _tmrWait.Interval = Delay;
+                _tmrWait.Start();
                 Debug.WriteLine("Wait timer started.");
             }
-            mouseIsOn = false;
+            _mouseIsOn = false;
         }
 
         /// <summary>
@@ -609,18 +609,18 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         private void frmPopup_MouseEnter(object sender, EventArgs e)
         {
             Debug.WriteLine("MouseEnter");
-            if (!isAppearing)
+            if (!_isAppearing)
             {
-                frmPopup.Top = maxPosition;
-                frmPopup.Opacity = maxOpacity;
-                tmrAnimation.Stop();
+                _frmPopup.Top = _maxPosition;
+                _frmPopup.Opacity = _maxOpacity;
+                _tmrAnimation.Stop();
                 Debug.WriteLine("Animation stopped.");
             }
 
-            tmrWait.Stop();
+            _tmrWait.Stop();
             Debug.WriteLine("Wait timer stopped.");
 
-            mouseIsOn = true;
+            _mouseIsOn = true;
         }
         #endregion
 
@@ -639,28 +639,28 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </param>
         protected override void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!_disposed)
             {
-                if (isAppearing)
+                if (_isAppearing)
                 {
-                    markedForDisposed = true;
+                    _markedForDisposed = true;
                     return;
                 }
 
                 if (disposing)
                 {
-                    if (frmPopup != null)
+                    if (_frmPopup != null)
                     {
-                        frmPopup.Dispose();
+                        _frmPopup.Dispose();
                     }
 
-                    tmrAnimation.Tick -= tmAnimation_Tick;
-                    tmrWait.Tick -= tmWait_Tick;
-                    tmrAnimation.Dispose();
-                    tmrWait.Dispose();
+                    _tmrAnimation.Tick -= tmAnimation_Tick;
+                    _tmrWait.Tick -= tmWait_Tick;
+                    _tmrAnimation.Dispose();
+                    _tmrWait.Dispose();
 
                 }
-                disposed = true;
+                _disposed = true;
             }
 
             base.Dispose(disposing);

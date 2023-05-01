@@ -48,8 +48,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public double DonutSize;
         public string DonutLabel;
-        public readonly Font CenterFont = new Font();
-        public readonly Font SliceFont = new Font();
+        public readonly Font CenterFont = new();
+        public readonly Font SliceFont = new();
 
         public float OutlineSize = 0;
         public Color OutlineColor = Color.Black;
@@ -80,18 +80,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public LegendItem[] GetLegendItems()
         {
-            if (SliceLabels is null)
-            {
-                return null;
-            }
-
             return Enumerable
                 .Range(0, Values.Length)
                 .Select(i => new LegendItem() { label = SliceLabels[i], color = SliceFillColors[i], lineWidth = 10 })
                 .ToArray();
         }
 
-        public AxisLimits GetAxisLimits() => new AxisLimits(-0.5, 0.5, -1, 1);
+        public AxisLimits GetAxisLimits() => new(-0.5, 0.5, -1, 1);
 
         public int PointCount => Values.Length;
 
@@ -197,7 +192,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                                                 }
 
                                                 // TODO: move length checking logic into new validation system (triaged March, 2021)
-                                                bool useCustomLabelColors = SliceLabelColors is not null && SliceLabelColors.Length == Values.Length;
+                                                bool useCustomLabelColors = SliceLabelColors.Length == Values.Length;
 
                                                 for (int i = 0; i < Values.Length; i++)
                                                 {
@@ -224,10 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                                                 gfx.ResetClip();
 
-                                                if (DonutLabel != null)
-                                                {
-                                                    gfx.DrawString(DonutLabel, centerFont, centerFontBrush, dims.GetPixelX(0), dims.GetPixelY(0), sfCenter);
-                                                }
+                                                gfx.DrawString(DonutLabel, centerFont, centerFontBrush, dims.GetPixelX(0), dims.GetPixelY(0), sfCenter);
 
                                                 if (Explode)
                                                 {

@@ -303,7 +303,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             size = this.GetSnapshotSize();
             if (!size.IsEmpty)
             {
-                this.SnapshotImage = new Bitmap(size.Width, size.Height, PixelFormat.Format32bppArgb);
+                this.SnapshotImage = new(size.Width, size.Height, PixelFormat.Format32bppArgb);
                 this.Invalidate();
             }
         }
@@ -341,7 +341,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             x = this.ClientSize.Width / this.Zoom / 2;
             y = this.ClientSize.Height / this.Zoom / 2;
 
-            return new Point(x, y);
+            return new(x, y);
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             snapshotWidth = (int)Math.Ceiling(this.ClientSize.Width / (double)this.Zoom);
             snapshotHeight = (int)Math.Ceiling(this.ClientSize.Height / (double)this.Zoom);
 
-            return snapshotHeight != 0 && snapshotWidth != 0 ? new Size(snapshotWidth, snapshotHeight) : Size.Empty;
+            return snapshotHeight != 0 && snapshotWidth != 0 ? new(snapshotWidth, snapshotHeight) : Size.Empty;
         }
 
         /// <summary>
@@ -436,7 +436,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 if (_eyedropperCursor == null)
                 {
                     // ReSharper disable AssignNullToNotNullAttribute
-                    _eyedropperCursor = new Cursor(this.GetType().Assembly.GetManifestResourceStream(
+                    _eyedropperCursor = new(this.GetType().Assembly.GetManifestResourceStream(
                         $"{this.GetType().Namespace}.Resources.eyedropper.cur"));
                 }
                 // ReSharper restore AssignNullToNotNullAttribute
@@ -493,7 +493,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
                 e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-                e.Graphics.DrawImage(this.SnapshotImage, new Rectangle(0, 0, this.SnapshotImage.Width * this.Zoom, this.SnapshotImage.Height * this.Zoom), new Rectangle(Point.Empty, this.SnapshotImage.Size), GraphicsUnit.Pixel);
+                e.Graphics.DrawImage(this.SnapshotImage, new Rectangle(0, 0, this.SnapshotImage.Width * this.Zoom, this.SnapshotImage.Height * this.Zoom), new(Point.Empty, this.SnapshotImage.Size), GraphicsUnit.Pixel);
             }
 
             this.PaintAdornments(e);
@@ -607,7 +607,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             center = this.GetCenterPoint();
 
-            using (Pen pen = new Pen(this.ForeColor))
+            using (Pen pen = new(this.ForeColor))
             {
                 e.Graphics.DrawRectangle(pen, center.X * this.Zoom, center.Y * this.Zoom, this.Zoom + 2, this.Zoom + 2);
             }
@@ -625,7 +625,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             pixelSize = this.Zoom;
             viewport = this.ClientRectangle;
 
-            using (Pen pen = new Pen(this.GridColour)
+            using (Pen pen = new(this.GridColour)
             {
                 DashStyle = DashStyle.Dot
             })

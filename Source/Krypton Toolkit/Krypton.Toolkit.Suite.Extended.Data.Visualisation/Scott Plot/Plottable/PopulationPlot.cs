@@ -105,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
         }
 
-        public LegendItem[] GetLegendItems() => MultiSeries.multiSeries
+        public LegendItem[]? GetLegendItems() => MultiSeries.multiSeries
                 .Select(x => new LegendItem() { label = x.seriesLabel, color = x.color, lineWidth = 10 })
                 .ToArray();
 

@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (KryptonMessageBox.Show("WARNING! You are about to reset these settings back to their original state. This action cannot be undone!\nDo you want to proceed?", "Reset Settings", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
-                SetDefaultWindowPosition(new Point(0, 0));
+                SetDefaultWindowPosition(new(0, 0));
 
                 if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question) == DialogResult.Yes)
                 {

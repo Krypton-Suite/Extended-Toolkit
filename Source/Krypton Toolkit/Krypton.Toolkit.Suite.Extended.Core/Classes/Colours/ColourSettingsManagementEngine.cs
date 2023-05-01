@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="colour">The colour.</param>
         public static void SetColourSettingsAsColour(AllAvailableColourTypes colourType, Color colour)
         {
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             switch (colourType)
             {
@@ -144,7 +144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void SetColourSettingsAsString(AllAvailableColourTypes colourType, Color colour)
         {
-            ColourStringSettingsManager colourStringSettingsManager = new ColourStringSettingsManager();
+            ColourStringSettingsManager colourStringSettingsManager = new();
 
             switch (colourType)
             {
@@ -248,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="colour">The colour.</param>
         public static void SetBasicColours(BasicPaletteColourDefinitions basicPaletteColourDefinition, Color colour)
         {
-            BasicColourSettingsManager colourSettingsManager = new BasicColourSettingsManager();
+            BasicColourSettingsManager colourSettingsManager = new();
 
             switch (basicPaletteColourDefinition)
             {
@@ -279,7 +279,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             Color tempColour = Color.FromArgb(0, 0, 0, 0);
 
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             try
             {
@@ -392,7 +392,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void RetrieveAllColourSettingsAsColour()
         {
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             try
             {
@@ -407,15 +407,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public static void SaveSettings(SettingTypes settingType)
         {
             #region Variables
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             //ColourStringSettingsManager colourStringSettingsManager = new ColourStringSettingsManager();
 
-            ColourIntegerSettingsManager colourIntegerSettingsManager = new ColourIntegerSettingsManager();
+            ColourIntegerSettingsManager colourIntegerSettingsManager = new();
 
-            GlobalBooleanSettingsManager globalBooleanSettingsManager = new GlobalBooleanSettingsManager();
+            GlobalBooleanSettingsManager globalBooleanSettingsManager = new();
 
-            GlobalStringSettingsManager globalStringSettingsManager = new GlobalStringSettingsManager();
+            GlobalStringSettingsManager globalStringSettingsManager = new();
             #endregion
 
             try

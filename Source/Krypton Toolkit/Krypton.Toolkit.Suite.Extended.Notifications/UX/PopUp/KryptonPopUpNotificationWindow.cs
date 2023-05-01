@@ -27,41 +27,8 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
-    internal class KryptonPopUpNotificationWindow : KryptonForm
+    public partial class KryptonPopUpNotificationWindow : KryptonForm
     {
-        #region Design Code
-        private KryptonPanel kryptonPanel1;
-
-        private void InitializeComponent()
-        {
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // kryptonPanel1
-            // 
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(424, 70);
-            this.kryptonPanel1.TabIndex = 0;
-            // 
-            // KryptonPopUpNotificationWindow
-            // 
-            this.ClientSize = new System.Drawing.Size(424, 70);
-            this.ControlBox = false;
-            this.Controls.Add(this.kryptonPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "KryptonPopUpNotificationWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.ResumeLayout(false);
-
-        }
-        #endregion
-
         #region Events
         /// <summary>
         /// Event that is raised when the text is clicked.
@@ -79,27 +46,27 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #endregion
 
         #region Variables
-        private bool mouseOnClose = false;
-        private bool mouseOnLink = false;
-        private bool mouseOnOptions = false;
-        private int heightOfTitle;
+        private bool _mouseOnClose = false;
+        private bool _mouseOnLink = false;
+        private bool _mouseOnOptions = false;
+        private int _heightOfTitle;
 
         #region GDI Objects
 
-        private bool gdiInitialized = false;
-        private Rectangle rcBody;
-        private Rectangle rcHeader;
-        private Rectangle rcForm;
-        private LinearGradientBrush brushBody;
-        private LinearGradientBrush brushHeader;
-        private Brush brushButtonHover;
-        private Pen penButtonBorder;
-        private Pen penContent;
-        private Pen penBorder;
-        private Brush brushForeColour;
-        private Brush brushLinkHover;
-        private Brush brushContent;
-        private Brush brushTitle;
+        private bool _gdiInitialized = false;
+        private Rectangle _rcBody;
+        private Rectangle _rcHeader;
+        private Rectangle _rcForm;
+        private LinearGradientBrush _brushBody;
+        private LinearGradientBrush _brushHeader;
+        private Brush _brushButtonHover;
+        private Pen _penButtonBorder;
+        private Pen _penContent;
+        private Pen _penBorder;
+        private Brush _brushForeColour;
+        private Brush _brushLinkHover;
+        private Brush _brushContent;
+        private Brush _brushTitle;
 
         #endregion
 
@@ -120,17 +87,17 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 {
                     return new RectangleF(
                         PopUp.ImagePadding.Left + PopUp.ImageSize.Width + PopUp.ImagePadding.Right + PopUp.ContentPadding.Left,
-                        PopUp.HeaderHeight + PopUp.TitlePadding.Top + heightOfTitle + PopUp.TitlePadding.Bottom + PopUp.ContentPadding.Top,
+                        PopUp.HeaderHeight + PopUp.TitlePadding.Top + _heightOfTitle + PopUp.TitlePadding.Bottom + PopUp.ContentPadding.Top,
                         Width - PopUp.ImagePadding.Left - PopUp.ImageSize.Width - PopUp.ImagePadding.Right - PopUp.ContentPadding.Left - PopUp.ContentPadding.Right - 16 - 5,
-                        Height - PopUp.HeaderHeight - PopUp.TitlePadding.Top - heightOfTitle - PopUp.TitlePadding.Bottom - PopUp.ContentPadding.Top - PopUp.ContentPadding.Bottom - 1);
+                        Height - PopUp.HeaderHeight - PopUp.TitlePadding.Top - _heightOfTitle - PopUp.TitlePadding.Bottom - PopUp.ContentPadding.Top - PopUp.ContentPadding.Bottom - 1);
                 }
                 else
                 {
                     return new RectangleF(
                         PopUp.ContentPadding.Left,
-                        PopUp.HeaderHeight + PopUp.TitlePadding.Top + heightOfTitle + PopUp.TitlePadding.Bottom + PopUp.ContentPadding.Top,
+                        PopUp.HeaderHeight + PopUp.TitlePadding.Top + _heightOfTitle + PopUp.TitlePadding.Bottom + PopUp.ContentPadding.Top,
                         Width - PopUp.ContentPadding.Left - PopUp.ContentPadding.Right - 16 - 5,
-                        Height - PopUp.HeaderHeight - PopUp.TitlePadding.Top - heightOfTitle - PopUp.TitlePadding.Bottom - PopUp.ContentPadding.Top - PopUp.ContentPadding.Bottom - 1);
+                        Height - PopUp.HeaderHeight - PopUp.TitlePadding.Top - _heightOfTitle - PopUp.TitlePadding.Bottom - PopUp.ContentPadding.Top - PopUp.ContentPadding.Bottom - 1);
                 }
             }
         }
@@ -173,11 +140,11 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             if (Visible)
             {
-                mouseOnClose = false;
+                _mouseOnClose = false;
 
-                mouseOnLink = false;
+                _mouseOnLink = false;
 
-                mouseOnOptions = false;
+                _mouseOnOptions = false;
             }
         }
 
@@ -190,13 +157,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             if (PopUp.ShowCloseButton)
             {
-                mouseOnClose = RectClose.Contains(e.X, e.Y);
+                _mouseOnClose = RectClose.Contains(e.X, e.Y);
             }
             if (PopUp.ShowOptionsButton)
             {
-                mouseOnOptions = RectOptions.Contains(e.X, e.Y);
+                _mouseOnOptions = RectOptions.Contains(e.X, e.Y);
             }
-            mouseOnLink = RectContentText.Contains(e.X, e.Y);
+            _mouseOnLink = RectContentText.Contains(e.X, e.Y);
             Invalidate();
         }
 
@@ -251,37 +218,37 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void PopupNotifierForm_Paint(object sender, PaintEventArgs e)
         {
-            if (!gdiInitialized)
+            if (!_gdiInitialized)
             {
-                AllocateGDIObjects();
+                AllocateGdiObjects();
             }
 
             // draw window
-            e.Graphics.FillRectangle(brushBody, rcBody);
-            e.Graphics.FillRectangle(brushHeader, rcHeader);
-            e.Graphics.DrawRectangle(penBorder, rcForm);
+            e.Graphics.FillRectangle(_brushBody, _rcBody);
+            e.Graphics.FillRectangle(_brushHeader, _rcHeader);
+            e.Graphics.DrawRectangle(_penBorder, _rcForm);
             if (PopUp.ShowGrip)
             {
-                e.Graphics.DrawImage(Properties.Resources.Grip, (int)((this.Width - Properties.Resources.Grip.Width) / 2), (int)((PopUp.HeaderHeight - 3) / 2));
+                e.Graphics.DrawImage(Properties.Resources.Grip, (int)((Width - Properties.Resources.Grip.Width) / 2), (int)((PopUp.HeaderHeight - 3) / 2));
             }
             if (PopUp.ShowCloseButton)
             {
-                if (mouseOnClose)
+                if (_mouseOnClose)
                 {
-                    e.Graphics.FillRectangle(brushButtonHover, RectClose);
-                    e.Graphics.DrawRectangle(penButtonBorder, RectClose);
+                    e.Graphics.FillRectangle(_brushButtonHover, RectClose);
+                    e.Graphics.DrawRectangle(_penButtonBorder, RectClose);
                 }
-                e.Graphics.DrawLine(penContent, RectClose.Left + 4, RectClose.Top + 4, RectClose.Right - 4, RectClose.Bottom - 4);
-                e.Graphics.DrawLine(penContent, RectClose.Left + 4, RectClose.Bottom - 4, RectClose.Right - 4, RectClose.Top + 4);
+                e.Graphics.DrawLine(_penContent, RectClose.Left + 4, RectClose.Top + 4, RectClose.Right - 4, RectClose.Bottom - 4);
+                e.Graphics.DrawLine(_penContent, RectClose.Left + 4, RectClose.Bottom - 4, RectClose.Right - 4, RectClose.Top + 4);
             }
             if (PopUp.ShowOptionsButton)
             {
-                if (mouseOnOptions)
+                if (_mouseOnOptions)
                 {
-                    e.Graphics.FillRectangle(brushButtonHover, RectOptions);
-                    e.Graphics.DrawRectangle(penButtonBorder, RectOptions);
+                    e.Graphics.FillRectangle(_brushButtonHover, RectOptions);
+                    e.Graphics.DrawRectangle(_penButtonBorder, RectOptions);
                 }
-                e.Graphics.FillPolygon(brushForeColour, new Point[] { new Point(RectOptions.Left + 4, RectOptions.Top + 6), new Point(RectOptions.Left + 12, RectOptions.Top + 6), new Point(RectOptions.Left + 8, RectOptions.Top + 4 + 6) });
+                e.Graphics.FillPolygon(_brushForeColour, new Point[] { new Point(RectOptions.Left + 4, RectOptions.Top + 6), new Point(RectOptions.Left + 12, RectOptions.Top + 6), new Point(RectOptions.Left + 8, RectOptions.Top + 4 + 6) });
             }
 
             // draw icon
@@ -293,18 +260,18 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             if (PopUp.IsRightToLeft)
             {
-                heightOfTitle = (int)e.Graphics.MeasureString("A", PopUp.TitleFont).Height;
+                _heightOfTitle = (int)e.Graphics.MeasureString("A", PopUp.TitleFont).Height;
 
                 // the value 30 is because of x close icon
-                int titleX2 = this.Width - 30;// PopUp.TitlePadding.Right;
+                int titleX2 = Width - 30;// PopUp.TitlePadding.Right;
 
                 // draw title right to left
                 StringFormat headerFormat = new StringFormat(StringFormatFlags.DirectionRightToLeft);
-                e.Graphics.DrawString(PopUp.TitleText, PopUp.TitleFont, brushTitle, titleX2, PopUp.HeaderHeight + PopUp.TitlePadding.Top, headerFormat);
+                e.Graphics.DrawString(PopUp.TitleText, PopUp.TitleFont, _brushTitle, titleX2, PopUp.HeaderHeight + PopUp.TitlePadding.Top, headerFormat);
 
                 // draw content text, optionally with a bold part
-                this.Cursor = mouseOnLink ? Cursors.Hand : Cursors.Default;
-                Brush brushText = mouseOnLink ? brushLinkHover : brushContent;
+                Cursor = _mouseOnLink ? Cursors.Hand : Cursors.Default;
+                Brush brushText = _mouseOnLink ? _brushLinkHover : _brushContent;
 
                 // draw content right to left
                 StringFormat contentFormat = new StringFormat(StringFormatFlags.DirectionRightToLeft);
@@ -313,17 +280,17 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             else
             {
                 // calculate height of title
-                heightOfTitle = (int)e.Graphics.MeasureString("A", PopUp.TitleFont).Height;
+                _heightOfTitle = (int)e.Graphics.MeasureString("A", PopUp.TitleFont).Height;
                 int titleX = PopUp.TitlePadding.Left;
                 if (PopUp.Image != null)
                 {
                     titleX += PopUp.ImagePadding.Left + PopUp.ImageSize.Width + PopUp.ImagePadding.Right;
                 }
 
-                e.Graphics.DrawString(PopUp.TitleText, PopUp.TitleFont, brushTitle, titleX, PopUp.HeaderHeight + PopUp.TitlePadding.Top);
+                e.Graphics.DrawString(PopUp.TitleText, PopUp.TitleFont, _brushTitle, titleX, PopUp.HeaderHeight + PopUp.TitlePadding.Top);
                 // draw content text, optionally with a bold part
-                this.Cursor = mouseOnLink ? Cursors.Hand : Cursors.Default;
-                Brush brushText = mouseOnLink ? brushLinkHover : brushContent;
+                Cursor = _mouseOnLink ? Cursors.Hand : Cursors.Default;
+                Brush brushText = _mouseOnLink ? _brushLinkHover : _brushContent;
                 e.Graphics.DrawString(PopUp.ContentText, PopUp.ContentFont, brushText, RectContentText);
             }
         }
@@ -363,56 +330,44 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <summary>
         /// Create all GDI objects used to paint the form.
         /// </summary>
-        private void AllocateGDIObjects()
+        private void AllocateGdiObjects()
         {
-            rcBody = new Rectangle(0, 0, Width, Height);
-            rcHeader = new Rectangle(0, 0, Width, PopUp.HeaderHeight);
-            rcForm = new Rectangle(0, 0, Width - 1, Height - 1);
+            _rcBody = new Rectangle(0, 0, Width, Height);
+            _rcHeader = new Rectangle(0, 0, Width, PopUp.HeaderHeight);
+            _rcForm = new Rectangle(0, 0, Width - 1, Height - 1);
 
-            brushBody = new LinearGradientBrush(rcBody, PopUp.BodyColour, GetLighterColour(PopUp.BodyColour), LinearGradientMode.Vertical);
-            brushHeader = new LinearGradientBrush(rcHeader, PopUp.HeaderColour, GetDarkerColour(PopUp.HeaderColour), LinearGradientMode.Vertical);
-            brushButtonHover = new SolidBrush(PopUp.ButtonHoverColour);
-            penButtonBorder = new Pen(PopUp.ButtonBorderColour);
-            penContent = new Pen(PopUp.ContentColour, 2);
-            penBorder = new Pen(PopUp.BorderColour);
-            brushForeColour = new SolidBrush(ForeColor);
-            brushLinkHover = new SolidBrush(PopUp.ContentHoverColour);
-            brushContent = new SolidBrush(PopUp.ContentColour);
-            brushTitle = new SolidBrush(PopUp.TitleColour);
+            _brushBody = new LinearGradientBrush(_rcBody, PopUp.BodyColour, GetLighterColour(PopUp.BodyColour), LinearGradientMode.Vertical);
+            _brushHeader = new LinearGradientBrush(_rcHeader, PopUp.HeaderColour, GetDarkerColour(PopUp.HeaderColour), LinearGradientMode.Vertical);
+            _brushButtonHover = new SolidBrush(PopUp.ButtonHoverColour);
+            _penButtonBorder = new Pen(PopUp.ButtonBorderColour);
+            _penContent = new Pen(PopUp.ContentColour, 2);
+            _penBorder = new Pen(PopUp.BorderColour);
+            _brushForeColour = new SolidBrush(ForeColor);
+            _brushLinkHover = new SolidBrush(PopUp.ContentHoverColour);
+            _brushContent = new SolidBrush(PopUp.ContentColour);
+            _brushTitle = new SolidBrush(PopUp.TitleColour);
 
-            gdiInitialized = true;
+            _gdiInitialized = true;
         }
 
         /// <summary>
         /// Free all GDI objects.
         /// </summary>
-        private void DisposeGDIObjects()
+        private void DisposeGdiObjects()
         {
-            if (gdiInitialized)
+            if (_gdiInitialized)
             {
-                brushBody.Dispose();
-                brushHeader.Dispose();
-                brushButtonHover.Dispose();
-                penButtonBorder.Dispose();
-                penContent.Dispose();
-                penBorder.Dispose();
-                brushForeColour.Dispose();
-                brushLinkHover.Dispose();
-                brushContent.Dispose();
-                brushTitle.Dispose();
+                _brushBody.Dispose();
+                _brushHeader.Dispose();
+                _brushButtonHover.Dispose();
+                _penButtonBorder.Dispose();
+                _penContent.Dispose();
+                _penBorder.Dispose();
+                _brushForeColour.Dispose();
+                _brushLinkHover.Dispose();
+                _brushContent.Dispose();
+                _brushTitle.Dispose();
             }
-        }
-        #endregion
-
-        #region Overrides
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                DisposeGDIObjects();
-            }
-
-            base.Dispose(disposing);
         }
         #endregion
     }

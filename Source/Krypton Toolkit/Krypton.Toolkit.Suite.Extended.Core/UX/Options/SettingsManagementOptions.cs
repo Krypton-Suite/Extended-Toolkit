@@ -57,19 +57,19 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void InitializeComponent()
         {
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnResetPaletteTypefaceSettings = new Krypton.Toolkit.KryptonButton();
-            this.kbtnResetGlobalStringSettings = new Krypton.Toolkit.KryptonButton();
-            this.kbtnResetGlobalBooleanSettings = new Krypton.Toolkit.KryptonButton();
-            this.kbtnResetColourStringSettings = new Krypton.Toolkit.KryptonButton();
-            this.kbtnResetColourSettings = new Krypton.Toolkit.KryptonButton();
-            this.kbtnResetColourIntegerSettings = new Krypton.Toolkit.KryptonButton();
-            this.kbtnResetColourBlendingSettings = new Krypton.Toolkit.KryptonButton();
-            this.kbtnNukeAllSettings = new Krypton.Toolkit.KryptonButton();
-            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.kchkAskForConfirmation = new Krypton.Toolkit.KryptonCheckBox();
+            this.kryptonPanel1 = new();
+            this.kbtnResetPaletteTypefaceSettings = new();
+            this.kbtnResetGlobalStringSettings = new();
+            this.kbtnResetGlobalBooleanSettings = new();
+            this.kbtnResetColourStringSettings = new();
+            this.kbtnResetColourSettings = new();
+            this.kbtnResetColourIntegerSettings = new();
+            this.kbtnResetColourBlendingSettings = new();
+            this.kbtnNukeAllSettings = new();
+            this.kryptonPanel2 = new();
+            this.kryptonBorderEdge1 = new();
+            this.kbtnCancel = new();
+            this.kchkAskForConfirmation = new();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -87,90 +87,90 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel1.Controls.Add(this.kbtnResetColourBlendingSettings);
             this.kryptonPanel1.Controls.Add(this.kbtnNukeAllSettings);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Location = new(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(714, 535);
+            this.kryptonPanel1.Size = new(714, 535);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // kbtnResetPaletteTypefaceSettings
             // 
             this.kbtnResetPaletteTypefaceSettings.CornerRoundingRadius = -1F;
-            this.kbtnResetPaletteTypefaceSettings.Location = new System.Drawing.Point(12, 360);
+            this.kbtnResetPaletteTypefaceSettings.Location = new(12, 360);
             this.kbtnResetPaletteTypefaceSettings.Name = "kbtnResetPaletteTypefaceSettings";
-            this.kbtnResetPaletteTypefaceSettings.Size = new System.Drawing.Size(226, 25);
+            this.kbtnResetPaletteTypefaceSettings.Size = new(226, 25);
             this.kbtnResetPaletteTypefaceSettings.TabIndex = 71;
             this.kbtnResetPaletteTypefaceSettings.Values.Text = "Reset &Palette Typeface Settings";
-            this.kbtnResetPaletteTypefaceSettings.Click += new System.EventHandler(this.kbtnResetPaletteTypefaceSettings_Click);
+            this.kbtnResetPaletteTypefaceSettings.Click += new(this.kbtnResetPaletteTypefaceSettings_Click);
             // 
             // kbtnResetGlobalStringSettings
             // 
             this.kbtnResetGlobalStringSettings.CornerRoundingRadius = -1F;
-            this.kbtnResetGlobalStringSettings.Location = new System.Drawing.Point(12, 302);
+            this.kbtnResetGlobalStringSettings.Location = new(12, 302);
             this.kbtnResetGlobalStringSettings.Name = "kbtnResetGlobalStringSettings";
-            this.kbtnResetGlobalStringSettings.Size = new System.Drawing.Size(226, 25);
+            this.kbtnResetGlobalStringSettings.Size = new(226, 25);
             this.kbtnResetGlobalStringSettings.TabIndex = 70;
             this.kbtnResetGlobalStringSettings.Values.Text = "Reset &Global String Settings";
-            this.kbtnResetGlobalStringSettings.Click += new System.EventHandler(this.kbtnResetGlobalStringSettings_Click);
+            this.kbtnResetGlobalStringSettings.Click += new(this.kbtnResetGlobalStringSettings_Click);
             // 
             // kbtnResetGlobalBooleanSettings
             // 
             this.kbtnResetGlobalBooleanSettings.CornerRoundingRadius = -1F;
-            this.kbtnResetGlobalBooleanSettings.Location = new System.Drawing.Point(12, 244);
+            this.kbtnResetGlobalBooleanSettings.Location = new(12, 244);
             this.kbtnResetGlobalBooleanSettings.Name = "kbtnResetGlobalBooleanSettings";
-            this.kbtnResetGlobalBooleanSettings.Size = new System.Drawing.Size(226, 25);
+            this.kbtnResetGlobalBooleanSettings.Size = new(226, 25);
             this.kbtnResetGlobalBooleanSettings.TabIndex = 69;
             this.kbtnResetGlobalBooleanSettings.Values.Text = "Reset Global B&oolean Settings";
-            this.kbtnResetGlobalBooleanSettings.Click += new System.EventHandler(this.kbtnResetGlobalBooleanSettings_Click);
+            this.kbtnResetGlobalBooleanSettings.Click += new(this.kbtnResetGlobalBooleanSettings_Click);
             // 
             // kbtnResetColourStringSettings
             // 
             this.kbtnResetColourStringSettings.CornerRoundingRadius = -1F;
-            this.kbtnResetColourStringSettings.Location = new System.Drawing.Point(12, 186);
+            this.kbtnResetColourStringSettings.Location = new(12, 186);
             this.kbtnResetColourStringSettings.Name = "kbtnResetColourStringSettings";
-            this.kbtnResetColourStringSettings.Size = new System.Drawing.Size(226, 25);
+            this.kbtnResetColourStringSettings.Size = new(226, 25);
             this.kbtnResetColourStringSettings.TabIndex = 68;
             this.kbtnResetColourStringSettings.Values.Text = "Reset Colour &String Settings";
-            this.kbtnResetColourStringSettings.Click += new System.EventHandler(this.kbtnResetColourStringSettings_Click);
+            this.kbtnResetColourStringSettings.Click += new(this.kbtnResetColourStringSettings_Click);
             // 
             // kbtnResetColourSettings
             // 
             this.kbtnResetColourSettings.CornerRoundingRadius = -1F;
-            this.kbtnResetColourSettings.Location = new System.Drawing.Point(12, 128);
+            this.kbtnResetColourSettings.Location = new(12, 128);
             this.kbtnResetColourSettings.Name = "kbtnResetColourSettings";
-            this.kbtnResetColourSettings.Size = new System.Drawing.Size(226, 25);
+            this.kbtnResetColourSettings.Size = new(226, 25);
             this.kbtnResetColourSettings.TabIndex = 67;
             this.kbtnResetColourSettings.Values.Text = "Reset &Colour Settings";
-            this.kbtnResetColourSettings.Click += new System.EventHandler(this.kbtnResetColourSettings_Click);
+            this.kbtnResetColourSettings.Click += new(this.kbtnResetColourSettings_Click);
             // 
             // kbtnResetColourIntegerSettings
             // 
             this.kbtnResetColourIntegerSettings.CornerRoundingRadius = -1F;
-            this.kbtnResetColourIntegerSettings.Location = new System.Drawing.Point(12, 70);
+            this.kbtnResetColourIntegerSettings.Location = new(12, 70);
             this.kbtnResetColourIntegerSettings.Name = "kbtnResetColourIntegerSettings";
-            this.kbtnResetColourIntegerSettings.Size = new System.Drawing.Size(226, 25);
+            this.kbtnResetColourIntegerSettings.Size = new(226, 25);
             this.kbtnResetColourIntegerSettings.TabIndex = 66;
             this.kbtnResetColourIntegerSettings.Values.Text = "Reset Colour &Integer Settings";
-            this.kbtnResetColourIntegerSettings.Click += new System.EventHandler(this.kbtnResetColourIntegerSettings_Click);
+            this.kbtnResetColourIntegerSettings.Click += new(this.kbtnResetColourIntegerSettings_Click);
             // 
             // kbtnResetColourBlendingSettings
             // 
             this.kbtnResetColourBlendingSettings.CornerRoundingRadius = -1F;
-            this.kbtnResetColourBlendingSettings.Location = new System.Drawing.Point(12, 12);
+            this.kbtnResetColourBlendingSettings.Location = new(12, 12);
             this.kbtnResetColourBlendingSettings.Name = "kbtnResetColourBlendingSettings";
-            this.kbtnResetColourBlendingSettings.Size = new System.Drawing.Size(226, 25);
+            this.kbtnResetColourBlendingSettings.Size = new(226, 25);
             this.kbtnResetColourBlendingSettings.TabIndex = 65;
             this.kbtnResetColourBlendingSettings.Values.Text = "Reset Colour &Blending Settings";
-            this.kbtnResetColourBlendingSettings.Click += new System.EventHandler(this.kbtnResetColourBlendingSettings_Click);
+            this.kbtnResetColourBlendingSettings.Click += new(this.kbtnResetColourBlendingSettings_Click);
             // 
             // kbtnNukeAllSettings
             // 
             this.kbtnNukeAllSettings.CornerRoundingRadius = -1F;
-            this.kbtnNukeAllSettings.Location = new System.Drawing.Point(12, 418);
+            this.kbtnNukeAllSettings.Location = new(12, 418);
             this.kbtnNukeAllSettings.Name = "kbtnNukeAllSettings";
-            this.kbtnNukeAllSettings.Size = new System.Drawing.Size(226, 25);
+            this.kbtnNukeAllSettings.Size = new(226, 25);
             this.kbtnNukeAllSettings.TabIndex = 64;
             this.kbtnNukeAllSettings.Values.Text = "&Nuke All Settings";
-            this.kbtnNukeAllSettings.Click += new System.EventHandler(this.kbtnNukeAllSettings_Click);
+            this.kbtnNukeAllSettings.Click += new(this.kbtnNukeAllSettings_Click);
             // 
             // kryptonPanel2
             // 
@@ -178,19 +178,19 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel2.Controls.Add(this.kbtnCancel);
             this.kryptonPanel2.Controls.Add(this.kchkAskForConfirmation);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 483);
+            this.kryptonPanel2.Location = new(0, 483);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kryptonPanel2.Size = new System.Drawing.Size(714, 52);
+            this.kryptonPanel2.Size = new(714, 52);
             this.kryptonPanel2.TabIndex = 0;
             // 
             // kryptonBorderEdge1
             // 
             this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
             this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Location = new(0, 0);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(714, 1);
+            this.kryptonBorderEdge1.Size = new(714, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // kbtnCancel
@@ -199,25 +199,25 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnCancel.AutoSize = true;
             this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(612, 15);
+            this.kbtnCancel.Location = new(612, 15);
             this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCancel.Size = new(90, 25);
             this.kbtnCancel.TabIndex = 4;
             this.kbtnCancel.Values.Text = "Ca&ncel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += new(this.kbtnCancel_Click);
             // 
             // kchkAskForConfirmation
             // 
-            this.kchkAskForConfirmation.Location = new System.Drawing.Point(12, 20);
+            this.kchkAskForConfirmation.Location = new(12, 20);
             this.kchkAskForConfirmation.Name = "kchkAskForConfirmation";
-            this.kchkAskForConfirmation.Size = new System.Drawing.Size(136, 20);
+            this.kchkAskForConfirmation.Size = new(136, 20);
             this.kchkAskForConfirmation.TabIndex = 0;
             this.kchkAskForConfirmation.Values.Text = "&Ask for Confirmation";
             // 
             // SettingsManagementOptions
             // 
             this.CancelButton = this.kbtnCancel;
-            this.ClientSize = new System.Drawing.Size(714, 535);
+            this.ClientSize = new(714, 535);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -227,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reset Settings";
-            this.Load += new System.EventHandler(this.SettingsManagementOptions_Load);
+            this.Load += new(this.SettingsManagementOptions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();

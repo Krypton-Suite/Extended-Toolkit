@@ -26,7 +26,6 @@
  */
 #endregion
 
-using System.Linq;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -38,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             get
             {
-                return new ColourCollection(new[]
+                return new(new[]
                                            {
                                      Color.FromArgb(0, 48, 96),
                                      Color.FromArgb(47, 96, 144),
@@ -185,7 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 List<Color> results;
 
-                results = new List<Color>();
+                results = new();
 
                 foreach (PropertyInfo property in typeof(Color).GetProperties(BindingFlags.Public | BindingFlags.Static).Where(property => property.PropertyType == typeof(Color)))
                 {
@@ -200,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 results.Sort(ColourComparer.Brightness);
 
-                return new ColourCollection(results);
+                return new(results);
             }
         }
 
@@ -228,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             get
             {
-                return new ColourCollection(new[]
+                return new(new[]
                                            {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(64, 64, 64),
@@ -334,7 +333,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             get
             {
-                return new ColourCollection(new[]
+                return new(new[]
                                            {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(128, 0, 0),
@@ -360,7 +359,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             get
             {
-                return new ColourCollection(new[]
+                return new(new[]
                                            {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(128, 0, 0),
@@ -626,7 +625,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             get
             {
-                return new ColourCollection(new[]
+                return new(new[]
                                            {
                                      Color.FromArgb(255, 0, 255),
                                      Color.FromArgb(255, 51, 255),
@@ -875,7 +874,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     result = QbColors;
                     break;
                 case ColourPalette.None:
-                    result = new ColourCollection();
+                    result = new();
                     break;
                 case ColourPalette.WebSafe:
                     result = WebSafe;
@@ -894,7 +893,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             ColourCollection results;
 
-            results = new ColourCollection();
+            results = new();
 
             topRow = topRow.ToArray();
             results.AddRange(topRow);
@@ -905,7 +904,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 {
                     HSLColourStructure hsl;
 
-                    hsl = new HSLColourStructure(colour);
+                    hsl = new(colour);
                     hsl.L = (5 + i + 16 * i) / 100D;
 
                     results.Add(hsl.ToRgbColour());

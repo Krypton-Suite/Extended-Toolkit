@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
+﻿namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
     public partial class KryptonVerifyFileCheckSum : KryptonForm
     {
@@ -30,7 +20,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
             CancelButton = kbtnCancel;
 
-            kbtnCancel.Text = KryptonManager.Strings.Cancel;
+            kbtnCancel.Text = KryptonLanguageManager.Strings.Cancel;
 
             _useAPICodePackFeatures = useAPICodePackFeatures ?? true;
 

@@ -87,14 +87,14 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="customImage">The custom image.</param>
         /// <param name="initialDateTime">The initial date time.</param>
         public KryptonInputBoxExtendedFormTest(string prompt, string caption,
-                                           string defaultResponse, string cueText, 
-                                           Color cueColour, 
+                                           string defaultResponse, string cueText,
+                                           Color cueColour,
                                            Font cueTypeface, Font buttonTypeface, Font promptTypeface,
-                                           InputBoxIconType iconType, KryptonInputBoxResponseType inputType, 
-                                           InputBoxTextAlignment textAlignment, 
-                                           InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, 
-                                           InputBoxButtons buttons = InputBoxButtons.OkCancel, 
-                                           InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour, 
+                                           InputBoxIconType iconType, KryptonInputBoxResponseType inputType,
+                                           InputBoxTextAlignment textAlignment,
+                                           InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
+                                           InputBoxButtons buttons = InputBoxButtons.OkCancel,
+                                           InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
                                            Image customImage = null, DateTime? initialDateTime = null)
         {
             InitializeComponent();
@@ -127,13 +127,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="initialDateTime">The initial date time.</param>
         private void SetupUI(string prompt, string caption, string defaultResponse, string cueText, Color cueColour,
                              Font cueTypeface, Font buttonTypeface, Font promptTypeface,
-                             InputBoxIconType iconType, KryptonInputBoxResponseType inputType, 
+                             InputBoxIconType iconType, KryptonInputBoxResponseType inputType,
                              InputBoxTextAlignment textAlignment,
                              InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, InputBoxButtons buttons,
                              InputBoxButtonFocus focusedButton, Image customImage, DateTime? initialDateTime = null)
         {
             StoreValues(cueColour, prompt, caption, defaultResponse, cueText, cueTypeface, buttonTypeface, promptTypeface,
-                        iconType, inputType, textAlignment, textWrappedMessageTextAlignment, 
+                        iconType, inputType, textAlignment, textWrappedMessageTextAlignment,
                         buttons, focusedButton, customImage, initialDateTime);
 
             UpdateButtons(_buttons, _focusedButton);
@@ -187,11 +187,11 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="customImage">The custom image.</param>
         /// <param name="initialDateTime">The initial date time.</param>
         private void StoreValues(Color cueColour, string prompt, string caption, string defaultResponse, string cueText,
-                                 Font cueTypeface, Font buttonTypeface, Font promptTypeface, 
-                                 InputBoxIconType? iconType, KryptonInputBoxResponseType? inputType, 
+                                 Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+                                 InputBoxIconType? iconType, KryptonInputBoxResponseType? inputType,
                                  InputBoxTextAlignment? textAlignment,
-                                 InputBoxWrappedMessageTextAlignment? textWrappedMessageTextAlignment, 
-                                 InputBoxButtons? buttons, InputBoxButtonFocus? focusedButton, 
+                                 InputBoxWrappedMessageTextAlignment? textWrappedMessageTextAlignment,
+                                 InputBoxButtons? buttons, InputBoxButtonFocus? focusedButton,
                                  Image customImage, DateTime? initialDateTime)
         {
             _cueColour = cueColour;
@@ -334,9 +334,9 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                     pbxIcon.SizeMode = PictureBoxSizeMode.Normal;
 
                     pbxIcon.Size = new(0, 0);
-                    
+
                     kryptonTableLayoutPanel1.Controls.Add(_labelPrompt, 0, 0);
-                    
+
                     kryptonTableLayoutPanel1.SetColumnSpan(_labelPrompt, 2);
                     break;
                 case InputBoxIconType.Ok:
@@ -371,7 +371,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kbtnInputBoxButtonTwo.DialogResult = DialogResult.None;
 
-                    kbtnInputBoxButtonThree.Text = KryptonManager.Strings.OK;
+                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.Strings.OK;
 
                     kbtnInputBoxButtonThree.DialogResult = DialogResult.OK;
 
@@ -384,11 +384,11 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kbtnInputBoxButtonOne.DialogResult = DialogResult.None;
 
-                    kbtnInputBoxButtonTwo.Text = KryptonManager.Strings.OK;
+                    kbtnInputBoxButtonTwo.Text = KryptonLanguageManager.Strings.OK;
 
                     kbtnInputBoxButtonTwo.DialogResult = DialogResult.OK;
 
-                    kbtnInputBoxButtonThree.Text = KryptonManager.Strings.Cancel;
+                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.Strings.Cancel;
 
                     kbtnInputBoxButtonThree.DialogResult = DialogResult.Cancel;
 
@@ -401,11 +401,11 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kbtnInputBoxButtonOne.DialogResult = DialogResult.None;
 
-                    kbtnInputBoxButtonTwo.Text = KryptonManager.Strings.Yes;
+                    kbtnInputBoxButtonTwo.Text = KryptonLanguageManager.Strings.Yes;
 
                     kbtnInputBoxButtonTwo.DialogResult = DialogResult.Yes;
 
-                    kbtnInputBoxButtonThree.Text = KryptonManager.Strings.No;
+                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.Strings.No;
 
                     kbtnInputBoxButtonThree.DialogResult = DialogResult.No;
 
@@ -414,15 +414,15 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                     CancelButton = kbtnInputBoxButtonThree;
                     break;
                 case InputBoxButtons.YesNoCancel:
-                    kbtnInputBoxButtonOne.Text = KryptonManager.Strings.Yes;
+                    kbtnInputBoxButtonOne.Text = KryptonLanguageManager.Strings.Yes;
 
                     kbtnInputBoxButtonOne.DialogResult = DialogResult.Yes;
 
-                    kbtnInputBoxButtonTwo.Text = KryptonManager.Strings.No;
+                    kbtnInputBoxButtonTwo.Text = KryptonLanguageManager.Strings.No;
 
                     kbtnInputBoxButtonTwo.DialogResult = DialogResult.No;
 
-                    kbtnInputBoxButtonThree.Text = KryptonManager.Strings.Cancel;
+                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.Strings.Cancel;
 
                     kbtnInputBoxButtonThree.DialogResult = DialogResult.Cancel;
 

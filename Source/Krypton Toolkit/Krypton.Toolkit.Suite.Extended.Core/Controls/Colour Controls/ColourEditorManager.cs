@@ -431,7 +431,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 if (_colour != value)
                 {
                     _colour = value;
-                    _hslColour = new HSLColourStructure(value);
+                    _hslColour = new(value);
 
                     this.OnColourChanged(EventArgs.Empty);
                 }

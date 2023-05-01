@@ -49,6 +49,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private CommonFileDialogFilterCollection _filterCollection;
 
+        private FileDialogType _fileDialogType;
+
         private string _initialDirectory;
 
         private string _resetText;
@@ -56,6 +58,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private string _resetTextToolTipHeading;
 
         private string _resetTextToolTipDescription;
+
+        private string _standardFilter;
 
         private Image _smallResetImage;
 
@@ -99,6 +103,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         [DefaultValue(null), Description(@"Gets or sets the file dialog filter collection. Please see 'Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogFilterCollection' for more information.")]
         public CommonFileDialogFilterCollection FileDialogFilterCollection { get => _filterCollection; set => _filterCollection = value; }
 
+        public FileDialogType FileDialogType { get => _fileDialogType; set => _fileDialogType = value; }
+
         /// <summary>Gets or sets the initial directory.</summary>
         /// <value>The initial directory.</value>
         [DefaultValue(null), Description(@"Gets or sets the initial directory.")]
@@ -119,6 +125,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         [DefaultValue(@"Resets the text of the text box."), Description(@">Gets or sets the reset text tool tip description.")]
         public string ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
 
+        public string StandardFilter { get => _standardFilter; set => _standardFilter = value; }
+
         /// <summary>Gets or sets the small reset image.</summary>
         /// <value>The small reset image.</value>
         [DefaultValue(typeof(Image), @"Properties.Resources.Reset_16_x_16"), Description(@"Gets or sets the small reset image.")]
@@ -136,13 +144,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <summary>Initializes a new instance of the <see cref="KryptonBrowseComboBox" /> class.</summary>
         public KryptonBrowseComboBox()
         {
-            _bsaBrowse = new ButtonSpecAny();
+            _bsaBrowse = new();
 
-            _bsaReset = new ButtonSpecAny();
+            _bsaReset = new();
 
-            _kcBrowse = new KryptonCommand();
+            _kcBrowse = new();
 
-            _kcReset = new KryptonCommand();
+            _kcReset = new();
 
             _smallResetImage = Image.FromFile("ImageResources.Reset_16_x_16.png");
 
@@ -179,6 +187,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             _kcReset.Execute += Reset_Execute;
 
             ButtonSpecs.AddRange(new[] { _bsaBrowse, _bsaReset });
+
+            _fileDialogType = FileDialogType.Standard;
+
+            _standardFilter = string.Empty;
         }
 
         #endregion
@@ -190,47 +202,134 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void Browse_Execute(object sender, EventArgs e)
         {
-            if (_useSaveDialog)
+            switch (_fileDialogType)
             {
-                CommonSaveFileDialog saveFileDialog = new CommonSaveFileDialog();
+                case FileDialogType.Krypton:
+                    if (_useSaveDialog)
+                    {
+                        KryptonSaveFileDialog saveFileDialog = new();
 
-                saveFileDialog.IsExpandedMode = _isExpandedMode;
+                        if (!string.IsNullOrEmpty(_initialDirectory))
+                        {
+                            saveFileDialog.InitialDirectory = _initialDirectory;
+                        }
 
-                if (!string.IsNullOrEmpty(_initialDirectory))
-                {
-                    saveFileDialog.InitialDirectory = _initialDirectory;
-                }
+                        if (_standardFilter != null)
+                        {
+                            saveFileDialog.Filter = _standardFilter;
+                        }
 
-                if (_filter != null)
-                {
-                    saveFileDialog.Filters.Add(_filter);
-                }
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            Text = Path.GetFullPath(saveFileDialog.FileName);
+                        }
+                    }
+                    else
+                    {
+                        KryptonOpenFileDialog openFileDialog = new();
 
-                if (saveFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
-                {
-                    Text = Path.GetFullPath(saveFileDialog.FileName);
-                }
-            }
-            else
-            {
-                CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+                        if (!string.IsNullOrWhiteSpace(_initialDirectory))
+                        {
+                            openFileDialog.InitialDirectory = _initialDirectory;
+                        }
 
-                dialog.IsFolderPicker = _isFolderPicker;
+                        if (_standardFilter != null)
+                        {
+                            openFileDialog.Filter = _standardFilter;
+                        }
 
-                if (!string.IsNullOrEmpty(_initialDirectory))
-                {
-                    dialog.InitialDirectory = _initialDirectory;
-                }
+                        if (openFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            Text = Path.GetFullPath(openFileDialog.FileName);
+                        }
+                    }
+                    break;
+                case FileDialogType.Standard:
+                    if (_useSaveDialog)
+                    {
+                        SaveFileDialog saveFileDialog = new();
 
-                if (_filter != null)
-                {
-                    dialog.Filters.Add(_filter);
-                }
+                        if (!string.IsNullOrEmpty(_initialDirectory))
+                        {
+                            saveFileDialog.InitialDirectory = _initialDirectory;
+                        }
 
-                if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-                {
-                    Text = Path.GetFullPath(dialog.FileName);
-                }
+                        if (_standardFilter != null)
+                        {
+                            saveFileDialog.Filter = _standardFilter;
+                        }
+
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            Text = Path.GetFullPath(saveFileDialog.FileName);
+                        }
+                    }
+                    else
+                    {
+                        OpenFileDialog openFileDialog = new();
+
+                        if (!string.IsNullOrWhiteSpace(_initialDirectory))
+                        {
+                            openFileDialog.InitialDirectory = _initialDirectory;
+                        }
+
+                        if (_standardFilter != null)
+                        {
+                            openFileDialog.Filter = _standardFilter;
+                        }
+
+                        if (openFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            Text = Path.GetFullPath(openFileDialog.FileName);
+                        }
+                    }
+                    break;
+                case FileDialogType.WindowsAPICodePack:
+                    if (_useSaveDialog)
+                    {
+                        CommonSaveFileDialog saveFileDialog = new();
+
+                        saveFileDialog.IsExpandedMode = _isExpandedMode;
+
+                        if (!string.IsNullOrEmpty(_initialDirectory))
+                        {
+                            saveFileDialog.InitialDirectory = _initialDirectory;
+                        }
+
+                        if (_filter != null)
+                        {
+                            saveFileDialog.Filters.Add(_filter);
+                        }
+
+                        if (saveFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+                        {
+                            Text = Path.GetFullPath(saveFileDialog.FileName);
+                        }
+                    }
+                    else
+                    {
+                        CommonOpenFileDialog dialog = new();
+
+                        dialog.IsFolderPicker = _isFolderPicker;
+
+                        if (!string.IsNullOrEmpty(_initialDirectory))
+                        {
+                            dialog.InitialDirectory = _initialDirectory;
+                        }
+
+                        if (_filter != null)
+                        {
+                            dialog.Filters.Add(_filter);
+                        }
+
+                        if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                        {
+                            Text = Path.GetFullPath(dialog.FileName);
+                        }
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 

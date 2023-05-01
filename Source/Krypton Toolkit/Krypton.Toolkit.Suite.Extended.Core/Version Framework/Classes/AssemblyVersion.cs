@@ -37,15 +37,21 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public string ErrorMessage { get => _errorMessage;
+        public string ErrorMessage
+        {
+            get => _errorMessage;
             set => _errorMessage = value;
         }
 
-        public AssemblyInformation CurrentAssemblyInformation { get => _assemblyInformation;
+        public AssemblyInformation CurrentAssemblyInformation
+        {
+            get => _assemblyInformation;
             set => _assemblyInformation = value;
         }
 
-        public List<AssemblyInformation> ReferenceAssembly { get => _referencesList;
+        public List<AssemblyInformation> ReferenceAssembly
+        {
+            get => _referencesList;
             set => _referencesList = value;
         }
         #endregion
@@ -73,11 +79,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 {
                     AssemblyInformation information = null;
 
-                    ReferenceAssembly = new List<AssemblyInformation>();
+                    ReferenceAssembly = new();
 
                     for (int i = 0; i < assemblyNameList.Length; i++)
                     {
-                        information = new AssemblyInformation();
+                        information = new();
 
                         information.Name = assemblyNameList[i].Name;
 
@@ -121,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (assembly != null)
             {
-                AssemblyInformation information = new AssemblyInformation();
+                AssemblyInformation information = new();
 
                 information.Name = assembly.GetName().Name;
 
@@ -133,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 ErrorMessage = "Invalid assembly specifier!";
 
-                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An error has occurred: {ErrorMessage}", "Unexpected Error", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
 
                 return false;
             }
@@ -150,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (assembly != null)
             {
-                AssemblyInformation information = new AssemblyInformation();
+                AssemblyInformation information = new();
 
                 information.Name = assembly.GetName().Name;
 
@@ -162,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 ErrorMessage = "Invalid assembly specifier!";
 
-                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An error has occurred: {ErrorMessage}", "Unexpected Error", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
 
                 return false;
             }

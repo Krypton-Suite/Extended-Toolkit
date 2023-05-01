@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             HSLColourStructure colour;
 
-            colour = new HSLColourStructure(this.Colour);
+            colour = new(this.Colour);
 
             colour.L = 0;
             this.Colour1 = colour.ToRgbColour();
@@ -159,7 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 HSLColourStructure colour;
 
                 this.LockUpdates = true;
-                colour = new HSLColourStructure(this.Colour);
+                colour = new(this.Colour);
                 colour.L = this.Value / 100D;
                 _colour = colour.ToRgbColour();
                 this.OnColourChanged(e);

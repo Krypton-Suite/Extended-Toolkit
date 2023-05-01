@@ -26,8 +26,6 @@
  */
 #endregion
 
-using System.Linq;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     [ToolboxItem(false)]
@@ -39,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             this.BarStyle = ColourBarStyle.Custom;
             this.Maximum = 359;
-            this.CustomColours = new ColourCollection(Enumerable.Range(0, 359).Select(h => new HSLColourStructure(h, 1, 0.5).ToRgbColour()));
+            this.CustomColours = new(Enumerable.Range(0, 359).Select(h => new HSLColourStructure(h, 1, 0.5).ToRgbColour()));
         }
 
         #endregion

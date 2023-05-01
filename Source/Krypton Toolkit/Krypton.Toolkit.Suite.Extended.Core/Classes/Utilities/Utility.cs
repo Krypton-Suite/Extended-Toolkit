@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 throw new InvalidEnumArgumentException("contentAlignment", (int)contentAlignment, typeof(ContentAlignment));
             }
 
-            StringFormat stringFormat = new StringFormat();
+            StringFormat stringFormat = new();
 
             switch (contentAlignment)
             {
