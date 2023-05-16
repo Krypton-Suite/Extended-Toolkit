@@ -25,14 +25,12 @@
  */
 #endregion
 
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
     public class ToggleSwitchAndroidRenderer : ToggleSwitchRendererBase, IAndroidValues
     {
         #region Variables
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
         private PaletteRedirect _paletteRedirect;
 
         #endregion
@@ -52,18 +50,21 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             OnButtonBorderColour = Color.FromArgb(255, 27, 161, 226);
             */
 
-            BorderColour = _palette.ColorTable.MenuBorder;
-            BackColour = _palette.ColorTable.MenuStripGradientBegin;
-            LeftSideColour = _palette.ColorTable.MenuStripGradientBegin;
-            RightSideColour = _palette.ColorTable.MenuStripGradientEnd;
-            OffButtonColour = Color.FromArgb(255, 70, 70, 70);
-            OnButtonColour = Color.FromArgb(255, 27, 161, 226);
-            OffButtonBorderColour = Color.FromArgb(255, 70, 70, 70);
-            OnButtonBorderColour = Color.FromArgb(255, 27, 161, 226);
-
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                BorderColour = _palette.ColorTable.MenuBorder;
+                BackColour = _palette.ColorTable.MenuStripGradientBegin;
+                LeftSideColour = _palette.ColorTable.MenuStripGradientBegin;
+                RightSideColour = _palette.ColorTable.MenuStripGradientEnd;
+                OffButtonColour = Color.FromArgb(255, 70, 70, 70);
+                OnButtonColour = Color.FromArgb(255, 27, 161, 226);
+                OffButtonBorderColour = Color.FromArgb(255, 70, 70, 70);
+                OnButtonBorderColour = Color.FromArgb(255, 27, 161, 226);
+
+                if (_palette != null)
+                {
+                    _palette.PalettePaint += OnPalettePaint!;
+                }
             }
 
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -206,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 g.FillPolygon(buttonBrush, polygonPoints);
             }
 
-            Image buttonImage = ToggleSwitch.ButtonImage ?? (ToggleSwitch.Checked ? ToggleSwitch.OnButtonImage : ToggleSwitch.OffButtonImage);
+            Image? buttonImage = ToggleSwitch.ButtonImage ?? (ToggleSwitch.Checked ? ToggleSwitch.OnButtonImage : ToggleSwitch.OffButtonImage);
             string buttonText = ToggleSwitch.Checked ? ToggleSwitch.OnText : ToggleSwitch.OffText;
 
             if (buttonImage != null || !string.IsNullOrEmpty(buttonText))
@@ -368,7 +369,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         {
             if (_palette != null)
             {
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
             }
 
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -376,7 +377,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 //repaint with new values
 
                 InitialiseColours();

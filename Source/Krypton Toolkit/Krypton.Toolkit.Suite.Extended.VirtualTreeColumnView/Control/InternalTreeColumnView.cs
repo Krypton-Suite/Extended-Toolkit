@@ -339,7 +339,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
 
         internal bool ShowRootLines { get; set; } = true;
 
-        internal ImageList StateImageList { get; set; }
+        internal ImageList? StateImageList { get; set; }
 
         internal VirtualTreeRowNode VisibleRowNode
         {
@@ -1038,7 +1038,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
             return nodeIndent;
         }
 
-        internal void ViewDrawRowNode(VirtualTreeRowNode rowNode, Graphics graphics, Rectangle bounds, int rowOffset)
+        internal void ViewDrawRowNode(VirtualTreeRowNode? rowNode, Graphics graphics, Rectangle bounds, int rowOffset)
         {
             // We cannot do anything without a valid node
             if (rowNode == null)
@@ -1047,7 +1047,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
             }
 
             // Work out if we need to draw a state image
-            Image drawStateImage = null;
+            Image? drawStateImage = null;
             if (StateImageList != null)
             {
                 try
