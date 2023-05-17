@@ -16,6 +16,7 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable InconsistentNaming
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
@@ -64,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="HsvColour"/> struct.
+            /// Initializes a new instance of the <see cref="HSVColour"/> struct.
             /// </summary>
             /// <param name="hue">The hue.</param>
             /// <param name="saturation">The saturation.</param>
