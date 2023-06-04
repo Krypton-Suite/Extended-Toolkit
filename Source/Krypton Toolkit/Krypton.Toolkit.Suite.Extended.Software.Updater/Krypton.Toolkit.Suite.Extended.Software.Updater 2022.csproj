@@ -86,7 +86,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.5.137-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.5.150-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -147,7 +147,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -161,7 +161,6 @@
   
 	<ItemGroup>
 		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
 		<PackageReference Include="ZipStorer" Version="3.8.0" />
 	</ItemGroup>
@@ -174,6 +173,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
+	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Software.Updater.Core\Krypton.Toolkit.Suite.Extended.Software.Updater.Core 2022.csproj" />
 	</ItemGroup>
 	
 	<ItemGroup>

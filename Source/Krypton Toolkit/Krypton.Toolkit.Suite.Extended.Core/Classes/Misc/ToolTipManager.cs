@@ -26,6 +26,8 @@
  */
 #endregion
 
+using Timer = System.Windows.Forms.Timer;
+
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class ToolTipManager

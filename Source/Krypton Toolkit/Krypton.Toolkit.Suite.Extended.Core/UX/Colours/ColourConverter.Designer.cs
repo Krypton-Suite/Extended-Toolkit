@@ -303,6 +303,6 @@
         private KryptonColorButton kcbtnSelectBaseColour;
         private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonCheckBox kchkUpdateColourValues;
-        private Timer tmrUpdateColourValues;
+        private System.Windows.Forms.Timer tmrUpdateColourValues;
     }
 }

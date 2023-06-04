@@ -111,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 {
                     try
                     {
-                        var _icon = GraphicsExtensions.LoadIcon(GraphicsExtensions.IconType.Shield, SystemInformation.SmallIconSize);
+                        var _icon = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize);
 
                         if (_icon != null)
                         {

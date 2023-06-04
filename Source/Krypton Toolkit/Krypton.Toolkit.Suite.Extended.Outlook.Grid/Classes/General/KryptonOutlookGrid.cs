@@ -2814,6 +2814,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                     //For each grouped column (ordered by GroupIndex)
                     if (groupedColumns != null)
+                    {
                         for (int i = 0; i < groupedColumns.Count; i++)
                         {
                             if (i == 0)
@@ -2886,6 +2887,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                                 }
                             }
                         }
+                    }
                 }
 
                 //reset local variable for GC

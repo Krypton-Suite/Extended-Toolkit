@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new();
         private GlobalStringSettingsManager _globalStringSettingsManager = new();
 
-        private Timer _updateValues = new();
+        private System.Windows.Forms.Timer _updateValues = new();
         #endregion
 
         #region System
