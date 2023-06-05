@@ -238,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Variables
         private bool _modified;
         private Color _targetColour = Color.Transparent;
-        private Timer _editTimer;
+        private System.Windows.Forms.Timer _editTimer;
         #endregion
 
         #region Properties

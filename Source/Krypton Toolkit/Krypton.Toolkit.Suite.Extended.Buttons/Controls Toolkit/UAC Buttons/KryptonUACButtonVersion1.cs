@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 {
                     try
                     {
-                        var icon = GraphicsExtensions.LoadIcon(GraphicsExtensions.IconType.Shield, SystemInformation.SmallIconSize);
+                        var icon = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize);
                         if (icon != null)
                         {
                             Values.Image = icon.ToBitmap();

@@ -88,6 +88,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         /// <summary>Gets or sets the update UI control.</summary>
         /// <value>The update UI control.</value>
-        Timer UpdateUIControl { get; set; }
+        System.Windows.Forms.Timer UpdateUIControl { get; set; }
     }
 }

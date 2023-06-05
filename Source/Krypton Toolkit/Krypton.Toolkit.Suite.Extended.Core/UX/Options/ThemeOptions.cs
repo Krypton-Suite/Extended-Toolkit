@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private KryptonCustomPaletteBase _palette = new();
         private PaletteThemeSettingsManager _paletteThemeSettingsManager = new();
         private PaletteMode _paletteMode;
-        private Timer _paletteUpdateTimer;
+        private System.Windows.Forms.Timer _paletteUpdateTimer;
         private ArrayList _themeList;
         private AutoCompleteStringCollection _themeCollection;
         #endregion
@@ -385,7 +385,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void ktxtCustomPath_TextChanged(object sender, EventArgs e)
         {
-            Timer update = new();
+            System.Windows.Forms.Timer update = new();
 
             update.Interval = 250;
 

@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                     if (_useUACElevation)
                     {
-                        Values.Image = GraphicsExtensions.LoadIcon(GraphicsExtensions.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                        Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
                     }
                     else
                     {
