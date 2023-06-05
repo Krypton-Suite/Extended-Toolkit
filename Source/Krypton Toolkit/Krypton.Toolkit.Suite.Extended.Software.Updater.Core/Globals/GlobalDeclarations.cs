@@ -51,3 +51,5 @@ global using Microsoft.Win32;
 
 global using Org.BouncyCastle.Crypto.Signers;
 global using Org.BouncyCastle.Crypto.Parameters;
+
+global using Krypton.Toolkit.Suite.Extended.Software.Updater.Core.Properties;
