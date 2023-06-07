@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core.ZipExtractor.Controls_Toolkit
+﻿namespace ZipExtractor
 {
     [Category(@"code")]
     [Description(@"")]

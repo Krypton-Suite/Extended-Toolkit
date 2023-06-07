@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
+﻿namespace ZipExtractor
 {
+    /// <summary>Exposes a set of strings, used by the ZipExtractor.</summary>
+    /// <seealso cref="GlobalId" />
     [TypeConverter(typeof(ExpandableObjectConverter))]
     public class ZipExtractorStrings : GlobalId
     {
         #region Static Fields
 
         private const string DEFAULT_CURRENT_FILE_EXTRACTING = @"Extracting {0}";
+
+        private const string DEFAULT_FINISHED = @"Finished";
 
         private const string DEFAULT_FILE_STILL_IN_USE_CAPTION = @"Unable to update file!";
 
@@ -37,7 +35,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         [Browsable(false)]
         public bool IsDefault => CurrentFileExtracting.Equals(DEFAULT_CURRENT_FILE_EXTRACTING) &&
                                  FileStillInUseCaption.Equals(DEFAULT_FILE_STILL_IN_USE_CAPTION) &&
-                                 FileStillInUseMessage.Equals(DEFAULT_FILE_STILL_IN_USE_MESSAGE) && Removing.Equals(DEFAULT_REMOVING);
+                                 FileStillInUseMessage.Equals(DEFAULT_FILE_STILL_IN_USE_MESSAGE) &&
+                                 Finished.Equals(DEFAULT_FINISHED) &&
+                                 Removing.Equals(DEFAULT_REMOVING);
 
         public void Reset()
         {
@@ -46,6 +46,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
             FileStillInUseCaption = DEFAULT_FILE_STILL_IN_USE_CAPTION;
 
             FileStillInUseMessage = DEFAULT_FILE_STILL_IN_USE_MESSAGE;
+
+            Finished = DEFAULT_FINISHED;
 
             Removing = DEFAULT_REMOVING;
         }
@@ -72,6 +74,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         [Description(@"Localised file still in use message string.")]
         [DefaultValue(DEFAULT_FILE_STILL_IN_USE_MESSAGE)]
         public string FileStillInUseMessage { get; set; }
+
+        /// <summary>Gets or sets the finished string.</summary>
+        [Localizable(true)]
+        [Category(@"Visuals")]
+        [Description(@"Localised finished string.")]
+        [DefaultValue(DEFAULT_FINISHED)]
+        [RefreshProperties(RefreshProperties.All)]
+        public string Finished { get; set; }
 
         /// <summary>Gets or sets the removing string.</summary>
         [Localizable(true)]

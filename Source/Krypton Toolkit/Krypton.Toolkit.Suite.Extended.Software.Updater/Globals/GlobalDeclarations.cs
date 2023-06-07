@@ -28,18 +28,25 @@
 global using System;
 global using System.Collections.Generic;
 global using System.ComponentModel;
+global using System.Globalization;
 global using System.Diagnostics;
 global using System.Drawing;
 global using System.IO;
 global using System.Net;
+global using System.Net.Cache;
 global using System.Reflection;
 #if NETCOREAPP3_1_OR_GREATER
 global using System.Runtime.InteropServices;
 #endif
 global using System.Security.Cryptography;
 global using System.Text;
+global using System.Threading;
+global using System.Windows;
 global using System.Windows.Forms;
 global using System.Xml;
+global using System.Xml.Serialization;
+
+global using Krypton.Toolkit.Suite.Extended.Software.Updater.Properties;
 
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 

@@ -31,29 +31,12 @@ global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
 global using System.ComponentModel;
 global using System.Diagnostics;
-global using System.Globalization;
 global using System.IO;
 global using System.IO.Compression;
-global using System.Net;
-global using System.Security.Cryptography.X509Certificates;
-global using System.Net.Http;
-global using System.Net.Security;
-global using System.Linq;
-global using System.Reflection;
 global using System.Runtime.InteropServices;
-global using System.Runtime.Serialization;
-global using System.Security.Cryptography;
 global using System.Text;
-global using System.Text.RegularExpressions;
 global using System.Threading;
-global using System.Threading.Tasks;
-global using System.Xml.Linq;
 global using System.Windows.Forms;
 
-global using Microsoft.Win32;
-
-global using Org.BouncyCastle.Crypto.Signers;
-global using Org.BouncyCastle.Crypto.Parameters;
-
-global using Krypton.Toolkit.Suite.Extended.Software.Updater.Core.Properties;
+global using Krypton.Toolkit;
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;

@@ -203,6 +203,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Reference Include="PresentationFramework">
+		  <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\PresentationFramework.dll</HintPath>
+		</Reference>
 		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
 			<SpecificVersion>True</SpecificVersion>
 			<Version>4.0.0.0</Version>
@@ -219,6 +222,7 @@
 			<TreatAsUsed>True</TreatAsUsed>
 		</Reference>
 		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+		<Reference Include="WindowsBase" />
 		<!--TODO: Need to specify version here-->
 	</ItemGroup>
 
