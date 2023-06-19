@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
     /// <summary>
     /// A delegate for download events (start, canceled).
     /// </summary>
-    public delegate void DownloadEvent(AppCastItem item, string path);
+    public delegate void DownloadEvent(AppCastItem? item, string path);
 
     /// <summary>
     /// Delegate that provides information about some download progress that has been made
@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
     /// <param name="item">The item that is being downloaded</param>
     /// <param name="args">The information on how much data has been downloaded and how much
     /// needs to be downloaded</param>
-    public delegate void ItemDownloadProgressEvent(object sender, AppCastItem item, ItemDownloadProgressEventArgs args);
+    public delegate void ItemDownloadProgressEvent(object sender, AppCastItem? item, ItemDownloadProgressEventArgs args);
 
     /// <summary>
     /// A handler called when the user responsed to an available update
@@ -115,5 +115,5 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
     /// <param name="item">The item that is being downloaded</param>
     /// <param name="path">The path to the place where the file was being downloaded</param>
     /// <param name="exception">The <seealso cref="Exception"/> that occurred to cause the error</param>
-    public delegate void DownloadErrorEvent(AppCastItem item, string path, Exception exception);
+    public delegate void DownloadErrorEvent(AppCastItem? item, string path, Exception exception);
 }

@@ -43,5 +43,6 @@ global using Krypton.Toolkit.Suite.Extended.Settings.Settings.Dialogs.Text_Finde
 global using Krypton.Toolkit.Suite.Extended.Settings.Settings.Globals;
 global using Krypton.Toolkit.Suite.Extended.Settings.Settings.Theming;
 global using Krypton.Toolkit.Suite.Extended.Shared;
+global using Krypton.Toolkit.Suite.Extended.Settings.Settings.Specialised_Dialogs;
 
 global using Microsoft.WindowsAPICodePack.Dialogs;

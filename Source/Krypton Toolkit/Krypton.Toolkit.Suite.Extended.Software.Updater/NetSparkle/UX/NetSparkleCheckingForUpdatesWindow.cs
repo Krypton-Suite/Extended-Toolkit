@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Size = System.Drawing.Size;
+
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     public partial class NetSparkleCheckingForUpdatesWindow : KryptonForm, ICheckingForUpdates

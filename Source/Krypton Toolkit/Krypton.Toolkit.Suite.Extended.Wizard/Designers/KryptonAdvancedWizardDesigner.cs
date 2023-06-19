@@ -27,7 +27,8 @@
  */
 #endregion
 
-#pragma warning disable CS0618
+// ReSharper disable NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
+// ReSharper disable ConvertToNullCoalescingCompoundAssignment
 namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
@@ -139,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             }
         }
 
-        private static void OnVerbAbout(object sender, EventArgs e) => MessageBox.Show(@"Written by Steve Bate", "About AdvancedWizard", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private static void OnVerbAbout(object sender, EventArgs e) => KryptonMessageBox.Show(@"Originally written by Steve Bate", "About AdvancedWizard", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
 
         private void OnVerbNew(object sender, EventArgs e)
         {
@@ -161,13 +162,13 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void GetReferenceToIDesignerHost() => _designer = (IDesignerHost)GetService(typeof(IDesignerHost));
 
-        private void GetReferenceToISelectionService() => _selectionService = (ISelectionService)GetService(typeof(ISelectionService));
+        private void GetReferenceToISelectionService() => _selectionService = GetService(typeof(ISelectionService)) as ISelectionService;
 
         private void SelectPageInProperyGrid(KryptonAdvancedWizardPage page) => _selectionService.SetSelectedComponents(new object[] { page }, SelectionTypes.MouseDown);
 
         private void GetReferenceToIComponentChangeService()
         {
-            _changeService = (IComponentChangeService)GetService(typeof(IComponentChangeService));
+            _changeService = GetService(typeof(IComponentChangeService)) as IComponentChangeService;
             if (_changeService == null)
             {
                 return;
@@ -233,9 +234,9 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             _wizard.SetButtonStates();
         }
 
-        private IComponentChangeService _changeService;
+        private IComponentChangeService? _changeService;
         private IDesignerHost _designer;
-        private ISelectionService _selectionService;
+        private ISelectionService? _selectionService;
         private DesignerVerbCollection _verbs;
         private KryptonAdvancedWizard _wizard;
         private const int VERB_PREVIOUS = 1;

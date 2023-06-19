@@ -375,7 +375,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// <param name="left">first <see cref="AppCastItem"/> to compare</param>
         /// <param name="right">second <see cref="AppCastItem"/> to compare</param>
         /// <returns>True if items are different; false if they are the same</returns>
-        public static bool operator !=(AppCastItem left, AppCastItem right)
+        public static bool operator !=(AppCastItem? left, AppCastItem? right)
         {
             return !(left == right);
         }

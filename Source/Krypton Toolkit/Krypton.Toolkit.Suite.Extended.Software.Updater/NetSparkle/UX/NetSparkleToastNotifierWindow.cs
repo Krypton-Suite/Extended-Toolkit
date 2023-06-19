@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         private void NetSparkleToastNotifierWindow_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Yes;
-            ClickAction?.Invoke(Updates);
+            ClickAction.Invoke(Updates);
             Close();
         }
 

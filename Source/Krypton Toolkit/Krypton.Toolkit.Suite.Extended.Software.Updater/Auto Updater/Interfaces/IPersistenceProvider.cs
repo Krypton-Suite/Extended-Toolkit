@@ -10,7 +10,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         ///     Reads the flag indicating whether a specific version should be skipped or not.
         /// </summary>
         /// <returns>Returns a version to skip. If skip value is false or not present then it will return null.</returns>
-        Version GetSkippedVersion();
+        Version? GetSkippedVersion();
 
         /// <summary>
         ///     Reads the value containing the date and time at which the user must be given again the possibility to upgrade the
@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         ///     Version code for the specific version that must be ignored. Set it to null if you don't want to
         ///     skip any version.
         /// </param>
-        void SetSkippedVersion(Version version);
+        void SetSkippedVersion(Version? version);
 
         /// <summary>
         ///     Sets the date and time at which the user must be given again the possibility to upgrade the application.

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle.Resources;
 using Krypton.Toolkit.Suite.Extended.Software.Updater.Properties;
 
+using Application = System.Windows.Forms.Application;
+
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     /// <summary>
@@ -15,7 +17,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
     /// </summary>
     public class UIFactory : IUIFactory
     {
-        private Icon _applicationIcon = null;
+        private Icon? _applicationIcon = null;
 
         /// <inheritdoc/>
         public UIFactory()
@@ -54,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
         /// <summary>
         /// <para>
-        /// Easily set / override the ReleaseNotesGrabber used by the <see cref="UpdateAvailableWindow"/>.
+        /// Easily set / override the ReleaseNotesGrabber used by the <see cref="NetSparkleUpdateAvailableWindow"/>.
         /// Note that this will NOT automatically use the <see cref="UIFactory"/> ReleaseNotesHTMLTemplate,
         /// AdditionalReleaseNotesHeaderHTML, and ReleaseNotesDateTimeFormat that you may have set on 
         /// the UIFactory - you must set these on this manual override yourself!
@@ -91,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         }
 
         /// <inheritdoc/>
-        public virtual IDownloadProgress CreateProgressWindow(SparkleUpdater sparkle, AppCastItem item)
+        public virtual IDownloadProgress CreateProgressWindow(SparkleUpdater sparkle, AppCastItem? item)
         {
             return new NetSparkleDownloadProgressWindow(item, _applicationIcon)
             {

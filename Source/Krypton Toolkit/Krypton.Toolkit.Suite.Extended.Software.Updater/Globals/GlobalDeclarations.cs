@@ -27,6 +27,7 @@
 
 global using System;
 global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
 global using System.ComponentModel;
 global using System.Globalization;
 global using System.Diagnostics;
@@ -34,7 +35,10 @@ global using System.Drawing;
 global using System.IO;
 global using System.Net;
 global using System.Net.Cache;
+global using System.Net.Mime;
 global using System.Reflection;
+global using System.Runtime.Serialization;
+global using System.Runtime.Serialization.Json;
 #if NETCOREAPP3_1_OR_GREATER
 global using System.Runtime.InteropServices;
 #endif
@@ -45,6 +49,10 @@ global using System.Windows;
 global using System.Windows.Forms;
 global using System.Xml;
 global using System.Xml.Serialization;
+global using System.Linq;
+
+global using Microsoft.Web.WebView2.Core;
+global using Microsoft.Win32;
 
 global using Krypton.Toolkit.Suite.Extended.Software.Updater.Properties;
 

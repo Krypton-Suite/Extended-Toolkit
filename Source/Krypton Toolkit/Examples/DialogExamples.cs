@@ -14,6 +14,8 @@ using Krypton.Toolkit.Suite.Extended.Dialogs;
 
 using Examples.Properties;
 
+using Krypton.Toolkit.Suite.Extended.Specialised.Dialogs;
+
 namespace Examples
 {
     public partial class DialogExamples : KryptonForm
@@ -48,7 +50,10 @@ namespace Examples
 
         private void kbtnRun_Click(object sender, EventArgs e)
         {
-            KryptonRunDialog runDialog = new KryptonRunDialog(RunDialogStartPosition.BottomLeft, true, true, true);
+            //KryptonRunDialog runDialog = new KryptonRunDialog(RunDialogStartPosition.BottomLeft, true, true, true);
+
+            Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.KryptonRunDialog runDialog =
+                new Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.KryptonRunDialog(null, RunDialogIconVisibility.Visible, RunDialogType.Textbox);
 
             runDialog.ShowDialog();
         }

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿
+using Application = System.Windows.Forms.Application;
+using Size = System.Drawing.Size;
+// ReSharper disable InconsistentNaming
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
@@ -29,7 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         private CancellationToken _cancellationToken;
         private CancellationTokenSource _cancellationTokenSource;
 
-        private bool _didSendResponse = false;
+        private bool _didSendResponse;
 
         #endregion
 
@@ -38,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// <summary>
         /// Object responsible for downloading and formatting markdown release notes for display in HTML
         /// </summary>
-        public ReleaseNotesGrabber ReleaseNotesGrabber { get; set; }
+        public ReleaseNotesGrabber? ReleaseNotesGrabber { get; set; }
 
         AppCastItem IUpdateAvailable.CurrentItem => CurrentItem;
 
@@ -70,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 _sparkle.LogWriter.PrintMessage($@"Error in browser init: {e.Message}");
             }
 
-            AppCastItem castItem = items.FirstOrDefault()!;
+            AppCastItem? castItem = items.FirstOrDefault()!;
 
             var downloadInstallText = isUpdateAlreadyDownloaded ? @"install" : @"download";
 
@@ -78,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
             if (castItem != null)
             {
-                var versionString = string.Empty;
+                string versionString = string.Empty;
 
                 try
                 {
@@ -142,14 +135,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
         void IUpdateAvailable.Close()
         {
-            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource.Cancel();
 
             CloseForm();
         }
 
         public UpdateAvailableResult Result => UIFactory.ConvertDialogResultToUpdateAvailableResult(DialogResult);
 
-        public AppCastItem CurrentItem => _updates.Count > 0 ? _updates[0] : null;
+        public AppCastItem? CurrentItem => _updates.Count > 0 ? _updates[0] : null;
 
         #endregion
 
@@ -209,9 +202,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
         private async void LoadReleaseNotes(List<AppCastItem> items)
         {
-            AppCastItem latestVersion = items.OrderByDescending(p => p.Version).FirstOrDefault();
+            AppCastItem? latestVersion = items.OrderByDescending(p => p.Version).FirstOrDefault();
 
-            string releaseNotes = await ReleaseNotesGrabber.DownloadAllReleaseNotes(items, latestVersion, _cancellationToken);
+            string releaseNotes = await ReleaseNotesGrabber?.DownloadAllReleaseNotes(items, latestVersion, _cancellationToken)!;
 
             kwbReleaseNotes.Invoke((MethodInvoker)delegate
             {

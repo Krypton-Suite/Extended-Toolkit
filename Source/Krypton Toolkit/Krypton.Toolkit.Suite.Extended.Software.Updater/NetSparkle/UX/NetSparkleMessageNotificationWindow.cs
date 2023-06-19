@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using Size = System.Drawing.Size;
+
 // ReSharper disable VirtualMemberCallInConstructor
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater

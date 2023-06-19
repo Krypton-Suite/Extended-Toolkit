@@ -21,7 +21,7 @@
         internal string Password { get; }
 
         /// <inheritdoc />
-        public void Apply(ref MyWebClient webClient)
+        public void Apply(ref MyWebClient? webClient)
         {
             webClient.Headers[HttpRequestHeader.Authorization] = ToString();
         }

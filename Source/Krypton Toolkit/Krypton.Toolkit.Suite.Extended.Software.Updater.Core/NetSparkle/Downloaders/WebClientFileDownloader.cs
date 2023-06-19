@@ -219,7 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         }
 
         /// <inheritdoc/>
-        public async Task<string> RetrieveDestinationFileNameAsync(AppCastItem item)
+        public async Task<string> RetrieveDestinationFileNameAsync(AppCastItem? item)
         {
             var httpClient = CreateHttpClient();
             httpClient.Timeout = TimeSpan.FromSeconds(30);

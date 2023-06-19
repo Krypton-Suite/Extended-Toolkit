@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Mime;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     public partial class DownloadUpdateDialog : KryptonForm
@@ -22,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
         private string _tempFile;
 
-        private MyWebClient _webClient;
+        private MyWebClient? _webClient;
 
         #endregion
 
@@ -50,18 +39,21 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             }
             else
             {
-                _tempFile = Path.Combine(AutoUpdater.DownloadPath, $"{Guid.NewGuid().ToString()}.tmp");
+                _tempFile = Path.Combine(AutoUpdater.DownloadPath, $"{Guid.NewGuid()}.tmp");
                 if (!Directory.Exists(AutoUpdater.DownloadPath))
                 {
                     Directory.CreateDirectory(AutoUpdater.DownloadPath);
                 }
             }
 
-            _webClient.DownloadProgressChanged += OnDownloadProgressChanged;
+            if (_webClient != null)
+            {
+                _webClient.DownloadProgressChanged += OnDownloadProgressChanged;
 
-            _webClient.DownloadFileCompleted += WebClientOnDownloadFileCompleted;
+                _webClient.DownloadFileCompleted += WebClientOnDownloadFileCompleted;
 
-            _webClient.DownloadFileAsync(uri, _tempFile);
+                _webClient.DownloadFileAsync(uri, _tempFile);
+            }
         }
 
         private void OnDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
@@ -78,12 +70,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 {
                     long bytesPerSecond = e.BytesReceived / totalSeconds;
                     kwlHeader.Text =
-                        string.Format(Resources.DownloadSpeedMessage, BytesToString(bytesPerSecond));
+                        string.Format(AutoUpdaterLanguageManager.UpdaterStrings.DownloadSpeedMessage, BytesToString(bytesPerSecond));
                 }
             }
 
-            labelSize.Text = $@"{BytesToString(e.BytesReceived)} / {BytesToString(e.TotalBytesToReceive)}";
-            progressBar.Value = e.ProgressPercentage;
+            kwlSize.Text = $@"{BytesToString(e.BytesReceived)} / {BytesToString(e.TotalBytesToReceive)}";
+            kpbDownloadProgress.Value = e.ProgressPercentage;
         }
 
         private void WebClientOnDownloadFileCompleted(object sender, AsyncCompletedEventArgs asyncCompletedEventArgs)
@@ -106,13 +98,13 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 }
 
                 // Try to parse the content disposition header if it exists.
-                ContentDisposition contentDisposition = null;
-                if (!string.IsNullOrWhiteSpace(_webClient.ResponseHeaders?["Content-Disposition"]))
+                ContentDisposition? contentDisposition = null;
+                if (_webClient != null && !string.IsNullOrWhiteSpace(_webClient.ResponseHeaders?["Content-Disposition"]))
                 {
                     try
                     {
                         contentDisposition =
-                            new ContentDisposition(_webClient.ResponseHeaders["Content-Disposition"]);
+                            new ContentDisposition(_webClient.ResponseHeaders?["Content-Disposition"]!);
                     }
                     catch (FormatException)
                     {
@@ -121,13 +113,13 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                     }
                 }
 
-                string fileName = string.IsNullOrEmpty(contentDisposition?.FileName)
-                    ? Path.GetFileName(_webClient.ResponseUri.LocalPath)
-                    : contentDisposition.FileName;
+                string? fileName = string.IsNullOrEmpty(contentDisposition?.FileName)
+                    ? Path.GetFileName(_webClient?.ResponseUri.LocalPath)
+                    : contentDisposition?.FileName;
 
                 if (string.IsNullOrWhiteSpace(fileName))
                 {
-                    throw new WebException(Resources.UnableToDetermineFilenameMessage);
+                    throw new WebException(AutoUpdaterLanguageManager.UpdaterStrings.UnableToDetermineFilenameMessage);
                 }
 
                 string tempPath =
@@ -144,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
                 File.Move(_tempFile, tempPath);
 
-                string installerArgs = null;
+                string? installerArgs = null;
                 if (!string.IsNullOrEmpty(_args.InstallerArgs))
                 {
                     installerArgs = _args.InstallerArgs.Replace("%path%",
@@ -165,11 +157,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                         Path.Combine(Path.GetDirectoryName(tempPath) ?? throw new InvalidOperationException(),
                             "ZipExtractor.exe");
 
-                    File.WriteAllBytes(installerPath, Resources.ZipExtractor);
+                    File.WriteAllBytes(installerPath, Resources.ZipExtractor1);
 
-                    string currentExe = Process.GetCurrentProcess().MainModule?.FileName;
-                    string updatedExe = _args.ExecutablePath;
-                    string extractionPath = Path.GetDirectoryName(currentExe);
+                    string? currentExe = Process.GetCurrentProcess().MainModule?.FileName;
+                    string? updatedExe = _args.ExecutablePath;
+                    string? extractionPath = Path.GetDirectoryName(currentExe);
 
                     if (string.IsNullOrWhiteSpace(updatedExe) &&
                         !string.IsNullOrWhiteSpace(AutoUpdater.ExecutablePath))
@@ -189,8 +181,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                         UseShellExecute = true
                     };
 
-                    var arguments = new Collection<string>
-                {
+                    var arguments = new Collection<string?>
+                    {
                     "--input",
                     tempPath,
                     "--output",
@@ -226,8 +218,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                         FileName = "msiexec"
                     };
 
-                    var arguments = new Collection<string>
-                {
+                    var arguments = new Collection<string?>
+                    {
                     "/i",
                     tempPath
                 };
@@ -263,7 +255,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             }
             catch (Exception e)
             {
-                MessageBox.Show(this, e.Message, e.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KryptonMessageBox.Show(this, e.Message, e.GetType().ToString(), KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
                 _webClient = null;
             }
             finally
@@ -297,7 +289,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
             if (hashAlgorithm == null)
             {
-                throw new Exception(Resources.HashAlgorithmNotSupportedMessage);
+                throw new Exception(AutoUpdaterLanguageManager.UpdaterStrings.HashAlgorithmNotSupportedMessage);
             }
 
             byte[] hash = hashAlgorithm.ComputeHash(stream);
@@ -308,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 return;
             }
 
-            throw new Exception(Resources.FileIntegrityCheckFailedMessage);
+            throw new Exception(AutoUpdaterLanguageManager.UpdaterStrings.FileIntegrityCheckFailedMessage);
         }
 
         private void DownloadUpdateDialog_FormClosing(object sender, FormClosingEventArgs e)

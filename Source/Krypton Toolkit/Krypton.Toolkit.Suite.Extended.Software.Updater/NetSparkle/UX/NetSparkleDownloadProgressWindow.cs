@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Application = System.Windows.Forms.Application;
+using Size = System.Drawing.Size;
+
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     public partial class NetSparkleDownloadProgressWindow : KryptonForm, IDownloadProgress
@@ -33,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
         #region Identity
 
-        public NetSparkleDownloadProgressWindow(AppCastItem item, Icon applicationIcon)
+        public NetSparkleDownloadProgressWindow(AppCastItem? item, Icon applicationIcon)
         {
             InitializeComponent();
 

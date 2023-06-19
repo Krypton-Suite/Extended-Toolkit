@@ -143,13 +143,13 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         /// <returns></returns>
         internal bool UserClickedAButtonAtDesignTime(Point point)
         {
-            Control c = GetChildAtPoint(point);
+            Control? c = GetChildAtPoint(point);
             if (c == null || c.Name != "kpnlButtons")
             {
                 return false;
             }
 
-            Control b = c.GetChildAtPoint(c.PointToClient(Cursor.Position));
+            Control? b = c.GetChildAtPoint(c.PointToClient(Cursor.Position));
             if (b != null)
             {
                 return WizardButtonWasClicked(b);
@@ -160,29 +160,29 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal bool WizardButtonWasClicked(Control b) => b is Button;
 
-        internal void FirePageChanged(int index) => PageChanged?.Invoke(this, new WizardPageChangedEventArgs(WizardPages[index], index));
+        internal void FirePageChanged(int index) => PageChanged.Invoke(this, new WizardPageChangedEventArgs(WizardPages[index], index));
 
-        internal void FireLastPage() => LastPage?.Invoke(this, EventArgs.Empty);
+        internal void FireLastPage() => LastPage.Invoke(this, EventArgs.Empty);
 
         internal WizardEventArgs FireNextEvent(int currentTabIndex)
         {
             var ev = new WizardEventArgs(currentTabIndex);
-            Next?.Invoke(this, ev);
+            Next.Invoke(this, ev);
             return ev;
         }
 
         internal WizardEventArgs FireBackEvent(int currentTabIndex)
         {
             var ev = new WizardEventArgs(currentTabIndex, Direction.Backward);
-            Back?.Invoke(this, ev);
+            Back.Invoke(this, ev);
             return ev;
         }
 
-        internal void FireFinishEvent() => Finish?.Invoke(this, EventArgs.Empty);
+        internal void FireFinishEvent() => Finish.Invoke(this, EventArgs.Empty);
 
-        internal void FireHelpEvent() => Help?.Invoke(this, EventArgs.Empty);
+        internal void FireHelpEvent() => Help.Invoke(this, EventArgs.Empty);
 
-        internal void FireCancelEvent() => Cancel?.Invoke(this, EventArgs.Empty);
+        internal void FireCancelEvent() => Cancel.Invoke(this, EventArgs.Empty);
 
         internal void CheckForUserChangesToEventParameters(WizardEventArgs ev, out bool allowPageToChange, out int newTabIndex)
         {
