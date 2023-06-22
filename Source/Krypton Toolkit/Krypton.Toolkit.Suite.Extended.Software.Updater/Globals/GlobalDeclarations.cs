@@ -47,6 +47,7 @@ global using System.Text;
 global using System.Threading;
 global using System.Windows;
 global using System.Windows.Forms;
+global using System.Windows.Interop;
 global using System.Xml;
 global using System.Xml.Serialization;
 global using System.Linq;
