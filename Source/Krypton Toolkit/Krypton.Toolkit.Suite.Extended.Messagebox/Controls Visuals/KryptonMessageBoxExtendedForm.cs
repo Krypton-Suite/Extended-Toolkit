@@ -26,6 +26,7 @@
 #endregion
 
 // ReSharper disable NotAccessedField.Local
+
 #pragma warning disable IDE0031
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
@@ -86,9 +87,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly ExtendedKryptonMessageBoxMessageContainerType _messageContainerType;
 
-        private readonly string _linkDestination;
+        private readonly KryptonCommand? _linkLabelCommand;
 
-        private readonly LinkArea _linkArea;
+        private readonly int _linkAreaStart, _linkAreaEnd;
+
+        private readonly ProcessStartInfo? _linkLaunchArgument;
 
         #endregion
 
@@ -102,24 +105,25 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
 
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
-                                               ExtendedMessageBoxButtons buttons,
-                                               ExtendedKryptonMessageBoxIcon kryptonMessageBoxIcon,
-                                               KryptonMessageBoxDefaultButton defaultButton,
-                                               MessageBoxOptions options,
-                                               HelpInfo helpInfo, bool? showCtrlCopy,
-                                               Font messageBoxTypeface,
-                                               Image customKryptonMessageBoxIcon, bool? showHelpButton,
-                                               Color? messageTextColour, Color[] buttonTextColours,
-                                               DialogResult? buttonOneCustomDialogResult,
-                                               DialogResult? buttonTwoCustomDialogResult,
-                                               DialogResult? buttonThreeCustomDialogResult,
-                                               DialogResult? buttonFourDialogResult,
-                                               string? buttonOneCustomText, string? buttonTwoCustomText,
-                                               string? buttonThreeCustomText, string? buttonFourCustomText,
-                                               string? applicationPath,
-                                               ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
-                                               string? linkDestination, LinkArea? linkArea,
-                                               bool? openInExplorer)
+                                                          ExtendedMessageBoxButtons buttons,
+                                                          ExtendedKryptonMessageBoxIcon kryptonMessageBoxIcon,
+                                                          KryptonMessageBoxDefaultButton defaultButton,
+                                                          MessageBoxOptions options,
+                                                          HelpInfo helpInfo, bool? showCtrlCopy,
+                                                          Font messageBoxTypeface,
+                                                          Image customKryptonMessageBoxIcon, bool? showHelpButton,
+                                                          Color? messageTextColour, Color[] buttonTextColours,
+                                                          DialogResult? buttonOneCustomDialogResult,
+                                                          DialogResult? buttonTwoCustomDialogResult,
+                                                          DialogResult? buttonThreeCustomDialogResult,
+                                                          DialogResult? buttonFourDialogResult,
+                                                          string? buttonOneCustomText, string? buttonTwoCustomText,
+                                                          string? buttonThreeCustomText, string? buttonFourCustomText,
+                                                          string? applicationPath,
+                                                          ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
+                                                          KryptonCommand? linkLabelCommand, int? linkAreaStart, int? linkAreaEnd,
+                                                          ProcessStartInfo? linkLaunchArgument
+                                                          /*bool? openInExplorer*/)
         {
             // Store incoming values
             _text = text;
@@ -147,9 +151,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _buttonFourCustomText = buttonFourCustomText ?? KryptonLanguageManager.Strings.Retry;
             _applicationPath = applicationPath ?? string.Empty;
             _messageContainerType = messageContainerType ?? ExtendedKryptonMessageBoxMessageContainerType.Normal;
-            _linkDestination = linkDestination ?? string.Empty;
-            _linkArea = linkArea ?? new LinkArea(0, text.Length);
-            _openInExplorer = openInExplorer ?? false;
+            _linkLabelCommand = linkLabelCommand ?? new();
+            _linkAreaStart = linkAreaStart ?? 0;
+            _linkAreaEnd = linkAreaEnd ?? text.Length;
+            _linkLaunchArgument = linkLaunchArgument ?? new();
+            //_openInExplorer = openInExplorer ?? false;
 
             // Create the form contents
             InitializeComponent();
@@ -163,6 +169,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             UpdateDefault();
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
+
+            UpdateContentAreaType(messageContainerType);
 
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
@@ -227,7 +235,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                         ? RightToLeft.Inherit
                         : RightToLeft.No;
 
-                _messageTextLink.LinkArea = _linkArea;
+                _messageTextLink.LinkArea = new(_linkAreaStart, _linkAreaEnd);
 
                 _messageText.Visible = false;
 
@@ -749,22 +757,18 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             try
             {
-                if (!string.IsNullOrEmpty(_linkDestination))
+                if (_linkLabelCommand != null)
                 {
-                    if (_openInExplorer)
-                    {
-                        OpenInExplorer(_linkDestination);
-                    }
-                    else
-                    {
-                        Process.Start(_linkDestination);
-                    }
+                    _linkLabelCommand.PerformExecute();
+                }
+                else if (_linkLaunchArgument != null)
+                {
+                    Process.Start(_linkLaunchArgument);
                 }
             }
             catch (Exception exc)
             {
-                Console.WriteLine(exc);
-                throw;
+                ExceptionCapture.CaptureException(exc);
             }
         }
 
@@ -776,7 +780,35 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                ExceptionCapture.CaptureException(e);
+            }
+        }
+
+        private void UpdateContentAreaType(ExtendedKryptonMessageBoxMessageContainerType? messageContainerType)
+        {
+            switch (messageContainerType)
+            {
+                case ExtendedKryptonMessageBoxMessageContainerType.HyperLink:
+                    _messageTextLink.Visible = true;
+
+                    _messageText.Visible = false;
+
+                    krtxtMessage.Visible = false;
+                    break;
+                case ExtendedKryptonMessageBoxMessageContainerType.Normal:
+                    _messageTextLink.Visible = false;
+
+                    _messageText.Visible = true;
+
+                    krtxtMessage.Visible = false;
+                    break;
+                case ExtendedKryptonMessageBoxMessageContainerType.RichTextBox:
+                    _messageTextLink.Visible = false;
+
+                    _messageText.Visible = false;
+
+                    krtxtMessage.Visible = true;
+                    break;
             }
         }
 

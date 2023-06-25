@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// <summary>
         /// The AppCastItem that the user is responding to an update notice for
         /// </summary>
-        public AppCastItem UpdateItem { get; set; }
+        public AppCastItem? UpdateItem { get; set; }
 
         /// <summary>
         /// Constructor for UpdateResponseArgs that allows for easy setting
@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// </summary>
         /// <param name="result">User's response of type <see cref="UpdateAvailableResult"/></param>
         /// <param name="item">Item that the user is responding to an update message for</param>
-        public UpdateResponseEventArgs(UpdateAvailableResult result, AppCastItem item) : base()
+        public UpdateResponseEventArgs(UpdateAvailableResult result, AppCastItem? item) : base()
         {
             Result = result;
             UpdateItem = item;

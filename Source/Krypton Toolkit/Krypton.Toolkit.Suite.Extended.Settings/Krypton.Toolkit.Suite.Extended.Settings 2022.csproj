@@ -85,7 +85,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.5.150-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.6.170-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -185,6 +185,11 @@
 	  <AutoGen>True</AutoGen>
 	  <DependentUpon>GlobalTypefaceSettings.settings</DependentUpon>
 	</Compile>
+	<Compile Update="Settings\Specialised Dialogs\SpecialisedDialogBooleanSettings.Designer.cs">
+	  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+	  <AutoGen>True</AutoGen>
+	  <DependentUpon>SpecialisedDialogBooleanSettings.settings</DependentUpon>
+	</Compile>
 	<Compile Update="Settings\Theming\GlobalThemeSettings.Designer.cs">
 	  <DesignTimeSharedInput>True</DesignTimeSharedInput>
 	  <AutoGen>True</AutoGen>
@@ -211,6 +216,10 @@
 	<None Update="Settings\Globals\GlobalTypefaceSettings.settings">
 	  <Generator>SettingsSingleFileGenerator</Generator>
 	  <LastGenOutput>GlobalTypefaceSettings.Designer.cs</LastGenOutput>
+	</None>
+	<None Update="Settings\Specialised Dialogs\SpecialisedDialogBooleanSettings.settings">
+	  <Generator>SettingsSingleFileGenerator</Generator>
+	  <LastGenOutput>SpecialisedDialogBooleanSettings.Designer.cs</LastGenOutput>
 	</None>
 	<None Update="Settings\Theming\GlobalThemeSettings.settings">
 	  <Generator>SettingsSingleFileGenerator</Generator>

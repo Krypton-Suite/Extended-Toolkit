@@ -86,7 +86,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.5.150-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.6.170-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -158,9 +158,10 @@
 		<Reference Include="System.IO.Compression" />
 		<Reference Include="System.IO.Compression.FileSystem" />
 	</ItemGroup>
-  
+
 	<ItemGroup>
 		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1823.32" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
 		<PackageReference Include="ZipStorer" Version="3.8.0" />
 	</ItemGroup>
@@ -172,30 +173,30 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
-	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Software.Updater.Core\Krypton.Toolkit.Suite.Extended.Software.Updater.Core 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Software.Updater.Core\Krypton.Toolkit.Suite.Extended.Software.Updater.Core 2022.csproj" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
 		<Compile Update="NetSparkle\Resources\NetSparkleResources.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>NetSparkleResources.resx</DependentUpon>
 		</Compile>
-		
+
 		<Compile Update="Properties\Resources.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Resources.resx</DependentUpon>
 		</Compile>
 	</ItemGroup>
-	
+
 	<ItemGroup>
 		<EmbeddedResource Update="NetSparkle\Resources\NetSparkleResources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>NetSparkleResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-	
+
 		<EmbeddedResource Update="Properties\Resources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -203,6 +204,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Reference Include="PresentationCore" />
+		<Reference Include="PresentationFramework">
+			<HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\PresentationFramework.dll</HintPath>
+		</Reference>
 		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
 			<SpecificVersion>True</SpecificVersion>
 			<Version>4.0.0.0</Version>
@@ -219,20 +224,21 @@
 			<TreatAsUsed>True</TreatAsUsed>
 		</Reference>
 		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+		<Reference Include="WindowsBase" />
 		<!--TODO: Need to specify version here-->
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="License\License.txt">
-	    <PackagePath></PackagePath>
-	    <Pack>true</Pack>
-	  </None>
+		<None Update="License\License.txt">
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Sharp Update\Resources\" />
+		<Folder Include="Sharp Update\Resources\" />
 	</ItemGroup>
-	
+
 	<!--Optimisation-->
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">
 		<Optimize>True</Optimize>

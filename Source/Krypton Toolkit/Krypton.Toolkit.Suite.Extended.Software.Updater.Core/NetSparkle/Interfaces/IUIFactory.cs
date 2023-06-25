@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// </summary>
         /// <param name="sparkle">The <see cref="SparkleUpdater"/> instance controlling this UI</param>
         /// <param name="item">Appcast item to download</param>
-        IDownloadProgress CreateProgressWindow(SparkleUpdater sparkle, AppCastItem item);
+        IDownloadProgress CreateProgressWindow(SparkleUpdater sparkle, AppCastItem? item);
 
         /// <summary>
         /// Inform user in some way that NetSparkle is checking for updates

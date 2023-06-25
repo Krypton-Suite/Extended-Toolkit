@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         private TimeSpan _checkFrequency;
         private string _tmpDownloadFilePath;
         private string _downloadTempFileName;
-        private AppCastItem _itemBeingDownloaded;
+        private AppCastItem? _itemBeingDownloaded;
         private bool _hasAttemptedFileRedownload;
         private UpdateInfo _latestDownloadedUpdateInfo;
         private IUIFactory _uiFactory;
@@ -781,7 +781,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// <param name="item">The item that you want to generate a download path for</param>
         /// <returns>The download path for an app cast item if item is not null and has valid download link
         /// Otherwise returns null.</returns>
-        public async Task<string> GetDownloadPathForAppCastItem(AppCastItem item)
+        public async Task<string> GetDownloadPathForAppCastItem(AppCastItem? item)
         {
             if (item != null && item.DownloadLink != null)
             {
@@ -834,7 +834,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// process if the download file doesn't already exist
         /// </summary>
         /// <param name="item">the appcast item to download</param>
-        public async Task InitAndBeginDownload(AppCastItem item)
+        public async Task InitAndBeginDownload(AppCastItem? item)
         {
             if (UpdateDownloader != null && UpdateDownloader.IsDownloading)
             {
@@ -962,7 +962,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
             }
         }
 
-        private void CreateAndShowProgressWindow(AppCastItem castItem, bool shouldShowAsDownloadedAlready)
+        private void CreateAndShowProgressWindow(AppCastItem? castItem, bool shouldShowAsDownloadedAlready)
         {
             if (ProgressWindow != null)
             {
@@ -1212,7 +1212,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// </summary>
         /// <param name="item">AppCastItem to install</param>
         /// <param name="installPath">Install path to the executable. If not provided, will ask the server for the download path.</param>
-        public async void InstallUpdate(AppCastItem item, string installPath = null)
+        public async void InstallUpdate(AppCastItem? item, string installPath = null)
         {
             ProgressWindow?.SetDownloadAndInstallButtonEnabled(false); // disable while we ask if we can close up the software
             if (await AskApplicationToSafelyCloseUp())

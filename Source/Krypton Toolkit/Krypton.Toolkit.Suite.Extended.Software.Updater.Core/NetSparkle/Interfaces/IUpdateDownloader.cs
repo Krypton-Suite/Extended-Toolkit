@@ -76,6 +76,6 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// <param name="item">The AppCastItem that will be downloaded</param>
         /// <returns>The file name of the file to download from the server 
         /// (including file extension). Null if not found/had error/not applicable.</returns>
-        Task<string> RetrieveDestinationFileNameAsync(AppCastItem item);
+        Task<string> RetrieveDestinationFileNameAsync(AppCastItem? item);
     }
 }

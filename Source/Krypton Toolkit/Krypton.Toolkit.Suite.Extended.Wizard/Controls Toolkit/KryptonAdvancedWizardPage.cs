@@ -211,7 +211,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
             WizardSubText = new KryptonLabel();
 
-            WizardSubText.StateCommon.ShortText.Font = new Font("Microsoft Sans Serif", 8.25f); ;
+            WizardSubText.StateCommon.ShortText.Font = new Font("Microsoft Sans Serif", 8.25f);
 
             WizardSubText.Left = HeaderPanel.Left + 40;
 

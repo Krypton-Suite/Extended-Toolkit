@@ -277,12 +277,12 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private bool _finishButton = true;
         private bool _helpButton = true;
-        private KryptonAdvancedWizardPage _lastPage;
+        private KryptonAdvancedWizardPage? _lastPage;
 
         internal bool NextButtonEnabledState;
         private bool _pageSetAsFinishPage;
         private int _selectedPage;
-        private ISelectionService _selectionService;
+        private ISelectionService? _selectionService;
         private readonly WizardStrategy _wizardStrategy;
 
         private string _backButtonText = "< Back";

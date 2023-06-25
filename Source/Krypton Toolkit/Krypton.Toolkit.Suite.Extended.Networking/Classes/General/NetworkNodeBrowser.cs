@@ -77,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         /// (0x00000001) and SV_TYPE_SERVER (0x00000002)
         /// </summary>
         public static extern int NetServerEnum(
-            string ServerNane, // must be null
+            string serverName, // must be null
             int dwLevel,
             ref IntPtr pBuf,
             int dwPrefMaxLen,

@@ -1,14 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region License
+
+/*
+ * The MIT License
+ *
+ * Copyright (c) 2022 Deadpikle
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+#endregion
+
+using Application = System.Windows.Forms.Application;
+using Size = System.Drawing.Size;
+// ReSharper disable InconsistentNaming
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
@@ -29,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         private CancellationToken _cancellationToken;
         private CancellationTokenSource _cancellationTokenSource;
 
-        private bool _didSendResponse = false;
+        private bool _didSendResponse;
 
         #endregion
 
@@ -38,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// <summary>
         /// Object responsible for downloading and formatting markdown release notes for display in HTML
         /// </summary>
-        public ReleaseNotesGrabber ReleaseNotesGrabber { get; set; }
+        public ReleaseNotesGrabber? ReleaseNotesGrabber { get; set; }
 
         AppCastItem IUpdateAvailable.CurrentItem => CurrentItem;
 
@@ -70,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 _sparkle.LogWriter.PrintMessage($@"Error in browser init: {e.Message}");
             }
 
-            AppCastItem castItem = items.FirstOrDefault()!;
+            AppCastItem? castItem = items.FirstOrDefault()!;
 
             var downloadInstallText = isUpdateAlreadyDownloaded ? @"install" : @"download";
 
@@ -78,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
             if (castItem != null)
             {
-                var versionString = string.Empty;
+                string versionString = string.Empty;
 
                 try
                 {
@@ -142,14 +162,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
         void IUpdateAvailable.Close()
         {
-            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource.Cancel();
 
             CloseForm();
         }
 
         public UpdateAvailableResult Result => UIFactory.ConvertDialogResultToUpdateAvailableResult(DialogResult);
 
-        public AppCastItem CurrentItem => _updates.Count > 0 ? _updates[0] : null;
+        public AppCastItem? CurrentItem => _updates.Count > 0 ? _updates[0] : null;
 
         #endregion
 
@@ -209,9 +229,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
         private async void LoadReleaseNotes(List<AppCastItem> items)
         {
-            AppCastItem latestVersion = items.OrderByDescending(p => p.Version).FirstOrDefault();
+            AppCastItem? latestVersion = items.OrderByDescending(p => p.Version).FirstOrDefault();
 
-            string releaseNotes = await ReleaseNotesGrabber.DownloadAllReleaseNotes(items, latestVersion, _cancellationToken);
+            string releaseNotes = await ReleaseNotesGrabber?.DownloadAllReleaseNotes(items, latestVersion, _cancellationToken)!;
 
             kwbReleaseNotes.Invoke((MethodInvoker)delegate
             {

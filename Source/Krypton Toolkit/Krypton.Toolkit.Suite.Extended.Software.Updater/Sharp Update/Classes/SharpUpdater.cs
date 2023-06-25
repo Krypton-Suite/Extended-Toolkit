@@ -25,6 +25,8 @@
  */
 #endregion
 
+using Application = System.Windows.Forms.Application;
+
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
     /// <summary>

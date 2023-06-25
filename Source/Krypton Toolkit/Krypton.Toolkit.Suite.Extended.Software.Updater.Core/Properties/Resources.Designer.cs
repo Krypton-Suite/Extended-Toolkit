@@ -59,5 +59,15 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZipExtractor {
+            get {
+                object obj = ResourceManager.GetObject("ZipExtractor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -86,7 +86,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.5.150-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.6.170-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -153,6 +153,7 @@
 	</Choose>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
 	</ItemGroup>
 

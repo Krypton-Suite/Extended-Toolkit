@@ -27,6 +27,8 @@
  */
 #endregion
 
+using Krypton.Toolkit.Suite.Extended.Wizard.Properties;
+
 namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
@@ -38,52 +40,28 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
     [Designer(typeof(AdvancedWizardDesigner))]
     public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
     {
+        #region Instance Fields
+
+        private Bitmap? _wizardImage;
+
+        #endregion
+
+        #region Identity
+
         public KryptonAdvancedWizard()
         {
             InitializeComponent();
             WizardPages = new KryptonAdvancedWizardPageCollection();
             _wizardStrategy = WizardStrategy.CreateWizard(DesignMode, this);
 
+            _wizardImage = Resources.Installer48;
+
             Dock = DockStyle.Fill;
         }
 
-        /// <summary>
-        /// IMessageFilter implementation
-        /// </summary>
-        public bool PreFilterMessage(ref Message msg)
-        {
-            switch (msg.Msg)
-            {
-                case WM_KEYDOWN:
-                    if (!DesignMode && ProcessKeys)
-                    {
-                        switch ((int)msg.WParam)
-                        {
-                            case VK_ESCAPE:
-                                _wizardStrategy.Cancel();
-                                break;
+        #endregion
 
-                            case VK_RETURN:
-                                if (OnLastPage())
-                                {
-                                    _wizardStrategy.Finish();
-                                }
-                                else if (NextButtonEnabled)
-                                {
-                                    _wizardStrategy.Next(null);
-                                }
-
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    break;
-                default:
-                    break;
-            }
-            return false;
-        }
+        #region Events
 
         [Category("WizardAction")]
         [Description("Fires when the Cancel button is clicked.")]
@@ -112,6 +90,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Category("WizardAction")]
         [Description("Fires when the last page is reached.")]
         public event EventHandler LastPage = delegate { };
+
+        #endregion
+
+        #region Public
 
         [Category("Wizard")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
@@ -164,8 +146,6 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                         {
                             _kpnlButtons.ResumeLayout();
                         }
-                        break;
-                    default:
                         break;
                 }
             }
@@ -420,6 +400,58 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             }
         }
 
+        public Bitmap? WizardHeaderImage
+        {
+            get => _wizardImage ?? Resources.Installer48;
+
+            set
+            {
+                if (_wizardImage != null)
+                {
+                    _wizardImage = value;
+
+                    Invalidate();
+                }
+            }
+        }
+
+        #endregion
+
+        #region Implementation
+
+        /// <summary>
+        /// IMessageFilter implementation
+        /// </summary>
+        public bool PreFilterMessage(ref Message msg)
+        {
+            switch (msg.Msg)
+            {
+                case WM_KEYDOWN:
+                    if (!DesignMode && ProcessKeys)
+                    {
+                        switch ((int)msg.WParam)
+                        {
+                            case VK_ESCAPE:
+                                _wizardStrategy.Cancel();
+                                break;
+
+                            case VK_RETURN:
+                                if (OnLastPage())
+                                {
+                                    _wizardStrategy.Finish();
+                                }
+                                else if (NextButtonEnabled)
+                                {
+                                    _wizardStrategy.Next(null);
+                                }
+
+                                break;
+                        }
+                    }
+                    break;
+            }
+            return false;
+        }
         public void GoToPage(int pageIndex) => _wizardStrategy.GoToPage(pageIndex);
 
         public void GoToPage(KryptonAdvancedWizardPage page) => _wizardStrategy.GoToPage(page);
@@ -434,14 +466,30 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         public void ClickHelp() => _wizardStrategy.Help();
 
+        #endregion
+
+        #region Protected
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            _selectionService = (ISelectionService)GetService(typeof(ISelectionService));
+            _selectionService = GetService(typeof(ISelectionService)) as ISelectionService;
             _kpnlButtons.SendToBack();
             _tempNextText = NextButtonText;
             _wizardStrategy.Loading();
             AllowKeyPressesToNavigateWizard();
         }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            foreach (KryptonAdvancedWizardPage page in WizardPages)
+            {
+                page.HeaderImage = _wizardImage ?? Resources.Installer48;
+            }
+
+            base.OnPaint(e);
+        }
+
+        #endregion
     }
 }
