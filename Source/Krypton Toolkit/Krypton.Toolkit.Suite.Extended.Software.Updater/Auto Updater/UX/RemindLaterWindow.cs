@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
         private void RemindLaterWindow_Load(object sender, EventArgs e)
         {
-            kbtnOk.Text = KryptonLanguageManager.Strings.OK;
+            kbtnOk.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
 
             kcmbRemindLater.SelectedIndex = 0;
 
