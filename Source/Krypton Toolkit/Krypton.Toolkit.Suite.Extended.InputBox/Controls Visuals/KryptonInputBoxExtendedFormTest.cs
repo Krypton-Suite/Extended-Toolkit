@@ -371,7 +371,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kbtnInputBoxButtonTwo.DialogResult = DialogResult.None;
 
-                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.Strings.OK;
+                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
 
                     kbtnInputBoxButtonThree.DialogResult = DialogResult.OK;
 
@@ -384,11 +384,11 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kbtnInputBoxButtonOne.DialogResult = DialogResult.None;
 
-                    kbtnInputBoxButtonTwo.Text = KryptonLanguageManager.Strings.OK;
+                    kbtnInputBoxButtonTwo.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
 
                     kbtnInputBoxButtonTwo.DialogResult = DialogResult.OK;
 
-                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.Strings.Cancel;
+                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
 
                     kbtnInputBoxButtonThree.DialogResult = DialogResult.Cancel;
 
@@ -401,11 +401,11 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
                     kbtnInputBoxButtonOne.DialogResult = DialogResult.None;
 
-                    kbtnInputBoxButtonTwo.Text = KryptonLanguageManager.Strings.Yes;
+                    kbtnInputBoxButtonTwo.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
 
                     kbtnInputBoxButtonTwo.DialogResult = DialogResult.Yes;
 
-                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.Strings.No;
+                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
 
                     kbtnInputBoxButtonThree.DialogResult = DialogResult.No;
 
@@ -414,15 +414,15 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                     CancelButton = kbtnInputBoxButtonThree;
                     break;
                 case InputBoxButtons.YesNoCancel:
-                    kbtnInputBoxButtonOne.Text = KryptonLanguageManager.Strings.Yes;
+                    kbtnInputBoxButtonOne.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
 
                     kbtnInputBoxButtonOne.DialogResult = DialogResult.Yes;
 
-                    kbtnInputBoxButtonTwo.Text = KryptonLanguageManager.Strings.No;
+                    kbtnInputBoxButtonTwo.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
 
                     kbtnInputBoxButtonTwo.DialogResult = DialogResult.No;
 
-                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.Strings.Cancel;
+                    kbtnInputBoxButtonThree.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
 
                     kbtnInputBoxButtonThree.DialogResult = DialogResult.Cancel;
 

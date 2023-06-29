@@ -143,63 +143,63 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <returns></returns>
         private KryptonButtonBuiltInDisplayString ReturnDisplayString(string buttonText)
         {
-            if (buttonText == KryptonLanguageManager.Strings.Abort)
+            if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Abort)
             {
                 return KryptonButtonBuiltInDisplayString.Abort;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.Apply)
+            else if (buttonText == KryptonLanguageManager.CustomToolkitStrings.Apply)
             {
                 return KryptonButtonBuiltInDisplayString.Apply;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.Cancel)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Cancel)
             {
                 return KryptonButtonBuiltInDisplayString.Cancel;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.Close)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Close)
             {
                 return KryptonButtonBuiltInDisplayString.Close;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.Collapse)
+            else if (buttonText == KryptonLanguageManager.CustomToolkitStrings.Collapse)
             {
                 return KryptonButtonBuiltInDisplayString.Collapse;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.Continue)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Continue)
             {
                 return KryptonButtonBuiltInDisplayString.Continue;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.Expand)
+            else if (buttonText == KryptonLanguageManager.CustomToolkitStrings.Expand)
             {
                 return KryptonButtonBuiltInDisplayString.Expand;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.Help)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Help)
             {
                 return KryptonButtonBuiltInDisplayString.Help;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.Ignore)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Ignore)
             {
                 return KryptonButtonBuiltInDisplayString.Ignore;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.No)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.No)
             {
                 return KryptonButtonBuiltInDisplayString.No;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.OK)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.OK)
             {
                 return KryptonButtonBuiltInDisplayString.Ok;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.Retry)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Retry)
             {
                 return KryptonButtonBuiltInDisplayString.Retry;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.Today)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Today)
             {
                 return KryptonButtonBuiltInDisplayString.Today;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.TryAgain)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.TryAgain)
             {
                 return KryptonButtonBuiltInDisplayString.TryAgain;
             }
-            else if (buttonText == KryptonLanguageManager.Strings.Yes)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Yes)
             {
                 return KryptonButtonBuiltInDisplayString.Yes;
             }

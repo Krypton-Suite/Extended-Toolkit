@@ -60,15 +60,15 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
 
         private void SetupButtonText()
         {
-            kbtnButtonOne.Text = KryptonLanguageManager.Strings.Yes;
+            kbtnButtonOne.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
 
-            kbtnButtonTwo.Text = KryptonLanguageManager.Strings.YesToAll;
+            kbtnButtonTwo.Text = KryptonLanguageManager.CustomToolkitStrings.YesToAll;
 
-            kbtnButtonThree.Text = KryptonLanguageManager.Strings.No;
+            kbtnButtonThree.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
 
-            kbtnButtonFour.Text = KryptonLanguageManager.Strings.NoToAll;
+            kbtnButtonFour.Text = KryptonLanguageManager.CustomToolkitStrings.NoToAll;
 
-            kbtnButtonFive.Text = KryptonLanguageManager.Strings.Cancel;
+            kbtnButtonFive.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
         }
 
         /// <summary>Sets the default dialog result.</summary>

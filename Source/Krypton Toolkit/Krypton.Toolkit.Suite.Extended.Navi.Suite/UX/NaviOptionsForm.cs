@@ -54,8 +54,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         private void Translate()
         {
-            buttonCancel.Text = KryptonLanguageManager.Strings.Cancel;
-            buttonOk.Text = KryptonLanguageManager.Strings.OK;
+            buttonCancel.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+            buttonOk.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
             labelDesc.Text = NaviSuiteLanguageManager.SuiteStrings.Description;
             buttonMoveDown.Text = NaviSuiteLanguageManager.SuiteStrings.MoveDown;
             buttonMoveUp.Text = NaviSuiteLanguageManager.SuiteStrings.MoveUp;

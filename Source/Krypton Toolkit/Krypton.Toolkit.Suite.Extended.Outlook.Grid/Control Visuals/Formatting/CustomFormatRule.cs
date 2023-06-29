@@ -63,9 +63,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         private void StartUp()
         {
-            kbtnCancel.Text = KryptonLanguageManager.Strings.Cancel;
+            kbtnCancel.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
 
-            kbtnOk.Text = KryptonLanguageManager.Strings.OK;
+            kbtnOk.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
 
             kcmbFillMode.SelectedIndex = 0;
 
