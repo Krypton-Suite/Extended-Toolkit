@@ -42,9 +42,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
     {
         #region Fields
 
-        CollectionEventHandler m_itemAdded;
-        CollectionEventHandler m_itemRemoved;
-        protected bool notify = true;
+        CollectionEventHandler? m_itemAdded;
+        CollectionEventHandler? m_itemRemoved;
+        protected bool _notify = true;
 
         #endregion
 
@@ -84,9 +84,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         protected override void OnRemoveComplete(int index, object value)
         {
             base.OnRemoveComplete(index, value);
-            CollectionEventHandler handler = m_itemRemoved;
+            CollectionEventHandler? handler = m_itemRemoved;
             if ((handler != null)
-            && notify)
+            && _notify)
             {
                 handler(this, new ExtCollectionEventArgs(value));
             }
@@ -98,9 +98,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         protected override void OnInsertComplete(int index, object value)
         {
             base.OnInsertComplete(index, value);
-            CollectionEventHandler handler = m_itemAdded;
+            CollectionEventHandler? handler = m_itemAdded;
             if ((handler != null)
-            && notify)
+            && _notify)
             {
                 handler(this, new ExtCollectionEventArgs(value));
             }
@@ -116,7 +116,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public event CollectionEventHandler ItemAdded
         {
             add => m_itemAdded += value;
-            remove => m_itemAdded -= value;
+            remove
+            {
+                if (m_itemAdded != null)
+                {
+                    m_itemAdded -= value;
+                }
+            }
         }
 
         /// <summary>

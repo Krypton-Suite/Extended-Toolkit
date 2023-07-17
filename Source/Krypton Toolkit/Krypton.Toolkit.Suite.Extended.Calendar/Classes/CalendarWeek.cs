@@ -72,12 +72,22 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the bounds of the week header
         /// </summary>
-        public Rectangle HeaderBounds =>
-            new Rectangle(
-                Bounds.Left,
-                Bounds.Top + Calendar.Renderer.DayHeaderHeight,
-                Calendar.Renderer.WeekHeaderWidth,
-                Bounds.Height - Calendar.Renderer.DayHeaderHeight);
+        public Rectangle HeaderBounds
+        {
+            get
+            {
+                if (Calendar.Renderer != null)
+                {
+                    return new Rectangle(
+                        Bounds.Left,
+                        Bounds.Top + Calendar.Renderer.DayHeaderHeight,
+                        Calendar.Renderer.WeekHeaderWidth,
+                        Bounds.Height - Calendar.Renderer.DayHeaderHeight);
+                }
+
+                return Rectangle.Empty;
+            }
+        }
 
         /// <summary>
         /// Gets the sunday that starts the week

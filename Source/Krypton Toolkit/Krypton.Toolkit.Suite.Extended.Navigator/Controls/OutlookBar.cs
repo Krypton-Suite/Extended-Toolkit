@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         public delegate void ButtonClickedEventHandler(object sender, System.EventArgs e);
 
         //Needed because this way the buttons can raise the ButtonClicked event...
-        public void SetSelectionChanged(OutlookBarButton button)
+        public void SetSelectionChanged(OutlookBarButton? button)
         {
             this._SelectedButton = button;
             this.Invalidate();
@@ -102,8 +102,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private bool _DropDownHovering;
         private OutlookBarButton _HoveringButton;
         private OutlookBarButton _LeftClickedButton;
-        private OutlookBarButton _RightClickedButton;
-        internal OutlookBarButton _SelectedButton;
+        private OutlookBarButton? _RightClickedButton;
+        internal OutlookBarButton? _SelectedButton;
         private bool IsResizing;
         private bool CanGrow;
         private bool CanShrink;
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         public OutlookBarButtonCollection Buttons => this._Buttons;
 
         [Browsable(true)]
-        public OutlookBarButton SelectedButton => this._SelectedButton;
+        public OutlookBarButton? SelectedButton => this._SelectedButton;
 
         [Browsable(true)]
         public int SelectedIndex => this.Buttons.SelectedIndex(_SelectedButton);
@@ -321,7 +321,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void OutlookBar_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             _RightClickedButton = null;
-            OutlookBarButton mButton = this.Buttons[e.X, e.Y];
+            OutlookBarButton? mButton = this.Buttons[e.X, e.Y];
             if ((mButton != null))
             {
                 switch (e.Button)
@@ -431,7 +431,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     this.Invalidate();
                     //string EmptyLineVar = null;
                     //adjust tooltip...
-                    if (!this.Buttons[e.X, e.Y].isLarge)
+                    if (!this.Buttons[e.X, e.Y]._isLarge)
                     {
                         if (oToolTip.Tag == null)
                         {
@@ -499,8 +499,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 if (this.Buttons[IterateLargeButtons].Visible)
                 {
                     Rectangle rec = new Rectangle(0, (SyncLargeButtons * GetButtonHeight()) + GetGripRectangle().Height, this.Width, GetButtonHeight());
-                    Buttons[IterateLargeButtons].Rectangle = rec;
-                    Buttons[IterateLargeButtons].isLarge = true;
+                    Buttons[IterateLargeButtons]._rectangle = rec;
+                    Buttons[IterateLargeButtons]._isLarge = true;
                     this.PaintButton(Buttons[IterateLargeButtons], e.Graphics, (MaxLargeButtonCount != SyncLargeButtons));
                     if (SyncLargeButtons == MaxLargeButtonCount)
                     {
@@ -539,8 +539,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 if (this.Buttons[IterateSmallButtons].Visible)
                 {
                     Rectangle rec = new Rectangle(StartX + (SyncSmallButtons * GetSmallButtonWidth()), GetBottomContainerRectangle().Y, GetSmallButtonWidth(), GetBottomContainerRectangle().Height);
-                    this.Buttons[IterateSmallButtons].Rectangle = rec;
-                    this.Buttons[IterateSmallButtons].isLarge = false;
+                    this.Buttons[IterateSmallButtons]._rectangle = rec;
+                    this.Buttons[IterateSmallButtons]._isLarge = false;
                     //OutlookBarButton refBtn = Buttons[IterateLargeButtons];
                     this.PaintButton(this.Buttons[IterateSmallButtons], e.Graphics, false);
                     SyncSmallButtons += 1;
@@ -549,7 +549,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             for (int IterateMenuItems = IterateSmallButtons; IterateMenuItems <= this.Buttons.CountVisible() - 1; IterateMenuItems++)
             {
-                this.Buttons[IterateMenuItems].Rectangle = new Rectangle();
+                this.Buttons[IterateMenuItems]._rectangle = new Rectangle();
             }
 
             //Draw Empty Space...
@@ -575,37 +575,37 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 {
                     if (Button.Equals(this.SelectedButton))
                     {
-                        FillButton(Button.Rectangle, graphics, ButtonState.HoveringSelected, true, Button.isLarge, Button.isLarge);
+                        FillButton(Button._rectangle, graphics, ButtonState.HoveringSelected, true, Button._isLarge, Button._isLarge);
                     }
                     else
                     {
-                        this.FillButton(Button.Rectangle, graphics, ButtonState.Hovering, true, Button.isLarge, Button.isLarge);
+                        this.FillButton(Button._rectangle, graphics, ButtonState.Hovering, true, Button._isLarge, Button._isLarge);
                     }
                 }
                 else
                 {
-                    this.FillButton(Button.Rectangle, graphics, ButtonState.Selected, true, Button.isLarge, Button.isLarge);
+                    this.FillButton(Button.Rectangle, graphics, ButtonState.Selected, true, Button._isLarge, Button._isLarge);
                 }
             }
             else
             {
                 if (Button.Equals(SelectedButton))
                 {
-                    FillButton(Button.Rectangle, graphics, ButtonState.Selected, true, Button.isLarge, Button.isLarge);
+                    FillButton(Button.Rectangle, graphics, ButtonState.Selected, true, Button._isLarge, Button._isLarge);
                 }
                 else
                 {
-                    FillButton(Button.Rectangle, graphics, ButtonState.Passive, true, Button.isLarge, Button.isLarge);
+                    FillButton(Button.Rectangle, graphics, ButtonState.Passive, true, Button._isLarge, Button._isLarge);
                 }
             }
             //string EmptyLineVar = null;
             //Text and icons...
-            if (Button.isLarge & IsLastLarge == true)
+            if (Button._isLarge & IsLastLarge == true)
             {
                 graphics.DrawString(Button.Text, this.GetButtonFont(), this.GetButtonTextBrush(Button.Equals(this.SelectedButton)), 10 + ImageDimension_Large + 8, (float)Button.Rectangle.Y + ((GetButtonHeight() / 2) - (this.GetButtonFont().Height / 2)) + 2);
             }
             Rectangle recIma = new Rectangle();
-            switch (Button.isLarge)
+            switch (Button._isLarge)
             {
                 case true:
                     {
@@ -626,12 +626,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
                     break;
             }
-            if (Button.isLarge & IsLastLarge == true)
+            if (Button._isLarge & IsLastLarge == true)
             {
                 graphics.DrawImage(Button.Image.ToBitmap(), recIma);
             }
 
-            if (Button.isLarge == false)
+            if (Button._isLarge == false)
             {
                 graphics.DrawImage(Button.Image.ToBitmap(), recIma);
             }

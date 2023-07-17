@@ -91,7 +91,18 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the bounds of the body of the day (where time-based CalendarItems are placed)
         /// </summary>
-        public Rectangle BodyBounds => Rectangle.FromLTRB(Bounds.Left, DayTop.Bounds.Bottom, Bounds.Right, Bounds.Bottom);
+        public Rectangle BodyBounds
+        {
+            get
+            {
+                if (DayTop != null)
+                {
+                    return Rectangle.FromLTRB(Bounds.Left, DayTop.Bounds.Bottom, Bounds.Right, Bounds.Bottom);
+                }
+
+                return Rectangle.Empty;
+            }
+        }
 
         /// <summary>
         /// Gets the date this day represents
@@ -101,7 +112,18 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the bounds of the header of the day
         /// </summary>
-        public Rectangle HeaderBounds => new Rectangle(Bounds.Left, Bounds.Top, Bounds.Width, Calendar.Renderer.DayHeaderHeight);
+        public Rectangle HeaderBounds
+        {
+            get
+            {
+                if (Calendar.Renderer != null)
+                {
+                    return new Rectangle(Bounds.Left, Bounds.Top, Bounds.Width, Calendar.Renderer.DayHeaderHeight);
+                }
+
+                return Rectangle.Empty;
+            }
+        }
 
         /// <summary>
         /// Gets the index of this day on the calendar

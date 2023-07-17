@@ -70,38 +70,26 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public int CompareTo(Token other)
-        {
-            return Text.CompareTo(other.Text);
-        }
+        public int CompareTo(Token other) => Text.CompareTo(other.Text);
 
         /// <summary>
         /// Overrides ToString
         /// </summary>
         /// <returns>String that represents TextAndImage</returns>
-        public override string ToString()
-        {
-            return Text;
-        }
+        public override string ToString() => Text;
 
         /// <summary>
         /// Overrides Equals
         /// </summary>
         /// <param name="obj">The object to compare</param>
         /// <returns>true if equal, false otherwise.</returns>
-        public override bool Equals(object obj)
-        {
-            return Text.Equals(obj.ToString());
-        }
+        public override bool Equals(object obj) => Text.Equals(obj.ToString());
 
         /// <summary>
         /// Overrides GetHashCode
         /// </summary>
         /// <returns></returns>
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public override int GetHashCode() => base.GetHashCode();
     }
 
     /// <summary>
@@ -159,21 +147,24 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
 
             int nextPosition = cellBounds.X + (int)(1 * factorX);
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
-
-            Token tok = (Token)Value;
-            if (tok != null)
+            if (KryptonManager.CurrentGlobalPalette != null)
             {
-                Rectangle rectangle = new Rectangle();
-                Size s = TextRenderer.MeasureText(tok.Text, f);
-                rectangle.Width = s.Width + (int)(10 * factorX);
-                rectangle.X = nextPosition;
-                rectangle.Y = cellBounds.Y + (int)(2 * factorY);
-                rectangle.Height = (int)(17 * factorY);
-                nextPosition += rectangle.Width + (int)(5 * factorX);
+                Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
-                graphics.FillRectangle(new SolidBrush(tok.BackColour), rectangle);
-                TextRenderer.DrawText(graphics, tok.Text, f, rectangle, tok.ForeColour);
+                Token tok = (Token)Value;
+                if (tok != null)
+                {
+                    Rectangle rectangle = new Rectangle();
+                    Size s = TextRenderer.MeasureText(tok.Text, f);
+                    rectangle.Width = s.Width + (int)(10 * factorX);
+                    rectangle.X = nextPosition;
+                    rectangle.Y = cellBounds.Y + (int)(2 * factorY);
+                    rectangle.Height = (int)(17 * factorY);
+                    nextPosition += rectangle.Width + (int)(5 * factorX);
+
+                    graphics.FillRectangle(new SolidBrush(tok.BackColour), rectangle);
+                    TextRenderer.DrawText(graphics, tok.Text, f, rectangle, tok.ForeColour);
+                }
             }
         }
 
@@ -191,16 +182,20 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
 
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
-            int nextPosition = (int)(1 * factorX);
-            if (Value != null)
+            if (KryptonManager.CurrentGlobalPalette != null)
             {
-                Token tok = (Token)Value;
-                Size s = TextRenderer.MeasureText(tok.Text, f);
-                nextPosition += s.Width + (int)(10 * factorX) + (int)(5 * factorX);
+                Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+                int nextPosition = (int)(1 * factorX);
+                if (Value != null)
+                {
+                    Token tok = (Token)Value;
+                    Size s = TextRenderer.MeasureText(tok.Text, f);
+                    nextPosition += s.Width + (int)(10 * factorX) + (int)(5 * factorX);
 
-                tmpSize.Width = nextPosition;
+                    tmpSize.Width = nextPosition;
+                }
             }
+
             return tmpSize;
         }
 
@@ -271,20 +266,23 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
 
             int nextPosition = cellBounds.X + (int)(1 * factorX);
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
-
-            foreach (Token tok in (List<Token>)Value)
+            if (KryptonManager.CurrentGlobalPalette != null)
             {
-                Rectangle rectangle = new Rectangle();
-                Size s = TextRenderer.MeasureText(tok.Text, f);
-                rectangle.Width = s.Width + (int)(10 * factorX);
-                rectangle.X = nextPosition;
-                rectangle.Y = cellBounds.Y + (int)(2 * factorY);
-                rectangle.Height = (int)(17 * factorY);
-                nextPosition += rectangle.Width + (int)(5 * factorX);
+                Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
-                graphics.FillRectangle(new SolidBrush(tok.BackColour), rectangle);
-                TextRenderer.DrawText(graphics, tok.Text, f, rectangle, tok.ForeColour);
+                foreach (Token tok in (List<Token>)Value)
+                {
+                    Rectangle rectangle = new Rectangle();
+                    Size s = TextRenderer.MeasureText(tok.Text, f);
+                    rectangle.Width = s.Width + (int)(10 * factorX);
+                    rectangle.X = nextPosition;
+                    rectangle.Y = cellBounds.Y + (int)(2 * factorY);
+                    rectangle.Height = (int)(17 * factorY);
+                    nextPosition += rectangle.Width + (int)(5 * factorX);
+
+                    graphics.FillRectangle(new SolidBrush(tok.BackColour), rectangle);
+                    TextRenderer.DrawText(graphics, tok.Text, f, rectangle, tok.ForeColour);
+                }
             }
         }
 
@@ -302,17 +300,21 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
 
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
-            int nextPosition = (int)(1 * factorX);
-            if (Value != null)
+            if (KryptonManager.CurrentGlobalPalette != null)
             {
-                foreach (Token tok in (List<Token>)Value)
+                Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+                int nextPosition = (int)(1 * factorX);
+                if (Value != null)
                 {
-                    Size s = TextRenderer.MeasureText(tok.Text, f);
-                    nextPosition += s.Width + (int)(10 * factorX) + (int)(5 * factorX);
+                    foreach (Token tok in (List<Token>)Value)
+                    {
+                        Size s = TextRenderer.MeasureText(tok.Text, f);
+                        nextPosition += s.Width + (int)(10 * factorX) + (int)(5 * factorX);
+                    }
+                    tmpSize.Width = nextPosition;
                 }
-                tmpSize.Width = nextPosition;
             }
+
             return tmpSize;
         }
 

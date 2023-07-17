@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
     public partial class ToolStripExistingComponentChooser : KryptonForm
     {
         #region Variables
-        private List<ToolStripPanelExtended> _srcComponentList = new List<ToolStripPanelExtended>();
+        private List<ToolStripPanelExtended?> _srcComponentList = new List<ToolStripPanelExtended?>();
         #endregion
 
         #region Properties
@@ -53,17 +53,17 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
-        public List<ToolStripPanelExtended> SelectedComponents
+        public List<ToolStripPanelExtended?> SelectedComponents
         {
             get
             {
-                List<ToolStripPanelExtended> tspe = new List<ToolStripPanelExtended>();
+                List<ToolStripPanelExtended?> tspe = new List<ToolStripPanelExtended?>();
 
                 if (klbSelected.Items.Count > 0)
                 {
-                    foreach (ToolStripPanelExtended toolStripPanel in _srcComponentList)
+                    foreach (ToolStripPanelExtended? toolStripPanel in _srcComponentList)
                     {
-                        if (klbSelected.Items.Contains(toolStripPanel.Name))
+                        if (toolStripPanel != null && klbSelected.Items.Contains(toolStripPanel.Name))
                         {
                             tspe.Add(toolStripPanel);
                         }
@@ -93,11 +93,11 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #region Methods
         private void InitialSettings()
         {
-            foreach (ToolStripPanelExtended ToolStripPanel in _srcComponentList)
+            foreach (ToolStripPanelExtended? toolStripPanel in _srcComponentList)
             {
-                if (!klbSelected.Items.Contains(ToolStripPanel.Name))
+                if (toolStripPanel != null && !klbSelected.Items.Contains(toolStripPanel.Name))
                 {
-                    klblAvailable.Items.Add(ToolStripPanel.Name);
+                    klblAvailable.Items.Add(toolStripPanel.Name);
                 }
             }
         }
@@ -119,9 +119,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         private void KbtnAddSelected_Click(object sender, EventArgs e)
         {
-            klbSelected.Items.Add(klblAvailable.SelectedItem);
+            if (klblAvailable.SelectedItem != null)
+            {
+                klbSelected.Items.Add(klblAvailable.SelectedItem);
 
-            klblAvailable.Items.Remove(klblAvailable.SelectedItem);
+                klblAvailable.Items.Remove(klblAvailable.SelectedItem);
+            }
         }
 
         private void KbtnAddAll_Click(object sender, EventArgs e)
@@ -137,9 +140,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         private void KbtnRemoveSelected_Click(object sender, EventArgs e)
         {
-            klblAvailable.Items.Add(klbSelected.SelectedItem);
+            if (klbSelected.SelectedItem != null)
+            {
+                klblAvailable.Items.Add(klbSelected.SelectedItem);
 
-            klbSelected.Items.Remove(klbSelected.SelectedItem);
+                klbSelected.Items.Remove(klbSelected.SelectedItem);
+            }
         }
 
         private void KbtnRemoveAll_Click(object sender, EventArgs e)

@@ -33,9 +33,9 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         private bool _showWindowFrame;
 
-        private FloatableMenuStrip _floatableMenuStrip;
+        private FloatableMenuStrip? _floatableMenuStrip;
 
-        private FloatableToolStrip _floatableToolStrip;
+        private FloatableToolStrip? _floatableToolStrip;
 
         private int _dFrameWidth = 8, _captionWidth = 18, _maxWidth = 0, _minWidth = 0;
 
@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         public bool ShowWindowFrame { get => _showWindowFrame; set { _showWindowFrame = value; Invalidate(); } }
 
-        public FloatableMenuStrip FloatableMenuStrip
+        public FloatableMenuStrip? FloatableMenuStrip
         {
             get => _floatableMenuStrip;
 
@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
-        public FloatableToolStrip FloatableToolStrip
+        public FloatableToolStrip? FloatableToolStrip
         {
             get => _floatableToolStrip;
 
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Event Handlers
-        public event EventHandler NCLBUTTONDBLCLK;
+        public event EventHandler? NCLBUTTONDBLCLK;
         #endregion
 
         #region Identity

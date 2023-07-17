@@ -1443,37 +1443,40 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 CalendarTimeScaleUnit? unit = e.Calendar.Days[0]?.TimeUnits[i];
 
-                if (!unit.Visible)
+                if (unit != null && !unit.Visible)
                 {
                     continue;
                 }
 
-                string hours = unit.Hours.ToString("00");
-                string minutes = unit.Minutes == 0 ? "00" : string.Empty;
-
-                if (!string.IsNullOrWhiteSpace(minutes))
+                if (unit != null)
                 {
-                    if (hours == "00")
+                    string hours = unit.Hours.ToString("00");
+                    string minutes = unit.Minutes == 0 ? "00" : string.Empty;
+
+                    if (!string.IsNullOrWhiteSpace(minutes))
                     {
-                        hours = "12";
+                        if (hours == "00")
+                        {
+                            hours = "12";
+                        }
+
+                        CalendarRendererBoxEventArgs hevt = new CalendarRendererBoxEventArgs(e, new Rectangle(hourLeft, unit.Bounds.Top, hourWidth, unit.Bounds.Height), hours, TextFormatFlags.Right);
+
+                        hevt.Font = hourFont;
+
+                        OnDrawTimeScaleHour(hevt);
+
+                        if (k++ == 0 || unit.Hours == 0 || unit.Hours == 12)
+                        {
+                            minutes = unit.Date.ToString("tt");
+                        }
+
+                        CalendarRendererBoxEventArgs mevt = new CalendarRendererBoxEventArgs(e, new Rectangle(minuteLeft, unit.Bounds.Top, minuteWidth, unit.Bounds.Height), minutes, TextFormatFlags.Top | TextFormatFlags.Left);
+
+                        mevt.Font = minuteFont;
+
+                        OnDrawTimeScaleMinutes(mevt);
                     }
-
-                    CalendarRendererBoxEventArgs hevt = new CalendarRendererBoxEventArgs(e, new Rectangle(hourLeft, unit.Bounds.Top, hourWidth, unit.Bounds.Height), hours, TextFormatFlags.Right);
-
-                    hevt.Font = hourFont;
-
-                    OnDrawTimeScaleHour(hevt);
-
-                    if (k++ == 0 || unit.Hours == 0 || unit.Hours == 12)
-                    {
-                        minutes = unit.Date.ToString("tt");
-                    }
-
-                    CalendarRendererBoxEventArgs mevt = new CalendarRendererBoxEventArgs(e, new Rectangle(minuteLeft, unit.Bounds.Top, minuteWidth, unit.Bounds.Height), minutes, TextFormatFlags.Top | TextFormatFlags.Left);
-
-                    mevt.Font = minuteFont;
-
-                    OnDrawTimeScaleMinutes(mevt);
                 }
             }
         }

@@ -37,19 +37,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         public OutlookBarButton()
         {
-            this.Owner = new OutlookBar();
+            Owner = new OutlookBar();
         }
 
         public OutlookBarButton(string text, Icon image)
         {
-            this.Owner = new OutlookBar();
-            this.Text = text;
-            this.Image = image;
+            Owner = new OutlookBar();
+            Text = text;
+            Image = image;
         }
 
         internal OutlookBarButton(OutlookBar owner)
         {
-            this.Owner = owner;
+            Owner = owner;
         }
 
         #endregion
@@ -59,11 +59,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         //The ButtonClass is not inheriting from Control, so I need this destructor...
 
         // To detect redundant calls
-        private bool disposedValue = false;
+        private bool _disposedValue = false;
         // IDisposable
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposedValue)
+            if (!_disposedValue)
             {
                 if (disposing)
                 {
@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 //string EmptyLineVar = null;
                 // TODO: free shared unmanaged resources
             }
-            this.disposedValue = true;
+            _disposedValue = true;
         }
 
         #region " IDisposable Support "
@@ -93,62 +93,62 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         internal ButtonState State = ButtonState.Passive;
 
-        private string _Text;
-        private bool _Visible = true;
-        private bool _Allowed = true;
-        private Icon _Image = Properties.Resources.DefaultIcon;
-        internal Rectangle Rectangle;
-        internal bool isLarge;
-        private bool _Selected;
-        private string _Tag1;
-        private string _Tag2;
-        private string _BuddyPage1;
-        private string _BuddyPage2;
+        private string _text;
+        private bool _visible = true;
+        private bool _allowed = true;
+        private Icon _image = Properties.Resources.DefaultIcon;
+        internal Rectangle? _rectangle;
+        internal bool _isLarge;
+        private bool _selected;
+        private string _tag1;
+        private string _tag2;
+        private string _buddyPage1;
+        private string _buddyPage2;
 
         [DefaultValue(typeof(string), ""), Browsable(true)]
         public string Tag1
         {
-            get => this._Tag1;
-            set => this._Tag1 = value;
+            get => _tag1;
+            set => _tag1 = value;
         }
 
         [DefaultValue(typeof(string), ""), Browsable(true)]
         public string Tag2
         {
-            get => this._Tag2;
-            set => this._Tag2 = value;
+            get => _tag2;
+            set => _tag2 = value;
         }
 
         [DefaultValue(typeof(string), ""), Browsable(true)]
         public string BuddyPage1
         {
-            get => this._BuddyPage1;
-            set => this._BuddyPage1 = value;
+            get => _buddyPage1;
+            set => _buddyPage1 = value;
         }
 
         [DefaultValue(typeof(string), ""), Browsable(true)]
         public string BuddyPage2
         {
-            get => this._BuddyPage2;
-            set => this._BuddyPage2 = value;
+            get => _buddyPage2;
+            set => _buddyPage2 = value;
         }
 
         public string Text
         {
-            get => this._Text;
-            set => this._Text = value;
+            get => _text;
+            set => _text = value;
         }
 
         [DefaultValue(typeof(bool), "True")]
         public bool Visible
         {
-            get => this._Visible;
+            get => _visible;
             set
             {
-                this._Visible = value;
+                _visible = value;
                 if (!value)
                 {
-                    this.Rectangle = new Rectangle();
+                    _rectangle = new Rectangle();
                 }
             }
 
@@ -157,17 +157,17 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(bool), "False"), Browsable(true)]
         public bool Selected
         {
-            get => this._Selected;
+            get => _selected;
             set
             {
-                this._Selected = value;
+                _selected = value;
                 switch (value)
                 {
                     case true:
-                        this.Owner._SelectedButton = this;
+                        Owner._SelectedButton = this;
                         break;
                     case false:
-                        this.Owner._SelectedButton = null;
+                        Owner._SelectedButton = null;
                         break;
                 }
                 Owner.SetSelectionChanged(this);
@@ -177,13 +177,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(bool), "True")]
         public bool Allowed
         {
-            get => this._Allowed;
+            get => _allowed;
             set
             {
-                this._Allowed = value;
+                _allowed = value;
                 if (value == false)
                 {
-                    this.Visible = false;
+                    Visible = false;
                 }
             }
         }
@@ -193,21 +193,21 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             get
             {
-                if (this._Image == null)
+                if (_image == null)
                 {
                     return Properties.Resources.DefaultIcon;
                 }
                 else
                 {
-                    return this._Image;
+                    return _image;
                 }
             }
-            set => this._Image = value;
+            set => _image = value;
         }
 
         public override string ToString()
         {
-            return this.Text;
+            return Text;
         }
 
     }

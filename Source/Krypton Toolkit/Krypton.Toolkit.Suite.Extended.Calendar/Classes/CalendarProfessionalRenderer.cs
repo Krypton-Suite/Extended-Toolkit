@@ -94,7 +94,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             using (LinearGradientBrush br = new LinearGradientBrush(bounds, b, a, -90))
             {
-                g.FillRectangle(br, bounds);
+                if (g != null)
+                {
+                    g.FillRectangle(br, bounds);
+                }
             }
         }
 
@@ -126,28 +129,37 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnInitialize(e);
 
-            e.Calendar.Font = SystemFonts.CaptionFont;
+            if (e.Calendar != null)
+            {
+                e.Calendar.Font = SystemFonts.CaptionFont;
+            }
         }
 
         public override void OnDrawDayHeaderBackground(CalendarRendererDayEventArgs e)
         {
-            Rectangle r = e.Day.HeaderBounds;
+            if (e.Day != null)
+            {
+                Rectangle r = e.Day.HeaderBounds;
 
-            if (e.Day.Date == DateTime.Today)
-            {
-                GlossyRect(e.Graphics, e.Day.HeaderBounds, TodayA, TodayB, TodayC, TodayD);
-            }
-            else
-            {
-                GlossyRect(e.Graphics, e.Day.HeaderBounds, HeaderA, HeaderB, HeaderC, HeaderD);
-            }
-
-            if (e.Calendar.DaysMode == CalendarDaysMode.Short)
-            {
-                using (Pen p = new Pen(ColourTable.DayBorder))
+                if (e.Day.Date == DateTime.Today)
                 {
-                    e.Graphics.DrawLine(p, r.Left, r.Top, r.Right, r.Top);
-                    e.Graphics.DrawLine(p, r.Left, r.Bottom, r.Right, r.Bottom);
+                    GlossyRect(e.Graphics, e.Day.HeaderBounds, TodayA, TodayB, TodayC, TodayD);
+                }
+                else
+                {
+                    GlossyRect(e.Graphics, e.Day.HeaderBounds, HeaderA, HeaderB, HeaderC, HeaderD);
+                }
+
+                if (e.Calendar != null && e.Calendar.DaysMode == CalendarDaysMode.Short)
+                {
+                    using (Pen p = new Pen(ColourTable.DayBorder))
+                    {
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.DrawLine(p, r.Left, r.Top, r.Right, r.Top);
+                            e.Graphics.DrawLine(p, r.Left, r.Bottom, r.Right, r.Bottom);
+                        }
+                    }
                 }
             }
         }
@@ -158,10 +170,14 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             using (Pen p = new Pen(Color.FromArgb(150, Color.White)))
             {
-                e.Graphics.DrawLine(p, e.Bounds.Left + ItemRoundness, e.Bounds.Top + 1, e.Bounds.Right - ItemRoundness, e.Bounds.Top + 1);
+                if (e.Graphics != null)
+                {
+                    e.Graphics.DrawLine(p, e.Bounds.Left + ItemRoundness, e.Bounds.Top + 1,
+                        e.Bounds.Right - ItemRoundness, e.Bounds.Top + 1);
+                }
             }
 
-            if (e.Item.Selected && !e.Item.IsDragging)
+            if (e.Item != null && e.Item.Selected && !e.Item.IsDragging)
             {
                 bool horizontal = false;
                 bool vertical = false;
@@ -169,7 +185,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 Rectangle r2 = new Rectangle(0, 0, 5, 5);
 
                 horizontal = e.Item.IsOnDayTop;
-                vertical = !e.Item.IsOnDayTop && e.Calendar.DaysMode == CalendarDaysMode.Expanded;
+                if (e.Calendar != null)
+                {
+                    vertical = !e.Item.IsOnDayTop && e.Calendar.DaysMode == CalendarDaysMode.Expanded;
+                }
 
                 if (horizontal)
                 {
@@ -191,14 +210,20 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 {
                     if (!e.Item.IsOpenStart && e.IsFirst)
                     {
-                        e.Graphics.FillRectangle(Brushes.White, r1);
-                        e.Graphics.DrawRectangle(Pens.Black, r1);
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.FillRectangle(Brushes.White, r1);
+                            e.Graphics.DrawRectangle(Pens.Black, r1);
+                        }
                     }
 
                     if (!e.Item.IsOpenEnd && e.IsLast)
                     {
-                        e.Graphics.FillRectangle(Brushes.White, r2);
-                        e.Graphics.DrawRectangle(Pens.Black, r2);
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.FillRectangle(Brushes.White, r2);
+                            e.Graphics.DrawRectangle(Pens.Black, r2);
+                        }
                     }
                 }
             }

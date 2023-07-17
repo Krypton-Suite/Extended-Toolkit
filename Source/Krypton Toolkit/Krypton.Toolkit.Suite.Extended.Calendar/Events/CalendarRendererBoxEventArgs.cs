@@ -55,7 +55,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original)
             : base(original)
         {
-            Font = original.Calendar.Font;
+            if (original.Calendar != null)
+            {
+                Font = original.Calendar.Font;
+            }
+
             Format |= TextFormatFlags.Default | TextFormatFlags.WordBreak | TextFormatFlags.PreserveGraphicsClipping;// | TextFormatFlags.WordEllipsis;
             TextColour = SystemColors.ControlText;
         }
@@ -94,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             Bounds = bounds;
             Text = text;
-            TextColour = TextColour;
+            TextColour = textColour;
             Format |= flags;
         }
 
@@ -103,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             Bounds = bounds;
             Text = text;
-            TextColour = TextColour;
+            TextColour = textColour;
             BackgroundColour = backgroundColour;
         }
 

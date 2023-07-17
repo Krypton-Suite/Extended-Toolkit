@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
         public KryptonComboBox ComboBox { get => combobox; set => combobox = value; }
 
         [Browsable(true), Description("Gets or sets the TreeView's Selected Node"), Category("TreeView")]
-        public ImageList Imagelist { get => tvTreeView.ImageList; set => tvTreeView.ImageList = value; }
+        public ImageList? Imagelist { get => tvTreeView.ImageList; set => tvTreeView.ImageList = value; }
 
         [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Appearance")]
         public string BranchSeparator
@@ -156,8 +156,8 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
         {
             if (!frmTreeView.Visible)
             {
-                Rectangle CBRect = RectangleToScreen(ClientRectangle);
-                frmTreeView.Location = new Point(CBRect.X, CBRect.Y + pnlBack.Height);
+                Rectangle cbRect = RectangleToScreen(ClientRectangle);
+                frmTreeView.Location = new Point(cbRect.X, cbRect.Y + pnlBack.Height);
 
                 frmTreeView.Show();
                 frmTreeView.BringToFront();

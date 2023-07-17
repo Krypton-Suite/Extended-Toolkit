@@ -164,7 +164,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         private void CollectionChanged()
         {
-            Calendar.Renderer.PerformItemsLayout();
+            if (Calendar.Renderer != null)
+            {
+                Calendar.Renderer.PerformItemsLayout();
+            }
             Calendar.Invalidate();
         }
 

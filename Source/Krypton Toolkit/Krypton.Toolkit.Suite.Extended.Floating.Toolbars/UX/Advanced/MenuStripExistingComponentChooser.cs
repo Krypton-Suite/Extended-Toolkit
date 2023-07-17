@@ -63,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                 {
                     foreach (MenuStripPanelExtended? toolStripPanel in _srcComponentList)
                     {
-                        if (klbSelected.Items.Contains(toolStripPanel.Name))
+                        if (toolStripPanel != null && klbSelected.Items.Contains(toolStripPanel.Name))
                         {
                             tspe.Add(toolStripPanel);
                         }
@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         {
             foreach (MenuStripPanelExtended? menuStripPanel in _srcComponentList)
             {
-                if (!klbSelected.Items.Contains(menuStripPanel.Name))
+                if (menuStripPanel != null && !klbSelected.Items.Contains(menuStripPanel.Name))
                 {
                     klblAvailable.Items.Add(menuStripPanel.Name);
                 }
@@ -119,9 +119,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         private void KbtnAddSelected_Click(object sender, EventArgs e)
         {
-            klbSelected.Items.Add(klblAvailable.SelectedItem);
+            if (klblAvailable.SelectedItem != null)
+            {
+                klbSelected.Items.Add(klblAvailable.SelectedItem);
 
-            klblAvailable.Items.Remove(klblAvailable.SelectedItem);
+                klblAvailable.Items.Remove(klblAvailable.SelectedItem);
+            }
         }
 
         private void KbtnAddAll_Click(object sender, EventArgs e)
@@ -137,9 +140,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         private void KbtnRemoveSelected_Click(object sender, EventArgs e)
         {
-            klblAvailable.Items.Add(klbSelected.SelectedItem);
+            if (klbSelected.SelectedItem != null)
+            {
+                klblAvailable.Items.Add(klbSelected.SelectedItem);
 
-            klbSelected.Items.Remove(klbSelected.SelectedItem);
+                klbSelected.Items.Remove(klbSelected.SelectedItem);
+            }
         }
 
         private void KbtnRemoveAll_Click(object sender, EventArgs e)

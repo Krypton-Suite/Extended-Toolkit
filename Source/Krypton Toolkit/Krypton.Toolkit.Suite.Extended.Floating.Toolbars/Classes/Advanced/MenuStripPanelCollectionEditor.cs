@@ -41,31 +41,39 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
             FloatableMenuStrip? floatableMenuStrip = context.Instance as FloatableMenuStrip;
 
-            MenuStripExistingComponentChooser? ecc = new MenuStripExistingComponentChooser(floatableMenuStrip.MenuStripPanelExtenedList);
-
-            ecc.Text = "MenuStripPanelCollectionEditor";
-
-            if (floatableMenuStrip.OriginalParent != null)
+            if (floatableMenuStrip != null)
             {
-                if (floatableMenuStrip.OriginalParent is KryptonForm)
+                MenuStripExistingComponentChooser ecc = new MenuStripExistingComponentChooser(floatableMenuStrip.MenuStripPanelExtenedList);
+
+                ecc.Text = @"MenuStripPanelCollectionEditor";
+
+                if (floatableMenuStrip.OriginalParent != null)
                 {
-                    ecc.SourceComponentContainer = floatableMenuStrip.OriginalParent;
+                    if (floatableMenuStrip.OriginalParent is KryptonForm)
+                    {
+                        ecc.SourceComponentContainer = floatableMenuStrip.OriginalParent;
+                    }
+                    else
+                    {
+                        ecc.SourceComponentContainer = floatableMenuStrip.OriginalParent.Parent;
+                    }
                 }
-                else
+
+                if (service != null)
                 {
-                    ecc.SourceComponentContainer = floatableMenuStrip.OriginalParent.Parent;
+                    if (service.ShowDialog(ecc) == DialogResult.OK)
+                    {
+                        return ecc.SelectedComponents;
+                    }
                 }
             }
 
-            if (service != null)
+            if (floatableMenuStrip != null)
             {
-                if (service.ShowDialog(ecc) == DialogResult.OK)
-                {
-                    return ecc.SelectedComponents;
-                }
+                return floatableMenuStrip.MenuStripPanelExtenedList;
             }
 
-            return floatableMenuStrip.MenuStripPanelExtenedList;
+            return null;
         }
         #endregion
     }

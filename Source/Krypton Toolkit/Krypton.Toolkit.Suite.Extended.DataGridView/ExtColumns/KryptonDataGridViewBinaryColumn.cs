@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         [Category("Data")]
         [DefaultValue(null)]
         [Description("The type of the editor widget to bring up when editing a cell's content.")]
-        public Type EditorType
+        public Type? EditorType
         {
             get =>
                 BinaryCellTemplate == null
