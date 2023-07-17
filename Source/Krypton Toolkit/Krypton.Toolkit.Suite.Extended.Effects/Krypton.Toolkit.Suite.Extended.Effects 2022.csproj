@@ -39,6 +39,7 @@
 		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -85,7 +86,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.6.178-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.7.198-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -160,10 +161,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Update="License\License.txt">
-	    <PackagePath></PackagePath>
-	    <Pack>true</Pack>
-	  </None>
+		<None Update="License\License.txt">
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
+		</None>
 	</ItemGroup>
 
 	<!--Optimisation-->

@@ -40,6 +40,7 @@
 		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -86,9 +87,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.6.178-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.7.198-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="80.23.6.178-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="80.23.7.198-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -167,9 +168,9 @@
 	</Choose>
 
 	<ItemGroup>
-	  <PackageReference Include="WindowsAPICodePackShell" Version="7.0.4" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="7.0.4" />
 	</ItemGroup>
-  
+
 	<ItemGroup>
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
@@ -198,8 +199,8 @@
 
 	<ItemGroup>
 		<None Update="License\License.txt">
-		  <PackagePath></PackagePath>
-		  <Pack>true</Pack>
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
 		</None>
 		<None Update="Properties\Settings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>

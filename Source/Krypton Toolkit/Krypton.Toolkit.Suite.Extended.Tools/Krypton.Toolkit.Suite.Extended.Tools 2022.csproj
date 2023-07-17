@@ -36,6 +36,7 @@
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
 		<Configurations>Debug;Release;Nightly;Canary</Configurations>
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -147,19 +148,19 @@
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
-  
-  <!--Binary/Documentation Output-->
-  <PropertyGroup>
-	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.xml</DocumentationFile>
-	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\</OutputPath>
-	<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-	<Nullable>enable</Nullable>
-  </PropertyGroup>
-  <ItemGroup>
-	<None Update="License\License.txt">
-	  <PackagePath></PackagePath>
-	  <Pack>true</Pack>
-	</None>
-  </ItemGroup>
-  
+
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\</OutputPath>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Update="License\License.txt">
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
+		</None>
+	</ItemGroup>
+
 </Project>

@@ -39,6 +39,7 @@
 		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -85,7 +86,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.6.178-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.7.198-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -150,7 +151,7 @@
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
-	
+
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings.xml</DocumentationFile>
@@ -159,84 +160,84 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
-  <ItemGroup>
-	<Compile Update="Resources\ToolkitSettingsResources.Designer.cs">
-	  <DesignTime>True</DesignTime>
-	  <AutoGen>True</AutoGen>
-	  <DependentUpon>ToolkitSettingsResources.resx</DependentUpon>
-	</Compile>
-	<Compile Update="Settings\Globals\GlobalBooleanSettings.Designer.cs">
-	  <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	  <AutoGen>True</AutoGen>
-	  <DependentUpon>GlobalBooleanSettings.settings</DependentUpon>
-	</Compile>
-	<Compile Update="Settings\Globals\GlobalEnumerationSettings.Designer.cs">
-	  <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	  <AutoGen>True</AutoGen>
-	  <DependentUpon>GlobalEnumerationSettings.settings</DependentUpon>
-	</Compile>
-	<Compile Update="Settings\Globals\GlobalStringSettings.Designer.cs">
-	  <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	  <AutoGen>True</AutoGen>
-	  <DependentUpon>GlobalStringSettings.settings</DependentUpon>
-	</Compile>
-	<Compile Update="Settings\Globals\GlobalTypefaceSettings.Designer.cs">
-	  <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	  <AutoGen>True</AutoGen>
-	  <DependentUpon>GlobalTypefaceSettings.settings</DependentUpon>
-	</Compile>
-	<Compile Update="Settings\Specialised Dialogs\SpecialisedDialogBooleanSettings.Designer.cs">
-	  <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	  <AutoGen>True</AutoGen>
-	  <DependentUpon>SpecialisedDialogBooleanSettings.settings</DependentUpon>
-	</Compile>
-	<Compile Update="Settings\Theming\GlobalThemeSettings.Designer.cs">
-	  <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	  <AutoGen>True</AutoGen>
-	  <DependentUpon>GlobalThemeSettings.settings</DependentUpon>
-	</Compile>
-  </ItemGroup>
-  <ItemGroup>
-	<None Update="License\License.txt">
-	  <PackagePath></PackagePath>
-	  <Pack>true</Pack>
-	</None>
-	<None Update="Settings\Globals\GlobalBooleanSettings.settings">
-	  <Generator>SettingsSingleFileGenerator</Generator>
-	  <LastGenOutput>GlobalBooleanSettings.Designer.cs</LastGenOutput>
-	</None>
-	<None Update="Settings\Globals\GlobalEnumerationSettings.settings">
-	  <Generator>SettingsSingleFileGenerator</Generator>
-	  <LastGenOutput>GlobalEnumerationSettings.Designer.cs</LastGenOutput>
-	</None>
-	<None Update="Settings\Globals\GlobalStringSettings.settings">
-	  <Generator>SettingsSingleFileGenerator</Generator>
-	  <LastGenOutput>GlobalStringSettings.Designer.cs</LastGenOutput>
-	</None>
-	<None Update="Settings\Globals\GlobalTypefaceSettings.settings">
-	  <Generator>SettingsSingleFileGenerator</Generator>
-	  <LastGenOutput>GlobalTypefaceSettings.Designer.cs</LastGenOutput>
-	</None>
-	<None Update="Settings\Specialised Dialogs\SpecialisedDialogBooleanSettings.settings">
-	  <Generator>SettingsSingleFileGenerator</Generator>
-	  <LastGenOutput>SpecialisedDialogBooleanSettings.Designer.cs</LastGenOutput>
-	</None>
-	<None Update="Settings\Theming\GlobalThemeSettings.settings">
-	  <Generator>SettingsSingleFileGenerator</Generator>
-	  <LastGenOutput>GlobalThemeSettings.Designer.cs</LastGenOutput>
-	</None>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Resources\ToolkitSettingsResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ToolkitSettingsResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Settings\Globals\GlobalBooleanSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>GlobalBooleanSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Settings\Globals\GlobalEnumerationSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>GlobalEnumerationSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Settings\Globals\GlobalStringSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>GlobalStringSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Settings\Globals\GlobalTypefaceSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>GlobalTypefaceSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Settings\Specialised Dialogs\SpecialisedDialogBooleanSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>SpecialisedDialogBooleanSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Settings\Theming\GlobalThemeSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>GlobalThemeSettings.settings</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="License\License.txt">
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
+		</None>
+		<None Update="Settings\Globals\GlobalBooleanSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>GlobalBooleanSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Settings\Globals\GlobalEnumerationSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>GlobalEnumerationSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Settings\Globals\GlobalStringSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>GlobalStringSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Settings\Globals\GlobalTypefaceSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>GlobalTypefaceSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Settings\Specialised Dialogs\SpecialisedDialogBooleanSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>SpecialisedDialogBooleanSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Settings\Theming\GlobalThemeSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>GlobalThemeSettings.Designer.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-	  <PackageReference Include="WindowsAPICodePack" Version="7.0.4" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="WindowsAPICodePack" Version="7.0.4" />
+	</ItemGroup>
 
-  <ItemGroup>
-	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2022.csproj" />
-	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
-	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
-  </ItemGroup>
-	
+	<ItemGroup>
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<EmbeddedResource Update="Resources\ToolkitSettingsResources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
