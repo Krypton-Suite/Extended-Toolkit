@@ -74,22 +74,22 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        internal OutlookBarButton this[int x, int y]
+        internal OutlookBarButton? this[int x, int y]
         {
             get
             {
                 foreach (OutlookBarButton b in List)
                 {
-                    if (!(b.Rectangle == null))
+                    if (!(b._rectangle == null))
                     {
-                        if (b.Rectangle.Contains(new Point(x, y)))
+                        if (b._rectangle.Contains(new Point(x, y)))
                         {
                             return b;
                         }
                     }
-                    if (!(b.Rectangle == null))
+                    if (!(b._rectangle == null))
                     {
-                        if (b.Rectangle.Contains(new Point(x, y)))
+                        if (b._rectangle.Contains(new Point(x, y)))
                         {
                             return b;
                         }
@@ -134,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             if (!typeof(OutlookBarButton).IsAssignableFrom(value.GetType()))
             {
-                throw new ArgumentException("value must be of type OutlookBarButton.", "value");
+                throw new ArgumentException(@"Value must be of type OutlookBarButton.", "value");
             }
         }
 

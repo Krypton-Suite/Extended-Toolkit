@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private bool _visible = true;
         private bool _allowed = true;
         private Icon _image = Properties.Resources.DefaultIcon;
-        internal Rectangle? _rectangle;
+        internal Rectangle _rectangle;
         internal bool _isLarge;
         private bool _selected;
         private string _tag1;
