@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Gets the short version of week's string representation
         /// </summary>
         /// <returns></returns>
-        public string ToStringShort()
+        public string? ToStringShort()
         {
             DateTime saturday = StartDate.AddDays(6);
 
@@ -120,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Gets the large version of string representation
         /// </summary>
         /// <returns>The week in a string format</returns>
-        public string ToStringLarge()
+        public string? ToStringLarge()
         {
             DateTime saturday = StartDate.AddDays(6);
 
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Returns a string representation of the week
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
+        public override string? ToString()
         {
             return ToStringLarge();
         }

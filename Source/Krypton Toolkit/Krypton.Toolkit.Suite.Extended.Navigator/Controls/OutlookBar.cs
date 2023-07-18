@@ -26,6 +26,7 @@
 #endregion
 
 // ReSharper disable ConditionIsAlwaysTrueOrFalse
+// ReSharper disable PossibleLossOfFraction
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [DefaultEvent("ButtonClicked")]
@@ -33,12 +34,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     public class OutlookBar : Control
     {
 
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
         private PaletteRedirect _paletteRedirect;
         private PaletteBackInheritRedirect _paletteBack;
         private PaletteBorderInheritRedirect _paletteBorder;
         private PaletteContentInheritRedirect _paletteContent;
-        private IDisposable _mementoBack;
+        private IDisposable? _mementoBack;
 
         #region ... constructor ...
         public OutlookBar()
@@ -57,10 +58,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             // add Palette Handler
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
             }
 
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new PaletteRedirect(_palette);
@@ -220,7 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
         [DisplayName("ButtonFont")]
-        public override Font Font
+        public override Font? Font
         {
             get => base.Font;
             set
@@ -431,12 +432,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     Invalidate();
                     //string EmptyLineVar = null;
                     //adjust tooltip...
-                    if (!Buttons[e.X, e.Y]._isLarge)
+                    if (!Buttons[e.X, e.Y]!.IsLarge)
                     {
                         if (oToolTip.Tag == null)
                         {
                             oToolTip.Active = true;
-                            oToolTip.SetToolTip(this, Buttons[e.X, e.Y].Text);
+                            oToolTip.SetToolTip(this, Buttons[e.X, e.Y]!.Text);
                             oToolTip.Tag = Buttons[e.X, e.Y];
                         }
                         else
@@ -444,7 +445,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                             if (!oToolTip.Tag.Equals(Buttons[e.X, e.Y]))
                             {
                                 oToolTip.Active = true;
-                                oToolTip.SetToolTip(this, Buttons[e.X, e.Y].Text);
+                                oToolTip.SetToolTip(this, Buttons[e.X, e.Y]!.Text);
                                 oToolTip.Tag = Buttons[e.X, e.Y];
                             }
                         }
@@ -499,8 +500,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 if (Buttons[iterateLargeButtons].Visible)
                 {
                     Rectangle rec = new Rectangle(0, (syncLargeButtons * GetButtonHeight()) + GetGripRectangle().Height, Width, GetButtonHeight());
-                    Buttons[iterateLargeButtons]._rectangle = rec;
-                    Buttons[iterateLargeButtons]._isLarge = true;
+                    Buttons[iterateLargeButtons].Rectangle = rec;
+                    Buttons[iterateLargeButtons].IsLarge = true;
                     PaintButton(Buttons[iterateLargeButtons], e.Graphics, (_maxLargeButtonCount != syncLargeButtons));
                     if (syncLargeButtons == _maxLargeButtonCount)
                     {
@@ -539,8 +540,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 if (Buttons[iterateSmallButtons].Visible)
                 {
                     Rectangle rec = new Rectangle(startX + (syncSmallButtons * GetSmallButtonWidth()), GetBottomContainerRectangle().Y, GetSmallButtonWidth(), GetBottomContainerRectangle().Height);
-                    Buttons[iterateSmallButtons]._rectangle = rec;
-                    Buttons[iterateSmallButtons]._isLarge = false;
+                    Buttons[iterateSmallButtons].Rectangle = rec;
+                    Buttons[iterateSmallButtons].IsLarge = false;
                     //OutlookBarButton refBtn = Buttons[IterateLargeButtons];
                     PaintButton(Buttons[iterateSmallButtons], e.Graphics, false);
                     syncSmallButtons += 1;
@@ -549,7 +550,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             for (int iterateMenuItems = iterateSmallButtons; iterateMenuItems <= Buttons.CountVisible() - 1; iterateMenuItems++)
             {
-                Buttons[iterateMenuItems]._rectangle = new Rectangle();
+                Buttons[iterateMenuItems].Rectangle = new Rectangle();
             }
 
             //Draw Empty Space...
@@ -575,44 +576,47 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 {
                     if (button.Equals(SelectedButton))
                     {
-                        FillButton(button._rectangle, graphics, ButtonState.HoveringSelected, true, button._isLarge, button._isLarge);
+                        FillButton(button.Rectangle, graphics, ButtonState.HoveringSelected, true, button.IsLarge, button.IsLarge);
                     }
                     else
                     {
-                        FillButton(button._rectangle, graphics, ButtonState.Hovering, true, button._isLarge, button._isLarge);
+                        FillButton(button.Rectangle, graphics, ButtonState.Hovering, true, button.IsLarge, button.IsLarge);
                     }
                 }
                 else
                 {
-                    FillButton(button._rectangle, graphics, ButtonState.Selected, true, button._isLarge, button._isLarge);
+                    FillButton(button.Rectangle, graphics, ButtonState.Selected, true, button.IsLarge, button.IsLarge);
                 }
             }
             else
             {
                 if (button.Equals(SelectedButton))
                 {
-                    FillButton(button._rectangle, graphics, ButtonState.Selected, true, button._isLarge, button._isLarge);
+                    FillButton(button.Rectangle, graphics, ButtonState.Selected, true, button.IsLarge, button.IsLarge);
                 }
                 else
                 {
-                    FillButton(button._rectangle, graphics, ButtonState.Passive, true, button._isLarge, button._isLarge);
+                    FillButton(button.Rectangle, graphics, ButtonState.Passive, true, button.IsLarge, button.IsLarge);
                 }
             }
             //string EmptyLineVar = null;
             //Text and icons...
-            if (button._isLarge & isLastLarge == true)
+            if (button.IsLarge & isLastLarge)
             {
-                graphics.DrawString(button.Text, GetButtonFont(), GetButtonTextBrush(button.Equals(SelectedButton)), 10 + ImageDimension_Large + 8, (float)button._rectangle.Y + ((GetButtonHeight() / 2) - (GetButtonFont().Height / 2)) + 2);
+                graphics.DrawString(button.Text, GetButtonFont(), GetButtonTextBrush(button.Equals(SelectedButton)),
+                    10 + ImageDimension_Large + 8,
+                    (float)button.Rectangle.Y + ((GetButtonHeight() / 2) - (GetButtonFont().Height / 2)) + 2);
             }
             Rectangle recIma = new Rectangle();
-            switch (button._isLarge)
+            switch (button.IsLarge)
             {
                 case true:
                     {
                         recIma.Width = ImageDimension_Large;
                         recIma.Height = ImageDimension_Large;
                         recIma.X = 10;
-                        recIma.Y = button._rectangle.Y + (int)Math.Floor(GetButtonHeight() / 2 - (double)(ImageDimension_Large / 2));
+                        recIma.Y = button.Rectangle.Y +
+                                   (int)Math.Floor(GetButtonHeight() / 2 - (double)(ImageDimension_Large / 2));
                     }
 
                     break;
@@ -620,18 +624,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     {
                         recIma.Width = ImageDimension_Small;
                         recIma.Height = ImageDimension_Small;
-                        recIma.X = button._rectangle.X + (int)Math.Floor(GetSmallButtonWidth() / 2 - (double)(ImageDimension_Small / 2));
-                        recIma.Y = button._rectangle.Y + (int)Math.Floor(GetButtonHeight() / 2 - (double)(ImageDimension_Small / 2));
+                        recIma.X = button.Rectangle.X + (int)Math.Floor(GetSmallButtonWidth() / 2 - (double)(ImageDimension_Small / 2));
+                        recIma.Y = button.Rectangle.Y + (int)Math.Floor(GetButtonHeight() / 2 - (double)(ImageDimension_Small / 2));
                     }
 
                     break;
             }
-            if (button._isLarge & isLastLarge == true)
+            if (button.IsLarge & isLastLarge)
             {
                 graphics.DrawImage(button.Image.ToBitmap(), recIma);
             }
 
-            if (button._isLarge == false)
+            if (button.IsLarge == false)
             {
                 graphics.DrawImage(button.Image.ToBitmap(), recIma);
             }
@@ -643,7 +647,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private void FillButton(Rectangle rectangle, Graphics graphics, ButtonState buttonState, bool DrawTopBorder, bool DrawLeftBorder, bool DrawRightBorder)
+        private void FillButton(Rectangle rectangle, Graphics graphics, ButtonState buttonState, bool drawTopBorder, bool drawLeftBorder, bool drawRightBorder)
         {
             switch (Renderer)
             {
@@ -655,18 +659,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 case Renderer.Outlook2007:
                     //string EmptyLineVar = null;
                     //Filling the top part of the button...
-                    Rectangle TopRectangle = rectangle;
-                    Brush TopBrush = new LinearGradientBrush(TopRectangle, GetButtonColor(buttonState, 0), GetButtonColor(buttonState, 1), LinearGradientMode.Vertical);
-                    TopRectangle.Height = (GetButtonHeight() * 15) / 32;
-                    graphics.FillRectangle(TopBrush, TopRectangle);
-                    TopBrush.Dispose();
+                    Rectangle topRectangle = rectangle;
+                    Brush topBrush = new LinearGradientBrush(topRectangle, GetButtonColor(buttonState, 0), GetButtonColor(buttonState, 1), LinearGradientMode.Vertical);
+                    topRectangle.Height = (GetButtonHeight() * 15) / 32;
+                    graphics.FillRectangle(topBrush, topRectangle);
+                    topBrush.Dispose();
                     //and the bottom part...
-                    Rectangle BottomRectangle = rectangle;
-                    Brush BottomBrush = new LinearGradientBrush(BottomRectangle, GetButtonColor(buttonState, 2), GetButtonColor(buttonState, 3), LinearGradientMode.Vertical);
-                    BottomRectangle.Y += (GetButtonHeight() * 12) / 32;
-                    BottomRectangle.Height -= (GetButtonHeight() * 12) / 32;
-                    graphics.FillRectangle(BottomBrush, BottomRectangle);
-                    BottomBrush.Dispose();
+                    Rectangle bottomRectangle = rectangle;
+                    Brush bottomBrush = new LinearGradientBrush(bottomRectangle, GetButtonColor(buttonState, 2), GetButtonColor(buttonState, 3), LinearGradientMode.Vertical);
+                    bottomRectangle.Y += (GetButtonHeight() * 12) / 32;
+                    bottomRectangle.Height -= (GetButtonHeight() * 12) / 32;
+                    graphics.FillRectangle(bottomBrush, bottomRectangle);
+                    bottomBrush.Dispose();
                     break;
 
                 case Renderer.Custom:
@@ -678,47 +682,54 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 case Renderer.Krypton:
                     using (GraphicsPath path = new GraphicsPath())
                     {
-                        IRenderer renderer = _palette.GetRenderer();
-                        path.AddRectangle(rectangle);
-
-                        using (RenderContext context = new RenderContext(this, graphics, rectangle, renderer))
+                        if (_palette != null)
                         {
+                            IRenderer? renderer = _palette.GetRenderer();
+                            path.AddRectangle(rectangle);
 
-                            PaletteState ps = PaletteState.Normal;
-
-
-                            switch (buttonState)
+                            using (RenderContext context = new RenderContext(this, graphics, rectangle, renderer))
                             {
-                                case ButtonState.Hovering:
-                                    ps = PaletteState.Tracking;
-                                    break;
-                                case ButtonState.Passive:
-                                    ps = PaletteState.Normal;
-                                    break;
-                                case ButtonState.Selected:
-                                    ps = PaletteState.Pressed;
-                                    break;
-                                case ButtonState.HoveringSelected:
-                                    ps = PaletteState.CheckedTracking;
-                                    break;
-                            }
 
-                            _paletteBack.Style = PaletteBackStyle.ButtonNavigatorStack;
-                            _paletteBorder.Style = PaletteBorderStyle.ButtonNavigatorStack;
+                                PaletteState ps = PaletteState.Normal;
 
-                            //check on renderer type
-                            if (renderer.ToString() == "ComponentFactory.Krypton.Toolkit.RenderSparkle")
-                            {
-                                _paletteBack.Style = PaletteBackStyle.ButtonInputControl;
-                            }
 
-                            _mementoBack = renderer.RenderStandardBack.DrawBack(context, rectangle, path, _paletteBack, VisualOrientation.Top, ps, _mementoBack);
-                            /*renderer.RenderStandardBorder.DrawBorder(context,
+                                switch (buttonState)
+                                {
+                                    case ButtonState.Hovering:
+                                        ps = PaletteState.Tracking;
+                                        break;
+                                    case ButtonState.Passive:
+                                        ps = PaletteState.Normal;
+                                        break;
+                                    case ButtonState.Selected:
+                                        ps = PaletteState.Pressed;
+                                        break;
+                                    case ButtonState.HoveringSelected:
+                                        ps = PaletteState.CheckedTracking;
+                                        break;
+                                }
+
+                                _paletteBack.Style = PaletteBackStyle.ButtonNavigatorStack;
+                                _paletteBorder.Style = PaletteBorderStyle.ButtonNavigatorStack;
+
+                                //check on renderer type
+                                if (renderer?.ToString() == "Krypton.Toolkit.RenderSparkle")
+                                {
+                                    _paletteBack.Style = PaletteBackStyle.ButtonInputControl;
+                                }
+
+                                if (renderer != null)
+                                {
+                                    _mementoBack = renderer.RenderStandardBack.DrawBack(context, rectangle, path,
+                                        _paletteBack, VisualOrientation.Top, ps, _mementoBack);
+                                }
+                                /*renderer.RenderStandardBorder.DrawBorder(context,
                                                            rectangle,
                                                            _paletteBorder,
                                                            VisualOrientation.Top,
                                                            ps);
                              */
+                            }
                         }
                     }
                     break;
@@ -726,7 +737,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             //Draw Top Border...
-            if (DrawTopBorder)
+            if (drawTopBorder)
             {
                 graphics.DrawLine(new Pen(GetOutlookBarLineColour()), rectangle.X, rectangle.Y, rectangle.Width + rectangle.X, rectangle.Y);
             }
@@ -735,13 +746,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             if (_DrawBorders)
             {
                 //Draw Left Border...
-                if (DrawLeftBorder)
+                if (drawLeftBorder)
                 {
                     graphics.DrawLine(new Pen(GetOutlookBarLineColour()), rectangle.X, rectangle.Y, rectangle.X, rectangle.Y + rectangle.Height);
                 }
 
                 //Draw Right Border...
-                if (DrawRightBorder)
+                if (drawRightBorder)
                 {
                     graphics.DrawLine(new Pen(GetOutlookBarLineColour()), rectangle.X + rectangle.Width - 1, rectangle.Y, rectangle.X + rectangle.Width - 1, rectangle.Y + rectangle.Height);
                 }
@@ -755,18 +766,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             //Draw the icon...
-            Icon oIcon = GetGripIcon();
-            Rectangle RectangleIcon = new Rectangle(Width / 2 - (oIcon.Width / 2), ((GetGripRectangle().Height / 2) - oIcon.Height / 2) + 1, oIcon.Width, oIcon.Height);
+            Icon? oIcon = GetGripIcon();
+            Rectangle rectangleIcon = new Rectangle(Width / 2 - (oIcon.Width / 2), ((GetGripRectangle().Height / 2) - oIcon.Height / 2) + 1, oIcon.Width, oIcon.Height);
 
             if (Renderer != Renderer.Krypton)
             {
                 //Icon from file
-                graphics.DrawIcon(oIcon, RectangleIcon);
+                graphics.DrawIcon(oIcon, rectangleIcon);
             }
             else
             {
                 //Painted
-                PaintGrip(graphics, RectangleIcon, _GridColourDark, _GridColourLight);
+                PaintGrip(graphics, rectangleIcon, _GridColourDark, _GridColourLight);
             }
             oIcon.Dispose();
 
@@ -784,31 +795,31 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private void PaintGrip(Graphics graphics, Rectangle RectangleIcon, Color GripDark, Color GripLight)
+        private void PaintGrip(Graphics graphics, Rectangle rectangleIcon, Color darkGrip, Color lightGrip)
         {
             // White Grip - Shadow
-            Rectangle IGrip = new Rectangle(RectangleIcon.X + RectangleIcon.Width / 2 - 10, RectangleIcon.Y + RectangleIcon.Height / 2, 2, 2);
-            Rectangle IIGrip = new Rectangle(RectangleIcon.X + RectangleIcon.Width / 2 - 5, RectangleIcon.Y + RectangleIcon.Height / 2, 2, 2);
-            Rectangle IIIGrip = new Rectangle(RectangleIcon.X + RectangleIcon.Width / 2, RectangleIcon.Y + RectangleIcon.Height / 2, 2, 2);
-            Rectangle IVGrip = new Rectangle(RectangleIcon.X + RectangleIcon.Width / 2 + 5, RectangleIcon.Y + RectangleIcon.Height / 2, 2, 2);
-            Rectangle VGrip = new Rectangle(RectangleIcon.X + RectangleIcon.Width / 2 + 10, RectangleIcon.Y + RectangleIcon.Height / 2, 2, 2);
-            graphics.FillRectangle(new SolidBrush(GripLight), IGrip);
-            graphics.FillRectangle(new SolidBrush(GripLight), IIGrip);
-            graphics.FillRectangle(new SolidBrush(GripLight), IIIGrip);
-            graphics.FillRectangle(new SolidBrush(GripLight), IVGrip);
-            graphics.FillRectangle(new SolidBrush(GripLight), VGrip);
+            Rectangle grip = new Rectangle(rectangleIcon.X + rectangleIcon.Width / 2 - 10, rectangleIcon.Y + rectangleIcon.Height / 2, 2, 2);
+            Rectangle iiGrip = new Rectangle(rectangleIcon.X + rectangleIcon.Width / 2 - 5, rectangleIcon.Y + rectangleIcon.Height / 2, 2, 2);
+            Rectangle iiiGrip = new Rectangle(rectangleIcon.X + rectangleIcon.Width / 2, rectangleIcon.Y + rectangleIcon.Height / 2, 2, 2);
+            Rectangle ivGrip = new Rectangle(rectangleIcon.X + rectangleIcon.Width / 2 + 5, rectangleIcon.Y + rectangleIcon.Height / 2, 2, 2);
+            Rectangle vGrip = new Rectangle(rectangleIcon.X + rectangleIcon.Width / 2 + 10, rectangleIcon.Y + rectangleIcon.Height / 2, 2, 2);
+            graphics.FillRectangle(new SolidBrush(lightGrip), grip);
+            graphics.FillRectangle(new SolidBrush(lightGrip), iiGrip);
+            graphics.FillRectangle(new SolidBrush(lightGrip), iiiGrip);
+            graphics.FillRectangle(new SolidBrush(lightGrip), ivGrip);
+            graphics.FillRectangle(new SolidBrush(lightGrip), vGrip);
 
             // dark Grip - Shadow
-            Rectangle IGripDark = new Rectangle(RectangleIcon.X + RectangleIcon.Width / 2 - 11, RectangleIcon.Y + RectangleIcon.Height / 2 - 1, 2, 2);
-            Rectangle IIGripDark = new Rectangle(RectangleIcon.X + RectangleIcon.Width / 2 - 6, RectangleIcon.Y + RectangleIcon.Height / 2 - 1, 2, 2);
-            Rectangle IIIGripDark = new Rectangle(RectangleIcon.X + RectangleIcon.Width / 2 - 1, RectangleIcon.Y + RectangleIcon.Height / 2 - 1, 2, 2);
-            Rectangle IVGripDark = new Rectangle(RectangleIcon.X + RectangleIcon.Width / 2 + 4, RectangleIcon.Y + RectangleIcon.Height / 2 - 1, 2, 2);
-            Rectangle VGripDark = new Rectangle(RectangleIcon.X + RectangleIcon.Width / 2 + 9, RectangleIcon.Y + RectangleIcon.Height / 2 - 1, 2, 2);
-            graphics.FillRectangle(new SolidBrush(GripDark), IGripDark);
-            graphics.FillRectangle(new SolidBrush(GripDark), IIGripDark);
-            graphics.FillRectangle(new SolidBrush(GripDark), IIIGripDark);
-            graphics.FillRectangle(new SolidBrush(GripDark), IVGripDark);
-            graphics.FillRectangle(new SolidBrush(GripDark), VGripDark);
+            Rectangle gripDark = new Rectangle(rectangleIcon.X + rectangleIcon.Width / 2 - 11, rectangleIcon.Y + rectangleIcon.Height / 2 - 1, 2, 2);
+            Rectangle iiGripDark = new Rectangle(rectangleIcon.X + rectangleIcon.Width / 2 - 6, rectangleIcon.Y + rectangleIcon.Height / 2 - 1, 2, 2);
+            Rectangle iiiGripDark = new Rectangle(rectangleIcon.X + rectangleIcon.Width / 2 - 1, rectangleIcon.Y + rectangleIcon.Height / 2 - 1, 2, 2);
+            Rectangle ivGripDark = new Rectangle(rectangleIcon.X + rectangleIcon.Width / 2 + 4, rectangleIcon.Y + rectangleIcon.Height / 2 - 1, 2, 2);
+            Rectangle vGripDark = new Rectangle(rectangleIcon.X + rectangleIcon.Width / 2 + 9, rectangleIcon.Y + rectangleIcon.Height / 2 - 1, 2, 2);
+            graphics.FillRectangle(new SolidBrush(darkGrip), gripDark);
+            graphics.FillRectangle(new SolidBrush(darkGrip), iiGripDark);
+            graphics.FillRectangle(new SolidBrush(darkGrip), iiiGripDark);
+            graphics.FillRectangle(new SolidBrush(darkGrip), ivGripDark);
+            graphics.FillRectangle(new SolidBrush(darkGrip), vGripDark);
         }
 
         private void PaintDropDownRectangle(Graphics graphics)
@@ -833,42 +844,42 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //Draw the icon...
             Icon oIcon = GetDropDownIcon();
-            Rectangle RectangleIcon = new Rectangle((GetDropDownRectangle().X + ((GetDropDownRectangle().Width / 2) - (oIcon.Width / 2))), (GetDropDownRectangle().Y + (((GetDropDownRectangle().Height / 2) - (oIcon.Height / 2)) + 1)), oIcon.Width, oIcon.Height);
+            Rectangle rectangleIcon = new Rectangle((GetDropDownRectangle().X + ((GetDropDownRectangle().Width / 2) - (oIcon.Width / 2))), (GetDropDownRectangle().Y + (((GetDropDownRectangle().Height / 2) - (oIcon.Height / 2)) + 1)), oIcon.Width, oIcon.Height);
             if (Renderer != Renderer.Krypton)
             {
                 //draw icon from file
-                graphics.DrawIcon(oIcon, RectangleIcon);
+                graphics.DrawIcon(oIcon, rectangleIcon);
             }
             else
             {
                 //paint the arrow
-                PaintDropDown(graphics, RectangleIcon, _GridColourDark, _GridColourLight);
+                PaintDropDown(graphics, rectangleIcon, _GridColourDark, _GridColourLight);
             }
             //Debug
             if (isDebugMode)
             {
-                graphics.DrawRectangle(new Pen(Color.Red), RectangleIcon);
+                graphics.DrawRectangle(new Pen(Color.Red), rectangleIcon);
             }
 
             //graphics.DrawIcon(oIcon, RectangleIcon);
             oIcon.Dispose();
         }
 
-        private void PaintDropDown(Graphics graphics, Rectangle RectangleIcon, Color GripDark, Color GripLight)
+        private void PaintDropDown(Graphics graphics, Rectangle rectangleIcon, Color darkGrip, Color gripLight)
         {
             //draw White part
             Point[] ptWhite = new Point[3];
-            ptWhite[0] = new Point(RectangleIcon.Left - 1, RectangleIcon.Top);
-            ptWhite[1] = new Point(RectangleIcon.Left + RectangleIcon.Width / 2, RectangleIcon.Bottom + 1);
-            ptWhite[2] = new Point(RectangleIcon.Right + 1, RectangleIcon.Top);
-            graphics.FillPolygon(new SolidBrush(GripLight), ptWhite);
+            ptWhite[0] = new Point(rectangleIcon.Left - 1, rectangleIcon.Top);
+            ptWhite[1] = new Point(rectangleIcon.Left + rectangleIcon.Width / 2, rectangleIcon.Bottom + 1);
+            ptWhite[2] = new Point(rectangleIcon.Right + 1, rectangleIcon.Top);
+            graphics.FillPolygon(new SolidBrush(gripLight), ptWhite);
 
             //draw Colored part
             Point[] pt = new Point[3];
-            pt[0] = new Point(RectangleIcon.Left - 1, RectangleIcon.Top);
-            pt[1] = new Point(RectangleIcon.Left + RectangleIcon.Width / 2, RectangleIcon.Bottom);
-            pt[2] = new Point(RectangleIcon.Right + 1, RectangleIcon.Top);
-            graphics.FillPolygon(new SolidBrush(GripDark), pt);
+            pt[0] = new Point(rectangleIcon.Left - 1, rectangleIcon.Top);
+            pt[1] = new Point(rectangleIcon.Left + rectangleIcon.Width / 2, rectangleIcon.Bottom);
+            pt[2] = new Point(rectangleIcon.Right + 1, rectangleIcon.Top);
+            graphics.FillPolygon(new SolidBrush(darkGrip), pt);
         }
 
         #endregion
@@ -891,7 +902,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             return OutlookBarLineColour;
         }
 
-        private Brush GetButtonTextBrush(bool isSelected)
+        private Brush? GetButtonTextBrush(bool isSelected)
         {
             switch (Renderer)
             {
@@ -924,7 +935,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
             return null;
         }
-        private Font GetButtonFont()
+        private Font? GetButtonFont()
         {
             switch (Renderer)
             {
@@ -939,12 +950,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
             return null;
         }
-        private Color GetButtonColor(ButtonState buttonstate, int colorIndex)
+        private Color GetButtonColor(ButtonState buttonState, int colorIndex)
         {
             switch (Renderer)
             {
                 case Renderer.Outlook2003:
-                    switch (buttonstate)
+                    switch (buttonState)
                     {
                         case ButtonState.Hovering | ButtonState.Selected:
                             if (colorIndex == 0)
@@ -997,7 +1008,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     }
                     break;
                 case Renderer.Outlook2007:
-                    switch (buttonstate)
+                    switch (buttonState)
                     {
                         case ButtonState.Hovering | ButtonState.Selected:
                             if (colorIndex == 0)
@@ -1090,7 +1101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     }
                     break;
                 case Renderer.Krypton:
-                    switch (buttonstate)
+                    switch (buttonState)
                     {
                         case ButtonState.Hovering | ButtonState.Selected:
                             if (colorIndex == 0)
@@ -1143,7 +1154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     }
                     break;
                 case Renderer.Custom:
-                    switch (buttonstate)
+                    switch (buttonState)
                     {
                         case ButtonState.Hovering | ButtonState.Selected:
                             if (colorIndex == 0)
@@ -1252,7 +1263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             return 25;
         }
 
-        private Brush GetGripBrush()
+        private Brush? GetGripBrush()
         {
             switch (Renderer)
             {
@@ -1269,25 +1280,25 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         }
         private Rectangle GetGripRectangle()
         {
-            int Height = 0;
+            int height = 0;
             switch (Renderer)
             {
                 case Renderer.Outlook2003:
-                    Height = 6;
+                    height = 6;
                     break;
                 case Renderer.Outlook2007:
-                    Height = 8;
+                    height = 8;
                     break;
                 case Renderer.Krypton:
-                    Height = 8;
+                    height = 8;
                     break;
                 case Renderer.Custom:
-                    Height = 8;
+                    height = 8;
                     break;
             }
-            return new Rectangle(0, 0, Width, Height);
+            return new Rectangle(0, 0, Width, height);
         }
-        private Icon GetGripIcon()
+        private Icon? GetGripIcon()
         {
             switch (Renderer)
             {
@@ -1322,7 +1333,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             return new Rectangle((Width - GetSmallButtonWidth()), (Height - GetButtonHeight()), GetSmallButtonWidth(), GetButtonHeight());
         }
-        private Icon GetDropDownIcon()
+        private Icon? GetDropDownIcon()
         {
             switch (Renderer)
             {
@@ -1381,7 +1392,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 if (oButton.Visible)
                 {
-                    if (oButton._rectangle == null)
+                    if (oButton.Rectangle == null)
                     {
                         c += 1;
                     }
@@ -1394,7 +1405,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             foreach (OutlookBarButton oButton in Buttons)
             {
-                if (oButton._rectangle == null)
+                if (oButton.Rectangle == null)
                 {
                     if (oButton.Visible)
                     {
@@ -1460,34 +1471,47 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             if (Renderer == Renderer.Krypton)
             {
-                _ButtonColourHoveringBottom = _palette.GetBackColor2(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Tracking);
-                _ButtonColourHoveringTop = _palette.GetBackColor1(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Tracking);
+                if (_palette != null)
+                {
+                    _ButtonColourHoveringBottom =
+                        _palette.GetBackColor2(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Tracking);
+                    _ButtonColourHoveringTop =
+                        _palette.GetBackColor1(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Tracking);
 
-                _ButtonColourSelectedBottom = _palette.GetBackColor2(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Pressed);
-                _ButtonColourSelectedTop = _palette.GetBackColor1(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Pressed);
+                    _ButtonColourSelectedBottom =
+                        _palette.GetBackColor2(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Pressed);
+                    _ButtonColourSelectedTop =
+                        _palette.GetBackColor1(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Pressed);
 
-                _ButtonColoruPassiveBottom = _palette.GetBackColor2(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Normal);
-                _ButtonColourPassiveTop = _palette.GetBackColor1(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Normal);
+                    _ButtonColoruPassiveBottom =
+                        _palette.GetBackColor2(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Normal);
+                    _ButtonColourPassiveTop =
+                        _palette.GetBackColor1(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Normal);
 
-                _ButtonColourSelectedAndHoveringBottom = _palette.GetBackColor2(PaletteBackStyle.ButtonNavigatorStack, PaletteState.CheckedTracking);
-                _ButtonColourSelectedAndHoveringTop = _palette.GetBackColor1(PaletteBackStyle.ButtonNavigatorStack, PaletteState.CheckedTracking);
+                    _ButtonColourSelectedAndHoveringBottom =
+                        _palette.GetBackColor2(PaletteBackStyle.ButtonNavigatorStack, PaletteState.CheckedTracking);
+                    _ButtonColourSelectedAndHoveringTop = _palette.GetBackColor1(PaletteBackStyle.ButtonNavigatorStack,
+                        PaletteState.CheckedTracking);
 
-                _OutlookBarLineColour = _palette.ColorTable.ToolStripBorder;
+                    _OutlookBarLineColour = _palette.ColorTable.ToolStripBorder;
 
-                _ForeColourSelected = _palette.GetContentShortTextColor1(PaletteContentStyle.ButtonNavigatorStack, PaletteState.Pressed);//Color.Black;// _palette.ColorTable.MenuStripText;
-                ForeColor = _palette.GetContentShortTextColor1(PaletteContentStyle.ButtonNavigatorStack, PaletteState.Normal);
+                    _ForeColourSelected = _palette.GetContentShortTextColor1(PaletteContentStyle.ButtonNavigatorStack,
+                        PaletteState.Pressed); //Color.Black;// _palette.ColorTable.MenuStripText;
+                    ForeColor = _palette.GetContentShortTextColor1(PaletteContentStyle.ButtonNavigatorStack,
+                        PaletteState.Normal);
 
-                _GridColourDark = _palette.ColorTable.GripDark;
-                _GridColourLight = _palette.ColorTable.GripLight;
+                    _GridColourDark = _palette.ColorTable.GripDark;
+                    _GridColourLight = _palette.ColorTable.GripLight;
+                }
             }
         }
 
-        //Kripton Palette Events
+        //Krypton Palette Events
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
             {
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
             }
 
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -1495,7 +1519,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 //repaint with new values
 
                 InitColors();
@@ -1518,12 +1542,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 // Unhook from the palette events
                 if (_palette != null)
                 {
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette.PalettePaint -= OnPalettePaint;
                     _palette = null;
                 }
 
                 // Unhook from the static events, otherwise we cannot be garbage collected
-                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
             }
 
             base.Dispose(disposing);
@@ -1534,6 +1558,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     }
 
     #region ... Enums ...
+
+    [Flags]
     internal enum ButtonState
     {
         Passive,

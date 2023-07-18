@@ -80,16 +80,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 foreach (OutlookBarButton b in List)
                 {
-                    if (!(b._rectangle == null))
+                    if (!(b.Rectangle == null))
                     {
-                        if (b._rectangle.Contains(new Point(x, y)))
+                        if (b.Rectangle.Contains(new Point(x, y)))
                         {
                             return b;
                         }
                     }
-                    if (!(b._rectangle == null))
+                    if (!(b.Rectangle == null))
                     {
-                        if (b._rectangle.Contains(new Point(x, y)))
+                        if (b.Rectangle.Contains(new Point(x, y)))
                         {
                             return b;
                         }

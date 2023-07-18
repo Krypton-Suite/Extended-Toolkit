@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private List<CalendarTimeScaleUnit?> _unitsPassing;
         private List<CalendarDayTop?> _topsPassing;
         private object _tag;
-        private string _text;
+        private string? _text;
         #endregion
 
         #region Ctor
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="startDate">Start date of the item</param>
         /// <param name="endDate">End date of the item</param>
         /// <param name="text">Text of the item</param>
-        public CalendarItemAlternative(KryptonCalendar calendar, DateTime startDate, DateTime endDate, string text) : this(calendar)
+        public CalendarItemAlternative(KryptonCalendar calendar, DateTime startDate, DateTime endDate, string? text) : this(calendar)
         {
             StartDate = startDate;
             EndDate = endDate;
@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="startDate">Start date of the item</param>
         /// <param name="duration">Duration of the item</param>
         /// <param name="text">Text of the item</param>
-        public CalendarItemAlternative(KryptonCalendar calendar, DateTime startDate, TimeSpan duration, string text) : this(calendar, startDate, startDate.Add(duration), text)
+        public CalendarItemAlternative(KryptonCalendar calendar, DateTime startDate, TimeSpan duration, string? text) : this(calendar, startDate, startDate.Add(duration), text)
         { }
 
         #endregion
@@ -254,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the text of the end date
         /// </summary>
-        public virtual string EndDateText
+        public virtual string? EndDateText
         {
             get
             {
@@ -435,7 +435,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the text of the start date
         /// </summary>
-        public virtual string StartDateText
+        public virtual string? StartDateText
         {
             get
             {
@@ -482,7 +482,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets or sets the text of the item
         /// </summary>
-        public virtual string Text
+        public virtual string? Text
         {
             get => _text;
             set => _text = value;

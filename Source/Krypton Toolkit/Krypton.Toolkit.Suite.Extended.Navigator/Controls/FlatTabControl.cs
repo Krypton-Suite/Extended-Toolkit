@@ -1133,14 +1133,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
                     //move the rect is allow close in on (TOP)
-                    if ((Alignment == TabAlignment.Top) && (_allowCloseButton == true))
+                    if ((Alignment == TabAlignment.Top) && (_allowCloseButton))
                     { WIN32.MoveWindow(scUpDown.Handle, Width - 60, rect.Y + 5, rect.Width, rect.Height, true); }
                     else if ((Alignment == TabAlignment.Top) && (_allowCloseButton == false))
                     //if ((this.Alignment == TabAlignment.Top))
                     { WIN32.MoveWindow(scUpDown.Handle, Width - 41, rect.Y + 5, rect.Width, rect.Height, true); }
 
                     //move the rect is allow close in on (Bottom)
-                    if ((Alignment == TabAlignment.Bottom) && (_allowCloseButton == true))
+                    if ((Alignment == TabAlignment.Bottom) && (_allowCloseButton))
                     { WIN32.MoveWindow(scUpDown.Handle, Width - 60, Height - 24, rect.Width, rect.Height, true); }
                     else if ((Alignment == TabAlignment.Bottom) && (_allowCloseButton == false))
                     //if ((this.Alignment == TabAlignment.Bottom))

@@ -96,14 +96,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private string _text;
         private bool _visible = true;
         private bool _allowed = true;
-        private Icon _image = Properties.Resources.DefaultIcon;
-        internal Rectangle _rectangle;
-        internal bool _isLarge;
+        private Icon? _image = Properties.Resources.DefaultIcon;
+        internal Rectangle Rectangle;
+        internal bool IsLarge;
         private bool _selected;
         private string _tag1;
         private string _tag2;
-        private string _buddyPage1;
-        private string _buddyPage2;
+        private string? _buddyPage1;
+        private string? _buddyPage2;
 
         [DefaultValue(typeof(string), ""), Browsable(true)]
         public string Tag1
@@ -122,14 +122,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(string), ""), Browsable(true)]
         public string BuddyPage1
         {
-            get => _buddyPage1;
+            get => _buddyPage1 ?? string.Empty;
             set => _buddyPage1 = value;
         }
 
         [DefaultValue(typeof(string), ""), Browsable(true)]
         public string BuddyPage2
         {
-            get => _buddyPage2;
+            get => _buddyPage2 ?? string.Empty;
             set => _buddyPage2 = value;
         }
 
@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 _visible = value;
                 if (!value)
                 {
-                    _rectangle = new Rectangle();
+                    Rectangle = new Rectangle();
                 }
             }
 

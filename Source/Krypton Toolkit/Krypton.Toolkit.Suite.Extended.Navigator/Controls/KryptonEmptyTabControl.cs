@@ -25,21 +25,22 @@
  */
 #endregion
 
+// ReSharper disable RedundantOverriddenMember
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [ToolboxBitmap(typeof(TabControl)), ToolboxItem(false)]
     public class KryptonEmptyTabControl : TabControl
     {
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
         private PaletteRedirect _paletteRedirect;
         private PaletteBorderInheritRedirect _paletteBorder;
-        private IDisposable _mementoBack;
+        private IDisposable? _mementoBack;
 
         private Color _bgcolor;
-        private Boolean _drawBorder = false;
+        private bool _drawBorder = false;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("false")]
-        public Boolean DrawBorder
+        public bool DrawBorder
         {
             get => _drawBorder;
             set { _drawBorder = value; Invalidate(); }
@@ -101,35 +102,35 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void Init()
         {
             // double buffering
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
             if (!DesignMode)
             {
-                this.SetStyle(ControlStyles.UserPaint, true);
-                this.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-                this.DrawMode = TabDrawMode.OwnerDrawFixed;
+                SetStyle(ControlStyles.UserPaint, true);
+                SizeMode = TabSizeMode.Fixed;
+                DrawMode = TabDrawMode.OwnerDrawFixed;
                 //this.ItemSize = new Size(0, 1);
-                this.Appearance = System.Windows.Forms.TabAppearance.Buttons;
-                this.Margin = new System.Windows.Forms.Padding(0);
+                Appearance = TabAppearance.Buttons;
+                Margin = new Padding(0);
             }
             else
             {
-                this.SetStyle(ControlStyles.UserPaint, false);
-                this.DrawMode = TabDrawMode.Normal;
-                this.SizeMode = System.Windows.Forms.TabSizeMode.Normal;
-                this.ItemSize = new Size(41, 10);
-                this.Appearance = System.Windows.Forms.TabAppearance.Normal;
+                SetStyle(ControlStyles.UserPaint, false);
+                DrawMode = TabDrawMode.Normal;
+                SizeMode = TabSizeMode.Normal;
+                ItemSize = new Size(41, 10);
+                Appearance = TabAppearance.Normal;
             }
 
             _palette = KryptonManager.CurrentGlobalPalette;
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
             }
 
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             _paletteRedirect = new PaletteRedirect(_palette);
             _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
@@ -143,7 +144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             _bgcolor = _palette.ColorTable.MenuStripGradientEnd;
             if (!DesignMode)
             {
-                foreach (TabPage tp in this.TabPages)
+                foreach (TabPage tp in TabPages)
                 {
                     tp.BackColor = _palette.GetBackColor1(PaletteBackStyle.ControlClient, PaletteState.Normal);
                 }
@@ -155,12 +156,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             base.OnControlAdded(e);
             if (!DesignMode)
             {
-                this.ItemSize = new Size(0, 1);
+                ItemSize = new Size(0, 1);
                 // draw tabs
-                for (int i = 0; i < this.TabCount; i++)
+                for (int i = 0; i < TabCount; i++)
                 {
-                    this.TabPages[i].Padding = new System.Windows.Forms.Padding(0);
-                    this.TabPages[i].Margin = new System.Windows.Forms.Padding(0);
+                    TabPages[i].Padding = new Padding(0);
+                    TabPages[i].Margin = new Padding(0);
                 }
             }
         }
@@ -184,34 +185,37 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             Graphics g = e.Graphics;
 
-            Rectangle TabControlArea = this.ClientRectangle;
-            Rectangle TabArea = this.DisplayRectangle;
+            Rectangle tabControlArea = ClientRectangle;
+            Rectangle tabArea = DisplayRectangle;
 
-            e.Graphics.FillRectangle(new SolidBrush(_bgcolor), TabControlArea);
+            e.Graphics.FillRectangle(new SolidBrush(_bgcolor), tabControlArea);
 
-            IRenderer renderer = _palette.GetRenderer();
-            _paletteBorder.Style = PaletteBorderStyle.HeaderPrimary;
-
-            //Draw border
-            using (GraphicsPath path = new GraphicsPath())
+            if (_palette != null)
             {
-                Rectangle rect = TabControlArea;
-                path.AddRectangle(rect);
+                IRenderer? renderer = _palette.GetRenderer();
+                _paletteBorder.Style = PaletteBorderStyle.HeaderPrimary;
 
-                using (RenderContext context = new RenderContext(this, e.Graphics, rect, renderer))
+                //Draw border
+                using (GraphicsPath path = new GraphicsPath())
                 {
-                    if (_drawBorder)
+                    Rectangle rect = tabControlArea;
+                    path.AddRectangle(rect);
+
+                    using (RenderContext context = new RenderContext(this, e.Graphics, rect, renderer))
                     {
-                        renderer.RenderStandardBorder.DrawBorder(context, rect, _paletteBorder, VisualOrientation.Top, PaletteState.Normal);
+                        if (_drawBorder)
+                        {
+                            renderer?.RenderStandardBorder.DrawBorder(context, rect, _paletteBorder, VisualOrientation.Top, PaletteState.Normal);
+                        }
                     }
                 }
             }
 
             if (!DesignMode)
             {
-                if (this.SelectedTab != null)
+                if (SelectedTab != null)
                 {
-                    TabPage tabPage = this.SelectedTab;
+                    TabPage tabPage = SelectedTab;
                     tabPage.BackColor = _bgcolor;
                 }
             }
@@ -229,7 +233,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             if (_palette != null)
             {
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
             }
 
 
@@ -239,7 +243,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 InitColours();
             }
 
@@ -267,12 +271,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
                 if (_palette != null)
                 {
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette.PalettePaint -= OnPalettePaint;
                     _palette = null;
                 }
 
 
-                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
             }
 
             base.Dispose(disposing);
