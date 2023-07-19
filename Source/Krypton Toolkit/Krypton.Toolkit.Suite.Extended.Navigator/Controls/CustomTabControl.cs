@@ -26,6 +26,7 @@
 #endregion
 
 
+// ReSharper disable RedundantOverriddenMember
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     /// <summary>
@@ -40,12 +41,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         /// </summary>
         /// 
         #region ... Declarations ...
-        private Container components = null;
-        private SubClass scUpDown = null;
-        private ImageList leftRightImages = null;
-        private const int nMargin = 5;
+        private Container? _components;
+        private SubClass? _scUpDown = null;
+        private ImageList? _leftRightImages = null;
+        private const int N_MARGIN = 5;
 
-        private Rectangle m_closeRect = new Rectangle();
+        private Rectangle _mCloseRect;
 
         #endregion
 
@@ -54,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Editor(typeof(TabpageExCollectionEditor), typeof(UITypeEditor))]
         public new TabPageCollection TabPages => base.TabPages;
 
-        private Boolean _preserveTabColour = false;
+        private Boolean _preserveTabColour;
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean PreserveTabColour
         {
@@ -110,15 +111,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             set { _cornerType = value; Invalidate(); }
         }
 
-        private Boolean _useExtendedLayout = false;
+        private bool _useExtendedLayout;
         [Browsable(true), Category("Appearance-Extended")]
-        public Boolean UseExtendedLayout
+        public bool UseExtendedLayout
         {
             get => _useExtendedLayout;
             set
             {
-                Boolean result = value;
-                if (result == true)
+                bool result = value;
+                if (result)
                 {
                     SizeMode = TabSizeMode.Fixed;
                     Alignment = TabAlignment.Right;
@@ -271,7 +272,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private int _cornerSymmetry = 0;
+        private int _cornerSymmetry;
         [Browsable(true), Category("Appearance-Extended")]
         public CornSymmetry CornerSymmetry
         {
@@ -305,8 +306,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private int _allowSelectedTabHighSize = 0;
-        private Boolean _allowSelectedTabHigh = false;
+        private int _allowSelectedTabHighSize;
+        private Boolean _allowSelectedTabHigh;
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean AllowSelectedTabHigh
         {
@@ -314,7 +315,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             set { _allowSelectedTabHigh = value; Invalidate(); }
         }
 
-        private Boolean _allowCloseButton = false;
+        private Boolean _allowCloseButton;
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean AllowCloseButton
         {
@@ -322,8 +323,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             set { _allowCloseButton = value; Invalidate(); }
         }
 
-        private Boolean _allowInternalNavigatorButtons = false;
-        private Boolean _allowNavigatorButtons = false;
+        private Boolean _allowInternalNavigatorButtons;
+        private Boolean _allowNavigatorButtons;
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean AllowNavigatorButtons
         {
@@ -342,7 +343,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         #endregion
 
         #region ... enum ...
-        public enum CornWidth : int
+        public enum CornWidth
         {
             Null = 0,
             Thin = 2,
@@ -352,7 +353,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             Overflow = 8
         };
 
-        public enum CornSymmetry : int
+        public enum CornSymmetry
         {
             Both = 0,
             Right = 1,
@@ -378,10 +379,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             InitializeComponent();
 
 
-            Scroller.ScrollLeft += new EventHandler(Scroller_ScrollLeft);
-            Scroller.ScrollRight += new EventHandler(Scroller_ScrollRight);
-            Scroller.TabClose += new EventHandler(Scroller_TabClose);
-            Scroller.ContextualMenu += new EventHandler(Scroller_ContextMenuButton);
+            _scroller.ScrollLeft += Scroller_ScrollLeft;
+            _scroller.ScrollRight += Scroller_ScrollRight;
+            _scroller.TabClose += Scroller_TabClose;
+            _scroller.ContextualMenu += Scroller_ContextMenuButton;
 
             InitColors();
         }
@@ -445,7 +446,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             //selected, if so, do not process the base event.
             try
             {
-                if (!e.TabPage.ClientRectangle.Contains(m_closeRect))
+                if (!e.TabPage.ClientRectangle.Contains(_mCloseRect))
                 { base.OnSelecting(e); }
             }
             catch (Exception ex)
@@ -502,7 +503,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             try
             {
                 mouse = e.Location;
-                if (m_closeRect.Contains(mouse))
+                if (_mCloseRect.Contains(mouse))
                 {
                     Controls.RemoveAt(SelectedIndex);
                 }
@@ -526,7 +527,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     mouse.Y = e.Location.Y - Location.Y;
                     mouse.X = e.Location.X - Location.X;
                 }
-                if (m_closeRect.Contains(mouse))
+                if (_mCloseRect.Contains(mouse))
                 {
                     Controls.RemoveAt(SelectedIndex);
                 }
@@ -543,7 +544,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             try
             {
-                Parent.MouseClick += new MouseEventHandler(this_MouseClick);
+                Parent.MouseClick += this_MouseClick;
             }
             catch (Exception ex)
             {
@@ -605,13 +606,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 return;
             }
 
-            Rectangle TabControlArea = ClientRectangle;
-            Rectangle TabArea = DisplayRectangle;
+            Rectangle tabControlArea = ClientRectangle;
+            Rectangle tabArea = DisplayRectangle;
 
             //----------------------------
             // fill client area
             Brush br = new SolidBrush(_standardBackColour); //(SystemColors.Control); UPDATED
-            g.FillRectangle(br, TabControlArea);
+            g.FillRectangle(br, tabControlArea);
             br.Dispose();
             //----------------------------
 
@@ -620,8 +621,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             int nDelta = SystemInformation.Border3DSize.Width;
 
             Pen border = new Pen(_borderColour, _borderWidth);
-            TabArea.Inflate(nDelta, nDelta);
-            g.DrawRectangle(border, TabArea);
+            tabArea.Inflate(nDelta, nDelta);
+            g.DrawRectangle(border, tabArea);
             border.Dispose();
             //----------------------------
 
@@ -631,16 +632,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             Region rsaved = g.Clip;
             Rectangle rreg;
 
-            int nWidth = TabArea.Width + nMargin;
+            int nWidth = tabArea.Width + N_MARGIN;
 
             // exclude customcontrol for painting
-            nWidth -= Scroller.Width;
+            nWidth -= _scroller.Width;
 
 
             //if top or bottom leave a blank space for Close button or navigator
             if ((Alignment == TabAlignment.Top) || (Alignment == TabAlignment.Bottom))
             {
-                rreg = new Rectangle(TabArea.Left, TabControlArea.Top, nWidth - nMargin, TabControlArea.Height);
+                rreg = new Rectangle(tabArea.Left, tabControlArea.Top, nWidth - N_MARGIN, tabControlArea.Height);
             }
             else
             {
@@ -665,14 +666,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 Color color = tabPage.BackColor;
                 border = new Pen(color);
 
-                TabArea.Offset(1, 1);
-                TabArea.Width -= 2;
-                TabArea.Height -= 2;
+                tabArea.Offset(1, 1);
+                tabArea.Width -= 2;
+                tabArea.Height -= 2;
 
-                g.DrawRectangle(border, TabArea);
-                TabArea.Width -= 1;
-                TabArea.Height -= 1;
-                g.DrawRectangle(border, TabArea);
+                g.DrawRectangle(border, tabArea);
+                tabArea.Width -= 1;
+                tabArea.Height -= 1;
+                g.DrawRectangle(border, tabArea);
 
                 border.Dispose();
             }
@@ -682,7 +683,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         internal void DrawTab(Graphics g, TabPage tabPage, int nIndex)
         {
             Rectangle recBounds = GetTabRect(nIndex);
-            RectangleF tabTextArea = (RectangleF)GetTabRect(nIndex);
+            RectangleF tabTextArea = GetTabRect(nIndex);
 
 
             //debug --> to be fixed
@@ -735,15 +736,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             //Tab Hedaer Status
-            DrawingMethods.TabHeaderStatus Status = DrawingMethods.TabHeaderStatus.Normal;
+            DrawingMethods.TabHeaderStatus status = DrawingMethods.TabHeaderStatus.Normal;
             if (_preserveTabColour)
             {
-                Status = DrawingMethods.TabHeaderStatus.NormalPreserve;
+                status = DrawingMethods.TabHeaderStatus.NormalPreserve;
             }
 
             if (bHot)
             {
-                Status = DrawingMethods.TabHeaderStatus.Hot;
+                status = DrawingMethods.TabHeaderStatus.Hot;
             }
 
 
@@ -751,11 +752,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             if ((bSelected) && (!bHot))
             {
-                Status = DrawingMethods.TabHeaderStatus.Selected;
+                status = DrawingMethods.TabHeaderStatus.Selected;
             }
             else if ((bSelected) && (bHot))
             {
-                Status = DrawingMethods.TabHeaderStatus.HotSelected;
+                status = DrawingMethods.TabHeaderStatus.HotSelected;
                 //bHotselected = true;
             }
 
@@ -790,7 +791,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             Brush br = new SolidBrush(tabPage.BackColor);
 
             //Color for Border Clearing
-            Color ClearBorderColor = new Color();
+            Color clearBorderColor = new Color();
 
 
             //Font for header
@@ -802,22 +803,22 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 case DrawingMethods.CornerType.Squared:
 
                     //Create tab Header Points (Sqared)
-                    Point[] pt = DrawingMethods.GetTabSquaredPoints(recBounds, _cornerWidth, Alignment, _cornerLeftWidth, _cornerRightWidth, Appearance, Status, _allowSelectedTabHighSize, false);
-                    Point[] ptBorder = DrawingMethods.GetTabSquaredPoints(recBounds, _cornerWidth, Alignment, _cornerLeftWidth, _cornerRightWidth, Appearance, Status, _allowSelectedTabHighSize, true);
+                    Point[] pt = DrawingMethods.GetTabSquaredPoints(recBounds, _cornerWidth, Alignment, _cornerLeftWidth, _cornerRightWidth, Appearance, status, _allowSelectedTabHighSize, false);
+                    Point[] ptBorder = DrawingMethods.GetTabSquaredPoints(recBounds, _cornerWidth, Alignment, _cornerLeftWidth, _cornerRightWidth, Appearance, status, _allowSelectedTabHighSize, true);
 
 
-                    switch (Status)
+                    switch (status)
                     {
                         case DrawingMethods.TabHeaderStatus.Selected:
                             if (Appearance == TabAppearance.Normal)
                             {
-                                DrawingMethods.DrawTabHeader(g, pt, recBounds, tabPage.BackColor, _tabColourSelectedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, Status, false);
-                                ClearBorderColor = _tabColourSelectedLight;
+                                DrawingMethods.DrawTabHeader(g, pt, recBounds, tabPage.BackColor, _tabColourSelectedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, status, false);
+                                clearBorderColor = _tabColourSelectedLight;
                             }
                             else
                             {
-                                DrawingMethods.DrawTabHeader(g, pt, recBounds, _tabColourSelectedLight, _tabColourSelectedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, Status, false);
-                                ClearBorderColor = _tabColourPressedLight;
+                                DrawingMethods.DrawTabHeader(g, pt, recBounds, _tabColourSelectedLight, _tabColourSelectedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, status, false);
+                                clearBorderColor = _tabColourPressedLight;
                             }
                             fnt = new Font(Font.FontFamily, Font.SizeInPoints, FontStyle.Bold);
                             br = new SolidBrush(_tabSelectedForeColour);
@@ -827,70 +828,70 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         case DrawingMethods.TabHeaderStatus.HotSelected:
                             if (Appearance == TabAppearance.Normal)
                             {
-                                DrawingMethods.DrawTabHeader(g, pt, recBounds, tabPage.BackColor, _tabColourPressedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, Status, false);
-                                ClearBorderColor = _tabColourPressedLight;
+                                DrawingMethods.DrawTabHeader(g, pt, recBounds, tabPage.BackColor, _tabColourPressedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, status, false);
+                                clearBorderColor = _tabColourPressedLight;
                             }
                             else
                             {
-                                DrawingMethods.DrawTabHeader(g, pt, recBounds, _tabColourPressedLight, _tabColourPressedDark, _tabColourPressedLight, 90, Alignment, _useExtendedLayout, Status, false);
-                                ClearBorderColor = _tabColourPressedLight;
+                                DrawingMethods.DrawTabHeader(g, pt, recBounds, _tabColourPressedLight, _tabColourPressedDark, _tabColourPressedLight, 90, Alignment, _useExtendedLayout, status, false);
+                                clearBorderColor = _tabColourPressedLight;
                             }
                             fnt = new Font(Font.FontFamily, Font.SizeInPoints, FontStyle.Bold);
                             br = new SolidBrush(_tabSelectedForeColour);
-                            ClearBorderColor = _tabColourPressedLight;
+                            clearBorderColor = _tabColourPressedLight;
                             break;
 
                         case DrawingMethods.TabHeaderStatus.Hot:
-                            DrawingMethods.DrawTabHeader(g, pt, recBounds, _tabColourHotLight, _tabColourHotDark, DrawingMethods.GetLighterColour(_tabColourHotLight), 90, Alignment, _useExtendedLayout, Status, false);
+                            DrawingMethods.DrawTabHeader(g, pt, recBounds, _tabColourHotLight, _tabColourHotDark, DrawingMethods.GetLighterColour(_tabColourHotLight), 90, Alignment, _useExtendedLayout, status, false);
                             br = new SolidBrush(_tabHotForeColour);
-                            ClearBorderColor = _tabColourHotDark;
+                            clearBorderColor = _tabColourHotDark;
                             break;
 
                         case DrawingMethods.TabHeaderStatus.Normal:
-                            DrawingMethods.DrawTabHeader(g, pt, recBounds, _tabColourDefaultLight, _tabColourDefaultDark, _tabColourDefaultLight, 90, Alignment, _useExtendedLayout, Status, false);
+                            DrawingMethods.DrawTabHeader(g, pt, recBounds, _tabColourDefaultLight, _tabColourDefaultDark, _tabColourDefaultLight, 90, Alignment, _useExtendedLayout, status, false);
                             br = new SolidBrush(_tabForeColour);
-                            ClearBorderColor = _tabColourDefaultDark;
+                            clearBorderColor = _tabColourDefaultDark;
                             break;
 
                         case DrawingMethods.TabHeaderStatus.NormalPreserve:
-                            DrawingMethods.DrawTabHeader(g, pt, recBounds, Color.White, DrawingMethods.GetModifiedColour(tabPage.BackColor, -20, 7, 0), tabPage.BackColor, 90, Alignment, _useExtendedLayout, Status, true);
+                            DrawingMethods.DrawTabHeader(g, pt, recBounds, Color.White, DrawingMethods.GetModifiedColour(tabPage.BackColor, -20, 7, 0), tabPage.BackColor, 90, Alignment, _useExtendedLayout, status, true);
                             br = new SolidBrush(_tabForeColour);
-                            ClearBorderColor = Color.White;
+                            clearBorderColor = Color.White;
                             break;
                     }
                     // draw border
                     g.SmoothingMode = SmoothingMode.AntiAlias;
-                    g.DrawPolygon(new Pen(ClearBorderColor, 1), ptBorder);
+                    g.DrawPolygon(new Pen(clearBorderColor, 1), ptBorder);
                     g.DrawPolygon(new Pen(_borderColour, _borderWidth), pt);
                     break;
 
                 case DrawingMethods.CornerType.Rounded:
 
-                    GraphicsPath path = DrawingMethods.GetTabRoundedPath(recBounds, _cornerRoundRadiusWidth, Alignment, false, Status, Appearance, _allowSelectedTabHighSize);
-                    GraphicsPath pathBorder = DrawingMethods.GetTabRoundedPath(recBounds, _cornerRoundRadiusWidth, Alignment, true, Status, Appearance, _allowSelectedTabHighSize);
+                    GraphicsPath path = DrawingMethods.GetTabRoundedPath(recBounds, _cornerRoundRadiusWidth, Alignment, false, status, Appearance, _allowSelectedTabHighSize);
+                    GraphicsPath pathBorder = DrawingMethods.GetTabRoundedPath(recBounds, _cornerRoundRadiusWidth, Alignment, true, status, Appearance, _allowSelectedTabHighSize);
                     if (Appearance != TabAppearance.Normal)
                     {
                         path = DrawingMethods.GetRoundedSquarePath(recBounds, 8);
-                        Rectangle InnerBorder = recBounds;
-                        InnerBorder.Offset(1, 1);
-                        InnerBorder.Height -= 2;
-                        InnerBorder.Width -= 2;
-                        pathBorder = DrawingMethods.GetRoundedSquarePath(InnerBorder, 8);
+                        Rectangle innerBorder = recBounds;
+                        innerBorder.Offset(1, 1);
+                        innerBorder.Height -= 2;
+                        innerBorder.Width -= 2;
+                        pathBorder = DrawingMethods.GetRoundedSquarePath(innerBorder, 8);
 
                     }
 
-                    switch (Status)
+                    switch (status)
                     {
                         case DrawingMethods.TabHeaderStatus.Selected:
                             if (Appearance == TabAppearance.Normal)
                             {
-                                DrawingMethods.DrawTabHeader(g, path, recBounds, tabPage.BackColor, _tabColourSelectedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, Status, false);
-                                ClearBorderColor = _tabColourSelectedLight;
+                                DrawingMethods.DrawTabHeader(g, path, recBounds, tabPage.BackColor, _tabColourSelectedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, status, false);
+                                clearBorderColor = _tabColourSelectedLight;
                             }
                             else
                             {
-                                DrawingMethods.DrawTabHeader(g, path, recBounds, _tabColourSelectedLight, _tabColourSelectedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, Status, false);
-                                ClearBorderColor = _tabColourPressedLight;
+                                DrawingMethods.DrawTabHeader(g, path, recBounds, _tabColourSelectedLight, _tabColourSelectedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, status, false);
+                                clearBorderColor = _tabColourPressedLight;
                             }
                             fnt = new Font(Font.FontFamily, Font.SizeInPoints, FontStyle.Bold);
                             br = new SolidBrush(_tabSelectedForeColour);
@@ -900,13 +901,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         case DrawingMethods.TabHeaderStatus.HotSelected:
                             if (Appearance == TabAppearance.Normal)
                             {
-                                DrawingMethods.DrawTabHeader(g, path, recBounds, tabPage.BackColor, _tabColourPressedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, Status, false);
-                                ClearBorderColor = _tabColourPressedLight;
+                                DrawingMethods.DrawTabHeader(g, path, recBounds, tabPage.BackColor, _tabColourPressedDark, tabPage.BackColor, 90, Alignment, _useExtendedLayout, status, false);
+                                clearBorderColor = _tabColourPressedLight;
                             }
                             else
                             {
-                                DrawingMethods.DrawTabHeader(g, path, recBounds, _tabColourPressedLight, _tabColourPressedDark, _tabColourPressedLight, 90, Alignment, _useExtendedLayout, Status, false);
-                                ClearBorderColor = _tabColourPressedLight;
+                                DrawingMethods.DrawTabHeader(g, path, recBounds, _tabColourPressedLight, _tabColourPressedDark, _tabColourPressedLight, 90, Alignment, _useExtendedLayout, status, false);
+                                clearBorderColor = _tabColourPressedLight;
                             }
                             fnt = new Font(Font.FontFamily, Font.SizeInPoints, FontStyle.Bold);
                             br = new SolidBrush(_tabSelectedForeColour);
@@ -914,27 +915,27 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                             break;
 
                         case DrawingMethods.TabHeaderStatus.Hot:
-                            DrawingMethods.DrawTabHeader(g, path, recBounds, _tabColourHotLight, _tabColourHotDark, DrawingMethods.GetLighterColour(_tabColourHotLight), 90, Alignment, _useExtendedLayout, Status, false);
+                            DrawingMethods.DrawTabHeader(g, path, recBounds, _tabColourHotLight, _tabColourHotDark, DrawingMethods.GetLighterColour(_tabColourHotLight), 90, Alignment, _useExtendedLayout, status, false);
                             br = new SolidBrush(_tabHotForeColour);
-                            ClearBorderColor = _tabColourHotDark;
+                            clearBorderColor = _tabColourHotDark;
                             break;
 
                         case DrawingMethods.TabHeaderStatus.Normal:
-                            DrawingMethods.DrawTabHeader(g, path, recBounds, _tabColourDefaultLight, _tabColourDefaultDark, _tabColourDefaultLight, 90, Alignment, _useExtendedLayout, Status, false);
+                            DrawingMethods.DrawTabHeader(g, path, recBounds, _tabColourDefaultLight, _tabColourDefaultDark, _tabColourDefaultLight, 90, Alignment, _useExtendedLayout, status, false);
                             br = new SolidBrush(_tabForeColour);
-                            ClearBorderColor = _tabColourDefaultDark;
+                            clearBorderColor = _tabColourDefaultDark;
                             break;
 
                         case DrawingMethods.TabHeaderStatus.NormalPreserve:
-                            DrawingMethods.DrawTabHeader(g, path, recBounds, Color.White, DrawingMethods.GetModifiedColour(tabPage.BackColor, -20, 7, 0), tabPage.BackColor, 90, Alignment, _useExtendedLayout, Status, true);
+                            DrawingMethods.DrawTabHeader(g, path, recBounds, Color.White, DrawingMethods.GetModifiedColour(tabPage.BackColor, -20, 7, 0), tabPage.BackColor, 90, Alignment, _useExtendedLayout, status, true);
                             br = new SolidBrush(_tabForeColour);
-                            ClearBorderColor = Color.White;
+                            clearBorderColor = Color.White;
                             break;
                     }
 
 
                     g.SmoothingMode = SmoothingMode.AntiAlias;
-                    g.DrawPath(new Pen(ClearBorderColor, 1), pathBorder);
+                    g.DrawPath(new Pen(clearBorderColor, 1), pathBorder);
                     g.DrawPath(new Pen(_borderColour, _borderWidth), path);
 
 
@@ -1005,7 +1006,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //----------------------------
 
-            if (((Status == DrawingMethods.TabHeaderStatus.Selected) || (Status == DrawingMethods.TabHeaderStatus.HotSelected)) && (Appearance == TabAppearance.Normal))
+            if (((status == DrawingMethods.TabHeaderStatus.Selected) || (status == DrawingMethods.TabHeaderStatus.HotSelected)) && (Appearance == TabAppearance.Normal))
             {
                 //----------------------------
                 // clear bottom lines
@@ -1021,7 +1022,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //----------------------------
             // draw tab's icon
-            if ((tabPage.ImageIndex >= 0) && (ImageList != null) && (ImageList.Images[tabPage.ImageIndex] != null))
+            if (ImageList != null && (tabPage.ImageIndex >= 0) && (ImageList != null) && (ImageList.Images[tabPage.ImageIndex] != null))
             {
                 int nLeftMargin = 8;
                 int nRightMargin = 2;
@@ -1031,12 +1032,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 Rectangle rimage = new Rectangle(recBounds.X + nLeftMargin, recBounds.Y + 1, img.Width, img.Height);
 
                 // adjust rectangles
-                float nAdj = (float)(nLeftMargin + img.Width + nRightMargin);
+                float nAdj = (nLeftMargin + img.Width + nRightMargin);
 
                 // adjust rectangles
                 if (Alignment == TabAlignment.Top || Alignment == TabAlignment.Bottom)
                 {
-                    nAdj = (float)(nLeftMargin + img.Width + nRightMargin);
+                    nAdj = (nLeftMargin + img.Width + nRightMargin);
 
                     rimage.Y += (recBounds.Height - img.Height) / 2;
                     tabTextArea.X += nAdj;
@@ -1044,7 +1045,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 }
                 else
                 {
-                    if (_useExtendedLayout == false)
+                    if (!_useExtendedLayout)
                     {
                         img.RotateFlip(RotateFlipType.Rotate90FlipNone);
                         rimage.X -= 5;
@@ -1064,7 +1065,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             //no image
             else
             {
-                if (_useExtendedLayout == true)
+                if (_useExtendedLayout)
                 {
                     tabTextArea.Y += 16;
                     tabTextArea.Height -= 16;
@@ -1132,17 +1133,20 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         internal void DrawIcons(Graphics g)
         {
-            if ((leftRightImages == null) || (leftRightImages.Images.Count != 4))
+            if ((_leftRightImages == null) || (_leftRightImages.Images.Count != 4))
             {
                 return;
             }
 
             //----------------------------
             // calc positions
-            Rectangle TabControlArea = ClientRectangle;
+            Rectangle tabControlArea = ClientRectangle;
 
             Rectangle r0 = new Rectangle();
-            WIN32.GetClientRect(scUpDown.Handle, ref r0);
+            if (_scUpDown != null)
+            {
+                WIN32.GetClientRect(_scUpDown.Handle, ref r0);
+            }
 
             //paint backcolor
             Brush br = new SolidBrush(_buttonsBackColour);
@@ -1169,19 +1173,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //----------------------------
             // draw buttons
-            Image img = leftRightImages.Images[1];
+            Image? img = _leftRightImages.Images[1];
             if (img != null)
             {
                 if (TabCount > 0)
                 {
                     Rectangle r3 = GetTabRect(0);
-                    if (r3.Left < TabControlArea.Left)
+                    if (r3.Left < tabControlArea.Left)
                     {
                         g.DrawImage(img, r1);
                     }
                     else
                     {
-                        img = leftRightImages.Images[3];
+                        img = _leftRightImages.Images[3];
                         if (img != null)
                         {
                             g.DrawImage(img, r1);
@@ -1190,19 +1194,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 }
             }
 
-            img = leftRightImages.Images[0];
+            img = _leftRightImages.Images[0];
             if (img != null)
             {
                 if (TabCount > 0)
                 {
                     Rectangle r3 = GetTabRect(TabCount - 1);
-                    if (r3.Right > (TabControlArea.Width - r0.Width))
+                    if (r3.Right > (tabControlArea.Width - r0.Width))
                     {
                         g.DrawImage(img, r2);
                     }
                     else
                     {
-                        img = leftRightImages.Images[2];
+                        img = _leftRightImages.Images[2];
                         if (img != null)
                         {
                             g.DrawImage(img, r2);
@@ -1222,7 +1226,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         /// </summary>
         private void InitializeComponent()
         {
-            components = new Container();
+            _components = new Container();
         }
 
         //TabControl overrides dispose to clean up the component list.
@@ -1232,9 +1236,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             if (disposing)
             {
 
-                if (UpDown != null)
+                if (_upDown != null)
                 {
-                    UpDown.ReleaseHandle();
+                    _upDown.ReleaseHandle();
                 }
             }
             base.Dispose(disposing);
@@ -1258,9 +1262,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         #endregion
 
         #region ... Overidden WndProc / Custom Scroller ...
-        private NativeUpDown UpDown = null;
-        private TabScroller Scroller = new TabScroller();
-        private Point pt = new Point();
+        private NativeUpDown? _upDown;
+        private TabScroller _scroller = new TabScroller();
+        private Point _pt;
 
         private int ScrollPosition
         {
@@ -1286,16 +1290,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 if ((ushort)(m.WParam.ToInt32() & 0xFFFF) == WIN32.WM_CREATE)
                 {
-                    System.Text.StringBuilder WindowName = new System.Text.StringBuilder(16);
-                    WIN32.RealGetWindowClass(m.LParam, WindowName, 16);
-                    if (WindowName.ToString() == "msctls_updown32")
+                    System.Text.StringBuilder windowName = new System.Text.StringBuilder(16);
+                    WIN32.RealGetWindowClass(m.LParam, windowName, 16);
+                    if (windowName.ToString() == "msctls_updown32")
 
                     {
                         //unhook the existing updown control as it will be recreated if 
                         //the tabcontrol is recreated (alignment, visible changed etc..)
-                        if (UpDown != null)
+                        if (_upDown != null)
                         {
-                            UpDown.ReleaseHandle();
+                            _upDown.ReleaseHandle();
                             //Scroller.LeftScroller.Enabled = true;
                             //Scroller.RightScroller.Enabled = true;
                         }
@@ -1305,8 +1309,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                             //Scroller.RightScroller.Enabled = false;
                         }
                         //and hook it.
-                        UpDown = new NativeUpDown();
-                        UpDown.AssignHandle(m.LParam);
+                        _upDown = new NativeUpDown();
+                        _upDown.AssignHandle(m.LParam);
                     }
                 }
             }
@@ -1320,7 +1324,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             //if (this.Multiline == false)
             //{
             //Scroller.Font = new Font("Marlett", this.Font.Size, FontStyle.Regular, GraphicsUnit.Pixel, this.Font.GdiCharSet);
-            WIN32.SetParent(Scroller.Handle, Handle);
+            WIN32.SetParent(_scroller.Handle, Handle);
             //}
             OnFontChanged(EventArgs.Empty);
         }
@@ -1330,52 +1334,52 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             base.OnFontChanged(e);
             //this.Scroller.Font = new Font("Marlett", this.Font.SizeInPoints, FontStyle.Regular, GraphicsUnit.Point);
-            Scroller.Height = 23;// this.ItemSize.Height;
-            Scroller.Width = 92;// this.ItemSize.Height * 3;
+            _scroller.Height = 23;// this.ItemSize.Height;
+            _scroller.Width = 92;// this.ItemSize.Height * 3;
 
             OnResize(EventArgs.Empty);
         }
 
         private bool IsFirstTabHidden()
         {
-            float FirstPagePosition = 0;
-            bool Display = false;
+            float firstPagePosition = 0;
+            bool display = false;
 
             //there are tab pages?
             if (TabCount > 0)
             {
-                FirstPagePosition = GetTabRect(0).Left;
+                firstPagePosition = GetTabRect(0).Left;
                 //not visible?
-                if ((FirstPagePosition < 0))
+                if ((firstPagePosition < 0))
                 {
-                    Display = true;
+                    display = true;
                 }
                 else
                 {
-                    Display = false;
+                    display = false;
                 }
             }
-            return Display;
+            return display;
         }
 
         private bool IsLastTabHidden()
         {
-            bool Display = false;
+            bool display = false;
 
             //there are tab pages?
             if (TabCount > 0)
             {
                 //visible?
-                if ((GetTabRect(TabCount - 1).Right > Scroller.Left))
+                if ((GetTabRect(TabCount - 1).Right > _scroller.Left))
                 {
-                    Display = true;
+                    display = true;
                 }
                 else
                 {
-                    Display = false;
+                    display = false;
                 }
             }
-            return Display;
+            return display;
         }
 
 
@@ -1384,27 +1388,27 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             base.OnPaintBackground(pevent);
 
             //show Close button?
-            if (_allowCloseButton == true)
+            if (_allowCloseButton)
             {
-                Scroller.CloseButton.Visible = true;
+                _scroller.CloseButton.Visible = true;
             }
             else
             {
-                Scroller.CloseButton.Visible = false;
+                _scroller.CloseButton.Visible = false;
             }
 
             //show Context button?
-            if (_allowContextButton == true)
+            if (_allowContextButton)
             {
-                Scroller.ContextMenuButton.Visible = true;
+                _scroller.ContextMenuButton.Visible = true;
             }
             else
             {
-                Scroller.ContextMenuButton.Visible = false;
+                _scroller.ContextMenuButton.Visible = false;
             }
 
             //test on tab pages 
-            if ((IsLastTabHidden() == false) && (IsFirstTabHidden() == false))
+            if ((!IsLastTabHidden()) && (!IsFirstTabHidden()))
             {
                 _allowInternalNavigatorButtons = false;
             }
@@ -1413,82 +1417,82 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 _allowInternalNavigatorButtons = true;
             }
             //show navigator buttons?
-            if ((_allowNavigatorButtons == true) && (_allowInternalNavigatorButtons == true))
+            if ((_allowNavigatorButtons) && (_allowInternalNavigatorButtons))
             {
-                Scroller.LeftScroller.Visible = true;
-                Scroller.RightScroller.Visible = true;
+                _scroller.LeftScroller.Visible = true;
+                _scroller.RightScroller.Visible = true;
             }
             else
             {
-                Scroller.LeftScroller.Visible = false;
-                Scroller.RightScroller.Visible = false;
+                _scroller.LeftScroller.Visible = false;
+                _scroller.RightScroller.Visible = false;
             }
 
             //multiline, no navigator
-            if (Multiline == true)
+            if (Multiline)
             {
                 _allowNavigatorButtons = false;
             }
 
             //which buttons to display
-            if (_allowCloseButton == true)
+            if (_allowCloseButton)
             {
-                if ((_allowNavigatorButtons == true) && (_allowInternalNavigatorButtons == true))
+                if ((_allowNavigatorButtons) && (_allowInternalNavigatorButtons))
                 {
-                    if (_allowContextButton == true)
+                    if (_allowContextButton)
                     {
                         //navigator and close and context
-                        Scroller.Width = 92;
+                        _scroller.Width = 92;
                     }
                     else
                     {
                         //navigator and close
-                        Scroller.Width = 69;
+                        _scroller.Width = 69;
                     }
 
                 }
                 else
                 {
-                    if (_allowContextButton == true)
+                    if (_allowContextButton)
                     {
                         //only close and context
-                        Scroller.Width = 46;
+                        _scroller.Width = 46;
                     }
                     else
                     {
                         //close
-                        Scroller.Width = 23;
+                        _scroller.Width = 23;
                     }
 
                 }
             }
             else
             {
-                if ((_allowNavigatorButtons == true) && (_allowInternalNavigatorButtons == true))
+                if ((_allowNavigatorButtons) && (_allowInternalNavigatorButtons))
                 {
-                    if (_allowContextButton == true)
+                    if (_allowContextButton)
                     {
                         //navigator and context
-                        Scroller.Width = 69;
+                        _scroller.Width = 69;
                     }
                     else
                     {
                         //navigator
-                        Scroller.Width = 46;
+                        _scroller.Width = 46;
                     }
 
                 }
                 else
                 {
-                    if (_allowContextButton == true)
+                    if (_allowContextButton)
                     {
                         //context
-                        Scroller.Width = 23;
+                        _scroller.Width = 23;
                     }
                     else
                     {
                         //nothing
-                        Scroller.Width = 0;
+                        _scroller.Width = 0;
                     }
 
                 }
@@ -1496,24 +1500,24 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             if (Alignment == TabAlignment.Top)
             {
-                Scroller.Location = new Point(Width - Scroller.Width - 1, 2);
+                _scroller.Location = new Point(Width - _scroller.Width - 1, 2);
             }
             else if (Alignment == TabAlignment.Bottom)
             {
-                Scroller.Location = new Point(Width - Scroller.Width - 1, Height - Scroller.Height - 1);
+                _scroller.Location = new Point(Width - _scroller.Width - 1, Height - _scroller.Height - 1);
             }
             else if (Alignment == TabAlignment.Right)
             {
-                Scroller.Location = new Point(Width - Scroller.Width - 1, Height - Scroller.Height - 1);
+                _scroller.Location = new Point(Width - _scroller.Width - 1, Height - _scroller.Height - 1);
             }
             else if (Alignment == TabAlignment.Left)
             {
-                Scroller.Location = new Point(2, Height - Scroller.Height - 1);
+                _scroller.Location = new Point(2, Height - _scroller.Height - 1);
             }
 
 
             //For Context Menu
-            pt = new Point(Scroller.Right - 23, Scroller.Bottom);
+            _pt = new Point(_scroller.Right - 23, _scroller.Bottom);
 
         }
         protected override void OnResize(EventArgs e)
@@ -1524,11 +1528,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             //    return;
             if (Alignment == TabAlignment.Top)
             {
-                Scroller.Location = new Point(Width - Scroller.Width - 1, 2);
+                _scroller.Location = new Point(Width - _scroller.Width - 1, 2);
             }
             else
             {
-                Scroller.Location = new Point(Width - Scroller.Width, Height - Scroller.Height - 1);
+                _scroller.Location = new Point(Width - _scroller.Width, Height - _scroller.Height - 1);
             }
         }
 
@@ -1537,7 +1541,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             base.OnControlAdded(e);
         }
 
-        private void ToolstripItemEvent(Object sender, EventArgs e)
+        private void ToolstripItemEvent(object sender, EventArgs e)
         {
             ToolStripMenuItem tsi = (ToolStripMenuItem)sender;
             //tsi.Checked = true;
@@ -1577,7 +1581,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 return;
             }
 
-            if (GetTabRect(TabCount - 1).Right <= Scroller.Left)
+            if (GetTabRect(TabCount - 1).Right <= _scroller.Left)
             {
                 return;
             }
@@ -1599,10 +1603,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         private void Scroller_ContextMenuButton(Object sender, EventArgs e)
         {
-            Scroller.ContextMenuStrip1.DropShadowEnabled = true;
+            _scroller.ContextMenuStrip1.DropShadowEnabled = true;
 
             //clear items
-            Scroller.ContextMenuStrip1.Items.Clear();
+            _scroller.ContextMenuStrip1.Items.Clear();
 
             //Counter 
             int i = 0;
@@ -1622,7 +1626,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         item = new ToolStripMenuItem(tp.Text, null, ToolstripItemEvent);
                     }
                     item.Tag = tp;
-                    Scroller.ContextMenuStrip1.Items.Add(item);
+                    _scroller.ContextMenuStrip1.Items.Add(item);
 
 
                     //show checked
@@ -1641,7 +1645,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             //show Menu
-            Scroller.ContextMenuStrip1.Show(PointToScreen(pt));
+            _scroller.ContextMenuStrip1.Show(PointToScreen(_pt));
 
         }
 
@@ -1686,7 +1690,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             //Required by the Windows Form Designer
-            private System.ComponentModel.IContainer components = null;
+            private IContainer? components = null;
 
 
             //NOTE: The following procedure is required by the Windows Form Designer
@@ -1696,7 +1700,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             internal CustomNavigatorButton RightScroller;
             internal CustomNavigatorButton CloseButton;
             internal CustomNavigatorButton ContextMenuButton;
-            internal System.Windows.Forms.ContextMenuStrip ContextMenuStrip1;
+            internal ContextMenuStrip ContextMenuStrip1;
             [System.Diagnostics.DebuggerStepThrough()]
             private void InitializeComponent()
             {
@@ -1769,12 +1773,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             #endregion
 
-            public event EventHandler TabClose;
-            public event EventHandler ScrollLeft;
-            public event EventHandler ScrollRight;
-            public event EventHandler ContextualMenu;
+            public event EventHandler? TabClose;
+            public event EventHandler? ScrollLeft;
+            public event EventHandler? ScrollRight;
+            public event EventHandler? ContextualMenu;
 
-            private void TabScroller_Resize(Object sender, EventArgs e)
+            private void TabScroller_Resize(object sender, EventArgs e)
             {
                 //LeftScroller.Width = this.Width / 3;
                 //RightScroller.Width = this.Width / 3;
@@ -1782,7 +1786,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
 
-            private void LeftScroller_Click(Object sender, EventArgs e)
+            private void LeftScroller_Click(object sender, EventArgs e)
             {
                 if (ScrollLeft != null)
                 {
@@ -1791,7 +1795,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
 
-            private void RightScroller_Click(Object sender, EventArgs e)
+            private void RightScroller_Click(object sender, EventArgs e)
             {
                 if (ScrollRight != null)
                 {
@@ -1800,7 +1804,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
 
-            private void CloseButton_Click(Object sender, EventArgs e)
+            private void CloseButton_Click(object sender, EventArgs e)
             {
                 if (TabClose != null)
                 {
@@ -1808,9 +1812,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 }
             }
 
-            private void ContextMenuButton_Click(Object sender, EventArgs e)
+            private void ContextMenuButton_Click(object sender, EventArgs e)
             {
-                if (TabClose != null)
+                if (TabClose != null && ContextualMenu != null)
                 {
                     ContextualMenu(this, EventArgs.Empty);
                 }
@@ -1833,7 +1837,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             private const int WM_WINDOWPOSCHANGING = 0x46;
 
             [StructLayout(LayoutKind.Sequential)]
-            private struct WINDOWPOS
+            private struct Windowpos
             {
                 public IntPtr hwnd, hwndInsertAfter;
                 public int x, y, cx, cy, flags;
@@ -1849,7 +1853,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 else if (m.Msg == WM_WINDOWPOSCHANGING)
                 {
                     //Move the updown control off the edge so it's not visible
-                    WINDOWPOS wp = (WINDOWPOS)(m.GetLParam(typeof(WINDOWPOS)));
+                    Windowpos wp = (Windowpos)(m.GetLParam(typeof(Windowpos)));
                     wp.x += wp.cx;
                     Marshal.StructureToPtr(wp, m.LParam, true);
                     _bounds = new Rectangle(wp.x, wp.y, wp.cx, wp.cy);

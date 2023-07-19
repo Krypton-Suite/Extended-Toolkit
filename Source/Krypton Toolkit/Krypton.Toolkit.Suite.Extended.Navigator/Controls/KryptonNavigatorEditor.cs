@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         public KryptonRichTextBox KryptonRichTextBox => GeKryptonRichTextBox(SelectedPage);
 
-        public string SelectedText => SelectedPage.Controls[0].Text;
+        public string? SelectedText => SelectedPage?.Controls[0].Text;
 
         #endregion
 
@@ -59,11 +59,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             return kryptonRichTextBox;
         }
 
-        public KryptonRichTextBox GeKryptonRichTextBox(KryptonPage page)
+        public KryptonRichTextBox? GeKryptonRichTextBox(KryptonPage? page)
         {
-            KryptonRichTextBox kryptonRichTextBox = null;
+            KryptonRichTextBox? kryptonRichTextBox = null;
 
-            KryptonPage kryptonPage = page;
+            KryptonPage? kryptonPage = page;
 
             if (kryptonPage != null)
             {
@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             base.OnControlAdded(e);
 
-            e.Control.Controls.Add((Control)CreateKryptonRichTextBox());
+            e.Control.Controls.Add(CreateKryptonRichTextBox());
         }
 
         protected override void OnTextChanged(EventArgs e)

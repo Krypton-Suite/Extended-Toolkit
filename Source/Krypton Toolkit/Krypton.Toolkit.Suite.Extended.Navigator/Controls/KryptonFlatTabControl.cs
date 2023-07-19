@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         #endregion
 
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
         private PaletteRedirect _paletteRedirect;
 
         public KryptonFlatTabControl()
@@ -74,10 +74,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             // add Palette Handler
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
             }
 
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new PaletteRedirect(_palette);
@@ -93,10 +93,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             // add Palette Handler
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
             }
 
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new PaletteRedirect(_palette);
@@ -111,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             if (_palette != null)
             {
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
             }
 
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 //repaint with new values
                 {
                     InitColours();
@@ -137,25 +137,28 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         private void InitColours()
         {
-            this.HotTrack = true;
+            HotTrack = true;
 
-            this.StandardBackColour = _palette.ColorTable.ToolStripContentPanelGradientEnd;
-            this.BorderColour = _palette.ColorTable.ToolStripBorder;
+            if (_palette != null)
+            {
+                StandardBackColour = _palette.ColorTable.ToolStripContentPanelGradientEnd;
+                BorderColour = _palette.ColorTable.ToolStripBorder;
 
-            this.ButtonsBackColour = _palette.ColorTable.ToolStripContentPanelGradientEnd;
-            this.ButtonsBorderColour = _palette.ColorTable.ToolStripBorder;
+                ButtonsBackColour = _palette.ColorTable.ToolStripContentPanelGradientEnd;
+                ButtonsBorderColour = _palette.ColorTable.ToolStripBorder;
 
-            this.TabColourHotDark = _palette.ColorTable.MenuItemSelectedGradientBegin;
-            this.TabColourHotLight = _palette.ColorTable.MenuItemSelectedGradientBegin;
+                TabColourHotDark = _palette.ColorTable.MenuItemSelectedGradientBegin;
+                TabColourHotLight = _palette.ColorTable.MenuItemSelectedGradientBegin;
 
-            this.TabColourSelectedDark = _palette.ColorTable.ButtonPressedGradientEnd;
-            this.TabColourSelectedLight = _palette.ColorTable.ButtonPressedGradientMiddle;
+                TabColourSelectedDark = _palette.ColorTable.ButtonPressedGradientEnd;
+                TabColourSelectedLight = _palette.ColorTable.ButtonPressedGradientMiddle;
 
-            this.TabForeColour = _palette.ColorTable.MenuItemText;
-            this.TabHotForeColour = _palette.ColorTable.MenuItemText;
+                TabForeColour = _palette.ColorTable.MenuItemText;
+                TabHotForeColour = _palette.ColorTable.MenuItemText;
 
-            this.TabColourDefaultDark = _palette.ColorTable.ToolStripGradientBegin;
-            this.TabColourDefaultLight = _palette.ColorTable.ToolStripGradientBegin;
+                TabColourDefaultDark = _palette.ColorTable.ToolStripGradientBegin;
+                TabColourDefaultLight = _palette.ColorTable.ToolStripGradientBegin;
+            }
 
             Invalidate();
 

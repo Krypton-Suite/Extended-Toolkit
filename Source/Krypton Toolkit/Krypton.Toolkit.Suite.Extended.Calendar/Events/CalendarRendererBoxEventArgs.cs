@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private Rectangle _bounds;
         private Font _font;
         private TextFormatFlags _format;
-        private string _text;
+        private string? _text;
         private Color _textColour;
         private Size _textSize;
         #endregion
@@ -55,7 +55,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original)
             : base(original)
         {
-            Font = original.Calendar.Font;
+            if (original.Calendar != null)
+            {
+                Font = original.Calendar.Font;
+            }
+
             Format |= TextFormatFlags.Default | TextFormatFlags.WordBreak | TextFormatFlags.PreserveGraphicsClipping;// | TextFormatFlags.WordEllipsis;
             TextColour = SystemColors.ControlText;
         }
@@ -66,14 +70,14 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             Bounds = bounds;
         }
 
-        public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original, Rectangle bounds, string text)
+        public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original, Rectangle bounds, string? text)
             : this(original)
         {
             Bounds = bounds;
             Text = text;
         }
 
-        public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original, Rectangle bounds, string text, TextFormatFlags flags)
+        public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original, Rectangle bounds, string? text, TextFormatFlags flags)
             : this(original)
         {
             Bounds = bounds;
@@ -81,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             Format |= flags;
         }
 
-        public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original, Rectangle bounds, string text, Color textColour)
+        public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original, Rectangle bounds, string? text, Color textColour)
             : this(original)
         {
             Bounds = bounds;
@@ -89,21 +93,21 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             TextColour = textColour;
         }
 
-        public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original, Rectangle bounds, string text, Color textColour, TextFormatFlags flags)
+        public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original, Rectangle bounds, string? text, Color textColour, TextFormatFlags flags)
             : this(original)
         {
             Bounds = bounds;
             Text = text;
-            TextColour = TextColour;
+            TextColour = textColour;
             Format |= flags;
         }
 
-        public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original, Rectangle bounds, string text, Color textColour, Color backgroundColour)
+        public CalendarRendererBoxEventArgs(CalendarRendererEventArgs original, Rectangle bounds, string? text, Color textColour, Color backgroundColour)
             : this(original)
         {
             Bounds = bounds;
             Text = text;
-            TextColour = TextColour;
+            TextColour = textColour;
             BackgroundColour = backgroundColour;
         }
 
@@ -151,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets or sets the text to draw
         /// </summary>
-        public string Text
+        public string? Text
         {
             get => _text;
             set { _text = value; _textSize = Size.Empty; }

@@ -718,7 +718,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="itemText">Text of the item</param>
         /// <param name="editMode">If <c>true</c> activates the edit mode so user can edit the text of the item.</param>
-        public void CreateItemOnSelection(string itemText, bool editMode)
+        public void CreateItemOnSelection(string? itemText, bool editMode)
         {
             if (SelectedElementEnd == null || SelectedElementStart == null)
             {
@@ -809,7 +809,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             if (_editModeItem != null)
             {
-                string cancelText = _editModeItem.Text;
+                string? cancelText = _editModeItem.Text;
                 CalendarItemAlternative? itemBuffer = _editModeItem;
                 _editModeItem = null;
                 CalendarItemCancelEventArgs evt = new CalendarItemCancelEventArgs(itemBuffer);

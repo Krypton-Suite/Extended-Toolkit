@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     public class LargeImageIndexConverter : ImageIndexConverter
     {
-        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        public override object? ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
             if (value is string)
             {
@@ -47,9 +47,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             }
         }
 
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        public override object? ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
-            if (value is Int32)
+            if (value is int)
             {
                 int number = (int)value;
                 if (number >= 0)
@@ -69,15 +69,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            ImageList imageList = null;
+            ImageList? imageList = null;
 
-            PropertyDescriptorCollection PropertyCollection
+            PropertyDescriptorCollection propertyCollection
                               = TypeDescriptor.GetProperties(context.Instance);
 
             PropertyDescriptor property;
-            if ((property = PropertyCollection.Find("LargeImages", false)) != null)
+            if ((property = propertyCollection.Find("LargeImages", false)) != null)
             {
-                imageList = (ImageList)property.GetValue(context.Instance);
+                imageList = property.GetValue(context.Instance) as ImageList;
             }
 
             if (imageList != null)

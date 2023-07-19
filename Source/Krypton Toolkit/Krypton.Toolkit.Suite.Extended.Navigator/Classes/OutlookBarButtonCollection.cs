@@ -52,20 +52,20 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }*/
 
-        public int SelectedIndex(OutlookBarButton item)
+        public int SelectedIndex(OutlookBarButton? item)
         {
             return this.List.IndexOf(item);
         }
 
         public OutlookBarButton this[int index] => (OutlookBarButton)List[index];
 
-        public OutlookBarButton this[string text]
+        public OutlookBarButton? this[string text]
         {
             get
             {
-                foreach (OutlookBarButton b in List)
+                foreach (OutlookBarButton? b in List)
                 {
-                    if (b.Text.Equals(text))
+                    if (b != null && b.Text.Equals(text))
                     {
                         return b;
                     }
@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        internal OutlookBarButton this[int x, int y]
+        internal OutlookBarButton? this[int x, int y]
         {
             get
             {
@@ -134,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             if (!typeof(OutlookBarButton).IsAssignableFrom(value.GetType()))
             {
-                throw new ArgumentException("value must be of type OutlookBarButton.", "value");
+                throw new ArgumentException(@"Value must be of type OutlookBarButton.", "value");
             }
         }
 

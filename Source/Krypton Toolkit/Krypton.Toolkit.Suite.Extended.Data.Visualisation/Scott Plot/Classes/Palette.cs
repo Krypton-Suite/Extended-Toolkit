@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 .Where(x => x.IsClass)
                 .Where(x => !x.IsAbstract)
                 .Where(x => x.GetInterfaces().Contains(typeof(IPalette)))
-                .Select(x => (IPalette)FormatterServices.GetUninitializedObject(x))
+                .Select(x => FormatterServices.GetUninitializedObject(x) as IPalette)
                 .Select(x => new ScottPlotPalette(x))
                 .Where(x => x.Count() > 0)
                 .ToArray();

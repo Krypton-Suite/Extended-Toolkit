@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <value>
         /// The format parameters.
         /// </value>
-        public IFormatParams FormatParams { get; set; }
+        public IFormatParams? FormatParams { get; set; }
 
         /// <summary>
         /// Contrasts the color.

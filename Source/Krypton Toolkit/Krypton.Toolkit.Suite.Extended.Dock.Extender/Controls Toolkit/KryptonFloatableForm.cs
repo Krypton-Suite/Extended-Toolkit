@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
+﻿namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
 {
     public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
     {
@@ -91,7 +81,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
             if (_dockExtender._overlay.Visible && _dockExtender._overlay.DockHostControl != null) //ok found new docking position
             {
                 _dockState.OrgDockingParent = _dockExtender._overlay.DockHostControl;
-                _dockState.OrgBounds = _dockState.Container.RectangleToClient(_dockExtender._overlay.Bounds);
+                if (_dockState.Container != null)
+                {
+                    _dockState.OrgBounds = _dockState.Container.RectangleToClient(_dockExtender._overlay.Bounds);
+                }
                 _dockState.OrgDockStyle = _dockExtender._overlay.Dock;
                 _dockExtender._overlay.Hide();
                 DockFloating(); // dock the container
@@ -122,7 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
                 return;
             }
 
-            Control t = _dockExtender.FindDockHost(this, pt);
+            Control? t = _dockExtender.FindDockHost(this, pt);
             if (t == null)
             {
                 _dockExtender._overlay.Hide();
@@ -155,7 +148,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
                 base.Show(_dockState.OrgDockHost);
             }
 
-            _dockState.Container.Show();
+            if (_dockState.Container != null)
+            {
+                _dockState.Container.Show();
+            }
         }
 
         public new void Show(IWin32Window owner) => Show();
@@ -167,7 +163,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
                 base.Hide();
             }
 
-            _dockState.Container.Hide();
+            if (_dockState.Container != null)
+            {
+                _dockState.Container.Hide();
+            }
         }
 
         #endregion
@@ -179,61 +178,67 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
         /// </summary>
         /// <param name="c">the control to which to determine the client area</param>
         /// <returns>returns the docking area in screen coordinates</returns>
-        private Rectangle GetDockingArea(Control c)
+        private Rectangle GetDockingArea(Control? c)
         {
-            Rectangle r = c.Bounds;
-
-            if (c.Parent != null)
+            if (c != null)
             {
-                r = c.Parent.RectangleToScreen(r);
-            }
+                Rectangle r = c.Bounds;
 
-            Rectangle rc = c.ClientRectangle;
+                if (c.Parent != null)
+                {
+                    r = c.Parent.RectangleToScreen(r);
+                }
 
-            int borderwidth = (r.Width - rc.Width) / 2;
-            r.X += borderwidth;
-            r.Y += (r.Height - rc.Height) - borderwidth;
+                Rectangle rc = c.ClientRectangle;
 
-            if (!_dockOnInside)
-            {
+                int borderwidth = (r.Width - rc.Width) / 2;
+                r.X += borderwidth;
+                r.Y += (r.Height - rc.Height) - borderwidth;
+
+                if (!_dockOnInside)
+                {
+                    rc.X += r.X;
+                    rc.Y += r.Y;
+                    return rc;
+                }
+
+                foreach (Control cs in c.Controls)
+                {
+                    if (!cs.Visible)
+                    {
+                        continue;
+                    }
+
+                    switch (cs.Dock)
+                    {
+                        case DockStyle.Left:
+                            rc.X += cs.Width;
+                            rc.Width -= cs.Width;
+                            break;
+                        case DockStyle.Right:
+                            rc.Width -= cs.Width;
+                            break;
+                        case DockStyle.Top:
+                            rc.Y += cs.Height;
+                            rc.Height -= cs.Height;
+                            break;
+                        case DockStyle.Bottom:
+                            rc.Height -= cs.Height;
+                            break;
+                        default:
+                            Debug.Assert(false);
+                            break;
+                    }
+                }
                 rc.X += r.X;
                 rc.Y += r.Y;
+
+                //Console.WriteLine("Client = " + c.Name + " " + rc.ToString());
+
                 return rc;
             }
 
-            foreach (Control cs in c.Controls)
-            {
-                if (!cs.Visible)
-                {
-                    continue;
-                }
-
-                switch (cs.Dock)
-                {
-                    case DockStyle.Left:
-                        rc.X += cs.Width;
-                        rc.Width -= cs.Width;
-                        break;
-                    case DockStyle.Right:
-                        rc.Width -= cs.Width;
-                        break;
-                    case DockStyle.Top:
-                        rc.Y += cs.Height;
-                        rc.Height -= cs.Height;
-                        break;
-                    case DockStyle.Bottom:
-                        rc.Height -= cs.Height;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            rc.X += r.X;
-            rc.Y += r.Y;
-
-            //Console.WriteLine("Client = " + c.Name + " " + rc.ToString());
-
-            return rc;
+            return Rectangle.Empty;
         }
 
         /// <summary>
@@ -241,8 +246,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
         /// for display it will position the overlay
         /// </summary>
         /// <param name="c"></param>
-        /// <param name="p">position of cursor in screen coordinates</param>
-        private void SetOverlay(Control c, Point pc)
+        /// <param name="pc">position of cursor in screen coordinates</param>
+        private void SetOverlay(Control? c, Point pc)
         {
 
             Rectangle r = GetDockingArea(c);
@@ -333,10 +338,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
         {
             // track the handle's mouse movements
             _dockState = dockState;
-            Text = _dockState.Handle.Text;
-            _dockState.Handle.MouseMove += new MouseEventHandler(Handle_MouseMove);
-            _dockState.Handle.MouseHover += new EventHandler(Handle_MouseHover);
-            _dockState.Handle.MouseLeave += new EventHandler(Handle_MouseLeave);
+            if (_dockState.Handle != null)
+            {
+                Text = _dockState.Handle.Text;
+                _dockState.Handle.MouseMove += Handle_MouseMove;
+                _dockState.Handle.MouseHover += Handle_MouseHover;
+                _dockState.Handle.MouseLeave += Handle_MouseLeave;
+            }
         }
 
         /// <summary>
@@ -349,50 +357,58 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
         {
             Point ps = Cursor.Position;
             _dockState = dockState;
-            Text = _dockState.Handle.Text;
-
-            Size sz = _dockState.Container.Size;
-            if (_dockState.Container.Equals(_dockState.Handle))
+            if (_dockState.Handle != null)
             {
-                sz.Width += 18;
-                sz.Height += 28;
+                Text = _dockState.Handle.Text;
+
+                if (_dockState.Container != null)
+                {
+                    Size sz = _dockState.Container.Size;
+                    if (_dockState.Container.Equals(_dockState.Handle))
+                    {
+                        sz.Width += 18;
+                        sz.Height += 28;
+                    }
+
+                    if (sz.Width > 600)
+                    {
+                        sz.Width = 600;
+                    }
+
+                    if (sz.Height > 600)
+                    {
+                        sz.Height = 600;
+                    }
+
+
+                    _dockState.OrgDockingParent = _dockState.Container.Parent;
+                    _dockState.OrgBounds = _dockState.Container.Bounds;
+                    _dockState.OrgDockStyle = _dockState.Container.Dock;
+                    //_dockState.OrgDockingParent.Controls.Remove(_dockState.Container);
+                    //Controls.Add(_dockState.Container);
+                    _dockState.Handle.Hide();
+                    _dockState.Container.Parent = this;
+                    _dockState.Container.Dock = DockStyle.Fill;
+                    //_dockState.Handle.Visible = false; // hide it for now
+                    if (_dockState.Splitter != null)
+                    {
+                        _dockState.Splitter.Visible = false; // hide splitter
+                        _dockState.Splitter.Parent = this;
+                    }
+                    // allow redraw of floaty and container
+                    //Application.DoEvents();  
+
+                    // this is kind of tricky
+                    // disable the mousemove events of the handle
+                    SendMessage(_dockState.Handle.Handle.ToInt32(), WM_LBUTTONUP, 0, 0);
+                    ps.X -= offsetx;
+                    ps.Y -= offsety;
+
+
+                    Bounds = new Rectangle(ps, sz);
+                }
             }
-            if (sz.Width > 600)
-            {
-                sz.Width = 600;
-            }
 
-            if (sz.Height > 600)
-            {
-                sz.Height = 600;
-            }
-
-
-            _dockState.OrgDockingParent = _dockState.Container.Parent;
-            _dockState.OrgBounds = _dockState.Container.Bounds;
-            _dockState.OrgDockStyle = _dockState.Container.Dock;
-            //_dockState.OrgDockingParent.Controls.Remove(_dockState.Container);
-            //Controls.Add(_dockState.Container);
-            _dockState.Handle.Hide();
-            _dockState.Container.Parent = this;
-            _dockState.Container.Dock = DockStyle.Fill;
-            //_dockState.Handle.Visible = false; // hide it for now
-            if (_dockState.Splitter != null)
-            {
-                _dockState.Splitter.Visible = false; // hide splitter
-                _dockState.Splitter.Parent = this;
-            }
-            // allow redraw of floaty and container
-            //Application.DoEvents();  
-
-            // this is kind of tricky
-            // disable the mousemove events of the handle
-            SendMessage(_dockState.Handle.Handle.ToInt32(), WM_LBUTTONUP, 0, 0);
-            ps.X -= offsetx;
-            ps.Y -= offsety;
-
-
-            Bounds = new Rectangle(ps, sz);
             _isFloating = true;
             Show();
             // enable the mousemove events of the new floating form, start dragging the form immediately
@@ -405,40 +421,51 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
         private void DockFloating()
         {
             // bring dockhost to front first to prevent flickering
-            _dockState.OrgDockHost.TopLevelControl.BringToFront();
-            Hide();
-            _dockState.Container.Visible = false; // hide it temporarely
-            _dockState.Container.Parent = _dockState.OrgDockingParent;
-            _dockState.Container.Dock = _dockState.OrgDockStyle;
-            _dockState.Container.Bounds = _dockState.OrgBounds;
-            _dockState.Handle.Visible = true; // show handle again
-            _dockState.Container.Visible = true; // it's good, show it
-
-            if (_dockOnInside)
+            if (_dockState.OrgDockHost != null && _dockState.OrgDockHost.TopLevelControl != null)
             {
-                _dockState.Container.BringToFront(); // set to front
+                _dockState.OrgDockHost.TopLevelControl.BringToFront();
             }
 
-            //show splitter
-            if (_dockState.Splitter != null && _dockState.OrgDockStyle != DockStyle.Fill && _dockState.OrgDockStyle != DockStyle.None)
+            Hide();
+            if (_dockState.Container != null)
             {
-                _dockState.Splitter.Parent = _dockState.OrgDockingParent;
-                _dockState.Splitter.Dock = _dockState.OrgDockStyle;
-                _dockState.Splitter.Visible = true; // show splitter
+                _dockState.Container.Visible = false; // hide it temporarely
+                _dockState.Container.Parent = _dockState.OrgDockingParent;
+                _dockState.Container.Dock = _dockState.OrgDockStyle;
+                _dockState.Container.Bounds = _dockState.OrgBounds;
+                if (_dockState.Handle != null)
+                {
+                    _dockState.Handle.Visible = true; // show handle again
+                }
+                _dockState.Container.Visible = true; // it's good, show it
 
                 if (_dockOnInside)
                 {
-                    _dockState.Splitter.BringToFront();
+                    _dockState.Container.BringToFront(); // set to front
                 }
-                else
-                {
-                    _dockState.Splitter.SendToBack();
-                }
-            }
 
-            if (!_dockOnInside)
-            {
-                _dockState.Container.SendToBack(); // set to back
+                //show splitter
+                if (_dockState.Splitter != null && _dockState.OrgDockStyle != DockStyle.Fill &&
+                    _dockState.OrgDockStyle != DockStyle.None)
+                {
+                    _dockState.Splitter.Parent = _dockState.OrgDockingParent;
+                    _dockState.Splitter.Dock = _dockState.OrgDockStyle;
+                    _dockState.Splitter.Visible = true; // show splitter
+
+                    if (_dockOnInside)
+                    {
+                        _dockState.Splitter.BringToFront();
+                    }
+                    else
+                    {
+                        _dockState.Splitter.SendToBack();
+                    }
+                }
+
+                if (!_dockOnInside)
+                {
+                    _dockState.Container.SendToBack(); // set to back
+                }
             }
 
             _isFloating = false;
@@ -451,10 +478,14 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
 
         private void DetachHandle()
         {
-            _dockState.Handle.MouseMove -= new MouseEventHandler(Handle_MouseMove);
-            _dockState.Handle.MouseHover -= new EventHandler(Handle_MouseHover);
-            _dockState.Handle.MouseLeave -= new EventHandler(Handle_MouseLeave);
-            _dockState.Container = null;
+            if (_dockState.Handle != null)
+            {
+                _dockState.Handle.MouseMove -= Handle_MouseMove;
+                _dockState.Handle.MouseHover -= Handle_MouseHover;
+                _dockState.Handle.MouseLeave -= Handle_MouseLeave;
+                _dockState.Container = null;
+            }
+
             _dockState.Handle = null;
         }
 
@@ -470,7 +501,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
         {
             if (e.Button == MouseButtons.Left && _startFloating)
             {
-                Point ps = _dockState.Handle.PointToScreen(new Point(e.X, e.Y));
+                if (_dockState.Handle != null)
+                {
+                    Point ps = _dockState.Handle.PointToScreen(new Point(e.X, e.Y));
+                }
+
                 MakeFloatable(_dockState, e.X, e.Y);
             }
         }
@@ -479,7 +514,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
 
         #region Event
 
-        public event EventHandler Docking;
+        public event EventHandler? Docking;
 
         #endregion
     }

@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <summary>
         /// Occurs when the user clicks a button spec.
         /// </summary>
-        public event EventHandler<DataGridViewButtonSpecClickEventArgs> ButtonSpecClick;
+        public event EventHandler<DataGridViewButtonSpecClickEventArgs>? ButtonSpecClick;
         #endregion
 
         #region Identity
@@ -77,16 +77,21 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <returns></returns>
         public override object Clone()
         {
-            KryptonDataGridViewTextAndImageColumn cloned = base.Clone() as KryptonDataGridViewTextAndImageColumn;
-            cloned.imageValue = imageValue;
-            cloned.ImageSize = ImageSize;
-            // Move the button specs over to the new clone
-            foreach (ButtonSpec bs in ButtonSpecs)
+            KryptonDataGridViewTextAndImageColumn? cloned = base.Clone() as KryptonDataGridViewTextAndImageColumn;
+            if (cloned != null)
             {
-                cloned.ButtonSpecs.Add(bs.Clone());
+                cloned.imageValue = imageValue;
+                cloned.ImageSize = ImageSize;
+                // Move the button specs over to the new clone
+                foreach (ButtonSpec bs in ButtonSpecs)
+                {
+                    cloned.ButtonSpecs.Add(bs.Clone());
+                }
+
+                return cloned;
             }
 
-            return cloned;
+            return base.Clone();
         }
 
         /// <summary>
@@ -157,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                         int count = rows.Count;
                         for (int i = 0; i < count; i++)
                         {
-                            DataGridViewTextBoxCell cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
+                            DataGridViewTextBoxCell? cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
                             if (cell != null)
                             {
                                 cell.MaxInputLength = value;
@@ -216,7 +221,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         #region Internal
         internal void PerformButtonSpecClick(DataGridViewButtonSpecClickEventArgs args)
         {
-            ButtonSpecClick?.Invoke(this, args);
+            if (ButtonSpecClick != null)
+            {
+                ButtonSpecClick.Invoke(this, args);
+            }
         }
 
         internal Size ImageSize { get; private set; }
@@ -271,7 +279,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <returns>true if equal, false otherwise.</returns>
         public override bool Equals(object obj)
         {
-            return Text.Equals(obj?.ToString());
+            return Text.Equals(obj.ToString());
         }
 
         /// <summary>
@@ -299,8 +307,8 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
     /// </summary>
     public class KryptonDataGridViewTextAndImageCell : KryptonDataGridViewTextBoxCell
     {
-        private Image imageValue;
-        private Size imageSize;
+        private Image _imageValue;
+        private Size _imageSize;
 
         /// <summary>
         /// Constructor
@@ -320,7 +328,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="rowIndex">Index of the row.</param>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        protected override bool SetValue(int rowIndex, object value)
+        protected override bool SetValue(int rowIndex, object? value)
         {
             if (value != null)
             {
@@ -336,10 +344,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <returns>The cloned KryptonDataGridViewTextAndImageCell</returns>
         public override object Clone()
         {
-            KryptonDataGridViewTextAndImageCell c = base.Clone() as KryptonDataGridViewTextAndImageCell;
-            c.imageValue = imageValue;
-            c.imageSize = imageSize;
-            return c;
+            KryptonDataGridViewTextAndImageCell? c = base.Clone() as KryptonDataGridViewTextAndImageCell;
+            if (c != null)
+            {
+                c._imageValue = _imageValue;
+                c._imageSize = _imageSize;
+                return c;
+            }
+
+            return base.Clone();
         }
 
         /// <summary>
@@ -350,19 +363,19 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// </value>
         public Image Image
         {
-            get => imageValue;
+            get => _imageValue;
             set
             {
                 if (Image != value)
                 {
-                    imageValue = value;
-                    imageSize = value.Size;
+                    _imageValue = value;
+                    _imageSize = value.Size;
 
                     //if (this.InheritedStyle != null)
                     //{
                     Padding inheritedPadding = Style.Padding;
                     //Padding inheritedPadding = this.InheritedStyle.Padding;
-                    Style.Padding = new Padding(imageSize.Width + 2,
+                    Style.Padding = new Padding(_imageSize.Width + 2,
                      inheritedPadding.Top, inheritedPadding.Right,
                      inheritedPadding.Bottom);
                     //}
@@ -392,7 +405,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 //Padding inheritedPadding = this.InheritedStyle.Padding;
                 //this.Style.Padding = new Padding(18, inheritedPadding.Top, inheritedPadding.Right, inheritedPadding.Bottom);
                 // Draw the image clipped to the cell.
-                System.Drawing.Drawing2D.GraphicsContainer container = graphics.BeginContainer();
+                GraphicsContainer container = graphics.BeginContainer();
                 graphics.SetClip(cellBounds);
                 graphics.DrawImage(((TextAndImage)Value).Image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + ((cellBounds.Height - 16) / 2) - 1, 16, 16));
                 graphics.EndContainer(container);

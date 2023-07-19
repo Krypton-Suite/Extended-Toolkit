@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Gets or sets a reference to the renderer responsible for drawing the popup
         /// </summary>
-        public NaviRenderer Renderer
+        public new NaviRenderer Renderer
         {
             get => renderer;
             set { renderer = value; Invalidate(); }

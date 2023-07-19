@@ -25,6 +25,7 @@
  */
 #endregion
 
+// ReSharper disable InconsistentNaming
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     [ToolboxItem(false)]
@@ -39,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         private readonly PaletteTripleOverride _overrideNormal;
         private readonly PaletteTripleOverride _overrideTracking;
         private readonly PaletteTripleOverride _overridePressed;
-        private IKryptonCommand _command;
+        private IKryptonCommand? _command;
         private bool _useAsDialogButton, _isDefault, _useMnemonic, _wasEnabled, _useAsUACElevationButton;
         #endregion
 
@@ -49,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// </summary>
         [Category(@"Property Changed")]
         [Description(@"Occurs when the value of the KryptonCommand property changes.")]
-        public event EventHandler KryptonCommandChanged;
+        public event EventHandler? KryptonCommandChanged;
         #endregion
 
         #region Identity
@@ -89,19 +90,21 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             _overridePressed = new(OverrideFocus, StatePressed, PaletteState.FocusOverride);
 
             // Create the view button instance
-            _drawButton = new(StateDisabled,
-                                             _overrideNormal,
-                                             _overrideTracking,
-                                             _overridePressed,
-                                             new PaletteMetricRedirect(Redirector),
-                                             this,
-                                             Orientation,
-                                             UseMnemonic)
+            if (Redirector != null)
             {
-
-                // Only draw a focus rectangle when focus cues are needed in the top level form
-                TestForFocusCues = true
-            };
+                _drawButton = new(StateDisabled,
+                    _overrideNormal,
+                    _overrideTracking,
+                    _overridePressed,
+                    new PaletteMetricRedirect(Redirector),
+                    this,
+                    Orientation,
+                    UseMnemonic)
+                {
+                    // Only draw a focus rectangle when focus cues are needed in the top level form
+                    TestForFocusCues = true
+                };
+            }
 
             // Create a button controller to handle button style behaviour
             _buttonController = new(_drawButton, NeedPaintDelegate);
@@ -476,20 +479,20 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// Gets the content short text.
         /// </summary>
         /// <returns>String value.</returns>
-        public string GetShortText() => KryptonCommand?.Text ?? Values.GetShortText();
+        public string GetShortText() => KryptonCommand.Text ?? Values.GetShortText();
 
         /// <summary>
         /// Gets the content long text.
         /// </summary>
         /// <returns>String value.</returns>
-        public string GetLongText() => KryptonCommand?.ExtraText ?? Values.GetLongText();
+        public string GetLongText() => KryptonCommand.ExtraText ?? Values.GetLongText();
 
         /// <summary>
         /// Gets the content image.
         /// </summary>
         /// <param name="state">The state for which the image is needed.</param>
         /// <returns>Image value.</returns>
-        public Image GetImage(PaletteState state) => KryptonCommand?.ImageSmall ?? Values.GetImage(state);
+        public Image? GetImage(PaletteState state) => KryptonCommand.ImageSmall ?? Values.GetImage(state);
 
         /// <summary>
         /// Gets the image colour that should be transparent.
@@ -573,7 +576,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         protected override void OnClick(EventArgs e)
         {
             // Find the form this button is on
-            Form owner = FindForm();
+            Form? owner = FindForm();
 
             // If we find a valid owner
             if (owner != null)
@@ -586,7 +589,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             base.OnClick(e);
 
             // If we have an attached command then execute it
-            KryptonCommand?.PerformExecute();
+            KryptonCommand.PerformExecute();
 
             if (_useAsUACElevationButton)
             {
@@ -704,7 +707,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <param name="e">An EventArgs containing the event data.</param>
         protected virtual void OnKryptonCommandChanged(EventArgs e)
         {
-            KryptonCommandChanged?.Invoke(this, e);
+            if (KryptonCommandChanged != null)
+            {
+                KryptonCommandChanged.Invoke(this, e);
+            }
 
             // Use the values from the new command
             if (KryptonCommand != null)

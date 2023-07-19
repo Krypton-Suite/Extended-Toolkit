@@ -30,7 +30,6 @@
 // ReSharper disable UnusedVariable
 // ReSharper disable RedundantAssignment
 // ReSharper disable UnusedMember.Local
-#pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -395,7 +394,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         /// <summary>
-        /// Gets if the <see cref="TimeScale"/> is currently visible.
+        /// Gets if the <see cref="CalendarTimeScale"/> is currently visible.
         /// </summary>
         public bool TimeScaleVisible => Calendar.DaysMode == CalendarDaysMode.Expanded;
 
@@ -415,7 +414,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         /// <summary>
-        /// Gets the width of the header of weeks, when <see cref="Calendar.DaysMode"/> in <see cref="CalendarDaysMode.Short"/>
+        /// Gets the width of the header of weeks, when <see cref="CalendarDaysMode"/> in <see cref="CalendarDaysMode.Short"/>
         /// </summary>
         public virtual int WeekHeaderWidth
         {
@@ -436,7 +435,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         /// <summary>
         /// Gets the exact Y coordinate that corresponds to the specified time.
-        /// This only works when <see cref="Calendar.DaysMode"/> is in <c>Expanded</c> mode.
+        /// This only works when <see cref="CalendarDaysMode"/> is in <c>Expanded</c> mode.
         /// </summary>
         /// <param name="time">Time of day to get Y coordinate</param>
         /// <returns>Y coordinate corresponding to the specified <para>time</para></returns>
@@ -1443,13 +1442,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 CalendarTimeScaleUnit? unit = e.Calendar.Days[0]?.TimeUnits[i];
 
-                if (!unit.Visible)
+                if (unit != null && !unit.Visible)
                 {
                     continue;
                 }
 
-                string hours = unit.Hours.ToString("00");
-                string minutes = unit.Minutes == 0 ? "00" : string.Empty;
+                string? hours = unit?.Hours.ToString("00");
+                string minutes = unit?.Minutes == 0 ? "00" : string.Empty;
 
                 if (!string.IsNullOrWhiteSpace(minutes))
                 {
@@ -1458,7 +1457,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         hours = "12";
                     }
 
-                    CalendarRendererBoxEventArgs hevt = new CalendarRendererBoxEventArgs(e, new Rectangle(hourLeft, unit.Bounds.Top, hourWidth, unit.Bounds.Height), hours, TextFormatFlags.Right);
+                    CalendarRendererBoxEventArgs hevt = new CalendarRendererBoxEventArgs(e, new Rectangle(hourLeft, unit!.Bounds.Top, hourWidth, unit.Bounds.Height), hours, TextFormatFlags.Right);
 
                     hevt.Font = hourFont;
 
@@ -1595,7 +1594,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         /// <summary>
         /// Paints the body of the day. Usually timeline unit indicator lines or a solid color if 
-        /// <see cref="Calendar.DaysMode"/> is <see cref="CalendarDaysMode.Short"/>
+        /// <see cref="CalendarDaysMode"/> is <see cref="CalendarDaysMode.Short"/>
         /// </summary>
         /// <param name="e"></param>
         public virtual void OnDrawDayTimeUnits(CalendarRendererDayEventArgs e)
@@ -1624,7 +1623,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         /// <summary>
-        /// Paints the name of the day columns when <see cref="Calendar.DaysMode"/> is <see cref="CalendarDaysMode.Short"/>
+        /// Paints the name of the day columns when <see cref="CalendarDaysMode"/> is <see cref="CalendarDaysMode.Short"/>
         /// </summary>
         /// <param name="e">Paint Info</param>
         public virtual void OnDrawDayNameHeaders(CalendarRendererEventArgs e)
@@ -1644,7 +1643,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         /// <summary>
-        /// Paints a name of the day column when <see cref="Calendar.DaysMode"/> is <see cref="CalendarDaysMode.Short"/>
+        /// Paints a name of the day column when <see cref="CalendarDaysMode"/> is <see cref="CalendarDaysMode.Short"/>
         /// </summary>
         /// <param name="e">Paint info</param>
         public virtual void OnDrawDayNameHeader(CalendarRendererBoxEventArgs e)
@@ -1840,8 +1839,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     Rectangle imageBounds = Rectangle.Empty;
                     Rectangle rStartTime = new Rectangle();
                     Rectangle rEndTime = new Rectangle();
-                    string endTime = string.Empty;
-                    string startTime = string.Empty;
+                    string? endTime = string.Empty;
+                    string? startTime = string.Empty;
                     Color secondaryForecolour = e.Item.ForeColour;
 
                     if (e.Item.ShowEndTime && i == rectangles.Count - 1)
@@ -2042,17 +2041,17 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         /// <summary>
-        /// Paints the headers of the week rows when <see cref="Calendar.DaysMode"/> is <see cref="CalendarDaysMode.Short"/>
+        /// Paints the headers of the week rows when <see cref="CalendarDaysMode"/> is <see cref="CalendarDaysMode.Short"/>
         /// </summary>
         /// <param name="e"></param>
         public virtual void OnDrawWeekHeaders(CalendarRendererEventArgs e)
         {
             for (int i = 0; i < Calendar.Weeks.Length; i++)
             {
-                string str = Calendar.Weeks[i].ToStringLarge();
+                string? str = Calendar.Weeks[i].ToStringLarge();
                 if (e.Graphics != null)
                 {
-                    SizeF sz = e.Graphics.MeasureString(str, e.Calendar?.Font);
+                    SizeF sz = e.Graphics.MeasureString(str, e.Calendar?.Font!);
 
                     if (sz.Width > Calendar.Weeks[i].HeaderBounds.Height)
                     {
@@ -2066,7 +2065,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         /// <summary>
-        /// Paints the header of a week row when <see cref="Calendar.DaysMode"/> is <see cref="CalendarDaysMode.Short"/>
+        /// Paints the header of a week row when <see cref="CalendarDaysMode"/> is <see cref="CalendarDaysMode.Short"/>
         /// </summary>
         /// <param name="e">Paint info</param>
         public virtual void OnDrawWeekHeader(CalendarRendererBoxEventArgs e)
