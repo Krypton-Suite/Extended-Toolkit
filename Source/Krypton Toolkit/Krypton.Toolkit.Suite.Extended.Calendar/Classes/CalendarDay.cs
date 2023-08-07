@@ -295,7 +295,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             for (int i = 0; i < TimeUnits.Length; i++)
             {
-                TimeUnits[i].SetHighlighted(TimeUnits[i].CheckHighlighted());
+                if (TimeUnits != null)
+                {
+                    TimeUnits[i].SetHighlighted(TimeUnits[i].CheckHighlighted());
+                }
             }
         }
 

@@ -76,11 +76,12 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
             try
             {
-                Process p = Process.Start(startInfo);
+                Process p = Process.Start(startInfo)!;
             }
-            catch (System.ComponentModel.Win32Exception ex)
+            catch (Win32Exception ex)
             {
-                return; //If cancelled, do nothing
+                //return; //If cancelled, do nothing
+                ExceptionCapture.CaptureException(ex);
             }
 
             Application.Exit();
