@@ -212,37 +212,25 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Sets the value of he <see cref="OverflowEnd"/> property
         /// </summary>
         /// <param name="overflow">Value of the property</param>
-        internal void SetOverflowEnd(bool overflow)
-        {
-            _overflowEnd = overflow;
-        }
+        internal void SetOverflowEnd(bool overflow) => _overflowEnd = overflow;
 
         /// <summary>
         /// Sets the value of the <see cref="OverflowEndSelected"/> property
         /// </summary>
         /// <param name="selected">Value to pass to the property</param>
-        internal void SetOverflowEndSelected(bool selected)
-        {
-            _overlowEndSelected = selected;
-        }
+        internal void SetOverflowEndSelected(bool selected) => _overlowEndSelected = selected;
 
         /// <summary>
         /// Sets the value of he <see cref="OverflowStart"/> property
         /// </summary>
         /// <param name="overflow">Value of the property</param>
-        internal void SetOverflowStart(bool overflow)
-        {
-            _overflowStart = overflow;
-        }
+        internal void SetOverflowStart(bool overflow) => _overflowStart = overflow;
 
         /// <summary>
         /// Sets the value of the <see cref="OverflowStartSelected"/> property
         /// </summary>
         /// <param name="selected">Value to pass to the property</param>
-        internal void SetOverflowStartSelected(bool selected)
-        {
-            _overflowStartSelected = selected;
-        }
+        internal void SetOverflowStartSelected(bool selected) => _overflowStartSelected = selected;
 
         /// <summary>
         /// Updates the value of <see cref="TimeUnits"/> property
@@ -253,13 +241,26 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             switch (Calendar.TimeScale)
             {
-                case CalendarTimeScale.SixtyMinutes: factor = 1; break;
-                case CalendarTimeScale.ThirtyMinutes: factor = 2; break;
-                case CalendarTimeScale.FifteenMinutes: factor = 4; break;
-                case CalendarTimeScale.TenMinutes: factor = 6; break;
-                case CalendarTimeScale.SixMinutes: factor = 10; break;
-                case CalendarTimeScale.FiveMinutes: factor = 12; break;
-                default: throw new NotImplementedException("TimeScale not supported");
+                case CalendarTimeScale.SixtyMinutes:
+                    factor = 1;
+                    break;
+                case CalendarTimeScale.ThirtyMinutes:
+                    factor = 2;
+                    break;
+                case CalendarTimeScale.FifteenMinutes:
+                    factor = 4;
+                    break;
+                case CalendarTimeScale.TenMinutes:
+                    factor = 6;
+                    break;
+                case CalendarTimeScale.SixMinutes:
+                    factor = 10;
+                    break;
+                case CalendarTimeScale.FiveMinutes:
+                    factor = 12;
+                    break;
+                default: 
+                    throw new NotImplementedException("TimeScale not supported");
             }
 
             _timeUnits = new CalendarTimeScaleUnit[24 * factor];
@@ -293,9 +294,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 return;
             }
 
-            for (int i = 0; i < TimeUnits.Length; i++)
+            if (TimeUnits != null)
             {
-                if (TimeUnits != null)
+                for (int i = 0; i < TimeUnits.Length; i++)
                 {
                     TimeUnits[i].SetHighlighted(TimeUnits[i].CheckHighlighted());
                 }
