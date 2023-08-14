@@ -206,7 +206,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
                 }
                 catch (Win32Exception wexc)
                 {
-                    MessageBox.Show($"Error: {wexc.Message}", "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($@"Error: {wexc.Message}", @"An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 return;
@@ -246,24 +246,12 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
         }
 
-        // TODO: Fix this method
-        /*
         /// <summary>
         /// This method checks if the client operating system supports the Windows API CodePack set of API's.
         /// </summary>
         /// <returns>True, if the client operating system supports the Windows API CodePack set of API's.</returns>
-        public bool IsWindowsAPICodePackSupported()
-        {
-            if (TaskbarManager.IsPlatformSupported)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        */
+        public bool IsWindowsAPICodePackSupported() => TaskbarManager.IsPlatformSupported;
+
         #endregion
 
         #region Setters and Getters

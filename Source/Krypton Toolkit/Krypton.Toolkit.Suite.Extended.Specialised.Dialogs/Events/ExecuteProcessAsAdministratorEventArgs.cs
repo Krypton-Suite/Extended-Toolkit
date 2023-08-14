@@ -25,9 +25,10 @@
  */
 #endregion
 
+#pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 {
-    /// <summary>Handles the user account control event for the <see cref="KryptonUACElevatedButton" />.</summary>
+    /// <summary>Handles the user account control event for the <see cref="Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACElevatedButton" />.</summary>
     public class ExecuteProcessAsAdministratorEventArgs : EventArgs
     {
         /// <summary></summary>
@@ -82,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             ElevateProcessWithAdministrativeRights(ObjectToElevate);
         }
 
-        private void ElevateProcessWithAdministrativeRights(object objectToElevate, string arguments = null)
+        private void ElevateProcessWithAdministrativeRights(object objectToElevate, string? arguments = null)
         {
             try
             {
@@ -112,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
         /// <param name="processName">Name of the process.</param>
         /// <param name="arguments">Extra arguments to execute.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public void ElevateProcessWithAdministrativeRights(string processName, string arguments = null)
+        public void ElevateProcessWithAdministrativeRights(string processName, string? arguments = null)
         {
             WindowsPrincipal principal = new(WindowsIdentity.GetCurrent());
 
@@ -140,8 +141,6 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
                 {
                     ExceptionCapture.CaptureException(e);
                 }
-
-                return;
             }
         }
     }

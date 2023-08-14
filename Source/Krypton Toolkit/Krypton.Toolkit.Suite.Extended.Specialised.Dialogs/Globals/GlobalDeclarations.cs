@@ -42,3 +42,5 @@ global using Krypton.Toolkit.Suite.Extended.Common;
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 
 global using Microsoft.Win32;
+
+global using Microsoft.WindowsAPICodePack.Taskbar;
