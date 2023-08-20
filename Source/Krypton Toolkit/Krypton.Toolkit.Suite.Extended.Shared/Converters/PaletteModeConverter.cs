@@ -12,7 +12,8 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Shared
 {
-    /// <summary>
+    // TODO: Rewrite class
+    /*/// <summary>
     /// Custom type converter so that PaletteMode values appear as neat text at design time.
     /// </summary>
     public class PaletteModeConverter : StringLookupConverter
@@ -94,5 +95,5 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
         protected override Pair[] Pairs => _pairs;
 
         #endregion
-    }
+    }*/
 }

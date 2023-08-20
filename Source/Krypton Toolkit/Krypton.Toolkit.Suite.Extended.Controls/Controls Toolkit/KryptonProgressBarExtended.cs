@@ -33,26 +33,27 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
     /// Based off of: https://www.codeproject.com/Articles/1082902/How-to-Paint-on-Top-of-a-ProgressBar-using-Csharp
     /// </summary>
     /// <remarks>
-    /// KryptonProgressBarExtendedVersion2 is a specialized type of <see cref="ProgressBar" />, which it extends 
-    /// to fade its background colors and to display its <see cref="KryptonProgressBarExtendedVersion2.Text" />. 
+    /// KryptonProgressBarExtended is a specialized type of <see cref="ProgressBar" />, which it extends 
+    /// to fade its background colors and to display its <see cref="KryptonProgressBarExtended.Text" />. 
     /// 
     /// <para>You can manipulate the background fading intensity by changing the value of 
-    /// property <see cref="KryptonProgressBarExtendedVersion2.Fade" /> which accepts values between 0 and 255. 
+    /// property <see cref="KryptonProgressBarExtended.Fade" /> which accepts values between 0 and 255. 
     /// Lower values make the background darker; higher values make the background lighter.</para>
     /// 
     /// <para>The current <see cref="ProgressBar.Text" /> is displayed using the values of properties 
-    /// <see cref="KryptonProgressBarExtendedVersion2.Font" /> and <see cref="KryptonProgressBarExtendedVersion2.ForeColor" />.</para>
+    /// <see cref="KryptonProgressBarExtended.Font" /> and <see cref="KryptonProgressBarExtended.ForeColor" />.</para>
     /// 
-    /// <para><note type="inherit">When you derive from KryptonProgressBarExtendedVersion2, adding new functionality to the 
+    /// <para><note type="inherit">When you derive from KryptonProgressBarExtended, adding new functionality to the 
     /// derived class, if your derived class references objects that must be disposed of before an instance of 
-    /// your class is destroyed, you must override the <see cref="KryptonProgressBarExtendedVersion2.Dispose(bool)" /> 
+    /// your class is destroyed, you must override the <see cref="KryptonProgressBarExtended.Dispose(bool)" /> 
     /// method, and call <see cref="System.ComponentModel.Component.Dispose()">Dispose()</see> on all objects 
     /// that are referenced in your class, before calling <c>Dispose(disposing)</c> on the base class.</note></para>
     /// </remarks>
     [Description("Provides a ProgressBar which displays its Value as text on a faded background."),
      Designer(typeof(KryptonProgressBarExtendedVersion2Designer)),
-     ToolboxBitmap(typeof(ProgressBar))]
-    public class KryptonProgressBarExtendedVersion2 : ProgressBar
+     ToolboxBitmap(typeof(ProgressBar)),
+     Obsolete(@"Please use the native KryptonProgressBar instead.")]
+    public class KryptonProgressBarExtended : ProgressBar
     {
         #region Instance Fields
 
@@ -203,10 +204,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         #region Identity
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonProgressBarExtendedVersion2" /> class.</summary>
-        public KryptonProgressBarExtendedVersion2()
+        /// <summary>Initializes a new instance of the <see cref="KryptonProgressBarExtended" /> class.</summary>
+        public KryptonProgressBarExtended()
         {
-            // ToDo: Use Krypton
             ForeColor = SystemColors.ControlText;
 
             _fadeBrush = new SolidBrush(Color.FromArgb(Fade, 255, 255, 255));

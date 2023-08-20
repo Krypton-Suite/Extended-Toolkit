@@ -26,6 +26,7 @@
 
 #endregion
 
+using MethodInvoker = System.Windows.Forms.MethodInvoker;
 using Application = System.Windows.Forms.Application;
 using Size = System.Drawing.Size;
 // ReSharper disable InconsistentNaming

@@ -38,7 +38,7 @@
             this.kkcv2Test = new Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2();
             this.kryptonMarqueeLabel1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonMarqueeLabel();
             this.kryptonProgressBarExtendedVersion11 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion1();
-            this.kryptonProgressBarExtendedVersion21 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion2();
+            this.kryptonProgressBarExtended1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtended();
             this.kryptonSecureTextBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonSecureTextBox();
             this.kryptonStarRatingControl1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonStarRatingControl();
             this.kryptonValidationBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonValidationBox();
@@ -52,7 +52,7 @@
             this.kryptonPanel1.Controls.Add(this.kryptonValidationBox1);
             this.kryptonPanel1.Controls.Add(this.kryptonStarRatingControl1);
             this.kryptonPanel1.Controls.Add(this.kryptonSecureTextBox1);
-            this.kryptonPanel1.Controls.Add(this.kryptonProgressBarExtendedVersion21);
+            this.kryptonPanel1.Controls.Add(this.kryptonProgressBarExtended1);
             this.kryptonPanel1.Controls.Add(this.kryptonProgressBarExtendedVersion11);
             this.kryptonPanel1.Controls.Add(this.kryptonMarqueeLabel1);
             this.kryptonPanel1.Controls.Add(this.kkcv2Test);
@@ -155,11 +155,11 @@
             // 
             // kryptonProgressBarExtendedVersion21
             // 
-            this.kryptonProgressBarExtendedVersion21.Location = new System.Drawing.Point(601, 52);
-            this.kryptonProgressBarExtendedVersion21.Name = "kryptonProgressBarExtendedVersion21";
-            this.kryptonProgressBarExtendedVersion21.Size = new System.Drawing.Size(264, 23);
-            this.kryptonProgressBarExtendedVersion21.TabIndex = 6;
-            this.kryptonProgressBarExtendedVersion21.Text = "0%";
+            this.kryptonProgressBarExtended1.Location = new System.Drawing.Point(601, 52);
+            this.kryptonProgressBarExtended1.Name = "kryptonProgressBarExtended1";
+            this.kryptonProgressBarExtended1.Size = new System.Drawing.Size(264, 23);
+            this.kryptonProgressBarExtended1.TabIndex = 6;
+            this.kryptonProgressBarExtended1.Text = "0%";
             // 
             // kryptonSecureTextBox1
             // 
@@ -226,7 +226,7 @@
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2 kkcv2Test;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonMarqueeLabel kryptonMarqueeLabel1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion1 kryptonProgressBarExtendedVersion11;
-        private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion2 kryptonProgressBarExtendedVersion21;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtended kryptonProgressBarExtended1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonSecureTextBox kryptonSecureTextBox1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonStarRatingControl kryptonStarRatingControl1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonValidationBox kryptonValidationBox1;

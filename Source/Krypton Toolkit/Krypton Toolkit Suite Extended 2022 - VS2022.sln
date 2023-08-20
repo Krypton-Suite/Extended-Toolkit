@@ -275,6 +275,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Application
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoUpdateCreator", "AutoUpdateCreator\AutoUpdateCreator.csproj", "{975DA9CB-501F-442E-8339-AF625C7A5DA4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{5D204922-259D-4140-B115-F01EDF031B5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Issue Templates", "Issue Templates", "{362F24FA-1AA0-4821-A539-C5A863D39B8B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\.github\ISSUE_TEMPLATE\bug_report.md = ..\..\.github\ISSUE_TEMPLATE\bug_report.md
+		..\..\.github\ISSUE_TEMPLATE\feature-request.md = ..\..\.github\ISSUE_TEMPLATE\feature-request.md
+		..\..\.github\ISSUE_TEMPLATE\other-issues.md = ..\..\.github\ISSUE_TEMPLATE\other-issues.md
+		..\..\.github\ISSUE_TEMPLATE\post-a-question.md = ..\..\.github\ISSUE_TEMPLATE\post-a-question.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Canary|Any CPU = Canary|Any CPU
@@ -857,6 +867,8 @@ Global
 		{5C2389E8-1198-48D2-BDCC-44F74BE6B294} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{1126FD6E-8A3E-4C93-AABB-06073B27EB75} = {4985A154-8526-4CB0-A7DC-B39736C4A8AC}
 		{975DA9CB-501F-442E-8339-AF625C7A5DA4} = {4985A154-8526-4CB0-A7DC-B39736C4A8AC}
+		{5D204922-259D-4140-B115-F01EDF031B5A} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
+		{362F24FA-1AA0-4821-A539-C5A863D39B8B} = {5D204922-259D-4140-B115-F01EDF031B5A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
