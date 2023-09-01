@@ -96,7 +96,6 @@
             this.kpbProgress.Name = "kpbProgress";
             this.kpbProgress.Size = new System.Drawing.Size(486, 23);
             this.kpbProgress.TabIndex = 2;
-            this.kpbProgress.UseKrypton = true;
             // 
             // kryptonPanel2
             // 

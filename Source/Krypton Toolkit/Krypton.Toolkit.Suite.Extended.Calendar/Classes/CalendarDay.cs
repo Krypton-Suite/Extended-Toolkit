@@ -259,7 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 case CalendarTimeScale.FiveMinutes:
                     factor = 12;
                     break;
-                default: 
+                default:
                     throw new NotImplementedException("TimeScale not supported");
             }
 

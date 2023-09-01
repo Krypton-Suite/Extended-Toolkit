@@ -27,6 +27,7 @@
 #endregion
 
 using Application = System.Windows.Forms.Application;
+using MethodInvoker = System.Windows.Forms.MethodInvoker;
 using Size = System.Drawing.Size;
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater

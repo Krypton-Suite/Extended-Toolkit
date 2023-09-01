@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasicNotificationWithUserResponseWrappedLabelAndProgressBar));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
-            this.pbProgress = new System.Windows.Forms.ProgressBar();
+            this.pbProgress = new Krypton.Toolkit.KryptonProgressBar();
             this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
             this.ktxtUserResponse = new Krypton.Toolkit.KryptonTextBox();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
@@ -124,8 +124,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
             // 
             // kwlContent
             // 
-            this.kwlContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.kwlContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kwlContent.AutoSize = false;
             this.kwlContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -147,8 +147,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
             // 
             // kwlTitle
             // 
-            this.kwlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.kwlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kwlTitle.AutoSize = false;
             this.kwlTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -387,7 +387,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
 
         private KryptonPanel kryptonPanel1;
         private KryptonPanel kpnlContent;
-        private ProgressBar pbProgress;
+        private KryptonProgressBar pbProgress;
         private KryptonWrapLabel kwlContent;
         private KryptonTextBox ktxtUserResponse;
         private KryptonWrapLabel kwlTitle;

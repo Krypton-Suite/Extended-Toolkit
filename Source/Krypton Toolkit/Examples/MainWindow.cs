@@ -146,5 +146,12 @@ namespace Examples
 
             memoryBoxExample.Show();
         }
+
+        private void kbtnProgressBars_Click(object sender, EventArgs e)
+        {
+            KryptonProgressBarExtendedExamples progressBarExtendedExamples = new KryptonProgressBarExtendedExamples();
+
+            progressBarExtendedExamples.Show();
+        }
     }
 }

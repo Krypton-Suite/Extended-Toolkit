@@ -27,6 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
+    [Obsolete(@"Please use the native KryptonProgressBar instead.")]
     public class KryptonProgressBarExtendedVersion1 : UserControl
     {
         #region Designer Code

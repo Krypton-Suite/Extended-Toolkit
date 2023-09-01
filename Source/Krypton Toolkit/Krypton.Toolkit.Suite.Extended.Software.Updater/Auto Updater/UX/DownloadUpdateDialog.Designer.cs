@@ -108,7 +108,6 @@
             this.kpbDownloadProgress.Name = "kpbDownloadProgress";
             this.kpbDownloadProgress.Size = new System.Drawing.Size(405, 15);
             this.kpbDownloadProgress.TabIndex = 0;
-            this.kpbDownloadProgress.UseKrypton = true;
             // 
             // kwlHeader
             // 

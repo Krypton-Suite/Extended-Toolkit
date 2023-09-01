@@ -146,7 +146,6 @@
             this.kpbExtractingProgress.Name = "kpbExtractingProgress";
             this.kpbExtractingProgress.Size = new System.Drawing.Size(722, 30);
             this.kpbExtractingProgress.TabIndex = 4;
-            this.kpbExtractingProgress.UseKrypton = true;
             // 
             // bgwLoadWorker
             // 

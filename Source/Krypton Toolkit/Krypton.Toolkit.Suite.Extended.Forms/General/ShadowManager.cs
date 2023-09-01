@@ -25,6 +25,8 @@
  */
 #endregion
 
+using MethodInvoker = System.Windows.Forms.MethodInvoker;
+
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     /// <summary>
@@ -36,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         private readonly VirtualForm _parentForm;
         private readonly ShadowValues _shadowValues;
         private bool _allowDrawing;
-        private VisualShadowBase[] _shadowForms;
+        private VisualShadowBase?[] _shadowForms;
         #endregion
 
         #region Identity

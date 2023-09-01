@@ -214,7 +214,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "License", "License", "{BA86
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects to Work On", "Projects to Work On", "{ADF53878-BE1F-43A3-A890-E11190BE5465}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.PDF 2022", "Krypton.Toolkit.Suite.Extended.PDF\Krypton.Toolkit.Suite.Extended.PDF 2022.csproj", "{A59A87BE-E92A-4717-92DC-A2286EE812EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.PDF 2022", "Krypton.Toolkit.Suite.Extended.PDF\Krypton.Toolkit.Suite.Extended.PDF 2022.csproj", "{A59A87BE-E92A-4717-92DC-A2286EE812EC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Examples", "Examples\Examples.csproj", "{744D6A50-F8DB-4D5F-B571-34B0597E03B8}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -223,7 +223,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Examples", "Examples\Exampl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.AdvancedDataGridView 2022", "Krypton.Toolkit.Suite.Extended.AdvancedDataGridView\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView 2022.csproj", "{5E23D530-6349-4786-AA2D-F1DD9CC1586E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022", "Krypton.Toolkit.Suite.Extended.Scintilla.NET\Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022.csproj", "{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022", "Krypton.Toolkit.Suite.Extended.Scintilla.NET\Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022.csproj", "{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022", "Krypton.Toolkit.Suite.Extended.CheckSum.Tools\Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj", "{26A8A753-BC4B-4E42-B124-8EA3FA64303F}"
 EndProject
@@ -274,6 +274,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{4985A154-8526-4CB0-A7DC-B39736C4A8AC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoUpdateCreator", "AutoUpdateCreator\AutoUpdateCreator.csproj", "{975DA9CB-501F-442E-8339-AF625C7A5DA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{5D204922-259D-4140-B115-F01EDF031B5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Issue Templates", "Issue Templates", "{362F24FA-1AA0-4821-A539-C5A863D39B8B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\.github\ISSUE_TEMPLATE\bug_report.md = ..\..\.github\ISSUE_TEMPLATE\bug_report.md
+		..\..\.github\ISSUE_TEMPLATE\feature-request.md = ..\..\.github\ISSUE_TEMPLATE\feature-request.md
+		..\..\.github\ISSUE_TEMPLATE\other-issues.md = ..\..\.github\ISSUE_TEMPLATE\other-issues.md
+		..\..\.github\ISSUE_TEMPLATE\post-a-question.md = ..\..\.github\ISSUE_TEMPLATE\post-a-question.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -527,8 +537,8 @@ Global
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Canary|Any CPU.Build.0 = Debug|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
-		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Nightly|Any CPU.Build.0 = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A7C0B094-539C-4283-AA9A-3959749886B7}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
@@ -575,8 +585,8 @@ Global
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Canary|Any CPU.Build.0 = Debug|Any CPU
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Nightly|Any CPU.Build.0 = Debug|Any CPU
+		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{26A8A753-BC4B-4E42-B124-8EA3FA64303F}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
@@ -857,6 +867,8 @@ Global
 		{5C2389E8-1198-48D2-BDCC-44F74BE6B294} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{1126FD6E-8A3E-4C93-AABB-06073B27EB75} = {4985A154-8526-4CB0-A7DC-B39736C4A8AC}
 		{975DA9CB-501F-442E-8339-AF625C7A5DA4} = {4985A154-8526-4CB0-A7DC-B39736C4A8AC}
+		{5D204922-259D-4140-B115-F01EDF031B5A} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
+		{362F24FA-1AA0-4821-A539-C5A863D39B8B} = {5D204922-259D-4140-B115-F01EDF031B5A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

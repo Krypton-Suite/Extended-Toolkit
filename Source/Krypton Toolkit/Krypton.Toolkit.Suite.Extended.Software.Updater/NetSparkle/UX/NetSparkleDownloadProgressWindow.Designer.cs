@@ -130,7 +130,6 @@
             this.kpbDownloadProgress.Name = "kpbDownloadProgress";
             this.kpbDownloadProgress.Size = new System.Drawing.Size(587, 23);
             this.kpbDownloadProgress.TabIndex = 3;
-            this.kpbDownloadProgress.UseKrypton = true;
             // 
             // kryptonPanel2
             // 

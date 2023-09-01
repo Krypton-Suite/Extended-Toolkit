@@ -24,7 +24,7 @@ namespace Examples
 
         private void kkcv2Test_ValueChanged(object sender, Krypton.Toolkit.Suite.Extended.Controls.KnobValueChangedEventArgs e)
         {
-            kryptonProgressBarExtendedVersion21.Value = kkcv2Test.Value;
+            kryptonProgressBarExtended1.Value = kkcv2Test.Value;
         }
     }
 }

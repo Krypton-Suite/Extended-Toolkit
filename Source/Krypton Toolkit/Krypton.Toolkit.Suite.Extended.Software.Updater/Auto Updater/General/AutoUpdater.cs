@@ -30,6 +30,7 @@ using Application = System.Windows.Forms.Application;
 using IWin32Window = System.Windows.Forms.IWin32Window;
 using Size = System.Drawing.Size;
 using Timer = System.Timers.Timer;
+using MethodInvoker = System.Windows.Forms.MethodInvoker;
 // ReSharper disable InconsistentNaming
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnMemoryBoxExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnRibbonExtended = new Krypton.Toolkit.KryptonButton();
             this.kbtnThemeTools = new Krypton.Toolkit.KryptonButton();
             this.kbtnDockExtenderExample = new Krypton.Toolkit.KryptonButton();
@@ -51,13 +52,14 @@
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
-            this.kbtnMemoryBoxExample = new Krypton.Toolkit.KryptonButton();
+            this.kbtnProgressBars = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnProgressBars);
             this.kryptonPanel1.Controls.Add(this.kbtnMemoryBoxExample);
             this.kryptonPanel1.Controls.Add(this.kbtnRibbonExtended);
             this.kryptonPanel1.Controls.Add(this.kbtnThemeTools);
@@ -85,6 +87,15 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(620, 390);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnMemoryBoxExample
+            // 
+            this.kbtnMemoryBoxExample.Location = new System.Drawing.Point(127, 154);
+            this.kbtnMemoryBoxExample.Name = "kbtnMemoryBoxExample";
+            this.kbtnMemoryBoxExample.Size = new System.Drawing.Size(148, 22);
+            this.kbtnMemoryBoxExample.TabIndex = 21;
+            this.kbtnMemoryBoxExample.Values.Text = "MemoryBox Example";
+            this.kbtnMemoryBoxExample.Click += new System.EventHandler(this.kbtnMemoryBoxExample_Click);
             // 
             // kbtnRibbonExtended
             // 
@@ -274,14 +285,14 @@
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
-            // kbtnMemoryBoxExample
+            // kbtnProgressBars
             // 
-            this.kbtnMemoryBoxExample.Location = new System.Drawing.Point(127, 154);
-            this.kbtnMemoryBoxExample.Name = "kbtnMemoryBoxExample";
-            this.kbtnMemoryBoxExample.Size = new System.Drawing.Size(148, 22);
-            this.kbtnMemoryBoxExample.TabIndex = 21;
-            this.kbtnMemoryBoxExample.Values.Text = "MemoryBox Example";
-            this.kbtnMemoryBoxExample.Click += new System.EventHandler(this.kbtnMemoryBoxExample_Click);
+            this.kbtnProgressBars.Location = new System.Drawing.Point(281, 154);
+            this.kbtnProgressBars.Name = "kbtnProgressBars";
+            this.kbtnProgressBars.Size = new System.Drawing.Size(134, 22);
+            this.kbtnProgressBars.TabIndex = 22;
+            this.kbtnProgressBars.Values.Text = "ProgressBar Examples";
+            this.kbtnProgressBars.Click += new System.EventHandler(this.kbtnProgressBars_Click);
             // 
             // MainWindow
             // 
@@ -323,5 +334,6 @@
         private KryptonButton kbtnThemeTools;
         private KryptonButton kbtnRibbonExtended;
         private KryptonButton kbtnMemoryBoxExample;
+        private KryptonButton kbtnProgressBars;
     }
 }
