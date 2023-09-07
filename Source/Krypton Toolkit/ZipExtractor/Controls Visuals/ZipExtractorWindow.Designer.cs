@@ -146,6 +146,9 @@
             this.kpbExtractingProgress.Name = "kpbExtractingProgress";
             this.kpbExtractingProgress.Size = new System.Drawing.Size(722, 30);
             this.kpbExtractingProgress.TabIndex = 4;
+            this.kpbExtractingProgress.Text = "0%";
+            this.kpbExtractingProgress.UseValueAsText = true;
+            this.kpbExtractingProgress.Values.Text = "0%";
             // 
             // bgwLoadWorker
             // 
