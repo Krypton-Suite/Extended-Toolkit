@@ -87,7 +87,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.9.247-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.9.261-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -179,11 +179,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="NetSparkle\Resources\NetSparkleResources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>NetSparkleResources.resx</DependentUpon>
-		</Compile>
 
 		<Compile Update="Properties\Resources.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -193,10 +188,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Update="NetSparkle\Resources\NetSparkleResources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>NetSparkleResources.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
 
 		<EmbeddedResource Update="Properties\Resources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>

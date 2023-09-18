@@ -1,91 +1,47 @@
-﻿#region License
-
-/*
- * MIT License
- *
- * Copyright (c) 2012 - 2023 RBSoft
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
-#endregion
-
-using Application = System.Windows.Forms.Application;
-// ReSharper disable InconsistentNaming
+﻿using Application = System.Windows.Forms.Application;
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
-    public partial class UpdateWindow : KryptonForm
+    public partial class UpdateDialog : KryptonForm
     {
         #region Instance Fields
 
-        private readonly UpdateInfoEventArgs _args;
+        private readonly UpdateInfoEventArgs _updateInfoEventArgs;
 
         #endregion
 
-        #region Identity
-
-        public UpdateWindow(UpdateInfoEventArgs args)
+        public UpdateDialog(UpdateInfoEventArgs updateInfoEventArgs)
         {
             InitializeComponent();
 
-            InitializeBrowserControl();
+            _updateInfoEventArgs = updateInfoEventArgs;
 
-            _args = args;
+            TopMost = AutoUpdater.TopMost;
+
+            if (AutoUpdater.Icon != null)
+            {
+                pictureBoxIcon.Image = AutoUpdater.Icon;
+
+                Icon = Icon.FromHandle(AutoUpdater.Icon.GetHicon());
+            }
 
             kbtnSkip.Visible = AutoUpdater.ShowSkipButton;
 
             kbtnRemind.Visible = AutoUpdater.ShowRemindLaterButton;
 
-            Text = string.Format(AutoUpdaterLanguageManager.WindowStrings.WindowTitle, AutoUpdater.AppTitle,
-                _args.CurrentVersion);
+            InitializeBrowserControl();
 
-            kwlHeader.Text = string.Format(AutoUpdaterLanguageManager.WindowStrings.HeaderText, AutoUpdater.AppTitle);
-
-            kwlDetails.Text = string.Format(AutoUpdaterLanguageManager.WindowStrings.Description, AutoUpdater.AppTitle,
-                _args.CurrentVersion, _args.InstalledVersion);
-
-            kwlReleaseNotes.Text = AutoUpdaterLanguageManager.WindowStrings.ReleaseNotesText;
-
-            kbtnRemind.Text = AutoUpdaterLanguageManager.WindowStrings.RemindLaterButtonText;
-
-            kbtnSkip.Text = AutoUpdaterLanguageManager.WindowStrings.SkipButtonText;
-
-            kbtnUpdate.Text = AutoUpdaterLanguageManager.WindowStrings.UpdateButtonText;
-
-            if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == UpdateMode.Forced)
-            {
-                ControlBox = false;
-            }
+            SetupUI();
         }
-
-        #endregion
 
         private async void InitializeBrowserControl()
         {
-            if (string.IsNullOrEmpty(_args.ChangelogURL))
+            if (string.IsNullOrEmpty(_updateInfoEventArgs.ChangelogURL))
             {
-                ReducedUpdateWindow reducedUpdateWindow = new(_args);
-
-                reducedUpdateWindow.Show();
-
-                Hide();
+                int reduceHeight = klblReleaseNotes.Height + kryptonPanel2.Height;
+                klblReleaseNotes.Hide();
+                kryptonPanel2.Hide();
+                Height -= reduceHeight;
             }
             else
             {
@@ -108,9 +64,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
                 if (webView2RuntimeFound)
                 {
-                    kwbReleaseNotes.Hide();
-                    wvReleaseNotes.CoreWebView2InitializationCompleted += WebView_CoreWebView2InitializationCompleted;
-                    await wvReleaseNotes.EnsureCoreWebView2Async(
+                    kwbChangelog.Hide();
+                    wvChangelog.CoreWebView2InitializationCompleted += WebView_CoreWebView2InitializationCompleted;
+                    await wvChangelog.EnsureCoreWebView2Async(
                         await CoreWebView2Environment.CreateAsync(null, Path.GetTempPath()));
                 }
                 else
@@ -118,19 +74,19 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                     UseLatestIE();
                     if (null != AutoUpdater.BasicAuthChangeLog)
                     {
-                        kwbReleaseNotes.Navigate(_args.ChangelogURL, "", null,
+                        kwbChangelog.Navigate(_updateInfoEventArgs.ChangelogURL, "", null,
                             $"Authorization: {AutoUpdater.BasicAuthChangeLog}");
                     }
                     else
                     {
-                        kwbReleaseNotes.Navigate(_args.ChangelogURL);
+                        kwbChangelog.Navigate(_updateInfoEventArgs.ChangelogURL);
                     }
                 }
             }
         }
 
         private void WebView_CoreWebView2InitializationCompleted(object sender,
-        CoreWebView2InitializationCompletedEventArgs e)
+       CoreWebView2InitializationCompletedEventArgs e)
         {
             if (!e.IsSuccess)
             {
@@ -143,16 +99,16 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 return;
             }
 
-            wvReleaseNotes.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-            wvReleaseNotes.CoreWebView2.Settings.IsStatusBarEnabled = false;
-            wvReleaseNotes.CoreWebView2.Settings.AreDevToolsEnabled = Debugger.IsAttached;
-            wvReleaseNotes.CoreWebView2.Settings.UserAgent = AutoUpdater.GetUserAgent();
-            wvReleaseNotes.CoreWebView2.Profile.ClearBrowsingDataAsync();
-            wvReleaseNotes.Show();
-            wvReleaseNotes.BringToFront();
+            wvChangelog.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+            wvChangelog.CoreWebView2.Settings.IsStatusBarEnabled = false;
+            wvChangelog.CoreWebView2.Settings.AreDevToolsEnabled = Debugger.IsAttached;
+            wvChangelog.CoreWebView2.Settings.UserAgent = AutoUpdater.GetUserAgent();
+            wvChangelog.CoreWebView2.Profile.ClearBrowsingDataAsync();
+            wvChangelog.Show();
+            wvChangelog.BringToFront();
             if (null != AutoUpdater.BasicAuthChangeLog)
             {
-                wvReleaseNotes.CoreWebView2.BasicAuthenticationRequested += delegate (
+                wvChangelog.CoreWebView2.BasicAuthenticationRequested += delegate (
                     object _,
                     CoreWebView2BasicAuthenticationRequestedEventArgs args)
                 {
@@ -161,12 +117,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 };
             }
 
-            wvReleaseNotes.CoreWebView2.Navigate(_args.ChangelogURL);
+            wvChangelog.CoreWebView2.Navigate(_updateInfoEventArgs.ChangelogURL);
         }
 
         private void UseLatestIE()
         {
-            int ieValue = kwbReleaseNotes.Version.Major switch
+            int ieValue = kwbChangelog.Version.Major switch
             {
                 11 => 11001,
                 10 => 10001,
@@ -183,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
             try
             {
-                using RegistryKey? registryKey =
+                using RegistryKey registryKey =
                     Registry.CurrentUser.OpenSubKey(
                         @"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION",
                         true);
@@ -199,7 +155,26 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             }
         }
 
-        private void UpdateWindow_Load(object sender, EventArgs e)
+        private void SetupUI()
+        {
+            Text = string.Format(AutoUpdaterLanguageManager.WindowStrings.WindowTitle, AutoUpdater.AppTitle,
+                _updateInfoEventArgs.CurrentVersion);
+
+            klblTitle.Text = string.Format(AutoUpdaterLanguageManager.WindowStrings.HeaderText,
+                CultureInfo.CurrentCulture, AutoUpdater.AppTitle);
+
+            klblDescription.Text = string.Format(AutoUpdaterLanguageManager.WindowStrings.Description,
+                AutoUpdater.AppTitle, _updateInfoEventArgs.CurrentVersion, _updateInfoEventArgs.InstalledVersion);
+
+            klblReleaseNotes.Text = AutoUpdaterLanguageManager.WindowStrings.ReleaseNotesText;
+
+            if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == Mode.Forced)
+            {
+                CloseBox = false;
+            }
+        }
+
+        private void UpdateDialog_Load(object sender, EventArgs e)
         {
 
         }
@@ -208,7 +183,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         {
             if (AutoUpdater.OpenDownloadPage)
             {
-                var processStartInfo = new ProcessStartInfo(_args.DownloadURL);
+                var processStartInfo = new ProcessStartInfo(_updateInfoEventArgs.DownloadURL);
 
                 Process.Start(processStartInfo);
 
@@ -216,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             }
             else
             {
-                if (AutoUpdater.DownloadUpdate(_args))
+                if (AutoUpdater.DownloadUpdate(_updateInfoEventArgs))
                 {
                     DialogResult = DialogResult.OK;
                 }
@@ -225,14 +200,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
         private void kbtnSkip_Click(object sender, EventArgs e)
         {
-            AutoUpdater.PersistenceProvider.SetSkippedVersion(new Version(_args.CurrentVersion));
+            AutoUpdater.PersistenceProvider.SetSkippedVersion(new Version(_updateInfoEventArgs.CurrentVersion));
         }
 
         private void kbtnRemind_Click(object sender, EventArgs e)
         {
             if (AutoUpdater.LetUserSelectRemindLater)
             {
-                using var remindLaterForm = new RemindLaterWindow();
+                using var remindLaterForm = new RemindLaterForm();
                 DialogResult dialogResult = remindLaterForm.ShowDialog(this);
 
                 switch (dialogResult)
@@ -265,14 +240,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             DialogResult = DialogResult.Cancel;
         }
 
-        private void UpdateWindow_FormClosed(object sender, FormClosedEventArgs e)
+        private void UpdateDialog_FormClosed(object sender, FormClosedEventArgs e)
         {
             AutoUpdater.Running = false;
         }
 
-        private void UpdateWindow_FormClosing(object sender, FormClosingEventArgs e)
+        private void UpdateDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == UpdateMode.Forced)
+            if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == Mode.Forced)
             {
                 AutoUpdater.Exit();
             }

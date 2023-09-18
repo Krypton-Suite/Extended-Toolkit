@@ -87,7 +87,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.9.247-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.9.261-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -154,7 +154,7 @@
 	</Choose>
 
 	<ItemGroup>
-		<PackageReference Include="System.DirectoryServices" Version="7.0.1" />
+		<PackageReference Include="System.DirectoryServices" Version="8.0.0-rc.1.23419.4" />
 	</ItemGroup>
 
 	<ItemGroup>

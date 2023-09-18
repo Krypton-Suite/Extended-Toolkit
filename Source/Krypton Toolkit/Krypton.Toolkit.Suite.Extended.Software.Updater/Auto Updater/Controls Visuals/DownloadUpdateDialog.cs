@@ -1,62 +1,50 @@
-﻿#region License
-
-/*
- * MIT License
- *
- * Copyright (c) 2012 - 2023 RBSoft
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
-#endregion
-
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     public partial class DownloadUpdateDialog : KryptonForm
     {
         #region Instance Fields
 
-        private readonly UpdateInfoEventArgs _args;
+        private readonly UpdateInfoEventArgs _updateInfo;
 
-        private DateTime _startedAt;
+        private DateTime _startTime;
 
         private string _tempFile;
 
-        private MyWebClient? _webClient;
+        private MyWebClient _webClient;
 
         #endregion
 
+        #region Identity
+
+        /// <summary>Initializes a new instance of the <see cref="DownloadUpdateDialog" /> class.</summary>
+        /// <param name="args">The <see cref="UpdateInfoEventArgs" /> instance containing the event data.</param>
         public DownloadUpdateDialog(UpdateInfoEventArgs args)
         {
             InitializeComponent();
 
-            _args = args;
+            _updateInfo = args;
 
-            if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == UpdateMode.ForcedDownload)
+            TopMost = AutoUpdater.TopMost;
+
+            if (AutoUpdater.Icon != null)
+            {
+                Icon = Icon.FromHandle(AutoUpdater.Icon.GetHicon());
+            }
+
+            if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == Mode.ForcedDownload)
             {
                 ControlBox = false;
             }
         }
 
+
+        #endregion
+
+        #region Implementation
+
         private void DownloadUpdateDialog_Load(object sender, EventArgs e)
         {
-            var uri = new Uri(_args.DownloadURL);
+            var uri = new Uri(_updateInfo.DownloadURL);
 
             _webClient = AutoUpdater.GetWebClient(uri, AutoUpdater.BasicAuthDownload);
 
@@ -73,30 +61,27 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 }
             }
 
-            if (_webClient != null)
-            {
-                _webClient.DownloadProgressChanged += OnDownloadProgressChanged;
+            _webClient.DownloadProgressChanged += OnDownloadProgressChanged;
 
-                _webClient.DownloadFileCompleted += WebClientOnDownloadFileCompleted;
+            _webClient.DownloadFileCompleted += WebClientOnDownloadFileCompleted;
 
-                _webClient.DownloadFileAsync(uri, _tempFile);
-            }
+            _webClient.DownloadFileAsync(uri, _tempFile);
         }
 
         private void OnDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            if (_startedAt == default)
+            if (_startTime == default)
             {
-                _startedAt = DateTime.Now;
+                _startTime = DateTime.Now;
             }
             else
             {
-                TimeSpan timeSpan = DateTime.Now - _startedAt;
+                TimeSpan timeSpan = DateTime.Now - _startTime;
                 var totalSeconds = (long)timeSpan.TotalSeconds;
                 if (totalSeconds > 0)
                 {
                     long bytesPerSecond = e.BytesReceived / totalSeconds;
-                    kwlHeader.Text =
+                    kwlInformation.Text =
                         string.Format(AutoUpdaterLanguageManager.UpdaterStrings.DownloadSpeedMessage, BytesToString(bytesPerSecond));
                 }
             }
@@ -119,19 +104,19 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                     throw asyncCompletedEventArgs.Error;
                 }
 
-                if (_args.CheckSum != null)
+                if (_updateInfo.CheckSum != null)
                 {
-                    CompareChecksum(_tempFile, _args.CheckSum);
+                    CompareChecksum(_tempFile, _updateInfo.CheckSum);
                 }
 
                 // Try to parse the content disposition header if it exists.
-                ContentDisposition? contentDisposition = null;
-                if (_webClient != null && !string.IsNullOrWhiteSpace(_webClient.ResponseHeaders?["Content-Disposition"]))
+                ContentDisposition contentDisposition = null;
+                if (!string.IsNullOrWhiteSpace(_webClient.ResponseHeaders?["Content-Disposition"]))
                 {
                     try
                     {
                         contentDisposition =
-                            new ContentDisposition(_webClient.ResponseHeaders?["Content-Disposition"]!);
+                            new ContentDisposition(_webClient.ResponseHeaders["Content-Disposition"]);
                     }
                     catch (FormatException)
                     {
@@ -140,9 +125,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                     }
                 }
 
-                string? fileName = string.IsNullOrEmpty(contentDisposition?.FileName)
-                    ? Path.GetFileName(_webClient?.ResponseUri.LocalPath)
-                    : contentDisposition?.FileName;
+                string fileName = string.IsNullOrEmpty(contentDisposition?.FileName)
+                    ? Path.GetFileName(_webClient.ResponseUri.LocalPath)
+                    : contentDisposition.FileName;
 
                 if (string.IsNullOrWhiteSpace(fileName))
                 {
@@ -164,9 +149,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 File.Move(_tempFile, tempPath);
 
                 string? installerArgs = null;
-                if (!string.IsNullOrEmpty(_args.InstallerArgs))
+                if (!string.IsNullOrEmpty(_updateInfo.InstallerArgs))
                 {
-                    installerArgs = _args.InstallerArgs.Replace("%path%",
+                    installerArgs = _updateInfo.InstallerArgs.Replace("%path%",
                         Path.GetDirectoryName(Process.GetCurrentProcess().MainModule?.FileName));
                 }
 
@@ -184,10 +169,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                         Path.Combine(Path.GetDirectoryName(tempPath) ?? throw new InvalidOperationException(),
                             "ZipExtractor.exe");
 
-                    File.WriteAllBytes(installerPath, Resources.ZipExtractor1);
+                    File.WriteAllBytes(installerPath, Resources.ZipExtractor);
 
                     string? currentExe = Process.GetCurrentProcess().MainModule?.FileName;
-                    string? updatedExe = _args.ExecutablePath;
+                    string? updatedExe = _updateInfo.ExecutablePath;
                     string? extractionPath = Path.GetDirectoryName(currentExe);
 
                     if (string.IsNullOrWhiteSpace(updatedExe) &&
@@ -210,13 +195,13 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
                     var arguments = new Collection<string?>
                     {
-                    "--input",
-                    tempPath,
-                    "--output",
-                    extractionPath,
-                    "--current-exe",
-                    currentExe
-                };
+                        "--input",
+                        tempPath,
+                        "--output",
+                        extractionPath,
+                        "--current-exe",
+                        currentExe
+                    };
 
                     if (!string.IsNullOrWhiteSpace(updatedExe))
                     {
@@ -226,7 +211,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
                     if (AutoUpdater.ClearAppDirectory)
                     {
-                        arguments.Add(" --clear");
+                        arguments.Add("--clear");
                     }
 
                     string[] args = Environment.GetCommandLineArgs();
@@ -236,7 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                         arguments.Add(string.Join(" ", args.Skip(1).Select(arg => $"\"{arg}\"")));
                     }
 
-                    processStartInfo.Arguments = Utils.BuildArguments(arguments);
+                    processStartInfo.Arguments = Utilities.BuildArguments(arguments);
                 }
                 else if (extension.Equals(".msi", StringComparison.OrdinalIgnoreCase))
                 {
@@ -247,16 +232,16 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
                     var arguments = new Collection<string?>
                     {
-                    "/i",
-                    tempPath
-                };
+                        "/i",
+                        tempPath
+                    };
 
                     if (!string.IsNullOrEmpty(installerArgs))
                     {
                         arguments.Add(installerArgs);
                     }
 
-                    processStartInfo.Arguments = Utils.BuildArguments(arguments);
+                    processStartInfo.Arguments = Utilities.BuildArguments(arguments);
                 }
 
                 if (AutoUpdater.RunUpdateAsAdmin)
@@ -332,7 +317,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
         private void DownloadUpdateDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == UpdateMode.ForcedDownload)
+            if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == Mode.ForcedDownload)
             {
                 AutoUpdater.Exit();
                 return;
@@ -346,5 +331,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             _webClient.CancelAsync();
             DialogResult = DialogResult.Cancel;
         }
+
+        #endregion
+
     }
 }

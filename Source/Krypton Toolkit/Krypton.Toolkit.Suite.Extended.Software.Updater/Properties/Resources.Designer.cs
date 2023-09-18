@@ -391,15 +391,5 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] ZipExtractor1 {
-            get {
-                object obj = ResourceManager.GetObject("ZipExtractor1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }
