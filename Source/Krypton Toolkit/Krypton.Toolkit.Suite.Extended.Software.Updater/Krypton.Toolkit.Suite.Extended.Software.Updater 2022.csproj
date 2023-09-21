@@ -159,6 +159,11 @@
 		<Reference Include="System.IO.Compression" />
 		<Reference Include="System.IO.Compression.FileSystem" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="Sharp Update\Resources\**" />
+	  <EmbeddedResource Remove="Sharp Update\Resources\**" />
+	  <None Remove="Sharp Update\Resources\**" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
@@ -225,10 +230,6 @@
 			<PackagePath></PackagePath>
 			<Pack>true</Pack>
 		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Sharp Update\Resources\" />
 	</ItemGroup>
 
 	<!--Optimisation-->

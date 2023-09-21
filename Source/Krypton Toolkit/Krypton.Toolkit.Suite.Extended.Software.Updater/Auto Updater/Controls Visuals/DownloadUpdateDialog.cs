@@ -169,7 +169,7 @@
                         Path.Combine(Path.GetDirectoryName(tempPath) ?? throw new InvalidOperationException(),
                             "ZipExtractor.exe");
 
-                    File.WriteAllBytes(installerPath, Resources.ZipExtractor);
+                    File.WriteAllBytes(installerPath, Resources.ZipExtractor1);
 
                     string? currentExe = Process.GetCurrentProcess().MainModule?.FileName;
                     string? updatedExe = _updateInfo.ExecutablePath;
