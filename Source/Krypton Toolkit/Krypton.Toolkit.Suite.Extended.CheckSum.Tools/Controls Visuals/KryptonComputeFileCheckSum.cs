@@ -583,11 +583,9 @@
                 TaskbarManager.Instance.SetProgressValue(e.ProgressPercentage, null);
             }
 
-            tspbCalculationProgress.Visible = true;
+            kpbtsiCalculationProgress.Visible = true;
 
-            tspbCalculationProgress.Value = e.ProgressPercentage;
-
-            tslCalculationProgress.Text = $@"{e.ProgressPercentage}%";
+            kpbtsiCalculationProgress.Value = e.ProgressPercentage;
 
             kwlHashOutput.Text = @"Please wait ...";
 
@@ -603,11 +601,9 @@
                 TaskbarManager.Instance.SetProgressValue(0, null);
             }
 
-            tspbCalculationProgress.Visible = false;
+            kpbtsiCalculationProgress.Visible = false;
 
-            tspbCalculationProgress.Value = 0;
-
-            tslCalculationProgress.Text = string.Empty;
+            kpbtsiCalculationProgress.Value = 0;
 
             kwlHashOutput.Text = $@"{e.Result}";
 

@@ -27,14 +27,23 @@
 
 // ReSharper disable NotAccessedField.Local
 
+using System.Threading;
+
+using Timer = System.Threading.Timer;
+
 #pragma warning disable IDE0031
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     internal partial class KryptonMessageBoxExtendedForm : KryptonForm
     {
         #region Static Fields
+
         private const int GAP = 10;
         private static readonly int OS_MAJOR_VERSION;
+        public const int WH_CALLWNDPROCRET = 12;
+
+        private const int WM_CLOSE = 0x0010;
+
         #endregion
 
         #region Instance Fields
@@ -44,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly KryptonMessageBoxDefaultButton _defaultButton;
         private readonly MessageBoxOptions _options; // https://github.com/Krypton-Suite/Standard-Toolkit/issues/313
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
-        private readonly IWin32Window _showOwner;
+        private static /*readonly*/ IWin32Window _showOwner;
         private readonly HelpInfo _helpInfo;
 
         #endregion
@@ -93,10 +102,32 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly ProcessStartInfo? _linkLaunchArgument;
 
+        private static PlatformInvoke.HookProc _hookProc;
+
+        private static IntPtr _hHook;
+
+        private Timer _timeOutTimer;
+
+        private int _timeOut;
+
+        private bool _timedOut;
+
+        private DialogResult _result;
+
+        private DialogResult _timerResult;
+
         #endregion
 
         #region Identity
-        static KryptonMessageBoxExtendedForm() => OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
+
+        static KryptonMessageBoxExtendedForm()
+        {
+            OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
+
+            _hookProc = new PlatformInvoke.HookProc(MessageBoxHookProc);
+
+            _hHook = IntPtr.Zero;
+        }
 
         public KryptonMessageBoxExtendedForm()
         {
@@ -106,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
                                                           ExtendedMessageBoxButtons buttons,
-                                                          ExtendedKryptonMessageBoxIcon kryptonMessageBoxIcon,
+                                                          ExtendedKryptonMessageBoxIcon icon,
                                                           KryptonMessageBoxDefaultButton defaultButton,
                                                           MessageBoxOptions options,
                                                           HelpInfo helpInfo, bool? showCtrlCopy,
@@ -122,14 +153,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                           string? applicationPath,
                                                           ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
                                                           KryptonCommand? linkLabelCommand, int? linkAreaStart, int? linkAreaEnd,
-                                                          ProcessStartInfo? linkLaunchArgument
+                                                          ProcessStartInfo? linkLaunchArgument,
+                                                          int? timeOut,
+                                                          DialogResult? timerResult
                                                           /*bool? openInExplorer*/)
         {
             // Store incoming values
             _text = text;
             _caption = caption;
             _buttons = buttons;
-            _kryptonMessageBoxIcon = kryptonMessageBoxIcon;
+            _kryptonMessageBoxIcon = icon;
             _defaultButton = defaultButton;
             _options = options;
             _helpInfo = helpInfo;
@@ -155,6 +188,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _linkAreaStart = linkAreaStart ?? 0;
             _linkAreaEnd = linkAreaEnd ?? text.Length;
             _linkLaunchArgument = linkLaunchArgument ?? new();
+            _timeOut = timeOut ?? 60;
+            _timeOutTimer = new Timer(OnTimerElapsed, null, _timeOut, Timeout.Infinite);
+            _timerResult = timerResult ?? DialogResult.None;
             //_openInExplorer = openInExplorer ?? false;
 
             // Create the form contents
@@ -174,6 +210,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
+
+            using (_timeOutTimer)
+            {
+                _result = KryptonMessageBoxExtended.Show(text, caption, buttons, icon, null, null);
+            }
+
+            if (_timedOut)
+            {
+                _result = _timerResult;
+            }
         }
         #endregion Identity
 
@@ -812,7 +858,85 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
         }
 
-        #endregion
+        private static void Initialize()
+        {
+            if (_hHook != IntPtr.Zero)
+            {
+                throw new NotSupportedException("multiple calls are not supported");
+            }
 
+            if (_showOwner != null)
+            {
+                _hHook = PlatformEvents.SetWindowsHookEx(WH_CALLWNDPROCRET, _hookProc, IntPtr.Zero, AppDomain.GetCurrentThreadId());
+            }
+        }
+
+        private static IntPtr MessageBoxHookProc(int nCode, IntPtr wParam, IntPtr lParam)
+        {
+            if (nCode < 0)
+            {
+                return PlatformEvents.CallNextHookEx(_hHook, nCode, wParam, lParam);
+            }
+
+            CWPRETSTRUCT msg = (CWPRETSTRUCT)Marshal.PtrToStructure(lParam, typeof(CWPRETSTRUCT));
+            IntPtr hook = _hHook;
+
+            if (msg.message == (int)CbtHookAction.HCBT_ACTIVATE)
+            {
+                try
+                {
+                    CenterWindow(msg.hwnd);
+                }
+                finally
+                {
+                    PlatformEvents.UnhookWindowsHookEx(_hHook);
+                    _hHook = IntPtr.Zero;
+                }
+            }
+
+            return PlatformEvents.CallNextHookEx(hook, nCode, wParam, lParam);
+        }
+
+        private static void CenterWindow(IntPtr hChildWnd)
+        {
+            Rectangle recChild = new Rectangle(0, 0, 0, 0);
+            bool success = PlatformEvents.GetWindowRect(hChildWnd, ref recChild);
+
+            int width = recChild.Width - recChild.X;
+            int height = recChild.Height - recChild.Y;
+
+            Rectangle recParent = new Rectangle(0, 0, 0, 0);
+            success = PlatformEvents.GetWindowRect(_showOwner.Handle, ref recParent);
+
+            Point ptCenter = new Point(0, 0);
+            ptCenter.X = recParent.X + ((recParent.Width - recParent.X) / 2);
+            ptCenter.Y = recParent.Y + ((recParent.Height - recParent.Y) / 2);
+
+
+            Point ptStart = new Point(0, 0);
+            ptStart.X = (ptCenter.X - (width / 2));
+            ptStart.Y = (ptCenter.Y - (height / 2));
+
+            ptStart.X = (ptStart.X < 0) ? 0 : ptStart.X;
+            ptStart.Y = (ptStart.Y < 0) ? 0 : ptStart.Y;
+
+            int result = PlatformEvents.MoveWindow(hChildWnd, ptStart.X, ptStart.Y, width,
+                                    height, false);
+        }
+
+        private void OnTimerElapsed(object state)
+        {
+            IntPtr mbWnd = PlatformEvents.FindWindow("#32770", _caption); // lpClassName is #32770 for MessageBox
+            if (mbWnd != IntPtr.Zero)
+            {
+                PlatformEvents.SendMessage(mbWnd, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+            }
+
+            _timeOutTimer.Dispose();
+
+            _timedOut = true;
+        }
+
+        #endregion
     }
 }

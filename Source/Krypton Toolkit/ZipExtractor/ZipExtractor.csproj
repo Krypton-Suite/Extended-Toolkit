@@ -21,7 +21,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.8.234-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.9.261-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -92,7 +92,11 @@
 		<DocumentationFile>..\..\..\Bin\$(configuration)\ZipExtractor\ZipExtractor.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\ZipExtractor\</OutputPath>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<ApplicationIcon>Resources\ZipExtractor.ico</ApplicationIcon>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Content Include="Resources\ZipExtractor.ico" />
+	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />

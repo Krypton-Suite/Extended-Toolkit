@@ -2995,6 +2995,8 @@ BS_ICON or BS_BITMAP set? 	BM_SETIMAGE called? 	Result
 
         public delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
 
+        public delegate void TimerProc(IntPtr hWnd, uint uMsg, UIntPtr nIDEvent, uint dwTime);
+
         [DllImport(Win32Libraries.User32)]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         public static extern IntPtr SetWindowsHookEx(WH_ idHook, HookProc lpfn, IntPtr hInstance, int threadId);

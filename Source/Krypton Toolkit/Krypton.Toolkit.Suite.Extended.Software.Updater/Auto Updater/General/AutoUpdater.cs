@@ -1,37 +1,9 @@
-﻿#region License
-
-/*
- * MIT License
- *
- * Copyright (c) 2012 - 2023 RBSoft
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
-#endregion
-
+﻿
 using Application = System.Windows.Forms.Application;
 using IWin32Window = System.Windows.Forms.IWin32Window;
+using MethodInvoker = System.Windows.Forms.MethodInvoker;
 using Size = System.Drawing.Size;
 using Timer = System.Timers.Timer;
-using MethodInvoker = System.Windows.Forms.MethodInvoker;
-// ReSharper disable InconsistentNaming
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
@@ -40,28 +12,31 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
     /// </summary>
     public static class AutoUpdater
     {
-        #region Delegates
-
-        /// <summary>A delegate type to handle how to exit the application after update is downloaded.</summary>
+        /// <summary>
+        ///     A delegate type to handle how to exit the application after update is downloaded.
+        /// </summary>
         public delegate void ApplicationExitEventHandler();
 
-        /// <summary>A delegate type for hooking up update notifications.</summary>
-        /// <param name="args">An object containing all the parameters received from AppCast XML file. If there will be an error while looking for the XML file then this object will be null.</param>
+        /// <summary>
+        ///     A delegate type for hooking up update notifications.
+        /// </summary>
+        /// <param name="args">
+        ///     An object containing all the parameters received from AppCast XML file. If there will be an error
+        ///     while looking for the XML file then this object will be null.
+        /// </param>
         public delegate void CheckForUpdateEventHandler(UpdateInfoEventArgs args);
 
-        /// <summary>A delegate type for hooking up parsing logic.</summary>
+        /// <summary>
+        ///     A delegate type for hooking up parsing logic.
+        /// </summary>
         /// <param name="args">An object containing the AppCast file received from server.</param>
         public delegate void ParseUpdateInfoHandler(ParseUpdateInfoEventArgs args);
-
-        #endregion
-
-        #region Static Fields
 
         private static bool _isWinFormsApplication;
 
         private static IWin32Window _owner;
 
-        private static Timer? _remindLaterTimer;
+        private static Timer _remindLaterTimer;
 
         internal static Uri BaseUri;
 
@@ -81,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// <summary>
         ///     Set Basic Authentication credentials to navigate to the change log URL.
         /// </summary>
-        public static IAuthentication? BasicAuthChangeLog;
+        public static IAuthentication BasicAuthChangeLog;
 
         /// <summary>
         ///     Set Basic Authentication credentials required to download the file.
@@ -119,11 +94,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// </summary>
         public static string HttpUserAgent;
 
+        /// <summary>Set this to change the icon shown on updater dialog.</summary>
+        public static Bitmap? Icon;
+
         /// <summary>
         ///     If you are using a zip file as an update file then you can set this value to path where your app is installed. This
         ///     is only necessary when your installation directory differs from your executable path.
         /// </summary>
-        public static string InstallationPath;
+        public static string? InstallationPath;
 
         /// <summary>
         ///     You can set this field to your current version if you don't want to determine the version from the assembly.
@@ -156,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// <summary>
         ///     Set Proxy server to use for all the web requests in AutoUpdater.NET.
         /// </summary>
-        public static IWebProxy? Proxy;
+        public static IWebProxy Proxy;
 
         /// <summary>
         ///     Remind Later interval after user should be reminded of update.
@@ -194,37 +172,34 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         public static bool Synchronous = false;
 
         /// <summary>
-        ///     Set if you want the default update form to have a different size.
+        ///     Modify TopMost property of all dialogs.
+        /// </summary>
+        public static bool TopMost = false;
+
+        /// <summary>
+        ///     Set this if you want the default update form to have a different size.
         /// </summary>
         public static Size? UpdateFormSize = null;
 
         /// <summary>
         ///     Set this to any of the available modes to change behaviour of the Mandatory flag.
         /// </summary>
-        public static UpdateMode UpdateMode;
-
-        #endregion
-
-        #region Events
+        public static Mode UpdateMode;
 
         /// <summary>
         ///     An event that developers can use to exit the application gracefully.
         /// </summary>
-        public static event ApplicationExitEventHandler? ApplicationExitEvent;
+        public static event ApplicationExitEventHandler ApplicationExitEvent;
 
         /// <summary>
         ///     An event that clients can use to be notified whenever the update is checked.
         /// </summary>
-        public static event CheckForUpdateEventHandler? CheckForUpdateEvent;
+        public static event CheckForUpdateEventHandler CheckForUpdateEvent;
 
         /// <summary>
         ///     An event that clients can use to be notified whenever the AppCast file needs parsing.
         /// </summary>
-        public static event ParseUpdateInfoHandler? ParseUpdateInfoEvent;
-
-        #endregion
-
-        #region Implementation
+        public static event ParseUpdateInfoHandler ParseUpdateInfoEvent;
 
         /// <summary>
         ///     Set the owner for all dialogs.
@@ -244,7 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         ///     Start checking for new version of application and display a dialog to the user if update is available.
         /// </summary>
         /// <param name="myAssembly">Assembly to use for version checking.</param>
-        public static void Start(Assembly? myAssembly = null)
+        public static void Start(Assembly myAssembly = null)
         {
             Start(AppCastURL, myAssembly);
         }
@@ -255,7 +230,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// <param name="appCast">FTP URL of the xml file that contains information about latest version of the application.</param>
         /// <param name="ftpCredentials">Credentials required to connect to FTP server.</param>
         /// <param name="myAssembly">Assembly to use for version checking.</param>
-        public static void Start(string appCast, NetworkCredential ftpCredentials, Assembly? myAssembly = null)
+        public static void Start(string appCast, NetworkCredential ftpCredentials, Assembly myAssembly = null)
         {
             FtpCredentials = ftpCredentials;
             Start(appCast, myAssembly);
@@ -266,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// </summary>
         /// <param name="appCast">URL of the xml file that contains information about latest version of the application.</param>
         /// <param name="myAssembly">Assembly to use for version checking.</param>
-        public static void Start(string appCast, Assembly? myAssembly = null)
+        public static void Start(string appCast, Assembly myAssembly = null)
         {
             try
             {
@@ -300,13 +275,13 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 Application.EnableVisualStyles();
             }
 
-            Assembly? assembly = myAssembly ?? Assembly.GetEntryAssembly();
+            Assembly assembly = myAssembly ?? Assembly.GetEntryAssembly();
 
             if (Synchronous)
             {
                 try
                 {
-                    object? result = CheckUpdate(assembly);
+                    object result = CheckUpdate(assembly);
 
                     if (StartUpdate(result))
                     {
@@ -352,17 +327,17 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             }
         }
 
-        private static object? CheckUpdate(Assembly? mainAssembly)
+        private static object CheckUpdate(Assembly mainAssembly)
         {
             var companyAttribute =
-                (AssemblyCompanyAttribute)GetAttribute(mainAssembly, typeof(AssemblyCompanyAttribute))!;
+                (AssemblyCompanyAttribute)GetAttribute(mainAssembly, typeof(AssemblyCompanyAttribute));
             string appCompany = companyAttribute != null ? companyAttribute.Company : "";
 
             if (string.IsNullOrEmpty(AppTitle))
             {
                 var titleAttribute =
-                    (AssemblyTitleAttribute)GetAttribute(mainAssembly, typeof(AssemblyTitleAttribute))!;
-                AppTitle = titleAttribute != null ? titleAttribute.Title : mainAssembly!.GetName().Name;
+                    (AssemblyTitleAttribute)GetAttribute(mainAssembly, typeof(AssemblyTitleAttribute));
+                AppTitle = titleAttribute != null ? titleAttribute.Title : mainAssembly.GetName().Name;
             }
 
             string registryLocation = !string.IsNullOrEmpty(appCompany)
@@ -373,10 +348,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
             BaseUri = new Uri(AppCastURL);
 
-            UpdateInfoEventArgs? args;
-            using (MyWebClient? client = GetWebClient(BaseUri, BasicAuthXML))
+            UpdateInfoEventArgs args;
+            using (MyWebClient client = GetWebClient(BaseUri, BasicAuthXML))
             {
-                string xml = client!.DownloadString(BaseUri);
+                string xml = client.DownloadString(BaseUri);
 
                 if (ParseUpdateInfoEvent == null)
                 {
@@ -392,12 +367,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 }
             }
 
-            if (string.IsNullOrEmpty(args?.CurrentVersion) || string.IsNullOrEmpty(args?.DownloadURL))
+            if (string.IsNullOrEmpty(args?.CurrentVersion) || string.IsNullOrEmpty(args.DownloadURL))
             {
                 throw new MissingFieldException();
             }
 
-            args!.InstalledVersion = InstalledVersion ?? mainAssembly!.GetName().Version;
+            args.InstalledVersion = InstalledVersion ?? mainAssembly.GetName().Version;
             args.IsUpdateAvailable = new Version(args.CurrentVersion) > args.InstalledVersion;
 
             if (!Mandatory)
@@ -452,7 +427,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             return args;
         }
 
-        private static bool StartUpdate(object? result)
+        private static bool StartUpdate(object result)
         {
             if (result is DateTime time)
             {
@@ -473,7 +448,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 {
                     if (args.IsUpdateAvailable)
                     {
-                        if (Mandatory && UpdateMode == UpdateMode.ForcedDownload)
+                        if (Mandatory && UpdateMode == Mode.ForcedDownload)
                         {
                             DownloadUpdate(args);
                             Exit();
@@ -549,7 +524,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             var currentProcess = Process.GetCurrentProcess();
             foreach (Process process in Process.GetProcessesByName(currentProcess.ProcessName))
             {
-                string? processPath;
+                string processPath;
                 try
                 {
                     processPath = process.MainModule?.FileName;
@@ -602,15 +577,15 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             }
         }
 
-        private static Attribute? GetAttribute(Assembly? assembly, Type? attributeType)
+        private static Attribute GetAttribute(Assembly assembly, Type attributeType)
         {
-            object[]? attributes = assembly?.GetCustomAttributes(attributeType!, false);
-            if (attributes?.Length == 0)
+            object[] attributes = assembly.GetCustomAttributes(attributeType, false);
+            if (attributes.Length == 0)
             {
                 return null;
             }
 
-            return (Attribute)attributes![0];
+            return (Attribute)attributes[0];
         }
 
         internal static string GetUserAgent()
@@ -677,7 +652,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// </summary>
         public static void ShowUpdateForm(UpdateInfoEventArgs args)
         {
-            using var updateForm = new UpdateWindow(args);
+            using var updateForm = new UpdateDialog(args);
 
             if (UpdateFormSize.HasValue)
             {
@@ -708,14 +683,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             }
             else
             {
-                basicAuthentication.Apply(ref webClient);
+                basicAuthentication?.Apply(ref webClient);
 
-                webClient!.Headers[HttpRequestHeader.UserAgent] = HttpUserAgent;
+                webClient.Headers[HttpRequestHeader.UserAgent] = HttpUserAgent;
             }
 
             return webClient;
         }
     }
-
-    #endregion
 }

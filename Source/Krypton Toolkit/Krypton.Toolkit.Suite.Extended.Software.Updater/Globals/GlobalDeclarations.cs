@@ -58,5 +58,4 @@ global using Microsoft.Win32;
 global using Krypton.Toolkit.Suite.Extended.Software.Updater.Properties;
 
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-
-global using Krypton.Toolkit.Suite.Extended.Software.Updater.Core;
+//global using Krypton.Toolkit.Suite.Extended.Software.Updater.

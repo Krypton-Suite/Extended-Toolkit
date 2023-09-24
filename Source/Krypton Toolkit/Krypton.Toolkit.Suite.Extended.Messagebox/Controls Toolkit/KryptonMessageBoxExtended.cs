@@ -32,6 +32,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     public static class KryptonMessageBoxExtended
     {
         #region Public 
+
+        public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon, int? timeOut = 60, DialogResult? timerResult = DialogResult.None) =>
+            ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
+                MessageBoxOptions.DefaultDesktopOnly, null, null, null,
+                null, null, Color.Empty,
+                new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                null, null, null,
+                null, string.Empty, string.Empty, string.Empty,
+                string.Empty, string.Empty, null, null,
+                null, null, null, timeOut, timerResult);
+
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -40,15 +51,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
-                                        ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null, string applicationPath = null,
-                                        ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null
-                                        /*bool? openInExplorer*/)
+            ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null, string applicationPath = null,
+            ExtendedKryptonMessageBoxMessageContainerType? messageContainerType =
+                ExtendedKryptonMessageBoxMessageContainerType.Normal,
+            KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
+            ProcessStartInfo? linkLaunchArgument = null, int? timeOut = 60,
+            DialogResult? timerResult = DialogResult.None
+            /*bool? openInExplorer*/)
             => ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
-                null, showCtrlCopy, null, null, null, Color.Empty, new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                null, showCtrlCopy, null, null, null, Color.Empty,
+                new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                 null, null, null, null, string.Empty, string.Empty,
-                string.Empty, string.Empty, applicationPath, messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument);
+                string.Empty, string.Empty, applicationPath, messageContainerType, linkLabelCommand, linkAreaStart,
+                linkAreaEnd, linkLaunchArgument, timeOut, timerResult);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -73,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Image? customImageIcon = null, string? applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
                                         KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null
+                                        ProcessStartInfo? linkLaunchArgument = null, int? timeOut = 60, DialogResult? timerResult = DialogResult.None
                                         /*bool? openInExplorer*/)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
@@ -82,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                              null, null, null, null, string.Empty, string.Empty,
                              string.Empty, string.Empty, applicationPath,
-                             messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument);
+                             messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument, timeOut, timerResult);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -103,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? showCtrlCopy = null, string? applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
                                         KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null
+                                        ProcessStartInfo? linkLaunchArgument = null, int? timeOut = 60, DialogResult? timerResult = DialogResult.None
                                         /*bool? openInExplorer*/)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
@@ -112,7 +127,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                              null, null, null, null, string.Empty, string.Empty,
                              string.Empty, string.Empty, applicationPath,
-                             messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument);
+                             messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument,
+                             timeOut, timerResult);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -138,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Image customImageIcon = null, string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
                                         KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null
+                                        ProcessStartInfo? linkLaunchArgument = null, int? timeOut = 60, DialogResult? timerResult = DialogResult.None
                                         /*bool? openInExplorer*/)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
@@ -147,7 +163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                              null, null, null, null, string.Empty,
                              string.Empty, string.Empty, string.Empty,
-                             applicationPath, messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument);
+                             applicationPath, messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument, timeOut, timerResult);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -170,7 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
                                         KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null
+                                        ProcessStartInfo? linkLaunchArgument = null, int? timeOut = 60, DialogResult? timerResult = DialogResult.None
                                         /*bool? openInExplorer*/)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
@@ -181,7 +197,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          null, string.Empty,
                          string.Empty, string.Empty,
                          string.Empty, applicationPath,
-                         messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument);
+                         messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument,
+                         timeOut, timerResult);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -211,7 +228,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
                                         KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null
+                                        ProcessStartInfo? linkLaunchArgument = null, int? timeOut = 60, DialogResult? timerResult = DialogResult.None
                                         /*bool? openInExplorer*/)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
@@ -221,7 +238,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              null, null, null, null, string.Empty,
                              string.Empty, string.Empty,
                              string.Empty, applicationPath,
-                             messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument);
+                             messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument,
+                             timeOut, timerResult);
 
         /// <summary>Shows a message box.</summary>
         /// <param name="owner">The owner.</param>
@@ -276,7 +294,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string? applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
                                         KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null
+                                        ProcessStartInfo? linkLaunchArgument = null, int? timeOut = 60, DialogResult? timerResult = DialogResult.None
                                         /*bool? openInExplorer*/)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
@@ -286,7 +304,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
                          buttonFourDialogResult, buttonOneCustomText, buttonTwoCustomText,
                          buttonThreeCustomText, buttonFourCustomText, applicationPath,
-                         messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument);
+                         messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument,
+                         timeOut, timerResult);
         #endregion
 
         #region Implementation
@@ -326,9 +345,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                               ExtendedKryptonMessageBoxIcon icon,
                                               KryptonMessageBoxDefaultButton defaultButton,
                                               MessageBoxOptions options, HelpInfo helpInfo,
-                                              bool? showCtrlCopy, Font messageBoxTypeface,
-                                              Image customImageIcon, bool? showHelpButton,
-                                              Color? messageTextColour, Color[] buttonTextColours,
+                                              bool? showCtrlCopy, Font? messageBoxTypeface,
+                                              Image? customImageIcon, bool? showHelpButton,
+                                              Color? messageTextColour, Color[]? buttonTextColours,
                                               DialogResult? buttonOneCustomDialogResult,
                                               DialogResult? buttonTwoCustomDialogResult,
                                               DialogResult? buttonThreeCustomDialogResult,
@@ -338,7 +357,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                               string applicationPath,
                                               ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
                                               KryptonCommand? linkLabelCommand, int? linkAreaStart, int? linkAreaEnd,
-                                              ProcessStartInfo? linkLaunchArgument
+                                              ProcessStartInfo? linkLaunchArgument,
+                                              int? timeOut,
+                                              DialogResult? timerResult
                                               /*bool? openInExplorer*/)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
@@ -363,7 +384,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                             linkLabelCommand,
                                                             linkAreaStart,
                                                             linkAreaEnd,
-                                                            linkLaunchArgument);
+                                                            linkLaunchArgument,
+                                                            timeOut,
+                                                            timerResult);
 
             return kmbe.ShowDialog(showOwner);
         }

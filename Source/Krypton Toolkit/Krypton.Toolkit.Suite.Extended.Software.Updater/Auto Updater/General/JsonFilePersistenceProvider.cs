@@ -1,41 +1,9 @@
-﻿#region License
-
-/*
- * MIT License
- *
- * Copyright (c) 2012 - 2023 RBSoft
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
-#endregion
-
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
-    /// <summary>
-    ///     Provides a mechanism for storing AutoUpdater state between sessions on a Json formatted file.
-    /// </summary>
+    /// <summary>Provides a mechanism for storing AutoUpdater state between sessions on a Json formatted file.</summary>
     public class JsonFilePersistenceProvider : IPersistenceProvider
     {
-        /// <summary>
-        ///     Initializes a new instance of the JsonFilePersistenceProvider class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the JsonFilePersistenceProvider class.</summary>
         /// <remarks>The path for the Json formatted file must be specified using the FileName property.</remarks>
         public JsonFilePersistenceProvider(string jsonPath)
         {
@@ -53,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         private PersistedValues PersistedValues { get; set; }
 
         /// <inheritdoc />
-        public Version GetSkippedVersion()
+        public Version? GetSkippedVersion()
         {
             return PersistedValues.SkippedVersion;
         }
@@ -67,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// <inheritdoc />
         public void SetSkippedVersion(Version? version)
         {
-            PersistedValues.SkippedVersion = version!;
+            PersistedValues.SkippedVersion = version;
             Save();
         }
 
