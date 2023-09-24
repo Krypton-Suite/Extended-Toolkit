@@ -209,7 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
 
-            UpdateContentAreaType(messageContainerType);
+            UpdateContentAreaType(messageContainerType, messageTextAlignment);
 
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
@@ -833,7 +833,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
         }
 
-        private void UpdateContentAreaType(ExtendedKryptonMessageBoxMessageContainerType? messageContainerType)
+        private void UpdateContentAreaType(ExtendedKryptonMessageBoxMessageContainerType? messageContainerType, ContentAlignment? messageTextAlignment)
         {
             switch (messageContainerType)
             {
@@ -842,12 +842,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
                     _messageText.Visible = false;
 
+                    _messageTextLink.TextAlign = messageTextAlignment ?? ContentAlignment.MiddleLeft;
+
                     krtxtMessage.Visible = false;
                     break;
                 case ExtendedKryptonMessageBoxMessageContainerType.Normal:
                     _messageTextLink.Visible = false;
 
                     _messageText.Visible = true;
+
+                    _messageText.TextAlign = messageTextAlignment ?? ContentAlignment.MiddleLeft;
 
                     krtxtMessage.Visible = false;
                     break;
