@@ -1,11 +1,13 @@
 
 <!--* Checkbox option for `KryptonMessageBoxExtended` (***Note:*** This feature is experimental, and may not fully work)-->
 <!--* Added 3 new controls in the `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` module, these are `MRUOpenFileMenuItem`, `MRUSaveAsFileMenuItem` and `MRUSaveFileMenuItem`. Note, these controls only work with text files/documents. If you wish to use the MRU functionality with other file types, please refer to the `MostRecentlyUsedFileManager` in the `Krypton.Toolkit.Suite.Extended.IO` module-->
+<!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
 
 =======
 
-## 2023-11-xx - Build 2311 - November 2023
-<!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
+## 2023-11-14 - Build 2311 - November 2023
+* Added the ability to specify the message text alignment in a `KryptonMessageboxExtended`
+	- Default value is `MiddleLeft`
 * Implemented [#430](https://github.com/Krypton-Suite/Extended-Toolkit/issues/430), Use `KryptonProgressBar` throughout the toolkit
 * Support for languages to use 'LanguageManager' components, where supported
 * Resolved [#414](https://github.com/Krypton-Suite/Extended-Toolkit/issues/414), `OutloookGrid` casts error when executing `.Fill()` (Thanks to [Shaun](https://github.com/Bonio55) for the fix)

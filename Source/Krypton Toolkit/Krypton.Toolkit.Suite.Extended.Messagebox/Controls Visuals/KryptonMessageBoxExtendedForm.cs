@@ -27,8 +27,7 @@
 
 // ReSharper disable NotAccessedField.Local
 
-using System.Threading;
-
+using ContentAlignment = System.Drawing.ContentAlignment;
 using Timer = System.Threading.Timer;
 
 #pragma warning disable IDE0031
@@ -47,6 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Instance Fields
+
         private readonly string _text;
         private readonly string _caption;
 
@@ -55,6 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
         private static /*readonly*/ IWin32Window _showOwner;
         private readonly HelpInfo _helpInfo;
+        private readonly ContentAlignment _messageTextAlignment;
 
         #endregion
 
@@ -154,6 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                           ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
                                                           KryptonCommand? linkLabelCommand, int? linkAreaStart, int? linkAreaEnd,
                                                           ProcessStartInfo? linkLaunchArgument,
+                                                          ContentAlignment? messageTextAlignment,
                                                           int? timeOut,
                                                           DialogResult? timerResult
                                                           /*bool? openInExplorer*/)
@@ -167,6 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _options = options;
             _helpInfo = helpInfo;
             _showOwner = showOwner;
+            _messageTextAlignment = messageTextAlignment ?? ContentAlignment.MiddleLeft;
 
             // Extended values
             _messageBoxTypeface = messageBoxTypeface ?? new Font("Segoe UI", 8.25F);
@@ -281,7 +284,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                         ? RightToLeft.Inherit
                         : RightToLeft.No;
 
-                _messageTextLink.LinkArea = new(_linkAreaStart, _linkAreaEnd);
+                _messageTextLink.LinkArea = new LinkArea(_linkAreaStart, _linkAreaEnd);
 
                 _messageText.Visible = false;
 

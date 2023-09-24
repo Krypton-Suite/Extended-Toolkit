@@ -26,7 +26,7 @@
                 case HashType.SHA512:
                     return MakeHashString(SHA512.Create().ComputeHash(new FileStream(filePath, FileMode.Open)));
                 default:
-                    return "";
+                    return string.Empty;
             }
         }
 
