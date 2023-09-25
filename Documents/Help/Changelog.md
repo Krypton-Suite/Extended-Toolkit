@@ -31,7 +31,16 @@
 * Implemented [#384](https://github.com/Krypton-Suite/Extended-Toolkit/issues/384), Reduce build configurations
 * Resolved [#378](https://github.com/Krypton-Suite/Extended-Toolkit/issues/378), `ExtendedMessageBox` does not support `CancelTryContinue` when built for "ANY" of the supported TFM's
 * `KryptonMessageBoxExtended` button states now fall in line with .NET 6.0
-* New `KryptonInputBoxExtended`, supports icons, and multiple response types, such as `ComboBox`, `DateTimePicker`, `DomainUpDown`, `TextBox`, `MaskedTextBox`, `PasswordBox`, `RichTextBox`, `NumericUpDown` & `None`
+* New `KryptonInputBoxExtended`, supports icons, and multiple response types, such as:-
+	- `ComboBox`
+	- `DateTimePicker`
+	- `DomainUpDown`
+	- `TextBox`
+	- `MaskedTextBox`
+	- `PasswordBox`
+	- `RichTextBox`
+	- `NumericUpDown`
+	- `None`
 * New `KryptonRunDialog`, a drop in replacement for the standard Windows dialog, with a few extra features
 * Implemented `CloseBox` in `KryptonManagerExtended` to fall in line with the standard toolkit
 * Add strong naming to assemblies
