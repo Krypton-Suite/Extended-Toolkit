@@ -35,41 +35,66 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     {
         #region Public 
 
+        /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
+        /// <param name="messageText">The text.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
+        /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
+        /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
-            ExtendedKryptonMessageBoxIcon icon, ContentAlignment? messageTextAlignment = ContentAlignment.MiddleLeft, int? timeOut = 60, DialogResult? timerResult = DialogResult.None) =>
+                                        ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null,
+                                        ContentAlignment? messageTextAlignment = null,
+                                        PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? useTimeOut = false, int? timeOut = 60, DialogResult? timerResult = DialogResult.None) =>
             ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
-                MessageBoxOptions.DefaultDesktopOnly, null, null, null,
-                null, null, Color.Empty,
-                new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                null, null, null,
-                null, string.Empty, string.Empty, string.Empty,
-                string.Empty, string.Empty, null, null,
-                null, null, null, messageTextAlignment, timeOut, timerResult);
+                     0, null, showCtrlCopy, null, null, null, null, null, null, null, null, null,
+                     null, null, null, null, null, ExtendedKryptonMessageBoxMessageContainerType.Normal,
+                     null, null, null, null,
+                     messageTextAlignment, null, useTimeOut, timeOut, timerResult);
 
-        /// <summary>Shows a messagebox.</summary>
+        /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
+        /// <param name="messageContainerType">Specifies a <see cref="T:ExtendedKryptonMessageBoxMessageContainerType"/> type.</param>
+        /// <param name="linkLabelCommand">Specifies the <seealso cref="KryptonCommand"/> to attach to the embedded link.</param>
+        /// <param name="contentLinkArea">Specifies the area within the <see cref="KryptonLinkWrapLabel"/> to be regarded as a link. See <see cref="LinkArea"/>.</param>
+        /// <param name="linkLaunchArgument">Specifies what to launch when the link is clicked via <seealso cref="ProcessStartInfo"/>.</param>
+        /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
+        /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
+        /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
+        /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
-            ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null, string applicationPath = null,
-            ExtendedKryptonMessageBoxMessageContainerType? messageContainerType =
-                ExtendedKryptonMessageBoxMessageContainerType.Normal,
-            KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-            ProcessStartInfo? linkLaunchArgument = null, ContentAlignment? messageTextAlignment = ContentAlignment.MiddleLeft,
-            int? timeOut = 60,
-            DialogResult? timerResult = DialogResult.None
-            /*bool? openInExplorer*/)
+                                        ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null,
+                                        string? applicationPath = null,
+                                        ExtendedKryptonMessageBoxMessageContainerType? messageContainerType =
+                                            ExtendedKryptonMessageBoxMessageContainerType.Normal,
+                                        KryptonCommand? linkLabelCommand = null,
+                                        LinkArea? contentLinkArea = null,
+                                        ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
+                                        ContentAlignment? messageTextAlignment = null,
+                                        PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? useTimeOut = false, int? timeOut = 60,
+                                        DialogResult? timerResult = DialogResult.None)
             => ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
-                null, showCtrlCopy, null, null, null, Color.Empty,
-                new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                null, null, null, null, string.Empty, string.Empty,
-                string.Empty, string.Empty, applicationPath, messageContainerType, linkLabelCommand, linkAreaStart,
-                linkAreaEnd, linkLaunchArgument, messageTextAlignment, timeOut, timerResult);
+                        null, showCtrlCopy, null, null, null, Color.Empty,
+                        new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                        null, null, null, null, string.Empty, string.Empty,
+                        string.Empty, string.Empty, applicationPath, messageContainerType, linkLabelCommand,
+                        contentLinkArea, linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment,
+                        useTimeOut, timeOut, timerResult);
 
-        /// <summary>Shows a messagebox.</summary>
+        /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
@@ -81,6 +106,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
         /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
+        /// <param name="messageContainerType">Specifies a <see cref="T:ExtendedKryptonMessageBoxMessageContainerType"/> type.</param>
+        /// <param name="linkLabelCommand">Specifies the <seealso cref="KryptonCommand"/> to attach to the embedded link.</param>
+        /// <param name="contentLinkArea">Specifies the area within the <see cref="KryptonLinkWrapLabel"/> to be regarded as a link. See <see cref="LinkArea"/>.</param>
+        /// <param name="linkLaunchArgument">Specifies what to launch when the link is clicked via <seealso cref="ProcessStartInfo"/>.</param>
+        /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
+        /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
+        /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
+        /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                         ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
@@ -90,22 +125,28 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? showCtrlCopy = null,
                                         Font? messageBoxTypeface = null,
                                         Image? customImageIcon = null, string? applicationPath = null,
-                                        ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null, ContentAlignment? messageTextAlignment = ContentAlignment.MiddleLeft,
-                                        int? timeOut = 60, DialogResult? timerResult = DialogResult.None
-                                        /*bool? openInExplorer*/)
+                                        ExtendedKryptonMessageBoxMessageContainerType? messageContainerType =
+                                            ExtendedKryptonMessageBoxMessageContainerType.Normal,
+                                        KryptonCommand? linkLabelCommand = null,
+                                        LinkArea? contentLinkArea = null,
+                                        ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
+                                        ContentAlignment? messageTextAlignment =
+                                            ContentAlignment.MiddleLeft,
+                                        PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? useTimeOut = false,
+                                        int? timeOut = 60, DialogResult? timerResult = DialogResult.None)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
-                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             messageBoxTypeface, customImageIcon, null, Color.Empty,
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                             null, null, null, null, string.Empty, string.Empty,
-                             string.Empty, string.Empty, applicationPath,
-                             messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument, messageTextAlignment,
-                             timeOut, timerResult);
+                         displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
+                         messageBoxTypeface, customImageIcon, null, Color.Empty,
+                         new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                         null, null, null, null, string.Empty, string.Empty,
+                         string.Empty, string.Empty, applicationPath,
+                         messageContainerType, linkLabelCommand, contentLinkArea,
+                         linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment,
+                         useTimeOut, timeOut, timerResult);
 
-        /// <summary>Shows a messagebox.</summary>
+        /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
@@ -115,6 +156,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="displayHelpButton">if set to <c>true</c> [display help button].</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
+        /// <param name="messageContainerType">Specifies a <see cref="T:ExtendedKryptonMessageBoxMessageContainerType"/> type.</param>
+        /// <param name="linkLabelCommand">Specifies the <seealso cref="KryptonCommand"/> to attach to the embedded link.</param>
+        /// <param name="contentLinkArea">Specifies the area within the <see cref="KryptonLinkWrapLabel"/> to be regarded as a link. See <see cref="LinkArea"/>.</param>
+        /// <param name="linkLaunchArgument">Specifies what to launch when the link is clicked via <seealso cref="ProcessStartInfo"/>.</param>
+        /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
+        /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
+        /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
+        /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(string messageText, string caption,
                                         ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon,
@@ -123,21 +174,24 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null, string? applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null, ContentAlignment? messageTextAlignment = ContentAlignment.MiddleLeft,
-                                        int? timeOut = 60, DialogResult? timerResult = DialogResult.None
-                                        /*bool? openInExplorer*/)
+                                        KryptonCommand? linkLabelCommand = null,
+                                        LinkArea? contentLinkArea = null,
+                                        ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
+                                        ContentAlignment? messageTextAlignment = null,
+                                        PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? useTimeOut = false, int? timeOut = 60, DialogResult? timerResult = DialogResult.None)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
-                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             null, null, null, Color.Empty,
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                             null, null, null, null, string.Empty, string.Empty,
-                             string.Empty, string.Empty, applicationPath,
-                             messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument, messageTextAlignment,
-                             timeOut, timerResult);
+                         displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
+                         null, null, null, Color.Empty,
+                         new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                         null, null, null, null, string.Empty, string.Empty,
+                         string.Empty, string.Empty, applicationPath,
+                         messageContainerType, linkLabelCommand, contentLinkArea, linkLaunchArgument, openInExplorer,
+                         messageTextAlignment, richTextBoxTextAlignment,
+                         useTimeOut, timeOut, timerResult);
 
-        /// <summary>Shows a messagebox.</summary>
+        /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="messageText">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -150,6 +204,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
         /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
+        /// <param name="messageContainerType">Specifies a <see cref="T:ExtendedKryptonMessageBoxMessageContainerType"/> type.</param>
+        /// <param name="linkLabelCommand">Specifies the <seealso cref="KryptonCommand"/> to attach to the embedded link.</param>
+        /// <param name="contentLinkArea">Specifies the area within the <see cref="KryptonLinkWrapLabel"/> to be regarded as a link. See <see cref="LinkArea"/>.</param>
+        /// <param name="linkLaunchArgument">Specifies what to launch when the link is clicked via <seealso cref="ProcessStartInfo"/>.</param>
+        /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
+        /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
+        /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
+        /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                         ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
@@ -157,24 +221,31 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxOptions options = 0,
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null,
-                                        Font messageBoxTypeface = null,
-                                        Image customImageIcon = null, string applicationPath = null,
+                                        Font? messageBoxTypeface = null,
+                                        Image? customImageIcon = null, string? applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null, ContentAlignment? messageTextAlignment = ContentAlignment.MiddleLeft,
+                                        KryptonCommand? linkLabelCommand = null,
+                                        LinkArea? contentLinkArea = null,
+                                        ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
+                                        ContentAlignment? messageTextAlignment = null,
+                                        PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? useTimeOut = false,
                                         int? timeOut = 60, DialogResult? timerResult = DialogResult.None
-                                        /*bool? openInExplorer*/)
+                                        )
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
-                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             messageBoxTypeface, customImageIcon, null, Color.Empty,
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                             null, null, null, null, string.Empty,
-                             string.Empty, string.Empty, string.Empty,
-                             applicationPath, messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument, messageTextAlignment,
-                             timeOut, timerResult);
+                         displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
+                         messageBoxTypeface, customImageIcon, null, Color.Empty,
+                         new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                         null, null, null, null,
+                         string.Empty,
+                         string.Empty, string.Empty, string.Empty,
+                         applicationPath, messageContainerType, linkLabelCommand, contentLinkArea,
+                         linkLaunchArgument, openInExplorer,
+                         messageTextAlignment, richTextBoxTextAlignment,
+                         useTimeOut, timeOut, timerResult);
 
-        /// <summary>Shows a messagebox.</summary>
+        /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="messageText">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -185,6 +256,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="displayHelpButton">if set to <c>true</c> [display help button].</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
+        /// <param name="messageContainerType">Specifies a <see cref="T:ExtendedKryptonMessageBoxMessageContainerType"/> type.</param>
+        /// <param name="linkLabelCommand">Specifies the <seealso cref="KryptonCommand"/> to attach to the embedded link.</param>
+        /// <param name="contentLinkArea">Specifies the area within the <see cref="KryptonLinkWrapLabel"/> to be regarded as a link. See <see cref="LinkArea"/>.</param>
+        /// <param name="linkLaunchArgument">Specifies what to launch when the link is clicked via <seealso cref="ProcessStartInfo"/>.</param>
+        /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
+        /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
+        /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
+        /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(IWin32Window owner, string messageText, string caption,
                                         ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon,
@@ -192,12 +273,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxOptions options = 0,
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null,
-                                        string applicationPath = null,
+                                        string? applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null, ContentAlignment? messageTextAlignment = ContentAlignment.MiddleLeft,
-                                        int? timeOut = 60, DialogResult? timerResult = DialogResult.None
-                                        /*bool? openInExplorer*/)
+                                        KryptonCommand? linkLabelCommand = null,
+                                        LinkArea? contentLinkArea = null,
+                                        ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
+                                        ContentAlignment? messageTextAlignment = null,
+                                        PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? useTimeOut = false,
+                                        int? timeOut = 60, DialogResult? timerResult = DialogResult.None)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -207,10 +291,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          null, string.Empty,
                          string.Empty, string.Empty,
                          string.Empty, applicationPath,
-                         messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument, messageTextAlignment,
-                         timeOut, timerResult);
+                         messageContainerType, linkLabelCommand, contentLinkArea,
+                         linkLaunchArgument,
+                         openInExplorer, messageTextAlignment,
+                         richTextBoxTextAlignment,
+                         useTimeOut, timeOut, timerResult);
 
-        /// <summary>Shows a messagebox.</summary>
+        /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
@@ -224,6 +311,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
         /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
+        /// <param name="messageContainerType">Specifies a <see cref="T:ExtendedKryptonMessageBoxMessageContainerType"/> type.</param>
+        /// <param name="linkLabelCommand">Specifies the <seealso cref="KryptonCommand"/> to attach to the embedded link.</param>
+        /// <param name="contentLinkArea">Specifies the area within the <see cref="KryptonLinkWrapLabel"/> to be regarded as a link. See <see cref="LinkArea"/>.</param>
+        /// <param name="linkLaunchArgument">Specifies what to launch when the link is clicked via <seealso cref="ProcessStartInfo"/>.</param>
+        /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
+        /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
+        /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
+        /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                         ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
@@ -231,26 +328,32 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxOptions options = 0,
                                         string helpFilePath = @"",
                                         HelpNavigator navigator = 0,
-                                        object param = null,
+                                        object? param = null,
                                         bool? showCtrlCopy = null,
-                                        Font messageBoxTypeface = null,
-                                        Image customImageIcon = null,
-                                        string applicationPath = null,
+                                        Font? messageBoxTypeface = null,
+                                        Image? customImageIcon = null,
+                                        string? applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
-                                        KryptonCommand? linkLabelCommand = null, int? linkAreaStart = 0, int? linkAreaEnd = null,
-                                        ProcessStartInfo? linkLaunchArgument = null, ContentAlignment? messageTextAlignment = ContentAlignment.MiddleLeft,
+                                        KryptonCommand? linkLabelCommand = null,
+                                        LinkArea? contentLinkArea = null,
+                                        ProcessStartInfo? linkLaunchArgument = null,
+                                        bool? openInExplorer = null, ContentAlignment? messageTextAlignment = null,
+                                        PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? useTimeOut = false,
                                         int? timeOut = 60, DialogResult? timerResult = DialogResult.None
-                                        /*bool? openInExplorer*/)
+                                        )
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
-                             new HelpInfo(helpFilePath, navigator, param), showCtrlCopy,
-                             messageBoxTypeface, customImageIcon, null, Color.Empty,
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                             null, null, null, null, string.Empty,
-                             string.Empty, string.Empty,
-                             string.Empty, applicationPath,
-                             messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument, messageTextAlignment,
-                             timeOut, timerResult);
+                         new HelpInfo(helpFilePath, navigator, param), showCtrlCopy,
+                         messageBoxTypeface, customImageIcon, null, Color.Empty,
+                         new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                         null, null, null, null,
+                         string.Empty,
+                         string.Empty, string.Empty,
+                         string.Empty, applicationPath,
+                         messageContainerType, linkLabelCommand, contentLinkArea,
+                         linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment,
+                         useTimeOut, timeOut, timerResult);
 
         /// <summary>Shows a message box.</summary>
         /// <param name="owner">The owner.</param>
@@ -279,6 +382,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonThreeCustomText">The button three custom text.</param>
         /// <param name="buttonFourCustomText">The button four custom text.</param>
         /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
+        /// <param name="messageContainerType">Specifies a <see cref="T:ExtendedKryptonMessageBoxMessageContainerType"/> type.</param>
+        /// <param name="linkLabelCommand">Specifies the <seealso cref="KryptonCommand"/> to attach to the embedded link.</param>
+        /// <param name="contentLinkArea">Specifies the area within the <see cref="KryptonLinkWrapLabel"/> to be regarded as a link. See <see cref="LinkArea"/>.</param>
+        /// <param name="linkLaunchArgument">Specifies what to launch when the link is clicked via <seealso cref="ProcessStartInfo"/>.</param>
+        /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
+        /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
+        /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
+        /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                         ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
@@ -305,12 +418,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string? applicationPath = null,
                                         ExtendedKryptonMessageBoxMessageContainerType? messageContainerType = ExtendedKryptonMessageBoxMessageContainerType.Normal,
                                         KryptonCommand? linkLabelCommand = null,
-                                        int? linkAreaStart = 0, int? linkAreaEnd = null,
+                                        LinkArea? contentLinkArea = null,
                                         ProcessStartInfo? linkLaunchArgument = null,
-                                        ContentAlignment? messageTextAlignment = ContentAlignment.MiddleLeft,
+                                        bool? openInExplorer = null,
+                                        ContentAlignment? messageTextAlignment = null,
+                                        PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? useTimeOut = false,
                                         int? timeOut = 60,
-                                        DialogResult? timerResult = DialogResult.None
-                                        /*bool? openInExplorer*/)
+                                        DialogResult? timerResult = DialogResult.None)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
@@ -319,8 +434,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
                          buttonFourDialogResult, buttonOneCustomText, buttonTwoCustomText,
                          buttonThreeCustomText, buttonFourCustomText, applicationPath,
-                         messageContainerType, linkLabelCommand, linkAreaStart, linkAreaEnd, linkLaunchArgument, messageTextAlignment,
-                         timeOut, timerResult);
+                         messageContainerType, linkLabelCommand, contentLinkArea, linkLaunchArgument,
+                         openInExplorer, messageTextAlignment,
+                         richTextBoxTextAlignment,
+                         useTimeOut, timeOut, timerResult);
+
         #endregion
 
         #region Implementation
@@ -350,17 +468,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonFourCustomText">The button four custom text.</param>
         /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
         /// <param name="messageContainerType">Specifies a <see cref="T:ExtendedKryptonMessageBoxMessageContainerType"/> type.</param>
-        /// <param name="linkLabelCommand"></param>
-        /// <param name="linkAreaStart"></param>
-        /// <param name="linkAreaEnd"></param>
-        /// <param name="linkLaunchArgument"></param>
+        /// <param name="linkLabelCommand">Specifies the <seealso cref="KryptonCommand"/> to attach to the embedded link.</param>
+        /// <param name="contentLinkArea">Specifies the area within the <see cref="KryptonLinkWrapLabel"/> to be regarded as a link. See <see cref="LinkArea"/>.</param>
+        /// <param name="linkLaunchArgument">Specifies what to launch when the link is clicked via <seealso cref="ProcessStartInfo"/>.</param>
+        /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
+        /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
+        /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         /// <returns>One of the <see cref="DialogResult"/> values.</returns>
         internal static DialogResult ShowCore(IWin32Window? owner, string text, string caption,
                                               ExtendedMessageBoxButtons buttons,
                                               ExtendedKryptonMessageBoxIcon icon,
                                               KryptonMessageBoxDefaultButton defaultButton,
-                                              MessageBoxOptions options, HelpInfo helpInfo,
+                                              MessageBoxOptions options, HelpInfo? helpInfo,
                                               bool? showCtrlCopy, Font? messageBoxTypeface,
                                               Image? customImageIcon, bool? showHelpButton,
                                               Color? messageTextColour, Color[]? buttonTextColours,
@@ -368,16 +490,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                               DialogResult? buttonTwoCustomDialogResult,
                                               DialogResult? buttonThreeCustomDialogResult,
                                               DialogResult? buttonFourDialogResult,
-                                              string buttonOneCustomText, string buttonTwoCustomText,
-                                              string buttonThreeCustomText, string buttonFourCustomText,
-                                              string applicationPath,
+                                              string? buttonOneCustomText, string? buttonTwoCustomText,
+                                              string? buttonThreeCustomText, string? buttonFourCustomText,
+                                              string? applicationPath,
                                               ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
-                                              KryptonCommand? linkLabelCommand, int? linkAreaStart, int? linkAreaEnd,
+                                              KryptonCommand? linkLabelCommand,
+                                              LinkArea? contentLinkArea,
                                               ProcessStartInfo? linkLaunchArgument,
+                                              bool? openInExplorer,
                                               ContentAlignment? messageTextAlignment,
+                                              PaletteRelativeAlign? richTextBoxTextAlignment,
+                                              bool? useTimeOut,
                                               int? timeOut,
-                                              DialogResult? timerResult
-                                              /*bool? openInExplorer*/)
+                                              DialogResult? timerResult)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -399,10 +524,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                             applicationPath,
                                                             messageContainerType,
                                                             linkLabelCommand,
-                                                            linkAreaStart,
-                                                            linkAreaEnd,
+                                                            contentLinkArea,
                                                             linkLaunchArgument,
+                                                            openInExplorer,
                                                             messageTextAlignment,
+                                                            richTextBoxTextAlignment,
+                                                            useTimeOut,
                                                             timeOut,
                                                             timerResult);
 
@@ -411,7 +538,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region WinForm Compatibility
-        private static IWin32Window ValidateOptions(IWin32Window owner, MessageBoxOptions options, HelpInfo helpInfo)
+        private static IWin32Window ValidateOptions(IWin32Window? owner, MessageBoxOptions options, HelpInfo? helpInfo)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive &&

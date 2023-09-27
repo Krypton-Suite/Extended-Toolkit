@@ -13,12 +13,14 @@
             }
 
             // Fill in the UI
-            Text = $@"{applicationInfo.ApplicationName} - Update Info";
+            Text = $@"{applicationInfo.ApplicationName} - {SharpUpdateLanguageManager.InfoFormStrings.WindowTitle}";
 
-            kwlNewVersion.Text = updateInfo.Tag == JobType.UPDATE ? $"Current Version: {applicationInfo.Version}\nUpdate version: {updateInfo.Version}" :
-                (updateInfo.Tag == JobType.ADD ? $"Version: {updateInfo.Version}" : "");
+            kwlNewVersion.Text = updateInfo.Tag == JobType.UPDATE ? $"{SharpUpdateLanguageManager.InfoFormStrings.CurrentVersion}: {applicationInfo.Version}\n{SharpUpdateLanguageManager.InfoFormStrings.UpdateVersion}: {updateInfo.Version}" :
+                (updateInfo.Tag == JobType.ADD ? $"{SharpUpdateLanguageManager.InfoFormStrings.Version}: {updateInfo.Version}" : "");
 
             krtxtDescription.Text = updateInfo.Description;
+
+            kbtnBack.Text = SharpUpdateLanguageManager.InfoFormStrings.Back;
         }
 
         private void kbtnBack_Click(object sender, EventArgs e) => Close();
