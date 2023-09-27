@@ -42,14 +42,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="icon">The icon.</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
-        /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null,
                                         ContentAlignment? messageTextAlignment = null,
-                                        PaletteRelativeAlign? richTextBoxTextAlignment = null,
                                         bool? useTimeOut = false, int? timeOut = 60, DialogResult? timerResult = DialogResult.None) =>
             ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
                      0, null, showCtrlCopy, null, null, null, null, null, null, null, null, null,

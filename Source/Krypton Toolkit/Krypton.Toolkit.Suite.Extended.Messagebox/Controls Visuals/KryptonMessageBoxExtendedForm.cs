@@ -239,8 +239,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 using (_timeOutTimer)
                 {
                     _result = KryptonMessageBoxExtended.Show(text, caption, buttons, icon, showCtrlCopy,
-                                                             messageTextAlignment, richTextBoxTextAlignment,
-                                                             useTimeOut, null,
+                                                             messageTextAlignment, useTimeOut, null,
                                                              null);
                 }
 
