@@ -48,6 +48,7 @@
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtTitle = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.kbtnDummyText = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -71,18 +72,19 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnDummyText);
             this.kryptonPanel1.Controls.Add(this.kbtnShow);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 291);
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 609);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kryptonPanel1.Size = new System.Drawing.Size(890, 50);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1406, 50);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // kbtnShow
             // 
-            this.kbtnShow.Location = new System.Drawing.Point(788, 13);
+            this.kbtnShow.Location = new System.Drawing.Point(1304, 13);
             this.kbtnShow.Name = "kbtnShow";
             this.kbtnShow.Size = new System.Drawing.Size(90, 25);
             this.kbtnShow.TabIndex = 1;
@@ -95,7 +97,7 @@
             this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
             this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(890, 1);
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(1406, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // kryptonPanel2
@@ -110,7 +112,7 @@
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(890, 291);
+            this.kryptonPanel2.Size = new System.Drawing.Size(1406, 609);
             this.kryptonPanel2.TabIndex = 1;
             // 
             // kryptonGroupBox2
@@ -211,8 +213,7 @@
             // 
             // ktxtCustomIconPath
             // 
-            this.ktxtCustomIconPath.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
-            this.bsaBrowse});
+            this.ktxtCustomIconPath.ButtonSpecs.Add(this.bsaBrowse);
             this.ktxtCustomIconPath.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.ktxtCustomIconPath.Enabled = false;
             this.ktxtCustomIconPath.Location = new System.Drawing.Point(12, 35);
@@ -277,11 +278,20 @@
             this.kryptonLabel1.TabIndex = 4;
             this.kryptonLabel1.Values.Text = "Title:";
             // 
+            // kbtnDummyText
+            // 
+            this.kbtnDummyText.Location = new System.Drawing.Point(12, 13);
+            this.kbtnDummyText.Name = "kbtnDummyText";
+            this.kbtnDummyText.Size = new System.Drawing.Size(153, 25);
+            this.kbtnDummyText.TabIndex = 3;
+            this.kbtnDummyText.Values.Text = "I&nsert Dummy Text";
+            this.kbtnDummyText.Click += new System.EventHandler(this.kbtnDummyText_Click);
+            // 
             // MemoryBoxExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 341);
+            this.ClientSize = new System.Drawing.Size(1406, 659);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -338,5 +348,6 @@
         private KryptonComboBox kcmbMemoryBoxDefaultDialogResult;
         private KryptonLabel kryptonLabel3;
         private KryptonLabel kryptonLabel4;
+        private KryptonButton kbtnDummyText;
     }
 }

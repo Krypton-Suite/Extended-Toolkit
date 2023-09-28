@@ -29,7 +29,7 @@
 
             _updateInfo = updateInfo;
 
-            Text = $@"{_applicationInfo.ApplicationName} - ({numCurUpdate}/{numTotalUpdate}) Available Update";
+            Text = $@"{_applicationInfo.ApplicationName} - ({numCurUpdate}/{numTotalUpdate}) {SharpUpdateLanguageManager.GeneralStrings.Title}";
 
             // Assigns the icon if it isn't null
             if (_applicationInfo.ApplicationIcon != null)
@@ -39,8 +39,8 @@
 
             // Adds the update version # to the form
             kwlNewVersion.Text = updateInfo.Tag != JobType.REMOVE ?
-                string.Format(updateInfo.Tag == JobType.UPDATE ? "Update: {0}\nNew Version: {1}" : "New: {0}\nVersion: {1}", Path.GetFileName(_applicationInfo.ApplicationPath), _updateInfo.Version.ToString()) :
-                $"Remove: {Path.GetFileName(_applicationInfo.ApplicationPath)}";
+                string.Format(updateInfo.Tag == JobType.UPDATE ? $"{SharpUpdateLanguageManager.GeneralStrings.Update}: {Path.GetFileName(_applicationInfo.ApplicationPath)}\n{SharpUpdateLanguageManager.GeneralStrings.NewVersion}: {_updateInfo.Version}" : $"{SharpUpdateLanguageManager.GeneralStrings.New}: {Path.GetFileName(_applicationInfo.ApplicationPath)}\n{SharpUpdateLanguageManager.GeneralStrings.Version}: {_updateInfo.Version}") :
+                $"{SharpUpdateLanguageManager.AcceptFormStrings.Remove}: {Path.GetFileName(_applicationInfo.ApplicationPath)}";
 
             kbtnNo.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
 

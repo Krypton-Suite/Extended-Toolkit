@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly MessageBoxOptions _options; // https://github.com/Krypton-Suite/Standard-Toolkit/issues/313
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
         private static /*readonly*/ IWin32Window _showOwner;
-        private readonly HelpInfo _helpInfo;
+        private readonly HelpInfo? _helpInfo;
         private readonly ContentAlignment _messageTextAlignment;
 
         #endregion
@@ -65,9 +65,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly bool _openInExplorer;
 
+        private readonly bool _useTimeOut;
+
         private readonly Color _messageTextColour;
 
-        private readonly Color[] _buttonTextColours = new Color[4];
+        private readonly Color[]? _buttonTextColours = new Color[4];
 
         private readonly DialogResult _buttonOneCustomDialogResult;
 
@@ -83,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
 
-        private readonly Image _customKryptonMessageBoxIcon;
+        private readonly Image? _customKryptonMessageBoxIcon;
 
         private readonly string _buttonOneCustomText;
 
@@ -99,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly KryptonCommand? _linkLabelCommand;
 
-        private readonly int _linkAreaStart, _linkAreaEnd;
+        private readonly LinkArea _contentLinkArea;
 
         private readonly ProcessStartInfo? _linkLaunchArgument;
 
@@ -116,6 +118,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private DialogResult _result;
 
         private DialogResult _timerResult;
+
+        private readonly PaletteRelativeAlign _richTextBoxTextAlignment;
 
         #endregion
 
@@ -137,37 +141,49 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
 
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
-                                                          ExtendedMessageBoxButtons buttons,
-                                                          ExtendedKryptonMessageBoxIcon icon,
-                                                          KryptonMessageBoxDefaultButton defaultButton,
-                                                          MessageBoxOptions options,
-                                                          HelpInfo helpInfo, bool? showCtrlCopy,
-                                                          Font messageBoxTypeface,
-                                                          Image customKryptonMessageBoxIcon, bool? showHelpButton,
-                                                          Color? messageTextColour, Color[] buttonTextColours,
-                                                          DialogResult? buttonOneCustomDialogResult,
-                                                          DialogResult? buttonTwoCustomDialogResult,
-                                                          DialogResult? buttonThreeCustomDialogResult,
-                                                          DialogResult? buttonFourDialogResult,
-                                                          string? buttonOneCustomText, string? buttonTwoCustomText,
-                                                          string? buttonThreeCustomText, string? buttonFourCustomText,
-                                                          string? applicationPath,
-                                                          ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
-                                                          KryptonCommand? linkLabelCommand, int? linkAreaStart, int? linkAreaEnd,
-                                                          ProcessStartInfo? linkLaunchArgument,
-                                                          ContentAlignment? messageTextAlignment,
-                                                          int? timeOut,
-                                                          DialogResult? timerResult
-                                                          /*bool? openInExplorer*/)
+                                               ExtendedMessageBoxButtons buttons,
+                                               ExtendedKryptonMessageBoxIcon icon,
+                                               KryptonMessageBoxDefaultButton defaultButton,
+                                               MessageBoxOptions options,
+                                               HelpInfo? helpInfo, bool? showCtrlCopy,
+                                               Font? messageBoxTypeface,
+                                               Image? customKryptonMessageBoxIcon, bool? showHelpButton,
+                                               Color? messageTextColour, Color[]? buttonTextColours,
+                                               DialogResult? buttonOneCustomDialogResult,
+                                               DialogResult? buttonTwoCustomDialogResult,
+                                               DialogResult? buttonThreeCustomDialogResult,
+                                               DialogResult? buttonFourDialogResult,
+                                               string? buttonOneCustomText, string? buttonTwoCustomText,
+                                               string? buttonThreeCustomText, string? buttonFourCustomText,
+                                               string? applicationPath,
+                                               ExtendedKryptonMessageBoxMessageContainerType? messageContainerType,
+                                               KryptonCommand? linkLabelCommand,
+                                               LinkArea? contentLinkArea,
+                                               ProcessStartInfo? linkLaunchArgument,
+                                               bool? openInExplorer,
+                                               ContentAlignment? messageTextAlignment,
+                                               PaletteRelativeAlign? richTextBoxTextAlignment,
+                                               bool? useTimeOut,
+                                               int? timeOut,
+                                               DialogResult? timerResult)
         {
             // Store incoming values
             _text = text;
-            _caption = caption;
+
+            if (useTimeOut != null || useTimeOut == false)
+            {
+                _caption = $"{caption} [{timeOut}]";
+            }
+            else
+            {
+                _caption = caption;
+            }
+
             _buttons = buttons;
             _kryptonMessageBoxIcon = icon;
             _defaultButton = defaultButton;
             _options = options;
-            _helpInfo = helpInfo;
+            _helpInfo = helpInfo ?? new HelpInfo(string.Empty, HelpNavigator.AssociateIndex, null);
             _showOwner = showOwner;
             _messageTextAlignment = messageTextAlignment ?? ContentAlignment.MiddleLeft;
 
@@ -187,10 +203,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _buttonFourCustomText = buttonFourCustomText ?? KryptonLanguageManager.GeneralToolkitStrings.Retry;
             _applicationPath = applicationPath ?? string.Empty;
             _messageContainerType = messageContainerType ?? ExtendedKryptonMessageBoxMessageContainerType.Normal;
-            _linkLabelCommand = linkLabelCommand ?? new();
-            _linkAreaStart = linkAreaStart ?? 0;
-            _linkAreaEnd = linkAreaEnd ?? text.Length;
-            _linkLaunchArgument = linkLaunchArgument ?? new();
+            _linkLabelCommand = linkLabelCommand ?? new KryptonCommand();
+            _contentLinkArea = contentLinkArea ?? new LinkArea(0, text.Length);
+            _linkLaunchArgument = linkLaunchArgument ?? new ProcessStartInfo();
+            _openInExplorer = openInExplorer ?? false;
+            _richTextBoxTextAlignment = richTextBoxTextAlignment ?? PaletteRelativeAlign.Inherit;
+            _useTimeOut = useTimeOut ?? false;
             _timeOut = timeOut ?? 60;
             _timeOutTimer = new Timer(OnTimerElapsed, null, _timeOut, Timeout.Infinite);
             _timerResult = timerResult ?? DialogResult.None;
@@ -209,21 +227,29 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
 
-            UpdateContentAreaType(messageContainerType, messageTextAlignment);
+            UpdateContentAreaType(messageContainerType, messageTextAlignment, richTextBoxTextAlignment);
+
+            UpdateContentLinkArea(contentLinkArea);
 
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
 
-            using (_timeOutTimer)
+            if (_useTimeOut)
             {
-                _result = KryptonMessageBoxExtended.Show(text, caption, buttons, icon, messageTextAlignment, null, null);
-            }
+                using (_timeOutTimer)
+                {
+                    _result = KryptonMessageBoxExtended.Show(text, caption, buttons, icon, showCtrlCopy,
+                                                             messageTextAlignment, useTimeOut, null,
+                                                             null);
+                }
 
-            if (_timedOut)
-            {
-                _result = _timerResult;
+                if (_timedOut)
+                {
+                    _result = _timerResult;
+                }
             }
         }
+
         #endregion Identity
 
         #region Implementation
@@ -283,8 +309,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     : _options.HasFlag(MessageBoxOptions.RtlReading)
                         ? RightToLeft.Inherit
                         : RightToLeft.No;
-
-                _messageTextLink.LinkArea = new LinkArea(_linkAreaStart, _linkAreaEnd);
 
                 _messageText.Visible = false;
 
@@ -806,13 +830,20 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             try
             {
-                if (_linkLabelCommand != null)
+                if (_openInExplorer)
                 {
-                    _linkLabelCommand.PerformExecute();
+                    OpenInExplorer(e.Link.LinkData.ToString());
                 }
-                else if (_linkLaunchArgument != null)
+                else
                 {
-                    Process.Start(_linkLaunchArgument);
+                    if (_linkLabelCommand != null)
+                    {
+                        _linkLabelCommand.PerformExecute();
+                    }
+                    else if (_linkLaunchArgument != null)
+                    {
+                        Process.Start(_linkLaunchArgument);
+                    }
                 }
             }
             catch (Exception exc)
@@ -833,7 +864,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
         }
 
-        private void UpdateContentAreaType(ExtendedKryptonMessageBoxMessageContainerType? messageContainerType, ContentAlignment? messageTextAlignment)
+        private void UpdateContentLinkArea(LinkArea? contentLinkArea)
+        {
+            if (contentLinkArea != null)
+            {
+                _messageTextLink.LinkArea = (LinkArea)contentLinkArea;
+            }
+        }
+
+        private void UpdateContentAreaType(ExtendedKryptonMessageBoxMessageContainerType? messageContainerType, ContentAlignment? messageTextAlignment, PaletteRelativeAlign? richTextBoxTextAlignment)
         {
             switch (messageContainerType)
             {
@@ -861,6 +900,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _messageText.Visible = false;
 
                     krtxtMessage.Visible = true;
+
+                    krtxtMessage.StateCommon.Content.TextH = richTextBoxTextAlignment ?? PaletteRelativeAlign.Inherit;
                     break;
             }
         }

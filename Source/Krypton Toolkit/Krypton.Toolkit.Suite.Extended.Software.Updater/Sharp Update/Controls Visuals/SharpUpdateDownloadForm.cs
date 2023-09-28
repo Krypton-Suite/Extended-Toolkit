@@ -94,7 +94,7 @@
             else
             {
                 // Show the "Hashing" label and set the progressbar to marquee
-                klblProgress.Text = ;
+                klblProgress.Text = $"{SharpUpdateLanguageManager.DownloadFormStrings.VarifyingDownload}...";
 
                 kpbDownloadProgress.Style = ProgressBarStyle.Marquee;
 
@@ -106,7 +106,7 @@
         private void DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             klblProgress.Text =
-                $"{} {FormatBytes(e.BytesReceived, 1, true)} {} {FormatBytes(e.TotalBytesToReceive, 1, true)}";
+                $"{SharpUpdateLanguageManager.DownloadFormStrings.Downloaded} {FormatBytes(e.BytesReceived, 1, true)} {SharpUpdateLanguageManager.DownloadFormStrings.Of} {FormatBytes(e.TotalBytesToReceive, 1, true)}";
 
             kpbDownloadProgress.Value = e.ProgressPercentage;
         }

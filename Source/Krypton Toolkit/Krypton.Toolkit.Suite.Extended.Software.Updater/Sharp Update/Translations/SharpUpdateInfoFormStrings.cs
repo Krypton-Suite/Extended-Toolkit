@@ -5,21 +5,21 @@
     {
         #region Static Fields
 
+        private const string DEFAULT_BACK = @"Back";
+
         private const string DEFAULT_DETAILS = @"Details...";
 
         private const string DEFAULT_HEADER = @"An update is available!\r\nWould you like to update?";
 
-        private const string DEFAULT_TITLE = @"Available Update";
+        private const string DEFAULT_REMOVE = @"Remove";
 
-        private const string DEFAULT_UPDATE = @"Update";
+        private const string DEFAULT_WINDOW_TITLE = @"Update Info";
 
-        private const string DEFAULT_NEW_VERSION = @"New Version";
+        private const string DEFAULT_CURRENT_VERSION = @"Current Version";
 
-        private const string DEFAULT_NEW = @"New";
+        private const string DEFAULT_UPDATE_VERSION = @"Update Version";
 
         private const string DEFAULT_VERSION = @"Version";
-
-        private const string DEFAULT_REMOVE = @"Remove";
 
         #endregion
 
@@ -37,33 +37,40 @@
         #region Public
 
         [Browsable(false)]
-        public bool IsDefault => Details.Equals(DEFAULT_DETAILS) &&
+        public bool IsDefault => Back.Equals(DEFAULT_BACK) &&
+                                 Details.Equals(DEFAULT_DETAILS) &&
                                  Header.Equals(DEFAULT_HEADER) &&
-                                 Title.Equals(DEFAULT_TITLE) &&
-                                 Update.Equals(DEFAULT_UPDATE) &&
-                                 NewVersion.Equals(DEFAULT_NEW_VERSION) &&
-                                 New.Equals(DEFAULT_NEW) &&
-                                 Version.Equals(DEFAULT_VERSION) &&
-                                 Remove.Equals(DEFAULT_REMOVE);
+                                 Remove.Equals(DEFAULT_REMOVE) &&
+                                 WindowTitle.Equals(DEFAULT_WINDOW_TITLE) &&
+                                 CurrentVersion.Equals(DEFAULT_CURRENT_VERSION) &&
+                                 UpdateVersion.Equals(DEFAULT_UPDATE_VERSION) &&
+                                 Version.Equals(DEFAULT_VERSION);
 
         public void Reset()
         {
+            Back = DEFAULT_BACK;
+
             Details = DEFAULT_DETAILS;
 
             Header = DEFAULT_HEADER;
 
-            Title = DEFAULT_TITLE;
+            Remove = DEFAULT_REMOVE;
 
-            Update = DEFAULT_UPDATE;
+            WindowTitle = DEFAULT_WINDOW_TITLE;
 
-            NewVersion = DEFAULT_NEW_VERSION;
+            CurrentVersion = DEFAULT_CURRENT_VERSION;
 
-            New = DEFAULT_NEW;
+            UpdateVersion = DEFAULT_UPDATE_VERSION;
 
             Version = DEFAULT_VERSION;
-
-            Remove = DEFAULT_REMOVE;
         }
+
+        [Localizable(true)]
+        [Category(@"Visuals")]
+        [Description(@"Localised back string.")]
+        [DefaultValue(DEFAULT_BACK)]
+        [RefreshProperties(RefreshProperties.All)]
+        public string Back { get; set; }
 
         [Localizable(true)]
         [Category(@"Visuals")]
@@ -81,31 +88,31 @@
 
         [Localizable(true)]
         [Category(@"Visuals")]
-        [Description(@"Localised title string.")]
-        [DefaultValue(DEFAULT_TITLE)]
+        [Description(@"Localised remove string.")]
+        [DefaultValue(DEFAULT_REMOVE)]
         [RefreshProperties(RefreshProperties.All)]
-        public string Title { get; set; }
+        public string Remove { get; set; }
 
         [Localizable(true)]
         [Category(@"Visuals")]
-        [Description(@"Localised update string.")]
-        [DefaultValue(DEFAULT_UPDATE)]
+        [Description(@"Localised window title string.")]
+        [DefaultValue(DEFAULT_WINDOW_TITLE)]
         [RefreshProperties(RefreshProperties.All)]
-        public string Update { get; set; }
+        public string WindowTitle { get; set; }
 
         [Localizable(true)]
         [Category(@"Visuals")]
-        [Description(@"Localised new version string.")]
-        [DefaultValue(DEFAULT_NEW_VERSION)]
+        [Description(@"Localised current version string.")]
+        [DefaultValue(DEFAULT_CURRENT_VERSION)]
         [RefreshProperties(RefreshProperties.All)]
-        public string NewVersion { get; set; }
+        public string CurrentVersion { get; set; }
 
         [Localizable(true)]
         [Category(@"Visuals")]
-        [Description(@"Localised new string.")]
-        [DefaultValue(DEFAULT_NEW)]
+        [Description(@"Localised update version string.")]
+        [DefaultValue(DEFAULT_UPDATE_VERSION)]
         [RefreshProperties(RefreshProperties.All)]
-        public string New { get; set; }
+        public string UpdateVersion { get; set; }
 
         [Localizable(true)]
         [Category(@"Visuals")]
@@ -113,13 +120,6 @@
         [DefaultValue(DEFAULT_VERSION)]
         [RefreshProperties(RefreshProperties.All)]
         public string Version { get; set; }
-
-        [Localizable(true)]
-        [Category(@"Visuals")]
-        [Description(@"Localised remove string.")]
-        [DefaultValue(DEFAULT_REMOVE)]
-        [RefreshProperties(RefreshProperties.All)]
-        public string Remove { get; set; }
 
         #endregion
     }
