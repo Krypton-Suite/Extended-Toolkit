@@ -69,6 +69,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly bool _showOptionalCheckBox;
 
+        private readonly bool _useOptionalCheckBoxThreeState;
+
         private bool _optionalCheckBoxChecked;
 
         private readonly Color _messageTextColour;
@@ -172,6 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                bool? showOptionalCheckBox,
                                                bool? optionalCheckBoxChecked,
                                                string? optionalCheckBoxText,
+                                               bool? useOptionalCheckBoxThreeState,
                                                bool? useTimeOut,
                                                int? timeOut,
                                                DialogResult? timerResult)
@@ -227,6 +230,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _showOptionalCheckBox = showOptionalCheckBox ?? false;
             _optionalCheckBoxChecked = optionalCheckBoxChecked ?? false;
             _checkBoxText = optionalCheckBoxText ?? string.Empty;
+            _useOptionalCheckBoxThreeState = useOptionalCheckBoxThreeState ?? false;
 
             // Create the form contents
             InitializeComponent();
@@ -1019,6 +1023,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             kcbOptionalCheckBox.Checked = _optionalCheckBoxChecked;
 
             kcbOptionalCheckBox.Text = _checkBoxText;
+
+            kcbOptionalCheckBox.ThreeState = _useOptionalCheckBoxThreeState;
         }
 
         internal static bool ReturnCheckBoxCheckedValue()

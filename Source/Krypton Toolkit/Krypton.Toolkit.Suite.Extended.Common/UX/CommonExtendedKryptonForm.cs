@@ -100,5 +100,17 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         #endregion
 
         private void FadeInComplete() { }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // CommonExtendedKryptonForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "CommonExtendedKryptonForm";
+            this.ResumeLayout(false);
+
+        }
     }
 }
