@@ -28,29 +28,10 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
-    /// <summary>
-    ///     The possible statuses for an animator instance
-    /// </summary>
-    public enum AnimatorStatus
+    public enum ToolkitType
     {
-        /// <summary>
-        ///     Animation is stopped
-        /// </summary>
-        Stopped,
-
-        /// <summary>
-        ///     Animation is now playing
-        /// </summary>
-        Playing,
-
-        /// <summary>
-        ///     Animation is now on hold for path delay, consider this value as playing
-        /// </summary>
-        OnHold,
-
-        /// <summary>
-        ///     Animation is paused
-        /// </summary>
-        Paused
+        Canary = 0,
+        Stable = 1,
+        Nightly = 2
     }
 }
