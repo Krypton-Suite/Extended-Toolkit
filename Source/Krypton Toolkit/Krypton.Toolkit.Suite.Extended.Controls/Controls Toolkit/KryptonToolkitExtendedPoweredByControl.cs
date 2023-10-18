@@ -44,6 +44,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             _showThemeOption = false;
 
             _toolkitType = ToolkitType.Stable;
+
+            Size = new Size(659, 122);
         }
 
         #endregion
@@ -55,13 +57,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             switch (toolkitType)
             {
                 case ToolkitType.Canary:
-                    pictureBox1.Image = Resources.Krypton_Canary;
+                    kpbxLogo.Image = Resources.Krypton_Canary;
                     break;
                 case ToolkitType.Nightly:
-                    pictureBox1.Image = Resources.Krypton_Nightly;
+                    kpbxLogo.Image = Resources.Krypton_Nightly;
                     break;
                 case ToolkitType.Stable:
-                    pictureBox1.Image = Resources.Krypton_Stable;
+                    kpbxLogo.Image = Resources.Krypton_Stable;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(toolkitType), toolkitType, null);
@@ -70,18 +72,18 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private void SetLogoSpan(bool showThemeOption)
         {
-            /*if (showThemeOption)
+            if (showThemeOption)
             {
-                tlpnlContent.SetRowSpan(kpbxLogo, 10);
+                tlpContent.SetRowSpan(kpbxLogo, 3);
 
                 TableLayoutPanelCellPosition currentThemeLabelCellPosition =
-                    tlpnlContent.GetCellPosition(kwlblCurrentTheme);
+                    tlpContent.GetCellPosition(kwlblCurrentTheme);
 
-                TableLayoutPanelCellPosition currentThemeCellPosition = tlpnlContent.GetCellPosition(ktcmbCurrentTheme);
+                TableLayoutPanelCellPosition currentThemeCellPosition = tlpContent.GetCellPosition(ktcmbTheme);
 
-                int labelRowHeight = tlpnlContent.GetRowHeights()[currentThemeLabelCellPosition.Row];
+                int labelRowHeight = tlpContent.GetRowHeights()[currentThemeLabelCellPosition.Row];
 
-                int comboBoxRowHeight = tlpnlContent.GetRowHeights()[currentThemeCellPosition.Row];
+                int comboBoxRowHeight = tlpContent.GetRowHeights()[currentThemeCellPosition.Row];
 
                 int addedHeight = labelRowHeight + comboBoxRowHeight;
 
@@ -89,12 +91,31 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
             else
             {
-                tlpnlContent.SetRowSpan(kpbxLogo, 1);
+                tlpContent.SetRowSpan(kpbxLogo, 1);
 
                 Size = new Size(659, 122);
             }
-            */
         }
+
+        private void klwlblDescription_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                Process.Start(@"https://github.com/Krypton-Suite/Extended-Toolkit");
+            }
+            catch (Exception exception)
+            {
+                ExceptionCapture.CaptureException(exception);
+            }
+        }
+
+        #endregion
+
+        #region Removed Designer Visibility
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override Color BackColor { get; set; }
 
         #endregion
     }
