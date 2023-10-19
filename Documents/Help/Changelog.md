@@ -6,6 +6,7 @@
 =======
 
 ## 2023-11-14 - Build 2311 - November 2023
+* New `KryptonToolkitExtendedPoweredByControl`, to be used in application 'About' dialogs
 * Added the ability to specify the message text alignment in a `KryptonMessageboxExtended`
 	- Default value is `MiddleLeft`
 * Implemented [#430](https://github.com/Krypton-Suite/Extended-Toolkit/issues/430), Use `KryptonProgressBar` throughout the toolkit

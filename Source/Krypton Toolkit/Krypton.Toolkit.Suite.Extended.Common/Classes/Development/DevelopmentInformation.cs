@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         /// <param name="target">The target.</param>
         /// <param name="state">The state.</param>
-        public static void SetBuildInformation(KryptonForm target, DevelopmentState state = DevelopmentState.BETA)
+        public static void SetBuildInformation(KryptonForm target, DevelopmentState state = DevelopmentState.Beta)
         {
             DevelopmentInformation developmentInformation = new DevelopmentInformation();
 
@@ -67,22 +67,22 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             {
                 switch (state)
                 {
-                    case DevelopmentState.PREALPHA:
+                    case DevelopmentState.PreAlpha:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - Pre-Alpha)";
                         break;
-                    case DevelopmentState.ALPHA:
+                    case DevelopmentState.Alpha:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - Alpha)";
                         break;
-                    case DevelopmentState.BETA:
+                    case DevelopmentState.Beta:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - Beta)";
                         break;
-                    case DevelopmentState.RTM:
+                    case DevelopmentState.ReleaseToManufacturing:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - RTM)";
                         break;
-                    case DevelopmentState.CURRENT:
+                    case DevelopmentState.Current:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - Current Build)";
                         break;
-                    case DevelopmentState.EOL:
+                    case DevelopmentState.EndOfLife:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - End of Life)";
                         break;
                 }
@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="target">The target.</param>
         /// <param name="assembly">The assembly.</param>
         /// <param name="state">The state.</param>
-        public static void SetBuildInformation(KryptonForm target, Assembly assembly, DevelopmentState state = DevelopmentState.BETA)
+        public static void SetBuildInformation(KryptonForm target, Assembly assembly, DevelopmentState state = DevelopmentState.Beta)
         {
             DevelopmentInformation developmentInformation = new DevelopmentInformation();
 
@@ -107,22 +107,22 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             {
                 switch (state)
                 {
-                    case DevelopmentState.PREALPHA:
+                    case DevelopmentState.PreAlpha:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - Pre-Alpha)";
                         break;
-                    case DevelopmentState.ALPHA:
+                    case DevelopmentState.Alpha:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - Alpha)";
                         break;
-                    case DevelopmentState.BETA:
+                    case DevelopmentState.Beta:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - Beta)";
                         break;
-                    case DevelopmentState.RTM:
+                    case DevelopmentState.ReleaseToManufacturing:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - RTM)";
                         break;
-                    case DevelopmentState.CURRENT:
+                    case DevelopmentState.Current:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - Current Build)";
                         break;
-                    case DevelopmentState.EOL:
+                    case DevelopmentState.EndOfLife:
                         target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - End of Life)";
                         break;
                 }

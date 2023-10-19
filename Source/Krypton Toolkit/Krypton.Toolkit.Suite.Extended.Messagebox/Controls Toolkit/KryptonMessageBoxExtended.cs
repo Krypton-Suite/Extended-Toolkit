@@ -33,7 +33,29 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     [DesignerCategory(@"code"), ToolboxItem(false)]
     public static class KryptonMessageBoxExtended
     {
-        #region Public 
+        #region Public
+
+        /// <summary>Shows a <see cref="KryptonMessageBoxExtended"/>.</summary>
+        /// <param name="message">The message.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <returns></returns>
+        public static DialogResult Show(string message, string caption, ExtendedMessageBoxButtons buttons,
+                                        ExtendedKryptonMessageBoxIcon icon, bool? showOptionalCheckBox = null,
+                                        bool? optionalCheckBoxChecked = null, string? optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null)
+            => ShowCore(null, message, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
+                0, null, showCtrlCopy, null, null, null, null, null, null, null, null, null,
+                null, null, null, null, null, ExtendedKryptonMessageBoxMessageContainerType.Normal,
+                null, null, null, null,
+                ContentAlignment.MiddleLeft, null, showOptionalCheckBox,
+                optionalCheckBoxChecked, optionalCheckBoxText,
+                null, null, null, DialogResult.OK);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
@@ -42,18 +64,24 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="icon">The icon.</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null,
-                                        ContentAlignment? messageTextAlignment = null,
+                                        ContentAlignment? messageTextAlignment = null, bool? showOptionalCheckBox = null,
+                                        bool? optionalCheckBoxChecked = null, string? optionalCheckBoxText = null,
                                         bool? useTimeOut = false, int? timeOut = 60, DialogResult? timerResult = DialogResult.None) =>
             ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
                      0, null, showCtrlCopy, null, null, null, null, null, null, null, null, null,
                      null, null, null, null, null, ExtendedKryptonMessageBoxMessageContainerType.Normal,
                      null, null, null, null,
-                     messageTextAlignment, null, useTimeOut, timeOut, timerResult);
+                     messageTextAlignment, null,
+                     showOptionalCheckBox, optionalCheckBoxChecked, optionalCheckBoxText,
+                     null, useTimeOut, timeOut, timerResult);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
@@ -69,6 +97,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
@@ -82,6 +113,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
                                         ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? showOptionalCheckBox = null,
+                                        bool? optionalCheckBoxChecked = null, string? optionalCheckBoxText = null,
                                         bool? useTimeOut = false, int? timeOut = 60,
                                         DialogResult? timerResult = DialogResult.None)
             => ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
@@ -90,7 +123,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                         null, null, null, null, string.Empty, string.Empty,
                         string.Empty, string.Empty, applicationPath, messageContainerType, linkLabelCommand,
                         contentLinkArea, linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment,
-                        useTimeOut, timeOut, timerResult);
+                        showOptionalCheckBox, optionalCheckBoxChecked, optionalCheckBoxText,
+                        null, useTimeOut, timeOut, timerResult);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
@@ -111,6 +145,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="useOptionalCheckBoxThreeState">Sets the 'ThreeState' ability on the optional CheckBox.</param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
@@ -131,6 +169,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ContentAlignment? messageTextAlignment =
                                             ContentAlignment.MiddleLeft,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? showOptionalCheckBox = null,
+                                        bool? optionalCheckBoxChecked = null, string? optionalCheckBoxText = null,
+                                        bool? useOptionalCheckBoxThreeState = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, DialogResult? timerResult = DialogResult.None)
             =>
@@ -142,6 +183,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          string.Empty, string.Empty, applicationPath,
                          messageContainerType, linkLabelCommand, contentLinkArea,
                          linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment,
+                         showOptionalCheckBox, optionalCheckBoxChecked, optionalCheckBoxText,
+                         useOptionalCheckBoxThreeState,
                          useTimeOut, timeOut, timerResult);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
@@ -161,6 +204,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="useOptionalCheckBoxThreeState">Sets the 'ThreeState' ability on the optional CheckBox.</param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
@@ -177,7 +224,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
                                         ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
-                                        bool? useTimeOut = false, int? timeOut = 60, DialogResult? timerResult = DialogResult.None)
+                                        bool? showOptionalCheckBox = null,
+                                        bool? optionalCheckBoxChecked = null,
+                                        string? optionalCheckBoxText = null,
+                                        bool? useOptionalCheckBoxThreeState = null,
+                                        bool? useTimeOut = false, int? timeOut = 60,
+                                        DialogResult? timerResult = DialogResult.None)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -187,6 +239,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          string.Empty, string.Empty, applicationPath,
                          messageContainerType, linkLabelCommand, contentLinkArea, linkLaunchArgument, openInExplorer,
                          messageTextAlignment, richTextBoxTextAlignment,
+                         showOptionalCheckBox, optionalCheckBoxChecked, optionalCheckBoxText,
+                         useOptionalCheckBoxThreeState,
                          useTimeOut, timeOut, timerResult);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
@@ -209,6 +263,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="useOptionalCheckBoxThreeState">Sets the 'ThreeState' ability on the optional CheckBox.</param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
@@ -227,6 +285,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
                                         ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? showOptionalCheckBox = null,
+                                        bool? optionalCheckBoxChecked = null,
+                                        string? optionalCheckBoxText = null,
+                                        bool? useOptionalCheckBoxThreeState = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, DialogResult? timerResult = DialogResult.None
                                         )
@@ -241,6 +303,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          applicationPath, messageContainerType, linkLabelCommand, contentLinkArea,
                          linkLaunchArgument, openInExplorer,
                          messageTextAlignment, richTextBoxTextAlignment,
+                         showOptionalCheckBox, optionalCheckBoxChecked, optionalCheckBoxText,
+                         useOptionalCheckBoxThreeState,
                          useTimeOut, timeOut, timerResult);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
@@ -261,6 +325,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="useOptionalCheckBoxThreeState">Sets the 'ThreeState' ability on the optional CheckBox.</param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
@@ -278,6 +346,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
                                         ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? showOptionalCheckBox = null,
+                                        bool? optionalCheckBoxChecked = null,
+                                        string? optionalCheckBoxText = null,
+                                        bool? useOptionalCheckBoxThreeState = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, DialogResult? timerResult = DialogResult.None)
             =>
@@ -293,6 +365,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          linkLaunchArgument,
                          openInExplorer, messageTextAlignment,
                          richTextBoxTextAlignment,
+                         showOptionalCheckBox, optionalCheckBoxChecked, optionalCheckBoxText,
+                         useOptionalCheckBoxThreeState,
                          useTimeOut, timeOut, timerResult);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
@@ -316,6 +390,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="useOptionalCheckBoxThreeState">Sets the 'ThreeState' ability on the optional CheckBox.</param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
@@ -337,6 +415,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ProcessStartInfo? linkLaunchArgument = null,
                                         bool? openInExplorer = null, ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? showOptionalCheckBox = null,
+                                        bool? optionalCheckBoxChecked = null,
+                                        string? optionalCheckBoxText = null,
+                                        bool? useOptionalCheckBoxThreeState = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, DialogResult? timerResult = DialogResult.None
                                         )
@@ -351,6 +433,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          string.Empty, applicationPath,
                          messageContainerType, linkLabelCommand, contentLinkArea,
                          linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment,
+                         showOptionalCheckBox, optionalCheckBoxChecked, optionalCheckBoxText,
+                         useOptionalCheckBoxThreeState,
                          useTimeOut, timeOut, timerResult);
 
         /// <summary>Shows a message box.</summary>
@@ -387,6 +471,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="useOptionalCheckBoxThreeState">Sets the 'ThreeState' ability on the optional CheckBox.</param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
@@ -421,6 +509,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? openInExplorer = null,
                                         ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        bool? showOptionalCheckBox = null,
+                                        bool? optionalCheckBoxChecked = null,
+                                        string? optionalCheckBoxText = null,
+                                        bool? useOptionalCheckBoxThreeState = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60,
                                         DialogResult? timerResult = DialogResult.None)
@@ -435,7 +527,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          messageContainerType, linkLabelCommand, contentLinkArea, linkLaunchArgument,
                          openInExplorer, messageTextAlignment,
                          richTextBoxTextAlignment,
+                         showOptionalCheckBox, optionalCheckBoxChecked, optionalCheckBoxText,
+                         useOptionalCheckBoxThreeState,
                          useTimeOut, timeOut, timerResult);
+
+        public static bool ReturnCheckBoxCheckedValue() => KryptonMessageBoxExtendedForm.ReturnCheckBoxCheckedValue();
+
+        public static CheckState ReturnCheckBoxCheckState() => KryptonMessageBoxExtendedForm.ReturnCheckBoxCheckState();
 
         #endregion
 
@@ -472,6 +570,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="useOptionalCheckBoxThreeState">Sets the 'ThreeState' ability on the optional CheckBox.</param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
@@ -498,11 +600,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                               bool? openInExplorer,
                                               ContentAlignment? messageTextAlignment,
                                               PaletteRelativeAlign? richTextBoxTextAlignment,
+                                              bool? showOptionalCheckBox,
+                                              bool? optionalCheckBoxChecked,
+                                              string? optionalCheckBoxText,
+                                              bool? useOptionalCheckBoxThreeState,
                                               bool? useTimeOut,
                                               int? timeOut,
                                               DialogResult? timerResult)
         {
-            IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
+            IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
             using KryptonMessageBoxExtendedForm kmbe = new(showOwner, text, caption, buttons,
                                                             icon, defaultButton, options,
@@ -527,6 +633,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                             openInExplorer,
                                                             messageTextAlignment,
                                                             richTextBoxTextAlignment,
+                                                            showOptionalCheckBox,
+                                                            optionalCheckBoxChecked,
+                                                            optionalCheckBoxText,
+                                                            useOptionalCheckBoxThreeState,
                                                             useTimeOut,
                                                             timeOut,
                                                             timerResult);
@@ -536,7 +646,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region WinForm Compatibility
-        private static IWin32Window ValidateOptions(IWin32Window? owner, MessageBoxOptions options, HelpInfo? helpInfo)
+        private static IWin32Window? ValidateOptions(IWin32Window? owner, MessageBoxOptions options, HelpInfo? helpInfo)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive &&
@@ -559,7 +669,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 throw new ArgumentException(@"Cannot show message box from a service with help specified", nameof(options));
             }
 
-            IWin32Window showOwner = null;
+            IWin32Window? showOwner = null;
             if ((helpInfo != null) ||
                 ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
             {

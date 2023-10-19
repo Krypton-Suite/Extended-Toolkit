@@ -87,9 +87,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.9.269-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.10.290-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="80.23.9.269-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="80.23.10.290-alpha" />
 			</ItemGroup>
 		</When>
 
