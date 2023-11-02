@@ -6,6 +6,7 @@
 =======
 
 ## 2024-11-xx - Build 2411 - November 2024
+* New `Krypton.Toolkit.Suite.Extended.Exception.Box` module
 * Add support for .NET 9.0
 * Removed support for .NET 7.0
 * Updated standard toolkit to build `2411`
