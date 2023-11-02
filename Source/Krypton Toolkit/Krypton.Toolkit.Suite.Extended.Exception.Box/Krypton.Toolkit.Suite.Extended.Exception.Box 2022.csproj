@@ -28,8 +28,8 @@
 
 	<PropertyGroup>
 		<OutputType>library</OutputType>
-		<RootNamespace>Krypton.Toolkit.Suite.Extended.File.Explorer</RootNamespace>
-		<AssemblyName>Krypton.Toolkit.Suite.Extended.File.Explorer</AssemblyName>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.Exception.Box</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.Exception.Box</AssemblyName>
 		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
@@ -37,6 +37,9 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Configurations>Debug;Release;Nightly;Canary</Configurations>
+		<LangVersion>preview</LangVersion>
+		<Nullable>enable</Nullable>
+		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 	</PropertyGroup>
 
@@ -44,31 +47,31 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.File.Explorer.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Exception.Box.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.File.Explorer.Nightly</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Exception.Box.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.File.Explorer</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Exception.Box</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.File.Explorer</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Exception.Box</PackageId>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 6 - 9. This package implements a file explorer.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 6 - 9. This package implements the exception box.
 
 			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 6 - 9.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
@@ -84,7 +87,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.5.150-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.10.303-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -94,7 +97,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="70.22.8.234-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.7.205-beta" />
 			</ItemGroup>
 		</When>
 
@@ -118,26 +121,6 @@
 			</ItemGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'SignedFull'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.6.152" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedLite'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Signed.Lite" Version="65.22.6.152" />
-			</ItemGroup>
-		</When>
-
 		<Otherwise>
 			<!--If all else fails-->
 			<PropertyGroup>
@@ -150,36 +133,37 @@
 		</Otherwise>
 	</Choose>
 
-	<ItemGroup>
-		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>4.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>5.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>6.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
-		<!--TODO: Need to specify version here-->
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="License\License.txt">
-	    <PackagePath></PackagePath>
-	    <Pack>true</Pack>
-	  </None>
-	</ItemGroup>
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
-		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.File.Explorer\Krypton.Toolkit.Suite.Extended.File.Explorer.xml</DocumentationFile>
-		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.File.Explorer\</OutputPath>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Exception.Box\Krypton.Toolkit.Suite.Extended.Exception.Box.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Exception.Box\</OutputPath>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<!--Optimisation-->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
 	</PropertyGroup>
 
 </Project>

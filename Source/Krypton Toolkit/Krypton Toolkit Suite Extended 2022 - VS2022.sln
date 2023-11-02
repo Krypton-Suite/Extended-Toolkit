@@ -285,6 +285,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Issue Templates", "Issue Te
 		..\..\.github\ISSUE_TEMPLATE\post-a-question.md = ..\..\.github\ISSUE_TEMPLATE\post-a-question.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Exception.Box 2022", "Krypton.Toolkit.Suite.Extended.Exception.Box\Krypton.Toolkit.Suite.Extended.Exception.Box 2022.csproj", "{417D4538-B485-48F6-B96B-AAFF80B29E27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Canary|Any CPU = Canary|Any CPU
@@ -781,6 +783,14 @@ Global
 		{975DA9CB-501F-442E-8339-AF625C7A5DA4}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
 		{975DA9CB-501F-442E-8339-AF625C7A5DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{975DA9CB-501F-442E-8339-AF625C7A5DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{417D4538-B485-48F6-B96B-AAFF80B29E27}.Canary|Any CPU.ActiveCfg = Debug|Any CPU
+		{417D4538-B485-48F6-B96B-AAFF80B29E27}.Canary|Any CPU.Build.0 = Debug|Any CPU
+		{417D4538-B485-48F6-B96B-AAFF80B29E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{417D4538-B485-48F6-B96B-AAFF80B29E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{417D4538-B485-48F6-B96B-AAFF80B29E27}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
+		{417D4538-B485-48F6-B96B-AAFF80B29E27}.Nightly|Any CPU.Build.0 = Debug|Any CPU
+		{417D4538-B485-48F6-B96B-AAFF80B29E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{417D4538-B485-48F6-B96B-AAFF80B29E27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -869,6 +879,7 @@ Global
 		{975DA9CB-501F-442E-8339-AF625C7A5DA4} = {4985A154-8526-4CB0-A7DC-B39736C4A8AC}
 		{5D204922-259D-4140-B115-F01EDF031B5A} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
 		{362F24FA-1AA0-4821-A539-C5A863D39B8B} = {5D204922-259D-4140-B115-F01EDF031B5A}
+		{417D4538-B485-48F6-B96B-AAFF80B29E27} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

@@ -70,9 +70,9 @@
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements utilities for developer usage.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 6 - 9. This package implements utilities for developer usage.
 
-			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 6 - 9.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
 
 			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
@@ -86,7 +86,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.10.290-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.10.303-alpha" />
 			</ItemGroup>
 		</When>
 
