@@ -37,7 +37,24 @@
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonHeaderGroup1 = new Krypton.Toolkit.KryptonHeaderGroup();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.kpnlGeneralInformation = new Krypton.Toolkit.KryptonPanel();
+            this.tlpnlGeneralInformation = new System.Windows.Forms.TableLayoutPanel();
+            this.pbxToolkitImage = new System.Windows.Forms.PictureBox();
+            this.ktcmbCurrentTheme = new Krypton.Toolkit.KryptonThemeComboBox();
+            this.klblCurrentTheme = new Krypton.Toolkit.KryptonLabel();
+            this.klwlblGeneralInformation = new Krypton.Toolkit.KryptonLinkWrapLabel();
+            this.kpnlDiscord = new Krypton.Toolkit.KryptonPanel();
+            this.klwlblJoinDiscordServer = new Krypton.Toolkit.KryptonLinkWrapLabel();
+            this.kpnlDeveloperInformation = new Krypton.Toolkit.KryptonPanel();
+            this.tlpDeveloperInformation = new System.Windows.Forms.TableLayoutPanel();
+            this.klwlblViewRepositories = new Krypton.Toolkit.KryptonLinkWrapLabel();
+            this.klwlblDownloadDemos = new Krypton.Toolkit.KryptonLinkWrapLabel();
+            this.klwlblDownloadDocumentation = new Krypton.Toolkit.KryptonLinkWrapLabel();
+            this.kpnlVersionInformation = new Krypton.Toolkit.KryptonPanel();
+            this.kdgvVersionInformation = new Krypton.Toolkit.KryptonDataGridView();
+            this.colFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsControls = new System.Windows.Forms.ToolStrip();
             this.tsbtnGeneralInformation = new System.Windows.Forms.ToolStripButton();
             this.tssDiscord = new System.Windows.Forms.ToolStripSeparator();
             this.tsbtnDiscord = new System.Windows.Forms.ToolStripButton();
@@ -45,23 +62,6 @@
             this.tsbtnDeveloperInformation = new System.Windows.Forms.ToolStripButton();
             this.tssVersionInformation = new System.Windows.Forms.ToolStripSeparator();
             this.tsbtnVersionInformation = new System.Windows.Forms.ToolStripButton();
-            this.kpnlVersionInformation = new Krypton.Toolkit.KryptonPanel();
-            this.kdgvVersionInformation = new Krypton.Toolkit.KryptonDataGridView();
-            this.colFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kpnlDeveloperInformation = new Krypton.Toolkit.KryptonPanel();
-            this.tlpDeveloperInformation = new System.Windows.Forms.TableLayoutPanel();
-            this.klwlblViewRepositories = new Krypton.Toolkit.KryptonLinkWrapLabel();
-            this.klwlblDownloadDemos = new Krypton.Toolkit.KryptonLinkWrapLabel();
-            this.klwlblDownloadDocumentation = new Krypton.Toolkit.KryptonLinkWrapLabel();
-            this.kpnlDiscord = new Krypton.Toolkit.KryptonPanel();
-            this.klwlblJoinDiscordServer = new Krypton.Toolkit.KryptonLinkWrapLabel();
-            this.kpnlGeneralInformation = new Krypton.Toolkit.KryptonPanel();
-            this.tlpnlGeneralInformation = new System.Windows.Forms.TableLayoutPanel();
-            this.pbxToolkitImage = new System.Windows.Forms.PictureBox();
-            this.ktcmbCurrentTheme = new Krypton.Toolkit.KryptonThemeComboBox();
-            this.klblCurrentTheme = new Krypton.Toolkit.KryptonLabel();
-            this.klwlblGeneralInformation = new Krypton.Toolkit.KryptonLinkWrapLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -74,20 +74,20 @@
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlVersionInformation)).BeginInit();
-            this.kpnlVersionInformation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kdgvVersionInformation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlDeveloperInformation)).BeginInit();
-            this.kpnlDeveloperInformation.SuspendLayout();
-            this.tlpDeveloperInformation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlDiscord)).BeginInit();
-            this.kpnlDiscord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlGeneralInformation)).BeginInit();
             this.kpnlGeneralInformation.SuspendLayout();
             this.tlpnlGeneralInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxToolkitImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ktcmbCurrentTheme)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlDiscord)).BeginInit();
+            this.kpnlDiscord.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlDeveloperInformation)).BeginInit();
+            this.kpnlDeveloperInformation.SuspendLayout();
+            this.tlpDeveloperInformation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlVersionInformation)).BeginInit();
+            this.kpnlVersionInformation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kdgvVersionInformation)).BeginInit();
+            this.tsControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -127,6 +127,7 @@
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 0;
             this.kbtnOk.Values.Text = "kryptonButton1";
+            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
             // 
             // kbtnSystemInformation
             // 
@@ -137,6 +138,7 @@
             this.kbtnSystemInformation.Size = new System.Drawing.Size(171, 25);
             this.kbtnSystemInformation.TabIndex = 1;
             this.kbtnSystemInformation.Values.Text = "kryptonButton2";
+            this.kbtnSystemInformation.Click += new System.EventHandler(this.kbtnSystemInformation_Click);
             // 
             // kryptonBorderEdge1
             // 
@@ -188,201 +190,7 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbtnGeneralInformation,
-            this.tssDiscord,
-            this.tsbtnDiscord,
-            this.tssDeveloperInformation,
-            this.tsbtnDeveloperInformation,
-            this.tssVersionInformation,
-            this.tsbtnVersionInformation});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(413, 25);
-            this.toolStrip1.TabIndex = 0;
-            // 
-            // tsbtnGeneralInformation
-            // 
-            this.tsbtnGeneralInformation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbtnGeneralInformation.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnGeneralInformation.Image")));
-            this.tsbtnGeneralInformation.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnGeneralInformation.Name = "tsbtnGeneralInformation";
-            this.tsbtnGeneralInformation.Size = new System.Drawing.Size(98, 22);
-            this.tsbtnGeneralInformation.Text = "toolStripButton1";
-            // 
-            // tssDiscord
-            // 
-            this.tssDiscord.Name = "tssDiscord";
-            this.tssDiscord.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbtnDiscord
-            // 
-            this.tsbtnDiscord.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbtnDiscord.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDiscord.Image")));
-            this.tsbtnDiscord.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnDiscord.Name = "tsbtnDiscord";
-            this.tsbtnDiscord.Size = new System.Drawing.Size(98, 22);
-            this.tsbtnDiscord.Text = "toolStripButton2";
-            // 
-            // tssDeveloperInformation
-            // 
-            this.tssDeveloperInformation.Name = "tssDeveloperInformation";
-            this.tssDeveloperInformation.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbtnDeveloperInformation
-            // 
-            this.tsbtnDeveloperInformation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbtnDeveloperInformation.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDeveloperInformation.Image")));
-            this.tsbtnDeveloperInformation.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnDeveloperInformation.Name = "tsbtnDeveloperInformation";
-            this.tsbtnDeveloperInformation.Size = new System.Drawing.Size(98, 22);
-            this.tsbtnDeveloperInformation.Text = "toolStripButton3";
-            // 
-            // tssVersionInformation
-            // 
-            this.tssVersionInformation.Name = "tssVersionInformation";
-            this.tssVersionInformation.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbtnVersionInformation
-            // 
-            this.tsbtnVersionInformation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbtnVersionInformation.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnVersionInformation.Image")));
-            this.tsbtnVersionInformation.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnVersionInformation.Name = "tsbtnVersionInformation";
-            this.tsbtnVersionInformation.Size = new System.Drawing.Size(98, 22);
-            this.tsbtnVersionInformation.Text = "toolStripButton4";
-            // 
-            // kpnlVersionInformation
-            // 
-            this.kpnlVersionInformation.Controls.Add(this.kdgvVersionInformation);
-            this.kpnlVersionInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kpnlVersionInformation.Location = new System.Drawing.Point(0, 0);
-            this.kpnlVersionInformation.Name = "kpnlVersionInformation";
-            this.kpnlVersionInformation.Size = new System.Drawing.Size(757, 285);
-            this.kpnlVersionInformation.TabIndex = 0;
-            // 
-            // kdgvVersionInformation
-            // 
-            this.kdgvVersionInformation.AllowUserToAddRows = false;
-            this.kdgvVersionInformation.AllowUserToDeleteRows = false;
-            this.kdgvVersionInformation.AllowUserToOrderColumns = true;
-            this.kdgvVersionInformation.AllowUserToResizeColumns = false;
-            this.kdgvVersionInformation.AllowUserToResizeRows = false;
-            this.kdgvVersionInformation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.kdgvVersionInformation.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.kdgvVersionInformation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.kdgvVersionInformation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colFileName,
-            this.colVersion});
-            this.kdgvVersionInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kdgvVersionInformation.Location = new System.Drawing.Point(0, 0);
-            this.kdgvVersionInformation.Name = "kdgvVersionInformation";
-            this.kdgvVersionInformation.Size = new System.Drawing.Size(757, 285);
-            this.kdgvVersionInformation.TabIndex = 0;
-            // 
-            // colFileName
-            // 
-            this.colFileName.HeaderText = "Column1";
-            this.colFileName.Name = "colFileName";
-            this.colFileName.Width = 85;
-            // 
-            // colVersion
-            // 
-            this.colVersion.HeaderText = "Column1";
-            this.colVersion.Name = "colVersion";
-            this.colVersion.Width = 85;
-            // 
-            // kpnlDeveloperInformation
-            // 
-            this.kpnlDeveloperInformation.Controls.Add(this.tlpDeveloperInformation);
-            this.kpnlDeveloperInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kpnlDeveloperInformation.Location = new System.Drawing.Point(0, 0);
-            this.kpnlDeveloperInformation.Name = "kpnlDeveloperInformation";
-            this.kpnlDeveloperInformation.Size = new System.Drawing.Size(757, 285);
-            this.kpnlDeveloperInformation.TabIndex = 1;
-            // 
-            // tlpDeveloperInformation
-            // 
-            this.tlpDeveloperInformation.BackColor = System.Drawing.Color.Transparent;
-            this.tlpDeveloperInformation.ColumnCount = 1;
-            this.tlpDeveloperInformation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpDeveloperInformation.Controls.Add(this.klwlblViewRepositories, 0, 0);
-            this.tlpDeveloperInformation.Controls.Add(this.klwlblDownloadDemos, 0, 1);
-            this.tlpDeveloperInformation.Controls.Add(this.klwlblDownloadDocumentation, 0, 2);
-            this.tlpDeveloperInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpDeveloperInformation.Location = new System.Drawing.Point(0, 0);
-            this.tlpDeveloperInformation.Name = "tlpDeveloperInformation";
-            this.tlpDeveloperInformation.RowCount = 3;
-            this.tlpDeveloperInformation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpDeveloperInformation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpDeveloperInformation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpDeveloperInformation.Size = new System.Drawing.Size(757, 285);
-            this.tlpDeveloperInformation.TabIndex = 0;
-            // 
-            // klwlblViewRepositories
-            // 
-            this.klwlblViewRepositories.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.klwlblViewRepositories.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.klwlblViewRepositories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.klwlblViewRepositories.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
-            this.klwlblViewRepositories.Location = new System.Drawing.Point(3, 0);
-            this.klwlblViewRepositories.Name = "klwlblViewRepositories";
-            this.klwlblViewRepositories.Size = new System.Drawing.Size(751, 95);
-            this.klwlblViewRepositories.Text = "kryptonLinkWrapLabel1";
-            this.klwlblViewRepositories.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // klwlblDownloadDemos
-            // 
-            this.klwlblDownloadDemos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.klwlblDownloadDemos.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.klwlblDownloadDemos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.klwlblDownloadDemos.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
-            this.klwlblDownloadDemos.Location = new System.Drawing.Point(3, 95);
-            this.klwlblDownloadDemos.Name = "klwlblDownloadDemos";
-            this.klwlblDownloadDemos.Size = new System.Drawing.Size(751, 95);
-            this.klwlblDownloadDemos.Text = "kryptonLinkWrapLabel2";
-            this.klwlblDownloadDemos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // klwlblDownloadDocumentation
-            // 
-            this.klwlblDownloadDocumentation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.klwlblDownloadDocumentation.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.klwlblDownloadDocumentation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.klwlblDownloadDocumentation.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
-            this.klwlblDownloadDocumentation.Location = new System.Drawing.Point(3, 190);
-            this.klwlblDownloadDocumentation.Name = "klwlblDownloadDocumentation";
-            this.klwlblDownloadDocumentation.Size = new System.Drawing.Size(751, 95);
-            this.klwlblDownloadDocumentation.Text = "kryptonLinkWrapLabel3";
-            this.klwlblDownloadDocumentation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // kpnlDiscord
-            // 
-            this.kpnlDiscord.Controls.Add(this.klwlblJoinDiscordServer);
-            this.kpnlDiscord.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kpnlDiscord.Location = new System.Drawing.Point(0, 0);
-            this.kpnlDiscord.Name = "kpnlDiscord";
-            this.kpnlDiscord.Size = new System.Drawing.Size(757, 285);
-            this.kpnlDiscord.TabIndex = 2;
-            // 
-            // klwlblJoinDiscordServer
-            // 
-            this.klwlblJoinDiscordServer.AutoSize = false;
-            this.klwlblJoinDiscordServer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.klwlblJoinDiscordServer.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.klwlblJoinDiscordServer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.klwlblJoinDiscordServer.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
-            this.klwlblJoinDiscordServer.Location = new System.Drawing.Point(0, 0);
-            this.klwlblJoinDiscordServer.Name = "klwlblJoinDiscordServer";
-            this.klwlblJoinDiscordServer.Size = new System.Drawing.Size(757, 285);
-            this.klwlblJoinDiscordServer.Text = "kryptonLinkWrapLabel1";
-            this.klwlblJoinDiscordServer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tsControls);
             // 
             // kpnlGeneralInformation
             // 
@@ -463,6 +271,213 @@
             this.klwlblGeneralInformation.Size = new System.Drawing.Size(673, 214);
             this.klwlblGeneralInformation.Text = "{0}\r\n\r\n{1}\r\n\r\n{2}";
             this.klwlblGeneralInformation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.klwlblGeneralInformation.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.klwlblGeneralInformation_LinkClicked);
+            // 
+            // kpnlDiscord
+            // 
+            this.kpnlDiscord.Controls.Add(this.klwlblJoinDiscordServer);
+            this.kpnlDiscord.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpnlDiscord.Location = new System.Drawing.Point(0, 0);
+            this.kpnlDiscord.Name = "kpnlDiscord";
+            this.kpnlDiscord.Size = new System.Drawing.Size(757, 285);
+            this.kpnlDiscord.TabIndex = 2;
+            // 
+            // klwlblJoinDiscordServer
+            // 
+            this.klwlblJoinDiscordServer.AutoSize = false;
+            this.klwlblJoinDiscordServer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.klwlblJoinDiscordServer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.klwlblJoinDiscordServer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.klwlblJoinDiscordServer.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
+            this.klwlblJoinDiscordServer.Location = new System.Drawing.Point(0, 0);
+            this.klwlblJoinDiscordServer.Name = "klwlblJoinDiscordServer";
+            this.klwlblJoinDiscordServer.Size = new System.Drawing.Size(757, 285);
+            this.klwlblJoinDiscordServer.Text = "kryptonLinkWrapLabel1";
+            this.klwlblJoinDiscordServer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.klwlblJoinDiscordServer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.klwlblJoinDiscordServer_LinkClicked);
+            // 
+            // kpnlDeveloperInformation
+            // 
+            this.kpnlDeveloperInformation.Controls.Add(this.tlpDeveloperInformation);
+            this.kpnlDeveloperInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpnlDeveloperInformation.Location = new System.Drawing.Point(0, 0);
+            this.kpnlDeveloperInformation.Name = "kpnlDeveloperInformation";
+            this.kpnlDeveloperInformation.Size = new System.Drawing.Size(757, 285);
+            this.kpnlDeveloperInformation.TabIndex = 1;
+            // 
+            // tlpDeveloperInformation
+            // 
+            this.tlpDeveloperInformation.BackColor = System.Drawing.Color.Transparent;
+            this.tlpDeveloperInformation.ColumnCount = 1;
+            this.tlpDeveloperInformation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpDeveloperInformation.Controls.Add(this.klwlblViewRepositories, 0, 0);
+            this.tlpDeveloperInformation.Controls.Add(this.klwlblDownloadDemos, 0, 1);
+            this.tlpDeveloperInformation.Controls.Add(this.klwlblDownloadDocumentation, 0, 2);
+            this.tlpDeveloperInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpDeveloperInformation.Location = new System.Drawing.Point(0, 0);
+            this.tlpDeveloperInformation.Name = "tlpDeveloperInformation";
+            this.tlpDeveloperInformation.RowCount = 3;
+            this.tlpDeveloperInformation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpDeveloperInformation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpDeveloperInformation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpDeveloperInformation.Size = new System.Drawing.Size(757, 285);
+            this.tlpDeveloperInformation.TabIndex = 0;
+            // 
+            // klwlblViewRepositories
+            // 
+            this.klwlblViewRepositories.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.klwlblViewRepositories.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.klwlblViewRepositories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.klwlblViewRepositories.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
+            this.klwlblViewRepositories.Location = new System.Drawing.Point(3, 0);
+            this.klwlblViewRepositories.Name = "klwlblViewRepositories";
+            this.klwlblViewRepositories.Size = new System.Drawing.Size(751, 95);
+            this.klwlblViewRepositories.Text = "kryptonLinkWrapLabel1";
+            this.klwlblViewRepositories.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.klwlblViewRepositories.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.klwlblViewRepositories_LinkClicked);
+            // 
+            // klwlblDownloadDemos
+            // 
+            this.klwlblDownloadDemos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.klwlblDownloadDemos.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.klwlblDownloadDemos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.klwlblDownloadDemos.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
+            this.klwlblDownloadDemos.Location = new System.Drawing.Point(3, 95);
+            this.klwlblDownloadDemos.Name = "klwlblDownloadDemos";
+            this.klwlblDownloadDemos.Size = new System.Drawing.Size(751, 95);
+            this.klwlblDownloadDemos.Text = "kryptonLinkWrapLabel2";
+            this.klwlblDownloadDemos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.klwlblDownloadDemos.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.klwlblDownloadDemos_LinkClicked);
+            // 
+            // klwlblDownloadDocumentation
+            // 
+            this.klwlblDownloadDocumentation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.klwlblDownloadDocumentation.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.klwlblDownloadDocumentation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.klwlblDownloadDocumentation.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
+            this.klwlblDownloadDocumentation.Location = new System.Drawing.Point(3, 190);
+            this.klwlblDownloadDocumentation.Name = "klwlblDownloadDocumentation";
+            this.klwlblDownloadDocumentation.Size = new System.Drawing.Size(751, 95);
+            this.klwlblDownloadDocumentation.Text = "kryptonLinkWrapLabel3";
+            this.klwlblDownloadDocumentation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.klwlblDownloadDocumentation.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.klwlblDownloadDocumentation_LinkClicked);
+            // 
+            // kpnlVersionInformation
+            // 
+            this.kpnlVersionInformation.Controls.Add(this.kdgvVersionInformation);
+            this.kpnlVersionInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpnlVersionInformation.Location = new System.Drawing.Point(0, 0);
+            this.kpnlVersionInformation.Name = "kpnlVersionInformation";
+            this.kpnlVersionInformation.Size = new System.Drawing.Size(757, 285);
+            this.kpnlVersionInformation.TabIndex = 0;
+            // 
+            // kdgvVersionInformation
+            // 
+            this.kdgvVersionInformation.AllowUserToAddRows = false;
+            this.kdgvVersionInformation.AllowUserToDeleteRows = false;
+            this.kdgvVersionInformation.AllowUserToOrderColumns = true;
+            this.kdgvVersionInformation.AllowUserToResizeColumns = false;
+            this.kdgvVersionInformation.AllowUserToResizeRows = false;
+            this.kdgvVersionInformation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.kdgvVersionInformation.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.kdgvVersionInformation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.kdgvVersionInformation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colFileName,
+            this.colVersion});
+            this.kdgvVersionInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kdgvVersionInformation.Location = new System.Drawing.Point(0, 0);
+            this.kdgvVersionInformation.Name = "kdgvVersionInformation";
+            this.kdgvVersionInformation.Size = new System.Drawing.Size(757, 285);
+            this.kdgvVersionInformation.TabIndex = 0;
+            // 
+            // colFileName
+            // 
+            this.colFileName.HeaderText = "Column1";
+            this.colFileName.Name = "colFileName";
+            this.colFileName.Width = 85;
+            // 
+            // colVersion
+            // 
+            this.colVersion.HeaderText = "Column1";
+            this.colVersion.Name = "colVersion";
+            this.colVersion.Width = 85;
+            // 
+            // tsControls
+            // 
+            this.tsControls.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsControls.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tsControls.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tsControls.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbtnGeneralInformation,
+            this.tssDiscord,
+            this.tsbtnDiscord,
+            this.tssDeveloperInformation,
+            this.tsbtnDeveloperInformation,
+            this.tssVersionInformation,
+            this.tsbtnVersionInformation});
+            this.tsControls.Location = new System.Drawing.Point(3, 0);
+            this.tsControls.Name = "tsControls";
+            this.tsControls.Size = new System.Drawing.Size(444, 25);
+            this.tsControls.TabIndex = 0;
+            // 
+            // tsbtnGeneralInformation
+            // 
+            this.tsbtnGeneralInformation.CheckOnClick = true;
+            this.tsbtnGeneralInformation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbtnGeneralInformation.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnGeneralInformation.Image")));
+            this.tsbtnGeneralInformation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnGeneralInformation.Name = "tsbtnGeneralInformation";
+            this.tsbtnGeneralInformation.Size = new System.Drawing.Size(98, 22);
+            this.tsbtnGeneralInformation.Text = "toolStripButton1";
+            this.tsbtnGeneralInformation.Click += new System.EventHandler(this.tsbtnGeneralInformation_Click);
+            // 
+            // tssDiscord
+            // 
+            this.tssDiscord.Name = "tssDiscord";
+            this.tssDiscord.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbtnDiscord
+            // 
+            this.tsbtnDiscord.CheckOnClick = true;
+            this.tsbtnDiscord.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbtnDiscord.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDiscord.Image")));
+            this.tsbtnDiscord.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnDiscord.Name = "tsbtnDiscord";
+            this.tsbtnDiscord.Size = new System.Drawing.Size(98, 22);
+            this.tsbtnDiscord.Text = "toolStripButton2";
+            this.tsbtnDiscord.Click += new System.EventHandler(this.tsbtnDiscord_Click);
+            // 
+            // tssDeveloperInformation
+            // 
+            this.tssDeveloperInformation.Name = "tssDeveloperInformation";
+            this.tssDeveloperInformation.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbtnDeveloperInformation
+            // 
+            this.tsbtnDeveloperInformation.CheckOnClick = true;
+            this.tsbtnDeveloperInformation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbtnDeveloperInformation.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDeveloperInformation.Image")));
+            this.tsbtnDeveloperInformation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnDeveloperInformation.Name = "tsbtnDeveloperInformation";
+            this.tsbtnDeveloperInformation.Size = new System.Drawing.Size(98, 22);
+            this.tsbtnDeveloperInformation.Text = "toolStripButton3";
+            this.tsbtnDeveloperInformation.Click += new System.EventHandler(this.tsbtnDeveloperInformation_Click);
+            // 
+            // tssVersionInformation
+            // 
+            this.tssVersionInformation.Name = "tssVersionInformation";
+            this.tssVersionInformation.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbtnVersionInformation
+            // 
+            this.tsbtnVersionInformation.CheckOnClick = true;
+            this.tsbtnVersionInformation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbtnVersionInformation.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnVersionInformation.Image")));
+            this.tsbtnVersionInformation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnVersionInformation.Name = "tsbtnVersionInformation";
+            this.tsbtnVersionInformation.Size = new System.Drawing.Size(98, 22);
+            this.tsbtnVersionInformation.Text = "toolStripButton4";
+            this.tsbtnVersionInformation.Click += new System.EventHandler(this.tsbtnVersionInformation_Click);
             // 
             // KryptonAboutExtendedToolkitForm
             // 
@@ -493,23 +508,23 @@
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlVersionInformation)).EndInit();
-            this.kpnlVersionInformation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kdgvVersionInformation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlDeveloperInformation)).EndInit();
-            this.kpnlDeveloperInformation.ResumeLayout(false);
-            this.tlpDeveloperInformation.ResumeLayout(false);
-            this.tlpDeveloperInformation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlDiscord)).EndInit();
-            this.kpnlDiscord.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kpnlGeneralInformation)).EndInit();
             this.kpnlGeneralInformation.ResumeLayout(false);
             this.tlpnlGeneralInformation.ResumeLayout(false);
             this.tlpnlGeneralInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxToolkitImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ktcmbCurrentTheme)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlDiscord)).EndInit();
+            this.kpnlDiscord.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlDeveloperInformation)).EndInit();
+            this.kpnlDeveloperInformation.ResumeLayout(false);
+            this.tlpDeveloperInformation.ResumeLayout(false);
+            this.tlpDeveloperInformation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlVersionInformation)).EndInit();
+            this.kpnlVersionInformation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kdgvVersionInformation)).EndInit();
+            this.tsControls.ResumeLayout(false);
+            this.tsControls.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -524,7 +539,7 @@
         private ToolStripContainer toolStripContainer1;
         private KryptonButton kbtnOk;
         private KryptonButton kbtnSystemInformation;
-        private ToolStrip toolStrip1;
+        private ToolStrip tsControls;
         private ToolStripButton tsbtnGeneralInformation;
         private ToolStripSeparator tssDiscord;
         private ToolStripButton tsbtnDiscord;
