@@ -184,7 +184,7 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Settings.settings</DependentUpon>
 		</Compile>
-		<Compile Update="UX\Exception\KryptonExceptionCaptureDialog.cs" />
+		<Compile Update="Controls Visuals\Exception\KryptonExceptionCaptureDialog.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="Properties\Resources.resx">
