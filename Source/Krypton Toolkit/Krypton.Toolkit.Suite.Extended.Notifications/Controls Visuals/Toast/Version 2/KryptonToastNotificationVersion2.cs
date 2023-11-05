@@ -436,7 +436,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             base.Show();
         }
 
-        private void StartProcess(string process) => Process.Start(process);
+        private void StartProcess(string process) => GlobalToolkitUtilities.LaunchProcess(process);
 
         private void StartProcess(string process, string args, bool elevate = false)
         {
@@ -451,7 +451,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
                 try
                 {
-                    Process.Start(psi);
+                    GlobalToolkitUtilities.LaunchProcess(psi);
                 }
                 catch (Exception e)
                 {
@@ -468,7 +468,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
                 try
                 {
-                    Process.Start(psi);
+                    GlobalToolkitUtilities.LaunchProcess(psi);
                 }
                 catch (Exception e)
                 {
@@ -477,7 +477,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
         }
 
-        private void StartProcessInExplorer(string process) => Process.Start("explorer.exe", process);
+        private void StartProcessInExplorer(string process) => GlobalToolkitUtilities.LaunchProcess("explorer.exe", process);
 
         private void SetIconType(IconType iconType, Image? customImage = null)
         {

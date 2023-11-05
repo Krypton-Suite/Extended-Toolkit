@@ -314,7 +314,7 @@
                         processStartInfo.Arguments = _commandLineArgs;
                     }
 
-                    Process.Start(processStartInfo);
+                    GlobalToolkitUtilities.LaunchProcess(processStartInfo);
 
                     _logBuilder.AppendLine("Successfully launched the updated application.");
                 }

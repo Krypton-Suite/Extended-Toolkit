@@ -185,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             {
                 var processStartInfo = new ProcessStartInfo(_updateInfoEventArgs.DownloadURL);
 
-                Process.Start(processStartInfo);
+                GlobalToolkitUtilities.LaunchProcess(processStartInfo);
 
                 DialogResult = DialogResult.OK;
             }

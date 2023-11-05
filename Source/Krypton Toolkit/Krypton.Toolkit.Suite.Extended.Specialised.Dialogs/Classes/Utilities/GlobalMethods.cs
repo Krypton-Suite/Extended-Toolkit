@@ -202,7 +202,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
                 try
                 {
-                    Process.Start(processStartInfo);
+                    GlobalToolkitUtilities.LaunchProcess(processStartInfo);
                 }
                 catch (Win32Exception wexc)
                 {

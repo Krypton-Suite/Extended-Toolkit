@@ -279,7 +279,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
                     if (result == DialogResult.Yes)
                     {
-                        Process.Start("notepad.exe", Path.GetFullPath(csfd.FileName));
+                        GlobalToolkitUtilities.LaunchProcess("notepad.exe", Path.GetFullPath(csfd.FileName));
                     }
                 }
             }

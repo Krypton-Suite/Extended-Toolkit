@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
             try
             {
-                Process p = Process.Start(startInfo)!;
+                Process p = GlobalToolkitUtilities.LaunchProcess(startInfo)!;
             }
             catch (Win32Exception ex)
             {

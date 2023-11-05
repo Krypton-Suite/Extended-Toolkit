@@ -31,9 +31,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
     {
         #region Identity
 
-        public KryptonAboutExtendedToolkitForm()
+        public KryptonAboutExtendedToolkitForm(KryptonAboutExtendedToolkitData aboutToolkitData)
         {
             InitializeComponent();
+
+            InitialiseDialog(aboutToolkitData);
+
+            kbtnOk.Text = KryptonManager.Strings.GeneralStrings.OK;
+
+            kbtnSystemInformation.Text = KryptonManager.Strings.CustomStrings.SystemInformation;
         }
 
         #endregion
@@ -42,55 +48,25 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void kbtnOk_Click(object sender, EventArgs e) => Close();
 
-        private void kbtnSystemInformation_Click(object sender, EventArgs e)
-        {
+        private void kbtnSystemInformation_Click(object sender, EventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"MSInfo32.exe");
 
-        }
+        private void tsbtnGeneralInformation_Click(object sender, EventArgs e) => SwitchPages(AboutToolkitPage.GeneralInformation);
 
-        private void tsbtnGeneralInformation_Click(object sender, EventArgs e)
-        {
+        private void tsbtnDiscord_Click(object sender, EventArgs e) => SwitchPages(AboutToolkitPage.Discord);
 
-        }
+        private void tsbtnDeveloperInformation_Click(object sender, EventArgs e) => SwitchPages(AboutToolkitPage.DeveloperInformation);
 
-        private void tsbtnDiscord_Click(object sender, EventArgs e)
-        {
+        private void tsbtnVersionInformation_Click(object sender, EventArgs e) => SwitchPages(AboutToolkitPage.Versions);
 
-        }
+        private void klwlblGeneralInformation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/Krypton-Suite/Extended-Toolkit");
 
-        private void tsbtnDeveloperInformation_Click(object sender, EventArgs e)
-        {
+        private void klwlblJoinDiscordServer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://discord.gg/CRjF6fY");
 
-        }
+        private void klwlblViewRepositories_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/orgs/Krypton-Suite/repositories");
 
-        private void tsbtnVersionInformation_Click(object sender, EventArgs e)
-        {
+        private void klwlblDownloadDemos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/Krypton-Suite/Help-Files/releases");
 
-        }
-
-        private void klwlblGeneralInformation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
-        private void klwlblJoinDiscordServer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
-        private void klwlblViewRepositories_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
-        private void klwlblDownloadDemos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
-        private void klwlblDownloadDocumentation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
+        private void klwlblDownloadDocumentation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/Krypton-Suite/Standard-Toolkit-Demos/releases");
 
         private void UpdateCurrentThemeText(string value) => klblCurrentTheme.Text = value;
 
@@ -154,8 +130,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         }
 
         private void UpdateHeaderText(string value) => kryptonHeaderGroup1.ValuesPrimary.Heading = value;
-
-        private void UpdateCurrentVersionText(string value) => klblCurrentTheme.Text = value;
 
         private void ConcatanateGeneralInformationText(string welcomeText, string licenseText, string learnMoreText)
         {
@@ -321,6 +295,52 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         }
 
         private void ShowSystemInformationButton(bool? value) => kbtnSystemInformation.Visible = value ?? true;
+
+        private void InitialiseDialog(KryptonAboutExtendedToolkitData aboutToolkitData)
+        {
+            // Adjust UI elements
+            ShowDeveloperControls(aboutToolkitData.ShowDeveloperInformationButton);
+
+            ShowDiscordControls(aboutToolkitData.ShowDiscordButton);
+
+            ShowVersionControls(aboutToolkitData.ShowVersionInformationButton);
+
+            ShowThemeControls(aboutToolkitData.ShowThemeOptions);
+
+            UpdateCurrentThemeText($@"{aboutToolkitData.CurrentThemeText}:");
+
+            ShowSystemInformationButton(aboutToolkitData.ShowSystemInformationButton);
+
+            SwitchIcon(aboutToolkitData.ToolkitType);
+
+            UpdateHeaderText($@"{aboutToolkitData.HeaderText} Krypton Extended Toolkit");
+
+            ConcatanateGeneralInformationText(aboutToolkitData.GeneralInformationWelcomeText, aboutToolkitData.GeneralInformationLicenseText, aboutToolkitData.GeneralInformationLearnMoreText);
+
+            UpdateDiscordText(aboutToolkitData.DiscordText);
+
+            UpdateRepositoriesText(aboutToolkitData.RepositoryInformationText);
+
+            UpdateDemosText(aboutToolkitData.DownloadDemosText);
+
+            UpdateDocumentationText(aboutToolkitData.DownloadDocumentationText);
+
+            UpdateColumnHeadings(aboutToolkitData.FileNameColumnHeaderText, aboutToolkitData.VersionColumnHeaderText);
+
+            UpdateToolBarText(aboutToolkitData.ToolBarGeneralInformationText, aboutToolkitData.ToolBarDiscordText, aboutToolkitData.ToolBarDeveloperInformationText, aboutToolkitData.ToolBarVersionInformationText);
+
+            UpdateGeneralInformationLinkArea(aboutToolkitData.LearnMoreLinkArea);
+
+            UpdateDocumentationLinkArea(aboutToolkitData.DocumentationLinkArea);
+
+            UpdateDiscordLinkArea(aboutToolkitData.DiscordLinkArea);
+
+            UpdateDemosLinkArea(aboutToolkitData.DownloadDemosLinkArea);
+
+            UpdateRepositoriesLinkArea(aboutToolkitData.RepositoryInformationLinkArea);
+
+            GetReferenceAssemblyInformation();
+        }
 
         #endregion
     }

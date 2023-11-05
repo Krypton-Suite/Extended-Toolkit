@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             {
                 if (!string.IsNullOrEmpty(resourcePath))
                 {
-                    Process.Start(@"explorer.exe", resourcePath);
+                    GlobalToolkitUtilities.LaunchProcess(@"explorer.exe", resourcePath);
                 }
             }
             catch (Exception e)
@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             {
                 ProcessStartInfo psi = new ProcessStartInfo(path);
 
-                Process.Start(psi);
+                GlobalToolkitUtilities.LaunchProcess(psi);
 
                 Close();
             }
@@ -196,11 +196,11 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             {
                 if (_runDialogType == RunDialogType.Combobox)
                 {
-                    Process.Start(kcmbResourcePath.Text);
+                    GlobalToolkitUtilities.LaunchProcess(kcmbResourcePath.Text);
                 }
                 else if (_runDialogType == RunDialogType.Textbox)
                 {
-                    Process.Start(ktxtResourcePath.Text);
+                    GlobalToolkitUtilities.LaunchProcess(ktxtResourcePath.Text);
                 }
             }
             catch (Exception exception)

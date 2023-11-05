@@ -414,7 +414,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         private void ApplyTheme(PaletteMode theme) => _settingsManager.SetSelectedTheme(theme);
         private void ChangePaletteName(string paletteName) => kwlPaletteName.Text = $@"Custom Palette Name: {Path.GetFileName(paletteName)}";
 
-        private void LocateTheme(string palettePath) => Process.Start("explorer.exe", palettePath);
+        private void LocateTheme(string palettePath) => GlobalToolkitUtilities.LaunchProcess("explorer.exe", palettePath);
         #endregion 
 
         private void kbtnLocate_Click(object sender, EventArgs e) => LocateTheme(KryptonPalette.CustomisedKryptonPaletteFilePath);

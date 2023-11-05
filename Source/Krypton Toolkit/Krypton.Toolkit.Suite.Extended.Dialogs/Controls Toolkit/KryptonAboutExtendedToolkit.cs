@@ -27,7 +27,30 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
-    internal class KryptonAboutExtendedToolkit
+    /// <summary>The public interface to the <see cref="KryptonAboutExtendedToolkitForm"/> class.</summary>
+    [ToolboxItem(false)]
+    [DesignerCategory(@"code")]
+    public static class KryptonAboutExtendedToolkit
     {
+        #region Public
+
+        /// <summary>Shows a new <see cref="KryptonAboutExtendedToolkitForm"/>.</summary>
+        /// <param name="aboutToolkitData">The data to pass through.</param>
+        /// <returns>A new <see cref="KryptonAboutExtendedToolkitForm"/> with the specified data.</returns>
+        public static DialogResult Show(KryptonAboutExtendedToolkitData aboutToolkitData)
+            => ShowCore(aboutToolkitData);
+
+        #endregion
+
+        #region Implementation
+
+        private static DialogResult ShowCore(KryptonAboutExtendedToolkitData aboutToolkitData)
+        {
+            using var kaetf = new KryptonAboutExtendedToolkitForm(aboutToolkitData);
+
+            return kaetf.ShowDialog();
+        }
+
+        #endregion
     }
 }

@@ -233,7 +233,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                     {
                         if (_downloadLocation != null || _downloadLocation != string.Empty)
                         {
-                            Process.Start(_downloadLocation);
+                            GlobalToolkitUtilities.LaunchProcess(_downloadLocation);
                         }
                     }
                     catch (Exception exception)

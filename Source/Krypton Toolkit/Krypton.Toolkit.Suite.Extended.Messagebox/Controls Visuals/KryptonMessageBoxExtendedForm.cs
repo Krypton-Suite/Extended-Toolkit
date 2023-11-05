@@ -873,7 +873,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     }
                     else if (_linkLaunchArgument != null)
                     {
-                        Process.Start(_linkLaunchArgument);
+                        GlobalToolkitUtilities.LaunchProcess(_linkLaunchArgument);
                     }
                 }
             }
@@ -887,7 +887,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             try
             {
-                Process.Start(@"explorer.exe", path);
+                GlobalToolkitUtilities.LaunchProcess(@"explorer.exe", path);
             }
             catch (Exception e)
             {

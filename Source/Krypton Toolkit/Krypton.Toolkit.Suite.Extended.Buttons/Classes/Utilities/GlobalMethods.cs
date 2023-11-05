@@ -204,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                 try
                 {
-                    Process.Start(processStartInfo);
+                    GlobalToolkitUtilities.LaunchProcess(processStartInfo);
                 }
                 catch (Win32Exception wexc)
                 {

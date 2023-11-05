@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             try
             {
-                Process.Start(@"https://github.com/Krypton-Suite/Extended-Toolkit");
+                GlobalToolkitUtilities.LaunchProcess(@"https://github.com/Krypton-Suite/Extended-Toolkit");
             }
             catch (Exception exception)
             {

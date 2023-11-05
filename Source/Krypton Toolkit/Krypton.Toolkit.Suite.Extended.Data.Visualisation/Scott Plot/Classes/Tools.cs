@@ -243,21 +243,21 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Debug.WriteLine($"Launching URL: {url}");
             try
             {
-                Process.Start(url);
+                GlobalToolkitUtilities.LaunchProcess(url);
             }
             catch
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                    GlobalToolkitUtilities.LaunchProcess(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
-                    Process.Start("xdg-open", url);
+                    GlobalToolkitUtilities.LaunchProcess("xdg-open", url);
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                 {
-                    Process.Start("open", url);
+                    GlobalToolkitUtilities.LaunchProcess("open", url);
                 }
                 else
                 {

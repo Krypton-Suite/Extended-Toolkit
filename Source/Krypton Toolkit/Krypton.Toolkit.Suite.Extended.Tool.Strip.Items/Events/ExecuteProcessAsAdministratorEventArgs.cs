@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 try
                 {
-                    Process.Start(process);
+                    GlobalToolkitUtilities.LaunchProcess(process);
                 }
                 catch (Win32Exception e)
                 {

@@ -259,7 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         {
             try
             {
-                Process.Start(value.ToString());
+                GlobalToolkitUtilities.LaunchProcess(value.ToString());
             }
             catch (Exception e)
             {
@@ -275,11 +275,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                 {
                     processName = null;
 
-                    Process.Start(@"explorer.exe", value.ToString());
+                    GlobalToolkitUtilities.LaunchProcess(@"explorer.exe", value.ToString());
                 }
                 else
                 {
-                    Process.Start(processName, value.ToString());
+                    GlobalToolkitUtilities.LaunchProcess(processName, value.ToString());
                 }
             }
             catch (Exception e)

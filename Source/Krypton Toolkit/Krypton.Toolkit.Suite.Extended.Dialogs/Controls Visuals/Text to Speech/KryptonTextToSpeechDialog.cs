@@ -403,7 +403,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                     };
 
                 //Init the Process  
-                var p = Process.Start(start);
+                var p = GlobalToolkitUtilities.LaunchProcess(start);
                 // The wait may not work! :(  
                 if (wait)
                 {

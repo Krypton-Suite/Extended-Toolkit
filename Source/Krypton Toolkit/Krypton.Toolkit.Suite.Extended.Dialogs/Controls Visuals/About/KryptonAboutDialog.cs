@@ -284,7 +284,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // TODO: Eventually, replace this with a custom solution
             try
             {
-                Process.Start("msinfo32.exe");
+                GlobalToolkitUtilities.LaunchProcess("msinfo32.exe");
             }
             catch (Exception exc)
             {

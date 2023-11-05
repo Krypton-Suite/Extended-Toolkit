@@ -306,7 +306,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         {
             try
             {
-                Process.Start("explorer.exe", item);
+                GlobalToolkitUtilities.LaunchProcess("explorer.exe", item);
             }
             catch (Exception ex)
             {

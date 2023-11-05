@@ -63,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
                 try
                 {
-                    Process.Start(processStartInfo);
+                    GlobalToolkitUtilities.LaunchProcess(processStartInfo);
                 }
                 catch (Win32Exception wexc)
                 {

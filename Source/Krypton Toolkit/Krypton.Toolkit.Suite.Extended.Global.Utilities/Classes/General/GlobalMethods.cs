@@ -203,7 +203,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 
                 try
                 {
-                    Process.Start(processStartInfo);
+                    GlobalToolkitUtilities.LaunchProcess(processStartInfo);
                 }
                 catch (Win32Exception wexc)
                 {
@@ -523,7 +523,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 
                 try
                 {
-                    Process.Start(processStartInfo);
+                    GlobalToolkitUtilities.LaunchProcess(processStartInfo);
                 }
                 catch (Win32Exception wexc)
                 {

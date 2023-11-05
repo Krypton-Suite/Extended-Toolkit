@@ -234,7 +234,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
                 if (result == DialogResult.Yes)
                 {
-                    Process.Start(@"Notepad.exe", Path.GetFullPath(fileName));
+                    GlobalToolkitUtilities.LaunchProcess(@"Notepad.exe", Path.GetFullPath(fileName));
                 }
             }
             catch (Exception exception)

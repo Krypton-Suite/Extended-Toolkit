@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 try
                 {
-                    Process.Start(process);
+                    GlobalToolkitUtilities.LaunchProcess(process);
                 }
                 catch (Win32Exception e)
                 {

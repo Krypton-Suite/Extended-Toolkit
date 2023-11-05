@@ -77,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             try
             {
-                Process p = Process.Start(startInfo);
+                Process p = GlobalToolkitUtilities.LaunchProcess(startInfo);
             }
             catch (System.ComponentModel.Win32Exception ex)
             {

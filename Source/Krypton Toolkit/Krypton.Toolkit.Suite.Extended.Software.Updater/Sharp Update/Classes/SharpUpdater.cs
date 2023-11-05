@@ -276,7 +276,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                     CreateNoWindow = true,
                     FileName = "cmd.exe"
                 };
-                Process.Start(cmd);
+                GlobalToolkitUtilities.LaunchProcess(cmd);
             }
 
             if (curAppidx > -1)
@@ -297,7 +297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 CreateNoWindow = true,
                 FileName = "cmd.exe"
             };
-            Process.Start(cmdMain);
+            GlobalToolkitUtilities.LaunchProcess(cmdMain);
         }
     }
 }

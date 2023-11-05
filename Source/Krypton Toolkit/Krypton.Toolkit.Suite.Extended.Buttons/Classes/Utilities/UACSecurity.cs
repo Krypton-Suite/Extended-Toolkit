@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             try
             {
-                Process p = Process.Start(startInfo);
+                Process p = GlobalToolkitUtilities.LaunchProcess(startInfo);
             }
             catch (Win32Exception ex)
             {
