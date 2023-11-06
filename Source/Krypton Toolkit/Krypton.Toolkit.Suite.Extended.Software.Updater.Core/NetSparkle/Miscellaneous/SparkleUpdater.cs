@@ -1518,7 +1518,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                 };
                 // start the installer process. the batch file will wait for the host app to close before starting.
                 LogWriter.PrintMessage("Starting the installer process at {0}", batchFilePath);
-                _installerGlobalToolkitUtilities.LaunchProcess();
+                _installerProcess.Start();
             }
             else
             {
@@ -1567,7 +1567,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                 }
             };
             LogWriter.PrintMessage("Starting the process via {1} -c \"{0}\"", escapedArgs, shell);
-            _installerGlobalToolkitUtilities.LaunchProcess();
+            _installerProcess.Start();
             if (waitForExit)
             {
                 LogWriter.PrintMessage("Waiting for exit...");

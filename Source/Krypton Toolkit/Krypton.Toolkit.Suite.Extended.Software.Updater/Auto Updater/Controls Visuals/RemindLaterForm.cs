@@ -31,7 +31,7 @@
 
             krbYes.Text = AutoUpdaterLanguageManager.LaterWindowStrings.YesText;
 
-            kbtnOk.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+            kbtnOk.Text = KryptonManager.Strings.GeneralStrings.OK;
 
             kcmbRemindLater.Items.Add(AutoUpdaterLanguageManager.TimingStrings.ThirtyMinutes);
 

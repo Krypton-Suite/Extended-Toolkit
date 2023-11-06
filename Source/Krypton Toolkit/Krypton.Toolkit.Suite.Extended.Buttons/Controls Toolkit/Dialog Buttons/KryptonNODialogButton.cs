@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             if (Text == Name)
             {
-                Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+                Text = KryptonManager.Strings.GeneralStrings.No;
             }
         }
 

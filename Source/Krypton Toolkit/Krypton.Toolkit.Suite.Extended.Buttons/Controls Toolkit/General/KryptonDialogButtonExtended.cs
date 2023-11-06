@@ -149,81 +149,81 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             switch (displayString)
             {
                 case KryptonButtonBuiltInDisplayString.Abort:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Abort;
+                    Text = KryptonManager.Strings.GeneralStrings.Abort;
 
                     DialogResult = DialogResult.Abort;
 
                     SetDenyButton(true);
                     break;
                 case KryptonButtonBuiltInDisplayString.Apply:
-                    Text = KryptonLanguageManager.CustomToolkitStrings.Apply;
+                    Text = KryptonManager.Strings.CustomStrings.Apply;
 
                     SetAcceptButton(true);
                     break;
                 case KryptonButtonBuiltInDisplayString.Cancel:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                    Text = KryptonManager.Strings.GeneralStrings.Cancel;
 
                     DialogResult = DialogResult.Cancel;
 
                     SetDenyButton(false);
                     break;
                 case KryptonButtonBuiltInDisplayString.Collapse:
-                    Text = KryptonLanguageManager.CustomToolkitStrings.Collapse;
+                    Text = KryptonManager.Strings.CustomStrings.Collapse;
                     break;
                 case KryptonButtonBuiltInDisplayString.Continue:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Continue;
+                    Text = KryptonManager.Strings.GeneralStrings.Continue;
 
                     SetAcceptButton(true);
                     break;
                 case KryptonButtonBuiltInDisplayString.Close:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Close;
+                    Text = KryptonManager.Strings.GeneralStrings.Close;
 
                     DialogResult = DialogResult.Cancel;
 
                     SetDenyButton(true);
                     break;
                 case KryptonButtonBuiltInDisplayString.Yes:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+                    Text = KryptonManager.Strings.GeneralStrings.Yes;
 
                     DialogResult = DialogResult.Yes;
 
                     SetAcceptButton(true);
                     break;
                 case KryptonButtonBuiltInDisplayString.No:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+                    Text = KryptonManager.Strings.GeneralStrings.No;
 
                     DialogResult = DialogResult.No;
 
                     SetDenyButton(true);
                     break;
                 case KryptonButtonBuiltInDisplayString.Ok:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+                    Text = KryptonManager.Strings.GeneralStrings.OK;
 
                     DialogResult = DialogResult.OK;
 
                     SetAcceptButton(true);
                     break;
                 case KryptonButtonBuiltInDisplayString.Retry:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
+                    Text = KryptonManager.Strings.GeneralStrings.Retry;
 
                     DialogResult = DialogResult.Retry;
                     break;
                 case KryptonButtonBuiltInDisplayString.Ignore:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Ignore;
+                    Text = KryptonManager.Strings.GeneralStrings.Ignore;
 
                     DialogResult = DialogResult.Ignore;
                     break;
                 case KryptonButtonBuiltInDisplayString.Help:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Help;
+                    Text = KryptonManager.Strings.GeneralStrings.Help;
                     break;
                 case KryptonButtonBuiltInDisplayString.TryAgain:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.TryAgain;
+                    Text = KryptonManager.Strings.GeneralStrings.TryAgain;
                     break;
                 case KryptonButtonBuiltInDisplayString.Expand:
-                    Text = KryptonLanguageManager.CustomToolkitStrings.Expand;
+                    Text = KryptonManager.Strings.CustomStrings.Expand;
                     break;
                 case KryptonButtonBuiltInDisplayString.Today:
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Today;
+                    Text = KryptonManager.Strings.GeneralStrings.Today;
                     break;
             }
 
@@ -242,63 +242,63 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <returns></returns>
         private KryptonButtonBuiltInDisplayString ReturnDisplayString(string buttonText)
         {
-            if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Abort)
+            if (buttonText == KryptonManager.Strings.GeneralStrings.Abort)
             {
                 return KryptonButtonBuiltInDisplayString.Abort;
             }
-            else if (buttonText == KryptonLanguageManager.CustomToolkitStrings.Apply)
+            else if (buttonText == KryptonManager.Strings.CustomStrings.Apply)
             {
                 return KryptonButtonBuiltInDisplayString.Apply;
             }
-            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Cancel)
+            else if (buttonText == KryptonManager.Strings.GeneralStrings.Cancel)
             {
                 return KryptonButtonBuiltInDisplayString.Cancel;
             }
-            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Close)
+            else if (buttonText == KryptonManager.Strings.GeneralStrings.Close)
             {
                 return KryptonButtonBuiltInDisplayString.Close;
             }
-            else if (buttonText == KryptonLanguageManager.CustomToolkitStrings.Collapse)
+            else if (buttonText == KryptonManager.Strings.CustomStrings.Collapse)
             {
                 return KryptonButtonBuiltInDisplayString.Collapse;
             }
-            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Continue)
+            else if (buttonText == KryptonManager.Strings.GeneralStrings.Continue)
             {
                 return KryptonButtonBuiltInDisplayString.Continue;
             }
-            else if (buttonText == KryptonLanguageManager.CustomToolkitStrings.Expand)
+            else if (buttonText == KryptonManager.Strings.CustomStrings.Expand)
             {
                 return KryptonButtonBuiltInDisplayString.Expand;
             }
-            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Help)
+            else if (buttonText == KryptonManager.Strings.GeneralStrings.Help)
             {
                 return KryptonButtonBuiltInDisplayString.Help;
             }
-            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Ignore)
+            else if (buttonText == KryptonManager.Strings.GeneralStrings.Ignore)
             {
                 return KryptonButtonBuiltInDisplayString.Ignore;
             }
-            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.No)
+            else if (buttonText == KryptonManager.Strings.GeneralStrings.No)
             {
                 return KryptonButtonBuiltInDisplayString.No;
             }
-            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.OK)
+            else if (buttonText == KryptonManager.Strings.GeneralStrings.OK)
             {
                 return KryptonButtonBuiltInDisplayString.Ok;
             }
-            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Retry)
+            else if (buttonText == KryptonManager.Strings.GeneralStrings.Retry)
             {
                 return KryptonButtonBuiltInDisplayString.Retry;
             }
-            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Today)
+            else if (buttonText == KryptonManager.Strings.GeneralStrings.Today)
             {
                 return KryptonButtonBuiltInDisplayString.Today;
             }
-            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.TryAgain)
+            else if (buttonText == KryptonManager.Strings.GeneralStrings.TryAgain)
             {
                 return KryptonButtonBuiltInDisplayString.TryAgain;
             }
-            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Yes)
+            else if (buttonText == KryptonManager.Strings.GeneralStrings.Yes)
             {
                 return KryptonButtonBuiltInDisplayString.Yes;
             }

@@ -42,9 +42,9 @@
                 string.Format(updateInfo.Tag == JobType.UPDATE ? $"{SharpUpdateLanguageManager.GeneralStrings.Update}: {Path.GetFileName(_applicationInfo.ApplicationPath)}\n{SharpUpdateLanguageManager.GeneralStrings.NewVersion}: {_updateInfo.Version}" : $"{SharpUpdateLanguageManager.GeneralStrings.New}: {Path.GetFileName(_applicationInfo.ApplicationPath)}\n{SharpUpdateLanguageManager.GeneralStrings.Version}: {_updateInfo.Version}") :
                 $"{SharpUpdateLanguageManager.AcceptFormStrings.Remove}: {Path.GetFileName(_applicationInfo.ApplicationPath)}";
 
-            kbtnNo.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+            kbtnNo.Text = KryptonManager.Strings.GeneralStrings.No;
 
-            kbtnYes.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+            kbtnYes.Text = KryptonManager.Strings.GeneralStrings.Yes;
         }
 
         private void kbtnYes_Click(object sender, EventArgs e)

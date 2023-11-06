@@ -1703,14 +1703,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                     SetCustomButtonText(_customButtonOptions, _buttonOneText, _buttonOneResult, _buttonTwoText, _buttonTwoResult, _buttonThreeText, _buttonThreeResult);
                     break; */
                 case ExtendedMessageBoxButtons.OK:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.OK;
                     _button1.DialogResult = DialogResult.OK;
                     _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     _button2.Visible = _button3.Visible = false;
                     break;
                 case ExtendedMessageBoxButtons.OKCancel:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.OK;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
@@ -1718,8 +1718,8 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                     _button3.Visible = false;
                     break;
                 case ExtendedMessageBoxButtons.YesNo:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Yes;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.No;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
@@ -1728,9 +1728,9 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                     ControlBox = false;
                     break;
                 case ExtendedMessageBoxButtons.YesNoCancel:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
-                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Yes;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.No;
+                    _button3.Text = KryptonManager.Strings.GeneralStrings.Cancel;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button3.DialogResult = DialogResult.Cancel;
@@ -1739,8 +1739,8 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                     _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     break;
                 case ExtendedMessageBoxButtons.RetryCancel:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Retry;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
@@ -1748,9 +1748,9 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                     _button3.Visible = false;
                     break;
                 case ExtendedMessageBoxButtons.AbortRetryIgnore:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Abort;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
-                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Ignore;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Abort;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Retry;
+                    _button3.Text = KryptonManager.Strings.GeneralStrings.Ignore;
                     _button1.DialogResult = DialogResult.Abort;
                     _button2.DialogResult = DialogResult.Retry;
                     _button3.DialogResult = DialogResult.Ignore;
@@ -2074,7 +2074,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             switch (customButtonOptions)
             {
                 case ExtendedMessageBoxCustomButtonOptions.None:
-                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+                    _button3.Text = KryptonManager.Strings.GeneralStrings.OK;
 
                     _button3.DialogResult = DialogResult.OK;
 
