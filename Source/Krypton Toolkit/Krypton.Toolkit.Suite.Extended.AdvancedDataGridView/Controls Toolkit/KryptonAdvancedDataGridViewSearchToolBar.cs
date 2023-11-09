@@ -98,121 +98,121 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         private void InitializeComponent()
         {
-            this.button_close = new System.Windows.Forms.ToolStripButton();
-            this.label_search = new System.Windows.Forms.ToolStripLabel();
-            this.comboBox_columns = new System.Windows.Forms.ToolStripComboBox();
-            this.textBox_search = new System.Windows.Forms.ToolStripTextBox();
-            this.button_frombegin = new System.Windows.Forms.ToolStripButton();
-            this.button_casesensitive = new System.Windows.Forms.ToolStripButton();
-            this.button_search = new System.Windows.Forms.ToolStripButton();
-            this.button_wholeword = new System.Windows.Forms.ToolStripButton();
-            this.separator_search = new System.Windows.Forms.ToolStripSeparator();
+            this._buttonClose = new System.Windows.Forms.ToolStripButton();
+            this._labelSearch = new System.Windows.Forms.ToolStripLabel();
+            this._comboBoxColumns = new System.Windows.Forms.ToolStripComboBox();
+            this._textBoxSearch = new System.Windows.Forms.ToolStripTextBox();
+            this._buttonFrombegin = new System.Windows.Forms.ToolStripButton();
+            this._buttonCasesensitive = new System.Windows.Forms.ToolStripButton();
+            this._buttonSearch = new System.Windows.Forms.ToolStripButton();
+            this._buttonWholeword = new System.Windows.Forms.ToolStripButton();
+            this._separatorSearch = new System.Windows.Forms.ToolStripSeparator();
             this.SuspendLayout();
             // 
             // button_close
             // 
-            this.button_close.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.button_close.Image = global::Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.Properties.Resources.SearchToolBar_ButtonCaseSensitive;
-            this.button_close.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.button_close.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.button_close.Name = "button_close";
-            this.button_close.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.button_close.Size = new System.Drawing.Size(23, 24);
-            this.button_close.Click += new System.EventHandler(this.button_close_Click);
+            this._buttonClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._buttonClose.Image = global::Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.Properties.Resources.SearchToolBar_ButtonCaseSensitive;
+            this._buttonClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this._buttonClose.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._buttonClose.Name = "_buttonClose";
+            this._buttonClose.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+            this._buttonClose.Size = new System.Drawing.Size(23, 24);
+            this._buttonClose.Click += new System.EventHandler(this.button_close_Click);
             // 
             // label_search
             // 
-            this.label_search.Name = "label_search";
-            this.label_search.Size = new System.Drawing.Size(45, 15);
+            this._labelSearch.Name = "_labelSearch";
+            this._labelSearch.Size = new System.Drawing.Size(45, 15);
 
             // 
             // comboBox_columns
             // 
-            this.comboBox_columns.AutoSize = false;
-            this.comboBox_columns.AutoToolTip = true;
-            this.comboBox_columns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_columns.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            this.comboBox_columns.IntegralHeight = false;
-            this.comboBox_columns.Margin = new System.Windows.Forms.Padding(0, 2, 8, 2);
-            this.comboBox_columns.MaxDropDownItems = 12;
-            this.comboBox_columns.Name = "comboBox_columns";
-            this.comboBox_columns.Size = new System.Drawing.Size(150, 23);
+            this._comboBoxColumns.AutoSize = false;
+            this._comboBoxColumns.AutoToolTip = true;
+            this._comboBoxColumns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._comboBoxColumns.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this._comboBoxColumns.IntegralHeight = false;
+            this._comboBoxColumns.Margin = new System.Windows.Forms.Padding(0, 2, 8, 2);
+            this._comboBoxColumns.MaxDropDownItems = 12;
+            this._comboBoxColumns.Name = "_comboBoxColumns";
+            this._comboBoxColumns.Size = new System.Drawing.Size(150, 23);
             // 
             // textBox_search
             // 
-            this.textBox_search.AutoSize = false;
-            this.textBox_search.ForeColor = System.Drawing.Color.LightGray;
-            this.textBox_search.Margin = new System.Windows.Forms.Padding(0, 2, 8, 2);
-            this.textBox_search.Name = "textBox_search";
-            this.textBox_search.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.textBox_search.Size = new System.Drawing.Size(100, 23);
-            this.textBox_search.Enter += new System.EventHandler(this.textBox_search_Enter);
-            this.textBox_search.Leave += new System.EventHandler(this.textBox_search_Leave);
-            this.textBox_search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_search_KeyDown);
-            this.textBox_search.TextChanged += new System.EventHandler(this.textBox_search_TextChanged);
+            this._textBoxSearch.AutoSize = false;
+            this._textBoxSearch.ForeColor = System.Drawing.Color.LightGray;
+            this._textBoxSearch.Margin = new System.Windows.Forms.Padding(0, 2, 8, 2);
+            this._textBoxSearch.Name = "_textBoxSearch";
+            this._textBoxSearch.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+            this._textBoxSearch.Size = new System.Drawing.Size(100, 23);
+            this._textBoxSearch.Enter += new System.EventHandler(this.textBox_search_Enter);
+            this._textBoxSearch.Leave += new System.EventHandler(this.textBox_search_Leave);
+            this._textBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_search_KeyDown);
+            this._textBoxSearch.TextChanged += new System.EventHandler(this.textBox_search_TextChanged);
             // 
             // button_frombegin
             // 
-            this.button_frombegin.CheckOnClick = true;
-            this.button_frombegin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.button_frombegin.Image = global::Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.Properties.Resources.SearchToolBar_ButtonFromBegin;
-            this.button_frombegin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.button_frombegin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.button_frombegin.Name = "button_frombegin";
-            this.button_frombegin.Size = new System.Drawing.Size(23, 20);
+            this._buttonFrombegin.CheckOnClick = true;
+            this._buttonFrombegin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._buttonFrombegin.Image = global::Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.Properties.Resources.SearchToolBar_ButtonFromBegin;
+            this._buttonFrombegin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this._buttonFrombegin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._buttonFrombegin.Name = "_buttonFrombegin";
+            this._buttonFrombegin.Size = new System.Drawing.Size(23, 20);
             // 
             // button_casesensitive
             // 
-            this.button_casesensitive.CheckOnClick = true;
-            this.button_casesensitive.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.button_casesensitive.Image = global::Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.Properties.Resources.SearchToolBar_ButtonCaseSensitive;
-            this.button_casesensitive.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.button_casesensitive.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.button_casesensitive.Name = "button_casesensitive";
-            this.button_casesensitive.Size = new System.Drawing.Size(23, 20);
+            this._buttonCasesensitive.CheckOnClick = true;
+            this._buttonCasesensitive.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._buttonCasesensitive.Image = global::Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.Properties.Resources.SearchToolBar_ButtonCaseSensitive;
+            this._buttonCasesensitive.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this._buttonCasesensitive.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._buttonCasesensitive.Name = "_buttonCasesensitive";
+            this._buttonCasesensitive.Size = new System.Drawing.Size(23, 20);
             // 
             // button_search
             // 
-            this.button_search.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.button_search.Image = global::Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.Properties.Resources.SearchToolBar_ButtonSearch;
-            this.button_search.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.button_search.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.button_search.Name = "button_search";
-            this.button_search.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.button_search.Size = new System.Drawing.Size(23, 24);
-            this.button_search.Click += new System.EventHandler(this.button_search_Click);
+            this._buttonSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._buttonSearch.Image = global::Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.Properties.Resources.SearchToolBar_ButtonSearch;
+            this._buttonSearch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this._buttonSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._buttonSearch.Name = "_buttonSearch";
+            this._buttonSearch.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+            this._buttonSearch.Size = new System.Drawing.Size(23, 24);
+            this._buttonSearch.Click += new System.EventHandler(this.button_search_Click);
             // 
             // button_wholeword
             // 
-            this.button_wholeword.CheckOnClick = true;
-            this.button_wholeword.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.button_wholeword.Image = global::Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.Properties.Resources.SearchToolBar_ButtonWholeWord;
-            this.button_wholeword.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.button_wholeword.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.button_wholeword.Margin = new System.Windows.Forms.Padding(1, 1, 1, 2);
-            this.button_wholeword.Name = "button_wholeword";
-            this.button_wholeword.Size = new System.Drawing.Size(23, 20);
+            this._buttonWholeword.CheckOnClick = true;
+            this._buttonWholeword.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._buttonWholeword.Image = global::Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.Properties.Resources.SearchToolBar_ButtonWholeWord;
+            this._buttonWholeword.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this._buttonWholeword.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._buttonWholeword.Margin = new System.Windows.Forms.Padding(1, 1, 1, 2);
+            this._buttonWholeword.Name = "_buttonWholeword";
+            this._buttonWholeword.Size = new System.Drawing.Size(23, 20);
             // 
             // separator_search
             // 
-            this.separator_search.AutoSize = false;
-            this.separator_search.Name = "separator_search";
-            this.separator_search.Size = new System.Drawing.Size(10, 25);
+            this._separatorSearch.AutoSize = false;
+            this._separatorSearch.Name = "_separatorSearch";
+            this._separatorSearch.Size = new System.Drawing.Size(10, 25);
             // 
             // AdvancedDataGridViewSearchToolBar
             // 
             this.AllowMerge = false;
             this.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.button_close,
-            this.label_search,
-            this.comboBox_columns,
-            this.textBox_search,
-            this.button_frombegin,
-            this.button_wholeword,
-            this.button_casesensitive,
-            this.separator_search,
-            this.button_search});
+            this._buttonClose,
+            this._labelSearch,
+            this._comboBoxColumns,
+            this._textBoxSearch,
+            this._buttonFrombegin,
+            this._buttonWholeword,
+            this._buttonCasesensitive,
+            this._separatorSearch,
+            this._buttonSearch});
             this.MaximumSize = new System.Drawing.Size(0, 27);
             this.MinimumSize = new System.Drawing.Size(0, 27);
             this.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -225,15 +225,15 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
         #endregion
 
-        private ToolStripButton button_close;
-        private ToolStripLabel label_search;
-        private ToolStripComboBox comboBox_columns;
-        private ToolStripTextBox textBox_search;
-        private ToolStripButton button_frombegin;
-        private ToolStripButton button_casesensitive;
-        private ToolStripButton button_search;
-        private ToolStripButton button_wholeword;
-        private ToolStripSeparator separator_search;
+        private ToolStripButton _buttonClose;
+        private ToolStripLabel _labelSearch;
+        private ToolStripComboBox _comboBoxColumns;
+        private ToolStripTextBox _textBoxSearch;
+        private ToolStripButton _buttonFrombegin;
+        private ToolStripButton _buttonCasesensitive;
+        private ToolStripButton _buttonSearch;
+        private ToolStripButton _buttonWholeword;
+        private ToolStripSeparator _separatorSearch;
 
         #endregion
 
@@ -246,9 +246,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
         #region class properties
 
-        private DataGridViewColumnCollection _columnsList = null;
+        private DataGridViewColumnCollection? _columnsList;
 
-        private const bool ButtonCloseEnabled = false;
+        private const bool BUTTON_CLOSE_ENABLED = false;
 
         #endregion
 
@@ -260,14 +260,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public enum TranslationKey
         {
-            ADGVSTBLabelSearch,
-            ADGVSTBButtonFromBegin,
-            ADGVSTBButtonCaseSensitiveToolTip,
-            ADGVSTBButtonSearchToolTip,
-            ADGVSTBButtonCloseToolTip,
-            ADGVSTBButtonWholeWordToolTip,
-            ADGVSTBComboBoxColumnsAll,
-            ADGVSTBTextBoxSearchToolTip
+            AdgvstbLabelSearch,
+            AdgvstbButtonFromBegin,
+            AdgvstbButtonCaseSensitiveToolTip,
+            AdgvstbButtonSearchToolTip,
+            AdgvstbButtonCloseToolTip,
+            AdgvstbButtonWholeWordToolTip,
+            AdgvstbComboBoxColumnsAll,
+            AdgvstbTextBoxSearchToolTip
         }
 
         /// <summary>
@@ -275,14 +275,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public static Dictionary<string, string> Translations = new Dictionary<string, string>()
         {
-            { TranslationKey.ADGVSTBLabelSearch.ToString(), "Search:" },
-            { TranslationKey.ADGVSTBButtonFromBegin.ToString(), "From Begin" },
-            { TranslationKey.ADGVSTBButtonCaseSensitiveToolTip.ToString(), "Case Sensitivity" },
-            { TranslationKey.ADGVSTBButtonSearchToolTip.ToString(), "Find Next" },
-            { TranslationKey.ADGVSTBButtonCloseToolTip.ToString(), "Hide" },
-            { TranslationKey.ADGVSTBButtonWholeWordToolTip.ToString(), "Search only Whole Word" },
-            { TranslationKey.ADGVSTBComboBoxColumnsAll.ToString(), "(All Columns)" },
-            { TranslationKey.ADGVSTBTextBoxSearchToolTip.ToString(), "Value for Search" }
+            { TranslationKey.AdgvstbLabelSearch.ToString(), "Search:" },
+            { TranslationKey.AdgvstbButtonFromBegin.ToString(), "From Begin" },
+            { TranslationKey.AdgvstbButtonCaseSensitiveToolTip.ToString(), "Case Sensitivity" },
+            { TranslationKey.AdgvstbButtonSearchToolTip.ToString(), "Find Next" },
+            { TranslationKey.AdgvstbButtonCloseToolTip.ToString(), "Hide" },
+            { TranslationKey.AdgvstbButtonWholeWordToolTip.ToString(), "Search only Whole Word" },
+            { TranslationKey.AdgvstbComboBoxColumnsAll.ToString(), "(All Columns)" },
+            { TranslationKey.AdgvstbTextBoxSearchToolTip.ToString(), "Value for Search" }
         };
 
         /// <summary>
@@ -304,12 +304,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             RefreshComponentTranslations();
 
             //set default values
-            if (!ButtonCloseEnabled)
+            if (!BUTTON_CLOSE_ENABLED)
             {
                 Items.RemoveAt(0);
             }
 
-            comboBox_columns.SelectedIndex = 0;
+            _comboBoxColumns!.SelectedIndex = 0;
 
             // Use Krypton
             RenderMode = ToolStripRenderMode.ManagerRenderMode;
@@ -324,7 +324,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Set translation dictionary
         /// </summary>
         /// <param name="translations"></param>
-        public static void SetTranslations(IDictionary<string, string> translations)
+        public static void SetTranslations(IDictionary<string, string>? translations)
         {
             //set localization strings
             if (translations != null)
@@ -376,7 +376,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         }
                     }
                 }
-                catch { }
+                catch (Exception e)
+                { }
             }
 
             //add default translations if not in files
@@ -396,28 +397,28 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         private void RefreshComponentTranslations()
         {
-            comboBox_columns.BeginUpdate();
-            comboBox_columns.Items.Clear();
-            comboBox_columns.Items.AddRange(new object[] { Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()] });
+            _comboBoxColumns.BeginUpdate();
+            _comboBoxColumns.Items.Clear();
+            _comboBoxColumns.Items.AddRange(new object[] { Translations[TranslationKey.AdgvstbComboBoxColumnsAll.ToString()] });
             if (_columnsList != null)
             {
                 foreach (DataGridViewColumn c in _columnsList)
                     if (c.Visible)
                     {
-                        comboBox_columns.Items.Add(c.HeaderText);
+                        _comboBoxColumns.Items.Add(c.HeaderText);
                     }
             }
 
-            comboBox_columns.SelectedIndex = 0;
-            comboBox_columns.EndUpdate();
-            button_close.ToolTipText = Translations[TranslationKey.ADGVSTBButtonCloseToolTip.ToString()];
-            label_search.Text = Translations[TranslationKey.ADGVSTBLabelSearch.ToString()];
-            textBox_search.ToolTipText = Translations[TranslationKey.ADGVSTBTextBoxSearchToolTip.ToString()];
-            button_frombegin.ToolTipText = Translations[TranslationKey.ADGVSTBButtonFromBegin.ToString()];
-            button_casesensitive.ToolTipText = Translations[TranslationKey.ADGVSTBButtonCaseSensitiveToolTip.ToString()];
-            button_search.ToolTipText = Translations[TranslationKey.ADGVSTBButtonSearchToolTip.ToString()];
-            button_wholeword.ToolTipText = Translations[TranslationKey.ADGVSTBButtonWholeWordToolTip.ToString()];
-            textBox_search.Text = textBox_search.ToolTipText;
+            _comboBoxColumns.SelectedIndex = 0;
+            _comboBoxColumns.EndUpdate();
+            _buttonClose.ToolTipText = Translations[TranslationKey.AdgvstbButtonCloseToolTip.ToString()];
+            _labelSearch.Text = Translations[TranslationKey.AdgvstbLabelSearch.ToString()];
+            _textBoxSearch.ToolTipText = Translations[TranslationKey.AdgvstbTextBoxSearchToolTip.ToString()];
+            _buttonFrombegin.ToolTipText = Translations[TranslationKey.AdgvstbButtonFromBegin.ToString()];
+            _buttonCasesensitive.ToolTipText = Translations[TranslationKey.AdgvstbButtonCaseSensitiveToolTip.ToString()];
+            _buttonSearch.ToolTipText = Translations[TranslationKey.AdgvstbButtonSearchToolTip.ToString()];
+            _buttonWholeword.ToolTipText = Translations[TranslationKey.AdgvstbButtonWholeWordToolTip.ToString()];
+            _textBoxSearch.Text = _textBoxSearch.ToolTipText;
         }
 
         #endregion
@@ -432,28 +433,28 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         void button_search_Click(object sender, EventArgs e)
         {
-            if (textBox_search.TextLength > 0 && textBox_search.Text != textBox_search.ToolTipText && Search != null)
+            if (_textBoxSearch.TextLength > 0 && _textBoxSearch.Text != _textBoxSearch.ToolTipText && Search != null)
             {
-                DataGridViewColumn c = null;
-                if (comboBox_columns.SelectedIndex > 0 && _columnsList != null && _columnsList.GetColumnCount(DataGridViewElementStates.Visible) > 0)
+                DataGridViewColumn? c = null;
+                if (_comboBoxColumns.SelectedIndex > 0 && _columnsList != null && _columnsList.GetColumnCount(DataGridViewElementStates.Visible) > 0)
                 {
                     DataGridViewColumn[] cols = _columnsList.Cast<DataGridViewColumn>().Where(col => col.Visible).ToArray<DataGridViewColumn>();
 
-                    if (cols.Length == comboBox_columns.Items.Count - 1)
+                    if (cols.Length == _comboBoxColumns.Items.Count - 1)
                     {
-                        if (cols[comboBox_columns.SelectedIndex - 1].HeaderText == comboBox_columns.SelectedItem.ToString())
+                        if (cols[_comboBoxColumns.SelectedIndex - 1].HeaderText == _comboBoxColumns.SelectedItem.ToString())
                         {
-                            c = cols[comboBox_columns.SelectedIndex - 1];
+                            c = cols[_comboBoxColumns.SelectedIndex - 1];
                         }
                     }
                 }
 
                 AdvancedDataGridViewSearchToolBarSearchEventArgs args = new AdvancedDataGridViewSearchToolBarSearchEventArgs(
-                    textBox_search.Text,
+                    _textBoxSearch.Text,
                     c,
-                    button_casesensitive.Checked,
-                    button_wholeword.Checked,
-                    button_frombegin.Checked
+                    _buttonCasesensitive.Checked,
+                    _buttonWholeword.Checked,
+                    _buttonFrombegin.Checked
                 );
                 Search(this, args);
             }
@@ -481,7 +482,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         void textBox_search_TextChanged(object sender, EventArgs e)
         {
-            button_search.Enabled = textBox_search.TextLength > 0 && textBox_search.Text != textBox_search.ToolTipText;
+            _buttonSearch.Enabled = _textBoxSearch.TextLength > 0 && _textBoxSearch.Text != _textBoxSearch.ToolTipText;
         }
 
 
@@ -492,16 +493,16 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         void textBox_search_Enter(object sender, EventArgs e)
         {
-            if (textBox_search.Text == textBox_search.ToolTipText && textBox_search.ForeColor == Color.LightGray)
+            if (_textBoxSearch.Text == _textBoxSearch.ToolTipText && _textBoxSearch.ForeColor == Color.LightGray)
             {
-                textBox_search.Text = "";
+                _textBoxSearch.Text = "";
             }
             else
             {
-                textBox_search.SelectAll();
+                _textBoxSearch.SelectAll();
             }
 
-            textBox_search.ForeColor = SystemColors.WindowText;
+            _textBoxSearch.ForeColor = SystemColors.WindowText;
         }
 
         /// <summary>
@@ -511,10 +512,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         void textBox_search_Leave(object sender, EventArgs e)
         {
-            if (textBox_search.Text.Trim() == "")
+            if (_textBoxSearch.Text.Trim() == "")
             {
-                textBox_search.Text = textBox_search.ToolTipText;
-                textBox_search.ForeColor = Color.LightGray;
+                _textBoxSearch.Text = _textBoxSearch.ToolTipText;
+                _textBoxSearch.ForeColor = Color.LightGray;
             }
         }
 
@@ -526,9 +527,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         void textBox_search_KeyDown(object sender, KeyEventArgs e)
         {
-            if (textBox_search.TextLength > 0 && textBox_search.Text != textBox_search.ToolTipText && e.KeyData == Keys.Enter)
+            if (_textBoxSearch.TextLength > 0 && _textBoxSearch.Text != _textBoxSearch.ToolTipText && e.KeyData == Keys.Enter)
             {
-                button_search_Click(button_search, new EventArgs());
+                button_search_Click(_buttonSearch, new EventArgs());
                 e.SuppressKeyPress = true;
                 e.Handled = true;
             }
@@ -546,20 +547,20 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void SetColumns(DataGridViewColumnCollection columns)
         {
             _columnsList = columns;
-            comboBox_columns.BeginUpdate();
-            comboBox_columns.Items.Clear();
-            comboBox_columns.Items.AddRange(new object[] { Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()] });
+            _comboBoxColumns.BeginUpdate();
+            _comboBoxColumns.Items.Clear();
+            _comboBoxColumns.Items.AddRange(new object[] { Translations[TranslationKey.AdgvstbComboBoxColumnsAll.ToString()] });
             if (_columnsList != null)
             {
                 foreach (DataGridViewColumn c in _columnsList)
                     if (c.Visible)
                     {
-                        comboBox_columns.Items.Add(c.HeaderText);
+                        _comboBoxColumns.Items.Add(c.HeaderText);
                     }
             }
 
-            comboBox_columns.SelectedIndex = 0;
-            comboBox_columns.EndUpdate();
+            _comboBoxColumns.SelectedIndex = 0;
+            _comboBoxColumns.EndUpdate();
         }
 
         #endregion
@@ -577,7 +578,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             SuspendLayout();
             int w1 = 150;
             int w2 = 150;
-            int oldW = comboBox_columns.Width + textBox_search.Width;
+            int oldW = _comboBoxColumns.Width + _textBoxSearch.Width;
             foreach (ToolStripItem c in Items)
             {
                 c.Overflow = ToolStripItemOverflow.Never;
@@ -587,64 +588,64 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             int width = PreferredSize.Width - oldW + w1 + w2;
             if (Width < width)
             {
-                label_search.Visible = false;
+                _labelSearch.Visible = false;
                 GetResizeBoxSize(PreferredSize.Width - oldW + w1 + w2, ref w1, ref w2);
                 width = PreferredSize.Width - oldW + w1 + w2;
 
                 if (Width < width)
                 {
-                    button_casesensitive.Overflow = ToolStripItemOverflow.Always;
+                    _buttonCasesensitive.Overflow = ToolStripItemOverflow.Always;
                     GetResizeBoxSize(PreferredSize.Width - oldW + w1 + w2, ref w1, ref w2);
                     width = PreferredSize.Width - oldW + w1 + w2;
                 }
 
                 if (Width < width)
                 {
-                    button_wholeword.Overflow = ToolStripItemOverflow.Always;
+                    _buttonWholeword.Overflow = ToolStripItemOverflow.Always;
                     GetResizeBoxSize(PreferredSize.Width - oldW + w1 + w2, ref w1, ref w2);
                     width = PreferredSize.Width - oldW + w1 + w2;
                 }
 
                 if (Width < width)
                 {
-                    button_frombegin.Overflow = ToolStripItemOverflow.Always;
-                    separator_search.Visible = false;
+                    _buttonFrombegin.Overflow = ToolStripItemOverflow.Always;
+                    _separatorSearch.Visible = false;
                     GetResizeBoxSize(PreferredSize.Width - oldW + w1 + w2, ref w1, ref w2);
                     width = PreferredSize.Width - oldW + w1 + w2;
                 }
 
                 if (Width < width)
                 {
-                    comboBox_columns.Overflow = ToolStripItemOverflow.Always;
-                    textBox_search.Overflow = ToolStripItemOverflow.Always;
+                    _comboBoxColumns.Overflow = ToolStripItemOverflow.Always;
+                    _textBoxSearch.Overflow = ToolStripItemOverflow.Always;
                     w1 = 150;
-                    w2 = Math.Max(Width - PreferredSize.Width - textBox_search.Margin.Left - textBox_search.Margin.Right, 75);
-                    textBox_search.Overflow = ToolStripItemOverflow.Never;
-                    width = PreferredSize.Width - textBox_search.Width + w2;
+                    w2 = Math.Max(Width - PreferredSize.Width - _textBoxSearch.Margin.Left - _textBoxSearch.Margin.Right, 75);
+                    _textBoxSearch.Overflow = ToolStripItemOverflow.Never;
+                    width = PreferredSize.Width - _textBoxSearch.Width + w2;
                 }
                 if (Width < width)
                 {
-                    button_search.Overflow = ToolStripItemOverflow.Always;
-                    w2 = Math.Max(Width - PreferredSize.Width + textBox_search.Width, 75);
-                    width = PreferredSize.Width - textBox_search.Width + w2;
+                    _buttonSearch.Overflow = ToolStripItemOverflow.Always;
+                    w2 = Math.Max(Width - PreferredSize.Width + _textBoxSearch.Width, 75);
+                    width = PreferredSize.Width - _textBoxSearch.Width + w2;
                 }
                 if (Width < width)
                 {
-                    button_close.Overflow = ToolStripItemOverflow.Always;
-                    textBox_search.Margin = new Padding(8, 2, 8, 2);
-                    w2 = Math.Max(Width - PreferredSize.Width + textBox_search.Width, 75);
-                    width = PreferredSize.Width - textBox_search.Width + w2;
+                    _buttonClose.Overflow = ToolStripItemOverflow.Always;
+                    _textBoxSearch.Margin = new Padding(8, 2, 8, 2);
+                    w2 = Math.Max(Width - PreferredSize.Width + _textBoxSearch.Width, 75);
+                    width = PreferredSize.Width - _textBoxSearch.Width + w2;
                 }
 
                 if (Width < width)
                 {
-                    w2 = Math.Max(Width - PreferredSize.Width + textBox_search.Width, 20);
-                    width = PreferredSize.Width - textBox_search.Width + w2;
+                    w2 = Math.Max(Width - PreferredSize.Width + _textBoxSearch.Width, 20);
+                    width = PreferredSize.Width - _textBoxSearch.Width + w2;
                 }
                 if (width > Width)
                 {
-                    textBox_search.Overflow = ToolStripItemOverflow.Always;
-                    textBox_search.Margin = new Padding(0, 2, 8, 2);
+                    _textBoxSearch.Overflow = ToolStripItemOverflow.Always;
+                    _textBoxSearch.Margin = new Padding(0, 2, 8, 2);
                     w2 = 150;
                 }
             }
@@ -653,14 +654,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 GetResizeBoxSize(width, ref w1, ref w2);
             }
 
-            if (comboBox_columns.Width != w1)
+            if (_comboBoxColumns.Width != w1)
             {
-                comboBox_columns.Width = w1;
+                _comboBoxColumns.Width = w1;
             }
 
-            if (textBox_search.Width != w2)
+            if (_textBoxSearch.Width != w2)
             {
-                textBox_search.Width = w2;
+                _textBoxSearch.Width = w2;
             }
 
             ResumeLayout();

@@ -34,6 +34,7 @@ global using System.Drawing;
 global using System.Drawing.Design;
 global using System.Drawing.Drawing2D;
 global using System.Drawing.Imaging;
+global using System.Diagnostics.CodeAnalysis;
 global using System.Globalization;
 global using System.Reflection;
 global using System.Resources;

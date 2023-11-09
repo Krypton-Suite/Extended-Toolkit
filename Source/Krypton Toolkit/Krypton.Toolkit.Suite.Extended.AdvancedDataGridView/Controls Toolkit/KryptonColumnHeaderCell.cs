@@ -64,7 +64,6 @@
 #endregion
 
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-#pragma warning disable CS8600, CS8622, CS8602
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell

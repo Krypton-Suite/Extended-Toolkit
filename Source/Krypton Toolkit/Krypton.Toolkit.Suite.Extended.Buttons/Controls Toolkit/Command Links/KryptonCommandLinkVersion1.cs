@@ -25,7 +25,6 @@
  */
 #endregion
 
-#pragma warning disable CS0618
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     /// <summary>
@@ -532,7 +531,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 _useAsUACElevatedButton = value;
 
-                // TODO: Store the original icon
+                // ToDo: Store the original icon
                 OriginalImage = CommandLinkImageValue.Image;
 
                 if (!_useAsUACElevatedButton)

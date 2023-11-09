@@ -180,7 +180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>
         /// Gets and sets the source for button values.
         /// </summary>
-        public IContentValues ButtonValues
+        public IContentValues? ButtonValues
         {
             get => _drawContent.Values;
             set => _drawContent.Values = value;
@@ -364,7 +364,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// </summary>
         /// <param name="context">Evaluation context.</param>
         /// <returns>True if transparent areas exist; otherwise false.</returns>
-        public override bool EvalTransparentPaint(ViewContext context)
+        public override bool EvalTransparentPaint(ViewContext? context)
         {
             Debug.Assert(context != null);
 
@@ -372,7 +372,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             CheckPaletteState(context);
 
             // Ask the renderer to evaluate the given palette
-            return _drawCanvas.EvalTransparentPaint(context);
+            return _drawCanvas.EvalTransparentPaint(context!);
         }
         #endregion
 
@@ -381,7 +381,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// Discover the preferred size of the element.
         /// </summary>
         /// <param name="context">Layout context.</param>
-        public override Size GetPreferredSize(ViewLayoutContext context)
+        public override Size GetPreferredSize(ViewLayoutContext? context)
         {
             Debug.Assert(context != null);
             Debug.Assert(_drawCanvas != null);
@@ -390,7 +390,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             CheckPaletteState(context);
 
             // Delegate work to the child canvas
-            return _drawCanvas.GetPreferredSize(context);
+            return _drawCanvas!.GetPreferredSize(context!);
         }
 
         /// <summary>
@@ -398,7 +398,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// </summary>
         /// <param name="context">Layout context.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public override void Layout(ViewLayoutContext context)
+        public override void Layout(ViewLayoutContext? context)
         {
             Debug.Assert(context != null);
 
@@ -426,7 +426,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// Perform a render of the elements.
         /// </summary>
         /// <param name="context">Rendering context.</param>
-        public override void Render(RenderContext context)
+        public override void Render(RenderContext? context)
         {
             Debug.Assert(context != null);
 
@@ -434,7 +434,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             CheckPaletteState(context);
 
             // Let base class perform standard rendering
-            base.Render(context);
+            base.Render(context!);
         }
         #endregion
 
@@ -443,13 +443,13 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// Check that the palette and state are correct.
         /// </summary>
         /// <param name="context">Reference to the view context.</param>
-        protected virtual void CheckPaletteState(ViewContext context)
+        protected virtual void CheckPaletteState(ViewContext? context)
         {
             // Default to using this element calculated state
             PaletteState buttonState = State;
 
             // If the actual control is not enabled, force to disabled state
-            if (!IsFixed && !context.Control.Enabled)
+            if (!IsFixed && !context!.Control.Enabled)
             {
                 buttonState = PaletteState.Disabled;
             }
@@ -523,9 +523,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 }
 
                 // Update with the correct palettes
-                _drawCanvas.SetPalettes(CurrentPalette.PaletteBack, CurrentPalette.PaletteBorder);
+                _drawCanvas.SetPalettes(CurrentPalette.PaletteBack, CurrentPalette.PaletteBorder!);
 
-                _drawContent.SetPalette(CurrentPalette.PaletteContent);
+                _drawContent.SetPalette(CurrentPalette.PaletteContent!);
                 //_drawImageContent.SetPalette(CurrentPalette.PaletteContent);
             }
         }

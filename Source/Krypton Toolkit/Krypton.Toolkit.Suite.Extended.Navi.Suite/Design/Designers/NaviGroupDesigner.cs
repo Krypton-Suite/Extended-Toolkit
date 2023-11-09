@@ -27,13 +27,14 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
+    [SuppressMessage("ReSharper", "RedundantEmptySwitchSection")]
     public class NaviGroupDesigner : ParentControlDesigner
     {
         #region Fields
 
-        private IComponentChangeService changeService = null;
-        private ISelectionService selectionService = null;
-        private NaviGroup m_designingControl;
+        private IComponentChangeService? _changeService;
+        private ISelectionService? _selectionService;
+        private NaviGroup? _mDesigningControl;
 
         #endregion
 
@@ -61,13 +62,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         private void CheckHeaderClick(Point location)
         {
-            if (m_designingControl != null)
+            if (_mDesigningControl != null)
             {
-                if (m_designingControl.HeaderRegion.IsVisible(location))
+                if (_mDesigningControl.HeaderRegion.IsVisible(location))
                 {
-                    if (selectionService.PrimarySelection == m_designingControl)
+                    if (_selectionService?.PrimarySelection == _mDesigningControl)
                     {
-                        SetControlProperty("Expanded", !m_designingControl.Expanded);
+                        SetControlProperty("Expanded", !_mDesigningControl.Expanded);
                     }
                 }
             }
@@ -75,37 +76,37 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         private void InitializeServices()
         {
-            if (changeService == null)
+            if (_changeService == null)
             {
-                this.changeService =
+                _changeService =
                    GetService(typeof(IComponentChangeService)) as IComponentChangeService;
             }
-            if (selectionService == null)
+            if (_selectionService == null)
             {
-                this.selectionService =
+                _selectionService =
                    GetService(typeof(ISelectionService)) as ISelectionService;
             }
         }
 
         private void SetControlProperty(string propName, object value)
         {
-            PropertyDescriptor propDesc =
-               TypeDescriptor.GetProperties(m_designingControl)[propName];
+            PropertyDescriptor? propDesc =
+               TypeDescriptor.GetProperties(_mDesigningControl!)[propName];
 
-            if (changeService != null)
+            if (_changeService != null)
             {
                 // Raise event that we are about to change
-                this.changeService.OnComponentChanging(m_designingControl, propDesc);
+                _changeService.OnComponentChanging(_mDesigningControl!, propDesc);
             }
 
             // Change to desired value
-            object oldValue = propDesc.GetValue(m_designingControl);
-            propDesc.SetValue(m_designingControl, value);
+            object? oldValue = propDesc?.GetValue(_mDesigningControl);
+            propDesc?.SetValue(_mDesigningControl, value);
 
-            if (changeService != null)
+            if (_changeService != null)
             {
                 // Raise event that the component has been changed
-                this.changeService.OnComponentChanged(m_designingControl, propDesc, oldValue, value);
+                _changeService.OnComponentChanged(_mDesigningControl!, propDesc, oldValue, value);
             }
         }
         #endregion
@@ -133,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             base.Initialize(component);
             if (component is NaviGroup)
             {
-                m_designingControl = (NaviGroup)component;
+                _mDesigningControl = (NaviGroup)component;
             }
             InitializeServices();
         }

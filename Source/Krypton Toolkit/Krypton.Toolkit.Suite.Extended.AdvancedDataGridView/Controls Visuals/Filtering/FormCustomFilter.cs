@@ -266,11 +266,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             string? filterString = "";
 
-            string? column = @"[{0}] ";
+            // ToDo: What are we trying to achieve here?
+
+            string? column = $@"[{0}] ";
 
             if (filterType == FilterType.Unknown)
             {
-                column = $"Convert([{{0}}], 'System.String') ";
+                column = $@"Convert([{0}], 'System.String') ";
             }
 
             filterString = column;

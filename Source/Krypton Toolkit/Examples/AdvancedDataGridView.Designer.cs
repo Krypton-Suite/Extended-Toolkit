@@ -314,11 +314,11 @@
             // 
             this.kadgvMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kadgvMain.FilterAndSortEnabled = true;
-            this.kadgvMain.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.kadgvMain.FilterStringChangedInvokeBeforeDataSourceUpdate = true;
             this.kadgvMain.Location = new System.Drawing.Point(0, 27);
             this.kadgvMain.Name = "kadgvMain";
             this.kadgvMain.Size = new System.Drawing.Size(1108, 377);
-            this.kadgvMain.SortStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.kadgvMain.SortStringChangedInvokeBeforeDataSourceUpdate = true;
             this.kadgvMain.TabIndex = 1;
             this.kadgvMain.SortStringChanged += new System.EventHandler<Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.KryptonAdvancedDataGridView.SortEventArgs>(this.kadgvMain_SortStringChanged);
             this.kadgvMain.FilterStringChanged += new System.EventHandler<Krypton.Toolkit.Suite.Extended.AdvancedDataGridView.KryptonAdvancedDataGridView.FilterEventArgs>(this.kadgvMain_FilterStringChanged);

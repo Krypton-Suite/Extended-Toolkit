@@ -25,12 +25,13 @@
  */
 #endregion
 
+
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     public class ImageValue : Storage, IContentValues
     {
         #region Static Fields
-        private static readonly Image defaultImage = Properties.Resources.Question_32_x_32;
+        private static readonly Image _defaultImage = Properties.Resources.Question_32_x_32;
         #endregion
 
         #region Identity
@@ -78,16 +79,13 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// Gets a value indicating if all values are default.
         /// </summary>
         [Browsable(false)]
-        public override bool IsDefault => ((Image == defaultImage) &&
-                                           (ImageTransparentColor == Color.Empty)
-                                           );
+        public override bool IsDefault => Image == _defaultImage &&
+                                           ImageTransparentColor == Color.Empty
+                                           ;
 
         #endregion
 
-        private bool ShouldSerializeImage()
-        {
-            return Image != defaultImage;
-        }
+        private bool ShouldSerializeImage() => Image != _defaultImage;
 
         #region IContentValues
         /// <summary>
@@ -95,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// </summary>
         public void ResetImage()
         {
-            Image = defaultImage;
+            Image = _defaultImage;
         }
 
         /// <summary>
@@ -126,8 +124,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         [Localizable(true)]
         [Category("Visuals")]
         [Description("Image transparent color.")]
-        [RefreshPropertiesAttribute(RefreshProperties.All)]
-        [KryptonDefaultColorAttribute()]
+        [RefreshProperties(RefreshProperties.All)]
+        [KryptonDefaultColor()]
         public Color ImageTransparentColor
         {
             get => _transparent;

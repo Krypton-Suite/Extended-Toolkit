@@ -51,8 +51,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.11.311-alpha" />
-		<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.23.11.311-alpha" />
+		<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.11.312-alpha" />
+		<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.23.11.312-alpha" />
 		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
 	</ItemGroup>
 

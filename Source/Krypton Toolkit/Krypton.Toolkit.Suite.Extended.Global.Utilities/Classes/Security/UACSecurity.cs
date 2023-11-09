@@ -29,6 +29,7 @@
 namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>Adapted from https://www.codeproject.com/Articles/18509/Add-a-UAC-shield-to-a-button-when-elevation-is-req.</summary>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class UACSecurity
     {
         #region Win32 Calls
@@ -37,17 +38,19 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         #endregion
 
         #region Constants
-        internal const int BCM_FIRST = 0x1600, BCM_SETSHIELD = (BCM_FIRST + 0x000C);
+        internal const int BCM_FIRST = 0x1600;
+
+        internal const int BCM_SETSHIELD = (BCM_FIRST + 0x000C);
         #endregion
 
         #region Methods
-        static internal bool IsVistaOrHigher() => Environment.OSVersion.Version.Major < 6;
+        internal static bool IsVistaOrHigher() => Environment.OSVersion.Version.Major < 6;
 
         /// <summary>
         /// Checks if the process is elevated
         /// </summary>
         /// <returns>If is elevated</returns>
-        static internal bool IsAdmin()
+        internal static bool IsAdmin()
         {
             WindowsIdentity id = WindowsIdentity.GetCurrent();
             WindowsPrincipal p = new WindowsPrincipal(id);
@@ -79,8 +82,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             {
                 Process p = GlobalToolkitUtilities.LaunchProcess(startInfo);
             }
-            catch (System.ComponentModel.Win32Exception ex)
+            catch (Win32Exception ex)
             {
+                ExceptionCapture.CaptureException(ex);
                 return; //If cancelled, do nothing
             }
 

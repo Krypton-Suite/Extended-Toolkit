@@ -25,6 +25,8 @@
  */
 #endregion
 
+using Orientation = System.Windows.Forms.Orientation;
+
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ViewDrawButtonExtended : ViewComposite
@@ -128,12 +130,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             _drawOuterSeparator = new ViewLayoutSeparator(1);
 
             // Create the view used to draw the split edge
-            _edgeRedirect = new PaletteBorderEdgeRedirect(_paletteNormal.PaletteBorder, null);
+            _edgeRedirect = new PaletteBorderEdgeRedirect(_paletteNormal.PaletteBorder!, null);
             _drawSplitBorder = new ViewDrawBorderEdge(new PaletteBorderEdge(_edgeRedirect, null), CommonHelper.VisualToOrientation(orientation));
 
             // Our view contains background and border with content inside
             _drawContent = new ViewDrawContent(_paletteNormal.PaletteContent, buttonValues, orientation);
-            _drawCanvas = new ViewDrawSplitCanvas(_paletteNormal.PaletteBack, _paletteNormal.PaletteBorder, paletteMetric, PaletteMetricPadding.None, orientation);
+            _drawCanvas = new ViewDrawSplitCanvas(_paletteNormal.PaletteBack, _paletteNormal.PaletteBorder!, paletteMetric, PaletteMetricPadding.None, orientation);
 
             // Use a docker layout to organize the contents of the canvas
             LayoutDocker = new ViewLayoutDocker
@@ -158,10 +160,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             Add(_drawCanvas);
         }
 
-        public override string ToString()
-        {
-            return $"ViewDrawButtonExtended: {Id}";
-        }
+        public override string ToString() => $"ViewDrawButtonExtended: {Id}";
+
         #endregion
 
         #region LayoutDocker
@@ -241,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <summary>
         /// Gets and sets the drop down capability of the button.
         /// </summary>
-        public PaletteBase DropDownPalette
+        public PaletteBase? DropDownPalette
         {
             get => _drawDropDownButton.Palette;
             set => _drawDropDownButton.Palette = value;
@@ -287,7 +287,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <summary>
         /// Gets and sets the source for button values.
         /// </summary>
-        public IContentValues ButtonValues
+        public IContentValues? ButtonValues
         {
             get => _drawContent.Values;
             set => _drawContent.Values = value;
@@ -471,7 +471,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Evaluation
-        public override bool EvalTransparentPaint(ViewContext context)
+        public override bool EvalTransparentPaint(ViewContext? context)
         {
             Debug.Assert(context != null);
 
@@ -481,12 +481,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 #pragma warning restore CS8604 // Possible null reference argument.
 
             // Ask the renderer to evaluate the given palette
-            return _drawCanvas.EvalTransparentPaint(context);
+            return _drawCanvas.EvalTransparentPaint(context!);
         }
         #endregion
 
         #region Layout
-        public override Size GetPreferredSize(ViewLayoutContext context)
+        public override Size GetPreferredSize(ViewLayoutContext? context)
         {
             Debug.Assert(context != null);
             Debug.Assert(_drawCanvas != null);
@@ -498,11 +498,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             // Delegate work to the child canvas
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-            return _drawCanvas.GetPreferredSize(context);
+            return _drawCanvas.GetPreferredSize(context!);
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
 
-        public override void Layout(ViewLayoutContext context)
+        public override void Layout(ViewLayoutContext? context)
         {
             Debug.Assert(context != null);
 
@@ -574,7 +574,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Paint
-        public override void Render(RenderContext context)
+        public override void Render(RenderContext? context)
         {
             Debug.Assert(context != null);
 
@@ -582,18 +582,18 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             CheckPaletteState(context);
 
             // Let base class perform standard rendering
-            base.Render(context);
+            base.Render(context!);
         }
         #endregion
 
         #region Protected
-        protected virtual void CheckPaletteState(ViewContext context)
+        protected virtual void CheckPaletteState(ViewContext? context)
         {
             // Default to using this element calculated state
             PaletteState buttonState = State;
 
             // If the actual control is not enabled, force to disabled state
-            if (!IsFixed && !context.Control.Enabled)
+            if (context != null && !IsFixed && !context.Control.Enabled)
             {
                 buttonState = PaletteState.Disabled;
             }
@@ -668,9 +668,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 }
 
                 // Update with the correct palettes
-                _drawCanvas.SetPalettes(CurrentPalette.PaletteBack, CurrentPalette.PaletteBorder);
-                _drawContent.SetPalette(CurrentPalette.PaletteContent);
-                _edgeRedirect.SetPalette(CurrentPalette.PaletteBorder);
+                _drawCanvas.SetPalettes(CurrentPalette.PaletteBack, CurrentPalette.PaletteBorder!);
+                _drawContent.SetPalette(CurrentPalette.PaletteContent!);
+                _edgeRedirect.SetPalette(CurrentPalette.PaletteBorder!);
             }
         }
         #endregion
@@ -684,7 +684,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             _drawCanvas.Splitter = _splitter & _dropDown;
 
             ViewDockStyle dockStyle = ViewDockStyle.Right;
-            System.Windows.Forms.Orientation splitOrientation = System.Windows.Forms.Orientation.Vertical;
+            Orientation splitOrientation = System.Windows.Forms.Orientation.Vertical;
             switch (_dropDownPosition)
             {
                 case VisualOrientation.Top:

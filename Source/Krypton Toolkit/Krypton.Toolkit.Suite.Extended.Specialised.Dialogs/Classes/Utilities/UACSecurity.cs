@@ -36,17 +36,20 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
         #endregion
 
         #region Constants
-        internal const int BCM_FIRST = 0x1600, BCM_SETSHIELD = (BCM_FIRST + 0x000C);
+
+        internal const int BCM_FIRST = 0x1600;
+
+        internal const int BCM_SETSHIELD = (BCM_FIRST + 0x000C);
         #endregion
 
         #region Methods
-        static internal bool IsVistaOrHigher() => Environment.OSVersion.Version.Major < 6;
+        internal static bool IsVistaOrHigher() => Environment.OSVersion.Version.Major < 6;
 
         /// <summary>
         /// Checks if the process is elevated
         /// </summary>
         /// <returns>If is elevated</returns>
-        static internal bool IsAdmin()
+        internal static bool IsAdmin()
         {
             WindowsIdentity id = WindowsIdentity.GetCurrent();
             WindowsPrincipal p = new WindowsPrincipal(id);

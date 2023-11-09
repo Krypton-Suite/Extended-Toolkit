@@ -25,28 +25,45 @@
  */
 #endregion
 
+
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
-    public class MainTextValue : NullContentValues
+    public class CommandLinkTextValues : CaptionValues
     {
-        #region Instance Fields
+        private const string DEFAULT_HEADING = @"Command Link V1";
+        private const string DEFAULT_DESCRIPTION = @"Here be the ""Note Text""";
 
-        #endregion
+        public CommandLinkTextValues(NeedPaintHandler needPaint)
+            : base(needPaint)
+        {
+        }
 
-        #region Identity
+        protected override string GetHeadingDefault()
+        {
+            return DEFAULT_HEADING;
+        }
+
+        protected override string GetDescriptionDefault()
+        {
+            return DEFAULT_DESCRIPTION;
+        }
+
+        #region Description
         /// <summary>
-        /// Gets and sets the short text value to use.
+        /// Gets and sets the header description text.
         /// </summary>
-        public string ShortText { get; set; }
-
+        [DefaultValue(DEFAULT_DESCRIPTION)]
+        public override string Description
+        {
+            get => base.Description;
+            set => base.Description = value;
+        }
         #endregion
 
-        #region IContentValues
-        /// <summary>
-        /// Gets the content short text.
-        /// </summary>
-        /// <returns>String value.</returns>
-        public override string GetShortText() => ShortText;
-        #endregion
+        public void ResetText()
+        {
+            Heading = DEFAULT_HEADING;
+            Description = DEFAULT_DESCRIPTION;
+        }
     }
 }
