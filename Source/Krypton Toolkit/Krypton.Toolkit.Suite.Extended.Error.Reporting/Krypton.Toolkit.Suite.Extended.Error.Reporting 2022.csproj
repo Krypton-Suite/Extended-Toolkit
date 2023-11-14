@@ -171,7 +171,7 @@
 		<PackageReference Include="DotNetZip" Version="1.16.0" />
 		<PackageReference Include="Handlebars.Net" Version="2.1.4" />
 		<PackageReference Include="Simple-MAPI.NET" Version="1.2.1" />
-		<PackageReference Include="System.Management" Version="8.0.0-rc.1.23419.4" />
+		<PackageReference Include="System.Management" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
