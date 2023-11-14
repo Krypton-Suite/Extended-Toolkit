@@ -160,12 +160,13 @@
 		<Reference Include="System.IO.Compression.FileSystem" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Compile Remove="Sharp Update\Resources\**" />
-	  <EmbeddedResource Remove="Sharp Update\Resources\**" />
-	  <None Remove="Sharp Update\Resources\**" />
+		<Compile Remove="Sharp Update\Resources\**" />
+		<EmbeddedResource Remove="Sharp Update\Resources\**" />
+		<None Remove="Sharp Update\Resources\**" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
 		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1823.32" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
@@ -178,7 +179,13 @@
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Software.Updater\</OutputPath>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
+
 	<ItemGroup>
+		<Compile Include="..\Krypton.Toolkit.Suite.Extended.Common\Utilities\AllowNullAttribute.cs" Link="General\AllowNullAttribute.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Software.Updater.Core\Krypton.Toolkit.Suite.Extended.Software.Updater.Core 2022.csproj" />
 	</ItemGroup>
@@ -205,22 +212,6 @@
 		<Reference Include="PresentationFramework">
 			<HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\PresentationFramework.dll</HintPath>
 		</Reference>
-		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>4.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>5.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>6.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
 		<Reference Include="WindowsBase" />
 		<!--TODO: Need to specify version here-->
 	</ItemGroup>

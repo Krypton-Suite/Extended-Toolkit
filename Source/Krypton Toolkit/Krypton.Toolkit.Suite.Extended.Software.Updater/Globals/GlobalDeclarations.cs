@@ -31,6 +31,7 @@ global using System.Collections.ObjectModel;
 global using System.ComponentModel;
 global using System.Globalization;
 global using System.Diagnostics;
+global using System.Diagnostics.CodeAnalysis;
 global using System.Drawing;
 global using System.IO;
 global using System.Net;
@@ -39,9 +40,7 @@ global using System.Net.Mime;
 global using System.Reflection;
 global using System.Runtime.Serialization;
 global using System.Runtime.Serialization.Json;
-#if NETCOREAPP3_1_OR_GREATER
 global using System.Runtime.InteropServices;
-#endif
 global using System.Security.Cryptography;
 global using System.Text;
 global using System.Threading;
