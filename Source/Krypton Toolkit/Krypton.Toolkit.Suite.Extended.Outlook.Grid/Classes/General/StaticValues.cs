@@ -26,7 +26,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The default group row height
         /// </summary>
-        public static int _defaultGroupRowHeight = 34;
+        public static int DefaultGroupRowHeight = 34;
         /// <summary>
         /// The group row height for 2013 palettes
         /// </summary>
@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The default offset height
         /// </summary>
-        public static int _defaultOffsetHeight = 22;
+        public static int DefaultOffsetHeight = 22;
         /// <summary>
         /// The offset height for 2013 palettes
         /// </summary>
@@ -42,14 +42,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The image offset width
         /// </summary>
-        public static int _ImageOffsetwidth = 18;
+        public static int ImageOffsetwidth = 18;
         /// <summary>
         /// The group level multiplier
         /// </summary>
-        public static int _groupLevelMultiplier = 15;
+        public static int GroupLevelMultiplier = 15;
         /// <summary>
         /// The group image side size
         /// </summary>
-        public static int _groupImageSide = 16;
+        public static int GroupImageSide = 16;
     }
 }

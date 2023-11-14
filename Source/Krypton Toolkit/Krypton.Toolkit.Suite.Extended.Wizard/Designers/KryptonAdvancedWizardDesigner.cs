@@ -1,15 +1,34 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
+ * MIT License
  *
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * Copyright (c) 2017 - 2023 Krypton Suite
  *
- * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2023.
  *
  */
 #endregion
 
+// ReSharper disable NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
+// ReSharper disable ConvertToNullCoalescingCompoundAssignment
 namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
@@ -90,8 +109,8 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             }
             else
             {
-                Verbs[VerbPrevious].Enabled = false;
-                Verbs[VerbNext].Enabled = false;
+                Verbs[VERB_PREVIOUS].Enabled = false;
+                Verbs[VERB_NEXT].Enabled = false;
             }
         }
 
@@ -100,10 +119,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             if (!_wizard.WizardHasNoPages() && _wizard.IndexOfCurrentPage() > 0)
             {
                 _wizard.ClickBack();
-                Verbs[VerbNext].Enabled = true;
+                Verbs[VERB_NEXT].Enabled = true;
                 if (_wizard.OnFirstPage())
                 {
-                    Verbs[VerbPrevious].Enabled = false;
+                    Verbs[VERB_PREVIOUS].Enabled = false;
                 }
             }
         }
@@ -113,15 +132,15 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             if (((KryptonAdvancedWizard)Control).WizardPages.Count > 0)
             {
                 _wizard.ClickNext();
-                Verbs[VerbPrevious].Enabled = true;
+                Verbs[VERB_PREVIOUS].Enabled = true;
                 if (_wizard.OnLastPage())
                 {
-                    Verbs[VerbNext].Enabled = false;
+                    Verbs[VERB_NEXT].Enabled = false;
                 }
             }
         }
 
-        private static void OnVerbAbout(object sender, EventArgs e) => MessageBox.Show("Written by Steve Bate", "About AdvancedWizard", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private static void OnVerbAbout(object sender, EventArgs e) => KryptonMessageBox.Show(@"Originally written by Steve Bate", "About AdvancedWizard", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
 
         private void OnVerbNew(object sender, EventArgs e)
         {
@@ -143,13 +162,13 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void GetReferenceToIDesignerHost() => _designer = (IDesignerHost)GetService(typeof(IDesignerHost));
 
-        private void GetReferenceToISelectionService() => _selectionService = (ISelectionService)GetService(typeof(ISelectionService));
+        private void GetReferenceToISelectionService() => _selectionService = GetService(typeof(ISelectionService)) as ISelectionService;
 
         private void SelectPageInProperyGrid(KryptonAdvancedWizardPage page) => _selectionService.SetSelectedComponents(new object[] { page }, SelectionTypes.MouseDown);
 
         private void GetReferenceToIComponentChangeService()
         {
-            _changeService = (IComponentChangeService)GetService(typeof(IComponentChangeService));
+            _changeService = GetService(typeof(IComponentChangeService)) as IComponentChangeService;
             if (_changeService == null)
             {
                 return;
@@ -178,14 +197,17 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void ChangeServiceComponentAdded(object sender, ComponentEventArgs e)
         {
-            if (((IDesignerHost)sender).Loading) {
+            if (((IDesignerHost)sender).Loading)
+            {
                 return;
             }
-            if (!(e.Component is KryptonAdvancedWizardPage)) {
+            if (!(e.Component is KryptonAdvancedWizardPage))
+            {
                 return;
             }
             var page = e.Component as KryptonAdvancedWizardPage;
-            if (_wizard.WizardPages.Contains(page)) {
+            if (_wizard.WizardPages.Contains(page))
+            {
                 return;
             }
 
@@ -197,11 +219,13 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void ChangeServiceComponentRemoved(object sender, ComponentEventArgs e)
         {
-            if (((IDesignerHost)sender).Loading) {
+            if (((IDesignerHost)sender).Loading)
+            {
                 return;
             }
             var advancedWizardPage = e.Component as KryptonAdvancedWizardPage;
-            if (advancedWizardPage == null) {
+            if (advancedWizardPage == null)
+            {
                 return;
             }
 
@@ -210,12 +234,12 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             _wizard.SetButtonStates();
         }
 
-        private IComponentChangeService _changeService;
+        private IComponentChangeService? _changeService;
         private IDesignerHost _designer;
-        private ISelectionService _selectionService;
+        private ISelectionService? _selectionService;
         private DesignerVerbCollection _verbs;
         private KryptonAdvancedWizard _wizard;
-        private const int VerbPrevious = 1;
-        private const int VerbNext = 2;
+        private const int VERB_PREVIOUS = 1;
+        private const int VERB_NEXT = 2;
     }
 }

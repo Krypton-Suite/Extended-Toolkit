@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -45,16 +64,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public int YAxisIndex { get; set; } = 0;
 
         public override string ToString() => $"PlottableAnnotation at ({X} px, {Y} px)";
-        public LegendItem[] GetLegendItems() => null;
+        public LegendItem[]? GetLegendItems() => null;
         public AxisLimits GetAxisLimits() => new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
 
         public void ValidateData(bool deep = false)
         {
             if (double.IsNaN(X) || double.IsInfinity(X))
+            {
                 throw new InvalidOperationException("xPixel must be a valid number");
+            }
 
             if (double.IsNaN(Y) || double.IsInfinity(Y))
+            {
                 throw new InvalidOperationException("xPixel must be a valid number");
+            }
         }
 
         // TODO: the negative coordiante thing is silly. Use alignment fields to control this behavior.
@@ -62,7 +85,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (!IsVisible)
+            {
                 return;
+            }
 
             using var gfx = GDI.Graphics(bmp, dims, lowQuality, false);
             using var font = GDI.Font(Font);
@@ -78,13 +103,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             PointF location = new PointF((float)x + dims.DataOffsetX, (float)y + dims.DataOffsetY);
 
             if (Background && Shadow)
+            {
                 gfx.FillRectangle(shadowBrush, location.X + 5, location.Y + 5, size.Width, size.Height);
+            }
 
             if (Background)
+            {
                 gfx.FillRectangle(backgroundBrush, location.X, location.Y, size.Width, size.Height);
+            }
 
             if (Border)
+            {
                 gfx.DrawRectangle(borderPen, location.X, location.Y, size.Width, size.Height);
+            }
 
             gfx.DrawString(Label, font, fontBrush, location);
         }

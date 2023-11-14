@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -38,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasicNotificationWithUserResponseAndProgressBar));
             this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
-            this.pbCountdown = new System.Windows.Forms.ProgressBar();
+            this.pbCountdown = new Krypton.Toolkit.KryptonProgressBar();
             this.ktxtUserResponse = new Krypton.Toolkit.KryptonTextBox();
             this.krtbContent = new Krypton.Toolkit.KryptonRichTextBox();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
@@ -92,6 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.pbCountdown.Name = "pbCountdown";
             this.pbCountdown.Size = new System.Drawing.Size(609, 5);
             this.pbCountdown.TabIndex = 6;
+            this.pbCountdown.Values.Text = "";
             // 
             // ktxtUserResponse
             // 
@@ -191,7 +211,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.ktbActionButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ktbActionButton3.AutoSize = true;
             this.ktbActionButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ktbActionButton3.CornerRoundingRadius = -1F;
             this.ktbActionButton3.DenyButtonBackColour1 = System.Drawing.Color.Red;
             this.ktbActionButton3.DenyButtonBackColour2 = System.Drawing.Color.Red;
             this.ktbActionButton3.DenyButtonTextColour1 = System.Drawing.Color.Empty;
@@ -207,7 +226,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnToastButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnToastButton3.AutoSize = true;
             this.kbtnToastButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnToastButton3.CornerRoundingRadius = -1F;
             this.kbtnToastButton3.Location = new System.Drawing.Point(496, 6);
             this.kbtnToastButton3.Name = "kbtnToastButton3";
             this.kbtnToastButton3.Size = new System.Drawing.Size(22, 22);
@@ -235,7 +253,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.ktbActionButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ktbActionButton2.AutoSize = true;
             this.ktbActionButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ktbActionButton2.CornerRoundingRadius = -1F;
             this.ktbActionButton2.DenyButtonBackColour1 = System.Drawing.Color.Red;
             this.ktbActionButton2.DenyButtonBackColour2 = System.Drawing.Color.Red;
             this.ktbActionButton2.DenyButtonTextColour1 = System.Drawing.Color.Empty;
@@ -251,7 +268,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnToastButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnToastButton2.AutoSize = true;
             this.kbtnToastButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnToastButton2.CornerRoundingRadius = -1F;
             this.kbtnToastButton2.Location = new System.Drawing.Point(-11, 6);
             this.kbtnToastButton2.Name = "kbtnToastButton2";
             this.kbtnToastButton2.Size = new System.Drawing.Size(22, 22);
@@ -300,7 +316,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.ktbActionButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ktbActionButton1.AutoSize = true;
             this.ktbActionButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ktbActionButton1.CornerRoundingRadius = -1F;
             this.ktbActionButton1.DenyButtonBackColour1 = System.Drawing.Color.Red;
             this.ktbActionButton1.DenyButtonBackColour2 = System.Drawing.Color.Red;
             this.ktbActionButton1.DenyButtonTextColour1 = System.Drawing.Color.Empty;
@@ -316,7 +331,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnToastButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnToastButton1.AutoSize = true;
             this.kbtnToastButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnToastButton1.CornerRoundingRadius = -1F;
             this.kbtnToastButton1.Location = new System.Drawing.Point(9, 6);
             this.kbtnToastButton1.Name = "kbtnToastButton1";
             this.kbtnToastButton1.Size = new System.Drawing.Size(22, 22);
@@ -364,7 +378,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #endregion
 
         private KryptonPanel kpnlContent;
-        private ProgressBar pbCountdown;
+        private KryptonProgressBar pbCountdown;
         private KryptonTextBox ktxtUserResponse;
         private KryptonRichTextBox krtbContent;
         private KryptonWrapLabel kwlTitle;

@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -22,13 +41,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public HatchStyle HatchStyle = HatchStyle.None;
         public float BorderLineWidth = 1;
 
-        public BarPlot(double[] xs, double[] ys, double[] yErr, double[] yOffsets) : base()
+        public BarPlot(double[] xs, double[] ys, double[]? yErr, double[]? yOffsets) : base()
         {
             if (ys is null || ys.Length == 0)
+            {
                 throw new InvalidOperationException("ys must be an array that contains elements");
+            }
 
             if (xs != null && ys.Length != xs.Length)
+            {
                 throw new ArgumentException("bar plot Xs and Ys must have the same number of elements");
+            }
 
             Values = ys;
             Positions = xs ?? DataGen.Consecutive(ys.Length);
@@ -42,9 +65,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             for (int barIndex = 0; barIndex < Values.Length; barIndex++)
             {
                 if (Orientation == PlotOrientation.Vertical)
+                {
                     RenderBarVertical(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
+                }
                 else
+                {
                     RenderBarHorizontal(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
+                }
             }
         }
 
@@ -82,10 +109,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (ShowValuesAboveBars)
+            {
                 using (var valueTextFont = GDI.Font(Font))
-                using (var valueTextBrush = GDI.Brush(Font.Color))
-                using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
-                    gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+                {
+                    using (var valueTextBrush = GDI.Brush(Font.Color))
+                    {
+                        using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
+                        {
+                            gfx.DrawString(value.ToString(CultureInfo.InvariantCulture), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+                        }
+                    }
+                }
+            }
         }
 
         private void RenderBarHorizontal(PlotDimensions dims, Graphics gfx, double position, double value, double valueError, double yOffset)
@@ -121,21 +156,31 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (ShowValuesAboveBars)
+            {
                 using (var valueTextFont = GDI.Font(Font))
-                using (var valueTextBrush = GDI.Brush(Font.Color))
-                using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
-                    gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+                {
+                    using (var valueTextBrush = GDI.Brush(Font.Color))
+                    {
+                        using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
+                        {
+                            gfx.DrawString(value.ToString(CultureInfo.InvariantCulture), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+                        }
+                    }
+                }
+            }
         }
 
         protected void RenderBarFromRect(RectangleF rect, bool negative, Graphics gfx)
         {
             using (var outlinePen = new Pen(BorderColor, BorderLineWidth))
-            using (var fillBrush = GDI.Brush(negative ? FillColorNegative : FillColor, FillColorHatch, HatchStyle))
             {
-                gfx.FillRectangle(fillBrush, rect.X, rect.Y, rect.Width, rect.Height);
-                if (BorderLineWidth > 0)
+                using (var fillBrush = GDI.Brush(negative ? FillColorNegative : FillColor, FillColorHatch, HatchStyle))
                 {
-                    gfx.DrawRectangle(outlinePen, rect.X, rect.Y, rect.Width, rect.Height);
+                    gfx.FillRectangle(fillBrush, rect.X, rect.Y, rect.Width, rect.Height);
+                    if (BorderLineWidth > 0)
+                    {
+                        gfx.DrawRectangle(outlinePen, rect.X, rect.Y, rect.Width, rect.Height);
+                    }
                 }
             }
         }
@@ -153,13 +198,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 label = Label,
                 color = FillColor,
                 lineWidth = 10,
-                markerShape = MarkerShape.NONE,
+                markerShape = MarkerShape.None,
                 hatchColor = FillColorHatch,
                 hatchStyle = HatchStyle,
                 borderColor = BorderColor,
                 borderWith = BorderLineWidth
             };
-            return new LegendItem[] { singleItem };
+            return new[] { singleItem };
         }
 
         public void ValidateData(bool deep = false)

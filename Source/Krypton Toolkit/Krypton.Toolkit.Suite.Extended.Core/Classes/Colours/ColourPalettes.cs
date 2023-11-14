@@ -1,12 +1,31 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
-using System.Linq;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -18,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             get
             {
-                return new ColourCollection(new[]
+                return new(new[]
                                            {
                                      Color.FromArgb(0, 48, 96),
                                      Color.FromArgb(47, 96, 144),
@@ -165,7 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 List<Color> results;
 
-                results = new List<Color>();
+                results = new();
 
                 foreach (PropertyInfo property in typeof(Color).GetProperties(BindingFlags.Public | BindingFlags.Static).Where(property => property.PropertyType == typeof(Color)))
                 {
@@ -180,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 results.Sort(ColourComparer.Brightness);
 
-                return new ColourCollection(results);
+                return new(results);
             }
         }
 
@@ -208,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             get
             {
-                return new ColourCollection(new[]
+                return new(new[]
                                            {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(64, 64, 64),
@@ -314,7 +333,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             get
             {
-                return new ColourCollection(new[]
+                return new(new[]
                                            {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(128, 0, 0),
@@ -340,7 +359,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             get
             {
-                return new ColourCollection(new[]
+                return new(new[]
                                            {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(128, 0, 0),
@@ -606,7 +625,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             get
             {
-                return new ColourCollection(new[]
+                return new(new[]
                                            {
                                      Color.FromArgb(255, 0, 255),
                                      Color.FromArgb(255, 51, 255),
@@ -832,35 +851,39 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         #region Static Methods
 
+        /// <summary>Gets the palette.</summary>
+        /// <param name="palette">The palette.</param>
+        /// <returns>The <see cref="ColourCollection"/> of the palette.</returns>
+        /// <exception cref="System.ArgumentException">Invalid palette - palette</exception>
         public static ColourCollection GetPalette(ColourPalette palette)
         {
             ColourCollection result;
 
             switch (palette)
             {
-                case ColourPalette.NAMED:
+                case ColourPalette.Named:
                     result = NamedColours;
                     break;
-                case ColourPalette.OFFICE2010:
+                case ColourPalette.Office2010:
                     result = Office2010Standard;
                     break;
-                case ColourPalette.PAINT:
+                case ColourPalette.Paint:
                     result = PaintPalette;
                     break;
-                case ColourPalette.STANDARD:
+                case ColourPalette.Standard:
                     result = QbColors;
                     break;
-                case ColourPalette.NONE:
-                    result = new ColourCollection();
+                case ColourPalette.None:
+                    result = new();
                     break;
-                case ColourPalette.WEBSAFE:
+                case ColourPalette.WebSafe:
                     result = WebSafe;
                     break;
-                case ColourPalette.STANDARD256:
+                case ColourPalette.Standard256:
                     result = StandardPalette;
                     break;
                 default:
-                    throw new ArgumentException("Invalid palette", nameof(palette));
+                    throw new ArgumentException(@"Invalid palette", nameof(palette));
             }
 
             return result;
@@ -870,7 +893,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             ColourCollection results;
 
-            results = new ColourCollection();
+            results = new();
 
             topRow = topRow.ToArray();
             results.AddRange(topRow);
@@ -881,7 +904,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 {
                     HSLColourStructure hsl;
 
-                    hsl = new HSLColourStructure(colour);
+                    hsl = new(colour);
                     hsl.L = (5 + i + 16 * i) / 100D;
 
                     results.Add(hsl.ToRgbColour());

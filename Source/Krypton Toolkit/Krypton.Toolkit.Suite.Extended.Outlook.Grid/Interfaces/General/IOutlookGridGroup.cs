@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// determines the value of the current group. this is used to compare the group value
         /// against each item's value.
         /// </summary>
-        object Value { get; set; }
+        object? Value { get; set; }
 
         /// <summary>
         /// indicates whether the group is collapsed. If it is collapsed, it group items (rows) will
@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The parent group if any
         /// </summary>
-        IOutlookGridGroup ParentGroup { get; set; }
+        IOutlookGridGroup? ParentGroup { get; set; }
 
         /// <summary>
         /// The level in the depth of groups 
@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The text associated for the group text (XXX items)
         /// </summary>
-        string XXXItemsText { get; set; }
+        string XxxItemsText { get; set; }
 
         /// <summary>
         /// Allows the column to be hidden when it is grouped by

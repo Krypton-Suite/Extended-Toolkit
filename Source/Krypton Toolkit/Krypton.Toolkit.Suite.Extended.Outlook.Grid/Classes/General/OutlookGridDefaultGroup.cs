@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The Value of the group
         /// </summary>
-        private object _val;
+        private object? _val;
         /// <summary>
         /// Boolean if the group is collapsed or not
         /// </summary>
@@ -77,8 +77,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private IComparer _itemsComparer;
         #endregion
 
-        public static OutlookGridLanguageStrings Strings => KryptonOutlookGridGroupBox.Strings;
-
         #region "Constructor"
 
         /// <summary>
@@ -88,15 +86,20 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             _val = null;
             _column = null;
-            if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice365)
+            if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderMicrosoft365)
+            {
                 _height = StaticValues._2013GroupRowHeight; // special height for office 2013
+            }
             else
-                _height = StaticValues._defaultGroupRowHeight; // default height
-            Rows = new List<OutlookGridRow>();
-            Children = new OutlookGridGroupCollection();
+            {
+                _height = StaticValues.DefaultGroupRowHeight; // default height
+            }
+
+            Rows = new();
+            Children = new();
             _formatStyle = "";
-            _oneItemText = Strings.OneItem;
-            _xXxItemsText = Strings.NumberOfItems;
+            _oneItemText = KryptonOutlookGridLanguageManager.GeneralStrings.OneItem;
+            _xXxItemsText = KryptonOutlookGridLanguageManager.GeneralStrings.NumberOfItems;
             _allowHiddenWhenGrouped = true;
             _sortBySummaryCount = false;
         }
@@ -105,10 +108,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor
         /// </summary>
         /// <param name="parentGroup">The parent group if any.</param>
-        public OutlookGridDefaultGroup(IOutlookGridGroup parentGroup) : this()
+        public OutlookGridDefaultGroup(IOutlookGridGroup? parentGroup) : this()
         {
             if (parentGroup != null)
+            {
                 Children.ParentGroup = parentGroup;
+            }
         }
         #endregion
 
@@ -123,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Gets or sets the parent group.
         /// </summary>
         /// <value>The parent group.</value>
-        public IOutlookGridGroup ParentGroup { get; set; }
+        public IOutlookGridGroup? ParentGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the level.
@@ -149,13 +154,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //For formatting number we need to cast the object value to the number before applying formatting
                 if (_val == null || string.IsNullOrEmpty(_val.ToString()))
                 {
-                    formattedValue = Strings.Unknown;
+                    formattedValue = KryptonOutlookGridLanguageManager.GeneralStrings.Unknown;
                 }
                 else if (!String.IsNullOrEmpty(_formatStyle))
                 {
                     if (_val is string)
                     {
-                        formattedValue = string.Format(_formatStyle, Value.ToString());
+                        formattedValue = string.Format(_formatStyle, Value);
                     }
                     else if (_val is DateTime)
                     {
@@ -195,7 +200,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     formattedValue = Value.ToString();
                 }
 
-                res = string.Format("{0}: {1} ({2})", _column.DataGridViewColumn.HeaderText, formattedValue, _itemCount == 1 ? _oneItemText : _itemCount.ToString() + XXXItemsText);
+                res =
+                    $"{_column.DataGridViewColumn.HeaderText}: {formattedValue} ({(_itemCount == 1 ? _oneItemText : _itemCount + XxxItemsText)})";
                 //if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                 //    return res.ToUpper();
                 //else
@@ -210,7 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the Value of the group
         /// </summary>
-        public virtual object Value { get => _val; set => _val = value; }
+        public virtual object? Value { get => _val; set => _val = value; }
 
         /// <summary>
         /// Boolean if the group is collapsed or not
@@ -258,7 +264,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the text associated to several Items
         /// </summary>
-        public virtual string XXXItemsText
+        public virtual string XxxItemsText
         {
             get => _xXxItemsText;
             set => _xXxItemsText = value;
@@ -312,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 _height = _height,
                 _groupImage = _groupImage,
                 _formatStyle = _formatStyle,
-                _xXxItemsText = XXXItemsText,
+                _xXxItemsText = XxxItemsText,
                 _oneItemText = OneItemText,
                 _allowHiddenWhenGrouped = _allowHiddenWhenGrouped,
                 _sortBySummaryCount = _sortBySummaryCount
@@ -332,15 +338,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns></returns>
         public virtual int CompareTo(object obj)
         {
-            int orderModifier = (Column.SortDirection == SortOrder.Ascending ? 1 : -1);
+            int orderModifier = Column.SortDirection == SortOrder.Ascending ? 1 : -1;
             int compareResult = 0;
-            object o2 = ((OutlookGridDefaultGroup)obj).Value;
+            object? o2 = ((OutlookGridDefaultGroup)obj).Value;
 
-            if ((_val == null || _val == DBNull.Value) && (o2 != null && o2 != DBNull.Value))
+            if ((_val == null || _val == DBNull.Value) && o2 != null && o2 != DBNull.Value)
             {
                 compareResult = 1;
             }
-            else if ((_val != null && _val != DBNull.Value) && (o2 == null || o2 == DBNull.Value))
+            else if (_val != null && _val != DBNull.Value && (o2 == null || o2 == DBNull.Value))
             {
                 compareResult = -1;
             }

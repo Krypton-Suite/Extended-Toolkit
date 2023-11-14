@@ -1,12 +1,6 @@
-﻿#region BSD License
-/*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
- */
-#endregion
+﻿using Application = System.Windows.Forms.Application;
 
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     /// <summary>
     /// Provides application update support in C#
@@ -16,74 +10,74 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// <summary>
         /// Parent form
         /// </summary>
-        private Form ParentForm;
+        private KryptonForm _parentForm;
 
         /// <summary>
         /// Parent assembly
         /// </summary>
-        private Assembly ParentAssembly;
+        private Assembly _parentAssembly;
 
         /// <summary>
         /// Parent name
         /// </summary>
-        private string ParentPath;
+        private string _parentPath;
 
         /// <summary>
         /// Holds the program-to-update's info
         /// </summary>
-        private SharpUpdateLocalAppInfo[] LocalApplicationInfos;
+        private SharpUpdateLocalAppInfo[] _localApplicationInfos;
 
         /// <summary>
         /// Holds all the jobs defined in update xml
         /// </summary>
-        private SharpUpdateXml[] JobsFromXML;
+        private SharpUpdateXml[] _jobsFromXml;
 
         /// <summary>
         /// Total number of jobs
         /// </summary>
-        private int Num_Jobs = 0;
+        private int _numJobs = 0;
 
         /// <summary>
         /// Lists containing all informtion for files update
         /// </summary>
-        private List<string> tempFilePaths = new List<string>();
-        private List<string> currentPaths = new List<string>();
-        private List<string> newPaths = new List<string>();
-        private List<string> launchArgss = new List<string>();
-        private List<JobType> jobtypes = new List<JobType>();
+        private List<string> _tempFilePaths = new List<string>();
+        private List<string> _currentPaths = new List<string>();
+        private List<string> _newPaths = new List<string>();
+        private List<string> _launchArgss = new List<string>();
+        private List<JobType> _jobtypes = new List<JobType>();
 
-        private int acceptJobs = 0;
+        private int _acceptJobs = 0;
 
         /// <summary>
         /// Thread to find update
         /// </summary>
-        private BackgroundWorker BgWorker;
+        private BackgroundWorker _bgWorker;
 
         /// <summary>
         /// Uri of the update xml on the server
         /// </summary>
-        private Uri UpdateXmlLocation;
+        private Uri _updateXmlLocation;
         //private readonly Uri UpdateXmlLocation = new Uri("https://raw.githubusercontent.com/henryxrl/SharpUpdate/master/project.xml");
         //private readonly Uri UpdateXmlLocation = new Uri(new FileInfo(@"..\..\..\project.xml").FullName);       // for local testing
 
         /// <summary>
         /// Creates a new SharpUpdater object
         /// </summary>
-        /// <param name="a">Parent ssembly to be attached</param>
+        /// <param name="a">Parent assembly to be attached</param>
         /// <param name="owner">Parent form to be attached</param>
-        /// <param name="XMLOnServer">Uri of the update xml on the server</param>
-        public SharpUpdater(Assembly a, Form owner, Uri XMLOnServer)
+        /// <param name="xmlOnServer">Uri of the update xml on the server</param>
+        public SharpUpdater(Assembly a, KryptonForm owner, Uri xmlOnServer)
         {
-            ParentForm = owner;
-            ParentAssembly = a;
-            ParentPath = a.Location;
+            _parentForm = owner;
+            _parentAssembly = a;
+            _parentPath = a.Location;
 
-            UpdateXmlLocation = XMLOnServer;
+            _updateXmlLocation = xmlOnServer;
 
             // Set up backgroundworker
-            BgWorker = new BackgroundWorker();
-            BgWorker.DoWork += new DoWorkEventHandler(BgWorker_DoWork);
-            BgWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BgWorker_RunWorkerCompleted);
+            _bgWorker = new BackgroundWorker();
+            _bgWorker.DoWork += new DoWorkEventHandler(BgWorker_DoWork);
+            _bgWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BgWorker_RunWorkerCompleted);
         }
 
         /// <summary>
@@ -92,8 +86,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// </summary>
         public void DoUpdate()
         {
-            if (!BgWorker.IsBusy)
-                BgWorker.RunWorkerAsync();
+            if (!_bgWorker.IsBusy)
+                _bgWorker.RunWorkerAsync();
         }
 
         /// <summary>
@@ -102,10 +96,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         private void BgWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             // Check for update on server
-            if (!SharpUpdateXml.ExistsOnServer(UpdateXmlLocation))
+            if (!SharpUpdateXml.ExistsOnServer(_updateXmlLocation))
                 e.Cancel = true;
             else // Parse update xml
-                e.Result = SharpUpdateXml.Parse(UpdateXmlLocation);
+                e.Result = SharpUpdateXml.Parse(_updateXmlLocation);
         }
 
         /// <summary>
@@ -116,36 +110,36 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             // If there is a file on the server
             if (!e.Cancelled)
             {
-                JobsFromXML = (SharpUpdateXml[])e.Result;
+                _jobsFromXml = (SharpUpdateXml[])e.Result;
 
                 // Check if the update is not null and is a newer version than the current application
-                if (JobsFromXML != null)
+                if (_jobsFromXml != null)
                 {
-                    Console.WriteLine("Number of updates from XML: " + JobsFromXML.Length);
+                    Console.WriteLine("Number of updates from XML: " + _jobsFromXml.Length);
 
                     // create local app info according to update xml
-                    Num_Jobs = JobsFromXML.Length;
-                    LocalApplicationInfos = new SharpUpdateLocalAppInfo[Num_Jobs];
-                    for (int i = 0; i < Num_Jobs; ++i)
+                    _numJobs = _jobsFromXml.Length;
+                    _localApplicationInfos = new SharpUpdateLocalAppInfo[_numJobs];
+                    for (int i = 0; i < _numJobs; ++i)
                     {
-                        if (Path.GetFileName(ParentPath).CompareTo(Path.GetFileName(JobsFromXML[i].FilePath)) == 0)
+                        if (Path.GetFileName(_parentPath).CompareTo(Path.GetFileName(_jobsFromXml[i].FilePath)) == 0)
                         {
-                            LocalApplicationInfos[i] = new SharpUpdateLocalAppInfo(JobsFromXML[i], ParentAssembly, ParentForm);
+                            _localApplicationInfos[i] = new SharpUpdateLocalAppInfo(_jobsFromXml[i], _parentAssembly, _parentForm);
                         }
                         else
                         {
-                            LocalApplicationInfos[i] = new SharpUpdateLocalAppInfo(JobsFromXML[i]);
+                            _localApplicationInfos[i] = new SharpUpdateLocalAppInfo(_jobsFromXml[i]);
                         }
-                        LocalApplicationInfos[i].Print();
+                        _localApplicationInfos[i].Print();
                     }
 
                     // validate all update jobs
                     List<int> validJobs = new List<int>();
-                    for (int i = 0; i < Num_Jobs; ++i)
+                    for (int i = 0; i < _numJobs; ++i)
                     {
-                        if (JobsFromXML[i].Tag == JobType.UPDATE)
+                        if (_jobsFromXml[i].Tag == JobType.UPDATE)
                         {
-                            if (!JobsFromXML[i].IsNewerThan(LocalApplicationInfos[i].Version))
+                            if (!_jobsFromXml[i].IsNewerThan(_localApplicationInfos[i].Version))
                                 continue;
                         }
                         validJobs.Add(i);
@@ -160,28 +154,28 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                         showMsgBox = false;
 
                         // Ask to accept the update
-                        if (new SharpUpdateAcceptForm(LocalApplicationInfos[i], JobsFromXML[i], count, validJobs.Count).ShowDialog(LocalApplicationInfos[0].Context) == DialogResult.Yes)
+                        if (new SharpUpdateAcceptForm(_localApplicationInfos[i], _jobsFromXml[i], count, validJobs.Count).ShowDialog(_localApplicationInfos[0].Context) == DialogResult.Yes)
                         {
-                            acceptJobs++;
-                            DownloadUpdate(JobsFromXML[i], LocalApplicationInfos[i]); // Do the update
+                            _acceptJobs++;
+                            DownloadUpdate(_jobsFromXml[i], _localApplicationInfos[i]); // Do the update
                         }
                     }
 
                     if (showMsgBox)
                     {
-                        KryptonMessageBox.Show(ParentForm, "You have the latest versions already!");
+                        KryptonMessageBox.Show(_parentForm, "You have the latest versions already!");
                     }
                     else
                     {
-                        if (acceptJobs > 0)
+                        if (_acceptJobs > 0)
                             InstallUpdate();
                     }
                 }
                 else
-                    KryptonMessageBox.Show(ParentForm, "You have the latest versions already!");
+                    KryptonMessageBox.Show(_parentForm, "You have the latest versions already!");
             }
             else
-                KryptonMessageBox.Show(ParentForm, "No update information found!");
+                KryptonMessageBox.Show(_parentForm, "No update information found!");
         }
 
         /// <summary>
@@ -193,11 +187,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         {
             if (update.Tag == JobType.REMOVE)
             {
-                tempFilePaths.Add("");
-                currentPaths.Add("");
-                newPaths.Add(Path.GetFullPath(applicationInfo.ApplicationPath));
-                launchArgss.Add(update.LaunchArgs);
-                jobtypes.Add(update.Tag);
+                _tempFilePaths.Add("");
+                _currentPaths.Add("");
+                _newPaths.Add(Path.GetFullPath(applicationInfo.ApplicationPath));
+                _launchArgss.Add(update.LaunchArgs);
+                _jobtypes.Add(update.Tag);
                 return;
             }
 
@@ -210,19 +204,19 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                 string newPath = (update.Tag == JobType.UPDATE) ? Path.GetFullPath(Path.GetDirectoryName(currentPath).ToString() + update.FilePath) : Path.GetFullPath(applicationInfo.ApplicationPath);
                 Directory.CreateDirectory(Path.GetDirectoryName(newPath));
 
-                tempFilePaths.Add(form.TempFilePath);
-                currentPaths.Add(currentPath);
-                newPaths.Add(newPath);
-                launchArgss.Add(update.LaunchArgs);
-                jobtypes.Add(update.Tag);
+                _tempFilePaths.Add(form.TempFilePath);
+                _currentPaths.Add(currentPath);
+                _newPaths.Add(newPath);
+                _launchArgss.Add(update.LaunchArgs);
+                _jobtypes.Add(update.Tag);
             }
             else if (result == DialogResult.Abort)
             {
-                KryptonMessageBox.Show(ParentForm, "The update download was canceled.\nThis program has not been modified.", "Update Download Canceled", MessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
+                KryptonMessageBox.Show(_parentForm, "The update download was cancelled.\nThis program has not been modified.", "Update Download Cancelled", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
             }
             else
             {
-                KryptonMessageBox.Show(ParentForm, "There was a problem downloading the update.\nPlease try again later.", "Update Download Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
+                KryptonMessageBox.Show(_parentForm, "There was a problem downloading the update.\nPlease try again later.", "Update Download Error", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
             }
         }
 
@@ -231,14 +225,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// </summary>
         private void InstallUpdate()
         {
-            DialogResult result = KryptonMessageBox.Show("The application needs to restart.", "Restart Needed", MessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
-
-            if (result == DialogResult.OK)
-            {
-                UpdateApplications();
-
-                Application.Exit();
-            }
+            // ToDo: Uncomment once timeouts are supported
+            //MessageBoxEx.Show(_parentForm, "Application restarts in 5 seconds", "Success", 5000);
+            UpdateApplications();
+            Application.Exit();
         }
 
         /// <summary>
@@ -246,42 +236,42 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// </summary>
         private void UpdateApplications()
         {
-            string argument_start = "/C choice /C Y /N /D Y /T 4 & Start \"\" /D \"{0}\" \"{1}\"";
-            string argument_update = "/C choice /C Y /N /D Y /T 4 & Del /F /Q \"{0}\" & choice /C Y /N /D Y /T 2 & Move /Y \"{1}\" \"{2}\"";
-            string argument_update_start = argument_update + " & Start \"\" /D \"{3}\" \"{4}\" {5}";
-            string argument_add = "/C choice /C Y /N /D Y /T 4 & Move /Y \"{0}\" \"{1}\"";
-            string argument_remove = "/C choice /C Y /N /D Y /T 4 & Del /F /Q \"{0}\"";
-            string argument_complete = "";
+            string argumentStart = "/C choice /C Y /N /D Y /T 4 & Start \"\" /D \"{0}\" \"{1}\"";
+            string argumentUpdate = "/C choice /C Y /N /D Y /T 4 & Del /F /Q \"{0}\" & choice /C Y /N /D Y /T 2 & Move /Y \"{1}\" \"{2}\"";
+            string argumentUpdateStart = argumentUpdate + " & Start \"\" /D \"{3}\" \"{4}\" {5}";
+            string argumentAdd = "/C choice /C Y /N /D Y /T 4 & Move /Y \"{0}\" \"{1}\"";
+            string argumentRemove = "/C choice /C Y /N /D Y /T 4 & Del /F /Q \"{0}\"";
+            string argumentComplete = "";
 
             int curAppidx = -1;
-            for (int i = 0; i < acceptJobs; ++i)
+            for (int i = 0; i < _acceptJobs; ++i)
             {
-                string curName = Path.GetFileName(currentPaths[i]);
-                if (curName.CompareTo("") != 0 && Path.GetFileName(ParentPath).CompareTo(curName) == 0)
+                string curName = Path.GetFileName(_currentPaths[i]);
+                if (curName.CompareTo("") != 0 && Path.GetFileName(_parentPath).CompareTo(curName) == 0)
                 {
                     curAppidx = i;
                     continue;
                 }
 
-                if (jobtypes[i] == JobType.ADD)
+                if (_jobtypes[i] == JobType.ADD)
                 {
-                    argument_complete = string.Format(argument_add, tempFilePaths[i], newPaths[i]);
-                    Console.WriteLine("add: " + argument_complete);
+                    argumentComplete = string.Format(argumentAdd, _tempFilePaths[i], _newPaths[i]);
+                    Console.WriteLine("add: " + argumentComplete);
                 }
-                else if (jobtypes[i] == JobType.UPDATE)
+                else if (_jobtypes[i] == JobType.UPDATE)
                 {
-                    argument_complete = string.Format(argument_update, currentPaths[i], tempFilePaths[i], newPaths[i]);
-                    Console.WriteLine("update: " + argument_complete);
+                    argumentComplete = string.Format(argumentUpdate, _currentPaths[i], _tempFilePaths[i], _newPaths[i]);
+                    Console.WriteLine("update: " + argumentComplete);
                 }
                 else
                 {
-                    argument_complete = string.Format(argument_remove, newPaths[i]);
-                    Console.WriteLine("remove: " + argument_complete);
+                    argumentComplete = string.Format(argumentRemove, _newPaths[i]);
+                    Console.WriteLine("remove: " + argumentComplete);
                 }
 
                 ProcessStartInfo cmd = new ProcessStartInfo
                 {
-                    Arguments = argument_complete,
+                    Arguments = argumentComplete,
                     WindowStyle = ProcessWindowStyle.Hidden,
                     CreateNoWindow = true,
                     FileName = "cmd.exe"
@@ -291,23 +281,23 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 
             if (curAppidx > -1)
             {
-                argument_complete = string.Format(argument_update_start, currentPaths[curAppidx], tempFilePaths[curAppidx], newPaths[curAppidx], Path.GetDirectoryName(newPaths[curAppidx]), Path.GetFileName(newPaths[curAppidx]), launchArgss[curAppidx]);
-                Console.WriteLine("Update and run main app: " + argument_complete);
+                argumentComplete = string.Format(argumentUpdateStart, _currentPaths[curAppidx], _tempFilePaths[curAppidx], _newPaths[curAppidx], Path.GetDirectoryName(_newPaths[curAppidx]), Path.GetFileName(_newPaths[curAppidx]), _launchArgss[curAppidx]);
+                Console.WriteLine("Update and run main app: " + argumentComplete);
             }
             else
             {
-                argument_complete = string.Format(argument_start, Path.GetDirectoryName(ParentPath), Path.GetFileName(ParentPath));
-                Console.WriteLine("Run main app: " + argument_complete);
+                argumentComplete = string.Format(argumentStart, Path.GetDirectoryName(_parentPath), Path.GetFileName(_parentPath));
+                Console.WriteLine("Run main app: " + argumentComplete);
             }
 
-            ProcessStartInfo cmd_main = new ProcessStartInfo
+            ProcessStartInfo cmdMain = new ProcessStartInfo
             {
-                Arguments = argument_complete,
+                Arguments = argumentComplete,
                 WindowStyle = ProcessWindowStyle.Hidden,
                 CreateNoWindow = true,
                 FileName = "cmd.exe"
             };
-            Process.Start(cmd_main);
+            Process.Start(cmdMain);
         }
     }
 }

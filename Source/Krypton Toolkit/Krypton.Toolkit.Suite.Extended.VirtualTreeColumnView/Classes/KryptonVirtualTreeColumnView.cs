@@ -1,12 +1,29 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
-
-
 
 // ReSharper disable UnusedMember.Global
 
@@ -71,8 +88,8 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         /// (VirtualTreeRowNode, int column)
         /// with row clicked (May be select on or off)
         /// </summary>
-        [Category("Code")] 
-        [Description("(VirtualTreeRowNode, int column)")] 
+        [Category("Code")]
+        [Description("(VirtualTreeRowNode, int column)")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Action<VirtualTreeRowNode, int> OnSelectionChanged;
 
@@ -200,7 +217,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         {
             // Contains another control and needs marking as such for validation to work
             SetStyle(ControlStyles.ContainerControl, true);
-            
+
             // Cannot select this control, only the child tree view and does not generate a click event
             SetStyle(ControlStyles.Selectable
                      /*| ControlStyles.StandardClick
@@ -1131,7 +1148,9 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         protected override void OnPaint(PaintEventArgs e)
         {
             if (IsDisposed || Disposing || ViewManager == null)
+            {
                 return;
+            }
 
             Paint?.Invoke(this, e);
             base.OnPaint(e);
@@ -1205,7 +1224,9 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         protected override void OnLayout(LayoutEventArgs levent)
         {
             if (IsDisposed || Disposing || ViewManager == null)
+            {
                 return;
+            }
 
             if (IsHandleCreated)
             {
@@ -1275,7 +1296,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         {
             base.CreateHandle();
 
-            _ = PI.SetWindowTheme(Handle, @"DarkMode_Explorer", null);
+            _ = PlatformInvoke.SetWindowTheme(Handle, @"DarkMode_Explorer", null);
         }
 
         //protected override onh

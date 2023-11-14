@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -11,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     [Designer(typeof(KryptonTabPageDesigner), typeof(IDesigner)), ToolboxBitmap(typeof(TabPage))]
     public class KryptonTabPage : TabPage
     {
-        private IPalette m_Palette;
+        private PaletteBase m_Palette;
         private IRenderer m_Renderer;
         private PaletteMode m_PaletteMode;
         private PaletteRedirect m_PaletteRedirect;
@@ -41,9 +60,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void RefreshPalette()
         {
             if (m_PaletteMode == PaletteMode.Global)
+            {
                 m_Palette = KryptonManager.CurrentGlobalPalette;
+            }
             else
+            {
                 m_Palette = KryptonManager.GetPaletteForMode(m_PaletteMode);
+            }
 
             m_Renderer = m_Palette.GetRenderer();
             m_PaletteRedirect = new PaletteRedirect(m_Palette);
@@ -124,7 +147,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_DesignerHost == null)
+                {
                     m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
+                }
+
                 return m_DesignerHost;
             }
         }
@@ -134,7 +160,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_SelectionService == null)
+                {
                     m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                }
+
                 return m_SelectionService;
             }
         }
@@ -188,7 +217,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_DesignerHost == null)
+                {
                     m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
+                }
+
                 return m_DesignerHost;
             }
         }
@@ -198,7 +230,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_SelectionService == null)
+                {
                     m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                }
+
                 return m_SelectionService;
             }
         }

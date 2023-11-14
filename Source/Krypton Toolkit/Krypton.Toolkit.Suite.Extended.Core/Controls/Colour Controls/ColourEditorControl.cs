@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Linq;
-using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -114,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // gColourBar
             // 
-            this.gColourBar.Channel = RGBAChannel.GREEN;
+            this.gColourBar.Channel = RGBAChannel.Green;
             this.gColourBar.Location = new System.Drawing.Point(27, 39);
             this.gColourBar.Name = "gColourBar";
             this.gColourBar.Size = new System.Drawing.Size(72, 20);
@@ -146,7 +144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // bColourBar
             // 
-            this.bColourBar.Channel = RGBAChannel.BLUE;
+            this.bColourBar.Channel = RGBAChannel.Blue;
             this.bColourBar.Location = new System.Drawing.Point(27, 65);
             this.bColourBar.Name = "bColourBar";
             this.bColourBar.Size = new System.Drawing.Size(72, 20);
@@ -297,7 +295,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // aColourBar
             // 
-            this.aColourBar.Channel = RGBAChannel.ALPHA;
+            this.aColourBar.Channel = RGBAChannel.Alpha;
             this.aColourBar.Location = new System.Drawing.Point(27, 216);
             this.aColourBar.Name = "aColourBar";
             this.aColourBar.Size = new System.Drawing.Size(72, 20);
@@ -423,13 +421,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         #region Constants
 
-        private static readonly object _eventColourChanged = new object();
+        private static readonly object _eventColourChanged = new();
 
-        private static readonly object _eventOrientationChanged = new object();
+        private static readonly object _eventOrientationChanged = new();
 
-        private static readonly object _eventShowAlphaChannelChanged = new object();
+        private static readonly object _eventShowAlphaChannelChanged = new();
 
-        private static readonly object _eventShowColourSpaceLabelsChanged = new object();
+        private static readonly object _eventShowColourSpaceLabelsChanged = new();
 
         private const int _minimumBarWidth = 30;
 
@@ -460,7 +458,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             _colour = Color.Black;
             _orientation = Orientation.Vertical;
-            this.Size = new Size(200, 260);
+            this.Size = new(200, 260);
             _showAlphaChannel = true;
             _showColourSpaceLabels = true;
         }
@@ -948,7 +946,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 StringBuilder newText;
 
-                newText = new StringBuilder(text.Length * 2);
+                newText = new(text.Length * 2);
                 newText.Append(text[0]);
                 for (int i = 1; i < text.Length; i++)
                 {
@@ -993,7 +991,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 name = (string)hexTextBox.Items[e.Index];
                 color = Color.FromName(name);
-                colorBox = new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Height - 3, e.Bounds.Height - 3);
+                colorBox = new(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Height - 3, e.Bounds.Height - 3);
 
                 using (Brush brush = new SolidBrush(color))
                 {
@@ -1122,7 +1120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         {
                             Color color;
 
-                            color = namedIndex != -1 ? Color.FromName(text) : ColorTranslator.FromHtml("#" + text);
+                            color = namedIndex != -1 ? Color.FromName(text) : ColorTranslator.FromHtml($"#{text}");
                             aNumericUpDown.Value = color.A;
                             rNumericUpDown.Value = color.R;
                             bNumericUpDown.Value = color.B;
@@ -1173,13 +1171,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     colour = useNamed ? Color.FromName(hexTextBox.Text) : Color.FromArgb((int)aNumericUpDown.Value, (int)rNumericUpDown.Value, (int)gNumericUpDown.Value, (int)bNumericUpDown.Value);
 
                     this.Colour = colour;
-                    this.HSLColour = new HSLColourStructure(colour);
+                    this.HSLColour = new(colour);
                 }
                 else if (useHsl)
                 {
                     HSLColourStructure colour;
 
-                    colour = new HSLColourStructure((int)aNumericUpDown.Value, (double)hNumericUpDown.Value, (double)sNumericUpDown.Value / 100, (double)lNumericUpDown.Value / 100);
+                    colour = new((int)aNumericUpDown.Value, (double)hNumericUpDown.Value, (double)sNumericUpDown.Value / 100, (double)lNumericUpDown.Value / 100);
                     this.HSLColour = colour;
                     this.Colour = colour.ToRgbColour();
                 }
@@ -1228,7 +1226,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     if (!this.LockUpdates)
                     {
                         this.LockUpdates = true;
-                        this.HSLColour = new HSLColourStructure(value);
+                        this.HSLColour = new(value);
                         this.LockUpdates = false;
                         this.UpdateFields(false);
                     }

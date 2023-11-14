@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -18,10 +37,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region Fields
-        private KryptonCalendar _calendar;
+        private KryptonCalendar? _calendar;
         private Rectangle _clip;
-        private Graphics _graphics;
-        private object _tag;
+        private Graphics? _graphics;
+        private object? _tag;
         #endregion
 
         #region Ctor
@@ -39,8 +58,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="calendar">Calendar where painting</param>
         /// <param name="g">Device where to paint</param>
-        /// <param name="clip">Paint event clip area</param>
-        public CalendarRendererEventArgs(KryptonCalendar calendar, Graphics g, Rectangle clipRectangle)
+        /// <param name="clipRectangle">Paint event clip area</param>
+        public CalendarRendererEventArgs(KryptonCalendar? calendar, Graphics? g, Rectangle clipRectangle)
         {
             _calendar = calendar;
             _graphics = g;
@@ -52,8 +71,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="calendar">Calendar where painting</param>
         /// <param name="g">Device where to paint</param>
-        /// <param name="clip">Paint event clip area</param>
-        public CalendarRendererEventArgs(KryptonCalendar calendar, Graphics g, Rectangle clipRectangle, object tag)
+        /// <param name="clipRectangle">Paint event clip area</param>
+        /// <param name="tag"></param>
+        public CalendarRendererEventArgs(KryptonCalendar? calendar, Graphics? g, Rectangle clipRectangle, object? tag)
         {
             _calendar = calendar;
             _graphics = g;
@@ -80,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar where painting
         /// </summary>
-        public KryptonCalendar Calendar => _calendar;
+        public KryptonCalendar? Calendar => _calendar;
 
         /// <summary>
         /// Gets the clip of the paint event
@@ -90,12 +110,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the device where to paint
         /// </summary>
-        public Graphics Graphics => _graphics;
+        public Graphics? Graphics => _graphics;
 
         /// <summary>
         /// Gets or sets a tag for the event
         /// </summary>
-        public object Tag
+        public object? Tag
         {
             get => _tag;
             set => _tag = value;

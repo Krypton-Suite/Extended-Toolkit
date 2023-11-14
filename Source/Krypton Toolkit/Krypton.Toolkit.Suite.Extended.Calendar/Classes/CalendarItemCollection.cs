@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -46,9 +65,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Adds an item to the end of the list
         /// </summary>
         /// <param name="item">The object to be added to the end of the collection. The value can be null for reference types.</param>
-        public new void Add(CalendarItemAlternative item)
+        public new void Add(CalendarItemAlternative? item)
         {
-            base.Add(item); CollectionChanged();
+            if (item != null)
+            {
+                base.Add(item);
+            }
+            CollectionChanged();
         }
 
         /// <summary>
@@ -57,7 +80,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="items">The items whose elements should be added to the end of the collection. The collection itself cannont be null, but it can contain elements that are null.</param>
         public new void AddRange(IEnumerable<CalendarItemAlternative> items)
         {
-            base.AddRange(items); CollectionChanged();
+            base.AddRange(items);
+
+            CollectionChanged();
         }
 
         /// <summary>
@@ -65,7 +90,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public new void Clear()
         {
-            base.Clear(); CollectionChanged();
+            base.Clear();
+
+            CollectionChanged();
         }
 
         /// <summary>
@@ -93,9 +120,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="item">The item to remove from the collection. The value can be null for reference types.</param>
         /// <returns><c>true</c> if item is successfully removed; otherwise, <c>false</c>. This method also returns false if item was not found in the collection.</returns>
-        public new bool Remove(CalendarItemAlternative item)
+        public new bool Remove(CalendarItemAlternative? item)
         {
-            bool result = base.Remove(item);
+            bool result = item != null && base.Remove(item);
 
             CollectionChanged();
 
@@ -145,7 +172,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         private void CollectionChanged()
         {
-            Calendar.Renderer.PerformItemsLayout();
+            if (Calendar.Renderer != null)
+            {
+                Calendar.Renderer.PerformItemsLayout();
+            }
             Calendar.Invalidate();
         }
 

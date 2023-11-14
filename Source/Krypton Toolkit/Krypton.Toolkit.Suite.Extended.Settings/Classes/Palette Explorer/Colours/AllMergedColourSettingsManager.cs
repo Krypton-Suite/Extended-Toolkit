@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -13,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region Variables
         private bool _alwaysUsePrompt = false, _settingsModified = false;
 
-        private AllMergedColourSettings _allMergedColourSettings = new AllMergedColourSettings();
+        private AllMergedColourSettings _allMergedColourSettings = new();
         #endregion
 
         #region Properties
@@ -835,7 +855,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region IO Stuff
         public static void WriteARGBColoursToFile(string colourConfigurationFilePath)
         {
-            AllMergedColourSettingsManager manager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager manager = new();
 
             try
             {
@@ -844,7 +864,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     File.Create(colourConfigurationFilePath);
                 }
 
-                StreamWriter writer = new StreamWriter(colourConfigurationFilePath);
+                StreamWriter writer = new(colourConfigurationFilePath);
 
                 writer.WriteLine(TranslationMethods.ColourARGBToString(manager.GetAlternativeNormalTextColour()));
 
@@ -924,7 +944,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
         public static void WriteRGBColoursToFile(string colourConfigurationFilePath)
         {
-            AllMergedColourSettingsManager manager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager manager = new();
 
             try
             {
@@ -933,7 +953,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     File.Create(colourConfigurationFilePath);
                 }
 
-                StreamWriter writer = new StreamWriter(colourConfigurationFilePath);
+                StreamWriter writer = new(colourConfigurationFilePath);
 
                 writer.WriteLine(TranslationMethods.RGBColourToString(manager.GetAlternativeNormalTextColour()));
 
@@ -1014,47 +1034,72 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <summary>
         /// Creates a ARGB colour configuration file.
         /// </summary>
-        public static void CreateARGBConfigurationFile()
+        public static void CreateARGBConfigurationFile(FileDialogType fileDialogType = FileDialogType.Standard)
         {
             try
             {
+                switch (fileDialogType)
+                {
+                    case FileDialogType.Krypton:
+                        KryptonSaveFileDialog kryptonSaveFileDialog = new();
+
+                        kryptonSaveFileDialog.Title = @"Save Colours To:";
+
+                        kryptonSaveFileDialog.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
+
+                        kryptonSaveFileDialog.DefaultExt = "ccf";
+
+                        kryptonSaveFileDialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                        if (kryptonSaveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteARGBColoursToFile(kryptonSaveFileDialog.FileName);
+                        }
+                        break;
+                    case FileDialogType.Standard:
+                        SaveFileDialog dialog = new();
+
+                        dialog.Title = @"Save Colours To:";
+
+                        dialog.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
+
+                        dialog.DefaultExt = "ccf";
+
+                        dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                        if (dialog.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteARGBColoursToFile(dialog.FileName);
+                        }
+                        break;
+                    case FileDialogType.WindowsAPICodePack:
+                        CommonSaveFileDialog csfd = new();
+
+                        csfd.Title = "Save Colours To:";
+
+                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+
+                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+
+                        csfd.DefaultFileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                        csfd.AlwaysAppendDefaultExtension = true;
+
+                        csfd.DefaultExtension = "ccf";
+
+                        if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                        {
+                            WriteARGBColoursToFile(csfd.FileName);
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(fileDialogType), fileDialogType, null);
+                }
                 if (OSHelper.IsSevenOrHigher())
                 {
-                    CommonSaveFileDialog csfd = new CommonSaveFileDialog();
-
-                    csfd.Title = "Save Colours To:";
-
-                    csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
-
-                    csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
-
-                    csfd.DefaultFileName = $"All Colour Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
-
-                    csfd.AlwaysAppendDefaultExtension = true;
-
-                    csfd.DefaultExtension = "ccf";
-
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
-                    {
-                        WriteARGBColoursToFile(csfd.FileName);
-                    }
                 }
                 else
                 {
-                    SaveFileDialog dialog = new SaveFileDialog();
-
-                    dialog.Title = "Save Colours To:";
-
-                    dialog.Filter = "Colour Configuration File | *.ccf | Normal Text Files | *.txt";
-
-                    dialog.DefaultExt = "ccf";
-
-                    dialog.FileName = $"All Colour Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
-
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        WriteARGBColoursToFile(dialog.FileName);
-                    }
                 }
             }
             catch (Exception exc)
@@ -1066,44 +1111,66 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <summary>
         /// Creates a RGB colour configuration file.
         /// </summary>
-        public static void CreateRGBConfigurationFile()
+        public static void CreateRGBConfigurationFile(FileDialogType fileDialogType = FileDialogType.Standard)
         {
             try
             {
-                if (OSHelper.IsSevenOrHigher())
+                switch (fileDialogType)
                 {
-                    CommonSaveFileDialog csfd = new CommonSaveFileDialog();
+                    case FileDialogType.Krypton:
+                        KryptonSaveFileDialog kryptonSaveFileDialog = new();
 
-                    csfd.Title = "Save Colours To:";
+                        kryptonSaveFileDialog.Title = @"Save Colours To:";
 
-                    csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
+                        kryptonSaveFileDialog.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
 
-                    csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
+                        kryptonSaveFileDialog.DefaultExt = "ccf";
 
-                    csfd.DefaultFileName = $"All Colour Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
+                        kryptonSaveFileDialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
-                    csfd.AlwaysAppendDefaultExtension = true;
+                        if (kryptonSaveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteRGBColoursToFile(kryptonSaveFileDialog.FileName);
+                        }
+                        break;
+                    case FileDialogType.Standard:
+                        SaveFileDialog dialog = new();
 
-                    csfd.DefaultExtension = "ccf";
+                        dialog.Title = @"Save Colours To:";
 
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
-                    {
-                        WriteRGBColoursToFile(csfd.FileName);
-                    }
-                }
-                else
-                {
-                    SaveFileDialog dialog = new SaveFileDialog();
+                        dialog.Filter = @"Colour Configuration File | *.ccf | Normal Text Files | *.txt";
 
-                    dialog.Title = "Save Colours To:";
+                        dialog.DefaultExt = "ccf";
 
-                    dialog.Filter = "Colour Configuration File | *.ccf | Normal Text Files | *.txt";
+                        dialog.FileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
-                    dialog.DefaultExt = "ccf";
+                        if (dialog.ShowDialog() == DialogResult.OK)
+                        {
+                            WriteRGBColoursToFile(dialog.FileName);
+                        }
+                        break;
+                    case FileDialogType.WindowsAPICodePack:
+                        CommonSaveFileDialog csfd = new();
 
-                    dialog.FileName = $"All Colour Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
+                        csfd.Title = "Save Colours To:";
 
-                    if (dialog.ShowDialog() == DialogResult.OK) WriteRGBColoursToFile(dialog.FileName);
+                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+
+                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+
+                        csfd.DefaultFileName = $"All Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                        csfd.AlwaysAppendDefaultExtension = true;
+
+                        csfd.DefaultExtension = "ccf";
+
+                        if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                        {
+                            WriteRGBColoursToFile(csfd.FileName);
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(fileDialogType), fileDialogType, null);
                 }
             }
             catch (Exception exc)

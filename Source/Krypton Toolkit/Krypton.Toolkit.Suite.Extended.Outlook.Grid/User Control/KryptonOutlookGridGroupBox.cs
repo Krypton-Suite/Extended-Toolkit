@@ -16,6 +16,7 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
@@ -24,20 +25,20 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     public partial class KryptonOutlookGridGroupBox : UserControl
     {
         #region Design Code
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            SuspendLayout();
             // 
             // KryptonOutlookGridGroupBox
             // 
-            this.AllowDrop = true;
-            this.Name = "KryptonOutlookGridGroupBox";
-            this.Size = new System.Drawing.Size(744, 46);
-            this.DragDrop += this.KryptonOutlookGridGroupBox_DragDrop;
-            this.DragEnter += this.KryptonOutlookGridGroupBox_DragEnter;
-            this.ResumeLayout(false);
+            AllowDrop = true;
+            Name = "KryptonOutlookGridGroupBox";
+            Size = new(744, 46);
+            DragDrop += KryptonOutlookGridGroupBox_DragDrop;
+            DragEnter += KryptonOutlookGridGroupBox_DragEnter;
+            ResumeLayout(false);
 
         }
         #endregion
@@ -47,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private string _dragColumnToGroupText;
 
         //Krypton
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
         private PaletteBackInheritRedirect _paletteBack;
         private PaletteBorderInheritRedirect _paletteBorder;
@@ -66,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private float _factorX, _factorY;
 
         //Context menu
-        private KryptonContextMenu KCtxMenu;
+        private KryptonContextMenu _kCtxMenu;
         private KryptonContextMenuItems _menuItems;
         private KryptonContextMenuItem _menuSortAscending;
         private KryptonContextMenuItem _menuSortDescending;
@@ -131,12 +132,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public event EventHandler<OutlookGridColumnEventArgs> SortBySummaryCount;
         #endregion
 
-        #region Static Strings
-
-        public static OutlookGridLanguageStrings Strings => KryptonOutlookGrid.Strings;
-
-        #endregion
-
         #region Constructor
 
         /// <summary>
@@ -152,37 +147,39 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             InitializeComponent();
 
-            _columnsList = new List<OutlookGridGroupBoxColumn>();
+            _columnsList = new();
 
             // Cache the current global palette setting
             _palette = KryptonManager.CurrentGlobalPalette;
 
             // Hook into palette events
             if (_palette != null)
+            {
                 _palette.PalettePaint += OnPalettePaint;
+            }
 
             // (4) We want to be notified whenever the global palette changes
             KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             // Create redirection object to the base palette
-            _paletteRedirect = new PaletteRedirect(_palette);
+            _paletteRedirect = new(_palette);
 
             // Create accessor objects for the back, border and content
             // Store the inherit instances
-            _paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
-            _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
-            _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
-            _paletteDataGridView = new PaletteDataGridViewRedirect(_paletteRedirect, null);
-            _paletteDataGridViewAll = new PaletteDataGridViewAll(_paletteDataGridView, null);
+            _paletteBack = new(_paletteRedirect);
+            _paletteBorder = new(_paletteRedirect);
+            _paletteContent = new(_paletteRedirect);
+            _paletteDataGridView = new(_paletteRedirect, null);
+            _paletteDataGridViewAll = new(_paletteDataGridView, null);
 
             // Create storage that maps onto the inherit instances
-            _border = new PaletteBorder(_paletteBorder, null);
-            _dragColumnToGroupText = Strings.DragColumnToGroup;
-            
+            _border = new(_paletteBorder, null);
+            _dragColumnToGroupText = KryptonOutlookGridLanguageManager.GeneralStrings.DragColumnToGroup;
+
             using (Graphics g = CreateGraphics())
             {
-                _factorX = g.DpiX > 96 ? (1f * g.DpiX / 96) : 1f;
-                _factorY = g.DpiY > 96 ? (1f * g.DpiY / 96) : 1f;
+                _factorX = g.DpiX > 96 ? 1f * g.DpiX / 96 : 1f;
+                _factorY = g.DpiY > 96 ? 1f * g.DpiY / 96 : 1f;
             }
         }
 
@@ -240,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
             }
 
-            if (disposing && (components != null))
+            if (disposing && components != null)
             {
                 components.Dispose();
             }
@@ -261,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 IRenderer renderer = _palette.GetRenderer();
 
                 // (4) Create the rendering context that is passed into all renderer calls
-                using (RenderContext renderContext = new RenderContext(this, e.Graphics, e.ClipRectangle, renderer))
+                using (RenderContext renderContext = new(this, e.Graphics, e.ClipRectangle, renderer))
                 {
                     _paletteBack.Style = PaletteBackStyle.PanelClient;
                     _paletteBorder.Style = PaletteBorderStyle.HeaderPrimary;
@@ -292,7 +289,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
 
                     //Draw the column boxes
-                    foreach (OutlookGridGroupBoxColumn current in this._columnsList)
+                    foreach (OutlookGridGroupBoxColumn current in _columnsList)
                     {
                         Rectangle rectangle = default(Rectangle);
                         rectangle.Width = (int)(100 * _factorX);
@@ -303,11 +300,18 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         current.Rect = rectangle;
 
                         if (current.IsHovered)
+                        {
                             state = PaletteState.Tracking;
+                        }
                         else if (current.Pressed)
+                        {
                             state = PaletteState.Pressed;
+                        }
                         else
+                        {
                             state = PaletteState.Normal;
+                        }
+
                         // Do we need to draw the background?
                         if (_paletteBack.GetBackDraw(PaletteState.Normal) == InheritBool.True)
                         {
@@ -337,9 +341,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         //Draw the column box while it is moving
                         if (current.IsMoving)
                         {
-                            Rectangle rectangle1 = new Rectangle(_mouse.X, _mouse.Y, current.Rect.Width, current.Rect.Height);
+                            Rectangle rectangle1 = new(_mouse.X, _mouse.Y, current.Rect.Width, current.Rect.Height);
                             //this.Renderer.PaintMovingColumn(graphics, this.currentDragColumn, rectangle1);
-                            using (SolidBrush solidBrush = new SolidBrush(Color.FromArgb(70, Color.Gray)))
+                            using (SolidBrush solidBrush = new(Color.FromArgb(70, Color.Gray)))
                             {
                                 e.Graphics.FillRectangle(solidBrush, rectangle1);
                             }
@@ -360,17 +364,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">A MouseEventArgs that contains the event data.</param>
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            foreach (OutlookGridGroupBoxColumn c in this._columnsList)
+            foreach (OutlookGridGroupBoxColumn c in _columnsList)
             {
                 if (c.Rect != null)
                 {
-                    if (c.Rect.Contains(e.X, e.Y) && (e.Button == System.Windows.Forms.MouseButtons.Left))
+                    if (c.Rect.Contains(e.X, e.Y) && e.Button == MouseButtons.Left)
                     {
                         c.Pressed = true;
                     }
                 }
             }
-            this.Invalidate();
+            Invalidate();
             base.OnMouseDown(e);
         }
 
@@ -380,19 +384,19 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">A MouseEventArgs that contains the event data.</param>
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            List<OutlookGridGroupBoxColumn> l = new List<OutlookGridGroupBoxColumn>();
+            List<OutlookGridGroupBoxColumn> l = new();
             OutlookGridGroupBoxColumn columnMovingInsideGroupBox = null;
 
-            foreach (OutlookGridGroupBoxColumn c in this._columnsList)
+            foreach (OutlookGridGroupBoxColumn c in _columnsList)
             {
                 if (c.Rect != null)
                 {
-                    if (c.IsMoving && !this.Bounds.Contains(e.Location))
+                    if (c.IsMoving && !Bounds.Contains(e.Location))
                     {
                         l.Add(c);
                     }
                     //We move an existing colum inside the groupbox
-                    else if (c.IsMoving && this.Bounds.Contains(e.Location))
+                    else if (c.IsMoving && Bounds.Contains(e.Location))
                     {
                         columnMovingInsideGroupBox = c;
                     }
@@ -412,7 +416,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 foreach (OutlookGridGroupBoxColumn c in l)
                 {
                     //Warn the Grid
-                    OnColumnGroupRemoved(new OutlookGridColumnEventArgs(new OutlookGridColumn(c.ColumnName, null, null, SortOrder.None, -1, -1, null)));
+                    OnColumnGroupRemoved(new(new(c.ColumnName, null, null, SortOrder.None, -1, -1, null)));
 
                     _columnsList.Remove(c);
                 }
@@ -421,23 +425,23 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             if (columnMovingInsideGroupBox != null)
             {
-                if (e.Location.X != columnMovingInsideGroupBox.Rect.X && (e.Location.X < columnMovingInsideGroupBox.Rect.X || e.Location.X > (columnMovingInsideGroupBox.Rect.X + columnMovingInsideGroupBox.Rect.Width)))
+                if (e.Location.X != columnMovingInsideGroupBox.Rect.X && (e.Location.X < columnMovingInsideGroupBox.Rect.X || e.Location.X > columnMovingInsideGroupBox.Rect.X + columnMovingInsideGroupBox.Rect.Width))
                 {
                     int i = 0; //first group order is 0
 
-                    foreach (OutlookGridGroupBoxColumn existingColumns in this._columnsList)
+                    foreach (OutlookGridGroupBoxColumn existingColumns in _columnsList)
                     {
-                        if (e.Location.X > (existingColumns.Rect.X + existingColumns.Rect.Width / 2) && existingColumns != columnMovingInsideGroupBox)
+                        if (e.Location.X > existingColumns.Rect.X + existingColumns.Rect.Width / 2 && existingColumns != columnMovingInsideGroupBox)
                         {
                             i++;
                         }
                     }
-                    OnColumnGroupOrderChanged(new OutlookGridColumnEventArgs(new OutlookGridColumn(columnMovingInsideGroupBox.ColumnName, null, null, SortOrder.None, i, -1, null)));
+                    OnColumnGroupOrderChanged(new(new(columnMovingInsideGroupBox.ColumnName, null, null, SortOrder.None, i, -1, null)));
                     //MessageBox.Show("Changed order = " + i.ToString());
                 }
             }
 
-            this.Invalidate();
+            Invalidate();
             base.OnMouseDown(e);
         }
 
@@ -447,10 +451,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">A MouseEventArgs that contains the event data.</param>
         protected override void OnMouseClick(MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
                 _indexselected = -1;
-                for (int i = 0; i < this._columnsList.Count; i++)
+                for (int i = 0; i < _columnsList.Count; i++)
                 {
                     if (_columnsList[i].Rect != null && _columnsList[i].Rect.Contains(e.X, e.Y))
                     {
@@ -459,25 +463,27 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 }
                 ShowColumnBoxContextMenu();
             }
-            else if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            else if (e.Button == MouseButtons.Left)
             {
                 //On MouseClick is before OnMouseUp, so if it is moving, don't click...
                 bool somethingIsMoving = false;
                 foreach (OutlookGridGroupBoxColumn c in _columnsList)
                 {
                     if (c.IsMoving)
+                    {
                         somethingIsMoving = true;
+                    }
                 }
 
                 if (!somethingIsMoving)
                 {
-                    foreach (OutlookGridGroupBoxColumn c in this._columnsList)
+                    foreach (OutlookGridGroupBoxColumn c in _columnsList)
                     {
                         if (c.Rect != null && c.Rect.Contains(e.X, e.Y))
                         {
                             c.SortDirection = c.SortDirection == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
                             //Warn the Grid
-                            OnColumnSortChanged(new OutlookGridColumnEventArgs(new OutlookGridColumn(c.ColumnName, null, null, c.SortDirection, -1, -1, null)));
+                            OnColumnSortChanged(new(new(c.ColumnName, null, null, c.SortDirection, -1, -1, null)));
                         }
                     }
                 }
@@ -494,7 +500,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             base.OnMouseMove(e);
             _mouse = e.Location;
-            foreach (OutlookGridGroupBoxColumn c in this._columnsList)
+            foreach (OutlookGridGroupBoxColumn c in _columnsList)
             {
                 if (c.Rect != null)
                 {
@@ -502,7 +508,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     c.IsHovered = c.Rect.Contains(e.X, e.Y);
 
                     //declare dragging
-                    if (c.Rect.Contains(e.X, e.Y) && (e.Button == System.Windows.Forms.MouseButtons.Left) && !_isDragging)
+                    if (c.Rect.Contains(e.X, e.Y) && e.Button == MouseButtons.Left && !_isDragging)
                     {
                         _isDragging = true;
                         c.IsMoving = true;
@@ -536,7 +542,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             // (5) Unhook events from old palette
             if (_palette != null)
+            {
                 _palette.PalettePaint -= OnPalettePaint;
+            }
 
             // (6) Cache the new IPalette that is the global palette
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -544,7 +552,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // (7) Hook into events for the new palette
             if (_palette != null)
+            {
                 _palette.PalettePaint += OnPalettePaint;
+            }
 
             // (8) Change of palette means we should repaint to show any changes
             Invalidate();
@@ -557,7 +567,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnColumnSortChanged(OutlookGridColumnEventArgs e)
         {
             if (ColumnSortChanged != null)
+            {
                 ColumnSortChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -567,7 +579,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnColumnGroupAdded(OutlookGridColumnEventArgs e)
         {
             if (ColumnGroupAdded != null)
+            {
                 ColumnGroupAdded(this, e);
+            }
         }
 
         /// <summary>
@@ -577,7 +591,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnColumnGroupRemoved(OutlookGridColumnEventArgs e)
         {
             if (ColumnGroupRemoved != null)
+            {
                 ColumnGroupRemoved(this, e);
+            }
         }
 
         /// <summary>
@@ -587,7 +603,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnColumnGroupOrderChanged(OutlookGridColumnEventArgs e)
         {
             if (ColumnGroupOrderChanged != null)
+            {
                 ColumnGroupOrderChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -597,7 +615,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnClearGrouping(EventArgs e)
         {
             if (ClearGrouping != null)
+            {
                 ClearGrouping(this, e);
+            }
         }
 
         /// <summary>
@@ -607,7 +627,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnFullExpand(EventArgs e)
         {
             if (FullExpand != null)
+            {
                 FullExpand(this, e);
+            }
         }
 
         /// <summary>
@@ -617,7 +639,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnFullCollapse(EventArgs e)
         {
             if (FullCollapse != null)
+            {
                 FullCollapse(this, e);
+            }
         }
 
         /// <summary>
@@ -627,7 +651,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnGroupExpand(OutlookGridColumnEventArgs e)
         {
             if (GroupExpand != null)
+            {
                 GroupExpand(this, e);
+            }
         }
 
         /// <summary>
@@ -637,7 +663,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected virtual void OnGroupCollapse(OutlookGridColumnEventArgs e)
         {
             if (GroupCollapse != null)
+            {
                 GroupCollapse(this, e);
+            }
         }
 
         /// <summary>
@@ -647,7 +675,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void OnGroupIntervalClick(OutlookGridColumnEventArgs e)
         {
             if (GroupIntervalClick != null)
+            {
                 GroupIntervalClick(this, e);
+            }
         }
 
         /// <summary>
@@ -657,7 +687,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void OnSortBySummaryCount(OutlookGridColumnEventArgs e)
         {
             if (SortBySummaryCount != null)
+            {
                 SortBySummaryCount(this, e);
+            }
         }
 
         /// <summary>
@@ -667,7 +699,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">A EventArgs that contains the event data.</param>
         private void OnHideGroupBox(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
         }
 
         /// <summary>
@@ -677,9 +709,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">A EventArgs that contains the event data.</param>
         private void OnClearGrouping(object sender, EventArgs e)
         {
-            OnClearGrouping(new EventArgs());
+            OnClearGrouping(new());
             _columnsList.Clear();
-            this.Invalidate();
+            Invalidate();
         }
 
         /// <summary>
@@ -689,7 +721,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">A EventArgs that contains the event data.</param>
         private void OnFullCollapse(object sender, EventArgs e)
         {
-            OnFullCollapse(new EventArgs());
+            OnFullCollapse(new());
         }
 
         /// <summary>
@@ -699,7 +731,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">A EventArgs that contains the event data.</param>
         private void OnFullExpand(object sender, EventArgs e)
         {
-            OnFullExpand(new EventArgs());
+            OnFullExpand(new());
         }
 
         /// <summary>
@@ -709,7 +741,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">A OutlookGridColumnEventArgs that contains the event data.</param>
         private void OnGroupCollapse(object sender, EventArgs e)
         {
-            OnGroupCollapse(new OutlookGridColumnEventArgs(new OutlookGridColumn(_columnsList[_indexselected].ColumnName, null, null, SortOrder.None, -1, -1, null)));
+            OnGroupCollapse(new(new(_columnsList[_indexselected].ColumnName, null, null, SortOrder.None, -1, -1, null)));
         }
 
         /// <summary>
@@ -719,7 +751,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">A OutlookGridColumnEventArgs that contains the event data.</param>
         private void OnGroupExpand(object sender, EventArgs e)
         {
-            OnGroupExpand(new OutlookGridColumnEventArgs(new OutlookGridColumn(_columnsList[_indexselected].ColumnName, null, null, SortOrder.None, -1, -1, null)));
+            OnGroupExpand(new(new(_columnsList[_indexselected].ColumnName, null, null, SortOrder.None, -1, -1, null)));
         }
 
         /// <summary>
@@ -733,9 +765,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
             col.SortDirection = SortOrder.Ascending;
             //Raise event
-            OnColumnSortChanged(new OutlookGridColumnEventArgs(new OutlookGridColumn(col.ColumnName, null, null, SortOrder.Ascending, -1, -1, null)));
+            OnColumnSortChanged(new(new(col.ColumnName, null, null, SortOrder.Ascending, -1, -1, null)));
             //Redraw
-            this.Invalidate();
+            Invalidate();
         }
 
         /// <summary>
@@ -749,9 +781,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
             col.SortDirection = SortOrder.Descending;
             //Raise event
-            OnColumnSortChanged(new OutlookGridColumnEventArgs(new OutlookGridColumn(col.ColumnName, null, null, SortOrder.Descending, -1, -1, null)));
+            OnColumnSortChanged(new(new(col.ColumnName, null, null, SortOrder.Descending, -1, -1, null)));
             //Redraw
-            this.Invalidate();
+            Invalidate();
         }
 
         /// <summary>
@@ -762,9 +794,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void OnUngroup(object sender, EventArgs e)
         {
             OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
-            OnColumnGroupRemoved(new OutlookGridColumnEventArgs(new OutlookGridColumn(col.ColumnName, null, null, SortOrder.None, -1, -1, null)));
+            OnColumnGroupRemoved(new(new(col.ColumnName, null, null, SortOrder.None, -1, -1, null)));
             _columnsList.Remove(col);
-            this.Invalidate();
+            Invalidate();
         }
 
         /// <summary>
@@ -776,11 +808,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             KryptonContextMenuItem item = (KryptonContextMenuItem)sender;
             OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
-            OutlookGridColumn colEvent = new OutlookGridColumn(col.ColumnName, null, null, SortOrder.None, -1, -1, null);
-            colEvent.GroupingType = new OutlookGridDateTimeGroup(null) { Interval = ((DateInterval)Enum.Parse(typeof(DateInterval), item.Tag.ToString())) };
+            OutlookGridColumn colEvent = new(col.ColumnName, null, null, SortOrder.None, -1, -1, null);
+            colEvent.GroupingType = new OutlookGridDateTimeGroup(null) { Interval = (DateInterval)Enum.Parse(typeof(DateInterval), item.Tag.ToString()) };
             col.GroupInterval = ((OutlookGridDateTimeGroup)colEvent.GroupingType).Interval.ToString();
             //Raise event
-            OnGroupIntervalClick(new OutlookGridColumnEventArgs(colEvent));
+            OnGroupIntervalClick(new(colEvent));
         }
 
         /// <summary>
@@ -792,11 +824,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             KryptonContextMenuItem item = (KryptonContextMenuItem)sender;
             OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
-            OutlookGridColumn colEvent = new OutlookGridColumn(col.ColumnName, null, null, SortOrder.None, -1, -1, null);
+            OutlookGridColumn colEvent = new(col.ColumnName, null, null, SortOrder.None, -1, -1, null);
             colEvent.GroupingType = new OutlookGridDefaultGroup(null) { SortBySummaryCount = item.Checked };
             col.SortBySummaryCount = item.Checked;
             //Raise event
-            OnSortBySummaryCount(new OutlookGridColumnEventArgs(colEvent));
+            OnSortBySummaryCount(new(colEvent));
         }
 
         /// <summary>
@@ -816,9 +848,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             columnText = res[1];
             sortOrder = (SortOrder)Enum.Parse(typeof(SortOrder), res[2]);//SortOrder.Ascending;
             if (sortOrder == SortOrder.None)
+            {
                 sortOrder = SortOrder.Ascending;
+            }
+
             sortMode = (DataGridViewColumnSortMode)Enum.Parse(typeof(DataGridViewColumnSortMode), res[3]);
-            OutlookGridGroupBoxColumn colToAdd = new OutlookGridGroupBoxColumn(columnName, columnText, sortOrder, res[4]);
+            OutlookGridGroupBoxColumn colToAdd = new(columnName, columnText, sortOrder, res[4]);
             //if (res[4] == typeof(OutlookGridDateTimeGroup).Name)
             colToAdd.GroupInterval = res[5];
             colToAdd.SortBySummaryCount = CommonHelper.StringToBool(res[6]);
@@ -827,9 +862,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //Determine the position of the new Group amongst the others 
                 int i = 0; //first group order is 0
                 //We are sure that we are going to browse the columns from left to right
-                foreach (OutlookGridGroupBoxColumn existingColumn in this._columnsList)
+                foreach (OutlookGridGroupBoxColumn existingColumn in _columnsList)
                 {
-                    if (e.X > (existingColumn.Rect.X + existingColumn.Rect.Width / 2))
+                    if (e.X > existingColumn.Rect.X + existingColumn.Rect.Width / 2)
                     {
                         i++;
                     }
@@ -839,8 +874,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //try
                 //{
                 //Warns the grid of a new grouping
-                OnColumnGroupAdded(new OutlookGridColumnEventArgs(new OutlookGridColumn(columnName, null, null, sortOrder, i, -1, null)));
-                this.Invalidate();
+                OnColumnGroupAdded(new(new(columnName, null, null, sortOrder, i, -1, null)));
+                Invalidate();
                 //}
                 //catch (Exception exc)
                 //{
@@ -885,7 +920,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
 
             sortMode = (DataGridViewColumnSortMode)Enum.Parse(typeof(DataGridViewColumnSortMode), column.SortMode.ToString());
-            OutlookGridGroupBoxColumn colToAdd = new OutlookGridGroupBoxColumn(columnName, columnText, sortOrder, groupingType);
+            OutlookGridGroupBoxColumn colToAdd = new(columnName, columnText, sortOrder, groupingType);
 
             colToAdd.GroupInterval = res[0];
             colToAdd.SortBySummaryCount = sortBySummary;
@@ -897,7 +932,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 //Warns the grid of a new grouping
                 OnColumnGroupAdded(
-                    new OutlookGridColumnEventArgs(new OutlookGridColumn(columnName, null, null, sortOrder, 0, -1, null)));
+                    new(new(columnName, null, null, sortOrder, 0, -1, null)));
 
                 Invalidate();
             }
@@ -928,42 +963,42 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 #region Localisation
 
-                _menuSortAscending = new KryptonContextMenuItem(Strings.SortAscending, Resources.OutlookGridImageResources.sort_az_ascending2, OnSortAscending);
-                _menuSortDescending = new KryptonContextMenuItem(Strings.SortDescending, Resources.OutlookGridImageResources.sort_az_descending2, OnSortDescending);
-                _menuSeparator1 = new KryptonContextMenuSeparator();
-                _menuExpand = new KryptonContextMenuItem(Strings.Expand, Resources.OutlookGridImageResources.element_plus_16, OnGroupExpand);
-                _menuCollapse = new KryptonContextMenuItem(Strings.Collapse, Resources.OutlookGridImageResources.element_minus_16, OnGroupCollapse);
-                _menuUnGroup = new KryptonContextMenuItem(Strings.UnGroup, Resources.OutlookGridImageResources.element_delete, OnUngroup);
-                _menuSeparator2 = new KryptonContextMenuSeparator();
-                _menuFullExpand = new KryptonContextMenuItem(Strings.FullExpand, Resources.OutlookGridImageResources.elements_plus_16, OnFullExpand);
-                _menuFullCollapse = new KryptonContextMenuItem(Strings.FullCollapse, Resources.OutlookGridImageResources.elements_minus_16, OnFullCollapse);
-                _menuSeparator3 = new KryptonContextMenuSeparator();
-                _menuClearGrouping = new KryptonContextMenuItem(Strings.ClearGrouping, Resources.OutlookGridImageResources.element_selection_delete, OnClearGrouping);
-                _menuHideGroupBox = new KryptonContextMenuItem(Strings.HideGroupBox, null, OnHideGroupBox);
-                _menuGroupInterval = new KryptonContextMenuItem(Strings.GroupInterval);
-                _menuSortBySummary = new KryptonContextMenuItem(Strings.SortBySummaryCount, null, OnSortBySummaryCount);
+                _menuSortAscending = new(KryptonOutlookGridLanguageManager.GeneralStrings.SortAscending, Resources.OutlookGridImageResources.sort_az_ascending2, OnSortAscending);
+                _menuSortDescending = new(KryptonOutlookGridLanguageManager.GeneralStrings.SortDescending, Resources.OutlookGridImageResources.sort_az_descending2, OnSortDescending);
+                _menuSeparator1 = new();
+                _menuExpand = new(KryptonOutlookGridLanguageManager.GeneralStrings.Expand, Resources.OutlookGridImageResources.element_plus_16, OnGroupExpand);
+                _menuCollapse = new(KryptonOutlookGridLanguageManager.GeneralStrings.Collapse, Resources.OutlookGridImageResources.element_minus_16, OnGroupCollapse);
+                _menuUnGroup = new(KryptonOutlookGridLanguageManager.GeneralStrings.UnGroup, Resources.OutlookGridImageResources.element_delete, OnUngroup);
+                _menuSeparator2 = new();
+                _menuFullExpand = new(KryptonOutlookGridLanguageManager.GeneralStrings.FullExpand, Resources.OutlookGridImageResources.elements_plus_16, OnFullExpand);
+                _menuFullCollapse = new(KryptonOutlookGridLanguageManager.GeneralStrings.FullCollapse, Resources.OutlookGridImageResources.elements_minus_16, OnFullCollapse);
+                _menuSeparator3 = new();
+                _menuClearGrouping = new(KryptonOutlookGridLanguageManager.GeneralStrings.ClearGrouping, Resources.OutlookGridImageResources.element_selection_delete, OnClearGrouping);
+                _menuHideGroupBox = new(KryptonOutlookGridLanguageManager.GeneralStrings.HideGroupBox, null, OnHideGroupBox);
+                _menuGroupInterval = new(KryptonOutlookGridLanguageManager.GeneralStrings.GroupInterval);
+                _menuSortBySummary = new(KryptonOutlookGridLanguageManager.GeneralStrings.SortBySummaryCount, null, OnSortBySummaryCount);
 
                 #endregion
 
                 _menuSortBySummary.CheckOnClick = true;
 
                 //Group Interval
-                KryptonContextMenuItems _GroupIntervalItems;
+                KryptonContextMenuItems groupIntervalItems;
                 KryptonContextMenuItem it = null;
                 string[] names = Enum.GetNames(typeof(DateInterval));
                 KryptonContextMenuItemBase[] arrayOptions = new KryptonContextMenuItemBase[names.Length];
                 for (int i = 0; i < names.Length; i++)
                 {
-                    it = new KryptonContextMenuItem(LanguageManager.Instance.GetString(names[i]));
+                    it = new(LanguageManager.Instance.GetString(names[i]));
                     it.Tag = names[i];
                     it.Click += OnGroupIntervalClick;
                     arrayOptions[i] = it;
                 }
-                _GroupIntervalItems = new KryptonContextMenuItems(arrayOptions);
-                _menuGroupInterval.Items.Add(_GroupIntervalItems);
+                groupIntervalItems = new(arrayOptions);
+                _menuGroupInterval.Items.Add(groupIntervalItems);
 
                 // Add items inside an items collection (apart from separator1 which is only added if required)
-                _menuItems = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { _menuSortAscending,
+                _menuItems = new(new KryptonContextMenuItemBase[] { _menuSortAscending,
                                                                                             _menuSortDescending,
                                                                                             _menuSortBySummary,
                                                                                             _menuSeparator1,
@@ -981,14 +1016,18 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
 
             // Ensure we have a krypton context menu if not already present
-            if (this.KCtxMenu == null)
-                KCtxMenu = new KryptonContextMenu();
+            if (_kCtxMenu == null)
+            {
+                _kCtxMenu = new();
+            }
 
 
             // Update the individual menu options
             OutlookGridGroupBoxColumn col = null;
             if (_indexselected > -1)
+            {
                 col = _columnsList[_indexselected];
+            }
 
             _menuSortAscending.Visible = col != null;
             _menuSortDescending.Visible = col != null;
@@ -1011,15 +1050,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             _menuFullCollapse.Enabled = _columnsList.Count > 0;
             _menuClearGrouping.Enabled = _columnsList.Count > 0;
 
-            _menuSeparator1.Visible = (_menuSortAscending.Visible || _menuSortDescending.Visible);
-            _menuSeparator2.Visible = (_menuExpand.Visible || _menuCollapse.Visible || _menuUnGroup.Visible);
-            _menuSeparator3.Visible = (_menuFullExpand.Visible || _menuFullCollapse.Visible);
+            _menuSeparator1.Visible = _menuSortAscending.Visible || _menuSortDescending.Visible;
+            _menuSeparator2.Visible = _menuExpand.Visible || _menuCollapse.Visible || _menuUnGroup.Visible;
+            _menuSeparator3.Visible = _menuFullExpand.Visible || _menuFullCollapse.Visible;
 
-            if (!KCtxMenu.Items.Contains(_menuItems))
-                KCtxMenu.Items.Add(_menuItems);
+            if (!_kCtxMenu.Items.Contains(_menuItems))
+            {
+                _kCtxMenu.Items.Add(_menuItems);
+            }
 
             // Show the menu!
-            KCtxMenu.Show(this);
+            _kCtxMenu.Show(this);
         }
 
         /// <summary>
@@ -1027,7 +1068,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Update the grouping columns.
         /// </summary>
         /// <param name="list">The list of OutlookGridColumn</param>
-        public void UpdateGroupingColumns(List<OutlookGridColumn> list)
+        public void UpdateGroupingColumns(List<OutlookGridColumn>? list)
         {
             _columnsList.Clear();
             OutlookGridGroupBoxColumn colToAdd;
@@ -1035,13 +1076,16 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 if (list[i].IsGrouped)
                 {
-                    colToAdd = new OutlookGridGroupBoxColumn(list[i].DataGridViewColumn.Name, list[i].DataGridViewColumn.HeaderText, list[i].SortDirection, list[i].GroupingType.GetType().Name);
+                    colToAdd = new(list[i].DataGridViewColumn.Name, list[i].DataGridViewColumn.HeaderText, list[i].SortDirection, list[i].GroupingType.GetType().Name);
                     if (colToAdd.GroupingType == typeof(OutlookGridDateTimeGroup).Name)
+                    {
                         colToAdd.GroupInterval = ((OutlookGridDateTimeGroup)list[i].GroupingType).Interval.ToString();
+                    }
+
                     _columnsList.Add(colToAdd);
                 }
             }
-            this.Invalidate();
+            Invalidate();
         }
 
 
@@ -1055,7 +1099,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             for (int i = 0; i < _columnsList.Count; i++)
             {
                 if (_columnsList[i].ColumnName == columnName)
+                {
                     return true;
+                }
             }
             return false;
         }

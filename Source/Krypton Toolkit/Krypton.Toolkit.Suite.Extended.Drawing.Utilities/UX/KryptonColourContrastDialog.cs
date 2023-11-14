@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -544,7 +563,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kavnumBase
             // 
-            this.kavnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.kavnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kavnumBase.Location = new System.Drawing.Point(219, 3);
             this.kavnumBase.Maximum = new decimal(new int[] {
@@ -560,7 +579,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // krvnumBase
             // 
-            this.krvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.krvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.krvnumBase.Location = new System.Drawing.Point(219, 41);
             this.krvnumBase.Maximum = new decimal(new int[] {
@@ -582,7 +601,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kgvnumBase
             // 
-            this.kgvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.kgvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kgvnumBase.Location = new System.Drawing.Point(219, 79);
             this.kgvnumBase.Maximum = new decimal(new int[] {
@@ -604,7 +623,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kbvnumBase
             // 
-            this.kbvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.kbvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kbvnumBase.Location = new System.Drawing.Point(219, 117);
             this.kbvnumBase.Maximum = new decimal(new int[] {
@@ -621,7 +640,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbvnumBase.ToolTipValues.EnableToolTips = true;
             this.kbvnumBase.ToolTipValues.Heading = "Blue Value";
             this.kbvnumBase.Typeface = null;
-            this.kbvnumBase.UseAccessibleUI = false;
+            this.kbvnumBase.UseAccessibleUi = false;
             this.kbvnumBase.ValueChanged += new System.EventHandler(this.kbvnumBase_ValueChanged);
             // 
             // kryptonLabel1
@@ -760,7 +779,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kavnumContrast
             // 
-            this.kavnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.kavnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kavnumContrast.Location = new System.Drawing.Point(219, 3);
             this.kavnumContrast.Maximum = new decimal(new int[] {
@@ -776,7 +795,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // krvnumContrast
             // 
-            this.krvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.krvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.krvnumContrast.Location = new System.Drawing.Point(219, 41);
             this.krvnumContrast.Maximum = new decimal(new int[] {
@@ -798,7 +817,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kgvnumContrast
             // 
-            this.kgvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.kgvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kgvnumContrast.Location = new System.Drawing.Point(219, 79);
             this.kgvnumContrast.Maximum = new decimal(new int[] {
@@ -820,7 +839,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kbvnumContrast
             // 
-            this.kbvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.kbvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kbvnumContrast.Location = new System.Drawing.Point(219, 117);
             this.kbvnumContrast.Maximum = new decimal(new int[] {
@@ -837,7 +856,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbvnumContrast.ToolTipValues.EnableToolTips = true;
             this.kbvnumContrast.ToolTipValues.Heading = "Blue Value";
             this.kbvnumContrast.Typeface = null;
-            this.kbvnumContrast.UseAccessibleUI = false;
+            this.kbvnumContrast.UseAccessibleUi = false;
             this.kbvnumContrast.ValueChanged += new System.EventHandler(this.kbvnumContrast_ValueChanged);
             // 
             // kryptonLabel2
@@ -1113,7 +1132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         public void ShowPaletteButtons(bool visible) => ksbtnPalettes.Visible = visible;
 
-        public void Refresh() => Invalidate();
+        public new void Refresh() => Invalidate();
 
         private void UpdateBaseColour(byte alpha, byte red, byte green, byte blue) => cbBaseColour.BackColor = Color.FromArgb(alpha, red, green, blue);
 

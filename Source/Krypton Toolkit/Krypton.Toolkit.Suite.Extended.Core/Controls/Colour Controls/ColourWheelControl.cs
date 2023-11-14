@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -13,17 +33,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     {
         #region Constants
 
-        private static readonly object _eventColourChanged = new object();
+        private static readonly object _eventColourChanged = new();
 
-        private static readonly object _eventColourStepChanged = new object();
+        private static readonly object _eventColourStepChanged = new();
 
-        private static readonly object _eventHslColourChanged = new object();
+        private static readonly object _eventHslColourChanged = new();
 
-        private static readonly object _eventLargeChangeChanged = new object();
+        private static readonly object _eventLargeChangeChanged = new();
 
-        private static readonly object _eventSelectionSizeChanged = new object();
+        private static readonly object _eventSelectionSizeChanged = new();
 
-        private static readonly object _eventSmallChangeChanged = new object();
+        private static readonly object _eventSmallChangeChanged = new();
 
         #endregion
 
@@ -70,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.Selectable | ControlStyles.StandardClick | ControlStyles.StandardDoubleClick, true);
             _colour = Color.Black;
-            _hslColour = new HSLColourStructure(_colour);
+            _hslColour = new(_colour);
             _colourStep = 4;
             _selectionSize = 10;
             _smallChange = 1;
@@ -325,8 +345,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             List<Color> colors;
             Size size;
 
-            points = new List<PointF>();
-            colors = new List<Color>();
+            points = new();
+            colors = new();
             size = this.ClientSize;
 
             // Only define the points if the control is above a minimum size, otherwise if it's too small, you get an "out of memory" exceptions (of all things) when creating the brush
@@ -338,7 +358,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 w = size.Width;
                 h = size.Height;
 
-                _centerPoint = new PointF(w / 2.0F, h / 2.0F);
+                _centerPoint = new(w / 2.0F, h / 2.0F);
                 _radius = this.GetRadius(_centerPoint);
 
                 for (double angle = 0; angle < 360; angle += _colourStep)
@@ -408,7 +428,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 g.FillPolygon(SystemBrushes.Control, diamondOuter);
                 g.DrawPolygon(SystemPens.ControlDark, diamondOuter);
 
-                using (Pen pen = new Pen(Color.FromArgb(128, SystemColors.ControlDark)))
+                using (Pen pen = new(Color.FromArgb(128, SystemColors.ControlDark)))
                 {
                     g.DrawLine(pen, halfSize, 1, _selectionSize - 1, halfSize);
                     g.DrawLine(pen, halfSize, 2, _selectionSize - 2, halfSize);
@@ -416,7 +436,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     g.DrawLine(pen, halfSize, _selectionSize - 2, _selectionSize - 3, halfSize + 1);
                 }
 
-                using (Pen pen = new Pen(Color.FromArgb(196, SystemColors.ControlLightLight)))
+                using (Pen pen = new(Color.FromArgb(196, SystemColors.ControlLightLight)))
                 {
                     g.DrawLine(pen, halfSize, _selectionSize - 1, 1, halfSize);
                 }
@@ -476,7 +496,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             x = padding.Left + _centerPoint.X + Math.Cos(angleR) * radius;
             y = padding.Top + _centerPoint.Y - Math.Sin(angleR) * radius;
 
-            return new PointF((float)x, (float)y);
+            return new((float)x, (float)y);
         }
 
         protected float GetRadius(PointF centerPoint)
@@ -520,7 +540,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             // http://my.safaribooksonline.com/book/programming/csharp/9780672331985/graphics-with-windows-forms-and-gdiplus/ch17lev1sec21
 
-            normalized = new PointF(point.X - _centerPoint.X, point.Y - _centerPoint.Y);
+            normalized = new(point.X - _centerPoint.X, point.Y - _centerPoint.Y);
 
             return normalized.X * normalized.X + normalized.Y * normalized.Y <= _radius * _radius;
         }
@@ -535,7 +555,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (!_lockUpdates)
             {
-                this.HSLColour = new HSLColourStructure(_colour);
+                this.HSLColour = new(_colour);
             }
 
             this.Refresh();
@@ -761,7 +781,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 // HACK: smooth out the edge of the wheel.
                 // https://github.com/cyotek/Cyotek.Windows.Forms.ColorPicker/issues/1 - the linked source doesn't do this hack yet draws with a smoother edge
                 e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                using (Pen pen = new Pen(this.BackColor, 2))
+                using (Pen pen = new(this.BackColor, 2))
                 {
                     e.Graphics.DrawEllipse(pen, new RectangleF(_centerPoint.X - _radius, _centerPoint.Y - _radius, _radius * 2, _radius * 2));
                 }
@@ -844,7 +864,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 if (this.Focused && includeFocus)
                 {
-                    ControlPaint.DrawFocusRectangle(e.Graphics, new Rectangle(x - 1, y - 1, _selectionSize + 2, _selectionSize + 2));
+                    ControlPaint.DrawFocusRectangle(e.Graphics, new(x - 1, y - 1, _selectionSize + 2, _selectionSize + 2));
                 }
             }
         }
@@ -881,7 +901,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 angle = 360 - angle;
             }
 
-            newColour = new HSLColourStructure(angle, saturation, 0.5);
+            newColour = new(angle, saturation, 0.5);
 
             if (_hslColour != newColour)
             {

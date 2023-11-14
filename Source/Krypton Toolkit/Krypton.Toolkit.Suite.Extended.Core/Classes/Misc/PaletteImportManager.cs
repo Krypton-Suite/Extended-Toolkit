@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -11,11 +31,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     public class PaletteImportManager
     {
         #region Variables
-        private KryptonPalette _palette;
+        private KryptonCustomPaletteBase _palette;
 
-        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
+        private AllMergedColourSettingsManager _colourSettingsManager = new();
 
-        private GlobalStringSettingsManager _globalStringSettingsManager = new GlobalStringSettingsManager();
+        private GlobalStringSettingsManager _globalStringSettingsManager = new();
         #endregion
 
         #region Constructors
@@ -26,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Methods
-        public void ImportColourScheme(KryptonPalette palette)
+        public void ImportColourScheme(KryptonCustomPaletteBase palette)
         {
             try
             {
@@ -92,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             try
             {
-                _palette = new KryptonPalette();
+                _palette = new();
 
                 _palette.Import();
 
@@ -138,7 +158,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExtendedKryptonMessageBox.Show($"Error: { exc.Message }", "_palette Import Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //CoreExtendedKryptonMessageBox.Show($"Error: { exc.Message }", "_palette Import Failed", ExtendedMessageBoxButtons.OK, ExtendedKryptonMessageBoxIcon.Error);
+
+                ExceptionCapture.CaptureException(exc);
 
                 _globalStringSettingsManager.SetFeedbackText("Failed to import colours!");
 
@@ -147,75 +169,79 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
 
         #region New Methods
-        public static void ImportPaletteColourScheme(KryptonPalette palette)
+        public static void ImportPaletteColourScheme(KryptonCustomPaletteBase palette)
         {
-            GlobalStringSettingsManager globalStringSettingsManager = new GlobalStringSettingsManager();
+            GlobalStringSettingsManager globalStringSettingsManager = new();
 
             try
             {
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.ALTERNATIVENORMALTEXTCOLOUR, palette.ButtonStyles.ButtonCommon.OverrideDefault.Content.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.AlternativeNormalTextColour, palette.ButtonStyles.ButtonCommon.OverrideDefault.Content.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.BASECOLOUR, palette.ButtonStyles.ButtonCommon.OverrideDefault.Back.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.BaseColour, palette.ButtonStyles.ButtonCommon.OverrideDefault.Back.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.BORDERCOLOUR, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.BorderColour, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMCOLOURONE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourOne, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMCOLOURTWO, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourTwo, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMCOLOURTHREE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourThree, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMCOLOURFOUR, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourFour, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMCOLOURFIVE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourFive, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMTEXTCOLOURONE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourSix, Color.Gray);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMTEXTCOLOURTWO, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourOne, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMTEXTCOLOURTHREE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourTwo, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMTEXTCOLOURFOUR, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourThree, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMTEXTCOLOURFIVE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourFour, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DARKESTCOLOUR, palette.ButtonStyles.ButtonCluster.StatePressed.Back.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourFive, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DISABLEDCONTROLCOLOUR, palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourSix, Color.Gray);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DISABLEDTEXTCOLOUR, palette.ButtonStyles.ButtonCommon.StateDisabled.Content.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DarkestColour, palette.ButtonStyles.ButtonCluster.StatePressed.Back.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.FOCUSEDTEXTCOLOUR, palette.ButtonStyles.ButtonCommon.OverrideFocus.Content.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DisabledControlColour, palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LIGHTCOLOUR, palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color2);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DisabledTextColour, palette.ButtonStyles.ButtonCommon.StateDisabled.Content.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LIGHTESTCOLOUR, palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.FocusedTextColour, palette.ButtonStyles.ButtonCommon.OverrideFocus.Content.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LINKDISABLEDCOLOUR, palette.LabelStyles.LabelNormalControl.StateDisabled.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LightColour, palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color2);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LINKHOVERCOLOUR, palette.LabelStyles.LabelNormalControl.OverridePressed.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LightestColour, palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LINKNORMALCOLOUR, palette.LabelStyles.LabelNormalControl.OverrideNotVisited.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LinkDisabledColour, palette.LabelStyles.LabelNormalControl.StateDisabled.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LINKVISITEDCOLOUR, palette.LabelStyles.LabelNormalControl.OverrideVisited.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LinkHoverColour, palette.LabelStyles.LabelNormalControl.OverridePressed.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.MEDIUMCOLOUR, palette.ButtonStyles.ButtonCluster.StateNormal.Back.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LinkNormalColour, palette.LabelStyles.LabelNormalControl.OverrideNotVisited.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.MENUTEXTCOLOUR, palette.ToolMenuStatus.Menu.MenuItemText);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LinkVisitedColour, palette.LabelStyles.LabelNormalControl.OverrideVisited.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.NORMALTEXTCOLOUR, palette.ButtonStyles.ButtonCommon.StateCommon.Content.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.MediumColour, palette.ButtonStyles.ButtonCluster.StateNormal.Back.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.PRESSEDTEXTCOLOUR, palette.ButtonStyles.ButtonCommon.StatePressed.Content.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.MenuTextColour, palette.ToolMenuStatus.Menu.MenuItemText);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.STATUSTEXTCOLOUR, palette.ToolMenuStatus.StatusStrip.StatusStripText);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.NormalTextColour, palette.ButtonStyles.ButtonCommon.StateCommon.Content.LongText.Color1);
 
-                ColourSettingsManagementEngine.SaveSettings(SettingTypes.COLOUR);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.PressedTextColour, palette.ButtonStyles.ButtonCommon.StatePressed.Content.LongText.Color1);
+
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.StatusTextColour, palette.ToolMenuStatus.StatusStrip.StatusStripText);
+
+                ColourSettingsManagementEngine.SaveSettings(SettingTypes.Colour);
 
                 globalStringSettingsManager.SetBasePaletteMode(palette.BasePaletteMode.ToString());
 
                 globalStringSettingsManager.SetFeedbackText("The import was successful.");
 
-                ColourSettingsManagementEngine.SaveSettings(SettingTypes.STRING);
+                ColourSettingsManagementEngine.SaveSettings(SettingTypes.String);
             }
             catch (Exception exc)
             {
@@ -229,77 +255,81 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void ImportPaletteColourScheme()
         {
-            GlobalStringSettingsManager globalStringSettingsManager = new GlobalStringSettingsManager();
+            GlobalStringSettingsManager globalStringSettingsManager = new();
 
             try
             {
-                KryptonPalette palette = new KryptonPalette();
+                KryptonCustomPaletteBase palette = new();
 
                 palette.Import();
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.ALTERNATIVENORMALTEXTCOLOUR, palette.ButtonStyles.ButtonCommon.OverrideDefault.Content.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.AlternativeNormalTextColour, palette.ButtonStyles.ButtonCommon.OverrideDefault.Content.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.BASECOLOUR, palette.ButtonStyles.ButtonCommon.OverrideDefault.Back.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.BaseColour, palette.ButtonStyles.ButtonCommon.OverrideDefault.Back.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.BORDERCOLOUR, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.BorderColour, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMCOLOURONE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourOne, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMCOLOURTWO, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourTwo, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMCOLOURTHREE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourThree, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMCOLOURFOUR, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourFour, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMCOLOURFIVE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourFive, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMTEXTCOLOURONE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomColourSix, Color.Gray);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMTEXTCOLOURTWO, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourOne, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMTEXTCOLOURTHREE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourTwo, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMTEXTCOLOURFOUR, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourThree, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CUSTOMTEXTCOLOURFIVE, Color.Gray); // Needs work!
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourFour, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DARKESTCOLOUR, palette.ButtonStyles.ButtonCluster.StatePressed.Back.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourFive, Color.Gray); // Needs work!
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DISABLEDCONTROLCOLOUR, palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.CustomTextColourSix, Color.Gray);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DISABLEDTEXTCOLOUR, palette.ButtonStyles.ButtonCommon.StateDisabled.Content.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DarkestColour, palette.ButtonStyles.ButtonCluster.StatePressed.Back.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.FOCUSEDTEXTCOLOUR, palette.ButtonStyles.ButtonCommon.OverrideFocus.Content.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DisabledControlColour, palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LIGHTCOLOUR, palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color2);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.DisabledTextColour, palette.ButtonStyles.ButtonCommon.StateDisabled.Content.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LIGHTESTCOLOUR, palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.FocusedTextColour, palette.ButtonStyles.ButtonCommon.OverrideFocus.Content.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LINKDISABLEDCOLOUR, palette.LabelStyles.LabelNormalControl.StateDisabled.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LightColour, palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color2);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LINKHOVERCOLOUR, palette.LabelStyles.LabelNormalControl.OverridePressed.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LightestColour, palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LINKNORMALCOLOUR, palette.LabelStyles.LabelNormalControl.OverrideNotVisited.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LinkDisabledColour, palette.LabelStyles.LabelNormalControl.StateDisabled.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LINKVISITEDCOLOUR, palette.LabelStyles.LabelNormalControl.OverrideVisited.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LinkHoverColour, palette.LabelStyles.LabelNormalControl.OverridePressed.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.MEDIUMCOLOUR, palette.ButtonStyles.ButtonCluster.StateNormal.Back.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LinkNormalColour, palette.LabelStyles.LabelNormalControl.OverrideNotVisited.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.MENUTEXTCOLOUR, palette.ToolMenuStatus.Menu.MenuItemText);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.LinkVisitedColour, palette.LabelStyles.LabelNormalControl.OverrideVisited.LongText.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.NORMALTEXTCOLOUR, palette.ButtonStyles.ButtonCommon.StateCommon.Content.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.MediumColour, palette.ButtonStyles.ButtonCluster.StateNormal.Back.Color1);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.PRESSEDTEXTCOLOUR, palette.ButtonStyles.ButtonCommon.StatePressed.Content.LongText.Color1);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.MenuTextColour, palette.ToolMenuStatus.Menu.MenuItemText);
 
-                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.STATUSTEXTCOLOUR, palette.ToolMenuStatus.StatusStrip.StatusStripText);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.NormalTextColour, palette.ButtonStyles.ButtonCommon.StateCommon.Content.LongText.Color1);
 
-                ColourSettingsManagementEngine.SaveSettings(SettingTypes.COLOUR);
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.PressedTextColour, palette.ButtonStyles.ButtonCommon.StatePressed.Content.LongText.Color1);
+
+                ColourSettingsManagementEngine.SetColourSettingsAsColour(AllAvailableColourTypes.StatusTextColour, palette.ToolMenuStatus.StatusStrip.StatusStripText);
+
+                ColourSettingsManagementEngine.SaveSettings(SettingTypes.Colour);
 
                 globalStringSettingsManager.SetBasePaletteMode(palette.BasePaletteMode.ToString());
 
                 globalStringSettingsManager.SetFeedbackText("The import was successful.");
 
-                ColourSettingsManagementEngine.SaveSettings(SettingTypes.STRING);
+                ColourSettingsManagementEngine.SaveSettings(SettingTypes.String);
             }
             catch (Exception exc)
             {

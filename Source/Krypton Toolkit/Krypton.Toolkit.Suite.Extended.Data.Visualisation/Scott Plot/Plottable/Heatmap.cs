@@ -1,11 +1,31 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+// ReSharper disable UnusedVariable
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
@@ -17,37 +37,37 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Minimum heatmap value
         /// </summary>
-        private double Min;
+        private double _min;
 
         /// <summary>
         /// Maximum heatmap value
         /// </summary>
-        private double Max;
+        private double _max;
 
         /// <summary>
         /// Number of columns in the heatmap data
         /// </summary>
-        private int DataWidth;
+        private int _dataWidth;
 
         /// <summary>
         /// Number of rows in the heatmap data
         /// </summary>
-        private int DataHeight;
+        private int _dataHeight;
 
         /// <summary>
         /// Pre-rendered heatmap image
         /// </summary>
-        protected Bitmap BmpHeatmap;
+        protected Bitmap? BmpHeatmap;
 
         /// <summary>
         /// Horizontal location of the lower-left cell
         /// </summary>
-        public double OffsetX = 0;
+        public double OffsetX;
 
         /// <summary>
         /// Vertical location of the lower-left cell
         /// </summary>
-        public double OffsetY = 0;
+        public double OffsetY;
 
         /// <summary>
         /// Width of each cell composing the heatmap
@@ -73,8 +93,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public double XMax
         {
-            get => OffsetX + DataWidth * CellWidth;
-            set => CellWidth = (value - OffsetX) / DataWidth;
+            get => OffsetX + _dataWidth * CellWidth;
+            set => CellWidth = (value - OffsetX) / _dataWidth;
         }
 
         public double YMin
@@ -85,8 +105,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public double YMax
         {
-            get => OffsetY + DataHeight * CellHeight;
-            set => CellHeight = (value - OffsetY) / DataHeight;
+            get => OffsetY + _dataHeight * CellHeight;
+            set => CellHeight = (value - OffsetY) / _dataHeight;
         }
 
         /// <summary>
@@ -130,22 +150,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Value of the the lower edge of the colormap
         /// </summary>
-        public double ColormapMin => ScaleMin ?? Min;
+        public double ColormapMin => ScaleMin ?? _min;
 
         /// <summary>
         /// Value of the the upper edge of the colormap
         /// </summary>
-        public double ColormapMax => ScaleMax ?? Max;
+        public double ColormapMax => ScaleMax ?? _max;
 
         /// <summary>
         /// Indicates whether values extend beyond the lower edge of the colormap
         /// </summary>
-        public bool ColormapMinIsClipped { get; private set; } = false;
+        public bool ColormapMinIsClipped { get; private set; }
 
         /// <summary>
         /// Indicates whether values extend beyond the upper edge of the colormap
         /// </summary>
-        public bool ColormapMaxIsClipped { get; private set; } = false;
+        public bool ColormapMaxIsClipped { get; private set; }
 
         /// <summary>
         /// If true, heatmap squares will be smoothed using high quality bicubic interpolation.
@@ -171,50 +191,66 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="colormap">update the Colormap to use this colormap</param>
         /// <param name="min">minimum intensity (according to the colormap)</param>
         /// <param name="max">maximum intensity (according to the colormap)</param>
-        public void Update(double?[,] intensities, ColourMap colormap = null, double? min = null, double? max = null)
+        public void Update(double?[,] intensities, ColourMap? colormap = null, double? min = null, double? max = null)
         {
-            DataWidth = intensities.GetLength(1);
-            DataHeight = intensities.GetLength(0);
+            _dataWidth = intensities.GetLength(1);
+            _dataHeight = intensities.GetLength(0);
             Colormap = colormap ?? Colormap;
             ScaleMin = min;
             ScaleMax = max;
 
             double?[] intensitiesFlattened = intensities.Cast<double?>().ToArray();
-            Min = double.PositiveInfinity;
-            Max = double.NegativeInfinity;
+            _min = double.PositiveInfinity;
+            _max = double.NegativeInfinity;
 
             foreach (double? curr in intensitiesFlattened)
             {
-                if (curr.HasValue && double.IsNaN(curr.Value))
-                    throw new ArgumentException("Heatmaps do not support intensities of double.NaN");
+                if (curr != null)
+                {
+                    if (double.IsNaN(curr.Value))
+                    {
+                        throw new ArgumentException("Heatmaps do not support intensities of double.NaN");
+                    }
 
-                if (curr.HasValue && curr.Value < Min)
-                    Min = curr.Value;
+                    if (curr.HasValue)
+                    {
+                        throw new ArgumentException("Heatmaps do not support intensities of double.NaN");
+                    }
 
-                if (curr.HasValue && curr.Value > Max)
-                    Max = curr.Value;
+                    if (curr.Value < _min)
+                    {
+                        _min = curr.Value;
+                    }
+
+                    if (curr.Value > _max)
+                    {
+                        _max = curr.Value;
+                    }
+                }
             }
 
-            ColormapMinIsClipped = ScaleMin.HasValue && ScaleMin > Min;
-            ColormapMaxIsClipped = ScaleMax.HasValue && ScaleMax < Max;
+            ColormapMinIsClipped = ScaleMin.HasValue && ScaleMin > _min;
+            ColormapMaxIsClipped = ScaleMax.HasValue && ScaleMax < _max;
 
-            double normalizeMin = (ScaleMin.HasValue && ScaleMin.Value < Min) ? ScaleMin.Value : Min;
-            double normalizeMax = (ScaleMax.HasValue && ScaleMax.Value > Max) ? ScaleMax.Value : Max;
+            double normalizeMin = (ScaleMin.HasValue && ScaleMin.Value < _min) ? ScaleMin.Value : _min;
+            double normalizeMax = (ScaleMax.HasValue && ScaleMax.Value > _max) ? ScaleMax.Value : _max;
 
             if (TransparencyThreshold.HasValue)
-                TransparencyThreshold = Normalize(TransparencyThreshold.Value, Min, Max, ScaleMin, ScaleMax);
+            {
+                TransparencyThreshold = Normalize(TransparencyThreshold.Value, _min, _max, ScaleMin, ScaleMax);
+            }
 
-            double?[] NormalizedIntensities = Normalize(intensitiesFlattened, null, null, ScaleMin, ScaleMax);
+            double?[] normalizedIntensities = Normalize(intensitiesFlattened, null, null, ScaleMin, ScaleMax);
 
-            int[] flatARGB = ColourMap.GetRGBAs(NormalizedIntensities, Colormap, minimumIntensity: TransparencyThreshold ?? 0);
+            int[] flatArgb = ColourMap.GetRGBAs(normalizedIntensities, Colormap, minimumIntensity: TransparencyThreshold ?? 0);
             double?[] normalizedValues = Normalize(Enumerable.Range(0, 256).Select(i => (double?)i).Reverse().ToArray(), null, null, ScaleMin, ScaleMax);
-            int[] scaleRGBA = ColourMap.GetRGBAs(normalizedValues, Colormap);
+            int[] scaleRgba = ColourMap.GetRGBAs(normalizedValues, Colormap);
 
             BmpHeatmap?.Dispose();
-            BmpHeatmap = new Bitmap(DataWidth, DataHeight, PixelFormat.Format32bppArgb);
+            BmpHeatmap = new Bitmap(_dataWidth, _dataHeight, PixelFormat.Format32bppArgb);
             Rectangle rect = new(0, 0, BmpHeatmap.Width, BmpHeatmap.Height);
             BitmapData bmpData = BmpHeatmap.LockBits(rect, ImageLockMode.ReadWrite, BmpHeatmap.PixelFormat);
-            Marshal.Copy(flatARGB, 0, bmpData.Scan0, flatARGB.Length);
+            Marshal.Copy(flatArgb, 0, bmpData.Scan0, flatArgb.Length);
             BmpHeatmap.UnlockBits(bmpData);
         }
 
@@ -228,17 +264,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="colormap">update the Colormap to use this colormap</param>
         /// <param name="min">minimum intensity (according to the colormap)</param>
         /// <param name="max">maximum intensity (according to the colormap)</param>
-        public void Update(double[,] intensities, ColourMap colormap = null, double? min = null, double? max = null)
+        public void Update(double[,] intensities, ColourMap? colormap = null, double? min = null, double? max = null)
         {
             double?[,] tmp = new double?[intensities.GetLength(0), intensities.GetLength(1)];
             for (int i = 0; i < intensities.GetLength(0); i++)
+            {
                 for (int j = 0; j < intensities.GetLength(1); j++)
+                {
                     tmp[i, j] = intensities[i, j];
+                }
+            }
+
             Update(tmp, colormap, min, max);
         }
 
         private double? Normalize(double? input, double? min = null, double? max = null, double? scaleMin = null, double? scaleMax = null)
-            => Normalize(new double?[] { input }, min, max, scaleMin, scaleMax)[0];
+            => Normalize(new[] { input }, min, max, scaleMin, scaleMax)[0];
 
         private double?[] Normalize(double?[] input, double? min = null, double? max = null, double? scaleMin = null, double? scaleMax = null)
         {
@@ -246,7 +287,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 if (i.HasValue)
                 {
-                    return (i.Value - min.Value) / (max.Value - min.Value);
+                    if (min != null)
+                    {
+                        if (max != null)
+                        {
+                            return (i.Value - min.Value) / (max.Value - min.Value);
+                        }
+                    }
                 }
                 return null;
             }
@@ -261,14 +308,26 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             if (scaleMin.HasValue)
             {
-                double threshold = (scaleMin.Value - min.Value) / (max.Value - min.Value);
-                normalized = normalized.AsParallel().AsOrdered().Select(i => i < threshold ? threshold : i).ToArray();
+                if (min != null)
+                {
+                    if (max != null)
+                    {
+                        double threshold = (scaleMin.Value - min.Value) / (max.Value - min.Value);
+                        normalized = normalized.AsParallel().AsOrdered().Select(i => i < threshold ? threshold : i).ToArray();
+                    }
+                }
             }
 
             if (scaleMax.HasValue)
             {
-                double threshold = (scaleMax.Value - min.Value) / (max.Value - min.Value);
-                normalized = normalized.AsParallel().AsOrdered().Select(i => i > threshold ? threshold : i).ToArray();
+                if (min != null)
+                {
+                    if (max != null)
+                    {
+                        double threshold = (scaleMax.Value - min.Value) / (max.Value - min.Value);
+                        normalized = normalized.AsParallel().AsOrdered().Select(i => i > threshold ? threshold : i).ToArray();
+                    }
+                }
             }
 
             return normalized;
@@ -281,34 +340,43 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 label = Label,
                 color = Color.Gray,
                 lineWidth = 10,
-                markerShape = MarkerShape.NONE
+                markerShape = MarkerShape.None
             };
-            return new LegendItem[] { singleLegendItem };
+            return new[] { singleLegendItem };
         }
 
         public virtual AxisLimits GetAxisLimits()
         {
             if (BmpHeatmap is null)
+            {
                 return new AxisLimits();
+            }
 
             return new AxisLimits(
                 xMin: OffsetX,
-                xMax: OffsetX + DataWidth * CellWidth,
+                xMax: OffsetX + _dataWidth * CellWidth,
                 yMin: OffsetY,
-                yMax: OffsetY + DataHeight * CellHeight);
+                yMax: OffsetY + _dataHeight * CellHeight);
         }
 
         public void ValidateData(bool deepValidation = false)
         {
             if (BmpHeatmap is null)
+            {
                 throw new InvalidOperationException("Update() was not called prior to rendering");
+            }
 
             if (deepValidation)
             {
-                if (DataWidth > 1e6 || DataHeight > 1e6)
+                if (_dataWidth > 1e6 || _dataHeight > 1e6)
+                {
                     throw new ArgumentException("Heatmaps may be unreliable for arrays with edges larger than 1 million values");
-                if (DataWidth * DataHeight > 1e7)
+                }
+
+                if (_dataWidth * _dataHeight > 1e7)
+                {
                     throw new ArgumentException("Heatmaps may be unreliable for arrays with more than 10 million values");
+                }
             }
         }
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
@@ -324,8 +392,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             gfx.PixelOffsetMode = PixelOffsetMode.Half;
 
             int fromX = (int)Math.Round(dims.GetPixelX(OffsetX));
-            int fromY = (int)Math.Round(dims.GetPixelY(OffsetY + DataHeight * CellHeight));
-            int width = (int)Math.Round(dims.GetPixelX(OffsetX + DataWidth * CellWidth) - fromX);
+            int fromY = (int)Math.Round(dims.GetPixelY(OffsetY + _dataHeight * CellHeight));
+            int width = (int)Math.Round(dims.GetPixelX(OffsetX + _dataWidth * CellWidth) - fromX);
             int height = (int)Math.Round(dims.GetPixelY(OffsetY) - fromY);
 
             Rectangle destRect = new(fromX, fromY, width, height);
@@ -333,7 +401,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             ImageAttributes attr = new();
             attr.SetWrapMode(WrapMode.TileFlipXY);
 
-            gfx.DrawImage(
+            if (BmpHeatmap != null)
+            {
+                gfx.DrawImage(
                     image: BmpHeatmap,
                     destRect: destRect,
                     srcX: 0,
@@ -342,8 +412,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     BmpHeatmap.Height,
                     GraphicsUnit.Pixel,
                     attr);
+            }
         }
 
-        public override string ToString() => $"PlottableHeatmap ({BmpHeatmap.Size})";
+        public override string ToString()
+        {
+            if (BmpHeatmap != null)
+            {
+                return $"PlottableHeatmap ({BmpHeatmap.Size})";
+            }
+
+            return base.ToString();
+        }
     }
 }

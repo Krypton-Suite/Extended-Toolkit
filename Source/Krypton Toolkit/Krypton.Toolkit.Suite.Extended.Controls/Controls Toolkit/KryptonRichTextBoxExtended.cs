@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -54,29 +73,29 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <value>
         /// The selection alignment.
         /// </value>
-        [DefaultValue(TextAlignment.LEFT), Description("Gets or sets the selection alignment."), Category("Appearance")]
+        [DefaultValue(TextAlignment.Left), Description("Gets or sets the selection alignment."), Category("Appearance")]
         public new TextAlignment SelectionAlignment
         {
             get
             {
                 TextAlignment alignment;
-                
+
                 NativeMethods.PARAFORMAT pARAFORMAT = new NativeMethods.PARAFORMAT()
                 {
                     cbSize = Marshal.SizeOf<NativeMethods.PARAFORMAT>(_paraformat)
 
                 };
-                
+
                 _paraformat = pARAFORMAT;
 
                 SendMessage(new HandleRef(this, Handle), 1085, 1, ref _paraformat);
 
                 if ((_paraformat.dwMask & 8) == 0)
                 {
-                    alignment = TextAlignment.LEFT;
+                    alignment = TextAlignment.Left;
                 }
                 else
-{
+                {
                     alignment = (TextAlignment)_paraformat.wAlignment;
                 }
 
@@ -110,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             Multiline = true;
 
-            SelectionAlignment = TextAlignment.LEFT;
+            SelectionAlignment = TextAlignment.Left;
 
             Size = new Size(100, 96);
 

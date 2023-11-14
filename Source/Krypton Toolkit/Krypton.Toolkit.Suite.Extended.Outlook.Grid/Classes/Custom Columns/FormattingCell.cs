@@ -24,6 +24,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// <seealso cref="KryptonDataGridViewTextBoxCell" />
     public class FormattingCell : KryptonDataGridViewTextBoxCell
     {
+        #region Instance Fields
+
+        private DataGridViewCell _cell;
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the type of the format.
@@ -38,8 +43,23 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <value>
         /// The format parameters.
         /// </value>
-        public IFormatParams FormatParams { get; set; }
+        public IFormatParams? FormatParams { get; set; }
 
+        #region Identity
+
+        public FormattingCell()
+        {
+
+        }
+
+        public FormattingCell(DataGridViewCell cell) => _cell = cell;
+
+        public FormattingCell(KryptonDataGridViewTextBoxCell textBoxCell) : base()
+        {
+
+        }
+
+        #endregion
 
         /// <summary>
         /// Contrasts the color.
@@ -50,11 +70,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             int d = 0;
             //  Counting the perceptive luminance - human eye favors green color... 
-            double a = (1
-                        - (((0.299 * colour.R)
-                            + ((0.587 * colour.G) + (0.114 * colour.B)))
-                           / 255));
-            if ((a < 0.5))
+            double a = 1
+                       - (0.299 * colour.R
+                          + (0.587 * colour.G + 0.114 * colour.B))
+                       / 255;
+            if (a < 0.5)
             {
                 d = 0;
             }
@@ -93,28 +113,31 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         int barWidth;
                         BarParams par = (BarParams)FormatParams;
                         barWidth = (int)((cellBounds.Width - 10) * par.ProportionValue);
-                        Style.BackColor = this.DataGridView.DefaultCellStyle.BackColor;
-                        Style.ForeColor = this.DataGridView.DefaultCellStyle.ForeColor;
+                        if (DataGridView != null)
+                        {
+                            Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
+                            Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                        }
 
                         if (barWidth > 0) //(double)value > 0 &&
                         {
-                            Rectangle r = new Rectangle(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
+                            Rectangle r = new(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
                             if (par.GradientFill)
                             {
-                                using (LinearGradientBrush linearBrush = new LinearGradientBrush(r, par.BarColour, Color.White, LinearGradientMode.Horizontal)) //Color.FromArgb(255, 247, 251, 242)
+                                using (LinearGradientBrush linearBrush = new(r, par.BarColour, Color.White, LinearGradientMode.Horizontal)) //Color.FromArgb(255, 247, 251, 242)
                                 {
                                     graphics.FillRectangle(linearBrush, r);
                                 }
                             }
                             else
                             {
-                                using (SolidBrush solidBrush = new SolidBrush(par.BarColour)) //Color.FromArgb(255, 247, 251, 242)
+                                using (SolidBrush solidBrush = new(par.BarColour)) //Color.FromArgb(255, 247, 251, 242)
                                 {
                                     graphics.FillRectangle(solidBrush, r);
                                 }
                             }
 
-                            using (Pen pen = new Pen(par.BarColour)) //Color.FromArgb(255, 140, 197, 66)))
+                            using (Pen pen = new(par.BarColour)) //Color.FromArgb(255, 140, 197, 66)))
                             {
                                 graphics.DrawRectangle(pen, r);
                             }
@@ -122,26 +145,33 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                         break;
                     case EnumConditionalFormatType.TwoColoursRange:
-                        TwoColoursParams TWCpar = (TwoColoursParams)FormatParams;
-                        Style.BackColor = TWCpar.ValueColour;
+                        TwoColoursParams twCpar = (TwoColoursParams)FormatParams;
+                        Style.BackColor = twCpar.ValueColour;
                         //  if (ContrastTextColor)
-                        Style.ForeColor = ContrastColour(TWCpar.ValueColour);
+                        Style.ForeColor = ContrastColour(twCpar.ValueColour);
                         break;
                     case EnumConditionalFormatType.ThreeColoursRange:
-                        ThreeColoursParams THCpar = (ThreeColoursParams)FormatParams;
-                        Style.BackColor = THCpar.ValueColour;
-                        Style.ForeColor = ContrastColour(THCpar.ValueColour);
+                        ThreeColoursParams thCpar = (ThreeColoursParams)FormatParams;
+                        Style.BackColor = thCpar.ValueColour;
+                        Style.ForeColor = ContrastColour(thCpar.ValueColour);
                         break;
                     default:
-                        Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
-                        Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                        if (DataGridView != null)
+                        {
+                            Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
+                            Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                        }
+
                         break;
                 }
             }
             else
             {
-                Style.BackColor = this.DataGridView.DefaultCellStyle.BackColor;
-                Style.ForeColor = this.DataGridView.DefaultCellStyle.ForeColor;
+                if (DataGridView != null)
+                {
+                    Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
+                    Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                }
             }
 
             base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle,

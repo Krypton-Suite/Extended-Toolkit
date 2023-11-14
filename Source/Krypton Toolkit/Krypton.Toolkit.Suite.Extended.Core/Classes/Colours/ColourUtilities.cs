@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -150,9 +170,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="lightestColour">The lightest colour.</param>
         public static void GenerateColourShades(Color baseColour, PictureBox darkestColour, PictureBox mediumColour, PictureBox lightColour, PictureBox lightestColour)
         {
-            ColourIntensitySettingsManager colourBlendingSettingsManager = new ColourIntensitySettingsManager();
+            ColourIntensitySettingsManager colourBlendingSettingsManager = new();
 
-            if (baseColour != null)
+            if (baseColour != Color.Empty || baseColour != Color.Transparent)
             {
                 darkestColour.BackColor = Darken(baseColour, colourBlendingSettingsManager.GetDarkestColourIntensity());
 
@@ -185,9 +205,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="lightestColour">The lightest colour.</param>
         public static void GenerateColourShades(Color baseColour, CircularPictureBox darkestColour, CircularPictureBox mediumColour, CircularPictureBox lightColour, CircularPictureBox lightestColour)
         {
-            ColourIntensitySettingsManager colourBlendingSettingsManager = new ColourIntensitySettingsManager();
+            ColourIntensitySettingsManager colourBlendingSettingsManager = new();
 
-            if (baseColour != null)
+            if (baseColour != Color.Empty || baseColour != Color.Transparent)
             {
                 darkestColour.BackColor = Darken(baseColour, colourBlendingSettingsManager.GetDarkestColourIntensity());
 
@@ -236,7 +256,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception ex)
             {
-                ExceptionHandler.CaptureException(ex, icon: MessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
+                ExceptionHandler.CaptureException(ex, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
             }
         }
 
@@ -247,7 +267,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>A string containing the alpha, red, green and blue colour values of the selected <paramref name="colourInput"/>.</returns>
         public static string FormatColourARGBString(Color colourInput)
         {
-            return $"{ colourInput.A.ToString() }, { colourInput.R.ToString() }, { colourInput.G.ToString() }, { colourInput.B.ToString() }";
+            return $"{colourInput.A.ToString()}, {colourInput.R.ToString()}, {colourInput.G.ToString()}, {colourInput.B.ToString()}";
         }
 
         /// <summary>
@@ -257,7 +277,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>A string containing the red, green and blue colour values of the selected <paramref name="colourInput"/>.</returns>
         public static string FormatColourRGBString(Color colourInput)
         {
-            return $"{ colourInput.R.ToString() }, { colourInput.G.ToString() }, { colourInput.B.ToString() }";
+            return $"{colourInput.R.ToString()}, {colourInput.G.ToString()}, {colourInput.B.ToString()}";
         }
 
         /// <summary>
@@ -284,7 +304,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="standardColourSelection">The standard colour selection.</param>
         public static void PropagateStandardColours(KryptonComboBox standardColourSelection)
         {
-            List<Color> allColours = new List<Color>();
+            List<Color> allColours = new();
 
             foreach (KnownColor colour in Enum.GetValues(typeof(KnownColor)))
             {
@@ -307,7 +327,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="systemColourSelection">The system colour selection.</param>
         public static void PropagateSystemColours(KryptonComboBox systemColourSelection)
         {
-            List<Color> allSystemColours = new List<Color>();
+            List<Color> allSystemColours = new();
 
             PropertyInfo[] systemColourProperties = typeof(SystemColors).GetProperties();
 
@@ -330,7 +350,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void PropagateBasePaletteModes(KryptonComboBox basePaletteModeSelection)
         {
-            List<PaletteMode> allPaletteModes = new List<PaletteMode>();
+            List<PaletteMode> allPaletteModes = new();
 
             foreach (string mode in Enum.GetNames(typeof(PaletteMode)))
             {
@@ -340,7 +360,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void PropagateBasePaletteModes(KryptonRibbonGroupComboBox basePaletteModeSelection)
         {
-            List<PaletteMode> allPaletteModes = new List<PaletteMode>();
+            List<PaletteMode> allPaletteModes = new();
 
             foreach (string mode in Enum.GetNames(typeof(PaletteMode)))
             {
@@ -364,6 +384,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="pressedTextColourPreview">The pressed text colour preview.</param>
         /// <param name="disabledColourPreview">The disabled colour preview.</param>
         /// <param name="linkNormalColourPreview">The link normal colour preview.</param>
+        /// <param name="linkFocusedColourPreview">The link focused colour preview.</param>
         /// <param name="linkHoverColourPreview">The link hover colour preview.</param>
         /// <param name="linkVisitedColourPreview">The link visited colour preview.</param>
         /// <param name="customColourOne">The custom colour one.</param>
@@ -378,9 +399,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="customTextColourFive">The custom text colour five.</param>
         /// <param name="menuTextColour">The menu text colour.</param>
         /// <param name="statusTextColour">The status text colour.</param>
+        /// <param name="ribbonTabTextColourPreview">The ribbon tab text colour.</param>
         public static void GrabColourDefinitions(PictureBox baseColour, PictureBox darkColour, PictureBox middleColour, PictureBox lightColour, PictureBox lightestColour, PictureBox borderColourPreview, PictureBox alternativeNormalTextColourPreview, PictureBox normalTextColourPreview, PictureBox disabledTextColourPreview, PictureBox focusedTextColourPreview, PictureBox pressedTextColourPreview, PictureBox disabledColourPreview, PictureBox linkNormalColourPreview, PictureBox linkFocusedColourPreview, PictureBox linkHoverColourPreview, PictureBox linkVisitedColourPreview, PictureBox customColourOne, PictureBox customColourTwo, PictureBox customColourThree, PictureBox customColourFour, PictureBox customColourFive, PictureBox customTextColourOne, PictureBox customTextColourTwo, PictureBox customTextColourThree, PictureBox customTextColourFour, PictureBox customTextColourFive, PictureBox menuTextColour, PictureBox statusTextColour, PictureBox ribbonTabTextColourPreview)
         {
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             baseColour.BackColor = colourSettingsManager.GetBaseColour();
 
@@ -457,6 +479,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="pressedTextColourPreview">The pressed text colour preview.</param>
         /// <param name="disabledColourPreview">The disabled colour preview.</param>
         /// <param name="linkNormalColourPreview">The link normal colour preview.</param>
+        /// <param name="linkFocusedColourPreview">The link focused colour preview.</param>
         /// <param name="linkHoverColourPreview">The link hover colour preview.</param>
         /// <param name="linkVisitedColourPreview">The link visited colour preview.</param>
         /// <param name="customColourOne">The custom colour one.</param>
@@ -471,9 +494,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="customTextColourFive">The custom text colour five.</param>
         /// <param name="menuTextColour">The menu text colour.</param>
         /// <param name="statusTextColour">The status text colour.</param>
+        /// <param name="ribbonTabTextColourPreview">The ribbon tab text colour.</param>
         public static void GrabColourDefinitions(CircularPictureBox baseColour, CircularPictureBox darkColour, CircularPictureBox middleColour, CircularPictureBox lightColour, CircularPictureBox lightestColour, CircularPictureBox borderColourPreview, CircularPictureBox alternativeNormalTextColourPreview, CircularPictureBox normalTextColourPreview, CircularPictureBox disabledTextColourPreview, CircularPictureBox focusedTextColourPreview, CircularPictureBox pressedTextColourPreview, CircularPictureBox disabledColourPreview, CircularPictureBox linkNormalColourPreview, CircularPictureBox linkFocusedColourPreview, CircularPictureBox linkHoverColourPreview, CircularPictureBox linkVisitedColourPreview, CircularPictureBox customColourOne, CircularPictureBox customColourTwo, CircularPictureBox customColourThree, CircularPictureBox customColourFour, CircularPictureBox customColourFive, CircularPictureBox customTextColourOne, CircularPictureBox customTextColourTwo, CircularPictureBox customTextColourThree, CircularPictureBox customTextColourFour, CircularPictureBox customTextColourFive, CircularPictureBox menuTextColour, CircularPictureBox statusTextColour, CircularPictureBox ribbonTabTextColourPreview)
         {
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             baseColour.BackColor = colourSettingsManager.GetBaseColour();
 
@@ -1104,53 +1128,57 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             switch (colourDefinitions)
             {
-                case MiscellaneousColourDefinitions.BORDERCOLOUR:
+                case MiscellaneousColourDefinitions.BorderColour:
                     break;
-                case MiscellaneousColourDefinitions.ALTERNATIVENORMALTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.AlternativeNormalTextColour:
                     break;
-                case MiscellaneousColourDefinitions.NORMALTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.NormalTextColour:
                     break;
-                case MiscellaneousColourDefinitions.DISABLEDTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.DisabledTextColour:
                     break;
-                case MiscellaneousColourDefinitions.FOCUSEDTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.FocusedTextColour:
                     break;
-                case MiscellaneousColourDefinitions.PRESSEDTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.PressedTextColour:
                     break;
-                case MiscellaneousColourDefinitions.LINKNORMALTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.LinkNormalTextColour:
                     break;
-                case MiscellaneousColourDefinitions.LINKDISABLEDTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.LinkDisabledTextColour:
                     break;
-                case MiscellaneousColourDefinitions.LINKHOVERTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.LinkHoverTextColour:
                     break;
-                case MiscellaneousColourDefinitions.LINKVISITEDTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.LinkVisitedTextColour:
                     break;
-                case MiscellaneousColourDefinitions.DISABLEDCONTROLCOLOUR:
+                case MiscellaneousColourDefinitions.DisabledControlColour:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMCOLOURONE:
+                case MiscellaneousColourDefinitions.CustomColourOne:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMCOLOURTWO:
+                case MiscellaneousColourDefinitions.CustomColourTwo:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMCOLOURTHREE:
+                case MiscellaneousColourDefinitions.CustomColourThree:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMCOLOURFOUR:
+                case MiscellaneousColourDefinitions.CustomColourFour:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMCOLOURFIVE:
+                case MiscellaneousColourDefinitions.CustomColourFive:
                     break;
-                case MiscellaneousColourDefinitions.MENUTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.CustomColourSix:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURONE:
+                case MiscellaneousColourDefinitions.MenuTextColour:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURTWO:
+                case MiscellaneousColourDefinitions.CustomTextColourOne:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURTHREE:
+                case MiscellaneousColourDefinitions.CustomTextColourTwo:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURFOUR:
+                case MiscellaneousColourDefinitions.CustomTextColourThree:
                     break;
-                case MiscellaneousColourDefinitions.CUSTOMTEXTCOLOURFIVE:
+                case MiscellaneousColourDefinitions.CustomTextColourFour:
                     break;
-                case MiscellaneousColourDefinitions.STATUSTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.CustomTextColourFive:
                     break;
-                case MiscellaneousColourDefinitions.RIBBONTABTEXTCOLOUR:
+                case MiscellaneousColourDefinitions.CustomTextColourSix:
+                    break;
+                case MiscellaneousColourDefinitions.StatusTextColour:
+                    break;
+                case MiscellaneousColourDefinitions.RibbonTabTextColour:
                     break;
                 default:
                     break;
@@ -1291,7 +1319,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void InvertColours(CircularPictureBox cbxBaseColourPreview, CircularPictureBox cbxDarkColourPreview, CircularPictureBox cbxMiddleColourPreview, CircularPictureBox cbxLightColourPreview, CircularPictureBox cbxLightestColourPreview, CircularPictureBox cbxBorderColourPreview, CircularPictureBox cbxAlternativeNormalTextColourPreview, CircularPictureBox cbxNormalTextColourPreview, CircularPictureBox cbxDisabledTextColourPreview, CircularPictureBox cbxFocusedTextColourPreview, CircularPictureBox cbxPressedTextColourPreview, CircularPictureBox cbxDisabledColourPreview, CircularPictureBox cbxLinkNormalColourPreview, CircularPictureBox cbxLinkFocusedColourPreview, CircularPictureBox cbxLinkHoverColourPreview, CircularPictureBox cbxLinkVisitedColourPreview, CircularPictureBox cbxCustomColourOnePreview, CircularPictureBox cbxCustomColourTwoPreview, CircularPictureBox cbxCustomColourThreePreview, CircularPictureBox cbxCustomColourFourPreview, CircularPictureBox cbxCustomColourFivePreview, CircularPictureBox cbxCustomTextColourOnePreview, CircularPictureBox cbxCustomTextColourTwoPreview, CircularPictureBox cbxCustomTextColourThreePreview, CircularPictureBox cbxCustomTextColourFourPreview, CircularPictureBox cbxCustomTextColourFivePreview, CircularPictureBox cbxMenuTextColourPreview, CircularPictureBox cbxStatusTextColourPreview, CircularPictureBox cbxRibbonTabTextColourPreview)
         {
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             #region Backup Values
             Color baseColour = colourSettingsManager.GetBaseColour(), darkColour = colourSettingsManager.GetDarkColour(), middleColour = colourSettingsManager.GetMediumColour(), lightColour = colourSettingsManager.GetLightColour(), lightestColour = colourSettingsManager.GetLightestColour(), borderColourPreview = colourSettingsManager.GetBorderColour(), alternativeNormalTextColourPreview = colourSettingsManager.GetAlternativeNormalTextColour(), normalTextColourPreview = colourSettingsManager.GetNormalTextColour(), disabledTextColourPreview = colourSettingsManager.GetDisabledTextColour(), focusedTextColourPreview = colourSettingsManager.GetFocusedTextColour(), pressedTextColourPreview = colourSettingsManager.GetPressedTextColour(), disabledColourPreview = colourSettingsManager.GetDisabledControlColour(), linkNormalColourPreview = colourSettingsManager.GetLinkNormalColour(), linkHoverColourPreview = colourSettingsManager.GetLinkHoverColour(), linkVisitedColourPreview = colourSettingsManager.GetLinkVisitedColour(), customColourOne = colourSettingsManager.GetCustomColourOne(), customColourTwo = colourSettingsManager.GetCustomColourTwo(), customColourThree = colourSettingsManager.GetCustomColourThree(), customColourFour = colourSettingsManager.GetCustomColourFour(), customColourFive = colourSettingsManager.GetCustomColourFive(), customTextColourOne = colourSettingsManager.GetCustomTextColourOne(), customTextColourTwo = colourSettingsManager.GetCustomTextColourTwo(), customTextColourThree = colourSettingsManager.GetCustomTextColourThree(), customTextColourFour = colourSettingsManager.GetCustomTextColourFour(), customTextColourFive = colourSettingsManager.GetCustomTextColourFive(), menuTextColour = colourSettingsManager.GetMenuTextColour(), statusTextColour = colourSettingsManager.GetStatusStripTextColour();
@@ -1317,7 +1345,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void InvertColours(PictureBox baseColour, PictureBox darkColour, PictureBox middleColour, PictureBox lightColour, PictureBox lightestColour, PictureBox borderColour, PictureBox alternativeNormalTextColour, PictureBox normalTextColour, PictureBox disabledTextColour, PictureBox focusedTextColour, PictureBox pressedTextColour, PictureBox disabledColour, PictureBox linkNormalColour, PictureBox linkFocusedColour, PictureBox linkHoverColour, PictureBox linkVisitedColour, PictureBox customColourOne, PictureBox customColourTwo, PictureBox customColourThree, PictureBox customColourFour, PictureBox customColourFive, PictureBox customTextColourOne, PictureBox customTextColourTwo, PictureBox customTextColourThree, PictureBox customTextColourFour, PictureBox customTextColourFive, PictureBox menuTextColour, PictureBox statusTextColour, PictureBox ribbonTabTextColour)
         {
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             #region Backup Values
             Color baseColourPreview = colourSettingsManager.GetBaseColour(), darkColourPreview = colourSettingsManager.GetDarkColour(), middleColourPreview = colourSettingsManager.GetMediumColour(), lightColourPreview = colourSettingsManager.GetLightColour(), lightestColourPreview = colourSettingsManager.GetLightestColour(), borderColourPreview = colourSettingsManager.GetBorderColour(), alternativeNormalTextColourPreview = colourSettingsManager.GetAlternativeNormalTextColour(), normalTextColourPreview = colourSettingsManager.GetNormalTextColour(), disabledTextColourPreview = colourSettingsManager.GetDisabledTextColour(), focusedTextColourPreview = colourSettingsManager.GetFocusedTextColour(), pressedTextColourPreview = colourSettingsManager.GetPressedTextColour(), disabledColourPreview = colourSettingsManager.GetDisabledControlColour(), linkNormalColourPreview = colourSettingsManager.GetLinkNormalColour(), linkFocusedColourPreview = colourSettingsManager.GetLinkFocusedColour(), linkHoverColourPreview = colourSettingsManager.GetLinkHoverColour(), linkVisitedColourPreview = colourSettingsManager.GetLinkVisitedColour(), customColourOnePreview = colourSettingsManager.GetCustomColourOne(), customColourTwoPreview = colourSettingsManager.GetCustomColourTwo(), customColourThreePreview = colourSettingsManager.GetCustomColourThree(), customColourFourPreview = colourSettingsManager.GetCustomColourFour(), customColourFivePreview = colourSettingsManager.GetCustomColourFive(), customTextColourOnePreview = colourSettingsManager.GetCustomTextColourOne(), customTextColourTwoPreview = colourSettingsManager.GetCustomTextColourTwo(), customTextColourThreePreview = colourSettingsManager.GetCustomTextColourThree(), customTextColourFourPreview = colourSettingsManager.GetCustomTextColourFour(), customTextColourFivePreview = colourSettingsManager.GetCustomTextColourFive(), menuTextColourPreview = colourSettingsManager.GetMenuTextColour(), statusTextColourPreview = colourSettingsManager.GetStatusStripTextColour(), ribbonTabTextColourPreview = colourSettingsManager.GetRibbonTabTextColour();
@@ -1328,7 +1356,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void RevertColours(CircularPictureBox cbxBaseColourPreview, CircularPictureBox cbxDarkColourPreview, CircularPictureBox cbxMiddleColourPreview, CircularPictureBox cbxLightColourPreview, CircularPictureBox cbxLightestColourPreview, CircularPictureBox cbxBorderColourPreview, CircularPictureBox cbxAlternativeNormalTextColourPreview, CircularPictureBox cbxNormalTextColourPreview, CircularPictureBox cbxDisabledTextColourPreview, CircularPictureBox cbxFocusedTextColourPreview, CircularPictureBox cbxPressedTextColourPreview, CircularPictureBox cbxDisabledColourPreview, CircularPictureBox cbxLinkNormalColourPreview, CircularPictureBox cbxLinkFocusedColourPreview, CircularPictureBox cbxLinkHoverColourPreview, CircularPictureBox cbxLinkVisitedColourPreview, CircularPictureBox cbxCustomColourOnePreview, CircularPictureBox cbxCustomColourTwoPreview, CircularPictureBox cbxCustomColourThreePreview, CircularPictureBox cbxCustomColourFourPreview, CircularPictureBox cbxCustomColourFivePreview, CircularPictureBox cbxCustomTextColourOnePreview, CircularPictureBox cbxCustomTextColourTwoPreview, CircularPictureBox cbxCustomTextColourThreePreview, CircularPictureBox cbxCustomTextColourFourPreview, CircularPictureBox cbxCustomTextColourFivePreview, CircularPictureBox cbxMenuTextColourPreview, CircularPictureBox cbxStatusTextColourPreview, CircularPictureBox cbxRibbonTabTextColourPreview)
         {
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             #region Backup Values
             Color baseColour = colourSettingsManager.GetBaseColour(), darkColour = colourSettingsManager.GetDarkColour(), middleColour = colourSettingsManager.GetMediumColour(), lightColour = colourSettingsManager.GetLightColour(), lightestColour = colourSettingsManager.GetLightestColour(), borderColourPreview = colourSettingsManager.GetBorderColour(), alternativeNormalTextColourPreview = colourSettingsManager.GetAlternativeNormalTextColour(), normalTextColourPreview = colourSettingsManager.GetNormalTextColour(), disabledTextColourPreview = colourSettingsManager.GetDisabledTextColour(), focusedTextColourPreview = colourSettingsManager.GetFocusedTextColour(), pressedTextColourPreview = colourSettingsManager.GetPressedTextColour(), disabledColourPreview = colourSettingsManager.GetDisabledControlColour(), linkNormalColourPreview = colourSettingsManager.GetLinkNormalColour(), linkHoverColourPreview = colourSettingsManager.GetLinkHoverColour(), linkVisitedColourPreview = colourSettingsManager.GetLinkVisitedColour(), customColourOne = colourSettingsManager.GetCustomColourOne(), customColourTwo = colourSettingsManager.GetCustomColourTwo(), customColourThree = colourSettingsManager.GetCustomColourThree(), customColourFour = colourSettingsManager.GetCustomColourFour(), customColourFive = colourSettingsManager.GetCustomColourFive(), customTextColourOne = colourSettingsManager.GetCustomTextColourOne(), customTextColourTwo = colourSettingsManager.GetCustomTextColourTwo(), customTextColourThree = colourSettingsManager.GetCustomTextColourThree(), customTextColourFour = colourSettingsManager.GetCustomTextColourFour(), customTextColourFive = colourSettingsManager.GetCustomTextColourFive(), menuTextColour = colourSettingsManager.GetMenuTextColour(), statusTextColour = colourSettingsManager.GetStatusStripTextColour();
@@ -1350,7 +1378,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void RevertColours(PictureBox baseColour, PictureBox darkColour, PictureBox middleColour, PictureBox lightColour, PictureBox lightestColour, PictureBox borderColour, PictureBox alternativeNormalTextColour, PictureBox normalTextColour, PictureBox disabledTextColour, PictureBox focusedTextColour, PictureBox pressedTextColour, PictureBox disabledColour, PictureBox linkNormalColour, PictureBox linkFocusedColour, PictureBox linkHoverColour, PictureBox linkVisitedColour, PictureBox customColourOne, PictureBox customColourTwo, PictureBox customColourThree, PictureBox customColourFour, PictureBox customColourFive, PictureBox customTextColourOne, PictureBox customTextColourTwo, PictureBox customTextColourThree, PictureBox customTextColourFour, PictureBox customTextColourFive, PictureBox menuTextColour, PictureBox statusTextColour, PictureBox ribbonTabTextColour)
         {
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
 
             #region Backup Values
             Color baseColourPreview = colourSettingsManager.GetBaseColour(), darkColourPreview = colourSettingsManager.GetDarkColour(), middleColourPreview = colourSettingsManager.GetMediumColour(), lightColourPreview = colourSettingsManager.GetLightColour(), lightestColourPreview = colourSettingsManager.GetLightestColour(), borderColourPreview = colourSettingsManager.GetBorderColour(), alternativeNormalTextColourPreview = colourSettingsManager.GetAlternativeNormalTextColour(), normalTextColourPreview = colourSettingsManager.GetNormalTextColour(), disabledTextColourPreview = colourSettingsManager.GetDisabledTextColour(), focusedTextColourPreview = colourSettingsManager.GetFocusedTextColour(), pressedTextColourPreview = colourSettingsManager.GetPressedTextColour(), disabledColourPreview = colourSettingsManager.GetDisabledControlColour(), linkNormalColourPreview = colourSettingsManager.GetLinkNormalColour(), linkHoverColourPreview = colourSettingsManager.GetLinkHoverColour(), linkVisitedColourPreview = colourSettingsManager.GetLinkVisitedColour(), customColourOnePreview = colourSettingsManager.GetCustomColourOne(), customColourTwoPreview = colourSettingsManager.GetCustomColourTwo(), customColourThreePreview = colourSettingsManager.GetCustomColourThree(), customColourFourPreview = colourSettingsManager.GetCustomColourFour(), customColourFivePreview = colourSettingsManager.GetCustomColourFive(), customTextColourOnePreview = colourSettingsManager.GetCustomTextColourOne(), customTextColourTwoPreview = colourSettingsManager.GetCustomTextColourTwo(), customTextColourThreePreview = colourSettingsManager.GetCustomTextColourThree(), customTextColourFourPreview = colourSettingsManager.GetCustomTextColourFour(), customTextColourFivePreview = colourSettingsManager.GetCustomTextColourFive(), menuTextColourPreview = colourSettingsManager.GetMenuTextColour(), statusTextColourPreview = colourSettingsManager.GetStatusStripTextColour();

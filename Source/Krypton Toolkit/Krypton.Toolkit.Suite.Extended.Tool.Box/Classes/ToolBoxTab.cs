@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -32,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         private Color _itemSelColour = Color.Empty;
         private Color _itemHoverColour = Color.Empty;
 
-        private ToolBoxViewMode _viewMode = ToolBoxViewMode.LIST;
+        private ToolBoxViewMode _viewMode = ToolBoxViewMode.List;
         private bool _onlyOneItemPerRow = false;
 
         [NonSerialized]
@@ -50,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         private PaletteContentInheritRedirect _paletteContent;
 
-        private IPalette _palette;
+        private PaletteBase _palette;
 
         private PaletteRedirect _paletteRedirect;
         #endregion
@@ -313,7 +332,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 /*
                 ** Large Icons needs atleast 3px spacing to look good.
                 */
-                if (_viewMode == ToolBoxViewMode.LARGEICONS)
+                if (_viewMode == ToolBoxViewMode.LargeIcons)
                 {
                     spacing = Math.Max(3, spacing);
                 }
@@ -888,7 +907,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
             else
             {
-                if (ToolBoxViewMode.LIST == _viewMode)
+                if (ToolBoxViewMode.List == _viewMode)
                 {
                     handled = HandleListViewKeyDown(e);
                 }
@@ -1028,15 +1047,25 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 }
 
                 // Dispose brushes.
-                if (null != txBrushes[0]) txBrushes[0].Dispose();
-                if (null != txBrushes[1]) txBrushes[1].Dispose();
-                if (null != txBrushes[2]) txBrushes[2].Dispose();
+                if (null != txBrushes[0])
+                {
+                    txBrushes[0].Dispose();
+                }
 
+                if (null != txBrushes[1])
+                {
+                    txBrushes[1].Dispose();
+                }
+
+                if (null != txBrushes[2])
+                {
+                    txBrushes[2].Dispose();
+                }
             }
 
             strFormat.FormatFlags = (StringFormatFlags)0;
 
-            if (ToolBoxViewMode.LIST != this._viewMode)
+            if (ToolBoxViewMode.List != this._viewMode)
             {
                 strFormat.Alignment = StringAlignment.Center;
             }
@@ -1146,11 +1175,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                 switch (_viewMode)
                 {
-                    case ToolBoxViewMode.LARGEICONS:
+                    case ToolBoxViewMode.LargeIcons:
                         imgList = _parent.LargeImageList;
                         break;
-                    case ToolBoxViewMode.SMALLICONS:
-                    case ToolBoxViewMode.LIST:
+                    case ToolBoxViewMode.SmallIcons:
+                    case ToolBoxViewMode.List:
                     default:
                         imgList = _parent.SmallImageList;
                         break;
@@ -1166,7 +1195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     item = _toolItems[iLoop];
                     rect = item.Rectangle;
 
-                    if (ToolBoxViewMode.LIST == _viewMode)
+                    if (ToolBoxViewMode.List == _viewMode)
                     {
                         rect.X += _itemArea.X;
                     }
@@ -1242,11 +1271,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     switch (_viewMode)
                     {
-                        case ToolBoxViewMode.LARGEICONS:
+                        case ToolBoxViewMode.LargeIcons:
                             imageIndex = item.LargeImageIndex;
                             break;
-                        case ToolBoxViewMode.SMALLICONS:
-                        case ToolBoxViewMode.LIST:
+                        case ToolBoxViewMode.SmallIcons:
+                        case ToolBoxViewMode.List:
                         default:
                             imageIndex = item.SmallImageIndex;
                             break;
@@ -1258,7 +1287,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                         rect.X += 2;
                         rect.Width -= 2;
 
-                        if (_viewMode == ToolBoxViewMode.LARGEICONS)
+                        if (_viewMode == ToolBoxViewMode.LargeIcons)
                         {
                             offset = 2;
                         }
@@ -1272,7 +1301,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                         rImageEx.Width = rImage.Width;
                         rImageEx.Height = rImage.Height;
 
-                        if (_viewMode != ToolBoxViewMode.LIST)
+                        if (_viewMode != ToolBoxViewMode.List)
                         {
                             offset = (rect.Width - imgList.ImageSize.Width) / 2;
                             rImageEx.X += offset;
@@ -1305,13 +1334,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     drawText = true;
 
-                    if (_viewMode != ToolBoxViewMode.LIST)
+                    if (_viewMode != ToolBoxViewMode.List)
                     {
                         // rect.X = item.X;
                         rect = item.Rectangle;
                         rect.Y += _itemArea.Y;
 
-                        if (ToolBoxViewMode.LARGEICONS == _viewMode)
+                        if (ToolBoxViewMode.LargeIcons == _viewMode)
                         {
                             if (drewImage)
                             {
@@ -1323,7 +1352,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                                 rect.Inflate(-2, -2);
                             }
                         }
-                        else if (ToolBoxViewMode.SMALLICONS == _viewMode)
+                        else if (ToolBoxViewMode.SmallIcons == _viewMode)
                         {
                             if (drewImage)
                             {
@@ -1395,13 +1424,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     }
                     else
                     {
-                        if (ToolBoxViewMode.SMALLICONS == _viewMode && !item.CaptionChecked)
+                        if (ToolBoxViewMode.SmallIcons == _viewMode && !item.CaptionChecked)
                         {
                             item.CheckCaption(g, _parent.Font, strFormat, Rectangle.Empty);
                         }
                     }
 
-                    if (_viewMode == ToolBoxViewMode.LIST && rect.Bottom >= _itemArea.Bottom)
+                    if (_viewMode == ToolBoxViewMode.List && rect.Bottom >= _itemArea.Bottom)
                     {
                         // Exit loop.
                         iLoop = _toolItems.Count + 1;
@@ -1409,14 +1438,35 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 }
 
                 // Dispose brushes..
-                if (null != bgBrushes[0]) bgBrushes[0].Dispose();
-                if (null != bgBrushes[1]) bgBrushes[1].Dispose();
-                if (null != bgBrushes[2]) bgBrushes[2].Dispose();
+                if (null != bgBrushes[0])
+                {
+                    bgBrushes[0].Dispose();
+                }
 
-                if (null != txBrushes[0]) txBrushes[0].Dispose();
-                if (null != txBrushes[1]) txBrushes[1].Dispose();
-                if (null != txBrushes[2]) txBrushes[2].Dispose();
+                if (null != bgBrushes[1])
+                {
+                    bgBrushes[1].Dispose();
+                }
 
+                if (null != bgBrushes[2])
+                {
+                    bgBrushes[2].Dispose();
+                }
+
+                if (null != txBrushes[0])
+                {
+                    txBrushes[0].Dispose();
+                }
+
+                if (null != txBrushes[1])
+                {
+                    txBrushes[1].Dispose();
+                }
+
+                if (null != txBrushes[2])
+                {
+                    txBrushes[2].Dispose();
+                }
             }
         }
 
@@ -1428,7 +1478,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
             catch (Exception ex)
             {
-                ex = ex;
+                ExceptionCapture.CaptureException(ex);
             }
         }
 
@@ -1846,11 +1896,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 }
                 else
                 {
-                    if (ToolBoxScrollDirection.UP == scrollDir)
+                    if (ToolBoxScrollDirection.Up == scrollDir)
                     {
                         bCanScroll = (_toolItems[0].Top + _itemArea.Top + this.ItemSpacingEx) < _itemArea.Top;
                     }
-                    else if (ToolBoxScrollDirection.DOWN == scrollDir)
+                    else if (ToolBoxScrollDirection.Down == scrollDir)
                     {
                         bCanScroll = (_toolItems[_toolItems.Count - 1].Bottom + _itemArea.Top + this.ItemSpacingEx) > _itemArea.Bottom;
                     }
@@ -1886,11 +1936,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                 if (CanScroll(scrollDir))
                 {
-                    if (ToolBoxScrollDirection.UP == scrollDir)
+                    if (ToolBoxScrollDirection.Up == scrollDir)
                     {
                         ScrollItems(+scrollOffset, bRedraw);
                     }
-                    else if (ToolBoxScrollDirection.DOWN == scrollDir)
+                    else if (ToolBoxScrollDirection.Down == scrollDir)
                     {
                         ScrollItems(-scrollOffset, bRedraw);
                     }
@@ -1929,7 +1979,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             bool bUpState = true;
             bool bDnState = true;
 
-            ToolBoxScrollDirection dir = ToolBoxScrollDirection.UP;
+            ToolBoxScrollDirection dir = ToolBoxScrollDirection.Up;
             try
             {
                 bUpState = _parent.UpScroll.Enabled;
@@ -1945,14 +1995,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     // when the item area is too low.
                     if (_toolItems[index].Bottom + _itemArea.Top >= _itemArea.Bottom - 1)
                     {
-                        dir = ToolBoxScrollDirection.DOWN;
+                        dir = ToolBoxScrollDirection.Down;
                     }
                 }
                 while (bLoop)
                 {
                     // Scroll in one direction only to prevent infinite
                     // looping. :)
-                    if (ToolBoxScrollDirection.UP == dir)
+                    if (ToolBoxScrollDirection.Up == dir)
                     {
                         if (_toolItems[index].Top + _itemArea.Top < _itemArea.Top + this.ItemSpacingEx)
                         {
@@ -1963,7 +2013,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                             bLoop = false;
                         }
                     }
-                    else if (ToolBoxScrollDirection.DOWN == dir)
+                    else if (ToolBoxScrollDirection.Down == dir)
                     {
                         if (_toolItems[index].Bottom + _itemArea.Top >= _itemArea.Bottom - 1)
                         {
@@ -2066,15 +2116,15 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
             switch (this._viewMode)
             {
-                case ToolBoxViewMode.LARGEICONS:
+                case ToolBoxViewMode.LargeIcons:
                     itemSize = _parent.LargeItemSize;
                     maxWidth -= 4;
                     break;
-                case ToolBoxViewMode.SMALLICONS:
+                case ToolBoxViewMode.SmallIcons:
                     itemSize = _parent.SmallItemSize;
                     maxWidth -= 4;
                     break;
-                case ToolBoxViewMode.LIST:
+                case ToolBoxViewMode.List:
                 default:
                     itemSize.Width = maxWidth - 0;
                     itemSize.Height = _parent.ItemHeight;
@@ -2093,8 +2143,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             {
                 if (0 == index)
                 {
-                    itemLoc.X = ToolBoxViewMode.LIST == _viewMode ? 0 : 4;
-                    itemLoc.Y = ToolBoxViewMode.LIST == _viewMode ? 1 : 2;
+                    itemLoc.X = ToolBoxViewMode.List == _viewMode ? 0 : 4;
+                    itemLoc.Y = ToolBoxViewMode.List == _viewMode ? 1 : 2;
                 }
                 else if ((index - 1) < _toolItems.Count && 0 < index)
                 {
@@ -2102,8 +2152,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     switch (this._viewMode)
                     {
-                        case ToolBoxViewMode.LARGEICONS:
-                        case ToolBoxViewMode.SMALLICONS:
+                        case ToolBoxViewMode.LargeIcons:
+                        case ToolBoxViewMode.SmallIcons:
 
                             itemLoc.X += itemWidth + this.ItemSpacingEx;
 
@@ -2113,7 +2163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                                 itemLoc.Y += itemHeight + this.ItemSpacingEx;
                             }
                             break;
-                        case ToolBoxViewMode.LIST:
+                        case ToolBoxViewMode.List:
                         default:
                             itemLoc.X = 0;
                             itemLoc.Y += _parent.ItemHeight + this.ItemSpacingEx;
@@ -2125,7 +2175,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     bOk = false;
                 }
 
-                if (bOk && ToolBoxViewMode.LIST != _viewMode && (_onlyOneItemPerRow || _parent.ShowOnlyOneItemPerRow))
+                if (bOk && ToolBoxViewMode.List != _viewMode && (_onlyOneItemPerRow || _parent.ShowOnlyOneItemPerRow))
                 {
                     itemLoc.X += (maxWidth - itemWidth) / 2;
                 }
@@ -2489,7 +2539,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             bool oldVal = false;
 
             oldVal = _parent.UpScroll.Enabled;
-            _parent.UpScroll.Enabled = CanScroll(ToolBoxScrollDirection.UP);
+            _parent.UpScroll.Enabled = CanScroll(ToolBoxScrollDirection.Up);
 
             if (oldVal != _parent.UpScroll.Enabled)
             {
@@ -2497,7 +2547,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
 
             oldVal = _parent.DownScroll.Enabled;
-            _parent.DownScroll.Enabled = CanScroll(ToolBoxScrollDirection.DOWN);
+            _parent.DownScroll.Enabled = CanScroll(ToolBoxScrollDirection.Down);
 
             if (oldVal != _parent.DownScroll.Enabled)
             {
@@ -2616,7 +2666,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             int iLoop = 0;
             int lastY = 0;
 
-            if (ToolBoxViewMode.LIST != this._viewMode)
+            if (ToolBoxViewMode.List != this._viewMode)
             {
                 lastY = _toolItems[_visibleBottomIndex].Y;
 

@@ -1,11 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
+ * MIT License
  *
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * Copyright (c) 2017 - 2023 Krypton Suite
  *
- * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2023.
  *
  */
 #endregion
@@ -69,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         public override void Back(ISelectionService selection)
         {
-            if (UserAllowsMoveToProceed(Direction.BACKWARD, out var args))
+            if (UserAllowsMoveToProceed(Direction.Backward, out var args))
             {
                 MoveToPreviousPage(args);
                 SetButtonStates();
@@ -78,9 +95,12 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         public override void Next(ISelectionService selection)
         {
-            if (Finishing()) return;
+            if (Finishing())
+            {
+                return;
+            }
 
-            if (UserAllowsMoveToProceed(Direction.FORWARD, out var args) && _wizard.MoreThanOnePageExists())
+            if (UserAllowsMoveToProceed(Direction.Forward, out var args) && _wizard.MoreThanOnePageExists())
             {
                 MoveToNextPage(args);
                 SetButtonStates();
@@ -114,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private bool UserAllowsMoveToProceed(Direction direction, out WizardEventArgs eventArgs)
         {
-            eventArgs = direction == Direction.FORWARD
+            eventArgs = direction == Direction.Forward
                 ? AttemptMoveToNextPage()
                 : AttemptMoveToPreviousPage();
 
@@ -123,7 +143,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void MoveToPreviousPage(WizardEventArgs args)
         {
-            if (!CanMoveToPreviousPage(args)) return;
+            if (!CanMoveToPreviousPage(args))
+            {
+                return;
+            }
 
             int pageIndex = _wizard.IndexOfCurrentPage();
             _wizard.SelectWizardPage(_wizard.ReadIndexOfPreviousPage());
@@ -134,7 +157,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void MoveToNextPage(WizardEventArgs args)
         {
-            if (!CanMoveToNextPage(args)) return;
+            if (!CanMoveToNextPage(args))
+            {
+                return;
+            }
 
             _wizard.SelectWizardPage(args.NextPageIndex);
             _wizard.StoreIndexOfCurrentPage(args.CurrentPageIndex);

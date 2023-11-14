@@ -1,12 +1,29 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
-
-
 
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Global
@@ -126,17 +143,17 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         {
             switch (m.Msg)
             {
-                case PI.WM_.ERASEBKGND:
+                case PlatformInvoke.WM_.ERASEBKGND:
                     // Do not draw the background here, always do it in the paint 
                     // instead to prevent flicker because of a two stage drawing process
                     break;
-                case PI.WM_.VSCROLL:
-                case PI.WM_.HSCROLL:
-                case PI.WM_.MOUSEWHEEL:
+                case PlatformInvoke.WM_.VSCROLL:
+                case PlatformInvoke.WM_.HSCROLL:
+                case PlatformInvoke.WM_.MOUSEWHEEL:
                     Invalidate();
                     base.WndProc(ref m);
                     break;
-                case PI.WM_.MOUSELEAVE:
+                case PlatformInvoke.WM_.MOUSELEAVE:
                     if (MouseOver)
                     {
                         MouseOver = false;
@@ -145,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                     }
                     base.WndProc(ref m);
                     break;
-                case PI.WM_.MOUSEMOVE:
+                case PlatformInvoke.WM_.MOUSEMOVE:
                     if (!MouseOver)
                     {
                         MouseOver = true;
@@ -322,7 +339,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
 
         internal bool ShowRootLines { get; set; } = true;
 
-        internal ImageList StateImageList { get; set; }
+        internal ImageList? StateImageList { get; set; }
 
         internal VirtualTreeRowNode VisibleRowNode
         {
@@ -1021,7 +1038,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
             return nodeIndent;
         }
 
-        internal void ViewDrawRowNode(VirtualTreeRowNode rowNode, Graphics graphics, Rectangle bounds, int rowOffset)
+        internal void ViewDrawRowNode(VirtualTreeRowNode? rowNode, Graphics graphics, Rectangle bounds, int rowOffset)
         {
             // We cannot do anything without a valid node
             if (rowNode == null)
@@ -1030,7 +1047,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
             }
 
             // Work out if we need to draw a state image
-            Image drawStateImage = null;
+            Image? drawStateImage = null;
             if (StateImageList != null)
             {
                 try

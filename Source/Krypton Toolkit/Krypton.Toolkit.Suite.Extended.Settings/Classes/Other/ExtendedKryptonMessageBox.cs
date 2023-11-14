@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -21,17 +41,17 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #region System
         private void InitialiseComponent()
         {
-            _panelMessage = new KryptonPanel();
-            _panelMessageText = new KryptonPanel();
-            _messageText = new KryptonWrapLabel();
-            _panelMessageIcon = new KryptonPanel();
-            _messageIcon = new PictureBox();
-            _panelButtons = new KryptonPanel();
-            _borderEdge = new KryptonBorderEdge();
-            _button3 = new MessageButton();
-            _button1 = new MessageButton();
-            _button2 = new MessageButton();
-            _doNotShowAgainOption = new KryptonCheckBox();
+            _panelMessage = new();
+            _panelMessageText = new();
+            _messageText = new();
+            _panelMessageIcon = new();
+            _messageIcon = new();
+            _panelButtons = new();
+            _borderEdge = new();
+            _button3 = new();
+            _button1 = new();
+            _button2 = new();
+            _doNotShowAgainOption = new();
             ((ISupportInitialize)(_panelMessage)).BeginInit();
             _panelMessage.SuspendLayout();
             ((ISupportInitialize)(_panelMessageText)).BeginInit();
@@ -50,32 +70,32 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             _panelMessage.Controls.Add(_panelMessageText);
             _panelMessage.Controls.Add(_panelMessageIcon);
             _panelMessage.Dock = DockStyle.Top;
-            _panelMessage.Location = new Point(0, 0);
+            _panelMessage.Location = new(0, 0);
             _panelMessage.Name = "_panelMessage";
-            _panelMessage.Size = new Size(156, 52);
+            _panelMessage.Size = new(156, 52);
             _panelMessage.TabIndex = 0;
             // 
             // _panelMessageText
             // 
             _panelMessageText.AutoSize = true;
             _panelMessageText.Controls.Add(_messageText);
-            _panelMessageText.Location = new Point(42, 0);
-            _panelMessageText.Margin = new Padding(0);
+            _panelMessageText.Location = new(42, 0);
+            _panelMessageText.Margin = new(0);
             _panelMessageText.Name = "_panelMessageText";
-            _panelMessageText.Padding = new Padding(5, 17, 5, 17);
-            _panelMessageText.Size = new Size(88, 52);
+            _panelMessageText.Padding = new(5, 17, 5, 17);
+            _panelMessageText.Size = new(88, 52);
             _panelMessageText.TabIndex = 1;
             // 
             // _messageText
             // 
             _messageText.AutoSize = false;
-            _messageText.StateCommon.Font = new Font(@"Segoe UI", 9F);
+            _messageText.StateCommon.Font = new(@"Segoe UI", 9F);
             _messageText.ForeColor = Color.FromArgb(30, 57, 91);
             _messageText.LabelStyle = LabelStyle.NormalPanel;
-            _messageText.Location = new Point(5, 18);
-            _messageText.Margin = new Padding(0);
+            _messageText.Location = new(5, 18);
+            _messageText.Margin = new(0);
             _messageText.Name = "_messageText";
-            _messageText.Size = new Size(78, 15);
+            _messageText.Size = new(78, 15);
             _messageText.Text = @"Message Text";
             // 
             // _panelMessageIcon
@@ -83,20 +103,20 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             _panelMessageIcon.AutoSize = true;
             _panelMessageIcon.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             _panelMessageIcon.Controls.Add(_messageIcon);
-            _panelMessageIcon.Location = new Point(0, 0);
-            _panelMessageIcon.Margin = new Padding(0);
+            _panelMessageIcon.Location = new(0, 0);
+            _panelMessageIcon.Margin = new(0);
             _panelMessageIcon.Name = "_panelMessageIcon";
-            _panelMessageIcon.Padding = new Padding(10, 10, 0, 10);
-            _panelMessageIcon.Size = new Size(42, 52);
+            _panelMessageIcon.Padding = new(10, 10, 0, 10);
+            _panelMessageIcon.Size = new(42, 52);
             _panelMessageIcon.TabIndex = 0;
             // 
             // _messageIcon
             // 
             _messageIcon.BackColor = Color.Transparent;
-            _messageIcon.Location = new Point(10, 10);
-            _messageIcon.Margin = new Padding(0);
+            _messageIcon.Location = new(10, 10);
+            _messageIcon.Margin = new(0);
             _messageIcon.Name = "_messageIcon";
-            _messageIcon.Size = new Size(32, 32);
+            _messageIcon.Size = new(32, 32);
             _messageIcon.TabIndex = 0;
             _messageIcon.TabStop = false;
             // 
@@ -108,20 +128,20 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             _panelButtons.Controls.Add(_button2);
             _panelButtons.Controls.Add(_doNotShowAgainOption);
             _panelButtons.Dock = DockStyle.Top;
-            _panelButtons.Location = new Point(0, 52);
-            _panelButtons.Margin = new Padding(0);
+            _panelButtons.Location = new(0, 52);
+            _panelButtons.Margin = new(0);
             _panelButtons.Name = "_panelButtons";
             _panelButtons.PanelBackStyle = PaletteBackStyle.PanelAlternate;
-            _panelButtons.Size = new Size(156, 26);
+            _panelButtons.Size = new(156, 26);
             _panelButtons.TabIndex = 0;
             // 
             // borderEdge
             // 
             _borderEdge.BorderStyle = PaletteBorderStyle.HeaderPrimary;
             _borderEdge.Dock = DockStyle.Top;
-            _borderEdge.Location = new Point(0, 0);
+            _borderEdge.Location = new(0, 0);
             _borderEdge.Name = "_borderEdge";
-            _borderEdge.Size = new Size(156, 1);
+            _borderEdge.Size = new(156, 1);
             _borderEdge.Text = @"kryptonBorderEdge1";
             // 
             // _button3
@@ -129,11 +149,11 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             _button3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _button3.AutoSize = true;
             _button3.IgnoreAltF4 = false;
-            _button3.Location = new Point(106, 0);
-            _button3.Margin = new Padding(0);
-            _button3.MinimumSize = new Size(50, 26);
+            _button3.Location = new(106, 0);
+            _button3.Margin = new(0);
+            _button3.MinimumSize = new(50, 26);
             _button3.Name = "_button3";
-            _button3.Size = new Size(50, 26);
+            _button3.Size = new(50, 26);
             _button3.TabIndex = 2;
             _button3.Values.Text = @"B3";
             _button3.KeyDown += button_keyDown;
@@ -143,11 +163,11 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             _button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _button1.AutoSize = true;
             _button1.IgnoreAltF4 = false;
-            _button1.Location = new Point(6, 0);
-            _button1.Margin = new Padding(0);
-            _button1.MinimumSize = new Size(50, 26);
+            _button1.Location = new(6, 0);
+            _button1.Margin = new(0);
+            _button1.MinimumSize = new(50, 26);
             _button1.Name = "_button1";
-            _button1.Size = new Size(50, 26);
+            _button1.Size = new(50, 26);
             _button1.TabIndex = 0;
             _button1.Values.Text = @"B1";
             _button1.KeyDown += button_keyDown;
@@ -157,11 +177,11 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             _button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _button2.AutoSize = true;
             _button2.IgnoreAltF4 = false;
-            _button2.Location = new Point(56, 0);
-            _button2.Margin = new Padding(0);
-            _button2.MinimumSize = new Size(50, 26);
+            _button2.Location = new(56, 0);
+            _button2.Margin = new(0);
+            _button2.MinimumSize = new(50, 26);
             _button2.Name = "_button2";
-            _button2.Size = new Size(50, 26);
+            _button2.Size = new(50, 26);
             _button2.TabIndex = 1;
             _button2.Values.Text = @"B2";
             _button2.KeyDown += button_keyDown;
@@ -170,19 +190,19 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             //
             _doNotShowAgainOption.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             _doNotShowAgainOption.AutoSize = true;
-            _doNotShowAgainOption.Location = new Point(56, 0);
-            _doNotShowAgainOption.Margin = new Padding(0);
-            _doNotShowAgainOption.MinimumSize = new Size(50, 26);
+            _doNotShowAgainOption.Location = new(56, 0);
+            _doNotShowAgainOption.Margin = new(0);
+            _doNotShowAgainOption.MinimumSize = new(50, 26);
             _doNotShowAgainOption.Name = "_doNotShowAgainOption";
-            _doNotShowAgainOption.Size = new Size(50, 26);
+            _doNotShowAgainOption.Size = new(50, 26);
             _doNotShowAgainOption.TabIndex = 1;
             _doNotShowAgainOption.Values.Text = @"&Do not show this again";
             // 
             // KryptonMessageBox
             // 
-            AutoScaleDimensions = new SizeF(6F, 13F);
+            AutoScaleDimensions = new(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(156, 78);
+            ClientSize = new(156, 78);
             Controls.Add(_panelButtons);
             Controls.Add(_panelMessage);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -252,19 +272,27 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         ///   <c>true</c> if [do not show again option result]; otherwise, <c>false</c>.
         /// </value>
-        public bool DoNotShowAgainOptionResult { get => _doNotShowAgainOptionResult;
+        public bool DoNotShowAgainOptionResult
+        {
+            get => _doNotShowAgainOptionResult;
             set => _doNotShowAgainOptionResult = value;
         }
 
-        public bool ShowDoNotShowAgainOption { get => _showDoNotShowAgainOption;
+        public bool ShowDoNotShowAgainOption
+        {
+            get => _showDoNotShowAgainOption;
             set => _showDoNotShowAgainOption = value;
         }
 
-        public bool UseTimeOutOption { get => _useTimeOutOption;
+        public bool UseTimeOutOption
+        {
+            get => _useTimeOutOption;
             set => _useTimeOutOption = value;
         }
 
-        public DialogResult DefaultTimeOutResponse { get => _defaultTimeOutResponse;
+        public DialogResult DefaultTimeOutResponse
+        {
+            get => _defaultTimeOutResponse;
             set => _defaultTimeOutResponse = value;
         }
 
@@ -274,7 +302,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The message box typeface.
         /// </value>
-        public Font MessageBoxTypeface { get => _messageboxTypeface;
+        public Font MessageBoxTypeface
+        {
+            get => _messageboxTypeface;
             set => _messageboxTypeface = value;
         }
 
@@ -284,7 +314,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The time out.
         /// </value>
-        public int TimeOut { get => _timeOut;
+        public int TimeOut
+        {
+            get => _timeOut;
             set => _timeOut = value;
         }
 
@@ -294,7 +326,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The time out timer delay.
         /// </value>
-        public int TimeOutTimerDelay { get => _timeOutTimerDelay;
+        public int TimeOutTimerDelay
+        {
+            get => _timeOutTimerDelay;
             set => _timeOutTimerDelay = value;
         }
 
@@ -304,7 +338,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The do not show again option text.
         /// </value>
-        public string DoNotShowAgainOptionText { get => _doNotShowAgainOptionText;
+        public string DoNotShowAgainOptionText
+        {
+            get => _doNotShowAgainOptionText;
             set => _doNotShowAgainOptionText = value;
         }
         #endregion
@@ -411,8 +447,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             {
                 switch (m.Msg)
                 {
-                    case PI.WM_KEYDOWN:
-                    case PI.WM_SYSKEYDOWN:
+                    case PlatformInvoke.WM_KEYDOWN:
+                    case PlatformInvoke.WM_SYSKEYDOWN:
                         if (IgnoreAltF4)
                         {
                             // Extract the keys being pressed
@@ -454,8 +490,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="showCtrlCopy">The show control copy. (Can be null)</param>
         /// <param name="topMost">Sets the topmost position.</param>
         /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showDoNotShowAgainOption">Enables the UI elements for a "Do not show again" checkbox.</summary>
-        /// <param name="doNotShowAgainOptionText">Specify the text on the "Do not show again" checkbox. (Default is "Do not show again")</summary>
+        /// <param name="showDoNotShowAgainOption">Enables the UI elements for a "Do not show again" checkbox.</param>
+        /// <param name="doNotShowAgainOptionText">Specify the text on the "Do not show again" checkbox. (Default is "Do not show again")</param>
         /// <param name="useTimeOutOption">Use a time out on the messagebox. (Default is set as false)</param>
         /// <param name="timeOut">Specify the time out time. (Default is set at 60 seconds)</param>
         /// <param name="timeOutDelay">Specify the time out delay timer. (Default is 250 milliseconds)</param>
@@ -525,7 +561,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
             SetUpShowDoNotShowAgainOptionElements(showDoNotShowAgainOption, doNotShowAgainOptionText);
 
-            SetUpTimeOutDelayTimer(useTimeOutOption, timeOutDelay, new Timer());
+            SetUpTimeOutDelayTimer(useTimeOutOption, timeOutDelay, new());
 
             UpdateTextExtra(showCtrlCopy);
 
@@ -565,6 +601,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="messageboxTypeface"></param>
+        /// <param name="topMost"></param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool topMost = true)
         {
@@ -577,11 +615,10 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
-        {
-            return InternalShow(owner, text, string.Empty, MessageBoxButtons.OK, KryptonMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface);
-        }
+        public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null) => InternalShow(owner, text, string.Empty, MessageBoxButtons.OK, KryptonMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface);
 
         /// <summary>
         /// Displays a message box with specified text and caption.
@@ -589,11 +626,10 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
-        {
-            return InternalShow(null, text, caption, MessageBoxButtons.OK, KryptonMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface);
-        }
+        public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null) => InternalShow(null, text, caption, MessageBoxButtons.OK, KryptonMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text and caption.
@@ -602,6 +638,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
@@ -616,6 +654,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
@@ -631,6 +671,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -647,6 +689,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.KryptonMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, KryptonMessageBoxIcon icon, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
@@ -663,6 +707,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.KryptonMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -680,6 +726,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="icon">One of the System.Windows.Forms.KryptonMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, KryptonMessageBoxIcon icon,
@@ -698,6 +746,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="icon">One of the System.Windows.Forms.KryptonMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -717,6 +767,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, KryptonMessageBoxIcon icon,
@@ -732,6 +784,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
 
         public static DialogResult Show(string text, string caption,
@@ -751,6 +805,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="topMost">Always on top of the host window.</param>
+        /// <param name="messageboxTypeface">The font displayed on the <see cref="ExtendedKryptonMessageBox"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -797,7 +853,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, topMost, messageboxTypeface);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new(helpFilePath), showCtrlCopy, topMost, messageboxTypeface);
         }
 
         /// <summary>
@@ -819,7 +875,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, topMost, messageboxTypeface);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new(helpFilePath), showCtrlCopy, topMost, messageboxTypeface);
         }
 
         /// <summary>
@@ -840,7 +896,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, topMost, messageboxTypeface);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new(helpFilePath, navigator), showCtrlCopy, topMost, messageboxTypeface);
         }
 
         /// <summary>
@@ -861,7 +917,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, topMost, messageboxTypeface);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new(helpFilePath, keyword), showCtrlCopy, topMost, messageboxTypeface);
         }
 
         /// <summary>
@@ -884,7 +940,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, topMost, messageboxTypeface);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new(helpFilePath, navigator), showCtrlCopy, topMost, messageboxTypeface);
         }
 
         /// <summary>
@@ -907,7 +963,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, topMost, messageboxTypeface);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new(helpFilePath, keyword), showCtrlCopy, topMost, messageboxTypeface);
         }
 
         /// <summary>
@@ -929,7 +985,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, topMost, messageboxTypeface);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new(helpFilePath, navigator, param), showCtrlCopy, topMost, messageboxTypeface);
         }
 
         /// <summary>
@@ -954,7 +1010,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, topMost, messageboxTypeface);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new(helpFilePath, navigator, param), showCtrlCopy, topMost, messageboxTypeface);
         }
 
         /// <summary>
@@ -989,7 +1045,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                                         int timeOut = 60, int timeOutDelay = 250,
                                         DialogResult defaultTimeOutResponse = DialogResult.OK)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText, useTimeOutOption, timeOut, timeOutDelay, defaultTimeOutResponse);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new(helpFilePath, navigator, param), showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText, useTimeOutOption, timeOut, timeOutDelay, defaultTimeOutResponse);
         }
         #endregion
 
@@ -1029,11 +1085,11 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             if ((helpInformation != null) || ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
             {
                 // If do not have an owner passed in then get the active window and use that instead
-                showOwner = owner ?? FromHandle(PI.GetActiveWindow());
+                showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (ExtendedKryptonMessageBox ekmb = new ExtendedKryptonMessageBox(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText, useTimeOutOption, timeOut, timeOutDelay, defaultTimeOutResponse, button1Text, button2Text, button3Text))
+            using (ExtendedKryptonMessageBox ekmb = new(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText, useTimeOutOption, timeOut, timeOutDelay, defaultTimeOutResponse, button1Text, button2Text, button3Text))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 
@@ -1113,14 +1169,14 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             switch (_buttons)
             {
                 case MessageBoxButtons.OK:
-                    _button1.Text = KryptonManager.Strings.OK;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
                     _button1.DialogResult = DialogResult.OK;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     _button2.Visible = _button3.Visible = false;
                     break;
                 case MessageBoxButtons.OKCancel:
-                    _button1.Text = KryptonManager.Strings.OK;
-                    _button2.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1128,8 +1184,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     _button3.Visible = false;
                     break;
                 case MessageBoxButtons.YesNo:
-                    _button1.Text = KryptonManager.Strings.Yes;
-                    _button2.Text = KryptonManager.Strings.No;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1138,9 +1194,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     ControlBox = false;
                     break;
                 case MessageBoxButtons.YesNoCancel:
-                    _button1.Text = KryptonManager.Strings.Yes;
-                    _button2.Text = KryptonManager.Strings.No;
-                    _button3.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button3.DialogResult = DialogResult.Cancel;
@@ -1149,8 +1205,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     _button3.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     break;
                 case MessageBoxButtons.RetryCancel:
-                    _button1.Text = KryptonManager.Strings.Retry;
-                    _button2.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1158,9 +1214,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     _button3.Visible = false;
                     break;
                 case MessageBoxButtons.AbortRetryIgnore:
-                    _button1.Text = KryptonManager.Strings.Abort;
-                    _button2.Text = KryptonManager.Strings.Retry;
-                    _button3.Text = KryptonManager.Strings.Ignore;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Abort;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
+                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Ignore;
                     _button1.DialogResult = DialogResult.Abort;
                     _button2.DialogResult = DialogResult.Retry;
                     _button3.DialogResult = DialogResult.Ignore;
@@ -1185,14 +1241,14 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             switch (_buttons)
             {
                 case MessageBoxButtons.OK:
-                    _button1.Text = KryptonManager.Strings.OK;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
                     _button1.DialogResult = DialogResult.OK;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     _button2.Visible = _button3.Visible = false;
                     break;
                 case MessageBoxButtons.OKCancel:
-                    _button1.Text = KryptonManager.Strings.OK;
-                    _button2.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1200,8 +1256,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     _button3.Visible = false;
                     break;
                 case MessageBoxButtons.YesNo:
-                    _button1.Text = KryptonManager.Strings.Yes;
-                    _button2.Text = KryptonManager.Strings.No;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1210,9 +1266,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     ControlBox = false;
                     break;
                 case MessageBoxButtons.YesNoCancel:
-                    _button1.Text = KryptonManager.Strings.Yes;
-                    _button2.Text = KryptonManager.Strings.No;
-                    _button3.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button3.DialogResult = DialogResult.Cancel;
@@ -1221,8 +1277,8 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     _button3.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     break;
                 case MessageBoxButtons.RetryCancel:
-                    _button1.Text = KryptonManager.Strings.Retry;
-                    _button2.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1230,9 +1286,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     _button3.Visible = false;
                     break;
                 case MessageBoxButtons.AbortRetryIgnore:
-                    _button1.Text = KryptonManager.Strings.Abort;
-                    _button2.Text = KryptonManager.Strings.Retry;
-                    _button3.Text = KryptonManager.Strings.Ignore;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Abort;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
+                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Ignore;
                     _button1.DialogResult = DialogResult.Abort;
                     _button2.DialogResult = DialogResult.Retry;
                     _button3.DialogResult = DialogResult.Ignore;
@@ -1246,15 +1302,15 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             // Time out logic
             if (defaultTimeOutButton == MessageBoxDefaultButton.Button1)
             {
-                _button1.Text = $"{ _button1.Text } ({ timeOut.ToString() })";
+                _button1.Text = $"{_button1.Text} ({timeOut.ToString()})";
             }
             else if (defaultTimeOutButton == MessageBoxDefaultButton.Button2)
             {
-                _button2.Text = $"{ _button2.Text } ({ timeOut.ToString() })";
+                _button2.Text = $"{_button2.Text} ({timeOut.ToString()})";
             }
             else if (defaultTimeOutButton == MessageBoxDefaultButton.Button3)
             {
-                _button3.Text = $"{ _button3.Text } ({ timeOut.ToString() })";
+                _button3.Text = $"{_button3.Text} ({timeOut.ToString()})";
             }
 
             // Do we ignore the Alt+F4 on the buttons?
@@ -1367,13 +1423,13 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             _doNotShowAgainOption.StateCommon.ShortText.Font = MessageBoxTypeface;
 
             // Set up checked changed event
-            _doNotShowAgainOption.CheckedChanged += new EventHandler(DoNotShowAgainOption_CheckedChanged);
+            _doNotShowAgainOption.CheckedChanged += new(DoNotShowAgainOption_CheckedChanged);
         }
 
         private void SetUpTimeOutDelayTimer(bool enabled, int ticksInMilliseconds, Timer timeOutTimer)
         {
             // Initialise a new timer
-            timeOutTimer = new Timer();
+            timeOutTimer = new();
 
             // Enables the time out timer based on passed arguements
             timeOutTimer.Enabled = enabled;
@@ -1382,7 +1438,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             timeOutTimer.Interval = ticksInMilliseconds;
 
             // Setup the Tick event for the 'timeOutTimer'
-            timeOutTimer.Tick += new EventHandler(TimeOutTimer_Tick);
+            timeOutTimer.Tick += new(TimeOutTimer_Tick);
         }
 
         private void UpdateSizing(IWin32Window showOwner)
@@ -1391,7 +1447,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             Size buttonsSizing = UpdateButtonsSizing();
 
             // Size of window is calculated from the client area
-            ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
+            ClientSize = new(Math.Max(messageSizing.Width, buttonsSizing.Width),
                                   messageSizing.Height + buttonsSizing.Height);
         }
 
@@ -1437,7 +1493,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
 
             // Enforce a minimum size for the message area
-            panelSize = new Size(Math.Max(_panelMessage.Size.Width, panelSize.Width),
+            panelSize = new(Math.Max(_panelMessage.Size.Width, panelSize.Width),
                                  Math.Max(_panelMessage.Size.Height, panelSize.Height));
 
             // Note that the width will be ignored in this update, but that is fine as 
@@ -1452,7 +1508,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
             // Button1 is always visible
             Size button1Size = _button1.GetPreferredSize(Size.Empty);
-            Size maxButtonSize = new Size(button1Size.Width + GAP, button1Size.Height);
+            Size maxButtonSize = new(button1Size.Width + GAP, button1Size.Height);
 
             // If Button2 is visible
             switch (_buttons)
@@ -1494,7 +1550,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                 case MessageBoxButtons.YesNoCancel:
                 case MessageBoxButtons.AbortRetryIgnore:
                     {
-                        _button3.Location = new Point(right - maxButtonSize.Width, GAP);
+                        _button3.Location = new(right - maxButtonSize.Width, GAP);
                         _button3.Size = maxButtonSize;
                         right -= maxButtonSize.Width + GAP;
                     }
@@ -1510,7 +1566,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                 case MessageBoxButtons.RetryCancel:
                 case MessageBoxButtons.AbortRetryIgnore:
                     {
-                        _button2.Location = new Point(right - maxButtonSize.Width, GAP);
+                        _button2.Location = new(right - maxButtonSize.Width, GAP);
                         _button2.Size = maxButtonSize;
                         right -= maxButtonSize.Width + GAP;
                     }
@@ -1518,14 +1574,14 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
 
             // Button1 is always visible
-            _button1.Location = new Point(right - maxButtonSize.Width, GAP);
+            _button1.Location = new(right - maxButtonSize.Width, GAP);
             _button1.Size = maxButtonSize;
 
             // Size the panel for the buttons
-            _panelButtons.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            _panelButtons.Size = new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
 
             // Button area is the number of buttons with gaps between them and 10 pixels around all edges
-            return new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            return new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
         }
 
         private void button_keyDown(object sender, KeyEventArgs e)
@@ -1540,7 +1596,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                 // Pressing Ctrl+C should copy message text into the clipboard
                 if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.C))
                 {
-                    StringBuilder sb = new StringBuilder();
+                    StringBuilder sb = new();
 
                     sb.AppendLine("---------------------------");
                     sb.AppendLine(_caption);

@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -38,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottablePolygon{label} with {PointCount} points";
         }
 
@@ -69,11 +88,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 label = Label,
                 color = Fill ? FillColor : LineColor,
                 lineWidth = Fill ? 10 : LineWidth,
-                markerShape = MarkerShape.NONE,
+                markerShape = MarkerShape.None,
                 hatchColor = HatchColor,
                 hatchStyle = HatchStyle
             };
-            return new LegendItem[] { singleLegendItem };
+            return new[] { singleLegendItem };
         }
 
         public void ValidateData(bool deep = false)
@@ -83,7 +102,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Validate.AssertEqualLength("xs and ys", Xs, Ys);
 
             if (Xs.Length < 3)
+            {
                 throw new InvalidOperationException("polygons must contain at least 3 points");
+            }
 
             if (deep)
             {
@@ -96,17 +117,27 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             PointF[] points = new PointF[Xs.Length];
             for (int i = 0; i < Xs.Length; i++)
+            {
                 points[i] = new PointF(dims.GetPixelX(Xs[i]), dims.GetPixelY(Ys[i]));
+            }
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Brush fillBrush = GDI.Brush(FillColor, HatchColor, HatchStyle))
-            using (Pen outlinePen = GDI.Pen(LineColor, (float)LineWidth))
             {
-                if (Fill)
-                    gfx.FillPolygon(fillBrush, points);
+                using (Brush fillBrush = GDI.Brush(FillColor, HatchColor, HatchStyle))
+                {
+                    using (Pen outlinePen = GDI.Pen(LineColor, (float)LineWidth))
+                    {
+                        if (Fill)
+                        {
+                            gfx.FillPolygon(fillBrush, points);
+                        }
 
-                if (LineWidth > 0)
-                    gfx.DrawPolygon(outlinePen, points);
+                        if (LineWidth > 0)
+                        {
+                            gfx.DrawPolygon(outlinePen, points);
+                        }
+                    }
+                }
             }
         }
     }

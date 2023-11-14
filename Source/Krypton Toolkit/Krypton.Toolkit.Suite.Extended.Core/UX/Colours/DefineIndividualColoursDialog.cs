@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -26,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             this.components = new System.ComponentModel.Container();
             this.kManager = new Krypton.Toolkit.KryptonManager(this.components);
-            this.kPal = new Krypton.Toolkit.KryptonPalette(this.components);
+            this.kPal = new Krypton.Toolkit.KryptonCustomPaletteBase(this.components);
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnOk = new Krypton.Toolkit.KryptonButton();
             this.ktbHexadecimal = new Krypton.Toolkit.KryptonTextBox();
@@ -84,7 +104,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kManager
             // 
             this.kManager.GlobalPalette = this.kPal;
-            this.kManager.GlobalPaletteMode = Krypton.Toolkit.PaletteModeManager.Custom;
+            this.kManager.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.Custom;
+            // 
+            // kPal
+            // 
+            this.kPal.BaseFontSize = 9F;
+            this.kPal.BasePaletteType = Krypton.Toolkit.BasePaletteType.Custom;
+            this.kPal.ThemeName = null;
             // 
             // kryptonPanel1
             // 
@@ -99,24 +125,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnOk
             // 
-            this.kbtnOk.AutoSize = true;
-            this.kbtnOk.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnOk.Location = new System.Drawing.Point(710, 8);
+            this.kbtnOk.CornerRoundingRadius = -1F;
+            this.kbtnOk.Location = new System.Drawing.Point(652, 13);
             this.kbtnOk.Name = "kbtnOk";
-            this.kbtnOk.Size = new System.Drawing.Size(32, 30);
-            this.kbtnOk.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 101;
             this.kbtnOk.Values.Text = "&Ok";
             this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
             // 
             // ktbHexadecimal
             // 
-            this.ktbHexadecimal.Location = new System.Drawing.Point(210, 11);
+            this.ktbHexadecimal.Location = new System.Drawing.Point(160, 15);
             this.ktbHexadecimal.MaxLength = 7;
             this.ktbHexadecimal.Name = "ktbHexadecimal";
-            this.ktbHexadecimal.Size = new System.Drawing.Size(176, 29);
-            this.ktbHexadecimal.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ktbHexadecimal.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.ktbHexadecimal.Size = new System.Drawing.Size(176, 23);
             this.ktbHexadecimal.TabIndex = 85;
             this.ktbHexadecimal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ktbHexadecimal.TextChanged += new System.EventHandler(this.ktbHexadecimal_TextChanged);
@@ -124,10 +146,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonLabel1
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(17, 12);
+            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonLabel1.Location = new System.Drawing.Point(12, 18);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(187, 26);
-            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel1.Size = new System.Drawing.Size(142, 20);
             this.kryptonLabel1.TabIndex = 84;
             this.kryptonLabel1.Values.Text = "Hexadecimal Colour: #";
             // 
@@ -167,6 +189,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonGroupBox1
             // 
+            this.kryptonGroupBox1.CaptionStyle = Krypton.Toolkit.LabelStyle.BoldPanel;
             this.kryptonGroupBox1.Enabled = false;
             this.kryptonGroupBox1.Location = new System.Drawing.Point(588, 49);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
@@ -178,54 +201,45 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonGroupBox1.Panel.Controls.Add(this.kbtnGenerateGreenValue);
             this.kryptonGroupBox1.Panel.Controls.Add(this.kbtnGenerateBlueValue);
             this.kryptonGroupBox1.Size = new System.Drawing.Size(154, 197);
-            this.kryptonGroupBox1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonGroupBox1.TabIndex = 102;
             this.kryptonGroupBox1.Values.Heading = "Colour Options";
             // 
             // kbtnGenerateAlpha
             // 
-            this.kbtnGenerateAlpha.AutoSize = true;
-            this.kbtnGenerateAlpha.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnGenerateAlpha.CornerRoundingRadius = -1F;
             this.kbtnGenerateAlpha.Location = new System.Drawing.Point(13, 14);
             this.kbtnGenerateAlpha.Name = "kbtnGenerateAlpha";
-            this.kbtnGenerateAlpha.Size = new System.Drawing.Size(125, 30);
-            this.kbtnGenerateAlpha.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnGenerateAlpha.Size = new System.Drawing.Size(124, 25);
             this.kbtnGenerateAlpha.TabIndex = 101;
             this.kbtnGenerateAlpha.Values.Text = "Generate &Alpha";
             this.kbtnGenerateAlpha.Click += new System.EventHandler(this.kbtnGenerateAlpha_Click);
             // 
             // kbtnGenerateRedValue
             // 
-            this.kbtnGenerateRedValue.AutoSize = true;
-            this.kbtnGenerateRedValue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnGenerateRedValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateRedValue.Location = new System.Drawing.Point(13, 52);
             this.kbtnGenerateRedValue.Name = "kbtnGenerateRedValue";
-            this.kbtnGenerateRedValue.Size = new System.Drawing.Size(111, 30);
-            this.kbtnGenerateRedValue.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnGenerateRedValue.Size = new System.Drawing.Size(124, 25);
             this.kbtnGenerateRedValue.TabIndex = 91;
             this.kbtnGenerateRedValue.Values.Text = "Generate &Red";
             this.kbtnGenerateRedValue.Click += new System.EventHandler(this.kbtnGenerateRedValue_Click);
             // 
             // kbtnGenerateGreenValue
             // 
-            this.kbtnGenerateGreenValue.AutoSize = true;
-            this.kbtnGenerateGreenValue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnGenerateGreenValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateGreenValue.Location = new System.Drawing.Point(13, 90);
             this.kbtnGenerateGreenValue.Name = "kbtnGenerateGreenValue";
-            this.kbtnGenerateGreenValue.Size = new System.Drawing.Size(126, 30);
-            this.kbtnGenerateGreenValue.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnGenerateGreenValue.Size = new System.Drawing.Size(124, 25);
             this.kbtnGenerateGreenValue.TabIndex = 92;
             this.kbtnGenerateGreenValue.Values.Text = "Generate &Green";
             this.kbtnGenerateGreenValue.Click += new System.EventHandler(this.kbtnGenerateGreenValue_Click);
             // 
             // kbtnGenerateBlueValue
             // 
-            this.kbtnGenerateBlueValue.AutoSize = true;
-            this.kbtnGenerateBlueValue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnGenerateBlueValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateBlueValue.Location = new System.Drawing.Point(13, 128);
             this.kbtnGenerateBlueValue.Name = "kbtnGenerateBlueValue";
-            this.kbtnGenerateBlueValue.Size = new System.Drawing.Size(114, 30);
-            this.kbtnGenerateBlueValue.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnGenerateBlueValue.Size = new System.Drawing.Size(124, 25);
             this.kbtnGenerateBlueValue.TabIndex = 93;
             this.kbtnGenerateBlueValue.Values.Text = "Generate &Blue";
             this.kbtnGenerateBlueValue.Click += new System.EventHandler(this.kbtnGenerateBlueValue_Click);
@@ -238,7 +252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             "Middle Colour",
             "Light Colour",
             "Lightest Colour"});
-            this.kcmbDefinedColour.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.kcmbDefinedColour.CornerRoundingRadius = -1F;
             this.kcmbDefinedColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbDefinedColour.DropDownWidth = 173;
             this.kcmbDefinedColour.IntegralHeight = false;
@@ -248,10 +262,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             "Middle Colour",
             "Light Colour",
             "Lightest Colour"});
-            this.kcmbDefinedColour.Location = new System.Drawing.Point(291, 531);
+            this.kcmbDefinedColour.Location = new System.Drawing.Point(262, 529);
             this.kcmbDefinedColour.Name = "kcmbDefinedColour";
-            this.kcmbDefinedColour.Size = new System.Drawing.Size(173, 27);
-            this.kcmbDefinedColour.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kcmbDefinedColour.Size = new System.Drawing.Size(173, 21);
             this.kcmbDefinedColour.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbDefinedColour.TabIndex = 31;
             this.kcmbDefinedColour.SelectedIndexChanged += new System.EventHandler(this.kcmbDefinedColour_SelectedIndexChanged);
@@ -259,29 +272,26 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonLabel5
             // 
+            this.kryptonLabel5.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel5.Location = new System.Drawing.Point(162, 530);
             this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(123, 26);
-            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel5.Size = new System.Drawing.Size(94, 20);
             this.kryptonLabel5.TabIndex = 30;
             this.kryptonLabel5.Values.Text = "Define Colour:";
             // 
             // kbtnExportSelectedColour
             // 
-            this.kbtnExportSelectedColour.AutoSize = true;
-            this.kbtnExportSelectedColour.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnExportSelectedColour.CornerRoundingRadius = -1F;
             this.kbtnExportSelectedColour.Enabled = false;
-            this.kbtnExportSelectedColour.Location = new System.Drawing.Point(565, 531);
+            this.kbtnExportSelectedColour.Location = new System.Drawing.Point(584, 525);
             this.kbtnExportSelectedColour.Name = "kbtnExportSelectedColour";
-            this.kbtnExportSelectedColour.Size = new System.Drawing.Size(177, 30);
-            this.kbtnExportSelectedColour.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnExportSelectedColour.Size = new System.Drawing.Size(143, 25);
             this.kbtnExportSelectedColour.TabIndex = 100;
             this.kbtnExportSelectedColour.Values.Text = "&Export Selected Colour";
             this.kbtnExportSelectedColour.Click += new System.EventHandler(this.kbtnExportSelectedColour_Click);
             // 
             // ktbRed
             // 
-            this.ktbRed.DrawBackground = true;
             this.ktbRed.Enabled = false;
             this.ktbRed.Location = new System.Drawing.Point(340, 44);
             this.ktbRed.Maximum = 255;
@@ -300,7 +310,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // ktbGreen
             // 
-            this.ktbGreen.DrawBackground = true;
             this.ktbGreen.Enabled = false;
             this.ktbGreen.Location = new System.Drawing.Point(438, 44);
             this.ktbGreen.Maximum = 255;
@@ -319,7 +328,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // ktbBlue
             // 
-            this.ktbBlue.DrawBackground = true;
             this.ktbBlue.Enabled = false;
             this.ktbBlue.Location = new System.Drawing.Point(529, 44);
             this.ktbBlue.Maximum = 255;
@@ -338,7 +346,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // ktbAlpha
             // 
-            this.ktbAlpha.DrawBackground = true;
             this.ktbAlpha.Enabled = false;
             this.ktbAlpha.Location = new System.Drawing.Point(234, 44);
             this.ktbAlpha.Maximum = 255;
@@ -360,9 +367,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             0,
             0});
             this.knumAlphaChannelValue.Name = "knumAlphaChannelValue";
-            this.knumAlphaChannelValue.Size = new System.Drawing.Size(62, 28);
-            this.knumAlphaChannelValue.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.knumAlphaChannelValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.knumAlphaChannelValue.Size = new System.Drawing.Size(62, 22);
             this.knumAlphaChannelValue.TabIndex = 95;
             this.knumAlphaChannelValue.Value = new decimal(new int[] {
             255,
@@ -374,10 +379,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kryptonLabel10
             // 
             this.kryptonLabel10.Enabled = false;
+            this.kryptonLabel10.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel10.Location = new System.Drawing.Point(214, 12);
             this.kryptonLabel10.Name = "kryptonLabel10";
-            this.kryptonLabel10.Size = new System.Drawing.Size(62, 26);
-            this.kryptonLabel10.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel10.Size = new System.Drawing.Size(48, 20);
             this.kryptonLabel10.TabIndex = 94;
             this.kryptonLabel10.Values.Text = "Alpha:";
             // 
@@ -391,11 +396,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             0,
             0});
             this.knumBlueChannelValue.Name = "knumBlueChannelValue";
-            this.knumBlueChannelValue.Size = new System.Drawing.Size(62, 28);
+            this.knumBlueChannelValue.Size = new System.Drawing.Size(62, 22);
             this.knumBlueChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
             this.knumBlueChannelValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knumBlueChannelValue.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.knumBlueChannelValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knumBlueChannelValue.TabIndex = 90;
             this.knumBlueChannelValue.ValueChanged += new System.EventHandler(this.knumBlueChannelValue_ValueChanged);
             // 
@@ -409,10 +412,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             0,
             0});
             this.knumGreenChannelValue.Name = "knumGreenChannelValue";
-            this.knumGreenChannelValue.Size = new System.Drawing.Size(62, 28);
+            this.knumGreenChannelValue.Size = new System.Drawing.Size(62, 22);
             this.knumGreenChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Lime;
-            this.knumGreenChannelValue.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.knumGreenChannelValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knumGreenChannelValue.TabIndex = 89;
             this.knumGreenChannelValue.ValueChanged += new System.EventHandler(this.knumGreenChannelValue_ValueChanged);
             // 
@@ -426,41 +427,39 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             0,
             0});
             this.knumRedChannelValue.Name = "knumRedChannelValue";
-            this.knumRedChannelValue.Size = new System.Drawing.Size(62, 28);
+            this.knumRedChannelValue.Size = new System.Drawing.Size(62, 22);
             this.knumRedChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Red;
             this.knumRedChannelValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knumRedChannelValue.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.knumRedChannelValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knumRedChannelValue.TabIndex = 88;
             this.knumRedChannelValue.ValueChanged += new System.EventHandler(this.knumRedChannelValue_ValueChanged);
             // 
             // kryptonLabel4
             // 
             this.kryptonLabel4.Enabled = false;
+            this.kryptonLabel4.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel4.Location = new System.Drawing.Point(513, 12);
             this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(50, 26);
-            this.kryptonLabel4.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel4.Size = new System.Drawing.Size(39, 20);
             this.kryptonLabel4.TabIndex = 87;
             this.kryptonLabel4.Values.Text = "Blue:";
             // 
             // kryptonLabel3
             // 
             this.kryptonLabel3.Enabled = false;
+            this.kryptonLabel3.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel3.Location = new System.Drawing.Point(415, 12);
             this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(62, 26);
-            this.kryptonLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel3.Size = new System.Drawing.Size(48, 20);
             this.kryptonLabel3.TabIndex = 86;
             this.kryptonLabel3.Values.Text = "Green:";
             // 
             // kryptonLabel2
             // 
             this.kryptonLabel2.Enabled = false;
+            this.kryptonLabel2.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel2.Location = new System.Drawing.Point(327, 12);
             this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(46, 26);
-            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.Size = new System.Drawing.Size(36, 20);
             this.kryptonLabel2.TabIndex = 85;
             this.kryptonLabel2.Values.Text = "Red:";
             // 
@@ -490,19 +489,19 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonLabel16
             // 
+            this.kryptonLabel16.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel16.Location = new System.Drawing.Point(17, 460);
             this.kryptonLabel16.Name = "kryptonLabel16";
-            this.kryptonLabel16.Size = new System.Drawing.Size(130, 26);
-            this.kryptonLabel16.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel16.Size = new System.Drawing.Size(99, 20);
             this.kryptonLabel16.TabIndex = 83;
             this.kryptonLabel16.Values.Text = "Lightest Colour";
             // 
             // kryptonLabel15
             // 
+            this.kryptonLabel15.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel15.Location = new System.Drawing.Point(24, 348);
             this.kryptonLabel15.Name = "kryptonLabel15";
-            this.kryptonLabel15.Size = new System.Drawing.Size(108, 26);
-            this.kryptonLabel15.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel15.Size = new System.Drawing.Size(82, 20);
             this.kryptonLabel15.TabIndex = 82;
             this.kryptonLabel15.Values.Text = "Light Colour";
             // 
@@ -520,10 +519,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonLabel12
             // 
+            this.kryptonLabel12.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel12.Location = new System.Drawing.Point(28, 12);
             this.kryptonLabel12.Name = "kryptonLabel12";
-            this.kryptonLabel12.Size = new System.Drawing.Size(104, 26);
-            this.kryptonLabel12.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel12.Size = new System.Drawing.Size(79, 20);
             this.kryptonLabel12.TabIndex = 76;
             this.kryptonLabel12.Values.Text = "Base Colour";
             // 
@@ -541,10 +540,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonLabel13
             // 
+            this.kryptonLabel13.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel13.Location = new System.Drawing.Point(17, 124);
             this.kryptonLabel13.Name = "kryptonLabel13";
-            this.kryptonLabel13.Size = new System.Drawing.Size(127, 26);
-            this.kryptonLabel13.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel13.Size = new System.Drawing.Size(97, 20);
             this.kryptonLabel13.TabIndex = 77;
             this.kryptonLabel13.Values.Text = "Darkest Colour";
             // 
@@ -562,10 +561,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonLabel14
             // 
+            this.kryptonLabel14.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kryptonLabel14.Location = new System.Drawing.Point(17, 236);
             this.kryptonLabel14.Name = "kryptonLabel14";
-            this.kryptonLabel14.Size = new System.Drawing.Size(122, 26);
-            this.kryptonLabel14.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel14.Size = new System.Drawing.Size(93, 20);
             this.kryptonLabel14.TabIndex = 78;
             this.kryptonLabel14.Values.Text = "Middle Colour";
             // 
@@ -609,7 +608,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
-            this.kryptonGroupBox1.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kcmbDefinedColour)).EndInit();
@@ -638,7 +636,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private CircularPictureBox cpbLightColourPreview;
         private Krypton.Toolkit.KryptonLabel kryptonLabel16;
         private Krypton.Toolkit.KryptonLabel kryptonLabel15;
-        private Krypton.Toolkit.KryptonPalette kPal;
+        private Krypton.Toolkit.KryptonCustomPaletteBase kPal;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private Krypton.Toolkit.KryptonTrackBar ktbRed;
         private Krypton.Toolkit.KryptonTrackBar ktbGreen;
@@ -667,15 +665,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Variables
-        private ConversionMethods _conversionMethods = new ConversionMethods();
+        private ConversionMethods _conversionMethods = new();
 
-        private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
+        private RandomNumberGenerator _randomNumberGenerator = new();
 
         private BasicPaletteColourDefinitions _basicPaletteColourDefinitions;
         #endregion
 
         #region Properties
-        public BasicPaletteColourDefinitions BasicPaletteColourDefinition { get => _basicPaletteColourDefinitions;
+        public BasicPaletteColourDefinitions BasicPaletteColourDefinition
+        {
+            get => _basicPaletteColourDefinitions;
             set => _basicPaletteColourDefinitions = value;
         }
         #endregion
@@ -821,23 +821,23 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (kcmbDefinedColour.SelectedIndex == 0)
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BASECOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BaseColour);
             }
             else if (kcmbDefinedColour.SelectedIndex == 1)
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DARKESTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DarkestColour);
             }
             else if (kcmbDefinedColour.SelectedIndex == 2)
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MIDDLECOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MiddleColour);
             }
             else if (kcmbDefinedColour.SelectedIndex == 3)
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightColour);
             }
             else if (kcmbDefinedColour.SelectedIndex == 4)
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTESTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightestColour);
             }
         }
 
@@ -845,45 +845,45 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (kcmbDefinedColour.Text == "Basic Colour")
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BASECOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BaseColour);
             }
             else if (kcmbDefinedColour.Text == "Darkest Colour")
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DARKESTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DarkestColour);
             }
             else if (kcmbDefinedColour.Text == "Middle Colour")
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MIDDLECOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MiddleColour);
             }
             else if (kcmbDefinedColour.Text == "Light Colour")
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightColour);
             }
             else if (kcmbDefinedColour.Text == "Lightest Colour")
             {
-                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTESTCOLOUR);
+                SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightestColour);
             }
         }
 
         private void kbtnExportSelectedColour_Click(object sender, EventArgs e)
         {
-            if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.BASECOLOUR)
+            if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.BaseColour)
             {
 
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.DARKESTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.DarkestColour)
             {
 
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.MIDDLECOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.MiddleColour)
             {
 
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LIGHTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LightColour)
             {
 
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LIGHTESTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LightestColour)
             {
 
             }
@@ -898,7 +898,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void ktbHexadecimal_MouseHover(object sender, EventArgs e)
         {
-            ttInformation.SetToolTip(this, $"Hexadecimal Value: { ktbHexadecimal.Text.ToUpper() }");
+            ttInformation.SetToolTip(this, $"Hexadecimal Value: {ktbHexadecimal.Text.ToUpper()}");
         }
 
         private void kbtnOk_Click(object sender, EventArgs e)
@@ -915,32 +915,32 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Methods
         private void UpdateUI()
         {
-            if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.BASECOLOUR)
+            if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.BaseColour)
             {
 
                 ktbHexadecimal.Text = _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value)).ToUpper();
 
                 cpbBaseColourPreview.BackColor = Color.FromArgb(Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.DARKESTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.DarkestColour)
             {
                 ktbHexadecimal.Text = _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value)).ToUpper();
 
                 cpbDarkestColourPreview.BackColor = Color.FromArgb(Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.MIDDLECOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.MiddleColour)
             {
                 ktbHexadecimal.Text = _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value)).ToUpper();
 
                 cpbMiddleColourPreview.BackColor = Color.FromArgb(Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LIGHTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LightColour)
             {
                 ktbHexadecimal.Text = _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value)).ToUpper();
 
                 cpbLightColourPreview.BackColor = Color.FromArgb(Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
             }
-            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LIGHTESTCOLOUR)
+            else if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.LightestColour)
             {
                 ktbHexadecimal.Text = _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value)).ToUpper();
 
@@ -952,20 +952,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             switch (paletteColourDefinitions)
             {
-                case BasicPaletteColourDefinitions.BASECOLOUR:
-                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BASECOLOUR);
+                case BasicPaletteColourDefinitions.BaseColour:
+                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.BaseColour);
                     break;
-                case BasicPaletteColourDefinitions.DARKESTCOLOUR:
-                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DARKESTCOLOUR);
+                case BasicPaletteColourDefinitions.DarkestColour:
+                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.DarkestColour);
                     break;
-                case BasicPaletteColourDefinitions.MIDDLECOLOUR:
-                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MIDDLECOLOUR);
+                case BasicPaletteColourDefinitions.MiddleColour:
+                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.MiddleColour);
                     break;
-                case BasicPaletteColourDefinitions.LIGHTCOLOUR:
-                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTCOLOUR);
+                case BasicPaletteColourDefinitions.LightColour:
+                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightColour);
                     break;
-                case BasicPaletteColourDefinitions.LIGHTESTCOLOUR:
-                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LIGHTESTCOLOUR);
+                case BasicPaletteColourDefinitions.LightestColour:
+                    SetBasicPaletteColourDefinition(BasicPaletteColourDefinitions.LightestColour);
                     break;
                 default:
                     break;

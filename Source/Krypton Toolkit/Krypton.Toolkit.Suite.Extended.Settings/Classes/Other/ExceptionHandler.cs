@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -37,19 +57,19 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (className != "")
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.", title, buttons, icon);
+                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: {exception.Message}.\n\nError in class: '{className}.cs'.", title, buttons, icon);
             }
             else if (methodSignature != "")
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
+                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: {exception.Message}.\n\nError in method: '{methodSignature}'.", title, buttons, icon);
             }
             else if (className != "" && methodSignature != "")
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
+                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: {exception.Message}.\n\nError in class: '{className}.cs'.\n\nError in method: '{methodSignature}'.", title, buttons, icon);
             }
             else
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon);
+                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: {exception.Message}.", title, buttons, icon);
             }
         }
 
@@ -69,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="defaultButton">The default button.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="options">The options.</param>
-        public void ShowException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel toolStripLabel = null, object args = null, string caption = "Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button4, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Exclamation, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, MessageBoxDefaultButton winFormsDefaultButton = MessageBoxDefaultButton.Button3)
+        public void ShowException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel toolStripLabel = null, object args = null, string caption = "Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button4, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Exclamation, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, MessageBoxDefaultButton winFormsDefaultButton = MessageBoxDefaultButton.Button3)
         {
             if (useKryptonMessageBox)
             {
@@ -85,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             else if (useConsole)
             {
-                Console.WriteLine($"[ { DateTime.Now.ToString() } ]: { exceptionMessage }");
+                Console.WriteLine($"[ {DateTime.Now.ToString()} ]: {exceptionMessage}");
             }
         }
 
@@ -107,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                 exceptionInfo = ExceptionDispatchInfo.Capture(exc);
 
-                StreamWriter writer = new StreamWriter(fileName);
+                StreamWriter writer = new(fileName);
 
                 writer.Write(exc.ToString());
 
@@ -117,8 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception ex)
             {
-
-                throw;
+                ExceptionCapture.CaptureException(ex);
             }
         }
 
@@ -136,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                     File.Create(fileName);
                 }
 
-                StreamWriter writer = new StreamWriter(fileName);
+                StreamWriter writer = new(fileName);
 
                 writer.Write(exc.StackTrace);
 
@@ -146,8 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception e)
             {
-
-                throw;
+                ExceptionCapture.CaptureException(e);
             }
         }
         #endregion

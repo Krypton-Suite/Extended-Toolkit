@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -16,11 +35,6 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Required designer variable.
         /// </summary>
         private IContainer components = null;
-
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 
         #region Component Designer generated code
 
@@ -109,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         private IDisposable m_mementoBack1;
         private IDisposable m_mementoBack2;
 
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
 
         //Colors
@@ -523,11 +537,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             m_innerColor = _palette.ColorTable.GripDark;
 
             // Ignore this color if the palette uses an Office2010-Renderer
-            if (_palette.GetRenderer() is RenderOffice2010 or RenderOffice2013 or RenderOffice365)
+            if (_palette.GetRenderer() is RenderOffice2010 or RenderOffice2013 or RenderMicrosoft365)
+            {
                 m_outerColor = Color.Transparent;
+            }
             else
+            {
                 m_outerColor = _palette.ColorTable.GripLight;
-
+            }
         }
 
     }

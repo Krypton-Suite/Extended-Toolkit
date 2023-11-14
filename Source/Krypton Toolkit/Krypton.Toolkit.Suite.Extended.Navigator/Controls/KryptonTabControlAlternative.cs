@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -19,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private static Font g_TabFontRegular;
         #endregion
 
-        private IPalette m_Palette;
+        private PaletteBase m_Palette;
         private IRenderer m_Renderer;
         private ViewLayoutContext m_ViewLayoutContext;
         private PaletteMode m_PaletteMode;
@@ -64,9 +83,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void RefreshPalette()
         {
             if (m_PaletteMode == PaletteMode.Global)
+            {
                 m_Palette = KryptonManager.CurrentGlobalPalette;
+            }
             else
+            {
                 m_Palette = KryptonManager.GetPaletteForMode(m_PaletteMode);
+            }
 
             m_Renderer = m_Palette.GetRenderer();
 
@@ -160,10 +183,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     for (int index = 0; index <= this.TabCount - 1; index++)
                     {
                         if (index != selectedIndex)
+                        {
                             this.PaintTab(index, renderContext);
+                        }
                     }
                     if (selectedIndex >= 0)
+                    {
                         this.PaintTab(selectedIndex, renderContext);
+                    }
                 }
             }
 
@@ -266,9 +293,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             if (m_TabFont == null || (!object.ReferenceEquals(m_TabFont, g_TabFontBold) & !object.ReferenceEquals(m_TabFont, g_TabFontRegular)))
             {
                 if (renderContext.Graphics.MeasureString(TabPages[index].Text, g_TabFontBold, tabRect.X, g_StringFormat).Width <= tabRect.Width)
+                {
                     m_TabFont = g_TabFontBold;
+                }
                 else
+                {
                     m_TabFont = g_TabFontRegular;
+                }
             }
 
             renderContext.Graphics.DrawString(TabPages[index].Text, m_TabFont, m_TabBrush, tabRect, g_StringFormat);
@@ -302,7 +333,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (this.Control.Dock == DockStyle.Fill)
+                {
                     return SelectionRules.Visible;
+                }
+
                 return base.SelectionRules;
             }
         }
@@ -331,7 +365,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_DesignerHost == null)
+                {
                     m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
+                }
+
                 return m_DesignerHost;
             }
         }
@@ -341,7 +378,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_SelectionService == null)
+                {
                     m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                }
+
                 return m_SelectionService;
             }
         }
@@ -365,7 +405,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 // Select tabcontrol when TabControl clicked outside of TabItem.
                 if (m.Result.ToInt32() == HTTRANSPARENT)
+                {
                     m.Result = (IntPtr)HTCLIENT;
+                }
             }
 
         }
@@ -407,8 +449,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 Marshal.FreeHGlobal(lparam);
 
                 if (m.Result.ToInt32() != -1)
+                {
                     return hti.flags != TabControlHitTest.TCHT_NOWHERE;
-
+                }
             }
 
             return false;
@@ -461,7 +504,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         public void RemoveTab()
         {
-            if (this.KryptonTabControl.SelectedTab == null) return;
+            if (this.KryptonTabControl.SelectedTab == null)
+            {
+                return;
+            }
 
             TabPage page = this.KryptonTabControl.SelectedTab;
             DesignerHost.DestroyComponent(page);
@@ -497,9 +543,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private string GetDockStyleText()
         {
             if (this.KryptonTabControl.Dock == DockStyle.Fill)
+            {
                 return "Undock in parent container";
+            }
             else
+            {
                 return "Dock in parent container";
+            }
         }
 
         private void SetProperty(string propertyName, object value)
@@ -513,7 +563,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_DesignerHost == null)
+                {
                     m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
+                }
+
                 return m_DesignerHost;
             }
         }
@@ -523,7 +576,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             get
             {
                 if (m_SelectionService == null)
+                {
                     m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                }
+
                 return m_SelectionService;
             }
         }

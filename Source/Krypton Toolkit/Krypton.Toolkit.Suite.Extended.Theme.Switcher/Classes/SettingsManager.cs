@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -11,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
     public class SettingsManager
     {
         #region Variables
-        private Properties.Settings _settings = new Properties.Settings();
+        private Properties.Settings _settings = new();
         #endregion
 
         #region Constructor
@@ -24,29 +43,29 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #region Setters & Getters
         /// <summary>Sets the theme.</summary>
         /// <param name="value">The value.</param>
-        public void SetSelectedTheme(PaletteModeManager value) => _settings.SelectedTheme = value;
+        public void SetSelectedTheme(PaletteMode value) => _settings.SelectedTheme = value;
 
         /// <summary>Gets the theme.</summary>
         /// <returns>
         ///   <br />
         /// </returns>
-        public PaletteModeManager GetSelectedTheme() => _settings.SelectedTheme;
+        public PaletteMode GetSelectedTheme() => _settings.SelectedTheme;
 
         /// <summary>Sets the DarkTheme to the value of value.</summary>
         /// <param name="value">The desired value of DarkTheme.</param>
-        public void SetDarkTheme(PaletteModeManager value) => _settings.DarkTheme = value;
+        public void SetDarkTheme(PaletteMode value) => _settings.DarkTheme = value;
 
         /// <summary>Returns the value of the DarkTheme.</summary>
         /// <returns>The value of the DarkTheme.</returns>
-        public PaletteModeManager GetDarkTheme() => _settings.DarkTheme;
+        public PaletteMode GetDarkTheme() => _settings.DarkTheme;
 
         /// <summary>Sets the LightTheme to the value of value.</summary>
         /// <param name="value">The desired value of LightTheme.</param>
-        public void SetLightTheme(PaletteModeManager value) => _settings.LightTheme = value;
+        public void SetLightTheme(PaletteMode value) => _settings.LightTheme = value;
 
         /// <summary>Returns the value of the LightTheme.</summary>
         /// <returns>The value of the LightTheme.</returns>
-        public PaletteModeManager GetLightTheme() => _settings.LightTheme;
+        public PaletteMode GetLightTheme() => _settings.LightTheme;
 
         /// <summary>Sets the SelectedThemePaletteMode to the value of value.</summary>
         /// <param name="value">The desired value of SelectedThemePaletteMode.</param>
@@ -121,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         {
             if (askForConfirmation)
             {
-                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to save these settings?", "Save Settings", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to save these settings?", "Save Settings", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -138,7 +157,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         {
             if (askForConfirmation)
             {
-                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to reset the theme settings back to their defaults?", "Reset Theme Settings", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to reset the theme settings back to their defaults?", "Reset Theme Settings", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -152,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
                     SetAskMe(true);
 
-                    SetSelectedTheme(PaletteModeManager.Office365Blue);
+                    SetSelectedTheme(PaletteMode.Microsoft365Blue);
 
                     SaveSettings(true);
                 }
@@ -169,7 +188,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
                 SetAskMe(true);
 
-                SetSelectedTheme(PaletteModeManager.Office365Blue);
+                SetSelectedTheme(PaletteMode.Microsoft365Blue);
 
                 SaveSettings(false);
             }

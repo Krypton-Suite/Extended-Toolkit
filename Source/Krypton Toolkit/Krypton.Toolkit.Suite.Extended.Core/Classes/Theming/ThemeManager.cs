@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -13,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Variables
         private ArrayList _themeList;
         private AutoCompleteStringCollection _themeCollection;
-        private PaletteThemeSettingsManager _themeSettingsManager = new PaletteThemeSettingsManager();
+        private PaletteThemeSettingsManager _themeSettingsManager = new();
         #endregion
 
         public ThemeManager()
@@ -36,9 +56,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void InitialiseThemes()
         {
-            _themeCollection = new AutoCompleteStringCollection();
+            _themeCollection = new();
 
-            _themeList = new ArrayList();
+            _themeList = new();
 
             #region Autocomplete
             _themeCollection.Add("Professional System");
@@ -71,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             #endregion
 
             #region ArrayList
-            _themeList = new ArrayList();
+            _themeList = new();
 
             _themeList.Add("Professional System");
 
@@ -103,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             #endregion
         }
 
-        private void SetTheme(PaletteModeManager mode, KryptonManager manager)
+        private void SetTheme(PaletteMode mode, KryptonManager manager)
         {
             manager.GlobalPaletteMode = mode;
 
@@ -122,53 +142,53 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="mode">The mode.</param>
         /// <param name="manager">The manager.</param>
-        public static void SwitchTheme(PaletteModeManager mode, KryptonManager manager)
+        public static void SwitchTheme(PaletteMode mode, KryptonManager manager)
         {
-            ThemeManager themeManager = new ThemeManager();
+            ThemeManager themeManager = new();
 
             switch (mode)
             {
-                case PaletteModeManager.ProfessionalSystem:
-                    manager.GlobalPaletteMode = PaletteModeManager.ProfessionalSystem;
+                case PaletteMode.ProfessionalSystem:
+                    manager.GlobalPaletteMode = PaletteMode.ProfessionalSystem;
                     break;
-                case PaletteModeManager.ProfessionalOffice2003:
-                    manager.GlobalPaletteMode = PaletteModeManager.ProfessionalOffice2003;
+                case PaletteMode.ProfessionalOffice2003:
+                    manager.GlobalPaletteMode = PaletteMode.ProfessionalOffice2003;
                     break;
-                case PaletteModeManager.Office2007Blue:
-                    manager.GlobalPaletteMode = PaletteModeManager.Office2007Blue;
+                case PaletteMode.Office2007Blue:
+                    manager.GlobalPaletteMode = PaletteMode.Office2007Blue;
                     break;
-                case PaletteModeManager.Office2007Silver:
-                    manager.GlobalPaletteMode = PaletteModeManager.Office2007Silver;
+                case PaletteMode.Office2007Silver:
+                    manager.GlobalPaletteMode = PaletteMode.Office2007Silver;
                     break;
-                case PaletteModeManager.Office2007Black:
-                    manager.GlobalPaletteMode = PaletteModeManager.Office2007Black;
+                case PaletteMode.Office2007Black:
+                    manager.GlobalPaletteMode = PaletteMode.Office2007Black;
                     break;
-                case PaletteModeManager.Office2010Blue:
-                    manager.GlobalPaletteMode = PaletteModeManager.Office2010Blue;
+                case PaletteMode.Office2010Blue:
+                    manager.GlobalPaletteMode = PaletteMode.Office2010Blue;
                     break;
-                case PaletteModeManager.Office2010Silver:
-                    manager.GlobalPaletteMode = PaletteModeManager.Office2010Silver;
+                case PaletteMode.Office2010Silver:
+                    manager.GlobalPaletteMode = PaletteMode.Office2010Silver;
                     break;
-                case PaletteModeManager.Office2010Black:
-                    manager.GlobalPaletteMode = PaletteModeManager.Office2010Black;
+                case PaletteMode.Office2010Black:
+                    manager.GlobalPaletteMode = PaletteMode.Office2010Black;
                     break;
-                case PaletteModeManager.Office2013White:
-                    manager.GlobalPaletteMode = PaletteModeManager.Office2013White;
+                case PaletteMode.Office2013White:
+                    manager.GlobalPaletteMode = PaletteMode.Office2013White;
                     break;
-                case PaletteModeManager.SparkleBlue:
-                    manager.GlobalPaletteMode = PaletteModeManager.SparkleBlue;
+                case PaletteMode.SparkleBlue:
+                    manager.GlobalPaletteMode = PaletteMode.SparkleBlue;
                     break;
-                case PaletteModeManager.SparkleOrange:
-                    manager.GlobalPaletteMode = PaletteModeManager.SparkleOrange;
+                case PaletteMode.SparkleOrange:
+                    manager.GlobalPaletteMode = PaletteMode.SparkleOrange;
                     break;
-                case PaletteModeManager.SparklePurple:
-                    manager.GlobalPaletteMode = PaletteModeManager.SparklePurple;
+                case PaletteMode.SparklePurple:
+                    manager.GlobalPaletteMode = PaletteMode.SparklePurple;
                     break;
-                case PaletteModeManager.Custom:
-                    manager.GlobalPaletteMode = PaletteModeManager.Custom;
+                case PaletteMode.Custom:
+                    manager.GlobalPaletteMode = PaletteMode.Custom;
                     break;
                 default:
-                    manager.GlobalPaletteMode = PaletteModeManager.Office2010Blue;
+                    manager.GlobalPaletteMode = PaletteMode.Office2010Blue;
                     break;
             }
 
@@ -181,13 +201,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="manager">The manager.</param>
         /// <param name="palette">The palette.</param>
         /// <param name="paletteFileName">Name of the palette file.</param>
-        public static void SetCustomTheme(KryptonManager manager, KryptonPalette palette, string paletteFileName)
+        public static void SetCustomTheme(KryptonManager manager, KryptonCustomPaletteBase palette, string paletteFileName)
         {
-            PaletteThemeSettingsManager paletteThemeSettingsManager = new PaletteThemeSettingsManager();
+            PaletteThemeSettingsManager paletteThemeSettingsManager = new();
 
-            ThemeManager themeManager = new ThemeManager();
+            ThemeManager themeManager = new();
 
-            themeManager.SetTheme(PaletteModeManager.Custom, manager);
+            themeManager.SetTheme(PaletteMode.Custom, manager);
 
             palette.Import(paletteFileName);
 

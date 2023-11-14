@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -25,12 +44,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public readonly HLine HorizontalLine = new();
 
-        public readonly VLine VerticalLine = new();
+        public readonly VLine? VerticalLine = new();
 
         /// <summary>
         /// X position (axis units) of the vertical line
         /// </summary>
-        public double X { get => VerticalLine.X; set => VerticalLine.X = value; }
+        public double X { get => VerticalLine!.X; set => VerticalLine!.X = value; }
 
         /// <summary>
         /// X position (axis units) of the horizontal line
@@ -45,7 +64,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 HorizontalLine.LineStyle = value;
-                VerticalLine.LineStyle = value;
+                if (VerticalLine != null)
+                {
+                    VerticalLine.LineStyle = value;
+                }
             }
             [Obsolete("The get method only remain for the compatibility. Get HorizontalLine.LineStyle and VerticalLine.LineStyle instead.")]
             get => HorizontalLine.LineStyle;
@@ -59,7 +81,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 HorizontalLine.LineWidth = value;
-                VerticalLine.LineWidth = value;
+                if (VerticalLine != null)
+                {
+                    VerticalLine.LineWidth = value;
+                }
             }
             [Obsolete("The get method only remain for the compatibility. Get HorizontalLine.LineWidth and VerticalLine.LineWidth instead.")]
             get => HorizontalLine.LineWidth;
@@ -73,7 +98,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 HorizontalLine.PositionLabelFont = value;
-                VerticalLine.PositionLabelFont = value;
+                if (VerticalLine != null)
+                {
+                    VerticalLine.PositionLabelFont = value;
+                }
             }
             [Obsolete("The get method only remain for the compatibility. Get HorizontalLine.PositionLabelFont and VerticalLine.PositionLabelFont instead.")]
             get => HorizontalLine.PositionLabelFont;
@@ -87,7 +115,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 HorizontalLine.PositionLabelBackground = value;
-                VerticalLine.PositionLabelBackground = value;
+                if (VerticalLine != null)
+                {
+                    VerticalLine.PositionLabelBackground = value;
+                }
             }
             [Obsolete("The get method only remain for the compatibility. Get HorizontalLine.PositionLabelBackground and VerticalLine.PositionLabelBackground instead.")]
             get => HorizontalLine.PositionLabelBackground;
@@ -101,7 +132,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 HorizontalLine.PositionLabel = value;
-                VerticalLine.PositionLabel = value;
+                if (VerticalLine != null)
+                {
+                    VerticalLine.PositionLabel = value;
+                }
             }
         }
 
@@ -113,9 +147,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 HorizontalLine.Color = value;
-                VerticalLine.Color = value;
+                if (VerticalLine != null)
+                {
+                    VerticalLine.Color = value;
+                }
                 HorizontalLine.PositionLabelBackground = value;
-                VerticalLine.PositionLabelBackground = value;
+                if (VerticalLine != null)
+                {
+                    VerticalLine.PositionLabelBackground = value;
+                }
             }
         }
 
@@ -129,89 +169,95 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public AxisLimits GetAxisLimits() => new(double.NaN, double.NaN, double.NaN, double.NaN);
 
-        public LegendItem[] GetLegendItems() => null;
+        public LegendItem[]? GetLegendItems() => null;
 
         public void ValidateData(bool deep = false) { }
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             HorizontalLine.Render(dims, bmp, lowQuality);
-            VerticalLine.Render(dims, bmp, lowQuality);
+            VerticalLine?.Render(dims, bmp, lowQuality);
         }
 
         [Obsolete("Use VerticalLine.PositionFormatter()")]
         public bool IsDateTimeX
         {
-            get => isDateTimeX;
+            get => _isDateTimeX;
             set
             {
-                isDateTimeX = value;
-                VerticalLine.PositionFormatter = value ?
-                    position => DateTime.FromOADate(position).ToString(stringFormatX) :
-                    position => position.ToString(stringFormatX);
+                _isDateTimeX = value;
+                if (VerticalLine != null)
+                {
+                    VerticalLine.PositionFormatter = value
+                        ? position => DateTime.FromOADate(position).ToString(_stringFormatX)
+                        : position => position.ToString(_stringFormatX);
+                }
             }
         }
 
         [Obsolete]
-        private bool isDateTimeX = false;
+        private bool _isDateTimeX;
 
         [Obsolete("Use VerticalLine.PositionFormatter()")]
         public string StringFormatX
         {
-            get => stringFormatX;
+            get => _stringFormatX;
             set
             {
-                stringFormatX = value;
-                VerticalLine.PositionFormatter = isDateTimeX ?
-                    position => DateTime.FromOADate(position).ToString(stringFormatX) :
-                    position => position.ToString(stringFormatX);
+                _stringFormatX = value;
+                if (VerticalLine != null)
+                {
+                    VerticalLine.PositionFormatter = _isDateTimeX ? position => DateTime.FromOADate(position).ToString(_stringFormatX) : position => position.ToString(_stringFormatX);
+                }
             }
         }
 
         [Obsolete]
-        private string stringFormatX = "F2";
+        private string _stringFormatX = "F2";
 
         [Obsolete("Use VerticalLine.IsVisible")]
         public bool IsVisibleX
         {
-            get => VerticalLine.IsVisible;
-            set => VerticalLine.IsVisible = value;
+            get => VerticalLine!.IsVisible;
+            set => VerticalLine!.IsVisible = value;
         }
 
         [Obsolete("Use HorizontalLine.PositionFormatter()")]
         public bool IsDateTimeY
         {
-            get => isDateTimeY;
+            get => _isDateTimeY;
             set
             {
-                isDateTimeY = value;
+                _isDateTimeY = value;
                 HorizontalLine.PositionFormatter = value ?
-                    position => DateTime.FromOADate(position).ToString(stringFormatY) :
-                    (position) => position.ToString(stringFormatY);
+                    position => DateTime.FromOADate(position).ToString(_stringFormatY) :
+                    (position) => position.ToString(_stringFormatY);
             }
         }
 
         [Obsolete]
-        private bool isDateTimeY = false;
+        private bool _isDateTimeY;
 
         [Obsolete("Use HorizontalLine.PositionFormat()")]
         public string StringFormatY
         {
-            get => stringFormatY;
+            get => _stringFormatY;
             set
             {
-                stringFormatY = value;
-                HorizontalLine.PositionFormatter = isDateTimeY ?
-                    position => DateTime.FromOADate(position).ToString(stringFormatY) :
-                    position => position.ToString(stringFormatY);
+                _stringFormatY = value;
+                HorizontalLine.PositionFormatter = _isDateTimeY ?
+                    position => DateTime.FromOADate(position).ToString(_stringFormatY) :
+                    position => position.ToString(_stringFormatY);
             }
         }
 
         [Obsolete]
-        private string stringFormatY = "F2";
+        private string _stringFormatY = "F2";
 
         [Obsolete("Use HorizontalLine.IsVisible")]
         public bool IsVisibleY

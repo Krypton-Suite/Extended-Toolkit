@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -26,120 +45,120 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.krtbErrorMessage = new Krypton.Toolkit.KryptonRichTextBox();
-            this.DefaultRightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveImageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.autoAxisMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.openInNewWindowMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.DefaultRightClickMenu.SuspendLayout();
-            this.SuspendLayout();
+            components = new Container();
+            pictureBox1 = new PictureBox();
+            krtbErrorMessage = new KryptonRichTextBox();
+            DefaultRightClickMenu = new ContextMenuStrip(components);
+            copyMenuItem = new ToolStripMenuItem();
+            saveImageMenuItem = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            autoAxisMenuItem = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
+            helpMenuItem = new ToolStripMenuItem();
+            toolStripSeparator3 = new ToolStripSeparator();
+            openInNewWindowMenuItem = new ToolStripMenuItem();
+            ((ISupportInitialize)(pictureBox1)).BeginInit();
+            DefaultRightClickMenu.SuspendLayout();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Navy;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(400, 300);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackColor = Color.Navy;
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(400, 300);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // krtbErrorMessage
             // 
-            this.krtbErrorMessage.Location = new System.Drawing.Point(21, 24);
-            this.krtbErrorMessage.Name = "krtbErrorMessage";
-            this.krtbErrorMessage.Size = new System.Drawing.Size(186, 84);
-            this.krtbErrorMessage.StateCommon.Back.Color1 = System.Drawing.Color.Maroon;
-            this.krtbErrorMessage.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.krtbErrorMessage.StateCommon.Content.Font = new System.Drawing.Font("Cascadia Code", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.krtbErrorMessage.TabIndex = 2;
-            this.krtbErrorMessage.Text = "Error Message";
+            krtbErrorMessage.Location = new Point(21, 24);
+            krtbErrorMessage.Name = "krtbErrorMessage";
+            krtbErrorMessage.Size = new Size(186, 84);
+            krtbErrorMessage.StateCommon.Back.Color1 = Color.Maroon;
+            krtbErrorMessage.StateCommon.Content.Color1 = Color.White;
+            krtbErrorMessage.StateCommon.Content.Font = new System.Drawing.Font("Cascadia Code", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            krtbErrorMessage.TabIndex = 2;
+            krtbErrorMessage.Text = "Error Message";
             // 
             // DefaultRightClickMenu
             // 
-            this.DefaultRightClickMenu.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.DefaultRightClickMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.DefaultRightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyMenuItem,
-            this.saveImageMenuItem,
-            this.toolStripSeparator1,
-            this.autoAxisMenuItem,
-            this.toolStripSeparator2,
-            this.helpMenuItem,
-            this.toolStripSeparator3,
-            this.openInNewWindowMenuItem});
-            this.DefaultRightClickMenu.Name = "contextMenuStrip1";
-            this.DefaultRightClickMenu.Size = new System.Drawing.Size(191, 132);
+            DefaultRightClickMenu.Font = new System.Drawing.Font("Segoe UI", 9F);
+            DefaultRightClickMenu.ImageScalingSize = new Size(20, 20);
+            DefaultRightClickMenu.Items.AddRange(new ToolStripItem[] {
+            copyMenuItem,
+            saveImageMenuItem,
+            toolStripSeparator1,
+            autoAxisMenuItem,
+            toolStripSeparator2,
+            helpMenuItem,
+            toolStripSeparator3,
+            openInNewWindowMenuItem});
+            DefaultRightClickMenu.Name = "contextMenuStrip1";
+            DefaultRightClickMenu.Size = new Size(191, 132);
             // 
             // copyMenuItem
             // 
-            this.copyMenuItem.Name = "copyMenuItem";
-            this.copyMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.copyMenuItem.Text = "Copy Image";
-            this.copyMenuItem.Click += new System.EventHandler(this.copyMenuItem_Click);
+            copyMenuItem.Name = "copyMenuItem";
+            copyMenuItem.Size = new Size(190, 22);
+            copyMenuItem.Text = "Copy Image";
+            copyMenuItem.Click += new EventHandler(copyMenuItem_Click);
             // 
             // saveImageMenuItem
             // 
-            this.saveImageMenuItem.Name = "saveImageMenuItem";
-            this.saveImageMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.saveImageMenuItem.Text = "Save Image As...";
-            this.saveImageMenuItem.Click += new System.EventHandler(this.saveImageMenuItem_Click);
+            saveImageMenuItem.Name = "saveImageMenuItem";
+            saveImageMenuItem.Size = new Size(190, 22);
+            saveImageMenuItem.Text = "Save Image As...";
+            saveImageMenuItem.Click += new EventHandler(saveImageMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(187, 6);
             // 
             // autoAxisMenuItem
             // 
-            this.autoAxisMenuItem.Name = "autoAxisMenuItem";
-            this.autoAxisMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.autoAxisMenuItem.Text = "Zoom to Fit Data";
-            this.autoAxisMenuItem.Click += new System.EventHandler(this.autoAxisMenuItem_Click);
+            autoAxisMenuItem.Name = "autoAxisMenuItem";
+            autoAxisMenuItem.Size = new Size(190, 22);
+            autoAxisMenuItem.Text = "Zoom to Fit Data";
+            autoAxisMenuItem.Click += new EventHandler(autoAxisMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(187, 6);
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(187, 6);
             // 
             // helpMenuItem
             // 
-            this.helpMenuItem.Name = "helpMenuItem";
-            this.helpMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.helpMenuItem.Text = "Help";
-            this.helpMenuItem.Click += new System.EventHandler(this.helpMenuItem_Click);
+            helpMenuItem.Name = "helpMenuItem";
+            helpMenuItem.Size = new Size(190, 22);
+            helpMenuItem.Text = "Help";
+            helpMenuItem.Click += new EventHandler(helpMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(187, 6);
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(187, 6);
             // 
             // openInNewWindowMenuItem
             // 
-            this.openInNewWindowMenuItem.Name = "openInNewWindowMenuItem";
-            this.openInNewWindowMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.openInNewWindowMenuItem.Text = "Open in New Window";
-            this.openInNewWindowMenuItem.Click += new System.EventHandler(this.openInNewWindowMenuItem_Click);
+            openInNewWindowMenuItem.Name = "openInNewWindowMenuItem";
+            openInNewWindowMenuItem.Size = new Size(190, 22);
+            openInNewWindowMenuItem.Text = "Open in New Window";
+            openInNewWindowMenuItem.Click += new EventHandler(openInNewWindowMenuItem_Click);
             // 
             // FormsPlot
             // 
-            this.Controls.Add(this.krtbErrorMessage);
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "FormsPlot";
-            this.Size = new System.Drawing.Size(400, 300);
-            this.Load += new System.EventHandler(this.FormsPlot_Load);
-            this.SizeChanged += new System.EventHandler(this.OnSizeChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.DefaultRightClickMenu.ResumeLayout(false);
-            this.ResumeLayout(false);
+            Controls.Add(krtbErrorMessage);
+            Controls.Add(pictureBox1);
+            Name = "FormsPlot";
+            Size = new Size(400, 300);
+            Load += new EventHandler(FormsPlot_Load);
+            SizeChanged += new EventHandler(OnSizeChanged);
+            ((ISupportInitialize)(pictureBox1)).EndInit();
+            DefaultRightClickMenu.ResumeLayout(false);
+            ResumeLayout(false);
 
         }
         #endregion
@@ -156,7 +175,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// This object can be used to modify advanced behaior and customization of this user control.
         /// </summary>
         public readonly Configuration Configuration;
-      
+
         private readonly ControlBackEnd Backend;
         private readonly Dictionary<Cursor, System.Windows.Forms.Cursor> Cursors;
         private readonly bool IsDesignerMode = Process.GetCurrentProcess().ProcessName == "devenv";
@@ -236,7 +255,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     Configuration.WarnIfRenderNotCalledManually = false;
 
                     Plot.Title($"ScottPlot {Plot.Version}");
-                    
+
                     Plot.Render();
                 }
                 catch (Exception e)
@@ -249,11 +268,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
                     krtbErrorMessage.Dock = DockStyle.Fill;
 
-                    krtbErrorMessage.Text = "ERROR: ScottPlot failed to render in design mode.\n\n" +
-                                            "This may be due to incompatible System.Drawing.Common versions or a 32-bit/64-bit mismatch.\n\n" +
-                                            "Although rendering failed at design time, it may still function normally at runtime.\n\n" +
-                                            $"Exception details:\n{e}";
-                    
+                    krtbErrorMessage.Text =
+                        $@"ERROR: ScottPlot failed to render in design mode.\n\nThis may be due to incompatible System.Drawing.Common versions or a 32-bit/64-bit mismatch.\n\nAlthough rendering failed at design time, it may still function normally at runtime.\n\nException details:\n{e}";
+
                     return;
                 }
             }
@@ -264,19 +281,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 [ScottPlot.Cursor.WE] = System.Windows.Forms.Cursors.SizeWE,
                 [ScottPlot.Cursor.NS] = System.Windows.Forms.Cursors.SizeNS,
                 [ScottPlot.Cursor.All] = System.Windows.Forms.Cursors.SizeAll,
-                [ScottPlot.Cursor.Crosshair] = System.Windows.Forms.Cursors.Cross,
+                [ScottPlot.Cursor.CrossHair] = System.Windows.Forms.Cursors.Cross,
                 [ScottPlot.Cursor.Hand] = System.Windows.Forms.Cursors.Hand,
                 [ScottPlot.Cursor.Question] = System.Windows.Forms.Cursors.Help,
             };
-            
+
             InitializeComponent();
 
             krtbErrorMessage.Visible = false;
 
             pictureBox1.BackColor = Color.Transparent;
-            
+
             BackColor = Color.Transparent;
-            
+
             Plot.Style(BackColor);
 
             pictureBox1.MouseWheel += PictureBox1_MouseWheel;
@@ -421,9 +438,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         private void Backend_BitmapUpdated(object sender, EventArgs e)
         {
-           Application.DoEvents();
+            Application.DoEvents();
 
-           pictureBox1.Invalidate();
+            pictureBox1.Invalidate();
         }
 
         private void OnSizeChanged(object sender, EventArgs e) => Backend.Resize(Width, Height, true);
@@ -475,7 +492,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             };
 
             if (sfd.ShowDialog() == DialogResult.OK)
+            {
                 Plot.SaveFig(sfd.FileName);
+            }
         }
 
         private void autoAxisMenuItem_Click(object sender, EventArgs e)

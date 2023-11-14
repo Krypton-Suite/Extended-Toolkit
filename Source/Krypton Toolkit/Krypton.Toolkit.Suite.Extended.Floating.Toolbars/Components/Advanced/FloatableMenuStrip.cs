@@ -1,11 +1,32 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8602, CS0414, CS8622
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     [ToolboxBitmap(typeof(FloatableMenuStrip), "ToolboxBitmaps.FloatableToolStrip.bmp")]
@@ -15,20 +36,20 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         private bool _aboutToFloat = false, _isFloating = false, _parentChanged = false, _showFloatingWindowControlBox;
 
-        private MenuStripContainerWindow _menuStripContainerWindow;
+        private MenuStripContainerWindow? _menuStripContainerWindow;
 
-        private FloatingContainerForm _floatingContainer;
+        private readonly FloatingContainerForm? _floatingContainer = null;
 
-        private Control _originalParent = null;
+        private Control? _originalParent = null;
 
-        private List<MenuStripPanelExtened> _menuStripPanelExtenedList = new List<MenuStripPanelExtened>();
+        private List<MenuStripPanelExtended>? _menuStripPanelExtendedList = new();
 
         private string _floatingWindowText;
 
         #endregion
 
         #region Properties
-        internal Control OriginalParent => _originalParent;
+        internal Control? OriginalParent => _originalParent;
 
         /// <summary>
         /// Gets or sets the tool strip panel extened list.
@@ -37,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         /// The tool strip panel extened list.
         /// </value>
         [Editor(typeof(MenuStripPanelCollectionEditor), typeof(UITypeEditor)), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<MenuStripPanelExtened> MenuStripPanelExtenedList { get => _menuStripPanelExtenedList; set => _menuStripPanelExtenedList = value; }
+        public List<MenuStripPanelExtended>? MenuStripPanelExtenedList { get => _menuStripPanelExtendedList; set => _menuStripPanelExtendedList = value; }
 
         /// <summary>
         /// Gets a value indicating whether this instance is floating.
@@ -143,34 +164,37 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                 return;
             }
 
-            Point p0 = PointToScreen(mea.Location), p1 = _originalParent.PointToClient(p0);
-
-            if (_aboutToFloat && !_originalParent.ClientRectangle.Contains(p1))
+            if (_originalParent != null)
             {
-                if (_menuStripContainerWindow == null)
+                Point p0 = PointToScreen(mea.Location), p1 = _originalParent.PointToClient(p0);
+
+                if (_aboutToFloat && !_originalParent.ClientRectangle.Contains(p1))
                 {
-                    _menuStripContainerWindow = new MenuStripContainerWindow();
+                    if (_menuStripContainerWindow == null)
+                    {
+                        _menuStripContainerWindow = new MenuStripContainerWindow();
 
-                    _menuStripContainerWindow.Text = FloatingWindowText;
+                        _menuStripContainerWindow.Text = FloatingWindowText;
 
-                    _menuStripContainerWindow.NCLBUTTONDBLCLK += _menuStripContainerWindow_NCLBUTTONDBLCLK;
+                        _menuStripContainerWindow.NCLBUTTONDBLCLK += _menuStripContainerWindow_NCLBUTTONDBLCLK;
 
-                    _menuStripContainerWindow.LocationChanged += _menuStripContainerWindow_LocationChanged;
+                        _menuStripContainerWindow.LocationChanged += _menuStripContainerWindow_LocationChanged;
 
-                    _menuStripContainerWindow.FormClosing += _menuStripContainerWindow_FormClosing;
+                        _menuStripContainerWindow.FormClosing += _menuStripContainerWindow_FormClosing;
+                    }
+
+                    _originalParent.Controls.Remove(this);
+
+                    _menuStripContainerWindow.FloatableMenuStrip = this;
+
+                    _menuStripContainerWindow.Location = p0;
+
+                    _menuStripContainerWindow.Show(Parent.Parent);
+
+                    _aboutToFloat = false;
+
+                    _isFloating = true;
                 }
-
-                _originalParent.Controls.Remove(this);
-
-                _menuStripContainerWindow.FloatableMenuStrip = this;
-
-                _menuStripContainerWindow.Location = p0;
-
-                _menuStripContainerWindow.Show(Parent.Parent);
-
-                _aboutToFloat = false;
-
-                _isFloating = true;
             }
         }
         #endregion
@@ -199,7 +223,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
             GetCursorPos(out point);
 
-            foreach (MenuStripPanelExtened item in _menuStripPanelExtenedList)
+            foreach (MenuStripPanelExtended item in _menuStripPanelExtendedList)
             {
                 if (item.ActiveRectangle.Contains(item.PointToClient(point)))
                 {

@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -18,10 +37,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static (double min, double max, double sum) MinMaxSum(double[] values)
         {
             if (values is null)
+            {
                 throw new ArgumentNullException(nameof(values));
+            }
 
             if (values.Length == 0)
+            {
                 throw new ArgumentException("input cannot be empty");
+            }
 
             double min = double.MaxValue;
             double max = double.MinValue;
@@ -72,7 +95,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double sum = 0;
             for (int i = 0; i < values.Length; i++)
+            {
                 sum += values[i];
+            }
+
             double mean = sum / values.Length;
             return mean;
         }
@@ -83,7 +109,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double NthOrderStatistic(double[] values, int n)
         {
             if (n < 1 || n > values.Length)
+            {
                 throw new ArgumentException("n must be a number from 1 to the length of the array");
+            }
 
             double[] valuesCopy = new double[values.Length];
             Array.Copy(values, valuesCopy, values.Length);
@@ -96,11 +124,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double Quantile(double[] values, int n, int quantileCount)
         {
             if (n == 0)
+            {
                 return values.Min();
+            }
             else if (n == quantileCount)
+            {
                 return values.Max();
+            }
             else
+            {
                 return NthOrderStatistic(values, n * values.Length / quantileCount);
+            }
         }
 
         /// <summary>
@@ -126,9 +160,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static double Percentile(double[] values, double percentile)
         {
             if (percentile == 0)
+            {
                 return values.Min();
+            }
             else if (percentile == 100)
+            {
                 return values.Max();
+            }
+
             int percentileIndex = (int)(percentile / 100.0 * (values.Length - 1));
 
             double[] copiedValues = new double[values.Length];
@@ -174,7 +213,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
              */
 
             if (leftIndex == rightIndex)
+            {
                 return values[leftIndex];
+            }
 
             if (k == 0)
             {
@@ -208,11 +249,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             int pivotIndex = partitionIndex - leftIndex;
 
             if (k == pivotIndex)
+            {
                 return values[partitionIndex];
+            }
             else if (k < pivotIndex)
+            {
                 return QuickSelect(values, leftIndex, partitionIndex - 1, k);
+            }
             else
+            {
                 return QuickSelect(values, partitionIndex + 1, rightIndex, k - pivotIndex - 1);
+            }
         }
 
         /// <summary>
@@ -295,9 +342,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 #pragma warning restore CS8629 // Nullable value type may be null.
             double sum = ys.Sum();
             if (percent)
+            {
                 sum /= 100;
+            }
+
             for (int i = 0; i < ys.Length; i++)
+            {
                 ys[i] /= sum;
+            }
+
             return ys;
         }
 
@@ -354,16 +407,23 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 var stats = new BasicStats(values);
                 if (double.IsNaN(min))
+                {
                     min = stats.Min;
+                }
+
                 if (double.IsNaN(max))
+                {
                     max = stats.Max;
+                }
             }
 
             // create evenly sized bins
             double binWidth = (max - min) / binCount;
             double[] binEdges = new double[binCount + 1];
             for (int i = 0; i < binEdges.Length; i++)
+            {
                 binEdges[i] = min + binWidth * i;
+            }
 
             // place values in histogram
             double[] hist = new double[binCount];
@@ -390,7 +450,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 double binScale = hist.Sum() * binWidth;
                 for (int i = 0; i < hist.Length; i++)
+                {
                     hist[i] /= binScale;
+                }
             }
 
             return (hist, binEdges);

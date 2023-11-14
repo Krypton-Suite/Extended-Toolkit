@@ -8,7 +8,7 @@
 <!-- End Document Outline -->
 
 # `ExtendedButtons`
-![](Buttons.png)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/Buttons.png?raw=true)
 
 ## Things of note in the picture
 - x2 Command link style buttons

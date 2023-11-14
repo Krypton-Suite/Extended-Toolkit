@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -124,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Add a bar plot (values +/- errors) using defined positions
         /// </summary>
-        public BarPlot AddBar(double[] values, double[] errors, double[] positions, Color? color = null)
+        public BarPlot AddBar(double[] values, double[]? errors, double[] positions, Color? color = null)
         {
             var plottable = new BarPlot(positions, values, errors, null)
             {
@@ -141,14 +160,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public BarPlot[] AddBarGroups(string[] groupLabels, string[] seriesLabels, double[][] ys, double[][] yErr)
         {
             if (groupLabels is null || seriesLabels is null || ys is null)
+            {
                 throw new ArgumentException("labels and ys cannot be null");
+            }
 
             if (seriesLabels.Length != ys.Length)
+            {
                 throw new ArgumentException("groupLabels and ys must be the same length");
+            }
 
             foreach (double[] subArray in ys)
+            {
                 if (subArray.Length != groupLabels.Length)
+                {
                     throw new ArgumentException("all arrays inside ys must be the same length as groupLabels");
+                }
+            }
 
             double groupWidthFraction = 0.8;
             double barWidthFraction = 0.8;
@@ -161,7 +188,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             for (int i = 0; i < seriesCount; i++)
             {
                 double[] barYs = ys[i];
-                double[] barYerr = yErr?[i];
+                double[]? barYerr = yErr?[i];
                 double[] barXs = DataGen.Consecutive(barYs.Length);
                 containsNegativeY |= barYs.Where(y => y < 0).Any();
                 var bar = new BarPlot(barXs, barYs, barYerr, null)
@@ -177,7 +204,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (containsNegativeY)
+            {
                 AxisAuto();
+            }
 
             double[] groupPositions = DataGen.Consecutive(groupLabels.Length, offset: (groupWidthFraction - barWidth) / 2);
             XTicks(groupPositions, groupLabels);
@@ -228,7 +257,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="colormap">Colormap to display in this colorbar</param>
         /// <param name="space">The size of the right axis will be set to this number of pixels to make room for the colorbar</param>
         /// <returns>the colorbar that was just created</returns>
-        public Colorbar AddColorbar(ColourMap colormap = null, int space = 100)
+        public Colorbar AddColourbar(ColourMap? colormap = null, int space = 100)
         {
             var cb = new Colorbar(colormap);
             Add(cb);
@@ -242,7 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <param name="heatmap">A heatmap-containing plottable to connect with this colorbar</param>
         /// <param name="space">The size of the right axis will be set to this number of pixels to make room for the colorbar</param>
         /// <returns>the colorbar that was just created</returns>
-        public Colorbar AddColorbar(IHasColormap heatmap, int space = 100)
+        public Colorbar AddColourbar(IHasColormap heatmap, int space = 100)
         {
             var cb = new Colorbar(heatmap);
             Add(cb);
@@ -377,7 +406,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Add(plottable);
 
             if (lockScales)
+            {
                 AxisScaleLock(true);
+            }
 
             return plottable;
         }
@@ -400,7 +431,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Add(plottable);
 
             if (lockScales)
+            {
                 AxisScaleLock(true);
+            }
 
             return plottable;
         }
@@ -616,7 +649,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Add a marker at a specific X/Y position.
         /// This method really creates a scatter plot with a single point.
         /// </summary>
-        public MarkerPlot AddMarker(double x, double y, MarkerShape shape = MarkerShape.FILLEDCIRCLE, double size = 10, Color? color = null, string label = null)
+        public MarkerPlot AddMarker(double x, double y, MarkerShape shape = MarkerShape.FilledCircle, double size = 10, Color? color = null, string label = null)
         {
             var plottable = new MarkerPlot()
             {
@@ -680,7 +713,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// The scatter plot that was created and added to the plot. 
         /// Interact with its public fields and methods to customize style and update data.
         /// </returns>
-        public MarkerPlot AddPoint(double x, double y, Color? color = null, float size = 5, MarkerShape shape = MarkerShape.FILLEDCIRCLE, string label = null)
+        public MarkerPlot AddPoint(double x, double y, Color? color = null, float size = 5, MarkerShape shape = MarkerShape.FilledCircle, string label = null)
         {
             var plottable = new MarkerPlot()
             {
@@ -751,7 +784,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public PopulationPlot AddPopulations(PopulationMultiSeries multiSeries)
         {
             for (int i = 0; i < multiSeries.multiSeries.Length; i++)
+            {
                 multiSeries.multiSeries[i].color = settings.PlottablePalette.GetColor(i);
+            }
 
             var plottable = new PopulationPlot(multiSeries);
             Add(plottable);
@@ -795,7 +830,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <returns>The radial gaugle plot that was just created and added to the plot</returns>
         public RadialGaugePlot AddRadialGauge(double[] values, bool disableFrameAndGrid = true)
         {
-            Color[] colors = Palette.GetColors(values.Length);
+            Color[]? colors = Palette.GetColors(values.Length);
             RadialGaugePlot plottable = new(values, colors);
             Add(plottable);
 
@@ -859,7 +894,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Color? color = null,
             float lineWidth = 1,
             float markerSize = 5,
-            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
+            MarkerShape markerShape = MarkerShape.FilledCircle,
             LineStyle lineStyle = LineStyle.Solid,
             string label = null)
         {
@@ -909,7 +944,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double[] ys,
             Color? color = null,
             float markerSize = 5,
-            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
+            MarkerShape markerShape = MarkerShape.FilledCircle,
             string label = null)
         {
             var plottable = new ScatterPlot(xs, ys, null, null)
@@ -954,7 +989,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             float lineWidth = 1,
             float markerSize = 5,
             string label = null,
-            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
+            MarkerShape markerShape = MarkerShape.FilledCircle,
             LineStyle lineStyle = LineStyle.Solid)
         {
             var spl = new ScatterPlotList()

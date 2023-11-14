@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -80,7 +99,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (var plottable in settings.Plottables)
             {
                 if (plottable.IsVisible == false)
+                {
                     continue;
+                }
 
                 plottable.ValidateData(deep: false);
 
@@ -213,23 +234,39 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             Bitmap bmp = Render(width: width ?? settings.Width, height: height ?? settings.Height, lowQuality, scale);
 
-            filePath = System.IO.Path.GetFullPath(filePath);
-            string fileFolder = System.IO.Path.GetDirectoryName(filePath);
-            if (!System.IO.Directory.Exists(fileFolder))
+            filePath = Path.GetFullPath(filePath);
+            string fileFolder = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(fileFolder))
+            {
                 throw new Exception($"ERROR: folder does not exist: {fileFolder}");
+            }
 
             ImageFormat imageFormat;
-            string extension = System.IO.Path.GetExtension(filePath).ToUpper();
-            if (extension == ".JPG" || extension == ".JPEG")
-                imageFormat = ImageFormat.Jpeg; // TODO: use jpgEncoder to set custom compression level
-            else if (extension == ".PNG")
-                imageFormat = ImageFormat.Png;
-            else if (extension == ".TIF" || extension == ".TIFF")
-                imageFormat = ImageFormat.Tiff;
-            else if (extension == ".BMP")
-                imageFormat = ImageFormat.Bmp;
-            else
-                throw new NotImplementedException("Extension not supported: " + extension);
+            string extension = Path.GetExtension(filePath).ToUpper();
+
+            switch (extension)
+            {
+                case @".JPG":
+                    imageFormat = ImageFormat.Jpeg;
+                    break;
+                case @".JPEG":
+                    imageFormat = ImageFormat.Jpeg;
+                    break;
+                case @".PNG":
+                    imageFormat = ImageFormat.Png;
+                    break;
+                case @".TIF":
+                    imageFormat = ImageFormat.Tiff;
+                    break;
+                case @".TIFF":
+                    imageFormat = ImageFormat.Tiff;
+                    break;
+                case @".BMP":
+                    imageFormat = ImageFormat.Bmp;
+                    break;
+                default:
+                    throw new NotImplementedException($"Extension not supported: {extension}");
+            }
 
             bmp.Save(filePath, imageFormat);
             return filePath;

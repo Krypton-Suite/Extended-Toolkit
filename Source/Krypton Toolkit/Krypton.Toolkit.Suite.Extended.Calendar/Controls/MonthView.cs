@@ -1,11 +1,33 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8602
+#pragma warning disable CS1584, CS1658, CS8765
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -53,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Fields
         private int _forwardMonthIndex;
-        private MonthViewDay _lastHitted;
+        private MonthViewDay? _lastHitted;
         private bool _mouseDown;
         private Size _daySize;
         private DateTime _selectionStart;
@@ -456,7 +478,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public MonthViewDay HitTest(Point p)
+        public MonthViewDay? HitTest(Point p)
         {
             for (int i = 0; i < Months.Length; i++)
             {
@@ -516,7 +538,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Sets the value of the <see cref=""/> property
         /// </summary>
-        /// <param name="bounds">Value indicating if button is selected</param>
+        /// <param name="selected">Value indicating if button is selected</param>
         private void SetForwardButtonSelected(bool selected)
         {
             _forwardButtonSelected = selected;
@@ -526,7 +548,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Sets the value of the <see cref=""/> property
         /// </summary>
-        /// <param name="bounds">Value indicating if button is selected</param>
+        /// <param name="selected">Value indicating if button is selected</param>
         private void SetBackwardButtonSelected(bool selected)
         {
             _backwardButtonSelected = selected;
@@ -581,7 +603,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 }
             }
 
-            if (!e.TextColour.IsEmpty && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(e.Text))
+            if (!e.TextColour.IsEmpty && !string.IsNullOrWhiteSpace(e.Text))
             {
                 TextRenderer.DrawText(e.Graphics, e.Text, e.Font != null ? e.Font : Font, e.Bounds, e.TextColour, e.TextFlags);
             }
@@ -686,7 +708,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             _mouseDown = true;
 
-            MonthViewDay day = HitTest(e.Location);
+            MonthViewDay? day = HitTest(e.Location);
 
             if (day != null)
             {
@@ -724,7 +746,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             if (_mouseDown)
             {
-                MonthViewDay day = HitTest(e.Location);
+                MonthViewDay? day = HitTest(e.Location);
 
                 if (day != null && day != _lastHitted)
                 {
@@ -848,9 +870,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     #endregion
 
                     #region Days
-                    foreach (MonthViewDay day in Months[i].Days)
+                    foreach (MonthViewDay? day in Months[i].Days)
                     {
-                        if (!day.Visible) continue;
+                        if (!day.Visible)
+                        {
+                            continue;
+                        }
 
                         MonthViewBoxEventArgs evtDay = new MonthViewBoxEventArgs(e.Graphics, day.Bounds, day.Date.Day.ToString(),
                             StringAlignment.Far,

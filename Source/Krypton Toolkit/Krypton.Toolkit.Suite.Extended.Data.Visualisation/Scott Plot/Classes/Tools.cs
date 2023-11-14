@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -13,7 +32,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static Color GetRandomColor(Random rand = null)
         {
             if (rand is null)
+            {
                 rand = new Random();
+            }
+
             Color randomColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
             return randomColor;
         }
@@ -38,9 +60,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             Version ver = typeof(Plot).Assembly.GetName().Version;
             if (justThreeDigits)
+            {
                 return $"{ver.Major}.{ver.Minor}.{ver.Build}";
+            }
             else
+            {
                 return ver.ToString();
+            }
         }
 
         public static string GetFrameworkVersionString()
@@ -51,11 +77,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static string BitmapHash(Bitmap bmp)
         {
             byte[] bmpBytes = BitmapToBytes(bmp);
-            var md5 = System.Security.Cryptography.MD5.Create();
+            var md5 = MD5.Create();
             StringBuilder hashString = new StringBuilder();
             byte[] hashBytes = md5.ComputeHash(bmpBytes);
             for (int i = 0; i < hashBytes.Length; i++)
+            {
                 hashString.Append(hashBytes[i].ToString("X2"));
+            }
+
             return hashString.ToString();
         }
 
@@ -106,18 +135,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (preceedWithPlus && !output.StartsWith("-"))
-                output = "+" + output;
+            {
+                output = $"+{output}";
+            }
 
             return output;
         }
 
-        public static void DesignerModeDemoPlot(ScottPlot.Plot plt)
+        public static void DesignerModeDemoPlot(Plot plt)
         {
             int pointCount = 101;
             double pointSpacing = .01;
-            double[] dataXs = ScottPlot.DataGen.Consecutive(pointCount, pointSpacing);
-            double[] dataSin = ScottPlot.DataGen.Sin(pointCount);
-            double[] dataCos = ScottPlot.DataGen.Cos(pointCount);
+            double[] dataXs = DataGen.Consecutive(pointCount, pointSpacing);
+            double[] dataSin = DataGen.Sin(pointCount);
+            double[] dataCos = DataGen.Cos(pointCount);
 
             plt.AddScatter(dataXs, dataSin);
             plt.AddScatter(dataXs, dataCos);
@@ -130,7 +161,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] positions = new double[dateTimeArray.Length];
             for (int i = 0; i < positions.Length; i++)
+            {
                 positions[i] = dateTimeArray[i].ToOADate();
+            }
+
             return positions;
         }
 
@@ -138,7 +172,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] dataOut = new double[dataIn.Length];
             for (int i = 0; i < dataIn.Length; i++)
+            {
                 dataOut[i] = Convert.ToDouble(dataIn[i]);
+            }
+
             return dataOut;
         }
 
@@ -161,17 +198,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double baselineSum = 0;
             for (int i = index1; i < index2; i++)
+            {
                 baselineSum += data[i];
+            }
+
             double baselineAverage = baselineSum / (index2 - index1);
             for (int i = 0; i < data.Length; i++)
+            {
                 data[i] -= baselineAverage;
+            }
         }
 
         public static double[] Log10(double[] dataIn)
         {
             double[] dataOut = new double[dataIn.Length];
             for (int i = 0; i < dataOut.Length; i++)
+            {
                 dataOut[i] = dataIn[i] > 0 ? Math.Log10(dataIn[i]) : 0;
+            }
+
             return dataOut;
         }
 
@@ -203,13 +248,21 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             catch
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
                     Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
                     Process.Start("xdg-open", url);
+                }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
                     Process.Start("open", url);
+                }
                 else
+                {
                     throw;
+                }
             }
         }
 
@@ -217,7 +270,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             double[] rounded = new double[data.Length];
             for (int i = 0; i < data.Length; i++)
+            {
                 rounded[i] = Math.Round(data[i], decimals);
+            }
+
             return rounded;
         }
 
@@ -250,14 +306,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             string name = "Unknown";
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
                 name = "Linux";
+            }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
                 name = "MacOS";
+            }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
                 name = "Windows";
+            }
 
             if (details)
-                name += $" ({System.Environment.OSVersion})";
+            {
+                name += $" ({Environment.OSVersion})";
+            }
 
             return name;
         }
@@ -267,7 +331,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             byte[] bytes = input.SelectMany(n => { return BitConverter.GetBytes(n); }).ToArray();
             int hash = 0;
             foreach (byte b in bytes)
+            {
                 hash = (hash * 31) ^ b;
+            }
+
             return hash;
         }
 
@@ -392,7 +459,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             if (number < 0)
             {
-                return "-" + ToDifferentBase(Math.Abs(number), radix, decimalPlaces, padInteger, dropTrailingZeroes, decimalSymbol);
+                return
+                    $"-{ToDifferentBase(Math.Abs(number), radix, decimalPlaces, padInteger, dropTrailingZeroes, decimalSymbol)}";
             }
             else if (number == 0)
             {
@@ -421,7 +489,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 if (number == radix && padInteger == 0)
                 {
-                    output = "10" + output;
+                    output = $"10{output}";
                 }
                 else
                 {
@@ -432,7 +500,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             while (output.Length < padInteger)
             {
-                output = "0" + output;
+                output = $"0{output}";
             }
 
             if (decimalLength != 0)

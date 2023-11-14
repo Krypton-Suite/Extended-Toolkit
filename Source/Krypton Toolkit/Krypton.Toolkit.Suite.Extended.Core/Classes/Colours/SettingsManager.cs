@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -28,34 +48,34 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public static void MergeAllColourSettings(bool usePrompt = false)
         {
             #region Variables
-            BasicColourSettingsManager basicPaletteColourManager = new BasicColourSettingsManager();
+            BasicColourSettingsManager basicPaletteColourManager = new();
 
-            CustomColourSettingsManager customPaletteColourManager = new CustomColourSettingsManager();
+            CustomColourSettingsManager customPaletteColourManager = new();
 
-            CustomTextColourSettingsManager customPaletteTextColourManager = new CustomTextColourSettingsManager();
+            CustomTextColourSettingsManager customPaletteTextColourManager = new();
 
-            LinkTextColourSettingsManager linkTextPaletteColourManager = new LinkTextColourSettingsManager();
+            LinkTextColourSettingsManager linkTextPaletteColourManager = new();
 
-            MiscellaneousColourSettingsManager miscellaneousPaletteColourManager = new MiscellaneousColourSettingsManager();
+            MiscellaneousColourSettingsManager miscellaneousPaletteColourManager = new();
 
-            StandardControlTextColourSettingsManager standardControlTextColourSettingsManager = new StandardControlTextColourSettingsManager();
+            StandardControlTextColourSettingsManager standardControlTextColourSettingsManager = new();
 
-            TextColourSettingsManager textPaletteColourManager = new TextColourSettingsManager();
+            TextColourSettingsManager textPaletteColourManager = new();
 
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
             #endregion
 
             try
             {
                 if (BasicColourSettingsManager.AreBasicPaletteColoursEmpty() || CustomColourSettingsManager.AreCustomPaletteColoursEmpty() || CustomTextColourSettingsManager.AreCustomPaletteTextColoursEmpty() || LinkTextColourSettingsManager.AreLinkTextPaletteColoursEmpty() || MiscellaneousColourSettingsManager.AreMiscellaneousPaletteColoursEmpty() || StandardControlTextColourSettingsManager.AreStandardControlTextColoursEmpty() || TextColourSettingsManager.AreTextPaletteColoursEmpty())
                 {
-                    KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", MessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
+                    KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
                 }
                 else
                 {
                     if (usePrompt)
                     {
-                        DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                        DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -194,7 +214,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc, icon: MessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
+                ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
             }
         }
 
@@ -232,20 +252,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public static void MergeAllColours(Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColour, Color alternativeNormalTextColour, Color normalTextColour, Color disabledTextColour, Color focusedTextColour, Color pressedTextColour, Color disabledControlColour, Color linkDisabledColour, Color linkFocusedColour, Color linkNormalColour, Color linkHoverColour, Color linkVisitedColour, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customColourSix, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color customTextColourSix, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour, bool usePrompt = false)
         {
             #region Variables
-            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new();
             #endregion
 
             try
             {
                 if (BasicColourSettingsManager.AreBasicPaletteColoursEmpty() || CustomColourSettingsManager.AreCustomPaletteColoursEmpty() || CustomTextColourSettingsManager.AreCustomPaletteTextColoursEmpty() || LinkTextColourSettingsManager.AreLinkTextPaletteColoursEmpty() || MiscellaneousColourSettingsManager.AreMiscellaneousPaletteColoursEmpty() || StandardControlTextColourSettingsManager.AreStandardControlTextColoursEmpty() || TextColourSettingsManager.AreTextPaletteColoursEmpty())
                 {
-                    KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", MessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
+                    KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
                 }
                 else
                 {
                     if (usePrompt)
                     {
-                        DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                        DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -388,7 +408,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc, icon: MessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
+                ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
             }
         }
         #endregion

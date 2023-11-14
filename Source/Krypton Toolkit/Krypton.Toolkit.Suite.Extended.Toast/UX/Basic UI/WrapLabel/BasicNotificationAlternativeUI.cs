@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -84,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="rightToLeftSupport">The right to left support.</param>
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
-                                              IconType iconType, string title, string contentText, 
+                                              IconType iconType, string title, string contentText,
                                               bool? showCloseButton,
                                               Image customImage = null, string dismissText = "&Dismiss",
                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
@@ -109,11 +128,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                               IconType iconType, string title, string contentText,
-                                              bool? showCloseButton, int seconds, 
-                                              Image customImage = null, string dismissText = "&Dismiss", 
+                                              bool? showCloseButton, int seconds,
+                                              Image customImage = null, string dismissText = "&Dismiss",
                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                               KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType,iconType, title, contentText, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
                    showCloseButton, customImage, dismissText,
                    rightToLeftSupport, actionButtonCommand) => Seconds = seconds;
 
@@ -132,12 +151,12 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                               IconType iconType, string title, string contentText,
-                                              bool? showCloseButton, int seconds, 
-                                              string soundPath, Image customImage = null, 
+                                              bool? showCloseButton, int seconds,
+                                              string soundPath, Image customImage = null,
                                               string dismissText = "&Dismiss",
                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                               KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType, iconType, title, contentText, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
                    showCloseButton, seconds, customImage, dismissText,
                    rightToLeftSupport, actionButtonCommand) => SoundPath = soundPath;
 
@@ -155,13 +174,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                               IconType iconType, string title, string contentText,
-                                              bool? showCloseButton, 
+                                              bool? showCloseButton,
                                               Stream soundStream, Image customImage = null,
                                               string dismissText = "&Dismiss",
                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                               KryptonCommand actionButtonCommand = null)
-            : this(actionButtonLocation, actionType, iconType, title, contentText, 
-                   showCloseButton, customImage, dismissText, 
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
+                   showCloseButton, customImage, dismissText,
                    rightToLeftSupport, actionButtonCommand) => SoundStream = soundStream;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationAlternativeUI" /> class.</summary>
@@ -179,8 +198,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                               IconType iconType, string title, string contentText,
-                                              bool? showCloseButton, int seconds, 
-                                              Stream soundStream, Image customImage = null, 
+                                              bool? showCloseButton, int seconds,
+                                              Stream soundStream, Image customImage = null,
                                               string dismissText = "&Dismiss",
                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
                                               KryptonCommand actionButtonCommand = null)
@@ -301,7 +320,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         private void SetWindowBorderStyle(FormBorderStyle borderStyle) => FormBorderStyle = borderStyle;
 
         private void SetupBaseUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
-                                 IconType iconType, string title, string contentText, 
+                                 IconType iconType, string title, string contentText,
                                  bool? showCloseButton, Image customImage,
                                  string dismissText, RightToLeftSupport? rightToLeftSupport,
                                  KryptonCommand actionButtonCommand)

@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -32,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary>
         /// Switches between CheckkBox or RadioButton style.
         /// </summary>
-        [RefreshProperties(RefreshProperties.Repaint), NotifyParentProperty(true), DefaultValue(CheckMarkDisplayStyle.RADIOBUTTON)]
+        [RefreshProperties(RefreshProperties.Repaint), NotifyParentProperty(true), DefaultValue(CheckMarkDisplayStyle.RadioButton)]
         public CheckMarkDisplayStyle DisplayStyle
         {
             set
@@ -58,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region Constructor
         public EnhancedToolStripMenuItem()
         {
-            DisplayStyle = CheckMarkDisplayStyle.RADIOBUTTON;
+            DisplayStyle = CheckMarkDisplayStyle.RadioButton;
 
             CheckOnClick = true;
         }
@@ -67,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region Overrides
         protected override void OnClick(EventArgs e)
         {
-            if ((DisplayStyle == CheckMarkDisplayStyle.RADIOBUTTON) && (CheckOnClick))
+            if ((DisplayStyle == CheckMarkDisplayStyle.RadioButton) && (CheckOnClick))
             {
                 ToolStrip toolStrip = GetCurrentParent();
 
@@ -77,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     {
                         EnhancedToolStripMenuItem menuItem = (EnhancedToolStripMenuItem)items;
 
-                        if ((menuItem.DisplayStyle == CheckMarkDisplayStyle.RADIOBUTTON) && (menuItem.CheckOnClick) && (menuItem.RadioButtonGroupName == RadioButtonGroupName))
+                        if ((menuItem.DisplayStyle == CheckMarkDisplayStyle.RadioButton) && (menuItem.CheckOnClick) && (menuItem.RadioButtonGroupName == RadioButtonGroupName))
                         {
                             menuItem.Checked = false;
                         }
@@ -93,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             base.OnPaint(e);
 
             //if CheckMarkDisplayStyle is equal RadioButton additional paining or radio button is needed
-            if ((DisplayStyle == CheckMarkDisplayStyle.RADIOBUTTON))
+            if ((DisplayStyle == CheckMarkDisplayStyle.RadioButton))
             {
                 //Find location of radio button
                 Size radioButtonSize = RadioButtonRenderer.GetGlyphSize(e.Graphics, RadioButtonState.CheckedNormal);
@@ -105,18 +124,28 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 if (Checked)
                 {
                     if (Pressed)
+                    {
                         state = RadioButtonState.CheckedPressed;
+                    }
                     else if (Selected)
+                    {
                         state = RadioButtonState.CheckedHot;
+                    }
                 }
                 else
                 {
                     if (Pressed)
+                    {
                         state = RadioButtonState.UncheckedPressed;
+                    }
                     else if (Selected)
+                    {
                         state = RadioButtonState.UncheckedHot;
+                    }
                     else
+                    {
                         state = RadioButtonState.UncheckedNormal;
+                    }
                 }
 
                 //Draw RadioButton in proper state (Checked/Unchecked; Hot/Normal/Pressed)

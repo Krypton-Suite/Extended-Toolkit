@@ -1,11 +1,33 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+// ReSharper disable AssignNullToNotNullAttribute
+#pragma warning disable CS8602
+#nullable enable
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     /// <summary>
@@ -76,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                 preferredSize = GetPreferredSize(g, InheritedStyle, RowIndex, new Size(0, 0));
             }
 
-            Image image = OwningNode.Image;
+            Image? image = OwningNode.Image;
 
             if (image != null)
             {
@@ -119,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         {
             get
             {
-                KryptonTreeGridNodeRow row = OwningNode;
+                KryptonTreeGridNodeRow? row = OwningNode;
                 return row?.Level ?? -1;
             }
         }
@@ -131,13 +153,13 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
 
-            KryptonTreeGridNodeRow node = OwningNode;
+            KryptonTreeGridNodeRow? node = OwningNode;
             if (node == null)
             {
                 return;
             }
 
-            Image image = node.Image;
+            Image? image = node.Image;
 
             if (_imageHeight == 0 && image != null)
             {
@@ -262,7 +284,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         {
             base.OnMouseUp(e);
 
-            KryptonTreeGridNodeRow node = OwningNode;
+            KryptonTreeGridNodeRow? node = OwningNode;
             if (node != null)
             {
                 node.Grid.InExpandCollapseMouseCapture = false;
@@ -278,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             {
                 // Expand the node
                 //TODO: Calculate more precise location
-                KryptonTreeGridNodeRow node = OwningNode;
+                KryptonTreeGridNodeRow? node = OwningNode;
                 if (node != null)
                 {
                     node.Grid.InExpandCollapseMouseCapture = true;
@@ -293,6 +315,6 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                 }
             }
         }
-        public KryptonTreeGridNodeRow OwningNode => OwningRow as KryptonTreeGridNodeRow;
+        public KryptonTreeGridNodeRow? OwningNode => OwningRow as KryptonTreeGridNodeRow;
     }
 }

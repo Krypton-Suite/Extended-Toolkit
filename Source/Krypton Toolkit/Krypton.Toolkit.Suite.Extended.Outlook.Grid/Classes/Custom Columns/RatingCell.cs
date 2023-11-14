@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             else
             {
-                return starImages[(int)value];
+                return _starImages[(int)value];
             }
         }
 
@@ -85,11 +85,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 if (starNumber != -1)
                 {
-                    cellImage = starHotImages[starNumber];
+                    cellImage = _starHotImages[starNumber];
                 }
             }
             //supress painting of selection 
-            base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, cellImage, errorText, cellStyle, advancedBorderStyle, (paintParts & ~DataGridViewPaintParts.SelectionBackground));
+            base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, cellImage, errorText, cellStyle, advancedBorderStyle, paintParts & ~DataGridViewPaintParts.SelectionBackground);
         }
 
         /// <summary>
@@ -135,27 +135,35 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         #region Private Implementation
 
-        static Image[] starImages;
-        static Image[] starHotImages;
-        const int IMAGEWIDTH = 58;
+        static Image[] _starImages;
+        static Image[] _starHotImages;
+        const int Imagewidth = 58;
 
         private int GetStarFromMouse(Rectangle cellBounds, Point mouseLocation)
         {
             if (cellBounds.Contains(mouseLocation))
             {
-                int mouseXRelativeToCell = (mouseLocation.X - cellBounds.X);
-                int imageXArea = (cellBounds.Width / 2) - (IMAGEWIDTH / 2);
-                if (((mouseXRelativeToCell + 4) < imageXArea) || (mouseXRelativeToCell >= (imageXArea + IMAGEWIDTH)))
+                int mouseXRelativeToCell = mouseLocation.X - cellBounds.X;
+                int imageXArea = cellBounds.Width / 2 - Imagewidth / 2;
+                if (mouseXRelativeToCell + 4 < imageXArea || mouseXRelativeToCell >= imageXArea + Imagewidth)
+                {
                     return -1;
+                }
                 else
                 {
-                    int oo = (int)Math.Round((((float)(mouseXRelativeToCell - imageXArea + 2) / (float)IMAGEWIDTH) * 10f), MidpointRounding.AwayFromZero);
-                    if (oo > 10 || oo < 0) System.Diagnostics.Debugger.Break();
+                    int oo = (int)Math.Round((float)(mouseXRelativeToCell - imageXArea + 2) / (float)Imagewidth * 10f, MidpointRounding.AwayFromZero);
+                    if (oo > 10 || oo < 0)
+                    {
+                        Debugger.Break();
+                    }
+
                     return oo;
                 }
             }
             else
+            {
                 return -1;
+            }
         }
 
         //setup star images 
@@ -163,15 +171,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         static RatingCell()
         {
-            starImages = new Image[11];
-            starHotImages = new Image[11];
+            _starImages = new Image[11];
+            _starHotImages = new Image[11];
             // load normal stars 
             for (int i = 0; i <= 10; i++)
-                starImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject("star" + i.ToString());
+                _starImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject($"star{i}");
 
             // load hot normal stars 
             for (int i = 0; i <= 10; i++)
-                starHotImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject("starhot" + i.ToString());
+                _starHotImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject($"starhot{i}");
         }
         #endregion
 

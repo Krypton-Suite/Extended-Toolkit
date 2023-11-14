@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -67,7 +86,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             Axis[] axes = Axes.Where(x => x.IsHorizontal && x.AxisIndex == xAxisIndex).ToArray();
             if (axes.Length == 0)
+            {
                 throw new InvalidOperationException($"There no X axes with an axis index of {xAxisIndex}");
+            }
+
             return axes[0];
         }
 
@@ -78,7 +100,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             Axis[] axes = Axes.Where(x => x.IsVertical && x.AxisIndex == yAxisIndex).ToArray();
             if (axes.Length == 0)
+            {
                 throw new InvalidOperationException($"There no Y axes with an axis index of {yAxisIndex}");
+            }
+
             return axes[0];
         }
 
@@ -166,7 +191,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Resize(float width, float height)
         {
             foreach (Axis axis in Axes)
+            {
                 axis.Dims.Resize(axis.IsHorizontal ? width : height);
+            }
         }
 
         /// <summary>
@@ -175,7 +202,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ResetAxisLimits()
         {
             foreach (Axis axis in Axes)
+            {
                 axis.Dims.ResetLimits();
+            }
         }
 
         /// <summary>
@@ -230,7 +259,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void AxesZoomPx(float xPx, float yPx, bool lockRatio = false)
         {
             if (lockRatio)
+            {
                 (xPx, yPx) = (Math.Max(xPx, yPx), Math.Max(xPx, yPx));
+            }
 
             foreach (Axis axis in Axes)
             {
@@ -355,7 +386,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             int[] xAxisIndexes = Axes.Where(x => x.IsHorizontal).Select(x => x.AxisIndex).Distinct().ToArray();
             foreach (int i in xAxisIndexes)
+            {
                 AxisAutoX(i, margin);
+            }
         }
 
         /// <summary>
@@ -365,7 +398,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             int[] yAxisIndexes = Axes.Where(x => x.IsVertical).Select(x => x.AxisIndex).Distinct().ToArray();
             foreach (int i in yAxisIndexes)
+            {
                 AxisAutoY(i, margin);
+            }
         }
 
         public void AxisAutoX(int xAxisIndex, double margin = .1)
@@ -384,13 +419,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (var limits in plottableLimits)
             {
                 if (!double.IsNaN(limits.XMin))
+                {
                     min = double.IsNaN(min) ? limits.XMin : Math.Min(min, limits.XMin);
+                }
+
                 if (!double.IsNaN(limits.XMax))
+                {
                     max = double.IsNaN(max) ? limits.XMax : Math.Max(max, limits.XMax);
+                }
             }
 
             if (double.IsNaN(min) && double.IsNaN(max))
+            {
                 return;
+            }
 
             var xAxis = GetXAxis(xAxisIndex);
             xAxis.Dims.SetAxis(min, max);
@@ -413,13 +455,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (var limits in plottableLimits)
             {
                 if (!double.IsNaN(limits.YMin))
+                {
                     min = double.IsNaN(min) ? limits.YMin : Math.Min(min, limits.YMin);
+                }
+
                 if (!double.IsNaN(limits.YMax))
+                {
                     max = double.IsNaN(max) ? limits.YMax : Math.Max(max, limits.YMax);
+                }
             }
 
             if (double.IsNaN(min) && double.IsNaN(max))
+            {
                 return;
+            }
 
             var yAxis = GetYAxis(yAxisIndex);
             yAxis.Dims.SetAxis(min, max);
@@ -433,7 +482,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             AxisAutoUnsetAxes();
             foreach (Axis axis in Axes)
+            {
                 axis.Dims.Remember();
+            }
         }
 
         /// <summary>
@@ -442,7 +493,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void RecallAxisLimits()
         {
             foreach (Axis axis in Axes)
+            {
                 axis.Dims.Recall();
+            }
         }
 
         public float MouseDownX { get; private set; }
@@ -509,9 +562,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (Axis axis in Axes)
             {
                 if (axis.IsHorizontal)
+                {
                     axis.Dims.Resize(Width, XAxis.Dims.DataSizePx, XAxis.Dims.DataOffsetPx);
+                }
                 else
+                {
                     axis.Dims.Resize(Height, YAxis.Dims.DataSizePx, YAxis.Dims.DataOffsetPx);
+                }
             }
         }
 
@@ -539,7 +596,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             // TODO: separate this into distinct X and Y functions (requires refactoring plottable interface)
             bool atLeastOneAxisIsZero = xAxisIndex == 0 || yAxisIndex == 0;
             if (!atLeastOneAxisIsZero)
+            {
                 throw new InvalidOperationException();
+            }
 
             // Adjust padding around the data area to accommodate title and tick labels.
             //
@@ -614,9 +673,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (Axis axis in Axes)
             {
                 if (axis.IsHorizontal)
+                {
                     axis.Dims.SetPadding(padLeft, padRight);
+                }
                 else
+                {
                     axis.Dims.SetPadding(padTop, padBottom);
+                }
             }
         }
     }

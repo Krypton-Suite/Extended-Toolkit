@@ -1,4 +1,4 @@
-﻿<!-- Start Document Outline -->
+<!-- Start Document Outline -->
 
 * [TreeGridView](#treegridview)
 	* [History](#history)
@@ -34,10 +34,10 @@ Then "Smurf-IV", picked it up and
 - and Created this read me ;-)
 
 ## Progmatic Creation
-![](TreeGidViewTheming.gif)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/TreeGidViewTheming.gif?raw=true)
 
 ## DataSource Creation
-![](TreeGridViewDaataSource.gif)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/TreeGridViewDataSource.gif?raw=true)
 
 ## Notes from the original Author
 ### Design
@@ -76,11 +76,11 @@ One thing that I had to deal with is that double-clicking a cell enters edit mod
 This is a special DataGridView cell that derives from the DataGridViewTextBoxCell. The main thing that this custom cell class does is to customize the cell drawing to make it look like a tree node. That means that it draws the node’s image and the +/- icons and the tree lines. The custom cell also is where a node detects when you click the mouse to expand or collapse a node. NOTE: A lot more work can be done to correctly detect that the mouse is directly over the +/- image. Right now I’m not doing that.
 
 #### TreeGridView 
-This class derives from the DataGridView control. Many things are done in this class. Nodes are sited/unsited in the grid as actual rows. Somce DataGridView Properties are hidden since they do not apply.
+This class derives from the DataGridView control. Many things are done in this class. Nodes are sited/unsited in the grid as actual rows. Some DataGridView Properties are hidden since they do not apply.
 
 ##### Here are some properties:
 
-    VirtualNodes – One of the common things done with a normal TreeView is to dynamically add child nodes when the user is expanding the parent. With the normal TreeView usres add temp child nodes to get the + sign and support expanding, then remove the temp node later. With the VirtualNodes property, the TreeGridView always displays a + sign next to a node, even if the node doesn’t have any children. Then, by handling the Expanding event you can dynamically add child nodes.
+    VirtualNodes – One of the common things done with a normal TreeView is to dynamically add child nodes when the user is expanding the parent. With the normal TreeView uses add temp child nodes to get the + sign and support expanding, then remove the temp node later. With the VirtualNodes property, the TreeGridView always displays a + sign next to a node, even if the node doesn’t have any children. Then, by handling the Expanding event you can dynamically add child nodes.
 
     ImageList – ImageList associated with the TreeGridView
 

@@ -1,4 +1,31 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿#region MIT License
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Toast
 {
     [ToolboxItem(false)]
     public class KryptonToastButton : KryptonButton
@@ -116,63 +143,63 @@
         /// <returns></returns>
         private KryptonButtonBuiltInDisplayString ReturnDisplayString(string buttonText)
         {
-            if (buttonText == KryptonManager.Strings.Abort)
+            if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Abort)
             {
                 return KryptonButtonBuiltInDisplayString.Abort;
             }
-            else if (buttonText == KryptonManager.Strings.Apply)
+            else if (buttonText == KryptonLanguageManager.CustomToolkitStrings.Apply)
             {
                 return KryptonButtonBuiltInDisplayString.Apply;
             }
-            else if (buttonText == KryptonManager.Strings.Cancel)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Cancel)
             {
                 return KryptonButtonBuiltInDisplayString.Cancel;
             }
-            else if (buttonText == KryptonManager.Strings.Close)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Close)
             {
                 return KryptonButtonBuiltInDisplayString.Close;
             }
-            else if (buttonText == KryptonManager.Strings.Collapse)
+            else if (buttonText == KryptonLanguageManager.CustomToolkitStrings.Collapse)
             {
                 return KryptonButtonBuiltInDisplayString.Collapse;
             }
-            else if (buttonText == KryptonManager.Strings.Continue)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Continue)
             {
                 return KryptonButtonBuiltInDisplayString.Continue;
             }
-            else if (buttonText == KryptonManager.Strings.Expand)
+            else if (buttonText == KryptonLanguageManager.CustomToolkitStrings.Expand)
             {
                 return KryptonButtonBuiltInDisplayString.Expand;
             }
-            else if (buttonText == KryptonManager.Strings.Help)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Help)
             {
                 return KryptonButtonBuiltInDisplayString.Help;
             }
-            else if (buttonText == KryptonManager.Strings.Ignore)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Ignore)
             {
                 return KryptonButtonBuiltInDisplayString.Ignore;
             }
-            else if (buttonText == KryptonManager.Strings.No)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.No)
             {
                 return KryptonButtonBuiltInDisplayString.No;
             }
-            else if (buttonText == KryptonManager.Strings.OK)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.OK)
             {
                 return KryptonButtonBuiltInDisplayString.Ok;
             }
-            else if (buttonText == KryptonManager.Strings.Retry)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Retry)
             {
                 return KryptonButtonBuiltInDisplayString.Retry;
             }
-            else if (buttonText == KryptonManager.Strings.Today)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Today)
             {
                 return KryptonButtonBuiltInDisplayString.Today;
             }
-            else if (buttonText == KryptonManager.Strings.TryAgain)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.TryAgain)
             {
                 return KryptonButtonBuiltInDisplayString.TryAgain;
             }
-            else if (buttonText == KryptonManager.Strings.Yes)
+            else if (buttonText == KryptonLanguageManager.GeneralToolkitStrings.Yes)
             {
                 return KryptonButtonBuiltInDisplayString.Yes;
             }

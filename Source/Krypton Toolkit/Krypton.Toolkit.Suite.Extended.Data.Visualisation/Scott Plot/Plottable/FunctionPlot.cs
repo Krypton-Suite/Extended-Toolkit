@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -69,10 +88,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     double? y = Function(x);
 
                     if (y is null)
+                    {
                         throw new NoNullAllowedException();
+                    }
 
                     if (double.IsNaN(y.Value) || double.IsInfinity(y.Value))
+                    {
                         throw new ArithmeticException("not a real number");
+                    }
 
                     xList.Add(x);
                     yList.Add(y.Value);
@@ -80,7 +103,6 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 catch (Exception e) //Domain error, such log(-1) or 1/0
                 {
                     Debug.WriteLine($"Y({x}) failed because {e}");
-                    continue;
                 }
             }
 
@@ -93,7 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 LineWidth = LineWidth,
                 MarkerSize = 0,
                 Label = Label,
-                MarkerShape = MarkerShape.NONE,
+                MarkerShape = MarkerShape.None,
                 LineStyle = LineStyle
             };
             scatter.Render(dims, bmp, lowQuality);
@@ -102,12 +124,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deepValidation = false)
         {
             if (Function is null)
+            {
                 throw new InvalidOperationException("function cannot be null");
+            }
         }
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottableFunction{label} displaying {PointCount} points";
         }
 
@@ -119,9 +143,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 color = Color,
                 lineStyle = LineStyle,
                 lineWidth = LineWidth,
-                markerShape = MarkerShape.NONE
+                markerShape = MarkerShape.None
             };
-            return new LegendItem[] { singleLegendItem };
+            return new[] { singleLegendItem };
         }
     }
 }

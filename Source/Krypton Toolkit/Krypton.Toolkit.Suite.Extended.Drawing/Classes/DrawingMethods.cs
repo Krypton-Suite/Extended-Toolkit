@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -52,7 +71,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                 g.FillRectangle(lb, rect);
             }
 
-            if (EnableBorder) g.DrawRectangle(new Pen(BorderColour, BorderSize), rect);
+            if (EnableBorder)
+            {
+                g.DrawRectangle(new Pen(BorderColour, BorderSize), rect);
+            }
         }
 
         public static void DrawStatusBlend(Graphics g, Rectangle rect, Color LightColor, Color DarkColor, float Angle)
@@ -102,15 +124,31 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
         public static void DrawBar(Graphics g, RectangleF rect, Color BaseColour, bool DrawBorder)
         {
             // Some calculations
-            if (rect.Height <= 0) rect.Height = 1;
+            if (rect.Height <= 0)
+            {
+                rect.Height = 1;
+            }
+
             int nAlphaStart = (int)(185 + 5 * rect.Width / 24),
                 nAlphaEnd = (int)(10 + 4 * rect.Width / 24);
 
-            if (nAlphaStart > 255) nAlphaStart = 255;
-            else if (nAlphaStart < 0) nAlphaStart = 0;
+            if (nAlphaStart > 255)
+            {
+                nAlphaStart = 255;
+            }
+            else if (nAlphaStart < 0)
+            {
+                nAlphaStart = 0;
+            }
 
-            if (nAlphaEnd > 255) nAlphaEnd = 255;
-            else if (nAlphaEnd < 0) nAlphaEnd = 0;
+            if (nAlphaEnd > 255)
+            {
+                nAlphaEnd = 255;
+            }
+            else if (nAlphaEnd < 0)
+            {
+                nAlphaEnd = 0;
+            }
 
 
             Color ColourBacklight = BaseColour;
@@ -140,22 +178,42 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             //gr.FillRectangle(new SolidBrush(Color.FromArgb(255, 0, 0, 0)), rectBar);
             g.FillRectangle(pgr, rect);
             g.FillRectangle(brGlow, rectGlow);
-            if (DrawBorder) g.DrawRectangle(new Pen(ColourBorder, 1), rect.Left, rect.Top, rect.Width, rect.Height);
+            if (DrawBorder)
+            {
+                g.DrawRectangle(new Pen(ColourBorder, 1), rect.Left, rect.Top, rect.Width, rect.Height);
+            }
+
             #endregion
         }
 
         public static void DrawColumn(Graphics g, RectangleF rect, Color BaseColour, bool DrawBorder)
         {
             // Some calculations
-            if (rect.Width <= 0) rect.Width = 1;
+            if (rect.Width <= 0)
+            {
+                rect.Width = 1;
+            }
+
             int nAlphaStart = (int)(185 + 5 * rect.Height / 24),
                 nAlphaEnd = (int)(10 + 4 * rect.Height / 24);
 
-            if (nAlphaStart > 255) nAlphaStart = 255;
-            else if (nAlphaStart < 0) nAlphaStart = 0;
+            if (nAlphaStart > 255)
+            {
+                nAlphaStart = 255;
+            }
+            else if (nAlphaStart < 0)
+            {
+                nAlphaStart = 0;
+            }
 
-            if (nAlphaEnd > 255) nAlphaEnd = 255;
-            else if (nAlphaEnd < 0) nAlphaEnd = 0;
+            if (nAlphaEnd > 255)
+            {
+                nAlphaEnd = 255;
+            }
+            else if (nAlphaEnd < 0)
+            {
+                nAlphaEnd = 0;
+            }
 
 
             Color ColorBacklight = BaseColour;
@@ -185,7 +243,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             //gr.FillRectangle(new SolidBrush(Color.FromArgb(255, 0, 0, 0)), rectBar);
             g.FillRectangle(pgr, rect);
             g.FillRectangle(brGlow, rectGlow);
-            if (DrawBorder) g.DrawRectangle(new Pen(ColorBorder, 1), rect.Left, rect.Top, rect.Width, rect.Height);
+            if (DrawBorder)
+            {
+                g.DrawRectangle(new Pen(ColorBorder, 1), rect.Left, rect.Top, rect.Width, rect.Height);
+            }
+
             #endregion
         }
 
@@ -741,7 +803,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
         public static void DrawListViewHeader(Graphics g, Rectangle rect, Color LightColor, Color DarkColor, float Angle)
         {
             //check on all whites
-            if (DarkColor == Color.White) DarkColor = Color.Snow;
+            if (DarkColor == Color.White)
+            {
+                DarkColor = Color.Snow;
+            }
 
             //fill the light part (top)
             using (Brush b = GetBrush(rect, LightColor, DarkColor, PaletteColourStyle.Default, Angle, VisualOrientation.Top, false))
@@ -762,9 +827,20 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             g = clr.G - 18;
             b = clr.B - 18;
 
-            if (r < 0) r = 0;
-            if (g < 0) g = 0;
-            if (b < 0) b = 0;
+            if (r < 0)
+            {
+                r = 0;
+            }
+
+            if (g < 0)
+            {
+                g = 0;
+            }
+
+            if (b < 0)
+            {
+                b = 0;
+            }
 
             c = Color.FromArgb(r, g, b);
             return c;
@@ -779,9 +855,20 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             g = clr.G - amount;
             b = clr.B - amount;
 
-            if (r < 0) r = 0;
-            if (g < 0) g = 0;
-            if (b < 0) b = 0;
+            if (r < 0)
+            {
+                r = 0;
+            }
+
+            if (g < 0)
+            {
+                g = 0;
+            }
+
+            if (b < 0)
+            {
+                b = 0;
+            }
 
             c = Color.FromArgb(r, g, b);
             return c;
@@ -796,9 +883,20 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             g = clr.G + amount;
             b = clr.B + amount;
 
-            if (r > 255) r = 255;
-            if (g > 255) g = 255;
-            if (b > 255) b = 255;
+            if (r > 255)
+            {
+                r = 255;
+            }
+
+            if (g > 255)
+            {
+                g = 255;
+            }
+
+            if (b > 255)
+            {
+                b = 255;
+            }
 
             c = Color.FromArgb(r, g, b);
             return c; // System.Windows.Forms.ControlPaint.Light(clr, 0.5F);
@@ -813,9 +911,20 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             g = clr.G + 18;
             b = clr.B + 18;
 
-            if (r > 255) r = 255;
-            if (g > 255) g = 255;
-            if (b > 255) b = 255;
+            if (r > 255)
+            {
+                r = 255;
+            }
+
+            if (g > 255)
+            {
+                g = 255;
+            }
+
+            if (b > 255)
+            {
+                b = 255;
+            }
 
             c = Color.FromArgb(r, g, b);
             return c; // System.Windows.Forms.ControlPaint.Light(clr, 0.5F);
@@ -840,13 +949,35 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             g = rgb.Green;
             b = rgb.Blue;
 
-            if (r > 255) r = 255;
-            if (g > 255) g = 255;
-            if (b > 255) b = 255;
+            if (r > 255)
+            {
+                r = 255;
+            }
 
-            if (r < 0) r = 0;
-            if (g < 0) g = 0;
-            if (b < 0) b = 0;
+            if (g > 255)
+            {
+                g = 255;
+            }
+
+            if (b > 255)
+            {
+                b = 255;
+            }
+
+            if (r < 0)
+            {
+                r = 0;
+            }
+
+            if (g < 0)
+            {
+                g = 0;
+            }
+
+            if (b < 0)
+            {
+                b = 0;
+            }
 
             c = Color.FromArgb(r, g, b);
 

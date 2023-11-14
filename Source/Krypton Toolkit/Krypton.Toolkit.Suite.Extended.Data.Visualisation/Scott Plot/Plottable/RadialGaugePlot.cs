@@ -1,14 +1,34 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
 // This plot type was inspired by MicroCharts:
 // https://github.com/dotnet-ad/Microcharts/blob/main/Sources/Microcharts/Charts/RadialGaugeChart.cs
 
+// ReSharper disable PossibleLossOfFraction
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
@@ -115,18 +135,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Style of the tip of the gauge
         /// </summary>
-        public System.Drawing.Drawing2D.LineCap EndCap { get; set; } = System.Drawing.Drawing2D.LineCap.Triangle;
+        public LineCap EndCap { get; set; } = LineCap.Triangle;
 
         /// <summary>
         /// Style of the base of the gauge
         /// </summary>
-        public System.Drawing.Drawing2D.LineCap StartCap { get; set; } = System.Drawing.Drawing2D.LineCap.Round;
+        public LineCap StartCap { get; set; } = LineCap.Round;
 
         public bool IsVisible { get; set; } = true;
         public int XAxisIndex { get; set; } = 0;
         public int YAxisIndex { get; set; } = 0;
 
-        public RadialGaugePlot(double[] levels, Color[] colors)
+        public RadialGaugePlot(double[] levels, Color[]? colors)
         {
             Update(levels, colors);
         }
@@ -136,16 +156,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Replace gauge levels with new ones.
         /// </summary>
-        public void Update(double[] levels, Color[] colors = null)
+        public void Update(double[] levels, Color[]? colors = null)
         {
             if (levels is null || levels.Length == 0)
+            {
                 throw new ArgumentException("values must not be null or empty");
+            }
 
             bool numberOfGroupsChanged = (Levels is null) || (levels.Length != Levels.Length);
             if (numberOfGroupsChanged)
             {
                 if (colors is null || colors.Length != levels.Length)
+                {
                     throw new ArgumentException("when changing the number of values a new colors array must be provided");
+                }
 
                 Colors = new Color[colors.Length];
                 Array.Copy(colors, 0, Colors, 0, colors.Length);
@@ -185,10 +209,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 double angleSwept = 0;
                 if (scaleRange > 0)
+                {
                     angleSwept = angleRange * values[i] / scaleRange;
+                }
 
                 if (!clockwise)
+                {
                     angleSwept *= -1;
+                }
 
                 double initialAngle = (mode == RadialGaugeMode.Stacked) ? angleStart : angleSum;
                 angleSum += angleSwept;
@@ -199,7 +227,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             double backOffset = angleRange * scaleMin / scaleRange;
             if (!clockwise)
+            {
                 backOffset *= -1;
+            }
 
             double backStartAngle = angleStart + backOffset;
 
@@ -209,26 +239,33 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (Colors.Length != GaugeCount)
+            {
                 throw new InvalidOperationException($"{nameof(Colors)} must be an array with length equal to number of values");
+            }
 
             if (Labels != null && Labels.Length != GaugeCount)
+            {
                 throw new InvalidOperationException($"If {nameof(Labels)} is not null, it must be the same length as the number of values");
+            }
 
             if (MaximumAngle < 0 || MaximumAngle > 360)
+            {
                 throw new InvalidOperationException($"{nameof(MaximumAngle)} must be [0-360]");
+            }
 
             if (LabelPositionFraction < 0 || LabelPositionFraction > 1)
+            {
                 throw new InvalidOperationException($"{nameof(LabelPositionFraction)} must be a value from 0 to 1");
+            }
 
             if (SpaceFraction < 0 || SpaceFraction > 1)
+            {
                 throw new InvalidOperationException($"{nameof(SpaceFraction)} must be from 0 to 1");
+            }
         }
 
         public LegendItem[] GetLegendItems()
         {
-            if (Labels is null)
-                return null;
-
             List<LegendItem> legendItems = new();
             for (int i = 0; i < Labels.Length; i++)
             {
@@ -237,7 +274,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     label = Labels[i],
                     color = Colors[i],
                     lineWidth = 10,
-                    markerShape = MarkerShape.NONE
+                    markerShape = MarkerShape.None
                 };
                 legendItems.Add(item);
             }
@@ -255,7 +292,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             ValidateData();
 
-            (double[] startAngles, double[] sweepAngles, double StartingAngleBackGauges) = GetGaugeAngles(
+            (double[] startAngles, double[] sweepAngles, double startingAngleBackGauges) = GetGaugeAngles(
                 values: Levels,
                 angleStart: StartingAngle,
                 angleRange: MaximumAngle,
@@ -298,7 +335,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     Width = gaugeWidthPx,
                     CircularBackground = CircularBackground,
                     Clockwise = Clockwise,
-                    BackStartAngle = StartingAngleBackGauges,
+                    BackStartAngle = startingAngleBackGauges,
                     StartCap = StartCap,
                     EndCap = EndCap,
                     Mode = GaugeMode,

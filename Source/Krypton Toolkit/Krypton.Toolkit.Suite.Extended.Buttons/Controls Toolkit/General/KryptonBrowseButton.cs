@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -14,15 +33,17 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     public class KryptonBrowseButton : KryptonButton
     {
         #region Variables
-        private bool _openFile, _saveFile, _useSystemFolderBrowser, _showNewFolderButtonOnDialog, _useWindowsAPICodePackDialogs, _allowMultiSelect;
+        private bool _openFile, _saveFile, _useSystemFolderBrowser, _showNewFolderButtonOnDialog, _allowMultiSelect;
 
         private string _filePath, _dialogTitle, _folderBrowserDialogDescription, _rawDisplayName, _extensionList;
 
-        private string[] _dialogFilter;
+        private string[]? _dialogFilter;
 
         private BrowseButtonAction _browseButtonAction;
 
         private IEnumerable<string> _fileNames;
+
+        private FileDialogType _fileDialogType;
 
         //private CommonFileDialogStandardFilters _commonFileDialogFilter;
         #endregion
@@ -42,10 +63,6 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         [DefaultValue(false), Description("Shows the new folder button on the standard WinForms folder browser dialog.")]
         public bool ShowNewFolderButtonOnDialog { get => _showNewFolderButtonOnDialog; set => _showNewFolderButtonOnDialog = value; }
 
-        /// <summary>Gets or sets a value indicating whether [use windows API code pack dialogs].</summary>
-        /// <value><c>true</c> if [use windows API code pack dialogs]; otherwise, <c>false</c>.</value>
-        [DefaultValue(false), Description("Use the Windows API Code Pack versions of system dialogs. (These provide further extensibility over the standard Windows versions)")]
-        public bool UseWindowsAPICodePackDialogs { get => _useWindowsAPICodePackDialogs; set => _useWindowsAPICodePackDialogs = value; }
 
         [DefaultValue(false), Description("Allows the user to select multiple files in a open file dialog. To be used in conjunction with the Windows API Code Pack version.")]
         public bool AllowMultiSelect { get => _allowMultiSelect; set => _allowMultiSelect = value; }
@@ -83,179 +100,258 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>Gets or sets the file names.</summary>
         /// <value>The file names.</value>
         public IEnumerable<string> FileNames { get => _fileNames; set => _fileNames = value; }
+
+        public FileDialogType FileDialogType { get => _fileDialogType; set => _fileDialogType = value; }
+
         #endregion
 
-        #region Constructor
+        #region Identity
         public KryptonBrowseButton()
         {
-            FilePath = string.Empty;
+            _filePath = string.Empty;
 
             Text = @".&..";
 
-            Size = new Size(34, 25);
+            Size = new(34, 25);
 
-            BrowseButtonAction = BrowseButtonAction.SaveFile;
+            _browseButtonAction = BrowseButtonAction.SaveFile;
+
+            _fileDialogType = FileDialogType.Standard;
         }
         #endregion
 
         #region Overrides
-        // Note: Replace with WindowsAPICodePack dialogs 
         protected override void OnClick(EventArgs e)
         {
-            switch (_browseButtonAction)
+            switch (_fileDialogType)
             {
-                case BrowseButtonAction.SaveFile:
-                    if (!_useWindowsAPICodePackDialogs)
+                case FileDialogType.Krypton:
+                    switch (_browseButtonAction)
                     {
-                        if (_dialogFilter != null)
-                        {
-                            SaveFileDialog sfd = new SaveFileDialog();
-
-                            sfd.Filter = _dialogFilter.ToString();
-
-                            sfd.Title = _dialogTitle;
-
-                            if (sfd.ShowDialog() == DialogResult.OK)
+                        case BrowseButtonAction.OpenFile:
+                            if (_dialogFilter != null)
                             {
-                                _filePath = Path.GetFullPath(sfd.FileName);
+                                KryptonOpenFileDialog ofd = new();
+
+                                ofd.Filter = _dialogFilter.ToString();
+
+                                ofd.Title = _dialogTitle;
+
+                                if (ofd.ShowDialog() == DialogResult.OK)
+                                {
+                                    _filePath = Path.GetFullPath(ofd.FileName);
+                                }
                             }
-                        }
-                        else
-                        {
-                            SaveFileDialog sfd = new SaveFileDialog();
-
-                            sfd.Title = _dialogTitle;
-
-                            if (sfd.ShowDialog() == DialogResult.OK)
+                            else
                             {
-                                FilePath = Path.GetFullPath(sfd.FileName);
+                                KryptonOpenFileDialog ofd = new();
+
+                                ofd.Title = _dialogTitle;
+
+                                if (ofd.ShowDialog() == DialogResult.OK)
+                                {
+                                    _filePath = Path.GetFullPath(ofd.FileName);
+                                }
                             }
-                        }
-                    }
-                    else
-                    {
-                        if (_dialogFilter != null)
-                        {
-                            CommonSaveFileDialog csfd = new CommonSaveFileDialog();
+                            break;
+                        case BrowseButtonAction.OpenDirectory:
+                            KryptonFolderBrowserDialog fbd = new();
 
-                            csfd.Title = _dialogTitle;
-
-                            csfd.Filters.Add(new CommonFileDialogFilter(_rawDisplayName, _extensionList));
-
-                            if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                            if (fbd.ShowDialog() == DialogResult.OK)
                             {
-                                _filePath = Path.GetFullPath(csfd.FileName);
+                                _filePath = fbd.SelectedPath;
                             }
-                        }
-                        else
-                        {
-                            CommonSaveFileDialog csfd = new CommonSaveFileDialog();
-
-                            csfd.Title = _dialogTitle;
-
-                            if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                            break;
+                        case BrowseButtonAction.SaveFile:
+                            if (_dialogFilter != null)
                             {
-                                _filePath = Path.GetFullPath(csfd.FileName);
+                                KryptonSaveFileDialog sfd = new();
+
+                                sfd.Filter = _dialogFilter.ToString();
+
+                                sfd.Title = _dialogTitle;
+
+                                if (sfd.ShowDialog() == DialogResult.OK)
+                                {
+                                    _filePath = Path.GetFullPath(sfd.FileName);
+                                }
                             }
-                        }
-                    }
-                    break;
-                case BrowseButtonAction.OpenDirectory:
-                    if (_useSystemFolderBrowser)
-                    {
-                        FolderBrowserDialog fbd = new FolderBrowserDialog();
+                            else
+                            {
+                                KryptonSaveFileDialog sfd = new();
 
-                        fbd.Description = _folderBrowserDialogDescription;
+                                sfd.Title = _dialogTitle;
 
-                        fbd.ShowNewFolderButton = _showNewFolderButtonOnDialog;
-
-                        if (fbd.ShowDialog() == DialogResult.OK)
-                        {
-                            _filePath = fbd.SelectedPath;
-                        }
-                    }
-                    else
-                    {
-                        CommonOpenFileDialog cofd = new CommonOpenFileDialog();
-
-                        cofd.Title = _dialogTitle;
-
-                        cofd.Multiselect = _allowMultiSelect;
-
-                        cofd.IsFolderPicker = true;
-
-                        if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
-                        {
-                            _filePath = Path.GetFullPath(cofd.FileName);
-                        }
+                                if (sfd.ShowDialog() == DialogResult.OK)
+                                {
+                                    FilePath = Path.GetFullPath(sfd.FileName);
+                                }
+                            }
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
                     }
                     break;
-                case BrowseButtonAction.OpenFile:
-                    if (!_useWindowsAPICodePackDialogs)
+                case FileDialogType.Standard:
+                    switch (_browseButtonAction)
                     {
-                        if (_dialogFilter != null)
-                        {
-                            OpenFileDialog ofd = new OpenFileDialog();
-
-                            ofd.Filter = _dialogFilter.ToString();
-
-                            ofd.Title = _dialogTitle;
-
-                            if (ofd.ShowDialog() == DialogResult.OK)
+                        case BrowseButtonAction.OpenFile:
+                            if (_dialogFilter != null)
                             {
-                                _filePath = Path.GetFullPath(ofd.FileName);
+                                OpenFileDialog ofd = new();
+
+                                ofd.Filter = _dialogFilter.ToString();
+
+                                ofd.Title = _dialogTitle;
+
+                                if (ofd.ShowDialog() == DialogResult.OK)
+                                {
+                                    _filePath = Path.GetFullPath(ofd.FileName);
+                                }
                             }
-                        }
-                        else
-                        {
-                            OpenFileDialog ofd = new OpenFileDialog();
-
-                            ofd.Title = _dialogTitle;
-
-                            if (ofd.ShowDialog() == DialogResult.OK)
+                            else
                             {
-                                _filePath = Path.GetFullPath(ofd.FileName);
+                                OpenFileDialog ofd = new();
+
+                                ofd.Title = _dialogTitle;
+
+                                if (ofd.ShowDialog() == DialogResult.OK)
+                                {
+                                    _filePath = Path.GetFullPath(ofd.FileName);
+                                }
                             }
-                        }
+                            break;
+                        case BrowseButtonAction.OpenDirectory:
+                            FolderBrowserDialog fbd = new();
+
+                            fbd.Description = _folderBrowserDialogDescription;
+
+                            fbd.ShowNewFolderButton = _showNewFolderButtonOnDialog;
+
+                            if (fbd.ShowDialog() == DialogResult.OK)
+                            {
+                                _filePath = fbd.SelectedPath;
+                            }
+                            break;
+                        case BrowseButtonAction.SaveFile:
+                            if (_dialogFilter != null)
+                            {
+                                SaveFileDialog sfd = new();
+
+                                sfd.Filter = _dialogFilter.ToString();
+
+                                sfd.Title = _dialogTitle;
+
+                                if (sfd.ShowDialog() == DialogResult.OK)
+                                {
+                                    _filePath = Path.GetFullPath(sfd.FileName);
+                                }
+                            }
+                            else
+                            {
+                                SaveFileDialog sfd = new();
+
+                                sfd.Title = _dialogTitle;
+
+                                if (sfd.ShowDialog() == DialogResult.OK)
+                                {
+                                    FilePath = Path.GetFullPath(sfd.FileName);
+                                }
+                            }
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
                     }
-                    else
+                    break;
+                case FileDialogType.WindowsAPICodePack:
+                    switch (_browseButtonAction)
                     {
-                        if (_dialogFilter != null)
-                        {
+                        case BrowseButtonAction.OpenFile:
+                            if (_dialogFilter != null)
+                            {
+                                CommonOpenFileDialog ofd = new();
+
+                                ofd.Filters.Add(new CommonFileDialogFilter(_rawDisplayName, _extensionList));
+
+                                ofd.Multiselect = _allowMultiSelect;
+
+                                ofd.Title = _dialogTitle;
+
+                                if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+                                {
+                                    _filePath = Path.GetFullPath(ofd.FileName);
+
+                                    _fileNames = ofd.FileNames;
+                                }
+                            }
+                            else
+                            {
+                                CommonOpenFileDialog ofd = new();
+
+                                ofd.Title = _dialogTitle;
+
+                                if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+                                {
+                                    _filePath = Path.GetFullPath(ofd.FileName);
+
+                                    _fileNames = ofd.FileNames;
+                                }
+                            }
+                            break;
+                        case BrowseButtonAction.OpenDirectory:
                             CommonOpenFileDialog cofd = new CommonOpenFileDialog();
 
-                            cofd.Filters.Add(new CommonFileDialogFilter(_rawDisplayName, _extensionList));
+                            cofd.Title = _dialogTitle;
 
                             cofd.Multiselect = _allowMultiSelect;
 
-                            cofd.Title = _dialogTitle;
+                            cofd.IsFolderPicker = true;
 
                             if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
                             {
                                 _filePath = Path.GetFullPath(cofd.FileName);
-
-                                _fileNames = cofd.FileNames;
                             }
-                        }
-                        else
-                        {
-                            CommonOpenFileDialog cofd = new CommonOpenFileDialog();
-
-                            cofd.Title = _dialogTitle;
-
-                            if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                            break;
+                        case BrowseButtonAction.SaveFile:
+                            if (_dialogFilter != null)
                             {
-                                _filePath = Path.GetFullPath(cofd.FileName);
+                                CommonSaveFileDialog csfd = new CommonSaveFileDialog();
 
-                                _fileNames = cofd.FileNames;
+                                csfd.Title = _dialogTitle;
+
+                                csfd.Filters.Add(new CommonFileDialogFilter(_rawDisplayName, _extensionList));
+
+                                if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                                {
+                                    _filePath = Path.GetFullPath(csfd.FileName);
+                                }
                             }
-                        }
+                            else
+                            {
+                                CommonSaveFileDialog csfd = new CommonSaveFileDialog();
+
+                                csfd.Title = _dialogTitle;
+
+                                if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                                {
+                                    _filePath = Path.GetFullPath(csfd.FileName);
+                                }
+                            }
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
                     }
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             base.OnClick(e);
         }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override string Text { get; set; }
+
         #endregion
     }
 }

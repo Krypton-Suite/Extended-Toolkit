@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -244,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         private LayoutFinished _layoutFinished = null;
 
         #region Krypton Variables
-        private KryptonManager _manager = new KryptonManager();
+        private KryptonManager _manager = new();
 
         private PaletteBackInheritRedirect _paletteBack;
 
@@ -252,7 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         private PaletteContentInheritRedirect _paletteContent;
 
-        private IPalette _palette;
+        private PaletteBase _palette;
 
         private PaletteRedirect _paletteRedirect;
         #endregion
@@ -299,8 +318,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             _toolBoxTabs = new ToolBoxTabCollection();
             _smallImageList = new ImageList();
             _largeImageList = new ImageList();
-            _upScroll = new ToolScrollButton(ToolBoxScrollDirection.UP, _tabHeight, _tabHeight);
-            _dnScroll = new ToolScrollButton(ToolBoxScrollDirection.DOWN, _tabHeight, _tabHeight);
+            _upScroll = new ToolScrollButton(ToolBoxScrollDirection.Up, _tabHeight, _tabHeight);
+            _dnScroll = new ToolScrollButton(ToolBoxScrollDirection.Down, _tabHeight, _tabHeight);
             _toolTip = new ToolTip();
             _textBox = new TextBox();
 
@@ -1179,7 +1198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     if (bOK && item.Renamable)
                     {
-                        _selectedTab.View = ToolBoxViewMode.LIST;
+                        _selectedTab.View = ToolBoxViewMode.List;
                         _selectedTab.EnsureItemVisible(item);
                     }
 
@@ -1481,8 +1500,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
             if (null != _selectedTab)
             {
-                _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.UP);
-                _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.DOWN);
+                _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Up);
+                _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Down);
             }
             else
             {
@@ -1867,7 +1886,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             _timer.Interval = _scrollWait;
 
             _timerIsForLayout = false;
-            if (ToolBoxScrollDirection.UP == dir)
+            if (ToolBoxScrollDirection.Up == dir)
             {
                 _timer.Tick += new EventHandler(OnTimer_UpScrollElapsed);
             }
@@ -1932,7 +1951,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
             if (null != _selectedTab.Control)
             {
-                System.Diagnostics.Debug.WriteLine("Control Location " + _selectedTab.Control.Location + " Item Area " + _selectedTab.ItemArea);
+                System.Diagnostics.Debug.WriteLine(
+                    $"Control Location {_selectedTab.Control.Location} Item Area {_selectedTab.ItemArea}");
             }
 
             if (null != _oldselectedTab)
@@ -2089,8 +2109,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     }
                 }
 
-                _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.UP);
-                _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.DOWN);
+                _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Up);
+                _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Down);
 
                 Invalidate(paintRect);
             }
@@ -2253,8 +2273,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 }
 
                 //_selectedTab.DoItemLayout();
-                _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.UP);
-                _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.DOWN);
+                _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Up);
+                _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Down);
             }
 
             if (bRepaint && Visible)
@@ -2430,13 +2450,25 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             {
                 color = "#";
 
-                if (c.R < 16) color += "0";
+                if (c.R < 16)
+                {
+                    color += "0";
+                }
+
                 color += Convert.ToString(c.R, 16);
 
-                if (c.G < 16) color += "0";
+                if (c.G < 16)
+                {
+                    color += "0";
+                }
+
                 color += Convert.ToString(c.G, 16);
 
-                if (c.B < 16) color += "0";
+                if (c.B < 16)
+                {
+                    color += "0";
+                }
+
                 color += Convert.ToString(c.B, 16);
 
             }
@@ -2956,13 +2988,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
             foreach (ToolBoxTab tab in _toolBoxTabs)
             {
-                tab.UpdateItemRects(ToolBoxViewMode.LIST != tab.View, true, false);
+                tab.UpdateItemRects(ToolBoxViewMode.List != tab.View, true, false);
             }
 
             if (null != _selectedTab)
             {
-                _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.UP);
-                _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.DOWN);
+                _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Up);
+                _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Down);
             }
 
             Invalidate();
@@ -3056,15 +3088,15 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             {
                 if (0 < e.Delta)
                 {
-                    _selectedTab.ScrollItems(ToolBoxScrollDirection.UP);
-                    _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.UP);
-                    _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.DOWN);
+                    _selectedTab.ScrollItems(ToolBoxScrollDirection.Up);
+                    _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Up);
+                    _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Down);
                 }
                 else
                 {
-                    _selectedTab.ScrollItems(ToolBoxScrollDirection.DOWN);
-                    _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.UP);
-                    _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.DOWN);
+                    _selectedTab.ScrollItems(ToolBoxScrollDirection.Down);
+                    _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Up);
+                    _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Down);
                 }
 
                 if (_dnScroll.Enabled != oldDnScrollState)
@@ -3104,7 +3136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 Focus();
             }
 
-            System.Diagnostics.Debug.WriteLine("Control is Focused ? " + Focused);
+            System.Diagnostics.Debug.WriteLine($"Control is Focused ? {Focused}");
 
             if (_upScroll.HitTest(e.X, e.Y))
             {
@@ -3113,10 +3145,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     bOldState = _dnScroll.Enabled;
                     _upScroll.MouseDown = true;
 
-                    _selectedTab.ScrollItems(ToolBoxScrollDirection.UP);
+                    _selectedTab.ScrollItems(ToolBoxScrollDirection.Up);
 
-                    _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.UP);
-                    _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.DOWN);
+                    _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Up);
+                    _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Down);
 
                     if (bOldState != _dnScroll.Enabled)
                     {
@@ -3126,7 +3158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     Invalidate(_upScroll.Rectangle);
 
                     StopTimer();
-                    CreateScrollTimer(ToolBoxScrollDirection.UP);
+                    CreateScrollTimer(ToolBoxScrollDirection.Up);
                 }
             }
             else if (_dnScroll.HitTest(e.X, e.Y))
@@ -3136,10 +3168,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     bOldState = _upScroll.Enabled;
                     _dnScroll.MouseDown = true;
 
-                    _selectedTab.ScrollItems(ToolBoxScrollDirection.DOWN);
+                    _selectedTab.ScrollItems(ToolBoxScrollDirection.Down);
 
-                    _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.UP);
-                    _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.DOWN);
+                    _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Up);
+                    _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Down);
 
                     if (!_dnScroll.Enabled)
                     {
@@ -3154,7 +3186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     Invalidate(_dnScroll.Rectangle);
 
                     StopTimer();
-                    CreateScrollTimer(ToolBoxScrollDirection.DOWN);
+                    CreateScrollTimer(ToolBoxScrollDirection.Down);
                 }
             }
             else
@@ -3264,12 +3296,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         private void OnTimer_UpScrollElapsed(object sender, EventArgs e)
         {
-            HandleScrollTimerElapsed(ToolBoxScrollDirection.UP, _selectedTab, _upScroll);
+            HandleScrollTimerElapsed(ToolBoxScrollDirection.Up, _selectedTab, _upScroll);
         }
 
         private void OnTimer_DnScrollElapsed(object sender, EventArgs e)
         {
-            HandleScrollTimerElapsed(ToolBoxScrollDirection.DOWN, _selectedTab, _dnScroll);
+            HandleScrollTimerElapsed(ToolBoxScrollDirection.Down, _selectedTab, _dnScroll);
         }
 
         private void OnTimer_LayoutElapsed(object sender, EventArgs e)
@@ -3846,7 +3878,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 element1 = (XmlElement)element0.SelectSingleNode(Xml_Scrolls_Node);
 
                 //Up Scroll
-                itemElement = (XmlElement)element1.SelectSingleNode(ToolBoxScrollDirection.UP.ToString());
+                itemElement = (XmlElement)element1.SelectSingleNode(ToolBoxScrollDirection.Up.ToString());
                 _upScroll.Enabled = SafeBoolFromString(itemElement.GetAttribute(Xml_Enabled_Attr), true);
                 element2 = (XmlElement)itemElement.SelectSingleNode(Xml_ToolTip_Node);
                 tempString = element2.InnerText;
@@ -3857,7 +3889,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 }
 
                 // Down Scroll
-                itemElement = (XmlElement)element1.SelectSingleNode(ToolBoxScrollDirection.DOWN.ToString());
+                itemElement = (XmlElement)element1.SelectSingleNode(ToolBoxScrollDirection.Down.ToString());
                 _dnScroll.Enabled = SafeBoolFromString(itemElement.GetAttribute(Xml_Enabled_Attr), true);
                 element2 = (XmlElement)itemElement.SelectSingleNode(Xml_ToolTip_Node);
                 tempString = element2.InnerText;
@@ -3895,7 +3927,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     }
                     catch
                     {
-                        tab.View = ToolBoxViewMode.LIST;
+                        tab.View = ToolBoxViewMode.List;
                     }
 
                     // Item spacing

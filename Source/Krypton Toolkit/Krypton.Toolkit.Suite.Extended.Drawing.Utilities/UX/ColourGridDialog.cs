@@ -1,28 +1,48 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+#pragma warning disable CS8622, CS8602
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourGridDialog : CommonExtendedKryptonForm
     {
         #region Designer Code
-        private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtened tspeColourGridActions;
+        private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtended tspeColourGridActions;
         private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableToolStrip ftsColourGridActions;
         private System.Windows.Forms.ToolStripButton tsbSavePalette;
         private System.Windows.Forms.ToolStripButton tsbLoadPalette;
         private KryptonPanel kryptonPanel1;
-        private ColorGrid cgColour;
+        private ColorGrid? cgColour;
 
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.cgColour = new Cyotek.Windows.Forms.ColorGrid();
-            this.tspeColourGridActions = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtened();
+            this.tspeColourGridActions = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtended();
             this.ftsColourGridActions = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableToolStrip();
             this.tsbSavePalette = new System.Windows.Forms.ToolStripButton();
             this.tsbLoadPalette = new System.Windows.Forms.ToolStripButton();
@@ -131,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private Color _colour, _colourToAdd;
 
-        private ColorGrid _grid;
+        private ColorGrid? _grid;
         #endregion
 
         #region Properties
@@ -141,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         public Color ColourToAdd { get => _colourToAdd; set => _colourToAdd = value; }
 
-        public ColorGrid ColourGrid { get => _grid; private set => _grid = value; }
+        public ColorGrid? ColourGrid { get => _grid; private set => _grid = value; }
         #endregion
 
         #region Constructors
@@ -204,7 +224,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
                     if (serializer != null)
                     {
-                        if (!serializer.CanWrite) throw new InvalidOperationException("Serializer does not support writing palettes.");
+                        if (!serializer.CanWrite)
+                        {
+                            throw new InvalidOperationException("Serializer does not support writing palettes.");
+                        }
                     }
 
                     try
@@ -216,12 +239,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     }
                     catch (Exception exc)
                     {
-                        KryptonMessageBox.Show($@"Sorry, unable to save palette. { exc.GetBaseException().Message }", "Save Palette", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                        KryptonMessageBox.Show($@"Sorry, unable to save palette. {exc.GetBaseException().Message}", "Save Palette", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    KryptonMessageBox.Show("Sorry, unable to save palette, the file format is not supported or is not recognised.", "Save Palette", MessageBoxButtons.OK, KryptonMessageBoxIcon.Exclamation);
+                    KryptonMessageBox.Show("Sorry, unable to save palette, the file format is not supported or is not recognised.", "Save Palette", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Exclamation);
                 }
             }
         }
@@ -242,7 +265,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         {
                             ColorCollection colours;
 
-                            if (!serializer.CanRead) throw new InvalidOperationException("Serializer does not support reading palettes.");
+                            if (!serializer.CanRead)
+                            {
+                                throw new InvalidOperationException("Serializer does not support reading palettes.");
+                            }
 
                             using (FileStream fs = File.OpenRead(fd.FileName))
                             {
@@ -266,7 +292,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Sorry, unable to open palette, the file format is not supported or is not recognized.", "Load Palette", MessageBoxButtons.OK, KryptonMessageBoxIcon.Exclamation);
+                            KryptonMessageBox.Show("Sorry, unable to open palette, the file format is not supported or is not recognized.", "Load Palette", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Exclamation);
                         }
                     }
                     catch (Exception exc)

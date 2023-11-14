@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -33,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         private Brush bKnobPoint;
 
         //Palette State
-        private KryptonManager k_manager = new KryptonManager();
+        private KryptonManager k_manager = new();
         private PaletteBackInheritRedirect m_paletteBack;
         private PaletteBorderInheritRedirect m_paletteBorder;
         private PaletteContentInheritRedirect m_paletteContent;
@@ -41,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         //private IDisposable m_mementoBack1;
         //private IDisposable m_mementoBack2;
 
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
 
         // declare Off screen image and Offscreen graphics
@@ -599,8 +618,15 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     v = (int)Math.Round((double)((degree * (Maximum - Minimum)) / 270.0));
                 }
 
-                if ((v > Maximum)) v = Maximum;
-                if ((v < Minimum)) v = Minimum;
+                if ((v > Maximum))
+                {
+                    v = Maximum;
+                }
+
+                if ((v < Minimum))
+                {
+                    v = Minimum;
+                }
             }
             catch
             {
@@ -616,9 +642,20 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             byte g = 0;
             byte b = 0;
 
-            if ((c.R > d)) r = (byte)(c.R - d);
-            if ((c.G > d)) g = (byte)(c.G - d);
-            if ((c.B > d)) b = (byte)(c.B - d);
+            if ((c.R > d))
+            {
+                r = (byte)(c.R - d);
+            }
+
+            if ((c.G > d))
+            {
+                g = (byte)(c.G - d);
+            }
+
+            if ((c.B > d))
+            {
+                b = (byte)(c.B - d);
+            }
 
             Color c1 = Color.FromArgb(r, g, b);
             return c1;
@@ -630,9 +667,20 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             byte g = 255;
             byte b = 255;
 
-            if (((int)c.R + (int)d <= 255)) r = (byte)(c.R + d);
-            if (((int)c.G + (int)d <= 255)) g = (byte)(c.G + d);
-            if (((int)c.B + (int)d <= 255)) b = (byte)(c.B + d);
+            if (((int)c.R + (int)d <= 255))
+            {
+                r = (byte)(c.R + d);
+            }
+
+            if (((int)c.G + (int)d <= 255))
+            {
+                g = (byte)(c.G + d);
+            }
+
+            if (((int)c.B + (int)d <= 255))
+            {
+                b = (byte)(c.B + d);
+            }
 
             Color c2 = Color.FromArgb(r, g, b);
             return c2;

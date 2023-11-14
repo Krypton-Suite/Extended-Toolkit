@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -10,211 +29,246 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 {
     public class KryptonInputBoxExtendedManager : Component
     {
-        #region Variables
-        private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult, _buttonFourResult;
-        private Point _iconLocation;
-        private string _message, _title, _okText, _yesText, _noText, _cancelText, _hintText;
-        private InputBoxIconType _icon;
-        private Image _image;
-        private InputBoxLanguage _language;
-        private InputBoxButtons _buttons;
-        private InputBoxInputType _type;
-        private string[] _listItems;
-        private bool _showInTaskBar;
-        private Font _controlTypeface, _messageTypeface;
-        private FormStartPosition _startPosition;
+        #region Instance Fields
+
+        private Color _cueColour;
+        private DateTime _initialDateTime;
+        private string _prompt;
+        private string _caption;
+        private string _defaultResponse;
+        private string _cueText;
+        private Font _cueTypeface, _promptTypeface, _buttonTypeface;
+        private InputBoxIconType _iconType;
+        private KryptonInputBoxResponseType _inputType;
         private InputBoxTextAlignment _textAlignment;
-        private InputBoxMessageDisplayType _displayType;
-        private InputBoxNormalMessageTextAlignment _normalMessageTextAlignment;
-        private InputBoxWrappedMessageTextAlignment _wrappedMessageTextAlignment;
-        private InputBoxButtonFocus _buttonFocus;
+        private InputBoxWrappedMessageTextAlignment _textWrappedMessageTextAlignment;
+        private InputBoxButtons _buttons;
+        private InputBoxButtonFocus _focusedButton;
+        private Image _customImage;
+        private IWin32Window _owner;
+        private GlobalTypefaceSettingsManager _typefaceSettings = new();
+
         #endregion
 
-        #region Properties
-        public bool ShowInTaskBar { get => _showInTaskBar; set => _showInTaskBar = value; }
+        #region Public
 
-        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
-        public DialogResult ButtonOneResult { get => _buttonOneResult; set => _buttonOneResult = value; }
+        [DefaultValue(typeof(Color), "Color.Gray")]
+        public Color CueColour { get => _cueColour; set => _cueColour = value; }
 
-        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
-        public DialogResult ButtonTwoResult { get => _buttonTwoResult; set => _buttonTwoResult = value; }
+        [DefaultValue(typeof(DateTime), "DateTime.Now")]
+        public DateTime InitialDateTime { get => _initialDateTime; set => _initialDateTime = value; }
 
-        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
-        public DialogResult ButtonThreeResult { get => _buttonThreeResult; set => _buttonThreeResult = value; }
+        [DefaultValue(typeof(Font), "DefaultToolkitTypefaceTypes.DEFAULT_CUE_TYPEFACE")]
+        public Font CueTypeface { get => _cueTypeface; set => _cueTypeface = value; }
 
-        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
-        public DialogResult ButtonFourResult { get => _buttonFourResult; set => _buttonFourResult = value; }
+        [DefaultValue(typeof(Font), "DefaultToolkitTypefaceTypes.DEFAULT_NORMAL_TYPEFACE")]
+        public Font ButtonTypeface { get => _buttonTypeface; set => _buttonTypeface = value; }
 
-        public Font ControlTypeface { get => _controlTypeface; set => _controlTypeface = value; }
+        [DefaultValue(typeof(Font), "DefaultToolkitTypefaceTypes.DEFAULT_BOLD_TYPEFACE")]
+        public Font PromptTypeface { get => _promptTypeface; set => _promptTypeface = value; }
 
-        public Font MessageTypeface { get => _messageTypeface; set => _messageTypeface = value; }
+        [DefaultValue(typeof(InputBoxButtons), "InputBoxButtons.OkCancel")]
+        public InputBoxButtons Buttons { get => _buttons; set => _buttons = value; }
 
-        public InputBoxWrappedMessageTextAlignment WrappedMessageTextAlignment { get => _wrappedMessageTextAlignment; set => _wrappedMessageTextAlignment = value; }
+        [DefaultValue(typeof(InputBoxButtonFocus), "InputBoxButtonFocus.ButtonTwo")]
+        public InputBoxButtonFocus FocusedButton { get => _focusedButton; set => _focusedButton = value; }
 
-        public Image Image { get => _image; set => _image = value; }
+        [DefaultValue(typeof(InputBoxIconType), "InputBoxIconType.None")]
+        public InputBoxIconType IconType { get => _iconType; set => _iconType = value; }
 
+        [DefaultValue(typeof(KryptonInputBoxResponseType), "KryptonInputBoxType.TextBox")]
+        public KryptonInputBoxResponseType InputType { get => _inputType; set => _inputType = value; }
+
+        [DefaultValue(typeof(InputBoxTextAlignment), "InputBoxTextAlignment.Left")]
         public InputBoxTextAlignment TextAlignment { get => _textAlignment; set => _textAlignment = value; }
 
-        public string[] ListItems { get => _listItems; set => _listItems = value; }
+        [DefaultValue(typeof(InputBoxWrappedMessageTextAlignment), "InputBoxWrappedMessageTextAlignment.MiddleLeft")]
+        public InputBoxWrappedMessageTextAlignment WrappedMessageTextAlignment { get => _textWrappedMessageTextAlignment; set => _textWrappedMessageTextAlignment = value; }
 
-        public string OkText { get => _okText; set => _okText = value; }
+        [DefaultValue(null)]
+        public Image CustomImage { get => _customImage; set => _customImage = value; }
 
-        public string CancelText { get => _cancelText; set => _cancelText = value; }
+        [DefaultValue(null)]
+        public string Caption { get => _caption; set => _caption = value; }
 
-        public string NoText { get => _noText; set => _noText = value; }
+        [DefaultValue(null)]
+        public string CueText { get => _cueText; set => _cueText = value; }
 
-        public string YesText { get => _yesText; set => _yesText = value; }
+        [DefaultValue(null)]
+        public string DefaultResponse { get => _defaultResponse; set => _defaultResponse = value; }
 
-        public string Title { get => _title; set => _title = value; }
+        [DefaultValue(null)]
+        public string Prompt { get => _prompt; set => _prompt = value; }
 
-        public string Message { get => _message; set => _message = value; }
+        [DefaultValue(null)]
+        public IWin32Window Owner { get => _owner; set => _owner = value; }
 
-        public string HintText { get => _hintText; set => _hintText = value; }
-
-        public Point IconLocation { get => _iconLocation; set => _iconLocation = value; }
-
-        public InputBoxIconType IconType { get => _icon; set => _icon = value; }
-
-        public InputBoxInputType IconInputType { get => _type; set => _type = value; }
-
-        public InputBoxLanguage InputBoxLanguage { get => _language; set => _language = value; }
-
-        public InputBoxButtons InputBoxButtons { get => _buttons; set => _buttons = value; }
-
-        public FormStartPosition StartPosition { get => _startPosition; set => _startPosition = value; }
-
-        public InputBoxNormalMessageTextAlignment NormalMessageTextAlignment { get => _normalMessageTextAlignment; set => _normalMessageTextAlignment = value; }
-        
-        public InputBoxMessageDisplayType MessageDisplayType { get => _displayType; set => _displayType = value; }
-
-        public InputBoxButtonFocus ButtonFocus { get => _buttonFocus; set => _buttonFocus = value; }
         #endregion
 
-        #region Constructors
+        #region Identity
+
         /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedManager" /> class.</summary>
-        /// <param name="iconLocation">The icon location.</param>
-        /// <param name="message">The message.</param>
-        /// <param name="title">The title.</param>
-        /// <param name="icon">The icon.</param>
-        /// <param name="image">The image.</param>
-        /// <param name="language">The language.</param>
-        /// <param name="buttons">The buttons.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="listItems">The list items.</param>
-        /// <param name="showInTaskBar">if set to <c>true</c> [show in task bar].</param>
-        /// <param name="controlTypeface">The control typeface.</param>
-        /// <param name="messageTypeface">The message typeface.</param>
-        /// <param name="okText">The ok text.</param>
-        /// <param name="yesText">The yes text.</param>
-        /// <param name="noText">The no text.</param>
-        /// <param name="cancelText">The cancel text.</param>
-        /// <param name="hintText">The hint text.</param>
-        /// <param name="startPosition">The start position.</param>
-        /// <param name="boxButtons">The box buttons.</param>
-        /// <param name="buttonFocus">The button focus.</param>
-        /// <param name="messageDisplayType">Display type of the message.</param>
-        /// <param name="normalMessageTextAlignment">The normal message text alignment.</param>
-        /// <param name="wrappedMessageTextAlignment">The wrapped message text alignment.</param>
-        /// <param name="textAlignment">The text alignment.</param>
-        /// <param name="buttonOneResult">The button one result.</param>
-        /// <param name="buttonTwoResult">The button two result.</param>
-        /// <param name="buttonThreeResult">The button three result.</param>
-        /// <param name="buttonFourResult">The button four result.</param>
-        public KryptonInputBoxExtendedManager(Point iconLocation, string message, string title, InputBoxIconType icon, 
-            Image image, InputBoxLanguage language, InputBoxButtons buttons, InputBoxInputType type, string[] listItems,
-            bool showInTaskBar, Font controlTypeface, Font messageTypeface, string okText, string yesText, string noText,
-            string cancelText, string hintText, FormStartPosition startPosition, InputBoxButtons boxButtons, 
-            InputBoxButtonFocus buttonFocus, InputBoxMessageDisplayType messageDisplayType,
-            InputBoxNormalMessageTextAlignment normalMessageTextAlignment, InputBoxWrappedMessageTextAlignment wrappedMessageTextAlignment, 
-            InputBoxTextAlignment textAlignment,
-            DialogResult buttonOneResult, DialogResult buttonTwoResult,
-            DialogResult buttonThreeResult, DialogResult buttonFourResult)
+        public KryptonInputBoxExtendedManager()
         {
-            _iconLocation = iconLocation;
+            _cueColour = Color.Gray;
 
-            _message = message;
+            _cueTypeface = _typefaceSettings.GetCueTypeface();
 
-            _title = title;
+            _buttonTypeface = _typefaceSettings.GetNormalTypeface();
 
-            _icon = icon;
+            _promptTypeface = _typefaceSettings.GetBoldTypeface();
 
-            _image = image;
+            _buttons = InputBoxButtons.OkCancel;
 
-            _language = language;
+            _focusedButton = InputBoxButtonFocus.ButtonTwo;
 
-            _buttons = buttons;
+            _iconType = InputBoxIconType.None;
 
-            _title = title;
+            _inputType = KryptonInputBoxResponseType.TextBox;
 
-            _icon = icon;
+            _textAlignment = InputBoxTextAlignment.Left;
 
-            _image = image;
+            _textWrappedMessageTextAlignment = InputBoxWrappedMessageTextAlignment.MiddleLeft;
 
-            _language = language;
+            _customImage = null;
 
-            _buttons = buttons;
+            _caption = @"";
 
-            _type = type;
+            _cueText = @"";
 
-            _listItems = listItems;
+            _defaultResponse = @"";
 
-            _showInTaskBar = showInTaskBar;
+            _prompt = @"";
 
-            _controlTypeface = controlTypeface;
+            _owner = null;
 
-            _messageTypeface = messageTypeface;
+            _initialDateTime = DateTime.Now;
+        }
 
-            _okText = okText;
+        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtendedManager" /> class.</summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="prompt">The prompt.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="defaultResponse">The default response.</param>
+        /// <param name="cueText">The cue text.</param>
+        /// <param name="cueColour">The cue colour.</param>
+        /// <param name="cueTypeface">The cue typeface.</param>
+        /// <param name="buttonTypeface">The button typeface.</param>
+        /// <param name="promptTypeface">The prompt typeface.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="inputType">Type of the input.</param>
+        /// <param name="textAlignment">The text alignment.</param>
+        /// <param name="textWrappedMessageTextAlignment">The text wrapped message text alignment.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="focusedButton">The focused button.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="initialDateTime">The initial date time.</param>
+        public KryptonInputBoxExtendedManager(IWin32Window owner, string prompt, string caption,
+                                              string defaultResponse, string cueText, Color cueColour,
+                                              Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+                                              InputBoxIconType iconType,
+                                              KryptonInputBoxResponseType inputType,
+                                              InputBoxTextAlignment textAlignment,
+                                              InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
+                                              InputBoxButtons buttons,
+                                              InputBoxButtonFocus focusedButton,
+                                              Image customImage, DateTime? initialDateTime = null)
+        {
+            _owner = owner;
 
-            _yesText = yesText;
+            _promptTypeface = promptTypeface ?? DefaultToolkitTypefaceTypes.DEFAULT_BOLD_TYPEFACE;
 
-            _noText = noText;
+            _iconType = iconType;
 
-            _hintText = hintText;
-
-            _cancelText = cancelText;
-
-            _startPosition = startPosition;
-
-            _buttons = boxButtons;
-
-            _buttonFocus = buttonFocus;
-
-            _displayType = messageDisplayType;
-
-            _normalMessageTextAlignment = normalMessageTextAlignment;
-
-            _wrappedMessageTextAlignment = wrappedMessageTextAlignment;
+            _inputType = inputType;
 
             _textAlignment = textAlignment;
 
-            _buttonOneResult = buttonOneResult;
+            _customImage = customImage;
 
-            _buttonTwoResult = buttonTwoResult;
+            _caption = caption;
 
-            _buttonThreeResult = buttonThreeResult;
+            _cueText = cueText;
 
-            _buttonFourResult = buttonFourResult;
+            _defaultResponse = defaultResponse;
+
+            _prompt = prompt;
+
+            _cueColour = cueColour;
+
+            _buttonTypeface = buttonTypeface ?? DefaultToolkitTypefaceTypes.DEFAULT_NORMAL_TYPEFACE;
+
+            _cueTypeface = cueTypeface ?? DefaultToolkitTypefaceTypes.DEFAULT_CUE_TYPEFACE;
+
+            _textWrappedMessageTextAlignment = textWrappedMessageTextAlignment;
+
+            _buttons = buttons;
+
+            _focusedButton = focusedButton;
+
+            _initialDateTime = initialDateTime ?? DateTime.Now;
         }
 
-        public KryptonInputBoxExtendedManager()
-        {
-
-        }
         #endregion
 
-        #region Methods
-        public void DisplayInputBox()
-        {
-            KryptonInputBoxExtended kryptonInputBox = new KryptonInputBoxExtended(_iconLocation, _message, _title, _icon, _image,
-                                                                                  _language, _buttons, _type, _listItems,
-                                                                                  _showInTaskBar, _controlTypeface, _messageTypeface,
-                                                                                  _okText, _yesText, _noText, _cancelText, _hintText,
-                                                                                  _startPosition, _textAlignment, _buttonOneResult, _buttonTwoResult,
-                                                                                  _buttonThreeResult, _buttonFourResult);
+        #region Show
 
-            kryptonInputBox.Show();
-        }
+        /// <summary>Shows the <see cref="KryptonInputBoxExtendedForm"/>, and returns the input string.</summary>
+        /// <returns>The users input string.</returns>
+        public string Show()
+            => Show(_owner, _prompt, _caption, _defaultResponse, _cueText, _cueColour, _cueTypeface, _buttonTypeface,
+                _promptTypeface, _iconType, _inputType, _textAlignment, _textWrappedMessageTextAlignment, _buttons,
+                _focusedButton, _customImage, _initialDateTime);
+
+        public string ShowInputBox(IWin32Window owner, string prompt, string caption,
+                                   string defaultResponse, string cueText,
+                                   Color cueColour, Font cueTypeface, Font buttonTypeface, 
+                                   Font promptTypeface, InputBoxIconType iconType,
+                                   KryptonInputBoxResponseType inputType,
+                                   InputBoxTextAlignment textAlignment,
+                                   InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
+                                   InputBoxButtons buttons = InputBoxButtons.OkCancel,
+                                   InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
+                                   Image customImage = null, DateTime? initialDateTime = default)
+        => Show(owner, prompt, caption, defaultResponse, cueText, cueColour, cueTypeface,  buttonTypeface, promptTypeface,
+            iconType,  inputType, textAlignment, textWrappedMessageTextAlignment, buttons, focusedButton, customImage, initialDateTime);
+
+        /// <summary>Shows the <see cref="KryptonInputBoxExtendedForm"/>, and returns the input string.</summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="prompt">The prompt.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="defaultResponse">The default response.</param>
+        /// <param name="cueText">The cue text.</param>
+        /// <param name="cueColour">The cue colour.</param>
+        /// <param name="cueTypeface">The cue typeface.</param>
+        /// <param name="buttonTypeface">The button typeface.</param>
+        /// <param name="promptTypeface">The prompt typeface.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="inputType">Type of the input.</param>
+        /// <param name="textAlignment">The text alignment.</param>
+        /// <param name="textWrappedMessageTextAlignment">The text wrapped message text alignment.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="focusedButton">The focused button.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="initialDateTime">The initial date time.</param>
+        /// <returns>The users input string.</returns>
+        public static string Show(IWin32Window owner, string prompt, string caption,
+                                  string defaultResponse, string cueText,
+                                  Color cueColour, Font cueTypeface, Font buttonTypeface, 
+                                  Font promptTypeface, InputBoxIconType iconType,
+                                  KryptonInputBoxResponseType inputType,
+                                  InputBoxTextAlignment textAlignment,
+                                  InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
+                                  InputBoxButtons buttons = InputBoxButtons.OkCancel,
+                                  InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
+                                  Image customImage = null, DateTime? initialDateTime = default)
+            => KryptonInputBoxExtendedForm.InternalShow(owner, prompt, caption, defaultResponse,
+                                                        cueText, cueColour, cueTypeface, 
+                                                        buttonTypeface, promptTypeface, iconType,
+                                                        inputType, textAlignment,
+                                                        textWrappedMessageTextAlignment, buttons,
+                                                        focusedButton, customImage, initialDateTime);
+
         #endregion
     }
 }

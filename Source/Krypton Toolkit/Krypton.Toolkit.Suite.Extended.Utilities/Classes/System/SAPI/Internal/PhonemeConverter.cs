@@ -1,12 +1,30 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
-
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
@@ -78,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
         {
             _phoneMapsCompressed = new PhoneMapCompressed[8]
             {
-                new PhoneMapCompressed(0, 207, new byte[720]
+                new(0, 207, new byte[720]
                 {
                     46,
                     0,
@@ -1052,7 +1070,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     'ʓ',
                     'ʐ'
                 }),
-                new PhoneMapCompressed(1028, 52, new byte[260]
+                new(1028, 52, new byte[260]
                 {
                     48,
                     48,
@@ -1369,7 +1387,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     'ㄨ',
                     'ㄩ'
                 }),
-                new PhoneMapCompressed(1031, 53, new byte[129]
+                new(1031, 53, new byte[129]
                 {
                     45,
                     0,
@@ -1556,7 +1574,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '4',
                     '5'
                 }),
-                new PhoneMapCompressed(1033, 49, new byte[121]
+                new(1033, 49, new byte[121]
                 {
                     45,
                     0,
@@ -1731,7 +1749,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '0',
                     '1'
                 }),
-                new PhoneMapCompressed(1034, 35, new byte[76]
+                new(1034, 35, new byte[76]
                 {
                     45,
                     0,
@@ -1847,7 +1865,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '"',
                     '\u0019'
                 }),
-                new PhoneMapCompressed(1036, 42, new byte[100]
+                new(1036, 42, new byte[100]
                 {
                     45,
                     0,
@@ -1994,7 +2012,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     ')',
                     '*'
                 }),
-                new PhoneMapCompressed(1041, 102, new byte[510]
+                new(1041, 102, new byte[510]
                 {
                     48,
                     48,
@@ -2611,7 +2629,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '\u30fd',
                     '\u30fe'
                 }),
-                new PhoneMapCompressed(2052, 422, new byte[1755]
+                new(2052, 422, new byte[1755]
                 {
                     45,
                     0,

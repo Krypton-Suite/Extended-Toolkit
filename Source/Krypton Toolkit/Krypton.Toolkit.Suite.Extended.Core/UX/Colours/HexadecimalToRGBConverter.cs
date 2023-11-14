@@ -1,12 +1,30 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
-
-using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -15,7 +33,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region System
         private KryptonPanel kryptonPanel2;
         private KryptonListBox klbColours;
-        private System.Windows.Forms.Panel panel1;
         private KryptonButton kbtnConvertToRGB;
         private KryptonTextBox ktxtHexValue;
         private KryptonLabel kryptonLabel5;
@@ -26,24 +43,25 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private ContextMenuStrip ctxColourList;
         private System.ComponentModel.IContainer components;
         private ToolStripMenuItem removeSelectedColourToolStripMenuItem;
+        private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kryptonPanel1;
 
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnOk = new Krypton.Toolkit.KryptonButton();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnConvertToRGB = new Krypton.Toolkit.KryptonButton();
-            this.klbColours = new Krypton.Toolkit.KryptonListBox();
-            this.ktxtHexValue = new Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.kbtnExport = new Krypton.Toolkit.KryptonButton();
-            this.kbtnLoadFromFile = new Krypton.Toolkit.KryptonButton();
-            this.ctxColourList = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeSelectedColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kryptonPanel1 = new();
+            this.kbtnLoadFromFile = new();
+            this.kbtnExport = new();
+            this.kbtnOk = new();
+            this.kbtnCancel = new();
+            this.kryptonPanel2 = new();
+            this.kbtnConvertToRGB = new();
+            this.klbColours = new();
+            this.ctxColourList = new(this.components);
+            this.removeSelectedColourToolStripMenuItem = new();
+            this.ktxtHexValue = new();
+            this.kryptonLabel5 = new();
+            this.kryptonBorderEdge1 = new();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -53,40 +71,67 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kbtnLoadFromFile);
             this.kryptonPanel1.Controls.Add(this.kbtnExport);
             this.kryptonPanel1.Controls.Add(this.kbtnOk);
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 622);
+            this.kryptonPanel1.Location = new(0, 622);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(816, 51);
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
+            this.kryptonPanel1.Size = new(816, 51);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnLoadFromFile
+            // 
+            this.kbtnLoadFromFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnLoadFromFile.AutoSize = true;
+            this.kbtnLoadFromFile.CornerRoundingRadius = -1F;
+            this.kbtnLoadFromFile.Location = new(108, 14);
+            this.kbtnLoadFromFile.Name = "kbtnLoadFromFile";
+            this.kbtnLoadFromFile.Size = new(90, 25);
+            this.kbtnLoadFromFile.TabIndex = 9;
+            this.kbtnLoadFromFile.Values.Text = "&Load from File";
+            this.kbtnLoadFromFile.Click += new(this.kbtnLoadFromFile_Click);
+            // 
+            // kbtnExport
+            // 
+            this.kbtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnExport.AutoSize = true;
+            this.kbtnExport.CornerRoundingRadius = -1F;
+            this.kbtnExport.Enabled = false;
+            this.kbtnExport.Location = new(12, 14);
+            this.kbtnExport.Name = "kbtnExport";
+            this.kbtnExport.Size = new(90, 25);
+            this.kbtnExport.TabIndex = 8;
+            this.kbtnExport.Values.Text = "E&xport to File";
+            this.kbtnExport.Click += new(this.kbtnExport_Click);
             // 
             // kbtnOk
             // 
             this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnOk.AutoSize = true;
-            this.kbtnOk.Location = new System.Drawing.Point(618, 9);
+            this.kbtnOk.CornerRoundingRadius = -1F;
+            this.kbtnOk.Location = new(618, 14);
             this.kbtnOk.Name = "kbtnOk";
-            this.kbtnOk.Size = new System.Drawing.Size(90, 30);
-            this.kbtnOk.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnOk.Size = new(90, 25);
             this.kbtnOk.TabIndex = 6;
             this.kbtnOk.Values.Text = "&Ok";
-            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
+            this.kbtnOk.Click += new(this.kbtnOk_Click);
             // 
             // kbtnCancel
             // 
             this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnCancel.AutoSize = true;
+            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(714, 9);
+            this.kbtnCancel.Location = new(714, 14);
             this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 30);
-            this.kbtnCancel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnCancel.Size = new(90, 25);
             this.kbtnCancel.TabIndex = 7;
             this.kbtnCancel.Values.Text = "Ca&ncel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += new(this.kbtnCancel_Click);
             // 
             // kryptonPanel2
             // 
@@ -95,108 +140,78 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel2.Controls.Add(this.ktxtHexValue);
             this.kryptonPanel2.Controls.Add(this.kryptonLabel5);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel2.Location = new(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(816, 622);
+            this.kryptonPanel2.Size = new(816, 622);
             this.kryptonPanel2.TabIndex = 1;
             // 
             // kbtnConvertToRGB
             // 
-            this.kbtnConvertToRGB.AutoSize = true;
-            this.kbtnConvertToRGB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnConvertToRGB.CornerRoundingRadius = -1F;
             this.kbtnConvertToRGB.Enabled = false;
-            this.kbtnConvertToRGB.Location = new System.Drawing.Point(308, 577);
+            this.kbtnConvertToRGB.Location = new(277, 577);
             this.kbtnConvertToRGB.Name = "kbtnConvertToRGB";
-            this.kbtnConvertToRGB.Size = new System.Drawing.Size(124, 30);
-            this.kbtnConvertToRGB.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnConvertToRGB.Size = new(113, 25);
             this.kbtnConvertToRGB.TabIndex = 32;
             this.kbtnConvertToRGB.Values.Text = "&Convert to RGB";
-            this.kbtnConvertToRGB.Click += new System.EventHandler(this.kbtnConvertToRGB_Click);
+            this.kbtnConvertToRGB.Click += new(this.kbtnConvertToRGB_Click);
             // 
             // klbColours
             // 
             this.klbColours.ContextMenuStrip = this.ctxColourList;
-            this.klbColours.Location = new System.Drawing.Point(12, 12);
+            this.klbColours.Location = new(12, 12);
             this.klbColours.Name = "klbColours";
-            this.klbColours.Size = new System.Drawing.Size(792, 549);
-            this.klbColours.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klbColours.Size = new(792, 549);
             this.klbColours.TabIndex = 0;
-            // 
-            // ktxtHexValue
-            // 
-            this.ktxtHexValue.Location = new System.Drawing.Point(148, 576);
-            this.ktxtHexValue.MaxLength = 7;
-            this.ktxtHexValue.Name = "ktxtHexValue";
-            this.ktxtHexValue.Size = new System.Drawing.Size(154, 29);
-            this.ktxtHexValue.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ktxtHexValue.TabIndex = 31;
-            this.ktxtHexValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ktxtHexValue.TextChanged += new System.EventHandler(this.ktxtHexValue_TextChanged);
-            // 
-            // kryptonLabel5
-            // 
-            this.kryptonLabel5.Location = new System.Drawing.Point(12, 577);
-            this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(130, 26);
-            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel5.TabIndex = 30;
-            this.kryptonLabel5.Values.Text = "Hexadecimal: #";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 619);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(816, 3);
-            this.panel1.TabIndex = 2;
-            // 
-            // kbtnExport
-            // 
-            this.kbtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.kbtnExport.AutoSize = true;
-            this.kbtnExport.Enabled = false;
-            this.kbtnExport.Location = new System.Drawing.Point(12, 9);
-            this.kbtnExport.Name = "kbtnExport";
-            this.kbtnExport.Size = new System.Drawing.Size(147, 30);
-            this.kbtnExport.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kbtnExport.TabIndex = 8;
-            this.kbtnExport.Values.Text = "E&xport to File";
-            this.kbtnExport.Click += new System.EventHandler(this.kbtnExport_Click);
-            // 
-            // kbtnLoadFromFile
-            // 
-            this.kbtnLoadFromFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnLoadFromFile.AutoSize = true;
-            this.kbtnLoadFromFile.Location = new System.Drawing.Point(165, 9);
-            this.kbtnLoadFromFile.Name = "kbtnLoadFromFile";
-            this.kbtnLoadFromFile.Size = new System.Drawing.Size(137, 30);
-            this.kbtnLoadFromFile.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kbtnLoadFromFile.TabIndex = 9;
-            this.kbtnLoadFromFile.Values.Text = "&Load from File";
-            this.kbtnLoadFromFile.Click += new System.EventHandler(this.kbtnLoadFromFile_Click);
             // 
             // ctxColourList
             // 
-            this.ctxColourList.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctxColourList.Font = new("Segoe UI", 9F);
             this.ctxColourList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeSelectedColourToolStripMenuItem});
             this.ctxColourList.Name = "ctxColourList";
-            this.ctxColourList.Size = new System.Drawing.Size(204, 48);
+            this.ctxColourList.Size = new(204, 26);
             // 
             // removeSelectedColourToolStripMenuItem
             // 
             this.removeSelectedColourToolStripMenuItem.Name = "removeSelectedColourToolStripMenuItem";
-            this.removeSelectedColourToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.removeSelectedColourToolStripMenuItem.Size = new(203, 22);
             this.removeSelectedColourToolStripMenuItem.Text = "&Remove Selected Colour";
-            this.removeSelectedColourToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedColourToolStripMenuItem_Click);
+            this.removeSelectedColourToolStripMenuItem.Click += new(this.removeSelectedColourToolStripMenuItem_Click);
+            // 
+            // ktxtHexValue
+            // 
+            this.ktxtHexValue.Location = new(117, 577);
+            this.ktxtHexValue.MaxLength = 7;
+            this.ktxtHexValue.Name = "ktxtHexValue";
+            this.ktxtHexValue.Size = new(154, 23);
+            this.ktxtHexValue.TabIndex = 31;
+            this.ktxtHexValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ktxtHexValue.TextChanged += new(this.ktxtHexValue_TextChanged);
+            // 
+            // kryptonLabel5
+            // 
+            this.kryptonLabel5.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonLabel5.Location = new(12, 577);
+            this.kryptonLabel5.Name = "kryptonLabel5";
+            this.kryptonLabel5.Size = new(99, 20);
+            this.kryptonLabel5.TabIndex = 30;
+            this.kryptonLabel5.Values.Text = "Hexadecimal: #";
+            // 
+            // kryptonBorderEdge1
+            // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new(816, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // HexadecimalToRGBConverter
             // 
             this.AcceptButton = this.kbtnCancel;
             this.CancelButton = this.kbtnCancel;
-            this.ClientSize = new System.Drawing.Size(816, 673);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new(816, 673);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -207,7 +222,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hexadecimal to RGB Converter";
-            this.Load += new System.EventHandler(this.HexadecimalToRGBConverter_Load);
+            this.Load += new(this.HexadecimalToRGBConverter_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -223,14 +238,18 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Variables
         private bool _modified;
         private Color _targetColour = Color.Transparent;
-        private Timer _editTimer;
+        private System.Windows.Forms.Timer _editTimer;
         #endregion
 
         #region Properties
-        public bool Modified { get => _modified;
+        public bool Modified
+        {
+            get => _modified;
             set => _modified = value;
         }
-        public Color TargetColour { get => _targetColour;
+        public Color TargetColour
+        {
+            get => _targetColour;
             set => _targetColour = value;
         }
         #endregion
@@ -244,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             Modified = false;
 
-            _editTimer = new Timer();
+            _editTimer = new();
 
             _editTimer.Interval = 250;
 
@@ -267,7 +286,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void kbtnConvertToRGB_Click(object sender, EventArgs e)
         {
-            TargetColour = ColorTranslator.FromHtml($"#{ ktxtHexValue.Text }");
+            TargetColour = ColorTranslator.FromHtml($"#{ktxtHexValue.Text}");
 
             klbColours.Items.Add(ColourFormatting.FormatColourAsRGBString(TargetColour));
 
@@ -284,9 +303,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void kbtnExport_Click(object sender, EventArgs e)
         {
-            CommonSaveFileDialog csfd = new CommonSaveFileDialog();
+            CommonSaveFileDialog csfd = new();
 
-            csfd.Filters.Add(new CommonFileDialogFilter("Normal Text Files", ".txt"));
+            csfd.Filters.Add(new("Normal Text Files", ".txt"));
 
             if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
             {
@@ -295,7 +314,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     File.Create(csfd.FileName);
                 }
 
-                StreamWriter writer = new StreamWriter(csfd.FileName, true, Encoding.UTF8);
+                StreamWriter writer = new(csfd.FileName, true, Encoding.UTF8);
 
                 foreach (string item in klbColours.Items)
                 {
@@ -312,7 +331,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (Modified)
             {
-                DialogResult result = KryptonMessageBox.Show("There are items that are not currently saved.\n\nSave these items now?", "Unsaved Data", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("There are items that are not currently saved.\n\nSave these items now?", "Unsaved Data", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -340,11 +359,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void kbtnLoadFromFile_Click(object sender, EventArgs e)
         {
-            ArrayList fileContents = new ArrayList();
+            ArrayList fileContents = new();
 
-            CommonOpenFileDialog cofd = new CommonOpenFileDialog();
+            CommonOpenFileDialog cofd = new();
 
-            cofd.Filters.Add(new CommonFileDialogFilter("Normal Text Files", ".txt"));
+            cofd.Filters.Add(new("Normal Text Files", ".txt"));
 
             int counter = 0;
 
@@ -352,11 +371,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                StreamReader reader = new StreamReader(cofd.FileName, Encoding.UTF8);
+                StreamReader reader = new(cofd.FileName, Encoding.UTF8);
 
                 if (new FileInfo(cofd.FileName).Length == 0)
                 {
-                    KryptonMessageBox.Show($"There is no data in file: '{ Path.GetFullPath(cofd.FileName) }'");
+                    KryptonMessageBox.Show($"There is no data in file: '{Path.GetFullPath(cofd.FileName)}'");
                 }
                 else
                 {

@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -36,13 +55,13 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.panel3 = new System.Windows.Forms.Panel();
             this.kbtnBrowse = new Krypton.Toolkit.KryptonButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.klbFileListing = new Krypton.Toolkit.KryptonListBox();
-            this.ctxActions = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.openInExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.renameFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.deleteFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.klbFileListing = new KryptonListBox();
+            this.ctxActions = new ContextMenuStrip(this.components);
+            this.openInExplorerToolStripMenuItem = new ToolStripMenuItem();
+            this.toolStripMenuItem1 = new ToolStripSeparator();
+            this.renameFileToolStripMenuItem = new ToolStripMenuItem();
+            this.toolStripMenuItem2 = new ToolStripSeparator();
+            this.deleteFileToolStripMenuItem = new ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -56,9 +75,9 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(268, 24);
+            this.panel1.Size = new(268, 24);
             this.panel1.TabIndex = 0;
             // 
             // panel4
@@ -66,64 +85,64 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.ktxtDirectory);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Location = new(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(224, 24);
+            this.panel4.Size = new(224, 24);
             this.panel4.TabIndex = 2;
             // 
             // ktxtDirectory
             // 
             this.ktxtDirectory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ktxtDirectory.Hint = "Please enter or browse to a directory...";
-            this.ktxtDirectory.Location = new System.Drawing.Point(0, 0);
+            this.ktxtDirectory.Location = new(0, 0);
             this.ktxtDirectory.Name = "ktxtDirectory";
-            this.ktxtDirectory.Size = new System.Drawing.Size(224, 23);
+            this.ktxtDirectory.Size = new(224, 23);
             this.ktxtDirectory.TabIndex = 0;
-            this.ktxtDirectory.TextChanged += new System.EventHandler(this.ktxtDirectory_TextChanged);
+            this.ktxtDirectory.TextChanged += new(this.ktxtDirectory_TextChanged);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.kbtnBrowse);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(224, 0);
+            this.panel3.Location = new(224, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(44, 24);
+            this.panel3.Size = new(44, 24);
             this.panel3.TabIndex = 1;
             // 
             // kbtnBrowse
             // 
             this.kbtnBrowse.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kbtnBrowse.Location = new System.Drawing.Point(0, 0);
+            this.kbtnBrowse.Location = new(0, 0);
             this.kbtnBrowse.Name = "kbtnBrowse";
-            this.kbtnBrowse.Size = new System.Drawing.Size(44, 24);
+            this.kbtnBrowse.Size = new(44, 24);
             this.kbtnBrowse.TabIndex = 0;
             this.kbtnBrowse.Values.Text = "&...";
-            this.kbtnBrowse.Click += new System.EventHandler(this.kbtnBrowse_Click);
+            this.kbtnBrowse.Click += new(this.kbtnBrowse_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.klbFileListing);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 24);
+            this.panel2.Location = new(0, 24);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(268, 363);
+            this.panel2.Size = new(268, 363);
             this.panel2.TabIndex = 1;
             // 
             // klbFileListing
             // 
             this.klbFileListing.ContextMenuStrip = this.ctxActions;
             this.klbFileListing.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.klbFileListing.Location = new System.Drawing.Point(0, 0);
+            this.klbFileListing.Location = new(0, 0);
             this.klbFileListing.Name = "klbFileListing";
-            this.klbFileListing.Size = new System.Drawing.Size(268, 363);
+            this.klbFileListing.Size = new(268, 363);
             this.klbFileListing.TabIndex = 0;
-            this.klbFileListing.SelectedIndexChanged += new System.EventHandler(this.klbFileListing_SelectedIndexChanged);
+            this.klbFileListing.SelectedIndexChanged += new(this.klbFileListing_SelectedIndexChanged);
             // 
             // ctxActions
             // 
-            this.ctxActions.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctxActions.Font = new("Segoe UI", 9F);
             this.ctxActions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openInExplorerToolStripMenuItem,
             this.toolStripMenuItem1,
@@ -131,45 +150,45 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             this.toolStripMenuItem2,
             this.deleteFileToolStripMenuItem});
             this.ctxActions.Name = "ctxActions";
-            this.ctxActions.Size = new System.Drawing.Size(181, 104);
+            this.ctxActions.Size = new(181, 104);
             // 
             // openInExplorerToolStripMenuItem
             // 
             this.openInExplorerToolStripMenuItem.Name = "openInExplorerToolStripMenuItem";
-            this.openInExplorerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openInExplorerToolStripMenuItem.Size = new(180, 22);
             this.openInExplorerToolStripMenuItem.Text = "Open in &Explorer";
-            this.openInExplorerToolStripMenuItem.Click += new System.EventHandler(this.openInExplorerToolStripMenuItem_Click);
+            this.openInExplorerToolStripMenuItem.Click += new(this.openInExplorerToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new(177, 6);
             // 
             // renameFileToolStripMenuItem
             // 
             this.renameFileToolStripMenuItem.Name = "renameFileToolStripMenuItem";
-            this.renameFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.renameFileToolStripMenuItem.Size = new(180, 22);
             this.renameFileToolStripMenuItem.Text = "&Rename File...";
-            this.renameFileToolStripMenuItem.Click += new System.EventHandler(this.renameFileToolStripMenuItem_Click);
+            this.renameFileToolStripMenuItem.Click += new(this.renameFileToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new(177, 6);
             // 
             // deleteFileToolStripMenuItem
             // 
             this.deleteFileToolStripMenuItem.Name = "deleteFileToolStripMenuItem";
-            this.deleteFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteFileToolStripMenuItem.Size = new(180, 22);
             this.deleteFileToolStripMenuItem.Text = "Delete &File...";
-            this.deleteFileToolStripMenuItem.Click += new System.EventHandler(this.deleteFileToolStripMenuItem_Click);
+            this.deleteFileToolStripMenuItem.Click += new(this.deleteFileToolStripMenuItem_Click);
             // 
             // KryptonFileListing
             // 
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "KryptonFileListing";
-            this.Size = new System.Drawing.Size(268, 387);
+            this.Size = new(268, 387);
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -184,7 +203,9 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         #region Variables
         private string _promptText, _openFileDialogTitle;
 
-        private List<string> _directoryContents = new List<string>();
+        private List<string> _directoryContents = new();
+
+        private FileDialogType _fileDialogType;
 
         private object _fileListItem;
         #endregion
@@ -203,6 +224,8 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         public KryptonListBox FileListing => klbFileListing;
 
         public List<string> DirectoryContents { get => _directoryContents; private set => _directoryContents = value; }
+
+        public FileDialogType FileDialogType { get => _fileDialogType; set => _fileDialogType = value; }
 
         public object FileItem { get => _fileListItem; private set => _fileListItem = value; }
         #endregion
@@ -245,13 +268,13 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         private void PopulateListBox(KryptonListBox container, string directory, string fileType = "*.*", bool useFullPath = false, bool propagateList = true, SearchOption searchOption = SearchOption.AllDirectories)
         {
             // Get the directory contents
-            DirectoryInfo directoryInfo = new DirectoryInfo(directory);
+            DirectoryInfo directoryInfo = new(directory);
 
             // Populate file list
             FileInfo[] files = directoryInfo.GetFiles();
 
             // Create a temporary list
-            List<string> temporaryList = new List<string>();
+            List<string> temporaryList = new();
 
             int index1 = 0, index2 = 0, numberOfFiles = Directory.GetFiles(directory, fileType, searchOption).Count(), numberOfDirectories = Directory.GetDirectories(directory, "*", searchOption).Count(), totalNumberOfContents;
 
@@ -273,7 +296,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                     index2++;
                 }
 
-                FileGathererEventArgs fileGatherer = new FileGathererEventArgs(temporaryList);
+                FileGathererEventArgs fileGatherer = new(temporaryList);
 
                 OnGatherFiles(this, fileGatherer);
             }
@@ -293,7 +316,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
 
         private void PropagateFileList(List<string> directoryContents, string directory, string fileType = null)
         {
-            DirectoryInfo directoryInfo = new DirectoryInfo(directory);
+            DirectoryInfo directoryInfo = new(directory);
 
             FileInfo[] files = directoryInfo.GetFiles("*.*");
 
@@ -313,21 +336,61 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         {
             try
             {
-                CommonOpenFileDialog cofd = new CommonOpenFileDialog();
-
-                cofd.IsFolderPicker = true;
-
-                cofd.Title = OpenFileDialogTitle;
-
-                if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                switch (_fileDialogType)
                 {
-                    ktxtDirectory.Text = Path.GetFullPath(cofd.FileName);
+                    case FileDialogType.Krypton:
+                        KryptonFolderBrowserDialog dialog = new();
 
-                    PopulateListBox(FileListing, ktxtDirectory.Text);
+                        dialog.Title = _openFileDialogTitle;
 
-                    DirectoryPathChangedEventArgs directoryPathChanged = new DirectoryPathChangedEventArgs(Path.GetFullPath(cofd.FileName));
+                        if (dialog.ShowDialog() == DialogResult.OK)
+                        {
+                            ktxtDirectory.Text = Path.GetFullPath(dialog.SelectedPath);
 
-                    OnDirectoryPathChanged(this, directoryPathChanged);
+                            PopulateListBox(FileListing, ktxtDirectory.Text);
+
+                            DirectoryPathChangedEventArgs dpc = new(dialog.SelectedPath);
+
+                            OnDirectoryPathChanged(this, dpc);
+                        }
+                        break;
+                    case FileDialogType.Standard:
+                        FolderBrowserDialog fbd = new();
+
+                        fbd.Description = _openFileDialogTitle;
+
+                        if (fbd.ShowDialog() == DialogResult.OK)
+                        {
+                            ktxtDirectory.Text = Path.GetFullPath(fbd.SelectedPath);
+
+                            PopulateListBox(FileListing, ktxtDirectory.Text);
+
+                            DirectoryPathChangedEventArgs dpc = new(fbd.SelectedPath);
+
+                            OnDirectoryPathChanged(this, dpc);
+                        }
+                        break;
+                    case FileDialogType.WindowsAPICodePack:
+
+                        CommonOpenFileDialog cofd = new();
+
+                        cofd.IsFolderPicker = true;
+
+                        cofd.Title = OpenFileDialogTitle;
+
+                        if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                        {
+                            ktxtDirectory.Text = Path.GetFullPath(cofd.FileName);
+
+                            PopulateListBox(FileListing, ktxtDirectory.Text);
+
+                            DirectoryPathChangedEventArgs directoryPathChanged = new(Path.GetFullPath(cofd.FileName));
+
+                            OnDirectoryPathChanged(this, directoryPathChanged);
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
             catch (Exception exc)

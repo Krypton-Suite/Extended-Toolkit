@@ -1,12 +1,30 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
-
-using System.Security.Cryptography;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -86,7 +104,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             // Make sure that input parameters are valid.
             if (minLength <= 0 || maxLength <= 0 || minLength > maxLength)
+            {
                 return null;
+            }
 
             // Create a local array containing supported password characters
             // grouped by types. You can remove character groups from this
@@ -125,7 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             // Generate 4 random bytes.
 #pragma warning disable SYSLIB00
-            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            RNGCryptoServiceProvider rng = new();
 #pragma warning restore SYSLIB00
             rng.GetBytes(randomBytes);
 
@@ -133,16 +153,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int seed = BitConverter.ToInt32(randomBytes, 0);
 
             // Now, this is real randomization.
-            Random random = new Random(seed);
+            Random random = new(seed);
 
             // This array will hold password characters.
             char[]? password = null;
 
             // Allocate appropriate memory for the password.
             if (minLength < maxLength)
+            {
                 password = new char[random.Next(minLength, maxLength + 1)];
+            }
             else
+            {
                 password = new char[minLength];
+            }
 
             // Index of the next character to be added to password.
             int nextCharIdx;
@@ -168,10 +192,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 // first position, increment the second parameter of the Next
                 // function call by one, i.e. lastLeftGroupsOrderIdx + 1.
                 if (lastLeftGroupsOrderIdx == 0)
+                {
                     nextLeftGroupsOrderIdx = 0;
+                }
                 else
+                {
                     nextLeftGroupsOrderIdx = random.Next(0,
-                                                         lastLeftGroupsOrderIdx);
+                        lastLeftGroupsOrderIdx);
+                }
 
                 // Get the actual index of the character group, from which we will
                 // pick the next character.
@@ -183,17 +211,23 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 // If only one unprocessed character is left, pick it; otherwise,
                 // get a random character from the unused character list.
                 if (lastCharIdx == 0)
+                {
                     nextCharIdx = 0;
+                }
                 else
+                {
                     nextCharIdx = random.Next(0, lastCharIdx + 1);
+                }
 
                 // Add this character to the password.
                 password[i] = charGroups[nextGroupIdx][nextCharIdx];
 
                 // If we processed the last character in this group, start over.
                 if (lastCharIdx == 0)
+                {
                     charsLeftInGroup[nextGroupIdx] =
-                                              charGroups[nextGroupIdx].Length;
+                        charGroups[nextGroupIdx].Length;
+                }
                 // There are more unprocessed characters left.
                 else
                 {
@@ -214,7 +248,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 // If we processed the last group, start all over.
                 if (lastLeftGroupsOrderIdx == 0)
+                {
                     lastLeftGroupsOrderIdx = leftGroupsOrder.Length - 1;
+                }
                 // There are more unprocessed groups left.
                 else
                 {
@@ -233,7 +269,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
 
             // Convert password characters into a string and return the result.
-            return new string(password);
+            return new(password);
         }
     }
 }

@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -81,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         public static string TranslateColourToARGB(Color colour)
         {
-            return $"ARGB: ({ colour.A }, { colour.R }, { colour.G }, { colour.B })";
+            return $"ARGB: ({colour.A}, {colour.R}, {colour.G}, {colour.B})";
         }
 
         /// <summary>
@@ -91,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         public static string TranslateColourToRGB(Color colour)
         {
-            return $"RGB: ({ colour.R }, { colour.G }, { colour.B })";
+            return $"RGB: ({colour.R}, {colour.G}, {colour.B})";
         }
 
         /// <summary>
@@ -101,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         public static string TranslateColourToHexadecimal(Color colour)
         {
-            return $"Hexadecimal Value: #{ ConvertRGBToHexadecimal(Convert.ToInt32(colour.R), Convert.ToInt32(colour.G), Convert.ToInt32(colour.B)).ToUpper() }";
+            return $"Hexadecimal Value: #{ConvertRGBToHexadecimal(Convert.ToInt32(colour.R), Convert.ToInt32(colour.G), Convert.ToInt32(colour.B)).ToUpper()}";
         }
 
         /// <summary>
@@ -111,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         public static string GetColourBrightness(Color colour)
         {
-            return $"Brightness: { Convert.ToInt32(colour.GetBrightness()).ToString() }";
+            return $"Brightness: {Convert.ToInt32(colour.GetBrightness()).ToString()}";
         }
 
         /// <summary>
@@ -121,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         public static string GetColourHue(Color colour)
         {
-            return $"Hue: { colour.GetHue().ToString() }";
+            return $"Hue: {colour.GetHue().ToString()}";
         }
 
         /// <summary>
@@ -131,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         public static string GetColourSaturation(Color colour)
         {
-            return $"Saturation: { colour.GetSaturation().ToString() }";
+            return $"Saturation: {colour.GetSaturation().ToString()}";
         }
 
         /// <summary>
@@ -176,7 +196,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// tt - Only use this for a 12-hour clock (AM/PM).
         /// </param>
         /// <returns></returns>
-        public static string ReturnSafeFileNameDateTimeString(string format = "dd-MM-yyyy HH-mm-ss-tt") => $"{ DateTime.Now.ToString(format) }";
+        public static string ReturnSafeFileNameDateTimeString(string format = "dd-MM-yyyy HH-mm-ss-tt") => $"{DateTime.Now.ToString(format)}";
 
         /// <summary>
         /// Colours the string to ARGB.
@@ -190,14 +210,14 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </summary>
         /// <param name="colour">The colour.</param>
         /// <returns></returns>
-        public static string ColourARGBToString(Color colour) => $"{ colour.A },{ colour.R },{ colour.G },{ colour.B }";
+        public static string ColourARGBToString(Color colour) => $"{colour.A},{colour.R},{colour.G},{colour.B}";
 
         /// <summary>
         /// RGBs the colour to string.
         /// </summary>
         /// <param name="colour">The colour.</param>
         /// <returns></returns>
-        public static string RGBColourToString(Color colour) => $"{ Convert.ToString(colour.R) },{ Convert.ToString(colour.G) },{ Convert.ToString(colour.B) }";
+        public static string RGBColourToString(Color colour) => $"{Convert.ToString(colour.R)},{Convert.ToString(colour.G)},{Convert.ToString(colour.B)}";
 
         /// <summary>
         /// 
@@ -224,11 +244,11 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </returns>
         public static bool IsHexadecimal(string input)
         {
-            Regex validCharacters = new Regex("^[a-fA-F0-9]+$");
+            Regex validCharacters = new("^[a-fA-F0-9]+$");
 
             bool isValid = false;
 
-            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrWhiteSpace(input))
             {
                 isValid = false;
             }
@@ -244,9 +264,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         {
             string[] tmp;
 
-            StringCollection stringCollection = new StringCollection();
+            StringCollection stringCollection = new();
 
-            List<string> itemList = new List<string>();
+            List<string> itemList = new();
 
             foreach (string item in items)
             {

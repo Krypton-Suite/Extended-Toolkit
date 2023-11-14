@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -11,9 +31,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
     public class ColourMerger
     {
         #region Variables
-        AllMergedColourSettingsManager _amcsm = new AllMergedColourSettingsManager();
+        AllMergedColourSettingsManager _amcsm = new();
 
-        Color baseColour, darkColour, middleColour, lightColour, lightestColour, borderColour, alternativeNormalTextColour, normalTextColour, disabledTextColour, focusedTextColour, pressedTextColour, disabledControlColour, linkNormalColour, linkFocusedColour, linkHoverColour, linkVisitedColour, customColourOne, customColourTwo, customColourThree, customColourFour, customColourFive, customColourSix, customTextColourOne, customTextColourTwo, customTextColourThree, customTextColourFour, customTextColourFive, customTextColourSix, menuTextColour, statusTextColour, ribbonTabTextColour;
+        Color _baseColour, _darkColour, _middleColour, _lightColour, _lightestColour, _borderColour, _alternativeNormalTextColour, _normalTextColour, _disabledTextColour, _focusedTextColour, _pressedTextColour, _disabledControlColour, _linkNormalColour, _linkFocusedColour, _linkHoverColour, _linkVisitedColour, _customColourOne, _customColourTwo, _customColourThree, _customColourFour, _customColourFive, _customColourSix, _customTextColourOne, _customTextColourTwo, _customTextColourThree, _customTextColourFour, _customTextColourFive, _customTextColourSix, _menuTextColour, _statusTextColour, _ribbonTabTextColour;
         #endregion
 
         #region Properties
@@ -22,6 +42,70 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
         #region Constructor
 
+        public ColourMerger()
+        {
+            _baseColour = Color.Empty;
+
+            _darkColour = Color.Empty;
+
+            _middleColour = Color.Empty;
+
+            _lightColour = Color.Empty;
+
+            _lightestColour = Color.Empty;
+
+            _borderColour = Color.Empty;
+
+            _alternativeNormalTextColour = Color.Empty;
+
+            _normalTextColour = Color.Empty;
+
+            _disabledTextColour = Color.Empty;
+
+            _focusedTextColour = Color.Empty;
+
+            _pressedTextColour = Color.Empty;
+
+            _disabledControlColour = Color.Empty;
+
+            _linkNormalColour = Color.Empty;
+
+            _linkFocusedColour = Color.Empty;
+
+            _linkHoverColour = Color.Empty;
+
+            _linkVisitedColour = Color.Empty;
+
+            _customColourOne = Color.Empty;
+
+            _customColourTwo = Color.Empty;
+
+            _customColourThree = Color.Empty;
+
+            _customColourFour = Color.Empty;
+
+            _customColourFive = Color.Empty;
+
+            _customColourSix = Color.Empty;
+
+            _customTextColourOne = Color.Empty;
+
+            _customTextColourTwo = Color.Empty;
+
+            _customTextColourThree = Color.Empty;
+
+            _customTextColourFour = Color.Empty;
+
+            _customTextColourFive = Color.Empty;
+
+            _customTextColourSix = Color.Empty;
+
+            _menuTextColour = Color.Empty;
+
+            _statusTextColour = Color.Empty;
+
+            _ribbonTabTextColour = Color.Empty;
+        }
         #endregion
 
         #region Public Methods
@@ -78,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             try
             {
-                AllMergedColourSettingsManager manager = new AllMergedColourSettingsManager();
+                AllMergedColourSettingsManager manager = new();
 
                 if (SettingsVarifier.AreAllMergedColourSettingsDefault())
                 {
@@ -93,7 +177,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception exc)
             {
-                KryptonMessageBox.Show($"An exeption was thrown: { exc.Message }");
+                KryptonMessageBox.Show($"An exeption was thrown: {exc.Message}");
             }
         }
 
@@ -133,7 +217,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="ribbonTabTextColour">The ribbon tab text colour.</param>
         private static void MergeAllPaletteColoursIntoOneSettingsFile(Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColour, Color alternativeNormalTextColour, Color normalTextColour, Color disabledTextColour, Color focusedTextColour, Color pressedTextColour, Color disabledControlColour, Color linkNormalColour, Color linkFocusedColour, Color linkHoverColour, Color linkVisitedColour, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customColourSix, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color customTextColourSix, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour)
         {
-            AllMergedColourSettingsManager manager = new AllMergedColourSettingsManager();
+            AllMergedColourSettingsManager manager = new();
 
             manager.SetBaseColour(baseColour);
 

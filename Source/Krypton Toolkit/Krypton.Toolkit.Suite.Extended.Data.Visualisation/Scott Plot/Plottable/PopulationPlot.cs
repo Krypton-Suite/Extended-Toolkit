@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -67,8 +86,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 int pointCount = 0;
                 foreach (var group in MultiSeries.multiSeries)
+                {
                     foreach (var population in group.populations)
+                    {
                         pointCount += population.count;
+                    }
+                }
+
                 return pointCount;
             }
         }
@@ -76,10 +100,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void ValidateData(bool deep = false)
         {
             if (MultiSeries is null)
+            {
                 throw new InvalidOperationException("population multi-series cannot be null");
+            }
         }
 
-        public LegendItem[] GetLegendItems() => MultiSeries.multiSeries
+        public LegendItem[]? GetLegendItems() => MultiSeries.multiSeries
                 .Select(x => new LegendItem() { label = x.seriesLabel, color = x.color, lineWidth = 10 })
                 .ToArray();
 
@@ -150,7 +176,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     Scatter(dims, bmp, lowQuality, population, rand, popLeft, popWidth, series.color, ScatterOutlineColor, 128, scatterPos);
 
                     if (DistributionCurve)
+                    {
                         Distribution(dims, bmp, lowQuality, population, rand, popLeft, popWidth, DistributionCurveColor, scatterPos, DistributionCurveLineStyle);
+                    }
 
                     switch (DataBoxStyle)
                     {
@@ -185,9 +213,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double popLeft, double popWidth, Color fillColor, Color edgeColor, byte alpha, Position position)
         {
             // adjust edges to accomodate special positions
-            if (position == Position.Hide) return;
-            if (position == Position.Left || position == Position.Right) popWidth /= 2;
-            if (position == Position.Right) popLeft += popWidth;
+            if (position == Position.Hide)
+            {
+                return;
+            }
+
+            if (position == Position.Left || position == Position.Right)
+            {
+                popWidth /= 2;
+            }
+
+            if (position == Position.Right)
+            {
+                popLeft += popWidth;
+            }
 
             // contract edges slightly to encourage padding between elements
             double edgePaddingFrac = 0.2;
@@ -197,15 +236,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             float radius = 5;
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen penEdge = GDI.Pen(Color.FromArgb(alpha, edgeColor)))
-            using (Brush brushFill = GDI.Brush(Color.FromArgb(alpha, fillColor)))
             {
-                foreach (double value in pop.values)
+                using (Pen penEdge = GDI.Pen(Color.FromArgb(alpha, edgeColor)))
                 {
-                    double yPx = dims.GetPixelY(value);
-                    double xPx = dims.GetPixelX(popLeft + rand.NextDouble() * popWidth);
-                    gfx.FillEllipse(brushFill, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
-                    gfx.DrawEllipse(penEdge, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
+                    using (Brush brushFill = GDI.Brush(Color.FromArgb(alpha, fillColor)))
+                    {
+                        foreach (double value in pop.values)
+                        {
+                            double yPx = dims.GetPixelY(value);
+                            double xPx = dims.GetPixelX(popLeft + rand.NextDouble() * popWidth);
+                            gfx.FillEllipse(brushFill, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
+                            gfx.DrawEllipse(penEdge, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
+                        }
+                    }
                 }
             }
         }
@@ -214,9 +257,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double popLeft, double popWidth, Color color, Position position, LineStyle lineStyle)
         {
             // adjust edges to accomodate special positions
-            if (position == Position.Hide) return;
-            if (position == Position.Left || position == Position.Right) popWidth /= 2;
-            if (position == Position.Right) popLeft += popWidth;
+            if (position == Position.Hide)
+            {
+                return;
+            }
+
+            if (position == Position.Left || position == Position.Right)
+            {
+                popWidth /= 2;
+            }
+
+            if (position == Position.Right)
+            {
+                popLeft += popWidth;
+            }
 
             // contract edges slightly to encourage padding between elements
             double edgePaddingFrac = 0.2;
@@ -225,7 +279,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             double[] ys = DataGen.Range(pop.minus3stDev, pop.plus3stDev, dims.UnitsPerPxY);
             if (ys.Length == 0)
+            {
                 return;
+            }
+
             double[] ysFrac = pop.GetDistribution(ys, normalize: false);
 
             PointF[] points = new PointF[ys.Length];
@@ -237,9 +294,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen pen = GDI.Pen(color, 1, lineStyle, true))
             {
-                gfx.DrawLines(pen, points);
+                using (Pen pen = GDI.Pen(color, 1, lineStyle, true))
+                {
+                    gfx.DrawLines(pen, points);
+                }
             }
         }
 
@@ -247,9 +306,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double popLeft, double popWidth, Color color, Position position, bool useStdErr = false)
         {
             // adjust edges to accomodate special positions
-            if (position == Position.Hide) return;
-            if (position == Position.Left || position == Position.Right) popWidth /= 2;
-            if (position == Position.Right) popLeft += popWidth;
+            if (position == Position.Hide)
+            {
+                return;
+            }
+
+            if (position == Position.Left || position == Position.Right)
+            {
+                popWidth /= 2;
+            }
+
+            if (position == Position.Right)
+            {
+                popLeft += popWidth;
+            }
 
             // determine the center point and calculate bounds
             double centerX = popLeft + popWidth / 2;
@@ -276,13 +346,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             float radius = 5;
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen pen = GDI.Pen(color, 2))
-            using (Brush brush = GDI.Brush(color))
             {
-                gfx.FillEllipse(brush, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
-                gfx.DrawLine(pen, (float)xPx, (float)errorMinPx, (float)xPx, (float)errorMaxPx);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                using (Pen pen = GDI.Pen(color, 2))
+                {
+                    using (Brush brush = GDI.Brush(color))
+                    {
+                        gfx.FillEllipse(brush, (float)(xPx - radius), (float)(yPx - radius), radius * 2, radius * 2);
+                        gfx.DrawLine(pen, (float)xPx, (float)errorMinPx, (float)xPx, (float)errorMaxPx);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                    }
+                }
             }
         }
 
@@ -290,9 +364,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             double popLeft, double popWidth, Color color, Position position, bool useStdErr = false)
         {
             // adjust edges to accomodate special positions
-            if (position == Position.Hide) return;
-            if (position == Position.Left || position == Position.Right) popWidth /= 2;
-            if (position == Position.Right) popLeft += popWidth;
+            if (position == Position.Hide)
+            {
+                return;
+            }
+
+            if (position == Position.Left || position == Position.Right)
+            {
+                popWidth /= 2;
+            }
+
+            if (position == Position.Right)
+            {
+                popLeft += popWidth;
+            }
 
             // determine the center point and calculate bounds
             double centerX = popLeft + popWidth / 2;
@@ -328,14 +413,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             RectangleF rect = new RectangleF((float)leftPx, (float)yPxTop, (float)(rightPx - leftPx), (float)(yPxBase - yPxTop));
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen pen = GDI.Pen(Color.Black))
-            using (Brush brush = GDI.Brush(color))
             {
-                gfx.FillRectangle(brush, rect.X, rect.Y, rect.Width, rect.Height);
-                gfx.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
-                gfx.DrawLine(pen, (float)xPx, (float)errorMinPx, (float)xPx, (float)errorMaxPx);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                using (Pen pen = GDI.Pen(Color.Black))
+                {
+                    using (Brush brush = GDI.Brush(color))
+                    {
+                        gfx.FillRectangle(brush, rect.X, rect.Y, rect.Width, rect.Height);
+                        gfx.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
+                        gfx.DrawLine(pen, (float)xPx, (float)errorMinPx, (float)xPx, (float)errorMaxPx);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                    }
+                }
             }
         }
 
@@ -347,9 +436,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             HorizontalAlignment errorAlignment = HorizontalAlignment.Right)
         {
             // adjust edges to accomodate special positions
-            if (position == Position.Hide) return;
-            if (position == Position.Left || position == Position.Right) popWidth /= 2;
-            if (position == Position.Right) popLeft += popWidth;
+            if (position == Position.Hide)
+            {
+                return;
+            }
+
+            if (position == Position.Left || position == Position.Right)
+            {
+                popWidth /= 2;
+            }
+
+            if (position == Position.Right)
+            {
+                popLeft += popWidth;
+            }
 
             double errorMaxPx, errorMinPx;
             double yPxTop, yPxBase;
@@ -416,21 +516,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             using (Graphics gfx = GDI.Graphics(bmp, dims, lowQuality))
-            using (Pen pen = GDI.Pen(Color.Black))
-            using (Brush brush = GDI.Brush(color))
             {
-                // draw the box
-                gfx.FillRectangle(brush, rect.X, rect.Y, rect.Width, rect.Height);
-                gfx.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
+                using (Pen pen = GDI.Pen(Color.Black))
+                {
+                    using (Brush brush = GDI.Brush(color))
+                    {
+                        // draw the box
+                        gfx.FillRectangle(brush, rect.X, rect.Y, rect.Width, rect.Height);
+                        gfx.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
 
-                // draw the line in the center
-                gfx.DrawLine(pen, rect.X, (float)yPx, rect.X + rect.Width, (float)yPx);
+                        // draw the line in the center
+                        gfx.DrawLine(pen, rect.X, (float)yPx, rect.X + rect.Width, (float)yPx);
 
-                // draw errorbars and caps
-                gfx.DrawLine(pen, (float)errorPxX, (float)errorMinPx, (float)errorPxX, rect.Y + rect.Height);
-                gfx.DrawLine(pen, (float)errorPxX, (float)errorMaxPx, (float)errorPxX, rect.Y);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
-                gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                        // draw errorbars and caps
+                        gfx.DrawLine(pen, (float)errorPxX, (float)errorMinPx, (float)errorPxX, rect.Y + rect.Height);
+                        gfx.DrawLine(pen, (float)errorPxX, (float)errorMaxPx, (float)errorPxX, rect.Y);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMinPx, (float)capPx2, (float)errorMinPx);
+                        gfx.DrawLine(pen, (float)capPx1, (float)errorMaxPx, (float)capPx2, (float)errorMaxPx);
+                    }
+                }
             }
         }
     }

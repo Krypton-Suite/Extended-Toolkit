@@ -70,8 +70,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="paintParts"></param>
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates elementState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
-            float factorX = graphics.DpiX > 96 ? (1f * graphics.DpiX / 96) : 1f;
-            float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
+            float factorX = graphics.DpiX > 96 ? 1f * graphics.DpiX / 96 : 1f;
+            float factorY = graphics.DpiY > 96 ? 1f * graphics.DpiY / 96 : 1f;
 
             int nextPosition = cellBounds.X + (int)(1 * factorX);
             Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
@@ -102,8 +102,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns></returns>
         protected override Size GetPreferredSize(Graphics graphics, DataGridViewCellStyle cellStyle, int rowIndex, Size constraintSize)
         {
-            float factorX = graphics.DpiX > 96 ? (1f * graphics.DpiX / 96) : 1f;
-            float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
+            float factorX = graphics.DpiX > 96 ? 1f * graphics.DpiX / 96 : 1f;
+            float factorY = graphics.DpiY > 96 ? 1f * graphics.DpiY / 96 : 1f;
 
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
             Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);

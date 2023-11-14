@@ -1,16 +1,30 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
-
-using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
@@ -84,13 +98,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private int _ttsInterest;
 
-        private ManualResetEvent _evtPendingSpeak = new ManualResetEvent(false);
+        private ManualResetEvent _evtPendingSpeak = new(false);
 
-        private ManualResetEvent _evtPendingGetProxy = new ManualResetEvent(false);
+        private ManualResetEvent _evtPendingGetProxy = new(false);
 
         private Exception _pendingException;
 
-        private Queue<Parameters> _pendingSpeakQueue = new Queue<Parameters>();
+        private Queue<Parameters> _pendingSpeakQueue = new();
 
         private TTSVoice _pendingVoice;
 
@@ -98,15 +112,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private bool _fExitWorkerThread;
 
-        private object _processingSpeakLock = new object();
+        private object _processingSpeakLock = new();
 
-        private Dictionary<VoiceInfo, TTSVoice> _voiceDictionary = new Dictionary<VoiceInfo, TTSVoice>();
+        private Dictionary<VoiceInfo, TTSVoice> _voiceDictionary = new();
 
         private List<InstalledVoice> _installedVoices;
 
         private static List<InstalledVoice> _allVoices;
 
-        private object _enabledVoicesLock = new object();
+        private object _enabledVoicesLock = new();
 
         private TTSVoice _defaultVoice;
 
@@ -114,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private bool _defaultVoiceInitialized;
 
-        private object _defaultVoiceLock = new object();
+        private object _defaultVoiceLock = new();
 
         private AudioBase _waveOut;
 
@@ -122,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private bool _isDisposed;
 
-        private List<LexiconEntry> _lexicons = new List<LexiconEntry>();
+        private List<LexiconEntry> _lexicons = new();
 
         private SynthesizerState _synthesizerState;
 
@@ -138,9 +152,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private int _ttsEvents = 6;
 
-        private object _thisObjectLock = new object();
+        private object _thisObjectLock = new();
 
-        private AutoResetEvent _workerWaitHandle = new AutoResetEvent(false);
+        private AutoResetEvent _workerWaitHandle = new(false);
 
         private WeakReference _speechSyntesizer;
 

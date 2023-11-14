@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -11,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     [ToolboxBitmap(typeof(TabControl)), ToolboxItem(false)]
     public class SystemTabControl : TabControl
     {
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
         private bool FlagControl = false;
 
@@ -24,7 +43,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 TabAppearance ta = value;
                 if (ta != TabAppearance.Normal)
+                {
                     ta = TabAppearance.Normal;
+                }
 
                 base.Appearance = ta;
             }
@@ -104,7 +125,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             // add Palette Handler
             if (_palette != null)
+            {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
 
@@ -117,7 +140,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 _globalBackColour = _palette.ColorTable.ToolStripContentPanelGradientEnd;
                 _backColor = _palette.ColorTable.ToolStripGradientMiddle;
                 _hotForeColour = _palette.ColorTable.MenuStripText;
-                if (_hotForeColour == Color.White) _hotForeColour = Color.DarkGray;
+                if (_hotForeColour == Color.White)
+                {
+                    _hotForeColour = Color.DarkGray;
+                }
             }
 
             //Visual styles enabled? 
@@ -152,7 +178,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
+            {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
@@ -166,7 +194,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     _globalBackColour = _palette.ColorTable.ToolStripContentPanelGradientEnd;
                     _backColor = _palette.ColorTable.ToolStripGradientBegin;
                     _hotForeColour = _palette.ColorTable.MenuStripText;
-                    if (_hotForeColour == Color.White) _hotForeColour = Color.DarkGray;
+                    if (_hotForeColour == Color.White)
+                    {
+                        _hotForeColour = Color.DarkGray;
+                    }
                 }
             }
 

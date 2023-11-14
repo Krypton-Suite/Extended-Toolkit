@@ -1,11 +1,31 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+// ReSharper disable VirtualMemberCallInConstructor
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     public class CalendarKryptonRenderer : CalendarSystemRenderer
@@ -24,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region "Krypton Members"
-        private IPalette _palette;
+        private PaletteBase? _palette;
         //private PaletteRedirect _paletteRedirect;
         #endregion
 
@@ -114,19 +134,22 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region "Private Method"
 
-        public void GlossyRect(Graphics g, Rectangle bounds, Color a, Color b, float backColorAngle)
+        public void GlossyRect(Graphics? g, Rectangle bounds, Color a, Color b, float backColorAngle)
         {
             using (LinearGradientBrush backBrush = new LinearGradientBrush(bounds, a, b, HeaderBackColourAngle))
             {
-                g.FillRectangle(backBrush, bounds);
+                if (g != null)
+                {
+                    g.FillRectangle(backBrush, bounds);
+                }
             }
         }
 
-        ///' <summary>
-        ///' Shortcut to one on CalendarColourTable
-        ///' </summary>
-        ///' <param name="color"></param>
-        ///' <returns></returns>
+        //' <summary>
+        //' Shortcut to one on CalendarColourTable
+        //' </summary>
+        //' <param name="color"></param>
+        //' <returns></returns>
         //Private Shared Function FromHex(ByVal color As String) As Color
         //    Return CalendarColourTable.FromHex(color)
         //End Function
@@ -138,29 +161,53 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         public override void OnInitialize(CalendarRendererEventArgs e)
         {
             if (_palette != null)
-                e.Calendar.Font = _palette.GetContentShortTextFont(PaletteContentStyle.InputControlStandalone, PaletteState.Normal);
+            {
+                if (e.Calendar != null)
+                {
+                    if (e.Calendar != null)
+                    {
+                        e.Calendar.Font = _palette.GetContentShortTextFont(PaletteContentStyle.InputControlStandalone, PaletteState.Normal);
+                    }
+                }
+            }
+
             base.OnInitialize(e);
         }
 
         public override void OnDrawDayHeaderBackground(CalendarRendererDayEventArgs e)
         {
-            Rectangle r = e.Day.HeaderBounds;
+            if (e.Day != null)
+            {
+                Rectangle r = e.Day.HeaderBounds;
 
-            if (e.Day.Date == DateTime.Today)
-            {
-                GlossyRect(e.Graphics, e.Day.HeaderBounds, TodayA, TodayB, HeaderBackColourAngle);
-            }
-            else
-            {
-                GlossyRect(e.Graphics, e.Day.HeaderBounds, HeaderA, HeaderB, HeaderBackColourAngle);
-            }
-
-            if (e.Calendar.DaysMode == CalendarDaysMode.Short)
-            {
-                using (Pen p = new Pen(_palette.ColorTable.ButtonPressedBorder))
+                if (e.Day.Date == DateTime.Today)
                 {
-                    e.Graphics.DrawLine(p, r.Left, r.Top, r.Right, r.Top);
-                    e.Graphics.DrawLine(p, r.Left, r.Bottom, r.Right, r.Bottom);
+                    if (e.Day != null)
+                    {
+                        GlossyRect(e.Graphics, e.Day.HeaderBounds, TodayA, TodayB, HeaderBackColourAngle);
+                    }
+                }
+                else
+                {
+                    if (e.Day != null)
+                    {
+                        GlossyRect(e.Graphics, e.Day.HeaderBounds, HeaderA, HeaderB, HeaderBackColourAngle);
+                    }
+                }
+
+                if (e.Calendar != null && e.Calendar.DaysMode == CalendarDaysMode.Short)
+                {
+                    if (_palette != null)
+                    {
+                        using (Pen p = new Pen(_palette.ColorTable.ButtonPressedBorder))
+                        {
+                            if (e.Graphics != null)
+                            {
+                                e.Graphics.DrawLine(p, r.Left, r.Top, r.Right, r.Top);
+                                e.Graphics.DrawLine(p, r.Left, r.Bottom, r.Right, r.Bottom);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -169,20 +216,29 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnDrawItemBorder(e);
 
-            using (Pen p = new Pen(_palette.ColorTable.MenuItemSelectedGradientBegin))
+            if (_palette != null)
             {
-                e.Graphics.DrawLine(p, e.Bounds.Left + ItemRoundness, e.Bounds.Top + 1, e.Bounds.Right - ItemRoundness, e.Bounds.Top + 1);
+                using (Pen p = new Pen(_palette.ColorTable.MenuItemSelectedGradientBegin))
+                {
+                    if (e.Graphics != null)
+                    {
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.DrawLine(p, e.Bounds.Left + ItemRoundness, e.Bounds.Top + 1, e.Bounds.Right - ItemRoundness, e.Bounds.Top + 1);
+                        }
+                    }
+                }
             }
 
-            if (e.Item.Selected && !e.Item.IsDragging)
+            if (e.Item != null && e.Item.Selected && !e.Item.IsDragging)
             {
-                bool horizontal = false;
-                bool vertical = false;
+                bool horizontal;
+                bool vertical;
                 Rectangle r1 = new Rectangle(0, 0, 5, 5);
                 Rectangle r2 = new Rectangle(0, 0, 5, 5);
 
                 horizontal = e.Item.IsOnDayTop;
-                vertical = !e.Item.IsOnDayTop && e.Calendar.DaysMode == CalendarDaysMode.Expanded;
+                vertical = !e.Item.IsOnDayTop && e.Calendar!.DaysMode == CalendarDaysMode.Expanded;
 
                 if (horizontal)
                 {
@@ -200,18 +256,24 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     r2.X = r1.X;
                 }
 
-                if ((horizontal || vertical) && Calendar.AllowItemResize)
+                if (Calendar != null && (horizontal || vertical) && Calendar.AllowItemResize)
                 {
                     if (!e.Item.IsOpenStart && e.IsFirst)
                     {
-                        e.Graphics.FillRectangle(Brushes.White, r1);
-                        e.Graphics.DrawRectangle(Pens.Red, r1);
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.FillRectangle(Brushes.White, r1);
+                        }
+                        e.Graphics!.DrawRectangle(Pens.Red, r1);
                     }
 
                     if (!e.Item.IsOpenEnd && e.IsLast)
                     {
-                        e.Graphics.FillRectangle(Brushes.White, r2);
-                        e.Graphics.DrawRectangle(Pens.Red, r2);
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.FillRectangle(Brushes.White, r2);
+                        }
+                        e.Graphics!.DrawRectangle(Pens.Red, r2);
                     }
                 }
             }
@@ -220,7 +282,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         public override void OnDrawDayHeaderText(CalendarRendererBoxEventArgs e)
         {
             if (_palette != null)
+            {
                 e.TextColour = _palette.GetContentShortTextColor1(PaletteContentStyle.HeaderForm, PaletteState.Normal);
+            }
+
             base.OnDrawDayHeaderText(e);
         }
 

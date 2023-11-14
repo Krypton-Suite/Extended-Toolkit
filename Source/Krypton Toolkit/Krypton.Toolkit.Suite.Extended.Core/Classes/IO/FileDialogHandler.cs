@@ -1,10 +1,33 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
+
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -13,9 +36,22 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Variables
         private CommonFileDialog _commonFileDialog;
 
-        private CommonOpenFileDialog _openFileDialog;
+        private CommonOpenFileDialog _commonOpenFileDialog;
 
-        private CommonSaveFileDialog _saveFileDialog;
+        private CommonSaveFileDialog _commonSaveFileDialog;
+
+        private KryptonFolderBrowserDialog _kryptonFolderBrowserDialog;
+
+        private KryptonOpenFileDialog _kryptonOpenFileDialog;
+
+        private KryptonSaveFileDialog _kryptonSaveFileDialog;
+
+        private FolderBrowserDialog _folderBrowserDialog;
+
+        private OpenFileDialog _openFileDialog;
+
+        private SaveFileDialog _saveFileDialog;
+
         #endregion
 
         #region Constructor
@@ -26,33 +62,62 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Methods
-        //public static void CreateFileDialog(string title, bool isFolderPicker, string initialDirectory, CommonFileDialogFilter filter, string fileName = "")
-        //{
-        //    CommonFileDialog cfd = new CommonFileDialog()
-        //}
 
-        /// <summary>Creates a open file dialog.</summary>
+        /// <summary>Creates the open file dialog.</summary>
         /// <param name="title">The title.</param>
-        /// <param name="isFolderPicker">if set to <c>true</c> [is folder picker].</param>
+        /// <param name="isFolderPicker">if set to <c>true</c> [is folder picker]. (Only use if you are using the <see cref="FileDialogType.WindowsAPICodePack"/> type.)</param>
         /// <param name="initialDirectory">The initial directory.</param>
+        /// <param name="fileDialogType">Type of the file dialog.</param>
+        /// <param name="filters">The filters.</param>
         /// <param name="filter">The filter.</param>
-        public static void CreateOpenFileDialog(string title, bool isFolderPicker, string initialDirectory, CommonFileDialogFilter filter)
+        /// <exception cref="System.ArgumentOutOfRangeException">fileDialogType - null</exception>
+        public static void CreateOpenFileDialog(string title, bool isFolderPicker, string initialDirectory, FileDialogType fileDialogType = FileDialogType.Standard, string? filters = null, CommonFileDialogFilter? filter = null)
         {
-            CommonOpenFileDialog cofd = new CommonOpenFileDialog();
+            switch (fileDialogType)
+            {
+                case FileDialogType.Krypton:
+                    KryptonOpenFileDialog openFileDialog = new();
 
-            cofd.Title = title;
+                    openFileDialog.Title = title;
 
-            cofd.IsFolderPicker = isFolderPicker;
+                    openFileDialog.InitialDirectory = initialDirectory;
 
-            cofd.InitialDirectory = initialDirectory;
+                    if (!string.IsNullOrEmpty(filters))
+                    {
+                        openFileDialog.Filter = filters;
+                    }
 
-            cofd.Filters.Add(filter);
+                    FileDialogHandler fdh = new();
 
-            FileDialogHandler fileDialogHandler = new FileDialogHandler();
+                    fdh.SetKryptonOpenFileDialog(openFileDialog);
 
-            fileDialogHandler.SetOpenFileDialog(cofd);
+                    openFileDialog.ShowDialog();
+                    break;
+                case FileDialogType.Standard:
+                    break;
+                case FileDialogType.WindowsAPICodePack:
+                    CommonOpenFileDialog cofd = new();
 
-            cofd.ShowDialog();
+                    cofd.Title = title;
+
+                    cofd.IsFolderPicker = isFolderPicker;
+
+                    cofd.InitialDirectory = initialDirectory;
+
+                    if (filter != null)
+                    {
+                        cofd.Filters.Add(filter);
+                    }
+
+                    FileDialogHandler fileDialogHandler = new();
+
+                    fileDialogHandler.SetCommonOpenFileDialog(cofd);
+
+                    cofd.ShowDialog();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(fileDialogType), fileDialogType, null);
+            }
         }
 
         /// <summary>Creates a save file dialog.</summary>
@@ -61,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="filter">The filter.</param>
         public static void CreateSaveFileDialog(string title, string initialDirectory, CommonFileDialogFilter filter)
         {
-            CommonSaveFileDialog csfd = new CommonSaveFileDialog();
+            CommonSaveFileDialog csfd = new();
 
             csfd.Title = title;
 
@@ -69,9 +134,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             csfd.Filters.Add(filter);
 
-            FileDialogHandler fileDialogHandler = new FileDialogHandler();
+            FileDialogHandler fileDialogHandler = new();
 
-            fileDialogHandler.SetSaveFileDialog(csfd);
+            fileDialogHandler.SetCommonSaveFileDialog(csfd);
 
             csfd.ShowDialog();
         }
@@ -94,25 +159,34 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Sets the OpenFileDialog.
         /// </summary>
         /// <param name="value">The value.</param>
-        private void SetOpenFileDialog(CommonOpenFileDialog value) => _openFileDialog = value;
+        private void SetCommonOpenFileDialog(CommonOpenFileDialog value) => _commonOpenFileDialog = value;
 
         /// <summary>
         /// Gets the OpenFileDialog.
         /// </summary>
         /// <returns>The value of _openFileDialog.</returns>
-        public CommonOpenFileDialog GetOpenFileDialog() => _openFileDialog;
+        public CommonOpenFileDialog GetCommonOpenFileDialog() => _commonOpenFileDialog;
 
         /// <summary>
         /// Sets the SaveFileDialog.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void SetSaveFileDialog(CommonSaveFileDialog value) => _saveFileDialog = value;
+        public void SetCommonSaveFileDialog(CommonSaveFileDialog value) => _commonSaveFileDialog = value;
 
         /// <summary>
         /// Gets the SaveFileDialog.
         /// </summary>
         /// <returns>The value of _saveFileDialog.</returns>
-        public CommonSaveFileDialog GetSaveFileDialog() => _saveFileDialog;
+        public CommonSaveFileDialog GetCommonSaveFileDialog() => _commonSaveFileDialog;
+
+        public KryptonOpenFileDialog SetKryptonOpenFileDialog(KryptonOpenFileDialog value) => _kryptonOpenFileDialog = value;
+
+        public KryptonOpenFileDialog GetKryptonOpenFileDialog() => _kryptonOpenFileDialog;
+
+        public KryptonFolderBrowserDialog SeKryptonFolderBrowserDialog(KryptonFolderBrowserDialog dialog) => _kryptonFolderBrowserDialog = dialog;
+
+        public KryptonFolderBrowserDialog GeKryptonFolderBrowserDialog() => _kryptonFolderBrowserDialog;
+
         #endregion
     }
 }

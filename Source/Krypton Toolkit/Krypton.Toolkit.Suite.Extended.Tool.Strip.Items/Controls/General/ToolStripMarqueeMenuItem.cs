@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -11,7 +30,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
     public class ToolStripMarqueeMenuItem : EnhancedToolStripMenuItem
     {
         #region Constants
-        const MarqueeScrollDirection DEFAULT_MARQUEE_SCROLL_DIRECTION = MarqueeScrollDirection.RIGHTTOLEFT;
+
+        private const MarqueeScrollDirection DEFAULT_MARQUEE_SCROLL_DIRECTION = MarqueeScrollDirection.RightToLeft;
         const int DEFAULT_REFRESH_INTERVAL = 30;
         const int DEFAULT_SCROLL_STEP = 1;
         const bool DEFAULT_STOP_SCROLL_ON_MOUSE_OVER = true;
@@ -137,12 +157,16 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             _timer.Tick += new EventHandler(timer_Tick);
             _timer.Enabled = true;
 
-            if (MarqueeScrollDirection == MarqueeScrollDirection.RIGHTTOLEFT)
+            if (MarqueeScrollDirection == MarqueeScrollDirection.RightToLeft)
+            {
                 _pixelOffest = -_textSize.Width;
+            }
             else
+            {
                 _pixelOffest = _textSize.Width;
+            }
 
-            DisplayStyle = CheckMarkDisplayStyle.CHECKBOX;
+            DisplayStyle = CheckMarkDisplayStyle.CheckBox;
             CheckOnClick = false;
             CheckState = CheckState.Unchecked;
 
@@ -234,10 +258,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             Region savedClip = e.Graphics.Clip;
             Region clipRegion = new Region(clipRectangle);
             e.Graphics.Clip = clipRegion;
-            if (MarqueeScrollDirection == MarqueeScrollDirection.RIGHTTOLEFT)
+            if (MarqueeScrollDirection == MarqueeScrollDirection.RightToLeft)
+            {
                 e.Graphics.DrawString(_text, Font, Brushes.Black, -_pixelOffest + horizPadding, textYPosition);
+            }
             else
+            {
                 e.Graphics.DrawString(_text, Font, Brushes.Black, +_pixelOffest + horizPadding, textYPosition);
+            }
 
             clipRegion.Dispose();
             e.Graphics.Clip = savedClip;

@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="rowIndex">Index of the row.</param>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        protected override bool SetValue(int rowIndex, object value)
+        protected override bool SetValue(int rowIndex, object? value)
         {
             if (value != null && !((OutlookGridRow)OwningRow).IsGroupRow) //Test to catch crash when first column is text and image when grouping
             {
@@ -59,12 +59,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Overrides Clone
         /// </summary>
         /// <returns>The cloned KryptonDataGridViewTextAndImageCell</returns>
-        public override object Clone()
+        public override object? Clone()
         {
-            KryptonDataGridViewTextAndImageCell c = base.Clone() as KryptonDataGridViewTextAndImageCell;
-            c._imageValue = _imageValue;
-            c._imageSize = _imageSize;
-            return c;
+            KryptonDataGridViewTextAndImageCell? c = base.Clone() as KryptonDataGridViewTextAndImageCell;
+            if (c != null)
+            {
+                c._imageValue = _imageValue;
+                c._imageSize = _imageSize;
+                return c;
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -88,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     //{
                     Padding inheritedPadding = Style.Padding;
                     //Padding inheritedPadding = this.InheritedStyle.Padding;
-                    Style.Padding = new Padding(_imageSize.Width + 2,
+                    Style.Padding = new(_imageSize.Width + 2,
                         inheritedPadding.Top, inheritedPadding.Right,
                         inheritedPadding.Bottom);
                     //}
@@ -116,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (Value != null && ((TextAndImage)Value).Image != null)
             {
                 Padding inheritedPadding = Style.Padding;
-                Style.Padding = new Padding(_imageSize.Width + 2,
+                Style.Padding = new(_imageSize.Width + 2,
                     inheritedPadding.Top, inheritedPadding.Right,
                     inheritedPadding.Bottom);
                 //To be in phase with highlight feature who forces the style.
@@ -124,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 // Draw the image clipped to the cell.
                 GraphicsContainer container = graphics.BeginContainer();
                 graphics.SetClip(cellBounds);
-                graphics.DrawImage(((TextAndImage)Value).Image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + ((cellBounds.Height - 16) / 2) - 1, 16, 16));
+                graphics.DrawImage(((TextAndImage)Value).Image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + (cellBounds.Height - 16) / 2 - 1, 16, 16));
                 graphics.EndContainer(container);
             }
 

@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -133,8 +152,8 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                     _worker.RunWorkerAsync();
 
                     _txtScanOutput.Text = "";
-                    _txtScanOutput.AppendText("Starting port scan..." + Environment.NewLine);
-                    _txtScanOutput.AppendText("Port scanning host: " + _txtHost.Text + Environment.NewLine);
+                    _txtScanOutput.AppendText($"Starting port scan...{Environment.NewLine}");
+                    _txtScanOutput.AppendText($"Port scanning host: {_txtHost.Text}{Environment.NewLine}");
                     _txtScanOutput.AppendText(Environment.NewLine);
 
                     btn.Text = "Stop";
@@ -158,11 +177,11 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
             if (state.IsOpen)
             {
-                _txtScanOutput.AppendText("Port: " + state.Port.ToString() + ", open" + Environment.NewLine);
+                _txtScanOutput.AppendText($"Port: {state.Port}, open{Environment.NewLine}");
             }
             else
             {
-                _txtScanOutput.AppendText("Port: " + state.Port.ToString() + ", closed" + Environment.NewLine);
+                _txtScanOutput.AppendText($"Port: {state.Port}, closed{Environment.NewLine}");
             }
         }
 

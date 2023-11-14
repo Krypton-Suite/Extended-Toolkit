@@ -1,10 +1,32 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
+
+using Timer = System.Windows.Forms.Timer;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -13,13 +35,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Constructors
         public ToolTipManager()
         {
-            _startTimer = new Timer
+            _startTimer = new()
             {
                 Interval = 1200
             };
             _startTimer.Tick += OnStartTimerTick;
 
-            _stopTimer = new Timer
+            _stopTimer = new()
             {
                 Interval = 100
             };
@@ -42,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="hueValue">The hue value.</param>
         public void DisplayToolTip(ToolTip information, PictureBox target, string colourType, int alphaValue, int redValue, int greenValue, int blueValue, string hexValue, double hueValue)
         {
-            information.SetToolTip(target, $"{ colourType } Colour\nARGB: ({ alphaValue.ToString() }, { redValue.ToString() }, { greenValue.ToString() }, { blueValue.ToString() })\nRGB: ({ redValue.ToString() }, { greenValue.ToString() }, { blueValue.ToString() })\nHexadecimal Value: #{ hexValue.ToUpper() }\nHue Value: { hueValue.ToString() }");
+            information.SetToolTip(target, $"{colourType} Colour\nARGB: ({alphaValue.ToString()}, {redValue.ToString()}, {greenValue.ToString()}, {blueValue.ToString()})\nRGB: ({redValue.ToString()}, {greenValue.ToString()}, {blueValue.ToString()})\nHexadecimal Value: #{hexValue.ToUpper()}\nHue Value: {hueValue.ToString()}");
         }
 
         /// <summary>
@@ -59,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="hueValue">The hue value.</param>
         public static void DisplayToolTip(ToolTip information, CircularPictureBox target, string colourType, int alphaValue, int redValue, int greenValue, int blueValue, string hexValue, double hueValue)
         {
-            information.SetToolTip(target, $"{ colourType } Colour\nARGB: ({ alphaValue.ToString() }, { redValue.ToString() }, { greenValue.ToString() }, { blueValue.ToString() })\nRGB: ({ redValue.ToString() }, { greenValue.ToString() }, { blueValue.ToString() })\nHexadecimal Value: #{ hexValue.ToUpper() }\nHue Value: { hueValue.ToString() }");
+            information.SetToolTip(target, $"{colourType} Colour\nARGB: ({alphaValue.ToString()}, {redValue.ToString()}, {greenValue.ToString()}, {blueValue.ToString()})\nRGB: ({redValue.ToString()}, {greenValue.ToString()}, {blueValue.ToString()})\nHexadecimal Value: #{hexValue.ToUpper()}\nHue Value: {hueValue.ToString()}");
         }
 
         /// <summary>
@@ -107,12 +129,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private static string GetColourData(string colourDescription, Color selectedColour)
         {
-            return $"{ colourDescription } Colour\nARGB: ({ ConversionMethods.FormatColourARGBString(selectedColour) })\nRGB: ({ ConversionMethods.FormatColourRGBString(selectedColour) })\nHexadecimal: { ConversionMethods.FormatColourToHexadecimal(selectedColour) }";
+            return $"{colourDescription} Colour\nARGB: ({ConversionMethods.FormatColourARGBString(selectedColour)})\nRGB: ({ConversionMethods.FormatColourRGBString(selectedColour)})\nHexadecimal: {ConversionMethods.FormatColourToHexadecimal(selectedColour)}";
         }
 
         private static string GetColourDataExtra(string colourDescription, Color selectedColour)
         {
-            return $"{ colourDescription } Colour\nARGB: ({ ConversionMethods.FormatColourARGBString(selectedColour) })\nRGB: ({ ConversionMethods.FormatColourRGBString(selectedColour) })\nHexadecimal: { ConversionMethods.FormatColourToHexadecimal(selectedColour) }\n\nHue: { selectedColour.GetHue() }\nSaturation: { selectedColour.GetSaturation() }\nBrightness: { selectedColour.GetBrightness() }";
+            return $"{colourDescription} Colour\nARGB: ({ConversionMethods.FormatColourARGBString(selectedColour)})\nRGB: ({ConversionMethods.FormatColourRGBString(selectedColour)})\nHexadecimal: {ConversionMethods.FormatColourToHexadecimal(selectedColour)}\n\nHue: {selectedColour.GetHue()}\nSaturation: {selectedColour.GetSaturation()}\nBrightness: {selectedColour.GetBrightness()}";
         }
         #endregion
 
@@ -338,7 +360,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 _showingToolTips = true;
 
                 // Raise event requesting the tooltip be shown
-                OnShowToolTip(new ToolTipEventArgs(_startTarget, Control.MousePosition));
+                OnShowToolTip(new(_startTarget, Control.MousePosition));
             }
             else
             {
@@ -375,7 +397,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     _startTarget = _currentTarget;
 
                     // Raise event requesting the tooltip be shown
-                    OnShowToolTip(new ToolTipEventArgs(_startTarget, Control.MousePosition));
+                    OnShowToolTip(new(_startTarget, Control.MousePosition));
                 }
             }
         }

@@ -1,12 +1,29 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
-
-using Krypton.Toolkit.Suite.Extended.Tools;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
@@ -26,13 +43,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void InitializeComponent()
         {
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.kbtnExportException = new Krypton.Toolkit.KryptonButton();
-            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kchkDarkMode = new Krypton.Toolkit.KryptonCheckBox();
-            this.ktxtException = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonPanel1 = new();
+            this.kbtnCancel = new();
+            this.kbtnExportException = new();
+            this.kryptonBorderEdge1 = new();
+            this.kryptonPanel2 = new();
+            this.kchkDarkMode = new();
+            this.ktxtException = new();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -46,75 +63,75 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPanel1.Controls.Add(this.kbtnExportException);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 417);
+            this.kryptonPanel1.Location = new(0, 417);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kryptonPanel1.Size = new System.Drawing.Size(549, 50);
+            this.kryptonPanel1.Size = new(549, 50);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // kbtnCancel
             // 
             this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(447, 13);
+            this.kbtnCancel.Location = new(447, 13);
             this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCancel.Size = new(90, 25);
             this.kbtnCancel.TabIndex = 2;
             this.kbtnCancel.Values.Text = "C&ancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnCancel.Click += new(this.kbtnCancel_Click);
             // 
             // kbtnExportException
             // 
             this.kbtnExportException.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.kbtnExportException.Location = new System.Drawing.Point(13, 13);
+            this.kbtnExportException.Location = new(13, 13);
             this.kbtnExportException.Name = "kbtnExportException";
-            this.kbtnExportException.Size = new System.Drawing.Size(119, 25);
+            this.kbtnExportException.Size = new(119, 25);
             this.kbtnExportException.TabIndex = 1;
             this.kbtnExportException.Values.Text = "Export &Exception";
-            this.kbtnExportException.Click += new System.EventHandler(this.kbtnExportException_Click);
+            this.kbtnExportException.Click += new(this.kbtnExportException_Click);
             // 
             // kryptonBorderEdge1
             // 
             this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
             this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Location = new(0, 0);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(549, 1);
+            this.kryptonBorderEdge1.Size = new(549, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // kryptonPanel2
             // 
             this.kryptonPanel2.Controls.Add(this.ktxtException);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel2.Location = new(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(549, 417);
+            this.kryptonPanel2.Size = new(549, 417);
             this.kryptonPanel2.TabIndex = 1;
             // 
             // kchkDarkMode
             // 
-            this.kchkDarkMode.Location = new System.Drawing.Point(139, 17);
+            this.kchkDarkMode.Location = new(139, 17);
             this.kchkDarkMode.Name = "kchkDarkMode";
-            this.kchkDarkMode.Size = new System.Drawing.Size(84, 20);
+            this.kchkDarkMode.Size = new(84, 20);
             this.kchkDarkMode.TabIndex = 4;
             this.kchkDarkMode.Values.Text = "D&ark Mode";
-            this.kchkDarkMode.CheckedChanged += new System.EventHandler(this.kchkDarkMode_CheckedChanged);
+            this.kchkDarkMode.CheckedChanged += new(this.kchkDarkMode_CheckedChanged);
             // 
             // ktxtException
             // 
             this.ktxtException.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ktxtException.Location = new System.Drawing.Point(12, 12);
+            this.ktxtException.Location = new(12, 12);
             this.ktxtException.Multiline = true;
             this.ktxtException.Name = "ktxtException";
             this.ktxtException.ReadOnly = true;
-            this.ktxtException.Size = new System.Drawing.Size(525, 395);
+            this.ktxtException.Size = new(525, 395);
             this.ktxtException.TabIndex = 0;
             // 
             // KryptonExceptionCaptureDialog
             // 
-            this.ClientSize = new System.Drawing.Size(549, 467);
+            this.ClientSize = new(549, 467);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -189,7 +206,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             if (showFullDetails)
             {
-                StringBuilder builder = new StringBuilder();
+                StringBuilder builder = new();
 
                 builder.Append($"{exception.Message}\n{exception.StackTrace}");
 
@@ -215,7 +232,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         // TODO: Rewrite once build 2108 is out
         private void ToggleDarkMode(bool darkMode)
         {
-            ThemeSettingsManager theme = new ThemeSettingsManager();
+            ThemeSettingsManager theme = new();
 
             if (darkMode)
             {
@@ -234,21 +251,21 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void kbtnExportException_Click(object sender, EventArgs e)
         {
-            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(ktxtException.Text))
+            if (string.IsNullOrWhiteSpace(ktxtException.Text))
             {
-                KryptonMessageBox.Show("No content was found!", "Save Information", MessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
+                KryptonMessageBox.Show("No content was found!", "Save Information", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
             }
             else
             {
-                SaveFileDialog csfd = new SaveFileDialog();
+                SaveFileDialog csfd = new();
 
                 csfd.FileName = "Exception Capture";
 
-                csfd.Filter = "Text Files|*.txt";
+                csfd.Filter = @"Text Files|*.txt";
 
                 if (csfd.ShowDialog() == DialogResult.OK)
                 {
-                    StreamWriter writer = new StreamWriter(Path.GetFullPath(csfd.FileName));
+                    StreamWriter writer = new(Path.GetFullPath(csfd.FileName));
 
                     writer.Write(ktxtException.Text);
 
@@ -258,7 +275,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
                     writer.Dispose();
 
-                    DialogResult result = KryptonMessageBox.Show($"The exception has been written to file: '{Path.GetFullPath(csfd.FileName)}'.\nDo you want to view it now?", "Success", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                    DialogResult result = KryptonMessageBox.Show($"The exception has been written to file: '{Path.GetFullPath(csfd.FileName)}'.\nDo you want to view it now?", "Success", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {

@@ -1,11 +1,31 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+// ReSharper disable UnusedVariable
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
@@ -24,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             set
             {
                 _values = value;
-                Normalized = Normalize(value);
+                _normalized = Normalize(value);
             }
         }
         /// <summary>
@@ -65,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public string Label;
 
-        private double[] Normalized;
+        private double[] _normalized;
 
         public CoxcombPlot(double[] values, Color[] fillColors)
         {
@@ -75,10 +95,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
-            int numCategories = Normalized.Length;
+            int numCategories = _normalized.Length;
             PointF origin = new PointF(dims.GetPixelX(0), dims.GetPixelY(0));
             double sweepAngle = 360f / numCategories;
-            double maxRadiusPixels = new double[] { dims.PxPerUnitX, dims.PxPerUnitX }.Min();
+            double maxRadiusPixels = new[] { dims.PxPerUnitX, dims.PxPerUnitX }.Min();
             double maxDiameterPixels = maxRadiusPixels * 2;
 
 
@@ -91,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             for (int i = 0; i < numCategories; i++)
             {
                 double angle = (Math.PI / 180) * ((sweepAngle + 2 * start) / 2);
-                float diameter = (float)(maxDiameterPixels * Normalized[i]);
+                float diameter = (float)(maxDiameterPixels * _normalized[i]);
                 sliceFillBrush.Color = FillColors[i];
 
                 gfx.FillPie(brush: sliceFillBrush,
@@ -108,19 +128,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         private void RenderAxis(Graphics gfx, PlotDimensions dims, Bitmap bmp, bool lowQuality)
         {
-            double[,] Norm = new double[Normalized.Length, 1];
-            for (int i = 0; i < Normalized.Length; i++)
+            double[,] norm = new double[_normalized.Length, 1];
+            for (int i = 0; i < _normalized.Length; i++)
             {
-                Norm[i, 0] = Normalized[i];
+                norm[i, 0] = _normalized[i];
             }
 
-            StarAxisTick[] Ticks = new double[] { 0.25, 0.5, 1 }
+            StarAxisTick[] ticks = new[] { 0.25, 0.5, 1 }
                 .Select(x => new StarAxisTick(x, Values.Max()))
                 .ToArray();
 
             StarAxis axis = new()
             {
-                Ticks = Ticks,
+                Ticks = ticks,
                 CategoryLabels = SliceLabels,
                 AxisType = AxisType,
                 WebColor = WebColor,
@@ -137,32 +157,29 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         private static double[] Normalize(double[] values)
         {
-            double Max = values.Max();
+            double max = values.Max();
 
-            if (Max == 0)
+            if (max == 0)
             {
                 return values.Select(_ => 0.0).ToArray();
             }
 
-            return values.Select(v => v / Max).ToArray();
+            return values.Select(v => v / max).ToArray();
         }
 
         public LegendItem[] GetLegendItems()
         {
-            if (SliceLabels is null)
-                return null;
-
             return Enumerable
                 .Range(0, Values.Length)
                 .Select(i => new LegendItem() { label = SliceLabels[i], color = FillColors[i], lineWidth = 10 })
                 .ToArray();
         }
 
-        public AxisLimits GetAxisLimits() => new AxisLimits(-2.5, 2.5, -2.5, 2.5);
+        public AxisLimits GetAxisLimits() => new(-2.5, 2.5, -2.5, 2.5);
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottableCoxcomb {label} with {Values.Length} categories";
         }
 

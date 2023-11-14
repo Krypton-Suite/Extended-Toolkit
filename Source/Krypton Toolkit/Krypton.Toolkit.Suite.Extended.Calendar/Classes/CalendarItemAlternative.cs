@@ -1,11 +1,31 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+#pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -50,10 +70,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private int _minuteEndTop;
         private HatchStyle _pattern;
         private Color _patternColor;
-        private List<CalendarTimeScaleUnit> _unitsPassing;
-        private List<CalendarDayTop> _topsPassing;
+        private List<CalendarTimeScaleUnit?> _unitsPassing;
+        private List<CalendarDayTop?> _topsPassing;
         private object _tag;
-        private string _text;
+        private string? _text;
         #endregion
 
         #region Ctor
@@ -64,8 +84,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="calendar">Calendar to reference item</param>
         public CalendarItemAlternative(KryptonCalendar calendar) : base(calendar)
         {
-            _unitsPassing = new List<CalendarTimeScaleUnit>();
-            _topsPassing = new List<CalendarDayTop>();
+            _unitsPassing = new List<CalendarTimeScaleUnit?>();
+            _topsPassing = new List<CalendarDayTop?>();
             _backgroundColour = Color.Empty;
             _borderColour = Color.Empty;
             _oreColour = Color.Empty;
@@ -80,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="startDate">Start date of the item</param>
         /// <param name="endDate">End date of the item</param>
         /// <param name="text">Text of the item</param>
-        public CalendarItemAlternative(KryptonCalendar calendar, DateTime startDate, DateTime endDate, string text) : this(calendar)
+        public CalendarItemAlternative(KryptonCalendar calendar, DateTime startDate, DateTime endDate, string? text) : this(calendar)
         {
             StartDate = startDate;
             EndDate = endDate;
@@ -94,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="startDate">Start date of the item</param>
         /// <param name="duration">Duration of the item</param>
         /// <param name="text">Text of the item</param>
-        public CalendarItemAlternative(KryptonCalendar calendar, DateTime startDate, TimeSpan duration, string text) : this(calendar, startDate, startDate.Add(duration), text)
+        public CalendarItemAlternative(KryptonCalendar calendar, DateTime startDate, TimeSpan duration, string? text) : this(calendar, startDate, startDate.Add(duration), text)
         { }
 
         #endregion
@@ -102,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #region Properties
 
         /// <summary>
-        /// Gets or sets an array of rectangles containing bounds additional to <see cref="Bounds"/> property.
+        /// Gets or sets an array of rectangles containing bounds additional to <see cref="CalendarSelectableElement.Bounds"/> property.
         /// </summary>
         /// <remarks>
         /// Items may contain additional bounds because of several graphical occourences, mostly when <see cref="Calendar"/> in 
@@ -155,7 +175,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// since this date can be out of the range of the current view.
         /// <para>If Item is not on view date range this property will return null.</para>
         /// </remarks>
-        public CalendarDay DayEnd
+        public CalendarDay? DayEnd
         {
             get
             {
@@ -182,7 +202,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// since start date can be out of the range of the current view.
         /// <para>If Item is not on view date range this property will return null.</para>
         /// </remarks>
-        public CalendarDay DayStart
+        public CalendarDay? DayStart
         {
             get
             {
@@ -234,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the text of the end date
         /// </summary>
-        public virtual string EndDateText
+        public virtual string? EndDateText
         {
             get
             {
@@ -313,8 +333,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             get
             {
                 //Checks for an intersection of item's dates against calendar dates
-                DateTime fd = Calendar.Days[0].Date;
-                DateTime ld = Calendar.Days[Calendar.Days.Length - 1].Date.Add(new TimeSpan(23, 59, 59));
+                DateTime fd = Calendar.Days[0]!.Date;
+                DateTime ld = Calendar.Days[Calendar.Days.Length - 1]!.Date.Add(new TimeSpan(23, 59, 59));
                 DateTime sd = StartDate;
                 DateTime ed = EndDate;
                 return sd < ld && fd < ed;
@@ -324,12 +344,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets a value indicating if the item's <see cref="StartDate"/> is before the <see cref="Calendar.ViewStart"/> date.
         /// </summary>
-        public bool IsOpenStart => StartDate.CompareTo(Calendar.Days[0].Date) < 0;
+        public bool IsOpenStart => StartDate.CompareTo(Calendar.Days[0]!.Date) < 0;
 
         /// <summary>
-        /// Gets a value indicating if the item's <see cref="EndDate"/> is aftter the <see cref="Calendar.ViewEnd"/> date.
+        /// Gets a value indicating if the item's <see cref="EndDate"/> is after the <see cref="Calendar.ViewEnd"/> date.
         /// </summary>
-        public bool IsOpenEnd => EndDate.CompareTo(Calendar.Days[Calendar.Days.Length - 1].Date.Add(new TimeSpan(23, 59, 59))) > 0;
+        public bool IsOpenEnd => EndDate.CompareTo(Calendar.Days[Calendar.Days.Length - 1]!.Date.Add(new TimeSpan(23, 59, 59))) > 0;
 
         /// <summary>
         /// Gets a value indicating if item is being resized by the <see cref="StartDate"/>
@@ -368,7 +388,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets or sets the units that this item passes by
         /// </summary>
-        internal List<CalendarTimeScaleUnit> UnitsPassing
+        internal List<CalendarTimeScaleUnit?> UnitsPassing
         {
             get => _unitsPassing;
             set => _unitsPassing = value;
@@ -397,7 +417,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the list of DayTops that this item passes thru
         /// </summary>
-        internal List<CalendarDayTop> TopsPassing => _topsPassing;
+        internal List<CalendarDayTop?> TopsPassing => _topsPassing;
 
         /// <summary>
         /// Gets a value indicating if the item should show the time of the <see cref="StartDate"/>
@@ -415,7 +435,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the text of the start date
         /// </summary>
-        public virtual string StartDateText
+        public virtual string? StartDateText
         {
             get
             {
@@ -462,7 +482,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets or sets the text of the item
         /// </summary>
-        public virtual string Text
+        public virtual string? Text
         {
             get => _text;
             set => _text = value;
@@ -585,7 +605,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Indicates if the time of the item intersects with the provided time
         /// </summary>
-        /// <param name="time"></param>
+        /// <param name="timeStart"></param>
+        /// <param name="timeEnd"></param>
         /// <returns></returns>
         public bool IntersectsWith(TimeSpan timeStart, TimeSpan timeEnd)
         {
@@ -609,7 +630,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="r"></param>
         internal void AddBounds(Rectangle r)
         {
-            if (r.IsEmpty) throw new ArgumentException("r can't be empty");
+            if (r.IsEmpty)
+            {
+                throw new ArgumentException("r can't be empty");
+            }
 
             if (Bounds.IsEmpty)
             {
@@ -617,7 +641,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             }
             else
             {
-                List<Rectangle> rs = new List<Rectangle>(AditionalBounds == null ? new Rectangle[] { } : AditionalBounds);
+                List<Rectangle> rs = new List<Rectangle>(false ? new Rectangle[] { } : AditionalBounds);
                 rs.Add(r);
                 AditionalBounds = rs.ToArray();
             }
@@ -627,7 +651,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Adds the specified unit as a passing unit
         /// </summary>
         /// <param name="calendarTimeScaleUnit"></param>
-        internal void AddUnitPassing(CalendarTimeScaleUnit calendarTimeScaleUnit)
+        internal void AddUnitPassing(CalendarTimeScaleUnit? calendarTimeScaleUnit)
         {
             if (!UnitsPassing.Contains(calendarTimeScaleUnit))
             {
@@ -639,7 +663,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Adds the specified <see cref="CalendarDayTop"/> as a passing one
         /// </summary>
         /// <param name="top"></param>
-        internal void AddTopPassing(CalendarDayTop top)
+        internal void AddTopPassing(CalendarDayTop? top)
         {
             if (!TopsPassing.Contains(top))
             {
@@ -652,9 +676,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         internal void ClearPassings()
         {
-            foreach (CalendarTimeScaleUnit unit in UnitsPassing)
+            foreach (CalendarTimeScaleUnit? unit in UnitsPassing)
             {
-                unit.ClearItemExistance(this);
+                if (unit != null)
+                {
+                    unit.ClearItemExistance(this);
+                }
             }
 
             UnitsPassing.Clear();
@@ -679,22 +706,33 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         internal void FirstAndLastRectangleGapping()
         {
             if (!IsOpenStart)
-                SetBounds(Rectangle.FromLTRB(Bounds.Left + Calendar.Renderer.ItemsPadding,
-                    Bounds.Top, Bounds.Right, Bounds.Bottom));
+            {
+                if (Calendar.Renderer != null)
+                {
+                    SetBounds(Rectangle.FromLTRB(Bounds.Left + Calendar.Renderer.ItemsPadding,
+                        Bounds.Top, Bounds.Right, Bounds.Bottom));
+                }
+            }
 
             if (!IsOpenEnd)
             {
-                if (AditionalBounds != null && AditionalBounds.Length > 0)
+                if (AditionalBounds.Length > 0)
                 {
                     Rectangle r = AditionalBounds[AditionalBounds.Length - 1];
-                    AditionalBounds[AditionalBounds.Length - 1] = Rectangle.FromLTRB(
-                        r.Left, r.Top, r.Right - Calendar.Renderer.ItemsPadding, r.Bottom);
+                    if (Calendar.Renderer != null)
+                    {
+                        AditionalBounds[AditionalBounds.Length - 1] = Rectangle.FromLTRB(
+                            r.Left, r.Top, r.Right - Calendar.Renderer.ItemsPadding, r.Bottom);
+                    }
                 }
                 else
                 {
                     Rectangle r = Bounds;
-                    SetBounds(Rectangle.FromLTRB(
-                        r.Left, r.Top, r.Right - Calendar.Renderer.ItemsPadding, r.Bottom));
+                    if (Calendar.Renderer != null)
+                    {
+                        SetBounds(Rectangle.FromLTRB(
+                            r.Left, r.Top, r.Right - Calendar.Renderer.ItemsPadding, r.Bottom));
+                    }
                 }
             }
         }

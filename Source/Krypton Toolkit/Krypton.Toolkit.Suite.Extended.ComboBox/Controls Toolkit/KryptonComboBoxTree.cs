@@ -1,24 +1,52 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.ComboBox
+﻿#region MIT License
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+#endregion
+
+#pragma warning disable CS8622
+namespace Krypton.Toolkit.Suite.Extended.ComboBox
 {
     public delegate void NodeSelectEventHandler();
 
     /// <summary>
     /// ComboBoxTree control is a treeview that drops down much like a combobox
     /// </summary>
-    [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.ComboBox))]
+    [ToolboxBitmap(typeof(System.Windows.Forms.ComboBox))]
     public sealed class KryptonComboBoxTree : Control
     {
         #region Private Fields
         private KryptonPanel pnlBack;
         private Panel pnlTree;
-        private Krypton.Toolkit.KryptonComboBox combobox;
+        private KryptonComboBox combobox;
         private KryptonTreeView tvTreeView;
         private LabelEx lblSizingGrip;
         private Form frmTreeView;
 
         private string _branchSeparator;
         private bool _absoluteChildrenSelectableOnly;
-        private System.Drawing.Point DragOffset;
+        private Point DragOffset;
         #endregion
 
         #region Public Properties
@@ -39,10 +67,10 @@
         }
 
         [Browsable(false)]
-        public Toolkit.KryptonComboBox ComboBox { get => combobox; set => combobox = value; }
+        public KryptonComboBox ComboBox { get => combobox; set => combobox = value; }
 
         [Browsable(true), Description("Gets or sets the TreeView's Selected Node"), Category("TreeView")]
-        public ImageList Imagelist { get => tvTreeView.ImageList; set => tvTreeView.ImageList = value; }
+        public ImageList? Imagelist { get => tvTreeView.ImageList; set => tvTreeView.ImageList = value; }
 
         [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Appearance")]
         public string BranchSeparator
@@ -51,7 +79,7 @@
 
             set
             {
-                if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(value) && value.Length > 0)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length > 0)
                 {
                     _branchSeparator = value.Substring(0, 1);
                 }
@@ -68,7 +96,7 @@
             InitializeComponent();
 
             // Initializing Controls
-            pnlBack = new Krypton.Toolkit.KryptonPanel();
+            pnlBack = new KryptonPanel();
             pnlBack.BorderStyle = BorderStyle.None;
             pnlBack.Dock = DockStyle.Fill;
             pnlBack.AutoScroll = false;
@@ -98,7 +126,7 @@
             pnlTree.BorderStyle = BorderStyle.FixedSingle;
             pnlTree.BackColor = Color.White;
 
-            combobox = new Krypton.Toolkit.KryptonComboBox();
+            combobox = new KryptonComboBox();
             combobox.DropDownStyle = ComboBoxStyle.DropDownList;
             combobox.Dock = DockStyle.Fill;
             combobox.ComboBox.Click += new EventHandler(ToggleTreeView);
@@ -124,12 +152,12 @@
             lblSizingGrip.Left = frmTreeView.Width - lblSizingGrip.Width - 1;
         }
 
-        private void ToggleTreeView(object sender, EventArgs e)
+        private void ToggleTreeView(object? sender, EventArgs? e)
         {
             if (!frmTreeView.Visible)
             {
-                Rectangle CBRect = RectangleToScreen(ClientRectangle);
-                frmTreeView.Location = new Point(CBRect.X, CBRect.Y + pnlBack.Height);
+                Rectangle cbRect = RectangleToScreen(ClientRectangle);
+                frmTreeView.Location = new Point(cbRect.X, cbRect.Y + pnlBack.Height);
 
                 frmTreeView.Show();
                 frmTreeView.BringToFront();
@@ -163,7 +191,9 @@
                 }
 
                 if (!nodeFound)
+                {
                     return false;
+                }
             }
 
             return true;
@@ -181,9 +211,14 @@
                 TvHeight = TvHeight + DragOffset.Y;
 
                 if (TvWidth < 50)
+                {
                     TvWidth = 50;
+                }
+
                 if (TvHeight < 50)
+                {
                     TvHeight = 50;
+                }
 
                 frmTreeView.Size = new Size(TvWidth, TvHeight);
                 pnlTree.Size = frmTreeView.Size;
@@ -214,7 +249,7 @@
             }
         }
 
-        private void TreeViewNodeSelect(object sender, EventArgs e)
+        private void TreeViewNodeSelect(object? sender, EventArgs? e)
         {
             if (tvTreeView.SelectedNode != null)
             {
@@ -247,7 +282,7 @@
             //
             Name = "ComboBoxTree";
             _absoluteChildrenSelectableOnly = true;
-            Layout += new System.Windows.Forms.LayoutEventHandler(ComboBoxTree_Layout);
+            Layout += new LayoutEventHandler(ComboBoxTree_Layout);
 
         }
 
@@ -329,7 +364,7 @@
             {
                 base.OnPaint(e);
 
-                System.Windows.Forms.ControlPaint.DrawComboButton(e.Graphics, e.ClipRectangle, state);
+                ControlPaint.DrawComboButton(e.Graphics, e.ClipRectangle, state);
             }
         }
         #endregion

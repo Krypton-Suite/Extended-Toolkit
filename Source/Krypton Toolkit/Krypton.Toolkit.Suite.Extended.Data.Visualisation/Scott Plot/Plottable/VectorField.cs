@@ -1,11 +1,31 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+// ReSharper disable UnusedParameter.Local
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
@@ -13,46 +33,46 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     /// </summary>
     public class VectorField : IPlottable
     {
-        private readonly double[] Xs;
-        private readonly double[] Ys;
-        private readonly Vector2[,] Vectors;
-        private readonly Color[] VectorColors;
+        private readonly double[] _xs;
+        private readonly double[] _ys;
+        private readonly Vector2[,] _vectors;
+        private readonly Color[] _vectorColors;
         public string Label;
         public bool IsVisible { get; set; } = true;
         public int XAxisIndex { get; set; } = 0;
         public int YAxisIndex { get; set; } = 0;
 
-        private readonly ArrowStyle ArrowStyle = new();
+        private readonly ArrowStyle _arrowStyle = new();
 
         /// <summary>
         /// Describes which part of the vector line will be placed at the data coordinates.
         /// </summary>
-        public ArrowAnchor Anchor { get => ArrowStyle.Anchor; set => ArrowStyle.Anchor = value; }
+        public ArrowAnchor Anchor { get => _arrowStyle.Anchor; set => _arrowStyle.Anchor = value; }
 
         /// <summary>
         /// If enabled arrowheads will be drawn as lines scaled to each vector's magnitude.
         /// </summary>
-        public bool ScaledArrowheads { get => ArrowStyle.ScaledArrowheads; set => ArrowStyle.ScaledArrowheads = value; }
+        public bool ScaledArrowheads { get => _arrowStyle.ScaledArrowheads; set => _arrowStyle.ScaledArrowheads = value; }
 
         /// <summary>
         /// When using scaled arrowheads this defines the width of the arrow relative to the vector line's length.
         /// </summary>
-        public double ScaledArrowheadWidth { get => ArrowStyle.ScaledArrowheadWidth; set => ArrowStyle.ScaledArrowheadWidth = value; }
+        public double ScaledArrowheadWidth { get => _arrowStyle.ScaledArrowheadWidth; set => _arrowStyle.ScaledArrowheadWidth = value; }
 
         /// <summary>
         /// When using scaled arrowheads this defines length of the arrowhead relative to the vector line's length.
         /// </summary>
-        public double ScaledArrowheadLength { get => ArrowStyle.ScaledArrowheadLength; set => ArrowStyle.ScaledArrowheadLength = value; }
+        public double ScaledArrowheadLength { get => _arrowStyle.ScaledArrowheadLength; set => _arrowStyle.ScaledArrowheadLength = value; }
 
         /// <summary>
         /// Marker drawn at each coordinate
         /// </summary>
-        public MarkerShape MarkerShape { get => ArrowStyle.MarkerShape; set => ArrowStyle.MarkerShape = value; }
+        public MarkerShape MarkerShape { get => _arrowStyle.MarkerShape; set => _arrowStyle.MarkerShape = value; }
 
         /// <summary>
         /// Size of markers to be drawn at each coordinate
         /// </summary>
-        public float MarkerSize { get => ArrowStyle.MarkerSize; set => ArrowStyle.MarkerSize = value; }
+        public float MarkerSize { get => _arrowStyle.MarkerSize; set => _arrowStyle.MarkerSize = value; }
 
         public VectorField(Vector2[,] vectors, double[] xs, double[] ys, ColourMap colormap, double scaleFactor, Color defaultColor)
         {
@@ -63,9 +83,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 for (int j = 0; j < ys.Length; j++)
                 {
                     if (vectors[i, j].LengthSquared() > maxMagnitudeSquared)
+                    {
                         maxMagnitudeSquared = vectors[i, j].LengthSquared();
+                    }
                     else if (vectors[i, j].LengthSquared() < minMagnitudeSquared)
+                    {
                         minMagnitudeSquared = vectors[i, j].LengthSquared();
+                    }
                 }
             }
             double minMagnitude = Math.Sqrt(minMagnitudeSquared);
@@ -77,19 +101,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 for (int j = 0; j < ys.Length; j++)
                 {
                     if (colormap != null)
+                    {
                         intensities[i, j] = (vectors[i, j].Length() - minMagnitude) / (maxMagnitude - minMagnitude);
+                    }
+
                     vectors[i, j] = Vector2.Multiply(vectors[i, j], (float)(scaleFactor / (maxMagnitude * 1.2)));
                 }
             }
 
             double[] flattenedIntensities = intensities.Cast<double>().ToArray();
-            VectorColors = colormap is null ?
+            _vectorColors = colormap is null ?
                 Enumerable.Range(0, flattenedIntensities.Length).Select(x => defaultColor).ToArray() :
                 ColourMap.GetColours(flattenedIntensities, colormap);
 
-            this.Vectors = vectors;
-            this.Xs = xs;
-            this.Ys = ys;
+            _vectors = vectors;
+            _xs = xs;
+            _ys = ys;
         }
 
         public void ValidateData(bool deep = false) { /* validation occurs in constructor */ }
@@ -99,30 +126,32 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             var singleLegendItem = new LegendItem()
             {
                 label = Label,
-                color = VectorColors[0],
+                color = _vectorColors[0],
                 lineWidth = 10,
-                markerShape = MarkerShape.NONE
+                markerShape = MarkerShape.None
             };
-            return new LegendItem[] { singleLegendItem };
+            return new[] { singleLegendItem };
         }
 
-        public AxisLimits GetAxisLimits() => new AxisLimits(Xs.Min() - 1, Xs.Max() + 1, Ys.Min() - 1, Ys.Max() + 1);
+        public AxisLimits GetAxisLimits() => new(_xs.Min() - 1, _xs.Max() + 1, _ys.Min() - 1, _ys.Max() + 1);
 
-        public int PointCount => Vectors.Length;
+        public int PointCount => _vectors.Length;
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             using Graphics gfx = GDI.Graphics(bmp, dims, lowQuality);
 
-            ArrowStyle.Render(dims, gfx, Xs, Ys, Vectors, VectorColors);
+            _arrowStyle.Render(dims, gfx, _xs, _ys, _vectors, _vectorColors);
         }
 
         public override string ToString()
         {
-            string label = string.IsNullOrWhiteSpace(this.Label) ? "" : $" ({this.Label})";
+            string label = string.IsNullOrWhiteSpace(Label) ? "" : $" ({Label})";
             return $"PlottableVectorField{label} with {PointCount} vectors";
         }
     }

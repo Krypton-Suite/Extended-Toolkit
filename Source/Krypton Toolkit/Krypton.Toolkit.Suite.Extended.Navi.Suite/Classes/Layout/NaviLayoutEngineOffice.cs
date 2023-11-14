@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -100,7 +119,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 band.Renderer = renderer;
                 if (band.Button != null)
+                {
                     band.Button.Renderer = renderer;
+                }
             }
 
             CreateAdditionalControls();
@@ -128,7 +149,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 band.Renderer = renderer;
 
                 if (!Bar.InternalControls.Contains(band.Button))
+                {
                     Bar.Controls.Add(band.Button);
+                }
 
                 Bar.BandInitRequired = false;
             }
@@ -165,13 +188,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             InitializeMenu();
 
             if (!Bar.Controls.Contains(optionsButton))
+            {
                 Bar.Controls.Add(optionsButton);
+            }
 
             if (!Bar.Controls.Contains(collapseButton))
+            {
                 Bar.Controls.Add(collapseButton);
+            }
 
             if (!Bar.Controls.Contains(collapsedBand))
+            {
                 Bar.Controls.Add(collapsedBand);
+            }
         }
 
         /// <summary>
@@ -180,11 +209,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public void InitializeAdditionalControls()
         {
             if (collapseButton != null)
+            {
                 collapseButton.Renderer = renderer;
+            }
+
             if (collapsedBand != null)
+            {
                 collapsedBand.Renderer = renderer;
+            }
+
             if (optionsButton != null)
+            {
                 optionsButton.Renderer = renderer;
+            }
         }
 
         /// <summary>
@@ -193,11 +230,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public void DisposeAdditionalControls()
         {
             if (Bar.Controls.Contains(optionsButton))
+            {
                 Bar.Controls.Remove(optionsButton);
+            }
+
             if (Bar.Controls.Contains(collapseButton))
+            {
                 Bar.Controls.Remove(collapseButton);
+            }
+
             if (Bar.Controls.Contains(collapsedBand))
+            {
                 Bar.Controls.Remove(collapsedBand);
+            }
         }
 
         public override void Cleanup()
@@ -222,12 +267,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 // The smallButtonRectangle is used to calculate the amount of overflow buttons
                 if (Bar.RightToLeft == RightToLeft.Yes)
+                {
                     smallButtonRectangle = new Rectangle(1 + optionButtonWidth, Bar.Height - Bar.MinimizedPanelHeight, Bar.Width - 2 - optionButtonWidth, Bar.MinimizedPanelHeight - 1);
+                }
                 else
+                {
                     smallButtonRectangle = new Rectangle(1, Bar.Height - Bar.MinimizedPanelHeight, Bar.Width - 2 - optionButtonWidth, Bar.MinimizedPanelHeight - 1);
+                }
             }
             else
+            {
                 smallButtonRectangle = new Rectangle(1, Bar.Height - Bar.MinimizedPanelHeight, Bar.Width - 2, Bar.MinimizedPanelHeight - 1);
+            }
         }
 
         /// <summary>
@@ -236,7 +287,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public override bool Layout(object container, System.Windows.Forms.LayoutEventArgs layoutEventArgs)
         {
             if (Bar.BandInitRequired)
+            {
                 InitializeBands();
+            }
 
             if (Bar.Collapsed != currentCollapseState)
             {
@@ -245,7 +298,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             }
 
             if (layoutEventArgs.AffectedProperty == "RightToLeft")
+            {
                 LayoutMenu();
+            }
 
             CalculateRegions();
             CalculateButtonLayout();
@@ -271,9 +326,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 optionsButton.Visible = true;
 
                 if (Bar.RightToLeft == RightToLeft.Yes)
+                {
                     optionsButton.Location = new Point(1, smallButtonRectangle.Top);
+                }
                 else
+                {
                     optionsButton.Location = new Point(Bar.Width - (optionButtonWidth + 1), smallButtonRectangle.Top);
+                }
             }
             else
             {
@@ -285,9 +344,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             collapseButton.Size = new Size(Bar.HeaderHeight, Bar.HeaderHeight - 3);
 
             if (Bar.RightToLeft == RightToLeft.Yes)
+            {
                 collapseButton.Location = new Point(4, 2); // (Bar.HeaderHeight / 2) + 3);
+            }
             else
+            {
                 collapseButton.Location = new Point(Bar.Width - Bar.HeaderHeight - 3, 2); // (Bar.HeaderHeight / 2) + 3);        
+            }
         }
 
         /// <summary>
@@ -390,7 +453,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             foreach (NaviBand band in Bar.Bands)
             {
                 if (band.Visible)
+                {
                     visibleButtonCount++;
+                }
             }
 
             largeButtonCount = 0;
@@ -399,13 +464,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
             // Largebutton count can not be greater than the actual amount of visible buttons
             if (Bar.VisibleLargeButtons > visibleButtonCount)
+            {
                 largeButtonCount = visibleButtonCount;
+            }
             else
             {
                 if (Bar.VisibleLargeButtons < 0)
+                {
                     largeButtonCount = 0;
+                }
                 else
+                {
                     largeButtonCount = Bar.VisibleLargeButtons;
+                }
             }
 
             // If buttons left
@@ -415,13 +486,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 int maxOverflow = smallButtonRectangle.Width / Bar.MinimizedButtonWidth;
 
                 if (visibleButtonCount - largeButtonCount > maxOverflow)
+                {
                     overflowCount = maxOverflow;
+                }
                 else
+                {
                     overflowCount = visibleButtonCount - largeButtonCount;
+                }
 
                 // Put the rest of the button not fitting anywhere in a menu
                 if (visibleButtonCount - largeButtonCount - overflowCount > 0)
+                {
                     menuCount = visibleButtonCount - largeButtonCount - overflowCount;
+                }
             }
         }
 
@@ -458,7 +535,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             // This may seem odd but the buttons are positioned from the left to the right. 
             // The first overflow button will appear as the first left button. 
             if (Bar.ShowMoreOptionsButton)
+            {
                 compactFlow += optionButtonWidth;
+            }
 
             for (int i = 0; i < overflowCount; i++)
             {
@@ -477,9 +556,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                         band.Button.Width = Bar.MinimizedButtonWidth;
 
                         if (Bar.RightToLeft == RightToLeft.Yes)
+                        {
                             band.Button.Location = new Point(compactFlow - Bar.MinimizedButtonWidth, smallButtonRectangle.Top);
+                        }
                         else
+                        {
                             band.Button.Location = new Point(Bar.Width - compactFlow, smallButtonRectangle.Top);
+                        }
 
                         compactFlow -= Bar.MinimizedButtonWidth;
                     }
@@ -515,9 +598,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 menuitem.Click += new EventHandler(menuitem_Click);
 
                 if (band.SmallImage != null)
+                {
                     menuitem.Image = band.SmallImage;
+                }
                 else if ((band != null) && (band.SmallImageIndex >= 0) && (band.SmallImages != null)
-                    && (band.SmallImageIndex < band.SmallImages.Images.Count))
+                         && (band.SmallImageIndex < band.SmallImages.Images.Count))
                 {
                     menuitem.Image = band.SmallImages.Images[band.SmallImageIndex];
                 }
@@ -574,8 +659,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 InitializeSubMenu();
             }
             else
+            {
                 HideButtonRest();
-
+            }
         }
 
         /// <summary>
@@ -627,14 +713,20 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 collapsedBand.Visible = true;
                 collapsedBand.BringToFront();
                 if (Bar.ActiveBand != null)
+                {
                     collapsedBand.Text = Bar.ActiveBand.Text;
+                }
                 else
+                {
                     collapsedBand.Text = "";
+                }
             }
             else
             {
                 if ((collapsedBand != null) && (collapsedBand.Visible))
+                {
                     collapsedBand.Visible = false;
+                }
             }
             collapsedBand.Location = new Point(1, Bar.HeaderHeight);
             collapsedBand.Size = new Size(Bar.Width - 2, splitterRectangle.Y - 1 - Bar.HeaderHeight);
@@ -674,10 +766,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             if (e != null)
             {
                 if (splitterDragging)
+                {
                     DragSplitter(e.Y);
+                }
 
                 if ((MouseInSplitter(e.X, e.Y))
-                || (splitterDragging))
+                    || (splitterDragging))
                 {
                     Bar.Cursor = Cursors.SizeNS;
                 }
@@ -725,7 +819,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             NaviButton button = sender as NaviButton;
             if (button.Band != null)
+            {
                 Bar.ActiveBand = button.Band;
+            }
         }
 
         #endregion
@@ -834,9 +930,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 menuItem.Text = band.Text;
 
                 if (band.SmallImage != null)
+                {
                     menuItem.Image = band.SmallImage;
+                }
                 else if ((band != null) && (band.SmallImageIndex >= 0) && (band.SmallImages != null)
-                    && (band.SmallImageIndex < band.SmallImages.Images.Count))
+                         && (band.SmallImageIndex < band.SmallImages.Images.Count))
                 {
                     menuItem.Image = band.SmallImages.Images[band.SmallImageIndex];
                 }
@@ -959,7 +1057,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             if (!collapse)
             {
                 if (orgWidth < 100)
+                {
                     orgWidth = 100;
+                }
+
                 Bar.Width = orgWidth;
             }
 

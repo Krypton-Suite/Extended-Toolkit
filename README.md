@@ -1,10 +1,10 @@
-# <img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Krypton.png"> Extended Toolkit
+# <img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Krypton.png?raw=true"> Extended Toolkit
 
 =======
 
 # NuGet Information 
 
-<a href="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Documents/Modules/NuGet%20Package%20Information.md"><img src="https://img.shields.io/badge/NuGet-Version Information-orange.svg?label=Version&logo=nuget&style=flat-square" alt="Version information" /></a>
+<a href="https://github.com/Krypton-Suite/Documentation/blob/main/Documents/Packages/Extended/Krypton-Toolkit-Suite-Extended-Modules.md"><img src="https://img.shields.io/badge/NuGet-Version Information-orange.svg?label=Version&logo=nuget&style=flat-square" alt="Version information" /></a>
 
 =======
 
@@ -16,12 +16,12 @@ Development of the Krypton Extended Toolkit is supported by these generous organ
 <tr>
 	<td width="200px">
 		<a href="https://www.jetbrains.com/">
-		<img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/PNG/Supporter%20Logos/jetbrains-logo.png" />
+		<img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/PNG/Supporter%20Logos/jetbrains-logo.png?raw=true" />
 		</a>
 	</td>
 	<td width="200px">
 		<a href="https://www.yourkit.com/">
-		<img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/PNG/Supporter%20Logos/yourkit-logo.png" />
+		<img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/PNG/Supporter%20Logos/yourkit-logo.png?raw=true" />
 		</a>
 	</td>
 </tr>
@@ -53,34 +53,39 @@ Development of the Krypton Extended Toolkit is supported by these generous organ
 ## Support Information
 <a href="https://github.com/Krypton-Suite/Documentation/blob/main/Documents/Development/Package-Support-Information.md"><img src="https://img.shields.io/badge/NuGet-Package Support Information-informational.svg?style=flat-square" alt="Package Support Information" /></a>
 
+## Enabling preview SDK usage
+
+If you want to try out the latest .NET SDK (currently .NET 8), but just have the stable version of Visual Studio installed, please read this [article](https://github.com/Krypton-Suite/Documentation/blob/main/Documents/Development/Enable-Preview-SDK.md).
+
 =======
 
 ## Install the `Ultimate` Package
+**Note:** These packages do not support anything newer than .NET Framework 4.8.1.
 
 ### Full
 
 #### Package Manager
 
 ```ps
-PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate -Version 70.23.1.5
+PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate -Version 70.22.11.312
 ```
 
 #### Package Reference
 
 ```xml
-<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate" Version="70.23.1.5" />
+<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate" Version="70.22.11.312" />
 ```
 
 ### Lite
 
 ```ps
-PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 70.23.1.5
+PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 70.22.11.312
 ```
 
 #### Package Reference
 
 ```xml
-<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate.Lite" Version="70.23.1.5" />
+<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate.Lite" Version="70.22.11.312" />
 ```
 
 =======
@@ -91,6 +96,7 @@ PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 
 
 | Module Name              | Description                                                                                                                                 | Example Image |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| Advanced Data Grid View  | This package implements the advanced data grid view controls.                                                                               | ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/AdvancedDataGridView.gif?raw=true)             |  
 | Buttons                  | This package holds extensions to the standard `KryptonButton` controls.                                                                     | ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/Buttons.png?raw=true)             |
 | Calendar                 | This package implements a `KryptonCalendar` control.                                                                                        | 2             |
 | CheckSum Tools           | This package holds utilities to compute and verify checksums.                                                                               | 3             |
@@ -112,7 +118,7 @@ PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 
 | Gages                    | This package implements additional gage controls. (Under Development)                                                                       | 19            |
 | Input Box                | This package implements a input box dialog.                                                                                                 | 20            |
 | IO                       | This package implements IO controls and features.                                                                                           | 21            |
-| Memory Box               | This package implements a memory box dialog.                                                                                                | 22            |
+| Memory Box               | This package implements a memory box dialog.                                                                                                | ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/MemoryBoxExample.gif?raw=true)            |
 | Message Box              | This package implements additional `KryptonMessageBox` features and functionality.                                                          | 23            |
 | Navi Suite               | This package implements the 'NaviSuite' control.                                                                                            | 24            |
 | Navigator                | This package implements additional `KryptonNavigator` designs and features.                                                                 | 25            |
@@ -134,26 +140,6 @@ PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 
 | Tree Grid View           | This package implements items to create tree grid views for your applications.                                                              | ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/TreeGidViewTheming.gif?raw=true) ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/TreeGridViewDaataSource.gif?raw=true)             |
 | Virtual Tree Column View | This package implements items to create a 'virtual tree column view' for your applications.                                                 | ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/VirtualTreeColumnView.png?raw=true)             |
 | Wizard                   | This package implements a wizard control.                                                                                                   | ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/KryptonWizard.gif?raw=true)            |
-
-## Additional Modules
-
-The following modules **will** be installed alongside the main packages when required.
-
-| Module Name         | Description                                                                                        |
-|---------------------|----------------------------------------------------------------------------------------------------|
-| Common              | This package implements common tools and utilities that are used by the extended toolkit.          |
-| Core                | This package implements core utilities that are fundamental to the extended toolkit.               |
-| Developer Utilities | This package implements utilities for developer usage.                                             |
-| Drawing             | This package implements base drawing utilities.                                                    |
-| Effects             | This package implements additional effects, to be used in conjunction with the standard toolkit.   |
-| Global Utilities    | This package implements global utilities that are used by the extended toolkit.                    |
-| Language Model      | This package implements language options for certain Krypton button controls.                      |
-| Resources           | This package implements global resources used by the extended toolkit.                             |
-| Settings            | This package implements global settings used by the extended toolkit.                              |
-| Shared              | This package implements APIs that are in the standard toolkit, but are inaccessible outside of it. |
-| Tools               | This package implements global tools used by the extended toolkit.                                 |
-| Utilities           | This package implements global utilities used by the extended toolkit.                             |
-
 
 
 ***Note:*** Some packages may install third-party libraries in order to make them function correctly.

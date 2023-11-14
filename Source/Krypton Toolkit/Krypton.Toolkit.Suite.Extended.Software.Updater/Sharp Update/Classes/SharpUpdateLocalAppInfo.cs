@@ -1,18 +1,12 @@
-﻿#region BSD License
-/*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
- */
-#endregion
-
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
+﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     /// <summary>
     /// The class that holds all application's information
     /// </summary>
     public class SharpUpdateLocalAppInfo
     {
+        #region Public
+
         /// <summary>
         /// The path of your application
         /// </summary>
@@ -31,26 +25,28 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// <summary>
         /// The application's icon to be displayed in the top left
         /// </summary>
-        public Icon ApplicationIcon { get; }
+        public Icon? ApplicationIcon { get; }
 
         /// <summary>
         /// The context of the program.
         /// For Windows Forms Applications, use 'this'
         /// Console Apps, reference System.Windows.Forms and return null.
         /// </summary>
-        public Form Context { get; }
+        public Form? Context { get; }
 
         /// <summary>
         /// The version of your application
         /// </summary>
         public Version Version { get; }
 
+        #endregion
+
         /// <summary>
         /// Tag to distinguish types of updates
         /// </summary>
-        public JobType Tag;
+        public JobType _tag;
 
-        public SharpUpdateLocalAppInfo(SharpUpdateXml job, Assembly ass, Form f)
+        public SharpUpdateLocalAppInfo(SharpUpdateXml job, Assembly ass, Form? f)
         {
             ApplicationPath = job.FilePath;
             ApplicationName = Path.GetFileNameWithoutExtension(ApplicationPath);
@@ -58,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             ApplicationIcon = f.Icon;
             Context = f;
             Version = (job.Tag == JobType.UPDATE) ? ApplicationAssembly.GetName().Version : job.Version;
-            Tag = job.Tag;
+            _tag = job.Tag;
         }
 
         public SharpUpdateLocalAppInfo(SharpUpdateXml job)
@@ -69,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             ApplicationIcon = null;
             Context = null;
             Version = (job.Tag == JobType.UPDATE) ? ApplicationAssembly.GetName().Version : job.Version;
-            Tag = job.Tag;
+            _tag = job.Tag;
         }
 
         public void Print()
@@ -77,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             string head = "========== SharpUpdateLocalAppInfo ==========";
             string tail = "=============================================";
             string toPrint = string.Format("{0}\nJob type: {1}\nApplicationPath: {2}\nApplicationName: {3}\nAssemblyName: {4}\nFormName: {5}\nVersion: {6}\n{7}",
-                head, Tag.ToString(), ApplicationPath == null ? "null" : ApplicationPath,
+                head, _tag.ToString(), ApplicationPath == null ? "null" : ApplicationPath,
                 ApplicationName == null ? "null" : ApplicationName,
                 ApplicationAssembly == null ? "null" : ApplicationAssembly.FullName,
                 Context == null ? "null" : Context.Name,

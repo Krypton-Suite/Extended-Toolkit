@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -28,13 +47,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private List<CalendarItemAlternative> _containedItems;
         private KryptonCalendar _calendar;
         private DateTime _date;
-        private CalendarDayTop _dayTop;
+        private CalendarDayTop? _dayTop;
         private int _index;
         private bool _overflowStart;
         private bool _overflowEnd;
         private bool _overflowStartSelected;
         private bool _overlowEndSelected;
-        private CalendarTimeScaleUnit[] _timeUnits;
+        private CalendarTimeScaleUnit?[] _timeUnits;
         #endregion
 
         #region Constructor
@@ -67,12 +86,23 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the DayTop of the day, the place where multi-day and all-day items are placed
         /// </summary>
-        public CalendarDayTop DayTop => _dayTop;
+        public CalendarDayTop? DayTop => _dayTop;
 
         /// <summary>
         /// Gets the bounds of the body of the day (where time-based CalendarItems are placed)
         /// </summary>
-        public Rectangle BodyBounds => Rectangle.FromLTRB(Bounds.Left, DayTop.Bounds.Bottom, Bounds.Right, Bounds.Bottom);
+        public Rectangle BodyBounds
+        {
+            get
+            {
+                if (DayTop != null)
+                {
+                    return Rectangle.FromLTRB(Bounds.Left, DayTop.Bounds.Bottom, Bounds.Right, Bounds.Bottom);
+                }
+
+                return Rectangle.Empty;
+            }
+        }
 
         /// <summary>
         /// Gets the date this day represents
@@ -82,7 +112,18 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the bounds of the header of the day
         /// </summary>
-        public Rectangle HeaderBounds => new Rectangle(Bounds.Left, Bounds.Top, Bounds.Width, Calendar.Renderer.DayHeaderHeight);
+        public Rectangle HeaderBounds
+        {
+            get
+            {
+                if (Calendar.Renderer != null)
+                {
+                    return new Rectangle(Bounds.Left, Bounds.Top, Bounds.Width, Calendar.Renderer.DayHeaderHeight);
+                }
+
+                return Rectangle.Empty;
+            }
+        }
 
         /// <summary>
         /// Gets the index of this day on the calendar
@@ -101,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the time units contained on the day
         /// </summary>
-        public CalendarTimeScaleUnit[] TimeUnits => _timeUnits;
+        public CalendarTimeScaleUnit?[] TimeUnits => _timeUnits;
 
         /// <summary>
         /// /// <summary>
@@ -171,37 +212,25 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Sets the value of he <see cref="OverflowEnd"/> property
         /// </summary>
         /// <param name="overflow">Value of the property</param>
-        internal void SetOverflowEnd(bool overflow)
-        {
-            _overflowEnd = overflow;
-        }
+        internal void SetOverflowEnd(bool overflow) => _overflowEnd = overflow;
 
         /// <summary>
         /// Sets the value of the <see cref="OverflowEndSelected"/> property
         /// </summary>
         /// <param name="selected">Value to pass to the property</param>
-        internal void SetOverflowEndSelected(bool selected)
-        {
-            _overlowEndSelected = selected;
-        }
+        internal void SetOverflowEndSelected(bool selected) => _overlowEndSelected = selected;
 
         /// <summary>
         /// Sets the value of he <see cref="OverflowStart"/> property
         /// </summary>
         /// <param name="overflow">Value of the property</param>
-        internal void SetOverflowStart(bool overflow)
-        {
-            _overflowStart = overflow;
-        }
+        internal void SetOverflowStart(bool overflow) => _overflowStart = overflow;
 
         /// <summary>
         /// Sets the value of the <see cref="OverflowStartSelected"/> property
         /// </summary>
         /// <param name="selected">Value to pass to the property</param>
-        internal void SetOverflowStartSelected(bool selected)
-        {
-            _overflowStartSelected = selected;
-        }
+        internal void SetOverflowStartSelected(bool selected) => _overflowStartSelected = selected;
 
         /// <summary>
         /// Updates the value of <see cref="TimeUnits"/> property
@@ -212,13 +241,26 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             switch (Calendar.TimeScale)
             {
-                case CalendarTimeScale.SixtyMinutes: factor = 1; break;
-                case CalendarTimeScale.ThirtyMinutes: factor = 2; break;
-                case CalendarTimeScale.FifteenMinutes: factor = 4; break;
-                case CalendarTimeScale.TenMinutes: factor = 6; break;
-                case CalendarTimeScale.SixMinutes: factor = 10; break;
-                case CalendarTimeScale.FiveMinutes: factor = 12; break;
-                default: throw new NotImplementedException("TimeScale not supported");
+                case CalendarTimeScale.SixtyMinutes:
+                    factor = 1;
+                    break;
+                case CalendarTimeScale.ThirtyMinutes:
+                    factor = 2;
+                    break;
+                case CalendarTimeScale.FifteenMinutes:
+                    factor = 4;
+                    break;
+                case CalendarTimeScale.TenMinutes:
+                    factor = 6;
+                    break;
+                case CalendarTimeScale.SixMinutes:
+                    factor = 10;
+                    break;
+                case CalendarTimeScale.FiveMinutes:
+                    factor = 12;
+                    break;
+                default:
+                    throw new NotImplementedException("TimeScale not supported");
             }
 
             _timeUnits = new CalendarTimeScaleUnit[24 * factor];
@@ -248,11 +290,16 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         internal void UpdateHighlights()
         {
             if (TimeUnits == null)
-                return;
-
-            for (int i = 0; i < TimeUnits.Length; i++)
             {
-                TimeUnits[i].SetHighlighted(TimeUnits[i].CheckHighlighted());
+                return;
+            }
+
+            if (TimeUnits != null)
+            {
+                for (int i = 0; i < TimeUnits.Length; i++)
+                {
+                    TimeUnits[i].SetHighlighted(TimeUnits[i].CheckHighlighted());
+                }
             }
         }
 

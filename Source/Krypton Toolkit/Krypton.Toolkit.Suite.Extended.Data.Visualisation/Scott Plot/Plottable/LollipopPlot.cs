@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -35,18 +54,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         /// <param name="positions">position of each lollipop</param>
         /// <param name="values">height of each lollipop</param>
-        public LollipopPlot(double[] positions, double[] values) : base()
+        public LollipopPlot(double[] positions, double[] values)
         {
             if (positions is null || positions.Length == 0 || values is null || values.Length == 0)
+            {
                 throw new InvalidOperationException("xs and ys must be arrays that contains elements");
+            }
 
             if (values.Length != positions.Length)
+            {
                 throw new InvalidOperationException("xs and ys must have the same number of elements");
+            }
 
             ValueErrors = DataGen.Zeros(values.Length);
             ValueOffsets = DataGen.Zeros(values.Length);
             Values = values;
-            Positions = positions ?? DataGen.Consecutive(values.Length);
+            Positions = positions;
         }
 
         public LegendItem[] GetLegendItems()
@@ -56,11 +79,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 label = Label,
                 color = LollipopColor,
                 lineWidth = 10,
-                markerShape = MarkerShape.NONE,
+                markerShape = MarkerShape.None,
                 borderColor = BorderColor,
                 borderWith = 1
             };
-            return new LegendItem[] { singleItem };
+            return new[] { singleItem };
         }
 
         #region Render Implementation
@@ -74,9 +97,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             for (int barIndex = 0; barIndex < Values.Length; barIndex++)
             {
                 if (Orientation == PlotOrientation.Vertical)
+                {
                     RenderBarVertical(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
+                }
                 else
+                {
                     RenderBarHorizontal(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
+                }
             }
         }
 
@@ -135,10 +162,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (ShowValuesAboveBars)
+            {
                 using (var valueTextFont = GDI.Font(Font))
-                using (var valueTextBrush = GDI.Brush(Font.Color))
-                using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
-                    gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+                {
+                    using (var valueTextBrush = GDI.Brush(Font.Color))
+                    {
+                        using (var sf = new StringFormat() { LineAlignment = StringAlignment.Far, Alignment = StringAlignment.Center })
+                        {
+                            gfx.DrawString(value.ToString(CultureInfo.InvariantCulture), valueTextFont, valueTextBrush, centerPx, rect.Y, sf);
+                        }
+                    }
+                }
+            }
         }
 
         private void RenderBarHorizontal(PlotDimensions dims, Graphics gfx, double position, double value, double valueError, double yOffset)
@@ -174,10 +209,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
 
             if (ShowValuesAboveBars)
+            {
                 using (var valueTextFont = GDI.Font(Font))
-                using (var valueTextBrush = GDI.Brush(Font.Color))
-                using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
-                    gfx.DrawString(value.ToString(), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+                {
+                    using (var valueTextBrush = GDI.Brush(Font.Color))
+                    {
+                        using (var sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Near })
+                        {
+                            gfx.DrawString(value.ToString(CultureInfo.InvariantCulture), valueTextFont, valueTextBrush, rect.X + rect.Width, centerPx, sf);
+                        }
+                    }
+                }
+            }
         }
 
         #endregion

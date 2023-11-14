@@ -1,6 +1,58 @@
 
 <!--* Checkbox option for `KryptonMessageBoxExtended` (***Note:*** This feature is experimental, and may not fully work)-->
 <!--* Added 3 new controls in the `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` module, these are `MRUOpenFileMenuItem`, `MRUSaveAsFileMenuItem` and `MRUSaveFileMenuItem`. Note, these controls only work with text files/documents. If you wish to use the MRU functionality with other file types, please refer to the `MostRecentlyUsedFileManager` in the `Krypton.Toolkit.Suite.Extended.IO` module-->
+<!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
+
+=======
+
+## 2023-11-14 - Build 2311 - November 2023
+* New `KryptonToolkitExtendedPoweredByControl`, to be used in application 'About' dialogs
+* Added the ability to specify the message text alignment in a `KryptonMessageboxExtended`
+	- Default value is `MiddleLeft`
+* Implemented [#430](https://github.com/Krypton-Suite/Extended-Toolkit/issues/430), Use `KryptonProgressBar` throughout the toolkit
+* Support for languages to use 'LanguageManager' components, where supported
+* Resolved [#414](https://github.com/Krypton-Suite/Extended-Toolkit/issues/414), `OutloookGrid` casts error when executing `.Fill()` (Thanks to [Shaun](https://github.com/Bonio55) for the fix)
+* Implemented [#405](https://github.com/Krypton-Suite/Extended-Toolkit/issues/405), Update the current version of `NetSparkle`
+* Faster building when using [Visual Studio](https://aka.ms/vs-build-acceleration)
+* Enabled `nullable` for projects
+* De-listed 'shared' NuGet packages to clean up search results
+* Removed .NET Core 3.1 and .NET 5 references from NuGet package descriptions
+* Add backwards support for `AllowNull`
+* Implemented [#394](https://github.com/Krypton-Suite/Extended-Toolkit/issues/394), Fix UI of certain dialogs
+* New `KryptonSecureTextBox` control, uses the [SecureString](https://learn.microsoft.com/en-us/dotnet/api/system.security.securestring?view=net-7.0) API to keep users input text confidential, thus removing the text from memory when no longer needed
+* Implemented [#390](https://github.com/Krypton-Suite/Extended-Toolkit/issues/390), Replace/modify `KryptonWrapLabel` in `KryptonMessageBoxExtended`
+* Resolved [#389](https://github.com/Krypton-Suite/Extended-Toolkit/issues/389), Fix fallout from the removal of `PaletteModeManager` type
+* New `Krypton.Toolkit.Suite.Extended.AdvancedDataGridView` module. A krypton version of the [AdvancedDataGridView](https://github.com/davidegironi/advanceddatagridview) control
+* New `ExtendedKryptonMessageBoxMessageContainerType` for `KryptonMessageBoxExtended`. Choose between:-
+	- `Normal` - The normal message style
+	- `RichTextBox` - Uses a **read only** `KryptonRichTextBox` to display the message
+	- `HyperLink` - Uses the new `KryptonLinkWrapLabel` to display the message with optional links
+* Implemented [#386](https://github.com/Krypton-Suite/Extended-Toolkit/issues/386), Convert the shared projects over to libraries instead of NuGet packages
+* Implemented [#387](https://github.com/Krypton-Suite/Extended-Toolkit/issues/387), Fix fallout from the removal of `IPalette`
+* Implemented [#384](https://github.com/Krypton-Suite/Extended-Toolkit/issues/384), Reduce build configurations
+* Resolved [#378](https://github.com/Krypton-Suite/Extended-Toolkit/issues/378), `ExtendedMessageBox` does not support `CancelTryContinue` when built for "ANY" of the supported TFM's
+* `KryptonMessageBoxExtended` button states now fall in line with .NET 6.0
+* New `KryptonInputBoxExtended`, supports icons, and multiple response types, such as:-
+	- `ComboBox`
+	- `DateTimePicker`
+	- `DomainUpDown`
+	- `TextBox`
+	- `MaskedTextBox`
+	- `PasswordBox`
+	- `RichTextBox`
+	- `NumericUpDown`
+	- `None`
+* New `KryptonRunDialog`, a drop in replacement for the standard Windows dialog, with a few extra features
+* Implemented `CloseBox` in `KryptonManagerExtended` to fall in line with the standard toolkit
+* Add strong naming to assemblies
+* New `Krypton.Toolkit.Suite.Extended.Shared` module to open up internal APIs found in the standard toolkit
+* Refactor code to eliminate duplication
+* Add support for .NET 8.0
+* Removed support for .NET 5.0
+* Removed support for .NET Core 3.1
+* Implemented [#354](https://github.com/Krypton-Suite/Extended-Toolkit/issues/354), Change the license from BSD-3-Clause to MIT
+* Implemented [#302](https://github.com/Krypton-Suite/Extended-Toolkit/issues/302), `KryptonMessageBox` Clickable Links
+* Updated standard toolkit to build `2311`
 
 =======
 

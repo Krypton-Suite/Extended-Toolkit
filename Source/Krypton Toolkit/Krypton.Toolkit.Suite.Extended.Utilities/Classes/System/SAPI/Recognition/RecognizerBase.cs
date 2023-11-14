@@ -1,16 +1,33 @@
-#region BSD License
+#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
 #define TRACE
-using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
+using AudioFormatConverter = Krypton.Toolkit.Suite.Extended.Utilities.System.Internal.AudioFormatConverter;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
@@ -111,15 +128,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         private Stream _inputStream;
 
-        private Dictionary<int, object> _bookmarkTable = new Dictionary<int, object>();
+        private Dictionary<int, object> _bookmarkTable = new();
 
         private uint _nextBookmarkId = 3u;
 
         private uint _prevMaxBookmarkId = 2u;
 
-        private OperationLock _waitForGrammarsToLoad = new OperationLock();
+        private OperationLock _waitForGrammarsToLoad = new();
 
-        private object _grammarDataLock = new object();
+        private object _grammarDataLock = new();
 
         private const uint _nullBookmarkId = 0u;
 
@@ -133,9 +150,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         private AsyncSerializedWorker _asyncWorkerUI;
 
-        private AutoResetEvent _handlerWaitHandle = new AutoResetEvent(false);
+        private AutoResetEvent _handlerWaitHandle = new(false);
 
-        private object _thisObjectLock = new object();
+        private object _thisObjectLock = new();
 
         private Exception _loadException;
 
@@ -713,7 +730,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 subsequentText = string.Empty;
             }
             SPTEXTSELECTIONINFO info = new SPTEXTSELECTIONINFO(0u, 0u, (uint)precedingText.Length, 0u);
-            string text = precedingText + subsequentText + "\0\0";
+            string text = $"{precedingText}{subsequentText}\0\0";
             SapiGrammar sapiGrammar = grammar.InternalData._sapiGrammar;
             sapiGrammar.SetWordSequenceData(text, info);
         }

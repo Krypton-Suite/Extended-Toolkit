@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -89,7 +108,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             get
             {
                 if (m_OuterCircleRadius == 0)
+                {
                     m_OuterCircleRadius = DefaultOuterCircleRadius;
+                }
 
                 return m_OuterCircleRadius;
             }
@@ -111,7 +132,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             get
             {
                 if (m_InnerCircleRadius == 0)
+                {
                     m_InnerCircleRadius = DefaultInnerCircleRadius;
+                }
 
                 return m_InnerCircleRadius;
             }
@@ -133,7 +156,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             get
             {
                 if (m_NumberOfSpoke == 0)
+                {
                     m_NumberOfSpoke = DefaultNumberOfSpoke;
+                }
 
                 return m_NumberOfSpoke;
             }
@@ -177,7 +202,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             get
             {
                 if (m_SpokeThickness <= 0)
+                {
                     m_SpokeThickness = DefaultSpokeThickness;
+                }
 
                 return m_SpokeThickness;
             }
@@ -200,7 +227,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             set
             {
                 if (value > 0)
+                {
                     m_Timer.Interval = value;
+                }
             }
         }
 
@@ -377,7 +406,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 if (_blnShadeColor)
                 {
                     if (intCursor == 0 || intCursor < NumberSpoke - _intNbSpoke)
+                    {
                         objColors[intCursor] = _objColor;
+                    }
                     else
                     {
                         // Increment alpha channel color
@@ -386,14 +417,18 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                         // Ensure that we don't exceed the maximum alpha
                         // channel value (255)
                         if (PERCENTAGE_OF_DARKEN > byte.MaxValue)
+                        {
                             PERCENTAGE_OF_DARKEN = byte.MaxValue;
+                        }
 
                         // Determine the spoke forecolor
                         objColors[intCursor] = Darken(_objColor, PERCENTAGE_OF_DARKEN);
                     }
                 }
                 else
+                {
                     objColors[intCursor] = _objColor;
+                }
             }
 
             return objColors;
@@ -480,7 +515,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         private void ActiveTimer()
         {
             if (m_IsTimerActive)
+            {
                 m_Timer.Start();
+            }
             else
             {
                 m_Timer.Stop();

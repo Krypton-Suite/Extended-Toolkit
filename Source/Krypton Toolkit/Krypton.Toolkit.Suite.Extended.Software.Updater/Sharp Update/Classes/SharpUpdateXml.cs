@@ -1,12 +1,4 @@
-﻿#region BSD License
-/*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
- */
-#endregion
-
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
+﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     /// <summary>
     /// Contains update information
@@ -68,10 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// </summary>
         /// <param name="version">Application's current version</param>
         /// <returns>If the update's version # is newer</returns>
-        public bool IsNewerThan(Version version)
-        {
-            return Version > version;
-        }
+        public bool IsNewerThan(Version version) => Version > version;
 
         /// <summary>
         /// Checks the Uri to make sure file exist
@@ -82,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         {
             if (location.ToString().StartsWith("file"))
             {
-                return System.IO.File.Exists(location.LocalPath);
+                return File.Exists(location.LocalPath);
             }
             else
             {
@@ -105,10 +94,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// </summary>
         /// <param name="location">Uri of update.xml on server</param>
         /// <returns>The SharpUpdateXml object with the data, or null of any errors</returns>
-        public static SharpUpdateXml[] Parse(Uri location)
+        public static SharpUpdateXml[]? Parse(Uri location)
         {
             List<SharpUpdateXml> result = new List<SharpUpdateXml>();
-            Version version = null;
+            Version version;
             string url = "", filePath = "", md5 = "", description = "", launchArgs = "";
 
             try
@@ -121,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                 // Gets the appId's node with the update info
                 // This allows you to store all program's update nodes in one file
                 // XmlNode updateNode = doc.DocumentElement.SelectSingleNode("//update[@appID='" + appID + "']");
-                XmlNodeList updateNodes = doc.DocumentElement.SelectNodes("/sharpUpdate/update");
+                XmlNodeList? updateNodes = doc.DocumentElement.SelectNodes("/sharpUpdate/update");
                 foreach (XmlNode updateNode in updateNodes)
                 {
                     // If the node doesn't exist, there is no update
@@ -136,10 +125,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                     description = updateNode["description"].InnerText;
                     launchArgs = updateNode["launchArgs"].InnerText;
 
-                    result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs, JobType.UPDATE));
+                    result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs,
+                        JobType.UPDATE));
                 }
 
-                XmlNodeList addNodes = doc.DocumentElement.SelectNodes("/sharpUpdate/add");
+                XmlNodeList? addNodes = doc.DocumentElement.SelectNodes("/sharpUpdate/add");
                 foreach (XmlNode addNode in addNodes)
                 {
                     // If the node doesn't exist, there is no add
@@ -154,10 +144,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
                     description = addNode["description"].InnerText;
                     launchArgs = addNode["launchArgs"].InnerText;
 
-                    result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs, JobType.ADD));
+                    result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs,
+                        JobType.ADD));
                 }
 
-                XmlNodeList removeNodes = doc.DocumentElement.SelectNodes("/sharpUpdate/remove");
+                XmlNodeList? removeNodes = doc.DocumentElement.SelectNodes("/sharpUpdate/remove");
                 foreach (XmlNode removeNode in removeNodes)
                 {
                     // If the node doesn't exist, there is no remove
@@ -174,7 +165,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 
                 return result.ToArray();
             }
-            catch { return null; }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

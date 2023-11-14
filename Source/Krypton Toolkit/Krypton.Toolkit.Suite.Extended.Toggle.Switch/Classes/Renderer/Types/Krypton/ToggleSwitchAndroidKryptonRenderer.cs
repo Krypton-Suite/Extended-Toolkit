@@ -1,19 +1,38 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
-using System.Drawing;
+#pragma warning disable CS0649
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
     public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAndroidValues
     {
         #region Variables
-        private IPalette _palette;
+        private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
         #endregion
 
@@ -61,7 +80,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             Color leftColour = LeftSideColour;
 
             if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            {
                 leftColour = leftColour.ToGrayScale();
+            }
 
             Rectangle controlRectangle = GetInnerControlRectangle();
 
@@ -86,7 +107,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             Color rightColour = RightSideColour;
 
             if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            {
                 rightColour = rightColour.ToGrayScale();
+            }
 
             Rectangle controlRectangle = GetInnerControlRectangle();
 
@@ -176,11 +199,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         Size canvasSize = adjustedButtonRect.Size;
                         Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                        if (alignment == ToggleSwitchButtonAlignment.CENTER)
+                        if (alignment == ToggleSwitchButtonAlignment.Center)
                         {
                             imageXPos = (int)((float)adjustedButtonRect.X + (((float)adjustedButtonRect.Width - (float)resizedImageSize.Width) / 2));
                         }
-                        else if (alignment == ToggleSwitchButtonAlignment.RIGHT)
+                        else if (alignment == ToggleSwitchButtonAlignment.Right)
                         {
                             imageXPos = (int)((float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)resizedImageSize.Width);
                         }
@@ -188,17 +211,21 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + (((float)adjustedButtonRect.Height - (float)resizedImageSize.Height) / 2)), resizedImageSize.Width, resizedImageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        {
                             g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
+                        }
                         else
+                        {
                             g.DrawImage(buttonImage, imageRectangle);
+                        }
                     }
                     else
                     {
-                        if (alignment == ToggleSwitchButtonAlignment.CENTER)
+                        if (alignment == ToggleSwitchButtonAlignment.Center)
                         {
                             imageXPos = (int)((float)adjustedButtonRect.X + (((float)adjustedButtonRect.Width - (float)imageSize.Width) / 2));
                         }
-                        else if (alignment == ToggleSwitchButtonAlignment.RIGHT)
+                        else if (alignment == ToggleSwitchButtonAlignment.Right)
                         {
                             imageXPos = (int)((float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)imageSize.Width);
                         }
@@ -206,9 +233,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + (((float)adjustedButtonRect.Height - (float)imageSize.Height) / 2)), imageSize.Width, imageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        {
                             g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
+                        }
                         else
+                        {
                             g.DrawImageUnscaled(buttonImage, imageRectangle);
+                        }
                     }
                 }
                 else if (!string.IsNullOrEmpty(buttonText))
@@ -217,17 +248,19 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                     Color buttonForeColour = ToggleSwitch.Checked ? ToggleSwitch.OnForeColour : ToggleSwitch.OffForeColour;
 
                     if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    {
                         buttonForeColour = buttonForeColour.ToGrayScale();
+                    }
 
                     SizeF textSize = g.MeasureString(buttonText, buttonFont);
 
                     float textXPos = adjustedButtonRect.X;
 
-                    if (alignment == ToggleSwitchButtonAlignment.CENTER)
+                    if (alignment == ToggleSwitchButtonAlignment.Center)
                     {
                         textXPos = (float)adjustedButtonRect.X + (((float)adjustedButtonRect.Width - (float)textSize.Width) / 2);
                     }
-                    else if (alignment == ToggleSwitchButtonAlignment.RIGHT)
+                    else if (alignment == ToggleSwitchButtonAlignment.Right)
                     {
                         textXPos = (float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)textSize.Width;
                     }
@@ -256,7 +289,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public int GetCathetusLengthBasedOnAngle()
         {
             if (SlantAngle == 0)
+            {
                 return 0;
+            }
 
             double degrees = Math.Abs(SlantAngle);
             double radians = degrees * (Math.PI / 180);
@@ -268,7 +303,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public int GetHalfCathetusLengthBasedOnAngle()
         {
             if (SlantAngle == 0)
+            {
                 return 0;
+            }
 
             double degrees = Math.Abs(SlantAngle);
             double radians = degrees * (Math.PI / 180);
@@ -303,7 +340,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
+            {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;

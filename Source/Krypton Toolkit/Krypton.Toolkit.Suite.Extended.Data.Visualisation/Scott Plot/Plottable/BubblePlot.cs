@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -63,10 +82,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Add(double[] xs, double[] ys, double size, Color fillColor, double edgeWidth, Color edgeColor)
         {
             if (xs is null || ys is null)
+            {
                 throw new ArgumentException("xs and ys cannot be null");
+            }
 
             if (xs.Length != ys.Length)
+            {
                 throw new ArgumentException("xs and ys must have the same number of elements");
+            }
 
             for (int i = 0; i < xs.Length; i++)
             {
@@ -82,12 +105,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
         }
 
-        public LegendItem[] GetLegendItems() => null; // does not appear in legend
+        public LegendItem[]? GetLegendItems() => null; // does not appear in legend
 
         public AxisLimits GetAxisLimits()
         {
             if (Bubbles.Count == 0)
+            {
                 return new AxisLimits(double.NaN, double.NaN, double.NaN, double.NaN);
+            }
 
             var xs = Bubbles.Select(b => b.X);
             var ys = Bubbles.Select(b => b.Y);
@@ -99,20 +124,28 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             foreach (Bubble bubble in Bubbles)
             {
                 if (double.IsNaN(bubble.X) || double.IsNaN(bubble.Y) || double.IsNaN(bubble.Radius) || double.IsNaN(bubble.EdgeWidth))
+                {
                     throw new InvalidOperationException("Bubble positions and sizes must not be NaN");
+                }
 
                 if (double.IsInfinity(bubble.X) || double.IsInfinity(bubble.Y) || double.IsInfinity(bubble.Radius) || double.IsInfinity(bubble.EdgeWidth))
+                {
                     throw new InvalidOperationException("Bubble position and size must real");
+                }
 
                 if (bubble.Radius < 0 || bubble.EdgeWidth < 0)
+                {
                     throw new InvalidOperationException("Bubble sizes cannot be negative");
+                }
             }
         }
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {
             if (IsVisible == false)
+            {
                 return;
+            }
 
             using Graphics gfx = GDI.Graphics(bmp, dims, lowQuality);
             using Brush brush = GDI.Brush(Color.Magenta);

@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -17,17 +37,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     {
         #region Constants
 
-        private static readonly object _eventColourChanged = new object();
+        private static readonly object _eventColourChanged = new();
 
-        private static readonly object _eventGridColourChanged = new object();
+        private static readonly object _eventGridColourChanged = new();
 
-        private static readonly object _eventImageChanged = new object();
+        private static readonly object _eventImageChanged = new();
 
-        private static readonly object _eventShowGridChanged = new object();
+        private static readonly object _eventShowGridChanged = new();
 
-        private static readonly object _eventShowTextWithSnapshotChanged = new object();
+        private static readonly object _eventShowTextWithSnapshotChanged = new();
 
-        private static readonly object _eventZoomChanged = new object();
+        private static readonly object _eventZoomChanged = new();
 
         #endregion
 
@@ -283,7 +303,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             size = this.GetSnapshotSize();
             if (!size.IsEmpty)
             {
-                this.SnapshotImage = new Bitmap(size.Width, size.Height, PixelFormat.Format32bppArgb);
+                this.SnapshotImage = new(size.Width, size.Height, PixelFormat.Format32bppArgb);
                 this.Invalidate();
             }
         }
@@ -321,7 +341,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             x = this.ClientSize.Width / this.Zoom / 2;
             y = this.ClientSize.Height / this.Zoom / 2;
 
-            return new Point(x, y);
+            return new(x, y);
         }
 
         /// <summary>
@@ -335,7 +355,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             snapshotWidth = (int)Math.Ceiling(this.ClientSize.Width / (double)this.Zoom);
             snapshotHeight = (int)Math.Ceiling(this.ClientSize.Height / (double)this.Zoom);
 
-            return snapshotHeight != 0 && snapshotWidth != 0 ? new Size(snapshotWidth, snapshotHeight) : Size.Empty;
+            return snapshotHeight != 0 && snapshotWidth != 0 ? new(snapshotWidth, snapshotHeight) : Size.Empty;
         }
 
         /// <summary>
@@ -416,7 +436,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 if (_eyedropperCursor == null)
                 {
                     // ReSharper disable AssignNullToNotNullAttribute
-                    _eyedropperCursor = new Cursor(this.GetType().Assembly.GetManifestResourceStream(string.Concat(this.GetType().Namespace, ".Resources.eyedropper.cur")));
+                    _eyedropperCursor = new(this.GetType().Assembly.GetManifestResourceStream(
+                        $"{this.GetType().Namespace}.Resources.eyedropper.cur"));
                 }
                 // ReSharper restore AssignNullToNotNullAttribute
 
@@ -472,7 +493,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
                 e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-                e.Graphics.DrawImage(this.SnapshotImage, new Rectangle(0, 0, this.SnapshotImage.Width * this.Zoom, this.SnapshotImage.Height * this.Zoom), new Rectangle(Point.Empty, this.SnapshotImage.Size), GraphicsUnit.Pixel);
+                e.Graphics.DrawImage(this.SnapshotImage, new Rectangle(0, 0, this.SnapshotImage.Width * this.Zoom, this.SnapshotImage.Height * this.Zoom), new(Point.Empty, this.SnapshotImage.Size), GraphicsUnit.Pixel);
             }
 
             this.PaintAdornments(e);
@@ -586,7 +607,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             center = this.GetCenterPoint();
 
-            using (Pen pen = new Pen(this.ForeColor))
+            using (Pen pen = new(this.ForeColor))
             {
                 e.Graphics.DrawRectangle(pen, center.X * this.Zoom, center.Y * this.Zoom, this.Zoom + 2, this.Zoom + 2);
             }
@@ -604,7 +625,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             pixelSize = this.Zoom;
             viewport = this.ClientRectangle;
 
-            using (Pen pen = new Pen(this.GridColour)
+            using (Pen pen = new(this.GridColour)
             {
                 DashStyle = DashStyle.Dot
             })

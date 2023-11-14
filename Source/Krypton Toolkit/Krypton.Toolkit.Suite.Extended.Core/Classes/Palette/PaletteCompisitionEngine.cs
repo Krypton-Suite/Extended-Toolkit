@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -15,7 +35,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public PaletteMode PaletteMode { get => _paletteMode;
+        public PaletteMode PaletteMode
+        {
+            get => _paletteMode;
             set => _paletteMode = value;
         }
         #endregion
@@ -63,9 +85,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="ribbonTabTextColour">The ribbon tab text colour.</param>
         /// <param name="statusState">State of the status.</param>
         /// <param name="invertColours">if set to <c>true</c> [invert colours].</param>
-        public static void CreatePalette(KryptonPalette palette, PaletteMode paletteMode, Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColourPreview, Color alternativeNormalTextColourPreview, Color normalTextColourPreview, Color disabledTextColourPreview, Color focusedTextColourPreview, Color pressedTextColourPreview, Color disabledControlColourPreview, Color linkDisabledColourPreview, Color linkFocusedColour, Color linkNormalColourPreview, Color linkHoverColourPreview, Color linkVisitedColourPreview, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour, ToolStripLabel statusState = null, bool invertColours = false)
+        public static void CreatePalette(KryptonCustomPaletteBase palette, PaletteMode paletteMode, Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColourPreview, Color alternativeNormalTextColourPreview, Color normalTextColourPreview, Color disabledTextColourPreview, Color focusedTextColourPreview, Color pressedTextColourPreview, Color disabledControlColourPreview, Color linkDisabledColourPreview, Color linkFocusedColour, Color linkNormalColourPreview, Color linkHoverColourPreview, Color linkVisitedColourPreview, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour, ToolStripLabel statusState = null, bool invertColours = false)
         {
-            palette = new KryptonPalette();
+            palette = new();
 
             try
             {
@@ -641,15 +663,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 palette.Export();
 
-                statusState.Text = $"Palette exported to: { palette.GetCustomisedKryptonPaletteFilePath() }";
+                statusState.Text = $"Palette exported to: {palette.GetCustomisedKryptonPaletteFilePath()}";
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc, icon: MessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
+                ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
             }
         }
 
-        public static void ChangeTheme(KryptonComboBox themeChoice, KryptonPalette palette)
+        public static void ChangeTheme(KryptonComboBox themeChoice, KryptonCustomPaletteBase palette)
         {
             if (themeChoice.Text == "Global")
             {
@@ -739,14 +761,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private static void SwitchPaletteMode(PaletteMode mode)
         {
-            PaletteCompisitionEngine pce = new PaletteCompisitionEngine();
+            PaletteCompisitionEngine pce = new();
 
             pce.SetPaletteMode(mode);
         }
 
         public static void PropagateThemes(KryptonComboBox themeList, bool sort = true)
         {
-            ArrayList themeCollection = new ArrayList(15);
+            ArrayList themeCollection = new(15);
 
             themeCollection.Add("Global");
 
@@ -791,7 +813,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void PropagateThemes(KryptonRibbonGroupComboBox themeList, bool sort = true)
         {
-            ArrayList themeCollection = new ArrayList(15);
+            ArrayList themeCollection = new(15);
 
             themeCollection.Add("Global");
 

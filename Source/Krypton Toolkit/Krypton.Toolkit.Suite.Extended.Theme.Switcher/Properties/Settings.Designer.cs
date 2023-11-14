@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -33,10 +52,10 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Office 365 - Blue")]
-        public global::Krypton.Toolkit.PaletteModeManager SelectedTheme {
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft 365 - Blue")]
+        public global::Krypton.Toolkit.PaletteMode SelectedTheme {
             get {
-                return ((global::Krypton.Toolkit.PaletteModeManager)(this["SelectedTheme"]));
+                return ((global::Krypton.Toolkit.PaletteMode)(this["SelectedTheme"]));
             }
             set {
                 this["SelectedTheme"] = value;
@@ -105,10 +124,10 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Office 365 - Black")]
-        public global::Krypton.Toolkit.PaletteModeManager DarkTheme {
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft 365 - Black")]
+        public global::Krypton.Toolkit.PaletteMode DarkTheme {
             get {
-                return ((global::Krypton.Toolkit.PaletteModeManager)(this["DarkTheme"]));
+                return ((global::Krypton.Toolkit.PaletteMode)(this["DarkTheme"]));
             }
             set {
                 this["DarkTheme"] = value;
@@ -117,10 +136,10 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Office 365 - Blue")]
-        public global::Krypton.Toolkit.PaletteModeManager LightTheme {
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft 365 - Blue")]
+        public global::Krypton.Toolkit.PaletteMode LightTheme {
             get {
-                return ((global::Krypton.Toolkit.PaletteModeManager)(this["LightTheme"]));
+                return ((global::Krypton.Toolkit.PaletteMode)(this["LightTheme"]));
             }
             set {
                 this["LightTheme"] = value;
@@ -129,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Office 365 - Black")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft 365 - Black")]
         public global::Krypton.Toolkit.PaletteMode DarkModeThemePaletteMode {
             get {
                 return ((global::Krypton.Toolkit.PaletteMode)(this["DarkModeThemePaletteMode"]));
@@ -141,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Office 365 - Blue")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft 365 - Blue")]
         public global::Krypton.Toolkit.PaletteMode LightModeThemePaletteMode {
             get {
                 return ((global::Krypton.Toolkit.PaletteMode)(this["LightModeThemePaletteMode"]));
@@ -153,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Office 365 - Blue")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft 365 - Blue")]
         public global::Krypton.Toolkit.PaletteMode SelectedThemePaletteMode {
             get {
                 return ((global::Krypton.Toolkit.PaletteMode)(this["SelectedThemePaletteMode"]));

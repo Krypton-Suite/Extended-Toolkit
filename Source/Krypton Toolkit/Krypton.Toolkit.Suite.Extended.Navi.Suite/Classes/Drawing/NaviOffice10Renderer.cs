@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -47,6 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <param name="bounds">The bounds of the drawing</param>
         /// <param name="text">The text that should appear into the bar</param>
         /// <param name="font">The font to use when drawing the text</param>
+        /// <param name="rightToLeft"></param>
         /// <param name="state">The inputstate of the collapsed band</param>
         public override void DrawNaviBandCollapsedBg(Graphics g, Rectangle bounds, string text, Font font,
            bool rightToLeft, InputState state)
@@ -55,9 +75,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             Color[] endColors = new Color[] { ColourTable.BandCollapsedBgColor1, ColourTable.BandCollapsedBgColor2 };
 
             if (state == InputState.Clicked)
+            {
                 endColors = new Color[] { ColourTable.BandCollapsedClickedColor1, ColourTable.BandCollapsedClickedColor1 };
+            }
             else if (state == InputState.Hovered)
+            {
                 endColors = new Color[] { ColourTable.BandCollapsedHoveredColor1, ColourTable.BandCollapsedHoveredColor1 };
+            }
 
             float[] ColorPositions = { 0.0f, 1.0f };
             ExtDrawing.DrawVertGradient(g, bounds, endColors, ColorPositions);
@@ -77,11 +101,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 // Background gradient 
                 if (state == InputState.Hovered)
+                {
                     endColors = new Color[] { ColourTable.ButtonHoveredColor1, ColourTable.ButtonHoveredColor2,
-                     ColourTable.ButtonHoveredColor3 };
+                        ColourTable.ButtonHoveredColor3 };
+                }
                 else
+                {
                     endColors = new Color[] { ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2,
-                     ColourTable.ButtonActiveColor3 };
+                        ColourTable.ButtonActiveColor3 };
+                }
 
                 float[] ColorPositions2 = { 0.0f, 0.4f, 1.0f };
                 ExtDrawing.DrawHorGradient(g, bounds, endColors, ColorPositions2);
@@ -255,6 +283,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="g">The graphics surface to draw on</param>
         /// <param name="bounds">The bounds that the drawing should apply to</param>
+        /// <param name="state"></param>
+        /// <param name="inputState"></param>
         public override void DrawButtonBg(Graphics g, Rectangle bounds, ControlState state, InputState inputState)
         {
             Color[] endColors = new Color[1];
@@ -280,11 +310,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 // Background gradient 
                 if (inputState == InputState.Hovered)
+                {
                     endColors = new Color[] { ColourTable.ButtonHoveredColor1, ColourTable.ButtonHoveredColor2,
-                     ColourTable.ButtonHoveredColor3 };
+                        ColourTable.ButtonHoveredColor3 };
+                }
                 else
+                {
                     endColors = new Color[] { ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2,
-                     ColourTable.ButtonActiveColor3 };
+                        ColourTable.ButtonActiveColor3 };
+                }
 
                 float[] ColorPositions = { 0.0f, 0.4f, 1.0f };
                 ExtDrawing.DrawVertGradient(g, bounds, endColors, ColorPositions);
@@ -292,15 +326,23 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 // Draws a nice shiney glow on the bottom of the button
 
                 if (inputState == InputState.Hovered)
+                {
                     endColors = new Color[] { Color.FromArgb(1, ColourTable.ButtonHoveredColor4) };
+                }
                 else
+                {
                     endColors = new Color[] { Color.FromArgb(1, ColourTable.ButtonActiveColor4) };
+                }
 
                 Color startColor;
                 if (inputState == InputState.Hovered)
+                {
                     startColor = Color.FromArgb(150, ColourTable.ButtonHoveredColor4);
+                }
                 else
+                {
                     startColor = Color.FromArgb(150, ColourTable.ButtonActiveColor4);
+                }
 
                 GraphicsPath path = new GraphicsPath();
                 path.AddEllipse(0, bounds.Height / 2, bounds.Width, bounds.Height);
@@ -471,9 +513,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             blend.Positions = ColorPositions;
 
             if (bounds.Height == 0)
+            {
                 bounds.Height = 1;
+            }
+
             if (bounds.Width == 0)
+            {
                 bounds.Width = 1; // its to prevent an out of memory exception
+            }
 
             Point beginPoint;
             Point endPoint;
@@ -580,10 +627,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 float y = 0;
 
                 if (bounds.Height != 0)
+                {
                     y = (bounds.Height / 2) - 3;
+                }
 
                 if (bounds.Width != 0)
+                {
                     x = (bounds.Width / 2) - 1;
+                }
 
                 if (((rightToLeft) && (!collapsed)) || (!rightToLeft) && (collapsed))
                 {

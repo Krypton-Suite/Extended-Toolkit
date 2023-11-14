@@ -1,14 +1,30 @@
-#region BSD License
+#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
-
-using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 {
@@ -24,15 +40,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             Garbage
         }
 
-        public static readonly SrgsRuleRef Null = new SrgsRuleRef(SpecialRuleRefType.Null);
+        public static readonly SrgsRuleRef Null = new(SpecialRuleRefType.Null);
 
-        public static readonly SrgsRuleRef Void = new SrgsRuleRef(SpecialRuleRefType.Void);
+        public static readonly SrgsRuleRef Void = new(SpecialRuleRefType.Void);
 
-        public static readonly SrgsRuleRef Garbage = new SrgsRuleRef(SpecialRuleRefType.Garbage);
+        public static readonly SrgsRuleRef Garbage = new(SpecialRuleRefType.Garbage);
 
-        public static readonly SrgsRuleRef Dictation = new SrgsRuleRef(new Uri("grammar:dictation"));
+        public static readonly SrgsRuleRef Dictation = new(new Uri("grammar:dictation"));
 
-        public static readonly SrgsRuleRef MnemonicSpelling = new SrgsRuleRef(new Uri("grammar:dictation#spelling"));
+        public static readonly SrgsRuleRef MnemonicSpelling = new(new Uri("grammar:dictation#spelling"));
 
         private Uri _uri;
 
@@ -74,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
         public SrgsRuleRef(SrgsRule rule)
         {
             Helpers.ThrowIfNull(rule, "rule");
-            _uri = new Uri("#" + rule.Id, UriKind.Relative);
+            _uri = new Uri($"#{rule.Id}", UriKind.Relative);
         }
 
         public SrgsRuleRef(SrgsRule rule, string semanticKey)
@@ -206,7 +222,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             }
             else
             {
-                _uri = new Uri(uri.ToString() + "#" + rule, UriKind.RelativeOrAbsolute);
+                _uri = new Uri($"{uri}#{rule}", UriKind.RelativeOrAbsolute);
             }
             _semanticKey = semanticKey;
             _params = initParameters;

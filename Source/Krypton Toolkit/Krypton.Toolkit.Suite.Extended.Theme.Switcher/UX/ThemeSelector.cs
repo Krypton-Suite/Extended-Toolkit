@@ -1,11 +1,31 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+#nullable enable
 namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     public class ThemeSelector : KryptonForm
@@ -18,13 +38,12 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         private KryptonButton kbtnCancel;
         private KryptonPanel kryptonPanel2;
         private KryptonLabel kryptonLabel1;
-        private KryptonThemeComboBox kcmbSelectedTheme;
         private IContainer components;
+        private KryptonThemeComboBox kcmbSelectedTheme;
         private KryptonBorderEdge kryptonBorderEdge1;
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnOptions = new Krypton.Toolkit.KryptonButton();
             this.kbtnResetTheme = new Krypton.Toolkit.KryptonButton();
@@ -58,6 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // kbtnOptions
             // 
             this.kbtnOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnOptions.CornerRoundingRadius = -1F;
             this.kbtnOptions.Location = new System.Drawing.Point(272, 13);
             this.kbtnOptions.Name = "kbtnOptions";
             this.kbtnOptions.Size = new System.Drawing.Size(90, 25);
@@ -69,6 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // kbtnResetTheme
             // 
             this.kbtnResetTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnResetTheme.CornerRoundingRadius = -1F;
             this.kbtnResetTheme.Enabled = false;
             this.kbtnResetTheme.Location = new System.Drawing.Point(108, 13);
             this.kbtnResetTheme.Name = "kbtnResetTheme";
@@ -80,6 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // kbtnLoadTheme
             // 
             this.kbtnLoadTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnLoadTheme.CornerRoundingRadius = -1F;
             this.kbtnLoadTheme.Location = new System.Drawing.Point(12, 13);
             this.kbtnLoadTheme.Name = "kbtnLoadTheme";
             this.kbtnLoadTheme.Size = new System.Drawing.Size(90, 25);
@@ -90,6 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // kbtnCancel
             // 
             this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(368, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -128,16 +151,12 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kcmbSelectedTheme
             // 
-            this.kcmbSelectedTheme.AutoCompleteCustomSource.AddRange(new string[] {
-            "System.String[]"});
-            this.kcmbSelectedTheme.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.kcmbSelectedTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.kcmbSelectedTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kcmbSelectedTheme.DropDownWidth = 446;
+            this.kcmbSelectedTheme.CornerRoundingRadius = -1F;
+            this.kcmbSelectedTheme.DropDownWidth = 445;
             this.kcmbSelectedTheme.IntegralHeight = false;
-            this.kcmbSelectedTheme.Location = new System.Drawing.Point(12, 38);
+            this.kcmbSelectedTheme.Location = new System.Drawing.Point(13, 39);
             this.kcmbSelectedTheme.Name = "kcmbSelectedTheme";
-            this.kcmbSelectedTheme.Size = new System.Drawing.Size(446, 21);
+            this.kcmbSelectedTheme.Size = new System.Drawing.Size(445, 21);
             this.kcmbSelectedTheme.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbSelectedTheme.TabIndex = 1;
             // 
@@ -169,13 +188,13 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #endregion
 
         #region Variables
-        private SettingsManager _settingsManager = new SettingsManager();
+        private SettingsManager _settingsManager = new();
 
-        ThemeManager _themeManager = new ThemeManager();
+        ThemeManager _themeManager = new();
 
         private KryptonManager _manager;
 
-        private KryptonPalette _palette;
+        private KryptonCustomPaletteBase _palette;
         #endregion
 
         #region Constructor
@@ -185,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _manager = manager ?? new KryptonManager();
 
-            _palette = new KryptonPalette();
+            _palette = new KryptonCustomPaletteBase();
 
             ThemeManager.PropagateThemeList(kcmbSelectedTheme);
         }
@@ -231,7 +250,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void kbtnResetTheme_Click(object sender, EventArgs e)
         {
-            _settingsManager.SetSelectedTheme(PaletteModeManager.Office365Blue);
+            _settingsManager.SetSelectedTheme(PaletteMode.Microsoft365Blue);
 
             _settingsManager.SetCustomThemePath(string.Empty);
 
@@ -239,9 +258,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _manager.GlobalPalette = null;
 
-            _manager.GlobalPaletteMode = PaletteModeManager.Office365Blue;
+            _manager.GlobalPaletteMode = PaletteMode.Microsoft365Blue;
 
-            kcmbSelectedTheme.Text = "Office 365 - Blue";
+            kcmbSelectedTheme.Text = @"Microsoft 365 - Blue";
 
             EnableResetButton(false);
         }
@@ -252,9 +271,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _manager.GlobalPalette = _palette;
 
-            _manager.GlobalPaletteMode = PaletteModeManager.Custom;
+            _manager.GlobalPaletteMode = PaletteMode.Custom;
 
-            kcmbSelectedTheme.Text = "Custom";
+            kcmbSelectedTheme.Text = @"Custom";
 
             EnableResetButton(true);
         }

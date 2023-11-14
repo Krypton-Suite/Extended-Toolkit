@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -254,19 +274,27 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <value>
         ///   <c>true</c> if [do not show again option result]; otherwise, <c>false</c>.
         /// </value>
-        public bool DoNotShowAgainOptionResult { get => _doNotShowAgainOptionResult;
+        public bool DoNotShowAgainOptionResult
+        {
+            get => _doNotShowAgainOptionResult;
             set => _doNotShowAgainOptionResult = value;
         }
 
-        public bool ShowDoNotShowAgainOption { get => _showDoNotShowAgainOption;
+        public bool ShowDoNotShowAgainOption
+        {
+            get => _showDoNotShowAgainOption;
             set => _showDoNotShowAgainOption = value;
         }
 
-        public bool UseTimeOutOption { get => _useTimeOutOption;
+        public bool UseTimeOutOption
+        {
+            get => _useTimeOutOption;
             set => _useTimeOutOption = value;
         }
 
-        public DialogResult DefaultTimeOutResponse { get => _defaultTimeOutResponse;
+        public DialogResult DefaultTimeOutResponse
+        {
+            get => _defaultTimeOutResponse;
             set => _defaultTimeOutResponse = value;
         }
 
@@ -276,7 +304,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <value>
         /// The message box typeface.
         /// </value>
-        public Font MessageBoxTypeface { get => _messageboxTypeface;
+        public Font MessageBoxTypeface
+        {
+            get => _messageboxTypeface;
             set => _messageboxTypeface = value;
         }
 
@@ -286,7 +316,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <value>
         /// The time out.
         /// </value>
-        public int TimeOut { get => _timeOut;
+        public int TimeOut
+        {
+            get => _timeOut;
             set => _timeOut = value;
         }
 
@@ -296,7 +328,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <value>
         /// The time out timer delay.
         /// </value>
-        public int TimeOutTimerDelay { get => _timeOutTimerDelay;
+        public int TimeOutTimerDelay
+        {
+            get => _timeOutTimerDelay;
             set => _timeOutTimerDelay = value;
         }
 
@@ -306,7 +340,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <value>
         /// The do not show again option text.
         /// </value>
-        public string DoNotShowAgainOptionText { get => _doNotShowAgainOptionText;
+        public string DoNotShowAgainOptionText
+        {
+            get => _doNotShowAgainOptionText;
             set => _doNotShowAgainOptionText = value;
         }
         #endregion
@@ -413,8 +449,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             {
                 switch (m.Msg)
                 {
-                    case PI.WM_KEYDOWN:
-                    case PI.WM_SYSKEYDOWN:
+                    case PlatformInvoke.WM_KEYDOWN:
+                    case PlatformInvoke.WM_SYSKEYDOWN:
                         if (IgnoreAltF4)
                         {
                             // Extract the keys being pressed
@@ -1031,7 +1067,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             if ((helpInformation != null) || ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
             {
                 // If do not have an owner passed in then get the active window and use that instead
-                showOwner = owner ?? FromHandle(PI.GetActiveWindow());
+                showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
@@ -1115,14 +1151,14 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             switch (_buttons)
             {
                 case MessageBoxButtons.OK:
-                    _button1.Text = KryptonManager.Strings.OK;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
                     _button1.DialogResult = DialogResult.OK;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     _button2.Visible = _button3.Visible = false;
                     break;
                 case MessageBoxButtons.OKCancel:
-                    _button1.Text = KryptonManager.Strings.OK;
-                    _button2.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1130,8 +1166,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     _button3.Visible = false;
                     break;
                 case MessageBoxButtons.YesNo:
-                    _button1.Text = KryptonManager.Strings.Yes;
-                    _button2.Text = KryptonManager.Strings.No;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1140,9 +1176,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     ControlBox = false;
                     break;
                 case MessageBoxButtons.YesNoCancel:
-                    _button1.Text = KryptonManager.Strings.Yes;
-                    _button2.Text = KryptonManager.Strings.No;
-                    _button3.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button3.DialogResult = DialogResult.Cancel;
@@ -1151,8 +1187,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     _button3.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     break;
                 case MessageBoxButtons.RetryCancel:
-                    _button1.Text = KryptonManager.Strings.Retry;
-                    _button2.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1160,9 +1196,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     _button3.Visible = false;
                     break;
                 case MessageBoxButtons.AbortRetryIgnore:
-                    _button1.Text = KryptonManager.Strings.Abort;
-                    _button2.Text = KryptonManager.Strings.Retry;
-                    _button3.Text = KryptonManager.Strings.Ignore;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Abort;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
+                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Ignore;
                     _button1.DialogResult = DialogResult.Abort;
                     _button2.DialogResult = DialogResult.Retry;
                     _button3.DialogResult = DialogResult.Ignore;
@@ -1187,14 +1223,14 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             switch (_buttons)
             {
                 case MessageBoxButtons.OK:
-                    _button1.Text = KryptonManager.Strings.OK;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
                     _button1.DialogResult = DialogResult.OK;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     _button2.Visible = _button3.Visible = false;
                     break;
                 case MessageBoxButtons.OKCancel:
-                    _button1.Text = KryptonManager.Strings.OK;
-                    _button2.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1202,8 +1238,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     _button3.Visible = false;
                     break;
                 case MessageBoxButtons.YesNo:
-                    _button1.Text = KryptonManager.Strings.Yes;
-                    _button2.Text = KryptonManager.Strings.No;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1212,9 +1248,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     ControlBox = false;
                     break;
                 case MessageBoxButtons.YesNoCancel:
-                    _button1.Text = KryptonManager.Strings.Yes;
-                    _button2.Text = KryptonManager.Strings.No;
-                    _button3.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button3.DialogResult = DialogResult.Cancel;
@@ -1223,8 +1259,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     _button3.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     break;
                 case MessageBoxButtons.RetryCancel:
-                    _button1.Text = KryptonManager.Strings.Retry;
-                    _button2.Text = KryptonManager.Strings.Cancel;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1232,9 +1268,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     _button3.Visible = false;
                     break;
                 case MessageBoxButtons.AbortRetryIgnore:
-                    _button1.Text = KryptonManager.Strings.Abort;
-                    _button2.Text = KryptonManager.Strings.Retry;
-                    _button3.Text = KryptonManager.Strings.Ignore;
+                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Abort;
+                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
+                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Ignore;
                     _button1.DialogResult = DialogResult.Abort;
                     _button2.DialogResult = DialogResult.Retry;
                     _button3.DialogResult = DialogResult.Ignore;
@@ -1248,15 +1284,15 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             // Time out logic
             if (defaultTimeOutButton == MessageBoxDefaultButton.Button1)
             {
-                _button1.Text = $"{ _button1.Text } ({ timeOut.ToString() })";
+                _button1.Text = $"{_button1.Text} ({timeOut.ToString()})";
             }
             else if (defaultTimeOutButton == MessageBoxDefaultButton.Button2)
             {
-                _button2.Text = $"{ _button2.Text } ({ timeOut.ToString() })";
+                _button2.Text = $"{_button2.Text} ({timeOut.ToString()})";
             }
             else if (defaultTimeOutButton == MessageBoxDefaultButton.Button3)
             {
-                _button3.Text = $"{ _button3.Text } ({ timeOut.ToString() })";
+                _button3.Text = $"{_button3.Text} ({timeOut.ToString()})";
             }
 
             // Do we ignore the Alt+F4 on the buttons?

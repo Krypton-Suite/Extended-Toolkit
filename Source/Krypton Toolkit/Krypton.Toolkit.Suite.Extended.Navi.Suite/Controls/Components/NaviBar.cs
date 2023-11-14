@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -100,9 +119,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             internal set
             {
                 if (value == null)
+                {
                     layoutEngineDirty = true;
+                }
+
                 if (naviLayoutEngine != null)
+                {
                     naviLayoutEngine.Cleanup();
+                }
+
                 naviLayoutEngine = value;
                 observers.Add(naviLayoutEngine);
             }
@@ -323,7 +348,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 bool raise = collapsed != value;
                 collapsed = value;
 
-                if (raise) OnCollapsedChanged(new EventArgs());
+                if (raise)
+                {
+                    OnCollapsedChanged(new EventArgs());
+                }
 
                 PerformLayout();
                 Invalidate();
@@ -386,7 +414,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             get
             {
                 if (settings == null)
+                {
                     settings = new NaviBarSettings();
+                }
+
                 settings.BandSettings.Clear();
                 settings.VisibleButtons = visibleLargeButtons;
                 settings.Collapsed = collapsed;
@@ -553,7 +584,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Changes the currently active band to a given band
         /// </summary>
-        /// <param name="band">The band to activate</param>
+        /// <param name="newBand">The band to activate</param>
         public void SetActiveBand(NaviBand newBand)
         {
             NaviBandEventArgs e = new NaviBandEventArgs(newBand);
@@ -599,7 +630,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             SuspendLayout();
 
             if (settings == null)
+            {
                 return;
+            }
 
             foreach (NaviBand band in bands)
             {
@@ -608,7 +641,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 foreach (NaviBandSetting tmpSetting in settings.BandSettings)
                 {
                     if (tmpSetting.Name.ToLower() == band.Text.ToLower())
+                    {
                         setting = tmpSetting;
+                    }
                 }
 
                 // It's possible that no setting exist for this particular band. For example a new
@@ -628,7 +663,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
             VisibleLargeButtons = settings.VisibleButtons;
             if (settings.Collapsed != collapsed)
+            {
                 Collapsed = settings.Collapsed;
+            }
+
             bands.Sort(new NaviBandOrderComparer());
 
             // Rebuild ordering values. This is to prevent 999 and duplicate values from showing 
@@ -801,7 +839,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Overriden. Raises the PaintBackground
         /// </summary>
-        /// <param name="pevent">Additional paint info</param>
+        /// <param name="e">Additional paint info</param>
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             base.OnPaintBackground(e);
@@ -857,7 +895,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                : base(owner)
             {
                 if (owner is NaviBar)
+                {
                     ownerBar = (NaviBar)owner;
+                }
             }
 
             /// <summary>
@@ -875,7 +915,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                     NaviBand newBand = value as NaviBand;
 
                     if (!ownerBar.bands.Contains(newBand))
+                    {
                         ownerBar.Bands.AddInternal(newBand);
+                    }
 
                     newBand.OwnerBar = ownerBar;
                     ownerBar.BandInitRequired = true;

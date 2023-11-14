@@ -1,13 +1,30 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
-
-using Krypton.Toolkit.Suite.Extended.Common;
-using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -33,9 +50,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private const int BCM_SETSHIELD = 0x160C;
 
-        private GlobalMethods _globalMethods = new GlobalMethods();
+        private GlobalMethods _globalMethods = new();
 
-        private UtilityMethods _utilityMethods = new UtilityMethods();
+        private UtilityMethods _utilityMethods = new();
         #endregion
 
         #region Properties
@@ -74,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
 
         /// <summary>The execute process as administrator</summary>
-        public ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
+        public ExecuteProcessAsAdministratorEventHandler? ExecuteProcessAsAdministrator;
         #endregion
 
         #region Constructor
@@ -83,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         public KryptonUACElevatedButton() : base()
         {
-            Size = new Size((int)(Width * 1.5), Height + 1);
+            Size = new((int)(Width * 1.5), Height + 1);
 
             _globalMethods.CheckIfTargetPlatformIsSupported(true);
 
@@ -117,7 +134,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     }
                     catch (Exception exc)
                     {
-                        CoreInternalKryptonMessageBoxExtended.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: { _globalMethods.GetOSFriendlyName() }.\nException message: { exc.Message }.", "Unsupported Software", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //CoreInternalKryptonMessageBoxExtended.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: { _globalMethods.GetOSFriendlyName() }.\nException message: { exc.Message }.", "Unsupported Software", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        ExceptionCapture.CaptureException(exc);
 
                         _isSystemAbleToLoadShield = false;
                     }
@@ -135,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected override void OnClick(EventArgs e)
         {
-            ExecuteProcessAsAdministratorEventArgs evt = new ExecuteProcessAsAdministratorEventArgs(ProcessName);
+            ExecuteProcessAsAdministratorEventArgs evt = new(ProcessName);
 
             OnExecuteProcessAsAdministrator(this, evt);
 
@@ -147,40 +166,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-        }
-        #endregion
-
-        #region Methods
-        /// <summary>Captures the exception.</summary>
-        /// <param name="exception">The exception.</param>
-        /// <param name="currentWindow">The current window.</param>
-        /// <param name="control">The control.</param>
-        /// <param name="title">The title.</param>
-        /// <param name="buttons">The buttons.</param>
-        /// <param name="icon">The icon.</param>
-        /// <param name="className">Name of the class.</param>
-        /// <param name="methodSignature">The method signature.</param>
-        /// <param name="defaultTypeface">The default typeface.</param>
-        private static void CaptureException(Exception exception, KryptonForm currentWindow, Control control = null, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Error, string className = "", string methodSignature = "", Font defaultTypeface = null)
-        {
-            defaultTypeface = new Font(currentWindow.Font.FontFamily, currentWindow.Font.Size, currentWindow.Font.Style, currentWindow.Font.Unit);
-
-            if (className != "")
-            {
-                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
-            }
-            else if (methodSignature != "")
-            {
-                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in method: '{ methodSignature }'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
-            }
-            else if (className != "" && methodSignature != "")
-            {
-                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.\n\nError in method: '{ methodSignature }'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
-            }
-            else
-            {
-                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon, messageboxTypeface: defaultTypeface);
-            }
         }
         #endregion
 

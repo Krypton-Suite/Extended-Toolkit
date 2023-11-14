@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -93,7 +112,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 largeImage = value;
                 if (button != null)
+                {
                     button.LargeImage = value;
+                }
+
                 Invalidate();
             }
         }
@@ -113,7 +135,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 smallImage = value;
                 if (button != null)
+                {
                     button.SmallImage = value;
+                }
+
                 Invalidate();
             }
         }
@@ -134,7 +159,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 largeImageIndex = value;
                 if (button != null)
+                {
                     button.Invalidate();
+                }
             }
         }
 
@@ -154,7 +181,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 smallImageIndex = value;
                 if (button != null)
+                {
                     button.Invalidate();
+                }
             }
         }
 
@@ -245,7 +274,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             SetStyle(ControlStyles.ResizeRedraw, true);
 
             if (clientArea == null)
+            {
                 clientArea = new NaviBandClientArea();
+            }
 
             clientArea.Name = "ClientArea";
             clientArea.Location = new Point(0, 0);
@@ -253,7 +284,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             clientArea.Renderer = Renderer;
 
             if (!Controls.Contains(clientArea))
+            {
                 Controls.Add(clientArea);
+            }
 
             ResizeRedraw = true;
         }
@@ -275,7 +308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Overriden. Raises the PaintBackground and draws the background of the Navigation band
         /// </summary>
-        /// <param name="pevent">Additional paint info</param>
+        /// <param name="e">Additional paint info</param>
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             base.OnPaintBackground(e);
@@ -300,7 +333,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             base.OnTextChanged(e);
             if (button != null)
+            {
                 button.Text = Text;
+            }
         }
 
         /// <summary>
@@ -311,7 +346,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             base.OnVisibleChanged(e);
             if (button != null)
+            {
                 button.Visible = Visible;
+            }
         }
 
         #endregion

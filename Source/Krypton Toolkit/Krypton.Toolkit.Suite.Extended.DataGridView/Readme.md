@@ -13,7 +13,7 @@
 <!-- End Document Outline -->
 
 # DataGridView
-![](SingleAndMultiDetailViews.png)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/DataGridViewSingleAndMultiDetailViews.png?raw=true)
 
 ## Things of note in the picture
 - Drop Arrow indicating active Details view
@@ -27,10 +27,10 @@
 - The "Launch List View" list button in the Title bar shows how to use custom Lists as a dataset and also custom columns.    
 - You *have* to click on the circular arrow to make the Row Expand / Collapse.
 ### ExtraDesignerVariables
-![](ExtraDesignerVariables.png)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/DataGridViewExtraDesignerVariables.png?raw=true)
 
 ### Launch List View
-![](LaunchListView.png)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/DataGridViewLaunchListView.png?raw=true)
 - The List view form allows the themes to be changed across the application.
 - Demonstrates the removal of the Details row headers
 - Demonstrates the use of FullRowSelect, and clicking on any cell, expands / collapses the details

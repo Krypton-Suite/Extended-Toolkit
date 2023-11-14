@@ -1,4 +1,31 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Toast.UX
+﻿#region MIT License
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Toast.UX
 {
     partial class BasicNotificationWithUserResponseWrappedLabelAndProgressBar
     {
@@ -31,7 +58,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasicNotificationWithUserResponseWrappedLabelAndProgressBar));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
-            this.pbProgress = new System.Windows.Forms.ProgressBar();
+            this.pbProgress = new Krypton.Toolkit.KryptonProgressBar();
             this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
             this.ktxtUserResponse = new Krypton.Toolkit.KryptonTextBox();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
@@ -97,8 +124,8 @@
             // 
             // kwlContent
             // 
-            this.kwlContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.kwlContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kwlContent.AutoSize = false;
             this.kwlContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -120,8 +147,8 @@
             // 
             // kwlTitle
             // 
-            this.kwlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.kwlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kwlTitle.AutoSize = false;
             this.kwlTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -360,7 +387,7 @@
 
         private KryptonPanel kryptonPanel1;
         private KryptonPanel kpnlContent;
-        private ProgressBar pbProgress;
+        private KryptonProgressBar pbProgress;
         private KryptonWrapLabel kwlContent;
         private KryptonTextBox ktxtUserResponse;
         private KryptonWrapLabel kwlTitle;

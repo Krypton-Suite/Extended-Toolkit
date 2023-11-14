@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -47,7 +66,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             get
             {
                 double maxBackAngle = CircularBackground ? 360 : MaximumSizeAngle;
-                if (!Clockwise) maxBackAngle = -maxBackAngle;
+                if (!Clockwise)
+                {
+                    maxBackAngle = -maxBackAngle;
+                }
+
                 return maxBackAngle;
             }
         }
@@ -96,12 +119,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Style of the base of the gauge
         /// </summary>
-        public System.Drawing.Drawing2D.LineCap StartCap = System.Drawing.Drawing2D.LineCap.Round;
+        public LineCap StartCap = LineCap.Round;
 
         /// <summary>
         /// Style of the tip of the gauge
         /// </summary>
-        public System.Drawing.Drawing2D.LineCap EndCap = System.Drawing.Drawing2D.LineCap.Round;
+        public LineCap EndCap = LineCap.Round;
 
         /// <summary>
         /// Defines the location of each gauge relative to the start angle and distance from the center
@@ -129,12 +152,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private void RenderBackground(Graphics gfx, PointF center, float radius)
         {
             if (Mode == RadialGaugeMode.SingleGauge)
+            {
                 return;
+            }
 
             using Pen backgroundPen = GDI.Pen(BackgroundColor);
             backgroundPen.Width = (float)Width;
-            backgroundPen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
-            backgroundPen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+            backgroundPen.StartCap = LineCap.Round;
+            backgroundPen.EndCap = LineCap.Round;
 
             gfx.DrawArc(backgroundPen,
                         (center.X - radius),
@@ -167,7 +192,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private void RenderGaugeLabels(Graphics gfx, PointF center, float radius)
         {
             if (!ShowLabels)
+            {
                 return;
+            }
 
             // TODO: use this so font size is in pixels not pt
             //Font.Size = lineWidth * (float)FontSizeFraction;
@@ -200,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 float y = center.Y + radius * (float)Math.Sin(theta);
 
                 gfx.RotateTransform((float)rotation);
-                gfx.TranslateTransform(x, y, System.Drawing.Drawing2D.MatrixOrder.Append);
+                gfx.TranslateTransform(x, y, MatrixOrder.Append);
                 gfx.DrawString(Label[i].ToString(), font, brush, 0, 0, sf);
                 gfx.ResetTransform();
 
@@ -247,7 +274,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             angle %= 360;
 
             if (angle < 0)
+            {
                 angle += 360;
+            }
 
             return angle;
         }

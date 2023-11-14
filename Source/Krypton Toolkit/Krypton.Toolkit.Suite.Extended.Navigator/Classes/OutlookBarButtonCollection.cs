@@ -1,12 +1,32 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
 using System.Collections;
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
 
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
@@ -32,26 +52,29 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }*/
 
-        public int SelectedIndex(OutlookBarButton item)
+        public int SelectedIndex(OutlookBarButton? item)
         {
             return this.List.IndexOf(item);
         }
 
         public OutlookBarButton this[int index] => (OutlookBarButton)List[index];
 
-        public OutlookBarButton this[string text]
+        public OutlookBarButton? this[string text]
         {
             get
             {
-                foreach (OutlookBarButton b in List)
+                foreach (OutlookBarButton? b in List)
                 {
-                    if (b.Text.Equals(text)) return b;
+                    if (b != null && b.Text.Equals(text))
+                    {
+                        return b;
+                    }
                 }
                 return null;
             }
         }
 
-        internal OutlookBarButton this[int x, int y]
+        internal OutlookBarButton? this[int x, int y]
         {
             get
             {
@@ -59,11 +82,17 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 {
                     if (!(b.Rectangle == null))
                     {
-                        if (b.Rectangle.Contains(new Point(x, y))) return b;
+                        if (b.Rectangle.Contains(new Point(x, y)))
+                        {
+                            return b;
+                        }
                     }
                     if (!(b.Rectangle == null))
                     {
-                        if (b.Rectangle.Contains(new Point(x, y))) return b;
+                        if (b.Rectangle.Contains(new Point(x, y)))
+                        {
+                            return b;
+                        }
                     }
                 }
                 return null;
@@ -105,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             if (!typeof(OutlookBarButton).IsAssignableFrom(value.GetType()))
             {
-                throw new ArgumentException("value must be of type OutlookBarButton.", "value");
+                throw new ArgumentException(@"Value must be of type OutlookBarButton.", "value");
             }
         }
 
@@ -114,7 +143,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             int functionReturnValue = 0;
             foreach (OutlookBarButton b in this.List)
             {
-                if (b.Visible & b.Allowed) functionReturnValue += 1;
+                if (b.Visible & b.Allowed)
+                {
+                    functionReturnValue += 1;
+                }
             }
             return functionReturnValue;
         }

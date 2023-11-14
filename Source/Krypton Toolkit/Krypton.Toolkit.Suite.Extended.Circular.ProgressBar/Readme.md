@@ -8,7 +8,7 @@
 <!-- End Document Outline -->
 
 # `CircularProgessBar`
-![](CircularProgressBarNormal.gif) ![](CircularProgressBarTrio.gif)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/CircularProgressBarNormal.gif?raw=true) ![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/CircularProgressBarTrio.gif?raw=true)
 
 ## Things of note in the pictures
 - The circular progress bar is a standalone control

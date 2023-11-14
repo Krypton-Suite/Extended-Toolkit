@@ -1,19 +1,19 @@
-﻿#region BSD License
-/*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
- */
-#endregion
-
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
+﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
-    internal class Hasher
+    /// <summary>
+    /// Class used to generate hash sums of files
+    /// </summary>
+    internal static class Hasher
     {
-        #region Methods
-        internal static string HashFile(string filePath, HashType hashType)
+        /// <summary>
+        /// Generate a hash sum of a file
+        /// </summary>
+        /// <param name="filePath">The file to hash</param>
+        /// <param name="algo">The Type of hash</param>
+        /// <returns>The computed hash</returns>
+        internal static string HashFile(string filePath, HashType algo)
         {
-            switch (hashType)
+            switch (algo)
             {
                 case HashType.MD5:
                     return MakeHashString(MD5.Create().ComputeHash(new FileStream(filePath, FileMode.Open)));
@@ -30,17 +30,19 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             }
         }
 
+        /// <summary>
+        /// Converts byte[] to string
+        /// </summary>
+        /// <param name="hash">The hash to convert</param>
+        /// <returns>Hash as string</returns>
         private static string MakeHashString(byte[] hash)
         {
-            StringBuilder builder = new StringBuilder();
+            StringBuilder s = new StringBuilder();
 
             foreach (byte b in hash)
-            {
-                builder.Append(b.ToString("x2").ToLower());
-            }
+                s.Append(b.ToString("x2").ToLower());
 
-            return builder.ToString();
+            return s.ToString();
         }
-        #endregion 
     }
 }

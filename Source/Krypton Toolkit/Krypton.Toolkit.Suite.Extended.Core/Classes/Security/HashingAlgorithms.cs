@@ -1,12 +1,30 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
-
-using System.Security.Cryptography;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -70,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Methods
         public static void GenerateMD5Hash(BackgroundWorker md5Worker, string filePath)
         {
-            md5Worker = new BackgroundWorker();
+            md5Worker = new();
 
             md5Worker.WorkerReportsProgress = true;
 
@@ -92,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Event Handlers
         private static void MD5Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            HashingAlgorithms algorithims = new HashingAlgorithms();
+            HashingAlgorithms algorithims = new();
 
             algorithims.HashingProgress.Value = 0;
 
@@ -108,15 +126,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private static void MD5Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            HashingAlgorithms algorithims = new HashingAlgorithms();
+            HashingAlgorithms algorithims = new();
 
             algorithims.HashingProgress.Value = e.ProgressPercentage;
 
             algorithims.HashingProgressBar.Value = e.ProgressPercentage;
 
-            algorithims.HashingProgressValueLabel.Text = $"{ e.ProgressPercentage.ToString() }%";
+            algorithims.HashingProgressValueLabel.Text = $"{e.ProgressPercentage.ToString()}%";
 
-            algorithims.ProgressValueLabel.Text = $"{ e.ProgressPercentage.ToString() }%";
+            algorithims.ProgressValueLabel.Text = $"{e.ProgressPercentage.ToString()}%";
         }
 
         private static void MD5Worker_DoWork(object sender, DoWorkEventArgs e)
@@ -164,7 +182,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="value">The value of MD5Worker.</param>
         public static void SetMD5Worker(BackgroundWorker value)
         {
-            HashingAlgorithms algorithims = new HashingAlgorithms();
+            HashingAlgorithms algorithims = new();
 
             algorithims.MD5Worker = value;
         }
@@ -175,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>The value of MD5Worker.</returns>
         public static BackgroundWorker GetMD5Worker()
         {
-            HashingAlgorithms algorithims = new HashingAlgorithms();
+            HashingAlgorithms algorithims = new();
 
             return algorithims.MD5Worker;
         }

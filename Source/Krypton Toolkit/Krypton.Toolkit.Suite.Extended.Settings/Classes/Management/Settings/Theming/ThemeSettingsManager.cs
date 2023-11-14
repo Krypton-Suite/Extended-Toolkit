@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -11,9 +31,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
     public class ThemeSettingsManager
     {
         #region Variables
-        private ThemeSettings _themeSettings = new ThemeSettings();
+        private ThemeSettings _themeSettings = new();
 
-        private GlobalThemeSettings _globalThemeSettings = new GlobalThemeSettings();
+        private GlobalThemeSettings _globalThemeSettings = new();
         #endregion
 
         #region Constuctor
@@ -78,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (usePrompt)
             {
-                DialogResult result = KryptonMessageBox.Show("Do you want to save the current theme settings?", "Save Confirmation", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("Do you want to save the current theme settings?", "Save Confirmation", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -99,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (usePrompt)
             {
-                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to reset the current theme settings back to their defaults?", "Reset Theme Settings", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to reset the current theme settings back to their defaults?", "Reset Theme Settings", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -116,11 +136,11 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             SetCustomThemePath(string.Empty);
 
-            SetDarkModeThemePaletteMode(PaletteMode.Office365Black);
+            SetDarkModeThemePaletteMode(PaletteMode.Microsoft365Black);
 
-            SetLightModeThemePaletteMode(PaletteMode.Office365Blue);
+            SetLightModeThemePaletteMode(PaletteMode.Microsoft365Blue);
 
-            SetSelectedThemePaletteMode(PaletteMode.Office365Blue);
+            SetSelectedThemePaletteMode(PaletteMode.Microsoft365Blue);
 
             SetShowImportButton(true);
 

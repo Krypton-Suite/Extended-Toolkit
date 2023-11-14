@@ -1,11 +1,35 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+using System.Diagnostics;
+#pragma warning disable CS8602
+
+#pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -17,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private DateTime _date;
         private Rectangle monthNameBounds;
         private Rectangle[] dayNamesBounds;
-        private MonthViewDay[] days;
+        private MonthViewDay?[] days;
         private string[] _dayHeaders;
         //private Size _size;
         private Point _location;
@@ -38,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             _date = date;
 
             int preDays = (new int[] { 0, 1, 2, 3, 4, 5, 6 })[(int)date.DayOfWeek] - (int)MonthView.FirstDayOfWeek;
-            days = new MonthViewDay[6 * 7];
+            days = new MonthViewDay?[6 * 7];
             DateTime curDate = date.AddDays(-preDays);
             DayHeaders = new string[7];
 
@@ -67,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public Size Size => MonthView.MonthSize;
 
-        public MonthViewDay[] Days
+        public MonthViewDay?[] Days
         {
             get => days;
             set => days = value;
@@ -142,7 +166,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             for (int i = 0; i < Days.Length; i++)
             {
-                Days[i].SetBounds(new Rectangle(new Point(curX, curY), MonthView.DaySize));
+                if (Days != null)
+                {
+                    Debug.Assert(Days != null, $"{nameof(Days)} != null");
+                    Days[i].SetBounds(new Rectangle(new Point(curX, curY), MonthView.DaySize));
+                }
 
                 curX += MonthView.DaySize.Width;
 

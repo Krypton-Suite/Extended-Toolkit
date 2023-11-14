@@ -61,184 +61,92 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Details.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string SharpUpdateAcceptForm_btnDetails {
+        internal static System.Drawing.Bitmap clock_go {
             get {
-                return ResourceManager.GetString("SharpUpdateAcceptForm_btnDetails", resourceCulture);
+                object obj = ResourceManager.GetObject("clock_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to N&amp;o.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string SharpUpdateAcceptForm_btnNo {
+        internal static System.Drawing.Bitmap clock_go_32 {
             get {
-                return ResourceManager.GetString("SharpUpdateAcceptForm_btnNo", resourceCulture);
+                object obj = ResourceManager.GetObject("clock_go_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Yes.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string SharpUpdateAcceptForm_btnYes {
+        internal static System.Drawing.Bitmap clock_go1 {
             get {
-                return ResourceManager.GetString("SharpUpdateAcceptForm_btnYes", resourceCulture);
+                object obj = ResourceManager.GetObject("clock_go1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Version: {0}.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string SharpUpdateAcceptForm_lblNewVersion {
+        internal static System.Drawing.Bitmap clock_play {
             get {
-                return ResourceManager.GetString("SharpUpdateAcceptForm_lblNewVersion", resourceCulture);
+                object obj = ResourceManager.GetObject("clock_play", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An update is available!
-        ///Would you like to update?.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string SharpUpdateAcceptForm_lblUpdateAvail {
+        internal static System.Drawing.Bitmap download {
             get {
-                return ResourceManager.GetString("SharpUpdateAcceptForm_lblUpdateAvail", resourceCulture);
+                object obj = ResourceManager.GetObject("download", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to - Update Available.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string SharpUpdateAcceptForm_Title {
+        internal static System.Drawing.Bitmap download_32 {
             get {
-                return ResourceManager.GetString("SharpUpdateAcceptForm_Title", resourceCulture);
+                object obj = ResourceManager.GetObject("download_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Downloaded {0} of {1}.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string SharpUpdateDownloadForm_DownloadProgress {
+        internal static System.Drawing.Bitmap download1 {
             get {
-                return ResourceManager.GetString("SharpUpdateDownloadForm_DownloadProgress", resourceCulture);
+                object obj = ResourceManager.GetObject("download1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Verifying Download....
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string SharpUpdateDownloadForm_DownloadsFinished {
+        internal static System.Drawing.Bitmap hand_point {
             get {
-                return ResourceManager.GetString("SharpUpdateDownloadForm_DownloadsFinished", resourceCulture);
+                object obj = ResourceManager.GetObject("hand_point", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Downloading update....
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string SharpUpdateDownloadForm_lblDownloading {
+        internal static System.Drawing.Bitmap throbber_12 {
             get {
-                return ResourceManager.GetString("SharpUpdateDownloadForm_lblDownloading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Downloading Update.
-        /// </summary>
-        internal static string SharpUpdateDownloadForm_Title {
-            get {
-                return ResourceManager.GetString("SharpUpdateDownloadForm_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Back.
-        /// </summary>
-        internal static string SharpUpdateInfoForm_btnBack {
-            get {
-                return ResourceManager.GetString("SharpUpdateInfoForm_btnBack", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Description.
-        /// </summary>
-        internal static string SharpUpdateInfoForm_lblDescription {
-            get {
-                return ResourceManager.GetString("SharpUpdateInfoForm_lblDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to - Update Info.
-        /// </summary>
-        internal static string SharpUpdateInfoForm_Title {
-            get {
-                return ResourceManager.GetString("SharpUpdateInfoForm_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Current Version: {0}\nUpdate version: {1}.
-        /// </summary>
-        internal static string SharpUpdateInfoForm_Version {
-            get {
-                return ResourceManager.GetString("SharpUpdateInfoForm_Version", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update cannot start.
-        ///Please close all instances of this application to continue!.
-        /// </summary>
-        internal static string SharpUpdater_DoubleInstanceWarning {
-            get {
-                return ResourceManager.GetString("SharpUpdater_DoubleInstanceWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update Warning.
-        /// </summary>
-        internal static string SharpUpdater_DoubleInstanceWarningTitle {
-            get {
-                return ResourceManager.GetString("SharpUpdater_DoubleInstanceWarningTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The update download was cancelled.\nThis program has not been modified..
-        /// </summary>
-        internal static string SharpUpdater_DownloadCancelled {
-            get {
-                return ResourceManager.GetString("SharpUpdater_DownloadCancelled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update Download Cancelled.
-        /// </summary>
-        internal static string SharpUpdater_DownloadCancelledTitle {
-            get {
-                return ResourceManager.GetString("SharpUpdater_DownloadCancelledTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to There was a problem downloading the update.\nPlease try again later..
-        /// </summary>
-        internal static string SharpUpdater_DownloadProblem {
-            get {
-                return ResourceManager.GetString("SharpUpdater_DownloadProblem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update Download Error.
-        /// </summary>
-        internal static string SharpUpdater_DownloadProblemTitle {
-            get {
-                return ResourceManager.GetString("SharpUpdater_DownloadProblemTitle", resourceCulture);
+                object obj = ResourceManager.GetObject("throbber_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -249,6 +157,66 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Properties {
             get {
                 object obj = ResourceManager.GetObject("throbber_80", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap update {
+            get {
+                object obj = ResourceManager.GetObject("update", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap update_48_x_48 {
+            get {
+                object obj = ResourceManager.GetObject("update_48_x_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon update1 {
+            get {
+                object obj = ResourceManager.GetObject("update1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap update2 {
+            get {
+                object obj = ResourceManager.GetObject("update2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon ZipExtractor {
+            get {
+                object obj = ResourceManager.GetObject("ZipExtractor", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ZipExtractor1 {
+            get {
+                object obj = ResourceManager.GetObject("ZipExtractor1", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

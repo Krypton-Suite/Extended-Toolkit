@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -29,9 +48,9 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
         private static bool? _isSystemAbleToLoadShield = null;
 
-        private GlobalMethods _globalMethods = new GlobalMethods();
+        private GlobalMethods _globalMethods = new();
 
-        private UtilityMethods _utilityMethods = new UtilityMethods();
+        private UtilityMethods _utilityMethods = new();
         #endregion
 
         #region Constants
@@ -71,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
         #region Constructor
         public KryptonUACButton() : base()
         {
-            this.Size = new Size((int)(this.Width * 1.5), this.Height + 1);
+            this.Size = new((int)(this.Width * 1.5), this.Height + 1);
             if (PlatformHelper.VistaOrHigher)
             {
                 //Only try to load the icon if it did not fail before
@@ -102,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
                     }
                 }
 
-                NativeMethods.SendMessage(this.Handle, BCM_SETSHIELD, IntPtr.Zero, new IntPtr(1));
+                NativeMethods.SendMessage(this.Handle, BCM_SETSHIELD, IntPtr.Zero, new(1));
             }
         }
         #endregion
@@ -114,25 +133,25 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             {
                 if (_assemblyToElevate != null)
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new ExecuteProcessAsAdministratorEventArgs(_assemblyToElevate);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new(_assemblyToElevate);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTask);
                 }
-                else if (_assemblyToElevate != null && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(_extraArguments))
+                else if (_assemblyToElevate != null && !string.IsNullOrWhiteSpace(_extraArguments))
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new ExecuteProcessAsAdministratorEventArgs(Path.GetFullPath(_assemblyToElevate.Location), _extraArguments);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new(Path.GetFullPath(_assemblyToElevate.Location), _extraArguments);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTaskWithExtraArguments);
                 }
-                else if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(_processName))
+                else if (!string.IsNullOrWhiteSpace(_processName))
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new ExecuteProcessAsAdministratorEventArgs(_processName);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTask = new(_processName);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTask);
                 }
-                else if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(_processName) && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(_extraArguments))
+                else if (!string.IsNullOrWhiteSpace(_processName) && !string.IsNullOrWhiteSpace(_extraArguments))
                 {
-                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new ExecuteProcessAsAdministratorEventArgs(_processName, _extraArguments);
+                    ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new(_processName, _extraArguments);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTaskWithExtraArguments);
                 }

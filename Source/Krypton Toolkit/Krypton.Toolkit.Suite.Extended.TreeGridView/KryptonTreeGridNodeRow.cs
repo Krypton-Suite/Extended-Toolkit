@@ -1,15 +1,33 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
-
-
 // ReSharper disable ValueParameterNotUsed
 
+#pragma warning disable CS8602, CS8600, CS8622
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     /// <summary>
@@ -80,10 +98,14 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         protected internal virtual void UnSited()
         {
             // This row is being removed from being displayed on the grid.
-            foreach (DataGridViewCell dgvCell in Cells)
+            if (Cells != null)
             {
-                (dgvCell as KryptonTreeGridCell)?.UnSited();
+                foreach (DataGridViewCell dgvCell in Cells)
+                {
+                    (dgvCell as KryptonTreeGridCell)?.UnSited();
+                }
             }
+
             _isSited = false;
         }
 
@@ -185,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         private bool ShouldSerializeImage() => (_imageIndex == -1 && _image != null);
 
-        public Image Image
+        public Image? Image
         {
             get
             {
@@ -269,7 +291,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
                 if (treeCell != null)
                 {
-                    this._treeCell = treeCell;
+                    _treeCell = treeCell;
                 }
             }
         }
@@ -386,7 +408,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             Grid.FirstDisplayedScrollingRowIndex = RowIndex;
         }
 
-        protected internal virtual bool InsertChildNode(int index, KryptonTreeGridNodeRow node)
+        protected internal virtual bool InsertChildNode(int index, KryptonTreeGridNodeRow? node)
         {
             node.Parent = this;
             node.Grid = Grid;
@@ -410,16 +432,16 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             return true;
         }
 
-        protected internal virtual bool InsertChildNodes(int index, params KryptonTreeGridNodeRow[] nodes)
+        protected internal virtual bool InsertChildNodes(int index, params KryptonTreeGridNodeRow?[] nodes)
         {
-            foreach (KryptonTreeGridNodeRow node in nodes)
+            foreach (KryptonTreeGridNodeRow? node in nodes)
             {
                 InsertChildNode(index, node);
             }
             return true;
         }
 
-        protected internal virtual bool AddChildNode(KryptonTreeGridNodeRow node)
+        protected internal virtual bool AddChildNode(KryptonTreeGridNodeRow? node)
         {
             node.Parent = this;
             node.Grid = Grid;
@@ -437,10 +459,10 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
             return true;
         }
-        protected internal virtual bool AddChildNodes(params KryptonTreeGridNodeRow[] nodes)
+        protected internal virtual bool AddChildNodes(params KryptonTreeGridNodeRow?[] nodes)
         {
             //TODO: Convert the final call into an SiteNodes??
-            foreach (KryptonTreeGridNodeRow node in nodes)
+            foreach (KryptonTreeGridNodeRow? node in nodes)
             {
                 AddChildNode(node);
             }
@@ -448,7 +470,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         }
 
-        protected internal virtual bool RemoveChildNode(KryptonTreeGridNodeRow node)
+        protected internal virtual bool RemoveChildNode(KryptonTreeGridNodeRow? node)
         {
             if ((IsRoot || _isSited) && IsExpanded)
             {
@@ -484,11 +506,11 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ISite Site { get; set; }
 
-        public void UpdateChildNodes(KryptonTreeGridNodeRow node)
+        public void UpdateChildNodes(KryptonTreeGridNodeRow? node)
         {
             if (node.HasChildren)
             {
-                foreach (KryptonTreeGridNodeRow childNode in node.Nodes)
+                foreach (KryptonTreeGridNodeRow? childNode in node.Nodes)
                 {
                     childNode.Grid = node.Grid;
                     UpdateChildNodes(childNode);

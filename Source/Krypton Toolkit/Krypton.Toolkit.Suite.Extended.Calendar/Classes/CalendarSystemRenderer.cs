@@ -1,11 +1,31 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+// ReSharper disable RedundantOverriddenMember
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -55,32 +75,44 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public override void OnDrawBackground(CalendarRendererEventArgs e)
         {
-            e.Graphics.Clear(ColourTable.Background);
+            e.Graphics?.Clear(ColourTable.Background);
         }
 
         public override void OnDrawDay(CalendarRendererDayEventArgs e)
         {
-            Rectangle r = e.Day.Bounds;
+            if (e.Day != null)
+            {
+                Rectangle r = e.Day.Bounds;
 
-            if (e.Day.Selected)
-            {
-                using (Brush b = new SolidBrush(ColourTable.DayBackgroundSelected))
+                if (e.Day.Selected)
                 {
-                    e.Graphics.FillRectangle(b, r);
+                    using (Brush b = new SolidBrush(ColourTable.DayBackgroundSelected))
+                    {
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.FillRectangle(b, r);
+                        }
+                    }
                 }
-            }
-            else if (e.Day.Date.Month % 2 == 0)
-            {
-                using (Brush b = new SolidBrush(ColourTable.DayBackgroundEven))
+                else if (e.Day.Date.Month % 2 == 0)
                 {
-                    e.Graphics.FillRectangle(b, r);
+                    using (Brush b = new SolidBrush(ColourTable.DayBackgroundEven))
+                    {
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.FillRectangle(b, r);
+                        }
+                    }
                 }
-            }
-            else
-            {
-                using (Brush b = new SolidBrush(ColourTable.DayBackgroundOdd))
+                else
                 {
-                    e.Graphics.FillRectangle(b, r);
+                    using (Brush b = new SolidBrush(ColourTable.DayBackgroundOdd))
+                    {
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.FillRectangle(b, r);
+                        }
+                    }
                 }
             }
 
@@ -91,40 +123,64 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnDrawDayBorder(e);
 
-            Rectangle r = e.Day.Bounds;
-            bool today = e.Day.Date.Date.Equals(DateTime.Today.Date);
-
-            using (Pen p = new Pen(today ? ColourTable.TodayBorder : ColourTable.DayBorder, today ? 2 : 1))
+            if (e.Day != null)
             {
-                if (e.Calendar.DaysMode == CalendarDaysMode.Short)
-                {
-                    e.Graphics.DrawLine(p, r.Right, r.Top, r.Right, r.Bottom);
-                    e.Graphics.DrawLine(p, r.Left, r.Bottom, r.Right, r.Bottom);
+                Rectangle r = e.Day.Bounds;
+                bool today = e.Day.Date.Date.Equals(DateTime.Today.Date);
 
-                    if (e.Day.Date.DayOfWeek == DayOfWeek.Sunday || today)
-                    {
-                        e.Graphics.DrawLine(p, r.Left, r.Top, r.Left, r.Bottom);
-                    }
-                }
-                else
+                using (Pen p = new Pen(today ? ColourTable.TodayBorder : ColourTable.DayBorder, today ? 2 : 1))
                 {
-                    e.Graphics.DrawRectangle(p, r);
+                    if (e.Calendar?.DaysMode == CalendarDaysMode.Short)
+                    {
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.DrawLine(p, r.Right, r.Top, r.Right, r.Bottom);
+                        }
+                        e.Graphics!.DrawLine(p, r.Left, r.Bottom, r.Right, r.Bottom);
+
+                        if (e.Day.Date.DayOfWeek == DayOfWeek.Sunday || today)
+                        {
+                            if (e.Graphics != null)
+                            {
+                                e.Graphics.DrawLine(p, r.Left, r.Top, r.Left, r.Bottom);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.DrawRectangle(p, r);
+                        }
+                    }
                 }
             }
         }
 
         public override void OnDrawDayTop(CalendarRendererDayEventArgs e)
         {
-            bool s = e.Day.DayTop.Selected;
+            bool s = e.Day != null && e.Day.DayTop != null && e.Day.DayTop.Selected;
 
             using (Brush b = new SolidBrush(s ? ColourTable.DayTopSelectedBackground : ColourTable.DayTopBackground))
             {
-                e.Graphics.FillRectangle(b, e.Day.DayTop.Bounds);
+                if (e.Day != null && e.Day.DayTop != null)
+                {
+                    if (e.Graphics != null)
+                    {
+                        e.Graphics.FillRectangle(b, e.Day.DayTop.Bounds);
+                    }
+                }
             }
 
             using (Pen p = new Pen(s ? ColourTable.DayTopSelectedBorder : ColourTable.DayTopBorder))
             {
-                e.Graphics.DrawRectangle(p, e.Day.DayTop.Bounds);
+                if (e.Day != null && e.Day.DayTop != null)
+                {
+                    if (e.Graphics != null)
+                    {
+                        e.Graphics.DrawRectangle(p, e.Day.DayTop.Bounds);
+                    }
+                }
             }
 
             base.OnDrawDayTop(e);
@@ -132,11 +188,17 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public override void OnDrawDayHeaderBackground(CalendarRendererDayEventArgs e)
         {
-            bool today = e.Day.Date.Date.Equals(DateTime.Today.Date);
+            bool today = e.Day != null && e.Day.Date.Date.Equals(DateTime.Today.Date);
 
             using (Brush b = new SolidBrush(today ? ColourTable.TodayTopBackground : ColourTable.DayHeaderBackground))
             {
-                e.Graphics.FillRectangle(b, e.Day.HeaderBounds);
+                if (e.Day != null)
+                {
+                    if (e.Graphics != null)
+                    {
+                        e.Graphics.FillRectangle(b, e.Day.HeaderBounds);
+                    }
+                }
             }
 
             base.OnDrawDayHeaderBackground(e);
@@ -146,12 +208,18 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             using (Brush b = new SolidBrush(ColourTable.WeekHeaderBackground))
             {
-                e.Graphics.FillRectangle(b, e.Bounds);
+                if (e.Graphics != null)
+                {
+                    e.Graphics.FillRectangle(b, e.Bounds);
+                }
             }
 
             using (Pen p = new Pen(ColourTable.WeekHeaderBorder))
             {
-                e.Graphics.DrawRectangle(p, e.Bounds);
+                if (e.Graphics != null)
+                {
+                    e.Graphics.DrawRectangle(p, e.Bounds);
+                }
             }
 
             e.TextColour = ColourTable.WeekHeaderText;
@@ -165,21 +233,33 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             using (SolidBrush b = new SolidBrush(ColourTable.TimeUnitBackground))
             {
-                if (e.Unit.Selected)
+                if (e.Unit != null && e.Unit.Selected)
                 {
                     b.Color = ColourTable.TimeUnitSelectedBackground;
                 }
-                else if (e.Unit.Highlighted)
+                else if (e.Unit != null && e.Unit.Highlighted)
                 {
                     b.Color = ColourTable.TimeUnitHighlightedBackground;
                 }
 
-                e.Graphics.FillRectangle(b, e.Unit.Bounds);
+                if (e.Unit != null)
+                {
+                    if (e.Graphics != null)
+                    {
+                        e.Graphics.FillRectangle(b, e.Unit.Bounds);
+                    }
+                }
             }
 
-            using (Pen p = new Pen(e.Unit.Minutes == 0 ? ColourTable.TimeUnitBorderDark : ColourTable.TimeUnitBorderLight))
+            using (Pen p = new Pen(e.Unit != null && e.Unit.Minutes == 0 ? ColourTable.TimeUnitBorderDark : ColourTable.TimeUnitBorderLight))
             {
-                e.Graphics.DrawLine(p, e.Unit.Bounds.Location, new Point(e.Unit.Bounds.Right, e.Unit.Bounds.Top));
+                if (e.Unit != null)
+                {
+                    if (e.Graphics != null)
+                    {
+                        e.Graphics.DrawLine(p, e.Unit.Bounds.Location, new Point(e.Unit.Bounds.Right, e.Unit.Bounds.Top));
+                    }
+                }
             }
 
             //TextRenderer.DrawText(e.Graphics, e.Unit.PassingItems.Count.ToString(), e.Calendar.Font, e.Unit.Bounds, Color.Black);
@@ -192,38 +272,50 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             int largeX2 = TimeScaleBounds.Right - margin;
             int shortX1 = TimeScaleBounds.Left + TimeScaleBounds.Width / 2;
             int shortX2 = largeX2;
-            int top = 0;
+            int top;
             Pen p = new Pen(ColourTable.TimeScaleLine);
 
-            for (int i = 0; i < e.Calendar.Days[0].TimeUnits.Length; i++)
+            for (int i = 0; i < e.Calendar?.Days[0]!.TimeUnits.Length; i++)
             {
-                CalendarTimeScaleUnit unit = e.Calendar.Days[0].TimeUnits[i];
+                CalendarTimeScaleUnit? unit = e.Calendar?.Days[0]!.TimeUnits[i];
 
-                if (!unit.Visible) continue;
-
-                top = unit.Bounds.Top;
-
-                if (unit.Minutes == 0)
+                if (unit != null && !unit.Visible)
                 {
-                    e.Graphics.DrawLine(p, largeX1, top, largeX2, top);
+                    continue;
                 }
-                else
+
+                if (unit != null)
                 {
-                    e.Graphics.DrawLine(p, shortX1, top, shortX2, top);
+                    top = unit.Bounds.Top;
+
+                    if (unit.Minutes == 0)
+                    {
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.DrawLine(p, largeX1, top, largeX2, top);
+                        }
+                    }
+                    else
+                    {
+                        if (e.Graphics != null)
+                        {
+                            e.Graphics.DrawLine(p, shortX1, top, shortX2, top);
+                        }
+                    }
                 }
             }
 
-            if (e.Calendar.DaysMode == CalendarDaysMode.Expanded
-                && e.Calendar.Days != null
-                && e.Calendar.Days.Length > 0
-                && e.Calendar.Days[0].TimeUnits != null
-                && e.Calendar.Days[0].TimeUnits.Length > 0
+            if (e.Calendar!.DaysMode == CalendarDaysMode.Expanded
+                && e.Calendar?.Days != null
+                && e.Calendar?.Days.Length > 0
+                && e.Calendar?.Days[0]?.TimeUnits != null
+                && e.Calendar?.Days[0]?.TimeUnits.Length > 0
                 )
             {
-                top = e.Calendar.Days[0].BodyBounds.Top;
+                top = e.Calendar!.Days[0]!.BodyBounds.Top;
 
                 //Timescale top line is full
-                e.Graphics.DrawLine(p, TimeScaleBounds.Left, top, TimeScaleBounds.Right, top);
+                e.Graphics?.DrawLine(p, TimeScaleBounds.Left, top, TimeScaleBounds.Right, top);
             }
 
             p.Dispose();
@@ -249,26 +341,32 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             int alpha = 255;
 
-            if (e.Item.IsDragging)
+            if (e.Item != null && e.Item.IsDragging)
             {
                 alpha = 120;
             }
-            else if (e.Calendar.DaysMode == CalendarDaysMode.Short)
+            else if (e.Calendar?.DaysMode == CalendarDaysMode.Short)
             {
                 alpha = 200;
             }
 
             Color colour1 = Color.White;
-            Color colour2 = e.Item.Selected ? ColourTable.ItemSelectedBackground : ColourTable.ItemBackground;
+            Color colour2 = e.Item != null && e.Item.Selected ? ColourTable.ItemSelectedBackground : ColourTable.ItemBackground;
 
-            if (!e.Item.BackgroundColourLighter.IsEmpty)
+            if (e.Item != null && !e.Item.BackgroundColourLighter.IsEmpty)
             {
-                colour1 = e.Item.BackgroundColourLighter;
+                if (e.Item != null)
+                {
+                    colour1 = e.Item.BackgroundColourLighter;
+                }
             }
 
-            if (!e.Item.BackgroundColour.IsEmpty)
+            if (e.Item != null && !e.Item.BackgroundColour.IsEmpty)
             {
-                colour2 = e.Item.BackgroundColour;
+                if (e.Item != null)
+                {
+                    colour2 = e.Item.BackgroundColour;
+                }
             }
 
             ItemFill(e, e.Bounds, Color.FromArgb(alpha, colour1), Color.FromArgb(alpha, colour2));
@@ -279,7 +377,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnDrawItemShadow(e);
 
-            if (e.Item.IsOnDayTop || e.Calendar.DaysMode == CalendarDaysMode.Short || e.Item.IsDragging)
+            if (e.Item != null && (e.Item.IsOnDayTop || e.Calendar?.DaysMode == CalendarDaysMode.Short || e.Item.IsDragging))
             {
                 return;
             }
@@ -297,7 +395,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnDrawItemBorder(e);
 
-            Color a = e.Item.BorderColour.IsEmpty ? ColourTable.ItemBorder : e.Item.BorderColour;
+            Color a = e.Item != null && e.Item.BorderColour.IsEmpty ? ColourTable.ItemBorder : e.Item!.BorderColour;
             Color b = e.Item.Selected && !e.Item.IsDragging ? ColourTable.ItemSelectedBorder : a;
             Color c = Color.FromArgb(e.Item.IsDragging ? 120 : 255, b);
 
@@ -327,7 +425,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public override void OnDrawItemText(CalendarRendererBoxEventArgs e)
         {
-            CalendarItemAlternative item = e.Tag as CalendarItemAlternative;
+            CalendarItemAlternative? item = e.Tag as CalendarItemAlternative;
 
             if (item != null)
             {
@@ -353,7 +451,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             using (Pen p = new Pen(ColourTable.WeekDayName))
             {
-                e.Graphics.DrawLine(p, e.Bounds.Right, e.Bounds.Top, e.Bounds.Right, e.Bounds.Bottom);
+                if (e.Graphics != null)
+                {
+                    e.Graphics.DrawLine(p, e.Bounds.Right, e.Bounds.Top, e.Bounds.Right, e.Bounds.Bottom);
+                }
             }
         }
 
@@ -361,21 +462,30 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             using (GraphicsPath path = new GraphicsPath())
             {
-                int top = e.Day.OverflowEndBounds.Top + e.Day.OverflowEndBounds.Height / 2;
-                path.AddPolygon(new Point[] {
-                    new Point(e.Day.OverflowEndBounds.Left, top),
-                    new Point(e.Day.OverflowEndBounds.Right, top),
-                    new Point(e.Day.OverflowEndBounds.Left + e.Day.OverflowEndBounds.Width / 2, e.Day.OverflowEndBounds.Bottom),
-                });
-
-                using (Brush b = new SolidBrush(e.Day.OverflowEndSelected ? ColourTable.DayOverflowSelectedBackground : ColourTable.DayOverflowBackground))
+                if (e.Day != null)
                 {
-                    e.Graphics.FillPath(b, path);
+                    int top = e.Day.OverflowEndBounds.Top + e.Day.OverflowEndBounds.Height / 2;
+                    path.AddPolygon(new Point[] {
+                        new(e.Day.OverflowEndBounds.Left, top),
+                        new(e.Day.OverflowEndBounds.Right, top),
+                        new(e.Day.OverflowEndBounds.Left + e.Day.OverflowEndBounds.Width / 2, e.Day.OverflowEndBounds.Bottom),
+                    });
+                }
+
+                using (Brush b = new SolidBrush(e.Day != null && e.Day.OverflowEndSelected ? ColourTable.DayOverflowSelectedBackground : ColourTable.DayOverflowBackground))
+                {
+                    if (e.Graphics != null)
+                    {
+                        e.Graphics.FillPath(b, path);
+                    }
                 }
 
                 using (Pen p = new Pen(ColourTable.DayOverflowBorder))
                 {
-                    e.Graphics.DrawPath(p, path);
+                    if (e.Graphics != null)
+                    {
+                        e.Graphics.DrawPath(p, path);
+                    }
                 }
             }
         }

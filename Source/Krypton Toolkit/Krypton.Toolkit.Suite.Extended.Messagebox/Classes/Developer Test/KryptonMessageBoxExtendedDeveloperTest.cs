@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -28,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon, bool showOptionalCheckBox,
             bool isOptionalCheckBoxChecked,
-            CheckState optionalCheckBoxCheckState, string optionalCheckBoxText, bool ? showCtrlCopy = null)
+            CheckState optionalCheckBoxCheckState, string optionalCheckBoxText, bool? showCtrlCopy = null)
             =>
                 InternalShow(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
                     null, showCtrlCopy, null, null, showOptionalCheckBox, isOptionalCheckBoxChecked,
@@ -50,6 +69,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
         /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="showOptionalLinkLabel"></param>
+        /// <param name="optionalLinkLabelText"></param>
+        /// <param name="optionalLinkLabelDestination"></param>
         /// <returns>
         ///   <br />
         /// </returns>
@@ -69,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                   string optionalLinkLabelText = @"", string optionalLinkLabelDestination = @"")
             =>
                 InternalShow(null, text, caption, buttons, icon, defaultButton, options,
-                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy, 
+                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                              messageBoxTypeface, customImageIcon, showOptionalCheckBox,
                              isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
                              optionalCheckBoxText, showOptionalLinkLabel,
@@ -154,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             bool? showCtrlCopy = null)
             =>
                 InternalShow(owner, text, caption, buttons, icon, defaultButton, options,
-                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy, 
+                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                              null, null, false,
                              false, CheckState.Unchecked,
                              @"", null, @"", @"");
@@ -176,11 +198,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
         /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="showOptionalLinkLabel"></param>
+        /// <param name="optionalLinkLabelText"></param>
+        /// <param name="optionalLinkLabelDestination"></param>
         /// <returns>
         ///   <br />
         /// </returns>
         public static DialogResult Show(string text, string caption = @"",
-                                 ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
+                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                  ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
                                  KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                  MessageBoxOptions options = 0,
@@ -244,7 +269,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             =>
                 InternalShow(owner, text, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
-                             showCtrlCopy, 
+                             showCtrlCopy,
                              messageBoxTypeface, customImageIcon, showOptionalCheckBox,
                              isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
                              optionalCheckBoxText, showOptionalLinkLabel, optionalLinkLabelText,
@@ -279,10 +304,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                   ExtendedMessageBoxButtons buttons,
                                                   ExtendedKryptonMessageBoxIcon icon,
                                                   KryptonMessageBoxDefaultButton defaultButton,
-                                                  MessageBoxOptions options,                          
+                                                  MessageBoxOptions options,
                                                   HelpInfo helpInfo,
                                                   bool? showCtrlCopy, Font messageBoxTypeface,
-                                                  Image customImageIcon, bool? showOptionalCheckBox, 
+                                                  Image customImageIcon, bool? showOptionalCheckBox,
                                                   bool? optionalCheckBoxChecked,
                                                   CheckState? optionalCheckBoxCheckState,
                                                   string optionalCheckBoxText, bool? showOptionalLinkLabel,
@@ -334,7 +359,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
             {
                 // If do not have an owner passed in then get the active window and use that instead
-                showOwner = owner ?? Control.FromHandle(PI.GetActiveWindow());
+                showOwner = owner ?? Control.FromHandle(PlatformInvoke.GetActiveWindow());
             }
 
             return showOwner;

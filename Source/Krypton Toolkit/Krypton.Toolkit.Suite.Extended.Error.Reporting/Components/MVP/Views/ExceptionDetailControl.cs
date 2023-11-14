@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -10,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     internal partial class ExceptionDetailControl : UserControl
     {
-#region Design Code
+        #region Design Code
         private KryptonPanel kryptonPanel1;
         private KryptonTextBox ktxtStackTrace;
         private KryptonLabel kryptonLabel2;
@@ -45,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             // klvExceptions
             // 
-            this.klvExceptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.klvExceptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.klvExceptions.HideSelection = false;
             this.klvExceptions.ItemStyle = Krypton.Toolkit.ButtonStyle.ListItem;
@@ -69,8 +88,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             // ktxtExceptionTabMessage
             // 
-            this.ktxtExceptionTabMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ktxtExceptionTabMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ktxtExceptionTabMessage.Location = new System.Drawing.Point(20, 158);
             this.ktxtExceptionTabMessage.Multiline = true;
@@ -91,8 +110,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             // ktxtStackTrace
             // 
-            this.ktxtStackTrace.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ktxtStackTrace.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ktxtStackTrace.Location = new System.Drawing.Point(20, 243);
             this.ktxtStackTrace.Multiline = true;
@@ -153,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
             klvExceptions.Columns.Add("Target Site / Method", 150, HorizontalAlignment.Left);
 
-            var lvi = new ListViewItem {Text = "Top Level"};
+            var lvi = new ListViewItem { Text = "Top Level" };
 
             lvi.SubItems.Add(rootException.GetType().ToString());
 
@@ -161,8 +180,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
             lvi.Tag = "0";
 
-            klvExceptions.Items.Add(lvi); 
-                
+            klvExceptions.Items.Add(lvi);
+
             lvi.Selected = true;
 
             int index = 0;
@@ -204,7 +223,11 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             var displayException = CapturedException;
             foreach (ListViewItem lvi in klvExceptions.Items)
             {
-                if (!lvi.Selected) continue;
+                if (!lvi.Selected)
+                {
+                    continue;
+                }
+
                 for (var count = 0; count < int.Parse(lvi.Tag.ToString()); count++)
                 {
                     displayException = displayException?.InnerException;

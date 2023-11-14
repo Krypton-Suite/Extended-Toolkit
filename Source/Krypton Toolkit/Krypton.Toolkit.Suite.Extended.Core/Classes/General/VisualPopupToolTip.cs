@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -60,15 +80,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             _contentValues = contentValues;
 
             // Create the triple redirector needed by view elements
-            _palette = new PaletteTripleMetricRedirect(redirector, backStyle, borderStyle, contentStyle, NeedPaintDelegate);
+            _palette = new(redirector, backStyle, borderStyle, contentStyle, NeedPaintDelegate);
 
             // Our view contains background and border with content inside
-            _drawDocker = new ViewDrawDocker(_palette.Back, _palette.Border, null);
-            _drawContent = new ViewDrawContent(_palette.Content, _contentValues, VisualOrientation.Top);
+            _drawDocker = new(_palette.Back, _palette.Border, null);
+            _drawContent = new(_palette.Content, _contentValues, VisualOrientation.Top);
             _drawDocker.Add(_drawContent, ViewDockStyle.Fill);
 
             // Create the view manager instance
-            ViewManager = new ViewManager(this, _drawDocker);
+            ViewManager = new(this, _drawDocker);
         }
         #endregion
 
@@ -106,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else
             {
-                position = new PopupPositionValues();
+                position = new();
             }
             Point currentCursorHotSpot = CommonHelper.CaptureCursor();
 
@@ -121,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 case PlacementMode.Mouse:
                 case PlacementMode.MousePoint:
                     // The bounds of the mouse pointer. PlacementRectangle is ignored
-                    positionPlacementRectangle = new Rectangle(controlMousePosition.X, controlMousePosition.Y, currentCursorHotSpot.X + 2, currentCursorHotSpot.Y + 2);
+                    positionPlacementRectangle = new(controlMousePosition.X, controlMousePosition.Y, currentCursorHotSpot.X + 2, currentCursorHotSpot.Y + 2);
                     break;
                 default:
                     // The screen, or PlacementRectangle if it is set. The PlacementRectangle is relative to the screen.
@@ -152,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 case PlacementMode.RelativePoint:
                     // The top-left corner of the target area.     The top-left corner of the Popup.
                     popupLocation = positionPlacementRectangle.Location;
-                    if (positionPlacementRectangle.IntersectsWith(new Rectangle(controlMousePosition, (Size)currentCursorHotSpot)))
+                    if (positionPlacementRectangle.IntersectsWith(new(controlMousePosition, (Size)currentCursorHotSpot)))
                     {
                         // TODO: SKC: Should really get the HotSpot from the Icon and use that !
                         popupLocation.X = controlMousePosition.X + 4; // Still might "Bounce back" due to offscreen location
@@ -161,13 +181,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 case PlacementMode.Bottom:
                 case PlacementMode.Mouse:
                     // The bottom-left corner of the target area.     The top-left corner of the Popup.
-                    popupLocation = new Point(positionPlacementRectangle.Left, positionPlacementRectangle.Bottom);
+                    popupLocation = new(positionPlacementRectangle.Left, positionPlacementRectangle.Bottom);
                     break;
                 case PlacementMode.Center:
                     // The center of the target area.     The center of the Popup.
                     popupLocation = positionPlacementRectangle.Location;
                     popupLocation.Offset(popupSize.Width / 2, -popupSize.Height / 2);
-                    if (positionPlacementRectangle.IntersectsWith(new Rectangle(controlMousePosition, (Size)currentCursorHotSpot)))
+                    if (positionPlacementRectangle.IntersectsWith(new(controlMousePosition, (Size)currentCursorHotSpot)))
                     {
                         // TODO: SKC: Should really get the HotSpot from the Icon and use that !
                         popupLocation.X = controlMousePosition.X + 4; // Still might "Bounce back" due to offscreen location
@@ -175,15 +195,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     break;
                 case PlacementMode.Left:
                     // The top-left corner of the target area.     The top-right corner of the Popup.
-                    popupLocation = new Point(positionPlacementRectangle.Left - popupSize.Width, positionPlacementRectangle.Top);
+                    popupLocation = new(positionPlacementRectangle.Left - popupSize.Width, positionPlacementRectangle.Top);
                     break;
                 case PlacementMode.Right:
                     // The top-right corner of the target area.     The top-left corner of the Popup.
-                    popupLocation = new Point(positionPlacementRectangle.Right, positionPlacementRectangle.Top);
+                    popupLocation = new(positionPlacementRectangle.Right, positionPlacementRectangle.Top);
                     break;
                 case PlacementMode.Top:
                     // The top-left corner of the target area.     The bottom-left corner of the Popup.
-                    popupLocation = new Point(positionPlacementRectangle.Left, positionPlacementRectangle.Top - popupSize.Height);
+                    popupLocation = new(positionPlacementRectangle.Left, positionPlacementRectangle.Top - popupSize.Height);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -221,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             base.OnLayout(lEvent);
 
             // Need a render context for accessing the renderer
-            using (RenderContext context = new RenderContext(this, null, ClientRectangle, Renderer))
+            using (RenderContext context = new(this, null, ClientRectangle, Renderer))
             {
 
                 // Grab a path that is the outside edge of the border
@@ -233,7 +253,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 GraphicsPath borderPath3 = Renderer.RenderStandardBorder.GetOutsideBorderPath(context, borderRect, _palette.Border, VisualOrientation.Top, PaletteState.Normal);
 
                 // Update the region of the popup to be the border path
-                Region = new Region(borderPath1);
+                Region = new(borderPath1);
 
                 // Inform the shadow to use the same paths for drawing the shadow
                 DefineShadowPaths(borderPath1, borderPath2, borderPath3);

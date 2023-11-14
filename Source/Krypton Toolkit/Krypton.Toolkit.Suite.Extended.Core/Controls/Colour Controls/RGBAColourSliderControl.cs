@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -12,9 +32,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     {
         #region Constants
 
-        private static readonly object _eventChannelChanged = new object();
+        private static readonly object _eventChannelChanged = new();
 
-        private static readonly object _eventColourChanged = new object();
+        private static readonly object _eventColourChanged = new();
 
         #endregion
 
@@ -32,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public RGBAColourSliderControl()
         {
-            base.BarStyle = ColourBarStyle.CUSTOM;
+            base.BarStyle = ColourBarStyle.Custom;
             base.Maximum = 255;
             this.Colour = Color.Black;
             this.CreateScale();
@@ -156,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             Color colour;
             RGBAChannel channel;
 
-            custom = new ColourCollection();
+            custom = new();
             colour = this.Colour;
             channel = this.Channel;
 
@@ -174,16 +194,16 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 switch (channel)
                 {
-                    case RGBAChannel.RED:
+                    case RGBAChannel.Red:
                         r = i;
                         break;
-                    case RGBAChannel.GREEN:
+                    case RGBAChannel.Green:
                         g = i;
                         break;
-                    case RGBAChannel.BLUE:
+                    case RGBAChannel.Blue:
                         b = i;
                         break;
-                    case RGBAChannel.ALPHA:
+                    case RGBAChannel.Alpha:
                         a = i;
                         break;
                 }
@@ -200,7 +220,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             type = typeof(RGBAColourSliderControl);
 
-            using (Bitmap background = new Bitmap(type.Assembly.GetManifestResourceStream(string.Concat(type.Namespace, ".Resources.cellbackground.png"))))
+            using (Bitmap background = new(type.Assembly.GetManifestResourceStream(
+                       $"{type.Namespace}.Resources.cellbackground.png")))
             {
                 return new TextureBrush(background, WrapMode.Tile);
             }

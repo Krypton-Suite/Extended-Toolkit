@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -57,9 +76,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             blend.Positions = ColorPositions;
 
             if (bounds.Height == 0)
+            {
                 bounds.Height = 1; // its to prevent an out of memory exception
+            }
+
             if (bounds.Width == 0)
+            {
                 bounds.Width = 1;
+            }
 
             // Make the linear brush and assign the custom blend to it
             using (LinearGradientBrush brush = new LinearGradientBrush(new Point(bounds.Left, bounds.Bottom),
@@ -93,9 +117,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             blend.Positions = ColorPositions;
 
             if (bounds.Height == 0)
+            {
                 bounds.Height = 1; // its to prevent an out of memory exception
+            }
+
             if (bounds.Width == 0)
+            {
                 bounds.Width = 1;
+            }
 
             // Make the linear brush and assign the custom blend to it
             using (LinearGradientBrush brush = new LinearGradientBrush(new Point(bounds.Left, bounds.Bottom),
@@ -119,6 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <param name="bounds">The bounds of the drawing</param>
         /// <param name="text">The text that should appear into the bar</param>
         /// <param name="font">The font to use when drawing the text</param>
+        /// <param name="rightToLeft"></param>
         /// <param name="state">The inputstate of the collapsed band</param>
         public override void DrawNaviBandCollapsedBg(Graphics g, Rectangle bounds, string text, Font font,
            bool rightToLeft, InputState state)
@@ -126,9 +156,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             using (SolidBrush b = new SolidBrush(ColourTable.BandCollapsedBgColor1))
             {
                 if (state == InputState.Hovered)
+                {
                     b.Color = ColourTable.BandCollapsedHoveredColor1;
+                }
                 else if (state == InputState.Clicked)
+                {
                     b.Color = ColourTable.BandCollapsedClickedColor1;
+                }
 
                 g.FillRectangle(b, bounds);
             }
@@ -184,6 +218,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="g">The graphics surface to draw on</param>
         /// <param name="bounds">The bounds that the drawing should apply to</param>
+        /// <param name="state"></param>
+        /// <param name="inputState"></param>
         public override void DrawButtonBg(Graphics g, Rectangle bounds, ControlState state, InputState inputState)
         {
             Color[] endColors = new Color[1];
@@ -256,9 +292,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             blend.Positions = ColorPositions;
 
             if (bounds.Height == 0) // To prevent an out of memory exception
+            {
                 bounds.Height = 1;
+            }
+
             if (bounds.Width == 0)
+            {
                 bounds.Width = 1;
+            }
 
             // TODO use ExtDrawing
 
@@ -293,9 +334,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 // Arrows
                 if (inputState == InputState.Normal)
+                {
                     pen.Color = ColourTable.ButtonCollapseFront;
+                }
                 else
+                {
                     pen.Color = ColourTable.ButtonCollapseActive;
+                }
 
                 //width-7
                 //(height/2)+1
@@ -305,10 +350,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 float y = 0;
 
                 if (bounds.Height != 0)
+                {
                     y = (bounds.Height / 2) - 3;
+                }
 
                 if (bounds.Width != 0)
+                {
                     x = (bounds.Width / 2) - 1;
+                }
 
                 if (((rightToLeft) && (!collapsed)) || (!rightToLeft) && (collapsed))
                 {
@@ -404,7 +453,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             blend.Positions = ColorPositions;
 
             if (bounds.Width == 0)
+            {
                 bounds.Width = 1; // its to prevent an out of memory exception
+            }
 
             //Make the linear brush and assign the custom blend to it
             using (LinearGradientBrush brush = new LinearGradientBrush(new Point(0, bounds.Top),
@@ -438,12 +489,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 float y = 0;
 
                 if (bounds.Height != 0)
+                {
                     y = (bounds.Height / 2) - 3; // + 1px border and - 4 size
+                }
 
                 if (rightToLeft)
+                {
                     x = 7;
+                }
                 else
+                {
                     x = bounds.Width - 7 - 7; // 7 px spacing and - 7 width            
+                }
 
                 if (expanded)
                 {
@@ -495,9 +552,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             blend.Positions = ColorPositions;
 
             if (bounds.Height == 0)
+            {
                 bounds.Height = 1;
+            }
+
             if (bounds.Width == 0)
+            {
                 bounds.Width = 1; // its to prevent an out of memory exception
+            }
 
             Point beginPoint;
             Point endPoint;

@@ -8,7 +8,7 @@
 <!-- End Document Outline -->
 
 # `KryptonWizard`
-![](KryptonWizard.gif)
+![](https://github.com/Krypton-Suite/Documentation/blob/main/Assets/Extended-Toolkit/KryptonWizard.gif?raw=true)
 
 ## Things of note in the picture
 - A `KryptonWizard` control in action
@@ -20,3 +20,4 @@
 
 # ToDo
 - Add more features
+- Optional `KryptonFormExtended` version

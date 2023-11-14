@@ -1,11 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
+ * MIT License
  *
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * Copyright (c) 2017 - 2023 Krypton Suite
  *
- * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2023.
  *
  */
 #endregion
@@ -53,7 +70,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal void SelectWizardPage(int index)
         {
-            if (index < 0 || index > WizardPages.Count) return;
+            if (index < 0 || index > WizardPages.Count)
+            {
+                return;
+            }
 
             _selectedPage = index;
             KryptonAdvancedWizardPage page = WizardPages[index];
@@ -63,7 +83,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal void SelectWizardPage(KryptonAdvancedWizardPage page)
         {
-            if (!WizardPages.Contains(page)) return;
+            if (!WizardPages.Contains(page))
+            {
+                return;
+            }
 
             _selectedPage = WizardPages.IndexOf(page);
             page.BringToFront();
@@ -72,7 +95,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal void SelectPreviousPage()
         {
-            if (_selectedPage <= 0) return;
+            if (_selectedPage <= 0)
+            {
+                return;
+            }
 
             _selectedPage--;
             KryptonAdvancedWizardPage page = WizardPages[_selectedPage];
@@ -82,7 +108,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal void SelectNextPage()
         {
-            if (_selectedPage >= WizardPages.Count - 1) return;
+            if (_selectedPage >= WizardPages.Count - 1)
+            {
+                return;
+            }
 
             _selectedPage++;
             KryptonAdvancedWizardPage page = WizardPages[_selectedPage];
@@ -94,10 +123,12 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal void SetButtonText(string buttonName, string text)
         {
-            foreach (Control c in kpnlButtons.Controls)
+            foreach (Control c in _kpnlButtons.Controls)
             {
                 if (c.Name == buttonName)
+                {
                     c.Text = text;
+                }
             }
         }
 
@@ -112,40 +143,46 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         /// <returns></returns>
         internal bool UserClickedAButtonAtDesignTime(Point point)
         {
-            Control c = GetChildAtPoint(point);
-            if (c == null || c.Name != "kpnlButtons") return false;
+            Control? c = GetChildAtPoint(point);
+            if (c == null || c.Name != "kpnlButtons")
+            {
+                return false;
+            }
 
-            Control b = c.GetChildAtPoint(c.PointToClient(Cursor.Position));
-            if (b != null) return WizardButtonWasClicked(b);
+            Control? b = c.GetChildAtPoint(c.PointToClient(Cursor.Position));
+            if (b != null)
+            {
+                return WizardButtonWasClicked(b);
+            }
 
             return false;
         }
 
         internal bool WizardButtonWasClicked(Control b) => b is Button;
 
-        internal void FirePageChanged(int index) => PageChanged?.Invoke(this, new WizardPageChangedEventArgs(WizardPages[index], index));
+        internal void FirePageChanged(int index) => PageChanged.Invoke(this, new WizardPageChangedEventArgs(WizardPages[index], index));
 
-        internal void FireLastPage() => LastPage?.Invoke(this, EventArgs.Empty);
+        internal void FireLastPage() => LastPage.Invoke(this, EventArgs.Empty);
 
         internal WizardEventArgs FireNextEvent(int currentTabIndex)
         {
             var ev = new WizardEventArgs(currentTabIndex);
-            Next?.Invoke(this, ev);
+            Next.Invoke(this, ev);
             return ev;
         }
 
         internal WizardEventArgs FireBackEvent(int currentTabIndex)
         {
-            var ev = new WizardEventArgs(currentTabIndex, Direction.BACKWARD);
-            Back?.Invoke(this, ev);
+            var ev = new WizardEventArgs(currentTabIndex, Direction.Backward);
+            Back.Invoke(this, ev);
             return ev;
         }
 
-        internal void FireFinishEvent() => Finish?.Invoke(this, EventArgs.Empty);
+        internal void FireFinishEvent() => Finish.Invoke(this, EventArgs.Empty);
 
-        internal void FireHelpEvent() => Help?.Invoke(this, EventArgs.Empty);
+        internal void FireHelpEvent() => Help.Invoke(this, EventArgs.Empty);
 
-        internal void FireCancelEvent() => Cancel?.Invoke(this, EventArgs.Empty);
+        internal void FireCancelEvent() => Cancel.Invoke(this, EventArgs.Empty);
 
         internal void CheckForUserChangesToEventParameters(WizardEventArgs ev, out bool allowPageToChange, out int newTabIndex)
         {

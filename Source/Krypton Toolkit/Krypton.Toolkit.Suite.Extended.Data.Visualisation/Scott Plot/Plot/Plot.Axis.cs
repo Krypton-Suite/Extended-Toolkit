@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -73,7 +92,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             var primaryAxes = new Axis[] { XAxis, XAxis2, YAxis, YAxis2 };
 
             foreach (var axis in primaryAxes)
+            {
                 axis.Line(visible, color);
+            }
 
             YAxis.Line(visible: left);
             YAxis2.Line(visible: right);
@@ -89,7 +110,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Frameless(bool hideAllAxes = true)
         {
             foreach (var axis in settings.Axes)
+            {
                 axis.Hide(hideAllAxes);
+            }
         }
 
         /// <summary>
@@ -208,10 +231,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Set the culture to use for number-to-string converstion for tick labels of all axes.
         /// </summary>
         /// <param name="culture">standard culture</param>
-        public void SetCulture(System.Globalization.CultureInfo culture)
+        public void SetCulture(CultureInfo culture)
         {
             foreach (var axis in settings.Axes)
+            {
                 axis.SetCulture(culture);
+            }
         }
 
         /// <summary>
@@ -229,7 +254,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             int? decimalDigits = null, int? numberNegativePattern = null, int[] numberGroupSizes = null)
         {
             foreach (var axis in settings.Axes)
+            {
                 axis.SetCulture(shortDatePattern, decimalSeparator, numberGroupSeparator, decimalDigits, numberNegativePattern, numberGroupSizes);
+            }
         }
 
         #endregion
@@ -247,23 +274,37 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public Axis AddAxis(Edge edge, int axisIndex, string title = null, Color? color = null)
         {
             if (axisIndex <= 1)
+            {
                 throw new ArgumentException("The default axes already occupy indexes 0 and 1. Additional axes require higher indexes.");
+            }
 
             Axis axis;
 
             if (edge == Edge.Left)
+            {
                 axis = new AdditionalLeftAxis(axisIndex, title);
+            }
             else if (edge == Edge.Right)
+            {
                 axis = new AdditionalRightAxis(axisIndex, title);
+            }
             else if (edge == Edge.Bottom)
+            {
                 axis = new AdditionalBottomAxis(axisIndex, title);
+            }
             else if (edge == Edge.Top)
+            {
                 axis = new AdditionalTopAxis(axisIndex, title);
+            }
             else
+            {
                 throw new NotImplementedException("unsupported edge");
+            }
 
             if (color.HasValue)
+            {
                 axis.Color(color.Value);
+            }
 
             settings.Axes.Add(axis);
             return axis;
@@ -352,7 +393,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             bool notAllAxesDefined = xMin is null || xMax is null || yMin is null || yMax is null;
             if (notAllAxesDefined)
+            {
                 settings.AxisAutoUnsetAxes();
+            }
+
             settings.AxisSet(xMin, xMax, yMin, yMax, xAxisIndex, yAxisIndex);
         }
 
@@ -566,7 +610,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             var yAxis = settings.GetYAxis(yAxisIndex);
 
             if (xAxis.Dims.HasBeenSet == false || yAxis.Dims.HasBeenSet == false)
+            {
                 settings.AxisAutoAll();
+            }
 
             xAxis.Dims.Zoom(xFrac, zoomToX ?? xAxis.Dims.Center);
             yAxis.Dims.Zoom(yFrac, zoomToY ?? yAxis.Dims.Center);
@@ -580,7 +626,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void AxisPan(double dx = 0, double dy = 0)
         {
             if (!settings.AllAxesHaveBeenSet)
+            {
                 settings.AxisAutoAll();
+            }
 
             settings.XAxis.Dims.Pan(dx);
             settings.YAxis.Dims.Pan(dy);
@@ -606,25 +654,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public double CoordinateFromPixelY(double pixelY) => throw new NotImplementedException();
 
         [Obsolete("use GetCoordinate(), GetCoordinateX() or GetCoordinateY()", true)]
-        public System.Drawing.PointF CoordinateFromPixel(int pixelX, int pixelY) => throw new NotImplementedException();
+        public PointF CoordinateFromPixel(int pixelX, int pixelY) => throw new NotImplementedException();
 
         [Obsolete("use GetCoordinate(), GetCoordinateX() or GetCoordinateY()", true)]
-        public System.Drawing.PointF CoordinateFromPixel(float pixelX, float pixelY) => throw new NotImplementedException();
+        public PointF CoordinateFromPixel(float pixelX, float pixelY) => throw new NotImplementedException();
 
         [Obsolete("use GetCoordinate(), GetCoordinateX() or GetCoordinateY()", true)]
-        public System.Drawing.PointF CoordinateFromPixel(double pixelX, double pixelY) => throw new NotImplementedException();
+        public PointF CoordinateFromPixel(double pixelX, double pixelY) => throw new NotImplementedException();
 
         [Obsolete("use GetCoordinate(), GetCoordinateX() or GetCoordinateY()", true)]
-        public System.Drawing.PointF CoordinateFromPixel(System.Drawing.Point pixel) => throw new NotImplementedException();
+        public PointF CoordinateFromPixel(Point pixel) => throw new NotImplementedException();
 
         [Obsolete("use GetCoordinate(), GetCoordinateX() or GetCoordinateY()", true)]
-        public System.Drawing.PointF CoordinateFromPixel(System.Drawing.PointF pixel) => throw new NotImplementedException();
+        public PointF CoordinateFromPixel(PointF pixel) => throw new NotImplementedException();
 
         [Obsolete("use GetPixel, GetPixelX(), or GetPixelY()", true)]
-        public System.Drawing.PointF CoordinateToPixel(System.Drawing.PointF location) => throw new NotImplementedException();
+        public PointF CoordinateToPixel(PointF location) => throw new NotImplementedException();
 
         [Obsolete("use GetPixel, GetPixelX(), or GetPixelY()", true)]
-        public System.Drawing.PointF CoordinateToPixel(double locationX, double locationY) => throw new NotImplementedException();
+        public PointF CoordinateToPixel(double locationX, double locationY) => throw new NotImplementedException();
 
         [Obsolete("use GetPixelX()", true)]
         public float CoordinateToPixelX(double locationX) => throw new NotImplementedException();
@@ -640,7 +688,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public void Axis(double[] axisLimits, int xAxisIndex = 0, int yAxisIndex = 0) => throw new NotImplementedException();
 
         [Obsolete("use GetAxisLimits() and SetAxisLimits()", true)]
-        public double[] Axis(double? x1 = null, double? x2 = null, double? y1 = null, double? y2 = null, double? _ = null) => null;
+        public double[]? Axis(double? x1 = null, double? x2 = null, double? y1 = null, double? y2 = null, double? _ = null) => null;
 
         [Obsolete("use GetAxisLimits() and SetAxisLimits()", true)]
         public double[] Axis(double[] axisLimits) => null;

@@ -1,11 +1,32 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+#pragma warning disable CS8602, CS8622
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     [ToolboxBitmap(typeof(FloatableToolStrip), "ToolboxBitmaps.FloatableToolStrip.bmp")]
@@ -14,17 +35,17 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #region Variables
         private ToolStripContainerWindow _toolStripContainerWindow;
 
-        private Control _originalParent = null;
+        private Control? _originalParent = null;
 
         private bool _aboutToFloat = false, _isFloating = false, _parentChanged = false;
 
-        private List<ToolStripPanelExtened> _toolStripPanelExtenedList = new List<ToolStripPanelExtened>();
+        private List<ToolStripPanelExtended> _toolStripPanelExtendedList = new();
 
         private string _floatingToolBarWindowText;
         #endregion
 
         #region Properties
-        internal Control OriginalParent => _originalParent;
+        internal Control? OriginalParent => _originalParent;
 
         /// <summary>
         /// Gets or sets the tool strip panel extened list.
@@ -33,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         /// The tool strip panel extened list.
         /// </value>
         [Editor(typeof(ToolStripPanelCollectionEditor), typeof(UITypeEditor)), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<ToolStripPanelExtened> ToolStripPanelExtenedList { get => _toolStripPanelExtenedList; set => _toolStripPanelExtenedList = value; }
+        public List<ToolStripPanelExtended> ToolStripPanelExtenedList { get => _toolStripPanelExtendedList; set => _toolStripPanelExtendedList = value; }
 
         /// <summary>
         /// Gets a value indicating whether this instance is floating.
@@ -178,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
             GetCursorPos(out point);
 
-            foreach (ToolStripPanelExtened item in _toolStripPanelExtenedList)
+            foreach (ToolStripPanelExtended item in _toolStripPanelExtendedList)
             {
                 if (item.ActiveRectangle.Contains(item.PointToClient(point)))
                 {

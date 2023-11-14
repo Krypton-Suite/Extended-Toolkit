@@ -1,11 +1,31 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
+#pragma warning disable CS0618
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     /// <summary>
@@ -76,24 +96,24 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             _useMnemonic = true;
 
             // Create content storage
-            CommandLinkImageValue = new ImageValue(NeedPaintDelegate);
-            CommandLinkTextValues = new CommandLinkTextValues(NeedPaintDelegate);
+            CommandLinkImageValue = new(NeedPaintDelegate);
+            CommandLinkTextValues = new(NeedPaintDelegate);
 
             // Create the palette storage
-            StateCommon = new PaletteTripleRedirect(Redirector, PaletteBackStyle.ButtonCommand, PaletteBorderStyle.ButtonCommand, PaletteContentStyle.ButtonCommand, NeedPaintDelegate);
+            StateCommon = new(Redirector, PaletteBackStyle.ButtonCommand, PaletteBorderStyle.ButtonCommand, PaletteContentStyle.ButtonCommand, NeedPaintDelegate);
             PaletteContentText contentShortText = StateCommon.Content.ShortText;
-            contentShortText.Font = new Font(@"Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            contentShortText.Font = new(@"Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             contentShortText.TextH = PaletteRelativeAlign.Near;
             contentShortText.TextV = PaletteRelativeAlign.Center;
             StateCommon.Content.LongText.TextH = PaletteRelativeAlign.Near;
             StateCommon.Content.LongText.TextV = PaletteRelativeAlign.Far;
 
-            StateDisabled = new PaletteTriple(StateCommon, NeedPaintDelegate);
-            StateNormal = new PaletteTriple(StateCommon, NeedPaintDelegate);
-            StateTracking = new PaletteTriple(StateCommon, NeedPaintDelegate);
-            StatePressed = new PaletteTriple(StateCommon, NeedPaintDelegate);
-            OverrideDefault = new PaletteTripleRedirect(Redirector, PaletteBackStyle.ButtonCommand, PaletteBorderStyle.ButtonCommand, PaletteContentStyle.ButtonCommand, NeedPaintDelegate);
-            OverrideFocus = new PaletteTripleRedirect(Redirector, PaletteBackStyle.ButtonCommand, PaletteBorderStyle.ButtonCommand, PaletteContentStyle.ButtonCommand, NeedPaintDelegate);
+            StateDisabled = new(StateCommon, NeedPaintDelegate);
+            StateNormal = new(StateCommon, NeedPaintDelegate);
+            StateTracking = new(StateCommon, NeedPaintDelegate);
+            StatePressed = new(StateCommon, NeedPaintDelegate);
+            OverrideDefault = new(Redirector, PaletteBackStyle.ButtonCommand, PaletteBorderStyle.ButtonCommand, PaletteContentStyle.ButtonCommand, NeedPaintDelegate);
+            OverrideFocus = new(Redirector, PaletteBackStyle.ButtonCommand, PaletteBorderStyle.ButtonCommand, PaletteContentStyle.ButtonCommand, NeedPaintDelegate);
             OverrideFocus.Border.Draw = InheritBool.True;
             OverrideFocus.Border.DrawBorders = PaletteDrawBorders.All;
             OverrideFocus.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
@@ -101,13 +121,13 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             ButtonStyle = ButtonStyle.Command;
 
             // Create the override handling classes
-            _overrideFocus = new PaletteTripleOverride(OverrideFocus, StateNormal, PaletteState.FocusOverride);
-            _overrideNormal = new PaletteTripleOverride(OverrideDefault, _overrideFocus, PaletteState.NormalDefaultOverride);
-            _overrideTracking = new PaletteTripleOverride(OverrideFocus, StateTracking, PaletteState.FocusOverride);
-            _overridePressed = new PaletteTripleOverride(OverrideFocus, StatePressed, PaletteState.FocusOverride);
+            _overrideFocus = new(OverrideFocus, StateNormal, PaletteState.FocusOverride);
+            _overrideNormal = new(OverrideDefault, _overrideFocus, PaletteState.NormalDefaultOverride);
+            _overrideTracking = new(OverrideFocus, StateTracking, PaletteState.FocusOverride);
+            _overridePressed = new(OverrideFocus, StatePressed, PaletteState.FocusOverride);
 
             // Create the view button instance
-            drawButton = new ViewDrawCommandLinkButton(StateDisabled,
+            drawButton = new(StateDisabled,
                                              _overrideNormal,
                                              _overrideTracking,
                                              _overridePressed,
@@ -121,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             };
 
             // Create a button controller to handle button style behaviour
-            _buttonController = new ButtonController(drawButton, NeedPaintDelegate);
+            _buttonController = new(drawButton, NeedPaintDelegate);
 
             // Assign the controller to the view element to treat as a button
             drawButton.MouseController = _buttonController;
@@ -133,12 +153,12 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             _buttonController.MouseSelect += OnButtonSelect;
 
             // Create the view manager instance
-            ViewManager = new ViewManager(this, drawButton);
+            ViewManager = new(this, drawButton);
 
             // UAC setup
             _useAsUACElevatedButton = false;
 
-            _uacShieldSize = new Size(15, 15);
+            _uacShieldSize = new(15, 15);
         }
         #endregion
 
@@ -389,7 +409,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             set
             {
                 if (_command == value)
+                {
                     return;
+                }
+
                 if (_command != null)
                 {
                     _command.PropertyChanged -= OnCommandPropertyChanged;
@@ -553,7 +576,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>
         /// Gets the default size of the control.
         /// </summary>
-        protected override Size DefaultSize => new Size(250, 55);
+        protected override Size DefaultSize => new(250, 55);
 
         /// <summary>
         /// Gets the default Input Method Editor (IME) mode supported by this control.
@@ -640,7 +663,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 {
                     try
                     {
-                        ExecuteProcessAsAdministratorEventArgs executeProcessAsAdministrator = new ExecuteProcessAsAdministratorEventArgs(_processToElevate);
+                        ExecuteProcessAsAdministratorEventArgs executeProcessAsAdministrator = new(_processToElevate);
 
                         executeProcessAsAdministrator.ElevateProcessWithAdministrativeRights(_processToElevate);
                     }
@@ -713,7 +736,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <param name="needPaint">Delegate for notifying paint requests.</param>
         protected virtual ButtonValues CreateButtonValues(NeedPaintHandler needPaint)
         {
-            return new ButtonValues(needPaint);
+            return new(needPaint);
         }
 
         /// <summary>

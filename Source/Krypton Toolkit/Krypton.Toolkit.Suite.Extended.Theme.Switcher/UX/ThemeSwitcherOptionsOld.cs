@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -273,26 +292,26 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #endregion
 
         #region Variables
-        private SettingsManager _settingsManager = new SettingsManager();
+        private SettingsManager _settingsManager = new();
 
-        private ThemeManager _themeManager = new ThemeManager();
+        private ThemeManager _themeManager = new();
 
         private KryptonManager _manager = null;
 
-        private KryptonPalette _palette = null;
+        private KryptonCustomPaletteBase _palette = null;
         #endregion
 
         #region Properties
         public KryptonManager KryptonManager { get => _manager; private set => _manager = value; }
 
-        public KryptonPalette KryptonPalette { get => _palette; private set => _palette = value; }
+        public KryptonCustomPaletteBase KryptonPalette { get => _palette; private set => _palette = value; }
         #endregion
 
         #region Constructor
         /// <summary>Initializes a new instance of the <see cref="ThemeSwitcherOptionsOld" /> class.</summary>
         /// <param name="manager">The manager.</param>
         /// <param name="palette">The palette.</param>
-        public ThemeSwitcherOptionsOld(KryptonManager manager, KryptonPalette palette)
+        public ThemeSwitcherOptionsOld(KryptonManager manager, KryptonCustomPaletteBase palette)
         {
             InitializeComponent();
 
@@ -322,7 +341,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             KryptonManager.GlobalPalette = KryptonPalette;
 
-            KryptonManager.GlobalPaletteMode = PaletteModeManager.Custom;
+            KryptonManager.GlobalPaletteMode = PaletteMode.Custom;
 
             ChangePaletteName(KryptonPalette.GetCustomisedKryptonPaletteFilePath());
 
@@ -369,7 +388,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         {
             if (kbtnReset.Enabled)
             {
-                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to cancel?", "Cancel Operation", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to cancel?", "Cancel Operation", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -392,8 +411,8 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         /// <summary>Applies the theme.</summary>
         /// <param name="theme">The theme.</param>
-        private void ApplyTheme(PaletteModeManager theme) => _settingsManager.SetSelectedTheme(theme);
-        private void ChangePaletteName(string paletteName) => kwlPaletteName.Text = $"Custom Palette Name: {Path.GetFileName(paletteName)}";
+        private void ApplyTheme(PaletteMode theme) => _settingsManager.SetSelectedTheme(theme);
+        private void ChangePaletteName(string paletteName) => kwlPaletteName.Text = $@"Custom Palette Name: {Path.GetFileName(paletteName)}";
 
         private void LocateTheme(string palettePath) => Process.Start("explorer.exe", palettePath);
         #endregion 

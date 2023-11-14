@@ -1,8 +1,27 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -222,7 +241,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             EventHandler handler = activated;
             if (handler != null)
+            {
                 handler(this, e);
+            }
         }
 
         #endregion
@@ -242,11 +263,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 Image imageSmall = null;
                 if (smallImage != null)
+                {
                     imageSmall = smallImage;
+                }
                 else if ((band != null) && (band.SmallImage != null))
+                {
                     imageSmall = band.SmallImage;
+                }
                 else if ((band != null) && (band.SmallImageIndex >= 0) && (band.SmallImages != null)
-                   && (band.SmallImageIndex < band.SmallImages.Images.Count))
+                         && (band.SmallImageIndex < band.SmallImages.Images.Count))
                 {
                     imageSmall = band.SmallImages.Images[band.SmallImageIndex];
                 }
@@ -264,11 +289,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 Image imageLarge = null;
                 if (largeImage != null)
+                {
                     imageLarge = largeImage;
+                }
                 else if ((band != null) && (band.LargeImage != null))
+                {
                     imageLarge = band.LargeImage;
+                }
                 else if ((band != null) && (band.LargeImageIndex >= 0)
-                   && (band.LargeImageIndex < band.LargeImages.Images.Count))
+                                        && (band.LargeImageIndex < band.LargeImages.Images.Count))
                 {
                     imageLarge = band.LargeImages.Images[band.LargeImageIndex];
                 }
@@ -279,12 +308,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                     int margin = 10;
                     if (collapsed)
+                    {
                         margin = 4;
+                    }
 
                     if (RightToLeft == RightToLeft.Yes)
+                    {
                         location = new Point(Width - margin - imageLarge.Width, (int)((Height / 2) - (imageLarge.Height / 2)));
+                    }
                     else
+                    {
                         location = new Point(margin, (int)((Height / 2) - (imageLarge.Height / 2)));
+                    }
 
                     Renderer.DrawImage(e.Graphics, location, imageLarge);
 
@@ -298,8 +333,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 bounds.X += 10;
                 bounds.Width -= 10;
                 if (!collapsed)
+                {
                     Renderer.DrawText(e.Graphics, bounds, Font, Renderer.ColourTable.Text, Text,
-                       RightToLeft == RightToLeft.Yes);
+                        RightToLeft == RightToLeft.Yes);
+                }
             }
         }
 
