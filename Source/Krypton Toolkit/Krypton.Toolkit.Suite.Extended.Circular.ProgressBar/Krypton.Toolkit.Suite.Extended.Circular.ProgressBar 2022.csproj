@@ -107,7 +107,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.318" />
+				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
 			</ItemGroup>
 		</When>
 
@@ -180,7 +180,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Unofficial.WinFormAnimation" Version="2.0.1" />
+		<PackageReference Include="Unofficial.WinFormAnimation" Version="2.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>

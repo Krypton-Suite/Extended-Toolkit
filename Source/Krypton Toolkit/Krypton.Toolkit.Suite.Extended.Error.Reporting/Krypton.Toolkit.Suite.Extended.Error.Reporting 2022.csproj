@@ -111,9 +111,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.318" />
+				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
 
-				<PackageReference Include="Krypton.Navigator" Version="80.23.11.318" />
+				<PackageReference Include="Krypton.Navigator" Version="80.23.11.321" />
 			</ItemGroup>
 		</When>
 
