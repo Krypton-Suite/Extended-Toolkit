@@ -161,6 +161,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+		<PackageReference Include="System.Speech" Version="8.0.0" />
 		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.0" />
 	</ItemGroup>
 

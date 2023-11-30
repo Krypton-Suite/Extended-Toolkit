@@ -25,6 +25,9 @@
  */
 #endregion
 
+// Only used here
+using SpeechSynthesizer = System.Speech.Synthesis.SpeechSynthesizer;
+
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonTextToSpeechDialog : CommonExtendedKryptonForm
@@ -340,7 +343,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #region Methods
         private void PropagateInstalledVoicesList()
         {
-            using (SpeechSynthesizer synth = new())
+            using (SpeechSynthesizer synth = new SpeechSynthesizer())
             {
                 foreach (var voice in synth.GetInstalledVoices())
                 {
@@ -353,10 +356,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void Speak(string textToSpeak, string voice, int rate, int volume)
         {
-#if NETCOREAPP3_0_OR_GREATER
-            SpeakNETCore(textToSpeak);
-#else
-            using (SpeechSynthesizer synth = new() { Volume = volume, Rate = rate })
+            using (SpeechSynthesizer synth = new SpeechSynthesizer() { Volume = volume, Rate = rate })
             {
                 synth.SelectVoice(voice);
 
@@ -365,53 +365,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                 synth.Speak(textToSpeak);
 
                 kgbAdjustments.Enabled = true;
-            }
-#endif
-        }
-
-        /// <summary>
-        /// https://www.c-sharpcorner.com/blogs/using-systemspeech-with-net-core-30
-        /// </summary>
-        /// <param name="textToSpeech"></param>
-        /// <param name="wait"></param>
-        private static void SpeakNETCore(string textToSpeech, bool wait = false)
-        {
-            // Command to execute PS  
-            Execute($@"Add-Type -AssemblyName System.speech;  
-            $speak = New-Object System.Speech.Synthesis.SpeechSynthesizer;                           
-            $speak.Speak(""{textToSpeech}"");"); // Embedd text  
-
-            void Execute(string command)
-            {
-                // create a temp file with .ps1 extension  
-                var cFile = $"{Path.GetTempPath()}{Guid.NewGuid()}.ps1";
-
-                //Write the .ps1  
-                using var tw = new StreamWriter(cFile, false, Encoding.UTF8);
-                tw.Write(command);
-
-                // Setup the PS  
-                var start =
-                    new ProcessStartInfo()
-                    {
-                        FileName = "C:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe",  // CHUPA MICROSOFT 02-10-2019 23:45                    
-                        LoadUserProfile = false,
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        Arguments = $"-executionpolicy bypass -File {cFile}",
-                        WindowStyle = ProcessWindowStyle.Hidden
-                    };
-
-                //Init the Process  
-                var p = Process.Start(start);
-                // The wait may not work! :(  
-                if (wait)
-                {
-                    if (p != null)
-                    {
-                        p.WaitForExit();
-                    }
-                }
             }
         }
         #endregion
