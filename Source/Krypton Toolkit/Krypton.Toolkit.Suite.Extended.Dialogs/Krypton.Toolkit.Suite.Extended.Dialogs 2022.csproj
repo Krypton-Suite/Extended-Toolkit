@@ -215,6 +215,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Krypton Nightly.png" />
 		<None Update="License\License.txt">
 			<PackagePath></PackagePath>
 			<Pack>true</Pack>
