@@ -55,13 +55,13 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             if (Text == Name)
             {
-                Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+                Text = KryptonManager.Strings.GeneralStrings.Yes;
             }
         }
 
         private void KryptonYesDialogButton_ParentChanged(object sender, EventArgs e)
         {
-            Control parent = Parent;
+            Control? parent = Parent;
 
             while (!(Parent is KryptonForm) && parent != null)
             {

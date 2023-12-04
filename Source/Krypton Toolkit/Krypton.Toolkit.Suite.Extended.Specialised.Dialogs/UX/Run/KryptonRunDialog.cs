@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
         private void kcmdRunTaskAsAdministrator_Execute(object sender, EventArgs e)
         {
-            kbtnRun.UseAsUACElevationButton = true;
+            kbtnRun.Values.UseAsUACElevationButton = true;
 
             try
             {
@@ -190,7 +190,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
         private void kcmdRunTaskAsNormalUser_Execute(object sender, EventArgs e)
         {
-            kbtnRun.UseAsUACElevationButton = false;
+            kbtnRun.Values.UseAsUACElevationButton = false;
 
             try
             {
@@ -211,7 +211,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
         private void kbtnRun_Click(object sender, EventArgs e)
         {
-            if (kbtnRun.UseAsUACElevationButton)
+            if (kbtnRun.Values.UseAsUACElevationButton)
             {
                 kcmdRunTaskAsAdministrator.PerformExecute();
             }

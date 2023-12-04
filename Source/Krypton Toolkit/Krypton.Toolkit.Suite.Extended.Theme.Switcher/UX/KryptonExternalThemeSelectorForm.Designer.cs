@@ -183,7 +183,6 @@
             // 
             // kcpbCustom
             // 
-            this.kcpbCustom.BaseFontSize = 9F;
             this.kcpbCustom.BasePaletteType = Krypton.Toolkit.BasePaletteType.Custom;
             this.kcpbCustom.ThemeName = null;
             // 

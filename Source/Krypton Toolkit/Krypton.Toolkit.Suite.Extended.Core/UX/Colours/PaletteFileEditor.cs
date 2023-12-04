@@ -85,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnClose.Name = "kbtnClose";
             this.kbtnClose.Size = new System.Drawing.Size(90, 25);
             this.kbtnClose.TabIndex = 31;
-            this.kbtnClose.UseAsADialogButton = true;
+            this.kbtnClose.Values.UseAsADialogButton = true;
             this.kbtnClose.Values.Text = "Cance&l";
             // 
             // kbtnGenerateColours
