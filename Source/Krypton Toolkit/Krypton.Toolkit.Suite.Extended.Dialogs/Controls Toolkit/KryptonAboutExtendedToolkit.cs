@@ -1,5 +1,6 @@
 ﻿#region MIT License
 /*
+ *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -25,24 +26,32 @@
  */
 #endregion
 
-global using System;
-global using System.Collections.Specialized;
-global using System.ComponentModel;
-global using System.Diagnostics;
-global using System.Drawing;
-global using System.Globalization;
-global using System.IO;
-global using System.Reflection;
-global using System.Security.Principal;
-global using System.Text;
-global using System.Windows.Forms;
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
+{
+    /// <summary>The public interface to the <see cref="KryptonAboutExtendedToolkitData"/> class.</summary>
+    [ToolboxItem(false)]
+    [DesignerCategory(@"code")]
+    public class KryptonAboutExtendedToolkit
+    {
+        #region Public
 
-global using Krypton.Toolkit.Suite.Extended.Common;
-global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-global using Krypton.Toolkit.Suite.Extended.Dialogs.Properties;
-global using Krypton.Toolkit.Suite.Extended.Forms;
-global using Krypton.Toolkit.Suite.Extended.Global.Utilities;
-global using Krypton.Toolkit.Suite.Extended.Settings;
-global using Krypton.Toolkit.Suite.Extended.Shared;
+        /// <summary>Shows the specified about extended toolkit data.</summary>
+        /// <param name="aboutExtendedToolkitData">The about extended toolkit data.</param>
+        /// <returns></returns>
+        public static DialogResult Show(KryptonAboutExtendedToolkitData aboutExtendedToolkitData) =>
+            ShowCore(aboutExtendedToolkitData);
 
-global using Microsoft.WindowsAPICodePack.Dialogs;
+        #endregion
+
+        #region Implementation
+
+        private static DialogResult ShowCore(KryptonAboutExtendedToolkitData aboutExtendedToolkitData)
+        {
+            using var kaet = new KryptonAboutExtendedToolkitForm(aboutExtendedToolkitData);
+
+            return kaet.ShowDialog();
+        }
+
+        #endregion
+    }
+}

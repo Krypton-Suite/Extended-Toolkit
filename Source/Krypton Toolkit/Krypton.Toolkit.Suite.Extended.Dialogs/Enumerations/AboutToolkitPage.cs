@@ -1,5 +1,6 @@
 ﻿#region MIT License
 /*
+ *
  * MIT License
  *
  * Copyright (c) 2017 - 2023 Krypton Suite
@@ -25,24 +26,13 @@
  */
 #endregion
 
-global using System;
-global using System.Collections.Specialized;
-global using System.ComponentModel;
-global using System.Diagnostics;
-global using System.Drawing;
-global using System.Globalization;
-global using System.IO;
-global using System.Reflection;
-global using System.Security.Principal;
-global using System.Text;
-global using System.Windows.Forms;
-
-global using Krypton.Toolkit.Suite.Extended.Common;
-global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-global using Krypton.Toolkit.Suite.Extended.Dialogs.Properties;
-global using Krypton.Toolkit.Suite.Extended.Forms;
-global using Krypton.Toolkit.Suite.Extended.Global.Utilities;
-global using Krypton.Toolkit.Suite.Extended.Settings;
-global using Krypton.Toolkit.Suite.Extended.Shared;
-
-global using Microsoft.WindowsAPICodePack.Dialogs;
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
+{
+    internal enum AboutToolkitPage
+    {
+        GeneralInformation = 0,
+        Discord = 1,
+        DeveloperInformation = 2,
+        Versions = 3
+    }
+}

@@ -61,6 +61,16 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Canary {
+            get {
+                object obj = ResourceManager.GetObject("Canary", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type the name of a program, folder, document or Internet resource, and Windows will open it for you..
         /// </summary>
         internal static string DefaultRunDialogContentText {
@@ -179,6 +189,16 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Nightly {
+            get {
+                object obj = ResourceManager.GetObject("Nightly", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open as &amp;administrator.
         /// </summary>
         internal static string OpenAsAdministratorCommandText {
@@ -251,6 +271,16 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
         internal static System.Drawing.Bitmap Settings_16_x_16 {
             get {
                 object obj = ResourceManager.GetObject("Settings_16_x_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Stable {
+            get {
+                object obj = ResourceManager.GetObject("Stable", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

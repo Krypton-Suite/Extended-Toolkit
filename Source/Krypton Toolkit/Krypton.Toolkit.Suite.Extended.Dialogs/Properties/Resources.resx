@@ -117,13 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Canary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Canary.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="DefaultRunDialogContentText" xml:space="preserve">
     <value>Type the name of a program, folder, document or Internet resource, and Windows will open it for you.</value>
   </data>
   <data name="InputBoxCueText" xml:space="preserve">
     <value>Type a file path or URL here...</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Input_Box_Critical_128_x_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Input_Box_Critical_128_x_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,6 +157,9 @@
   <data name="Krypton Stable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Krypton Stable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Nightly" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Nightly.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="OpenAsAdministratorCommandText" xml:space="preserve">
     <value>Open as &amp;administrator</value>
   </data>
@@ -177,5 +183,8 @@
   </data>
   <data name="Settings_16_x_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings_16_x_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Stable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Stable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
