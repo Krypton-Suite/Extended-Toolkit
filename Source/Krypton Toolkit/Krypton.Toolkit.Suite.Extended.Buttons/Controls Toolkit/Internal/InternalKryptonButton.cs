@@ -637,43 +637,43 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// </summary>
         protected override void ContextMenuClosed() => _buttonController.RemoveFixed();
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             if (_useAsDialogButton)
             {
                 if (DialogResult == DialogResult.Abort)
                 {
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Abort;
+                    Text = KryptonManager.Strings.GeneralStrings.Abort;
                 }
 
                 if (DialogResult == DialogResult.Cancel)
                 {
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                    Text = KryptonManager.Strings.GeneralStrings.Cancel;
                 }
 
                 if (DialogResult == DialogResult.OK)
                 {
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+                    Text = KryptonManager.Strings.GeneralStrings.OK;
                 }
 
                 if (DialogResult == DialogResult.Yes)
                 {
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+                    Text = KryptonManager.Strings.GeneralStrings.Yes;
                 }
 
                 if (DialogResult == DialogResult.No)
                 {
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+                    Text = KryptonManager.Strings.GeneralStrings.No;
                 }
 
                 if (DialogResult == DialogResult.Retry)
                 {
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
+                    Text = KryptonManager.Strings.GeneralStrings.Retry;
                 }
 
                 if (DialogResult == DialogResult.Ignore)
                 {
-                    Text = KryptonLanguageManager.GeneralToolkitStrings.Ignore;
+                    Text = KryptonManager.Strings.GeneralStrings.Ignore;
                 }
             }
 

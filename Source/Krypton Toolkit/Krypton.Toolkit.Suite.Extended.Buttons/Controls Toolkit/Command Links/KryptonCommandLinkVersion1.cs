@@ -25,7 +25,6 @@
  */
 #endregion
 
-#pragma warning disable CS0618
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     /// <summary>

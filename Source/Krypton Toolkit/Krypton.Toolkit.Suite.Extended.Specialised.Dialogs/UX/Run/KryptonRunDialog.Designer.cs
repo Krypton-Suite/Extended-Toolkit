@@ -152,10 +152,10 @@
             this.kbtnRun.Location = new System.Drawing.Point(244, 14);
             this.kbtnRun.Margin = new System.Windows.Forms.Padding(3, 3, 5, 15);
             this.kbtnRun.Name = "kbtnRun";
-            this.kbtnRun.ShowSplitOption = true;
+            this.kbtnRun.Values.ShowSplitOption = true;
             this.kbtnRun.Size = new System.Drawing.Size(47, 22);
             this.kbtnRun.TabIndex = 1;
-            this.kbtnRun.UseAsUACElevationButton = true;
+            this.kbtnRun.Values.UseAsUACElevationButton = true;
             this.kbtnRun.Values.Image = ((System.Drawing.Image)(resources.GetObject("kbtnRun.Values.Image")));
             this.kbtnRun.Values.Text = "&Run";
             this.kbtnRun.Click += new System.EventHandler(this.kbtnRun_Click);
@@ -171,7 +171,7 @@
             this.kbtnCancel.Name = "kbtnCancel";
             this.kbtnCancel.Size = new System.Drawing.Size(45, 22);
             this.kbtnCancel.TabIndex = 2;
-            this.kbtnCancel.UseAsADialogButton = true;
+            this.kbtnCancel.Values.UseAsADialogButton = true;
             this.kbtnCancel.Values.Text = "Cance&l";
             // 
             // kbtnBrowse
@@ -188,8 +188,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.Properties.Resources.Run1;

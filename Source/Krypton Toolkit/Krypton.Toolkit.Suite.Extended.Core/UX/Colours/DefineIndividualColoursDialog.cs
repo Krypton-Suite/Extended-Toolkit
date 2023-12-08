@@ -108,7 +108,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kPal
             // 
-            this.kPal.BaseFontSize = 9F;
             this.kPal.BasePaletteType = Krypton.Toolkit.BasePaletteType.Custom;
             this.kPal.ThemeName = null;
             // 

@@ -39,10 +39,10 @@ global using System.Windows.Forms;
 
 global using Krypton.Toolkit.Suite.Extended.Common;
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+global using Krypton.Toolkit.Suite.Extended.Dialogs.Properties;
 global using Krypton.Toolkit.Suite.Extended.Forms;
 global using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 global using Krypton.Toolkit.Suite.Extended.Settings;
 global using Krypton.Toolkit.Suite.Extended.Shared;
-global using Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
 
 global using Microsoft.WindowsAPICodePack.Dialogs;

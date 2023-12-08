@@ -52,11 +52,11 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _externalThemeViewerType = externalThemeViewerType ?? ExternalThemeViewerType.ListBox;
 
-            kbtnApply.Text = KryptonLanguageManager.CustomToolkitStrings.Apply;
+            kbtnApply.Text = KryptonManager.Strings.CustomStrings.Apply;
 
-            kbtnCancel.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+            kbtnCancel.Text = KryptonManager.Strings.GeneralStrings.Cancel;
 
-            kbtnOk.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+            kbtnOk.Text = KryptonManager.Strings.GeneralStrings.OK;
 
             UpdateUI(externalThemeType, externalThemeViewerType);
         }
