@@ -227,7 +227,7 @@
                                     throw;
                                 }
 
-                                List<Process> lockingProcesses = null;
+                                List<Process>? lockingProcesses = null;
                                 if (Environment.OSVersion.Version.Major >= 6 && retries >= 2)
                                 {
                                     try

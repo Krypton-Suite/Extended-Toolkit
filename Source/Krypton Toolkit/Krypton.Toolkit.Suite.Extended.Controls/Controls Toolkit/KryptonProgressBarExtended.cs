@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         #region Public Properties
 
-        // <summary>
+        /// <summary>
         /// Gets or sets the opacity of the white overlay brush which fades 
         /// the background colors of the <see cref="KryptonProgressBarExtendedVersion2" />.
         /// </summary>
