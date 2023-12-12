@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             combobox = new KryptonComboBox();
             combobox.DropDownStyle = ComboBoxStyle.DropDownList;
             combobox.Dock = DockStyle.Fill;
-            combobox.ComboBox.Click += new EventHandler(ToggleTreeView);
+            combobox.ComboBox!.Click += new EventHandler(ToggleTreeView);
 
             // Adding Controls to UserControl
             pnlTree.Controls.Add(lblSizingGrip);
@@ -360,11 +360,11 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             ///
             /// </summary>
             /// <param name="e"></param>
-            protected override void OnPaint(PaintEventArgs e)
+            protected override void OnPaint(PaintEventArgs? e)
             {
                 base.OnPaint(e);
 
-                ControlPaint.DrawComboButton(e.Graphics, e.ClipRectangle, state);
+                ControlPaint.DrawComboButton(e?.Graphics!, e!.ClipRectangle, state);
             }
         }
         #endregion

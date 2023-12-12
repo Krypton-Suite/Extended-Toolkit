@@ -240,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             kmanCustom.GlobalPaletteMode = PaletteMode.Custom;
 
-            kmanCustom.CustomPalette = kcpbCustom;
+            //kmanCustom.GlobalPalette.CustomPalette = kcpbCustom;
 
             kbtnApply.Enabled = true;
         }

@@ -29,7 +29,7 @@
 namespace Krypton.Toolkit.Suite.Extended.Themes
 {
     [ToolboxItem(false)]
-    public abstract class CustomPaletteBase : Component, IPalette
+    public abstract class CustomPaletteBase : Component, PaletteBase
     {
         #region Instance Fields
         private BasePaletteType _basePaletteType;
