@@ -805,7 +805,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null)
                 {
                     cell.SortDESC();
@@ -822,7 +822,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             if (Columns.Contains(column))
             {
-                KryptonColumnHeaderCell cell = column.HeaderCell as KryptonColumnHeaderCell;
+                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
                 if (cell != null && FilterableCells.Contains(cell))
                 {
                     cell.CleanSort();

@@ -7,6 +7,7 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<BaseOutputPath>..\..\..\Bin\Examples\</BaseOutputPath>
+		<LangVersion>preview</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -50,9 +51,22 @@
 		</Content>
 	</ItemGroup>
 
+	<Choose>
+		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.12.345-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.23.12.345-alpha" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Ribbon\Krypton.Ribbon 2022.csproj" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
 	<ItemGroup>
-		<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.12.338-alpha" />
-		<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.23.12.338-alpha" />
 		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
 	</ItemGroup>
 

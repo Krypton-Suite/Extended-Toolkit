@@ -71,9 +71,9 @@
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements additional KryptonNavigator designs and features.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9. This package implements additional KryptonNavigator designs and features.
 
-			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
 
 			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
@@ -87,9 +87,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.12.338-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.12.345-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="90.23.12.338-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="90.23.12.345-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -99,9 +99,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.10.296-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.23.11.326-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="80.23.10.296-beta" />
+				<PackageReference Include="Krypton.Navigator.Canary" Version="90.23.11.326-beta" />
 			</ItemGroup>
 		</When>
 
@@ -123,9 +123,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="70.22.11.312" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="80.23.11.321" />
 
-				<PackageReference Include="Krypton.Navigator.Lite" Version="70.22.11.312" />
+				<PackageReference Include="Krypton.Navigator.Lite" Version="80.23.11.321" />
 			</ItemGroup>
 		</When>
 
@@ -160,9 +160,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
+				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
 
-				<PackageReference Include="Krypton.Navigator" Version="70.22.11.312" />
+				<PackageReference Include="Krypton.Navigator" Version="80.23.11.321" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

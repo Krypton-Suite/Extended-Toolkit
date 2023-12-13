@@ -13,9 +13,9 @@ namespace ZipExtractor
             uint nFiles,
             string[] rgsFilenames,
             uint nApplications,
-            [In] RM_UNIQUE_PROCESS[] rgApplications,
+            [In] RM_UNIQUE_PROCESS[]? rgApplications,
             uint nServices,
-            string[] rgsServiceNames);
+            string[]? rgsServiceNames);
 
         [DllImport("rstrtmgr.dll", CharSet = CharSet.Auto)]
         private static extern int RmStartSession(out uint pSessionHandle, int dwSessionFlags, string strSessionKey);
@@ -27,7 +27,7 @@ namespace ZipExtractor
         private static extern int RmGetList(uint dwSessionHandle,
             out uint pnProcInfoNeeded,
             ref uint pnProcInfo,
-            [In][Out] RM_PROCESS_INFO[] rgAffectedApps,
+            [In][Out] RM_PROCESS_INFO[]? rgAffectedApps,
             ref uint lpdwRebootReasons);
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace ZipExtractor
         ///     http://msdn.microsoft.com/en-us/library/windows/desktop/aa373661(v=vs.85).aspx
         ///     http://wyupdate.googlecode.com/svn-history/r401/trunk/frmFilesInUse.cs (no copyright in code at time of viewing)
         /// </remarks>
-        public static List<Process> WhoIsLocking(string path)
+        public static List<Process>? WhoIsLocking(string path)
         {
             var key = Guid.NewGuid().ToString();
             var processes = new List<Process>();
