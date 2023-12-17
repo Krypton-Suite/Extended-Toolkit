@@ -55,13 +55,13 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             if (Text == Name)
             {
-                Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                Text = KryptonManager.Strings.GeneralStrings.Cancel;
             }
         }
 
         private void KryptonCancelDialogButton_ParentChanged(object sender, EventArgs e)
         {
-            Control parent = Parent;
+            Control? parent = Parent;
 
             while (!(Parent is KryptonForm) && parent != null)
             {

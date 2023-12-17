@@ -18,7 +18,7 @@
 
             CancelButton = kbtnCancel;
 
-            kbtnCancel.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+            kbtnCancel.Text = KryptonManager.Strings.GeneralStrings.Cancel;
 
             _useAPICodePackFeatures = useAPICodePackFeatures ?? true;
 
@@ -358,7 +358,7 @@
 
         private void bgwMD5_DoWork(object sender, DoWorkEventArgs e)
         {
-            string filePath = e.Argument.ToString();
+            string? filePath = e.Argument?.ToString();
 
             byte[] buffer;
 
@@ -366,28 +366,31 @@
 
             long size, totalBytesRead = 0;
 
-            using (Stream file = File.OpenRead(filePath))
+            if (filePath != null)
             {
-                size = file.Length;
-
-                using (HashAlgorithm hasher = MD5.Create())
+                using (Stream file = File.OpenRead(filePath))
                 {
-                    do
+                    size = file.Length;
+
+                    using (HashAlgorithm hasher = MD5.Create())
                     {
-                        buffer = new byte[4096];
+                        do
+                        {
+                            buffer = new byte[4096];
 
-                        bytesRead = file.Read(buffer, 0, buffer.Length);
+                            bytesRead = file.Read(buffer, 0, buffer.Length);
 
-                        totalBytesRead += bytesRead;
+                            totalBytesRead += bytesRead;
 
-                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+                            hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
 
-                        bgwMD5.ReportProgress((int)((double)totalBytesRead / size * 100));
-                    } while (bytesRead != 0);
+                            bgwMD5.ReportProgress((int)((double)totalBytesRead / size * 100));
+                        } while (bytesRead != 0);
 
-                    hasher.TransformFinalBlock(buffer, 0, 0);
+                        hasher.TransformFinalBlock(buffer, 0, 0);
 
-                    e.Result = HashingHelpers.BuildMD5HashString(hasher.Hash);
+                        e.Result = HashingHelpers.BuildMD5HashString(hasher.Hash);
+                    }
                 }
             }
         }

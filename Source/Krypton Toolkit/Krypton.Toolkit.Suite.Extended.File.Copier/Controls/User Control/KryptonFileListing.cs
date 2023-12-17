@@ -93,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             // ktxtDirectory
             // 
             this.ktxtDirectory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ktxtDirectory.Hint = "Please enter or browse to a directory...";
+            this.ktxtDirectory.CueHint.CueHintText = "Please enter or browse to a directory...";
             this.ktxtDirectory.Location = new(0, 0);
             this.ktxtDirectory.Name = "ktxtDirectory";
             this.ktxtDirectory.Size = new(224, 23);

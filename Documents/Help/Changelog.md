@@ -5,6 +5,15 @@
 
 =======
 
+## 2024-11-xx - Build 2411 - November 2024
+* Resolved [#446](https://github.com/Krypton-Suite/Extended-Toolkit/issues/446), Throwing exceptions using the Circularprogressbar control of The Ultimate 80.0 package during design
+* New `KryptonAboutExtendedToolkit` API
+* * Add support for .NET 9.0
+* Removed support for .NET 7.0
+* Updated standard toolkit to build `2411`
+
+=======
+
 ## 2023-11-14 - Build 2311 - November 2023
 * New `KryptonToolkitExtendedPoweredByControl`, to be used in application 'About' dialogs
 * Added the ability to specify the message text alignment in a `KryptonMessageboxExtended`
