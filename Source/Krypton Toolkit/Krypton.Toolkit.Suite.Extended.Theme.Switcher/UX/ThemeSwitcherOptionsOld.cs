@@ -339,7 +339,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             kcmbPaletteMode.Text = "Custom";
 
-            KryptonManager.GlobalPalette = KryptonPalette;
+            KryptonManager.GlobalCustomPalette = KryptonPalette;
 
             KryptonManager.GlobalPaletteMode = PaletteMode.Custom;
 
