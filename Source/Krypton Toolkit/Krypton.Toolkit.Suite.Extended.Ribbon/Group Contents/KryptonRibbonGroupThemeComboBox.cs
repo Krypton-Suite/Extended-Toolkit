@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
 
             if ((KryptonRibbonThemeManager.GetThemeManagerMode(Text) == PaletteMode.Custom) && (KryptonCustomPalette != null))
             {
-                Manager.GlobalPalette = KryptonCustomPalette;
+                Manager.GlobalCustomPalette = KryptonCustomPalette;
             }
         }
 
