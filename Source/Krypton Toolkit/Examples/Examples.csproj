@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net48;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -54,8 +54,8 @@
 	<Choose>
 		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.12.345-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.23.12.345-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.12.352-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.23.12.352-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
