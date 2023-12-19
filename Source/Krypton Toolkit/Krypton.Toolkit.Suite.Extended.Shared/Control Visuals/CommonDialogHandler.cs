@@ -73,10 +73,11 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
             _embed = embed;
             // Gain access to the global palette
             _manager = new KryptonManager();
-            _backColour = _manager.GlobalCustomPalette!.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
-            _defaultFontColour = _manager.GlobalCustomPalette!.GetContentShortTextColor1(PaletteContentStyle.LabelNormalPanel, PaletteState.Normal);
-            _inputFontColour = _manager.GlobalCustomPalette!.GetContentShortTextColor1(PaletteContentStyle.InputControlStandalone, PaletteState.Normal);
-            _labelFont = _manager.GlobalCustomPalette?.GetContentShortTextFont(PaletteContentStyle.LabelNormalPanel, PaletteState.Normal)!;
+            // ToDo: Use CurrentGlobal_Palette equivalent
+            //_backColour = _manager.GlobalPaletteMode!.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            //_defaultFontColour = _manager.GlobalCustomPalette!.GetContentShortTextColor1(PaletteContentStyle.LabelNormalPanel, PaletteState.Normal);
+            //_inputFontColour = _manager.GlobalCustomPalette!.GetContentShortTextColor1(PaletteContentStyle.InputControlStandalone, PaletteState.Normal);
+            //_labelFont = _manager.GlobalCustomPalette?.GetContentShortTextFont(PaletteContentStyle.LabelNormalPanel, PaletteState.Normal)!;
         }
 
         #endregion
