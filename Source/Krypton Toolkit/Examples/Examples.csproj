@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net48;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -54,8 +54,8 @@
 	<Choose>
 		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.12.345-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.23.12.345-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.12.352-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.23.12.352-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
@@ -111,7 +111,7 @@
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Suite.Extended.Resources 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Ribbon\Krypton.Toolkit.Suite.Extended.Ribbon 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
-		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater 2022.csproj" />-->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs 2022.csproj" />
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.TaskDialogs\Krypton.Toolkit.Suite.Extended.TaskDialogs 2022.csproj" />-->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher 2022.csproj" />

@@ -28,22 +28,22 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
-    public class PaletteCompisitionEngine
+    public class PaletteCompositionEngine
     {
         #region Variables
-        private PaletteMode _paletteMode;
+        private BasePaletteType _paletteType;
         #endregion
 
         #region Properties
-        public PaletteMode PaletteMode
+        public BasePaletteType PaletteType
         {
-            get => _paletteMode;
-            set => _paletteMode = value;
+            get => _paletteType;
+            set => _paletteType = value;
         }
         #endregion
 
         #region Constructors
-        public PaletteCompisitionEngine()
+        public PaletteCompositionEngine()
         {
 
         }
@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Creates a new palette.
         /// </summary>
         /// <param name="palette">The palette.</param>
-        /// <param name="paletteMode">The palette mode.</param>
+        /// <param name="paletteType">The palette type.</param>
         /// <param name="baseColour">The base colour.</param>
         /// <param name="darkColour">The dark colour.</param>
         /// <param name="middleColour">The middle colour.</param>
@@ -85,13 +85,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="ribbonTabTextColour">The ribbon tab text colour.</param>
         /// <param name="statusState">State of the status.</param>
         /// <param name="invertColours">if set to <c>true</c> [invert colours].</param>
-        public static void CreatePalette(KryptonCustomPaletteBase palette, PaletteMode paletteMode, Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColourPreview, Color alternativeNormalTextColourPreview, Color normalTextColourPreview, Color disabledTextColourPreview, Color focusedTextColourPreview, Color pressedTextColourPreview, Color disabledControlColourPreview, Color linkDisabledColourPreview, Color linkFocusedColour, Color linkNormalColourPreview, Color linkHoverColourPreview, Color linkVisitedColourPreview, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour, ToolStripLabel statusState = null, bool invertColours = false)
+        public static void CreatePalette(KryptonCustomPaletteBase palette, BasePaletteType paletteType, Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColourPreview, Color alternativeNormalTextColourPreview, Color normalTextColourPreview, Color disabledTextColourPreview, Color focusedTextColourPreview, Color pressedTextColourPreview, Color disabledControlColourPreview, Color linkDisabledColourPreview, Color linkFocusedColour, Color linkNormalColourPreview, Color linkHoverColourPreview, Color linkVisitedColourPreview, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour, ToolStripLabel statusState = null, bool invertColours = false)
         {
             palette = new();
 
             try
             {
-                palette.BasePaletteMode = paletteMode;
+                palette.BasePalette.BasePaletteType = paletteType;
 
                 if (lightestColour == Color.Transparent)
                 {
@@ -673,104 +673,96 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void ChangeTheme(KryptonComboBox themeChoice, KryptonCustomPaletteBase palette)
         {
-            if (themeChoice.Text == "Global")
+            if (themeChoice.Text == "Professional System")
             {
-                palette.BasePaletteMode = PaletteMode.Global;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Professional;
 
-                SwitchPaletteMode(PaletteMode.Global);
-            }
-            else if (themeChoice.Text == "Professional System")
-            {
-                palette.BasePaletteMode = PaletteMode.ProfessionalSystem;
-
-                SwitchPaletteMode(PaletteMode.ProfessionalSystem);
+                SwitchPaletteType(BasePaletteType.Professional);
             }
             else if (themeChoice.Text == "Professional Office 2003")
             {
-                palette.BasePaletteMode = PaletteMode.ProfessionalOffice2003;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Professional;
 
-                SwitchPaletteMode(PaletteMode.ProfessionalOffice2003);
+                SwitchPaletteType(BasePaletteType.Professional);
             }
             else if (themeChoice.Text == "Office 2007 Blue")
             {
-                palette.BasePaletteMode = PaletteMode.Office2007Blue;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Office2007;
 
-                SwitchPaletteMode(PaletteMode.Office2007Blue);
+                SwitchPaletteType(BasePaletteType.Office2007);
             }
             else if (themeChoice.Text == "Office 2007 Black")
             {
-                palette.BasePaletteMode = PaletteMode.Office2007Black;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Office2007;
 
-                SwitchPaletteMode(PaletteMode.Office2007Black);
+                SwitchPaletteType(BasePaletteType.Office2007);
             }
             else if (themeChoice.Text == "Office 2007 Silver")
             {
-                palette.BasePaletteMode = PaletteMode.Office2007Silver;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Office2007;
 
-                SwitchPaletteMode(PaletteMode.Office2007Silver);
+                SwitchPaletteType(BasePaletteType.Office2007);
             }
             else if (themeChoice.Text == "Office 2010 Blue")
             {
-                palette.BasePaletteMode = PaletteMode.Office2010Blue;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Office2010;
 
-                SwitchPaletteMode(PaletteMode.Office2010Blue);
+                SwitchPaletteType(BasePaletteType.Office2010);
             }
             else if (themeChoice.Text == "Office 2010 Black")
             {
-                palette.BasePaletteMode = PaletteMode.Office2010Black;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Office2010;
 
-                SwitchPaletteMode(PaletteMode.Office2010Black);
+                SwitchPaletteType(BasePaletteType.Office2010);
             }
             else if (themeChoice.Text == "Office 2010 Silver")
             {
-                palette.BasePaletteMode = PaletteMode.Office2010Silver;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Office2010;
 
-                SwitchPaletteMode(PaletteMode.Office2010Silver);
+                SwitchPaletteType(BasePaletteType.Office2010);
             }
             else if (themeChoice.Text == "Office 2013 White")
             {
-                palette.BasePaletteMode = PaletteMode.Office2013White;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Office2013;
 
-                SwitchPaletteMode(PaletteMode.Office2013White);
+                SwitchPaletteType(BasePaletteType.Office2013);
             }
             else if (themeChoice.Text == "Sparkle Blue")
             {
-                palette.BasePaletteMode = PaletteMode.SparkleBlue;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Sparkle;
 
-                SwitchPaletteMode(PaletteMode.SparkleBlue);
+                SwitchPaletteType(BasePaletteType.Sparkle);
             }
             else if (themeChoice.Text == "Sparkle Orange")
             {
-                palette.BasePaletteMode = PaletteMode.SparkleOrange;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Sparkle;
 
-                SwitchPaletteMode(PaletteMode.SparkleOrange);
+                SwitchPaletteType(BasePaletteType.Sparkle);
             }
             else if (themeChoice.Text == "Sparkle Purple")
             {
-                palette.BasePaletteMode = PaletteMode.SparklePurple;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Sparkle;
 
-                SwitchPaletteMode(PaletteMode.SparklePurple);
+                SwitchPaletteType(BasePaletteType.Sparkle);
             }
             else if (themeChoice.Text == "Custom")
             {
-                palette.BasePaletteMode = PaletteMode.Custom;
+                palette.BasePalette.BasePaletteType = BasePaletteType.Custom;
 
-                SwitchPaletteMode(PaletteMode.Custom);
+                SwitchPaletteType(BasePaletteType.Custom);
             }
         }
 
-        private static void SwitchPaletteMode(PaletteMode mode)
+        private static void SwitchPaletteType(BasePaletteType paletteType)
         {
-            PaletteCompisitionEngine pce = new();
+            PaletteCompositionEngine pce = new();
 
-            pce.SetPaletteMode(mode);
+            pce.SetPaletteType(paletteType);
         }
 
         public static void PropagateThemes(KryptonComboBox themeList, bool sort = true)
         {
             ArrayList themeCollection = new(15);
-
-            themeCollection.Add("Global");
 
             themeCollection.Add("Professional System");
 
@@ -815,8 +807,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             ArrayList themeCollection = new(15);
 
-            themeCollection.Add("Global");
-
             themeCollection.Add("Professional System");
 
             themeCollection.Add("Professional Office 2003");
@@ -858,23 +848,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Setters and Getters
-        /// <summary>
-        /// Sets the PaletteMode to the value of mode.
-        /// </summary>
-        /// <param name="mode">The value of mode.</param>
-        public void SetPaletteMode(PaletteMode mode)
-        {
-            PaletteMode = mode;
-        }
 
-        /// <summary>
-        /// Gets the PaletteMode value.
-        /// </summary>
-        /// <returns>The value of mode.</returns>
-        public PaletteMode GetPaletteMode()
-        {
-            return PaletteMode;
-        }
+        /// <summary>Sets the type of the palette.</summary>
+        /// <param name="paletteType">Type of the palette.</param>
+        public void SetPaletteType(BasePaletteType paletteType) => PaletteType = paletteType;
+
+        public BasePaletteType GetPaletteType() => PaletteType;
+
         #endregion
     }
 }

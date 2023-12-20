@@ -203,7 +203,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
                 }
 
                 // Set manager
-                manager.GlobalPalette = palette;
+                manager.GlobalCustomPalette = palette;
 
                 ApplyTheme(PaletteMode.Custom, manager);
             }

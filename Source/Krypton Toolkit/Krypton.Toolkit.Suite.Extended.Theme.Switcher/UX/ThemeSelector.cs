@@ -256,7 +256,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _settingsManager.SaveSettings(_settingsManager.GetAskMe());
 
-            _manager.GlobalPalette = null;
+            _manager.GlobalCustomPalette = null;
 
             _manager.GlobalPaletteMode = PaletteMode.Microsoft365Blue;
 
@@ -269,7 +269,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         {
             _palette.Import();
 
-            _manager.GlobalPalette = _palette;
+            _manager.GlobalCustomPalette = _palette;
 
             _manager.GlobalPaletteMode = PaletteMode.Custom;
 

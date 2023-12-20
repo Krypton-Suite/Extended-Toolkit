@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 _colourSettingsManager.SaveAllMergedColourSettings();
 
-                _globalStringSettingsManager.SetBasePaletteMode(palette.BasePaletteMode.ToString());
+                _globalStringSettingsManager.SetBasePaletteMode(palette.BasePaletteType.ToString());
 
                 _globalStringSettingsManager.SetFeedbackText("The import was successful.");
 
@@ -150,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 _colourSettingsManager.SaveAllMergedColourSettings();
 
-                _globalStringSettingsManager.SetBasePaletteMode(_palette.BasePaletteMode.ToString());
+                _globalStringSettingsManager.SetBasePaletteMode(_palette.BasePaletteType.ToString());
 
                 _globalStringSettingsManager.SetFeedbackText("The import was successful.");
 
@@ -237,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 ColourSettingsManagementEngine.SaveSettings(SettingTypes.Colour);
 
-                globalStringSettingsManager.SetBasePaletteMode(palette.BasePaletteMode.ToString());
+                globalStringSettingsManager.SetBasePaletteMode(palette.BasePaletteType.ToString());
 
                 globalStringSettingsManager.SetFeedbackText("The import was successful.");
 
@@ -325,7 +325,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 ColourSettingsManagementEngine.SaveSettings(SettingTypes.Colour);
 
-                globalStringSettingsManager.SetBasePaletteMode(palette.BasePaletteMode.ToString());
+                globalStringSettingsManager.SetBasePaletteMode(palette.BasePaletteType.ToString());
 
                 globalStringSettingsManager.SetFeedbackText("The import was successful.");
 

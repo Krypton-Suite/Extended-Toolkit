@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kManager
             // 
-            this.kManager.GlobalPalette = this.kPal;
+            this.kManager.GlobalCustomPalette = this.kPal;
             this.kManager.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.Custom;
             // 
             // kPal

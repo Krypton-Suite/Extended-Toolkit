@@ -9,7 +9,7 @@
 * Resolved [#446](https://github.com/Krypton-Suite/Extended-Toolkit/issues/446), Throwing exceptions using the Circularprogressbar control of The Ultimate 80.0 package during design
 * New `KryptonAboutExtendedToolkit` API
 * * Add support for .NET 9.0
-* Removed support for .NET 7.0
+* Removed support for .NET 6 and 7, in accordance with their official release cadences
 * Updated standard toolkit to build `2411`
 
 =======
