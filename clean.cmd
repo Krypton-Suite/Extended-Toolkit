@@ -124,6 +124,20 @@ echo Deleting 'Krypton.Toolkit.Suite.Extended.Wizard\obj'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Wizard\obj
 echo Deleting 'Krypton.Toolkit.Suite.Extended.Shared\obj'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Shared\obj"
+echo Deleting 'Source\Krypton Toolkit\Examples\obj'
+rd /s /q "Source\Krypton Toolkit\Examples\obj"
+echo Deleting 'Source\Krypton Toolkit\ZipExtractor\obj'
+rd /s /q "Source\Krypton Toolkit\ZipExtractor\obj"
+echo Deleting 'AutoUpdateCreator\obj'
+rd /s /q "Source\Krypton Toolkit\AutoUpdateCreator\obj"
+echo Deleting 'Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Software.Updater.Core\obj'
+rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Software.Updater.Core\obj"
+echo Deleting 'Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView\obj'
+rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView\obj"
+echo Deleting 'Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.PDF\obj'
+rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.PDF\obj"
+echo Deleting 'Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Scintilla.NET\obj'
+rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Scintilla.NET\obj"
 
 rd /s /q "Source\Bin"
 

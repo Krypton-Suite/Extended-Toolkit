@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         /// <param name="form">Reference to owning krypton form.</param>
         /// <param name="fixedStyle">Fixed style to use.</param>
-        protected ButtonSpecFormFixed(VirtualKryptonFormExtended form,
+        protected ButtonSpecFormFixed(VisualKryptonFormExtended form,
             PaletteButtonSpecStyle fixedStyle)
         {
             Debug.Assert(form != null);
@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <summary>
         /// Gets access to the owning krypton form.
         /// </summary>
-        protected VirtualKryptonFormExtended KryptonForm { get; }
+        protected VisualKryptonFormExtended KryptonForm { get; }
 
         #endregion
 

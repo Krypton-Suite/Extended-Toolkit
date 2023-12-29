@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly PaletteTripleOverride _overrideNormal;
         private readonly PaletteTripleOverride _overrideTracking;
         private readonly PaletteTripleOverride _overridePressed;
-        private IKryptonCommand _command;
+        private IKryptonCommand? _command;
         private bool _useAsDialogButton, _isDefault, _useMnemonic, _wasEnabled, _useAsUACElevationButton;
         #endregion
 
@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             // Create content storage
             Values = CreateButtonValues(NeedPaintDelegate);
-            Values.TextChanged += OnButtonTextChanged;
+            Values.TextChanged += OnButtonTextChanged!;
 
             // Create the palette storage
             StateCommon = new PaletteTripleRedirect(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
@@ -111,8 +111,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _drawButton.SourceController = _buttonController;
 
             // Need to know when user clicks the button view or mouse selects it
-            _buttonController.Click += OnButtonClick;
-            _buttonController.MouseSelect += OnButtonSelect;
+            _buttonController.Click += OnButtonClick!;
+            _buttonController.MouseSelect += OnButtonSelect!;
 
             // Create the view manager instance
             ViewManager = new ViewManager(this, _drawButton);
@@ -174,7 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             get => Values.Text;
 
-            set => Values.Text = value;
+            set => Values.Text = value!;
         }
 
         private bool ShouldSerializeText() =>
@@ -353,7 +353,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [Category(@"Behavior")]
         [Description(@"Command associated with the button.")]
         [DefaultValue(null)]
-        public virtual IKryptonCommand KryptonCommand
+        public virtual IKryptonCommand? KryptonCommand
         {
             get => _command;
 
@@ -488,7 +488,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         /// <param name="state">The state for which the image is needed.</param>
         /// <returns>Image value.</returns>
-        public Image GetImage(PaletteState state) => KryptonCommand?.ImageSmall ?? Values.GetImage(state);
+        public Image? GetImage(PaletteState state) => KryptonCommand?.ImageSmall ?? Values.GetImage(state);
 
         /// <summary>
         /// Gets the image colour that should be transparent.
@@ -572,7 +572,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         protected override void OnClick(EventArgs e)
         {
             // Find the form this button is on
-            Form owner = FindForm();
+            Form? owner = FindForm();
 
             // If we find a valid owner
             if (owner != null)
@@ -585,11 +585,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 catch (InvalidEnumArgumentException)
                 {
                     // Is it https://github.com/Krypton-Suite/Standard-Toolkit/issues/728
-                    if (owner is KryptonMessageBoxExtendedForm)
+                    if (owner is VisualMessageBoxExtendedForm)
                     {
                         // need to gain access to `dialogResult` and set it forcefully
-                        FieldInfo fi = typeof(Form).GetField("dialogResult", BindingFlags.NonPublic | BindingFlags.Instance);
-                        fi.SetValue(owner, DialogResult);
+                        FieldInfo? fi = typeof(Form).GetField("dialogResult", BindingFlags.NonPublic | BindingFlags.Instance);
+                        fi?.SetValue(owner, DialogResult);
                     }
                     else
                     {
@@ -742,7 +742,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             switch (e.PropertyName)
             {
                 case @"Enabled":
-                    Enabled = KryptonCommand.Enabled;
+                    Enabled = KryptonCommand!.Enabled;
                     break;
                 case @"Text":
                 case @"ExtraText":
@@ -787,7 +787,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             if (showUACShield)
             {
-                Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize)?.ToBitmap();
 
                 Invalidate();
             }

@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
     internal class BlurManager
     {
         #region Instance Fields
-        private readonly VirtualForm _parentForm;
+        private readonly VisualForm _parentForm;
         private readonly BlurValues _blurValues;
         private VisualBlur _visualBlur;
         private readonly Timer _detectIsActiveTimer;
@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         #region Identity
 
-        public BlurManager(VirtualForm kryptonForm, BlurValues blurValues)
+        public BlurManager(VisualForm kryptonForm, BlurValues blurValues)
         {
             _parentForm = kryptonForm;
             _blurValues = blurValues;

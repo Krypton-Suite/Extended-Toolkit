@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// Initialize a new instance of the ButtonSpecFormWindowMax class.
         /// </summary>
         /// <param name="form">Reference to owning krypton form instance.</param>
-        public ButtonSpecFormWindowMax(VirtualKryptonFormExtended form)
+        public ButtonSpecFormWindowMax(VisualKryptonFormExtended form)
             : base(form, PaletteButtonSpecStyle.FormMax)
         {
         }

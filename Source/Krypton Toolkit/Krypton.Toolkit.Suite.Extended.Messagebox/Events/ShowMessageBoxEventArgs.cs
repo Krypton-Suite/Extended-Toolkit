@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(false), Description("Allows the user to use 'CTRL + C' to copy the message box content.")]
         public bool ShowCtrlCopy { get => _showCtrlCopy; set => _showCtrlCopy = value; }
 
-        /// <summary>Gets or sets a value indicating whether this <see cref="KryptonMessageBoxManagerOld" /> is fade.</summary>
+        /// <summary>Gets or sets a value indicating whether this <see cref="VisualMessageBoxExtendedForm" /> is fade.</summary>
         /// <value><c>true</c> if fade; otherwise, <c>false</c>.</value>
         [DefaultValue(false), Description("Fades the message box in and out. (Under construction)")]
         public bool Fade { get => _fade; set => _fade = value; }
@@ -372,7 +372,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                        int? blurRadius, Color? contentMessageColour, Color? buttonOneTextColour,
                                        Color? buttonTwoTextColour, Color? buttonThreeTextColour,
                                        Color? yesButtonColour, Color? noButtonColour, Color? textColour,
-                                       Color? yesNoButtonTextColour, KryptonForm parentWindow = null)
+                                       Color? yesNoButtonTextColour, KryptonForm? parentWindow)
         {
             Owner = owner;
 
@@ -458,7 +458,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             YesNoButtonTextColour = yesNoButtonTextColour ?? Color.Empty;
 
-            ParentWindow = parentWindow ?? null;
+            ParentWindow = parentWindow ?? new KryptonForm();
         }
         #endregion
 

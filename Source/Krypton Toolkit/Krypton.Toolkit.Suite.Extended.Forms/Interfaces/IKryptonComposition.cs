@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <summary>
         /// Gets and sets the form that owns the composition.
         /// </summary>
-        VirtualForm CompOwnerForm { get; set; }
+        VisualForm CompOwnerForm { get; set; }
 
         /// <summary>
         /// Request a repaint and optional layout.

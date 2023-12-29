@@ -42,9 +42,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private KryptonFormExtended _nextWindow;
 
-        private VirtualForm _currentVirtualWindow;
+        private VisualForm _currentVirtualWindow;
 
-        private VirtualForm _nextVirtualWindow;
+        private VisualForm _nextVirtualWindow;
 
         #endregion
 
@@ -65,10 +65,10 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         public KryptonFormExtended NextWindow { get => _nextWindow; set => _nextWindow = value; }
 
         [DefaultValue(null)]
-        public VirtualForm CurrentVirtualWindow { get => _currentVirtualWindow; set => _currentVirtualWindow = value; }
+        public VisualForm CurrentVirtualWindow { get => _currentVirtualWindow; set => _currentVirtualWindow = value; }
 
         [DefaultValue(null)]
-        public VirtualForm NextVirtualWindow { get => _nextVirtualWindow; set => _nextVirtualWindow = value; }
+        public VisualForm NextVirtualWindow { get => _nextVirtualWindow; set => _nextVirtualWindow = value; }
 
         #endregion
 

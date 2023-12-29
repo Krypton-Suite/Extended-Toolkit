@@ -52,15 +52,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private Font _messageBoxTypeface;
 
-        private Image _customImageIcon;
+        private Image? _customImageIcon;
 
         private string _text, _captionText, _helpFilePath, _optionalCheckBoxText, _optionalLinkLabelText, _optionalLinkLabelDestination;
 
-        private object _parameters;
+        private object? _parameters;
 
         private HelpNavigator _helpNavigator;
 
-        private IWin32Window _owner;
+        private IWin32Window? _owner;
 
         #endregion
 
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Gets or sets the custom image icon.</summary>
         /// <value>The custom image icon.</value>
         [DefaultValue(null), Description(@"Specifies a custom message box icon. Note, you'll need to set the MessageBoxIcon to 'CUSTOM' for this to work.")]
-        public Image CustomImageIcon { get => _customImageIcon; set => _customImageIcon = value; }
+        public Image? CustomImageIcon { get => _customImageIcon; set => _customImageIcon = value; }
 
         /// <summary>Gets or sets the text.</summary>
         /// <value>The text.</value>
@@ -150,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Gets or sets the parameters.</summary>
         /// <value>The parameters.</value>
         [DefaultValue(null), Description(@"The numeric ID of the Help topic to display when the user clicks the Help button.")]
-        public object Parameters { get => _parameters; set => _parameters = value; }
+        public object? Parameters { get => _parameters; set => _parameters = value; }
 
         /// <summary>Gets or sets the help navigator.</summary>
         /// <value>The help navigator.</value>
@@ -160,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Gets or sets the owner of the modal dialog box.</summary>
         /// <value>The owner of the modal dialog box.</value>
         [DefaultValue(null), Description(@"Owner of the modal dialog box.")]
-        public IWin32Window Owner { get => _owner; set => _owner = value; }
+        public IWin32Window? Owner { get => _owner; set => _owner = value; }
 
         #endregion
 

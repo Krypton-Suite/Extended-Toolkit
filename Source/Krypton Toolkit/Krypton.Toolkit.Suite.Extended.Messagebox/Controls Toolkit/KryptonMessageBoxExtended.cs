@@ -531,9 +531,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          useOptionalCheckBoxThreeState,
                          useTimeOut, timeOut, timerResult);
 
-        public static bool ReturnCheckBoxCheckedValue() => KryptonMessageBoxExtendedForm.ReturnCheckBoxCheckedValue();
+        public static bool ReturnCheckBoxCheckedValue() => VisualMessageBoxExtendedForm.ReturnCheckBoxCheckedValue();
 
-        public static CheckState ReturnCheckBoxCheckState() => KryptonMessageBoxExtendedForm.ReturnCheckBoxCheckState();
+        public static CheckState ReturnCheckBoxCheckState() => VisualMessageBoxExtendedForm.ReturnCheckBoxCheckState();
 
         #endregion
 
@@ -610,7 +610,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
-            using KryptonMessageBoxExtendedForm kmbe = new(showOwner, text, caption, buttons,
+            using VisualMessageBoxExtendedForm kmbe = new(showOwner, text, caption, buttons,
                                                             icon, defaultButton, options,
                                                             helpInfo, showCtrlCopy,
                                                             messageBoxTypeface,

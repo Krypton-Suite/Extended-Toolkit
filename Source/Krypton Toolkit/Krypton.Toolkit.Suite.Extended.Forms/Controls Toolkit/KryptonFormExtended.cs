@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
-    public class KryptonFormExtended : VirtualKryptonFormExtended
+    public class KryptonFormExtended : VisualKryptonFormExtended
     {
         #region Instance Fields
 

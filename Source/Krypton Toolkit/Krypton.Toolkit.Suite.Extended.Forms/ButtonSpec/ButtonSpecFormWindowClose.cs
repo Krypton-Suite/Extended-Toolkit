@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// Initialize a new instance of the ButtonSpecFormWindowClose class.
         /// </summary>
         /// <param name="form">Reference to owning krypton form instance.</param>
-        public ButtonSpecFormWindowClose(VirtualKryptonFormExtended form)
+        public ButtonSpecFormWindowClose(VisualKryptonFormExtended form)
             : base(form, PaletteButtonSpecStyle.FormClose)
         {
         }

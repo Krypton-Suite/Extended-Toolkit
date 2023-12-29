@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// Initialize a new instance of the ButtonSpecFormWindowMin class.
         /// </summary>
         /// <param name="form">Reference to owning krypton form instance.</param>
-        public ButtonSpecFormWindowMin(VirtualKryptonFormExtended form)
+        public ButtonSpecFormWindowMin(VisualKryptonFormExtended form)
             : base(form, PaletteButtonSpecStyle.FormMin)
         {
         }
