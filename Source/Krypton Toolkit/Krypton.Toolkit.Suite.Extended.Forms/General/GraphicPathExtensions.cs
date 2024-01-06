@@ -1,8 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region MIT License
+/*
+ * MIT License
+ *
+ * Copyright (c) 2024 - 2024 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+#endregion
 
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
@@ -59,22 +80,30 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
 
             if (r[0] > 0f)
+            {
                 gp.AddArc(new RectangleF(point.X, point.Y, d[0], d[0]), 180, 90);
+            }
 
             gp.AddLine(new PointF(point.X + r[0], point.Y), new PointF(right - r[1], point.Y));
 
             if (r[1] > 0f)
+            {
                 gp.AddArc(new RectangleF(right - d[1], point.Y, d[1], d[1]), 270, 90);
+            }
 
             gp.AddLine(new PointF(right, point.Y + r[1]), new PointF(right, bottom - r[2]));
 
             if (r[2] > 0f)
+            {
                 gp.AddArc(new RectangleF(right - d[2], bottom - d[2], d[2], d[2]), 0, 90);
+            }
 
             gp.AddLine(new PointF(right - r[2], bottom), new PointF(point.X + r[3], bottom));
 
             if (r[3] > 0f)
+            {
                 gp.AddArc(new RectangleF(point.X, bottom - d[3], d[3], d[3]), 90, 90);
+            }
 
             gp.AddLine(new PointF(point.X, bottom - r[3]), new PointF(point.X, point.Y + r[0]));
             gp.CloseFigure();

@@ -48,21 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             var font = new Font(form.Font.FontFamily, form.Font.Size * 1.2f, form.Font.Unit);
             var proposedSize = new Size(form.Width * 6 / 10, 0);
             var size = TextRenderer.MeasureText(message, font, proposedSize, TextFormatFlags.WordBreak);
-            var panel = new TransparentPanel();
-            panel.Size = form.ClientRectangle.Size;
-            panel.Location = new Point(0, 0);
-            panel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
-            panel.Paint += (sender, e) =>
-            {
-                var g = e.Graphics;
-                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb((int)Math.Ceiling(255.0 * opacity), Color.Black)), 0, 0, panel.Width, panel.Height);
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                var rectangle = new Rectangle(0, 0, size.Width + 20, size.Height + 10);
-                rectangle.Offset(form.Width / 2 - rectangle.Width / 2, form.Height / 2 - rectangle.Height / 2);
-                g.Glow(rectangle, glowColor, 30, 10);
-                g.FillRoundRectangle(new SolidBrush(backColor), rectangle, 5);
-                TextRenderer.DrawText(g, message, font, rectangle, foreColor, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.WordBreak);
-            };
+            var panel = FormPanel(form, message, opacity, glowColor, backColor, foreColor, size, font);
             form.Controls.Add(panel);
             panel.BringToFront();
 
@@ -80,6 +66,28 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
 
             form.Refresh();
+            return panel;
+        }
+
+        private static TransparentPanel FormPanel(VisualKryptonFormExtended form, string message, double opacity,
+            Color glowColor, Color backColor, Color foreColor, Size size, Font font)
+        {
+            var panel = new TransparentPanel();
+            panel.Size = form.ClientRectangle.Size;
+            panel.Location = new Point(0, 0);
+            panel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
+            panel.Paint += (sender, e) =>
+            {
+                var g = e.Graphics;
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb((int)Math.Ceiling(255.0 * opacity), Color.Black)), 0, 0, panel.Width, panel.Height);
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                var rectangle = new Rectangle(0, 0, size.Width + 20, size.Height + 10);
+                rectangle.Offset(form.Width / 2 - rectangle.Width / 2, form.Height / 2 - rectangle.Height / 2);
+                g.Glow(rectangle, glowColor, 30, 10);
+                g.FillRoundRectangle(new SolidBrush(backColor), rectangle, 5);
+                TextRenderer.DrawText(g, message, font, rectangle, foreColor, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.WordBreak);
+            };
+
             return panel;
         }
 

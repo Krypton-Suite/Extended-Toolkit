@@ -1,8 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region MIT License
+/*
+ * MIT License
+ *
+ * Copyright (c) 2024 - 2024 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+#endregion
 
 using Timer = System.Windows.Forms.Timer;
 
@@ -56,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <param name="duration">The duration of the animation.</param>
         /// <param name="easing">The Easing object to use.</param>
         /// <param name="complete">The callback method to invoke when the animation is finished.</param>
-        public static void Animate(this Control c, object properties, int duration, Easing easing, Action complete)
+        public static void Animate(this Control c, object properties, int duration, Easing easing, Action? complete)
         {
             var t = new Timer();
             t.Interval = 30;
@@ -67,10 +88,10 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             var props = reflection.GetProperties();
             var values = new ReflectionCache[props.Length];
 
-            for (int i = 0; i < props.Length; i++)
+            for (var i = 0; i < props.Length; i++)
             {
-                values[i] = new ReflectionCache(target.GetProperty(props[i].Name));
-                values[i].SetStart(values[i].Info.GetValue(c, null));
+                values[i] = new ReflectionCache(target?.GetProperty(props[i].Name));
+                values[i].SetStart(values[i].Info?.GetValue(c, null));
                 values[i].SetEnd(props[i].GetValue(properties, null));
             }
 
@@ -78,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             {
                 frame++;
 
-                for (int i = 0; i < values.Length; i++)
+                for (var i = 0; i < values.Length; i++)
                 {
                     values[i].Execute(c, easing, frame, maxframes);
                 }
@@ -112,8 +133,10 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 {
                     SubList = new ReflectionCache[subprops.Length];
 
-                    for (int i = 0; i < subprops.Length; i++)
+                    for (var i = 0; i < subprops.Length; i++)
+                    {
                         SubList[i] = new ReflectionCache(subprops[i]);
+                    }
                 }
             }
 
@@ -121,11 +144,11 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
             public double End { get; private set; }
 
-            public bool HasItems { get { return SubList != null; } }
+            public bool HasItems { get => SubList != null; }
 
-            public Type ListType { get; private set; }
+            public Type? ListType { get; private set; }
 
-            public ReflectionCache[] SubList { get; private set; }
+            public ReflectionCache[]? SubList { get; private set; }
 
             public PropertyInfo? Info { get; private set; }
 
@@ -135,31 +158,32 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             {
                 if (HasItems)
                 {
-                    var cp = Activator.CreateInstance(ListType);
+                    var cp = Activator.CreateInstance(ListType!);
 
-                    foreach (var item in SubList)
+                    foreach (var item in SubList!)
                     {
                         item.Execute(cp, easing, frame, frames);
                     }
 
-                    Info.SetValue(c, cp, null);
+                    Info?.SetValue(c, cp, null);
                 }
                 else
                 {
                     var value = easing.CalculateStep(frame, frames, Start, End);
-                    this.SetValue(c, value);
+                    
+                    SetValue(c, value);
                 }
             }
 
-            public ReflectionCache SetStart(object value)
+            public ReflectionCache SetStart(object? value)
             {
                 if (HasItems)
                 {
-                    ListType = value.GetType();
+                    ListType = value?.GetType();
 
-                    foreach (var item in SubList)
+                    foreach (var item in SubList!)
                     {
-                        item.SetStart(item.Info.GetValue(value, null));
+                        item.SetStart(item.Info?.GetValue(value, null));
                     }
                 }
                 else
@@ -170,35 +194,35 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                     {
                         SetValue = (c, v) =>
                         {
-                            Info.SetValue(c, Convert.ToInt32(v), null);
+                            Info?.SetValue(c, Convert.ToInt32(v), null);
                         };
                     }
                     else if (value is long)
                     {
                         SetValue = (c, v) =>
                         {
-                            Info.SetValue(c, Convert.ToInt64(v), null);
+                            Info?.SetValue(c, Convert.ToInt64(v), null);
                         };
                     }
                     else if (value is float)
                     {
                         SetValue = (c, v) =>
                         {
-                            Info.SetValue(c, Convert.ToSingle(v), null);
+                            Info?.SetValue(c, Convert.ToSingle(v), null);
                         };
                     }
                     else if (value is decimal)
                     {
                         SetValue = (c, v) =>
                         {
-                            Info.SetValue(c, Convert.ToDecimal(v), null);
+                            Info?.SetValue(c, Convert.ToDecimal(v), null);
                         };
                     }
                     else
                     {
                         SetValue = (c, v) =>
                         {
-                            Info.SetValue(c, v, null);
+                            Info?.SetValue(c, v, null);
                         };
                     }
                 }
@@ -206,13 +230,13 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 return this;
             }
 
-            public ReflectionCache SetEnd(object value)
+            public ReflectionCache SetEnd(object? value)
             {
                 if (HasItems)
                 {
-                    foreach (var item in SubList)
+                    foreach (var item in SubList!)
                     {
-                        item.SetEnd(item.Info.GetValue(value, null));
+                        item.SetEnd(item.Info?.GetValue(value, null));
                     }
                 }
                 else
@@ -247,7 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 control.Parent.Paint += (s, e) =>
                 {
                     e.Graphics.DrawShadow(new Rectangle(control.Location, control.Size), color, dx, dy, blur);
-                }; ;
+                }; 
             }
         }
 
