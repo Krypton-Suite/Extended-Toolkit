@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,10 +30,10 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
     /// <summary>
     /// Base class that allows a form to have custom chrome applied. You should derive 
     /// a class from this that performs the specific chrome drawing that is required.
-    /// Taken from <see cref="VisualForm"/>
+    /// Taken from <see cref="Toolkit.VisualForm"/>
     /// </summary>
     [ToolboxItem(false)]
-    public abstract class VirtualForm : Form, IKryptonDebug
+    public abstract class VisualForm : Form, IKryptonDebug
     {
         #region Static Fields
 
@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         #endregion
 
         #region Identity
-        static VirtualForm()
+        static VisualForm()
         {
             try
             {
@@ -115,7 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <summary>
         /// Initialize a new instance of the KryptonVirtualForm class. 
         /// </summary>
-        public VirtualForm()
+        public VisualForm()
         {
             // Automatically redraw whenever the size of the window changes
             SetStyle(ControlStyles.ResizeRedraw, true);

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,13 +27,15 @@
 
 // ReSharper disable NotAccessedField.Local
 
+using Resources = Krypton.Toolkit.Suite.Extended.Messagebox.Properties.Resources;
+
 using ContentAlignment = System.Drawing.ContentAlignment;
 using Timer = System.Threading.Timer;
 
 #pragma warning disable IDE0031
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    internal partial class KryptonMessageBoxExtendedForm : KryptonForm
+    internal partial class VisualMessageBoxExtendedForm : KryptonForm
     {
         #region Static Fields
 
@@ -47,6 +49,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         #region Instance Fields
 
+        private readonly bool _showCloseButton;
+
         private readonly string _text;
         private readonly string _caption;
 
@@ -56,6 +60,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private static /*readonly*/ IWin32Window? _showOwner;
         private readonly HelpInfo? _helpInfo;
         private readonly ContentAlignment _messageTextAlignment;
+
+        private readonly Image? _applicationImage;
+
+        private readonly KryptonMessageBoxExtendedData _messageBoxExtendedData;
 
         #endregion
 
@@ -133,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         #region Identity
 
-        static KryptonMessageBoxExtendedForm()
+        static VisualMessageBoxExtendedForm()
         {
             OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
 
@@ -142,13 +150,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _hHook = IntPtr.Zero;
         }
 
-        public KryptonMessageBoxExtendedForm()
+        public VisualMessageBoxExtendedForm()
         {
             InitializeComponent();
         }
 
-
-        internal KryptonMessageBoxExtendedForm(IWin32Window? showOwner, string text, string caption,
+        internal VisualMessageBoxExtendedForm(IWin32Window? showOwner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedKryptonMessageBoxIcon icon,
                                                KryptonMessageBoxDefaultButton defaultButton,
@@ -270,9 +277,76 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
         }
 
+        public VisualMessageBoxExtendedForm(KryptonMessageBoxExtendedData messageBoxExtendedData)
+        {
+            _messageBoxExtendedData = messageBoxExtendedData;
+
+            // Create the form contents
+            InitializeComponent();
+
+            RightToLeftLayout = _messageBoxExtendedData.Options.HasFlag(MessageBoxOptions.RtlReading);
+
+            // Update contents to match requirements
+            UpdateText(_messageBoxExtendedData.Caption, messageBoxExtendedData.MessageText, _messageBoxExtendedData.Options, _messageBoxExtendedData.MessageContentAreaType);
+            UpdateIcon(_messageBoxExtendedData.Icon);
+            UpdateButtons(_messageBoxExtendedData.Buttons);
+            UpdateDefault(_messageBoxExtendedData.DefaultButton);
+            UpdateHelp(_messageBoxExtendedData.ShowHelpButton);
+            UpdateTextExtra(_messageBoxExtendedData.ShowCtrlCopy);
+
+            UpdateContentAreaType(_messageBoxExtendedData.MessageContentAreaType, _messageBoxExtendedData.MessageTextAlignment, _messageBoxExtendedData.RichTextBoxTextAlignment);
+
+            UpdateContentLinkArea(_messageBoxExtendedData.ContentLinkArea);
+
+            SetupOptionalCheckBox();
+
+            // Finally calculate and set form sizing
+            UpdateSizing(_messageBoxExtendedData.Owner);
+        }
+
         #endregion Identity
 
         #region Implementation
+
+        private void UpdateText(string caption, string? text, MessageBoxOptions options, ExtendedKryptonMessageBoxMessageContainerType? contentAreaType)
+        {
+            // Set the text of the form
+            Text = string.IsNullOrEmpty(caption) ? string.Empty : caption.Split(Environment.NewLine.ToCharArray())[0];
+
+            switch (contentAreaType)
+            {
+                case ExtendedKryptonMessageBoxMessageContainerType.Normal:
+                    kwlblMessageText.Text = text;
+
+                    kwlblMessageText.RightToLeft = options.HasFlag(MessageBoxOptions.RightAlign) ? RightToLeft.Yes :
+                        options.HasFlag(MessageBoxOptions.RtlReading) ? RightToLeft.Inherit : RightToLeft.No;
+                    break;
+                case ExtendedKryptonMessageBoxMessageContainerType.HyperLink:
+                    klwlblMessageText.Text = text;
+
+                    klwlblMessageText.RightToLeft = options.HasFlag(MessageBoxOptions.RightAlign)
+                        ?
+                        RightToLeft.Yes
+                        : options.HasFlag(MessageBoxOptions.RtlReading)
+                            ? RightToLeft.Inherit
+                            : RightToLeft.No;
+                    break;
+                case ExtendedKryptonMessageBoxMessageContainerType.RichTextBox:
+                    krtbMessageText.Text = text;
+
+                    krtbMessageText.RightToLeft = options.HasFlag(MessageBoxOptions.RightAlign) ? RightToLeft.Yes :
+                        options.HasFlag(MessageBoxOptions.RtlReading) ? RightToLeft.Inherit : RightToLeft.No;
+                    break;
+                case null:
+                    kwlblMessageText.Text = text;
+
+                    kwlblMessageText.RightToLeft = options.HasFlag(MessageBoxOptions.RightAlign) ? RightToLeft.Yes :
+                        options.HasFlag(MessageBoxOptions.RtlReading) ? RightToLeft.Inherit : RightToLeft.No;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(contentAreaType), contentAreaType, null);
+            }
+        }
 
         private void UpdateText()
         {
@@ -365,6 +439,204 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
         }
 
+        private void UpdateIcon(ExtendedKryptonMessageBoxIcon icon)
+        {
+            if (OSUtilities.IsWindowsEleven)
+            {
+                switch (icon)
+                {
+                    case ExtendedKryptonMessageBoxIcon.None:
+                        // Windows XP and before will Beep, Vista and above do not!
+                        if (OS_MAJOR_VERSION < 6)
+                        {
+                            SystemSounds.Beep.Play();
+                        }
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Hand:
+                        _messageIcon.Image = Resources.Hand;
+                        SystemSounds.Hand.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Question:
+                        _messageIcon.Image = Resources.Question_Windows_11;
+                        SystemSounds.Question.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Exclamation:
+                        _messageIcon.Image = Resources.Warning_Windows_11;
+                        SystemSounds.Exclamation.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Asterisk:
+                        _messageIcon.Image = Resources.Asterisk_Windows_11;
+                        SystemSounds.Asterisk.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Stop:
+                        _messageIcon.Image = Resources.Stop;
+                        SystemSounds.Asterisk.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Error:
+                        _messageIcon.Image = Resources.Critical_Windows_11;
+                        SystemSounds.Asterisk.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Warning:
+                        _messageIcon.Image = Resources.Warning_Windows_11;
+                        SystemSounds.Exclamation.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Information:
+                        _messageIcon.Image = Resources.Information_Windows_11;
+                        SystemSounds.Asterisk.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Shield:
+                        _messageIcon.Image = Resources.UAC_Shield_Windows_11;
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.WindowsLogo:
+                        _messageIcon.Image = Resources.Windows11;
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Application:
+                        if (_applicationImage != null)
+                        {
+                            _messageIcon.Image = _applicationImage;
+                        }
+                        else if (!string.IsNullOrEmpty(_applicationPath))
+                        {
+                            Image? sourceImage = GraphicsExtensions.ExtractIconFromFilePath(_applicationPath)?.ToBitmap();
+                            Image? scaledImage = GraphicsExtensions.ScaleImage(sourceImage, new Size(32, 32));
+
+                            _messageIcon.Image = scaledImage;
+                        }
+                        else
+                        {
+                            // Fall back to defaults
+                            _messageIcon.Image = SystemIcons.Application.ToBitmap();
+                        }
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.SystemApplication:
+                        _messageIcon.Image = SystemIcons.Application.ToBitmap();
+                        break;
+                }
+            }
+            else
+            {
+                switch (icon)
+                {
+                    case ExtendedKryptonMessageBoxIcon.None:
+                        // Windows XP and before will Beep, Vista and above do not!
+                        if (OS_MAJOR_VERSION < 6)
+                        {
+                            SystemSounds.Beep.Play();
+                        }
+
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Hand:
+                        _messageIcon.Image = Resources.Hand;
+                        SystemSounds.Hand.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.SystemHand:
+                        _messageIcon.Image = SystemIcons.Hand.ToBitmap();
+                        SystemSounds.Hand.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Question:
+                        _messageIcon.Image = Resources.Question;
+                        SystemSounds.Question.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.SystemQuestion:
+                        _messageIcon.Image = SystemIcons.Question.ToBitmap();
+                        SystemSounds.Question.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Exclamation:
+                        _messageIcon.Image = Resources.Warning;
+                        SystemSounds.Exclamation.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.SystemExclamation:
+                        _messageIcon.Image = SystemIcons.Warning.ToBitmap();
+                        SystemSounds.Exclamation.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Asterisk:
+                        _messageIcon.Image = OSUtilities.IsWindowsEleven
+                            ? Resources.Asterisk_Windows_11
+                            : Resources.Asterisk;
+                        SystemSounds.Asterisk.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.SystemAsterisk:
+                        _messageIcon.Image = SystemIcons.Asterisk.ToBitmap();
+                        SystemSounds.Asterisk.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Stop:
+                        _messageIcon.Image = Resources.Stop;
+                        SystemSounds.Asterisk.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Error:
+                        _messageIcon.Image = Resources.Critical;
+                        SystemSounds.Asterisk.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Warning:
+                        _messageIcon.Image = Resources.Warning;
+                        SystemSounds.Exclamation.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Information:
+                        _messageIcon.Image = Resources.Information;
+                        SystemSounds.Asterisk.Play();
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Shield:
+                        if (OSUtilities.IsWindowsEleven)
+                        {
+                            _messageIcon.Image = Resources.UAC_Shield_Windows_11;
+                        }
+                        else if (OSUtilities.IsWindowsTen)
+                        {
+                            _messageIcon.Image = Resources.UAC_Shield_Windows_10;
+                        }
+                        else
+                        {
+                            _messageIcon.Image = Resources.UAC_Shield_Windows_7;
+                        }
+
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.WindowsLogo:
+                        // Because Windows 11 displays a  application icon,
+                        // we need to rely on a image instead
+                        if (OSUtilities.IsWindowsEleven)
+                        {
+                            _messageIcon.Image = Resources.Windows11;
+                        }
+                        // Windows 10
+                        else if (OSUtilities.IsWindowsTen)
+                        {
+                            _messageIcon.Image = Resources.Windows_8_and_10_Logo;
+                        }
+                        else
+                        {
+                            _messageIcon.Image = SystemIcons.WinLogo.ToBitmap();
+                        }
+
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.Application:
+                        if (_applicationImage != null)
+                        {
+                            _messageIcon.Image = _applicationImage;
+                        }
+                        else if (!string.IsNullOrEmpty(_applicationPath))
+                        {
+                            Image? sourceImage = GraphicsExtensions.ExtractIconFromFilePath(_applicationPath)
+                                ?.ToBitmap();
+                            Image? scaledImage = GraphicsExtensions.ScaleImage(sourceImage, new Size(32, 32));
+
+                            _messageIcon.Image = scaledImage;
+                        }
+                        else
+                        {
+                            // Fall back to defaults
+                            _messageIcon.Image = SystemIcons.Application.ToBitmap();
+                        }
+
+                        break;
+                    case ExtendedKryptonMessageBoxIcon.SystemApplication:
+                        _messageIcon.Image = SystemIcons.Application.ToBitmap();
+                        break;
+                }
+            }
+
+            _messageIcon.Visible = (_kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None);
+        }
+
         private void UpdateIcon()
         {
             switch (_kryptonMessageBoxIcon)
@@ -387,7 +659,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     }
                     break;
                 case ExtendedKryptonMessageBoxIcon.Hand:
-                    _messageIcon.Image = Properties.Resources.Hand;
+                    _messageIcon.Image = Resources.Hand;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.SystemHand:
@@ -395,7 +667,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Question:
-                    _messageIcon.Image = Properties.Resources.Question;
+                    _messageIcon.Image = Resources.Question;
                     SystemSounds.Question.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.SystemQuestion:
@@ -403,7 +675,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     SystemSounds.Question.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Exclamation:
-                    _messageIcon.Image = Properties.Resources.Warning;
+                    _messageIcon.Image = Resources.Warning;
                     SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.SystemExclamation:
@@ -411,7 +683,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Asterisk:
-                    _messageIcon.Image = Properties.Resources.Asterisk;
+                    _messageIcon.Image = Resources.Asterisk;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.SystemAsterisk:
@@ -419,34 +691,34 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Stop:
-                    _messageIcon.Image = Properties.Resources.Stop;
+                    _messageIcon.Image = Resources.Stop;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Error:
-                    _messageIcon.Image = Properties.Resources.Critical;
+                    _messageIcon.Image = Resources.Critical;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Warning:
-                    _messageIcon.Image = Properties.Resources.Warning;
+                    _messageIcon.Image = Resources.Warning;
                     SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Information:
-                    _messageIcon.Image = Properties.Resources.Information;
+                    _messageIcon.Image = Resources.Information;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Shield:
                     if (OSUtilities.IsWindowsEleven)
                     {
-                        _messageIcon.Image = Properties.Resources.UAC_Shield_Windows_11;
+                        _messageIcon.Image = Resources.UAC_Shield_Windows_11;
                     }
                     // Windows 10
                     else if (OSUtilities.IsWindowsTen)
                     {
-                        _messageIcon.Image = Properties.Resources.UAC_Shield_Windows_10;
+                        _messageIcon.Image = Resources.UAC_Shield_Windows_10;
                     }
                     else
                     {
-                        _messageIcon.Image = Properties.Resources.UAC_Shield_Windows_7;
+                        _messageIcon.Image = Resources.UAC_Shield_Windows_7;
                     }
                     break;
                 case ExtendedKryptonMessageBoxIcon.WindowsLogo:
@@ -454,12 +726,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     // we need to rely on a image instead
                     if (OSUtilities.IsWindowsEleven)
                     {
-                        _messageIcon.Image = Properties.Resources.Windows11;
+                        _messageIcon.Image = Resources.Windows11;
                     }
                     // Windows 10, 8.1 & 8
                     else if (OSUtilities.IsWindowsTen || OSUtilities.IsWindowsEightPointOne || OSUtilities.IsWindowsEight)
                     {
-                        _messageIcon.Image = Properties.Resources.Windows_8_and_10_Logo;
+                        _messageIcon.Image = Resources.Windows_8_and_10_Logo;
                     }
                     else
                     {
@@ -469,8 +741,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 case ExtendedKryptonMessageBoxIcon.Application:
                     if (!string.IsNullOrEmpty(_applicationPath))
                     {
-                        Image tempImage = GraphicsExtensions.ExtractIconFromFilePath(_applicationPath).ToBitmap();
-                        Bitmap scaledImage = GraphicsExtensions.ScaleImage(tempImage, new Size(32, 32));
+                        Image tempImage = GraphicsExtensions.ExtractIconFromFilePath(_applicationPath)?.ToBitmap()!;
+                        Bitmap? scaledImage = GraphicsExtensions.ScaleImage(tempImage, new Size(32, 32));
 
                         _messageIcon.Image = scaledImage;
                     }
@@ -486,6 +758,116 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             _messageIcon.Visible = (_kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None);
 
+        }
+
+        private void UpdateButtons(ExtendedMessageBoxButtons buttons)
+        {
+            switch (buttons)
+            {
+                case ExtendedMessageBoxButtons.OK:
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.OK;
+                    _button1.DialogResult = DialogResult.OK;
+                    _button1.Visible = true;
+                    _button1.Enabled = true;
+                    break;
+                case ExtendedMessageBoxButtons.OKCancel:
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.OK;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Cancel;
+                    _button1.DialogResult = DialogResult.OK;
+                    _button2.DialogResult = DialogResult.Cancel;
+                    _button1.Visible = true;
+                    _button1.Enabled = true;
+                    _button2.Visible = true;
+                    _button2.Enabled = true;
+                    break;
+                case ExtendedMessageBoxButtons.YesNo:
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Yes;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.No;
+                    _button1.DialogResult = DialogResult.Yes;
+                    _button2.DialogResult = DialogResult.No;
+                    _button1.Visible = true;
+                    _button1.Enabled = true;
+                    _button2.Visible = true;
+                    _button2.Enabled = true;
+                    ControlBox = false;
+                    break;
+                case ExtendedMessageBoxButtons.YesNoCancel:
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Yes;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.No;
+                    _button3.Text = KryptonManager.Strings.GeneralStrings.Cancel;
+                    _button1.DialogResult = DialogResult.Yes;
+                    _button2.DialogResult = DialogResult.No;
+                    _button3.DialogResult = DialogResult.Cancel;
+                    _button1.Visible = true;
+                    _button1.Enabled = true;
+                    _button2.Visible = true;
+                    _button2.Enabled = true;
+                    _button3.Visible = true;
+                    _button3.Enabled = true;
+                    break;
+                case ExtendedMessageBoxButtons.RetryCancel:
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Retry;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Cancel;
+                    _button1.DialogResult = DialogResult.Retry;
+                    _button2.DialogResult = DialogResult.Cancel;
+                    _button1.Visible = true;
+                    _button1.Enabled = true;
+                    _button2.Visible = true;
+                    _button2.Enabled = true;
+                    break;
+                case ExtendedMessageBoxButtons.AbortRetryIgnore:
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Abort;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Retry;
+                    _button3.Text = KryptonManager.Strings.GeneralStrings.Ignore;
+                    _button1.DialogResult = DialogResult.Abort;
+                    _button2.DialogResult = DialogResult.Retry;
+                    _button3.DialogResult = DialogResult.Ignore;
+                    _button1.Visible = true;
+                    _button1.Enabled = true;
+                    _button2.Visible = true;
+                    _button2.Enabled = true;
+                    _button3.Visible = true;
+                    _button3.Enabled = true;
+                    ControlBox = false;
+                    break;
+                case ExtendedMessageBoxButtons.CancelTryContinue:
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Cancel;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.TryAgain;
+                    _button3.Text = KryptonManager.Strings.GeneralStrings.Continue;
+                    _button1.DialogResult = DialogResult.Cancel;
+#if NET6_0_OR_GREATER
+                    _button2.DialogResult = DialogResult.TryAgain;
+                    _button3.DialogResult = DialogResult.Continue;
+#else
+                    _button2.DialogResult = (DialogResult)10;
+                    _button3.DialogResult = (DialogResult)11;
+#endif
+                    _button1.Visible = true;
+                    _button1.Enabled = true;
+                    _button2.Visible = true;
+                    _button2.Enabled = true;
+                    _button3.Visible = true;
+                    _button3.Enabled = true;
+                    break;
+            }
+
+            if (_messageBoxExtendedData.ShowActionButton != null)
+            {
+                //_button5.Text = _actionButtonText;
+                //_button5.Visible = true;
+                //_button5.Enabled = true;
+                //_button5.KryptonCommand = _actionButtonCommand;
+            }
+
+            // Do we ignore the Alt+F4 on the buttons?
+            if (!ControlBox)
+            {
+                _button1.IgnoreAltF4 = true;
+                _button2.IgnoreAltF4 = true;
+                _button3.IgnoreAltF4 = true;
+                _button4.IgnoreAltF4 = true;
+                //_button5.IgnoreAltF4 = true;
+            }
         }
 
         private void UpdateButtons()
@@ -605,6 +987,37 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
         }
 
+        private void UpdateDefault(KryptonMessageBoxDefaultButton? defaultButton)
+        {
+            switch (defaultButton)
+            {
+                case KryptonMessageBoxDefaultButton.Button1:
+                    //_button1.Select();
+                    AcceptButton = _button1;
+                    break;
+                case KryptonMessageBoxDefaultButton.Button2:
+                    //_button2.Select();
+                    AcceptButton = _button2;
+                    break;
+                case KryptonMessageBoxDefaultButton.Button3:
+                    //_button3.Select();
+                    AcceptButton = _button3;
+                    break;
+                case KryptonMessageBoxDefaultButton.Button4:
+                    AcceptButton = _showHelpButton ? _button4 : _button1;
+                    break;
+                //case KryptonMessageBoxDefaultButton.Button5:
+                //    AcceptButton = _showActionButton ? _button5 : _button1;
+                //    break;
+                case null:
+                    AcceptButton = _button1;
+                    break;
+                default:
+                    AcceptButton = _showHelpButton ? _button4 : _button1;
+                    break;
+            }
+        }
+
         private void UpdateDefault()
         {
             switch (_defaultButton)
@@ -621,6 +1034,72 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 case KryptonMessageBoxDefaultButton.Button4:
                     _button4.Focus();
                     break;
+            }
+        }
+
+        private void UpdateHelp(bool? showHelpButton)
+        {
+            if (showHelpButton != null)
+            {
+                return;
+            }
+
+            MessageButton helpButton = _buttons switch
+            {
+                ExtendedMessageBoxButtons.OK => _button2,
+                ExtendedMessageBoxButtons.OKCancel or ExtendedMessageBoxButtons.YesNo or ExtendedMessageBoxButtons.RetryCancel => _button3,
+                ExtendedMessageBoxButtons.AbortRetryIgnore or ExtendedMessageBoxButtons.YesNoCancel => _button4,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            if (helpButton != null)
+            {
+                helpButton.Visible = true;
+                helpButton.Enabled = true;
+                helpButton.Text = KryptonManager.Strings.GeneralStrings.Help;
+
+                helpButton.KeyPress += (_, _) => LaunchHelp(_messageBoxExtendedData.Owner);
+
+                helpButton.Click += (_, _) => LaunchHelp(_messageBoxExtendedData.Owner);
+            }
+        }
+
+        /// <summary>
+        /// When the user clicks the Help button, the Help file specified in the helpFilePath parameter
+        /// is opened and the Help keyword topic identified by the keyword parameter is Displayed.
+        /// The form that owns the message box (or the active form) also receives the HelpRequested event.
+        /// </summary>
+        private void LaunchHelp(IWin32Window? owner)
+        {
+            try
+            {
+                if (owner != null)
+                {
+                    Control? control = FromHandle(owner.Handle);
+
+                    var mInfoMethod = control!.GetType().GetMethod(nameof(OnHelpRequested), BindingFlags.Instance | BindingFlags.NonPublic,
+                        Type.DefaultBinder, new[] { typeof(HelpEventArgs) }, null)!;
+                    mInfoMethod.Invoke(control, new object[] { new HelpEventArgs(MousePosition) });
+                    if (_helpInfo != null)
+                    {
+                        if (string.IsNullOrWhiteSpace(_helpInfo.HelpFilePath))
+                        {
+                            return;
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(_helpInfo.Keyword))
+                        {
+                            Help.ShowHelp(control, _helpInfo.HelpFilePath, _helpInfo.Keyword);
+                        }
+                        else
+                        {
+                            Help.ShowHelp(control, _helpInfo.HelpFilePath, _helpInfo.Navigator, _helpInfo.Param);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                // Do nothing if failure to send to Parent
             }
         }
 
@@ -657,10 +1136,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             try
             {
-                Control control = FromHandle(_showOwner.Handle);
+                Control? control = FromHandle(_showOwner!.Handle);
 
-                MethodInfo mInfoMethod = control.GetType().GetMethod(@"OnHelpRequested", BindingFlags.Instance | BindingFlags.NonPublic,
-                    Type.DefaultBinder, new[] { typeof(HelpEventArgs) }, null);
+                MethodInfo? mInfoMethod = control!.GetType().GetMethod(@"OnHelpRequested", BindingFlags.Instance | BindingFlags.NonPublic,
+                    Type.DefaultBinder, new[] { typeof(HelpEventArgs) }, null)!;
                 if (mInfoMethod != null)
                 {
                     mInfoMethod.Invoke(control, new object[] { new HelpEventArgs(MousePosition) });
@@ -673,7 +1152,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     }
                 }
 
-                if (!string.IsNullOrWhiteSpace(_helpInfo.Keyword))
+                if (!string.IsNullOrWhiteSpace(_helpInfo!.Keyword))
                 {
                     Help.ShowHelp(control, _helpInfo.HelpFilePath, _helpInfo.Keyword);
                 }
@@ -706,8 +1185,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             using (Graphics g = CreateGraphics())
             {
                 // Find size of the label, with a max of 2/3 screen width
-                Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
-                SizeF scaledMonitorSize = screen.Bounds.Size;
+                Screen? screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
+                SizeF scaledMonitorSize = screen!.Bounds.Size;
                 scaledMonitorSize.Width *= 2 / 3.0f;
                 scaledMonitorSize.Height *= 0.95f;
 
@@ -863,7 +1342,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             {
                 if (_openInExplorer)
                 {
-                    OpenInExplorer(e.Link.LinkData.ToString());
+                    OpenInExplorer(e!.Link.LinkData.ToString());
                 }
                 else
                 {
@@ -985,7 +1464,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             int height = recChild.Height - recChild.Y;
 
             Rectangle recParent = new Rectangle(0, 0, 0, 0);
-            success = PlatformEvents.GetWindowRect(_showOwner.Handle, ref recParent);
+            success = PlatformEvents.GetWindowRect(_showOwner!.Handle, ref recParent);
 
             Point ptCenter = new Point(0, 0);
             ptCenter.X = recParent.X + ((recParent.Width - recParent.X) / 2);
@@ -1029,19 +1508,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         internal static bool ReturnCheckBoxCheckedValue()
         {
-            KryptonMessageBoxExtendedForm messageBoxExtendedForm = new KryptonMessageBoxExtendedForm();
+            VisualMessageBoxExtendedForm messageBoxExtendedForm = new VisualMessageBoxExtendedForm();
 
             return messageBoxExtendedForm._optionalCheckBoxChecked;
         }
 
         internal static CheckState ReturnCheckBoxCheckState()
         {
-            KryptonMessageBoxExtendedForm messageBoxExtendedForm = new KryptonMessageBoxExtendedForm();
+            VisualMessageBoxExtendedForm messageBoxExtendedForm = new VisualMessageBoxExtendedForm();
 
             return messageBoxExtendedForm.kcbOptionalCheckBox.CheckState;
         }
 
         private void OptionalCheckBox_CheckedChanged(object sender, EventArgs e) => _optionalCheckBoxChecked = kcbOptionalCheckBox.Checked;
+
+        private void UpdateCloseButtonVisibility(bool? visible) => CloseBox = visible ?? true;
 
         #endregion
 

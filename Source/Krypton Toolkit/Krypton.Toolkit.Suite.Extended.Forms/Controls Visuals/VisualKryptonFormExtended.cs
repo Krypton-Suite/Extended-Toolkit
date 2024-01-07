@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
     //[ToolboxBitmap(typeof(KryptonFormExtended), "ToolboxBitmaps.KryptonForm.bmp")]
     //[Description(@"Draws the window chrome using a Krypton palette.")]
     //[Designer("Krypton.Toolkit.Suite.Extended.Forms.KryptonFormExtendedDesigner, Krypton.Toolkit")]
-    public abstract class VirtualKryptonFormExtended : VirtualForm, IContentValues
+    public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
     {
         #region Type Definitions
         /// <summary>
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             /// Initialize a new instance of the FormButtonSpecCollection class.
             /// </summary>
             /// <param name="owner">Reference to owning object.</param>
-            public FormButtonSpecCollection(VirtualKryptonFormExtended owner)
+            public FormButtonSpecCollection(VisualKryptonFormExtended owner)
                 : base(owner)
             {
             }
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             /// Initialize a new instance of the FormFixedButtonSpecCollection class.
             /// </summary>
             /// <param name="owner">Reference to owning object.</param>
-            public FormFixedButtonSpecCollection(VirtualKryptonFormExtended owner)
+            public FormFixedButtonSpecCollection(VisualKryptonFormExtended owner)
                 : base(owner)
             {
             }
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <summary>
         /// Initialize a new instance of the KryptonFormExtended class.
         /// </summary>
-        public VirtualKryptonFormExtended()
+        public VisualKryptonFormExtended()
         {
             // Default properties
             _headerStyle = HeaderStyle.Form;
@@ -848,9 +848,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         internal class FormPaletteRedirect : PaletteRedirect
         {
-            private readonly VirtualKryptonFormExtended _kryptonForm;
+            private readonly VisualKryptonFormExtended _kryptonForm;
 
-            public FormPaletteRedirect(PaletteBase? palette, VirtualKryptonFormExtended kryptonForm)
+            public FormPaletteRedirect(PaletteBase? palette, VisualKryptonFormExtended kryptonForm)
                 : base(palette) =>
                 _kryptonForm = kryptonForm;
 
