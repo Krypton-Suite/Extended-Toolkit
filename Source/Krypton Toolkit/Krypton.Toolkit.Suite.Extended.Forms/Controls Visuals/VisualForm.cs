@@ -546,7 +546,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Padding RealWindowBorders => CommonHelper.GetWindowBorders(CreateParams, this as KryptonFormExtended);
+        public Padding RealWindowBorders => CommonHelperExtended.GetWindowBorders(CreateParams, this as KryptonFormExtended);
 
         /// <summary>
         /// Gets a count of the number of paints that have occurred.

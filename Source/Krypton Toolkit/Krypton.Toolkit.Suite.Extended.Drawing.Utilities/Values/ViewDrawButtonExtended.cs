@@ -392,17 +392,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         #endregion
 
-        #region DrawButtonComposition
-        /// <summary>
-        /// Gets and sets the composition usage of the button.
-        /// </summary>
-        public bool DrawButtonComposition
-        {
-            get => _drawCanvas.DrawCanvasOnComposition;
-            set => _drawCanvas.DrawCanvasOnComposition = value;
-        }
-        #endregion
-
         #region TestForFocusCues
         /// <summary>
         /// Gets and sets the use of focus cues for deciding if focus rects are allowed.

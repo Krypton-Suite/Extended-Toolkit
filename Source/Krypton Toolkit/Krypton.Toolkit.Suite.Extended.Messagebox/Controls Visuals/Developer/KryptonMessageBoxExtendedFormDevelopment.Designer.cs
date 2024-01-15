@@ -171,7 +171,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // 
             this._button4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._button4.AutoSize = true;
-            this._button4.CornerRoundingRadius = -1F;
             this._button4.Enabled = false;
             this._button4.IgnoreAltF4 = false;
             this._button4.Location = new System.Drawing.Point(367, 13);
@@ -187,7 +186,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // 
             this._button3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._button3.AutoSize = true;
-            this._button3.CornerRoundingRadius = -1F;
             this._button3.Enabled = false;
             this._button3.IgnoreAltF4 = false;
             this._button3.Location = new System.Drawing.Point(309, 13);
@@ -203,7 +201,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // 
             this._button2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._button2.AutoSize = true;
-            this._button2.CornerRoundingRadius = -1F;
             this._button2.Enabled = false;
             this._button2.IgnoreAltF4 = false;
             this._button2.Location = new System.Drawing.Point(251, 13);
@@ -219,7 +216,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // 
             this._button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._button1.AutoSize = true;
-            this._button1.CornerRoundingRadius = -1F;
             this._button1.Enabled = false;
             this._button1.IgnoreAltF4 = false;
             this._button1.Location = new System.Drawing.Point(193, 13);
@@ -235,7 +231,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // 
             this._button5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this._button5.AutoSize = true;
-            this._button5.CornerRoundingRadius = -1F;
             this._button5.Enabled = false;
             this._button5.IgnoreAltF4 = false;
             this._button5.Location = new System.Drawing.Point(10, 13);

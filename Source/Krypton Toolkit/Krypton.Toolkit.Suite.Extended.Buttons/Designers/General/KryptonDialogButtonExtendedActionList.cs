@@ -201,7 +201,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         /// <summary>Gets or sets the font.</summary>
         /// <value>The font.</value>
-        public Font StateCommonLongTextFont
+        public Font? StateCommonLongTextFont
         {
             get => _button.StateCommon.Content.LongText.Font;
 
@@ -218,7 +218,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         /// <summary>Gets or sets the corner radius.</summary>
         /// <value>The corner radius.</value>
-        [DefaultValue(GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE)]
+        [DefaultValue(-1)]
         public float StateCommonCornerRoundingRadius
         {
             get => _button.StateCommon.Border.Rounding;

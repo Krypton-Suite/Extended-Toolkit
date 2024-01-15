@@ -84,7 +84,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             // kryptonButton1
             // 
-            this.kryptonButton1.CornerRoundingRadius = -1F;
             this.kryptonButton1.Location = new System.Drawing.Point(245, 13);
             this.kryptonButton1.Name = "kryptonButton1";
             this.kryptonButton1.Size = new System.Drawing.Size(90, 25);

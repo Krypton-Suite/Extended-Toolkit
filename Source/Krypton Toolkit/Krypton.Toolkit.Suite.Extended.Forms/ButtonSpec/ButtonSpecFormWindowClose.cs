@@ -80,15 +80,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <returns>Button visibility.</returns>
         public override bool GetVisible(PaletteBase palette)
         {
-            // We do not show if the custom chrome is combined with composition,
-            // in which case the form buttons are handled by the composition
-            if (KryptonForm.ApplyComposition && KryptonForm.ApplyCustomChrome)
-            {
-                return false;
-            }
-
             // Have all buttons been turned off?
-            return KryptonForm.ControlBox && KryptonForm.CloseBox;
+            return KryptonForm is { ControlBox: true, CloseBox: true };
         }
 
         /// <summary>
@@ -103,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         /// <param name="palette">Palette to use for inheriting values.</param>
         /// <returns>Button checked state.</returns>
-        public override ButtonCheckState GetChecked(PaletteBase palette) =>
+        public override ButtonCheckState GetChecked(PaletteBase? palette) =>
             // Close button is never shown as checked
             ButtonCheckState.NotCheckButton;
 
