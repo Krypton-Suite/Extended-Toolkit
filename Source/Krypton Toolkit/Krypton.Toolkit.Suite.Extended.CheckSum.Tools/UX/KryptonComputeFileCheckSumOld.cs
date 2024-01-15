@@ -141,7 +141,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnSaveToFile
             // 
-            this.kbtnSaveToFile.CornerRoundingRadius = -1F;
             this.kbtnSaveToFile.Enabled = false;
             this.kbtnSaveToFile.Location = new System.Drawing.Point(507, 12);
             this.kbtnSaveToFile.Name = "kbtnSaveToFile";
@@ -152,7 +151,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(603, 12);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -228,7 +226,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnCompute
             // 
-            this.kbtnCompute.CornerRoundingRadius = -1F;
             this.kbtnCompute.Enabled = false;
             this.kbtnCompute.Location = new System.Drawing.Point(255, 59);
             this.kbtnCompute.Name = "kbtnCompute";
@@ -239,7 +236,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kcmbAlgorithimType
             // 
-            this.kcmbAlgorithimType.CornerRoundingRadius = -1F;
             this.kcmbAlgorithimType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbAlgorithimType.DropDownWidth = 121;
             this.kcmbAlgorithimType.Enabled = false;

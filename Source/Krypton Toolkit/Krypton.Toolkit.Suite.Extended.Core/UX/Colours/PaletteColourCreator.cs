@@ -326,7 +326,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnDefineCustomColours
             // 
-            this.kbtnDefineCustomColours.CornerRoundingRadius = -1F;
             this.kbtnDefineCustomColours.Location = new System.Drawing.Point(183, 372);
             this.kbtnDefineCustomColours.Name = "kbtnDefineCustomColours";
             this.kbtnDefineCustomColours.Size = new System.Drawing.Size(177, 25);
@@ -347,7 +346,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kbtnFileExport.AutoSize = true;
             this.kbtnFileExport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnFileExport.CornerRoundingRadius = -1F;
             this.kbtnFileExport.Location = new System.Drawing.Point(14, 582);
             this.kbtnFileExport.Name = "kbtnFileExport";
             this.kbtnFileExport.Size = new System.Drawing.Size(88, 30);
@@ -381,7 +379,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateBlueValue
             // 
-            this.kbtnGenerateBlueValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateBlueValue.Location = new System.Drawing.Point(845, 325);
             this.kbtnGenerateBlueValue.Name = "kbtnGenerateBlueValue";
             this.kbtnGenerateBlueValue.Size = new System.Drawing.Size(105, 25);
@@ -391,7 +388,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateGreenValue
             // 
-            this.kbtnGenerateGreenValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateGreenValue.Location = new System.Drawing.Point(845, 282);
             this.kbtnGenerateGreenValue.Name = "kbtnGenerateGreenValue";
             this.kbtnGenerateGreenValue.Size = new System.Drawing.Size(105, 25);
@@ -401,7 +397,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateRedValue
             // 
-            this.kbtnGenerateRedValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateRedValue.Location = new System.Drawing.Point(845, 238);
             this.kbtnGenerateRedValue.Name = "kbtnGenerateRedValue";
             this.kbtnGenerateRedValue.Size = new System.Drawing.Size(105, 25);
@@ -548,7 +543,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnExport
             // 
-            this.kbtnExport.CornerRoundingRadius = -1F;
             this.kbtnExport.Enabled = false;
             this.kbtnExport.Location = new System.Drawing.Point(133, 7);
             this.kbtnExport.Name = "kbtnExport";
@@ -559,7 +553,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerate
             // 
-            this.kbtnGenerate.CornerRoundingRadius = -1F;
             this.kbtnGenerate.Location = new System.Drawing.Point(14, 7);
             this.kbtnGenerate.Name = "kbtnGenerate";
             this.kbtnGenerate.Size = new System.Drawing.Size(113, 25);
@@ -603,7 +596,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnDebugConsole
             // 
-            this.kbtnDebugConsole.CornerRoundingRadius = -1F;
             this.kbtnDebugConsole.Location = new System.Drawing.Point(576, 7);
             this.kbtnDebugConsole.Name = "kbtnDebugConsole";
             this.kbtnDebugConsole.Size = new System.Drawing.Size(108, 25);
@@ -613,7 +605,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnOptions
             // 
-            this.kbtnOptions.CornerRoundingRadius = -1F;
             this.kbtnOptions.Location = new System.Drawing.Point(480, 7);
             this.kbtnOptions.Name = "kbtnOptions";
             this.kbtnOptions.Size = new System.Drawing.Size(90, 25);
@@ -623,7 +614,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnDefineIndividualColours
             // 
-            this.kbtnDefineIndividualColours.CornerRoundingRadius = -1F;
             this.kbtnDefineIndividualColours.Location = new System.Drawing.Point(325, 7);
             this.kbtnDefineIndividualColours.Name = "kbtnDefineIndividualColours";
             this.kbtnDefineIndividualColours.Size = new System.Drawing.Size(149, 25);
@@ -633,7 +623,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnImportColours
             // 
-            this.kbtnImportColours.CornerRoundingRadius = -1F;
             this.kbtnImportColours.Location = new System.Drawing.Point(229, 7);
             this.kbtnImportColours.Name = "kbtnImportColours";
             this.kbtnImportColours.Size = new System.Drawing.Size(90, 25);
@@ -661,7 +650,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnOk
             // 
-            this.kbtnOk.CornerRoundingRadius = -1F;
             this.kbtnOk.Location = new System.Drawing.Point(924, 7);
             this.kbtnOk.Name = "kbtnOk";
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);

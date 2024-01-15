@@ -87,7 +87,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kbtnLoadFromFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnLoadFromFile.AutoSize = true;
-            this.kbtnLoadFromFile.CornerRoundingRadius = -1F;
             this.kbtnLoadFromFile.Location = new(108, 14);
             this.kbtnLoadFromFile.Name = "kbtnLoadFromFile";
             this.kbtnLoadFromFile.Size = new(90, 25);
@@ -99,7 +98,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kbtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnExport.AutoSize = true;
-            this.kbtnExport.CornerRoundingRadius = -1F;
             this.kbtnExport.Enabled = false;
             this.kbtnExport.Location = new(12, 14);
             this.kbtnExport.Name = "kbtnExport";
@@ -112,7 +110,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnOk.AutoSize = true;
-            this.kbtnOk.CornerRoundingRadius = -1F;
             this.kbtnOk.Location = new(618, 14);
             this.kbtnOk.Name = "kbtnOk";
             this.kbtnOk.Size = new(90, 25);
@@ -124,7 +121,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnCancel.AutoSize = true;
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new(714, 14);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -147,7 +143,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnConvertToRGB
             // 
-            this.kbtnConvertToRGB.CornerRoundingRadius = -1F;
             this.kbtnConvertToRGB.Enabled = false;
             this.kbtnConvertToRGB.Location = new(277, 577);
             this.kbtnConvertToRGB.Name = "kbtnConvertToRGB";

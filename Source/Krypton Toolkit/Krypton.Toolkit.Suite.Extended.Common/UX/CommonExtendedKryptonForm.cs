@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 #if NETCOREAPP3_1_OR_GREATER
                 FadeControllerNETCoreSafe.FadeWindowInExtended(this, SleepInterval);
 #else
-                FadeController.FadeIn(this, FadeSpeedChoice, FadeSpeed);
+                FadeController.FadeIn(this, FadeSpeed);
 #endif
             }
 
@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 #if NETCOREAPP3_1_OR_GREATER
                 FadeControllerNETCoreSafe.FadeWindowOutExtended(this, SleepInterval);
 #else
-                FadeController.FadeOutAndClose(this, _fadeSpeedChoice);
+                FadeController.FadeOutAndClose(this, _fadeSpeed);
 #endif
             }
 

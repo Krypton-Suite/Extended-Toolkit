@@ -85,7 +85,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.12.352-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.1.15-alpha" />
 					</ItemGroup>
 				</When>
 
