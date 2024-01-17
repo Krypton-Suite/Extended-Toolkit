@@ -9,6 +9,8 @@ namespace Examples
 {
     public partial class MessageBoxExample : KryptonForm
     {
+        #region Static Fields
+
         private static string SEED_TEXT = @"/*
                                              * MIT License
                                              *
@@ -33,6 +35,14 @@ namespace Examples
                                              * SOFTWARE.
                                              *
                                              */";
+
+        #endregion
+
+        #region Instance Fields
+
+        
+
+        #endregion
 
         public MessageBoxExample()
         {

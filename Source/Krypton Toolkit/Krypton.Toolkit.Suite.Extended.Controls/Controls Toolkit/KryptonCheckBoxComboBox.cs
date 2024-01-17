@@ -297,9 +297,11 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         protected override void OnResize(EventArgs e)
         {
-            Size size = new Size(Width, DropDownControl.Height);
+            //Size size = new Size(Width, DropDownControl.Height);
 
-            _dropDown!.Size = size;
+            //_dropDown!.Size = size;
+
+            //_dropDown.Size = new Size(DropDownWidth, DropDownHeight);
 
             base.OnResize(e);
         }

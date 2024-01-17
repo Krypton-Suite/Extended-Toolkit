@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnProgressBars = new Krypton.Toolkit.KryptonButton();
             this.kbtnMemoryBoxExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnRibbonExtended = new Krypton.Toolkit.KryptonButton();
             this.kbtnThemeTools = new Krypton.Toolkit.KryptonButton();
@@ -52,13 +53,14 @@
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
-            this.kbtnProgressBars = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCheckBoxComboBoxExample = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnCheckBoxComboBoxExample);
             this.kryptonPanel1.Controls.Add(this.kbtnProgressBars);
             this.kryptonPanel1.Controls.Add(this.kbtnMemoryBoxExample);
             this.kryptonPanel1.Controls.Add(this.kbtnRibbonExtended);
@@ -85,8 +87,17 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(620, 390);
+            this.kryptonPanel1.Size = new System.Drawing.Size(622, 392);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnProgressBars
+            // 
+            this.kbtnProgressBars.Location = new System.Drawing.Point(281, 154);
+            this.kbtnProgressBars.Name = "kbtnProgressBars";
+            this.kbtnProgressBars.Size = new System.Drawing.Size(134, 22);
+            this.kbtnProgressBars.TabIndex = 22;
+            this.kbtnProgressBars.Values.Text = "ProgressBar Examples";
+            this.kbtnProgressBars.Click += new System.EventHandler(this.kbtnProgressBars_Click);
             // 
             // kbtnMemoryBoxExample
             // 
@@ -285,20 +296,20 @@
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
-            // kbtnProgressBars
+            // kbtnCheckBoxComboBoxExample
             // 
-            this.kbtnProgressBars.Location = new System.Drawing.Point(281, 154);
-            this.kbtnProgressBars.Name = "kbtnProgressBars";
-            this.kbtnProgressBars.Size = new System.Drawing.Size(134, 22);
-            this.kbtnProgressBars.TabIndex = 22;
-            this.kbtnProgressBars.Values.Text = "ProgressBar Examples";
-            this.kbtnProgressBars.Click += new System.EventHandler(this.kbtnProgressBars_Click);
+            this.kbtnCheckBoxComboBoxExample.Location = new System.Drawing.Point(244, 185);
+            this.kbtnCheckBoxComboBoxExample.Name = "kbtnCheckBoxComboBoxExample";
+            this.kbtnCheckBoxComboBoxExample.Size = new System.Drawing.Size(134, 22);
+            this.kbtnCheckBoxComboBoxExample.TabIndex = 23;
+            this.kbtnCheckBoxComboBoxExample.Values.Text = "CheckBox ComboBox Example";
+            this.kbtnCheckBoxComboBoxExample.Click += new System.EventHandler(this.kbtnCheckBoxComboBoxExample_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 390);
+            this.ClientSize = new System.Drawing.Size(622, 392);
             this.Controls.Add(this.kryptonPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
@@ -335,5 +346,6 @@
         private KryptonButton kbtnRibbonExtended;
         private KryptonButton kbtnMemoryBoxExample;
         private KryptonButton kbtnProgressBars;
+        private KryptonButton kbtnCheckBoxComboBoxExample;
     }
 }

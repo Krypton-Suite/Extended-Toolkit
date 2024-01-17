@@ -153,5 +153,12 @@ namespace Examples
 
             progressBarExtendedExamples.Show();
         }
+
+        private void kbtnCheckBoxComboBoxExample_Click(object sender, EventArgs e)
+        {
+            CheckBoxComboBoxTest example = new CheckBoxComboBoxTest();
+
+            example.Show();
+        }
     }
 }
