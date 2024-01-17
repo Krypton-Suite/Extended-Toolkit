@@ -307,6 +307,30 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          useOptionalCheckBoxThreeState,
                          useTimeOut, timeOut, timerResult);
 
+        public static DialogResult Show(IWin32Window owner, string message, string caption, ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon, KryptonMessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = false) =>
+            ShowCore(owner, message, caption, buttons, icon, defaultButton, options, 
+                null, showCtrlCopy, null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null, null);
+
+        public static DialogResult Show(string message, string caption, ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon, KryptonMessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = false) =>
+            ShowCore(null, message, caption, buttons, icon, defaultButton, options,
+                null, showCtrlCopy, null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null, null);
+
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="messageText">The text.</param>
