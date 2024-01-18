@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageBoxExample));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox4 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kcbOptionalCheckBoxChecked = new Krypton.Toolkit.KryptonCheckBox();
+            this.ktxtOptionalCheckBoxText = new Krypton.Toolkit.KryptonTextBox();
+            this.kcbShowOptionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
             this.kmbFillText = new Krypton.Toolkit.KryptonButton();
             this.kbtnShow = new Krypton.Toolkit.KryptonButton();
             this.kryptonGroupBox3 = new Krypton.Toolkit.KryptonGroupBox();
@@ -65,12 +69,15 @@
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
             this.kbtnFillText = new Krypton.Toolkit.KryptonButton();
-            this.kryptonGroupBox4 = new Krypton.Toolkit.KryptonGroupBox();
-            this.kcbShowOptionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
-            this.ktxtOptionalCheckBoxText = new Krypton.Toolkit.KryptonTextBox();
-            this.kcbOptionalCheckBoxChecked = new Krypton.Toolkit.KryptonCheckBox();
+            this.kryptonGroupBox5 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kcbRightAlign = new Krypton.Toolkit.KryptonCheckBox();
+            this.kcbRtlReading = new Krypton.Toolkit.KryptonCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).BeginInit();
+            this.kryptonGroupBox4.Panel.SuspendLayout();
+            this.kryptonGroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).BeginInit();
             this.kryptonGroupBox3.Panel.SuspendLayout();
@@ -95,14 +102,15 @@
             this.groupBoxIcon.Panel.SuspendLayout();
             this.groupBoxIcon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbMessageBoxIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).BeginInit();
-            this.kryptonGroupBox4.Panel.SuspendLayout();
-            this.kryptonGroupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).BeginInit();
+            this.kryptonGroupBox5.Panel.SuspendLayout();
+            this.kryptonGroupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonGroupBox5);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox4);
             this.kryptonPanel1.Controls.Add(this.kmbFillText);
             this.kryptonPanel1.Controls.Add(this.kbtnShow);
@@ -118,8 +126,45 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1577, 429);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1581, 433);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kryptonGroupBox4
+            // 
+            this.kryptonGroupBox4.Location = new System.Drawing.Point(721, 182);
+            this.kryptonGroupBox4.Name = "kryptonGroupBox4";
+            // 
+            // kryptonGroupBox4.Panel
+            // 
+            this.kryptonGroupBox4.Panel.Controls.Add(this.kcbOptionalCheckBoxChecked);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.ktxtOptionalCheckBoxText);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.kcbShowOptionalCheckBox);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(311, 118);
+            this.kryptonGroupBox4.TabIndex = 18;
+            // 
+            // kcbOptionalCheckBoxChecked
+            // 
+            this.kcbOptionalCheckBoxChecked.Location = new System.Drawing.Point(16, 63);
+            this.kcbOptionalCheckBoxChecked.Name = "kcbOptionalCheckBoxChecked";
+            this.kcbOptionalCheckBoxChecked.Size = new System.Drawing.Size(189, 20);
+            this.kcbOptionalCheckBoxChecked.TabIndex = 2;
+            this.kcbOptionalCheckBoxChecked.Values.Text = "Is optional checkbox checked?";
+            // 
+            // ktxtOptionalCheckBoxText
+            // 
+            this.ktxtOptionalCheckBoxText.Location = new System.Drawing.Point(16, 33);
+            this.ktxtOptionalCheckBoxText.Name = "ktxtOptionalCheckBoxText";
+            this.ktxtOptionalCheckBoxText.Size = new System.Drawing.Size(277, 23);
+            this.ktxtOptionalCheckBoxText.TabIndex = 1;
+            this.ktxtOptionalCheckBoxText.Text = "kryptonTextBox2";
+            // 
+            // kcbShowOptionalCheckBox
+            // 
+            this.kcbShowOptionalCheckBox.Location = new System.Drawing.Point(16, 6);
+            this.kcbShowOptionalCheckBox.Name = "kcbShowOptionalCheckBox";
+            this.kcbShowOptionalCheckBox.Size = new System.Drawing.Size(160, 20);
+            this.kcbShowOptionalCheckBox.TabIndex = 0;
+            this.kcbShowOptionalCheckBox.Values.Text = "Show Optional CheckBox";
             // 
             // kmbFillText
             // 
@@ -133,7 +178,7 @@
             // kbtnShow
             // 
             this.kbtnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnShow.Location = new System.Drawing.Point(1475, 392);
+            this.kbtnShow.Location = new System.Drawing.Point(1479, 396);
             this.kbtnShow.Name = "kbtnShow";
             this.kbtnShow.Size = new System.Drawing.Size(90, 25);
             this.kbtnShow.TabIndex = 16;
@@ -174,7 +219,7 @@
             this.ktxtHyperlinkDestination.CueHint.CueHintText = "Enter a URL or resource path here...";
             this.ktxtHyperlinkDestination.Location = new System.Drawing.Point(16, 37);
             this.ktxtHyperlinkDestination.Name = "ktxtHyperlinkDestination";
-            this.ktxtHyperlinkDestination.Size = new System.Drawing.Size(277, 24);
+            this.ktxtHyperlinkDestination.Size = new System.Drawing.Size(277, 26);
             this.ktxtHyperlinkDestination.TabIndex = 6;
             this.ktxtHyperlinkDestination.TextChanged += new System.EventHandler(this.ktxtHyperlinkDestination_TextChanged);
             // 
@@ -271,7 +316,7 @@
             // 
             this.kcmbMessageContentType.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kcmbMessageContentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kcmbMessageContentType.DropDownWidth = 247;
+            this.kcmbMessageContentType.DropDownWidth = 277;
             this.kcmbMessageContentType.IntegralHeight = false;
             this.kcmbMessageContentType.Location = new System.Drawing.Point(16, 6);
             this.kcmbMessageContentType.Name = "kcmbMessageContentType";
@@ -287,6 +332,7 @@
             this.kryptonThemeComboBox1.IntegralHeight = false;
             this.kryptonThemeComboBox1.Location = new System.Drawing.Point(404, 13);
             this.kryptonThemeComboBox1.Name = "kryptonThemeComboBox1";
+            this.kryptonThemeComboBox1.ReportSelectedThemeIndex = false;
             this.kryptonThemeComboBox1.Size = new System.Drawing.Size(311, 21);
             this.kryptonThemeComboBox1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kryptonThemeComboBox1.TabIndex = 14;
@@ -314,7 +360,7 @@
             // 
             this.kryptonComboBox3.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kryptonComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kryptonComboBox3.DropDownWidth = 247;
+            this.kryptonComboBox3.DropDownWidth = 270;
             this.kryptonComboBox3.IntegralHeight = false;
             this.kryptonComboBox3.Location = new System.Drawing.Point(21, 205);
             this.kryptonComboBox3.Name = "kryptonComboBox3";
@@ -334,7 +380,7 @@
             // 
             this.kryptonComboBox4.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kryptonComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kryptonComboBox4.DropDownWidth = 247;
+            this.kryptonComboBox4.DropDownWidth = 270;
             this.kryptonComboBox4.IntegralHeight = false;
             this.kryptonComboBox4.Location = new System.Drawing.Point(21, 148);
             this.kryptonComboBox4.Name = "kryptonComboBox4";
@@ -354,7 +400,7 @@
             // 
             this.kryptonComboBox2.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kryptonComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kryptonComboBox2.DropDownWidth = 247;
+            this.kryptonComboBox2.DropDownWidth = 270;
             this.kryptonComboBox2.IntegralHeight = false;
             this.kryptonComboBox2.Location = new System.Drawing.Point(21, 91);
             this.kryptonComboBox2.Name = "kryptonComboBox2";
@@ -374,7 +420,7 @@
             // 
             this.kryptonComboBox1.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kryptonComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kryptonComboBox1.DropDownWidth = 247;
+            this.kryptonComboBox1.DropDownWidth = 270;
             this.kryptonComboBox1.IntegralHeight = false;
             this.kryptonComboBox1.Location = new System.Drawing.Point(21, 34);
             this.kryptonComboBox1.Name = "kryptonComboBox1";
@@ -434,7 +480,7 @@
             this.kryptonTextBox1.Enabled = false;
             this.kryptonTextBox1.Location = new System.Drawing.Point(12, 35);
             this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.Size = new System.Drawing.Size(256, 24);
+            this.kryptonTextBox1.Size = new System.Drawing.Size(256, 26);
             this.kryptonTextBox1.TabIndex = 1;
             // 
             // bsaBrowse
@@ -492,6 +538,10 @@
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
             // 
+            // kryptonManager1
+            // 
+            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.SparkleOrange;
+            // 
             // kbtnFillText
             // 
             this.kbtnFillText.Location = new System.Drawing.Point(13, 66);
@@ -500,48 +550,40 @@
             this.kbtnFillText.TabIndex = 17;
             this.kbtnFillText.Values.Text = "Fill Text";
             // 
-            // kryptonGroupBox4
+            // kryptonGroupBox5
             // 
-            this.kryptonGroupBox4.Location = new System.Drawing.Point(721, 182);
-            this.kryptonGroupBox4.Name = "kryptonGroupBox4";
+            this.kryptonGroupBox5.Location = new System.Drawing.Point(412, 306);
+            this.kryptonGroupBox5.Name = "kryptonGroupBox5";
             // 
-            // kryptonGroupBox4.Panel
+            // kryptonGroupBox5.Panel
             // 
-            this.kryptonGroupBox4.Panel.Controls.Add(this.kcbOptionalCheckBoxChecked);
-            this.kryptonGroupBox4.Panel.Controls.Add(this.ktxtOptionalCheckBoxText);
-            this.kryptonGroupBox4.Panel.Controls.Add(this.kcbShowOptionalCheckBox);
-            this.kryptonGroupBox4.Size = new System.Drawing.Size(311, 118);
-            this.kryptonGroupBox4.TabIndex = 18;
+            this.kryptonGroupBox5.Panel.Controls.Add(this.kcbRtlReading);
+            this.kryptonGroupBox5.Panel.Controls.Add(this.kcbRightAlign);
+            this.kryptonGroupBox5.Size = new System.Drawing.Size(423, 63);
+            this.kryptonGroupBox5.TabIndex = 19;
+            this.kryptonGroupBox5.Values.Heading = "Options";
             // 
-            // kcbShowOptionalCheckBox
+            // kcbRightAlign
             // 
-            this.kcbShowOptionalCheckBox.Location = new System.Drawing.Point(16, 6);
-            this.kcbShowOptionalCheckBox.Name = "kcbShowOptionalCheckBox";
-            this.kcbShowOptionalCheckBox.Size = new System.Drawing.Size(160, 20);
-            this.kcbShowOptionalCheckBox.TabIndex = 0;
-            this.kcbShowOptionalCheckBox.Values.Text = "Show Optional CheckBox";
+            this.kcbRightAlign.Location = new System.Drawing.Point(13, 3);
+            this.kcbRightAlign.Name = "kcbRightAlign";
+            this.kcbRightAlign.Size = new System.Drawing.Size(195, 20);
+            this.kcbRightAlign.TabIndex = 1;
+            this.kcbRightAlign.Values.Text = "MessageBoxOptions.RightAlign";
             // 
-            // ktxtOptionalCheckBoxText
+            // kcbRtlReading
             // 
-            this.ktxtOptionalCheckBoxText.Location = new System.Drawing.Point(16, 33);
-            this.ktxtOptionalCheckBoxText.Name = "ktxtOptionalCheckBoxText";
-            this.ktxtOptionalCheckBoxText.Size = new System.Drawing.Size(277, 23);
-            this.ktxtOptionalCheckBoxText.TabIndex = 1;
-            this.ktxtOptionalCheckBoxText.Text = "kryptonTextBox2";
-            // 
-            // kcbOptionalCheckBoxChecked
-            // 
-            this.kcbOptionalCheckBoxChecked.Location = new System.Drawing.Point(16, 63);
-            this.kcbOptionalCheckBoxChecked.Name = "kcbOptionalCheckBoxChecked";
-            this.kcbOptionalCheckBoxChecked.Size = new System.Drawing.Size(189, 20);
-            this.kcbOptionalCheckBoxChecked.TabIndex = 2;
-            this.kcbOptionalCheckBoxChecked.Values.Text = "Is optional checkbox checked?";
+            this.kcbRtlReading.Location = new System.Drawing.Point(214, 3);
+            this.kcbRtlReading.Name = "kcbRtlReading";
+            this.kcbRtlReading.Size = new System.Drawing.Size(197, 20);
+            this.kcbRtlReading.TabIndex = 2;
+            this.kcbRtlReading.Values.Text = "MessageBoxOptions.RtlReading";
             // 
             // MessageBoxExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1577, 429);
+            this.ClientSize = new System.Drawing.Size(1581, 433);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -551,6 +593,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).EndInit();
+            this.kryptonGroupBox4.Panel.ResumeLayout(false);
+            this.kryptonGroupBox4.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).EndInit();
+            this.kryptonGroupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).EndInit();
             this.kryptonGroupBox3.Panel.ResumeLayout(false);
             this.kryptonGroupBox3.Panel.PerformLayout();
@@ -578,11 +625,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupBoxIcon)).EndInit();
             this.groupBoxIcon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kcmbMessageBoxIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).EndInit();
-            this.kryptonGroupBox4.Panel.ResumeLayout(false);
-            this.kryptonGroupBox4.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).EndInit();
-            this.kryptonGroupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).EndInit();
+            this.kryptonGroupBox5.Panel.ResumeLayout(false);
+            this.kryptonGroupBox5.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).EndInit();
+            this.kryptonGroupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -628,5 +675,8 @@
         private KryptonCheckBox kcbShowOptionalCheckBox;
         private KryptonTextBox ktxtOptionalCheckBoxText;
         private KryptonCheckBox kcbOptionalCheckBoxChecked;
+        private KryptonGroupBox kryptonGroupBox5;
+        private KryptonCheckBox kcbRightAlign;
+        private KryptonCheckBox kcbRtlReading;
     }
 }

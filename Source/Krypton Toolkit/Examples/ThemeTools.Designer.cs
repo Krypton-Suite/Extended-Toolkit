@@ -47,7 +47,6 @@
             // 
             // kbtnThemeSelector
             // 
-            this.kbtnThemeSelector.CornerRoundingRadius = -1F;
             this.kbtnThemeSelector.Location = new System.Drawing.Point(13, 43);
             this.kbtnThemeSelector.Name = "kbtnThemeSelector";
             this.kbtnThemeSelector.Size = new System.Drawing.Size(250, 25);
@@ -57,7 +56,6 @@
             // 
             // kbtnExternalThemeSelector
             // 
-            this.kbtnExternalThemeSelector.CornerRoundingRadius = -1F;
             this.kbtnExternalThemeSelector.Location = new System.Drawing.Point(13, 12);
             this.kbtnExternalThemeSelector.Name = "kbtnExternalThemeSelector";
             this.kbtnExternalThemeSelector.Size = new System.Drawing.Size(250, 25);

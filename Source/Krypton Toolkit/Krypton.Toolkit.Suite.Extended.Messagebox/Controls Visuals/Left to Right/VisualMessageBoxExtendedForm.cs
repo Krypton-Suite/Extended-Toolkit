@@ -32,15 +32,12 @@ using Resources = Krypton.Toolkit.Suite.Extended.Messagebox.Properties.Resources
 using ContentAlignment = System.Drawing.ContentAlignment;
 using Timer = System.Threading.Timer;
 
-#pragma warning disable IDE0031
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     internal partial class VisualMessageBoxExtendedForm : KryptonForm
     {
         #region Static Fields
 
-        private const int GAP = 10;
-        private static readonly int OS_MAJOR_VERSION;
         public const int WH_CALLWNDPROCRET = 12;
 
         private const int WM_CLOSE = 0x0010;
@@ -55,7 +52,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly string _caption;
 
         private readonly KryptonMessageBoxDefaultButton _defaultButton;
-        private readonly MessageBoxOptions _options; // https://github.com/Krypton-Suite/Standard-Toolkit/issues/313
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
         private static /*readonly*/ IWin32Window? _showOwner;
         private readonly HelpInfo? _helpInfo;
@@ -143,8 +139,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         static VisualMessageBoxExtendedForm()
         {
-            OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
-
             _hookProc = new PlatformInvoke.HookProc(MessageBoxHookProc);
 
             _hHook = IntPtr.Zero;
@@ -159,7 +153,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedKryptonMessageBoxIcon icon,
                                                KryptonMessageBoxDefaultButton defaultButton,
-                                               MessageBoxOptions options,
                                                HelpInfo? helpInfo, bool? showCtrlCopy,
                                                Font? messageBoxTypeface,
                                                Image? customKryptonMessageBoxIcon, bool? showHelpButton,
@@ -189,25 +182,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // Store incoming values
             _text = text;
 
-            if (useTimeOut != null || useTimeOut == false)
-            {
-                _caption = $"{caption} [{timeOut}]";
-            }
-            else
-            {
-                _caption = caption;
-            }
+            _caption = useTimeOut is { } or false ? $"{caption} [{timeOut}]" : caption;
 
             _buttons = buttons;
             _kryptonMessageBoxIcon = icon;
             _defaultButton = defaultButton;
-            _options = options;
             _helpInfo = helpInfo ?? new HelpInfo(string.Empty, HelpNavigator.AssociateIndex, null);
             _showOwner = showOwner;
             _messageTextAlignment = messageTextAlignment ?? ContentAlignment.MiddleLeft;
 
             // Extended values
-            _messageBoxTypeface = messageBoxTypeface ?? new Font("Segoe UI", 8.25F);
+            _messageBoxTypeface = messageBoxTypeface ?? KryptonManager.CurrentGlobalPalette.BaseFont;
             _customKryptonMessageBoxIcon = customKryptonMessageBoxIcon;
             _showHelpButton = showHelpButton ?? false;
             _messageTextColour = messageTextColour ?? Color.Empty;
@@ -241,8 +226,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             // Create the form contents
             InitializeComponent();
-
-            RightToLeftLayout = _options.HasFlag(MessageBoxOptions.RtlReading);
 
             // Update contents to match requirements
             UpdateText();
@@ -359,11 +342,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 kwlblMessageText.StateCommon.Font = _messageBoxTypeface;
 
                 kwlblMessageText.StateCommon.TextColor = _messageTextColour;
-                kwlblMessageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
-                    ? RightToLeft.Yes
-                    : _options.HasFlag(MessageBoxOptions.RtlReading)
-                        ? RightToLeft.Inherit
-                        : RightToLeft.No;
 
                 krtbMessageText.Visible = false;
 
@@ -379,12 +357,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
                 krtbMessageText.StateCommon.Content.Font = _messageBoxTypeface;
 
-                krtbMessageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
-                    ? RightToLeft.Yes
-                    : _options.HasFlag(MessageBoxOptions.RtlReading)
-                        ? RightToLeft.Inherit
-                        : RightToLeft.No;
-
                 kwlblMessageText.Visible = false;
 
                 klwlblMessageText.Visible = false;
@@ -399,12 +371,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
                 klwlblMessageText.StateCommon.Font = _messageBoxTypeface;
 
-                klwlblMessageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
-                    ? RightToLeft.Yes
-                    : _options.HasFlag(MessageBoxOptions.RtlReading)
-                        ? RightToLeft.Inherit
-                        : RightToLeft.No;
-
                 kwlblMessageText.Visible = false;
 
                 krtbMessageText.Visible = false;
@@ -415,9 +381,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             kcbOptionalCheckBox.StateCommon.ShortText.Color2 = _messageTextColour;
 
             kcbOptionalCheckBox.StateCommon.ShortText.Font = _messageBoxTypeface;
-
-            kcbOptionalCheckBox.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign) ? RightToLeft.Yes :
-                _options.HasFlag(MessageBoxOptions.RtlReading) ? RightToLeft.Inherit : RightToLeft.No;
         }
 
         private void UpdateTextExtra(bool? showCtrlCopy)
@@ -447,7 +410,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 {
                     case ExtendedKryptonMessageBoxIcon.None:
                         // Windows XP and before will Beep, Vista and above do not!
-                        if (OS_MAJOR_VERSION < 6)
+                        if (GlobalStaticValues.OS_MAJOR_VERSION < 6)
                         {
                             SystemSounds.Beep.Play();
                         }
@@ -519,7 +482,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 {
                     case ExtendedKryptonMessageBoxIcon.None:
                         // Windows XP and before will Beep, Vista and above do not!
-                        if (OS_MAJOR_VERSION < 6)
+                        if (GlobalStaticValues.OS_MAJOR_VERSION < 6)
                         {
                             SystemSounds.Beep.Play();
                         }
@@ -653,7 +616,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     break;
                 case ExtendedKryptonMessageBoxIcon.None:
                     // Windows XP and before will Beep, Vista and above do not!
-                    if (OS_MAJOR_VERSION < 6)
+                    if (GlobalStaticValues.OS_MAJOR_VERSION < 6)
                     {
                         SystemSounds.Beep.Play();
                     }
@@ -1221,14 +1184,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             // Button1 is always visible
             Size button1Size = _button1.GetPreferredSize(Size.Empty);
-            Size maxButtonSize = new(button1Size.Width + GAP, button1Size.Height);
+            Size maxButtonSize = new(button1Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING, button1Size.Height);
 
             // If Button2 is visible
             if (_button2.Enabled)
             {
                 numButtons++;
                 Size button2Size = _button2.GetPreferredSize(Size.Empty);
-                maxButtonSize.Width = Math.Max(maxButtonSize.Width, button2Size.Width + GAP);
+                maxButtonSize.Width = Math.Max(maxButtonSize.Width, button2Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING);
                 maxButtonSize.Height = Math.Max(maxButtonSize.Height, button2Size.Height);
             }
 
@@ -1237,7 +1200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             {
                 numButtons++;
                 Size button3Size = _button3.GetPreferredSize(Size.Empty);
-                maxButtonSize.Width = Math.Max(maxButtonSize.Width, button3Size.Width + GAP);
+                maxButtonSize.Width = Math.Max(maxButtonSize.Width, button3Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING);
                 maxButtonSize.Height = Math.Max(maxButtonSize.Height, button3Size.Height);
             }
             // If Button4 is visible
@@ -1245,46 +1208,46 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             {
                 numButtons++;
                 Size button4Size = _button4.GetPreferredSize(Size.Empty);
-                maxButtonSize.Width = Math.Max(maxButtonSize.Width, button4Size.Width + GAP);
+                maxButtonSize.Width = Math.Max(maxButtonSize.Width, button4Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING);
                 maxButtonSize.Height = Math.Max(maxButtonSize.Height, button4Size.Height);
             }
 
             // Start positioning buttons 10 pixels from right edge
-            var right = _panelButtons.Right - GAP;
+            var right = _panelButtons.Right - GlobalStaticValues.GLOBAL_BUTTON_PADDING;
 
             // If Button4 is visible
             if (_button4.Enabled)
             {
-                _button4.Location = new Point(right - maxButtonSize.Width, GAP);
+                _button4.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
                 _button4.Size = maxButtonSize;
-                right -= maxButtonSize.Width + GAP;
+                right -= maxButtonSize.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING;
             }
 
             // If Button3 is visible
             if (_button3.Enabled)
             {
-                _button3.Location = new Point(right - maxButtonSize.Width, GAP);
+                _button3.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
                 _button3.Size = maxButtonSize;
-                right -= maxButtonSize.Width + GAP;
+                right -= maxButtonSize.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING;
             }
 
             // If Button2 is visible
             if (_button2.Enabled)
             {
-                _button2.Location = new Point(right - maxButtonSize.Width, GAP);
+                _button2.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
                 _button2.Size = maxButtonSize;
-                right -= maxButtonSize.Width + GAP;
+                right -= maxButtonSize.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING;
             }
 
             // Button1 is always visible
-            _button1.Location = new Point(right - maxButtonSize.Width, GAP);
+            _button1.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
             _button1.Size = maxButtonSize;
 
             // Size the panel for the buttons
-            _panelButtons.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            _panelButtons.Size = new Size((maxButtonSize.Width * numButtons) + (GlobalStaticValues.GLOBAL_BUTTON_PADDING * (numButtons + 1)), maxButtonSize.Height + (GlobalStaticValues.GLOBAL_BUTTON_PADDING * 2));
 
-            // Button area is the number of buttons with gaps between them and 10 pixels around all edges
-            return new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            // Button area is the number of buttons with GLOBAL_BUTTON_PADDINGs between them and 10 pixels around all edges
+            return new Size((maxButtonSize.Width * numButtons) + (GlobalStaticValues.GLOBAL_BUTTON_PADDING * (numButtons + 1)), maxButtonSize.Height + (GlobalStaticValues.GLOBAL_BUTTON_PADDING * 2));
         }
 
         private void AnyKeyDown(object sender, KeyEventArgs e)

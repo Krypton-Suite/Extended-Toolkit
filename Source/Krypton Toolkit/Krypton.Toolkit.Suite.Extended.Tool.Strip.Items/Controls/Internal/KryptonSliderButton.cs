@@ -318,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                     // Ask the renderer to work out how the Content values will be layed out and
                     // return a memento object that we cache for use when actually performing painting
-                    m_mementoContent = Renderer.RenderStandardContent.LayoutContent(ViewContext, ButtonBounds, m_paletteContent, this, m_orientation, buttonState, false, false);
+                    m_mementoContent = Renderer.RenderStandardContent.LayoutContent(ViewContext, ButtonBounds, m_paletteContent, this, m_orientation, buttonState);
                     //m_mementoContent = Renderer.RenderStandardContent.LayoutContent(ViewContext, ButtonBounds, m_paletteContent, this, m_orientation, false, buttonState, false);
 
                 }

@@ -58,7 +58,6 @@
             // 
             // kbtnShowToastNotification
             // 
-            this.kbtnShowToastNotification.CornerRoundingRadius = -1F;
             this.kbtnShowToastNotification.Location = new System.Drawing.Point(13, 13);
             this.kbtnShowToastNotification.Name = "kbtnShowToastNotification";
             this.kbtnShowToastNotification.Size = new System.Drawing.Size(335, 25);

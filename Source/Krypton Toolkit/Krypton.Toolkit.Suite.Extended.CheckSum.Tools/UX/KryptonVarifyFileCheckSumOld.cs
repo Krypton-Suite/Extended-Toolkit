@@ -128,7 +128,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnValidate
             // 
-            this.kbtnValidate.CornerRoundingRadius = -1F;
             this.kbtnValidate.Enabled = false;
             this.kbtnValidate.Location = new System.Drawing.Point(511, 13);
             this.kbtnValidate.Name = "kbtnValidate";
@@ -139,7 +138,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnImportHash
             // 
-            this.kbtnImportHash.CornerRoundingRadius = -1F;
             this.kbtnImportHash.Enabled = false;
             this.kbtnImportHash.Location = new System.Drawing.Point(13, 13);
             this.kbtnImportHash.Name = "kbtnImportHash";
@@ -150,7 +148,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(607, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -264,7 +261,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnCompute
             // 
-            this.kbtnCompute.CornerRoundingRadius = -1F;
             this.kbtnCompute.Enabled = false;
             this.kbtnCompute.Location = new System.Drawing.Point(256, 63);
             this.kbtnCompute.Name = "kbtnCompute";
@@ -275,7 +271,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kcmbAlgorithimType
             // 
-            this.kcmbAlgorithimType.CornerRoundingRadius = -1F;
             this.kcmbAlgorithimType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbAlgorithimType.DropDownWidth = 121;
             this.kcmbAlgorithimType.Enabled = false;

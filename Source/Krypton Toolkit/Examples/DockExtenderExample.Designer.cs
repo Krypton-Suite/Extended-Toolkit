@@ -249,7 +249,6 @@
             // 
             // kbtnLeftClose
             // 
-            this.kbtnLeftClose.CornerRoundingRadius = -1F;
             this.kbtnLeftClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kbtnLeftClose.Location = new System.Drawing.Point(230, 3);
             this.kbtnLeftClose.Name = "kbtnLeftClose";
@@ -288,7 +287,6 @@
             // 
             // kbtnBottomClose
             // 
-            this.kbtnBottomClose.CornerRoundingRadius = -1F;
             this.kbtnBottomClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kbtnBottomClose.Location = new System.Drawing.Point(607, 3);
             this.kbtnBottomClose.Name = "kbtnBottomClose";

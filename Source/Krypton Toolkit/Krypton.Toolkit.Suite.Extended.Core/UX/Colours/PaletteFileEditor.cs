@@ -79,7 +79,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kbtnClose
             // 
             this.kbtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnClose.CornerRoundingRadius = -1F;
             this.kbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnClose.Location = new System.Drawing.Point(529, 15);
             this.kbtnClose.Name = "kbtnClose";
@@ -92,7 +91,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kbtnGenerateColours.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnGenerateColours.AutoSize = true;
-            this.kbtnGenerateColours.CornerRoundingRadius = -1F;
             this.kbtnGenerateColours.Location = new System.Drawing.Point(318, 15);
             this.kbtnGenerateColours.Name = "kbtnGenerateColours";
             this.kbtnGenerateColours.Size = new System.Drawing.Size(105, 25);
@@ -103,7 +101,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kbtnSaveFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnSaveFile.AutoSize = true;
-            this.kbtnSaveFile.CornerRoundingRadius = -1F;
             this.kbtnSaveFile.Location = new System.Drawing.Point(222, 15);
             this.kbtnSaveFile.Name = "kbtnSaveFile";
             this.kbtnSaveFile.Size = new System.Drawing.Size(90, 25);
@@ -114,7 +111,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kbtnOpenFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnOpenFile.AutoSize = true;
-            this.kbtnOpenFile.CornerRoundingRadius = -1F;
             this.kbtnOpenFile.Location = new System.Drawing.Point(126, 15);
             this.kbtnOpenFile.Name = "kbtnOpenFile";
             this.kbtnOpenFile.Size = new System.Drawing.Size(90, 25);
@@ -125,7 +121,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kbtnGenerateNewFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnGenerateNewFile.AutoSize = true;
-            this.kbtnGenerateNewFile.CornerRoundingRadius = -1F;
             this.kbtnGenerateNewFile.Location = new System.Drawing.Point(12, 15);
             this.kbtnGenerateNewFile.Name = "kbtnGenerateNewFile";
             this.kbtnGenerateNewFile.Size = new System.Drawing.Size(110, 25);

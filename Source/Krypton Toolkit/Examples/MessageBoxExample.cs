@@ -9,6 +9,8 @@ namespace Examples
 {
     public partial class MessageBoxExample : KryptonForm
     {
+        #region Static Fields
+
         private static string SEED_TEXT = @"/*
                                              * MIT License
                                              *
@@ -34,10 +36,44 @@ namespace Examples
                                              *
                                              */";
 
+        #endregion
+
+        #region Instance Fields
+
+        #region Standard Options
+
+        private bool _showCloseBox;
+
+        private string _caption;
+
+        private string _message;
+
+        private KryptonMessageBoxDefaultButton _defaultButton = KryptonMessageBoxDefaultButton.Button1;
+
+        private ExtendedKryptonMessageBoxIcon _icon = ExtendedKryptonMessageBoxIcon.Information;
+
+        private KryptonMessageBoxButtons _button = KryptonMessageBoxButtons.OK;
+
+        private MessageBoxOptions _options = 0;
+
+        private ContentAlignment _messageTextAlignment = ContentAlignment.MiddleLeft;
+
+        private Image _customImage;
+
+        #endregion
+
+        #endregion
+
+        #region Identity
+
         public MessageBoxExample()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        #region Implementation
 
         private void MessageBoxExample_Load(object sender, EventArgs e)
         {
@@ -144,14 +180,16 @@ namespace Examples
 
         private void kbtnShow_Click(object sender, EventArgs e)
         {
-            DialogResult result = KryptonMessageBoxExtended.Show(ktxtMessageContent.Text, ktxtCaption.Text, ExtendedMessageBoxButtons.OK,
-                ExtendedKryptonMessageBoxIcon.Information, kcbShowOptionalCheckBox.Checked, kcbOptionalCheckBoxChecked.Checked,
-                ktxtOptionalCheckBoxText.Text, null);
+            KryptonMessageBoxExtended.Show(_message, _caption, _button, _icon, _defaultButton, _options);
 
-            if (result == DialogResult.OK)
-            {
-                MessageBox.Show($@"{KryptonMessageBoxExtended.ReturnCheckBoxCheckedValue()}");
-            }
+            //DialogResult result = KryptonMessageBoxExtended.Show(_message, _caption, _button, _icon, _defaultButton, _options);
+
+            //if (result == DialogResult.OK)
+            //{
+            //    MessageBox.Show($@"{KryptonMessageBoxExtended.ReturnCheckBoxCheckedValue()}");
+            //}
         }
+
+        #endregion
     }
 }

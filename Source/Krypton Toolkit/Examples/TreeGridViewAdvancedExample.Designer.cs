@@ -57,7 +57,6 @@
             // 
             // kbtnDataSource
             // 
-            this.kbtnDataSource.CornerRoundingRadius = -1F;
             this.kbtnDataSource.Location = new System.Drawing.Point(576, 41);
             this.kbtnDataSource.Name = "kbtnDataSource";
             this.kbtnDataSource.Size = new System.Drawing.Size(212, 31);
@@ -67,7 +66,6 @@
             // 
             // kryptonThemeComboBox1
             // 
-            this.kryptonThemeComboBox1.CornerRoundingRadius = -1F;
             this.kryptonThemeComboBox1.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kryptonThemeComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kryptonThemeComboBox1.DropDownWidth = 212;
