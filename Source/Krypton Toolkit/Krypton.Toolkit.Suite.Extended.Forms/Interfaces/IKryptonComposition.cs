@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <summary>
         /// Gets and sets the form that owns the composition.
         /// </summary>
-        VirtualForm CompOwnerForm { get; set; }
+        VisualForm CompOwnerForm { get; set; }
 
         /// <summary>
         /// Request a repaint and optional layout.

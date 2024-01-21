@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -176,7 +176,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this.ksbtnPalettes.AutoSize = true;
             this.ksbtnPalettes.ContextMenuStrip = this.cmsPaletteUtilities;
-            this.ksbtnPalettes.CornerRoundingRadius = -1F;
             this.ksbtnPalettes.Location = new System.Drawing.Point(12, 13);
             this.ksbtnPalettes.Name = "ksbtnPalettes";
             this.ksbtnPalettes.ProcessPath = null;
@@ -217,7 +216,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kbtnOk
             // 
-            this.kbtnOk.CornerRoundingRadius = -1F;
             this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnOk.Location = new System.Drawing.Point(678, 13);
             this.kbtnOk.Name = "kbtnOk";
@@ -228,7 +226,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(774, 13);
             this.kbtnCancel.Name = "kbtnCancel";

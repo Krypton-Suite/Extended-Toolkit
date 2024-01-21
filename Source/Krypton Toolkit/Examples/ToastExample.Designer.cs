@@ -163,7 +163,6 @@
             // kbtnAttachCommand
             // 
             this.kbtnAttachCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnAttachCommand.CornerRoundingRadius = -1F;
             this.kbtnAttachCommand.Enabled = false;
             this.kbtnAttachCommand.Location = new System.Drawing.Point(14, 179);
             this.kbtnAttachCommand.Name = "kbtnAttachCommand";
@@ -174,7 +173,6 @@
             // 
             // kcmbActionButtonLocation
             // 
-            this.kcmbActionButtonLocation.CornerRoundingRadius = -1F;
             this.kcmbActionButtonLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbActionButtonLocation.DropDownWidth = 290;
             this.kcmbActionButtonLocation.IntegralHeight = false;
@@ -232,7 +230,6 @@
             // 
             // kcbActionType
             // 
-            this.kcbActionType.CornerRoundingRadius = -1F;
             this.kcbActionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcbActionType.DropDownWidth = 290;
             this.kcbActionType.IntegralHeight = false;
@@ -268,7 +265,6 @@
             // kbtnShow
             // 
             this.kbtnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnShow.CornerRoundingRadius = -1F;
             this.kbtnShow.Location = new System.Drawing.Point(1272, 693);
             this.kbtnShow.Name = "kbtnShow";
             this.kbtnShow.Size = new System.Drawing.Size(162, 25);
@@ -297,7 +293,6 @@
             // 
             // kcmbUserResponseTextAlignVertical
             // 
-            this.kcmbUserResponseTextAlignVertical.CornerRoundingRadius = -1F;
             this.kcmbUserResponseTextAlignVertical.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbUserResponseTextAlignVertical.DropDownWidth = 235;
             this.kcmbUserResponseTextAlignVertical.Enabled = false;
@@ -315,7 +310,6 @@
             // 
             // kcmbUserResponseTextAlignHorizontal
             // 
-            this.kcmbUserResponseTextAlignHorizontal.CornerRoundingRadius = -1F;
             this.kcmbUserResponseTextAlignHorizontal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbUserResponseTextAlignHorizontal.DropDownWidth = 235;
             this.kcmbUserResponseTextAlignHorizontal.Enabled = false;
@@ -353,7 +347,6 @@
             // 
             // kbtnUserResponseFont
             // 
-            this.kbtnUserResponseFont.CornerRoundingRadius = -1F;
             this.kbtnUserResponseFont.Enabled = false;
             this.kbtnUserResponseFont.Location = new System.Drawing.Point(216, 64);
             this.kbtnUserResponseFont.Name = "kbtnUserResponseFont";

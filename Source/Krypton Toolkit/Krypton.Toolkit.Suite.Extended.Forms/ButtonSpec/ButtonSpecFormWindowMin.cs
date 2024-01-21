@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// Initialize a new instance of the ButtonSpecFormWindowMin class.
         /// </summary>
         /// <param name="form">Reference to owning krypton form instance.</param>
-        public ButtonSpecFormWindowMin(VirtualKryptonFormExtended form)
+        public ButtonSpecFormWindowMin(VisualKryptonFormExtended form)
             : base(form, PaletteButtonSpecStyle.FormMin)
         {
         }
@@ -51,13 +51,6 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <returns>Button visibility.</returns>
         public override bool GetVisible(PaletteBase palette)
         {
-            // We do not show if the custom chrome is combined with composition,
-            // in which case the form buttons are handled by the composition
-            if (KryptonForm.ApplyComposition && KryptonForm.ApplyCustomChrome)
-            {
-                return false;
-            }
-
             // The minimize button is never present on tool windows
             switch (KryptonForm.FormBorderStyle)
             {

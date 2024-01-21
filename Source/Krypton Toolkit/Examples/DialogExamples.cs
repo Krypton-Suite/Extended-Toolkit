@@ -25,15 +25,6 @@ namespace Examples
             InitializeComponent();
         }
 
-        private void kbtnAbout_Click(object sender, EventArgs e)
-        {
-            Assembly asm = Assembly.GetExecutingAssembly();
-
-            KryptonAboutDialog aboutDialog = new KryptonAboutDialog(Resources.Stable, asm);
-
-            aboutDialog.ShowDialog();
-        }
-
         private void kbtnException_Click(object sender, EventArgs e)
         {
             //KryptonExceptionCaptureDialog exceptionCaptureDialog = new KryptonExceptionCaptureDialog();

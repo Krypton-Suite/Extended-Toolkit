@@ -196,7 +196,6 @@
             // 
             // kbtnApply
             // 
-            this.kbtnApply.CornerRoundingRadius = -1F;
             this.kbtnApply.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnApply.Enabled = false;
             this.kbtnApply.Location = new System.Drawing.Point(698, 13);
@@ -207,7 +206,6 @@
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(602, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -217,7 +215,6 @@
             // 
             // kbtnOk
             // 
-            this.kbtnOk.CornerRoundingRadius = -1F;
             this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnOk.Location = new System.Drawing.Point(506, 13);
             this.kbtnOk.Name = "kbtnOk";

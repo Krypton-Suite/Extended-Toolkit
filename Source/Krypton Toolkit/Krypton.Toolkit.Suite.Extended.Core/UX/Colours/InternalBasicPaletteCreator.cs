@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -166,7 +166,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnDebugConsole
             // 
-            this.kbtnDebugConsole.CornerRoundingRadius = -1F;
             this.kbtnDebugConsole.Location = new(432, 13);
             this.kbtnDebugConsole.Name = "kbtnDebugConsole";
             this.kbtnDebugConsole.Size = new(96, 25);
@@ -176,7 +175,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnOptions
             // 
-            this.kbtnOptions.CornerRoundingRadius = -1F;
             this.kbtnOptions.Location = new(335, 13);
             this.kbtnOptions.Name = "kbtnOptions";
             this.kbtnOptions.Size = new(90, 25);
@@ -185,7 +183,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnImportColours
             // 
-            this.kbtnImportColours.CornerRoundingRadius = -1F;
             this.kbtnImportColours.Location = new(224, 13);
             this.kbtnImportColours.Name = "kbtnImportColours";
             this.kbtnImportColours.Size = new(104, 25);
@@ -194,7 +191,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnExportColours
             // 
-            this.kbtnExportColours.CornerRoundingRadius = -1F;
             this.kbtnExportColours.Enabled = false;
             this.kbtnExportColours.Location = new(128, 13);
             this.kbtnExportColours.Name = "kbtnExportColours";
@@ -204,7 +200,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateColours
             // 
-            this.kbtnGenerateColours.CornerRoundingRadius = -1F;
             this.kbtnGenerateColours.Location = new(13, 13);
             this.kbtnGenerateColours.Name = "kbtnGenerateColours";
             this.kbtnGenerateColours.Size = new(109, 25);
@@ -214,7 +209,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kryptonButton1
             // 
             this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonButton1.CornerRoundingRadius = -1F;
             this.kryptonButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kryptonButton1.Location = new(752, 13);
             this.kryptonButton1.Name = "kryptonButton1";
@@ -272,7 +266,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateRandomColour
             // 
-            this.kbtnGenerateRandomColour.CornerRoundingRadius = -1F;
             this.kbtnGenerateRandomColour.Location = new(493, 537);
             this.kbtnGenerateRandomColour.Name = "kbtnGenerateRandomColour";
             this.kbtnGenerateRandomColour.Size = new(177, 25);
@@ -292,7 +285,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateGreen
             // 
-            this.kbtnGenerateGreen.CornerRoundingRadius = -1F;
             this.kbtnGenerateGreen.Location = new(589, 409);
             this.kbtnGenerateGreen.Name = "kbtnGenerateGreen";
             this.kbtnGenerateGreen.Size = new(120, 25);
@@ -301,7 +293,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateBlue
             // 
-            this.kbtnGenerateBlue.CornerRoundingRadius = -1F;
             this.kbtnGenerateBlue.Location = new(725, 409);
             this.kbtnGenerateBlue.Name = "kbtnGenerateBlue";
             this.kbtnGenerateBlue.Size = new(119, 25);
@@ -310,7 +301,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateRed
             // 
-            this.kbtnGenerateRed.CornerRoundingRadius = -1F;
             this.kbtnGenerateRed.Location = new(445, 409);
             this.kbtnGenerateRed.Name = "kbtnGenerateRed";
             this.kbtnGenerateRed.Size = new(120, 25);

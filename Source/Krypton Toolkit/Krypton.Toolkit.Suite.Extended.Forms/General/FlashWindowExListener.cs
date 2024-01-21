@@ -5,7 +5,7 @@
     /// </summary>
     internal static class FlashWindowExListener
     {
-        private static readonly Dictionary<IntPtr, Form> _forms = new();
+        private static readonly Dictionary<IntPtr, Form> _forms = new Dictionary<IntPtr, Form>();
         private static readonly IntPtr _hHook;
         // Keep the HookProc delegate alive manually, such as using a class member as shown below,
         // otherwise the garbage collector will clean up the hook delegate eventually,

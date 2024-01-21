@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private Timer _timer;
 
-        private SoundPlayer _soundPlayer;
+        private SoundPlayer? _soundPlayer;
 
         private string _actionButtonText, _title, _contentText, _soundPath, _dismissText, _processPath;
 
@@ -374,23 +374,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                 }
             }
 
-            if (SoundPath != null)
-            {
-                _soundPlayer = new SoundPlayer(SoundPath);
-            }
-            else
-            {
-                _soundPlayer = null;
-            }
+            _soundPlayer = SoundPath != null ? new SoundPlayer(SoundPath) : null;
 
-            if (SoundStream != null)
-            {
-                _soundPlayer = new SoundPlayer(SoundStream);
-            }
-            else
-            {
-                _soundPlayer = null;
-            }
+            _soundPlayer = SoundStream != null ? new SoundPlayer(SoundStream) : null;
 
             base.Show();
         }

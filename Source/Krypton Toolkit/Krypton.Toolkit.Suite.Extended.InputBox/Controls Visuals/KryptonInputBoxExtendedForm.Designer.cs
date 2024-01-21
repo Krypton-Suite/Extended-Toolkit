@@ -128,7 +128,6 @@
             // 
             // kcmbResponse
             // 
-            this.kcmbResponse.CornerRoundingRadius = -1F;
             this.kcmbResponse.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kcmbResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kcmbResponse.DropDownWidth = 344;
@@ -141,7 +140,6 @@
             // 
             // kdtpResponse
             // 
-            this.kdtpResponse.CornerRoundingRadius = -1F;
             this.kdtpResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kdtpResponse.Location = new System.Drawing.Point(0, 0);
             this.kdtpResponse.Name = "kdtpResponse";
@@ -150,7 +148,6 @@
             // 
             // kdudResponse
             // 
-            this.kdudResponse.CornerRoundingRadius = -1F;
             this.kdudResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kdudResponse.Location = new System.Drawing.Point(0, 0);
             this.kdudResponse.Name = "kdudResponse";
@@ -221,7 +218,6 @@
             // 
             this.kbtnButtonThree.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnButtonThree.AutoSize = true;
-            this.kbtnButtonThree.CornerRoundingRadius = -1F;
             this.kbtnButtonThree.Location = new System.Drawing.Point(280, 1);
             this.kbtnButtonThree.MinimumSize = new System.Drawing.Size(50, 26);
             this.kbtnButtonThree.Name = "kbtnButtonThree";
@@ -233,7 +229,6 @@
             // 
             this.kbtnButtonTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnButtonTwo.AutoSize = true;
-            this.kbtnButtonTwo.CornerRoundingRadius = -1F;
             this.kbtnButtonTwo.Location = new System.Drawing.Point(219, 1);
             this.kbtnButtonTwo.MinimumSize = new System.Drawing.Size(50, 26);
             this.kbtnButtonTwo.Name = "kbtnButtonTwo";
@@ -245,7 +240,6 @@
             // 
             this.kbtnInputBoxActionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnInputBoxActionButton.AutoSize = true;
-            this.kbtnInputBoxActionButton.CornerRoundingRadius = -1F;
             this.kbtnInputBoxActionButton.Location = new System.Drawing.Point(9, 1);
             this.kbtnInputBoxActionButton.Name = "kbtnInputBoxActionButton";
             this.kbtnInputBoxActionButton.Size = new System.Drawing.Size(90, 25);
@@ -257,7 +251,6 @@
             // 
             this.kbtnButtonOne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnButtonOne.AutoSize = true;
-            this.kbtnButtonOne.CornerRoundingRadius = -1F;
             this.kbtnButtonOne.Location = new System.Drawing.Point(158, 1);
             this.kbtnButtonOne.MinimumSize = new System.Drawing.Size(50, 26);
             this.kbtnButtonOne.Name = "kbtnButtonOne";

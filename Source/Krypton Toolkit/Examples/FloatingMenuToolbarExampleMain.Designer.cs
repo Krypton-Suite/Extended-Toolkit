@@ -48,7 +48,6 @@
             // 
             // kryptonButton2
             // 
-            this.kryptonButton2.CornerRoundingRadius = -1F;
             this.kryptonButton2.Location = new System.Drawing.Point(13, 44);
             this.kryptonButton2.Name = "kryptonButton2";
             this.kryptonButton2.Size = new System.Drawing.Size(281, 25);
@@ -58,7 +57,6 @@
             // 
             // kbtnFloatingAdvanced
             // 
-            this.kbtnFloatingAdvanced.CornerRoundingRadius = -1F;
             this.kbtnFloatingAdvanced.Location = new System.Drawing.Point(13, 13);
             this.kbtnFloatingAdvanced.Name = "kbtnFloatingAdvanced";
             this.kbtnFloatingAdvanced.Size = new System.Drawing.Size(281, 25);

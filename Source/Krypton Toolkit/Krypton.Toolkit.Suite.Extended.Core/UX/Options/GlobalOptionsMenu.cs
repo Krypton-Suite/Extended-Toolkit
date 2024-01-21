@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -239,7 +239,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kbtnResetThemeValues
             // 
             this.kbtnResetThemeValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.kbtnResetThemeValues.CornerRoundingRadius = -1F;
             this.kbtnResetThemeValues.Enabled = false;
             this.kbtnResetThemeValues.Location = new(12, 15);
             this.kbtnResetThemeValues.Name = "kbtnResetThemeValues";
@@ -250,7 +249,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kbtnResetColourBlendingValues
             // 
             this.kbtnResetColourBlendingValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.kbtnResetColourBlendingValues.CornerRoundingRadius = -1F;
             this.kbtnResetColourBlendingValues.Enabled = false;
             this.kbtnResetColourBlendingValues.Location = new(12, 15);
             this.kbtnResetColourBlendingValues.Name = "kbtnResetColourBlendingValues";
@@ -261,7 +259,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kbtnOk
             // 
             this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnOk.CornerRoundingRadius = -1F;
             this.kbtnOk.Location = new(396, 15);
             this.kbtnOk.Name = "kbtnOk";
             this.kbtnOk.Size = new(90, 25);
@@ -271,7 +268,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kbtnCancel
             // 
             this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.Location = new(492, 15);
             this.kbtnCancel.Name = "kbtnCancel";
             this.kbtnCancel.Size = new(90, 25);
@@ -281,7 +277,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kbtnUACApply
             // 
             this.kbtnUACApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnUACApply.CornerRoundingRadius = -1F;
             this.kbtnUACApply.Enabled = false;
             this.kbtnUACApply.Location = new(588, 15);
             this.kbtnUACApply.Name = "kbtnUACApply";
@@ -607,7 +602,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnDarkColourIntensityValueMinus
             // 
-            this.kbtnDarkColourIntensityValueMinus.CornerRoundingRadius = -1F;
             this.kbtnDarkColourIntensityValueMinus.Location = new(293, 20);
             this.kbtnDarkColourIntensityValueMinus.Name = "kbtnDarkColourIntensityValueMinus";
             this.kbtnDarkColourIntensityValueMinus.Size = new(18, 30);
@@ -617,7 +611,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnLightestColourIntensityValuePlus
             // 
-            this.kbtnLightestColourIntensityValuePlus.CornerRoundingRadius = -1F;
             this.kbtnLightestColourIntensityValuePlus.Location = new(329, 312);
             this.kbtnLightestColourIntensityValuePlus.Name = "kbtnLightestColourIntensityValuePlus";
             this.kbtnLightestColourIntensityValuePlus.Size = new(23, 30);
@@ -627,7 +620,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbnDarkestColourIntensityValuePlus
             // 
-            this.kbnDarkestColourIntensityValuePlus.CornerRoundingRadius = -1F;
             this.kbnDarkestColourIntensityValuePlus.Location = new(329, 20);
             this.kbnDarkestColourIntensityValuePlus.Name = "kbnDarkestColourIntensityValuePlus";
             this.kbnDarkestColourIntensityValuePlus.Size = new(23, 30);
@@ -637,7 +629,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnLightestColourIntensityValueMinus
             // 
-            this.kbtnLightestColourIntensityValueMinus.CornerRoundingRadius = -1F;
             this.kbtnLightestColourIntensityValueMinus.Location = new(293, 312);
             this.kbtnLightestColourIntensityValueMinus.Name = "kbtnLightestColourIntensityValueMinus";
             this.kbtnLightestColourIntensityValueMinus.Size = new(18, 30);
@@ -647,7 +638,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnMiddleColourIntensityValueMinus
             // 
-            this.kbtnMiddleColourIntensityValueMinus.CornerRoundingRadius = -1F;
             this.kbtnMiddleColourIntensityValueMinus.Location = new(293, 122);
             this.kbtnMiddleColourIntensityValueMinus.Name = "kbtnMiddleColourIntensityValueMinus";
             this.kbtnMiddleColourIntensityValueMinus.Size = new(18, 30);
@@ -657,7 +647,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtLightColourIntensityValuePlus
             // 
-            this.kbtLightColourIntensityValuePlus.CornerRoundingRadius = -1F;
             this.kbtLightColourIntensityValuePlus.Location = new(329, 217);
             this.kbtLightColourIntensityValuePlus.Name = "kbtLightColourIntensityValuePlus";
             this.kbtLightColourIntensityValuePlus.Size = new(23, 30);
@@ -667,7 +656,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnMiddleColourIntensityValuePlus
             // 
-            this.kbtnMiddleColourIntensityValuePlus.CornerRoundingRadius = -1F;
             this.kbtnMiddleColourIntensityValuePlus.Location = new(329, 122);
             this.kbtnMiddleColourIntensityValuePlus.Name = "kbtnMiddleColourIntensityValuePlus";
             this.kbtnMiddleColourIntensityValuePlus.Size = new(23, 30);
@@ -677,7 +665,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnLightColourIntensityValueMinus
             // 
-            this.kbtnLightColourIntensityValueMinus.CornerRoundingRadius = -1F;
             this.kbtnLightColourIntensityValueMinus.Location = new(293, 217);
             this.kbtnLightColourIntensityValueMinus.Name = "kbtnLightColourIntensityValueMinus";
             this.kbtnLightColourIntensityValueMinus.Size = new(18, 30);
@@ -751,7 +738,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kcmbDisplayType
             // 
-            this.kcmbDisplayType.CornerRoundingRadius = -1F;
             this.kcmbDisplayType.DropDownWidth = 203;
             this.kcmbDisplayType.IntegralHeight = false;
             this.kcmbDisplayType.Items.AddRange(new object[] {
@@ -841,7 +827,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // ktcmbTheme
             // 
-            this.ktcmbTheme.CornerRoundingRadius = -1F;
             this.ktcmbTheme.DropDownWidth = 198;
             this.ktcmbTheme.IntegralHeight = false;
             this.ktcmbTheme.Location = new(118, 22);
@@ -852,7 +837,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnLoadTheme
             // 
-            this.kbtnLoadTheme.CornerRoundingRadius = -1F;
             this.kbtnLoadTheme.Enabled = false;
             this.kbtnLoadTheme.Location = new(554, 97);
             this.kbtnLoadTheme.Name = "kbtnLoadTheme";
@@ -932,7 +916,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetPaletteTypefaceSettings
             // 
-            this.kbtnResetPaletteTypefaceSettings.CornerRoundingRadius = -1F;
             this.kbtnResetPaletteTypefaceSettings.Location = new(18, 370);
             this.kbtnResetPaletteTypefaceSettings.Name = "kbtnResetPaletteTypefaceSettings";
             this.kbtnResetPaletteTypefaceSettings.Size = new(256, 25);
@@ -941,7 +924,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetGlobalStringSettings
             // 
-            this.kbtnResetGlobalStringSettings.CornerRoundingRadius = -1F;
             this.kbtnResetGlobalStringSettings.Location = new(18, 312);
             this.kbtnResetGlobalStringSettings.Name = "kbtnResetGlobalStringSettings";
             this.kbtnResetGlobalStringSettings.Size = new(256, 25);
@@ -950,7 +932,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetGlobalBooleanSettings
             // 
-            this.kbtnResetGlobalBooleanSettings.CornerRoundingRadius = -1F;
             this.kbtnResetGlobalBooleanSettings.Location = new(18, 254);
             this.kbtnResetGlobalBooleanSettings.Name = "kbtnResetGlobalBooleanSettings";
             this.kbtnResetGlobalBooleanSettings.Size = new(256, 25);
@@ -959,7 +940,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetColourStringSettings
             // 
-            this.kbtnResetColourStringSettings.CornerRoundingRadius = -1F;
             this.kbtnResetColourStringSettings.Location = new(18, 196);
             this.kbtnResetColourStringSettings.Name = "kbtnResetColourStringSettings";
             this.kbtnResetColourStringSettings.Size = new(256, 25);
@@ -968,7 +948,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetColourSettings
             // 
-            this.kbtnResetColourSettings.CornerRoundingRadius = -1F;
             this.kbtnResetColourSettings.Location = new(18, 138);
             this.kbtnResetColourSettings.Name = "kbtnResetColourSettings";
             this.kbtnResetColourSettings.Size = new(256, 25);
@@ -977,7 +956,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetColourIntegerSettings
             // 
-            this.kbtnResetColourIntegerSettings.CornerRoundingRadius = -1F;
             this.kbtnResetColourIntegerSettings.Location = new(18, 80);
             this.kbtnResetColourIntegerSettings.Name = "kbtnResetColourIntegerSettings";
             this.kbtnResetColourIntegerSettings.Size = new(256, 25);
@@ -986,7 +964,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetColourBlendingSettings
             // 
-            this.kbtnResetColourBlendingSettings.CornerRoundingRadius = -1F;
             this.kbtnResetColourBlendingSettings.Location = new(18, 22);
             this.kbtnResetColourBlendingSettings.Name = "kbtnResetColourBlendingSettings";
             this.kbtnResetColourBlendingSettings.Size = new(256, 25);
@@ -995,7 +972,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnNukeAllSettings
             // 
-            this.kbtnNukeAllSettings.CornerRoundingRadius = -1F;
             this.kbtnNukeAllSettings.Location = new(18, 428);
             this.kbtnNukeAllSettings.Name = "kbtnNukeAllSettings";
             this.kbtnNukeAllSettings.Size = new(256, 25);

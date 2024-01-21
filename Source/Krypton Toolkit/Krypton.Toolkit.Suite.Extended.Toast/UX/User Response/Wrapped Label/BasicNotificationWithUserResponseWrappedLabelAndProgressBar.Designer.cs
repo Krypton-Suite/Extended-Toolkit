@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -213,7 +213,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
             this.ktbActionButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ktbActionButton3.AutoSize = true;
             this.ktbActionButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ktbActionButton3.CornerRoundingRadius = -1F;
             this.ktbActionButton3.DenyButtonBackColour1 = System.Drawing.Color.Red;
             this.ktbActionButton3.DenyButtonBackColour2 = System.Drawing.Color.Red;
             this.ktbActionButton3.DenyButtonTextColour1 = System.Drawing.Color.Empty;
@@ -229,7 +228,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
             this.kbtnToastButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnToastButton3.AutoSize = true;
             this.kbtnToastButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnToastButton3.CornerRoundingRadius = -1F;
             this.kbtnToastButton3.Location = new System.Drawing.Point(496, 6);
             this.kbtnToastButton3.Name = "kbtnToastButton3";
             this.kbtnToastButton3.Size = new System.Drawing.Size(22, 22);
@@ -257,7 +255,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
             this.ktbActionButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ktbActionButton2.AutoSize = true;
             this.ktbActionButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ktbActionButton2.CornerRoundingRadius = -1F;
             this.ktbActionButton2.DenyButtonBackColour1 = System.Drawing.Color.Red;
             this.ktbActionButton2.DenyButtonBackColour2 = System.Drawing.Color.Red;
             this.ktbActionButton2.DenyButtonTextColour1 = System.Drawing.Color.Empty;
@@ -273,7 +270,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
             this.kbtnToastButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnToastButton2.AutoSize = true;
             this.kbtnToastButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnToastButton2.CornerRoundingRadius = -1F;
             this.kbtnToastButton2.Location = new System.Drawing.Point(-11, 6);
             this.kbtnToastButton2.Name = "kbtnToastButton2";
             this.kbtnToastButton2.Size = new System.Drawing.Size(22, 22);
@@ -322,7 +318,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
             this.ktbActionButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ktbActionButton1.AutoSize = true;
             this.ktbActionButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ktbActionButton1.CornerRoundingRadius = -1F;
             this.ktbActionButton1.DenyButtonBackColour1 = System.Drawing.Color.Red;
             this.ktbActionButton1.DenyButtonBackColour2 = System.Drawing.Color.Red;
             this.ktbActionButton1.DenyButtonTextColour1 = System.Drawing.Color.Empty;
@@ -338,7 +333,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
             this.kbtnToastButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnToastButton1.AutoSize = true;
             this.kbtnToastButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnToastButton1.CornerRoundingRadius = -1F;
             this.kbtnToastButton1.Location = new System.Drawing.Point(9, 6);
             this.kbtnToastButton1.Name = "kbtnToastButton1";
             this.kbtnToastButton1.Size = new System.Drawing.Size(22, 22);

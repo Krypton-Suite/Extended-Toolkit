@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 #if NETCOREAPP3_1_OR_GREATER
                 FadeControllerNETCoreSafe.FadeWindowInExtended(this, SleepInterval);
 #else
-                FadeController.FadeIn(this, FadeSpeedChoice, FadeSpeed);
+                FadeController.FadeIn(this, FadeSpeed);
 #endif
             }
 
@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 #if NETCOREAPP3_1_OR_GREATER
                 FadeControllerNETCoreSafe.FadeWindowOutExtended(this, SleepInterval);
 #else
-                FadeController.FadeOutAndClose(this, _fadeSpeedChoice);
+                FadeController.FadeOutAndClose(this, _fadeSpeed);
 #endif
             }
 

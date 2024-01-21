@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -101,7 +101,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnUtiliseAsBaseColour
             // 
-            this.kbtnUtiliseAsBaseColour.CornerRoundingRadius = -1F;
             this.kbtnUtiliseAsBaseColour.Location = new(155, 12);
             this.kbtnUtiliseAsBaseColour.Name = "kbtnUtiliseAsBaseColour";
             this.kbtnUtiliseAsBaseColour.Size = new(142, 25);
@@ -112,7 +111,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kbtnOk
             // 
             this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnOk.CornerRoundingRadius = -1F;
             this.kbtnOk.Location = new(921, 12);
             this.kbtnOk.Name = "kbtnOk";
             this.kbtnOk.Size = new(90, 25);
@@ -122,7 +120,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnSaveColour
             // 
-            this.kbtnSaveColour.CornerRoundingRadius = -1F;
             this.kbtnSaveColour.Enabled = false;
             this.kbtnSaveColour.Location = new(12, 12);
             this.kbtnSaveColour.Name = "kbtnSaveColour";
@@ -201,7 +198,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kcmbNormalTextSystemColours
             // 
-            this.kcmbNormalTextSystemColours.CornerRoundingRadius = -1F;
             this.kcmbNormalTextSystemColours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbNormalTextSystemColours.DropDownWidth = 173;
             this.kcmbNormalTextSystemColours.IntegralHeight = false;
@@ -222,7 +218,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kcmbNormalTextColour
             // 
-            this.kcmbNormalTextColour.CornerRoundingRadius = -1F;
             this.kcmbNormalTextColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbNormalTextColour.DropDownWidth = 173;
             this.kcmbNormalTextColour.IntegralHeight = false;
@@ -243,7 +238,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateNormalTextBlueValue
             // 
-            this.kbtnGenerateNormalTextBlueValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateNormalTextBlueValue.Location = new(780, 282);
             this.kbtnGenerateNormalTextBlueValue.Name = "kbtnGenerateNormalTextBlueValue";
             this.kbtnGenerateNormalTextBlueValue.Size = new(90, 25);
@@ -277,7 +271,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateNormalTextGreenValue
             // 
-            this.kbtnGenerateNormalTextGreenValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateNormalTextGreenValue.Location = new(463, 282);
             this.kbtnGenerateNormalTextGreenValue.Name = "kbtnGenerateNormalTextGreenValue";
             this.kbtnGenerateNormalTextGreenValue.Size = new(106, 25);
@@ -310,7 +303,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateNormalTextRedValue
             // 
-            this.kbtnGenerateNormalTextRedValue.CornerRoundingRadius = -1F;
             this.kbtnGenerateNormalTextRedValue.Location = new(140, 282);
             this.kbtnGenerateNormalTextRedValue.Name = "kbtnGenerateNormalTextRedValue";
             this.kbtnGenerateNormalTextRedValue.Size = new(90, 25);

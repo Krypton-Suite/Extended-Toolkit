@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,6 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         private bool _wasEnabled;
         private bool _isDefault;
         private bool _useMnemonic;
+        private KryptonCustomPaletteBase _palette;
 
         //private ViewDrawButtonExtended vdbe = new ViewDrawButtonExtended(null, null, null, null, null, null, VisualOrientation.Top, true);
 
@@ -264,6 +265,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             get => null;
             set { }
+        }
+
+        public KryptonCustomPaletteBase Palette
+        {
+            get => _palette;
+
+            set => _palette = value;
         }
 
         /// <summary>
@@ -1079,7 +1087,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 }
                 else
                 {
-                    _kryptonContextMenu.Palette = Palette;
+                    _kryptonContextMenu.LocalCustomPalette = Palette;
                 }
             }
 

@@ -86,7 +86,6 @@
             // 
             // kbtnConvertToRGB
             // 
-            this.kbtnConvertToRGB.CornerRoundingRadius = -1F;
             this.kbtnConvertToRGB.Location = new System.Drawing.Point(236, 90);
             this.kbtnConvertToRGB.Name = "kbtnConvertToRGB";
             this.kbtnConvertToRGB.Size = new System.Drawing.Size(154, 25);
@@ -96,7 +95,6 @@
             // 
             // kbtnConvertToHexadecimal
             // 
-            this.kbtnConvertToHexadecimal.CornerRoundingRadius = -1F;
             this.kbtnConvertToHexadecimal.Location = new System.Drawing.Point(236, 48);
             this.kbtnConvertToHexadecimal.Name = "kbtnConvertToHexadecimal";
             this.kbtnConvertToHexadecimal.Size = new System.Drawing.Size(154, 25);
@@ -211,7 +209,6 @@
             // kbtnUseColour
             // 
             this.kbtnUseColour.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnUseColour.CornerRoundingRadius = -1F;
             this.kbtnUseColour.Location = new System.Drawing.Point(405, 13);
             this.kbtnUseColour.Name = "kbtnUseColour";
             this.kbtnUseColour.Size = new System.Drawing.Size(90, 25);
@@ -221,7 +218,6 @@
             // kbtnCancel
             // 
             this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(501, 13);
             this.kbtnCancel.Name = "kbtnCancel";

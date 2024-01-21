@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -92,7 +92,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // kbtnOk
             // 
             this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnOk.CornerRoundingRadius = -1F;
             this.kbtnOk.Location = new(909, 12);
             this.kbtnOk.Name = "kbtnOk";
             this.kbtnOk.Size = new(90, 25);
@@ -126,7 +125,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnLoadFromFile
             // 
-            this.kbtnLoadFromFile.CornerRoundingRadius = -1F;
             this.kbtnLoadFromFile.Location = new(13, 681);
             this.kbtnLoadFromFile.Name = "kbtnLoadFromFile";
             this.kbtnLoadFromFile.Size = new(137, 30);
@@ -135,7 +133,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnExport
             // 
-            this.kbtnExport.CornerRoundingRadius = -1F;
             this.kbtnExport.Enabled = false;
             this.kbtnExport.Location = new(13, 637);
             this.kbtnExport.Name = "kbtnExport";
@@ -154,7 +151,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetValues
             // 
-            this.kbtnResetValues.CornerRoundingRadius = -1F;
             this.kbtnResetValues.Enabled = false;
             this.kbtnResetValues.Location = new(13, 593);
             this.kbtnResetValues.Name = "kbtnResetValues";
@@ -164,7 +160,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnAllColoursAsRGB
             // 
-            this.kbtnAllColoursAsRGB.CornerRoundingRadius = -1F;
             this.kbtnAllColoursAsRGB.Location = new(13, 549);
             this.kbtnAllColoursAsRGB.Name = "kbtnAllColoursAsRGB";
             this.kbtnAllColoursAsRGB.Size = new(292, 30);
@@ -174,7 +169,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnAllColoursAsHex
             // 
-            this.kbtnAllColoursAsHex.CornerRoundingRadius = -1F;
             this.kbtnAllColoursAsHex.Location = new(13, 505);
             this.kbtnAllColoursAsHex.Name = "kbtnAllColoursAsHex";
             this.kbtnAllColoursAsHex.Size = new(292, 30);

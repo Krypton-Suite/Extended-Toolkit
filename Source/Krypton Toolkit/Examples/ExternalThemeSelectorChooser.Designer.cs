@@ -47,7 +47,6 @@
             // 
             // kbtnXMLThemes
             // 
-            this.kbtnXMLThemes.CornerRoundingRadius = -1F;
             this.kbtnXMLThemes.Location = new System.Drawing.Point(13, 44);
             this.kbtnXMLThemes.Name = "kbtnXMLThemes";
             this.kbtnXMLThemes.Size = new System.Drawing.Size(250, 25);
@@ -57,7 +56,6 @@
             // 
             // kbtnBinaryThemes
             // 
-            this.kbtnBinaryThemes.CornerRoundingRadius = -1F;
             this.kbtnBinaryThemes.Location = new System.Drawing.Point(13, 13);
             this.kbtnBinaryThemes.Name = "kbtnBinaryThemes";
             this.kbtnBinaryThemes.Size = new System.Drawing.Size(250, 25);

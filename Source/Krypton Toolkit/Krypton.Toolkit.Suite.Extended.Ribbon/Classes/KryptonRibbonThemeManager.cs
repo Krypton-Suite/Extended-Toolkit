@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,12 +29,14 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
 {
     internal class KryptonRibbonThemeManager
     {
-        #region Theme Array        
+        #region Theme Array
+
         /// <summary>
         /// The supported themes
         /// </summary>
         // TODO: This should use the list from Z:\GitHub\Krypton-Suite\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Converters\PaletteModeConverter.cs
-        private static readonly BiDictionary<string, PaletteMode> _supportedThemes = new(new Dictionary<string, PaletteMode>
+        private static readonly BiDictionary<string, PaletteMode> _supportedThemes = new(
+            new Dictionary<string, PaletteMode>
             {
                 { @"Professional - System", PaletteMode.ProfessionalSystem },
                 { @"Professional - Office 2003", PaletteMode.ProfessionalOffice2003 },
@@ -47,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
                 { @"Office 2007 - White", PaletteMode.Office2007White },
                 { @"Office 2007 - Black", PaletteMode.Office2007Black },
                 { @"Office 2007 - Black (Dark Mode)", PaletteMode.Office2007BlackDarkMode },
-                { @"Office 2007 - Dark Gray", PaletteMode.Office2007DarkGray },
+                //{ @"Office 2007 - Dark Gray", PaletteMode.Office2007DarkGray },
                 { @"Office 2010 - Blue", PaletteMode.Office2010Blue },
                 { @"Office 2010 - Blue (Dark Mode)", PaletteMode.Office2010BlueDarkMode },
                 { @"Office 2010 - Blue (Light Mode)", PaletteMode.Office2010BlueLightMode },
@@ -57,8 +59,8 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
                 { @"Office 2010 - White", PaletteMode.Office2010White },
                 { @"Office 2010 - Black", PaletteMode.Office2010Black },
                 { @"Office 2010 - Black (Dark Mode)", PaletteMode.Office2010BlackDarkMode },
-                { @"Office 2010 - Dark Gray", PaletteMode.Office2010DarkGray },
-                { @"Office 2013 - Dark Gray", PaletteMode.Office2013DarkGray },
+                //{ @"Office 2010 - Dark Gray", PaletteMode.Office2010DarkGray },
+                //{ @"Office 2013 - Dark Gray", PaletteMode.Office2013DarkGray },
                 //{ @"Office 2013", PaletteMode.Office2013 },
                 { @"Office 2013 - White", PaletteMode.Office2013White },
                 { @"Sparkle - Blue", PaletteMode.SparkleBlue },
@@ -79,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
                 { @"Microsoft 365 - White", PaletteMode.Microsoft365White },
                 { @"Microsoft 365 - Black", PaletteMode.Microsoft365Black },
                 { @"Microsoft 365 - Black (Dark Mode)", PaletteMode.Microsoft365BlackDarkMode },
-                { @"Microsoft 365 - Dark Gray", PaletteMode.Microsoft365DarkGray },
+                //{ @"Microsoft 365 - Dark Gray", PaletteMode.Microsoft365DarkGray },
                 { @"Custom", PaletteMode.Custom }
             });
 
@@ -203,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
                 }
 
                 // Set manager
-                manager.GlobalPalette = palette;
+                manager.GlobalCustomPalette = palette;
 
                 ApplyTheme(PaletteMode.Custom, manager);
             }

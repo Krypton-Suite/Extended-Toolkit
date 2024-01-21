@@ -98,7 +98,6 @@
             // 
             // kbtnApplySavedFilters
             // 
-            this.kbtnApplySavedFilters.CornerRoundingRadius = -1F;
             this.kbtnApplySavedFilters.Location = new System.Drawing.Point(1005, 72);
             this.kbtnApplySavedFilters.Name = "kbtnApplySavedFilters";
             this.kbtnApplySavedFilters.Size = new System.Drawing.Size(90, 25);
@@ -108,7 +107,6 @@
             // 
             // kbtnClearFilters
             // 
-            this.kbtnClearFilters.CornerRoundingRadius = -1F;
             this.kbtnClearFilters.Location = new System.Drawing.Point(669, 45);
             this.kbtnClearFilters.Name = "kbtnClearFilters";
             this.kbtnClearFilters.Size = new System.Drawing.Size(179, 25);
@@ -118,7 +116,6 @@
             // 
             // kbtnSaveFilters
             // 
-            this.kbtnSaveFilters.CornerRoundingRadius = -1F;
             this.kbtnSaveFilters.Location = new System.Drawing.Point(669, 13);
             this.kbtnSaveFilters.Name = "kbtnSaveFilters";
             this.kbtnSaveFilters.Size = new System.Drawing.Size(180, 25);
@@ -144,7 +141,6 @@
             // 
             // kcmbSortSaved
             // 
-            this.kcmbSortSaved.CornerRoundingRadius = -1F;
             this.kcmbSortSaved.DropDownWidth = 159;
             this.kcmbSortSaved.IntegralHeight = false;
             this.kcmbSortSaved.Location = new System.Drawing.Point(937, 39);
@@ -155,7 +151,6 @@
             // 
             // kcmbSavedFilters
             // 
-            this.kcmbSavedFilters.CornerRoundingRadius = -1F;
             this.kcmbSavedFilters.DropDownWidth = 159;
             this.kcmbSavedFilters.IntegralHeight = false;
             this.kcmbSavedFilters.Location = new System.Drawing.Point(937, 12);
@@ -218,7 +213,6 @@
             // 
             // kcmbMemoryTest
             // 
-            this.kcmbMemoryTest.CornerRoundingRadius = -1F;
             this.kcmbMemoryTest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbMemoryTest.DropDownWidth = 121;
             this.kcmbMemoryTest.IntegralHeight = false;
@@ -230,7 +224,6 @@
             // 
             // kbtnMemoryTest
             // 
-            this.kbtnMemoryTest.CornerRoundingRadius = -1F;
             this.kbtnMemoryTest.Location = new System.Drawing.Point(207, 12);
             this.kbtnMemoryTest.Name = "kbtnMemoryTest";
             this.kbtnMemoryTest.Size = new System.Drawing.Size(180, 25);
@@ -240,7 +233,6 @@
             // 
             // kbtnLoadRandomData
             // 
-            this.kbtnLoadRandomData.CornerRoundingRadius = -1F;
             this.kbtnLoadRandomData.Location = new System.Drawing.Point(13, 13);
             this.kbtnLoadRandomData.Name = "kbtnLoadRandomData";
             this.kbtnLoadRandomData.Size = new System.Drawing.Size(167, 25);

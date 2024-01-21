@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Instance Fields
         //private readonly KryptonMessageBoxManagerOld _messageBoxConfigurator;
 
-        private readonly IComponentChangeService _service;
+        private readonly IComponentChangeService? _service;
         #endregion
 
         #region Identity
@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             //_messageBoxConfigurator = owner.Component as KryptonMessageBoxManagerOld;
 
-            _service = (IComponentChangeService)GetService(typeof(IComponentChangeService));
+            _service = GetService(typeof(IComponentChangeService)) as IComponentChangeService;
         }
         #endregion
 

@@ -1,5 +1,7 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Toast;
 
+using KryptonToastNotificationManager = Krypton.Toolkit.Suite.Extended.Toast.KryptonToastNotificationManager;
+
 namespace Examples
 {
     public partial class ToastExample : KryptonForm

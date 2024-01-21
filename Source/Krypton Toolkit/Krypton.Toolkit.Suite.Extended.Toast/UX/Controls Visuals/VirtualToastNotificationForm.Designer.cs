@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -295,7 +295,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnActionButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnActionButton1.AutoSize = true;
             this.kbtnActionButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnActionButton1.CornerRoundingRadius = -1F;
             this.kbtnActionButton1.Location = new System.Drawing.Point(6, 16);
             this.kbtnActionButton1.Name = "kbtnActionButton1";
             this.kbtnActionButton1.Size = new System.Drawing.Size(40, 22);
@@ -307,7 +306,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnActionButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnActionButton2.AutoSize = true;
             this.kbtnActionButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnActionButton2.CornerRoundingRadius = -1F;
             this.kbtnActionButton2.Location = new System.Drawing.Point(242, 16);
             this.kbtnActionButton2.Name = "kbtnActionButton2";
             this.kbtnActionButton2.Size = new System.Drawing.Size(40, 22);
@@ -319,7 +317,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnDismissButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnDismissButton.AutoSize = true;
             this.kbtnDismissButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnDismissButton.CornerRoundingRadius = -1F;
             this.kbtnDismissButton.Location = new System.Drawing.Point(146, 16);
             this.kbtnDismissButton.Name = "kbtnDismissButton";
             this.kbtnDismissButton.Size = new System.Drawing.Size(48, 22);

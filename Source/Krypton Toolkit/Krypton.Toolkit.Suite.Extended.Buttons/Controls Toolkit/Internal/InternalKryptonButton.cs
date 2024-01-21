@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -124,24 +124,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             _useAsDialogButton = false;
 
             _useAsUACElevationButton = false;
-
-            // Set `CornerRoundingRadius' to 'GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE' (-1)
-            CornerRoundingRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE;
         }
         #endregion
 
         #region Public
-        /// <summary>Gets or sets the corner rounding radius.</summary>
-        /// <value>The corner rounding radius.</value>
-        [Category(@"Visuals")]
-        [Description(@"Gets or sets the corner rounding radius.")]
-        [DefaultValue(-1)]
-        public float CornerRoundingRadius
-        {
-            get => StateCommon.Border.Rounding;
-
-            set => StateCommon.Border.Rounding = value;
-        }
 
         /// <summary>
         /// Gets and sets the automatic resize of the control to fit contents.

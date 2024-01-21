@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -307,6 +307,30 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          useOptionalCheckBoxThreeState,
                          useTimeOut, timeOut, timerResult);
 
+        public static DialogResult Show(IWin32Window owner, string message, string caption, ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon, KryptonMessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = false) =>
+            ShowCore(owner, message, caption, buttons, icon, defaultButton, options, 
+                null, showCtrlCopy, null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null, null);
+
+        public static DialogResult Show(string message, string caption, ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon, KryptonMessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = false) =>
+            ShowCore(null, message, caption, buttons, icon, defaultButton, options,
+                null, showCtrlCopy, null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null,
+                null, null, null, null);
+
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="messageText">The text.</param>
@@ -531,9 +555,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          useOptionalCheckBoxThreeState,
                          useTimeOut, timeOut, timerResult);
 
-        public static bool ReturnCheckBoxCheckedValue() => KryptonMessageBoxExtendedForm.ReturnCheckBoxCheckedValue();
+        public static bool ReturnCheckBoxCheckedValue() => VisualMessageBoxExtendedForm.ReturnCheckBoxCheckedValue();
 
-        public static CheckState ReturnCheckBoxCheckState() => KryptonMessageBoxExtendedForm.ReturnCheckBoxCheckState();
+        public static CheckState ReturnCheckBoxCheckState() => VisualMessageBoxExtendedForm.ReturnCheckBoxCheckState();
 
         #endregion
 
@@ -610,38 +634,77 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
-            using KryptonMessageBoxExtendedForm kmbe = new(showOwner, text, caption, buttons,
-                                                            icon, defaultButton, options,
-                                                            helpInfo, showCtrlCopy,
-                                                            messageBoxTypeface,
-                                                            customImageIcon, showHelpButton,
-                                                            messageTextColour,
-                                                            buttonTextColours,
-                                                            buttonOneCustomDialogResult,
-                                                            buttonTwoCustomDialogResult,
-                                                            buttonThreeCustomDialogResult,
-                                                            buttonFourDialogResult,
-                                                            buttonOneCustomText,
-                                                            buttonTwoCustomText,
-                                                            buttonThreeCustomText,
-                                                            buttonFourCustomText,
-                                                            applicationPath,
-                                                            messageContainerType,
-                                                            linkLabelCommand,
-                                                            contentLinkArea,
-                                                            linkLaunchArgument,
-                                                            openInExplorer,
-                                                            messageTextAlignment,
-                                                            richTextBoxTextAlignment,
-                                                            showOptionalCheckBox,
-                                                            optionalCheckBoxChecked,
-                                                            optionalCheckBoxText,
-                                                            useOptionalCheckBoxThreeState,
-                                                            useTimeOut,
-                                                            timeOut,
-                                                            timerResult);
+            if (options == MessageBoxOptions.RightAlign | options == MessageBoxOptions.RtlReading)
+            {
+                VisualMessageBoxExtendedRtlAwareForm kmbertl = new VisualMessageBoxExtendedRtlAwareForm(showOwner, text,
+                    caption, buttons,
+                    icon, defaultButton,
+                    helpInfo, showCtrlCopy,
+                    messageBoxTypeface,
+                    customImageIcon, showHelpButton,
+                    messageTextColour,
+                    buttonTextColours,
+                    buttonOneCustomDialogResult,
+                    buttonTwoCustomDialogResult,
+                    buttonThreeCustomDialogResult,
+                    buttonFourDialogResult,
+                    buttonOneCustomText,
+                    buttonTwoCustomText,
+                    buttonThreeCustomText,
+                    buttonFourCustomText,
+                    applicationPath,
+                    messageContainerType,
+                    linkLabelCommand,
+                    contentLinkArea,
+                    linkLaunchArgument,
+                    openInExplorer,
+                    messageTextAlignment,
+                    richTextBoxTextAlignment,
+                    showOptionalCheckBox,
+                    optionalCheckBoxChecked,
+                    optionalCheckBoxText,
+                    useOptionalCheckBoxThreeState,
+                    useTimeOut,
+                    timeOut,
+                    timerResult);
 
-            return kmbe.ShowDialog(showOwner);
+                return kmbertl.ShowDialog(showOwner);
+            }
+            else
+            {
+                using VisualMessageBoxExtendedForm kmbe = new VisualMessageBoxExtendedForm(showOwner, text, caption,
+                    buttons,
+                    icon, defaultButton, helpInfo,
+                    showCtrlCopy, messageBoxTypeface,
+                    customImageIcon, showHelpButton,
+                    messageTextColour,
+                    buttonTextColours,
+                    buttonOneCustomDialogResult,
+                    buttonTwoCustomDialogResult,
+                    buttonThreeCustomDialogResult,
+                    buttonFourDialogResult,
+                    buttonOneCustomText,
+                    buttonTwoCustomText,
+                    buttonThreeCustomText,
+                    buttonFourCustomText,
+                    applicationPath,
+                    messageContainerType,
+                    linkLabelCommand,
+                    contentLinkArea,
+                    linkLaunchArgument,
+                    openInExplorer,
+                    messageTextAlignment,
+                    richTextBoxTextAlignment,
+                    showOptionalCheckBox,
+                    optionalCheckBoxChecked,
+                    optionalCheckBoxText,
+                    useOptionalCheckBoxThreeState,
+                    useTimeOut,
+                    timeOut,
+                    timerResult);
+
+                return kmbe.ShowDialog(showOwner);
+            }
         }
         #endregion
 

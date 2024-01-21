@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -239,7 +239,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         {
             _palette.Import();
 
-            _manager.GlobalPalette = _palette;
+            _manager.GlobalCustomPalette = _palette;
 
             _manager.GlobalPaletteMode = PaletteMode.Custom;
 
@@ -262,7 +262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _settingsManager.SaveSettings(_settingsManager.GetAskMe());
 
-            _manager.GlobalPalette = null;
+            _manager.GlobalCustomPalette = null;
 
             _manager.GlobalPaletteMode = PaletteMode.Microsoft365Blue;
 

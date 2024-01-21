@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -201,7 +201,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         /// <summary>Gets or sets the font.</summary>
         /// <value>The font.</value>
-        public Font StateCommonLongTextFont
+        public Font? StateCommonLongTextFont
         {
             get => _button.StateCommon.Content.LongText.Font;
 
@@ -218,7 +218,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         /// <summary>Gets or sets the corner radius.</summary>
         /// <value>The corner radius.</value>
-        [DefaultValue(GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE)]
+        [DefaultValue(-1)]
         public float StateCommonCornerRoundingRadius
         {
             get => _button.StateCommon.Border.Rounding;

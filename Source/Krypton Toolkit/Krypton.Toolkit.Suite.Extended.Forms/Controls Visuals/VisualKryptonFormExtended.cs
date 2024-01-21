@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
     //[ToolboxBitmap(typeof(KryptonFormExtended), "ToolboxBitmaps.KryptonForm.bmp")]
     //[Description(@"Draws the window chrome using a Krypton palette.")]
     //[Designer("Krypton.Toolkit.Suite.Extended.Forms.KryptonFormExtendedDesigner, Krypton.Toolkit")]
-    public abstract class VirtualKryptonFormExtended : VirtualForm, IContentValues
+    public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
     {
         #region Type Definitions
         /// <summary>
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             /// Initialize a new instance of the FormButtonSpecCollection class.
             /// </summary>
             /// <param name="owner">Reference to owning object.</param>
-            public FormButtonSpecCollection(VirtualKryptonFormExtended owner)
+            public FormButtonSpecCollection(VisualKryptonFormExtended owner)
                 : base(owner)
             {
             }
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             /// Initialize a new instance of the FormFixedButtonSpecCollection class.
             /// </summary>
             /// <param name="owner">Reference to owning object.</param>
-            public FormFixedButtonSpecCollection(VirtualKryptonFormExtended owner)
+            public FormFixedButtonSpecCollection(VisualKryptonFormExtended owner)
                 : base(owner)
             {
             }
@@ -100,6 +100,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         private string _textExtra;
         private string _oldText;
         private static bool _isInAdministratorMode;
+
+        private bool _hasUseThemeFormChromeBorderWidthFirstRun;
         private bool _allowFormChrome;
         private bool _allowStatusStripMerge;
         private bool _recreateButtons;
@@ -119,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <summary>
         /// Initialize a new instance of the KryptonFormExtended class.
         /// </summary>
-        public VirtualKryptonFormExtended()
+        public VisualKryptonFormExtended()
         {
             // Default properties
             _headerStyle = HeaderStyle.Form;
@@ -196,26 +198,11 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _buttonManager.ToolTipManager = ToolTipManager;
 
             // Hook into global static events
-            KryptonManager.GlobalAllowFormChromeChanged += OnGlobalAllowFormChromeChanged;
+            KryptonManager.GlobalUseThemeFormChromeBorderWidthChanged += OnGlobalUseThemeFormChromeBorderWidthChanged;
             KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             // Create the view manager instance
             ViewManager = new ViewManager(this, _drawDocker);
-
-            // If Windows 11 or higher
-            if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
-            {
-                _useWindows11StyleCornerRounding = true;
-
-                CornerRoundingRadius = 5;
-            }
-            else
-            {
-                _useWindows11StyleCornerRounding = false;
-
-                // Set the CornerRoundingRadius to 'GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE', default value
-                CornerRoundingRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE;
-            }
 
             // Disable 'UseDropShadow' on creation
 #pragma warning disable CS0618
@@ -239,7 +226,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
                 // Unhook from the global static events
                 KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
-                KryptonManager.GlobalAllowFormChromeChanged -= OnGlobalAllowFormChromeChanged;
+                KryptonManager.GlobalUseThemeFormChromeBorderWidthChanged -= OnGlobalUseThemeFormChromeBorderWidthChanged;
 
                 // Clear down the cached bitmap
                 if (_cacheBitmap != null)
@@ -287,9 +274,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// Gets or sets a value indicating if custom chrome is allowed.
         /// </summary>
         [Category(@"Visuals")]
-        [Description(@"Should custom chrome be allowed for this KryptonFormExtended instance.")]
+        [Description(@"Should custom chrome be allowed for this KryptonForm instance.")]
         [DefaultValue(true)]
-        public bool AllowFormChrome
+        public new bool UseThemeFormChromeBorderWidth
         {
             get => _allowFormChrome;
             set
@@ -297,9 +284,14 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 if (_allowFormChrome != value)
                 {
                     _allowFormChrome = value;
+                    if (StateCommon!.Border is PaletteFormBorderExtended formBorder)
+                    {
+                        formBorder.UseThemeFormChromeBorderWidth = value;
+                    }
 
                     // Do we want to switch on/off the custom chrome?
-                    UpdateCustomChromeDecision();
+                    UpdateUseThemeFormChromeBorderWidthDecision();
+                    RecalcNonClient();
                 }
             }
         }
@@ -667,53 +659,6 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         #endregion
 
         #region Public Chrome
-        /// <summary>
-        /// Perform layout on behalf of the composition element using our root element.
-        /// </summary>
-        /// <param name="context">Layout context.</param>
-        /// <param name="compRect">Rectangle for composition element.</param>
-        public override void WindowChromeCompositionLayout(ViewLayoutContext context,
-                                                           Rectangle compRect)
-        {
-            // Update buttons so the min/max/close and custom button 
-            // specs have visible states set to the correct values. For
-            // the form level buttons this means they are hidden.
-            _buttonManager.RefreshButtons(true);
-
-            // Tell the content to draw itself on a composition surface
-            _drawContent.DrawContentOnComposition = true;
-            _drawContent.Glowing = true;
-
-            // Update the fixed header area to that provided
-            _headingFixedSize.FixedSize = new Size(compRect.Height, compRect.Height);
-
-            // Perform actual layout of the element tree
-            ViewManager.Layout(context);
-        }
-
-        /// <summary>
-        /// Perform painting on behalf of the composition element using our root element.
-        /// </summary>
-        /// <param name="context">Rendering context.</param>
-        public override void WindowChromeCompositionPaint(RenderContext context)
-        {
-            // We do not draw background of form or header
-            _drawDocker.DrawCanvas = false;
-            _drawHeading.DrawCanvas = false;
-
-            ViewManager.Paint(context);
-        }
-
-        /// <summary>
-        /// Raises the <see cref="E:System.Windows.Forms.Control.Paint" /> event.
-        /// </summary>
-        /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs" /> that contains the event data.</param>
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            StateCommon.Border.Rounding = CornerRoundingRadius;
-
-            base.OnPaint(e);
-        }
 
         /// <summary>
         /// Gets a value indicating if the provided point is inside the minimize button.
@@ -848,9 +793,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         internal class FormPaletteRedirect : PaletteRedirect
         {
-            private readonly VirtualKryptonFormExtended _kryptonForm;
+            private readonly VisualKryptonFormExtended _kryptonForm;
 
-            public FormPaletteRedirect(PaletteBase? palette, VirtualKryptonFormExtended kryptonForm)
+            public FormPaletteRedirect(PaletteBase? palette, VisualKryptonFormExtended kryptonForm)
                 : base(palette) =>
                 _kryptonForm = kryptonForm;
 
@@ -920,7 +865,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             base.OnLoad(e);
 
             // We only apply custom chrome when control is already created and positioned
-            UpdateCustomChromeDecision();
+            UpdateUseThemeFormChromeBorderWidthDecision();
         }
 
         /// <summary>
@@ -977,10 +922,10 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _drawContent.Enabled = WindowActive;
 
             // Only need to redraw if showing custom chrome
-            if (ApplyCustomChrome)
-            {
+            //if (ApplyCustomChrome)
+            //{
                 PerformNeedPaint(false);
-            }
+            //}
 
             base.OnWindowActiveChanged();
         }
@@ -995,7 +940,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             base.OnPaletteChanged(e);
 
             // Test if we need to change the custom chrome usage
-            UpdateCustomChromeDecision();
+            UpdateUseThemeFormChromeBorderWidthDecision();
         }
 
         /// <summary>
@@ -1005,7 +950,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <param name="e">An EventArgs containing the event data.</param>
         protected override void OnAllowFormChromeChanged(object sender, EventArgs e) =>
             // Test if we need to change the custom chrome usage
-            UpdateCustomChromeDecision();
+            UpdateUseThemeFormChromeBorderWidthDecision();
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -1219,12 +1164,6 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 // Convert to window coordinates
                 Point windowPoint = ScreenToWindow(screenPoint);
 
-                // In composition we need to adjust for the left window border
-                if (ApplyComposition)
-                {
-                    windowPoint.X -= RealWindowBorders.Left;
-                }
-
                 // Is the mouse over the Application icon image area
                 if (_drawContent.ImageRectangle(context).Contains(windowPoint))
                 {
@@ -1388,11 +1327,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                     // Update the heading to have a height matching the window requirements
                     Padding windowBorders = RealWindowBorders;
                     _headingFixedSize.FixedSize = new Size(windowBorders.Top, windowBorders.Top);
-
-                    // The content is definitely not being drawn on a composition
-                    _drawContent.DrawContentOnComposition = false;
-                    _drawContent.Glowing = false;
-
+                    
                     // A change in window state since last time requires a layout
                     if (_lastWindowState != GetWindowState())
                     {
@@ -1546,22 +1481,25 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             oldRegion?.Dispose();
         }
 
-        private void UpdateCustomChromeDecision()
+        private void UpdateUseThemeFormChromeBorderWidthDecision()
         {
             if (IsHandleCreated)
             {
                 // Decide if we should have custom chrome applied
-                var needChrome = AllowFormChrome &&
-                                 KryptonManager.AllowFormChrome &&
-                                 (GetResolvedPalette().GetAllowFormChrome() == InheritBool.True);
+                var needChrome = UseThemeFormChromeBorderWidth &&
+                                 KryptonManager.UseThemeFormChromeBorderWidth &&
+                                 (GetResolvedPalette().UseThemeFormChromeBorderWidth == InheritBool.True);
 
                 // Is there a change in custom chrome requirement?
-                if (ApplyCustomChrome != needChrome)
+                if (UseThemeFormChromeBorderWidth != needChrome
+                    || !_hasUseThemeFormChromeBorderWidthFirstRun)
                 {
+                    _hasUseThemeFormChromeBorderWidthFirstRun = true;
                     _recreateButtons = true;
                     _firstCheckView = true;
-                    ApplyCustomChrome = needChrome;
-                    PerformNeedPaint(needChrome);
+                    UseThemeFormChromeBorderWidth = needChrome;
+                    base.UseThemeFormChromeBorderWidth = true; // make sure "Form" buttons are drawn correctly
+                    PerformNeedPaint(true);     // Force Layout size change 
                 }
             }
         }
@@ -1717,14 +1655,14 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void OnGlobalAllowFormChromeChanged(object sender, EventArgs e) => UpdateCustomChromeDecision();
+        private void OnGlobalUseThemeFormChromeBorderWidthChanged(object sender, EventArgs e) => UpdateUseThemeFormChromeBorderWidthDecision();
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             // We only care if we are using the global palette
             if (PaletteMode == PaletteMode.Global)
             {
-                UpdateCustomChromeDecision();
+                UpdateUseThemeFormChromeBorderWidthDecision();
             }
         }
         #endregion

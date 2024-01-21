@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -280,7 +280,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                     // Ask the renderer to work out how the Content values will be layed out and
                     // return a memento object that we cache for use when actually performing painting
-                    m_mementoContent = Renderer.RenderStandardContent.LayoutContent(ViewContext, ButtonBounds, m_paletteContent, this, VisualOrientation.Top, buttonState, false, glowing);
+                    m_mementoContent = Renderer.RenderStandardContent.LayoutContent(ViewContext, ButtonBounds, m_paletteContent, this, VisualOrientation.Top, buttonState);
 
                 }
             }

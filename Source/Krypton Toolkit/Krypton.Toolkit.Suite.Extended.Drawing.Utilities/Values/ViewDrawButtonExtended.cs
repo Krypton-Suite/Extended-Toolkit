@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -390,17 +390,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         public bool AllowUncheck { get; set; }
 
-        #endregion
-
-        #region DrawButtonComposition
-        /// <summary>
-        /// Gets and sets the composition usage of the button.
-        /// </summary>
-        public bool DrawButtonComposition
-        {
-            get => _drawCanvas.DrawCanvasOnComposition;
-            set => _drawCanvas.DrawCanvasOnComposition = value;
-        }
         #endregion
 
         #region TestForFocusCues
