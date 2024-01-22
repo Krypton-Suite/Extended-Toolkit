@@ -1478,7 +1478,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 

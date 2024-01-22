@@ -455,7 +455,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 }
                 catch (Exception e)
                 {
-                    ExceptionCapture.CaptureException(e);
+                    DebugUtilities.NotImplemented(e.ToString());
                 }
             }
             else
@@ -472,7 +472,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 }
                 catch (Exception e)
                 {
-                    ExceptionCapture.CaptureException(e);
+                    DebugUtilities.NotImplemented(e.ToString());
                 }
             }
         }

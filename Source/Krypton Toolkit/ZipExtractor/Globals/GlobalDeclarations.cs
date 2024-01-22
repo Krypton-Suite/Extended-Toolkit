@@ -39,4 +39,3 @@ global using System.Threading;
 global using System.Windows.Forms;
 
 global using Krypton.Toolkit;
-global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;

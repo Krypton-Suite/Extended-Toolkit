@@ -742,7 +742,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
         }
 
@@ -777,7 +777,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 
@@ -824,7 +824,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 

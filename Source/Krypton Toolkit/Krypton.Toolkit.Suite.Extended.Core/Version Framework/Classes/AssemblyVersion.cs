@@ -77,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 if (assemblyNameList.Length > 0)
                 {
-                    AssemblyInformation information = null;
+                    AssemblyInformation? information = null;
 
                     ReferenceAssembly = new();
 
@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception error)
             {
-                ExceptionCapture.CaptureException(error);
+                DebugUtilities.NotImplemented(error.ToString());
 
                 return false;
             }
@@ -120,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception error)
             {
-                ExceptionCapture.CaptureException(error);
+                DebugUtilities.NotImplemented(error.ToString());
 
                 return false;
             }

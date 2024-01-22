@@ -128,12 +128,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             _drawOuterSeparator = new ViewLayoutSeparator(1);
 
             // Create the view used to draw the split edge
-            _edgeRedirect = new PaletteBorderEdgeRedirect(_paletteNormal.PaletteBorder, null);
+            _edgeRedirect = new PaletteBorderEdgeRedirect(_paletteNormal.PaletteBorder!, null);
             _drawSplitBorder = new ViewDrawBorderEdge(new PaletteBorderEdge(_edgeRedirect, null), CommonHelper.VisualToOrientation(orientation));
 
             // Our view contains background and border with content inside
             _drawContent = new ViewDrawContent(_paletteNormal.PaletteContent, buttonValues, orientation);
-            _drawCanvas = new ViewDrawSplitCanvas(_paletteNormal.PaletteBack, _paletteNormal.PaletteBorder, paletteMetric, PaletteMetricPadding.None, orientation);
+            _drawCanvas = new ViewDrawSplitCanvas(_paletteNormal.PaletteBack, _paletteNormal.PaletteBorder!, paletteMetric, PaletteMetricPadding.None, orientation);
 
             // Use a docker layout to organize the contents of the canvas
             LayoutDocker = new ViewLayoutDocker
@@ -287,7 +287,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <summary>
         /// Gets and sets the source for button values.
         /// </summary>
-        public IContentValues ButtonValues
+        public IContentValues? ButtonValues
         {
             get => _drawContent.Values;
             set => _drawContent.Values = value;
@@ -416,18 +416,16 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                                 IPaletteTriple paletteTracking,
                                 IPaletteTriple palettePressed)
         {
-            Debug.Assert(paletteDisabled != null);
-            Debug.Assert(paletteNormal != null);
-            Debug.Assert(paletteTracking != null);
-            Debug.Assert(palettePressed != null);
+            System.Diagnostics.Debug.Assert(paletteDisabled != null);
+            System.Diagnostics.Debug.Assert(paletteNormal != null);
+            System.Diagnostics.Debug.Assert(paletteTracking != null);
+            System.Diagnostics.Debug.Assert(palettePressed != null);
 
             // Remember the new palette settings
-#pragma warning disable CS8601 // Possible null reference assignment.
-            _paletteDisabled = paletteDisabled;
-            _paletteNormal = paletteNormal;
-            _paletteTracking = paletteTracking;
-            _palettePressed = palettePressed;
-#pragma warning restore CS8601 // Possible null reference assignment.
+            _paletteDisabled = paletteDisabled!;
+            _paletteNormal = paletteNormal!;
+            _paletteTracking = paletteTracking!;
+            _palettePressed = palettePressed!;
 
             // Must force update of palettes to use latest ones provided
             _forcePaletteUpdate = true;
@@ -443,9 +441,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                                        IPaletteTriple paletteCheckedTracking,
                                        IPaletteTriple paletteCheckedPressed)
         {
-            Debug.Assert(paletteCheckedNormal != null);
-            Debug.Assert(paletteCheckedTracking != null);
-            Debug.Assert(paletteCheckedPressed != null);
+            System.Diagnostics.Debug.Assert(paletteCheckedNormal != null);
+            System.Diagnostics.Debug.Assert(paletteCheckedTracking != null);
+            System.Diagnostics.Debug.Assert(paletteCheckedPressed != null);
 
             // Remember the new palette settings
 #pragma warning disable CS8601 // Possible null reference assignment.
@@ -462,7 +460,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #region Evaluation
         public override bool EvalTransparentPaint(ViewContext context)
         {
-            Debug.Assert(context != null);
+            System.Diagnostics.Debug.Assert(context != null);
 
             // Ensure that child elements have correct palette state
 #pragma warning disable CS8604 // Possible null reference argument.
@@ -477,8 +475,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #region Layout
         public override Size GetPreferredSize(ViewLayoutContext context)
         {
-            Debug.Assert(context != null);
-            Debug.Assert(_drawCanvas != null);
+            System.Diagnostics.Debug.Assert(context != null);
+            System.Diagnostics.Debug.Assert(_drawCanvas != null);
 
             // Ensure that child elements have correct palette state
 #pragma warning disable CS8604 // Possible null reference argument.
@@ -493,7 +491,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         public override void Layout(ViewLayoutContext context)
         {
-            Debug.Assert(context != null);
+            System.Diagnostics.Debug.Assert(context != null);
 
             // Validate incoming reference
             if (context == null)
@@ -565,13 +563,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #region Paint
         public override void Render(RenderContext context)
         {
-            Debug.Assert(context != null);
+            System.Diagnostics.Debug.Assert(context != null);
 
             // Ensure that child elements have correct palette state
-            CheckPaletteState(context);
+            CheckPaletteState(context!);
 
             // Let base class perform standard rendering
-            base.Render(context);
+            base.Render(context!);
         }
         #endregion
 
@@ -582,7 +580,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             PaletteState buttonState = State;
 
             // If the actual control is not enabled, force to disabled state
-            if (!IsFixed && !context.Control.Enabled)
+            if (context.Control != null && !IsFixed && !context.Control.Enabled)
             {
                 buttonState = PaletteState.Disabled;
             }
@@ -593,7 +591,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 // Is the checked button allowed to become unchecked
                 if (AllowUncheck)
                 {
-                    // Show feedback on tracking and presssed
+                    // Show feedback on tracking and pressed
                     switch (buttonState)
                     {
                         case PaletteState.Normal:
@@ -652,14 +650,14 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         break;
                     default:
                         // Should never happen!
-                        Debug.Assert(false);
+                        System.Diagnostics.Debug.Assert(false);
                         break;
                 }
 
                 // Update with the correct palettes
-                _drawCanvas.SetPalettes(CurrentPalette.PaletteBack, CurrentPalette.PaletteBorder);
-                _drawContent.SetPalette(CurrentPalette.PaletteContent);
-                _edgeRedirect.SetPalette(CurrentPalette.PaletteBorder);
+                _drawCanvas.SetPalettes(CurrentPalette.PaletteBack, CurrentPalette.PaletteBorder!);
+                _drawContent.SetPalette(CurrentPalette.PaletteContent!);
+                _edgeRedirect.SetPalette(CurrentPalette.PaletteBorder!);
             }
         }
         #endregion
@@ -673,7 +671,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             _drawCanvas.Splitter = _splitter & _dropDown;
 
             ViewDockStyle dockStyle = ViewDockStyle.Right;
-            System.Windows.Forms.Orientation splitOrientation = System.Windows.Forms.Orientation.Vertical;
+            Orientation splitOrientation = System.Windows.Forms.Orientation.Vertical;
             switch (_dropDownPosition)
             {
                 case VisualOrientation.Top:

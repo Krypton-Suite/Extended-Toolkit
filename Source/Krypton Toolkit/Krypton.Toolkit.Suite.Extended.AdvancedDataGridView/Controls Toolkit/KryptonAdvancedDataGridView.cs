@@ -64,6 +64,8 @@
 #endregion
 
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+using DebugUtilities = Krypton.Toolkit.Suite.Extended.Debug.Tools.DebugUtilities;
+
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     [DesignerCategory("code")]
@@ -250,7 +252,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 }
                 catch (Exception e)
                 {
-                    ExceptionCapture.CaptureException(e);
+                    DebugUtilities.NotImplemented(e.ToString());
                 }
             }
 

@@ -16,19 +16,19 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         #region Implementation
 
-        internal static Image ExtractIconFromFilePath(string filePath)
+        internal static Image? ExtractIconFromFilePath(string filePath)
         {
-            Image icon = null;
+            Image? icon = null;
 
             try
             {
-                //Icon i = new Icon().
+                Icon? i = Icon.ExtractAssociatedIcon(filePath);
 
-                //icon = i.
+                icon = i?.ToBitmap();
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
 
             return icon;
@@ -42,13 +42,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             try
             {
-                targetControl.ImageLocation = $"{url}/favicon.ico";
+                targetControl.ImageLocation = $@"{url}/favicon.ico";
 
                 targetControl.SizeMode = sizeMode;
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 

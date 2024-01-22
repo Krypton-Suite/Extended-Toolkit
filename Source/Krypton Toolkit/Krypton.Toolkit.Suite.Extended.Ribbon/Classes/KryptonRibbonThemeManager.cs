@@ -154,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 
@@ -211,7 +211,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 
@@ -240,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 
@@ -272,7 +272,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 

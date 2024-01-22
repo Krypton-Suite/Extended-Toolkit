@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
             if (_txtStartPort.Text == string.Empty || _txtStopPort.Text == string.Empty)
             {
-                MessageBox.Show("Please enter a start port and a stop port");
+                KryptonMessageBox.Show("Please enter a start port and a stop port");
             }
             else
             {
@@ -207,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                         }
                         catch (Exception ex)
                         {
-                            ExceptionCapture.CaptureException(ex);
+                            DebugUtilities.NotImplemented(ex.ToString());
                         }
                         state.Port = i;
                         _worker.ReportProgress((int)progress, state);
@@ -217,7 +217,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
             catch (Exception ee)
             {
-                ExceptionCapture.CaptureException(ee);
+                DebugUtilities.NotImplemented(ee.ToString());
             }
         }
         #endregion

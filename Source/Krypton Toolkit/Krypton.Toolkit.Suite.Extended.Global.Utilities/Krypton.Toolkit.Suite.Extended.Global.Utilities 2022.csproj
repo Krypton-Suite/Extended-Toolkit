@@ -90,7 +90,7 @@
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.23.12.352-beta" />
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.1.22-beta" />
 					</ItemGroup>
 				</When>
 
@@ -123,6 +123,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Debug.Tools\Krypton.Toolkit.Suite.Extended.Debug.Tools 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
 	</ItemGroup>
 

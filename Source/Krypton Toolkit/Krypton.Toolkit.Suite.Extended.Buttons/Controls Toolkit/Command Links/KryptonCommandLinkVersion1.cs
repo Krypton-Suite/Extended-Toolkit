@@ -36,7 +36,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     [ToolboxItem(true), ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.CommandLinkButton.bmp"), DefaultEvent("Click"),
      DefaultProperty("Heading"), Designer(typeof(KryptonCommandLinkButtonDesigner)), DesignerCategory("code"),
      ClassInterface(ClassInterfaceType.AutoDispatch), DisplayName("Krypton Command Link"),
-     Description("A Krypton Command Link Button."), ComVisible(true)]
+     Description("A Krypton Command Link Button."), ComVisible(true),
+    Obsolete(@"Use versions that are supported in the Standard Toolkit.")]
     public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     {
         #region Instance Fields
@@ -668,7 +669,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     }
                     catch (Exception exc)
                     {
-                        ExceptionCapture.CaptureException(exc);
+                        DebugUtilities.NotImplemented(exc.ToString());
                     }
                 }
             }

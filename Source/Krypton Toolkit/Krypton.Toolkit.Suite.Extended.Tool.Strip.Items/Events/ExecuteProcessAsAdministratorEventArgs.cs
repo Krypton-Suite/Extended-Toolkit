@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 }
                 catch (Win32Exception e)
                 {
-                    ExceptionCapture.CaptureException(e);
+                    DebugUtilities.NotImplemented(e.ToString());
                 }
 
                 return;

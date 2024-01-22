@@ -240,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public static void LaunchBrowser(string url = "https://ScottPlot.NET")
         {
             // A cross-platform .NET-Core-safe function to launch a URL in the browser
-            Debug.WriteLine($"Launching URL: {url}");
+            System.Diagnostics.Debug.WriteLine($"Launching URL: {url}");
             try
             {
                 Process.Start(url);

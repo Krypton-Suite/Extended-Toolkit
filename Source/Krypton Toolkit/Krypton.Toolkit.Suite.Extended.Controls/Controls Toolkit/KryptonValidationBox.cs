@@ -190,7 +190,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
 
             base.OnValidating(e);

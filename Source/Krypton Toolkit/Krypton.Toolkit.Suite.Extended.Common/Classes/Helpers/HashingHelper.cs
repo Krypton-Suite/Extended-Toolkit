@@ -71,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -189,7 +189,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 

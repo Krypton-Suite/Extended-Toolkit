@@ -85,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
 
                 basicPaletteColourManager.ResetToDefaults();
             }
@@ -130,7 +130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
 
                 basicPaletteColourManager.ResetToDefaults();
             }

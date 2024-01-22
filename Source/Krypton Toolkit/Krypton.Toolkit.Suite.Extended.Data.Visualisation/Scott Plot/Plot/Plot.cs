@@ -208,8 +208,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             if (showWarning)
             {
-                Debug.WriteLine("WARNING: GetSettings() is only for development and testing. " +
-                                "Be aware its class structure changes frequently!");
+                System.Diagnostics.Debug.WriteLine("WARNING: GetSettings() is only for development and testing. " +
+                                                   "Be aware its class structure changes frequently!");
             }
 
             return settings;

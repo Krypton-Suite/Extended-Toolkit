@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void UploadThemeBrowser_Load(object sender, EventArgs e)
         {
-            ApplicationUtilities.UnderConstruction();
+            DebugUtilities.NotImplemented(@"This feature has not been implemented yet.");
 
             Hide();
         }

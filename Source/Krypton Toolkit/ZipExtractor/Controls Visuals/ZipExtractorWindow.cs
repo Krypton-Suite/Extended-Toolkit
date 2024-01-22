@@ -1,4 +1,6 @@
-﻿namespace ZipExtractor
+﻿using DebugUtilities = Krypton.Toolkit.Suite.Extended.Debug.Tools.DebugUtilities;
+
+namespace ZipExtractor
 {
     public partial class ZipExtractorWindow : KryptonForm
     {
@@ -117,7 +119,7 @@
                     }
                     catch (Exception exception)
                     {
-                        ExceptionCapture.CaptureException(exception);
+                        DebugUtilities.NotImplemented(exception.ToString());
                     }
                 }
 
@@ -332,7 +334,7 @@
 
                 _logBuilder.AppendLine(exception.ToString());
 
-                ExceptionCapture.CaptureException(exception);
+                DebugUtilities.NotImplemented(exception.ToString());
             }
             finally
             {

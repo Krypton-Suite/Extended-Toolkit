@@ -26,6 +26,8 @@
  */
 #endregion
 
+using DebugUtilities = Krypton.Toolkit.Suite.Extended.Debug.Tools.DebugUtilities;
+
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
     /// <summary>
@@ -118,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             try
             {
-                ExceptionDispatchInfo exceptionInfo = null;
+                ExceptionDispatchInfo? exceptionInfo = null;
 
                 if (!File.Exists(fileName))
                 {
@@ -137,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
         }
 
@@ -165,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
         #endregion

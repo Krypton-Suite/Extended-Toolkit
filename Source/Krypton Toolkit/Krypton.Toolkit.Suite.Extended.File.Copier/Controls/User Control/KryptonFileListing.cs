@@ -310,11 +310,11 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
         }
 
-        private void PropagateFileList(List<string> directoryContents, string directory, string fileType = null)
+        private void PropagateFileList(List<string> directoryContents, string directory, string? fileType = null)
         {
             DirectoryInfo directoryInfo = new(directory);
 
@@ -390,12 +390,13 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                         }
                         break;
                     default:
+                        DebugUtilities.NotImplemented(_fileDialogType.ToString());
                         throw new ArgumentOutOfRangeException();
                 }
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 

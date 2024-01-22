@@ -34,4 +34,4 @@ global using System.Windows.Forms;
 global using System.Xml;
 global using System.Xml.Serialization;
 
-global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+global using Krypton.Toolkit.Suite.Extended.Debug.Tools;

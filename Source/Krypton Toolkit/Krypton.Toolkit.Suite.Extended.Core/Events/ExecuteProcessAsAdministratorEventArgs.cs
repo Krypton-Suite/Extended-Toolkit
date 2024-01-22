@@ -71,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 }
                 catch (Win32Exception e)
                 {
-                    ExceptionCapture.CaptureException(e);
+                    DebugUtilities.NotImplemented(e.ToString());
                 }
 
                 return;

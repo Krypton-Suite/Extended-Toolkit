@@ -136,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     {
                         //CoreInternalKryptonMessageBoxExtended.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: { _globalMethods.GetOSFriendlyName() }.\nException message: { exc.Message }.", "Unsupported Software", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                        ExceptionCapture.CaptureException(exc);
+                        DebugUtilities.NotImplemented(exc.ToString());
 
                         _isSystemAbleToLoadShield = false;
                     }

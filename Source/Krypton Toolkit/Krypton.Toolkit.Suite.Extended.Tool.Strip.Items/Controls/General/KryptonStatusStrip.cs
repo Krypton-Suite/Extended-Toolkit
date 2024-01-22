@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
 
             base.OnRendererChanged(e);

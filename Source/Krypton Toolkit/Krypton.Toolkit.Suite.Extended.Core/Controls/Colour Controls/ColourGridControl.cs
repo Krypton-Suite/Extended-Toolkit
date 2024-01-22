@@ -1297,7 +1297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 _scaledCellSize = _cellSize;
             }
 
-            Debug.WriteLine(_scaledCellSize);
+            System.Diagnostics.Debug.WriteLine(_scaledCellSize);
         }
 
         /// <summary>
@@ -1605,7 +1605,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 colorCount = Colours.Count;
 
-                Debug.Print(e.ClipRectangle.Size == ClientSize ? "Performing full paint!" : "Performing partial paint!");
+                System.Diagnostics.Debug.Print(e.ClipRectangle.Size == ClientSize ? "Performing full paint!" : "Performing partial paint!");
 
                 OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc as the PaintBackground event is no longer being called
 
@@ -1922,7 +1922,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (AllowPainting)
             {
-                Debug.Print("Calculating colours...");
+                System.Diagnostics.Debug.Print("Calculating colours...");
 
                 CalculateGridSize();
                 if (AutoFit)
@@ -2007,7 +2007,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (index >= 0 && index < collection.Count && collection[index] != Colour)
             {
-                Debug.Print("Replacing index {0} with {1}", index, collection[index]);
+                System.Diagnostics.Debug.Print("Replacing index {0} with {1}", index, collection[index]);
 
                 _previousColourIndex = index;
                 _colorIndex = -1;
