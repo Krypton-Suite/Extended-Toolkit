@@ -719,7 +719,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <exception cref="ArgumentNullException"></exception>
         protected virtual void OnButtonSpecChanged(object sender, EventArgs e)
         {
-            Debug.Assert(e != null);
+            System.Diagnostics.Debug.Assert(e != null);
 
             // Validate incoming reference
             if (e == null)
@@ -766,7 +766,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <exception cref="ArgumentNullException"></exception>
         protected virtual void OnNeedPaint(object sender, NeedLayoutEventArgs e)
         {
-            Debug.Assert(e != null);
+            System.Diagnostics.Debug.Assert(e != null);
 
             // Validate incoming reference
             if (e == null)

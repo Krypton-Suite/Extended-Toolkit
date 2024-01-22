@@ -219,7 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
             else
             {
-                Debug.WriteLine("DragTo() called but no side selected. Call IsUnderMouse() to select a side.");
+                System.Diagnostics.Debug.WriteLine("DragTo() called but no side selected. Call IsUnderMouse() to select a side.");
             }
 
             // ensure fixed-width spans stay entirely inside the allowable range

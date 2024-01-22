@@ -397,7 +397,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             {
                 string message =
                     $"ScottPlot {Plot.Version} WARNING:\n{ControlName}.Refresh() must be called\nafter modifying the plot or its data.";
-                Debug.WriteLine(message.Replace("\n", " "));
+                System.Diagnostics.Debug.WriteLine(message.Replace("\n", " "));
                 AddErrorMessage(Bmp, message);
             }
 

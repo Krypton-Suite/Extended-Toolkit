@@ -247,7 +247,7 @@
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -308,7 +308,7 @@
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 
@@ -348,7 +348,7 @@
                     }
                     catch (Exception exc)
                     {
-                        ExceptionCapture.CaptureException(exc);
+                        DebugUtilities.NotImplemented(exc.ToString());
                     }
                 }
             }

@@ -74,10 +74,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                   PaletteContentStyle contentStyle)
             : base(renderer, true)
         {
-            Debug.Assert(contentValues != null);
+            System.Diagnostics.Debug.Assert(contentValues != null);
 
             // Remember references needed later
-            _contentValues = contentValues;
+            _contentValues = contentValues!;
 
             // Create the triple redirector needed by view elements
             _palette = new(redirector, backStyle, borderStyle, contentStyle, NeedPaintDelegate);

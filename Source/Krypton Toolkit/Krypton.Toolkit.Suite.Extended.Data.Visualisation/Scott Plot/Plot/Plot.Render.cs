@@ -115,7 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 }
                 catch (OverflowException)
                 {
-                    Debug.WriteLine($"OverflowException plotting: {plottable}");
+                    System.Diagnostics.Debug.WriteLine($"OverflowException plotting: {plottable}");
                 }
             }
         }

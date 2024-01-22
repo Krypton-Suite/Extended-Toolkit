@@ -589,7 +589,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 case DrawingNativeMethods.SB_TOP:
                     return ScrollEventType.First;
                 default:
-                    throw new ArgumentException(string.Format("{0} isn't a valid scroll event type.", wParam), "wparam");
+                    throw new ArgumentException($"{wParam} isn't a valid scroll event type.", "wparam");
             }
         }
 
@@ -890,7 +890,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         scrollInfo.nPos = scrollInfo.nMax;
                         break;
                     default:
-                        Debug.Assert(false, string.Format("Unknown scroll event type {0}", eventType));
+                        System.Diagnostics.Debug.Assert(false, $"Unknown scroll event type {eventType}");
                         break;
                 }
 

@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             {
                 try
                 {
-                    PingReply reply = pingSender.Send(host, timeout, buffer, options);
+                    PingReply? reply = pingSender.Send(host, timeout, buffer, options);
 
                     if (reply.Status == IPStatus.Success)
                     {
@@ -154,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                 }
                 catch (Exception ex)
                 {
-                    ExceptionCapture.CaptureException(ex);
+                    DebugUtilities.NotImplemented(ex.ToString());
                     break;
                 }
             }

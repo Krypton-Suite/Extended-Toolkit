@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 }
                 catch (Exception e)
                 {
-                    ExceptionCapture.CaptureException(e);
+                    DebugUtilities.NotImplemented(e.ToString());
                 }
             }
         }
@@ -238,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                     }
                     catch (Exception exception)
                     {
-                        ExceptionCapture.CaptureException(exception);
+                        DebugUtilities.NotImplemented(exception.ToString());
                     }
                 }
             }

@@ -25,7 +25,7 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+using DebugUtilities = Krypton.Toolkit.Suite.Extended.Debug.Tools.DebugUtilities;
 
 using Microsoft.Win32;
 
@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
 
             if (OnClearRecentFilesClick != null)
@@ -131,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
         {
             RegistryKey key;
 
-            string value;
+            string? value;
 
             ToolStripItem item;
 
@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
 
                 return;
             }
@@ -197,7 +197,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
 
             try
             {
-                RegistryKey key = Registry.CurrentUser.CreateSubKey(manager._subKeyName, RegistryKeyPermissionCheck.ReadWriteSubTree);
+                RegistryKey? key = Registry.CurrentUser.CreateSubKey(manager._subKeyName, RegistryKeyPermissionCheck.ReadWriteSubTree);
 
                 for (int i = 0; true; i++)
                 {
@@ -221,7 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
 
             manager.RefreshRecentFilesMenu();
@@ -259,7 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
 
             RefreshRecentFilesMenu();
@@ -291,7 +291,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
 
             manager.RefreshRecentFilesMenu();
@@ -319,7 +319,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
 
             RefreshRecentFilesMenu();

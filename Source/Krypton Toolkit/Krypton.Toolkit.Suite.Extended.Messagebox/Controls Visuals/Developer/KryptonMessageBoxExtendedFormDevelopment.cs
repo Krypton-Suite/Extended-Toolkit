@@ -1232,7 +1232,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 
@@ -1244,7 +1244,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 

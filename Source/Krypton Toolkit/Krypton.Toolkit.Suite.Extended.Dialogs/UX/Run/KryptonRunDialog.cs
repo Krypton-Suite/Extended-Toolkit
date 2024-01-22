@@ -127,11 +127,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             try
             {
-                CommonOpenFileDialog cofd = new();
+                CommonOpenFileDialog cofd = new CommonOpenFileDialog()
+                {
+                    IsFolderPicker = isFolderPicker,
 
-                cofd.IsFolderPicker = isFolderPicker;
-
-                cofd.Title = @"Browse for a resource:";
+                    Title = @"Browse for a resource:"
+                };
 
                 if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
                 {
@@ -140,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
 
                 return result;
             }

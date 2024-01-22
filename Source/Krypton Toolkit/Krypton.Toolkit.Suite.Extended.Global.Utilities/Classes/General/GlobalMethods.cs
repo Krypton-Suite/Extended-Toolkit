@@ -127,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc, "Exception Thrown", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error, "GlobalMethods", "CheckIfTargetPlatformIsSupported(bool useLegacyVistaSupport = false)");
+                DebugUtilities.NotImplemented(exc.ToString());
 
                 SetIsTargetPlatformSupported(false);
             }
@@ -154,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
 
                 SetIsTargetPlatform64BIT(false);
             }
@@ -174,7 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
 
                 SetIsAssemblies64BIT(false);
             }
@@ -474,7 +474,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
 
                 SetIsTargetPlatform64BIT(false);
             }
@@ -494,7 +494,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
 
                 SetIsAssemblies64BIT(false);
             }
@@ -527,7 +527,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 }
                 catch (Win32Exception wexc)
                 {
-                    ExceptionCapture.CaptureException(wexc);
+                    DebugUtilities.NotImplemented(wexc.ToString());
                 }
 
                 return;

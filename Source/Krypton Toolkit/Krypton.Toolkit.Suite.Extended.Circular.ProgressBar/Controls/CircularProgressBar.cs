@@ -25,6 +25,8 @@
  */
 #endregion
 
+using DebugUtilities = Krypton.Toolkit.Suite.Extended.Debug.Tools.DebugUtilities;
+
 namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 {
     /// <summary>The circular progress bar windows form control.</summary>
@@ -679,7 +681,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 

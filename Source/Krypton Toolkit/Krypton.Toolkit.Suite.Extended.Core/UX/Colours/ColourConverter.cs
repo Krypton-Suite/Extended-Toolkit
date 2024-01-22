@@ -25,7 +25,7 @@
             }
             catch (Exception exception)
             {
-                ExceptionCapture.CaptureException(exception);
+                DebugUtilities.NotImplemented(exception.ToString());
             }
         }
 
@@ -38,7 +38,7 @@
             }
             catch (Exception exception)
             {
-                ExceptionCapture.CaptureException(exception);
+                DebugUtilities.NotImplemented(exception.ToString());
             }
         }
 

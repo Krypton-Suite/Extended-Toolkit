@@ -29,6 +29,8 @@
 
 // ReSharper disable NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
 // ReSharper disable ConvertToNullCoalescingCompoundAssignment
+using DebugUtilities = Krypton.Toolkit.Suite.Extended.Debug.Tools.DebugUtilities;
+
 namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
@@ -150,7 +152,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
         }
 
