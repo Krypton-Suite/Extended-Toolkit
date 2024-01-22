@@ -175,8 +175,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Panels 2022", "Krypton.Toolkit.Suite.Extended.Panels\Krypton.Toolkit.Suite.Extended.Panels 2022.csproj", "{335DD135-6475-46D5-A7DB-EA329224D59E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Toast 2022", "Krypton.Toolkit.Suite.Extended.Toast\Krypton.Toolkit.Suite.Extended.Toast 2022.csproj", "{97917447-2353-4D4D-935F-CF9279F1464F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Miscellaneous", "Miscellaneous", "{241C9BD1-CB7D-4AF0-8FDB-3BCB4C98AF51}"
 	ProjectSection(SolutionItems) = preProject
 		..\.editorconfig = ..\.editorconfig
@@ -203,6 +201,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Themes 2022", "Krypton.Toolkit.Suite.Extended.Themes\Krypton.Toolkit.Suite.Extended.Themes 2022.csproj", "{A58A93DE-0CBF-495B-8D29-761B1143AD32}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Buttons 2022", "Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj", "{A7C0B094-539C-4283-AA9A-3959749886B7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354} = {DDC3EC31-7D14-47BD-9DAF-24AF5B032354}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Calendar 2022", "Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj", "{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}"
 EndProject
@@ -283,6 +284,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Issue Templates", "Issue Te
 		..\..\.github\ISSUE_TEMPLATE\other-issues.md = ..\..\.github\ISSUE_TEMPLATE\other-issues.md
 		..\..\.github\ISSUE_TEMPLATE\post-a-question.md = ..\..\.github\ISSUE_TEMPLATE\post-a-question.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Debug.Tools 2022", "Krypton.Toolkit.Suite.Extended.Debug.Tools\Krypton.Toolkit.Suite.Extended.Debug.Tools 2022.csproj", "{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -500,14 +503,6 @@ Global
 		{335DD135-6475-46D5-A7DB-EA329224D59E}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
 		{335DD135-6475-46D5-A7DB-EA329224D59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{335DD135-6475-46D5-A7DB-EA329224D59E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97917447-2353-4D4D-935F-CF9279F1464F}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
-		{97917447-2353-4D4D-935F-CF9279F1464F}.Canary|Any CPU.Build.0 = Canary|Any CPU
-		{97917447-2353-4D4D-935F-CF9279F1464F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97917447-2353-4D4D-935F-CF9279F1464F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97917447-2353-4D4D-935F-CF9279F1464F}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
-		{97917447-2353-4D4D-935F-CF9279F1464F}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
-		{97917447-2353-4D4D-935F-CF9279F1464F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97917447-2353-4D4D-935F-CF9279F1464F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CB1E8B1F-E019-498A-8E4E-117012F6368C}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
 		{CB1E8B1F-E019-498A-8E4E-117012F6368C}.Canary|Any CPU.Build.0 = Canary|Any CPU
 		{CB1E8B1F-E019-498A-8E4E-117012F6368C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -780,6 +775,14 @@ Global
 		{975DA9CB-501F-442E-8339-AF625C7A5DA4}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
 		{975DA9CB-501F-442E-8339-AF625C7A5DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{975DA9CB-501F-442E-8339-AF625C7A5DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}.Canary|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}.Canary|Any CPU.Build.0 = Debug|Any CPU
+		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
+		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -827,7 +830,6 @@ Global
 		{9ACA6117-D269-4425-8500-6BC57560DEB2} = {87BE2145-50BE-4A57-9C79-FCE5A64F6065}
 		{2AEC1C12-E8A8-4715-8B8D-9DB405C06FBB} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{335DD135-6475-46D5-A7DB-EA329224D59E} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
-		{97917447-2353-4D4D-935F-CF9279F1464F} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{241C9BD1-CB7D-4AF0-8FDB-3BCB4C98AF51} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
 		{CB1E8B1F-E019-498A-8E4E-117012F6368C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
@@ -868,6 +870,7 @@ Global
 		{975DA9CB-501F-442E-8339-AF625C7A5DA4} = {4985A154-8526-4CB0-A7DC-B39736C4A8AC}
 		{5D204922-259D-4140-B115-F01EDF031B5A} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
 		{362F24FA-1AA0-4821-A539-C5A863D39B8B} = {5D204922-259D-4140-B115-F01EDF031B5A}
+		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

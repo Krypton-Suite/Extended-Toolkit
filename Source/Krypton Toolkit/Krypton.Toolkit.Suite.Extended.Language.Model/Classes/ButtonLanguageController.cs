@@ -26,6 +26,8 @@
  */
 #endregion
 
+using DebugUtilities = Krypton.Toolkit.Suite.Extended.Debug.Tools.DebugUtilities;
+
 namespace Krypton.Toolkit.Suite.Extended.Language.Model
 {
     public class ButtonLanguageController
@@ -352,7 +354,7 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 

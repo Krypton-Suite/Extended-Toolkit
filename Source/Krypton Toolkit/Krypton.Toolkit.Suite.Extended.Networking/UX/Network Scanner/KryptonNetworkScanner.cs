@@ -106,7 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }//try/catch
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
         }
 

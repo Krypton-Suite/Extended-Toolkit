@@ -263,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
                         if (serializer != null)
                         {
-                            ColorCollection colours;
+                            ColorCollection? colours;
 
                             if (!serializer.CanRead)
                             {
@@ -297,7 +297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     }
                     catch (Exception exc)
                     {
-                        ExceptionCapture.CaptureException(exc);
+                        DebugUtilities.NotImplemented(exc.ToString());
                     }
                 }
             }

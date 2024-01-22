@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         /// </summary>
         /// <returns>Arraylist that represents all the SV_TYPE_WORKSTATION and SV_TYPE_SERVER
         /// PC's in the Domain</returns>
-        public ArrayList GetNetworkComputers()
+        public ArrayList? GetNetworkComputers()
         {
             //local fields
             ArrayList networkComputers = new ArrayList();
@@ -178,9 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException($"Problem with accessing network computers in NetworkBrowser\r\n\r\n\r\n{ex.Message}",
-                    "Error", KryptonMessageBoxButtons.OK,
-                    KryptonMessageBoxIcon.Error);
+                DebugUtilities.NotImplemented(ex.ToString());
 
                 return null;
             }

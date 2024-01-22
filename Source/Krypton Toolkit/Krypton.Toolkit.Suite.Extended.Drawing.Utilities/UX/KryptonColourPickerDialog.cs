@@ -324,7 +324,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     }
                     catch (Exception exc)
                     {
-                        ExceptionCapture.CaptureException(exc);
+                        DebugUtilities.NotImplemented(exc.ToString());
                     }
                 }
             }
@@ -357,7 +357,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     }
                     catch (Exception exc)
                     {
-                        ExceptionCapture.CaptureException(exc);
+                        DebugUtilities.NotImplemented(exc.ToString());
                     }
                 }
                 else

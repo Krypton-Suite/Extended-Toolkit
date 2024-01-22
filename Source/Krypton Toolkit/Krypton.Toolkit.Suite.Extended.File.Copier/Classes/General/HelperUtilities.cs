@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.File.Copier
 {
-    internal static class HelperUtilites
+    internal static class HelperUtilities
     {
         #region Variables
 
@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             return tempList;
         }
 
-        public static string[] ReturnDirectoryListing(List<string> inputList)
+        public static string[]? ReturnDirectoryListing(List<string> inputList)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
 
                 return null;
             }

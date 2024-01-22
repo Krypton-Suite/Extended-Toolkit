@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             catch (Win32Exception ex)
             {
                 //return; //If cancelled, do nothing
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
 
             Application.Exit();

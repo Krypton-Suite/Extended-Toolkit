@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
             catch (Win32Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
 
                 return; //If cancelled, do nothing
             }

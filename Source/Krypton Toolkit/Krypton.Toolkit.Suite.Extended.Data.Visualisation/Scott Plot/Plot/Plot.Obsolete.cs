@@ -1101,7 +1101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             if (!string.IsNullOrWhiteSpace(label))
             {
-                Debug.WriteLine("WARNING: the PlotText() label argument is ignored");
+                System.Diagnostics.Debug.WriteLine("WARNING: the PlotText() label argument is ignored");
             }
 
             Text plottableText = new Text()

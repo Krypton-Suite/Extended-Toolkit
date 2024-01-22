@@ -225,7 +225,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 

@@ -179,7 +179,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
             catch (IOException e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -246,7 +246,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
 
             base.OnClick(e);

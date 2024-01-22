@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
             if (showWarning)
             {
-                Debug.WriteLine(
+                System.Diagnostics.Debug.WriteLine(
                     "WARNING: GetSettings() is only for development and testing. " +
                     "Not all features may be fully implemented. " +
                     "Its API may not be stable across future versions.");

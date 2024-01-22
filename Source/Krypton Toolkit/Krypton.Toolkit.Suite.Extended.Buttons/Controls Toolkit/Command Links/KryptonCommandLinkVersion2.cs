@@ -174,7 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     }
                     catch (Exception exc)
                     {
-                        ExceptionCapture.CaptureException(exc);
+                        DebugUtilities.NotImplemented(exc.ToString());
                     }
                 }
             }

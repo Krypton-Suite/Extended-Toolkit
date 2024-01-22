@@ -542,7 +542,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void kbtnRequestTheme_Click(object sender, EventArgs e)
         {
-            ApplicationUtilities.UnderConstruction();
+            DebugUtilities.NotImplemented(@"This feature has not been implemented yet.");
         }
 
         private void kbtnResetDarkAndLightTheme_Click(object sender, EventArgs e)

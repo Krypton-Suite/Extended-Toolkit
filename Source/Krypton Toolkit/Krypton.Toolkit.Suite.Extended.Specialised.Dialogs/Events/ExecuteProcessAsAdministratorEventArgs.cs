@@ -105,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
                 }
                 catch (Win32Exception e)
                 {
-                    ExceptionCapture.CaptureException(e);
+                    DebugUtilities.NotImplemented(e.ToString());
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿#region MIT License
 /*
+ *
  * MIT License
  *
  * Copyright (c) 2017 - 2024 Krypton Suite
@@ -25,30 +26,7 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Toast
-{
-    public enum KryptonButtonBuiltInDisplayString
-    {
-        Abort = 0,
-        Apply = 1,
-        Cancel = 2,
-        Collapse = 3,
-        Continue = 4,
-        Close = 5,
-        Custom = 6,
-        Yes = 7,
-        No = 8,
-        Ok = 9,
-        Retry = 10,
-        Ignore = 11,
-        Help = 12,
-        TryAgain = 13,
-        Expand = 14,
-        Today = 15,
-        Back = 16,
-        Exit = 17,
-        Finish = 18,
-        Next = 19,
-        Previous = 20
-    }
-}
+global using System;
+global using System.Runtime.CompilerServices;
+global using System.Diagnostics;
+global using System.Windows.Forms;

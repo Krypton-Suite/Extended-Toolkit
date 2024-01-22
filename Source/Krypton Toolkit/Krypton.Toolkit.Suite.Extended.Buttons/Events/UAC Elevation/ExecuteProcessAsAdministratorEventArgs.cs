@@ -104,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 }
                 catch (Win32Exception e)
                 {
-                    ExceptionCapture.CaptureException(e);
+                    DebugUtilities.NotImplemented(e.ToString());
                 }
 
                 return;
