@@ -116,7 +116,9 @@
 	</Choose>
 
 	<ItemGroup>
-		<None Remove="Scott Plot\Plottable\3yzteoeo.knu~" />
+	  <PackageReference Include="NETStandard.Library" Version="2.0.3" />
+	  <PackageReference Include="SkiaSharp" Version="2.88.7" />
+	  <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
 	</ItemGroup>
 
 	<ItemGroup>

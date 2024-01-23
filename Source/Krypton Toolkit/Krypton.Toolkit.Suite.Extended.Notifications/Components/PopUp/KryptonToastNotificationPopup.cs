@@ -366,7 +366,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     _realAnimationDuration = AnimationDuration;
                     _tmrAnimation.Start();
                     _sw = Stopwatch.StartNew();
-                    System.Diagnostics.Debug.WriteLine("Animation started.");
+                    DebugUtilities.WriteLine("Animation started.");
                 }
                 else
                 {
@@ -388,7 +388,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                         _isAppearing = true;
                         _realAnimationDuration = Math.Max((int)_sw.ElapsedMilliseconds, 1);
                         _sw.Restart();
-                        System.Diagnostics.Debug.WriteLine("Animation direction changed.");
+                        DebugUtilities.WriteLine("Animation direction changed.");
                     }
                     _frmPopup.Invalidate();
                 }
@@ -400,8 +400,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         public void Hide()
         {
-            System.Diagnostics.Debug.WriteLine("Animation stopped.");
-            System.Diagnostics.Debug.WriteLine("Wait timer stopped.");
+            DebugUtilities.WriteLine("Animation stopped.");
+            DebugUtilities.WriteLine("Wait timer stopped.");
             _tmrAnimation.Stop();
             _tmrWait.Stop();
             _frmPopup.Hide();
@@ -421,12 +421,12 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void frmPopup_ContextMenuClosed(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Menu closed.");
+            DebugUtilities.WriteLine("Menu closed.");
             if (!_mouseIsOn)
             {
                 _tmrWait.Interval = Delay;
                 _tmrWait.Start();
-                System.Diagnostics.Debug.WriteLine("Wait timer started.");
+                DebugUtilities.WriteLine("Wait timer started.");
             }
         }
 
@@ -439,9 +439,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void frmPopup_ContextMenuOpened(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Menu opened.");
+            DebugUtilities.WriteLine("Menu opened.");
             _tmrWait.Stop();
-            System.Diagnostics.Debug.WriteLine("Wait timer stopped.");
+            DebugUtilities.WriteLine("Wait timer stopped.");
         }
 
         /// <summary>
@@ -529,7 +529,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
                 _sw.Reset();
                 _tmrAnimation.Stop();
-                System.Diagnostics.Debug.WriteLine("Animation stopped.");
+                DebugUtilities.WriteLine("Animation stopped.");
 
                 if (_isAppearing)
                 {
@@ -555,7 +555,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     {
                         _tmrWait.Stop();
                         _tmrWait.Start();
-                        System.Diagnostics.Debug.WriteLine("Wait timer started.");
+                        DebugUtilities.WriteLine("Wait timer started.");
                     }
                 }
                 else
@@ -576,12 +576,12 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void tmWait_Tick(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Wait timer elapsed.");
+            DebugUtilities.WriteLine("Wait timer elapsed.");
             _tmrWait.Stop();
             _tmrAnimation.Interval = AnimationInterval;
             _tmrAnimation.Start();
             _sw.Restart();
-            System.Diagnostics.Debug.WriteLine("Animation started.");
+            DebugUtilities.WriteLine("Animation started.");
         }
 
         /// <summary>
@@ -591,12 +591,12 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void frmPopup_MouseLeave(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("MouseLeave");
+            DebugUtilities.WriteLine("MouseLeave");
             if (_frmPopup.Visible && (OptionsMenu == null || !OptionsMenu.Visible))
             {
                 _tmrWait.Interval = Delay;
                 _tmrWait.Start();
-                System.Diagnostics.Debug.WriteLine("Wait timer started.");
+                DebugUtilities.WriteLine("Wait timer started.");
             }
             _mouseIsOn = false;
         }
@@ -608,17 +608,17 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void frmPopup_MouseEnter(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("MouseEnter");
+            DebugUtilities.WriteLine("MouseEnter");
             if (!_isAppearing)
             {
                 _frmPopup.Top = _maxPosition;
                 _frmPopup.Opacity = _maxOpacity;
                 _tmrAnimation.Stop();
-                System.Diagnostics.Debug.WriteLine("Animation stopped.");
+                DebugUtilities.WriteLine("Animation stopped.");
             }
 
             _tmrWait.Stop();
-            System.Diagnostics.Debug.WriteLine("Wait timer stopped.");
+            DebugUtilities.WriteLine("Wait timer stopped.");
 
             _mouseIsOn = true;
         }

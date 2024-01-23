@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Xml;
 
+using Krypton.Toolkit.Suite.Extended.Debug.Tools;
 using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
 #pragma warning disable CS0219
@@ -123,7 +124,7 @@ namespace Examples
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
 
         }

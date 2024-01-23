@@ -755,7 +755,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 return;
             }
             OutlookGridRow row = (OutlookGridRow)Rows[e.RowIndex];
-            //System.Diagnostics.Debug.WriteLine("OnCellMouseDown " + DateTime.Now.Ticks.ToString() + "IsIconHit" + row.IsIconHit(e).ToString());
+            //DebugUtilities.WriteLine("OnCellMouseDown " + DateTime.Now.Ticks.ToString() + "IsIconHit" + row.IsIconHit(e).ToString());
             if (_previousGroupRowSelected != -1 && _previousGroupRowSelected != e.RowIndex)
             {
                 InvalidateRow(PreviousSelectedGroupRow);

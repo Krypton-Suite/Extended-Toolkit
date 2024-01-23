@@ -770,7 +770,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     _parent.UpdateToolTip("");
                 }
 
-                //System.Diagnostics.Debug.WriteLine("ItemArea HitTest : Found " + index.ToString());
+                //DebugUtilities.WriteLine("ItemArea HitTest : Found " + index.ToString());
             }
             else
             {
@@ -1007,7 +1007,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 {
                     txBrush = SystemBrushes.ControlText;
 
-                    //System.Diagnostics.Debug.WriteLine(Environment.TickCount + " Drawing tab MouseHover " + _mouseHover + " Selected " + _selected);
+                    //DebugUtilities.WriteLine(Environment.TickCount + " Drawing tab MouseHover " + _mouseHover + " Selected " + _selected);
 
                     if (_mouseHover)
                     {
@@ -1206,7 +1206,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     rect.Y += _itemArea.Y;
 
-                    //System.Diagnostics.Debug.WriteLine("Checking Painting item " + iLoop);
+                    //DebugUtilities.WriteLine("Checking Painting item " + iLoop);
 
                     if (rect.Bottom <= _itemArea.Top)
                     {
@@ -1219,11 +1219,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     if (!rect.IntersectsWith(clipRect))
                     {
-                        //System.Diagnostics.Debug.WriteLine("ItemRect not in ClipRect " + iLoop + " @ " + System.Environment.TickCount );
+                        //DebugUtilities.WriteLine("ItemRect not in ClipRect " + iLoop + " @ " + System.Environment.TickCount );
                         continue;
                     }
 
-                    //System.Diagnostics.Debug.WriteLine("Painting item " + iLoop);
+                    //DebugUtilities.WriteLine("Painting item " + iLoop);
 
                     // Draw background.
                     // Thanks to Neal Stublen for the suggestions to make the
@@ -2725,7 +2725,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     _parent.Invalidate(_itemArea);
 
-                    //System.Diagnostics.Debug.WriteLine("ScrollItems : Invalidated " + rInv);
+                    //DebugUtilities.WriteLine("ScrollItems : Invalidated " + rInv);
 
                 }
             }

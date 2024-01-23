@@ -63,13 +63,6 @@ namespace Examples
             outlookGridExample.Show();
         }
 
-        private void kbtnNotificationExample_Click(object sender, EventArgs e)
-        {
-            NotificationExample notificationExample = new NotificationExample();
-
-            notificationExample.Show();
-        }
-
         private void kbtnFloating_Click(object sender, EventArgs e)
         {
             FloatingMenuToolbarExampleMain floating = new FloatingMenuToolbarExampleMain();
@@ -159,6 +152,11 @@ namespace Examples
             CheckBoxComboBoxTest example = new CheckBoxComboBoxTest();
 
             example.Show();
+        }
+
+        private void kbtnNotificationExample_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

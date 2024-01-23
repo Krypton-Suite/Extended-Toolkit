@@ -1307,7 +1307,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 _scaledCellSize = _cellSize;
             }
 
-            System.Diagnostics.Debug.WriteLine(_scaledCellSize);
+            DebugUtilities.WriteLine(_scaledCellSize);
         }
 
         /// <summary>

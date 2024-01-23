@@ -1951,7 +1951,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
             if (null != _selectedTab.Control)
             {
-                System.Diagnostics.Debug.WriteLine(
+                DebugUtilities.WriteLine(
                     $"Control Location {_selectedTab.Control.Location} Item Area {_selectedTab.ItemArea}");
             }
 
@@ -2144,7 +2144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 return;
             }
 
-            System.Diagnostics.Debug.WriteLine("ToolBox DoLayout called...");
+            DebugUtilities.WriteLine("ToolBox DoLayout called...");
 
             rect.Height = _tabHeight;
             rect.Width = DisplayRectangle.Width - 2;
@@ -2620,7 +2620,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                 e.Effect = null != dragItem ? DragDropEffects.Move : DragDropEffects.None;
 
-                //System.Diagnostics.Debug.WriteLine(Environment.TickCount + " Drag item index " + index + " Item " + dragItem + " in " + ptPos);
+                //DebugUtilities.WriteLine(Environment.TickCount + " Drag item index " + index + " Item " + dragItem + " in " + ptPos);
 
                 if (null != dragItem && _patBltItem != dragItem)
                 {
@@ -3011,7 +3011,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
             PaintBackground(g, r);
 
-            //System.Diagnostics.Debug.WriteLine("Paint clip rect " + r);
+            //DebugUtilities.WriteLine("Paint clip rect " + r);
             //g.FillRectangle(new SolidBrush(GetRandomColor()),r);
             PaintScrollButtons(g, r);
 
@@ -3136,7 +3136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 Focus();
             }
 
-            System.Diagnostics.Debug.WriteLine($"Control is Focused ? {Focused}");
+            DebugUtilities.WriteLine($"Control is Focused ? {Focused}");
 
             if (_upScroll.HitTest(e.X, e.Y))
             {
