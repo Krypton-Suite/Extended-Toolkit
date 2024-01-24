@@ -18,8 +18,8 @@
             SKRect bounds = new();
             paint.MeasureText(text, ref bounds);
 
-            float width = bounds.Width;
-            float height = bounds.Height;
+            var width = bounds.Width;
+            var height = bounds.Height;
             return new PixelSize(width, height);
         }
 
@@ -28,7 +28,7 @@
             float maxWidth = 0;
             float maxHeight = 0;
 
-            for (int i = 0; i < strings.Length; i++)
+            for (var i = 0; i < strings.Length; i++)
             {
                 PixelSize tickSize = MeasureString(strings[i], paint);
                 maxWidth = Math.Max(maxWidth, tickSize.Width);
@@ -117,7 +117,7 @@
 
             using SKPath path = new();
 
-            for (int i = 0; i < starts.Length; i++)
+            for (var i = 0; i < starts.Length; i++)
             {
                 path.MoveTo(starts[i].X, starts[i].Y);
                 path.LineTo(ends[i].X, ends[i].Y);
@@ -257,7 +257,7 @@
 
         public static SKBitmap BitmapFromArgbs(uint[] argbs, int width, int height)
         {
-            GCHandle handle = GCHandle.Alloc(argbs, GCHandleType.Pinned);
+            var handle = GCHandle.Alloc(argbs, GCHandleType.Pinned);
 
             var imageInfo = new SKImageInfo(width, height);
             var bmp = new SKBitmap(imageInfo);
@@ -311,7 +311,7 @@
 
         public static void SavePng(SKSurface surface, string filename)
         {
-            using SKImage skimg = surface.Snapshot();
+            using var skimg = surface.Snapshot();
             Image img = new(skimg);
             img.SavePng(filename);
         }

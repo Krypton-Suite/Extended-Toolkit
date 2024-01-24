@@ -14,9 +14,12 @@
         /// </summary>
         public static double[] Consecutive(int count = 51, double delta = 1, double first = 0)
         {
-            double[] ys = new double[count];
-            for (int i = 0; i < ys.Length; i++)
+            var ys = new double[count];
+            for (var i = 0; i < ys.Length; i++)
+            {
                 ys[i] = i * delta + first;
+            }
+
             return ys;
         }
 
@@ -27,10 +30,13 @@
         /// </summary>
         public static double[] Sin(int count = 51, double mult = 1, double offset = 0, double oscillations = 1, double phase = 0)
         {
-            double sinScale = 2 * Math.PI * oscillations / (count - 1);
-            double[] ys = new double[count];
-            for (int i = 0; i < ys.Length; i++)
+            var sinScale = 2 * Math.PI * oscillations / (count - 1);
+            var ys = new double[count];
+            for (var i = 0; i < ys.Length; i++)
+            {
                 ys[i] = Math.Sin(i * sinScale + phase * Math.PI * 2) * mult + offset;
+            }
+
             return ys;
         }
 
@@ -41,17 +47,20 @@
         /// </summary>
         public static double[] Cos(int count = 51, double mult = 1, double offset = 0, double oscillations = 1, double phase = 0)
         {
-            double sinScale = 2 * Math.PI * oscillations / (count - 1);
-            double[] ys = new double[count];
-            for (int i = 0; i < ys.Length; i++)
+            var sinScale = 2 * Math.PI * oscillations / (count - 1);
+            var ys = new double[count];
+            for (var i = 0; i < ys.Length; i++)
+            {
                 ys[i] = Math.Cos(i * sinScale + phase * Math.PI * 2) * mult + offset;
+            }
+
             return ys;
         }
 
         public static double[] NoisySin(Random rand, int count = 51, double noiseLevel = 1)
         {
-            double[] data = Sin(count);
-            for (int i = 0; i < data.Length; i++)
+            var data = Sin(count);
+            for (var i = 0; i < data.Length; i++)
             {
                 data[i] += rand.NextDouble() * noiseLevel;
             }
@@ -65,21 +74,25 @@
                 throw new ArgumentException($"{nameof(duty)} must be in the range [0, 1]");
             }
 
-            uint points = cycles * pointsPerCycle;
-            uint cyclePointsHigh = (uint)(pointsPerCycle * duty);
-            uint cyclePointsLow = pointsPerCycle - cyclePointsHigh;
+            var points = cycles * pointsPerCycle;
+            var cyclePointsHigh = (uint)(pointsPerCycle * duty);
+            var cyclePointsLow = pointsPerCycle - cyclePointsHigh;
 
-            double[] values = new double[points];
+            var values = new double[points];
 
             uint i = 0;
 
-            for (int c = 0; c < cycles; c++)
+            for (var c = 0; c < cycles; c++)
             {
-                for (int p = 0; p < cyclePointsLow; p++)
+                for (var p = 0; p < cyclePointsLow; p++)
+                {
                     values[i++] = low;
+                }
 
-                for (int p = 0; p < cyclePointsHigh; p++)
+                for (var p = 0; p < cyclePointsHigh; p++)
+                {
                     values[i++] = high;
+                }
             }
 
             return values;
@@ -97,9 +110,9 @@
 
         public static double[] Repeating(int count, double value)
         {
-            double[] values = new double[count];
+            var values = new double[count];
 
-            for (int i = 0; i < values.Length; i++)
+            for (var i = 0; i < values.Length; i++)
             {
                 values[i] = value;
             }
@@ -121,15 +134,17 @@
         /// <returns></returns>
         public static double[,] Consecutive2D(int rows, int columns, double spacing = 1, double offset = 0)
         {
-            double[,] data = new double[rows, columns];
+            var data = new double[rows, columns];
 
             var count = offset;
             for (var y = 0; y < data.GetLength(0); y++)
-                for (int x = 0; x < data.GetLength(1); x++)
+            {
+                for (var x = 0; x < data.GetLength(1); x++)
                 {
                     data[y, x] = count;
                     count += spacing;
                 }
+            }
 
             return data;
         }
@@ -144,14 +159,14 @@
         /// <param name="multiple">Intensity factor.</param>
         public static double[,] Sin2D(int width, int height, double xPeriod = .2, double yPeriod = .2, double multiple = 100)
         {
-            double[,] intensities = new double[height, width];
+            var intensities = new double[height, width];
 
-            for (int y = 0; y < height; y++)
+            for (var y = 0; y < height; y++)
             {
-                double siny = Math.Cos(y * yPeriod) * multiple;
-                for (int x = 0; x < width; x++)
+                var siny = Math.Cos(y * yPeriod) * multiple;
+                for (var x = 0; x < width; x++)
                 {
-                    double sinx = Math.Sin(x * xPeriod) * multiple;
+                    var sinx = Math.Sin(x * xPeriod) * multiple;
                     intensities[y, x] = sinx + siny;
                 }
             }
@@ -169,19 +184,19 @@
         /// <returns></returns>
         public static double[,] Ramp2D(int width, int height, double min = 0, double max = 1)
         {
-            double[,] intensities = new double[height, width];
+            var intensities = new double[height, width];
 
-            double span = max - min;
+            var span = max - min;
 
-            for (int y = 0; y < height; y++)
+            for (var y = 0; y < height; y++)
             {
-                double fracY = (double)y / height;
-                double valY = fracY * span + min;
+                var fracY = (double)y / height;
+                var valY = fracY * span + min;
 
-                for (int x = 0; x < width; x++)
+                for (var x = 0; x < width; x++)
                 {
-                    double fracX = (double)x / width;
-                    double valX = fracX * span + min;
+                    var fracX = (double)x / width;
+                    var valX = fracX * span + min;
 
                     intensities[y, x] = (valX + valY) / 2;
                 }
@@ -205,20 +220,20 @@
 
         public class RandomWalker(int seed = 0)
         {
-            readonly RandomDataGenerator Gen = new(seed);
-            double LastValue = 0;
+            readonly RandomDataGenerator _gen = new(seed);
+            double _lastValue = 0;
 
             public double GetNext()
             {
-                double value = Gen.RandomWalk(1, offset: LastValue)[0];
-                LastValue = value;
+                var value = _gen.RandomWalk(1, offset: _lastValue)[0];
+                _lastValue = value;
                 return value;
             }
 
             public double[] GetNext(int count)
             {
-                double[] values = Gen.RandomWalk(count, offset: LastValue);
-                LastValue = values[values.Length - 1];
+                var values = _gen.RandomWalk(count, offset: _lastValue);
+                _lastValue = values[values.Length - 1];
                 return values;
             }
         }
@@ -290,7 +305,7 @@
         /// </summary>
         public static double[] AddNoise(double[] input, double magnitude = 1)
         {
-            double[] output = new double[input.Length];
+            var output = new double[input.Length];
             Array.Copy(input, 0, output, 0, input.Length);
             AddNoiseInPlace(output, magnitude);
             return output;
@@ -301,7 +316,7 @@
         /// </summary>
         public static void AddNoiseInPlace(double[] values, double magnitude = 1)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (var i = 0; i < values.Length; i++)
             {
                 values[i] = values[i] + RandomData.RandomNumber(-magnitude / 2, magnitude / 2);
             }
@@ -318,9 +333,9 @@
 
         public static string RandomString(int length)
         {
-            char[] chars = new char[length];
+            var chars = new char[length];
 
-            for (int i = 0; i < chars.Length; i++)
+            for (var i = 0; i < chars.Length; i++)
             {
                 chars[i] = RandomChar();
             }
@@ -334,8 +349,8 @@
 
         public static Coordinates RandomCoordinates(double xMult = 1, double yMult = 1, double xOffset = 0, double yOffset = 0)
         {
-            double x = RandomData.RandomNumber() * xMult + xOffset;
-            double y = RandomData.RandomNumber() * yMult + yOffset;
+            var x = RandomData.RandomNumber() * xMult + xOffset;
+            var y = RandomData.RandomNumber() * yMult + yOffset;
             return new Coordinates(x, y);
         }
 
@@ -343,7 +358,7 @@
         {
             Coordinates[] cs = new Coordinates[count];
 
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 cs[i] = RandomCoordinates(xMult, yMult, xOffset, yOffset);
             }
@@ -359,8 +374,8 @@
 
         public static Coordinates RandomLocation(AxisLimits limits)
         {
-            double x = RandomData.RandomNumber() * limits.HorizontalSpan + limits.Left;
-            double y = RandomData.RandomNumber() * limits.VerticalSpan + limits.Bottom;
+            var x = RandomData.RandomNumber() * limits.HorizontalSpan + limits.Left;
+            var y = RandomData.RandomNumber() * limits.VerticalSpan + limits.Bottom;
             return new Coordinates(x, y);
         }
 
@@ -399,9 +414,9 @@
             /// </summary>
             public static System.DateTime[] Consecutive(int count, System.DateTime start, TimeSpan step)
             {
-                System.DateTime dt = start;
-                System.DateTime[] values = new System.DateTime[count];
-                for (int i = 0; i < count; i++)
+                var dt = start;
+                var values = new System.DateTime[count];
+                for (var i = 0; i < count; i++)
                 {
                     values[i] = dt;
                     dt += step;
@@ -411,8 +426,8 @@
 
             public static System.DateTime[] Weekdays(int count, System.DateTime start)
             {
-                System.DateTime[] dates = new System.DateTime[count];
-                int i = 0;
+                var dates = new System.DateTime[count];
+                var i = 0;
                 while (i < count)
                 {
                     if (start.DayOfWeek != DayOfWeek.Saturday && start.DayOfWeek != DayOfWeek.Sunday)
@@ -449,9 +464,9 @@
 
         #region Finance
 
-        public static List<OHLC> RandomOHLCs(int count)
+        public static List<OHLC> RandomOhlCs(int count)
         {
-            return RandomData.RandomOHLCs(count);
+            return RandomData.RandomOhlCs(count);
         }
 
         #endregion
@@ -460,17 +475,17 @@
 
         public static Box RandomBox(double position)
         {
-            int N = 50;
-            double mean = RandomData.RandomNumber(3);
-            double stdDev = RandomData.RandomNumber(3);
+            var n = 50;
+            var mean = RandomData.RandomNumber(3);
+            var stdDev = RandomData.RandomNumber(3);
 
-            double[] values = Generate.RandomNormal(N, mean, stdDev);
+            var values = Generate.RandomNormal(n, mean, stdDev);
             Array.Sort(values);
-            double min = values[0];
-            double q1 = values[N / 4];
-            double median = values[N / 2];
-            double q3 = values[3 * N / 4];
-            double max = values[N - 1];
+            var min = values[0];
+            var q1 = values[n / 4];
+            var median = values[n / 2];
+            var q3 = values[3 * n / 4];
+            var max = values[n - 1];
 
             return new Box
             {
@@ -485,9 +500,9 @@
 
         public static Color RandomColor()
         {
-            byte r = RandomData.RandomByte();
-            byte g = RandomData.RandomByte();
-            byte b = RandomData.RandomByte();
+            var r = RandomData.RandomByte();
+            var g = RandomData.RandomByte();
+            var b = RandomData.RandomByte();
             return new Color(r, g, b);
         }
 
@@ -496,9 +511,9 @@
         /// </summary>
         public static Color RandomColor(byte max)
         {
-            byte r = (byte)RandomData.RandomInteger(max);
-            byte g = (byte)RandomData.RandomInteger(max);
-            byte b = (byte)RandomData.RandomInteger(max);
+            var r = (byte)RandomData.RandomInteger(max);
+            var g = (byte)RandomData.RandomInteger(max);
+            var b = (byte)RandomData.RandomInteger(max);
             return new Color(r, g, b);
         }
 
@@ -519,7 +534,7 @@
                 .Cast<MarkerShape>()
                 .ToArray();
 
-            int i = RandomInteger(markerShapes.Length);
+            var i = RandomInteger(markerShapes.Length);
             return markerShapes[i];
         }
 
@@ -535,7 +550,7 @@
                 .Cast<LinePattern>()
                 .ToArray();
 
-            int i = RandomInteger(linePatterns.Length);
+            var i = RandomInteger(linePatterns.Length);
             return linePatterns[i];
         }
 

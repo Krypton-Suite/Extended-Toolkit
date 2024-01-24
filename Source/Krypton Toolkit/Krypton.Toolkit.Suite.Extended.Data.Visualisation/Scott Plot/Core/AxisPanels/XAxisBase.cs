@@ -16,7 +16,7 @@
                 return 0;
             }
 
-            float largestTickSize = MeasureTicks();
+            var largestTickSize = MeasureTicks();
             float largestTickLabelSize = Label.Measure().Height;
             float spaceBetweenTicksAndAxisLabel = 15;
             return largestTickSize + largestTickLabelSize + spaceBetweenTicksAndAxisLabel;
@@ -40,17 +40,17 @@
 
         public float GetPixel(double position, PixelRect dataArea)
         {
-            double pxPerUnit = dataArea.Width / Width;
-            double unitsFromLeftEdge = position - Min;
-            float pxFromEdge = (float)(unitsFromLeftEdge * pxPerUnit);
+            var pxPerUnit = dataArea.Width / Width;
+            var unitsFromLeftEdge = position - Min;
+            var pxFromEdge = (float)(unitsFromLeftEdge * pxPerUnit);
             return dataArea.Left + pxFromEdge;
         }
 
         public double GetCoordinate(float pixel, PixelRect dataArea)
         {
-            double pxPerUnit = dataArea.Width / Width;
-            float pxFromLeftEdge = pixel - dataArea.Left;
-            double unitsFromEdge = pxFromLeftEdge / pxPerUnit;
+            var pxPerUnit = dataArea.Width / Width;
+            var pxFromLeftEdge = pixel - dataArea.Left;
+            var unitsFromEdge = pxFromLeftEdge / pxPerUnit;
             return Min + unitsFromEdge;
         }
 

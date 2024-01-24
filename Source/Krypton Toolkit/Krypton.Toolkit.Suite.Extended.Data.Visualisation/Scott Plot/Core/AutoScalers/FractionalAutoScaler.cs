@@ -50,8 +50,8 @@
 
             foreach (IAxis xAxis in xAxes)
             {
-                double left = xAxis.Range.Min - (xAxis.Range.Span * LeftFraction);
-                double right = xAxis.Range.Max + (xAxis.Range.Span * RightFraction);
+                var left = xAxis.Range.Min - (xAxis.Range.Span * LeftFraction);
+                var right = xAxis.Range.Max + (xAxis.Range.Span * RightFraction);
                 if (NumericConversion.IsReal(left) && NumericConversion.IsReal(right))
                 {
                     xAxis.Range.Set(left, right);
@@ -60,8 +60,8 @@
 
             foreach (IYAxis yAxis in yAxes)
             {
-                double bottom = yAxis.Range.Min - (yAxis.Range.Span * BottomFraction);
-                double top = yAxis.Range.Max + (yAxis.Range.Span * TopFraction);
+                var bottom = yAxis.Range.Min - (yAxis.Range.Span * BottomFraction);
+                var top = yAxis.Range.Max + (yAxis.Range.Span * TopFraction);
                 if (NumericConversion.IsReal(bottom) && NumericConversion.IsReal(top))
                 {
                     yAxis.Range.Set(bottom, top);

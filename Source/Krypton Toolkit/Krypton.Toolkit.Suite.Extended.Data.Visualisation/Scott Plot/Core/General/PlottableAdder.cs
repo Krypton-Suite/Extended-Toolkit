@@ -43,7 +43,7 @@
             BarPlot bp = new(bars);
 
             // only set bar colors if the user has not already configured them
-            bool barColorsAreAllTheSame = bars.Select(x => x.FillColor).Distinct().Count() == 1;
+            var barColorsAreAllTheSame = bars.Select(x => x.FillColor).Distinct().Count() == 1;
             if (barColorsAreAllTheSame)
             {
                 bp.Color = GetNextColor();
@@ -66,7 +66,7 @@
                 throw new ArgumentException($"{nameof(positions)} and {nameof(positions)} have different lengths");
             }
 
-            Color color = GetNextColor();
+            var color = GetNextColor();
 
             List<Bar> bars = new();
             foreach (var item in positions.Zip(values, (a, b) => new { a, b }))
@@ -102,7 +102,7 @@
 
         public CandlestickPlot Candlestick(List<OHLC> ohlcs)
         {
-            OHLCSource dataSource = new(ohlcs);
+            OhlcSource dataSource = new(ohlcs);
             CandlestickPlot candlestickPlot = new(dataSource);
             Plot.PlottableList.Add(candlestickPlot);
             return candlestickPlot;
@@ -141,7 +141,7 @@
 
         public DataStreamer DataStreamer(int points, double period = 1)
         {
-            double[] data = new double[points];
+            var data = new double[points];
 
             DataStreamer streamer = new(Plot, data)
             {
@@ -172,7 +172,7 @@
         {
             List<(double, double, double)> data = new();
 
-            for (int i = 0; i < xs.Length; i++)
+            for (var i = 0; i < xs.Length; i++)
             {
                 data.Add((xs[i], ys1[i], ys2[i]));
             }
@@ -295,9 +295,9 @@
             return Marker(location.X, location.Y, shape, size, color);
         }
 
-        public OhlcPlot OHLC(List<OHLC> ohlcs)
+        public OhlcPlot Ohlc(List<OHLC> ohlcs)
         {
-            OHLCSource dataSource = new(ohlcs);
+            OhlcSource dataSource = new(ohlcs);
             OhlcPlot ohlc = new(dataSource);
             Plot.PlottableList.Add(ohlc);
             return ohlc;
@@ -348,7 +348,7 @@
 
         public Scatter Scatter(IScatterSource source, Color? color = null)
         {
-            Color nextColor = color ?? GetNextColor();
+            var nextColor = color ?? GetNextColor();
             Scatter scatter = new(source);
             scatter.LineStyle.Color = nextColor;
             scatter.MarkerStyle.Fill.Color = nextColor;
@@ -391,7 +391,7 @@
 
         public Scatter Scatter<T1, T2>(T1[] xs, T2[] ys, Color? color = null)
         {
-            Color nextColor = color ?? GetNextColor();
+            var nextColor = color ?? GetNextColor();
             ScatterSourceGenericArray<T1, T2> source = new(xs, ys);
             Scatter scatter = new(source);
             scatter.LineStyle.Color = nextColor;
@@ -402,7 +402,7 @@
 
         public Scatter Scatter<T1, T2>(List<T1> xs, List<T2> ys, Color? color = null)
         {
-            Color nextColor = color ?? GetNextColor();
+            var nextColor = color ?? GetNextColor();
             ScatterSourceGenericList<T1, T2> source = new(xs, ys);
             Scatter scatter = new(source);
             scatter.LineStyle.Color = nextColor;
@@ -478,9 +478,9 @@
             return sig;
         }
 
-        public SignalXY SignalXY(double[] xs, double[] ys, Color? color = null)
+        public SignalXY SignalXy(double[] xs, double[] ys, Color? color = null)
         {
-            SignalXYSourceDoubleArray dataSource = new(xs, ys);
+            SignalXySourceDoubleArray dataSource = new(xs, ys);
 
             SignalXY sig = new(dataSource)
             {
@@ -492,7 +492,7 @@
             return sig;
         }
 
-        public SignalXY SignalXY<TX, TY>(TX[] xs, TY[] ys, Color? color = null)
+        public SignalXY SignalXy<TX, TY>(TX[] xs, TY[] ys, Color? color = null)
         {
             var dataSource = new SignalXYSourceGenericArray<TX, TY>(xs, ys);
 

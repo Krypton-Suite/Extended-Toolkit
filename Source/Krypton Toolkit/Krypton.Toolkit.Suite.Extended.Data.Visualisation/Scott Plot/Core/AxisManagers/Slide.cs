@@ -26,16 +26,16 @@
 
         public AxisLimits GetAxisLimits(AxisLimits viewLimits, AxisLimits dataLimits)
         {
-            double padHorizontal = Width * PaddingFractionX;
-            double padVertical = viewLimits.VerticalSpan * PaddingFractionY;
+            var padHorizontal = Width * PaddingFractionX;
+            var padVertical = viewLimits.VerticalSpan * PaddingFractionY;
 
-            bool xOverflow = dataLimits.Right > viewLimits.Right || dataLimits.Right < viewLimits.Left;
-            double xMax = xOverflow ? dataLimits.Right + padHorizontal : viewLimits.Right;
-            double xMin = xOverflow ? xMax - Width : viewLimits.Left;
+            var xOverflow = dataLimits.Right > viewLimits.Right || dataLimits.Right < viewLimits.Left;
+            var xMax = xOverflow ? dataLimits.Right + padHorizontal : viewLimits.Right;
+            var xMin = xOverflow ? xMax - Width : viewLimits.Left;
 
-            bool yOverflow = dataLimits.Bottom < viewLimits.Bottom || dataLimits.Top > viewLimits.Top;
-            double yMin = yOverflow ? dataLimits.Bottom - padVertical : viewLimits.Bottom;
-            double yMax = yOverflow ? dataLimits.Top + padVertical : viewLimits.Top;
+            var yOverflow = dataLimits.Bottom < viewLimits.Bottom || dataLimits.Top > viewLimits.Top;
+            var yMin = yOverflow ? dataLimits.Bottom - padVertical : viewLimits.Bottom;
+            var yMax = yOverflow ? dataLimits.Top + padVertical : viewLimits.Top;
 
             return new AxisLimits(xMin, xMax, yMin, yMax);
         }

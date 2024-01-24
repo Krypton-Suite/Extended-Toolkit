@@ -6,17 +6,17 @@
 
         public float GetPixel(double position, PixelRect dataArea)
         {
-            double pxPerUnit = dataArea.Height / Height;
-            double unitsFromMinValue = position - Min;
-            float pxFromEdge = (float)(unitsFromMinValue * pxPerUnit);
+            var pxPerUnit = dataArea.Height / Height;
+            var unitsFromMinValue = position - Min;
+            var pxFromEdge = (float)(unitsFromMinValue * pxPerUnit);
             return dataArea.Bottom - pxFromEdge;
         }
 
         public double GetCoordinate(float pixel, PixelRect dataArea)
         {
-            double pxPerUnit = dataArea.Height / Height;
-            float pxFromMinValue = pixel - dataArea.Bottom;
-            double unitsFromMinValue = pxFromMinValue / pxPerUnit;
+            var pxPerUnit = dataArea.Height / Height;
+            var pxFromMinValue = pixel - dataArea.Bottom;
+            var unitsFromMinValue = pxFromMinValue / pxPerUnit;
             return Min - unitsFromMinValue;
         }
 
@@ -27,7 +27,7 @@
                 return 0;
             }
 
-            float largestTickSize = MeasureTicks();
+            var largestTickSize = MeasureTicks();
             float largestTickLabelSize = Label.Measure().Height;
             float spaceBetweenTicksAndAxisLabel = 15;
             return largestTickSize + largestTickLabelSize + spaceBetweenTicksAndAxisLabel;
@@ -84,7 +84,7 @@
             PixelRect panelRect = GetPanelRect(rp.DataRect, size, offset);
 
             float textDistanceFromEdge = 10;
-            float labelX = Edge == Edge.Left ? panelRect.Left + textDistanceFromEdge : panelRect.Right - textDistanceFromEdge;
+            var labelX = Edge == Edge.Left ? panelRect.Left + textDistanceFromEdge : panelRect.Right - textDistanceFromEdge;
             Pixel labelPoint = new(labelX, rp.DataRect.VerticalCenter);
 
             if (ShowDebugInformation)

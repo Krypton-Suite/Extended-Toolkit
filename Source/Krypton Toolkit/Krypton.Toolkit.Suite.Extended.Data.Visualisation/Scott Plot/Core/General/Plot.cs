@@ -47,8 +47,8 @@
             float pixelDeltaX = -(mouseNow.X - mouseDown.X);
             float pixelDeltaY = mouseNow.Y - mouseDown.Y;
 
-            float scaledDeltaX = pixelDeltaX / ScaleFactor;
-            float scaledDeltaY = pixelDeltaY / ScaleFactor;
+            var scaledDeltaX = pixelDeltaX / ScaleFactor;
+            var scaledDeltaY = pixelDeltaY / ScaleFactor;
 
             // restore mousedown limits
             originalLimits.Apply(this);
@@ -227,7 +227,7 @@
             }
 
             SKImageInfo info = new(width, height, SKColorType.Rgba8888, SKAlphaType.Premul);
-            using SKSurface surface = SKSurface.Create(info);
+            using var surface = SKSurface.Create(info);
             if (surface is null)
             {
                 throw new NullReferenceException($"invalid SKImageInfo");
@@ -242,39 +242,39 @@
         /// </summary>
         public string GetImageHtml(int width, int height)
         {
-            Image img = GetImage(width, height);
+            var img = GetImage(width, height);
             byte[] bytes = img.GetImageBytes();
             return ImageOperations.GetImageHtml(bytes);
         }
 
         public void SaveJpeg(string filePath, int width, int height, int quality = 85)
         {
-            using Image image = GetImage(width, height);
+            using var image = GetImage(width, height);
             image.SaveJpeg(filePath, quality);
         }
 
         public void SavePng(string filePath, int width, int height)
         {
-            using Image image = GetImage(width, height);
+            using var image = GetImage(width, height);
             image.SavePng(filePath);
         }
 
         public void SaveBmp(string filePath, int width, int height)
         {
-            using Image image = GetImage(width, height);
+            using var image = GetImage(width, height);
             image.SaveBmp(filePath);
         }
 
         public void SaveWebp(string filePath, int width, int height, int quality = 85)
         {
-            using Image image = GetImage(width, height);
+            using var image = GetImage(width, height);
             image.SaveWebp(filePath, quality);
         }
 
         public void SaveSvg(string filePath, int width, int height)
         {
             using FileStream fs = new(filePath, FileMode.Create);
-            using SKCanvas canvas = SKSvgCanvas.Create(new SKRect(0, 0, width, height), fs);
+            using var canvas = SKSvgCanvas.Create(new SKRect(0, 0, width, height), fs);
             Render(canvas, width, height);
         }
 
@@ -288,7 +288,7 @@
 
             if (format.IsRasterFormat())
             {
-                using Image image = GetImage(width, height);
+                using var image = GetImage(width, height);
                 image.Save(filePath, format, quality);
                 return;
             }
@@ -298,7 +298,7 @@
 
         public byte[] GetImageBytes(int width, int height, ImageFormat format = ImageFormat.Bmp)
         {
-            using Image image = GetImage(width, height);
+            using var image = GetImage(width, height);
             byte[] bytes = image.GetImageBytes(format);
             return bytes;
         }

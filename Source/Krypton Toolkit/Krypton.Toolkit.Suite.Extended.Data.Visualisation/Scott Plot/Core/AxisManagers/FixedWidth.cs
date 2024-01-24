@@ -12,10 +12,10 @@
             double xMin = dataLimits.Left;
             double xMax = dataLimits.Right;
 
-            double expandY = ExpandFractionY * dataLimits.VerticalSpan;
+            var expandY = ExpandFractionY * dataLimits.VerticalSpan;
 
-            double yMin = (dataLimits.Bottom < viewLimits.Bottom) ? dataLimits.Bottom - expandY : viewLimits.Bottom;
-            double yMax = (dataLimits.Top > viewLimits.Top) ? dataLimits.Top + expandY : viewLimits.Top;
+            var yMin = (dataLimits.Bottom < viewLimits.Bottom) ? dataLimits.Bottom - expandY : viewLimits.Bottom;
+            var yMax = (dataLimits.Top > viewLimits.Top) ? dataLimits.Top + expandY : viewLimits.Top;
 
             return new AxisLimits(xMin, xMax, yMin, yMax);
         }

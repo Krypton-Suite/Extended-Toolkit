@@ -110,14 +110,14 @@
                 float tickLength = tick.IsMajor ? majorStyle.Length : minorStyle.Length;
                 float xPx = axis.GetPixel(tick.Position, panelRect);
                 float y = axis.Edge == Edge.Bottom ? panelRect.Top : panelRect.Bottom;
-                float yEdge = axis.Edge == Edge.Bottom ? y + tickLength : y - tickLength;
+                var yEdge = axis.Edge == Edge.Bottom ? y + tickLength : y - tickLength;
                 PixelLine pxLine = new(xPx, y, xPx, yEdge);
                 Drawing.DrawLine(rp.Canvas, paint, pxLine);
 
                 // draw label
                 if (!string.IsNullOrWhiteSpace(tick.Label))
                 {
-                    float fontSpacing = axis.Edge == Edge.Bottom ? paint.TextSize : -4;
+                    var fontSpacing = axis.Edge == Edge.Bottom ? paint.TextSize : -4;
                     foreach (string line in tick.Label.Split('\n'))
                     {
                         label.Text = line;
@@ -148,18 +148,18 @@
                 float tickLength = tick.IsMajor ? majorStyle.Length : minorStyle.Length;
                 float x = axis.Edge == Edge.Left ? panelRect.Right : panelRect.Left;
                 float y = axis.GetPixel(tick.Position, panelRect);
-                float xEdge = axis.Edge == Edge.Left ? x - tickLength : x + tickLength;
+                var xEdge = axis.Edge == Edge.Left ? x - tickLength : x + tickLength;
                 PixelLine pxLine = new(x, y, xEdge, y);
                 Drawing.DrawLine(rp.Canvas, paint, pxLine);
 
                 // draw label
                 float majorTickLabelPadding = 7;
-                float labelPos = axis.Edge == Edge.Left ? x - majorTickLabelPadding : x + majorTickLabelPadding;
+                var labelPos = axis.Edge == Edge.Left ? x - majorTickLabelPadding : x + majorTickLabelPadding;
                 if (!string.IsNullOrWhiteSpace(tick.Label))
                 {
                     string[] lines = tick.Label.Split('\n');
                     double fontSpacing = -paint.TextSize * (lines.Length - 1) / 2;
-                    foreach (string line in lines)
+                    foreach (var line in lines)
                     {
                         label.Text = line;
                         Pixel px = new(labelPos, y + fontSpacing);

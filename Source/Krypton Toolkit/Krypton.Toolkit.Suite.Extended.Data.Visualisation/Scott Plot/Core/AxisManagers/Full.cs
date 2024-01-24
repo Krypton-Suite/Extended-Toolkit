@@ -17,22 +17,22 @@
         {
             bool rightEdgeIsTooClose = viewLimits.Right < dataLimits.Right;
             bool rightEdgeIsTooFar = viewLimits.Right > dataLimits.Right + dataLimits.HorizontalSpan;
-            bool replaceRight = rightEdgeIsTooClose || rightEdgeIsTooFar;
-            double xMax = replaceRight
+            var replaceRight = rightEdgeIsTooClose || rightEdgeIsTooFar;
+            var xMax = replaceRight
                 ? dataLimits.Right + dataLimits.HorizontalSpan * ExpansionRatio
                 : viewLimits.Right;
 
             bool topEdgeIsTooClose = viewLimits.Top < dataLimits.Top;
             bool topEdgeIsTooFar = viewLimits.Top < dataLimits.Top + dataLimits.VerticalSpan;
-            bool replaceTop = topEdgeIsTooClose || topEdgeIsTooFar;
-            double yMax = replaceTop
+            var replaceTop = topEdgeIsTooClose || topEdgeIsTooFar;
+            var yMax = replaceTop
                 ? dataLimits.Top + dataLimits.VerticalSpan * ExpansionRatio
                 : viewLimits.Top;
 
             bool bottomEdgeIsTooClose = viewLimits.Bottom > dataLimits.Bottom;
             bool bottomEdgeIsTooFar = viewLimits.Bottom > dataLimits.Bottom - dataLimits.VerticalSpan;
-            bool replaceBottom = bottomEdgeIsTooClose || bottomEdgeIsTooFar;
-            double yMin = replaceBottom
+            var replaceBottom = bottomEdgeIsTooClose || bottomEdgeIsTooFar;
+            var yMin = replaceBottom
                 ? dataLimits.Bottom - dataLimits.VerticalSpan * ExpansionRatio
                 : viewLimits.Bottom;
 

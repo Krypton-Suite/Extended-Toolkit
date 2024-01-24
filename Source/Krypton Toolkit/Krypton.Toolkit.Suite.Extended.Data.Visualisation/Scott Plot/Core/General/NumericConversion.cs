@@ -16,9 +16,9 @@
         [MethodImpl(ImplOptions)]
         public static double[] GenericToDoubleArray<T>(T[] values)
         {
-            double[] values2 = new double[values.Length];
+            var values2 = new double[values.Length];
 
-            for (int i = 0; i < values.Length; i++)
+            for (var i = 0; i < values.Length; i++)
             {
                 values2[i] = GenericToDouble(values, i);
             }
@@ -141,7 +141,7 @@
         public static T[] DoubleToGeneric<T>(this double[] input)
         {
             T[] result = new T[input.Length];
-            for (int i = 0; i < input.Length; i++)
+            for (var i = 0; i < input.Length; i++)
             {
                 DoubleToGeneric<T>(input[i], out result[i]);
             }
@@ -151,7 +151,7 @@
         public static T[] ToGenericArray<T>(this double[] input)
         {
             T[] result = new T[input.Length];
-            for (int i = 0; i < input.Length; i++)
+            for (var i = 0; i < input.Length; i++)
             {
                 DoubleToGeneric<T>(input[i], out result[i]);
             }
@@ -165,10 +165,10 @@
 
         public static Func<T, T, T> CreateAddFunction<T>()
         {
-            ParameterExpression paramA = Expression.Parameter(typeof(T), "a");
-            ParameterExpression paramB = Expression.Parameter(typeof(T), "b");
+            var paramA = Expression.Parameter(typeof(T), "a");
+            var paramB = Expression.Parameter(typeof(T), "b");
 
-            BinaryExpression body = Type.GetTypeCode(typeof(T)) switch
+            var body = Type.GetTypeCode(typeof(T)) switch
             {
                 TypeCode.Byte => Expression.Add(paramA, paramB, typeof(NumericConversion).GetMethod(nameof(NumericConversion.AddBytes))),
                 _ => Expression.Add(paramA, paramB),
@@ -179,10 +179,10 @@
 
         public static Func<T, T, T> CreateMultFunction<T>()
         {
-            ParameterExpression paramA = Expression.Parameter(typeof(T), "a");
-            ParameterExpression paramB = Expression.Parameter(typeof(T), "b");
+            var paramA = Expression.Parameter(typeof(T), "a");
+            var paramB = Expression.Parameter(typeof(T), "b");
 
-            BinaryExpression body = Type.GetTypeCode(typeof(T)) switch
+            var body = Type.GetTypeCode(typeof(T)) switch
             {
                 TypeCode.Byte => Expression.Multiply(paramA, paramB, typeof(NumericConversion).GetMethod(nameof(NumericConversion.Multiply))),
                 _ => Expression.Multiply(paramA, paramB),
@@ -194,10 +194,10 @@
 
         public static Func<T, T, T> CreateSubtractFunction<T>()
         {
-            ParameterExpression paramA = Expression.Parameter(typeof(T), "a");
-            ParameterExpression paramB = Expression.Parameter(typeof(T), "b");
+            var paramA = Expression.Parameter(typeof(T), "a");
+            var paramB = Expression.Parameter(typeof(T), "b");
 
-            BinaryExpression body = Type.GetTypeCode(typeof(T)) switch
+            var body = Type.GetTypeCode(typeof(T)) switch
             {
                 TypeCode.Byte => Expression.Subtract(paramA, paramB, typeof(NumericConversion).GetMethod(nameof(NumericConversion.SubtractBytes))),
                 _ => Expression.Subtract(paramA, paramB),
@@ -208,10 +208,10 @@
 
         public static Func<T, T, bool> CreateLessThanOrEqualFunction<T>()
         {
-            ParameterExpression paramA = Expression.Parameter(typeof(T), "a");
-            ParameterExpression paramB = Expression.Parameter(typeof(T), "b");
+            var paramA = Expression.Parameter(typeof(T), "a");
+            var paramB = Expression.Parameter(typeof(T), "b");
 
-            BinaryExpression body = Type.GetTypeCode(typeof(T)) switch
+            var body = Type.GetTypeCode(typeof(T)) switch
             {
                 TypeCode.Byte => Expression.LessThanOrEqual(paramA, paramB, false, typeof(NumericConversion).GetMethod(nameof(NumericConversion.LessThanOrEqualBytes))),
                 _ => Expression.LessThanOrEqual(paramA, paramB),

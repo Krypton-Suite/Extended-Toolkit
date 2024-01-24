@@ -6,7 +6,7 @@
         /// Global random number generator, to ensure each generator will returns different data.
         /// Using ThreadLocal, because Random is not thread safe.
         /// </summary>
-        private static readonly ThreadLocal<Random> GlobalRandomThread = new(() => new Random(GetCryptoRandomInt()));
+        private static readonly ThreadLocal<Random> _globalRandomThread = new(() => new Random(GetCryptoRandomInt()));
 
         /// <summary>
         /// To select right random number generator
@@ -21,16 +21,16 @@
         {
             _rand = seed.HasValue
                 ? new Random(seed.Value)
-                : GlobalRandomThread.Value!;
+                : _globalRandomThread.Value!;
         }
 
         public static RandomDataGenerator Generate { get; private set; } = new(0);
 
         private static int GetCryptoRandomInt()
         {
-            var RNG = System.Security.Cryptography.RandomNumberGenerator.Create();
-            byte[] data = new byte[sizeof(int)];
-            RNG.GetBytes(data);
+            var rng = System.Security.Cryptography.RandomNumberGenerator.Create();
+            var data = new byte[sizeof(int)];
+            rng.GetBytes(data);
             return BitConverter.ToInt32(data, 0) & (int.MaxValue - 1);
         }
 
@@ -65,7 +65,7 @@
         /// </summary>
         public double RandomNonZeroNumber(double max = 1)
         {
-            double randomValue = RandomNumber(max);
+            var randomValue = RandomNumber(max);
             return randomValue != 0
                 ? randomValue
                 : RandomNonZeroNumber();
@@ -109,9 +109,9 @@
         /// </summary>
         public double RandomNormalNumber(double mean = 0, double stdDev = 1)
         {
-            double u1 = RandomNonZeroNumber();
-            double u2 = RandomNumber();
-            double randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
+            var u1 = RandomNonZeroNumber();
+            var u2 = RandomNumber();
+            var randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
             return mean + stdDev * randStdNormal;
         }
 
@@ -123,9 +123,12 @@
         /// </summary>
         public double[] RandomSample(int count, double mult = 1, double offset = 0)
         {
-            double[] values = new double[count];
-            for (int i = 0; i < count; i++)
+            var values = new double[count];
+            for (var i = 0; i < count; i++)
+            {
                 values[i] = _rand.NextDouble() * mult + offset;
+            }
+
             return values;
         }
 
@@ -135,8 +138,8 @@
         /// </summary>
         public double[] RandomNormalSample(int count, double mean = 0, double stdDev = 1)
         {
-            double[] values = new double[count];
-            for (int i = 0; i <= count; i++)
+            var values = new double[count];
+            for (var i = 0; i <= count; i++)
             {
                 values[i] = RandomNormalNumber(mean, stdDev);
             }
@@ -148,10 +151,10 @@
         /// </summary>
         public double[] RandomSin(int count)
         {
-            double mult = Math.Pow(2, 1 + _rand.NextDouble() * 10);
-            double offset = mult * (_rand.NextDouble() - .5);
-            double oscillations = 1 + _rand.NextDouble() * 5;
-            double phase = _rand.NextDouble() * Math.PI * 2;
+            var mult = Math.Pow(2, 1 + _rand.NextDouble() * 10);
+            var offset = mult * (_rand.NextDouble() - .5);
+            var oscillations = 1 + _rand.NextDouble() * 5;
+            var phase = _rand.NextDouble() * Math.PI * 2;
             return ScottPlot.Generate.Sin(count, mult, offset, oscillations, phase);
         }
 
@@ -162,12 +165,12 @@
         /// </summary>
         public double[] RandomWalk(int count, double mult = 1, double offset = 0, double slope = 0)
         {
-            double[] data = new double[count];
+            var data = new double[count];
             data[0] = offset;
-            for (int i = 1; i < data.Length; i++)
+            for (var i = 1; i < data.Length; i++)
             {
                 // RandomSample number between -1 and 1;
-                double randomStep = _rand.NextDouble() * 2 - 1;
+                var randomStep = _rand.NextDouble() * 2 - 1;
                 // Using linear equation y_2 = m * x + y_1 where x = 1,
                 // then adding a scaled random step simplifies to:
                 data[i] = slope + data[i - 1] + randomStep * mult;
@@ -178,20 +181,20 @@
         /// <summary>
         /// Return a collection OHLCs representing random price action
         /// </summary>
-        public List<OHLC> RandomOHLCs(int count)
+        public List<OHLC> RandomOhlCs(int count)
         {
-            DateTime[] dates = ScottPlot.Generate.DateTime.Weekdays(count);
-            TimeSpan span = TimeSpan.FromDays(1);
+            var dates = ScottPlot.Generate.DateTime.Weekdays(count);
+            var span = TimeSpan.FromDays(1);
 
             double mult = 1;
 
             List<OHLC> ohlcs = new();
-            double open = RandomNumber(150, 250);
-            for (int i = 0; i < count; i++)
+            var open = RandomNumber(150, 250);
+            for (var i = 0; i < count; i++)
             {
-                double close = open + RandomNumber(-mult, mult);
-                double high = Math.Max(open, close) + RandomNumber(0, mult);
-                double low = Math.Min(open, close) - RandomNumber(0, mult);
+                var close = open + RandomNumber(-mult, mult);
+                var high = Math.Max(open, close) + RandomNumber(0, mult);
+                var low = Math.Min(open, close) - RandomNumber(0, mult);
                 OHLC ohlc = new(open, high, low, close, dates[i], span);
                 ohlcs.Add(ohlc);
                 open = close + RandomNumber(-mult / 2, mult / 2);

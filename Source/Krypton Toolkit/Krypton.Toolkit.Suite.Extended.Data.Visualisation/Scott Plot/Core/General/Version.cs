@@ -18,7 +18,7 @@
 
         private static string GetVersionString()
         {
-            string v = Assembly.GetAssembly(typeof(Plot))!
+            var v = Assembly.GetAssembly(typeof(Plot))!
                 .GetCustomAttribute<AssemblyInformationalVersionAttribute>()!
                 .InformationalVersion;
 

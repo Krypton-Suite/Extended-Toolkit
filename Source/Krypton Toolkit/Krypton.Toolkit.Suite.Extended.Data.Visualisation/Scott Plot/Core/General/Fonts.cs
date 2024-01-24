@@ -49,7 +49,7 @@
         {
             // Prefer the the system default because it is probably the best for international users
             // https://github.com/ScottPlot/ScottPlot/issues/2746
-            string font = SKTypeface.Default.FamilyName;
+            var font = SKTypeface.Default.FamilyName;
 
             // Favor "Open Sans" over "Segoe UI" because better anti-aliasing
             var installedFonts = GetInstalledFonts();
@@ -66,7 +66,7 @@
             var installedFonts = GetInstalledFonts();
 
             string[] preferredFonts = { "Roboto Mono", "Consolas", "DejaVu Sans Mono", "Courier" };
-            foreach (string preferredFont in preferredFonts)
+            foreach (var preferredFont in preferredFonts)
             {
                 if (installedFonts.Contains(preferredFont))
                 {
@@ -82,7 +82,7 @@
             var installedFonts = GetInstalledFonts();
 
             string[] preferredFonts = { "Times New Roman", "DejaVu Serif", "Times" };
-            foreach (string preferredFont in preferredFonts)
+            foreach (var preferredFont in preferredFonts)
             {
                 if (installedFonts.Contains(preferredFont))
                 {
@@ -115,8 +115,8 @@
             // A text element can consist of multiple Unicode code points.
             // Each code point can consist of 1 or 2 C# 'char's (=UTF-16 code units).
 
-            string defaultFontFamily = GetDefaultFontFamily(); // Should use the ScottPlot default font instead
-            List<int> standaloneCodePoints = GetStandaloneCodePoints(text);
+            var defaultFontFamily = GetDefaultFontFamily(); // Should use the ScottPlot default font instead
+            var standaloneCodePoints = GetStandaloneCodePoints(text);
 
             List<string> candidateFontNames = GetCandidateFontsForString(standaloneCodePoints);
 
@@ -132,7 +132,7 @@
                 return defaultFontFamily;
             }
 
-            string bestFontName = candidateFontNames
+            var bestFontName = candidateFontNames
                 .Select(fontName => new { fontName, NumMissingGlyphs = CountMissingGlyphs(fontName, standaloneCodePoints) })
                 .OrderBy(result => result.NumMissingGlyphs)
                 .First()
@@ -143,7 +143,7 @@
 
         public static string GetDefaultFontFamily()
         {
-            using SKTypeface typeface = SKFontManager.Default.MatchCharacter(' ');
+            using var typeface = SKFontManager.Default.MatchCharacter(' ');
 
             if (typeface != null)
             {
@@ -159,9 +159,9 @@
         {
             HashSet<string> candidateFontNames = []; // Using HashSet to avoid duplicates
 
-            foreach (int standaloneCodePoint in standaloneCodePoints)
+            foreach (var standaloneCodePoint in standaloneCodePoints)
             {
-                using SKTypeface? typeface = SKFontManager.Default.MatchCharacter(standaloneCodePoint);
+                using var typeface = SKFontManager.Default.MatchCharacter(standaloneCodePoint);
                 if (typeface != null)
                 {
                     candidateFontNames.Add(typeface.FamilyName);
@@ -176,12 +176,12 @@
 
         public static int CountMissingGlyphs(string fontName, List<int> standaloneCodePoints)
         {
-            int missingGlyphCount = 0;
+            var missingGlyphCount = 0;
 
             using var typeface = SKTypeface.FromFamilyName(fontName);
             if (typeface != null)
             {
-                foreach (int standaloneCodePoint in standaloneCodePoints)
+                foreach (var standaloneCodePoint in standaloneCodePoints)
                 {
                     ReadOnlySpan<int> codePoints = [standaloneCodePoint];
                     if (!typeface.ContainsGlyphs(codePoints))
@@ -204,7 +204,7 @@
         {
             List<string> textElements = ConvertStringToTextElements(inputText);
             IEnumerable<List<int>> codePoints = textElements.Select(ConvertTextElementToUtf32CodePoints);
-            List<int> standaloneCodePoints = GetStandaloneCodePoints(codePoints);
+            var standaloneCodePoints = GetStandaloneCodePoints(codePoints);
 
             return standaloneCodePoints;
         }
@@ -213,10 +213,10 @@
         {
             List<string> resultList = [];
 
-            TextElementEnumerator chars = StringInfo.GetTextElementEnumerator(textString);
+            var chars = StringInfo.GetTextElementEnumerator(textString);
             while (chars.MoveNext())
             {
-                string textElement = chars.GetTextElement();
+                var textElement = chars.GetTextElement();
 
                 resultList.Add(textElement);
             }
@@ -235,12 +235,12 @@
         {
             List<int> resultList = [];
 
-            int i = 0;
+            var i = 0;
             while (i < textElement.Length)
             {
                 // ArgumentOutOfRangeException is possible for malformed input strings,
                 // we let that propagate up to the user
-                int codePoint = char.ConvertToUtf32(textElement, i);
+                var codePoint = char.ConvertToUtf32(textElement, i);
                 resultList.Add(codePoint);
 
                 // Did we consume one or two chars?
@@ -267,7 +267,7 @@
 
             List<int> codePoints = [];
 
-            foreach (List<int> codePointList in codePointLists)
+            foreach (var codePointList in codePointLists)
             {
                 if (codePointList.Count == 1)
                 {
