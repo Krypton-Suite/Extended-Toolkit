@@ -187,7 +187,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             gp.AddRectangle(origin);
 
             if (gp.PointCount > 0)
+            {
                 g.DrawShadow(gp, color, dx, dy, blur);
+            }
         }
 
         /// <summary>
@@ -447,19 +449,27 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
             //Draw Left Side
             if (left)
+            {
                 DrawSide(gt, image, source, leftRect, s, AnchorStyles.Left);
+            }
 
             //Draw Right Side
             if (right)
+            {
                 DrawSide(gt, image, source, rightRect, s, AnchorStyles.Right);
+            }
 
             //Draw Top Side
             if (top)
+            {
                 DrawSide(gt, image, source, topRect, s, AnchorStyles.Top);
+            }
 
             //Draw Bottom Side
             if (bottom)
+            {
                 DrawSide(gt, image, source, bottomRect, s, AnchorStyles.Bottom);
+            }
 
             g.DrawImage(tmp, destination);
         }
@@ -514,7 +524,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                     var r = Math.Sqrt(xr * xr + yr * yr);
 
                     if (r > 1.0)
+                    {
                         continue;
+                    }
 
                     var d = new Rectangle((int)(left ? dest.Right - x - 1 : dest.Left + x), (int)(top ? dest.Bottom - y - 1 : dest.Top + y), 1, 1);
                     cm.Matrix33 = 1f - (float)r;

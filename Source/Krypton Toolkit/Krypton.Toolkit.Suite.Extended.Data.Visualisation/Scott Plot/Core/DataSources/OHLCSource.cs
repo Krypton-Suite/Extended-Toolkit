@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class OhlcSource : IOHLCSource
+    public class OhlcSource : IOhlcSource
     {
         private readonly List<OHLC> _prices;
 

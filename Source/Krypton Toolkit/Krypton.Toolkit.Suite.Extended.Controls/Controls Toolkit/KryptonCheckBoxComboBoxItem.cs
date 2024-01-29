@@ -47,9 +47,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             _checkBoxComboBox = owner;
             _comboBoxItem = comboBoxItem;
             if (_checkBoxComboBox.DataSource != null)
+            {
                 AddBindings();
+            }
             else
+            {
                 Text = comboBoxItem.ToString();
+            }
         }
 
         #endregion
@@ -108,9 +112,11 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             // Helps to maintain the Checked status of this
             // checkbox before the control is visible
             if (_comboBoxItem is INotifyPropertyChanged)
+            {
                 ((INotifyPropertyChanged)_comboBoxItem).PropertyChanged +=
                     new PropertyChangedEventHandler(
                         CheckBoxComboBoxItem_PropertyChanged);
+            }
         }
 
         internal void ApplyProperties(KryptonCheckBoxProperties properties)
@@ -141,11 +147,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         private void CheckBoxComboBoxItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == _checkBoxComboBox.ValueMember)
+            {
                 Checked =
                     (bool)_comboBoxItem
                         .GetType()
                         .GetProperty(_checkBoxComboBox.ValueMember)!
                         .GetValue(_comboBoxItem, null);
+            }
         }
 
         #endregion

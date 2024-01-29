@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class SignalXySourceDoubleArray : ISignalXYSource
+    public class SignalXySourceDoubleArray : ISignalXySource
     {
         readonly double[] _xs;
         readonly double[] _ys;
@@ -59,10 +59,14 @@
 
             // use interpolation at the edges to prevent points from going way off the screen
             if (pointBefore.Length > 0)
+            {
                 SignalInterpolation.InterpolateBeforeX(rp, points);
+            }
 
             if (pointAfter.Length > 0)
+            {
                 SignalInterpolation.InterpolateAfterX(rp, points);
+            }
 
             return points;
         }
@@ -84,10 +88,14 @@
 
             // use interpolation at the edges to prevent points from going way off the screen
             if (pointBefore.Length > 0)
+            {
                 SignalInterpolation.InterpolateBeforeY(rp, points);
+            }
 
             if (pointAfter.Length > 0)
+            {
                 SignalInterpolation.InterpolateAfterY(rp, points);
+            }
 
             return points;
         }

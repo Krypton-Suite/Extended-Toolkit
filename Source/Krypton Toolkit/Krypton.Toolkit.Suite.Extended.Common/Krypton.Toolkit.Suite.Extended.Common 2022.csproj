@@ -34,7 +34,7 @@
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
-		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<UseWindowsForms>true</UseWindowsForms>
 		<Configurations>Debug;Release;Nightly;Canary</Configurations>
 		<LangVersion>preview</LangVersion>

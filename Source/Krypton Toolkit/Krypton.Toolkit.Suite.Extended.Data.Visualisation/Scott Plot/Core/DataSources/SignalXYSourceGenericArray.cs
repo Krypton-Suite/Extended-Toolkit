@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class SignalXYSourceGenericArray<TX, TY> : ISignalXYSource
+    public class SignalXySourceGenericArray<TX, TY> : ISignalXySource
     {
         public TX[] Xs { get; set; }
         public TY[] Ys { get; set; }
@@ -15,7 +15,7 @@
         public int MinimumIndex { get; set; } = 0;
         public int MaximumIndex { get; set; }
 
-        public SignalXYSourceGenericArray(TX[] xs, TY[] ys)
+        public SignalXySourceGenericArray(TX[] xs, TY[] ys)
         {
             if (xs.Length != ys.Length)
             {
@@ -39,24 +39,28 @@
         public Pixel[] GetPixelsToDraw(RenderPack rp, IAxes axes)
         {
             // determine the range of data in view
-            (Pixel[] PointBefore, int dataIndexFirst) = GetFirstPoint(axes);
-            (Pixel[] PointAfter, int dataIndexLast) = GetLastPoint(axes);
+            (Pixel[] pointBefore, int dataIndexFirst) = GetFirstPoint(axes);
+            (Pixel[] pointAfter, int dataIndexLast) = GetLastPoint(axes);
             IndexRange columnIndexRange = new(dataIndexFirst, dataIndexLast);
 
             // get all points in view
-            IEnumerable<Pixel> VisiblePoints = Enumerable.Range(0, (int)Math.Ceiling(rp.DataRect.Width))
+            IEnumerable<Pixel> visiblePoints = Enumerable.Range(0, (int)Math.Ceiling(rp.DataRect.Width))
                 .Select(pixelColumnIndex => GetColumnPixels(pixelColumnIndex, columnIndexRange, rp, axes))
                 .SelectMany(x => x);
 
             // combine with one extra point before and after
-            Pixel[] points = [.. PointBefore, .. VisiblePoints, .. PointAfter];
+            Pixel[] points = [.. pointBefore, .. visiblePoints, .. pointAfter];
 
             // use interpolation at the edges to prevent points from going way off the screen
-            if (PointBefore.Length > 0)
+            if (pointBefore.Length > 0)
+            {
                 SignalInterpolation.InterpolateBeforeX(rp, points);
+            }
 
-            if (PointAfter.Length > 0)
+            if (pointAfter.Length > 0)
+            {
                 SignalInterpolation.InterpolateAfterX(rp, points);
+            }
 
             return points;
         }

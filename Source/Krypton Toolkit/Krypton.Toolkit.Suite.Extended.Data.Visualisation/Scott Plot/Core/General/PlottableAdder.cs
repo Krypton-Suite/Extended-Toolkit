@@ -494,7 +494,7 @@
 
         public SignalXY SignalXy<TX, TY>(TX[] xs, TY[] ys, Color? color = null)
         {
-            var dataSource = new SignalXYSourceGenericArray<TX, TY>(xs, ys);
+            var dataSource = new SignalXySourceGenericArray<TX, TY>(xs, ys);
 
             SignalXY sig = new(dataSource)
             {

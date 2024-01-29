@@ -4,8 +4,6 @@
 //All cmocean colormaps are available at https://github.com/matplotlib/cmocean/tree/master/cmocean/rgb
 
 
-using System;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class Algae : ByteColormapBase
