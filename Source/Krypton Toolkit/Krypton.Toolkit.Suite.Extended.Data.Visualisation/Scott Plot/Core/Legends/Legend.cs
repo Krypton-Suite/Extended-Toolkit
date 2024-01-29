@@ -63,7 +63,7 @@
             RenderLegend(sizedItems, rp.Canvas, paint, offset, legendRect, legendShadowRect);
         }
 
-        public void AsSvg(ScottPlot.Plot plot, Stream svgStream, int maxWidth = 0, int maxHeight = 0)
+        public void AsSvg(Plot plot, Stream svgStream, int maxWidth = 0, int maxHeight = 0)
         {
             if (svgStream is null)
             {
@@ -102,7 +102,7 @@
             return svgXml;
         }
 
-        private SKObject RenderToObject(ScottPlot.Plot plot, Stream? svgStream = null, int maxWidth = 0, int maxHeight = 0)
+        private SKObject RenderToObject(Plot plot, Stream? svgStream = null, int maxWidth = 0, int maxHeight = 0)
         {
             // measure all items to determine dimensions of the legend
             using SKPaint paint = new();
@@ -168,7 +168,7 @@
             return allItems.ToArray();
         }
 
-        private SizedLegendItem[] GetSizedLegendItems(ScottPlot.Plot plot, SKPaint paint)
+        private SizedLegendItem[] GetSizedLegendItems(Plot plot, SKPaint paint)
         {
             IEnumerable<LegendItem> allItems = plot.PlottableList.Where(x => x.IsVisible).SelectMany(x => x.LegendItems).Concat(ManualItems);
 

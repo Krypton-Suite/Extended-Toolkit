@@ -197,7 +197,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         public void AppendText(string textToSpeak, PromptRate rate)
         {
             Helpers.ThrowIfNull(textToSpeak, "textToSpeak");
-            if (rate < PromptRate.NotSet || rate > PromptRate.ExtraSlow)
+            if (rate is < PromptRate.NotSet or > PromptRate.ExtraSlow)
             {
                 throw new ArgumentOutOfRangeException("rate");
             }
@@ -229,7 +229,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         public void AppendText(string textToSpeak, PromptVolume volume)
         {
             Helpers.ThrowIfNull(textToSpeak, "textToSpeak");
-            if (volume < PromptVolume.NotSet || volume > PromptVolume.Default)
+            if (volume is < PromptVolume.NotSet or > PromptVolume.Default)
             {
                 throw new ArgumentOutOfRangeException("volume");
             }
@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         public void AppendText(string textToSpeak, PromptEmphasis emphasis)
         {
             Helpers.ThrowIfNull(textToSpeak, "textToSpeak");
-            if (emphasis < PromptEmphasis.NotSet || emphasis > PromptEmphasis.Reduced)
+            if (emphasis is < PromptEmphasis.NotSet or > PromptEmphasis.Reduced)
             {
                 throw new ArgumentOutOfRangeException("emphasis");
             }
@@ -512,7 +512,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         public void AppendTextWithHint(string textToSpeak, SayAs sayAs)
         {
             Helpers.ThrowIfNull(textToSpeak, "textToSpeak");
-            if (sayAs < SayAs.SpellOut || sayAs > SayAs.Text)
+            if (sayAs is < SayAs.SpellOut or > SayAs.Text)
             {
                 throw new ArgumentOutOfRangeException("sayAs");
             }

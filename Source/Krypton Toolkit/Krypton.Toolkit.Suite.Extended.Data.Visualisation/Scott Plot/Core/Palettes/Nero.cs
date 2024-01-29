@@ -8,9 +8,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public string Description { get; } = string.Empty;
 
-        public Color[] Colors { get; } = Color.FromHex(HexColors);
+        public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] HexColors =
+        private static readonly string[] _hexColors =
         [
             "#013A20", "#478C5C", "#94C973", "#BACC81", "#CDD193"
         ];

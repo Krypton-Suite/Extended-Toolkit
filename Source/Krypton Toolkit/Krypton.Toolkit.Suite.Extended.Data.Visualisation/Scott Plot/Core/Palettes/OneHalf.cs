@@ -11,9 +11,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public string Description { get; } = "A Sublime color scheme " +
                                              "by Son A. Pham: https://github.com/sonph/onehalf";
 
-        public Color[] Colors { get; } = Color.FromHex(HexColors);
+        public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] HexColors =
+        private static readonly string[] _hexColors =
         [
             "#383a42", "#e4564a", "#50a14f", "#c18402", "#0084bc", "#a626a4", "#0897b3"
         ];

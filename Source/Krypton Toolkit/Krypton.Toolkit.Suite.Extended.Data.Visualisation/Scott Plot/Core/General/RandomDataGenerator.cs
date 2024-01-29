@@ -28,7 +28,7 @@
 
         private static int GetCryptoRandomInt()
         {
-            var rng = System.Security.Cryptography.RandomNumberGenerator.Create();
+            var rng = RandomNumberGenerator.Create();
             var data = new byte[sizeof(int)];
             rng.GetBytes(data);
             return BitConverter.ToInt32(data, 0) & (int.MaxValue - 1);
@@ -181,21 +181,21 @@
         /// <summary>
         /// Return a collection OHLCs representing random price action
         /// </summary>
-        public List<OHLC> RandomOhlCs(int count)
+        public List<Ohlc> RandomOhlCs(int count)
         {
             var dates = ScottPlot.Generate.DateTime.Weekdays(count);
             var span = TimeSpan.FromDays(1);
 
             double mult = 1;
 
-            List<OHLC> ohlcs = new();
+            List<Ohlc> ohlcs = new();
             var open = RandomNumber(150, 250);
             for (var i = 0; i < count; i++)
             {
                 var close = open + RandomNumber(-mult, mult);
                 var high = Math.Max(open, close) + RandomNumber(0, mult);
                 var low = Math.Min(open, close) - RandomNumber(0, mult);
-                OHLC ohlc = new(open, high, low, close, dates[i], span);
+                Ohlc ohlc = new(open, high, low, close, dates[i], span);
                 ohlcs.Add(ohlc);
                 open = close + RandomNumber(-mult / 2, mult / 2);
             }

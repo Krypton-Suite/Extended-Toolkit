@@ -12,12 +12,12 @@
             var bmp = new SKBitmap(20, 20);
             using var paint = new SKPaint()
             {
-                Color = Colors.White.ToSKColor()
+                Color = Colors.White.ToSkColor()
             };
             using var path = new SKPath();
             using var canvas = new SKCanvas(bmp);
 
-            canvas.Clear(Colors.Black.ToSKColor());
+            canvas.Clear(Colors.Black.ToSkColor());
             canvas.DrawRect(new SKRect(0, 0, 10, 10), paint);
             canvas.DrawRect(new SKRect(10, 10, 20, 20), paint);
 

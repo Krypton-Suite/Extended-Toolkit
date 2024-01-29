@@ -7,7 +7,7 @@
         /// <summary>
         /// Logic that determines padding around the data area when <see cref="AutoScale()"/> is called
         /// </summary>
-        public IAutoScaler AutoScaler { get; set; } = new AutoScalers.FractionalAutoScaler(.1, .15);
+        public IAutoScaler AutoScaler { get; set; } = new FractionalAutoScaler(.1, .15);
 
         /// <summary>
         /// Horizontal axes
@@ -27,7 +27,7 @@
         /// <summary>
         /// A special panel
         /// </summary>
-        public Panels.TitlePanel Title { get; } = new();
+        public TitlePanel Title { get; } = new();
 
         /// <summary>
         /// All axes
@@ -95,7 +95,7 @@
             YAxes.Add(yAxisSecondary);
 
             // add a default grid using the primary axes
-            IGrid grid = new Grids.DefaultGrid(xAxisPrimary, yAxisPrimary);
+            IGrid grid = new DefaultGrid(xAxisPrimary, yAxisPrimary);
             Grids.Add(grid);
         }
 
@@ -423,7 +423,7 @@
         /// </summary>
         public void Margins()
         {
-            AutoScaler = new AutoScalers.FractionalAutoScaler();
+            AutoScaler = new FractionalAutoScaler();
             AutoScale();
         }
 
@@ -433,7 +433,7 @@
         /// </summary>
         public void Margins(double horizontal = 0.1, double vertical = .15)
         {
-            AutoScaler = new AutoScalers.FractionalAutoScaler(horizontal, vertical);
+            AutoScaler = new FractionalAutoScaler(horizontal, vertical);
             AutoScale();
         }
 
@@ -443,7 +443,7 @@
         /// </summary>
         public void Margins(double left = .05, double right = .05, double bottom = .07, double top = .07)
         {
-            AutoScaler = new AutoScalers.FractionalAutoScaler(left, right, bottom, top);
+            AutoScaler = new FractionalAutoScaler(left, right, bottom, top);
             AutoScale();
         }
     }

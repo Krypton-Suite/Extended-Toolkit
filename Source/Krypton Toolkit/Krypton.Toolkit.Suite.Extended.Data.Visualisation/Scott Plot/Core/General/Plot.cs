@@ -19,7 +19,7 @@
 
         public Legend Legend { get; set; }
 
-        public IPlottable Benchmark { get; set; } = new Plottables.Benchmark();
+        public IPlottable Benchmark { get; set; } = new Benchmark();
 
         public Plot()
         {
@@ -408,9 +408,9 @@
         /// Return the first default grid in use.
         /// Throws an exception if no default grids exist.
         /// </summary>
-        public Grids.DefaultGrid GetDefaultGrid()
+        public DefaultGrid GetDefaultGrid()
         {
-            IEnumerable<Grids.DefaultGrid> defaultGrids = Axes.Grids.OfType<Grids.DefaultGrid>();
+            IEnumerable<DefaultGrid> defaultGrids = Axes.Grids.OfType<DefaultGrid>();
             if (defaultGrids.Any())
             {
                 return defaultGrids.First();

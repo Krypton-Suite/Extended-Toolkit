@@ -186,7 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 return;
             }
             parent._confidence = 0;
-            if (reqConfidence < 0f || reqConfidence.Equals(0.5f))
+            if (reqConfidence is < 0f or 0.5f)
             {
                 parent._confidence = 0;
             }

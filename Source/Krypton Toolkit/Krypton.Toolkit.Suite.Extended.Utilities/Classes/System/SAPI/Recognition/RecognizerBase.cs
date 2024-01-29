@@ -243,7 +243,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 try
                 {
                     SPRECOSTATE recoState = SapiRecognizer.GetRecoState();
-                    if (recoState == SPRECOSTATE.SPRST_ACTIVE || recoState == SPRECOSTATE.SPRST_ACTIVE_ALWAYS)
+                    if (recoState is SPRECOSTATE.SPRST_ACTIVE or SPRECOSTATE.SPRST_ACTIVE_ALWAYS)
                     {
                         return RecognizerState.Listening;
                     }
@@ -750,7 +750,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         internal RecognitionResult EmulateRecognize(string inputText, CompareOptions compareOptions)
         {
             Helpers.ThrowIfEmptyOrNull(inputText, "inputText");
-            bool flag = compareOptions == CompareOptions.IgnoreCase || compareOptions == CompareOptions.OrdinalIgnoreCase;
+            bool flag = compareOptions is CompareOptions.IgnoreCase or CompareOptions.OrdinalIgnoreCase;
             if (!_supportsSapi53 && !flag)
             {
                 throw new NotSupportedException(SR.Get(SRID.NotSupportedWithThisVersionOfSAPICompareOption));
@@ -761,7 +761,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         internal void EmulateRecognizeAsync(string inputText, CompareOptions compareOptions)
         {
             Helpers.ThrowIfEmptyOrNull(inputText, "inputText");
-            bool flag = compareOptions == CompareOptions.IgnoreCase || compareOptions == CompareOptions.OrdinalIgnoreCase;
+            bool flag = compareOptions is CompareOptions.IgnoreCase or CompareOptions.OrdinalIgnoreCase;
             if (!_supportsSapi53 && !flag)
             {
                 throw new NotSupportedException(SR.Get(SRID.NotSupportedWithThisVersionOfSAPICompareOption));
@@ -1594,7 +1594,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         private void EmulateRecognizedFailReportError(SAPIErrorCodes hr)
         {
             _lastException = ExceptionFromSapiCreateRecognizerError(hr);
-            if (hr < SAPIErrorCodes.S_OK || hr == SAPIErrorCodes.SP_NO_RULE_ACTIVE)
+            if (hr is < SAPIErrorCodes.S_OK or SAPIErrorCodes.SP_NO_RULE_ACTIVE)
             {
                 FireEmulateRecognizeCompletedEvent(null, _lastException, true);
             }
@@ -1604,7 +1604,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         {
             SPRULESTATE sPRULESTATE = (!_pauseRecognizerOnRecognition) ? SPRULESTATE.SPRS_ACTIVE : SPRULESTATE.SPRS_ACTIVE_WITH_AUTO_PAUSE;
             SAPIErrorCodes sAPIErrorCodes = (!Grammar.IsDictationGrammar(uri)) ? sapiGrammar.SetRuleState(ruleName, sPRULESTATE) : sapiGrammar.SetDictationState(sPRULESTATE);
-            if (sAPIErrorCodes == SAPIErrorCodes.SPERR_NOT_TOPLEVEL_RULE || sAPIErrorCodes == SAPIErrorCodes.SP_NO_RULES_TO_ACTIVATE)
+            if (sAPIErrorCodes is SAPIErrorCodes.SPERR_NOT_TOPLEVEL_RULE or SAPIErrorCodes.SP_NO_RULES_TO_ACTIVATE)
             {
                 if (uri == null)
                 {

@@ -12,9 +12,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public string Description => "A perceptually uniform color palette " +
                                      "by Neal McKee: https://github.com/nealmckee/penumbra";
 
-        public Color[] Colors { get; } = Color.FromHex(HexColors);
+        public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] HexColors =
+        private static readonly string[] _hexColors =
         [
             "#CB7459", "#A38F2D", "#46A473", "#00A0BE", "#7E87D6", "#BD72A8"
         ];

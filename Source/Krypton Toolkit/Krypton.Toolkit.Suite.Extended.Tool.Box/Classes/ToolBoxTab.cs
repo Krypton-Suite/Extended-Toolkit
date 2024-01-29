@@ -900,7 +900,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         {
             bool handled = false;
 
-            if (Keys.Enter == e.KeyCode || Keys.Space == e.KeyCode)
+            if (e.KeyCode is Keys.Enter or Keys.Space)
             {
                 HandleAmbientKey(false);
                 handled = true;
@@ -924,7 +924,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         {
             bool handled = false;
 
-            if (Keys.Enter == e.KeyCode || Keys.Space == e.KeyCode)
+            if (e.KeyCode is Keys.Enter or Keys.Space)
             {
                 HandleAmbientKey(true);
                 handled = true;

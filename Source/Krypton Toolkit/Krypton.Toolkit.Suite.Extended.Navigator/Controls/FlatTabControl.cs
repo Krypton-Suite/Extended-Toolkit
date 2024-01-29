@@ -651,7 +651,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
             //if top or bottom leave a blank space for Close button or navigator
-            if ((Alignment == TabAlignment.Top) || (Alignment == TabAlignment.Bottom))
+            if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
             {
                 rreg = new Rectangle(TabArea.Left, TabControlArea.Top, nWidth - nMargin, TabControlArea.Height);
             }
@@ -812,7 +812,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             g.DrawPolygon(new Pen(_borderColour, _borderWidth), pt);
             //----------------------------
 
-            if (((Status == DrawingMethods.TabHeaderStatus.Selected) || (Status == DrawingMethods.TabHeaderStatus.HotSelected)) && (Appearance == TabAppearance.Normal))
+            if (Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected && (Appearance == TabAppearance.Normal))
             {
                 //----------------------------
                 // clear bottom lines
@@ -840,7 +840,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 float nAdj = (float)(nLeftMargin + img.Width + nRightMargin);
 
                 // adjust rectangles
-                if (Alignment == TabAlignment.Top || Alignment == TabAlignment.Bottom)
+                if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
                 {
                     nAdj = (float)(nLeftMargin + img.Width + nRightMargin);
 
@@ -896,7 +896,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 br = new SolidBrush(SystemColors.GrayText);
             }
 
-            if (Alignment == TabAlignment.Right || Alignment == TabAlignment.Left)
+            if (Alignment is TabAlignment.Right or TabAlignment.Left)
             {
                 //not ExtendedLayout
                 if (_useExtendedLayout == false)

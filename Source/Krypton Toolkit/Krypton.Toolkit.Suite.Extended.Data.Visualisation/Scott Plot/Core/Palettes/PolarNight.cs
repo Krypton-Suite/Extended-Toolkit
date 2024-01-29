@@ -12,9 +12,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public string Description { get; } = "From the " +
                                              "Nord collection of palettes: https://github.com/arcticicestudio/nord";
 
-        public Color[] Colors { get; } = Color.FromHex(HexColors);
+        public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] HexColors =
+        private static readonly string[] _hexColors =
         [
             "#2E3440", "#3B4252", "#434C5E", "#4C566A"
         ];

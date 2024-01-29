@@ -6,7 +6,7 @@
 
         public TopAxis()
         {
-            TickGenerator = new TickGenerators.NumericAutomatic();
+            TickGenerator = new NumericAutomatic();
         }
     }
 }

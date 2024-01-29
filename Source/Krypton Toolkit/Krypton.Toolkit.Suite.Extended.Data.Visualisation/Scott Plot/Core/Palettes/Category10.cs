@@ -56,9 +56,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public string Description { get; } = "A set of 10 unique colors used in " +
                                              "many data visualization libraries such as Matplotlib, Vega, and Tableau";
 
-        public Color[] Colors { get; } = Color.FromHex(HexColors);
+        public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] HexColors =
+        private static readonly string[] _hexColors =
         [
             "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
             "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"

@@ -1087,10 +1087,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         protected override bool IsInputKey(Keys keyData)
         {
             if (
-                keyData == Keys.Down ||
-                keyData == Keys.Up ||
-                keyData == Keys.Right ||
-                keyData == Keys.Left)
+                keyData is Keys.Down or Keys.Up or Keys.Right or Keys.Left)
             {
                 return true;
             }

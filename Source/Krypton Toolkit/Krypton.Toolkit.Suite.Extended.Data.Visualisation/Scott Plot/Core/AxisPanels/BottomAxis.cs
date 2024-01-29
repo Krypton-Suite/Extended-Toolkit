@@ -6,7 +6,7 @@
 
         public BottomAxis()
         {
-            TickGenerator = new TickGenerators.NumericAutomatic();
+            TickGenerator = new NumericAutomatic();
         }
     }
 }

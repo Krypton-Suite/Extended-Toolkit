@@ -170,7 +170,7 @@
 
             var body = Type.GetTypeCode(typeof(T)) switch
             {
-                TypeCode.Byte => Expression.Add(paramA, paramB, typeof(NumericConversion).GetMethod(nameof(NumericConversion.AddBytes))),
+                TypeCode.Byte => Expression.Add(paramA, paramB, typeof(NumericConversion).GetMethod(nameof(AddBytes))),
                 _ => Expression.Add(paramA, paramB),
             };
 
@@ -184,7 +184,7 @@
 
             var body = Type.GetTypeCode(typeof(T)) switch
             {
-                TypeCode.Byte => Expression.Multiply(paramA, paramB, typeof(NumericConversion).GetMethod(nameof(NumericConversion.Multiply))),
+                TypeCode.Byte => Expression.Multiply(paramA, paramB, typeof(NumericConversion).GetMethod(nameof(Multiply))),
                 _ => Expression.Multiply(paramA, paramB),
             };
 
@@ -199,7 +199,7 @@
 
             var body = Type.GetTypeCode(typeof(T)) switch
             {
-                TypeCode.Byte => Expression.Subtract(paramA, paramB, typeof(NumericConversion).GetMethod(nameof(NumericConversion.SubtractBytes))),
+                TypeCode.Byte => Expression.Subtract(paramA, paramB, typeof(NumericConversion).GetMethod(nameof(SubtractBytes))),
                 _ => Expression.Subtract(paramA, paramB),
             };
 
@@ -213,7 +213,7 @@
 
             var body = Type.GetTypeCode(typeof(T)) switch
             {
-                TypeCode.Byte => Expression.LessThanOrEqual(paramA, paramB, false, typeof(NumericConversion).GetMethod(nameof(NumericConversion.LessThanOrEqualBytes))),
+                TypeCode.Byte => Expression.LessThanOrEqual(paramA, paramB, false, typeof(NumericConversion).GetMethod(nameof(LessThanOrEqualBytes))),
                 _ => Expression.LessThanOrEqual(paramA, paramB),
             };
 

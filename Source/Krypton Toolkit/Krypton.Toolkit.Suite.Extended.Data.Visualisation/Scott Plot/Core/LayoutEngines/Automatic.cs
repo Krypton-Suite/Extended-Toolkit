@@ -29,7 +29,7 @@
                 .ToList()
                 .ForEach(yAxis => yAxis.TickGenerator.Regenerate(yAxis.Range.ToCoordinateRange, yAxis.Edge, figureSize.Height));
 
-            Dictionary<IPanel, float> panelSizes = LayoutEngineBase.MeasurePanels(panels);
+            Dictionary<IPanel, float> panelSizes = MeasurePanels(panels);
             Dictionary<IPanel, float> panelOffsets = GetPanelOffsets(panels, panelSizes);
 
             PixelPadding paddingNeededForPanels = new(

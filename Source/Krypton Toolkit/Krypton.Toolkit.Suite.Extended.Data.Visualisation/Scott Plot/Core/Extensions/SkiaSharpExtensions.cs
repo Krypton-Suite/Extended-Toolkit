@@ -66,7 +66,7 @@
         {
             paint.Shader = null;
             paint.IsStroke = true;
-            paint.Color = style.Color.ToSKColor();
+            paint.Color = style.Color.ToSkColor();
             paint.StrokeWidth = style.Width;
             paint.PathEffect = style.Pattern.GetPathEffect();
             paint.IsAntialias = style.AntiAlias;
@@ -74,7 +74,7 @@
 
         public static void ApplyToPaint(this FillStyle fs, SKPaint paint)
         {
-            paint.Color = fs.Color.ToSKColor();
+            paint.Color = fs.Color.ToSkColor();
             paint.IsStroke = false;
             paint.IsAntialias = fs.AntiAlias;
 
@@ -94,7 +94,7 @@
             paint.IsStroke = false;
             paint.Typeface = fontStyle.Typeface;
             paint.TextSize = fontStyle.Size;
-            paint.Color = fontStyle.Color.ToSKColor();
+            paint.Color = fontStyle.Color.ToSkColor();
             paint.IsAntialias = fontStyle.AntiAlias;
             paint.FakeBoldText = fontStyle.Bold;
         }

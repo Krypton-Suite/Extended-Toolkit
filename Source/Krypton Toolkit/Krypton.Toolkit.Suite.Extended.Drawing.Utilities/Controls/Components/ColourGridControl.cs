@@ -1153,7 +1153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             bool result;
 
-            if (keyData == Keys.Left || keyData == Keys.Up || keyData == Keys.Down || keyData == Keys.Right || keyData == Keys.Enter || keyData == Keys.Home || keyData == Keys.End)
+            if (keyData is Keys.Left or Keys.Up or Keys.Down or Keys.Right or Keys.Enter or Keys.Home or Keys.End)
             {
                 result = true;
             }
@@ -2068,10 +2068,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private void SetToolTip()
         {
-            if (this.ShowToolTips)
+            if (this.ShowToolTips is true and true)
             {
-                if (this.ShowToolTips)
-                {
 #if USENAMEHACK
         string name;
 
@@ -2091,9 +2089,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         _toolTip.SetToolTip(this, name);
 #else
-                    _toolTip.SetToolTip(this, this.HotIndex != InvalidIndex ? this.GetColour(this.HotIndex).Name : null);
+                _toolTip.SetToolTip(this, this.HotIndex != InvalidIndex ? this.GetColour(this.HotIndex).Name : null);
 #endif
-                }
             }
         }
 

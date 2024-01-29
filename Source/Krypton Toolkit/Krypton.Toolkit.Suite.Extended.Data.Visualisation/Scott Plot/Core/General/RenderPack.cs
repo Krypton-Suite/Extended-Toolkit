@@ -43,7 +43,7 @@
 
         public void ClipToDataArea()
         {
-            Canvas.ClipRect(DataRect.ToSKRect());
+            Canvas.ClipRect(DataRect.ToSkRect());
         }
 
         public void DisableClipping()

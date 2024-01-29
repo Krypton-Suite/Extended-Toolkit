@@ -69,7 +69,7 @@
 
         public static double[] SquareWave(uint cycles = 20, uint pointsPerCycle = 1_000, double duty = .5, double low = 0, double high = 1)
         {
-            if (duty < 0 || duty > 1)
+            if (duty is < 0 or > 1)
             {
                 throw new ArgumentException($"{nameof(duty)} must be in the range [0, 1]");
             }
@@ -464,7 +464,7 @@
 
         #region Finance
 
-        public static List<OHLC> RandomOhlCs(int count)
+        public static List<Ohlc> RandomOhlCs(int count)
         {
             return RandomData.RandomOhlCs(count);
         }
@@ -479,7 +479,7 @@
             var mean = RandomData.RandomNumber(3);
             var stdDev = RandomData.RandomNumber(3);
 
-            var values = Generate.RandomNormal(n, mean, stdDev);
+            var values = RandomNormal(n, mean, stdDev);
             Array.Sort(values);
             var min = values[0];
             var q1 = values[n / 4];

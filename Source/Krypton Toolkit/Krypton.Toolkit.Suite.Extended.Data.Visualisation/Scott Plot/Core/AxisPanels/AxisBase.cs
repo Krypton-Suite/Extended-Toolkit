@@ -105,7 +105,7 @@
             foreach (Tick tick in ticks)
             {
                 // draw tick
-                paint.Color = tick.IsMajor ? majorStyle.Color.ToSKColor() : minorStyle.Color.ToSKColor();
+                paint.Color = tick.IsMajor ? majorStyle.Color.ToSkColor() : minorStyle.Color.ToSkColor();
                 paint.StrokeWidth = tick.IsMajor ? majorStyle.Width : minorStyle.Width;
                 float tickLength = tick.IsMajor ? majorStyle.Length : minorStyle.Length;
                 float xPx = axis.GetPixel(tick.Position, panelRect);
@@ -143,7 +143,7 @@
             foreach (Tick tick in ticks)
             {
                 // draw tick
-                paint.Color = tick.IsMajor ? majorStyle.Color.ToSKColor() : minorStyle.Color.ToSKColor();
+                paint.Color = tick.IsMajor ? majorStyle.Color.ToSkColor() : minorStyle.Color.ToSkColor();
                 paint.StrokeWidth = tick.IsMajor ? majorStyle.Width : minorStyle.Width;
                 float tickLength = tick.IsMajor ? majorStyle.Length : minorStyle.Length;
                 float x = axis.Edge == Edge.Left ? panelRect.Right : panelRect.Left;

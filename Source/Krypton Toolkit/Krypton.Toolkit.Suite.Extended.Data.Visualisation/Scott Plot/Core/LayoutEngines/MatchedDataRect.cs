@@ -14,7 +14,7 @@
 
         public Layout GetLayout(PixelRect figureRect, IEnumerable<IPanel> panels)
         {
-            Dictionary<IPanel, float> panelSizes = LayoutEngineBase.MeasurePanels(panels);
+            Dictionary<IPanel, float> panelSizes = MeasurePanels(panels);
             Dictionary<IPanel, float> panelOffsets = GetPanelOffsets(panels, panelSizes);
 
             PixelRect dataRect = ReferencePlot.RenderManager.LastRender.DataRect;

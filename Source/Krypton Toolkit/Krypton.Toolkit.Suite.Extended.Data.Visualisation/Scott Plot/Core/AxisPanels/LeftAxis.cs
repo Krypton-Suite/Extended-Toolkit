@@ -6,7 +6,7 @@
 
         public LeftAxis()
         {
-            TickGenerator = new TickGenerators.NumericAutomatic();
+            TickGenerator = new NumericAutomatic();
             Label.Rotation = -90;
         }
     }

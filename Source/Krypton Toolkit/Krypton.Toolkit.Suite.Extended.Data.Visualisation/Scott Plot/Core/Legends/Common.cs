@@ -83,7 +83,7 @@
             if (item.Fill.HasValue)
             {
                 item.Fill.ApplyToPaint(paint);
-                canvas.DrawRect(rect.ToSKRect(), paint);
+                canvas.DrawRect(rect.ToSkRect(), paint);
             }
         }
 

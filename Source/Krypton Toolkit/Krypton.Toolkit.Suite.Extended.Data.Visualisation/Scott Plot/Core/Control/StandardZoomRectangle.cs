@@ -40,7 +40,7 @@
             SKRect rect = new(MouseDown.X, MouseDown.Y, MouseUp.X, MouseUp.Y);
 
             canvas.Save();
-            canvas.ClipRect(dataRect.ToSKRect());
+            canvas.ClipRect(dataRect.ToSkRect());
 
             if (HorizontalSpan)
             {
@@ -59,11 +59,11 @@
                 IsAntialias = true
             };
 
-            paint.Color = FillColor.ToSKColor();
+            paint.Color = FillColor.ToSkColor();
             paint.IsStroke = false;
             canvas.DrawRect(rect, paint);
 
-            paint.Color = LineStyle.Color.ToSKColor();
+            paint.Color = LineStyle.Color.ToSkColor();
             paint.StrokeWidth = LineStyle.Width;
             paint.IsStroke = true;
             canvas.DrawRect(rect, paint);

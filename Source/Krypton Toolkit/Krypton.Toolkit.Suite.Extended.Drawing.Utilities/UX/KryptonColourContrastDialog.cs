@@ -1107,7 +1107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private void chtxtBase_TextChanged(object sender, EventArgs e)
         {
-            if (chtxtBase.Text.Length == 3 || chtxtBase.Text.Length == 6)
+            if (chtxtBase.Text.Length is 3 or 6)
             {
                 cbBaseColour.BackColor = ColorTranslator.FromHtml($"#{chtxtBase.Text}");
             }

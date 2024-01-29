@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         private static bool CharIsPrintable(char c)
         {
             UnicodeCategory unicodeCategory = char.GetUnicodeCategory(c);
-            return unicodeCategory != UnicodeCategory.Control || unicodeCategory == UnicodeCategory.OtherNotAssigned;
+            return unicodeCategory is not UnicodeCategory.Control or UnicodeCategory.OtherNotAssigned;
         }
 
         private void DrawDump(Graphics g, byte[] lineBuffer, int line)

@@ -639,7 +639,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         protected override void OnKeyDown(KeyEventArgs kevent)
         {
-            if (kevent.KeyCode == Keys.Space || kevent.KeyCode == Keys.Return)
+            if (kevent.KeyCode is Keys.Space or Keys.Return)
             {
                 PressButton();
             }
@@ -679,7 +679,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         protected override void OnKeyUp(KeyEventArgs kevent)
         {
-            if (kevent.KeyCode == Keys.Space || kevent.KeyCode == Keys.Return)
+            if (kevent.KeyCode is Keys.Space or Keys.Return)
             {
                 ReleaseButton();
                 if (IsDefault)

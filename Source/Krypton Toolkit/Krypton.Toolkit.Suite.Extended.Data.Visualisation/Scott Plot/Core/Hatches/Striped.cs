@@ -18,11 +18,11 @@
         {
             var bitmap = new SKBitmap(20, 50);
 
-            using var paint = new SKPaint() { Color = Colors.White.ToSKColor() };
+            using var paint = new SKPaint() { Color = Colors.White.ToSkColor() };
             using var path = new SKPath();
             using var canvas = new SKCanvas(bitmap);
 
-            canvas.Clear(Colors.Black.ToSKColor());
+            canvas.Clear(Colors.Black.ToSkColor());
             canvas.DrawRect(new SKRect(0, 0, 20, 20), paint);
 
             return bitmap;

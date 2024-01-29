@@ -50,7 +50,7 @@
                 return;
             }
 
-            canvas.DrawLine(pt1.ToSKPoint(), pt2.ToSKPoint(), paint);
+            canvas.DrawLine(pt1.ToSkPoint(), pt2.ToSkPoint(), paint);
         }
 
         public static void DrawLine(SKCanvas canvas, SKPaint paint, PixelLine pxLine, LineStyle lineStyle)
@@ -71,7 +71,7 @@
                 return;
             }
 
-            canvas.DrawLine(pt1.ToSKPoint(), pt2.ToSKPoint(), paint);
+            canvas.DrawLine(pt1.ToSkPoint(), pt2.ToSkPoint(), paint);
         }
 
         public static void DrawLine(SKCanvas canvas, SKPaint paint, Pixel pt1, Pixel pt2, Color color, float width = 1, bool antiAlias = true, LinePattern pattern = LinePattern.Solid)
@@ -81,7 +81,7 @@
                 return;
             }
 
-            paint.Color = color.ToSKColor();
+            paint.Color = color.ToSkColor();
             paint.IsStroke = true;
             paint.IsAntialias = antiAlias;
             paint.StrokeWidth = width;
@@ -91,7 +91,7 @@
                 return;
             }
 
-            canvas.DrawLine(pt1.ToSKPoint(), pt2.ToSKPoint(), paint);
+            canvas.DrawLine(pt1.ToSkPoint(), pt2.ToSkPoint(), paint);
         }
 
         public static void DrawLines(SKCanvas canvas, Pixel[] starts, Pixel[] ends, Color color, float width = 1, bool antiAlias = true, LinePattern pattern = LinePattern.Solid)
@@ -108,7 +108,7 @@
 
             using SKPaint paint = new()
             {
-                Color = color.ToSKColor(),
+                Color = color.ToSkColor(),
                 IsStroke = true,
                 IsAntialias = antiAlias,
                 StrokeWidth = width,
@@ -150,11 +150,11 @@
 
             using SKPath path = new();
 
-            path.MoveTo(pixels.First().ToSKPoint());
+            path.MoveTo(pixels.First().ToSkPoint());
 
             foreach (var pixel in pixels.Skip(1))
             {
-                path.LineTo(pixel.ToSKPoint());
+                path.LineTo(pixel.ToSkPoint());
             }
 
             canvas.DrawPath(path, paint);
@@ -162,31 +162,31 @@
 
         public static void Fillectangle(SKCanvas canvas, PixelRect rect, SKPaint paint)
         {
-            canvas.DrawRect(rect.ToSKRect(), paint);
+            canvas.DrawRect(rect.ToSkRect(), paint);
         }
 
         public static void Fillectangle(SKCanvas canvas, PixelRect rect, Color color)
         {
             using SKPaint paint = new()
             {
-                Color = color.ToSKColor(),
+                Color = color.ToSkColor(),
                 IsStroke = false,
                 IsAntialias = true,
             };
 
-            canvas.DrawRect(rect.ToSKRect(), paint);
+            canvas.DrawRect(rect.ToSkRect(), paint);
         }
 
         public static void DrawRectangle(SKCanvas canvas, PixelRect rect, SKPaint paint)
         {
-            canvas.DrawRect(rect.ToSKRect(), paint);
+            canvas.DrawRect(rect.ToSkRect(), paint);
         }
 
         public static void DrawRectangle(SKCanvas canvas, PixelRect rect, Color color, float lineWidth = 1)
         {
             using SKPaint paint = new()
             {
-                Color = color.ToSKColor(),
+                Color = color.ToSkColor(),
                 IsStroke = true,
                 StrokeWidth = lineWidth,
                 IsAntialias = true,
@@ -199,33 +199,33 @@
         {
             using SKPaint paint = new()
             {
-                Color = color.ToSKColor(),
+                Color = color.ToSkColor(),
                 IsStroke = true,
                 StrokeWidth = lineWidth,
                 IsAntialias = true,
             };
 
-            canvas.DrawRect(rect.ToSKRect(), paint);
-            canvas.DrawLine(rect.BottomLeft.ToSKPoint(), rect.TopRight.ToSKPoint(), paint);
-            canvas.DrawLine(rect.TopLeft.ToSKPoint(), rect.BottomRight.ToSKPoint(), paint);
+            canvas.DrawRect(rect.ToSkRect(), paint);
+            canvas.DrawLine(rect.BottomLeft.ToSkPoint(), rect.TopRight.ToSkPoint(), paint);
+            canvas.DrawLine(rect.TopLeft.ToSkPoint(), rect.BottomRight.ToSkPoint(), paint);
 
-            canvas.DrawCircle(point.ToSKPoint(), 5, paint);
+            canvas.DrawCircle(point.ToSkPoint(), 5, paint);
 
             paint.IsStroke = false;
             paint.Color = paint.Color.WithAlpha(20);
-            canvas.DrawRect(rect.ToSKRect(), paint);
+            canvas.DrawRect(rect.ToSkRect(), paint);
         }
 
         public static void DrawCircle(SKCanvas canvas, Pixel center, Color color, float radius = 5, bool fill = true)
         {
             using SKPaint paint = new()
             {
-                Color = color.ToSKColor(),
+                Color = color.ToSkColor(),
                 IsStroke = !fill,
                 IsAntialias = true,
             };
 
-            canvas.DrawCircle(center.ToSKPoint(), radius, paint);
+            canvas.DrawCircle(center.ToSkPoint(), radius, paint);
         }
 
         public static void DrawMarker(SKCanvas canvas, SKPaint paint, Pixel pixel, MarkerStyle style)

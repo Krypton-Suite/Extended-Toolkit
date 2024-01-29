@@ -14,9 +14,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public string Description { get; } = "Soft color palette sourced from " +
                                              "the Microcharts project: https://github.com/microcharts-dotnet/Microcharts";
 
-        public Color[] Colors { get; } = Color.FromHex(HexColors);
+        public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] HexColors =
+        private static readonly string[] _hexColors =
         [
             "#266489", "#68B9C0", "#90D585", "#F3C151", "#F37F64",
             "#424856", "#8F97A4", "#DAC096", "#76846E", "#DABFAF",

@@ -263,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                                     break;
                                 case "language":
                                     CheckForDuplicates(ref dest2, reader);
-                                    if (dest2 == "C#" || dest2 == "VB.Net")
+                                    if (dest2 is "C#" or "VB.Net")
                                     {
                                         grammar.Language = dest2;
                                     }
@@ -1128,7 +1128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                                 namespaceURI = reader.LocalName;
                                 if (namespaceURI == "subset")
                                 {
-                                    if (parent is IRule || parent is IItem)
+                                    if (parent is IRule or IItem)
                                     {
                                         element = ParseSubset(parent, reader);
                                     }
@@ -1193,7 +1193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                         flag2 = ParseChildNodeElement(parent, flag2, element);
                         flag = false;
                     }
-                    else if (reader.NodeType == XmlNodeType.Text || reader.NodeType == XmlNodeType.CDATA)
+                    else if (reader.NodeType is XmlNodeType.Text or XmlNodeType.CDATA)
                     {
                         if (parent == null)
                         {
@@ -1415,7 +1415,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                     if (reader.NodeType == XmlNodeType.Element)
                     {
                         string namespaceURI = reader.NamespaceURI;
-                        if (namespaceURI == "http://www.w3.org/2001/06/grammar" || namespaceURI == "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions")
+                        if (namespaceURI is "http://www.w3.org/2001/06/grammar" or "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions")
                         {
                             flag = true;
                         }
@@ -1499,7 +1499,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                 if (num < 0)
                 {
                     int num2 = Convert.ToInt32(repeat, CultureInfo.InvariantCulture);
-                    if (num2 < 0 || num2 > 255)
+                    if (num2 is < 0 or > 255)
                     {
                         ThrowSrgsException(SRID.MinMaxOutOfRange, num2, num2);
                     }
@@ -1516,7 +1516,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                     {
                         maxRepeat = int.MaxValue;
                     }
-                    if (minRepeat < 0 || minRepeat > 255 || (maxRepeat != int.MaxValue && (maxRepeat < 0 || maxRepeat > 255)))
+                    if (minRepeat < 0 || minRepeat > 255 || (maxRepeat != int.MaxValue && maxRepeat is < 0 or > 255))
                     {
                         ThrowSrgsException(SRID.MinMaxOutOfRange, minRepeat, maxRepeat);
                     }

@@ -19,14 +19,14 @@
             var bmp = new SKBitmap(20, 20);
             using var paint = new SKPaint()
             {
-                Color = Colors.White.ToSKColor(),
+                Color = Colors.White.ToSkColor(),
                 IsStroke = true,
                 StrokeWidth = 3
             };
             using var path = new SKPath();
             using var canvas = new SKCanvas(bmp);
 
-            canvas.Clear(Colors.Black.ToSKColor());
+            canvas.Clear(Colors.Black.ToSkColor());
             canvas.DrawRect(0, 0, 20, 20, paint);
 
             return bmp;

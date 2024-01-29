@@ -12,11 +12,11 @@
             _plot = plot;
         }
 
-        public IPalette Palette { get; set; } = new Palettes.Category10();
+        public IPalette Palette { get; set; } = new Category10();
 
         public Color GetNextColor()
         {
-            return Palette.Colors[Plot.PlottableList.Count % Palette.Colors.Length];
+            return Palette.Colors[_plot.PlottableList.Count % Palette.Colors.Length];
         }
 
         public BarPlot Bar(Bar bar)
@@ -87,7 +87,7 @@
             BoxPlot bp = new();
             bp.Boxes.Add(box);
             bp.FillColor = GetNextColor();
-            Plot.PlottableList.Add(bp);
+            _plot.PlottableList.Add(bp);
             return bp;
         }
 
@@ -96,15 +96,15 @@
             BoxPlot bp = new();
             bp.Boxes.AddRange(boxes);
             bp.FillColor = GetNextColor();
-            Plot.PlottableList.Add(bp);
+            _plot.PlottableList.Add(bp);
             return bp;
         }
 
-        public CandlestickPlot Candlestick(List<OHLC> ohlcs)
+        public CandlestickPlot Candlestick(List<Ohlc> ohlcs)
         {
             OhlcSource dataSource = new(ohlcs);
             CandlestickPlot candlestickPlot = new(dataSource);
-            Plot.PlottableList.Add(candlestickPlot);
+            _plot.PlottableList.Add(candlestickPlot);
             return candlestickPlot;
         }
 
@@ -115,7 +115,7 @@
                 Position = new(x, y)
             };
             ch.LineStyle.Color = GetNextColor();
-            Plot.PlottableList.Add(ch);
+            _plot.PlottableList.Add(ch);
             return ch;
         }
 
@@ -123,7 +123,7 @@
         {
             ColorBar colorBar = new(source, edge);
 
-            Plot.Axes.Panels.Add(colorBar);
+            _plot.Axes.Panels.Add(colorBar);
             return colorBar;
         }
 
@@ -134,7 +134,7 @@
                 Color = GetNextColor(),
             };
 
-            Plot.PlottableList.Add(logger);
+            _plot.PlottableList.Add(logger);
 
             return logger;
         }
@@ -143,13 +143,13 @@
         {
             var data = new double[points];
 
-            DataStreamer streamer = new(Plot, data)
+            DataStreamer streamer = new(_plot, data)
             {
                 Color = GetNextColor(),
                 Period = period,
             };
 
-            Plot.PlottableList.Add(streamer);
+            _plot.PlottableList.Add(streamer);
 
             return streamer;
         }
@@ -161,7 +161,7 @@
                 Color = GetNextColor(),
             };
 
-            Plot.PlottableList.Add(eb);
+            _plot.PlottableList.Add(eb);
             return eb;
         }
 
@@ -187,7 +187,7 @@
         {
             FillY rangePlot = new(scatter1, scatter2);
             rangePlot.FillStyle.Color = GetNextColor();
-            Plot.PlottableList.Add(rangePlot);
+            _plot.PlottableList.Add(rangePlot);
             return rangePlot;
         }
 
@@ -199,7 +199,7 @@
             FillY rangePlot = new();
             rangePlot.FillStyle.Color = GetNextColor();
             rangePlot.SetDataSource(data);
-            Plot.PlottableList.Add(rangePlot);
+            _plot.PlottableList.Add(rangePlot);
             return rangePlot;
         }
 
@@ -212,7 +212,7 @@
             var rangePlot = new FillY();
             rangePlot.FillStyle.Color = GetNextColor();
             rangePlot.SetDataSource(data, function);
-            Plot.PlottableList.Add(rangePlot);
+            _plot.PlottableList.Add(rangePlot);
             return rangePlot;
         }
 
@@ -221,7 +221,7 @@
             FunctionPlot functionPlot = new(functionSource);
             functionPlot.LineStyle.Color = GetNextColor();
 
-            Plot.PlottableList.Add(functionPlot);
+            _plot.PlottableList.Add(functionPlot);
             return functionPlot;
         }
 
@@ -234,7 +234,7 @@
         public Heatmap Heatmap(double[,] intensities)
         {
             Heatmap heatmap = new(intensities);
-            Plot.PlottableList.Add(heatmap);
+            _plot.PlottableList.Add(heatmap);
             return heatmap;
         }
 
@@ -245,7 +245,7 @@
             line.LineStyle.Color = color ?? GetNextColor();
             line.LineStyle.Pattern = pattern;
             line.Y = y;
-            Plot.PlottableList.Add(line);
+            _plot.PlottableList.Add(line);
             return line;
         }
 
@@ -260,7 +260,7 @@
             lp.LineStyle.Color = GetNextColor();
             lp.MarkerStyle.Fill.Color = lp.LineStyle.Color;
 
-            Plot.PlottableList.Add(lp);
+            _plot.PlottableList.Add(lp);
 
             return lp;
         }
@@ -279,13 +279,13 @@
 
         public Marker Marker(double x, double y, MarkerShape shape = MarkerShape.FilledCircle, float size = 10, Color? color = null)
         {
-            Plottables.Marker mp = new()
+            Marker mp = new()
             {
                 MarkerStyle = new MarkerStyle(shape, size, color ?? GetNextColor()),
                 Location = new Coordinates(x, y),
             };
 
-            Plot.PlottableList.Add(mp);
+            _plot.PlottableList.Add(mp);
 
             return mp;
         }
@@ -295,18 +295,18 @@
             return Marker(location.X, location.Y, shape, size, color);
         }
 
-        public OhlcPlot Ohlc(List<OHLC> ohlcs)
+        public OhlcPlot Ohlc(List<Ohlc> ohlcs)
         {
             OhlcSource dataSource = new(ohlcs);
             OhlcPlot ohlc = new(dataSource);
-            Plot.PlottableList.Add(ohlc);
+            _plot.PlottableList.Add(ohlc);
             return ohlc;
         }
 
         public Pie Pie(IList<PieSlice> slices)
         {
             Pie pie = new(slices);
-            Plot.PlottableList.Add(pie);
+            _plot.PlottableList.Add(pie);
             return pie;
         }
 
@@ -318,20 +318,20 @@
                 Fill = new() { Color = GetNextColor() },
             }).ToList();
             var pie = Pie(slices);
-            Plot.PlottableList.Add(pie);
+            _plot.PlottableList.Add(pie);
             return pie;
         }
 
         public Polygon Polygon(Coordinates[] coordinates)
         {
             Polygon poly = new(coordinates);
-            Plot.PlottableList.Add(poly);
+            _plot.PlottableList.Add(poly);
             return poly;
         }
 
         public IPlottable Plottable(IPlottable plottable)
         {
-            Plot.PlottableList.Add(plottable);
+            _plot.PlottableList.Add(plottable);
             return plottable;
         }
 
@@ -352,7 +352,7 @@
             Scatter scatter = new(source);
             scatter.LineStyle.Color = nextColor;
             scatter.MarkerStyle.Fill.Color = nextColor;
-            Plot.PlottableList.Add(scatter);
+            _plot.PlottableList.Add(scatter);
             return scatter;
         }
 
@@ -396,7 +396,7 @@
             Scatter scatter = new(source);
             scatter.LineStyle.Color = nextColor;
             scatter.MarkerStyle.Fill.Color = nextColor;
-            Plot.PlottableList.Add(scatter);
+            _plot.PlottableList.Add(scatter);
             return scatter;
         }
 
@@ -407,7 +407,7 @@
             Scatter scatter = new(source);
             scatter.LineStyle.Color = nextColor;
             scatter.MarkerStyle.Fill.Color = nextColor;
-            Plot.PlottableList.Add(scatter);
+            _plot.PlottableList.Add(scatter);
             return scatter;
         }
 
@@ -418,7 +418,7 @@
                 Color = color ?? GetNextColor()
             };
 
-            Plot.PlottableList.Add(sig);
+            _plot.PlottableList.Add(sig);
 
             return sig;
         }
@@ -432,7 +432,7 @@
                 Color = color ?? GetNextColor()
             };
 
-            Plot.PlottableList.Add(sig);
+            _plot.PlottableList.Add(sig);
 
             return sig;
         }
@@ -446,7 +446,7 @@
                 Color = color ?? GetNextColor()
             };
 
-            Plot.PlottableList.Add(sig);
+            _plot.PlottableList.Add(sig);
 
             return sig;
         }
@@ -460,7 +460,7 @@
                 Color = color ?? GetNextColor()
             };
 
-            Plot.PlottableList.Add(sig);
+            _plot.PlottableList.Add(sig);
 
             return sig;
         }
@@ -473,35 +473,35 @@
                 Color = color ?? GetNextColor()
             };
 
-            Plot.PlottableList.Add(sig);
+            _plot.PlottableList.Add(sig);
 
             return sig;
         }
 
-        public SignalXY SignalXy(double[] xs, double[] ys, Color? color = null)
+        public SignalXy SignalXy(double[] xs, double[] ys, Color? color = null)
         {
             SignalXySourceDoubleArray dataSource = new(xs, ys);
 
-            SignalXY sig = new(dataSource)
+            SignalXy sig = new(dataSource)
             {
                 Color = color ?? GetNextColor()
             };
 
-            Plot.PlottableList.Add(sig);
+            _plot.PlottableList.Add(sig);
 
             return sig;
         }
 
-        public SignalXY SignalXy<TX, TY>(TX[] xs, TY[] ys, Color? color = null)
+        public SignalXy SignalXy<TX, TY>(TX[] xs, TY[] ys, Color? color = null)
         {
             var dataSource = new SignalXySourceGenericArray<TX, TY>(xs, ys);
 
-            SignalXY sig = new(dataSource)
+            SignalXy sig = new(dataSource)
             {
                 Color = color ?? GetNextColor()
             };
 
-            Plot.PlottableList.Add(sig);
+            _plot.PlottableList.Add(sig);
 
             return sig;
         }
@@ -518,7 +518,7 @@
             txt.Label.BackColor = Colors.Transparent;
             txt.Label.BorderColor = Colors.Transparent;
             txt.Location = new(x, y);
-            Plot.PlottableList.Add(txt);
+            _plot.PlottableList.Add(txt);
             return txt;
         }
 
@@ -529,7 +529,7 @@
             line.LineStyle.Color = color ?? GetNextColor();
             line.LineStyle.Pattern = pattern;
             line.X = x;
-            Plot.PlottableList.Add(line);
+            _plot.PlottableList.Add(line);
             return line;
         }
     }

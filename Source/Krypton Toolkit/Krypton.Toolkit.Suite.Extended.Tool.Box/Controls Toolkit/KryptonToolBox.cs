@@ -2868,7 +2868,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 }
                 else
                 {
-                    moveMsgLocked = Keys.Enter == e.KeyCode || Keys.Space == e.KeyCode;
+                    moveMsgLocked = e.KeyCode is Keys.Enter or Keys.Space;
                     _selectedTab.HandleKeyDown(e);
                 }
                 try
@@ -3338,7 +3338,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         private void OnTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Keys.Enter == e.KeyCode || Keys.Escape == e.KeyCode)
+            if (e.KeyCode is Keys.Enter or Keys.Escape)
             {
                 EndRenameItem(false, Keys.Escape == e.KeyCode);
             }

@@ -340,7 +340,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns></returns>
         public int GetRed()
         {
-            if (Red < MINIMUM_COLOUR_CHANNEL_VALUE || Red > MAXIMUM_COLOUR_CHANNEL_VALUE)
+            if (Red is < MINIMUM_COLOUR_CHANNEL_VALUE or > MAXIMUM_COLOUR_CHANNEL_VALUE)
             {
                 return Red;
             }
@@ -365,7 +365,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns></returns>
         public int GetGreen()
         {
-            if (Green < MINIMUM_COLOUR_CHANNEL_VALUE || Green > MAXIMUM_COLOUR_CHANNEL_VALUE)
+            if (Green is < MINIMUM_COLOUR_CHANNEL_VALUE or > MAXIMUM_COLOUR_CHANNEL_VALUE)
             {
                 return Green;
             }
@@ -390,7 +390,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns></returns>
         public int GetBlue()
         {
-            if (Blue < MINIMUM_COLOUR_CHANNEL_VALUE || Blue > MAXIMUM_COLOUR_CHANNEL_VALUE)
+            if (Blue is < MINIMUM_COLOUR_CHANNEL_VALUE or > MAXIMUM_COLOUR_CHANNEL_VALUE)
             {
                 return Blue;
             }
@@ -415,7 +415,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns></returns>
         public double GetAlpha()
         {
-            if (Alpha < MINIMUM_ALPHA_CHANNEL_VALUE || Alpha > MAXIMUM_ALPHA_CHANNEL_VALUE)
+            if (Alpha is < MINIMUM_ALPHA_CHANNEL_VALUE or > MAXIMUM_ALPHA_CHANNEL_VALUE)
             {
                 return Alpha;
             }

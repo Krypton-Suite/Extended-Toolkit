@@ -24,7 +24,7 @@
                 .ToList()
                 .ForEach(yAxis => yAxis.TickGenerator.Regenerate(yAxis.Range.ToCoordinateRange, yAxis.Edge, figureRect.Height));
 
-            Dictionary<IPanel, float> panelSizes = LayoutEngineBase.MeasurePanels(panels);
+            Dictionary<IPanel, float> panelSizes = MeasurePanels(panels);
             Dictionary<IPanel, float> panelOffsets = GetPanelOffsets(panels, panelSizes);
 
             PixelRect dataRect = new(

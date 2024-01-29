@@ -231,7 +231,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 {
                     try
                     {
-                        if (_downloadLocation != null || _downloadLocation != string.Empty)
+                        if (_downloadLocation is not (null and ""))
                         {
                             Process.Start(_downloadLocation);
                         }

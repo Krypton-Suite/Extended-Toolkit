@@ -9,9 +9,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public string Description { get; } = "A 12-color palette by Arthurits created by lightening the color wheel";
 
-        public Color[] Colors { get; } = Color.FromHex(HexColors);
+        public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] HexColors =
+        private static readonly string[] _hexColors =
         [
             "#f8c5c7", "#fadec3", "#fbf6c4",
             "#e1ecc8", "#d7e8cb", "#daebd7",

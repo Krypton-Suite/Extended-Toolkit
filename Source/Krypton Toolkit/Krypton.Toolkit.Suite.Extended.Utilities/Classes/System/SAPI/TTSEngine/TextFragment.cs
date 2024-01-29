@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
 		internal TextFragment(FragmentState fragState, string textToSpeak, string textFrag, int offset, int length)
 		{
-			if (fragState.Action == TtsEngineAction.Speak || fragState.Action == TtsEngineAction.Pronounce)
+			if (fragState.Action is TtsEngineAction.Speak or TtsEngineAction.Pronounce)
 			{
 				textFrag = textToSpeak;
 			}

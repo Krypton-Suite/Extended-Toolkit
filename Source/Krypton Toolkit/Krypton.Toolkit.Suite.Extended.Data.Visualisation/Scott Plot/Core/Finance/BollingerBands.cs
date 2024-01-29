@@ -8,7 +8,7 @@
         public readonly DateTime[] DateTimes;
         public readonly double[] Dates;
 
-        public BollingerBands(List<OHLC> ohlcs, int n, double sdCoeff = 2)
+        public BollingerBands(List<Ohlc> ohlcs, int n, double sdCoeff = 2)
         {
             double[] prices = ohlcs.Select(x => x.Close).ToArray();
             double[] sma = Series.MovingAverage(prices, n, preserveLength: true);

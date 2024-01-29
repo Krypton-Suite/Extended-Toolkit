@@ -7,12 +7,12 @@
             float radius = size / 2;
 
             fill.ApplyToPaint(paint);
-            canvas.DrawCircle(center.ToSKPoint(), radius, paint);
+            canvas.DrawCircle(center.ToSkPoint(), radius, paint);
 
             if (outline.Width > 0)
             {
                 outline.ApplyToPaint(paint);
-                canvas.DrawCircle(center.ToSKPoint(), radius, paint);
+                canvas.DrawCircle(center.ToSkPoint(), radius, paint);
             }
         }
     }

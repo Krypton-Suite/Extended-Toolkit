@@ -2,7 +2,7 @@
 {
     public interface IOhlcSource
     {
-        List<OHLC> GetOhlCs();
+        List<Ohlc> GetOhlCs();
         public CoordinateRange GetLimitsX();
         public CoordinateRange GetLimitsY();
         AxisLimits GetLimits();

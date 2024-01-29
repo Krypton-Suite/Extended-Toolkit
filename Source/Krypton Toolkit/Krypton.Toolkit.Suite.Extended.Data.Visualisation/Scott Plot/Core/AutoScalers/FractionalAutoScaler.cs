@@ -31,6 +31,9 @@
             TopFraction = top;
         }
 
+        public bool InvertedX { get; set; } = false;
+        public bool InvertedY { get; set; } = false;
+
         public void AutoScaleAll(IEnumerable<IPlottable> plottables)
         {
             // TODO: this should call the GetAxisLimits() below

@@ -56,7 +56,7 @@
             using var bmp = GetBitmap();
 
             rp.Canvas.Translate(marginTranslation);
-            rp.Canvas.DrawBitmap(bmp, panelRect.ToSKRect());
+            rp.Canvas.DrawBitmap(bmp, panelRect.ToSkRect());
 
             var colorbarLength = Edge.IsVertical() ? rp.DataRect.Height : rp.DataRect.Width;
             var axis = GetAxis(colorbarLength);
@@ -76,7 +76,7 @@
 
         private SKBitmap GetBitmap()
         {
-            uint[] argbs = Enumerable.Range(0, 256).Select(i => Source.Colormap.GetColor((Edge.IsVertical() ? 255 - i : i) / 255f).ARGB).ToArray();
+            uint[] argbs = Enumerable.Range(0, 256).Select(i => Source.Colormap.GetColor((Edge.IsVertical() ? 255 - i : i) / 255f).Argb).ToArray();
 
             int bmpWidth = Edge.IsVertical() ? 1 : 256;
             int bmpHeight = !Edge.IsVertical() ? 1 : 256;
@@ -88,10 +88,10 @@
         {
             IAxis axis = Edge switch
             {
-                Edge.Left => new AxisPanels.LeftAxis(),
-                Edge.Right => new AxisPanels.RightAxis(),
-                Edge.Bottom => new AxisPanels.BottomAxis(),
-                Edge.Top => new AxisPanels.TopAxis(),
+                Edge.Left => new LeftAxis(),
+                Edge.Right => new RightAxis(),
+                Edge.Bottom => new BottomAxis(),
+                Edge.Top => new TopAxis(),
                 _ => throw new ArgumentOutOfRangeException(nameof(Edge))
             };
 

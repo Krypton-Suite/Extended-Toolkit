@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.IO
                     fileStream = new FileStream(text3, FileMode.CreateNew, fileAccess, FileShare.None, 4096, fileOptions);
                     filePath = text3;
                 }
-                catch (Exception ex) when (num > 0 && (ex is IOException || ex is UnauthorizedAccessException))
+                catch (Exception ex) when (num > 0 && ex is IOException or UnauthorizedAccessException)
                 {
                 }
             }

@@ -677,7 +677,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 //--------------------------------------------------------
                 // Handles knob rotation with up,down,left and right keys 
                 //--------------------------------------------------------
-                if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Right)
+                if (e.KeyCode is Keys.Up or Keys.Right)
                 {
                     if (_value < _maximum)
                     {
@@ -686,7 +686,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
                     this.Refresh();
                 }
-                else if (e.KeyCode == Keys.Down || e.KeyCode == Keys.Left)
+                else if (e.KeyCode is Keys.Down or Keys.Left)
                 {
                     if (_value > _minimum)
                     {

@@ -13,9 +13,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public string Description { get; } = "A 25-color palette by Arthurits " +
                                              "adapted from Tsitsulin's 12-color xgfs palette: http://tsitsul.in/blog/coloropt";
 
-        public Color[] Colors { get; } = Color.FromHex(HexColors);
+        public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] HexColors =
+        private static readonly string[] _hexColors =
         [
             "#ebac23", "#b80058", "#008cf9", "#006e00", "#00bbad",
             "#d163e6", "#b24502", "#ff9287", "#5954d6", "#00c6f8",
