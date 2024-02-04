@@ -180,7 +180,7 @@ namespace Examples
 
         private void kbtnShow_Click(object sender, EventArgs e)
         {
-            KryptonMessageBoxExtended.Show(_message, _caption, _button, _icon, _defaultButton, _options);
+            //KryptonMessageBoxExtended.Show(this, _message, _caption, _button, _icon, _defaultButton, _options);
 
             //DialogResult result = KryptonMessageBoxExtended.Show(_message, _caption, _button, _icon, _defaultButton, _options);
 

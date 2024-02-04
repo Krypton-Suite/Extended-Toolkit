@@ -146,7 +146,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 // The hidden item could match any other item when only
                 // one other item was selected.
                 if (index0 == 0 && hasHiddenItem && _items.Count > 0)
+                {
                     item = _items[0];
+                }
                 else
                 {
                     int startIndex = hasHiddenItem
@@ -196,7 +198,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             if (_checkBoxComboBox.DropDownStyle == ComboBoxStyle.DropDownList
                 && _checkBoxComboBox.DataSource == null
                 && !DesignMode)
+            {
                 _checkBoxComboBox.CheckBoxItems[0].Visible = false;
+            }
 
             ResumeLayout();
         }

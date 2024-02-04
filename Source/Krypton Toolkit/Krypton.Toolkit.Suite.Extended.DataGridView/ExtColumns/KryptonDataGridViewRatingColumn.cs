@@ -177,7 +177,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 else
                 {
                     int oo = (int)Math.Round((((float)(mouseXRelativeToCell - imageXArea + 2) / (float)Imagewidth) * 10f), MidpointRounding.AwayFromZero);
-                    if (oo > 10 || oo < 0)
+                    if (oo is > 10 or < 0)
                     {
                         System.Diagnostics.Debugger.Break();
                     }

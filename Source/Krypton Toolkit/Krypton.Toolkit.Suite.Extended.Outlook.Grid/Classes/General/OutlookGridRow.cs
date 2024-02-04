@@ -318,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 }
 
                 //Draw right vertical bar 
-                if (grid.CellBorderStyle == DataGridViewCellBorderStyle.SingleVertical || grid.CellBorderStyle == DataGridViewCellBorderStyle.Single)
+                if (grid.CellBorderStyle is DataGridViewCellBorderStyle.SingleVertical or DataGridViewCellBorderStyle.Single)
                 {
                     using (SolidBrush br = new(paletteBorder.GetBorderColor1(state)))
                     {

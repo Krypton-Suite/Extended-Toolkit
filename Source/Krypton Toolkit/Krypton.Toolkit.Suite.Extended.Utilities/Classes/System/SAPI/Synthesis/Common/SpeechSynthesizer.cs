@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             get => VoiceSynthesizer.Rate;
             set
             {
-                if (value < -10 || value > 10)
+                if (value is < -10 or > 10)
                 {
                     throw new ArgumentOutOfRangeException("value", SR.Get(SRID.RateOutOfRange));
                 }
@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             get => VoiceSynthesizer.Volume;
             set
             {
-                if (value < 0 || value > 100)
+                if (value is < 0 or > 100)
                 {
                     throw new ArgumentOutOfRangeException("value", SR.Get(SRID.ResourceUsageOutOfRange));
                 }

@@ -616,7 +616,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         private static void InsertSemanticValueToDictionary(SemanticValue semanticValue, string propertyName, SemanticValue thisSemanticValue, GrammarOptions semanticTag, ref Collection<SemanticValue> dupItems)
         {
             string text = propertyName;
-            if ((text == "$" && semanticTag == GrammarOptions.MssV1) || (text == "=" && (semanticTag == GrammarOptions.KeyValuePairSrgs || semanticTag == GrammarOptions.KeyValuePairs)) || (thisSemanticValue.Count == -1 && semanticTag == GrammarOptions.W3cV1))
+            if ((text == "$" && semanticTag == GrammarOptions.MssV1) || (text == "=" && semanticTag is GrammarOptions.KeyValuePairSrgs or GrammarOptions.KeyValuePairs) || (thisSemanticValue.Count == -1 && semanticTag == GrammarOptions.W3cV1))
             {
                 if ((semanticTag & GrammarOptions.SemanticInterpretation) == 0 && semanticValue._valueFieldSet && !semanticValue.Value.Equals(thisSemanticValue.Value))
                 {

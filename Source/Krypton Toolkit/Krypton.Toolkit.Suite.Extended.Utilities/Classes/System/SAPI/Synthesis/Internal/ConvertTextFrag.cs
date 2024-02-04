@@ -270,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                         break;
                 }
             }
-            if (num < 0 || num > 65535)
+            if (num is < 0 or > 65535)
             {
                 num = 1000;
             }

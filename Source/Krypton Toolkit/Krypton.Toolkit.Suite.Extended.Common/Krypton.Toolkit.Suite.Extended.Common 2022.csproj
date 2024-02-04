@@ -34,7 +34,7 @@
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
-		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<UseWindowsForms>true</UseWindowsForms>
 		<Configurations>Debug;Release;Nightly;Canary</Configurations>
 		<LangVersion>preview</LangVersion>
@@ -85,7 +85,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.1.17-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.2.32-alpha" />
 					</ItemGroup>
 				</When>
 

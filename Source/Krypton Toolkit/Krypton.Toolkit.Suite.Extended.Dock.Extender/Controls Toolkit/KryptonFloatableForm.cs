@@ -105,7 +105,7 @@
 
             Point pt = Cursor.Position;
             Point pc = PointToClient(pt);
-            if (pc.Y < -21 || pc.Y > 0)
+            if (pc.Y is < -21 or > 0)
             {
                 return;
             }

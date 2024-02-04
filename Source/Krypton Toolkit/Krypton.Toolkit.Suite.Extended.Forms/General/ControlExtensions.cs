@@ -125,7 +125,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 Info = info;
 
                 if (info == null)
+                {
                     throw new ArgumentException("Invalid property to animate. The given properties have to match a property of the control.");
+                }
 
                 PropertyInfo?[] subprops = info.PropertyType.GetProperties().Where(m => m.CanRead && m.CanWrite).ToArray();
 

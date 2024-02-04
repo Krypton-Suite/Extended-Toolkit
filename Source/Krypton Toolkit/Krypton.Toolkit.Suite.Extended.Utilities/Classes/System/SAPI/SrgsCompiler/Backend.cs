@@ -684,7 +684,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     else
                     {
                         int transitionIndex = (int)cfgArc2.TransitionIndex;
-                        int num = (transitionIndex == 4194302 || transitionIndex == 4194301 || transitionIndex == 4194303) ? transitionIndex : 0;
+                        int num = transitionIndex is 4194302 or 4194301 or 4194303 ? transitionIndex : 0;
                         arc = new Arc((int)((num == 0) ? cfgArc2.TransitionIndex : 0), flWeight, cfgArc2.LowConfRequired ? (-1) : (cfgArc2.HighConfRequired ? 1 : 0), num, MatchMode.AllWords, ref _fNeedWeightTable);
                     }
                     arc.Start = state;

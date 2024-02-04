@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 hexadecimal = hexadecimal.Substring(1);
             }
 
-            if (hexadecimal.Length < 3 || hexadecimal.Length > 6)
+            if (hexadecimal.Length is < 3 or > 6)
             {
                 throw new Exception("Hexadecimal value not valid!");
             }

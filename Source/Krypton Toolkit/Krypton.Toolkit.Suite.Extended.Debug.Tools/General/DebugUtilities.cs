@@ -51,6 +51,16 @@ namespace Krypton.Toolkit.Suite.Extended.Debug.Tools
             };
         }
 
+        public static void WriteLine(object value) => System.Diagnostics.Debug.WriteLine(value);
+
+        public static void WriteLine(object value, string category) => System.Diagnostics.Debug.WriteLine(value, category);
+
+        public static void WriteLine(string format, params object[] args) => System.Diagnostics.Debug.WriteLine(format, args);
+
+        public static void WriteLine(string? message) => System.Diagnostics.Debug.WriteLine(message);
+
+        public static void WriteLine(string? message, string category) => System.Diagnostics.Debug.WriteLine(message, category);
+
         #endregion
     }
 }

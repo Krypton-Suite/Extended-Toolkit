@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             get => TimeSpan.FromMilliseconds(RecoBase.QueryRecognizerSettingAsInt("ResponseSpeed"));
             set
             {
-                if (value.TotalMilliseconds < 0.0 || value.TotalMilliseconds > 10000.0)
+                if (value.TotalMilliseconds is < 0.0 or > 10000.0)
                 {
                     throw new ArgumentOutOfRangeException("value", SR.Get(SRID.EndSilenceOutOfRange));
                 }
@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             get => TimeSpan.FromMilliseconds(RecoBase.QueryRecognizerSettingAsInt("ComplexResponseSpeed"));
             set
             {
-                if (value.TotalMilliseconds < 0.0 || value.TotalMilliseconds > 10000.0)
+                if (value.TotalMilliseconds is < 0.0 or > 10000.0)
                 {
                     throw new ArgumentOutOfRangeException("value", SR.Get(SRID.EndSilenceOutOfRange));
                 }

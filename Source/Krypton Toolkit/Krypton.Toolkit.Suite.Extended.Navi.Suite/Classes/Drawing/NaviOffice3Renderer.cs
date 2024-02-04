@@ -313,7 +313,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 g.FillRectangle(brush, bounds);
             }
 
-            if ((inputState == InputState.Clicked) || (inputState == InputState.Hovered))
+            if (inputState is InputState.Clicked or InputState.Hovered)
             {
                 Rectangle smallBounds = bounds;
                 smallBounds.Location = new Point(smallBounds.Left + 4, smallBounds.Top + 3);

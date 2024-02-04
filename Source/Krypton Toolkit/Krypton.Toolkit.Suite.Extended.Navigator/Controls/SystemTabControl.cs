@@ -353,7 +353,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
             //Align?
-            if (Alignment == TabAlignment.Top || Alignment == TabAlignment.Bottom)
+            if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
             {
                 recBounds.Offset(2, 0);
                 recBounds.Width = recBounds.Width + 1;
@@ -391,7 +391,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 //highter if selected and no multiline
                 if (this.Multiline != true)
                 {
-                    if (Alignment == TabAlignment.Top || Alignment == TabAlignment.Bottom)
+                    if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
                     {
                         recBounds.Height = recBounds.Height + 2;
                         recBounds.Width = recBounds.Width - 1;
@@ -399,7 +399,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 }
                 else //lower profile
                 {
-                    if (Alignment == TabAlignment.Top || Alignment == TabAlignment.Bottom)
+                    if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
                     {
                         recBounds.Y = recBounds.Y + 1;
                         recBounds.Height = recBounds.Height + 1;
@@ -419,7 +419,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     //highter if selected and no multiline
                     if (this.Multiline != true)
                     {
-                        if (Alignment == TabAlignment.Top || Alignment == TabAlignment.Bottom)
+                        if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
                         {
                             recBounds.Height = recBounds.Height + 2;
                             recBounds.Width = recBounds.Width - 1;
@@ -427,7 +427,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     }
                     else//lower if selected and multiline
                     {
-                        if (Alignment == TabAlignment.Top || Alignment == TabAlignment.Bottom)
+                        if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
                         {
                             recBounds.Y = recBounds.Y + 1;
                             recBounds.Height = recBounds.Height + 1;
@@ -439,7 +439,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 //tab Hot and not selected
                 else
                 {
-                    if (Alignment == TabAlignment.Top || Alignment == TabAlignment.Bottom)
+                    if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
                     {
                         //smaller if not selected, text lower
                         recBounds.Y = recBounds.Y + 3;
@@ -457,7 +457,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             else
             {
                 //smaller if not selected, text lower
-                if (Alignment == TabAlignment.Top || Alignment == TabAlignment.Bottom)
+                if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
                 {
                     recBounds.Y = recBounds.Y + 3;
                     recBounds.Height = recBounds.Height - 2;
@@ -568,7 +568,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             //Vertical Orientation
-            if ((this.Alignment == TabAlignment.Left) || (this.Alignment == TabAlignment.Right))
+            if (this.Alignment is TabAlignment.Left or TabAlignment.Right)
             {
                 //not ExtendedLayout
                 if (_useExtendedLayout == false)

@@ -1231,7 +1231,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                         result = ValidationResult.Invalid;
                         DownloadedFileThrewWhileCheckingSignature?.Invoke(item, path);
                     }
-                    if (result == ValidationResult.Valid || result == ValidationResult.Unchecked)
+                    if (result is ValidationResult.Valid or ValidationResult.Unchecked)
                     {
                         await RunDownloadedInstaller(path);
                     }

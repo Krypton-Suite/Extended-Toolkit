@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             get => _priority;
             set
             {
-                if (value < -128 || value > 127)
+                if (value is < -128 or > 127)
                 {
                     throw new ArgumentOutOfRangeException("value", SR.Get(SRID.GrammarInvalidPriority));
                 }

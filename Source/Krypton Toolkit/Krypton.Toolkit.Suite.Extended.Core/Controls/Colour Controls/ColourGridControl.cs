@@ -1143,7 +1143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             bool result;
 
-            if (keyData == Keys.Left || keyData == Keys.Up || keyData == Keys.Down || keyData == Keys.Right || keyData == Keys.Enter || keyData == Keys.Home || keyData == Keys.End)
+            if (keyData is Keys.Left or Keys.Up or Keys.Down or Keys.Right or Keys.Enter or Keys.Home or Keys.End)
             {
                 result = true;
             }
@@ -1297,7 +1297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 _scaledCellSize = _cellSize;
             }
 
-            System.Diagnostics.Debug.WriteLine(_scaledCellSize);
+            DebugUtilities.WriteLine(_scaledCellSize);
         }
 
         /// <summary>
@@ -2058,10 +2058,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void SetToolTip()
         {
-            if (ShowToolTips)
+            if (ShowToolTips is true and true)
             {
-                if (ShowToolTips)
-                {
 #if USENAMEHACK
         string name;
 
@@ -2081,9 +2079,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         _toolTip.SetToolTip(this, name);
 #else
-                    _toolTip.SetToolTip(this, HotIndex != InvalidIndex ? GetColour(HotIndex).Name : null);
+                _toolTip.SetToolTip(this, HotIndex != InvalidIndex ? GetColour(HotIndex).Name : null);
 #endif
-                }
             }
         }
 

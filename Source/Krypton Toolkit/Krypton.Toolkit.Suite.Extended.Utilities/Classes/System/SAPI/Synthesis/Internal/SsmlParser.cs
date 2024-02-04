@@ -743,7 +743,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 {
                     num++;
                 }
-                if (reader.NodeType == XmlNodeType.EndElement || reader.NodeType == XmlNodeType.None)
+                if (reader.NodeType is XmlNodeType.EndElement or XmlNodeType.None)
                 {
                     num--;
                 }

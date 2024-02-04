@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageBoxExample));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox5 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kcbRtlReading = new Krypton.Toolkit.KryptonCheckBox();
+            this.kcbRightAlign = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonGroupBox4 = new Krypton.Toolkit.KryptonGroupBox();
             this.kcbOptionalCheckBoxChecked = new Krypton.Toolkit.KryptonCheckBox();
             this.ktxtOptionalCheckBoxText = new Krypton.Toolkit.KryptonTextBox();
@@ -69,11 +72,12 @@
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
             this.kbtnFillText = new Krypton.Toolkit.KryptonButton();
-            this.kryptonGroupBox5 = new Krypton.Toolkit.KryptonGroupBox();
-            this.kcbRightAlign = new Krypton.Toolkit.KryptonCheckBox();
-            this.kcbRtlReading = new Krypton.Toolkit.KryptonCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).BeginInit();
+            this.kryptonGroupBox5.Panel.SuspendLayout();
+            this.kryptonGroupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).BeginInit();
             this.kryptonGroupBox4.Panel.SuspendLayout();
@@ -102,10 +106,6 @@
             this.groupBoxIcon.Panel.SuspendLayout();
             this.groupBoxIcon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbMessageBoxIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).BeginInit();
-            this.kryptonGroupBox5.Panel.SuspendLayout();
-            this.kryptonGroupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -126,8 +126,37 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1581, 433);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1585, 437);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kryptonGroupBox5
+            // 
+            this.kryptonGroupBox5.Location = new System.Drawing.Point(412, 306);
+            this.kryptonGroupBox5.Name = "kryptonGroupBox5";
+            // 
+            // kryptonGroupBox5.Panel
+            // 
+            this.kryptonGroupBox5.Panel.Controls.Add(this.kcbRtlReading);
+            this.kryptonGroupBox5.Panel.Controls.Add(this.kcbRightAlign);
+            this.kryptonGroupBox5.Size = new System.Drawing.Size(423, 63);
+            this.kryptonGroupBox5.TabIndex = 19;
+            this.kryptonGroupBox5.Values.Heading = "Options";
+            // 
+            // kcbRtlReading
+            // 
+            this.kcbRtlReading.Location = new System.Drawing.Point(214, 3);
+            this.kcbRtlReading.Name = "kcbRtlReading";
+            this.kcbRtlReading.Size = new System.Drawing.Size(197, 20);
+            this.kcbRtlReading.TabIndex = 2;
+            this.kcbRtlReading.Values.Text = "MessageBoxOptions.RtlReading";
+            // 
+            // kcbRightAlign
+            // 
+            this.kcbRightAlign.Location = new System.Drawing.Point(13, 3);
+            this.kcbRightAlign.Name = "kcbRightAlign";
+            this.kcbRightAlign.Size = new System.Drawing.Size(195, 20);
+            this.kcbRightAlign.TabIndex = 1;
+            this.kcbRightAlign.Values.Text = "MessageBoxOptions.RightAlign";
             // 
             // kryptonGroupBox4
             // 
@@ -178,7 +207,7 @@
             // kbtnShow
             // 
             this.kbtnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnShow.Location = new System.Drawing.Point(1479, 396);
+            this.kbtnShow.Location = new System.Drawing.Point(1483, 400);
             this.kbtnShow.Name = "kbtnShow";
             this.kbtnShow.Size = new System.Drawing.Size(90, 25);
             this.kbtnShow.TabIndex = 16;
@@ -550,40 +579,11 @@
             this.kbtnFillText.TabIndex = 17;
             this.kbtnFillText.Values.Text = "Fill Text";
             // 
-            // kryptonGroupBox5
-            // 
-            this.kryptonGroupBox5.Location = new System.Drawing.Point(412, 306);
-            this.kryptonGroupBox5.Name = "kryptonGroupBox5";
-            // 
-            // kryptonGroupBox5.Panel
-            // 
-            this.kryptonGroupBox5.Panel.Controls.Add(this.kcbRtlReading);
-            this.kryptonGroupBox5.Panel.Controls.Add(this.kcbRightAlign);
-            this.kryptonGroupBox5.Size = new System.Drawing.Size(423, 63);
-            this.kryptonGroupBox5.TabIndex = 19;
-            this.kryptonGroupBox5.Values.Heading = "Options";
-            // 
-            // kcbRightAlign
-            // 
-            this.kcbRightAlign.Location = new System.Drawing.Point(13, 3);
-            this.kcbRightAlign.Name = "kcbRightAlign";
-            this.kcbRightAlign.Size = new System.Drawing.Size(195, 20);
-            this.kcbRightAlign.TabIndex = 1;
-            this.kcbRightAlign.Values.Text = "MessageBoxOptions.RightAlign";
-            // 
-            // kcbRtlReading
-            // 
-            this.kcbRtlReading.Location = new System.Drawing.Point(214, 3);
-            this.kcbRtlReading.Name = "kcbRtlReading";
-            this.kcbRtlReading.Size = new System.Drawing.Size(197, 20);
-            this.kcbRtlReading.TabIndex = 2;
-            this.kcbRtlReading.Values.Text = "MessageBoxOptions.RtlReading";
-            // 
             // MessageBoxExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1581, 433);
+            this.ClientSize = new System.Drawing.Size(1585, 437);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -593,6 +593,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).EndInit();
+            this.kryptonGroupBox5.Panel.ResumeLayout(false);
+            this.kryptonGroupBox5.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).EndInit();
+            this.kryptonGroupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).EndInit();
             this.kryptonGroupBox4.Panel.ResumeLayout(false);
             this.kryptonGroupBox4.Panel.PerformLayout();
@@ -625,11 +630,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupBoxIcon)).EndInit();
             this.groupBoxIcon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kcmbMessageBoxIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).EndInit();
-            this.kryptonGroupBox5.Panel.ResumeLayout(false);
-            this.kryptonGroupBox5.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).EndInit();
-            this.kryptonGroupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

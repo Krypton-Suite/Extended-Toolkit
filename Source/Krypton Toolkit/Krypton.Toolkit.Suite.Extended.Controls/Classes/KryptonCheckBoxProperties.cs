@@ -238,7 +238,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             EventHandler handler = PropertyChanged;
             if (handler != null)
+            {
                 handler(this, EventArgs.Empty);
+            }
         }
 
         #endregion
