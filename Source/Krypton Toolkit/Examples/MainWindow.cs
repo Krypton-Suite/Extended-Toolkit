@@ -56,13 +56,6 @@ namespace Examples
             messageBoxExample.Show();
         }
 
-        private void kbtnOutlookGrid_Click(object sender, EventArgs e)
-        {
-            OutlookGridExample outlookGridExample = new OutlookGridExample();
-
-            outlookGridExample.Show();
-        }
-
         private void kbtnFloating_Click(object sender, EventArgs e)
         {
             FloatingMenuToolbarExampleMain floating = new FloatingMenuToolbarExampleMain();

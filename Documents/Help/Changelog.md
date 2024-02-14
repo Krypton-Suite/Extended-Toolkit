@@ -6,9 +6,10 @@
 =======
 
 ## 2024-11-xx - Build 2411 - November 2024
+* `Krypton.Toolkit.Suite.Extended.Outlook.Grid` is now deprecated, as it has now been absorbed into the standard toolkit
 * Implement [#404](https://github.com/Krypton-Suite/Extended-Toolkit/issues/404), Update 'ScottPlot' to v5
 * `KryptonMessageBoxExtended` now supports RTL reading
-* `Krypton.Toolkit.Suite.Extended.Toast` is now deprecated, as it has now been asorbed into the standard toolkit
+* `Krypton.Toolkit.Suite.Extended.Toast` is now deprecated, as it has now been absorbed into the standard toolkit
 * `KryptonFormExtended` - `AllowFormIntegrate` property has now been removed to fall in line with the standard toolkit
 * Resolved [#446](https://github.com/Krypton-Suite/Extended-Toolkit/issues/446), Throwing exceptions using the Circularprogressbar control of The Ultimate 80.0 package during design
 * New `KryptonAboutExtendedToolkit` API
