@@ -18,11 +18,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="invoices.xml">
-			<!--I think this is needed for the outlook grid example to function-->
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-
 		<None Update="Northwind_small.sqlite">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
@@ -105,7 +100,6 @@
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Networking\Krypton.Toolkit.Suite.Extended.Networking 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Notifications\Krypton.Toolkit.Suite.Extended.Notifications 2022.csproj" />
-		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Outlook.Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid 2022.csproj" />
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Palette.Selectors\Krypton.Toolkit.Suite.Extended.Palette.Selectors 2022.csproj" />-->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Panels\Krypton.Toolkit.Suite.Extended.Panels 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Suite.Extended.Resources 2022.csproj" />

@@ -25,6 +25,8 @@
  */
 #endregion
 
+using FM = System.Drawing.Drawing2D.FillMode;
+
 namespace Krypton.Toolkit.Suite.Extended.Drawing
 {
     public static class DrawingMethods
@@ -504,14 +506,14 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             using (LinearGradientBrush b = new LinearGradientBrush(rect, LightColour, MiddleColour, Angle))
             {
                 //DrawGradientPolygon(g, pt, rect,  MiddleColor,LightColor);
-                g.FillPolygon(b, pt, FillMode.Winding);
+                g.FillPolygon(b, pt, FM.Winding);
             }
 
             //White Effect
             using (LinearGradientBrush b = new LinearGradientBrush(rect, Color.FromArgb(180, Color.White), Color.FromArgb(20, Color.White), Angle))
             {
                 //DrawGradientPolygon(g, pt, rect,  MiddleColor,LightColor);
-                g.FillPolygon(b, pt, FillMode.Winding);
+                g.FillPolygon(b, pt, FM.Winding);
             }
 
 

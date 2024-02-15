@@ -44,7 +44,6 @@
             this.kbtnKryptonFormExtendedExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnFloating = new Krypton.Toolkit.KryptonButton();
             this.kbtnNotificationExample = new Krypton.Toolkit.KryptonButton();
-            this.kbtnOutlookGrid = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton7 = new Krypton.Toolkit.KryptonButton();
             this.kbtnExtendedControls = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton5 = new Krypton.Toolkit.KryptonButton();
@@ -74,7 +73,6 @@
             this.kryptonPanel1.Controls.Add(this.kbtnKryptonFormExtendedExample);
             this.kryptonPanel1.Controls.Add(this.kbtnFloating);
             this.kryptonPanel1.Controls.Add(this.kbtnNotificationExample);
-            this.kryptonPanel1.Controls.Add(this.kbtnOutlookGrid);
             this.kryptonPanel1.Controls.Add(this.kryptonButton7);
             this.kryptonPanel1.Controls.Add(this.kbtnExtendedControls);
             this.kryptonPanel1.Controls.Add(this.kryptonButton5);
@@ -216,16 +214,6 @@
             this.kbtnNotificationExample.Values.Text = "Notification Example";
             this.kbtnNotificationExample.Click += new System.EventHandler(this.kbtnNotificationExample_Click);
             // 
-            // kbtnOutlookGrid
-            // 
-            this.kbtnOutlookGrid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnOutlookGrid.Location = new System.Drawing.Point(10, 67);
-            this.kbtnOutlookGrid.Name = "kbtnOutlookGrid";
-            this.kbtnOutlookGrid.Size = new System.Drawing.Size(127, 25);
-            this.kbtnOutlookGrid.TabIndex = 9;
-            this.kbtnOutlookGrid.Values.Text = "OutlookGrid Example";
-            this.kbtnOutlookGrid.Click += new System.EventHandler(this.kbtnOutlookGrid_Click);
-            // 
             // kryptonButton7
             // 
             this.kryptonButton7.Location = new System.Drawing.Point(261, 38);
@@ -332,7 +320,6 @@
         private Krypton.Toolkit.KryptonButton kryptonButton5;
         private Krypton.Toolkit.KryptonButton kryptonButton4;
         private Krypton.Toolkit.KryptonButton kryptonButton7;
-        private Krypton.Toolkit.KryptonButton kbtnOutlookGrid;
         private Krypton.Toolkit.KryptonButton kbtnNotificationExample;
         private Krypton.Toolkit.KryptonButton kbtnFloating;
         private KryptonButton kbtnKryptonFormExtendedExample;
