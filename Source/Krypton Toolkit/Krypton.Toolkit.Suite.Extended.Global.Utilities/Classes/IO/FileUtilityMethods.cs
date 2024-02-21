@@ -139,36 +139,36 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         public string GetBytesReadable(long size)
         {
             // Get absolute value
-            long absolute_i = (size < 0 ? -size : size);
+            long absoluteI = (size < 0 ? -size : size);
             // Determine the suffix and readable value
             string suffix;
             double readable;
-            if (absolute_i >= 0x1000000000000000) // Exabyte
+            if (absoluteI >= 0x1000000000000000) // Exabyte
             {
                 suffix = "EB";
                 readable = (size >> 50);
             }
-            else if (absolute_i >= 0x4000000000000) // Petabyte
+            else if (absoluteI >= 0x4000000000000) // Petabyte
             {
                 suffix = "PB";
                 readable = (size >> 40);
             }
-            else if (absolute_i >= 0x10000000000) // Terabyte
+            else if (absoluteI >= 0x10000000000) // Terabyte
             {
                 suffix = "TB";
                 readable = (size >> 30);
             }
-            else if (absolute_i >= 0x40000000) // Gigabyte
+            else if (absoluteI >= 0x40000000) // Gigabyte
             {
                 suffix = "GB";
                 readable = (size >> 20);
             }
-            else if (absolute_i >= 0x100000) // Megabyte
+            else if (absoluteI >= 0x100000) // Megabyte
             {
                 suffix = "MB";
                 readable = (size >> 10);
             }
-            else if (absolute_i >= 0x400) // Kilobyte
+            else if (absoluteI >= 0x400) // Kilobyte
             {
                 suffix = "KB";
                 readable = size;
@@ -186,13 +186,13 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <summary>
         /// Returns the size of the online file.
         /// </summary>
-        /// <param name="onlineFileURL">The online file URL.</param>
+        /// <param name="onlineFileUrl">The online file URL.</param>
         /// <param name="fileSize">Size of the file.</param>
-        public void ReturnOnlineFileSize(string onlineFileURL, KryptonLabel fileSize)
+        public void ReturnOnlineFileSize(string onlineFileUrl, KryptonLabel fileSize)
         {
-            string URL = onlineFileURL, fileType = URL.Substring(URL.LastIndexOf(".") + 1, (URL.Length - URL.LastIndexOf(".") - 1)), fileName = URL.Substring(URL.LastIndexOf("/") + 1, (URL.Length - URL.LastIndexOf("/") - 1));
+            string url = onlineFileUrl, fileType = url.Substring(url.LastIndexOf(".") + 1, (url.Length - url.LastIndexOf(".") - 1)), fileName = url.Substring(url.LastIndexOf("/") + 1, (url.Length - url.LastIndexOf("/") - 1));
 
-            WebRequest request = (HttpWebRequest)WebRequest.Create(onlineFileURL);
+            WebRequest request = (HttpWebRequest)WebRequest.Create(onlineFileUrl);
 
             request.Method = "HEAD";
 
@@ -232,100 +232,100 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <summary>
         /// Formats the length of the file.
         /// </summary>
-        /// <param name="FilePath">The file path.</param>
-        /// <param name="Output">The output.</param>
-        public void FormatFileLength(string FilePath, KryptonLabel Output)
+        /// <param name="filePath">The file path.</param>
+        /// <param name="output">The output.</param>
+        public void FormatFileLength(string filePath, KryptonLabel output)
         {
-            long fileSize = (long)ReturnFileLength(FilePath), result;
+            long fileSize = (long)ReturnFileLength(filePath), result;
 
             if (fileSize >= 1073741824)
             {
                 result = fileSize / 1073741824;
 
-                Output.Text = string.Format("File Size: {0:##:##} GB", result);
+                output.Text = string.Format("File Size: {0:##:##} GB", result);
             }
             else if (fileSize >= 1048576)
             {
                 result = fileSize / 1048576;
 
-                Output.Text = string.Format("File Size: {0:##:##} MB", result);
+                output.Text = string.Format("File Size: {0:##:##} MB", result);
             }
             else if (fileSize >= 1024)
             {
                 result = fileSize / 1024;
 
-                Output.Text = string.Format("File Size: {0:##:##} KB", result);
+                output.Text = string.Format("File Size: {0:##:##} KB", result);
             }
         }
 
         /// <summary>
         /// Retrieves the file length from the specified file.
         /// </summary>
-        /// <param name="FilePath">The file path to the specified file.</param>
+        /// <param name="filePath">The file path to the specified file.</param>
         /// <returns>The file length from the specified file.</returns>
-        public int ReturnFileLength(string FilePath)
+        public int ReturnFileLength(string filePath)
         {
-            return Convert.ToInt32(ReturnFileInformation(FilePath).Length);
+            return Convert.ToInt32(ReturnFileInformation(filePath).Length);
         }
 
         /// <summary>
         /// Retrieves the file last accessed time from the specified file.
         /// </summary>
-        /// <param name="FilePath">The file path to the specified file.</param>
+        /// <param name="filePath">The file path to the specified file.</param>
         /// <returns>The file last accessed time from the specified file.</returns>
-        public DateTime ReturnFileLastAccessedTime(string FilePath)
+        public DateTime ReturnFileLastAccessedTime(string filePath)
         {
-            return ReturnFileInformation(FilePath).LastAccessTime;
+            return ReturnFileInformation(filePath).LastAccessTime;
         }
 
         /// <summary>
         /// Retrieves the file creation time from the specified file.
         /// </summary>
-        /// <param name="FilePath">The file path to the specified file.</param>
+        /// <param name="filePath">The file path to the specified file.</param>
         /// <returns>The file creation time from the specified file.</returns>
-        public DateTime ReturnFileCreationTime(string FilePath)
+        public DateTime ReturnFileCreationTime(string filePath)
         {
-            return ReturnFileInformation(FilePath).CreationTime;
+            return ReturnFileInformation(filePath).CreationTime;
         }
 
         /// <summary>
         /// Retrieves the file last write time from the specified file.
         /// </summary>
-        /// <param name="FilePath">The file path to the specified file.</param>
+        /// <param name="filePath">The file path to the specified file.</param>
         /// <returns>The file last write time from the specified file.</returns>
-        public DateTime ReturnFileLastWriteTime(string FilePath)
+        public DateTime ReturnFileLastWriteTime(string filePath)
         {
-            return ReturnFileInformation(FilePath).LastWriteTime;
+            return ReturnFileInformation(filePath).LastWriteTime;
         }
 
         /// <summary>
         /// Retrieves the file name from the specified file.
         /// </summary>
-        /// <param name="FilePath">The file path to the specified file.</param>
+        /// <param name="filePath">The file path to the specified file.</param>
         /// <returns>The file name from the specified file.</returns>
-        public string ReturnFileName(string FilePath)
+        public string ReturnFileName(string filePath)
         {
-            return ReturnFileInformation(FilePath).Name;
+            return ReturnFileInformation(filePath).Name;
         }
 
         /// <summary>
         /// Retrieves the file extension from the specified file.
         /// </summary>
-        /// <param name="FilePath">The file path to the specified file.</param>
+        /// <param name="filePath">The file path to the specified file.</param>
         /// <returns>The file extension from the specified file.</returns>
-        public string ReturnFileExtension(string FilePath)
+        public string ReturnFileExtension(string filePath)
         {
-            return ReturnFileInformation(FilePath).Extension;
+            return ReturnFileInformation(filePath).Extension;
         }
 
         /// <summary>
         /// Retrieves the file information from the specified file.
         /// </summary>
-        /// <param name="FilePath">The file path to the specified file.</param>
+        /// <param name="filePath">The file path to the specified file.</param>
         /// <returns>The file information from the specified file.</returns>
-        public FileInfo ReturnFileInformation(string FilePath)
+        public FileInfo ReturnFileInformation(string filePath)
         {
-            FileInfo fileInformation = new FileInfo(FilePath);
+            FileInfo fileInformation = new FileInfo(filePath);
 
             return fileInformation;
         }
@@ -333,26 +333,26 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <summary>
         /// Loads from file.
         /// </summary>
-        /// <param name="FilePath">The file path.</param>
+        /// <param name="filePath">The file path.</param>
         /// <returns></returns>
-        public string LoadFromFile(string FilePath)
+        public string LoadFromFile(string filePath)
         {
             string fileContent = string.Empty;
 
             try
             {
-                if (new FileInfo(FilePath).Length == 0)
+                if (new FileInfo(filePath).Length == 0)
                 {
                     KryptonMessageBox.Show("The file specified is a zero-byte file. Please try again.", "Zero-Byte File Detected", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
                 }
                 else
                 {
-                    fileContent = File.OpenRead(FilePath).ToString();
+                    fileContent = File.OpenRead(filePath).ToString();
                 }
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
 
             return fileContent;
@@ -361,17 +361,17 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <summary>
         /// Determines whether [is file locked] [the specified file].
         /// </summary>
-        /// <param name="File">The file.</param>
+        /// <param name="file">The file.</param>
         /// <returns>
         ///   <c>true</c> if [is file locked] [the specified file]; otherwise, <c>false</c>.
         /// </returns>
-        protected virtual bool IsFileLocked(FileInfo File)
+        protected virtual bool IsFileLocked(FileInfo file)
         {
-            FileStream fs = null;
+            FileStream? fs = null;
 
             try
             {
-                fs = File.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+                fs = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
             }
             catch (IOException)
             {

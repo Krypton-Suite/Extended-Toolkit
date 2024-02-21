@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             {
                 throw new ArgumentNullException("lexicalForm");
             }
-            if (confidence < 0f || confidence > 1f)
+            if (confidence is < 0f or > 1f)
             {
                 throw new ArgumentOutOfRangeException(SR.Get(SRID.InvalidConfidence));
             }

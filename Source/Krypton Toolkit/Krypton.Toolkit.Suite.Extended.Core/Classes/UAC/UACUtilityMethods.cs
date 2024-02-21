@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 }
                 catch (Win32Exception wexc)
                 {
-                    ExceptionCapture.CaptureException(wexc);
+                    DebugUtilities.NotImplemented(wexc.ToString());
                 }
 
                 return;

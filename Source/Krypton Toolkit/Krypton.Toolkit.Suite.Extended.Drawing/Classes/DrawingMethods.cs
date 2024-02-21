@@ -25,6 +25,8 @@
  */
 #endregion
 
+using FM = System.Drawing.Drawing2D.FillMode;
+
 namespace Krypton.Toolkit.Suite.Extended.Drawing
 {
     public static class DrawingMethods
@@ -504,14 +506,14 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             using (LinearGradientBrush b = new LinearGradientBrush(rect, LightColour, MiddleColour, Angle))
             {
                 //DrawGradientPolygon(g, pt, rect,  MiddleColor,LightColor);
-                g.FillPolygon(b, pt, FillMode.Winding);
+                g.FillPolygon(b, pt, FM.Winding);
             }
 
             //White Effect
             using (LinearGradientBrush b = new LinearGradientBrush(rect, Color.FromArgb(180, Color.White), Color.FromArgb(20, Color.White), Angle))
             {
                 //DrawGradientPolygon(g, pt, rect,  MiddleColor,LightColor);
-                g.FillPolygon(b, pt, FillMode.Winding);
+                g.FillPolygon(b, pt, FM.Winding);
             }
 
 
@@ -671,7 +673,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             pt[2] = new Point(recBounds.Left + cornerLeftWidth, recBounds.Top + allowSelectedTabHighSize); //little lower
             pt[3] = new Point(recBounds.Right - cornerRightWidth, recBounds.Top + allowSelectedTabHighSize); //little lower
             pt[4] = new Point(recBounds.Right, recBounds.Top + cornerRightWidth + allowSelectedTabHighSize); //little lower
-            if ((Appearance == TabAppearance.Normal) && ((Status == DrawingMethods.TabHeaderStatus.Selected) || (Status == DrawingMethods.TabHeaderStatus.HotSelected)))
+            if ((Appearance == TabAppearance.Normal) && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
             { //a litte Higher if selected
                 pt[1] = new Point(pt[1].X, pt[1].Y - allowSelectedTabHighSize);
                 pt[2] = new Point(pt[2].X, pt[2].Y - allowSelectedTabHighSize);
@@ -696,7 +698,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             pt[3] = new Point(recBounds.Right - cornerRightWidth, recBounds.Bottom - allowSelectedTabHighSize);//little lower
             pt[4] = new Point(recBounds.Left + cornerLeftWidth, recBounds.Bottom - allowSelectedTabHighSize);//little lower
             pt[5] = new Point(recBounds.Left, recBounds.Bottom - cornerLeftWidth - allowSelectedTabHighSize);//little lower
-            if ((Appearance == TabAppearance.Normal) && ((Status == DrawingMethods.TabHeaderStatus.Selected) || (Status == DrawingMethods.TabHeaderStatus.HotSelected)))
+            if ((Appearance == TabAppearance.Normal) && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
             { //a litte Higher if selected
                 pt[2] = new Point(pt[2].X, pt[2].Y + allowSelectedTabHighSize);
                 pt[3] = new Point(pt[3].X, pt[3].Y + allowSelectedTabHighSize);
@@ -1234,19 +1236,19 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
         public static Color ColourFromAHSB(int Alpha, float Hue, float Saturation, float Brightness)
         {
 
-            if (0 > Alpha || 255 < Alpha)
+            if (Alpha is < 0 or > 255)
             {
                 throw new ArgumentOutOfRangeException("a", Alpha, "InvalidAlpha");
             }
-            if (0f > Hue || 360f < Hue)
+            if (Hue is < 0f or > 360f)
             {
                 throw new ArgumentOutOfRangeException("h", Hue, "InvalidHue");
             }
-            if (0f > Saturation || 1f < Saturation)
+            if (Saturation is < 0f or > 1f)
             {
                 throw new ArgumentOutOfRangeException("s", Saturation, "InvalidSaturation");
             }
-            if (0f > Brightness || 1f < Brightness)
+            if (Brightness is < 0f or > 1f)
             {
                 throw new ArgumentOutOfRangeException("b", Brightness, "InvalidBrightness");
             }
@@ -1326,7 +1328,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             int width = bounds.Width;
             int height = bounds.Height;
             GraphicsPath graphicsPath = new GraphicsPath();
-            if ((Appearance == TabAppearance.Normal) && ((Status == DrawingMethods.TabHeaderStatus.Selected) || (Status == DrawingMethods.TabHeaderStatus.HotSelected)))
+            if ((Appearance == TabAppearance.Normal) && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
             {
                 //graphicsPath.AddLine(x, y + height, x, y - radius);                     //Left Line
                 graphicsPath.AddArc(x, y, radius, radius, 180, 90);                     //Upper left corner
@@ -1359,7 +1361,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             int height = bounds.Height;
             GraphicsPath graphicsPath = new GraphicsPath();
 
-            if ((Appearance == TabAppearance.Normal) && ((Status == DrawingMethods.TabHeaderStatus.Selected) || (Status == DrawingMethods.TabHeaderStatus.HotSelected)))
+            if ((Appearance == TabAppearance.Normal) && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
             {
                 //girare sempre in senso orario
                 graphicsPath.AddLine(x, y, x + width, y); //top

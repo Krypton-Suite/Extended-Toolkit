@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                 if (OperatingSystemString != null)
                 {
                     var lowercasedOS = OperatingSystemString.ToLower();
-                    if (lowercasedOS == "win" || lowercasedOS == "windows")
+                    if (lowercasedOS is "win" or "windows")
                     {
                         return true;
                     }

@@ -34,27 +34,27 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 #if !NETCOREAPP3_1_OR_GREATER
         public static SupportedHashAlgorithims ReturnHashType(string hashType)
         {
-            if (hashType == @"MD-5" || hashType == @"md-5" || hashType == @"MD5" || hashType == @"md5")
+            if (hashType is @"MD-5" or @"md-5" or @"MD5" or @"md5")
             {
                 return SupportedHashAlgorithims.MD5;
             }
-            else if (hashType == @"SHA-1" || hashType == @"sha-1" || hashType == @"SHA1" || hashType == @"sha1")
+            else if (hashType is @"SHA-1" or @"sha-1" or @"SHA1" or @"sha1")
             {
                 return SupportedHashAlgorithims.SHA1;
             }
-            else if (hashType == @"SHA-256" || hashType == @"sha-256" || hashType == @"SHA256" || hashType == @"sha256")
+            else if (hashType is @"SHA-256" or @"sha-256" or @"SHA256" or @"sha256")
             {
                 return SupportedHashAlgorithims.SHA256;
             }
-            else if (hashType == @"SHA-384" || hashType == @"sha-384" || hashType == @"SHA384" || hashType == @"sha384")
+            else if (hashType is @"SHA-384" or @"sha-384" or @"SHA384" or @"sha384")
             {
                 return SupportedHashAlgorithims.SHA384;
             }
-            else if (hashType == @"SHA-512" || hashType == @"sha-512" || hashType == @"SHA512" || hashType == @"sha512")
+            else if (hashType is @"SHA-512" or @"sha-512" or @"SHA512" or @"sha512")
             {
                 return SupportedHashAlgorithims.SHA512;
             }
-            else if (hashType == @"RIPEMD-160" || hashType == @"ripemd-160" || hashType == @"RIPEMD160" || hashType == @"ripemd160")
+            else if (hashType is @"RIPEMD-160" or @"ripemd-160" or @"RIPEMD160" or @"ripemd160")
             {
                 return SupportedHashAlgorithims.RIPEMD160;
             }
@@ -64,23 +64,23 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 #else
         public static SafeNETCoreAndNewerSupportedHashAlgorithims ReturnHashType(string hashType)
         {
-            if (hashType == @"MD-5" || hashType == @"md-5" || hashType == @"MD5" || hashType == @"md5")
+            if (hashType is @"MD-5" or @"md-5" or @"MD5" or @"md5")
             {
                 return SafeNETCoreAndNewerSupportedHashAlgorithims.MD5;
             }
-            else if (hashType == @"SHA-1" || hashType == @"sha-1" || hashType == @"SHA1" || hashType == @"sha1")
+            else if (hashType is @"SHA-1" or @"sha-1" or @"SHA1" or @"sha1")
             {
                 return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA1;
             }
-            else if (hashType == @"SHA-256" || hashType == @"sha-256" || hashType == @"SHA256" || hashType == @"sha256")
+            else if (hashType is @"SHA-256" or @"sha-256" or @"SHA256" or @"sha256")
             {
                 return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA256;
             }
-            else if (hashType == @"SHA-384" || hashType == @"sha-384" || hashType == @"SHA384" || hashType == @"sha384")
+            else if (hashType is @"SHA-384" or @"sha-384" or @"SHA384" or @"sha384")
             {
                 return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA384;
             }
-            else if (hashType == @"SHA-512" || hashType == @"sha-512" || hashType == @"SHA512" || hashType == @"sha512")
+            else if (hashType is @"SHA-512" or @"sha-512" or @"SHA512" or @"sha512")
             {
                 return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA512;
             }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnCheckBoxComboBoxExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnProgressBars = new Krypton.Toolkit.KryptonButton();
             this.kbtnMemoryBoxExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnRibbonExtended = new Krypton.Toolkit.KryptonButton();
@@ -43,7 +44,6 @@
             this.kbtnKryptonFormExtendedExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnFloating = new Krypton.Toolkit.KryptonButton();
             this.kbtnNotificationExample = new Krypton.Toolkit.KryptonButton();
-            this.kbtnOutlookGrid = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton7 = new Krypton.Toolkit.KryptonButton();
             this.kbtnExtendedControls = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton5 = new Krypton.Toolkit.KryptonButton();
@@ -53,7 +53,6 @@
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
-            this.kbtnCheckBoxComboBoxExample = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +73,6 @@
             this.kryptonPanel1.Controls.Add(this.kbtnKryptonFormExtendedExample);
             this.kryptonPanel1.Controls.Add(this.kbtnFloating);
             this.kryptonPanel1.Controls.Add(this.kbtnNotificationExample);
-            this.kryptonPanel1.Controls.Add(this.kbtnOutlookGrid);
             this.kryptonPanel1.Controls.Add(this.kryptonButton7);
             this.kryptonPanel1.Controls.Add(this.kbtnExtendedControls);
             this.kryptonPanel1.Controls.Add(this.kryptonButton5);
@@ -87,8 +85,17 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(622, 392);
+            this.kryptonPanel1.Size = new System.Drawing.Size(626, 396);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnCheckBoxComboBoxExample
+            // 
+            this.kbtnCheckBoxComboBoxExample.Location = new System.Drawing.Point(244, 185);
+            this.kbtnCheckBoxComboBoxExample.Name = "kbtnCheckBoxComboBoxExample";
+            this.kbtnCheckBoxComboBoxExample.Size = new System.Drawing.Size(134, 22);
+            this.kbtnCheckBoxComboBoxExample.TabIndex = 23;
+            this.kbtnCheckBoxComboBoxExample.Values.Text = "CheckBox ComboBox Example";
+            this.kbtnCheckBoxComboBoxExample.Click += new System.EventHandler(this.kbtnCheckBoxComboBoxExample_Click);
             // 
             // kbtnProgressBars
             // 
@@ -207,16 +214,6 @@
             this.kbtnNotificationExample.Values.Text = "Notification Example";
             this.kbtnNotificationExample.Click += new System.EventHandler(this.kbtnNotificationExample_Click);
             // 
-            // kbtnOutlookGrid
-            // 
-            this.kbtnOutlookGrid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnOutlookGrid.Location = new System.Drawing.Point(10, 67);
-            this.kbtnOutlookGrid.Name = "kbtnOutlookGrid";
-            this.kbtnOutlookGrid.Size = new System.Drawing.Size(127, 25);
-            this.kbtnOutlookGrid.TabIndex = 9;
-            this.kbtnOutlookGrid.Values.Text = "OutlookGrid Example";
-            this.kbtnOutlookGrid.Click += new System.EventHandler(this.kbtnOutlookGrid_Click);
-            // 
             // kryptonButton7
             // 
             this.kryptonButton7.Location = new System.Drawing.Point(261, 38);
@@ -296,20 +293,11 @@
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
-            // kbtnCheckBoxComboBoxExample
-            // 
-            this.kbtnCheckBoxComboBoxExample.Location = new System.Drawing.Point(244, 185);
-            this.kbtnCheckBoxComboBoxExample.Name = "kbtnCheckBoxComboBoxExample";
-            this.kbtnCheckBoxComboBoxExample.Size = new System.Drawing.Size(134, 22);
-            this.kbtnCheckBoxComboBoxExample.TabIndex = 23;
-            this.kbtnCheckBoxComboBoxExample.Values.Text = "CheckBox ComboBox Example";
-            this.kbtnCheckBoxComboBoxExample.Click += new System.EventHandler(this.kbtnCheckBoxComboBoxExample_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 392);
+            this.ClientSize = new System.Drawing.Size(626, 396);
             this.Controls.Add(this.kryptonPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
@@ -332,7 +320,6 @@
         private Krypton.Toolkit.KryptonButton kryptonButton5;
         private Krypton.Toolkit.KryptonButton kryptonButton4;
         private Krypton.Toolkit.KryptonButton kryptonButton7;
-        private Krypton.Toolkit.KryptonButton kbtnOutlookGrid;
         private Krypton.Toolkit.KryptonButton kbtnNotificationExample;
         private Krypton.Toolkit.KryptonButton kbtnFloating;
         private KryptonButton kbtnKryptonFormExtendedExample;

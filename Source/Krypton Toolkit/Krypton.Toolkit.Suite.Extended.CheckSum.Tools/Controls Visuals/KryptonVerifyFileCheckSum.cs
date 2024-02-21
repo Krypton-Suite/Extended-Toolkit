@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
+﻿// ToDo: Add license
+
+namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
     public partial class KryptonVerifyFileCheckSum : KryptonForm
     {
@@ -104,7 +106,7 @@
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -165,7 +167,7 @@
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 
@@ -208,7 +210,7 @@
                     }
                     catch (Exception exc)
                     {
-                        ExceptionCapture.CaptureException(exc);
+                        DebugUtilities.NotImplemented(exc.ToString());
                     }
                 }
             }
@@ -236,7 +238,7 @@
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 

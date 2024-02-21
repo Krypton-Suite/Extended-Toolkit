@@ -1344,8 +1344,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     }
 
                     // We do not consider existing separators
-                    if (!((item is KryptonContextMenuSeparator) ||
-                          (item is KryptonContextMenuHeading)))
+                    if (!(item is KryptonContextMenuSeparator or KryptonContextMenuHeading))
                     {
                         // If the previous item is visible, then make the parameter visible
                         if (item.Visible)

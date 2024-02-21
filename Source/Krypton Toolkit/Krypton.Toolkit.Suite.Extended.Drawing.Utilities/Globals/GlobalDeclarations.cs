@@ -49,6 +49,7 @@ global using Cyotek.Windows.Forms;
 global using Krypton.Toolkit.Suite.Extended.Buttons;
 global using Krypton.Toolkit.Suite.Extended.Core;
 global using Krypton.Toolkit.Suite.Extended.Common;
+global using Krypton.Toolkit.Suite.Extended.Debug.Tools;
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 global using Krypton.Toolkit.Suite.Extended.Messagebox;
 global using Krypton.Toolkit.Suite.Extended.Shared;

@@ -217,7 +217,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception error)
             {
-                ExceptionCapture.CaptureException(error);
+                DebugUtilities.NotImplemented(error.ToString());
             }
         }
 

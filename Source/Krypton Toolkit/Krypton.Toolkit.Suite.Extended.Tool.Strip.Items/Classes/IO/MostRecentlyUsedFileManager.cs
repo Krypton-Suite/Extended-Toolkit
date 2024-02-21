@@ -173,7 +173,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
         }
 
@@ -203,7 +203,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             {
                 //ExceptionCapture.CaptureException($"Cannot open recent files registry key:\n{ex.Message}");
 
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
 
                 return;
             }
@@ -278,7 +278,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
 
             RefreshRecentFilesMenu();

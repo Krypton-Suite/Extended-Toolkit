@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 //version = this.ReadShort(stream);
                 version = stream.ReadByte() + stream.ReadByte();
 
-                result = version == 1 || version == 2;
+                result = version is 1 or 2;
             }
             catch
             {

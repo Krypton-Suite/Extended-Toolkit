@@ -42,7 +42,7 @@ global using System.Windows.Forms.Design;
 global using System.Windows.Forms.VisualStyles;
 
 global using Krypton.Toolkit.Suite.Extended.Core;
-global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+global using Krypton.Toolkit.Suite.Extended.Debug.Tools;
 global using Krypton.Toolkit.Suite.Extended.Shared;
 
 global using Microsoft.Win32;

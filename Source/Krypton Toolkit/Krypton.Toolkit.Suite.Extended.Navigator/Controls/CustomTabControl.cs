@@ -639,7 +639,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             //if top or bottom leave a blank space for Close button or navigator
-            if ((Alignment == TabAlignment.Top) || (Alignment == TabAlignment.Bottom))
+            if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
             {
                 rreg = new Rectangle(tabArea.Left, tabControlArea.Top, nWidth - N_MARGIN, tabControlArea.Height);
             }
@@ -1006,7 +1006,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //----------------------------
 
-            if (((status == DrawingMethods.TabHeaderStatus.Selected) || (status == DrawingMethods.TabHeaderStatus.HotSelected)) && (Appearance == TabAppearance.Normal))
+            if (status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected && (Appearance == TabAppearance.Normal))
             {
                 //----------------------------
                 // clear bottom lines
@@ -1035,7 +1035,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 float nAdj = (nLeftMargin + img.Width + nRightMargin);
 
                 // adjust rectangles
-                if (Alignment == TabAlignment.Top || Alignment == TabAlignment.Bottom)
+                if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
                 {
                     nAdj = (nLeftMargin + img.Width + nRightMargin);
 
@@ -1092,7 +1092,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
 
-            if (Alignment == TabAlignment.Right || Alignment == TabAlignment.Left)
+            if (Alignment is TabAlignment.Right or TabAlignment.Left)
             {
                 //not ExtendedLayout
                 if (_useExtendedLayout == false)
@@ -1846,7 +1846,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
             protected override void WndProc(ref Message m)
             {
-                if (m.Msg == WM_DESTROY || m.Msg == WM_NCDESTROY)
+                if (m.Msg is WM_DESTROY or WM_NCDESTROY)
                 {
                     ReleaseHandle();
                 }

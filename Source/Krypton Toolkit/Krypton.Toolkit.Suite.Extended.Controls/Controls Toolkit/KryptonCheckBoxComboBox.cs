@@ -264,7 +264,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             // The DropDownList style seems to require that the text
             // part of the "textbox" should match a single item.
             if (DropDownStyle != ComboBoxStyle.DropDownList)
+            {
                 Text = ListText;
+            }
             // This refreshes the Text of the first item (which is not visible)
             else if (DataSource == null)
             {

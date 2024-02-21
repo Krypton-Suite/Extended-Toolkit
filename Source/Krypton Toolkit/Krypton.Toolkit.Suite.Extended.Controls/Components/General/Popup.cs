@@ -209,7 +209,11 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         protected override void SetVisibleCore(bool visible)
         {
             double opacity = Opacity;
-            if (visible && _fade && _focusOnOpen) Opacity = 0;
+            if (visible && _fade && _focusOnOpen)
+            {
+                Opacity = 0;
+            }
+
             base.SetVisibleCore(visible);
             if (!visible || !_fade || !_focusOnOpen)
             {

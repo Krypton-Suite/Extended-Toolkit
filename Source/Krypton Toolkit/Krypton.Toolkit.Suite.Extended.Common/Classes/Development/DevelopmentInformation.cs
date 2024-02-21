@@ -26,9 +26,6 @@
  */
 #endregion
 
-using System.Globalization;
-using System.IO;
-
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
     public class DevelopmentInformation
@@ -89,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 
@@ -129,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 

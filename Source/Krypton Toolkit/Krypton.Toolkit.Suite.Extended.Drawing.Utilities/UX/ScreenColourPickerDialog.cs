@@ -473,7 +473,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private void ktxtHexValue_TextChanged(object sender, EventArgs e)
         {
-            if (ktxtHexValue.Text.Length == 3 || ktxtHexValue.Text.Length <= 6)
+            if (ktxtHexValue.Text.Length is 3 or <= 6)
             {
                 UpdateColourValues(ColorTranslator.FromHtml(ktxtHexValue.Text));
             }

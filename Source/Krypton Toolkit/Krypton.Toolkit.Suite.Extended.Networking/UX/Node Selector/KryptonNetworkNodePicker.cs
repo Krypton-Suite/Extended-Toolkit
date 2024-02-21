@@ -204,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                     klstServers.SelectedIndex = 0;
                 }
 
-                ExceptionCapture.CaptureException(nre);
+                DebugUtilities.NotImplemented(nre.ToString());
             }
         }
 

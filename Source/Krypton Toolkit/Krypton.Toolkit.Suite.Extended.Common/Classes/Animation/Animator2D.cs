@@ -241,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         public virtual void Pause()
         {
-            if (CurrentStatus == AnimatorStatus.OnHold || CurrentStatus == AnimatorStatus.Playing)
+            if (CurrentStatus is AnimatorStatus.OnHold or AnimatorStatus.Playing)
             {
                 HorizontalAnimator.Pause();
                 VerticalAnimator.Pause();

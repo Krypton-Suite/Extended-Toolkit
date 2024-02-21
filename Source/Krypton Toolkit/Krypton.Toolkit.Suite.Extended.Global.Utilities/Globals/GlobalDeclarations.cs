@@ -46,6 +46,6 @@ global using System.Security.Principal;
 global using System.Text.RegularExpressions;
 global using System.Windows.Forms;
 
-global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+global using Krypton.Toolkit.Suite.Extended.Debug.Tools;
 
 global using Microsoft.Win32;

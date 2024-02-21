@@ -140,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 BinaryReader binaryReader = new BinaryReader(stream);
                 ulTotalSerializedSize = binaryReader.ReadUInt32();
-                if (ulTotalSerializedSize < 100 || ulTotalSerializedSize > int.MaxValue)
+                if (ulTotalSerializedSize is < 100 or > int.MaxValue)
                 {
                     XmlParser.ThrowSrgsException(SRID.UnsupportedFormat);
                 }
@@ -193,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 cfgLength = 0;
                 BinaryReader binaryReader = new BinaryReader(stream);
                 uint num = binaryReader.ReadUInt32();
-                if (num < 100 || num > int.MaxValue)
+                if (num is < 100 or > int.MaxValue)
                 {
                     return false;
                 }

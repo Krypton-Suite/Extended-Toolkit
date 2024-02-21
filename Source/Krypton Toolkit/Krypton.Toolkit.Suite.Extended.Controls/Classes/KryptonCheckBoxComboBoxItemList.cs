@@ -60,7 +60,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             EventHandler handler = CheckBoxCheckedChanged;
             if (handler != null)
+            {
                 handler(sender, e);
+            }
         }
 
         private void item_CheckedChanged(object sender, EventArgs e)
@@ -136,10 +138,14 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                         text = (string)propertyInfo.GetValue(item.ComboBoxItem, null);
                     }
                     else
+                    {
                         text = item.Text;
+                    }
 
                     if (text.CompareTo(displayName) == 0)
+                    {
                         return item;
+                    }
                 }
 
                 throw new ArgumentOutOfRangeException($"\"{displayName}\" does not exist in this combo box.");

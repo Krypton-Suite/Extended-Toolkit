@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                     files.Add(item);
                 }
 
-                KryptonDeveloperDebugConsole debugConsole = new(HelperUtilites.ReturnDirectoryListing(files));
+                KryptonDeveloperDebugConsole debugConsole = new(HelperUtilities.ReturnDirectoryListing(files));
 
                 debugConsole.Show();
             }

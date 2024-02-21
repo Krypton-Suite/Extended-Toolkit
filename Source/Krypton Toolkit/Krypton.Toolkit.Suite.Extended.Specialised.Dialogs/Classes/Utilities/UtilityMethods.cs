@@ -25,7 +25,6 @@
  */
 #endregion
 
-#pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 {
     /// <summary>Provides useful methods for specified tasks.</summary>
@@ -67,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
                 }
                 catch (Win32Exception wexc)
                 {
-                    ExceptionCapture.CaptureException(wexc);
+                    DebugUtilities.NotImplemented(wexc.ToString());
                 }
             }
         }

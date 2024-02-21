@@ -152,7 +152,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _colourStep;
             set
             {
-                if (value < 1 || value > 359)
+                if (value is < 1 or > 359)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), value, "Value must be between 1 and 359");
                 }

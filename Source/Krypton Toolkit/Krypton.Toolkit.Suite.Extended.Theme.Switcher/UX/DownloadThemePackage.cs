@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 }
                 catch (Exception e)
                 {
-                    ExceptionCapture.CaptureException(e);
+                    DebugUtilities.NotImplemented(e.ToString());
                 }
             }
         }
@@ -231,14 +231,14 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 {
                     try
                     {
-                        if (_downloadLocation != null || _downloadLocation != string.Empty)
+                        if (_downloadLocation is not (null and ""))
                         {
                             Process.Start(_downloadLocation);
                         }
                     }
                     catch (Exception exception)
                     {
-                        ExceptionCapture.CaptureException(exception);
+                        DebugUtilities.NotImplemented(exception.ToString());
                     }
                 }
             }

@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 formHeader = Encoding.ASCII.GetString(formHeaderData);
                 imageHeader = Encoding.ASCII.GetString(imageHeaderData);
 
-                result = formHeader == "FORM" && (imageHeader == "PBM " || imageHeader == "ILBM");
+                result = formHeader == "FORM" && imageHeader is "PBM " or "ILBM";
             }
             catch
             {
