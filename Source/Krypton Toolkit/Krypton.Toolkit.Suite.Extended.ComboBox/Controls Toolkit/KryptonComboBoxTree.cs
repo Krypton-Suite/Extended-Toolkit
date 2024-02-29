@@ -25,7 +25,6 @@
  */
 #endregion
 
-#pragma warning disable CS8622
 namespace Krypton.Toolkit.Suite.Extended.ComboBox
 {
     public delegate void NodeSelectEventHandler();
@@ -129,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             _combobox = new KryptonComboBox();
             _combobox.DropDownStyle = ComboBoxStyle.DropDownList;
             _combobox.Dock = DockStyle.Fill;
-            _combobox.ComboBox!.Click += new EventHandler(ToggleTreeView);
+            _combobox.ComboBox.Click += new EventHandler(ToggleTreeView);
 
             // Adding Controls to UserControl
             _pnlTree.Controls.Add(_lblSizingGrip);
