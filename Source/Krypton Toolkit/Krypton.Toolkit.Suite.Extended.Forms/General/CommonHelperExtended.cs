@@ -1153,20 +1153,20 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         /// <param name="parent">Parent control.</param>
         /// <param name="c">Control to be added.</param>
-        public static void AddControlToParent([DisallowNull] Control parent, [DisallowNull] Control? c)
+        public static void AddControlToParent([DisallowNull] Control parent, [DisallowNull] Control c)
         {
             Debug.Assert(parent != null);
             Debug.Assert(c != null);
 
             // If the control is already inside a control collection, then remove it
-            if (c.Parent != null)
+            if (c!.Parent != null)
             {
                 RemoveControlFromParent(c);
             }
             // Then must use the internal method for adding a new instance
 
             // If the control collection is one of our internal collections...
-            if (parent.Controls is KryptonControlCollection cc)
+            if (parent!.Controls is KryptonControlCollection cc)
             {
                 cc.AddInternal(c);
             }
@@ -1181,7 +1181,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// Remove the provided control from its parent collection.
         /// </summary>
         /// <param name="c">Control to be removed.</param>
-        public static void RemoveControlFromParent([DisallowNull] Control? c)
+        public static void RemoveControlFromParent([DisallowNull] Control c)
         {
             Debug.Assert(c != null);
 
@@ -1673,7 +1673,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             //// Handle rounding down of the target `newImage` dimensions
             //srcRect.Offset(-trgtWidth%1, -trgtHeight%1);
             //gr.DrawImage(src, destRect, srcRect, GraphicsUnit.Pixel);
-            gr.DrawImage(src, 0, 0, (int)trgtWidth, (int)trgtHeight);
+            gr.DrawImage(src!, 0, 0, (int)trgtWidth, (int)trgtHeight);
 
             return newImage;
         }

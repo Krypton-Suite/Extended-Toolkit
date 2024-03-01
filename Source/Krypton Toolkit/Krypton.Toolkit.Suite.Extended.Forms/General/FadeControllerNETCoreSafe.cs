@@ -99,7 +99,7 @@
         /// <summary>Fades the window out. Credit: https://stackoverflow.com/questions/12497826/better-algorithm-to-fade-a-winform.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="nextWindow">The next window.</param>
-        public async void FadeWindowOut(KryptonFormExtended owner, KryptonFormExtended nextWindow = null)
+        public async void FadeWindowOut(KryptonFormExtended owner, KryptonFormExtended? nextWindow = null)
         {
             // The window is visible, so fade it out
             while (owner.Opacity > 0.0)

@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private bool _useFade;
 
-        private FadeController _fadeController;
+        private FadeController? _fadeController;
 
         private int _fadeInterval;
 
@@ -53,22 +53,22 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         [DefaultValue(false)]
         public bool UseFade { get => _useFade; set => _useFade = value; }
 
-        internal FadeController FadeController => _fadeController;
+        internal FadeController? FadeController => _fadeController;
 
         [DefaultValue(50)]
         public int FadeInterval { get => _fadeInterval; set => _fadeInterval = value; }
 
         [DefaultValue(null)]
-        public KryptonFormExtended CurrentWindow { get => _currentWindow; set => _currentWindow = value; }
+        public KryptonFormExtended? CurrentWindow { get => _currentWindow; set => _currentWindow = value; }
 
         [DefaultValue(null)]
-        public KryptonFormExtended NextWindow { get => _nextWindow; set => _nextWindow = value; }
+        public KryptonFormExtended? NextWindow { get => _nextWindow; set => _nextWindow = value; }
 
         [DefaultValue(null)]
-        public VisualForm CurrentVirtualWindow { get => _currentVirtualWindow; set => _currentVirtualWindow = value; }
+        public VisualForm? CurrentVirtualWindow { get => _currentVirtualWindow; set => _currentVirtualWindow = value; }
 
         [DefaultValue(null)]
-        public VisualForm NextVirtualWindow { get => _nextVirtualWindow; set => _nextVirtualWindow = value; }
+        public VisualForm? NextVirtualWindow { get => _nextVirtualWindow; set => _nextVirtualWindow = value; }
 
         #endregion
 
@@ -97,12 +97,13 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         #region Default Instance
 
+        [Browsable(false)]
         public override bool IsDefault => UseFade == false &&
                                           FadeInterval.Equals(50) &&
-                                          CurrentWindow.Equals(null) &&
-                                          NextWindow.Equals(null) &&
-                                          CurrentVirtualWindow.Equals(null) &&
-                                          NextVirtualWindow.Equals(null);
+                                          CurrentWindow!.Equals(null) &&
+                                          NextWindow!.Equals(null) &&
+                                          CurrentVirtualWindow!.Equals(null) &&
+                                          NextVirtualWindow!.Equals(null);
 
         #endregion
     }
