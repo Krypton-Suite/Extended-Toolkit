@@ -30,7 +30,7 @@
 using Resources = Krypton.Toolkit.Suite.Extended.Messagebox.Properties.Resources;
 
 using ContentAlignment = System.Drawing.ContentAlignment;
-using Timer = System.Threading.Timer;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
@@ -75,11 +75,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly bool _useOptionalCheckBoxThreeState;
 
-        private bool _optionalCheckBoxChecked;
+        private readonly bool _initialDoNotShowAgainCheck;
+
+        private bool _isDoNotShowAgainCheckedResult;
 
         private readonly Color _messageTextColour;
 
         private readonly Color[]? _buttonTextColours = new Color[4];
+
+        private readonly CheckState _initialDoNotShowAgainCheckState;
+
+        private CheckState _doNotShowAgainCheckStateResult;
 
         private readonly DialogResult _buttonOneCustomDialogResult;
 
@@ -117,13 +123,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly ProcessStartInfo? _linkLaunchArgument;
 
-        private static PlatformInvoke.HookProc _hookProc;
+        private static readonly PlatformInvoke.HookProc _hookProc;
 
         private static IntPtr _hHook;
 
-        private Timer _timeOutTimer;
+        private readonly Timer _timeOutTimer;
 
         private int _timeOut;
+
+        private int? _timeOutInterval;
 
         private bool _timedOut;
 
@@ -172,11 +180,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                ContentAlignment? messageTextAlignment,
                                                PaletteRelativeAlign? richTextBoxTextAlignment,
                                                bool? showOptionalCheckBox,
-                                               bool? optionalCheckBoxChecked,
+                                               bool? initialDoNotShowAgainCheckBoxChecked,
+                                               CheckState? initialDoNotShowAgainCheckBoxCheckState,
                                                string? optionalCheckBoxText,
                                                bool? useOptionalCheckBoxThreeState,
                                                bool? useTimeOut,
                                                int? timeOut,
+                                               int? timeOutInterval,
                                                DialogResult? timerResult)
         {
             // Store incoming values
@@ -214,13 +224,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _richTextBoxTextAlignment = richTextBoxTextAlignment ?? PaletteRelativeAlign.Inherit;
             _useTimeOut = useTimeOut ?? false;
             _timeOut = timeOut ?? 60;
-            _timeOutTimer = new Timer(OnTimerElapsed, null, _timeOut, Timeout.Infinite);
+            _timeOutInterval = timeOutInterval ?? 1000;
+            _timeOutTimer = new Timer();
+            _timeOutTimer.Interval = _timeOutInterval ?? 1000;
             _timerResult = timerResult ?? DialogResult.None;
             //_openInExplorer = openInExplorer ?? false;
 
             // Optional checkbox
             _showOptionalCheckBox = showOptionalCheckBox ?? false;
-            _optionalCheckBoxChecked = optionalCheckBoxChecked ?? false;
+            _isDoNotShowAgainCheckedResult = initialDoNotShowAgainCheckBoxChecked ?? false;
+            _initialDoNotShowAgainCheckState = initialDoNotShowAgainCheckBoxCheckState ?? CheckState.Unchecked;
             _checkBoxText = optionalCheckBoxText ?? string.Empty;
             _useOptionalCheckBoxThreeState = useOptionalCheckBoxThreeState ?? false;
 
@@ -244,19 +257,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
 
+            _timeOutTimer.Tick += TimeOutTimer_Tick;
+
             if (_useTimeOut)
             {
-                using (_timeOutTimer)
-                {
-                    _result = KryptonMessageBoxExtended.Show(text, caption, buttons, icon, showCtrlCopy,
-                                                             messageTextAlignment, useTimeOut, null,
-                                                             null);
-                }
-
-                if (_timedOut)
-                {
-                    _result = _timerResult;
-                }
+                _timeOutTimer.Start();
             }
         }
 
@@ -1462,7 +1467,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             kcbOptionalCheckBox.Visible = _showOptionalCheckBox;
 
-            kcbOptionalCheckBox.Checked = _optionalCheckBoxChecked;
+            kcbOptionalCheckBox.Checked = _initialDoNotShowAgainCheck;
 
             kcbOptionalCheckBox.Text = _checkBoxText;
 
@@ -1473,21 +1478,52 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             VisualMessageBoxExtendedForm messageBoxExtendedForm = new VisualMessageBoxExtendedForm();
 
-            return messageBoxExtendedForm._optionalCheckBoxChecked;
+            return messageBoxExtendedForm.GetDoNotShowAgainChecked();
         }
 
         internal static CheckState ReturnCheckBoxCheckState()
         {
             VisualMessageBoxExtendedForm messageBoxExtendedForm = new VisualMessageBoxExtendedForm();
 
-            return messageBoxExtendedForm.kcbOptionalCheckBox.CheckState;
+            return messageBoxExtendedForm.GetDoNotShowAgainCheckState();
         }
 
-        private void OptionalCheckBox_CheckedChanged(object sender, EventArgs e) => _optionalCheckBoxChecked = kcbOptionalCheckBox.Checked;
+        private void OptionalCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_useOptionalCheckBoxThreeState)
+            {
+                SetDoNotShowAgainCheckState(kcbOptionalCheckBox.CheckState);
+            }
+            else
+            {
+                SetDoNotShowAgainChecked(kcbOptionalCheckBox.Checked);
+            }
+        }
+
+        private void SetDoNotShowAgainChecked(bool value) => _isDoNotShowAgainCheckedResult = value;
+
+        internal bool GetDoNotShowAgainChecked() => _isDoNotShowAgainCheckedResult;
+
+        private void SetDoNotShowAgainCheckState(CheckState value) => _doNotShowAgainCheckStateResult = value;
+
+        internal CheckState GetDoNotShowAgainCheckState() => _doNotShowAgainCheckStateResult;
 
         private void UpdateCloseButtonVisibility(bool? visible) => CloseBox = visible ?? true;
 
-        #endregion
+        private void TimeOutTimer_Tick(object sender, EventArgs e)
+        {
+            _timeOut--;
 
+            Text = $@"{_caption} ({_timeOut})";
+
+            if (_timeOut == 0)
+            {
+                _timedOut = true;
+
+                Close();
+            }
+        }
+
+        #endregion
     }
 }

@@ -153,9 +153,24 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         #region Extended
 
+        public bool ShowMoreDetailsOption { get; set; }
+
         public PaletteRelativeAlign? RichTextBoxTextAlignment { get; set; }
 
+        public string? MoreDetailsButtonText { get; set; }
+
+        public string? MoreDetailsMessageText { get; set; }
+
         #endregion
+
+        #endregion
+
+        #region Identity
+
+        public KryptonMessageBoxExtendedData()
+        {
+
+        }
 
         #endregion
     }
