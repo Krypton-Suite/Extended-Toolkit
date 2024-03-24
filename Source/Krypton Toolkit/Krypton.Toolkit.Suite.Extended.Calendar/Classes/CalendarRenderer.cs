@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #region Types
 
         /// <summary>
-        /// Possible corners to pass to the <see cref="RoundRectangle"/> method
+        /// Possible corners to pass to the <see cref="T:RoundRectangle"/> method
         /// </summary>
         [Flags()]
         public enum Corners

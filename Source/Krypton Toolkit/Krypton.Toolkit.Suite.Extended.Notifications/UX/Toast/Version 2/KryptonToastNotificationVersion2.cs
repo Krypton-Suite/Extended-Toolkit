@@ -37,7 +37,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private bool _showActionButton;
 
-        private Color _borderColourOne, _borderColourTwo;
+        private Color _borderColourOne;
+        private Color _borderColourTwo;
 
         private int _time, _cornerRadius;
 
@@ -49,7 +50,11 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private SoundPlayer _player;
 
-        private string _actionButtonText, _dismissButtonText, _title, _text, _process;
+        private string _actionButtonText;
+        private string _dismissButtonText;
+        private string _title;
+        private string _text;
+        private string _process;
         #endregion
 
         #region Properties
@@ -378,7 +383,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             _borderColourOne = BorderColourOne;
 
-            StateCommon.Border.Color1 = _borderColourOne;
+            StateCommon!.Border.Color1 = _borderColourOne;
 
             _borderColourTwo = BorderColourTwo;
 
@@ -386,16 +391,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             if (TimeOut != 0)
             {
-                if (_dismissButtonText != null)
-                {
-                    kbtnDismiss.Text = $@"{_dismissButtonText}";
-                }
-                else
-                {
-                    kbtnDismiss.Text = $@"&Dismiss";
-                }
+                kbtnDismiss.Text = !string.IsNullOrEmpty(_dismissButtonText) ? $@"{_dismissButtonText}" : $@"{KryptonManager.Strings.ToastNotificationStrings.Dismiss}";
 
-                _timer = new System.Windows.Forms.Timer();
+                _timer = new Timer();
 
                 _timer.Interval = 1000;
 
@@ -405,14 +403,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
                     pbTimeOut.Value = TimeOut - _time;
 
-                    if (_dismissButtonText != null)
-                    {
-                        kbtnDismiss.Text = $@"{_dismissButtonText}";
-                    }
-                    else
-                    {
-                        kbtnDismiss.Text = $@"&Dismiss";
-                    }
+                    kbtnDismiss.Text = !string.IsNullOrEmpty(_dismissButtonText) ? $@"{_dismissButtonText}" : $@"{KryptonManager.Strings.ToastNotificationStrings.Dismiss}";
 
                     if (_time == TimeOut)
                     {

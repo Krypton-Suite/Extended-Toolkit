@@ -37,9 +37,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         #region Instance Fields
         private readonly VisualForm _parentForm;
         private readonly BlurValues _blurValues;
-        private VisualBlur _visualBlur;
+        private VisualBlur? _visualBlur;
         private readonly Timer _detectIsActiveTimer;
-        private Bitmap _currentFormDisplay;
+        private Bitmap? _currentFormDisplay;
         private double? _parentBeforeOpacity;
         #endregion
 
@@ -117,13 +117,13 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             var visited = new HashSet<IntPtr> { hWnd };
             try
             {
-                Form activeForm = Form.ActiveForm;
+                Form? activeForm = Form.ActiveForm;
                 if (activeForm != null)
                 {
                     visited.Add(activeForm.Handle);
                 }
 
-                visited.Add(_visualBlur.Handle);
+                visited.Add(_visualBlur!.Handle);
 
 
                 PlatformInvoke.RECT thisRect = new();
@@ -195,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _visualBlur.SetTargetRect(_parentForm.DesktopLocation, clientRectangle);
 
             Rectangle targetRect = _visualBlur.TargetRect;
-            _visualBlur.UpdateBlur(_currentFormDisplay);
+            _visualBlur.UpdateBlur(_currentFormDisplay!);
             // As UpdateBlur can take a few moments, then it is possible for the app to be closed before getting to the next line
             if ((_visualBlur == null)
                 || _parentForm.IsDisposed
