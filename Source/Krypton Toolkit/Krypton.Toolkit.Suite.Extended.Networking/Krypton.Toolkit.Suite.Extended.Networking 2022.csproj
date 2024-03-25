@@ -91,7 +91,7 @@
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.2.52-beta" />
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.3.85-beta" />
 					</ItemGroup>
 				</When>
 
@@ -116,7 +116,7 @@
 	</Choose>
 
 	<ItemGroup>
-		<PackageReference Include="System.DirectoryServices" Version="9.0.0-preview.1.24080.9" />
+		<PackageReference Include="System.DirectoryServices" Version="9.0.0-preview.2.24128.5" />
 	</ItemGroup>
 
 	<ItemGroup>

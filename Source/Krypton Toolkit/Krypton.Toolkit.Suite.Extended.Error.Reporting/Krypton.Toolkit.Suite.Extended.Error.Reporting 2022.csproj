@@ -99,9 +99,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.2.52-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.3.85-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.2.52-beta" />
+				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.3.85-beta" />
 			</ItemGroup>
 		</When>
 
@@ -171,7 +171,7 @@
 		<PackageReference Include="DotNetZip" Version="1.16.0" />
 		<PackageReference Include="Handlebars.Net" Version="2.1.4" />
 		<PackageReference Include="Simple-MAPI.NET" Version="1.2.1" />
-		<PackageReference Include="System.Management" Version="9.0.0-preview.1.24080.9" />
+		<PackageReference Include="System.Management" Version="9.0.0-preview.2.24128.5" />
 	</ItemGroup>
 
 	<ItemGroup>
