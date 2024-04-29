@@ -28,13 +28,14 @@
 
 	<PropertyGroup>
 		<OutputType>library</OutputType>
-		<RootNamespace>Krypton.Toolkit.Suite.Extended.Utilities</RootNamespace>
-		<AssemblyName>Krypton.Toolkit.Suite.Extended.Utilities</AssemblyName>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.MessageDialog</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.MessageDialog</AssemblyName>
 		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
+		<NeutralLanguage>en</NeutralLanguage>
 		<Configurations>Debug;Release;Nightly;Canary</Configurations>
 		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
@@ -46,31 +47,31 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Utilities.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.MessageDialog.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Utilities.Nightly</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.MessageDialog.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Utilities</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.MessageDialog</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Utilities</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.MessageDialog</PackageId>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9. This package implements global utilities used by the extended toolkit.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9. This package implements the KryptonMessageDialog, which is similar to a KryptonMessageBox, but adds additional functionality.
 
 			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
@@ -116,14 +117,11 @@
 
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
-		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities.xml</DocumentationFile>
-		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Utilities\</OutputPath>
-		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.MessageDialog\Krypton.Toolkit.Suite.Extended.MessageDialog.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.MessageDialog\</OutputPath>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
-	</ItemGroup>
+
 	<ItemGroup>
 		<None Update="License\License.txt">
 			<PackagePath></PackagePath>

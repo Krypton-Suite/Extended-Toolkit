@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 0, null, showCtrlCopy, null, null, null, null, null, null, null, null, null,
                 null, null, null, null, null, ExtendedKryptonMessageBoxMessageContainerType.Normal,
                 null, null, null, null,
-                ContentAlignment.MiddleLeft, null, null, null, null,
+                ContentAlignment.MiddleLeft, null, null, null, null, null,
                 DialogResult.OK);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
@@ -65,13 +65,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null,
             ContentAlignment? messageTextAlignment = null,
+            HorizontalAlignment? messageTextBoxAlignment = null,
             bool? useTimeOut = false, int? timeOut = 60, int? timeOutInterval = 1000,
             DialogResult? timerResult = DialogResult.None) =>
             ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
                 0, null, showCtrlCopy, null, null, null, null, null, null, null, null, null,
                 null, null, null, null, null, ExtendedKryptonMessageBoxMessageContainerType.Normal,
                 null, null, null, null,
-                messageTextAlignment, null, useTimeOut, timeOut, timeOutInterval, timerResult);
+                messageTextAlignment, null, messageTextBoxAlignment, useTimeOut, timeOut, timeOutInterval, timerResult);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
@@ -100,6 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
                                         ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false, int? timeOut = 60, int? timeOutInterval = 1000,
                                         DialogResult? timerResult = DialogResult.None)
             => ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
@@ -107,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                         new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                         null, null, null, null, string.Empty, string.Empty,
                         string.Empty, string.Empty, applicationPath, messageContainerType, linkLabelCommand,
-                        contentLinkArea, linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment,
+                        contentLinkArea, linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment, messageTextBoxAlignment,
                         useTimeOut, timeOut, timeOutInterval, timerResult);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
@@ -149,6 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ContentAlignment? messageTextAlignment =
                                             ContentAlignment.MiddleLeft,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, int? timeOutInterval = 1000,
                                         DialogResult? timerResult = DialogResult.None)
@@ -160,7 +163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          null, null, null, null, string.Empty, string.Empty,
                          string.Empty, string.Empty, applicationPath,
                          messageContainerType, linkLabelCommand, contentLinkArea,
-                         linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment,
+                         linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment, messageTextBoxAlignment,
                          useTimeOut, timeOut, timeOutInterval, timerResult);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
@@ -196,6 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
                                         ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false, int? timeOut = 60,
                                         int? timeOutInterval = 1000,
                                         DialogResult? timerResult = DialogResult.None)
@@ -207,7 +211,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          null, null, null, null, string.Empty, string.Empty,
                          string.Empty, string.Empty, applicationPath,
                          messageContainerType, linkLabelCommand, contentLinkArea, linkLaunchArgument, openInExplorer,
-                         messageTextAlignment, richTextBoxTextAlignment,
+                         messageTextAlignment, richTextBoxTextAlignment, messageTextBoxAlignment,
                          useTimeOut, timeOut, timeOutInterval, timerResult);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
@@ -248,6 +252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
                                         ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, int? timeOutInterval = 1000,
                                         DialogResult? timerResult = DialogResult.None)
@@ -261,7 +266,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          string.Empty, string.Empty, string.Empty,
                          applicationPath, messageContainerType, linkLabelCommand, contentLinkArea,
                          linkLaunchArgument, openInExplorer,
-                         messageTextAlignment, richTextBoxTextAlignment,
+                         messageTextAlignment, richTextBoxTextAlignment, messageTextBoxAlignment,
                          useTimeOut, timeOut, timeOutInterval, timerResult);
 
         public static DialogResult Show(IWin32Window owner, string message, string caption,
@@ -275,7 +280,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 null, null, null,
                 null, null, null,
                 null, null, null,
-                null, null, null,
+                null, null, null, null,
                 null);
 
         public static DialogResult Show(string message, string caption, ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon, KryptonMessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = false) =>
@@ -287,7 +292,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 null, null, null,
                 null, null, null,
                 null, null, null,
-                null, null, null,
+                null, null, null, null,
                 null);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
@@ -325,6 +330,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ProcessStartInfo? linkLaunchArgument = null, bool? openInExplorer = null,
                                         ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, int? timeOutInterval = 1000,
                                         DialogResult? timerResult = DialogResult.None)
@@ -340,7 +346,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          messageContainerType, linkLabelCommand, contentLinkArea,
                          linkLaunchArgument,
                          openInExplorer, messageTextAlignment,
-                         richTextBoxTextAlignment,
+                         richTextBoxTextAlignment, messageTextBoxAlignment,
                          useTimeOut, timeOut, timeOutInterval, timerResult);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
@@ -385,6 +391,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ProcessStartInfo? linkLaunchArgument = null,
                                         bool? openInExplorer = null, ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, int? timeOutInterval = 1000,
                                         DialogResult? timerResult = DialogResult.None)
@@ -398,7 +405,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          string.Empty, string.Empty,
                          string.Empty, applicationPath,
                          messageContainerType, linkLabelCommand, contentLinkArea,
-                         linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment,
+                         linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment, messageTextBoxAlignment,
                          useTimeOut, timeOut, timeOutInterval, timerResult);
 
         /// <summary>Shows a message box.</summary>
@@ -469,6 +476,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? openInExplorer = null,
                                         ContentAlignment? messageTextAlignment = null,
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
+                                        HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60,
                                         int? timeOutInterval = 1000,
@@ -483,7 +491,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          buttonThreeCustomText, buttonFourCustomText, applicationPath,
                          messageContainerType, linkLabelCommand, contentLinkArea, linkLaunchArgument,
                          openInExplorer, messageTextAlignment,
-                         richTextBoxTextAlignment,
+                         richTextBoxTextAlignment, messageTextBoxAlignment,
                          useTimeOut, timeOut, timeOutInterval, timerResult);
 
         #endregion
@@ -512,6 +520,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             bool? openInExplorer,
             ContentAlignment? messageTextAlignment,
             PaletteRelativeAlign? richTextBoxTextAlignment,
+            HorizontalAlignment? messageTextBoxAlignment,
             bool? showOptionalCheckBox,
             bool? initialDoNotShowAgainCheckBoxChecked,
             CheckState? initialDoNotShowAgainCheckBoxCheckState,
@@ -550,6 +559,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     openInExplorer,
                     messageTextAlignment,
                     richTextBoxTextAlignment,
+                    messageTextBoxAlignment,
                     showOptionalCheckBox,
                     initialDoNotShowAgainCheckBoxChecked,
                     optionalCheckBoxText,
@@ -588,6 +598,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     openInExplorer,
                     messageTextAlignment,
                     richTextBoxTextAlignment,
+                    messageTextBoxAlignment,
                     showOptionalCheckBox,
                     initialDoNotShowAgainCheckBoxChecked,
                     initialDoNotShowAgainCheckBoxCheckState,
@@ -669,6 +680,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             bool? openInExplorer,
             ContentAlignment? messageTextAlignment,
             PaletteRelativeAlign? richTextBoxTextAlignment,
+            HorizontalAlignment? messageTextBoxAlignment,
             bool? showOptionalCheckBox,
             bool? initialDoNotShowAgainCheckBoxChecked,
             CheckState? initialDoNotShowAgainCheckBoxCheckState,
@@ -707,6 +719,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     openInExplorer,
                     messageTextAlignment,
                     richTextBoxTextAlignment,
+                    messageTextBoxAlignment,
                     showOptionalCheckBox,
                     initialDoNotShowAgainCheckBoxChecked,
                     optionalCheckBoxText,
@@ -745,6 +758,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     openInExplorer,
                     messageTextAlignment,
                     richTextBoxTextAlignment,
+                    messageTextBoxAlignment,
                     showOptionalCheckBox,
                     initialDoNotShowAgainCheckBoxChecked,
                     initialDoNotShowAgainCheckBoxCheckState,
@@ -819,6 +833,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                               bool? openInExplorer,
                                               ContentAlignment? messageTextAlignment,
                                               PaletteRelativeAlign? richTextBoxTextAlignment,
+                                              HorizontalAlignment? messageTextBoxAlignment,
                                               bool? useTimeOut,
                                               int? timeOut,
                                               int? timeOutInterval,
@@ -852,6 +867,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     openInExplorer,
                     messageTextAlignment,
                     richTextBoxTextAlignment,
+                    messageTextBoxAlignment,
                     null,
                     null,
                     null,
@@ -890,6 +906,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     openInExplorer,
                     messageTextAlignment,
                     richTextBoxTextAlignment,
+                    messageTextBoxAlignment,
                     null,
                     null,
                     null,

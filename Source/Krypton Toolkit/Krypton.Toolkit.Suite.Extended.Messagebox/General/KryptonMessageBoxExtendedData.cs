@@ -113,6 +113,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <value>The message text alignment.</value>
         public ContentAlignment? MessageTextAlignment { get; set; }
 
+        /// <summary>Gets or sets the message text box alignment.</summary>
+        /// <value>The message text box alignment.</value>
+        public HorizontalAlignment? MessageTextBoxAlignment { get; set; }
+
         /// <summary>Gets or sets the force use of operating system icons.</summary>
         /// <value>Forces the use of operating system icons.</value>
         public bool? ForceUseOfOperatingSystemIcons { get; set; }

@@ -285,6 +285,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Issue Templates", "Issue Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Debug.Tools 2022", "Krypton.Toolkit.Suite.Extended.Debug.Tools\Krypton.Toolkit.Suite.Extended.Debug.Tools 2022.csproj", "{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.MessageDialog", "Krypton.Toolkit.Suite.Extended.MessageDialog\Krypton.Toolkit.Suite.Extended.MessageDialog.csproj", "{B93429BE-5941-40A4-89F8-C14109959886}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Canary|Any CPU = Canary|Any CPU
@@ -773,6 +775,14 @@ Global
 		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
 		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B93429BE-5941-40A4-89F8-C14109959886}.Canary|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93429BE-5941-40A4-89F8-C14109959886}.Canary|Any CPU.Build.0 = Debug|Any CPU
+		{B93429BE-5941-40A4-89F8-C14109959886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93429BE-5941-40A4-89F8-C14109959886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B93429BE-5941-40A4-89F8-C14109959886}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93429BE-5941-40A4-89F8-C14109959886}.Nightly|Any CPU.Build.0 = Debug|Any CPU
+		{B93429BE-5941-40A4-89F8-C14109959886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B93429BE-5941-40A4-89F8-C14109959886}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -860,6 +870,7 @@ Global
 		{5D204922-259D-4140-B115-F01EDF031B5A} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
 		{362F24FA-1AA0-4821-A539-C5A863D39B8B} = {5D204922-259D-4140-B115-F01EDF031B5A}
 		{DDC3EC31-7D14-47BD-9DAF-24AF5B032354} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
+		{B93429BE-5941-40A4-89F8-C14109959886} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
