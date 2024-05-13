@@ -407,7 +407,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                     pbxIcon.Image = Properties.Resources.Stop_Information_Box;
                     break;
                 case InputBoxIconType.Shield:
-                    if (OSUtilities.IsWindowsEleven)
+                    if (OSUtilities.IsAtLeastWindowsEleven)
                     {
                         pbxIcon.Image = Properties.Resources.UAC_Shield_Windows_11_Information_Box;
                     }
@@ -421,7 +421,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                     }
                     break;
                 case InputBoxIconType.WindowsLogo:
-                    if (OSUtilities.IsWindowsEleven)
+                    if (OSUtilities.IsAtLeastWindowsEleven)
                     {
                         pbxIcon.Image = Properties.Resources.Windows11_Information_Box;
                     }

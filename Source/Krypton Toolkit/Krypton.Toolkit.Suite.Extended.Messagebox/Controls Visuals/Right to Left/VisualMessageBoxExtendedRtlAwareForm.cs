@@ -403,7 +403,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Shield:
-                    if (OSUtilities.IsWindowsEleven)
+                    if (OSUtilities.IsAtLeastWindowsEleven)
                     {
                         _messageIcon.Image = Resources.UAC_Shield_Windows_11;
                     }
@@ -420,7 +420,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 case ExtendedKryptonMessageBoxIcon.WindowsLogo:
                     // Because Windows 11 displays a generic application icon,
                     // we need to rely on a image instead
-                    if (OSUtilities.IsWindowsEleven)
+                    if (OSUtilities.IsAtLeastWindowsEleven)
                     {
                         _messageIcon.Image = Resources.Windows11;
                     }
