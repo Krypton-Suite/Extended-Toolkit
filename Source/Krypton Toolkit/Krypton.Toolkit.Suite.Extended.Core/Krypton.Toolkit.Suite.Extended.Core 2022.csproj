@@ -86,13 +86,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="90.24.2.60-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="90.24.5.134-alpha" />
 
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.2.60-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.5.134-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.2.60-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.5.134-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="90.24.2.60-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="90.24.5.134-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -249,19 +249,19 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
 		<PackageReference Include="NSec.Cryptography">
-			<Version>23.5.0-preview.1</Version>
+			<Version>23.9.0-preview.3</Version>
 		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
 		<PackageReference Include="NSec.Cryptography">
-			<Version>23.5.0-preview.1</Version>
+			<Version>23.9.0-preview.3</Version>
 		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
 		<PackageReference Include="NSec.Cryptography">
-			<Version>23.5.0-preview.1</Version>
+			<Version>23.9.0-preview.3</Version>
 		</PackageReference>
 	</ItemGroup>
 
