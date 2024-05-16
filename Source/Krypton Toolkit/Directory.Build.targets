@@ -166,9 +166,9 @@
 				<PackageId Condition="'$(TFMs)' == 'StableLite'">$(PackageId).Lite</PackageId>
 
 				<Description Condition="'$(TFMs)' == 'StableLite'">
-					An extension to the Standard Toolkit, which supports .NET Framework 4.8 and 4.8.1 and .NET 5 - 7. $(Description)
+					An extension to the Standard Toolkit, which supports .NET Framework 4.8 and 4.8.1 and .NET 8 - 9. $(Description)
 
-					This package supports all .NET Framework versions starting .NET Framework 4.8 and 4.8.1 and .NET 5 - 7.
+					This package supports all .NET Framework versions starting .NET Framework 4.8 and 4.8.1 and .NET 8 - 9.
 					Also, all libraries are included targeting each specific framework version for performance purposes.
 
 					To view all of the standard toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Standard/Krypton-Toolkit-Suite-Standard-Modules.md
