@@ -103,7 +103,7 @@
 
 				<Otherwise>
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
+						<PackageReference Include="Krypton.Toolkit" Version="80.24.3.64" />
 					</ItemGroup>
 				</Otherwise>
 			</Choose>
