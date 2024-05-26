@@ -168,6 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             bool? openInExplorer,
             ContentAlignment? messageTextAlignment,
             PaletteRelativeAlign? richTextBoxTextAlignment,
+            HorizontalAlignment? messageTextBoxAlignment,
             bool? showOptionalCheckBox,
             bool? optionalCheckBoxChecked,
             string? optionalCheckBoxText,
@@ -232,7 +233,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
 
-            UpdateContentAreaType(messageContainerType, messageTextAlignment, richTextBoxTextAlignment);
+            UpdateContentAreaType(messageContainerType, messageTextAlignment, richTextBoxTextAlignment, messageTextBoxAlignment);
 
             UpdateContentLinkArea(contentLinkArea);
 
@@ -246,8 +247,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 using (_timeOutTimer)
                 {
                     _result = KryptonMessageBoxExtended.Show(text, caption, buttons, icon, showCtrlCopy,
-                                                             messageTextAlignment, useTimeOut, null,
-                                                             null);
+                        messageTextAlignment, messageTextBoxAlignment, useTimeOut, null,
+                        null);
                 }
 
                 if (_timedOut)
@@ -269,9 +270,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             {
                 kwlblMessageText.Visible = true;
                 kwlblMessageText.Text = _text;
-                kwlblMessageText.StateCommon.Font = _messageBoxTypeface;
+                kwlblMessageText.StateCommon.Content.Font = _messageBoxTypeface;
 
-                kwlblMessageText.StateCommon.TextColor = _messageTextColour;
+                kwlblMessageText.StateCommon.Content.Color1 = _messageTextColour;
 
                 krtbMessageText.Visible = false;
 
@@ -402,7 +403,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Shield:
-                    if (OSUtilities.IsWindowsEleven)
+                    if (OSUtilities.IsAtLeastWindowsEleven)
                     {
                         _messageIcon.Image = Resources.UAC_Shield_Windows_11;
                     }
@@ -419,7 +420,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 case ExtendedKryptonMessageBoxIcon.WindowsLogo:
                     // Because Windows 11 displays a generic application icon,
                     // we need to rely on a image instead
-                    if (OSUtilities.IsWindowsEleven)
+                    if (OSUtilities.IsAtLeastWindowsEleven)
                     {
                         _messageIcon.Image = Resources.Windows11;
                     }
@@ -709,7 +710,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 scaledMonitorSize.Width *= 2 / 3.0f;
                 scaledMonitorSize.Height *= 0.95f;
 
-                kwlblMessageText.UpdateFont();
+                //kwlblMessageText.UpdateFont();
                 SizeF messageSize = g.MeasureString(_text, kwlblMessageText.Font, scaledMonitorSize);
                 // SKC: Don't forget to add the TextExtra into the calculation
                 SizeF captionSize = g.MeasureString($@"{_caption} {TextExtra}", kwlblMessageText.Font, scaledMonitorSize);
@@ -901,7 +902,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
         }
 
-        private void UpdateContentAreaType(ExtendedKryptonMessageBoxMessageContainerType? messageContainerType, ContentAlignment? messageTextAlignment, PaletteRelativeAlign? richTextBoxTextAlignment)
+        private void UpdateContentAreaType(ExtendedKryptonMessageBoxMessageContainerType? messageContainerType, ContentAlignment? messageTextAlignment, PaletteRelativeAlign? richTextBoxTextAlignment, HorizontalAlignment? messageTextBoxAlignment)
         {
             switch (messageContainerType)
             {
@@ -919,7 +920,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
                     kwlblMessageText.Visible = true;
 
-                    kwlblMessageText.TextAlign = messageTextAlignment ?? ContentAlignment.MiddleLeft;
+                    kwlblMessageText.TextAlign = messageTextBoxAlignment ?? HorizontalAlignment.Left;
 
                     krtbMessageText.Visible = false;
                     break;
@@ -1046,6 +1047,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         #endregion
 
-    #endregion
+        #endregion
     }
 }
