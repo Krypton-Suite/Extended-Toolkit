@@ -174,8 +174,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         {
             Rectangle innerBorderRectangle = new Rectangle(controlRectangle.X + BorderWidth,
                                                            controlRectangle.Y + BorderWidth,
-                                                           controlRectangle.Width - (2 * BorderWidth),
-                                                           controlRectangle.Height - (2 * BorderWidth));
+                                                           controlRectangle.Width - 2 * BorderWidth,
+                                                           controlRectangle.Height - 2 * BorderWidth);
 
             GraphicsPath borderPath = new GraphicsPath();
             borderPath.AddArc(innerBorderRectangle.X, innerBorderRectangle.Y, innerBorderRectangle.Height, innerBorderRectangle.Height, 90, 180);
@@ -191,14 +191,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             GraphicsPath buttonPath = new GraphicsPath();
 
-            buttonPath.AddArc(buttonRectangle.X + ButtonMargin, buttonRectangle.Y + ButtonMargin, buttonRectangle.Height - (2 * ButtonMargin), buttonRectangle.Height - (2 * ButtonMargin), 0, 360);
+            buttonPath.AddArc(buttonRectangle.X + ButtonMargin, buttonRectangle.Y + ButtonMargin, buttonRectangle.Height - 2 * ButtonMargin, buttonRectangle.Height - 2 * ButtonMargin, 0, 360);
 
             return buttonPath;
         }
 
         public override int GetButtonWidth()
         {
-            int buttonWidth = ToggleSwitch.Height - (2 * BorderWidth);
+            int buttonWidth = ToggleSwitch.Height - 2 * BorderWidth;
             return buttonWidth > 0 ? buttonWidth : 0;
         }
 

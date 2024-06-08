@@ -543,8 +543,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             var cm = new ColorMatrix();
             var rest = (float)Math.Ceiling(smoothness);
             var take = 1f;
-            var inv = ((AnchorStyles.Bottom & side) == AnchorStyles.Bottom) || ((AnchorStyles.Right & side) == AnchorStyles.Right);
-            var top = ((AnchorStyles.Bottom & side) == AnchorStyles.Bottom) || ((AnchorStyles.Top & side) == AnchorStyles.Top);
+            var inv = (AnchorStyles.Bottom & side) == AnchorStyles.Bottom || (AnchorStyles.Right & side) == AnchorStyles.Right;
+            var top = (AnchorStyles.Bottom & side) == AnchorStyles.Bottom || (AnchorStyles.Top & side) == AnchorStyles.Top;
 
             while (rest > 0f)
             {

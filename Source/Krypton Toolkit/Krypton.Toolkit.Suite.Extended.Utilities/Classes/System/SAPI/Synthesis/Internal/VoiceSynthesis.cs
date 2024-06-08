@@ -192,7 +192,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         internal int Rate
         {
             get => _site.VoiceRate;
-            set => _site.VoiceRate = (_defaultRate = value);
+            set => _site.VoiceRate = _defaultRate = value;
         }
 
         internal int Volume
@@ -254,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             {
                 _installedVoices.Add(new InstalledVoice(this, allVoice.VoiceInfo));
             }
-            _site.VoiceRate = (_defaultRate = (int)GetDefaultRate());
+            _site.VoiceRate = _defaultRate = (int)GetDefaultRate();
             _workerThread = new Thread(ThreadProc);
             _workerThread.IsBackground = true;
             _workerThread.Start();
@@ -640,7 +640,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         internal TTSVoice GetEngine(string name, CultureInfo culture, VoiceGender gender, VoiceAge age, int variant, bool switchContext)
         {
-            TTSVoice defaultVoice = (_currentVoice != null) ? _currentVoice : GetVoice(switchContext);
+            TTSVoice defaultVoice = _currentVoice != null ? _currentVoice : GetVoice(switchContext);
             return GetEngineWithVoice(defaultVoice, null, name, culture, gender, age, variant, switchContext);
         }
 
@@ -736,7 +736,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                                     if (parametersSpeak2._prompt._exception == null)
                                     {
                                         List<LexiconEntry> list = new List<LexiconEntry>();
-                                        TTSVoice ttsVoice = (_currentVoice != null) ? _currentVoice : GetVoice(false);
+                                        TTSVoice ttsVoice = _currentVoice != null ? _currentVoice : GetVoice(false);
                                         SpeakInfo speakInfo = new SpeakInfo(this, ttsVoice);
                                         if (parametersSpeak2._textToSpeak != null)
                                         {
@@ -955,7 +955,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     if (switchContext)
                     {
                         ExecuteOnBackgroundThread(Action.GetVoice, voiceInfo);
-                        return (_pendingException == null) ? _pendingVoice : null;
+                        return _pendingException == null ? _pendingVoice : null;
                     }
                     return GetProxyEngine(voiceInfo);
                 }
@@ -991,7 +991,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     InstalledVoice viDefault = null;
                     if (defaultVoice != null || defaultVoiceId != null)
                     {
-                        viDefault = InstalledVoice.Find(_installedVoices, (defaultVoice != null) ? defaultVoice.VoiceInfo : defaultVoiceId);
+                        viDefault = InstalledVoice.Find(_installedVoices, defaultVoice != null ? defaultVoice.VoiceInfo : defaultVoiceId);
                         if (viDefault != null && viDefault.Enabled && variant == 1)
                         {
                             VoiceInfo voiceInfo = viDefault.VoiceInfo;
@@ -1213,7 +1213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                         {
                             voiceInfo.Clsid
                         };
-                        ttsEngineSsml = (assembly.CreateInstance(type.ToString(), false, BindingFlags.Default, null, args, CultureInfo.CurrentUICulture, null) as TtsEngineSsml);
+                        ttsEngineSsml = assembly.CreateInstance(type.ToString(), false, BindingFlags.Default, null, args, CultureInfo.CurrentUICulture, null) as TtsEngineSsml;
                         break;
                     }
                 }
@@ -1308,7 +1308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     }
                     if (_defaultVoice == null)
                     {
-                        VoiceInfo defaultVoiceId = (objectToken != null) ? new VoiceInfo(objectToken) : null;
+                        VoiceInfo defaultVoiceId = objectToken != null ? new VoiceInfo(objectToken) : null;
                         _defaultVoice = GetEngineWithVoice(null, defaultVoiceId, null, CultureInfo.CurrentUICulture, VoiceGender.NotSet, VoiceAge.NotSet, 1, switchContext);
                     }
                     _defaultVoiceInitialized = true;

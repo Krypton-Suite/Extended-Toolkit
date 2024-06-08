@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal void Serialize(StreamMarshaler streamBuffer)
         {
-            _cfgRule.FirstArcIndex = (uint)((_firstState != null && !_firstState.OutArcs.IsEmpty) ? _firstState.SerializeId : 0);
+            _cfgRule.FirstArcIndex = (uint)(_firstState != null && !_firstState.OutArcs.IsEmpty ? _firstState.SerializeId : 0);
             _cfgRule.DirtyRule = true;
             streamBuffer.WriteStream(_cfgRule);
         }

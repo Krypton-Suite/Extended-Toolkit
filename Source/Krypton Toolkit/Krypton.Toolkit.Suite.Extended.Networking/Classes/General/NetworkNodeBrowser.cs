@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                         //get pointer to, Pointer to the buffer that received the data from
                         //the call to NetServerEnum. Must ensure to use correct size of 
                         //STRUCTURE to ensure correct location in memory is pointed to
-                        tmpBuffer = new IntPtr((int)buffer + (i * sizeofINFO));
+                        tmpBuffer = new IntPtr((int)buffer + i * sizeofINFO);
                         //Have now got a pointer to the list of SV_TYPE_WORKSTATION and 
                         //SV_TYPE_SERVER PC's, which is unmanaged memory
                         //Needs to Marshal data from an unmanaged block of memory to a 

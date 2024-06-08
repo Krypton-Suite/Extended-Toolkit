@@ -361,7 +361,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                         var yOffset = filterY + filterOffset;
                         for (var filterX = -filterOffset; filterX <= filterOffset; filterX++)
                         {
-                            var temporaryOffset = byteOffset + (filterX * 4) + (filterY * sourceBitmapData.Stride);
+                            var temporaryOffset = byteOffset + filterX * 4 + filterY * sourceBitmapData.Stride;
                             var xOffset = filterX + filterOffset;
 
                             var filter = filterArray[yOffset, xOffset];
@@ -378,13 +378,13 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                     green = factor * green + bias;
                     red = factor * red + bias;
 
-                    blue = (blue > 255 ? 255 : (blue < 0 ? 0 : blue));
-                    green = (green > 255 ? 255 : (green < 0 ? 0 : green));
-                    red = (red > 255 ? 255 : (red < 0 ? 0 : red));
+                    blue = blue > 255 ? 255 : blue < 0 ? 0 : blue;
+                    green = green > 255 ? 255 : green < 0 ? 0 : green;
+                    red = red > 255 ? 255 : red < 0 ? 0 : red;
 
-                    targetByteArray[byteOffset] = (byte)(blue);
-                    targetByteArray[byteOffset + 1] = (byte)(green);
-                    targetByteArray[byteOffset + 2] = (byte)(red);
+                    targetByteArray[byteOffset] = (byte)blue;
+                    targetByteArray[byteOffset + 1] = (byte)green;
+                    targetByteArray[byteOffset + 2] = (byte)red;
                     targetByteArray[byteOffset + 3] = 255;
                 }
                 );

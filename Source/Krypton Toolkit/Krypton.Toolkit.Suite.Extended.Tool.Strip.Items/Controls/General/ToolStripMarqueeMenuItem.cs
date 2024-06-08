@@ -188,7 +188,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         void timer_Tick(object sender, EventArgs e)
         {
             //Change offset only when menu item is visible, mouse is not hovering over or StopScrollOnMouseOver is not set to 'false'
-            if ((Visible) && ((!Selected) || (!StopScrollOnMouseOver)))
+            if (Visible && (!Selected || !StopScrollOnMouseOver))
             {
                 _pixelOffest = (_pixelOffest + ScrollStep + _textSize.Width) % (2 * _textSize.Width + 1) - _textSize.Width;
                 Invalidate();

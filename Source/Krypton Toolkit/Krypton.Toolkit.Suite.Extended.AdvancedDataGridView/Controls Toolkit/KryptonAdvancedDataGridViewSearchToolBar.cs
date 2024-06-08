@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         protected override void Dispose(bool disposing)
         {
             // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-            if (disposing && (components != null))
+            if (disposing && components != null)
             {
                 components.Dispose();
             }
@@ -702,7 +702,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         protected override void OnPaint(PaintEventArgs e)
         {
             //check if translations are changed and update components
-            if (!((_translationsRefreshComponentTranslationsCheck == Translations) || (_translationsRefreshComponentTranslationsCheck.Count == Translations.Count && !_translationsRefreshComponentTranslationsCheck.Except(Translations).Any())))
+            if (!(_translationsRefreshComponentTranslationsCheck == Translations || (_translationsRefreshComponentTranslationsCheck.Count == Translations.Count && !_translationsRefreshComponentTranslationsCheck.Except(Translations).Any())))
             {
                 _translationsRefreshComponentTranslationsCheck = Translations;
                 RefreshComponentTranslations();

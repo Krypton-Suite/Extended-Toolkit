@@ -842,7 +842,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             base.OnResize(e);
 
             if (/*ApplyCustomChrome
-                &&*/ !((MdiParent != null)
+                &&*/ !(MdiParent != null
                      && CommonHelper.IsFormMaximized(this))
                 )
             {
@@ -1271,8 +1271,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             // If the window proc has decided it is in the CAPTION or CLIENT areas
             // then we might have something of our own in that area that we want to
             // override the return value for. So process it ourself.
-            if ((m.Result == (IntPtr)PlatformInvoke.HT.CAPTION) ||
-                (m.Result == (IntPtr)PlatformInvoke.HT.CLIENT))
+            if (m.Result == (IntPtr)PlatformInvoke.HT.CAPTION ||
+                m.Result == (IntPtr)PlatformInvoke.HT.CLIENT)
             {
                 // Extract the point in screen coordinates
                 Point screenPoint = new((int)m.LParam.ToInt64());
@@ -1298,7 +1298,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             // Cache the new active state
             WindowActive = m.WParam == (IntPtr)1;
 
-            if ((MdiParent != null) && !_activated)
+            if (MdiParent != null && !_activated)
             {
                 _activated = true;
             }
@@ -1528,7 +1528,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             Rectangle windowBounds = RealWindowRectangle;
 
             // We can only draw a window that has some size
-            if ((windowBounds.Width > 0) && (windowBounds.Height > 0))
+            if (windowBounds.Width > 0 && windowBounds.Height > 0)
             {
                 // Get the device context for this window
                 IntPtr hDC = PlatformInvoke.GetWindowDC(Handle);
@@ -1547,7 +1547,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                         var minimized = CommonHelper.IsFormMinimized(this);
 
                         // After excluding the client area, is there anything left to draw?
-                        if (minimized || ((clipClientRect.Width > 0) && (clipClientRect.Height > 0)))
+                        if (minimized || (clipClientRect.Width > 0 && clipClientRect.Height > 0))
                         {
                             // If not minimized we need to clip the client area
                             if (!minimized)

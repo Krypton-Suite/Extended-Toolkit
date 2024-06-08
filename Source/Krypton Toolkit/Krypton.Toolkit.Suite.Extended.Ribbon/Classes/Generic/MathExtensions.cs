@@ -54,9 +54,9 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
     {
         #region Constants
         // Constant containing the value used to convert degrees to radians.
-        private const float DegConvert = ((float)Math.PI / 180.0f);
+        private const float DegConvert = (float)Math.PI / 180.0f;
         // Constant containing the value used to convert radians to degrees.
-        private const float RadConvert = (180.0f / (float)Math.PI);
+        private const float RadConvert = 180.0f / (float)Math.PI;
 
         /// <summary>
         /// Constant value for &#x03C0;.
@@ -86,27 +86,27 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         public static float FastSin(this float rads)
         {
             int i32I = (int)(rads * 0.31830988618379067153776752674503);  // 1 / PI.
-            double radians = rads - ((i32I) * 3.1415926535897932384626433832795);
+            double radians = rads - i32I * 3.1415926535897932384626433832795;
 
             double fX2 = radians * radians;
 
-            return (float)(((i32I & 1) == 1)
-                       ? -radians * ((1.00000000000000000000e+00) +
-                                  (fX2 * ((-1.66666671633720397949e-01) +
-                                         (fX2 * ((8.33333376795053482056e-03) +
-                                                (fX2 * ((-1.98412497411482036114e-04) +
-                                                       (fX2 * ((2.75565571428160183132e-06) +
-                                                              (fX2 * ((-2.50368472620721149724e-08) +
-                                                                     (fX2 * ((1.58849267073435385100e-10) +
-                                                                            (fX2 * (-6.58925550841432672300e-13)))))))))))))))
-                       : radians * ((1.00000000000000000000e+00) +
-                                 (fX2 * ((-1.66666671633720397949e-01) +
-                                        (fX2 * ((8.33333376795053482056e-03) +
-                                               (fX2 * ((-1.98412497411482036114e-04) +
-                                                      (fX2 * ((2.75565571428160183132e-06) +
-                                                             (fX2 * ((-2.50368472620721149724e-08) +
-                                                                    (fX2 * ((1.58849267073435385100e-10) +
-                                                                           (fX2 * (-6.58925550841432672300e-13))))))))))))))));
+            return (float)((i32I & 1) == 1
+                       ? -radians * (1.00000000000000000000e+00 +
+                                  fX2 * (-1.66666671633720397949e-01 +
+                                         fX2 * (8.33333376795053482056e-03 +
+                                                fX2 * (-1.98412497411482036114e-04 +
+                                                       fX2 * (2.75565571428160183132e-06 +
+                                                              fX2 * (-2.50368472620721149724e-08 +
+                                                                     fX2 * (1.58849267073435385100e-10 +
+                                                                            fX2 * -6.58925550841432672300e-13)))))))
+                       : radians * (1.00000000000000000000e+00 +
+                                 fX2 * (-1.66666671633720397949e-01 +
+                                        fX2 * (8.33333376795053482056e-03 +
+                                               fX2 * (-1.98412497411482036114e-04 +
+                                                      fX2 * (2.75565571428160183132e-06 +
+                                                             fX2 * (-2.50368472620721149724e-08 +
+                                                                    fX2 * (1.58849267073435385100e-10 +
+                                                                           fX2 * -6.58925550841432672300e-13))))))));
         }
 
         /// <summary>
@@ -130,27 +130,27 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         public static float FastCos(this float rads)
         {
             int i32I = (int)(rads * 0.31830988618379067153776752674503);  // 1 / PI.
-            double radians = rads - ((i32I) * 3.1415926535897932384626433832795);
+            double radians = rads - i32I * 3.1415926535897932384626433832795;
 
             double fX2 = radians * radians;
 
-            return (float)(((i32I & 1) == 1)
-                       ? -(1.00000000000000000000e+00) -
-                         (fX2 * ((-5.00000000000000000000e-01) +
-                                (fX2 * ((4.16666641831398010254e-02) +
-                                       (fX2 * ((-1.38888671062886714935e-03) +
-                                              (fX2 * ((2.48006890615215525031e-05) +
-                                                     (fX2 * ((-2.75369927749125054106e-07) +
-                                                            (fX2 * ((2.06207229069832465029e-09) +
-                                                                   (fX2 * (-9.77507137733812925262e-12))))))))))))))
-                       : (1.00000000000000000000e+00) +
-                         (fX2 * ((-5.00000000000000000000e-01) +
-                                (fX2 * ((4.16666641831398010254e-02) +
-                                       (fX2 * ((-1.38888671062886714935e-03) +
-                                              (fX2 * ((2.48006890615215525031e-05) +
-                                                     (fX2 * ((-2.75369927749125054106e-07) +
-                                                            (fX2 * ((2.06207229069832465029e-09) +
-                                                                   (fX2 * (-9.77507137733812925262e-12)))))))))))))));
+            return (float)((i32I & 1) == 1
+                       ? -1.00000000000000000000e+00 -
+                         fX2 * (-5.00000000000000000000e-01 +
+                                fX2 * (4.16666641831398010254e-02 +
+                                       fX2 * (-1.38888671062886714935e-03 +
+                                              fX2 * (2.48006890615215525031e-05 +
+                                                     fX2 * (-2.75369927749125054106e-07 +
+                                                            fX2 * (2.06207229069832465029e-09 +
+                                                                   fX2 * -9.77507137733812925262e-12))))))
+                       : 1.00000000000000000000e+00 +
+                         fX2 * (-5.00000000000000000000e-01 +
+                                fX2 * (4.16666641831398010254e-02 +
+                                       fX2 * (-1.38888671062886714935e-03 +
+                                              fX2 * (2.48006890615215525031e-05 +
+                                                     fX2 * (-2.75369927749125054106e-07 +
+                                                            fX2 * (2.06207229069832465029e-09 +
+                                                                   fX2 * -9.77507137733812925262e-12)))))));
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The larger of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte Max(this byte value1, byte value2) => (value1 > value2) ? value1 : value2;
+        public static byte Max(this byte value1, byte value2) => value1 > value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the minimum value between two <see cref="byte"/> values.
@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The smaller of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte Min(this byte value1, byte value2) => (value1 < value2) ? value1 : value2;
+        public static byte Min(this byte value1, byte value2) => value1 < value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the maximum value between two <see cref="ushort"/> values.
@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The larger of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort Max(this ushort value1, ushort value2) => (value1 > value2) ? value1 : value2;
+        public static ushort Max(this ushort value1, ushort value2) => value1 > value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the minimum value between two <see cref="ushort"/> values.
@@ -187,7 +187,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The smaller of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort Min(this ushort value1, ushort value2) => (value1 < value2) ? value1 : value2;
+        public static ushort Min(this ushort value1, ushort value2) => value1 < value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the maximum value between two <see cref="short"/> values.
@@ -196,7 +196,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The larger of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static short Max(this short value1, short value2) => (value1 > value2) ? value1 : value2;
+        public static short Max(this short value1, short value2) => value1 > value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the minimum value between two <see cref="short"/> values.
@@ -205,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The smaller of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static short Min(this short value1, short value2) => (value1 < value2) ? value1 : value2;
+        public static short Min(this short value1, short value2) => value1 < value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the maximum value between two <see cref="uint"/> values.
@@ -214,7 +214,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The larger of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Max(this uint value1, uint value2) => (value1 > value2) ? value1 : value2;
+        public static uint Max(this uint value1, uint value2) => value1 > value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the minimum value between two <see cref="uint"/> values.
@@ -223,7 +223,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The smaller of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Min(this uint value1, uint value2) => (value1 < value2) ? value1 : value2;
+        public static uint Min(this uint value1, uint value2) => value1 < value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the maximum value between two <see cref="int"/> values.
@@ -232,7 +232,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The larger of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Max(this int value1, int value2) => (value1 > value2) ? value1 : value2;
+        public static int Max(this int value1, int value2) => value1 > value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the minimum value between two <see cref="int"/> values.
@@ -241,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The smaller of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Min(this int value1, int value2) => (value1 < value2) ? value1 : value2;
+        public static int Min(this int value1, int value2) => value1 < value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the maximum value between two <see cref="ulong"/> values.
@@ -250,7 +250,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The larger of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong Max(this ulong value1, ulong value2) => (value1 > value2) ? value1 : value2;
+        public static ulong Max(this ulong value1, ulong value2) => value1 > value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the minimum value between two <see cref="ulong"/> values.
@@ -259,7 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The smaller of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong Min(this ulong value1, ulong value2) => (value1 < value2) ? value1 : value2;
+        public static ulong Min(this ulong value1, ulong value2) => value1 < value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the maximum value between two <see cref="long"/> values.
@@ -268,7 +268,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The larger of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long Max(this long value1, long value2) => (value1 > value2) ? value1 : value2;
+        public static long Max(this long value1, long value2) => value1 > value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the minimum value between two <see cref="long"/> values..
@@ -277,7 +277,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The smaller of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long Min(this long value1, long value2) => (value1 < value2) ? value1 : value2;
+        public static long Min(this long value1, long value2) => value1 < value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the maximum value between two <see cref="float"/> values.
@@ -286,7 +286,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The larger of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Max(this float value1, float value2) => (value1 > value2) ? value1 : value2;
+        public static float Max(this float value1, float value2) => value1 > value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the minimum value between two <see cref="float"/> values.
@@ -295,7 +295,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The smaller of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Min(this float value1, float value2) => (value1 < value2) ? value1 : value2;
+        public static float Min(this float value1, float value2) => value1 < value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the maximum value between two <see cref="double"/> values.
@@ -304,7 +304,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The larger of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double Max(this double value1, double value2) => (value1 > value2) ? value1 : value2;
+        public static double Max(this double value1, double value2) => value1 > value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the minimum value between two <see cref="double"/> values.
@@ -313,7 +313,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The smaller of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double Min(this double value1, double value2) => (value1 < value2) ? value1 : value2;
+        public static double Min(this double value1, double value2) => value1 < value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the maximum value between two <see cref="decimal"/> values.
@@ -322,7 +322,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The larger of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal Max(this decimal value1, decimal value2) => (value1 > value2) ? value1 : value2;
+        public static decimal Max(this decimal value1, decimal value2) => value1 > value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the minimum value between two <see cref="decimal"/> values.
@@ -331,7 +331,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="value2">The second value to test.</param>
         /// <returns>The smaller of the two values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal Min(this decimal value1, decimal value2) => (value1 < value2) ? value1 : value2;
+        public static decimal Min(this decimal value1, decimal value2) => value1 < value2 ? value1 : value2;
 
         /// <summary>
         /// Function to return the absolute value of a <see cref="float"/> value.
@@ -392,7 +392,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// See <see cref="System.Math.Round(double,int,MidpointRounding)"/> for more information.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Round(this float value, int decimalCount = 0, MidpointRounding rounding = MidpointRounding.ToEven) => (float)(Math.Round(value, decimalCount, rounding));
+        public static float Round(this float value, int decimalCount = 0, MidpointRounding rounding = MidpointRounding.ToEven) => (float)Math.Round(value, decimalCount, rounding);
 
         /// <summary>
         /// Function to round a <see cref="decimal"/> value to the nearest whole or fractional number.
@@ -802,7 +802,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         {
             int result = (int)value;
 
-            return (value < result) ? result - 1 : result;
+            return value < result ? result - 1 : result;
         }
 
         /// <summary>
@@ -815,7 +815,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         {
             int result = (int)value;
 
-            return (value < result) ? result - 1 : result;
+            return value < result ? result - 1 : result;
         }
 
         /// <summary>
@@ -828,7 +828,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         {
             int result = (int)value;
 
-            return (value > result) ? result + 1 : result;
+            return value > result ? result + 1 : result;
         }
 
         /// <summary>
@@ -841,7 +841,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         {
             int result = (int)value;
 
-            return (value > result) ? result + 1 : result;
+            return value > result ? result + 1 : result;
         }
 
         /// <summary>
@@ -1323,7 +1323,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="amount">The weighting amount.</param>
         /// <returns>The linearly interpolated value.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Lerp(this float from, float to, float amount) => ((1.0f - amount) * from) + (amount * to);
+        public static float Lerp(this float from, float to, float amount) => (1.0f - amount) * from + amount * to;
 
         /// <summary>
         /// Function to linearly interpolate between two values given a weight amount.
@@ -1333,7 +1333,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="amount">The weighting amount.</param>
         /// <returns>The linearly interpolated value.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double Lerp(this double from, double to, double amount) => ((1.0 - amount) * from) + (amount * to);
+        public static double Lerp(this double from, double to, double amount) => (1.0 - amount) * from + amount * to;
 
         /// <summary>
         /// Function to linearly interpolate between two values given a weight amount.
@@ -1343,7 +1343,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
         /// <param name="amount">The weighting amount.</param>
         /// <returns>The linearly interpolated value.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal Lerp(this decimal from, decimal to, decimal amount) => ((1.0M - amount) * from) + (amount * to);
+        public static decimal Lerp(this decimal from, decimal to, decimal amount) => (1.0M - amount) * from + amount * to;
         #endregion
     }
 }

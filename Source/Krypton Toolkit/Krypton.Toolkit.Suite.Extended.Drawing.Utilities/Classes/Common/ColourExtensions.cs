@@ -292,13 +292,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             if (0.5 < brightness)
             {
-                fMax = brightness - (brightness * saturation) + saturation;
-                fMin = brightness + (brightness * saturation) - saturation;
+                fMax = brightness - brightness * saturation + saturation;
+                fMin = brightness + brightness * saturation - saturation;
             }
             else
             {
-                fMax = brightness + (brightness * saturation);
-                fMin = brightness - (brightness * saturation);
+                fMax = brightness + brightness * saturation;
+                fMin = brightness - brightness * saturation;
             }
 
             iSextant = (int)Math.Floor(hue / 60f);
@@ -308,14 +308,14 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
 
             hue /= 60f;
-            hue -= 2f * (float)Math.Floor(((iSextant + 1f) % 6f) / 2f);
+            hue -= 2f * (float)Math.Floor((iSextant + 1f) % 6f / 2f);
             if (0 == iSextant % 2)
             {
-                fMid = (hue * (fMax - fMin)) + fMin;
+                fMid = hue * (fMax - fMin) + fMin;
             }
             else
             {
-                fMid = fMin - (hue * (fMax - fMin));
+                fMid = fMin - hue * (fMax - fMin);
             }
 
             iMax = Convert.ToInt32(fMax * 255);

@@ -207,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                     throw new ArgumentException(SR.Get(SRID.ArrayOfNullIllegal), "builder");
                 }
             }
-            List<GrammarBuilderBase> list = (builder == this) ? builder.Clone().InternalBuilder.Items : builder.InternalBuilder.Items;
+            List<GrammarBuilderBase> list = builder == this ? builder.Clone().InternalBuilder.Items : builder.InternalBuilder.Items;
             foreach (GrammarBuilderBase item2 in list)
             {
                 AddItem(item2);

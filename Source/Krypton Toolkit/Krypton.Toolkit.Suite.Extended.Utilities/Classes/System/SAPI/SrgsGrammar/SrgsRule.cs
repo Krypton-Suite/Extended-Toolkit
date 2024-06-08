@@ -278,7 +278,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             }
             if (_dynamic != RuleDynamic.NotSet)
             {
-                writer.WriteAttributeString("sapi", "dynamic", "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions", (_dynamic == RuleDynamic.True) ? "true" : "false");
+                writer.WriteAttributeString("sapi", "dynamic", "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions", _dynamic == RuleDynamic.True ? "true" : "false");
             }
             if (OnInit != null)
             {

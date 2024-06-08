@@ -748,7 +748,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 // any item lies in the mouse coords.
 
                 index = HitTestItem(e.X, e.Y);
-                bFound = (-1 != index);
+                bFound = -1 != index;
 
                 if (bFound)
                 {
@@ -1255,7 +1255,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     }
 
                     // Draw border
-                    if ((item.MouseDown || item.Selected))
+                    if (item.MouseDown || item.Selected)
                     {
                         KryptonToolBox.DrawBorders(g, rect, true, _itemBorderColour.IsEmpty ? _parent.ItemBorderColour : _itemBorderColour);
                     }
@@ -1309,7 +1309,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                         if (rImageEx.Bottom > _itemArea.Bottom)
                         {
-                            rImageEx.Height = (_itemArea.Bottom - rImageEx.Top);
+                            rImageEx.Height = _itemArea.Bottom - rImageEx.Top;
                             DrawImage(g, imgList, imageIndex, rImageEx, Enabled && item.Enabled && _parent.Enabled, true);
                         }
                         else
@@ -1344,8 +1344,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                         {
                             if (drewImage)
                             {
-                                rect.Y += (rImage.Height + 1);
-                                rect.Height = (item.Height - rImage.Height) - 4;
+                                rect.Y += rImage.Height + 1;
+                                rect.Height = item.Height - rImage.Height - 4;
                             }
                             else
                             {
@@ -1613,8 +1613,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     else
                     {
 
-                        index = (index >= _toolItems.Count) ? index - 1 : index;
-                        index = (-1 > index) ? (index + 1) : index;
+                        index = index >= _toolItems.Count ? index - 1 : index;
+                        index = -1 > index ? index + 1 : index;
 
                         if (0 <= index && index < _toolItems.Count)
                         {
@@ -1890,7 +1890,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             if (null != _toolItems && 0 < _toolItems.Count)
             {
                 if (_toolItems[0].Top - this.ItemSpacingEx >= _itemArea.Top &&
-                    (_toolItems[_toolItems.Count - 1].Bottom + this.ItemSpacingEx) <= _itemArea.Bottom)
+                    _toolItems[_toolItems.Count - 1].Bottom + this.ItemSpacingEx <= _itemArea.Bottom)
                 {
                     bCanScroll = false;
                 }
@@ -1898,11 +1898,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 {
                     if (ToolBoxScrollDirection.Up == scrollDir)
                     {
-                        bCanScroll = (_toolItems[0].Top + _itemArea.Top + this.ItemSpacingEx) < _itemArea.Top;
+                        bCanScroll = _toolItems[0].Top + _itemArea.Top + this.ItemSpacingEx < _itemArea.Top;
                     }
                     else if (ToolBoxScrollDirection.Down == scrollDir)
                     {
-                        bCanScroll = (_toolItems[_toolItems.Count - 1].Bottom + _itemArea.Top + this.ItemSpacingEx) > _itemArea.Bottom;
+                        bCanScroll = _toolItems[_toolItems.Count - 1].Bottom + _itemArea.Top + this.ItemSpacingEx > _itemArea.Bottom;
                     }
                 }
             }
@@ -2077,7 +2077,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             _delegates[4] = new PaintEventHandler(On_Paint);
 
             //Create redirection object to the base palette
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
@@ -2112,7 +2112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         {
             Size itemSize = Size.Empty;
 
-            maxWidth = _parent.DisplayRectangle.Width - (2);
+            maxWidth = _parent.DisplayRectangle.Width - 2;
 
             switch (this._viewMode)
             {
@@ -2146,7 +2146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     itemLoc.X = ToolBoxViewMode.List == _viewMode ? 0 : 4;
                     itemLoc.Y = ToolBoxViewMode.List == _viewMode ? 1 : 2;
                 }
-                else if ((index - 1) < _toolItems.Count && 0 < index)
+                else if (index - 1 < _toolItems.Count && 0 < index)
                 {
                     itemLoc = _toolItems[index - 1].Location;
 
@@ -2157,7 +2157,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                             itemLoc.X += itemWidth + this.ItemSpacingEx;
 
-                            if (_onlyOneItemPerRow || _parent.ShowOnlyOneItemPerRow || (itemLoc.X + itemWidth) > maxWidth)
+                            if (_onlyOneItemPerRow || _parent.ShowOnlyOneItemPerRow || itemLoc.X + itemWidth > maxWidth)
                             {
                                 itemLoc.X = 4;
                                 itemLoc.Y += itemHeight + this.ItemSpacingEx;
@@ -2331,7 +2331,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     newIndex = _toolItems.Count - 1;
                     break;
                 case Keys.Tab:
-                    if ((Keys.Shift == (e.Modifiers & Keys.Shift)))
+                    if (Keys.Shift == (e.Modifiers & Keys.Shift))
                     {
                         newIndex--;
                     }
@@ -2463,7 +2463,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                         break;
 
                     case Keys.Tab:
-                        if ((Keys.Shift == (e.Modifiers & Keys.Shift)))
+                        if (Keys.Shift == (e.Modifiers & Keys.Shift))
                         {
                             newIndex--;
                         }
@@ -2742,13 +2742,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
                 InitColours();

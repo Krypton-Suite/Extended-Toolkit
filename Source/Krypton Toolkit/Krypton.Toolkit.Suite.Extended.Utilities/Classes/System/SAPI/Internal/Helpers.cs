@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
         internal static void CopyStream(Stream inputStream, Stream outputStream, int bytesToCopy)
         {
-            int num = (bytesToCopy > 4096) ? 4096 : bytesToCopy;
+            int num = bytesToCopy > 4096 ? 4096 : bytesToCopy;
             byte[] buffer = new byte[num];
             while (true)
             {

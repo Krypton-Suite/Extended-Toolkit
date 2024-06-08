@@ -78,9 +78,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// Gets a value indicating if all values are default.
         /// </summary>
         [Browsable(false)]
-        public override bool IsDefault => ((Image == defaultImage) &&
-                                           (ImageTransparentColor == Color.Empty)
-                                           );
+        public override bool IsDefault => Image == defaultImage &&
+                                          ImageTransparentColor == Color.Empty;
 
         #endregion
 
@@ -126,8 +125,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         [Localizable(true)]
         [Category("Visuals")]
         [Description("Image transparent color.")]
-        [RefreshPropertiesAttribute(RefreshProperties.All)]
-        [KryptonDefaultColorAttribute()]
+        [RefreshProperties(RefreshProperties.All)]
+        [KryptonDefaultColor()]
         public Color ImageTransparentColor
         {
             get => _transparent;

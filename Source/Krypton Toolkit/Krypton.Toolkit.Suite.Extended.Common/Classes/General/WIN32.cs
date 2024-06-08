@@ -425,14 +425,14 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         #region HiWord Message Cracker
         public int HiWord(int Number)
         {
-            return ((Number >> 16) & 0xffff);
+            return (Number >> 16) & 0xffff;
         }
         #endregion
 
         #region LoWord Message Cracker
         public int LoWord(int Number)
         {
-            return (Number & 0xffff);
+            return Number & 0xffff;
         }
         #endregion
 

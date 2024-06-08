@@ -164,7 +164,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else if (temp3 < 2.0 / 3.0)
             {
-                return temp1 + ((temp2 - temp1) * ((2.0 / 3.0) - temp3) * 6.0);
+                return temp1 + (temp2 - temp1) * (2.0 / 3.0 - temp3) * 6.0;
             }
             else
             {
@@ -195,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else
             {
-                temp2 = hslColour._luminosity + hslColour._saturation - (hslColour._luminosity * hslColour._saturation);
+                temp2 = hslColour._luminosity + hslColour._saturation - hslColour._luminosity * hslColour._saturation;
             }
 
             return temp2;

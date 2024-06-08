@@ -25,7 +25,7 @@
         public bool UseCachedTypefaces = true;
         private SKTypeface? _cachedTypeface = null;
 
-        private SKTypeface Typeface => (UseCachedTypefaces && _cachedTypeface is not null)
+        private SKTypeface Typeface => UseCachedTypefaces && _cachedTypeface is not null
             ? _cachedTypeface
             : FontStyle.CreateTypeface(FontName, Bold, Italic);
 

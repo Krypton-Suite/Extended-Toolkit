@@ -105,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         private void Tick()
         {
-            if ((1000 / FrameLimiter) < (GetTimeDifferenceAsMs() - LastTick))
+            if (1000 / FrameLimiter < GetTimeDifferenceAsMs() - LastTick)
             {
                 LastTick = GetTimeDifferenceAsMs();
                 _callback((ulong)(LastTick - FirstTick));

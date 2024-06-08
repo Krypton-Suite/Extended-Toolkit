@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
         {
             get
             {
-                string str = (_category != null) ? (":" + _category) : string.Empty;
+                string str = _category != null ? ":" + _category : string.Empty;
                 return $"dictation{str}";
             }
         }
@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 
         private IRuleRef CreateRuleRefToDictation(IElementFactory elementFactory, IElement parent)
         {
-            Uri srgsUri = (string.IsNullOrEmpty(_category) || !(_category == "spelling")) ? new Uri("grammar:dictation", UriKind.RelativeOrAbsolute) : new Uri("grammar:dictation#spelling", UriKind.RelativeOrAbsolute);
+            Uri srgsUri = string.IsNullOrEmpty(_category) || !(_category == "spelling") ? new Uri("grammar:dictation", UriKind.RelativeOrAbsolute) : new Uri("grammar:dictation#spelling", UriKind.RelativeOrAbsolute);
             return elementFactory.CreateRuleRef(parent, srgsUri, null, null);
         }
     }

@@ -716,7 +716,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             get
             {
-                return (!String.IsNullOrEmpty(_sortString) ? _sortString : "");
+                return !String.IsNullOrEmpty(_sortString) ? _sortString : "";
             }
             private set
             {
@@ -892,7 +892,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             get
             {
-                return (!String.IsNullOrEmpty(_filterString) ? _filterString : "");
+                return !String.IsNullOrEmpty(_filterString) ? _filterString : "";
             }
             private set
             {
@@ -1220,7 +1220,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             {
                 return from DataGridViewColumn c in Columns
                        where c.HeaderCell != null && c.HeaderCell is KryptonColumnHeaderCell
-                       select (c.HeaderCell as KryptonColumnHeaderCell);
+                       select c.HeaderCell as KryptonColumnHeaderCell;
             }
         }
 

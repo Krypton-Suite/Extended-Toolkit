@@ -107,7 +107,7 @@
             Stopwatch sw = new();
             foreach (IRenderAction action in RenderActions)
             {
-                if ((action is ClearCanvas) && (!ClearCanvasBeforeRendering))
+                if (action is ClearCanvas && !ClearCanvasBeforeRendering)
                 {
                     continue;
                 }

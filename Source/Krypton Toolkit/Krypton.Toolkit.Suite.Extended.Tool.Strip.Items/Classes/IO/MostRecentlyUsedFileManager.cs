@@ -299,7 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 foreach (string valueName in valuesNames)
                 {
-                    if ((rK.GetValue(valueName, null) as string) == fileNameWithFullPath)
+                    if (rK.GetValue(valueName, null) as string == fileNameWithFullPath)
                     {
                         rK.DeleteValue(valueName, true);
 

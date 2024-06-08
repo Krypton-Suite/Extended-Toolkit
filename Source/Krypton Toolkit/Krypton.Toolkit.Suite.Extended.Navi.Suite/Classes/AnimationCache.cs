@@ -94,11 +94,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         private void Animate()
         {
             currentFrame = currentFrame + direction;
-            if ((currentFrame <= 0) && (direction < 0))
+            if (currentFrame <= 0 && direction < 0)
             {
                 Stop();
             }
-            else if ((currentFrame >= (length - 1)) && (direction > 0))
+            else if (currentFrame >= length - 1 && direction > 0)
             {
                 Stop();
             }

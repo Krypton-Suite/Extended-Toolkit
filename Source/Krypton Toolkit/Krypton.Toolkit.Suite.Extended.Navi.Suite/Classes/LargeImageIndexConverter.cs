@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 int result = -1;
                 string text = value.ToString();
-                if (!text.Equals("(none)") && !(string.IsNullOrEmpty(text)))
+                if (!text.Equals("(none)") && !string.IsNullOrEmpty(text))
                 {
                     int.TryParse(text, out result);
                 }

@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbeBorder = new Krypton.Toolkit.KryptonBorderEdge();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.Controls.Add(this.kryptonPanel1);
             this.Name = "KryptonButtonPanel";
             this.Size = new System.Drawing.Size(563, 50);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             this.ResumeLayout(false);

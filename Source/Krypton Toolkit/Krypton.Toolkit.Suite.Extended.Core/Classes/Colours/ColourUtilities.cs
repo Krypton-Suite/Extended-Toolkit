@@ -68,13 +68,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (0.5 < lighting)
             {
-                fMax = lighting - (lighting * saturation) + saturation;
-                fMin = lighting + (lighting * saturation) - saturation;
+                fMax = lighting - lighting * saturation + saturation;
+                fMin = lighting + lighting * saturation - saturation;
             }
             else
             {
-                fMax = lighting + (lighting * saturation);
-                fMin = lighting - (lighting * saturation);
+                fMax = lighting + lighting * saturation;
+                fMin = lighting - lighting * saturation;
             }
 
             iSextant = (int)Math.Floor(hue / 60f);
@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 hue -= 360f;
             }
             hue /= 60f;
-            hue -= 2f * (float)Math.Floor(((iSextant + 1f) % 6f) / 2f);
+            hue -= 2f * (float)Math.Floor((iSextant + 1f) % 6f / 2f);
             if (0 == iSextant % 2)
             {
                 fMid = hue * (fMax - fMin) + fMin;

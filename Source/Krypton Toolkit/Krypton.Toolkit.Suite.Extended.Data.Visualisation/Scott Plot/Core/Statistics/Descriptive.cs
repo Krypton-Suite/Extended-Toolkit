@@ -118,7 +118,7 @@
             // TODO: benchmark and see if this can be optimized by not using LINQ
             double mean = Mean(values);
             double variance = values.Select(x => x - mean).Select(x => x * x).Sum();
-            return variance / (values.Length);
+            return variance / values.Length;
         }
 
         /// <summary>

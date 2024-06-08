@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.ResizeRedraw, true);
 
-            headerFont = new Font("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            headerFont = new Font("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, (byte)0);
             ResizeRedraw = true;
         }
 

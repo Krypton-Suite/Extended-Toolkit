@@ -198,7 +198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         protected override bool ProcessDialogKey(Keys keyData)
         {
-            if (_acceptAlt && ((keyData & Keys.Alt) == Keys.Alt))
+            if (_acceptAlt && (keyData & Keys.Alt) == Keys.Alt)
             {
                 return false;
             }
@@ -353,12 +353,12 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             _resizableTop = _resizableRight = false;
             Point location = control.PointToScreen(new Point(area.Left, area.Top + area.Height));
             Rectangle screen = Screen.FromControl(control).WorkingArea;
-            if (location.X + Size.Width > (screen.Left + screen.Width))
+            if (location.X + Size.Width > screen.Left + screen.Width)
             {
                 _resizableRight = true;
-                location.X = (screen.Left + screen.Width) - Size.Width;
+                location.X = screen.Left + screen.Width - Size.Width;
             }
-            if (location.Y + Size.Height > (screen.Top + screen.Height))
+            if (location.Y + Size.Height > screen.Top + screen.Height)
             {
                 _resizableTop = true;
                 location.Y -= Size.Height + area.Height;

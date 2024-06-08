@@ -172,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private void DetectIsTopMost(object sender, EventArgs e)
         {
-            if ((_visualBlur != null)
+            if (_visualBlur != null
                 && IsOverlapped()
                     )
             {
@@ -197,7 +197,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             Rectangle targetRect = _visualBlur.TargetRect;
             _visualBlur.UpdateBlur(_currentFormDisplay!);
             // As UpdateBlur can take a few moments, then it is possible for the app to be closed before getting to the next line
-            if ((_visualBlur == null)
+            if (_visualBlur == null
                 || _parentForm.IsDisposed
                 || _parentForm.Disposing
                )

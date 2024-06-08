@@ -279,7 +279,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
 
                 foreach (string valueName in valueNames)
                 {
-                    if ((key.GetValue(valueName, null) as string) == fileNameWithFullPath)
+                    if (key.GetValue(valueName, null) as string == fileNameWithFullPath)
                     {
                         key.DeleteValue(valueName);
 
@@ -307,7 +307,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
 
                 foreach (string keyValue in keyValues)
                 {
-                    if ((key.GetValue(keyValue, null) as string) == fileNameWithFullPath)
+                    if (key.GetValue(keyValue, null) as string == fileNameWithFullPath)
                     {
                         key.DeleteValue(keyValue);
 

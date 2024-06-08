@@ -264,7 +264,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             bool flag = true;
             foreach (string valueName in sAttributes)
             {
-                flag &= (HasValue(valueName) || (Attributes != null && Attributes.HasValue(valueName)));
+                flag &= HasValue(valueName) || (Attributes != null && Attributes.HasValue(valueName));
                 if (!flag)
                 {
                     break;

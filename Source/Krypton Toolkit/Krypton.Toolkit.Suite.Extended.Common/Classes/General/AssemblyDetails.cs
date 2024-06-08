@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             object[] attributes = assembly.GetCustomAttributes(typeof(T), true);
 
             // If we didn't get anything, return null.
-            if ((attributes == null) || (attributes.Length == 0))
+            if (attributes == null || attributes.Length == 0)
             {
                 return null;
             }

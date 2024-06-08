@@ -188,7 +188,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.panel8.SuspendLayout();
             this.pnlHexadecimal.SuspendLayout();
             this.panel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbHexadecimalValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbHexadecimalValue).BeginInit();
             this.panel15.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -385,7 +385,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.klblGreen.Location = new System.Drawing.Point(0, 0);
             this.klblGreen.Name = "klblGreen";
             this.klblGreen.Size = new System.Drawing.Size(35, 23);
-            this.klblGreen.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblGreen.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.klblGreen.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblGreen.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblGreen.TabIndex = 1;
@@ -407,7 +407,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.klblBlue.Location = new System.Drawing.Point(0, 0);
             this.klblBlue.Name = "klblBlue";
             this.klblBlue.Size = new System.Drawing.Size(35, 22);
-            this.klblBlue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblBlue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.klblBlue.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblBlue.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblBlue.TabIndex = 1;
@@ -429,7 +429,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.klblRed.Location = new System.Drawing.Point(0, 0);
             this.klblRed.Name = "klblRed";
             this.klblRed.Size = new System.Drawing.Size(35, 22);
-            this.klblRed.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblRed.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.klblRed.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblRed.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblRed.TabIndex = 1;
@@ -451,7 +451,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kryptonLabel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonLabel1.Name = "kryptonLabel1";
             this.kryptonLabel1.Size = new System.Drawing.Size(246, 26);
-            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kryptonLabel1.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonLabel1.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonLabel1.TabIndex = 0;
@@ -649,7 +649,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kryptonLabel8.Location = new System.Drawing.Point(0, 0);
             this.kryptonLabel8.Name = "kryptonLabel8";
             this.kryptonLabel8.Size = new System.Drawing.Size(35, 22);
-            this.kryptonLabel8.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel8.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kryptonLabel8.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonLabel8.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonLabel8.TabIndex = 1;
@@ -671,7 +671,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kryptonLabel9.Location = new System.Drawing.Point(0, 0);
             this.kryptonLabel9.Name = "kryptonLabel9";
             this.kryptonLabel9.Size = new System.Drawing.Size(35, 26);
-            this.kryptonLabel9.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel9.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kryptonLabel9.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonLabel9.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonLabel9.TabIndex = 1;
@@ -693,7 +693,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.klblHue.Location = new System.Drawing.Point(0, 0);
             this.klblHue.Name = "klblHue";
             this.klblHue.Size = new System.Drawing.Size(35, 26);
-            this.klblHue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblHue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.klblHue.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblHue.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblHue.TabIndex = 1;
@@ -770,7 +770,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.klblAlpha.Location = new System.Drawing.Point(0, 0);
             this.klblAlpha.Name = "klblAlpha";
             this.klblAlpha.Size = new System.Drawing.Size(51, 26);
-            this.klblAlpha.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblAlpha.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.klblAlpha.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblAlpha.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblAlpha.TabIndex = 2;
@@ -792,7 +792,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kryptonLabel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonLabel2.Name = "kryptonLabel2";
             this.kryptonLabel2.Size = new System.Drawing.Size(246, 26);
-            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kryptonLabel2.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonLabel2.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonLabel2.TabIndex = 1;
@@ -847,7 +847,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.klblHex.Location = new System.Drawing.Point(0, 0);
             this.klblHex.Name = "klblHex";
             this.klblHex.Size = new System.Drawing.Size(35, 24);
-            this.klblHex.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblHex.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.klblHex.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblHex.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblHex.TabIndex = 1;
@@ -904,7 +904,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.panel8.PerformLayout();
             this.pnlHexadecimal.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbHexadecimalValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbHexadecimalValue).EndInit();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.ResumeLayout(false);

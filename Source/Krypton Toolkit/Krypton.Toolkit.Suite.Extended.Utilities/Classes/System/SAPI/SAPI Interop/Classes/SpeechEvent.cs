@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             }
             else
             {
-                _audioPosition = ((audioFormat.AverageBytesPerSecond > 0) ? new TimeSpan((long)(sapiEvent.ullAudioStreamOffset * 10000000 / (ulong)audioFormat.AverageBytesPerSecond)) : TimeSpan.Zero);
+                _audioPosition = audioFormat.AverageBytesPerSecond > 0 ? new TimeSpan((long)(sapiEvent.ullAudioStreamOffset * 10000000 / (ulong)audioFormat.AverageBytesPerSecond)) : TimeSpan.Zero;
             }
         }
 

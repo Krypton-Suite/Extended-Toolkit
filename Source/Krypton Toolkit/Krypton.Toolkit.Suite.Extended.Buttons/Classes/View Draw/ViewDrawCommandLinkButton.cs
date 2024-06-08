@@ -221,7 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 			{
 				base.Enabled = value;
 
-				if (Enabled && (ElementState == PaletteState.Disabled))
+				if (Enabled && ElementState == PaletteState.Disabled)
 				{
 					ElementState = Checked ? PaletteState.CheckedNormal : PaletteState.Normal;
 				}
@@ -482,7 +482,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 			}
 
 			// If the child elements are not in correct state
-			if (_forcePaletteUpdate || (_drawCanvas.ElementState != buttonState))
+			if (_forcePaletteUpdate || _drawCanvas.ElementState != buttonState)
 			{
 				// No longer need to force the palettes to be updated
 				_forcePaletteUpdate = false;

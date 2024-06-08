@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-// ReSharper disable PossibleNullReferenceException
+﻿// ReSharper disable PossibleNullReferenceException
 
 namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
@@ -60,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             RandomHelper.Instance.NextBytes(buf);
             long longRand = BitConverter.ToInt64(buf, 0);
 
-            return (Math.Abs(longRand % ((max + 1) - min)) + min);
+            return Math.Abs(longRand % (max + 1 - min)) + min;
         }
 
         #region DateTime

@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             char[] array = new char[_lastComplete];
             _phonemes.CopyTo(0, array, 0, _lastComplete);
             _phonemes.Remove(0, _lastComplete);
-            char[] value = (_conversion != 0) ? _alphabetConverter.SapiToIpa(array) : _alphabetConverter.IpaToSapi(array);
+            char[] value = _conversion != 0 ? _alphabetConverter.SapiToIpa(array) : _alphabetConverter.IpaToSapi(array);
             TTSEvent tTSEvent = null;
             long num = 0L;
             tTSEvent = (TTSEvent)_phonemeQueue.Peek();

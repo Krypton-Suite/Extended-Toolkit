@@ -25,7 +25,7 @@
         public double Width => Right - Left;
         public double Height => Top - Bottom;
         public double Area => Width * Height;
-        public bool HasArea => (Area != 0 && !double.IsNaN(Area) && !double.IsInfinity(Area));
+        public bool HasArea => Area != 0 && !double.IsNaN(Area) && !double.IsInfinity(Area);
 
         public CoordinateRect(CoordinateRange xRange, CoordinateRange yRange)
         {

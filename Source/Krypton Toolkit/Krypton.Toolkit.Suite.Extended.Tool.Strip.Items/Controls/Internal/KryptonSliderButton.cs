@@ -93,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             SetStyle(ControlStyles.UserPaint, true);
 
             //(5) Create redirection object to the base palette
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
@@ -231,7 +231,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     using (GraphicsPath Path = GetButtonPath(ButtonBounds))
                     {
                         // Ask renderer to draw the background
-                        m_mementoBack1 = Renderer.RenderStandardBack.DrawBack(RenderContext, ButtonBounds, Path, m_paletteBack, m_orientation, (Enabled ? PaletteState.Normal : PaletteState.Disabled), m_mementoBack1);
+                        m_mementoBack1 = Renderer.RenderStandardBack.DrawBack(RenderContext, ButtonBounds, Path, m_paletteBack, m_orientation, Enabled ? PaletteState.Normal : PaletteState.Disabled, m_mementoBack1);
                     }
 
                     // We want the inner part of the control to act like a button, so 
@@ -267,8 +267,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     switch (m_buttonstyle)
                     {
                         case ButtonStyles.MinusButton:
-                            Rectangle MinusOuterBounds = new Rectangle(3, (Height / 2) - 2, 10, 4);
-                            Rectangle MinusInnerBounds = new Rectangle(4, (Height / 2) - 1, 8, 2);
+                            Rectangle MinusOuterBounds = new Rectangle(3, Height / 2 - 2, 10, 4);
+                            Rectangle MinusInnerBounds = new Rectangle(4, Height / 2 - 1, 8, 2);
 
                             e.Graphics.FillRectangle(new SolidBrush(m_outerColor), MinusOuterBounds);
                             e.Graphics.FillRectangle(new SolidBrush(m_innerColor), MinusInnerBounds);
@@ -424,13 +424,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         private void DrawPlusOuter(Graphics Gfx, Color Fill)
         {
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(3, (Height / 2) - 2, 10, 4));
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle((Width / 2) - 2, 3, 4, 10));
+            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(3, Height / 2 - 2, 10, 4));
+            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(Width / 2 - 2, 3, 4, 10));
         }
         private void DrawPlusInner(Graphics Gfx, Color Fill)
         {
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(4, (Height / 2) - 1, 8, 2));
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle((Width / 2) - 1, 4, 2, 8));
+            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(4, Height / 2 - 1, 8, 2));
+            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(Width / 2 - 1, 4, 2, 8));
         }
 
         //Key Mouse Events
@@ -516,13 +516,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
                 InitColors();

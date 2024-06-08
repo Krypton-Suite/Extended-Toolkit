@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region Overrides
         protected override void OnClick(EventArgs e)
         {
-            if ((DisplayStyle == CheckMarkDisplayStyle.RadioButton) && (CheckOnClick))
+            if (DisplayStyle == CheckMarkDisplayStyle.RadioButton && CheckOnClick)
             {
                 ToolStrip toolStrip = GetCurrentParent();
 
@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     {
                         EnhancedToolStripMenuItem menuItem = (EnhancedToolStripMenuItem)items;
 
-                        if ((menuItem.DisplayStyle == CheckMarkDisplayStyle.RadioButton) && (menuItem.CheckOnClick) && (menuItem.RadioButtonGroupName == RadioButtonGroupName))
+                        if (menuItem.DisplayStyle == CheckMarkDisplayStyle.RadioButton && menuItem.CheckOnClick && menuItem.RadioButtonGroupName == RadioButtonGroupName)
                         {
                             menuItem.Checked = false;
                         }
@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             base.OnPaint(e);
 
             //if CheckMarkDisplayStyle is equal RadioButton additional paining or radio button is needed
-            if ((DisplayStyle == CheckMarkDisplayStyle.RadioButton))
+            if (DisplayStyle == CheckMarkDisplayStyle.RadioButton)
             {
                 //Find location of radio button
                 Size radioButtonSize = RadioButtonRenderer.GetGlyphSize(e.Graphics, RadioButtonState.CheckedNormal);

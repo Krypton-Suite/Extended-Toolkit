@@ -182,33 +182,33 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnResetColourIntegerSettings = new();
             this.kbtnResetColourBlendingSettings = new();
             this.kbtnNukeAllSettings = new();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonNavigator1).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage1).BeginInit();
             this.kryptonPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonDockableNavigator1).BeginInit();
             this.kryptonDockableNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage3).BeginInit();
             this.kryptonPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxLightestColourPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxLightColourPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxMediumColourPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxDarkColourPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbxLightestColourPreview).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbxLightColourPreview).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbxMediumColourPreview).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbxDarkColourPreview).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage4).BeginInit();
             this.kryptonPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxCircular)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxStandard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbDisplayType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbxCircular).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.pbxStandard).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbDisplayType).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage5).BeginInit();
             this.kryptonPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpTheme)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kpTheme).BeginInit();
             this.kpTheme.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ktcmbTheme)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kpSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.ktcmbTheme).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kpSettings).BeginInit();
             this.kpSettings.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -238,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetThemeValues
             // 
-            this.kbtnResetThemeValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnResetThemeValues.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             this.kbtnResetThemeValues.Enabled = false;
             this.kbtnResetThemeValues.Location = new(12, 15);
             this.kbtnResetThemeValues.Name = "kbtnResetThemeValues";
@@ -248,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetColourBlendingValues
             // 
-            this.kbtnResetColourBlendingValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnResetColourBlendingValues.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             this.kbtnResetColourBlendingValues.Enabled = false;
             this.kbtnResetColourBlendingValues.Location = new(12, 15);
             this.kbtnResetColourBlendingValues.Name = "kbtnResetColourBlendingValues";
@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnOk
             // 
-            this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnOk.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnOk.Location = new(396, 15);
             this.kbtnOk.Name = "kbtnOk";
             this.kbtnOk.Size = new(90, 25);
@@ -267,7 +267,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnCancel.Location = new(492, 15);
             this.kbtnCancel.Name = "kbtnCancel";
             this.kbtnCancel.Size = new(90, 25);
@@ -276,7 +276,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnUACApply
             // 
-            this.kbtnUACApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnUACApply.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnUACApply.Enabled = false;
             this.kbtnUACApply.Location = new(588, 15);
             this.kbtnUACApply.Name = "kbtnUACApply";
@@ -435,7 +435,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kcbBaseColour.Name = "kcbBaseColour";
             this.kcbBaseColour.Size = new(179, 25);
             this.kcbBaseColour.TabIndex = 61;
-            this.kcbBaseColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbBaseColour.Values.Image")));
+            this.kcbBaseColour.Values.Image = (System.Drawing.Image)resources.GetObject("kcbBaseColour.Values.Image");
             this.kcbBaseColour.Values.RoundedCorners = 8;
             this.kcbBaseColour.Values.Text = "&Choose a Base Colour";
             // 
@@ -605,7 +605,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnDarkColourIntensityValueMinus.Location = new(293, 20);
             this.kbtnDarkColourIntensityValueMinus.Name = "kbtnDarkColourIntensityValueMinus";
             this.kbtnDarkColourIntensityValueMinus.Size = new(18, 30);
-            this.kbtnDarkColourIntensityValueMinus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnDarkColourIntensityValueMinus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kbtnDarkColourIntensityValueMinus.TabIndex = 45;
             this.kbtnDarkColourIntensityValueMinus.Values.Text = "-";
             // 
@@ -614,7 +614,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnLightestColourIntensityValuePlus.Location = new(329, 312);
             this.kbtnLightestColourIntensityValuePlus.Name = "kbtnLightestColourIntensityValuePlus";
             this.kbtnLightestColourIntensityValuePlus.Size = new(23, 30);
-            this.kbtnLightestColourIntensityValuePlus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnLightestColourIntensityValuePlus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kbtnLightestColourIntensityValuePlus.TabIndex = 52;
             this.kbtnLightestColourIntensityValuePlus.Values.Text = "+";
             // 
@@ -623,7 +623,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbnDarkestColourIntensityValuePlus.Location = new(329, 20);
             this.kbnDarkestColourIntensityValuePlus.Name = "kbnDarkestColourIntensityValuePlus";
             this.kbnDarkestColourIntensityValuePlus.Size = new(23, 30);
-            this.kbnDarkestColourIntensityValuePlus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbnDarkestColourIntensityValuePlus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kbnDarkestColourIntensityValuePlus.TabIndex = 46;
             this.kbnDarkestColourIntensityValuePlus.Values.Text = "+";
             // 
@@ -632,7 +632,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnLightestColourIntensityValueMinus.Location = new(293, 312);
             this.kbtnLightestColourIntensityValueMinus.Name = "kbtnLightestColourIntensityValueMinus";
             this.kbtnLightestColourIntensityValueMinus.Size = new(18, 30);
-            this.kbtnLightestColourIntensityValueMinus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnLightestColourIntensityValueMinus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kbtnLightestColourIntensityValueMinus.TabIndex = 51;
             this.kbtnLightestColourIntensityValueMinus.Values.Text = "-";
             // 
@@ -641,7 +641,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnMiddleColourIntensityValueMinus.Location = new(293, 122);
             this.kbtnMiddleColourIntensityValueMinus.Name = "kbtnMiddleColourIntensityValueMinus";
             this.kbtnMiddleColourIntensityValueMinus.Size = new(18, 30);
-            this.kbtnMiddleColourIntensityValueMinus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnMiddleColourIntensityValueMinus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kbtnMiddleColourIntensityValueMinus.TabIndex = 47;
             this.kbtnMiddleColourIntensityValueMinus.Values.Text = "-";
             // 
@@ -650,7 +650,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtLightColourIntensityValuePlus.Location = new(329, 217);
             this.kbtLightColourIntensityValuePlus.Name = "kbtLightColourIntensityValuePlus";
             this.kbtLightColourIntensityValuePlus.Size = new(23, 30);
-            this.kbtLightColourIntensityValuePlus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtLightColourIntensityValuePlus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kbtLightColourIntensityValuePlus.TabIndex = 50;
             this.kbtLightColourIntensityValuePlus.Values.Text = "+";
             // 
@@ -659,7 +659,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnMiddleColourIntensityValuePlus.Location = new(329, 122);
             this.kbtnMiddleColourIntensityValuePlus.Name = "kbtnMiddleColourIntensityValuePlus";
             this.kbtnMiddleColourIntensityValuePlus.Size = new(23, 30);
-            this.kbtnMiddleColourIntensityValuePlus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnMiddleColourIntensityValuePlus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kbtnMiddleColourIntensityValuePlus.TabIndex = 48;
             this.kbtnMiddleColourIntensityValuePlus.Values.Text = "+";
             // 
@@ -668,7 +668,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kbtnLightColourIntensityValueMinus.Location = new(293, 217);
             this.kbtnLightColourIntensityValueMinus.Name = "kbtnLightColourIntensityValueMinus";
             this.kbtnLightColourIntensityValueMinus.Size = new(18, 30);
-            this.kbtnLightColourIntensityValueMinus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnLightColourIntensityValueMinus.StateCommon.Content.ShortText.Font = new("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kbtnLightColourIntensityValueMinus.TabIndex = 49;
             this.kbtnLightColourIntensityValueMinus.Values.Text = "-";
             // 
@@ -791,7 +791,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // bsaReset
             // 
-            this.bsaReset.Image = ((System.Drawing.Image)(resources.GetObject("bsaReset.Image")));
+            this.bsaReset.Image = (System.Drawing.Image)resources.GetObject("bsaReset.Image");
             this.bsaReset.UniqueName = "e5d4e65c1b2f460a80f02567f0a10106";
             // 
             // bsaBrowse
@@ -857,7 +857,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // buttonSpecAny1
             // 
-            this.buttonSpecAny1.Image = ((System.Drawing.Image)(resources.GetObject("buttonSpecAny1.Image")));
+            this.buttonSpecAny1.Image = (System.Drawing.Image)resources.GetObject("buttonSpecAny1.Image");
             this.buttonSpecAny1.UniqueName = "1f0247d059a64ff792fa7879355b8bf1";
             // 
             // buttonSpecAny2
@@ -992,38 +992,38 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.Text = "Global Options Menu";
             this.TextExtra = "(For Development Use Only)";
             this.Load += new(this.GlobalOptionsMenu_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonNavigator1).EndInit();
             this.kryptonNavigator1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage1).EndInit();
             this.kryptonPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonDockableNavigator1).EndInit();
             this.kryptonDockableNavigator1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage3).EndInit();
             this.kryptonPage3.ResumeLayout(false);
             this.kryptonPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxLightestColourPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxLightColourPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxMediumColourPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxDarkColourPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbxLightestColourPreview).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbxLightColourPreview).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbxMediumColourPreview).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbxDarkColourPreview).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage4).EndInit();
             this.kryptonPage4.ResumeLayout(false);
             this.kryptonPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxCircular)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxStandard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbDisplayType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbxCircular).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.pbxStandard).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbDisplayType).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage5).EndInit();
             this.kryptonPage5.ResumeLayout(false);
             this.kryptonPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpTheme)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kpTheme).EndInit();
             this.kpTheme.ResumeLayout(false);
             this.kpTheme.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ktcmbTheme)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kpSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.ktcmbTheme).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kpSettings).EndInit();
             this.kpSettings.ResumeLayout(false);
             this.kpSettings.PerformLayout();
             this.ResumeLayout(false);

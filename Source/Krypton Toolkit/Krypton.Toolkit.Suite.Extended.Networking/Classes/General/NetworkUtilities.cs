@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
             for (int i = 0; i < drives.Length; i++)
             {
-                availableDriveLetters.Remove((drives[i].Name).ToLower()[0]);
+                availableDriveLetters.Remove(drives[i].Name.ToLower()[0]);
             }
 
             return availableDriveLetters.ToArray();

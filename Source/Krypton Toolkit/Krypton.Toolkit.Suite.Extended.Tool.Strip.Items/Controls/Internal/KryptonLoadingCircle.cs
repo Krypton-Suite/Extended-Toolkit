@@ -504,7 +504,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             double dblAngle = (double)NumberOfDegreesInCircle / _intNumberSpoke;
 
             for (int shtCounter = 0; shtCounter < _intNumberSpoke; shtCounter++)
-                Angles[shtCounter] = (shtCounter == 0 ? dblAngle : Angles[shtCounter - 1] + dblAngle);
+                Angles[shtCounter] = shtCounter == 0 ? dblAngle : Angles[shtCounter - 1] + dblAngle;
 
             return Angles;
         }

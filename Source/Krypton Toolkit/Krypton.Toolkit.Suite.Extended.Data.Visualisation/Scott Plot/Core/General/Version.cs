@@ -41,7 +41,7 @@
         /// </summary>
         public static void ShouldBe(int major, int minor)
         {
-            if ((major != Major) || (minor != Minor))
+            if (major != Major || minor != Minor)
             {
                 throw new InvalidOperationException($"ScottPlot was expected to be {major}.{minor}.x but is actually {VersionString}");
             }
@@ -52,7 +52,7 @@
         /// </summary>
         public static void ShouldBe(int major, int minor, int build)
         {
-            if ((major != Major) || (minor != Minor) || (build != Build))
+            if (major != Major || minor != Minor || build != Build)
             {
                 throw new InvalidOperationException($"ScottPlot was expected to be {major}.{minor}.{build} but is actually {VersionString}");
             }

@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             }
             set
             {
-                CheckState = (value == true ? CheckState.Checked : CheckState.Unchecked);
+                CheckState = value == true ? CheckState.Checked : CheckState.Unchecked;
             }
         }
 

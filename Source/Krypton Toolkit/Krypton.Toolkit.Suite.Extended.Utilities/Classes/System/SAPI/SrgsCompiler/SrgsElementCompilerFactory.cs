@@ -201,10 +201,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             if (pronunciation != null || display != null)
             {
                 string text = EscapeToken(sToken);
-                string text2 = (display == null) ? text : EscapeToken(display);
+                string text2 = display == null ? text : EscapeToken(display);
                 if (pronunciation != null)
                 {
-                    OneOf oneOf = (pronunciation.IndexOf(';') >= 0) ? new OneOf(parent._rule, _backend) : null;
+                    OneOf oneOf = pronunciation.IndexOf(';') >= 0 ? new OneOf(parent._rule, _backend) : null;
                     int num = 0;
                     int num2 = 0;
                     while (num < pronunciation.Length)

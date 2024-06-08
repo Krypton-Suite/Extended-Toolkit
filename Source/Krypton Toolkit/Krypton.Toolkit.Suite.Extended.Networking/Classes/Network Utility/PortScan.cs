@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                     {
                         PortState state = new PortState();
                         int diff = stop - start;
-                        decimal progress = ((decimal)x / (decimal)diff) * (decimal)100;
+                        decimal progress = (decimal)x / (decimal)diff * (decimal)100;
                         try
                         {
                             TcpClient client = new TcpClient(_txtHost.Text, i);

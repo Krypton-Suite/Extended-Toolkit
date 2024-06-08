@@ -326,7 +326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             //leftRightImages.ImageSize = new Size(16, 16); // default
 
             System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FlatTabControl));
-            Bitmap updownImage = ((Bitmap)(resources.GetObject("TabIcons.bmp")));
+            Bitmap updownImage = (Bitmap)resources.GetObject("TabIcons.bmp");
 
             if (updownImage != null)
             {
@@ -541,7 +541,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             if (_allowCloseButton == true)
             {
                 System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FlatTabControl));
-                Bitmap closeImage = ((Bitmap)(resources.GetObject("CloseIcon.bmp")));
+                Bitmap closeImage = (Bitmap)resources.GetObject("CloseIcon.bmp");
 
                 closeImage.MakeTransparent(Color.White);
 
@@ -719,7 +719,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
 
-            bool bSelected = (SelectedIndex == nIndex);
+            bool bSelected = SelectedIndex == nIndex;
             bool bHot = false;
 
             if (tabPage.Tag != null)
@@ -750,9 +750,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //bool bHotselected = false;
 
-            if ((bSelected) && (!bHot))
+            if (bSelected && !bHot)
             { Status = DrawingMethods.TabHeaderStatus.Selected; }
-            else if ((bSelected) && (bHot))
+            else if (bSelected && bHot)
             {
                 Status = DrawingMethods.TabHeaderStatus.HotSelected;
                 //bHotselected = true;
@@ -812,7 +812,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             g.DrawPolygon(new Pen(_borderColour, _borderWidth), pt);
             //----------------------------
 
-            if (Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected && (Appearance == TabAppearance.Normal))
+            if (Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected && Appearance == TabAppearance.Normal)
             {
                 //----------------------------
                 // clear bottom lines
@@ -827,7 +827,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //----------------------------
             // draw tab's icon
-            if ((tabPage.ImageIndex >= 0) && (ImageList != null) && (ImageList.Images[tabPage.ImageIndex] != null))
+            if (tabPage.ImageIndex >= 0 && ImageList != null && ImageList.Images[tabPage.ImageIndex] != null)
             {
                 int nLeftMargin = 8;
                 int nRightMargin = 2;
@@ -936,7 +936,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         internal void DrawIcons(Graphics g)
         {
-            if ((leftRightImages == null) || (leftRightImages.Images.Count != 4))
+            if (leftRightImages == null || leftRightImages.Images.Count != 4)
             {
                 return;
             }
@@ -965,7 +965,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
 
-            int nMiddle = (r0.Width / 2);
+            int nMiddle = r0.Width / 2;
             int nTop = (r0.Height - 16) / 2;
             int nLeft = (nMiddle - 16) / 2;
 
@@ -1002,7 +1002,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 if (TabCount > 0)
                 {
                     Rectangle r3 = GetTabRect(TabCount - 1);
-                    if (r3.Right > (TabControlArea.Width - r0.Width))
+                    if (r3.Right > TabControlArea.Width - r0.Width)
                     {
                         g.DrawImage(img, r2);
                     }
@@ -1084,7 +1084,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 {
                     bFound = true;
                     // not updown or Handle = 0 or handle = null, recreate one
-                    if ((!bUpDown) || (scUpDown.Handle == IntPtr.Zero) || (scUpDown.Handle == null))
+                    if (!bUpDown || scUpDown.Handle == IntPtr.Zero || scUpDown.Handle == null)
                     {
                         try
                         {
@@ -1115,7 +1115,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 pWnd = WIN32.GetWindow(pWnd, WIN32.GW_HWNDNEXT);
             }
 
-            if ((!bFound) && (bUpDown))
+            if (!bFound && bUpDown)
             {
                 bUpDown = false;
             }
@@ -1133,16 +1133,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
                     //move the rect is allow close in on (TOP)
-                    if ((Alignment == TabAlignment.Top) && (_allowCloseButton))
+                    if (Alignment == TabAlignment.Top && _allowCloseButton)
                     { WIN32.MoveWindow(scUpDown.Handle, Width - 60, rect.Y + 5, rect.Width, rect.Height, true); }
-                    else if ((Alignment == TabAlignment.Top) && (_allowCloseButton == false))
+                    else if (Alignment == TabAlignment.Top && _allowCloseButton == false)
                     //if ((this.Alignment == TabAlignment.Top))
                     { WIN32.MoveWindow(scUpDown.Handle, Width - 41, rect.Y + 5, rect.Width, rect.Height, true); }
 
                     //move the rect is allow close in on (Bottom)
-                    if ((Alignment == TabAlignment.Bottom) && (_allowCloseButton))
+                    if (Alignment == TabAlignment.Bottom && _allowCloseButton)
                     { WIN32.MoveWindow(scUpDown.Handle, Width - 60, Height - 24, rect.Width, rect.Height, true); }
-                    else if ((Alignment == TabAlignment.Bottom) && (_allowCloseButton == false))
+                    else if (Alignment == TabAlignment.Bottom && _allowCloseButton == false)
                     //if ((this.Alignment == TabAlignment.Bottom))
                     { WIN32.MoveWindow(scUpDown.Handle, Width - 41, Height - 24, rect.Width, rect.Height, true); }
 

@@ -286,8 +286,8 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
             _stopTimer.Stop();
 
             // Is the target is not the same as the currently showing tooltip
-            if ((_currentTarget != _startTarget)
-                || (_startTarget == null)   // SKC: Default tooltip not using a viewbase ??
+            if (_currentTarget != _startTarget
+                || _startTarget == null   // SKC: Default tooltip not using a viewbase ??
                 )
             {
                 // Leave tooltips mode

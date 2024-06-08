@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets a value indicating if the day instance is visible on the calendar
         /// </summary>
-        public bool Visible => !(Grayed && (Date > MonthView.ViewStart && Date < MonthView.ViewEnd));
+        public bool Visible => !(Grayed && Date > MonthView.ViewStart && Date < MonthView.ViewEnd);
 
         #endregion
 

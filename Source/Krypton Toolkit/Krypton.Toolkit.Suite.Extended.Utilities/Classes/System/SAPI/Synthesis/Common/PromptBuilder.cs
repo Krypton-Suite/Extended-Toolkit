@@ -339,7 +339,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     }
                     element2._attributes.Add(new AttributeItem("volume", value2));
                 }
-                possibleChildren = (SsmlElement.Voice | SsmlElement.Audio | SsmlElement.Sentence | SsmlElement.Paragraph | SsmlElement.SayAs | SsmlElement.Phoneme | SsmlElement.Sub | SsmlElement.Emphasis | SsmlElement.Break | SsmlElement.Prosody | SsmlElement.Mark | SsmlElement.Text | SsmlElement.PromptEngineOutput);
+                possibleChildren = SsmlElement.Voice | SsmlElement.Audio | SsmlElement.Sentence | SsmlElement.Paragraph | SsmlElement.SayAs | SsmlElement.Phoneme | SsmlElement.Sub | SsmlElement.Emphasis | SsmlElement.Break | SsmlElement.Prosody | SsmlElement.Mark | SsmlElement.Text | SsmlElement.PromptEngineOutput;
                 ssmlState |= SsmlState.StyleProsody;
             }
             _elementStack.Push(new StackElement(possibleChildren, ssmlState, stackElement._culture));
@@ -375,7 +375,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
             StackElement stackElement = _elementStack.Peek();
             ValidateElement(stackElement, SsmlElement.Voice);
-            CultureInfo culture = (voice.Culture == null) ? stackElement._culture : voice.Culture;
+            CultureInfo culture = voice.Culture == null ? stackElement._culture : voice.Culture;
             Element element = new Element(ElementType.StartVoice);
             element._attributes = new Collection<AttributeItem>();
             _elements.Add(element);
@@ -835,7 +835,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             bool flag = false;
             foreach (Element element in _elements)
             {
-                flag = (flag || element._type == ElementType.StartSentence || element._type == ElementType.StartParagraph || element._type == ElementType.StartStyle || element._type == ElementType.StartVoice);
+                flag = flag || element._type == ElementType.StartSentence || element._type == ElementType.StartParagraph || element._type == ElementType.StartStyle || element._type == ElementType.StartVoice;
                 switch (element._type)
                 {
                     case ElementType.Text:

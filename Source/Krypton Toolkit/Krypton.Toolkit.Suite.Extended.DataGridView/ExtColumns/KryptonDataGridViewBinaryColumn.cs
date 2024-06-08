@@ -126,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
             set
             {
-                if ((value != null) && value is not KryptonDataGridViewBinaryCell)
+                if (value != null && value is not KryptonDataGridViewBinaryCell)
                 {
                     throw new InvalidCastException("Can only assign a object of type KryptonDataGridViewBinaryCell");
                 }

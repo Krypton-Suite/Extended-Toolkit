@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 StringBuilder stringBuilder = new StringBuilder("URL:");
                 if (!string.IsNullOrEmpty(initParameters))
                 {
-                    stringBuilder.Append((num > 0) ? originalString.Substring(0, num) : originalString);
+                    stringBuilder.Append(num > 0 ? originalString.Substring(0, num) : originalString);
                     stringBuilder.Append('>');
                     stringBuilder.Append(initParameters);
                     if (num > 0)

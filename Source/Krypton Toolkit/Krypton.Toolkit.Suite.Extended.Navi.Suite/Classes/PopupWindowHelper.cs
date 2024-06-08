@@ -168,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 if (m.Msg == NativeMethods.WM_NCACTIVATE)
                 {
                     // Check if the title bar will made inactive:
-                    if (((int)m.WParam) == 0)
+                    if ((int)m.WParam == 0)
                     {
                         // If so reactivate it.
                         NativeMethods.SendMessage(this.Handle, NativeMethods.WM_NCACTIVATE, 1, IntPtr.Zero);

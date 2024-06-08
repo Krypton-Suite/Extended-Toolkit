@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             state.Init();
             if (_startState == null)
             {
-                _curState = (_startState = state);
+                _curState = _startState = state;
             }
             else
             {
@@ -205,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 }
                 else
                 {
-                    arc = (flag2 ? null : arc5);
+                    arc = flag2 ? null : arc5;
                     flag = false;
                 }
             }
@@ -289,7 +289,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 }
                 else
                 {
-                    arc = (flag2 ? null : arc5);
+                    arc = flag2 ? null : arc5;
                     flag = false;
                 }
             }
@@ -391,7 +391,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private static void DeleteTransition(Arc arc)
         {
-            State state3 = arc.Start = (arc.End = null);
+            State state3 = arc.Start = arc.End = null;
         }
 
         private static void MergeIdenticalTransitions(ArcList arcs, List<Arc> identicalWords)

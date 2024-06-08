@@ -86,12 +86,12 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
                         }
                         else
                         {
-                            temp2 = Luminance + Saturation - (Luminance * Saturation);
+                            temp2 = Luminance + Saturation - Luminance * Saturation;
                         }
 
-                        var temp1 = (2.0 * Luminance) - temp2;
+                        var temp1 = 2.0 * Luminance - temp2;
 
-                        double[] t3 = { Hue + (1.0 / 3.0), Hue, Hue - (1.0 / 3.0) };
+                        double[] t3 = { Hue + 1.0 / 3.0, Hue, Hue - 1.0 / 3.0 };
                         double[] clr = { 0, 0, 0 };
 
                         for (var i = 0; i < 3; i++)
@@ -106,17 +106,17 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
                                 t3[i] -= 1.0;
                             }
 
-                            if ((6.0 * t3[i]) < 1.0)
+                            if (6.0 * t3[i] < 1.0)
                             {
-                                clr[i] = temp1 + ((temp2 - temp1) * t3[i] * 6.0);
+                                clr[i] = temp1 + (temp2 - temp1) * t3[i] * 6.0;
                             }
-                            else if ((2.0 * t3[i]) < 1.0)
+                            else if (2.0 * t3[i] < 1.0)
                             {
                                 clr[i] = temp2;
                             }
-                            else if ((3.0 * t3[i]) < 2.0)
+                            else if (3.0 * t3[i] < 2.0)
                             {
-                                clr[i] = temp1 + ((temp2 - temp1) * ((2.0 / 3.0) - t3[i]) * 6.0);
+                                clr[i] = temp1 + (temp2 - temp1) * (2.0 / 3.0 - t3[i]) * 6.0;
                             }
                             else
                             {

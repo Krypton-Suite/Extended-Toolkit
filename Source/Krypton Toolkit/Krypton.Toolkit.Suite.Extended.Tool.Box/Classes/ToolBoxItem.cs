@@ -291,7 +291,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                 if (rcTemp.Bottom >= parentTab.ItemArea.Bottom - 0)
                 {
-                    rcTemp.Height = (parentTab.ItemArea.Bottom - 0) - rcTemp.Top;
+                    rcTemp.Height = parentTab.ItemArea.Bottom - 0 - rcTemp.Top;
                 }
                 bHit = rcTemp.Contains(x, y);
             }

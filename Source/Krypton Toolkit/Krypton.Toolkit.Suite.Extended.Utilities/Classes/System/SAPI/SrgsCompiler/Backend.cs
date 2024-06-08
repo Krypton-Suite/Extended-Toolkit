@@ -153,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             list.Sort();
             ValidateAndTagRules();
             CheckLeftRecursion(list);
-            int num = (_basePath != null) ? (_basePath.Length + 1) : 0;
+            int num = _basePath != null ? _basePath.Length + 1 : 0;
             int idWord = 0;
             if (_globalTags.Count > 0)
             {
@@ -331,7 +331,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 if (num > 0)
                 {
                     int num2 = _symbols.OffsetFromId(num);
-                    rule = ((num2 > 0 && _nameOffsetRules.ContainsKey(num2)) ? _nameOffsetRules[num2] : null);
+                    rule = num2 > 0 && _nameOffsetRules.ContainsKey(num2) ? _nameOffsetRules[num2] : null;
                 }
             }
             if (rule != null)
@@ -546,7 +546,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 }
                 foreach (Arc item in collection)
                 {
-                    State state4 = item.Start = (item.End = null);
+                    State state4 = item.Start = item.End = null;
                 }
             }
             foreach (State item2 in collection2)
@@ -568,12 +568,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     _rootRule = rule;
                 }
             }
-            rule._cfgRule.TopLevel = ((dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_TopLevel) != 0);
-            rule._cfgRule.DefaultActive = ((dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_Active) != 0);
-            rule._cfgRule.PropRule = ((dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_Interpreter) != 0);
-            rule._cfgRule.Export = ((dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_Export) != 0);
-            rule._cfgRule.Dynamic = ((dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_Dynamic) != 0);
-            rule._cfgRule.Import = ((dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_Import) != 0);
+            rule._cfgRule.TopLevel = (dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_TopLevel) != 0;
+            rule._cfgRule.DefaultActive = (dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_Active) != 0;
+            rule._cfgRule.PropRule = (dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_Interpreter) != 0;
+            rule._cfgRule.Export = (dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_Export) != 0;
+            rule._cfgRule.Dynamic = (dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_Dynamic) != 0;
+            rule._cfgRule.Import = (dwAttributes & SPCFGRULEATTRIBUTES.SPRAF_Import) != 0;
         }
 
         internal void SetBasePath(string sBasePath)
@@ -674,7 +674,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                         }
                         end = array[nextStartArcIndex];
                     }
-                    float flWeight = (header.weights != null) ? header.weights[i] : 1f;
+                    float flWeight = header.weights != null ? header.weights[i] : 1f;
                     Arc arc;
                     if (cfgArc2.RuleRef)
                     {
@@ -685,7 +685,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     {
                         int transitionIndex = (int)cfgArc2.TransitionIndex;
                         int num = transitionIndex is 4194302 or 4194301 or 4194303 ? transitionIndex : 0;
-                        arc = new Arc((int)((num == 0) ? cfgArc2.TransitionIndex : 0), flWeight, cfgArc2.LowConfRequired ? (-1) : (cfgArc2.HighConfRequired ? 1 : 0), num, MatchMode.AllWords, ref _fNeedWeightTable);
+                        arc = new Arc((int)(num == 0 ? cfgArc2.TransitionIndex : 0), flWeight, cfgArc2.LowConfRequired ? -1 : cfgArc2.HighConfRequired ? 1 : 0, num, MatchMode.AllWords, ref _fNeedWeightTable);
                     }
                     arc.Start = state;
                     arc.End = end;
@@ -734,7 +734,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private Arc CreateTransition(string sWord, float flWeight, int requiredConfidence)
         {
-            return AddSingleWordTransition((!string.IsNullOrEmpty(sWord)) ? sWord : null, flWeight, requiredConfidence);
+            return AddSingleWordTransition(!string.IsNullOrEmpty(sWord) ? sWord : null, flWeight, requiredConfidence);
         }
 
         private CfgGrammar.CfgSerializedHeader BuildHeader(List<State> sortedStates, int cBasePath, ushort iSemanticGlobals, out int cArcs, out float[] pWeights)
@@ -776,7 +776,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             cfgSerializedHeader.cRules = _rules.Count;
             cfgSerializedHeader.pRules = num3;
             num3 = (uint)((int)num3 + _rules.Count * Marshal.SizeOf(typeof(CfgRule)));
-            cfgSerializedHeader.cBasePath = ((cBasePath > 0) ? num3 : 0u);
+            cfgSerializedHeader.cBasePath = cBasePath > 0 ? num3 : 0u;
             num3 = (uint)((int)num3 + ((cBasePath * 2 + 3) & -4));
             cfgSerializedHeader.cArcs = cArcs;
             cfgSerializedHeader.pArcs = num3;
@@ -801,21 +801,21 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 cfgSerializedHeader.ulRootRuleIndex = uint.MaxValue;
             }
-            cfgSerializedHeader.GrammarOptions = (GrammarOptions)((int)_grammarOptions | ((_alphabet != 0) ? 4 : 0));
-            cfgSerializedHeader.GrammarOptions |= (GrammarOptions)((_scriptRefs.Count > 0) ? 18 : 0);
+            cfgSerializedHeader.GrammarOptions = (GrammarOptions)((int)_grammarOptions | (_alphabet != 0 ? 4 : 0));
+            cfgSerializedHeader.GrammarOptions |= (GrammarOptions)(_scriptRefs.Count > 0 ? 18 : 0);
             cfgSerializedHeader.GrammarMode = (uint)_grammarMode;
             cfgSerializedHeader.cTags = num;
             cfgSerializedHeader.tags = num3;
             num3 = (uint)((int)num3 + num * Marshal.SizeOf(typeof(CfgSemanticTag)));
             cfgSerializedHeader.cScripts = _scriptRefs.Count;
-            cfgSerializedHeader.pScripts = ((cfgSerializedHeader.cScripts > 0) ? num3 : 0u);
+            cfgSerializedHeader.pScripts = cfgSerializedHeader.cScripts > 0 ? num3 : 0u;
             num3 = (uint)((int)num3 + _scriptRefs.Count * Marshal.SizeOf(typeof(CfgScriptRef)));
-            cfgSerializedHeader.cIL = ((_il != null) ? _il.Length : 0);
-            cfgSerializedHeader.pIL = ((cfgSerializedHeader.cIL > 0) ? num3 : 0u);
+            cfgSerializedHeader.cIL = _il != null ? _il.Length : 0;
+            cfgSerializedHeader.pIL = cfgSerializedHeader.cIL > 0 ? num3 : 0u;
             num3 = (uint)((int)num3 + cfgSerializedHeader.cIL * Marshal.SizeOf(typeof(byte)));
-            cfgSerializedHeader.cPDB = ((_pdb != null) ? _pdb.Length : 0);
-            cfgSerializedHeader.pPDB = ((cfgSerializedHeader.cPDB > 0) ? num3 : 0u);
-            num3 = (cfgSerializedHeader.ulTotalSerializedSize = (uint)((int)num3 + cfgSerializedHeader.cPDB * Marshal.SizeOf(typeof(byte))));
+            cfgSerializedHeader.cPDB = _pdb != null ? _pdb.Length : 0;
+            cfgSerializedHeader.pPDB = cfgSerializedHeader.cPDB > 0 ? num3 : 0u;
+            num3 = cfgSerializedHeader.ulTotalSerializedSize = (uint)((int)num3 + cfgSerializedHeader.cPDB * Marshal.SizeOf(typeof(byte)));
             return cfgSerializedHeader;
         }
 
@@ -833,9 +833,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 {
                     ruleFirstArcs.Add((int)cfgRule.FirstArcIndex, rule);
                 }
-                rule._fStaticRule = ((!cfgRule.Dynamic) ? true : false);
+                rule._fStaticRule = !cfgRule.Dynamic ? true : false;
                 rule._cfgRule.DirtyRule = false;
-                rule._fHasExitPath = (rule._fStaticRule ? true : false);
+                rule._fHasExitPath = rule._fStaticRule ? true : false;
                 if (firstArcIndex != 0)
                 {
                     rule._firstState.SerializeId = (int)cfgRule.FirstArcIndex;
@@ -860,7 +860,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         private Rule CloneState(State srcToState, List<State> CloneStack, Dictionary<State, State> srcToDestHash)
         {
             bool flag = false;
-            string ruleName = (srcToState.Rule.Name.IndexOf("URL:DYNAMIC#", StringComparison.Ordinal) != 0) ? srcToState.Rule.Name : srcToState.Rule.Name.Substring(12);
+            string ruleName = srcToState.Rule.Name.IndexOf("URL:DYNAMIC#", StringComparison.Ordinal) != 0 ? srcToState.Rule.Name : srcToState.Rule.Name.Substring(12);
             Rule rule = FindInRules(ruleName);
             if (rule == null)
             {
@@ -909,9 +909,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             int num = 0;
             foreach (Rule rule in _rules)
             {
-                rule._fHasExitPath |= ((byte)((rule._cfgRule.Dynamic | rule._cfgRule.Import) ? 1 : 0) != 0);
+                rule._fHasExitPath |= (byte)(rule._cfgRule.Dynamic | rule._cfgRule.Import ? 1 : 0) != 0;
                 rule._iSerialize = num++;
-                flag |= (rule._cfgRule.Dynamic || rule._cfgRule.TopLevel || rule._cfgRule.Export);
+                flag |= rule._cfgRule.Dynamic || rule._cfgRule.TopLevel || rule._cfgRule.Export;
                 rule.Validate();
             }
             foreach (Rule rule2 in _rules)

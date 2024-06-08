@@ -138,7 +138,7 @@
             }
 
             // this covers the case where an extremely tiny zoom rectangle was made
-            if ((isDragging == false) && (button == Inputs.ClickAutoAxisButton))
+            if (isDragging == false && button == Inputs.ClickAutoAxisButton)
             {
                 Actions.AutoScale(PlotControl);
             }
@@ -149,7 +149,7 @@
                 IsZoomingRectangle = false;
             }
 
-            if (!isDragging && (button == Inputs.ClickContextMenuButton))
+            if (!isDragging && button == Inputs.ClickContextMenuButton)
             {
                 Actions.ShowContextMenu(PlotControl, position);
             }

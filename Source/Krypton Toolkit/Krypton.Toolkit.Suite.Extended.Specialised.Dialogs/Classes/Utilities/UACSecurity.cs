@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
         #endregion
 
         #region Constants
-        internal const int BCM_FIRST = 0x1600, BCM_SETSHIELD = (BCM_FIRST + 0x000C);
+        internal const int BCM_FIRST = 0x1600, BCM_SETSHIELD = BCM_FIRST + 0x000C;
         #endregion
 
         #region Methods

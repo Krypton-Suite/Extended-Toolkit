@@ -180,7 +180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private bool ShouldSerializeImageSize()
         {
-            return (!_imageSize.Equals(Size.Empty));
+            return !_imageSize.Equals(Size.Empty);
         }
 
         private Size _imageSize = new Size(0, 0);
@@ -216,7 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private bool ShouldSerializeTitlePadding()
         {
-            return (!TitlePadding.Equals(Padding.Empty));
+            return !TitlePadding.Equals(Padding.Empty);
         }
 
         [Category("Content")]
@@ -230,7 +230,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private bool ShouldSerializeContentPadding()
         {
-            return (!ContentPadding.Equals(Padding.Empty));
+            return !ContentPadding.Equals(Padding.Empty);
         }
 
         [Category("Image")]
@@ -244,7 +244,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private bool ShouldSerializeImagePadding()
         {
-            return (!ImagePadding.Equals(Padding.Empty));
+            return !ImagePadding.Equals(Padding.Empty);
         }
 
         [Category("Header"), DefaultValue(9)]
@@ -504,16 +504,16 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             long elapsed = _sw.ElapsedMilliseconds;
 
-            int posCurrent = (int)(_posStart + ((_posStop - _posStart) * elapsed / _realAnimationDuration));
-            bool neg = (_posStop - _posStart) < 0;
+            int posCurrent = (int)(_posStart + (_posStop - _posStart) * elapsed / _realAnimationDuration);
+            bool neg = _posStop - _posStart < 0;
             if ((neg && posCurrent < _posStop) ||
                 (!neg && posCurrent > _posStop))
             {
                 posCurrent = _posStop;
             }
 
-            double opacityCurrent = _opacityStart + ((_opacityStop - _opacityStart) * elapsed / _realAnimationDuration);
-            neg = (_opacityStop - _opacityStart) < 0;
+            double opacityCurrent = _opacityStart + (_opacityStop - _opacityStart) * elapsed / _realAnimationDuration;
+            neg = _opacityStop - _opacityStart < 0;
             if ((neg && opacityCurrent < _opacityStop) ||
                 (!neg && opacityCurrent > _opacityStop))
             {

@@ -237,8 +237,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
         {
             bool flag = true;
             ushort num;
-            Version[2] = (num = (Version[3] = 0));
-            Version[1] = (num = num);
+            Version[2] = num = Version[3] = 0;
+            Version[1] = num = num;
             Version[0] = num;
             if (string.IsNullOrEmpty(s))
             {

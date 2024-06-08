@@ -53,9 +53,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         public static string ParseReadableFileSize(long fileSize)
         {
-            string sign = (fileSize < 0 ? "-" : ""), suffix;
+            string sign = fileSize < 0 ? "-" : "", suffix;
 
-            double readable = (fileSize < 0 ? -fileSize : fileSize);
+            double readable = fileSize < 0 ? -fileSize : fileSize;
 
             if (fileSize >= 0x40000000) // Gigabyte
             {
@@ -139,34 +139,34 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         public string GetBytesReadable(long size)
         {
             // Get absolute value
-            long absoluteI = (size < 0 ? -size : size);
+            long absoluteI = size < 0 ? -size : size;
             // Determine the suffix and readable value
             string suffix;
             double readable;
             if (absoluteI >= 0x1000000000000000) // Exabyte
             {
                 suffix = "EB";
-                readable = (size >> 50);
+                readable = size >> 50;
             }
             else if (absoluteI >= 0x4000000000000) // Petabyte
             {
                 suffix = "PB";
-                readable = (size >> 40);
+                readable = size >> 40;
             }
             else if (absoluteI >= 0x10000000000) // Terabyte
             {
                 suffix = "TB";
-                readable = (size >> 30);
+                readable = size >> 30;
             }
             else if (absoluteI >= 0x40000000) // Gigabyte
             {
                 suffix = "GB";
-                readable = (size >> 20);
+                readable = size >> 20;
             }
             else if (absoluteI >= 0x100000) // Megabyte
             {
                 suffix = "MB";
-                readable = (size >> 10);
+                readable = size >> 10;
             }
             else if (absoluteI >= 0x400) // Kilobyte
             {
@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 return size.ToString("0 B"); // Byte
             }
             // Divide by 1024 to get fractional value
-            readable = (readable / 1024);
+            readable = readable / 1024;
             // Return formatted number with suffix
             return readable.ToString("0.### ") + suffix;
         }
@@ -190,7 +190,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <param name="fileSize">Size of the file.</param>
         public void ReturnOnlineFileSize(string onlineFileUrl, KryptonLabel fileSize)
         {
-            string url = onlineFileUrl, fileType = url.Substring(url.LastIndexOf(".") + 1, (url.Length - url.LastIndexOf(".") - 1)), fileName = url.Substring(url.LastIndexOf("/") + 1, (url.Length - url.LastIndexOf("/") - 1));
+            string url = onlineFileUrl, fileType = url.Substring(url.LastIndexOf(".") + 1, url.Length - url.LastIndexOf(".") - 1), fileName = url.Substring(url.LastIndexOf("/") + 1, url.Length - url.LastIndexOf("/") - 1);
 
             WebRequest request = (HttpWebRequest)WebRequest.Create(onlineFileUrl);
 

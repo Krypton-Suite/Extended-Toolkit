@@ -220,9 +220,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 s = deltaMax / varMax;
 
                 // Hue
-                float deltaR = (((varMax - varR) / 6f) + (deltaMax / 2f)) / deltaMax;
-                float deltaG = (((varMax - varG) / 6f) + (deltaMax / 2f)) / deltaMax;
-                float deltaB = (((varMax - varB) / 6f) + (deltaMax / 2f)) / deltaMax;
+                float deltaR = ((varMax - varR) / 6f + deltaMax / 2f) / deltaMax;
+                float deltaG = ((varMax - varG) / 6f + deltaMax / 2f) / deltaMax;
+                float deltaB = ((varMax - varB) / 6f + deltaMax / 2f) / deltaMax;
 
                 if (varR == varMax)
                 {
@@ -230,11 +230,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 }
                 else if (varG == varMax)
                 {
-                    h = (1f / 3f) + deltaR - deltaB;
+                    h = 1f / 3f + deltaR - deltaB;
                 }
                 else if (varB == varMax)
                 {
-                    h = (2f / 3f) + deltaG - deltaR;
+                    h = 2f / 3f + deltaG - deltaR;
                 }
 
                 if (h < 0f)
@@ -299,14 +299,14 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 return Color.FromArgb(grayValue, grayValue, grayValue);
             }
 
-            var var2 = l < 0.5f ? l * (1f + s) : (l + s) - (s * l);
+            var var2 = l < 0.5f ? l * (1f + s) : l + s - s * l;
 
             var var1 = 2f * l - var2;
             var hval = h / 360f;
 
-            int red = Convert.ToInt32(255f * FromHueToRGB(var1, var2, hval + (1f / 3f)));
+            int red = Convert.ToInt32(255f * FromHueToRGB(var1, var2, hval + 1f / 3f));
             int green = Convert.ToInt32(255f * FromHueToRGB(var1, var2, hval));
-            int blue = Convert.ToInt32(255f * FromHueToRGB(var1, var2, hval - (1f / 3f)));
+            int blue = Convert.ToInt32(255f * FromHueToRGB(var1, var2, hval - 1f / 3f));
 
             return Color.FromArgb(red, green, blue);
         }
@@ -325,17 +325,17 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 hue -= 1f;
             }
 
-            if ((6f * hue) < 1f)
+            if (6f * hue < 1f)
             {
-                rgbColor = (var1 + (var2 - var1) * 6f * hue);
+                rgbColor = var1 + (var2 - var1) * 6f * hue;
             }
-            else if ((2f * hue) < 1f)
+            else if (2f * hue < 1f)
             {
                 rgbColor = var2;
             }
-            else if ((3f * hue) < 2f)
+            else if (3f * hue < 2f)
             {
-                rgbColor = (var1 + (var2 - var1) * ((2f / 3f) - hue) * 6f);
+                rgbColor = var1 + (var2 - var1) * (2f / 3f - hue) * 6f;
             }
             else
             {
@@ -387,9 +387,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 }
 
                 // Hue
-                float deltaR = (((varMax - varR) / 6f) + (deltaMax / 2f)) / deltaMax;
-                float deltaG = (((varMax - varG) / 6f) + (deltaMax / 2f)) / deltaMax;
-                float deltaB = (((varMax - varB) / 6f) + (deltaMax / 2f)) / deltaMax;
+                float deltaR = ((varMax - varR) / 6f + deltaMax / 2f) / deltaMax;
+                float deltaG = ((varMax - varG) / 6f + deltaMax / 2f) / deltaMax;
+                float deltaB = ((varMax - varB) / 6f + deltaMax / 2f) / deltaMax;
 
                 if (varR == varMax)
                 {
@@ -397,11 +397,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 }
                 else if (varG == varMax)
                 {
-                    h = (1f / 3f) + deltaR - deltaB;
+                    h = 1f / 3f + deltaR - deltaB;
                 }
                 else if (varB == varMax)
                 {
-                    h = (2f / 3f) + deltaG - deltaR;
+                    h = 2f / 3f + deltaG - deltaR;
                 }
 
                 if (h < 0f)

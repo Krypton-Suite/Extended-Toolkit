@@ -422,7 +422,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                                 fileNames[innerIndex] += newFilename.Replace("[*REMOVEME*]", "");
 
                                 //only add a . if its not the injected portion e.g (2)
-                                if ((filenameIndex < tempFileNameArr.Count - 3 && newFilename.StartsWith("[*REMOVEME*]") == false))
+                                if (filenameIndex < tempFileNameArr.Count - 3 && newFilename.StartsWith("[*REMOVEME*]") == false)
                                 { fileNames[innerIndex] += "."; }
 
                                 filenameIndex += 1;

@@ -63,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static string GetReadableFileSize(long fileLength)
         {
             // Get absolute value
-            long absolute_i = (fileLength < 0 ? -fileLength : fileLength);
+            long absolute_i = fileLength < 0 ? -fileLength : fileLength;
 
             // Determine the suffix and readable value
             string suffix;
@@ -74,31 +74,31 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             {
                 suffix = "EB";
 
-                readable = (fileLength >> 50);
+                readable = fileLength >> 50;
             }
             else if (absolute_i >= 0x4000000000000) // Petabyte
             {
                 suffix = "PB";
 
-                readable = (fileLength >> 40);
+                readable = fileLength >> 40;
             }
             else if (absolute_i >= 0x10000000000) // Terabyte
             {
                 suffix = "TB";
 
-                readable = (fileLength >> 30);
+                readable = fileLength >> 30;
             }
             else if (absolute_i >= 0x40000000) // Gigabyte
             {
                 suffix = "GB";
 
-                readable = (fileLength >> 20);
+                readable = fileLength >> 20;
             }
             else if (absolute_i >= 0x100000) // Megabyte
             {
                 suffix = "MB";
 
-                readable = (fileLength >> 10);
+                readable = fileLength >> 10;
             }
             else if (absolute_i >= 0x400) // Kilobyte
             {
@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
 
             // Divide by 1024 to get fractional value
-            readable = (readable / 1024);
+            readable = readable / 1024;
 
             // Return formatted number with suffix
             return readable.ToString("0.### ") + suffix;

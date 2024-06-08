@@ -150,15 +150,15 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     {
                         DateTimeFormatInfo dt = Thread.CurrentThread.CurrentCulture.DateTimeFormat;
 
-                        ((_valControl1 as DateTimePicker)!).CustomFormat = $@"{dt.ShortDatePattern} HH:mm";
-                        ((_valControl2 as DateTimePicker)!).CustomFormat = $@"{dt.ShortDatePattern} HH:mm";
-                        ((_valControl1 as DateTimePicker)!).Format = DateTimePickerFormat.Custom;
-                        ((_valControl2 as DateTimePicker)!).Format = DateTimePickerFormat.Custom;
+                        (_valControl1 as DateTimePicker)!.CustomFormat = $@"{dt.ShortDatePattern} HH:mm";
+                        (_valControl2 as DateTimePicker)!.CustomFormat = $@"{dt.ShortDatePattern} HH:mm";
+                        (_valControl1 as DateTimePicker)!.Format = DateTimePickerFormat.Custom;
+                        (_valControl2 as DateTimePicker)!.Format = DateTimePickerFormat.Custom;
                     }
                     else
                     {
-                        ((_valControl1 as DateTimePicker)!).Format = DateTimePickerFormat.Short;
-                        ((_valControl2 as DateTimePicker)!).Format = DateTimePickerFormat.Short;
+                        (_valControl1 as DateTimePicker)!.Format = DateTimePickerFormat.Short;
+                        (_valControl2 as DateTimePicker)!.Format = DateTimePickerFormat.Short;
                     }
 
                     comboBox_filterType.Items.AddRange(new[] {
@@ -284,41 +284,41 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     if (filterTypeConditionText == KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewEquals.ToString()])
                     {
                         filterString =
-                            $"Convert([{{0}}], 'System.String') LIKE '%{Convert.ToString((filterDateAndTimeEnabled ? dt : dt.Date), CultureInfo.CurrentCulture)}%'";
+                            $"Convert([{{0}}], 'System.String') LIKE '%{Convert.ToString(filterDateAndTimeEnabled ? dt : dt.Date, CultureInfo.CurrentCulture)}%'";
                     }
                     else if (filterTypeConditionText == KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewEarlierThan.ToString()])
                     {
                         filterString +=
-                            $"< '{Convert.ToString((filterDateAndTimeEnabled ? dt : dt.Date), CultureInfo.CurrentCulture)}'";
+                            $"< '{Convert.ToString(filterDateAndTimeEnabled ? dt : dt.Date, CultureInfo.CurrentCulture)}'";
                     }
                     else if (filterTypeConditionText == KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewEarlierThanOrEqualTo.ToString()])
                     {
                         filterString +=
-                            $"<= '{Convert.ToString((filterDateAndTimeEnabled ? dt : dt.Date), CultureInfo.CurrentCulture)}'";
+                            $"<= '{Convert.ToString(filterDateAndTimeEnabled ? dt : dt.Date, CultureInfo.CurrentCulture)}'";
                     }
                     else if (filterTypeConditionText == KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewLaterThan.ToString()])
                     {
                         filterString +=
-                            $"> '{Convert.ToString((filterDateAndTimeEnabled ? dt : dt.Date), CultureInfo.CurrentCulture)}'";
+                            $"> '{Convert.ToString(filterDateAndTimeEnabled ? dt : dt.Date, CultureInfo.CurrentCulture)}'";
                     }
                     else if (filterTypeConditionText == KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewLaterThanOrEqualTo.ToString()])
                     {
                         filterString +=
-                            $">= '{Convert.ToString((filterDateAndTimeEnabled ? dt : dt.Date), CultureInfo.CurrentCulture)}'";
+                            $">= '{Convert.ToString(filterDateAndTimeEnabled ? dt : dt.Date, CultureInfo.CurrentCulture)}'";
                     }
                     else if (filterTypeConditionText == KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewBetween.ToString()])
                     {
                         DateTime dt1 = ((DateTimePicker)control2).Value;
                         dt1 = new(dt1.Year, dt1.Month, dt1.Day, dt1.Hour, dt1.Minute, 0);
                         filterString +=
-                            $">= '{Convert.ToString((filterDateAndTimeEnabled ? dt : dt.Date), CultureInfo.CurrentCulture)}'";
+                            $">= '{Convert.ToString(filterDateAndTimeEnabled ? dt : dt.Date, CultureInfo.CurrentCulture)}'";
                         filterString +=
-                            $" AND {column}<= '{Convert.ToString((filterDateAndTimeEnabled ? dt1 : dt1.Date), CultureInfo.CurrentCulture)}'";
+                            $" AND {column}<= '{Convert.ToString(filterDateAndTimeEnabled ? dt1 : dt1.Date, CultureInfo.CurrentCulture)}'";
                     }
                     else if (filterTypeConditionText == KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewDoesNotEqual.ToString()])
                     {
                         filterString =
-                            $"Convert([{{0}}], 'System.String') NOT LIKE '%{Convert.ToString((filterDateAndTimeEnabled ? dt : dt.Date), CultureInfo.CurrentCulture)}%'";
+                            $"Convert([{{0}}], 'System.String') NOT LIKE '%{Convert.ToString(filterDateAndTimeEnabled ? dt : dt.Date, CultureInfo.CurrentCulture)}%'";
                     }
 
                     break;
@@ -464,8 +464,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
         private void button_ok_Click(object sender, EventArgs e)
         {
-            if (_valControl1 != null && _valControl2 != null && ((_valControl1.Visible && _valControl1.Tag != null && ((bool)_valControl1.Tag)) ||
-                                                                 (_valControl2.Visible && _valControl2.Tag != null && ((bool)_valControl2.Tag))))
+            if (_valControl1 != null && _valControl2 != null && ((_valControl1.Visible && _valControl1.Tag != null && (bool)_valControl1.Tag) ||
+                                                                 (_valControl2.Visible && _valControl2.Tag != null && (bool)_valControl2.Tag)))
             {
                 button_ok.Enabled = false;
                 return;
@@ -510,8 +510,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 if (_valControl1 != null)
                 {
                     button_ok.Enabled =
-                        !(_valControl1.Visible && _valControl1.Tag != null && ((bool)_valControl1.Tag)) ||
-                        (_valControl2.Visible && _valControl2.Tag != null && ((bool)_valControl2.Tag));
+                        !(_valControl1.Visible && _valControl1.Tag != null && (bool)_valControl1.Tag) ||
+                        (_valControl2.Visible && _valControl2.Tag != null && (bool)_valControl2.Tag);
                 }
             }
         }
@@ -541,30 +541,30 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             {
                 case FilterType.Integer:
                     long val;
-                    hasErrors = !(long.TryParse(((sender as TextBox)!).Text, out val));
+                    hasErrors = !long.TryParse((sender as TextBox)!.Text, out val);
                     break;
 
                 case FilterType.Float:
                     double val1;
-                    hasErrors = !(double.TryParse(((sender as TextBox)!).Text, out val1));
+                    hasErrors = !double.TryParse((sender as TextBox)!.Text, out val1);
                     break;
             }
 
-            ((sender as Control)!).Tag = hasErrors || ((sender as TextBox)!).Text.Length == 0;
+            (sender as Control)!.Tag = hasErrors || (sender as TextBox)!.Text.Length == 0;
 
-            if (hasErrors && ((sender as TextBox)!).Text.Length > 0)
+            if (hasErrors && (sender as TextBox)!.Text.Length > 0)
             {
-                ep.SetError(((sender as Control)!), KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewInvalidValue.ToString()]);
+                ep.SetError((sender as Control)!, KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewInvalidValue.ToString()]);
             }
             else
             {
-                ep.SetError(((sender as Control)!), "");
+                ep.SetError((sender as Control)!, "");
             }
 
             if (_valControl1 != null && _valControl2 != null)
             {
-                button_ok.Enabled = !(_valControl1.Visible && _valControl1.Tag != null && ((bool)_valControl1.Tag)) ||
-                                 (_valControl2.Visible && _valControl2.Tag != null && ((bool)_valControl2.Tag));
+                button_ok.Enabled = !(_valControl1.Visible && _valControl1.Tag != null && (bool)_valControl1.Tag) ||
+                                 (_valControl2.Visible && _valControl2.Tag != null && (bool)_valControl2.Tag);
             }
         }
 

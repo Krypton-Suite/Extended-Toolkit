@@ -127,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         {
             List<Arc> list = _outArcs.ToList();
             list.Sort();
-            Arc arc = (list.Count > 0) ? list[list.Count - 1] : null;
+            Arc arc = list.Count > 0 ? list[list.Count - 1] : null;
             IEnumerator<Arc> enumerator = ((IEnumerable<Arc>)list).GetEnumerator();
             enumerator.MoveNext();
             uint num = (uint)(list.Count + (int)iArcOffset);
@@ -201,7 +201,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 _next._prev = _prev;
             }
-            _next = (_prev = null);
+            _next = _prev = null;
         }
 
         internal void CheckLeftRecursion(out bool fReachedEndState)
@@ -209,7 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             fReachedEndState = false;
             if ((_recurseFlag & RecurFlag.RF_IN_LEFT_RECUR_CHECK) != 0)
             {
-                XmlParser.ThrowSrgsException(SRID.CircularRuleRef, (_rule != null) ? _rule._rule.Name : string.Empty);
+                XmlParser.ThrowSrgsException(SRID.CircularRuleRef, _rule != null ? _rule._rule.Name : string.Empty);
             }
             else if ((_recurseFlag & RecurFlag.RF_CHECKED_LEFT_RECURSION) == 0)
             {
@@ -255,16 +255,16 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 return state1._rule._cfgRule._nameOffset - state2._rule._cfgRule._nameOffset;
             }
-            int num = (state1._rule._firstState == state1) ? (-1) : 0;
-            int num2 = (state2._rule._firstState == state2) ? (-1) : 0;
+            int num = state1._rule._firstState == state1 ? -1 : 0;
+            int num2 = state2._rule._firstState == state2 ? -1 : 0;
             if (num != num2)
             {
                 return num - num2;
             }
-            Arc arc = (state1._outArcs != null && !state1._outArcs.IsEmpty) ? state1._outArcs.First : null;
-            Arc arc2 = (state2._outArcs != null && !state2._outArcs.IsEmpty) ? state2._outArcs.First : null;
-            int num3 = ((arc != null) ? (((arc.RuleRef != null) ? 16777216 : 0) + arc.WordId) : state1._iSerialize) - ((arc2 != null) ? (((arc2.RuleRef != null) ? 16777216 : 0) + arc2.WordId) : state2._iSerialize);
-            return (num3 != 0) ? num3 : (state1._iSerialize - state2._iSerialize);
+            Arc arc = state1._outArcs != null && !state1._outArcs.IsEmpty ? state1._outArcs.First : null;
+            Arc arc2 = state2._outArcs != null && !state2._outArcs.IsEmpty ? state2._outArcs.First : null;
+            int num3 = (arc != null ? (arc.RuleRef != null ? 16777216 : 0) + arc.WordId : state1._iSerialize) - (arc2 != null ? (arc2.RuleRef != null ? 16777216 : 0) + arc2.WordId : state2._iSerialize);
+            return num3 != 0 ? num3 : state1._iSerialize - state2._iSerialize;
         }
     }
 }

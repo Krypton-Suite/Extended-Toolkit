@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
         internal XmlParser(XmlReader reader, Uri uri)
         {
             _reader = reader;
-            _xmlTextReader = (reader as XmlTextReader);
+            _xmlTextReader = reader as XmlTextReader;
             if (uri == null && _xmlTextReader != null && _xmlTextReader.BaseURI.Length > 0)
             {
                 try
@@ -105,9 +105,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
             }
             if (uri != null)
             {
-                _filename = ((!uri.IsAbsoluteUri || !uri.IsFile) ? uri.OriginalString : uri.LocalPath);
+                _filename = !uri.IsAbsoluteUri || !uri.IsFile ? uri.OriginalString : uri.LocalPath;
                 int num = _filename.LastIndexOfAny(_SlashBackSlash);
-                _shortFilename = ((num >= 0) ? _filename.Substring(num + 1) : _filename);
+                _shortFilename = num >= 0 ? _filename.Substring(num + 1) : _filename;
             }
         }
 
@@ -215,7 +215,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                 string text2 = SR.Get(SRID.Position);
                 int lineNumber = xmlTextReader.LineNumber;
                 int linePosition = xmlTextReader.LinePosition;
-                sError = ((filename != null) ? string.Format(CultureInfo.InvariantCulture, "{0}({1},{2}): error : {3}", filename, lineNumber, linePosition, sError) : (sError + string.Format(CultureInfo.InvariantCulture, " [{0}={1}, {2}={3}]", text, lineNumber, text2, linePosition)));
+                sError = filename != null ? string.Format(CultureInfo.InvariantCulture, "{0}({1},{2}): error : {3}", filename, lineNumber, linePosition, sError) : sError + string.Format(CultureInfo.InvariantCulture, " [{0}={1}, {2}={3}]", text, lineNumber, text2, linePosition);
             }
             throw new FormatException(sError, innerException);
         }
@@ -317,7 +317,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                             string value = reader.Value;
                             try
                             {
-                                grammar.Culture = (_langId = new CultureInfo(value));
+                                grammar.Culture = _langId = new CultureInfo(value);
                             }
                             catch (ArgumentException)
                             {
@@ -326,7 +326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                                 {
                                     throw;
                                 }
-                                grammar.Culture = (_langId = new CultureInfo(reader.Value.Substring(0, num)));
+                                grammar.Culture = _langId = new CultureInfo(reader.Value.Substring(0, num));
                             }
                         }
                     }
@@ -1005,7 +1005,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 
         private void ParseScript(XmlReader reader, IGrammar grammar)
         {
-            int line = (_filename != null) ? _xmlTextReader.LineNumber : (-1);
+            int line = _filename != null ? _xmlTextReader.LineNumber : -1;
             string text = null;
             while (reader.MoveToNextAttribute())
             {
@@ -1492,7 +1492,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 
         private static void SetRepeatValues(string repeat, out int minRepeat, out int maxRepeat)
         {
-            minRepeat = (maxRepeat = 1);
+            minRepeat = maxRepeat = 1;
             if (!string.IsNullOrEmpty(repeat))
             {
                 int num = repeat.IndexOf("-", StringComparison.Ordinal);
@@ -1503,7 +1503,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                     {
                         ThrowSrgsException(SRID.MinMaxOutOfRange, num2, num2);
                     }
-                    minRepeat = (maxRepeat = num2);
+                    minRepeat = maxRepeat = num2;
                 }
                 else if (0 < num)
                 {

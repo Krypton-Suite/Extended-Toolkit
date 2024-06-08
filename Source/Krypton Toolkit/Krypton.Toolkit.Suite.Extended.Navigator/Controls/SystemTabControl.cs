@@ -341,7 +341,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             Rectangle recBounds = this.GetTabRect(nIndex);
             RectangleF tabTextArea = (RectangleF)this.GetTabRect(nIndex);
-            bool bSelected = (this.SelectedIndex == nIndex);
+            bool bSelected = this.SelectedIndex == nIndex;
             bool bHot = false;
 
             VisualStyleRenderer render = new VisualStyleRenderer(VisualStyleElement.Tab.Pane.Normal);
@@ -476,7 +476,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             //image management
-            if ((tabPage.ImageIndex >= 0) && ((ImageList != null)) && ((ImageList.Images[tabPage.ImageIndex] != null)))
+            if (tabPage.ImageIndex >= 0 && ImageList != null && ImageList.Images[tabPage.ImageIndex] != null)
             {
                 int nLeftMargin = 8;
                 int nRightMargin = 1;

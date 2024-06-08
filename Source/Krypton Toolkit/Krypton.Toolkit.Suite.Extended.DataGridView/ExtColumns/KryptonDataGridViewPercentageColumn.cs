@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             set
             {
                 // Ensure that the cell used for the template is a DataGridViewPercentageCell.
-                if ((value != null) && !value.GetType().IsAssignableFrom(typeof(DataGridViewPercentageCell)))
+                if (value != null && !value.GetType().IsAssignableFrom(typeof(DataGridViewPercentageCell)))
                 {
                     throw new InvalidCastException("Must be a DataGridViewPercentageCell");
                 }

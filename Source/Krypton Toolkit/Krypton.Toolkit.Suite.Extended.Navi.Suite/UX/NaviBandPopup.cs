@@ -156,8 +156,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
-            if ((e.Button == MouseButtons.Left)
-            && (e.Clicks == 1))
+            if (e.Button == MouseButtons.Left
+            && e.Clicks == 1)
             {
                 if (resizeBounds.Contains(e.Location))
                 {

@@ -96,20 +96,20 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.bgSHA1Hash = new System.ComponentModel.BackgroundWorker();
             this.bgMD5Hash = new System.ComponentModel.BackgroundWorker();
             this.kbbFilePath = new Krypton.Toolkit.Suite.Extended.CheckSum.Tools.KryptonBrowseBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2.Panel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox2.Panel).BeginInit();
             this.kryptonGroupBox2.Panel.SuspendLayout();
             this.kryptonGroupBox2.SuspendLayout();
             this.cmsCheckSumValidation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbAlgorithimType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbAlgorithimType).BeginInit();
             this.ss.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -200,7 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.ktxtVarifyCheckSum.Location = new System.Drawing.Point(6, 23);
             this.ktxtVarifyCheckSum.Name = "ktxtVarifyCheckSum";
             this.ktxtVarifyCheckSum.Size = new System.Drawing.Size(665, 24);
-            this.ktxtVarifyCheckSum.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ktxtVarifyCheckSum.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.ktxtVarifyCheckSum.TabIndex = 0;
             this.ktxtVarifyCheckSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ktxtVarifyCheckSum.TextChanged += new System.EventHandler(this.ktxtVarifyCheckSum_TextChanged);
@@ -250,13 +250,13 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             this.kwlCalculatedCheckSum.AutoSize = false;
             this.kwlCalculatedCheckSum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kwlCalculatedCheckSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlCalculatedCheckSum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlCalculatedCheckSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this.kwlCalculatedCheckSum.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kwlCalculatedCheckSum.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
             this.kwlCalculatedCheckSum.Location = new System.Drawing.Point(0, 0);
             this.kwlCalculatedCheckSum.Name = "kwlCalculatedCheckSum";
             this.kwlCalculatedCheckSum.Size = new System.Drawing.Size(680, 71);
-            this.kwlCalculatedCheckSum.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlCalculatedCheckSum.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlCalculatedCheckSum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // kbtnCompute
@@ -382,7 +382,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kbbFilePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.kbbFilePath.CueHint.CueHintText = "Type a file path here...";
             this.kbbFilePath.CueHint.Padding = new System.Windows.Forms.Padding(0);
-            this.kbbFilePath.LargeResetImage = ((System.Drawing.Image)(resources.GetObject("kbbFilePath.LargeResetImage")));
+            this.kbbFilePath.LargeResetImage = (System.Drawing.Image)resources.GetObject("kbbFilePath.LargeResetImage");
             this.kbbFilePath.Location = new System.Drawing.Point(83, 13);
             this.kbbFilePath.Name = "kbbFilePath";
             this.kbbFilePath.ResetText = null;
@@ -390,7 +390,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kbbFilePath.ResetTextToolTipHeading = null;
             this.kbbFilePath.ShowResetButton = true;
             this.kbbFilePath.Size = new System.Drawing.Size(614, 24);
-            this.kbbFilePath.SmallResetImage = ((System.Drawing.Image)(resources.GetObject("kbbFilePath.SmallResetImage")));
+            this.kbbFilePath.SmallResetImage = (System.Drawing.Image)resources.GetObject("kbbFilePath.SmallResetImage");
             this.kbbFilePath.TabIndex = 12;
             // 
             // KryptonVarifyFileCheckSum
@@ -406,23 +406,23 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Varify File CheckSum";
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox2.Panel).EndInit();
             this.kryptonGroupBox2.Panel.ResumeLayout(false);
             this.kryptonGroupBox2.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox2).EndInit();
             this.kryptonGroupBox2.ResumeLayout(false);
             this.cmsCheckSumValidation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbAlgorithimType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbAlgorithimType).EndInit();
             this.ss.ResumeLayout(false);
             this.ss.PerformLayout();
             this.ResumeLayout(false);

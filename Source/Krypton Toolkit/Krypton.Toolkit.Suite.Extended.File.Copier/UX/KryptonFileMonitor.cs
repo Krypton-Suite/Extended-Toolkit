@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
 
             if (totalFiles != 0)
             {
-                pbCurrentFile.Value = Convert.ToInt32((100f / (totalFiles / 1024f)) * (copiedBytes / 1024f));
+                pbCurrentFile.Value = Convert.ToInt32(100f / (totalFiles / 1024f) * (copiedBytes / 1024f));
             }
 
             klblTotalFiles.Text = $"Total Files: ({copiedFiles} / {totalFiles})";

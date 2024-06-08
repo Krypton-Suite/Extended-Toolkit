@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     NativeMethods.TEXTMETRIC tEXTMETRIC = new NativeMethods.TEXTMETRIC();
                     if (SafeNativeMethods.GetTextMetrics(deviceContextHandle, ref tEXTMETRIC) != 0)
                     {
-                        textAscent = (tEXTMETRIC.tmAscent + 1);
+                        textAscent = tEXTMETRIC.tmAscent + 1;
                         textHeight = tEXTMETRIC.tmHeight;
                     }
 
@@ -104,17 +104,17 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             // Calculate return value based on the specified alignment; first check top alignment
             if ((alignment & (ContentAlignment.TopLeft | ContentAlignment.TopCenter | ContentAlignment.TopRight)) != 0)
             {
-                return (clientRect.Top + textAscent);
+                return clientRect.Top + textAscent;
             }
 
             // Check middle alignment
             if ((alignment & (ContentAlignment.MiddleLeft | ContentAlignment.MiddleCenter | ContentAlignment.MiddleRight)) == 0)
             {
-                return ((clientRect.Bottom - textHeight) + textAscent);
+                return clientRect.Bottom - textHeight + textAscent;
             }
 
             // Assume bottom alignment
-            return ((int)Math.Round((double)clientRect.Top + (double)clientRect.Height / 2 - (double)textHeight / 2 + (double)textAscent));
+            return (int)Math.Round((double)clientRect.Top + (double)clientRect.Height / 2 - (double)textHeight / 2 + (double)textAscent);
         }
     }
 }

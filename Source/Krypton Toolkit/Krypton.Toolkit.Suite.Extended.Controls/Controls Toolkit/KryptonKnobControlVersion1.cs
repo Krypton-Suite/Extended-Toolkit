@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
 
             //Create redirection object to the base palette
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
@@ -390,7 +390,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             gOffScreen.DrawEllipse(new Pen(_KnobBorderColour), rKnob);
 
             //if control is focused
-            if ((_isFocused))
+            if (_isFocused)
             {
                 gOffScreen.DrawEllipse(DottedPen, rKnob);
             }
@@ -404,7 +404,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             // Draw small and large scale
             int i = Minimum;
-            if ((_ShowSmallScale))
+            if (_ShowSmallScale)
             {
                 for (i = Minimum; i <= Maximum; i = i + _SmallChange)
                 {
@@ -412,7 +412,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 }
             }
 
-            if ((_ShowLargeScale))
+            if (_ShowLargeScale)
             {
                 for (i = Minimum; i <= Maximum; i = i + _LargeChange)
                 {
@@ -433,7 +433,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            if ((isPointinRectangle(new Point(e.X, e.Y), rKnob)))
+            if (isPointinRectangle(new Point(e.X, e.Y), rKnob))
             {
                 // Start Rotation of knob
                 isKnobRotating = true;
@@ -474,7 +474,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             // Stop rotation
             isKnobRotating = false;
-            if ((isPointinRectangle(new Point(e.X, e.Y), rKnob)))
+            if (isPointinRectangle(new Point(e.X, e.Y), rKnob))
             {
                 // get value
                 Value = getValueFromPosition(new Point(e.X, e.Y));
@@ -487,7 +487,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             // --------------------------------------
             // Following Handles Knob Rotating
             // --------------------------------------
-            if ((isKnobRotating == true))
+            if (isKnobRotating == true)
             {
                 Cursor = Cursors.Hand;
                 Point p = new Point(e.X, e.Y);
@@ -520,17 +520,17 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             // --------------------------------------------------------
             // Handles knob rotation with up,down,left and right keys
             // --------------------------------------------------------
-            if ((e.KeyCode == Keys.Up | e.KeyCode == Keys.Right))
+            if (e.KeyCode == Keys.Up | e.KeyCode == Keys.Right)
             {
-                if ((_Value < Maximum))
+                if (_Value < Maximum)
                 {
                     Value = _Value + 1;
                     Invalidate();
                 }
             }
-            else if ((e.KeyCode == Keys.Down | e.KeyCode == Keys.Left))
+            else if (e.KeyCode == Keys.Down | e.KeyCode == Keys.Left)
             {
-                if ((_Value > Minimum))
+                if (_Value > Minimum)
                 {
                     Value = _Value - 1;
                     Invalidate();
@@ -542,14 +542,14 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             // get smaller from height and width
             int size = Width;
-            if ((Width > Height))
+            if (Width > Height)
             {
                 size = Height;
             }
             // allow 10% gap on all side to determine size of knob
             rKnob = new Rectangle((int)Math.Round((double)(size * 0.1)), (int)Math.Round((double)(size * 0.1)), (int)Math.Round((double)(size * 0.8)), (int)Math.Round((double)(size * 0.8)));
             rScale = new Rectangle(2, 2, size - 4, size - 4);
-            pKnob = new Point((int)Math.Round((double)(rKnob.X + (((double)rKnob.Width) / 2.0))), (int)Math.Round((double)(rKnob.Y + (((double)rKnob.Height) / 2.0))));
+            pKnob = new Point((int)Math.Round((double)(rKnob.X + (double)rKnob.Width / 2.0)), (int)Math.Round((double)(rKnob.Y + (double)rKnob.Height / 2.0)));
             // create offscreen image
             OffScreenImage = new Bitmap(Width, Height);
             // create offscreen graphics
@@ -569,9 +569,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             double degree = 270 * Value / (Maximum - Minimum);
             degree = (degree + 135) * Math.PI / 180;
 
-            Point Pos = (new Point(0, 0));
-            Pos.X = (int)Math.Round((double)(((Math.Cos(degree) * ((((double)rKnob.Width) / 2.0) - 10.0)) + rKnob.X) + (((double)rKnob.Width) / 2.0)));
-            Pos.Y = (int)Math.Round((double)(((Math.Sin(degree) * ((((double)rKnob.Width) / 2.0) - 10.0)) + rKnob.Y) + (((double)rKnob.Height) / 2.0)));
+            Point Pos = new Point(0, 0);
+            Pos.X = (int)Math.Round((double)(Math.Cos(degree) * ((double)rKnob.Width / 2.0 - 10.0) + rKnob.X + (double)rKnob.Width / 2.0));
+            Pos.Y = (int)Math.Round((double)(Math.Sin(degree) * ((double)rKnob.Width / 2.0 - 10.0) + rKnob.Y + (double)rKnob.Height / 2.0));
             return Pos;
         }
 
@@ -586,8 +586,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             degree = (degree + 135) * Math.PI / 180;
 
             Point Pos = new Point(0, 0);
-            Pos.X = (int)Math.Round((double)(((Math.Cos(degree) * (((((double)rKnob.Width) / 2.0) - length) + 7.0)) + rKnob.X) + (((double)rKnob.Width) / 2.0)));
-            Pos.Y = (int)Math.Round((double)(((Math.Sin(degree) * (((((double)rKnob.Width) / 2.0) - length) + 7.0)) + rKnob.Y) + (((double)rKnob.Height) / 2.0)));
+            Pos.X = (int)Math.Round((double)(Math.Cos(degree) * ((double)rKnob.Width / 2.0 - length + 7.0) + rKnob.X + (double)rKnob.Width / 2.0));
+            Pos.Y = (int)Math.Round((double)(Math.Sin(degree) * ((double)rKnob.Width / 2.0 - length + 7.0) + rKnob.Y + (double)rKnob.Height / 2.0));
 
             return Pos;
         }
@@ -603,27 +603,27 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             int v = 0;
             try
             {
-                if ((p.X <= pKnob.X))
+                if (p.X <= pKnob.X)
                 {
                     degree = (pKnob.Y - p.Y) / (pKnob.X - p.X);
                     degree = Math.Atan(degree);
-                    degree = (degree) * (180 / Math.PI) + 45;
-                    v = (int)Math.Round((double)((degree * (Maximum - Minimum)) / 270.0));
+                    degree = degree * (180 / Math.PI) + 45;
+                    v = (int)Math.Round((double)(degree * (Maximum - Minimum) / 270.0));
                 }
-                else if ((p.X > pKnob.X))
+                else if (p.X > pKnob.X)
                 {
                     degree = (p.Y - pKnob.Y) / (p.X - pKnob.X);
                     degree = Math.Atan(degree);
-                    degree = 225 + (degree) * (180 / Math.PI);
-                    v = (int)Math.Round((double)((degree * (Maximum - Minimum)) / 270.0));
+                    degree = 225 + degree * (180 / Math.PI);
+                    v = (int)Math.Round((double)(degree * (Maximum - Minimum) / 270.0));
                 }
 
-                if ((v > Maximum))
+                if (v > Maximum)
                 {
                     v = Maximum;
                 }
 
-                if ((v < Minimum))
+                if (v < Minimum)
                 {
                     v = Minimum;
                 }
@@ -642,17 +642,17 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             byte g = 0;
             byte b = 0;
 
-            if ((c.R > d))
+            if (c.R > d)
             {
                 r = (byte)(c.R - d);
             }
 
-            if ((c.G > d))
+            if (c.G > d)
             {
                 g = (byte)(c.G - d);
             }
 
-            if ((c.B > d))
+            if (c.B > d)
             {
                 b = (byte)(c.B - d);
             }
@@ -667,17 +667,17 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             byte g = 255;
             byte b = 255;
 
-            if (((int)c.R + (int)d <= 255))
+            if ((int)c.R + (int)d <= 255)
             {
                 r = (byte)(c.R + d);
             }
 
-            if (((int)c.G + (int)d <= 255))
+            if ((int)c.G + (int)d <= 255)
             {
                 g = (byte)(c.G + d);
             }
 
-            if (((int)c.B + (int)d <= 255))
+            if ((int)c.B + (int)d <= 255)
             {
                 b = (byte)(c.B + d);
             }
@@ -693,7 +693,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         public bool isPointinRectangle(Point p, Rectangle r)
         {
             bool flag = false;
-            if ((p.X > r.X & p.X < r.X + r.Width & p.Y > r.Y & p.Y < r.Y + r.Height))
+            if (p.X > r.X & p.X < r.X + r.Width & p.Y > r.Y & p.Y < r.Y + r.Height)
             {
                 flag = true;
             }
@@ -724,13 +724,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
                 InitColours();

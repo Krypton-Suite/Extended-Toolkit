@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 
         internal RuleElement Rule => _rule;
 
-        internal override string DebugSummary => $"#{Rule.Name}{((_semanticKey != null) ? (":" + _semanticKey) : "")}";
+        internal override string DebugSummary => $"#{Rule.Name}{(_semanticKey != null ? ":" + _semanticKey : "")}";
 
         internal RuleRefElement(RuleElement rule)
         {

@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         private byte[] ComposeLineBuffer(int startLine, int line)
         {
             int num = startLine * _columnCount;
-            byte[] array = (num + (line + 1) * _columnCount <= _dataBuf.Length) ? new byte[_columnCount] : new byte[_dataBuf.Length % _columnCount];
+            byte[] array = num + (line + 1) * _columnCount <= _dataBuf.Length ? new byte[_columnCount] : new byte[_dataBuf.Length % _columnCount];
             for (int i = 0; i < array.Length; i++)
             {
                 array[i] = _dataBuf[num + CellToIndex(i, line)];
@@ -439,7 +439,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                         _scrollBar.Enabled = false;
                     }
                 }
-                _displayLinesCount = ((_startLine + _rowCount < _linesCount) ? _rowCount : (_linesCount - _startLine));
+                _displayLinesCount = _startLine + _rowCount < _linesCount ? _rowCount : _linesCount - _startLine;
             }
         }
         #endregion

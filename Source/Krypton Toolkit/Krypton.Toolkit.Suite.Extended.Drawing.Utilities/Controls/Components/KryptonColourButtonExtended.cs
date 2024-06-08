@@ -545,7 +545,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private bool ShouldSerializeButtonStyle()
         {
-            return (ButtonStyle != ButtonStyle.Standalone);
+            return ButtonStyle != ButtonStyle.Standalone;
         }
 
         private void ResetButtonStyle()
@@ -732,7 +732,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="value">true if the control should behave as a default color button; otherwise false.</param>
         public void NotifyDefault(bool value)
         {
-            if (!ViewDrawButtonExtended.IsFixed && (_isDefault != value))
+            if (!ViewDrawButtonExtended.IsFixed && _isDefault != value)
             {
                 // Remember new default status
                 _isDefault = value;
@@ -838,7 +838,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <param name="state">The state for which the image is needed.</param>
         /// <returns>Image value.</returns>
-        public Image GetImage(PaletteState state) => Values.GetImage(state);
+        public Image? GetImage(PaletteState state) => Values.GetImage(state);
 
         /// <summary>
         /// Gets the image color that should be transparent.
@@ -1236,13 +1236,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 foreach (KryptonContextMenuItemBase item in _kryptonContextMenu.Items)
                 {
                     // Only interested in the non-recent colors color columns
-                    if ((item != _coloursRecent) && (item is KryptonContextMenuColorColumns colors))
+                    if (item != _coloursRecent && item is KryptonContextMenuColorColumns colors)
                     {
                         // Cast to correct type
 
                         // We do not change the theme or standard entries if they are not to be used
-                        if (((item == _coloursTheme) && !VisibleThemes) ||
-                            ((item == _coloursStandard) && !VisibleStandard))
+                        if ((item == _coloursTheme && !VisibleThemes) ||
+                            (item == _coloursStandard && !VisibleStandard))
                         {
                             continue;
                         }
@@ -1256,7 +1256,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 }
 
                 // If this color valid and so possible to become a recent color
-                if ((color != null) && !color.Equals(Color.Empty))
+                if (color != null && !color.Equals(Color.Empty))
                 {
                     bool found = false;
                     foreach (Color recentColor in _recentColours)
@@ -1289,7 +1289,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // Update visible state based of properties
             _separatorTheme.Visible = _headingTheme.Visible = _coloursTheme.Visible = VisibleThemes;
             _separatorStandard.Visible = _headingStandard.Visible = _coloursStandard.Visible = VisibleStandard;
-            _separatorRecent.Visible = _headingRecent.Visible = _coloursRecent.Visible = (VisibleRecent && (_recentColours.Count > 0));
+            _separatorRecent.Visible = _headingRecent.Visible = _coloursRecent.Visible = VisibleRecent && _recentColours.Count > 0;
             _itemsNoColour.Visible = VisibleNoColour;
             _itemsMoreColours.Visible = VisibleMoreColours;
 

@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 int startPos = SelectionStart;
 
                 /* Handle backspace */
-                if (((Keys)e.KeyChar) == Keys.Back)
+                if ((Keys)e.KeyChar == Keys.Back)
                 {
                     if (SelectionLength == 0 && startPos > 0 && startPos <= _secureString.Length)
                     {
@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             try
             {
                 /* Handle the delete key */
-                bool allowedToDelete = ((keyData & Keys.Delete) == Keys.Delete);
+                bool allowedToDelete = (keyData & Keys.Delete) == Keys.Delete;
 
                 if (allowedToDelete)
                 {

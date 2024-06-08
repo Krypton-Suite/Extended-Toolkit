@@ -87,25 +87,25 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kcmbPaletteMode = new Krypton.Toolkit.KryptonThemeComboBox();
             this.kcmbDarkTheme = new Krypton.Toolkit.KryptonThemeComboBox();
             this.kcmbLightTheme = new Krypton.Toolkit.KryptonThemeComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonNavigator1).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage1).BeginInit();
             this.kryptonPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage2).BeginInit();
             this.kryptonPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage3).BeginInit();
             this.kryptonPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbPaletteMode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbDarkTheme)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbLightTheme)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbPaletteMode).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbDarkTheme).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbLightTheme).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -133,7 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnApply
             // 
-            this.kbtnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnApply.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnApply.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnApply.Enabled = false;
             this.kbtnApply.Location = new System.Drawing.Point(428, 13);
@@ -145,7 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(524, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -247,13 +247,13 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // kwlPaletteName
             // 
             this.kwlPaletteName.AutoSize = false;
-            this.kwlPaletteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlPaletteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlPaletteName.ForeColor = System.Drawing.Color.Black;
             this.kwlPaletteName.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kwlPaletteName.Location = new System.Drawing.Point(16, 55);
             this.kwlPaletteName.Name = "kwlPaletteName";
             this.kwlPaletteName.Size = new System.Drawing.Size(566, 93);
-            this.kwlPaletteName.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlPaletteName.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlPaletteName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // kbtnLocate
@@ -427,29 +427,29 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Theme Switcher Options";
             this.Load += new System.EventHandler(this.ThemeSwitcherOptions_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonNavigator1).EndInit();
             this.kryptonNavigator1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage1).EndInit();
             this.kryptonPage1.ResumeLayout(false);
             this.kryptonPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage2).EndInit();
             this.kryptonPage2.ResumeLayout(false);
             this.kryptonPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage3).EndInit();
             this.kryptonPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
             this.kryptonGroupBox1.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbPaletteMode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbDarkTheme)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbLightTheme)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbPaletteMode).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbDarkTheme).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbLightTheme).EndInit();
             this.ResumeLayout(false);
 
         }

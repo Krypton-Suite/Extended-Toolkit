@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 }
                 else if (Item is DataRow) // A specific implementation for DataRow
                 {
-                    name = ((DataRow)((object)Item))[_container.DisplayNameProperty].ToString();
+                    name = ((DataRow)(object)Item)[_container.DisplayNameProperty].ToString();
                 }
                 else
                 {

@@ -136,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                     }
                 }
 
-                _minWidth += (_dFrameWidth + 3);
+                _minWidth += _dFrameWidth + 3;
 
                 if (_minWidth < 46)
                 {
@@ -153,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                     }
                 }
 
-                _minWidth += (_dFrameWidth + 3);
+                _minWidth += _dFrameWidth + 3;
 
                 if (_minWidth < 46)
                 {
@@ -184,7 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                 {
                     Width = _maxWidth;
                 }
-                else if (Width < (_minWidth + 23))
+                else if (Width < _minWidth + 23)
                 {
                     Width = _minWidth;
                 }
@@ -197,7 +197,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                 {
                     Width = _maxWidth;
                 }
-                else if (Width < (_minWidth + 23))
+                else if (Width < _minWidth + 23)
                 {
                     Width = _minWidth;
                 }

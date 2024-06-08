@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     48000u
                 };
                 waveFormatEx.wFormatTag = 1;
-                waveFormatEx.nChannels = (waveFormatEx.nBlockAlign = (ushort)((!flag) ? 1 : 2));
+                waveFormatEx.nChannels = waveFormatEx.nBlockAlign = (ushort)(!flag ? 1 : 2);
                 waveFormatEx.nSamplesPerSec = array2[num2];
                 waveFormatEx.wBitsPerSample = 8;
                 if (flag2)
@@ -224,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                             };
                             bool flag5 = (num8 & 1) != 0;
                             waveFormatEx.wFormatTag = 6;
-                            waveFormatEx.nChannels = (waveFormatEx.nBlockAlign = (ushort)((!flag5) ? 1 : 2));
+                            waveFormatEx.nChannels = waveFormatEx.nBlockAlign = (ushort)(!flag5 ? 1 : 2);
                             waveFormatEx.nSamplesPerSec = array13[num9];
                             waveFormatEx.wBitsPerSample = 8;
                             waveFormatEx.nAvgBytesPerSec = waveFormatEx.nSamplesPerSec * waveFormatEx.nBlockAlign;
@@ -244,7 +244,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                             };
                             bool flag3 = (num3 & 1) != 0;
                             waveFormatEx.wFormatTag = 7;
-                            waveFormatEx.nChannels = (waveFormatEx.nBlockAlign = (ushort)((!flag3) ? 1 : 2));
+                            waveFormatEx.nChannels = waveFormatEx.nBlockAlign = (ushort)(!flag3 ? 1 : 2);
                             waveFormatEx.nSamplesPerSec = array3[num4];
                             waveFormatEx.wBitsPerSample = 8;
                             waveFormatEx.nAvgBytesPerSec = waveFormatEx.nSamplesPerSec * waveFormatEx.nBlockAlign;
@@ -392,7 +392,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                             uint num6 = num5 / 2u;
                             bool flag4 = (num5 & 1) != 0;
                             waveFormatEx.wFormatTag = 2;
-                            waveFormatEx.nChannels = (ushort)((!flag4) ? 1 : 2);
+                            waveFormatEx.nChannels = (ushort)(!flag4 ? 1 : 2);
                             waveFormatEx.nSamplesPerSec = array4[num6];
                             waveFormatEx.nAvgBytesPerSec = array5[num5];
                             waveFormatEx.nBlockAlign = (ushort)(array6[num6] * waveFormatEx.nChannels);

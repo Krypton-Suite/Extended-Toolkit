@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     _startArc.End = null;
                     _backend.DeleteSubGraph(end);
                 }
-                _startArc = (_endArc = _backend.EpsilonTransition(_repeatProbability));
+                _startArc = _endArc = _backend.EpsilonTransition(_repeatProbability);
             }
             else if (_minRepeat != 1 || _maxRepeat != 1)
             {

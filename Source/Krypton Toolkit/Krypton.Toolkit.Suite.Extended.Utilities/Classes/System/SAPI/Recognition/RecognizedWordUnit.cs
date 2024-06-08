@@ -66,9 +66,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             {
                 throw new ArgumentOutOfRangeException(SR.Get(SRID.InvalidConfidence));
             }
-            _text = ((text == null || text.Length == 0) ? null : text);
+            _text = text == null || text.Length == 0 ? null : text;
             _confidence = confidence;
-            _pronunciation = ((pronunciation == null || pronunciation.Length == 0) ? null : pronunciation);
+            _pronunciation = pronunciation == null || pronunciation.Length == 0 ? null : pronunciation;
             _lexicalForm = lexicalForm;
             _displayAttributes = displayAttributes;
             _audioPosition = audioPosition;
