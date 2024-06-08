@@ -111,9 +111,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Toolkit" Version="80.24.3.64" />
 
-				<PackageReference Include="Krypton.Navigator" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Navigator" Version="80.24.3.64" />
 			</ItemGroup>
 		</When>
 
@@ -169,7 +169,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="DotNetZip" Version="1.16.0" />
-		<PackageReference Include="Handlebars.Net" Version="2.1.4" />
+		<PackageReference Include="Handlebars.Net" Version="2.1.6" />
 		<PackageReference Include="Simple-MAPI.NET" Version="1.2.1" />
 		<PackageReference Include="System.Management" Version="8.0.0" />
 	</ItemGroup>

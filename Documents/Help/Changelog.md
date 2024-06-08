@@ -5,6 +5,13 @@
 
 =======
 
+## 2024-06-24 - Build 2406 - June 2024
+
+* Updated standard toolkit to build `2406`
+* Updated version from `80.xx.xx.xxx` -> `85.xx.xx.xxx`
+
+=======
+
 ## 2023-11-14 - Build 2311 - November 2023
 * New `KryptonToolkitExtendedPoweredByControl`, to be used in application 'About' dialogs
 * Added the ability to specify the message text alignment in a `KryptonMessageboxExtended`

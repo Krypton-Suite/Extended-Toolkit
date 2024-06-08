@@ -111,9 +111,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Toolkit" Version="80.24.3.64" />
 
-				<PackageReference Include="Krypton.Navigator" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Navigator" Version="80.24.3.64" />
 			</ItemGroup>
 		</When>
 
@@ -168,7 +168,7 @@
 	</Choose>
 
 	<ItemGroup>
-		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.0" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
