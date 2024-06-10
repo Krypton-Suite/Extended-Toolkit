@@ -26,9 +26,6 @@
  */
 #endregion
 
-using System.Collections.Generic;
-using System.Linq.Expressions;
-
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
@@ -40,9 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         private readonly List<Path2D> _paths = new List<Path2D>();
 
 
-        /// <summary>
-        ///     The callback to get invoked at the end of the animation
-        /// </summary>
+        /// <summary>The callback to get invoked at the end of the animation.</summary>
         protected SafeInvoker? EndCallback;
 
         /// <summary>
@@ -412,10 +407,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="frameCallback">
         ///     The callback to get invoked at each frame
         /// </param>
-        public void Play(SafeInvoker<Float2D> frameCallback)
-        {
-            Play(frameCallback, (SafeInvoker)null);
-        }
+        public void Play(SafeInvoker<Float2D> frameCallback) => Play(frameCallback, (SafeInvoker)null);
 
         /// <summary>
         ///     Starts the playing of the animation

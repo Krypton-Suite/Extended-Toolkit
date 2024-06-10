@@ -85,7 +85,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.5.148-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.6.162-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -124,7 +124,7 @@
 	<ItemGroup>
 		<Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
 		<PackageReference Include="System.Speech" Version="9.0.0-preview.4.24266.19" />
-		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.2" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>

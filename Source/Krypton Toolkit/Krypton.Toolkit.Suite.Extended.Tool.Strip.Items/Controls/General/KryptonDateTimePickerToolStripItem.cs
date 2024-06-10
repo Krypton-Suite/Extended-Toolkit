@@ -151,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             get => ((KryptonDateTimePicker)Control).CalendarTodayDate;
 
-            set => ((KryptonDateTimePicker)Control).CalendarTodayDate = value;
+            set => ((KryptonDateTimePicker)Control).CalendarTodayDate = (DateTime)value!;
         }
 
         public DateTime[]? CalendarAnnuallyBoldedDates
@@ -161,14 +161,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             set => ((KryptonDateTimePicker)Control).CalendarAnnuallyBoldedDates = value;
         }
 
-        public DateTime[] CalendarMonthlyBoldedDates
+        public DateTime[]? CalendarMonthlyBoldedDates
         {
             get => ((KryptonDateTimePicker)Control).CalendarMonthlyBoldedDates;
 
             set => ((KryptonDateTimePicker)Control).CalendarMonthlyBoldedDates = value;
         }
 
-        public DateTime[] CalendarBoldedDates
+        public DateTime[]? CalendarBoldedDates
         {
             get => ((KryptonDateTimePicker)Control).CalendarBoldedDates;
 
@@ -227,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             set => ((KryptonDateTimePicker)Control).InputControlStyle = value;
         }
 
-        public object ValueNullable
+        public object? ValueNullable
         {
             get => ((KryptonDateTimePicker)Control).ValueNullable;
 
@@ -241,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             set => ((KryptonDateTimePicker)Control).CalendarTodayText = value;
         }
 
-        public string CustomFormat
+        public string? CustomFormat
         {
             get => ((KryptonDateTimePicker)Control).CustomFormat;
 
@@ -310,14 +310,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Exposed Events
 
-        public event EventHandler ValueChanged;
+        public event EventHandler? ValueChanged;
 
         protected void OnValueChanged(object sender, EventArgs e)
         {
-            if (ValueChanged != null)
-            {
-                ValueChanged(this, e);
-            }
+            ValueChanged?.Invoke(this, e);
         }
 
         #endregion
@@ -332,11 +329,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         public override Size GetPreferredSize(Size constrainingSize) => DateTimePickerControl.GetPreferredSize(constrainingSize);
 
-        protected override void OnSubscribeControlEvents(Control control)
+        protected override void OnSubscribeControlEvents(Control? control)
         {
             base.OnSubscribeControlEvents(control);
 
-            ((KryptonDateTimePicker)control).ValueChanged += OnValueChanged;
+            ((control as KryptonDateTimePicker)!).ValueChanged += OnValueChanged;
         }
 
         protected override void OnUnsubscribeControlEvents(Control control)
