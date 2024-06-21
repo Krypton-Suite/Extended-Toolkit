@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         // declare Off screen image and Offscreen graphics
         private Image OffScreenImage;
-        private Graphics gOffScreen;
+        private System.Drawing.Graphics gOffScreen;
 
         // An event that clients can use to be notified whenever
         // the Value is Changed.
@@ -369,7 +369,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
+            System.Drawing.Graphics g = e.Graphics;
 
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
@@ -380,7 +380,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             bKnobPoint = new LinearGradientBrush(rKnob, KnobIndicatorColourBegin, KnobIndicatorColourEnd, LinearGradientMode.ForwardDiagonal);
 
             // Set background color of Image...
-            e.Graphics.FillRectangle(new SolidBrush(_KnobBackColour), new Rectangle(0, 0, Width, Height));
+            e.Graphics.FillRectangle(new System.Drawing.SolidBrush(_KnobBackColour), new Rectangle(0, 0, Width, Height));
             //gOffScreen.Clear(BackColor);
             // Fill knob Background to give knob effect....
             gOffScreen.FillEllipse(bKnob, rKnob);
@@ -395,7 +395,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 gOffScreen.DrawEllipse(DottedPen, rKnob);
             }
             // get current position of pointer
-            Point Arrow = getKnobPosition();
+            Point Arrow = GetKnobPosition();
             // Draw pointer arrow that shows knob position
 
             Rectangle rect = new Rectangle(Arrow.X - 3, Arrow.Y - 3, 6, 6);
@@ -408,7 +408,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             {
                 for (i = Minimum; i <= Maximum; i = i + _SmallChange)
                 {
-                    gOffScreen.DrawLine(new Pen(ForeColor), getMarkerPoint(0, i), getMarkerPoint(_SizeSmallScaleMarker, i));
+                    gOffScreen.DrawLine(new Pen(ForeColor), GetMarkerPoint(0, i), GetMarkerPoint(_SizeSmallScaleMarker, i));
                 }
             }
 
@@ -416,7 +416,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             {
                 for (i = Minimum; i <= Maximum; i = i + _LargeChange)
                 {
-                    gOffScreen.DrawLine(new Pen(ForeColor), getMarkerPoint(0, i), getMarkerPoint(_SizeLargeScaleMarker, i));
+                    gOffScreen.DrawLine(new Pen(ForeColor), GetMarkerPoint(0, i), GetMarkerPoint(_SizeLargeScaleMarker, i));
                 }
             }
 
@@ -428,12 +428,12 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             //base.OnPaintBackground(e);
             //e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            e.Graphics.FillRectangle(new SolidBrush(_KnobBackColour), new Rectangle(0, 0, Width, Height));
+            e.Graphics.FillRectangle(new System.Drawing.SolidBrush(_KnobBackColour), new Rectangle(0, 0, Width, Height));
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            if (isPointinRectangle(new Point(e.X, e.Y), rKnob))
+            if (IsPointinRectangle(new Point(e.X, e.Y), rKnob))
             {
                 // Start Rotation of knob
                 isKnobRotating = true;
@@ -474,7 +474,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             // Stop rotation
             isKnobRotating = false;
-            if (isPointinRectangle(new Point(e.X, e.Y), rKnob))
+            if (IsPointinRectangle(new Point(e.X, e.Y), rKnob))
             {
                 // get value
                 Value = getValueFromPosition(new Point(e.X, e.Y));
@@ -553,10 +553,10 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             // create offscreen image
             OffScreenImage = new Bitmap(Width, Height);
             // create offscreen graphics
-            gOffScreen = Graphics.FromImage(OffScreenImage);
+            gOffScreen = System.Drawing.Graphics.FromImage(OffScreenImage);
         }
 
-        private void Knob_Resize(object sender, System.EventArgs e)
+        private void Knob_Resize(object sender, EventArgs e)
         {
             setDimensions();
             Invalidate();
@@ -564,15 +564,15 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
 
         // gets knob position that is to be drawn on control.
-        private Point getKnobPosition()
+        private Point GetKnobPosition()
         {
             double degree = 270 * Value / (Maximum - Minimum);
             degree = (degree + 135) * Math.PI / 180;
 
-            Point Pos = new Point(0, 0);
-            Pos.X = (int)Math.Round((double)(Math.Cos(degree) * ((double)rKnob.Width / 2.0 - 10.0) + rKnob.X + (double)rKnob.Width / 2.0));
-            Pos.Y = (int)Math.Round((double)(Math.Sin(degree) * ((double)rKnob.Width / 2.0 - 10.0) + rKnob.Y + (double)rKnob.Height / 2.0));
-            return Pos;
+            Point pos = new Point(0, 0);
+            pos.X = (int)Math.Round(Math.Cos(degree) * (rKnob.Width / 2.0 - 10.0) + rKnob.X + rKnob.Width / 2.0);
+            pos.Y = (int)Math.Round(Math.Sin(degree) * (rKnob.Width / 2.0 - 10.0) + rKnob.Y + rKnob.Height / 2.0);
+            return pos;
         }
 
 
@@ -580,7 +580,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         // <param name="length">distance from center</param>
         // <param name="Value">value that is to be marked</param>
         // <returns>Point that describes marker position</returns>
-        private Point getMarkerPoint(int length, int Value)
+        private Point GetMarkerPoint(int length, int Value)
         {
             double degree = 270 * Value / (Maximum - Minimum);
             degree = (degree + 135) * Math.PI / 180;
@@ -690,17 +690,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         // <param name="p">Point to be Chaecked</param>
         // <param name="r">Rectangle</param>
         // <returns>true is Point is in rectangle, else false</returns>
-        public bool isPointinRectangle(Point p, Rectangle r)
+        public bool IsPointinRectangle(Point p, Rectangle r)
         {
-            bool flag = false;
-            if (p.X > r.X & p.X < r.X + r.Width & p.Y > r.Y & p.Y < r.Y + r.Height)
-            {
-                flag = true;
-            }
+            bool flag = p.X > r.X & p.X < r.X + r.Width & p.Y > r.Y & p.Y < r.Y + r.Height;
             return flag;
         }
 
-        public void DrawInsetCircle(ref Graphics g, ref Rectangle r, Pen p)
+        public void DrawInsetCircle(ref System.Drawing.Graphics g, ref Rectangle r, Pen p)
         {
             int i;
             Pen p1 = new Pen(getDarkColor(p.Color, 50));

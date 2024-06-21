@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
     {
         #region Instances
 
-        private KryptonManager _manager = null;
+        private KryptonManager _manager;
 
         #endregion
 
@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             AutoCompleteMode = AutoCompleteMode.SuggestAppend;
 
-            ThemeManager.PropagateThemeSelector(this);
+            //ThemeManager.PropagateThemeSelector(this);
         }
 
         #endregion

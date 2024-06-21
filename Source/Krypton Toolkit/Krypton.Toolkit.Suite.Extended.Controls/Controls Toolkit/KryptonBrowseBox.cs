@@ -151,15 +151,15 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             _kcReset = new KryptonCommand();
 
-            _smallResetImage = Properties.Resources.Reset_16_x_16;
+            _smallResetImage = Resources.Reset_16_x_16;
 
-            _largeResetImage = Properties.Resources.Reset_32_x_32;
+            _largeResetImage = Resources.Reset_32_x_32;
 
-            _bsaBrowse.Text = "...";
+            _bsaBrowse.Text = @"...";
 
             _bsaBrowse.KryptonCommand = _kcBrowse;
 
-            _kcBrowse.Text = "...";
+            _kcBrowse.Text = @"...";
 
             _bsaReset.ToolTipImage = _smallResetImage;
 

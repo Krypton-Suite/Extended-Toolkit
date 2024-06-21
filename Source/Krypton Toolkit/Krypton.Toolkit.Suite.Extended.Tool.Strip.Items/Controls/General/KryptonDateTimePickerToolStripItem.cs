@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region Public
 
         [RefreshProperties(RefreshProperties.All), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public KryptonDateTimePicker DateTimePickerControl => Control as KryptonDateTimePicker;
+        public KryptonDateTimePicker? DateTimePickerControl => Control as KryptonDateTimePicker;
 
         #endregion
 
@@ -327,20 +327,20 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Overrides
 
-        public override Size GetPreferredSize(Size constrainingSize) => DateTimePickerControl.GetPreferredSize(constrainingSize);
+        public override Size GetPreferredSize(Size constrainingSize) => DateTimePickerControl!.GetPreferredSize(constrainingSize);
 
         protected override void OnSubscribeControlEvents(Control? control)
         {
             base.OnSubscribeControlEvents(control);
 
-            ((control as KryptonDateTimePicker)!).ValueChanged += OnValueChanged;
+            ((control as KryptonDateTimePicker)!).ValueChanged += OnValueChanged!;
         }
 
-        protected override void OnUnsubscribeControlEvents(Control control)
+        protected override void OnUnsubscribeControlEvents(Control? control)
         {
             base.OnUnsubscribeControlEvents(control);
 
-            ((KryptonDateTimePicker)control).ValueChanged -= OnValueChanged;
+            ((control as KryptonDateTimePicker)!).ValueChanged -= OnValueChanged!;
         }
 
         #endregion

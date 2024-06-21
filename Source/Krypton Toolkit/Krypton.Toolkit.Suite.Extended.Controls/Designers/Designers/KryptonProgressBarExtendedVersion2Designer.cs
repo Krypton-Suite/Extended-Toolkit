@@ -35,18 +35,18 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         /* Gets a list of System.Windows.Forms.Design.Behavior.SnapLine 
         objects, representing alignment points for the edited control. */
-        public override IList SnapLines
+        public override IList? SnapLines
         {
             get
             {
                 // Get the SnapLines collection from the base class
-                ArrayList snapList = base.SnapLines as ArrayList;
+                ArrayList? snapList = base.SnapLines as ArrayList;
 
                 // Calculate the Baseline for the Font used by the Control and add it to the SnapLines
                 int textBaseline = GetBaseline(base.Control, ContentAlignment.MiddleCenter);
                 if (textBaseline > 0)
                 {
-                    snapList.Add(new SnapLine(SnapLineType.Baseline, textBaseline, SnapLinePriority.Medium));
+                    snapList?.Add(new SnapLine(SnapLineType.Baseline, textBaseline, SnapLinePriority.Medium));
                 }
 
                 return snapList;
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             using (Graphics graphics = ctrl.CreateGraphics())
             {
                 // Retrieve the device context Handle
-                IntPtr hDC = graphics.GetHdc();
+                IntPtr hDc = graphics.GetHdc();
 
                 // Create a wrapper for the Font of the Control
                 Font controlFont = ctrl.Font;
@@ -74,17 +74,17 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 try
                 {
                     // Create a wrapper for the device context
-                    HandleRef deviceContextHandle = new HandleRef(ctrl, hDC);
+                    HandleRef deviceContextHandle = new HandleRef(ctrl, hDc);
 
                     // Select the Font into the device context
                     IntPtr originalFont = SafeNativeMethods.SelectObject(deviceContextHandle, tempFontHandle);
 
                     // Create a TEXTMETRIC and calculate metrics for the selected Font
-                    NativeMethods.TEXTMETRIC tEXTMETRIC = new NativeMethods.TEXTMETRIC();
-                    if (SafeNativeMethods.GetTextMetrics(deviceContextHandle, ref tEXTMETRIC) != 0)
+                    NativeMethods.TEXTMETRIC textmetric = new NativeMethods.TEXTMETRIC();
+                    if (SafeNativeMethods.GetTextMetrics(deviceContextHandle, ref textmetric) != 0)
                     {
-                        textAscent = tEXTMETRIC.tmAscent + 1;
-                        textHeight = tEXTMETRIC.tmHeight;
+                        textAscent = textmetric.tmAscent + 1;
+                        textHeight = textmetric.tmHeight;
                     }
 
                     // Restore original Font
@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     SafeNativeMethods.DeleteObject(tempFontHandle);
 
                     // Release device context
-                    graphics.ReleaseHdc(hDC);
+                    graphics.ReleaseHdc(hDc);
                 }
             }
 

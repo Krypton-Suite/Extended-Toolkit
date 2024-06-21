@@ -108,8 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Bigger value means faster moving text.
         /// Text scrolling speed in pixels per seconds can be expressed with the following formula:
         /// <br></br>
-        /// 1000 * ScrolStep/RefreshInterval
-        /// </summary>
+        /// 1000 * ScrollStep/RefreshInterval
         /// </summary>
         [Browsable(true)]
         [DefaultValue(DEFAULT_SCROLL_STEP)]
@@ -118,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         /// <summary>
         /// When sets to 'true', every time mouse pointer moves over tool strip item, scrolling stops.
-        /// Otherwise scrolling never stops.
+        /// Otherwise, scrolling never stops.
         /// </summary>
         [Browsable(true)]
         [DefaultValue(DEFAULT_STOP_SCROLL_ON_MOUSE_OVER)]
@@ -154,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             MarqueeScrollDirection = DEFAULT_MARQUEE_SCROLL_DIRECTION;
             _timer = new Timer();
             _timer.Interval = DEFAULT_REFRESH_INTERVAL;
-            _timer.Tick += new EventHandler(timer_Tick);
+            _timer.Tick += timer_Tick;
             _timer.Enabled = true;
 
             if (MarqueeScrollDirection == MarqueeScrollDirection.RightToLeft)

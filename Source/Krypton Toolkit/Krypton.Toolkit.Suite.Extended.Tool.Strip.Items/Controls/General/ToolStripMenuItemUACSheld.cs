@@ -159,10 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
         protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e)
         {
-            if (ExecuteProcessAsAdministrator != null)
-            {
-                ExecuteProcessAsAdministrator(sender, e);
-            }
+            ExecuteProcessAsAdministrator?.Invoke(sender, e);
         }
     }
 }

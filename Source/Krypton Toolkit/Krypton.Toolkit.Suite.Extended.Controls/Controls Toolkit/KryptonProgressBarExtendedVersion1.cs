@@ -25,6 +25,8 @@
  */
 #endregion
 
+using Timer = System.Windows.Forms.Timer;
+
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     [Obsolete(@"Please use the native KryptonProgressBar instead.")]

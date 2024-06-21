@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
                 pe.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-                pe.Graphics.DrawEllipse(new Pen(new SolidBrush(BackColor), 1), 0, 0, Width - 1, Height - 1);
+                pe.Graphics.DrawEllipse(new Pen(new System.Drawing.SolidBrush(BackColor), 1), 0, 0, Width - 1, Height - 1);
             }
 
             base.OnPaint(pe);

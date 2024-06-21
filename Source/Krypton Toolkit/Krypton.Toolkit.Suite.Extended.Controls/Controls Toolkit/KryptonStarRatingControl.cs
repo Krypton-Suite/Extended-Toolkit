@@ -25,8 +25,6 @@
  */
 #endregion
 
-using System.Collections.Generic;
-
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     [ToolboxBitmap(typeof(Panel))]

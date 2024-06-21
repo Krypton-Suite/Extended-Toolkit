@@ -1,7 +1,5 @@
 ﻿using System.Globalization;
 
-using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
-
 namespace Examples
 {
     public class OutlookGridPriceGroup : OutlookGridDefaultGroup
@@ -31,10 +29,7 @@ namespace Examples
         /// <summary>
         /// Gets or sets the displayed text.
         /// </summary>
-        public override string Text
-        {
-            get { return string.Format("{0}: {1} ({2})", Column.DataGridViewColumn.HeaderText, GetPriceString(_priceCode), ItemCount == 1 ? OneItemText : ItemCount.ToString() + XxxItemsText); }
-        }
+        public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {GetPriceString(_priceCode)} ({(ItemCount == 1 ? OneItemText : ItemCount.ToString() + XxxItemsText)})";
 
         private int GetPriceCode(decimal price)
         {

@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Switches between CheckkBox or RadioButton style.
         /// </summary>
         [RefreshProperties(RefreshProperties.Repaint), NotifyParentProperty(true), DefaultValue(CheckMarkDisplayStyle.RadioButton)]
-        public CheckMarkDisplayStyle DisplayStyle
+        public new CheckMarkDisplayStyle DisplayStyle
         {
             set
             {
@@ -88,9 +88,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             if (DisplayStyle == CheckMarkDisplayStyle.RadioButton && CheckOnClick)
             {
-                ToolStrip toolStrip = GetCurrentParent();
+                ToolStrip? toolStrip = GetCurrentParent();
 
-                foreach (ToolStripItem items in toolStrip.Items)
+                foreach (ToolStripItem items in toolStrip!.Items)
                 {
                     if (items is EnhancedToolStripMenuItem)
                     {

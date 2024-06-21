@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Xml.Linq;
-using System.Xml.XPath;
-
-using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+﻿//using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
 #pragma warning disable CS8600
 #pragma warning disable CS8602
 #pragma warning disable CS8604
@@ -24,6 +20,7 @@ namespace Examples
 
         #region Implementaton
 
+        /*
         public void SetupDataGridView(KryptonOutlookGrid grid, bool restoreIfPossible)
         {
             if (File.Exists($"{Application.StartupPath}/grid.xml") & restoreIfPossible)
@@ -350,7 +347,7 @@ namespace Examples
                 default:
                     throw new Exception("Unknown Column Type !! TODO improve that !");
             }
-        }
+        }*/
 
         #endregion
     }

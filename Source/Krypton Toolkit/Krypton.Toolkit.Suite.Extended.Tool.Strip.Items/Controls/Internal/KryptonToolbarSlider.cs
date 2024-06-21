@@ -125,10 +125,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             // add Palette Handler
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
             }
 
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new PaletteRedirect(_palette);
@@ -226,20 +226,17 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     m_mementoBack2 = null;
                 }
 
-                if (components != null)
-                {
-                    components.Dispose();
-                }
+                components?.Dispose();
 
 
                 if (_palette != null)
                 {
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette.PalettePaint -= OnPalettePaint;
                     _palette = null;
                 }
 
 
-                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
 
             }
 
@@ -273,10 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     m_paletteContent.Style = PaletteContentStyle.ButtonStandalone;
 
                     // Cleaup resources by disposing of old memento instance
-                    if (m_mementoContent != null)
-                    {
-                        m_mementoContent.Dispose();
-                    }
+                    m_mementoContent?.Dispose();
 
                     // Ask the renderer to work out how the Content values will be layed out and
                     // return a memento object that we cache for use when actually performing painting
@@ -496,10 +490,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             if (Enabled)
             {
-                if (ValueChanged != null)
-                {
-                    ValueChanged(this, new SliderEventArgs(NewValue, m_value, m_range, m_step));
-                }
+                ValueChanged?.Invoke(this, new SliderEventArgs(NewValue, m_value, m_range, m_step));
                 m_value = NewValue;
             }
         }
@@ -791,7 +782,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             if (_palette != null)
             {
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
             }
 
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -799,7 +790,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 //repaint with new values
 
                 //set colors

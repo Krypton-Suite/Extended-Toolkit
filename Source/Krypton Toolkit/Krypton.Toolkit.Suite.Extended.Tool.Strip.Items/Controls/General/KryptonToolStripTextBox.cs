@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
     public class KryptonToolStripTextBox : ToolStripControlHost
     {
         #region Properties
-        public KryptonTextBox KryptonTextBox => Control as KryptonTextBox;
+        public KryptonTextBox? KryptonTextBox => Control as KryptonTextBox;
 
         #endregion
 
@@ -45,26 +45,26 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region Overrides
         protected override void OnSubscribeControlEvents(Control control)
         {
-            KryptonTextBox kryptonTextBox = control as KryptonTextBox;
+            var kryptonTextBox = control as KryptonTextBox;
 
-            kryptonTextBox.TextAlignChanged += new EventHandler(TextAlignChanged);
+            kryptonTextBox!.TextAlignChanged += TextAlignChanged;
 
-            kryptonTextBox.TextChanged += new EventHandler(Text_Changed);
+            kryptonTextBox.TextChanged += Text_Changed;
 
-            kryptonTextBox.FontChanged += new EventHandler(FontChanged);
+            kryptonTextBox.FontChanged += FontChanged;
 
             base.OnSubscribeControlEvents(control);
         }
 
         protected override void OnUnsubscribeControlEvents(Control control)
         {
-            KryptonTextBox kryptonTextBox = control as KryptonTextBox;
+            var kryptonTextBox = control as KryptonTextBox;
 
-            kryptonTextBox.TextAlignChanged -= new EventHandler(TextAlignChanged);
+            kryptonTextBox!.TextAlignChanged -= TextAlignChanged;
 
-            kryptonTextBox.TextChanged -= new EventHandler(Text_Changed);
+            kryptonTextBox.TextChanged -= Text_Changed;
 
-            kryptonTextBox.FontChanged -= new EventHandler(FontChanged);
+            kryptonTextBox.FontChanged -= FontChanged;
 
             base.OnUnsubscribeControlEvents(control);
         }

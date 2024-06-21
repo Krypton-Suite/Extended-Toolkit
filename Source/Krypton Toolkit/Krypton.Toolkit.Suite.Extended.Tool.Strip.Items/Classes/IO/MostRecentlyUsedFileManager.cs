@@ -25,35 +25,37 @@
  */
 #endregion
 
+// ReSharper disable InconsistentNaming
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     /// <summary>
     /// Deals with the back-end logic of a most recently used file <see cref="MRUMenuItem"/>.
     /// Adapted from (https://www.codeproject.com/Articles/407513/Add-Most-Recently-Used-Files-MRU-List-to-Windows).
     /// </summary>
-    internal class MostRecentlyUsedFileManager
+    public class MostRecentlyUsedFileManager
     {
         #region Instance Fields
 
         private bool _useConfirmClearListDialogue;
 
-        private string _applicationName, _subKeyName, _filePath;
+        private string? _applicationName;
+        private readonly string _subKeyName;
+        private string _filePath;
+        private readonly MRUMenuItem? _parentMenuItem;
 
-        private MRUMenuItem _parentMenuItem;
-
-        private ToolStripMenuItemUACSheld _clearListItem;
+        private readonly ToolStripMenuItemUACSheld _clearListItem;
 
         private UtilityMethods _utilityMethods = new UtilityMethods();
 
-        private GlobalMethods _globalMethods = new GlobalMethods();
+        private readonly GlobalMethods _globalMethods = new GlobalMethods();
 
         #endregion
 
         #region Events
 
-        private Action<object, EventArgs> OnRecentFileClick;
+        private Action<object, EventArgs>? OnRecentFileClick;
 
-        private Action<object, EventArgs> OnClearRecentFilesClick;
+        private Action<object, EventArgs>? OnClearRecentFilesClick;
 
         #endregion
 
@@ -61,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         public bool UseConfirmClearListDialogue { get => _useConfirmClearListDialogue; set => _useConfirmClearListDialogue = value; }
 
-        public string ApplicationName { get => _applicationName; set => _applicationName = value; }
+        public string? ApplicationName { get => _applicationName; set => _applicationName = value; }
 
         public string FilePath { get => _filePath; set => _filePath = value; }
 
@@ -76,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <param name="onClearRecentFilesClick">The on clear recent files click.</param>
         /// <param name="useConfirmClearListDialogue">if set to <c>true</c> [use confirm clear list dialogue].</param>
         /// <exception cref="System.ArgumentException">Bad argument.</exception>
-        public MostRecentlyUsedFileManager(MRUMenuItem parentMenuItem, string applicationName, Action<object, EventArgs> onRecentFileClick, Action<object, EventArgs> onClearRecentFilesClick = null, bool useConfirmClearListDialogue = false)
+        public MostRecentlyUsedFileManager(MRUMenuItem? parentMenuItem, string? applicationName, Action<object, EventArgs>? onRecentFileClick, Action<object, EventArgs>? onClearRecentFilesClick = null, bool useConfirmClearListDialogue = false)
         {
             if (parentMenuItem == null || onRecentFileClick == null || applicationName == null || applicationName.Length == 0 || applicationName.Contains("\\"))
             {
@@ -138,10 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 Console.WriteLine(ex.ToString());
             }
 
-            if (OnClearRecentFilesClick != null)
-            {
-                OnClearRecentFilesClick(obj, evt);
-            }
+            OnClearRecentFilesClick?.Invoke(obj, evt);
         }
 
         /// <summary>
@@ -151,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             try
             {
-                RegistryKey rK = Registry.CurrentUser.OpenSubKey(_subKeyName, true);
+                RegistryKey? rK = Registry.CurrentUser.OpenSubKey(_subKeyName, true);
 
                 if (rK == null)
                 {
@@ -167,7 +166,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 rK.Close();
 
-                _parentMenuItem.DropDownItems.Clear();
+                _parentMenuItem!.DropDownItems.Clear();
 
                 _parentMenuItem.Enabled = false;
             }
@@ -182,9 +181,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// </summary>
         private void RefreshRecentFilesMenu()
         {
-            RegistryKey rK;
+            RegistryKey? rK;
 
-            string s;
+            string? s;
 
             ToolStripItem tSI;
 
@@ -194,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 if (rK == null)
                 {
-                    _parentMenuItem.Enabled = false;
+                    _parentMenuItem!.Enabled = false;
 
                     return;
                 }
@@ -208,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 return;
             }
 
-            _parentMenuItem.DropDownItems.Clear();
+            _parentMenuItem!.DropDownItems.Clear();
 
             string[] valueNames = rK.GetValueNames();
 
@@ -223,7 +222,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 tSI = _parentMenuItem.DropDownItems.Add(s);
 
-                tSI.Click += new EventHandler(OnRecentFileClick);
+                tSI.Click += new EventHandler(OnRecentFileClick!);
             }
 
             if (_parentMenuItem.DropDownItems.Count == 0)
@@ -237,7 +236,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             tSI = _parentMenuItem.DropDownItems.Add("&Clear list");
 
-            tSI.Click += new EventHandler(OnClearRecentFiles_Click);
+            tSI.Click += OnClearRecentFiles_Click;
 
             _parentMenuItem.Enabled = true;
         }
@@ -248,29 +247,29 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Adds the recent file.
         /// </summary>
         /// <param name="fileNameWithFullPath">The file name with full path.</param>
-        public void AddRecentFile(string fileNameWithFullPath)
+        public void AddRecentFile(string? fileNameWithFullPath)
         {
-            string s;
+            string? s;
 
             try
             {
-                RegistryKey rK = Registry.CurrentUser.CreateSubKey(_subKeyName, RegistryKeyPermissionCheck.ReadWriteSubTree);
+                RegistryKey? rK = Registry.CurrentUser.CreateSubKey(_subKeyName, RegistryKeyPermissionCheck.ReadWriteSubTree);
 
-                for (int i = 0; true; i++)
+                for (int i = 0; ; i++)
                 {
-                    s = rK.GetValue(i.ToString(), null) as string;
+                    s = rK?.GetValue(i.ToString(), null) as string;
 
                     if (s == null)
                     {
-                        rK.SetValue(i.ToString(), fileNameWithFullPath);
+                        rK?.SetValue(i.ToString(), fileNameWithFullPath!);
 
-                        rK.Close();
+                        rK?.Close();
 
                         break;
                     }
                     else if (s == fileNameWithFullPath)
                     {
-                        rK.Close();
+                        rK?.Close();
 
                         break;
                     }
@@ -289,13 +288,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Removes the recent file.
         /// </summary>
         /// <param name="fileNameWithFullPath">The file name with full path.</param>
-        public void RemoveRecentFile(string fileNameWithFullPath)
+        public void RemoveRecentFile(string? fileNameWithFullPath)
         {
             try
             {
-                RegistryKey rK = Registry.CurrentUser.OpenSubKey(_subKeyName, true);
+                RegistryKey? rK = Registry.CurrentUser.OpenSubKey(_subKeyName, true);
 
-                string[] valuesNames = rK.GetValueNames();
+                string[] valuesNames = rK!.GetValueNames();
 
                 foreach (string valueName in valuesNames)
                 {

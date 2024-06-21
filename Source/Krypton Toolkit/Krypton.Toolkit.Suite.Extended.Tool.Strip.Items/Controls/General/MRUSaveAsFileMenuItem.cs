@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private bool _useSystemDialogs;
 
-        private Control _outputControl = null;
+        private Control? _outputControl;
 
         private string _defaultText = "Save &As";
 
@@ -52,7 +52,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private MRUMenuItem _parentMruMenuItem;
 
-        private MostRecentlyUsedFileManager _recentlyUsedFileManager = null;
+        private readonly MostRecentlyUsedFileManager? _recentlyUsedFileManager;
+
+        public MRUSaveAsFileMenuItem(MostRecentlyUsedFileManager? recentlyUsedFileManager)
+        {
+            _recentlyUsedFileManager = recentlyUsedFileManager;
+        }
 
         #endregion
 
@@ -65,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary>Gets or sets the control to load the file content text into.</summary>
         /// <value>The control to load the file content text into.</value>
         [DefaultValue(null), Description("The control to load the file content text into.")]
-        public Control OutputControl { get => _outputControl; set => _outputControl = value; }
+        public Control? OutputControl { get => _outputControl; set => _outputControl = value; }
 
         /// <summary>Gets or sets the text displayed on the tool strip menu item.</summary>
         /// <value>The text displayed on the tool strip menu item.</value>

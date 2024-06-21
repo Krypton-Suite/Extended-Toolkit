@@ -50,7 +50,6 @@
             this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             this.kcmbMessageContentType = new Krypton.Toolkit.KryptonComboBox();
-            this.kryptonThemeComboBox1 = new Krypton.Toolkit.KryptonThemeComboBox();
             this.kryptonGroupBox2 = new Krypton.Toolkit.KryptonGroupBox();
             this.kryptonComboBox3 = new Krypton.Toolkit.KryptonComboBox();
             this.ktxtCustomButtonFourText = new Krypton.Toolkit.KryptonTextBox();
@@ -87,7 +86,6 @@
             this.kryptonGroupBox3.Panel.SuspendLayout();
             this.kryptonGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbMessageContentType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonThemeComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2.Panel)).BeginInit();
             this.kryptonGroupBox2.Panel.SuspendLayout();
@@ -115,7 +113,6 @@
             this.kryptonPanel1.Controls.Add(this.kmbFillText);
             this.kryptonPanel1.Controls.Add(this.kbtnShow);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox3);
-            this.kryptonPanel1.Controls.Add(this.kryptonThemeComboBox1);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox2);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox1);
             this.kryptonPanel1.Controls.Add(this.groupBoxIcon);
@@ -353,18 +350,6 @@
             this.kcmbMessageContentType.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbMessageContentType.TabIndex = 2;
             this.kcmbMessageContentType.SelectedIndexChanged += new System.EventHandler(this.kcmbMessageContentType_SelectedIndexChanged);
-            // 
-            // kryptonThemeComboBox1
-            // 
-            this.kryptonThemeComboBox1.CueHint.Padding = new System.Windows.Forms.Padding(0);
-            this.kryptonThemeComboBox1.DropDownWidth = 311;
-            this.kryptonThemeComboBox1.IntegralHeight = false;
-            this.kryptonThemeComboBox1.Location = new System.Drawing.Point(404, 13);
-            this.kryptonThemeComboBox1.Name = "kryptonThemeComboBox1";
-            this.kryptonThemeComboBox1.ReportSelectedThemeIndex = false;
-            this.kryptonThemeComboBox1.Size = new System.Drawing.Size(311, 21);
-            this.kryptonThemeComboBox1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonThemeComboBox1.TabIndex = 14;
             // 
             // kryptonGroupBox2
             // 
@@ -609,7 +594,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).EndInit();
             this.kryptonGroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kcmbMessageContentType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonThemeComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2.Panel)).EndInit();
             this.kryptonGroupBox2.Panel.ResumeLayout(false);
             this.kryptonGroupBox2.Panel.PerformLayout();
@@ -652,7 +636,6 @@
         private Krypton.Toolkit.KryptonTextBox ktxtCustomButtonTwoText;
         private Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
         private Krypton.Toolkit.KryptonTextBox ktxtCustomButtonOneText;
-        private KryptonThemeComboBox kryptonThemeComboBox1;
         private KryptonComboBox kcmbMessageBoxIcon;
         private KryptonTextBox kryptonTextBox1;
         private KryptonComboBox kcmbMessageBoxButtons;
