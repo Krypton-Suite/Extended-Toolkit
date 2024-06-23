@@ -7,9 +7,9 @@ namespace Examples
         private int _priceCode;
         private string _currency;
 
-        private object val;
+        private object? _val;
 
-        private const int noPrice = 999999;
+        private const int NO_PRICE = 999999;
         public OutlookGridPriceGroup() : base()
         {
             AllowHiddenWhenGrouped = false;
@@ -109,20 +109,20 @@ namespace Examples
         /// <summary>
         /// Gets or sets the Alphabetic value
         /// </summary>
-        public override object Value
+        public override object? Value
         {
-            get { return val; }
+            get => _val;
             set
             {
-                if (object.ReferenceEquals(value, DBNull.Value) || value == null)
+                if (ReferenceEquals(value, DBNull.Value) || value == null)
                 {
-                    _priceCode = noPrice;
-                    val = _priceCode;
+                    _priceCode = NO_PRICE;
+                    _val = _priceCode;
                 }
                 else
                 {
                     _priceCode = GetPriceCode(decimal.Parse(value.ToString()));
-                    val = _priceCode;
+                    _val = _priceCode;
                 }
             }
         }
@@ -138,7 +138,7 @@ namespace Examples
             OutlookGridPriceGroup gr = new OutlookGridPriceGroup(this.ParentGroup);
 
             gr.Column = this.Column;
-            gr.Value = this.val;
+            gr.Value = this._val;
             gr.Collapsed = this.Collapsed;
             gr.Height = this.Height;
             gr.GroupImage = this.GroupImage;
@@ -162,10 +162,10 @@ namespace Examples
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public override int CompareTo(object obj)
+        public override int CompareTo(object? obj)
         {
             int orderModifier = (Column.SortDirection == SortOrder.Ascending ? 1 : -1);
-            int priceOther = 0;
+            int priceOther;
 
             if (obj is OutlookGridPriceGroup)
             {
@@ -173,7 +173,7 @@ namespace Examples
             }
             else
             {
-                priceOther = noPrice;
+                priceOther = NO_PRICE;
             }
             return _priceCode.CompareTo(priceOther) * orderModifier;
         }

@@ -308,7 +308,7 @@ namespace Examples
                     startRow = kadgvMain.CurrentCell.RowIndex + (endcol ? 1 : 0);
                 }
             }
-            DataGridViewCell c = kadgvMain.FindCell(
+            DataGridViewCell? c = kadgvMain.FindCell(
                 e.ValueToSearch,
                 e.ColumnToSearch != null ? e.ColumnToSearch.Name : null,
                 startRow,

@@ -7,7 +7,7 @@
     {
         public Status(int id, string name)
         {
-            _id = id; 
+            _id = id;
             _name = name;
         }
 
@@ -19,7 +19,7 @@
             get => _id;
             set => _id = value;
         }
-        public string Name 
+        public string Name
         {
             get => _name;
             set => _name = value;
@@ -31,13 +31,4 @@
         /// <returns></returns>
         public override string ToString() => Name;
     }
-
-    /// <summary>
-    /// Class used for demo purposes. A list of "Status". 
-    /// This represents the custom "IList" datasource of anything listed in a CheckBoxComboBox.
-    /// </summary>
-    public class StatusList : List<Status>
-    {
-    }
-
 }

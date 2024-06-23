@@ -13,10 +13,4 @@
         SatisfactionColumn = 8,
         ColumnToken = 9
     }
-
-    public enum LoadState
-    {
-        Before,
-        After
-    }
 }
