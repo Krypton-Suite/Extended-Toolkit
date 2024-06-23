@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>Gets or sets the reset text.</summary>
         /// <value>The reset text.</value>
         [DefaultValue(@"&Reset"), Description(@"Gets or sets the reset text.")]
-        public string ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
+        public new string ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
 
         /// <summary>Gets or sets the reset text tool tip heading.</summary>
         /// <value>The reset text tool tip heading.</value>

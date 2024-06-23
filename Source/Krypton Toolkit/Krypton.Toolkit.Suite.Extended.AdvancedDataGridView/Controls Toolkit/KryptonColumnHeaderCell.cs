@@ -64,7 +64,6 @@
 #endregion
 
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-#pragma warning disable CS8600, CS8622, CS8602
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
@@ -168,10 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public bool FilterAndSortEnabled
         {
-            get
-            {
-                return _filterEnabled;
-            }
+            get => _filterEnabled;
             set
             {
                 if (!value)
@@ -184,12 +180,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     _filterEnabled = value;
                     bool refreshed = false;
-                    if (MenuStrip.FilterString.Length > 0)
+                    if (MenuStrip.FilterString!.Length > 0)
                     {
                         MenuStrip_FilterChanged(this, new EventArgs());
                         refreshed = true;
                     }
-                    if (MenuStrip.SortString.Length > 0)
+                    if (MenuStrip.SortString!.Length > 0)
                     {
                         MenuStrip_SortChanged(this, new EventArgs());
                         refreshed = true;
@@ -345,28 +341,17 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get the Minimum size
         /// </summary>
-        public Size MinimumSize
-        {
-            get
-            {
-                return new Size(_filterButtonImageSize.Width + _filterButtonMargin.Left + _filterButtonMargin.Right,
-                    _filterButtonImageSize.Height + _filterButtonMargin.Bottom + _filterButtonMargin.Top);
-            }
-        }
+        public Size MinimumSize =>
+            new(_filterButtonImageSize.Width + _filterButtonMargin.Left + _filterButtonMargin.Right,
+                _filterButtonImageSize.Height + _filterButtonMargin.Bottom + _filterButtonMargin.Top);
 
         /// <summary>
         /// Get or Set the Sort enabled status
         /// </summary>
         public bool IsSortEnabled
         {
-            get
-            {
-                return MenuStrip.IsSortEnabled;
-            }
-            set
-            {
-                MenuStrip.IsSortEnabled = value;
-            }
+            get => MenuStrip.IsSortEnabled;
+            set => MenuStrip.IsSortEnabled = value;
         }
 
         /// <summary>
@@ -374,14 +359,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public bool IsFilterEnabled
         {
-            get
-            {
-                return MenuStrip.IsFilterEnabled;
-            }
-            set
-            {
-                MenuStrip.IsFilterEnabled = value;
-            }
+            get => MenuStrip.IsFilterEnabled;
+            set => MenuStrip.IsFilterEnabled = value;
         }
 
         /// <summary>
@@ -389,14 +368,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public bool IsFilterChecklistEnabled
         {
-            get
-            {
-                return MenuStrip.IsFilterChecklistEnabled;
-            }
-            set
-            {
-                MenuStrip.IsFilterChecklistEnabled = value;
-            }
+            get => MenuStrip.IsFilterChecklistEnabled;
+            set => MenuStrip.IsFilterChecklistEnabled = value;
         }
 
         /// <summary>
@@ -404,14 +377,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public bool IsFilterDateAndTimeEnabled
         {
-            get
-            {
-                return MenuStrip.IsFilterDateAndTimeEnabled;
-            }
-            set
-            {
-                MenuStrip.IsFilterDateAndTimeEnabled = value;
-            }
+            get => MenuStrip.IsFilterDateAndTimeEnabled;
+            set => MenuStrip.IsFilterDateAndTimeEnabled = value;
         }
 
         /// <summary>
@@ -419,14 +386,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public bool IsMenuStripFilterNOTINLogicEnabled
         {
-            get
-            {
-                return MenuStrip.IsFilterNotinLogicEnabled;
-            }
-            set
-            {
-                MenuStrip.IsFilterNotinLogicEnabled = value;
-            }
+            get => MenuStrip.IsFilterNotinLogicEnabled;
+            set => MenuStrip.IsFilterNotinLogicEnabled = value;
         }
 
         /// <summary>
@@ -434,14 +395,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public bool DoesTextFilterRemoveNodesOnSearch
         {
-            get
-            {
-                return MenuStrip.DoesTextFilterRemoveNodesOnSearch;
-            }
-            set
-            {
-                MenuStrip.DoesTextFilterRemoveNodesOnSearch = value;
-            }
+            get => MenuStrip.DoesTextFilterRemoveNodesOnSearch;
+            set => MenuStrip.DoesTextFilterRemoveNodesOnSearch = value;
         }
 
         /// <summary>
@@ -449,14 +404,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public int TextFilterTextChangedDelayNodes
         {
-            get
-            {
-                return MenuStrip.TextFilterTextChangedDelayNodes;
-            }
-            set
-            {
-                MenuStrip.TextFilterTextChangedDelayNodes = value;
-            }
+            get => MenuStrip.TextFilterTextChangedDelayNodes;
+            set => MenuStrip.TextFilterTextChangedDelayNodes = value;
         }
 
         /// <summary>
@@ -743,7 +692,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <returns></returns>
         private Rectangle GetFilterBounds(bool withOffset = true)
         {
-            Rectangle cell = DataGridView.GetCellDisplayRectangle(ColumnIndex, -1, false);
+            Rectangle cell = DataGridView!.GetCellDisplayRectangle(ColumnIndex, -1, false);
 
             Point p = new Point(
                 (withOffset ? cell.Right : cell.Width) - _filterButtonImageSize.Width - _filterButtonMargin.Right,
