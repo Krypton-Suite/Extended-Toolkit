@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <param name="m"></param>
         protected override void WndProc(ref Message m)
         {
-            if ((Parent.Parent as Popup).ProcessResizing(ref m))
+            if (((Parent.Parent as Popup)!).ProcessResizing(ref m))
             {
                 return;
             }

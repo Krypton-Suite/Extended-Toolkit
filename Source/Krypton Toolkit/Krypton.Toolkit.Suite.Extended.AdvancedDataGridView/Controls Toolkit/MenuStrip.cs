@@ -65,9 +65,6 @@
 
 using Timer = System.Windows.Forms.Timer;
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-#pragma warning disable CS8602
-
-#pragma warning disable CS8625, CS8622
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     [DesignerCategory("code")]
@@ -1589,7 +1586,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private bool HasNodesChecked(TreeNodeItemSelector?[] nodes)
         {
             bool state = false;
-            if (!String.IsNullOrEmpty(_checkTextFilter.Text))
+            if (!string.IsNullOrEmpty(_checkTextFilter.Text))
             {
                 state = nodes.Any(n => n.CheckState == CheckState.Checked && n.Text.ToLower().Contains(_checkTextFilter.Text.ToLower()));
             }
@@ -1603,9 +1600,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 return state;
             }
 
-            foreach (TreeNodeItemSelector? node in nodes)
+            foreach (TreeNodeItemSelector node in nodes)
             {
-                foreach (TreeNodeItemSelector? nodesel in node.Nodes)
+                foreach (TreeNodeItemSelector nodesel in node!.Nodes)
                 {
                     state = HasNodesChecked(new TreeNodeItemSelector[] { nodesel });
                     if (state)
