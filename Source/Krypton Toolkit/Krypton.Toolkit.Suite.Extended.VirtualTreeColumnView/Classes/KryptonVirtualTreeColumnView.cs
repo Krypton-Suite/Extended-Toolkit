@@ -727,7 +727,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
             }
         }
 
-        private bool ShouldSerializeBackStyle() => (BackStyle != PaletteBackStyle.PanelClient);
+        private bool ShouldSerializeBackStyle() => BackStyle != PaletteBackStyle.PanelClient;
 
         private void ResetBackStyle() => BackStyle = PaletteBackStyle.PanelClient;
 
@@ -1241,7 +1241,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
 
             // Only use layout logic if control is fully initialized or if being forced
             // to allow a relayout or if in design mode.
-            if (IsHandleCreated || _forcedLayout || (DesignMode && (_treeView != null)))
+            if (IsHandleCreated || _forcedLayout || (DesignMode && _treeView != null))
             {
                 Rectangle fillRect = _layoutFill.FillRect;
                 _treeView.SetBounds(fillRect.X, fillRect.Y, fillRect.Width, fillRect.Height);

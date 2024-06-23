@@ -6,6 +6,7 @@
 =======
 
 ## 2024-11-xx - Build 2411 - November 2024
+* New `KryptonPasswordTextBox` control
 * `Krypton.Toolkit.Suite.Extended.Outlook.Grid` is now deprecated, as it has now been absorbed into the standard toolkit
 * Implement [#404](https://github.com/Krypton-Suite/Extended-Toolkit/issues/404), Update 'ScottPlot' to v5
 * `KryptonMessageBoxExtended` now supports RTL reading
@@ -16,6 +17,13 @@
 * * Add support for .NET 9.0
 * Removed support for .NET 6 and 7, in accordance with their official release cadences
 * Updated standard toolkit to build `2411`
+
+=======
+
+## 2024-06-24 - Build 2406 - June 2024
+
+* Updated standard toolkit to build `2406`
+* Updated version from `80.xx.xx.xxx` -> `85.xx.xx.xxx`
 
 =======
 

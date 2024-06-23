@@ -62,11 +62,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.klblRGBValues = new();
             this.klbHexValues = new();
             this.kryptonBorderEdge1 = new();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxColourPreviewer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.pbxColourPreviewer).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnOk
             // 
-            this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnOk.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnOk.Location = new(909, 12);
             this.kbtnOk.Name = "kbtnOk";
             this.kbtnOk.Size = new(90, 25);
@@ -210,13 +210,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.Name = "ColourSettingsViewer";
             this.ShowInTaskbar = false;
             this.Text = "Palette Debug Console";
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxColourPreviewer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.pbxColourPreviewer).EndInit();
             this.ResumeLayout(false);
 
         }

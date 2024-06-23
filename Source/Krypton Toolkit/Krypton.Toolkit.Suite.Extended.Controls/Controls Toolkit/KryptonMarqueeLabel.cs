@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void MarqueeTimer_Tick(object sender, EventArgs e)
         {
-            offset = (offset - Speed);
+            offset = offset - Speed;
 
             if (offset < -ClientSize.Width)
             {

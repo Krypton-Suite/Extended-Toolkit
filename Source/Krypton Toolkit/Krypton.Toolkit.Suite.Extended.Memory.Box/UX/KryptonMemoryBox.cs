@@ -398,10 +398,10 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
             kbtnButtonOne.Size = maximumButtonSize;
 
             // Size the panel for the buttons
-            kpnlButtons.Size = new Size((maximumButtonSize.Width * numberOfButtons) + (GAP * (numberOfButtons + 1)), maximumButtonSize.Height + (GAP * 2));
+            kpnlButtons.Size = new Size(maximumButtonSize.Width * numberOfButtons + GAP * (numberOfButtons + 1), maximumButtonSize.Height + GAP * 2);
 
             // Button area is the number of buttons with gaps between them and 10 pixels around all edges
-            return new Size((maximumButtonSize.Width * numberOfButtons) + (GAP * (numberOfButtons + 1)), maximumButtonSize.Height + (GAP * 2));
+            return new Size(maximumButtonSize.Width * numberOfButtons + GAP * (numberOfButtons + 1), maximumButtonSize.Height + GAP * 2);
         }
 
         #endregion

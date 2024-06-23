@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
                 }
                 else
                 {
-                    stringBuilder.AppendLine($"Inner Exception {(count - 1)}");
+                    stringBuilder.AppendLine($"Inner Exception {count - 1}");
                 }
 
                 stringBuilder

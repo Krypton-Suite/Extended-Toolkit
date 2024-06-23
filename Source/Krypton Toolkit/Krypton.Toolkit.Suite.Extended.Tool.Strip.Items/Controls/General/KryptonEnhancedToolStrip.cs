@@ -27,12 +27,14 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
-    [Description("A standard tool strip, with a few enhancements.")]
     /// <summary>A standard tool strip, with a few enhancements.</summary>
+    [Description("A standard tool strip, with a few enhancements.")]
     public class KryptonEnhancedToolStrip : ToolStrip
     {
         #region Variables
-        private bool _clickThrough = false, _useKryptonRender;
+
+        private bool _clickThrough;
+        private readonly bool _useKryptonRender;
         #endregion
 
         #region Properties
@@ -42,7 +44,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #endregion
 
         #region Constructor
-        public KryptonEnhancedToolStrip() { RenderMode = ToolStripRenderMode.ManagerRenderMode; }
+
+        public KryptonEnhancedToolStrip()
+        {
+            _useKryptonRender = true;
+
+            RenderMode = ToolStripRenderMode.ManagerRenderMode;
+        }
         #endregion
 
         #region Overrides

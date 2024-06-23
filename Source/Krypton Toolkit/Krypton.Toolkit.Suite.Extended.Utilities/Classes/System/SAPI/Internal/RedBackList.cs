@@ -59,12 +59,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
             {
                 if (!_moved)
                 {
-                    _node = ((_root != null) ? FindMinSubTree(_root) : null);
+                    _node = _root != null ? FindMinSubTree(_root) : null;
                     _moved = true;
                 }
                 else
                 {
-                    _node = ((_node != null) ? FindSuccessor(_node) : null);
+                    _node = _node != null ? FindSuccessor(_node) : null;
                 }
                 return _node != null;
             }
@@ -274,7 +274,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
         {
             if (node != null)
             {
-                node.IsRed = (color == NodeColor.RED);
+                node.IsRed = color == NodeColor.RED;
             }
         }
 
@@ -475,7 +475,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
         private static void FixUpRemoval(TreeNode node)
         {
-            TreeNode node2 = (node.Left == null) ? node.Right : node.Left;
+            TreeNode node2 = node.Left == null ? node.Right : node.Left;
             if (GetColor(node) == NodeColor.BLACK)
             {
                 if (GetColor(node2) == NodeColor.RED)

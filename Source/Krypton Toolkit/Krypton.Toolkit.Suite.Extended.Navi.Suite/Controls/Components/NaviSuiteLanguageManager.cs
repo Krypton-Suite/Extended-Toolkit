@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool IsDefault => !(ShouldSerializeNaviSuiteStrings());
+        public bool IsDefault => !ShouldSerializeNaviSuiteStrings();
 
         public void Reset()
         {

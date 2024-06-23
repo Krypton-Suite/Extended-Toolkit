@@ -71,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
                 }
                 return SrgsGrammarMode.Voice;
             }
-            set => _grammar.Mode = ((value != 0) ? GrammarType.DtmfGrammar : GrammarType.VoiceGrammar);
+            set => _grammar.Mode = value != 0 ? GrammarType.DtmfGrammar : GrammarType.VoiceGrammar;
         }
 
         public SrgsPhoneticAlphabet PhoneticAlphabet

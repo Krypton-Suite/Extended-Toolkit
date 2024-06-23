@@ -64,18 +64,18 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
 
         // Attributes ========================================================
-        private Timer m_Timer;
-        private bool m_IsTimerActive;
-        private int m_NumberOfSpoke;
-        private int m_SpokeThickness;
-        private int m_ProgressValue;
-        private int m_OuterCircleRadius;
-        private int m_InnerCircleRadius;
-        private PointF m_CenterPoint;
-        private Color m_Color;
-        private Color[] m_Colors;
-        private double[] m_Angles;
-        private StylePresets m_StylePreset;
+        private Timer _mTimer;
+        private bool _mIsTimerActive;
+        private int _mNumberOfSpoke;
+        private int _mSpokeThickness;
+        private int _mProgressValue;
+        private int _mOuterCircleRadius;
+        private int _mInnerCircleRadius;
+        private PointF _mCenterPoint;
+        private Color _mColor;
+        private Color[] _mColors;
+        private double[] _mAngles;
+        private StylePresets _mStylePreset;
 
         // Properties ========================================================
         /// <summary>
@@ -87,10 +87,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
          Description("Sets the color of spoke.")]
         public Color Color
         {
-            get => m_Color;
+            get => _mColor;
             set
             {
-                m_Color = value;
+                _mColor = value;
 
                 GenerateColoursPallet();
                 Invalidate();
@@ -107,16 +107,16 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             get
             {
-                if (m_OuterCircleRadius == 0)
+                if (_mOuterCircleRadius == 0)
                 {
-                    m_OuterCircleRadius = DefaultOuterCircleRadius;
+                    _mOuterCircleRadius = DefaultOuterCircleRadius;
                 }
 
-                return m_OuterCircleRadius;
+                return _mOuterCircleRadius;
             }
             set
             {
-                m_OuterCircleRadius = value;
+                _mOuterCircleRadius = value;
                 Invalidate();
             }
         }
@@ -131,16 +131,16 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             get
             {
-                if (m_InnerCircleRadius == 0)
+                if (_mInnerCircleRadius == 0)
                 {
-                    m_InnerCircleRadius = DefaultInnerCircleRadius;
+                    _mInnerCircleRadius = DefaultInnerCircleRadius;
                 }
 
-                return m_InnerCircleRadius;
+                return _mInnerCircleRadius;
             }
             set
             {
-                m_InnerCircleRadius = value;
+                _mInnerCircleRadius = value;
                 Invalidate();
             }
         }
@@ -155,18 +155,18 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             get
             {
-                if (m_NumberOfSpoke == 0)
+                if (_mNumberOfSpoke == 0)
                 {
-                    m_NumberOfSpoke = DefaultNumberOfSpoke;
+                    _mNumberOfSpoke = DefaultNumberOfSpoke;
                 }
 
-                return m_NumberOfSpoke;
+                return _mNumberOfSpoke;
             }
             set
             {
-                if (m_NumberOfSpoke != value && m_NumberOfSpoke > 0)
+                if (_mNumberOfSpoke != value && _mNumberOfSpoke > 0)
                 {
-                    m_NumberOfSpoke = value;
+                    _mNumberOfSpoke = value;
                     GenerateColoursPallet();
                     GetSpokesAngles();
 
@@ -183,10 +183,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         Category("LoadingCircle")]
         public bool Active
         {
-            get => m_IsTimerActive;
+            get => _mIsTimerActive;
             set
             {
-                m_IsTimerActive = value;
+                _mIsTimerActive = value;
                 ActiveTimer();
             }
         }
@@ -201,16 +201,16 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             get
             {
-                if (m_SpokeThickness <= 0)
+                if (_mSpokeThickness <= 0)
                 {
-                    m_SpokeThickness = DefaultSpokeThickness;
+                    _mSpokeThickness = DefaultSpokeThickness;
                 }
 
-                return m_SpokeThickness;
+                return _mSpokeThickness;
             }
             set
             {
-                m_SpokeThickness = value;
+                _mSpokeThickness = value;
                 Invalidate();
             }
         }
@@ -223,12 +223,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         Category("LoadingCircle")]
         public int RotationSpeed
         {
-            get => m_Timer.Interval;
+            get => _mTimer.Interval;
             set
             {
                 if (value > 0)
                 {
-                    m_Timer.Interval = value;
+                    _mTimer.Interval = value;
                 }
             }
         }
@@ -242,12 +242,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
          DefaultValue(typeof(StylePresets), "Custom")]
         public StylePresets StylePreset
         {
-            get => m_StylePreset;
+            get => _mStylePreset;
             set
             {
-                m_StylePreset = value;
+                _mStylePreset = value;
 
-                switch (m_StylePreset)
+                switch (_mStylePreset)
                 {
                     case StylePresets.MacOSX:
                         SetCircleAppearance(MacOSXNumberOfSpoke,
@@ -285,17 +285,17 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             SetStyle(ControlStyles.ResizeRedraw, true);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
-            m_Color = DefaultColor;
+            _mColor = DefaultColor;
 
             GenerateColoursPallet();
             GetSpokesAngles();
             GetControlCenterPoint();
 
-            m_Timer = new Timer();
-            m_Timer.Tick += new EventHandler(aTimer_Tick);
+            _mTimer = new Timer();
+            _mTimer.Tick += aTimer_Tick;
             ActiveTimer();
 
-            Resize += new EventHandler(LoadingCircle_Resize);
+            Resize += LoadingCircle_Resize;
         }
 
         // Events ============================================================
@@ -316,7 +316,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
         private void aTimer_Tick(object sender, EventArgs e)
         {
-            m_ProgressValue = ++m_ProgressValue % m_NumberOfSpoke;
+            _mProgressValue = ++_mProgressValue % _mNumberOfSpoke;
             Invalidate();
         }
 
@@ -326,18 +326,18 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs"></see> that contains the event data.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (m_NumberOfSpoke > 0)
+            if (_mNumberOfSpoke > 0)
             {
                 e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
 
-                int intPosition = m_ProgressValue;
-                for (int intCounter = 0; intCounter < m_NumberOfSpoke; intCounter++)
+                int intPosition = _mProgressValue;
+                for (int intCounter = 0; intCounter < _mNumberOfSpoke; intCounter++)
                 {
-                    intPosition = intPosition % m_NumberOfSpoke;
+                    intPosition = intPosition % _mNumberOfSpoke;
                     DrawLine(e.Graphics,
-                             GetCoordinate(m_CenterPoint, m_InnerCircleRadius, m_Angles[intPosition]),
-                             GetCoordinate(m_CenterPoint, m_OuterCircleRadius, m_Angles[intPosition]),
-                             m_Colors[intCounter], m_SpokeThickness);
+                             GetCoordinate(_mCenterPoint, _mInnerCircleRadius, _mAngles[intPosition]),
+                             GetCoordinate(_mCenterPoint, _mOuterCircleRadius, _mAngles[intPosition]),
+                             _mColors[intCounter], _mSpokeThickness);
                     intPosition++;
                 }
             }
@@ -356,7 +356,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         public override Size GetPreferredSize(Size proposedSize)
         {
             proposedSize.Width =
-                (m_OuterCircleRadius + m_SpokeThickness) * 2;
+                (_mOuterCircleRadius + _mSpokeThickness) * 2;
 
             return proposedSize;
         }
@@ -365,15 +365,15 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary>
         /// Darkens a specified color.
         /// </summary>
-        /// <param name="_objColor">Color to darken.</param>
-        /// <param name="_intPercent">The percent of darken.</param>
+        /// <param name="objColor">Color to darken.</param>
+        /// <param name="intPercent">The percent of darken.</param>
         /// <returns>The new color generated.</returns>
-        private Color Darken(Color _objColor, int _intPercent)
+        private Color Darken(Color objColor, int intPercent)
         {
-            int intRed = _objColor.R;
-            int intGreen = _objColor.G;
-            int intBlue = _objColor.B;
-            return Color.FromArgb(_intPercent, Math.Min(intRed, byte.MaxValue), Math.Min(intGreen, byte.MaxValue), Math.Min(intBlue, byte.MaxValue));
+            int intRed = objColor.R;
+            int intGreen = objColor.G;
+            int intBlue = objColor.B;
+            return Color.FromArgb(intPercent, Math.Min(intRed, byte.MaxValue), Math.Min(intGreen, byte.MaxValue), Math.Min(intBlue, byte.MaxValue));
         }
 
         /// <summary>
@@ -381,16 +381,16 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// </summary>
         private void GenerateColoursPallet()
         {
-            m_Colors = GenerateColoursPallet(m_Color, Active, m_NumberOfSpoke);
+            _mColors = GenerateColoursPallet(_mColor, Active, _mNumberOfSpoke);
         }
 
         /// <summary>
         /// Generates the colors pallet.
         /// </summary>
-        /// <param name="_objColor">Color of the lightest spoke.</param>
-        /// <param name="_blnShadeColor">if set to <c>true</c> the color will be shaded on X spoke.</param>
+        /// <param name="objColor">Color of the lightest spoke.</param>
+        /// <param name="blnShadeColor">if set to <c>true</c> the color will be shaded on X spoke.</param>
         /// <returns>An array of color used to draw the circle.</returns>
-        private Color[] GenerateColoursPallet(Color _objColor, bool _blnShadeColor, int _intNbSpoke)
+        private Color[] GenerateColoursPallet(Color objColor, bool blnShadeColor, int intNbSpoke)
         {
             Color[] objColors = new Color[NumberSpoke];
 
@@ -403,11 +403,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             for (int intCursor = 0; intCursor < NumberSpoke; intCursor++)
             {
-                if (_blnShadeColor)
+                if (blnShadeColor)
                 {
-                    if (intCursor == 0 || intCursor < NumberSpoke - _intNbSpoke)
+                    if (intCursor == 0 || intCursor < NumberSpoke - intNbSpoke)
                     {
-                        objColors[intCursor] = _objColor;
+                        objColors[intCursor] = objColor;
                     }
                     else
                     {
@@ -422,12 +422,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                         }
 
                         // Determine the spoke forecolor
-                        objColors[intCursor] = Darken(_objColor, PERCENTAGE_OF_DARKEN);
+                        objColors[intCursor] = Darken(objColor, PERCENTAGE_OF_DARKEN);
                     }
                 }
                 else
                 {
-                    objColors[intCursor] = _objColor;
+                    objColors[intCursor] = objColor;
                 }
             }
 
@@ -439,50 +439,47 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// </summary>
         private void GetControlCenterPoint()
         {
-            m_CenterPoint = GetControlCenterPoint(this);
+            _mCenterPoint = GetControlCenterPoint(this);
         }
 
         /// <summary>
         /// Gets the control center point.
         /// </summary>
         /// <returns>PointF object</returns>
-        private PointF GetControlCenterPoint(Control _objControl)
-        {
-            return new PointF(_objControl.Width / 2, _objControl.Height / 2 - 1);
-        }
+        private PointF GetControlCenterPoint(Control objControl) => new(objControl.Width / 2, objControl.Height / 2 - 1);
 
         /// <summary>
         /// Draws the line with GDI+.
         /// </summary>
-        /// <param name="_objGraphics">The Graphics object.</param>
-        /// <param name="_objPointOne">The point one.</param>
-        /// <param name="_objPointTwo">The point two.</param>
-        /// <param name="_objColor">Color of the spoke.</param>
-        /// <param name="_intLineThickness">The thickness of spoke.</param>
-        private void DrawLine(Graphics _objGraphics, PointF _objPointOne, PointF _objPointTwo,
-                              Color _objColor, int _intLineThickness)
+        /// <param name="objGraphics">The Graphics object.</param>
+        /// <param name="objPointOne">The point one.</param>
+        /// <param name="objPointTwo">The point two.</param>
+        /// <param name="objColor">Color of the spoke.</param>
+        /// <param name="intLineThickness">The thickness of spoke.</param>
+        private void DrawLine(Graphics objGraphics, PointF objPointOne, PointF objPointTwo,
+                              Color objColor, int intLineThickness)
         {
-            using (Pen objPen = new Pen(new SolidBrush(_objColor), _intLineThickness))
+            using (Pen objPen = new Pen(new SolidBrush(objColor), intLineThickness))
             {
                 objPen.StartCap = LineCap.Round;
                 objPen.EndCap = LineCap.Round;
-                _objGraphics.DrawLine(objPen, _objPointOne, _objPointTwo);
+                objGraphics.DrawLine(objPen, objPointOne, objPointTwo);
             }
         }
 
         /// <summary>
         /// Gets the coordinate.
         /// </summary>
-        /// <param name="_objCircleCenter">The Circle center.</param>
-        /// <param name="_intRadius">The radius.</param>
-        /// <param name="_dblAngle">The angle.</param>
+        /// <param name="objCircleCenter">The Circle center.</param>
+        /// <param name="intRadius">The radius.</param>
+        /// <param name="dblAngle">The angle.</param>
         /// <returns></returns>
-        private PointF GetCoordinate(PointF _objCircleCenter, int _intRadius, double _dblAngle)
+        private PointF GetCoordinate(PointF objCircleCenter, int intRadius, double dblAngle)
         {
-            double dblAngle = Math.PI * _dblAngle / NumberOfDegreesInHalfCircle;
+            double angle = Math.PI * dblAngle / NumberOfDegreesInHalfCircle;
 
-            return new PointF(_objCircleCenter.X + _intRadius * (float)Math.Cos(dblAngle),
-                              _objCircleCenter.Y + _intRadius * (float)Math.Sin(dblAngle));
+            return new PointF(objCircleCenter.X + intRadius * (float)Math.Cos(angle),
+                              objCircleCenter.Y + intRadius * (float)Math.Sin(angle));
         }
 
         /// <summary>
@@ -490,23 +487,23 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// </summary>
         private void GetSpokesAngles()
         {
-            m_Angles = GetSpokesAngles(NumberSpoke);
+            _mAngles = GetSpokesAngles(NumberSpoke);
         }
 
         /// <summary>
         /// Gets the spoke angles.
         /// </summary>
-        /// <param name="_shtNumberSpoke">The number spoke.</param>
+        /// <param name="intNumberSpoke">The number spoke.</param>
         /// <returns>An array of angle.</returns>
-        private double[] GetSpokesAngles(int _intNumberSpoke)
+        private double[] GetSpokesAngles(int intNumberSpoke)
         {
-            double[] Angles = new double[_intNumberSpoke];
-            double dblAngle = (double)NumberOfDegreesInCircle / _intNumberSpoke;
+            double[] angles = new double[intNumberSpoke];
+            double dblAngle = NumberOfDegreesInCircle / intNumberSpoke;
 
-            for (int shtCounter = 0; shtCounter < _intNumberSpoke; shtCounter++)
-                Angles[shtCounter] = (shtCounter == 0 ? dblAngle : Angles[shtCounter - 1] + dblAngle);
+            for (int shtCounter = 0; shtCounter < intNumberSpoke; shtCounter++)
+                angles[shtCounter] = shtCounter == 0 ? dblAngle : angles[shtCounter - 1] + dblAngle;
 
-            return Angles;
+            return angles;
         }
 
         /// <summary>
@@ -514,14 +511,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// </summary>
         private void ActiveTimer()
         {
-            if (m_IsTimerActive)
+            if (_mIsTimerActive)
             {
-                m_Timer.Start();
+                _mTimer.Start();
             }
             else
             {
-                m_Timer.Stop();
-                m_ProgressValue = 0;
+                _mTimer.Stop();
+                _mProgressValue = 0;
             }
 
             GenerateColoursPallet();

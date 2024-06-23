@@ -508,7 +508,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 }
             }
 
-            _messageIcon.Visible = (_kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None);
+            _messageIcon.Visible = _kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None;
         }
 
         private void UpdateIcon()
@@ -630,7 +630,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     break;
             }
 
-            _messageIcon.Visible = (_kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None);
+            _messageIcon.Visible = _kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None;
 
         }
 
@@ -1158,20 +1158,20 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             //_panelButtons.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
 
             // Button area is the number of buttons with gaps between them and 10 pixels around all edges
-            return new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            return new Size(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
         }
 
         private void AnyKeyDown(object sender, KeyEventArgs e)
         {
             // Escape key kills the dialog if we allow it to be closed
             if (ControlBox
-            && (e.KeyCode == Keys.Escape)
+            && e.KeyCode == Keys.Escape
             )
             {
                 Close();
             }
             else if (!e.Control
-                 || (e.KeyCode != Keys.C)
+                 || e.KeyCode != Keys.C
                  )
             {
                 return;
@@ -1341,16 +1341,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             success = PlatformEvents.GetWindowRect(_showOwner.Handle, ref recParent);
 
             Point ptCenter = new Point(0, 0);
-            ptCenter.X = recParent.X + ((recParent.Width - recParent.X) / 2);
-            ptCenter.Y = recParent.Y + ((recParent.Height - recParent.Y) / 2);
+            ptCenter.X = recParent.X + (recParent.Width - recParent.X) / 2;
+            ptCenter.Y = recParent.Y + (recParent.Height - recParent.Y) / 2;
 
 
             Point ptStart = new Point(0, 0);
-            ptStart.X = (ptCenter.X - (width / 2));
-            ptStart.Y = (ptCenter.Y - (height / 2));
+            ptStart.X = ptCenter.X - width / 2;
+            ptStart.Y = ptCenter.Y - height / 2;
 
-            ptStart.X = (ptStart.X < 0) ? 0 : ptStart.X;
-            ptStart.Y = (ptStart.Y < 0) ? 0 : ptStart.Y;
+            ptStart.X = ptStart.X < 0 ? 0 : ptStart.X;
+            ptStart.Y = ptStart.Y < 0 ? 0 : ptStart.Y;
 
             int result = PlatformEvents.MoveWindow(hChildWnd, ptStart.X, ptStart.Y, width,
                                 height, false);

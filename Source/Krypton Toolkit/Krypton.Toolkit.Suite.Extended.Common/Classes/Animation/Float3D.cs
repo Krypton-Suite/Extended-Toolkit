@@ -462,7 +462,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
             // ReSharper disable CompareOfFloatsByEqualityOperator
             return ReferenceEquals(left, right) ||
-                   ((double)(left.X) == right.X && (double)(left.Y) == right.Y && (double)(left.Z) == right.Z);
+                   ((double)left.X == right.X && (double)left.Y == right.Y && (double)left.Z == right.Z);
             // ReSharper restore CompareOfFloatsByEqualityOperator
         }
 

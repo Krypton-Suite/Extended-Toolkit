@@ -76,7 +76,7 @@
 
             // Note: least-squares regression line always passes through (x̄, ȳ)
             double slope = sumXyResidual / sumXSquareResidual;
-            double offset = meanY - (slope * meanX);
+            double offset = meanY - slope * meanX;
 
             // calcualte R squared (https://en.wikipedia.org/wiki/Coefficient_of_determination)
             double ssTot = 0;

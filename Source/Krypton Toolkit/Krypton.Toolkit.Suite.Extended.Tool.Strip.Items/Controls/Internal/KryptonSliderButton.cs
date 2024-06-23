@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private IContainer components = null;
+        private IContainer? components;
 
         #region Component Designer generated code
 
@@ -93,18 +93,18 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             SetStyle(ControlStyles.UserPaint, true);
 
             //(5) Create redirection object to the base palette
-            if (((_palette != null)))
+            if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
             }
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new PaletteRedirect(_palette);
 
             //(6) Create accessor objects for the back, border and content
-            m_paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
-            m_paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
-            m_paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
+            _mPaletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
+            _mPaletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
+            _mPaletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
 
             //Set Properties
             BackColor = Color.Transparent;
@@ -115,51 +115,51 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
 
         //Palette State
-        private KryptonManager k_manager = new KryptonManager();
-        private PaletteBackInheritRedirect m_paletteBack;
-        private PaletteBorderInheritRedirect m_paletteBorder;
-        private PaletteContentInheritRedirect m_paletteContent;
-        private IDisposable m_mementoContent;
-        private IDisposable m_mementoBack1;
-        private IDisposable m_mementoBack2;
+        private KryptonManager _kManager = new KryptonManager();
+        private PaletteBackInheritRedirect _mPaletteBack;
+        private PaletteBorderInheritRedirect _mPaletteBorder;
+        private PaletteContentInheritRedirect _mPaletteContent;
+        private IDisposable _mMementoContent;
+        private IDisposable _mMementoBack1;
+        private IDisposable _mMementoBack2;
 
         private PaletteBase _palette;
         private PaletteRedirect _paletteRedirect;
 
         //Colors
-        private Color m_innerColor = Color.FromArgb(99, 106, 116);
-        private Color m_outerColor = Color.FromArgb(236, 236, 236);
+        private Color _mInnerColor = Color.FromArgb(99, 106, 116);
+        private Color _mOuterColor = Color.FromArgb(236, 236, 236);
 
         //Declares
-        private bool m_highlight = false;
-        private bool m_down = false;
-        private VisualOrientation m_orientation = VisualOrientation.Top;
-        private ButtonStyles m_buttonstyle = ButtonStyles.MinusButton;
-        private PaletteBackStyle m_visuallook = PaletteBackStyle.ButtonStandalone;
-        private bool m_singleClick = false;
+        private bool _mHighlight;
+        private bool _mDown;
+        private VisualOrientation _mOrientation = VisualOrientation.Top;
+        private ButtonStyles _mButtonstyle = ButtonStyles.MinusButton;
+        private PaletteBackStyle _mVisuallook = PaletteBackStyle.ButtonStandalone;
+        private bool _mSingleClick;
 
         //Events
         public event SliderButtonFireEventHandler SliderButtonFire;
-        public delegate void SliderButtonFireEventHandler(KryptonSliderButton Sender, EventArgs e);
+        public delegate void SliderButtonFireEventHandler(KryptonSliderButton sender, EventArgs e);
 
         //Properties
         public bool SingleClick
         {
-            get => m_singleClick;
+            get => _mSingleClick;
             set
             {
-                m_singleClick = value;
+                _mSingleClick = value;
                 Invalidate();
             }
         }
         public VisualOrientation Orientation
         {
-            get => m_orientation;
+            get => _mOrientation;
             set
             {
-                if (m_orientation != value)
+                if (_mOrientation != value)
                 {
-                    m_orientation = value;
+                    _mOrientation = value;
                     PerformLayout();
                     Invalidate();
                 }
@@ -167,21 +167,21 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         public ButtonStyles ButtonStyle
         {
-            get => m_buttonstyle;
+            get => _mButtonstyle;
             set
             {
-                m_buttonstyle = value;
+                _mButtonstyle = value;
                 Invalidate();
             }
         }
         public PaletteBackStyle VisualLook
         {
-            get => m_visuallook;
+            get => _mVisuallook;
             set
             {
-                if (m_visuallook != value)
+                if (_mVisuallook != value)
                 {
-                    m_visuallook = value;
+                    _mVisuallook = value;
                     Invalidate();
                 }
             }
@@ -191,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             get => FireTimer.Interval;
             set
             {
-                if (FireTimer.Interval != value & !m_down)
+                if (FireTimer.Interval != value & !_mDown)
                 {
                     FireTimer.Interval = value;
                 }
@@ -203,8 +203,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
 
             //Define Bounds
-            Rectangle ButtonBounds = new Rectangle(0, 0, 16, 16);
-            RectangleF ButtonCircleBounds = new RectangleF((float)0, (float)0, (float)15.1, (float)15.1);
+            Rectangle buttonBounds = new Rectangle(0, 0, 16, 16);
+            RectangleF buttonCircleBounds = new RectangleF(0, 0, (float)15.1, (float)15.1);
 
             //Smoothing Mode
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
@@ -217,66 +217,66 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             {
 
                 //Get the renderer associated with this palette
-                IRenderer Renderer = _palette.GetRenderer();
+                IRenderer renderer = _palette.GetRenderer();
 
                 //Create the rendering context that is passed into all renderer calls
-                using (RenderContext RenderContext = new RenderContext(this, e.Graphics, ButtonBounds, Renderer))
+                using (RenderContext renderContext = new RenderContext(this, e.Graphics, buttonBounds, renderer))
                 {
 
                     // Set the style we want picked up from the base palette
-                    m_paletteBack.Style = PaletteBackStyle.HeaderPrimary;
+                    _mPaletteBack.Style = PaletteBackStyle.HeaderPrimary;
 
 
                     //Fill The Space
-                    using (GraphicsPath Path = GetButtonPath(ButtonBounds))
+                    using (GraphicsPath path = GetButtonPath(buttonBounds))
                     {
                         // Ask renderer to draw the background
-                        m_mementoBack1 = Renderer.RenderStandardBack.DrawBack(RenderContext, ButtonBounds, Path, m_paletteBack, m_orientation, (Enabled ? PaletteState.Normal : PaletteState.Disabled), m_mementoBack1);
+                        _mMementoBack1 = renderer.RenderStandardBack.DrawBack(renderContext, buttonBounds, path, _mPaletteBack, _mOrientation, Enabled ? PaletteState.Normal : PaletteState.Disabled, _mMementoBack1);
                     }
 
                     // We want the inner part of the control to act like a button, so 
                     // we need to find the correct palette state based on if the mouse 
                     // is over the control if the mouse button is pressed down or not.
-                    PaletteState ButtonState = GetButtonState();
+                    PaletteState buttonState = GetButtonState();
 
                     // Set the style of button we want to draw
-                    m_paletteBack.Style = m_visuallook;
-                    m_paletteBorder.Style = (PaletteBorderStyle)m_visuallook;
-                    m_paletteContent.Style = (PaletteContentStyle)m_visuallook;
+                    _mPaletteBack.Style = _mVisuallook;
+                    _mPaletteBorder.Style = (PaletteBorderStyle)_mVisuallook;
+                    _mPaletteContent.Style = (PaletteContentStyle)_mVisuallook;
 
                     // Do we need to draw the background?
-                    if (m_paletteBack.GetBackDraw(ButtonState) == InheritBool.True)
+                    if (_mPaletteBack.GetBackDraw(buttonState) == InheritBool.True)
                     {
-                        using (GraphicsPath Path = GetRoundedSquarePath(ButtonCircleBounds))
+                        using (GraphicsPath path = GetRoundedSquarePath(buttonCircleBounds))
                         {
                             // Ask renderer to draw the background
-                            m_mementoBack2 = Renderer.RenderStandardBack.DrawBack(RenderContext, ButtonBounds, Path, m_paletteBack, m_orientation, ButtonState, m_mementoBack2);
+                            _mMementoBack2 = renderer.RenderStandardBack.DrawBack(renderContext, buttonBounds, path, _mPaletteBack, _mOrientation, buttonState, _mMementoBack2);
                         }
                     }
 
                     // Do we need to draw the border?
-                    if (m_paletteBorder.GetBorderDraw(ButtonState) == InheritBool.True)
+                    if (_mPaletteBorder.GetBorderDraw(buttonState) == InheritBool.True)
                     {
                         // Now we draw the border of the inner area, also in ButtonStandalone style
-                        e.Graphics.DrawEllipse(new Pen(m_paletteBorder.GetBorderColor2(ButtonState)), ButtonCircleBounds);
+                        e.Graphics.DrawEllipse(new Pen(_mPaletteBorder.GetBorderColor2(buttonState)), buttonCircleBounds);
                     }
 
                     e.Graphics.SmoothingMode = SmoothingMode.None;
 
                     //Draw Magnifying Sign
-                    switch (m_buttonstyle)
+                    switch (_mButtonstyle)
                     {
                         case ButtonStyles.MinusButton:
-                            Rectangle MinusOuterBounds = new Rectangle(3, (Height / 2) - 2, 10, 4);
-                            Rectangle MinusInnerBounds = new Rectangle(4, (Height / 2) - 1, 8, 2);
+                            Rectangle minusOuterBounds = new Rectangle(3, Height / 2 - 2, 10, 4);
+                            Rectangle minusInnerBounds = new Rectangle(4, Height / 2 - 1, 8, 2);
 
-                            e.Graphics.FillRectangle(new SolidBrush(m_outerColor), MinusOuterBounds);
-                            e.Graphics.FillRectangle(new SolidBrush(m_innerColor), MinusInnerBounds);
+                            e.Graphics.FillRectangle(new SolidBrush(_mOuterColor), minusOuterBounds);
+                            e.Graphics.FillRectangle(new SolidBrush(_mInnerColor), minusInnerBounds);
 
                             break;
                         case ButtonStyles.PlusButton:
-                            DrawPlusOuter(e.Graphics, m_outerColor);
-                            DrawPlusInner(e.Graphics, m_innerColor);
+                            DrawPlusOuter(e.Graphics, _mOuterColor);
+                            DrawPlusInner(e.Graphics, _mInnerColor);
                             break;
                     }
 
@@ -298,27 +298,24 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 PaletteState buttonState = GetButtonState();
 
                 // Create a rectangle inset, this is where we will draw a button
-                Rectangle ButtonBounds = new Rectangle(0, 0, 16, 16);
+                Rectangle buttonBounds = new Rectangle(0, 0, 16, 16);
 
                 // Get the renderer associated with this palette
-                IRenderer Renderer = _palette.GetRenderer();
+                IRenderer renderer = _palette.GetRenderer();
 
                 // Create a layout context used to allow the renderer to layout the content
-                using (ViewLayoutContext ViewContext = new ViewLayoutContext(this, Renderer))
+                using (ViewLayoutContext viewContext = new ViewLayoutContext(this, renderer))
                 {
 
                     // Setup the appropriate style for the content
-                    m_paletteContent.Style = (PaletteContentStyle)m_visuallook;
+                    _mPaletteContent.Style = (PaletteContentStyle)_mVisuallook;
 
                     // Cleaup resources by disposing of old memento instance
-                    if (m_mementoContent != null)
-                    {
-                        m_mementoContent.Dispose();
-                    }
+                    _mMementoContent?.Dispose();
 
                     // Ask the renderer to work out how the Content values will be layed out and
                     // return a memento object that we cache for use when actually performing painting
-                    m_mementoContent = Renderer.RenderStandardContent.LayoutContent(ViewContext, ButtonBounds, m_paletteContent, this, m_orientation, buttonState);
+                    _mMementoContent = renderer.RenderStandardContent.LayoutContent(viewContext, buttonBounds, _mPaletteContent, this, _mOrientation, buttonState);
                     //m_mementoContent = Renderer.RenderStandardContent.LayoutContent(ViewContext, ButtonBounds, m_paletteContent, this, m_orientation, false, buttonState, false);
 
                 }
@@ -338,38 +335,35 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 if (_palette != null)
                 {
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette.PalettePaint -= OnPalettePaint;
                     _palette = null;
                 }
 
 
-                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
 
                 //Dispose Memento Content
-                if (m_mementoContent != null)
+                if (_mMementoContent != null)
                 {
-                    m_mementoContent.Dispose();
-                    m_mementoContent = null;
+                    _mMementoContent.Dispose();
+                    _mMementoContent = null;
                 }
 
                 //Dispose Memento BackGround One
-                if (m_mementoBack1 != null)
+                if (_mMementoBack1 != null)
                 {
-                    m_mementoBack1.Dispose();
-                    m_mementoBack1 = null;
+                    _mMementoBack1.Dispose();
+                    _mMementoBack1 = null;
                 }
 
                 //Dispose Memento BackGround Two
-                if (m_mementoBack2 != null)
+                if (_mMementoBack2 != null)
                 {
-                    m_mementoBack2.Dispose();
-                    m_mementoBack2 = null;
+                    _mMementoBack2.Dispose();
+                    _mMementoBack2 = null;
                 }
 
-                if (components != null)
-                {
-                    components.Dispose();
-                }
+                components?.Dispose();
 
             }
 
@@ -385,9 +379,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
             else
             {
-                if (m_down)
+                if (_mDown)
                 {
-                    if (m_highlight)
+                    if (_mHighlight)
                     {
                         return PaletteState.CheckedPressed;
                     }
@@ -398,7 +392,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 }
                 else
                 {
-                    if (m_highlight)
+                    if (_mHighlight)
                     {
                         return PaletteState.Tracking;
                     }
@@ -416,49 +410,49 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             path.CloseFigure();
             return path;
         }
-        private GraphicsPath GetButtonPath(RectangleF Bounds)
+        private GraphicsPath GetButtonPath(RectangleF bounds)
         {
-            GraphicsPath Path = new GraphicsPath();
-            Path.AddEllipse(Bounds);
-            return Path;
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse(bounds);
+            return path;
         }
-        private void DrawPlusOuter(Graphics Gfx, Color Fill)
+        private void DrawPlusOuter(Graphics gfx, Color fill)
         {
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(3, (Height / 2) - 2, 10, 4));
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle((Width / 2) - 2, 3, 4, 10));
+            gfx.FillRectangle(new SolidBrush(fill), new Rectangle(3, Height / 2 - 2, 10, 4));
+            gfx.FillRectangle(new SolidBrush(fill), new Rectangle(Width / 2 - 2, 3, 4, 10));
         }
-        private void DrawPlusInner(Graphics Gfx, Color Fill)
+        private void DrawPlusInner(Graphics gfx, Color fill)
         {
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(4, (Height / 2) - 1, 8, 2));
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle((Width / 2) - 1, 4, 2, 8));
+            gfx.FillRectangle(new SolidBrush(fill), new Rectangle(4, Height / 2 - 1, 8, 2));
+            gfx.FillRectangle(new SolidBrush(fill), new Rectangle(Width / 2 - 1, 4, 2, 8));
         }
 
         //Key Mouse Events
         private void KryptonSliderButton_MouseDown(object sender, MouseEventArgs e)
         {
-            m_down = true;
+            _mDown = true;
             //Single click?
-            if (!m_singleClick)
+            if (!_mSingleClick)
             { FireTimer.Start(); }
 
             Invalidate();
         }
         private void KryptonSliderButton_MouseEnter(object sender, EventArgs e)
         {
-            m_highlight = true;
+            _mHighlight = true;
             Invalidate();
         }
         private void KryptonSliderButton_MouseLeave(object sender, EventArgs e)
         {
-            m_highlight = false;
+            _mHighlight = false;
             Invalidate();
         }
         private void KryptonSliderButton_MouseUp(object sender, MouseEventArgs e)
         {
-            m_down = false;
+            _mDown = false;
 
             //Single click?
-            if (!m_singleClick)
+            if (!_mSingleClick)
             { FireTimer.Stop(); }
             else
             { SliderButtonFire(this, new EventArgs()); }
@@ -501,10 +495,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         //Fire Machine Gun
         private void FireTimer_Tick(object sender, EventArgs e)
         {
-            if (SliderButtonFire != null)
-            {
-                SliderButtonFire(this, new EventArgs());
-            }
+            SliderButtonFire?.Invoke(this, new EventArgs());
         }
 
 
@@ -516,15 +507,15 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            if (((_palette != null)))
+            if (_palette != null)
             {
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
             }
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
-            if (((_palette != null)))
+            if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 InitColors();
             }
             Invalidate();
@@ -534,16 +525,16 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         private void InitColors()
         {
             //Colors
-            m_innerColor = _palette.ColorTable.GripDark;
+            _mInnerColor = _palette.ColorTable.GripDark;
 
             // Ignore this color if the palette uses an Office2010-Renderer
             if (_palette.GetRenderer() is RenderOffice2010 or RenderOffice2013 or RenderMicrosoft365)
             {
-                m_outerColor = Color.Transparent;
+                _mOuterColor = Color.Transparent;
             }
             else
             {
-                m_outerColor = _palette.ColorTable.GripLight;
+                _mOuterColor = _palette.ColorTable.GripLight;
             }
         }
 

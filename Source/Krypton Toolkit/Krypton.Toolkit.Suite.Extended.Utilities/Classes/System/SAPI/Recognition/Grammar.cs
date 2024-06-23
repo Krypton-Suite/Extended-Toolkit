@@ -292,7 +292,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         {
             Helpers.ThrowIfNull(srgsDocument, "srgsDocument");
             _srgsDocument = srgsDocument;
-            _isSrgsDocument = (srgsDocument != null);
+            _isSrgsDocument = srgsDocument != null;
             _baseUri = baseUri;
             InitialGrammarLoad(ruleName, parameters, false);
         }
@@ -690,7 +690,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < cis.Length; i++)
             {
-                stringBuilder.Append((i > 0) ? " or sapi:parms=\"" : "sapi:parms=\"");
+                stringBuilder.Append(i > 0 ? " or sapi:parms=\"" : "sapi:parms=\"");
                 ParameterInfo[] parameters = cis[i].GetParameters();
                 for (int j = 0; j < parameters.Length; j++)
                 {
@@ -874,8 +874,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 CfgGrammar.CfgSerializedHeader cfgSerializedHeader = null;
                 CfgGrammar.CfgHeader cfgHeader = CfgGrammar.ConvertCfgHeader(streamHelper, false, true, out cfgSerializedHeader);
                 StringBlob pszSymbols = cfgHeader.pszSymbols;
-                string text = (cfgHeader.ulRootRuleIndex != uint.MaxValue && cfgHeader.ulRootRuleIndex < cfgHeader.rules.Length) ? pszSymbols.FromOffset(cfgHeader.rules[cfgHeader.ulRootRuleIndex]._nameOffset) : null;
-                sapi53Only = ((cfgHeader.GrammarOptions & (GrammarOptions.MssV1 | GrammarOptions.IpaPhoneme | GrammarOptions.W3cV1 | GrammarOptions.STG)) != 0);
+                string text = cfgHeader.ulRootRuleIndex != uint.MaxValue && cfgHeader.ulRootRuleIndex < cfgHeader.rules.Length ? pszSymbols.FromOffset(cfgHeader.rules[cfgHeader.ulRootRuleIndex]._nameOffset) : null;
+                sapi53Only = (cfgHeader.GrammarOptions & (GrammarOptions.MssV1 | GrammarOptions.IpaPhoneme | GrammarOptions.W3cV1 | GrammarOptions.STG)) != 0;
                 if (text == null && string.IsNullOrEmpty(rulename))
                 {
                     throw new ArgumentException(SR.Get(SRID.SapiErrorNoRulesToActivate));
@@ -889,7 +889,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                         CfgRule cfgRule = rules[i];
                         if (pszSymbols.FromOffset(cfgRule._nameOffset) == rulename)
                         {
-                            flag = (cfgRule.Export || stgInit || (!isImportedGrammar && (cfgRule.TopLevel || rulename == text)));
+                            flag = cfgRule.Export || stgInit || (!isImportedGrammar && (cfgRule.TopLevel || rulename == text));
                             break;
                         }
                     }
@@ -902,7 +902,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 {
                     rulename = text;
                 }
-                grammarOptions = (cfgHeader.GrammarOptions & GrammarOptions.TagFormat);
+                grammarOptions = cfgHeader.GrammarOptions & GrammarOptions.TagFormat;
             }
             stream.Position = position;
             return rulename;

@@ -125,10 +125,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             // add Palette Handler
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
             }
 
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new PaletteRedirect(_palette);
@@ -226,20 +226,17 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     m_mementoBack2 = null;
                 }
 
-                if (components != null)
-                {
-                    components.Dispose();
-                }
+                components?.Dispose();
 
 
                 if (_palette != null)
                 {
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette.PalettePaint -= OnPalettePaint;
                     _palette = null;
                 }
 
 
-                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
 
             }
 
@@ -273,10 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     m_paletteContent.Style = PaletteContentStyle.ButtonStandalone;
 
                     // Cleaup resources by disposing of old memento instance
-                    if (m_mementoContent != null)
-                    {
-                        m_mementoContent.Dispose();
-                    }
+                    m_mementoContent?.Dispose();
 
                     // Ask the renderer to work out how the Content values will be layed out and
                     // return a memento object that we cache for use when actually performing painting
@@ -338,7 +332,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                         m_paletteBack.Style = PaletteBackStyle.HeaderPrimary;
 
                         // Ask renderer to draw the background
-                        m_mementoBack1 = Renderer.RenderStandardBack.DrawBack(RenderContext, SliderBounds, Path, m_paletteBack, VisualOrientation.Top, (Enabled ? PaletteState.Normal : PaletteState.Disabled), m_mementoBack1);
+                        m_mementoBack1 = Renderer.RenderStandardBack.DrawBack(RenderContext, SliderBounds, Path, m_paletteBack, VisualOrientation.Top, Enabled ? PaletteState.Normal : PaletteState.Disabled, m_mementoBack1);
 
                     }
 
@@ -363,7 +357,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                             // Ask renderer to draw the background
                             m_mementoBack2 = Renderer.RenderStandardBack.DrawBack(RenderContext, SliderBounds, Path, m_paletteBack, VisualOrientation.Top, ButtonState, m_mementoBack2);
                             Gfx.DrawPath(new Pen(m_paletteBorder.GetBorderColor2(ButtonState)), Path);
-                            Gfx.DrawLine(new Pen(m_paletteBorder.GetBorderColor2(ButtonState)), (int)SliderBounds.X + (SliderBounds.Width / 2) + 1, SliderBounds.Y + 4, (int)SliderBounds.X + (SliderBounds.Width / 2) + 1, SliderBounds.Y + 8);
+                            Gfx.DrawLine(new Pen(m_paletteBorder.GetBorderColor2(ButtonState)), (int)SliderBounds.X + SliderBounds.Width / 2 + 1, SliderBounds.Y + 4, (int)SliderBounds.X + SliderBounds.Width / 2 + 1, SliderBounds.Y + 8);
 
                         }
 
@@ -384,10 +378,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             if (Value == 0)
             {
-                return new Point((int)Math.Round((double)(((double)Width) / 2.0)), (int)Math.Round((double)((((double)Height) / 2.0) - 6.5)));
+                return new Point((int)Math.Round((double)((double)Width / 2.0)), (int)Math.Round((double)((double)Height / 2.0 - 6.5)));
             }
-            Point Result = new Point((int)Math.Round((double)((((double)Width) / 2.0) + (((((double)Width) / 2.0) - 20.0) * (((double)Value) / (((double)m_range) / 2.0))))), (int)Math.Round((double)((((double)Height) / 2.0) - 6.5)));
-            if (Result.X > (Width - 0x16))
+            Point Result = new Point((int)Math.Round((double)((double)Width / 2.0 + ((double)Width / 2.0 - 20.0) * ((double)Value / ((double)m_range / 2.0)))), (int)Math.Round((double)((double)Height / 2.0 - 6.5)));
+            if (Result.X > Width - 0x16)
             {
                 Result.X = Width - 0x16;
             }
@@ -400,14 +394,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         private int GetValueFromPoint(Point Value)
         {
-            int Result = (int)Math.Round((double)((((Value.X - (((double)Width) / 2.0)) / ((((double)Width) / 2.0) - 20.0)) * m_range) / 2.0));
-            if (Result > (((double)m_range) / 2.0))
+            int Result = (int)Math.Round((double)((Value.X - (double)Width / 2.0) / ((double)Width / 2.0 - 20.0) * m_range / 2.0));
+            if (Result > (double)m_range / 2.0)
             {
-                Result = (int)Math.Round((double)(((double)m_range) / 2.0));
+                Result = (int)Math.Round((double)((double)m_range / 2.0));
             }
-            if (Result < ((((double)m_range) / 2.0) * -1.0))
+            if (Result < (double)m_range / 2.0 * -1.0)
             {
-                Result = (int)Math.Round((double)((((double)m_range) / 2.0) * -1.0));
+                Result = (int)Math.Round((double)((double)m_range / 2.0 * -1.0));
             }
             return Result;
 
@@ -430,7 +424,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         private Point GetSliderPosition()
         {
-            return new Point((int)Math.Round((double)(GetPointFromValue(m_value).X - 4.5)), (int)Math.Round((double)((((double)Height) / 2.0) - 6.5)));
+            return new Point((int)Math.Round((double)(GetPointFromValue(m_value).X - 4.5)), (int)Math.Round((double)((double)Height / 2.0 - 6.5)));
         }
 
         private PaletteState GetSliderState()
@@ -467,13 +461,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         private RangeTests GetSliderRangeTest(Point Location)
         {
-            if ((Location.X > 20) & (Location.X < (Width - 20)))
+            if ((Location.X > 20) & (Location.X < Width - 20))
             {
-                if ((Location.X >= ((((double)Width) / 2.0) - 5.0)) & (Location.X <= ((((double)Width) / 2.0) + 5.0)))
+                if ((Location.X >= (double)Width / 2.0 - 5.0) & (Location.X <= (double)Width / 2.0 + 5.0))
                 {
                     return RangeTests.MiddleDomain;
                 }
-                if (Location.X < (((double)Width) / 2.0))
+                if (Location.X < (double)Width / 2.0)
                 {
                     return RangeTests.LeftDomain;
                 }
@@ -483,7 +477,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             {
                 return RangeTests.MinusDomain;
             }
-            if (Location.X >= (Width - 20))
+            if (Location.X >= Width - 20)
             {
                 return RangeTests.PlusDomain;
             }
@@ -496,23 +490,20 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             if (Enabled)
             {
-                if (ValueChanged != null)
-                {
-                    ValueChanged(this, new SliderEventArgs(NewValue, m_value, m_range, m_step));
-                }
+                ValueChanged?.Invoke(this, new SliderEventArgs(NewValue, m_value, m_range, m_step));
                 m_value = NewValue;
             }
         }
         private void SliderIncrement()
         {
-            if ((m_value + m_step) <= (m_range / 2))
+            if (m_value + m_step <= m_range / 2)
             {
                 ChangeValue(m_value + m_step);
             }
         }
         private void SliderDecrement()
         {
-            if ((m_value - m_step) >= ((m_range / 2) * -1))
+            if (m_value - m_step >= m_range / 2 * -1)
             {
                 ChangeValue(m_value - m_step);
             }
@@ -791,7 +782,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             if (_palette != null)
             {
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
             }
 
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -799,7 +790,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             if (_palette != null)
             {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
                 //repaint with new values
 
                 //set colors

@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// <param name="readFileBeingVerifiedInChunks">if true, reads the file this checker is verifying in chunks rather than all at once</param>
         /// <param name="chunkSize">if reading the file in chunks, size of chunks to read with. Defaults to 25 MB.</param>
         public Ed25519Checker(SecurityMode mode, string? publicKey = null, string publicKeyFile = "NetSparkle_Ed25519.pub",
-            bool readFileBeingVerifiedInChunks = false, int chunkSize = (1024 * 1024 * 25))
+            bool readFileBeingVerifiedInChunks = false, int chunkSize = 1024 * 1024 * 25)
         {
             SecurityMode = mode;
             ReadFileBeingVerifiedInChunks = readFileBeingVerifiedInChunks;

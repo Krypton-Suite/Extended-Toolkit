@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// The checkbox list control. The public CheckBoxItems property provides a direct reference to its Items.
         /// </summary>
         internal KryptonCheckBoxComboBoxListControl CheckBoxComboBoxListControl;
-      
+
         /// <summary>
         /// In DataBinding operations, this property will be used as the DisplayMember in the CheckBoxComboBoxListBox.
         /// The normal/existing "DisplayMember" property is used by the TextBox of the ComboBox to display 
@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// by the Binded object, since it owns that property.
         /// </summary>
         private string? _displayMemberSingleItem;
-        
+
         internal bool MustAddHiddenItem;
 
         private KryptonCheckBoxProperties _checkBoxProperties;
@@ -63,13 +63,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             InitializeComponent();
 
             _checkBoxProperties = new KryptonCheckBoxProperties();
-            _checkBoxProperties.PropertyChanged += new EventHandler(CheckBoxProperties_PropertyChanged);
+            _checkBoxProperties.PropertyChanged += CheckBoxProperties_PropertyChanged;
             // Dumps the ListControl in a(nother) Container to ensure the ScrollBar on the ListControl does not
             // Paint over the Size grip. Setting the Padding or Margin on the Popup or host control does
             // not work as I expected. I don't think it can work that way.
             KryptonCheckBoxComboBoxListControlContainer containerControl = new KryptonCheckBoxComboBoxListControlContainer();
             CheckBoxComboBoxListControl = new KryptonCheckBoxComboBoxListControl(this);
-            CheckBoxComboBoxListControl.Items.CheckBoxCheckedChanged += new EventHandler(Items_CheckBoxCheckedChanged);
+            CheckBoxComboBoxListControl.Items.CheckBoxCheckedChanged += Items_CheckBoxCheckedChanged;
             containerControl.Controls.Add(CheckBoxComboBoxListControl);
             // This padding spaces neatly on the left-hand side and allows space for the size grip at the bottom.
             containerControl.Padding = new Padding(4, 0, 0, 14);
@@ -230,8 +230,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             {
                 MustAddHiddenItem = true;
             }
-        }   
-        
+        }
+
         /// <summary>
         /// Uncheck all items.
         /// </summary>

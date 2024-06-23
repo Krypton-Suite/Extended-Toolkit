@@ -104,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 }
                 try
                 {
-                    intPtr = _engine.GetOutputFormat((targetWaveFormat != null) ? gCHandle.AddrOfPinnedObject() : IntPtr.Zero);
+                    intPtr = _engine.GetOutputFormat(targetWaveFormat != null ? gCHandle.AddrOfPinnedObject() : IntPtr.Zero);
                 }
                 finally
                 {

@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private Image _offScreenImage;
 
-        private Graphics _gOffScreen;
+        private System.Drawing.Graphics _gOffScreen;
 
         private KnobPointerStyles _pointerStyle = KnobPointerStyles.CIRCLE;
 
@@ -519,7 +519,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             SetDimensions();
 
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += OnPalettePaint;
             }
@@ -543,7 +543,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         #region Overrides
         protected override void OnPaint(PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
+            System.Drawing.Graphics g = e.Graphics;
             // Set background color of Image...            
             _gOffScreen.Clear(BackColor);
             // Fill knob Background to give knob effect....
@@ -654,7 +654,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             if (_isFocused && _isKnobRotating && KryptonKnobUtilities.IsPointinRectangle(new Point(e.X, e.Y), _rKnob))
             {
                 // the Delta value is always 120, as explained in MSDN
-                int v = (e.Delta / 120) * (_maximum - _minimum) / _mouseWheelBarPartitions;
+                int v = e.Delta / 120 * (_maximum - _minimum) / _mouseWheelBarPartitions;
                 SetProperValue(Value + v);
 
                 // Avoid to send MouseWheel event to the parent container
@@ -735,21 +735,21 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>
         /// Draw the pointer of the knob (a small button inside the main button)
         /// </summary>
-        /// <param name="Gr"></param>
-        private void DrawPointer(Graphics Gr)
+        /// <param name="g"></param>
+        private void DrawPointer(System.Drawing.Graphics g)
         {
             try
             {
-                float radius = (float)(_rKnob.Width / 2);
+                float radius = _rKnob.Width / 2;
 
                 // Draw a line
                 if (_pointerStyle == KnobPointerStyles.LINE)
                 {
                     int l = (int)radius / 2;
                     int w = l / 4;
-                    Point[] pt = GetKnobLine(Gr, l);
+                    Point[] pt = GetKnobLine(g, l);
 
-                    Gr.DrawLine(new Pen(_pointerColour, w), pt[0], pt[1]);
+                    g.DrawLine(new Pen(_pointerColour, w), pt[0], pt[1]);
 
                 }
                 else
@@ -770,19 +770,19 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     if (_scaleTypefaceAutoSize)
                     {
                         // Use font family = _scaleTypeface, but size = automatic
-                        fSize = (float)(6F * _drawRatio);
+                        fSize = 6F * _drawRatio;
                         if (fSize < 6)
                         {
                             fSize = 6;
                         }
 
-                        strsize = Gr.MeasureString(str, new Font(_scaleTypeface.FontFamily, fSize));
+                        strsize = g.MeasureString(str, new Font(_scaleTypeface.FontFamily, fSize));
                     }
                     else
                     {
                         // Use font family = _scaleTypeface, but size = fixed
                         fSize = _scaleTypeface.Size;
-                        strsize = Gr.MeasureString(str, _scaleTypeface);
+                        strsize = g.MeasureString(str, _scaleTypeface);
                     }
 
                     int strw = (int)strsize.Width;
@@ -800,9 +800,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
 
                     //KryptonKnobUtilities.DrawInsetCircle(ref Gr, rPointer, new Pen(_pointerColour));
-                    KryptonKnobUtilities.DrawInsetCircle(ref Gr, rPointer, new Pen(KryptonKnobUtilities.GetLightColour(_pointerColour, 55)));
+                    KryptonKnobUtilities.DrawInsetCircle(ref g, rPointer, new Pen(KryptonKnobUtilities.GetLightColour(_pointerColour, 55)));
 
-                    Gr.FillEllipse(_brushKnobPointer, rPointer);
+                    g.FillEllipse(_brushKnobPointer, rPointer);
 
                 }
             }
@@ -815,10 +815,10 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>
         /// Draw graduations
         /// </summary>
-        /// <param name="Gr"></param>
+        /// <param name="g"></param>
         /// <param name="rc">Knob rectangle</param>
         /// <returns></returns>
-        private bool DrawDivisions(Graphics Gr, RectangleF rc)
+        private bool DrawDivisions(Graphics g, RectangleF rc)
         {
             if (this == null)
             {
@@ -842,8 +842,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             Font font;
 
-            Pen penL = new Pen(_scaleColour, (2 * _drawRatio));
-            Pen penS = new Pen(_scaleColour, (1 * _drawRatio));
+            Pen penL = new Pen(_scaleColour, 2 * _drawRatio);
+            Pen penS = new Pen(_scaleColour, 1 * _drawRatio);
 
             SolidBrush br = new SolidBrush(_scaleColour);
 
@@ -859,7 +859,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 string strval = strvalmax.Length > strvalmin.Length ? strvalmax : strvalmin;
                 double val = Convert.ToDouble(strval);
                 //double val = _maximum;
-                String str = String.Format("{0,0:D}", (int)val);
+                string str = $"{(int)val,0:D}";
                 float fSize;
                 SizeF strsize;
 
@@ -877,7 +877,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 }
 
                 font = new Font(_scaleTypeface.FontFamily, fSize);
-                strsize = Gr.MeasureString(str, font);
+                strsize = g.MeasureString(str, font);
 
                 int strw = (int)strsize.Width;
                 int strh = (int)strsize.Height;
@@ -889,13 +889,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 for (; n < _scaleDivisions; n++)
                 {
                     // draw divisions
-                    ptStart.X = (float)(cx + (radius) * Math.Cos(currentAngle));
-                    ptStart.Y = (float)(cy + (radius) * Math.Sin(currentAngle));
+                    ptStart.X = (float)(cx + radius * Math.Cos(currentAngle));
+                    ptStart.Y = (float)(cy + radius * Math.Sin(currentAngle));
 
                     ptEnd.X = (float)(cx + (radius + _gradLength) * Math.Cos(currentAngle));
                     ptEnd.Y = (float)(cy + (radius + _gradLength) * Math.Sin(currentAngle));
 
-                    Gr.DrawLine(penL, ptStart, ptEnd);
+                    g.DrawLine(penL, ptStart, ptEnd);
 
 
                     //Draw graduation values                                                                                
@@ -905,18 +905,18 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     // If autosize
                     if (_scaleTypefaceAutoSize)
                     {
-                        strsize = Gr.MeasureString(str, new Font(_scaleTypeface.FontFamily, fSize));
+                        strsize = g.MeasureString(str, new Font(_scaleTypeface.FontFamily, fSize));
                     }
                     else
                     {
-                        strsize = Gr.MeasureString(str, new Font(_scaleTypeface.FontFamily, _scaleTypeface.Size));
+                        strsize = g.MeasureString(str, new Font(_scaleTypeface.FontFamily, _scaleTypeface.Size));
                     }
 
 
                     if (_drawDivInside)
                     {
                         // graduations values inside the knob                        
-                        l = (int)radius - (wmax / 2) - 2;
+                        l = (int)radius - wmax / 2 - 2;
 
                         tx = (float)(cx + l * Math.Cos(currentAngle));
                         ty = (float)(cy + l * Math.Sin(currentAngle));
@@ -932,7 +932,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                         ty = (float)(cy + l * Math.Sin(currentAngle));
                     }
 
-                    Gr.DrawString(str,
+                    g.DrawString(str,
                                     font,
                                     br,
                                     tx - (float)(strsize.Width * 0.5),
@@ -970,7 +970,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                                 ptEnd.X = (float)(cx + (radius + _gradLength / 2) * Math.Cos(currentAngle));
                                 ptEnd.Y = (float)(cy + (radius + _gradLength / 2) * Math.Sin(currentAngle));
 
-                                Gr.DrawLine(penS, ptStart, ptEnd);
+                                g.DrawLine(penS, ptStart, ptEnd);
                             }
                         }
                     }
@@ -1005,7 +1005,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             if (_showLargeScale)
             {
-                Graphics Gr = this.CreateGraphics();
+                System.Drawing.Graphics Gr = this.CreateGraphics();
                 string strvalmax = _maximum.ToString();
                 string strvalmin = _minimum.ToString();
                 string strval = strvalmax.Length > strvalmin.Length ? strvalmax : strvalmin;
@@ -1081,7 +1081,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             // create offscreen image                                 
             this._offScreenImage = new Bitmap(this.Width, this.Height);
             // create offscreen graphics                              
-            this._gOffScreen = Graphics.FromImage(_offScreenImage);
+            this._gOffScreen = System.Drawing.Graphics.FromImage(_offScreenImage);
 
 
             // Depends on retangle dimensions
@@ -1144,7 +1144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <param name="g"></param>
         /// <param name="l"></param>
         /// <returns></returns>
-        private Point[] GetKnobLine(Graphics g, int l)
+        private Point[] GetKnobLine(System.Drawing.Graphics g, int l)
         {
             Point[] pret = new Point[2];
 
@@ -1192,8 +1192,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             if (_drawDivInside)
             {
                 // Center (from)
-                Pos.X = (int)(cx + (radius / 10) * Math.Cos(degree));
-                Pos.Y = (int)(cy + (radius / 10) * Math.Sin(degree));
+                Pos.X = (int)(cx + radius / 10 * Math.Cos(degree));
+                Pos.Y = (int)(cy + radius / 10 * Math.Sin(degree));
                 pret[0] = new Point(Pos.X, Pos.Y);
 
                 // External (to)
@@ -1234,7 +1234,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 degree = (float)(_pKnob.Y - p.Y) / (float)(_pKnob.X - p.X);
                 degree = (float)Math.Atan(degree);
 
-                degree = (degree) * (float)(180 / Math.PI) + (180 - _startAngle);
+                degree = degree * (float)(180 / Math.PI) + (180 - _startAngle);
 
             }
             else if (p.X > _pKnob.X)
@@ -1242,7 +1242,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 degree = (float)(p.Y - _pKnob.Y) / (float)(p.X - _pKnob.X);
                 degree = (float)Math.Atan(degree);
 
-                degree = (degree) * (float)(180 / Math.PI) + 360 - _startAngle;
+                degree = degree * (float)(180 / Math.PI) + 360 - _startAngle;
             }
 
             // round to the nearest value (when you click just before or after a graduation!)
@@ -1287,7 +1287,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint -= OnPalettePaint;
             }
@@ -1296,7 +1296,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             _paletteRedirect.Target = _palette;
 
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += OnPalettePaint;
 

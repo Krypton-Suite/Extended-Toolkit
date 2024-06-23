@@ -70,23 +70,23 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonLabel1 = new();
             this.kryptonGroupBox1 = new();
             this.kcmbInstalledVoices = new();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kgbInput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kgbInput.Panel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kgbInput).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kgbInput.Panel).BeginInit();
             this.kgbInput.Panel.SuspendLayout();
             this.kgbInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kgbAdjustments)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kgbAdjustments.Panel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kgbAdjustments).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kgbAdjustments.Panel).BeginInit();
             this.kgbAdjustments.Panel.SuspendLayout();
             this.kgbAdjustments.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbInstalledVoices)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbInstalledVoices).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -113,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             // kbtnSpeak
             // 
-            this.kbtnSpeak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnSpeak.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnSpeak.Enabled = false;
             this.kbtnSpeak.Location = new(260, 13);
             this.kbtnSpeak.Name = "kbtnSpeak";
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new(356, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -198,7 +198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             this.kwlVolume.AutoSize = false;
             this.kwlVolume.Font = new("Segoe UI", 9F);
-            this.kwlVolume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlVolume.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kwlVolume.Location = new(12, 184);
             this.kwlVolume.Name = "kwlVolume";
             this.kwlVolume.Size = new(405, 23);
@@ -229,7 +229,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             this.kwlRate.AutoSize = false;
             this.kwlRate.Font = new("Segoe UI", 9F);
-            this.kwlRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlRate.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kwlRate.Location = new(12, 86);
             this.kwlRate.Name = "kwlRate";
             this.kwlRate.Size = new(405, 23);
@@ -258,8 +258,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             // kryptonGroupBox1
             // 
-            this.kryptonGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonGroupBox1.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left
+                                                                               | System.Windows.Forms.AnchorStyles.Right);
             this.kryptonGroupBox1.Location = new(13, 13);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
@@ -297,25 +297,25 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ShowInTaskbar = false;
             this.Text = "Text to Speech";
             this.Load += new(this.KryptonTextToSpeechDialog_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kgbInput.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kgbInput.Panel).EndInit();
             this.kgbInput.Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kgbInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kgbInput).EndInit();
             this.kgbInput.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kgbAdjustments.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kgbAdjustments.Panel).EndInit();
             this.kgbAdjustments.Panel.ResumeLayout(false);
             this.kgbAdjustments.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kgbAdjustments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kgbAdjustments).EndInit();
             this.kgbAdjustments.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbInstalledVoices)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbInstalledVoices).EndInit();
             this.ResumeLayout(false);
 
         }

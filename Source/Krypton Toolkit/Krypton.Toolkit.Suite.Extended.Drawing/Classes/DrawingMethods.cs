@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             upbounds = rect;
             downbounds = rect;
 
-            upbounds.Height = (rect.Height / 2);
+            upbounds.Height = rect.Height / 2;
             upbounds.Width = rect.Width - 0;
             upbounds.X = rect.X + 0;
             upbounds.Y = rect.Y + 0;
@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             RectangleF backRect = new RectangleF(0, 1.5f, rect.Width, rect.Height - 2);
 
             // Cannot paint a zero sized area
-            if ((backRect.Width > 0) && (backRect.Height > 0))
+            if (backRect.Width > 0 && backRect.Height > 0)
             {
                 using (LinearGradientBrush backBrush = new LinearGradientBrush(backRect,
                                                                                LightColor,
@@ -494,7 +494,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
 
 
             //check on all whites
-            if ((MiddleColour == Color.White) && (DarkColour == Color.White))
+            if (MiddleColour == Color.White && DarkColour == Color.White)
             {
                 MiddleColour = Color.WhiteSmoke;
                 DarkColour = Color.Snow;
@@ -533,7 +533,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                     {
                         bounds.Offset(1, 1);
                         bounds.Width -= 2;
-                        if ((Status != TabHeaderStatus.HotSelected) && (Status != TabHeaderStatus.Selected))
+                        if (Status != TabHeaderStatus.HotSelected && Status != TabHeaderStatus.Selected)
                         {
                             bounds.Height -= 2;
                         }
@@ -544,7 +544,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                 case TabAlignment.Bottom:
                     if (IsForBorder)
                     {
-                        if ((Status != TabHeaderStatus.HotSelected) && (Status != TabHeaderStatus.Selected))
+                        if (Status != TabHeaderStatus.HotSelected && Status != TabHeaderStatus.Selected)
                         {
                             bounds.Offset(1, +1);
                             bounds.Height -= 2;
@@ -563,7 +563,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                     {
                         bounds.Offset(1, 1);
                         bounds.Height -= 2;
-                        if ((Status != TabHeaderStatus.HotSelected) && (Status != TabHeaderStatus.Selected))
+                        if (Status != TabHeaderStatus.HotSelected && Status != TabHeaderStatus.Selected)
                         {
                             bounds.Width -= 2;
                         }
@@ -574,7 +574,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                 case TabAlignment.Right:
                     if (IsForBorder)
                     {
-                        if ((Status != TabHeaderStatus.HotSelected) && (Status != TabHeaderStatus.Selected))
+                        if (Status != TabHeaderStatus.HotSelected && Status != TabHeaderStatus.Selected)
                         {
                             bounds.Offset(1, 1);
                             bounds.Width -= 2;
@@ -603,7 +603,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                     {
                         bounds.Offset(1, 1);
                         bounds.Width -= 2;
-                        if ((Status != TabHeaderStatus.HotSelected) && (Status != TabHeaderStatus.Selected))
+                        if (Status != TabHeaderStatus.HotSelected && Status != TabHeaderStatus.Selected)
                         {
                             bounds.Height -= 2;
                         }
@@ -614,7 +614,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                 case TabAlignment.Bottom:
                     if (IsForBorder)
                     {
-                        if ((Status != TabHeaderStatus.HotSelected) && (Status != TabHeaderStatus.Selected))
+                        if (Status != TabHeaderStatus.HotSelected && Status != TabHeaderStatus.Selected)
                         {
                             bounds.Offset(1, +1);
                             bounds.Height -= 2;
@@ -633,7 +633,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                     {
                         bounds.Offset(1, 1);
                         bounds.Height -= 2;
-                        if ((Status != TabHeaderStatus.HotSelected) && (Status != TabHeaderStatus.Selected))
+                        if (Status != TabHeaderStatus.HotSelected && Status != TabHeaderStatus.Selected)
                         {
                             bounds.Width -= 2;
                         }
@@ -644,7 +644,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                 case TabAlignment.Right:
                     if (IsForBorder)
                     {
-                        if ((Status != TabHeaderStatus.HotSelected) && (Status != TabHeaderStatus.Selected))
+                        if (Status != TabHeaderStatus.HotSelected && Status != TabHeaderStatus.Selected)
                         {
                             bounds.Offset(1, 1);
                             bounds.Width -= 2;
@@ -671,7 +671,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             pt[2] = new Point(recBounds.Left + cornerLeftWidth, recBounds.Top + allowSelectedTabHighSize); //little lower
             pt[3] = new Point(recBounds.Right - cornerRightWidth, recBounds.Top + allowSelectedTabHighSize); //little lower
             pt[4] = new Point(recBounds.Right, recBounds.Top + cornerRightWidth + allowSelectedTabHighSize); //little lower
-            if ((Appearance == TabAppearance.Normal) && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
+            if (Appearance == TabAppearance.Normal && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
             { //a litte Higher if selected
                 pt[1] = new Point(pt[1].X, pt[1].Y - allowSelectedTabHighSize);
                 pt[2] = new Point(pt[2].X, pt[2].Y - allowSelectedTabHighSize);
@@ -696,7 +696,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             pt[3] = new Point(recBounds.Right - cornerRightWidth, recBounds.Bottom - allowSelectedTabHighSize);//little lower
             pt[4] = new Point(recBounds.Left + cornerLeftWidth, recBounds.Bottom - allowSelectedTabHighSize);//little lower
             pt[5] = new Point(recBounds.Left, recBounds.Bottom - cornerLeftWidth - allowSelectedTabHighSize);//little lower
-            if ((Appearance == TabAppearance.Normal) && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
+            if (Appearance == TabAppearance.Normal && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
             { //a litte Higher if selected
                 pt[2] = new Point(pt[2].X, pt[2].Y + allowSelectedTabHighSize);
                 pt[3] = new Point(pt[3].X, pt[3].Y + allowSelectedTabHighSize);
@@ -780,7 +780,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             Rectangle Newrect = new Rectangle(rect.X, rect.Y + HalfSize, rect.Width, rect.Height - HalfSize);
 
             //check on all whites
-            if ((MiddleColour == Color.White) && (DarkColour == Color.White))
+            if (MiddleColour == Color.White && DarkColour == Color.White)
             {
                 MiddleColour = Color.WhiteSmoke;
                 DarkColour = Color.Snow;
@@ -1262,13 +1262,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
 
             if (0.5 < Brightness)
             {
-                fMax = Brightness - (Brightness * Saturation) + Saturation;
-                fMin = Brightness + (Brightness * Saturation) - Saturation;
+                fMax = Brightness - Brightness * Saturation + Saturation;
+                fMin = Brightness + Brightness * Saturation - Saturation;
             }
             else
             {
-                fMax = Brightness + (Brightness * Saturation);
-                fMin = Brightness - (Brightness * Saturation);
+                fMax = Brightness + Brightness * Saturation;
+                fMin = Brightness - Brightness * Saturation;
             }
 
             iSextant = (int)Math.Floor(Hue / 60f);
@@ -1277,7 +1277,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                 Hue -= 360f;
             }
             Hue /= 60f;
-            Hue -= 2f * (float)Math.Floor(((iSextant + 1f) % 6f) / 2f);
+            Hue -= 2f * (float)Math.Floor((iSextant + 1f) % 6f / 2f);
             if (0 == iSextant % 2)
             {
                 fMid = Hue * (fMax - fMin) + fMin;
@@ -1326,7 +1326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             int width = bounds.Width;
             int height = bounds.Height;
             GraphicsPath graphicsPath = new GraphicsPath();
-            if ((Appearance == TabAppearance.Normal) && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
+            if (Appearance == TabAppearance.Normal && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
             {
                 //graphicsPath.AddLine(x, y + height, x, y - radius);                     //Left Line
                 graphicsPath.AddArc(x, y, radius, radius, 180, 90);                     //Upper left corner
@@ -1359,7 +1359,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             int height = bounds.Height;
             GraphicsPath graphicsPath = new GraphicsPath();
 
-            if ((Appearance == TabAppearance.Normal) && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
+            if (Appearance == TabAppearance.Normal && Status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected)
             {
                 //girare sempre in senso orario
                 graphicsPath.AddLine(x, y, x + width, y); //top

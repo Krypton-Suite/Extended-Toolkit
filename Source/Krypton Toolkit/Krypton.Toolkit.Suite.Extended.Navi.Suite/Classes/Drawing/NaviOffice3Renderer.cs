@@ -224,20 +224,20 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             Color[] endColors = new Color[1];
 
-            if ((state == ControlState.Normal) && (inputState == InputState.Normal))
+            if (state == ControlState.Normal && inputState == InputState.Normal)
             {
                 endColors = new Color[] { ColourTable.ButtonNormalColor2, ColourTable.ButtonNormalColor1 };
             }
-            else if ((state == ControlState.Normal) && (inputState == InputState.Hovered))
+            else if (state == ControlState.Normal && inputState == InputState.Hovered)
             {
                 endColors = new Color[] { ColourTable.ButtonHoveredColor2, ColourTable.ButtonHoveredColor1 };
             }
-            else if ((state == ControlState.Active) && (inputState == InputState.Normal))
+            else if (state == ControlState.Active && inputState == InputState.Normal)
             {
                 endColors = new Color[] { ColourTable.ButtonActiveColor2, ColourTable.ButtonActiveColor1 };
             }
-            else if ((inputState == InputState.Clicked)
-               || ((state == ControlState.Active) && (inputState == InputState.Hovered)))
+            else if (inputState == InputState.Clicked
+               || (state == ControlState.Active && inputState == InputState.Hovered))
             {
                 endColors = new Color[] { ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2 };
             }
@@ -351,15 +351,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 if (bounds.Height != 0)
                 {
-                    y = (bounds.Height / 2) - 3;
+                    y = bounds.Height / 2 - 3;
                 }
 
                 if (bounds.Width != 0)
                 {
-                    x = (bounds.Width / 2) - 1;
+                    x = bounds.Width / 2 - 1;
                 }
 
-                if (((rightToLeft) && (!collapsed)) || (!rightToLeft) && (collapsed))
+                if ((rightToLeft && !collapsed) || !rightToLeft && collapsed)
                 {
                     PointF[] points = {new PointF(x -3, y),
                                new PointF(x,y + 3),
@@ -490,7 +490,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 if (bounds.Height != 0)
                 {
-                    y = (bounds.Height / 2) - 3; // + 1px border and - 4 size
+                    y = bounds.Height / 2 - 3; // + 1px border and - 4 size
                 }
 
                 if (rightToLeft)
@@ -584,8 +584,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 g.FillRectangle(brush, bounds);
             }
 
-            int centerX = bounds.Right - (bounds.Width / 2);
-            int centerY = bounds.Bottom - (bounds.Height / 2);
+            int centerX = bounds.Right - bounds.Width / 2;
+            int centerY = bounds.Bottom - bounds.Height / 2;
 
             using (SolidBrush b = new SolidBrush(ColourTable.Border))
             {

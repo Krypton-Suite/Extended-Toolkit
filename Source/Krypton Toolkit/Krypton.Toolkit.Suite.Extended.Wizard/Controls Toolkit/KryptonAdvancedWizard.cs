@@ -218,12 +218,12 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                         {
                             case true:
                                 _kbtnHelp.Visible = true;
-                                _kbtnHelp.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+                                _kbtnHelp.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
                                 break;
 
                             case false:
                                 _kbtnHelp.Visible = false;
-                                _kbtnHelp.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+                                _kbtnHelp.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
                                 break;
                         }
                         break;

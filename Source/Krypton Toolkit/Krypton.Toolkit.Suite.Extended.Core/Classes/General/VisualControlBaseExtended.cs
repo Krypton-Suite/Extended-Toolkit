@@ -281,7 +281,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         // Ask the view to perform a layout
                         ViewManager.Layout(Renderer);
 
-                    } while (_layoutDirty && (max-- > 0));
+                    } while (_layoutDirty && max-- > 0);
                 }
             }
         }
@@ -328,7 +328,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private bool ShouldSerializePaletteMode()
         {
-            return (PaletteMode != PaletteMode.Global);
+            return PaletteMode != PaletteMode.Global;
         }
 
         /// <summary>
@@ -879,7 +879,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         // Ask the view to perform a layout
                         ViewManager.Layout(Renderer);
 
-                    } while (_layoutDirty && (max-- > 0));
+                    } while (_layoutDirty && max-- > 0);
                 }
             }
 
@@ -907,8 +907,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         PerformLayout();
 
                         // Did the layout cause a change in the size of the control?
-                        if ((beforeSize.Width < ClientSize.Width) ||
-                            (beforeSize.Height < ClientSize.Height))
+                        if (beforeSize.Width < ClientSize.Width ||
+                            beforeSize.Height < ClientSize.Height)
                         {
                             // Have to reset the _refresh before calling need paint otherwise
                             // it will not create another invalidate or invoke call as necessary
@@ -1200,7 +1200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     Point mousePt = new(PlatformInvoke.LOWORD(m.LParam), PlatformInvoke.HIWORD(m.LParam));
 
                     // If keyboard activated, the menu position is centered
-                    if (((int)((long)m.LParam)) == -1)
+                    if ((int)(long)m.LParam == -1)
                     {
                         mousePt = new(Width / 2, Height / 2);
                     }
@@ -1280,7 +1280,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             Control parent = TransparentParent;
 
             // Do we have a parent control and we need to paint background?
-            if ((parent != null) && NeedTransparentPaint)
+            if (parent != null && NeedTransparentPaint)
             {
                 // Only grab the required reference once
                 if (_miPTB == null)

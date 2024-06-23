@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         internal override IntPtr GetOutputFormat(IntPtr targetFormat)
         {
             IntPtr waveHeader;
-            _comEngine.GetOutputFormat((!(targetFormat != IntPtr.Zero)) ? SpeakOutputFormat.Text : SpeakOutputFormat.WaveFormat, targetFormat, out waveHeader);
+            _comEngine.GetOutputFormat(!(targetFormat != IntPtr.Zero) ? SpeakOutputFormat.Text : SpeakOutputFormat.WaveFormat, targetFormat, out waveHeader);
             return waveHeader;
         }
 

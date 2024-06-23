@@ -272,7 +272,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 
             Size = new Size(320, 320);
 
-            if ((_palette != null))
+            if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }

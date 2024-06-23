@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 
         internal GrammarBuilderRuleRef(Uri uri, string rule)
         {
-            _uri = uri.OriginalString + ((rule != null) ? ("#" + rule) : "");
+            _uri = uri.OriginalString + (rule != null ? "#" + rule : "");
         }
 
         private GrammarBuilderRuleRef(string sgrsUri)

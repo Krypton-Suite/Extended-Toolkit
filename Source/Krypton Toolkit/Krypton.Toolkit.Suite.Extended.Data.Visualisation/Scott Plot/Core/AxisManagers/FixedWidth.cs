@@ -14,8 +14,8 @@
 
             var expandY = ExpandFractionY * dataLimits.VerticalSpan;
 
-            var yMin = (dataLimits.Bottom < viewLimits.Bottom) ? dataLimits.Bottom - expandY : viewLimits.Bottom;
-            var yMax = (dataLimits.Top > viewLimits.Top) ? dataLimits.Top + expandY : viewLimits.Top;
+            var yMin = dataLimits.Bottom < viewLimits.Bottom ? dataLimits.Bottom - expandY : viewLimits.Bottom;
+            var yMax = dataLimits.Top > viewLimits.Top ? dataLimits.Top + expandY : viewLimits.Top;
 
             return new AxisLimits(xMin, xMax, yMin, yMax);
         }

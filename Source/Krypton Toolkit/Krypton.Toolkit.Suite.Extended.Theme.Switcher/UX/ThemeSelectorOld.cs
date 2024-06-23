@@ -54,11 +54,11 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kryptonPanel2 = new();
             this.kcmbPaletteMode = new();
             this.kryptonLabel1 = new();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbPaletteMode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbPaletteMode).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnApply
             // 
-            this.kbtnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnApply.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnApply.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnApply.Enabled = false;
             this.kbtnApply.Location = new(392, 13);
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new(488, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -176,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ThemeSelector";
@@ -186,13 +186,13 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.Text = "Select Theme";
             this.FormClosing += new(this.ThemeSelector_FormClosing);
             this.Load += new(this.ThemeSelector_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbPaletteMode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbPaletteMode).EndInit();
             this.ResumeLayout(false);
 
         }

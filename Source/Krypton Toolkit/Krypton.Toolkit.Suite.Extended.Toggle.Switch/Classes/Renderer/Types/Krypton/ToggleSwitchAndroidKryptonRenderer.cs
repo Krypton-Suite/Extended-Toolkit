@@ -183,7 +183,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             if (buttonImage != null || !string.IsNullOrEmpty(buttonText))
             {
-                ToggleSwitchButtonAlignment alignment = ToggleSwitch.ButtonImage != null ? ToggleSwitch.ButtonAlignment : (ToggleSwitch.Checked ? ToggleSwitch.OnButtonAlignment : ToggleSwitch.OffButtonAlignment);
+                ToggleSwitchButtonAlignment alignment = ToggleSwitch.ButtonImage != null ? ToggleSwitch.ButtonAlignment : ToggleSwitch.Checked ? ToggleSwitch.OnButtonAlignment : ToggleSwitch.OffButtonAlignment;
 
                 if (buttonImage != null)
                 {
@@ -192,7 +192,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
                     int imageXPos = (int)adjustedButtonRect.X;
 
-                    bool scaleImage = ToggleSwitch.ButtonImage != null ? ToggleSwitch.ButtonScaleImageToFit : (ToggleSwitch.Checked ? ToggleSwitch.OnButtonScaleImageToFit : ToggleSwitch.OffButtonScaleImageToFit);
+                    bool scaleImage = ToggleSwitch.ButtonImage != null ? ToggleSwitch.ButtonScaleImageToFit : ToggleSwitch.Checked ? ToggleSwitch.OnButtonScaleImageToFit : ToggleSwitch.OffButtonScaleImageToFit;
 
                     if (scaleImage)
                     {
@@ -201,14 +201,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
                         if (alignment == ToggleSwitchButtonAlignment.Center)
                         {
-                            imageXPos = (int)((float)adjustedButtonRect.X + (((float)adjustedButtonRect.Width - (float)resizedImageSize.Width) / 2));
+                            imageXPos = (int)((float)adjustedButtonRect.X + ((float)adjustedButtonRect.Width - (float)resizedImageSize.Width) / 2);
                         }
                         else if (alignment == ToggleSwitchButtonAlignment.Right)
                         {
                             imageXPos = (int)((float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)resizedImageSize.Width);
                         }
 
-                        imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + (((float)adjustedButtonRect.Height - (float)resizedImageSize.Height) / 2)), resizedImageSize.Width, resizedImageSize.Height);
+                        imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + ((float)adjustedButtonRect.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
                         {
@@ -223,14 +223,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                     {
                         if (alignment == ToggleSwitchButtonAlignment.Center)
                         {
-                            imageXPos = (int)((float)adjustedButtonRect.X + (((float)adjustedButtonRect.Width - (float)imageSize.Width) / 2));
+                            imageXPos = (int)((float)adjustedButtonRect.X + ((float)adjustedButtonRect.Width - (float)imageSize.Width) / 2);
                         }
                         else if (alignment == ToggleSwitchButtonAlignment.Right)
                         {
                             imageXPos = (int)((float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)imageSize.Width);
                         }
 
-                        imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + (((float)adjustedButtonRect.Height - (float)imageSize.Height) / 2)), imageSize.Width, imageSize.Height);
+                        imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + ((float)adjustedButtonRect.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
                         {
@@ -258,14 +258,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
                     if (alignment == ToggleSwitchButtonAlignment.Center)
                     {
-                        textXPos = (float)adjustedButtonRect.X + (((float)adjustedButtonRect.Width - (float)textSize.Width) / 2);
+                        textXPos = (float)adjustedButtonRect.X + ((float)adjustedButtonRect.Width - (float)textSize.Width) / 2;
                     }
                     else if (alignment == ToggleSwitchButtonAlignment.Right)
                     {
                         textXPos = (float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)textSize.Width;
                     }
 
-                    RectangleF textRectangle = new RectangleF(textXPos, (float)adjustedButtonRect.Y + (((float)adjustedButtonRect.Height - (float)textSize.Height) / 2), textSize.Width, textSize.Height);
+                    RectangleF textRectangle = new RectangleF(textXPos, (float)adjustedButtonRect.Y + ((float)adjustedButtonRect.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
                     using (Brush textBrush = new SolidBrush(buttonForeColour))
                     {
@@ -309,7 +309,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             double degrees = Math.Abs(SlantAngle);
             double radians = degrees * (Math.PI / 180);
-            double length = (Math.Tan(radians) * ToggleSwitch.Height) / 2;
+            double length = Math.Tan(radians) * ToggleSwitch.Height / 2;
 
             return (int)length;
         }

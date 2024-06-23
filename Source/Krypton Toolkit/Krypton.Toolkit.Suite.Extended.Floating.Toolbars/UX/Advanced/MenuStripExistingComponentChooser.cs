@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                 {
                     foreach (Control item in value.Controls)
                     {
-                        if ((item is MenuStripPanelExtended))
+                        if (item is MenuStripPanelExtended)
                         {
                             _srcComponentList.Add(item as MenuStripPanelExtended);
                         }

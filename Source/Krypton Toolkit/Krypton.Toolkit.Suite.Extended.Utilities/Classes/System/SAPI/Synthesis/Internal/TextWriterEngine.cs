@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             if ((culture != null && !culture.Equals(_culture)) || !string.IsNullOrEmpty(_pexmlPrefix) || extraNamespace.Count > 0)
             {
                 _writer.WriteStartElement("voice");
-                _writer.WriteAttributeString("xml", "lang", null, (culture != null) ? culture.Name : _culture.Name);
+                _writer.WriteAttributeString("xml", "lang", null, culture != null ? culture.Name : _culture.Name);
                 foreach (SsmlXmlAttribute item in extraNamespace)
                 {
                     _writer.WriteAttributeString("xmlns", item._name, item._ns, item._value);
@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _writer.WriteStartElement("phoneme");
             if (alphabet != AlphabetType.Ipa)
             {
-                _writer.WriteAttributeString("alphabet", (alphabet == AlphabetType.Sapi) ? "x-microsoft-sapi" : "x-microsoft-ups");
+                _writer.WriteAttributeString("alphabet", alphabet == AlphabetType.Sapi ? "x-microsoft-sapi" : "x-microsoft-ups");
             }
             _writer.WriteAttributeString("ph", ph);
         }

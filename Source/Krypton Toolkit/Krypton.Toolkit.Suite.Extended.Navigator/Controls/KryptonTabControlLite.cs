@@ -173,7 +173,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         private void PaintTab(int index, RenderContext RenderContext)
         {
-            bool Selected = (SelectedIndex == index);
+            bool Selected = SelectedIndex == index;
 
             Rectangle TabRect = GetTabRect(index);
             //If Selected Then TabRect.Inflate(0, 2)
@@ -237,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
                 if (tabImage != null)
                 {
-                    int x = TabRect.X + (tabImage.Width / 2);
+                    int x = TabRect.X + tabImage.Width / 2;
                     int y = TabRect.Y + (TabRect.Height - tabImage.Height) / 2;
 
                     RenderContext.Graphics.DrawImage(tabImage, x, y);
@@ -249,7 +249,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             }
 
-            if (TabFont == null || (!object.ReferenceEquals(TabFont, TabFontBold) & !object.ReferenceEquals(TabFont, TabFontRegular)))
+            if (TabFont == null || !object.ReferenceEquals(TabFont, TabFontBold) & !object.ReferenceEquals(TabFont, TabFontRegular))
             {
                 if (RenderContext.Graphics.MeasureString(TabPages[index].Text, TabFontBold, TabRect.X, SF).Width <= TabRect.Width)
                 {

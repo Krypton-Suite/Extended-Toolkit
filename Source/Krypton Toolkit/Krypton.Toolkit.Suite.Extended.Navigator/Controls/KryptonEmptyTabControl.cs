@@ -85,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         public KryptonEmptyTabControl()
         {
             //Design Mode
-            _designMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
+            _designMode = System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv";
 
             Init();
         }
@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             container.Add(this);
 
             //Design Mode
-            _designMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
+            _designMode = System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv";
 
             Init();
         }

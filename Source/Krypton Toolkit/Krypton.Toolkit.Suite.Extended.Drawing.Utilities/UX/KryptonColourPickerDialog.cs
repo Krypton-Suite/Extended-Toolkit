@@ -62,11 +62,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.cpbColour = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
             this.scpColour = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.ScreenColourPickerControl();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbColour).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -227,13 +227,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Select a Colour";
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbColour).EndInit();
             this.ResumeLayout(false);
 
         }

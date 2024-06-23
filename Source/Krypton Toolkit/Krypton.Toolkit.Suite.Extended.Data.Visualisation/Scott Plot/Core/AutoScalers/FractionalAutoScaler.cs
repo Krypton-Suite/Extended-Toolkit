@@ -53,8 +53,8 @@
 
             foreach (IAxis xAxis in xAxes)
             {
-                var left = xAxis.Range.Min - (xAxis.Range.Span * LeftFraction);
-                var right = xAxis.Range.Max + (xAxis.Range.Span * RightFraction);
+                var left = xAxis.Range.Min - xAxis.Range.Span * LeftFraction;
+                var right = xAxis.Range.Max + xAxis.Range.Span * RightFraction;
                 if (NumericConversion.IsReal(left) && NumericConversion.IsReal(right))
                 {
                     xAxis.Range.Set(left, right);
@@ -63,8 +63,8 @@
 
             foreach (IYAxis yAxis in yAxes)
             {
-                var bottom = yAxis.Range.Min - (yAxis.Range.Span * BottomFraction);
-                var top = yAxis.Range.Max + (yAxis.Range.Span * TopFraction);
+                var bottom = yAxis.Range.Min - yAxis.Range.Span * BottomFraction;
+                var top = yAxis.Range.Max + yAxis.Range.Span * TopFraction;
                 if (NumericConversion.IsReal(bottom) && NumericConversion.IsReal(top))
                 {
                     yAxis.Range.Set(bottom, top);
@@ -102,10 +102,10 @@
             }
 
             AxisLimits newLimits = new(
-                left: limits.Left - (limits.HorizontalSpan * LeftFraction),
-                right: limits.Right + (limits.HorizontalSpan * RightFraction),
-                bottom: limits.Bottom - (limits.VerticalSpan * BottomFraction),
-                top: limits.Top + (limits.VerticalSpan * TopFraction));
+                left: limits.Left - limits.HorizontalSpan * LeftFraction,
+                right: limits.Right + limits.HorizontalSpan * RightFraction,
+                bottom: limits.Bottom - limits.VerticalSpan * BottomFraction,
+                top: limits.Top + limits.VerticalSpan * TopFraction);
 
             return !newLimits.IsReal || !newLimits.HasArea
                 ? throw new InvalidOperationException(

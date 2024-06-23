@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private Color _displayTextColour;
 
-        private PaletteBase _palette;
+        private readonly PaletteBase? _palette;
         #endregion
 
         #region Properties
@@ -58,11 +58,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary>Initializes a new instance of the <see cref="KryptonEnhancedToolStripProgressBar" /> class.</summary>
         public KryptonEnhancedToolStripProgressBar() : base()
         {
-            _displayTextColour = _palette.ColorTable.StatusStripText;
+            _palette = null;
+
+            _displayTextColour = _palette!.ColorTable.StatusStripText;
 
             Font = _palette.ColorTable.StatusStripFont;
 
-            Control.HandleCreated += Control_HandleCreated;
+            Control.HandleCreated += Control_HandleCreated!;
         }
 
         #endregion

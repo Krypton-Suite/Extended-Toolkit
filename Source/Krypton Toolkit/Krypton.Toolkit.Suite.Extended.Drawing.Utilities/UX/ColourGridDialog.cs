@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.ftsColourGridActions = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableToolStrip();
             this.tsbSavePalette = new System.Windows.Forms.ToolStripButton();
             this.tsbLoadPalette = new System.Windows.Forms.ToolStripButton();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tspeColourGridActions.SuspendLayout();
             this.ftsColourGridActions.SuspendLayout();
@@ -125,7 +125,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.Name = "ColourGridDialog";
             this.Text = "Colour Grid";
             this.Load += new System.EventHandler(this.ColourGridDialog_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             this.tspeColourGridActions.ResumeLayout(false);

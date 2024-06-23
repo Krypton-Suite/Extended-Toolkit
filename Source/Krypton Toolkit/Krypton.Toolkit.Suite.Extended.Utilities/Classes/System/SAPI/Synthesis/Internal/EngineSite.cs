@@ -221,7 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _audio = audioDevice;
             _prompt = prompt;
             _defaultRate = defaultRate;
-            _actions = (SPVESACTIONS.SPVES_RATE | SPVESACTIONS.SPVES_VOLUME);
+            _actions = SPVESACTIONS.SPVES_RATE | SPVESACTIONS.SPVES_VOLUME;
         }
 
         private TTSEvent CreateTtsEvent(SpeechEventInfo sapiEvent)

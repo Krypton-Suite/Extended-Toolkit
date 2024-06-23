@@ -96,10 +96,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             base.DataSource = new DataView(DataSet.Tables[tableName]);
             ForeignKey = masterColumn;
             var keyType = DataSet.Tables[tableName].Columns[masterColumn].GetType();
-            if ((keyType == typeof(int))
-                || (keyType == typeof(float))
-                || (keyType == typeof(double))
-                || (keyType == typeof(decimal))
+            if (keyType == typeof(int)
+                || keyType == typeof(float)
+                || keyType == typeof(double)
+                || keyType == typeof(decimal)
                 )
             {
                 FilterFormat = @"={0}";
@@ -178,10 +178,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         private void MasterDetailGridViewBase_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ((SelectionMode == DataGridViewSelectionMode.FullRowSelect)
+            if (SelectionMode == DataGridViewSelectionMode.FullRowSelect
                 && ExpandDetailsWhenFullRowSelectClicked
-                && (e.ColumnIndex >= 0)
-                && (e.RowIndex >= 0)
+                && e.ColumnIndex >= 0
+                && e.RowIndex >= 0
                 )
             {
                 ExpandAndCollapseOther(e.RowIndex);

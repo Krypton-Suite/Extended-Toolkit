@@ -118,8 +118,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private void FormLoaded(object sender, EventArgs e)
         {
-            _allowDrawing = (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-                            && (Process.GetCurrentProcess().ProcessName != @"devenv");
+            _allowDrawing = LicenseManager.UsageMode != LicenseUsageMode.Designtime
+                            && Process.GetCurrentProcess().ProcessName != @"devenv";
             if (_shadowForms == null)
             {
                 InitialiseShadowForms();

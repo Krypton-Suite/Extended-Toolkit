@@ -97,8 +97,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         private void buttonMoveDown_Click(object sender, EventArgs e)
         {
-            if ((kclbBands.SelectedIndex > 0)
-            && (kclbBands.SelectedIndex < kclbBands.Items.Count - 1))
+            if (kclbBands.SelectedIndex > 0
+            && kclbBands.SelectedIndex < kclbBands.Items.Count - 1)
             {
                 bool oldChecked = kclbBands.CheckedIndices.Contains(
                    kclbBands.SelectedIndex + 1);

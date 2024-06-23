@@ -221,7 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             {
                 throw new ArgumentOutOfRangeException("count");
             }
-            _minRepeat = (_maxRepeat = count);
+            _minRepeat = _maxRepeat = count;
         }
 
         public void SetRepeat(int minRepeat, int maxRepeat)
@@ -278,7 +278,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             }
             else
             {
-                int num = (_minRepeat == -1) ? 1 : _minRepeat;
+                int num = _minRepeat == -1 ? 1 : _minRepeat;
                 writer.WriteAttributeString("repeat", string.Format(CultureInfo.InvariantCulture, "{0}-{1}", new object[2]
                 {
                     num,
@@ -325,7 +325,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
                     }
                     else
                     {
-                        int num = (_minRepeat == -1) ? 1 : _minRepeat;
+                        int num = _minRepeat == -1 ? 1 : _minRepeat;
                         stringBuilder.Append(string.Format(CultureInfo.InvariantCulture, "{0},{1}", new object[2]
                         {
                             num,

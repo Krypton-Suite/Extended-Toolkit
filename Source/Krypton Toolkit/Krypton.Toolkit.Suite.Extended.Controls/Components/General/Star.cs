@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         internal Star(int starNumber, Image offImage, Image onImage, Action<int> clicked, Action<int> mouseEnter, Action<int> mouseLeave)
         {
             Size = new Size(offImage.Width, offImage.Height);
-            Left = (Width * (starNumber - 1));
+            Left = Width * (starNumber - 1);
 
             _stars = new Dictionary<States, Image>
                         {

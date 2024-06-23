@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     ImageComboItem item = (ImageComboItem)this.Items[e.Index];
 
                     // get forecolor & font
-                    Color foreColour = (item.ForeColour != Color.FromKnownColor(KnownColor.Transparent)) ? item.ForeColour : e.ForeColor;
+                    Color foreColour = item.ForeColour != Color.FromKnownColor(KnownColor.Transparent) ? item.ForeColour : e.ForeColor;
 
                     Font font = item.Mark ? new Font(e.Font, FontStyle.Bold) : e.Font;
 

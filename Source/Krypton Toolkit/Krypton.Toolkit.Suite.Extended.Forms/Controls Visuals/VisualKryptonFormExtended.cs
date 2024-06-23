@@ -715,7 +715,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
 
             // Do we need to create a cached bitmap for the display icon?
-            if ((displayIcon != null) && (_cacheBitmap == null))
+            if (displayIcon != null && _cacheBitmap == null)
             {
                 // Remember the icon used to generate the cached bitmap
                 _cacheIcon = displayIcon;
@@ -998,7 +998,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         protected override IntPtr WindowChromeHitTest(Point pt, bool composition)
         {
             Point originalPt = pt;
-            if ((CustomCaptionArea != null) && CustomCaptionArea.Contains(pt))
+            if (CustomCaptionArea != null && CustomCaptionArea.Contains(pt))
             {
                 return (IntPtr)PlatformInvoke.HT.CAPTION;
             }
@@ -1072,10 +1072,10 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 if (mouseView == _drawHeading)
                 {
                     // We give priority to the areas that are used to resize the window
-                    if ((pt.X > borders.Left) &&
-                        (pt.X < (Width - borders.Right)) &&
-                        (pt.Y > borders.Top) &&
-                        (pt.Y < (Height - borders.Bottom)))
+                    if (pt.X > borders.Left &&
+                        pt.X < Width - borders.Right &&
+                        pt.Y > borders.Top &&
+                        pt.Y < Height - borders.Bottom)
                     {
                         return (IntPtr)PlatformInvoke.HT.CAPTION;
                     }
@@ -1085,47 +1085,47 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 if (mouseView == _drawDocker)
                 {
                     // Is point over the left border?
-                    if ((borders.Left > 0) && (pt.X <= borders.Left))
+                    if (borders.Left > 0 && pt.X <= borders.Left)
                     {
                         if (pt.Y <= HT_CORNER)
                         {
                             return (IntPtr)PlatformInvoke.HT.TOPLEFT;
                         }
 
-                        return pt.Y >= (Height - HT_CORNER) ? (IntPtr)PlatformInvoke.HT.BOTTOMLEFT : (IntPtr)PlatformInvoke.HT.LEFT;
+                        return pt.Y >= Height - HT_CORNER ? (IntPtr)PlatformInvoke.HT.BOTTOMLEFT : (IntPtr)PlatformInvoke.HT.LEFT;
                     }
 
                     // Is point over the right border?
-                    if ((borders.Right > 0) && (pt.X >= (Width - borders.Right)))
+                    if (borders.Right > 0 && pt.X >= Width - borders.Right)
                     {
                         if (pt.Y <= HT_CORNER)
                         {
                             return (IntPtr)PlatformInvoke.HT.TOPRIGHT;
                         }
 
-                        return pt.Y >= (Height - HT_CORNER) ? (IntPtr)PlatformInvoke.HT.BOTTOMRIGHT : (IntPtr)PlatformInvoke.HT.RIGHT;
+                        return pt.Y >= Height - HT_CORNER ? (IntPtr)PlatformInvoke.HT.BOTTOMRIGHT : (IntPtr)PlatformInvoke.HT.RIGHT;
                     }
 
                     // Is point over the bottom border?
-                    if ((borders.Bottom > 0) && (pt.Y >= (Height - borders.Bottom)))
+                    if (borders.Bottom > 0 && pt.Y >= Height - borders.Bottom)
                     {
                         if (pt.X <= HT_CORNER)
                         {
                             return (IntPtr)PlatformInvoke.HT.BOTTOMLEFT;
                         }
 
-                        return pt.X >= (Width - HT_CORNER) ? (IntPtr)PlatformInvoke.HT.BOTTOMRIGHT : (IntPtr)PlatformInvoke.HT.BOTTOM;
+                        return pt.X >= Width - HT_CORNER ? (IntPtr)PlatformInvoke.HT.BOTTOMRIGHT : (IntPtr)PlatformInvoke.HT.BOTTOM;
                     }
 
                     // Is point over the top border?
-                    if ((borders.Top > 0) && (pt.Y <= borders.Top))
+                    if (borders.Top > 0 && pt.Y <= borders.Top)
                     {
                         if (pt.X <= HT_CORNER)
                         {
                             return (IntPtr)PlatformInvoke.HT.TOPLEFT;
                         }
 
-                        return pt.X >= (Width - HT_CORNER) ? (IntPtr)PlatformInvoke.HT.TOPRIGHT : (IntPtr)PlatformInvoke.HT.TOP;
+                        return pt.X >= Width - HT_CORNER ? (IntPtr)PlatformInvoke.HT.TOPRIGHT : (IntPtr)PlatformInvoke.HT.TOP;
                     }
                 }
 
@@ -1189,7 +1189,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             var ret = base.WindowChromeLeftMouseDown(windowPoint);
 
             // Has pressing down made a view active and indicated it also wants to capture mouse?
-            if ((ViewManager.ActiveView != null) && ViewManager.MouseCaptured)
+            if (ViewManager.ActiveView != null && ViewManager.MouseCaptured)
             {
                 StartCapture(ViewManager.ActiveView);
                 ret = true;
@@ -1367,7 +1367,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
                     // Is a layout required?
                     if (NeedLayout
-                        || (GetDefinedIcon() != _cacheIcon)
+                        || GetDefinedIcon() != _cacheIcon
                         )
                     {
                         // Ask the view to perform a layout
@@ -1418,12 +1418,12 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         private void PerformViewPaint(Graphics g, Rectangle rect)
         {
             // Cannot process a message for a disposed control
-            if (!IsDisposed && !Disposing && (ViewManager != null))
+            if (!IsDisposed && !Disposing && ViewManager != null)
             {
                 // If we notice we have become maximized but the layout has not updated for
                 // the maximized state then we need to update the region ourself right now
-                if ((GetWindowState() == FormWindowState.Maximized) &&
-                    (_regionWindowState != FormWindowState.Maximized))
+                if (GetWindowState() == FormWindowState.Maximized &&
+                    _regionWindowState != FormWindowState.Maximized)
                 {
                     UpdateRegionForMaximized();
                 }
@@ -1464,8 +1464,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private void UpdateBorderRegion(Region? newRegion)
         {
-            if ((newRegion != null)
-                && (newRegion.IsEmpty(this.CreateGraphics()))
+            if (newRegion != null
+                && newRegion.IsEmpty(this.CreateGraphics())
                 )
             {
                 return;
@@ -1488,7 +1488,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 // Decide if we should have custom chrome applied
                 var needChrome = UseThemeFormChromeBorderWidth &&
                                  KryptonManager.UseThemeFormChromeBorderWidth &&
-                                 (GetResolvedPalette().UseThemeFormChromeBorderWidth == InheritBool.True);
+                                 GetResolvedPalette().UseThemeFormChromeBorderWidth == InheritBool.True;
 
                 // Is there a change in custom chrome requirement?
                 if (UseThemeFormChromeBorderWidth != needChrome
@@ -1506,9 +1506,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         internal bool StatusStripMerging => _allowStatusStripMerge
                                             && _statusStrip is { Visible: true, Dock: DockStyle.Bottom }
-                                            && (_statusStrip.Bottom == ClientRectangle.Bottom)
-                                            && (_statusStrip.RenderMode == ToolStripRenderMode.ManagerRenderMode)
-                                            && (ToolStripManager.Renderer is KryptonOffice2007Renderer or KryptonSparkleRenderer);
+                                            && _statusStrip.Bottom == ClientRectangle.Bottom
+                                            && _statusStrip.RenderMode == ToolStripRenderMode.ManagerRenderMode
+                                            && ToolStripManager.Renderer is KryptonOffice2007Renderer or KryptonSparkleRenderer;
 
         private void MonitorStatusStrip(StatusStrip? statusStrip)
         {
@@ -1620,9 +1620,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
                 // Only interest in the three form level buttons, as we know 
                 // these never change in size because of a paint request
-                if ((bs == ButtonSpecMin) ||
-                    (bs == ButtonSpecMax) ||
-                    (bs == ButtonSpecClose))
+                if (bs == ButtonSpecMin ||
+                    bs == ButtonSpecMax ||
+                    bs == ButtonSpecClose)
                 {
                     // Translate the button rectangle into the non client area
                     Rectangle buttonRect = bsView.ViewButton!.ClientRectangle;

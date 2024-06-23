@@ -383,7 +383,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <param name="value">true if the control should behave as a default button; otherwise false.</param>
         public void NotifyDefault(bool value)
         {
-            if (!ViewDrawButton.IsFixed && (_isDefault != value))
+            if (!ViewDrawButton.IsFixed && _isDefault != value)
             {
                 // Remember new default status
                 _isDefault = value;

@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 throw new ArgumentOutOfRangeException("outHz");
             }
             FindResampleFactors(inHz, outHz);
-            int num = (_iUpFactor > _iDownFactor) ? _iUpFactor : _iDownFactor;
+            int num = _iUpFactor > _iDownFactor ? _iUpFactor : _iDownFactor;
             _iFilterHalf = (int)((float)(inHz * num) * 0.0005f);
             _iFilterLen = 2 * _iFilterHalf + 1;
             _filterCoeff = WindowedLowPass(0.5f / (float)num, _iUpFactor);
@@ -376,7 +376,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         {
             float[] array = new float[iLength];
             double num = Math.PI * 2.0;
-            num = ((!bSymmetric) ? (num / (double)(float)iLength) : (num / (double)(float)(iLength - 1)));
+            num = !bSymmetric ? num / (double)(float)iLength : num / (double)(float)(iLength - 1);
             double num2 = 2.0 * num;
             for (int i = 0; i < iLength; i++)
             {

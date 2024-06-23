@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 imageList = (ImageList)property.GetValue(instance);
             }
 
-            if ((imageList != null) && (imageList.Images.Count > imageIndex) && (imageIndex >= 0))
+            if (imageList != null && imageList.Images.Count > imageIndex && imageIndex >= 0)
             {
                 image = imageList.Images[imageIndex];
             }

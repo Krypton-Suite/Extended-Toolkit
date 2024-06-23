@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                             Marshal.Copy(source2, array2, 0, sPWAVEFORMATEX.cbSize);
                         }
                         SpeechAudioFormatInfo audioFormat = new SpeechAudioFormatInfo((EncodingFormat)sPWAVEFORMATEX.wFormatTag, (int)sPWAVEFORMATEX.nSamplesPerSec, (short)sPWAVEFORMATEX.wBitsPerSample, (short)sPWAVEFORMATEX.nChannels, (int)sPWAVEFORMATEX.nAvgBytesPerSec, (short)sPWAVEFORMATEX.nBlockAlign, array2);
-                        DateTime startTime = (_header.times.dwTickCount != 0) ? DateTime.FromFileTime((long)(((ulong)_header.times.ftStreamTime.dwHighDateTime << 32) + _header.times.ftStreamTime.dwLowDateTime)) : (_startTime - AudioDuration);
+                        DateTime startTime = _header.times.dwTickCount != 0 ? DateTime.FromFileTime((long)(((ulong)_header.times.ftStreamTime.dwHighDateTime << 32) + _header.times.ftStreamTime.dwLowDateTime)) : _startTime - AudioDuration;
                         _audio = new RecognizedAudio(array, audioFormat, startTime, AudioPosition, AudioDuration);
                     }
                     finally
@@ -249,7 +249,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             _maxAlternates = maxAlternates;
             try
             {
-                _sapiRecoResult = (recoResult as ISpRecoResult2);
+                _sapiRecoResult = recoResult as ISpRecoResult2;
             }
             catch (COMException)
             {
@@ -308,14 +308,14 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                         IntPtr ptr = new IntPtr((long)value + num2);
                         SPSERIALIZEDPHRASEALT sPSERIALIZEDPHRASEALT = (SPSERIALIZEDPHRASEALT)Marshal.PtrToStructure(ptr, typeof(SPSERIALIZEDPHRASEALT));
                         num2 += num;
-                        num2 = ((!isSapi53Header) ? (num2 + (int)sPSERIALIZEDPHRASEALT.cbAltExtra) : (num2 + (int)((sPSERIALIZEDPHRASEALT.cbAltExtra + 7) & -8)));
+                        num2 = !isSapi53Header ? num2 + (int)sPSERIALIZEDPHRASEALT.cbAltExtra : num2 + (int)((sPSERIALIZEDPHRASEALT.cbAltExtra + 7) & -8);
                         IntPtr phraseBuffer = new IntPtr((long)value + num2);
                         SPSERIALIZEDPHRASE phraseHeader = RecognizedPhrase.GetPhraseHeader(phraseBuffer, (uint)((int)_header.ulPhraseAltDataSize - num2), _isSapi53Header);
                         int ulSerializedSize = (int)phraseHeader.ulSerializedSize;
                         RecognizedPhrase recognizedPhrase = new RecognizedPhrase();
                         bool hasIPAPronunciation = (_header.fAlphabet & 2) != 0;
                         recognizedPhrase.InitializeFromSerializedBuffer(this, phraseHeader, phraseBuffer, ulSerializedSize, isSapi53Header, hasIPAPronunciation);
-                        num2 = ((!isSapi53Header) ? (num2 + ulSerializedSize) : (num2 + ((ulSerializedSize + 7) & -8)));
+                        num2 = !isSapi53Header ? num2 + ulSerializedSize : num2 + ((ulSerializedSize + 7) & -8);
                         collection.Add(recognizedPhrase);
                     }
                     return collection;

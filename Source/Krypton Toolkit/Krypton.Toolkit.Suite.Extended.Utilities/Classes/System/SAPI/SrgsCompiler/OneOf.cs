@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             end = ParseElementCollection.TrimEnd(end, _backend);
             State start2 = end.Start;
             State end2 = start.End;
-            if ((start.IsEpsilonTransition & start.IsPropertylessTransition) && end2 != null && end2.InArcs.IsEmpty)
+            if (start.IsEpsilonTransition & start.IsPropertylessTransition && end2 != null && end2.InArcs.IsEmpty)
             {
                 start.End = null;
                 _backend.MoveOutputTransitionsAndDeleteState(end2, _startState);
@@ -71,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 start.Start = _startState;
             }
-            if ((end.IsEpsilonTransition & end.IsPropertylessTransition) && start2 != null && start2.OutArcs.IsEmpty)
+            if (end.IsEpsilonTransition & end.IsPropertylessTransition && start2 != null && start2.OutArcs.IsEmpty)
             {
                 end.Start = null;
                 _backend.MoveInputTransitionsAndDeleteState(start2, _endState);

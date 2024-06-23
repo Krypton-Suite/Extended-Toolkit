@@ -62,9 +62,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ktxtHexValue = new();
             this.kryptonLabel5 = new();
             this.kryptonBorderEdge1 = new();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.ctxColourList.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnLoadFromFile
             // 
-            this.kbtnLoadFromFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnLoadFromFile.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnLoadFromFile.AutoSize = true;
             this.kbtnLoadFromFile.Location = new(108, 14);
             this.kbtnLoadFromFile.Name = "kbtnLoadFromFile";
@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnExport
             // 
-            this.kbtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnExport.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             this.kbtnExport.AutoSize = true;
             this.kbtnExport.Enabled = false;
             this.kbtnExport.Location = new(12, 14);
@@ -108,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnOk
             // 
-            this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnOk.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnOk.AutoSize = true;
             this.kbtnOk.Location = new(618, 14);
             this.kbtnOk.Name = "kbtnOk";
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnCancel.AutoSize = true;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new(714, 14);
@@ -218,10 +218,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hexadecimal to RGB Converter";
             this.Load += new(this.HexadecimalToRGBConverter_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
             this.ctxColourList.ResumeLayout(false);

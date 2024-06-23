@@ -85,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             base.OnRemoveComplete(index, value);
             CollectionEventHandler? handler = m_itemRemoved;
-            if ((handler != null)
+            if (handler != null
             && _notify)
             {
                 handler(this, new ExtCollectionEventArgs(value));
@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             base.OnInsertComplete(index, value);
             CollectionEventHandler? handler = m_itemAdded;
-            if ((handler != null)
+            if (handler != null
             && _notify)
             {
                 handler(this, new ExtCollectionEventArgs(value));

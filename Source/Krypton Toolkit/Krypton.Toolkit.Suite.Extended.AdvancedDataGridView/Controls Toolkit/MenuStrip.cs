@@ -65,9 +65,6 @@
 
 using Timer = System.Windows.Forms.Timer;
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-#pragma warning disable CS8602
-
-#pragma warning disable CS8625, CS8622
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     [DesignerCategory("code")]
@@ -86,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && components != null)
             {
                 components.Dispose();
             }
@@ -482,10 +479,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
         private FilterType _activeFilterType = FilterType.None;
         private SortType _activeSortType = SortType.None;
-        private TreeNodeItemSelector[] _loadedNodes = new TreeNodeItemSelector[] { };
-        private TreeNodeItemSelector[] _startingNodes = new TreeNodeItemSelector[] { };
-        private TreeNodeItemSelector[] _removedNodes = new TreeNodeItemSelector[] { };
-        private TreeNodeItemSelector[] _removedsessionNodes = new TreeNodeItemSelector[] { };
+        private TreeNodeItemSelector?[] _loadedNodes = new TreeNodeItemSelector?[] { };
+        private TreeNodeItemSelector?[] _startingNodes = new TreeNodeItemSelector[] { };
+        private TreeNodeItemSelector?[] _removedNodes = new TreeNodeItemSelector[] { };
+        private TreeNodeItemSelector?[] _removedsessionNodes = new TreeNodeItemSelector[] { };
         private string? _sortString = null;
         private string? _filterString = null;
         private static Point _resizeStartPoint = new Point(1, 1);
@@ -717,37 +714,19 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public int MaxChecklistNodes
         {
-            get
-            {
-                return _maxChecklistNodes;
-            }
-            set
-            {
-                _maxChecklistNodes = value;
-            }
+            get => _maxChecklistNodes;
+            set => _maxChecklistNodes = value;
         }
 
         /// <summary>
         /// Get the current MenuStripSortType type
         /// </summary>
-        public SortType ActiveSortType
-        {
-            get
-            {
-                return _activeSortType;
-            }
-        }
+        public SortType ActiveSortType => _activeSortType;
 
         /// <summary>
         /// Get the current MenuStripFilterType type
         /// </summary>
-        public FilterType ActiveFilterType
-        {
-            get
-            {
-                return _activeFilterType;
-            }
-        }
+        public FilterType ActiveFilterType => _activeFilterType;
 
         /// <summary>
         /// Get the DataType for the MenuStrip Filter
@@ -789,14 +768,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public bool DoesTextFilterRemoveNodesOnSearch
         {
-            get
-            {
-                return _checkTextFilterRemoveNodesOnSearch;
-            }
-            set
-            {
-                _checkTextFilterRemoveNodesOnSearch = value;
-            }
+            get => _checkTextFilterRemoveNodesOnSearch;
+            set => _checkTextFilterRemoveNodesOnSearch = value;
         }
 
         /// <summary>
@@ -804,14 +777,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public int TextFilterTextChangedDelayNodes
         {
-            get
-            {
-                return _textFilterTextChangedDelayNodes;
-            }
-            set
-            {
-                _textFilterTextChangedDelayNodes = value;
-            }
+            get => _textFilterTextChangedDelayNodes;
+            set => _textFilterTextChangedDelayNodes = value;
         }
 
         /// <summary>
@@ -819,14 +786,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public int TextFilterTextChangedDelayMs
         {
-            get
-            {
-                return _textFilterTextChangedDelayMs;
-            }
-            set
-            {
-                _textFilterTextChangedDelayMs = value;
-            }
+            get => _textFilterTextChangedDelayMs;
+            set => _textFilterTextChangedDelayMs = value;
         }
 
         #endregion
@@ -856,7 +817,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             IsFilterEnabled = enabled;
 
             _cancelFilterMenuItem.Enabled = enabled;
-            _customFilterLastFiltersListMenuItem.Enabled = (enabled && DataType != typeof(bool));
+            _customFilterLastFiltersListMenuItem.Enabled = enabled && DataType != typeof(bool);
             _buttonFilter.Enabled = enabled;
             _buttonUndofilter.Enabled = enabled;
             _checkList.Enabled = enabled;
@@ -1065,13 +1026,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public string? SortString
         {
-            get
-            {
-                return (!String.IsNullOrEmpty(_sortString) ? _sortString : "");
-            }
+            get => !String.IsNullOrEmpty(_sortString) ? _sortString : "";
             private set
             {
-                _cancelSortMenuItem.Enabled = (value != null && value.Length > 0);
+                _cancelSortMenuItem.Enabled = value != null && value.Length > 0;
                 _sortString = value;
             }
         }
@@ -1097,13 +1055,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public string? FilterString
         {
-            get
-            {
-                return (!String.IsNullOrEmpty(_filterString) ? _filterString : "");
-            }
+            get => !String.IsNullOrEmpty(_filterString) ? _filterString : "";
             private set
             {
-                _cancelFilterMenuItem.Enabled = (value != null && value.Length > 0);
+                _cancelFilterMenuItem.Enabled = value != null && value.Length > 0;
                 _filterString = value;
             }
         }
@@ -1173,7 +1128,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _checkList.BeginUpdate();
             _checkList.Nodes.Clear();
             int nodecount = 0;
-            foreach (TreeNodeItemSelector node in _loadedNodes)
+            foreach (TreeNodeItemSelector? node in _loadedNodes)
             {
                 if (node.NodeType == TreeNodeItemSelector.CustomNodeType.Default)
                 {
@@ -1250,17 +1205,17 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     if (_loadedNodes.Length > 2 || selectAllNode == null)
                     {
                         string filter = BuildNodesFilterString(
-                            (IsFilterNotinLogicEnabled && (DataType != typeof(DateTime) && DataType != typeof(TimeSpan) && DataType != typeof(bool)) ?
+                            IsFilterNotinLogicEnabled && DataType != typeof(DateTime) && DataType != typeof(TimeSpan) && DataType != typeof(bool) ?
                                 _loadedNodes.AsParallel().Cast<TreeNodeItemSelector>().Where(
                                     n => n.NodeType != TreeNodeItemSelector.CustomNodeType.SelectAll
-                                        && n.NodeType != TreeNodeItemSelector.CustomNodeType.SelectEmpty
-                                        && n.CheckState == CheckState.Unchecked
+                                         && n.NodeType != TreeNodeItemSelector.CustomNodeType.SelectEmpty
+                                         && n.CheckState == CheckState.Unchecked
                                 ) :
                                 _loadedNodes.AsParallel().Cast<TreeNodeItemSelector>().Where(
                                     n => n.NodeType != TreeNodeItemSelector.CustomNodeType.SelectAll
-                                        && n.NodeType != TreeNodeItemSelector.CustomNodeType.SelectEmpty
-                                        && n.CheckState != CheckState.Unchecked
-                                ))
+                                         && n.NodeType != TreeNodeItemSelector.CustomNodeType.SelectEmpty
+                                         && n.CheckState != CheckState.Unchecked
+                                )
                         );
 
                         if (filter.Length > 0)
@@ -1329,11 +1284,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     foreach (TreeNodeItemSelector n in nodes)
                     {
-                        if (n.Checked && (n.Nodes.AsParallel().Cast<TreeNodeItemSelector>().Where(sn => sn.CheckState != CheckState.Unchecked).Count() == 0))
+                        if (n.Checked && n.Nodes.AsParallel().Cast<TreeNodeItemSelector>().Where(sn => sn.CheckState != CheckState.Unchecked).Count() == 0)
                         {
                             DateTime dt = (DateTime)n.Value;
                             sb.Append(
-                                $"'{Convert.ToString((IsFilterDateAndTimeEnabled ? dt : dt.Date), CultureInfo.CurrentCulture)}'{appx}");
+                                $"'{Convert.ToString(IsFilterDateAndTimeEnabled ? dt : dt.Date, CultureInfo.CurrentCulture)}'{appx}");
                         }
                         else if (n.CheckState != CheckState.Unchecked && n.Nodes.Count > 0)
                         {
@@ -1349,7 +1304,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     foreach (TreeNodeItemSelector n in nodes)
                     {
-                        if (n.Checked && (n.Nodes.AsParallel().Cast<TreeNodeItemSelector>().Where(sn => sn.CheckState != CheckState.Unchecked).Count() == 0))
+                        if (n.Checked && n.Nodes.AsParallel().Cast<TreeNodeItemSelector>().Where(sn => sn.CheckState != CheckState.Unchecked).Count() == 0)
                         {
                             TimeSpan ts = (TimeSpan)n.Value;
                             sb.Append(
@@ -1628,10 +1583,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="nodes"></param>
         /// <returns></returns>
-        private bool HasNodesChecked(TreeNodeItemSelector[] nodes)
+        private bool HasNodesChecked(TreeNodeItemSelector?[] nodes)
         {
             bool state = false;
-            if (!String.IsNullOrEmpty(_checkTextFilter.Text))
+            if (!string.IsNullOrEmpty(_checkTextFilter.Text))
             {
                 state = nodes.Any(n => n.CheckState == CheckState.Checked && n.Text.ToLower().Contains(_checkTextFilter.Text.ToLower()));
             }
@@ -1647,7 +1602,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             foreach (TreeNodeItemSelector node in nodes)
             {
-                foreach (TreeNodeItemSelector nodesel in node.Nodes)
+                foreach (TreeNodeItemSelector nodesel in node!.Nodes)
                 {
                     state = HasNodesChecked(new TreeNodeItemSelector[] { nodesel });
                     if (state)
@@ -1668,7 +1623,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Check
         /// </summary>
         /// <param name="node"></param>
-        private void NodeCheckChange(TreeNodeItemSelector node)
+        private void NodeCheckChange(TreeNodeItemSelector? node)
         {
             if (node.CheckState == CheckState.Checked)
             {
@@ -1695,7 +1650,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                 //refresh nodes
                 CheckState state = UpdateNodesCheckState(ChecklistNodes());
-                GetSelectAllNode().CheckState = state;
+                GetSelectAllNode()!.CheckState = state;
             }
         }
 
@@ -1704,11 +1659,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="nodes"></param>
         /// <param name="isChecked"></param>
-        private void SetNodesCheckState(TreeNodeItemSelector[] nodes, bool isChecked)
+        private void SetNodesCheckState(TreeNodeItemSelector?[] nodes, bool isChecked)
         {
             foreach (TreeNodeItemSelector node in nodes)
             {
-                node.Checked = isChecked;
+                node!.Checked = isChecked;
                 if (node.Nodes != null && node.Nodes.Count > 0)
                 {
                     foreach (TreeNodeItemSelector subnode in node.Nodes)
@@ -1757,14 +1712,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 }
             }
 
-            if (isAllNodesSomeCheckState)
-            {
-                return result;
-            }
-            else
-            {
-                return CheckState.Indeterminate;
-            }
+            return isAllNodesSomeCheckState ? result : CheckState.Indeterminate;
         }
 
         /// <summary>
@@ -1826,13 +1774,13 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Duplicate Nodes
         /// </summary>
-        private static TreeNodeItemSelector[] DuplicateNodes(TreeNodeItemSelector[] nodes)
+        private static TreeNodeItemSelector?[] DuplicateNodes(TreeNodeItemSelector?[] nodes)
         {
-            TreeNodeItemSelector[] ret = new TreeNodeItemSelector[nodes.Length];
+            TreeNodeItemSelector?[] ret = new TreeNodeItemSelector[nodes.Length];
             int i = 0;
-            foreach (TreeNodeItemSelector n in nodes)
+            foreach (TreeNodeItemSelector? n in nodes)
             {
-                ret[i] = n.Clone();
+                ret[i] = n?.Clone();
                 i++;
             }
             return ret;
@@ -1883,10 +1831,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CheckList_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            TreeNodeItemSelector n = e.Node as TreeNodeItemSelector;
+            TreeNodeItemSelector? n = e.Node as TreeNodeItemSelector;
             //set the new node check status
             SetNodesCheckState(_loadedNodes, false);
-            n.CheckState = CheckState.Unchecked;
+            n!.CheckState = CheckState.Unchecked;
             NodeCheckChange(n);
             //set filter button enabled
             CheckFilterButtonEnabled();
@@ -1950,7 +1898,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
             {
-                (_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                ((_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem)!).Checked = false;
             }
         }
 
@@ -1984,14 +1932,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             //uncheck other preset
             for (int i = 3; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
             {
-                (_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                ((_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem)!).Checked = false;
             }
 
-            (_customFilterLastFiltersListMenuItem.DropDownItems[2] as ToolStripMenuItem).Checked = true;
+            ((_customFilterLastFiltersListMenuItem.DropDownItems[2] as ToolStripMenuItem)!).Checked = true;
             _activeFilterType = FilterType.Custom;
 
             //get Filter string
-            string oldfilter = FilterString;
+            string? oldfilter = FilterString;
             FilterString = filterstring;
 
             //set CheckList nodes
@@ -2019,7 +1967,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CancelFilterMenuItem_Click(object sender, EventArgs e)
         {
-            string oldfilter = FilterString;
+            string? oldfilter = FilterString;
 
             //clean Filter
             CleanFilter();
@@ -2038,9 +1986,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CancelFilterMenuItem_MouseEnter(object sender, EventArgs e)
         {
-            if ((sender as ToolStripMenuItem).Enabled)
+            if (((sender as ToolStripMenuItem)!).Enabled)
             {
-                (sender as ToolStripMenuItem).Select();
+                ((sender as ToolStripMenuItem)!).Select();
             }
         }
 
@@ -2113,9 +2061,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CustomFilterLastFiltersListMenuItem_MouseEnter(object sender, EventArgs e)
         {
-            if ((sender as ToolStripMenuItem).Enabled)
+            if (((sender as ToolStripMenuItem)!).Enabled)
             {
-                (sender as ToolStripMenuItem).Select();
+                ((sender as ToolStripMenuItem)!).Select();
             }
         }
 
@@ -2124,7 +2072,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CustomFilterLastFiltersListMenuItem_Paint(Object sender, PaintEventArgs e)
+        private void CustomFilterLastFiltersListMenuItem_Paint(object sender, PaintEventArgs e)
         {
             Rectangle rect = new Rectangle(_customFilterLastFiltersListMenuItem.Width - 12, 7, 10, 10);
             ControlPaint.DrawMenuGlyph(e.Graphics, rect, MenuGlyph.Arrow, Color.Black, Color.Transparent);
@@ -2138,7 +2086,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void CustomFilterLastFilter1MenuItem_VisibleChanged(object sender, EventArgs e)
         {
             _toolStripSeparator2MenuItem.Visible = !_customFilterLastFilter1MenuItem.Visible;
-            (sender as ToolStripMenuItem).VisibleChanged -= CustomFilterLastFilter1MenuItem_VisibleChanged;
+            ((sender as ToolStripMenuItem)!).VisibleChanged -= CustomFilterLastFilter1MenuItem_VisibleChanged;
         }
 
         /// <summary>
@@ -2148,11 +2096,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CustomFilterLastFilterMenuItem_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem menuitem = sender as ToolStripMenuItem;
+            ToolStripMenuItem? menuitem = sender as ToolStripMenuItem;
 
             for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
             {
-                if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Text == menuitem.Text && _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag.ToString() == menuitem.Tag.ToString())
+                if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Text == menuitem?.Text && _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag.ToString() == menuitem.Tag.ToString())
                 {
                     //set current filter preset as active
                     SetCustomFilter(i);
@@ -2168,8 +2116,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CustomFilterLastFilterMenuItem_TextChanged(object sender, EventArgs e)
         {
-            (sender as ToolStripMenuItem).Available = true;
-            (sender as ToolStripMenuItem).TextChanged -= CustomFilterLastFilterMenuItem_TextChanged;
+            ((sender as ToolStripMenuItem)!).Available = true;
+            ((sender as ToolStripMenuItem)!).TextChanged -= CustomFilterLastFilterMenuItem_TextChanged;
         }
 
         /// <summary>
@@ -2237,7 +2185,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             }
             for (int i = _loadedNodes.Length - 1; i >= 0; i--)
             {
-                TreeNodeItemSelector node = _loadedNodes[i];
+                TreeNodeItemSelector? node = _loadedNodes[i];
                 if (node.Text == allnode.Text)
                 {
                     node.CheckState = CheckState.Indeterminate;
@@ -2272,12 +2220,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             {
                 for (int i = _loadedNodes.Length - 1; i >= 0; i--)
                 {
-                    TreeNodeItemSelector node = _loadedNodes[i];
+                    TreeNodeItemSelector? node = _loadedNodes[i];
                     if (!(node.Text == allnode.Text || node.Text == nullnode.Text))
                     {
                         if (!node.Text.ToLower().Contains(text))
                         {
-                            _removedNodes = _removedNodes.Concat(new TreeNodeItemSelector[] { node }).ToArray();
+                            _removedNodes = _removedNodes.Concat(new TreeNodeItemSelector?[] { node }).ToArray();
                         }
                     }
                 }

@@ -212,7 +212,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         void IList.RemoveAt(int index)
         {
-            if ((index < 0) || (index >= _innerList.Count))
+            if (index < 0 || index >= _innerList.Count)
             {
                 throw new IndexOutOfRangeException();
             }

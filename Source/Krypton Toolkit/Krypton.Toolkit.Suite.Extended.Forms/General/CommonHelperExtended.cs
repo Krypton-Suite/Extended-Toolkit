@@ -496,7 +496,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <param name="exclude">State that should be excluded from test.</param>
         /// <returns>True if an override state; otherwise false.</returns>
         [DebuggerStepThrough]
-        public static bool IsOverrideStateExclude(PaletteState state, PaletteState exclude) => (state != exclude) && IsOverrideState(state);
+        public static bool IsOverrideStateExclude(PaletteState state, PaletteState exclude) => state != exclude && IsOverrideState(state);
 
         /// <summary>
         /// Gets a value indicating if the enumeration specifies no borders.
@@ -898,9 +898,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         public static Color ColorToBlackAndWhite(Color color)
         {
             // Use the standard percentages of RGB for the human eye bias
-            var gray = (int)((color.R * 0.3f) +
-                             (color.G * 0.59f) +
-                             (color.B * 0.11f));
+            var gray = (int)(color.R * 0.3f +
+                             color.G * 0.59f +
+                             color.B * 0.11f);
 
             return Color.FromArgb(gray, gray, gray);
         }
@@ -1039,9 +1039,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                                         Color color3, float percent3)
         {
             // Find how much to use of each primary color
-            var red = (int)((color1.R * percent1) + (color2.R * percent2) + (color3.R * percent3));
-            var green = (int)((color1.G * percent1) + (color2.G * percent2) + (color3.G * percent3));
-            var blue = (int)((color1.B * percent1) + (color2.B * percent2) + (color3.B * percent3));
+            var red = (int)(color1.R * percent1 + color2.R * percent2 + color3.R * percent3);
+            var green = (int)(color1.G * percent1 + color2.G * percent2 + color3.G * percent3);
+            var blue = (int)(color1.B * percent1 + color2.B * percent2 + color3.B * percent3);
 
             // Limit check against individual component
             if (red < 0)
@@ -1422,7 +1422,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             object retObj;
 
             // Cannot use the designer host to create component unless the type implements IComponent
-            if (typeof(IComponent).IsAssignableFrom(itemType) && (host != null))
+            if (typeof(IComponent).IsAssignableFrom(itemType) && host != null)
             {
                 // Ask host to create component for us
                 retObj = host.CreateComponent(itemType, null!);

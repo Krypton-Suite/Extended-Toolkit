@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 }
             }
             // suppress painting of selection 
-            base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, cellImage, errorText, cellStyle, advancedBorderStyle, (paintParts & ~DataGridViewPaintParts.SelectionBackground));
+            base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, cellImage, errorText, cellStyle, advancedBorderStyle, paintParts & ~DataGridViewPaintParts.SelectionBackground);
         }
 
         /// <summary>
@@ -168,15 +168,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         {
             if (cellBounds.Contains(mouseLocation))
             {
-                int mouseXRelativeToCell = (mouseLocation.X - cellBounds.X);
-                int imageXArea = (cellBounds.Width / 2) - (Imagewidth / 2);
-                if (((mouseXRelativeToCell + 4) < imageXArea) || (mouseXRelativeToCell >= (imageXArea + Imagewidth)))
+                int mouseXRelativeToCell = mouseLocation.X - cellBounds.X;
+                int imageXArea = cellBounds.Width / 2 - Imagewidth / 2;
+                if (mouseXRelativeToCell + 4 < imageXArea || mouseXRelativeToCell >= imageXArea + Imagewidth)
                 {
                     return -1;
                 }
                 else
                 {
-                    int oo = (int)Math.Round((((float)(mouseXRelativeToCell - imageXArea + 2) / (float)Imagewidth) * 10f), MidpointRounding.AwayFromZero);
+                    int oo = (int)Math.Round((float)(mouseXRelativeToCell - imageXArea + 2) / (float)Imagewidth * 10f, MidpointRounding.AwayFromZero);
                     if (oo is > 10 or < 0)
                     {
                         System.Diagnostics.Debugger.Break();

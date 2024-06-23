@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && components != null)
             {
                 components.Dispose();
             }
@@ -493,7 +493,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     break;
             }
 
-            _messageIcon.Visible = (_kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None);
+            _messageIcon.Visible = _kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None;
 
         }
 
@@ -804,23 +804,23 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             _button1.Size = maxButtonSize;
 
             // Size the panel for the buttons
-            _panelButtons.Size = new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            _panelButtons.Size = new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
 
             // Button area is the number of buttons with gaps between them and 10 pixels around all edges
-            return new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            return new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
         }
 
         private void AnyKeyDown(object sender, KeyEventArgs e)
         {
             // Escape key kills the dialog if we allow it to be closed
             if (ControlBox
-                && (e.KeyCode == Keys.Escape)
+                && e.KeyCode == Keys.Escape
                 )
             {
                 Close();
             }
             else if (!e.Control
-                     || (e.KeyCode != Keys.C)
+                     || e.KeyCode != Keys.C
                      )
             {
                 return;

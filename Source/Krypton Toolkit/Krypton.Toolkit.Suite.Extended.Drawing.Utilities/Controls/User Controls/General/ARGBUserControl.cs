@@ -56,8 +56,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this._kryptonLabel1.Location = new System.Drawing.Point(8, 5);
             this._kryptonLabel1.Name = "_kryptonLabel1";
             this._kryptonLabel1.Size = new System.Drawing.Size(58, 24);
-            this._kryptonLabel1.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._kryptonLabel1.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this._kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this._kryptonLabel1.TabIndex = 4;
             this._kryptonLabel1.Values.Text = "Alpha:";
             // 
@@ -66,8 +66,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this._kryptonLabel2.Location = new System.Drawing.Point(8, 71);
             this._kryptonLabel2.Name = "_kryptonLabel2";
             this._kryptonLabel2.Size = new System.Drawing.Size(59, 24);
-            this._kryptonLabel2.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._kryptonLabel2.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this._kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this._kryptonLabel2.TabIndex = 5;
             this._kryptonLabel2.Values.Text = "Green:";
             // 
@@ -76,8 +76,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this._kryptonLabel3.Location = new System.Drawing.Point(8, 100);
             this._kryptonLabel3.Name = "_kryptonLabel3";
             this._kryptonLabel3.Size = new System.Drawing.Size(48, 24);
-            this._kryptonLabel3.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._kryptonLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._kryptonLabel3.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this._kryptonLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this._kryptonLabel3.TabIndex = 6;
             this._kryptonLabel3.Values.Text = "Blue:";
             // 
@@ -86,8 +86,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this._kryptonLabel4.Location = new System.Drawing.Point(8, 38);
             this._kryptonLabel4.Name = "_kryptonLabel4";
             this._kryptonLabel4.Size = new System.Drawing.Size(44, 24);
-            this._kryptonLabel4.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._kryptonLabel4.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._kryptonLabel4.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this._kryptonLabel4.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this._kryptonLabel4.TabIndex = 7;
             this._kryptonLabel4.Values.Text = "Red:";
             // 

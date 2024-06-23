@@ -64,6 +64,7 @@
 #endregion
 
 //#pragma warning disable 
+// ReSharper disable InconsistentNaming
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
     [DesignerCategory("code")]
@@ -74,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private IContainer components = null;
+        private IContainer? components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -83,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         protected override void Dispose(bool disposing)
         {
             // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-            if (disposing && (components != null))
+            if (disposing && components != null)
             {
                 components.Dispose();
             }
@@ -239,16 +240,16 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
         #region public events
 
-        public event AdvancedDataGridViewSearchToolBarSearchEventHandler Search;
+        public event AdvancedDataGridViewSearchToolBarSearchEventHandler? Search;
 
         #endregion
 
 
         #region class properties
 
-        private DataGridViewColumnCollection _columnsList = null;
+        private DataGridViewColumnCollection? _columnsList;
 
-        private const bool ButtonCloseEnabled = false;
+        private const bool BUTTON_CLOSE_ENABLED = false;
 
         #endregion
 
@@ -304,12 +305,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             RefreshComponentTranslations();
 
             //set default values
-            if (!ButtonCloseEnabled)
+            if (!BUTTON_CLOSE_ENABLED)
             {
                 Items.RemoveAt(0);
             }
 
-            comboBox_columns.SelectedIndex = 0;
+            comboBox_columns!.SelectedIndex = 0;
 
             // Use Krypton
             RenderMode = ToolStripRenderMode.ManagerRenderMode;
@@ -324,7 +325,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Set translation dictionary
         /// </summary>
         /// <param name="translations"></param>
-        public static void SetTranslations(IDictionary<string, string> translations)
+        public static void SetTranslations(IDictionary<string, string>? translations)
         {
             //set localization strings
             if (translations != null)
@@ -362,13 +363,15 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 //deserialize the file
                 try
                 {
-                    string jsontext = File.ReadAllText(filename);
+                    string jsonText = File.ReadAllText(filename);
 #if NETFRAMEWORK
-                    Dictionary<string, string> translations = new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(jsontext);
+                    Dictionary<string, string> translations =
+ new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(jsonText);
 #else
-                    Dictionary<string, string> translations = JsonSerializer.Deserialize<Dictionary<string, string>>(jsontext);
+                    Dictionary<string, string>? translations =
+                        JsonSerializer.Deserialize<Dictionary<string, string>>(jsonText);
 #endif
-                    foreach (KeyValuePair<string, string> translation in translations)
+                    foreach (KeyValuePair<string, string> translation in translations!)
                     {
                         if (!ret.ContainsKey(translation.Key) && Translations.ContainsKey(translation.Key))
                         {
@@ -376,7 +379,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         }
                     }
                 }
-                catch { }
+                catch
+                {
+                    // Nothing to do
+                }
             }
 
             //add default translations if not in files
@@ -434,14 +440,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             if (textBox_search.TextLength > 0 && textBox_search.Text != textBox_search.ToolTipText && Search != null)
             {
-                DataGridViewColumn c = null;
+                DataGridViewColumn? c = null;
                 if (comboBox_columns.SelectedIndex > 0 && _columnsList != null && _columnsList.GetColumnCount(DataGridViewElementStates.Visible) > 0)
                 {
-                    DataGridViewColumn[] cols = _columnsList.Cast<DataGridViewColumn>().Where(col => col.Visible).ToArray<DataGridViewColumn>();
+                    DataGridViewColumn?[] cols = _columnsList.Cast<DataGridViewColumn>().Where(col => col.Visible).ToArray<DataGridViewColumn>();
 
                     if (cols.Length == comboBox_columns.Items.Count - 1)
                     {
-                        if (cols[comboBox_columns.SelectedIndex - 1].HeaderText == comboBox_columns.SelectedItem.ToString())
+                        if (cols[comboBox_columns.SelectedIndex - 1]!.HeaderText == comboBox_columns.SelectedItem.ToString())
                         {
                             c = cols[comboBox_columns.SelectedIndex - 1];
                         }
@@ -702,7 +708,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         protected override void OnPaint(PaintEventArgs e)
         {
             //check if translations are changed and update components
-            if (!((_translationsRefreshComponentTranslationsCheck == Translations) || (_translationsRefreshComponentTranslationsCheck.Count == Translations.Count && !_translationsRefreshComponentTranslationsCheck.Except(Translations).Any())))
+            if (!(_translationsRefreshComponentTranslationsCheck == Translations || (_translationsRefreshComponentTranslationsCheck.Count == Translations.Count && !_translationsRefreshComponentTranslationsCheck.Except(Translations).Any())))
             {
                 _translationsRefreshComponentTranslationsCheck = Translations;
                 RefreshComponentTranslations();

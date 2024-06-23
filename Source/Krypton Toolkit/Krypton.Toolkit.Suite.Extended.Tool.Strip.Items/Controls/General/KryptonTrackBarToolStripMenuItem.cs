@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <value>The KryptonTrackBar control.</value>
         [RefreshProperties(RefreshProperties.All),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public KryptonTrackBar KryptonTrackBarControl => Control as KryptonTrackBar;
+        public KryptonTrackBar? KryptonTrackBarControl => Control as KryptonTrackBar;
 
         // Constructor ========================================================
         /// <summary>
@@ -59,11 +59,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// An ordered pair of type <see cref="T:System.Drawing.Size"></see> representing the width and height of a rectangle.
         /// </returns>
         /// <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true"/><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true"/><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence"/><IPermission class="System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true"/></PermissionSet>
-        public override Size GetPreferredSize(Size constrainingSize)
-        {
+        public override Size GetPreferredSize(Size constrainingSize) =>
             //return base.GetPreferredSize(constrainingSize);
-            return KryptonTrackBarControl.GetPreferredSize(constrainingSize);
-        }
+            KryptonTrackBarControl!.GetPreferredSize(constrainingSize);
 
         /// <summary>
         /// Subscribes events from the hosted control.
@@ -74,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             base.OnSubscribeControlEvents(control);
 
             //Add your code here to subsribe to Control Events
-            ((KryptonTrackBar)control).ValueChanged += new EventHandler(OnValueChanged);
+            ((KryptonTrackBar)control).ValueChanged += OnValueChanged;
         }
 
         /// <summary>
@@ -86,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             base.OnUnsubscribeControlEvents(control);
 
             //Add your code here to unsubscribe from control events.
-            ((KryptonTrackBar)control).ValueChanged -= new EventHandler(OnValueChanged);
+            ((KryptonTrackBar)control).ValueChanged -= OnValueChanged;
         }
 
         #region ... exposed properties ...
@@ -152,14 +150,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #endregion
 
         #region ... exposed events ...
-        public event EventHandler ValueChanged;
-        protected void OnValueChanged(object sender, EventArgs e)
-        {
-            if (ValueChanged != null)
-            {
-                ValueChanged(this, e);
-            }
-        }
+        public event EventHandler? ValueChanged;
+        protected void OnValueChanged(object sender, EventArgs e) => ValueChanged?.Invoke(this, e);
 
         #endregion
     }

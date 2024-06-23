@@ -418,7 +418,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             TabColourPressedDark = Color.FromArgb(232, 142, 49);// _paletteBack.GetBackColor1(PaletteState.Pressed); // Color.FromArgb(252, 143, 61);//  
             TabColourPressedLight = Color.FromArgb(252, 207, 100);//= _paletteBack.GetBackColor2(PaletteState.Pressed); // Color.FromArgb(255, 224, 192);// 
 
-            if ((_preserveTabColour == false)) //to avoid black text on black tab
+            if (_preserveTabColour == false) //to avoid black text on black tab
             {
                 TabForeColour = Color.FromArgb(21, 66, 139);
             }
@@ -707,7 +707,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 tabTextArea.Width = 22;
             }
 
-            bool bSelected = (SelectedIndex == nIndex);
+            bool bSelected = SelectedIndex == nIndex;
             bool bHot = false;
 
             if (tabPage.Tag != null)
@@ -750,11 +750,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //bool bHotselected = false;
 
-            if ((bSelected) && (!bHot))
+            if (bSelected && !bHot)
             {
                 status = DrawingMethods.TabHeaderStatus.Selected;
             }
-            else if ((bSelected) && (bHot))
+            else if (bSelected && bHot)
             {
                 status = DrawingMethods.TabHeaderStatus.HotSelected;
                 //bHotselected = true;
@@ -1006,7 +1006,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //----------------------------
 
-            if (status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected && (Appearance == TabAppearance.Normal))
+            if (status is DrawingMethods.TabHeaderStatus.Selected or DrawingMethods.TabHeaderStatus.HotSelected && Appearance == TabAppearance.Normal)
             {
                 //----------------------------
                 // clear bottom lines
@@ -1022,7 +1022,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //----------------------------
             // draw tab's icon
-            if (ImageList != null && (tabPage.ImageIndex >= 0) && (ImageList != null) && (ImageList.Images[tabPage.ImageIndex] != null))
+            if (ImageList != null && tabPage.ImageIndex >= 0 && ImageList != null && ImageList.Images[tabPage.ImageIndex] != null)
             {
                 int nLeftMargin = 8;
                 int nRightMargin = 2;
@@ -1032,12 +1032,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 Rectangle rimage = new Rectangle(recBounds.X + nLeftMargin, recBounds.Y + 1, img.Width, img.Height);
 
                 // adjust rectangles
-                float nAdj = (nLeftMargin + img.Width + nRightMargin);
+                float nAdj = nLeftMargin + img.Width + nRightMargin;
 
                 // adjust rectangles
                 if (Alignment is TabAlignment.Top or TabAlignment.Bottom)
                 {
-                    nAdj = (nLeftMargin + img.Width + nRightMargin);
+                    nAdj = nLeftMargin + img.Width + nRightMargin;
 
                     rimage.Y += (recBounds.Height - img.Height) / 2;
                     tabTextArea.X += nAdj;
@@ -1133,7 +1133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         internal void DrawIcons(Graphics g)
         {
-            if ((_leftRightImages == null) || (_leftRightImages.Images.Count != 4))
+            if (_leftRightImages == null || _leftRightImages.Images.Count != 4)
             {
                 return;
             }
@@ -1163,7 +1163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             border.Dispose();
 
 
-            int nMiddle = (r0.Width / 2);
+            int nMiddle = r0.Width / 2;
             int nTop = (r0.Height - 16) / 2;
             int nLeft = (nMiddle - 16) / 2;
 
@@ -1200,7 +1200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 if (TabCount > 0)
                 {
                     Rectangle r3 = GetTabRect(TabCount - 1);
-                    if (r3.Right > (tabControlArea.Width - r0.Width))
+                    if (r3.Right > tabControlArea.Width - r0.Width)
                     {
                         g.DrawImage(img, r2);
                     }
@@ -1350,7 +1350,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 firstPagePosition = GetTabRect(0).Left;
                 //not visible?
-                if ((firstPagePosition < 0))
+                if (firstPagePosition < 0)
                 {
                     display = true;
                 }
@@ -1370,7 +1370,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             if (TabCount > 0)
             {
                 //visible?
-                if ((GetTabRect(TabCount - 1).Right > _scroller.Left))
+                if (GetTabRect(TabCount - 1).Right > _scroller.Left)
                 {
                     display = true;
                 }
@@ -1408,7 +1408,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
             //test on tab pages 
-            if ((!IsLastTabHidden()) && (!IsFirstTabHidden()))
+            if (!IsLastTabHidden() && !IsFirstTabHidden())
             {
                 _allowInternalNavigatorButtons = false;
             }
@@ -1417,7 +1417,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 _allowInternalNavigatorButtons = true;
             }
             //show navigator buttons?
-            if ((_allowNavigatorButtons) && (_allowInternalNavigatorButtons))
+            if (_allowNavigatorButtons && _allowInternalNavigatorButtons)
             {
                 _scroller.LeftScroller.Visible = true;
                 _scroller.RightScroller.Visible = true;
@@ -1437,7 +1437,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             //which buttons to display
             if (_allowCloseButton)
             {
-                if ((_allowNavigatorButtons) && (_allowInternalNavigatorButtons))
+                if (_allowNavigatorButtons && _allowInternalNavigatorButtons)
                 {
                     if (_allowContextButton)
                     {
@@ -1468,7 +1468,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
             else
             {
-                if ((_allowNavigatorButtons) && (_allowInternalNavigatorButtons))
+                if (_allowNavigatorButtons && _allowInternalNavigatorButtons)
                 {
                     if (_allowContextButton)
                     {
@@ -1617,7 +1617,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 {
                     //TabPage tp = (TabPage)e.Control;
                     ToolStripMenuItem item;
-                    if ((ImageList != null) && (tp.ImageIndex >= 0))
+                    if (ImageList != null && tp.ImageIndex >= 0)
                     {
                         item = new ToolStripMenuItem(tp.Text, ImageList.Images[tp.ImageIndex], ToolstripItemEvent);
                     }
@@ -1853,7 +1853,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 else if (m.Msg == WM_WINDOWPOSCHANGING)
                 {
                     //Move the updown control off the edge so it's not visible
-                    Windowpos wp = (Windowpos)(m.GetLParam(typeof(Windowpos)));
+                    Windowpos wp = (Windowpos)m.GetLParam(typeof(Windowpos));
                     wp.x += wp.cx;
                     Marshal.StructureToPtr(wp, m.LParam, true);
                     _bounds = new Rectangle(wp.x, wp.y, wp.cx, wp.cy);

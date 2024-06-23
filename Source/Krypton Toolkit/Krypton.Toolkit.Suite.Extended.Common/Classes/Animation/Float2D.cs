@@ -508,7 +508,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 return ReferenceEquals(left, null) && ReferenceEquals(right, null);
             }
             // ReSharper disable CompareOfFloatsByEqualityOperator
-            return ReferenceEquals(left, right) || ((double)(left.X) == right.X && (double)(left.Y) == right.Y);
+            return ReferenceEquals(left, right) || ((double)left.X == right.X && (double)left.Y == right.Y);
             // ReSharper restore CompareOfFloatsByEqualityOperator
         }
 

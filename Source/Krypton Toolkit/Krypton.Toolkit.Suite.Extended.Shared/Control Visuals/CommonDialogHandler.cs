@@ -213,8 +213,8 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
                                         {
                                             PlatformInvoke.SendMessage(control.hWnd, PlatformInvoke.WM_.SETFONT, labelLogFont, new IntPtr(1));
                                         }
-                                        else if (((control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTORADIOBUTTON) == PlatformInvoke.BS_.AUTORADIOBUTTON)
-                                                || ((control.WinInfo.dwStyle & PlatformInvoke.BS_.RADIOBUTTON) == PlatformInvoke.BS_.RADIOBUTTON))
+                                        else if ((control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTORADIOBUTTON) == PlatformInvoke.BS_.AUTORADIOBUTTON
+                                                || (control.WinInfo.dwStyle & PlatformInvoke.BS_.RADIOBUTTON) == PlatformInvoke.BS_.RADIOBUTTON)
                                         {
                                             //PlatformInvoke.SendMessage(control.hWnd, PlatformInvoke.WM_.SETFONT, buttonLogFont, new IntPtr(1));
                                             var panel = new KryptonPanel
@@ -242,10 +242,10 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
                                             };
                                             PlatformInvoke.ShowWindow(control.hWnd, PlatformInvoke.ShowWindowCommands.SW_HIDE);
                                         }
-                                        else if (((control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTO3STATE) == PlatformInvoke.BS_.AUTO3STATE)
-                                                 || ((control.WinInfo.dwStyle & PlatformInvoke.BS_._3STATE) == PlatformInvoke.BS_._3STATE)
-                                                 || ((control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTOCHECKBOX) == PlatformInvoke.BS_.AUTOCHECKBOX)
-                                            || ((control.WinInfo.dwStyle & PlatformInvoke.BS_.CHECKBOX) == PlatformInvoke.BS_.CHECKBOX))
+                                        else if ((control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTO3STATE) == PlatformInvoke.BS_.AUTO3STATE
+                                                 || (control.WinInfo.dwStyle & PlatformInvoke.BS_._3STATE) == PlatformInvoke.BS_._3STATE
+                                                 || (control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTOCHECKBOX) == PlatformInvoke.BS_.AUTOCHECKBOX
+                                            || (control.WinInfo.dwStyle & PlatformInvoke.BS_.CHECKBOX) == PlatformInvoke.BS_.CHECKBOX)
                                         {
                                             var panel = new KryptonPanel
                                             {
@@ -256,10 +256,10 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
 
                                             var button = new KryptonCheckBox
                                             {
-                                                AutoCheck = ((control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTO3STATE) == PlatformInvoke.BS_.AUTO3STATE)
-                                                            || ((control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTOCHECKBOX) == PlatformInvoke.BS_.AUTOCHECKBOX),
-                                                ThreeState = ((control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTO3STATE) == PlatformInvoke.BS_.AUTO3STATE)
-                                                             || ((control.WinInfo.dwStyle & PlatformInvoke.BS_._3STATE) == PlatformInvoke.BS_._3STATE),
+                                                AutoCheck = (control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTO3STATE) == PlatformInvoke.BS_.AUTO3STATE
+                                                            || (control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTOCHECKBOX) == PlatformInvoke.BS_.AUTOCHECKBOX,
+                                                ThreeState = (control.WinInfo.dwStyle & PlatformInvoke.BS_.AUTO3STATE) == PlatformInvoke.BS_.AUTO3STATE
+                                                             || (control.WinInfo.dwStyle & PlatformInvoke.BS_._3STATE) == PlatformInvoke.BS_._3STATE,
                                                 AutoSize = false,
                                                 Text = control.Text,
                                                 Dock = DockStyle.Fill,

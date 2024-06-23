@@ -26,9 +26,6 @@
  */
 #endregion
 
-using System.Collections.Generic;
-using System.Linq.Expressions;
-
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
@@ -40,10 +37,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         private readonly List<Path2D> _paths = new List<Path2D>();
 
 
-        /// <summary>
-        ///     The callback to get invoked at the end of the animation
-        /// </summary>
-        protected SafeInvoker EndCallback;
+        /// <summary>The callback to get invoked at the end of the animation.</summary>
+        protected SafeInvoker? EndCallback;
 
         /// <summary>
         ///     The callback to get invoked at each frame
@@ -274,7 +269,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="endCallback">
         ///     The callback to get invoked at the end of the animation
         /// </param>
-        public virtual void Play(object targetObject, string propertyName, SafeInvoker endCallback)
+        public virtual void Play(object targetObject, string propertyName, SafeInvoker? endCallback)
         {
             TargetObject = targetObject;
             var prop = TargetObject.GetType()
@@ -307,7 +302,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <typeparam name="T">
         ///     Any object containing a property
         /// </typeparam>
-        public virtual void Play<T>(T targetObject, Expression<Func<T, object>> propertySetter)
+        public virtual void Play<T>(T targetObject, Expression<Func<T, object>>? propertySetter)
         {
             Play(targetObject, propertySetter, null);
         }
@@ -327,18 +322,18 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <typeparam name="T">
         ///     Any object containing a property
         /// </typeparam>
-        public virtual void Play<T>(T targetObject, Expression<Func<T, object>> propertySetter, SafeInvoker endCallback)
+        public virtual void Play<T>(T targetObject, Expression<Func<T, object>>? propertySetter, SafeInvoker? endCallback)
         {
             if (propertySetter == null)
             {
                 return;
             }
 
-            TargetObject = targetObject;
+            TargetObject = targetObject ?? throw new ArgumentNullException(nameof(targetObject));
 
             var property =
-                ((propertySetter.Body as MemberExpression) ??
-                 (((UnaryExpression)propertySetter.Body).Operand as MemberExpression))?.Member as PropertyInfo;
+                (propertySetter.Body as MemberExpression ??
+                 ((UnaryExpression)propertySetter.Body).Operand as MemberExpression)?.Member as PropertyInfo;
             if (property == null)
             {
                 throw new ArgumentException(nameof(propertySetter));
@@ -401,7 +396,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="endCallback">
         ///     The callback to get invoked at the end of the animation
         /// </param>
-        public void Play(object targetObject, KnownFormProperties property, SafeInvoker endCallback)
+        public void Play(object targetObject, KnownFormProperties property, SafeInvoker? endCallback)
         {
             Play(targetObject, property.ToString(), endCallback);
         }
@@ -412,10 +407,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="frameCallback">
         ///     The callback to get invoked at each frame
         /// </param>
-        public void Play(SafeInvoker<Float2D> frameCallback)
-        {
-            Play(frameCallback, (SafeInvoker)null);
-        }
+        public void Play(SafeInvoker<Float2D> frameCallback) => Play(frameCallback, (SafeInvoker)null);
 
         /// <summary>
         ///     Starts the playing of the animation
@@ -426,7 +418,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="endCallback">
         ///     The callback to get invoked at the end of the animation
         /// </param>
-        public void Play(SafeInvoker<Float2D> frameCallback, SafeInvoker endCallback)
+        public void Play(SafeInvoker<Float2D> frameCallback, SafeInvoker? endCallback)
         {
             Stop();
             FrameCallback = frameCallback;

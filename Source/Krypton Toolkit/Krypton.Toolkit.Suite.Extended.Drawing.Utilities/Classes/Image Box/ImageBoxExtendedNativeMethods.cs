@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         #region Constants
 
-        public const int GWL_STYLE = (-16);
+        public const int GWL_STYLE = -16;
 
         public const int SB_BOTH = 3;
 

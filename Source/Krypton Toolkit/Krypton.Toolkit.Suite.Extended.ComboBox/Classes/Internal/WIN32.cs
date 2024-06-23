@@ -424,14 +424,14 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
         #region HiWord Message Cracker
         public int HiWord(int number)
         {
-            return ((number >> 16) & 0xffff);
+            return (number >> 16) & 0xffff;
         }
         #endregion
 
         #region LoWord Message Cracker
         public int LoWord(int number)
         {
-            return (number & 0xffff);
+            return number & 0xffff;
         }
         #endregion
 

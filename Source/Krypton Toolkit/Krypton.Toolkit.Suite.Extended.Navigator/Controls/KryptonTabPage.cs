@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 if (m_SelectionService == null)
                 {
-                    m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                    m_SelectionService = (ISelectionService)this.GetService(typeof(ISelectionService));
                 }
 
                 return m_SelectionService;
@@ -231,7 +231,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 if (m_SelectionService == null)
                 {
-                    m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                    m_SelectionService = (ISelectionService)this.GetService(typeof(ISelectionService));
                 }
 
                 return m_SelectionService;

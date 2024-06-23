@@ -262,7 +262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             _buttonRect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1);
             _rectCornerRadius = Math.Max(1, scalingDividend / 10);
             _rectOutlineWidth = Math.Max(1, scalingDividend / 50);
-            _highlightRect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, (ClientRectangle.Height - 1));
+            _highlightRect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1);
             _highlightRectOffset = Math.Max(1, scalingDividend / 35);
             _defaultHighlightOffset = Math.Max(1, scalingDividend / 35);
         }

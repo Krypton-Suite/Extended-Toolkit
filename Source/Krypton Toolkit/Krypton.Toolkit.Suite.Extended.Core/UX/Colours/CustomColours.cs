@@ -77,13 +77,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knumRedChannelValue = new();
             this.kryptonLabel2 = new();
             this.kryptonBorderEdge1 = new();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxColourPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbNormalTextSystemColours)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbNormalTextColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.pbxColourPreview).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbNormalTextSystemColours).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbNormalTextColour).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnOk
             // 
-            this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnOk.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnOk.Location = new(921, 12);
             this.kbtnOk.Name = "kbtnOk";
             this.kbtnOk.Size = new(90, 25);
@@ -357,15 +357,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Define Custom Colours";
             this.Load += new(this.CustomColours_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxColourPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbNormalTextSystemColours)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbNormalTextColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.pbxColourPreview).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbNormalTextSystemColours).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbNormalTextColour).EndInit();
             this.ResumeLayout(false);
 
         }

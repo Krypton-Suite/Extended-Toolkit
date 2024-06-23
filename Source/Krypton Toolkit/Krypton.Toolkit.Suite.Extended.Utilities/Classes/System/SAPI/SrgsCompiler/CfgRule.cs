@@ -189,12 +189,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             _flag = 0u;
             _nameOffset = nameOffset;
             _id = id;
-            TopLevel = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_TopLevel) != 0);
-            DefaultActive = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_Active) != 0);
-            PropRule = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_Interpreter) != 0);
-            Export = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_Export) != 0);
-            Dynamic = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_Dynamic) != 0);
-            Import = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_Import) != 0);
+            TopLevel = (attributes & SPCFGRULEATTRIBUTES.SPRAF_TopLevel) != 0;
+            DefaultActive = (attributes & SPCFGRULEATTRIBUTES.SPRAF_Active) != 0;
+            PropRule = (attributes & SPCFGRULEATTRIBUTES.SPRAF_Interpreter) != 0;
+            Export = (attributes & SPCFGRULEATTRIBUTES.SPRAF_Export) != 0;
+            Dynamic = (attributes & SPCFGRULEATTRIBUTES.SPRAF_Dynamic) != 0;
+            Import = (attributes & SPCFGRULEATTRIBUTES.SPRAF_Import) != 0;
         }
     }
 }

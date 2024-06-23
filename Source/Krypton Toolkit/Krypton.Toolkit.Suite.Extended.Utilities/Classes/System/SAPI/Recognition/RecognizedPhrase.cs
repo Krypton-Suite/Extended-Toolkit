@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
             internal RuleNode(Grammar grammar, string rule, float confidence, uint first, uint count)
             {
-                _rule = (_name = rule);
+                _rule = _name = rule;
                 _firstElement = first;
                 _count = count;
                 _confidence = confidence;
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                     float num3;
                     if (ruleNode._count == 0)
                     {
-                        num4 = (num3 = (float)ruleNode._firstElement - 0.5f);
+                        num4 = num3 = (float)ruleNode._firstElement - 0.5f;
                     }
                     else
                     {
@@ -442,7 +442,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             _hasIPAPronunciation = hasIPAPronunciation;
             _phraseBuffer = new byte[phraseLength];
             Marshal.Copy(phraseBuffer, _phraseBuffer, 0, phraseLength);
-            _grammarOptions = ((recoResult.Grammar != null) ? recoResult.Grammar._semanticTag : GrammarOptions.KeyValuePairSrgs);
+            _grammarOptions = recoResult.Grammar != null ? recoResult.Grammar._semanticTag : GrammarOptions.KeyValuePairSrgs;
             CalcSemantics(recoResult.Grammar);
         }
 
@@ -701,7 +701,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                         obj = Marshal.PtrToStructure(ptr3, typeof(double));
                         break;
                     case 11:
-                        obj = (Marshal.ReadByte(ptr3) != 0);
+                        obj = Marshal.ReadByte(ptr3) != 0;
                         break;
                     case 0:
                         obj = null;
@@ -929,12 +929,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         {
             Type type = grammar.GetType();
             Assembly assembly = type.Assembly;
-            Type type2 = (rule == type.Name) ? type : GetTypeForRule(assembly, rule);
+            Type type2 = rule == type.Name ? type : GetTypeForRule(assembly, rule);
             if (type2 == null || !type2.IsSubclassOf(typeof(Grammar)))
             {
                 throw new FormatException(SR.Get(SRID.RecognizerInvalidBinaryGrammar));
             }
-            ruleInstance = ((type2 == type) ? grammar : ((Grammar)assembly.CreateInstance(type2.FullName)));
+            ruleInstance = type2 == type ? grammar : (Grammar)assembly.CreateInstance(type2.FullName);
             onParse = ruleInstance.MethodInfo(method);
         }
 

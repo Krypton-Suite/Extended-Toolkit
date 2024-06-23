@@ -593,7 +593,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                         CheckForDuplicates(ref dest, reader);
                         ssmlAttributes._fragmentState.Emphasis = -1;
                         ssmlAttributes._fragmentState.Duration = ParseCSS2Time(dest);
-                        flag = (ssmlAttributes._fragmentState.Duration < 0);
+                        flag = ssmlAttributes._fragmentState.Duration < 0;
                     }
                 }
                 if (flag && !ssmlAttributes.AddUnknowAttribute(reader, ref extraAttributes))
@@ -631,7 +631,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                         {
                             flag = true;
                         }
-                        flag = (flag && cultureInfo != null);
+                        flag = flag && cultureInfo != null;
                     }
                     else
                     {
@@ -923,7 +923,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             string attribute3 = null;
             string dest2 = null;
             string attribute4 = null;
-            Prosody prosody = (ssmlAttributes._fragmentState.Prosody != null) ? ssmlAttributes._fragmentState.Prosody.Clone() : new Prosody();
+            Prosody prosody = ssmlAttributes._fragmentState.Prosody != null ? ssmlAttributes._fragmentState.Prosody.Clone() : new Prosody();
             while (reader.MoveToNextAttribute())
             {
                 bool flag = reader.NamespaceURI.Length != 0;
@@ -1199,7 +1199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             {
                 ThrowFormatException(SRID.MissingRequiredAttribute, "'xml:lang' or 'gender' or 'age' or 'variant' or 'name'", "voice");
             }
-            cultureInfo = ((cultureInfo == null) ? new CultureInfo(ssmlAttributes._fragmentState.LangId) : cultureInfo);
+            cultureInfo = cultureInfo == null ? new CultureInfo(ssmlAttributes._fragmentState.LangId) : cultureInfo;
             bool fNewCulture = cultureInfo.LCID != ssmlAttributes._fragmentState.LangId;
             ssmlAttributes._voice = engine.ProcessVoice(dest4, cultureInfo, ssmlAttributes._gender, ssmlAttributes._age, result, fNewCulture, list2);
             ssmlAttributes._fragmentState.LangId = cultureInfo.LCID;
@@ -1420,11 +1420,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             float result2;
             if (num > 0 && time.Length == num + 2)
             {
-                result = (float.TryParse(time.Substring(0, num), out result2) ? ((int)((double)result2 + 0.5)) : (-1));
+                result = float.TryParse(time.Substring(0, num), out result2) ? (int)((double)result2 + 0.5) : -1;
             }
             else if ((num = time.IndexOf('s')) > 0 && time.Length == num + 1)
             {
-                result = (float.TryParse(time.Substring(0, num), out result2) ? ((int)(result2 * 1000f)) : (-1));
+                result = float.TryParse(time.Substring(0, num), out result2) ? (int)(result2 * 1000f) : -1;
             }
             return result;
         }
@@ -1466,7 +1466,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     }
                     if (number.Number >= 0f && number.Number <= 1f)
                     {
-                        list.Add(new ContourPoint(number.Number, number2.Number, (!isHz) ? ContourPointChangeType.Percentage : ContourPointChangeType.Hz));
+                        list.Add(new ContourPoint(number.Number, number2.Number, !isHz ? ContourPointChangeType.Percentage : ContourPointChangeType.Hz));
                     }
                     num = num3;
                 }
@@ -1495,7 +1495,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
             if (skipDigit)
             {
-                while (start < ach.Length && ach[start] != expected && ((percent = (ach[start] == '%')) || char.IsDigit(ach[start]) || ach[start] == 'H' || ach[start] == 'z' || ach[start] == '.' || ach[start] == '+' || ach[start] == '-'))
+                while (start < ach.Length && ach[start] != expected && ((percent = ach[start] == '%') || char.IsDigit(ach[start]) || ach[start] == 'H' || ach[start] == 'z' || ach[start] == '.' || ach[start] == '+' || ach[start] == '-'))
                 {
                     start++;
                 }
@@ -1617,12 +1617,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
             if (prosodyUnit != 0)
             {
-                flag = (TryParseNumber(sNumber.Substring(0, sNumber.Length - 2), ref number) && (acceptHzRelative || number.SsmlAttributeId == int.MaxValue));
+                flag = TryParseNumber(sNumber.Substring(0, sNumber.Length - 2), ref number) && (acceptHzRelative || number.SsmlAttributeId == int.MaxValue);
                 isHz = true;
             }
             else
             {
-                flag = (TryParseNumber(sNumber, ref number) && number.SsmlAttributeId == int.MaxValue);
+                flag = TryParseNumber(sNumber, ref number) && number.SsmlAttributeId == int.MaxValue;
             }
             return flag;
         }

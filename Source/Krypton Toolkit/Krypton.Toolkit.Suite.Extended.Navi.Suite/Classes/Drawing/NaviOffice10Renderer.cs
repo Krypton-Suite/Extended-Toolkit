@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             bounds.Width -= 1;
             bounds.Height -= 1;
 
-            if ((state == InputState.Hovered))
+            if (state == InputState.Hovered)
             {
                 bounds.Inflate(new Size(-1, -1));
                 using (Pen p = new Pen(ColourTable.Border))
@@ -297,8 +297,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             bounds.Width -= 1;
             bounds.Height -= 1;
 
-            if (((state == ControlState.Active) && (inputState == InputState.Normal)) ||
-               (inputState == InputState.Hovered))
+            if ((state == ControlState.Active && inputState == InputState.Normal) ||
+               inputState == InputState.Hovered)
             {
                 bounds.Inflate(new Size(-1, -1));
                 using (Pen p = new Pen(ColourTable.Border))
@@ -628,15 +628,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 if (bounds.Height != 0)
                 {
-                    y = (bounds.Height / 2) - 3;
+                    y = bounds.Height / 2 - 3;
                 }
 
                 if (bounds.Width != 0)
                 {
-                    x = (bounds.Width / 2) - 1;
+                    x = bounds.Width / 2 - 1;
                 }
 
-                if (((rightToLeft) && (!collapsed)) || (!rightToLeft) && (collapsed))
+                if ((rightToLeft && !collapsed) || !rightToLeft && collapsed)
                 {
                     PointF[] points = {new PointF(x -2, y),
                                new PointF(x+1,y + 3),

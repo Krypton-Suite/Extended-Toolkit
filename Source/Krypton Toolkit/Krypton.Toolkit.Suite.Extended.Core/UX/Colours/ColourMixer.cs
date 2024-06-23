@@ -806,7 +806,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             while (true)
             {
-                rem = (number % 16);
+                rem = number % 16;
 
                 result += hexvalues[rem].ToString();
 
@@ -815,11 +815,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     break;
                 }
 
-                number = (number / 16);
+                number = number / 16;
 
             }
 
-            for (int i = (result.Length - 1); i >= 0; i--)
+            for (int i = result.Length - 1; i >= 0; i--)
             {
                 final += result[i];
             }
@@ -956,7 +956,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             for (int i = 0; i < number.Length; i++)
             {
-                if (!(Char.IsDigit(number[i])))
+                if (!Char.IsDigit(number[i]))
                 {
                     return false;
                 }
@@ -974,7 +974,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             for (int i = 0; i < hexadecimal.Length; i++)
             {
-                if (!((Char.IsDigit(hexadecimal[i])) || (hexadecimal[i] == 'A') || (hexadecimal[i] == 'B') || (hexadecimal[i] == 'C') || (hexadecimal[i] == 'D') || (hexadecimal[i] == 'E') || (hexadecimal[i] == 'F')))
+                if (!(Char.IsDigit(hexadecimal[i]) || hexadecimal[i] == 'A' || hexadecimal[i] == 'B' || hexadecimal[i] == 'C' || hexadecimal[i] == 'D' || hexadecimal[i] == 'E' || hexadecimal[i] == 'F'))
                 {
                     return false;
                 }

@@ -160,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void InitializeDesigner() => DrawGrid = false;
 
-        private void GetReferenceToWizardControl(IComponent c) => _wizard = ((Control)c as KryptonAdvancedWizard);
+        private void GetReferenceToWizardControl(IComponent c) => _wizard = (Control)c as KryptonAdvancedWizard;
 
         private void GetReferenceToIDesignerHost() => _designer = (IDesignerHost)GetService(typeof(IDesignerHost));
 

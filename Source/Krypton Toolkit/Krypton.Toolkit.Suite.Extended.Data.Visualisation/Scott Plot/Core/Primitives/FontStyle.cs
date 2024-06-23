@@ -58,7 +58,7 @@
             get => _italic;
             set
             {
-                bool fieldChanged = (_italic != value);
+                bool fieldChanged = _italic != value;
 
                 if (fieldChanged)
                 {

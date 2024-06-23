@@ -118,10 +118,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 foreach (ObjectSelectionWrapper<T> item in this)
                     if (item.Selected)
                     {
-                        text += (
-                            string.IsNullOrEmpty(text)
-                                ? $"\"{(object)item.Name}\""
-                                : $" & \"{(object)item.Name}\"");
+                        text += string.IsNullOrEmpty(text)
+                            ? $"\"{(object)item.Name}\""
+                            : $" & \"{(object)item.Name}\"";
                     }
 
                 return text;

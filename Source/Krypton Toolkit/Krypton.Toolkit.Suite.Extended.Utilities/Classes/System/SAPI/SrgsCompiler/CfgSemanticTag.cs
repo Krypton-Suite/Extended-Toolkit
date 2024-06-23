@@ -158,7 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal CfgSemanticTag(StringBlob symbols, CfgGrammar.CfgProperty property)
         {
-            _flag1 = (_flag2 = (_flag3 = 0u));
+            _flag1 = _flag2 = _flag3 = 0u;
             _valueOffset = 0;
             _varInt = 0;
             _varDouble = 0.0;
@@ -189,7 +189,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     _varInt = (int)property._comValue;
                     break;
                 case VarEnum.VT_BOOL:
-                    _varInt = (((bool)property._comValue) ? 65535 : 0);
+                    _varInt = (bool)property._comValue ? 65535 : 0;
                     break;
                 case VarEnum.VT_R8:
                     _varDouble = (double)property._comValue;

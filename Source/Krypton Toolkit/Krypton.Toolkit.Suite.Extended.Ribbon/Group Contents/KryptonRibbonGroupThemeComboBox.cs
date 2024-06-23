@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
 
             base.OnSelectedIndexChanged(e);
 
-            if ((KryptonRibbonThemeManager.GetThemeManagerMode(Text) == PaletteMode.Custom) && (KryptonCustomPalette != null))
+            if (KryptonRibbonThemeManager.GetThemeManagerMode(Text) == PaletteMode.Custom && KryptonCustomPalette != null)
             {
                 Manager.GlobalCustomPalette = KryptonCustomPalette;
             }

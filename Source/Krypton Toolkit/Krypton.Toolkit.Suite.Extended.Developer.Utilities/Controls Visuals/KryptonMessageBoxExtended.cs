@@ -45,14 +45,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             _button2 = new();
             _copyButton = new();
             _optionalCheckBox = new();
-            ((ISupportInitialize)(_panelMessage)).BeginInit();
+            ((ISupportInitialize)_panelMessage).BeginInit();
             _panelMessage.SuspendLayout();
-            ((ISupportInitialize)(_panelMessageText)).BeginInit();
+            ((ISupportInitialize)_panelMessageText).BeginInit();
             _panelMessageText.SuspendLayout();
-            ((ISupportInitialize)(_panelMessageIcon)).BeginInit();
+            ((ISupportInitialize)_panelMessageIcon).BeginInit();
             _panelMessageIcon.SuspendLayout();
-            ((ISupportInitialize)(_messageIcon)).BeginInit();
-            ((ISupportInitialize)(_panelButtons)).BeginInit();
+            ((ISupportInitialize)_messageIcon).BeginInit();
+            ((ISupportInitialize)_panelButtons).BeginInit();
             _panelButtons.SuspendLayout();
             SuspendLayout();
             // 
@@ -225,15 +225,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             TopMost = true;
             Load += InternalKryptonMessageBoxExtended_Load;
             FormClosing += InternalKryptonMessageBoxExtended_FormClosing;
-            ((ISupportInitialize)(_panelMessage)).EndInit();
+            ((ISupportInitialize)_panelMessage).EndInit();
             _panelMessage.ResumeLayout(false);
             _panelMessage.PerformLayout();
-            ((ISupportInitialize)(_panelMessageText)).EndInit();
+            ((ISupportInitialize)_panelMessageText).EndInit();
             _panelMessageText.ResumeLayout(false);
-            ((ISupportInitialize)(_panelMessageIcon)).EndInit();
+            ((ISupportInitialize)_panelMessageIcon).EndInit();
             _panelMessageIcon.ResumeLayout(false);
-            ((ISupportInitialize)(_messageIcon)).EndInit();
-            ((ISupportInitialize)(_panelButtons)).EndInit();
+            ((ISupportInitialize)_messageIcon).EndInit();
+            ((ISupportInitialize)_panelButtons).EndInit();
             _panelButtons.ResumeLayout(false);
             _panelButtons.PerformLayout();
             ResumeLayout(false);
@@ -243,7 +243,10 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         #endregion
 
         #region Variables
-        private readonly string _text, _optionalCheckBoxText, _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
+        private readonly string? _text;
+        private readonly string? _optionalCheckBoxText;
+        private readonly string? _copyButtonText;
+        private readonly string _buttonOneText, _buttonTwoText, _buttonThreeText;
         private readonly string _caption;
         private readonly ExtendedMessageBoxButtons _buttons;
         private readonly ExtendedMessageBoxCustomButtonOptions _customButtonOptions;
@@ -255,12 +258,13 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         private CheckState _optionalCheckBoxCheckState;
         private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult;
         private Double _fadeIn, _fadeOut;
-        public static bool _isOptionalCheckBoxChecked;
+        public bool _isOptionalCheckBoxChecked;
         private KryptonPanel _panelMessage;
         private KryptonPanel _panelMessageText;
         private KryptonWrapLabel _messageText;
         private KryptonPanel _panelMessageIcon;
-        private int _fadeSleepTimer, _timeOut;
+        private readonly int _fadeSleepTimer;
+        private int _timeOut;
         private PictureBox _messageIcon;
         private KryptonPanel _panelButtons;
         private MessageButton _button1;
@@ -269,9 +273,9 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         private MessageButton _copyButton;
         private KryptonCheckBox _optionalCheckBox;
         private KryptonBorderEdge _borderEdge;
-        private HelpInformation _helpInformation;
-        private Font _messageboxTypeface;
-        private Image _customMessageBoxIcon;
+        private HelpInformation? _helpInformation;
+        private readonly Font _messageboxTypeface;
+        private Image? _customMessageBoxIcon;
         private Point _optionalCheckBoxLocation;
         #endregion
 
@@ -384,10 +388,10 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                         if (IgnoreAltF4)
                         {
                             // Extract the keys being pressed
-                            Keys keys = ((Keys)((int)m.WParam.ToInt64()));
+                            Keys keys = (Keys)(int)m.WParam.ToInt64();
 
                             // If the user standard combination ALT + F4
-                            if ((keys == Keys.F4) && ((ModifierKeys & Keys.Alt) == Keys.Alt))
+                            if (keys == Keys.F4 && (ModifierKeys & Keys.Alt) == Keys.Alt)
                             {
                                 // Eat the message, so standard window proc does not close the window
                                 return;
@@ -440,17 +444,17 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        private KryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
+        private KryptonMessageBoxExtended(IWin32Window? showOwner, string? text, string caption,
                                           ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
                                           ExtendedMessageBoxIcon icon,
                                           MessageBoxDefaultButton defaultButton,
-                                          MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy,
-                                          Font messageboxTypeface, bool showOptionalCheckBox, string optionalCheckBoxText,
+                                          MessageBoxOptions options, HelpInformation? helpInformation, bool? showCtrlCopy,
+                                          Font? messageboxTypeface, bool showOptionalCheckBox, string? optionalCheckBoxText,
                                           bool isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
                                           AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
-                                          Image customMessageBoxIcon, bool showCopyButton, string copyButtonText,
-                                          bool? fade, int? fadeSleepTimer, string buttonOneCustomText,
-                                          string buttonTwoCustomText, string buttonThreeCustomText,
+                                          Image? customMessageBoxIcon, bool showCopyButton, string? copyButtonText,
+                                          bool? fade, int? fadeSleepTimer, string? buttonOneCustomText,
+                                          string? buttonTwoCustomText, string? buttonThreeCustomText,
                                           DialogResult? buttonOneCustomDialogResult, DialogResult? buttonTwoCustomDialogResult,
                                           DialogResult? buttonThreeCustomDialogResult, bool? showToolTips)
         {
@@ -568,14 +572,12 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+        public static DialogResult Show(string? text, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        bool showCopyButton = false, string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
-        {
-            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
-        }
+                                        bool showCopyButton = false, string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50) =>
+            InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text.
@@ -595,15 +597,13 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+        public static DialogResult Show(IWin32Window? owner, string? text, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
-        {
-            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
-        }
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50) =>
+            InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
 
         /// <summary>
         /// Displays a message box with specified text and caption.
@@ -623,12 +623,12 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+        public static DialogResult Show(string? text, string caption, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
         {
             return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
         }
@@ -652,16 +652,14 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+        public static DialogResult Show(IWin32Window? owner,
+                                        string? text, string caption, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
-        {
-            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
-        }
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50) =>
+            InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
 
         /// <summary>
         /// Displays a message box with specified text, caption, and buttons.
@@ -689,25 +687,23 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
+        public static DialogResult Show(string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1,
-                         0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
-                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(null, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1,
+                0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
+                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
                 null, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text, caption, and buttons.
@@ -736,22 +732,20 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption,
+        public static DialogResult Show(IWin32Window? owner,
+                                        string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with specified text, caption, buttons, and icon.
@@ -781,23 +775,21 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
+        public static DialogResult Show(string? text, string caption,
                                         ExtendedMessageBoxButtons buttons,
                                         ExtendedMessageBoxCustomButtonOptions customButtonOptions, ExtendedMessageBoxIcon icon,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(null, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text, caption, buttons, and icon.
@@ -828,23 +820,21 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption,
+        public static DialogResult Show(IWin32Window? owner,
+                                        string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        ExtendedMessageBoxIcon icon, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(owner, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, and default button.
@@ -875,22 +865,20 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
+        public static DialogResult Show(string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon, MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
-                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        Font? messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string? optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
                                         CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        Image customMessageBoxIcon = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        Image? customMessageBoxIcon = null, bool showCopyButton = false,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text, caption, buttons, icon, and default button.
@@ -922,24 +910,22 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption,
+        public static DialogResult Show(IWin32Window? owner,
+                                        string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
-                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        Font? messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string? optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
                                         CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        Image customMessageBoxIcon = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        Image? customMessageBoxIcon = null, bool showCopyButton = false,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, and options.
@@ -971,24 +957,22 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
+        public static DialogResult Show(string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text, caption, buttons, icon, default button, and options.
@@ -1021,25 +1005,23 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption,
+        public static DialogResult Show(IWin32Window? owner,
+                                        string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button.
@@ -1072,24 +1054,22 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
+        public static DialogResult Show(string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        bool displayHelpButton, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool displayHelpButton, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file.
@@ -1122,24 +1102,22 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
+        public static DialogResult Show(string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        string helpFilePath, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file.
@@ -1173,25 +1151,23 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption,
+        public static DialogResult Show(IWin32Window? owner,
+                                        string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        string helpFilePath, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and HelpNavigator.
@@ -1225,24 +1201,22 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
+        public static DialogResult Show(string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
-                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        Font? messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string? optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
                                         CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        Image customMessageBoxIcon = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        Image? customMessageBoxIcon = null, bool showCopyButton = false,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and Help keyword.
@@ -1276,24 +1250,22 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
+        public static DialogResult Show(string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and HelpNavigator.
@@ -1328,25 +1300,23 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption,
+        public static DialogResult Show(IWin32Window? owner,
+                                        string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
-                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        Font? messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string? optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
                                         CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        Image customMessageBoxIcon = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        Image? customMessageBoxIcon = null, bool showCopyButton = false,
+                                        string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and Help keyword.
@@ -1381,25 +1351,23 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption,
+        public static DialogResult Show(IWin32Window? owner,
+                                        string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -1434,25 +1402,23 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
+        public static DialogResult Show(string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -1488,25 +1454,23 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption,
+        public static DialogResult Show(IWin32Window? owner,
+                                        string? text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param,
-                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool? showCtrlCopy = null, Font? messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null, AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
+                                        Point? optionalCheckBoxLocation = null, Image? customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string? copyButtonText = null,
                                         bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                        DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -1540,75 +1504,74 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        internal static DialogResult Show(IWin32Window owner,
-                                          string text, string caption,
+        internal static DialogResult Show(IWin32Window? owner,
+                                          string? text, string caption,
                                           ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                           ExtendedMessageBoxIcon icon,
                                           MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                          HelpInformation helpInformation, bool showCtrlCopy, Font messageBoxTypeface,
-                                          bool showOptionalCheckBox, string optionalCheckBoxText, bool isOptionalCheckBoxChecked,
+                                          HelpInformation? helpInformation, bool showCtrlCopy, Font? messageBoxTypeface,
+                                          bool showOptionalCheckBox, string? optionalCheckBoxText, bool isOptionalCheckBoxChecked,
                                           CheckState? optionalCheckBoxCheckState,
                                           AnchorStyles optionalCheckBoxAnchor, Point optionalCheckBoxLocation,
-                                          Image customMessageBoxIcon, bool showCopyButton = false,
-                                          string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                          string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                          string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                          Image? customMessageBoxIcon, bool showCopyButton = false,
+                                          string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                          string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                          string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                           DialogResult? buttonTwoCustomDialogResult = null,
-                                          DialogResult? buttonThreeCustomDialogResult = null)
-        {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface, showOptionalCheckBox,
-                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
-                                customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
-        }
+                                          DialogResult? buttonThreeCustomDialogResult = null) =>
+            InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface, showOptionalCheckBox,
+                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
+                customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
+                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+
         #endregion
 
         #region Implementation
-        private static DialogResult InternalShow(IWin32Window owner,
-                                                 string text, string caption,
+        private static DialogResult InternalShow(IWin32Window? owner,
+                                                 string? text, string caption,
                                                  ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
                                                  ExtendedMessageBoxIcon icon,
                                                  MessageBoxDefaultButton defaultButton,
                                                  MessageBoxOptions options,
-                                                 HelpInformation helpInformation, bool? showCtrlCopy, Font messageboxTypeface = null,
-                                                 bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                                 HelpInformation? helpInformation, bool? showCtrlCopy, Font? messageboxTypeface = null,
+                                                 bool showOptionalCheckBox = false, string? optionalCheckBoxText = null,
                                                  bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                                  AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                                 Image customMessageBoxIcon = null, bool showCopyButton = false,
-                                                 string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                                 string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                                 string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                                 Image? customMessageBoxIcon = null, bool showCopyButton = false,
+                                                 string? copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                                 string? buttonOneCustomText = null, string? buttonTwoCustomText = null,
+                                                 string? buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                                  DialogResult? buttonTwoCustomDialogResult = null,
                                                  DialogResult? buttonThreeCustomDialogResult = null, bool? showToolTips = null)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
-            if (!SystemInformation.UserInteractive && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
+            if (!SystemInformation.UserInteractive && (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0)
             {
                 throw new InvalidOperationException("Cannot show modal dialog when non-interactive");
             }
 
             // Check if trying to show a message box from a service and the owner has been specified, this is not possible
-            if ((owner != null) && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0))
+            if (owner != null && (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0)
             {
                 throw new ArgumentException(@"Cannot show message box from a service with an owner specified", nameof(options));
             }
 
             // Check if trying to show a message box from a service and help information is specified, this is not possible
-            if ((helpInformation != null) && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0))
+            if (helpInformation != null && (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0)
             {
                 throw new ArgumentException(@"Cannot show message box from a service with help specified", nameof(options));
             }
 
             // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
-            IWin32Window showOwner = null;
-            if ((helpInformation != null) || ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
+            IWin32Window? showOwner = null;
+            if (helpInformation != null || (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0)
             {
                 // If do not have an owner passed in then get the active window and use that instead
                 showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (KryptonMessageBoxExtended ekmb = new(showOwner, text, caption, buttons, customButtonOptions, icon, defaultButton,
+            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, customButtonOptions, icon, defaultButton,
                                                                                   options, helpInformation, showCtrlCopy, messageboxTypeface,
                                                                                   showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
                                                                                   optionalCheckBoxCheckState, optionalCheckBoxAnchor,
@@ -1626,7 +1589,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
         private void UpdateText()
         {
-            Text = (string.IsNullOrWhiteSpace(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0]);
+            Text = string.IsNullOrWhiteSpace(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0];
             _messageText.StateCommon.Font = _messageboxTypeface;
             _messageText.Text = _text;
         }
@@ -1787,7 +1750,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         {
         }
 
-        private void UpdateSizing(IWin32Window showOwner)
+        private void UpdateSizing(IWin32Window? showOwner)
         {
             Size messageSizing = UpdateMessageSizing(showOwner);
             Size buttonsSizing = UpdateButtonsSizing();
@@ -1797,7 +1760,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                                   messageSizing.Height + buttonsSizing.Height);
         }
 
-        private Size UpdateMessageSizing(IWin32Window showOwner)
+        private Size UpdateMessageSizing(IWin32Window? showOwner)
         {
             // Update size of the message label but with a maximum width
             using (Graphics g = CreateGraphics())
@@ -1805,7 +1768,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                 // Find size of the label, with a max of 2/3 screen width
                 Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
                 SizeF scaledMonitorSize = screen.Bounds.Size;
-                scaledMonitorSize.Width *= (2 / 3.0f);
+                scaledMonitorSize.Width *= 2 / 3.0f;
                 scaledMonitorSize.Height *= 0.95f;
                 _messageText.UpdateFont();
                 SizeF messageSize = g.MeasureString(_text, _messageText.Font, scaledMonitorSize);
@@ -1814,8 +1777,8 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
                 float messageXSize = Math.Max(messageSize.Width, captionSize.Width);
                 // Work out DPI adjustment factor
-                float factorX = g.DpiX > 96 ? ((1.0f * g.DpiX) / 96) : 1.0f;
-                float factorY = g.DpiY > 96 ? ((1.0f * g.DpiY) / 96) : 1.0f;
+                float factorX = g.DpiX > 96 ? 1.0f * g.DpiX / 96 : 1.0f;
+                float factorY = g.DpiY > 96 ? 1.0f * g.DpiY / 96 : 1.0f;
                 messageSize.Width = messageXSize * factorX;
                 messageSize.Height = messageSize.Height * factorY;
 
@@ -1930,23 +1893,23 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             _button1.Size = maxButtonSize;
 
             // Size the panel for the buttons
-            _panelButtons.Size = new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            _panelButtons.Size = new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
 
             // Button area is the number of buttons with gaps between them and 10 pixels around all edges
-            return new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            return new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
         }
 
         private void button_keyDown(object sender, KeyEventArgs e)
         {
             // Escape key kills the dialog if we allow it to be closed
-            if ((e.KeyCode == Keys.Escape) && ControlBox)
+            if (e.KeyCode == Keys.Escape && ControlBox)
             {
                 Close();
             }
             else
             {
                 // Pressing Ctrl+C should copy message text into the clipboard
-                if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.C))
+                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.C)
                 {
                     StringBuilder sb = new();
 
@@ -1989,7 +1952,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
         /// <param name="optionalCheckBoxAnchor">The optional CheckBox anchor.</param>
         /// <param name="optionalCheckBoxLocation">The optional CheckBox location.</param>
-        private void ShowOptionalCheckBoxUI(bool showOptionalCheckBox, string optionalCheckBoxText,
+        private void ShowOptionalCheckBoxUI(bool showOptionalCheckBox, string? optionalCheckBoxText,
                                             bool isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
                                             AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation)
         {
@@ -2042,7 +2005,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <summary>Shows the copy button.</summary>
         /// <param name="showCopyButton">if set to <c>true</c> [show copy button].</param>
         /// <param name="copyButtonText">The copy button text.</param>
-        private void ShowCopyButton(bool showCopyButton, string copyButtonText)
+        private void ShowCopyButton(bool showCopyButton, string? copyButtonText)
         {
             _copyButton.Visible = showCopyButton;
 

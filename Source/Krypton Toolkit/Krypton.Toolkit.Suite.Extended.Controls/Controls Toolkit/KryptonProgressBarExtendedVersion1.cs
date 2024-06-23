@@ -25,6 +25,8 @@
  */
 #endregion
 
+using Timer = System.Windows.Forms.Timer;
+
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     [Obsolete(@"Please use the native KryptonProgressBar instead.")]
@@ -337,7 +339,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             BackColor = Color.Transparent;
 
-            if (!(InDesignMode()))
+            if (!InDesignMode())
             {
                 _glowAnimationTimer.Tick += GlowAnimationTimer_Tick;
 
@@ -396,7 +398,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             g.FillRectangle(lg, lr);
 
             Rectangle rr = new Rectangle(this.Width - 3, 2, 15, this.Height - 3);
-            rr.X = System.Convert.ToInt32((int)((Value * 1.0F / (MaximumValue - MinimumValue) * this.Width) - 14));
+            rr.X = System.Convert.ToInt32((int)(Value * 1.0F / (MaximumValue - MinimumValue) * this.Width - 14));
             LinearGradientBrush rg = new LinearGradientBrush(rr, Color.Black, Color.Black, LinearGradientMode.Horizontal);
 
             ColorBlend rc = new ColorBlend(3);
@@ -481,10 +483,10 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private GraphicsPath RoundRect(RectangleF r, float r1, float r2, float r3, float r4)
         {
-            float x = (float)(r.X);
-            float y = (float)(r.Y);
-            float w = (float)(r.Width);
-            float h = (float)(r.Height);
+            float x = (float)r.X;
+            float y = (float)r.Y;
+            float w = (float)r.Width;
+            float h = (float)r.Height;
             GraphicsPath rr = new GraphicsPath();
             rr.AddBezier(x, y + r1, x, y, x + r1, y, x + r1, y);
             rr.AddLine(x + r1, y, x + w - r2, y);
@@ -497,7 +499,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             return rr;
         }
 
-        private bool InDesignMode() => (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
+        private bool InDesignMode() => LicenseManager.UsageMode == LicenseUsageMode.Designtime;
 
         private Color GetIntermediateColor()
         {
@@ -515,10 +517,10 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             int c2g = c2.G;
             int c2b = c2.B;
 
-            int a = System.Convert.ToInt32((int)(Math.Abs(ca + (ca - c2a) * pc)));
-            int r = System.Convert.ToInt32((int)(Math.Abs(cr - ((cr - c2r) * pc))));
-            int g = System.Convert.ToInt32((int)(Math.Abs(cg - ((cg - c2g) * pc))));
-            int b = System.Convert.ToInt32((int)(Math.Abs(cb - ((cb - c2b) * pc))));
+            int a = System.Convert.ToInt32((int)Math.Abs(ca + (ca - c2a) * pc));
+            int r = System.Convert.ToInt32((int)Math.Abs(cr - (cr - c2r) * pc));
+            int g = System.Convert.ToInt32((int)Math.Abs(cg - (cg - c2g) * pc));
+            int b = System.Convert.ToInt32((int)Math.Abs(cb - (cb - c2b) * pc));
 
             if (a > 255)
             {
@@ -537,7 +539,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 b = 255;
             }
 
-            return (Color.FromArgb(a, r, g, b));
+            return Color.FromArgb(a, r, g, b);
         }
 
         private void KryptonProgressBarExtended_Paint(object sender, PaintEventArgs e)

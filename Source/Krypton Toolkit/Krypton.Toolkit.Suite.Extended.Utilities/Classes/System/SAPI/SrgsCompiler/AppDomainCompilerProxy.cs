@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     string text = ruleNames[i];
                     string text2 = methodNames[i];
                     _constructors[i] = string.Empty;
-                    string text3 = ((!string.IsNullOrEmpty(nameSpace)) ? (nameSpace + ".") : string.Empty) + text;
+                    string text3 = (!string.IsNullOrEmpty(nameSpace) ? nameSpace + "." : string.Empty) + text;
                     Type type = assembly.GetType(text3);
                     if (type == null)
                     {
@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 }
             }
             stringBuilder.Append(" )\n  {\n object [] onInitParams = new object [");
-            stringBuilder.Append((parameters != null) ? parameters.Length : 0);
+            stringBuilder.Append(parameters != null ? parameters.Length : 0);
             stringBuilder.Append("];\n");
             int num2 = 0;
             while (parameters != null && num2 < parameters.Length)

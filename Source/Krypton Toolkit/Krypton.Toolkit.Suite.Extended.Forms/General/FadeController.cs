@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 case FadeDirection.In:
                     if (form.Opacity < 1.0)
                     {
-                        form.Opacity += (fadeSpeed / 1000.0);
+                        form.Opacity += fadeSpeed / 1000.0;
                     }
                     else
                     {
@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 case FadeDirection.Out:
                     if (form.Opacity > 0.1)
                     {
-                        form.Opacity -= (fadeSpeed / 1000.0);
+                        form.Opacity -= fadeSpeed / 1000.0;
                     }
                     else
                     {

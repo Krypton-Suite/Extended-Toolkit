@@ -1,6 +1,32 @@
-﻿using System.Globalization;
+﻿#region MIT License
 
-using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2024 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+
+#endregion
+using System.Globalization;
 
 namespace Examples
 {
@@ -9,9 +35,9 @@ namespace Examples
         private int _priceCode;
         private string _currency;
 
-        private object val;
+        private object? _val;
 
-        private const int noPrice = 999999;
+        private const int NO_PRICE = 999999;
         public OutlookGridPriceGroup() : base()
         {
             AllowHiddenWhenGrouped = false;
@@ -31,10 +57,7 @@ namespace Examples
         /// <summary>
         /// Gets or sets the displayed text.
         /// </summary>
-        public override string Text
-        {
-            get { return string.Format("{0}: {1} ({2})", Column.DataGridViewColumn.HeaderText, GetPriceString(_priceCode), ItemCount == 1 ? OneItemText : ItemCount.ToString() + XxxItemsText); }
-        }
+        public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {GetPriceString(_priceCode)} ({(ItemCount == 1 ? OneItemText : ItemCount.ToString() + XxxItemsText)})";
 
         private int GetPriceCode(decimal price)
         {
@@ -114,20 +137,20 @@ namespace Examples
         /// <summary>
         /// Gets or sets the Alphabetic value
         /// </summary>
-        public override object Value
+        public override object? Value
         {
-            get { return val; }
+            get => _val;
             set
             {
-                if (object.ReferenceEquals(value, DBNull.Value) || value == null)
+                if (ReferenceEquals(value, DBNull.Value) || value == null)
                 {
-                    _priceCode = noPrice;
-                    val = _priceCode;
+                    _priceCode = NO_PRICE;
+                    _val = _priceCode;
                 }
                 else
                 {
                     _priceCode = GetPriceCode(decimal.Parse(value.ToString()));
-                    val = _priceCode;
+                    _val = _priceCode;
                 }
             }
         }
@@ -143,7 +166,7 @@ namespace Examples
             OutlookGridPriceGroup gr = new OutlookGridPriceGroup(this.ParentGroup);
 
             gr.Column = this.Column;
-            gr.Value = this.val;
+            gr.Value = this._val;
             gr.Collapsed = this.Collapsed;
             gr.Height = this.Height;
             gr.GroupImage = this.GroupImage;
@@ -167,10 +190,10 @@ namespace Examples
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public override int CompareTo(object obj)
+        public override int CompareTo(object? obj)
         {
             int orderModifier = (Column.SortDirection == SortOrder.Ascending ? 1 : -1);
-            int priceOther = 0;
+            int priceOther;
 
             if (obj is OutlookGridPriceGroup)
             {
@@ -178,7 +201,7 @@ namespace Examples
             }
             else
             {
-                priceOther = noPrice;
+                priceOther = NO_PRICE;
             }
             return _priceCode.CompareTo(priceOther) * orderModifier;
         }

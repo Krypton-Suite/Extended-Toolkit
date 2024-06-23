@@ -1336,7 +1336,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         private void UpdateDaysAndWeeks()
         {
-            TimeSpan span = (new DateTime(ViewEnd.Year, ViewEnd.Month, ViewEnd.Day, 23, 59, 59)).Subtract(ViewStart.Date);
+            TimeSpan span = new DateTime(ViewEnd.Year, ViewEnd.Month, ViewEnd.Day, 23, 59, 59).Subtract(ViewStart.Date);
             int preDays = 0;
             span = span.Add(new TimeSpan(0, 0, 0, 1, 0));
 
@@ -1348,7 +1348,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             if (span.Days > MaximumFullDays)
             {
                 SetDaysMode(CalendarDaysMode.Short);
-                preDays = (new[] { 0, 1, 2, 3, 4, 5, 6 })[(int)ViewStart.DayOfWeek] - (int)FirstDayOfWeek;
+                preDays = new[] { 0, 1, 2, 3, 4, 5, 6 }[(int)ViewStart.DayOfWeek] - (int)FirstDayOfWeek;
                 span = span.Add(new TimeSpan(preDays, 0, 0, 0));
 
                 while (span.Days % 7 != 0)
@@ -1435,7 +1435,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 bool reached = false;
                 for (int i = unitStart.Day.Index; !reached; i++)
                 {
-                    for (int j = (i == unitStart.Day.Index ? unitStart.Index : 0); i < Days.Length && j < Days[i]!.TimeUnits.Length; j++)
+                    for (int j = i == unitStart.Day.Index ? unitStart.Index : 0; i < Days.Length && j < Days[i]!.TimeUnits.Length; j++)
                     {
                         CalendarTimeScaleUnit? unit = Days[i]!.TimeUnits[j];
                         if (unit != null)

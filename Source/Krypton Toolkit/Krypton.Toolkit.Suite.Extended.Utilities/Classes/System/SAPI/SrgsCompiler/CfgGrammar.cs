@@ -340,7 +340,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal static bool LoadIL(Stream stream, out byte[] assemblyContent, out byte[] assemblyDebugSymbols, out ScriptRef[] scripts)
         {
-            assemblyContent = (assemblyDebugSymbols = null);
+            assemblyContent = assemblyDebugSymbols = null;
             scripts = null;
             using (StreamMarshaler streamMarshaler = new StreamMarshaler(stream))
             {
@@ -356,7 +356,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     return false;
                 }
                 assemblyContent = Load<byte>(streamMarshaler, cfgSerializedHeader.pIL, cfgSerializedHeader.cIL);
-                assemblyDebugSymbols = ((cfgSerializedHeader.cPDB > 0) ? Load<byte>(streamMarshaler, cfgSerializedHeader.pPDB, cfgSerializedHeader.cPDB) : null);
+                assemblyDebugSymbols = cfgSerializedHeader.cPDB > 0 ? Load<byte>(streamMarshaler, cfgSerializedHeader.pPDB, cfgSerializedHeader.cPDB) : null;
             }
             return true;
         }
