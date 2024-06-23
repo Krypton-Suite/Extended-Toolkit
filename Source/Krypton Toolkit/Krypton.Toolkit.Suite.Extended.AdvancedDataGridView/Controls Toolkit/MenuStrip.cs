@@ -1642,7 +1642,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             {
                 if (node.Nodes.Count > 0)
                 {
-                    foreach (TreeNodeItemSelector? subnode in node.Nodes)
+                    foreach (TreeNodeItemSelector subnode in node.Nodes)
                     {
                         SetNodesCheckState(new TreeNodeItemSelector[] { subnode }, node.Checked);
                     }
@@ -1650,7 +1650,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
                 //refresh nodes
                 CheckState state = UpdateNodesCheckState(ChecklistNodes());
-                GetSelectAllNode().CheckState = state;
+                GetSelectAllNode()!.CheckState = state;
             }
         }
 
@@ -1661,12 +1661,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="isChecked"></param>
         private void SetNodesCheckState(TreeNodeItemSelector?[] nodes, bool isChecked)
         {
-            foreach (TreeNodeItemSelector? node in nodes)
+            foreach (TreeNodeItemSelector node in nodes)
             {
-                node.Checked = isChecked;
+                node!.Checked = isChecked;
                 if (node.Nodes != null && node.Nodes.Count > 0)
                 {
-                    foreach (TreeNodeItemSelector? subnode in node.Nodes)
+                    foreach (TreeNodeItemSelector subnode in node.Nodes)
                     {
                         SetNodesCheckState(new TreeNodeItemSelector[] { subnode }, isChecked);
                     }
@@ -1712,14 +1712,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 }
             }
 
-            if (isAllNodesSomeCheckState)
-            {
-                return result;
-            }
-            else
-            {
-                return CheckState.Indeterminate;
-            }
+            return isAllNodesSomeCheckState ? result : CheckState.Indeterminate;
         }
 
         /// <summary>
@@ -1787,7 +1780,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             int i = 0;
             foreach (TreeNodeItemSelector? n in nodes)
             {
-                ret[i] = n.Clone();
+                ret[i] = n?.Clone();
                 i++;
             }
             return ret;
@@ -1841,7 +1834,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             TreeNodeItemSelector? n = e.Node as TreeNodeItemSelector;
             //set the new node check status
             SetNodesCheckState(_loadedNodes, false);
-            n.CheckState = CheckState.Unchecked;
+            n!.CheckState = CheckState.Unchecked;
             NodeCheckChange(n);
             //set filter button enabled
             CheckFilterButtonEnabled();
@@ -1905,7 +1898,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
             {
-                (_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                ((_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem)!).Checked = false;
             }
         }
 
@@ -1939,14 +1932,14 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             //uncheck other preset
             for (int i = 3; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
             {
-                (_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                ((_customFilterLastFiltersListMenuItem.DropDownItems[i] as ToolStripMenuItem)!).Checked = false;
             }
 
-            (_customFilterLastFiltersListMenuItem.DropDownItems[2] as ToolStripMenuItem).Checked = true;
+            ((_customFilterLastFiltersListMenuItem.DropDownItems[2] as ToolStripMenuItem)!).Checked = true;
             _activeFilterType = FilterType.Custom;
 
             //get Filter string
-            string oldfilter = FilterString;
+            string? oldfilter = FilterString;
             FilterString = filterstring;
 
             //set CheckList nodes
@@ -1974,7 +1967,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CancelFilterMenuItem_Click(object sender, EventArgs e)
         {
-            string oldfilter = FilterString;
+            string? oldfilter = FilterString;
 
             //clean Filter
             CleanFilter();
@@ -1993,9 +1986,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CancelFilterMenuItem_MouseEnter(object sender, EventArgs e)
         {
-            if ((sender as ToolStripMenuItem).Enabled)
+            if (((sender as ToolStripMenuItem)!).Enabled)
             {
-                (sender as ToolStripMenuItem).Select();
+                ((sender as ToolStripMenuItem)!).Select();
             }
         }
 
@@ -2068,9 +2061,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CustomFilterLastFiltersListMenuItem_MouseEnter(object sender, EventArgs e)
         {
-            if ((sender as ToolStripMenuItem).Enabled)
+            if (((sender as ToolStripMenuItem)!).Enabled)
             {
-                (sender as ToolStripMenuItem).Select();
+                ((sender as ToolStripMenuItem)!).Select();
             }
         }
 
@@ -2079,7 +2072,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CustomFilterLastFiltersListMenuItem_Paint(Object sender, PaintEventArgs e)
+        private void CustomFilterLastFiltersListMenuItem_Paint(object sender, PaintEventArgs e)
         {
             Rectangle rect = new Rectangle(_customFilterLastFiltersListMenuItem.Width - 12, 7, 10, 10);
             ControlPaint.DrawMenuGlyph(e.Graphics, rect, MenuGlyph.Arrow, Color.Black, Color.Transparent);
@@ -2093,7 +2086,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         private void CustomFilterLastFilter1MenuItem_VisibleChanged(object sender, EventArgs e)
         {
             _toolStripSeparator2MenuItem.Visible = !_customFilterLastFilter1MenuItem.Visible;
-            (sender as ToolStripMenuItem).VisibleChanged -= CustomFilterLastFilter1MenuItem_VisibleChanged;
+            ((sender as ToolStripMenuItem)!).VisibleChanged -= CustomFilterLastFilter1MenuItem_VisibleChanged;
         }
 
         /// <summary>
@@ -2103,11 +2096,11 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CustomFilterLastFilterMenuItem_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem menuitem = sender as ToolStripMenuItem;
+            ToolStripMenuItem? menuitem = sender as ToolStripMenuItem;
 
             for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
             {
-                if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Text == menuitem.Text && _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag.ToString() == menuitem.Tag.ToString())
+                if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Text == menuitem?.Text && _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag.ToString() == menuitem.Tag.ToString())
                 {
                     //set current filter preset as active
                     SetCustomFilter(i);
@@ -2123,8 +2116,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         private void CustomFilterLastFilterMenuItem_TextChanged(object sender, EventArgs e)
         {
-            (sender as ToolStripMenuItem).Available = true;
-            (sender as ToolStripMenuItem).TextChanged -= CustomFilterLastFilterMenuItem_TextChanged;
+            ((sender as ToolStripMenuItem)!).Available = true;
+            ((sender as ToolStripMenuItem)!).TextChanged -= CustomFilterLastFilterMenuItem_TextChanged;
         }
 
         /// <summary>
