@@ -118,13 +118,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="80.24.3.64" />
+				<PackageReference Include="Krypton.Docking" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Toolkit" Version="80.24.3.64" />
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Ribbon" Version="80.24.3.64" />
+				<PackageReference Include="Krypton.Ribbon" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Navigator" Version="80.24.3.64" />
+				<PackageReference Include="Krypton.Navigator" Version="85.24.6.176" />
 			</ItemGroup>
 		</When>
 
@@ -206,7 +206,7 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
-		<PackageReference Include="WindowsAPICodePack" Version="7.0.4" />
+		<PackageReference Include="WindowsAPICodePack" Version="8.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>
