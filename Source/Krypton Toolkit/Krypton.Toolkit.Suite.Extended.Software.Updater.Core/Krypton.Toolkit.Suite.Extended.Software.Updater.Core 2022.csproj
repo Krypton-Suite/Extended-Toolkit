@@ -86,13 +86,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="90.24.6.169-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="90.24.6.176-alpha" />
 
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.6.169-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.6.176-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.6.169-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.6.176-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="90.24.6.169-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="90.24.6.176-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -102,23 +102,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-<<<<<<< HEAD
-				<PackageReference Include="Krypton.Docking.Canary" Version="90.24.5.141-beta" />
+				<PackageReference Include="Krypton.Docking.Canary" Version="90.24.6.176-beta" />
 
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.5.141-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.6.176-beta" />
 
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="90.24.5.141-beta" />
+				<PackageReference Include="Krypton.Ribbon.Canary" Version="90.24.6.176-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.5.141-beta" />
-=======
-				<PackageReference Include="Krypton.Docking.Canary" Version="90.24.4.113-beta" />
-
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.4.113-beta" />
-
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="90.24.4.113-beta" />
-
-				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.4.113-beta" />
->>>>>>> origin/canary
+				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.6.176-beta" />
 			</ItemGroup>
 		</When>
 
@@ -128,13 +118,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Docking" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Ribbon" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Ribbon" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Navigator" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Navigator" Version="85.24.6.176" />
 			</ItemGroup>
 		</When>
 
@@ -144,13 +134,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Lite" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Docking.Lite" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Ribbon.Lite" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Ribbon.Lite" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Navigator.Lite" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Navigator.Lite" Version="85.24.6.176" />
 			</ItemGroup>
 		</When>
 
@@ -193,13 +183,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Docking" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Ribbon" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Ribbon" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Navigator" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Navigator" Version="85.24.6.176" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

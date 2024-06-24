@@ -911,9 +911,8 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                 PaletteTextHint.ClearTypeGridFit => TextRenderingHint.ClearTypeGridFit,
                 PaletteTextHint.SingleBitPerPixel => TextRenderingHint.SingleBitPerPixel,
                 PaletteTextHint.SingleBitPerPixelGridFit => TextRenderingHint.SingleBitPerPixelGridFit,
-                PaletteTextHint.Inherit => TextRenderingHint.SystemDefault,
-                PaletteTextHint.SystemDefault => TextRenderingHint.SystemDefault,
-                _ => TextRenderingHint.SystemDefault
+                PaletteTextHint.Inherit => TextRenderingHint.ClearTypeGridFit, //SystemDefault,
+                _ => TextRenderingHint.ClearTypeGridFit
             };
         }
 

@@ -90,7 +90,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.6.169-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.6.176-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -100,11 +100,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-<<<<<<< HEAD
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.5.141-beta" />
-=======
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.4.113-beta" />
->>>>>>> origin/canary
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.6.176-beta" />
 			</ItemGroup>
 		</When>
 
@@ -114,7 +110,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
 			</ItemGroup>
 		</When>
 
@@ -124,7 +120,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="85.24.6.176" />
 			</ItemGroup>
 		</When>
 
@@ -155,7 +151,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
