@@ -6,6 +6,7 @@
 =======
 
 ## 2024-11-xx - Build 2411 - November 2024
+* Simplified TFM project configuration
 * New `KryptonPasswordTextBox` control
 * `Krypton.Toolkit.Suite.Extended.Outlook.Grid` is now deprecated, as it has now been absorbed into the standard toolkit
 * Implement [#404](https://github.com/Krypton-Suite/Extended-Toolkit/issues/404), Update 'ScottPlot' to v5
