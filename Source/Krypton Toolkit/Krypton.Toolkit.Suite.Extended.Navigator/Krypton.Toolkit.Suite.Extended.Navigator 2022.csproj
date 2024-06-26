@@ -160,9 +160,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
 
-				<PackageReference Include="Krypton.Navigator" Version="70.22.11.312" />
+				<PackageReference Include="Krypton.Navigator" Version="85.24.6.176" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

@@ -5,6 +5,11 @@
 
 =======
 
+## 2024-06-26 - Build 2406 - June 2024 (Patch 1)
+* Resolved [#478](https://github.com/Krypton-Suite/Extended-Toolkit/issues/478), Version discrepancy
+
+=======
+
 ## 2024-06-24 - Build 2406 - June 2024
 
 * Updated standard toolkit to build `2406`
