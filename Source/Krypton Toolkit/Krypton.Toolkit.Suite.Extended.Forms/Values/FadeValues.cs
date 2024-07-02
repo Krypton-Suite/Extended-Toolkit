@@ -97,6 +97,7 @@ namespace Krypton.Toolkit
 
         public FadeValues()
         {
+            throw new Exception( "FadeValues is disabled until proven stable. Further development in V100" );
             Reset();
         }
 
