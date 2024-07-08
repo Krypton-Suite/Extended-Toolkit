@@ -49,8 +49,8 @@
 	<Choose>
 		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.6.176-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.6.176-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.7.190-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.7.190-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
@@ -109,6 +109,7 @@
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs 2022.csproj" />
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.TaskDialogs\Krypton.Toolkit.Suite.Extended.TaskDialogs 2022.csproj" />-->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.ToastNotification\Krypton.Toolkit.Suite.Extended.ToastNotification 2022.csproj" />
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Toast\Krypton.Toolkit.Suite.Extended.Toast 2022.csproj" />-->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Toggle.Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tool.Box\Krypton.Toolkit.Suite.Extended.Tool.Box 2022.csproj" />

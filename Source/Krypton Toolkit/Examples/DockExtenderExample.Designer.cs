@@ -247,14 +247,9 @@ namespace Examples
             this.kryptonListView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonListView1.FullRowSelect = true;
             this.kryptonListView1.HideSelection = false;
-            this.kryptonListView1.ItemStyle = Krypton.Toolkit.ButtonStyle.ListItem;
             this.kryptonListView1.Location = new System.Drawing.Point(252, 49);
             this.kryptonListView1.Name = "kryptonListView1";
-            this.kryptonListView1.OwnerDraw = true;
             this.kryptonListView1.Size = new System.Drawing.Size(624, 232);
-            this.kryptonListView1.StateCommon.Item.Content.ShortText.MultiLine = Krypton.Toolkit.InheritBool.True;
-            this.kryptonListView1.StateCommon.Item.Content.ShortText.MultiLineH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.kryptonListView1.StateCommon.Item.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonListView1.TabIndex = 7;
             this.kryptonListView1.View = System.Windows.Forms.View.SmallIcon;
             // 

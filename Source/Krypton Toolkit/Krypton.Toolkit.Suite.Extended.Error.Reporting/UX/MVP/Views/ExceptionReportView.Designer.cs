@@ -495,14 +495,9 @@
             this.klvAssemblies.HideSelection = false;
             this.klvAssemblies.HotTracking = true;
             this.klvAssemblies.HoverSelection = true;
-            this.klvAssemblies.ItemStyle = Krypton.Toolkit.ButtonStyle.ListItem;
             this.klvAssemblies.Location = new System.Drawing.Point(0, 0);
             this.klvAssemblies.Name = "klvAssemblies";
-            this.klvAssemblies.OwnerDraw = true;
             this.klvAssemblies.Size = new System.Drawing.Size(567, 364);
-            this.klvAssemblies.StateCommon.Item.Content.ShortText.MultiLine = Krypton.Toolkit.InheritBool.True;
-            this.klvAssemblies.StateCommon.Item.Content.ShortText.MultiLineH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klvAssemblies.StateCommon.Item.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klvAssemblies.TabIndex = 0;
             // 
             // kpSystemInformation

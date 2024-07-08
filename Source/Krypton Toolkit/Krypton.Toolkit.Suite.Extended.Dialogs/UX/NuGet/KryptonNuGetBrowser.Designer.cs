@@ -106,14 +106,9 @@
             // klvPackages
             // 
             this.klvPackages.HideSelection = false;
-            this.klvPackages.ItemStyle = Krypton.Toolkit.ButtonStyle.ListItem;
             this.klvPackages.Location = new System.Drawing.Point(13, 42);
             this.klvPackages.Name = "klvPackages";
-            this.klvPackages.OwnerDraw = true;
             this.klvPackages.Size = new System.Drawing.Size(775, 571);
-            this.klvPackages.StateCommon.Item.Content.ShortText.MultiLine = Krypton.Toolkit.InheritBool.True;
-            this.klvPackages.StateCommon.Item.Content.ShortText.MultiLineH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klvPackages.StateCommon.Item.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klvPackages.TabIndex = 4;
             // 
             // kryptonTextBox2
