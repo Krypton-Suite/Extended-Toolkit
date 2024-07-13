@@ -67,14 +67,9 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.klvExceptions.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left
                                                                             | System.Windows.Forms.AnchorStyles.Right);
             this.klvExceptions.HideSelection = false;
-            this.klvExceptions.ItemStyle = Krypton.Toolkit.ButtonStyle.ListItem;
             this.klvExceptions.Location = new System.Drawing.Point(4, 4);
             this.klvExceptions.Name = "klvExceptions";
-            this.klvExceptions.OwnerDraw = true;
             this.klvExceptions.Size = new System.Drawing.Size(607, 120);
-            this.klvExceptions.StateCommon.Item.Content.ShortText.MultiLine = Krypton.Toolkit.InheritBool.True;
-            this.klvExceptions.StateCommon.Item.Content.ShortText.MultiLineH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klvExceptions.StateCommon.Item.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klvExceptions.TabIndex = 0;
             // 
             // kryptonLabel1
@@ -215,7 +210,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
         private void WireUpEvents()
         {
-            klvExceptions.SelectedIndexChanged += ExceptionsSelectedIndexChanged;
+            //? klvExceptions.SelectedIndexChanged += ExceptionsSelectedIndexChanged;
         }
 
         private void ExceptionsSelectedIndexChanged(object sender, EventArgs e)

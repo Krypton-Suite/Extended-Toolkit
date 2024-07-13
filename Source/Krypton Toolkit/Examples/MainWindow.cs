@@ -177,7 +177,9 @@ namespace Examples
 
         private void kbtnNotificationExample_Click(object sender, EventArgs e)
         {
+            var toasts = new ToastNotificationMenu();
 
+            toasts.Show();
         }
 
         private void kbtnControls_Click(object sender, EventArgs e)

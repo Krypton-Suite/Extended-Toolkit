@@ -74,13 +74,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="90.24.6.176-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="90.24.7.190-alpha" />
 
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.6.176-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.7.190-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.6.176-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.7.190-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="90.24.6.176-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="90.24.7.190-alpha" />
 			</ItemGroup>
 		</When>
 

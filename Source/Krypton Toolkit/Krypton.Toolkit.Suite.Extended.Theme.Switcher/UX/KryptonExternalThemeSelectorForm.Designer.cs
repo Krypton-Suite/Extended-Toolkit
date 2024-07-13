@@ -135,16 +135,10 @@
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.klvThemesList.HideSelection = false;
-            this.klvThemesList.ItemStyle = Krypton.Toolkit.ButtonStyle.ListItem;
             this.klvThemesList.Location = new System.Drawing.Point(10, 4);
             this.klvThemesList.Name = "klvThemesList";
-            this.klvThemesList.OwnerDraw = true;
             this.klvThemesList.Size = new System.Drawing.Size(775, 357);
-            this.klvThemesList.StateCommon.Item.Content.ShortText.MultiLine = Krypton.Toolkit.InheritBool.True;
-            this.klvThemesList.StateCommon.Item.Content.ShortText.MultiLineH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klvThemesList.StateCommon.Item.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klvThemesList.TabIndex = 1;
-            this.klvThemesList.SelectedIndexChanged += new System.EventHandler(this.klvThemesList_SelectedIndexChanged);
             // 
             // klbThemesList
             // 
