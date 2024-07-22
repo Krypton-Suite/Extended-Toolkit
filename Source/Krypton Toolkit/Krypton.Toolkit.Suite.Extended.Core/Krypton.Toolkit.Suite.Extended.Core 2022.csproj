@@ -102,7 +102,6 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-<<<<<<< HEAD
 				<PackageReference Include="Krypton.Docking.Canary" Version="90.24.5.141-beta" />
 
 				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.5.141-beta" />
@@ -110,15 +109,14 @@
 				<PackageReference Include="Krypton.Ribbon.Canary" Version="90.24.5.141-beta" />
 
 				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.5.141-beta" />
-=======
-				<PackageReference Include="Krypton.Docking.Canary" Version="90.24.4.113-beta" />
 
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.4.113-beta" />
+				<PackageReference Include="Krypton.Docking.Canary" Version="90.24.7.204-beta" />
 
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="90.24.4.113-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.7.204-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.4.113-beta" />
->>>>>>> origin/canary
+				<PackageReference Include="Krypton.Ribbon.Canary" Version="90.24.7.204-beta" />
+
+				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.7.204-beta" />
 			</ItemGroup>
 		</When>
 
@@ -215,7 +213,7 @@
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
-		<PackageReference Include="WindowsAPICodePack" Version="7.0.4" />
+		<PackageReference Include="WindowsAPICodePack" Version="8.0.4" />
 		<!--<PackageReference Include="NSec.Cryptography" Version="23.5.0-preview.1" />-->
 	</ItemGroup>
 

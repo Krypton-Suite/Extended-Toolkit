@@ -91,11 +91,9 @@
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-<<<<<<< HEAD
 						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.5.141-beta" />
-=======
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.4.113-beta" />
->>>>>>> origin/canary
+
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.7.204-beta" />
 					</ItemGroup>
 				</When>
 
@@ -127,8 +125,8 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-		<PackageReference Include="System.Speech" Version="9.0.0-preview.3.24172.9" />
-		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.2" />
+		<PackageReference Include="System.Speech" Version="9.0.0-preview.6.24327.7" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -90,11 +90,9 @@
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-<<<<<<< HEAD
 						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.5.141-beta" />
-=======
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.4.113-beta" />
->>>>>>> origin/canary
+
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.7.204-beta" />
 					</ItemGroup>
 				</When>
 
@@ -195,7 +193,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="WindowsAPICodePack" Version="7.0.4" />
+		<PackageReference Include="WindowsAPICodePack" Version="8.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -99,15 +99,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-<<<<<<< HEAD
 				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.5.141-beta" />
 
 				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.5.141-beta" />
-=======
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.4.113-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.4.113-beta" />
->>>>>>> origin/canary
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.7.204-beta" />
+
+				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.7.204-beta" />
 			</ItemGroup>
 		</When>
 
@@ -177,7 +175,7 @@
 		<PackageReference Include="DotNetZip" Version="1.16.0" />
 		<PackageReference Include="Handlebars.Net" Version="2.1.6" />
 		<PackageReference Include="Simple-MAPI.NET" Version="1.2.1" />
-		<PackageReference Include="System.Management" Version="9.0.0-preview.3.24172.9" />
+		<PackageReference Include="System.Management" Version="9.0.0-preview.6.24327.7" />
 	</ItemGroup>
 
 	<ItemGroup>
