@@ -75,9 +75,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.7.209-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.8.232-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="90.24.7.209-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="90.24.8.232-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -159,7 +159,7 @@
 		<PackageReference Include="Handlebars.Net" Version="2.1.6" />
 		<PackageReference Include="ProDotNetZip" Version="1.18.0" />
 		<PackageReference Include="Simple-MAPI.NET" Version="1.2.1" />
-		<PackageReference Include="System.Management" Version="9.0.0-preview.6.24327.7" />
+		<PackageReference Include="System.Management" Version="9.0.0-preview.7.24405.7" />
 	</ItemGroup>
 
 	<ItemGroup>
