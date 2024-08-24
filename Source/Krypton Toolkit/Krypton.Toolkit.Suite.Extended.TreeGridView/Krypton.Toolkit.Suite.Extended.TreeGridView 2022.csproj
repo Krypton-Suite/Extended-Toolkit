@@ -1,0 +1,206 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net8.0-windows;net9.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<!--If all else fails-->
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net8.0-windows;net9.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
+		<OutputType>library</OutputType>
+		<UseWindowsForms>true</UseWindowsForms>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.TreeGridView</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.TreeGridView</AssemblyName>
+		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
+		<!--<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Configurations>Debug;Release;Nightly;Canary</Configurations>
+		<LangVersion>preview</LangVersion>
+		<Nullable>enable</Nullable>
+		<WarningLevel>6</WarningLevel>
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+	</PropertyGroup>
+
+	<!--Package Data-->
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.TreeGridView.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.TreeGridView.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Release'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.TreeGridView</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.TreeGridView</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
+		<Description>
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9. This package implements items to create tree grid views for your applications.
+
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9.
+			Also, all libraries are included targeting each specific framework version for performance purposes.
+
+			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
+		</Description>
+	</PropertyGroup>
+
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.8.232-alpha" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.6.176-beta" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Release'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableLite'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="85.24.6.176" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedFull'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedLite'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Signed.Lite" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<Otherwise>
+			<!--If all else fails-->
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
+	<ItemGroup>
+		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>4.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>5.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>6.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+		<!--TODO: Need to specify version here-->
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="License\License.txt">
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
+		</None>
+	</ItemGroup>
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.TreeGridView\</OutputPath>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<!--Optimisation-->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+
+</Project>

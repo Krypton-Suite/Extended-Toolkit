@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonReset.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonMoveUp.Values.ExtraText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;kclbBands.Name" xml:space="preserve">
+    <value>kclbBands</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Krypton.Toolkit.KryptonForm, Krypton.Toolkit, Version=80.23.4.114, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
+  </data>
+  <data name="&gt;&gt;kclbBands.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="buttonMoveDown.Values.Text" xml:space="preserve">
+    <value>Move down</value>
+  </data>
+  <data name="&gt;&gt;checkedListBoxBands.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.Name" xml:space="preserve">
+    <value>buttonOk</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveDown.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;kryptonPanel1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="buttonOk.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;kclbBands.Type" xml:space="preserve">
+    <value>Krypton.Toolkit.KryptonCheckedListBox, Krypton.Toolkit, Version=80.23.4.114, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
+  </data>
+  <data name="&gt;&gt;labelDesc.Name" xml:space="preserve">
+    <value>labelDesc</value>
+  </data>
+  <data name="labelDesc.Values.Text" xml:space="preserve">
+    <value>Display buttons in this order</value>
+  </data>
+  <data name="&gt;&gt;labelDesc.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkedListBoxBands.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 30</value>
+  </data>
+  <data name="&gt;&gt;labelDesc.Type" xml:space="preserve">
+    <value>Krypton.Toolkit.KryptonLabel, Krypton.Toolkit, Version=80.23.4.114, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
+  </data>
+  <data name="buttonCancel.Values.ExtraText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonCancel.Values.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="buttonMoveUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.Type" xml:space="preserve">
+    <value>Krypton.Toolkit.KryptonButton, Krypton.Toolkit, Version=80.23.4.114, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
+  </data>
+  <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveUp.Name" xml:space="preserve">
+    <value>buttonMoveUp</value>
+  </data>
+  <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="labelDesc.Values.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="&gt;&gt;buttonMoveUp.Type" xml:space="preserve">
+    <value>Krypton.Toolkit.KryptonButton, Krypton.Toolkit, Version=80.23.4.114, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
+  </data>
+  <data name="kclbBands.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 28</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="buttonReset.Values.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="checkedListBoxBands.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 184</value>
+  </data>
+  <data name="buttonMoveDown.Values.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="buttonMoveDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonMoveUp.Values.Text" xml:space="preserve">
+    <value>Move up</value>
+  </data>
+  <data name="&gt;&gt;kryptonPanel1.Name" xml:space="preserve">
+    <value>kryptonPanel1</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Options of the Navigation Pane</value>
+  </data>
+  <data name="&gt;&gt;labelDesc.Parent" xml:space="preserve">
+    <value>kryptonPanel1</value>
+  </data>
+  <data name="labelDesc.Values.ExtraText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonReset.Values.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="labelDesc.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveUp.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="checkedListBoxBands.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
+    <value>buttonCancel</value>
+  </data>
+  <data name="buttonMoveDown.Values.ExtraText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonMoveUp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonMoveDown.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;checkedListBoxBands.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="buttonCancel.Values.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="buttonReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 101</value>
+  </data>
+  <data name="kryptonPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>292, 266</value>
+  </data>
+  <data name="buttonMoveUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 43</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="kryptonPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 231</value>
+  </data>
+  <data name="buttonOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveDown.Type" xml:space="preserve">
+    <value>Krypton.Toolkit.KryptonButton, Krypton.Toolkit, Version=80.23.4.114, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveUp.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Type" xml:space="preserve">
+    <value>Krypton.Toolkit.KryptonButton, Krypton.Toolkit, Version=80.23.4.114, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Type" xml:space="preserve">
+    <value>Krypton.Toolkit.KryptonButton, Krypton.Toolkit, Version=80.23.4.114, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveDown.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>NaviOptionsForm</value>
+  </data>
+  <data name="buttonMoveUp.Values.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="&gt;&gt;kryptonPanel1.Type" xml:space="preserve">
+    <value>Krypton.Toolkit.KryptonPanel, Krypton.Toolkit, Version=80.23.4.114, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
+  </data>
+  <data name="kryptonPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonOk.Values.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="kclbBands.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="kclbBands.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 197</value>
+  </data>
+  <data name="buttonMoveDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveDown.Name" xml:space="preserve">
+    <value>buttonMoveDown</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="labelDesc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 20</value>
+  </data>
+  <data name="buttonOk.Values.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="&gt;&gt;kclbBands.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonOk.Values.ExtraText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonReset.Values.ExtraText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;kryptonPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="buttonMoveDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 72</value>
+  </data>
+  <data name="buttonOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 231</value>
+  </data>
+  <data name="kryptonPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>292, 266</value>
+  </data>
+  <data name="&gt;&gt;checkedListBoxBands.Name" xml:space="preserve">
+    <value>checkedListBoxBands</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Name" xml:space="preserve">
+    <value>buttonReset</value>
+  </data>
+  <data name="labelDesc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 4</value>
+  </data>
+  <data name="buttonMoveUp.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkedListBoxBands.Type" xml:space="preserve">
+    <value>Krypton.Toolkit.Suite.Extended.Navi.Suite.NaviCheckedListBox, Krypton.Toolkit.Suite.Extended.Navi.Suite, Version=80.23.4.114, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>
