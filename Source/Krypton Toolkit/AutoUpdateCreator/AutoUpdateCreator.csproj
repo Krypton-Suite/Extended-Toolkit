@@ -42,7 +42,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
 			</ItemGroup>
 		</When>
 
