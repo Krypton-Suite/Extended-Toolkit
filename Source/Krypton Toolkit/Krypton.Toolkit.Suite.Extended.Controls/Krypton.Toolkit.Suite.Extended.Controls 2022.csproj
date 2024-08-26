@@ -79,7 +79,7 @@
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.6.176-beta" />
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.8.239-beta" />
 					</ItemGroup>
 				</When>
 
