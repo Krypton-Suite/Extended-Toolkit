@@ -75,9 +75,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.8.232-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.8.240-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.8.232-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.8.240-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -87,9 +87,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.6.176-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.8.239-beta" />
 
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="90.24.6.176-beta" />
+				<PackageReference Include="Krypton.Ribbon.Canary" Version="90.24.8.239-beta" />
 			</ItemGroup>
 		</When>
 
@@ -99,9 +99,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
 
-				<PackageReference Include="Krypton.Ribbon" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Ribbon" Version="85.24.8.239" />
 			</ItemGroup>
 		</When>
 
