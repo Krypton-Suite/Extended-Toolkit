@@ -100,6 +100,7 @@ namespace Examples
             this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.kryptonProgressBarMenuItem1 = new Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonProgressBarMenuItem();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.menuStripPanelExtened1.SuspendLayout();
             this.floatableMenuStrip1.SuspendLayout();
@@ -367,7 +368,7 @@ namespace Examples
             this.toolStripPanelExtened1.Name = "toolStripPanelExtened1";
             this.toolStripPanelExtened1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.toolStripPanelExtened1.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.toolStripPanelExtened1.Size = new System.Drawing.Size(521, 25);
+            this.toolStripPanelExtened1.Size = new System.Drawing.Size(521, 29);
             // 
             // floatableToolStrip1
             // 
@@ -384,11 +385,12 @@ namespace Examples
             this.copyToolStripButton,
             this.pasteToolStripButton,
             this.toolStripSeparator7,
-            this.helpToolStripButton});
+            this.helpToolStripButton,
+            this.kryptonProgressBarMenuItem1});
             this.floatableToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.floatableToolStrip1.Location = new System.Drawing.Point(3, 0);
             this.floatableToolStrip1.Name = "floatableToolStrip1";
-            this.floatableToolStrip1.Size = new System.Drawing.Size(208, 25);
+            this.floatableToolStrip1.Size = new System.Drawing.Size(339, 29);
             this.floatableToolStrip1.TabIndex = 0;
             // 
             // newToolStripButton
@@ -397,7 +399,7 @@ namespace Examples
             this.newToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripButton.Image")));
             this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripButton.Name = "newToolStripButton";
-            this.newToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.newToolStripButton.Size = new System.Drawing.Size(23, 26);
             this.newToolStripButton.Text = "&New";
             // 
             // openToolStripButton
@@ -406,7 +408,7 @@ namespace Examples
             this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
             this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripButton.Name = "openToolStripButton";
-            this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.openToolStripButton.Size = new System.Drawing.Size(23, 26);
             this.openToolStripButton.Text = "&Open";
             // 
             // saveToolStripButton
@@ -415,7 +417,7 @@ namespace Examples
             this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
             this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.saveToolStripButton.Size = new System.Drawing.Size(23, 26);
             this.saveToolStripButton.Text = "&Save";
             // 
             // printToolStripButton
@@ -424,13 +426,13 @@ namespace Examples
             this.printToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripButton.Image")));
             this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printToolStripButton.Name = "printToolStripButton";
-            this.printToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.printToolStripButton.Size = new System.Drawing.Size(23, 26);
             this.printToolStripButton.Text = "&Print";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 29);
             // 
             // cutToolStripButton
             // 
@@ -438,7 +440,7 @@ namespace Examples
             this.cutToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripButton.Image")));
             this.cutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cutToolStripButton.Name = "cutToolStripButton";
-            this.cutToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.cutToolStripButton.Size = new System.Drawing.Size(23, 26);
             this.cutToolStripButton.Text = "C&ut";
             // 
             // copyToolStripButton
@@ -447,7 +449,7 @@ namespace Examples
             this.copyToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripButton.Image")));
             this.copyToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copyToolStripButton.Name = "copyToolStripButton";
-            this.copyToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.copyToolStripButton.Size = new System.Drawing.Size(23, 26);
             this.copyToolStripButton.Text = "&Copy";
             // 
             // pasteToolStripButton
@@ -456,13 +458,13 @@ namespace Examples
             this.pasteToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripButton.Image")));
             this.pasteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pasteToolStripButton.Name = "pasteToolStripButton";
-            this.pasteToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.pasteToolStripButton.Size = new System.Drawing.Size(23, 26);
             this.pasteToolStripButton.Text = "&Paste";
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 29);
             // 
             // helpToolStripButton
             // 
@@ -470,8 +472,21 @@ namespace Examples
             this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
             this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.helpToolStripButton.Name = "helpToolStripButton";
-            this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.helpToolStripButton.Size = new System.Drawing.Size(23, 26);
             this.helpToolStripButton.Text = "He&lp";
+            // 
+            // kryptonProgressBarMenuItem1
+            // 
+            this.kryptonProgressBarMenuItem1.MarqueeAnimationSpeed = 100;
+            this.kryptonProgressBarMenuItem1.Maximum = 100;
+            this.kryptonProgressBarMenuItem1.Minimum = 0;
+            this.kryptonProgressBarMenuItem1.Name = "kryptonProgressBarMenuItem1";
+            this.kryptonProgressBarMenuItem1.Orientation = Krypton.Toolkit.VisualOrientation.Top;
+            this.kryptonProgressBarMenuItem1.Size = new System.Drawing.Size(100, 26);
+            this.kryptonProgressBarMenuItem1.Step = 10;
+            this.kryptonProgressBarMenuItem1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.kryptonProgressBarMenuItem1.UseValueAsText = false;
+            this.kryptonProgressBarMenuItem1.Value = 0;
             // 
             // kryptonLabel1
             // 
@@ -555,5 +570,6 @@ namespace Examples
         private ToolStripSeparator toolStripSeparator7;
         private ToolStripButton helpToolStripButton;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonProgressBarMenuItem kryptonProgressBarMenuItem1;
     }
 }
