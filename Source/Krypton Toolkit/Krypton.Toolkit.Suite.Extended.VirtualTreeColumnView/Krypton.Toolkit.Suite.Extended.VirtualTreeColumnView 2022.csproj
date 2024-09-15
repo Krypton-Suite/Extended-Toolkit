@@ -28,6 +28,7 @@
         <Nullable>enable</Nullable>
         <WarningLevel>6</WarningLevel>
         <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+        <NoWarn>WFO1000</NoWarn>
     </PropertyGroup>
 
     <!--Package Data-->
@@ -77,7 +78,7 @@
             <Choose>
                 <When Condition="'$(Configuration)' == 'Nightly'">
                     <ItemGroup>
-                        <PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.8.240-alpha" />
+                        <PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.9.253-alpha" />
                     </ItemGroup>
                 </When>
 
