@@ -5,6 +5,12 @@
 
 =======
 
+## 2024-10-15 - Build 2410 (Patch 2) - October 2024
+* Enable 'SourceLink' for NuGet packages
+* Patch for `System.Private.Uri`, CVE-2019-081
+
+=======
+
 ## 2024-06-26 - Build 2406 - June 2024 (Patch 1)
 * Resolved [#478](https://github.com/Krypton-Suite/Extended-Toolkit/issues/478), Version discrepancy
 

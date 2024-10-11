@@ -148,7 +148,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -166,14 +166,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.Drawing.Common" Version="8.0.6" />
-		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.33">
+		<PackageReference Include="System.Drawing.Common" Version="8.0.10" />
+		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.34.2">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2535.41" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2792.45" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
-		<PackageReference Include="ZipStorer" Version="3.8.0" />
+		<PackageReference Include="ZipStorer" Version="4.0.1" />
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->

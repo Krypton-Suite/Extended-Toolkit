@@ -32,6 +32,8 @@
 				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
 				<RepositoryType>git</RepositoryType>
 				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
+				<PublishRepositoryUrl>true</PublishRepositoryUrl>
+				<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
 				<!--Package generation-->
 				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -60,6 +62,8 @@
 				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
 				<RepositoryType>git</RepositoryType>
 				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
+				<PublishRepositoryUrl>true</PublishRepositoryUrl>
+				<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
 				<!--Package genebration-->
 				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -88,6 +92,8 @@
 				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
 				<RepositoryType>git</RepositoryType>
 				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
+				<PublishRepositoryUrl>true</PublishRepositoryUrl>
+				<EmbedUntrackedSources>true</EmbedUntrackedSources>
 				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
 				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
 
