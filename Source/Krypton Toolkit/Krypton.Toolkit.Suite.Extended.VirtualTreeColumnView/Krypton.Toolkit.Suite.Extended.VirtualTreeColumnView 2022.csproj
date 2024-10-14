@@ -111,7 +111,7 @@
             </PropertyGroup>
 
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
+                <PackageReference Include="Krypton.Toolkit" Version="85.24.10.288" />
             </ItemGroup>
         </When>
 
@@ -152,7 +152,7 @@
             </PropertyGroup>
 
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
+                <PackageReference Include="Krypton.Toolkit" Version="85.24.10.288" />
             </ItemGroup>
         </Otherwise>
     </Choose>
