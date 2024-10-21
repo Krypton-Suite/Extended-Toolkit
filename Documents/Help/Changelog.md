@@ -5,7 +5,7 @@
 
 =======
 
-## 2024-11-xx - Build 2411 - November 2024
+## 2024-11-12 - Build 2411 - November 2024
 * Simplified TFM project configuration
 * RollBack [#1584](https://github.com/Krypton-Suite/Standard-Toolkit/issues/1584), Disable the FadeValues property in VisualForm and move the FadeValues class to Extended. It was a V90 feature but is up for further development in V100.
 * New `KryptonPasswordTextBox` control
@@ -19,6 +19,12 @@
 * * Add support for .NET 9.0
 * Removed support for .NET 6 and 7, in accordance with their official release cadences
 * Updated standard toolkit to build `2411`
+
+=======
+
+## 2024-10-15 - Build 2410 (Patch 2) - October 2024
+* Enable 'SourceLink' for NuGet packages
+* Patch for `System.Private.Uri`, CVE-2019-081
 
 =======
 
