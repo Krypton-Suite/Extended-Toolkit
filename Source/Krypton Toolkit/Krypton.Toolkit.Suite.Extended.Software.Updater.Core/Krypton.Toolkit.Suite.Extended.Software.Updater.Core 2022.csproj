@@ -90,13 +90,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Canary" Version="90.24.9.267-beta" />
+				<PackageReference Include="Krypton.Docking.Canary" Version="90.24.10.296-beta" />
 
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.9.267-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.10.296-beta" />
 
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="90.24.9.267-beta" />
+				<PackageReference Include="Krypton.Ribbon.Canary" Version="90.24.10.296-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.9.267-beta" />
+				<PackageReference Include="Krypton.Navigator.Canary" Version="90.24.10.296-beta" />
 			</ItemGroup>
 		</When>
 
