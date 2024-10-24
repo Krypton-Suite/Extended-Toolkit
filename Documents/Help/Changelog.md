@@ -5,6 +5,13 @@
 
 =======
 
+## 2025-11-xx - Build 2511 - November 2025
+* * Add support for .NET 10
+* Updated standard toolkit to build `2511`
+* Updated version from `95.xx.xx.xxx` -> `100.xx.xx.xxx`
+
+=======
+
 ## 2024-11-12 - Build 2411 - November 2024
 * Simplified TFM project configuration
 * RollBack [#1584](https://github.com/Krypton-Suite/Standard-Toolkit/issues/1584), Disable the FadeValues property in VisualForm and move the FadeValues class to Extended. It was a V90 feature but is up for further development in V100.
@@ -16,9 +23,10 @@
 * `KryptonFormExtended` - `AllowFormIntegrate` property has now been removed to fall in line with the standard toolkit
 * Resolved [#446](https://github.com/Krypton-Suite/Extended-Toolkit/issues/446), Throwing exceptions using the Circularprogressbar control of The Ultimate 80.0 package during design
 * New `KryptonAboutExtendedToolkit` API
-* * Add support for .NET 9.0
+* * Add support for .NET 9
 * Removed support for .NET 6 and 7, in accordance with their official release cadences
 * Updated standard toolkit to build `2411`
+* Updated version from `85.xx.xx.xxx` -> `90.xx.xx.xxx`
 
 =======
 
