@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,7 @@
 #endregion
 
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+// ReSharper disable InconsistentNaming
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
@@ -36,11 +37,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private bool _useSystemDialogs;
 
-        private Control _outputControl = null;
+        private Control? _outputControl;
 
         private string _defaultText = "O&pen";
 
-        private string _applicationName;
+        private string? _applicationName;
 
         private string _openFileDialogTitle = "Open:";
 
@@ -52,9 +53,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private string _startingDirectory;
 
-        private MRUMenuItem _parentMruMenuItem;
+        private MRUMenuItem? _parentMruMenuItem;
 
-        private MostRecentlyUsedFileManager _recentlyUsedFileManager = null;
+        private MostRecentlyUsedFileManager? _recentlyUsedFileManager;
 
         #endregion
 
@@ -67,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary>Gets or sets the control to load the file content text into.</summary>
         /// <value>The control to load the file content text into.</value>
         [DefaultValue(null), Description("The control to load the file content text into.")]
-        public Control OutputControl { get => _outputControl; set => _outputControl = value; }
+        public Control? OutputControl { get => _outputControl; set => _outputControl = value; }
 
         /// <summary>Gets or sets the text displayed on the tool strip menu item.</summary>
         /// <value>The text displayed on the tool strip menu item.</value>
@@ -77,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary>Gets or sets the name of the name of your application. This is used to store the MRU list in the Windows registry.</summary>
         /// <value>The name of the application.</value>
         [DefaultValue(null), Description("The name of your application. This is used to store the MRU list in the Windows registry.")]
-        public string ApplicationName { get => _applicationName; set => _applicationName = value; }
+        public string? ApplicationName { get => _applicationName; set => _applicationName = value; }
 
         /// <summary>Gets or sets the open file dialog title.</summary>
         /// <value>The open file dialog title.</value>
@@ -105,7 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary>Gets or sets the parent MRU menu item.</summary>
         /// <value>The parent MRU menu item.</value>
         [DefaultValue(null), Description("The parent MRU menu item.")]
-        public MRUMenuItem ParentMRUMenuItem { get => _parentMruMenuItem; set => _parentMruMenuItem = value; }
+        public MRUMenuItem? ParentMRUMenuItem { get => _parentMruMenuItem; set => _parentMruMenuItem = value; }
 
         #endregion
 
@@ -141,10 +142,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             ShortcutKeys = Keys.Control | Keys.O;
 
-            ShortcutKeyDisplayString = "Ctrl + O";
+            ShortcutKeyDisplayString = @"Ctrl + O";
         }
 
-        public MRUOpenFileMenuItem(string defaultText)
+        public MRUOpenFileMenuItem(string? defaultText)
         {
 
         }
@@ -153,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Implementation
 
-        private void OpenFile(string filePath, Control outputControl)
+        private void OpenFile(string? filePath, Control? outputControl)
         {
             try
             {
@@ -161,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 {
                     if (outputControl != null)
                     {
-                        StreamReader sr = new StreamReader(filePath);
+                        StreamReader sr = new StreamReader(filePath!);
 
                         outputControl.Text = sr.ReadToEnd();
 
@@ -170,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                         sr.Dispose();
                     }
 
-                    _recentlyUsedFileManager.AddRecentFile(filePath);
+                    _recentlyUsedFileManager?.AddRecentFile(filePath);
                 }
                 else
                 {
@@ -179,7 +180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
             catch (IOException e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -213,7 +214,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                         return;
                     }
 
-                    string openedFile = ofd.FileName;
+                    string? openedFile = ofd.FileName;
 
                     OpenFile(openedFile, _outputControl);
                 }
@@ -239,14 +240,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                         return;
                     }
 
-                    string openedFile = ofd.FileName;
+                    string? openedFile = ofd.FileName;
 
                     OpenFile(openedFile, _outputControl);
                 }
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
 
             base.OnClick(e);

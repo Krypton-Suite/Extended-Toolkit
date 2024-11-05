@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             _audioStreamOffset = ullAudioStreamOffset;
             _wParam = (ulong)wParam.ToInt64();
             _lParam = (ulong)(long)lParam;
-            if (_paramType == SPEVENTLPARAMTYPE.SPET_LPARAM_IS_POINTER || _paramType == SPEVENTLPARAMTYPE.SPET_LPARAM_IS_STRING)
+            if (_paramType is SPEVENTLPARAMTYPE.SPET_LPARAM_IS_POINTER or SPEVENTLPARAMTYPE.SPET_LPARAM_IS_STRING)
             {
                 GC.AddMemoryPressure(_sizeMemoryPressure = Marshal.SizeOf((object)_lParam));
             }
@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             }
             else
             {
-                _audioPosition = ((audioFormat.AverageBytesPerSecond > 0) ? new TimeSpan((long)(sapiEvent.ullAudioStreamOffset * 10000000 / (ulong)audioFormat.AverageBytesPerSecond)) : TimeSpan.Zero);
+                _audioPosition = audioFormat.AverageBytesPerSecond > 0 ? new TimeSpan((long)(sapiEvent.ullAudioStreamOffset * 10000000 / (ulong)audioFormat.AverageBytesPerSecond)) : TimeSpan.Zero;
             }
         }
 
@@ -95,11 +95,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
         {
             if (_lParam != 0L)
             {
-                if (_paramType == SPEVENTLPARAMTYPE.SPET_LPARAM_IS_TOKEN || _paramType == SPEVENTLPARAMTYPE.SPET_LPARAM_IS_OBJECT)
+                if (_paramType is SPEVENTLPARAMTYPE.SPET_LPARAM_IS_TOKEN or SPEVENTLPARAMTYPE.SPET_LPARAM_IS_OBJECT)
                 {
                     Marshal.Release((IntPtr)(long)_lParam);
                 }
-                else if (_paramType == SPEVENTLPARAMTYPE.SPET_LPARAM_IS_POINTER || _paramType == SPEVENTLPARAMTYPE.SPET_LPARAM_IS_STRING)
+                else if (_paramType is SPEVENTLPARAMTYPE.SPET_LPARAM_IS_POINTER or SPEVENTLPARAMTYPE.SPET_LPARAM_IS_STRING)
                 {
                     Marshal.FreeCoTaskMem((IntPtr)(long)_lParam);
                 }

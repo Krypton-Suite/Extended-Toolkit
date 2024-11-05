@@ -105,7 +105,7 @@
 
             Point pt = Cursor.Position;
             Point pc = PointToClient(pt);
-            if (pc.Y < -21 || pc.Y > 0)
+            if (pc.Y is < -21 or > 0)
             {
                 return;
             }
@@ -193,7 +193,7 @@
 
                 int borderwidth = (r.Width - rc.Width) / 2;
                 r.X += borderwidth;
-                r.Y += (r.Height - rc.Height) - borderwidth;
+                r.Y += r.Height - rc.Height - borderwidth;
 
                 if (!_dockOnInside)
                 {
@@ -254,8 +254,8 @@
             Rectangle rc = r;
 
             //determine relative coordinates
-            float rx = (pc.X - r.Left) / (float)(r.Width);
-            float ry = (pc.Y - r.Top) / (float)(r.Height);
+            float rx = (pc.X - r.Left) / (float)r.Width;
+            float ry = (pc.Y - r.Top) / (float)r.Height;
 
             //Console.WriteLine("Moving over " + c.Name + " " +  rx.ToString() + "," + ry.ToString());
 

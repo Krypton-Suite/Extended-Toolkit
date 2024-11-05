@@ -5,6 +5,36 @@
 
 =======
 
+## 2024-11-12 - Build 2411 - November 2024
+* Simplified TFM project configuration
+* RollBack [#1584](https://github.com/Krypton-Suite/Standard-Toolkit/issues/1584), Disable the FadeValues property in VisualForm and move the FadeValues class to Extended. It was a V90 feature but is up for further development in V100.
+* New `KryptonPasswordTextBox` control
+* `Krypton.Toolkit.Suite.Extended.Outlook.Grid` is now deprecated, as it has now been absorbed into the standard toolkit
+* Implement [#404](https://github.com/Krypton-Suite/Extended-Toolkit/issues/404), Update 'ScottPlot' to v5
+* `KryptonMessageBoxExtended` now supports RTL reading
+* `Krypton.Toolkit.Suite.Extended.Toast` is now deprecated, as it has now been absorbed into the standard toolkit
+* `KryptonFormExtended` - `AllowFormIntegrate` property has now been removed to fall in line with the standard toolkit
+* Resolved [#446](https://github.com/Krypton-Suite/Extended-Toolkit/issues/446), Throwing exceptions using the Circularprogressbar control of The Ultimate 80.0 package during design
+* New `KryptonAboutExtendedToolkit` API
+* * Add support for .NET 9.0
+* Removed support for .NET 6 and 7, in accordance with their official release cadences
+* Updated standard toolkit to build `2411`
+
+=======
+
+## 2024-10-15 - Build 2410 (Patch 2) - October 2024
+* Enable 'SourceLink' for NuGet packages
+* Patch for `System.Private.Uri`, CVE-2019-081
+
+=======
+
+## 2024-06-24 - Build 2406 - June 2024
+
+* Updated standard toolkit to build `2406`
+* Updated version from `80.xx.xx.xxx` -> `85.xx.xx.xxx`
+
+=======
+
 ## 2023-11-14 - Build 2311 - November 2023
 * New `KryptonToolkitExtendedPoweredByControl`, to be used in application 'About' dialogs
 * Added the ability to specify the message text alignment in a `KryptonMessageboxExtended`

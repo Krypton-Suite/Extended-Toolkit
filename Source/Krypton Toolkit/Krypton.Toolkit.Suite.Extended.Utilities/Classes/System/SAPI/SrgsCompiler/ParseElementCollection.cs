@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 if (_startArc == null)
                 {
-                    _startArc = (_endArc = _backend.EpsilonTransition(1f));
+                    _startArc = _endArc = _backend.EpsilonTransition(1f);
                 }
                 _backend.AddSemanticInterpretationTag(_endArc, propertyInfo);
             }
@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         {
             if (_startArc == null)
             {
-                _startArc = (_endArc = _backend.EpsilonTransition(1f));
+                _startArc = _endArc = _backend.EpsilonTransition(1f);
             }
             _backend.AddPropertyTag(_startArc, _endArc, propertyInfo);
         }

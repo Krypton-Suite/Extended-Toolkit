@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 {
                     parameters = MatchInitParameters(method, onInitParameters, _rule, _rule);
                 }
-                Type[] array = new Type[(parameters != null) ? parameters.Length : 0];
+                Type[] array = new Type[parameters != null ? parameters.Length : 0];
                 if (parameters != null)
                 {
                     for (int i = 0; i < parameters.Length; i++)
@@ -158,14 +158,14 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private void GetRuleInstance(string rule, string method, out MethodInfo onParse, out Grammar grammar)
         {
-            Type type = (rule == _rule) ? _grammarType : GetTypeForRule(_assembly, rule);
+            Type type = rule == _rule ? _grammarType : GetTypeForRule(_assembly, rule);
             if (type == null || !type.IsSubclassOf(typeof(Grammar)))
             {
                 throw new FormatException(SR.Get(SRID.RecognizerInvalidBinaryGrammar));
             }
             try
             {
-                grammar = ((type == _grammarType) ? _grammar : ((Grammar)_assembly.CreateInstance(type.FullName)));
+                grammar = type == _grammarType ? _grammar : (Grammar)_assembly.CreateInstance(type.FullName);
             }
             catch (MissingMemberException)
             {
@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 {
                     continue;
                 }
-                stringBuilder.Append((stringBuilder.Length > 0) ? " or sapi:parms=\"" : "sapi:parms=\"");
+                stringBuilder.Append(stringBuilder.Length > 0 ? " or sapi:parms=\"" : "sapi:parms=\"");
                 ParameterInfo[] parameters = cis[i].GetParameters();
                 for (int j = 0; j < parameters.Length; j++)
                 {

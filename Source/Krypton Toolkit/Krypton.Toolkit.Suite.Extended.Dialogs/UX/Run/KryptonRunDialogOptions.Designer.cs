@@ -55,7 +55,6 @@
             // kbtnCancel
             // 
             this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(350, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -75,7 +74,6 @@
             // kbtnOk
             // 
             this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnOk.CornerRoundingRadius = -1F;
             this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnOk.Location = new System.Drawing.Point(254, 13);
             this.kbtnOk.Name = "kbtnOk";
@@ -86,7 +84,6 @@
             // kbtnReset
             // 
             this.kbtnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnReset.CornerRoundingRadius = -1F;
             this.kbtnReset.Location = new System.Drawing.Point(12, 13);
             this.kbtnReset.Name = "kbtnReset";
             this.kbtnReset.Size = new System.Drawing.Size(90, 25);

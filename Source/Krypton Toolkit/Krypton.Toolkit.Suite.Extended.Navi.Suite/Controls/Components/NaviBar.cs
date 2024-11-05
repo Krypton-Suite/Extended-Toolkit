@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -595,13 +595,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 {
                     foreach (NaviBand band in bands)
                     {
-                        if ((band != newBand) && (band.Button != null))
+                        if (band != newBand && band.Button != null)
                         {
                             band.Button.Active = false;
                         }
                     }
                 }
-                if ((newBand != null) && (newBand.Button != null))
+                if (newBand != null && newBand.Button != null)
                 {
                     newBand.Button.Active = true;
                 }
@@ -767,7 +767,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         protected override void OnLayout(LayoutEventArgs e)
         {
             base.OnLayout(e);
-            if ((layoutEngineDirty) && !(layoutFactory == null))
+            if (layoutEngineDirty && !(layoutFactory == null))
             {
                 layoutFactory.ReinitializeLayout();
                 layoutEngineDirty = false;

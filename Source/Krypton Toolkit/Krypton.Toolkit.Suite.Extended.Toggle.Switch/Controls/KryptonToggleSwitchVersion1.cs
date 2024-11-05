@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -410,7 +410,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string CheckedString => Checked ? (string.IsNullOrEmpty(OnText) ? "ON" : OnText) : (string.IsNullOrEmpty(OffText) ? "OFF" : OffText);
+        public string CheckedString => Checked ? string.IsNullOrEmpty(OnText) ? "ON" : OnText : string.IsNullOrEmpty(OffText) ? "OFF" : OffText;
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -960,19 +960,19 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        internal bool IsButtonOnLeftSide => (ButtonValue <= 0);
+        internal bool IsButtonOnLeftSide => ButtonValue <= 0;
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        internal bool IsButtonOnRightSide => (ButtonValue >= (Width - _renderer.GetButtonWidth()));
+        internal bool IsButtonOnRightSide => ButtonValue >= Width - _renderer.GetButtonWidth();
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        internal bool IsButtonMovingLeft => (_animating && !IsButtonOnLeftSide && _animationResult == false);
+        internal bool IsButtonMovingLeft => _animating && !IsButtonOnLeftSide && _animationResult == false;
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        internal bool IsButtonMovingRight => (_animating && !IsButtonOnRightSide && _animationResult == true);
+        internal bool IsButtonMovingRight => _animating && !IsButtonOnRightSide && _animationResult == true;
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -1123,11 +1123,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             if (_moving)
             {
-                int percentage = (int)((100 * (double)ButtonValue) / ((double)Width - (double)buttonWidth));
+                int percentage = (int)(100 * (double)ButtonValue / ((double)Width - (double)buttonWidth));
 
                 if (_checked)
                 {
-                    if (percentage <= (100 - _thresholdPercentage))
+                    if (percentage <= 100 - _thresholdPercentage)
                     {
                         _animationTarget = 0;
                         BeginAnimation(false);

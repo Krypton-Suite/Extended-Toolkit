@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -323,7 +323,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             _RightClickedButton = null;
             OutlookBarButton? mButton = Buttons[e.X, e.Y];
-            if ((mButton != null))
+            if (mButton != null)
             {
                 switch (e.Button)
                 {
@@ -408,7 +408,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     Invalidate();
                     //
                     //adjust Tooltip...
-                    if ((oToolTip.Tag != null))
+                    if (oToolTip.Tag != null)
                     {
                         if (!oToolTip.Tag.Equals("Configure"))
                         {
@@ -425,7 +425,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     }
                     //EmptyLineVar = null;
                 }
-                else if ((Buttons[e.X, e.Y] != null))
+                else if (Buttons[e.X, e.Y] != null)
                 {
                     Cursor = Cursors.Hand;
                     _HoveringButton = Buttons[e.X, e.Y];
@@ -478,16 +478,16 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         internal void OutlookBar_Paint(object sender, PaintEventArgs e)
         {
             //string EmptyLineVar = null;
-            _maxLargeButtonCount = (int)Math.Round(Math.Floor(((Height - GetBottomContainerRectangle().Height) - GetGripRectangle().Height) / ((double)GetButtonHeight())));
+            _maxLargeButtonCount = (int)Math.Round(Math.Floor((Height - GetBottomContainerRectangle().Height - GetGripRectangle().Height) / (double)GetButtonHeight()));
             if (Buttons.CountVisible() < _maxLargeButtonCount)
             {
                 _maxLargeButtonCount = Buttons.CountVisible();
             }
 
-            CanShrink = (_maxLargeButtonCount != 0);
-            CanGrow = (_maxLargeButtonCount < Buttons.CountVisible());
+            CanShrink = _maxLargeButtonCount != 0;
+            CanGrow = _maxLargeButtonCount < Buttons.CountVisible();
 
-            Height = (_maxLargeButtonCount * GetButtonHeight()) + GetGripRectangle().Height + GetBottomContainerRectangle().Height;
+            Height = _maxLargeButtonCount * GetButtonHeight() + GetGripRectangle().Height + GetBottomContainerRectangle().Height;
 
             //Paint Grip...
             PaintGripRectangle(e.Graphics);
@@ -499,10 +499,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 if (Buttons[iterateLargeButtons].Visible)
                 {
-                    Rectangle rec = new Rectangle(0, (syncLargeButtons * GetButtonHeight()) + GetGripRectangle().Height, Width, GetButtonHeight());
+                    Rectangle rec = new Rectangle(0, syncLargeButtons * GetButtonHeight() + GetGripRectangle().Height, Width, GetButtonHeight());
                     Buttons[iterateLargeButtons].Rectangle = rec;
                     Buttons[iterateLargeButtons].IsLarge = true;
-                    PaintButton(Buttons[iterateLargeButtons], e.Graphics, (_maxLargeButtonCount != syncLargeButtons));
+                    PaintButton(Buttons[iterateLargeButtons], e.Graphics, _maxLargeButtonCount != syncLargeButtons);
                     if (syncLargeButtons == _maxLargeButtonCount)
                     {
                         break; // TODO: might not be correct. Was : Exit For
@@ -512,20 +512,20 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 }
             }
             //Paint Small Buttons...
-            _maxSmallButtonCount = (int)Math.Round(Math.Floor(((Width - GetDropDownRectangle().Width) - GetBottomContainerLeftMargin()) / ((double)GetSmallButtonWidth())));
+            _maxSmallButtonCount = (int)Math.Round(Math.Floor((Width - GetDropDownRectangle().Width - GetBottomContainerLeftMargin()) / (double)GetSmallButtonWidth()));
 
-            if ((Buttons.CountVisible() - _maxLargeButtonCount) <= 0)
+            if (Buttons.CountVisible() - _maxLargeButtonCount <= 0)
             {
                 _maxSmallButtonCount = 0;
             }
 
-            if (_maxSmallButtonCount >= (Buttons.CountVisible() - _maxLargeButtonCount))
+            if (_maxSmallButtonCount >= Buttons.CountVisible() - _maxLargeButtonCount)
             {
-                _maxSmallButtonCount = (Buttons.CountVisible() - _maxLargeButtonCount);
+                _maxSmallButtonCount = Buttons.CountVisible() - _maxLargeButtonCount;
             }
 
 
-            int startX = Width - GetDropDownRectangle().Width - (_maxSmallButtonCount * GetSmallButtonWidth());
+            int startX = Width - GetDropDownRectangle().Width - _maxSmallButtonCount * GetSmallButtonWidth();
 
             int syncSmallButtons = 0;
             int iterateSmallButtons = 0;
@@ -539,7 +539,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
                 if (Buttons[iterateSmallButtons].Visible)
                 {
-                    Rectangle rec = new Rectangle(startX + (syncSmallButtons * GetSmallButtonWidth()), GetBottomContainerRectangle().Y, GetSmallButtonWidth(), GetBottomContainerRectangle().Height);
+                    Rectangle rec = new Rectangle(startX + syncSmallButtons * GetSmallButtonWidth(), GetBottomContainerRectangle().Y, GetSmallButtonWidth(), GetBottomContainerRectangle().Height);
                     Buttons[iterateSmallButtons].Rectangle = rec;
                     Buttons[iterateSmallButtons].IsLarge = false;
                     //OutlookBarButton refBtn = Buttons[IterateLargeButtons];
@@ -556,10 +556,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             //Draw Empty Space...
             Rectangle recEmptySpace = GetBottomContainerRectangle();
             {
-                recEmptySpace.Width = Width - (_maxSmallButtonCount * GetSmallButtonWidth()) - GetDropDownRectangle().Width;
+                recEmptySpace.Width = Width - _maxSmallButtonCount * GetSmallButtonWidth() - GetDropDownRectangle().Width;
             }
 
-            FillButton(recEmptySpace, e.Graphics, ButtonState.Passive, true, true, (isDebugMode));
+            FillButton(recEmptySpace, e.Graphics, ButtonState.Passive, true, true, isDebugMode);
 
             //Paint DropDown...
             PaintDropDownRectangle(e.Graphics);
@@ -605,7 +605,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 graphics.DrawString(button.Text, GetButtonFont(), GetButtonTextBrush(button.Equals(SelectedButton)),
                     10 + ImageDimension_Large + 8,
-                    (float)button.Rectangle.Y + ((GetButtonHeight() / 2) - (GetButtonFont().Height / 2)) + 2);
+                    (float)button.Rectangle.Y + (GetButtonHeight() / 2 - GetButtonFont().Height / 2) + 2);
             }
             Rectangle recIma = new Rectangle();
             switch (button.IsLarge)
@@ -661,14 +661,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     //Filling the top part of the button...
                     Rectangle topRectangle = rectangle;
                     Brush topBrush = new LinearGradientBrush(topRectangle, GetButtonColor(buttonState, 0), GetButtonColor(buttonState, 1), LinearGradientMode.Vertical);
-                    topRectangle.Height = (GetButtonHeight() * 15) / 32;
+                    topRectangle.Height = GetButtonHeight() * 15 / 32;
                     graphics.FillRectangle(topBrush, topRectangle);
                     topBrush.Dispose();
                     //and the bottom part...
                     Rectangle bottomRectangle = rectangle;
                     Brush bottomBrush = new LinearGradientBrush(bottomRectangle, GetButtonColor(buttonState, 2), GetButtonColor(buttonState, 3), LinearGradientMode.Vertical);
-                    bottomRectangle.Y += (GetButtonHeight() * 12) / 32;
-                    bottomRectangle.Height -= (GetButtonHeight() * 12) / 32;
+                    bottomRectangle.Y += GetButtonHeight() * 12 / 32;
+                    bottomRectangle.Height -= GetButtonHeight() * 12 / 32;
                     graphics.FillRectangle(bottomBrush, bottomRectangle);
                     bottomBrush.Dispose();
                     break;
@@ -767,7 +767,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //Draw the icon...
             Icon? oIcon = GetGripIcon();
-            Rectangle rectangleIcon = new Rectangle(Width / 2 - (oIcon.Width / 2), ((GetGripRectangle().Height / 2) - oIcon.Height / 2) + 1, oIcon.Width, oIcon.Height);
+            Rectangle rectangleIcon = new Rectangle(Width / 2 - oIcon.Width / 2, GetGripRectangle().Height / 2 - oIcon.Height / 2 + 1, oIcon.Width, oIcon.Height);
 
             if (Renderer != Renderer.Krypton)
             {
@@ -844,7 +844,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             //Draw the icon...
             Icon oIcon = GetDropDownIcon();
-            Rectangle rectangleIcon = new Rectangle((GetDropDownRectangle().X + ((GetDropDownRectangle().Width / 2) - (oIcon.Width / 2))), (GetDropDownRectangle().Y + (((GetDropDownRectangle().Height / 2) - (oIcon.Height / 2)) + 1)), oIcon.Width, oIcon.Height);
+            Rectangle rectangleIcon = new Rectangle(GetDropDownRectangle().X + (GetDropDownRectangle().Width / 2 - oIcon.Width / 2), GetDropDownRectangle().Y + (GetDropDownRectangle().Height / 2 - oIcon.Height / 2) + 1, oIcon.Width, oIcon.Height);
             if (Renderer != Renderer.Krypton)
             {
                 //draw icon from file
@@ -1331,7 +1331,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         private Rectangle GetDropDownRectangle()
         {
-            return new Rectangle((Width - GetSmallButtonWidth()), (Height - GetButtonHeight()), GetSmallButtonWidth(), GetButtonHeight());
+            return new Rectangle(Width - GetSmallButtonWidth(), Height - GetButtonHeight(), GetSmallButtonWidth(), GetButtonHeight());
         }
         private Icon? GetDropDownIcon()
         {
@@ -1415,7 +1415,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                             mnu.Image = oButton.Image.ToBitmap();
                             mnu.Tag = oButton;
                             mnu.CheckOnClick = true;
-                            if ((SelectedButton != null))
+                            if (SelectedButton != null)
                             {
                                 if (SelectedButton.Equals(oButton))
                                 {
@@ -1428,7 +1428,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     }
                 }
             }
-            oContextMenuStrip.Show(this, new Point(Width, Height - (GetButtonHeight() / 2)));
+            oContextMenuStrip.Show(this, new Point(Width, Height - GetButtonHeight() / 2));
         }
         private void ShowMoreButtons(object sender, EventArgs e)
         {

@@ -7,21 +7,21 @@
 				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
 
 				<!--Version layout schema:
-				80 = Major
-				23 = Minor - Year of release
+				90 = Major
+				24 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-beta = Indicates a pre-release package
 				-->
-				<LibraryVersion>80.$(Minor).$(Build).$(Revision)</LibraryVersion>
+				<LibraryVersion>90.$(Minor).$(Build).$(Revision)</LibraryVersion>
 				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 
 				<!--Stable/Signed-->
-				<PackageVersion>80.$(Minor).$(Build).$(Revision)-beta</PackageVersion>
+				<PackageVersion>90.$(Minor).$(Build).$(Revision)-beta</PackageVersion>
 
-				<AssemblyVersion>80.$(Minor).$(Build).$(Revision)</AssemblyVersion>
+				<AssemblyVersion>90.$(Minor).$(Build).$(Revision)</AssemblyVersion>
 
-				<FileVersion>80.$(Minor).$(Build).$(Revision)</FileVersion>
+				<FileVersion>90.$(Minor).$(Build).$(Revision)</FileVersion>
 
 				<LangVersion>preview</LangVersion>
 
@@ -38,21 +38,21 @@
 				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
 
 				<!--Version layout schema:
-				80 = Major
-				23 = Minor - Year of release
+				90 = Major
+				24 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-alpha = Indicates a pre-release package
 				-->
-				<LibraryVersion>80.$(Minor).$(Build).$(Revision)</LibraryVersion>
+				<LibraryVersion>90.$(Minor).$(Build).$(Revision)</LibraryVersion>
 				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 
 				<!--Stable/Signed-->
-				<PackageVersion>80.$(Minor).$(Build).$(Revision)-alpha</PackageVersion>
+				<PackageVersion>90.$(Minor).$(Build).$(Revision)-alpha</PackageVersion>
 
-				<AssemblyVersion>80.$(Minor).$(Build).$(Revision)</AssemblyVersion>
+				<AssemblyVersion>90.$(Minor).$(Build).$(Revision)</AssemblyVersion>
 
-				<FileVersion>80.$(Minor).$(Build).$(Revision)</FileVersion>
+				<FileVersion>90.$(Minor).$(Build).$(Revision)</FileVersion>
 
 				<LangVersion>preview</LangVersion>
 
@@ -69,19 +69,19 @@
 				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
 
 				<!--Version layout schema:
-				23 = Minor - Year of release
+				24 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-->
-				<LibraryVersion>80.$(Minor).$(Build).$(Revision)</LibraryVersion>
+				<LibraryVersion>90.$(Minor).$(Build).$(Revision)</LibraryVersion>
 				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 
 				<!--Stable/Signed-->
-				<PackageVersion>80.$(Minor).$(Build).$(Revision)</PackageVersion>
+				<PackageVersion>90.$(Minor).$(Build).$(Revision)</PackageVersion>
 
-				<AssemblyVersion>80.$(Minor).$(Build).$(Revision)</AssemblyVersion>
+				<AssemblyVersion>90.$(Minor).$(Build).$(Revision)</AssemblyVersion>
 
-				<FileVersion>80.$(Minor).$(Build).$(Revision)</FileVersion>
+				<FileVersion>90.$(Minor).$(Build).$(Revision)</FileVersion>
 
 				<LangVersion>preview</LangVersion>
 
@@ -95,20 +95,20 @@
 				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
 
 				<!--Version layout schema:
-				80 = Major
-				23 = Minor - Year of release
+				90 = Major
+				24 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-->
-				<LibraryVersion>80.$(Minor).$(Build).$(Revision)</LibraryVersion>
+				<LibraryVersion>90.$(Minor).$(Build).$(Revision)</LibraryVersion>
 				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 
 				<!--Stable/Signed-->
-				<PackageVersion>80.$(Minor).$(Build).$(Revision)</PackageVersion>
+				<PackageVersion>90.$(Minor).$(Build).$(Revision)</PackageVersion>
 
-				<AssemblyVersion>80.$(Minor).$(Build).$(Revision)</AssemblyVersion>
+				<AssemblyVersion>90.$(Minor).$(Build).$(Revision)</AssemblyVersion>
 
-				<FileVersion>80.$(Minor).$(Build).$(Revision)</FileVersion>
+				<FileVersion>90.$(Minor).$(Build).$(Revision)</FileVersion>
 
 				<LangVersion>preview</LangVersion>
 
@@ -122,7 +122,7 @@
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Authors>Peter Wagner (A.K.A Wagnerp) and Simon Coghlan (A.K.A Smurf-IV), Phil Wright (A.K.A ComponentFactory)</Authors>
-		<Copyright>© Krypton Suite (Peter Wagner (Wagnerp) and Simon Coghlan (Smurf-IV)), 2017 - 2023. Component Factory Pty Ltd (Phil Wright), 2006 - 2016. All rights reserved.</Copyright>
+		<Copyright>© Krypton Suite (Peter Wagner (Wagnerp) and Simon Coghlan (Smurf-IV)), 2017 - 2024. Component Factory Pty Ltd (Phil Wright), 2006 - 2016. All rights reserved.</Copyright>
 	</PropertyGroup>
 
 	<Choose>
@@ -132,9 +132,9 @@
 
 
 				<Description Condition="'$(TFMs)' == 'all'">
-					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7. $(Description)
+					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1 and .NET 8 - 9. $(Description)
 
-					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7.
+					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1 and .NET 8 - 9.
 					Also, all libraries are included targeting each specific framework version for performance purposes.
 
 					To view all of the standard toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Standard/Krypton-Toolkit-Suite-Standard-Modules.md
@@ -149,9 +149,9 @@
 				<PackageId Condition="'$(TFMs)' == 'all'">$(PackageId).Nightly</PackageId>
 
 				<Description Condition="'$(TFMs)' == 'all'">
-					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7. $(Description)
+					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1 and .NET 8 - 9. $(Description)
 
-					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7.
+					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1 and .NET 8 - 9.
 					Also, all libraries are included targeting each specific framework version for performance purposes.
 
 					To view all of the standard toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Standard/Krypton-Toolkit-Suite-Standard-Modules.md
@@ -166,9 +166,9 @@
 				<PackageId Condition="'$(TFMs)' == 'StableLite'">$(PackageId).Lite</PackageId>
 
 				<Description Condition="'$(TFMs)' == 'StableLite'">
-					An extension to the Standard Toolkit, which supports .NET Framework 4.8 and 4.8.1 and .NET 5 - 7. $(Description)
+					An extension to the Standard Toolkit, which supports .NET Framework 4.8 and 4.8.1 and .NET 8 - 9. $(Description)
 
-					This package supports all .NET Framework versions starting .NET Framework 4.8 and 4.8.1 and .NET 5 - 7.
+					This package supports all .NET Framework versions starting .NET Framework 4.8 and 4.8.1 and .NET 8 - 9.
 					Also, all libraries are included targeting each specific framework version for performance purposes.
 
 					To view all of the standard toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Standard/Krypton-Toolkit-Suite-Standard-Modules.md
@@ -181,9 +181,9 @@
 			<PropertyGroup>
 				<PackageId Condition="'$(TFMs)' == 'all'">$(PackageId)</PackageId>
 				<Description Condition="'$(TFMs)' == 'all'">
-					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7. $(Description)
+					An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1 and .NET 8 - 9. $(Description)
 
-					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1 and .NET 6 - 7.
+					This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1 and .NET 8 - 9.
 					Also, all libraries are included targeting each specific framework version for performance purposes.
 
 					To view all of the standard toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Standard/Krypton-Toolkit-Suite-Standard-Modules.md

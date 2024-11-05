@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -1143,7 +1143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             bool result;
 
-            if (keyData == Keys.Left || keyData == Keys.Up || keyData == Keys.Down || keyData == Keys.Right || keyData == Keys.Enter || keyData == Keys.Home || keyData == Keys.End)
+            if (keyData is Keys.Left or Keys.Up or Keys.Down or Keys.Right or Keys.Enter or Keys.Home or Keys.End)
             {
                 result = true;
             }
@@ -1297,7 +1297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 _scaledCellSize = _cellSize;
             }
 
-            Debug.WriteLine(_scaledCellSize);
+            DebugUtilities.WriteLine(_scaledCellSize);
         }
 
         /// <summary>
@@ -1605,7 +1605,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 colorCount = Colours.Count;
 
-                Debug.Print(e.ClipRectangle.Size == ClientSize ? "Performing full paint!" : "Performing partial paint!");
+                System.Diagnostics.Debug.Print(e.ClipRectangle.Size == ClientSize ? "Performing full paint!" : "Performing partial paint!");
 
                 OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc as the PaintBackground event is no longer being called
 
@@ -1922,7 +1922,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (AllowPainting)
             {
-                Debug.Print("Calculating colours...");
+                System.Diagnostics.Debug.Print("Calculating colours...");
 
                 CalculateGridSize();
                 if (AutoFit)
@@ -2007,7 +2007,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (index >= 0 && index < collection.Count && collection[index] != Colour)
             {
-                Debug.Print("Replacing index {0} with {1}", index, collection[index]);
+                System.Diagnostics.Debug.Print("Replacing index {0} with {1}", index, collection[index]);
 
                 _previousColourIndex = index;
                 _colorIndex = -1;
@@ -2058,10 +2058,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void SetToolTip()
         {
-            if (ShowToolTips)
+            if (ShowToolTips is true and true)
             {
-                if (ShowToolTips)
-                {
 #if USENAMEHACK
         string name;
 
@@ -2081,9 +2079,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         _toolTip.SetToolTip(this, name);
 #else
-                    _toolTip.SetToolTip(this, HotIndex != InvalidIndex ? GetColour(HotIndex).Name : null);
+                _toolTip.SetToolTip(this, HotIndex != InvalidIndex ? GetColour(HotIndex).Name : null);
 #endif
-                }
             }
         }
 

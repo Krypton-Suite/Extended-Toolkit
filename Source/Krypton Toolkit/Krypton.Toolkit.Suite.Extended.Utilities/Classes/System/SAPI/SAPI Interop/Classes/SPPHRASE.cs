@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
                 {
                     RecognizedWordUnit recognizedWordUnit = words[i];
                     array[i] = new SPPHRASEELEMENT();
-                    array[i].bDisplayAttributes = RecognizedWordUnit.DisplayAttributesToSapiAttributes((recognizedWordUnit.DisplayAttributes == DisplayAttributes.None) ? DisplayAttributes.OneTrailingSpace : recognizedWordUnit.DisplayAttributes);
+                    array[i].bDisplayAttributes = RecognizedWordUnit.DisplayAttributesToSapiAttributes(recognizedWordUnit.DisplayAttributes == DisplayAttributes.None ? DisplayAttributes.OneTrailingSpace : recognizedWordUnit.DisplayAttributes);
                     array[i].SREngineConfidence = recognizedWordUnit.Confidence;
                     array[i].ulAudioTimeOffset = (uint)(recognizedWordUnit._audioPosition.Ticks * 10000 / 10000);
                     array[i].ulAudioSizeTime = (uint)(recognizedWordUnit._audioDuration.Ticks * 10000 / 10000);

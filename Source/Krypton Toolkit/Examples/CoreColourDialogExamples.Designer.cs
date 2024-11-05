@@ -1,4 +1,32 @@
-﻿namespace Examples
+﻿#region MIT License
+
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2024 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+
+#endregion
+namespace Examples
 {
     partial class CoreColourDialogExamples
     {
@@ -61,7 +89,6 @@
             // 
             // kryptonButton1
             // 
-            this.kryptonButton1.CornerRoundingRadius = -1F;
             this.kryptonButton1.Location = new System.Drawing.Point(13, 13);
             this.kryptonButton1.Name = "kryptonButton1";
             this.kryptonButton1.Size = new System.Drawing.Size(250, 25);
@@ -70,7 +97,6 @@
             // 
             // kryptonButton2
             // 
-            this.kryptonButton2.CornerRoundingRadius = -1F;
             this.kryptonButton2.Location = new System.Drawing.Point(13, 44);
             this.kryptonButton2.Name = "kryptonButton2";
             this.kryptonButton2.Size = new System.Drawing.Size(250, 25);
@@ -79,7 +105,6 @@
             // 
             // kryptonButton3
             // 
-            this.kryptonButton3.CornerRoundingRadius = -1F;
             this.kryptonButton3.Location = new System.Drawing.Point(13, 75);
             this.kryptonButton3.Name = "kryptonButton3";
             this.kryptonButton3.Size = new System.Drawing.Size(250, 25);
@@ -88,7 +113,6 @@
             // 
             // kryptonButton4
             // 
-            this.kryptonButton4.CornerRoundingRadius = -1F;
             this.kryptonButton4.Location = new System.Drawing.Point(13, 106);
             this.kryptonButton4.Name = "kryptonButton4";
             this.kryptonButton4.Size = new System.Drawing.Size(250, 25);
@@ -97,7 +121,6 @@
             // 
             // kryptonButton5
             // 
-            this.kryptonButton5.CornerRoundingRadius = -1F;
             this.kryptonButton5.Location = new System.Drawing.Point(13, 137);
             this.kryptonButton5.Name = "kryptonButton5";
             this.kryptonButton5.Size = new System.Drawing.Size(250, 25);
@@ -106,7 +129,6 @@
             // 
             // kryptonButton6
             // 
-            this.kryptonButton6.CornerRoundingRadius = -1F;
             this.kryptonButton6.Location = new System.Drawing.Point(13, 168);
             this.kryptonButton6.Name = "kryptonButton6";
             this.kryptonButton6.Size = new System.Drawing.Size(250, 25);
@@ -115,7 +137,6 @@
             // 
             // kryptonButton7
             // 
-            this.kryptonButton7.CornerRoundingRadius = -1F;
             this.kryptonButton7.Location = new System.Drawing.Point(13, 199);
             this.kryptonButton7.Name = "kryptonButton7";
             this.kryptonButton7.Size = new System.Drawing.Size(250, 25);
@@ -124,7 +145,6 @@
             // 
             // kryptonButton8
             // 
-            this.kryptonButton8.CornerRoundingRadius = -1F;
             this.kryptonButton8.Location = new System.Drawing.Point(13, 230);
             this.kryptonButton8.Name = "kryptonButton8";
             this.kryptonButton8.Size = new System.Drawing.Size(250, 25);
@@ -133,7 +153,6 @@
             // 
             // kryptonButton9
             // 
-            this.kryptonButton9.CornerRoundingRadius = -1F;
             this.kryptonButton9.Location = new System.Drawing.Point(13, 261);
             this.kryptonButton9.Name = "kryptonButton9";
             this.kryptonButton9.Size = new System.Drawing.Size(250, 25);

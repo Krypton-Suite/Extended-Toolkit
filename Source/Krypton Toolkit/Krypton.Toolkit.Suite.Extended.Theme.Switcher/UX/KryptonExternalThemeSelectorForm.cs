@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -52,11 +52,11 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _externalThemeViewerType = externalThemeViewerType ?? ExternalThemeViewerType.ListBox;
 
-            kbtnApply.Text = KryptonLanguageManager.CustomToolkitStrings.Apply;
+            kbtnApply.Text = KryptonManager.Strings.CustomStrings.Apply;
 
-            kbtnCancel.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+            kbtnCancel.Text = KryptonManager.Strings.GeneralStrings.Cancel;
 
-            kbtnOk.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+            kbtnOk.Text = KryptonManager.Strings.GeneralStrings.OK;
 
             UpdateUI(externalThemeType, externalThemeViewerType);
         }
@@ -225,7 +225,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -240,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             kmanCustom.GlobalPaletteMode = PaletteMode.Custom;
 
-            kmanCustom.CustomPalette = kcpbCustom;
+            kmanCustom.GlobalCustomPalette = kcpbCustom;
 
             kbtnApply.Enabled = true;
         }

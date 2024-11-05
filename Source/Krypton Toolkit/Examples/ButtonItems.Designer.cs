@@ -1,4 +1,32 @@
-﻿namespace Examples
+﻿#region MIT License
+
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2024 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+
+#endregion
+namespace Examples
 {
     partial class ButtonItems
     {
@@ -72,7 +100,6 @@
             this.kryptonDialogButtonExtended1.AcceptButtonBackColour2 = System.Drawing.Color.Green;
             this.kryptonDialogButtonExtended1.AcceptButtonTextColour1 = System.Drawing.Color.Empty;
             this.kryptonDialogButtonExtended1.AcceptButtonTextColour2 = System.Drawing.Color.Empty;
-            this.kryptonDialogButtonExtended1.CornerRoundingRadius = -1F;
             this.kryptonDialogButtonExtended1.DenyButtonBackColour1 = System.Drawing.Color.Red;
             this.kryptonDialogButtonExtended1.DenyButtonBackColour2 = System.Drawing.Color.Red;
             this.kryptonDialogButtonExtended1.DenyButtonTextColour1 = System.Drawing.Color.Empty;
@@ -89,7 +116,6 @@
             // 
             // kryptonYesDialogButton1
             // 
-            this.kryptonYesDialogButton1.CornerRoundingRadius = -1F;
             this.kryptonYesDialogButton1.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.kryptonYesDialogButton1.Location = new System.Drawing.Point(112, 10);
             this.kryptonYesDialogButton1.Name = "kryptonYesDialogButton1";
@@ -111,7 +137,6 @@
             // 
             this.kryptonuacButtonVersion21.AutoSize = true;
             this.kryptonuacButtonVersion21.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonuacButtonVersion21.CornerRoundingRadius = -1F;
             this.kryptonuacButtonVersion21.CustomShieldSize = new System.Drawing.Size(0, 0);
             this.kryptonuacButtonVersion21.ExtraArguments = null;
             this.kryptonuacButtonVersion21.Location = new System.Drawing.Point(141, 37);
@@ -127,7 +152,6 @@
             // kryptonuacButtonVersion11
             // 
             this.kryptonuacButtonVersion11.AssemblyToElevate = null;
-            this.kryptonuacButtonVersion11.CornerRoundingRadius = -1F;
             this.kryptonuacButtonVersion11.Location = new System.Drawing.Point(10, 37);
             this.kryptonuacButtonVersion11.Name = "kryptonuacButtonVersion11";
             this.kryptonuacButtonVersion11.Size = new System.Drawing.Size(116, 23);
@@ -138,7 +162,6 @@
             // kryptonSplitButton1
             // 
             this.kryptonSplitButton1.AutoSize = true;
-            this.kryptonSplitButton1.CornerRoundingRadius = -1F;
             this.kryptonSplitButton1.Location = new System.Drawing.Point(465, 10);
             this.kryptonSplitButton1.Name = "kryptonSplitButton1";
             this.kryptonSplitButton1.ProcessPath = null;
@@ -150,7 +173,6 @@
             // 
             // kryptonokDialogButton1
             // 
-            this.kryptonokDialogButton1.CornerRoundingRadius = -1F;
             this.kryptonokDialogButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kryptonokDialogButton1.Location = new System.Drawing.Point(30, 10);
             this.kryptonokDialogButton1.Name = "kryptonokDialogButton1";
@@ -161,7 +183,6 @@
             // 
             // kryptonnoDialogButton1
             // 
-            this.kryptonnoDialogButton1.CornerRoundingRadius = -1F;
             this.kryptonnoDialogButton1.DialogResult = System.Windows.Forms.DialogResult.No;
             this.kryptonnoDialogButton1.Location = new System.Drawing.Point(195, 10);
             this.kryptonnoDialogButton1.Name = "kryptonnoDialogButton1";
@@ -172,7 +193,6 @@
             // 
             // kryptonCommandLinkVersion21
             // 
-            this.kryptonCommandLinkVersion21.CornerRoundingRadius = -1F;
             this.kryptonCommandLinkVersion21.Location = new System.Drawing.Point(230, 152);
             this.kryptonCommandLinkVersion21.Name = "kryptonCommandLinkVersion21";
             this.kryptonCommandLinkVersion21.ProcessToElevate = null;
@@ -202,7 +222,6 @@
             // 
             // kryptonCancelDialogButton1
             // 
-            this.kryptonCancelDialogButton1.CornerRoundingRadius = -1F;
             this.kryptonCancelDialogButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kryptonCancelDialogButton1.Location = new System.Drawing.Point(277, 10);
             this.kryptonCancelDialogButton1.Name = "kryptonCancelDialogButton1";
@@ -216,7 +235,6 @@
             this.kryptonBrowseButton1.AutoSize = true;
             this.kryptonBrowseButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.kryptonBrowseButton1.BrowseButtonAction = Krypton.Toolkit.Suite.Extended.Buttons.BrowseButtonAction.SaveFile;
-            this.kryptonBrowseButton1.CornerRoundingRadius = -1F;
             this.kryptonBrowseButton1.DialogFilter = null;
             this.kryptonBrowseButton1.DialogTitle = null;
             this.kryptonBrowseButton1.ExtensionList = null;

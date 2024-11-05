@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.ktxtExceptionTabMessage = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtStackTrace = new Krypton.Toolkit.KryptonTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,17 +64,12 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             // klvExceptions
             // 
-            this.klvExceptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.klvExceptions.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left
+                                                                            | System.Windows.Forms.AnchorStyles.Right);
             this.klvExceptions.HideSelection = false;
-            this.klvExceptions.ItemStyle = Krypton.Toolkit.ButtonStyle.ListItem;
             this.klvExceptions.Location = new System.Drawing.Point(4, 4);
             this.klvExceptions.Name = "klvExceptions";
-            this.klvExceptions.OwnerDraw = true;
             this.klvExceptions.Size = new System.Drawing.Size(607, 120);
-            this.klvExceptions.StateCommon.Item.Content.ShortText.MultiLine = Krypton.Toolkit.InheritBool.True;
-            this.klvExceptions.StateCommon.Item.Content.ShortText.MultiLineH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klvExceptions.StateCommon.Item.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klvExceptions.TabIndex = 0;
             // 
             // kryptonLabel1
@@ -88,9 +83,9 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             // ktxtExceptionTabMessage
             // 
-            this.ktxtExceptionTabMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ktxtExceptionTabMessage.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
+                | System.Windows.Forms.AnchorStyles.Left
+                | System.Windows.Forms.AnchorStyles.Right);
             this.ktxtExceptionTabMessage.Location = new System.Drawing.Point(20, 158);
             this.ktxtExceptionTabMessage.Multiline = true;
             this.ktxtExceptionTabMessage.Name = "ktxtExceptionTabMessage";
@@ -110,9 +105,9 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             // ktxtStackTrace
             // 
-            this.ktxtStackTrace.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ktxtStackTrace.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
+                                                                             | System.Windows.Forms.AnchorStyles.Left
+                                                                             | System.Windows.Forms.AnchorStyles.Right);
             this.ktxtStackTrace.Location = new System.Drawing.Point(20, 243);
             this.ktxtStackTrace.Multiline = true;
             this.ktxtStackTrace.Name = "ktxtStackTrace";
@@ -125,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.Controls.Add(this.kryptonPanel1);
             this.Name = "ExceptionDetailControl";
             this.Size = new System.Drawing.Size(614, 535);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -215,7 +210,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
         private void WireUpEvents()
         {
-            klvExceptions.SelectedIndexChanged += ExceptionsSelectedIndexChanged;
+            //? klvExceptions.SelectedIndexChanged += ExceptionsSelectedIndexChanged;
         }
 
         private void ExceptionsSelectedIndexChanged(object sender, EventArgs e)

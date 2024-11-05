@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     The callback to get invoked at the end of the animation
         /// </summary>
-        protected SafeInvoker EndCallback;
+        protected SafeInvoker? EndCallback;
 
         /// <summary>
         ///     The callback to get invoked at each frame
@@ -265,7 +265,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         public virtual void Pause()
         {
-            if (CurrentStatus == AnimatorStatus.OnHold || CurrentStatus == AnimatorStatus.Playing)
+            if (CurrentStatus is AnimatorStatus.OnHold or AnimatorStatus.Playing)
             {
                 HorizontalAnimator.Pause();
                 VerticalAnimator.Pause();
@@ -299,7 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="endCallback">
         ///     The callback to get invoked at the end of the animation
         /// </param>
-        public virtual void Play(object targetObject, string propertyName, SafeInvoker endCallback)
+        public virtual void Play(object targetObject, string propertyName, SafeInvoker? endCallback)
         {
             TargetObject = targetObject;
             var prop = TargetObject.GetType()
@@ -332,7 +332,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <typeparam name="T">
         ///     Any object containing a property
         /// </typeparam>
-        public virtual void Play<T>(T targetObject, Expression<Func<T, object>> propertySetter)
+        public virtual void Play<T>(T targetObject, Expression<Func<T, object>>? propertySetter)
         {
             Play(targetObject, propertySetter, null);
         }
@@ -352,7 +352,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <typeparam name="T">
         ///     Any object containing a property
         /// </typeparam>
-        public virtual void Play<T>(T targetObject, Expression<Func<T, object>> propertySetter, SafeInvoker endCallback)
+        public virtual void Play<T>(T targetObject, Expression<Func<T, object>>? propertySetter, SafeInvoker? endCallback)
         {
             if (propertySetter == null)
             {
@@ -362,8 +362,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             TargetObject = targetObject;
 
             var property =
-                ((propertySetter.Body as MemberExpression) ??
-                 (((UnaryExpression)propertySetter.Body).Operand as MemberExpression))?.Member as PropertyInfo;
+                (propertySetter.Body as MemberExpression ??
+                 ((UnaryExpression)propertySetter.Body).Operand as MemberExpression)?.Member as PropertyInfo;
             if (property == null)
             {
                 throw new ArgumentException(nameof(propertySetter));
@@ -427,7 +427,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="endCallback">
         ///     The callback to get invoked at the end of the animation
         /// </param>
-        public void Play(object targetObject, KnownColourProperties property, SafeInvoker endCallback)
+        public void Play(object targetObject, KnownColourProperties property, SafeInvoker? endCallback)
         {
             Play(targetObject, property.ToString(), endCallback);
         }
@@ -452,7 +452,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="endCallback">
         ///     The callback to get invoked at the end of the animation
         /// </param>
-        public void Play(SafeInvoker<Float3D> frameCallback, SafeInvoker endCallback)
+        public void Play(SafeInvoker<Float3D> frameCallback, SafeInvoker? endCallback)
         {
             Stop();
             FrameCallback = frameCallback;

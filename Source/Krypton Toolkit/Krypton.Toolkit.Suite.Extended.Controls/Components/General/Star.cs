@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         internal Star(int starNumber, Image offImage, Image onImage, Action<int> clicked, Action<int> mouseEnter, Action<int> mouseLeave)
         {
             Size = new Size(offImage.Width, offImage.Height);
-            Left = (Width * (starNumber - 1));
+            Left = Width * (starNumber - 1);
 
             _stars = new Dictionary<States, Image>
                         {

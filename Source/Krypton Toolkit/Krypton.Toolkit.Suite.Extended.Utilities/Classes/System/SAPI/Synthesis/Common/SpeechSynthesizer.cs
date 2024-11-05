@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             get => VoiceSynthesizer.Rate;
             set
             {
-                if (value < -10 || value > 10)
+                if (value is < -10 or > 10)
                 {
                     throw new ArgumentOutOfRangeException("value", SR.Get(SRID.RateOutOfRange));
                 }
@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             get => VoiceSynthesizer.Volume;
             set
             {
-                if (value < 0 || value > 100)
+                if (value is < 0 or > 100)
                 {
                     throw new ArgumentOutOfRangeException("value", SR.Get(SRID.ResourceUsageOutOfRange));
                 }

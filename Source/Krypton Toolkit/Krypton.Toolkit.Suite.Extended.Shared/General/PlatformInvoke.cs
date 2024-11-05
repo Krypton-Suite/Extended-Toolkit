@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -2853,13 +2853,13 @@ BS_ICON or BS_BITMAP set? 	BM_SETIMAGE called? 	Result
         public static int LOWORD(IntPtr value)
         {
             var int32 = (int)value.ToInt64() & 0xFFFF;
-            return (int32 > 32767) ? int32 - 65536 : int32;
+            return int32 > 32767 ? int32 - 65536 : int32;
         }
 
         public static int HIWORD(IntPtr value)
         {
             var int32 = ((int)value.ToInt64() >> 0x10) & 0xFFFF;
-            return (int32 > 32767) ? int32 - 65536 : int32;
+            return int32 > 32767 ? int32 - 65536 : int32;
         }
 
         public static int LOWORD(int value) => value & 0xFFFF;
@@ -4129,13 +4129,13 @@ BS_ICON or BS_BITMAP set? 	BM_SETIMAGE called? 	Result
         public enum CDN_ : uint
         {
             FIRST = 0xFFFFFDA7, // -601
-            INITDONE = (FIRST - 0x0000),
-            SELCHANGE = (FIRST - 0x0001), // -602
-            FOLDERCHANGE = (FIRST - 0x0002),
-            SHAREVIOLATION = (FIRST - 0x0003), // -604
-            HELP = (FIRST - 0x0004),
-            FILEOK = (FIRST - 0x0005), // -606
-            TYPECHANGE = (FIRST - 0x0006),
+            INITDONE = FIRST - 0x0000,
+            SELCHANGE = FIRST - 0x0001, // -602
+            FOLDERCHANGE = FIRST - 0x0002,
+            SHAREVIOLATION = FIRST - 0x0003, // -604
+            HELP = FIRST - 0x0004,
+            FILEOK = FIRST - 0x0005, // -606
+            TYPECHANGE = FIRST - 0x0006,
         }
         #endregion
 

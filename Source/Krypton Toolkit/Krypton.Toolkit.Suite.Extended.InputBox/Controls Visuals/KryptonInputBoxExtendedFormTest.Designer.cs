@@ -130,7 +130,6 @@
             // 
             // kcmbResponse
             // 
-            this.kcmbResponse.CornerRoundingRadius = -1F;
             this.kcmbResponse.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kcmbResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kcmbResponse.DropDownWidth = 344;
@@ -177,7 +176,6 @@
             // 
             // kdtpResponse
             // 
-            this.kdtpResponse.CornerRoundingRadius = -1F;
             this.kdtpResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kdtpResponse.Location = new System.Drawing.Point(0, 0);
             this.kdtpResponse.Name = "kdtpResponse";
@@ -215,7 +213,6 @@
             // 
             this.kbtnInputBoxButtonOne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnInputBoxButtonOne.AutoSize = true;
-            this.kbtnInputBoxButtonOne.CornerRoundingRadius = -1F;
             this.kbtnInputBoxButtonOne.Enabled = false;
             this.kbtnInputBoxButtonOne.Location = new System.Drawing.Point(145, 0);
             this.kbtnInputBoxButtonOne.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
@@ -230,7 +227,6 @@
             // 
             this.kbtnInputBoxButtonTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnInputBoxButtonTwo.AutoSize = true;
-            this.kbtnInputBoxButtonTwo.CornerRoundingRadius = -1F;
             this.kbtnInputBoxButtonTwo.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnInputBoxButtonTwo.Location = new System.Drawing.Point(213, 0);
             this.kbtnInputBoxButtonTwo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
@@ -244,7 +240,6 @@
             // 
             this.kbtnInputBoxButtonThree.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnInputBoxButtonThree.AutoSize = true;
-            this.kbtnInputBoxButtonThree.CornerRoundingRadius = -1F;
             this.kbtnInputBoxButtonThree.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnInputBoxButtonThree.Location = new System.Drawing.Point(285, 0);
             this.kbtnInputBoxButtonThree.Margin = new System.Windows.Forms.Padding(0);

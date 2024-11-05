@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -246,7 +246,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </exception>
         public static Color FromAHSB(int alpha, float hue, float saturation, float brightness)
         {
-            if (0 > alpha || 255 < alpha)
+            if (alpha is < 0 or > 255)
             {
                 throw new ArgumentOutOfRangeException(
                     "alpha",
@@ -254,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     "Value must be within a range of 0 - 255.");
             }
 
-            if (0f > hue || 360f < hue)
+            if (hue is < 0f or > 360f)
             {
                 throw new ArgumentOutOfRangeException(
                     "hue",
@@ -262,7 +262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     "Value must be within a range of 0 - 360.");
             }
 
-            if (0f > saturation || 1f < saturation)
+            if (saturation is < 0f or > 1f)
             {
                 throw new ArgumentOutOfRangeException(
                     "saturation",
@@ -270,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     "Value must be within a range of 0 - 1.");
             }
 
-            if (0f > brightness || 1f < brightness)
+            if (brightness is < 0f or > 1f)
             {
                 throw new ArgumentOutOfRangeException(
                     "brightness",
@@ -292,13 +292,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             if (0.5 < brightness)
             {
-                fMax = brightness - (brightness * saturation) + saturation;
-                fMin = brightness + (brightness * saturation) - saturation;
+                fMax = brightness - brightness * saturation + saturation;
+                fMin = brightness + brightness * saturation - saturation;
             }
             else
             {
-                fMax = brightness + (brightness * saturation);
-                fMin = brightness - (brightness * saturation);
+                fMax = brightness + brightness * saturation;
+                fMin = brightness - brightness * saturation;
             }
 
             iSextant = (int)Math.Floor(hue / 60f);
@@ -308,14 +308,14 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
 
             hue /= 60f;
-            hue -= 2f * (float)Math.Floor(((iSextant + 1f) % 6f) / 2f);
+            hue -= 2f * (float)Math.Floor((iSextant + 1f) % 6f / 2f);
             if (0 == iSextant % 2)
             {
-                fMid = (hue * (fMax - fMin)) + fMin;
+                fMid = hue * (fMax - fMin) + fMin;
             }
             else
             {
-                fMid = fMin - (hue * (fMax - fMin));
+                fMid = fMin - hue * (fMax - fMin);
             }
 
             iMax = Convert.ToInt32(fMax * 255);

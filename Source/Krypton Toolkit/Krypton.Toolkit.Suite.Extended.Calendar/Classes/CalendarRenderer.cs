@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #region Types
 
         /// <summary>
-        /// Possible corners to pass to the <see cref="RoundRectangle"/> method
+        /// Possible corners to pass to the <see cref="T:RoundRectangle"/> method
         /// </summary>
         [Flags()]
         public enum Corners
@@ -483,7 +483,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 evtData.Item != null &&
                 (evtData.Item.Bounds.Top != evtData.Item.MinuteStartTop ||
                  evtData.Item.Bounds.Bottom != evtData.Item.MinuteEndTop) &&
-                (evtData.Item.MinuteEndTop != 0 && evtData.Item.MinuteStartTop != 0) &&
+                evtData.Item.MinuteEndTop != 0 && evtData.Item.MinuteStartTop != 0 &&
                 !evtData.Item.IsOnDayTop && evtData.Calendar.DaysMode == CalendarDaysMode.Expanded)
             {
                 /*
@@ -661,7 +661,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                             if (unit != null)
                             {
-                                if (Calendar.TimeUnitsOffset * -1 >= (j + 1))
+                                if (Calendar.TimeUnitsOffset * -1 >= j + 1)
                                 {
                                     unit.SetVisible(false);
                                 }
@@ -1683,7 +1683,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                             new CalendarRendererItemEventArgs(e, item),
                             rects[i],
                             i == 0 && !item.IsOpenStart,
-                            (i == rects.Count - 1) && !item.IsOpenEnd);
+                            i == rects.Count - 1 && !item.IsOpenEnd);
                         OnDrawItemShadow(evt);
                     }
 
@@ -1735,7 +1735,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                             new CalendarRendererItemEventArgs(e, item),
                             rects[i],
                             i == 0 && !item.IsOpenStart,
-                            (i == rects.Count - 1) && !item.IsOpenEnd);
+                            i == rects.Count - 1 && !item.IsOpenEnd);
 
                         if (e.Graphics != null)
                         {
@@ -1769,7 +1769,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         e,
                         rects[i],
                         i == 0 && !e.Item.IsOpenStart,
-                        (i == rects.Count - 1) && !e.Item.IsOpenEnd);
+                        i == rects.Count - 1 && !e.Item.IsOpenEnd);
 
                     //OnDrawItemShadow(evt);
 
@@ -1922,11 +1922,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         {
                             case CalendarItemImageAlign.North:
                             case CalendarItemImageAlign.South:
-                                imageBounds.X = e.Item.Bounds.X + ((e.Item.Bounds.Width - imageBounds.Width) / 2);
+                                imageBounds.X = e.Item.Bounds.X + (e.Item.Bounds.Width - imageBounds.Width) / 2;
                                 break;
                             case CalendarItemImageAlign.East:
                             case CalendarItemImageAlign.West:
-                                imageBounds.Y = e.Item.Bounds.Y + ((e.Item.Bounds.Height - imageBounds.Height) / 2);
+                                imageBounds.Y = e.Item.Bounds.Y + (e.Item.Bounds.Height - imageBounds.Height) / 2;
                                 break;
                         }
 

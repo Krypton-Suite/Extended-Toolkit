@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -122,19 +122,19 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             var oStyle = Style.Clone();
             if (preferredSize.Height < _imageHeight)
             {
-                oStyle.Padding = new Padding(p.Left + (level * INDENT_WIDTH) + _imageWidth + INDENT_MARGIN,
-                    p.Top + (_imageHeight / 2), p.Right, p.Bottom + (_imageHeight / 2));
+                oStyle.Padding = new Padding(p.Left + level * INDENT_WIDTH + _imageWidth + INDENT_MARGIN,
+                    p.Top + _imageHeight / 2, p.Right, p.Bottom + _imageHeight / 2);
 
                 _imageHeightOffset = 2;// (_imageHeight - preferredSize.Height) / 2;
             }
             else
             {
-                oStyle.Padding = new Padding(p.Left + (level * INDENT_WIDTH) + _imageWidth + INDENT_MARGIN,
+                oStyle.Padding = new Padding(p.Left + level * INDENT_WIDTH + _imageWidth + INDENT_MARGIN,
                     p.Top, p.Right, p.Bottom);
             }
             Style = oStyle;
 
-            _calculatedLeftPadding = ((level - 1) * _glyphWidth) + _imageWidth + INDENT_MARGIN;
+            _calculatedLeftPadding = (level - 1) * _glyphWidth + _imageWidth + INDENT_MARGIN;
         }
 
         public int Level
@@ -146,9 +146,9 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             }
         }
 
-        protected virtual int GlyphMargin => ((Level - 1) * INDENT_WIDTH) + INDENT_MARGIN;
+        protected virtual int GlyphMargin => (Level - 1) * INDENT_WIDTH + INDENT_MARGIN;
 
-        protected virtual int GlyphOffset => ((Level - 1) * INDENT_WIDTH);
+        protected virtual int GlyphOffset => (Level - 1) * INDENT_WIDTH;
 
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
@@ -180,7 +180,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             {
                 Point pp = _imageHeight > cellBounds.Height
                     ? new Point(glyphRect.X + _glyphWidth, cellBounds.Y + _imageHeightOffset)
-                    : new Point(glyphRect.X + _glyphWidth, (cellBounds.Height / 2 - _imageHeight / 2) + cellBounds.Y);
+                    : new Point(glyphRect.X + _glyphWidth, cellBounds.Height / 2 - _imageHeight / 2 + cellBounds.Y);
 
                 // Graphics container to push/pop changes. This enables us to set clipping when painting
                 // the cell's image -- keeps it from bleeding outsize of cells.
@@ -243,7 +243,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
                     // paint lines of previous levels to the root
                     KryptonTreeGridNodeRow? previousNode = node.Parent;
-                    var horizontalStop = (glyphRect.X + 4) - INDENT_WIDTH;
+                    var horizontalStop = glyphRect.X + 4 - INDENT_WIDTH;
 
                     while (!previousNode.IsRoot)
                     {
@@ -265,11 +265,11 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                     // Paint node glyphs
                     if (node.IsExpanded)
                     {
-                        node.Grid.ROpen.DrawBackground(graphics, new Rectangle(glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 10, 10));
+                        node.Grid.ROpen.DrawBackground(graphics, new Rectangle(glyphRect.X, glyphRect.Y + glyphRect.Height / 2 - 4, 10, 10));
                     }
                     else
                     {
-                        node.Grid.RClosed.DrawBackground(graphics, new Rectangle(glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 10, 10));
+                        node.Grid.RClosed.DrawBackground(graphics, new Rectangle(glyphRect.X, glyphRect.Y + glyphRect.Height / 2 - 4, 10, 10));
                     }
                 }
                 catch

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -213,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
             var useHeaderHeight = _kryptonVirtualTreeColumnView.Header.Visible
                 ? Math.Max(_kryptonVirtualTreeColumnView.Header.MinHeight, ItemHeight)
                 : 0;
-            var rows = ((int)(r.Height - useHeaderHeight) / ItemHeight);
+            var rows = (int)(r.Height - useHeaderHeight) / ItemHeight;
 
             var y = graphics.VisibleClipBounds.Y + useHeaderHeight;
             var totalColWidth = Math.Min(TotalWidth(), graphics.VisibleClipBounds.Right);
@@ -534,7 +534,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                     displayOffset -= _kryptonVirtualTreeColumnView._vScrollBar.ScrollPosition;
                 }
 
-                bounds.Y = (displayOffset * ItemHeight) + hdrHeight;
+                bounds.Y = displayOffset * ItemHeight + hdrHeight;
                 if (bounds.Contains(x, y))
                 {
                     return visibleNodes[offset];
@@ -911,9 +911,8 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                 PaletteTextHint.ClearTypeGridFit => TextRenderingHint.ClearTypeGridFit,
                 PaletteTextHint.SingleBitPerPixel => TextRenderingHint.SingleBitPerPixel,
                 PaletteTextHint.SingleBitPerPixelGridFit => TextRenderingHint.SingleBitPerPixelGridFit,
-                PaletteTextHint.Inherit => TextRenderingHint.SystemDefault,
-                PaletteTextHint.SystemDefault => TextRenderingHint.SystemDefault,
-                _ => TextRenderingHint.SystemDefault
+                PaletteTextHint.Inherit => TextRenderingHint.ClearTypeGridFit, //SystemDefault,
+                _ => TextRenderingHint.ClearTypeGridFit
             };
         }
 
@@ -1000,7 +999,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
 
             ViewDrawRowNode(visibleNode, graphics, bounds, rowOffset);
 
-            return (bounds.Bottom > graphics.VisibleClipBounds.Bottom);
+            return bounds.Bottom > graphics.VisibleClipBounds.Bottom;
         }
 
         private int NodeIndent(VirtualTreeRowNode node, bool ignoreImage)
@@ -1063,7 +1062,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                     else
                     {
                         // Check node values before tree level values
-                        if ((rowNode.SelectedImageIndex >= 0) && (rowNode.SelectedImageIndex < StateImageList.Images.Count))
+                        if (rowNode.SelectedImageIndex >= 0 && rowNode.SelectedImageIndex < StateImageList.Images.Count)
                         {
                             drawStateImage = StateImageList.Images[rowNode.SelectedImageIndex];
                         }
@@ -1075,12 +1074,12 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                 }
             }
 
-            _kryptonVirtualTreeColumnView._layoutImageCenterState.Visible = (drawStateImage != null);
+            _kryptonVirtualTreeColumnView._layoutImageCenterState.Visible = drawStateImage != null;
 
             // Do we need the check box?
-            _kryptonVirtualTreeColumnView._layoutCheckBoxStack.Visible = (StateImageList == null)
+            _kryptonVirtualTreeColumnView._layoutCheckBoxStack.Visible = StateImageList == null
                                                                          && CheckBoxes
-                                                                         && (rowNode.IsCheckBoxVisible);
+                                                                         && rowNode.IsCheckBoxVisible;
             if (_kryptonVirtualTreeColumnView._layoutCheckBoxStack.Visible)
             {
                 _kryptonVirtualTreeColumnView._drawCheckBox.CheckState = rowNode.RowNodeState.HasFlag(RowNodeState.Checked) ? CheckState.Checked : CheckState.Unchecked;
@@ -1142,8 +1141,8 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                 if (ShowLines)
                 {
                     // Find center points
-                    var hCenter = (indentBounds.X + (indentBounds.Width - 16)) - 1;
-                    var vCenter = indentBounds.Y + (indentBounds.Height / 2);
+                    var hCenter = indentBounds.X + (indentBounds.Width - 16) - 1;
+                    var vCenter = indentBounds.Y + indentBounds.Height / 2;
                     vCenter -= vCenter % 2;
 
                     // Default to showing full line height
@@ -1152,7 +1151,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                     var bottom = indentBounds.Bottom;
 
                     // If the first root node then do not show top half of line
-                    if ((rowNode.Parent == null) && (rowNode.PreviousSibling == null))
+                    if (rowNode.Parent == null && rowNode.PreviousSibling == null)
                     {
                         top = vCenter;
                     }
@@ -1188,15 +1187,15 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                 }
 
                 // Do we draw any plus/minus images in indent bounds?
-                if (ShowPlusMinus && (rowNode.Children.Count > 0))
+                if (ShowPlusMinus && rowNode.Children.Count > 0)
                 {
                     Image drawImage =
                         _kryptonVirtualTreeColumnView._redirectImages.GetTreeViewImage(rowNode.RowNodeState.HasFlag(RowNodeState.Expanded));
                     if (drawImage != null)
                     {
                         graphics.DrawImage(drawImage, new Rectangle(
-                            (indentBounds.X + (indentBounds.Width - (16 * 2))),
-                            indentBounds.Y + ((indentBounds.Height - drawImage.Height) / 2),
+                            indentBounds.X + (indentBounds.Width - 16 * 2),
+                            indentBounds.Y + (indentBounds.Height - drawImage.Height) / 2,
                             drawImage.Width, drawImage.Height));
                     }
                 }
@@ -1211,7 +1210,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                 try
                 {
                     // Check node values before tree level values
-                    if ((rowNode.ImageIndex >= 0) && (rowNode.ImageIndex < imageCount))
+                    if (rowNode.ImageIndex >= 0 && rowNode.ImageIndex < imageCount)
                     {
                         drawImage = ImageList.Images[rowNode.ImageIndex];
                     }
@@ -1219,7 +1218,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                     {
                         drawImage = ImageList.Images[ImageKey];
                     }
-                    else if ((ImageIndex >= 0) && (ImageIndex < imageCount))
+                    else if (ImageIndex >= 0 && ImageIndex < imageCount)
                     {
                         drawImage = ImageList.Images[ImageIndex];
                     }
@@ -1227,7 +1226,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                     if (rowNode.RowNodeState.HasFlag(RowNodeState.Selected))
                     {
                         // Check node values before tree level values
-                        if ((rowNode.SelectedImageIndex >= 0) && (rowNode.SelectedImageIndex < imageCount))
+                        if (rowNode.SelectedImageIndex >= 0 && rowNode.SelectedImageIndex < imageCount)
                         {
                             drawImage = ImageList.Images[rowNode.SelectedImageIndex];
                         }
@@ -1235,7 +1234,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                         {
                             drawImage = ImageList.Images[SelectedImageKey];
                         }
-                        else if ((SelectedImageIndex >= 0) && (SelectedImageIndex < imageCount))
+                        else if (SelectedImageIndex >= 0 && SelectedImageIndex < imageCount)
                         {
                             drawImage = ImageList.Images[SelectedImageIndex];
                         }

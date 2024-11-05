@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -59,22 +59,22 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private int _fade = 150;
 
-        private SolidBrush _fadeBrush;
+        private SolidBrush? _fadeBrush;
 
         #endregion
 
         #region Public Properties
 
-        // <summary>
+        /// <summary>
         /// Gets or sets the opacity of the white overlay brush which fades 
-        /// the background colors of the <see cref="KryptonProgressBarExtendedVersion2" />.
+        /// the background colors of the <see cref="KryptonProgressBarExtended" />.
         /// </summary>
-        /// <value>An <see cref="System.Int32" /> representing the alpha 
+        /// <value>An <see cref="int" /> representing the alpha 
         /// value of the overlay color. The default is <b>150</b>.</value>
         /// <remarks>
         /// You can use this property to manipulate the density of the background coloring of this control, 
-        /// to allow for better readability of any text within the <see cref="KryptonProgressBarExtendedVersion2" />. You can use 
-        /// the <see cref="KryptonProgressBarExtendedVersion2.Font" /> and <see cref="KryptonProgressBarExtendedVersion2.ForeColor" /> properties 
+        /// to allow for better readability of any text within the <see cref="KryptonProgressBarExtended" />. You can use 
+        /// the <see cref="KryptonProgressBarExtended.Font" /> and <see cref="KryptonProgressBarExtended.ForeColor" /> properties 
         /// to further optimize the display of text.
         /// 
         /// <para>Acceptable values for this property are between 0 and 255 inclusive. The default is 150; 
@@ -89,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             get => _fade;
             set
             {
-                if (value < 0 || value > 255)
+                if (value is < 0 or > 255)
                 {
                     object[] str = new object[] { value };
                     throw new ArgumentOutOfRangeException("value", $"A value of '{str}' is not valid for 'Fade'. 'Fade' must be between 0 and 255.");

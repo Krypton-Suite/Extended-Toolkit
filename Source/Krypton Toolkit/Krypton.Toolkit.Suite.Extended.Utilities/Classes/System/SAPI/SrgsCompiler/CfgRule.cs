@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -189,12 +189,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             _flag = 0u;
             _nameOffset = nameOffset;
             _id = id;
-            TopLevel = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_TopLevel) != 0);
-            DefaultActive = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_Active) != 0);
-            PropRule = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_Interpreter) != 0);
-            Export = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_Export) != 0);
-            Dynamic = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_Dynamic) != 0);
-            Import = ((attributes & SPCFGRULEATTRIBUTES.SPRAF_Import) != 0);
+            TopLevel = (attributes & SPCFGRULEATTRIBUTES.SPRAF_TopLevel) != 0;
+            DefaultActive = (attributes & SPCFGRULEATTRIBUTES.SPRAF_Active) != 0;
+            PropRule = (attributes & SPCFGRULEATTRIBUTES.SPRAF_Interpreter) != 0;
+            Export = (attributes & SPCFGRULEATTRIBUTES.SPRAF_Export) != 0;
+            Dynamic = (attributes & SPCFGRULEATTRIBUTES.SPRAF_Dynamic) != 0;
+            Import = (attributes & SPCFGRULEATTRIBUTES.SPRAF_Import) != 0;
         }
     }
 }

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -213,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             int internalBorder = BORDER_SIZE;
 
-            Rectangle focusRectangle = new(internalBorder, internalBorder, bounds.Width - _dropDownRectangle.Width - internalBorder, bounds.Height - (internalBorder * 2));
+            Rectangle focusRectangle = new(internalBorder, internalBorder, bounds.Width - _dropDownRectangle.Width - internalBorder, bounds.Height - internalBorder * 2);
 
             PaletteBase palette = KryptonManager.CurrentGlobalPalette;
 
@@ -266,7 +266,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             Point midPoint = new(Convert.ToInt32(rectangle.Left + rectangle.Width / 2), Convert.ToInt32(rectangle.Top + rectangle.Height / 2));
 
-            midPoint.X += (rectangle.Width % 2);
+            midPoint.X += rectangle.Width % 2;
 
             Point[] arrow = new Point[] { new(midPoint.X - 2, midPoint.Y - 1), new(midPoint.X + 3, midPoint.Y - 1), new(midPoint.X, midPoint.Y + 2) };
 
@@ -310,7 +310,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             //if (e.CloseReason == ToolStripDropDownCloseReason.AppClicked) 
             //{ 
-            _skipNextOpen = (_dropDownRectangle.Contains(PointToClient(Cursor.Position)));
+            _skipNextOpen = _dropDownRectangle.Contains(PointToClient(Cursor.Position));
             //} 
         }
 
@@ -324,7 +324,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             if (e.CloseReason == ToolStripDropDownCloseReason.AppClicked)
             {
-                _skipNextOpen = (_dropDownRectangle.Contains(PointToClient(Cursor.Position)));
+                _skipNextOpen = _dropDownRectangle.Contains(PointToClient(Cursor.Position));
             }
         }
         #endregion

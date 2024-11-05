@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -54,8 +54,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         private void Translate()
         {
-            buttonCancel.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
-            buttonOk.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+            buttonCancel.Text = KryptonManager.Strings.GeneralStrings.Cancel;
+            buttonOk.Text = KryptonManager.Strings.GeneralStrings.OK;
             labelDesc.Text = NaviSuiteLanguageManager.SuiteStrings.Description;
             buttonMoveDown.Text = NaviSuiteLanguageManager.SuiteStrings.MoveDown;
             buttonMoveUp.Text = NaviSuiteLanguageManager.SuiteStrings.MoveUp;
@@ -97,8 +97,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         private void buttonMoveDown_Click(object sender, EventArgs e)
         {
-            if ((kclbBands.SelectedIndex > 0)
-            && (kclbBands.SelectedIndex < kclbBands.Items.Count - 1))
+            if (kclbBands.SelectedIndex > 0
+            && kclbBands.SelectedIndex < kclbBands.Items.Count - 1)
             {
                 bool oldChecked = kclbBands.CheckedIndices.Contains(
                    kclbBands.SelectedIndex + 1);

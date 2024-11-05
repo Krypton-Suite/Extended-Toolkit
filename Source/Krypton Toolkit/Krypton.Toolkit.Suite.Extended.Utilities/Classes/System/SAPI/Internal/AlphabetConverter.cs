@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                         convertTable[i] = new ConversionUnit();
                         convertTable[i].sapi = ReadPhoneString(binaryReader);
                         convertTable[i].ups = ReadPhoneString(binaryReader);
-                        convertTable[i].isDefault = ((binaryReader.ReadInt32() != 0) ? true : false);
+                        convertTable[i].isDefault = binaryReader.ReadInt32() != 0 ? true : false;
                     }
                     prefixSapiTable = InitializePrefix(true);
                     prefixUpsTable = InitializePrefix(false);
@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
             internal string ConvertPhoneme(string phoneme, bool isSapi)
             {
-                ConversionUnit conversionUnit = (!isSapi) ? ((ConversionUnit)prefixUpsTable[phoneme]) : ((ConversionUnit)prefixSapiTable[phoneme]);
+                ConversionUnit conversionUnit = !isSapi ? (ConversionUnit)prefixUpsTable[phoneme] : (ConversionUnit)prefixSapiTable[phoneme];
                 if (conversionUnit == null)
                 {
                     return null;
@@ -93,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                 Hashtable hashtable = Hashtable.Synchronized(new Hashtable());
                 for (int i = 0; i < convertTable.Length; i++)
                 {
-                    string text = (!isSapi) ? convertTable[i].ups : convertTable[i].sapi;
+                    string text = !isSapi ? convertTable[i].ups : convertTable[i].sapi;
                     for (int j = 0; j + 1 < text.Length; j++)
                     {
                         string key = text.Substring(0, j + 1);

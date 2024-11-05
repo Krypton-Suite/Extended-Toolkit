@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -72,11 +72,11 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 {
                     if (globalMethods.GetIsTargetPlatformSupported())
                     {
-                        ExceptionCapture.CaptureException(ex, "Exception Thrown", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error, "NetworkUtilities", "CheckInternetConnectionState(string pingAddress = null)");
+                        DebugUtilities.NotImplemented(ex.ToString());
                     }
                     else
                     {
-                        ExceptionCapture.CaptureException(ex);
+                        DebugUtilities.NotImplemented(ex.ToString());
                     }
                 }
 
@@ -118,11 +118,11 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 {
                     if (globalMethods.GetIsTargetPlatformSupported())
                     {
-                        ExceptionCapture.CaptureException(ex, "Exception Thrown", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error, "NetworkUtilities", "ExistsOnServer(Uri fileLocation)");
+                        DebugUtilities.NotImplemented(ex.ToString());
                     }
                     else
                     {
-                        ExceptionCapture.CaptureException(ex, "Exception Thrown", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error, "NetworkUtilities", "ExistsOnServer(Uri fileLocation)");
+                        DebugUtilities.NotImplemented(ex.ToString());
                     }
                 }
 

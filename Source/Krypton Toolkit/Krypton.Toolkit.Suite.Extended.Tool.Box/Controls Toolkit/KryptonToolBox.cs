@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -379,7 +379,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             _dnScroll.Enabled = false;
 
             //Create redirection object to the base palette
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
@@ -1525,7 +1525,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     _smallImageList = CreateImageListFromImage(image, size, transparentColor);
                 }
 
-                bOk = (_smallImageList.Images.Count > 0);
+                bOk = _smallImageList.Images.Count > 0;
             }
             else
             {
@@ -1536,7 +1536,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     _largeImageList = CreateImageListFromImage(image, size, transparentColor);
                 }
 
-                bOk = (_largeImageList.Images.Count > 0);
+                bOk = _largeImageList.Images.Count > 0;
 
             }
 
@@ -1951,17 +1951,17 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
             if (null != _selectedTab.Control)
             {
-                System.Diagnostics.Debug.WriteLine(
+                DebugUtilities.WriteLine(
                     $"Control Location {_selectedTab.Control.Location} Item Area {_selectedTab.ItemArea}");
             }
 
             if (null != _oldselectedTab)
             {
 
-                inc = (_tabHeight / 2 >= inc) ? (oldItemArea.Height / 6) - 2 : inc;
-                inc = (_tabHeight / 2 >= inc) ? (oldItemArea.Height / 3) - 2 : inc;
-                inc = (_tabHeight / 2 >= inc) ? (oldItemArea.Height / 2) - 2 : inc;
-                inc = (_tabHeight / 2 >= inc) ? _tabHeight / 2 : inc;
+                inc = _tabHeight / 2 >= inc ? oldItemArea.Height / 6 - 2 : inc;
+                inc = _tabHeight / 2 >= inc ? oldItemArea.Height / 3 - 2 : inc;
+                inc = _tabHeight / 2 >= inc ? oldItemArea.Height / 2 - 2 : inc;
+                inc = _tabHeight / 2 >= inc ? _tabHeight / 2 : inc;
 
                 if (oldTabIndex < selTabIndex)
                 {
@@ -1970,7 +1970,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     maxY = _oldselectedTab.Bottom + _tabSpacing;
 
-                    if ((tab.Y - inc) <= maxY)
+                    if (tab.Y - inc <= maxY)
                     {
                         inc = tab.Y - maxY;
                     }
@@ -1985,13 +1985,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     tab = this[oldTabIndex + 1];
                     tab.Width = DisplayRectangle.Width - 2;
 
-                    oldItemArea.Height = (tab.Top - 1) - (_oldselectedTab.Bottom - 1);
-                    _selectedTab.Width = (DisplayRectangle.Width - 2) - (_upScroll.Width + 1);
+                    oldItemArea.Height = tab.Top - 1 - (_oldselectedTab.Bottom - 1);
+                    _selectedTab.Width = DisplayRectangle.Width - 2 - (_upScroll.Width + 1);
                     _oldselectedTab.Width = DisplayRectangle.Width - 2;
                     tab = this[selTabIndex + 1];
                     if (null != tab)
                     {
-                        tab.Width = (DisplayRectangle.Width - 2) - (_upScroll.Width + 1);
+                        tab.Width = DisplayRectangle.Width - 2 - (_upScroll.Width + 1);
                         _dnScroll.Y = tab.Y;
                         paintRect.Height = _dnScroll.Bottom - paintRect.Y;
                     }
@@ -2013,14 +2013,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 }
                 else
                 {
-                    maxY = DisplayRectangle.Bottom - ((_tabHeight + _tabSpacing) * (_toolBoxTabs.Count - (selTabIndex + 1)));
+                    maxY = DisplayRectangle.Bottom - (_tabHeight + _tabSpacing) * (_toolBoxTabs.Count - (selTabIndex + 1));
                     //maxY = (maxY <= _selectedTab.Y + (_itemHeight + _itemSpacing) ) ? _selectedTab.Y + (2*_itemHeight) + 2*_itemSpacing : maxY; 
-                    maxY = (maxY <= _selectedTab.Y + (_itemHeight + _itemSpacing)) ? _selectedTab.Bottom + (_itemHeight + _itemSpacing + _tabSpacing) : maxY;
+                    maxY = maxY <= _selectedTab.Y + _itemHeight + _itemSpacing ? _selectedTab.Bottom + _itemHeight + _itemSpacing + _tabSpacing : maxY;
 
                     paintRect.Y = _selectedTab.Top;
 
                     tab = this[selTabIndex + 1];
-                    if ((tab.Y + inc) >= maxY)
+                    if (tab.Y + inc >= maxY)
                     {
                         inc = maxY - tab.Y;
                     }
@@ -2032,7 +2032,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     tab = this[selTabIndex + 1];
 
-                    _selectedTab.Width = (DisplayRectangle.Width - 2) - (_upScroll.Width + 1);
+                    _selectedTab.Width = DisplayRectangle.Width - 2 - (_upScroll.Width + 1);
                     tab.Width = _selectedTab.Width;
                     _upScroll.Y = _selectedTab.Y;
                     _dnScroll.Y = tab.Y;
@@ -2048,12 +2048,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     {
                         tab.Width = DisplayRectangle.Width - 2;
                         paintRect.Height = tab.Bottom - paintRect.Y;
-                        oldItemArea.Height = (tab.Top - 1) - (_oldselectedTab.Bottom + 1);
+                        oldItemArea.Height = tab.Top - 1 - (_oldselectedTab.Bottom + 1);
 
                     }
                     else
                     {
-                        oldItemArea.Height = (DisplayRectangle.Bottom) - ((_oldselectedTab.Bottom - 1) + _itemHeight);
+                        oldItemArea.Height = DisplayRectangle.Bottom - (_oldselectedTab.Bottom - 1 + _itemHeight);
                     }
 
                     tab = this[selTabIndex + 1];
@@ -2074,7 +2074,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 oldItemArea.Y = _oldselectedTab.Bottom;
                 oldItemArea.Width = DisplayRectangle.Width - 2;
 
-                selItemArea.Height = (_dnScroll.Y - _selectedTab.Bottom) + 0;
+                selItemArea.Height = _dnScroll.Y - _selectedTab.Bottom + 0;
 
                 _oldselectedTab.ItemArea = oldItemArea;
                 _selectedTab.ItemArea = selItemArea;
@@ -2144,7 +2144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 return;
             }
 
-            System.Diagnostics.Debug.WriteLine("ToolBox DoLayout called...");
+            DebugUtilities.WriteLine("ToolBox DoLayout called...");
 
             rect.Height = _tabHeight;
             rect.Width = DisplayRectangle.Width - 2;
@@ -2166,7 +2166,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
             for (iLoop = 0; bOK && iLoop < _toolBoxTabs.Count; iLoop++)
             {
-                if (!bInitial && (_tabHeight + (_toolBoxTabs.Count * rect.Height)) > DisplayRectangle.Height)
+                if (!bInitial && _tabHeight + _toolBoxTabs.Count * rect.Height > DisplayRectangle.Height)
                 {
                     bOK = false;
                     bScrollUpSet = true;
@@ -2199,13 +2199,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                         if (null != tab2)
                         {
-                            newY = (DisplayRectangle.Bottom - ((_tabHeight + _tabSpacing) * (_toolBoxTabs.Count - (iLoop))));
-                            newY = (newY <= rect.Y + (_itemHeight + _itemSpacing)) ? rect.Y + (_itemHeight + _itemSpacing) : newY;
+                            newY = DisplayRectangle.Bottom - (_tabHeight + _tabSpacing) * (_toolBoxTabs.Count - iLoop);
+                            newY = newY <= rect.Y + _itemHeight + _itemSpacing ? rect.Y + _itemHeight + _itemSpacing : newY;
                             rect.Y = newY;
                         }
                         else
                         {
-                            rect.Y += (_tabHeight + _tabSpacing + _itemSpacing);
+                            rect.Y += _tabHeight + _tabSpacing + _itemSpacing;
                         }
                     }
                     rect.Y += _tabHeight + _tabSpacing;
@@ -2234,7 +2234,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     rcItem.X = _selectedTab.X;
                     rcItem.Y = _selectedTab.Bottom;
                     rcItem.Width = DisplayRectangle.Width - 2;
-                    rcItem.Height = (_dnScroll.Y - rcItem.Y) + 0;
+                    rcItem.Height = _dnScroll.Y - rcItem.Y + 0;
 
                     _selectedTab.ItemArea = rcItem;
                 }
@@ -2308,7 +2308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         private bool IsHeightValid(int height, bool forLargeIcons)
         {
-            return (height >= GetMinimumHeight(forLargeIcons));
+            return height >= GetMinimumHeight(forLargeIcons);
         }
 
         private int GetMinimumHeight(bool forLargeIcons)
@@ -2490,7 +2490,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                         color = color.Remove(0, 1);
                         rgb = Convert.ToInt32(color, 16);
                         rgb = (int)(rgb & 0x00ffffff);
-                        c = Color.FromArgb(0xff, ((rgb & 0xff0000) >> 16), ((rgb & 0x00ff00) >> 8), (rgb & 0x0000ff));
+                        c = Color.FromArgb(0xff, (rgb & 0xff0000) >> 16, (rgb & 0x00ff00) >> 8, rgb & 0x0000ff);
                     }
                     else
                     {
@@ -2620,7 +2620,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                 e.Effect = null != dragItem ? DragDropEffects.Move : DragDropEffects.None;
 
-                //System.Diagnostics.Debug.WriteLine(Environment.TickCount + " Drag item index " + index + " Item " + dragItem + " in " + ptPos);
+                //DebugUtilities.WriteLine(Environment.TickCount + " Drag item index " + index + " Item " + dragItem + " in " + ptPos);
 
                 if (null != dragItem && _patBltItem != dragItem)
                 {
@@ -2868,7 +2868,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 }
                 else
                 {
-                    moveMsgLocked = Keys.Enter == e.KeyCode || Keys.Space == e.KeyCode;
+                    moveMsgLocked = e.KeyCode is Keys.Enter or Keys.Space;
                     _selectedTab.HandleKeyDown(e);
                 }
                 try
@@ -3011,7 +3011,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
             PaintBackground(g, r);
 
-            //System.Diagnostics.Debug.WriteLine("Paint clip rect " + r);
+            //DebugUtilities.WriteLine("Paint clip rect " + r);
             //g.FillRectangle(new SolidBrush(GetRandomColor()),r);
             PaintScrollButtons(g, r);
 
@@ -3136,7 +3136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                 Focus();
             }
 
-            System.Diagnostics.Debug.WriteLine($"Control is Focused ? {Focused}");
+            DebugUtilities.WriteLine($"Control is Focused ? {Focused}");
 
             if (_upScroll.HitTest(e.X, e.Y))
             {
@@ -3338,7 +3338,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         private void OnTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Keys.Enter == e.KeyCode || Keys.Escape == e.KeyCode)
+            if (e.KeyCode is Keys.Enter or Keys.Escape)
             {
                 EndRenameItem(false, Keys.Escape == e.KeyCode);
             }
@@ -4063,13 +4063,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
                 InitColours();

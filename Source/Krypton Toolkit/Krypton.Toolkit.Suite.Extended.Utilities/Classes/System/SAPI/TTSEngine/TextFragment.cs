@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
 		internal TextFragment(FragmentState fragState, string textToSpeak, string textFrag, int offset, int length)
 		{
-			if (fragState.Action == TtsEngineAction.Speak || fragState.Action == TtsEngineAction.Pronounce)
+			if (fragState.Action is TtsEngineAction.Speak or TtsEngineAction.Pronounce)
 			{
 				textFrag = textToSpeak;
 			}

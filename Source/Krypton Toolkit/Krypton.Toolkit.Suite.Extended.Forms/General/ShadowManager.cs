@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,14 +35,14 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
     internal class ShadowManager
     {
         #region Instance Fields
-        private readonly VirtualForm _parentForm;
+        private readonly VisualForm _parentForm;
         private readonly ShadowValues _shadowValues;
         private bool _allowDrawing;
         private VisualShadowBase?[] _shadowForms;
         #endregion
 
         #region Identity
-        public ShadowManager(VirtualForm kryptonForm, ShadowValues shadowValues)
+        public ShadowManager(VisualForm kryptonForm, ShadowValues shadowValues)
         {
             _parentForm = kryptonForm;
             _shadowValues = shadowValues;
@@ -82,9 +82,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         {
             if (_shadowForms != null)
             {
-                foreach (VisualShadowBase shadowForm in _shadowForms)
+                foreach (var shadowForm in _shadowForms)
                 {
-                    shadowForm.Visible = false;
+                    shadowForm!.Visible = false;
                     shadowForm.Dispose();
                 }
             }
@@ -108,9 +108,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
             if (_shadowForms != null)
             {
-                foreach (VisualShadowBase shadowForm in _shadowForms)
+                foreach (var shadowForm in _shadowForms)
                 {
-                    shadowForm.Visible = false;
+                    shadowForm!.Visible = false;
                     shadowForm.Dispose();
                 }
             }
@@ -118,8 +118,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private void FormLoaded(object sender, EventArgs e)
         {
-            _allowDrawing = (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-                            && (Process.GetCurrentProcess().ProcessName != @"devenv");
+            _allowDrawing = LicenseManager.UsageMode != LicenseUsageMode.Designtime
+                            && Process.GetCurrentProcess().ProcessName != @"devenv";
             if (_shadowForms == null)
             {
                 InitialiseShadowForms();
@@ -158,9 +158,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 return;
             }
 
-            foreach (VisualShadowBase shadowForm in _shadowForms)
+            foreach (var shadowForm in _shadowForms)
             {
-                shadowForm.Visible = AllowDrawing;
+                shadowForm!.Visible = AllowDrawing;
             }
         }
 
@@ -181,9 +181,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             // calculate the "whole" shadow
             Rectangle clientRectangle = CommonHelper.RealClientRectangle(_parentForm.Handle);
             using Bitmap allShadow = DrawShadowBitmap(clientRectangle);
-            foreach (VisualShadowBase shadowForm in _shadowForms)
+            foreach (var shadowForm in _shadowForms)
             {
-                shadowForm.ReCalcShadow(allShadow, clientRectangle);
+                shadowForm?.ReCalcShadow(allShadow, clientRectangle);
             }
         }
 
@@ -242,7 +242,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 using (Matrix matrix = new())
                 {
                     gp.AddEllipse(0, 0, blurOffset * 2, blurOffset * 2);
-                    using (PathGradientBrush pgb = new(gp)
+                    using (PathGradientBrush pgb = new PathGradientBrush(gp)
                     {
                         CenterColor = _shadowValues.Colour,
                         SurroundColors = new[] { Color.Transparent },
@@ -294,9 +294,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             void Mi()
             {
                 var shadowFormVisible = AllowDrawing;
-                foreach (VisualShadowBase shadowForm in _shadowForms)
+                foreach (var shadowForm in _shadowForms)
                 {
-                    shadowForm.Visible = shadowFormVisible;
+                    shadowForm!.Visible = shadowFormVisible;
                 }
                 if (!shadowFormVisible)
                 {
@@ -307,11 +307,11 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
                 IntPtr hWinPosInfo = PlatformInvoke.BeginDeferWindowPos(_shadowForms.Length);
 
-                foreach (VisualShadowBase shadowForm in _shadowForms)
+                foreach (var shadowForm in _shadowForms)
                 {
-                    shadowForm.CalcPositionShadowForm(desktopLocation,
+                    shadowForm?.CalcPositionShadowForm(desktopLocation,
                         CommonHelper.RealClientRectangle(_parentForm.Handle));
-                    Rectangle targetRect = shadowForm.TargetRect;
+                    Rectangle targetRect = shadowForm!.TargetRect;
                     hWinPosInfo = PlatformInvoke.DeferWindowPos(hWinPosInfo, shadowForm.Handle, /*PlatformInvoke.HWND_TOPMOST, //*/_parentForm.Handle,
                         targetRect.X, targetRect.Y, targetRect.Width, targetRect.Height,
                         (move ? PlatformInvoke.SWP_.NOSIZE : 0) |

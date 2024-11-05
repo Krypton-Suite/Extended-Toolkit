@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -143,12 +143,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             SPCFGRULEATTRIBUTES sPCFGRULEATTRIBUTES = (SPCFGRULEATTRIBUTES)0;
             if (id == _sRoot)
             {
-                sPCFGRULEATTRIBUTES |= (SPCFGRULEATTRIBUTES.SPRAF_TopLevel | SPCFGRULEATTRIBUTES.SPRAF_Active | SPCFGRULEATTRIBUTES.SPRAF_Root);
+                sPCFGRULEATTRIBUTES |= SPCFGRULEATTRIBUTES.SPRAF_TopLevel | SPCFGRULEATTRIBUTES.SPRAF_Active | SPCFGRULEATTRIBUTES.SPRAF_Root;
                 _hasRoot = true;
             }
             if (publicRule == RulePublic.True)
             {
-                sPCFGRULEATTRIBUTES |= (SPCFGRULEATTRIBUTES.SPRAF_TopLevel | SPCFGRULEATTRIBUTES.SPRAF_Export);
+                sPCFGRULEATTRIBUTES |= SPCFGRULEATTRIBUTES.SPRAF_TopLevel | SPCFGRULEATTRIBUTES.SPRAF_Export;
             }
             if (dynamic == RuleDynamic.True)
             {

@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             char[] array = new char[_lastComplete];
             _phonemes.CopyTo(0, array, 0, _lastComplete);
             _phonemes.Remove(0, _lastComplete);
-            char[] value = (_conversion != 0) ? _alphabetConverter.SapiToIpa(array) : _alphabetConverter.IpaToSapi(array);
+            char[] value = _conversion != 0 ? _alphabetConverter.SapiToIpa(array) : _alphabetConverter.IpaToSapi(array);
             TTSEvent tTSEvent = null;
             long num = 0L;
             tTSEvent = (TTSEvent)_phonemeQueue.Peek();

@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -118,15 +118,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonBorderEdge1 = new();
             this.kryptonTableLayoutPanel1 = new();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxLightestColour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxLightColour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxMediumColour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxDarkestColour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxBaseColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbxLightestColour).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbxLightColour).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbxMediumColour).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbxDarkestColour).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbxBaseColour).BeginInit();
             this.kryptonTableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,7 +166,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnDebugConsole
             // 
-            this.kbtnDebugConsole.CornerRoundingRadius = -1F;
             this.kbtnDebugConsole.Location = new(432, 13);
             this.kbtnDebugConsole.Name = "kbtnDebugConsole";
             this.kbtnDebugConsole.Size = new(96, 25);
@@ -176,7 +175,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnOptions
             // 
-            this.kbtnOptions.CornerRoundingRadius = -1F;
             this.kbtnOptions.Location = new(335, 13);
             this.kbtnOptions.Name = "kbtnOptions";
             this.kbtnOptions.Size = new(90, 25);
@@ -185,7 +183,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnImportColours
             // 
-            this.kbtnImportColours.CornerRoundingRadius = -1F;
             this.kbtnImportColours.Location = new(224, 13);
             this.kbtnImportColours.Name = "kbtnImportColours";
             this.kbtnImportColours.Size = new(104, 25);
@@ -194,7 +191,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnExportColours
             // 
-            this.kbtnExportColours.CornerRoundingRadius = -1F;
             this.kbtnExportColours.Enabled = false;
             this.kbtnExportColours.Location = new(128, 13);
             this.kbtnExportColours.Name = "kbtnExportColours";
@@ -204,7 +200,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateColours
             // 
-            this.kbtnGenerateColours.CornerRoundingRadius = -1F;
             this.kbtnGenerateColours.Location = new(13, 13);
             this.kbtnGenerateColours.Name = "kbtnGenerateColours";
             this.kbtnGenerateColours.Size = new(109, 25);
@@ -213,8 +208,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonButton1
             // 
-            this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonButton1.CornerRoundingRadius = -1F;
+            this.kryptonButton1.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kryptonButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kryptonButton1.Location = new(752, 13);
             this.kryptonButton1.Name = "kryptonButton1";
@@ -257,7 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ktxtHexadecimalValue.MaxLength = 6;
             this.ktxtHexadecimalValue.Name = "ktxtHexadecimalValue";
             this.ktxtHexadecimalValue.Size = new(100, 24);
-            this.ktxtHexadecimalValue.StateCommon.Content.Font = new("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ktxtHexadecimalValue.StateCommon.Content.Font = new("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.ktxtHexadecimalValue.TabIndex = 107;
             this.ktxtHexadecimalValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -272,7 +266,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateRandomColour
             // 
-            this.kbtnGenerateRandomColour.CornerRoundingRadius = -1F;
             this.kbtnGenerateRandomColour.Location = new(493, 537);
             this.kbtnGenerateRandomColour.Name = "kbtnGenerateRandomColour";
             this.kbtnGenerateRandomColour.Size = new(177, 25);
@@ -286,13 +279,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kcbtnChooseBaseColour.Name = "kcbtnChooseBaseColour";
             this.kcbtnChooseBaseColour.Size = new(197, 25);
             this.kcbtnChooseBaseColour.TabIndex = 103;
-            this.kcbtnChooseBaseColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnChooseBaseColour.Values.Image")));
+            this.kcbtnChooseBaseColour.Values.Image = (System.Drawing.Image)resources.GetObject("kcbtnChooseBaseColour.Values.Image");
             this.kcbtnChooseBaseColour.Values.RoundedCorners = 8;
             this.kcbtnChooseBaseColour.Values.Text = "Ch&oose a Base Colour";
             // 
             // kbtnGenerateGreen
             // 
-            this.kbtnGenerateGreen.CornerRoundingRadius = -1F;
             this.kbtnGenerateGreen.Location = new(589, 409);
             this.kbtnGenerateGreen.Name = "kbtnGenerateGreen";
             this.kbtnGenerateGreen.Size = new(120, 25);
@@ -301,7 +293,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateBlue
             // 
-            this.kbtnGenerateBlue.CornerRoundingRadius = -1F;
             this.kbtnGenerateBlue.Location = new(725, 409);
             this.kbtnGenerateBlue.Name = "kbtnGenerateBlue";
             this.kbtnGenerateBlue.Size = new(119, 25);
@@ -310,7 +301,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnGenerateRed
             // 
-            this.kbtnGenerateRed.CornerRoundingRadius = -1F;
             this.kbtnGenerateRed.Location = new(445, 409);
             this.kbtnGenerateRed.Name = "kbtnGenerateRed";
             this.kbtnGenerateRed.Size = new(120, 25);
@@ -329,7 +319,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knudBlueValue.Size = new(74, 23);
             this.knudBlueValue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
             this.knudBlueValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudBlueValue.StateCommon.Content.Font = new("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudBlueValue.StateCommon.Content.Font = new("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.knudBlueValue.TabIndex = 99;
             // 
             // knudGreenValue
@@ -344,7 +334,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knudGreenValue.Size = new(74, 23);
             this.knudGreenValue.StateCommon.Back.Color1 = System.Drawing.Color.Green;
             this.knudGreenValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudGreenValue.StateCommon.Content.Font = new("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudGreenValue.StateCommon.Content.Font = new("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.knudGreenValue.TabIndex = 98;
             // 
             // knudRedValue
@@ -359,7 +349,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knudRedValue.Size = new(74, 23);
             this.knudRedValue.StateCommon.Back.Color1 = System.Drawing.Color.Red;
             this.knudRedValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudRedValue.StateCommon.Content.Font = new("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudRedValue.StateCommon.Content.Font = new("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.knudRedValue.TabIndex = 97;
             // 
             // knudAlphaValue
@@ -372,7 +362,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             0});
             this.knudAlphaValue.Name = "knudAlphaValue";
             this.knudAlphaValue.Size = new(74, 23);
-            this.knudAlphaValue.StateCommon.Content.Font = new("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudAlphaValue.StateCommon.Content.Font = new("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.knudAlphaValue.TabIndex = 96;
             this.knudAlphaValue.Value = new(new int[] {
             255,
@@ -583,7 +573,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kryptonTableLayoutPanel1
             // 
-            this.kryptonTableLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("kryptonTableLayoutPanel1.BackgroundImage")));
+            this.kryptonTableLayoutPanel1.BackgroundImage = (System.Drawing.Image)resources.GetObject("kryptonTableLayoutPanel1.BackgroundImage");
             this.kryptonTableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.kryptonTableLayoutPanel1.ColumnCount = 1;
             this.kryptonTableLayoutPanel1.ColumnStyles.Add(new(System.Windows.Forms.SizeType.Percent, 100F));
@@ -628,17 +618,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.Load += new(this.InternalBasicPaletteCreator_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxLightestColour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxLightColour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxMediumColour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxDarkestColour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxBaseColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbxLightestColour).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbxLightColour).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbxMediumColour).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbxDarkestColour).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbxBaseColour).EndInit();
             this.kryptonTableLayoutPanel1.ResumeLayout(false);
             this.kryptonTableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

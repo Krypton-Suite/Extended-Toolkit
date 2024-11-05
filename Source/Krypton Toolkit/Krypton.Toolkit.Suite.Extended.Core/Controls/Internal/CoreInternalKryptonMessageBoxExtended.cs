@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,14 +48,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this._button1 = new();
             this._button2 = new();
             this._doNotShowAgainOption = new();
-            ((System.ComponentModel.ISupportInitialize)(this._panelMessage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this._panelMessage).BeginInit();
             this._panelMessage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._panelMessageText)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this._panelMessageText).BeginInit();
             this._panelMessageText.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._panelMessageIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this._panelMessageIcon).BeginInit();
             this._panelMessageIcon.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._messageIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._panelButtons)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this._messageIcon).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this._panelButtons).BeginInit();
             this._panelButtons.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this._messageText.AutoSize = false;
             this._messageText.Font = new("Segoe UI", 9F);
-            this._messageText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this._messageText.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this._messageText.LabelStyle = Krypton.Toolkit.LabelStyle.NormalPanel;
             this._messageText.Location = new(5, 18);
             this._messageText.Margin = new(0);
@@ -143,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // _button3
             // 
-            this._button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._button3.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             this._button3.AutoSize = true;
             this._button3.IgnoreAltF4 = false;
             this._button3.Location = new(106, 0);
@@ -156,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // _button1
             // 
-            this._button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._button1.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             this._button1.AutoSize = true;
             this._button1.IgnoreAltF4 = false;
             this._button1.Location = new(6, 0);
@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // _button2
             // 
-            this._button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._button2.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             this._button2.AutoSize = true;
             this._button2.IgnoreAltF4 = false;
             this._button2.Location = new(56, 0);
@@ -206,15 +206,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.TopMost = true;
-            ((System.ComponentModel.ISupportInitialize)(this._panelMessage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this._panelMessage).EndInit();
             this._panelMessage.ResumeLayout(false);
             this._panelMessage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._panelMessageText)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this._panelMessageText).EndInit();
             this._panelMessageText.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._panelMessageIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this._panelMessageIcon).EndInit();
             this._panelMessageIcon.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._messageIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._panelButtons)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this._messageIcon).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this._panelButtons).EndInit();
             this._panelButtons.ResumeLayout(false);
             this._panelButtons.PerformLayout();
             this.ResumeLayout(false);
@@ -447,10 +447,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         if (IgnoreAltF4)
                         {
                             // Extract the keys being pressed
-                            Keys keys = ((Keys)((int)m.WParam.ToInt64()));
+                            Keys keys = (Keys)(int)m.WParam.ToInt64();
 
                             // If the user standard combination ALT + F4
-                            if ((keys == Keys.F4) && ((ModifierKeys & Keys.Alt) == Keys.Alt))
+                            if (keys == Keys.F4 && (ModifierKeys & Keys.Alt) == Keys.Alt)
                             {
                                 // Eat the message, so standard window proc does not close the window
                                 return;
@@ -960,26 +960,26 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                                  string button1Text = null, string button2Text = null, string button3Text = null)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
-            if (!SystemInformation.UserInteractive && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
+            if (!SystemInformation.UserInteractive && (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0)
             {
                 throw new InvalidOperationException("Cannot show modal dialog when non-interactive");
             }
 
             // Check if trying to show a message box from a service and the owner has been specified, this is not possible
-            if ((owner != null) && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0))
+            if (owner != null && (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0)
             {
                 throw new ArgumentException(@"Cannot show message box from a service with an owner specified", nameof(options));
             }
 
             // Check if trying to show a message box from a service and help information is specified, this is not possible
-            if ((helpInformation != null) && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0))
+            if (helpInformation != null && (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0)
             {
                 throw new ArgumentException(@"Cannot show message box from a service with help specified", nameof(options));
             }
 
             // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
             IWin32Window showOwner = null;
-            if ((helpInformation != null) || ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
+            if (helpInformation != null || (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0)
             {
                 // If do not have an owner passed in then get the active window and use that instead
                 showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
@@ -996,7 +996,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void UpdateText()
         {
-            Text = (string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0]);
+            Text = string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0];
             _messageText.StateCommon.Font = MessageBoxTypeface;
             _messageText.Text = _text;
         }
@@ -1066,14 +1066,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             switch (_buttons)
             {
                 case ExtendedMessageBoxButtons.OK:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.OK;
                     _button1.DialogResult = DialogResult.OK;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     _button2.Visible = _button3.Visible = false;
                     break;
                 case ExtendedMessageBoxButtons.OkCancel:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.OK;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1081,8 +1081,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     _button3.Visible = false;
                     break;
                 case ExtendedMessageBoxButtons.YesNo:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Yes;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.No;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1091,9 +1091,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     ControlBox = false;
                     break;
                 case ExtendedMessageBoxButtons.YesNoCancel:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
-                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Yes;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.No;
+                    _button3.Text = KryptonManager.Strings.GeneralStrings.Cancel;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button3.DialogResult = DialogResult.Cancel;
@@ -1102,8 +1102,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     _button3.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     break;
                 case ExtendedMessageBoxButtons.RetryCancel:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Retry;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1111,9 +1111,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     _button3.Visible = false;
                     break;
                 case ExtendedMessageBoxButtons.AbortRetryIgnore:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Abort;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
-                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Ignore;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Abort;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Retry;
+                    _button3.Text = KryptonManager.Strings.GeneralStrings.Ignore;
                     _button1.DialogResult = DialogResult.Abort;
                     _button2.DialogResult = DialogResult.Retry;
                     _button3.DialogResult = DialogResult.Ignore;
@@ -1138,14 +1138,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             switch (_buttons)
             {
                 case ExtendedMessageBoxButtons.OK:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.OK;
                     _button1.DialogResult = DialogResult.OK;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     _button2.Visible = _button3.Visible = false;
                     break;
                 case ExtendedMessageBoxButtons.OkCancel:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.OK;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1153,8 +1153,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     _button3.Visible = false;
                     break;
                 case ExtendedMessageBoxButtons.YesNo:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Yes;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.No;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1163,9 +1163,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     ControlBox = false;
                     break;
                 case ExtendedMessageBoxButtons.YesNoCancel:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
-                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Yes;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.No;
+                    _button3.Text = KryptonManager.Strings.GeneralStrings.Cancel;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button3.DialogResult = DialogResult.Cancel;
@@ -1174,8 +1174,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     _button3.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
                     break;
                 case ExtendedMessageBoxButtons.RetryCancel:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Retry;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = MessageBoxTypeface;
@@ -1183,9 +1183,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     _button3.Visible = false;
                     break;
                 case ExtendedMessageBoxButtons.AbortRetryIgnore:
-                    _button1.Text = KryptonLanguageManager.GeneralToolkitStrings.Abort;
-                    _button2.Text = KryptonLanguageManager.GeneralToolkitStrings.Retry;
-                    _button3.Text = KryptonLanguageManager.GeneralToolkitStrings.Ignore;
+                    _button1.Text = KryptonManager.Strings.GeneralStrings.Abort;
+                    _button2.Text = KryptonManager.Strings.GeneralStrings.Retry;
+                    _button3.Text = KryptonManager.Strings.GeneralStrings.Ignore;
                     _button1.DialogResult = DialogResult.Abort;
                     _button2.DialogResult = DialogResult.Retry;
                     _button3.DialogResult = DialogResult.Ignore;
@@ -1356,7 +1356,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 // Find size of the label, with a max of 2/3 screen width
                 Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
                 SizeF scaledMonitorSize = screen.Bounds.Size;
-                scaledMonitorSize.Width *= (2 / 3.0f);
+                scaledMonitorSize.Width *= 2 / 3.0f;
                 scaledMonitorSize.Height *= 0.95f;
                 _messageText.UpdateFont();
                 SizeF messageSize = g.MeasureString(_text, _messageText.Font, scaledMonitorSize);
@@ -1365,8 +1365,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 float messageXSize = Math.Max(messageSize.Width, captionSize.Width);
                 // Work out DPI adjustment factor
-                float factorX = g.DpiX > 96 ? ((1.0f * g.DpiX) / 96) : 1.0f;
-                float factorY = g.DpiY > 96 ? ((1.0f * g.DpiY) / 96) : 1.0f;
+                float factorX = g.DpiX > 96 ? 1.0f * g.DpiX / 96 : 1.0f;
+                float factorY = g.DpiY > 96 ? 1.0f * g.DpiY / 96 : 1.0f;
                 messageSize.Width = messageXSize * factorX;
                 messageSize.Height = messageSize.Height * factorY;
 
@@ -1475,23 +1475,23 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             _button1.Size = maxButtonSize;
 
             // Size the panel for the buttons
-            _panelButtons.Size = new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            _panelButtons.Size = new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
 
             // Button area is the number of buttons with gaps between them and 10 pixels around all edges
-            return new((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            return new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
         }
 
         private void button_keyDown(object sender, KeyEventArgs e)
         {
             // Escape key kills the dialog if we allow it to be closed
-            if ((e.KeyCode == Keys.Escape) && ControlBox)
+            if (e.KeyCode == Keys.Escape && ControlBox)
             {
                 Close();
             }
             else
             {
                 // Pressing Ctrl+C should copy message text into the clipboard
-                if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.C))
+                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.C)
                 {
                     StringBuilder sb = new();
 

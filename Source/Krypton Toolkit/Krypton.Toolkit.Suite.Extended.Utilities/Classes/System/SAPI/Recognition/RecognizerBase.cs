@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -243,7 +243,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 try
                 {
                     SPRECOSTATE recoState = SapiRecognizer.GetRecoState();
-                    if (recoState == SPRECOSTATE.SPRST_ACTIVE || recoState == SPRECOSTATE.SPRST_ACTIVE_ALWAYS)
+                    if (recoState is SPRECOSTATE.SPRST_ACTIVE or SPRECOSTATE.SPRST_ACTIVE_ALWAYS)
                     {
                         return RecognizerState.Listening;
                     }
@@ -361,7 +361,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                     lock (SapiRecognizer)
                     {
                         SpeechAudioFormatInfo audioFormat = AudioFormat;
-                        return (audioFormat.AverageBytesPerSecond > 0) ? new TimeSpan((long)(status.AudioStatus.CurDevicePos * 10000000 / (ulong)audioFormat.AverageBytesPerSecond)) : TimeSpan.Zero;
+                        return audioFormat.AverageBytesPerSecond > 0 ? new TimeSpan((long)(status.AudioStatus.CurDevicePos * 10000000 / (ulong)audioFormat.AverageBytesPerSecond)) : TimeSpan.Zero;
                     }
                 }
                 catch (COMException e)
@@ -750,7 +750,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         internal RecognitionResult EmulateRecognize(string inputText, CompareOptions compareOptions)
         {
             Helpers.ThrowIfEmptyOrNull(inputText, "inputText");
-            bool flag = compareOptions == CompareOptions.IgnoreCase || compareOptions == CompareOptions.OrdinalIgnoreCase;
+            bool flag = compareOptions is CompareOptions.IgnoreCase or CompareOptions.OrdinalIgnoreCase;
             if (!_supportsSapi53 && !flag)
             {
                 throw new NotSupportedException(SR.Get(SRID.NotSupportedWithThisVersionOfSAPICompareOption));
@@ -761,7 +761,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         internal void EmulateRecognizeAsync(string inputText, CompareOptions compareOptions)
         {
             Helpers.ThrowIfEmptyOrNull(inputText, "inputText");
-            bool flag = compareOptions == CompareOptions.IgnoreCase || compareOptions == CompareOptions.OrdinalIgnoreCase;
+            bool flag = compareOptions is CompareOptions.IgnoreCase or CompareOptions.OrdinalIgnoreCase;
             if (!_supportsSapi53 && !flag)
             {
                 throw new NotSupportedException(SR.Get(SRID.NotSupportedWithThisVersionOfSAPICompareOption));
@@ -983,7 +983,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                     }
                     else
                     {
-                        _isRecognizing = (_isEmulateRecognition = false);
+                        _isRecognizing = _isEmulateRecognition = false;
                     }
                 }
             }
@@ -1348,7 +1348,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                     {
                         sapiGrammar.SetGrammarLoader(_recoThunk);
                     }
-                    sapiGrammar.LoadCmdFromMemory2(grammar2, SPLOADOPTIONS.SPLO_STATIC, null, (baseUri == null) ? null : baseUri.ToString());
+                    sapiGrammar.LoadCmdFromMemory2(grammar2, SPLOADOPTIONS.SPLO_STATIC, null, baseUri == null ? null : baseUri.ToString());
                 }
                 else
                 {
@@ -1562,7 +1562,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 GCHandle[] memHandles = null;
                 ISpPhrase spPhrase = null;
                 IntPtr coMem;
-                spPhrase = ((wordUnits != null) ? SPPHRASE.CreatePhraseFromWordUnits(wordUnits, RecognizerInfo.Culture, out memHandles, out coMem) : SPPHRASE.CreatePhraseFromText(phrase.Trim(), RecognizerInfo.Culture, out memHandles, out coMem));
+                spPhrase = wordUnits != null ? SPPHRASE.CreatePhraseFromWordUnits(wordUnits, RecognizerInfo.Culture, out memHandles, out coMem) : SPPHRASE.CreatePhraseFromText(phrase.Trim(), RecognizerInfo.Culture, out memHandles, out coMem);
                 try
                 {
                     SAPIErrorCodes sAPIErrorCodes = SapiRecognizer.EmulateRecognition(spPhrase, (uint)flag);
@@ -1594,7 +1594,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         private void EmulateRecognizedFailReportError(SAPIErrorCodes hr)
         {
             _lastException = ExceptionFromSapiCreateRecognizerError(hr);
-            if (hr < SAPIErrorCodes.S_OK || hr == SAPIErrorCodes.SP_NO_RULE_ACTIVE)
+            if (hr is < SAPIErrorCodes.S_OK or SAPIErrorCodes.SP_NO_RULE_ACTIVE)
             {
                 FireEmulateRecognizeCompletedEvent(null, _lastException, true);
             }
@@ -1602,9 +1602,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         private void ActivateRule(SapiGrammar sapiGrammar, Uri uri, string ruleName)
         {
-            SPRULESTATE sPRULESTATE = (!_pauseRecognizerOnRecognition) ? SPRULESTATE.SPRS_ACTIVE : SPRULESTATE.SPRS_ACTIVE_WITH_AUTO_PAUSE;
-            SAPIErrorCodes sAPIErrorCodes = (!Grammar.IsDictationGrammar(uri)) ? sapiGrammar.SetRuleState(ruleName, sPRULESTATE) : sapiGrammar.SetDictationState(sPRULESTATE);
-            if (sAPIErrorCodes == SAPIErrorCodes.SPERR_NOT_TOPLEVEL_RULE || sAPIErrorCodes == SAPIErrorCodes.SP_NO_RULES_TO_ACTIVATE)
+            SPRULESTATE sPRULESTATE = !_pauseRecognizerOnRecognition ? SPRULESTATE.SPRS_ACTIVE : SPRULESTATE.SPRS_ACTIVE_WITH_AUTO_PAUSE;
+            SAPIErrorCodes sAPIErrorCodes = !Grammar.IsDictationGrammar(uri) ? sapiGrammar.SetRuleState(ruleName, sPRULESTATE) : sapiGrammar.SetDictationState(sPRULESTATE);
+            if (sAPIErrorCodes is SAPIErrorCodes.SPERR_NOT_TOPLEVEL_RULE or SAPIErrorCodes.SP_NO_RULES_TO_ACTIVATE)
             {
                 if (uri == null)
                 {
@@ -1955,11 +1955,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 FireAudioStateChangedEvent(_audioState);
                 if (!_isEmulateRecognition)
                 {
-                    FireRecognizeCompletedEvent(lastResult, initialSilenceTimeoutReached, babbleTimeoutReached, isStreamReleased, speechEvent.AudioPosition, (speechEvent.LParam == 0L) ? null : ExceptionFromSapiStreamError((SAPIErrorCodes)speechEvent.LParam), isRecognizeCancelled);
+                    FireRecognizeCompletedEvent(lastResult, initialSilenceTimeoutReached, babbleTimeoutReached, isStreamReleased, speechEvent.AudioPosition, speechEvent.LParam == 0L ? null : ExceptionFromSapiStreamError((SAPIErrorCodes)speechEvent.LParam), isRecognizeCancelled);
                 }
                 else
                 {
-                    FireEmulateRecognizeCompletedEvent(lastResult, (speechEvent.LParam == 0L) ? lastException : ExceptionFromSapiStreamError((SAPIErrorCodes)speechEvent.LParam), isRecognizeCancelled);
+                    FireEmulateRecognizeCompletedEvent(lastResult, speechEvent.LParam == 0L ? lastException : ExceptionFromSapiStreamError((SAPIErrorCodes)speechEvent.LParam), isRecognizeCancelled);
                 }
                 FireStateChangedEvent(RecognizerState.Stopped);
             }
@@ -2209,7 +2209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                     lock (SapiRecognizer)
                     {
                         SpeechAudioFormatInfo audioFormat = AudioFormat;
-                        audioPosition = ((audioFormat.AverageBytesPerSecond > 0) ? new TimeSpan((long)(status.AudioStatus.CurDevicePos * 10000000 / (ulong)audioFormat.AverageBytesPerSecond)) : TimeSpan.Zero);
+                        audioPosition = audioFormat.AverageBytesPerSecond > 0 ? new TimeSpan((long)(status.AudioStatus.CurDevicePos * 10000000 / (ulong)audioFormat.AverageBytesPerSecond)) : TimeSpan.Zero;
                         recognizerPosition = new TimeSpan((long)status.ullRecognitionStreamTime);
                     }
                 }

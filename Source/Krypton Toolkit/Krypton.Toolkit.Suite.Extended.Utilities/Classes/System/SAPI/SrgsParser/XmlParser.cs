@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
         internal XmlParser(XmlReader reader, Uri uri)
         {
             _reader = reader;
-            _xmlTextReader = (reader as XmlTextReader);
+            _xmlTextReader = reader as XmlTextReader;
             if (uri == null && _xmlTextReader != null && _xmlTextReader.BaseURI.Length > 0)
             {
                 try
@@ -105,9 +105,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
             }
             if (uri != null)
             {
-                _filename = ((!uri.IsAbsoluteUri || !uri.IsFile) ? uri.OriginalString : uri.LocalPath);
+                _filename = !uri.IsAbsoluteUri || !uri.IsFile ? uri.OriginalString : uri.LocalPath;
                 int num = _filename.LastIndexOfAny(_SlashBackSlash);
-                _shortFilename = ((num >= 0) ? _filename.Substring(num + 1) : _filename);
+                _shortFilename = num >= 0 ? _filename.Substring(num + 1) : _filename;
             }
         }
 
@@ -215,7 +215,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                 string text2 = SR.Get(SRID.Position);
                 int lineNumber = xmlTextReader.LineNumber;
                 int linePosition = xmlTextReader.LinePosition;
-                sError = ((filename != null) ? string.Format(CultureInfo.InvariantCulture, "{0}({1},{2}): error : {3}", filename, lineNumber, linePosition, sError) : (sError + string.Format(CultureInfo.InvariantCulture, " [{0}={1}, {2}={3}]", text, lineNumber, text2, linePosition)));
+                sError = filename != null ? string.Format(CultureInfo.InvariantCulture, "{0}({1},{2}): error : {3}", filename, lineNumber, linePosition, sError) : sError + string.Format(CultureInfo.InvariantCulture, " [{0}={1}, {2}={3}]", text, lineNumber, text2, linePosition);
             }
             throw new FormatException(sError, innerException);
         }
@@ -263,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                                     break;
                                 case "language":
                                     CheckForDuplicates(ref dest2, reader);
-                                    if (dest2 == "C#" || dest2 == "VB.Net")
+                                    if (dest2 is "C#" or "VB.Net")
                                     {
                                         grammar.Language = dest2;
                                     }
@@ -317,7 +317,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                             string value = reader.Value;
                             try
                             {
-                                grammar.Culture = (_langId = new CultureInfo(value));
+                                grammar.Culture = _langId = new CultureInfo(value);
                             }
                             catch (ArgumentException)
                             {
@@ -326,7 +326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                                 {
                                     throw;
                                 }
-                                grammar.Culture = (_langId = new CultureInfo(reader.Value.Substring(0, num)));
+                                grammar.Culture = _langId = new CultureInfo(reader.Value.Substring(0, num));
                             }
                         }
                     }
@@ -1005,7 +1005,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 
         private void ParseScript(XmlReader reader, IGrammar grammar)
         {
-            int line = (_filename != null) ? _xmlTextReader.LineNumber : (-1);
+            int line = _filename != null ? _xmlTextReader.LineNumber : -1;
             string text = null;
             while (reader.MoveToNextAttribute())
             {
@@ -1128,7 +1128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                                 namespaceURI = reader.LocalName;
                                 if (namespaceURI == "subset")
                                 {
-                                    if (parent is IRule || parent is IItem)
+                                    if (parent is IRule or IItem)
                                     {
                                         element = ParseSubset(parent, reader);
                                     }
@@ -1193,7 +1193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                         flag2 = ParseChildNodeElement(parent, flag2, element);
                         flag = false;
                     }
-                    else if (reader.NodeType == XmlNodeType.Text || reader.NodeType == XmlNodeType.CDATA)
+                    else if (reader.NodeType is XmlNodeType.Text or XmlNodeType.CDATA)
                     {
                         if (parent == null)
                         {
@@ -1415,7 +1415,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                     if (reader.NodeType == XmlNodeType.Element)
                     {
                         string namespaceURI = reader.NamespaceURI;
-                        if (namespaceURI == "http://www.w3.org/2001/06/grammar" || namespaceURI == "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions")
+                        if (namespaceURI is "http://www.w3.org/2001/06/grammar" or "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions")
                         {
                             flag = true;
                         }
@@ -1492,18 +1492,18 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 
         private static void SetRepeatValues(string repeat, out int minRepeat, out int maxRepeat)
         {
-            minRepeat = (maxRepeat = 1);
+            minRepeat = maxRepeat = 1;
             if (!string.IsNullOrEmpty(repeat))
             {
                 int num = repeat.IndexOf("-", StringComparison.Ordinal);
                 if (num < 0)
                 {
                     int num2 = Convert.ToInt32(repeat, CultureInfo.InvariantCulture);
-                    if (num2 < 0 || num2 > 255)
+                    if (num2 is < 0 or > 255)
                     {
                         ThrowSrgsException(SRID.MinMaxOutOfRange, num2, num2);
                     }
-                    minRepeat = (maxRepeat = num2);
+                    minRepeat = maxRepeat = num2;
                 }
                 else if (0 < num)
                 {
@@ -1516,7 +1516,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                     {
                         maxRepeat = int.MaxValue;
                     }
-                    if (minRepeat < 0 || minRepeat > 255 || (maxRepeat != int.MaxValue && (maxRepeat < 0 || maxRepeat > 255)))
+                    if (minRepeat < 0 || minRepeat > 255 || (maxRepeat != int.MaxValue && maxRepeat is < 0 or > 255))
                     {
                         ThrowSrgsException(SRID.MinMaxOutOfRange, minRepeat, maxRepeat);
                     }

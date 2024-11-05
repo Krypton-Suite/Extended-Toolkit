@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -99,8 +99,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 if (textFragment.State.Action != TtsEngineAction.StartParagraph && textFragment.State.Action != TtsEngineAction.StartSentence)
                 {
                     SPVTEXTFRAG sPVTEXTFRAG = new SPVTEXTFRAG();
-                    sPVTEXTFRAG.gcNext = (flag ? default(GCHandle) : sapiFragLast);
-                    sPVTEXTFRAG.pNext = (flag ? IntPtr.Zero : sapiFragLast.AddrOfPinnedObject());
+                    sPVTEXTFRAG.gcNext = flag ? default(GCHandle) : sapiFragLast;
+                    sPVTEXTFRAG.pNext = flag ? IntPtr.Zero : sapiFragLast.AddrOfPinnedObject();
                     sPVTEXTFRAG.gcText = GCHandle.Alloc(textFragment.TextToSpeak, GCHandleType.Pinned);
                     sPVTEXTFRAG.pTextStart = sPVTEXTFRAG.gcText.AddrOfPinnedObject();
                     sPVTEXTFRAG.ulTextSrcOffset = textFragment.TextOffset;
@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     FragmentState state2 = textFragment.State;
                     state.eAction = (SPVACTIONS)state2.Action;
                     state.LangID = (short)state2.LangId;
-                    state.EmphAdj = ((state2.Emphasis == 1) ? 1 : 0);
+                    state.EmphAdj = state2.Emphasis == 1 ? 1 : 0;
                     if (state2.Prosody != null)
                     {
                         state.RateAdj = SapiRate(state2.Prosody.Rate);
@@ -172,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         private static IntPtr SapiCategory(SPVTEXTFRAG sapiFrag, string interpretAs, string format)
         {
             int num = Array.BinarySearch(_asSayAsFormat, interpretAs);
-            string value = (num >= 0) ? _asContextFormat[num] : format;
+            string value = num >= 0 ? _asContextFormat[num] : format;
             sapiFrag.gcSayAsCategory = GCHandle.Alloc(value, GCHandleType.Pinned);
             return sapiFrag.gcSayAsCategory.AddrOfPinnedObject();
         }
@@ -222,7 +222,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                         num = 0;
                         break;
                 }
-                num = (int)((double)(volume.IsNumberPercent ? ((float)num * volume.Number) : volume.Number) + 0.5);
+                num = (int)((double)(volume.IsNumberPercent ? (float)num * volume.Number : volume.Number) + 0.5);
             }
             else
             {
@@ -270,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                         break;
                 }
             }
-            if (num < 0 || num > 65535)
+            if (num is < 0 or > 65535)
             {
                 num = 1000;
             }
@@ -334,7 +334,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                         num = -9;
                         break;
                 }
-                num = (int)((double)(pitch.IsNumberPercent ? ((float)num * pitch.Number) : pitch.Number) + 0.5);
+                num = (int)((double)(pitch.IsNumberPercent ? (float)num * pitch.Number : pitch.Number) + 0.5);
             }
             if (num > 10)
             {

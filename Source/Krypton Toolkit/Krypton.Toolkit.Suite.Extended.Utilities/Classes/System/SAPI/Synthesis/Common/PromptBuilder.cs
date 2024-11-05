@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -197,7 +197,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         public void AppendText(string textToSpeak, PromptRate rate)
         {
             Helpers.ThrowIfNull(textToSpeak, "textToSpeak");
-            if (rate < PromptRate.NotSet || rate > PromptRate.ExtraSlow)
+            if (rate is < PromptRate.NotSet or > PromptRate.ExtraSlow)
             {
                 throw new ArgumentOutOfRangeException("rate");
             }
@@ -229,7 +229,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         public void AppendText(string textToSpeak, PromptVolume volume)
         {
             Helpers.ThrowIfNull(textToSpeak, "textToSpeak");
-            if (volume < PromptVolume.NotSet || volume > PromptVolume.Default)
+            if (volume is < PromptVolume.NotSet or > PromptVolume.Default)
             {
                 throw new ArgumentOutOfRangeException("volume");
             }
@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         public void AppendText(string textToSpeak, PromptEmphasis emphasis)
         {
             Helpers.ThrowIfNull(textToSpeak, "textToSpeak");
-            if (emphasis < PromptEmphasis.NotSet || emphasis > PromptEmphasis.Reduced)
+            if (emphasis is < PromptEmphasis.NotSet or > PromptEmphasis.Reduced)
             {
                 throw new ArgumentOutOfRangeException("emphasis");
             }
@@ -339,7 +339,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     }
                     element2._attributes.Add(new AttributeItem("volume", value2));
                 }
-                possibleChildren = (SsmlElement.Voice | SsmlElement.Audio | SsmlElement.Sentence | SsmlElement.Paragraph | SsmlElement.SayAs | SsmlElement.Phoneme | SsmlElement.Sub | SsmlElement.Emphasis | SsmlElement.Break | SsmlElement.Prosody | SsmlElement.Mark | SsmlElement.Text | SsmlElement.PromptEngineOutput);
+                possibleChildren = SsmlElement.Voice | SsmlElement.Audio | SsmlElement.Sentence | SsmlElement.Paragraph | SsmlElement.SayAs | SsmlElement.Phoneme | SsmlElement.Sub | SsmlElement.Emphasis | SsmlElement.Break | SsmlElement.Prosody | SsmlElement.Mark | SsmlElement.Text | SsmlElement.PromptEngineOutput;
                 ssmlState |= SsmlState.StyleProsody;
             }
             _elementStack.Push(new StackElement(possibleChildren, ssmlState, stackElement._culture));
@@ -375,7 +375,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
             StackElement stackElement = _elementStack.Peek();
             ValidateElement(stackElement, SsmlElement.Voice);
-            CultureInfo culture = (voice.Culture == null) ? stackElement._culture : voice.Culture;
+            CultureInfo culture = voice.Culture == null ? stackElement._culture : voice.Culture;
             Element element = new Element(ElementType.StartVoice);
             element._attributes = new Collection<AttributeItem>();
             _elements.Add(element);
@@ -512,7 +512,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         public void AppendTextWithHint(string textToSpeak, SayAs sayAs)
         {
             Helpers.ThrowIfNull(textToSpeak, "textToSpeak");
-            if (sayAs < SayAs.SpellOut || sayAs > SayAs.Text)
+            if (sayAs is < SayAs.SpellOut or > SayAs.Text)
             {
                 throw new ArgumentOutOfRangeException("sayAs");
             }
@@ -835,7 +835,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             bool flag = false;
             foreach (Element element in _elements)
             {
-                flag = (flag || element._type == ElementType.StartSentence || element._type == ElementType.StartParagraph || element._type == ElementType.StartStyle || element._type == ElementType.StartVoice);
+                flag = flag || element._type == ElementType.StartSentence || element._type == ElementType.StartParagraph || element._type == ElementType.StartStyle || element._type == ElementType.StartVoice;
                 switch (element._type)
                 {
                     case ElementType.Text:

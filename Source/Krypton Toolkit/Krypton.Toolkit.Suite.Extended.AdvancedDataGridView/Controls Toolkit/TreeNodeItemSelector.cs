@@ -40,7 +40,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -115,7 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Clone a Node
         /// </summary>
         /// <returns></returns>
-        public new TreeNodeItemSelector Clone()
+        public new TreeNodeItemSelector? Clone()
         {
             TreeNodeItemSelector? n = new TreeNodeItemSelector(Text, Value, _checkState, NodeType)
             {
@@ -163,14 +163,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public new bool Checked
         {
-            get
-            {
-                return _checkState == CheckState.Checked;
-            }
-            set
-            {
-                CheckState = (value == true ? CheckState.Checked : CheckState.Unchecked);
-            }
+            get => _checkState == CheckState.Checked;
+            set => CheckState = value == true ? CheckState.Checked : CheckState.Unchecked;
         }
 
         /// <summary>
@@ -178,10 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         public CheckState CheckState
         {
-            get
-            {
-                return _checkState;
-            }
+            get => _checkState;
             set
             {
                 _checkState = value;
@@ -253,7 +244,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// Add a child Node to this Node
         /// </summary>
         /// <param name="child"></param>
-        protected void AddChild(TreeNodeItemSelector child)
+        protected void AddChild(TreeNodeItemSelector? child)
         {
             child.Parent = this;
             Nodes.Add(child);

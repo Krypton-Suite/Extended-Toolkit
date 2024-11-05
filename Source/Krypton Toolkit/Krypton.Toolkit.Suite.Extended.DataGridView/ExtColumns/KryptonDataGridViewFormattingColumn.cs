@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,8 +84,8 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         private static Color ContrastColour(Color colour)
         {
             //  Counting the perceptive luminance - human eye favors green color... 
-            double a = (1 - (((0.299 * colour.R) + ((0.587 * colour.G) + (0.114 * colour.B)))
-                             / 255));
+            double a = 1 - (0.299 * colour.R + (0.587 * colour.G + 0.114 * colour.B))
+                / 255;
             var d = a < 0.5 ? 0 : 255;
 
             //  dark colors - white font

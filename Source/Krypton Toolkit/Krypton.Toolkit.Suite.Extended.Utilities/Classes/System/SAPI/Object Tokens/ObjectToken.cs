@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -264,7 +264,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             bool flag = true;
             foreach (string valueName in sAttributes)
             {
-                flag &= (HasValue(valueName) || (Attributes != null && Attributes.HasValue(valueName)));
+                flag &= HasValue(valueName) || (Attributes != null && Attributes.HasValue(valueName));
                 if (!flag)
                 {
                     break;
@@ -299,7 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             }
             catch (Exception ex)
             {
-                if (ex is MissingMethodException || ex is TypeLoadException || ex is FileLoadException || ex is FileNotFoundException || ex is MethodAccessException || ex is MemberAccessException || ex is TargetInvocationException || ex is InvalidComObjectException || ex is NotSupportedException || ex is FormatException)
+                if (ex is MissingMethodException or TypeLoadException or FileLoadException or FileNotFoundException or MethodAccessException or MemberAccessException or TargetInvocationException or InvalidComObjectException or NotSupportedException or FormatException)
                 {
                     throw new ArgumentException(SR.Get(SRID.TokenCannotCreateInstance));
                 }

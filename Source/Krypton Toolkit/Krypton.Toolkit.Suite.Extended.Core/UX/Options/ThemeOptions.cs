@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -83,11 +83,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.bsaBrowse = new();
             this.klblCustomTheme = new();
             this.kryptonLabel1 = new();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kpnlButtons).BeginInit();
             this.kpnlButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kpnlContent).BeginInit();
             this.kpnlContent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ktcmbTheme)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.ktcmbTheme).BeginInit();
             this.SuspendLayout();
             // 
             // kpnlButtons
@@ -115,8 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnRestoreToDefaults
             // 
-            this.kbtnRestoreToDefaults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnRestoreToDefaults.CornerRoundingRadius = -1F;
+            this.kbtnRestoreToDefaults.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnRestoreToDefaults.Enabled = false;
             this.kbtnRestoreToDefaults.Location = new(12, 13);
             this.kbtnRestoreToDefaults.Name = "kbtnRestoreToDefaults";
@@ -127,8 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnCancel.CornerRoundingRadius = -1F;
+            this.kbtnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new(501, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -139,8 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnOk
             // 
-            this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnOk.CornerRoundingRadius = -1F;
+            this.kbtnOk.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnOk.Location = new(405, 13);
             this.kbtnOk.Name = "kbtnOk";
             this.kbtnOk.Size = new(90, 25);
@@ -150,8 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnApply
             // 
-            this.kbtnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnApply.CornerRoundingRadius = -1F;
+            this.kbtnApply.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnApply.Enabled = false;
             this.kbtnApply.Location = new(597, 13);
             this.kbtnApply.Name = "kbtnApply";
@@ -175,7 +171,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // ktcmbTheme
             // 
-            this.ktcmbTheme.CornerRoundingRadius = -1F;
             this.ktcmbTheme.DropDownWidth = 198;
             this.ktcmbTheme.IntegralHeight = false;
             this.ktcmbTheme.Location = new(116, 10);
@@ -187,7 +182,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnLoadTheme
             // 
-            this.kbtnLoadTheme.CornerRoundingRadius = -1F;
             this.kbtnLoadTheme.Enabled = false;
             this.kbtnLoadTheme.Location = new(598, 84);
             this.kbtnLoadTheme.Name = "kbtnLoadTheme";
@@ -210,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // bsaReset
             // 
-            this.bsaReset.Image = ((System.Drawing.Image)(resources.GetObject("bsaReset.Image")));
+            this.bsaReset.Image = (System.Drawing.Image)resources.GetObject("bsaReset.Image");
             this.bsaReset.UniqueName = "1f0247d059a64ff792fa7879355b8bf1";
             this.bsaReset.Click += new(this.bsaReset_Click);
             // 
@@ -254,13 +248,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Palette Theme Options";
             this.Load += new(this.ThemeOptions_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kpnlButtons).EndInit();
             this.kpnlButtons.ResumeLayout(false);
             this.kpnlButtons.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kpnlContent).EndInit();
             this.kpnlContent.ResumeLayout(false);
             this.kpnlContent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ktcmbTheme)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.ktcmbTheme).EndInit();
             this.ResumeLayout(false);
 
         }

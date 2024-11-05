@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -194,7 +194,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
             set
             {
-                if ((value != null) && !(value is KryptonDataGridViewTextAndImageCell))
+                if (value != null && !(value is KryptonDataGridViewTextAndImageCell))
                 {
                     throw new InvalidCastException("Can only assign a object of type KryptonDataGridViewTextAndImageCell");
                 }
@@ -407,7 +407,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 // Draw the image clipped to the cell.
                 GraphicsContainer container = graphics.BeginContainer();
                 graphics.SetClip(cellBounds);
-                graphics.DrawImage(((TextAndImage)Value).Image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + ((cellBounds.Height - 16) / 2) - 1, 16, 16));
+                graphics.DrawImage(((TextAndImage)Value).Image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + (cellBounds.Height - 16) / 2 - 1, 16, 16));
                 graphics.EndContainer(container);
             }
 

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             set
             {
                 // Ensure that the cell used for the template is a DataGridViewPercentageCell.
-                if ((value != null) && !value.GetType().IsAssignableFrom(typeof(DataGridViewPercentageCell)))
+                if (value != null && !value.GetType().IsAssignableFrom(typeof(DataGridViewPercentageCell)))
                 {
                     throw new InvalidCastException("Must be a DataGridViewPercentageCell");
                 }

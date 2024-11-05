@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -186,7 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 return;
             }
             parent._confidence = 0;
-            if (reqConfidence < 0f || reqConfidence.Equals(0.5f))
+            if (reqConfidence is < 0f or 0.5f)
             {
                 parent._confidence = 0;
             }
@@ -201,10 +201,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             if (pronunciation != null || display != null)
             {
                 string text = EscapeToken(sToken);
-                string text2 = (display == null) ? text : EscapeToken(display);
+                string text2 = display == null ? text : EscapeToken(display);
                 if (pronunciation != null)
                 {
-                    OneOf oneOf = (pronunciation.IndexOf(';') >= 0) ? new OneOf(parent._rule, _backend) : null;
+                    OneOf oneOf = pronunciation.IndexOf(';') >= 0 ? new OneOf(parent._rule, _backend) : null;
                     int num = 0;
                     int num2 = 0;
                     while (num < pronunciation.Length)

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region Public
 
         [Category("Control")]
-        public InternalBrowseBox KryptonBrowseBox => Control as InternalBrowseBox;
+        public InternalBrowseBox? KryptonBrowseBox => Control as InternalBrowseBox;
 
         #endregion
 
@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private ButtonSpecAny _bsaReset;
 
-        private CommonFileDialogFilter _filter;
+        private CommonFileDialogFilter? _filter;
 
         private CommonFileDialogFilterCollection _filterCollection;
 
@@ -128,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary>Gets or sets the reset text.</summary>
         /// <value>The reset text.</value>
         [DefaultValue(@"&Reset"), Description(@"Gets or sets the reset text.")]
-        public string ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
+        public new string ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
 
         /// <summary>Gets or sets the reset text tool tip heading.</summary>
         /// <value>The reset text tool tip heading.</value>
@@ -169,25 +169,25 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             _largeResetImage = Properties.Resources.Reset_32_x_32;
 
-            _bsaBrowse.Text = "...";
+            _bsaBrowse.Text = @"...";
 
             _bsaBrowse.KryptonCommand = _kcBrowse;
 
-            _kcBrowse.Text = "...";
+            _kcBrowse.Text = @"...";
 
             _bsaReset.ToolTipImage = _smallResetImage;
 
-            _bsaReset.ToolTipBody = _resetTextToolTipDescription;
+            _bsaReset.ToolTipBody = _resetTextToolTipDescription ?? @"Resets the textbox value.";
 
-            _bsaReset.ToolTipTitle = _resetTextToolTipHeading;
+            _bsaReset.ToolTipTitle = _resetTextToolTipHeading ?? @"Reset Text";
 
-            _bsaReset.Text = _resetText;
+            _bsaReset.Text = _resetText ?? @"Reset Text";
 
             _bsaReset.Image = _smallResetImage;
 
             _bsaReset.KryptonCommand = _kcReset;
 
-            _kcReset.Text = _resetText;
+            _kcReset.Text = _resetText ?? @"Reset Text";
 
             _bsaReset.Enabled = ButtonEnabled.False;
 
@@ -229,7 +229,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 if (saveFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
-                    Text = Path.GetFullPath(saveFileDialog.FileName);
+                    Text = Path.GetFullPath(saveFileDialog.FileName!);
                 }
             }
             else
@@ -250,7 +250,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
-                    Text = Path.GetFullPath(dialog.FileName);
+                    Text = Path.GetFullPath(dialog.FileName!);
                 }
             }
         }
@@ -274,7 +274,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         /// <summary>Raises the Paint event.</summary>
         /// <param name="e">A PaintEventArgs containing the event data.</param>
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             _bsaReset.Visible = _showResetButton;
 

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -561,7 +561,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="hit"></param>
         private void SelectWeek(DateTime hit)
         {
-            int preDays = (new int[] { 0, 1, 2, 3, 4, 5, 6 })[(int)hit.DayOfWeek] - (int)FirstDayOfWeek;
+            int preDays = new int[] { 0, 1, 2, 3, 4, 5, 6 }[(int)hit.DayOfWeek] - (int)FirstDayOfWeek;
 
             _selectionStart = hit.AddDays(-preDays);
             SelectionEnd = SelectionStart.AddDays(6);
@@ -573,7 +573,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="hit"></param>
         private void SelectWorkWeek(DateTime hit)
         {
-            int preDays = (new int[] { 0, 1, 2, 3, 4, 5, 6 })[(int)hit.DayOfWeek] - (int)WorkWeekStart;
+            int preDays = new int[] { 0, 1, 2, 3, 4, 5, 6 }[(int)hit.DayOfWeek] - (int)WorkWeekStart;
 
             _selectionStart = hit.AddDays(-preDays);
             SelectionEnd = SelectionStart.AddDays(Math.Abs(WorkWeekStart - WorkWeekEnd));
@@ -658,8 +658,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             int calendarsX = Convert.ToInt32(Math.Max(Math.Floor((double)ClientSize.Width / (double)(MonthSize.Width + gapping)), 1.0));
             int calendarsY = Convert.ToInt32(Math.Max(Math.Floor((double)ClientSize.Height / (double)(MonthSize.Height + gapping)), 1.0));
             int calendars = calendarsX * calendarsY;
-            int monthsWidth = (calendarsX * MonthSize.Width) + (calendarsX - 1) * gapping;
-            int monthsHeight = (calendarsY * MonthSize.Height) + (calendarsY - 1) * gapping;
+            int monthsWidth = calendarsX * MonthSize.Width + (calendarsX - 1) * gapping;
+            int monthsHeight = calendarsY * MonthSize.Height + (calendarsY - 1) * gapping;
             int startX = (ClientSize.Width - monthsWidth) / 2;
             int startY = (ClientSize.Height - monthsHeight) / 2;
             int curX = startX;
@@ -879,7 +879,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                         MonthViewBoxEventArgs evtDay = new MonthViewBoxEventArgs(e.Graphics, day.Bounds, day.Date.Day.ToString(),
                             StringAlignment.Far,
-                            day.Grayed ? DayGrayedText : (day.Selected ? DaySelectedTextColour : ForeColor),
+                            day.Grayed ? DayGrayedText : day.Selected ? DaySelectedTextColour : ForeColor,
                             day.Selected ? DaySelectedBackgroundColour : DayBackgroundColour);
 
                         if (day.Date.Equals(DateTime.Now.Date))

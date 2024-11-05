@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             get => TimeSpan.FromMilliseconds(RecoBase.QueryRecognizerSettingAsInt("ResponseSpeed"));
             set
             {
-                if (value.TotalMilliseconds < 0.0 || value.TotalMilliseconds > 10000.0)
+                if (value.TotalMilliseconds is < 0.0 or > 10000.0)
                 {
                     throw new ArgumentOutOfRangeException("value", SR.Get(SRID.EndSilenceOutOfRange));
                 }
@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             get => TimeSpan.FromMilliseconds(RecoBase.QueryRecognizerSettingAsInt("ComplexResponseSpeed"));
             set
             {
-                if (value.TotalMilliseconds < 0.0 || value.TotalMilliseconds > 10000.0)
+                if (value.TotalMilliseconds is < 0.0 or > 10000.0)
                 {
                     throw new ArgumentOutOfRangeException("value", SR.Get(SRID.EndSilenceOutOfRange));
                 }

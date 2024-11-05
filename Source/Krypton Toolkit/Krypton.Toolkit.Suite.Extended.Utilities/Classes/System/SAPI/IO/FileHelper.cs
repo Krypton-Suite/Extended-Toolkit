@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.IO
                     fileStream = new FileStream(text3, FileMode.CreateNew, fileAccess, FileShare.None, 4096, fileOptions);
                     filePath = text3;
                 }
-                catch (Exception ex) when (num > 0 && (ex is IOException || ex is UnauthorizedAccessException))
+                catch (Exception ex) when (num > 0 && ex is IOException or UnauthorizedAccessException)
                 {
                 }
             }

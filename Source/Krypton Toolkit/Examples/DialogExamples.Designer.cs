@@ -1,4 +1,32 @@
-﻿namespace Examples
+﻿#region MIT License
+
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2024 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+
+#endregion
+namespace Examples
 {
     partial class DialogExamples
     {
@@ -35,7 +63,6 @@
             this.kbtnRun = new Krypton.Toolkit.KryptonButton();
             this.kbtnCheckSum = new Krypton.Toolkit.KryptonButton();
             this.kbtnException = new Krypton.Toolkit.KryptonButton();
-            this.kbtnAbout = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +74,6 @@
             this.kryptonPanel1.Controls.Add(this.kbtnRun);
             this.kryptonPanel1.Controls.Add(this.kbtnCheckSum);
             this.kryptonPanel1.Controls.Add(this.kbtnException);
-            this.kryptonPanel1.Controls.Add(this.kbtnAbout);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
@@ -56,8 +82,7 @@
             // 
             // kbtnTextToSpeech
             // 
-            this.kbtnTextToSpeech.CornerRoundingRadius = -1F;
-            this.kbtnTextToSpeech.Location = new System.Drawing.Point(240, 38);
+            this.kbtnTextToSpeech.Location = new System.Drawing.Point(125, 38);
             this.kbtnTextToSpeech.Name = "kbtnTextToSpeech";
             this.kbtnTextToSpeech.Size = new System.Drawing.Size(109, 22);
             this.kbtnTextToSpeech.TabIndex = 8;
@@ -66,8 +91,7 @@
             // 
             // kbtnSplash
             // 
-            this.kbtnSplash.CornerRoundingRadius = -1F;
-            this.kbtnSplash.Location = new System.Drawing.Point(125, 38);
+            this.kbtnSplash.Location = new System.Drawing.Point(10, 38);
             this.kbtnSplash.Name = "kbtnSplash";
             this.kbtnSplash.Size = new System.Drawing.Size(109, 22);
             this.kbtnSplash.TabIndex = 7;
@@ -76,8 +100,7 @@
             // 
             // kbtnRun
             // 
-            this.kbtnRun.CornerRoundingRadius = -1F;
-            this.kbtnRun.Location = new System.Drawing.Point(10, 38);
+            this.kbtnRun.Location = new System.Drawing.Point(240, 10);
             this.kbtnRun.Name = "kbtnRun";
             this.kbtnRun.Size = new System.Drawing.Size(109, 22);
             this.kbtnRun.TabIndex = 6;
@@ -86,8 +109,7 @@
             // 
             // kbtnCheckSum
             // 
-            this.kbtnCheckSum.CornerRoundingRadius = -1F;
-            this.kbtnCheckSum.Location = new System.Drawing.Point(240, 10);
+            this.kbtnCheckSum.Location = new System.Drawing.Point(125, 10);
             this.kbtnCheckSum.Name = "kbtnCheckSum";
             this.kbtnCheckSum.Size = new System.Drawing.Size(109, 22);
             this.kbtnCheckSum.TabIndex = 4;
@@ -96,23 +118,12 @@
             // 
             // kbtnException
             // 
-            this.kbtnException.CornerRoundingRadius = -1F;
-            this.kbtnException.Location = new System.Drawing.Point(125, 10);
+            this.kbtnException.Location = new System.Drawing.Point(10, 10);
             this.kbtnException.Name = "kbtnException";
             this.kbtnException.Size = new System.Drawing.Size(109, 22);
             this.kbtnException.TabIndex = 3;
             this.kbtnException.Values.Text = "Exception";
             this.kbtnException.Click += new System.EventHandler(this.kbtnException_Click);
-            // 
-            // kbtnAbout
-            // 
-            this.kbtnAbout.CornerRoundingRadius = -1F;
-            this.kbtnAbout.Location = new System.Drawing.Point(10, 10);
-            this.kbtnAbout.Name = "kbtnAbout";
-            this.kbtnAbout.Size = new System.Drawing.Size(109, 22);
-            this.kbtnAbout.TabIndex = 0;
-            this.kbtnAbout.Values.Text = "About";
-            this.kbtnAbout.Click += new System.EventHandler(this.kbtnAbout_Click);
             // 
             // DialogExamples
             // 
@@ -141,6 +152,5 @@
         private KryptonButton kbtnRun;
         private KryptonButton kbtnCheckSum;
         private KryptonButton kbtnException;
-        private KryptonButton kbtnAbout;
     }
 }

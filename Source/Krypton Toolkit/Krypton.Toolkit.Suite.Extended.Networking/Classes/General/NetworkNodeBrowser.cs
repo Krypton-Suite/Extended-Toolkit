@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         /// </summary>
         /// <returns>Arraylist that represents all the SV_TYPE_WORKSTATION and SV_TYPE_SERVER
         /// PC's in the Domain</returns>
-        public ArrayList GetNetworkComputers()
+        public ArrayList? GetNetworkComputers()
         {
             //local fields
             ArrayList networkComputers = new ArrayList();
@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                         //get pointer to, Pointer to the buffer that received the data from
                         //the call to NetServerEnum. Must ensure to use correct size of 
                         //STRUCTURE to ensure correct location in memory is pointed to
-                        tmpBuffer = new IntPtr((int)buffer + (i * sizeofINFO));
+                        tmpBuffer = new IntPtr((int)buffer + i * sizeofINFO);
                         //Have now got a pointer to the list of SV_TYPE_WORKSTATION and 
                         //SV_TYPE_SERVER PC's, which is unmanaged memory
                         //Needs to Marshal data from an unmanaged block of memory to a 
@@ -178,9 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException($"Problem with accessing network computers in NetworkBrowser\r\n\r\n\r\n{ex.Message}",
-                    "Error", KryptonMessageBoxButtons.OK,
-                    KryptonMessageBoxIcon.Error);
+                DebugUtilities.NotImplemented(ex.ToString());
 
                 return null;
             }

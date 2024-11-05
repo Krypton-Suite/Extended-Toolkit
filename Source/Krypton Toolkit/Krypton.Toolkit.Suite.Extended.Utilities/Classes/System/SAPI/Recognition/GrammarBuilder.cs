@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -207,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                     throw new ArgumentException(SR.Get(SRID.ArrayOfNullIllegal), "builder");
                 }
             }
-            List<GrammarBuilderBase> list = (builder == this) ? builder.Clone().InternalBuilder.Items : builder.InternalBuilder.Items;
+            List<GrammarBuilderBase> list = builder == this ? builder.Clone().InternalBuilder.Items : builder.InternalBuilder.Items;
             foreach (GrammarBuilderBase item2 in list)
             {
                 AddItem(item2);

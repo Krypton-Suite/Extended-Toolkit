@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -262,7 +262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             _buttonRect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1);
             _rectCornerRadius = Math.Max(1, scalingDividend / 10);
             _rectOutlineWidth = Math.Max(1, scalingDividend / 50);
-            _highlightRect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, (ClientRectangle.Height - 1));
+            _highlightRect = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1);
             _highlightRectOffset = Math.Max(1, scalingDividend / 35);
             _defaultHighlightOffset = Math.Max(1, scalingDividend / 35);
         }
@@ -639,7 +639,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         protected override void OnKeyDown(KeyEventArgs kevent)
         {
-            if (kevent.KeyCode == Keys.Space || kevent.KeyCode == Keys.Return)
+            if (kevent.KeyCode is Keys.Space or Keys.Return)
             {
                 PressButton();
             }
@@ -679,7 +679,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         protected override void OnKeyUp(KeyEventArgs kevent)
         {
-            if (kevent.KeyCode == Keys.Space || kevent.KeyCode == Keys.Return)
+            if (kevent.KeyCode is Keys.Space or Keys.Return)
             {
                 ReleaseButton();
                 if (IsDefault)

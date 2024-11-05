@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,9 +34,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private Control _outputControl;
 
-        private string _applicationName, _defaultText = "Mo&st Recently Used...";
+        private string? _applicationName;
+        private string _defaultText = @"Mo&st Recently Used...";
 
-        private MostRecentlyUsedFileManager _recentlyUsedFileManager = null;
+        private readonly MostRecentlyUsedFileManager? _recentlyUsedFileManager;
         #endregion
 
         #region Public
@@ -60,13 +61,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private void MyOwnRecentFileGotClicked_Handler(object sender, EventArgs e)
         {
-            string fileName = (sender as ToolStripItem).Text;
+            var fileName = (sender as ToolStripItem)?.Text;
 
             if (!File.Exists(fileName))
             {
                 if (KryptonMessageBox.Show($"{fileName} doesn't exist. Remove from recent workspaces?", "File not found", KryptonMessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    _recentlyUsedFileManager.RemoveRecentFile(fileName);
+                    _recentlyUsedFileManager?.RemoveRecentFile(fileName);
                 }
                 else
                 {
@@ -82,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         }
 
-        private void OpenFile(string filePath, Control outputControl)
+        private void OpenFile(string? filePath, Control? outputControl)
         {
             try
             {
@@ -90,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 {
                     if (outputControl != null)
                     {
-                        StreamReader sr = new StreamReader(filePath);
+                        StreamReader sr = new StreamReader(filePath!);
 
                         outputControl.Text = sr.ReadToEnd();
 
@@ -99,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                         sr.Dispose();
                     }
 
-                    _recentlyUsedFileManager.AddRecentFile(filePath);
+                    _recentlyUsedFileManager?.AddRecentFile(filePath);
                 }
                 else
                 {
@@ -108,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
             catch (IOException e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 

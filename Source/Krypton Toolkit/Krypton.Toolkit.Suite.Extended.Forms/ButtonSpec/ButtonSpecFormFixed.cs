@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         /// <param name="form">Reference to owning krypton form.</param>
         /// <param name="fixedStyle">Fixed style to use.</param>
-        protected ButtonSpecFormFixed(VirtualKryptonFormExtended form,
+        protected ButtonSpecFormFixed(VisualKryptonFormExtended form,
             PaletteButtonSpecStyle fixedStyle)
         {
             Debug.Assert(form != null);
@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <summary>
         /// Gets access to the owning krypton form.
         /// </summary>
-        protected VirtualKryptonFormExtended KryptonForm { get; }
+        protected VisualKryptonFormExtended KryptonForm { get; }
 
         #endregion
 

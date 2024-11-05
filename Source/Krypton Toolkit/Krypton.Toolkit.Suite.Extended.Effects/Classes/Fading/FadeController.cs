@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
                 case FadeDirection.In:
                     if (form.Opacity < 1.0)
                     {
-                        form.Opacity += (fadeSpeed / 1000.0);
+                        form.Opacity += fadeSpeed / 1000.0;
                     }
                     else
                     {
@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
                 case FadeDirection.Out:
                     if (form.Opacity > 0.1)
                     {
-                        form.Opacity -= (fadeSpeed / 1000.0);
+                        form.Opacity -= fadeSpeed / 1000.0;
                     }
                     else
                     {

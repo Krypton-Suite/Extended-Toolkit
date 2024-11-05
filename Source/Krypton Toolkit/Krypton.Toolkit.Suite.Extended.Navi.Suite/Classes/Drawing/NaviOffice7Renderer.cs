@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -266,23 +266,23 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             Color[] endColors = new Color[1];
 
-            if ((state == ControlState.Normal) && (inputState == InputState.Normal))
+            if (state == ControlState.Normal && inputState == InputState.Normal)
             {
                 endColors = new Color[] { ColourTable.ButtonNormalColor1, ColourTable.ButtonNormalColor2,
                                 ColourTable.ButtonNormalColor3, ColourTable.ButtonNormalColor4 };
             }
-            else if ((state == ControlState.Normal) && (inputState == InputState.Hovered))
+            else if (state == ControlState.Normal && inputState == InputState.Hovered)
             {
                 endColors = new Color[] { ColourTable.ButtonHoveredColor1, ColourTable.ButtonHoveredColor2,
                                 ColourTable.ButtonHoveredColor3, ColourTable.ButtonHoveredColor4 };
             }
-            else if ((state == ControlState.Active) && (inputState == InputState.Normal))
+            else if (state == ControlState.Active && inputState == InputState.Normal)
             {
                 endColors = new Color[] { ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2,
                                 ColourTable.ButtonActiveColor3, ColourTable.ButtonActiveColor4 };
             }
-            else if ((inputState == InputState.Clicked)
-               || ((state == ControlState.Active) && (inputState == InputState.Hovered)))
+            else if (inputState == InputState.Clicked
+               || (state == ControlState.Active && inputState == InputState.Hovered))
             {
                 endColors = new Color[] { ColourTable.ButtonClickedColor1, ColourTable.ButtonClickedColor2,
                                 ColourTable.ButtonClickedColor3, ColourTable.ButtonClickedColor4 };
@@ -358,7 +358,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 g.FillRectangle(brush, bounds);
             }
 
-            if ((inputState == InputState.Clicked) || (inputState == InputState.Hovered))
+            if (inputState is InputState.Clicked or InputState.Hovered)
             {
                 Rectangle smallBounds = bounds;
                 smallBounds.Location = new Point(smallBounds.Left + 4, smallBounds.Top + 3);
@@ -386,15 +386,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 if (bounds.Height != 0)
                 {
-                    y = (bounds.Height / 2) - 3;
+                    y = bounds.Height / 2 - 3;
                 }
 
                 if (bounds.Width != 0)
                 {
-                    x = (bounds.Width / 2) - 1;
+                    x = bounds.Width / 2 - 1;
                 }
 
-                if (((rightToLeft) && (!collapsed)) || (!rightToLeft) && (collapsed))
+                if ((rightToLeft && !collapsed) || !rightToLeft && collapsed)
                 {
                     PointF[] points = {new PointF(x -3, y),
                                new PointF(x,y + 3),
@@ -540,7 +540,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 if (bounds.Height != 0)
                 {
-                    y = (bounds.Height / 2) - 3; // + 1px border and - 4 size
+                    y = bounds.Height / 2 - 3; // + 1px border and - 4 size
                 }
 
                 if (rightToLeft)
@@ -635,8 +635,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 g.FillRectangle(brush, bounds);
             }
 
-            int centerX = bounds.Right - (bounds.Width / 2);
-            int centerY = bounds.Bottom - (bounds.Height / 2);
+            int centerX = bounds.Right - bounds.Width / 2;
+            int centerY = bounds.Bottom - bounds.Height / 2;
 
             using (SolidBrush b = new SolidBrush(ColourTable.Border))
             {

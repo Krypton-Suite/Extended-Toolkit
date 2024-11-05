@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
     {
         #region "Server type enumeration"
         // Possible types of servers
-        [FlagsAttribute]
+        [Flags]
         public enum ServerType : uint
         {
             /// <summary>
@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         #endregion
 
         // Holds computer information
-        [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
         internal struct SERVER_INFO_101
         {
             public int sv101_platform_id;
@@ -376,7 +376,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                     indexer++;
                 }
 
-                return (!(indexer == aryComputers.Length));
+                return !(indexer == aryComputers.Length);
             }
         }
     }

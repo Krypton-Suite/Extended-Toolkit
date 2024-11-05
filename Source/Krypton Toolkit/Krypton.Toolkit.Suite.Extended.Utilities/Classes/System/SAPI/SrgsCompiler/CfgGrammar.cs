@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -140,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 BinaryReader binaryReader = new BinaryReader(stream);
                 ulTotalSerializedSize = binaryReader.ReadUInt32();
-                if (ulTotalSerializedSize < 100 || ulTotalSerializedSize > int.MaxValue)
+                if (ulTotalSerializedSize is < 100 or > int.MaxValue)
                 {
                     XmlParser.ThrowSrgsException(SRID.UnsupportedFormat);
                 }
@@ -193,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 cfgLength = 0;
                 BinaryReader binaryReader = new BinaryReader(stream);
                 uint num = binaryReader.ReadUInt32();
-                if (num < 100 || num > int.MaxValue)
+                if (num is < 100 or > int.MaxValue)
                 {
                     return false;
                 }
@@ -340,7 +340,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal static bool LoadIL(Stream stream, out byte[] assemblyContent, out byte[] assemblyDebugSymbols, out ScriptRef[] scripts)
         {
-            assemblyContent = (assemblyDebugSymbols = null);
+            assemblyContent = assemblyDebugSymbols = null;
             scripts = null;
             using (StreamMarshaler streamMarshaler = new StreamMarshaler(stream))
             {
@@ -356,7 +356,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     return false;
                 }
                 assemblyContent = Load<byte>(streamMarshaler, cfgSerializedHeader.pIL, cfgSerializedHeader.cIL);
-                assemblyDebugSymbols = ((cfgSerializedHeader.cPDB > 0) ? Load<byte>(streamMarshaler, cfgSerializedHeader.pPDB, cfgSerializedHeader.cPDB) : null);
+                assemblyDebugSymbols = cfgSerializedHeader.cPDB > 0 ? Load<byte>(streamMarshaler, cfgSerializedHeader.pPDB, cfgSerializedHeader.cPDB) : null;
             }
             return true;
         }

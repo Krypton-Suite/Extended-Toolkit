@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,8 +49,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             ISpRecognizer spRecognizer;
             try
             {
-                spRecognizer = ((type != 0) ? ((ISpRecognizer)new SpSharedRecognizer()) : ((ISpRecognizer)new SpInprocRecognizer()));
-                _isSap53 = (spRecognizer is ISpRecognizer2);
+                spRecognizer = type != 0 ? (ISpRecognizer)new SpSharedRecognizer() : (ISpRecognizer)new SpInprocRecognizer();
+                _isSap53 = spRecognizer is ISpRecognizer2;
             }
             catch (COMException e)
             {
@@ -214,7 +214,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 
         private static void SetProperty(ISpRecognizer sapiRecognizer, string name, object value)
         {
-            SAPIErrorCodes sAPIErrorCodes = (SAPIErrorCodes)((!(value is int)) ? sapiRecognizer.SetPropertyString(name, (string)value) : sapiRecognizer.SetPropertyNum(name, (int)value));
+            SAPIErrorCodes sAPIErrorCodes = (SAPIErrorCodes)(!(value is int) ? sapiRecognizer.SetPropertyString(name, (string)value) : sapiRecognizer.SetPropertyNum(name, (int)value));
             if (sAPIErrorCodes == SAPIErrorCodes.S_FALSE)
             {
                 throw new KeyNotFoundException(SR.Get(SRID.RecognizerSettingNotSupported));

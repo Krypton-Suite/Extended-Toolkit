@@ -135,16 +135,10 @@
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.klvThemesList.HideSelection = false;
-            this.klvThemesList.ItemStyle = Krypton.Toolkit.ButtonStyle.ListItem;
             this.klvThemesList.Location = new System.Drawing.Point(10, 4);
             this.klvThemesList.Name = "klvThemesList";
-            this.klvThemesList.OwnerDraw = true;
             this.klvThemesList.Size = new System.Drawing.Size(775, 357);
-            this.klvThemesList.StateCommon.Item.Content.ShortText.MultiLine = Krypton.Toolkit.InheritBool.True;
-            this.klvThemesList.StateCommon.Item.Content.ShortText.MultiLineH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klvThemesList.StateCommon.Item.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klvThemesList.TabIndex = 1;
-            this.klvThemesList.SelectedIndexChanged += new System.EventHandler(this.klvThemesList_SelectedIndexChanged);
             // 
             // klbThemesList
             // 
@@ -183,7 +177,6 @@
             // 
             // kcpbCustom
             // 
-            this.kcpbCustom.BaseFontSize = 9F;
             this.kcpbCustom.BasePaletteType = Krypton.Toolkit.BasePaletteType.Custom;
             this.kcpbCustom.ThemeName = null;
             // 
@@ -197,7 +190,6 @@
             // 
             // kbtnApply
             // 
-            this.kbtnApply.CornerRoundingRadius = -1F;
             this.kbtnApply.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnApply.Enabled = false;
             this.kbtnApply.Location = new System.Drawing.Point(698, 13);
@@ -208,7 +200,6 @@
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(602, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -218,7 +209,6 @@
             // 
             // kbtnOk
             // 
-            this.kbtnOk.CornerRoundingRadius = -1F;
             this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnOk.Location = new System.Drawing.Point(506, 13);
             this.kbtnOk.Name = "kbtnOk";

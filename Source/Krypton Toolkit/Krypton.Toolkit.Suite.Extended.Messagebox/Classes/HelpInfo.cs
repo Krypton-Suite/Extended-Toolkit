@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    internal class HelpInfo
+    public class HelpInfo
     {
         #region Instance Fields
 
@@ -65,12 +65,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="navigator">Value for Navigator</param>
         /// <param name="keyword">Value for Keyword</param>
         /// <param name="param"></param>
-        private HelpInfo(string helpFilePath, string keyword, HelpNavigator navigator, object param)
+        private HelpInfo(string? helpFilePath, string? keyword, HelpNavigator navigator, object? param)
         {
-            HelpFilePath = helpFilePath;
-            Keyword = keyword;
+            HelpFilePath = helpFilePath ?? string.Empty;
+            Keyword = keyword ?? string.Empty;
             Navigator = navigator;
-            Param = param;
+            Param = param ?? string.Empty;
         }
         #endregion
 

@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -196,7 +196,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 if (_codebehind.Count > 0)
                 {
-                    int num = _codebehind.Count + ((text != null) ? 1 : 0);
+                    int num = _codebehind.Count + (text != null ? 1 : 0);
                     array = new string[num];
                     for (int i = 0; i < _codebehind.Count; i++)
                     {
@@ -227,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             using (CodeDomProvider codeDomProvider = CodeProvider())
             {
                 CompilerParameters compilerParameters = GetCompilerParameters(outputFile, cfgResouces, debug, _assemblyReferences, _keyFile);
-                CompilerResults compilerResults = (codeFiles == null) ? codeDomProvider.CompileAssemblyFromSource(compilerParameters, code) : codeDomProvider.CompileAssemblyFromFile(compilerParameters, codeFiles);
+                CompilerResults compilerResults = codeFiles == null ? codeDomProvider.CompileAssemblyFromSource(compilerParameters, code) : codeDomProvider.CompileAssemblyFromFile(compilerParameters, codeFiles);
                 if (compilerResults.Errors.Count > 0)
                 {
                     ThrowCompilationErrors(compilerResults);
@@ -383,7 +383,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             sb.Append("public partial class ");
             sb.Append(classname);
             sb.Append(" : ");
-            sb.Append((!string.IsNullOrEmpty(baseclass)) ? baseclass : "Grammar");
+            sb.Append(!string.IsNullOrEmpty(baseclass) ? baseclass : "Grammar");
             sb.Append(" \n {\n");
             if (culture != null)
             {
@@ -448,7 +448,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             sb.Append("Public Partial class ");
             sb.Append(classname);
             sb.Append("\n Inherits ");
-            sb.Append((!string.IsNullOrEmpty(baseclass)) ? baseclass : "Grammar");
+            sb.Append(!string.IsNullOrEmpty(baseclass) ? baseclass : "Grammar");
             sb.Append(" \n");
             if (culture != null)
             {
