@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -207,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         delta = SystemInformation.MouseWheelScrollLines * this.VerticalScroll.SmallChange;
                     }
 
-                    y += (e.Delta > 0) ? -delta : delta;
+                    y += e.Delta > 0 ? -delta : delta;
                 }
                 else if (this.HorizontalScroll.Visible && this.HorizontalScroll.Enabled)
                 {
@@ -220,7 +220,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         delta = SystemInformation.MouseWheelScrollLines * this.HorizontalScroll.SmallChange;
                     }
 
-                    x += (e.Delta > 0) ? -delta : delta;
+                    x += e.Delta > 0 ? -delta : delta;
                 }
 
                 this.ScrollTo(x, y);
@@ -589,7 +589,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 case DrawingNativeMethods.SB_TOP:
                     return ScrollEventType.First;
                 default:
-                    throw new ArgumentException(string.Format("{0} isn't a valid scroll event type.", wParam), "wparam");
+                    throw new ArgumentException($"{wParam} isn't a valid scroll event type.", "wparam");
             }
         }
 
@@ -703,9 +703,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             oldInfo = this.GetScrollInfo(scrollbar);
 
-            if (value > ((oldInfo.nMax - oldInfo.nMin) + 1) - oldInfo.nPage)
+            if (value > oldInfo.nMax - oldInfo.nMin + 1 - oldInfo.nPage)
             {
-                value = ((oldInfo.nMax - oldInfo.nMin) + 1) - oldInfo.nPage;
+                value = oldInfo.nMax - oldInfo.nMin + 1 - oldInfo.nPage;
             }
             if (value < oldInfo.nMin)
             {
@@ -890,13 +890,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         scrollInfo.nPos = scrollInfo.nMax;
                         break;
                     default:
-                        Debug.Assert(false, string.Format("Unknown scroll event type {0}", eventType));
+                        System.Diagnostics.Debug.Assert(false, $"Unknown scroll event type {eventType}");
                         break;
                 }
 
-                if (scrollInfo.nPos > ((scrollInfo.nMax - scrollInfo.nMin) + 1) - scrollInfo.nPage)
+                if (scrollInfo.nPos > scrollInfo.nMax - scrollInfo.nMin + 1 - scrollInfo.nPage)
                 {
-                    scrollInfo.nPos = ((scrollInfo.nMax - scrollInfo.nMin) + 1) - scrollInfo.nPage;
+                    scrollInfo.nPos = scrollInfo.nMax - scrollInfo.nMin + 1 - scrollInfo.nPage;
                 }
 
                 if (scrollInfo.nPos < scrollInfo.nMin)

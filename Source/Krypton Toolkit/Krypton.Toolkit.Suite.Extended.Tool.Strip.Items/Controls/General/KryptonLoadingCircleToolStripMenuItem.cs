@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,11 +41,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <value>The loading circle control.</value>
         [RefreshProperties(RefreshProperties.All),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public KryptonLoadingCircle LoadingCircleControl => Control as KryptonLoadingCircle;
+        public KryptonLoadingCircle? LoadingCircleControl => Control as KryptonLoadingCircle;
 
         // Constructor ========================================================
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoadingCircleToolStripMenuItem"/> class.
+        /// Initializes a new instance of the <see cref="KryptonLoadingCircleToolStripMenuItem"/> class.
         /// </summary>
         public KryptonLoadingCircleToolStripMenuItem()
             : base(new KryptonLoadingCircle())
@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         public override Size GetPreferredSize(Size constrainingSize)
         {
             //return base.GetPreferredSize(constrainingSize);
-            return LoadingCircleControl.GetPreferredSize(constrainingSize);
+            return LoadingCircleControl!.GetPreferredSize(constrainingSize);
         }
 
 
@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Subscribes events from the hosted control.
         /// </summary>
         /// <param name="control">The control from which to subscribe events.</param>
-        protected override void OnSubscribeControlEvents(Control control)
+        protected override void OnSubscribeControlEvents(Control? control)
         {
             base.OnSubscribeControlEvents(control);
 
@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Unsubscribes events from the hosted control.
         /// </summary>
         /// <param name="control">The control from which to unsubscribe events.</param>
-        protected override void OnUnsubscribeControlEvents(Control control)
+        protected override void OnUnsubscribeControlEvents(Control? control)
         {
             base.OnUnsubscribeControlEvents(control);
 

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Krypton
 
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
 
         private IRenderer _renderer;
 
@@ -71,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Properties        
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="ExtendedToolStripStatusLabel"/> is alert.
+        /// Gets or sets a value indicating whether this <see cref="ToolStripLabelExtended"/> is alert.
         /// </summary>
         /// <value>
         ///   <c>true</c> if alert; otherwise, <c>false</c>.
@@ -422,8 +422,6 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     case BlinkState.SoftBlink:
                         SoftBlink(AlertColourOne, AlertColourTwo, AlertTextColour, CycleInterval, BkClr, BlinkDuration);
                         break;
-                    default:
-                        break;
                 }
             }
 
@@ -435,7 +433,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 _fadeAnimationTimer.Enabled = true;
 
-                _fadeAnimationTimer.Tick += new EventHandler(FadeAnimationTimer_Tick);
+                _fadeAnimationTimer.Tick += FadeAnimationTimer_Tick;
             }
         }
         #endregion

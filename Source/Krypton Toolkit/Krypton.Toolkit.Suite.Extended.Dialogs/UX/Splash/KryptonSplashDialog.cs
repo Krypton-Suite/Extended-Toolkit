@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,9 +43,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.klblClose = new();
             this.pbAppIcon = new();
             this.kwlApplicationName = new();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAppIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.pbAppIcon).BeginInit();
             this.SuspendLayout();
             // 
             // pbLoading
@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.klblClose.Location = new(769, 12);
             this.klblClose.Name = "klblClose";
             this.klblClose.Size = new(20, 19);
-            this.klblClose.StateCommon.ShortText.Font = new("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblClose.StateCommon.ShortText.Font = new("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.klblClose.TabIndex = 6;
             this.klblClose.Values.Text = "X";
             this.klblClose.Click += new(this.klblClose_Click);
@@ -92,12 +92,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             this.kwlApplicationName.AutoSize = false;
             this.kwlApplicationName.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kwlApplicationName.Font = new("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlApplicationName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlApplicationName.Font = new("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this.kwlApplicationName.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kwlApplicationName.Location = new(0, 302);
             this.kwlApplicationName.Name = "kwlApplicationName";
             this.kwlApplicationName.Size = new(797, 115);
-            this.kwlApplicationName.StateCommon.Font = new("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlApplicationName.StateCommon.Font = new("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlApplicationName.Text = "<##APPLICATION-NAME##>";
             this.kwlApplicationName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -112,10 +112,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAppIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.pbAppIcon).EndInit();
             this.ResumeLayout(false);
 
         }

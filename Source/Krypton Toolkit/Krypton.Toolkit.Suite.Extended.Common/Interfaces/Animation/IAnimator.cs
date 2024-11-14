@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="endCallback">
         ///     The callback to get invoked at the end of the animation
         /// </param>
-        void Play(object targetObject, string propertyName, SafeInvoker endCallback);
+        void Play(object targetObject, string propertyName, SafeInvoker? endCallback);
 
         /// <summary>
         ///     Starts the playing of the animation
@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <typeparam name="T">
         ///     Any object containing a property
         /// </typeparam>
-        void Play<T>(T targetObject, Expression<Func<T, object>> propertySetter);
+        void Play<T>(T targetObject, Expression<Func<T, object>>? propertySetter);
 
         /// <summary>
         ///     Starts the playing of the animation
@@ -104,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <typeparam name="T">
         ///     Any object containing a property
         /// </typeparam>
-        void Play<T>(T targetObject, Expression<Func<T, object>> propertySetter, SafeInvoker endCallback);
+        void Play<T>(T targetObject, Expression<Func<T, object>>? propertySetter, SafeInvoker? endCallback);
 
         /// <summary>
         ///     Resume the animation from where it paused

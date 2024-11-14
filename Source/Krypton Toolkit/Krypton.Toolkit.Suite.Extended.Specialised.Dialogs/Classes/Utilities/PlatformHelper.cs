@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,8 +40,8 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             PlatformHelper.Win32NT = Environment.OSVersion.Platform == PlatformID.Win32NT;
             PlatformHelper.XpOrHigher = PlatformHelper.Win32NT && Environment.OSVersion.Version.Major >= 5;
             PlatformHelper.VistaOrHigher = PlatformHelper.Win32NT && Environment.OSVersion.Version.Major >= 6;
-            PlatformHelper.SevenOrHigher = PlatformHelper.Win32NT && (Environment.OSVersion.Version >= new Version(6, 1));
-            PlatformHelper.EightOrHigher = PlatformHelper.Win32NT && (Environment.OSVersion.Version >= new Version(6, 2, 9200));
+            PlatformHelper.SevenOrHigher = PlatformHelper.Win32NT && Environment.OSVersion.Version >= new Version(6, 1);
+            PlatformHelper.EightOrHigher = PlatformHelper.Win32NT && Environment.OSVersion.Version >= new Version(6, 2, 9200);
             PlatformHelper.VisualStylesEnabled = VisualStyleInformation.IsEnabledByUser;
 
             SystemEvents.UserPreferenceChanged += (s, e) =>

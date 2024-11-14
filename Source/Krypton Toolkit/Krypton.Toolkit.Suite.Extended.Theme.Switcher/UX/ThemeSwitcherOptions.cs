@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -87,25 +87,25 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kcmbPaletteMode = new Krypton.Toolkit.KryptonThemeComboBox();
             this.kcmbDarkTheme = new Krypton.Toolkit.KryptonThemeComboBox();
             this.kcmbLightTheme = new Krypton.Toolkit.KryptonThemeComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonNavigator1).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage1).BeginInit();
             this.kryptonPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage2).BeginInit();
             this.kryptonPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage3).BeginInit();
             this.kryptonPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbPaletteMode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbDarkTheme)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbLightTheme)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbPaletteMode).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbDarkTheme).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbLightTheme).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -123,7 +123,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnReset
             // 
-            this.kbtnReset.CornerRoundingRadius = -1F;
             this.kbtnReset.Enabled = false;
             this.kbtnReset.Location = new System.Drawing.Point(12, 13);
             this.kbtnReset.Name = "kbtnReset";
@@ -134,8 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnApply
             // 
-            this.kbtnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnApply.CornerRoundingRadius = -1F;
+            this.kbtnApply.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnApply.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnApply.Enabled = false;
             this.kbtnApply.Location = new System.Drawing.Point(428, 13);
@@ -147,8 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnCancel.CornerRoundingRadius = -1F;
+            this.kbtnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(524, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -222,7 +219,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnRequestTheme
             // 
-            this.kbtnRequestTheme.CornerRoundingRadius = -1F;
             this.kbtnRequestTheme.Location = new System.Drawing.Point(160, 201);
             this.kbtnRequestTheme.Name = "kbtnRequestTheme";
             this.kbtnRequestTheme.Size = new System.Drawing.Size(121, 25);
@@ -232,7 +228,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnDownload
             // 
-            this.kbtnDownload.CornerRoundingRadius = -1F;
             this.kbtnDownload.Location = new System.Drawing.Point(256, 161);
             this.kbtnDownload.Name = "kbtnDownload";
             this.kbtnDownload.Size = new System.Drawing.Size(189, 25);
@@ -242,7 +237,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnSubmit
             // 
-            this.kbtnSubmit.CornerRoundingRadius = -1F;
             this.kbtnSubmit.Location = new System.Drawing.Point(16, 201);
             this.kbtnSubmit.Name = "kbtnSubmit";
             this.kbtnSubmit.Size = new System.Drawing.Size(138, 25);
@@ -253,18 +247,17 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // kwlPaletteName
             // 
             this.kwlPaletteName.AutoSize = false;
-            this.kwlPaletteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlPaletteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlPaletteName.ForeColor = System.Drawing.Color.Black;
             this.kwlPaletteName.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kwlPaletteName.Location = new System.Drawing.Point(16, 55);
             this.kwlPaletteName.Name = "kwlPaletteName";
             this.kwlPaletteName.Size = new System.Drawing.Size(566, 93);
-            this.kwlPaletteName.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlPaletteName.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlPaletteName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // kbtnLocate
             // 
-            this.kbtnLocate.CornerRoundingRadius = -1F;
             this.kbtnLocate.Enabled = false;
             this.kbtnLocate.Location = new System.Drawing.Point(112, 161);
             this.kbtnLocate.Name = "kbtnLocate";
@@ -275,7 +268,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnImport
             // 
-            this.kbtnImport.CornerRoundingRadius = -1F;
             this.kbtnImport.Location = new System.Drawing.Point(16, 161);
             this.kbtnImport.Name = "kbtnImport";
             this.kbtnImport.Size = new System.Drawing.Size(90, 25);
@@ -311,7 +303,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnResetDarkAndLightTheme
             // 
-            this.kbtnResetDarkAndLightTheme.CornerRoundingRadius = -1F;
             this.kbtnResetDarkAndLightTheme.Enabled = false;
             this.kbtnResetDarkAndLightTheme.Location = new System.Drawing.Point(16, 136);
             this.kbtnResetDarkAndLightTheme.Name = "kbtnResetDarkAndLightTheme";
@@ -394,7 +385,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kcmbPaletteMode
             // 
-            this.kcmbPaletteMode.CornerRoundingRadius = -1F;
             this.kcmbPaletteMode.DropDownWidth = 507;
             this.kcmbPaletteMode.IntegralHeight = false;
             this.kcmbPaletteMode.Location = new System.Drawing.Point(75, 19);
@@ -405,7 +395,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kcmbDarkTheme
             // 
-            this.kcmbDarkTheme.CornerRoundingRadius = -1F;
             this.kcmbDarkTheme.DropDownWidth = 555;
             this.kcmbDarkTheme.IntegralHeight = false;
             this.kcmbDarkTheme.Location = new System.Drawing.Point(22, 47);
@@ -416,7 +405,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kcmbLightTheme
             // 
-            this.kcmbLightTheme.CornerRoundingRadius = -1F;
             this.kcmbLightTheme.DropDownWidth = 555;
             this.kcmbLightTheme.IntegralHeight = false;
             this.kcmbLightTheme.Location = new System.Drawing.Point(22, 109);
@@ -439,29 +427,29 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Theme Switcher Options";
             this.Load += new System.EventHandler(this.ThemeSwitcherOptions_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonNavigator1).EndInit();
             this.kryptonNavigator1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage1).EndInit();
             this.kryptonPage1.ResumeLayout(false);
             this.kryptonPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage2).EndInit();
             this.kryptonPage2.ResumeLayout(false);
             this.kryptonPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPage3).EndInit();
             this.kryptonPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
             this.kryptonGroupBox1.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbPaletteMode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbDarkTheme)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbLightTheme)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbPaletteMode).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbDarkTheme).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbLightTheme).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -554,7 +542,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void kbtnRequestTheme_Click(object sender, EventArgs e)
         {
-            ApplicationUtilities.UnderConstruction();
+            DebugUtilities.NotImplemented(@"This feature has not been implemented yet.");
         }
 
         private void kbtnResetDarkAndLightTheme_Click(object sender, EventArgs e)

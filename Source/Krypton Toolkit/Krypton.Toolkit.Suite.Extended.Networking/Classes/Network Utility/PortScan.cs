@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
             if (_txtStartPort.Text == string.Empty || _txtStopPort.Text == string.Empty)
             {
-                MessageBox.Show("Please enter a start port and a stop port");
+                KryptonMessageBox.Show("Please enter a start port and a stop port");
             }
             else
             {
@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                     {
                         PortState state = new PortState();
                         int diff = stop - start;
-                        decimal progress = ((decimal)x / (decimal)diff) * (decimal)100;
+                        decimal progress = (decimal)x / (decimal)diff * (decimal)100;
                         try
                         {
                             TcpClient client = new TcpClient(_txtHost.Text, i);
@@ -207,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                         }
                         catch (Exception ex)
                         {
-                            ExceptionCapture.CaptureException(ex);
+                            DebugUtilities.NotImplemented(ex.ToString());
                         }
                         state.Port = i;
                         _worker.ReportProgress((int)progress, state);
@@ -217,7 +217,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
             catch (Exception ee)
             {
-                ExceptionCapture.CaptureException(ee);
+                DebugUtilities.NotImplemented(ee.ToString());
             }
         }
         #endregion

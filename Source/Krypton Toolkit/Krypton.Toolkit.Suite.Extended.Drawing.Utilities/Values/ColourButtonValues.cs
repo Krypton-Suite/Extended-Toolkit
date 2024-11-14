@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #region Fields
         private Color _transparent, _selectedColour, _emptyBorderColour;
 
-        private Image _image, _sourceImage, _compositeImage;
+        private Image _image;
+        private Image? _sourceImage;
+        private Image? _compositeImage;
 
         private Rectangle _selectedRect;
 
@@ -85,11 +87,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         #region IsDefault
         [Browsable(false)]
-        public override bool IsDefault => (ImageStates.IsDefault &&
-                                           (Image == _defaultImage) &&
-                                           (ImageTransparentColour == Color.Empty) &&
-                                           (Text == DEFAULT_TEXT) &&
-                                           (ExtraText == _defaultExtraText));
+        public override bool IsDefault => ImageStates.IsDefault &&
+                                          Image == _defaultImage &&
+                                          ImageTransparentColour == Color.Empty &&
+                                          Text == DEFAULT_TEXT &&
+                                          ExtraText == _defaultExtraText;
         #endregion
 
         #region Image
@@ -99,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Localizable(true)]
         [Category("Visuals")]
         [Description("Button image.")]
-        [RefreshPropertiesAttribute(RefreshProperties.All)]
+        [RefreshProperties(RefreshProperties.All)]
         public Image Image
         {
             get => _image;
@@ -135,8 +137,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Localizable(true)]
         [Category("Visuals")]
         [Description("Label image transparent color.")]
-        [RefreshPropertiesAttribute(RefreshProperties.All)]
-        [KryptonDefaultColorAttribute()]
+        [RefreshProperties(RefreshProperties.All)]
+        [KryptonDefaultColor()]
         public Color ImageTransparentColour
         {
             get => _transparent;
@@ -197,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Localizable(true)]
         [Category("Visuals")]
         [Description("Button text.")]
-        [RefreshPropertiesAttribute(RefreshProperties.All)]
+        [RefreshProperties(RefreshProperties.All)]
         [Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         public string Text
         {
@@ -209,7 +211,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 {
                     _text = value;
                     PerformNeedPaint(true);
-                    TextChanged?.Invoke(this, EventArgs.Empty);
+                    TextChanged.Invoke(this, EventArgs.Empty);
                 }
             }
         }
@@ -235,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Localizable(true)]
         [Category("Visuals")]
         [Description("Button extra text.")]
-        [RefreshPropertiesAttribute(RefreshProperties.All)]
+        [RefreshProperties(RefreshProperties.All)]
         [Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         [DefaultValue("")]
         public string ExtraText
@@ -332,10 +334,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <param name="state">The state for which the image is needed.</param>
         /// <returns>Image value.</returns>
-        public virtual Image GetImage(PaletteState state)
+        public virtual Image? GetImage(PaletteState state)
         {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-            Image image = null;
+            Image? image = null;
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
             // Try and find a state specific image
@@ -362,7 +364,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
 
             // Do we need to create another composite image?
-            if ((_sourceImage != image) || (_compositeImage == null))
+            if (_sourceImage != image || _compositeImage == null)
             {
                 // Remember image used to create the composite image
                 _sourceImage = image;
@@ -376,7 +378,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 else
                 {
                     // Create a copy of the source image
-                    Bitmap copyBitmap = new Bitmap(image);
+                    Bitmap? copyBitmap = new Bitmap(image);
 
                     // Paint over the image with a color indicator
                     using (Graphics g = Graphics.FromImage(copyBitmap))

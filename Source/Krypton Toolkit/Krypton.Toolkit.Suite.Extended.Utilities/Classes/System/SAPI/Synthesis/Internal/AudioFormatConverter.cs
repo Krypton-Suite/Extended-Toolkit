@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -1050,7 +1050,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         internal static byte[] ConvertLinear2ULaw(short[] data, int size)
         {
             byte[] array = new byte[size];
-            _uLawCompTableCached = ((_uLawCompTableCached == null) ? CalcLinear2ULawTable() : _uLawCompTableCached);
+            _uLawCompTableCached = _uLawCompTableCached == null ? CalcLinear2ULawTable() : _uLawCompTableCached;
             for (int i = 0; i < size; i++)
             {
                 array[i] = _uLawCompTableCached[(ushort)data[i] >> 2];
@@ -1089,7 +1089,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 num2 += 132;
                 int num4 = exp_lut_linear2ulaw[(num2 >> 7) & 0xFF];
                 int num5 = (num2 >> num4 + 3) & 0xF;
-                byte b = (byte)(~(num3 | (num4 << 4) | num5));
+                byte b = (byte)~(num3 | (num4 << 4) | num5);
                 if (flag && b == 0)
                 {
                     b = 2;
@@ -1102,7 +1102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         internal static byte[] ConvertLinear2ALaw(short[] data, int size)
         {
             byte[] array = new byte[size];
-            _aLawCompTableCached = ((_aLawCompTableCached == null) ? CalcLinear2ALawTable() : _aLawCompTableCached);
+            _aLawCompTableCached = _aLawCompTableCached == null ? CalcLinear2ALawTable() : _aLawCompTableCached;
             for (int i = 0; i < size; i++)
             {
                 array[i] = _aLawCompTableCached[(ushort)data[i] >> 2];
@@ -1148,7 +1148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 {
                     b = (byte)(num2 >> 4);
                 }
-                b = (array[i >> 2] = (byte)(b ^ (byte)(num3 ^ 0x55)));
+                b = array[i >> 2] = (byte)(b ^ (byte)(num3 ^ 0x55));
             }
             return array;
         }

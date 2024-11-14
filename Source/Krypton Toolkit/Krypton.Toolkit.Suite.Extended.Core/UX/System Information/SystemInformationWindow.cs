@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -100,7 +100,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnClose
             // 
-            this.kbtnClose.CornerRoundingRadius = -1F;
             this.kbtnClose.Location = new System.Drawing.Point(697, 13);
             this.kbtnClose.Name = "kbtnClose";
             this.kbtnClose.Size = new System.Drawing.Size(90, 25);
@@ -255,7 +254,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnSave
             // 
-            this.kbtnSave.CornerRoundingRadius = -1F;
             this.kbtnSave.Enabled = false;
             this.kbtnSave.Location = new System.Drawing.Point(326, 15);
             this.kbtnSave.Name = "kbtnSave";
@@ -265,7 +263,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kcmbClass
             // 
-            this.kcmbClass.CornerRoundingRadius = -1F;
             this.kcmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbClass.DropDownWidth = 121;
             this.kcmbClass.IntegralHeight = false;
@@ -916,7 +913,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception error)
             {
-                ExceptionCapture.CaptureException(error);
+                DebugUtilities.NotImplemented(error.ToString());
             }
 
             return sb.ToString();

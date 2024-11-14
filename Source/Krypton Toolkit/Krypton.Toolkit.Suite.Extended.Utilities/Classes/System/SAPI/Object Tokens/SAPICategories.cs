@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -237,8 +237,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
         {
             bool flag = true;
             ushort num;
-            Version[2] = (num = (Version[3] = 0));
-            Version[1] = (num = num);
+            Version[2] = num = Version[3] = 0;
+            Version[1] = num = num;
             Version[0] = num;
             if (string.IsNullOrEmpty(s))
             {

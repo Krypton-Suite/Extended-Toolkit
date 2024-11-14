@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -93,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             // ktxtDirectory
             // 
             this.ktxtDirectory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ktxtDirectory.Hint = "Please enter or browse to a directory...";
+            this.ktxtDirectory.CueHint.CueHintText = "Please enter or browse to a directory...";
             this.ktxtDirectory.Location = new(0, 0);
             this.ktxtDirectory.Name = "ktxtDirectory";
             this.ktxtDirectory.Size = new(224, 23);
@@ -310,11 +310,11 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
         }
 
-        private void PropagateFileList(List<string> directoryContents, string directory, string fileType = null)
+        private void PropagateFileList(List<string> directoryContents, string directory, string? fileType = null)
         {
             DirectoryInfo directoryInfo = new(directory);
 
@@ -390,12 +390,13 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                         }
                         break;
                     default:
+                        DebugUtilities.NotImplemented(_fileDialogType.ToString());
                         throw new ArgumentOutOfRangeException();
                 }
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 

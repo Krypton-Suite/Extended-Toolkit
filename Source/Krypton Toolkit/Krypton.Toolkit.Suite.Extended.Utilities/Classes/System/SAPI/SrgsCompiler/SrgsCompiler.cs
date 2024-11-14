@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -85,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             SrgsElementCompilerFactory srgsElementCompilerFactory = (SrgsElementCompilerFactory)(srgsParser.ElementFactory = new SrgsElementCompilerFactory(backend, customGrammar));
             srgsParser.Parse();
             backend.Optimize();
-            culture = ((backend.LangId == 21514) ? new CultureInfo("es-us") : new CultureInfo(backend.LangId));
+            culture = backend.LangId == 21514 ? new CultureInfo("es-us") : new CultureInfo(backend.LangId);
             if (customGrammar._codebehind.Count > 0 && !string.IsNullOrEmpty(srgsPath))
             {
                 for (int i = 0; i < customGrammar._codebehind.Count; i++)

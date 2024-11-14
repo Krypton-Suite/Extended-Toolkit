@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -180,7 +180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private bool ShouldSerializeImageSize()
         {
-            return (!_imageSize.Equals(Size.Empty));
+            return !_imageSize.Equals(Size.Empty);
         }
 
         private Size _imageSize = new Size(0, 0);
@@ -216,7 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private bool ShouldSerializeTitlePadding()
         {
-            return (!TitlePadding.Equals(Padding.Empty));
+            return !TitlePadding.Equals(Padding.Empty);
         }
 
         [Category("Content")]
@@ -230,7 +230,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private bool ShouldSerializeContentPadding()
         {
-            return (!ContentPadding.Equals(Padding.Empty));
+            return !ContentPadding.Equals(Padding.Empty);
         }
 
         [Category("Image")]
@@ -244,7 +244,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private bool ShouldSerializeImagePadding()
         {
-            return (!ImagePadding.Equals(Padding.Empty));
+            return !ImagePadding.Equals(Padding.Empty);
         }
 
         [Category("Header"), DefaultValue(9)]
@@ -366,7 +366,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     _realAnimationDuration = AnimationDuration;
                     _tmrAnimation.Start();
                     _sw = Stopwatch.StartNew();
-                    Debug.WriteLine("Animation started.");
+                    DebugUtilities.WriteLine("Animation started.");
                 }
                 else
                 {
@@ -388,7 +388,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                         _isAppearing = true;
                         _realAnimationDuration = Math.Max((int)_sw.ElapsedMilliseconds, 1);
                         _sw.Restart();
-                        Debug.WriteLine("Animation direction changed.");
+                        DebugUtilities.WriteLine("Animation direction changed.");
                     }
                     _frmPopup.Invalidate();
                 }
@@ -400,8 +400,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         public void Hide()
         {
-            Debug.WriteLine("Animation stopped.");
-            Debug.WriteLine("Wait timer stopped.");
+            DebugUtilities.WriteLine("Animation stopped.");
+            DebugUtilities.WriteLine("Wait timer stopped.");
             _tmrAnimation.Stop();
             _tmrWait.Stop();
             _frmPopup.Hide();
@@ -421,12 +421,12 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void frmPopup_ContextMenuClosed(object sender, EventArgs e)
         {
-            Debug.WriteLine("Menu closed.");
+            DebugUtilities.WriteLine("Menu closed.");
             if (!_mouseIsOn)
             {
                 _tmrWait.Interval = Delay;
                 _tmrWait.Start();
-                Debug.WriteLine("Wait timer started.");
+                DebugUtilities.WriteLine("Wait timer started.");
             }
         }
 
@@ -439,9 +439,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void frmPopup_ContextMenuOpened(object sender, EventArgs e)
         {
-            Debug.WriteLine("Menu opened.");
+            DebugUtilities.WriteLine("Menu opened.");
             _tmrWait.Stop();
-            Debug.WriteLine("Wait timer stopped.");
+            DebugUtilities.WriteLine("Wait timer stopped.");
         }
 
         /// <summary>
@@ -504,16 +504,16 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             long elapsed = _sw.ElapsedMilliseconds;
 
-            int posCurrent = (int)(_posStart + ((_posStop - _posStart) * elapsed / _realAnimationDuration));
-            bool neg = (_posStop - _posStart) < 0;
+            int posCurrent = (int)(_posStart + (_posStop - _posStart) * elapsed / _realAnimationDuration);
+            bool neg = _posStop - _posStart < 0;
             if ((neg && posCurrent < _posStop) ||
                 (!neg && posCurrent > _posStop))
             {
                 posCurrent = _posStop;
             }
 
-            double opacityCurrent = _opacityStart + ((_opacityStop - _opacityStart) * elapsed / _realAnimationDuration);
-            neg = (_opacityStop - _opacityStart) < 0;
+            double opacityCurrent = _opacityStart + (_opacityStop - _opacityStart) * elapsed / _realAnimationDuration;
+            neg = _opacityStop - _opacityStart < 0;
             if ((neg && opacityCurrent < _opacityStop) ||
                 (!neg && opacityCurrent > _opacityStop))
             {
@@ -529,7 +529,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
                 _sw.Reset();
                 _tmrAnimation.Stop();
-                Debug.WriteLine("Animation stopped.");
+                DebugUtilities.WriteLine("Animation stopped.");
 
                 if (_isAppearing)
                 {
@@ -555,7 +555,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     {
                         _tmrWait.Stop();
                         _tmrWait.Start();
-                        Debug.WriteLine("Wait timer started.");
+                        DebugUtilities.WriteLine("Wait timer started.");
                     }
                 }
                 else
@@ -576,12 +576,12 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void tmWait_Tick(object sender, EventArgs e)
         {
-            Debug.WriteLine("Wait timer elapsed.");
+            DebugUtilities.WriteLine("Wait timer elapsed.");
             _tmrWait.Stop();
             _tmrAnimation.Interval = AnimationInterval;
             _tmrAnimation.Start();
             _sw.Restart();
-            Debug.WriteLine("Animation started.");
+            DebugUtilities.WriteLine("Animation started.");
         }
 
         /// <summary>
@@ -591,12 +591,12 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void frmPopup_MouseLeave(object sender, EventArgs e)
         {
-            Debug.WriteLine("MouseLeave");
+            DebugUtilities.WriteLine("MouseLeave");
             if (_frmPopup.Visible && (OptionsMenu == null || !OptionsMenu.Visible))
             {
                 _tmrWait.Interval = Delay;
                 _tmrWait.Start();
-                Debug.WriteLine("Wait timer started.");
+                DebugUtilities.WriteLine("Wait timer started.");
             }
             _mouseIsOn = false;
         }
@@ -608,17 +608,17 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e"></param>
         private void frmPopup_MouseEnter(object sender, EventArgs e)
         {
-            Debug.WriteLine("MouseEnter");
+            DebugUtilities.WriteLine("MouseEnter");
             if (!_isAppearing)
             {
                 _frmPopup.Top = _maxPosition;
                 _frmPopup.Opacity = _maxOpacity;
                 _tmrAnimation.Stop();
-                Debug.WriteLine("Animation stopped.");
+                DebugUtilities.WriteLine("Animation stopped.");
             }
 
             _tmrWait.Stop();
-            Debug.WriteLine("Wait timer stopped.");
+            DebugUtilities.WriteLine("Wait timer stopped.");
 
             _mouseIsOn = true;
         }

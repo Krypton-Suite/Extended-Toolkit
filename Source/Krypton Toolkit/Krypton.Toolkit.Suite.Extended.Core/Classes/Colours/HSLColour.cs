@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -164,7 +164,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else if (temp3 < 2.0 / 3.0)
             {
-                return temp1 + ((temp2 - temp1) * ((2.0 / 3.0) - temp3) * 6.0);
+                return temp1 + (temp2 - temp1) * (2.0 / 3.0 - temp3) * 6.0;
             }
             else
             {
@@ -195,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else
             {
-                temp2 = hslColour._luminosity + hslColour._saturation - (hslColour._luminosity * hslColour._saturation);
+                temp2 = hslColour._luminosity + hslColour._saturation - hslColour._luminosity * hslColour._saturation;
             }
 
             return temp2;

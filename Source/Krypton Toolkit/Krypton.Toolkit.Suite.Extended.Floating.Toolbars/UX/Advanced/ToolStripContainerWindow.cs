@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -113,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         {
             InitializeComponent();
 
-            _dFrameWidth = (Width - ClientSize.Width);
+            _dFrameWidth = Width - ClientSize.Width;
 
             _captionWidth = Height - ClientSize.Height - _dFrameWidth;
 
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                 }
             }
 
-            _minWidth += (_dFrameWidth + 3);
+            _minWidth += _dFrameWidth + 3;
 
             if (_minWidth < 46)
             {
@@ -160,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                 {
                     Width = _maxWidth;
                 }
-                else if (Width < (_minWidth + 23))
+                else if (Width < _minWidth + 23)
                 {
                     Width = _minWidth;
                 }

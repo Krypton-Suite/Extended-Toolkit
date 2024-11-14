@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void MarqueeTimer_Tick(object sender, EventArgs e)
         {
-            offset = (offset - Speed);
+            offset = offset - Speed;
 
             if (offset < -ClientSize.Width)
             {

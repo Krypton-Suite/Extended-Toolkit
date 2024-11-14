@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         {
             _rectangle = new Rectangle(0, 0, width, height);
             _direction = direction;
-            _toolTip = (ToolBoxScrollDirection.Up == direction) ? "Scroll Up" : "Scroll Down";
+            _toolTip = ToolBoxScrollDirection.Up == direction ? "Scroll Up" : "Scroll Down";
         }
         #endregion //Construction
 
@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
             if (_rectangle.IntersectsWith(clipRect))
             {
-                pen = (!_enabled || !ctrlEnabled) ? SystemPens.GrayText : Pens.Black;
+                pen = !_enabled || !ctrlEnabled ? SystemPens.GrayText : Pens.Black;
                 rect = _rectangle;
 
                 KryptonToolBox.DrawBorders(g, rect, _mouseDown);

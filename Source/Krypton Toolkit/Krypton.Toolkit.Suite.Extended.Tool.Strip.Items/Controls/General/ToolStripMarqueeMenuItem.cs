@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -108,8 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Bigger value means faster moving text.
         /// Text scrolling speed in pixels per seconds can be expressed with the following formula:
         /// <br></br>
-        /// 1000 * ScrolStep/RefreshInterval
-        /// </summary>
+        /// 1000 * ScrollStep/RefreshInterval
         /// </summary>
         [Browsable(true)]
         [DefaultValue(DEFAULT_SCROLL_STEP)]
@@ -118,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         /// <summary>
         /// When sets to 'true', every time mouse pointer moves over tool strip item, scrolling stops.
-        /// Otherwise scrolling never stops.
+        /// Otherwise, scrolling never stops.
         /// </summary>
         [Browsable(true)]
         [DefaultValue(DEFAULT_STOP_SCROLL_ON_MOUSE_OVER)]
@@ -154,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             MarqueeScrollDirection = DEFAULT_MARQUEE_SCROLL_DIRECTION;
             _timer = new Timer();
             _timer.Interval = DEFAULT_REFRESH_INTERVAL;
-            _timer.Tick += new EventHandler(timer_Tick);
+            _timer.Tick += timer_Tick;
             _timer.Enabled = true;
 
             if (MarqueeScrollDirection == MarqueeScrollDirection.RightToLeft)
@@ -188,7 +187,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         void timer_Tick(object sender, EventArgs e)
         {
             //Change offset only when menu item is visible, mouse is not hovering over or StopScrollOnMouseOver is not set to 'false'
-            if ((Visible) && ((!Selected) || (!StopScrollOnMouseOver)))
+            if (Visible && (!Selected || !StopScrollOnMouseOver))
             {
                 _pixelOffest = (_pixelOffest + ScrollStep + _textSize.Width) % (2 * _textSize.Width + 1) - _textSize.Width;
                 Invalidate();

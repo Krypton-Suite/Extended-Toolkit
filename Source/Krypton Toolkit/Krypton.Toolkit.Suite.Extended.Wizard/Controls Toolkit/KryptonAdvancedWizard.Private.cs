@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,9 +51,9 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             this._kbtnHelp = new Krypton.Toolkit.KryptonButton();
             this._kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this._kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            ((System.ComponentModel.ISupportInitialize)(this._kpnlButtons)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this._kpnlButtons).BeginInit();
             this._kpnlButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this._kryptonPanel1).BeginInit();
             this.SuspendLayout();
             // 
             // kpnlButtons
@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             // 
             // kbtnCancel
             // 
-            this._kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._kbtnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             this._kbtnCancel.Location = new System.Drawing.Point(167, 9);
             this._kbtnCancel.Name = "_kbtnCancel";
             this._kbtnCancel.Size = new System.Drawing.Size(90, 25);
@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             // 
             // kbtnBack
             // 
-            this._kbtnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._kbtnBack.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             this._kbtnBack.Location = new System.Drawing.Point(263, 9);
             this._kbtnBack.Name = "_kbtnBack";
             this._kbtnBack.Size = new System.Drawing.Size(90, 25);
@@ -93,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             // 
             // kbtnNext
             // 
-            this._kbtnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._kbtnNext.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             this._kbtnNext.Location = new System.Drawing.Point(359, 9);
             this._kbtnNext.Name = "_kbtnNext";
             this._kbtnNext.Size = new System.Drawing.Size(90, 25);
@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             // 
             // kbtnFinish
             // 
-            this._kbtnFinish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._kbtnFinish.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             this._kbtnFinish.Location = new System.Drawing.Point(455, 9);
             this._kbtnFinish.Name = "_kbtnFinish";
             this._kbtnFinish.Size = new System.Drawing.Size(90, 25);
@@ -144,10 +144,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             this.Controls.Add(this._kpnlButtons);
             this.Name = "KryptonAdvancedWizard";
             this.Size = new System.Drawing.Size(557, 327);
-            ((System.ComponentModel.ISupportInitialize)(this._kpnlButtons)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this._kpnlButtons).EndInit();
             this._kpnlButtons.ResumeLayout(false);
             this._kpnlButtons.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this._kryptonPanel1).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.ftsColourGridActions = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableToolStrip();
             this.tsbSavePalette = new System.Windows.Forms.ToolStripButton();
             this.tsbLoadPalette = new System.Windows.Forms.ToolStripButton();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tspeColourGridActions.SuspendLayout();
             this.ftsColourGridActions.SuspendLayout();
@@ -125,7 +125,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.Name = "ColourGridDialog";
             this.Text = "Colour Grid";
             this.Load += new System.EventHandler(this.ColourGridDialog_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             this.tspeColourGridActions.ResumeLayout(false);
@@ -263,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
                         if (serializer != null)
                         {
-                            ColorCollection colours;
+                            ColorCollection? colours;
 
                             if (!serializer.CanRead)
                             {
@@ -297,7 +297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     }
                     catch (Exception exc)
                     {
-                        ExceptionCapture.CaptureException(exc);
+                        DebugUtilities.NotImplemented(exc.ToString());
                     }
                 }
             }

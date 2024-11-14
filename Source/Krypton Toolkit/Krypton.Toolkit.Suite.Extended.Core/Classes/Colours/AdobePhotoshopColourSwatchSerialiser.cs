@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 //version = this.ReadShort(stream);
                 version = stream.ReadByte() + stream.ReadByte();
 
-                result = version == 1 || version == 2;
+                result = version is 1 or 2;
             }
             catch
             {

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,7 @@
  */
 #endregion
 
+
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     public class KryptonBorderedLabel : KryptonLabel
@@ -45,13 +46,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         #region Protected Overrides
         // TODO: Help to get this 'Kryptonised'
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             base.OnPaint(e);
 
             ForeColor = KryptonManager.CurrentGlobalPalette.GetBorderColor1(PaletteBorderStyle.InputControlCustom1, PaletteState.Normal);
 
-            Graphics gfx = e.Graphics;
+            Graphics gfx = e!.Graphics;
 
             Rectangle r = new Rectangle(e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1);
 

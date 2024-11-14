@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             {
                 g.SetClip(outerBorderPath);
 
-                Color outerBorderColour = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? OuterBorderColour.ToGrayScale() : OuterBorderColour;
+                Color outerBorderColour = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? OuterBorderColour.ToGrayScale() : OuterBorderColour;
 
                 using (Brush outerBorderBrush = new SolidBrush(outerBorderColour))
                 {
@@ -141,8 +141,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             {
                 g.SetClip(innerBorderPath);
 
-                Color borderColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
-                Color borderColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
+                Color borderColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
+                Color borderColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
 
                 using (Brush borderBrush = new LinearGradientBrush(borderRectangle, borderColour1, borderColour2, LinearGradientMode.Vertical))
                 {
@@ -168,8 +168,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             int gradientRectWidth = leftRectangle.Width + buttonWidth / 2;
             Rectangle gradientRectangle = new Rectangle(leftRectangle.X, leftRectangle.Y, gradientRectWidth, leftRectangle.Height);
 
-            Color leftSideBackColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? LeftSideBackColour1.ToGrayScale() : LeftSideBackColour1;
-            Color leftSideBackColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? LeftSideBackColour2.ToGrayScale() : LeftSideBackColour2;
+            Color leftSideBackColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? LeftSideBackColour1.ToGrayScale() : LeftSideBackColour1;
+            Color leftSideBackColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? LeftSideBackColour2.ToGrayScale() : LeftSideBackColour2;
 
             if (_innerControlPath != null)
             {
@@ -240,14 +240,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
                         if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
                         {
-                            imageXPos = (int)((float)fullRectangle.X + (((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2));
+                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2);
                         }
                         else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
                         {
                             imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)resizedImageSize.Width);
                         }
 
-                        imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + (((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2)), resizedImageSize.Width, resizedImageSize.Height);
+                        imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
                         {
@@ -262,14 +262,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                     {
                         if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
                         {
-                            imageXPos = (int)((float)fullRectangle.X + (((float)fullRectangle.Width - (float)imageSize.Width) / 2));
+                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)imageSize.Width) / 2);
                         }
                         else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
                         {
                             imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)imageSize.Width);
                         }
 
-                        imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + (((float)fullRectangle.Height - (float)imageSize.Height) / 2)), imageSize.Width, imageSize.Height);
+                        imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
                         {
@@ -289,14 +289,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
                     if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
                     {
-                        textXPos = (float)fullRectangle.X + (((float)fullRectangle.Width - (float)textSize.Width) / 2);
+                        textXPos = (float)fullRectangle.X + ((float)fullRectangle.Width - (float)textSize.Width) / 2;
                     }
                     else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
                     {
                         textXPos = (float)fullRectangle.X + (float)fullRectangle.Width - (float)textSize.Width;
                     }
 
-                    RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + (((float)fullRectangle.Height - (float)textSize.Height) / 2), textSize.Width, textSize.Height);
+                    RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + ((float)fullRectangle.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
                     Color textForeColour = ToggleSwitch.OnForeColour;
 
@@ -327,8 +327,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             int gradientRectWidth = rightRectangle.Width + buttonWidth / 2;
             Rectangle gradientRectangle = new Rectangle(rightRectangle.X - buttonWidth / 2, rightRectangle.Y, gradientRectWidth, rightRectangle.Height);
 
-            Color rightSideBackColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? RightSideBackColour1.ToGrayScale() : RightSideBackColour1;
-            Color rightSideBackColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? RightSideBackColour2.ToGrayScale() : RightSideBackColour2;
+            Color rightSideBackColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? RightSideBackColour1.ToGrayScale() : RightSideBackColour1;
+            Color rightSideBackColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? RightSideBackColour2.ToGrayScale() : RightSideBackColour2;
 
             if (_innerControlPath != null)
             {
@@ -399,14 +399,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
                         if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
                         {
-                            imageXPos = (int)((float)fullRectangle.X + (((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2));
+                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2);
                         }
                         else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
                         {
                             imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)resizedImageSize.Width);
                         }
 
-                        imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + (((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2)), resizedImageSize.Width, resizedImageSize.Height);
+                        imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
                         {
@@ -421,14 +421,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                     {
                         if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
                         {
-                            imageXPos = (int)((float)fullRectangle.X + (((float)fullRectangle.Width - (float)imageSize.Width) / 2));
+                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)imageSize.Width) / 2);
                         }
                         else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
                         {
                             imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)imageSize.Width);
                         }
 
-                        imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + (((float)fullRectangle.Height - (float)imageSize.Height) / 2)), imageSize.Width, imageSize.Height);
+                        imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
                         if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
                         {
@@ -448,14 +448,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
                     if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
                     {
-                        textXPos = (float)fullRectangle.X + (((float)fullRectangle.Width - (float)textSize.Width) / 2);
+                        textXPos = (float)fullRectangle.X + ((float)fullRectangle.Width - (float)textSize.Width) / 2;
                     }
                     else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
                     {
                         textXPos = (float)fullRectangle.X + (float)fullRectangle.Width - (float)textSize.Width;
                     }
 
-                    RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + (((float)fullRectangle.Height - (float)textSize.Height) / 2), textSize.Width, textSize.Height);
+                    RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + ((float)fullRectangle.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
                     Color textForeColour = ToggleSwitch.OffForeColour;
 
@@ -621,7 +621,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             Point top = new Point(arrowRectangle.X + 8, arrowRectangle.Y);
             Point bottom = new Point(arrowRectangle.X + 8, arrowRectangle.Y + arrowRectangle.Height);
-            Point tip = new Point(arrowRectangle.X, arrowRectangle.Y + (arrowRectangle.Height / 2));
+            Point tip = new Point(arrowRectangle.X, arrowRectangle.Y + arrowRectangle.Height / 2);
 
             gp.AddLine(top, bottom);
             gp.AddLine(bottom, tip);
@@ -636,7 +636,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             Point top = new Point(arrowRectangle.X + 14, arrowRectangle.Y);
             Point bottom = new Point(arrowRectangle.X + 14, arrowRectangle.Y + arrowRectangle.Height);
-            Point tip = new Point(arrowRectangle.X + arrowRectangle.Width, arrowRectangle.Y + (arrowRectangle.Height / 2));
+            Point tip = new Point(arrowRectangle.X + arrowRectangle.Width, arrowRectangle.Y + arrowRectangle.Height / 2);
 
             gp.AddLine(top, bottom);
             gp.AddLine(bottom, tip);

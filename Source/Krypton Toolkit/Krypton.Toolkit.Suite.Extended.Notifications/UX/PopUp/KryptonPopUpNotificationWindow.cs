@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -176,15 +176,15 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (RectClose.Contains(e.X, e.Y) && (CloseClick != null))
+                if (RectClose.Contains(e.X, e.Y) && CloseClick != null)
                 {
                     CloseClick(this, EventArgs.Empty);
                 }
-                if (RectContentText.Contains(e.X, e.Y) && (LinkClick != null))
+                if (RectContentText.Contains(e.X, e.Y) && LinkClick != null)
                 {
                     LinkClick(this, EventArgs.Empty);
                 }
-                if (RectOptions.Contains(e.X, e.Y) && (PopUp.OptionsMenu != null))
+                if (RectOptions.Contains(e.X, e.Y) && PopUp.OptionsMenu != null)
                 {
                     if (ContextMenuOpened != null)
                     {
@@ -303,7 +303,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="input">first value</param>
         /// <param name="add">value to add</param>
         /// <returns>sum of both values</returns>
-        private int AddValueMax255(int input, int add) => (input + add < 256) ? input + add : 255;
+        private int AddValueMax255(int input, int add) => input + add < 256 ? input + add : 255;
 
         /// <summary>
         /// Subtract two values but do not returns a value below 0.
@@ -311,7 +311,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="input">first value</param>
         /// <param name="ded">value to subtract</param>
         /// <returns>first value minus second value</returns>
-        private int DedValueMin0(int input, int ded) => (input - ded > 0) ? input - ded : 0;
+        private int DedValueMin0(int input, int ded) => input - ded > 0 ? input - ded : 0;
 
         /// <summary>
         /// Returns a color which is darker than the given color.

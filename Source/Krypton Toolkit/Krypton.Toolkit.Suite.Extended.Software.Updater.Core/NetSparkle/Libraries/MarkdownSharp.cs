@@ -1506,7 +1506,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
             var tail = "";
             if (level < 0)
             {
-                link = Regex.Replace(link, @"\){1," + (-level) + "}$", m => { tail = m.Value; return ""; });
+                link = Regex.Replace(link, @"\){1," + -level + "}$", m => { tail = m.Value; return ""; });
             }
             if (tail.Length > 0)
             {
@@ -1795,7 +1795,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                         line.Length = 0; valid = false;
                         break;
                     case '\r':
-                        if ((i < text.Length - 1) && (text[i + 1] != '\n'))
+                        if (i < text.Length - 1 && text[i + 1] != '\n')
                         {
                             if (valid)
                             {
@@ -1807,7 +1807,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                         }
                         break;
                     case '\t':
-                        int width = (TAB_WIDTH - (line.Length % TAB_WIDTH));
+                        int width = TAB_WIDTH - line.Length % TAB_WIDTH;
                         for (int k = 0; k < width; k++)
                         {
                             line.Append(' ');

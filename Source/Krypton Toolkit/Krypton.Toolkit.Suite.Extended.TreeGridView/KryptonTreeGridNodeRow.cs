@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -175,7 +175,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         private bool ShouldSerializeImageIndex()
         {
-            return (_imageIndex != -1 && _image == null);
+            return _imageIndex != -1 && _image == null;
         }
 
         [Category("Appearance"),
@@ -205,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             }
         }
 
-        private bool ShouldSerializeImage() => (_imageIndex == -1 && _image != null);
+        private bool ShouldSerializeImage() => _imageIndex == -1 && _image != null;
 
         public Image? Image
         {
@@ -356,13 +356,13 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         [Browsable(false),
          DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual bool HasChildren => (_childrenNodes != null && Nodes.Count != 0);
+        public virtual bool HasChildren => _childrenNodes != null && Nodes.Count != 0;
 
         [Browsable(false)]
         public bool IsSited => _isSited;
 
         [Browsable(false)]
-        public bool IsFirstSibling => (Index == 0);
+        public bool IsFirstSibling => Index == 0;
 
         [Browsable(false)]
         public bool IsLastSibling

@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,9 +49,9 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             this.kryptonPanel2 = new();
             this.krtbDebugBox = new();
             this.kbtnSaveToFile = new();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // 
             // kbtnClose
             // 
-            this.kbtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnClose.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnClose.Location = new(625, 13);
             this.kbtnClose.Name = "kbtnClose";
@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // 
             // kbtnCopy
             // 
-            this.kbtnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnCopy.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             this.kbtnCopy.Location = new(12, 13);
             this.kbtnCopy.Name = "kbtnCopy";
             this.kbtnCopy.Size = new(90, 25);
@@ -109,9 +109,9 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // 
             // krtbDebugBox
             // 
-            this.krtbDebugBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.krtbDebugBox.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
+                                                                           | System.Windows.Forms.AnchorStyles.Left
+                                                                           | System.Windows.Forms.AnchorStyles.Right);
             this.krtbDebugBox.Location = new(13, 13);
             this.krtbDebugBox.Name = "krtbDebugBox";
             this.krtbDebugBox.ReadOnly = true;
@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // 
             // kbtnSaveToFile
             // 
-            this.kbtnSaveToFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnSaveToFile.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             this.kbtnSaveToFile.Location = new(108, 13);
             this.kbtnSaveToFile.Name = "kbtnSaveToFile";
             this.kbtnSaveToFile.Size = new(127, 25);
@@ -136,17 +136,17 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonDeveloperDebugConsole";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Debug Console";
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -145,15 +145,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbvnumContrast = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonBlueValueNumericBox();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.chtxtContrast = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.ColourHexadecimalTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.cmsPaletteUtilities.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbContrastColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbContrastColour).BeginInit();
             this.cmsContrast.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbBaseColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbBaseColour).BeginInit();
             this.cmsBase.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -176,7 +176,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this.ksbtnPalettes.AutoSize = true;
             this.ksbtnPalettes.ContextMenuStrip = this.cmsPaletteUtilities;
-            this.ksbtnPalettes.CornerRoundingRadius = -1F;
             this.ksbtnPalettes.Location = new System.Drawing.Point(12, 13);
             this.ksbtnPalettes.Name = "ksbtnPalettes";
             this.ksbtnPalettes.ProcessPath = null;
@@ -217,7 +216,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kbtnOk
             // 
-            this.kbtnOk.CornerRoundingRadius = -1F;
             this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnOk.Location = new System.Drawing.Point(678, 13);
             this.kbtnOk.Name = "kbtnOk";
@@ -228,7 +226,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(774, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -434,25 +431,25 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // kwlContrastColourHeader
             // 
             this.kwlContrastColourHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kwlContrastColourHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlContrastColourHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlContrastColourHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this.kwlContrastColourHeader.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kwlContrastColourHeader.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
             this.kwlContrastColourHeader.Location = new System.Drawing.Point(441, 0);
             this.kwlContrastColourHeader.Name = "kwlContrastColourHeader";
             this.kwlContrastColourHeader.Size = new System.Drawing.Size(432, 58);
-            this.kwlContrastColourHeader.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlContrastColourHeader.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlContrastColourHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // kwlBaseColourHeader
             // 
             this.kwlBaseColourHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kwlBaseColourHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlBaseColourHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlBaseColourHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this.kwlBaseColourHeader.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kwlBaseColourHeader.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
             this.kwlBaseColourHeader.Location = new System.Drawing.Point(3, 0);
             this.kwlBaseColourHeader.Name = "kwlBaseColourHeader";
             this.kwlBaseColourHeader.Size = new System.Drawing.Size(432, 58);
-            this.kwlBaseColourHeader.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlBaseColourHeader.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlBaseColourHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
@@ -563,8 +560,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kavnumBase
             // 
-            this.kavnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kavnumBase.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left
+                                                                         | System.Windows.Forms.AnchorStyles.Right);
             this.kavnumBase.Location = new System.Drawing.Point(219, 3);
             this.kavnumBase.Maximum = new decimal(new int[] {
             255,
@@ -579,8 +576,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // krvnumBase
             // 
-            this.krvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.krvnumBase.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left
+                                                                         | System.Windows.Forms.AnchorStyles.Right);
             this.krvnumBase.Location = new System.Drawing.Point(219, 41);
             this.krvnumBase.Maximum = new decimal(new int[] {
             255,
@@ -601,8 +598,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kgvnumBase
             // 
-            this.kgvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kgvnumBase.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left
+                                                                         | System.Windows.Forms.AnchorStyles.Right);
             this.kgvnumBase.Location = new System.Drawing.Point(219, 79);
             this.kgvnumBase.Maximum = new decimal(new int[] {
             255,
@@ -623,8 +620,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kbvnumBase
             // 
-            this.kbvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbvnumBase.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left
+                                                                         | System.Windows.Forms.AnchorStyles.Right);
             this.kbvnumBase.Location = new System.Drawing.Point(219, 117);
             this.kbvnumBase.Maximum = new decimal(new int[] {
             255,
@@ -650,7 +647,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kryptonLabel1.Location = new System.Drawing.Point(3, 155);
             this.kryptonLabel1.Name = "kryptonLabel1";
             this.kryptonLabel1.Size = new System.Drawing.Size(210, 36);
-            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kryptonLabel1.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonLabel1.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kryptonLabel1.TabIndex = 9;
@@ -779,8 +776,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kavnumContrast
             // 
-            this.kavnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kavnumContrast.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left
+                                                                             | System.Windows.Forms.AnchorStyles.Right);
             this.kavnumContrast.Location = new System.Drawing.Point(219, 3);
             this.kavnumContrast.Maximum = new decimal(new int[] {
             255,
@@ -795,8 +792,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // krvnumContrast
             // 
-            this.krvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.krvnumContrast.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left
+                                                                             | System.Windows.Forms.AnchorStyles.Right);
             this.krvnumContrast.Location = new System.Drawing.Point(219, 41);
             this.krvnumContrast.Maximum = new decimal(new int[] {
             255,
@@ -817,8 +814,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kgvnumContrast
             // 
-            this.kgvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kgvnumContrast.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left
+                                                                             | System.Windows.Forms.AnchorStyles.Right);
             this.kgvnumContrast.Location = new System.Drawing.Point(219, 79);
             this.kgvnumContrast.Maximum = new decimal(new int[] {
             255,
@@ -839,8 +836,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kbvnumContrast
             // 
-            this.kbvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbvnumContrast.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left
+                                                                             | System.Windows.Forms.AnchorStyles.Right);
             this.kbvnumContrast.Location = new System.Drawing.Point(219, 117);
             this.kbvnumContrast.Maximum = new decimal(new int[] {
             255,
@@ -866,7 +863,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kryptonLabel2.Location = new System.Drawing.Point(3, 155);
             this.kryptonLabel2.Name = "kryptonLabel2";
             this.kryptonLabel2.Size = new System.Drawing.Size(210, 36);
-            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kryptonLabel2.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonLabel2.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kryptonLabel2.TabIndex = 8;
@@ -902,17 +899,17 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Contrast Colour Configurator";
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             this.cmsPaletteUtilities.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbContrastColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbContrastColour).EndInit();
             this.cmsContrast.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cbBaseColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cbBaseColour).EndInit();
             this.cmsBase.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -1110,7 +1107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private void chtxtBase_TextChanged(object sender, EventArgs e)
         {
-            if (chtxtBase.Text.Length == 3 || chtxtBase.Text.Length == 6)
+            if (chtxtBase.Text.Length is 3 or 6)
             {
                 cbBaseColour.BackColor = ColorTranslator.FromHtml($"#{chtxtBase.Text}");
             }

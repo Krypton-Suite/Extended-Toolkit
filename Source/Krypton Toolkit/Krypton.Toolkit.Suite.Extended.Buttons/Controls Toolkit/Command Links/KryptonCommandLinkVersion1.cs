@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,6 @@
  */
 #endregion
 
-#pragma warning disable CS0618
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     /// <summary>
@@ -37,7 +36,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     [ToolboxItem(true), ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.CommandLinkButton.bmp"), DefaultEvent("Click"),
      DefaultProperty("Heading"), Designer(typeof(KryptonCommandLinkButtonDesigner)), DesignerCategory("code"),
      ClassInterface(ClassInterfaceType.AutoDispatch), DisplayName("Krypton Command Link"),
-     Description("A Krypton Command Link Button."), ComVisible(true)]
+     Description("A Krypton Command Link Button."), ComVisible(true),
+    Obsolete(@"Use versions that are supported in the Standard Toolkit.")]
     public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     {
         #region Instance Fields
@@ -268,7 +268,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private bool ShouldSerializeButtonStyle()
         {
-            return (ButtonStyle != ButtonStyle.Command);
+            return ButtonStyle != ButtonStyle.Command;
         }
 
         private void ResetButtonStyle()
@@ -442,7 +442,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <param name="value">true if the control should behave as a default button; otherwise false.</param>
         public void NotifyDefault(bool value)
         {
-            if (!ViewDrawButton.IsFixed && (_isDefault != value))
+            if (!ViewDrawButton.IsFixed && _isDefault != value)
             {
                 // Remember new default status
                 _isDefault = value;
@@ -669,7 +669,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     }
                     catch (Exception exc)
                     {
-                        ExceptionCapture.CaptureException(exc);
+                        DebugUtilities.NotImplemented(exc.ToString());
                     }
                 }
             }

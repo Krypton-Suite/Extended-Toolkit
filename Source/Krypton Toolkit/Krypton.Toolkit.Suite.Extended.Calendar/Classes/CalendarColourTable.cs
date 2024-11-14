@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 hexadecimal = hexadecimal.Substring(1);
             }
 
-            if (hexadecimal.Length < 3 || hexadecimal.Length > 6)
+            if (hexadecimal.Length is < 3 or > 6)
             {
                 throw new Exception("Hexadecimal value not valid!");
             }

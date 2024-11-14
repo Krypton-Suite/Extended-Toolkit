@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -67,15 +67,15 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kchkImport = new Krypton.Toolkit.KryptonCheckBox();
             this.kcmbPaletteMode = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.klblCustomPalettePath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.klblCustomPalettePath).BeginInit();
             this.klblCustomPalettePath.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbPaletteMode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbPaletteMode).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnApply
             // 
-            this.kbtnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnApply.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnApply.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnApply.Enabled = false;
             this.kbtnApply.Location = new System.Drawing.Point(428, 13);
@@ -115,7 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(524, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -170,13 +170,13 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // kwlPaletteName
             // 
             this.kwlPaletteName.AutoSize = false;
-            this.kwlPaletteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlPaletteName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlPaletteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this.kwlPaletteName.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kwlPaletteName.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             this.kwlPaletteName.Location = new System.Drawing.Point(12, 58);
             this.kwlPaletteName.Name = "kwlPaletteName";
             this.kwlPaletteName.Size = new System.Drawing.Size(602, 37);
-            this.kwlPaletteName.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlPaletteName.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlPaletteName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // kbtnLocate
@@ -274,18 +274,18 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Theme Switcher Options";
             this.Load += new System.EventHandler(this.ThemeSwitcherOptions_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.klblCustomPalettePath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.klblCustomPalettePath).EndInit();
             this.klblCustomPalettePath.ResumeLayout(false);
             this.klblCustomPalettePath.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
             this.kryptonGroupBox1.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbPaletteMode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbPaletteMode).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -339,7 +339,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             kcmbPaletteMode.Text = "Custom";
 
-            KryptonManager.GlobalPalette = KryptonPalette;
+            KryptonManager.GlobalCustomPalette = KryptonPalette;
 
             KryptonManager.GlobalPaletteMode = PaletteMode.Custom;
 

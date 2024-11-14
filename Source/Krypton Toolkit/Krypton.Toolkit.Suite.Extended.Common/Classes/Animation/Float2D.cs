@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -508,7 +508,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 return ReferenceEquals(left, null) && ReferenceEquals(right, null);
             }
             // ReSharper disable CompareOfFloatsByEqualityOperator
-            return ReferenceEquals(left, right) || ((double)(left.X) == right.X && (double)(left.Y) == right.Y);
+            return ReferenceEquals(left, right) || ((double)left.X == right.X && (double)left.Y == right.Y);
             // ReSharper restore CompareOfFloatsByEqualityOperator
         }
 

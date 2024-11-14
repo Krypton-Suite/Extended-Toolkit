@@ -40,7 +40,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
     public class AdvancedDataGridViewSearchToolBarSearchEventArgs : EventArgs
     {
         public string ValueToSearch { get; private set; }
-        public DataGridViewColumn ColumnToSearch { get; private set; }
+        public DataGridViewColumn? ColumnToSearch { get; private set; }
         public bool CaseSensitive { get; private set; }
         public bool WholeWord { get; private set; }
         public bool FromBegin { get; private set; }
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="case">if set to <c>true</c> [case].</param>
         /// <param name="whole">if set to <c>true</c> [whole].</param>
         /// <param name="fromBegin">if set to <c>true</c> [from begin].</param>
-        public AdvancedDataGridViewSearchToolBarSearchEventArgs(string value, DataGridViewColumn column, bool @case, bool whole, bool fromBegin)
+        public AdvancedDataGridViewSearchToolBarSearchEventArgs(string value, DataGridViewColumn? column, bool @case, bool whole, bool fromBegin)
         {
             ValueToSearch = value;
             ColumnToSearch = column;

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             //entry to the combo box on this form
             try
             {
-                NetworkNodeBrowser nb = new();
+                NetworkNodeBrowser nb = new NetworkNodeBrowser();
 
                 foreach (string pc in nb.GetNetworkComputers())
                 {
@@ -68,8 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException($"An error occurred trying to access the network computers.\n\n\n{ex.Message}", "Error",
-                                                  KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
         }
 
@@ -168,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 

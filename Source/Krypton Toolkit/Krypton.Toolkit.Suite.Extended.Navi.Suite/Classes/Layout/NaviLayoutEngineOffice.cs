@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         private PopupWindowHelper popupHelper = null;
         private readonly object threadLock = new object();
         private NaviBandEnumerator ienum;
-        private Font headerFont = new Font("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+        private Font headerFont = new Font("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, (byte)0);
         private NaviRenderer renderer;
         private int splitterHeight = 8;
         private int optionButtonWidth = 18;
@@ -306,7 +306,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             CalculateButtonLayout();
             LayoutSplitter();
             LayoutBands(); // First, because of the options menu
-            LayoutButtons((layoutEventArgs != null) && (layoutEventArgs.AffectedProperty == "OptionsMenu"));
+            LayoutButtons(layoutEventArgs != null && layoutEventArgs.AffectedProperty == "OptionsMenu");
             LayoutAdditionalControls();
 
             return true;
@@ -340,7 +340,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             }
 
             // Initializes Collapse button                  
-            collapseButton.Visible = Bar.ShowCollapseButton && (!showNeverCollapse);
+            collapseButton.Visible = Bar.ShowCollapseButton && !showNeverCollapse;
             collapseButton.Size = new Size(Bar.HeaderHeight, Bar.HeaderHeight - 3);
 
             if (Bar.RightToLeft == RightToLeft.Yes)
@@ -375,10 +375,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <returns>True when the x and y coordinate are inside the bounds; False otherwise</returns>
         private bool MouseInSplitter(int x, int y)
         {
-            return ((x > splitterRectangle.X)
-                && (x < splitterRectangle.Right)
-                && (y > splitterRectangle.Y)
-                && (y < splitterRectangle.Bottom));
+            return x > splitterRectangle.X
+                   && x < splitterRectangle.Right
+                   && y > splitterRectangle.Y
+                   && y < splitterRectangle.Bottom;
         }
 
         /// <summary>
@@ -393,13 +393,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             // Position of the mouse calculated from the buttom of the control up to the top to 
             // make things easier. 
-            int ylocinv = (Bar.Height - ylocation) - smallButtonRectangle.Height - splitterHeight;
+            int ylocinv = Bar.Height - ylocation - smallButtonRectangle.Height - splitterHeight;
 
             // Check whether splitter is inside bounds
             if (ylocinv > 0)
             {
                 // Increment position using a step. 
-                if (ylocinv > (Bar.ButtonHeight + (Bar.VisibleLargeButtons * Bar.ButtonHeight)))
+                if (ylocinv > Bar.ButtonHeight + Bar.VisibleLargeButtons * Bar.ButtonHeight)
                 {
                     if (Bar.VisibleLargeButtons < visibleButtonCount)
                     {
@@ -407,7 +407,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                     }
                 }
                 // Bar.ButtonHeight / 2 because it looks more smooth
-                else if (ylocinv <= ((Bar.ButtonHeight * Bar.VisibleLargeButtons) - (Bar.ButtonHeight / 2)))
+                else if (ylocinv <= Bar.ButtonHeight * Bar.VisibleLargeButtons - Bar.ButtonHeight / 2)
                 {
                     if (Bar.VisibleLargeButtons > 0)
                     {
@@ -432,7 +432,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             // splitterposition is calculated from the bottom of the control to the top. 
             // Thats not the same as the regular coordinate system. 
-            splitterPosition = (Bar.ButtonHeight * largeButtonCount) + splitterHeight;
+            splitterPosition = Bar.ButtonHeight * largeButtonCount + splitterHeight;
 
             // inverse calculation 
             // Width - 2 extra space reserved for the borders on both sides
@@ -508,7 +508,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         private void LayoutLargeButtons()
         {
             // Gently lays out the position of the large buttons
-            int flow = (splitterPosition + smallButtonRectangle.Height + 1) - splitterHeight;
+            int flow = splitterPosition + smallButtonRectangle.Height + 1 - splitterHeight;
 
             for (int i = 0; i < largeButtonCount; i++)
             {
@@ -530,7 +530,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         private void LayoutOverflowButtons()
         {
-            int compactFlow = (overflowCount * Bar.MinimizedButtonWidth) + 1;
+            int compactFlow = overflowCount * Bar.MinimizedButtonWidth + 1;
 
             // This may seem odd but the buttons are positioned from the left to the right. 
             // The first overflow button will appear as the first left button. 
@@ -601,8 +601,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 {
                     menuitem.Image = band.SmallImage;
                 }
-                else if ((band != null) && (band.SmallImageIndex >= 0) && (band.SmallImages != null)
-                         && (band.SmallImageIndex < band.SmallImages.Images.Count))
+                else if (band != null && band.SmallImageIndex >= 0 && band.SmallImages != null
+                         && band.SmallImageIndex < band.SmallImages.Images.Count)
                 {
                     menuitem.Image = band.SmallImages.Images[band.SmallImageIndex];
                 }
@@ -695,8 +695,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             {
                 band.Location = new Point(1, Bar.HeaderHeight);
 
-                if ((band == Bar.ActiveBand)
-                && (!Bar.Collapsed))
+                if (band == Bar.ActiveBand
+                && !Bar.Collapsed)
                 {
                     // Fake the change z-order to front 					
                     // BringToFront give design time issues in ordering of the bands
@@ -707,8 +707,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                     band.Size = new Size(0, 0);
                 }
             }
-            if ((Bar.Collapsed)
-            && (collapsedBand != null))
+            if (Bar.Collapsed
+            && collapsedBand != null)
             {
                 collapsedBand.Visible = true;
                 collapsedBand.BringToFront();
@@ -723,7 +723,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             }
             else
             {
-                if ((collapsedBand != null) && (collapsedBand.Visible))
+                if (collapsedBand != null && collapsedBand.Visible)
                 {
                     collapsedBand.Visible = false;
                 }
@@ -744,9 +744,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             if (e != null)
             {
-                if ((e.Button == MouseButtons.Left)
-                && (e.Clicks == 1)
-                && (MouseInSplitter(e.X, e.Y)))
+                if (e.Button == MouseButtons.Left
+                && e.Clicks == 1
+                && MouseInSplitter(e.X, e.Y))
                 {
                     splitterDragging = true;
                 }
@@ -770,8 +770,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                     DragSplitter(e.Y);
                 }
 
-                if ((MouseInSplitter(e.X, e.Y))
-                    || (splitterDragging))
+                if (MouseInSplitter(e.X, e.Y)
+                    || splitterDragging)
                 {
                     Bar.Cursor = Cursors.SizeNS;
                 }
@@ -933,8 +933,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 {
                     menuItem.Image = band.SmallImage;
                 }
-                else if ((band != null) && (band.SmallImageIndex >= 0) && (band.SmallImages != null)
-                         && (band.SmallImageIndex < band.SmallImages.Images.Count))
+                else if (band != null && band.SmallImageIndex >= 0 && band.SmallImages != null
+                         && band.SmallImageIndex < band.SmallImages.Images.Count)
                 {
                     menuItem.Image = band.SmallImages.Images[band.SmallImageIndex];
                 }
@@ -1036,7 +1036,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public virtual void ClosePopup()
         {
-            if ((Bar.Collapsed) && (popup.Visible))
+            if (Bar.Collapsed && popup.Visible)
             {
                 popupHelper.ClosePopup();
             }
@@ -1047,8 +1047,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public virtual void SwitchCollapsion(bool collapse, bool oldCollapsed)
         {
-            if ((collapse)
-            && (!oldCollapsed))
+            if (collapse
+            && !oldCollapsed)
             {
                 orgWidth = Bar.Width;
                 Bar.Width = 33;

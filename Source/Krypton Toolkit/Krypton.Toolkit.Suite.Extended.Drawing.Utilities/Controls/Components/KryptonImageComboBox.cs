@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     ImageComboItem item = (ImageComboItem)this.Items[e.Index];
 
                     // get forecolor & font
-                    Color foreColour = (item.ForeColour != Color.FromKnownColor(KnownColor.Transparent)) ? item.ForeColour : e.ForeColor;
+                    Color foreColour = item.ForeColour != Color.FromKnownColor(KnownColor.Transparent) ? item.ForeColour : e.ForeColor;
 
                     Font font = item.Mark ? new Font(e.Font, FontStyle.Bold) : e.Font;
 

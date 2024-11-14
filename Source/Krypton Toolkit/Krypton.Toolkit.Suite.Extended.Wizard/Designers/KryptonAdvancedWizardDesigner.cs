@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +29,8 @@
 
 // ReSharper disable NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
 // ReSharper disable ConvertToNullCoalescingCompoundAssignment
+using DebugUtilities = Krypton.Toolkit.Suite.Extended.Debug.Tools.DebugUtilities;
+
 namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
@@ -150,7 +152,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
         }
 
@@ -158,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void InitializeDesigner() => DrawGrid = false;
 
-        private void GetReferenceToWizardControl(IComponent c) => _wizard = ((Control)c as KryptonAdvancedWizard);
+        private void GetReferenceToWizardControl(IComponent c) => _wizard = (Control)c as KryptonAdvancedWizard;
 
         private void GetReferenceToIDesignerHost() => _designer = (IDesignerHost)GetService(typeof(IDesignerHost));
 

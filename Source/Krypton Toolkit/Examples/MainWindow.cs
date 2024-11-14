@@ -1,3 +1,31 @@
+#region MIT License
+
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2024 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+
+#endregion
 namespace Examples
 {
     public partial class MainWindow : KryptonForm
@@ -9,91 +37,77 @@ namespace Examples
 
         private void kbtnButtonItems_Click(object sender, EventArgs e)
         {
-            ButtonItems buttonItems = new ButtonItems();
+            var buttonItems = new ButtonItems();
 
             buttonItems.Show();
         }
 
         private void ktnToolStripItems_Click(object sender, EventArgs e)
         {
-            ToolStripItems tsi = new ToolStripItems();
+            var tsi = new ToolStripItems();
 
             tsi.Show();
         }
 
         private void kbtnCalendarItems_Click(object sender, EventArgs e)
         {
-            CalendarItems calendar = new CalendarItems();
+            var calendar = new CalendarItems();
 
             calendar.Show();
         }
 
         private void kbtnCircularProgressBarItem_Click(object sender, EventArgs e)
         {
-            CircularProgressBarExample circularProgressBar = new CircularProgressBarExample();
+            var circularProgressBar = new CircularProgressBarExample();
 
             circularProgressBar.Show();
         }
 
         private void kbtnCheckSum_Click(object sender, EventArgs e)
         {
-            CheckSumExample checkSum = new CheckSumExample();
+            var checkSum = new CheckSumExample();
 
             checkSum.Show();
         }
 
         private void kbtnExtendedControls_Click(object sender, EventArgs e)
         {
-            ExtendedControlExamples extendedControlExamples = new ExtendedControlExamples();
+            var extendedControlExamples = new ExtendedControlExamples();
 
             extendedControlExamples.Show();
         }
 
         private void kryptonButton7_Click(object sender, EventArgs e)
         {
-            MessageBoxExample messageBoxExample = new MessageBoxExample();
+            var messageBoxExample = new MessageBoxExample();
 
             messageBoxExample.Show();
         }
 
-        private void kbtnOutlookGrid_Click(object sender, EventArgs e)
-        {
-            OutlookGridExample outlookGridExample = new OutlookGridExample();
-
-            outlookGridExample.Show();
-        }
-
-        private void kbtnNotificationExample_Click(object sender, EventArgs e)
-        {
-            NotificationExample notificationExample = new NotificationExample();
-
-            notificationExample.Show();
-        }
-
         private void kbtnFloating_Click(object sender, EventArgs e)
         {
-            FloatingMenuToolbarExampleMain floating = new FloatingMenuToolbarExampleMain();
+            var floating = new FloatingMenuToolbarExampleMain();
 
             floating.Show();
         }
 
         private void kbtnKryptonFormExtendedExample_Click(object sender, EventArgs e)
         {
-            KryptonFormExtended1 kryptonFormExtended = new KryptonFormExtended1();
+            var kryptonFormExtended = new KryptonFormExtended1();
 
             kryptonFormExtended.Show();
         }
 
         private void kbtnDialogExamples_Click(object sender, EventArgs e)
         {
-            DialogExamples dialogExamples = new DialogExamples();
+            var dialogExamples = new DialogExamples();
 
             dialogExamples.Show();
         }
 
         private void kbtnInputBoxExamples_Click(object sender, EventArgs e)
         {
-            KryptonInputBoxExtendedExample example = new KryptonInputBoxExtendedExample();
+            var example = new KryptonInputBoxExtendedExample();
 
             example.Show();
         }
@@ -107,21 +121,21 @@ namespace Examples
 
         private void kbtnTreeGridView2Example_Click(object sender, EventArgs e)
         {
-            TreeGridViewAdvancedExample treeGridViewAdvanced = new TreeGridViewAdvancedExample();
+            var treeGridViewAdvanced = new TreeGridViewAdvancedExample();
 
             treeGridViewAdvanced.Show();
         }
 
         private void kbtnAdvancedDataGridExample_Click(object sender, EventArgs e)
         {
-            AdvancedDataGridView advancedDataGrid = new AdvancedDataGridView();
+            var advancedDataGrid = new AdvancedDataGridView();
 
             advancedDataGrid.Show();
         }
 
         private void kbtnDockExtenderExample_Click(object sender, EventArgs e)
         {
-            DockExtenderExample dockExtenderExample = new DockExtenderExample();
+            var dockExtenderExample = new DockExtenderExample();
 
             dockExtenderExample.Show();
         }
@@ -135,23 +149,44 @@ namespace Examples
 
         private void kbtnRibbonExtended_Click(object sender, EventArgs e)
         {
-            KryptonRibbonExtendedExample ribbonExtendedExample = new KryptonRibbonExtendedExample();
+            var ribbonExtendedExample = new KryptonRibbonExtendedExample();
 
             ribbonExtendedExample.Show();
         }
 
         private void kbtnMemoryBoxExample_Click(object sender, EventArgs e)
         {
-            MemoryBoxExample memoryBoxExample = new MemoryBoxExample();
+            var memoryBoxExample = new MemoryBoxExample();
 
             memoryBoxExample.Show();
         }
 
         private void kbtnProgressBars_Click(object sender, EventArgs e)
         {
-            KryptonProgressBarExtendedExamples progressBarExtendedExamples = new KryptonProgressBarExtendedExamples();
+            var progressBarExtendedExamples = new KryptonProgressBarExtendedExamples();
 
             progressBarExtendedExamples.Show();
+        }
+
+        private void kbtnCheckBoxComboBoxExample_Click(object sender, EventArgs e)
+        {
+            var example = new CheckBoxComboBoxTest();
+
+            example.Show();
+        }
+
+        private void kbtnNotificationExample_Click(object sender, EventArgs e)
+        {
+            var toasts = new ToastNotificationMenu();
+
+            toasts.Show();
+        }
+
+        private void kbtnControls_Click(object sender, EventArgs e)
+        {
+            var controls = new ExtendedControlExamples();
+
+            controls.Show();
         }
     }
 }

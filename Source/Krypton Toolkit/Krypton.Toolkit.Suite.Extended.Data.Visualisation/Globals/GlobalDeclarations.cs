@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,4 +44,11 @@ global using System.Security.Cryptography;
 global using System.Text;
 global using System.Threading.Tasks;
 global using System.Linq;
+global using System.Linq.Expressions;
+global using System.Runtime.CompilerServices;
+global using System.Threading;
 global using System.Windows.Forms;
+
+global using Krypton.Toolkit.Suite.Extended.Debug.Tools;
+global using SkiaSharp;
+global using SkiaSharp.Views.Desktop;

@@ -1,27 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Nightly'">
+		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'Canary'">
-			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'Release'">
-			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<!--If all else fails-->
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
@@ -71,9 +59,9 @@
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements extensions to the Krypton standard toolkit ComboBox, including additional Drop Down types and views.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9. This package implements extensions to the Krypton standard toolkit ComboBox, including additional Drop Down types and views.
 
-			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
 
 			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
@@ -81,74 +69,36 @@
 	</PropertyGroup>
 
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Nightly'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
+		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
+			<Choose>
+				<When Condition="'$(Configuration)' == 'Nightly'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.10.295-alpha" />
+					</ItemGroup>
+				</When>
 
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.10.296-alpha" />
-			</ItemGroup>
+				<When Condition="'$(Configuration)' == 'Canary'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.10.296-beta" />
+					</ItemGroup>
+				</When>
+
+				<When Condition="'$(Configuration)' == 'Release'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
+					</ItemGroup>
+				</When>
+
+				<Otherwise>
+					<ItemGroup>
+						<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
+					</ItemGroup>
+				</Otherwise>
+			</Choose>
 		</When>
-
-		<When Condition="'$(Configuration)' == 'Canary'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.10.296-beta" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'Release'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'StableLite'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="70.22.11.312" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedFull'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.6.152" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedLite'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Signed.Lite" Version="65.22.6.152" />
-			</ItemGroup>
-		</When>
-
 		<Otherwise>
-			<!--If all else fails-->
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
+				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

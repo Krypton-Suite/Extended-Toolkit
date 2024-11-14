@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             get => _repeatProbability;
             set
             {
-                if (value < 0f || value > 1f)
+                if (value is < 0f or > 1f)
                 {
                     throw new ArgumentOutOfRangeException("value", SR.Get(SRID.InvalidRepeatProbability, value));
                 }
@@ -217,20 +217,20 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public void SetRepeat(int count)
         {
-            if (count < 0 || count > 255)
+            if (count is < 0 or > 255)
             {
                 throw new ArgumentOutOfRangeException("count");
             }
-            _minRepeat = (_maxRepeat = count);
+            _minRepeat = _maxRepeat = count;
         }
 
         public void SetRepeat(int minRepeat, int maxRepeat)
         {
-            if (minRepeat < 0 || minRepeat > 255)
+            if (minRepeat is < 0 or > 255)
             {
                 throw new ArgumentOutOfRangeException("minRepeat", SR.Get(SRID.InvalidMinRepeat, minRepeat));
             }
-            if (maxRepeat != int.MaxValue && (maxRepeat < 0 || maxRepeat > 255))
+            if (maxRepeat != int.MaxValue && maxRepeat is < 0 or > 255)
             {
                 throw new ArgumentOutOfRangeException("maxRepeat", SR.Get(SRID.InvalidMinRepeat, maxRepeat));
             }
@@ -269,7 +269,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
                     }));
                 }
             }
-            else if (_maxRepeat == int.MaxValue || _maxRepeat == -1)
+            else if (_maxRepeat is int.MaxValue or -1)
             {
                 writer.WriteAttributeString("repeat", string.Format(CultureInfo.InvariantCulture, "{0}-", new object[1]
                 {
@@ -278,7 +278,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             }
             else
             {
-                int num = (_minRepeat == -1) ? 1 : _minRepeat;
+                int num = _minRepeat == -1 ? 1 : _minRepeat;
                 writer.WriteAttributeString("repeat", string.Format(CultureInfo.InvariantCulture, "{0}-{1}", new object[2]
                 {
                     num,
@@ -316,7 +316,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
                     {
                         stringBuilder.Append(_minRepeat.ToString(CultureInfo.InvariantCulture));
                     }
-                    else if (_maxRepeat == int.MaxValue || _maxRepeat == -1)
+                    else if (_maxRepeat is int.MaxValue or -1)
                     {
                         stringBuilder.Append(string.Format(CultureInfo.InvariantCulture, "{0},-", new object[1]
                         {
@@ -325,7 +325,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
                     }
                     else
                     {
-                        int num = (_minRepeat == -1) ? 1 : _minRepeat;
+                        int num = _minRepeat == -1 ? 1 : _minRepeat;
                         stringBuilder.Append(string.Format(CultureInfo.InvariantCulture, "{0},{1}", new object[2]
                         {
                             num,

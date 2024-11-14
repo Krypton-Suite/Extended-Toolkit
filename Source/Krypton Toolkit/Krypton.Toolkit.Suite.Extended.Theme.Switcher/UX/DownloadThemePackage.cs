@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,9 +49,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kwlSpeed = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbDownloadProgress = new System.Windows.Forms.ProgressBar();
             this.kbtnStop = new Krypton.Toolkit.KryptonButton();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,12 +91,12 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             this.kwlSize.AutoSize = false;
             this.kwlSize.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kwlSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this.kwlSize.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kwlSize.Location = new System.Drawing.Point(0, 0);
             this.kwlSize.Name = "kwlSize";
             this.kwlSize.Size = new System.Drawing.Size(598, 38);
-            this.kwlSize.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlSize.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlSize.Text = "{0} {1} / {2} {3}";
             this.kwlSize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -104,12 +104,12 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             this.kwlProgressPercentage.AutoSize = false;
             this.kwlProgressPercentage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kwlProgressPercentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlProgressPercentage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlProgressPercentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this.kwlProgressPercentage.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kwlProgressPercentage.Location = new System.Drawing.Point(0, 38);
             this.kwlProgressPercentage.Name = "kwlProgressPercentage";
             this.kwlProgressPercentage.Size = new System.Drawing.Size(598, 38);
-            this.kwlProgressPercentage.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlProgressPercentage.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlProgressPercentage.Text = "{0}%";
             this.kwlProgressPercentage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -117,12 +117,12 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             // 
             this.kwlSpeed.AutoSize = false;
             this.kwlSpeed.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kwlSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlSpeed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this.kwlSpeed.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kwlSpeed.Location = new System.Drawing.Point(0, 106);
             this.kwlSpeed.Name = "kwlSpeed";
             this.kwlSpeed.Size = new System.Drawing.Size(598, 38);
-            this.kwlSpeed.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlSpeed.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlSpeed.Text = "{0} kb/s";
             this.kwlSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -152,10 +152,10 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.Name = "DownloadThemePackage";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 }
                 catch (Exception e)
                 {
-                    ExceptionCapture.CaptureException(e);
+                    DebugUtilities.NotImplemented(e.ToString());
                 }
             }
         }
@@ -231,14 +231,14 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 {
                     try
                     {
-                        if (_downloadLocation != null || _downloadLocation != string.Empty)
+                        if (_downloadLocation is not (null and ""))
                         {
                             Process.Start(_downloadLocation);
                         }
                     }
                     catch (Exception exception)
                     {
-                        ExceptionCapture.CaptureException(exception);
+                        DebugUtilities.NotImplemented(exception.ToString());
                     }
                 }
             }

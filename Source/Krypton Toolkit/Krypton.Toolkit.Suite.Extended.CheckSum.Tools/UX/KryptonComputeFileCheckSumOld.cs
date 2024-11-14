@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -79,15 +79,15 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.bgSHA512Hash = new System.ComponentModel.BackgroundWorker();
             this.bgRIPEMD160Hash = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbAlgorithimType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbAlgorithimType).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -141,7 +141,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnSaveToFile
             // 
-            this.kbtnSaveToFile.CornerRoundingRadius = -1F;
             this.kbtnSaveToFile.Enabled = false;
             this.kbtnSaveToFile.Location = new System.Drawing.Point(507, 12);
             this.kbtnSaveToFile.Name = "kbtnSaveToFile";
@@ -152,7 +151,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(603, 12);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -190,7 +188,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kbbFilePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.kbbFilePath.CueHint.CueHintText = "Type a file path here...";
             this.kbbFilePath.CueHint.Padding = new System.Windows.Forms.Padding(0);
-            this.kbbFilePath.LargeResetImage = ((System.Drawing.Image)(resources.GetObject("kbbFilePath.LargeResetImage")));
+            this.kbbFilePath.LargeResetImage = (System.Drawing.Image)resources.GetObject("kbbFilePath.LargeResetImage");
             this.kbbFilePath.Location = new System.Drawing.Point(82, 12);
             this.kbbFilePath.Name = "kbbFilePath";
             this.kbbFilePath.ResetText = null;
@@ -198,7 +196,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kbbFilePath.ResetTextToolTipHeading = null;
             this.kbbFilePath.ShowResetButton = true;
             this.kbbFilePath.Size = new System.Drawing.Size(614, 24);
-            this.kbbFilePath.SmallResetImage = ((System.Drawing.Image)(resources.GetObject("kbbFilePath.SmallResetImage")));
+            this.kbbFilePath.SmallResetImage = (System.Drawing.Image)resources.GetObject("kbbFilePath.SmallResetImage");
             this.kbbFilePath.TabIndex = 11;
             // 
             // kryptonGroupBox1
@@ -217,18 +215,17 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             this.kwlHash.AutoSize = false;
             this.kwlHash.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kwlHash.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlHash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlHash.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this.kwlHash.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kwlHash.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
             this.kwlHash.Location = new System.Drawing.Point(0, 0);
             this.kwlHash.Name = "kwlHash";
             this.kwlHash.Size = new System.Drawing.Size(680, 71);
-            this.kwlHash.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlHash.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kwlHash.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // kbtnCompute
             // 
-            this.kbtnCompute.CornerRoundingRadius = -1F;
             this.kbtnCompute.Enabled = false;
             this.kbtnCompute.Location = new System.Drawing.Point(255, 59);
             this.kbtnCompute.Name = "kbtnCompute";
@@ -239,7 +236,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kcmbAlgorithimType
             // 
-            this.kcmbAlgorithimType.CornerRoundingRadius = -1F;
             this.kcmbAlgorithimType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbAlgorithimType.DropDownWidth = 121;
             this.kcmbAlgorithimType.Enabled = false;
@@ -333,17 +329,17 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.Text = "Calculate CheckSum";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1.Panel).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonGroupBox1).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbAlgorithimType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kcmbAlgorithimType).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,7 +381,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception ex)
             {
-                ExceptionCapture.CaptureException(ex);
+                DebugUtilities.NotImplemented(ex.ToString());
             }
         }
 
@@ -401,7 +397,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -441,7 +437,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
                     }
                     catch (Exception exc)
                     {
-                        ExceptionCapture.CaptureException(exc);
+                        DebugUtilities.NotImplemented(exc.ToString());
                     }
                 }
             }
@@ -807,7 +803,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -831,7 +827,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 

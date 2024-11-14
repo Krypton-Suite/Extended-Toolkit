@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         private byte[] ComposeLineBuffer(int startLine, int line)
         {
             int num = startLine * _columnCount;
-            byte[] array = (num + (line + 1) * _columnCount <= _dataBuf.Length) ? new byte[_columnCount] : new byte[_dataBuf.Length % _columnCount];
+            byte[] array = num + (line + 1) * _columnCount <= _dataBuf.Length ? new byte[_columnCount] : new byte[_dataBuf.Length % _columnCount];
             for (int i = 0; i < array.Length; i++)
             {
                 array[i] = _dataBuf[num + CellToIndex(i, line)];
@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         private static bool CharIsPrintable(char c)
         {
             UnicodeCategory unicodeCategory = char.GetUnicodeCategory(c);
-            return unicodeCategory != UnicodeCategory.Control || unicodeCategory == UnicodeCategory.OtherNotAssigned;
+            return unicodeCategory is not UnicodeCategory.Control or UnicodeCategory.OtherNotAssigned;
         }
 
         private void DrawDump(Graphics g, byte[] lineBuffer, int line)
@@ -439,7 +439,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                         _scrollBar.Enabled = false;
                     }
                 }
-                _displayLinesCount = ((_startLine + _rowCount < _linesCount) ? _rowCount : (_linesCount - _startLine));
+                _displayLinesCount = _startLine + _rowCount < _linesCount ? _rowCount : _linesCount - _startLine;
             }
         }
         #endregion

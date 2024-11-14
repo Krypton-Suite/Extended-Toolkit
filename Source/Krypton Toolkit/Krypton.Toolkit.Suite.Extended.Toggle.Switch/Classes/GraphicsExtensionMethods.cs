@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 return originalColour;
             }
 
-            int grayScale = (int)((originalColour.R * .299) + (originalColour.G * .587) + (originalColour.B * .114));
+            int grayScale = (int)(originalColour.R * .299 + originalColour.G * .587 + originalColour.B * .114);
             return Color.FromArgb(grayScale, grayScale, grayScale);
         }
     }

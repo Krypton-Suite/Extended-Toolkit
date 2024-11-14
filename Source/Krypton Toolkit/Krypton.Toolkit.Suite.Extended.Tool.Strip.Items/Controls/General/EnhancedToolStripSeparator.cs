@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -91,8 +91,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         /// <summary>
         /// Separator is not selectable, therefore CanSelect always returns false.
-        [EditorBrowsable(EditorBrowsableState.Never)]
         /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         [Browsable(false)]
         public override bool CanSelect => false;
 
@@ -122,8 +122,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            ToolStrip ts = Owner ?? GetCurrentParent();
-            int textLeft = ts.Padding.Horizontal;
+            ToolStrip? ts = Owner ?? GetCurrentParent();
+            int textLeft = ts!.Padding.Horizontal;
 
             if (ts.BackColor != BackColor)
             {

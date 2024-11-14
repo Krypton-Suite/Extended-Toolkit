@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,21 +42,15 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         #endregion
 
         #region Methods
-        public static void UnderConstruction(string message = null, string caption = "Under Construction", Font? typeface = null)
+        public static void UnderConstruction(string? message = null, string? caption = "Under Construction", Font? typeface = null)
         {
-            Image _underConstruction = Properties.Resources.UnderConstruction;
+            Image underConstruction = Properties.Resources.UnderConstruction;
 
-            if (message == null)
-            {
-                message = "This feature is under construction, and will be available in a future update.\nThis window will now close.\n(If you are an end-user seeing this message, then please contact the developer for more information.)";
-            }
+            message ??= "This feature is under construction, and will be available in a future update.\nThis window will now close.\n(If you are an end-user seeing this message, then please contact the developer for more information.)";
 
-            if (caption == null)
-            {
-                caption = "Under Construction";
-            }
+            caption ??= "Under Construction";
 
-            KryptonMessageBoxExtended.Show(message, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxCustomButtonOptions.None, ExtendedMessageBoxIcon.Custom, messageboxTypeface: typeface, customMessageBoxIcon: _underConstruction);
+            KryptonMessageBoxExtended.Show(message, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxCustomButtonOptions.None, ExtendedMessageBoxIcon.Custom, messageboxTypeface: typeface, customMessageBoxIcon: underConstruction);
         }
 
         /// <summary>Displays the developer information.</summary>

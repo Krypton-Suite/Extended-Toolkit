@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -130,7 +130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
 
             // Scale Hue to be between 0 and 360. Saturation
             // and value scale to be between 0 and 1.
-            h = ((double)HSV.Hue / 255 * 360) % 360;
+            h = (double)HSV.Hue / 255 * 360 % 360;
             s = (double)HSV.Saturation / 255;
             v = (double)HSV.value / 255;
 
@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                 // The color wheel consists of 6 sectors.
                 // Figure out which sector you//re in.
                 sectorPos = h / 60;
-                sectorNumber = (int)(Math.Floor(sectorPos));
+                sectorNumber = (int)Math.Floor(sectorPos);
 
                 // get the fractional part of the sector.
                 // That is, how many degrees into the sector
@@ -165,8 +165,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
                 // Calculate values for the three axes
                 // of the color. 
                 p = v * (1 - s);
-                q = v * (1 - (s * fractionalSector));
-                t = v * (1 - (s * (1 - fractionalSector)));
+                q = v * (1 - s * fractionalSector);
+                t = v * (1 - s * (1 - fractionalSector));
 
                 // Assign the fractional colors to r, g, and b
                 // based on the sector the angle is in.

@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -198,7 +198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 if (specialRule != null)
                 {
-                    _specialTransitionIndex = ((specialRule == CfgGrammar.SPRULETRANS_WILDCARD) ? 4194302 : ((specialRule == CfgGrammar.SPRULETRANS_DICTATION) ? 4194301 : 4194303));
+                    _specialTransitionIndex = specialRule == CfgGrammar.SPRULETRANS_WILDCARD ? 4194302 : specialRule == CfgGrammar.SPRULETRANS_DICTATION ? 4194301 : 4194303;
                 }
                 else
                 {
@@ -247,7 +247,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 return 1;
             }
             int num = obj1.SortRank() - obj2.SortRank();
-            return (num != 0) ? num : ((int)(obj1._iSerialize - obj2._iSerialize));
+            return num != 0 ? num : (int)(obj1._iSerialize - obj2._iSerialize);
         }
 
         internal static int CompareContent(Arc arc1, Arc arc2)
@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 int num = 0;
                 if (arc1._ruleRef != null || arc2._ruleRef != null)
                 {
-                    num = ((arc1._ruleRef != null && arc2._ruleRef == null) ? (-1) : ((arc1._ruleRef == null && arc2._ruleRef != null) ? 1 : string.Compare(arc1._ruleRef.Name, arc2._ruleRef.Name, StringComparison.CurrentCulture)));
+                    num = arc1._ruleRef != null && arc2._ruleRef == null ? -1 : arc1._ruleRef == null && arc2._ruleRef != null ? 1 : string.Compare(arc1._ruleRef.Name, arc2._ruleRef.Name, StringComparison.CurrentCulture);
                 }
                 if (num != 0)
                 {
@@ -293,8 +293,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         {
             CfgArc cfgArc = default(CfgArc);
             cfgArc.LastArc = isLast;
-            cfgArc.HasSemanticTag = (SemanticTagCount > 0);
-            cfgArc.NextStartArcIndex = (uint)((_end != null) ? _end.SerializeId : 0);
+            cfgArc.HasSemanticTag = SemanticTagCount > 0;
+            cfgArc.NextStartArcIndex = (uint)(_end != null ? _end.SerializeId : 0);
             if (_ruleRef != null)
             {
                 cfgArc.RuleRef = true;
@@ -312,8 +312,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     cfgArc.TransitionIndex = (uint)_iWord;
                 }
             }
-            cfgArc.LowConfRequired = (_confidence < 0);
-            cfgArc.HighConfRequired = (_confidence > 0);
+            cfgArc.LowConfRequired = _confidence < 0;
+            cfgArc.HighConfRequired = _confidence > 0;
             cfgArc.MatchMode = (uint)_matchMode;
             _iSerialize = arcIndex;
             streamBuffer.WriteStream(cfgArc);
@@ -362,7 +362,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 return num;
             }
-            return (int)(((arc1._start != null) ? arc1._start.Id : 0) - ((arc2._start != null) ? arc2._start.Id : 0));
+            return (int)((arc1._start != null ? arc1._start.Id : 0) - (arc2._start != null ? arc2._start.Id : 0));
         }
 
         internal static int CompareForDuplicateOutputTransitions(Arc arc1, Arc arc2)
@@ -372,15 +372,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 return num;
             }
-            return (int)(((arc1._end != null) ? arc1._end.Id : 0) - ((arc2._end != null) ? arc2._end.Id : 0));
+            return (int)((arc1._end != null ? arc1._end.Id : 0) - (arc2._end != null ? arc2._end.Id : 0));
         }
 
         internal static int CompareIdenticalTransitions(Arc arc1, Arc arc2)
         {
-            int num = (int)(((arc1._start != null) ? arc1._start.Id : 0) - ((arc2._start != null) ? arc2._start.Id : 0));
-            if (num == 0 && (num = (int)(((arc1._end != null) ? arc1._end.Id : 0) - ((arc2._end != null) ? arc2._end.Id : 0))) == 0)
+            int num = (int)((arc1._start != null ? arc1._start.Id : 0) - (arc2._start != null ? arc2._start.Id : 0));
+            if (num == 0 && (num = (int)((arc1._end != null ? arc1._end.Id : 0) - (arc2._end != null ? arc2._end.Id : 0))) == 0)
             {
-                num = ((!arc1.SameTags(arc2)) ? 1 : 0);
+                num = !arc1.SameTags(arc2) ? 1 : 0;
             }
             return num;
         }
@@ -453,7 +453,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     }
                 }
             }
-            src._startTags = (src._endTags = null);
+            src._startTags = src._endTags = null;
         }
 
         internal void CloneTags(Arc arc, List<Tag> _tags, Dictionary<Tag, Tag> endArcs, Backend be)
@@ -504,18 +504,18 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 flag = true;
                 for (int i = 0; i < _startTags.Count; i++)
                 {
-                    flag &= (_startTags[i] == arc._startTags[i]);
+                    flag &= _startTags[i] == arc._startTags[i];
                 }
             }
             if (flag)
             {
-                flag = (_endTags == null && arc._endTags == null);
+                flag = _endTags == null && arc._endTags == null;
                 if (!flag && _endTags != null && arc._endTags != null && _endTags.Count == arc._endTags.Count)
                 {
                     flag = true;
                     for (int j = 0; j < _endTags.Count; j++)
                     {
-                        flag &= (_endTags[j] == arc._endTags[j]);
+                        flag &= _endTags[j] == arc._endTags[j];
                     }
                 }
             }

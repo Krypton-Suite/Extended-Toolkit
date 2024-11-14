@@ -105,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
             catch (Exception exception)
             {
-                ExceptionCapture.CaptureException(exception);
+                DebugUtilities.NotImplemented(exception.ToString());
             }
         }
 

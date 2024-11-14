@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,8 @@
  */
 #endregion
 
+using DebugUtilities = Krypton.Toolkit.Suite.Extended.Debug.Tools.DebugUtilities;
+
 namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 {
     /// <summary>The circular progress bar windows form control.</summary>
@@ -34,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
     public class CircularProgressBar : System.Windows.Forms.ProgressBar
     {
         #region Variables
-        private readonly Animator _animator;
+        private readonly Animator? _animator;
         private int? _animatedStartAngle;
         private float? _animatedValue;
         private AnimationFunctions.Function _animationFunction;
@@ -270,7 +272,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 
             Size = new Size(320, 320);
 
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
@@ -333,7 +335,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 
             _lastValue = Value;
 
-            _animator.Stop();
+            _animator?.Stop();
             _animatedStartAngle = null;
 
             if (AnimationSpeed <= 0)
@@ -344,7 +346,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
                 return;
             }
 
-            _animator.Paths =
+            _animator!.Paths =
                 new Path(_animatedValue ?? Value, Value, (ulong)AnimationSpeed, CustomAnimationFunction).ToArray();
             _animator.Repeat = false;
             _animator.Play(
@@ -371,14 +373,14 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         protected virtual void InitialiseMarquee(bool firstTime)
         {
             if (!firstTime &&
-                (_animator.ActivePath == null ||
+                (_animator?.ActivePath == null ||
                  _animator.ActivePath.Duration == (ulong)MarqueeAnimationSpeed &&
                  _animator.ActivePath.Function == CustomAnimationFunction))
             {
                 return;
             }
 
-            _animator.Stop();
+            _animator?.Stop();
             _animatedValue = null;
 
             if (AnimationSpeed <= 0)
@@ -389,7 +391,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
                 return;
             }
 
-            _animator.Paths = new Path(0, 359, (ulong)MarqueeAnimationSpeed, CustomAnimationFunction).ToArray();
+            _animator!.Paths = new Path(0, 359, (ulong)MarqueeAnimationSpeed, CustomAnimationFunction).ToArray();
             _animator.Repeat = true;
             _animator.Play(
                 new SafeInvoker<float>(
@@ -429,7 +431,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         {
             lock (this)
             {
-                _backBrush?.Dispose();
+                _backBrush.Dispose();
                 _backBrush = new SolidBrush(BackColor);
 
                 if (BackColor.A == 255)
@@ -679,7 +681,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 
@@ -734,13 +736,13 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect.Target = _palette;
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
                 InitialiseKrypton();

@@ -1,4 +1,32 @@
-﻿namespace Examples
+﻿#region MIT License
+
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2024 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+
+#endregion
+namespace Examples
 {
     partial class KryptonInputBoxExtendedExample
     {
@@ -88,7 +116,6 @@
             // kbtnQuickTest
             // 
             this.kbtnQuickTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnQuickTest.CornerRoundingRadius = -1F;
             this.kbtnQuickTest.Location = new System.Drawing.Point(556, 13);
             this.kbtnQuickTest.Name = "kbtnQuickTest";
             this.kbtnQuickTest.Size = new System.Drawing.Size(136, 25);
@@ -99,7 +126,6 @@
             // kbtnShow
             // 
             this.kbtnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnShow.CornerRoundingRadius = -1F;
             this.kbtnShow.Location = new System.Drawing.Point(698, 13);
             this.kbtnShow.Name = "kbtnShow";
             this.kbtnShow.Size = new System.Drawing.Size(90, 25);
@@ -151,7 +177,6 @@
             // 
             // kbtnButtonTypeface
             // 
-            this.kbtnButtonTypeface.CornerRoundingRadius = -1F;
             this.kbtnButtonTypeface.Location = new System.Drawing.Point(424, 131);
             this.kbtnButtonTypeface.Name = "kbtnButtonTypeface";
             this.kbtnButtonTypeface.Size = new System.Drawing.Size(111, 25);
@@ -160,7 +185,6 @@
             // 
             // kbtnPromptTypeface
             // 
-            this.kbtnPromptTypeface.CornerRoundingRadius = -1F;
             this.kbtnPromptTypeface.Location = new System.Drawing.Point(637, 131);
             this.kbtnPromptTypeface.Name = "kbtnPromptTypeface";
             this.kbtnPromptTypeface.Size = new System.Drawing.Size(111, 25);
@@ -169,7 +193,6 @@
             // 
             // kbtnCueTypeface
             // 
-            this.kbtnCueTypeface.CornerRoundingRadius = -1F;
             this.kbtnCueTypeface.Location = new System.Drawing.Point(541, 131);
             this.kbtnCueTypeface.Name = "kbtnCueTypeface";
             this.kbtnCueTypeface.Size = new System.Drawing.Size(90, 25);
@@ -179,7 +202,6 @@
             // 
             // kryptonComboBox5
             // 
-            this.kryptonComboBox5.CornerRoundingRadius = -1F;
             this.kryptonComboBox5.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kryptonComboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kryptonComboBox5.DropDownWidth = 261;
@@ -192,7 +214,6 @@
             // 
             // kcmbWrappedTextAlignment
             // 
-            this.kcmbWrappedTextAlignment.CornerRoundingRadius = -1F;
             this.kcmbWrappedTextAlignment.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kcmbWrappedTextAlignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbWrappedTextAlignment.DropDownWidth = 261;
@@ -206,7 +227,6 @@
             // 
             // kcmbTextAlignment
             // 
-            this.kcmbTextAlignment.CornerRoundingRadius = -1F;
             this.kcmbTextAlignment.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kcmbTextAlignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbTextAlignment.DropDownWidth = 261;
@@ -220,7 +240,6 @@
             // 
             // kcmbFocusedButton
             // 
-            this.kcmbFocusedButton.CornerRoundingRadius = -1F;
             this.kcmbFocusedButton.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kcmbFocusedButton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbFocusedButton.DropDownWidth = 261;
@@ -270,7 +289,6 @@
             // 
             // kcmbButtonType
             // 
-            this.kcmbButtonType.CornerRoundingRadius = -1F;
             this.kcmbButtonType.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.kcmbButtonType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbButtonType.DropDownWidth = 261;

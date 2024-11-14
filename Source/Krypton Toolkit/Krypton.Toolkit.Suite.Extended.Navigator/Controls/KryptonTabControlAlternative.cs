@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -214,7 +214,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         private void PaintTab(int index, RenderContext renderContext)
         {
-            bool Selected = (SelectedIndex == index);
+            bool Selected = SelectedIndex == index;
 
             Rectangle tabRect = GetTabRect(index);
 
@@ -278,7 +278,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
                 if (tabImage != null)
                 {
-                    int x = tabRect.X + (tabImage.Width / 2);
+                    int x = tabRect.X + tabImage.Width / 2;
                     int y = tabRect.Y + (tabRect.Height - tabImage.Height) / 2;
 
                     renderContext.Graphics.DrawImage(tabImage, x, y);
@@ -290,7 +290,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             }
 
-            if (m_TabFont == null || (!object.ReferenceEquals(m_TabFont, g_TabFontBold) & !object.ReferenceEquals(m_TabFont, g_TabFontRegular)))
+            if (m_TabFont == null || !object.ReferenceEquals(m_TabFont, g_TabFontBold) & !object.ReferenceEquals(m_TabFont, g_TabFontRegular))
             {
                 if (renderContext.Graphics.MeasureString(TabPages[index].Text, g_TabFontBold, tabRect.X, g_StringFormat).Width <= tabRect.Width)
                 {
@@ -379,7 +379,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 if (m_SelectionService == null)
                 {
-                    m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                    m_SelectionService = (ISelectionService)this.GetService(typeof(ISelectionService));
                 }
 
                 return m_SelectionService;
@@ -517,7 +517,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         public void ToggleDockStyle()
         {
-            Boolean docked = (this.KryptonTabControl.Dock == DockStyle.Fill);
+            Boolean docked = this.KryptonTabControl.Dock == DockStyle.Fill;
             SetProperty("Dock", docked ? DockStyle.None : DockStyle.Fill);
         }
 
@@ -577,7 +577,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 if (m_SelectionService == null)
                 {
-                    m_SelectionService = (ISelectionService)(this.GetService(typeof(ISelectionService)));
+                    m_SelectionService = (ISelectionService)this.GetService(typeof(ISelectionService));
                 }
 
                 return m_SelectionService;

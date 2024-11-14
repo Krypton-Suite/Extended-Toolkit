@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -71,19 +71,19 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <value>The KryptonColorButton control.</value>
         [RefreshProperties(RefreshProperties.All),
          DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public KryptonColorButton KryptonColourButtonControl => Control as KryptonColorButton;
+        public KryptonColorButton? KryptonColourButtonControl => Control as KryptonColorButton;
 
         #endregion
 
         #region Public
 
-        [DefaultValue(typeof(Color), "Red")]
+        [DefaultValue(typeof(Color), "Empty")]
         public Color SelectedColor
         {
-            get => KryptonColourButtonControl.SelectedColor;
+            get => KryptonColourButtonControl!.SelectedColor;
             set
             {
-                if (value != KryptonColourButtonControl.SelectedColor)
+                if (value != KryptonColourButtonControl!.SelectedColor)
                 {
                     KryptonColourButtonControl.SelectedColor = value;
 
@@ -95,33 +95,34 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(typeof(Color), "DarkGray")]
         public Color EmptyBorderColor
         {
-            get => KryptonColourButtonControl.EmptyBorderColor;
+            get => KryptonColourButtonControl!.EmptyBorderColor;
 
             set
             {
                 if (value != _emptyBorderColor)
                 {
-                    KryptonColourButtonControl.EmptyBorderColor = value;
+                    KryptonColourButtonControl!.EmptyBorderColor = value;
                 }
             }
         }
 
-        public new string Text { get => KryptonColourButtonControl.Text; set => KryptonColourButtonControl.Text = value; }
+        public new string Text { get => KryptonColourButtonControl!.Text; set => KryptonColourButtonControl!.Text = value; }
 
-        public Rectangle SelectedRect { get => KryptonColourButtonControl.SelectedRect; set => KryptonColourButtonControl.SelectedRect = value; }
+        public Rectangle SelectedRect { get => KryptonColourButtonControl!.SelectedRect; set => KryptonColourButtonControl!.SelectedRect = value; }
 
         #endregion
 
         #region Identity
 
-        /// Initializes a new instance of the <see cref="KryptonComboBoxToolStripMenuItem"/> class.
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KryptonColourButtonToolStripMenuItem"/> class.
         /// </summary>
         public KryptonColourButtonToolStripMenuItem()
             : base(new KryptonColorButton())
         {
             AutoSize = false;
 
-            SelectedColor = KryptonColourButtonControl.SelectedColor;
+            SelectedColor = KryptonColourButtonControl!.SelectedColor;
 
             EmptyBorderColor = KryptonColourButtonControl.EmptyBorderColor;
         }
@@ -151,14 +152,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         public override Size GetPreferredSize(Size constrainingSize)
         {
             //return base.GetPreferredSize(constrainingSize);
-            return KryptonColourButtonControl.GetPreferredSize(constrainingSize);
+            return KryptonColourButtonControl!.GetPreferredSize(constrainingSize);
         }
 
         /// <summary>
         /// Subscribes events from the hosted control.
         /// </summary>
         /// <param name="control">The control from which to subscribe events.</param>
-        protected override void OnSubscribeControlEvents(Control control)
+        protected override void OnSubscribeControlEvents(Control? control)
         {
             base.OnSubscribeControlEvents(control);
 
@@ -169,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Unsubscribes events from the hosted control.
         /// </summary>
         /// <param name="control">The control from which to unsubscribe events.</param>
-        protected override void OnUnsubscribeControlEvents(Control control)
+        protected override void OnUnsubscribeControlEvents(Control? control)
         {
             base.OnUnsubscribeControlEvents(control);
 

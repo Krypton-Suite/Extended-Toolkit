@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -517,7 +517,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             SetDimensions();
 
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += OnPalettePaint;
             }
@@ -652,7 +652,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             if (_isFocused && _isKnobRotating && KryptonKnobUtilities.IsPointinRectangle(new Point(e.X, e.Y), _rKnob))
             {
                 // the Delta value is always 120, as explained in MSDN
-                int v = (e.Delta / 120) * (_maximum - _minimum) / _mouseWheelBarPartitions;
+                int v = e.Delta / 120 * (_maximum - _minimum) / _mouseWheelBarPartitions;
                 SetProperValue(Value + v);
 
                 // Avoid to send MouseWheel event to the parent container
@@ -677,7 +677,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 //--------------------------------------------------------
                 // Handles knob rotation with up,down,left and right keys 
                 //--------------------------------------------------------
-                if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Right)
+                if (e.KeyCode is Keys.Up or Keys.Right)
                 {
                     if (_value < _maximum)
                     {
@@ -686,7 +686,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
                     this.Refresh();
                 }
-                else if (e.KeyCode == Keys.Down || e.KeyCode == Keys.Left)
+                else if (e.KeyCode is Keys.Down or Keys.Left)
                 {
                     if (_value > _minimum)
                     {
@@ -840,8 +840,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             Font font;
 
-            Pen penL = new Pen(_scaleColour, (2 * _drawRatio));
-            Pen penS = new Pen(_scaleColour, (1 * _drawRatio));
+            Pen penL = new Pen(_scaleColour, 2 * _drawRatio);
+            Pen penS = new Pen(_scaleColour, 1 * _drawRatio);
 
             SolidBrush br = new SolidBrush(_scaleColour);
 
@@ -887,8 +887,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 for (; n < _scaleDivisions; n++)
                 {
                     // draw divisions
-                    ptStart.X = (float)(cx + (radius) * Math.Cos(currentAngle));
-                    ptStart.Y = (float)(cy + (radius) * Math.Sin(currentAngle));
+                    ptStart.X = (float)(cx + radius * Math.Cos(currentAngle));
+                    ptStart.Y = (float)(cy + radius * Math.Sin(currentAngle));
 
                     ptEnd.X = (float)(cx + (radius + _gradLength) * Math.Cos(currentAngle));
                     ptEnd.Y = (float)(cy + (radius + _gradLength) * Math.Sin(currentAngle));
@@ -914,7 +914,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     if (_drawDivInside)
                     {
                         // graduations values inside the knob                        
-                        l = (int)radius - (wmax / 2) - 2;
+                        l = (int)radius - wmax / 2 - 2;
 
                         tx = (float)(cx + l * Math.Cos(currentAngle));
                         ty = (float)(cy + l * Math.Sin(currentAngle));
@@ -1189,8 +1189,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             if (_drawDivInside)
             {
                 // Center (from)
-                Pos.X = (int)(cx + (radius / 10) * Math.Cos(degree));
-                Pos.Y = (int)(cy + (radius / 10) * Math.Sin(degree));
+                Pos.X = (int)(cx + radius / 10 * Math.Cos(degree));
+                Pos.Y = (int)(cy + radius / 10 * Math.Sin(degree));
                 pret[0] = new Point(Pos.X, Pos.Y);
 
                 // External (to)
@@ -1231,7 +1231,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 degree = (float)(_pKnob.Y - p.Y) / (float)(_pKnob.X - p.X);
                 degree = (float)Math.Atan(degree);
 
-                degree = (degree) * (float)(180 / Math.PI) + (180 - _startAngle);
+                degree = degree * (float)(180 / Math.PI) + (180 - _startAngle);
 
             }
             else if (p.X > _pKnob.X)
@@ -1239,7 +1239,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 degree = (float)(p.Y - _pKnob.Y) / (float)(p.X - _pKnob.X);
                 degree = (float)Math.Atan(degree);
 
-                degree = (degree) * (float)(180 / Math.PI) + 360 - _startAngle;
+                degree = degree * (float)(180 / Math.PI) + 360 - _startAngle;
             }
 
             // round to the nearest value (when you click just before or after a graduation!)
@@ -1284,7 +1284,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint -= OnPalettePaint;
             }
@@ -1293,7 +1293,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             _paletteRedirect.Target = _palette;
 
-            if (((_palette != null)))
+            if (_palette != null)
             {
                 _palette.PalettePaint += OnPalettePaint;
 

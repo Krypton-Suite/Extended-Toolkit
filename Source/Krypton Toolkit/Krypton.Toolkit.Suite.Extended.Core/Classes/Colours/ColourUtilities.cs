@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,19 +41,19 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns></returns>
         public static Color FromHsl(int alpha, float hue, float saturation, float lighting)
         {
-            if (0 > alpha || 255 < alpha)
+            if (alpha is < 0 or > 255)
             {
                 throw new ArgumentOutOfRangeException("alpha");
             }
-            if (0f > hue || 360f < hue)
+            if (hue is < 0f or > 360f)
             {
                 throw new ArgumentOutOfRangeException("hue");
             }
-            if (0f > saturation || 1f < saturation)
+            if (saturation is < 0f or > 1f)
             {
                 throw new ArgumentOutOfRangeException("saturation");
             }
-            if (0f > lighting || 1f < lighting)
+            if (lighting is < 0f or > 1f)
             {
                 throw new ArgumentOutOfRangeException("lighting");
             }
@@ -68,13 +68,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (0.5 < lighting)
             {
-                fMax = lighting - (lighting * saturation) + saturation;
-                fMin = lighting + (lighting * saturation) - saturation;
+                fMax = lighting - lighting * saturation + saturation;
+                fMin = lighting + lighting * saturation - saturation;
             }
             else
             {
-                fMax = lighting + (lighting * saturation);
-                fMin = lighting - (lighting * saturation);
+                fMax = lighting + lighting * saturation;
+                fMin = lighting - lighting * saturation;
             }
 
             iSextant = (int)Math.Floor(hue / 60f);
@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 hue -= 360f;
             }
             hue /= 60f;
-            hue -= 2f * (float)Math.Floor(((iSextant + 1f) % 6f) / 2f);
+            hue -= 2f * (float)Math.Floor((iSextant + 1f) % 6f / 2f);
             if (0 == iSextant % 2)
             {
                 fMid = hue * (fMax - fMin) + fMin;

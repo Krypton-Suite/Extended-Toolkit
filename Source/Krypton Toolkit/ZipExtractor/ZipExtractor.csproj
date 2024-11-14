@@ -15,74 +15,36 @@
 	</PropertyGroup>
 
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Nightly'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
+		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
+			<Choose>
+				<When Condition="'$(Configuration)' == 'Nightly'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.10.295-alpha" />
+					</ItemGroup>
+				</When>
 
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.23.10.296-alpha" />
-			</ItemGroup>
+				<When Condition="'$(Configuration)' == 'Canary'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.10.296-beta" />
+					</ItemGroup>
+				</When>
+
+				<When Condition="'$(Configuration)' == 'Release'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
+					</ItemGroup>
+				</When>
+
+				<Otherwise>
+					<ItemGroup>
+						<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
+					</ItemGroup>
+				</Otherwise>
+			</Choose>
 		</When>
-
-		<When Condition="'$(Configuration)' == 'Canary'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.10.296-beta" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'Release'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="80.23.11.321" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'StableLite'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="70.22.11.312" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedFull'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.6.152" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedLite'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Signed.Lite" Version="65.22.6.152" />
-			</ItemGroup>
-		</When>
-
 		<Otherwise>
-			<!--If all else fails-->
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
+				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -100,8 +62,11 @@
 	<ItemGroup>
 		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
+		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
+		<!--<PackageReference Include="NSec.Cryptography" Version="23.5.0-preview.1" />-->
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Debug.Tools\Krypton.Toolkit.Suite.Extended.Debug.Tools 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
 	</ItemGroup>
 	<ItemGroup>
@@ -123,7 +88,7 @@
 	</ItemGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
 		<PackageReference Include="NSec.Cryptography">
-			<Version>22.4.0</Version>
+			<Version>24.4.0</Version>
 		</PackageReference>
 	</ItemGroup>
 

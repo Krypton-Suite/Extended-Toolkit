@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             }
             set
             {
-                _mode = ((value != 0) ? SrgsGrammarMode.Dtmf : SrgsGrammarMode.Voice);
+                _mode = value != 0 ? SrgsGrammarMode.Dtmf : SrgsGrammarMode.Voice;
                 _isModeSet = true;
             }
         }
@@ -248,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             }
             if (_hasPhoneticAlphabetBeenSet || (_phoneticAlphabet != 0 && HasPronunciation))
             {
-                string value = (_phoneticAlphabet == SrgsPhoneticAlphabet.Ipa) ? "ipa" : ((_phoneticAlphabet == SrgsPhoneticAlphabet.Ups) ? "x-microsoft-ups" : "x-microsoft-sapi");
+                string value = _phoneticAlphabet == SrgsPhoneticAlphabet.Ipa ? "ipa" : _phoneticAlphabet == SrgsPhoneticAlphabet.Ups ? "x-microsoft-ups" : "x-microsoft-sapi";
                 writer.WriteAttributeString("sapi", "alphabet", "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions", value);
             }
             if (_xmlBase != null)
@@ -282,7 +282,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
                 rule.Validate(this);
             }
             _isSapiExtensionUsed |= HasPronunciation;
-            _fContainsCode |= (_language != null || _script.Length > 0 || _usings.Count > 0 || _assemblyReferences.Count > 0 || _codebehind.Count > 0 || _namespace != null || _fDebug);
+            _fContainsCode |= _language != null || _script.Length > 0 || _usings.Count > 0 || _assemblyReferences.Count > 0 || _codebehind.Count > 0 || _namespace != null || _fDebug;
             _isSapiExtensionUsed |= _fContainsCode;
             if (!HasPronunciation)
             {
@@ -314,7 +314,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             SrgsRule srgsRule = new SrgsRule(id);
             if (publicRule != RulePublic.NotSet)
             {
-                srgsRule.Scope = ((publicRule != 0) ? SrgsRuleScope.Private : SrgsRuleScope.Public);
+                srgsRule.Scope = publicRule != 0 ? SrgsRuleScope.Private : SrgsRuleScope.Public;
             }
             srgsRule.Dynamic = dynamic;
             return srgsRule;

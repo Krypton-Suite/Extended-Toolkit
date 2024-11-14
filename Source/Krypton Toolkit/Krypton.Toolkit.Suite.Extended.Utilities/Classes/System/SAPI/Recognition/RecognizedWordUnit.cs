@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -62,13 +62,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             {
                 throw new ArgumentNullException("lexicalForm");
             }
-            if (confidence < 0f || confidence > 1f)
+            if (confidence is < 0f or > 1f)
             {
                 throw new ArgumentOutOfRangeException(SR.Get(SRID.InvalidConfidence));
             }
-            _text = ((text == null || text.Length == 0) ? null : text);
+            _text = text == null || text.Length == 0 ? null : text;
             _confidence = confidence;
-            _pronunciation = ((pronunciation == null || pronunciation.Length == 0) ? null : pronunciation);
+            _pronunciation = pronunciation == null || pronunciation.Length == 0 ? null : pronunciation;
             _lexicalForm = lexicalForm;
             _displayAttributes = displayAttributes;
             _audioPosition = audioPosition;

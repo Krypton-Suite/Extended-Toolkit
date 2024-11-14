@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -60,15 +60,15 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
 
         private void SetupButtonText()
         {
-            kbtnButtonOne.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+            kbtnButtonOne.Text = KryptonManager.Strings.GeneralStrings.Yes;
 
-            kbtnButtonTwo.Text = KryptonLanguageManager.CustomToolkitStrings.YesToAll;
+            kbtnButtonTwo.Text = KryptonManager.Strings.CustomStrings.YesToAll;
 
-            kbtnButtonThree.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+            kbtnButtonThree.Text = KryptonManager.Strings.GeneralStrings.No;
 
-            kbtnButtonFour.Text = KryptonLanguageManager.CustomToolkitStrings.NoToAll;
+            kbtnButtonFour.Text = KryptonManager.Strings.CustomStrings.NoToAll;
 
-            kbtnButtonFive.Text = KryptonLanguageManager.GeneralToolkitStrings.Cancel;
+            kbtnButtonFive.Text = KryptonManager.Strings.GeneralStrings.Cancel;
         }
 
         /// <summary>Sets the default dialog result.</summary>
@@ -398,10 +398,10 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
             kbtnButtonOne.Size = maximumButtonSize;
 
             // Size the panel for the buttons
-            kpnlButtons.Size = new Size((maximumButtonSize.Width * numberOfButtons) + (GAP * (numberOfButtons + 1)), maximumButtonSize.Height + (GAP * 2));
+            kpnlButtons.Size = new Size(maximumButtonSize.Width * numberOfButtons + GAP * (numberOfButtons + 1), maximumButtonSize.Height + GAP * 2);
 
             // Button area is the number of buttons with gaps between them and 10 pixels around all edges
-            return new Size((maximumButtonSize.Width * numberOfButtons) + (GAP * (numberOfButtons + 1)), maximumButtonSize.Height + (GAP * 2));
+            return new Size(maximumButtonSize.Width * numberOfButtons + GAP * (numberOfButtons + 1), maximumButtonSize.Height + GAP * 2);
         }
 
         #endregion

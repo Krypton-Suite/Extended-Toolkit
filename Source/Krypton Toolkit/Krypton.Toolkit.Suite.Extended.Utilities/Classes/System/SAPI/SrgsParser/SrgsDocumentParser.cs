@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
             grammar.CodeBehind = source.CodeBehind;
             grammar.Debug = source.Debug;
             grammar.ImportNamespaces = source.ImportNamespaces;
-            grammar.Language = ((source.Language == null) ? "C#" : source.Language);
+            grammar.Language = source.Language == null ? "C#" : source.Language;
             grammar.Namespace = source.Namespace;
             _parser.AddScript(grammar, source.Script, null, -1);
             grammar.PostParse(null);
@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
         {
             string id = srgsRule.Id;
             bool hasSCript = srgsRule.OnInit != null || srgsRule.OnParse != null || srgsRule.OnError != null || srgsRule.OnRecognition != null;
-            IRule rule = grammar.CreateRule(id, (srgsRule.Scope != 0) ? RulePublic.False : RulePublic.True, srgsRule.Dynamic, hasSCript);
+            IRule rule = grammar.CreateRule(id, srgsRule.Scope != 0 ? RulePublic.False : RulePublic.True, srgsRule.Dynamic, hasSCript);
             if (srgsRule.OnInit != null)
             {
                 rule.CreateScript(grammar, id, srgsRule.OnInit, RuleMethodScript.onInit);

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -168,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 if (m.Msg == NativeMethods.WM_NCACTIVATE)
                 {
                     // Check if the title bar will made inactive:
-                    if (((int)m.WParam) == 0)
+                    if ((int)m.WParam == 0)
                     {
                         // If so reactivate it.
                         NativeMethods.SendMessage(this.Handle, NativeMethods.WM_NCACTIVATE, 1, IntPtr.Zero);

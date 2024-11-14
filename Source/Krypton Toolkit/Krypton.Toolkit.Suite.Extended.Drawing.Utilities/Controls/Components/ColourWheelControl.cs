@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -153,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _colourStep;
             set
             {
-                if (value < 1 || value > 359)
+                if (value is < 1 or > 359)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), value, "Value must be between 1 and 359");
                 }

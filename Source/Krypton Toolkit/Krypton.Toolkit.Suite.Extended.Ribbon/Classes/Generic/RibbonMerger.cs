@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -143,8 +143,8 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
             {
                 if (!_mergedItems.Contains(grp))
                 {
-                    KryptonRibbonGroup existingGroup = sourceGroups.FirstOrDefault(item => (string.Equals(item.TextLine1, grp.TextLine1, StringComparison.CurrentCulture))
-                                                                                        && (string.Equals(item.TextLine2, grp.TextLine2, StringComparison.CurrentCulture)));
+                    KryptonRibbonGroup existingGroup = sourceGroups.FirstOrDefault(item => string.Equals(item.TextLine1, grp.TextLine1, StringComparison.CurrentCulture)
+                                                                                        && string.Equals(item.TextLine2, grp.TextLine2, StringComparison.CurrentCulture));
 
                     if (existingGroup is not null)
                     {
@@ -171,10 +171,10 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
 
             foreach (KryptonRibbonGroup sourceGroup in groups)
             {
-                KryptonRibbonGroup existingGroup = targetGroups.FirstOrDefault(item => (string.Equals(item.TextLine1, sourceGroup.TextLine1, StringComparison.CurrentCulture))
-                                                                                    && (string.Equals(item.TextLine2, sourceGroup.TextLine2, StringComparison.CurrentCulture)));
+                KryptonRibbonGroup existingGroup = targetGroups.FirstOrDefault(item => string.Equals(item.TextLine1, sourceGroup.TextLine1, StringComparison.CurrentCulture)
+                                                                                    && string.Equals(item.TextLine2, sourceGroup.TextLine2, StringComparison.CurrentCulture));
 
-                if ((existingGroup is null) && (!targetGroups.Contains(sourceGroup)))
+                if (existingGroup is null && !targetGroups.Contains(sourceGroup))
                 {
                     sourceGroups.Remove(sourceGroup);
 
@@ -206,7 +206,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
                 KryptonRibbonTab existingTab = targetRibbon.RibbonTabs.FirstOrDefault(item => string.Equals(item.Text, tab.Text, StringComparison.CurrentCulture));
 
                 // The tab doesn't exist, so just add it
-                if ((existingTab is null) && (!targetRibbon.RibbonTabs.Contains(tab)))
+                if (existingTab is null && !targetRibbon.RibbonTabs.Contains(tab))
                 {
                     sourceRibbon.RibbonTabs.Remove(tab);
 
@@ -244,7 +244,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
                 KryptonRibbonContext existing = sourceRibbon.RibbonContexts.FirstOrDefault(item => string.Equals(item.ContextTitle, context.ContextTitle, StringComparison.CurrentCulture));
 
                 // The tab doesn't exist, so just add it
-                if ((existing is not null) || (sourceRibbon.RibbonContexts.Contains(context)))
+                if (existing is not null || sourceRibbon.RibbonContexts.Contains(context))
                 {
                     continue;
                 }
@@ -269,7 +269,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
                 KryptonRibbonContext existing = targetRibbon.RibbonContexts.FirstOrDefault(item => string.Equals(item.ContextTitle, context.ContextTitle, StringComparison.CurrentCulture));
 
                 // The tab doesn't exist, so just add it
-                if ((existing is not null) || (targetRibbon.RibbonContexts.Contains(context)))
+                if (existing is not null || targetRibbon.RibbonContexts.Contains(context))
                 {
                     continue;
                 }

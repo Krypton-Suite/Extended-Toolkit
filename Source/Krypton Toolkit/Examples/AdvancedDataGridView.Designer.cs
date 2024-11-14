@@ -1,4 +1,32 @@
-﻿namespace Examples
+﻿#region MIT License
+
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2024 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+
+#endregion
+namespace Examples
 {
     partial class AdvancedDataGridView
     {
@@ -98,7 +126,6 @@
             // 
             // kbtnApplySavedFilters
             // 
-            this.kbtnApplySavedFilters.CornerRoundingRadius = -1F;
             this.kbtnApplySavedFilters.Location = new System.Drawing.Point(1005, 72);
             this.kbtnApplySavedFilters.Name = "kbtnApplySavedFilters";
             this.kbtnApplySavedFilters.Size = new System.Drawing.Size(90, 25);
@@ -108,7 +135,6 @@
             // 
             // kbtnClearFilters
             // 
-            this.kbtnClearFilters.CornerRoundingRadius = -1F;
             this.kbtnClearFilters.Location = new System.Drawing.Point(669, 45);
             this.kbtnClearFilters.Name = "kbtnClearFilters";
             this.kbtnClearFilters.Size = new System.Drawing.Size(179, 25);
@@ -118,7 +144,6 @@
             // 
             // kbtnSaveFilters
             // 
-            this.kbtnSaveFilters.CornerRoundingRadius = -1F;
             this.kbtnSaveFilters.Location = new System.Drawing.Point(669, 13);
             this.kbtnSaveFilters.Name = "kbtnSaveFilters";
             this.kbtnSaveFilters.Size = new System.Drawing.Size(180, 25);
@@ -144,7 +169,6 @@
             // 
             // kcmbSortSaved
             // 
-            this.kcmbSortSaved.CornerRoundingRadius = -1F;
             this.kcmbSortSaved.DropDownWidth = 159;
             this.kcmbSortSaved.IntegralHeight = false;
             this.kcmbSortSaved.Location = new System.Drawing.Point(937, 39);
@@ -155,7 +179,6 @@
             // 
             // kcmbSavedFilters
             // 
-            this.kcmbSavedFilters.CornerRoundingRadius = -1F;
             this.kcmbSavedFilters.DropDownWidth = 159;
             this.kcmbSavedFilters.IntegralHeight = false;
             this.kcmbSavedFilters.Location = new System.Drawing.Point(937, 12);
@@ -218,7 +241,6 @@
             // 
             // kcmbMemoryTest
             // 
-            this.kcmbMemoryTest.CornerRoundingRadius = -1F;
             this.kcmbMemoryTest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbMemoryTest.DropDownWidth = 121;
             this.kcmbMemoryTest.IntegralHeight = false;
@@ -230,7 +252,6 @@
             // 
             // kbtnMemoryTest
             // 
-            this.kbtnMemoryTest.CornerRoundingRadius = -1F;
             this.kbtnMemoryTest.Location = new System.Drawing.Point(207, 12);
             this.kbtnMemoryTest.Name = "kbtnMemoryTest";
             this.kbtnMemoryTest.Size = new System.Drawing.Size(180, 25);
@@ -240,7 +261,6 @@
             // 
             // kbtnLoadRandomData
             // 
-            this.kbtnLoadRandomData.CornerRoundingRadius = -1F;
             this.kbtnLoadRandomData.Location = new System.Drawing.Point(13, 13);
             this.kbtnLoadRandomData.Name = "kbtnLoadRandomData";
             this.kbtnLoadRandomData.Size = new System.Drawing.Size(167, 25);

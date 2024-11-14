@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -70,9 +70,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonBorderEdge1 = new();
             this.kbtnCancel = new();
             this.kchkAskForConfirmation = new();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,7 +94,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetPaletteTypefaceSettings
             // 
-            this.kbtnResetPaletteTypefaceSettings.CornerRoundingRadius = -1F;
             this.kbtnResetPaletteTypefaceSettings.Location = new(12, 360);
             this.kbtnResetPaletteTypefaceSettings.Name = "kbtnResetPaletteTypefaceSettings";
             this.kbtnResetPaletteTypefaceSettings.Size = new(226, 25);
@@ -104,7 +103,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetGlobalStringSettings
             // 
-            this.kbtnResetGlobalStringSettings.CornerRoundingRadius = -1F;
             this.kbtnResetGlobalStringSettings.Location = new(12, 302);
             this.kbtnResetGlobalStringSettings.Name = "kbtnResetGlobalStringSettings";
             this.kbtnResetGlobalStringSettings.Size = new(226, 25);
@@ -114,7 +112,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetGlobalBooleanSettings
             // 
-            this.kbtnResetGlobalBooleanSettings.CornerRoundingRadius = -1F;
             this.kbtnResetGlobalBooleanSettings.Location = new(12, 244);
             this.kbtnResetGlobalBooleanSettings.Name = "kbtnResetGlobalBooleanSettings";
             this.kbtnResetGlobalBooleanSettings.Size = new(226, 25);
@@ -124,7 +121,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetColourStringSettings
             // 
-            this.kbtnResetColourStringSettings.CornerRoundingRadius = -1F;
             this.kbtnResetColourStringSettings.Location = new(12, 186);
             this.kbtnResetColourStringSettings.Name = "kbtnResetColourStringSettings";
             this.kbtnResetColourStringSettings.Size = new(226, 25);
@@ -134,7 +130,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetColourSettings
             // 
-            this.kbtnResetColourSettings.CornerRoundingRadius = -1F;
             this.kbtnResetColourSettings.Location = new(12, 128);
             this.kbtnResetColourSettings.Name = "kbtnResetColourSettings";
             this.kbtnResetColourSettings.Size = new(226, 25);
@@ -144,7 +139,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetColourIntegerSettings
             // 
-            this.kbtnResetColourIntegerSettings.CornerRoundingRadius = -1F;
             this.kbtnResetColourIntegerSettings.Location = new(12, 70);
             this.kbtnResetColourIntegerSettings.Name = "kbtnResetColourIntegerSettings";
             this.kbtnResetColourIntegerSettings.Size = new(226, 25);
@@ -154,7 +148,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnResetColourBlendingSettings
             // 
-            this.kbtnResetColourBlendingSettings.CornerRoundingRadius = -1F;
             this.kbtnResetColourBlendingSettings.Location = new(12, 12);
             this.kbtnResetColourBlendingSettings.Name = "kbtnResetColourBlendingSettings";
             this.kbtnResetColourBlendingSettings.Size = new(226, 25);
@@ -164,7 +157,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnNukeAllSettings
             // 
-            this.kbtnNukeAllSettings.CornerRoundingRadius = -1F;
             this.kbtnNukeAllSettings.Location = new(12, 418);
             this.kbtnNukeAllSettings.Name = "kbtnNukeAllSettings";
             this.kbtnNukeAllSettings.Size = new(226, 25);
@@ -195,9 +187,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kbtnCancel
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.kbtnCancel.AutoSize = true;
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new(612, 15);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -228,9 +219,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reset Settings";
             this.Load += new(this.SettingsManagementOptions_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
             this.ResumeLayout(false);

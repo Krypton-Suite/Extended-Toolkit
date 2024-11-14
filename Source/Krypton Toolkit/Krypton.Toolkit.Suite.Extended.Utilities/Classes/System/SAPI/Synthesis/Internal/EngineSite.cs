@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -221,7 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _audio = audioDevice;
             _prompt = prompt;
             _defaultRate = defaultRate;
-            _actions = (SPVESACTIONS.SPVES_RATE | SPVESACTIONS.SPVES_VOLUME);
+            _actions = SPVESACTIONS.SPVES_RATE | SPVESACTIONS.SPVES_VOLUME;
         }
 
         private TTSEvent CreateTtsEvent(SpeechEventInfo sapiEvent)

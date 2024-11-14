@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -266,20 +266,20 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 {
                     imageSmall = smallImage;
                 }
-                else if ((band != null) && (band.SmallImage != null))
+                else if (band != null && band.SmallImage != null)
                 {
                     imageSmall = band.SmallImage;
                 }
-                else if ((band != null) && (band.SmallImageIndex >= 0) && (band.SmallImages != null)
-                         && (band.SmallImageIndex < band.SmallImages.Images.Count))
+                else if (band != null && band.SmallImageIndex >= 0 && band.SmallImages != null
+                         && band.SmallImageIndex < band.SmallImages.Images.Count)
                 {
                     imageSmall = band.SmallImages.Images[band.SmallImageIndex];
                 }
 
-                if ((imageSmall != null) && (showImage))
+                if (imageSmall != null && showImage)
                 {
-                    Point location = new Point((int)((Width / 2) - (imageSmall.Width / 2)),
-                       (int)((Height / 2) - (imageSmall.Height / 2)));
+                    Point location = new Point((int)(Width / 2 - imageSmall.Width / 2),
+                       (int)(Height / 2 - imageSmall.Height / 2));
                     Renderer.DrawImage(e.Graphics, location, imageSmall);
                 }
             }
@@ -292,17 +292,17 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 {
                     imageLarge = largeImage;
                 }
-                else if ((band != null) && (band.LargeImage != null))
+                else if (band != null && band.LargeImage != null)
                 {
                     imageLarge = band.LargeImage;
                 }
-                else if ((band != null) && (band.LargeImageIndex >= 0)
-                                        && (band.LargeImageIndex < band.LargeImages.Images.Count))
+                else if (band != null && band.LargeImageIndex >= 0
+                                      && band.LargeImageIndex < band.LargeImages.Images.Count)
                 {
                     imageLarge = band.LargeImages.Images[band.LargeImageIndex];
                 }
 
-                if ((imageLarge != null) && showImage)
+                if (imageLarge != null && showImage)
                 {
                     Point location;
 
@@ -314,11 +314,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                     if (RightToLeft == RightToLeft.Yes)
                     {
-                        location = new Point(Width - margin - imageLarge.Width, (int)((Height / 2) - (imageLarge.Height / 2)));
+                        location = new Point(Width - margin - imageLarge.Width, (int)(Height / 2 - imageLarge.Height / 2));
                     }
                     else
                     {
-                        location = new Point(margin, (int)((Height / 2) - (imageLarge.Height / 2)));
+                        location = new Point(margin, (int)(Height / 2 - imageLarge.Height / 2));
                     }
 
                     Renderer.DrawImage(e.Graphics, location, imageLarge);

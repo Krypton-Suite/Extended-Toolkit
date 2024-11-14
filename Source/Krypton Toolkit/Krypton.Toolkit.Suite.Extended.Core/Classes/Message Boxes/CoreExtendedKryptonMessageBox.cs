@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -308,28 +308,28 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive &&
-                ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
+                (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0)
             {
                 throw new InvalidOperationException("Cannot show modal dialog when non-interactive");
             }
 
             // Check if trying to show a message box from a service and the owner has been specified, this is not possible
-            if ((owner != null) &&
-                ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0))
+            if (owner != null &&
+                (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0)
             {
                 throw new ArgumentException(@"Cannot show message box from a service with an owner specified", nameof(options));
             }
 
             // Check if trying to show a message box from a service and help information is specified, this is not possible
-            if ((helpInfo != null) &&
-                ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0))
+            if (helpInfo != null &&
+                (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0)
             {
                 throw new ArgumentException(@"Cannot show message box from a service with help specified", nameof(options));
             }
 
             IWin32Window showOwner = null;
-            if ((helpInfo != null) ||
-                ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
+            if (helpInfo != null ||
+                (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0)
             {
                 // If do not have an owner passed in then get the active window and use that instead
                 showOwner = owner ?? Control.FromHandle(PlatformInvoke.GetActiveWindow());

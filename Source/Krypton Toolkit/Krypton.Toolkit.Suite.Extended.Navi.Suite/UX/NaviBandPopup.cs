@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -156,8 +156,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
-            if ((e.Button == MouseButtons.Left)
-            && (e.Clicks == 1))
+            if (e.Button == MouseButtons.Left
+            && e.Clicks == 1)
             {
                 if (resizeBounds.Contains(e.Location))
                 {

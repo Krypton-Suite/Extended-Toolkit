@@ -3,25 +3,25 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<!--If all else fails-->
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
@@ -70,9 +70,9 @@
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements software updating features.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9. This package implements software updating features.
 
-			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
 
 			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
@@ -106,7 +106,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
 			</ItemGroup>
 		</When>
 
@@ -116,7 +116,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="70.22.11.312" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="85.24.6.176" />
 			</ItemGroup>
 		</When>
 
@@ -147,7 +147,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
+				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

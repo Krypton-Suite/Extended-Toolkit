@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,6 +49,7 @@ global using Cyotek.Windows.Forms;
 global using Krypton.Toolkit.Suite.Extended.Buttons;
 global using Krypton.Toolkit.Suite.Extended.Core;
 global using Krypton.Toolkit.Suite.Extended.Common;
+global using Krypton.Toolkit.Suite.Extended.Debug.Tools;
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 global using Krypton.Toolkit.Suite.Extended.Messagebox;
 global using Krypton.Toolkit.Suite.Extended.Shared;

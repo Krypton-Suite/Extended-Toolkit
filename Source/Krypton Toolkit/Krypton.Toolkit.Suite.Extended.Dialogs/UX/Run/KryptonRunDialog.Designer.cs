@@ -77,7 +77,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             this.ksbRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ksbRun.AutoSize = true;
-            this.ksbRun.CornerRoundingRadius = -1F;
             this.ksbRun.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.ksbRun.Enabled = false;
             this.ksbRun.KryptonContextMenu = this.kcmRunOptions;
@@ -120,7 +119,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // kbtnCancel
             // 
             this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(292, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -131,7 +129,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // kbtnSettings
             // 
             this.kbtnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.kbtnSettings.CornerRoundingRadius = -1F;
             this.kbtnSettings.Location = new System.Drawing.Point(12, 13);
             this.kbtnSettings.Name = "kbtnSettings";
             this.kbtnSettings.Size = new System.Drawing.Size(90, 25);
@@ -168,7 +165,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kcmbFilePath.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
             this.bsBrowse,
             this.bsReset});
-            this.kcmbFilePath.CornerRoundingRadius = -1F;
             this.kcmbFilePath.DropDownWidth = 258;
             this.kcmbFilePath.IntegralHeight = false;
             this.kcmbFilePath.Location = new System.Drawing.Point(68, 79);

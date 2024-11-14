@@ -104,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
             catch (Exception e)
             {
-                ExceptionCapture.CaptureException(e);
+                DebugUtilities.NotImplemented(e.ToString());
             }
         }
 
@@ -154,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                DebugUtilities.NotImplemented(exc.ToString());
             }
         }
 
@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 
         private void kcmdRunTaskAsAdministrator_Execute(object sender, EventArgs e)
         {
-            kbtnRun.UseAsUACElevationButton = true;
+            kbtnRun.Values.UseAsUACElevationButton = true;
 
             try
             {
@@ -184,13 +184,13 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
             catch (Exception exception)
             {
-                ExceptionCapture.CaptureException(exception);
+                DebugUtilities.NotImplemented(exception.ToString());
             }
         }
 
         private void kcmdRunTaskAsNormalUser_Execute(object sender, EventArgs e)
         {
-            kbtnRun.UseAsUACElevationButton = false;
+            kbtnRun.Values.UseAsUACElevationButton = false;
 
             try
             {
@@ -205,13 +205,13 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
             catch (Exception exception)
             {
-                ExceptionCapture.CaptureException(exception);
+                DebugUtilities.NotImplemented(exception.ToString());
             }
         }
 
         private void kbtnRun_Click(object sender, EventArgs e)
         {
-            if (kbtnRun.UseAsUACElevationButton)
+            if (kbtnRun.Values.UseAsUACElevationButton)
             {
                 kcmdRunTaskAsAdministrator.PerformExecute();
             }

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,17 +35,17 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
     internal class BlurManager
     {
         #region Instance Fields
-        private readonly VirtualForm _parentForm;
+        private readonly VisualForm _parentForm;
         private readonly BlurValues _blurValues;
-        private VisualBlur _visualBlur;
+        private VisualBlur? _visualBlur;
         private readonly Timer _detectIsActiveTimer;
-        private Bitmap _currentFormDisplay;
+        private Bitmap? _currentFormDisplay;
         private double? _parentBeforeOpacity;
         #endregion
 
         #region Identity
 
-        public BlurManager(VirtualForm kryptonForm, BlurValues blurValues)
+        public BlurManager(VisualForm kryptonForm, BlurValues blurValues)
         {
             _parentForm = kryptonForm;
             _blurValues = blurValues;
@@ -117,13 +117,13 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             var visited = new HashSet<IntPtr> { hWnd };
             try
             {
-                Form activeForm = Form.ActiveForm;
+                Form? activeForm = Form.ActiveForm;
                 if (activeForm != null)
                 {
                     visited.Add(activeForm.Handle);
                 }
 
-                visited.Add(_visualBlur.Handle);
+                visited.Add(_visualBlur!.Handle);
 
 
                 PlatformInvoke.RECT thisRect = new();
@@ -172,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private void DetectIsTopMost(object sender, EventArgs e)
         {
-            if ((_visualBlur != null)
+            if (_visualBlur != null
                 && IsOverlapped()
                     )
             {
@@ -195,9 +195,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _visualBlur.SetTargetRect(_parentForm.DesktopLocation, clientRectangle);
 
             Rectangle targetRect = _visualBlur.TargetRect;
-            _visualBlur.UpdateBlur(_currentFormDisplay);
+            _visualBlur.UpdateBlur(_currentFormDisplay!);
             // As UpdateBlur can take a few moments, then it is possible for the app to be closed before getting to the next line
-            if ((_visualBlur == null)
+            if (_visualBlur == null
                 || _parentForm.IsDisposed
                 || _parentForm.Disposing
                )

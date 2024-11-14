@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2023 Krypton Suite
+ * Copyright (c) 2017 - 2024 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -74,11 +74,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.cpbSelectedColour = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
             this.scp = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.ScreenColourPickerControl();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbSelectedColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbSelectedColour).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.ktxtHexValue.MaxLength = 7;
             this.ktxtHexValue.Name = "ktxtHexValue";
             this.ktxtHexValue.Size = new System.Drawing.Size(100, 24);
-            this.ktxtHexValue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ktxtHexValue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.ktxtHexValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.ktxtHexValue.TabIndex = 9;
             this.ktxtHexValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -153,25 +153,25 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kryptonLabel4.Location = new System.Drawing.Point(210, 206);
             this.kryptonLabel4.Name = "kryptonLabel4";
             this.kryptonLabel4.Size = new System.Drawing.Size(154, 21);
-            this.kryptonLabel4.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel4.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.kryptonLabel4.TabIndex = 8;
             this.kryptonLabel4.Values.Text = "Hexadecimal Value:";
             // 
             // kkcBlue
             // 
-            this.kkcBlue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kkcBlue.BackColor = System.Drawing.Color.FromArgb((int)(byte)187, (int)(byte)206, (int)(byte)230);
             this.kkcBlue.EndAngle = 405F;
-            this.kkcBlue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kkcBlue.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kkcBlue.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.kkcBlue.KnobBackColour = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kkcBlue.KnobBackColour = System.Drawing.Color.FromArgb((int)(byte)187, (int)(byte)206, (int)(byte)230);
             this.kkcBlue.LargeChange = 20;
             this.kkcBlue.Location = new System.Drawing.Point(325, 39);
             this.kkcBlue.Maximum = 255;
             this.kkcBlue.Minimum = 0;
             this.kkcBlue.Name = "kkcBlue";
-            this.kkcBlue.PointerColour = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
+            this.kkcBlue.PointerColour = System.Drawing.Color.FromArgb((int)(byte)132, (int)(byte)157, (int)(byte)189);
             this.kkcBlue.PointerStyle = Krypton.Toolkit.Suite.Extended.Common.CommonKryptonKnobControlEnhanced.KnobPointerStyles.CIRCLE;
-            this.kkcBlue.ScaleColour = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kkcBlue.ScaleColour = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kkcBlue.ScaleDivisions = 11;
             this.kkcBlue.ScaleSubDivisions = 4;
             this.kkcBlue.ScaleTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
@@ -186,19 +186,19 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kkcGreen
             // 
-            this.kkcGreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kkcGreen.BackColor = System.Drawing.Color.FromArgb((int)(byte)187, (int)(byte)206, (int)(byte)230);
             this.kkcGreen.EndAngle = 405F;
-            this.kkcGreen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kkcGreen.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kkcGreen.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.kkcGreen.KnobBackColour = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kkcGreen.KnobBackColour = System.Drawing.Color.FromArgb((int)(byte)187, (int)(byte)206, (int)(byte)230);
             this.kkcGreen.LargeChange = 20;
             this.kkcGreen.Location = new System.Drawing.Point(165, 39);
             this.kkcGreen.Maximum = 255;
             this.kkcGreen.Minimum = 0;
             this.kkcGreen.Name = "kkcGreen";
-            this.kkcGreen.PointerColour = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
+            this.kkcGreen.PointerColour = System.Drawing.Color.FromArgb((int)(byte)132, (int)(byte)157, (int)(byte)189);
             this.kkcGreen.PointerStyle = Krypton.Toolkit.Suite.Extended.Common.CommonKryptonKnobControlEnhanced.KnobPointerStyles.CIRCLE;
-            this.kkcGreen.ScaleColour = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kkcGreen.ScaleColour = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kkcGreen.ScaleDivisions = 11;
             this.kkcGreen.ScaleSubDivisions = 4;
             this.kkcGreen.ScaleTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
@@ -213,19 +213,19 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             // kkcRed
             // 
-            this.kkcRed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kkcRed.BackColor = System.Drawing.Color.FromArgb((int)(byte)187, (int)(byte)206, (int)(byte)230);
             this.kkcRed.EndAngle = 405F;
-            this.kkcRed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kkcRed.ForeColor = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kkcRed.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.kkcRed.KnobBackColour = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kkcRed.KnobBackColour = System.Drawing.Color.FromArgb((int)(byte)187, (int)(byte)206, (int)(byte)230);
             this.kkcRed.LargeChange = 20;
             this.kkcRed.Location = new System.Drawing.Point(12, 39);
             this.kkcRed.Maximum = 255;
             this.kkcRed.Minimum = 0;
             this.kkcRed.Name = "kkcRed";
-            this.kkcRed.PointerColour = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
+            this.kkcRed.PointerColour = System.Drawing.Color.FromArgb((int)(byte)132, (int)(byte)157, (int)(byte)189);
             this.kkcRed.PointerStyle = Krypton.Toolkit.Suite.Extended.Common.CommonKryptonKnobControlEnhanced.KnobPointerStyles.CIRCLE;
-            this.kkcRed.ScaleColour = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kkcRed.ScaleColour = System.Drawing.Color.FromArgb((int)(byte)30, (int)(byte)57, (int)(byte)91);
             this.kkcRed.ScaleDivisions = 11;
             this.kkcRed.ScaleSubDivisions = 4;
             this.kkcRed.ScaleTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
@@ -250,7 +250,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudGreen.Size = new System.Drawing.Size(88, 23);
             this.knudGreen.StateCommon.Back.Color1 = System.Drawing.Color.Green;
             this.knudGreen.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudGreen.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudGreen.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.knudGreen.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudGreen.TabIndex = 5;
             this.knudGreen.ValueChanged += new System.EventHandler(this.knudGreen_ValueChanged);
@@ -267,7 +267,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudBlue.Size = new System.Drawing.Size(88, 23);
             this.knudBlue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
             this.knudBlue.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudBlue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudBlue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.knudBlue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudBlue.TabIndex = 4;
             this.knudBlue.ValueChanged += new System.EventHandler(this.knudBlue_ValueChanged);
@@ -284,7 +284,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudRed.Size = new System.Drawing.Size(91, 23);
             this.knudRed.StateCommon.Back.Color1 = System.Drawing.Color.Red;
             this.knudRed.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudRed.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudRed.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.knudRed.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudRed.TabIndex = 3;
             this.knudRed.ValueChanged += new System.EventHandler(this.knudRed_ValueChanged);
@@ -304,7 +304,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.klblGreen.Size = new System.Drawing.Size(91, 21);
             this.klblGreen.StateCommon.ShortText.Color1 = System.Drawing.Color.Green;
             this.klblGreen.StateCommon.ShortText.Color2 = System.Drawing.Color.Green;
-            this.klblGreen.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblGreen.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.klblGreen.TabIndex = 2;
             this.klblGreen.Values.Text = "Green: 255";
             // 
@@ -315,7 +315,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.klblBlue.Size = new System.Drawing.Size(79, 21);
             this.klblBlue.StateCommon.ShortText.Color1 = System.Drawing.Color.Blue;
             this.klblBlue.StateCommon.ShortText.Color2 = System.Drawing.Color.Blue;
-            this.klblBlue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblBlue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.klblBlue.TabIndex = 1;
             this.klblBlue.Values.Text = "Blue: 255";
             // 
@@ -326,7 +326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.klblRed.Size = new System.Drawing.Size(76, 21);
             this.klblRed.StateCommon.ShortText.Color1 = System.Drawing.Color.Red;
             this.klblRed.StateCommon.ShortText.Color2 = System.Drawing.Color.Red;
-            this.klblRed.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblRed.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.klblRed.TabIndex = 0;
             this.klblRed.Values.Text = "Red: 255";
             // 
@@ -375,13 +375,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Select a Colour";
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel1).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.kryptonPanel2).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbSelectedColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.cpbSelectedColour).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -473,7 +473,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private void ktxtHexValue_TextChanged(object sender, EventArgs e)
         {
-            if (ktxtHexValue.Text.Length == 3 || ktxtHexValue.Text.Length <= 6)
+            if (ktxtHexValue.Text.Length is 3 or <= 6)
             {
                 UpdateColourValues(ColorTranslator.FromHtml(ktxtHexValue.Text));
             }
