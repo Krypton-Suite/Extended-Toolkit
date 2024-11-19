@@ -102,9 +102,9 @@
 	</Choose>
 
 	<ItemGroup>
-		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.5" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.6" />
 
-		<PackageReference Include="WindowsAPICodePackShellExtensions" Version="8.0.5" />
+		<PackageReference Include="WindowsAPICodePackShellExtensions" Version="8.0.6" />
 	</ItemGroup>
 
 	<ItemGroup>

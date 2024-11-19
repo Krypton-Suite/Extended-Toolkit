@@ -110,7 +110,7 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.5" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.6" />
 	</ItemGroup>
 
 	<ItemGroup>
