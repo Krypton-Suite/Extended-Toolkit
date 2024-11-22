@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly Image? _applicationImage;
 
-        private readonly KryptonMessageBoxExtendedData _messageBoxExtendedData;
+        private KryptonMessageBoxExtendedData _messageBoxExtendedData;
 
         #endregion
 
@@ -127,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private static IntPtr _hHook;
 
-        private readonly Timer _timeOutTimer;
+        private Timer _timeOutTimer;
 
         private int _timeOut;
 
@@ -226,8 +226,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _useTimeOut = useTimeOut ?? false;
             _timeOut = timeOut ?? 60;
             _timeOutInterval = timeOutInterval ?? 1000;
-            _timeOutTimer = new Timer();
-            _timeOutTimer.Interval = _timeOutInterval ?? 1000;
             _timerResult = timerResult ?? DialogResult.None;
             //_openInExplorer = openInExplorer ?? false;
 
@@ -255,15 +253,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             SetupOptionalCheckBox();
 
+            SetupTimeOut();
+
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
-
-            _timeOutTimer.Tick += TimeOutTimer_Tick;
-
-            if (_useTimeOut)
-            {
-                _timeOutTimer.Start();
-            }
         }
 
         public VisualMessageBoxExtendedForm(KryptonMessageBoxExtendedData messageBoxExtendedData)
@@ -276,7 +269,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             RightToLeftLayout = _messageBoxExtendedData.Options.HasFlag(MessageBoxOptions.RtlReading);
 
             // Update contents to match requirements
-            UpdateText(_messageBoxExtendedData.Caption, messageBoxExtendedData.MessageText, _messageBoxExtendedData.Options, _messageBoxExtendedData.MessageContentAreaType);
+            UpdateText(_messageBoxExtendedData.Caption, _messageBoxExtendedData.MessageText, _messageBoxExtendedData.Options, _messageBoxExtendedData.MessageContentAreaType);
             UpdateIcon(_messageBoxExtendedData.Icon);
             UpdateButtons(_messageBoxExtendedData.Buttons);
             UpdateDefault(_messageBoxExtendedData.DefaultButton);
@@ -288,6 +281,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             UpdateContentLinkArea(_messageBoxExtendedData.ContentLinkArea);
 
             SetupOptionalCheckBox();
+
+            SetupTimeOut(_messageBoxExtendedData.UseTimeOutOption);
 
             // Finally calculate and set form sizing
             UpdateSizing(_messageBoxExtendedData.Owner);
@@ -1511,6 +1506,42 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private void UpdateCloseButtonVisibility(bool? visible) => CloseBox = visible ?? true;
 
+        private void SetupTimeOut()
+        {
+            if (_useTimeOut)
+            {
+                _timeOutTimer = new Timer();
+
+                _timeOutTimer.Interval = _timeOutInterval ?? 1000;
+
+                _timeOutTimer.Tick += TimeOutTimer_Tick;
+            }
+        }
+
+        private void SetupTimeOut(bool value)
+        {
+            if (value)
+            {
+                _timeOutTimer = new Timer();
+
+                _timeOutTimer.Interval = _messageBoxExtendedData.TimeoutInterval ?? 1000;
+
+                _timeOutTimer.Tick += (sender, args) =>
+                {
+                    _messageBoxExtendedData.TimeOut--;
+
+                    Text = $@"{_messageBoxExtendedData.Caption} ({_messageBoxExtendedData.TimeOut})";
+
+                    if (_messageBoxExtendedData.TimeOut == 0)
+                    {
+                        _timedOut = true;
+
+                        Close();
+                    }
+                };
+            }
+        }
+
         private void TimeOutTimer_Tick(object sender, EventArgs e)
         {
             _timeOut--;
@@ -1520,6 +1551,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             if (_timeOut == 0)
             {
                 _timedOut = true;
+
+                _result = _timerResult;
 
                 Close();
             }

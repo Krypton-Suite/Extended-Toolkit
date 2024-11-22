@@ -59,6 +59,12 @@ namespace Examples
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageBoxExample));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox6 = new Krypton.Toolkit.KryptonGroupBox();
+            this.knudInterval = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.knudTimeout = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.klblInterval = new Krypton.Toolkit.KryptonLabel();
+            this.klblTimeout = new Krypton.Toolkit.KryptonLabel();
+            this.kchkUseTimeOut = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonGroupBox5 = new Krypton.Toolkit.KryptonGroupBox();
             this.kcbRtlReading = new Krypton.Toolkit.KryptonCheckBox();
             this.kcbRightAlign = new Krypton.Toolkit.KryptonCheckBox();
@@ -101,6 +107,10 @@ namespace Examples
             this.kbtnFillText = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6.Panel)).BeginInit();
+            this.kryptonGroupBox6.Panel.SuspendLayout();
+            this.kryptonGroupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).BeginInit();
             this.kryptonGroupBox5.Panel.SuspendLayout();
@@ -136,6 +146,7 @@ namespace Examples
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonGroupBox6);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox5);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox4);
             this.kryptonPanel1.Controls.Add(this.kmbFillText);
@@ -151,8 +162,109 @@ namespace Examples
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1585, 437);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1585, 463);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kryptonGroupBox6
+            // 
+            this.kryptonGroupBox6.Location = new System.Drawing.Point(112, 375);
+            this.kryptonGroupBox6.Name = "kryptonGroupBox6";
+            // 
+            // kryptonGroupBox6.Panel
+            // 
+            this.kryptonGroupBox6.Panel.Controls.Add(this.knudInterval);
+            this.kryptonGroupBox6.Panel.Controls.Add(this.knudTimeout);
+            this.kryptonGroupBox6.Panel.Controls.Add(this.klblInterval);
+            this.kryptonGroupBox6.Panel.Controls.Add(this.klblTimeout);
+            this.kryptonGroupBox6.Panel.Controls.Add(this.kchkUseTimeOut);
+            this.kryptonGroupBox6.Size = new System.Drawing.Size(423, 63);
+            this.kryptonGroupBox6.TabIndex = 20;
+            this.kryptonGroupBox6.Values.Heading = "Options";
+            // 
+            // knudInterval
+            // 
+            this.knudInterval.Enabled = false;
+            this.knudInterval.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.knudInterval.Location = new System.Drawing.Point(319, 9);
+            this.knudInterval.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.knudInterval.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.knudInterval.Name = "knudInterval";
+            this.knudInterval.Size = new System.Drawing.Size(69, 22);
+            this.knudInterval.TabIndex = 9;
+            this.knudInterval.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            // 
+            // knudTimeout
+            // 
+            this.knudTimeout.Enabled = false;
+            this.knudTimeout.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.knudTimeout.Location = new System.Drawing.Point(179, 9);
+            this.knudTimeout.Maximum = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            this.knudTimeout.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.knudTimeout.Name = "knudTimeout";
+            this.knudTimeout.Size = new System.Drawing.Size(69, 22);
+            this.knudTimeout.TabIndex = 7;
+            this.knudTimeout.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
+            // klblInterval
+            // 
+            this.klblInterval.Enabled = false;
+            this.klblInterval.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.klblInterval.Location = new System.Drawing.Point(254, 9);
+            this.klblInterval.Name = "klblInterval";
+            this.klblInterval.Size = new System.Drawing.Size(59, 20);
+            this.klblInterval.TabIndex = 8;
+            this.klblInterval.Values.Text = "Interval:";
+            // 
+            // klblTimeout
+            // 
+            this.klblTimeout.Enabled = false;
+            this.klblTimeout.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.klblTimeout.Location = new System.Drawing.Point(111, 9);
+            this.klblTimeout.Name = "klblTimeout";
+            this.klblTimeout.Size = new System.Drawing.Size(62, 20);
+            this.klblTimeout.TabIndex = 6;
+            this.klblTimeout.Values.Text = "Timeout:";
+            // 
+            // kchkUseTimeOut
+            // 
+            this.kchkUseTimeOut.Location = new System.Drawing.Point(13, 9);
+            this.kchkUseTimeOut.Name = "kchkUseTimeOut";
+            this.kchkUseTimeOut.Size = new System.Drawing.Size(92, 20);
+            this.kchkUseTimeOut.TabIndex = 1;
+            this.kchkUseTimeOut.Values.Text = "Use &Timeout";
+            this.kchkUseTimeOut.CheckedChanged += new System.EventHandler(this.kchkUseTimeOut_CheckedChanged);
             // 
             // kryptonGroupBox5
             // 
@@ -226,16 +338,18 @@ namespace Examples
             this.kmbFillText.Name = "kmbFillText";
             this.kmbFillText.Size = new System.Drawing.Size(90, 25);
             this.kmbFillText.TabIndex = 17;
+            this.kmbFillText.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             this.kmbFillText.Values.Text = "Fill Text";
             this.kmbFillText.Click += new System.EventHandler(this.kryptonButton1_Click);
             // 
             // kbtnShow
             // 
             this.kbtnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnShow.Location = new System.Drawing.Point(1483, 400);
+            this.kbtnShow.Location = new System.Drawing.Point(1483, 426);
             this.kbtnShow.Name = "kbtnShow";
             this.kbtnShow.Size = new System.Drawing.Size(90, 25);
             this.kbtnShow.TabIndex = 16;
+            this.kbtnShow.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             this.kbtnShow.Values.Text = "S&how";
             this.kbtnShow.Click += new System.EventHandler(this.kbtnShow_Click);
             // 
@@ -273,7 +387,7 @@ namespace Examples
             this.ktxtHyperlinkDestination.CueHint.CueHintText = "Enter a URL or resource path here...";
             this.ktxtHyperlinkDestination.Location = new System.Drawing.Point(16, 37);
             this.ktxtHyperlinkDestination.Name = "ktxtHyperlinkDestination";
-            this.ktxtHyperlinkDestination.Size = new System.Drawing.Size(277, 26);
+            this.ktxtHyperlinkDestination.Size = new System.Drawing.Size(277, 24);
             this.ktxtHyperlinkDestination.TabIndex = 6;
             this.ktxtHyperlinkDestination.TextChanged += new System.EventHandler(this.ktxtHyperlinkDestination_TextChanged);
             // 
@@ -374,7 +488,7 @@ namespace Examples
             this.kcmbMessageContentType.IntegralHeight = false;
             this.kcmbMessageContentType.Location = new System.Drawing.Point(16, 6);
             this.kcmbMessageContentType.Name = "kcmbMessageContentType";
-            this.kcmbMessageContentType.Size = new System.Drawing.Size(277, 21);
+            this.kcmbMessageContentType.Size = new System.Drawing.Size(277, 22);
             this.kcmbMessageContentType.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbMessageContentType.TabIndex = 2;
             this.kcmbMessageContentType.SelectedIndexChanged += new System.EventHandler(this.kcmbMessageContentType_SelectedIndexChanged);
@@ -406,7 +520,7 @@ namespace Examples
             this.kryptonComboBox3.IntegralHeight = false;
             this.kryptonComboBox3.Location = new System.Drawing.Point(21, 205);
             this.kryptonComboBox3.Name = "kryptonComboBox3";
-            this.kryptonComboBox3.Size = new System.Drawing.Size(270, 21);
+            this.kryptonComboBox3.Size = new System.Drawing.Size(270, 22);
             this.kryptonComboBox3.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kryptonComboBox3.TabIndex = 7;
             // 
@@ -426,7 +540,7 @@ namespace Examples
             this.kryptonComboBox4.IntegralHeight = false;
             this.kryptonComboBox4.Location = new System.Drawing.Point(21, 148);
             this.kryptonComboBox4.Name = "kryptonComboBox4";
-            this.kryptonComboBox4.Size = new System.Drawing.Size(270, 21);
+            this.kryptonComboBox4.Size = new System.Drawing.Size(270, 22);
             this.kryptonComboBox4.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kryptonComboBox4.TabIndex = 5;
             // 
@@ -446,7 +560,7 @@ namespace Examples
             this.kryptonComboBox2.IntegralHeight = false;
             this.kryptonComboBox2.Location = new System.Drawing.Point(21, 91);
             this.kryptonComboBox2.Name = "kryptonComboBox2";
-            this.kryptonComboBox2.Size = new System.Drawing.Size(270, 21);
+            this.kryptonComboBox2.Size = new System.Drawing.Size(270, 22);
             this.kryptonComboBox2.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kryptonComboBox2.TabIndex = 3;
             // 
@@ -466,7 +580,7 @@ namespace Examples
             this.kryptonComboBox1.IntegralHeight = false;
             this.kryptonComboBox1.Location = new System.Drawing.Point(21, 34);
             this.kryptonComboBox1.Name = "kryptonComboBox1";
-            this.kryptonComboBox1.Size = new System.Drawing.Size(270, 21);
+            this.kryptonComboBox1.Size = new System.Drawing.Size(270, 22);
             this.kryptonComboBox1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kryptonComboBox1.TabIndex = 1;
             // 
@@ -498,7 +612,7 @@ namespace Examples
             this.kcmbMessageBoxButtons.IntegralHeight = false;
             this.kcmbMessageBoxButtons.Location = new System.Drawing.Point(12, 14);
             this.kcmbMessageBoxButtons.Name = "kcmbMessageBoxButtons";
-            this.kcmbMessageBoxButtons.Size = new System.Drawing.Size(256, 21);
+            this.kcmbMessageBoxButtons.Size = new System.Drawing.Size(256, 22);
             this.kcmbMessageBoxButtons.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbMessageBoxButtons.TabIndex = 0;
             // 
@@ -522,7 +636,7 @@ namespace Examples
             this.kryptonTextBox1.Enabled = false;
             this.kryptonTextBox1.Location = new System.Drawing.Point(12, 35);
             this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.Size = new System.Drawing.Size(256, 26);
+            this.kryptonTextBox1.Size = new System.Drawing.Size(256, 24);
             this.kryptonTextBox1.TabIndex = 1;
             // 
             // bsaBrowse
@@ -538,7 +652,7 @@ namespace Examples
             this.kcmbMessageBoxIcon.IntegralHeight = false;
             this.kcmbMessageBoxIcon.Location = new System.Drawing.Point(12, 10);
             this.kcmbMessageBoxIcon.Name = "kcmbMessageBoxIcon";
-            this.kcmbMessageBoxIcon.Size = new System.Drawing.Size(256, 21);
+            this.kcmbMessageBoxIcon.Size = new System.Drawing.Size(256, 22);
             this.kcmbMessageBoxIcon.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbMessageBoxIcon.TabIndex = 0;
             // 
@@ -580,23 +694,20 @@ namespace Examples
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
             // 
-            // kryptonManager1
-            // 
-            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.SparkleOrange;
-            // 
             // kbtnFillText
             // 
             this.kbtnFillText.Location = new System.Drawing.Point(13, 66);
             this.kbtnFillText.Name = "kbtnFillText";
             this.kbtnFillText.Size = new System.Drawing.Size(90, 25);
             this.kbtnFillText.TabIndex = 17;
+            this.kbtnFillText.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             this.kbtnFillText.Values.Text = "Fill Text";
             // 
             // MessageBoxExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1585, 437);
+            this.ClientSize = new System.Drawing.Size(1585, 463);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -606,6 +717,11 @@ namespace Examples
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6.Panel)).EndInit();
+            this.kryptonGroupBox6.Panel.ResumeLayout(false);
+            this.kryptonGroupBox6.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6)).EndInit();
+            this.kryptonGroupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).EndInit();
             this.kryptonGroupBox5.Panel.ResumeLayout(false);
             this.kryptonGroupBox5.Panel.PerformLayout();
@@ -689,5 +805,11 @@ namespace Examples
         private KryptonGroupBox kryptonGroupBox5;
         private KryptonCheckBox kcbRightAlign;
         private KryptonCheckBox kcbRtlReading;
+        private KryptonGroupBox kryptonGroupBox6;
+        private KryptonCheckBox kchkUseTimeOut;
+        private KryptonNumericUpDown knudInterval;
+        private KryptonNumericUpDown knudTimeout;
+        private KryptonLabel klblInterval;
+        private KryptonLabel klblTimeout;
     }
 }

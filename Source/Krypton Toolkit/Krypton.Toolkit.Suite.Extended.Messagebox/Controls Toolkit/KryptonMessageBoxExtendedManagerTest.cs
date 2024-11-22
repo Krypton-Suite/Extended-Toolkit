@@ -50,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private MessageBoxOptions _options;
 
-        private Font _messageBoxTypeface;
+        private Font? _messageBoxTypeface;
 
         private Image? _customImageIcon;
 
@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Gets or sets the message box typeface.</summary>
         /// <value>The message box typeface.</value>
         [DefaultValue(typeof(Font), "Segoe UI, 8.25F"), Description(@"Specifies the font on all text surfaces.Specifies")]
-        public Font MessageBoxTypeface { get => _messageBoxTypeface; set => _messageBoxTypeface = value; }
+        public Font? MessageBoxTypeface { get => _messageBoxTypeface; set => _messageBoxTypeface = value; }
 
         /// <summary>Gets or sets the custom image icon.</summary>
         /// <value>The custom image icon.</value>
@@ -240,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         HelpNavigator navigator,
                                         object param, bool? showCtrlCopy,
                                         bool? displayHelpButton,
-                                        Font messageBoxTypeface,
+                                        Font? messageBoxTypeface,
                                         Image customImageIcon,
                                         bool showOptionalCheckBox,
                                         bool isOptionalCheckBoxChecked,

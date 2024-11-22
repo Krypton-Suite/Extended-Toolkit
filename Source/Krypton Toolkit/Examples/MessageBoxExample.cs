@@ -207,16 +207,31 @@ namespace Examples
 
         private void kbtnShow_Click(object sender, EventArgs e)
         {
-            //KryptonMessageBoxExtended.Show(this, _message, _caption, _button, _icon, _defaultButton, _options);
+            KryptonMessageBoxExtendedData messageBoxExtendedData = new KryptonMessageBoxExtendedData()
+            {
+                ActionButtonCommand = null,
+                ActionButtonText = null,
+            };
 
-            //DialogResult result = KryptonMessageBoxExtended.Show(_message, _caption, _button, _icon, _defaultButton, _options);
-
-            //if (result == DialogResult.OK)
-            //{
-            //    MessageBox.Show($@"{KryptonMessageBoxExtended.ReturnCheckBoxCheckedValue()}");
-            //}
+            KryptonMessageBoxExtended.Show(messageBoxExtendedData);
         }
 
         #endregion
+
+        private void kchkUseTimeOut_CheckedChanged(object sender, EventArgs e)
+        {
+            EnableTimeOutOptions(kchkUseTimeOut.Checked);
+        }
+
+        private void EnableTimeOutOptions(bool value)
+        {
+            klblTimeout.Enabled = value;
+
+            klblInterval.Enabled = value;
+
+            knudTimeout.Enabled = value;
+
+            knudInterval.Enabled = value;
+        }
     }
 }

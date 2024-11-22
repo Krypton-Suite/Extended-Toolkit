@@ -164,6 +164,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public string? MoreDetailsButtonText { get; set; }
 
         public string? MoreDetailsMessageText { get; set; }
+        public int? TimeoutInterval { get; set; }
+        public int TimeOut { get; set; }
+        public bool UseTimeOutOption { get; set; }
 
         #endregion
 

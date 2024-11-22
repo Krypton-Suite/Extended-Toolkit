@@ -88,8 +88,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="messageTextBoxAlignment"></param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timeOutInterval"></param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null,
@@ -131,8 +133,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="messageTextBoxAlignment"></param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timeOutInterval"></param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
@@ -183,8 +187,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="messageTextBoxAlignment"></param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timeOutInterval"></param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(string messageText, string caption,
                                         ExtendedMessageBoxButtons buttons,
@@ -234,8 +240,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="messageTextBoxAlignment"></param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timeOutInterval"></param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
@@ -313,8 +321,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="messageTextBoxAlignment"></param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timeOutInterval"></param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(IWin32Window owner, string messageText, string caption,
                                         ExtendedMessageBoxButtons buttons,
@@ -370,8 +380,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="messageTextBoxAlignment"></param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timeOutInterval"></param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
@@ -442,8 +454,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="messageTextBoxAlignment"></param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+        /// <param name="timeOutInterval"></param>
         /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
         public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
                                         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
@@ -493,6 +507,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          openInExplorer, messageTextAlignment,
                          richTextBoxTextAlignment, messageTextBoxAlignment,
                          useTimeOut, timeOut, timeOutInterval, timerResult);
+
+        public static DialogResult Show(KryptonMessageBoxExtendedData messageBoxExtendedData) =>
+            ShowCore(messageBoxExtendedData);
 
         #endregion
 
@@ -646,6 +663,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">The open in explorer.</param>
         /// <param name="messageTextAlignment">The message text alignment.</param>
         /// <param name="richTextBoxTextAlignment">The rich text box text alignment.</param>
+        /// <param name="messageTextBoxAlignment"></param>
         /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
         /// <param name="initialDoNotShowAgainCheckBoxChecked">The initial do not show again CheckBox checked.</param>
         /// <param name="initialDoNotShowAgainCheckBoxCheckState">Initial state of the do not show again CheckBox check.</param>
@@ -806,6 +824,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
         /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
         /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+        /// <param name="messageTextBoxAlignment"></param>
         /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
         /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
         /// <param name="timeOutInterval">Sets the interval of the 'time out' timer.</param>
@@ -916,6 +935,25 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     timeOut,
                     timeOutInterval,
                     timerResult);
+
+                return kmbe.ShowDialog(showOwner);
+            }
+        }
+
+        internal static DialogResult ShowCore(KryptonMessageBoxExtendedData messageBoxExtendedData)
+        {
+            IWin32Window? showOwner = ValidateOptions(messageBoxExtendedData.Owner, messageBoxExtendedData.Options,
+                messageBoxExtendedData.HelpInfo);
+
+            if (messageBoxExtendedData.Options == MessageBoxOptions.RightAlign | messageBoxExtendedData.Options == MessageBoxOptions.RtlReading)
+            {
+                using var kmbertl = new VisualMessageBoxExtendedRtlAwareForm(messageBoxExtendedData);
+
+                return kmbertl.ShowDialog(showOwner);
+            }
+            else
+            {
+                using var kmbe = new VisualMessageBoxExtendedForm(messageBoxExtendedData);
 
                 return kmbe.ShowDialog(showOwner);
             }

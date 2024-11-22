@@ -121,18 +121,18 @@
   <data name="bsaReset.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ8SURBVDhPdZJNaBNREMcfFAIFofnaTbJJdpNsNnTz
-        0SbSbLKbbL6gxUvxUMRbq5TGU1EJngTxUMWLp+LBS0FBISAFsVoiCAqpFhEvOXi1FRT0UFAoKJZx5km2
-        Vujhz+PNx2/mzRsWjUaPlazILBaP3VcU5cT/PgDgYpFo5Fipqsoy2QykM+mPCKpT4tB3CIigYSh0YDUj
-        oSbWNU37kcvloGyWoVQuQTaXBbTfjspRF8U6gHA4zIXJrng8voLVDgonCzypUq1Ao9ngsioW5At5SKVS
-        A1mW0w5AkiRePakl13ITWLFcBrtm86Rmq+mI7gRcOL/wfWPzSekIIBaLtahd0zR58vLFZdja7sO3va9g
-        2zbUG3Wo1WuwemeVbBuoMQdA7VuWtTVVnOIV2heWKGgTZei6zopGEWZOzUDvRY/s17AYL+oAaHDFUvGn
-        UTKA9Kz39B1OnIWkEFNiCps7MweDD4M9TJ6m2GAwyAKBwCEApzpCb6dkGt6bt69boVCIiaLIwpEw2/28
-        8x6TZQKKAZHbSQ4AnSOmZQI9gUCzp2czFCAIAk9A/yhVRNtoIBhoYwdtvJ91AFJYYvPn5n/RF9HSZCey
-        64IoML/f74hg+MXXcUcAnwdVu9p3AEhlD7sPtqk6LYuaVAHbvesX/GM+n48ALqx6Fbfy97g+DqTuo+5z
-        B4CB1Ob05c4lDtDTOiQSCcD3A85iBzvkVSmROuxc6dBvVB2A1+vlQ/n0ZffezVs3OISCtZQGuFz8HCaT
-        H+PWjgzR7XFzCFJdqJVX/ZcHi0uLMJmf5N3QSXeyk5/iPF7PPwC3m8vj8fCBYYCBeozaR1G7dNLdID/F
-        UfxfALA//kaIMNcH69EAAAAASUVORK5CYII=
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKOSURBVDhPdZJNSFRRFMcvCANC4Mz4vj/ve2/e4Hz5
+        Ec73jOMIShtpIdFOC9FWUiGtgmhh0aaVtGgjFBQMhBBZYhAUaElEGxdtUyHhvcWDAqFITpxL86YJXPy5
+        3PPxO+eee4iu6+Q0GaZBqEUfm6Z55n8fADARTddOleM4JJPNQDqT/kot2sDEtq8D0LSOdI2YplmwHXvd
+        dd0fuVwOSuUSFEtFyOayYDv2fd3QIxgbAlRVZdJ0LWJZ1ko6kz4ZOTvCkqq1Kow3x5kq1QoMjwxDMpnc
+        MwwjHQIURWHVE25iLTeYg1KpBPWxOktqTjRD4R2Bc5fnvm9svih2ASilE9huuVxmyUtXl2Bndxv8wIN6
+        vQ6N8QaMNcZg9cEq2jb8wOvrekKlUtkZzY+yCotXFjBo0w+8QiqVIvlCHqbOTcHWmy2036KUsqJdv5Av
+        5n8WigVAvdp6+YlalMiKTExqkpkLM7D3ZS/wA28SYyVJIqIodgC6offg2zEZh/fh4/sJWZaJIAhE1VRy
+        8G3/sx94BgIFUWB2VAjwA6+nXCkDPgFB0+enMxjA8zxL8AOvFysKgtArSuKiJEmLoihe7AxRVcjspdlf
+        +EW4NNnB7Dov8ITjuFAIsyzrtmmaQC0KtXptOwSIkkietp7sYnVcFifhgKzIDzme6+vv70dARJKkm47j
+        /B5IDQCq9az1OgRwPIdtTl5fvsYAqXQKbNsGVVNBluV9RVVYVUzEDpdvLONv1EJAPB5nQzk8Onh0994d
+        BsFgN+lCwk2ws52M/sOjg7WuIUZjUQbxAy/iB97Ku+23J/ML8zA0PMS6wRPvaEc/xsXisX8A0ShTLBZj
+        A8MF8gPvuR94x7iJf0+8F9CPcRjfBvwB/kaIMH1raboAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="kryptonManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

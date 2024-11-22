@@ -187,6 +187,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(null), Description(@"Owner of the modal dialog box.")]
         public IWin32Window? Owner { get => _owner; set => _owner = value; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public LinkArea LinkArea { get => _linkArea; set => _linkArea = value; }
 
         #endregion

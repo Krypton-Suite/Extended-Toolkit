@@ -449,6 +449,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new ImeMode ImeMode
         {
             get => base.ImeMode;

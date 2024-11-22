@@ -5,7 +5,16 @@
 
 =======
 
+## 2025-11-xx - Build 2511 - November 2025
+
+* Add support for .NET 10
+* Updated standard toolkit to build `2511`
+* Updated version from `95.xx.xx.xxx` -> `100.xx.xx.xxx`
+
+=======
+
 ## 2024-11-12 - Build 2411 - November 2024
+
 * Simplified TFM project configuration
 * RollBack [#1584](https://github.com/Krypton-Suite/Standard-Toolkit/issues/1584), Disable the FadeValues property in VisualForm and move the FadeValues class to Extended. It was a V90 feature but is up for further development in V100.
 * New `KryptonPasswordTextBox` control
@@ -23,6 +32,7 @@
 =======
 
 ## 2024-10-15 - Build 2410 (Patch 2) - October 2024
+
 * Enable 'SourceLink' for NuGet packages
 * Patch for `System.Private.Uri`, CVE-2019-081
 
@@ -36,6 +46,7 @@
 =======
 
 ## 2023-11-14 - Build 2311 - November 2023
+
 * New `KryptonToolkitExtendedPoweredByControl`, to be used in application 'About' dialogs
 * Added the ability to specify the message text alignment in a `KryptonMessageboxExtended`
 	- Default value is `MiddleLeft`
@@ -87,11 +98,13 @@
 =======
 
 ## 2023-01-05 - Build 2301 - January 2023
+
 * Resolved [#382](https://github.com/Krypton-Suite/Extended-Toolkit/issues/382), Update / Remove use of `NewtonSoft`
 
 =======
 
 ## 2022-11-08 - Build 2211 - November 2022
+
 * Implemented [#311](https://github.com/Krypton-Suite/Extended-Toolkit/issues/331), One Krypton Extended Toolkit NuGet package to rule them all
 * New `KryptonDialogButtonExtended` control. Uses the strings configured in `KryptonManager` to create dialog buttons
 * Toasts can now be configured to use RTL layouts
@@ -112,6 +125,7 @@
 =======
 
 ## 2022-06-01 - Build 2206 - June 2022
+
 * Add new configurations to aid creation of full/lite NuGet packages
 * Toasts now support `RightToLeft` layouts
 * New `KryptonThemeComboBox` control in `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` package, to allow users to switch between themes
@@ -121,6 +135,7 @@
 =======
 
 ## 2022-04-04 - Build 2204 - April 2022
+
 * Implemented [#290](https://github.com/Krypton-Suite/Extended-Toolkit/issues/290), `KryptonOutlookGridGroupBox` 'CreateGroupBox' method not found
 * New `Krypton.Toolkit.Suite.Extended.Networking` module
 * Moved `KryptonPanelExtended` & `KryptonButtonPanel` to `Krypton.Toolkit.Suite.Extended.Panels` module
@@ -139,11 +154,13 @@
 =======
 
 ## 2022-02-02 - Build 2202.1 - February 2022
+
 * Resolved [#299](https://github.com/Krypton-Suite/Extended-Toolkit/issues/299), Toolkit used is the wrong version
 
 =======
 
 ## 2022-02-01 - Build 2202 - February 2022
+
 * Updated NuGet package information to aid deployment to GitHub
 * New `Krypton.Toolkit.Suite.Extended.Error.Reporting` module
 * Removal of unused 'using' statements
@@ -157,6 +174,7 @@
 =======
 
 ## 2021-12-07 - Build 2112 - December 2021
+
 * New `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 * New `Krypton.Toolkit.Suite.Extended.InputBox` module
 * Resolve toast 'Dismiss' button location
@@ -177,6 +195,7 @@
 =======
 
 ## 2021-06-04 - Build 2106 - June 2021
+
 * Removal/de-listing of `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, see 'standard toolkit' build 2106 for more information
 * New `KryptonFormExtended` to expose properties, which cannot be fulfilled by a action list over time
 * Renamed both `KryptonTabControl` in the `Krypton.Toolkit.Suite.Extended.Navigator` module to 'Version1'/'Version2' respectively to avoid confusion
@@ -188,6 +207,7 @@
 =======
 
 ## 2021-04-01 - Build 2104 - April 2021
+
 * Rewritten the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 * Implement [#36](https://github.com/Krypton-Suite/Extended-Toolkit/issues/36), Expose the `OutlookGrid.Classes.OutlookGridRowComparer2` class
 * Elevation events for command link button controls
@@ -196,6 +216,7 @@
 =======
 
 ## 2021-03-04 - Build 2103 - March 2021
+
 * Resolved package descriptions
 * New `KryptonEnhancedToolStrip` control
 * New `KryptonEnhancedToolStripProgressBar` control
@@ -207,6 +228,7 @@
 =======
 
 ## 2021-02-01 - Build 2102 - February 2021
+
 * New `Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box` NuGet package
 * New expandable menu/context menu item in `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items`
 * New [Visual Studio Toolbox](https://www.codeproject.com/Articles/8658/Another-ToolBox-Control) control
@@ -220,6 +242,7 @@
 =======
 
 ## 2021-01-03 - Build 2101 - January 2021
+
 * Rounded controls are now in a separate package `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, rather than the `Base` package
 * Added [Information Box](https://github.com/JohannBlais/InformationBox), by [Johann Blais](https://github.com/JohannBlais)
 * New 'Alert' toast notification. Use the `Alert` class in `Notifications` to activate it
@@ -231,6 +254,7 @@
 =======
 
 ## 2020-12-01 - Build 2012 - December 2020
+
 * Resolve issues with `FastColouredTextBox`
 * New Gantt chart control for `Data Visualisation`
 * Removed `Notification` elements from `Dialogs` module
@@ -238,6 +262,7 @@
 =======
 
 ## 2020-11-01 - Build 2011 - November 2020
+
 * New `Networking` NuGet package
 * Stable packages will now use the stable `Krypton.*` standard toolkit & vice-versa
 * General bugfixes
@@ -248,6 +273,7 @@
 =======
 
 ## 2020-10-01 - Build 2010 - October 2020
+
 * Improved NuGet package descriptions
 * Resolved [#21](https://github.com/Krypton-Suite/Extended-Toolkit/issues/21), OutlookGrid Column right click causes error. Thanks to [dax-leo](https://github.com/dax-leo)
 * New `Data Visualisation` NuGet package for charts & graphs
@@ -258,6 +284,7 @@
 =======
 
 ## 2020-09-01 - Build 2009 - September 2020
+
 * Support for more framework versions - In addition to supporting .NET Framework 4.5, .NET Core 3.1 and .NET 5, the toolkit can be now used with projects using .NET Framework 4.5.1 to 4.8 inclusive
 * Canary packages are now available
 * Implement extra features for `KryptonToastNotificationWindow`
@@ -267,6 +294,7 @@
 =======
 
 ## 2020-08-01 - Build 2008 - August 2020
+
 * All namespaces now correlate to the package name e.g, `Krypton.Toolkit.Extended.Base` now becomes `Krypton.Toolkit.Suite.Extended.Base`
 * New find and replace dialog built off of [FnR](https://github.com/zzzprojects/findandreplace)
 * All NuGet packages will now be output to `Bin\NuGet`
@@ -275,6 +303,7 @@
 =======
 
 ## 2020-07-01 - Build 2007 - July 2020
+
 * Add `.NET Sparkle` to software updater package
 * Add `Task Dialogs` module
 * Small changes to dialog buttons
@@ -283,11 +312,13 @@
 =======
 
 ## 2020-06-01 pm - Build 2006 - June 2020
+
 * Add strong name key files `snk` to projects & DLLs
 
 =======
 
 ## 2020-06-01 am - Build 2006 - June 2020
+
 * Versions are now `5.550.xxxx`
 * Add preliminary support for .NET 5
 * Removed `KryptonListView` due to bug (will return at some point in the future)
@@ -299,12 +330,14 @@
 =======
 
 ## 2020-05-01 pm - Build 2005.1 - May 2020
+
 * Removed errant `Experimental` package
 * Updated standard toolkit to build **6.0.2006**
 
 =======
 
 ## 2020-05-01 am - Build 2005 - May 2020
+
 * Resolved [#3](https://github.com/Krypton-Suite/Extended-Toolkit/issues/3), Missing controls
 * Add `IO Components` module
 * Add `Outlook Grid` module
@@ -318,6 +351,7 @@
 =======
 
 ## 2020-03-21 - Build 2004 - April 2020
+
 * Support for all frameworks .NET 4.5 to 4.8 inclusive
 * Support for .NET Core LTS (currently 3.1)
 * Changed `490` to `500`

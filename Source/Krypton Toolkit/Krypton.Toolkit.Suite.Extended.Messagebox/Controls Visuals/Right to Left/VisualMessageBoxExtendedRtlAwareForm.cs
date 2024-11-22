@@ -258,6 +258,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
         }
 
+        public VisualMessageBoxExtendedRtlAwareForm(KryptonMessageBoxExtendedData messageBoxExtendedData)
+        {
+            InitializeComponent();
+        }
+
         #endregion
 
         #region Implementation
