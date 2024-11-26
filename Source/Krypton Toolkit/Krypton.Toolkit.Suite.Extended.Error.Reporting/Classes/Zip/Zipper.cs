@@ -31,6 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     {
         public void Zip(string zipFile, IEnumerable<string> files)
         {
+            // ToDo: Upgrade to a newer version
             using (var zip = new ZipFile(zipFile))
             {
                 zip.AddFiles(files, directoryPathInArchive: "");
