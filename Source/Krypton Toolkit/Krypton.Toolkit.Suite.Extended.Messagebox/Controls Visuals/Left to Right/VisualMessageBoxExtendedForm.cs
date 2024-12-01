@@ -77,7 +77,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly bool _initialDoNotShowAgainCheck;
 
+        private readonly bool _showMoreDetailsButton;
+
         private bool _isDoNotShowAgainCheckedResult;
+
+        private bool _isFooterVisible;
 
         private readonly Color _messageTextColour;
 
@@ -114,6 +118,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly string _applicationPath;
 
         private readonly string _checkBoxText;
+
+        private readonly string _moreDetailsText;
 
         private readonly ExtendedKryptonMessageBoxMessageContainerType _messageContainerType;
 
@@ -182,8 +188,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                HorizontalAlignment? messageTextBoxAlignment,
                                                bool? showOptionalCheckBox,
                                                bool? initialDoNotShowAgainCheckBoxChecked,
+                                               bool? showMoreDetailsButton,
                                                CheckState? initialDoNotShowAgainCheckBoxCheckState,
                                                string? optionalCheckBoxText,
+                                               string? moreDetailsText,
                                                bool? useOptionalCheckBoxThreeState,
                                                bool? useTimeOut,
                                                int? timeOut,
@@ -222,11 +230,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _contentLinkArea = contentLinkArea ?? new LinkArea(0, text.Length);
             _linkLaunchArgument = linkLaunchArgument ?? new ProcessStartInfo();
             _openInExplorer = openInExplorer ?? false;
+            _showMoreDetailsButton = showMoreDetailsButton ?? false;
             _richTextBoxTextAlignment = richTextBoxTextAlignment ?? PaletteRelativeAlign.Inherit;
             _useTimeOut = useTimeOut ?? false;
             _timeOut = timeOut ?? 60;
             _timeOutInterval = timeOutInterval ?? 1000;
             _timerResult = timerResult ?? DialogResult.None;
+            _moreDetailsText = moreDetailsText ?? string.Empty; // GlobalStaticValues.EMPTY_STRING;
             //_openInExplorer = openInExplorer ?? false;
 
             // Optional checkbox
@@ -254,6 +264,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             SetupOptionalCheckBox();
 
             SetupTimeOut();
+
+            SetupExpandableFooter();
 
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
@@ -1140,6 +1152,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // Size of window is calculated from the client area
             ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
                                   messageSizing.Height + buttonsSizing.Height);
+
+            if (_isFooterVisible)
+            {
+               
+            }
         }
 
         private Size UpdateMessageSizing(IWin32Window? showOwner)
@@ -1556,6 +1573,43 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
                 Close();
             }
+        }
+
+        private void expandButton_Click(object sender, EventArgs e)
+        {
+            SuspendLayout();
+
+            int footerHeight = 200;
+
+            if (_footerPanel.Visible)
+            {
+                _footerPanel.Visible = false;
+                _footerPanel.Height = 0;
+                _expandButton.Text = "Expand ▼";
+                Height -= footerHeight;
+            }
+            else
+            {
+                _footerPanel.Visible = true;
+                _footerPanel.Height = 200; // Adjust the footer height as needed
+                _expandButton.Text = "Collapse ▲";
+                Height += footerHeight;
+            }
+
+            //ClientSize = new Size(ClientSize.Width, ClientSize.Height + (_footerPanel.Visible ? 200 : -200));
+
+            ResumeLayout();
+
+            Refresh();
+        }
+
+        private void SetupExpandableFooter()
+        {
+            _expandButton.Visible = _showMoreDetailsButton;
+
+            _expandButton.Enabled = _showMoreDetailsButton;
+
+            _footerLabel.Text = _moreDetailsText;
         }
 
         #endregion

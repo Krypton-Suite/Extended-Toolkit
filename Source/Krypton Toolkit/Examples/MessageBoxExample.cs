@@ -207,13 +207,8 @@ namespace Examples
 
         private void kbtnShow_Click(object sender, EventArgs e)
         {
-            KryptonMessageBoxExtendedData messageBoxExtendedData = new KryptonMessageBoxExtendedData()
-            {
-                ActionButtonCommand = null,
-                ActionButtonText = null,
-            };
-
-            KryptonMessageBoxExtended.Show(messageBoxExtendedData);
+            KryptonMessageBoxExtended.Show(ktxtMessageContent.Text, ktxtCaption.Text, ExtendedMessageBoxButtons.OK,
+                ExtendedKryptonMessageBoxIcon.Information, true, true, ktxtMessageContent.Text);
         }
 
         #endregion

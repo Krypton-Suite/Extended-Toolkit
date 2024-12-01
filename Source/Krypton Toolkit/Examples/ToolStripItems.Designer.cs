@@ -93,9 +93,6 @@ namespace Examples
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.kryptonColourButtonToolStripMenuItem1 = new Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonColourButtonToolStripMenuItem();
-            this.kryptonColourButtonToolStripMenuItem2 = new Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonColourButtonToolStripMenuItem();
-            this.kryptonSlider1 = new Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonSlider();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -121,8 +118,7 @@ namespace Examples
             // statusStrip1
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kryptonSlider1});
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {});
             this.statusStrip1.Location = new System.Drawing.Point(0, -1);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
@@ -343,8 +339,7 @@ namespace Examples
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customizeToolStripMenuItem,
-            this.optionsToolStripMenuItem,
-            this.kryptonColourButtonToolStripMenuItem2});
+            this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
@@ -406,52 +401,11 @@ namespace Examples
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kryptonColourButtonToolStripMenuItem1});
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(102, 28);
             this.toolStrip1.TabIndex = 0;
-            // 
-            // kryptonColourButtonToolStripMenuItem1
-            // 
-            this.kryptonColourButtonToolStripMenuItem1.AutoSize = false;
-            // 
-            // kryptonColourButtonToolStripMenuItem1
-            // 
-            this.kryptonColourButtonToolStripMenuItem1.KryptonColourButtonControl.AccessibleName = "kryptonColourButtonToolStripMenuItem1";
-            this.kryptonColourButtonToolStripMenuItem1.KryptonColourButtonControl.Location = new System.Drawing.Point(9, 1);
-            this.kryptonColourButtonToolStripMenuItem1.KryptonColourButtonControl.Name = "kryptonColourButtonToolStripMenuItem1";
-            this.kryptonColourButtonToolStripMenuItem1.KryptonColourButtonControl.TabIndex = 0;
-            this.kryptonColourButtonToolStripMenuItem1.Name = "kryptonColourButtonToolStripMenuItem1";
-            this.kryptonColourButtonToolStripMenuItem1.SelectedRect = new System.Drawing.Rectangle(0, 12, 16, 4);
-            this.kryptonColourButtonToolStripMenuItem1.Size = new System.Drawing.Size(90, 25);
-            this.kryptonColourButtonToolStripMenuItem1.Text = "&Color";
-            // 
-            // kryptonColourButtonToolStripMenuItem2
-            // 
-            this.kryptonColourButtonToolStripMenuItem2.AutoSize = false;
-            // 
-            // kryptonColourButtonToolStripMenuItem2
-            // 
-            this.kryptonColourButtonToolStripMenuItem2.KryptonColourButtonControl.AccessibleName = "kryptonColourButtonToolStripMenuItem2";
-            this.kryptonColourButtonToolStripMenuItem2.KryptonColourButtonControl.Location = new System.Drawing.Point(33, 47);
-            this.kryptonColourButtonToolStripMenuItem2.KryptonColourButtonControl.Name = "kryptonColourButtonToolStripMenuItem2";
-            this.kryptonColourButtonToolStripMenuItem2.KryptonColourButtonControl.TabIndex = 2;
-            this.kryptonColourButtonToolStripMenuItem2.Name = "kryptonColourButtonToolStripMenuItem2";
-            this.kryptonColourButtonToolStripMenuItem2.SelectedRect = new System.Drawing.Rectangle(0, 12, 16, 4);
-            this.kryptonColourButtonToolStripMenuItem2.Size = new System.Drawing.Size(90, 25);
-            this.kryptonColourButtonToolStripMenuItem2.Text = "&Color";
-            // 
-            // kryptonSlider1
-            // 
-            this.kryptonSlider1.BackColor = System.Drawing.Color.Transparent;
-            this.kryptonSlider1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonSlider1.Name = "kryptonSlider1";
-            this.kryptonSlider1.Size = new System.Drawing.Size(140, 21);
-            this.kryptonSlider1.Steps = 2;
-            this.kryptonSlider1.Text = "kryptonSlider1";
-            this.kryptonSlider1.TrackerSize = new System.Drawing.Size(140, 21);
             // 
             // ToolStripItems
             // 
@@ -516,7 +470,6 @@ namespace Examples
         private ToolStripMenuItem toolsToolStripMenuItem;
         private ToolStripMenuItem customizeToolStripMenuItem;
         private ToolStripMenuItem optionsToolStripMenuItem;
-        private Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonColourButtonToolStripMenuItem kryptonColourButtonToolStripMenuItem2;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem contentsToolStripMenuItem;
         private ToolStripMenuItem indexToolStripMenuItem;
@@ -525,8 +478,5 @@ namespace Examples
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripContainer toolStripContainer1;
         private ToolStrip toolStrip1;
-        private Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonColourButtonToolStripMenuItem kryptonColourButtonToolStripMenuItem1;
-        private Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonSlider kryptonSlider1;
-        private Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonToolStripBrowseBox kryptonToolStripBrowseBox1;
     }
 }

@@ -49,8 +49,8 @@
 	<Choose>
 		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.24.11.318-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.24.11.318-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.24.11.330-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.24.11.330-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
@@ -63,6 +63,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
+		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -108,17 +109,17 @@
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater 2022.csproj" />-->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs 2022.csproj" />
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.TaskDialogs\Krypton.Toolkit.Suite.Extended.TaskDialogs 2022.csproj" />-->
-		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher 2022.csproj" />-->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.ToastNotification\Krypton.Toolkit.Suite.Extended.ToastNotification 2022.csproj" />
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Toast\Krypton.Toolkit.Suite.Extended.Toast 2022.csproj" />-->
-		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Toggle.Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch 2022.csproj" />
-		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tool.Box\Krypton.Toolkit.Suite.Extended.Tool.Box 2022.csproj" />
-		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Toggle.Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch 2022.csproj" />-->
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tool.Box\Krypton.Toolkit.Suite.Extended.Tool.Box 2022.csproj" />-->
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items 2022.csproj" />-->
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2022.csproj" />-->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView 2022.csproj" />
-		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard 2022.csproj" />-->
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard 2022.csproj" />-->
 	</ItemGroup>
 

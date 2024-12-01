@@ -26,7 +26,6 @@
  */
 
 #endregion
-using Krypton.Toolkit.Suite.Extended.Theme.Switcher;
 
 namespace Examples
 {
@@ -39,18 +38,10 @@ namespace Examples
 
         private void kbtnBinaryThemes_Click(object sender, EventArgs e)
         {
-            KryptonExternalThemeSelectorForm themeSelector =
-                new KryptonExternalThemeSelectorForm(ExternalThemeType.Binary, null);
-
-            themeSelector.ShowDialog();
         }
 
         private void kbtnXMLThemes_Click(object sender, EventArgs e)
         {
-            KryptonExternalThemeSelectorForm themeSelector =
-                new KryptonExternalThemeSelectorForm(ExternalThemeType.ExtensibleMarkupLanguage, null);
-
-            themeSelector.ShowDialog();
         }
     }
 }

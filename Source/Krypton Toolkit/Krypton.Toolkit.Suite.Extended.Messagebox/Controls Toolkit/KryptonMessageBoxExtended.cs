@@ -43,13 +43,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <returns></returns>
         public static DialogResult Show(string message, string caption, ExtendedMessageBoxButtons buttons,
-                                        ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null)
+                                        ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null,
+                                        bool? showMoreDetailsButton = null, string? moreDetailsText = null)
             => ShowCore(null, message, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
                 0, null, showCtrlCopy, null, null, null, null, null, null, null, null, null,
                 null, null, null, null, null, ExtendedKryptonMessageBoxMessageContainerType.Normal,
                 null, null, null, null,
-                ContentAlignment.MiddleLeft, null, null, null, null, null,
-                DialogResult.OK);
+                ContentAlignment.MiddleLeft, null, null, showMoreDetailsButton, null, null, null,
+                DialogResult.OK, moreDetailsText);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
@@ -67,12 +68,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             ContentAlignment? messageTextAlignment = null,
             HorizontalAlignment? messageTextBoxAlignment = null,
             bool? useTimeOut = false, int? timeOut = 60, int? timeOutInterval = 1000,
-            DialogResult? timerResult = DialogResult.None) =>
+            DialogResult? timerResult = DialogResult.None,
+            bool? showMoreDetailsButton = null, string? moreDetailsText = null) =>
             ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
                 0, null, showCtrlCopy, null, null, null, null, null, null, null, null, null,
                 null, null, null, null, null, ExtendedKryptonMessageBoxMessageContainerType.Normal,
                 null, null, null, null,
-                messageTextAlignment, null, messageTextBoxAlignment, useTimeOut, timeOut, timeOutInterval, timerResult);
+                messageTextAlignment, null, messageTextBoxAlignment, showMoreDetailsButton, useTimeOut, timeOut,
+                timeOutInterval, timerResult, moreDetailsText);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
@@ -105,14 +108,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
                                         HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false, int? timeOut = 60, int? timeOutInterval = 1000,
-                                        DialogResult? timerResult = DialogResult.None)
+                                        DialogResult? timerResult = DialogResult.None,
+                                        bool? showMoreDetailsButton = null, string? moreDetailsText = null)
             => ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
                         null, showCtrlCopy, null, null, null, Color.Empty,
                         new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                         null, null, null, null, string.Empty, string.Empty,
                         string.Empty, string.Empty, applicationPath, messageContainerType, linkLabelCommand,
                         contentLinkArea, linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment, messageTextBoxAlignment,
-                        useTimeOut, timeOut, timeOutInterval, timerResult);
+                        showMoreDetailsButton, useTimeOut, timeOut, timeOutInterval, timerResult, moreDetailsText);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
@@ -158,7 +162,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, int? timeOutInterval = 1000,
-                                        DialogResult? timerResult = DialogResult.None)
+                                        DialogResult? timerResult = DialogResult.None,
+                                        bool? showMoreDetailsButton = null, string? moreDetailsText = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -168,7 +173,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          string.Empty, string.Empty, applicationPath,
                          messageContainerType, linkLabelCommand, contentLinkArea,
                          linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment, messageTextBoxAlignment,
-                         useTimeOut, timeOut, timeOutInterval, timerResult);
+                         showMoreDetailsButton, useTimeOut, timeOut, timeOutInterval, timerResult, moreDetailsText);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
@@ -208,7 +213,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false, int? timeOut = 60,
                                         int? timeOutInterval = 1000,
-                                        DialogResult? timerResult = DialogResult.None)
+                                        DialogResult? timerResult = DialogResult.None,
+                                        bool? showMoreDetailsButton = null, string? moreDetailsText = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -218,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          string.Empty, string.Empty, applicationPath,
                          messageContainerType, linkLabelCommand, contentLinkArea, linkLaunchArgument, openInExplorer,
                          messageTextAlignment, richTextBoxTextAlignment, messageTextBoxAlignment,
-                         useTimeOut, timeOut, timeOutInterval, timerResult);
+                         showMoreDetailsButton, useTimeOut, timeOut, timeOutInterval, timerResult, moreDetailsText);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="owner">The owner.</param>
@@ -263,7 +269,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, int? timeOutInterval = 1000,
-                                        DialogResult? timerResult = DialogResult.None)
+                                        DialogResult? timerResult = DialogResult.None,
+                                        bool? showMoreDetailsButton = null, string? moreDetailsText = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -275,11 +282,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          applicationPath, messageContainerType, linkLabelCommand, contentLinkArea,
                          linkLaunchArgument, openInExplorer,
                          messageTextAlignment, richTextBoxTextAlignment, messageTextBoxAlignment,
-                         useTimeOut, timeOut, timeOutInterval, timerResult);
+                         showMoreDetailsButton, useTimeOut, timeOut, timeOutInterval, timerResult, moreDetailsText);
 
         public static DialogResult Show(IWin32Window owner, string message, string caption,
             ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon,
-            KryptonMessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = false) =>
+            KryptonMessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = false,
+            bool? showMoreDetailsButton = null, string? moreDetailsText = null) =>
             ShowCore(owner, message, caption, buttons, icon, defaultButton, options,
                 null, showCtrlCopy, null, null, null,
                 null, null, null,
@@ -288,10 +296,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 null, null, null,
                 null, null, null,
                 null, null, null,
-                null, null, null, null,
-                null);
+                null, showMoreDetailsButton, null, null, null,
+                null, moreDetailsText);
 
-        public static DialogResult Show(string message, string caption, ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon, KryptonMessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = false) =>
+        public static DialogResult Show(string message, string caption, ExtendedMessageBoxButtons buttons,
+                                        ExtendedKryptonMessageBoxIcon icon, KryptonMessageBoxDefaultButton defaultButton,
+                                        MessageBoxOptions options, bool? showCtrlCopy = false,
+                                        bool? showMoreDetailsButton = null, string? moreDetailsText = null) =>
             ShowCore(null, message, caption, buttons, icon, defaultButton, options,
                 null, showCtrlCopy, null, null, null,
                 null, null, null,
@@ -300,8 +311,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 null, null, null,
                 null, null, null,
                 null, null, null,
-                null, null, null, null,
-                null);
+                null, showMoreDetailsButton, null, null, null,
+                null, moreDetailsText);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="owner">The owner.</param>
@@ -343,7 +354,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, int? timeOutInterval = 1000,
-                                        DialogResult? timerResult = DialogResult.None)
+                                        DialogResult? timerResult = DialogResult.None,
+                                        bool? showMoreDetailsButton = null, string? moreDetailsText = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
@@ -357,7 +369,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          linkLaunchArgument,
                          openInExplorer, messageTextAlignment,
                          richTextBoxTextAlignment, messageTextBoxAlignment,
-                         useTimeOut, timeOut, timeOutInterval, timerResult);
+                         showMoreDetailsButton, useTimeOut, timeOut, timeOutInterval, timerResult,
+                         moreDetailsText);
 
         /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/>.</summary>
         /// <param name="messageText">The text.</param>
@@ -406,7 +419,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false,
                                         int? timeOut = 60, int? timeOutInterval = 1000,
-                                        DialogResult? timerResult = DialogResult.None)
+                                        DialogResult? timerResult = DialogResult.None,
+                                        bool? showMoreDetailsButton = null, string? moreDetailsText = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                          new HelpInfo(helpFilePath, navigator, param), showCtrlCopy,
@@ -418,7 +432,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          string.Empty, applicationPath,
                          messageContainerType, linkLabelCommand, contentLinkArea,
                          linkLaunchArgument, openInExplorer, messageTextAlignment, richTextBoxTextAlignment, messageTextBoxAlignment,
-                         useTimeOut, timeOut, timeOutInterval, timerResult);
+                         showMoreDetailsButton, useTimeOut, timeOut, timeOutInterval, timerResult, moreDetailsText);
 
         /// <summary>Shows a message box.</summary>
         /// <param name="owner">The owner.</param>
@@ -492,9 +506,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         PaletteRelativeAlign? richTextBoxTextAlignment = null,
                                         HorizontalAlignment? messageTextBoxAlignment = null,
                                         bool? useTimeOut = false,
+                                        bool? showMoreDetailsButton = null,
                                         int? timeOut = 60,
                                         int? timeOutInterval = 1000,
-                                        DialogResult? timerResult = DialogResult.None)
+                                        DialogResult? timerResult = DialogResult.None,
+                                        string? moreDetailsText = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
@@ -506,7 +522,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          messageContainerType, linkLabelCommand, contentLinkArea, linkLaunchArgument,
                          openInExplorer, messageTextAlignment,
                          richTextBoxTextAlignment, messageTextBoxAlignment,
-                         useTimeOut, timeOut, timeOutInterval, timerResult);
+                         showMoreDetailsButton, useTimeOut, timeOut, timeOutInterval, timerResult, moreDetailsText);
 
         public static DialogResult Show(KryptonMessageBoxExtendedData messageBoxExtendedData) =>
             ShowCore(messageBoxExtendedData);
@@ -540,8 +556,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             HorizontalAlignment? messageTextBoxAlignment,
             bool? showOptionalCheckBox,
             bool? initialDoNotShowAgainCheckBoxChecked,
+            bool? showMoreDetailsButton,
             CheckState? initialDoNotShowAgainCheckBoxCheckState,
             string? optionalCheckBoxText,
+            string? moreDetailsText,
             bool? useOptionalCheckBoxThreeState,
             bool? useTimeOut,
             int? timeOut,
@@ -618,8 +636,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     messageTextBoxAlignment,
                     showOptionalCheckBox,
                     initialDoNotShowAgainCheckBoxChecked,
+                    showMoreDetailsButton,
                     initialDoNotShowAgainCheckBoxCheckState,
                     optionalCheckBoxText,
+                    moreDetailsText,
                     useOptionalCheckBoxThreeState,
                     useTimeOut,
                     timeOut,
@@ -701,8 +721,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             HorizontalAlignment? messageTextBoxAlignment,
             bool? showOptionalCheckBox,
             bool? initialDoNotShowAgainCheckBoxChecked,
+            bool? showMoreDetailsButton,
             CheckState? initialDoNotShowAgainCheckBoxCheckState,
             string? optionalCheckBoxText,
+            string? moreDetailsText,
             bool? useOptionalCheckBoxThreeState,
             bool? useTimeOut,
             int? timeOut,
@@ -779,8 +801,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     messageTextBoxAlignment,
                     showOptionalCheckBox,
                     initialDoNotShowAgainCheckBoxChecked,
+                    showMoreDetailsButton,
                     initialDoNotShowAgainCheckBoxCheckState,
                     optionalCheckBoxText,
+                    moreDetailsText,
                     useOptionalCheckBoxThreeState,
                     useTimeOut,
                     timeOut,
@@ -853,10 +877,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                               ContentAlignment? messageTextAlignment,
                                               PaletteRelativeAlign? richTextBoxTextAlignment,
                                               HorizontalAlignment? messageTextBoxAlignment,
+                                              bool? showMoreDetailsButton,
                                               bool? useTimeOut,
                                               int? timeOut,
                                               int? timeOutInterval,
-                                              DialogResult? timerResult)
+                                              DialogResult? timerResult,
+                                              string? moreDetailsText)
         {
             IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -928,8 +954,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     messageTextBoxAlignment,
                     null,
                     null,
+                    showMoreDetailsButton,
                     null,
                     null,
+                    moreDetailsText,
                     null,
                     useTimeOut,
                     timeOut,

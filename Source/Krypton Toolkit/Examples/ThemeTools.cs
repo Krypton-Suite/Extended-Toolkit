@@ -26,7 +26,6 @@
  */
 
 #endregion
-using Krypton.Toolkit.Suite.Extended.Theme.Switcher;
 
 namespace Examples
 {
@@ -46,9 +45,7 @@ namespace Examples
 
         private void kbtnThemeSelector_Click(object sender, EventArgs e)
         {
-            ThemeSelector themeSelector = new(new KryptonManager());
-
-            themeSelector.Show();
+            
         }
 
         private void ThemeTools_Load(object sender, EventArgs e)
