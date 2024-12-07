@@ -3296,6 +3296,10 @@ BS_ICON or BS_BITMAP set? 	BM_SETIMAGE called? 	Result
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         public static extern void DisableProcessWindowsGhosting();
 
+        [DllImport(Win32Libraries.User32, CharSet = CharSet.Auto)]
+        [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
+        public static extern void AdjustWindowRect(ref RECT rect, uint dwStyle, bool hasMenu);
+
 
         [DllImport(Win32Libraries.User32, CharSet = CharSet.Auto)]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]

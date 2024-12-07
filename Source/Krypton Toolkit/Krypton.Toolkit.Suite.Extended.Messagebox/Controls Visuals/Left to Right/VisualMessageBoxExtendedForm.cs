@@ -257,10 +257,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
 
-            UpdateContentAreaType(messageContainerType, messageTextAlignment, messageTextBoxAlignment, richTextBoxTextAlignment);
-
-            UpdateContentLinkArea(contentLinkArea);
-
             SetupOptionalCheckBox();
 
             SetupTimeOut();
@@ -288,10 +284,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             UpdateHelp(_messageBoxExtendedData.ShowHelpButton);
             UpdateTextExtra(_messageBoxExtendedData.ShowCtrlCopy);
 
-            UpdateContentAreaType(_messageBoxExtendedData.MessageContentAreaType, _messageBoxExtendedData.MessageTextAlignment, _messageBoxExtendedData.MessageTextBoxAlignment, _messageBoxExtendedData.RichTextBoxTextAlignment);
-
-            UpdateContentLinkArea(_messageBoxExtendedData.ContentLinkArea);
-
             SetupOptionalCheckBox();
 
             SetupTimeOut(_messageBoxExtendedData.UseTimeOutOption);
@@ -309,85 +301,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // Set the text of the form
             Text = string.IsNullOrEmpty(caption) ? string.Empty : caption.Split(Environment.NewLine.ToCharArray())[0];
 
-            switch (contentAreaType)
-            {
-                case ExtendedKryptonMessageBoxMessageContainerType.Normal:
-                    kwlblMessageText.Text = text;
-
-                    kwlblMessageText.RightToLeft = options.HasFlag(MessageBoxOptions.RightAlign) ? RightToLeft.Yes :
-                        options.HasFlag(MessageBoxOptions.RtlReading) ? RightToLeft.Inherit : RightToLeft.No;
-                    break;
-                case ExtendedKryptonMessageBoxMessageContainerType.HyperLink:
-                    klwlblMessageText.Text = text;
-
-                    klwlblMessageText.RightToLeft = options.HasFlag(MessageBoxOptions.RightAlign)
-                        ?
-                        RightToLeft.Yes
-                        : options.HasFlag(MessageBoxOptions.RtlReading)
-                            ? RightToLeft.Inherit
-                            : RightToLeft.No;
-                    break;
-                case ExtendedKryptonMessageBoxMessageContainerType.RichTextBox:
-                    krtbMessageText.Text = text;
-
-                    krtbMessageText.RightToLeft = options.HasFlag(MessageBoxOptions.RightAlign) ? RightToLeft.Yes :
-                        options.HasFlag(MessageBoxOptions.RtlReading) ? RightToLeft.Inherit : RightToLeft.No;
-                    break;
-                case null:
-                    kwlblMessageText.Text = text;
-
-                    kwlblMessageText.RightToLeft = options.HasFlag(MessageBoxOptions.RightAlign) ? RightToLeft.Yes :
-                        options.HasFlag(MessageBoxOptions.RtlReading) ? RightToLeft.Inherit : RightToLeft.No;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(contentAreaType), contentAreaType, null);
-            }
+            kryptonRichTextBox1.Text = text;
         }
 
         private void UpdateText()
         {
             Text = string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0];
 
-            if (_messageContainerType == ExtendedKryptonMessageBoxMessageContainerType.Normal)
-            {
-                kwlblMessageText.Visible = true;
-                kwlblMessageText.Text = _text;
-                kwlblMessageText.StateCommon.Content.Font = _messageBoxTypeface;
-
-                kwlblMessageText.StateCommon.Content.Color1 = _messageTextColour;
-
-                krtbMessageText.Visible = false;
-
-                klwlblMessageText.Visible = false;
-            }
-            else if (_messageContainerType == ExtendedKryptonMessageBoxMessageContainerType.RichTextBox)
-            {
-                krtbMessageText.Visible = true;
-
-                krtbMessageText.Text = _text;
-
-                krtbMessageText.StateCommon.Content.Color1 = _messageTextColour;
-
-                krtbMessageText.StateCommon.Content.Font = _messageBoxTypeface;
-
-                kwlblMessageText.Visible = false;
-
-                klwlblMessageText.Visible = false;
-            }
-            else if (_messageContainerType == ExtendedKryptonMessageBoxMessageContainerType.HyperLink)
-            {
-                klwlblMessageText.Visible = true;
-
-                klwlblMessageText.Text = _text;
-
-                klwlblMessageText.StateCommon.TextColor = _messageTextColour;
-
-                klwlblMessageText.StateCommon.Font = _messageBoxTypeface;
-
-                kwlblMessageText.Visible = false;
-
-                krtbMessageText.Visible = false;
-            }
+            kryptonRichTextBox1.Text = _text;
 
             kcbOptionalCheckBox.StateCommon.ShortText.Color1 = _messageTextColour;
 
@@ -1172,9 +1093,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 scaledMonitorSize.Height *= 0.95f;
 
                 //kwlblMessageText.UpdateFont();
-                SizeF messageSize = g.MeasureString(_text, kwlblMessageText.Font, scaledMonitorSize);
+                SizeF messageSize = g.MeasureString(_text, kryptonRichTextBox1.Font, scaledMonitorSize);
                 // SKC: Don't forget to add the TextExtra into the calculation
-                SizeF captionSize = g.MeasureString($@"{_caption} {TextExtra}", kwlblMessageText.Font, scaledMonitorSize);
+                SizeF captionSize = g.MeasureString($@"{_caption} {TextExtra}", kryptonRichTextBox1.Font, scaledMonitorSize);
 
                 var messageXSize = Math.Max(messageSize.Width, captionSize.Width);
                 // Work out DPI adjustment factor
@@ -1293,7 +1214,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             sb.AppendLine(DIVIDER);
             sb.AppendLine(Text);
             sb.AppendLine(DIVIDER);
-            sb.AppendLine(kwlblMessageText.Text);
+            sb.AppendLine(kryptonRichTextBox1.Text);
             sb.AppendLine(DIVIDER);
             sb.Append(_button1.Text).Append(BUTTON_TEXT_SPACER);
             if (_button2.Enabled)
@@ -1352,48 +1273,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             catch (Exception e)
             {
                 DebugUtilities.NotImplemented(e.ToString());
-            }
-        }
-
-        private void UpdateContentLinkArea(LinkArea? contentLinkArea)
-        {
-            if (contentLinkArea != null)
-            {
-                klwlblMessageText.LinkArea = (LinkArea)contentLinkArea;
-            }
-        }
-
-        private void UpdateContentAreaType(ExtendedKryptonMessageBoxMessageContainerType? messageContainerType, ContentAlignment? messageTextAlignment, HorizontalAlignment? messageAlignment, PaletteRelativeAlign? richTextBoxTextAlignment)
-        {
-            switch (messageContainerType)
-            {
-                case ExtendedKryptonMessageBoxMessageContainerType.HyperLink:
-                    klwlblMessageText.Visible = true;
-
-                    kwlblMessageText.Visible = false;
-
-                    klwlblMessageText.TextAlign = messageTextAlignment ?? ContentAlignment.MiddleLeft;
-
-                    krtbMessageText.Visible = false;
-                    break;
-                case ExtendedKryptonMessageBoxMessageContainerType.Normal:
-                    klwlblMessageText.Visible = false;
-
-                    kwlblMessageText.Visible = true;
-
-                    kwlblMessageText.TextAlign = messageAlignment ?? HorizontalAlignment.Left;
-
-                    krtbMessageText.Visible = false;
-                    break;
-                case ExtendedKryptonMessageBoxMessageContainerType.RichTextBox:
-                    klwlblMessageText.Visible = false;
-
-                    kwlblMessageText.Visible = false;
-
-                    krtbMessageText.Visible = true;
-
-                    krtbMessageText.StateCommon.Content.TextH = richTextBoxTextAlignment ?? PaletteRelativeAlign.Inherit;
-                    break;
             }
         }
 
@@ -1581,17 +1460,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             int footerHeight = 200;
 
-            if (_footerPanel.Visible)
+            if (_panelFooter.Visible)
             {
-                _footerPanel.Visible = false;
-                _footerPanel.Height = 0;
+                _panelFooter.Visible = false;
+                _panelFooter.Height = 0;
                 _expandButton.Text = "Expand ▼";
                 Height -= footerHeight;
             }
             else
             {
-                _footerPanel.Visible = true;
-                _footerPanel.Height = 200; // Adjust the footer height as needed
+                _panelFooter.Visible = true;
+                _panelFooter.Height = 200; // Adjust the footer height as needed
                 _expandButton.Text = "Collapse ▲";
                 Height += footerHeight;
             }
@@ -1605,11 +1484,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private void SetupExpandableFooter()
         {
+            tlpFooter.Visible = _showMoreDetailsButton;
+
             _expandButton.Visible = _showMoreDetailsButton;
 
             _expandButton.Enabled = _showMoreDetailsButton;
 
-            _footerLabel.Text = _moreDetailsText;
+            kryptonRichTextBox1.Text = _moreDetailsText;
         }
 
         #endregion

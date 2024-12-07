@@ -147,7 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _buttonSpecsFixed.AddRange(new ButtonSpecFormFixed[] { ButtonSpecMin, ButtonSpecMax, ButtonSpecClose });
 
             // Create the palette storage
-            StateCommon = new PaletteFormRedirect(Redirector, NeedPaintDelegate);
+            StateCommon = new PaletteFormRedirectExtended(Redirector, NeedPaintDelegate, this);
             StateInactive = new PaletteForm(StateCommon, StateCommon.Header, NeedPaintDelegate);
             StateActive = new PaletteForm(StateCommon, StateCommon.Header, NeedPaintDelegate);
 

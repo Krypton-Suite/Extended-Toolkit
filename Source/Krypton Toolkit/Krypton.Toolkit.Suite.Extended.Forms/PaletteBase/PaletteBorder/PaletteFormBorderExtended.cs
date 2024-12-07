@@ -29,6 +29,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     public class PaletteFormBorderExtended : PaletteBorder
     {
+        private readonly VisualKryptonFormExtended _ownerForm;
+
         #region Identity
         /// <summary>
         /// Initialize a new instance of the PaletteBorder class.
@@ -36,9 +38,11 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <param name="inherit">Source for inheriting defaulted values.</param>
         /// <param name="needPaint">Delegate for notifying paint requests.</param>
         public PaletteFormBorderExtended([DisallowNull] IPaletteBorder inherit,
-                             NeedPaintHandler? needPaint)
+                             NeedPaintHandler? needPaint,
+                             VisualKryptonFormExtended ownerForm)
         : base(inherit, needPaint)
         {
+            _ownerForm = ownerForm;
         }
         #endregion
 
@@ -57,19 +61,78 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         [RefreshProperties(RefreshProperties.All)]
         public override int Width
         {
-            get => !UseThemeFormChromeBorderWidth
-                ? BorderWidths(_lastFormFormBorderStyle).xBorder
-                : base.Width;
+            get
+            {
+                if (Draw == InheritBool.False)
+                {
+                    return -1;
+                }
+
+                if (!UseThemeFormChromeBorderWidth)
+                {
+                    return _ownerForm.RealWindowBorders.Horizontal / 2;
+                }
+                else
+                {
+                    return base.Width;
+                }
+            }
 
             set => base.Width = value;
+        }
+
+        /// <summary>
+        /// Gets the border rounding.
+        /// </summary>
+        /// <param name="state">Palette value should be applicable to this state.</param>
+        /// <returns>Border rounding.</returns>
+        public override float GetBorderRounding(PaletteState state)
+        {
+            if (Draw == InheritBool.False)
+            {
+                return 0;
+            }
+
+            return base.GetBorderRounding(state);
+        }
+
+        /// <summary>
+        /// Gets the graphics hint for drawing the border.
+        /// </summary>
+        [KryptonPersist(false)]
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [DefaultValue(PaletteGraphicsHint.None)]
+        public override PaletteGraphicsHint GraphicsHint
+        {
+            // #1757
+            get => PaletteGraphicsHint.None;
+
+            set
+            {
+                // Do nothing
+            }
+        }
+
+        /// <inheritdoc />
+        public override PaletteGraphicsHint GetBorderGraphicsHint(PaletteState state)
+        {
+            // #1757: Make sure that the little transparency elements on the curves do not show up for Form Borders
+            return PaletteGraphicsHint.None;
         }
 
         /// https://github.com/Krypton-Suite/Standard-Toolkit/issues/139
         internal (int xBorder, int yBorder) BorderWidths(FormBorderStyle formFormBorderStyle)
         {
-            var xBorder = base.Width;
+            var xBorder = base.Width;   // do not call GetBorderWidth(PaletteState.Normal); as it will get lost in the stack recursion !
             var yBorder = base.Width;
-            if (!UseThemeFormChromeBorderWidth)
+            if (Draw == InheritBool.False)
+            {
+                xBorder = 0;
+                yBorder = 0;
+            }
+            else if (!UseThemeFormChromeBorderWidth)
             {
                 _lastFormFormBorderStyle = formFormBorderStyle;
                 switch (formFormBorderStyle)
@@ -99,6 +162,17 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                     default:
                         throw new ArgumentOutOfRangeException(nameof(formFormBorderStyle), formFormBorderStyle, null);
                 }
+            }
+            else if (xBorder == -1)
+            {
+                var rect = new PlatformInvoke.RECT
+                {
+                    // Start with a zero sized rectangle
+                };
+                // Adjust rectangle to add on the borders required
+                PlatformInvoke.AdjustWindowRect(ref rect, PlatformInvoke.WS_.SIZEFRAME, false);
+                xBorder = -rect.left;
+                yBorder = rect.bottom;
             }
 
             return (xBorder, yBorder);
