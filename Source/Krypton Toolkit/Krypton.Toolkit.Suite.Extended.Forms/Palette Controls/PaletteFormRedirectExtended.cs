@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
-    public class PaletteFormRedirectExtended : PaletteFormDoubleRedirectExtended,
+    /*public class PaletteFormRedirectExtended : PaletteFormDoubleRedirectExtended,
                                        IPaletteMetric
     {
         #region Instance Fields
@@ -156,5 +156,5 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _redirect.GetMetricPadding(owningForm, state, metric);
 
         #endregion
-    }
+    }*/
 }

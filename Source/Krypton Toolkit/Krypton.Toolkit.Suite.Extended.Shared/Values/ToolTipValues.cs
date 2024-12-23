@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
         /// </summary>
         /// <param name="needPaint"></param>
         public ToolTipValues(NeedPaintHandler needPaint)
-            : base(needPaint)
+            : base(needPaint, null)
         {
             ResetToolTipStyle();
             ToolTipPosition = new PopupPositionValues();

@@ -29,29 +29,29 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     public class CommandLinkTextValues : CaptionValues
     {
-        private const string _defaultHeading = @"Command Link V1";
-        private const string _defaultDescription = @"Here be the ""Note Text""";
+        private const string DefaultHeading = @"Command Link V1";
+        private const string DefaultDescription = @"Here be the ""Note Text""";
 
         public CommandLinkTextValues(NeedPaintHandler needPaint)
-            : base(needPaint)
+            : base(needPaint, null)
         {
         }
 
         protected override string GetHeadingDefault()
         {
-            return _defaultHeading;
+            return DefaultHeading;
         }
 
         protected override string GetDescriptionDefault()
         {
-            return _defaultDescription;
+            return DefaultDescription;
         }
 
         #region Description
         /// <summary>
         /// Gets and sets the header description text.
         /// </summary>
-        [DefaultValue(_defaultDescription)]
+        [DefaultValue(DefaultDescription)]
         public override string Description
         {
             get => base.Description;
@@ -61,8 +61,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         public void ResetText()
         {
-            Heading = _defaultHeading;
-            Description = _defaultDescription;
+            Heading = DefaultHeading;
+            Description = DefaultDescription;
         }
     }
 }
