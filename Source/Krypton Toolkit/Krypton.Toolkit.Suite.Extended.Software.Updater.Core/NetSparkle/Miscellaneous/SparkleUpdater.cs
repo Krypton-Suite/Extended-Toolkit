@@ -897,7 +897,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                         CallFuncConsideringUIThreads(() =>
                         {
                             DownloadHadError?.Invoke(item, _downloadTempFileName,
-                                new Exception(string.Format("Unable to delete old download at {0}", _downloadTempFileName)));
+                                new Exception($"Unable to delete old download at {_downloadTempFileName}"));
                         });
                     }
                 }

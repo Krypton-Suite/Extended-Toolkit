@@ -39,8 +39,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <value><c>true</c> if input changes should be processed; otherwise, <c>false</c>.</value>
         protected bool LockUpdates { get; set; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color Colour { set => _colour = value; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Font Typeface { get => _typeface; set { _typeface = value; Invalidate(); } }
 
         public ColourHexadecimalComboBox()

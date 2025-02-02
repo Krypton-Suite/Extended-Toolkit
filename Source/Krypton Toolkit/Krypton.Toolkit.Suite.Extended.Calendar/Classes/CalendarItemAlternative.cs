@@ -271,7 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     time = EndDate.ToString(Calendar.ItemsTimeFormat);
                 }
 
-                return string.Format("{0} {1}", date, time).Trim();
+                return $"{date} {time}".Trim();
             }
         }
 
@@ -452,7 +452,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     time = StartDate.ToString(Calendar.ItemsTimeFormat);
                 }
 
-                return string.Format("{0} {1}", date, time).Trim();
+                return $"{date} {time}".Trim();
             }
         }
 

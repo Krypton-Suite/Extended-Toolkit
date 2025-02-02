@@ -410,9 +410,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color Colour { get => _colour; set => _colour = value; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color HSBValue { get => _hsbValue; set => _hsbValue = value; }
+
         #endregion
 
         #region Constructors

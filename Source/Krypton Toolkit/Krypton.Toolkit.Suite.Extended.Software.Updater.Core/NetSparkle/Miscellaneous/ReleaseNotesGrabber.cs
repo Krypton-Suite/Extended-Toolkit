@@ -83,8 +83,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         {
             get
             {
-                return string.Format("<!DOCTYPE html><html><head><meta http-equiv='Content-Type' " +
-                    "content='text/html;charset=UTF-8'/>{0}</head><body>", AdditionalHeaderHtml ?? "");
+                return "<!DOCTYPE html><html><head><meta http-equiv='Content-Type' " +
+                       $"content='text/html;charset=UTF-8'/>{AdditionalHeaderHtml ?? ""}</head><body>";
             }
         }
 

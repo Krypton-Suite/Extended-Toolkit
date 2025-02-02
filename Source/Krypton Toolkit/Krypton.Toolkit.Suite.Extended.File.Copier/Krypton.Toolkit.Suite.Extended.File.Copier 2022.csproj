@@ -73,7 +73,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.10.295-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.1.27-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -135,7 +135,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.6" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>

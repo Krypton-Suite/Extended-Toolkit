@@ -184,21 +184,25 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         #region Public
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public decimal AlphaValue
         {
             get => _alphaValue; set => _alphaValue = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public decimal RedValue
         {
             get => _redValue; set => _redValue = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public decimal GreenValue
         {
             get => _greenValue; set => _greenValue = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public decimal BlueValue
         {
             get => _blueValue; set => _blueValue = value;

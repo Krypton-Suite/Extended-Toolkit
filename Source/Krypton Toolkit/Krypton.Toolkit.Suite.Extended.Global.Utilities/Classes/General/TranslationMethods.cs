@@ -163,7 +163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         private static string ConvertRGBToHexadecimal(int red, int green, int blue)
         {
-            return ColorTranslator.FromHtml(String.Format("#{0:X2}{1:X2}{2:X2}", red, green, blue)).Name.Remove(0, 1);
+            return ColorTranslator.FromHtml($"#{red:X2}{green:X2}{blue:X2}").Name.Remove(0, 1);
         }
 
         /// <summary>

@@ -143,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public override string ToString()
         {
-            return string.Format("[{0}] - {1}", Index, Date.ToShortTimeString());
+            return $"[{Index}] - {Date.ToShortTimeString()}";
         }
 
         #endregion

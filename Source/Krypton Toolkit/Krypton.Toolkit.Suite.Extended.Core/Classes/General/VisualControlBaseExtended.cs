@@ -26,6 +26,8 @@
  */
 #endregion
 
+using static Krypton.Toolkit.HeaderValuesBase;
+
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     // <summary>
@@ -132,12 +134,24 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             AttachGlobalEvents();
 
             // Do the Tooltip Magic
-            ToolTipValues = new(NeedPaintDelegate);
+            ToolTipValues = new(NeedPaintDelegate, GetDpiFactor);
             // Create the manager for handling tooltips
             // ReSharper disable once UseObjectOrCollectionInitializer
             _toolTipManager = new();
             _toolTipManager.ShowToolTip += OnShowToolTip;
             _toolTipManager.CancelToolTip += OnCancelToolTip;
+        }
+
+        /// <summary>
+        /// Gets the DPI factor.
+        /// </summary>
+        /// <returns>The DPI factor.</returns>
+        private float GetDpiFactor()
+        {
+            using (Graphics g = CreateGraphics())
+            {
+                return g.DpiX / 96.0f;
+            }
         }
 
         /// <summary>
@@ -427,6 +441,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         [Browsable(false)]
         [Bindable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Image BackgroundImage
         {
             get => base.BackgroundImage;
@@ -438,6 +453,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         [Browsable(false)]
         [Bindable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override ImageLayout BackgroundImageLayout
         {
             get => base.BackgroundImageLayout;
@@ -564,6 +580,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>
         /// Gets and sets the ViewManager instance.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ViewManager ViewManager
         {
             [DebuggerStepThrough]

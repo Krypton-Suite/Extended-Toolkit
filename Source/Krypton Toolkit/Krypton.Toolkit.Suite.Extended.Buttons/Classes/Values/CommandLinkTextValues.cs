@@ -32,8 +32,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         private const string _defaultHeading = @"Command Link V1";
         private const string _defaultDescription = @"Here be the ""Note Text""";
 
-        public CommandLinkTextValues(NeedPaintHandler needPaint)
-            : base(needPaint)
+        public CommandLinkTextValues(NeedPaintHandler needPaint, HeaderValuesBase.GetDpiFactor getDpiFactor)
+            : base(needPaint, getDpiFactor)
         {
         }
 

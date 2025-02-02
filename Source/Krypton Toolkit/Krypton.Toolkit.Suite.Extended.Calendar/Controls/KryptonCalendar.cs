@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         //Kripton Palette Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             Renderer?.ReloadPalette();
             Invalidate();
@@ -426,8 +426,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         /// <summary>
         /// Gets or sets the time ranges that should be highlighted as work-time.
-        /// This ranges are week based.
+        /// These ranges are week based.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CalendarHighlightRange[] HighlightRanges
         {
             get => _highlightRanges;
@@ -569,6 +570,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the TextBox of the edit mode
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         internal KryptonCalendarTextBox? TextBox
         {
             get => _textBox;
@@ -1309,7 +1311,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TextBox_LostFocus(object sender, EventArgs e)
+        private void TextBox_LostFocus(object? sender, EventArgs e)
         {
             FinalizeEditMode(false);
         }

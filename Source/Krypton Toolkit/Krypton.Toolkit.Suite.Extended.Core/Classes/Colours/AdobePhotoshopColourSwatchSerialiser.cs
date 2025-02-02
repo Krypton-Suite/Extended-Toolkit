@@ -250,7 +250,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         break;
 
                     default:
-                        throw new InvalidDataException(string.Format("Color space '{0}' not supported.", colorSpace));
+                        throw new InvalidDataException($"Color space '{colorSpace}' not supported.");
                 }
 
 #if USENAMEHACK
@@ -329,7 +329,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             name = string.Format("Swatch {0}", swatchIndex);
           }
 #else
-                    name = colour.IsNamedColor ? colour.Name : string.Format("Swatch {0}", swatchIndex);
+                    name = colour.IsNamedColor ? colour.Name : $"Swatch {swatchIndex}";
 #endif
 
                     this.WriteInt32(stream, name.Length);

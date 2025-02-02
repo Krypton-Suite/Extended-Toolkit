@@ -514,8 +514,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
             return _nestedParensPattern;
         }
 
-        private static readonly Regex _linkDef = new Regex(string.Format(@"
-                        ^[ ]{{0,{0}}}\[([^\[\]]+)\]:  # id = $1
+        private static readonly Regex _linkDef = new Regex($@"
+                        ^[ ]{{0,{TAB_WIDTH - 1}}}\[([^\[\]]+)\]:  # id = $1
                           [ ]*
                           \n?                   # maybe *one* newline
                           [ ]*
@@ -530,7 +530,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                             ["")]
                             [ ]*
                         )?                      # title is optional
-                        (?:\n+|\Z)", TAB_WIDTH - 1), RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
+                        (?:\n+|\Z)", RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
         /// <summary>
         /// Strips link definitions from text, stores the URLs and titles in hash references.
@@ -764,10 +764,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
             return tokens;
         }
 
-        private static readonly Regex _anchorRef = new Regex(string.Format(@"
+        private static readonly Regex _anchorRef = new Regex($@"
             (                               # wrap whole match in $1
                 \[
-                    ({0})                   # link text = $2
+                    ({GetNestedBracketsPattern()})                   # link text = $2
                 \]
 
                 [ ]?                        # one optional space
@@ -776,16 +776,16 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                 \[
                     (.*?)                   # id = $3
                 \]
-            )", GetNestedBracketsPattern()), RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
+            )", RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
-        private static readonly Regex _anchorInline = new Regex(string.Format(@"
+        private static readonly Regex _anchorInline = new Regex($@"
                 (                           # wrap whole match in $1
                     \[
-                        ({0})               # link text = $2
+                        ({GetNestedBracketsPattern()})               # link text = $2
                     \]
                     \(                      # literal paren
                         [ ]*
-                        ({1})               # href = $3
+                        ({GetNestedParensPattern()})               # href = $3
                         [ ]*
                         (                   # $4
                         (['""])           # quote char = $5
@@ -794,7 +794,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                         [ ]*                # ignore any spaces between closing quote and )
                         )?                  # title is optional
                     \)
-                )", GetNestedBracketsPattern(), GetNestedParensPattern()),
+                )",
                   RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
         private static readonly Regex _anchorRefShortcut = new Regex(@"
@@ -922,16 +922,16 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
 
             url = AttributeSafeUrl(url);
 
-            result = string.Format("<a href=\"{0}\"", url);
+            result = $"<a href=\"{url}\"";
 
             if (!string.IsNullOrEmpty(title))
             {
                 title = AttributeEncode(title);
                 title = EscapeBoldItalic(title);
-                result += string.Format(" title=\"{0}\"", title);
+                result += $" title=\"{title}\"";
             }
 
-            result += string.Format(">{0}</a>", linkText);
+            result += $">{linkText}</a>";
             return result;
         }
 
@@ -950,7 +950,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
 
                     )", RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
-        private static readonly Regex _imagesInline = new Regex(string.Format(@"
+        private static readonly Regex _imagesInline = new Regex($@"
               (                     # wrap whole match in $1
                 !\[
                     (.*?)           # alt text = $2
@@ -958,7 +958,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                 \s?                 # one optional whitespace character
                 \(                  # literal paren
                     [ ]*
-                    ({0})           # href = $3
+                    ({GetNestedParensPattern()})           # href = $3
                     [ ]*
                     (               # $4
                     (['""])       # quote char = $5
@@ -967,7 +967,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                     [ ]*
                     )?              # title is optional
                 \)
-              )", GetNestedParensPattern()),
+              )",
                   RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
         /// <summary>
@@ -1050,11 +1050,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         {
             altText = EscapeImageAltText(AttributeEncode(altText));
             url = AttributeSafeUrl(url);
-            var result = string.Format("<img src=\"{0}\" alt=\"{1}\"", url, altText);
+            var result = $"<img src=\"{url}\" alt=\"{altText}\"";
             if (!string.IsNullOrEmpty(title))
             {
                 title = AttributeEncode(EscapeBoldItalic(title));
-                result += string.Format(" title=\"{0}\"", title);
+                result += $" title=\"{title}\"";
             }
             result += EmptyElementSuffix;
             return result;
@@ -1161,7 +1161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                     {0}[ ]+
                   )
               )
-            )", string.Format("(?:{0}|{1})", MARKER_UL, MARKER_OL), TAB_WIDTH - 1);
+            )", $"(?:{MARKER_UL}|{MARKER_OL})", TAB_WIDTH - 1);
 
         private static readonly Regex _listNested = new Regex("^" + _wholeList,
             RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
@@ -1261,7 +1261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
                 item = RunBlockGamut(Outdent(item) + "\n", unhash: false, createParagraphs: loose);
 
                 lastItemHadADoubleNewline = endsWithDoubleNewline;
-                return string.Format("<li>{0}</li>\n", item);
+                return $"<li>{item}</li>\n";
             }
 
             list = Regex.Replace(list, pattern, new MatchEvaluator(ListItemEvaluator),
@@ -1406,11 +1406,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         {
             if (AutoNewLines)
             {
-                return Regex.Replace(text, @"\n", string.Format("<br{0}\n", EmptyElementSuffix));
+                return Regex.Replace(text, @"\n", $"<br{EmptyElementSuffix}\n");
             }
             else
             {
-                return Regex.Replace(text, @" {2,}\n", string.Format("<br{0}\n", EmptyElementSuffix));
+                return Regex.Replace(text, @" {2,}\n", $"<br{EmptyElementSuffix}\n");
             }
         }
 
@@ -1445,7 +1445,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
             // These leading spaces screw with <pre> content, so we need to fix that:
             bq = Regex.Replace(bq, @"(\s*<pre>.+?</pre>)", new MatchEvaluator(BlockQuoteEvaluator2), RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline);
 
-            bq = string.Format("<blockquote>\n{0}\n</blockquote>", bq);
+            bq = $"<blockquote>\n{bq}\n</blockquote>";
             string key = GetHashKey(bq, isHtmlBlock: true);
             _htmlBlocks[key] = bq;
 
@@ -1575,7 +1575,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         {
             string link = match.Groups[1].Value;
             string url = AttributeSafeUrl(link);
-            return string.Format("<a href=\"{0}\">{1}</a>", url, link);
+            return $"<a href=\"{url}\">{link}</a>";
         }
 
         private string EmailEvaluator(Match match)

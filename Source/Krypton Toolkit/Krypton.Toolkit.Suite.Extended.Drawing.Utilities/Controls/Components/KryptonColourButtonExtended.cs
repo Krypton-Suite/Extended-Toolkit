@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         private readonly ViewDrawButtonExtended _drawButton;
         private ButtonStyle _style;
         private readonly ButtonController _buttonController;
-        private readonly PaletteRedirectDropDownButton _paletteDropDownButtonImages;
+        //private readonly PaletteRedirectDropDownButton _paletteDropDownButtonImages;
         private readonly PaletteTripleOverride _overrideFocus;
         private readonly PaletteTripleOverride _overrideNormal;
         private readonly PaletteTripleOverride _overrideTracking;
@@ -163,10 +163,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // Create content storage
             Values = CreateButtonValues(NeedPaintDelegate);
             Values.TextChanged += OnButtonTextChanged;
-            Images = new DropDownButtonImages(NeedPaintDelegate);
+            //Images = new DropDownButtonImages(NeedPaintDelegate);
 
             // Image need an extra redirector to check the local images first
-            _paletteDropDownButtonImages = new PaletteRedirectDropDownButton(Redirector, Images);
+            //_paletteDropDownButtonImages = new PaletteRedirectDropDownButton(Redirector, Images);
 
             // Create the palette storage
             Strings = new PaletteColorButtonStrings();
@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 DropDown = true,
                 Splitter = true,
                 TestForFocusCues = true,
-                DropDownPalette = _paletteDropDownButtonImages
+                //DropDownPalette = _paletteDropDownButtonImages
             };
 
             // Create a color button controller to handle button style behaviour
@@ -249,7 +249,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override ContextMenuStrip ContextMenuStrip
+        public override ContextMenuStrip? ContextMenuStrip
         {
             get => null;
             set { }
@@ -261,12 +261,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override KryptonContextMenu KryptonContextMenu
+        public override KryptonContextMenu? KryptonContextMenu
         {
             get => null;
             set { }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public KryptonCustomPaletteBase Palette
         {
             get => _palette;
@@ -280,6 +281,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Behavior")]
         [Description("Determine the maximum number of recent colors to store and display.")]
         [DefaultValue(10)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int MaxRecentColours { get; set; }
 
         /// <summary>
@@ -566,7 +568,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             return !Values.IsDefault;
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Gets access to the image value overrides.
         /// </summary>
         [Category("Visuals")]
@@ -577,7 +579,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         private bool ShouldSerializeImages()
         {
             return !Images.IsDefault;
-        }
+        }*/
 
         /// <summary>
         /// Gets access to the context menu display strings.
@@ -813,6 +815,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new ImeMode ImeMode
         {
             get => base.ImeMode;

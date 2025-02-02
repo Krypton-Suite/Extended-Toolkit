@@ -106,7 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             Color colour = (Color)this;
 
-            return String.Format("R: {0:#0.##} G: {1:#0.##} B: {2:#0.##}", colour.R, colour.G, colour.B);
+            return $"R: {colour.R:#0.##} G: {colour.G:#0.##} B: {colour.B:#0.##}";
         }
 
         public void SetRGB(int red, int green, int blue)
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Overrides
         public override string ToString()
         {
-            return String.Format("H: {0:#0.##} S: {1:#0.##} L: {2:#0.##}", Hue, Saturation, Luminosity);
+            return $"H: {Hue:#0.##} S: {Saturation:#0.##} L: {Luminosity:#0.##}";
         }
         #endregion
 

@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             // Create content storage
             CommandLinkImageValue = new(NeedPaintDelegate);
-            CommandLinkTextValues = new(NeedPaintDelegate);
+            CommandLinkTextValues = new(NeedPaintDelegate, GetDpiFactor);
 
             // Create the palette storage
             StateCommon = new(Redirector, PaletteBackStyle.ButtonCommand, PaletteBorderStyle.ButtonCommand, PaletteContentStyle.ButtonCommand, NeedPaintDelegate);
@@ -786,6 +786,13 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Implementation
+
+        private float GetDpiFactor()
+        {
+            // Implement the logic to get the DPI factor
+            return 1.0f; // Example value, replace with actual logic
+        }
+
         private void OnButtonTextChanged(object sender, EventArgs e)
         {
             OnTextChanged(EventArgs.Empty);

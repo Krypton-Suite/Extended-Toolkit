@@ -147,7 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _buttonSpecsFixed.AddRange(new ButtonSpecFormFixed[] { ButtonSpecMin, ButtonSpecMax, ButtonSpecClose });
 
             // Create the palette storage
-            StateCommon = new PaletteFormRedirect(Redirector, NeedPaintDelegate);
+            StateCommon = new PaletteFormRedirect(Redirector, NeedPaintDelegate, null);
             StateInactive = new PaletteForm(StateCommon, StateCommon.Header, NeedPaintDelegate);
             StateActive = new PaletteForm(StateCommon, StateCommon.Header, NeedPaintDelegate);
 
@@ -192,7 +192,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                                                        OnButtonManagerNeedPaint);
 
             // Create the manager for handling tooltips
-            ToolTipManager = new ToolTipManager(new(null));
+            ToolTipManager = new ToolTipManager(new ToolTipValues(NeedPaintDelegate, GetDpiFactor));
             ToolTipManager.ShowToolTip += OnShowToolTip;
             ToolTipManager.CancelToolTip += OnCancelToolTip;
             _buttonManager.ToolTipManager = ToolTipManager;
@@ -429,6 +429,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         ///   <c>true</c> if this instance is in administrator mode; otherwise, <c>false</c>.
         /// </value>
         [Category(@"Appearance"), Description(@"Is the user currently an administrator.")]
+        [DefaultValue(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsInAdministratorMode { get => _isInAdministratorMode; private set => _isInAdministratorMode = value; }
 
         /// <summary>
@@ -686,6 +688,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Rectangle CustomCaptionArea { get; set; }
 
         #endregion
@@ -752,7 +755,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 // Cache for future access
                 if (resizedBitmap != null)
                 {
-                    _cacheBitmap = CommonHelper.ScaleImageForSizedDisplay(resizedBitmap, currentWidth, currentHeight);
+                    _cacheBitmap = CommonHelper.ScaleImageForSizedDisplay(resizedBitmap, currentWidth, currentHeight, true);
                 }
             }
 
@@ -1200,6 +1203,14 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         #endregion
 
         #region Implementation
+
+        private float GetDpiFactor()
+        {
+            // Implement the logic to get the DPI factor
+            return 1.0f; // Example value, replace with actual logic
+        }
+
+
         private Icon? GetDefinedIcon()
         {
             // Are we allowed to try and show an icon?

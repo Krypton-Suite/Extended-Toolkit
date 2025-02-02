@@ -33,6 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
     {
         private Color _colour;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color Colour { get => _colour; set { _colour = value; Invalidate(); } }
 
         public ColourHexadecimalTextBox()

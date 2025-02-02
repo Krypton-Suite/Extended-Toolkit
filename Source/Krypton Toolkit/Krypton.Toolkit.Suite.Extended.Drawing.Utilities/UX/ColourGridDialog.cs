@@ -25,7 +25,6 @@
  */
 #endregion
 
-#pragma warning disable CS8622, CS8602
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourGridDialog : CommonExtendedKryptonForm
@@ -155,12 +154,17 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ShowToolbar { get => _showToolbar; set { _showToolbar = value; Invalidate(); } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color Colour { get => _colour; set { _colour = value; ColourChangedEventArgs colour = new ColourChangedEventArgs(value); OnSelectedColourChanged(this, colour); } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color ColourToAdd { get => _colourToAdd; set => _colourToAdd = value; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ColorGrid? ColourGrid { get => _grid; private set => _grid = value; }
         #endregion
 
@@ -180,9 +184,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             ColourToAdd = colour;
 
-            ColourGrid.AddCustomColor(ColourToAdd);
+            ColourGrid?.AddCustomColor(ColourToAdd);
 
-            ColourGrid.Color = colour;
+            ColourGrid!.Color = colour;
         }
 
         public ColourGridDialog(bool showToolbar)
@@ -191,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             ColourGrid = cgColour;
 
-            tspeColourGridActions.Visible = showToolbar;
+            tspeColourGridActions!.Visible = showToolbar;
         }
         #endregion
 

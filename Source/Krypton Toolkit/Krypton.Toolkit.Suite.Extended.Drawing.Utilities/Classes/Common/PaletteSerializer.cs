@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
     {
         #region Constants
 
-        private static readonly List<IPaletteSerializer> _serializerCache;
+        private static readonly List<IPaletteSerializer?> _serializerCache;
 
         #endregion
 
@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         static PaletteSerializer()
         {
-            _serializerCache = new List<IPaletteSerializer>();
+            _serializerCache = new List<IPaletteSerializer?>();
         }
 
         #endregion
@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// Gets all loaded serializers.
         /// </summary>
         /// <value>The loaded serializers.</value>
-        public static IEnumerable<IPaletteSerializer> AllSerializers => _serializerCache.AsReadOnly();
+        public static IEnumerable<IPaletteSerializer?> AllSerializers => _serializerCache.AsReadOnly();
 
         /// <summary>
         /// Returns a filter suitable for use with the <see cref="System.Windows.Forms.OpenFileDialog"/>.
@@ -95,9 +95,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         #region Static Methods
 
-        public static IPaletteSerializer GetSerializer(string fileName)
+        public static IPaletteSerializer? GetSerializer(string fileName)
         {
-            IPaletteSerializer result;
+            IPaletteSerializer? result;
 
             if (string.IsNullOrEmpty(fileName))
             {
@@ -106,7 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             if (!File.Exists(fileName))
             {
-                throw new FileNotFoundException(string.Format("Cannot find file '{0}'.", fileName), fileName);
+                throw new FileNotFoundException($"Cannot find file '{fileName}'.", fileName);
             }
 
             if (_serializerCache.Count == 0)
@@ -116,11 +116,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             result = null;
 
-            foreach (IPaletteSerializer checkSerializer in AllSerializers)
+            foreach (IPaletteSerializer? checkSerializer in AllSerializers)
             {
                 using (FileStream file = File.OpenRead(fileName))
                 {
-                    if (checkSerializer.CanReadFrom(file))
+                    if (checkSerializer!.CanReadFrom(file))
                     {
                         result = checkSerializer;
                         break;
@@ -149,14 +149,14 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 LoadSerializers();
             }
 
-            foreach (IPaletteSerializer serializer in _serializerCache.Where(serializer => !(string.IsNullOrEmpty(serializer.DefaultExtension) || openExtensions.Contains(serializer.DefaultExtension))))
+            foreach (IPaletteSerializer? serializer in _serializerCache.Where(serializer => !(string.IsNullOrEmpty(serializer.DefaultExtension) || openExtensions.Contains(serializer.DefaultExtension))))
             {
                 StringBuilder extensionMask;
                 string filter;
 
                 extensionMask = new StringBuilder();
 
-                foreach (string extension in serializer.DefaultExtension.Split(new[]
+                foreach (string extension in serializer?.DefaultExtension.Split(new[]
                                                                                {
                                                                          ';'
                                                                        }, StringSplitOptions.RemoveEmptyEntries))
@@ -316,7 +316,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             if (!File.Exists(fileName))
             {
-                throw new FileNotFoundException(string.Format("Cannot find file '{0}'", fileName), fileName);
+                throw new FileNotFoundException($"Cannot find file '{fileName}'", fileName);
             }
 
             using (Stream stream = File.OpenRead(fileName))

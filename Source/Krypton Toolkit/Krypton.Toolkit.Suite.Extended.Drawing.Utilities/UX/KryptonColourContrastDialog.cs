@@ -637,7 +637,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbvnumBase.ToolTipValues.EnableToolTips = true;
             this.kbvnumBase.ToolTipValues.Heading = "Blue Value";
             this.kbvnumBase.Typeface = null;
-            this.kbvnumBase.UseAccessibleUi = false;
+            this.kbvnumBase.UseAccessibleUI = false;
             this.kbvnumBase.ValueChanged += new System.EventHandler(this.kbvnumBase_ValueChanged);
             // 
             // kryptonLabel1
@@ -853,7 +853,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kbvnumContrast.ToolTipValues.EnableToolTips = true;
             this.kbvnumContrast.ToolTipValues.Heading = "Blue Value";
             this.kbvnumContrast.Typeface = null;
-            this.kbvnumContrast.UseAccessibleUi = false;
+            this.kbvnumContrast.UseAccessibleUI = false;
             this.kbvnumContrast.ValueChanged += new System.EventHandler(this.kbvnumContrast_ValueChanged);
             // 
             // kryptonLabel2
