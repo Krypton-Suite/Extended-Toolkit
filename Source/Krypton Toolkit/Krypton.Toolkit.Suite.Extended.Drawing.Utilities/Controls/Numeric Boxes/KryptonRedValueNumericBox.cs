@@ -51,6 +51,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         public bool UseAccessibleUI { get => _useAccessibleUI; set { _useAccessibleUI = value; Invalidate(); } }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Color BackColour { get => _backColour; set { _backColour = value; Invalidate(); } }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Color ForeColour { get => _foreColour; set { _foreColour = value; Invalidate(); } }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Font Typeface { get => _typeface; set { _typeface = value; Invalidate(); } }
 
         #endregion
