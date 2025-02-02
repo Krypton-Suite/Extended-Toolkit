@@ -30,13 +30,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal static class Helpers
     {
-        internal static readonly char[] _achTrimChars = new char[4]
-        {
+        internal static readonly char[] _achTrimChars =
+        [
             ' ',
             '\t',
             '\n',
             '\r'
-        };
+        ];
 
         internal const int _sizeOfChar = 2;
 

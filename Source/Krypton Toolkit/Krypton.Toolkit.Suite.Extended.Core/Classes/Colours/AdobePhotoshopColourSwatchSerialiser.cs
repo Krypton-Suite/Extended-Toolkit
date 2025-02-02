@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int colourCount;
             ColourCollection results;
 
-            results = new();
+            results = [];
 
             // read the number of colors, which also occupies two bytes
             colourCount = this.ReadInt16(stream);

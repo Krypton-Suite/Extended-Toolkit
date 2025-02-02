@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
 
         private readonly KryptonManager _manager;
 
-        private readonly List<Attributes> _controls = new();
+        private readonly List<Attributes> _controls = [];
 
         private readonly Color _backColour;
 

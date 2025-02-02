@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         static PaletteSerializer()
         {
-            _serializerCache = new List<IPaletteSerializer?>();
+            _serializerCache = [];
         }
 
         #endregion
@@ -140,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             StringBuilder saveFilter;
             List<string> openExtensions;
 
-            openExtensions = new List<string>();
+            openExtensions = [];
             openFilter = new StringBuilder();
             saveFilter = new StringBuilder();
 
@@ -156,10 +156,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
                 extensionMask = new StringBuilder();
 
-                foreach (string extension in serializer?.DefaultExtension.Split(new[]
-                                                                               {
-                                                                         ';'
-                                                                       }, StringSplitOptions.RemoveEmptyEntries))
+                foreach (string extension in serializer?.DefaultExtension.Split([
+                             ';'
+                         ], StringSplitOptions.RemoveEmptyEntries))
                 {
                     string mask;
 

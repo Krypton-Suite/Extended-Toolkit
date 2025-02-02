@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             _kcReset.Execute += Reset_Execute;
 
-            ButtonSpecs.AddRange(new[] { _bsaBrowse, _bsaReset });
+            ButtonSpecs.AddRange([_bsaBrowse, _bsaReset]);
         }
 
         #endregion

@@ -2,8 +2,8 @@
 {
     public class DateTimeAutomatic : IDateTimeTickGenerator
     {
-        private readonly static List<ITimeUnit> TheseTimeUnits = new()
-        {
+        private readonly static List<ITimeUnit> TheseTimeUnits =
+        [
             new Millisecond(),
             new Centisecond(),
             new Decisecond(),
@@ -12,10 +12,10 @@
             new Hour(),
             new Day(),
             new Month(),
-            new Year(),
-        };
+            new Year()
+        ];
 
-        public Tick[] Ticks { get; set; } = Array.Empty<Tick>();
+        public Tick[] Ticks { get; set; } = [];
 
         public int MaxTickCount { get; set; } = 10_000;
 
@@ -66,7 +66,7 @@
             if (range.Span >= TimeSpan.MaxValue.Days || double.IsNaN(range.Span))
             {
                 // cases of extreme zoom (10,000 years)
-                Ticks = Array.Empty<Tick>();
+                Ticks = [];
                 return;
             }
 
@@ -141,7 +141,7 @@
             string dtFormat = unit.GetDateTimeFormatString();
 
             using SKPaint paint = new();
-            List<Tick> ticks = new();
+            List<Tick> ticks = [];
 
             const int maxTickCount = 1000;
             for (DateTime dt = start; dt <= end; dt = unit.Next(dt, increment))

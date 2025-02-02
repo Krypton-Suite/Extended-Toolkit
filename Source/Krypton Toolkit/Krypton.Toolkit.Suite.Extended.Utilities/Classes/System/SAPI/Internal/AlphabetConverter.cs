@@ -122,8 +122,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
         private PhoneMapData _phoneMap;
 
-        private static int[] _langIds = new int[7]
-        {
+        private static int[] _langIds =
+        [
             2052,
             1028,
             1031,
@@ -131,10 +131,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
             1034,
             1036,
             1041
-        };
+        ];
 
-        private static string[] _resourceNames = new string[7]
-        {
+        private static string[] _resourceNames =
+        [
             "upstable_chs.upsmap",
             "upstable_cht.upsmap",
             "upstable_deu.upsmap",
@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
             "upstable_esp.upsmap",
             "upstable_fra.upsmap",
             "upstable_jpn.upsmap"
-        };
+        ];
 
         private static PhoneMapData[] _phoneMaps = new PhoneMapData[7];
 

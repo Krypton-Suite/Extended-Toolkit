@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         /// </summary>
         public VirtualTreeRowNode NextSibling { get; internal set; }
 
-        public List<VirtualTreeRowNode> Children { get; internal set; } = new();
+        public List<VirtualTreeRowNode> Children { get; internal set; } = [];
 
         public RowNodeState RowNodeState { get; internal set; }
 

@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private VoiceInfo _voiceId;
 
-        private List<LexiconEntry> _lexicons = new();
+        private List<LexiconEntry> _lexicons = [];
 
         private byte[] _waveFormat;
 

@@ -230,7 +230,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             var red = new Bitmap(DrawStar(_starSize, _starHalfSize, _starHalfSize, _starHalfSize, ControlPaint.LightLight(_firstColour), _firstColour, false));
             var blue = new Bitmap(DrawStar(_starSize, _starHalfSize, _starHalfSize, _starHalfSize, ControlPaint.LightLight(_secondColour), _secondColour, false));
             var green = new Bitmap(DrawStar(_starSize, _starHalfSize, _starHalfSize, _starHalfSize, ControlPaint.LightLight(_thirdColour), _thirdColour, false));
-            List<Image> list = new List<Image>();
+            List<Image> list = [];
 
             for (int i = 0; i < _firstColourQuantity; i++) list.Add(red);
             for (int k = 0; k < _secondColourQuantity; k++) list.Add(blue);

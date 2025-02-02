@@ -131,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             byte[] buffer = Encoding.ASCII.GetBytes(data);
             int timeout = 120;
 
-            List<PingDetails> list = new List<PingDetails>();
+            List<PingDetails> list = [];
 
 
 

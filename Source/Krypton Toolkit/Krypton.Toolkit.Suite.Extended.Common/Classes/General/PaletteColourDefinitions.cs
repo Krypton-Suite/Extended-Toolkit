@@ -34,8 +34,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         private ArrayList _originalCustomPaletteColourDefinitionList, _newCustomPaletteColourDefinitionList;
 
         // TODO: Update arrays
-        private string[] _originalCustomPaletteColourDefinitions = new string[] {
-            "Alternative Normal Text Colour",
+        private string[] _originalCustomPaletteColourDefinitions =
+            [
+                "Alternative Normal Text Colour",
             "Border Colour",
             "Custom Colour One",
             "Custom Colour Two",
@@ -59,9 +60,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             "Pressed Text Colour",
             "Ribbon Tab Text Colour",
             "Status Text Colour"
-        },
-        _newCustomPaletteColourDefinitions = new string[] {
-            "Alternative Normal Text Colour",
+            ],
+        _newCustomPaletteColourDefinitions =
+            [
+                "Alternative Normal Text Colour",
             "Border Colour",
             "Custom Colour One",
             "Custom Colour Two",
@@ -87,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             "Pressed Text Colour",
             "Ribbon Tab Text Colour",
             "Status Text Colour"
-        };
+            ];
         #endregion
 
         #region Properties

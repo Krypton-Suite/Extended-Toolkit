@@ -208,10 +208,11 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // cmsCheckSumValidation
             // 
             this.cmsCheckSumValidation.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cmsCheckSumValidation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pasteCheckSumToolStripMenuItem,
+            this.cmsCheckSumValidation.Items.AddRange([
+                this.pasteCheckSumToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.clearTextBoxToolStripMenuItem});
+            this.clearTextBoxToolStripMenuItem
+            ]);
             this.cmsCheckSumValidation.Name = "cmsCheckSumValidation";
             this.cmsCheckSumValidation.Size = new System.Drawing.Size(163, 54);
             // 
@@ -304,9 +305,10 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // ss
             // 
             this.ss.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ss.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslStatus,
-            this.tspbHashProgress});
+            this.ss.Items.AddRange([
+                this.tsslStatus,
+            this.tspbHashProgress
+            ]);
             this.ss.Location = new System.Drawing.Point(0, 366);
             this.ss.Name = "ss";
             this.ss.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;

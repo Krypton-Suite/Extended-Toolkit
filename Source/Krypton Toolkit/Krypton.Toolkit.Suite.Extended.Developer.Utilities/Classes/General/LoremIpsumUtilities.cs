@@ -6,7 +6,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
     {
         internal static string Remove(this string value, string pattern) => value.Replace(pattern, "");
 
-        internal static string[] Split(this string value, string separator) => value.Split(new[] { separator }, StringSplitOptions.None);
+        internal static string[] Split(this string value, string separator) => value.Split([separator], StringSplitOptions.None);
 
         internal static string UppercaseFirst(this string value)
         {

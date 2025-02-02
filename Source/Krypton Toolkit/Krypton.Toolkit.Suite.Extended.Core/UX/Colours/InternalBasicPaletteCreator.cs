@@ -133,8 +133,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // statusStrip1
             // 
             this.statusStrip1.Font = new("Segoe UI", 9F);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.statusStrip1.Items.AddRange([
+                this.toolStripStatusLabel1
+            ]);
             this.statusStrip1.Location = new(0, 627);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
@@ -310,11 +311,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // knudBlueValue
             // 
             this.knudBlueValue.Location = new(764, 380);
-            this.knudBlueValue.Maximum = new(new int[] {
-            255,
+            this.knudBlueValue.Maximum = new([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudBlueValue.Name = "knudBlueValue";
             this.knudBlueValue.Size = new(74, 23);
             this.knudBlueValue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
@@ -325,11 +327,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // knudGreenValue
             // 
             this.knudGreenValue.Location = new(614, 380);
-            this.knudGreenValue.Maximum = new(new int[] {
-            255,
+            this.knudGreenValue.Maximum = new([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudGreenValue.Name = "knudGreenValue";
             this.knudGreenValue.Size = new(74, 23);
             this.knudGreenValue.StateCommon.Back.Color1 = System.Drawing.Color.Green;
@@ -340,11 +343,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // knudRedValue
             // 
             this.knudRedValue.Location = new(464, 380);
-            this.knudRedValue.Maximum = new(new int[] {
-            255,
+            this.knudRedValue.Maximum = new([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudRedValue.Name = "knudRedValue";
             this.knudRedValue.Size = new(74, 23);
             this.knudRedValue.StateCommon.Back.Color1 = System.Drawing.Color.Red;
@@ -355,20 +359,22 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // knudAlphaValue
             // 
             this.knudAlphaValue.Location = new(314, 380);
-            this.knudAlphaValue.Maximum = new(new int[] {
-            255,
+            this.knudAlphaValue.Maximum = new([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudAlphaValue.Name = "knudAlphaValue";
             this.knudAlphaValue.Size = new(74, 23);
             this.knudAlphaValue.StateCommon.Content.Font = new("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             this.knudAlphaValue.TabIndex = 96;
-            this.knudAlphaValue.Value = new(new int[] {
-            255,
+            this.knudAlphaValue.Value = new([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             // 
             // ktbBlueValue
             // 

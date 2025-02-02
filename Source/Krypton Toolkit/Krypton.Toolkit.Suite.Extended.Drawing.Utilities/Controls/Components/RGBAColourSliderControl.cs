@@ -179,7 +179,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             Color colour;
             RGBAChannel channel;
 
-            custom = new ColourCollection();
+            custom = [];
             colour = this.Colour;
             channel = this.Channel;
 

@@ -144,7 +144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             ButtonSpecMin = new ButtonSpecFormWindowMin(this);
             ButtonSpecMax = new ButtonSpecFormWindowMax(this);
             ButtonSpecClose = new ButtonSpecFormWindowClose(this);
-            _buttonSpecsFixed.AddRange(new ButtonSpecFormFixed[] { ButtonSpecMin, ButtonSpecMax, ButtonSpecClose });
+            _buttonSpecsFixed.AddRange([ButtonSpecMin, ButtonSpecMax, ButtonSpecClose]);
 
             // Create the palette storage
             StateCommon = new PaletteFormRedirect(Redirector, NeedPaintDelegate, null);
@@ -184,10 +184,10 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
             // Create button specification collection manager
             _buttonManager = new ButtonSpecManagerDraw(this, Redirector, ButtonSpecs, _buttonSpecsFixed,
-                                                       new[] { _drawHeading },
-                                                       new IPaletteMetric[] { StateCommon.Header },
-                                                       new[] { PaletteMetricInt.HeaderButtonEdgeInsetForm },
-                                                       new[] { PaletteMetricPadding.HeaderButtonPaddingForm },
+                [_drawHeading],
+                [StateCommon.Header],
+                [PaletteMetricInt.HeaderButtonEdgeInsetForm],
+                [PaletteMetricPadding.HeaderButtonPaddingForm],
                                                        CreateToolStripRenderer,
                                                        OnButtonManagerNeedPaint);
 

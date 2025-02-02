@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
                     ISpEventSource spEventSource = (ISpEventSource)_sapiEventSourceReference.Target;
                     if (spEventSource != null)
                     {
-                        List<SpeechEvent> list = new List<SpeechEvent>();
+                        List<SpeechEvent> list = [];
                         SpeechEvent item;
                         while ((item = SpeechEvent.TryCreateSpeechEvent(spEventSource, _additionalSapiFeatures, _audioFormat)) != null)
                         {

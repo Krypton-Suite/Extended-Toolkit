@@ -32,13 +32,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
     public static class ImageHelper
     {
-        private static float[][] _colourMatrixElements = {
-                                            new float[] {(float)0.299, (float)0.299, (float)0.299, 0, 0},
-                                            new float[] {(float)0.587, (float)0.587, (float)0.587, 0, 0},
-                                            new float[] {(float)0.114, (float)0.114, (float)0.114, 0, 0},
-                                            new float[] {0,  0,  0,  1, 0},
-                                            new float[] {0, 0, 0, 0, 1}
-                                        };
+        private static float[][] _colourMatrixElements =
+        [
+            [(float)0.299, (float)0.299, (float)0.299, 0, 0],
+            [(float)0.587, (float)0.587, (float)0.587, 0, 0],
+            [(float)0.114, (float)0.114, (float)0.114, 0, 0],
+            [0,  0,  0,  1, 0],
+            [0, 0, 0, 0, 1]
+        ];
 
         private static ColorMatrix _grayscaleColourMatrix = new ColorMatrix(_colourMatrixElements);
 

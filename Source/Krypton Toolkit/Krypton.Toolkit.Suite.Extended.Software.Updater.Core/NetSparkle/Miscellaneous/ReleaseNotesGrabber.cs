@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// <summary>
         /// List of supported extensions for markdown files (.md, .mkdn, .mkd, .markdown)
         /// </summary>
-        public static readonly List<string> MarkdownExtensions = new List<string> { ".md", ".mkdn", ".mkd", ".markdown" };
+        public static readonly List<string> MarkdownExtensions = [".md", ".mkdn", ".mkd", ".markdown"];
 
         /// <summary>
         /// Whether or not to check the signature of the release notes

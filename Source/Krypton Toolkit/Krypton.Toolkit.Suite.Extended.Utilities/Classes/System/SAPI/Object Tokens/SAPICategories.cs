@@ -42,10 +42,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
 
         private const string _defaultTokenIdValueName = "DefaultTokenId";
 
-        private static readonly string[] asVersionDefault = new string[1]
-        {
+        private static readonly string[] asVersionDefault =
+        [
             "VersionDefault"
-        };
+        ];
 
         internal static ObjectToken DefaultToken(string category)
         {
@@ -112,13 +112,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
                         }
                         return objectToken;
                     }
-                    string[] sAttributes = new string[1]
-                    {
-                        string.Format(CultureInfo.InvariantCulture, "{0:x}", new object[1]
-                        {
+                    string[] sAttributes =
+                    [
+                        string.Format(CultureInfo.InvariantCulture, "{0:x}", [
                             CultureInfo.CurrentUICulture.LCID
-                        })
-                    };
+                        ])
+                    ];
                     foreach (ObjectToken item2 in (IEnumerable<ObjectToken>)objectTokenCategory)
                     {
                         if (item2.MatchesAttributes(sAttributes))

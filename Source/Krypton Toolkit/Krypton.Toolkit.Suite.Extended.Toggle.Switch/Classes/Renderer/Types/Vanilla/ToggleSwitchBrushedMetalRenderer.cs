@@ -377,48 +377,44 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             //Draw "metal" surface
             PointF centerPoint1 = new PointF(buttonRectangle.X + buttonRectangle.Width / 2f, buttonRectangle.Y + 1.2f * (buttonRectangle.Height / 2f));
 
-            using (PathGradientBrush firstMetalBrush = GetBrush(new Color[]
-                                                                  {
-                                                                      Color.Transparent, Color.Transparent, Color.Transparent, Color.Transparent, Color.Transparent, Color.Transparent,
+            using (PathGradientBrush firstMetalBrush = GetBrush([
+                       Color.Transparent, Color.Transparent, Color.Transparent, Color.Transparent, Color.Transparent, Color.Transparent,
                                                                       Color.Transparent, Color.Transparent, Color.Transparent, Color.FromArgb(255, 110, 110, 110), Color.Transparent, Color.Transparent,
                                                                       Color.Transparent
-                                                                  }, buttonRectangle, centerPoint1))
+                   ], buttonRectangle, centerPoint1))
             {
                 g.FillEllipse(firstMetalBrush, buttonRectangle);
             }
 
             PointF centerPoint2 = new PointF(buttonRectangle.X + 0.8f * (buttonRectangle.Width / 2f), buttonRectangle.Y + buttonRectangle.Height / 2f);
 
-            using (PathGradientBrush secondMetalBrush = GetBrush(new Color[]
-                                                                  {
-                                                                      Color.FromArgb(255, 110, 110, 110), Color.Transparent,  Color.Transparent, Color.Transparent,
+            using (PathGradientBrush secondMetalBrush = GetBrush([
+                       Color.FromArgb(255, 110, 110, 110), Color.Transparent,  Color.Transparent, Color.Transparent,
                                                                       Color.Transparent, Color.Transparent, Color.Transparent, Color.Transparent,
                                                                       Color.FromArgb(255, 110, 110, 110)
-                                                                  }, buttonRectangle, centerPoint2))
+                   ], buttonRectangle, centerPoint2))
             {
                 g.FillEllipse(secondMetalBrush, buttonRectangle);
             }
 
             PointF centerPoint3 = new PointF(buttonRectangle.X + 1.2f * (buttonRectangle.Width / 2f), buttonRectangle.Y + buttonRectangle.Height / 2f);
 
-            using (PathGradientBrush thirdMetalBrush = GetBrush(new Color[]
-                                                                  {
-                                                                      Color.Transparent, Color.Transparent,  Color.Transparent, Color.Transparent,
+            using (PathGradientBrush thirdMetalBrush = GetBrush([
+                       Color.Transparent, Color.Transparent,  Color.Transparent, Color.Transparent,
                                                                       Color.FromArgb(255, 98, 98, 98), Color.Transparent, Color.Transparent, Color.Transparent,
                                                                       Color.Transparent
-                                                                  }, buttonRectangle, centerPoint3))
+                   ], buttonRectangle, centerPoint3))
             {
                 g.FillEllipse(thirdMetalBrush, buttonRectangle);
             }
 
             PointF centerPoint4 = new PointF(buttonRectangle.X + 0.9f * (buttonRectangle.Width / 2f), buttonRectangle.Y + 0.9f * (buttonRectangle.Height / 2f));
 
-            using (PathGradientBrush fourthMetalBrush = GetBrush(new Color[]
-                                                                  {
-                                                                      Color.Transparent, Color.FromArgb(255, 188, 188, 188), Color.FromArgb(255, 110, 110, 110), Color.Transparent, Color.Transparent, Color.Transparent,
+            using (PathGradientBrush fourthMetalBrush = GetBrush([
+                       Color.Transparent, Color.FromArgb(255, 188, 188, 188), Color.FromArgb(255, 110, 110, 110), Color.Transparent, Color.Transparent, Color.Transparent,
                                                                       Color.Transparent, Color.Transparent, Color.Transparent, Color.Transparent, Color.Transparent, Color.Transparent,
                                                                       Color.Transparent
-                                                                  }, buttonRectangle, centerPoint4))
+                   ], buttonRectangle, centerPoint4))
             {
                 g.FillEllipse(fourthMetalBrush, buttonRectangle);
             }
@@ -521,7 +517,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             PathGradientBrush fBrush = new PathGradientBrush(graphicsPath);
             fBrush.CenterPoint = centerPoint;
             fBrush.CenterColor = Color.Transparent;
-            fBrush.SurroundColors = new Color[] { Color.White };
+            fBrush.SurroundColors = [Color.White];
 
             try
             {

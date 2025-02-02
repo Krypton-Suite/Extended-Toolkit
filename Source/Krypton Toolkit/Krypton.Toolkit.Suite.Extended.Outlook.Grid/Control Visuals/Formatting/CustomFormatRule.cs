@@ -174,8 +174,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     using (LinearGradientBrush br = new LinearGradientBrush(e.ClipRectangle, _minimumColour, _maximumColour, LinearGradientMode.Horizontal))
                     {
                         ColorBlend blend = new ColorBlend();
-                        blend.Colors = new[] { _minimumColour, _intermediateColour, _maximumColour };
-                        blend.Positions = new[] { 0f, 0.5f, 1.0f };
+                        blend.Colors = [_minimumColour, _intermediateColour, _maximumColour];
+                        blend.Positions = [0f, 0.5f, 1.0f];
                         br.InterpolationColors = blend;
                         e.Graphics.FillRectangle(br, e.ClipRectangle);
                     }

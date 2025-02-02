@@ -30,7 +30,8 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
     public class HelperMethods
     {
         #region Variables
-        private string[] _hashTypes = new string[] { "MD5", "SHA1", "SHA256", "SHA384", "SHA512", "RIPEMD160" }, _safeNETCoreAndNewerHashTypes = new string[] { "MD5", "SHA1", "SHA256", "SHA384", "SHA512" };
+        private string[] _hashTypes = ["MD5", "SHA1", "SHA256", "SHA384", "SHA512", "RIPEMD160"], _safeNETCoreAndNewerHashTypes =
+            ["MD5", "SHA1", "SHA256", "SHA384", "SHA512"];
         #endregion
 
         #region Properties

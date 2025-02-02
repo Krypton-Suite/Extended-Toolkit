@@ -176,7 +176,7 @@
             return Intensities[yIndex, xIndex];
         }
 
-        public IEnumerable<LegendItem> LegendItems => Enumerable.Empty<LegendItem>();
+        public IEnumerable<LegendItem> LegendItems => [];
 
         public Range GetRange() => Range.GetRange(Intensities);
 

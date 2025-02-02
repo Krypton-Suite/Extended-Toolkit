@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             }
         }
 
-        internal virtual SrgsElement[] Children => new SrgsElement[0];
+        internal virtual SrgsElement[] Children => [];
 
         internal abstract void WriteSrgs(XmlWriter writer);
 

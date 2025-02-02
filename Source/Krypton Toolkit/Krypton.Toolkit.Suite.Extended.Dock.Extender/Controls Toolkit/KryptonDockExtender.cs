@@ -14,7 +14,7 @@
         public KryptonDockExtender(Control? dockHost)
         {
             _dockHost = dockHost;
-            _floaties = new();
+            _floaties = [];
         }
 
         /// <summary>

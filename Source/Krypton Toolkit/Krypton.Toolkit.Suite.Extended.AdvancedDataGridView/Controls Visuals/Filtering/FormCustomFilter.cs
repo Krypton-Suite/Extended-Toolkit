@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         (_valControl2 as DateTimePicker)!.Format = DateTimePickerFormat.Short;
                     }
 
-                    comboBox_filterType.Items.AddRange(new[] {
+                    comboBox_filterType.Items.AddRange([
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewEquals.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewDoesNotEqual.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewEarlierThan.ToString()],
@@ -169,16 +169,16 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewLaterThan.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewLaterThanOrEqualTo.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewBetween.ToString()]
-                    });
+                    ]);
                     break;
 
                 case FilterType.TimeSpan:
                     _valControl1 = new TextBox();
                     _valControl2 = new TextBox();
-                    comboBox_filterType.Items.AddRange(new[] {
+                    comboBox_filterType.Items.AddRange([
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewContains.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewDoesNotContain.ToString()]
-                    });
+                    ]);
                     break;
 
                 case FilterType.Integer:
@@ -187,7 +187,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     _valControl2 = new TextBox();
                     _valControl1.TextChanged += valControl_TextChanged;
                     _valControl2.TextChanged += valControl_TextChanged;
-                    comboBox_filterType.Items.AddRange(new[] {
+                    comboBox_filterType.Items.AddRange([
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewEquals.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewDoesNotEqual.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewGreaterThan.ToString()],
@@ -195,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewLessThan.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewLessThanOrEqualTo.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewBetween.ToString()]
-                    });
+                    ]);
                     _valControl1.Tag = true;
                     _valControl2.Tag = true;
                     button_ok.Enabled = false;
@@ -204,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 default:
                     _valControl1 = new TextBox();
                     _valControl2 = new TextBox();
-                    comboBox_filterType.Items.AddRange(new[] {
+                    comboBox_filterType.Items.AddRange([
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewEquals.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewDoesNotEqual.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewBeginsWith.ToString()],
@@ -213,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewDoesNotEndWith.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewContains.ToString()],
                         KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewDoesNotContain.ToString()]
-                    });
+                    ]);
                     break;
             }
             comboBox_filterType.SelectedIndex = 0;
@@ -437,7 +437,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             string result = "";
             string s;
-            string[] replace = { "%", "[", "]", "*", "\"", "\\" };
+            string[] replace = ["%", "[", "]", "*", "\"", "\\"];
 
             for (int i = 0; i < text.Length; i++)
             {

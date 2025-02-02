@@ -97,8 +97,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         private string _onRecognition;
 
-        private static readonly char[] invalidChars = new char[23]
-        {
+        private static readonly char[] invalidChars =
+        [
             '?',
             '*',
             '+',
@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             '\t',
             '\r',
             '\n'
-        };
+        ];
 
         public Collection<SrgsElement> Elements => _elements;
 
@@ -212,7 +212,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         private SrgsRule()
         {
-            _elements = new SrgsElementList();
+            _elements = [];
         }
 
         public SrgsRule(string id)

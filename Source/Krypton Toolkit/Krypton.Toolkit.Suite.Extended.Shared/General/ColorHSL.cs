@@ -91,8 +91,8 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
 
                         var temp1 = 2.0 * Luminance - temp2;
 
-                        double[] t3 = { Hue + 1.0 / 3.0, Hue, Hue - 1.0 / 3.0 };
-                        double[] clr = { 0, 0, 0 };
+                        double[] t3 = [Hue + 1.0 / 3.0, Hue, Hue - 1.0 / 3.0];
+                        double[] clr = [0, 0, 0];
 
                         for (var i = 0; i < 3; i++)
                         {

@@ -68,7 +68,7 @@
 
             var color = GetNextColor();
 
-            List<Bar> bars = new();
+            List<Bar> bars = [];
             foreach (var item in positions.Zip(values, (a, b) => new { a, b }))
             {
                 bars.Add(new Bar()
@@ -170,7 +170,7 @@
         /// </summary>
         public FillY FillY(double[] xs, double[] ys1, double[] ys2)
         {
-            List<(double, double, double)> data = new();
+            List<(double, double, double)> data = [];
 
             for (var i = 0; i < xs.Length; i++)
             {
@@ -337,12 +337,13 @@
 
         public Polygon Rectangle(double left, double right, double bottom, double top)
         {
-            Coordinates[] points = {
-            new(left, bottom),
+            Coordinates[] points =
+            [
+                new(left, bottom),
             new(left, top),
             new(right, top),
-            new(right, bottom),
-        };
+            new(right, bottom)
+            ];
             return Polygon(points);
         }
 
@@ -358,8 +359,8 @@
 
         public Scatter Scatter(double x, double y, Color? color = null)
         {
-            double[] xs = { x };
-            double[] ys = { y };
+            double[] xs = [x];
+            double[] ys = [y];
             ScatterSourceDoubleArray source = new(xs, ys);
             return Scatter(source, color);
         }
@@ -372,7 +373,7 @@
 
         public Scatter Scatter(Coordinates point, Color? color = null)
         {
-            Coordinates[] coordinates = { point };
+            Coordinates[] coordinates = [point];
             ScatterSourceCoordinatesArray source = new(coordinates);
             return Scatter(source, color);
         }

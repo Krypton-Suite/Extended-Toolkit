@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 
         internal IdentifierCollection()
         {
-            _identifiers = new List<string>();
+            _identifiers = [];
             CreateNewIdentifier("_");
         }
 

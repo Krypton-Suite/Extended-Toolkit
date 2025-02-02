@@ -108,31 +108,31 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         private void WriteWaveHeader(StreamMarshaler sm)
         {
-            char[] array = new char[4]
-            {
+            char[] array =
+            [
                 'R',
                 'I',
                 'F',
                 'F'
-            };
+            ];
             byte[] array2 = _audioFormat.FormatSpecificData();
             sm.WriteArray(array, array.Length);
             sm.WriteStream((uint)(_rawAudioData.Length + 38 + array2.Length));
-            char[] array3 = new char[4]
-            {
+            char[] array3 =
+            [
                 'W',
                 'A',
                 'V',
                 'E'
-            };
+            ];
             sm.WriteArray(array3, array3.Length);
-            char[] array4 = new char[4]
-            {
+            char[] array4 =
+            [
                 'f',
                 'm',
                 't',
                 ' '
-            };
+            ];
             sm.WriteArray(array4, array4.Length);
             sm.WriteStream(18 + array2.Length);
             sm.WriteStream((ushort)_audioFormat.EncodingFormat);
@@ -146,13 +146,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             {
                 sm.WriteStream(array2);
             }
-            char[] array5 = new char[4]
-            {
+            char[] array5 =
+            [
                 'd',
                 'a',
                 't',
                 'a'
-            };
+            ];
             sm.WriteArray(array5, array5.Length);
             sm.WriteStream(_rawAudioData.Length);
         }

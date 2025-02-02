@@ -133,7 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             DialogResult = DialogResult.None;
             _useMnemonic = true;
             MaxRecentColours = 10;
-            _recentColours = new List<Color>();
+            _recentColours = [];
 
             // Create the context menu items
             _kryptonContextMenu = new KryptonContextMenu();
@@ -154,11 +154,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             _itemMoreColours = new KryptonContextMenuItem("&More Colours...", OnClickMoreColours);
             _itemsMoreColours = new KryptonContextMenuItems();
             _itemsMoreColours.Items.Add(_itemMoreColours);
-            _kryptonContextMenu.Items.AddRange(new KryptonContextMenuItemBase[] { _separatorTheme, _headingTheme, _coloursTheme,
+            _kryptonContextMenu.Items.AddRange([
+                _separatorTheme, _headingTheme, _coloursTheme,
                                                                                   _separatorStandard, _headingStandard, _coloursStandard,
                                                                                   _separatorRecent, _headingRecent, _coloursRecent,
                                                                                   _separatorNoColour, _itemsNoColour,
-                                                                                  _separatorMoreColours, _itemsMoreColours});
+                                                                                  _separatorMoreColours, _itemsMoreColours
+            ]);
 
             // Create content storage
             Values = CreateButtonValues(NeedPaintDelegate);
@@ -1320,7 +1322,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 // Each column is just a single color
                 for (int i = 0; i < _recentColours.Count; i++)
                 {
-                    colors[i] = new Color[] { _recentColours[i] };
+                    colors[i] = [_recentColours[i]];
                 }
 
                 _coloursRecent.SetCustomColors(colors);

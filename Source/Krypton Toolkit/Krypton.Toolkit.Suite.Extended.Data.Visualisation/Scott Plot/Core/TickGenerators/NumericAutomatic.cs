@@ -2,7 +2,7 @@
 {
     public class NumericAutomatic : ITickGenerator
     {
-        public Tick[] Ticks { get; set; } = Array.Empty<Tick>();
+        public Tick[] Ticks { get; set; } = [];
 
         public int MaxTickCount { get; set; } = 10_000;
 
@@ -85,7 +85,7 @@
                 double tickBelow = range.Min - firstTickOffset;
                 double firstTick = majorTickPositions.Length > 0 ? majorTickPositions[0] : tickBelow;
                 double nextTick = tickBelow + tickSpacing;
-                majorTickPositions = new double[] { firstTick, nextTick };
+                majorTickPositions = [firstTick, nextTick];
             }
 
             return majorTickPositions;
@@ -110,16 +110,16 @@
             int radix = 10;
             int exponent = (int)Math.Log(range.Span, radix);
             double initialSpace = Math.Pow(radix, exponent);
-            List<double> tickSpacings = new() { initialSpace, initialSpace, initialSpace };
+            List<double> tickSpacings = [initialSpace, initialSpace, initialSpace];
 
             double[] divBy;
             if (radix == 10)
             {
-                divBy = new double[] { 2, 2, 2.5 }; // 10, 5, 2.5, 1
+                divBy = [2, 2, 2.5]; // 10, 5, 2.5, 1
             }
             else if (radix == 16)
             {
-                divBy = new double[] { 2, 2, 2, 2 }; // 16, 8, 4, 2, 1
+                divBy = [2, 2, 2, 2]; // 16, 8, 4, 2, 1
             }
             else
             {
@@ -142,19 +142,16 @@
         {
             if (majorTicks == null || majorTicks.Length < 2)
             {
-                return new double[] { };
+                return [];
             }
 
             double majorTickSpacing = majorTicks[1] - majorTicks[0];
             double minorTickSpacing = majorTickSpacing / minorTicksPerMajorTick;
 
-            List<double> majorTicksWithPadding = new()
-            {
-                majorTicks[0] - majorTickSpacing
-            };
+            List<double> majorTicksWithPadding = [majorTicks[0] - majorTickSpacing];
             majorTicksWithPadding.AddRange(majorTicks);
 
-            List<double> minorTicks = new();
+            List<double> minorTicks = [];
             foreach (var majorTickPosition in majorTicksWithPadding)
             {
                 for (int i = 1; i < minorTicksPerMajorTick; i++)

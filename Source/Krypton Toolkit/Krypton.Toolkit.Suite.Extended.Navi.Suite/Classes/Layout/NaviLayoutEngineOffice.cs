@@ -867,12 +867,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             this.miSep = new ToolStripSeparator();
 
             this.optionsMenu.Items.Clear();
-            this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miShowMoreButtons,
+            this.optionsMenu.Items.AddRange([
+                this.miShowMoreButtons,
             this.miShowLessButtons,
             this.miShowMoreOptions,
             this.miAddOrRemoveButtons,
-            this.miSep});
+            this.miSep
+            ]);
             this.optionsMenu.Name = "optionsMenu";
             this.optionsMenu.Size = new System.Drawing.Size(235, 114);
             this.optionsMenu.RightToLeft = Bar.RightToLeft;

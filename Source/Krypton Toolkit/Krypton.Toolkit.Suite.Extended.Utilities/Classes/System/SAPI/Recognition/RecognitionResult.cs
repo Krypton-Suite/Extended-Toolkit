@@ -294,7 +294,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         private Collection<RecognizedPhrase> ExtractAlternates(int numberOfAlternates, bool isSapi53Header)
         {
-            Collection<RecognizedPhrase> collection = new Collection<RecognizedPhrase>();
+            Collection<RecognizedPhrase> collection = [];
             if (numberOfAlternates > 0)
             {
                 GCHandle gCHandle = GCHandle.Alloc(_sapiAlternatesBlob, GCHandleType.Pinned);
@@ -332,7 +332,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         {
             if (recoResult != null && base.Grammar is DictationGrammar)
             {
-                _alternates = new Collection<RecognizedPhrase>();
+                _alternates = [];
                 IntPtr[] array = new IntPtr[maxAlternates];
                 try
                 {

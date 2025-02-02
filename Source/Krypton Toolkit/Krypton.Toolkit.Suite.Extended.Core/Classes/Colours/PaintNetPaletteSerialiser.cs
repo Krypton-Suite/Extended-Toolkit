@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 throw new ArgumentNullException(nameof(stream));
             }
 
-            results = new();
+            results = [];
 
             using (StreamReader reader = new(stream))
             {

@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public OutlookGridRowNodeCollection(OutlookGridRow? parentNode)
         {
             _parentNode = parentNode;
-            _subNodes = new();
+            _subNodes = [];
         }
         #endregion
 

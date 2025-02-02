@@ -246,10 +246,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 return value;
             }
-            return type.InvokeMember("Parse", BindingFlags.InvokeMethod, null, null, new object[1]
-            {
+            return type.InvokeMember("Parse", BindingFlags.InvokeMethod, null, null, [
                 value
-            }, CultureInfo.InvariantCulture);
+            ], CultureInfo.InvariantCulture);
         }
 
         private static string FormatConstructorParameters(MethodInfo[] cis, string method)
@@ -281,10 +280,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private static NameValuePair[] ParseInitParams(string initParameters)
         {
-            string[] array = initParameters.Split(new char[1]
-            {
+            string[] array = initParameters.Split([
                 ';'
-            }, StringSplitOptions.None);
+            ], StringSplitOptions.None);
             NameValuePair[] array2 = new NameValuePair[array.Length];
             for (int i = 0; i < array.Length; i++)
             {

@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         static PaletteSerialiser()
         {
-            _serializerCache = new();
+            _serializerCache = [];
         }
 
         #endregion
@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             StringBuilder saveFilter;
             List<string> openExtensions;
 
-            openExtensions = new();
+            openExtensions = [];
             openFilter = new();
             saveFilter = new();
 
@@ -157,10 +157,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 extensionMask = new();
 
-                foreach (string extension in serialiser.DefaultExtension.Split(new[]
-                                                                               {
-                                                                         ';'
-                                                                       }, StringSplitOptions.RemoveEmptyEntries))
+                foreach (string extension in serialiser.DefaultExtension.Split([
+                             ';'
+                         ], StringSplitOptions.RemoveEmptyEntries))
                 {
                     string mask;
 

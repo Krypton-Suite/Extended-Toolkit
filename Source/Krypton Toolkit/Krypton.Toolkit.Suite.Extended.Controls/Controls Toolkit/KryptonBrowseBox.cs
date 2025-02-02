@@ -185,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             _kcReset.Execute += Reset_Execute;
 
-            ButtonSpecs.AddRange(new[] { _bsaBrowse, _bsaReset });
+            ButtonSpecs.AddRange([_bsaBrowse, _bsaReset]);
         }
 
         #endregion

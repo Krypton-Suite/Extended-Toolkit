@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="index">Index of the day on the current calendar's view</param>
         internal CalendarDay(KryptonCalendar calendar, DateTime date, int index) : base(calendar)
         {
-            _containedItems = new List<CalendarItemAlternative>();
+            _containedItems = [];
             _calendar = calendar;
             _dayTop = new CalendarDayTop(this);
             _date = date;

@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         private Control? _originalParent = null;
 
-        private List<MenuStripPanelExtended>? _menuStripPanelExtendedList = new();
+        private List<MenuStripPanelExtended>? _menuStripPanelExtendedList = [];
 
         private string _floatingWindowText;
 

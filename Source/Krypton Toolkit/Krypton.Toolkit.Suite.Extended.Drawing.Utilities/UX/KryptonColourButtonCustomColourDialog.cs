@@ -220,11 +220,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // kryptonNumericUpDown6
             // 
             this.kryptonNumericUpDown6.Location = new System.Drawing.Point(275, 92);
-            this.kryptonNumericUpDown6.Maximum = new decimal(new int[] {
-            255,
+            this.kryptonNumericUpDown6.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.kryptonNumericUpDown6.Name = "kryptonNumericUpDown6";
             this.kryptonNumericUpDown6.Size = new System.Drawing.Size(79, 23);
             this.kryptonNumericUpDown6.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
@@ -236,11 +237,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // kryptonNumericUpDown5
             // 
             this.kryptonNumericUpDown5.Location = new System.Drawing.Point(275, 52);
-            this.kryptonNumericUpDown5.Maximum = new decimal(new int[] {
-            255,
+            this.kryptonNumericUpDown5.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.kryptonNumericUpDown5.Name = "kryptonNumericUpDown5";
             this.kryptonNumericUpDown5.Size = new System.Drawing.Size(79, 23);
             this.kryptonNumericUpDown5.StateCommon.Back.Color1 = System.Drawing.Color.Green;
@@ -252,11 +254,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // kryptonNumericUpDown4
             // 
             this.kryptonNumericUpDown4.Location = new System.Drawing.Point(275, 12);
-            this.kryptonNumericUpDown4.Maximum = new decimal(new int[] {
-            255,
+            this.kryptonNumericUpDown4.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.kryptonNumericUpDown4.Name = "kryptonNumericUpDown4";
             this.kryptonNumericUpDown4.Size = new System.Drawing.Size(79, 23);
             this.kryptonNumericUpDown4.StateCommon.Back.Color1 = System.Drawing.Color.Red;
@@ -268,11 +271,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // kryptonNumericUpDown3
             // 
             this.kryptonNumericUpDown3.Location = new System.Drawing.Point(110, 92);
-            this.kryptonNumericUpDown3.Maximum = new decimal(new int[] {
-            360,
+            this.kryptonNumericUpDown3.Maximum = new decimal([
+                360,
             0,
             0,
-            0});
+            0
+            ]);
             this.kryptonNumericUpDown3.Name = "kryptonNumericUpDown3";
             this.kryptonNumericUpDown3.Size = new System.Drawing.Size(79, 23);
             this.kryptonNumericUpDown3.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
@@ -282,11 +286,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // kryptonNumericUpDown2
             // 
             this.kryptonNumericUpDown2.Location = new System.Drawing.Point(110, 12);
-            this.kryptonNumericUpDown2.Maximum = new decimal(new int[] {
-            255,
+            this.kryptonNumericUpDown2.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.kryptonNumericUpDown2.Name = "kryptonNumericUpDown2";
             this.kryptonNumericUpDown2.Size = new System.Drawing.Size(79, 23);
             this.kryptonNumericUpDown2.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
@@ -296,11 +301,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // kryptonNumericUpDown1
             // 
             this.kryptonNumericUpDown1.Location = new System.Drawing.Point(110, 52);
-            this.kryptonNumericUpDown1.Maximum = new decimal(new int[] {
-            255,
+            this.kryptonNumericUpDown1.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.kryptonNumericUpDown1.Name = "kryptonNumericUpDown1";
             this.kryptonNumericUpDown1.Size = new System.Drawing.Size(79, 23);
             this.kryptonNumericUpDown1.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);

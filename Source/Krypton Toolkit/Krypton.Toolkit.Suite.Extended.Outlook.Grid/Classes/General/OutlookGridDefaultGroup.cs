@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 _height = StaticValues.DefaultGroupRowHeight; // default height
             }
 
-            Rows = new();
+            Rows = [];
             Children = new();
             _formatStyle = "";
             _oneItemText = KryptonOutlookGridLanguageManager.GeneralStrings.OneItem;

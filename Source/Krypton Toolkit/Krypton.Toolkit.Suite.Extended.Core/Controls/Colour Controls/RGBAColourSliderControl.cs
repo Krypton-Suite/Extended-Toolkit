@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             Color colour;
             RGBAChannel channel;
 
-            custom = new();
+            custom = [];
             colour = this.Colour;
             channel = this.Channel;
 

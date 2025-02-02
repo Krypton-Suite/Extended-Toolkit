@@ -390,8 +390,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             LinearGradientBrush lg = new LinearGradientBrush(lr, Color.White, Color.White, LinearGradientMode.Horizontal);
 
             ColorBlend lc = new ColorBlend(3);
-            lc.Colors = new Color[] { Color.Transparent, Color.FromArgb(40, 0, 0, 0), Color.Transparent };
-            lc.Positions = new float[] { 0.0F, 0.2F, 1.0F };
+            lc.Colors = [Color.Transparent, Color.FromArgb(40, 0, 0, 0), Color.Transparent];
+            lc.Positions = [0.0F, 0.2F, 1.0F];
             lg.InterpolationColors = lc;
 
             lr.X -= 1;
@@ -402,8 +402,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             LinearGradientBrush rg = new LinearGradientBrush(rr, Color.Black, Color.Black, LinearGradientMode.Horizontal);
 
             ColorBlend rc = new ColorBlend(3);
-            rc.Colors = new Color[] { Color.Transparent, Color.FromArgb(40, 0, 0, 0), Color.Transparent };
-            rc.Positions = new float[] { 0.0F, 0.8F, 1.0F };
+            rc.Colors = [Color.Transparent, Color.FromArgb(40, 0, 0, 0), Color.Transparent];
+            rc.Positions = [0.0F, 0.8F, 1.0F];
             rg.InterpolationColors = rc;
 
             g.FillRectangle(rg, rr);
@@ -457,8 +457,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             LinearGradientBrush lgb = new LinearGradientBrush(r, Color.White, Color.White, LinearGradientMode.Horizontal);
 
             ColorBlend cb = new ColorBlend(4);
-            cb.Colors = new Color[] { Color.Transparent, this.GlowColour, this.GlowColour, Color.Transparent };
-            cb.Positions = new float[] { 0.0F, 0.5F, 0.6F, 1.0F };
+            cb.Colors = [Color.Transparent, this.GlowColour, this.GlowColour, Color.Transparent];
+            cb.Positions = [0.0F, 0.5F, 0.6F, 1.0F];
             lgb.InterpolationColors = cb;
 
             Rectangle clip = new Rectangle(1, 2, this.Width - 3, this.Height - 3);

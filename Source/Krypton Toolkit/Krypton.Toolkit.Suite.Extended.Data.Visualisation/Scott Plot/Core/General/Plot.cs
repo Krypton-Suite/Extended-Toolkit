@@ -2,7 +2,7 @@
 {
     public class Plot : IDisposable
     {
-        public List<IPlottable> PlottableList { get; } = new();
+        public List<IPlottable> PlottableList { get; } = [];
         public PlottableAdder Add { get; }
         public IPalette Palette { get => Add.Palette; set => Add.Palette = value; }
         public RenderManager RenderManager { get; }

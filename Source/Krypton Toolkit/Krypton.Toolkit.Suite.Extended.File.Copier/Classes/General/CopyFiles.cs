@@ -37,9 +37,9 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
     public class CopyFiles
     {
         #region Variables
-        private List<string> _files = new(), _newFileNames = new();
+        private List<string> _files = [], _newFileNames = [];
 
-        private List<ST_CopyFileDetails> _filesCopied = new();
+        private List<ST_CopyFileDetails> _filesCopied = [];
 
         private int _totalFiles = 0, _totalFilesCopied = 0;
 
@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         {
 
             // Variables
-            List<string> foundFiles = new();
+            List<string> foundFiles = [];
             string[] fileEntries;
             string[] subdirEntries;
 
@@ -207,7 +207,8 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                 if (_digWindow.SynchronizationObject != null && _digWindow.SynchronizationObject.InvokeRequired)
                 {
                     _digWindow.SynchronizationObject.Invoke(new CopyProgressRoutine(CopyProgressHandler),
-                                new Object[] { total, transferred, streamSize, StreamByteTrans, dwStreamNumber, reason, hSourceFile, hDestinationFile, lpData });
+                        [total, transferred, streamSize, StreamByteTrans, dwStreamNumber, reason, hSourceFile, hDestinationFile, lpData
+                        ]);
                 }
                 else
                 {
@@ -227,7 +228,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                 if (_digWindow.SynchronizationObject != null && _digWindow.SynchronizationObject.InvokeRequired)
                 {
                     _digWindow.SynchronizationObject.Invoke(new DEL_ShowDiag(ShowDiag),
-                        new Object[] { diag });
+                        [diag]);
                 }
                 else
                 {
@@ -245,7 +246,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                 if (_digWindow.SynchronizationObject != null && _digWindow.SynchronizationObject.InvokeRequired)
                 {
                     _digWindow.SynchronizationObject.Invoke(new DEL_HideDiag(HideDiag),
-                        new Object[] { diag });
+                        [diag]);
                 }
                 else
                 {
@@ -429,7 +430,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
                             }
 
                             //Trim any trailing .'s
-                            fileNames[innerIndex].TrimEnd(new char[] { '.' });
+                            fileNames[innerIndex].TrimEnd(['.']);
                             filenameNumber += 1;
                         }
                     }

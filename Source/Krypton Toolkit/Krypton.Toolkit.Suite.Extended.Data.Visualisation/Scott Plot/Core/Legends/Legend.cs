@@ -18,7 +18,7 @@
 
         private const float SymbolWidth = 20;
         private const float SymbolLabelSeparation = 5;
-        public List<LegendItem> ManualItems { get; set; } = new();
+        public List<LegendItem> ManualItems { get; set; } = [];
 
         private readonly Plot _plot;
 
@@ -159,7 +159,7 @@
         /// </summary>
         private LegendItem[] GetAllLegendItems(IEnumerable<LegendItem> items)
         {
-            List<LegendItem> allItems = new();
+            List<LegendItem> allItems = [];
             foreach (LegendItem item in items)
             {
                 allItems.Add(item);
@@ -175,7 +175,7 @@
             LegendItem[] items = GetAllLegendItems(allItems).Where(x => x.IsVisible).ToArray();
             if (!items.Any())
             {
-                return Array.Empty<SizedLegendItem>();
+                return [];
             }
 
             // measure all items to determine dimensions of the legend
@@ -185,7 +185,7 @@
 
         private SizedLegendItem[] GetSizedLegendItems(IEnumerable<LegendItem> items, SKPaint paint)
         {
-            List<SizedLegendItem> sizedItems = new();
+            List<SizedLegendItem> sizedItems = [];
 
             foreach (LegendItem item in items)
             {

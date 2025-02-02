@@ -72,18 +72,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
            bool rightToLeft, InputState state)
         {
             // Gradient background
-            Color[] endColors = new Color[] { ColourTable.BandCollapsedBgColor1, ColourTable.BandCollapsedBgColor2 };
+            Color[] endColors = [ColourTable.BandCollapsedBgColor1, ColourTable.BandCollapsedBgColor2];
 
             if (state == InputState.Clicked)
             {
-                endColors = new Color[] { ColourTable.BandCollapsedClickedColor1, ColourTable.BandCollapsedClickedColor1 };
+                endColors = [ColourTable.BandCollapsedClickedColor1, ColourTable.BandCollapsedClickedColor1];
             }
             else if (state == InputState.Hovered)
             {
-                endColors = new Color[] { ColourTable.BandCollapsedHoveredColor1, ColourTable.BandCollapsedHoveredColor1 };
+                endColors = [ColourTable.BandCollapsedHoveredColor1, ColourTable.BandCollapsedHoveredColor1];
             }
 
-            float[] ColorPositions = { 0.0f, 1.0f };
+            float[] ColorPositions = [0.0f, 1.0f];
             ExtDrawing.DrawVertGradient(g, bounds, endColors, ColorPositions);
 
             bounds.Width -= 1;
@@ -102,20 +102,26 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 // Background gradient 
                 if (state == InputState.Hovered)
                 {
-                    endColors = new Color[] { ColourTable.ButtonHoveredColor1, ColourTable.ButtonHoveredColor2,
-                        ColourTable.ButtonHoveredColor3 };
+                    endColors =
+                    [
+                        ColourTable.ButtonHoveredColor1, ColourTable.ButtonHoveredColor2,
+                        ColourTable.ButtonHoveredColor3
+                    ];
                 }
                 else
                 {
-                    endColors = new Color[] { ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2,
-                        ColourTable.ButtonActiveColor3 };
+                    endColors =
+                    [
+                        ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2,
+                        ColourTable.ButtonActiveColor3
+                    ];
                 }
 
-                float[] ColorPositions2 = { 0.0f, 0.4f, 1.0f };
+                float[] ColorPositions2 = [0.0f, 0.4f, 1.0f];
                 ExtDrawing.DrawHorGradient(g, bounds, endColors, ColorPositions2);
 
                 // Draws a nice shiney glow on the bottom of the button
-                endColors = new Color[] { Color.FromArgb(1, ColourTable.ButtonActiveColor4) };
+                endColors = [Color.FromArgb(1, ColourTable.ButtonActiveColor4)];
                 GraphicsPath path = new GraphicsPath();
                 path.AddEllipse(0, bounds.Height / 2, bounds.Width, bounds.Height);
                 ExtDrawing.DrawRadialGradient(g, path, bounds, Color.FromArgb(150,
@@ -139,10 +145,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 }
 
                 // Background gradient 
-                endColors = new Color[] { ColourTable.ButtonClickedColor3, ColourTable.ButtonClickedColor2,
-                  ColourTable.ButtonClickedColor1 };
+                endColors =
+                [
+                    ColourTable.ButtonClickedColor3, ColourTable.ButtonClickedColor2,
+                  ColourTable.ButtonClickedColor1
+                ];
 
-                float[] ColorPositions2 = { 0.0f, 0.8f, 1.0f };
+                float[] ColorPositions2 = [0.0f, 0.8f, 1.0f];
                 ExtDrawing.DrawVertGradient(g, bounds, endColors, ColorPositions2);
             }
 
@@ -213,10 +222,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             activeBandBg = new Bitmap(bounds.Width, bounds.Height, PixelFormat.Format32bppPArgb);
             using (Graphics bitmapG = Graphics.FromImage(activeBandBg))
             {
-                Color[] endColors = new Color[] { ColourTable.NaviClientareaBgColor1,
-               ColourTable.NaviClientareaBgColor2};
+                Color[] endColors =
+                [
+                    ColourTable.NaviClientareaBgColor1,
+               ColourTable.NaviClientareaBgColor2
+                ];
 
-                float[] ColorPositions = { 0.0f, 1.0f };
+                float[] ColorPositions = [0.0f, 1.0f];
                 ExtDrawing.DrawVertGradient(bitmapG, bounds, endColors, ColorPositions);
             }
 
@@ -311,27 +323,33 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 // Background gradient 
                 if (inputState == InputState.Hovered)
                 {
-                    endColors = new Color[] { ColourTable.ButtonHoveredColor1, ColourTable.ButtonHoveredColor2,
-                        ColourTable.ButtonHoveredColor3 };
+                    endColors =
+                    [
+                        ColourTable.ButtonHoveredColor1, ColourTable.ButtonHoveredColor2,
+                        ColourTable.ButtonHoveredColor3
+                    ];
                 }
                 else
                 {
-                    endColors = new Color[] { ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2,
-                        ColourTable.ButtonActiveColor3 };
+                    endColors =
+                    [
+                        ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2,
+                        ColourTable.ButtonActiveColor3
+                    ];
                 }
 
-                float[] ColorPositions = { 0.0f, 0.4f, 1.0f };
+                float[] ColorPositions = [0.0f, 0.4f, 1.0f];
                 ExtDrawing.DrawVertGradient(g, bounds, endColors, ColorPositions);
 
                 // Draws a nice shiney glow on the bottom of the button
 
                 if (inputState == InputState.Hovered)
                 {
-                    endColors = new Color[] { Color.FromArgb(1, ColourTable.ButtonHoveredColor4) };
+                    endColors = [Color.FromArgb(1, ColourTable.ButtonHoveredColor4)];
                 }
                 else
                 {
-                    endColors = new Color[] { Color.FromArgb(1, ColourTable.ButtonActiveColor4) };
+                    endColors = [Color.FromArgb(1, ColourTable.ButtonActiveColor4)];
                 }
 
                 Color startColor;
@@ -366,10 +384,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 }
 
                 // Background gradient 
-                endColors = new Color[] { ColourTable.ButtonClickedColor3, ColourTable.ButtonClickedColor2,
-                  ColourTable.ButtonClickedColor1 };
+                endColors =
+                [
+                    ColourTable.ButtonClickedColor3, ColourTable.ButtonClickedColor2,
+                  ColourTable.ButtonClickedColor1
+                ];
 
-                float[] ColorPositions = { 0.0f, 0.8f, 1.0f };
+                float[] ColorPositions = [0.0f, 0.8f, 1.0f];
                 ExtDrawing.DrawVertGradient(g, bounds, endColors, ColorPositions);
             }
         }
@@ -385,15 +406,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <param name="bounds">The bounds of the text</param>
         public override void DrawOptionsTriangle(Graphics g, Rectangle bounds)
         {
-            Point[] points = new Point[] {
-            new Point(bounds.Width /2 +3,bounds.Height /2 -1),
+            Point[] points =
+            [
+                new Point(bounds.Width /2 +3,bounds.Height /2 -1),
             new Point(bounds.Width /2, bounds.Height /2 +2),
-            new Point(bounds.Width /2 -2,bounds.Height /2 -1) };
+            new Point(bounds.Width /2 -2,bounds.Height /2 -1)
+            ];
 
-            Point[] pointsRec2 = new Point[] {
-            new Point(bounds.Width /2 +3,bounds.Height /2),
+            Point[] pointsRec2 =
+            [
+                new Point(bounds.Width /2 +3,bounds.Height /2),
             new Point(bounds.Width /2, bounds.Height /2 +3),
-            new Point(bounds.Width /2 -2,bounds.Height /2) };
+            new Point(bounds.Width /2 -2,bounds.Height /2)
+            ];
 
             using (SolidBrush b = new SolidBrush(ColourTable.BorderInner))
             {
@@ -438,10 +463,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
             if (expanded)
             {
-                Point[] points = new Point[] {
-                  new Point(triBounds.Width/2-3,triBounds.Height/2+1),
+                Point[] points =
+                [
+                    new Point(triBounds.Width/2-3,triBounds.Height/2+1),
                   new Point(triBounds.Width/2+2,triBounds.Height/2+1),
-                  new Point(triBounds.Width/2+2,triBounds.Height/2-4) };
+                  new Point(triBounds.Width/2+2,triBounds.Height/2-4)
+                ];
 
                 using (Pen pen = new Pen(ColourTable.GroupExpandedColor1))
                 using (SolidBrush b = new SolidBrush(ColourTable.GroupExpandedColor2))
@@ -452,10 +479,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             }
             else
             {
-                Point[] points = new Point[] {
-                  new Point(triBounds.Width/2-2, triBounds.Height/2+3),
+                Point[] points =
+                [
+                    new Point(triBounds.Width/2-2, triBounds.Height/2+3),
                   new Point(triBounds.Width/2+2, triBounds.Height/2),
-                  new Point(triBounds.Width/2-2, triBounds.Height/2-4) };
+                  new Point(triBounds.Width/2-2, triBounds.Height/2-4)
+                ];
 
                 using (Pen pen = new Pen(ColourTable.Border))
                 using (SolidBrush b = new SolidBrush(Color.White))
@@ -504,8 +533,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             bool vertical = bounds.Width > bounds.Height;
 
             // Background
-            Color[] EndColors = { ColourTable.SplitterColor2, ColourTable.SplitterColor1 };
-            float[] ColorPositions = { 0.0f, 1.0f };
+            Color[] EndColors = [ColourTable.SplitterColor2, ColourTable.SplitterColor1];
+            float[] ColorPositions = [0.0f, 1.0f];
 
             ColorBlend blend = new ColorBlend();
 
@@ -592,14 +621,17 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                 buttonBounds.Inflate(new Size(-1, -1));
 
                 // Background gradient 
-                endColors = new Color[] { ColourTable.ButtonHoveredColor1, ColourTable.ButtonHoveredColor2,
-               ColourTable.ButtonHoveredColor3 };
+                endColors =
+                [
+                    ColourTable.ButtonHoveredColor1, ColourTable.ButtonHoveredColor2,
+               ColourTable.ButtonHoveredColor3
+                ];
 
-                float[] ColorPositions = { 0.0f, 0.4f, 1.0f };
+                float[] ColorPositions = [0.0f, 0.4f, 1.0f];
                 ExtDrawing.DrawVertGradient(g, buttonBounds, endColors, ColorPositions);
 
                 // Draws a nice shiney glow on the bottom of the button
-                endColors = new Color[] { Color.FromArgb(1, ColourTable.ButtonActiveColor4) };
+                endColors = [Color.FromArgb(1, ColourTable.ButtonActiveColor4)];
                 GraphicsPath path = new GraphicsPath();
                 path.AddEllipse(0, buttonBounds.Height / 2, buttonBounds.Width, buttonBounds.Height);
                 ExtDrawing.DrawRadialGradient(g, path, buttonBounds, Color.FromArgb(150,
@@ -638,17 +670,23 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 if ((rightToLeft && !collapsed) || !rightToLeft && collapsed)
                 {
-                    PointF[] points = {new PointF(x -2, y),
+                    PointF[] points =
+                    [
+                        new PointF(x -2, y),
                                new PointF(x+1,y + 3),
-                               new PointF(x-2, y + 3 + 3) };
+                               new PointF(x-2, y + 3 + 3)
+                    ];
 
                     g.DrawLines(pen, points);
                 }
                 else
                 {
-                    PointF[] points = {new PointF(x + 1, y),
+                    PointF[] points =
+                    [
+                        new PointF(x + 1, y),
                                new PointF(x - 2,y + 3),
-                               new PointF(x + 1, y + 3 + 3) };
+                               new PointF(x + 1, y + 3 + 3)
+                    ];
                     g.DrawLines(pen, points);
                 }
             }

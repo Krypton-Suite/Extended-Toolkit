@@ -32,7 +32,7 @@
             YErrorNegative = yErrorsNegative;
         }
 
-        public IEnumerable<LegendItem> LegendItems => Enumerable.Empty<LegendItem>();
+        public IEnumerable<LegendItem> LegendItems => [];
 
         public AxisLimits GetAxisLimits()
         {

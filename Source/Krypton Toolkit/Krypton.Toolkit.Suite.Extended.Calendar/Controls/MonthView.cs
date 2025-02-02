@@ -898,11 +898,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         Rectangle r = BackwardButtonBounds;
                         using (Brush b = new SolidBrush(BackwardButtonSelected ? ArrowsSelectedColour : ArrowsColour))
                         {
-                            e.Graphics.FillPolygon(b, new Point[] {
+                            e.Graphics.FillPolygon(b, [
                                 new Point(r.Right, r.Top),
                                 new Point(r.Right, r.Bottom - 1),
-                                new Point(r.Left + r.Width / 2, r.Top + r.Height / 2),
-                            });
+                                new Point(r.Left + r.Width / 2, r.Top + r.Height / 2)
+                            ]);
                         }
                     }
 
@@ -911,11 +911,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         Rectangle r = ForwardButtonBounds;
                         using (Brush b = new SolidBrush(ForwardButtonSelected ? ArrowsSelectedColour : ArrowsColour))
                         {
-                            e.Graphics.FillPolygon(b, new Point[] {
+                            e.Graphics.FillPolygon(b, [
                                 new Point(r.X, r.Top),
                                 new Point(r.X, r.Bottom - 1),
-                                new Point(r.Left + r.Width / 2, r.Top + r.Height / 2),
-                            });
+                                new Point(r.Left + r.Width / 2, r.Top + r.Height / 2)
+                            ]);
                         }
                     }
 

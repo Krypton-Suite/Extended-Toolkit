@@ -36,11 +36,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         }
 
         internal AudioException(MMSYSERR errorCode)
-            : base(string.Format(CultureInfo.InvariantCulture, "{0} - Error Code: 0x{1:x}", new object[2]
-            {
+            : base(string.Format(CultureInfo.InvariantCulture, "{0} - Error Code: 0x{1:x}", [
                 SR.Get(SRID.AudioDeviceError),
                 (int)errorCode
-            }))
+            ]))
         {
         }
 

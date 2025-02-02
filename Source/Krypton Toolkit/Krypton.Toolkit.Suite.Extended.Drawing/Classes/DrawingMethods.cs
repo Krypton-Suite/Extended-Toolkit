@@ -81,8 +81,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
         {
             // One time creation of the blend for the status strip gradient brush
             Blend _statusStripBlend = new Blend();
-            _statusStripBlend.Positions = new float[] { 0.0f, 0.25f, 0.25f, 0.57f, 0.86f, 1.0f };
-            _statusStripBlend.Factors = new float[] { 0.1f, 0.6f, 1.0f, 0.4f, 0.0f, 0.95f };
+            _statusStripBlend.Positions = [0.0f, 0.25f, 0.25f, 0.57f, 0.86f, 1.0f];
+            _statusStripBlend.Factors = [0.1f, 0.6f, 1.0f, 0.4f, 0.0f, 0.95f];
 
 
             // We do not paint the top two pixel lines, so are drawn by the status strip border render method
@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             PathGradientBrush pgr = new PathGradientBrush(rctPath);
             pgr.CenterPoint = new PointF(rect.Right, rect.Top + rect.Height / 2);
             pgr.CenterColor = ColourBacklight;
-            pgr.SurroundColors = new Color[] { ColourBacklightEnd };
+            pgr.SurroundColors = [ColourBacklightEnd];
 
             RectangleF rectGlow = new RectangleF(rect.Left, rect.Top, rect.Width / 2, rect.Height);
             LinearGradientBrush brGlow = new LinearGradientBrush(
@@ -232,7 +232,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             PathGradientBrush pgr = new PathGradientBrush(rctPath);
             pgr.CenterPoint = new PointF(rect.Left + rect.Width / 2, rect.Bottom);
             pgr.CenterColor = ColorBacklight;
-            pgr.SurroundColors = new Color[] { ColorBacklightEnd };
+            pgr.SurroundColors = [ColorBacklightEnd];
 
             RectangleF rectGlow = new RectangleF(rect.Left, rect.Top, rect.Width, rect.Height / 2);
             LinearGradientBrush brGlow = new LinearGradientBrush(new PointF(rectGlow.Right, rectGlow.Bottom + 1),
@@ -1018,8 +1018,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
 
             // One time creation of the blend for the status strip gradient brush
             Blend blend13 = new Blend();
-            blend13.Positions = new float[] { 0.0f, 0.25f, 0.25f, 0.57f, 0.86f, 1.0f };
-            blend13.Factors = new float[] { 0.1f, 0.6f, 1.0f, 0.4f, 0.0f, 0.95f };
+            blend13.Positions = [0.0f, 0.25f, 0.25f, 0.57f, 0.86f, 1.0f];
+            blend13.Factors = [0.1f, 0.6f, 1.0f, 0.4f, 0.0f, 0.95f];
 
             //Default
             blend1.Positions[0] = 0f;
@@ -1039,40 +1039,40 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing
             numArray2[2] = 1f;
             numArray2[3] = 1f;
             blend2.Factors = numArray2;
-            blend2.Positions = new float[] { 0f, 0.33f, 0.33f, 1f };
+            blend2.Positions = [0f, 0.33f, 0.33f, 1f];
             blend3 = new Blend();
             float[] numArray3 = new float[4];
             numArray3[2] = 1f;
             numArray3[3] = 1f;
             blend3.Factors = numArray3;
-            blend3.Positions = new float[] { 0f, 0.5f, 0.5f, 1f };
+            blend3.Positions = [0f, 0.5f, 0.5f, 1f];
             blend4 = new Blend();
             float[] numArray4 = new float[4];
             numArray4[3] = 1f;
             blend4.Factors = numArray4;
-            blend4.Positions = new float[] { 0f, 0.9f, 0.9f, 1f };
+            blend4.Positions = [0f, 0.9f, 0.9f, 1f];
             blend5 = new Blend();
-            blend5.Factors = new float[] { 0f, 0.5f, 1f, 0.05f };
-            blend5.Positions = new float[] { 0f, 0.45f, 0.45f, 1f };
+            blend5.Factors = [0f, 0.5f, 1f, 0.05f];
+            blend5.Positions = [0f, 0.45f, 0.45f, 1f];
             blend6 = new Blend();
-            blend6.Factors = new float[] { 0f, 0f, 0.25f, 0.7f, 1f, 1f };
-            blend6.Positions = new float[] { 0f, 0.1f, 0.2f, 0.3f, 0.5f, 1f };
+            blend6.Factors = [0f, 0f, 0.25f, 0.7f, 1f, 1f];
+            blend6.Positions = [0f, 0.1f, 0.2f, 0.3f, 0.5f, 1f];
             blend7 = new Blend();
-            blend7.Factors = new float[] { 0.15f, 0.75f, 1f, 1f };
-            blend7.Positions = new float[] { 0f, 0.45f, 0.45f, 1f };
+            blend7.Factors = [0.15f, 0.75f, 1f, 1f];
+            blend7.Positions = [0f, 0.45f, 0.45f, 1f];
             blend8 = new Blend();
-            blend8.Factors = new float[] { 0.8f, 0.2f, 0f, 0.07f, 1f };
-            blend8.Positions = new float[] { 0f, 0.33f, 0.33f, 0.43f, 1f };
+            blend8.Factors = [0.8f, 0.2f, 0f, 0.07f, 1f];
+            blend8.Positions = [0f, 0.33f, 0.33f, 0.43f, 1f];
             blend9 = new Blend();
-            blend9.Factors = new float[] { 1f, 0.7f, 0.7f, 0f, 0.1f, 0.55f, 1f, 1f };
-            blend9.Positions = new float[] { 0f, 0.16f, 0.33f, 0.35f, 0.51f, 0.85f, 0.85f, 1f };
+            blend9.Factors = [1f, 0.7f, 0.7f, 0f, 0.1f, 0.55f, 1f, 1f];
+            blend9.Positions = [0f, 0.16f, 0.33f, 0.35f, 0.51f, 0.85f, 0.85f, 1f];
             blend10 = new Blend();
-            blend10.Factors = new float[] { 1f, 0.78f, 0.48f, 1f, 1f };
-            blend10.Positions = new float[] { 0f, 0.33f, 0.33f, 0.9f, 1f };
+            blend10.Factors = [1f, 0.78f, 0.48f, 1f, 1f];
+            blend10.Positions = [0f, 0.33f, 0.33f, 0.9f, 1f];
             blend11 = new Blend();
             blend12 = new Blend();
             blend12.Factors = numArray;
-            blend12.Positions = new float[] { 0f, 0.25f, 0.25f, 1f };
+            blend12.Positions = [0f, 0.25f, 0.25f, 1f];
 
 
             //For Gefault Type Only

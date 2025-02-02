@@ -215,7 +215,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 Color colourResult = ColorTranslator.FromHtml(hexColour);
 
-                result = new int[] { colourResult.R, colourResult.G, colourResult.B };
+                result = [colourResult.R, colourResult.G, colourResult.B];
             }
             catch (Exception)
             {

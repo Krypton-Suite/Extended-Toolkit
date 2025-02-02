@@ -188,10 +188,11 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kryptonNavigator1.Name = "kryptonNavigator1";
             this.kryptonNavigator1.NavigatorMode = Krypton.Navigator.NavigatorMode.BarTabGroup;
             this.kryptonNavigator1.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlClient;
-            this.kryptonNavigator1.Pages.AddRange(new Krypton.Navigator.KryptonPage[] {
-            this.kryptonPage1,
+            this.kryptonNavigator1.Pages.AddRange([
+                this.kryptonPage1,
             this.kryptonPage2,
-            this.kryptonPage3});
+            this.kryptonPage3
+            ]);
             this.kryptonNavigator1.SelectedIndex = 1;
             this.kryptonNavigator1.Size = new System.Drawing.Size(602, 451);
             this.kryptonNavigator1.TabIndex = 0;

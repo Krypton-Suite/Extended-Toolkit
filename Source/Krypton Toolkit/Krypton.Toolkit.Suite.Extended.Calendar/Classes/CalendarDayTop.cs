@@ -50,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         public CalendarDayTop(CalendarDay day) : base(day.Calendar)
         {
             _day = day;
-            _passingItems = new List<CalendarItemAlternative>();
+            _passingItems = [];
         }
 
         #endregion

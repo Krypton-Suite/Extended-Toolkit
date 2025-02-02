@@ -147,7 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             InitializeComponent();
 
-            _columnsList = new();
+            _columnsList = [];
 
             // Cache the current global palette setting
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -384,7 +384,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">A MouseEventArgs that contains the event data.</param>
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            List<OutlookGridGroupBoxColumn> l = new();
+            List<OutlookGridGroupBoxColumn> l = [];
             OutlookGridGroupBoxColumn columnMovingInsideGroupBox = null;
 
             foreach (OutlookGridGroupBoxColumn c in _columnsList)
@@ -998,7 +998,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 _menuGroupInterval.Items.Add(groupIntervalItems);
 
                 // Add items inside an items collection (apart from separator1 which is only added if required)
-                _menuItems = new(new KryptonContextMenuItemBase[] { _menuSortAscending,
+                _menuItems = new([
+                    _menuSortAscending,
                                                                                             _menuSortDescending,
                                                                                             _menuSortBySummary,
                                                                                             _menuSeparator1,
@@ -1012,7 +1013,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                                                                                             _menuSeparator3,
                                                                                             _menuClearGrouping,
                                                                                             _menuHideGroupBox
-                                                                                          });
+                ]);
             }
 
             // Ensure we have a krypton context menu if not already present

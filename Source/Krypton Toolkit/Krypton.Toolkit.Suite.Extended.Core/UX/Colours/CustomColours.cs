@@ -153,8 +153,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // klstCustomColourSelector
             // 
-            this.klstCustomColourSelector.Items.AddRange(new object[] {
-            "Alternative Normal Text Colour",
+            this.klstCustomColourSelector.Items.AddRange([
+                "Alternative Normal Text Colour",
             "Border Colour",
             "Custom Colour Five",
             "Custom Colour Four",
@@ -176,7 +176,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             "Normal Text Colour",
             "Pressed Text Colour",
             "Ribbon Tab Text Colour",
-            "Status Text Colour"});
+            "Status Text Colour"
+            ]);
             this.klstCustomColourSelector.Location = new(12, 12);
             this.klstCustomColourSelector.Name = "klstCustomColourSelector";
             this.klstCustomColourSelector.Size = new(335, 257);
@@ -248,11 +249,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // knumBlueChannelValue
             // 
             this.knumBlueChannelValue.Location = new(694, 282);
-            this.knumBlueChannelValue.Maximum = new(new int[] {
-            255,
+            this.knumBlueChannelValue.Maximum = new([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knumBlueChannelValue.Name = "knumBlueChannelValue";
             this.knumBlueChannelValue.Size = new(80, 22);
             this.knumBlueChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
@@ -281,11 +283,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // knumGreenChannelValue
             // 
             this.knumGreenChannelValue.Location = new(377, 282);
-            this.knumGreenChannelValue.Maximum = new(new int[] {
-            255,
+            this.knumGreenChannelValue.Maximum = new([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knumGreenChannelValue.Name = "knumGreenChannelValue";
             this.knumGreenChannelValue.Size = new(80, 22);
             this.knumGreenChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Lime;
@@ -313,11 +316,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // knumRedChannelValue
             // 
             this.knumRedChannelValue.Location = new(54, 282);
-            this.knumRedChannelValue.Maximum = new(new int[] {
-            255,
+            this.knumRedChannelValue.Maximum = new([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knumRedChannelValue.Name = "knumRedChannelValue";
             this.knumRedChannelValue.Size = new(80, 22);
             this.knumRedChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Red;

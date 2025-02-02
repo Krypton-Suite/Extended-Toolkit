@@ -113,10 +113,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             get
             {
                 string value = string.Empty;
-                string valueName = string.Format(CultureInfo.InvariantCulture, "{0:x}", new object[1]
-                {
+                string valueName = string.Format(CultureInfo.InvariantCulture, "{0:x}", [
                     CultureInfo.CurrentUICulture.LCID
-                });
+                ]);
                 if (!TryGetString(valueName, out value))
                 {
                     TryGetString(null, out value);

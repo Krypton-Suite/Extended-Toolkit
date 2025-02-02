@@ -400,7 +400,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns>The contents of the selected path.</returns>
         public List<string> GetDirectoryContents(string directoryPath)
         {
-            List<string> content = new List<string>();
+            List<string> content = [];
 
             foreach (string item in Directory.GetFiles(directoryPath))
             {

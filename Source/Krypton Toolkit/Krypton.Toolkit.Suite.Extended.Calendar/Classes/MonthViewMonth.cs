@@ -158,7 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             }
             else
             {
-                dayNamesBounds = new Rectangle[] { };
+                dayNamesBounds = [];
             }
 
             curX = startX;

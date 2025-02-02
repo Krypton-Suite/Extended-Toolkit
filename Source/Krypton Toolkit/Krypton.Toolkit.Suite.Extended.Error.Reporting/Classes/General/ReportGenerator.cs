@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     public class ReportGenerator
     {
         private readonly ExceptionReportInfo _info;
-        private readonly List<SysInfoResult> _sysInfoResults = new List<SysInfoResult>();
+        private readonly List<SysInfoResult> _sysInfoResults = [];
 
         /// <summary>
         /// Initialises some ExceptionReportInfo properties related to the application/system
@@ -109,22 +109,20 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             var results = new List<SysInfoResult>
             {
                 retriever.Retrieve(SysInfoQueries.OperatingSystem).Filter(
-                    new[]
-                    {
-                        "CodeSet",
+                [
+                    "CodeSet",
                         "CurrentTimeZone",
                         "FreePhysicalMemory",
                         "OSArchitecture",
                         "OSLanguage",
                         "Version"
-                    }),
+                ]),
                 retriever.Retrieve(SysInfoQueries.Machine).Filter(
-                    new[]
-                    {
-                        "TotalPhysicalMemory",
+                [
+                    "TotalPhysicalMemory",
                         "Manufacturer",
                         "Model"
-                    })
+                ])
             };
             return results;
         }

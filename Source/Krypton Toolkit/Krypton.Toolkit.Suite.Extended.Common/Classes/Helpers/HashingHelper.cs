@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     public class HashingHelper
     {
         #region Variables
-        private static string[] _hashTypeArray = { "MD5", "SHA-1", "SHA-256", "SHA-384", "SHA-512", "RIPEMD-160" };
+        private static string[] _hashTypeArray = ["MD5", "SHA-1", "SHA-256", "SHA-384", "SHA-512", "RIPEMD-160"];
         #endregion
 
         #region Properties        

@@ -2,7 +2,7 @@
 {
     public class KeyboardState
     {
-        private readonly HashSet<Key> _pressed = new();
+        private readonly HashSet<Key> _pressed = [];
 
         public IReadOnlyCollection<Key> PressedKeys => _pressed.ToArray();
 

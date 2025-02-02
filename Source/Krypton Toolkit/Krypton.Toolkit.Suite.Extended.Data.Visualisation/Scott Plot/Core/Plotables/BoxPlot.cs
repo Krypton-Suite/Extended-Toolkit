@@ -10,7 +10,7 @@
         public string Label { get; set; } = string.Empty;
         public IEnumerable<LegendItem> LegendItems => LegendItem.Single(Label, Boxes.First().Fill);
 
-        public readonly List<Box> Boxes = new();
+        public readonly List<Box> Boxes = [];
 
         // helper methods to quickly style all boxes with common traits
         public Color FillColor

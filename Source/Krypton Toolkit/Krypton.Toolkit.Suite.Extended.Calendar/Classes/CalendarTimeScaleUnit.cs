@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             _hours = hours;
             _minutes = minutes;
 
-            _passingItems = new List<CalendarItemAlternative>();
+            _passingItems = [];
         }
 
         #endregion

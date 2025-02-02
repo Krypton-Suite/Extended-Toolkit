@@ -108,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 throw new ArgumentNullException(nameof(stream));
             }
 
-            results = new();
+            results = [];
 
             count = (int)(stream.Length / 3);
 

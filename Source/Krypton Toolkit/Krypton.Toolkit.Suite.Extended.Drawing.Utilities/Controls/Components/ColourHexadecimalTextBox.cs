@@ -67,7 +67,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         protected override void OnValidating(CancelEventArgs e)
         {
-            char[] allowedCharacters = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'a', 'b', 'c', 'd', 'e', 'f' };
+            char[] allowedCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'a', 'b', 'c', 'd', 'e', 'f'
+            ];
 
             foreach (char character in Text.ToUpper().ToArray())
             {

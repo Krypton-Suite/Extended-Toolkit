@@ -266,7 +266,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 
             StringCollection stringCollection = new();
 
-            List<string> itemList = new();
+            List<string> itemList = [];
 
             foreach (string item in items)
             {
