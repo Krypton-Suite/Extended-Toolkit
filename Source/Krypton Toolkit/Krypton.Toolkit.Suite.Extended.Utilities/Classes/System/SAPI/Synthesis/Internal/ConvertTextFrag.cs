@@ -30,8 +30,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal static class ConvertTextFrag
     {
-        private static readonly string[] _asSayAsFormat = new string[26]
-        {
+        private static readonly string[] _asSayAsFormat =
+        [
             "acronym",
             "address",
             "cardinal",
@@ -58,10 +58,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             "time",
             "time:hms12",
             "time:hms24"
-        };
+        ];
 
-        private static readonly string[] _asContextFormat = new string[26]
-        {
+        private static readonly string[] _asContextFormat =
+        [
             "name",
             "address",
             "number_cardinal",
@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             "time",
             "time",
             "time"
-        };
+        ];
 
         internal static bool ToSapi(List<TextFragment> ssmlFrags, ref GCHandle sapiFragLast)
         {

@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 {
     internal abstract class BuilderElements : GrammarBuilderBase
     {
-        private readonly List<GrammarBuilderBase> _items = new();
+        private readonly List<GrammarBuilderBase> _items = [];
 
         internal List<GrammarBuilderBase> Items => _items;
 
@@ -204,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
                 {
                     if (!dict.ContainsKey(builderElements.Count))
                     {
-                        dict.Add(builderElements.Count, new Collection<BuilderElements>());
+                        dict.Add(builderElements.Count, []);
                     }
                     dict[builderElements.Count].Add(builderElements);
                     builderElements.GetDictionaryElements(dict);

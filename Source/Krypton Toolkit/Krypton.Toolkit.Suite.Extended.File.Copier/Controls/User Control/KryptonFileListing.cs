@@ -143,12 +143,13 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             // ctxActions
             // 
             this.ctxActions.Font = new("Segoe UI", 9F);
-            this.ctxActions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openInExplorerToolStripMenuItem,
+            this.ctxActions.Items.AddRange([
+                this.openInExplorerToolStripMenuItem,
             this.toolStripMenuItem1,
             this.renameFileToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.deleteFileToolStripMenuItem});
+            this.deleteFileToolStripMenuItem
+            ]);
             this.ctxActions.Name = "ctxActions";
             this.ctxActions.Size = new(181, 104);
             // 
@@ -203,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         #region Variables
         private string _promptText, _openFileDialogTitle;
 
-        private List<string> _directoryContents = new();
+        private List<string> _directoryContents = [];
 
         private FileDialogType _fileDialogType;
 
@@ -274,7 +275,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             FileInfo[] files = directoryInfo.GetFiles();
 
             // Create a temporary list
-            List<string> temporaryList = new();
+            List<string> temporaryList = [];
 
             int index1 = 0, index2 = 0, numberOfFiles = Directory.GetFiles(directory, fileType, searchOption).Count(), numberOfDirectories = Directory.GetDirectories(directory, "*", searchOption).Count(), totalNumberOfContents;
 

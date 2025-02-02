@@ -25,7 +25,7 @@
             Width = 2,
         };
 
-        public IEnumerable<LegendItem> LegendItems => Enumerable.Empty<LegendItem>();
+        public IEnumerable<LegendItem> LegendItems => [];
 
         public AxisLimits GetAxisLimits() => _data.GetLimits();
 

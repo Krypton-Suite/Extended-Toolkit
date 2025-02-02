@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private bool _fNotInTextSeg = true;
 
-        private List<SpeechSeg> _listSeg = new();
+        private List<SpeechSeg> _listSeg = [];
 
         private SpeechSeg _lastSeg;
 

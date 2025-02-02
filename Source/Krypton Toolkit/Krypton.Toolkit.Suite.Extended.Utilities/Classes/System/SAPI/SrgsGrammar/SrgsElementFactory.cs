@@ -32,14 +32,14 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
     {
         private SrgsGrammar _grammar;
 
-        private static readonly char[] _pronSeparator = new char[5]
-        {
+        private static readonly char[] _pronSeparator =
+        [
             ' ',
             '\t',
             '\n',
             '\r',
             ';'
-        };
+        ];
 
         IGrammar IElementFactory.Grammar => _grammar;
 

@@ -40,15 +40,71 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Properties
-        public bool ShowCurrentColourValue { get => _showCurrentColourValue; set { _showCurrentColourValue = value; Invalidate(); } }
 
-        public bool ShowColon { get => _showColon; set { _showColon = value; Invalidate(); } }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool ShowCurrentColourValue
+        {
+            get => _showCurrentColourValue;
 
-        public Font Typeface { get => _textSize; set { _textSize = value; Invalidate(); } }
+            set
+            {
+                _showCurrentColourValue = value;
+                
+                Invalidate();
+            }
+        }
 
-        public int AlphaValue { get => _value; set { _value = value; Invalidate(); } }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool ShowColon
+        {
+            get => _showColon;
+            
+            set
+            {
+                _showColon = value; 
+                
+                Invalidate();
+            }
+        }
 
-        public string ExtraText { get => _extraText; set { _extraText = value; Invalidate(); } }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Font Typeface
+        {
+            get => _textSize;
+
+            set
+            {
+                _textSize = value;
+                
+                Invalidate();
+            }
+        }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int AlphaValue
+        {
+            get => _value;
+
+            set
+            {
+                _value = value;
+                
+                Invalidate();
+            }
+        }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string ExtraText
+        {
+            get => _extraText;
+
+            set
+            {
+                _extraText = value;
+                
+                Invalidate();
+            }
+        }
         #endregion
 
         #region Constructor
@@ -90,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Overrides
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             string tmpText = Text;
 

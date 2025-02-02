@@ -42,18 +42,26 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ShowCurrentColourValue { get => _showCurrentColourValue; set { _showCurrentColourValue = value; Invalidate(); } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool UseAccessibleUI { get => _useAccessibleUI; set { _useAccessibleUI = value; Invalidate(); } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ShowColon { get => _showColon; set { _showColon = value; Invalidate(); } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color TextColour { get => _textColour; private set { _textColour = value; Invalidate(); } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Font Typeface { get => _typeface; set { _typeface = value; Invalidate(); } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int GreenValue { get => _value; set { _value = value; Invalidate(); } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string ExtraText { get => _extraText; set { _extraText = value; Invalidate(); } }
         #endregion
 
@@ -122,7 +130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Overrides
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             ShowCurrentColourValueOnLabel(_showCurrentColourValue, _extraText, _showColon);
 

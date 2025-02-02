@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         private bool _aboutToFloat = false, _isFloating = false, _parentChanged = false;
 
-        private List<ToolStripPanelExtended> _toolStripPanelExtendedList = new();
+        private List<ToolStripPanelExtended> _toolStripPanelExtendedList = [];
 
         private string _floatingToolBarWindowText;
         #endregion

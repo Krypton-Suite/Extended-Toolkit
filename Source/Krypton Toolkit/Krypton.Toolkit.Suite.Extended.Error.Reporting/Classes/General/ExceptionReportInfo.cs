@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     /// </summary>
     public class ExceptionReportInfo
     {
-        private readonly List<Exception> _exceptions = new List<Exception>();
+        private readonly List<Exception> _exceptions = [];
 
         /// <summary>
         /// The Main (usually the 'only') exception, which is the subject of this exception 'report'
@@ -254,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// All files (except those already with .zip extension) will be added into a single zip file and
         /// attached to the email
         /// </summary>
-        public string[] FilesToAttach { get; set; } = { };
+        public string[] FilesToAttach { get; set; } = [];
 
         private string _attachmentFilename = "ExceptionReport";
         /// <summary> Gets or sets the attachment filename </summary>

@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        public virtual int CompareTo(ICalendarSelectableElement element) => Date.CompareTo(element.Date);
+        public virtual int CompareTo(ICalendarSelectableElement? element) => Date.CompareTo(element!.Date);
 
         #endregion
 

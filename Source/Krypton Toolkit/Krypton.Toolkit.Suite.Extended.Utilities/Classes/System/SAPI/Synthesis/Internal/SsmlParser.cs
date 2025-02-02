@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     {
                         if (extraAttributes == null)
                         {
-                            extraAttributes = new List<SsmlXmlAttribute>();
+                            extraAttributes = [];
                         }
                         extraAttributes.Add(attribute);
                         return true;
@@ -77,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     {
                         if (extraAttributes == null)
                         {
-                            extraAttributes = new List<SsmlXmlAttribute>();
+                            extraAttributes = [];
                         }
                         extraAttributes.Add(new SsmlXmlAttribute(reader.Prefix, reader.LocalName, reader.Value, reader.NamespaceURI));
                         return true;
@@ -101,8 +101,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private delegate void ParseElementDelegates(XmlReader reader, ISsmlParser engine, SsmlElement element, SsmlAttributes ssmlAttributes, bool fIgnore);
 
-        private static readonly string[] _elementsName = new string[25]
-        {
+        private static readonly string[] _elementsName =
+        [
             "audio",
             "break",
             "database",
@@ -128,10 +128,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             "tts",
             "voice",
             "withtag"
-        };
+        ];
 
-        private static readonly ParseElementDelegates[] _parseElements = new ParseElementDelegates[25]
-        {
+        private static readonly ParseElementDelegates[] _parseElements =
+        [
             ParseAudio,
             ParseBreak,
             ParseDatabase,
@@ -157,106 +157,106 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             ParseTts,
             ParseVoice,
             ParseWithTag
-        };
+        ];
 
-        private static readonly string[] _breakStrength = new string[6]
-        {
+        private static readonly string[] _breakStrength =
+        [
             "medium",
             "none",
             "strong",
             "weak",
             "x-strong",
             "x-weak"
-        };
+        ];
 
-        private static readonly EmphasisBreak[] _breakEmphasis = new EmphasisBreak[6]
-        {
+        private static readonly EmphasisBreak[] _breakEmphasis =
+        [
             EmphasisBreak.Medium,
             EmphasisBreak.None,
             EmphasisBreak.Strong,
             EmphasisBreak.Weak,
             EmphasisBreak.ExtraStrong,
             EmphasisBreak.ExtraWeak
-        };
+        ];
 
-        private static readonly string[] _emphasisNames = new string[4]
-        {
+        private static readonly string[] _emphasisNames =
+        [
             "moderate",
             "none",
             "reduced",
             "strong"
-        };
+        ];
 
-        private static readonly EmphasisWord[] _emphasisWord = new EmphasisWord[4]
-        {
+        private static readonly EmphasisWord[] _emphasisWord =
+        [
             EmphasisWord.Moderate,
             EmphasisWord.None,
             EmphasisWord.Reduced,
             EmphasisWord.Strong
-        };
+        ];
 
-        private static readonly int[] _pitchWords = new int[6]
-        {
+        private static readonly int[] _pitchWords =
+        [
             0,
             4,
             2,
             3,
             5,
             1
-        };
+        ];
 
-        private static readonly string[] _pitchNames = new string[6]
-        {
+        private static readonly string[] _pitchNames =
+        [
             "default",
             "high",
             "low",
             "medium",
             "x-high",
             "x-low"
-        };
+        ];
 
-        private static readonly int[] _rangeWords = new int[6]
-        {
+        private static readonly int[] _rangeWords =
+        [
             0,
             4,
             2,
             3,
             5,
             1
-        };
+        ];
 
-        private static readonly string[] _rangeNames = new string[6]
-        {
+        private static readonly string[] _rangeNames =
+        [
             "default",
             "high",
             "low",
             "medium",
             "x-high",
             "x-low"
-        };
+        ];
 
-        private static readonly int[] _rateWords = new int[6]
-        {
+        private static readonly int[] _rateWords =
+        [
             0,
             4,
             3,
             2,
             5,
             1
-        };
+        ];
 
-        private static readonly string[] _rateNames = new string[6]
-        {
+        private static readonly string[] _rateNames =
+        [
             "default",
             "fast",
             "medium",
             "slow",
             "x-fast",
             "x-slow"
-        };
+        ];
 
-        private static readonly int[] _volumeWords = new int[7]
-        {
+        private static readonly int[] _volumeWords =
+        [
             -1,
             -6,
             -5,
@@ -264,10 +264,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             -4,
             -7,
             -3
-        };
+        ];
 
-        private static readonly string[] _volumeNames = new string[7]
-        {
+        private static readonly string[] _volumeNames =
+        [
             "default",
             "loud",
             "medium",
@@ -275,7 +275,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             "soft",
             "x-loud",
             "x-soft"
-        };
+        ];
 
         private const string xmlNamespace = "http://www.w3.org/XML/1998/namespace";
 
@@ -330,12 +330,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             ssmlAttributes._voice = voice;
             ssmlAttributes._age = VoiceAge.NotSet;
             ssmlAttributes._gender = VoiceGender.NotSet;
-            ssmlAttributes._unknownNamespaces = new List<SsmlXmlAttribute>();
+            ssmlAttributes._unknownNamespaces = [];
             string dest = null;
             string dest2 = null;
             string dest3 = null;
             CultureInfo cultureInfo = null;
-            List<SsmlXmlAttribute> list = new List<SsmlXmlAttribute>();
+            List<SsmlXmlAttribute> list = [];
             Exception innerException = null;
             while (reader.MoveToNextAttribute())
             {
@@ -1168,7 +1168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     {
                         if (list2 == null)
                         {
-                            list2 = new List<SsmlXmlAttribute>();
+                            list2 = [];
                         }
                         SsmlXmlAttribute item = new SsmlXmlAttribute(reader.Prefix, reader.LocalName, reader.Value, reader.NamespaceURI);
                         list2.Add(item);
@@ -1179,7 +1179,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 {
                     if (list == null)
                     {
-                        list = new List<SsmlXmlAttribute>();
+                        list = [];
                     }
                     list.Add(new SsmlXmlAttribute(reader.Prefix, reader.LocalName, reader.Value, reader.NamespaceURI));
                 }
@@ -1432,7 +1432,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         private static ContourPoint[] ParseContour(string contour)
         {
             char[] array = contour.ToCharArray();
-            List<ContourPoint> list = new List<ContourPoint>();
+            List<ContourPoint> list = [];
             int num = 0;
             try
             {

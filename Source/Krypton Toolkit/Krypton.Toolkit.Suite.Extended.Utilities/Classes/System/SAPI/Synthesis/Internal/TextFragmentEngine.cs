@@ -213,10 +213,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         public void StartProcessUnknownAttributes(object voice, ref FragmentState fragmentState, string element, List<SsmlXmlAttribute> extraAttributes)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "<{0}", new object[1]
-            {
+            stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "<{0}", [
                 element
-            });
+            ]);
             foreach (SsmlXmlAttribute extraAttribute in extraAttributes)
             {
                 stringBuilder.AppendFormat(CultureInfo.InvariantCulture, " {0}:{1}=\"{2}\" xmlns:{3}=\"{4}\"", extraAttribute._prefix, extraAttribute._name, extraAttribute._value, extraAttribute._prefix, extraAttribute._ns);
@@ -227,10 +226,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         public void EndProcessUnknownAttributes(object voice, ref FragmentState fragmentState, string element, List<SsmlXmlAttribute> extraAttributes)
         {
-            AddParseUnknownFragment(voice, ref fragmentState, string.Format(CultureInfo.InvariantCulture, "</{0}>", new object[1]
-            {
+            AddParseUnknownFragment(voice, ref fragmentState, string.Format(CultureInfo.InvariantCulture, "</{0}>", [
                 element
-            }));
+            ]));
         }
 
         public void ContainsPexml(string pexmlPrefix)

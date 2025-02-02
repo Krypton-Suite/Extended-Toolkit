@@ -191,7 +191,7 @@
         public static IReadOnlyList<double> RemoveNaN<T>(IReadOnlyList<T> values)
         {
             double[] values2 = NumericConversion.GenericToDoubleArray(values);
-            List<double> values3 = new();
+            List<double> values3 = [];
 
             foreach (double value in values2)
             {
@@ -206,7 +206,7 @@
 
         public static double[] RemoveNaN(double[] values)
         {
-            List<double> values2 = new();
+            List<double> values2 = [];
 
             foreach (double value in values)
             {
@@ -347,7 +347,7 @@
                 throw new ArgumentException($"Array {nameof(values)} cannot be empty");
             }
 
-            double[] vector = Array.Empty<double>();
+            double[] vector = [];
             if (row is not null)
             {
                 vector = new double[values.GetLength(1)];

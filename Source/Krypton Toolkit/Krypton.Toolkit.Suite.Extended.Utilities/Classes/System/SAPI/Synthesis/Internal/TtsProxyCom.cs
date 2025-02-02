@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             try
             {
                 IntPtr waveHeader = gCHandle.AddrOfPinnedObject();
-                Collection<IntPtr> collection = new Collection<IntPtr>();
+                Collection<IntPtr> collection = [];
                 IntPtr fragments = TextFragmentInterop.FragmentToPtr(frags, collection);
                 try
                 {

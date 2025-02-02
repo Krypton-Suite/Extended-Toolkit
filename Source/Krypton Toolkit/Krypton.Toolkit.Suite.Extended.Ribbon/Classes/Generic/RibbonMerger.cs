@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon
     public class RibbonMerger
     {
         #region Variables
-        private readonly HashSet<Component> _mergedItems = new();
+        private readonly HashSet<Component> _mergedItems = [];
         #endregion
 
         #region Properties

@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         //Kripton Palette Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             Renderer?.ReloadPalette();
             Invalidate();
@@ -295,20 +295,21 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             DoubleBuffered = true;
 
-            _selectedElements = new List<CalendarSelectableElement?>();
+            _selectedElements = [];
             _items = new CalendarItemCollection(this);
             //_renderer = new CalendarProfessionalRenderer(this);
             _renderer = new CalendarKryptonRenderer(this);
             _maximumFullDays = 8;
             _maximumViewDays = 35;
 
-            HighlightRanges = new[] {
+            HighlightRanges =
+            [
                 new CalendarHighlightRange( DayOfWeek.Monday, new TimeSpan(8,0,0), new TimeSpan(17,0,0)),
                 new CalendarHighlightRange( DayOfWeek.Tuesday, new TimeSpan(8,0,0), new TimeSpan(17,0,0)),
                 new CalendarHighlightRange( DayOfWeek.Wednesday, new TimeSpan(8,0,0), new TimeSpan(17,0,0)),
                 new CalendarHighlightRange( DayOfWeek.Thursday, new TimeSpan(8,0,0), new TimeSpan(17,0,0)),
-                new CalendarHighlightRange( DayOfWeek.Friday, new TimeSpan(8,0,0), new TimeSpan(17,0,0)),
-            };
+                new CalendarHighlightRange( DayOfWeek.Friday, new TimeSpan(8,0,0), new TimeSpan(17,0,0))
+            ];
 
             _timeScale = CalendarTimeScale.ThirtyMinutes;
             SetViewRange(DateTime.Now, DateTime.Now.AddDays(2));
@@ -426,8 +427,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         /// <summary>
         /// Gets or sets the time ranges that should be highlighted as work-time.
-        /// This ranges are week based.
+        /// These ranges are week based.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CalendarHighlightRange[] HighlightRanges
         {
             get => _highlightRanges;
@@ -569,6 +571,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the TextBox of the edit mode
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         internal KryptonCalendarTextBox? TextBox
         {
             get => _textBox;
@@ -885,7 +888,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <returns></returns>
         public IEnumerable<CalendarItemAlternative> GetSelectedItems()
         {
-            List<CalendarItemAlternative> items = new List<CalendarItemAlternative>();
+            List<CalendarItemAlternative> items = [];
 
             foreach (CalendarItemAlternative item in Items)
             {
@@ -1309,7 +1312,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TextBox_LostFocus(object sender, EventArgs e)
+        private void TextBox_LostFocus(object? sender, EventArgs e)
         {
             FinalizeEditMode(false);
         }
@@ -1368,7 +1371,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             //Weeks
             if (DaysMode == CalendarDaysMode.Short)
             {
-                List<CalendarWeek> weeks = new List<CalendarWeek>();
+                List<CalendarWeek> weeks = [];
 
                 for (int i = 0; i < Days.Length; i++)
                 {
@@ -1382,7 +1385,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             }
             else
             {
-                _weeks = new CalendarWeek[] { };
+                _weeks = [];
             }
 
             UpdateHighlights();

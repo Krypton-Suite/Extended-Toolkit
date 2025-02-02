@@ -263,24 +263,28 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         ///   <c>true</c> if [do not show again option result]; otherwise, <c>false</c>.
         /// </value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool DoNotShowAgainOptionResult
         {
             get => _doNotShowAgainOptionResult;
             set => _doNotShowAgainOptionResult = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ShowDoNotShowAgainOption
         {
             get => _showDoNotShowAgainOption;
             set => _showDoNotShowAgainOption = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool UseTimeOutOption
         {
             get => _useTimeOutOption;
             set => _useTimeOutOption = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DialogResult DefaultTimeOutResponse
         {
             get => _defaultTimeOutResponse;
@@ -293,6 +297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         /// The message box typeface.
         /// </value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Font MessageBoxTypeface
         {
             get => _messageboxTypeface;
@@ -305,14 +310,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         /// The time out.
         /// </value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int TimeOut
         {
             get => _timeOut;
             set => _timeOut = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] 
         public MessageBoxDefaultButton TimeOutButton => _timeOutButton;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int Seconds { get => _seconds; set => _seconds = value; }
 
         /// <summary>
@@ -321,6 +329,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         /// The time out timer delay.
         /// </value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int TimeOutTimerDelay
         {
             get => _timeOutTimerDelay;
@@ -333,6 +342,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         /// The do not show again option text.
         /// </value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string DoNotShowAgainOptionText
         {
             get => _doNotShowAgainOptionText;
@@ -429,6 +439,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             /// <summary>
             /// Gets and sets the ignoring of Alt+F4
             /// </summary>
+            [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] 
             public bool IgnoreAltF4 { get; set; }
 
             #endregion

@@ -479,10 +479,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
         private FilterType _activeFilterType = FilterType.None;
         private SortType _activeSortType = SortType.None;
-        private TreeNodeItemSelector?[] _loadedNodes = new TreeNodeItemSelector?[] { };
-        private TreeNodeItemSelector?[] _startingNodes = new TreeNodeItemSelector[] { };
-        private TreeNodeItemSelector?[] _removedNodes = new TreeNodeItemSelector[] { };
-        private TreeNodeItemSelector?[] _removedsessionNodes = new TreeNodeItemSelector[] { };
+        private TreeNodeItemSelector?[] _loadedNodes = [];
+        private TreeNodeItemSelector?[] _startingNodes = [];
+        private TreeNodeItemSelector?[] _removedNodes = [];
+        private TreeNodeItemSelector?[] _removedsessionNodes = [];
         private string? _sortString = null;
         private string? _filterString = null;
         private static Point _resizeStartPoint = new Point(1, 1);
@@ -620,7 +620,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 _loadedNodes = DuplicateNodes(_startingNodes);
             }
 
-            _startingNodes = new TreeNodeItemSelector[] { };
+            _startingNodes = [];
 
             _checkTextFilterChangedEnabled = false;
             _checkTextFilter.Text = "";
@@ -646,10 +646,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="e"></param>
         protected override void OnControlRemoved(ControlEventArgs e)
         {
-            _loadedNodes = new TreeNodeItemSelector[] { };
-            _startingNodes = new TreeNodeItemSelector[] { };
-            _removedNodes = new TreeNodeItemSelector[] { };
-            _removedsessionNodes = new TreeNodeItemSelector[] { };
+            _loadedNodes = [];
+            _startingNodes = [];
+            _removedNodes = [];
+            _removedsessionNodes = [];
             if (_textFilterTextChangedTimer != null)
             {
                 _textFilterTextChangedTimer.Stop();
@@ -932,8 +932,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="vals"></param>
         public void Show(Control control, int x, int y, IEnumerable<DataGridViewCell> vals)
         {
-            _removedNodes = new TreeNodeItemSelector[] { };
-            _removedsessionNodes = new TreeNodeItemSelector[] { };
+            _removedNodes = [];
+            _removedsessionNodes = [];
 
             //add nodes
             BuildNodes(vals);
@@ -1070,8 +1070,8 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             if (_checkTextFilterRemoveNodesOnSearch)
             {
-                _removedNodes = new TreeNodeItemSelector[] { };
-                _removedsessionNodes = new TreeNodeItemSelector[] { };
+                _removedNodes = [];
+                _removedsessionNodes = [];
             }
 
             for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count - 1; i++)
@@ -1108,7 +1108,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         private void ChecklistClearNodes()
         {
-            _loadedNodes = new TreeNodeItemSelector[] { };
+            _loadedNodes = [];
         }
 
         /// <summary>
@@ -1117,7 +1117,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="node"></param>
         private void ChecklistAddNode(TreeNodeItemSelector node)
         {
-            _loadedNodes = _loadedNodes.Concat(new TreeNodeItemSelector[] { node }).ToArray();
+            _loadedNodes = _loadedNodes.Concat([node]).ToArray();
         }
 
         /// <summary>
@@ -1604,7 +1604,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             {
                 foreach (TreeNodeItemSelector nodesel in node!.Nodes)
                 {
-                    state = HasNodesChecked(new TreeNodeItemSelector[] { nodesel });
+                    state = HasNodesChecked([nodesel]);
                     if (state)
                     {
                         break;
@@ -1644,7 +1644,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     foreach (TreeNodeItemSelector subnode in node.Nodes)
                     {
-                        SetNodesCheckState(new TreeNodeItemSelector[] { subnode }, node.Checked);
+                        SetNodesCheckState([subnode], node.Checked);
                     }
                 }
 
@@ -1668,7 +1668,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     foreach (TreeNodeItemSelector subnode in node.Nodes)
                     {
-                        SetNodesCheckState(new TreeNodeItemSelector[] { subnode }, isChecked);
+                        SetNodesCheckState([subnode], isChecked);
                     }
                 }
 
@@ -2178,7 +2178,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 $"{KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll.ToString()]}            ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll);
             TreeNodeItemSelector nullnode = TreeNodeItemSelector.CreateNode(
                 $"{KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectEmpty.ToString()]}               ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectEmpty);
-            string[] removednodesText = new string[] { };
+            string[] removednodesText = [];
             if (_checkTextFilterRemoveNodesOnSearch)
             {
                 removednodesText = _removedsessionNodes.Where(r => !String.IsNullOrEmpty(r.Text)).Select(r => r.Text.ToLower()).Distinct().ToArray();
@@ -2225,7 +2225,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     {
                         if (!node.Text.ToLower().Contains(text))
                         {
-                            _removedNodes = _removedNodes.Concat(new TreeNodeItemSelector?[] { node }).ToArray();
+                            _removedNodes = _removedNodes.Concat([node]).ToArray();
                         }
                     }
                 }

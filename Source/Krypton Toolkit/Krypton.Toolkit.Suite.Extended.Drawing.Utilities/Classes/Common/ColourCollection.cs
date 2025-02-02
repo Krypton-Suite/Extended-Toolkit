@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private readonly object _lock = new object();
 
-        private IDictionary<int, int> _indexedLookup;
+        private IDictionary<int, int>? _indexedLookup;
 
         #endregion
 
@@ -125,7 +125,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <exception cref="System.ArgumentException">Thrown if no <see cref="IPaletteSerializer"/> is available for the file specified by <c>fileName</c>.</exception>
         public static ColourCollection LoadPalette(string fileName)
         {
-            IPaletteSerializer serializer;
+            IPaletteSerializer? serializer;
 
             if (string.IsNullOrEmpty(fileName))
             {
@@ -134,13 +134,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             if (!File.Exists(fileName))
             {
-                throw new FileNotFoundException(string.Format("Cannot find file '{0}'", fileName), fileName);
+                throw new FileNotFoundException($"Cannot find file '{fileName}'", fileName);
             }
 
             serializer = PaletteSerializer.GetSerializer(fileName);
             if (serializer == null)
             {
-                throw new ArgumentException(string.Format("Cannot find a palette serializer for '{0}'", fileName), nameof(fileName));
+                throw new ArgumentException($"Cannot find a palette serializer for '{fileName}'", nameof(fileName));
             }
 
             using (FileStream file = File.OpenRead(fileName))
@@ -190,19 +190,22 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 #endif
             key = item.ToArgb();
 
-            if (_indexedLookup != null && index == this.Count - 1 && !_indexedLookup.ContainsKey(key))
+            lock (_lock)
             {
-                lock (_lock)
+                if (_indexedLookup != null && index == this.Count - 1 && !_indexedLookup.ContainsKey(key))
                 {
-                    if (!_indexedLookup.ContainsKey(key))
+                    lock (_lock)
                     {
-                        _indexedLookup.Add(key, index);
+                        if (!_indexedLookup.ContainsKey(key))
+                        {
+                            _indexedLookup.Add(key, index);
+                        }
                     }
                 }
-            }
-            else
-            {
-                _indexedLookup = null;
+                else
+                {
+                    _indexedLookup = null;
+                }
             }
 
             e = new ColourCollectionEventArgs(index, item);
@@ -683,9 +686,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="left">A <see cref="ColorCollection"/> to compare.</param>
         /// <param name="right">A <see cref="ColorCollection"/> to compare.</param>
         /// <returns><c>true</c> if the values of <paramref name="left"/> and <paramref name="right"/> are equal; otherwise, <c>false</c>.</returns>
-        public static bool operator ==(ColourCollection left, ColourCollection right)
+        public static bool operator ==(ColourCollection? left, ColourCollection? right)
         {
-            return ReferenceEquals(left, right) || !((object)left == null || (object)right == null) && left.Equals(right);
+            return ReferenceEquals(left, right) || !(!(left != null) || !(right != null)) && left.Equals(right);
         }
 
         /// <summary>
@@ -694,7 +697,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="left">A <see cref="ColourCollection"/> to compare.</param>
         /// <param name="right">A <see cref="ColourCollection"/> to compare.</param>
         /// <returns><c>true</c> if the values of <paramref name="left"/> and <paramref name="right"/> differ; otherwise, <c>false</c>.</returns>
-        public static bool operator !=(ColourCollection left, ColourCollection right)
+        public static bool operator !=(ColourCollection? left, ColourCollection? right)
         {
             return !(left == right);
         }
@@ -716,7 +719,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        public bool Equals(ColourCollection other)
+        public bool Equals(ColourCollection? other)
         {
             bool result;
 
@@ -729,7 +732,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     Color expected;
                     Color actual;
 
-                    expected = other[i];
+                    expected = other![i];
                     actual = this[i];
 
                     if (expected.ToArgb() != actual.ToArgb())

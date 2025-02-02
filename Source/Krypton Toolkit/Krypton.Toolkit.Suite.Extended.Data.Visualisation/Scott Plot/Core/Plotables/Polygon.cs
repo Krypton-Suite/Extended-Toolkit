@@ -11,7 +11,7 @@
         public bool IsEmpty { get; private set; } = false;
 
         // TODO: replace with a generic data source
-        public Coordinates[] Coordinates { get; private set; } = Array.Empty<Coordinates>();
+        public Coordinates[] Coordinates { get; private set; } = [];
 
         public string Label { get; set; } = string.Empty;
 
@@ -37,7 +37,7 @@
 
         private Polygon()
         {
-            Coordinates = new Coordinates[0];
+            Coordinates = [];
             IsEmpty = true;
         }
 
@@ -112,7 +112,7 @@
 
             bool close = true; // TODO: make property
             var coordinates = close
-                ? Coordinates.Concat(new Coordinates[] { Coordinates.First() })
+                ? Coordinates.Concat([Coordinates.First()])
                 : Coordinates;
             IEnumerable<Pixel> pixels = coordinates.Select(Axes.GetPixel);
 

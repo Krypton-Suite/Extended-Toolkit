@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         {
             if (kflListing.FileListing.Items.Count > 0)
             {
-                List<string> tempFiles = new();
+                List<string> tempFiles = [];
 
                 foreach (string item in kflListing.FileListing.Items)
                 {
@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         {
             if (kchkUseDebugConsole.Checked)
             {
-                List<string> files = new();
+                List<string> files = [];
 
                 foreach (string item in kflListing.FileListing.Items)
                 {

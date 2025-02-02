@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                         "Invoke",
                         BindingFlags.Instance | BindingFlags.Public,
                         Type.DefaultBinder,
-                        new[] { typeof(Delegate) },
+                        [typeof(Delegate)],
                         null);
                 if (_invokeRequiredProperty != null && _invokeMethod != null)
                 {
@@ -135,11 +135,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                             {
                                 _invokeMethod.Invoke(
                                     TargetControl,
-                                    new object[]
-                                    {
-                                    new Action(
-                                        () => UnderlyingDelegate.DynamicInvoke(value != null ? new[] {value} : null))
-                                    });
+                                    [
+                                        new Action(
+                                        () => UnderlyingDelegate.DynamicInvoke(value != null ? [value] : null))
+                                    ]);
                                 return;
                             }
                         }
@@ -147,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                         {
                             // ignored
                         }
-                        UnderlyingDelegate.DynamicInvoke(value != null ? new[] { value } : null);
+                        UnderlyingDelegate.DynamicInvoke(value != null ? [value] : null);
                     });
             }
             catch

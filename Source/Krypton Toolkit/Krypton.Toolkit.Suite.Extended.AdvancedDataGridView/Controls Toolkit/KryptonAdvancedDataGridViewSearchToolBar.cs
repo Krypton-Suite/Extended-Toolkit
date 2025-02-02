@@ -404,7 +404,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             comboBox_columns.BeginUpdate();
             comboBox_columns.Items.Clear();
-            comboBox_columns.Items.AddRange(new object[] { Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()] });
+            comboBox_columns.Items.AddRange([Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()]]);
             if (_columnsList != null)
             {
                 foreach (DataGridViewColumn c in _columnsList)
@@ -554,7 +554,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _columnsList = columns;
             comboBox_columns.BeginUpdate();
             comboBox_columns.Items.Clear();
-            comboBox_columns.Items.AddRange(new object[] { Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()] });
+            comboBox_columns.Items.AddRange([Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()]]);
             if (_columnsList != null)
             {
                 foreach (DataGridViewColumn c in _columnsList)

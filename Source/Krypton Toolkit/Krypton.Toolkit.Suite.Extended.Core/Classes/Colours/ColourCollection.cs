@@ -142,13 +142,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             if (!File.Exists(fileName))
             {
-                throw new FileNotFoundException(string.Format("Cannot find file '{0}'", fileName), fileName);
+                throw new FileNotFoundException($"Cannot find file '{fileName}'", fileName);
             }
 
             serialiser = PaletteSerialiser.GetSerialiser(fileName);
             if (serialiser == null)
             {
-                throw new ArgumentException(string.Format("Cannot find a palette serialiser for '{0}'", fileName), nameof(fileName));
+                throw new ArgumentException($"Cannot find a palette serialiser for '{fileName}'", nameof(fileName));
             }
 
             using (FileStream file = File.OpenRead(fileName))

@@ -95,11 +95,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this._rvnbValue.DecimalPlaces = 99;
             this._rvnbValue.Location = new System.Drawing.Point(71, 37);
-            this._rvnbValue.Maximum = new decimal(new int[] {
-            255,
+            this._rvnbValue.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this._rvnbValue.Name = "_rvnbValue";
             this._rvnbValue.Size = new System.Drawing.Size(120, 26);
             this._rvnbValue.StateCommon.Back.Color1 = System.Drawing.Color.Red;
@@ -112,11 +113,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this._gvnbValue.DecimalPlaces = 99;
             this._gvnbValue.Location = new System.Drawing.Point(71, 69);
-            this._gvnbValue.Maximum = new decimal(new int[] {
-            255,
+            this._gvnbValue.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this._gvnbValue.Name = "_gvnbValue";
             this._gvnbValue.Size = new System.Drawing.Size(120, 26);
             this._gvnbValue.StateCommon.Back.Color1 = System.Drawing.Color.Green;
@@ -129,11 +131,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this._bvnbValue.DecimalPlaces = 99;
             this._bvnbValue.Location = new System.Drawing.Point(71, 101);
-            this._bvnbValue.Maximum = new decimal(new int[] {
-            255,
+            this._bvnbValue.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this._bvnbValue.Name = "_bvnbValue";
             this._bvnbValue.Size = new System.Drawing.Size(120, 26);
             this._bvnbValue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
@@ -146,11 +149,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this._avnbValue.DecimalPlaces = 99;
             this._avnbValue.Location = new System.Drawing.Point(71, 5);
-            this._avnbValue.Maximum = new decimal(new int[] {
-            255,
+            this._avnbValue.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this._avnbValue.Name = "_avnbValue";
             this._avnbValue.Size = new System.Drawing.Size(120, 26);
             this._avnbValue.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -184,21 +188,25 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         #region Public
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public decimal AlphaValue
         {
             get => _alphaValue; set => _alphaValue = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public decimal RedValue
         {
             get => _redValue; set => _redValue = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public decimal GreenValue
         {
             get => _greenValue; set => _greenValue = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public decimal BlueValue
         {
             get => _blueValue; set => _blueValue = value;

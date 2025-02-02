@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             _hours = hours;
             _minutes = minutes;
 
-            _passingItems = new List<CalendarItemAlternative>();
+            _passingItems = [];
         }
 
         #endregion
@@ -143,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public override string ToString()
         {
-            return string.Format("[{0}] - {1}", Index, Date.ToShortTimeString());
+            return $"[{Index}] - {Date.ToShortTimeString()}";
         }
 
         #endregion

@@ -66,29 +66,29 @@
         /// </summary>
         public int RenderCount { get; private set; } = 0;
 
-        public static List<IRenderAction> DefaultRenderActions => new()
-    {
-        new PreRenderLock(),
-        new ClearCanvas(),
-        new ReplaceNullAxesWithDefaults(),
-        new AutoScaleUnsetAxes(),
-        new ExecutePlottableAxisManagers(),
-        new ApplyAxisRulesBeforeLayout(),
-        new CalculateLayout(),
-        new ApplyAxisRulesAfterLayout(),
-        new RegenerateTicks(),
-        new InvokePreRenderEvent(),
-        new RenderBackground(),
-        new RenderGridsBelowPlotables(),
-        new RenderPlotables(),
-        new RenderGridsAbovePlotables(),
-        new RenderLegends(),
-        new RenderPanels(),
-        new RenderZoomRectangle(),
-        new SyncGlPlotables(),
-        new RenderPlotablesLast(),
-        new RenderBenchmark(),
-    };
+        public static List<IRenderAction> DefaultRenderActions =>
+        [
+            new PreRenderLock(),
+            new ClearCanvas(),
+            new ReplaceNullAxesWithDefaults(),
+            new AutoScaleUnsetAxes(),
+            new ExecutePlottableAxisManagers(),
+            new ApplyAxisRulesBeforeLayout(),
+            new CalculateLayout(),
+            new ApplyAxisRulesAfterLayout(),
+            new RegenerateTicks(),
+            new InvokePreRenderEvent(),
+            new RenderBackground(),
+            new RenderGridsBelowPlotables(),
+            new RenderPlotables(),
+            new RenderGridsAbovePlotables(),
+            new RenderLegends(),
+            new RenderPanels(),
+            new RenderZoomRectangle(),
+            new SyncGlPlotables(),
+            new RenderPlotablesLast(),
+            new RenderBenchmark()
+        ];
 
         public void Render(SKCanvas canvas, PixelRect rect)
         {
@@ -100,7 +100,7 @@
             IsRendering = true;
             canvas.Scale(Plot.ScaleFactor);
 
-            List<(string, TimeSpan)> actionTimes = new();
+            List<(string, TimeSpan)> actionTimes = [];
 
             RenderPack rp = new(Plot, rect, canvas);
 

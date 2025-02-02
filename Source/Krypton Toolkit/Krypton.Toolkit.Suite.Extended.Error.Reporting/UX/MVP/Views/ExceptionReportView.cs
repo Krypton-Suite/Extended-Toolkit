@@ -237,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             kbtnClose.Height = kbtnLessDetail.Height = kbtnCopy.Height = kbtnElectronicMail.Height = kbtnSave.Height = 27;
             //kbtnClose.TextAlign = btnDetailToggle.TextAlign = btnCopy.TextAlign = btnEmail.TextAlign = btnSave.TextAlign = ContentAlignment.MiddleCenter;
             kbtnClose.Font = kbtnLessDetail.Font = kbtnSave.Font = kbtnElectronicMail.Font = kbtnCopy.Font = new Font(kbtnCopy.Font.FontFamily, 8.25f);
-            ShiftDown3Pixels(new[] { kbtnClose, kbtnLessDetail, kbtnCopy, kbtnElectronicMail, kbtnSave });
+            ShiftDown3Pixels([kbtnClose, kbtnLessDetail, kbtnCopy, kbtnElectronicMail, kbtnSave]);
         }
 
         private static void ShiftDown3Pixels(IEnumerable<Control> buttons)

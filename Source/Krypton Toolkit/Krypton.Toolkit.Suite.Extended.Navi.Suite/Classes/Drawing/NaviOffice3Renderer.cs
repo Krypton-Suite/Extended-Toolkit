@@ -67,8 +67,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         public override void DrawNaviBarOverFlowPanelBg(Graphics g, Rectangle bounds)
         {
             // Background
-            Color[] EndColors = { ColourTable.ButtonNormalColor2, ColourTable.ButtonNormalColor1 };
-            float[] ColorPositions = { 0.0f, 1.0f };
+            Color[] EndColors = [ColourTable.ButtonNormalColor2, ColourTable.ButtonNormalColor1];
+            float[] ColorPositions = [0.0f, 1.0f];
 
             ColorBlend blend = new ColorBlend();
 
@@ -108,8 +108,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <param name="bounds">The bounds of the header</param>
         public override void DrawNaviBarHeaderBg(Graphics g, Rectangle bounds)
         {
-            Color[] endColors = new Color[] { ColourTable.HeaderColor1, ColourTable.HeaderColor2 };
-            float[] ColorPositions = { 0.0f, 1.0f };
+            Color[] endColors = [ColourTable.HeaderColor1, ColourTable.HeaderColor2];
+            float[] ColorPositions = [0.0f, 1.0f];
 
             ColorBlend blend = new ColorBlend();
 
@@ -226,23 +226,23 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
             if (state == ControlState.Normal && inputState == InputState.Normal)
             {
-                endColors = new Color[] { ColourTable.ButtonNormalColor2, ColourTable.ButtonNormalColor1 };
+                endColors = [ColourTable.ButtonNormalColor2, ColourTable.ButtonNormalColor1];
             }
             else if (state == ControlState.Normal && inputState == InputState.Hovered)
             {
-                endColors = new Color[] { ColourTable.ButtonHoveredColor2, ColourTable.ButtonHoveredColor1 };
+                endColors = [ColourTable.ButtonHoveredColor2, ColourTable.ButtonHoveredColor1];
             }
             else if (state == ControlState.Active && inputState == InputState.Normal)
             {
-                endColors = new Color[] { ColourTable.ButtonActiveColor2, ColourTable.ButtonActiveColor1 };
+                endColors = [ColourTable.ButtonActiveColor2, ColourTable.ButtonActiveColor1];
             }
             else if (inputState == InputState.Clicked
                || (state == ControlState.Active && inputState == InputState.Hovered))
             {
-                endColors = new Color[] { ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2 };
+                endColors = [ColourTable.ButtonActiveColor1, ColourTable.ButtonActiveColor2];
             }
 
-            float[] ColorPositions = { 0.0f, 1.0f };
+            float[] ColorPositions = [0.0f, 1.0f];
 
             ExtDrawing.DrawVertGradient(g, bounds, endColors, ColorPositions);
 
@@ -272,19 +272,28 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
             if (inputState == InputState.Clicked)
             {
-                smallColors = new Color[] { ColourTable.CollapseButtonClickedColor1,
-               ColourTable.CollapseButtonClickedColor2};
+                smallColors =
+                [
+                    ColourTable.CollapseButtonClickedColor1,
+               ColourTable.CollapseButtonClickedColor2
+                ];
             }
             else if (inputState == InputState.Hovered)
             {
-                smallColors = new Color[] { ColourTable.CollapseButtonHoveredColor1,
-               ColourTable.CollapseButtonHoveredColor2 };
+                smallColors =
+                [
+                    ColourTable.CollapseButtonHoveredColor1,
+               ColourTable.CollapseButtonHoveredColor2
+                ];
             }
 
-            endColors = new Color[] { ColourTable.CollapseButtonNormalColor1,
-               ColourTable.CollapseButtonNormalColor2};
+            endColors =
+            [
+                ColourTable.CollapseButtonNormalColor1,
+               ColourTable.CollapseButtonNormalColor2
+            ];
 
-            float[] ColorPositions = { 0.0f, 1.0f };
+            float[] ColorPositions = [0.0f, 1.0f];
 
             ColorBlend blend = new ColorBlend();
 
@@ -361,26 +370,38 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 if ((rightToLeft && !collapsed) || !rightToLeft && collapsed)
                 {
-                    PointF[] points = {new PointF(x -3, y),
+                    PointF[] points =
+                    [
+                        new PointF(x -3, y),
                                new PointF(x,y + 3),
-                               new PointF(x-3, y + 3 + 3) };
+                               new PointF(x-3, y + 3 + 3)
+                    ];
                     g.DrawLines(pen, points);
 
-                    PointF[] points2 = {new PointF(x + 1, y),
+                    PointF[] points2 =
+                    [
+                        new PointF(x + 1, y),
                                new PointF(x + 4,y + 3),
-                               new PointF(x + 1, y + 3 + 3) };
+                               new PointF(x + 1, y + 3 + 3)
+                    ];
                     g.DrawLines(pen, points2);
                 }
                 else
                 {
-                    PointF[] points = {new PointF(x, y),
+                    PointF[] points =
+                    [
+                        new PointF(x, y),
                                new PointF(x - 3,y + 3),
-                               new PointF(x, y + 3 + 3) };
+                               new PointF(x, y + 3 + 3)
+                    ];
                     g.DrawLines(pen, points);
 
-                    PointF[] points2 = {new PointF(x + 4, y),
+                    PointF[] points2 =
+                    [
+                        new PointF(x + 4, y),
                                new PointF(x + 1,y + 3),
-                               new PointF(x + 4, y + 3 + 3) };
+                               new PointF(x + 4, y + 3 + 3)
+                    ];
                     g.DrawLines(pen, points2);
                 }
             }
@@ -397,15 +418,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <param name="bounds">The bounds of the text</param>
         public override void DrawOptionsTriangle(Graphics g, Rectangle bounds)
         {
-            Point[] points = new Point[] {
-            new Point(bounds.Width /2 +3,bounds.Height /2 -1),
+            Point[] points =
+            [
+                new Point(bounds.Width /2 +3,bounds.Height /2 -1),
             new Point(bounds.Width /2, bounds.Height /2 +2),
-            new Point(bounds.Width /2 -2,bounds.Height /2 -1) };
+            new Point(bounds.Width /2 -2,bounds.Height /2 -1)
+            ];
 
-            Point[] pointsRec2 = new Point[] {
-            new Point(bounds.Width /2 +3,bounds.Height /2),
+            Point[] pointsRec2 =
+            [
+                new Point(bounds.Width /2 +3,bounds.Height /2),
             new Point(bounds.Width /2, bounds.Height /2 +3),
-            new Point(bounds.Width /2 -2,bounds.Height /2) };
+            new Point(bounds.Width /2 -2,bounds.Height /2)
+            ];
 
             using (SolidBrush b = new SolidBrush(ColourTable.BorderInner))
             {
@@ -444,8 +469,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             }
 
             // Background
-            Color[] EndColors = { light, dark };
-            float[] ColorPositions = { 0.0f, 1.0f };
+            Color[] EndColors = [light, dark];
+            float[] ColorPositions = [0.0f, 1.0f];
 
             ColorBlend blend = new ColorBlend();
 
@@ -504,26 +529,38 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 if (expanded)
                 {
-                    PointF[] points = { new PointF(x, y + 3 + 4),
+                    PointF[] points =
+                    [
+                        new PointF(x, y + 3 + 4),
                                new PointF(x + 3,y + 4),
-                               new PointF(x + 3 + 3, y + 3 + 4) };
+                               new PointF(x + 3 + 3, y + 3 + 4)
+                    ];
                     g.DrawLines(pen, points);
 
-                    PointF[] points2 = { new PointF(x, y + 3),
+                    PointF[] points2 =
+                    [
+                        new PointF(x, y + 3),
                                new PointF(x + 3,y ),
-                               new PointF(x + 3 + 3, y + 3) };
+                               new PointF(x + 3 + 3, y + 3)
+                    ];
                     g.DrawLines(pen, points2);
                 }
                 else
                 {
-                    PointF[] points = { new PointF(x, y + 4),
+                    PointF[] points =
+                    [
+                        new PointF(x, y + 4),
                                new PointF(x + 3,y + 3 + 4),
-                               new PointF(x + 3 + 3, y + 4) };
+                               new PointF(x + 3 + 3, y + 4)
+                    ];
                     g.DrawLines(pen, points);
 
-                    PointF[] points2 = { new PointF(x, y ),
+                    PointF[] points2 =
+                    [
+                        new PointF(x, y ),
                                new PointF(x + 3,y + 3 ),
-                               new PointF(x + 3 + 3, y) };
+                               new PointF(x + 3 + 3, y)
+                    ];
                     g.DrawLines(pen, points2);
                 }
             }
@@ -543,8 +580,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             bool vertical = bounds.Width > bounds.Height;
 
             // Background
-            Color[] EndColors = { ColourTable.SplitterColor2, ColourTable.SplitterColor1 };
-            float[] ColorPositions = { 0.0f, 1.0f };
+            Color[] EndColors = [ColourTable.SplitterColor2, ColourTable.SplitterColor1];
+            float[] ColorPositions = [0.0f, 1.0f];
 
             ColorBlend blend = new ColorBlend();
 

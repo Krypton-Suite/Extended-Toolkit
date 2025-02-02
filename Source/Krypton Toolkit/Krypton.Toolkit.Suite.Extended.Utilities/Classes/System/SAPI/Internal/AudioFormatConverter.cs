@@ -165,8 +165,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                 bool flag = (num & 1) != 0;
                 bool flag2 = (num & 2) != 0;
                 uint num2 = (num & 0x3C) >> 2;
-                uint[] array2 = new uint[9]
-                {
+                uint[] array2 =
+                [
                     8000u,
                     11025u,
                     12000u,
@@ -176,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     32000u,
                     44100u,
                     48000u
-                };
+                ];
                 waveFormatEx.wFormatTag = 1;
                 waveFormatEx.nChannels = waveFormatEx.nBlockAlign = (ushort)(!flag ? 1 : 2);
                 waveFormatEx.nSamplesPerSec = array2[num2];
@@ -215,13 +215,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                         {
                             uint num8 = (uint)(eFormat - 41);
                             uint num9 = num8 / 2u;
-                            uint[] array13 = new uint[4]
-                            {
-                        8000u,
+                            uint[] array13 =
+                            [
+                                8000u,
                         11025u,
                         22050u,
                         44100u
-                            };
+                            ];
                             bool flag5 = (num8 & 1) != 0;
                             waveFormatEx.wFormatTag = 6;
                             waveFormatEx.nChannels = waveFormatEx.nBlockAlign = (ushort)(!flag5 ? 1 : 2);
@@ -235,13 +235,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                         {
                             uint num3 = (uint)(eFormat - 49);
                             uint num4 = num3 / 2u;
-                            uint[] array3 = new uint[4]
-                            {
-                            8000u,
+                            uint[] array3 =
+                            [
+                                8000u,
                             11025u,
                             22050u,
                             44100u
-                            };
+                            ];
                             bool flag3 = (num3 & 1) != 0;
                             waveFormatEx.wFormatTag = 7;
                             waveFormatEx.nChannels = waveFormatEx.nBlockAlign = (ushort)(!flag3 ? 1 : 2);
@@ -251,16 +251,16 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                         }
                         else if (eFormat >= StreamFormat.ADPCM_8kHzMono && eFormat <= StreamFormat.ADPCM_44kHzStereo)
                         {
-                            uint[] array4 = new uint[4]
-                            {
-                            8000u,
+                            uint[] array4 =
+                            [
+                                8000u,
                             11025u,
                             22050u,
                             44100u
-                            };
-                            uint[] array5 = new uint[8]
-                            {
-                            4096u,
+                            ];
+                            uint[] array5 =
+                            [
+                                4096u,
                             8192u,
                             5644u,
                             11289u,
@@ -268,17 +268,17 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                             22311u,
                             22179u,
                             44359u
-                            };
-                            uint[] array6 = new uint[4]
-                            {
-                            256u,
+                            ];
+                            uint[] array6 =
+                            [
+                                256u,
                             256u,
                             512u,
                             1024u
-                            };
-                            byte[] array7 = new byte[32]
-                            {
-                            244,
+                            ];
+                            byte[] array7 =
+                            [
+                                244,
                             1,
                             7,
                             0,
@@ -310,10 +310,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                             1,
                             24,
                             255
-                            };
-                            byte[] array8 = new byte[32]
-                            {
-                            244,
+                            ];
+                            byte[] array8 =
+                            [
+                                244,
                             3,
                             7,
                             0,
@@ -345,10 +345,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                             1,
                             24,
                             255
-                            };
-                            byte[] array9 = new byte[32]
-                            {
-                            244,
+                            ];
+                            byte[] array9 =
+                            [
+                                244,
                             7,
                             7,
                             0,
@@ -380,7 +380,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                             1,
                             24,
                             255
-                            };
+                            ];
                             byte[][] array10 = new byte[4][]
                             {
                             array7,
@@ -402,20 +402,20 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                         }
                         else if (eFormat >= StreamFormat.GSM610_8kHzMono && eFormat <= StreamFormat.GSM610_44kHzMono)
                         {
-                            uint[] array11 = new uint[4]
-                            {
-                            8000u,
+                            uint[] array11 =
+                            [
+                                8000u,
                             11025u,
                             22050u,
                             44100u
-                            };
-                            uint[] array12 = new uint[4]
-                            {
-                            1625u,
+                            ];
+                            uint[] array12 =
+                            [
+                                1625u,
                             2239u,
                             4478u,
                             8957u
-                            };
+                            ];
                             uint num7 = (uint)(eFormat - 65);
                             waveFormatEx.wFormatTag = 49;
                             waveFormatEx.nChannels = 1;
@@ -424,11 +424,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                             waveFormatEx.nBlockAlign = 65;
                             waveFormatEx.wBitsPerSample = 0;
                             waveFormatEx.cbSize = 2;
-                            array = new byte[2]
-                            {
-                            64,
+                            array =
+                            [
+                                64,
                             1
-                            };
+                            ];
                         }
                         else
                         {

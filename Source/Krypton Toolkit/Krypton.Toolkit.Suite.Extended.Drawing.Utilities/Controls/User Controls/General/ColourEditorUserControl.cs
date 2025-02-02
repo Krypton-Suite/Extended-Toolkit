@@ -147,11 +147,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudHue.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
                                                                       | System.Windows.Forms.AnchorStyles.Right);
             this.knudHue.Location = new System.Drawing.Point(200, 3);
-            this.knudHue.Maximum = new decimal(new int[] {
-            255,
+            this.knudHue.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudHue.Name = "knudHue";
             this.knudHue.Size = new System.Drawing.Size(58, 23);
             this.knudHue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
@@ -163,11 +164,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudSaturation.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
                                                                              | System.Windows.Forms.AnchorStyles.Right);
             this.knudSaturation.Location = new System.Drawing.Point(200, 3);
-            this.knudSaturation.Maximum = new decimal(new int[] {
-            255,
+            this.knudSaturation.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudSaturation.Name = "knudSaturation";
             this.knudSaturation.Size = new System.Drawing.Size(58, 23);
             this.knudSaturation.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
@@ -179,11 +181,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudLuminosity.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
                                                                              | System.Windows.Forms.AnchorStyles.Right);
             this.knudLuminosity.Location = new System.Drawing.Point(200, 6);
-            this.knudLuminosity.Maximum = new decimal(new int[] {
-            255,
+            this.knudLuminosity.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudLuminosity.Name = "knudLuminosity";
             this.knudLuminosity.Size = new System.Drawing.Size(58, 23);
             this.knudLuminosity.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
@@ -195,11 +198,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudAlpha.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
                                                                         | System.Windows.Forms.AnchorStyles.Right);
             this.knudAlpha.Location = new System.Drawing.Point(200, 3);
-            this.knudAlpha.Maximum = new decimal(new int[] {
-            255,
+            this.knudAlpha.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudAlpha.Name = "knudAlpha";
             this.knudAlpha.Size = new System.Drawing.Size(58, 23);
             this.knudAlpha.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
@@ -349,11 +353,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudRed.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
                                                                       | System.Windows.Forms.AnchorStyles.Right);
             this.knudRed.Location = new System.Drawing.Point(200, 3);
-            this.knudRed.Maximum = new decimal(new int[] {
-            255,
+            this.knudRed.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudRed.Name = "knudRed";
             this.knudRed.Size = new System.Drawing.Size(58, 22);
             this.knudRed.StateCommon.Back.Color1 = System.Drawing.Color.Red;
@@ -389,11 +394,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudGreen.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
                                                                         | System.Windows.Forms.AnchorStyles.Right);
             this.knudGreen.Location = new System.Drawing.Point(200, 6);
-            this.knudGreen.Maximum = new decimal(new int[] {
-            255,
+            this.knudGreen.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudGreen.Name = "knudGreen";
             this.knudGreen.Size = new System.Drawing.Size(58, 22);
             this.knudGreen.StateCommon.Back.Color1 = System.Drawing.Color.Green;
@@ -429,11 +435,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudBlue.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
                                                                        | System.Windows.Forms.AnchorStyles.Right);
             this.knudBlue.Location = new System.Drawing.Point(200, 6);
-            this.knudBlue.Maximum = new decimal(new int[] {
-            255,
+            this.knudBlue.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudBlue.Name = "knudBlue";
             this.knudBlue.Size = new System.Drawing.Size(58, 22);
             this.knudBlue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
@@ -441,7 +448,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudBlue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudBlue.TabIndex = 28;
             this.knudBlue.Typeface = null;
-            this.knudBlue.UseAccessibleUi = false;
+            this.knudBlue.UseAccessibleUI = false;
             // 
             // pnlHexadecimal
             // 
@@ -1024,7 +1031,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     // HTML
                     if (!(userAction && kcmbHex.Focused))
                     {
-                        kcmbHex.Text = this.Colour.IsNamedColor ? this.Colour.Name : string.Format("{0:X2}{1:X2}{2:X2}", this.Colour.R, this.Colour.G, this.Colour.B);
+                        kcmbHex.Text = this.Colour.IsNamedColor ? this.Colour.Name : $"{this.Colour.R:X2}{this.Colour.G:X2}{this.Colour.B:X2}";
                     }
 
                     // HSL

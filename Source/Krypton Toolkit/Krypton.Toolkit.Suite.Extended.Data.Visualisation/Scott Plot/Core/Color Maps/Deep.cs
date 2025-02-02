@@ -10,7 +10,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public override string Name => "Deep";
 
         public override (byte r, byte g, byte b)[] Rgbs => _rgbs;
-        private static readonly (byte, byte, byte)[] _rgbs = {
+        private static readonly (byte, byte, byte)[] _rgbs =
+        [
             ( 253, 254, 204 ),
             ( 251, 253, 203 ),
             ( 249, 252, 202 ),
@@ -267,7 +268,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             ( 41, 28, 47 ),
             ( 40, 27, 45 ),
             ( 40, 26, 44 )
-        };
+        ];
     }
 }
 

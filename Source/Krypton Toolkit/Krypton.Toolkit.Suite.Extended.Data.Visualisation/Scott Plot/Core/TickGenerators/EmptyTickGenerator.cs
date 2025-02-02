@@ -2,7 +2,7 @@
 {
     public class EmptyTickGenerator : ITickGenerator
     {
-        public Tick[] Ticks { get; set; } = Array.Empty<Tick>();
+        public Tick[] Ticks { get; set; } = [];
 
         public int MaxTickCount { get; set; } = 50;
 

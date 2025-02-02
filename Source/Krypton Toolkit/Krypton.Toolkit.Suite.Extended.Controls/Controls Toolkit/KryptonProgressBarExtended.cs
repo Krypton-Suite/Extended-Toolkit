@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             {
                 if (value is < 0 or > 255)
                 {
-                    object[] str = new object[] { value };
+                    object[] str = [value];
                     throw new ArgumentOutOfRangeException("value", $"A value of '{str}' is not valid for 'Fade'. 'Fade' must be between 0 and 255.");
                 }
 

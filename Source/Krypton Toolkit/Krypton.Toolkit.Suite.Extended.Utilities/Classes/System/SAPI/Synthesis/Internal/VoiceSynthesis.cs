@@ -136,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private bool _isDisposed;
 
-        private List<LexiconEntry> _lexicons = new();
+        private List<LexiconEntry> _lexicons = [];
 
         private SynthesizerState _synthesizerState;
 
@@ -158,23 +158,23 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private WeakReference _speechSyntesizer;
 
-        private readonly string[] xmlEscapeStrings = new string[5]
-        {
+        private readonly string[] xmlEscapeStrings =
+        [
             "&quot;",
             "&apos;",
             "&amp;",
             "&lt;",
             "&gt;"
-        };
+        ];
 
-        private readonly char[] xmlEscapeChars = new char[5]
-        {
+        private readonly char[] xmlEscapeChars =
+        [
             '"',
             '\'',
             '&',
             '<',
             '>'
-        };
+        ];
 
         internal Prompt Prompt
         {
@@ -650,7 +650,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             {
                 return new ReadOnlyCollection<InstalledVoice>(_installedVoices);
             }
-            Collection<InstalledVoice> collection = new Collection<InstalledVoice>();
+            Collection<InstalledVoice> collection = [];
             foreach (InstalledVoice installedVoice in _installedVoices)
             {
                 if (culture.Equals(installedVoice.VoiceInfo.Culture))
@@ -735,7 +735,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                                     InjectEvent(TtsEventId.StartInputStream, parametersSpeak2._prompt, parametersSpeak2._prompt._exception, null);
                                     if (parametersSpeak2._prompt._exception == null)
                                     {
-                                        List<LexiconEntry> list = new List<LexiconEntry>();
+                                        List<LexiconEntry> list = [];
                                         TTSVoice ttsVoice = _currentVoice != null ? _currentVoice : GetVoice(false);
                                         SpeakInfo speakInfo = new SpeakInfo(this, ttsVoice);
                                         if (parametersSpeak2._textToSpeak != null)
@@ -1209,10 +1209,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 {
                     if (type.IsSubclassOf(typeof(TtsEngineSsml)))
                     {
-                        string[] args = new string[1]
-                        {
+                        string[] args =
+                        [
                             voiceInfo.Clsid
-                        };
+                        ];
                         ttsEngineSsml = assembly.CreateInstance(type.ToString(), false, BindingFlags.Default, null, args, CultureInfo.CurrentUICulture, null) as TtsEngineSsml;
                         break;
                     }
@@ -1320,7 +1320,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private static List<InstalledVoice> BuildInstalledVoices(VoiceSynthesis voiceSynthesizer)
         {
-            List<InstalledVoice> list = new List<InstalledVoice>();
+            List<InstalledVoice> list = [];
             using (ObjectTokenCategory objectTokenCategory = ObjectTokenCategory.Create("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices"))
             {
                 if (objectTokenCategory != null)

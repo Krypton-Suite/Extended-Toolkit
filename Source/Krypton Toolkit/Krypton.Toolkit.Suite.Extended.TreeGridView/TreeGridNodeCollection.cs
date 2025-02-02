@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         internal TreeGridNodeCollection(KryptonTreeGridNodeRow owner)
         {
             Owner = owner;
-            List = new List<KryptonTreeGridNodeRow?>();
+            List = [];
         }
 
         #region Public Members

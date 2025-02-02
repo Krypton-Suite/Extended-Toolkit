@@ -406,7 +406,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     using (PathGradientBrush defaultBrush = new PathGradientBrush(defaultPath))
                     {
                         defaultBrush.CenterColor = Color.FromArgb(50, Color.White);
-                        defaultBrush.SurroundColors = new Color[] { Color.FromArgb(150, Color.White) };
+                        defaultBrush.SurroundColors = [Color.FromArgb(150, Color.White)];
                         g.FillPath(defaultBrush, defaultPath);
                     }
                 }

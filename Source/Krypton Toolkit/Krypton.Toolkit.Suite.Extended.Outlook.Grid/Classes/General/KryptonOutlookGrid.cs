@@ -134,8 +134,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             // in this case our custom OutlookGridRow class
             base.RowTemplate = new OutlookGridRow();
             _groupCollection = new(null);
-            _internalRows = new();
-            _internalColumns = new();
+            _internalRows = [];
+            _internalColumns = [];
             _fillMode = FillMode.GroupsOnly;
 
             // Cache the current global palette setting
@@ -160,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             AllowUserToOrderColumns = false;  //we will handle it ourselves
             _hideColumnOnGrouping = false;
-            _formatConditions = new();
+            _formatConditions = [];
 
             using (Graphics g = CreateGraphics())
             {
@@ -643,7 +643,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                                     sourceColumn.DisplayIndex = targetColumn.DisplayIndex;
 
                                     //Debug
-                                    List<DataGridViewColumn> listcol = new();
+                                    List<DataGridViewColumn> listcol = [];
                                     foreach (DataGridViewColumn col in Columns)
                                     {
                                         listcol.Add(col);
@@ -1890,7 +1890,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 ImageList imgListFormatting = new();
                 imgListFormatting.ColorDepth = ColorDepth.Depth32Bit;
                 imgListFormatting.ImageSize = new(32, 32);
-                List<ConditionalFormatting> tmpTag = new();
+                List<ConditionalFormatting> tmpTag = [];
                 imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_blue_32);
                 tmpTag.Add(new(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(76, 118, 255), false)));
                 imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_green_32);
@@ -1999,17 +1999,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         it2.Image = Resources.OutlookGridImageResources.paint_bucket_green;
                         it2.Click += OnBarCustomClick;
 
-                        KryptonContextMenuItems bars = new(new KryptonContextMenuItemBase[] { it2 });
+                        KryptonContextMenuItems bars = new([it2]);
 
                         //Menu construction
-                        it.Items.AddRange(new KryptonContextMenuItemBase[] {
-                        kFormattingBarHeadingSolid,
+                        it.Items.AddRange([
+                            kFormattingBarHeadingSolid,
                         kFormattingBarImgSelectSolid,
                         kFormattingBarHeadingGradient,
                         kFormattingBarImgSelectGradient,
                         kFormattingBarHeadingOther,
                         bars
-                        });
+                        ]);
                     }
                     else if (names[i] == EnumConditionalFormatType.TwoColoursRange.ToString())
                     {
@@ -2035,7 +2035,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         it2.Image = Resources.OutlookGridImageResources.paint_bucket_green;
                         it2.Click += OnTwoColorsCustomClick;
 
-                        twoColors = new(new KryptonContextMenuItemBase[] { sep1, it2 });
+                        twoColors = new([sep1, it2]);
                         it.Items.Add(twoColors);
                     }
                     else if (names[i] == EnumConditionalFormatType.ThreeColoursRange.ToString())
@@ -2062,7 +2062,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         it2.Image = Resources.OutlookGridImageResources.paint_bucket_green;
                         it2.Click += OnThreeColorsCustomClick;
 
-                        threeColors = new(new KryptonContextMenuItemBase[] { sep1, it2 });
+                        threeColors = new([sep1, it2]);
                         it.Items.Add(threeColors);
                     }
 
@@ -2081,7 +2081,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 _menuConditionalFormatting.Items.Add(conditionalFormattingItems);
 
                 //Add items inside an items collection (apart from separator1 which is only added if required)
-                _menuItems = new(new KryptonContextMenuItemBase[] { _menuSortAscending,
+                _menuItems = new([
+                    _menuSortAscending,
                                                                                             _menuSortDescending,
                                                                                             _menuSortBySummary,
                                                                                             _menuClearSorting,
@@ -2100,7 +2101,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                                                                                             _menuSeparator3,
                                                                                             _menuVisibleColumns,
                                                                                             _menuSeparator5,
-                                                                                            _menuConditionalFormatting});
+                                                                                            _menuConditionalFormatting
+                ]);
             }
 
             // Ensure we have a krypton context menu if not already present
@@ -2785,7 +2787,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 }
                 else
                 {
-                    tmp = new();
+                    tmp = [];
                     NonGroupedRecursiveFillOutlookGridRows(list, tmp);
 
                     //Add all the rows to the grid
@@ -2925,7 +2927,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //}
 
                 //Reinit!
-                tmp = new();
+                tmp = [];
                 //Get a list of rows (grouprow and non-grouprow)
                 RecursiveFillOutlookGridRows(_groupCollection, tmp);
 

@@ -159,7 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public SrgsItem()
         {
-            _elements = new SrgsElementList();
+            _elements = [];
         }
 
         public SrgsItem(string text)
@@ -263,27 +263,24 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             {
                 if (_minRepeat != -1)
                 {
-                    writer.WriteAttributeString("repeat", string.Format(CultureInfo.InvariantCulture, "{0}", new object[1]
-                    {
+                    writer.WriteAttributeString("repeat", string.Format(CultureInfo.InvariantCulture, "{0}", [
                         _minRepeat
-                    }));
+                    ]));
                 }
             }
             else if (_maxRepeat is int.MaxValue or -1)
             {
-                writer.WriteAttributeString("repeat", string.Format(CultureInfo.InvariantCulture, "{0}-", new object[1]
-                {
+                writer.WriteAttributeString("repeat", string.Format(CultureInfo.InvariantCulture, "{0}-", [
                     _minRepeat
-                }));
+                ]));
             }
             else
             {
                 int num = _minRepeat == -1 ? 1 : _minRepeat;
-                writer.WriteAttributeString("repeat", string.Format(CultureInfo.InvariantCulture, "{0}-{1}", new object[2]
-                {
+                writer.WriteAttributeString("repeat", string.Format(CultureInfo.InvariantCulture, "{0}-{1}", [
                     num,
                     _maxRepeat
-                }));
+                ]));
             }
             Type right = null;
             foreach (SrgsElement element in _elements)
@@ -318,19 +315,17 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
                     }
                     else if (_maxRepeat is int.MaxValue or -1)
                     {
-                        stringBuilder.Append(string.Format(CultureInfo.InvariantCulture, "{0},-", new object[1]
-                        {
+                        stringBuilder.Append(string.Format(CultureInfo.InvariantCulture, "{0},-", [
                             _minRepeat
-                        }));
+                        ]));
                     }
                     else
                     {
                         int num = _minRepeat == -1 ? 1 : _minRepeat;
-                        stringBuilder.Append(string.Format(CultureInfo.InvariantCulture, "{0},{1}", new object[2]
-                        {
+                        stringBuilder.Append(string.Format(CultureInfo.InvariantCulture, "{0},{1}", [
                             num,
                             _maxRepeat
-                        }));
+                        ]));
                     }
                     stringBuilder.Append("] ");
                 }

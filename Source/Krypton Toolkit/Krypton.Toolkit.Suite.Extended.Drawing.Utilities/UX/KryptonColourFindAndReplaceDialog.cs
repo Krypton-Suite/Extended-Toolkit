@@ -106,9 +106,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.kryptonNavigator1.Button.CloseButtonDisplay = Krypton.Navigator.ButtonDisplay.Hide;
             this.kryptonNavigator1.Location = new System.Drawing.Point(12, 12);
             this.kryptonNavigator1.Name = "kryptonNavigator1";
-            this.kryptonNavigator1.Pages.AddRange(new Krypton.Navigator.KryptonPage[] {
-            this.kryptonPage1,
-            this.kryptonPage2});
+            this.kryptonNavigator1.Pages.AddRange([
+                this.kryptonPage1,
+            this.kryptonPage2
+            ]);
             this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(622, 252);
             this.kryptonNavigator1.TabIndex = 3;

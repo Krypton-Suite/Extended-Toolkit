@@ -302,11 +302,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this.knudGreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.knudGreen.Location = new System.Drawing.Point(0, 0);
-            this.knudGreen.Maximum = new decimal(new int[] {
-            255,
+            this.knudGreen.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudGreen.Name = "knudGreen";
             this.knudGreen.Size = new System.Drawing.Size(52, 23);
             this.knudGreen.TabIndex = 1;
@@ -325,11 +326,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this.knudBlue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.knudBlue.Location = new System.Drawing.Point(0, 0);
-            this.knudBlue.Maximum = new decimal(new int[] {
-            255,
+            this.knudBlue.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudBlue.Name = "knudBlue";
             this.knudBlue.Size = new System.Drawing.Size(52, 22);
             this.knudBlue.TabIndex = 1;
@@ -348,11 +350,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this.knudRed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.knudRed.Location = new System.Drawing.Point(0, 0);
-            this.knudRed.Maximum = new decimal(new int[] {
-            255,
+            this.knudRed.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudRed.Name = "knudRed";
             this.knudRed.Size = new System.Drawing.Size(52, 22);
             this.knudRed.TabIndex = 0;
@@ -566,11 +569,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this.knudSaturation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.knudSaturation.Location = new System.Drawing.Point(0, 0);
-            this.knudSaturation.Maximum = new decimal(new int[] {
-            255,
+            this.knudSaturation.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudSaturation.Name = "knudSaturation";
             this.knudSaturation.Size = new System.Drawing.Size(52, 30);
             this.knudSaturation.TabIndex = 1;
@@ -589,11 +593,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this.knudLuminosity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.knudLuminosity.Location = new System.Drawing.Point(0, 0);
-            this.knudLuminosity.Maximum = new decimal(new int[] {
-            255,
+            this.knudLuminosity.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudLuminosity.Name = "knudLuminosity";
             this.knudLuminosity.Size = new System.Drawing.Size(52, 22);
             this.knudLuminosity.TabIndex = 1;
@@ -612,11 +617,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this.knudHue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.knudHue.Location = new System.Drawing.Point(0, 0);
-            this.knudHue.Maximum = new decimal(new int[] {
-            255,
+            this.knudHue.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudHue.Name = "knudHue";
             this.knudHue.Size = new System.Drawing.Size(52, 22);
             this.knudHue.TabIndex = 1;
@@ -745,11 +751,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // 
             this.knudAlpha.Dock = System.Windows.Forms.DockStyle.Fill;
             this.knudAlpha.Location = new System.Drawing.Point(0, 0);
-            this.knudAlpha.Maximum = new decimal(new int[] {
-            255,
+            this.knudAlpha.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudAlpha.Name = "knudAlpha";
             this.knudAlpha.Size = new System.Drawing.Size(52, 26);
             this.knudAlpha.TabIndex = 2;
@@ -1692,7 +1699,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     // HTML
                     if (!(userAction && kcmbHexadecimalValue.Focused))
                     {
-                        kcmbHexadecimalValue.Text = this.Colour.IsNamedColor ? this.Colour.Name : string.Format("{0:X2}{1:X2}{2:X2}", this.Colour.R, this.Colour.G, this.Colour.B);
+                        kcmbHexadecimalValue.Text = this.Colour.IsNamedColor ? this.Colour.Name : $"{this.Colour.R:X2}{this.Colour.G:X2}{this.Colour.B:X2}";
                     }
 
                     // HSL

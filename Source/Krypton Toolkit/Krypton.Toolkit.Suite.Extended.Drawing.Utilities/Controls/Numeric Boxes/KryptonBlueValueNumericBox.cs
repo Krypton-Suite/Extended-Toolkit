@@ -43,9 +43,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Properties
-        public bool UseAccessibleUi { get => _useAccessibleUi; set { _useAccessibleUi = value; Invalidate(); } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool UseAccessibleUI { get => _useAccessibleUi; set { _useAccessibleUi = value; Invalidate(); } }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Font Typeface { get => _typeface; set { _typeface = value; Invalidate(); } }
+
         #endregion
 
         #region Constructor
@@ -57,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             Value = DEFAULT_VALUE;
 
-            UseAccessibleUi = false;
+            UseAccessibleUI = false;
 
             StateCommon.Content.Font = Typeface;
 
@@ -96,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Overrides
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             AlterAppearance(_useAccessibleUi);
 

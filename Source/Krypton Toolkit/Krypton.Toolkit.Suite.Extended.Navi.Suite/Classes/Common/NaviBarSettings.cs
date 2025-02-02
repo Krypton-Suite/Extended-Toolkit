@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         public NaviBarSettings()
         {
-            BandSettings = new List<NaviBandSetting>();
+            BandSettings = [];
         }
     }
 }

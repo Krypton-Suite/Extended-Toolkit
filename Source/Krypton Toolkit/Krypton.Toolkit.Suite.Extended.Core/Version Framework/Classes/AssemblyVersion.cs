@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 {
                     AssemblyInformation? information = null;
 
-                    ReferenceAssembly = new();
+                    ReferenceAssembly = [];
 
                     for (int i = 0; i < assemblyNameList.Length; i++)
                     {

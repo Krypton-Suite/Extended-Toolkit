@@ -402,7 +402,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Variables
-        private string[] stringWin32classes = {"Win32_1394Controller",
+        private string[] stringWin32classes =
+        [
+            "Win32_1394Controller",
                                                 "Win32_1394ControllerDevice",
                                                 "Win32_AccountSID",
                                                 "Win32_ActionCheck",
@@ -833,7 +835,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                                 "Win32_WindowsProductActivation",
                                                 "Win32_WMIElementSetting",
                                                 "Win32_WMISetting"
-                                                };
+        ];
         private KryptonPanel kryptonPanel2;
         private KryptonBorderEdge kryptonBorderEdge1;
         private Control _targetControl = null;

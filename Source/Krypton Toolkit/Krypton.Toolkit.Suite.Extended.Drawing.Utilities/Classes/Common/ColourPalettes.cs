@@ -182,7 +182,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             {
                 List<Color> results;
 
-                results = new List<Color>();
+                results = [];
 
                 foreach (PropertyInfo property in typeof(Color).GetProperties(BindingFlags.Public | BindingFlags.Static).Where(property => property.PropertyType == typeof(Color)))
                 {
@@ -205,9 +205,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             get
             {
-                return ScaledPalette(new[]
-                                     {
-                               Color.FromArgb(255, 255, 255),
+                return ScaledPalette([
+                    Color.FromArgb(255, 255, 255),
                                Color.FromArgb(0, 0, 0),
                                Color.FromArgb(238, 236, 255),
                                Color.FromArgb(31, 73, 125),
@@ -217,7 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                                Color.FromArgb(128, 100, 162),
                                Color.FromArgb(75, 172, 198),
                                Color.FromArgb(247, 150, 70)
-                             });
+                ]);
             }
         }
 
@@ -868,7 +867,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     result = QbColors;
                     break;
                 case ColourPalette.None:
-                    result = new ColourCollection();
+                    result = [];
                     break;
                 case ColourPalette.WebSafe:
                     result = WebSafe;
@@ -887,7 +886,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             ColourCollection results;
 
-            results = new ColourCollection();
+            results = [];
 
             topRow = topRow.ToArray();
             results.AddRange(topRow);

@@ -192,9 +192,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // ktxtCustomPath
             // 
-            this.ktxtCustomPath.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
-            this.bsaReset,
-            this.bsaBrowse});
+            this.ktxtCustomPath.ButtonSpecs.AddRange([
+                this.bsaReset,
+            this.bsaBrowse
+            ]);
             this.ktxtCustomPath.Enabled = false;
             this.ktxtCustomPath.Location = new(198, 55);
             this.ktxtCustomPath.Name = "ktxtCustomPath";

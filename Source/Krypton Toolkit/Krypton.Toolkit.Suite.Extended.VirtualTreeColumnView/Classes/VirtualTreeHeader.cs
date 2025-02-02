@@ -41,6 +41,6 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
 
         [Category("Behavior")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<VirtualTreeColumn> Columns { get; set; } = new();
+        public List<VirtualTreeColumn> Columns { get; set; } = [];
     }
 }

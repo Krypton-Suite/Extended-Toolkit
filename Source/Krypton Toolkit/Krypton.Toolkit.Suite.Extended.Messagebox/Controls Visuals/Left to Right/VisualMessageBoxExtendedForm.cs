@@ -1046,8 +1046,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     Control? control = FromHandle(owner.Handle);
 
                     var mInfoMethod = control!.GetType().GetMethod(nameof(OnHelpRequested), BindingFlags.Instance | BindingFlags.NonPublic,
-                        Type.DefaultBinder, new[] { typeof(HelpEventArgs) }, null)!;
-                    mInfoMethod.Invoke(control, new object[] { new HelpEventArgs(MousePosition) });
+                        Type.DefaultBinder, [typeof(HelpEventArgs)], null)!;
+                    mInfoMethod.Invoke(control, [new HelpEventArgs(MousePosition)]);
                     if (_helpInfo != null)
                     {
                         if (string.IsNullOrWhiteSpace(_helpInfo.HelpFilePath))
@@ -1108,10 +1108,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 Control? control = FromHandle(_showOwner!.Handle);
 
                 MethodInfo? mInfoMethod = control!.GetType().GetMethod(@"OnHelpRequested", BindingFlags.Instance | BindingFlags.NonPublic,
-                    Type.DefaultBinder, new[] { typeof(HelpEventArgs) }, null)!;
+                    Type.DefaultBinder, [typeof(HelpEventArgs)], null)!;
                 if (mInfoMethod != null)
                 {
-                    mInfoMethod.Invoke(control, new object[] { new HelpEventArgs(MousePosition) });
+                    mInfoMethod.Invoke(control, [new HelpEventArgs(MousePosition)]);
                 }
                 if (_helpInfo != null)
                 {

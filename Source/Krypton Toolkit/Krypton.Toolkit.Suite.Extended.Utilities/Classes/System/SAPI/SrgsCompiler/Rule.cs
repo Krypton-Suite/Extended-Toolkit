@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal int _iSerialize2;
 
-        internal List<Rule> _listRules = new();
+        internal List<Rule> _listRules = [];
 
         internal bool _fStaticRule;
 

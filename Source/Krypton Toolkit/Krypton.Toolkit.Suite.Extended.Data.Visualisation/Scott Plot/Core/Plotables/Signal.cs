@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             IReadOnlyList<double> ys = Data.GetYs();
 
-            List<Pixel> points = new();
+            List<Pixel> points = [];
             for (int i = i1; i <= i2; i++)
             {
                 float x = Axes.GetPixelX(Data.GetX(i));

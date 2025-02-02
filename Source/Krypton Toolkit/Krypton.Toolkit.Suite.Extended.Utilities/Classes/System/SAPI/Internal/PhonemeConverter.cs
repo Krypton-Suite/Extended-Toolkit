@@ -94,10 +94,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
         static PhonemeConverter()
         {
-            _phoneMapsCompressed = new PhoneMapCompressed[8]
-            {
-                new(0, 207, new byte[720]
-                {
+            _phoneMapsCompressed =
+            [
+                new(0, 207, [
                     46,
                     0,
                     95,
@@ -818,8 +817,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     90,
                     82,
                     0
-                }, new char[249]
-                {
+                ], [
                     '.',
                     '\u0001',
                     '\u0002',
@@ -1069,9 +1067,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     'ʒ',
                     'ʓ',
                     'ʐ'
-                }),
-                new(1028, 52, new byte[260]
-                {
+                ]),
+                new(1028, 52, [
                     48,
                     48,
                     50,
@@ -1332,8 +1329,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     50,
                     57,
                     0
-                }, new char[52]
-                {
+                ], [
                     '!',
                     '&',
                     '*',
@@ -1386,9 +1382,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     'ㄧ',
                     'ㄨ',
                     'ㄩ'
-                }),
-                new(1031, 53, new byte[129]
-                {
+                ]),
+                new(1031, 53, [
                     45,
                     0,
                     33,
@@ -1518,8 +1513,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     90,
                     72,
                     0
-                }, new char[53]
-                {
+                ], [
                     '\u0001',
                     '\u0002',
                     '\u0003',
@@ -1573,9 +1567,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '3',
                     '4',
                     '5'
-                }),
-                new(1033, 49, new byte[121]
-                {
+                ]),
+                new(1033, 49, [
                     45,
                     0,
                     33,
@@ -1697,8 +1690,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     90,
                     72,
                     0
-                }, new char[49]
-                {
+                ], [
                     '\u0001',
                     '\u0002',
                     '\u0003',
@@ -1748,9 +1740,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '/',
                     '0',
                     '1'
-                }),
-                new(1034, 35, new byte[76]
-                {
+                ]),
+                new(1034, 35, [
                     45,
                     0,
                     33,
@@ -1827,8 +1818,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     0,
                     88,
                     0
-                }, new char[35]
-                {
+                ], [
                     '\u0001',
                     '\u0002',
                     '\u0003',
@@ -1864,9 +1854,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '\u000e',
                     '"',
                     '\u0019'
-                }),
-                new(1036, 42, new byte[100]
-                {
+                ]),
+                new(1036, 42, [
                     45,
                     0,
                     33,
@@ -1967,8 +1956,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     90,
                     72,
                     0
-                }, new char[42]
-                {
+                ], [
                     '\u0001',
                     '\u0002',
                     '\u0003',
@@ -2011,9 +1999,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '(',
                     ')',
                     '*'
-                }),
-                new(1041, 102, new byte[510]
-                {
+                ]),
+                new(1041, 102, [
                     48,
                     48,
                     50,
@@ -2524,8 +2511,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     70,
                     69,
                     0
-                }, new char[102]
-                {
+                ], [
                     '!',
                     '\'',
                     '+',
@@ -2628,9 +2614,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     '\u30fc',
                     '\u30fd',
                     '\u30fe'
-                }),
-                new(2052, 422, new byte[1755]
-                {
+                ]),
+                new(2052, 422, [
                     45,
                     0,
                     33,
@@ -4386,8 +4371,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     85,
                     79,
                     0
-                }, new char[422]
-                {
+                ], [
                     '\u0001',
                     '\u0002',
                     '\u0003',
@@ -4810,10 +4794,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                     'Ƥ',
                     'ƥ',
                     'Ʀ'
-                })
-            };
-            _updIds = new char[185]
-            {
+                ])
+            ];
+            _updIds =
+            [
                 '\u0001',
                 '\u0002',
                 '\u0003',
@@ -4999,7 +4983,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
                 '↓',
                 '↗',
                 '↘'
-            };
+            ];
             _phoneMaps = DecompressPhoneMaps(_phoneMapsCompressed);
             _upsConverter = new PhonemeConverter(_phoneMaps[0]);
         }

@@ -186,7 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             _kcReset.Execute += Reset_Execute;
 
-            ButtonSpecs.AddRange(new[] { _bsaBrowse, _bsaReset });
+            ButtonSpecs.AddRange([_bsaBrowse, _bsaReset]);
 
             _fileDialogType = FileDialogType.Standard;
 

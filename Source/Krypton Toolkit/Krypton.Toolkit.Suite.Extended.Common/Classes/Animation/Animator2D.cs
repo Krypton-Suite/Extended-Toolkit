@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     /// </summary>
     public class Animator2D : IAnimator
     {
-        private readonly List<Path2D> _paths = new List<Path2D>();
+        private readonly List<Path2D> _paths = [];
 
 
         /// <summary>The callback to get invoked at the end of the animation.</summary>
@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Initializes a new instance of the <see cref="Animator2D" /> class.
         /// </summary>
         public Animator2D()
-            : this(new Path2D[] { })
+            : this([])
         {
         }
 
@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Limits the maximum frames per seconds
         /// </param>
         public Animator2D(FPSLimiterKnownValues fpsLimiter)
-            : this(new Path2D[] { }, fpsLimiter)
+            : this([], fpsLimiter)
         {
         }
 
@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     The path of the animation
         /// </param>
         public Animator2D(Path2D path)
-            : this(new[] { path })
+            : this([path])
         {
         }
 
@@ -106,7 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Limits the maximum frames per seconds
         /// </param>
         public Animator2D(Path2D path, FPSLimiterKnownValues fpsLimiter)
-            : this(new[] { path }, fpsLimiter)
+            : this([path], fpsLimiter)
         {
         }
 

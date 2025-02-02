@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public OutlookGridGroupCollection()
         {
-            _groupList = new();
+            _groupList = [];
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="parentGroup">The parent group, if any.</param>
         public OutlookGridGroupCollection(IOutlookGridGroup? parentGroup)
         {
-            _groupList = new();
+            _groupList = [];
             _parentGroup = parentGroup;
         }
         #endregion

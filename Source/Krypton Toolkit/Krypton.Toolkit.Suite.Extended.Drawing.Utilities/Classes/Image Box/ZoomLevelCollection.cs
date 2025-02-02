@@ -70,10 +70,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             get
             {
-                return new ZoomLevelCollection(new[]
-                                               {
-                                         7, 10, 15, 20, 25, 30, 50, 70, 100, 150, 200, 300, 400, 500, 600, 700, 800, 1200, 1600
-                                       });
+                return new ZoomLevelCollection([
+                    7, 10, 15, 20, 25, 30, 50, 70, 100, 150, 200, 300, 400, 500, 600, 700, 800, 1200, 1600
+                ]);
             }
         }
 

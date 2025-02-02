@@ -729,7 +729,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             bool alldaychanged = false;
             int offset = Math.Abs(Calendar.TimeUnitsOffset);
-            List<CalendarItemAlternative> itemsOnScene = new List<CalendarItemAlternative>();
+            List<CalendarItemAlternative> itemsOnScene = [];
             if (itemsOnScene == null)
             {
                 throw new ArgumentNullException(nameof(itemsOnScene));
@@ -902,12 +902,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     {
                         maxItemsOnDayTop = Math.Max(maxItemsOnDayTop, day.DayTop.PassingItems.Count);
 
-                        List<List<CalendarItemAlternative>> groups = new List<List<CalendarItemAlternative>>();
+                        List<List<CalendarItemAlternative>> groups = [];
                         List<CalendarItemAlternative> items = new List<CalendarItemAlternative>(day.ContainedItems);
 
                         while (items.Count > 0)
                         {
-                            List<CalendarItemAlternative> group = new List<CalendarItemAlternative>();
+                            List<CalendarItemAlternative> group = [];
 
                             CollectIntersectingGroup(items[0], items, group);
 

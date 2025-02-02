@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             }
         }
 
-        private SrgsItemList _items = new();
+        private SrgsItemList _items = [];
 
         public Collection<SrgsItem> Items => _items;
 

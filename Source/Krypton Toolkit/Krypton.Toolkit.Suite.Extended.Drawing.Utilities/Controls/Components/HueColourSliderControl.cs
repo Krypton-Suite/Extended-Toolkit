@@ -92,6 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             set => base.Minimum = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override float Value
         {
             get => base.Value;

@@ -248,7 +248,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     e.Graphics.FillRectangle(_brushButtonHover, RectOptions);
                     e.Graphics.DrawRectangle(_penButtonBorder, RectOptions);
                 }
-                e.Graphics.FillPolygon(_brushForeColour, new Point[] { new Point(RectOptions.Left + 4, RectOptions.Top + 6), new Point(RectOptions.Left + 12, RectOptions.Top + 6), new Point(RectOptions.Left + 8, RectOptions.Top + 4 + 6) });
+                e.Graphics.FillPolygon(_brushForeColour, [new Point(RectOptions.Left + 4, RectOptions.Top + 6), new Point(RectOptions.Left + 12, RectOptions.Top + 6), new Point(RectOptions.Left + 8, RectOptions.Top + 4 + 6)
+                ]);
             }
 
             // draw icon

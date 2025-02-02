@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
     public class AssemblyReflectionAccessor : IAssemblyAccessor
     {
         private Assembly _assembly;
-        private List<Attribute> _assemblyAttributes = new();
+        private List<Attribute> _assemblyAttributes = [];
 
         /// <summary>
         /// Create the assembly accessor with a given assembly name. All pertinent attributes

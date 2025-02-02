@@ -155,6 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <value><c>true</c> if a snapshot image is available; otherwise, <c>false</c>.</value>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool HasSnapshot { get; protected set; }
 
         /// <summary>

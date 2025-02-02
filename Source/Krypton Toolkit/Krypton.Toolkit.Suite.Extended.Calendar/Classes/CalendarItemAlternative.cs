@@ -84,8 +84,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="calendar">Calendar to reference item</param>
         public CalendarItemAlternative(KryptonCalendar calendar) : base(calendar)
         {
-            _unitsPassing = new List<CalendarTimeScaleUnit?>();
-            _topsPassing = new List<CalendarDayTop?>();
+            _unitsPassing = [];
+            _topsPassing = [];
             _backgroundColour = Color.Empty;
             _borderColour = Color.Empty;
             _oreColour = Color.Empty;
@@ -271,7 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     time = EndDate.ToString(Calendar.ItemsTimeFormat);
                 }
 
-                return string.Format("{0} {1}", date, time).Trim();
+                return $"{date} {time}".Trim();
             }
         }
 
@@ -452,7 +452,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     time = StartDate.ToString(Calendar.ItemsTimeFormat);
                 }
 
-                return string.Format("{0} {1}", date, time).Trim();
+                return $"{date} {time}".Trim();
             }
         }
 
@@ -529,8 +529,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <returns></returns>
         public IEnumerable<Rectangle> GetAllBounds()
         {
-            List<Rectangle> r = new List<Rectangle>(AditionalBounds == null ? new Rectangle[] { } : AditionalBounds);
-            r.Add(Bounds);
+            List<Rectangle> r =
+            [
+                ..AditionalBounds == null ? [] : AditionalBounds,
+                Bounds
+            ];
 
             r.Sort(CompareBounds);
 
@@ -641,8 +644,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             }
             else
             {
-                List<Rectangle> rs = new List<Rectangle>(false ? new Rectangle[] { } : AditionalBounds);
-                rs.Add(r);
+                List<Rectangle> rs =
+                [
+                    ..false ? [] : AditionalBounds,
+                    r
+                ];
                 AditionalBounds = rs.ToArray();
             }
         }
@@ -694,7 +700,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         internal void ClearBounds()
         {
             SetBounds(Rectangle.Empty);
-            AditionalBounds = new Rectangle[] { };
+            AditionalBounds = [];
             SetMinuteStartTop(0);
             SetMinuteEndTop(0);
         }

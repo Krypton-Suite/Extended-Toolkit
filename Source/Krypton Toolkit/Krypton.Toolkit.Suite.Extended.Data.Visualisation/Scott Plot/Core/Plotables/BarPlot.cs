@@ -42,7 +42,7 @@
 
         public BarPlot(Bar bar)
         {
-            Bars = new Bar[] { bar };
+            Bars = [bar];
         }
 
         public BarPlot(IEnumerable<Bar> bars)

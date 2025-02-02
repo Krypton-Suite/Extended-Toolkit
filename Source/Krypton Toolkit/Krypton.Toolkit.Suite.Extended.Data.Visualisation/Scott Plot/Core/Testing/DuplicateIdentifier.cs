@@ -17,8 +17,8 @@
 
         public void ShouldHaveNoDuplicates()
         {
-            HashSet<string> duplicateIDs = new();
-            HashSet<string> seenIDs = new();
+            HashSet<string> duplicateIDs = [];
+            HashSet<string> seenIDs = [];
             for (int i = 0; i < _things.Count; i++)
             {
                 string id = _things[i].Key;

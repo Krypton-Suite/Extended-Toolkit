@@ -188,7 +188,7 @@
 
             double mult = 1;
 
-            List<Ohlc> ohlcs = new();
+            List<Ohlc> ohlcs = [];
             var open = RandomNumber(150, 250);
             for (var i = 0; i < count; i++)
             {

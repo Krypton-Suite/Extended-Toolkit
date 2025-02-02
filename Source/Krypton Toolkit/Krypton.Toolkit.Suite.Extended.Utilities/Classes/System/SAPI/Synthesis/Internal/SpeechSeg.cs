@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
     {
         private TTSVoice _voice;
 
-        private List<TextFragment> _textFragments = new();
+        private List<TextFragment> _textFragments = [];
 
         private AudioData _audio;
 

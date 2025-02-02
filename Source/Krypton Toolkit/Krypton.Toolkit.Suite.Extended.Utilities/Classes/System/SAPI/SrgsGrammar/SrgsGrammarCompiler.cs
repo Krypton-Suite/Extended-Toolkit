@@ -36,10 +36,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             Helpers.ThrowIfNull(outputStream, "outputStream");
             using (XmlTextReader xmlTextReader = new XmlTextReader(new Uri(inputPath, UriKind.RelativeOrAbsolute).ToString()))
             {
-                SrgsCompiler.SrgsCompiler.CompileStream(new XmlReader[1]
-                {
+                SrgsCompiler.SrgsCompiler.CompileStream([
                     xmlTextReader
-                }, null, outputStream, true, null, null, null);
+                ], null, outputStream, true, null, null, null);
             }
         }
 
@@ -54,10 +53,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
         {
             Helpers.ThrowIfNull(reader, "reader");
             Helpers.ThrowIfNull(outputStream, "outputStream");
-            SrgsCompiler.SrgsCompiler.CompileStream(new XmlReader[1]
-            {
+            SrgsCompiler.SrgsCompiler.CompileStream([
                 reader
-            }, null, outputStream, true, null, null, null);
+            ], null, outputStream, true, null, null, null);
         }
 
         public static void CompileClassLibrary(string[] inputPaths, string outputPath, string[] referencedAssemblies, string keyFile)
@@ -97,10 +95,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
         {
             Helpers.ThrowIfNull(reader, "reader");
             Helpers.ThrowIfEmptyOrNull(outputPath, "outputPath");
-            SrgsCompiler.SrgsCompiler.CompileStream(new XmlReader[1]
-            {
+            SrgsCompiler.SrgsCompiler.CompileStream([
                 reader
-            }, outputPath, null, false, null, referencedAssemblies, keyFile);
+            ], outputPath, null, false, null, referencedAssemblies, keyFile);
         }
 
         private static bool CheckIfCfg(Stream stream, out int cfgLength)
@@ -123,10 +120,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             }
             else
             {
-                SrgsCompiler.SrgsCompiler.CompileStream(new XmlReader[1]
-                {
+                SrgsCompiler.SrgsCompiler.CompileStream([
                     new XmlTextReader(seekableReadStream)
-                }, null, outputStream, true, orginalUri, null, null);
+                ], null, outputStream, true, orginalUri, null, null);
             }
         }
     }

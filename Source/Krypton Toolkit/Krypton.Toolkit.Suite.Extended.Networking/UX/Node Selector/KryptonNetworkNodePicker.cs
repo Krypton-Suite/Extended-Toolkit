@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
         private string? _selectedComputerName = null;
 
-        private string[] _sqlServerList = new string[0];
+        private string[] _sqlServerList = [];
         #endregion
 
         #region Properties
@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             int filterVal = 0x00;
             bool itemsChecked = false;
             int numItemsChecked = 0;
-            _sqlServerList = Array.Empty<string>(); // clear list, if any
+            _sqlServerList = []; // clear list, if any
 
             foreach (KryptonCheckBox cb in kgbServerTypes.Controls)
             {

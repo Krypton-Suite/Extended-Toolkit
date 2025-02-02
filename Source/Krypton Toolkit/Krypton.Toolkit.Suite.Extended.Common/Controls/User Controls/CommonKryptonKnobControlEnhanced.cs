@@ -761,7 +761,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     string strvalmin = _minimum.ToString();
                     string strval = strvalmax.Length > strvalmin.Length ? strvalmax : strvalmin;
                     double val = Convert.ToDouble(strval);
-                    String str = String.Format("{0,0:D}", (int)val);
+                    String str = $"{(int)val,0:D}";
 
                     float fSize;
                     SizeF strsize;
@@ -857,7 +857,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 string strval = strvalmax.Length > strvalmin.Length ? strvalmax : strvalmin;
                 double val = Convert.ToDouble(strval);
                 //double val = _maximum;
-                String str = String.Format("{0,0:D}", (int)val);
+                String str = $"{(int)val,0:D}";
                 float fSize;
                 SizeF strsize;
 
@@ -898,7 +898,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
                     //Draw graduation values                                                                                
                     val = Math.Round(rulerValue);
-                    str = String.Format("{0,0:D}", (int)val);
+                    str = $"{(int)val,0:D}";
 
                     // If autosize
                     if (_scaleTypefaceAutoSize)
@@ -1010,7 +1010,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 double val = Convert.ToDouble(strval);
 
                 //double val = _maximum;
-                String str = String.Format("{0,0:D}", (int)val);
+                String str = $"{(int)val,0:D}";
 
                 float fSize = _scaleTypeface.Size;
 
@@ -1158,7 +1158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
 
             double val = _maximum;
-            String str = String.Format("{0,0:D}", (int)val);
+            String str = $"{(int)val,0:D}";
             float fSize;
             SizeF strsize;
 

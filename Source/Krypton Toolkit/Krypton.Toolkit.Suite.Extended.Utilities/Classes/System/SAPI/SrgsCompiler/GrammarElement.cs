@@ -32,9 +32,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
     {
         private Backend _backend;
 
-        private List<Rule> _undefRules = new();
+        private List<Rule> _undefRules = [];
 
-        private List<Rule> _rules = new();
+        private List<Rule> _rules = [];
 
         private CustomGrammar _cg;
 

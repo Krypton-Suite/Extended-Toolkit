@@ -103,6 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             set => base.Minimum = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override float Value
         {
             get => base.Value;
@@ -113,6 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// Gets or sets a value indicating whether input changes should be processed.
         /// </summary>
         /// <value><c>true</c> if input changes should be processed; otherwise, <c>false</c>.</value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] 
         protected bool LockUpdates { get; set; }
 
         #endregion

@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             // Create the drop down view
             _drawDropDown = new ViewLayoutCenter(1);
-            _drawDropDownButton = new ViewDrawDropDownButton();
+            _drawDropDownButton = new ViewDrawDropDownButton(_paletteNormal.PaletteContent);
             _drawDropDown.Add(_drawDropDownButton);
             _drawOuterSeparator = new ViewLayoutSeparator(1);
 
@@ -243,8 +243,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         public PaletteBase DropDownPalette
         {
-            get => _drawDropDownButton.Palette;
-            set => _drawDropDownButton.Palette = value;
+            get => (PaletteBase)_drawDropDownButton.Palette;
+            //set => _drawDropDownButton.Palette = value;
         }
         #endregion
 

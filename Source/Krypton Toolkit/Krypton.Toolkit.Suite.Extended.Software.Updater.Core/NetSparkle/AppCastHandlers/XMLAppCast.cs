@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// </summary>
         public XMLAppCast()
         {
-            Items = new List<AppCastItem>();
+            Items = [];
             SignatureFileExtension = "signature";
         }
 

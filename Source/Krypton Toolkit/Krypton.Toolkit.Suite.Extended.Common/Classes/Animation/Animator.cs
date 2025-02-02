@@ -38,9 +38,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     public class Animator : IAnimator
     {
 
-        private readonly List<AnimationPath> _paths = new List<AnimationPath>();
+        private readonly List<AnimationPath> _paths = [];
 
-        private readonly List<AnimationPath> _tempPaths = new List<AnimationPath>();
+        private readonly List<AnimationPath> _tempPaths = [];
 
         private readonly AnimationTimer _timer;
 
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Initializes a new instance of the <see cref="Animator" /> class.
         /// </summary>
         public Animator()
-            : this(new AnimationPath[] { })
+            : this([])
         {
         }
 
@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Limits the maximum frames per seconds
         /// </param>
         public Animator(FPSLimiterKnownValues fpsLimiter)
-            : this(new AnimationPath[] { }, fpsLimiter)
+            : this([], fpsLimiter)
         {
         }
 
@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     The path of the animation
         /// </param>
         public Animator(AnimationPath path)
-            : this(new[] { path })
+            : this([path])
         {
         }
 
@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Limits the maximum frames per seconds
         /// </param>
         public Animator(AnimationPath path, FPSLimiterKnownValues fpsLimiter)
-            : this(new[] { path }, fpsLimiter)
+            : this([path], fpsLimiter)
         {
         }
 

@@ -345,8 +345,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             List<Color> colors;
             Size size;
 
-            points = new();
-            colors = new();
+            points = [];
+            colors = [];
             size = this.ClientSize;
 
             // Only define the points if the control is above a minimum size, otherwise if it's too small, you get an "out of memory" exceptions (of all things) when creating the brush
@@ -417,13 +417,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 Point[] diamondOuter;
 
-                diamondOuter = new[]
-                               {
-                         new Point(halfSize, 0),
+                diamondOuter =
+                [
+                    new Point(halfSize, 0),
                          new Point(_selectionSize, halfSize),
                          new Point(halfSize, _selectionSize),
                          new Point(0, halfSize)
-                       };
+                ];
 
                 g.FillPolygon(SystemBrushes.Control, diamondOuter);
                 g.DrawPolygon(SystemPens.ControlDark, diamondOuter);

@@ -12,12 +12,12 @@
             fill.ApplyToPaint(paint);
 
             // Top, right, and left vertices
-            SKPoint[] pointsList = new SKPoint[]
-            {
+            SKPoint[] pointsList =
+            [
                 new SKPoint(center.X, center.Y - radius),
                 new SKPoint(center.X + xOffset, center.Y + yOffset),
-                new SKPoint(center.X - xOffset, center.Y + yOffset),
-            };
+                new SKPoint(center.X - xOffset, center.Y + yOffset)
+            ];
 
             var path = new SKPath();
             path.AddPoly(pointsList);
