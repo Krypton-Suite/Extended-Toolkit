@@ -62,6 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <summary>
         /// Overrides CellTemplate
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override DataGridViewCell CellTemplate
         {
             get => base.CellTemplate;
@@ -130,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             int barWidth;
             if ((double)value >= 1.0)
             {
-                barWidth = (int)(cellBounds.Width - 10);
+                barWidth = cellBounds.Width - 10;
             }
             else
             {

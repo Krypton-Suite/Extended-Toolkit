@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                                            InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
                                            InputBoxButtons buttons = InputBoxButtons.OkCancel,
                                            InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
-                                           Image customImage = null, DateTime? initialDateTime = null)
+                                           Image? customImage = null, DateTime? initialDateTime = null)
         {
             InitializeComponent();
 
@@ -305,7 +305,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <summary>Updates the icon.</summary>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="customImage">The custom image.</param>
-        private void UpdateIcon(InputBoxIconType iconType, Image customImage = null)
+        private void UpdateIcon(InputBoxIconType iconType, Image? customImage = null)
         {
             switch (iconType)
             {
@@ -692,7 +692,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                                             InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
                                             InputBoxButtons buttons = InputBoxButtons.OkCancel,
                                             InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
-                                            Image customImage = null, DateTime? initialDateTime = null)
+                                            Image? customImage = null, DateTime? initialDateTime = null)
         {
             IWin32Window showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
 

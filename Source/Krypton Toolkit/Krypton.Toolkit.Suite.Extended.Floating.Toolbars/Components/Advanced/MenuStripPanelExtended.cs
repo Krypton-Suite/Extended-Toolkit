@@ -37,8 +37,11 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Property
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public FloatableMenuStrip FloatableMenuStrip { get => _floatableMenuStrip; set => _floatableMenuStrip = value; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Rectangle ActiveRectangle => _activeRectangle;
 
         #endregion
@@ -83,8 +86,6 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                         break;
                     case DockStyle.Right:
                         _activeRectangle.X -= 23;
-                        break;
-                    default:
                         break;
                 }
             }

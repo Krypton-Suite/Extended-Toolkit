@@ -1,4 +1,5 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿#pragma warning disable CS1574, CS1584, CS1581, CS1580
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class DataStreamerSource
     {

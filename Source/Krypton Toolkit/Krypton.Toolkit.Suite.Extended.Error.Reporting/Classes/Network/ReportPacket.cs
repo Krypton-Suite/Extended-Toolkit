@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         [DataMember]
         public string AppName { get; set; }
         [DataMember]
-        public string AppVersion { get; set; }
+        public string? AppVersion { get; set; }
         [DataMember]
         public string ExceptionMessage { get; set; }
         [DataMember]

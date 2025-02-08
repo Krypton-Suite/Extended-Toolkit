@@ -80,6 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Gets or sets the text displayed in the header region
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Caption
         {
             get => caption;
@@ -92,6 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         [
         DefaultValue(20)
         ]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int HeaderHeight
         {
             get => headerHeight;
@@ -111,6 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         [
         DefaultValue(true)
         ]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool Expanded
         {
             get => expanded;
@@ -137,6 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         [
         DefaultValue(150),
         ]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int ExpandedHeight
         {
             get => expandedHeight;
@@ -146,6 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Overriden. Gets or sets the current height of the GroupView
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new int Height
         {
             get => base.Height;
@@ -164,6 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Overriden. Gets or sets the ContextMenuStrip associated with this control
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new ContextMenuStrip ContextMenuStrip
         {
             get => m_contextMenuStrip;
@@ -173,6 +179,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Gets or sets the shortcut menu to display when the user right-clicks the header. 
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ContextMenuStrip HeaderContextMenuStrip
         {
             get => m_headerContextMenuStrip;

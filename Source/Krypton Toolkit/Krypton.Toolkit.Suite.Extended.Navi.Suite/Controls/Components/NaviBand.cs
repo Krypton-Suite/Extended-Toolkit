@@ -81,6 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Gets or sets the position in a list of this band
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         internal int Order
         {
             get => order;
@@ -90,6 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Gets or sets the original position in a list of this band
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         internal int OriginalOrder
         {
             get => originalOrder;
@@ -105,6 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         Category("Appearance"),
         Description("The image displayed when the button is not displayed as a small button"),
         ]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Image LargeImage
         {
             get => largeImage;
@@ -128,6 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         Localizable(true),
         Description("The image displayed when the button is displayed as a small button"),
         ]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Image SmallImage
         {
             get => smallImage;
@@ -149,9 +153,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         [
         Category("Appearance"),
         Description("The image displayed when the button is not displayed as a small button"),
-        Editor(typeof(LargeImageIndexEditor), typeof(System.Drawing.Design.UITypeEditor)),
+        Editor(typeof(LargeImageIndexEditor), typeof(UITypeEditor)),
         TypeConverter(typeof(LargeImageIndexConverter)),
         ]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int LargeImageIndex
         {
             get => largeImageIndex;
@@ -171,9 +176,10 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         [
         Category("Appearance"),
         Description("The image displayed when the button is displayed as a small button"),
-        Editor(typeof(SmallImageIndexEditor), typeof(System.Drawing.Design.UITypeEditor)),
+        Editor(typeof(SmallImageIndexEditor), typeof(UITypeEditor)),
         TypeConverter(typeof(SmallImageIndexConverter)),
         ]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int SmallImageIndex
         {
             get => smallImageIndex;

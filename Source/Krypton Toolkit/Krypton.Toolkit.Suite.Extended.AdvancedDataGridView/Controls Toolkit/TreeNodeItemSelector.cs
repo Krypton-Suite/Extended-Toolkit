@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="value"></param>
         /// <param name="state"></param>
         /// <param name="nodeType"></param>
-        private TreeNodeItemSelector(String text, object value, CheckState state, CustomNodeType nodeType)
+        private TreeNodeItemSelector(string? text, object? value, CheckState state, CustomNodeType nodeType)
             : base(text)
         {
             CheckState = state;
@@ -125,10 +125,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             if (GetNodeCount(false) > 0)
             {
                 foreach (TreeNodeItemSelector? child in Nodes)
+                {
                     if (child != null)
                     {
                         n.AddChild(child.Clone());
                     }
+                }
             }
 
             return n;
@@ -147,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get Node value
         /// </summary>
-        public object Value { get; private set; }
+        public object? Value { get; private set; }
 
         /// <summary>
         /// Get Node parent
@@ -206,7 +208,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="state"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static TreeNodeItemSelector CreateNode(string text, object value, CheckState state, CustomNodeType type)
+        public static TreeNodeItemSelector CreateNode(string? text, object? value, CheckState state, CustomNodeType type)
         {
             return new TreeNodeItemSelector(text, value, state, type);
         }
@@ -218,7 +220,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="value"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        public TreeNodeItemSelector? CreateChildNode(string text, object value, CheckState state)
+        public TreeNodeItemSelector? CreateChildNode(string? text, object? value, CheckState state)
         {
             TreeNodeItemSelector? n = null;
 
@@ -235,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 
             return n;
         }
-        public TreeNodeItemSelector? CreateChildNode(string text, object value)
+        public TreeNodeItemSelector? CreateChildNode(string? text, object? value)
         {
             return CreateChildNode(text, value, _checkState);
         }
@@ -246,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <param name="child"></param>
         protected void AddChild(TreeNodeItemSelector? child)
         {
-            child.Parent = this;
+            child!.Parent = this;
             Nodes.Add(child);
         }
 

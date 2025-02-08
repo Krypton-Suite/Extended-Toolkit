@@ -1212,7 +1212,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// </summary>
         /// <param name="item">AppCastItem to install</param>
         /// <param name="installPath">Install path to the executable. If not provided, will ask the server for the download path.</param>
-        public async void InstallUpdate(AppCastItem? item, string installPath = null)
+        public async void InstallUpdate(AppCastItem? item, string? installPath = null)
         {
             ProgressWindow?.SetDownloadAndInstallButtonEnabled(false); // disable while we ask if we can close up the software
             if (await AskApplicationToSafelyCloseUp())

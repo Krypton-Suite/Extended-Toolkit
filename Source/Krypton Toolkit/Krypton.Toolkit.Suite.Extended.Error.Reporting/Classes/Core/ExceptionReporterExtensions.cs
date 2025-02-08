@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     /// </summary>
     internal static class ExceptionReporterExtensions
     {
-        public static bool IsEmpty(this string input)
+        public static bool IsEmpty(this string? input)
         {
             return string.IsNullOrWhiteSpace(input);
         }

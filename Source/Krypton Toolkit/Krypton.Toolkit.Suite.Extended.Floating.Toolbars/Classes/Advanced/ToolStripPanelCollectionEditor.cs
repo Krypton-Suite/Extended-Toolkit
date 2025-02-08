@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
             FloatableToolStrip? floatableToolStrip = context.Instance as FloatableToolStrip;
 
-            ToolStripExistingComponentChooser ecc = new ToolStripExistingComponentChooser(floatableToolStrip.ToolStripPanelExtenedList);
+            ToolStripExistingComponentChooser ecc = new ToolStripExistingComponentChooser(floatableToolStrip.ToolStripPanelExtendedList);
 
             ecc.Text = @"ToolStripPanelCollectionEditor";
 
@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                 }
             }
 
-            return floatableToolStrip.ToolStripPanelExtenedList;
+            return floatableToolStrip.ToolStripPanelExtendedList;
         }
         #endregion
     }

@@ -29,12 +29,12 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     internal class ReportBuilder
     {
-        private readonly ExceptionReportInfo _info;
+        private readonly ExceptionReportInfo? _info;
         private readonly IAssemblyDigger _assemblyDigger;
         private readonly IStackTraceMaker _stackTraceMaker;
         private readonly ISysInfoResultMapper _sysInfoMapper;
 
-        public ReportBuilder(ExceptionReportInfo info,
+        public ReportBuilder(ExceptionReportInfo? info,
             IAssemblyDigger assemblyDigger,
             IStackTraceMaker stackTraceMaker,
             ISysInfoResultMapper sysInfoMapper)
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         public string Report()
         {
             var renderer = new TemplateRenderer(this.ReportModel());
-            return _info.ReportCustomTemplate.IsEmpty()
+            return _info!.ReportCustomTemplate.IsEmpty()
                 ? renderer.RenderPreset(_info.ReportTemplateFormat)
                 : renderer.RenderCustom(_info.ReportCustomTemplate);
         }
@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             {
                 App = new App
                 {
-                    Title = _info.TitleText,
+                    Title = _info!.TitleText,
                     Name = _info.AppName,
                     Version = _info.AppVersion,
                     Region = _info.RegionInfo,

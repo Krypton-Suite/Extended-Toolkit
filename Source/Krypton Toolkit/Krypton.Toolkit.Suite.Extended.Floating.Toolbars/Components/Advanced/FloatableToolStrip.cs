@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         /// The tool strip panel extened list.
         /// </value>
         [Editor(typeof(ToolStripPanelCollectionEditor), typeof(UITypeEditor)), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<ToolStripPanelExtended> ToolStripPanelExtenedList { get => _toolStripPanelExtendedList; set => _toolStripPanelExtendedList = value; }
+        public List<ToolStripPanelExtended> ToolStripPanelExtendedList { get => _toolStripPanelExtendedList; set => _toolStripPanelExtendedList = value; }
 
         /// <summary>
         /// Gets a value indicating whether this instance is floating.
@@ -67,6 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         /// <summary>
         /// Gets or sets a value indicating whether the control and all its child controls are displayed.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new bool Visible
         {
             get => base.Visible;
@@ -84,6 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string FloatingToolBarWindowText { get => _floatingToolBarWindowText; set => _floatingToolBarWindowText = value; }
         #endregion
 

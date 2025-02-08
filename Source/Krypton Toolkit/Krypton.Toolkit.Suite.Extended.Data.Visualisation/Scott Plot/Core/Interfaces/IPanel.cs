@@ -35,8 +35,7 @@
         /// <summary>
         /// Draw this panel on a canvas
         /// </summary>
-        /// <param name="surface">contains the canvas to draw on</param>
-        /// <param name="dataRect">dimensions of the data area (pixel units)</param>
+        /// <param name="rp">contains the canvas to draw on</param>
         /// <param name="size">size of this panel (pixel units)</param>
         /// <param name="offset">distance from the edge of this panel to the edge of the data area</param>
         void Render(RenderPack rp, float size, float offset);

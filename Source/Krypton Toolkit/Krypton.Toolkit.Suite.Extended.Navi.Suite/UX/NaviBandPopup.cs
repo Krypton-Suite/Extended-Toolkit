@@ -29,12 +29,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     public partial class NaviBandPopup : KryptonForm
     {
-        private NaviRenderer renderer = new NaviOffice7Renderer();
-        private Point startDrag;
-        private Control content;
-        private Rectangle resizeBounds;
-        private bool resizable;
-        private bool dragging;
+        private NaviRenderer _renderer = new NaviOffice7Renderer();
+        private Point _startDrag;
+        private Control _content;
+        private Rectangle _resizeBounds;
+        private bool _resizable;
+        private bool _dragging;
 
         #region Constructor
 
@@ -60,17 +60,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Gets or sets the actual content of the popup form
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Control Content
         {
-            get => content;
+            get => _content;
             set
             {
-                content = value;
-                if (content != null)
+                _content = value;
+                if (_content != null)
                 {
                     Controls.Clear();
-                    content.Dock = DockStyle.Fill;
-                    Controls.Add(content);
+                    _content.Dock = DockStyle.Fill;
+                    Controls.Add(_content);
                 }
             }
         }
@@ -78,19 +79,21 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Gets or sets whether the popup is resizable
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool Resizable
         {
-            get => resizable;
-            set => resizable = value;
+            get => _resizable;
+            set => _resizable = value;
         }
 
         /// <summary>
         /// Gets or sets a reference to the renderer responsible for drawing the popup
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new NaviRenderer Renderer
         {
-            get => renderer;
-            set { renderer = value; Invalidate(); }
+            get => _renderer;
+            set { _renderer = value; Invalidate(); }
         }
 
         #endregion
@@ -104,11 +107,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             if (RightToLeft == RightToLeft.No)
             {
-                resizeBounds = new Rectangle(Width - 3, 0, 3, Height);
+                _resizeBounds = new Rectangle(Width - 3, 0, 3, Height);
             }
             else
             {
-                resizeBounds = new Rectangle(0, 0, 3, Height);
+                _resizeBounds = new Rectangle(0, 0, 3, Height);
             }
         }
 
@@ -146,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             base.OnPaintBackground(e);
-            renderer.DrawNaviBandPopupBg(e.Graphics, ClientRectangle);
+            _renderer.DrawNaviBandPopupBg(e.Graphics, ClientRectangle);
         }
 
         /// <summary>
@@ -159,15 +162,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             if (e.Button == MouseButtons.Left
             && e.Clicks == 1)
             {
-                if (resizeBounds.Contains(e.Location))
+                if (_resizeBounds.Contains(e.Location))
                 {
-                    startDrag = e.Location;
-                    dragging = true;
+                    _startDrag = e.Location;
+                    _dragging = true;
                 }
             }
             else
             {
-                dragging = false;
+                _dragging = false;
             }
         }
 
@@ -178,7 +181,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
-            if (dragging)
+            if (_dragging)
             {
                 int newWidth;
                 if (RightToLeft == RightToLeft.Yes)
@@ -205,7 +208,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
                     Cursor = Cursors.SizeWE;
                 }
             }
-            else if (resizeBounds.Contains(e.Location))
+            else if (_resizeBounds.Contains(e.Location))
             {
                 Cursor = Cursors.SizeWE;
             }
@@ -222,7 +225,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
-            dragging = false;
+            _dragging = false;
         }
 
         /// <summary>
@@ -242,7 +245,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
-            dragging = false;
+            _dragging = false;
         }
 
         /// <summary>

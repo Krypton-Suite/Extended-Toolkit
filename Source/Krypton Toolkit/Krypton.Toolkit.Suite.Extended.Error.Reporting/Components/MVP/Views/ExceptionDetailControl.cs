@@ -129,6 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         #endregion
 
         #region Property
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Exception CapturedException { get; set; }
         #endregion
 
@@ -167,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
             klvExceptions.Columns.Add("Target Site / Method", 150, HorizontalAlignment.Left);
 
-            var lvi = new ListViewItem { Text = "Top Level" };
+            var lvi = new ListViewItem { Text = @"Top Level" };
 
             lvi.SubItems.Add(rootException.GetType().ToString());
 
@@ -188,7 +189,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
                 currentException = currentException.InnerException;
                 lvi = new ListViewItem
                 {
-                    Text = $"Inner Exception {index}"
+                    Text = $@"Inner Exception {index}"
                 };
                 lvi.SubItems.Add(currentException.GetType().ToString());
                 AddTargetSite(lvi, currentException);
@@ -232,10 +233,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             ktxtStackTrace.Text = string.Empty;
             ktxtExceptionTabMessage.Text = string.Empty;
 
-            if (displayException == null)
-            {
-                displayException = CapturedException;
-            }
+            displayException ??= CapturedException;
             if (displayException == null)
             {
                 return;

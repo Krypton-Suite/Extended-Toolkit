@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             ElevateProcessWithAdministrativeRights(ObjectToElevate);
         }
 
-        private void ElevateProcessWithAdministrativeRights(object objectToElevate, string arguments = null)
+        private void ElevateProcessWithAdministrativeRights(object objectToElevate, string? arguments = null)
         {
             try
             {
@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <param name="processName">Name of the process.</param>
         /// <param name="arguments">Extra arguments to execute.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public void ElevateProcessWithAdministrativeRights(string processName, string arguments = null)
+        public void ElevateProcessWithAdministrativeRights(string processName, string? arguments = null)
         {
             WindowsPrincipal principal = new(WindowsIdentity.GetCurrent());
 

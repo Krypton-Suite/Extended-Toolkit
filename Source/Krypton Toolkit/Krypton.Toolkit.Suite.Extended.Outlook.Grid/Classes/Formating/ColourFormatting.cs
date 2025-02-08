@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             double saturation = max == 0 ? 0 : 1d - 1d * min / max;
             double value = max / 255d;
 
-            return new((float)hue, (float)saturation, (float)value);
+            return new ColourHelper.HSVColour((float)hue, (float)saturation, (float)value);
         }
 
         private static Color ColourFromHSV(double hue, double saturation, double value)

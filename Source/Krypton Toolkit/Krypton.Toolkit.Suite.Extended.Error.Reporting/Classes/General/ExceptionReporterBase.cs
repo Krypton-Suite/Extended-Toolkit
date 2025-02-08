@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// <param name="screenShooter">The screen-shotting code might be specific to WinForms, so this is an option to send anything that implements IScreenshooter</param>
         /// <param name="sendEvent">Provide implementation of IReportSendEvent to receive error/updates on calling thread</param>
         /// <param name="exceptions">The exception/s to include in the report</param>
-        protected void Send(IScreenShooter screenShooter, IReportSendEvent sendEvent = null, params Exception[] exceptions)
+        protected void Send(IScreenShooter screenShooter, IReportSendEvent? sendEvent = null, params Exception[] exceptions)
         {
             _info.SetExceptions(exceptions);
 

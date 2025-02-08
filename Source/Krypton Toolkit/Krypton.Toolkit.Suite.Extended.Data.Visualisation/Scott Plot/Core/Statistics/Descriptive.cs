@@ -1,4 +1,5 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿#pragma warning disable CS1584 // XML comment has syntactically incorrect cref attribute
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public static class Descriptive
     {
@@ -146,12 +147,13 @@
         /// </summary>
         public static double StandardDeviation<T>(IEnumerable<T> values)
         {
-            if (!values.Any())
+            var enumerable = values as T[] ?? values.ToArray();
+            if (!enumerable.Any())
             {
                 throw new ArgumentException($"{nameof(values)} cannot be empty");
             }
 
-            double[] values2 = NumericConversion.GenericToDoubleArray(values);
+            double[] values2 = NumericConversion.GenericToDoubleArray(enumerable);
             return StandardDeviation(values2);
         }
 
@@ -170,12 +172,13 @@
         /// </summary>
         public static double StandardDeviationP<T>(IEnumerable<T> values)
         {
-            if (!values.Any())
+            var enumerable = values as T[] ?? values.ToArray();
+            if (!enumerable.Any())
             {
                 throw new ArgumentException($"{nameof(values)} cannot be empty");
             }
 
-            double[] values2 = NumericConversion.GenericToDoubleArray(values);
+            double[] values2 = NumericConversion.GenericToDoubleArray(enumerable);
             return StandardDeviationP(values2);
         }
 

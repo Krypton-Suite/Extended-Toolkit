@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
 
             Rows = [];
-            Children = new();
+            Children = new OutlookGridGroupCollection();
             _formatStyle = "";
             _oneItemText = KryptonOutlookGridLanguageManager.GeneralStrings.OneItem;
             _xXxItemsText = KryptonOutlookGridLanguageManager.GeneralStrings.NumberOfItems;
