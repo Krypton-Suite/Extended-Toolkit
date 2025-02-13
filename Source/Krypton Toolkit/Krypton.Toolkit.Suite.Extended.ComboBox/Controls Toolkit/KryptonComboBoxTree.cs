@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
         public TreeNodeCollection Nodes => _tvTreeView.Nodes;
 
         [Browsable(true), Description("Gets or sets the TreeView's Selected Node"), Category("TreeView")]
-        public TreeNode SelectedNode
+        public TreeNode? SelectedNode
         {
             set
             {
@@ -279,7 +279,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             //
             // ComboBoxTree
             //
-            Name = "ComboBoxTree";
+            Name = @"ComboBoxTree";
             _absoluteChildrenSelectableOnly = true;
             Layout += new LayoutEventHandler(ComboBoxTree_Layout);
 

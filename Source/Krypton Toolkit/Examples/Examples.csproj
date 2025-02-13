@@ -2,9 +2,10 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
+		<TargetFrameworks>net481;net8.0-windows</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
+		<Configurations>Debug;Release;Nightly;Canary</Configurations>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<BaseOutputPath>..\..\..\Bin\Examples\</BaseOutputPath>
 		<LangVersion>preview</LangVersion>
@@ -49,8 +50,8 @@
 	<Choose>
 		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.7.200-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.7.200-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.2.41-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.2.41-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
@@ -62,7 +63,7 @@
 	</Choose>
 
 	<ItemGroup>
-		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
+		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
 	</ItemGroup>
 
 	<ItemGroup>

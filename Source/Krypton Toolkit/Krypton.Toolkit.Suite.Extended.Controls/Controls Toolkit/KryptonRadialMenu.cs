@@ -30,6 +30,7 @@ using Task = System.Threading.Tasks.Task;
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     [DesignerCategory(@"code")]
+    [DefaultEvent(nameof(MenuItemClicked))]
     [ToolboxItem(true)]
     public class KryptonRadialMenu : UserControl
     {
@@ -83,7 +84,11 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             Size = new Size(200, 200);
             DoubleBuffered = true;
             MouseMove += KryptonRadialMenu_MouseMove;
-            MouseLeave += (s, e) => { _hoveredSegment = -1; Invalidate(); };
+            MouseLeave += (s, e) =>
+            {
+                _hoveredSegment = -1;
+                Invalidate();
+            };
             MouseClick += KryptonRadialMenu_MouseClick;
             MouseDown += KryptonRadialMenu_MouseDown;
             MouseUp += KryptonRadialMenu_MouseUp;
@@ -178,10 +183,18 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         public void AddSubMenu(string mainItem, List<string> subItems, List<Image>? subIcons = null, List<Color>? subColors = null)
         {
-            _subMenus[mainItem] = subItems;
-            _subMenuIcons[mainItem] = subIcons ?? new List<Image>();
-            _subMenuColors[mainItem] = subColors ?? new List<Color>();
+            if (!_subMenus.ContainsKey(mainItem))
+            {
+                _subMenus[mainItem] = new List<string>();
+                _subMenuIcons[mainItem] = new List<Image>();
+                _subMenuColors[mainItem] = new List<Color>();
+            }
+
+            _subMenus[mainItem].AddRange(subItems);
+            _subMenuIcons[mainItem].AddRange(subIcons ?? new List<Image>());
+            _subMenuColors[mainItem].AddRange(subColors ?? new List<Color>());
         }
+
 
         private async void ToggleMenu()
         {
@@ -203,6 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     Invalidate();
                     await Task.Delay(20);
                 }
+
                 _menuOpen = false;
             }
         }
@@ -262,35 +276,25 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             int centerY = Height / 2;
             int distance = (int)Math.Sqrt(Math.Pow(e.X - centerX, 2) + Math.Pow(e.Y - centerY, 2));
 
-            // Check if clicked on central button
+            // ✅ If the central button is clicked, go back to the main menu or toggle
             if (distance < 20)
             {
                 CentralButtonClicked?.Invoke(this, EventArgs.Empty);
 
                 if (_activeMenu != null)
                 {
-                    _activeMenu = null;
+                    _activeMenu = null; // ✅ Go back to the main menu
                 }
                 else
                 {
                     ToggleMenu();
                 }
+
                 Invalidate();
                 return;
             }
 
-            // Check if clicked on an arrow (for submenu navigation)
-            foreach (var arrow in _arrowZones)
-            {
-                if (arrow.Key.Contains(e.Location))
-                {
-                    _activeMenu = arrow.Value;
-                    Invalidate();
-                    return;
-                }
-            }
-
-            // Check if clicked on a segment
+            // ✅ If clicked on a segment, check if it has a submenu
             if (_menuOpen && _hoveredSegment >= 0)
             {
                 List<string> currentItems = _activeMenu == null ? MenuItems : _subMenus[_activeMenu];
@@ -299,21 +303,22 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 {
                     string clickedItem = currentItems[_hoveredSegment];
 
-                    if (_subMenus.ContainsKey(clickedItem))
+                    if (_subMenus.ContainsKey(clickedItem)) // ✅ Check if this item has a submenu
                     {
-                        _activeMenu = clickedItem;
+                        _activeMenu = clickedItem; // ✅ Enter the submenu
+                        Invalidate();
+                        return;
                     }
+
+                    // ✅ Fire the appropriate event (MenuItemClicked or SubMenuItemClicked)
+                    if (_activeMenu == null)
+                        MenuItemClicked?.Invoke(this, clickedItem);
                     else
-                    {
-                        if (_activeMenu == null)
-                            MenuItemClicked?.Invoke(this, clickedItem);
-                        else
-                            SubMenuItemClicked?.Invoke(this, clickedItem);
-                    }
+                        SubMenuItemClicked?.Invoke(this, clickedItem);
                 }
             }
         }
-    }
 
-    #endregion
+        #endregion
+    }
 }
