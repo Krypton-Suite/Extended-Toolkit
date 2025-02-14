@@ -30,7 +30,7 @@ using VisualStyleRender = System.Windows.Forms.VisualStyles;
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     [ToolboxItem(false), CLSCompliant(true)]
-    public partial class Popup : ToolStripDropDown
+    public partial class PopUp : ToolStripDropDown
     {
         #region Instance Fields
 
@@ -50,9 +50,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private Control _content;
 
-        private Popup _ownerPopup;
+        private PopUp? _ownerPopup;
 
-        private Popup _childPopup;
+        private PopUp _childPopup;
 
         private ToolStripControlHost _host;
 
@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             set => _acceptAlt = value;
         }
 
-        public bool Resizable
+        public bool ReSizable
         {
             get => _resizableControl && _resizable;
             set => _resizableControl = value;
@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         #region Identity
 
-        public Popup(Control? content)
+        public PopUp(Control? content)
         {
             if (content == null)
             {
@@ -185,7 +185,6 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         protected override CreateParams CreateParams
         {
-            [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
             get
             {
                 CreateParams cp = base.CreateParams;
@@ -286,7 +285,6 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             base.OnVisibleChanged(e);
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
             if (InternalProcessResizing(ref m, false))
@@ -373,12 +371,12 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             {
                 return;
             }
-            if (control is Popup)
+            if (control is PopUp)
             {
-                Popup popupControl = control as Popup;
+                PopUp? popupControl = control as PopUp;
                 _ownerPopup = popupControl;
-                _ownerPopup._childPopup = this;
-                OwnerItem = popupControl.Items[0];
+                _ownerPopup!._childPopup = this;
+                OwnerItem = popupControl?.Items[0];
                 return;
             }
             if (control.Parent != null)
@@ -387,20 +385,18 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         public bool ProcessResizing(ref Message m)
         {
             return InternalProcessResizing(ref m, true);
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         private bool InternalProcessResizing(ref Message m, bool contentControl)
         {
             if (m.Msg == NativeMethods.WM_NCACTIVATE && m.WParam != IntPtr.Zero && _childPopup != null && _childPopup.Visible)
             {
                 _childPopup.Hide();
             }
-            if (!Resizable)
+            if (!ReSizable)
             {
                 return false;
             }
@@ -415,7 +411,6 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             return false;
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         private bool OnGetMinMaxInfo(ref Message m)
         {
             NativeMethods.MINMAXINFO minmax = (NativeMethods.MINMAXINFO)Marshal.PtrToStructure(m.LParam, typeof(NativeMethods.MINMAXINFO));

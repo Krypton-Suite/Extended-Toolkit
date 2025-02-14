@@ -49,15 +49,15 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         private CommonFileDialogFilterCollection _filterCollection;
 
-        private string _filter;
+        private string? _filter;
 
         private string _initialDirectory;
 
-        private string _resetText;
+        private string? _resetText;
 
-        private string _resetTextToolTipHeading;
+        private string? _resetTextToolTipHeading;
 
-        private string _resetTextToolTipDescription;
+        private string? _resetTextToolTipDescription;
 
         private Image _smallResetImage;
 
@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         public CommonFileDialogFilterCollection FileDialogFilterCollection { get => _filterCollection; set => _filterCollection = value; }
 
         [DefaultValue(null), Description(@"")]
-        public string Filter { get => _filter; set => _filter = value; }
+        public string? Filter { get => _filter; set => _filter = value; }
 
         /// <summary>Gets or sets the initial directory.</summary>
         /// <value>The initial directory.</value>
@@ -112,17 +112,17 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>Gets or sets the reset text.</summary>
         /// <value>The reset text.</value>
         [DefaultValue(@"&Reset"), Description(@"Gets or sets the reset text.")]
-        public new string ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
+        public new string? ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
 
         /// <summary>Gets or sets the reset text tool tip heading.</summary>
         /// <value>The reset text tool tip heading.</value>
         [DefaultValue(@"Reset"), Description(@"Gets or sets the reset text tool tip heading.")]
-        public string ResetTextToolTipHeading { get => _resetTextToolTipHeading; set => _resetTextToolTipHeading = value; }
+        public string? ResetTextToolTipHeading { get => _resetTextToolTipHeading; set => _resetTextToolTipHeading = value; }
 
         /// <summary>Gets or sets the reset text tool tip description.</summary>
         /// <value>The reset text tool tip description.</value>
         [DefaultValue(@"Resets the text of the text box."), Description(@">Gets or sets the reset text tool tip description.")]
-        public string ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
+        public string? ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
 
         /// <summary>Gets or sets the small reset image.</summary>
         /// <value>The small reset image.</value>
@@ -149,29 +149,29 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             _kcReset = new KryptonCommand();
 
-            _smallResetImage = Properties.Resources.Reset_16_x_16;
+            _smallResetImage = Resources.Reset_16_x_16;
 
-            _largeResetImage = Properties.Resources.Reset_32_x_32;
+            _largeResetImage = Resources.Reset_32_x_32;
 
-            _bsaBrowse.Text = "...";
+            _bsaBrowse.Text = @"...";
 
             _bsaBrowse.KryptonCommand = _kcBrowse;
 
-            _kcBrowse.Text = "...";
+            _kcBrowse.Text = @"...";
 
             _bsaReset.ToolTipImage = _smallResetImage;
 
-            _bsaReset.ToolTipBody = _resetTextToolTipDescription;
+            _bsaReset.ToolTipBody = _resetTextToolTipDescription!;
 
-            _bsaReset.ToolTipTitle = _resetTextToolTipHeading;
+            _bsaReset.ToolTipTitle = _resetTextToolTipHeading!;
 
-            _bsaReset.Text = _resetText;
+            _bsaReset.Text = _resetText!;
 
             _bsaReset.Image = _smallResetImage;
 
             _bsaReset.KryptonCommand = _kcReset;
 
-            _kcReset.Text = _resetText;
+            _kcReset.Text = _resetText!;
 
             _bsaReset.Enabled = ButtonEnabled.False;
 
@@ -193,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>Handles the Execute event of the Browse control.</summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void Browse_Execute(object sender, EventArgs e)
+        private void Browse_Execute(object? sender, EventArgs e)
         {
             if (_useSaveDialog)
             {
@@ -206,7 +206,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     saveFileDialog.InitialDirectory = _initialDirectory;
                 }
 
-                if (_filter != null)
+                if (_filter is not null)
                 {
                     saveFileDialog.Filter = _filter;
                 }
@@ -227,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     dialog.InitialDirectory = _initialDirectory;
                 }
 
-                if (_filter != null)
+                if (_filter is not null)
                 {
                     dialog.Filter = _filter;
                 }
@@ -242,7 +242,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>Handles the Execute event of the Reset control.</summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void Reset_Execute(object sender, EventArgs e)
+        private void Reset_Execute(object? sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Text))
             {
@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         /// <summary>Raises the Paint event.</summary>
         /// <param name="e">A PaintEventArgs containing the event data.</param>
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             _bsaReset.Visible = _showResetButton;
 

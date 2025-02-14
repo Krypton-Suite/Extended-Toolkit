@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Controls
 {
-    partial class KryptonPopupComboBox
+    partial class KryptonPopUpComboBox
     {
         /// <summary>
         /// Required designer variable.

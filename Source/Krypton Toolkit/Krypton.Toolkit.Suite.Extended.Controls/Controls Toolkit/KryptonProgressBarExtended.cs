@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     /// <summary>
@@ -132,6 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// all the implementation.</note></para>
         /// </remarks>
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Font Font { get => base.Font; set => base.Font = value; }
 
         /// <summary>
@@ -166,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Browsable(false),
          EditorBrowsable(EditorBrowsableState.Always),
          Bindable(false)]
-        public override string Text => $"{Value.ToString(CultureInfo.CurrentCulture)}%";
+        public override string Text => $@"{Value.ToString(CultureInfo.CurrentCulture)}%";
 
         #endregion
 

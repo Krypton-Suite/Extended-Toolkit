@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
-    public partial class KryptonCheckBoxComboBox : KryptonPopupComboBox
+    public partial class KryptonCheckBoxComboBox : KryptonPopUpComboBox
     {
         #region Instance Fields
 
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             DropDownControl = containerControl;
             // Must be set after the DropDownControl is set, since the popup is recreated.
             // NOTE: I made the dropDown protected so that it can be accessible here. It was private.
-            _dropDown!.Resizable = true;
+            _dropDown!.ReSizable = true;
         }
 
         #endregion
@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 // available for modification via code.
                 if (CheckBoxComboBoxListControl.Items.Count != Items.Count)
                 {
-                    CheckBoxComboBoxListControl.SynchroniseControlsWithComboBoxItems();
+                    CheckBoxComboBoxListControl.SynchronizeControlsWithComboBoxItems();
                 }
                 return CheckBoxComboBoxListControl.Items;
             }
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 if (!string.IsNullOrEmpty(ValueMember))
                 {
                     // This ensures that at least the checkboxitems are available to be initialised.
-                    CheckBoxComboBoxListControl.SynchroniseControlsWithComboBoxItems();
+                    CheckBoxComboBoxListControl.SynchronizeControlsWithComboBoxItems();
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 if (!string.IsNullOrEmpty(ValueMember))
                 {
                     // This ensures that at least the checkboxitems are available to be initialised.
-                    CheckBoxComboBoxListControl.SynchroniseControlsWithComboBoxItems();
+                    CheckBoxComboBoxListControl.SynchronizeControlsWithComboBoxItems();
                 }
             }
         }

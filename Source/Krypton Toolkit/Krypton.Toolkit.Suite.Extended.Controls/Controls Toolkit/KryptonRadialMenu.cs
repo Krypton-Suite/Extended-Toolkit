@@ -36,11 +36,12 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
     {
         #region Instance Fields
 
-        private Dictionary<Rectangle, string> _arrowZones = new Dictionary<Rectangle, string>();
-        private Dictionary<string, List<string>> _subMenus = new Dictionary<string, List<string>>();
-        private Dictionary<string, List<Image>> _subMenuIcons = new Dictionary<string, List<Image>>();
-        private Dictionary<string, List<Color>> _subMenuColors = new Dictionary<string, List<Color>>();
+        private readonly Dictionary<Rectangle, string> _arrowZones = new Dictionary<Rectangle, string>();
+        private readonly Dictionary<string, List<string>> _subMenus = new Dictionary<string, List<string>>();
+        private readonly Dictionary<string, List<Image>> _subMenuIcons = new Dictionary<string, List<Image>>();
+        private readonly Dictionary<string, List<Color>> _subMenuColors = new Dictionary<string, List<Color>>();
         private string? _activeMenu = null;
+        private string? _hoveredArrow = null; // ✅ Stores the currently hovered submenu arrow
         private bool _menuOpen = false;
         private int _hoveredSegment = -1;
         private float _animationProgress = 0;
@@ -114,6 +115,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             int radius = (int)(maxRadius * _animationProgress);
             int numSegments = currentItems.Count;
 
+            _arrowZones.Clear(); // ✅ Clear stored arrow zones before drawing
+
             if (_menuOpen && numSegments > 0 && radius > 10)
             {
                 float angleStep = 360f / numSegments;
@@ -130,29 +133,36 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                         {
                             g.FillPath(brush, path);
                         }
-
                         g.DrawPath(Pens.Black, path);
                     }
 
                     float segmentCenterAngle = startAngle + angleStep / 2;
                     float segmentTextX =
-                        centerX + (float)(Math.Cos(segmentCenterAngle * Math.PI / 180) * radius * 0.75);
+                        centerX + (float)(Math.Cos(segmentCenterAngle * Math.PI / 180) * radius * 0.6);
                     float segmentTextY =
-                        centerY + (float)(Math.Sin(segmentCenterAngle * Math.PI / 180) * radius * 0.75);
+                        centerY + (float)(Math.Sin(segmentCenterAngle * Math.PI / 180) * radius * 0.6);
 
-                    if (i < currentIcons.Count && currentIcons[i] != null)
-                    {
-                        float iconX = segmentTextX - 10;
-                        float iconY = segmentTextY - 20;
-                        g.DrawImage(currentIcons[i], iconX, iconY, 20, 20);
-                    }
-
+                    // ✅ Draw segment text
                     if (i < currentItems.Count)
                     {
                         Font itemFont = new Font("Arial", 10, FontStyle.Bold);
                         SizeF textSize = g.MeasureString(currentItems[i], itemFont);
-                        PointF textPosition = new PointF(segmentTextX - textSize.Width / 2, segmentTextY + 5);
+                        PointF textPosition = new PointF(segmentTextX - textSize.Width / 2, segmentTextY);
                         g.DrawString(currentItems[i], itemFont, Brushes.Black, textPosition);
+                    }
+
+                    // ✅ Draw arrow if the segment has a submenu
+                    if (_subMenus.ContainsKey(currentItems[i]))
+                    {
+                        float arrowX = centerX + (float)(Math.Cos(segmentCenterAngle * Math.PI / 180) * radius * 0.9);
+                        float arrowY = centerY + (float)(Math.Sin(segmentCenterAngle * Math.PI / 180) * radius * 0.9);
+
+                        // ✅ Highlight arrow if it's hovered
+                        bool isHovered = _hoveredArrow == currentItems[i];
+                        DrawArrow(g, arrowX, arrowY, segmentCenterAngle, isHovered);
+
+                        // ✅ Convert RectangleF to Rectangle
+                        _arrowZones[Rectangle.Round(new RectangleF(arrowX - 10, arrowY - 10, 20, 20))] = currentItems[i];
                     }
                 }
             }
@@ -164,8 +174,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             g.FillEllipse(Brushes.White, centerButtonRect);
             g.DrawEllipse(Pens.Black, centerButtonRect);
 
-            // Define text or image for the button
-            string buttonText = _activeMenu == null ? "☰" : "←"; // Hamburger menu or back arrow
+            // ✅ Fix: Show "X" in root menu, "←" in submenus
+            string buttonText = _menuOpen ? (_activeMenu == null ? "X" : "←") : "☰";
             Font buttonFont = new Font("Arial", 12, FontStyle.Bold);
             SizeF textSizeBtn = g.MeasureString(buttonText, buttonFont);
             PointF textPositionBtn = new PointF(
@@ -173,9 +183,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 centerY - textSizeBtn.Height / 2
             );
 
-            // Draw text in the center
             g.DrawString(buttonText, buttonFont, Brushes.Black, textPositionBtn);
         }
+
 
         #endregion
 
@@ -257,27 +267,31 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             if (angle < 0) angle += 360;
 
             int newHoveredSegment = (int)(angle / angleStep);
-            if (_hoveredSegment != newHoveredSegment)
-            {
-                _hoveredSegment = newHoveredSegment;
-                Invalidate();
 
-                List<string> currentItems = _activeMenu == null ? MenuItems : _subMenus[_activeMenu];
-                if (_hoveredSegment < currentItems.Count)
+            // ✅ Detect if the mouse is over an arrow
+            string? hoveredArrow = null;
+            foreach (var arrowZone in _arrowZones)
+            {
+                if (arrowZone.Key.Contains(e.Location)) // ✅ Now works because it's an integer-based Rectangle
                 {
-                    _tooltip.SetToolTip(this, currentItems[_hoveredSegment]);
+                    hoveredArrow = arrowZone.Value;
+                    break;
                 }
             }
-        }
 
+            if (_hoveredArrow != hoveredArrow)
+            {
+                _hoveredArrow = hoveredArrow; // ✅ Update hovered arrow
+                Invalidate();
+            }
+        }
         private void KryptonRadialMenu_MouseClick(object? sender, MouseEventArgs e)
         {
             int centerX = Width / 2;
             int centerY = Height / 2;
             int distance = (int)Math.Sqrt(Math.Pow(e.X - centerX, 2) + Math.Pow(e.Y - centerY, 2));
 
-            // ✅ If the central button is clicked, go back to the main menu or toggle
-            if (distance < 20)
+            if (distance < 20) // ✅ Central button clicked
             {
                 CentralButtonClicked?.Invoke(this, EventArgs.Empty);
 
@@ -289,12 +303,19 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 {
                     ToggleMenu();
                 }
-
                 Invalidate();
                 return;
             }
 
-            // ✅ If clicked on a segment, check if it has a submenu
+            // ✅ Check if an arrow was clicked
+            if (_hoveredArrow != null)
+            {
+                _activeMenu = _hoveredArrow; // ✅ Open submenu when arrow is clicked
+                Invalidate();
+                return;
+            }
+
+            // ✅ Handle normal segment clicks
             if (_menuOpen && _hoveredSegment >= 0)
             {
                 List<string> currentItems = _activeMenu == null ? MenuItems : _subMenus[_activeMenu];
@@ -303,20 +324,37 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 {
                     string clickedItem = currentItems[_hoveredSegment];
 
-                    if (_subMenus.ContainsKey(clickedItem)) // ✅ Check if this item has a submenu
+                    if (_subMenus.ContainsKey(clickedItem))
                     {
-                        _activeMenu = clickedItem; // ✅ Enter the submenu
+                        _activeMenu = clickedItem;
                         Invalidate();
                         return;
                     }
 
-                    // ✅ Fire the appropriate event (MenuItemClicked or SubMenuItemClicked)
                     if (_activeMenu == null)
                         MenuItemClicked?.Invoke(this, clickedItem);
                     else
                         SubMenuItemClicked?.Invoke(this, clickedItem);
                 }
             }
+        }
+
+
+
+        private void DrawArrow(Graphics g, float x, float y, float angle, bool isHovered)
+        {
+            float arrowSize = 12;
+            double radAngle = (angle - 90) * Math.PI / 180; // Convert angle to radians
+            Brush arrowBrush = isHovered ? Brushes.LightBlue : Brushes.Black; // ✅ Highlight effect
+
+            PointF p1 = new PointF(x, y);
+            PointF p2 = new PointF(x - (float)(arrowSize * Math.Cos(radAngle - Math.PI / 6)),
+                y - (float)(arrowSize * Math.Sin(radAngle - Math.PI / 6)));
+            PointF p3 = new PointF(x - (float)(arrowSize * Math.Cos(radAngle + Math.PI / 6)),
+                y - (float)(arrowSize * Math.Sin(radAngle + Math.PI / 6)));
+
+            PointF[] arrowPoints = { p1, p2, p3 };
+            g.FillPolygon(arrowBrush, arrowPoints);
         }
 
         #endregion
