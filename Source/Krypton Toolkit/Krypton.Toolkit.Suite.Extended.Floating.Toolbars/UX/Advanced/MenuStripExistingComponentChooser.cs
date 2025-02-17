@@ -34,6 +34,8 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Control? SourceComponentContainer
         {
             set
@@ -53,11 +55,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<MenuStripPanelExtended>? SelectedComponents
         {
             get
             {
-                List<MenuStripPanelExtended?> tspe = [];
+                List<MenuStripPanelExtended>? tspe = [];
 
                 if (klbSelected.Items.Count > 0)
                 {

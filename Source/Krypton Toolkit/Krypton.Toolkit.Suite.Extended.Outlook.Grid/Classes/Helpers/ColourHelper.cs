@@ -301,7 +301,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 }
             }
 
-            return new(h * 360f, s, v);
+            return new HSVColour(h * 360f, s, v);
         }
 
 
@@ -478,7 +478,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 }
             }
 
-            return new(h * 360f, s, l);
+            return new HSLColour(h * 360f, s, l);
         }
 
     }

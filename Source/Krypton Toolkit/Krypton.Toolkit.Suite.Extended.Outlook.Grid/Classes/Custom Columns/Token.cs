@@ -63,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public int CompareTo(Token other) => Text.CompareTo(other.Text);
+        public int CompareTo(Token other) => string.Compare(Text, other.Text, StringComparison.Ordinal);
 
         /// <summary>
         /// Overrides ToString
@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="obj">The object to compare</param>
         /// <returns>true if equal, false otherwise.</returns>
-        public override bool Equals(object obj) => Text.Equals(obj.ToString());
+        public override bool Equals(object? obj) => Text.Equals(obj?.ToString());
 
         /// <summary>
         /// Overrides GetHashCode

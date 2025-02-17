@@ -205,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             _group = group;
             _isGroupRow = isGroupRow;
-            _nodeCollection = new(this);
+            _nodeCollection = new OutlookGridRowNodeCollection(this);
             NodeLevel = 0;
             Collapsed = true;
         }

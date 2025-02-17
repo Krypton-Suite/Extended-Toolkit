@@ -188,5 +188,12 @@ namespace Examples
 
             controls.Show();
         }
+
+        private void kbtnRadialMenu_Click(object sender, EventArgs e)
+        {
+            var radialMenu = new RadialMenuExample();
+
+            radialMenu.Show();
+        }
     }
 }

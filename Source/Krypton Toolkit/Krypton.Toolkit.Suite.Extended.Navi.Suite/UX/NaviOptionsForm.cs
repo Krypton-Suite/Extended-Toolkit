@@ -32,6 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         private NaviBar _bar;
         private NaviSuiteLanguageManager? _languageManager;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public NaviSuiteLanguageManager? LanguageManager { get => _languageManager; set => _languageManager = value ?? new(); }
 
         public NaviOptionsForm()

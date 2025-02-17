@@ -46,7 +46,7 @@ namespace Examples
         {
             EnableColourTrioUI(kcbUseColourTrio.Checked);
 
-            circularProgressBar1.UseColourTrio = kcbUseColourTrio.Checked;
+            circularProgressBar1.UseColorTrio = kcbUseColourTrio.Checked;
         }
 
         private void EnableColourTrioUI(bool enabled)
@@ -58,12 +58,12 @@ namespace Examples
             kcbtnThirdColour.Enabled = enabled;
         }
 
-        private void kcbtnFirstColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.FirstValueColour = e.Color;
+        private void kcbtnFirstColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.FirstValueColor = e.Color;
 
-        private void kcbtnSecondColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.SecondValueColour = e.Color;
+        private void kcbtnSecondColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.SecondValueColor = e.Color;
 
-        private void kcbtnThirdColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.ThirdValueColour = e.Color;
+        private void kcbtnThirdColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.ThirdValueColor = e.Color;
 
-        private void kcbtnProgressColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.ProgressColour = e.Color;
+        private void kcbtnProgressColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.ProgressColor = e.Color;
     }
 }

@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public KryptonDataGridViewTextAndImageColumn()
             : base(new KryptonDataGridViewTextAndImageCell())
         {
-            _buttonSpecs = new(this);
+            _buttonSpecs = new DataGridViewColumnSpecCollection(this);
             SortMode = DataGridViewColumnSortMode.Automatic;
         }
 

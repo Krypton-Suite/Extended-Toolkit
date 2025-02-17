@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
         /// <param name="onRecentFileClick">The on recent file click.</param>
         /// <param name="onClearRecentFilesClick">The on clear recent files click.</param>
         /// <exception cref="System.ArgumentException">Bad argument.</exception>
-        public MostRecentlyUsedFileManager(ToolStripMenuItem parentMenuItem, string applicationName, Action<object, EventArgs> onRecentFileClick, Action<object, EventArgs> onClearRecentFilesClick = null)
+        public MostRecentlyUsedFileManager(ToolStripMenuItem parentMenuItem, string applicationName, Action<object, EventArgs> onRecentFileClick, Action<object, EventArgs>? onClearRecentFilesClick = null)
         {
             if (parentMenuItem == null || onRecentFileClick == null || applicationName == null || applicationName.Length == 0 || applicationName.Contains("\\"))
             {

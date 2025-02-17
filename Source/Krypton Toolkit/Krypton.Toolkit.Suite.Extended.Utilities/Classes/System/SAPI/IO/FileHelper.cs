@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.IO
     internal static class FileHelper
     {
         [SecurityCritical]
-        internal static FileStream CreateAndOpenTemporaryFile(out string filePath, FileAccess fileAccess = FileAccess.Write, FileOptions fileOptions = FileOptions.None, string extension = null, string subFolder = "WPF")
+        internal static FileStream CreateAndOpenTemporaryFile(out string filePath, FileAccess fileAccess = FileAccess.Write, FileOptions fileOptions = FileOptions.None, string? extension = null, string subFolder = "WPF")
         {
             int num = 5;
             filePath = null;

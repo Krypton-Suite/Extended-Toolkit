@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// (user skipped versions, etc.)</param>
         /// <param name="signatureVerifier">Object to check signatures of app cast information</param>
         /// <param name="logWriter">object that you can utilize to do any necessary logging</param>
-        public void SetupAppCastHandler(IAppCastDataDownloader dataDownloader, string castUrl, Configuration config, ISignatureVerifier signatureVerifier, ILogger logWriter = null)
+        public void SetupAppCastHandler(IAppCastDataDownloader dataDownloader, string castUrl, Configuration config, ISignatureVerifier signatureVerifier, ILogger? logWriter = null)
         {
             _dataDownloader = dataDownloader;
             _config = config;

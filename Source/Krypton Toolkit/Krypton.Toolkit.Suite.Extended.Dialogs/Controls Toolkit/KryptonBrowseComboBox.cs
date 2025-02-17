@@ -352,7 +352,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         /// <summary>Raises the Paint event.</summary>
         /// <param name="e">A PaintEventArgs containing the event data.</param>
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             _bsaReset.Visible = _showResetButton;
 

@@ -50,6 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <value>
         ///   <c>true</c> if [contrast text color]; otherwise, <c>false</c>.
         /// </value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ContrastTextColour { get; set; }
     }
 

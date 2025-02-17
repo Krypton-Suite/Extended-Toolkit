@@ -140,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         }
                         break;
                     default:
-                        throw new("Unknown Interval !");
+                        throw new Exception("Unknown Interval !");
 
                 }
 
@@ -195,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             else
             {
-                val = new();
+                val = new DateTime();
             }
 
             switch (Interval)
@@ -247,7 +247,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         return _valDateTime.Date.CompareTo(val.Date) * orderModifier;
                     }
                 default:
-                    throw new("Unknown Interval !");
+                    throw new Exception("Unknown Interval !");
 
             }
         }

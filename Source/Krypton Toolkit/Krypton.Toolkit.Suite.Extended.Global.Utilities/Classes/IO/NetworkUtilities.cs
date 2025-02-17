@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// Checks the state of the Internet connection.
         /// </summary>
         /// <param name="pingAddress">The ping address.</param>
-        public bool CheckInternetConnectionState(string pingAddress = null)
+        public bool CheckInternetConnectionState(string? pingAddress = null)
         {
             bool isConnectionAlive = false;
 

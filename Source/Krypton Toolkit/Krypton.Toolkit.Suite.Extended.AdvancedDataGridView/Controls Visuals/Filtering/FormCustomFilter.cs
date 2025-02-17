@@ -521,7 +521,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void valControl2_VisibleChanged(object sender, EventArgs e)
+        private void valControl2_VisibleChanged(object? sender, EventArgs e)
         {
             if (_valControl2 != null)
             {
@@ -534,7 +534,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void valControl_TextChanged(object sender, EventArgs e)
+        private void valControl_TextChanged(object? sender, EventArgs e)
         {
             bool hasErrors = false;
             switch (_filterType)
@@ -573,7 +573,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void valControl_KeyDown(object sender, KeyEventArgs e)
+        private void valControl_KeyDown(object? sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
@@ -585,12 +585,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     }
                     else
                     {
-                        button_ok_Click(button_ok, new());
+                        button_ok_Click(button_ok, EventArgs.Empty);
                     }
                 }
                 else
                 {
-                    button_ok_Click(button_ok, new());
+                    button_ok_Click(button_ok, EventArgs.Empty);
                 }
 
                 e.SuppressKeyPress = false;

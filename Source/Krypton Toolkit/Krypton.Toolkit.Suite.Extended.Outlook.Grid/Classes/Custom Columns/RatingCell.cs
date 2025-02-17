@@ -43,11 +43,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="formattedValueTypeConverter"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        protected override object GetFormattedValue(object value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
+        protected override object? GetFormattedValue(object value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
         {
             if (value == null)
             {
-                return null; //For example it is also the case for group row...
+                return null; //For example, it is also the case for group row...
             }
             else
             {
@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             Image cellImage = (Image)formattedValue;
             if (!ReadOnly)
             {
-                int starNumber = GetStarFromMouse(cellBounds, DataGridView.PointToClient(Control.MousePosition));
+                int starNumber = GetStarFromMouse(cellBounds, DataGridView!.PointToClient(Control.MousePosition));
 
                 if (starNumber != -1)
                 {
@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             base.OnContentClick(e);
             if (!ReadOnly)
             {
-                int starNumber = GetStarFromMouse(DataGridView.GetCellDisplayRectangle(DataGridView.CurrentCellAddress.X, DataGridView.CurrentCellAddress.Y, false), DataGridView.PointToClient(Control.MousePosition));
+                int starNumber = GetStarFromMouse(DataGridView!.GetCellDisplayRectangle(DataGridView!.CurrentCellAddress.X, DataGridView.CurrentCellAddress.Y, false), DataGridView.PointToClient(Control.MousePosition));
 
                 if (starNumber != -1)
                 {
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected override void OnMouseLeave(int rowIndex)
         {
             base.OnMouseLeave(rowIndex);
-            DataGridView.InvalidateCell(this);
+            DataGridView?.InvalidateCell(this);
         }
 
         /// <summary>
@@ -129,13 +129,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected override void OnMouseMove(DataGridViewCellMouseEventArgs e)
         {
             base.OnMouseMove(e);
-            DataGridView.InvalidateCell(this);
+            DataGridView?.InvalidateCell(this);
         }
         #endregion
 
         #region Private Implementation
 
-        static Image[] _starImages;
+        static Image?[] _starImages;
         static Image[] _starHotImages;
         const int Imagewidth = 58;
 
@@ -171,15 +171,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         static RatingCell()
         {
-            _starImages = new Image[11];
+            _starImages = new Image?[11];
             _starHotImages = new Image[11];
             // load normal stars 
             for (int i = 0; i <= 10; i++)
-                _starImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject($"star{i}");
+                _starImages[i] = (((Image)Resources.OutlookGridImageResources.ResourceManager.GetObject($"star{i}")!));
 
             // load hot normal stars 
             for (int i = 0; i <= 10; i++)
-                _starHotImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject($"starhot{i}");
+                _starHotImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject($"starhot{i}")!;
         }
         #endregion
 

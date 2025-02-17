@@ -182,12 +182,12 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                     bool refreshed = false;
                     if (MenuStrip.FilterString!.Length > 0)
                     {
-                        MenuStrip_FilterChanged(this, new EventArgs());
+                        MenuStrip_FilterChanged(this, EventArgs.Empty);
                         refreshed = true;
                     }
                     if (MenuStrip.SortString!.Length > 0)
                     {
-                        MenuStrip_SortChanged(this, new EventArgs());
+                        MenuStrip_SortChanged(this, EventArgs.Empty);
                         refreshed = true;
                     }
                     if (!refreshed)

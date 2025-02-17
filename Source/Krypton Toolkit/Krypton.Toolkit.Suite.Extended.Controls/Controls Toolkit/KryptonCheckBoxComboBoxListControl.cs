@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <param name="m"></param>
         protected override void WndProc(ref Message m)
         {
-            if (((Parent.Parent as Popup)!).ProcessResizing(ref m))
+            if (((Parent.Parent as PopUp)!).ProcessResizing(ref m))
             {
                 return;
             }
@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         protected override void OnVisibleChanged(EventArgs e)
         {
             // Synchronises the CheckBox list with the items in the ComboBox.
-            SynchroniseControlsWithComboBoxItems();
+            SynchronizeControlsWithComboBoxItems();
             base.OnVisibleChanged(e);
         }
 
@@ -104,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// Maintains the controls displayed in the list by keeping them in sync with the actual 
         /// items in the combobox. (e.g. removing and adding as well as ordering)
         /// </summary>
-        public void SynchroniseControlsWithComboBoxItems()
+        public void SynchronizeControlsWithComboBoxItems()
         {
             SuspendLayout();
             if (_checkBoxComboBox.MustAddHiddenItem)

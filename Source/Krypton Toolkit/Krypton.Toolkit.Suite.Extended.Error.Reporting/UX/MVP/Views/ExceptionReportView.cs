@@ -39,6 +39,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         #endregion
 
         #region IExceptionReportView Implementation
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string ProgressMessage
         {
             set
@@ -48,23 +50,28 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool EnableEmailButton
         {
             set => kbtnElectronicMail.Enabled = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ShowProgressBar
         {
             set => toolStripProgressBar1.Visible = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         private bool ShowProgressLabel
         {
             set => tslblProgressMessage.Visible = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ShowFullDetail { get; set; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string UserExplanation => ktxtUserExplanation.Text;
 
         public void MapiSendCompleted()
@@ -212,7 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             }
 
             Text = reportInfo.TitleText ?? Properties.Resources.ErrorReport;
-            ktxtUserExplanation.StateCommon.Content.Font = new Font(ktxtUserExplanation.StateCommon.Content.Font.FontFamily, reportInfo.UserExplanationFontSize);
+            ktxtUserExplanation.StateCommon.Content.Font = new Font(ktxtUserExplanation.StateCommon.Content.Font?.FontFamily!, reportInfo.UserExplanationFontSize);
             klblContactCompany.Text =
                 string.Format(
                     Properties.Resources.ExceptionReportView_PopulateReportInfo_If_this_problem_persists__please_contact__0__support_ +
@@ -285,11 +292,11 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             }
         }
 
-        private void AddExceptionControl(Control control, Exception exception)
+        private void AddExceptionControl(Control control, Exception? exception)
         {
             var exceptionDetail = new ExceptionDetailControl();
             exceptionDetail.SetControlBackgrounds(_presenter.ReportInfo.BackgroundColor);
-            exceptionDetail.PopulateExceptionTab(exception);
+            exceptionDetail.PopulateExceptionTab(exception!);
             exceptionDetail.Dock = DockStyle.Fill;
             control.Controls.Add(exceptionDetail);
         }
@@ -319,7 +326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
         #region Event Handlers
 
-        private void ExceptionReportView_KeyDown(object sender, KeyEventArgs e)
+        private void ExceptionReportView_KeyDown(object? sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -327,27 +334,27 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             }
         }
 
-        private void Copy_Click(object sender, EventArgs e)
+        private void Copy_Click(object? sender, EventArgs e)
         {
             _presenter.CopyReportToClipboard();
         }
 
-        private void Close_Click(object sender, EventArgs e)
+        private void Close_Click(object? sender, EventArgs e)
         {
             Close();
         }
 
-        private void Detail_Click(object sender, EventArgs e)
+        private void Detail_Click(object? sender, EventArgs e)
         {
             _presenter.ToggleDetail();
         }
 
-        private void Email_Click(object sender, EventArgs e)
+        private void Email_Click(object? sender, EventArgs e)
         {
             _presenter.SendReport();
         }
 
-        private void Save_Click(object sender, EventArgs e)
+        private void Save_Click(object? sender, EventArgs e)
         {
             var saveDialog = new SaveFileDialog
             {

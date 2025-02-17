@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// </summary>
         /// <param name="forceInstallOfLatestInFilteredList"></param>
         /// <param name="filteredAppCastItems"></param>
-        public FilterResult(bool forceInstallOfLatestInFilteredList, List<AppCastItem> filteredAppCastItems = null)
+        public FilterResult(bool forceInstallOfLatestInFilteredList, List<AppCastItem>? filteredAppCastItems = null)
         {
             _forceInstallOfLatestInFilteredList = forceInstallOfLatestInFilteredList;
             _filteredAppCastItems = filteredAppCastItems;

@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                 throw new ArgumentNullException(nameof(callEventRaisingMethod));
             }
 
-            return Event.DoIf(sender, @event, delegate
+            return Event.DoIf(sender, @event!, delegate
             {
                 var eventArgs = new ChangeEventArgs<T>(oldValue, newValue);
                 callEventRaisingMethod(eventArgs);
@@ -149,12 +149,12 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// </summary>
         public T OldValue { get; protected set; }
 
-        public override bool Equals(object other)
+        public override bool Equals(object? other)
         {
             return Equals(other as ChangeEventArgs<T>);
         }
 
-        public bool Equals(ChangeEventArgs<T> other)
+        public bool Equals(ChangeEventArgs<T>? other)
         {
             if (ReferenceEquals(null, other)) return false;
 
@@ -170,9 +170,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             unchecked
             {
-                return (EqualityComparer<T>.Default.GetHashCode(NewValue) *
+                return (EqualityComparer<T>.Default.GetHashCode(NewValue!) *
                         397) ^
-                       EqualityComparer<T>.Default.GetHashCode(OldValue);
+                       EqualityComparer<T>.Default.GetHashCode(OldValue!);
             }
         }
     }

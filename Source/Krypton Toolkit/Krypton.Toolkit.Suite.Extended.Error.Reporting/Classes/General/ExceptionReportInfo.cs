@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// set automatically by <see cref="ReportGenerator"/> from either the assembly or ApplicationDeployment
         /// if deployed using ClickOnce
         /// </summary>
-        public string AppVersion { get; set; }
+        public string? AppVersion { get; set; }
 
         /// <summary>
         /// Region information - set automatically by <see cref="ReportGenerator"/>
@@ -149,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// <see cref="Assembly.GetEntryAssembly()"/> ??
         /// <see cref="Assembly.GetCallingAssembly()"/>
         /// </summary>
-        public Assembly AppAssembly { get; set; }
+        public Assembly? AppAssembly { get; set; }
 
         /// <summary>
         /// The company/owner of the running application.

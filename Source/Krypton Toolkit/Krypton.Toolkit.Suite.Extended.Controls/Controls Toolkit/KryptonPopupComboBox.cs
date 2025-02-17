@@ -28,19 +28,19 @@
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     [ToolboxBitmap(typeof(KryptonComboBox)), ToolboxItem(true), Description("Displays an editable text box with a drop-down list of permitted values.")]
-    public partial class KryptonPopupComboBox : KryptonComboBox
+    public partial class KryptonPopUpComboBox : KryptonComboBox
     {
         #region Instance Fields
 
         private Control _dropDownControl;
 
-        protected Popup? _dropDown;
+        protected PopUp? _dropDown;
 
         #endregion
 
         #region Identity
 
-        public KryptonPopupComboBox()
+        public KryptonPopUpComboBox()
         {
             InitializeComponent();
 
@@ -53,6 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         #region Public
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Control DropDownControl
         {
             get => _dropDownControl;
@@ -66,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
                 _dropDownControl = value;
 
-                _dropDown = new Popup(value);
+                _dropDown = new PopUp(value);
             }
         }
 
@@ -94,7 +95,6 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         #region Protected Overrides
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
             if (NativeMethods.HIWORD(m.WParam) == NativeMethods.CBN_DROPDOWN)

@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             float factorY = graphics.DpiY > 96 ? 1f * graphics.DpiY / 96 : 1f;
 
             int nextPosition = cellBounds.X + (int)(1 * factorX);
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+            Font? f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
             foreach (Token tok in (List<Token>)Value)
             {
@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             float factorY = graphics.DpiY > 96 ? 1f * graphics.DpiY / 96 : 1f;
 
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+            Font? f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
             int nextPosition = (int)(1 * factorX);
             if (Value != null)
             {

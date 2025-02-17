@@ -36,6 +36,8 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public FloatableToolStrip FloatableToolStrip
         {
             get => _floatableToolStrip;

@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="targetControl">The target control.</param>
         /// <param name="showForeColourInformation">if set to <c>true</c> [show fore colour information].</param>
         /// <param name="controlDescription">The control description.</param>
-        public static void DisplayColourInformation(Control targetControl, bool showForeColourInformation = false, string controlDescription = "", KryptonLabel output = null)
+        public static void DisplayColourInformation(Control targetControl, bool showForeColourInformation = false, string controlDescription = "", KryptonLabel? output = null)
         {
             // Create a temporary tool tip
             ToolTip toolTipInformation = new();

@@ -93,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     //{
                     Padding inheritedPadding = Style.Padding;
                     //Padding inheritedPadding = this.InheritedStyle.Padding;
-                    Style.Padding = new(_imageSize.Width + 2,
+                    Style.Padding = new Padding(_imageSize.Width + 2,
                         inheritedPadding.Top, inheritedPadding.Right,
                         inheritedPadding.Bottom);
                     //}
@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (Value != null && ((TextAndImage)Value).Image != null)
             {
                 Padding inheritedPadding = Style.Padding;
-                Style.Padding = new(_imageSize.Width + 2,
+                Style.Padding = new Padding(_imageSize.Width + 2,
                     inheritedPadding.Top, inheritedPadding.Right,
                     inheritedPadding.Bottom);
                 //To be in phase with highlight feature who forces the style.

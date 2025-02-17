@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="obj">The object to compare</param>
         /// <returns>true if equal, false otherwise.</returns>
-        public override bool Equals(object obj) => Text.Equals(obj.ToString());
+        public override bool Equals(object? obj) => Text.Equals(obj?.ToString());
 
         /// <summary>
         /// Overrides GetHashCode

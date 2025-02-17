@@ -59,6 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         #region Properties
         [Description("Shows or hides the slider text.")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool TextEnabled
         {
             get => _textEnabled;
@@ -71,6 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         }
 
         [Description("The toggle state of the switch."), DefaultValue(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool Toggled
         {
             get => _toggled;
@@ -99,6 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool UseGradientOnKnob
         {
             get => _useGradientOnKnob;

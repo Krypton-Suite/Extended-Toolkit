@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="helpFilePath">Value for HelpFilePath.</param>
         /// <param name="keyword">Value for Keyword</param>
-        public HelpInfo(string helpFilePath = null, string keyword = null)
+        public HelpInfo(string? helpFilePath = null, string? keyword = null)
         : this(helpFilePath, keyword, !string.IsNullOrWhiteSpace(keyword) ? HelpNavigator.Topic : HelpNavigator.TableOfContents, null)
         {
 
@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="helpFilePath">Value for HelpFilePath.</param>
         /// <param name="navigator">Value for Navigator</param>
         /// <param name="param"></param>
-        public HelpInfo(string helpFilePath, HelpNavigator navigator, object param = null)
+        public HelpInfo(string helpFilePath, HelpNavigator navigator, object? param = null)
             : this(helpFilePath, null, navigator, param)
         {
 

@@ -1,4 +1,5 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿#pragma warning disable CS1570 // XML comment has badly formed XML
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// These methods hold conversion logic between DateTime (used for representing dates)

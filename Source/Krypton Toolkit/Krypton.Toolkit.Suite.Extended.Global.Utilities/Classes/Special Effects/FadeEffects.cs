@@ -85,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <param name="kryptonWindow">The krypton window.</param>
         /// <param name="window">The window.</param>
         /// <param name="fadeInSleepTimer">The fade in sleep timer.</param>
-        public void FadeInWindow(KryptonForm kryptonWindow, Form window = null, int fadeInSleepTimer = 50)
+        public void FadeInWindow(KryptonForm kryptonWindow, Form? window = null, int fadeInSleepTimer = 50)
         {
             for (FadeIn = 0.0; FadeIn <= 1.1; FadeIn += 0.1)
             {
@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <param name="currentWindow">The current window.</param>
         /// <param name="nextWindow">The next window.</param>
         /// <param name="fadeOutSleepTimer">The fade out sleep timer.</param>
-        public void FadeOutWindow(KryptonForm currentKryptonWindow, KryptonForm nextKryptonWindow, Form currentWindow = null, Form nextWindow = null, int fadeOutSleepTimer = 50)
+        public void FadeOutWindow(KryptonForm currentKryptonWindow, KryptonForm nextKryptonWindow, Form? currentWindow = null, Form? nextWindow = null, int fadeOutSleepTimer = 50)
         {
             for (FadeOut = 90; FadeOut >= 10; FadeOut += -10)
             {

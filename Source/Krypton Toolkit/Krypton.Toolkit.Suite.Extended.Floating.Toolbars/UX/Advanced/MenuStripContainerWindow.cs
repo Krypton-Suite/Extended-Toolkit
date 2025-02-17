@@ -39,6 +39,8 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ShowWindowFrame
         {
             get => _showWindowFrame;
@@ -51,6 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public FloatableMenuStrip FloatableMenuStrip
         {
             get => _floatableMenuStrip;

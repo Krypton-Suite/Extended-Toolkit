@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// The selection alignment.
         /// </value>
         [DefaultValue(TextAlignment.Left), Description("Gets or sets the selection alignment."), Category("Appearance")]
-        public new TextAlignment SelectionAlignment
+        public TextAlignment SelectionAlignment
         {
             get
             {
