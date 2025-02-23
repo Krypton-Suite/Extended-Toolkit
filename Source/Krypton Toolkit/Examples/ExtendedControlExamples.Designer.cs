@@ -57,9 +57,10 @@ namespace Examples
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Security.SecureString secureString3 = new System.Security.SecureString();
+            System.Security.SecureString secureString1 = new System.Security.SecureString();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtendedControlExamples));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonPasswordTextBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonPasswordTextBox();
             this.kryptonValidationBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonValidationBox();
             this.kryptonStarRatingControl1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonStarRatingControl();
             this.kryptonSecureTextBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonSecureTextBox();
@@ -70,7 +71,6 @@ namespace Examples
             this.kkcv1Test = new Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion1();
             this.kryptonBorderedLabel1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonBorderedLabel();
             this.circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
-            this.kryptonPasswordTextBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonPasswordTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).BeginInit();
@@ -92,8 +92,15 @@ namespace Examples
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1123, 684);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1125, 678);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kryptonPasswordTextBox1
+            // 
+            this.kryptonPasswordTextBox1.Location = new System.Drawing.Point(601, 142);
+            this.kryptonPasswordTextBox1.Name = "kryptonPasswordTextBox1";
+            this.kryptonPasswordTextBox1.Size = new System.Drawing.Size(264, 23);
+            this.kryptonPasswordTextBox1.TabIndex = 10;
             // 
             // kryptonValidationBox1
             // 
@@ -129,7 +136,7 @@ namespace Examples
             this.kryptonSecureTextBox1.Location = new System.Drawing.Point(601, 82);
             this.kryptonSecureTextBox1.Name = "kryptonSecureTextBox1";
             this.kryptonSecureTextBox1.PasswordChar = '●';
-            this.kryptonSecureTextBox1.SecuredText = secureString3;
+            this.kryptonSecureTextBox1.SecuredText = secureString1;
             this.kryptonSecureTextBox1.Size = new System.Drawing.Size(264, 23);
             this.kryptonSecureTextBox1.TabIndex = 7;
             this.kryptonSecureTextBox1.Text = "kryptonSecureTextBox1";
@@ -211,8 +218,6 @@ namespace Examples
             // 
             // kryptonBorderedLabel1
             // 
-            this.kryptonBorderedLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.kryptonBorderedLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
             this.kryptonBorderedLabel1.Location = new System.Drawing.Point(275, 13);
             this.kryptonBorderedLabel1.Name = "kryptonBorderedLabel1";
             this.kryptonBorderedLabel1.Size = new System.Drawing.Size(139, 20);
@@ -229,18 +234,11 @@ namespace Examples
             this.circularPictureBox1.TabIndex = 0;
             this.circularPictureBox1.TabStop = false;
             // 
-            // kryptonPasswordTextBox1
-            // 
-            this.kryptonPasswordTextBox1.Location = new System.Drawing.Point(601, 142);
-            this.kryptonPasswordTextBox1.Name = "kryptonPasswordTextBox1";
-            this.kryptonPasswordTextBox1.Size = new System.Drawing.Size(264, 23);
-            this.kryptonPasswordTextBox1.TabIndex = 10;
-            // 
             // ExtendedControlExamples
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1123, 684);
+            this.ClientSize = new System.Drawing.Size(1125, 678);
             this.Controls.Add(this.kryptonPanel1);
             this.Name = "ExtendedControlExamples";
             this.Text = "ExtendedControlExamples";

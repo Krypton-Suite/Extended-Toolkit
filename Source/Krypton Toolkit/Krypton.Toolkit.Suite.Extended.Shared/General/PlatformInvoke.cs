@@ -28,6 +28,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Shared
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public partial class PlatformInvoke
     {
         #region statics
@@ -741,7 +742,7 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
         /// ai_productions@verizon.net or osirisgothra@hotmail.com
         /// Obtained on pinvoke.net, please contribute your code to support the wiki!
         /// </summary>
-        public enum SM_ : int
+        public enum SM_
         {
             /// <summary>
             /// The flags that specify how the system arranged minimized windows. For more information, see the Remarks section in this topic.
