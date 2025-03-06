@@ -76,6 +76,13 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Color> SegmentColors { get; set; } = new List<Color>();
 
+        // Define a new property for the center button color
+        [Category("Custom Properties")]
+        [Description("The background color of the center button.")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [DefaultValue(typeof(Color), "White")]
+        public Color CenterButtonBackColor { get; set; }
+
         #endregion
 
         #region Identity
@@ -93,6 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             MouseClick += KryptonRadialMenu_MouseClick;
             MouseDown += KryptonRadialMenu_MouseDown;
             MouseUp += KryptonRadialMenu_MouseUp;
+            //base.BackColor = Color.Transparent;
         }
 
         #endregion
