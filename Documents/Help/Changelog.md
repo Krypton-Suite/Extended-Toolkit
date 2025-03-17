@@ -6,7 +6,10 @@
 =======
 
 ## 2025-11-xx - Build 2511 - November 2025
-* Rollback [#514](https://github.com/Krypton-Suite/Standard-Toolkit/issues/514), Move `KryptonOutlookGrid` back to Extended ToolKit for futher evaluation & development
+* Implemented [#522](https://github.com/Krypton-Suite/Extended-Toolkit/issues/522), Support the new `slnx` format
+* Rollback [#514](https://github.com/Krypton-Suite/Standard-Toolkit/issues/514), Move `KryptonOutlookGrid` back to Extended ToolKit for further evaluation & development
+* Add support for .NET 10.0
+* Updated standard toolkit to build `2511`
 
 =======
 
@@ -21,7 +24,7 @@
 * `KryptonFormExtended` - `AllowFormIntegrate` property has now been removed to fall in line with the standard toolkit
 * Resolved [#446](https://github.com/Krypton-Suite/Extended-Toolkit/issues/446), Throwing exceptions using the Circularprogressbar control of The Ultimate 80.0 package during design
 * New `KryptonAboutExtendedToolkit` API
-* * Add support for .NET 9.0
+* Add support for .NET 9.0
 * Removed support for .NET 6 and 7, in accordance with their official release cadences
 * Updated standard toolkit to build `2411`
 
