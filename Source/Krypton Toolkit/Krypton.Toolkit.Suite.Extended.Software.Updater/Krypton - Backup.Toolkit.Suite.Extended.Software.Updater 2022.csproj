@@ -106,7 +106,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Toolkit" Version="90.25.2.55" />
 			</ItemGroup>
 		</When>
 
@@ -116,7 +116,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="90.25.2.55" />
 			</ItemGroup>
 		</When>
 
@@ -147,7 +147,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Toolkit" Version="90.25.2.55" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -160,10 +160,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
+		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.40" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1823.32" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
-		<PackageReference Include="ZipStorer" Version="3.8.0" />
+		<PackageReference Include="ZipStorer" Version="4.1.0" />
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->

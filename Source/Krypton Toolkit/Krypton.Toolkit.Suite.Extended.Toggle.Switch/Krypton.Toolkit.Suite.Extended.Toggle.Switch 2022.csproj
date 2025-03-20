@@ -75,7 +75,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.2.41-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.3.76-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -105,7 +105,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="90.25.2.55" />
 			</ItemGroup>
 		</When>
 
@@ -136,7 +136,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Toolkit" Version="90.25.2.55" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
