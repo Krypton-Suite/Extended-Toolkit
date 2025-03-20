@@ -3,25 +3,25 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<!--If all else fails-->
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
