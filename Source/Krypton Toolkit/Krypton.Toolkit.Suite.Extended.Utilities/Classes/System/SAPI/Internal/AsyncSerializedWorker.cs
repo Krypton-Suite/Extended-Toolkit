@@ -124,12 +124,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
             _isEnabled = true;
         }
 
-        public void Post(object evt)
+        public void Post(object? evt)
         {
             AddItem(new AsyncWorkItem(DefaultCallback, evt));
         }
 
-        public void Post(object[] evt)
+        public void Post(object?[] evt)
         {
             lock (_queue.SyncRoot)
             {
@@ -143,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
             }
         }
 
-        public void PostOperation(Delegate callback, params object[] parameters)
+        public void PostOperation(Delegate callback, params object?[] parameters)
         {
             AddItem(new AsyncWorkItem(callback, parameters));
         }

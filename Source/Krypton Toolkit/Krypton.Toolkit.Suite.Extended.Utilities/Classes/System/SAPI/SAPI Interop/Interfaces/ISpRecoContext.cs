@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 
         new void SetInterest(ulong ullEventInterest, ulong ullQueuedInterest);
 
-        new void GetEvents(uint ulCount, out SPEVENT pEventArray, out uint pulFetched);
+        new void GetEvents(uint ulCount, out Spevent pEventArray, out uint pulFetched);
 
         new void Slot10();
 

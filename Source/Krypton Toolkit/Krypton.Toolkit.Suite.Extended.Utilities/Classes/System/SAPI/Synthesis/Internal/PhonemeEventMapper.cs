@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             Reset();
         }
 
-        public override void AddEvent(TTSEvent evt)
+        public override void AddEvent(TTSEvent? evt)
         {
             if (_conversion == PhonemeConversion.NoConversion)
             {
@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 tTSEvent2 = (TTSEvent)_phonemeQueue.Dequeue();
                 num += tTSEvent2.PhonemeDuration.Milliseconds;
             }
-            TTSEvent evt = TTSEvent.CreatePhonemeEvent(new string(value), "", TimeSpan.FromMilliseconds(num), tTSEvent.PhonemeEmphasis, tTSEvent.Prompt, tTSEvent.AudioPosition);
+            TTSEvent? evt = TTSEvent.CreatePhonemeEvent(new string(value), "", TimeSpan.FromMilliseconds(num), tTSEvent.PhonemeEmphasis, tTSEvent.Prompt, tTSEvent.AudioPosition);
             SendToQueue(evt);
         }
 
@@ -153,13 +153,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _lastComplete = 0;
         }
 
-        private void SendToQueue(TTSEvent evt)
+        private void SendToQueue(TTSEvent? evt)
         {
             if (evt.Id == TtsEventId.Phoneme)
             {
                 if (_queue.Count > 0)
                 {
-                    TTSEvent tTSEvent = _queue.Dequeue() as TTSEvent;
+                    TTSEvent? tTSEvent = _queue.Dequeue() as TTSEvent;
                     if (tTSEvent.Id == TtsEventId.Phoneme)
                     {
                         tTSEvent.NextPhoneme = evt.Phoneme;

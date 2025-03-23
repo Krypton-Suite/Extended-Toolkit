@@ -222,9 +222,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                         {
                             IntPtr ptr = new IntPtr((long)value + elementsOffset + i * num);
                             SPSERIALIZEDPHRASEELEMENT sPSERIALIZEDPHRASEELEMENT = (SPSERIALIZEDPHRASEELEMENT)Marshal.PtrToStructure(ptr, typeof(SPSERIALIZEDPHRASEELEMENT));
-                            string text = null;
+                            string? text = null;
                             string lexicalForm = null;
-                            string pronunciation = null;
+                            string? pronunciation = null;
                             if (sPSERIALIZEDPHRASEELEMENT.pszDisplayTextOffset != 0)
                             {
                                 IntPtr ptr2 = new IntPtr((long)value + (int)sPSERIALIZEDPHRASEELEMENT.pszDisplayTextOffset);

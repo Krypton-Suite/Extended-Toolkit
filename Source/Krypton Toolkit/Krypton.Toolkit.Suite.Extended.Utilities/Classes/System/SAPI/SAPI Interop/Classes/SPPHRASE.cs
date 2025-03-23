@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 
         internal IntPtr pSREnginePrivateData;
 
-        internal static ISpPhrase CreatePhraseFromText(string phrase, CultureInfo culture, out GCHandle[] memHandles, out IntPtr coMem)
+        internal static ISpPhrase? CreatePhraseFromText(string phrase, CultureInfo culture, out GCHandle[] memHandles, out IntPtr coMem)
         {
             string[] array = phrase.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
             RecognizedWordUnit[] array2 = new RecognizedWordUnit[array.Length];
@@ -77,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             return CreatePhraseFromWordUnits(array2, culture, out memHandles, out coMem);
         }
 
-        internal static ISpPhrase CreatePhraseFromWordUnits(RecognizedWordUnit[] words, CultureInfo culture, out GCHandle[] memHandles, out IntPtr coMem)
+        internal static ISpPhrase? CreatePhraseFromWordUnits(RecognizedWordUnit[] words, CultureInfo culture, out GCHandle[] memHandles, out IntPtr coMem)
         {
             SPPHRASEELEMENT[] array = new SPPHRASEELEMENT[words.Length];
             int num = Marshal.SizeOf(typeof(SPPHRASEELEMENT));
@@ -87,21 +87,21 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             {
                 for (int i = 0; i < words.Length; i++)
                 {
-                    RecognizedWordUnit recognizedWordUnit = words[i];
+                    RecognizedWordUnit? recognizedWordUnit = words[i];
                     array[i] = new SPPHRASEELEMENT();
                     array[i].bDisplayAttributes = RecognizedWordUnit.DisplayAttributesToSapiAttributes(recognizedWordUnit.DisplayAttributes == DisplayAttributes.None ? DisplayAttributes.OneTrailingSpace : recognizedWordUnit.DisplayAttributes);
                     array[i].SREngineConfidence = recognizedWordUnit.Confidence;
                     array[i].ulAudioTimeOffset = (uint)(recognizedWordUnit._audioPosition.Ticks * 10000 / 10000);
                     array[i].ulAudioSizeTime = (uint)(recognizedWordUnit._audioDuration.Ticks * 10000 / 10000);
-                    if (recognizedWordUnit.Text != null)
+                    if (recognizedWordUnit != null && recognizedWordUnit.Text != null)
                     {
                         GCHandle item = GCHandle.Alloc(recognizedWordUnit.Text, GCHandleType.Pinned);
                         list.Add(item);
                         array[i].pszDisplayText = item.AddrOfPinnedObject();
                     }
-                    if (recognizedWordUnit.Text == null || recognizedWordUnit.LexicalForm != recognizedWordUnit.Text)
+                    if (recognizedWordUnit?.Text == null || recognizedWordUnit.LexicalForm != recognizedWordUnit.Text)
                     {
-                        GCHandle item2 = GCHandle.Alloc(recognizedWordUnit.LexicalForm, GCHandleType.Pinned);
+                        GCHandle item2 = GCHandle.Alloc(recognizedWordUnit?.LexicalForm, GCHandleType.Pinned);
                         list.Add(item2);
                         array[i].pszLexicalForm = item2.AddrOfPinnedObject();
                     }
@@ -109,9 +109,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
                     {
                         array[i].pszLexicalForm = array[i].pszDisplayText;
                     }
-                    if (!string.IsNullOrEmpty(recognizedWordUnit.Pronunciation))
+                    if (!string.IsNullOrEmpty(recognizedWordUnit?.Pronunciation))
                     {
-                        GCHandle item3 = GCHandle.Alloc(recognizedWordUnit.Pronunciation, GCHandleType.Pinned);
+                        GCHandle item3 = GCHandle.Alloc(recognizedWordUnit?.Pronunciation, GCHandleType.Pinned);
                         list.Add(item3);
                         array[i].pszPronunciation = item3.AddrOfPinnedObject();
                     }
@@ -129,8 +129,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             sPPHRASE.Rule.ulCountOfElements = (uint)words.Length;
             sPPHRASE.pElements = coMem;
             SpPhraseBuilder spPhraseBuilder = new SpPhraseBuilder();
-            ((ISpPhraseBuilder)spPhraseBuilder).InitFromPhrase(sPPHRASE);
-            return (ISpPhrase)spPhraseBuilder;
+            (spPhraseBuilder as ISpPhraseBuilder)?.InitFromPhrase(sPPHRASE);
+            return spPhraseBuilder as ISpPhrase;
         }
     }
 }

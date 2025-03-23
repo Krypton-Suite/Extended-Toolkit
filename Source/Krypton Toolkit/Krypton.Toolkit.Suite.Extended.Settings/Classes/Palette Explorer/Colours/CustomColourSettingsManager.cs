@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             AlwaysUsePrompt = value;
         }
 
-        public static void WriteRGBColoursToFile(string path)
+        public static void WriteRGBColoursToFile(string? path)
         {
             throw new NotImplementedException();
         }
@@ -286,11 +286,11 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
         }
 
-        public static void WriteARGBColoursToFile(string colourFilePath)
+        public static void WriteARGBColoursToFile(string? colourFilePath)
         {
             CustomColourSettingsManager manager = new();
 
-            StreamWriter writer = new(colourFilePath);
+            StreamWriter writer = new(colourFilePath!);
         }
         #endregion
 
@@ -329,9 +329,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                         csfd.Title = "Save Colours To:";
 
-                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
 
-                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
 
                         csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
@@ -350,7 +350,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception exc)
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                KryptonExceptionHandler.CaptureException(exc);
             }
         }
 
@@ -372,9 +372,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
 
                         csfd.Title = "Save Colours To:";
 
-                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
 
-                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
 
                         csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
@@ -393,7 +393,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             catch (Exception exc)
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                KryptonExceptionHandler.CaptureException(exc);
             }
         }
         #endregion

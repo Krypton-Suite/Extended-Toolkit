@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
     internal interface ISpRecognizer2
     {
         [PreserveSig]
-        int EmulateRecognitionEx(ISpPhrase pPhrase, uint dwCompareFlags);
+        int EmulateRecognitionEx(ISpPhrase? pPhrase, uint dwCompareFlags);
 
         void SetTrainingState(bool fDoingTraining, bool fAdaptFromTrainingData);
 

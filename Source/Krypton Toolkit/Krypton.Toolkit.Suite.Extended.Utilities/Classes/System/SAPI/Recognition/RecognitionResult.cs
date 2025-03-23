@@ -221,7 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             return true;
         }
 
-        internal string ConvertPronunciation(string pronunciation, int langId)
+        internal string? ConvertPronunciation(string? pronunciation, int langId)
         {
             if (_alphabetConverter == null)
             {

@@ -895,7 +895,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             int num = 1 << (int)evtId;
             if ((num & _ttsInterest) != 0)
             {
-                TTSEvent evt = new TTSEvent(evtId, prompt, exception, voiceInfo);
+                TTSEvent? evt = new TTSEvent(evtId, prompt, exception, voiceInfo);
                 _asyncWorker.Post(evt);
             }
         }

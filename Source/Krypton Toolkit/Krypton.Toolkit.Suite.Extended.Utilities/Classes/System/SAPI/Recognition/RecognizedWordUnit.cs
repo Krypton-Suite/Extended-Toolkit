@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         public DisplayAttributes DisplayAttributes => _displayAttributes;
 
-        public RecognizedWordUnit(string text, float confidence, string pronunciation, string lexicalForm, DisplayAttributes displayAttributes, TimeSpan audioPosition, TimeSpan audioDuration)
+        public RecognizedWordUnit(string? text, float confidence, string? pronunciation, string lexicalForm, DisplayAttributes displayAttributes, TimeSpan audioPosition, TimeSpan audioDuration)
         {
             if (lexicalForm == null)
             {

@@ -207,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             return (SAPIErrorCodes)_proxy.Invoke(() => _proxy.SapiSpeechRecognizer.EmulateRecognition(phrase, ref displayAttributes, 0));
         }
 
-        internal SAPIErrorCodes EmulateRecognition(ISpPhrase iSpPhrase, uint dwCompareFlags)
+        internal SAPIErrorCodes EmulateRecognition(ISpPhrase? iSpPhrase, uint dwCompareFlags)
         {
             return (SAPIErrorCodes)_proxy.Invoke(() => _proxy.Recognizer2.EmulateRecognitionEx(iSpPhrase, dwCompareFlags));
         }

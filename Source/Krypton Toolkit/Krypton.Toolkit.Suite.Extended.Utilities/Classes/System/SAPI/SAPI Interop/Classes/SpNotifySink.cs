@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 
         void ISpNotifySink.Notify()
         {
-            EventNotify eventNotify = (EventNotify)_eventNotifyReference.Target;
+            EventNotify? eventNotify = _eventNotifyReference.Target as EventNotify;
             if (eventNotify != null)
             {
                 ThreadPool.QueueUserWorkItem(eventNotify.SendNotification);

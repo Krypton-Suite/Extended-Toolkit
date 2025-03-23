@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 
         #region Methods
         /// <summary>
-        /// Elevates the application to use administrative privileges. To be used with <see cref="Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACElevatedButton"/> or <see cref="Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.ToolStripMenuItemUACSheld"/> button click.
+        /// Elevates the application to use administrative privileges. To be used with <see cref="KryptonUACElevatedButton"/> or <see cref="Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.ToolStripMenuItemUACSheld"/> button click.
         /// </summary>
         /// <param name="processName">The process name that you wish to elevate.</param>
         public static void ElevateProcessWithAdministrativeRights(string processName)

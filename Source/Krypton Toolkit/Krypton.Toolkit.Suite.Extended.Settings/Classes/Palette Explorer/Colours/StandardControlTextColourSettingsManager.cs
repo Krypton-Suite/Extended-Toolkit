@@ -216,12 +216,12 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
             }
         }
 
-        public static void WriteARGBColoursToFile(string colourConfigurationPath)
+        public static void WriteARGBColoursToFile(string? colourConfigurationPath)
         {
 
         }
 
-        public static void WriteRGBColoursToFile(string colourConfigurationPath)
+        public static void WriteRGBColoursToFile(string? colourConfigurationPath)
         {
             throw new NotImplementedException();
         }
@@ -264,9 +264,9 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
 
                         csfd.Title = "Save Colours To:";
 
-                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
 
-                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
 
                         csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
@@ -285,7 +285,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
             }
             catch (Exception exc)
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                KryptonExceptionHandler.CaptureException(exc);
             }
         }
 
@@ -308,9 +308,9 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
 
                         csfd.Title = "Save Colours To:";
 
-                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
 
-                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
 
                         csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
@@ -329,7 +329,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
             }
             catch (Exception exc)
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+                KryptonExceptionHandler.CaptureException(exc);
             }
         }
         #endregion

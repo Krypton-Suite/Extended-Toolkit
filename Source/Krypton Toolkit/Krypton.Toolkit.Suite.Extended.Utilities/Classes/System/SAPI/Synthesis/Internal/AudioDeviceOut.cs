@@ -34,14 +34,14 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         {
             internal WaveHeader _waveHeader;
 
-            internal object _userData;
+            internal object? _userData;
 
             internal InItem(WaveHeader waveHeader)
             {
                 _waveHeader = waveHeader;
             }
 
-            internal InItem(object userData)
+            internal InItem(object? userData)
             {
                 _userData = userData;
             }
@@ -254,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
         }
 
-        internal override void InjectEvent(TTSEvent ttsEvent)
+        internal override void InjectEvent(TTSEvent? ttsEvent)
         {
             if (_asyncDispatch != null && !_aborted)
             {

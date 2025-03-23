@@ -67,8 +67,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             }
         }
 
-        private SpeechEvent(SPEVENT sapiEvent, SpeechAudioFormatInfo audioFormat)
-            : this(sapiEvent.eEventId, sapiEvent.elParamType, sapiEvent.ullAudioStreamOffset, sapiEvent.wParam, sapiEvent.lParam)
+        private SpeechEvent(Spevent sapiEvent, SpeechAudioFormatInfo audioFormat)
+            : this(sapiEvent.EEventId, sapiEvent.ElParamType, sapiEvent.UllAudioStreamOffset, sapiEvent.WParam, sapiEvent.LParam)
         {
             if (audioFormat == null || audioFormat.EncodingFormat == (EncodingFormat)0)
             {
@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             }
             else
             {
-                _audioPosition = audioFormat.AverageBytesPerSecond > 0 ? new TimeSpan((long)(sapiEvent.ullAudioStreamOffset * 10000000 / (ulong)audioFormat.AverageBytesPerSecond)) : TimeSpan.Zero;
+                _audioPosition = audioFormat.AverageBytesPerSecond > 0 ? new TimeSpan((long)(sapiEvent.UllAudioStreamOffset * 10000000 / (ulong)audioFormat.AverageBytesPerSecond)) : TimeSpan.Zero;
             }
         }
 
@@ -113,9 +113,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             GC.SuppressFinalize(this);
         }
 
-        internal static SpeechEvent TryCreateSpeechEvent(ISpEventSource sapiEventSource, bool additionalSapiFeatures, SpeechAudioFormatInfo audioFormat)
+        internal static SpeechEvent? TryCreateSpeechEvent(ISpEventSource sapiEventSource, bool additionalSapiFeatures, SpeechAudioFormatInfo audioFormat)
         {
-            SpeechEvent result = null;
+            SpeechEvent? result = null;
             uint pulFetched;
             if (additionalSapiFeatures)
             {
@@ -128,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
             }
             else
             {
-                SPEVENT pEventArray2;
+                Spevent pEventArray2;
                 sapiEventSource.GetEvents(1u, out pEventArray2, out pulFetched);
                 if (pulFetched == 1)
                 {

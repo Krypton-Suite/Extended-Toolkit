@@ -220,33 +220,34 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         public string GetOSFriendlyName()
         {
-            string productName = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName"),
-                   csdVersion = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CSDVersion");
+            string? productName = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName");
+            string? csdVersion = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CSDVersion");
 
             if (productName != string.Empty)
             {
-                return (productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? $" {csdVersion}"
+                return (productName != null && productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? $" {csdVersion}"
                     : "");
             }
 
             return string.Empty;
         }
 
-        private string HKLM_GetString(string path, string key)
+        private string? HKLM_GetString(string path, string key)
         {
             try
             {
-                RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(path);
+                RegistryKey? registryKey = Registry.LocalMachine.OpenSubKey(path);
 
                 if (registryKey == null)
                 {
                     return string.Empty;
                 }
 
-                return (string)registryKey.GetValue(key);
+                return registryKey.GetValue(key) as string;
             }
             catch (Exception e)
             {
+                KryptonExceptionHandler.CaptureException(e);
                 return string.Empty;
             }
         }
@@ -540,33 +541,34 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         public static string GetOSFriendlyName()
         {
-            string productName = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName"),
-                   csdVersion = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CSDVersion");
+            string? productName = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName");
+            string? csdVersion = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CSDVersion");
 
             if (productName != string.Empty)
             {
-                return (productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? $" {csdVersion}"
+                return (productName != null && productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? $" {csdVersion}"
                     : "");
             }
 
             return string.Empty;
         }
 
-        private static string HKLM_GetString(string path, string key)
+        private static string? HKLM_GetString(string path, string key)
         {
             try
             {
-                RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(path);
+                RegistryKey? registryKey = Registry.LocalMachine.OpenSubKey(path);
 
                 if (registryKey == null)
                 {
                     return string.Empty;
                 }
 
-                return (string)registryKey.GetValue(key);
+                return registryKey.GetValue(key) as string;
             }
             catch (Exception e)
             {
+                KryptonExceptionHandler.CaptureException(e);
                 return string.Empty;
             }
         }

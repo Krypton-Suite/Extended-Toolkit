@@ -28,18 +28,18 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
-    internal struct SPEVENT
+    internal struct Spevent
     {
-        public SPEVENTENUM eEventId;
+        public SPEVENTENUM EEventId;
 
-        public SPEVENTLPARAMTYPE elParamType;
+        public SPEVENTLPARAMTYPE ElParamType;
 
-        public uint ulStreamNum;
+        public uint UlStreamNum;
 
-        public ulong ullAudioStreamOffset;
+        public ulong UllAudioStreamOffset;
 
-        public IntPtr wParam;
+        public IntPtr WParam;
 
-        public IntPtr lParam;
+        public IntPtr LParam;
     }
 }

@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     }
                     if ((num & _eventInterest) != 0)
                     {
-                        TTSEvent evt = CreateTtsEvent(sapiEvent);
+                        TTSEvent? evt = CreateTtsEvent(sapiEvent);
                         if (_eventMapper == null)
                         {
                             AddEvent(evt);
@@ -193,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             return null;
         }
 
-        public void AddEvent(TTSEvent evt)
+        public void AddEvent(TTSEvent? evt)
         {
             _audio.InjectEvent(evt);
         }
@@ -224,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _actions = SPVESACTIONS.SPVES_RATE | SPVESACTIONS.SPVES_VOLUME;
         }
 
-        private TTSEvent CreateTtsEvent(SpeechEventInfo sapiEvent)
+        private TTSEvent? CreateTtsEvent(SpeechEventInfo sapiEvent)
         {
             switch (sapiEvent.EventId)
             {

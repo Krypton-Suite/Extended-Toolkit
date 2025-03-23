@@ -1424,7 +1424,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             ActivateRule(sapiGrammar, uri, ruleName);
         }
 
-        private void LoadGrammarAsyncCallback(object grammarObject)
+        private void LoadGrammarAsyncCallback(object? grammarObject)
         {
             Grammar grammar = (Grammar)grammarObject;
             InternalGrammarData internalData = grammar.InternalData;
@@ -1558,7 +1558,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             if (useReco2 || _supportsSapi53)
             {
                 GCHandle[] memHandles = null;
-                ISpPhrase spPhrase = null;
+                ISpPhrase? spPhrase = null;
                 IntPtr coMem;
                 spPhrase = wordUnits != null ? SPPHRASE.CreatePhraseFromWordUnits(wordUnits, RecognizerInfo.Culture, out memHandles, out coMem) : SPPHRASE.CreatePhraseFromText(phrase.Trim(), RecognizerInfo.Culture, out memHandles, out coMem);
                 try
@@ -1665,7 +1665,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             }
             if (ex != null || flag)
             {
-                RecognizeCompletedEventArgs recognizeCompletedEventArgs = new RecognizeCompletedEventArgs(null, false, false, false, TimeSpan.Zero, ex, flag, null);
+                RecognizeCompletedEventArgs? recognizeCompletedEventArgs = new RecognizeCompletedEventArgs(null, false, false, false, TimeSpan.Zero, ex, flag, null);
                 _asyncWorkerUI.PostOperation(new WaitCallback(RecognizeAsyncWaitForGrammarsToLoadFailed), recognizeCompletedEventArgs);
             }
         }

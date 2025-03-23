@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         internal abstract void Resume();
 
-        internal abstract void InjectEvent(TTSEvent ttsEvent);
+        internal abstract void InjectEvent(TTSEvent? ttsEvent);
 
         internal abstract void WaitUntilDone();
 

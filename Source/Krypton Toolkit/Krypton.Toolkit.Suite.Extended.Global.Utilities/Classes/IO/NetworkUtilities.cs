@@ -56,15 +56,21 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         {
             bool isConnectionAlive = false;
 
-            Ping pinger = null;
+            Ping? pinger = null;
 
             try
             {
                 pinger = new Ping();
 
-                PingReply reply = pinger.Send(pingAddress);
+                if (pingAddress != null)
+                {
+                    PingReply? reply = pinger.Send(pingAddress);
 
-                isConnectionAlive = reply.Status == IPStatus.Success;
+                    if (reply != null)
+                    {
+                        isConnectionAlive = reply.Status == IPStatus.Success;
+                    }
+                }
             }
             catch (PingException ex)
             {

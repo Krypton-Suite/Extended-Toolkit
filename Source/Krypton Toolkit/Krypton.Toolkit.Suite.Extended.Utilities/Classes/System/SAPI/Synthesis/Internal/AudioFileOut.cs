@@ -186,7 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
         }
 
-        internal override void InjectEvent(TTSEvent ttsEvent)
+        internal override void InjectEvent(TTSEvent? ttsEvent)
         {
             if (!_aborted && _asyncDispatch != null)
             {

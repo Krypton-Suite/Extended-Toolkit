@@ -140,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// Sets the value of GlobalManager to manager.
         /// </summary>
         /// <param name="manager">The value of GlobalManager.</param>
-        public void SetGlobalManager(KryptonManager manager)
+        public void SetGlobalManager(KryptonManager? manager)
         {
             _themeSettings.GlobalManager = manager;
 

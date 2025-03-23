@@ -77,10 +77,11 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 
             try
             {
-                Process p = Process.Start(startInfo);
+                Process? p = Process.Start(startInfo);
             }
-            catch (System.ComponentModel.Win32Exception ex)
+            catch (Win32Exception ex)
             {
+                KryptonExceptionHandler.CaptureException(ex);
                 return; //If cancelled, do nothing
             }
 

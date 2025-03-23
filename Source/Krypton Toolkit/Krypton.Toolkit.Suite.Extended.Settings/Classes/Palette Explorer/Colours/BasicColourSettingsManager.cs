@@ -264,11 +264,11 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         /// Writes the ARGB colours to file.
         /// </summary>
         /// <param name="colourFileName">Name of the colour file.</param>
-        public static void WriteARGBColoursToFile(string colourFileName)
+        public static void WriteARGBColoursToFile(string? colourFileName)
         {
             BasicColourSettingsManager manager = new();
 
-            StreamWriter writer = new(colourFileName);
+            StreamWriter writer = new(colourFileName!);
 
             writer.WriteLine(TranslationMethods.ColourARGBToString(manager.GetBaseColour()));
 
@@ -287,11 +287,11 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
             writer.Dispose();
         }
 
-        public static void WriteRGBColoursToFile(string colourFilePath)
+        public static void WriteRGBColoursToFile(string? colourFilePath)
         {
             BasicColourSettingsManager manager = new();
 
-            StreamWriter writer = new(colourFilePath);
+            StreamWriter writer = new(colourFilePath!);
 
             writer.WriteLine(TranslationMethods.RGBColourToString(manager.GetBaseColour()));
 
@@ -376,9 +376,9 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
 
                         csfd.Title = "Save Colours To:";
 
-                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
 
-                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
 
                         csfd.DefaultFileName = $"Basic Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
@@ -403,7 +403,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc);
+                KryptonExceptionHandler.CaptureException(exc);
             }
         }
 
@@ -453,9 +453,9 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
 
                         csfd.Title = "Save Colours To:";
 
-                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Colour Configuration File", ".ccf"));
 
-                        csfd.Filters.Add(new("Normal Text File", ".txt"));
+                        csfd.Filters.Add(new CommonFileDialogFilter("Normal Text File", ".txt"));
 
                         csfd.DefaultFileName = $"Basic Colour Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
 
@@ -474,7 +474,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc);
+                KryptonExceptionHandler.CaptureException(exc);
             }
         }
         #endregion

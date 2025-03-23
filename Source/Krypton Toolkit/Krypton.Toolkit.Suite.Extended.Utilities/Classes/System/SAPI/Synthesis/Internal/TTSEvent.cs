@@ -103,9 +103,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         {
         }
 
-        internal static TTSEvent CreatePhonemeEvent(string phoneme, string nextPhoneme, TimeSpan duration, SynthesizerEmphasis emphasis, Prompt prompt, TimeSpan audioPosition)
+        internal static TTSEvent? CreatePhonemeEvent(string phoneme, string nextPhoneme, TimeSpan duration, SynthesizerEmphasis emphasis, Prompt prompt, TimeSpan audioPosition)
         {
-            TTSEvent tTSEvent = new TTSEvent();
+            TTSEvent? tTSEvent = new TTSEvent();
             tTSEvent._evtId = TtsEventId.Phoneme;
             tTSEvent._audioPosition = audioPosition;
             tTSEvent._prompt = prompt;

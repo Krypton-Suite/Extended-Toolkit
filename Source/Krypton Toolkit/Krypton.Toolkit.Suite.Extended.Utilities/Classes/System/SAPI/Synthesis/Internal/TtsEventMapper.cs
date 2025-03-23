@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _sink = sink;
         }
 
-        protected virtual void SendToOutput(TTSEvent evt)
+        protected virtual void SendToOutput(TTSEvent? evt)
         {
             if (_sink != null)
             {
@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
         }
 
-        public virtual void AddEvent(TTSEvent evt)
+        public virtual void AddEvent(TTSEvent? evt)
         {
             SendToOutput(evt);
         }
