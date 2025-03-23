@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         private Control? _originalParent = null;
 
-        private List<MenuStripPanelExtended>? _menuStripPanelExtendedList = new();
+        private List<MenuStripPanelExtended>? _menuStripPanelExtendedList = [];
 
         private string _floatingWindowText;
 
@@ -71,6 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         /// <summary>
         /// Gets or sets a value indicating whether the control and all its child controls are displayed.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new bool Visible
         {
             get => base.Visible;
@@ -90,10 +91,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         /// <summary>Gets or sets a value indicating whether [show floating window control box].</summary>
         /// <value><c>true</c> if [show floating window control box]; otherwise, <c>false</c>.</value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ShowFloatingWindowControlBox { get => _showFloatingWindowControlBox; set => _showFloatingWindowControlBox = value; }
 
         /// <summary>Gets or sets the floating window text.</summary>
         /// <value>The floating window text.</value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string FloatingWindowText { get => _floatingWindowText; set => _floatingWindowText = value; }
         #endregion
 

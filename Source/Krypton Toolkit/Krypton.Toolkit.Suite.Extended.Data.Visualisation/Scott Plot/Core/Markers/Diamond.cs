@@ -9,14 +9,14 @@
             fill.ApplyToPaint(paint);
 
             // 4 corners
-            SKPoint[] pointsList = new SKPoint[]
-            {
+            SKPoint[] pointsList =
+            [
                 new SKPoint(center.X + offset, center.Y),
                 new SKPoint(center.X, center.Y + offset),
                 new SKPoint(center.X - offset, center.Y),
-                new SKPoint(center.X, center.Y - offset),
+                new SKPoint(center.X, center.Y - offset)
 
-            };
+            ];
 
             var path = new SKPath();
             path.AddPoly(pointsList);

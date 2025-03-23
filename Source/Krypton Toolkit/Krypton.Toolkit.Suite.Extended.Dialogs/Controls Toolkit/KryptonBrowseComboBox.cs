@@ -186,7 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             _kcReset.Execute += Reset_Execute;
 
-            ButtonSpecs.AddRange(new[] { _bsaBrowse, _bsaReset });
+            ButtonSpecs.AddRange([_bsaBrowse, _bsaReset]);
 
             _fileDialogType = FileDialogType.Standard;
 
@@ -352,7 +352,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         /// <summary>Raises the Paint event.</summary>
         /// <param name="e">A PaintEventArgs containing the event data.</param>
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             _bsaReset.Visible = _showResetButton;
 

@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal List<Arc> ToList()
         {
-            List<Arc> list = new List<Arc>();
+            List<Arc> list = [];
             IEnumerator enumerator = GetEnumerator();
             try
             {

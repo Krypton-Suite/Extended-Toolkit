@@ -248,10 +248,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonDockableNavigator1.Name = "kryptonDockableNavigator1";
             this.kryptonDockableNavigator1.NavigatorMode = Krypton.Navigator.NavigatorMode.BarCheckButtonGroupOutside;
             this.kryptonDockableNavigator1.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlClient;
-            this.kryptonDockableNavigator1.Pages.AddRange(new Krypton.Navigator.KryptonPage[] {
-            this.kryptonPage1,
+            this.kryptonDockableNavigator1.Pages.AddRange([
+                this.kryptonPage1,
             this.kryptonPage2,
-            this.kryptonPage3});
+            this.kryptonPage3
+            ]);
             this.kryptonDockableNavigator1.SelectedIndex = 2;
             this.kryptonDockableNavigator1.Size = new(640, 444);
             this.kryptonDockableNavigator1.TabIndex = 35;
@@ -651,9 +652,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kcmbDisplayType.DropDownWidth = 203;
             this.kcmbDisplayType.IntegralHeight = false;
-            this.kcmbDisplayType.Items.AddRange(new object[] {
-            "Standard",
-            "Circular"});
+            this.kcmbDisplayType.Items.AddRange([
+                "Standard",
+            "Circular"
+            ]);
             this.kcmbDisplayType.Location = new(137, 80);
             this.kcmbDisplayType.Name = "kcmbDisplayType";
             this.kcmbDisplayType.Size = new(203, 21);
@@ -678,9 +680,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kmtxtFilePath
             // 
-            this.kmtxtFilePath.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
-            this.bsaReset,
-            this.bsaBrowse});
+            this.kmtxtFilePath.ButtonSpecs.AddRange([
+                this.bsaReset,
+            this.bsaBrowse
+            ]);
             this.kmtxtFilePath.Location = new(165, 17);
             this.kmtxtFilePath.Name = "kmtxtFilePath";
             this.kmtxtFilePath.Size = new(366, 26);

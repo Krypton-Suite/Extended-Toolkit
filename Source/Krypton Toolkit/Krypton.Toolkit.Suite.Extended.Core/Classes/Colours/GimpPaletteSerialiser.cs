@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 throw new ArgumentNullException(nameof(stream));
             }
 
-            results = new();
+            results = [];
 
             using (StreamReader reader = new(stream))
             {
@@ -146,16 +146,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                             // TODO: Optimize this a touch. Microoptimization? Maybe.
 
-                            parts = !string.IsNullOrEmpty(data) ? data.Split(new[]
-                                                                             {
-                                                                 ' ',
+                            parts = !string.IsNullOrEmpty(data) ? data.Split([
+                                ' ',
                                                                  '\t'
-                                                               }, StringSplitOptions.RemoveEmptyEntries) : new string[0];
+                            ], StringSplitOptions.RemoveEmptyEntries) : [];
                             name = parts.Length > 3 ? string.Join(" ", parts, 3, parts.Length - 3) : null;
 
                             if (!int.TryParse(parts[0], out r) || !int.TryParse(parts[1], out g) || !int.TryParse(parts[2], out b))
                             {
-                                throw new InvalidDataException(string.Format("Invalid palette contents found with data '{0}'", data));
+                                throw new InvalidDataException($"Invalid palette contents found with data '{data}'");
                             }
 
                             results.Add(Color.FromArgb(r, g, b));

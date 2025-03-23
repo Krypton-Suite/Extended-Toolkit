@@ -244,7 +244,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color Colour { get => _colour; set { _colour = value; ColourChangedEventArgs e = new ColourChangedEventArgs(value); OnSelectedColourChanged(this, e); } }
+
         #endregion
 
         #region Custom Events

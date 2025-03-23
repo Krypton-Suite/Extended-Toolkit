@@ -241,11 +241,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // knudGreen
             // 
             this.knudGreen.Location = new System.Drawing.Point(165, 136);
-            this.knudGreen.Maximum = new decimal(new int[] {
-            255,
+            this.knudGreen.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudGreen.Name = "knudGreen";
             this.knudGreen.Size = new System.Drawing.Size(88, 23);
             this.knudGreen.StateCommon.Back.Color1 = System.Drawing.Color.Green;
@@ -258,11 +259,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // knudBlue
             // 
             this.knudBlue.Location = new System.Drawing.Point(328, 136);
-            this.knudBlue.Maximum = new decimal(new int[] {
-            255,
+            this.knudBlue.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudBlue.Name = "knudBlue";
             this.knudBlue.Size = new System.Drawing.Size(88, 23);
             this.knudBlue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
@@ -275,11 +277,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // knudRed
             // 
             this.knudRed.Location = new System.Drawing.Point(12, 136);
-            this.knudRed.Maximum = new decimal(new int[] {
-            255,
+            this.knudRed.Maximum = new decimal([
+                255,
             0,
             0,
-            0});
+            0
+            ]);
             this.knudRed.Name = "knudRed";
             this.knudRed.Size = new System.Drawing.Size(91, 23);
             this.knudRed.StateCommon.Back.Color1 = System.Drawing.Color.Red;

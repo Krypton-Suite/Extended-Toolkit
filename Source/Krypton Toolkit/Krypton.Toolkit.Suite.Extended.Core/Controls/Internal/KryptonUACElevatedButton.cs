@@ -58,6 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Properties
         /// <summary>Gets or sets the process to elevate.</summary>
         /// <value>The process to elevate.</value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] 
         public Assembly ProcessToElevate { get => _processToElevate; set => _processToElevate = value; }
 
         /// <summary>
@@ -67,11 +68,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// The application/process will restart when clicked.
         /// </remarks>
         [Category("Code"), Description("Elevates the current running application to administrator level when button is clicked. The application/process will restart when clicked."), DefaultValue(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ElevateApplicationOnClick { get => _elevateApplicationOnClick; set => _elevateApplicationOnClick = value; }
 
         /// <summary>Gets or sets a value indicating whether [show uac shield].</summary>
         /// <value>
         ///   <c>true</c> if [show uac shield]; otherwise, <c>false</c>.</value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] 
         public bool ShowUACShield { get => _showUACShield; set { _showUACShield = value; Invalidate(); } }
 
         /// <summary>
@@ -81,6 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Use 'Process.GetCurrentProcess().ProcessName;' as a start.
         /// </remarks>
         [Category("Code"), Description("The application assembly. Use 'Process.GetCurrentProcess().ProcessName;' as a start."), DefaultValue("")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string ProcessName { get => _processName; set => _processName = value; }
         #endregion
 

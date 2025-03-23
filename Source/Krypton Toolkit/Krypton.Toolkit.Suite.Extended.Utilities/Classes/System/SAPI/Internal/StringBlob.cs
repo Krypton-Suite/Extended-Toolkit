@@ -32,9 +32,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
     {
         private Dictionary<string, int> _strings = new();
 
-        private List<string> _refStrings = new();
+        private List<string> _refStrings = [];
 
-        private List<int> _offsetStrings = new();
+        private List<int> _offsetStrings = [];
 
         private int _cWords;
 

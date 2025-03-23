@@ -58,6 +58,7 @@ namespace Examples
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnControls = new Krypton.Toolkit.KryptonButton();
             this.kbtnCheckBoxComboBoxExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnProgressBars = new Krypton.Toolkit.KryptonButton();
             this.kbtnMemoryBoxExample = new Krypton.Toolkit.KryptonButton();
@@ -81,13 +82,14 @@ namespace Examples
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
-            this.kbtnControls = new Krypton.Toolkit.KryptonButton();
+            this.kbtnRadialMenu = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnRadialMenu);
             this.kryptonPanel1.Controls.Add(this.kbtnControls);
             this.kryptonPanel1.Controls.Add(this.kbtnCheckBoxComboBoxExample);
             this.kryptonPanel1.Controls.Add(this.kbtnProgressBars);
@@ -115,8 +117,18 @@ namespace Examples
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(626, 396);
+            this.kryptonPanel1.Size = new System.Drawing.Size(628, 390);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnControls
+            // 
+            this.kbtnControls.Location = new System.Drawing.Point(421, 154);
+            this.kbtnControls.Name = "kbtnControls";
+            this.kbtnControls.Size = new System.Drawing.Size(162, 25);
+            this.kbtnControls.TabIndex = 24;
+            this.kbtnControls.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            this.kbtnControls.Values.Text = "Controls";
+            this.kbtnControls.Click += new System.EventHandler(this.kbtnControls_Click);
             // 
             // kbtnCheckBoxComboBoxExample
             // 
@@ -346,21 +358,21 @@ namespace Examples
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
-            // kbtnControls
+            // kbtnRadialMenu
             // 
-            this.kbtnControls.Location = new System.Drawing.Point(421, 154);
-            this.kbtnControls.Name = "kbtnControls";
-            this.kbtnControls.Size = new System.Drawing.Size(162, 25);
-            this.kbtnControls.TabIndex = 24;
-            this.kbtnControls.Values.DropDownArrowColor = System.Drawing.Color.Empty;
-            this.kbtnControls.Values.Text = "Controls";
-            this.kbtnControls.Click += new System.EventHandler(this.kbtnControls_Click);
+            this.kbtnRadialMenu.Location = new System.Drawing.Point(10, 182);
+            this.kbtnRadialMenu.Name = "kbtnRadialMenu";
+            this.kbtnRadialMenu.Size = new System.Drawing.Size(111, 22);
+            this.kbtnRadialMenu.TabIndex = 25;
+            this.kbtnRadialMenu.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            this.kbtnRadialMenu.Values.Text = "Radial Menu";
+            this.kbtnRadialMenu.Click += new System.EventHandler(this.kbtnRadialMenu_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(626, 396);
+            this.ClientSize = new System.Drawing.Size(628, 390);
             this.Controls.Add(this.kryptonPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
@@ -398,5 +410,6 @@ namespace Examples
         private KryptonButton kbtnProgressBars;
         private KryptonButton kbtnCheckBoxComboBoxExample;
         private KryptonButton kbtnControls;
+        private KryptonButton kbtnRadialMenu;
     }
 }

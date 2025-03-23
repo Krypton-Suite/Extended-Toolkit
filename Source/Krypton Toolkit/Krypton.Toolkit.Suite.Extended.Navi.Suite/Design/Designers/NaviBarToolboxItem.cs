@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             // Add a new button
             naviBarCtrl.Controls.Add(naviBandCtrl);
 
-            return new IComponent[] { naviBarCtrl };
+            return [naviBarCtrl];
         }
     }
 }

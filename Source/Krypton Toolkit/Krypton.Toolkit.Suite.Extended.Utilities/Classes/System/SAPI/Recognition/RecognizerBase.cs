@@ -875,7 +875,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             _asyncWorkerUI = new AsyncSerializedWorker(null, AsyncOperationManager.CreateOperation(null));
             _asyncWorkerUI.WorkItemPending += SignalHandlerThread;
             _eventNotify = _sapiContext.CreateEventNotify(_asyncWorker, _supportsSapi53);
-            _grammars = new List<Grammar>();
+            _grammars = [];
             _readOnlyGrammars = new ReadOnlyCollection<Grammar>(_grammars);
             UpdateAudioFormat(null);
             InitialSilenceTimeout = TimeSpan.FromSeconds(30.0);
@@ -1228,11 +1228,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             if (_supportsSapi53 && uri == null && grammar.Uri != null)
             {
                 string originalString = grammar.Uri.OriginalString;
-                int num = originalString.LastIndexOfAny(new char[2]
-                {
+                int num = originalString.LastIndexOfAny([
                     '\\',
                     '/'
-                });
+                ]);
                 if (num >= 0)
                 {
                     uri = new Uri(originalString.Substring(0, num + 1), UriKind.RelativeOrAbsolute);
@@ -1283,10 +1282,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                     bstrResourceUri = bstrResourceUri.Substring(0, num);
                 }
                 string text = pbstrMIMEType;
-                string[] array = pbstrRedirectUrl.Split(new char[1]
-                {
+                string[] array = pbstrRedirectUrl.Split([
                     ' '
-                }, StringSplitOptions.None);
+                ], StringSplitOptions.None);
                 uint num2 = uint.Parse(array[0], CultureInfo.InvariantCulture);
                 uint num3 = uint.Parse(array[1], CultureInfo.InvariantCulture);
                 Uri redirectUri;

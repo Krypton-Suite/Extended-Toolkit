@@ -207,18 +207,18 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             double hk = this.H / 360;
 
             // r,g,b colors
-            double[] tc = new[]
-                          {
-                      hk + 1d / 3d,
+            double[] tc =
+            [
+                hk + 1d / 3d,
                       hk,
                       hk - 1d / 3d
-                    };
-            double[] colors = new[]
-                              {
-                          0.0,
+            ];
+            double[] colors =
+            [
+                0.0,
                           0.0,
                           0.0
-                        };
+            ];
 
             for (int color = 0; color < colors.Length; color++)
             {

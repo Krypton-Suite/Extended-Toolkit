@@ -33,6 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     {
         private ToolTipValues _values;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ToolTipValues ToolTipValues
         {
             get => _values; set => _values = value;

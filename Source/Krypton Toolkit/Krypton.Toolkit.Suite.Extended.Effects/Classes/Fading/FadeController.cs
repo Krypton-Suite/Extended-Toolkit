@@ -286,7 +286,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
             fader.FadeIn(fadeSpeed, finished);
         }
 
-        public static void FadeIn(KryptonForm form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted finished = null)
+        public static void FadeIn(KryptonForm form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted? finished = null)
         {
             FadeController fader = new FadeController(form);
 
@@ -302,7 +302,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
             fader.FadeOut(fadeSpeed, finished);
         }
 
-        public static void FadeOut(KryptonForm form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted finished = null)
+        public static void FadeOut(KryptonForm form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted? finished = null)
         {
             FadeController fader = new FadeController(form);
 
@@ -354,7 +354,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
             fader.FadeOut(fadeSpeed, finished);
         }
 
-        public static void FadeOutAndClose(KryptonForm form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted finished = null)
+        public static void FadeOutAndClose(KryptonForm form, FadeSpeedChoice fadeSpeedChoice, float fadeSpeed = 0, FadeCompleted? finished = null)
         {
             FadeController fader = new FadeController(form) { shouldClose = true };
 
@@ -443,7 +443,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         /// <summary>Fades the window out. Credit: https://stackoverflow.com/questions/12497826/better-algorithm-to-fade-a-winform.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="nextWindow">The next window.</param>
-        public async void FadeWindowOut(KryptonForm owner, KryptonForm nextWindow = null)
+        public async void FadeWindowOut(KryptonForm owner, KryptonForm? nextWindow = null)
         {
             // The window is visible, so fade it out
             while (owner.Opacity > 0.0)

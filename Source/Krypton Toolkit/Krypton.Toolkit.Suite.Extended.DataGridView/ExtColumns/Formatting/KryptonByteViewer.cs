@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             _displayMode = DisplayMode.Hexdump;
             DoubleBuffered = true;
             SetStyle(ControlStyles.ResizeRedraw, value: true);
-            SetBytes(new byte[] { });
+            SetBytes([]);
         }
         #endregion
 

@@ -30,10 +30,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
     public partial class ToolStripExistingComponentChooser : KryptonForm
     {
         #region Variables
-        private List<ToolStripPanelExtended?> _srcComponentList = new List<ToolStripPanelExtended?>();
+        private List<ToolStripPanelExtended?> _srcComponentList = [];
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Control? SourceComponentContainer
         {
             set
@@ -53,11 +55,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<ToolStripPanelExtended?> SelectedComponents
         {
             get
             {
-                List<ToolStripPanelExtended?> tspe = new List<ToolStripPanelExtended?>();
+                List<ToolStripPanelExtended?> tspe = [];
 
                 if (klbSelected.Items.Count > 0)
                 {

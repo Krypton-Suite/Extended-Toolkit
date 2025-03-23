@@ -491,6 +491,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color Color
         {
             get => _colour;

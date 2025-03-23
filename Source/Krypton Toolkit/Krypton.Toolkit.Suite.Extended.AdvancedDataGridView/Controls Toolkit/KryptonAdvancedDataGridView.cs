@@ -73,10 +73,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
     {
         #region Instance Fields
 
-        private readonly List<string> _sortOrderList = new List<string>();
-        private readonly List<string> _filterOrderList = new List<string>();
-        private readonly List<string> _filteredColumns = new List<string>();
-        private List<MenuStrip> _menuStripToDispose = new List<MenuStrip>();
+        private readonly List<string> _sortOrderList = [];
+        private readonly List<string> _filterOrderList = [];
+        private readonly List<string> _filteredColumns = [];
+        private List<MenuStrip> _menuStripToDispose = [];
 
         private bool _loadedFilter;
         private string? _sortString;
@@ -290,6 +290,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// SortStringChanged event called before DataSource update after sort changed is triggered
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool SortStringChangedInvokeBeforeDatasourceUpdate
         {
             get => _sortStringChangedInvokeBeforeDatasourceUpdate;
@@ -299,6 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// FilterStringChanged event called before DataSource update after sort changed is triggered
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool FilterStringChangedInvokeBeforeDatasourceUpdate
         {
             get => _filterStringChangedInvokeBeforeDatasourceUpdate;
@@ -464,7 +466,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void SetFilterChecklistNodesMax(int maxnodes)
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
+            {
                 c.SetFilterChecklistNodesMax(maxnodes);
+            }
         }
 
         /// <summary>
@@ -491,7 +495,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void EnabledFilterChecklistNodesMax(bool enabled)
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
+            {
                 c.EnabledFilterChecklistNodesMax(enabled);
+            }
         }
 
         /// <summary>
@@ -567,7 +573,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void SetFilterChecklistTextFilterTextChangedDelayNodes(int numNodes)
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
+            {
                 c.TextFilterTextChangedDelayNodes = numNodes;
+            }
         }
 
         /// <summary>
@@ -592,7 +600,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void SetFilterChecklistTextFilterTextChangedDelayDisabled()
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
+            {
                 c.SetTextFilterTextChangedDelayNodesDisabled();
+            }
         }
 
         /// <summary>
@@ -618,7 +628,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void SetFilterChecklistTextFilterTextChangedDelayMs(int milliseconds)
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
+            {
                 c.SetTextFilterTextChangedDelayMs(milliseconds);
+            }
         }
 
         /// <summary>
@@ -629,7 +641,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void LoadFilterAndSort(string? filter, string? sorting)
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
+            {
                 c.SetLoadedMode(true);
+            }
 
             _filteredColumns.Clear();
 
@@ -655,7 +669,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void CleanFilterAndSort()
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
+            {
                 c.SetLoadedMode(false);
+            }
 
             _filteredColumns.Clear();
             _filterOrderList.Clear();
@@ -674,12 +690,15 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void SetMenuStripFilterNotInLogic(bool enabled)
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
+            {
                 c.IsMenuStripFilterNOTINLogicEnabled = enabled;
+            }
         }
 
         /// <summary>
         /// Get or Set Filter and Sort status
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool FilterAndSortEnabled
         {
             get => _filterAndSortEnabled;
@@ -695,6 +714,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get the Sort string
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string? SortString
         {
             get => !string.IsNullOrEmpty(_sortString) ? _sortString : string.Empty;
@@ -839,7 +859,10 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         public void CleanSort(bool fireEvent)
         {
             foreach (KryptonColumnHeaderCell c in FilterableCells)
+            {
                 c.CleanSort();
+            }
+
             _sortOrderList.Clear();
 
             if (fireEvent)
@@ -868,6 +891,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// <summary>
         /// Get the Filter string
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string? FilterString
         {
             get => !String.IsNullOrEmpty(_filterString) ? _filterString : "";
@@ -1396,7 +1420,9 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
                 {
                     _loadedFilter = false;
                     foreach (KryptonColumnHeaderCell c in FilterableCells.Where(f => f.MenuStrip != filterMenu))
+                    {
                         c.SetLoadedMode(false);
+                    }
                 }
             }
         }

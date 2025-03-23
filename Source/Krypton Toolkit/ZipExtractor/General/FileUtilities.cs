@@ -58,7 +58,7 @@ namespace ZipExtractor
                 uint pnProcInfo = 0,
                     lpdwRebootReasons = RmRebootReasonNone;
 
-                string[] resources = { path }; // Just checking on one resource.
+                string[] resources = [path]; // Just checking on one resource.
 
                 res = RmRegisterResources(handle, (uint)resources.Length, resources, 0, null, 0, null);
 

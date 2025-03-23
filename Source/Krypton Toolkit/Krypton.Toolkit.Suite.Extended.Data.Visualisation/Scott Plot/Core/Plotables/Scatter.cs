@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Convert scatter plot points (connected by diagnal lines) to step plot points (connected by right angles)
         /// by inserting an extra point between each of the original data points to result in L-shaped steps.
         /// </summary>
-        /// <param name="points">Array of corner positions</param>
+        /// <param name="pixels">Array of corner positions</param>
         /// <param name="right">Indicates that a line will extend to the right before rising or falling.</param>
         public static IEnumerable<Pixel> GetStepDisplayPixels(Pixel[] pixels, bool right)
         {

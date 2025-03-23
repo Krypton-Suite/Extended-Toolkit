@@ -12,7 +12,7 @@
             IntervalsPerTick = intervalsPerTick;
         }
 
-        public Tick[] Ticks { get; set; } = Array.Empty<Tick>();
+        public Tick[] Ticks { get; set; } = [];
 
         public int MaxTickCount { get; set; } = 10_000;
 
@@ -23,7 +23,7 @@
 
         public void Regenerate(CoordinateRange range, Edge edge, PixelLength size)
         {
-            List<Tick> ticks = new();
+            List<Tick> ticks = [];
 
             DateTime start = Interval.Next(range.Min.ToDateTime(), -1);
             DateTime end = Interval.Next(range.Max.ToDateTime(), 1);

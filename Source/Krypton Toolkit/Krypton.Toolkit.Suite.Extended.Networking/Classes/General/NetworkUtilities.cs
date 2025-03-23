@@ -34,7 +34,11 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         /// <summary>Code from: https://stackoverflow.com/questions/30317761/populate-list-of-drives-available-for-mapping</summary>
         public char[] GetAvailableDriveLetters()
         {
-            List<char> availableDriveLetters = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            List<char> availableDriveLetters =
+            [
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+                'v', 'w', 'x', 'y', 'z'
+            ];
 
             DriveInfo[] drives = DriveInfo.GetDrives();
 
@@ -69,9 +73,10 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             foreach (char driveLetter in driveLetters)
             {
                 // add unused drive letters to the array
-                List<char> temp = new List<char>();
-
-                temp.Add(driveLetter);
+                List<char> temp =
+                [
+                    driveLetter
+                ];
 
                 driveArray = temp.ToArray();
             }

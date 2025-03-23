@@ -8,7 +8,7 @@
             set => throw new InvalidOperationException();
         }
 
-        private readonly List<Tick> TickList = new();
+        private readonly List<Tick> TickList = [];
 
         public int MaxTickCount { get; set; } = 50;
 

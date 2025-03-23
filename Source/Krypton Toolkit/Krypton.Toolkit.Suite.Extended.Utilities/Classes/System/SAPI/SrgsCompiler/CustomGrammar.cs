@@ -41,21 +41,21 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal string _namespace;
 
-        internal List<Rule> _rules = new();
+        internal List<Rule> _rules = [];
 
-        internal Collection<string> _codebehind = new();
+        internal Collection<string> _codebehind = [];
 
         internal bool _fDebugScript;
 
-        internal Collection<string> _assemblyReferences = new();
+        internal Collection<string> _assemblyReferences = [];
 
-        internal Collection<string> _importNamespaces = new();
+        internal Collection<string> _importNamespaces = [];
 
         internal string _keyFile;
 
-        internal Collection<ScriptRef> _scriptRefs = new();
+        internal Collection<ScriptRef> _scriptRefs = [];
 
-        internal List<string> _types = new();
+        internal List<string> _types = [];
 
         internal StringBuilder _script = new();
 
@@ -349,11 +349,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 }
                 SRID sRID = SRID.ArrayOfNullIllegal;
                 string @namespace = sRID.GetType().Namespace;
-                string text = string.Format(CultureInfo.InvariantCulture, "#line 1 \"{0}\"\nusing System;\nusing System.Collections.Generic;\nusing System.Diagnostics;\nusing {1};\nusing {1}.Recognition;\nusing {1}.Recognition.SrgsGrammar;\n", new object[2]
-                {
+                string text = string.Format(CultureInfo.InvariantCulture, "#line 1 \"{0}\"\nusing System;\nusing System.Collections.Generic;\nusing System.Diagnostics;\nusing {1};\nusing {1}.Recognition;\nusing {1}.Recognition.SrgsGrammar;\n",
+                [
                     "<Does Not Exist>",
                     @namespace
-                });
+                ]);
                 StringBuilder stringBuilder = new StringBuilder(_script.Length + text.Length + 200);
                 stringBuilder.Append(text);
                 foreach (string importNamespace2 in _importNamespaces)
@@ -413,11 +413,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 }
                 SRID sRID = SRID.ArrayOfNullIllegal;
                 string @namespace = sRID.GetType().Namespace;
-                string text = string.Format(CultureInfo.InvariantCulture, "#ExternalSource (\"{0}\", 1)\nImports System\nImports System.Collections.Generic\nImports System.Diagnostics\nImports {1}\nImports {1}.Recognition\nImports {1}.Recognition.SrgsGrammar\n", new object[2]
-                {
+                string text = string.Format(CultureInfo.InvariantCulture, "#ExternalSource (\"{0}\", 1)\nImports System\nImports System.Collections.Generic\nImports System.Diagnostics\nImports {1}\nImports {1}.Recognition\nImports {1}.Recognition.SrgsGrammar\n",
+                [
                     "<Does Not Exist>",
                     @namespace
-                });
+                ]);
                 StringBuilder stringBuilder = new StringBuilder(_script.Length + text.Length + 200);
                 stringBuilder.Append(text);
                 foreach (string importNamespace2 in _importNamespaces)
@@ -581,7 +581,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 }
                 if (rule.Constructors.Length == 0)
                 {
-                    rule.Constructors.Append(proxy.GenerateConstructor(iCfg, new ParameterInfo[0], language, rule.Name));
+                    rule.Constructors.Append(proxy.GenerateConstructor(iCfg, [], language, rule.Name));
                 }
             }
         }

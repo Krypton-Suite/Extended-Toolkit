@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns>An array of paths including the newly created one</returns>
         public static Path3D[] ContinueTo(this Path3D[] paths, Float3D end, ulong duration)
         {
-            return paths.Concat(new[] { new Path3D(paths.Last().End, end, duration) }).ToArray();
+            return paths.Concat([new Path3D(paths.Last().End, end, duration)]).ToArray();
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static Path3D[] ContinueTo(this Path3D[] paths, Float3D end, ulong duration,
             AnimationFunctions.Function function)
         {
-            return paths.Concat(new[] { new Path3D(paths.Last().End, end, duration, function) }).ToArray();
+            return paths.Concat([new Path3D(paths.Last().End, end, duration, function)]).ToArray();
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns>An array of paths including the newly created one</returns>
         public static Path3D[] ContinueTo(this Path3D[] paths, Float3D end, ulong duration, ulong delay)
         {
-            return paths.Concat(new[] { new Path3D(paths.Last().End, end, duration, delay) }).ToArray();
+            return paths.Concat([new Path3D(paths.Last().End, end, duration, delay)]).ToArray();
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public static Path3D[] ContinueTo(this Path3D[] paths, Float3D end, ulong duration, ulong delay,
             AnimationFunctions.Function function)
         {
-            return paths.Concat(new[] { new Path3D(paths.Last().End, end, duration, delay, function) }).ToArray();
+            return paths.Concat([new Path3D(paths.Last().End, end, duration, delay, function)]).ToArray();
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns>An array of paths including the newly created one</returns>
         public static Path3D[] ContinueTo(this Path3D[] paths, float endX, float endY, float endZ, ulong duration)
         {
-            return paths.Concat(new[] { new Path3D(paths.Last().End, new Float3D(endX, endY, endZ), duration) }).ToArray();
+            return paths.Concat([new Path3D(paths.Last().End, new Float3D(endX, endY, endZ), duration)]).ToArray();
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             AnimationFunctions.Function function)
         {
             return
-                paths.Concat(new[] { new Path3D(paths.Last().End, new Float3D(endX, endY, endZ), duration, function) })
+                paths.Concat([new Path3D(paths.Last().End, new Float3D(endX, endY, endZ), duration, function)])
                     .ToArray();
         }
 
@@ -135,7 +135,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             ulong delay)
         {
             return
-                paths.Concat(new[] { new Path3D(paths.Last().End, new Float3D(endX, endY, endZ), duration, delay) })
+                paths.Concat([new Path3D(paths.Last().End, new Float3D(endX, endY, endZ), duration, delay)])
                     .ToArray();
         }
 
@@ -155,8 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             AnimationFunctions.Function function)
         {
             return
-                paths.Concat(new[]
-                {new Path3D(paths.Last().End, new Float3D(endX, endY, endZ), duration, delay, function)})
+                paths.Concat([new Path3D(paths.Last().End, new Float3D(endX, endY, endZ), duration, delay, function)])
                     .ToArray();
         }
 
@@ -309,7 +308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns>An array of paths including the new ones</returns>
         public static Path3D[] ToArray(this Path3D path)
         {
-            return new[] { path };
+            return [path];
         }
     }
 }

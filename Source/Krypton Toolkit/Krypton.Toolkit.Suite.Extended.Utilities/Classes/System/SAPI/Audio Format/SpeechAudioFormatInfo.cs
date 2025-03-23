@@ -111,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat
             _channelCount = channelCount;
             if (formatSpecificData == null)
             {
-                _formatSpecificData = new byte[0];
+                _formatSpecificData = [];
             }
             else
             {

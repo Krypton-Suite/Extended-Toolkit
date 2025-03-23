@@ -3,7 +3,7 @@
     public class FormsPlotMenu : IPlotMenu
     {
         public string DefaultSaveImageFilename { get; set; } = "Plot.png";
-        public List<ContextMenuItem> ContextMenuItems { get; set; } = new();
+        public List<ContextMenuItem> ContextMenuItems { get; set; } = [];
         private readonly FormsPlotBase _thisControl;
 
         public FormsPlotMenu(FormsPlotBase control)
@@ -26,10 +26,11 @@
                 OnInvoke = CopyImageToClipboard
             };
 
-            return new List<ContextMenuItem>() {
-            saveImage,
-            copyImage,
-        };
+            return
+            [
+                saveImage,
+                copyImage
+            ];
         }
 
         public void CopyImageToClipboard(IPlotControl plotControl)

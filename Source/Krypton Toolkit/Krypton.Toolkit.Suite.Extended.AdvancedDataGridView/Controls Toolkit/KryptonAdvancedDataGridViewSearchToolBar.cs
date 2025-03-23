@@ -404,14 +404,16 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             comboBox_columns.BeginUpdate();
             comboBox_columns.Items.Clear();
-            comboBox_columns.Items.AddRange(new object[] { Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()] });
+            comboBox_columns.Items.AddRange([Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()]]);
             if (_columnsList != null)
             {
                 foreach (DataGridViewColumn c in _columnsList)
+                {
                     if (c.Visible)
                     {
                         comboBox_columns.Items.Add(c.HeaderText);
                     }
+                }
             }
 
             comboBox_columns.SelectedIndex = 0;
@@ -470,7 +472,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void button_close_Click(object sender, EventArgs e)
+        void button_close_Click(object? sender, EventArgs e)
         {
             Hide();
         }
@@ -534,7 +536,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         {
             if (textBox_search.TextLength > 0 && textBox_search.Text != textBox_search.ToolTipText && e.KeyData == Keys.Enter)
             {
-                button_search_Click(button_search, new EventArgs());
+                button_search_Click(button_search, EventArgs.Empty);
                 e.SuppressKeyPress = true;
                 e.Handled = true;
             }
@@ -554,14 +556,16 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
             _columnsList = columns;
             comboBox_columns.BeginUpdate();
             comboBox_columns.Items.Clear();
-            comboBox_columns.Items.AddRange(new object[] { Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()] });
+            comboBox_columns.Items.AddRange([Translations[TranslationKey.ADGVSTBComboBoxColumnsAll.ToString()]]);
             if (_columnsList != null)
             {
                 foreach (DataGridViewColumn c in _columnsList)
+                {
                     if (c.Visible)
                     {
                         comboBox_columns.Items.Add(c.HeaderText);
                     }
+                }
             }
 
             comboBox_columns.SelectedIndex = 0;

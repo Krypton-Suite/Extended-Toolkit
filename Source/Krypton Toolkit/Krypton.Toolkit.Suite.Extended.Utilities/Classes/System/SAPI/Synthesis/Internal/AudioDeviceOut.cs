@@ -64,9 +64,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
         }
 
-        private List<InItem> _queueIn = new();
+        private List<InItem> _queueIn = [];
 
-        private List<InItem> _queueOut = new();
+        private List<InItem> _queueOut = [];
 
         private int _blockAlign;
 

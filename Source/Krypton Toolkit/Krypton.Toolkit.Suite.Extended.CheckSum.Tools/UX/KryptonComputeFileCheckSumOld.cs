@@ -93,9 +93,10 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // statusStrip1
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslStatus,
-            this.tspbHashProgress});
+            this.statusStrip1.Items.AddRange([
+                this.tsslStatus,
+            this.tspbHashProgress
+            ]);
             this.statusStrip1.Location = new System.Drawing.Point(0, 258);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;

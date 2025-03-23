@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         private readonly KryptonVirtualTreeColumnView _kryptonVirtualTreeColumnView;
 
         private VirtualTreeRowNode _hiddenRootNode;
-        private readonly HashSet<VirtualTreeRowNode> _selectedNodeSet = new();
+        private readonly HashSet<VirtualTreeRowNode> _selectedNodeSet = [];
         private bool _mouseOver;
         #endregion
 
@@ -355,7 +355,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
 
         internal int VisibleCount => GetPossibleOpenVisibleNodes().Count;
 
-        internal IReadOnlyList<VirtualTreeRowNode> RootNodes => _hiddenRootNode?.Children ?? new List<VirtualTreeRowNode>();
+        internal IReadOnlyList<VirtualTreeRowNode> RootNodes => _hiddenRootNode?.Children ?? [];
 
         internal bool Sorted { get; set; }
 
@@ -478,7 +478,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
             if (needPossibleVisibleUpdate)
             {
                 needPossibleVisibleUpdate = false;
-                visibleNodes = new List<VirtualTreeRowNode>();
+                visibleNodes = [];
                 GetOpenVisibleNodes(RootNodes, visibleNodes);
             }
 

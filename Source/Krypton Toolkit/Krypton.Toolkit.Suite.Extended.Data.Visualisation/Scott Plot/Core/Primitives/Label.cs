@@ -149,10 +149,10 @@
         {
             ApplyTextPaint(paint);
             SKRect textBounds = new();
-            ///INFO: MeasureText(string str, ref SKRect rect) works as follow:
-            /// - returned value is the length of the text with leading and trailing white spaces
-            /// - rect.Left contains the width of leading white spaces
-            /// - rect.width contains the length of the text __without__ leading or trailing white spaces
+            // INFO: MeasureText(string str, ref SKRect rect) works as follow:
+            // - returned value is the length of the text with leading and trailing white spaces
+            // - rect.Left contains the width of leading white spaces
+            // - rect.width contains the length of the text __without__ leading or trailing white spaces
             var fullTextWidth = paint.MeasureText(Text, ref textBounds);
             return new PixelSize(fullTextWidth, textBounds.Height);
         }

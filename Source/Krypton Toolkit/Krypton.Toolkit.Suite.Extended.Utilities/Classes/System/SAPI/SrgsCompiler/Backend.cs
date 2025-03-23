@@ -40,9 +40,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private bool _fNeedWeightTable;
 
-        private Graph _states = new();
+        private Graph _states = [];
 
-        private List<Rule> _rules = new();
+        private List<Rule> _rules = [];
 
         private int _ruleIndex;
 
@@ -56,13 +56,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private string _basePath;
 
-        private List<Tag> _tags = new();
+        private List<Tag> _tags = [];
 
         private GrammarType _grammarMode;
 
         private AlphabetType _alphabet;
 
-        private Collection<string> _globalTags = new();
+        private Collection<string> _globalTags = [];
 
         private static byte[] _abZero3 = new byte[3];
 
@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private int _cImportedRules;
 
-        private Collection<ScriptRef> _scriptRefs = new();
+        private Collection<ScriptRef> _scriptRefs = [];
 
         private byte[] _il;
 
@@ -447,7 +447,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         internal void CloneSubGraph(Rule rule, Backend org, Backend extra, Dictionary<State, State> srcToDestHash, bool fromOrg)
         {
             Backend backend = fromOrg ? org : extra;
-            List<State> list = new List<State>();
+            List<State> list = [];
             Dictionary<Tag, Tag> endArcs = new Dictionary<Tag, Tag>();
             CloneState(rule._firstState, list, srcToDestHash);
             while (list.Count > 0)
@@ -527,8 +527,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         internal void DeleteSubGraph(State state)
         {
             Stack<State> stack = new Stack<State>();
-            Collection<Arc> collection = new Collection<Arc>();
-            Collection<State> collection2 = new Collection<State>();
+            Collection<Arc> collection = [];
+            Collection<State> collection2 = [];
             stack.Push(state);
             while (stack.Count > 0)
             {
@@ -893,10 +893,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         private static void LogError(string rule, SRID srid, params object[] args)
         {
             string str = SR.Get(srid, args);
-            throw new FormatException(string.Format(CultureInfo.InvariantCulture, "Rule=\"{0}\" - ", new object[1]
-            {
+            throw new FormatException(string.Format(CultureInfo.InvariantCulture, "Rule=\"{0}\" - ", [
                 rule
-            }) + str);
+            ]) + str);
         }
 
         private static void AddArc(Arc arc)

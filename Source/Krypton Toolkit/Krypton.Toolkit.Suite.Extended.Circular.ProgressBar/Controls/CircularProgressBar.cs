@@ -44,8 +44,8 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         private KnownAnimationFunctions _knownAnimationFunction;
         private ProgressBarStyle? _lastStyle;
         private int _lastValue;
-        private bool _useColourTrio;
-        private Color _firstValueColour, _secondValueColour, _thirdValueColour, _progressColour;
+        private bool _useColorTrio;
+        private Color _firstValueColor, _secondValueColor, _thirdValueColor, _progressColor;
 
         #region Krypton
         //Palette State
@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         private PaletteContentInheritRedirect _paletteContent;
 
         private PaletteBase _palette;
-        private PaletteRedirect _paletteRedirect;
+        private readonly PaletteRedirect _paletteRedirect;
         #endregion
 
         #endregion
@@ -109,16 +109,22 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         /// </returns>
         [EditorBrowsable(EditorBrowsableState.Always)]
         [Browsable(true)]
-        public override Font Font
+        public override Font? Font
         {
             get => base.Font;
-            set => base.Font = value;
+            set
+            {
+                if (value != null)
+                {
+                    base.Font = value;
+                }
+            }
         }
 
         /// <summary>
         /// </summary>
         [Category("Appearance")]
-        public Color InnerColour { get; set; }
+        public Color InnerColor { get; set; }
 
         /// <summary>
         /// </summary>
@@ -133,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         /// <summary>
         /// </summary>
         [Category("Appearance")]
-        public Color OuterColour { get; set; }
+        public Color OuterColor { get; set; }
 
         /// <summary>
         /// </summary>
@@ -148,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         /// <summary>
         /// </summary>
         [Category("Appearance"), DefaultValue(typeof(Color), "_palette.ColorTable.ButtonCheckedGradientBegin")]
-        public Color ProgressColour { get => _progressColour; set => _progressColour = value; }
+        public Color ProgressColor { get => _progressColor; set => _progressColor = value; }
 
         /// <summary>
         /// </summary>
@@ -168,7 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         /// <summary>
         /// </summary>
         [Category("Appearance")]
-        public Color SubscriptColour { get; set; }
+        public Color SubscriptColor { get; set; }
 
 
         /// <summary>
@@ -184,7 +190,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         /// <summary>
         /// </summary>
         [Category("Appearance")]
-        public Color SuperscriptColour { get; set; }
+        public Color SuperscriptColor { get; set; }
 
         /// <summary>
         /// </summary>
@@ -212,17 +218,17 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         [Category("Layout")]
         public Padding TextMargin { get; set; }
 
-        [Category("Appearance"), DefaultValue(false), Description("Use three colours to depict the current values.")]
-        public bool UseColourTrio { get => _useColourTrio; set => _useColourTrio = value; }
+        [Category("Appearance"), DefaultValue(false), Description("Use three colors to depict the current values.")]
+        public bool UseColorTrio { get => _useColorTrio; set => _useColorTrio = value; }
 
         [Category("Appearance"), DefaultValue(typeof(Color), "Color.Red")]
-        public Color FirstValueColour { get => _firstValueColour; set => _firstValueColour = value; }
+        public Color FirstValueColor { get => _firstValueColor; set => _firstValueColor = value; }
 
         [Category("Appearance"), DefaultValue(typeof(Color), "Color.FromArgb(255, 191, 0)")]
-        public Color SecondValueColour { get => _secondValueColour; set => _secondValueColour = value; }
+        public Color SecondValueColor { get => _secondValueColor; set => _secondValueColor = value; }
 
         [Category("Appearance"), DefaultValue(typeof(Color), "Color.Green")]
-        public Color ThirdValueColour { get => _thirdValueColour; set => _thirdValueColour = value; }
+        public Color ThirdValueColor { get => _thirdValueColor; set => _thirdValueColor = value; }
         #endregion
 
         #region Constructor
@@ -291,13 +297,13 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 
             InitialiseKrypton();
 
-            Text = "0";
+            Text = @"0";
 
-            FirstValueColour = Color.Red;
+            FirstValueColor = Color.Red;
 
-            SecondValueColour = Color.FromArgb(255, 191, 0);
+            SecondValueColor = Color.FromArgb(255, 191, 0);
 
-            ThirdValueColour = Color.Green;
+            ThirdValueColor = Color.Green;
         }
         #endregion
 
@@ -326,7 +332,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         ///     Initialize the animation for the continues styling
         /// </summary>
         /// <param name="firstTime">True if it is the first execution of this function, otherwise false</param>
-        protected virtual void InitialiseContinues(bool firstTime)
+        protected virtual void InitializeContinues(bool firstTime)
         {
             if (_lastValue == Value && !firstTime)
             {
@@ -370,7 +376,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         ///     Initialize the animation for the marquee styling
         /// </summary>
         /// <param name="firstTime">True if it is the first execution of this function, otherwise false</param>
-        protected virtual void InitialiseMarquee(bool firstTime)
+        protected virtual void InitializeMarquee(bool firstTime)
         {
             if (!firstTime &&
                 (_animator?.ActivePath == null ||
@@ -489,9 +495,9 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
                         size = AddSize(Size, -2 * offset);
                     }
 
-                    if (OuterColour != Color.Empty && OuterColour != Color.Transparent && OuterWidth != 0)
+                    if (OuterColor != Color.Empty && OuterColor != Color.Transparent && OuterWidth != 0)
                     {
-                        g.FillEllipse(new SolidBrush(OuterColour), new RectangleF(point, size));
+                        g.FillEllipse(new SolidBrush(OuterColor), new RectangleF(point, size));
 
                         if (OuterWidth >= 0)
                         {
@@ -505,7 +511,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
                     size = AddSize(size, -2 * OuterMargin);
 
                     g.FillPie(
-                        new SolidBrush(ProgressColour),
+                        new SolidBrush(ProgressColor),
                         ToRectangle(new RectangleF(point, size)),
                         _animatedStartAngle ?? StartAngle,
                         ((_animatedValue ?? Value) - Minimum) / (Maximum - Minimum) * 360);
@@ -520,9 +526,9 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
                     point = AddPoint(point, InnerMargin);
                     size = AddSize(size, -2 * InnerMargin);
 
-                    if (InnerColour != Color.Empty && InnerColour != Color.Transparent && InnerWidth != 0)
+                    if (InnerColor != Color.Empty && InnerColor != Color.Transparent && InnerWidth != 0)
                     {
-                        g.FillEllipse(new SolidBrush(InnerColour), new RectangleF(point, size));
+                        g.FillEllipse(new SolidBrush(InnerColor), new RectangleF(point, size));
 
                         if (InnerWidth >= 0)
                         {
@@ -586,7 +592,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
                             g.DrawString(
                                 SuperscriptText,
                                 SecondaryFont,
-                                new SolidBrush(SuperscriptColour),
+                                new SolidBrush(SuperscriptColor),
                                 new RectangleF(supPoint, supSize),
                                 stringFormat);
                         }
@@ -601,7 +607,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
                             g.DrawString(
                                 SubscriptText,
                                 SecondaryFont,
-                                new SolidBrush(SubscriptColour),
+                                new SolidBrush(SubscriptColor),
                                 new RectangleF(subPoint, subSize),
                                 stringFormat);
                         }
@@ -642,11 +648,11 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
                 {
                     if (Style == ProgressBarStyle.Marquee)
                     {
-                        InitialiseMarquee(_lastStyle != Style);
+                        InitializeMarquee(_lastStyle != Style);
                     }
                     else
                     {
-                        InitialiseMarquee(_lastStyle != Style);
+                        InitializeMarquee(_lastStyle != Style);
                     }
 
                     _lastStyle = Style;
@@ -657,19 +663,19 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
                     RecreateBackgroundBrush();
                 }
 
-                if (_useColourTrio)
+                if (_useColorTrio)
                 {
                     if (Value <= 33)
                     {
-                        ProgressColour = _firstValueColour;
+                        ProgressColor = _firstValueColor;
                     }
                     else if (Value <= 66)
                     {
-                        ProgressColour = _secondValueColour; // _palette.ColorTable.ButtonCheckedGradientBegin;
+                        ProgressColor = _secondValueColor; // _palette.ColorTable.ButtonCheckedGradientBegin;
                     }
                     else
                     {
-                        ProgressColour = _thirdValueColour;
+                        ProgressColor = _thirdValueColor;
                     }
                 }
                 else
@@ -723,15 +729,15 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 
             ForeColor = _palette.ColorTable.MenuItemText;
 
-            OuterColour = _palette.ColorTable.ToolStripGradientBegin;
+            OuterColor = _palette.ColorTable.ToolStripGradientBegin;
 
-            ProgressColour = _palette.ColorTable.ButtonCheckedGradientBegin;
+            ProgressColor = _palette.ColorTable.ButtonCheckedGradientBegin;
 
-            InnerColour = _palette.ColorTable.OverflowButtonGradientBegin;
+            InnerColor = _palette.ColorTable.OverflowButtonGradientBegin;
 
-            SuperscriptColour = _palette.ColorTable.MenuStripText;
+            SuperscriptColor = _palette.ColorTable.MenuStripText;
 
-            SubscriptColour = _palette.ColorTable.StatusStripText;
+            SubscriptColor = _palette.ColorTable.StatusStripText;
         }
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)

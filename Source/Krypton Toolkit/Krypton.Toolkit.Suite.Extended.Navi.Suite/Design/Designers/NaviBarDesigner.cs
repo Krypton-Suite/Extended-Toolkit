@@ -142,9 +142,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         {
             get
             {
-                DesignerVerb[] verbs = new DesignerVerb[] {
-               new DesignerVerb("Add band..",
-                  new EventHandler(AddBandVerbClicked)) };
+                DesignerVerb[] verbs =
+                [
+                    new DesignerVerb("Add band..",
+                  new EventHandler(AddBandVerbClicked))
+                ];
                 return new DesignerVerbCollection(verbs);
             }
         }

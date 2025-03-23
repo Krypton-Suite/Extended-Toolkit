@@ -312,10 +312,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonNavigator1.Name = "kryptonNavigator1";
             this.kryptonNavigator1.NavigatorMode = Krypton.Navigator.NavigatorMode.BarCheckButtonGroupOutside;
             this.kryptonNavigator1.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlClient;
-            this.kryptonNavigator1.Pages.AddRange(new Krypton.Navigator.KryptonPage[] {
-            this.kryptonPage1,
+            this.kryptonNavigator1.Pages.AddRange([
+                this.kryptonPage1,
             this.kpTheme,
-            this.kpSettings});
+            this.kpSettings
+            ]);
             this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new(663, 511);
             this.kryptonNavigator1.TabIndex = 0;
@@ -351,10 +352,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonDockableNavigator1.Name = "kryptonDockableNavigator1";
             this.kryptonDockableNavigator1.NavigatorMode = Krypton.Navigator.NavigatorMode.BarCheckButtonGroupOutside;
             this.kryptonDockableNavigator1.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlClient;
-            this.kryptonDockableNavigator1.Pages.AddRange(new Krypton.Navigator.KryptonPage[] {
-            this.kryptonPage3,
+            this.kryptonDockableNavigator1.Pages.AddRange([
+                this.kryptonPage3,
             this.kryptonPage4,
-            this.kryptonPage5});
+            this.kryptonPage5
+            ]);
             this.kryptonDockableNavigator1.SelectedIndex = 2;
             this.kryptonDockableNavigator1.Size = new(627, 450);
             this.kryptonDockableNavigator1.TabIndex = 36;
@@ -740,9 +742,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kcmbDisplayType.DropDownWidth = 203;
             this.kcmbDisplayType.IntegralHeight = false;
-            this.kcmbDisplayType.Items.AddRange(new object[] {
-            "Standard",
-            "Circular"});
+            this.kcmbDisplayType.Items.AddRange([
+                "Standard",
+            "Circular"
+            ]);
             this.kcmbDisplayType.Location = new(111, 87);
             this.kcmbDisplayType.Name = "kcmbDisplayType";
             this.kcmbDisplayType.Size = new(203, 21);
@@ -781,9 +784,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // kmtxtFilePath
             // 
-            this.kmtxtFilePath.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
-            this.bsaReset,
-            this.bsaBrowse});
+            this.kmtxtFilePath.ButtonSpecs.AddRange([
+                this.bsaReset,
+            this.bsaBrowse
+            ]);
             this.kmtxtFilePath.Location = new(139, 24);
             this.kmtxtFilePath.Name = "kmtxtFilePath";
             this.kmtxtFilePath.Size = new(366, 26);
@@ -846,9 +850,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             // ktxtCustomPath
             // 
-            this.ktxtCustomPath.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
-            this.buttonSpecAny1,
-            this.buttonSpecAny2});
+            this.ktxtCustomPath.ButtonSpecs.AddRange([
+                this.buttonSpecAny1,
+            this.buttonSpecAny2
+            ]);
             this.ktxtCustomPath.Enabled = false;
             this.ktxtCustomPath.Location = new(219, 65);
             this.ktxtCustomPath.Name = "ktxtCustomPath";

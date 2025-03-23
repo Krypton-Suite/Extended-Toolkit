@@ -157,7 +157,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <returns></returns>
         private ObjectSelectionWrapper<T> CreateSelectionWrapper(IEnumerator @object)
         {
-            Type[] types = new Type[] { typeof(T), GetType() };
+            Type[] types = [typeof(T), GetType()];
             ConstructorInfo ci = typeof(ObjectSelectionWrapper<T>).GetConstructor(types);
             if (ci == null)
             {
@@ -165,7 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     $"The selection wrapper class {typeof(ObjectSelectionWrapper<T>)} must have a constructor with ({typeof(T)} Item, {GetType()} Container) parameters.");
             }
 
-            object[] parameters = new object[] { @object.Current, this };
+            object[] parameters = [@object.Current, this];
             object result = ci.Invoke(parameters);
             return (ObjectSelectionWrapper<T>)result;
         }

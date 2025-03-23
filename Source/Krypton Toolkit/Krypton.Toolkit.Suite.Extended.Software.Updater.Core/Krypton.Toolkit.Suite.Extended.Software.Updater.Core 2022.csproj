@@ -3,13 +3,13 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<!--If all else fails-->
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
@@ -58,9 +58,9 @@
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9. This package implements core utilities that are fundamental to the extended toolkit.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 8 - 10. This package implements core utilities that are fundamental to the extended toolkit.
 
-			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9.
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 8 - 10.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
 
 			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
@@ -74,13 +74,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="90.24.10.295-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.3.80-alpha" />
 
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.10.295-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.3.80-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="90.24.10.295-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.3.80-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="90.24.10.295-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.3.80-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -122,13 +122,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Lite" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Docking.Lite" Version="90.25.2.55" />
 
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="90.25.2.55" />
 
-				<PackageReference Include="Krypton.Ribbon.Lite" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Ribbon.Lite" Version="90.25.2.55" />
 
-				<PackageReference Include="Krypton.Navigator.Lite" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Navigator.Lite" Version="90.25.2.55" />
 			</ItemGroup>
 		</When>
 
@@ -171,13 +171,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Docking" Version="90.25.2.55" />
 
-				<PackageReference Include="Krypton.Toolkit" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Toolkit" Version="90.25.2.55" />
 
-				<PackageReference Include="Krypton.Ribbon" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Ribbon" Version="90.25.2.55" />
 
-				<PackageReference Include="Krypton.Navigator" Version="85.24.6.176" />
+				<PackageReference Include="Krypton.Navigator" Version="90.25.2.55" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -194,7 +194,7 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
-		<PackageReference Include="WindowsAPICodePack" Version="8.0.4" />
+		<PackageReference Include="WindowsAPICodePack" Version="8.0.6" />
 		<!--<PackageReference Include="NSec.Cryptography" Version="23.5.0-preview.1" />-->
 	</ItemGroup>
 

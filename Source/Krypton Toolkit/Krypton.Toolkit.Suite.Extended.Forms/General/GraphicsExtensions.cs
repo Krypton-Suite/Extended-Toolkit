@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             {
                 var lgb = new PathGradientBrush(path);
                 lgb.CenterColor = color;
-                lgb.SurroundColors = new Color[] { Color.Transparent };
+                lgb.SurroundColors = [Color.Transparent];
                 var colors = new Color[3];
                 var positions = new float[3];
 
@@ -224,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             gp.AddRoundRectangle(rect, radius);
             var pgb = new PathGradientBrush(gp);
             pgb.CenterColor = glowColor;
-            pgb.SurroundColors = new Color[] { Color.FromArgb(0, 0, 0, 0) };
+            pgb.SurroundColors = [Color.FromArgb(0, 0, 0, 0)];
             g.FillRectangle(pgb, rect);
         }
 

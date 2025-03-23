@@ -30,76 +30,76 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
     public class ImageComboItem : object
     {
         // forecolor: transparent = inherit
-        private Color forecolour = Color.FromKnownColor(KnownColor.Transparent);
-        private bool mark = false;
-        private int imageindex = -1;
-        private object tag = null;
-        private string text = null;
+        private Color _foreColor = Color.FromKnownColor(KnownColor.Transparent);
+        private bool _mark = false;
+        private int _imageIndex = -1;
+        private object? _tag = null;
+        private string? _text = null;
 
-        private string _itemValue = null;
+        private string? _itemValue = null;
 
         // constructors
         public ImageComboItem()
         {
         }
 
-        public ImageComboItem(string Text)
+        public ImageComboItem(string? text)
         {
-            text = Text;
+            _text = text;
         }
 
-        public ImageComboItem(string Text, int ImageIndex)
+        public ImageComboItem(string? text, int imageIndex)
         {
-            text = Text;
-            imageindex = ImageIndex;
+            _text = text;
+            _imageIndex = imageIndex;
         }
 
-        public ImageComboItem(string Text, int ImageIndex, bool Mark)
+        public ImageComboItem(string? text, int imageIndex, bool mark)
         {
-            text = Text;
-            imageindex = ImageIndex;
-            mark = Mark;
+            _text = text;
+            _imageIndex = imageIndex;
+            _mark = mark;
         }
 
-        public ImageComboItem(string Text, int ImageIndex, bool Mark, Color ForeColour)
+        public ImageComboItem(string? text, int imageIndex, bool mark, Color foreColour)
         {
-            text = Text;
-            imageindex = ImageIndex;
-            mark = Mark;
-            forecolour = ForeColour;
+            _text = text;
+            _imageIndex = imageIndex;
+            _mark = mark;
+            _foreColor = foreColour;
         }
 
-        public ImageComboItem(string Text, int ImageIndex, bool Mark, Color ForeColour, object Tag)
+        public ImageComboItem(string? text, int imageIndex, bool mark, Color foreColour, object? tag)
         {
-            text = Text;
-            imageindex = ImageIndex;
-            mark = Mark;
-            forecolour = ForeColour;
-            tag = Tag;
+            _text = text;
+            _imageIndex = imageIndex;
+            _mark = mark;
+            _foreColor = foreColour;
+            _tag = tag;
         }
 
         // Item value
-        public string ItemValue { get => _itemValue; set => _itemValue = value; }
+        public string? ItemValue { get => _itemValue; set => _itemValue = value; }
 
         // forecolor
-        public Color ForeColour { get => forecolour; set => forecolour = value; }
+        public Color ForeColour { get => _foreColor; set => _foreColor = value; }
 
         // image index
-        public int ImageIndex { get => imageindex; set => imageindex = value; }
+        public int ImageIndex { get => _imageIndex; set => _imageIndex = value; }
 
         // mark (bold)
-        public bool Mark { get => mark; set => mark = value; }
+        public bool Mark { get => _mark; set => _mark = value; }
 
         // tag
-        public object Tag { get => tag; set => tag = value; }
+        public object? Tag { get => _tag; set => _tag = value; }
 
         // item text
-        public string Text { get => text; set => text = value; }
+        public string? Text { get => _text; set => _text = value; }
 
         // ToString() should return item text
-        public override string ToString()
+        public override string? ToString()
         {
-            return text;
+            return _text;
         }
 
     }

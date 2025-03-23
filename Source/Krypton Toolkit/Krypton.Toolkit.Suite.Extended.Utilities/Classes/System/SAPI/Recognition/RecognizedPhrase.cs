@@ -328,7 +328,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             {
                 if (_replacementText == null)
                 {
-                    _replacementText = new Collection<ReplacementText>();
+                    _replacementText = [];
                     GCHandle gCHandle = GCHandle.Alloc(_phraseBuffer, GCHandleType.Pinned);
                     try
                     {
@@ -487,7 +487,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         private static List<ResultPropertiesRef> BuildRecoPropertyTree(SPSERIALIZEDPHRASE serializedPhrase, IntPtr phraseBuffer, RuleNode ruleTree, IList<RecognizedWordUnit> words, bool isSapi53Header)
         {
-            List<ResultPropertiesRef> list = new List<ResultPropertiesRef>();
+            List<ResultPropertiesRef> list = [];
             if ((int)serializedPhrase.PropertiesOffset > 0)
             {
                 RecursivelyExtractSemanticProperties(list, (int)serializedPhrase.PropertiesOffset, phraseBuffer, ruleTree, words, isSapi53Header);
@@ -638,16 +638,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 int num = 0;
                 do
                 {
-                    text = propertyName + string.Format(CultureInfo.InvariantCulture, "_{0}", new object[1]
-                    {
+                    text = propertyName + string.Format(CultureInfo.InvariantCulture, "_{0}", [
                         num++
-                    });
+                    ]);
                 }
                 while (semanticValue._dictionary.ContainsKey(text));
                 semanticValue._dictionary.Add(text, thisSemanticValue);
                 if (dupItems == null)
                 {
-                    dupItems = new Collection<SemanticValue>();
+                    dupItems = [];
                 }
                 SemanticValue item = semanticValue._dictionary[text];
                 dupItems.Add(item);
@@ -828,11 +827,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 {
                     array[j] = words[j];
                 }
-                object[] parameters = new object[2]
-                {
+                object[] parameters =
+                [
                     value,
                     array
-                };
+                ];
                 if (grammar._proxy != null)
                 {
                     Exception exceptionThrown;
@@ -864,10 +863,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 {
                     continue;
                 }
-                object[] parameters = new object[1]
-                {
+                object[] parameters =
+                [
                     e
-                };
+                ];
                 if (grammar._proxy != null)
                 {
                     Exception exceptionThrown;
@@ -901,10 +900,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                     {
                         continue;
                     }
-                    object[] parameters = new object[1]
-                    {
+                    object[] parameters =
+                    [
                         result
-                    };
+                    ];
                     if (grammar._proxy != null)
                     {
                         Exception exceptionThrown;

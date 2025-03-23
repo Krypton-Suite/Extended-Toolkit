@@ -33,7 +33,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     public class Helpers
     {
         #region Arrays
-        public string[] DriveLetters = new string[] { @"A:\\", @"B:\\", @"C:\\", @"D:\\", @"E:\\", @"F:\\", @"G:\\", @"H:\\", @"I:\\", @"J:\\", @"K:\\", @"L:\\", @"M:\\", @"N:\\", @"O:\\", @"P:\\", @":\\" };
+        public string[] DriveLetters = [@"A:\\", @"B:\\", @"C:\\", @"D:\\", @"E:\\", @"F:\\", @"G:\\", @"H:\\", @"I:\\", @"J:\\", @"K:\\", @"L:\\", @"M:\\", @"N:\\", @"O:\\", @"P:\\", @":\\"
+        ];
         #endregion
 
         #region Methods

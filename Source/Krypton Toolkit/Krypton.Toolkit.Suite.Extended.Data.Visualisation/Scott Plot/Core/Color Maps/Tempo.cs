@@ -10,7 +10,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public override string Name => "Tempo";
 
         public override (byte r, byte g, byte b)[] Rgbs => _rgbs;
-        private static readonly (byte, byte, byte)[] _rgbs = {
+        private static readonly (byte, byte, byte)[] _rgbs =
+        [
             ( 255, 246, 244 ),
             ( 253, 245, 243 ),
             ( 252, 244, 241 ),
@@ -268,7 +269,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             ( 21, 30, 68 ),
             ( 21, 29, 68 )
 
-        };
+        ];
     }
 }
 

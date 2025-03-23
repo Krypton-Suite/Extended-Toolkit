@@ -469,6 +469,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         Category("Navigation"),
         Description("The active band")
         ]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public NaviBand ActiveBand
         {
             get => activeBand;
@@ -853,7 +854,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         #region IObservable Members
 
-        private List<IObserver> observers = new List<IObserver>();
+        private List<IObserver> observers = [];
 
         /// <summary>
         /// Gets the list of observers

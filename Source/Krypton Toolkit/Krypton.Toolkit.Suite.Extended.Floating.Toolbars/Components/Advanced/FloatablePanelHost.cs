@@ -42,10 +42,13 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
         #region Public
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public FloatableMenuStrip FloatableMenuStrip { get => _floatableMenuStrip; set => _floatableMenuStrip = value; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public FloatableToolStrip FloatableToolStrip { get => _floatableToolStrip; set => _floatableToolStrip = value; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Rectangle ActiveArea => _activeArea;
 
         #endregion

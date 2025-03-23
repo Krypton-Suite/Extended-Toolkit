@@ -25,7 +25,6 @@
  */
 #endregion
 
-#pragma warning disable CS8622, CS8602
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourGridDialog : CommonExtendedKryptonForm
@@ -85,9 +84,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.ftsColourGridActions.Dock = System.Windows.Forms.DockStyle.None;
             this.ftsColourGridActions.FloatingToolBarWindowText = "Tool Bar";
             this.ftsColourGridActions.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ftsColourGridActions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbSavePalette,
-            this.tsbLoadPalette});
+            this.ftsColourGridActions.Items.AddRange([
+                this.tsbSavePalette,
+            this.tsbLoadPalette
+            ]);
             this.ftsColourGridActions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ftsColourGridActions.Location = new System.Drawing.Point(3, 0);
             this.ftsColourGridActions.Name = "ftsColourGridActions";
@@ -155,12 +155,17 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ShowToolbar { get => _showToolbar; set { _showToolbar = value; Invalidate(); } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color Colour { get => _colour; set { _colour = value; ColourChangedEventArgs colour = new ColourChangedEventArgs(value); OnSelectedColourChanged(this, colour); } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color ColourToAdd { get => _colourToAdd; set => _colourToAdd = value; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ColorGrid? ColourGrid { get => _grid; private set => _grid = value; }
         #endregion
 
@@ -180,9 +185,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             ColourToAdd = colour;
 
-            ColourGrid.AddCustomColor(ColourToAdd);
+            ColourGrid?.AddCustomColor(ColourToAdd);
 
-            ColourGrid.Color = colour;
+            ColourGrid!.Color = colour;
         }
 
         public ColourGridDialog(bool showToolbar)
@@ -191,7 +196,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             ColourGrid = cgColour;
 
-            tspeColourGridActions.Visible = showToolbar;
+            tspeColourGridActions!.Visible = showToolbar;
         }
         #endregion
 

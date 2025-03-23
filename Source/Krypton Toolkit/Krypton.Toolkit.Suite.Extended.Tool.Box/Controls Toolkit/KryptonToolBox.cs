@@ -894,12 +894,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
                     ColorMatrix cmtx = null;
                     float[][] matrix = new float[][]
                         {
-                            new float[] {0.3f ,0.3f ,0.3f ,1, 1},
-                            new float[] {0.1f ,0.1f ,0.1f ,1, 1},
-                            new float[] {0.1f ,0.1f ,0.1f ,1, 1},
-                            new float[] {0.3f ,0.3f ,0.3f ,1, 1},
-                            new float[] {0.08f,0.08f,0.08f,0, 1},
-                            new float[] {1    ,1    ,1    ,1, 1},
+                            [0.3f ,0.3f ,0.3f ,1, 1],
+                            [0.1f ,0.1f ,0.1f ,1, 1],
+                            [0.1f ,0.1f ,0.1f ,1, 1],
+                            [0.3f ,0.3f ,0.3f ,1, 1],
+                            [0.08f,0.08f,0.08f,0, 1],
+                            [1    ,1    ,1    ,1, 1],
                     };
                     cmtx = new ColorMatrix(matrix);
                     _dImgAttr = new ImageAttributes();

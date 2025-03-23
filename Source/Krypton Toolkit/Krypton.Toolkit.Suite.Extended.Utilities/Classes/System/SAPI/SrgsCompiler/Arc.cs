@@ -389,7 +389,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         {
             if (_startTags == null)
             {
-                _startTags = new Collection<Tag>();
+                _startTags = [];
             }
             _startTags.Add(tag);
         }
@@ -398,7 +398,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         {
             if (_endTags == null)
             {
-                _endTags = new Collection<Tag>();
+                _endTags = [];
             }
             _endTags.Add(tag);
         }
@@ -462,7 +462,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 if (_startTags == null)
                 {
-                    _startTags = new Collection<Tag>();
+                    _startTags = [];
                 }
                 foreach (Tag startTag in arc._startTags)
                 {
@@ -485,7 +485,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 if (_endTags == null)
                 {
-                    _endTags = new Collection<Tag>();
+                    _endTags = [];
                 }
                 foreach (Tag endTag in arc._endTags)
                 {

@@ -113,7 +113,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="green">The green channel.</param>
         /// <param name="blue">The blue channel.</param>
         /// <returns></returns>
-        public string ConvertRGBToHexadecimal(int red, int green, int blue) => ColorTranslator.FromHtml(String.Format("#{0:X2}{1:X2}{2:X2}", red, green, blue)).Name.Remove(0, 1);
+        public string ConvertRGBToHexadecimal(int red, int green, int blue) => ColorTranslator.FromHtml(
+            $"#{red:X2}{green:X2}{blue:X2}").Name.Remove(0, 1);
 
         /// <summary>
         /// Converts the hexadecimal to RGB.
@@ -214,7 +215,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 Color colourResult = ColorTranslator.FromHtml(hexColour);
 
-                result = new int[] { colourResult.R, colourResult.G, colourResult.B };
+                result = [colourResult.R, colourResult.G, colourResult.B];
             }
             catch (Exception)
             {
@@ -288,7 +289,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             int redValue = colour.R, greenValue = colour.G, blueValue = colour.B;
 
-            return ColorTranslator.FromHtml(string.Format("#{0:X2}{1:X2}{2:X2}", redValue, greenValue, blueValue)).Name.Remove(0, 1);
+            return ColorTranslator.FromHtml($"#{redValue:X2}{greenValue:X2}{blueValue:X2}").Name.Remove(0, 1);
         }
 
         /// <summary>

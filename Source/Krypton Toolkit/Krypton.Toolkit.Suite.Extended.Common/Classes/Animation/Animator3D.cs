@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     /// </summary>
     public class Animator3D : IAnimator
     {
-        private readonly List<Path3D> _paths = new List<Path3D>();
+        private readonly List<Path3D> _paths = [];
 
         /// <summary>
         ///     The callback to get invoked at the end of the animation
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Initializes a new instance of the <see cref="Animator3D" /> class.
         /// </summary>
         public Animator3D()
-            : this(new Path3D[] { })
+            : this([])
         {
         }
 
@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Limits the maximum frames per seconds
         /// </param>
         public Animator3D(FPSLimiterKnownValues fpsLimiter)
-            : this(new Path3D[] { }, fpsLimiter)
+            : this([], fpsLimiter)
         {
         }
 
@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     The path of the animation
         /// </param>
         public Animator3D(Path3D path)
-            : this(new[] { path })
+            : this([path])
         {
         }
 
@@ -115,7 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Limits the maximum frames per seconds
         /// </param>
         public Animator3D(Path3D path, FPSLimiterKnownValues fpsLimiter)
-            : this(new[] { path }, fpsLimiter)
+            : this([path], fpsLimiter)
         {
         }
 

@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     public class SecurityAssistant
     {
         #region Variables
-        private string[] _supportedHashAlgorithims = new string[] { "MD-5", "SHA-1", "SHA-256", "SHA-384", "SHA-512", "RIPEMD-160" };
+        private string[] _supportedHashAlgorithims = ["MD-5", "SHA-1", "SHA-256", "SHA-384", "SHA-512", "RIPEMD-160"];
 
         private StringCollection? _supportedHashAlgorithimCollection = null;
         #endregion

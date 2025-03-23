@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         private SrgsTagFormat _tagFormat;
 
-        private Collection<string> _globalTags = new();
+        private Collection<string> _globalTags = [];
 
         private bool _isModeSet;
 
@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         private string _language;
 
-        private Collection<string> _codebehind = new();
+        private Collection<string> _codebehind = [];
 
         private string _namespace;
 
@@ -69,11 +69,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         private string _script = string.Empty;
 
-        private List<XmlParser.ForwardReference> _scriptsForwardReference = new();
+        private List<XmlParser.ForwardReference> _scriptsForwardReference = [];
 
-        private Collection<string> _usings = new();
+        private Collection<string> _usings = [];
 
-        private Collection<string> _assemblyReferences = new();
+        private Collection<string> _assemblyReferences = [];
 
         string IGrammar.Root
         {

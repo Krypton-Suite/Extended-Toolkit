@@ -513,7 +513,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         {
             if (_ruleRefs == null)
             {
-                _ruleRefs = new Collection<Grammar>();
+                _ruleRefs = [];
             }
             _ruleRefs.Add(ruleRef);
             _sapiGrammarId = grammarId;
@@ -679,10 +679,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             {
                 return value;
             }
-            return type.InvokeMember("Parse", BindingFlags.InvokeMethod, null, null, new object[1]
-            {
+            return type.InvokeMember("Parse", BindingFlags.InvokeMethod, null, null, [
                 value
-            }, CultureInfo.InvariantCulture);
+            ], CultureInfo.InvariantCulture);
         }
 
         private static string FormatConstructorParameters(ConstructorInfo[] cis)
@@ -712,12 +711,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         {
             if (string.IsNullOrEmpty(initParameters))
             {
-                return new NameValuePair[0];
+                return [];
             }
-            string[] array = initParameters.Split(new char[1]
-            {
+            string[] array = initParameters.Split([
                 ';'
-            }, StringSplitOptions.None);
+            ], StringSplitOptions.None);
             NameValuePair[] array2 = new NameValuePair[array.Length];
             for (int i = 0; i < array.Length; i++)
             {

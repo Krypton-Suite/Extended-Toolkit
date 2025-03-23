@@ -615,8 +615,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 case ExtendedKryptonMessageBoxIcon.Application:
                     if (!string.IsNullOrEmpty(_applicationPath))
                     {
-                        Image tempImage = GraphicsExtensions.ExtractIconFromFilePath(_applicationPath).ToBitmap();
-                        Bitmap scaledImage = GraphicsExtensions.ScaleImage(tempImage, new Size(32, 32));
+                        Image? tempImage = GraphicsExtensions.ExtractIconFromFilePath(_applicationPath)?.ToBitmap();
+                        Bitmap? scaledImage = GraphicsExtensions.ScaleImage(tempImage, new Size(32, 32));
 
                         _messageIcon.Image = scaledImage;
                     }
@@ -951,8 +951,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     Control? control = FromHandle(owner.Handle);
 
                     var mInfoMethod = control!.GetType().GetMethod(nameof(OnHelpRequested), BindingFlags.Instance | BindingFlags.NonPublic,
-                        Type.DefaultBinder, new[] { typeof(HelpEventArgs) }, null)!;
-                    mInfoMethod.Invoke(control, new object[] { new HelpEventArgs(MousePosition) });
+                        Type.DefaultBinder, [typeof(HelpEventArgs)], null)!;
+                    mInfoMethod.Invoke(control, [new HelpEventArgs(MousePosition)]);
                     if (_helpInfo != null)
                     {
                         if (string.IsNullOrWhiteSpace(_helpInfo.HelpFilePath))
@@ -1010,13 +1010,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             try
             {
-                Control control = FromHandle(_showOwner.Handle);
+                Control control = FromHandle(_showOwner!.Handle);
 
-                MethodInfo mInfoMethod = control.GetType().GetMethod(@"OnHelpRequested", BindingFlags.Instance | BindingFlags.NonPublic,
-                    Type.DefaultBinder, new[] { typeof(HelpEventArgs) }, null);
+                MethodInfo? mInfoMethod = control.GetType().GetMethod(@"OnHelpRequested", BindingFlags.Instance | BindingFlags.NonPublic,
+                    Type.DefaultBinder, [typeof(HelpEventArgs)], null);
                 if (mInfoMethod != null)
                 {
-                    mInfoMethod.Invoke(control, new object[] { new HelpEventArgs(MousePosition) });
+                    mInfoMethod.Invoke(control, [new HelpEventArgs(MousePosition)]);
                 }
                 if (_helpInfo != null)
                 {
@@ -1026,7 +1026,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     }
                 }
 
-                if (!string.IsNullOrWhiteSpace(_helpInfo.Keyword))
+                if (!string.IsNullOrWhiteSpace(_helpInfo!.Keyword))
                 {
                     Help.ShowHelp(control, _helpInfo.HelpFilePath, _helpInfo.Keyword);
                 }
@@ -1290,6 +1290,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
         }
 
+        [Obsolete("Obsolete")]
         private static void Initialize()
         {
             if (_hHook != IntPtr.Zero)
@@ -1338,7 +1339,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             int height = recChild.Height - recChild.Y;
 
             Rectangle recParent = new Rectangle(0, 0, 0, 0);
-            success = PlatformEvents.GetWindowRect(_showOwner.Handle, ref recParent);
+            success = PlatformEvents.GetWindowRect(_showOwner!.Handle, ref recParent);
 
             Point ptCenter = new Point(0, 0);
             ptCenter.X = recParent.X + (recParent.Width - recParent.X) / 2;

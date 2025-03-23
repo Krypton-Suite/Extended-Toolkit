@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             lblNetworks.Text = "Networks";
 
             KryptonComboBox cboNetworks = new KryptonComboBox();
-            List<NetworkInterface> interfaces = new List<NetworkInterface>();
+            List<NetworkInterface> interfaces = [];
 
             foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
             {

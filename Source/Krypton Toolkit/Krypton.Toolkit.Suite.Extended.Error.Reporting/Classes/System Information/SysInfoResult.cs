@@ -43,12 +43,12 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             Nodes.Add(node);
         }
 
-        public void AddChildren(IEnumerable<SysInfoResult> children)
+        public void AddChildren(IEnumerable<SysInfoResult?> children)
         {
             ChildResults.AddRange(children);
         }
 
-        public List<string> Nodes { get; } = new List<string>();
+        public List<string> Nodes { get; } = [];
 
         private void Clear()
         {
@@ -62,18 +62,18 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
         public string Name { get; }
 
-        public List<SysInfoResult> ChildResults { get; } = new List<SysInfoResult>();
+        public List<SysInfoResult?> ChildResults { get; } = [];
 
         public SysInfoResult Filter(string[] filterStrings)
         {
             var filteredNodes = (
-                from node in ChildResults[0].Nodes
+                from node in ChildResults[0]?.Nodes
                 from filter in filterStrings
                 where node.Contains($"{filter} = ")
                 select node).ToList();
 
-            ChildResults[0].Clear();
-            ChildResults[0].AddRange(filteredNodes);
+            ChildResults[0]?.Clear();
+            ChildResults[0]?.AddRange(filteredNodes);
             return this;
         }
     }

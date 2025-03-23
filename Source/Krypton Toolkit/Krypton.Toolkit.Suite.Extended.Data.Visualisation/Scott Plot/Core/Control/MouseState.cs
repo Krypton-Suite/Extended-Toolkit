@@ -7,7 +7,7 @@
         /// </summary>
         public float MinimumDragDistance = 5;
 
-        private readonly HashSet<MouseButton> _pressed = new();
+        private readonly HashSet<MouseButton> _pressed = [];
 
         public Pixel LastPosition = new(float.NaN, float.NaN);
 

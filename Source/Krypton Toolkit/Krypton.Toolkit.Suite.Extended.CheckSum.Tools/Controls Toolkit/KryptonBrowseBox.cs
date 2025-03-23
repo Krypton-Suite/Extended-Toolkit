@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
             _kcReset.Execute += Reset_Execute;
 
-            ButtonSpecs.AddRange(new[] { _bsaBrowse, _bsaReset });
+            ButtonSpecs.AddRange([_bsaBrowse, _bsaReset]);
         }
 
         #endregion

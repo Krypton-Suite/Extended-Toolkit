@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Controls
+﻿namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     /// <summary>
     /// A container control for the ListControl to ensure the ScrollBar on the ListControl does not
@@ -38,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <param name="m"></param>
         protected override void WndProc(ref Message m)
         {
-            if ((Parent as Popup).ProcessResizing(ref m))
+            if (((Parent as PopUp)!).ProcessResizing(ref m))
             {
                 return;
             }

@@ -117,19 +117,18 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
             {
                 if (_cg._language == "C#")
                 {
-                    return string.Format(CultureInfo.InvariantCulture, "#line {0} \"{1}\"\n{2}", new object[3]
-                    {
+                    return string.Format(CultureInfo.InvariantCulture, "#line {0} \"{1}\"\n{2}", [
                         line.ToString(CultureInfo.InvariantCulture),
                         filename,
                         code
-                    });
+                    ]);
                 }
-                return string.Format(CultureInfo.InvariantCulture, "#ExternalSource (\"{1}\",{0}) \n{2}\n#End ExternalSource\n", new object[3]
-                {
+                return string.Format(CultureInfo.InvariantCulture, "#ExternalSource (\"{1}\",{0}) \n{2}\n#End ExternalSource\n",
+                [
                     line.ToString(CultureInfo.InvariantCulture),
                     filename,
                     code
-                });
+                ]);
             }
             return code;
         }
@@ -229,12 +228,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                                 text4 = PhonemeConverter.UpsConverter.ConvertPronToId(text3);
                                 break;
                         }
-                        string sWord = string.Format(CultureInfo.InvariantCulture, "/{0}/{1}/{2};", new object[3]
-                        {
+                        string sWord = string.Format(CultureInfo.InvariantCulture, "/{0}/{1}/{2};", [
                             text2,
                             text,
                             text4
-                        });
+                        ]);
                         if (oneOf != null)
                         {
                             oneOf.AddArc(_backend.WordTransition(sWord, 1f, requiredConfidence));
@@ -249,11 +247,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                 }
                 else
                 {
-                    string sWord2 = string.Format(CultureInfo.InvariantCulture, "/{0}/{1};", new object[2]
-                    {
+                    string sWord2 = string.Format(CultureInfo.InvariantCulture, "/{0}/{1};", [
                         text2,
                         text
-                    });
+                    ]);
                     parent.AddArc(_backend.WordTransition(sWord2, 1f, requiredConfidence));
                 }
             }

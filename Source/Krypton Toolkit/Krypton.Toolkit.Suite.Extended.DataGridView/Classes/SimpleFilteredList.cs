@@ -280,7 +280,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         #region Filtering
 
-        private List<T> UnfilteredList { get; } = new();
+        private List<T> UnfilteredList { get; } = [];
 
         /// <inheritdoc />
         public bool SupportsFiltering => true;
@@ -380,7 +380,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             UnfilteredList.Clear();
             UnfilteredList.AddRange(SourceItems);
 
-            List<T> results = new();
+            List<T> results = [];
 
             PropertyDescriptor propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName];
 
@@ -411,7 +411,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         private void GetFilterParts()
         {
-            string[] filterParts = Filter.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] filterParts = Filter.Split(['='], StringSplitOptions.RemoveEmptyEntries);
             FilterPropertyName = filterParts[0].Replace("[", string.Empty)
                                         .Replace("]", string.Empty)
                                         .Trim();

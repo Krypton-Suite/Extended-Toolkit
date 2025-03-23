@@ -66,23 +66,23 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 
         private bool _hasTagFormat;
 
-        private List<string> _rules = new();
+        private List<string> _rules = [];
 
-        private List<ForwardReference> _scripts = new();
+        private List<ForwardReference> _scripts = [];
 
-        private static readonly char[] _invalidRuleIdChars = new char[4]
-        {
+        private static readonly char[] _invalidRuleIdChars =
+        [
             '.',
             ':',
             '-',
             '#'
-        };
+        ];
 
-        private static readonly char[] _SlashBackSlash = new char[2]
-        {
+        private static readonly char[] _SlashBackSlash =
+        [
             '\\',
             '/'
-        };
+        ];
 
         public IElementFactory ElementFactory
         {
@@ -1179,7 +1179,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                                         {
                                             if (list == null)
                                             {
-                                                list = new List<IPropertyTag>();
+                                                list = [];
                                             }
                                             list.Add(propertyTag);
                                         }
@@ -1590,7 +1590,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
                     ThrowSrgsException(SRID.InvalidScriptDefinition, script._name);
                 }
             }
-            List<string> list = new List<string>();
+            List<string> list = [];
             foreach (string rule in _rules)
             {
                 if (list.Contains(rule))

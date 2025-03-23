@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         private void MergeDuplicateTransitions()
         {
-            List<Arc> identicalWords = new List<Arc>();
+            List<Arc> identicalWords = [];
             foreach (State item in (IEnumerable<State>)this)
             {
                 if (item.OutArcs.ContainsMoreThanOneItem)
@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     MergeDuplicateInputTransitions(item.InArcs, mergeStates);
                 }
             }
-            List<Arc> identicalWords = new List<Arc>();
+            List<Arc> identicalWords = [];
             while (mergeStates.Count > 0)
             {
                 State state = mergeStates.Pop();
@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     MergeDuplicateOutputTransitions(item.OutArcs, mergeStates);
                 }
             }
-            List<Arc> identicalWords = new List<Arc>();
+            List<Arc> identicalWords = [];
             while (mergeStates.Count > 0)
             {
                 State state = mergeStates.Pop();
@@ -193,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     {
                         if (list == null)
                         {
-                            list = new List<Arc>();
+                            list = [];
                         }
                         if (!flag)
                         {
@@ -277,7 +277,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     {
                         if (list == null)
                         {
-                            list = new List<Arc>();
+                            list = [];
                         }
                         if (!flag)
                         {
@@ -407,9 +407,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                         identicalWords.Sort(Arc.CompareIdenticalTransitions);
                         if (list == null)
                         {
-                            list = new List<List<Arc>>();
+                            list = [];
                         }
-                        list.Add(new List<Arc>(identicalWords));
+                        list.Add([..identicalWords]);
                     }
                     identicalWords.Clear();
                 }
@@ -442,7 +442,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
                     arc.ClearTags();
                     if (collection == null)
                     {
-                        collection = new Collection<Arc>();
+                        collection = [];
                     }
                     collection.Add(arc);
                 }

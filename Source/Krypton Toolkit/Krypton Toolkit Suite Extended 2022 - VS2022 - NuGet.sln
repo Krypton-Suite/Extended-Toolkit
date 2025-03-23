@@ -293,6 +293,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Extended Toolkit API Documentation", "..\Documentation\Extended Toolkit API Documentation\Extended Toolkit API Documentation.shfbproj", "{6CFE23A2-844D-4EF5-8A75-35985B11CF34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Outlook.Grid 2022", "Krypton.Toolkit.Suite.Extended.Outlook.Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid 2022.csproj", "{1E4D59F5-37EB-400A-A606-4D3601F39032}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Security 2022", "Krypton.Toolkit.Suite.Extended.Security\Krypton.Toolkit.Suite.Extended.Security 2022.csproj", "{8490A033-467C-42D2-96F3-604C15824A43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Canary|Any CPU = Canary|Any CPU
@@ -805,6 +809,22 @@ Global
 		{6CFE23A2-844D-4EF5-8A75-35985B11CF34}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
 		{6CFE23A2-844D-4EF5-8A75-35985B11CF34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CFE23A2-844D-4EF5-8A75-35985B11CF34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E4D59F5-37EB-400A-A606-4D3601F39032}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
+		{1E4D59F5-37EB-400A-A606-4D3601F39032}.Canary|Any CPU.Build.0 = Canary|Any CPU
+		{1E4D59F5-37EB-400A-A606-4D3601F39032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E4D59F5-37EB-400A-A606-4D3601F39032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E4D59F5-37EB-400A-A606-4D3601F39032}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{1E4D59F5-37EB-400A-A606-4D3601F39032}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
+		{1E4D59F5-37EB-400A-A606-4D3601F39032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E4D59F5-37EB-400A-A606-4D3601F39032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8490A033-467C-42D2-96F3-604C15824A43}.Canary|Any CPU.ActiveCfg = Release|Any CPU
+		{8490A033-467C-42D2-96F3-604C15824A43}.Canary|Any CPU.Build.0 = Release|Any CPU
+		{8490A033-467C-42D2-96F3-604C15824A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8490A033-467C-42D2-96F3-604C15824A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8490A033-467C-42D2-96F3-604C15824A43}.Nightly|Any CPU.ActiveCfg = Release|Any CPU
+		{8490A033-467C-42D2-96F3-604C15824A43}.Nightly|Any CPU.Build.0 = Release|Any CPU
+		{8490A033-467C-42D2-96F3-604C15824A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8490A033-467C-42D2-96F3-604C15824A43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -895,6 +915,8 @@ Global
 		{B93429BE-5941-40A4-89F8-C14109959886} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{9622B3B8-E6FA-4DC6-A151-826AA0C90CE7} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{6CFE23A2-844D-4EF5-8A75-35985B11CF34} = {74E3A6CE-ED3C-41EF-B5AC-814D289DCDE5}
+		{1E4D59F5-37EB-400A-A606-4D3601F39032} = {ADF53878-BE1F-43A3-A890-E11190BE5465}
+		{8490A033-467C-42D2-96F3-604C15824A43} = {ADF53878-BE1F-43A3-A890-E11190BE5465}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

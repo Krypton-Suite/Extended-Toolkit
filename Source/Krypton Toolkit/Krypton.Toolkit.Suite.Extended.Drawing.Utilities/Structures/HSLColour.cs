@@ -206,18 +206,18 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             double hk = this.H / 360;
 
             // r,g,b colors
-            double[] tc = new[]
-                          {
-                      hk + 1d / 3d,
+            double[] tc =
+            [
+                hk + 1d / 3d,
                       hk,
                       hk - 1d / 3d
-                    };
-            double[] colours = new[]
-                              {
-                          0.0,
+            ];
+            double[] colours =
+            [
+                0.0,
                           0.0,
                           0.0
-                        };
+            ];
 
             for (int color = 0; color < colours.Length; color++)
             {

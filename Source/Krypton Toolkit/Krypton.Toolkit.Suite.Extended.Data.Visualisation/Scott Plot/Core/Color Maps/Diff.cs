@@ -10,7 +10,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public override string Name => "Diff";
 
         public override (byte r, byte g, byte b)[] Rgbs => _rgbs;
-        private static readonly (byte, byte, byte)[] _rgbs = {
+        private static readonly (byte, byte, byte)[] _rgbs =
+        [
             ( 8, 35, 64 ),
             ( 9, 37, 66 ),
             ( 10, 38, 68 ),
@@ -267,7 +268,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             ( 32, 37, 9 ),
             ( 30, 36, 8 ),
             ( 28, 34, 7 )
-        };
+        ];
     }
 }
 

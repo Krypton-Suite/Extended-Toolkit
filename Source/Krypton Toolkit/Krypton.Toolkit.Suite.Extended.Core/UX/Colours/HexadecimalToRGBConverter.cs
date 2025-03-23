@@ -162,8 +162,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // ctxColourList
             // 
             this.ctxColourList.Font = new("Segoe UI", 9F);
-            this.ctxColourList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removeSelectedColourToolStripMenuItem});
+            this.ctxColourList.Items.AddRange([
+                this.removeSelectedColourToolStripMenuItem
+            ]);
             this.ctxColourList.Name = "ctxColourList";
             this.ctxColourList.Size = new(204, 26);
             // 

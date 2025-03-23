@@ -665,6 +665,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public BasicPaletteColourDefinitions BasicPaletteColourDefinition
         {
             get => _basicPaletteColourDefinitions;

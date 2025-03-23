@@ -304,7 +304,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="standardColourSelection">The standard colour selection.</param>
         public static void PropagateStandardColours(KryptonComboBox standardColourSelection)
         {
-            List<Color> allColours = new();
+            List<Color> allColours = [];
 
             foreach (KnownColor colour in Enum.GetValues(typeof(KnownColor)))
             {
@@ -327,7 +327,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="systemColourSelection">The system colour selection.</param>
         public static void PropagateSystemColours(KryptonComboBox systemColourSelection)
         {
-            List<Color> allSystemColours = new();
+            List<Color> allSystemColours = [];
 
             PropertyInfo[] systemColourProperties = typeof(SystemColors).GetProperties();
 
@@ -350,7 +350,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void PropagateBasePaletteModes(KryptonComboBox basePaletteModeSelection)
         {
-            List<PaletteMode> allPaletteModes = new();
+            List<PaletteMode> allPaletteModes = [];
 
             foreach (string mode in Enum.GetNames(typeof(PaletteMode)))
             {
@@ -360,7 +360,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void PropagateBasePaletteModes(KryptonRibbonGroupComboBox basePaletteModeSelection)
         {
-            List<PaletteMode> allPaletteModes = new();
+            List<PaletteMode> allPaletteModes = [];
 
             foreach (string mode in Enum.GetNames(typeof(PaletteMode)))
             {

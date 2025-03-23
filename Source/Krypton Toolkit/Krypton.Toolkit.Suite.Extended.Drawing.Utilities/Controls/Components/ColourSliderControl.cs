@@ -723,12 +723,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 }
 
                 // draw the shape
-                outer = new[]
-                        {
-                  firstCorner,
+                outer =
+                [
+                    firstCorner,
                   lastCorner,
                   tipCorner
-                };
+                ];
 
                 // TODO: Add 3D edging similar to the mousewheel's diamond
 
@@ -1396,30 +1396,30 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     switch (this.BarStyle)
                     {
                         case ColourBarStyle.TwoColour:
-                            blend.Colors = new[]
-                                           {
-                               this.Colour1,
+                            blend.Colors =
+                            [
+                                this.Colour1,
                                this.Colour2
-                             };
-                            blend.Positions = new[]
-                                              {
-                                  0F,
+                            ];
+                            blend.Positions =
+                            [
+                                0F,
                                   1F
-                                };
+                            ];
                             break;
                         case ColourBarStyle.ThreeColour:
-                            blend.Colors = new[]
-                                           {
-                               this.Colour1,
+                            blend.Colors =
+                            [
+                                this.Colour1,
                                this.Colour2,
                                this.Colour3
-                             };
-                            blend.Positions = new[]
-                                              {
-                                  0,
+                            ];
+                            blend.Positions =
+                            [
+                                0,
                                   0.5F,
                                   1
-                                };
+                            ];
                             break;
                         case ColourBarStyle.Custom:
                             ColourCollection custom;
@@ -1435,16 +1435,16 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                             }
                             else
                             {
-                                blend.Colors = new[]
-                                               {
-                                 this.Colour1,
+                                blend.Colors =
+                                [
+                                    this.Colour1,
                                  this.Colour2
-                               };
-                                blend.Positions = new[]
-                                                  {
+                                ];
+                                blend.Positions =
+                                [
                                     0F,
                                     1F
-                                  };
+                                ];
                             }
                             break;
                     }

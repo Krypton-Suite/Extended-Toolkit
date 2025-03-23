@@ -695,8 +695,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 {
                     if (this.CustomColours == null)
                     {
-                        this.CustomColours = new ColourCollection();
-                        this.CustomColours.Add(value);
+                        this.CustomColours =
+                        [
+                            value
+                        ];
                     }
                     else
                     {

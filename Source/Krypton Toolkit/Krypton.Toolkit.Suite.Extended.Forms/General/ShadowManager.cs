@@ -245,7 +245,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                     using (PathGradientBrush pgb = new PathGradientBrush(gp)
                     {
                         CenterColor = _shadowValues.Colour,
-                        SurroundColors = new[] { Color.Transparent },
+                        SurroundColors = [Color.Transparent],
                         CenterPoint = new PointF(blurOffset, blurOffset)
                     })
                     {

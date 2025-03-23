@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
     {
         private long _virtualPosition;
 
-        private List<byte> _buffer = new();
+        private List<byte> _buffer = [];
 
         private Stream _baseStream;
 

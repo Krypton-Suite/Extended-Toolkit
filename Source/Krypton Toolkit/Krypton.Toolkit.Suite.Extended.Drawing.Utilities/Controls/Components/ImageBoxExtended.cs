@@ -2868,11 +2868,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             using (Brush brush = new SolidBrush(this.ImageBorderColor))
             {
-                g.FillRectangles(brush, new[]
-                                        {
-                                  rightEdge,
+                g.FillRectangles(brush, [
+                    rightEdge,
                                   bottomEdge
-                                });
+                ]);
             }
         }
 

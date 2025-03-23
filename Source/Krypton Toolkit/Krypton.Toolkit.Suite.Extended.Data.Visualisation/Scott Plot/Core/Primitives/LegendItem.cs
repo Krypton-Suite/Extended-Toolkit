@@ -45,7 +45,7 @@
 
         public static IEnumerable<LegendItem> Single(LegendItem item)
         {
-            return new LegendItem[] { item };
+            return [item];
         }
 
         public static IEnumerable<LegendItem> Single(string label, MarkerStyle markerStyle)

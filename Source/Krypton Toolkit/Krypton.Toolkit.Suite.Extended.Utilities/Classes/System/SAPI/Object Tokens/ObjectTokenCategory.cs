@@ -50,11 +50,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
             string text = keyName;
             if (!string.IsNullOrEmpty(text) && text.IndexOf("HKEY_", StringComparison.Ordinal) != 0)
             {
-                text = string.Format(CultureInfo.InvariantCulture, "{0}\\Tokens\\{1}", new object[2]
-                {
+                text = string.Format(CultureInfo.InvariantCulture, "{0}\\Tokens\\{1}", [
                     base.Id,
                     text
-                });
+                ]);
             }
             return ObjectToken.Open(null, text, false);
         }

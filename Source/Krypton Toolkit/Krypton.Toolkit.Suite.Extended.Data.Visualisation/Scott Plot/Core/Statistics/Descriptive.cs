@@ -1,4 +1,5 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿#pragma warning disable CS1584 // XML comment has syntactically incorrect cref attribute
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public static class Descriptive
     {
@@ -146,12 +147,13 @@
         /// </summary>
         public static double StandardDeviation<T>(IEnumerable<T> values)
         {
-            if (!values.Any())
+            var enumerable = values as T[] ?? values.ToArray();
+            if (!enumerable.Any())
             {
                 throw new ArgumentException($"{nameof(values)} cannot be empty");
             }
 
-            double[] values2 = NumericConversion.GenericToDoubleArray(values);
+            double[] values2 = NumericConversion.GenericToDoubleArray(enumerable);
             return StandardDeviation(values2);
         }
 
@@ -170,12 +172,13 @@
         /// </summary>
         public static double StandardDeviationP<T>(IEnumerable<T> values)
         {
-            if (!values.Any())
+            var enumerable = values as T[] ?? values.ToArray();
+            if (!enumerable.Any())
             {
                 throw new ArgumentException($"{nameof(values)} cannot be empty");
             }
 
-            double[] values2 = NumericConversion.GenericToDoubleArray(values);
+            double[] values2 = NumericConversion.GenericToDoubleArray(enumerable);
             return StandardDeviationP(values2);
         }
 
@@ -191,7 +194,7 @@
         public static IReadOnlyList<double> RemoveNaN<T>(IReadOnlyList<T> values)
         {
             double[] values2 = NumericConversion.GenericToDoubleArray(values);
-            List<double> values3 = new();
+            List<double> values3 = [];
 
             foreach (double value in values2)
             {
@@ -206,7 +209,7 @@
 
         public static double[] RemoveNaN(double[] values)
         {
-            List<double> values2 = new();
+            List<double> values2 = [];
 
             foreach (double value in values)
             {
@@ -347,7 +350,7 @@
                 throw new ArgumentException($"Array {nameof(values)} cannot be empty");
             }
 
-            double[] vector = Array.Empty<double>();
+            double[] vector = [];
             if (row is not null)
             {
                 vector = new double[values.GetLength(1)];

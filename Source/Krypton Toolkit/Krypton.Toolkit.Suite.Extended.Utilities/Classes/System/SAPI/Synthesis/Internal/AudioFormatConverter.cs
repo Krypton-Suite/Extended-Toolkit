@@ -45,8 +45,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private static byte[] _aLawCompTableCached;
 
-        private static readonly int[] exp_lut_linear2alaw = new int[128]
-        {
+        private static readonly int[] exp_lut_linear2alaw =
+        [
             1,
             1,
             2,
@@ -175,10 +175,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             7,
             7,
             7
-        };
+        ];
 
-        private static int[] exp_lut_linear2ulaw = new int[256]
-        {
+        private static int[] exp_lut_linear2ulaw =
+        [
             0,
             0,
             1,
@@ -435,10 +435,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             7,
             7,
             7
-        };
+        ];
 
-        private static int[] ULaw_exp_table = new int[256]
-        {
+        private static int[] ULaw_exp_table =
+        [
             -32124,
             -31100,
             -30076,
@@ -695,10 +695,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             16,
             8,
             0
-        };
+        ];
 
-        private static int[] ALaw_exp_table = new int[256]
-        {
+        private static int[] ALaw_exp_table =
+        [
             -5504,
             -5248,
             -6016,
@@ -955,7 +955,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             784,
             880,
             848
-        };
+        ];
 
         internal static short[] Convert(byte[] data, AudioCodec from, AudioCodec to)
         {

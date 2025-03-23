@@ -129,14 +129,14 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private CultureInfo _culture;
 
-        private List<Element> _elements = new();
+        private List<Element> _elements = [];
 
         private static ResourceLoader _resourceLoader = new();
 
         private const string _xmlnsDefault = "http://www.w3.org/2001/10/synthesis";
 
-        private static readonly string[] _promptBuilderElementName = new string[11]
-        {
+        private static readonly string[] _promptBuilderElementName =
+        [
             "prosody",
             "emphasis",
             "say-as",
@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             "voice",
             "p",
             "s"
-        };
+        ];
 
         public bool IsEmpty => _elements.Count == 0;
 
@@ -221,8 +221,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
             if (!string.IsNullOrEmpty(value))
             {
-                element._attributes = new Collection<AttributeItem>();
-                element._attributes.Add(new AttributeItem("rate", value));
+                element._attributes =
+                [
+                    new AttributeItem("rate", value)
+                ];
             }
         }
 
@@ -253,8 +255,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
             if (!string.IsNullOrEmpty(value))
             {
-                element._attributes = new Collection<AttributeItem>();
-                element._attributes.Add(new AttributeItem("volume", value));
+                element._attributes =
+                [
+                    new AttributeItem("volume", value)
+                ];
             }
         }
 
@@ -270,8 +274,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             _elements.Add(element);
             if (emphasis != 0)
             {
-                element._attributes = new Collection<AttributeItem>();
-                element._attributes.Add(new AttributeItem("level", emphasis.ToString().ToLowerInvariant()));
+                element._attributes =
+                [
+                    new AttributeItem("level", emphasis.ToString().ToLowerInvariant())
+                ];
             }
         }
 
@@ -287,8 +293,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             {
                 Element element = new Element(ElementType.Emphasis);
                 _elements.Add(element);
-                element._attributes = new Collection<AttributeItem>();
-                element._attributes.Add(new AttributeItem("level", style.Emphasis.ToString().ToLowerInvariant()));
+                element._attributes =
+                [
+                    new AttributeItem("level", style.Emphasis.ToString().ToLowerInvariant())
+                ];
                 possibleChildren = SsmlElement.AudioMarkTextWithStyle;
                 ssmlState = SsmlState.StyleEmphasis;
             }
@@ -315,8 +323,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                             value = style.Rate.ToString().ToLowerInvariant();
                             break;
                     }
-                    element2._attributes = new Collection<AttributeItem>();
-                    element2._attributes.Add(new AttributeItem("rate", value));
+                    element2._attributes =
+                    [
+                        new AttributeItem("rate", value)
+                    ];
                 }
                 if (style.Volume != 0)
                 {
@@ -335,7 +345,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                     }
                     if (element2._attributes == null)
                     {
-                        element2._attributes = new Collection<AttributeItem>();
+                        element2._attributes = [];
                     }
                     element2._attributes.Add(new AttributeItem("volume", value2));
                 }
@@ -377,7 +387,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             ValidateElement(stackElement, SsmlElement.Voice);
             CultureInfo culture = voice.Culture == null ? stackElement._culture : voice.Culture;
             Element element = new Element(ElementType.StartVoice);
-            element._attributes = new Collection<AttributeItem>();
+            element._attributes = [];
             _elements.Add(element);
             if (!string.IsNullOrEmpty(voice.Name))
             {
@@ -454,8 +464,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 {
                     throw new ArgumentException(SR.Get(SRID.InvariantCultureInfo), "culture");
                 }
-                element._attributes = new Collection<AttributeItem>();
-                element._attributes.Add(new AttributeItem("xml", "lang", culture.Name));
+                element._attributes =
+                [
+                    new AttributeItem("xml", "lang", culture.Name)
+                ];
             }
             else
             {
@@ -490,8 +502,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 {
                     throw new ArgumentException(SR.Get(SRID.InvariantCultureInfo), "culture");
                 }
-                element._attributes = new Collection<AttributeItem>();
-                element._attributes.Add(new AttributeItem("xml", "lang", culture.Name));
+                element._attributes =
+                [
+                    new AttributeItem("xml", "lang", culture.Name)
+                ];
             }
             else
             {
@@ -521,7 +535,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             {
                 Element element = new Element(ElementType.SayAs, textToSpeak);
                 _elements.Add(element);
-                element._attributes = new Collection<AttributeItem>();
+                element._attributes = [];
                 string value = null;
                 string value2 = null;
                 switch (sayAs)
@@ -612,8 +626,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             ValidateElement(_elementStack.Peek(), SsmlElement.Text);
             Element element = new Element(ElementType.SayAs, textToSpeak);
             _elements.Add(element);
-            element._attributes = new Collection<AttributeItem>();
-            element._attributes.Add(new AttributeItem("interpret-as", sayAs));
+            element._attributes =
+            [
+                new AttributeItem("interpret-as", sayAs)
+            ];
         }
 
         public void AppendTextWithPronunciation(string textToSpeak, string pronunciation)
@@ -624,8 +640,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             PhonemeConverter.ValidateUpsIds(pronunciation);
             Element element = new Element(ElementType.Phoneme, textToSpeak);
             _elements.Add(element);
-            element._attributes = new Collection<AttributeItem>();
-            element._attributes.Add(new AttributeItem("ph", pronunciation));
+            element._attributes =
+            [
+                new AttributeItem("ph", pronunciation)
+            ];
         }
 
         public void AppendTextWithAlias(string textToSpeak, string substitute)
@@ -635,8 +653,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             ValidateElement(_elementStack.Peek(), SsmlElement.Text);
             Element element = new Element(ElementType.Sub, textToSpeak);
             _elements.Add(element);
-            element._attributes = new Collection<AttributeItem>();
-            element._attributes.Add(new AttributeItem("alias", substitute));
+            element._attributes =
+            [
+                new AttributeItem("alias", substitute)
+            ];
         }
 
         public void AppendBreak()
@@ -674,8 +694,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
                 default:
                     throw new ArgumentNullException("strength");
             }
-            element._attributes = new Collection<AttributeItem>();
-            element._attributes.Add(new AttributeItem("strength", text));
+            element._attributes =
+            [
+                new AttributeItem("strength", text)
+            ];
         }
 
         public void AppendBreak(TimeSpan duration)
@@ -687,8 +709,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
             Element element = new Element(ElementType.Break);
             _elements.Add(element);
-            element._attributes = new Collection<AttributeItem>();
-            element._attributes.Add(new AttributeItem("time", $"{duration.TotalMilliseconds}ms"));
+            element._attributes =
+            [
+                new AttributeItem("time", $"{duration.TotalMilliseconds}ms")
+            ];
         }
 
         public void AppendAudio(string path)
@@ -713,8 +737,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             ValidateElement(_elementStack.Peek(), SsmlElement.Audio);
             Element element = new Element(ElementType.Audio);
             _elements.Add(element);
-            element._attributes = new Collection<AttributeItem>();
-            element._attributes.Add(new AttributeItem("src", audioFile.ToString()));
+            element._attributes =
+            [
+                new AttributeItem("src", audioFile.ToString())
+            ];
         }
 
         public void AppendAudio(Uri audioFile, string alternateText)
@@ -724,8 +750,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             ValidateElement(_elementStack.Peek(), SsmlElement.Audio);
             Element element = new Element(ElementType.Audio, alternateText);
             _elements.Add(element);
-            element._attributes = new Collection<AttributeItem>();
-            element._attributes.Add(new AttributeItem("src", audioFile.ToString()));
+            element._attributes =
+            [
+                new AttributeItem("src", audioFile.ToString())
+            ];
         }
 
         public void AppendBookmark(string bookmarkName)
@@ -734,8 +762,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             ValidateElement(_elementStack.Peek(), SsmlElement.Mark);
             Element element = new Element(ElementType.Bookmark);
             _elements.Add(element);
-            element._attributes = new Collection<AttributeItem>();
-            element._attributes.Add(new AttributeItem("name", bookmarkName));
+            element._attributes =
+            [
+                new AttributeItem("name", bookmarkName)
+            ];
         }
 
         public void AppendPromptBuilder(PromptBuilder promptBuilder)
@@ -899,11 +929,11 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         {
             if ((stackElement._possibleChildren & currentElement) == 0)
             {
-                throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, SR.Get(SRID.PromptBuilderInvalidElement), new object[2]
-                {
+                throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, SR.Get(SRID.PromptBuilderInvalidElement),
+                [
                     currentElement.ToString(),
                     stackElement._state.ToString()
-                }));
+                ]));
             }
         }
 

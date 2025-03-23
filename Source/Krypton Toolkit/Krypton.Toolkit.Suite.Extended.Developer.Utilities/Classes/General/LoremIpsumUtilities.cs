@@ -6,7 +6,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
     {
         internal static string Remove(this string value, string pattern) => value.Replace(pattern, "");
 
-        internal static string[] Split(this string value, string separator) => value.Split(new[] { separator }, StringSplitOptions.None);
+        internal static string[] Split(this string value, string separator) => value.Split([separator], StringSplitOptions.None);
 
         internal static string UppercaseFirst(this string value)
         {
@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         => Sentence(wordCount, wordCount);
 
         public static string Sentence(int wordCountMin, int wordCountMax)
-        => string.Format("{0}.", Words(wordCountMin, wordCountMax, true, true)).Replace(",.", ".").Remove("..");
+        => $"{Words(wordCountMin, wordCountMax, true, true)}.".Replace(",.", ".").Remove("..");
 
         public static string Paragraph(int wordCount, int sentenceCount)
         => Paragraph(wordCount, wordCount, sentenceCount, sentenceCount);

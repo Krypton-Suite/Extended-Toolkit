@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null)
             => ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
-                null, showCtrlCopy, null, null, null, Color.Empty, new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                null, showCtrlCopy, null, null, null, Color.Empty, [Color.Empty, Color.Empty, Color.Empty, Color.Empty],
                 null, null, null, null, string.Empty, string.Empty,
                 string.Empty, string.Empty);
 
@@ -67,13 +67,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                         MessageBoxOptions options = 0,
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null,
-                                        Font messageBoxTypeface = null,
-                                        Image customImageIcon = null)
+                                        Font? messageBoxTypeface = null,
+                                        Image? customImageIcon = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                              messageBoxTypeface, customImageIcon, null, Color.Empty,
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                             [Color.Empty, Color.Empty, Color.Empty, Color.Empty],
                              null, null, null, null, string.Empty, string.Empty,
                              string.Empty, string.Empty);
 
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                              null, null, null, Color.Empty,
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                             [Color.Empty, Color.Empty, Color.Empty, Color.Empty],
                              null, null, null, null, string.Empty, string.Empty,
                              string.Empty, string.Empty);
 
@@ -126,13 +126,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                         MessageBoxOptions options = 0,
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null,
-                                        Font messageBoxTypeface = null,
-                                        Image customImageIcon = null)
+                                        Font? messageBoxTypeface = null,
+                                        Image? customImageIcon = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                              messageBoxTypeface, customImageIcon, null, Color.Empty,
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                             [Color.Empty, Color.Empty, Color.Empty, Color.Empty],
                              null, null, null, null, string.Empty,
                              string.Empty, string.Empty, string.Empty);
 
@@ -160,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                     displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                     null, null, null, Color.Empty,
-                    new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                    [Color.Empty, Color.Empty, Color.Empty, Color.Empty],
                     null, null, null, null, string.Empty,
                     string.Empty, string.Empty, string.Empty);
 
@@ -187,15 +187,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                         MessageBoxOptions options = 0,
                                         string helpFilePath = @"",
                                         HelpNavigator navigator = 0,
-                                        object param = null,
+                                        object? param = null,
                                         bool? showCtrlCopy = null,
-                                        Font messageBoxTypeface = null,
-                                        Image customImageIcon = null)
+                                        Font? messageBoxTypeface = null,
+                                        Image? customImageIcon = null)
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
                              new(helpFilePath, navigator, param), showCtrlCopy,
                              messageBoxTypeface, customImageIcon, null, Color.Empty,
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                             [Color.Empty, Color.Empty, Color.Empty, Color.Empty],
                              null, null, null, null, string.Empty,
                              string.Empty, string.Empty, string.Empty);
 
@@ -223,22 +223,22 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                         MessageBoxOptions options = 0,
                                         string helpFilePath = @"",
                                         HelpNavigator navigator = 0,
-                                        object param = null,
+                                        object? param = null,
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null,
-                                        Font messageBoxTypeface = null,
-                                        Image customImageIcon = null,
+                                        Font? messageBoxTypeface = null,
+                                        Image? customImageIcon = null,
                                         bool? showHelpButton = null,
                                         Color? messageTextColour = null,
-                                        Color[] buttonTextColours = null,
+                                        Color[]? buttonTextColours = null,
                                         DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
                                         DialogResult? buttonThreeCustomDialogResult = null,
                                         DialogResult? buttonFourDialogResult = null,
-                                        string buttonOneCustomText = null,
-                                        string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null,
-                                        string buttonFourCustomText = null)
+                                        string? buttonOneCustomText = null,
+                                        string? buttonTwoCustomText = null,
+                                        string? buttonThreeCustomText = null,
+                                        string? buttonFourCustomText = null)
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,

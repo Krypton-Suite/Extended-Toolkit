@@ -30,10 +30,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
     public partial class MenuStripExistingComponentChooser : KryptonForm
     {
         #region Variables
-        private List<MenuStripPanelExtended?> _srcComponentList = new();
+        private List<MenuStripPanelExtended?> _srcComponentList = [];
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Control? SourceComponentContainer
         {
             set
@@ -53,11 +55,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<MenuStripPanelExtended>? SelectedComponents
         {
             get
             {
-                List<MenuStripPanelExtended?> tspe = new List<MenuStripPanelExtended?>();
+                List<MenuStripPanelExtended>? tspe = [];
 
                 if (klbSelected.Items.Count > 0)
                 {

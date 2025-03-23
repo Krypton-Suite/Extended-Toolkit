@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
         {
             SPPHRASEELEMENT[] array = new SPPHRASEELEMENT[words.Length];
             int num = Marshal.SizeOf(typeof(SPPHRASEELEMENT));
-            List<GCHandle> list = new List<GCHandle>();
+            List<GCHandle> list = [];
             coMem = Marshal.AllocCoTaskMem(num * array.Length);
             try
             {

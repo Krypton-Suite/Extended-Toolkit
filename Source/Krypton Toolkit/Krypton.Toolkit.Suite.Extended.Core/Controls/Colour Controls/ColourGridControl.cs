@@ -680,8 +680,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 {
                     if (CustomColours == null)
                     {
-                        CustomColours = new();
-                        CustomColours.Add(value);
+                        CustomColours =
+                        [
+                            value
+                        ];
                     }
                     else
                     {

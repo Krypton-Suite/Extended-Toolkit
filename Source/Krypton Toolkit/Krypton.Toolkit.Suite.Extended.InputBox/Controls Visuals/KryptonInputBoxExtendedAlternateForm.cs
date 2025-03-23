@@ -239,9 +239,9 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="hintText">The hint text.</param>
         /// <param name="startPosition">The start position.</param>
         public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information,
-            Image image = null, InputBoxLanguage language = InputBoxLanguage.English,
-            InputBoxButtons buttons = InputBoxButtons.Ok, InputBoxInputType type = InputBoxInputType.None, string[] listItems = null,
-            bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok",
+            Image? image = null, InputBoxLanguage language = InputBoxLanguage.English,
+            InputBoxButtons buttons = InputBoxButtons.Ok, InputBoxInputType type = InputBoxInputType.None, string[]? listItems = null,
+            bool showInTaskBar = false, Font? controlTypeface = null, Font? messageTypeface = null, string okText = "&Ok",
             string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
             FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation,
             DialogResult buttonOneResult = DialogResult.None, DialogResult buttonTwoResult = DialogResult.None,

@@ -30,7 +30,7 @@ using System.Globalization;
 
 namespace Examples
 {
-    public class OutlookGridPriceGroup : OutlookGridDefaultGroup
+    /*public class OutlookGridPriceGroup : OutlookGridDefaultGroup
     {
         private int _priceCode;
         private string _currency;
@@ -206,5 +206,5 @@ namespace Examples
             return _priceCode.CompareTo(priceOther) * orderModifier;
         }
         #endregion
-    }
+    }*/
 }

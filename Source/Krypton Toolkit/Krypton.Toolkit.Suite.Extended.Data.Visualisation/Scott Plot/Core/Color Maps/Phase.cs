@@ -11,7 +11,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public override (byte r, byte g, byte b)[] Rgbs => _rgbs;
 
-        private static readonly (byte, byte, byte)[] _rgbs = {
+        private static readonly (byte, byte, byte)[] _rgbs =
+        [
             ( 168, 120, 13 ),
             ( 169, 119, 15 ),
             ( 171, 118, 17 ),
@@ -268,7 +269,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             ( 164, 122, 13 ),
             ( 166, 121, 13 ),
             ( 168, 120, 13 )
-        };
+        ];
     }
 }
 

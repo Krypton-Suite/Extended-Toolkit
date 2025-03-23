@@ -153,6 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <value><c>true</c> if a snapshot image is available; otherwise, <c>false</c>.</value>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool HasSnapshot { get; protected set; }
 
         /// <summary>
@@ -160,7 +161,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <value>The image.</value>
         [Category("Appearance")]
-        [DefaultValue(typeof(Image), null)]
+        [DefaultValue(null)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual Image Image
         {
             get => _image;

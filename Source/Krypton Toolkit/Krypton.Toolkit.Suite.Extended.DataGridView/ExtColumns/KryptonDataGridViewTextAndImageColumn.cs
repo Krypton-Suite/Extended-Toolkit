@@ -227,6 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         internal Size ImageSize { get; private set; }
 
         #endregion
@@ -277,9 +278,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// </summary>
         /// <param name="obj">The object to compare</param>
         /// <returns>true if equal, false otherwise.</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return Text.Equals(obj.ToString());
+            return Text.Equals(obj?.ToString());
         }
 
         /// <summary>
@@ -298,7 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <returns></returns>
         public int CompareTo(TextAndImage other)
         {
-            return Text.CompareTo(other.Text);
+            return string.Compare(Text, other.Text, StringComparison.Ordinal);
         }
     }
 

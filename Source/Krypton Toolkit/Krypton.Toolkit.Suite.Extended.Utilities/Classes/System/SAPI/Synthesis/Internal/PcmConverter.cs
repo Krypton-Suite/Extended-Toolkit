@@ -65,8 +65,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         private const float _dHalfFilterLen = 0.0005f;
 
-        private static readonly int[] piPrimes = new int[12]
-        {
+        private static readonly int[] piPrimes =
+        [
             2,
             3,
             5,
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             29,
             31,
             37
-        };
+        ];
 
         internal bool PrepareConverter(ref WAVEFORMATEX inWavFormat, ref WAVEFORMATEX outWavFormat)
         {

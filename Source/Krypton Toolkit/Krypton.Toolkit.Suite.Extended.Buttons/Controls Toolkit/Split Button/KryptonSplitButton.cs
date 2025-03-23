@@ -263,7 +263,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             midPoint.X += rectangle.Width % 2;
 
-            Point[] arrow = new Point[] { new(midPoint.X - 2, midPoint.Y - 1), new(midPoint.X + 3, midPoint.Y - 1), new(midPoint.X, midPoint.Y + 2) };
+            Point[] arrow = [new(midPoint.X - 2, midPoint.Y - 1), new(midPoint.X + 3, midPoint.Y - 1), new(midPoint.X, midPoint.Y + 2)
+            ];
 
             graphics.FillPolygon(SystemBrushes.ControlText, arrow);
         }

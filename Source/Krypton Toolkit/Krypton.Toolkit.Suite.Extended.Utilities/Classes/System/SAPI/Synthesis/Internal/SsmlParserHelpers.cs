@@ -30,19 +30,19 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal static class SsmlParserHelpers
     {
-        private static readonly string[] _genderNames = new string[3]
-        {
+        private static readonly string[] _genderNames =
+        [
             "female",
             "male",
             "neutral"
-        };
+        ];
 
-        private static readonly VoiceGender[] _genders = new VoiceGender[3]
-        {
+        private static readonly VoiceGender[] _genders =
+        [
             VoiceGender.Female,
             VoiceGender.Male,
             VoiceGender.Neutral
-        };
+        ];
 
         internal static bool TryConvertAge(string sAge, out VoiceAge age)
         {

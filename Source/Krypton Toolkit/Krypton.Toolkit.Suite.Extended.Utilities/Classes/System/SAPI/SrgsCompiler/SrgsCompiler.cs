@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         internal static void CompileStream(XmlReader[] xmlReaders, string filename, Stream stream, bool fOutputCfg, Uri originalUri, string[] referencedAssemblies, string keyFile)
         {
             int num = xmlReaders.Length;
-            List<CustomGrammar.CfgResource> cfgResources = new List<CustomGrammar.CfgResource>();
+            List<CustomGrammar.CfgResource> cfgResources = [];
             CustomGrammar customGrammar = new CustomGrammar();
             for (int i = 0; i < num; i++)
             {
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
         internal static void CompileStream(SrgsDocument srgsGrammar, string filename, Stream stream, bool fOutputCfg, string[] referencedAssemblies, string keyFile)
         {
             ISrgsParser srgsParser = new SrgsDocumentParser(srgsGrammar.Grammar);
-            List<CustomGrammar.CfgResource> cfgResources = new List<CustomGrammar.CfgResource>();
+            List<CustomGrammar.CfgResource> cfgResources = [];
             StringBuilder stringBuilder = new StringBuilder();
             srgsGrammar.Grammar.Validate();
             CultureInfo culture;

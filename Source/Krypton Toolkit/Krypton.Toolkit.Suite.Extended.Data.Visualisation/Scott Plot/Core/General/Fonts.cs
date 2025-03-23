@@ -65,7 +65,7 @@
         {
             var installedFonts = GetInstalledFonts();
 
-            string[] preferredFonts = { "Roboto Mono", "Consolas", "DejaVu Sans Mono", "Courier" };
+            string[] preferredFonts = ["Roboto Mono", "Consolas", "DejaVu Sans Mono", "Courier"];
             foreach (var preferredFont in preferredFonts)
             {
                 if (installedFonts.Contains(preferredFont))
@@ -81,7 +81,7 @@
         {
             var installedFonts = GetInstalledFonts();
 
-            string[] preferredFonts = { "Times New Roman", "DejaVu Serif", "Times" };
+            string[] preferredFonts = ["Times New Roman", "DejaVu Serif", "Times"];
             foreach (var preferredFont in preferredFonts)
             {
                 if (installedFonts.Contains(preferredFont))

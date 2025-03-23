@@ -1,4 +1,5 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿#pragma warning disable CS1570 // XML comment has badly formed XML
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class AxisManager
     {
@@ -12,17 +13,17 @@
         /// <summary>
         /// Horizontal axes
         /// </summary>
-        internal List<IXAxis> XAxes { get; } = new();
+        internal List<IXAxis> XAxes { get; } = [];
 
         /// <summary>
         /// Vertical axes
         /// </summary>
-        internal List<IYAxis> YAxes { get; } = new();
+        internal List<IYAxis> YAxes { get; } = [];
 
         /// <summary>
         /// Panels take up spce on one side of the data area (like a colorbar)
         /// </summary>
-        internal List<IPanel> Panels { get; } = new();
+        internal List<IPanel> Panels { get; } = [];
 
         /// <summary>
         /// A special panel
@@ -43,7 +44,7 @@
         /// Returns all axes, panels, and the title
         /// </summary>
         /// <returns></returns>
-        internal IPanel[] GetPanels() => GetAxes().Concat(Panels).Concat(new[] { Title }).ToArray();
+        internal IPanel[] GetPanels() => GetAxes().Concat(Panels).Concat([Title]).ToArray();
 
         /// <summary>
         /// The primary horizontal axis above the plot
@@ -68,12 +69,12 @@
         /// <summary>
         /// All grids
         /// </summary>
-        public List<IGrid> Grids { get; } = new();
+        public List<IGrid> Grids { get; } = [];
 
         /// <summary>
         /// Rules that are applied before each render
         /// </summary>
-        public List<IAxisRule> Rules { get; } = new();
+        public List<IAxisRule> Rules { get; } = [];
 
         /// <summary>
         /// Contains state and logic for axes

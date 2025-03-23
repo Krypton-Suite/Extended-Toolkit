@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     /// <summary>
@@ -91,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             {
                 if (value is < 0 or > 255)
                 {
-                    object[] str = new object[] { value };
+                    object[] str = [value];
                     throw new ArgumentOutOfRangeException("value", $"A value of '{str}' is not valid for 'Fade'. 'Fade' must be between 0 and 255.");
                 }
 
@@ -132,6 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// all the implementation.</note></para>
         /// </remarks>
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Font Font { get => base.Font; set => base.Font = value; }
 
         /// <summary>
@@ -166,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Browsable(false),
          EditorBrowsable(EditorBrowsableState.Always),
          Bindable(false)]
-        public override string Text => $"{Value.ToString(CultureInfo.CurrentCulture)}%";
+        public override string Text => $@"{Value.ToString(CultureInfo.CurrentCulture)}%";
 
         #endregion
 

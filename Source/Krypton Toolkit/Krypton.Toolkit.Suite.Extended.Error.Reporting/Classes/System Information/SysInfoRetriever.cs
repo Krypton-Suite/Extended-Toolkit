@@ -47,18 +47,19 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             _sysInfoSearcher = new ManagementObjectSearcher($"SELECT * FROM {_sysInfoQuery.QueryText}");
             _sysInfoResult = new SysInfoResult(_sysInfoQuery.Name);
 
-            foreach (ManagementObject managementObject in _sysInfoSearcher.Get())
+            foreach (var o in _sysInfoSearcher.Get())
             {
+                var managementObject = (ManagementObject)o;
                 _sysInfoResult.AddNode(managementObject.GetPropertyValue(_sysInfoQuery.DisplayField).ToString().Trim());
                 _sysInfoResult.AddChildren(GetChildren(managementObject));
             }
             return _sysInfoResult;
         }
 
-        private IEnumerable<SysInfoResult> GetChildren(ManagementBaseObject managementObject)
+        private IEnumerable<SysInfoResult?> GetChildren(ManagementBaseObject managementObject)
         {
-            SysInfoResult childResult = null;
-            ICollection<SysInfoResult> childList = new List<SysInfoResult>();
+            SysInfoResult? childResult = null;
+            ICollection<SysInfoResult?> childList = new List<SysInfoResult?>();
 
             foreach (var propertyData in managementObject.Properties)
             {

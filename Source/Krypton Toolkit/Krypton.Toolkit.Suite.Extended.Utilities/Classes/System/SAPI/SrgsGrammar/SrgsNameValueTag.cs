@@ -88,10 +88,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             {
                 if (Value is string)
                 {
-                    stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "\"{0}\"", new object[1]
-                    {
+                    stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "\"{0}\"", [
                         Value.ToString()
-                    });
+                    ]);
                 }
                 else
                 {
@@ -135,10 +134,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
             {
                 if (_value is string)
                 {
-                    stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "\"{0}\"", new object[1]
-                    {
+                    stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "\"{0}\"", [
                         _value.ToString()
-                    });
+                    ]);
                 }
                 else
                 {

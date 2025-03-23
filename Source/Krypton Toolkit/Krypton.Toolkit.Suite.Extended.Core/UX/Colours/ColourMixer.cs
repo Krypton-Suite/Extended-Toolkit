@@ -522,30 +522,36 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int AlphaChannelValue
         {
             get => _alphaChannelValue;
             set => _alphaChannelValue = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int RedColourChannelValue
         {
             get => _redColourChannelValue;
             set => _redColourChannelValue = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int GreenColourChannelValue
         {
             get => _greenColourChannelValue;
             set => _greenColourChannelValue = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int BlueColourChannelValue
         {
             get => _blueColourChannelValue;
             set => _blueColourChannelValue = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool PaletteColourSelector
         {
             get => _paletteColourSelector;
@@ -798,7 +804,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private string DeciamlToHexadeciaml(int number)
         {
-            string[] hexvalues = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" };
+            string[] hexvalues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
 
             string result = null, final = null;
 

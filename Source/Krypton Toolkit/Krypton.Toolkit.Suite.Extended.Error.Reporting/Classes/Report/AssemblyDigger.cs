@@ -32,13 +32,13 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     /// </summary>
     internal class AssemblyDigger : IAssemblyDigger
     {
-        private static Assembly _assembly;
-        private static IEnumerable<AssemblyRef> _assemblyRefs;
+        private static Assembly? _assembly;
+        private static IEnumerable<AssemblyRef>? _assemblyRefs;
 
         ///<summary>Initialise with root/main assembly</summary>
-        public AssemblyDigger(Assembly assembly)
+        public AssemblyDigger(Assembly? assembly)
         {
-            var isSame = _assembly != null && _assembly.FullName == assembly.FullName;
+            var isSame = _assembly != null && _assembly.FullName == assembly?.FullName;
 
             // a little dance to be able to memoize without becoming a singleton (ioc would make this easier too) 
             // this ensures that, even with new objects created, if passed the same assembly twice, the result is memoized
@@ -51,10 +51,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// Returns all referenced assemblies in a customized array used in <see cref="ReportModel"/>
         /// Memoized
         /// </summary>
-        public IEnumerable<AssemblyRef> GetAssemblyRefs()
-        {
-            return _assemblyRefs ?? (_assemblyRefs =
-                from a in _assembly.GetReferencedAssemblies()
+        public IEnumerable<AssemblyRef> GetAssemblyRefs() =>
+            _assemblyRefs ??= from a in _assembly?.GetReferencedAssemblies()
                     .Concat(new List<AssemblyName>
                     {
                         _assembly.GetName() // ensure we add the root assembly
@@ -64,7 +62,6 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
                 {
                     Name = a.Name,
                     Version = a.Version.ToString()
-                });
-        }
+                };
     }
 }

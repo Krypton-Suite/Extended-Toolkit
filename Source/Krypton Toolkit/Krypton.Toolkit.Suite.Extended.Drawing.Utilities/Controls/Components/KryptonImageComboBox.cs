@@ -35,7 +35,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ImageList ImageList { get => _images; set => _images = value; }
+
         #endregion
 
         #region Constructor

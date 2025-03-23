@@ -63,7 +63,7 @@
 
         public List<PixelColumn> GetPixelColumns(IAxes axes)
         {
-            List<PixelColumn> cols = new();
+            List<PixelColumn> cols = [];
 
             // ensure the same i1 isn't sampled twice
             int latIndex1 = int.MinValue;
