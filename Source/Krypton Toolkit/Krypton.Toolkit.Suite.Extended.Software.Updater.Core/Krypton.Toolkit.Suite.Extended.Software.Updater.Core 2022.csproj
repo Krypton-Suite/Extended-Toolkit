@@ -46,7 +46,7 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Core.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Core.LTS.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 
@@ -102,13 +102,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Canary" Version="80.23.10.296-beta" />
+				<PackageReference Include="Krypton.Docking.LTS.Canary" Version="85.25.3.83-beta" />
 
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.10.296-beta" />
+				<PackageReference Include="Krypton.Toolkit.LTS.Canary" Version="85.25.3.83-beta" />
 
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="80.23.10.296-beta" />
+				<PackageReference Include="Krypton.Ribbon.LTS.Canary" Version="85.25.3.83-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="80.23.10.296-beta" />
+				<PackageReference Include="Krypton.Navigator.LTS.Canary" Version="85.25.3.83-beta" />
 			</ItemGroup>
 		</When>
 
@@ -206,7 +206,7 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
-		<PackageReference Include="WindowsAPICodePack" Version="8.0.4" />
+		<PackageReference Include="WindowsAPICodePack" Version="8.0.6" />
 	</ItemGroup>
 
 	<ItemGroup>

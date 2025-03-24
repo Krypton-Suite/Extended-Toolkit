@@ -43,7 +43,7 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Tools.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Tools.LTS.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 

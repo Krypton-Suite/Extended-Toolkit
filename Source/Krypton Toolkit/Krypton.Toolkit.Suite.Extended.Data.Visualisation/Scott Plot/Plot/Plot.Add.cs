@@ -308,7 +308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return plottable;
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Create a polygon to fill the area between two Y curves that share the same X positions.
         /// </summary>
         public Polygon AddFill(double[] xs, double[] ys1, double[] ys2, Color? color = null)
@@ -325,7 +325,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
             Add(plottable);
             return plottable;
-        }
+        }*/
 
         /// <summary>
         /// Create a polygon to fill the area between Y values of two curves.

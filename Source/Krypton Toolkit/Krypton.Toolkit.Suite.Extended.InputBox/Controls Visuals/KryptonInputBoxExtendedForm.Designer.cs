@@ -141,7 +141,6 @@
             // 
             // kdtpResponse
             // 
-            this.kdtpResponse.CornerRoundingRadius = -1F;
             this.kdtpResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kdtpResponse.Location = new System.Drawing.Point(0, 0);
             this.kdtpResponse.Name = "kdtpResponse";
@@ -150,7 +149,6 @@
             // 
             // kdudResponse
             // 
-            this.kdudResponse.CornerRoundingRadius = -1F;
             this.kdudResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kdudResponse.Location = new System.Drawing.Point(0, 0);
             this.kdudResponse.Name = "kdudResponse";

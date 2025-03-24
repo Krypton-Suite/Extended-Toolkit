@@ -43,7 +43,7 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Themes.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Themes.LTS.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 

@@ -44,7 +44,7 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.TaskDialogs.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.TaskDialogs.LTS.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 

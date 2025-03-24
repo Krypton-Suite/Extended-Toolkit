@@ -46,7 +46,7 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Effects.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Effects.LTS.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 
@@ -96,7 +96,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="80.23.10.296-beta" />
+				<PackageReference Include="Krypton.Toolkit.LTS.Canary" Version="85.25.3.83-beta" />
 			</ItemGroup>
 		</When>
 

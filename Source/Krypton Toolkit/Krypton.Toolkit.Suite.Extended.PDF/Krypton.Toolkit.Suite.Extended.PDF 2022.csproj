@@ -44,7 +44,7 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.PDF.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.PDF.LTS.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 
