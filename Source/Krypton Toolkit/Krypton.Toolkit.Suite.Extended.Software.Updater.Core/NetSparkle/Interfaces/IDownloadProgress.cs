@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// <param name="sender">sender of the progress update</param>
         /// <param name="args">used to deliver info on download progress (e.g. 
         /// total bytes downloaded)</param>
-        void OnDownloadProgressChanged(object sender, ItemDownloadProgressEventArgs args);
+        void OnDownloadProgressChanged(object? sender, ItemDownloadProgressEventArgs args);
 
         /// <summary>
         /// Close the download progress UI

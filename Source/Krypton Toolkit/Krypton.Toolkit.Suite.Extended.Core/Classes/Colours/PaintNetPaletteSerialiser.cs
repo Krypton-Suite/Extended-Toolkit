@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 while (!reader.EndOfStream)
                 {
-                    string line;
+                    string? line;
 
                     line = reader.ReadLine();
                     if (!string.IsNullOrEmpty(line) && !line.StartsWith(";") && line.Length == 8)

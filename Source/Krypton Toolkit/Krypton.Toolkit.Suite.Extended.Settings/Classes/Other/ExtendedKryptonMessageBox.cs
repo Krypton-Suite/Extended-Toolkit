@@ -1586,7 +1586,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             return new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
         }
 
-        private void button_keyDown(object sender, KeyEventArgs e)
+        private void button_keyDown(object? sender, KeyEventArgs e)
         {
             // Escape key kills the dialog if we allow it to be closed
             if (e.KeyCode == Keys.Escape && ControlBox)
@@ -1628,12 +1628,12 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         #endregion
 
         #region Events
-        private void DoNotShowAgainOption_CheckedChanged(object sender, EventArgs e)
+        private void DoNotShowAgainOption_CheckedChanged(object? sender, EventArgs e)
         {
             DoNotShowAgainOptionResult = _doNotShowAgainOption.Checked;
         }
 
-        private void TimeOutTimer_Tick(object sender, EventArgs e)
+        private void TimeOutTimer_Tick(object? sender, EventArgs e)
         {
             //? TODO: Update button text
             while (TimeOut > 0)

@@ -86,5 +86,5 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
     /// <summary>
     /// Represents the method which responds to a <see cref="PopupCancel"/> event.
     /// </summary>
-    public delegate void PopupCancelEventHandler(object sender, PopupCancelEventArgs e);
+    public delegate void PopupCancelEventHandler(object? sender, PopupCancelEventArgs e);
 }

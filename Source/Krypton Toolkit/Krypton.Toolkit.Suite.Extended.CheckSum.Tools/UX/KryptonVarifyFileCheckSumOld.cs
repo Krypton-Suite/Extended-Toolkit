@@ -455,7 +455,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         #endregion
 
         #region Hashing Work
-        private void bgMD5Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgMD5Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -493,7 +493,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             UpdateStatus($"Computing hash for: {FileNameWithoutExtension}");
         }
 
-        private void bgSHA1Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgSHA1Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -529,7 +529,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void bgSHA256Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgSHA256Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -565,7 +565,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void bgSHA384Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgSHA384Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -601,7 +601,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void bgSHA512Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgSHA512Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -637,7 +637,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void bgRIPEMD160Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgRIPEMD160Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
 #if !NETCOREAPP3_0_OR_GREATER
             string filePath = e.Argument.ToString();
@@ -675,14 +675,14 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 #endif
         }
 
-        private void ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             kwlCalculatedCheckSum.Text = "Please wait...";
 
             tspbHashProgress.Value = e.ProgressPercentage;
         }
 
-        private void RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             kwlCalculatedCheckSum.Text = e.Result.ToString();
 
@@ -696,7 +696,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
         private string UpdateStatus(string status) => tsslStatus.Text = status;
 
-        private void kbtnValidate_Click(object sender, EventArgs e)
+        private void kbtnValidate_Click(object? sender, EventArgs e)
         {
             if (HelperMethods.IsValid(kwlCalculatedCheckSum.Text, ktxtVarifyCheckSum.Text.ToUpper()))
             {
@@ -716,7 +716,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void ktxtVarifyCheckSum_TextChanged(object sender, EventArgs e)
+        private void ktxtVarifyCheckSum_TextChanged(object? sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text))
             {
@@ -730,7 +730,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             clearTextBoxToolStripMenuItem.Enabled = !string.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text);
         }
 
-        private void kbtnCompute_Click(object sender, EventArgs e)
+        private void kbtnCompute_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -748,14 +748,14 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        private void kbtnCancel_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void kcmbAlgorithimType_SelectedIndexChanged(object sender, EventArgs e) => kbtnCompute.Enabled = true; // MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
+        private void kcmbAlgorithimType_SelectedIndexChanged(object? sender, EventArgs e) => kbtnCompute.Enabled = true; // MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
 
-        private void kbtnImportHash_Click(object sender, EventArgs e)
+        private void kbtnImportHash_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -783,7 +783,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void clearTextBoxToolStripMenuItem_Click(object sender, EventArgs e)
+        private void clearTextBoxToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             DialogResult result = KryptonMessageBox.Show("Do you want to clear the textbox of its contents?", "Clear Hash Box", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
@@ -830,6 +830,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void kcmbAlgorithimType_TextChanged(object sender, EventArgs e) => kbtnCompute.Enabled = string.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
+        private void kcmbAlgorithimType_TextChanged(object? sender, EventArgs e) => kbtnCompute.Enabled = string.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
     }
 }

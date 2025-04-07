@@ -245,12 +245,12 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #endregion
 
         #region Event Handlers
-        private void ToastNotification_GotFocus(object sender, EventArgs e)
+        private void ToastNotification_GotFocus(object? sender, EventArgs e)
         {
             kbtnDismiss.Focus();
         }
 
-        private void ToastNotification_Resize(object sender, EventArgs e)
+        private void ToastNotification_Resize(object? sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
             {
@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
         }
 
-        private void KryptonToastNotificationVersion2_Load(object sender, EventArgs e)
+        private void KryptonToastNotificationVersion2_Load(object? sender, EventArgs e)
         {
             Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
 
@@ -287,7 +287,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
         }
 
-        private void kbtnAction_Click(object sender, EventArgs e)
+        private void kbtnAction_Click(object? sender, EventArgs e)
         {
             switch (_actionButtonType)
             {
@@ -317,7 +317,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
         }
 
-        private void kbtnDismiss_Click(object sender, EventArgs e)
+        private void kbtnDismiss_Click(object? sender, EventArgs e)
         {
             FadeOutAndClose();
         }

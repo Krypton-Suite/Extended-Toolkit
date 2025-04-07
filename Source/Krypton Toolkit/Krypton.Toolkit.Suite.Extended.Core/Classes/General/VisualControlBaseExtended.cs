@@ -30,7 +30,7 @@ using static Krypton.Toolkit.HeaderValuesBase;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
-    // <summary>
+    /// <summary>
     /// Base class used for implementation of actual controls.
     /// </summary>
     [ToolboxItem(false), DesignerCategory("code")]
@@ -734,7 +734,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An EventArgs containing event data.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        protected virtual void OnButtonSpecChanged(object sender, EventArgs e)
+        protected virtual void OnButtonSpecChanged(object? sender, EventArgs e)
         {
             System.Diagnostics.Debug.Assert(e != null);
 
@@ -768,7 +768,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
-        protected virtual void OnPaletteNeedPaint(object sender, NeedLayoutEventArgs e)
+        protected virtual void OnPaletteNeedPaint(object? sender, NeedLayoutEventArgs e)
         {
             // Need to recalculate anything relying on the palette
             DirtyPaletteCounter++;
@@ -781,7 +781,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        protected virtual void OnNeedPaint(object sender, NeedLayoutEventArgs e)
+        protected virtual void OnNeedPaint(object? sender, NeedLayoutEventArgs e)
         {
             System.Diagnostics.Debug.Assert(e != null);
 
@@ -1146,7 +1146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="sender">Source of the event.</param>
         /// <param name="e">An EventArgs that contains the event data.</param>
-        protected virtual void OnGlobalPaletteChanged(object sender, EventArgs e)
+        protected virtual void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             // We only care if we are using the global palette
             if (PaletteMode == PaletteMode.Global)
@@ -1174,7 +1174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="sender">Source of the event.</param>
         /// <param name="e">Event details.</param>
-        protected virtual void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        protected virtual void OnUserPreferenceChanged(object? sender, UserPreferenceChangedEventArgs e)
         {
             // Need to recalculate anything relying on the palette
             DirtyPaletteCounter++;
@@ -1285,7 +1285,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void OnBaseChanged(object sender, EventArgs e)
+        private void OnBaseChanged(object? sender, EventArgs e)
         {
             // Change in base renderer or base palette require we fetch the latest renderer
             Renderer = _palette.GetRenderer();
@@ -1354,7 +1354,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             BeginInvoke(_refreshCall);
         }
 
-        private void OnContextMenuStripOpening(object sender, CancelEventArgs e)
+        private void OnContextMenuStripOpening(object? sender, CancelEventArgs e)
         {
             // Get the actual strip instance
             ContextMenuStrip cms = base.ContextMenuStrip;
@@ -1363,7 +1363,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             cms.Renderer = CreateToolStripRenderer();
         }
 
-        private void OnKryptonContextMenuDisposed(object sender, EventArgs e)
+        private void OnKryptonContextMenuDisposed(object? sender, EventArgs e)
         {
             // When the current krypton context menu is disposed, we should remove 
             // it to prevent it being used again, as that would just throw an exception 
@@ -1371,12 +1371,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             KryptonContextMenu = null;
         }
 
-        private void OnContextMenuClosed(object sender, ToolStripDropDownClosedEventArgs e)
+        private void OnContextMenuClosed(object? sender, ToolStripDropDownClosedEventArgs e)
         {
             ContextMenuClosed();
         }
 
-        private void OnShowToolTip(object sender, ToolTipEventArgs e)
+        private void OnShowToolTip(object? sender, ToolTipEventArgs e)
         {
             if (!IsDisposed)
             {
@@ -1410,13 +1410,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void OnCancelToolTip(object sender, EventArgs e)
+        private void OnCancelToolTip(object? sender, EventArgs e)
         {
             // Remove any currently showing tooltip
             _visualBasePopupToolTip?.Dispose();
         }
 
-        private void OnVisualPopupToolTipDisposed(object sender, EventArgs e)
+        private void OnVisualPopupToolTipDisposed(object? sender, EventArgs e)
         {
             // Unhook events from the specific instance that generated event
             VisualPopupToolTip popupToolTip = (VisualPopupToolTip)sender;

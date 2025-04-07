@@ -213,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             return listText;
         }
 
-        private void Items_CheckBoxCheckedChanged(object sender, EventArgs e)
+        private void Items_CheckBoxCheckedChanged(object? sender, EventArgs e)
         {
             OnCheckBoxCheckedChanged(sender, e);
         }
@@ -246,7 +246,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
         }
 
-        private void CheckBoxProperties_PropertyChanged(object sender, EventArgs e)
+        private void CheckBoxProperties_PropertyChanged(object? sender, EventArgs e)
         {
             foreach (KryptonCheckBoxComboBoxItem item in CheckBoxItems)
             {
@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         #region Protected
 
-        protected void OnCheckBoxCheckedChanged(object sender, EventArgs e)
+        protected void OnCheckBoxCheckedChanged(object? sender, EventArgs e)
         {
             string ListText = GetCsvText(true);
             // The DropDownList style seems to require that the text

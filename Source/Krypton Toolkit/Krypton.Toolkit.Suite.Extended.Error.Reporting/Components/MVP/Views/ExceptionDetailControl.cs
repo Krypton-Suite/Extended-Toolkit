@@ -214,7 +214,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             //? klvExceptions.SelectedIndexChanged += ExceptionsSelectedIndexChanged;
         }
 
-        private void ExceptionsSelectedIndexChanged(object sender, EventArgs e)
+        private void ExceptionsSelectedIndexChanged(object? sender, EventArgs e)
         {
             var displayException = CapturedException;
             foreach (ListViewItem lvi in klvExceptions.Items)

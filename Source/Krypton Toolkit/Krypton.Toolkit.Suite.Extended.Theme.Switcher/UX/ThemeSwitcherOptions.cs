@@ -509,63 +509,63 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         private void LocateTheme(string palettePath) => Process.Start("explorer.exe", palettePath);
         #endregion
 
-        private void kchkImport_CheckedChanged(object sender, EventArgs e)
+        private void kchkImport_CheckedChanged(object? sender, EventArgs e)
         {
             SetModified(true);
         }
 
-        private void kchkReset_CheckedChanged(object sender, EventArgs e)
+        private void kchkReset_CheckedChanged(object? sender, EventArgs e)
         {
             SetModified(true);
         }
 
-        private void kchkAskMe_CheckedChanged(object sender, EventArgs e)
+        private void kchkAskMe_CheckedChanged(object? sender, EventArgs e)
         {
             SetModified(true);
         }
 
-        private void kbtnImport_Click(object sender, EventArgs e)
+        private void kbtnImport_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void kbtnLocate_Click(object sender, EventArgs e) => LocateTheme("");
+        private void kbtnLocate_Click(object? sender, EventArgs e) => LocateTheme("");
 
-        private void kbtnDownload_Click(object sender, EventArgs e)
+        private void kbtnDownload_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void kbtnSubmit_Click(object sender, EventArgs e)
+        private void kbtnSubmit_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void kbtnRequestTheme_Click(object sender, EventArgs e)
+        private void kbtnRequestTheme_Click(object? sender, EventArgs e)
         {
             DebugUtilities.NotImplemented(@"This feature has not been implemented yet.");
         }
 
-        private void kbtnResetDarkAndLightTheme_Click(object sender, EventArgs e)
+        private void kbtnResetDarkAndLightTheme_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void kbtnReset_Click(object sender, EventArgs e)
+        private void kbtnReset_Click(object? sender, EventArgs e)
         {
             _settingsManager.ResetSettings();
 
             SetModified(false);
         }
 
-        private void kbtnApply_Click(object sender, EventArgs e)
+        private void kbtnApply_Click(object? sender, EventArgs e)
         {
             _settingsManager.SaveSettings();
 
             SetModified(false);
         }
 
-        private void ThemeSwitcherOptions_Load(object sender, EventArgs e)
+        private void ThemeSwitcherOptions_Load(object? sender, EventArgs e)
         {
             ThemeManager.SetPaletteTheme(_settingsManager.GetSelectedTheme(), kcmbPaletteMode);
 

@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             KryptonManager.GlobalPaletteChanged += KryptonManager_GlobalPaletteChanged;
         }
 
-        private void KryptonManager_GlobalPaletteChanged(object sender, EventArgs e)
+        private void KryptonManager_GlobalPaletteChanged(object? sender, EventArgs e)
         {
             RefreshPalette();
         }
@@ -285,7 +285,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             base.OnControlRemoved(e);
         }
 
-        private void TabPage_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        private void TabPage_Paint(object? sender, System.Windows.Forms.PaintEventArgs e)
         {
             TabPage TP = (TabPage)sender;
 

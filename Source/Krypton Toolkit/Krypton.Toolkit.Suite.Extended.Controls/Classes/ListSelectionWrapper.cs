@@ -240,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
         }
 
-        private void ListSelectionWrapper_ListChanged(object sender, ListChangedEventArgs e)
+        private void ListSelectionWrapper_ListChanged(object? sender, ListChangedEventArgs e)
         {
             switch (e.ListChangedType)
             {

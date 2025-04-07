@@ -1988,12 +1988,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void ColoursCollectionChangedHandler(object sender, ColourCollectionEventArgs e)
+        private void ColoursCollectionChangedHandler(object? sender, ColourCollectionEventArgs e)
         {
             RefreshColours();
         }
 
-        private void ColoursCollectionItemReplacedHandler(object sender, ColourCollectionEventArgs e)
+        private void ColoursCollectionItemReplacedHandler(object? sender, ColourCollectionEventArgs e)
         {
             ColourCollection collection;
             int index;

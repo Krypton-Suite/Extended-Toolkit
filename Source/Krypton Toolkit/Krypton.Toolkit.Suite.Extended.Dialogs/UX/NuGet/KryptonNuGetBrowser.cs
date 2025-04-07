@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             InitializeComponent();
         }
 
-        private void KryptonNuGetBrowser_Load(object sender, EventArgs e)
+        private void KryptonNuGetBrowser_Load(object? sender, EventArgs e)
         {
             ApplicationUtilities.UnderConstruction();
         }

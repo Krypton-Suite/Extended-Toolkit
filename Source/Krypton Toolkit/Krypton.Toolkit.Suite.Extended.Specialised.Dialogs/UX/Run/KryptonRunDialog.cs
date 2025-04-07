@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
         /// <param name="value">if set to <c>true</c> [value].</param>
         private void EnableRunButton(bool value) => kbtnRun.Enabled = value;
 
-        private void kcmdRunTaskAsAdministrator_Execute(object sender, EventArgs e)
+        private void kcmdRunTaskAsAdministrator_Execute(object? sender, EventArgs e)
         {
             kbtnRun.Values.UseAsUACElevationButton = true;
 
@@ -188,7 +188,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
         }
 
-        private void kcmdRunTaskAsNormalUser_Execute(object sender, EventArgs e)
+        private void kcmdRunTaskAsNormalUser_Execute(object? sender, EventArgs e)
         {
             kbtnRun.Values.UseAsUACElevationButton = false;
 
@@ -209,7 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
         }
 
-        private void kbtnRun_Click(object sender, EventArgs e)
+        private void kbtnRun_Click(object? sender, EventArgs e)
         {
             if (kbtnRun.Values.UseAsUACElevationButton)
             {

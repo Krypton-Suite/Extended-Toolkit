@@ -304,7 +304,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
-        private void LoadingCircle_Resize(object sender, EventArgs e)
+        private void LoadingCircle_Resize(object? sender, EventArgs e)
         {
             GetControlCenterPoint();
         }
@@ -314,7 +314,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
-        private void aTimer_Tick(object sender, EventArgs e)
+        private void aTimer_Tick(object? sender, EventArgs e)
         {
             _mProgressValue = ++_mProgressValue % _mNumberOfSpoke;
             Invalidate();

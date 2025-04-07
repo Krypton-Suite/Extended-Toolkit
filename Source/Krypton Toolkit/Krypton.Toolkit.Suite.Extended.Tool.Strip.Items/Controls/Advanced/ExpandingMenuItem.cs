@@ -142,9 +142,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #endregion
 
         #region Event Handlers
-        private void ExpandItem_Click(object sender, EventArgs e) => ExpandItems();
+        private void ExpandItem_Click(object? sender, EventArgs e) => ExpandItems();
 
-        private void Timer_Tick(object sender, EventArgs e) => ExpandItems();
+        private void Timer_Tick(object? sender, EventArgs e) => ExpandItems();
         #endregion
 
         #region Overrides

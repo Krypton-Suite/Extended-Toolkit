@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         #endregion
 
         #region Event Handlers
-        private void NodeViewer_Load(object sender, EventArgs e)
+        private void NodeViewer_Load(object? sender, EventArgs e)
         {
             //create a new NetworkNodeBrowser object, and get the
             //list of network computers it found, and add each
@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
         }
 
-        private void kbtnExportNodeList_Click(object sender, EventArgs e)
+        private void kbtnExportNodeList_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -171,12 +171,12 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
         }
 
-        private void kbtnOk_Click(object sender, EventArgs e)
+        private void kbtnOk_Click(object? sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
         }
 
-        private void kcmbNodeList_SelectedIndexChanged(object sender, EventArgs e)
+        private void kcmbNodeList_SelectedIndexChanged(object? sender, EventArgs e)
         {
             kbtnExportNodeList.Enabled = true;
         }

@@ -70,12 +70,12 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         }
         #endregion
 
-        private void KryptonFileMonitor_FormClosed(object sender, FormClosedEventArgs e)
+        private void KryptonFileMonitor_FormClosed(object? sender, FormClosedEventArgs e)
         {
             RaiseCancel();
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        private void kbtnCancel_Click(object? sender, EventArgs e)
         {
             RaiseCancel();
         }

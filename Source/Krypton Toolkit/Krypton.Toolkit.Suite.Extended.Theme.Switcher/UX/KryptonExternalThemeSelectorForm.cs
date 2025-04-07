@@ -111,19 +111,19 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             }
         }
 
-        private void KryptonExternalThemeSelectorForm_Load(object sender, EventArgs e)
+        private void KryptonExternalThemeSelectorForm_Load(object? sender, EventArgs e)
         {
 
         }
 
-        private void bsaReset_Click(object sender, EventArgs e)
+        private void bsaReset_Click(object? sender, EventArgs e)
         {
             ktxtThemeLocation.Text = string.Empty;
 
             bsaReset.Enabled = ButtonEnabled.False;
         }
 
-        private void bsaBrowse_Click(object sender, EventArgs e)
+        private void bsaBrowse_Click(object? sender, EventArgs e)
         {
             switch (_fileDialogType)
             {
@@ -229,12 +229,12 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             }
         }
 
-        private void klbThemesList_SelectedIndexChanged(object sender, EventArgs e)
+        private void klbThemesList_SelectedIndexChanged(object? sender, EventArgs e)
         {
 
         }
 
-        private void klvThemesList_SelectedIndexChanged(object sender, EventArgs e)
+        private void klvThemesList_SelectedIndexChanged(object? sender, EventArgs e)
         {
             kcpbCustom.Import(klvThemesList.SelectedItems.ToString(), kchkSilent.Checked);
 

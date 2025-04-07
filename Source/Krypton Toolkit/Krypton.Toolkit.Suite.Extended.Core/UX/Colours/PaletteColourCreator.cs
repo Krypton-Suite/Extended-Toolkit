@@ -880,7 +880,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
         #endregion
 
-        private void PaletteColourCreator_Load(object sender, EventArgs e)
+        private void PaletteColourCreator_Load(object? sender, EventArgs e)
         {
             _colourSettingsManager.ResetToDefaults();
 
@@ -909,78 +909,78 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
 
         #region Event Handlers
-        private void pbxBaseColour_MouseEnter(object sender, EventArgs e)
+        private void pbxBaseColour_MouseEnter(object? sender, EventArgs e)
         {
             ttInformation.SetToolTip(pbxBaseColour, $"Base Colour\nARGB: ({pbxBaseColour.BackColor.A.ToString()}, {pbxBaseColour.BackColor.R.ToString()}, {pbxBaseColour.BackColor.G.ToString()}, {pbxBaseColour.BackColor.B.ToString()})\nRGB: ({pbxBaseColour.BackColor.R.ToString()}, {pbxBaseColour.BackColor.G.ToString()}, {pbxBaseColour.BackColor.B.ToString()})\nHexadecimal Value: #{_conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxBaseColour.BackColor.R), Convert.ToInt32(pbxBaseColour.BackColor.G), Convert.ToInt32(pbxBaseColour.BackColor.B)).ToUpper()}");
         }
 
-        private void pbxDarkColour_MouseEnter(object sender, EventArgs e)
+        private void pbxDarkColour_MouseEnter(object? sender, EventArgs e)
         {
             ttInformation.SetToolTip(pbxDarkColour, $"Dark Colour\nARGB: ({pbxDarkColour.BackColor.A.ToString()}, {pbxDarkColour.BackColor.R.ToString()}, {pbxDarkColour.BackColor.G.ToString()}, {pbxDarkColour.BackColor.B.ToString()})\nRGB: ({pbxDarkColour.BackColor.R.ToString()}, {pbxDarkColour.BackColor.G.ToString()}, {pbxDarkColour.BackColor.B.ToString()})\nHexadecimal Value: #{_conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxDarkColour.BackColor.R), Convert.ToInt32(pbxDarkColour.BackColor.G), Convert.ToInt32(pbxDarkColour.BackColor.B)).ToUpper()}\nHue: {pbxDarkColour.BackColor.GetHue().ToString()}\nSaturation: {pbxDarkColour.BackColor.GetSaturation().ToString()}\nBrightness: {pbxDarkColour.BackColor.GetBrightness().ToString()}");
         }
 
-        private void pbxMiddleColour_MouseEnter(object sender, EventArgs e)
+        private void pbxMiddleColour_MouseEnter(object? sender, EventArgs e)
         {
             ttInformation.SetToolTip(pbxMiddleColour, $"Middle Colour\nARGB: ({pbxMiddleColour.BackColor.A.ToString()}, {pbxMiddleColour.BackColor.R.ToString()}, {pbxMiddleColour.BackColor.G.ToString()}, {pbxMiddleColour.BackColor.B.ToString()})\nRGB: ({pbxMiddleColour.BackColor.R.ToString()}, {pbxMiddleColour.BackColor.G.ToString()}, {pbxMiddleColour.BackColor.B.ToString()})\nHexadecimal Value: #{_conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxMiddleColour.BackColor.R), Convert.ToInt32(pbxMiddleColour.BackColor.G), Convert.ToInt32(pbxMiddleColour.BackColor.B)).ToUpper()}\nHue: {pbxMiddleColour.BackColor.GetHue().ToString()}\nSaturation: {pbxMiddleColour.BackColor.GetSaturation().ToString()}\nBrightness: {pbxMiddleColour.BackColor.GetBrightness().ToString()}");
         }
 
-        private void pbxLightColour_MouseEnter(object sender, EventArgs e)
+        private void pbxLightColour_MouseEnter(object? sender, EventArgs e)
         {
             ttInformation.SetToolTip(pbxLightColour, $"Light Colour\nARGB: ({pbxLightColour.BackColor.A.ToString()}, {pbxLightColour.BackColor.R.ToString()}, {pbxLightColour.BackColor.G.ToString()}, {pbxLightColour.BackColor.B.ToString()})\nRGB: ({pbxLightColour.BackColor.R.ToString()}, {pbxLightColour.BackColor.G.ToString()}, {pbxLightColour.BackColor.B.ToString()})\nHexadecimal Value: #{_conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxLightColour.BackColor.R), Convert.ToInt32(pbxLightColour.BackColor.G), Convert.ToInt32(pbxLightColour.BackColor.B)).ToUpper()}\nHue: {pbxLightColour.BackColor.GetHue().ToString()}\nSaturation: {pbxLightColour.BackColor.GetSaturation().ToString()}\nBrightness: {pbxLightColour.BackColor.GetBrightness().ToString()}");
         }
 
-        private void pbxLightestColour_MouseEnter(object sender, EventArgs e)
+        private void pbxLightestColour_MouseEnter(object? sender, EventArgs e)
         {
             ttInformation.SetToolTip(pbxLightestColour, $"Lightest Colour\nARGB: ({pbxLightestColour.BackColor.A.ToString()}, {pbxLightestColour.BackColor.R.ToString()}, {pbxLightestColour.BackColor.G.ToString()}, {pbxLightestColour.BackColor.B.ToString()})\nRGB: ({pbxLightestColour.BackColor.R.ToString()}, {pbxLightestColour.BackColor.G.ToString()}, {pbxLightestColour.BackColor.B.ToString()})\nHexadecimal Value: #{_conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxLightestColour.BackColor.R), Convert.ToInt32(pbxLightestColour.BackColor.G), Convert.ToInt32(pbxLightestColour.BackColor.B)).ToUpper()}\nHue: {pbxLightestColour.BackColor.GetHue().ToString()}\nSaturation: {pbxLightestColour.BackColor.GetSaturation().ToString()}\nBrightness: {pbxLightestColour.BackColor.GetBrightness().ToString()}");
         }
 
-        private void pbxNormalTextColour_MouseEnter(object sender, EventArgs e)
+        private void pbxNormalTextColour_MouseEnter(object? sender, EventArgs e)
         {
             //ttInformation.SetToolTip(pbxNormalTextColour, $"Normal Text Colour\nARGB: ({ pbxNormalTextColour.BackColor.A.ToString() }, { pbxNormalTextColour.BackColor.R.ToString() }, { pbxNormalTextColour.BackColor.G.ToString() }, { pbxNormalTextColour.BackColor.B.ToString() })\nRGB: ({ pbxNormalTextColour.BackColor.R.ToString() }, { pbxNormalTextColour.BackColor.G.ToString() }, { pbxNormalTextColour.BackColor.B.ToString() })\nHexadecimal Value: #{ _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxNormalTextColour.BackColor.R), Convert.ToInt32(pbxNormalTextColour.BackColor.G), Convert.ToInt32(pbxNormalTextColour.BackColor.B)).ToUpper() }");
         }
 
-        private void pbxDisabledTextColour_MouseEnter(object sender, EventArgs e)
+        private void pbxDisabledTextColour_MouseEnter(object? sender, EventArgs e)
         {
             //ttInformation.SetToolTip(pbxDisabledTextColour, $"Disabled Text Colour\nARGB: ({ pbxDisabledTextColour.BackColor.A.ToString() }, { pbxDisabledTextColour.BackColor.R.ToString() }, { pbxDisabledTextColour.BackColor.G.ToString() }, { pbxDisabledTextColour.BackColor.B.ToString() })\nRGB: ({ pbxDisabledTextColour.BackColor.R.ToString() }, { pbxDisabledTextColour.BackColor.G.ToString() }, { pbxDisabledTextColour.BackColor.B.ToString() })\nHexadecimal Value: #{ _conversionMethods.ConvertRGBToHexadecimal(Convert.ToInt32(pbxDisabledTextColour.BackColor.R), Convert.ToInt32(pbxDisabledTextColour.BackColor.G), Convert.ToInt32(pbxDisabledTextColour.BackColor.B)).ToUpper() }");
         }
 
-        private void knumRedChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumRedChannelValue_ValueChanged(object? sender, EventArgs e)
         {
             pbxBaseColour.BackColor = Color.FromArgb(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
 
             ktbRed.Value = Convert.ToInt32(knumRedChannelValue.Value);
         }
 
-        private void knumGreenChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumGreenChannelValue_ValueChanged(object? sender, EventArgs e)
         {
             pbxBaseColour.BackColor = Color.FromArgb(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
 
             ktbGreen.Value = Convert.ToInt32(knumGreenChannelValue.Value);
         }
 
-        private void knumBlueChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumBlueChannelValue_ValueChanged(object? sender, EventArgs e)
         {
             pbxBaseColour.BackColor = Color.FromArgb(Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
 
             ktbBlue.Value = Convert.ToInt32(knumBlueChannelValue.Value);
         }
 
-        private void kbtnGenerateRedValue_Click(object sender, EventArgs e)
+        private void kbtnGenerateRedValue_Click(object? sender, EventArgs e)
         {
             knumRedChannelValue.Value = _randomNumberGenerator.RandomlyGenerateARedNumberBetween(0, 255);
         }
 
-        private void kbtnGenerateGreenValue_Click(object sender, EventArgs e)
+        private void kbtnGenerateGreenValue_Click(object? sender, EventArgs e)
         {
             knumGreenChannelValue.Value = _randomNumberGenerator.RandomlyGenerateAGreenNumberBetween(0, 255);
         }
 
-        private void kbtnGenerateBlueValue_Click(object sender, EventArgs e)
+        private void kbtnGenerateBlueValue_Click(object? sender, EventArgs e)
         {
             knumBlueChannelValue.Value = _randomNumberGenerator.RandomlyGenerateABlueNumberBetween(0, 255);
         }
 
-        private void kbtnGenerate_Click(object sender, EventArgs e)
+        private void kbtnGenerate_Click(object? sender, EventArgs e)
         {
             //ColourUtilities.GenerateColourShades(pbxBaseColour.BackColor, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour);
 
@@ -989,7 +989,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             kbtnExport.Enabled = true;
         }
 
-        private void kbtnExport_Click(object sender, EventArgs e)
+        private void kbtnExport_Click(object? sender, EventArgs e)
         {
             if (_globalBooleanSettingsManager.GetUseCircularPictureBoxes())
             {
@@ -1001,13 +1001,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void tmrUpdate_Tick(object sender, EventArgs e)
+        private void tmrUpdate_Tick(object? sender, EventArgs e)
         {
             UpdateBaseColour();
         }
         #endregion
 
-        private void tmrUpdateUI_Tick(object sender, EventArgs e)
+        private void tmrUpdateUI_Tick(object? sender, EventArgs e)
         {
             UpdateUI();
         }
@@ -1019,48 +1019,48 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             cpbBaseColourPreview.BackColor = Color.FromArgb(255, Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
         }
 
-        private void kchkAutomateColourSwatchValues_CheckedChanged(object sender, EventArgs e)
+        private void kchkAutomateColourSwatchValues_CheckedChanged(object? sender, EventArgs e)
         {
             tmrAutomateColourSwatchValues.Enabled = _globalBooleanSettingsManager.GetAutomaticallyUpdateColours();
         }
 
-        private void tmrAutomateColourSwatchValues_Tick(object sender, EventArgs e)
+        private void tmrAutomateColourSwatchValues_Tick(object? sender, EventArgs e)
         {
             //ColourUtilities.GenerateColourShades(pbxBaseColour.BackColor, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour);
 
             ColourUtilities.GenerateColourShades(cpbBaseColourPreview.BackColor, cpbDarkestColourPreview, cpbMiddleColourPreview, cpbLightColourPreview, cpbLightestColourPreview);
         }
 
-        private void pbxDarkColour_Click(object sender, EventArgs e)
+        private void pbxDarkColour_Click(object? sender, EventArgs e)
         {
             //ColourUtilities.PropagateHSBValues(knumHueValue, knumSaturation, knumBrightness, (decimal)Math.Round(pbxDarkColour.BackColor.GetHue()), (decimal)Math.Round(pbxDarkColour.BackColor.GetSaturation()), (decimal)Math.Round(pbxDarkColour.BackColor.GetBrightness()));
         }
 
-        private void kbtnFileExport_Click(object sender, EventArgs e)
+        private void kbtnFileExport_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void kbtnDefineCustomColours_Click(object sender, EventArgs e)
+        private void kbtnDefineCustomColours_Click(object? sender, EventArgs e)
         {
             CustomColours customColours = new();
 
             customColours.Show();
         }
 
-        private void kbtnImportColours_Click(object sender, EventArgs e)
+        private void kbtnImportColours_Click(object? sender, EventArgs e)
         {
             PaletteImportManager paletteImportManager = new();
 
             paletteImportManager.ImportColourScheme();
         }
 
-        private void knumAlphaChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumAlphaChannelValue_ValueChanged(object? sender, EventArgs e)
         {
 
         }
 
-        private void cpbBaseColourPreview_Click(object sender, EventArgs e)
+        private void cpbBaseColourPreview_Click(object? sender, EventArgs e)
         {
             knumAlphaChannelValue.Value = Convert.ToInt32(cpbBaseColourPreview.BackColor.A);
 
@@ -1071,7 +1071,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knumBlueChannelValue.Value = Convert.ToInt32(cpbBaseColourPreview.BackColor.B);
         }
 
-        private void cpbDarkestColourPreview_Click(object sender, EventArgs e)
+        private void cpbDarkestColourPreview_Click(object? sender, EventArgs e)
         {
             knumAlphaChannelValue.Value = Convert.ToInt32(cpbDarkestColourPreview.BackColor.A);
 
@@ -1082,7 +1082,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knumBlueChannelValue.Value = Convert.ToInt32(cpbDarkestColourPreview.BackColor.B);
         }
 
-        private void cpbMiddleColourPreview_Click(object sender, EventArgs e)
+        private void cpbMiddleColourPreview_Click(object? sender, EventArgs e)
         {
             knumAlphaChannelValue.Value = Convert.ToInt32(cpbMiddleColourPreview.BackColor.A);
 
@@ -1093,7 +1093,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knumBlueChannelValue.Value = Convert.ToInt32(cpbMiddleColourPreview.BackColor.B);
         }
 
-        private void cpbLightColourPreview_Click(object sender, EventArgs e)
+        private void cpbLightColourPreview_Click(object? sender, EventArgs e)
         {
             knumAlphaChannelValue.Value = Convert.ToInt32(cpbLightColourPreview.BackColor.A);
 
@@ -1104,7 +1104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knumBlueChannelValue.Value = Convert.ToInt32(cpbLightColourPreview.BackColor.B);
         }
 
-        private void cpbLightestColourPreview_Click(object sender, EventArgs e)
+        private void cpbLightestColourPreview_Click(object? sender, EventArgs e)
         {
             knumAlphaChannelValue.Value = Convert.ToInt32(cpbLightestColourPreview.BackColor.A);
 
@@ -1115,49 +1115,49 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knumBlueChannelValue.Value = Convert.ToInt32(cpbLightestColourPreview.BackColor.B);
         }
 
-        private void kbtnDefineIndividualColours_Click(object sender, EventArgs e)
+        private void kbtnDefineIndividualColours_Click(object? sender, EventArgs e)
         {
             DefineIndividualColoursDialog defineIndividualColours = new();
 
             defineIndividualColours.Show();
         }
 
-        private void kbtnOptions_Click(object sender, EventArgs e)
+        private void kbtnOptions_Click(object? sender, EventArgs e)
         {
             ColourBlendingOptions colourBlendingOptions = new();
 
             colourBlendingOptions.Show();
         }
 
-        private void ktbAlpha_ValueChanged(object sender, EventArgs e)
+        private void ktbAlpha_ValueChanged(object? sender, EventArgs e)
         {
             knumAlphaChannelValue.Value = ktbAlpha.Value;
 
             ttInformation.SetToolTip(ktbAlpha, ktbAlpha.Value.ToString());
         }
 
-        private void ktbRed_ValueChanged(object sender, EventArgs e)
+        private void ktbRed_ValueChanged(object? sender, EventArgs e)
         {
             knumRedChannelValue.Value = ktbRed.Value;
 
             ttInformation.SetToolTip(ktbRed, ktbRed.Value.ToString());
         }
 
-        private void ktbGreen_ValueChanged(object sender, EventArgs e)
+        private void ktbGreen_ValueChanged(object? sender, EventArgs e)
         {
             knumGreenChannelValue.Value = ktbGreen.Value;
 
             ttInformation.SetToolTip(ktbGreen, ktbGreen.Value.ToString());
         }
 
-        private void ktbBlue_ValueChanged(object sender, EventArgs e)
+        private void ktbBlue_ValueChanged(object? sender, EventArgs e)
         {
             knumBlueChannelValue.Value = ktbBlue.Value;
 
             ttInformation.SetToolTip(ktbBlue, ktbBlue.Value.ToString());
         }
 
-        private void kcbBaseColour_SelectedColorChanged(object sender, ColorEventArgs e)
+        private void kcbBaseColour_SelectedColorChanged(object? sender, ColorEventArgs e)
         {
             knumRedChannelValue.Value = kcbBaseColour.SelectedColor.R;
 
@@ -1166,19 +1166,19 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knumBlueChannelValue.Value = kcbBaseColour.SelectedColor.B;
         }
 
-        private void kbtnDebugConsole_Click(object sender, EventArgs e)
+        private void kbtnDebugConsole_Click(object? sender, EventArgs e)
         {
             ColourSettingsViewer colourSettingsViewer = new();
 
             colourSettingsViewer.Show();
         }
 
-        private void kbtnSaveValues_Click(object sender, EventArgs e)
+        private void kbtnSaveValues_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void kbtnGenerateHue_Click(object sender, EventArgs e)
+        private void kbtnGenerateHue_Click(object? sender, EventArgs e)
         {
 
         }

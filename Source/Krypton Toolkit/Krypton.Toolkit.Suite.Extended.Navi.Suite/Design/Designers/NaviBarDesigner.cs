@@ -182,7 +182,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         #region Event Handling
 
-        private void selectionService_SelectionChanged(object sender, EventArgs e)
+        private void selectionService_SelectionChanged(object? sender, EventArgs e)
         {
             if (selectionService.PrimarySelection is NaviBand)
             {
@@ -192,7 +192,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             }
         }
 
-        private void AddBandVerbClicked(object sender, EventArgs e)
+        private void AddBandVerbClicked(object? sender, EventArgs e)
         {
             NaviBand band = host.CreateComponent(typeof(NaviBand)) as NaviBand;
             if (band != null)

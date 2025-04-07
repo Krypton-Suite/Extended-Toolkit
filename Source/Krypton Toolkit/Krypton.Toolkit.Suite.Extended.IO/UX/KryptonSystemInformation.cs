@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
         }
         #endregion
 
-        private void kbtnCopy_Click(object sender, EventArgs e)
+        private void kbtnCopy_Click(object? sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(krtbSystemInformation.Text))
             {
@@ -44,12 +44,12 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             }
         }
 
-        private void kbtnClose_Click(object sender, EventArgs e)
+        private void kbtnClose_Click(object? sender, EventArgs e)
         {
             Hide();
         }
 
-        private void KryptonSystemInformation_Load(object sender, EventArgs e)
+        private void KryptonSystemInformation_Load(object? sender, EventArgs e)
         {
 
         }

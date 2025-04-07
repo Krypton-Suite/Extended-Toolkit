@@ -926,7 +926,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             bool completed = false;
             bool flag = false;
             bool flag2 = false;
-            EventHandler<RecognizeCompletedEventArgs> value = delegate (object sender, RecognizeCompletedEventArgs eventArgs)
+            EventHandler<RecognizeCompletedEventArgs> value = delegate (object? sender, RecognizeCompletedEventArgs eventArgs)
             {
                 result = eventArgs.Result;
                 completed = true;
@@ -1519,7 +1519,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         {
             RecognitionResult result = null;
             bool completed = false;
-            EventHandler<EmulateRecognizeCompletedEventArgs> value = delegate (object sender, EmulateRecognizeCompletedEventArgs eventArgs)
+            EventHandler<EmulateRecognizeCompletedEventArgs> value = delegate (object? sender, EmulateRecognizeCompletedEventArgs eventArgs)
             {
                 result = eventArgs.Result;
                 completed = true;

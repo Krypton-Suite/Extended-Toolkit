@@ -368,7 +368,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             }
         }
 
-        private void FilteredListView_ListChanged(object sender, ListChangedEventArgs e)
+        private void FilteredListView_ListChanged(object? sender, ListChangedEventArgs e)
         {
             // Add the new item
             if (e.ListChangedType == ListChangedType.ItemAdded)

@@ -65,5 +65,5 @@
 
 namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
 {
-    public delegate void AdvancedDataGridViewSearchToolBarSearchEventHandler(object sender, AdvancedDataGridViewSearchToolBarSearchEventArgs e);
+    public delegate void AdvancedDataGridViewSearchToolBarSearchEventHandler(object? sender, AdvancedDataGridViewSearchToolBarSearchEventArgs e);
 }

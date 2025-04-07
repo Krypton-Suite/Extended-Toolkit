@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #endregion
 
         #region Event Handlers
-        private void Alert_Tick(object sender, EventArgs e)
+        private void Alert_Tick(object? sender, EventArgs e)
         {
             switch (_action)
             {
@@ -207,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
         }
 
-        private void ptbClose_Click(object sender, EventArgs e)
+        private void ptbClose_Click(object? sender, EventArgs e)
         {
             _tmrAlert.Interval = 1;
 

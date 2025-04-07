@@ -854,12 +854,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             InitializeComponent();
         }
 
-        private void kbtnClose_Click(object sender, EventArgs e)
+        private void kbtnClose_Click(object? sender, EventArgs e)
         {
             Hide();
         }
 
-        private void SystemInformationWindow_Load(object sender, EventArgs e)
+        private void SystemInformationWindow_Load(object? sender, EventArgs e)
         {
             foreach (string win32Class in stringWin32classes)
             {

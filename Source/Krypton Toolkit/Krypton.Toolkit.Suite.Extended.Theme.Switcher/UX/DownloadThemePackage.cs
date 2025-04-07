@@ -204,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             }
         }
 
-        private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        private void ProgressChanged(object? sender, DownloadProgressChangedEventArgs e)
         {
             kwlSpeed.Text = $"{(e.BytesReceived / 1024d / _stopwatch.Elapsed.TotalSeconds).ToString("0.00")}kb/s";
 
@@ -215,7 +215,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             kwlSize.Text = $"{(e.BytesReceived / 1024d / 1024d).ToString("0.00")} MB's / {(e.TotalBytesToReceive / 1024d / 1024d).ToString("0.00")} MB's";
         }
 
-        private void DownloadCompleted(object sender, AsyncCompletedEventArgs e)
+        private void DownloadCompleted(object? sender, AsyncCompletedEventArgs e)
         {
             _stopwatch.Reset();
 

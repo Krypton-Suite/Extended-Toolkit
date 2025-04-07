@@ -3294,17 +3294,17 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         #region Internal Events
 
-        private void OnTimer_UpScrollElapsed(object sender, EventArgs e)
+        private void OnTimer_UpScrollElapsed(object? sender, EventArgs e)
         {
             HandleScrollTimerElapsed(ToolBoxScrollDirection.Up, _selectedTab, _upScroll);
         }
 
-        private void OnTimer_DnScrollElapsed(object sender, EventArgs e)
+        private void OnTimer_DnScrollElapsed(object? sender, EventArgs e)
         {
             HandleScrollTimerElapsed(ToolBoxScrollDirection.Down, _selectedTab, _dnScroll);
         }
 
-        private void OnTimer_LayoutElapsed(object sender, EventArgs e)
+        private void OnTimer_LayoutElapsed(object? sender, EventArgs e)
         {
             try
             {
@@ -3336,7 +3336,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
         }
 
-        private void OnTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void OnTextBox_KeyDown(object? sender, KeyEventArgs e)
         {
             if (e.KeyCode is Keys.Enter or Keys.Escape)
             {
@@ -3344,7 +3344,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
         }
 
-        private void OnTextBox_LostFocus(object sender, EventArgs e)
+        private void OnTextBox_LostFocus(object? sender, EventArgs e)
         {
             if (_textBox.Visible && !_textBox.Focused)
             {
@@ -4056,12 +4056,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         #region Krypton
         //Krypton Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             base.Invalidate();
         }
 
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             if (_palette != null)
             {

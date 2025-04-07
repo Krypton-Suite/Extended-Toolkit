@@ -720,7 +720,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Event Handlers
-        private void ColourMixer_Load(object sender, EventArgs e)
+        private void ColourMixer_Load(object? sender, EventArgs e)
         {
             ktbAlpha.Value = GetAlphaChannelValue();
 
@@ -731,55 +731,55 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             ktbBlue.Value = GetGreenColourChannelValue();
         }
 
-        private void ktbAlpha_ValueChanged(object sender, EventArgs e)
+        private void ktbAlpha_ValueChanged(object? sender, EventArgs e)
         {
             knumAlphaChannelValue.Value = ktbAlpha.Value;
 
             SetAlphaChannelValue(ktbAlpha.Value);
         }
 
-        private void ktbRed_ValueChanged(object sender, EventArgs e)
+        private void ktbRed_ValueChanged(object? sender, EventArgs e)
         {
             knumRedChannelValue.Value = ktbRed.Value;
 
             SetRedColourChannelValue(ktbRed.Value);
         }
 
-        private void ktbGreen_ValueChanged(object sender, EventArgs e)
+        private void ktbGreen_ValueChanged(object? sender, EventArgs e)
         {
             knumGreenChannelValue.Value = ktbGreen.Value;
 
             SetGreenColourChannelValue(ktbGreen.Value);
         }
 
-        private void ktbBlue_ValueChanged(object sender, EventArgs e)
+        private void ktbBlue_ValueChanged(object? sender, EventArgs e)
         {
             knumBlueChannelValue.Value = ktbBlue.Value;
 
             SetBlueColourChannelValue(ktbBlue.Value);
         }
 
-        private void knumAlphaChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumAlphaChannelValue_ValueChanged(object? sender, EventArgs e)
         {
             ktbAlpha.Value = Convert.ToInt32(knumAlphaChannelValue.Value);
         }
 
-        private void knumRedChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumRedChannelValue_ValueChanged(object? sender, EventArgs e)
         {
             ktbRed.Value = Convert.ToInt32(knumRedChannelValue.Value);
         }
 
-        private void knumGreenChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumGreenChannelValue_ValueChanged(object? sender, EventArgs e)
         {
             ktbGreen.Value = Convert.ToInt32(knumGreenChannelValue.Value);
         }
 
-        private void knumBlueChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumBlueChannelValue_ValueChanged(object? sender, EventArgs e)
         {
             ktbBlue.Value = Convert.ToInt32(knumBlueChannelValue.Value);
         }
 
-        private void tmrUpdate_Tick(object sender, EventArgs e)
+        private void tmrUpdate_Tick(object? sender, EventArgs e)
         {
             DisplayColour();
 
@@ -870,7 +870,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             return Convert.ToInt32(c.ToString());
         }
 
-        private void kbtnGenerate_Click(object sender, EventArgs e)
+        private void kbtnGenerate_Click(object? sender, EventArgs e)
         {
             kbtnGenerateRedValue.PerformClick();
 
@@ -879,43 +879,43 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             kbtnGenerateBlueValue.PerformClick();
         }
 
-        private void kbtnGenerateRedValue_Click(object sender, EventArgs e)
+        private void kbtnGenerateRedValue_Click(object? sender, EventArgs e)
         {
             ktbRed.Value = _randomNumberGenerator.RandomlyGenerateARedNumberBetween(0, 255);
         }
 
-        private void kbtnGenerateGreenValue_Click(object sender, EventArgs e)
+        private void kbtnGenerateGreenValue_Click(object? sender, EventArgs e)
         {
             ktbGreen.Value = _randomNumberGenerator.RandomlyGenerateAGreenNumberBetween(0, 255);
         }
 
-        private void kbtnGenerateBlueValue_Click(object sender, EventArgs e)
+        private void kbtnGenerateBlueValue_Click(object? sender, EventArgs e)
         {
             ktbBlue.Value = _randomNumberGenerator.RandomlyGenerateABlueNumberBetween(0, 255);
         }
 
-        private void kbtnUtiliseAsBaseColour_Click(object sender, EventArgs e)
+        private void kbtnUtiliseAsBaseColour_Click(object? sender, EventArgs e)
         {
             PaletteColourCreator paletteColourCreator = new(PaletteColourSelector, Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
 
             paletteColourCreator.Show();
         }
 
-        private void kbtnOptions_Click(object sender, EventArgs e)
+        private void kbtnOptions_Click(object? sender, EventArgs e)
         {
             ColourBlendingOptions colourBlendingOptions = new();
 
             colourBlendingOptions.Show();
         }
 
-        private void kbtnConvertToRGB_Click(object sender, EventArgs e)
+        private void kbtnConvertToRGB_Click(object? sender, EventArgs e)
         {
             ConversionMethods conversionMethods = new();
 
             cpbColourPreview.BackColor = conversionMethods.ConvertHexadecimalToRGB($"#{ktxtHexValue.Text}");
         }
 
-        private void ktxtHexValue_TextChanged(object sender, EventArgs e)
+        private void ktxtHexValue_TextChanged(object? sender, EventArgs e)
         {
             if (ktxtHexValue.Text.Length == 6)
             {
@@ -923,14 +923,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void kbtnDefineOtherColours_Click(object sender, EventArgs e)
+        private void kbtnDefineOtherColours_Click(object? sender, EventArgs e)
         {
             CustomColours customColours = new();
 
             customColours.Show();
         }
 
-        private void kbtnGenerateColour_Click(object sender, EventArgs e)
+        private void kbtnGenerateColour_Click(object? sender, EventArgs e)
         {
             // pbColourPreview.BackColor = _colourUtility.GenerateRandomColour(kchkGenerateAlphaValue.Checked);
 

@@ -680,138 +680,138 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
 
         #region Event Handlers
-        private void DefineIndividualColoursDialog_Load(object sender, EventArgs e)
+        private void DefineIndividualColoursDialog_Load(object? sender, EventArgs e)
         {
 
         }
 
-        private void cpbBaseColourPreview_Click(object sender, EventArgs e)
+        private void cpbBaseColourPreview_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void cpbBaseColourPreview_MouseHover(object sender, EventArgs e)
+        private void cpbBaseColourPreview_MouseHover(object? sender, EventArgs e)
         {
 
         }
 
-        private void cpbDarkestColourPreview_Click(object sender, EventArgs e)
+        private void cpbDarkestColourPreview_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void cpbDarkestColourPreview_MouseHover(object sender, EventArgs e)
+        private void cpbDarkestColourPreview_MouseHover(object? sender, EventArgs e)
         {
 
         }
 
-        private void cpbMiddleColourPreview_Click(object sender, EventArgs e)
+        private void cpbMiddleColourPreview_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void cpbMiddleColourPreview_MouseHover(object sender, EventArgs e)
+        private void cpbMiddleColourPreview_MouseHover(object? sender, EventArgs e)
         {
 
         }
 
-        private void cpbLightColourPreview_Click(object sender, EventArgs e)
+        private void cpbLightColourPreview_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void cpbLightColourPreview_MouseHover(object sender, EventArgs e)
+        private void cpbLightColourPreview_MouseHover(object? sender, EventArgs e)
         {
 
         }
 
-        private void cpbLightestColourPreview_Click(object sender, EventArgs e)
+        private void cpbLightestColourPreview_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void cpbLightestColourPreview_MouseHover(object sender, EventArgs e)
+        private void cpbLightestColourPreview_MouseHover(object? sender, EventArgs e)
         {
 
         }
 
-        private void ktbAlpha_ValueChanged(object sender, EventArgs e)
+        private void ktbAlpha_ValueChanged(object? sender, EventArgs e)
         {
             knumAlphaChannelValue.Value = ktbAlpha.Value;
 
             SetExportSelectedColourEnabledState(true);
         }
 
-        private void knumAlphaChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumAlphaChannelValue_ValueChanged(object? sender, EventArgs e)
         {
             ktbAlpha.Value = Convert.ToInt32(knumAlphaChannelValue.Value);
 
             SetExportSelectedColourEnabledState(true);
         }
 
-        private void ktbRed_ValueChanged(object sender, EventArgs e)
+        private void ktbRed_ValueChanged(object? sender, EventArgs e)
         {
             knumRedChannelValue.Value = ktbRed.Value;
 
             SetExportSelectedColourEnabledState(true);
         }
 
-        private void knumRedChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumRedChannelValue_ValueChanged(object? sender, EventArgs e)
         {
             ktbRed.Value = Convert.ToInt32(knumRedChannelValue.Value);
 
             SetExportSelectedColourEnabledState(true);
         }
 
-        private void ktbGreen_ValueChanged(object sender, EventArgs e)
+        private void ktbGreen_ValueChanged(object? sender, EventArgs e)
         {
             knumGreenChannelValue.Value = ktbGreen.Value;
 
             SetExportSelectedColourEnabledState(true);
         }
 
-        private void knumGreenChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumGreenChannelValue_ValueChanged(object? sender, EventArgs e)
         {
             ktbGreen.Value = Convert.ToInt32(knumGreenChannelValue.Value);
 
             SetExportSelectedColourEnabledState(true);
         }
 
-        private void ktbBlue_ValueChanged(object sender, EventArgs e)
+        private void ktbBlue_ValueChanged(object? sender, EventArgs e)
         {
             knumBlueChannelValue.Value = ktbBlue.Value;
 
             SetExportSelectedColourEnabledState(true);
         }
 
-        private void knumBlueChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumBlueChannelValue_ValueChanged(object? sender, EventArgs e)
         {
             ktbBlue.Value = Convert.ToInt32(knumBlueChannelValue.Value);
 
             SetExportSelectedColourEnabledState(true);
         }
 
-        private void kbtnGenerateAlpha_Click(object sender, EventArgs e)
+        private void kbtnGenerateAlpha_Click(object? sender, EventArgs e)
         {
             ktbAlpha.Value = _randomNumberGenerator.RandomlyGenerateAlphaNumberBetween(0, 255);
         }
 
-        private void kbtnGenerateRedValue_Click(object sender, EventArgs e)
+        private void kbtnGenerateRedValue_Click(object? sender, EventArgs e)
         {
             ktbRed.Value = _randomNumberGenerator.RandomlyGenerateARedNumberBetween(0, 255);
         }
 
-        private void kbtnGenerateGreenValue_Click(object sender, EventArgs e)
+        private void kbtnGenerateGreenValue_Click(object? sender, EventArgs e)
         {
             ktbGreen.Value = _randomNumberGenerator.RandomlyGenerateAGreenNumberBetween(0, 255);
         }
 
-        private void kbtnGenerateBlueValue_Click(object sender, EventArgs e)
+        private void kbtnGenerateBlueValue_Click(object? sender, EventArgs e)
         {
             ktbBlue.Value = _randomNumberGenerator.RandomlyGenerateABlueNumberBetween(0, 255);
         }
 
-        private void kcmbDefinedColour_SelectedIndexChanged(object sender, EventArgs e)
+        private void kcmbDefinedColour_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (kcmbDefinedColour.SelectedIndex == 0)
             {
@@ -835,7 +835,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void kcmbDefinedColour_TextChanged(object sender, EventArgs e)
+        private void kcmbDefinedColour_TextChanged(object? sender, EventArgs e)
         {
             if (kcmbDefinedColour.Text == "Basic Colour")
             {
@@ -859,7 +859,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void kbtnExportSelectedColour_Click(object sender, EventArgs e)
+        private void kbtnExportSelectedColour_Click(object? sender, EventArgs e)
         {
             if (GetPaletteColourDefinition() == BasicPaletteColourDefinitions.BaseColour)
             {
@@ -885,22 +885,22 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             SetExportSelectedColourEnabledState(false);
         }
 
-        private void ktbHexadecimal_TextChanged(object sender, EventArgs e)
+        private void ktbHexadecimal_TextChanged(object? sender, EventArgs e)
         {
 
         }
 
-        private void ktbHexadecimal_MouseHover(object sender, EventArgs e)
+        private void ktbHexadecimal_MouseHover(object? sender, EventArgs e)
         {
             ttInformation.SetToolTip(this, $"Hexadecimal Value: {ktbHexadecimal.Text.ToUpper()}");
         }
 
-        private void kbtnOk_Click(object sender, EventArgs e)
+        private void kbtnOk_Click(object? sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
         }
 
-        private void tmrUpdateUI_Tick(object sender, EventArgs e)
+        private void tmrUpdateUI_Tick(object? sender, EventArgs e)
         {
             UpdateUI();
         }

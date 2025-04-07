@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Events
-        public void PaletteMode_Click(object sender, EventArgs e)
+        public void PaletteMode_Click(object? sender, EventArgs e)
         {
 
         }

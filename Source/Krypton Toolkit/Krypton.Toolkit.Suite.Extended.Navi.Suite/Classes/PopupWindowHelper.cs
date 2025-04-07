@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="sender">Popup form that has been closed.</param>
         /// <param name="e">Not used.</param>
-        private void popup_Closed(object sender, EventArgs e)
+        private void popup_Closed(object? sender, EventArgs e)
         {
             ClosePopup();
         }
@@ -244,7 +244,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             }
         }
 
-        private void popup_Cancel(object sender, PopupCancelEventArgs e)
+        private void popup_Cancel(object? sender, PopupCancelEventArgs e)
         {
             OnPopupCancel(e);
         }

@@ -144,7 +144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// time, which also means the summary text value
         /// of the combo is out of sync initially.
         /// </summary>
-        private void CheckBoxComboBoxItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void CheckBoxComboBoxItem_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == _checkBoxComboBox.ValueMember)
             {

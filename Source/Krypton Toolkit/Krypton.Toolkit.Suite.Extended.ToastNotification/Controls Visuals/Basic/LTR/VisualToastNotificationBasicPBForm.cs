@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.ToastNotification
             DoubleBuffered = true;
         }
 
-        private void VisualToastNotificationBasicWithProgressBarForm_Load(object sender, EventArgs e)
+        private void VisualToastNotificationBasicWithProgressBarForm_Load(object? sender, EventArgs e)
         {
             UpdateLocation();
 
@@ -69,11 +69,11 @@ namespace Krypton.Toolkit.Suite.Extended.ToastNotification
             kbtnDismiss.Text = KryptonManager.Strings.ToastNotificationStrings.Dismiss;
         }
 
-        private void kbtnClose_Click(object sender, EventArgs e) => Close();
+        private void kbtnClose_Click(object? sender, EventArgs e) => Close();
 
-        private void kbtnDismiss_Click(object sender, EventArgs e) => Close();
+        private void kbtnDismiss_Click(object? sender, EventArgs e) => Close();
 
-        private void kbtnExtraAction_Click(object sender, EventArgs e)
+        private void kbtnExtraAction_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.ToastNotification
             }
         }
 
-        private void VisualToastNotificationBasicWithProgressBarForm_GotFocus(object sender, EventArgs e)
+        private void VisualToastNotificationBasicWithProgressBarForm_GotFocus(object? sender, EventArgs e)
         {
             kbtnDismiss.Focus();
         }

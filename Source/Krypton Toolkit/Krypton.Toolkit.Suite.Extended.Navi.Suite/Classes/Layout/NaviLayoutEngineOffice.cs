@@ -623,7 +623,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             }
         }
 
-        private void menuitem_Click(object sender, EventArgs e)
+        private void menuitem_Click(object? sender, EventArgs e)
         {
             if (sender is ToolStripMenuItem)
             {
@@ -815,7 +815,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Changes the activeband when the user clicks on a button
         /// </summary>
-        private void Button_Click(object sender, EventArgs e)
+        private void Button_Click(object? sender, EventArgs e)
         {
             NaviButton button = sender as NaviButton;
             if (button.Band != null)
@@ -833,7 +833,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="sender">The button on which this event occured</param>
         /// <param name="e">Additional info</param>
-        private void optionsButton_Click(object sender, EventArgs e)
+        private void optionsButton_Click(object? sender, EventArgs e)
         {
             ShowOptionsMenu();
         }
@@ -962,7 +962,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="sender">The control on which this event occured</param>
         /// <param name="e">Additional info</param>
-        private void menuItem_CheckedChanged(object sender, EventArgs e)
+        private void menuItem_CheckedChanged(object? sender, EventArgs e)
         {
             if (sender is ToolStripMenuItem)
             {
@@ -987,7 +987,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="sender">The control on which this event occured</param>
         /// <param name="e">Additional info</param>
-        private void miShowMoreButtons_Click(object sender, EventArgs e)
+        private void miShowMoreButtons_Click(object? sender, EventArgs e)
         {
             Bar.VisibleLargeButtons++;
             Bar.Invalidate();
@@ -998,7 +998,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="sender">The control on which this event occured</param>
         /// <param name="e">Additional info</param>
-        private void miShowLessButtons_Click(object sender, EventArgs e)
+        private void miShowLessButtons_Click(object? sender, EventArgs e)
         {
             Bar.VisibleLargeButtons--;
             Bar.Invalidate();
@@ -1009,7 +1009,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="sender">The control on which this event occured</param>
         /// <param name="e">Additional info</param>
-        private void miShowMoreOptions_Click(object sender, EventArgs e)
+        private void miShowMoreOptions_Click(object? sender, EventArgs e)
         {
             ShowMoreOptionsDialog();
         }
@@ -1121,7 +1121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Switch the collapsion of the Navigation bar
         /// </summary>      
-        private void collapseButton_Click(object sender, EventArgs e)
+        private void collapseButton_Click(object? sender, EventArgs e)
         {
             Bar.Collapsed = !Bar.Collapsed;
         }
@@ -1129,7 +1129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Shows the band in a popup
         /// </summary>
-        private void CollapsedBand_MouseUp(object sender, MouseEventArgs e)
+        private void CollapsedBand_MouseUp(object? sender, MouseEventArgs e)
         {
             Bar.OnCollapsedBandClick(new EventArgs());
             ShowCollapsedBandPopup();
@@ -1138,7 +1138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Hides the popup
         /// </summary>
-        private void popupHelper_PopupClosed(object sender, PopupClosedEventArgs e)
+        private void popupHelper_PopupClosed(object? sender, PopupClosedEventArgs e)
         {
             HideCollapsedBandPopup();
         }

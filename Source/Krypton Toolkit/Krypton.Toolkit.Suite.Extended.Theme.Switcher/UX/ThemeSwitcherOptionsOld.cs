@@ -324,7 +324,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #endregion
 
         #region Event Handlers
-        private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e)
+        private void kcmbPaletteMode_SelectedIndexChanged(object? sender, EventArgs e)
         {
             _themeManager.ApplyTheme(kcmbPaletteMode.Text, _manager);
 
@@ -333,7 +333,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             EnableResetButton(true);
         }
 
-        private void kbtnImport_Click(object sender, EventArgs e)
+        private void kbtnImport_Click(object? sender, EventArgs e)
         {
             KryptonPalette.Import();
 
@@ -352,7 +352,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             EnableLocateButton(true);
         }
 
-        private void kchkImport_CheckedChanged(object sender, EventArgs e)
+        private void kchkImport_CheckedChanged(object? sender, EventArgs e)
         {
             _settingsManager.SetShowImportButton(kchkImport.Checked);
 
@@ -361,7 +361,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             EnableResetButton(true);
         }
 
-        private void kchkReset_CheckedChanged(object sender, EventArgs e)
+        private void kchkReset_CheckedChanged(object? sender, EventArgs e)
         {
             _settingsManager.SetShowResetButton(kchkReset.Checked);
 
@@ -370,21 +370,21 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             EnableResetButton(true);
         }
 
-        private void kbtnReset_Click(object sender, EventArgs e)
+        private void kbtnReset_Click(object? sender, EventArgs e)
         {
             _settingsManager.ResetSettings(_settingsManager.GetAskMe());
 
             EnableResetButton(false);
         }
 
-        private void kbtnApply_Click(object sender, EventArgs e)
+        private void kbtnApply_Click(object? sender, EventArgs e)
         {
             _settingsManager.SaveSettings(_settingsManager.GetAskMe());
 
             EnableApplyButton(false);
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        private void kbtnCancel_Click(object? sender, EventArgs e)
         {
             if (kbtnReset.Enabled)
             {
@@ -417,9 +417,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         private void LocateTheme(string palettePath) => Process.Start("explorer.exe", palettePath);
         #endregion 
 
-        private void kbtnLocate_Click(object sender, EventArgs e) => LocateTheme(KryptonPalette.CustomisedKryptonPaletteFilePath);
+        private void kbtnLocate_Click(object? sender, EventArgs e) => LocateTheme(KryptonPalette.CustomisedKryptonPaletteFilePath);
 
-        private void ThemeSwitcherOptions_Load(object sender, EventArgs e)
+        private void ThemeSwitcherOptions_Load(object? sender, EventArgs e)
         {
             ThemeManager.SetPaletteTheme(_settingsManager.GetSelectedTheme(), kcmbPaletteMode);
 
@@ -436,14 +436,14 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             EnableResetButton(false);
         }
 
-        private void kbtnSubmit_Click(object sender, EventArgs e)
+        private void kbtnSubmit_Click(object? sender, EventArgs e)
         {
             UploadThemeBrowser uploadTheme = new UploadThemeBrowser();
 
             uploadTheme.Show();
         }
 
-        private void kbtnDownload_Click(object sender, EventArgs e)
+        private void kbtnDownload_Click(object? sender, EventArgs e)
         {
             DownloadThemePackage downloadThemePackage = new DownloadThemePackage();
 

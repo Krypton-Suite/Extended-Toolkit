@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourEvents
     {
-        public delegate void SelectedColourChangedEventHandler(object sender, EventArgs e);
+        public delegate void SelectedColourChangedEventHandler(object? sender, EventArgs e);
 
         public event SelectedColourChangedEventHandler SelectedColourChanged;
 

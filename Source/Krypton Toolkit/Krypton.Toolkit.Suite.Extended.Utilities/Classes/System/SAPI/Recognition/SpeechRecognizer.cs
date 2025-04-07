@@ -358,57 +358,57 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
             RecoBase.RequestRecognizerUpdate(userToken, audioPositionAheadToRaiseUpdate);
         }
 
-        private void StateChangedProxy(object sender, StateChangedEventArgs e)
+        private void StateChangedProxy(object? sender, StateChangedEventArgs e)
         {
             this.StateChanged?.Invoke(this, e);
         }
 
-        private void EmulateRecognizeCompletedProxy(object sender, EmulateRecognizeCompletedEventArgs e)
+        private void EmulateRecognizeCompletedProxy(object? sender, EmulateRecognizeCompletedEventArgs e)
         {
             this.EmulateRecognizeCompleted?.Invoke(this, e);
         }
 
-        private void LoadGrammarCompletedProxy(object sender, LoadGrammarCompletedEventArgs e)
+        private void LoadGrammarCompletedProxy(object? sender, LoadGrammarCompletedEventArgs e)
         {
             this.LoadGrammarCompleted?.Invoke(this, e);
         }
 
-        private void SpeechDetectedProxy(object sender, SpeechDetectedEventArgs e)
+        private void SpeechDetectedProxy(object? sender, SpeechDetectedEventArgs e)
         {
             this.SpeechDetected?.Invoke(this, e);
         }
 
-        private void SpeechRecognizedProxy(object sender, SpeechRecognizedEventArgs e)
+        private void SpeechRecognizedProxy(object? sender, SpeechRecognizedEventArgs e)
         {
             this.SpeechRecognized?.Invoke(this, e);
         }
 
-        private void SpeechRecognitionRejectedProxy(object sender, SpeechRecognitionRejectedEventArgs e)
+        private void SpeechRecognitionRejectedProxy(object? sender, SpeechRecognitionRejectedEventArgs e)
         {
             this.SpeechRecognitionRejected?.Invoke(this, e);
         }
 
-        private void RecognizerUpdateReachedProxy(object sender, RecognizerUpdateReachedEventArgs e)
+        private void RecognizerUpdateReachedProxy(object? sender, RecognizerUpdateReachedEventArgs e)
         {
             this.RecognizerUpdateReached?.Invoke(this, e);
         }
 
-        private void SpeechHypothesizedProxy(object sender, SpeechHypothesizedEventArgs e)
+        private void SpeechHypothesizedProxy(object? sender, SpeechHypothesizedEventArgs e)
         {
             _speechHypothesizedDelegate?.Invoke(this, e);
         }
 
-        private void AudioSignalProblemOccurredProxy(object sender, AudioSignalProblemOccurredEventArgs e)
+        private void AudioSignalProblemOccurredProxy(object? sender, AudioSignalProblemOccurredEventArgs e)
         {
             _audioSignalProblemOccurredDelegate?.Invoke(this, e);
         }
 
-        private void AudioLevelUpdatedProxy(object sender, AudioLevelUpdatedEventArgs e)
+        private void AudioLevelUpdatedProxy(object? sender, AudioLevelUpdatedEventArgs e)
         {
             _audioLevelUpdatedDelegate?.Invoke(this, e);
         }
 
-        private void AudioStateChangedProxy(object sender, AudioStateChangedEventArgs e)
+        private void AudioStateChangedProxy(object? sender, AudioStateChangedEventArgs e)
         {
             _audioStateChangedDelegate?.Invoke(this, e);
         }

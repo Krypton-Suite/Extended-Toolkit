@@ -232,9 +232,9 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         #endregion
 
         #region Custom Events
-        public delegate void DirectoryPathChangedEventHandler(object sender, DirectoryPathChangedEventArgs e);
+        public delegate void DirectoryPathChangedEventHandler(object? sender, DirectoryPathChangedEventArgs e);
 
-        public delegate void FileGathererEventHandler(object sender, FileGathererEventArgs e);
+        public delegate void FileGathererEventHandler(object? sender, FileGathererEventArgs e);
 
         public event DirectoryPathChangedEventHandler DirectoryPathChanged;
 
@@ -243,12 +243,12 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         /// <summary>Called when [directory path changed].</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="DirectoryPathChangedEventArgs" /> instance containing the event data.</param>
-        protected virtual void OnDirectoryPathChanged(object sender, DirectoryPathChangedEventArgs e) => DirectoryPathChanged?.Invoke(sender, e);
+        protected virtual void OnDirectoryPathChanged(object? sender, DirectoryPathChangedEventArgs e) => DirectoryPathChanged?.Invoke(sender, e);
 
         /// <summary>Called when [gather files].</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="FileGathererEventArgs" /> instance containing the event data.</param>
-        protected virtual void OnGatherFiles(object sender, FileGathererEventArgs e) => GatherFiles?.Invoke(sender, e);
+        protected virtual void OnGatherFiles(object? sender, FileGathererEventArgs e) => GatherFiles?.Invoke(sender, e);
         #endregion
 
         #region Constructor
@@ -328,12 +328,12 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         }
         #endregion
 
-        private void ktxtDirectory_TextChanged(object sender, EventArgs e)
+        private void ktxtDirectory_TextChanged(object? sender, EventArgs e)
         {
 
         }
 
-        private void kbtnBrowse_Click(object sender, EventArgs e)
+        private void kbtnBrowse_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -401,16 +401,16 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
             }
         }
 
-        private void klbFileListing_SelectedIndexChanged(object sender, EventArgs e) => FileItem = klbFileListing.SelectedItem;
+        private void klbFileListing_SelectedIndexChanged(object? sender, EventArgs e) => FileItem = klbFileListing.SelectedItem;
 
-        private void openInExplorerToolStripMenuItem_Click(object sender, EventArgs e) => OpenInExplorer(klbFileListing.SelectedItem.ToString());
+        private void openInExplorerToolStripMenuItem_Click(object? sender, EventArgs e) => OpenInExplorer(klbFileListing.SelectedItem.ToString());
 
-        private void renameFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void renameFileToolStripMenuItem_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void deleteFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void deleteFileToolStripMenuItem_Click(object? sender, EventArgs e)
         {
 
         }

@@ -165,7 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
-        private void FloatingContainerForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void FloatingContainerForm_FormClosing(object? sender, FormClosingEventArgs e)
         {
             if (NCLBUTTONDBLCLK != null)
             {

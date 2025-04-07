@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
         #endregion
 
-        private void KryptonVerifyFileCheckSum_Load(object sender, EventArgs e)
+        private void KryptonVerifyFileCheckSum_Load(object? sender, EventArgs e)
         {
 #if NETCOREAPP3_0_OR_GREATER
             foreach (string hash in Enum.GetNames(typeof(SafeNETCoreAndNewerSupportedHashAlgorithims)))
@@ -159,7 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         }
 #endif
 
-        private void kbtnCalculate_Click(object sender, EventArgs e)
+        private void kbtnCalculate_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        private void kbtnCancel_Click(object? sender, EventArgs e)
         {
             if (bgwMD5.IsBusy || bgwSHA1.IsBusy || bgwSHA256.IsBusy || bgwSHA384.IsBusy || bgwSHA512.IsBusy ||
                 bgwRIPEMD160.IsBusy)
@@ -242,7 +242,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void kbtnVerify_Click(object sender, EventArgs e)
+        private void kbtnVerify_Click(object? sender, EventArgs e)
         {
             if (VerifyCheckSum(kwlHashOutput.Text, ktxtVarifyCheckSum.Text))
             {
@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void bsaBrowse_Click(object sender, EventArgs e)
+        private void bsaBrowse_Click(object? sender, EventArgs e)
         {
             if (_useAPICodePackFeatures)
             {
@@ -290,7 +290,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void bsaVerifyBrowse_Click(object sender, EventArgs e)
+        private void bsaVerifyBrowse_Click(object? sender, EventArgs e)
         {
             if (_useAPICodePackFeatures)
             {
@@ -318,9 +318,9 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void bsaReset_Click(object sender, EventArgs e) => ktxtFilePath.Text = string.Empty;
+        private void bsaReset_Click(object? sender, EventArgs e) => ktxtFilePath.Text = string.Empty;
 
-        private void ktxtFilePath_TextChanged(object sender, EventArgs e)
+        private void ktxtFilePath_TextChanged(object? sender, EventArgs e)
         {
             // if (string.IsNullOrEmpty(ktxtFilePath.Text))
             // {

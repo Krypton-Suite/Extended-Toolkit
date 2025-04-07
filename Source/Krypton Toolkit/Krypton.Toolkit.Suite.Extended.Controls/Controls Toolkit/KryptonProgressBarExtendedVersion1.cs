@@ -303,7 +303,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>
         /// When the Value property is changed.
         /// </summary>
-        public delegate void ValueChangedHandler(object sender, EventArgs e);
+        public delegate void ValueChangedHandler(object? sender, EventArgs e);
         /// <summary>
         /// When the Value property is changed.
         /// </summary>
@@ -312,7 +312,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>
         /// When the MinValue property is changed.
         /// </summary>
-        public delegate void MinChangedHandler(object sender, EventArgs e);
+        public delegate void MinChangedHandler(object? sender, EventArgs e);
         /// <summary>
         /// When the MinValue property is changed.
         /// </summary>
@@ -321,7 +321,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>
         /// When the MaxValue property is changed.
         /// </summary>
-        public delegate void MaxChangedHandler(object sender, EventArgs e);
+        public delegate void MaxChangedHandler(object? sender, EventArgs e);
         /// <summary>
         /// When the MaxValue property is changed.
         /// </summary>
@@ -542,7 +542,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             return Color.FromArgb(a, r, g, b);
         }
 
-        private void KryptonProgressBarExtended_Paint(object sender, PaintEventArgs e)
+        private void KryptonProgressBarExtended_Paint(object? sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
@@ -557,7 +557,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             DrawOuterStroke(e.Graphics);
         }
 
-        private void GlowAnimationTimer_Tick(object sender, EventArgs e)
+        private void GlowAnimationTimer_Tick(object? sender, EventArgs e)
         {
             if (Animate)
             {

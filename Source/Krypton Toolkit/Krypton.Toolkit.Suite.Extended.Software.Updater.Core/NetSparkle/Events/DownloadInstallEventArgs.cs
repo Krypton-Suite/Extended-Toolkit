@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
     /// </summary>
     /// <param name="sender">Sender of this event</param>
     /// <param name="args">DownloadInstallArgs with info on whether to install or not</param>
-    public delegate void DownloadInstallEventHandler(object sender, DownloadInstallEventArgs args);
+    public delegate void DownloadInstallEventHandler(object? sender, DownloadInstallEventArgs args);
 
     /// <summary>
     /// Args sent via the DownloadInstallEventHandler when the download/install window closes

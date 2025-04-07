@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         }
         #endregion
 
-        private void KryptonNetworkUtility_Load(object sender, EventArgs e)
+        private void KryptonNetworkUtility_Load(object? sender, EventArgs e)
         {
             _infoPanel = new KryptonPanel();
 
@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             ksc.Panel2.Controls.Add(_infoPanel);
         }
 
-        private void klblNetStat_LinkClicked(object sender, EventArgs e)
+        private void klblNetStat_LinkClicked(object? sender, EventArgs e)
         {
             SelectMenu(klblNetStat);
 
@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             netStat.Execute();
         }
 
-        private void klblNetStatWithoutDNS_LinkClicked(object sender, EventArgs e)
+        private void klblNetStatWithoutDNS_LinkClicked(object? sender, EventArgs e)
         {
             SelectMenu(klblNetStatWithoutDNS);
 
@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             ksc.Panel2.Controls.Add(_netStatPanel);
         }
 
-        private void klblPing_LinkClicked(object sender, EventArgs e)
+        private void klblPing_LinkClicked(object? sender, EventArgs e)
         {
             SelectMenu(klblPing);
 
@@ -94,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             ksc.Panel2.Controls.Add(_pingPanel);
         }
 
-        private void klblPortScan_LinkClicked(object sender, EventArgs e)
+        private void klblPortScan_LinkClicked(object? sender, EventArgs e)
         {
             SelectMenu(klblPortScan);
 

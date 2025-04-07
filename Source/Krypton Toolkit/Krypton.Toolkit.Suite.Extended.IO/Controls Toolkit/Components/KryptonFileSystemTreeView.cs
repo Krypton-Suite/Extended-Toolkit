@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
         #endregion
 
         #region Event Handlers
-        private void KryptonFileSystemTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        private void KryptonFileSystemTreeView_BeforeExpand(object? sender, TreeViewCancelEventArgs e)
         {
             if (e.Node is KryptonTreeNode)
             {
@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             //KryptonDirectoryNode
         }
 
-        private void KryptonFileSystemTreeView_MouseDown(object sender, MouseEventArgs e)
+        private void KryptonFileSystemTreeView_MouseDown(object? sender, MouseEventArgs e)
         {
             throw new System.NotImplementedException();
         }

@@ -329,7 +329,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
 
         }
 
-        private void OnScrollChanged(object sender, EventArgs e)
+        private void OnScrollChanged(object? sender, EventArgs e)
         {
             // Request a layout be performed immediately
             PerformNeedPaint(false);
@@ -1062,7 +1062,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         /// </summary>
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
-        protected override void OnPaletteNeedPaint(object sender, NeedLayoutEventArgs e)
+        protected override void OnPaletteNeedPaint(object? sender, NeedLayoutEventArgs e)
         {
             UpdateItemHeight();
             base.OnPaletteChanged(e);
@@ -1200,7 +1200,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         /// </summary>
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
-        protected override void OnNeedPaint(object sender, NeedLayoutEventArgs e)
+        protected override void OnNeedPaint(object? sender, NeedLayoutEventArgs e)
         {
             if (IsHandleCreated && !e.NeedLayout)
             {
@@ -1374,33 +1374,33 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
             }
         }
 
-        private void OnTreeViewGotFocus(object sender, EventArgs e)
+        private void OnTreeViewGotFocus(object? sender, EventArgs e)
         {
             _treeView.Invalidate();
             PerformNeedPaint(true);
             OnGotFocus(e);
         }
 
-        private void OnTreeViewLostFocus(object sender, EventArgs e)
+        private void OnTreeViewLostFocus(object? sender, EventArgs e)
         {
             _treeView.Invalidate();
             PerformNeedPaint(true);
             OnLostFocus(e);
         }
 
-        private void OnTreeViewKeyPress(object sender, KeyPressEventArgs e) => OnKeyPress(e);
+        private void OnTreeViewKeyPress(object? sender, KeyPressEventArgs e) => OnKeyPress(e);
 
-        private void OnTreeViewKeyUp(object sender, KeyEventArgs e) => OnKeyUp(e);
+        private void OnTreeViewKeyUp(object? sender, KeyEventArgs e) => OnKeyUp(e);
 
-        private void OnTreeViewKeyDown(object sender, KeyEventArgs e) => OnKeyDown(e);
+        private void OnTreeViewKeyDown(object? sender, KeyEventArgs e) => OnKeyDown(e);
 
-        private void OnTreeViewPreviewKeyDown(object sender, PreviewKeyDownEventArgs e) => OnPreviewKeyDown(e);
+        private void OnTreeViewPreviewKeyDown(object? sender, PreviewKeyDownEventArgs e) => OnPreviewKeyDown(e);
 
-        private void OnTreeViewValidated(object sender, EventArgs e) => OnValidated(e);
+        private void OnTreeViewValidated(object? sender, EventArgs e) => OnValidated(e);
 
-        private void OnTreeViewValidating(object sender, CancelEventArgs e) => OnValidating(e);
+        private void OnTreeViewValidating(object? sender, CancelEventArgs e) => OnValidating(e);
 
-        private void OnTreeViewMouseChange(object sender, EventArgs e)
+        private void OnTreeViewMouseChange(object? sender, EventArgs e)
         {
             // Change in tracking state?
             if (_treeView.MouseOver != _trackingMouseEnter)
@@ -1425,7 +1425,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
 
         #region Private
 
-        private void OnTreeClick(object sender, EventArgs e) => OnClick(e);
+        private void OnTreeClick(object? sender, EventArgs e) => OnClick(e);
 
         #endregion Private
 

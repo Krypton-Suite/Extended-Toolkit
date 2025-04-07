@@ -146,12 +146,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             RemoveMenu(pm, SC_MAXIMIZE, MF_BYCOMMAND);
         }
 
-        private void MenuStripContainerWindow_FormClosing(object sender, FormClosingEventArgs e)
+        private void MenuStripContainerWindow_FormClosing(object? sender, FormClosingEventArgs e)
         {
             e.Cancel = false;
         }
 
-        private void MenuStripContainerWindow_FormClosed(object sender, FormClosedEventArgs e)
+        private void MenuStripContainerWindow_FormClosed(object? sender, FormClosedEventArgs e)
         {
             //e.CloseReason = CloseReason.None;
         }

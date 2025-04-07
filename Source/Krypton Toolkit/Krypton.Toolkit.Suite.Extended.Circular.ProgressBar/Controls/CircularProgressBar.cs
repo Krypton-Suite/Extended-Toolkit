@@ -421,14 +421,14 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="invalidateEventArgs"></param>
-        protected virtual void ParentOnInvalidated(object sender, InvalidateEventArgs invalidateEventArgs) => RecreateBackgroundBrush();
+        protected virtual void ParentOnInvalidated(object? sender, InvalidateEventArgs invalidateEventArgs) => RecreateBackgroundBrush();
 
         /// <summary>
         ///     Occurs when the parent resized.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="eventArgs"></param>
-        protected virtual void ParentOnResize(object sender, EventArgs eventArgs) => RecreateBackgroundBrush();
+        protected virtual void ParentOnResize(object? sender, EventArgs eventArgs) => RecreateBackgroundBrush();
 
         /// <summary>
         ///     Update or create the brush used for drawing the background
@@ -740,7 +740,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
             SubscriptColor = _palette.ColorTable.StatusStripText;
         }
 
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             if (_palette != null)
             {
@@ -756,7 +756,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
             Invalidate();
         }
 
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e) => Invalidate();
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e) => Invalidate();
         #endregion
     }
 }

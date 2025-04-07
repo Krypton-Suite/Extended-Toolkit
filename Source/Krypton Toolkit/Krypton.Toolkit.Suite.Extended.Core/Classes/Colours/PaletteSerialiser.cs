@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <value>A filter suitable for use with the <see cref="System.Windows.Forms.OpenFileDialog"/>.</value>
         /// <remarks>This filter does not include any serializers that cannot read source data.</remarks>
-        public static string DefaultOpenFilter
+        public static string? DefaultOpenFilter
         {
             get
             {
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <value>A filter suitable for use with the <see cref="System.Windows.Forms.SaveFileDialog"/>.</value>
         /// <remarks>This filter does not include any serializers that cannot write destination data.</remarks>
-        public static string DefaultSaveFilter
+        public static string? DefaultSaveFilter
         {
             get
             {
@@ -96,9 +96,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         #region Static Methods
 
-        public static IPaletteSerialiser GetSerialiser(string fileName)
+        public static IPaletteSerialiser? GetSerialiser(string fileName)
         {
-            IPaletteSerialiser result;
+            IPaletteSerialiser? result;
 
             if (string.IsNullOrEmpty(fileName))
             {
@@ -153,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             foreach (IPaletteSerialiser serialiser in _serializerCache.Where(serializer => !(string.IsNullOrEmpty(serializer.DefaultExtension) || openExtensions.Contains(serializer.DefaultExtension))))
             {
                 StringBuilder extensionMask;
-                string filter;
+                string? filter;
 
                 extensionMask = new();
 
@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                              ';'
                          ], StringSplitOptions.RemoveEmptyEntries))
                 {
-                    string mask;
+                    string? mask;
 
                     mask = $"*.{extension}";
 
@@ -242,7 +242,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 try
                 {
-                    _serializerCache.Add((IPaletteSerialiser)Activator.CreateInstance(type));
+                    _serializerCache.Add((Activator.CreateInstance(type) as IPaletteSerialiser)!);
                 }
                 // ReSharper disable EmptyGeneralCatchClause
                 catch
@@ -491,9 +491,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         #region Other
 
-        private static string _defaultOpenFilter;
+        private static string? _defaultOpenFilter;
 
-        private static string _defaultSaveFileter;
+        private static string? _defaultSaveFileter;
 
         #endregion
     }

@@ -71,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Implementation
 
-        private void Control_HandleCreated(object sender, EventArgs e)
+        private void Control_HandleCreated(object? sender, EventArgs e)
         {
             //var s = new ProgressBarHandler((ProgressBar) Control, _useDisplayText, _displayTextColour);
         }

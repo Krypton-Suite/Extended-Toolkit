@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         #endregion
 
         #region Event Handlers
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
 
             if (_palette != null)
@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             Invalidate();
         }
 
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             Invalidate();
         }

@@ -365,7 +365,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         #region Krypton
         //Kripton Palette Events
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             if (_palette != null)
             {
@@ -385,7 +385,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         }
 
         //Kripton Palette Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
 
         }

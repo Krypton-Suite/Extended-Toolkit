@@ -39,7 +39,7 @@ namespace ZipExtractor
 
         #endregion
 
-        private void ZipExtractorWindow_Shown(object sender, EventArgs e)
+        private void ZipExtractorWindow_Shown(object? sender, EventArgs e)
         {
             // Set up fields
             _clearApplicationDirectory = false;
@@ -100,7 +100,7 @@ namespace ZipExtractor
             bgwLoadWorker.RunWorkerAsync();
         }
 
-        private void bgwLoadWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void bgwLoadWorker_DoWork(object? sender, DoWorkEventArgs e)
         {
             if (!string.IsNullOrEmpty(_currentExe))
             {
@@ -277,7 +277,7 @@ namespace ZipExtractor
             }
         }
 
-        private void bgwLoadWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void bgwLoadWorker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             kpbExtractingProgress.Value = e.ProgressPercentage;
 
@@ -289,7 +289,7 @@ namespace ZipExtractor
             }
         }
 
-        private void bgwLoadWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void bgwLoadWorker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             try
             {
@@ -344,7 +344,7 @@ namespace ZipExtractor
             }
         }
 
-        private void ZipExtractorWindow_FormClosing(object sender, FormClosingEventArgs e)
+        private void ZipExtractorWindow_FormClosing(object? sender, FormClosingEventArgs e)
         {
             bgwLoadWorker?.CancelAsync();
 

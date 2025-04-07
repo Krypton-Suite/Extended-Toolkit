@@ -62,14 +62,14 @@ namespace Krypton.Toolkit.Suite.Extended.ToastNotification
 
         #endregion
 
-        private void VisualToastNotificationBasicForm_LocationChanged(object sender, EventArgs e)
+        private void VisualToastNotificationBasicForm_LocationChanged(object? sender, EventArgs e)
         {
             
         }
 
-        private void VisualToastNotificationBasicForm_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
+        private void VisualToastNotificationBasicForm_GotFocus(object? sender, EventArgs e) => kbtnDismiss.Focus();
 
-        private void VisualToastNotificationBasicForm_Load(object sender, EventArgs e)
+        private void VisualToastNotificationBasicForm_Load(object? sender, EventArgs e)
         {
             UpdateSizing();
 
@@ -84,17 +84,17 @@ namespace Krypton.Toolkit.Suite.Extended.ToastNotification
             _soundPlayer?.Play();
         }
 
-        private void kbtnClose_Click(object sender, EventArgs e)
+        private void kbtnClose_Click(object? sender, EventArgs e)
         {
             Close();
         }
 
-        private void kbtnDismiss_Click(object sender, EventArgs e)
+        private void kbtnDismiss_Click(object? sender, EventArgs e)
         {
             Close();
         }
 
-        private void kbtnExtraAction_Click(object sender, EventArgs e)
+        private void kbtnExtraAction_Click(object? sender, EventArgs e)
         {
 
         }

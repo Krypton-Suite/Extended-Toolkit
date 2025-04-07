@@ -668,7 +668,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
         #endregion
 
-        private void InternalKryptonPaletteBasicColourCreator_Load(object sender, EventArgs e)
+        private void InternalKryptonPaletteBasicColourCreator_Load(object? sender, EventArgs e)
         {
 
         }

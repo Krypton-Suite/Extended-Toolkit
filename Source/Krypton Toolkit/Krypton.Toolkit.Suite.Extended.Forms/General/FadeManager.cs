@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _fadeController = controller;
         }
 
-        //private void OnCurrentWindowLoad(object sender, EventArgs e)
+        //private void OnCurrentWindowLoad(object? sender, EventArgs e)
         //{
         //    if (_useFade)
         //    {
@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         //    }
         //}
 
-        //private void OnCurrentWindowFormClosing(object sender, FormClosingEventArgs e)
+        //private void OnCurrentWindowFormClosing(object? sender, FormClosingEventArgs e)
         //{
         //    if (_useFade)
         //    {

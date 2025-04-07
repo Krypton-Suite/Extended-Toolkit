@@ -810,7 +810,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             return new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
         }
 
-        private void AnyKeyDown(object sender, KeyEventArgs e)
+        private void AnyKeyDown(object? sender, KeyEventArgs e)
         {
             // Escape key kills the dialog if we allow it to be closed
             if (ControlBox

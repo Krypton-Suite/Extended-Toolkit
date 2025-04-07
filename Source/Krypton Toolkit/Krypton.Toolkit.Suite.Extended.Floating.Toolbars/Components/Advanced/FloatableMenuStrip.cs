@@ -203,7 +203,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Event Handlers
-        private void _menuStripContainerWindow_FormClosing(object sender, FormClosingEventArgs e)
+        private void _menuStripContainerWindow_FormClosing(object? sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
@@ -215,7 +215,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
-        private void _menuStripContainerWindow_LocationChanged(object sender, EventArgs e)
+        private void _menuStripContainerWindow_LocationChanged(object? sender, EventArgs e)
         {
             Point point;
 
@@ -262,7 +262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
-        private void _menuStripContainerWindow_NCLBUTTONDBLCLK(object sender, EventArgs e)
+        private void _menuStripContainerWindow_NCLBUTTONDBLCLK(object? sender, EventArgs e)
         {
             _menuStripContainerWindow.Controls.Remove(this);
 

@@ -181,12 +181,12 @@ namespace Krypton.Toolkit.Suite.Extended.Shared
                                     //    };
                                     //    panel.Controls.Add(button);
                                     //    control.Button = button;
-                                    //    button.NumericUpDown.ValueChanged += delegate(object sender, EventArgs args)
+                                    //    button.NumericUpDown.ValueChanged += delegate(object? sender, EventArgs args)
                                     //    {
                                     //        PlatformInvoke.SendMessage(control.hWnd, PlatformInvoke.WM_.SETTEXT, IntPtr.Zero,
                                     //            button.NumericUpDown.Text);
                                     //    };
-                                    //    button.Click += delegate (object sender, EventArgs args)
+                                    //    button.Click += delegate (object? sender, EventArgs args)
                                     //    {
                                     //        PlatformInvoke.SendMessage(control.hWnd, PlatformInvoke.BM_CLICK, IntPtr.Zero, IntPtr.Zero);
                                     //        ClickCallback?.Invoke(control);

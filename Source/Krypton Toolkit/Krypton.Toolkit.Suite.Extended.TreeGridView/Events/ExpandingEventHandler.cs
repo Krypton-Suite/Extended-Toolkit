@@ -27,5 +27,5 @@
 
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
-    public delegate void ExpandingEventHandler(object sender, ExpandingEventArgs e);
+    public delegate void ExpandingEventHandler(object? sender, ExpandingEventArgs e);
 }

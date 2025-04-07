@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             Cursor.Current = Cursors.Default;
         }
 
-        private void GetServerTypeValues(object sender, EventArgs e)
+        private void GetServerTypeValues(object? sender, EventArgs e)
         {
             int filterVal = 0x00;
             bool itemsChecked = false;
@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         /// Provides an alternative (and more reliable)
         /// way to get available SQL Servers on your network.
         /// </summary>
-        private void GetSqlServersUsingSQLDMO(object sender, EventArgs e)
+        private void GetSqlServersUsingSQLDMO(object? sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             //SQLDMO.Application app = new SQLDMO.ApplicationClass();
@@ -186,7 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         }
         #endregion
 
-        private void klstServers_SelectedIndexChanged(object sender, EventArgs e)
+        private void klstServers_SelectedIndexChanged(object? sender, EventArgs e)
         {
             try
             {
@@ -208,7 +208,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
         }
 
-        private void kchkAllServers_CheckedChanged(object sender, EventArgs e)
+        private void kchkAllServers_CheckedChanged(object? sender, EventArgs e)
         {
             foreach (KryptonCheckBox cb in kgbServerTypes.Controls)
             {

@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         #endregion
 
         #region Event Handlers
-        void btnPing_Click(object sender, EventArgs e)
+        void btnPing_Click(object? sender, EventArgs e)
         {
             _pingView.Controls.Clear();
             string host = _txtPingHost.Text;
@@ -104,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
         }
 
-        void _worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        void _worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             ListView statView = (ListView)_updateControl.Controls[0];
             List<PingDetails> details = (List<PingDetails>)e.Result;
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
         }
 
-        void _worker_DoWork(object sender, DoWorkEventArgs e)
+        void _worker_DoWork(object? sender, DoWorkEventArgs e)
         {
             string host = (string)e.Argument;
 

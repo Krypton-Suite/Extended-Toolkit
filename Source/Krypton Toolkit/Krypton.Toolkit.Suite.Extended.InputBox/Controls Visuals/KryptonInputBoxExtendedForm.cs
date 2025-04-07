@@ -801,7 +801,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             return kibe.ShowDialog(showOwner) == DialogResult.OK ? kibe.InputResponse : string.Empty;
         }
 
-        private void Response_KeyDown(object sender, KeyEventArgs e)
+        private void Response_KeyDown(object? sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {

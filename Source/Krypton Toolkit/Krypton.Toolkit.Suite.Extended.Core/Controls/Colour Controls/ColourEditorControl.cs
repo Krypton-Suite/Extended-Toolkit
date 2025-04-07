@@ -977,7 +977,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
 #endif
 
-        private void hexTextBox_DrawItem(object sender, DrawItemEventArgs e)
+        private void hexTextBox_DrawItem(object? sender, DrawItemEventArgs e)
         {
             // TODO: Really, this should be another control - ColorComboBox or ColorListBox etc.
 

@@ -221,7 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void kbtnGenerateNewFile_Click(object sender, EventArgs e)
+        private void kbtnGenerateNewFile_Click(object? sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(krtbFile.Text))
             {
@@ -248,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void PaletteFileEditor_Load(object sender, EventArgs e)
+        private void PaletteFileEditor_Load(object? sender, EventArgs e)
         {
 
         }

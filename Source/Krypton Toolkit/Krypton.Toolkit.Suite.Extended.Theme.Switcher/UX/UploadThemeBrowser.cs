@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         }
         #endregion
 
-        private void UploadThemeBrowser_Load(object sender, EventArgs e)
+        private void UploadThemeBrowser_Load(object? sender, EventArgs e)
         {
             DebugUtilities.NotImplemented(@"This feature has not been implemented yet.");
 

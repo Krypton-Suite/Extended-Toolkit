@@ -384,19 +384,19 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             InitializeComponent();
         }
 
-        private void CustomColours_Load(object sender, EventArgs e)
+        private void CustomColours_Load(object? sender, EventArgs e)
         {
             ColourUtilities.PropagateStandardColours(kcmbNormalTextColour);
 
             ColourUtilities.PropagateSystemColours(kcmbNormalTextSystemColours);
         }
 
-        private void kbtnOk_Click(object sender, EventArgs e)
+        private void kbtnOk_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void kbtnSaveColour_Click(object sender, EventArgs e)
+        private void kbtnSaveColour_Click(object? sender, EventArgs e)
         {
             if (klstCustomColourSelector.SelectedItem.ToString() == "Border Colour")
             {
@@ -507,19 +507,19 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             kbtnSaveColour.Enabled = false;
         }
 
-        private void kbtnGenerateNormalTextRedValue_Click(object sender, EventArgs e) => knumRedChannelValue.Value = _randomNumberGenerator.RandomlyGenerateARedNumberBetween(0, 255);
+        private void kbtnGenerateNormalTextRedValue_Click(object? sender, EventArgs e) => knumRedChannelValue.Value = _randomNumberGenerator.RandomlyGenerateARedNumberBetween(0, 255);
 
-        private void kbtnGenerateNormalTextGreenValue_Click(object sender, EventArgs e) => knumGreenChannelValue.Value = _randomNumberGenerator.RandomlyGenerateAGreenNumberBetween(0, 255);
+        private void kbtnGenerateNormalTextGreenValue_Click(object? sender, EventArgs e) => knumGreenChannelValue.Value = _randomNumberGenerator.RandomlyGenerateAGreenNumberBetween(0, 255);
 
-        private void kbtnGenerateNormalTextBlueValue_Click(object sender, EventArgs e)
+        private void kbtnGenerateNormalTextBlueValue_Click(object? sender, EventArgs e)
         => knumBlueChannelValue.Value = _randomNumberGenerator.RandomlyGenerateABlueNumberBetween(0, 255);
 
-        private void pbxColourPreview_MouseEnter(object sender, EventArgs e)
+        private void pbxColourPreview_MouseEnter(object? sender, EventArgs e)
         {
             //InformationControlManager.DisplayColourInformation(pbxColourPreview, false, "Colour Preview");
         }
 
-        private void kcmbNormalTextColour_SelectedIndexChanged(object sender, EventArgs e)
+        private void kcmbNormalTextColour_SelectedIndexChanged(object? sender, EventArgs e)
         {
             Color temporyColour = Color.FromName(kcmbNormalTextColour.Text);
 
@@ -532,7 +532,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knumBlueChannelValue.Value = temporyColour.B;
         }
 
-        private void kcmbNormalTextSystemColours_SelectedIndexChanged(object sender, EventArgs e)
+        private void kcmbNormalTextSystemColours_SelectedIndexChanged(object? sender, EventArgs e)
         {
             pbxColourPreview.BackColor = Color.FromName(kcmbNormalTextSystemColours.Text);
 
@@ -543,9 +543,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knumBlueChannelValue.Value = pbxColourPreview.BackColor.B;
         }
 
-        private void pbxColourPreview_BackColorChanged(object sender, EventArgs e) => kbtnSaveColour.Enabled = true;
+        private void pbxColourPreview_BackColorChanged(object? sender, EventArgs e) => kbtnSaveColour.Enabled = true;
 
-        private void pbxColourPreview_Click(object sender, EventArgs e)
+        private void pbxColourPreview_Click(object? sender, EventArgs e)
         {
             knumRedChannelValue.Value = pbxColourPreview.BackColor.R;
 
@@ -554,7 +554,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knumGreenChannelValue.Value = pbxColourPreview.BackColor.G;
         }
 
-        private void kbtnUtiliseAsBaseColour_Click(object sender, EventArgs e)
+        private void kbtnUtiliseAsBaseColour_Click(object? sender, EventArgs e)
         {
             if (pbxColourPreview.BackColor != Color.Transparent)
             {
@@ -568,13 +568,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void knumRedChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumRedChannelValue_ValueChanged(object? sender, EventArgs e)
         => pbxColourPreview.BackColor = ColourManager.ChangeColour(255, knumRedChannelValue.Value, knumGreenChannelValue.Value, knumBlueChannelValue.Value);
 
-        private void knumGreenChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumGreenChannelValue_ValueChanged(object? sender, EventArgs e)
         => pbxColourPreview.BackColor = ColourManager.ChangeColour(255, knumRedChannelValue.Value, knumGreenChannelValue.Value, knumBlueChannelValue.Value);
 
-        private void knumBlueChannelValue_ValueChanged(object sender, EventArgs e)
+        private void knumBlueChannelValue_ValueChanged(object? sender, EventArgs e)
         => pbxColourPreview.BackColor = ColourManager.ChangeColour(255, knumRedChannelValue.Value, knumGreenChannelValue.Value, knumBlueChannelValue.Value);
     }
 }

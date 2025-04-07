@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
-    public delegate void NaviBandEventHandler(object sender, NaviBandEventArgs e);
+    public delegate void NaviBandEventHandler(object? sender, NaviBandEventArgs e);
 
     /// <summary>
     /// Contains additional event info

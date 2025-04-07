@@ -227,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             InitializeComponent();
         }
 
-        private void kbtnAllColoursAsHex_Click(object sender, EventArgs e)
+        private void kbtnAllColoursAsHex_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -239,7 +239,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void kbtnAllColoursAsRGB_Click(object sender, EventArgs e)
+        private void kbtnAllColoursAsRGB_Click(object? sender, EventArgs e)
         {
             try
             {

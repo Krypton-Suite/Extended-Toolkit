@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary></summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-        public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
+        public delegate void ExecuteProcessAsAdministratorEventHandler(object? sender, ExecuteProcessAsAdministratorEventArgs e);
 
         /// <summary>The execute process as administrator</summary>
         public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>Executes the process as an administrator.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
-        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
+        protected virtual void OnExecuteProcessAsAdministrator(object? sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
         #endregion
 
         #region Identity

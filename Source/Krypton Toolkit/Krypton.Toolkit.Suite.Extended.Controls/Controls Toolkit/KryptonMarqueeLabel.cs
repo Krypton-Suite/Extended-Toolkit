@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>Handles the Tick event of the MarqueeTimer control.</summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void MarqueeTimer_Tick(object sender, EventArgs e)
+        private void MarqueeTimer_Tick(object? sender, EventArgs e)
         {
             offset = offset - Speed;
 

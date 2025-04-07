@@ -428,7 +428,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
 
         //Key Mouse Events
-        private void KryptonSliderButton_MouseDown(object sender, MouseEventArgs e)
+        private void KryptonSliderButton_MouseDown(object? sender, MouseEventArgs e)
         {
             _mDown = true;
             //Single click?
@@ -437,17 +437,17 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             Invalidate();
         }
-        private void KryptonSliderButton_MouseEnter(object sender, EventArgs e)
+        private void KryptonSliderButton_MouseEnter(object? sender, EventArgs e)
         {
             _mHighlight = true;
             Invalidate();
         }
-        private void KryptonSliderButton_MouseLeave(object sender, EventArgs e)
+        private void KryptonSliderButton_MouseLeave(object? sender, EventArgs e)
         {
             _mHighlight = false;
             Invalidate();
         }
-        private void KryptonSliderButton_MouseUp(object sender, MouseEventArgs e)
+        private void KryptonSliderButton_MouseUp(object? sender, MouseEventArgs e)
         {
             _mDown = false;
 
@@ -479,33 +479,33 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
 
         //Krypton Palette
-        private void k_palette_BasePaletteChanged(object sender, EventArgs e)
+        private void k_palette_BasePaletteChanged(object? sender, EventArgs e)
         {
             Invalidate();
         }
-        private void k_palette_BaseRendererChanged(object sender, EventArgs e)
+        private void k_palette_BaseRendererChanged(object? sender, EventArgs e)
         {
             Invalidate();
         }
-        private void k_palette_PalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void k_palette_PalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             Invalidate();
         }
 
         //Fire Machine Gun
-        private void FireTimer_Tick(object sender, EventArgs e)
+        private void FireTimer_Tick(object? sender, EventArgs e)
         {
             SliderButtonFire?.Invoke(this, new EventArgs());
         }
 
 
         //Krypton Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             Invalidate();
         }
 
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             if (_palette != null)
             {

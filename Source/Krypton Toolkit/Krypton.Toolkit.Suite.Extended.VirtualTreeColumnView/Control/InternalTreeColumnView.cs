@@ -688,7 +688,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
             return newNode;
         }
 
-        private void treePanel_Resize(object sender, EventArgs e)
+        private void treePanel_Resize(object? sender, EventArgs e)
         {
             if (_kryptonVirtualTreeColumnView?.Header?.Columns == null)
             {

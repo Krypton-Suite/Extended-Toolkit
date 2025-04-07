@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="fse"></param>
-    public delegate void FileSelectedEventHandler(object sender, FileSelectEventArgs fse);
+    public delegate void FileSelectedEventHandler(object? sender, FileSelectEventArgs fse);
 
 
     /// <summary>

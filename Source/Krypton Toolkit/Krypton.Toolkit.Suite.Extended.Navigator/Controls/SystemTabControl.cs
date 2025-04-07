@@ -175,7 +175,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         #region ... Krypton ...
         //Kripton Palette Events
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             if (_palette != null)
             {
@@ -205,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         }
 
         //Kripton Palette Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             Invalidate();
         }
@@ -591,7 +591,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         #endregion
 
         #region ... Key Events ...
-        private void KryptonTabControl_KeyDown(object sender, KeyEventArgs e)
+        private void KryptonTabControl_KeyDown(object? sender, KeyEventArgs e)
         {
 
             if (e.KeyCode == Keys.Menu)

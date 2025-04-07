@@ -442,7 +442,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         #endregion
 
         #region ... Krypton ...
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             // Unhook events from old palette
             if (_palette != null)
@@ -465,7 +465,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             Invalidate();
         }
 
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             // Palette indicates we might need to repaint, so lets do it
             Invalidate();
@@ -631,7 +631,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             base.OnMouseClick(e);
         }
-        private void this_MouseClick(object sender, MouseEventArgs e)
+        private void this_MouseClick(object? sender, MouseEventArgs e)
         {
             Point mouse;
             try
@@ -655,7 +655,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         }
 
-        private void this_ParentChanged(object sender, EventArgs e)
+        private void this_ParentChanged(object? sender, EventArgs e)
         {
             try
             {
@@ -685,7 +685,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         //bool FlagControl = false;
 
-        private void FlatTabControl_KeyDown(object sender, KeyEventArgs e)
+        private void FlatTabControl_KeyDown(object? sender, KeyEventArgs e)
         {
 
             if (e.KeyCode == Keys.Menu)
@@ -1695,7 +1695,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private void ToolstripItemEvent(Object sender, EventArgs e)
+        private void ToolstripItemEvent(object? sender, EventArgs e)
         {
             ToolStripMenuItem tsi = (ToolStripMenuItem)sender;
             //tsi.Checked = true;
@@ -1714,7 +1714,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             base.OnControlRemoved(e);
         }
 
-        private void Scroller_ScrollLeft(Object sender, EventArgs e)
+        private void Scroller_ScrollLeft(object? sender, EventArgs e)
         {
             if (TabCount == 0)
             {
@@ -1728,7 +1728,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         }
 
 
-        private void Scroller_ScrollRight(Object sender, EventArgs e)
+        private void Scroller_ScrollRight(object? sender, EventArgs e)
         {
             if (TabCount == 0)
             {
@@ -1747,7 +1747,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         }
 
 
-        private void Scroller_TabClose(Object sender, EventArgs e)
+        private void Scroller_TabClose(object? sender, EventArgs e)
         {
             if (SelectedTab != null)
             {
@@ -1755,7 +1755,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private void Scroller_ContextMenuButton(Object sender, EventArgs e)
+        private void Scroller_ContextMenuButton(object? sender, EventArgs e)
         {
             _scroller.ContextMenuStrip1.DropShadowEnabled = true;
 
@@ -1932,7 +1932,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             public event EventHandler ScrollRight;
             public event EventHandler ContextualMenu;
 
-            private void TabScroller_Resize(Object sender, EventArgs e)
+            private void TabScroller_Resize(object? sender, EventArgs e)
             {
                 //LeftScroller.Width = this.Width / 3;
                 //RightScroller.Width = this.Width / 3;
@@ -1940,7 +1940,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
 
-            private void LeftScroller_Click(Object sender, EventArgs e)
+            private void LeftScroller_Click(object? sender, EventArgs e)
             {
                 if (ScrollLeft != null)
                 {
@@ -1949,7 +1949,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
 
-            private void RightScroller_Click(Object sender, EventArgs e)
+            private void RightScroller_Click(object? sender, EventArgs e)
             {
                 if (ScrollRight != null)
                 {
@@ -1958,7 +1958,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
 
-            private void CloseButton_Click(Object sender, EventArgs e)
+            private void CloseButton_Click(object? sender, EventArgs e)
             {
                 if (TabClose != null)
                 {
@@ -1966,7 +1966,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 }
             }
 
-            private void ContextMenuButton_Click(Object sender, EventArgs e)
+            private void ContextMenuButton_Click(object? sender, EventArgs e)
             {
                 if (TabClose != null)
                 {

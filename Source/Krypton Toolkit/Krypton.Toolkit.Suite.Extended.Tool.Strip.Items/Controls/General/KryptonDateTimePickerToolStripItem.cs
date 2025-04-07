@@ -312,7 +312,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         public event EventHandler? ValueChanged;
 
-        protected void OnValueChanged(object sender, EventArgs e)
+        protected void OnValueChanged(object? sender, EventArgs e)
         {
             ValueChanged?.Invoke(this, e);
         }

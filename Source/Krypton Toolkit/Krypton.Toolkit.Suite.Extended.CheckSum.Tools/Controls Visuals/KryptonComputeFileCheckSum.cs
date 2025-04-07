@@ -29,7 +29,7 @@
 
         #region Implementation
 
-        private void KryptonComputeFileCheckSum_Load(object sender, EventArgs e)
+        private void KryptonComputeFileCheckSum_Load(object? sender, EventArgs e)
         {
 #if NETCOREAPP3_0_OR_GREATER
             foreach (string hash in Enum.GetNames(typeof(SafeNETCoreAndNewerSupportedHashAlgorithims)))
@@ -52,7 +52,7 @@
 #endif
         }
 
-        private void kchkToggleCasing_CheckedChanged(object sender, EventArgs e)
+        private void kchkToggleCasing_CheckedChanged(object? sender, EventArgs e)
         {
             string tempHashString = kwlHashOutput.Text;
 
@@ -70,7 +70,7 @@
             }
         }
 
-        private void bsaBrowse_Click(object sender, EventArgs e)
+        private void bsaBrowse_Click(object? sender, EventArgs e)
         {
             if (_useAPICodePackFeatures)
             {
@@ -138,7 +138,7 @@
             }
         }
 
-        private void kbtnSaveToFile_Click(object sender, EventArgs e) => SaveHashFile();
+        private void kbtnSaveToFile_Click(object? sender, EventArgs e) => SaveHashFile();
 
         private void SaveHashFile()
         {
@@ -300,7 +300,7 @@
         }
 #endif
 
-        private void kbtnCalculate_Click(object sender, EventArgs e)
+        private void kbtnCalculate_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -312,7 +312,7 @@
             }
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        private void kbtnCancel_Click(object? sender, EventArgs e)
         {
             if (bgwMD5.IsBusy || bgwSHA1.IsBusy || bgwSHA256.IsBusy || bgwSHA384.IsBusy || bgwSHA512.IsBusy || bgwRIPEMD160.IsBusy)
             {
@@ -356,7 +356,7 @@
 
         #endregion
 
-        private void bgwMD5_DoWork(object sender, DoWorkEventArgs e)
+        private void bgwMD5_DoWork(object? sender, DoWorkEventArgs e)
         {
             string? filePath = e.Argument?.ToString();
 
@@ -395,7 +395,7 @@
             }
         }
 
-        private void bgwSHA1_DoWork(object sender, DoWorkEventArgs e)
+        private void bgwSHA1_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -431,7 +431,7 @@
             }
         }
 
-        private void bgwSHA256_DoWork(object sender, DoWorkEventArgs e)
+        private void bgwSHA256_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -467,7 +467,7 @@
             }
         }
 
-        private void bgwSHA384_DoWork(object sender, DoWorkEventArgs e)
+        private void bgwSHA384_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -503,7 +503,7 @@
             }
         }
 
-        private void bgwSHA512_DoWork(object sender, DoWorkEventArgs e)
+        private void bgwSHA512_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -539,7 +539,7 @@
             }
         }
 
-        private void bgwRIPEMD160_DoWork(object sender, DoWorkEventArgs e)
+        private void bgwRIPEMD160_DoWork(object? sender, DoWorkEventArgs e)
         {
 #if !NETCOREAPP3_0_OR_GREATER
             string filePath = e.Argument.ToString();
@@ -577,7 +577,7 @@
 #endif
         }
 
-        private void Calculation_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void Calculation_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             if (_useAPICodePackFeatures && TaskbarManager.IsPlatformSupported)
             {
@@ -595,7 +595,7 @@
             UpdateStatus(CheckSumStatus.Computing);
         }
 
-        private void Calculation_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void Calculation_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             if (_useAPICodePackFeatures && TaskbarManager.IsPlatformSupported)
             {
@@ -615,6 +615,6 @@
             UpdateStatus(CheckSumStatus.Ready);
         }
 
-        private void bsaReset_Click(object sender, EventArgs e) => ktxtFilePath.Text = string.Empty;
+        private void bsaReset_Click(object? sender, EventArgs e) => ktxtFilePath.Text = string.Empty;
     }
 }

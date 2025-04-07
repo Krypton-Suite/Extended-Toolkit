@@ -532,7 +532,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MenuStrip_FilterChanged(object sender, EventArgs e)
+        private void MenuStrip_FilterChanged(object? sender, EventArgs e)
         {
             RefreshImage();
             RepaintCell();
@@ -547,7 +547,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MenuStrip_SortChanged(object sender, EventArgs e)
+        private void MenuStrip_SortChanged(object? sender, EventArgs e)
         {
             RefreshImage();
             RepaintCell();

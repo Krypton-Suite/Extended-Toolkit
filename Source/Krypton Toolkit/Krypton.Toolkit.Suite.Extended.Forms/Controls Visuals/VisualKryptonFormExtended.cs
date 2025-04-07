@@ -887,7 +887,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An EventArgs containing event data.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        protected override void OnButtonSpecChanged(object sender, EventArgs e)
+        protected override void OnButtonSpecChanged(object? sender, EventArgs e)
         {
             Debug.Assert(e != null);
 
@@ -951,7 +951,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         /// <param name="sender">Source of the event.</param>
         /// <param name="e">An EventArgs containing the event data.</param>
-        protected override void OnAllowFormChromeChanged(object sender, EventArgs e) =>
+        protected override void OnAllowFormChromeChanged(object? sender, EventArgs e) =>
             // Test if we need to change the custom chrome usage
             UpdateUseThemeFormChromeBorderWidthDecision();
 
@@ -1545,7 +1545,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void OnShowToolTip(object sender, ToolTipEventArgs e)
+        private void OnShowToolTip(object? sender, ToolTipEventArgs e)
         {
             if (!IsDisposed)
             {
@@ -1608,11 +1608,11 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void OnCancelToolTip(object sender, EventArgs e) =>
+        private void OnCancelToolTip(object? sender, EventArgs e) =>
             // Remove any currently showing tooltip
             _visualPopupToolTip?.Dispose();
 
-        private void OnVisualPopupToolTipDisposed(object sender, EventArgs e)
+        private void OnVisualPopupToolTipDisposed(object? sender, EventArgs e)
         {
             // Unhook events from the specific instance that generated event
             VisualPopupToolTip popupToolTip = (VisualPopupToolTip)sender;
@@ -1650,7 +1650,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             OnNeedPaint(sender, e);
         }
 
-        private void OnStatusDockChanged(object sender, EventArgs e)
+        private void OnStatusDockChanged(object? sender, EventArgs e)
         {
             if (StatusStripMerging)
             {
@@ -1658,7 +1658,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void OnStatusVisibleChanged(object sender, EventArgs e)
+        private void OnStatusVisibleChanged(object? sender, EventArgs e)
         {
             if (StatusStripMerging)
             {
@@ -1666,9 +1666,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void OnGlobalUseThemeFormChromeBorderWidthChanged(object sender, EventArgs e) => UpdateUseThemeFormChromeBorderWidthDecision();
+        private void OnGlobalUseThemeFormChromeBorderWidthChanged(object? sender, EventArgs e) => UpdateUseThemeFormChromeBorderWidthDecision();
 
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             // We only care if we are using the global palette
             if (PaletteMode == PaletteMode.Global)

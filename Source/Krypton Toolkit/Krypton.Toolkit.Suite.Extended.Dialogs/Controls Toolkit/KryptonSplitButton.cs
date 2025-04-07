@@ -103,7 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <summary></summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-        public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
+        public delegate void ExecuteProcessAsAdministratorEventHandler(object? sender, ExecuteProcessAsAdministratorEventArgs e);
 
         /// <summary>The execute process as administrator</summary>
         public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
@@ -111,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <summary>Executes the process as an administrator.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
-        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
+        protected virtual void OnExecuteProcessAsAdministrator(object? sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
         #endregion
 
         #region Constructor
@@ -301,7 +301,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         #region Event Handlers
-        private void KryptonContextMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+        private void KryptonContextMenu_Closed(object? sender, ToolStripDropDownClosedEventArgs e)
         {
             KryptonContextMenu? kcm = sender as KryptonContextMenu;
             if (kcm != null)
@@ -315,7 +315,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             //} 
         }
 
-        private void ContextMenuStrip_Closing(object sender, ToolStripDropDownClosingEventArgs e)
+        private void ContextMenuStrip_Closing(object? sender, ToolStripDropDownClosingEventArgs e)
         {
             ContextMenuStrip? cms = sender as ContextMenuStrip;
             if (cms != null)

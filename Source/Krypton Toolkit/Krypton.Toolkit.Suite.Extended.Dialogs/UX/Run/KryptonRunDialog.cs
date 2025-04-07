@@ -24,7 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             AdjustStartPosition(startPosition);
         }
 
-        private void KryptonRunDialog_Load(object sender, EventArgs e)
+        private void KryptonRunDialog_Load(object? sender, EventArgs e)
         {
 
         }
@@ -59,12 +59,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             kcmdOpenInExplorer.ImageSmall = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new(16, 16));
         }
 
-        private void bsBrowse_Click(object sender, EventArgs e)
+        private void bsBrowse_Click(object? sender, EventArgs e)
         {
             kcmbFilePath.Text = Browse();
         }
 
-        private void kcmbFilePath_TextChanged(object sender, EventArgs e)
+        private void kcmbFilePath_TextChanged(object? sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(kcmbFilePath.Text))
             {
@@ -110,11 +110,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
 
-        private void pbxProcessIcon_MouseEnter(object sender, EventArgs e)
+        private void pbxProcessIcon_MouseEnter(object? sender, EventArgs e)
         {
         }
 
-        private void kbtnSettings_Click(object sender, EventArgs e)
+        private void kbtnSettings_Click(object? sender, EventArgs e)
         {
             KryptonRunDialogOptions runDialogOptions = new();
 

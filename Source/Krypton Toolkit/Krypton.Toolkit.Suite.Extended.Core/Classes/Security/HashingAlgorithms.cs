@@ -108,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Event Handlers
-        private static void MD5Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private static void MD5Worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             HashingAlgorithms algorithims = new();
 
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         }
 
-        private static void MD5Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private static void MD5Worker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             HashingAlgorithms algorithims = new();
 
@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             algorithims.ProgressValueLabel.Text = $"{e.ProgressPercentage.ToString()}%";
         }
 
-        private static void MD5Worker_DoWork(object sender, DoWorkEventArgs e)
+        private static void MD5Worker_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 

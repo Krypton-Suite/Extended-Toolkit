@@ -73,9 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        /// <summary>
-        /// Shows the exception.
-        /// </summary>
+        /// <summary>Shows the exception.</summary>
         /// <param name="exceptionMessage">The exception message.</param>
         /// <param name="useKryptonMessageBox">if set to <c>true</c> [use krypton message box].</param>
         /// <param name="useExtendedKryptonMessageBox">if set to <c>true</c> [use extended krypton message box].</param>
@@ -89,6 +87,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="defaultButton">The default button.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="options">The options.</param>
+        /// <param name="kryptonMessageBoxIcon">The krypton message box icon.</param>
+        /// <param name="kryptonMessageBoxDefaultButton">The krypton message box default button.</param>
+        /// <param name="win32Buttons">The win32 buttons.</param>
         public void ShowException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel? toolStripLabel = null, object? args = null, string caption = "Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button3, MessageBoxIcon icon = MessageBoxIcon.Exclamation, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, KryptonMessageBoxIcon kryptonMessageBoxIcon = KryptonMessageBoxIcon.Error, KryptonMessageBoxDefaultButton kryptonMessageBoxDefaultButton = KryptonMessageBoxDefaultButton.Button4, MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
         {
             if (useKryptonMessageBox)
@@ -118,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             try
             {
-                ExceptionDispatchInfo exceptionInfo = null;
+                ExceptionDispatchInfo? exceptionInfo = null;
 
                 if (!File.Exists(fileName))
                 {
@@ -137,8 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception ex)
             {
-
-                throw;
+                KryptonExceptionHandler.CaptureException(ex);
             }
         }
 
@@ -166,8 +166,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception e)
             {
-
-                throw;
+                KryptonExceptionHandler.CaptureException(e);
             }
         }
         #endregion

@@ -185,20 +185,20 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         }
         #endregion
 
-        private void klblClose_MouseEnter(object sender, EventArgs e)
+        private void klblClose_MouseEnter(object? sender, EventArgs e)
         {
             klblClose.StateCommon.ShortText.Color1 = Color.Red;
 
             klblClose.StateCommon.ShortText.Color2 = Color.Red;
         }
 
-        private void klblClose_MouseLeave(object sender, EventArgs e)
+        private void klblClose_MouseLeave(object? sender, EventArgs e)
         {
             klblClose.StateCommon.ShortText.Color1 = Color.Empty;
 
             klblClose.StateCommon.ShortText.Color2 = Color.Empty;
         }
 
-        private void klblClose_Click(object sender, EventArgs e) => Application.Exit();
+        private void klblClose_Click(object? sender, EventArgs e) => Application.Exit();
     }
 }

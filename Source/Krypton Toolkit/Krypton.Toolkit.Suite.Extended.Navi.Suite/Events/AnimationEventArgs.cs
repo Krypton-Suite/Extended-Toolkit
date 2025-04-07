@@ -78,5 +78,5 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
     }
 
-    public delegate void AnimationEventHandler(object sender, AnimationEventArgs e);
+    public delegate void AnimationEventHandler(object? sender, AnimationEventArgs e);
 }

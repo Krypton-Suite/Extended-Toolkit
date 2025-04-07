@@ -251,11 +251,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Custom Events
-        public delegate void SelectedColourChangedEventHandler(object sender, ColourChangedEventArgs e);
+        public delegate void SelectedColourChangedEventHandler(object? sender, ColourChangedEventArgs e);
 
         public event SelectedColourChangedEventHandler SelectedColourChanged;
 
-        protected virtual void OnSelectedColourChanged(object sender, ColourChangedEventArgs e) => SelectedColourChanged?.Invoke(sender, e);
+        protected virtual void OnSelectedColourChanged(object? sender, ColourChangedEventArgs e) => SelectedColourChanged?.Invoke(sender, e);
         #endregion
 
         #region Constructors

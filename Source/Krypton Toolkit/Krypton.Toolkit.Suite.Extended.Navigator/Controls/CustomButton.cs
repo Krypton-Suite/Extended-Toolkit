@@ -551,7 +551,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private void animateButtonHighlightedTimer_Tick(object sender, EventArgs e)
+        private void animateButtonHighlightedTimer_Tick(object? sender, EventArgs e)
         {
             /*
             if (increasingAlpha)
@@ -609,7 +609,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private void animateResumeNormalTimer_Tick(object sender, EventArgs e)
+        private void animateResumeNormalTimer_Tick(object? sender, EventArgs e)
         {
             /*
              bool modified = false;

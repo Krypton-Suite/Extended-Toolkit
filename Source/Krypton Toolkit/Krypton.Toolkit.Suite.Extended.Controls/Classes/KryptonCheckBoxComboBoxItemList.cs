@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         public event EventHandler CheckBoxCheckedChanged;
 
-        protected void OnCheckBoxCheckedChanged(object sender, EventArgs e)
+        protected void OnCheckBoxCheckedChanged(object? sender, EventArgs e)
         {
             EventHandler handler = CheckBoxCheckedChanged;
             if (handler != null)
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
         }
 
-        private void item_CheckedChanged(object sender, EventArgs e)
+        private void item_CheckedChanged(object? sender, EventArgs e)
         {
             OnCheckBoxCheckedChanged(sender, e);
         }

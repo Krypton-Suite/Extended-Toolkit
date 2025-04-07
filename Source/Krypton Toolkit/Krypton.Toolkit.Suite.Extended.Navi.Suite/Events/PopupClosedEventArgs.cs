@@ -56,5 +56,5 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
     /// <summary>
     /// Represents the method which responds to a <see cref="PopupClosedEventArgs"/> event.
     /// </summary>
-    public delegate void PopupClosedEventHandler(object sender, PopupClosedEventArgs e);
+    public delegate void PopupClosedEventHandler(object? sender, PopupClosedEventArgs e);
 }

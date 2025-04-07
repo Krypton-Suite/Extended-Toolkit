@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         }
         #endregion
 
-        private void kbtnCopyFiles_Click(object sender, EventArgs e)
+        private void kbtnCopyFiles_Click(object? sender, EventArgs e)
         {
             if (kchkUseDebugConsole.Checked)
             {

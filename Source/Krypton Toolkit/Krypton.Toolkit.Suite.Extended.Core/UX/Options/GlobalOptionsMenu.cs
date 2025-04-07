@@ -1052,7 +1052,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             InitializeComponent();
         }
 
-        private void GlobalOptionsMenu_Load(object sender, EventArgs e)
+        private void GlobalOptionsMenu_Load(object? sender, EventArgs e)
         {
             InitialiseWindow();
         }

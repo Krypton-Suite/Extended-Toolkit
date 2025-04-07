@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary></summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-        public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
+        public delegate void ExecuteProcessAsAdministratorEventHandler(object? sender, ExecuteProcessAsAdministratorEventArgs e);
 
         /// <summary>The execute process as administrator</summary>
         public ExecuteProcessAsAdministratorEventHandler? ExecuteProcessAsAdministrator;
@@ -176,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>Called when [execute process as administrator].</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e)
+        protected virtual void OnExecuteProcessAsAdministrator(object? sender, ExecuteProcessAsAdministratorEventArgs e)
         {
             if (ExecuteProcessAsAdministrator != null)
             {

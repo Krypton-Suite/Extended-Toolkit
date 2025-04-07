@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Implementation
 
-        private void MyOwnRecentFileGotClicked_Handler(object sender, EventArgs e)
+        private void MyOwnRecentFileGotClicked_Handler(object? sender, EventArgs e)
         {
             var fileName = (sender as ToolStripItem)?.Text;
 
@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             OpenFile(fileName, _outputControl);
         }
 
-        private void MyOwnRecentFilesGotCleared_Handler(object sender, EventArgs e)
+        private void MyOwnRecentFilesGotCleared_Handler(object? sender, EventArgs e)
         {
 
         }

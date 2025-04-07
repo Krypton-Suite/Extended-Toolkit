@@ -255,7 +255,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             InitializeComponent();
         }
 
-        private void HexadecimalToRGBConverter_Load(object sender, EventArgs e)
+        private void HexadecimalToRGBConverter_Load(object? sender, EventArgs e)
         {
             Modified = false;
 
@@ -268,7 +268,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             _editTimer.Tick += EditTimer_Tick;
         }
 
-        private void EditTimer_Tick(object sender, EventArgs e)
+        private void EditTimer_Tick(object? sender, EventArgs e)
         {
             if (klbColours.Items.Count > 0)
             {
@@ -280,7 +280,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void kbtnConvertToRGB_Click(object sender, EventArgs e)
+        private void kbtnConvertToRGB_Click(object? sender, EventArgs e)
         {
             TargetColour = ColorTranslator.FromHtml($"#{ktxtHexValue.Text}");
 
@@ -297,7 +297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             ktxtHexValue.Focus();
         }
 
-        private void kbtnExport_Click(object sender, EventArgs e)
+        private void kbtnExport_Click(object? sender, EventArgs e)
         {
             CommonSaveFileDialog csfd = new();
 
@@ -323,7 +323,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             Modified = false;
         }
 
-        private void kbtnOk_Click(object sender, EventArgs e)
+        private void kbtnOk_Click(object? sender, EventArgs e)
         {
             if (Modified)
             {
@@ -340,12 +340,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        private void kbtnCancel_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void ktxtHexValue_TextChanged(object sender, EventArgs e)
+        private void ktxtHexValue_TextChanged(object? sender, EventArgs e)
         {
             if (ktxtHexValue.Text.Length == 6)
             {
@@ -353,7 +353,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void kbtnLoadFromFile_Click(object sender, EventArgs e)
+        private void kbtnLoadFromFile_Click(object? sender, EventArgs e)
         {
             ArrayList fileContents = new();
 
@@ -387,7 +387,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void removeSelectedColourToolStripMenuItem_Click(object sender, EventArgs e)
+        private void removeSelectedColourToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             klbColours.Items.RemoveAt(klbColours.SelectedIndex);
         }

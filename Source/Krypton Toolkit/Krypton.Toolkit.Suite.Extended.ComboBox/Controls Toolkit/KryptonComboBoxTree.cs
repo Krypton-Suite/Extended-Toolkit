@@ -140,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
 
         public KryptonTreeView TreeView => _tvTreeView;
 
-        private void txtSelectedValue_Click(object sender, EventArgs e)
+        private void txtSelectedValue_Click(object? sender, EventArgs e)
         {
             ToggleTreeView(this, new EventArgs());
         }

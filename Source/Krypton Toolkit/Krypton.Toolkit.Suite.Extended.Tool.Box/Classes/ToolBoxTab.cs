@@ -578,7 +578,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         #region Mouse Event Handlers
 
-        private void On_MouseDown(object sender, MouseEventArgs e)
+        private void On_MouseDown(object? sender, MouseEventArgs e)
         {
             Point mousePt = Point.Empty;
 
@@ -662,7 +662,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
         }
 
-        private void On_MouseUp(object sender, MouseEventArgs e)
+        private void On_MouseUp(object? sender, MouseEventArgs e)
         {
             bool bHit = HitTest(e.X, e.Y);
 
@@ -818,7 +818,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             return bDragged;
         }
 
-        private void On_MouseMove(object sender, MouseEventArgs e)
+        private void On_MouseMove(object? sender, MouseEventArgs e)
         {
             bool oldMouseHover = false;
 
@@ -874,7 +874,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
         }
 
-        private void On_MouseLeave(object sender, EventArgs e)
+        private void On_MouseLeave(object? sender, EventArgs e)
         {
             bool oldMouseHover = false;
 
@@ -1470,7 +1470,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
         }
 
-        private void On_Paint(object sender, PaintEventArgs e)
+        private void On_Paint(object? sender, PaintEventArgs e)
         {
             try
             {
@@ -2735,12 +2735,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         #region Krypton
         //Krypton Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             base.Invalidate();
         }
 
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             if (_palette != null)
             {

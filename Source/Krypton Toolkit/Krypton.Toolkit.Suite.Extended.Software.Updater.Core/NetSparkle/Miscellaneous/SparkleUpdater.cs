@@ -927,7 +927,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
             }
         }
 
-        private void OnDownloadProgressChanged(object sender, ItemDownloadProgressEventArgs args)
+        private void OnDownloadProgressChanged(object? sender, ItemDownloadProgressEventArgs args)
         {
             CallFuncConsideringUIThreads(() =>
             {
@@ -1026,7 +1026,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
             thread.Start();
         }
 
-        private async void ProgressWindowCompleted(object sender, DownloadInstallEventArgs args)
+        private async void ProgressWindowCompleted(object? sender, DownloadInstallEventArgs args)
         {
             if (args.ShouldInstall)
             {
@@ -1053,7 +1053,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// </summary>
         /// <param name="sender">the object that initiated this event call</param>
         /// <param name="e">information on if the download was successful.</param>
-        private void OnDownloadFinished(object sender, AsyncCompletedEventArgs e)
+        private void OnDownloadFinished(object? sender, AsyncCompletedEventArgs e)
         {
             bool shouldShowUIItems = !IsDownloadingSilently();
 
@@ -1690,7 +1690,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
             return updateData; // in this case, we've already shown UI talking about the new version
         }
 
-        private void CheckingForUpdatesWindow_Closing(object sender, EventArgs e)
+        private void CheckingForUpdatesWindow_Closing(object? sender, EventArgs e)
         {
             if (CheckingForUpdatesWindow != null)
             {
@@ -1833,7 +1833,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
             }
         }
 
-        private async void OnUpdateWindowUserResponded(object sender, UpdateResponseEventArgs args)
+        private async void OnUpdateWindowUserResponded(object? sender, UpdateResponseEventArgs args)
         {
             LogWriter.PrintMessage("Update window response: {0}", args.Result);
             var currentItem = args.UpdateItem;
@@ -1889,7 +1889,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// <summary>
         /// Loop that occasionally checks for updates for the running application
         /// </summary>
-        private async void OnWorkerDoWork(object sender, DoWorkEventArgs e)
+        private async void OnWorkerDoWork(object? sender, DoWorkEventArgs e)
         {
             // store the did run once feature
             bool goIntoLoop = true;
@@ -2081,7 +2081,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// for downloading updates will be shown (if not downloading silently)
         /// or the download will be performed (if downloading silently).
         /// </summary>
-        private void OnWorkerProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void OnWorkerProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             switch (e.ProgressPercentage)
             {

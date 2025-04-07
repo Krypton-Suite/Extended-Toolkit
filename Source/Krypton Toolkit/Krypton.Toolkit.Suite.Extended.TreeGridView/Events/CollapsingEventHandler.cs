@@ -27,5 +27,5 @@
 
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
-    public delegate void CollapsingEventHandler(object sender, CollapsingEventArgs e);
+    public delegate void CollapsingEventHandler(object? sender, CollapsingEventArgs e);
 }

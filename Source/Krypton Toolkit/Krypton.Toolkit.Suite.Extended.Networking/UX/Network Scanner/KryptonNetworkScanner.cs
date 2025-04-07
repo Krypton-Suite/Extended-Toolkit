@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         }
         #endregion
 
-        private void kbtnScan_Click(object sender, EventArgs e)
+        private void kbtnScan_Click(object? sender, EventArgs e)
         {
             if (ktxtWorkGroupName.Text == "")
             {

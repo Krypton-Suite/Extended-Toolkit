@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             pbxPreview.Invalidate();
         }
 
-        private void CustomFormatRule_Load(object sender, EventArgs e)
+        private void CustomFormatRule_Load(object? sender, EventArgs e)
         {
             kcolbtnMinimumColour.SelectedColor = _minimumColour;
 
@@ -135,7 +135,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             kcmbFormatStyle.SelectedIndex = selected;
         }
 
-        private void pbxPreview_Paint(object sender, PaintEventArgs e)
+        private void pbxPreview_Paint(object? sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             switch (_conditionalFormatType)
@@ -183,32 +183,32 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
         }
 
-        private void kbtnOk_Click(object sender, EventArgs e) => DialogResult = DialogResult.OK;
+        private void kbtnOk_Click(object? sender, EventArgs e) => DialogResult = DialogResult.OK;
 
-        private void kbtnCancel_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
+        private void kbtnCancel_Click(object? sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
-        private void kcolbtnMinimumColour_SelectedColorChanged(object sender, ColorEventArgs e)
+        private void kcolbtnMinimumColour_SelectedColorChanged(object? sender, ColorEventArgs e)
         {
             _minimumColour = e.Color;
 
             pbxPreview.Invalidate();
         }
 
-        private void kcolbtnIntermediateColour_SelectedColorChanged(object sender, ColorEventArgs e)
+        private void kcolbtnIntermediateColour_SelectedColorChanged(object? sender, ColorEventArgs e)
         {
             _intermediateColour = e.Color;
 
             pbxPreview.Invalidate();
         }
 
-        private void kcolbtnMaximumColour_SelectedColorChanged(object sender, ColorEventArgs e)
+        private void kcolbtnMaximumColour_SelectedColorChanged(object? sender, ColorEventArgs e)
         {
             _maximumColour = e.Color;
 
             pbxPreview.Invalidate();
         }
 
-        private void kcmbFormatStyle_SelectedIndexChanged(object sender, EventArgs e)
+        private void kcmbFormatStyle_SelectedIndexChanged(object? sender, EventArgs e)
         {
             var tag = ((KryptonListItem)kcmbFormatStyle.Items[kcmbFormatStyle.SelectedIndex]).Tag;
 

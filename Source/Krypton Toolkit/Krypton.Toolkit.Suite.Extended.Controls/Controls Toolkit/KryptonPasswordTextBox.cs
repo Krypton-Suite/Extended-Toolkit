@@ -599,7 +599,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         }
 
         // ReSharper disable once InconsistentNaming
-        private void timer_Elapsed(object sender, ElapsedEventArgs e)
+        private void timer_Elapsed(object? sender, ElapsedEventArgs e)
         {
             Invalidate();
         }

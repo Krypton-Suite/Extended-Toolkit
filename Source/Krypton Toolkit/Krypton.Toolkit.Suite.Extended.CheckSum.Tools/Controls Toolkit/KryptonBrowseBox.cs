@@ -188,7 +188,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         /// <summary>Handles the Execute event of the Browse control.</summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void Browse_Execute(object sender, EventArgs e)
+        private void Browse_Execute(object? sender, EventArgs e)
         {
             if (_useSaveDialog)
             {
@@ -237,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         /// <summary>Handles the Execute event of the Reset control.</summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void Reset_Execute(object sender, EventArgs e)
+        private void Reset_Execute(object? sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Text))
             {

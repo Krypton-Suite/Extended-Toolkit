@@ -151,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region ... exposed events ...
         public event EventHandler? ValueChanged;
-        protected void OnValueChanged(object sender, EventArgs e) => ValueChanged?.Invoke(this, e);
+        protected void OnValueChanged(object? sender, EventArgs e) => ValueChanged?.Invoke(this, e);
 
         #endregion
     }

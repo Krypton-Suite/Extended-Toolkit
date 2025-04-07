@@ -254,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             return cells;
         }
 
-        private void Cells_CollectionChanged(object sender, CollectionChangeEventArgs e)
+        private void Cells_CollectionChanged(object? sender, CollectionChangeEventArgs e)
         {
             // Exit if there already is a tree cell for this row
             if (_treeCell != null)

@@ -348,7 +348,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Implementation
-        private void OnStartTimerTick(object sender, EventArgs e)
+        private void OnStartTimerTick(object? sender, EventArgs e)
         {
             // One tick timer, so always stop
             _startTimer.Stop();
@@ -369,7 +369,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void OnStopTimerTick(object sender, EventArgs e)
+        private void OnStopTimerTick(object? sender, EventArgs e)
         {
             // One tick timer, so always stop
             _stopTimer.Stop();

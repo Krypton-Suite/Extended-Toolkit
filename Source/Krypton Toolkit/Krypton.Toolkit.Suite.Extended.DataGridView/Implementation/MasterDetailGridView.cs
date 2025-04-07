@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         internal abstract IDetailView<T> ChildView { get; }
 
-        private protected override void MasterDetailGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private protected override void MasterDetailGridView_RowPostPaint(object? sender, DataGridViewRowPostPaintEventArgs e)
         {
             var grid = (System.Windows.Forms.DataGridView)sender;
             bool found = true;
@@ -94,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             }
         }
 
-        private protected override void MasterDetailGridView_SelectionChanged(object sender, EventArgs e)
+        private protected override void MasterDetailGridView_SelectionChanged(object? sender, EventArgs e)
         {
             if (RowCount == 0
                 || CurrentRow == null

@@ -132,28 +132,28 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="sender">Sender of the event</param>
         /// <param name="e">Event Data</param>
-        public delegate void CalendarLoadEventHandler(object sender, CalendarLoadEventArgs e);
+        public delegate void CalendarLoadEventHandler(object? sender, CalendarLoadEventArgs e);
 
         /// <summary>
         /// Delegate that supports item-related events
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public delegate void CalendarItemEventHandler(object sender, CalendarItemEventArgs e);
+        public delegate void CalendarItemEventHandler(object? sender, CalendarItemEventArgs e);
 
         /// <summary>
         /// Delegate that supports cancelable item-related events
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public delegate void CalendarItemCancelEventHandler(object sender, CalendarItemCancelEventArgs e);
+        public delegate void CalendarItemCancelEventHandler(object? sender, CalendarItemCancelEventArgs e);
 
         /// <summary>
         /// Delegate that supports <see cref="CalendarDay"/>-related events
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public delegate void CalendarDayEventHandler(object sender, CalendarDayEventArgs e);
+        public delegate void CalendarDayEventHandler(object? sender, CalendarDayEventArgs e);
 
         /// <summary>
         /// Occurs when items are load into view

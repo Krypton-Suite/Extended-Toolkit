@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             tmrSlide.Start();
         }
 
-        private void tmrSlide_Tick(object sender, EventArgs e)
+        private void tmrSlide_Tick(object? sender, EventArgs e)
         {
             if (_expand)
             {
@@ -160,21 +160,21 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void VisualSlideForm_Move(object sender, EventArgs e)
+        private void VisualSlideForm_Move(object? sender, EventArgs e)
         {
             UpdateSlideLocation();
 
             UpdateLocation();
         }
 
-        private void VisualSlideForm_Resize(object sender, EventArgs e)
+        private void VisualSlideForm_Resize(object? sender, EventArgs e)
         {
             UpdateSlideLocation();
 
             UpdateLocation();
         }
 
-        private void VisualSlideForm_Closed(object sender, EventArgs e) => Close();
+        private void VisualSlideForm_Closed(object? sender, EventArgs e) => Close();
 
         #endregion
 

@@ -275,7 +275,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         internal void Speak(Prompt prompt)
         {
             bool done = false;
-            EventHandler<StateChangedEventArgs> eventHandler = delegate (object sender, StateChangedEventArgs args)
+            EventHandler<StateChangedEventArgs> eventHandler = delegate (object? sender, StateChangedEventArgs args)
             {
                 if (prompt.IsCompleted && args.State == SynthesizerState.Ready)
                 {
@@ -320,7 +320,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             }
         }
 
-        internal void FireSpeakCompleted(object sender, SpeakCompletedEventArgs e)
+        internal void FireSpeakCompleted(object? sender, SpeakCompletedEventArgs e)
         {
             if (_speakCompleted != null && !e.Prompt._syncSpeak)
             {

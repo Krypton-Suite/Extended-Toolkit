@@ -249,7 +249,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         }
         #endregion
 
-        private void kbtnExportException_Click(object sender, EventArgs e)
+        private void kbtnExportException_Click(object? sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(ktxtException.Text))
             {
@@ -285,12 +285,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        private void kbtnCancel_Click(object? sender, EventArgs e)
         {
             Close();
         }
 
-        private void kchkDarkMode_CheckedChanged(object sender, EventArgs e)
+        private void kchkDarkMode_CheckedChanged(object? sender, EventArgs e)
         {
             ToggleDarkMode(kchkDarkMode.Checked);
         }

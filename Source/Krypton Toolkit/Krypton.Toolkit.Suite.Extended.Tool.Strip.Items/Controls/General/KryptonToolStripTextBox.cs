@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #endregion
 
         #region Event Handlers
-        private void Text_Changed(object sender, EventArgs e)
+        private void Text_Changed(object? sender, EventArgs e)
         {
             //if (KryptonTextBox.TextChanged)
             //{
@@ -91,12 +91,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             //}
         }
 
-        private void TextAlignChanged(object sender, EventArgs e)
+        private void TextAlignChanged(object? sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void FontChanged(object sender, EventArgs e)
+        private void FontChanged(object? sender, EventArgs e)
         {
             throw new NotImplementedException();
         }

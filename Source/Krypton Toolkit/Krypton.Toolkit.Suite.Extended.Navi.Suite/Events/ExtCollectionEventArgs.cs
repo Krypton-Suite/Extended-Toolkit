@@ -73,5 +73,5 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         #endregion
     }
 
-    public delegate void CollectionEventHandler(object sender, ExtCollectionEventArgs e);
+    public delegate void CollectionEventHandler(object? sender, ExtCollectionEventArgs e);
 }

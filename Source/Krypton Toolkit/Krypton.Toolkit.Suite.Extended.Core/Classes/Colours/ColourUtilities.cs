@@ -333,17 +333,23 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             foreach (PropertyInfo propertyInfo in systemColourProperties)
             {
-                object colourObject = propertyInfo.GetValue(null, null);
-
-                Color systemColour = (Color)colourObject;
-
-                if (!allSystemColours.Contains(systemColour))
+                if (propertyInfo != null)
                 {
-                    systemColourSelection.Items.Add(systemColour.Name);
+                    object colourObject = propertyInfo.GetValue(null, null);
 
-                    systemColourSelection.AutoCompleteCustomSource.Add(systemColour.Name);
+                    if (colourObject != null)
+                    {
+                        Color systemColour = (Color)colourObject;
 
-                    allSystemColours.Add(systemColour);
+                        if (!allSystemColours.Contains(systemColour))
+                        {
+                            systemColourSelection.Items.Add(systemColour.Name);
+
+                            systemColourSelection.AutoCompleteCustomSource.Add(systemColour.Name);
+
+                            allSystemColours.Add(systemColour);
+                        }
+                    }
                 }
             }
         }

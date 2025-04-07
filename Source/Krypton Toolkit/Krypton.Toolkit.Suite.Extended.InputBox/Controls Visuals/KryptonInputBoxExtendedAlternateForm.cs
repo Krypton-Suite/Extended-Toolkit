@@ -500,7 +500,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void Button_Click(object sender, EventArgs e)
+        private void Button_Click(object? sender, EventArgs e)
         {
             KryptonButton button = (KryptonButton)sender;
 
@@ -1099,7 +1099,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         #endregion
 
         #region Event Handlers
-        private void KryptonInputBoxExtendedAlternateForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void KryptonInputBoxExtendedAlternateForm_FormClosing(object? sender, FormClosingEventArgs e)
         {
             if (Response != DialogResult.None)
             {
@@ -1111,19 +1111,19 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             }
         }
 
-        private void ktxtInput_KeyDown(object sender, KeyEventArgs e) => ResultKeyDown(e);
+        private void ktxtInput_KeyDown(object? sender, KeyEventArgs e) => ResultKeyDown(e);
 
-        private void kbtnButtonOne_Click(object sender, EventArgs e) => kbtnButtonOne.DialogResult = _buttonOneResult;
+        private void kbtnButtonOne_Click(object? sender, EventArgs e) => kbtnButtonOne.DialogResult = _buttonOneResult;
 
-        private void kbtnButtonTwo_Click(object sender, EventArgs e) => kbtnButtonTwo.DialogResult = _buttonTwoResult;
+        private void kbtnButtonTwo_Click(object? sender, EventArgs e) => kbtnButtonTwo.DialogResult = _buttonTwoResult;
 
-        private void kbtnButtonThree_Click(object sender, EventArgs e) => kbtnButtonThree.DialogResult = _buttonThreeResult;
+        private void kbtnButtonThree_Click(object? sender, EventArgs e) => kbtnButtonThree.DialogResult = _buttonThreeResult;
 
-        private void kbtnButtonFour_Click(object sender, EventArgs e) => kbtnButtonFour.DialogResult = _buttonFourResult;
+        private void kbtnButtonFour_Click(object? sender, EventArgs e) => kbtnButtonFour.DialogResult = _buttonFourResult;
 
-        private void kmtxtInput_KeyDown(object sender, KeyEventArgs e) => ResultKeyDown(e);
+        private void kmtxtInput_KeyDown(object? sender, KeyEventArgs e) => ResultKeyDown(e);
 
-        private void kcmbInput_KeyDown(object sender, KeyEventArgs e) => ResultKeyDown(e);
+        private void kcmbInput_KeyDown(object? sender, KeyEventArgs e) => ResultKeyDown(e);
         #endregion
     }
 }

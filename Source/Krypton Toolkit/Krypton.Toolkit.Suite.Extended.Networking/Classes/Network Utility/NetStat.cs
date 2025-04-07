@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         #endregion
 
         #region Event Handlers
-        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void Worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             ListView statView = (ListView)_updatePanel.Controls[0];
 
@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
         }
 
-        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        private void Worker_DoWork(object? sender, DoWorkEventArgs e)
         {
             IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
             TcpConnectionInformation[] connections = properties.GetActiveTcpConnections();

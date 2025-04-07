@@ -978,11 +978,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             remove => Events.RemoveHandler(_eventColourChanged, value);
         }
 
-        public delegate void ColourChangedEventHandler(object sender, ColourChangedEventArgs e);
+        public delegate void ColourChangedEventHandler(object? sender, ColourChangedEventArgs e);
 
         //public event ColourChangedEventHandler ColourChanged;
 
-        //protected virtual void OnColourChanged(object sender, ColourChangedEventArgs e) => ColourChanged?.Invoke(sender, e);
+        //protected virtual void OnColourChanged(object? sender, ColourChangedEventArgs e) => ColourChanged?.Invoke(sender, e);
         #endregion
 
         #region Properties
@@ -1180,7 +1180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void ValueChangedHandler(object sender, EventArgs e)
+        private void ValueChangedHandler(object? sender, EventArgs e)
         {
             if (!this.LockUpdates)
             {

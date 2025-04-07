@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         // Invoke the ValueChanged event; called  when value     
         // is changed                                            
         //-------------------------------------------------------
-        protected virtual void OnValueChanged(object sender, KnobValueChangedEventArgs e) => ValueChanged?.Invoke(sender, e);
+        protected virtual void OnValueChanged(object? sender, KnobValueChangedEventArgs e) => ValueChanged?.Invoke(sender, e);
         #endregion
 
         #region Properties
@@ -1275,7 +1275,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         #endregion
 
         #region Event Handlers
-        private void KryptonKnobControlEnhanced_Resize(object sender, EventArgs e)
+        private void KryptonKnobControlEnhanced_Resize(object? sender, EventArgs e)
         {
             // Control remains square
             Height = Width;
@@ -1285,7 +1285,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             Invalidate();
         }
 
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             if (_palette != null)
             {
@@ -1306,7 +1306,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             Invalidate();
         }
 
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             Invalidate();
         }

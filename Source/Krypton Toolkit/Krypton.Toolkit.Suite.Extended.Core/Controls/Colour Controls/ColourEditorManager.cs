@@ -391,7 +391,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void ColourChangedHandler(object sender, EventArgs e)
+        private void ColourChangedHandler(object? sender, EventArgs e)
         {
             if (!LockUpdates)
             {

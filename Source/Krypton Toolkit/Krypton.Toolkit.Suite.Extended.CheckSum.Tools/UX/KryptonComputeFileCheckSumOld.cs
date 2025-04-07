@@ -366,9 +366,9 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         }
         #endregion
 
-        private void kcmbAlgorithimType_SelectedIndexChanged(object sender, EventArgs e) => kbtnCompute.Enabled = true;
+        private void kcmbAlgorithimType_SelectedIndexChanged(object? sender, EventArgs e) => kbtnCompute.Enabled = true;
 
-        private void kbtnCompute_Click(object sender, EventArgs e)
+        private void kbtnCompute_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -402,7 +402,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        private void kbtnCancel_Click(object? sender, EventArgs e)
         {
             if (bgMD5Hash.IsBusy || bgSHA1Hash.IsBusy || bgSHA256Hash.IsBusy || bgSHA384Hash.IsBusy || bgSHA512Hash.IsBusy || bgRIPEMD160Hash.IsBusy)
             {
@@ -445,7 +445,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         }
 
         #region Hashing Work
-        private void bgMD5Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgMD5Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -483,7 +483,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             UpdateStatus($"Computing hash for: {FileName}");
         }
 
-        private void bgSHA1Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgSHA1Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -519,7 +519,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void bgSHA256Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgSHA256Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -555,7 +555,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void bgSHA384Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgSHA384Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -591,7 +591,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void bgSHA512Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgSHA512Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -627,7 +627,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void bgRIPEMD160Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgRIPEMD160Hash_DoWork(object? sender, DoWorkEventArgs e)
         {
 #if !NETCOREAPP3_0_OR_GREATER
             string filePath = e.Argument.ToString();
@@ -665,14 +665,14 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 #endif
         }
 
-        private void ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             kwlHash.Text = "Please wait...";
 
             tspbHashProgress.Value = e.ProgressPercentage;
         }
 
-        private void RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             kwlHash.Text = e.Result.ToString();
 
@@ -688,12 +688,12 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 
         private string UpdateStatus(string status) => tsslStatus.Text = status;
 
-        private void kcmbAlgorithimType_TextChanged(object sender, EventArgs e)
+        private void kcmbAlgorithimType_TextChanged(object? sender, EventArgs e)
         {
             kbtnCancel.Enabled = string.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
         }
 
-        private void kcbToggleCase_CheckedChanged(object sender, EventArgs e)
+        private void kcbToggleCase_CheckedChanged(object? sender, EventArgs e)
         {
             string tempHashString = kwlHash.Text;
 
@@ -711,7 +711,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
         }
 
-        private void kbtnSaveToFile_Click(object sender, EventArgs e)
+        private void kbtnSaveToFile_Click(object? sender, EventArgs e)
         {
             SaveHashToFile(kwlHash.Text, kcbToggleCase.Checked);
         }

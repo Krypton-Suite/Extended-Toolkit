@@ -77,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         }
 
         public event ButtonClickedEventHandler? ButtonClicked;
-        public delegate void ButtonClickedEventHandler(object sender, EventArgs e);
+        public delegate void ButtonClickedEventHandler(object? sender, EventArgs e);
 
         //Needed because this way the buttons can raise the ButtonClicked event...
         public void SetSelectionChanged(OutlookBarButton? button)
@@ -319,7 +319,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
 
-        private void OutlookBar_MouseClick(object sender, MouseEventArgs e)
+        private void OutlookBar_MouseClick(object? sender, MouseEventArgs e)
         {
             _RightClickedButton = null;
             OutlookBarButton? mButton = Buttons[e.X, e.Y];
@@ -350,12 +350,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 }
             }
         }
-        private void OutlookBar_MouseDown(object sender, MouseEventArgs e)
+        private void OutlookBar_MouseDown(object? sender, MouseEventArgs e)
         {
             IsResizing = GetGripRectangle().Contains(e.X, e.Y);
         }
 
-        private void OutlookBar_MouseLeave(object sender, EventArgs e)
+        private void OutlookBar_MouseLeave(object? sender, EventArgs e)
         {
             if (_RightClickedButton == null)
             {
@@ -365,7 +365,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private void OutlookBar_MouseMove(object sender, MouseEventArgs e)
+        private void OutlookBar_MouseMove(object? sender, MouseEventArgs e)
         {
             _HoveringButton = null;
             //string EmptyLineVar = null;
@@ -462,7 +462,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private void OutlookBar_MouseUp(object sender, MouseEventArgs e)
+        private void OutlookBar_MouseUp(object? sender, MouseEventArgs e)
         {
             IsResizing = false;
             _LeftClickedButton = null;
@@ -475,7 +475,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private int _maxLargeButtonCount;
         private int _maxSmallButtonCount;
 
-        internal void OutlookBar_Paint(object sender, PaintEventArgs e)
+        internal void OutlookBar_Paint(object? sender, PaintEventArgs e)
         {
             //string EmptyLineVar = null;
             _maxLargeButtonCount = (int)Math.Round(Math.Floor((Height - GetBottomContainerRectangle().Height - GetGripRectangle().Height) / (double)GetButtonHeight()));
@@ -1430,15 +1430,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
             oContextMenuStrip.Show(this, new Point(Width, Height - GetButtonHeight() / 2));
         }
-        private void ShowMoreButtons(object sender, EventArgs e)
+        private void ShowMoreButtons(object? sender, EventArgs e)
         {
             Height += GetButtonHeight();
         }
-        private void ShowFewerButtons(object sender, EventArgs e)
+        private void ShowFewerButtons(object? sender, EventArgs e)
         {
             Height -= GetButtonHeight();
         }
-        private void NavigationPaneOptions(object sender, EventArgs e)
+        private void NavigationPaneOptions(object? sender, EventArgs e)
         {
             _RightClickedButton = null;
             _HoveringButton = null;
@@ -1447,13 +1447,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             frm.ShowDialog();
             Invalidate();
         }
-        private void ToggleVisible(object sender, EventArgs e)
+        private void ToggleVisible(object? sender, EventArgs e)
         {
             OutlookBarButton oButton = (OutlookBarButton)((ToolStripMenuItem)sender).Tag;
             oButton.Visible = !oButton.Visible;
             Invalidate();
         }
-        private void MnuClicked(object sender, EventArgs e)
+        private void MnuClicked(object? sender, EventArgs e)
         {
             OutlookBarButton oButton = (OutlookBarButton)((ToolStripMenuItem)sender).Tag;
             _SelectedButton = oButton;
@@ -1507,7 +1507,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         }
 
         //Krypton Palette Events
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             if (_palette != null)
             {
@@ -1530,7 +1530,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         }
 
         //Kripton Palette Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             Invalidate();
         }

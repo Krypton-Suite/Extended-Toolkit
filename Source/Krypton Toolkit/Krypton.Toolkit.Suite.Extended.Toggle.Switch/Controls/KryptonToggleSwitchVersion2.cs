@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
     public class KryptonToggleSwitchVersion2 : Control
     {
         #region Custom Event
-        public delegate void SliderChangedEventHandler(object sender, EventArgs e);
+        public delegate void SliderChangedEventHandler(object? sender, EventArgs e);
 
         public event SliderChangedEventHandler SliderValueChanged;
         #endregion
@@ -434,7 +434,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         #region Event Handler
         //creates slide animation
-        private void ticker_Tick(object sender, EventArgs e)
+        private void ticker_Tick(object? sender, EventArgs e)
         {
             float x = _circle.X;
 

@@ -2000,12 +2000,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void ColoursCollectionChangedHandler(object sender, ColourCollectionEventArgs e)
+        private void ColoursCollectionChangedHandler(object? sender, ColourCollectionEventArgs e)
         {
             this.RefreshColours();
         }
 
-        private void ColoursCollectionItemReplacedHandler(object sender, ColourCollectionEventArgs e)
+        private void ColoursCollectionItemReplacedHandler(object? sender, ColourCollectionEventArgs e)
         {
             ColourCollection collection;
             int index;

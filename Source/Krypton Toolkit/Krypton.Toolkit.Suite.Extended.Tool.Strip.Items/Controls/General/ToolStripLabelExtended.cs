@@ -439,7 +439,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #endregion
 
         #region Events
-        private void FadeAnimationTimer_Tick(object sender, EventArgs e)
+        private void FadeAnimationTimer_Tick(object? sender, EventArgs e)
         {
             throw new NotImplementedException();
         }

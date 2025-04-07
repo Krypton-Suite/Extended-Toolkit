@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             KryptonManager.GlobalPaletteChanged -= KryptonManager_GlobalPaletteChanged;
         }
 
-        private void KryptonManager_GlobalPaletteChanged(object sender, EventArgs e)
+        private void KryptonManager_GlobalPaletteChanged(object? sender, EventArgs e)
         {
             RefreshPalette();
         }

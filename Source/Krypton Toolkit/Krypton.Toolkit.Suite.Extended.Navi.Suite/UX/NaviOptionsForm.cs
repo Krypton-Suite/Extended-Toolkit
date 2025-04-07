@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             Text = NaviSuiteLanguageManager.SuiteStrings.OptionsTitle;
         }
 
-        private void buttonOk_Click(object sender, EventArgs e)
+        private void buttonOk_Click(object? sender, EventArgs e)
         {
             // Set the new order
             for (int i = 0; i < _bar.Bands.Count; i++)
@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             _bar.Bands.Sort(new NaviBandOrderComparer());
         }
 
-        private void buttonMoveUp_Click(object sender, EventArgs e)
+        private void buttonMoveUp_Click(object? sender, EventArgs e)
         {
             if (kclbBands.SelectedIndex > 0)
             {
@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             }
         }
 
-        private void buttonMoveDown_Click(object sender, EventArgs e)
+        private void buttonMoveDown_Click(object? sender, EventArgs e)
         {
             if (kclbBands.SelectedIndex > 0
             && kclbBands.SelectedIndex < kclbBands.Items.Count - 1)
@@ -120,14 +120,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             }
         }
 
-        private void buttonReset_Click(object sender, EventArgs e)
+        private void buttonReset_Click(object? sender, EventArgs e)
         {
             // Sort list based on original order
             _bar.Bands.Sort(new NaviBandOrgOrderComparer());
             Initialize(_bar);
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object? sender, EventArgs e)
         {
             // Reset ordering posibly caused by reset button
             _bar.Bands.Sort(new NaviBandOrderComparer());

@@ -131,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         #endregion
 
         #region Event Handlers
-        void btnScan_Click(object sender, EventArgs e)
+        void btnScan_Click(object? sender, EventArgs e)
         {
             Button btn = (Button)sender;
 
@@ -166,12 +166,12 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
         }
 
-        void _worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        void _worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Port scan has completed");
         }
 
-        void _worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        void _worker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             PortState state = (PortState)e.UserState;
 
@@ -185,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             }
         }
 
-        void _worker_DoWork(object sender, DoWorkEventArgs e)
+        void _worker_DoWork(object? sender, DoWorkEventArgs e)
         {
             try
             {

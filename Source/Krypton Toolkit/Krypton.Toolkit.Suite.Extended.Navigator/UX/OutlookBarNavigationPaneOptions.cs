@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         #region Event Handlers
 
-        private void kbtnMoveUp_Click(object sender, EventArgs e)
+        private void kbtnMoveUp_Click(object? sender, EventArgs e)
         {
             int newIndex = clbItems.SelectedIndex - 1;
 
@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             clbItems.SelectedIndex = newIndex;
         }
 
-        private void kbtnMoveDown_Click(object sender, EventArgs e)
+        private void kbtnMoveDown_Click(object? sender, EventArgs e)
         {
             OutlookBarButton button = (OutlookBarButton)clbItems.SelectedItem;
 
@@ -89,12 +89,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             clbItems.SelectedIndex = newIndex - 1;
         }
 
-        private void kbtnReset_Click(object sender, EventArgs e)
+        private void kbtnReset_Click(object? sender, EventArgs e)
         {
             kbtnCancel_Click(sender, e);
         }
 
-        private void kbtnOk_Click(object sender, EventArgs e)
+        private void kbtnOk_Click(object? sender, EventArgs e)
         {
             foreach (OutlookBarButton button in _items)
             {
@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             Close();
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        private void kbtnCancel_Click(object? sender, EventArgs e)
         {
             _items.Clear();
 
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private void kclbItems_SelectedIndexChanged(object sender, EventArgs e)
+        private void kclbItems_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (clbItems.SelectedIndex == 0)
             {
@@ -147,7 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private void OutlookBarNavigationPaneOptions_Load(object sender, EventArgs e)
+        private void OutlookBarNavigationPaneOptions_Load(object? sender, EventArgs e)
         {
 
         }

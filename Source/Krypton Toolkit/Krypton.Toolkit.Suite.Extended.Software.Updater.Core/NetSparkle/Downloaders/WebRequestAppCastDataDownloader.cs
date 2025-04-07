@@ -205,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
             return null;
         }
 
-        private bool AlwaysTrustRemoteCert(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        private bool AlwaysTrustRemoteCert(object? sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
             return true;
         }
@@ -218,7 +218,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
         /// <param name="chain">the chain</param>
         /// <param name="sslPolicyErrors">any SSL policy errors that have occurred</param>
         /// <returns><c>true</c> if the cert is valid; false otherwise</returns>
-        private bool ValidateRemoteCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        private bool ValidateRemoteCertificate(object? sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
             if (TrustEverySSLConnection)
             {

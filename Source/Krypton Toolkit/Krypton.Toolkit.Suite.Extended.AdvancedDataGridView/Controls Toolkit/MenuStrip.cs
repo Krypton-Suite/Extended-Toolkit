@@ -1794,7 +1794,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CheckList_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void CheckList_NodeMouseClick(object? sender, TreeNodeMouseClickEventArgs e)
         {
             TreeViewHitTestInfo hitTestInfo = _checkList.HitTest(e.X, e.Y);
             if (hitTestInfo != null && hitTestInfo.Location == TreeViewHitTestLocations.StateImage)
@@ -1811,7 +1811,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CheckList_KeyDown(object sender, KeyEventArgs e)
+        private void CheckList_KeyDown(object? sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space)
             {
@@ -1827,7 +1827,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CheckList_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void CheckList_NodeMouseDoubleClick(object? sender, TreeNodeMouseClickEventArgs e)
         {
             TreeNodeItemSelector? n = e.Node as TreeNodeItemSelector;
             //set the new node check status
@@ -1845,7 +1845,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CheckList_MouseEnter(object sender, EventArgs e)
+        private void CheckList_MouseEnter(object? sender, EventArgs e)
         {
             _checkList.Focus();
         }
@@ -1855,7 +1855,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CheckList_MouseLeave(object sender, EventArgs e)
+        private void CheckList_MouseLeave(object? sender, EventArgs e)
         {
             Focus();
         }
@@ -1865,7 +1865,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_ok_Click(object sender, EventArgs e)
+        private void Button_ok_Click(object? sender, EventArgs e)
         {
             _filterclick = true;
 
@@ -1878,7 +1878,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_cancel_Click(object sender, EventArgs e)
+        private void Button_cancel_Click(object? sender, EventArgs e)
         {
             _loadedNodes = DuplicateNodes(_startingNodes);
             Close();
@@ -1982,7 +1982,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CancelFilterMenuItem_MouseEnter(object sender, EventArgs e)
+        private void CancelFilterMenuItem_MouseEnter(object? sender, EventArgs e)
         {
             if (((sender as ToolStripMenuItem)!).Enabled)
             {
@@ -1995,7 +1995,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CustomFilterMenuItem_Click(object sender, EventArgs e)
+        private void CustomFilterMenuItem_Click(object? sender, EventArgs e)
         {
             //ignore image nodes
             if (DataType == typeof(Bitmap))
@@ -2057,7 +2057,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CustomFilterLastFiltersListMenuItem_MouseEnter(object sender, EventArgs e)
+        private void CustomFilterLastFiltersListMenuItem_MouseEnter(object? sender, EventArgs e)
         {
             if (((sender as ToolStripMenuItem)!).Enabled)
             {
@@ -2070,7 +2070,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CustomFilterLastFiltersListMenuItem_Paint(object sender, PaintEventArgs e)
+        private void CustomFilterLastFiltersListMenuItem_Paint(object? sender, PaintEventArgs e)
         {
             Rectangle rect = new Rectangle(_customFilterLastFiltersListMenuItem.Width - 12, 7, 10, 10);
             ControlPaint.DrawMenuGlyph(e.Graphics, rect, MenuGlyph.Arrow, Color.Black, Color.Transparent);
@@ -2081,7 +2081,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CustomFilterLastFilter1MenuItem_VisibleChanged(object sender, EventArgs e)
+        private void CustomFilterLastFilter1MenuItem_VisibleChanged(object? sender, EventArgs e)
         {
             _toolStripSeparator2MenuItem.Visible = !_customFilterLastFilter1MenuItem.Visible;
             ((sender as ToolStripMenuItem)!).VisibleChanged -= CustomFilterLastFilter1MenuItem_VisibleChanged;
@@ -2092,7 +2092,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CustomFilterLastFilterMenuItem_Click(object sender, EventArgs e)
+        private void CustomFilterLastFilterMenuItem_Click(object? sender, EventArgs e)
         {
             ToolStripMenuItem? menuitem = sender as ToolStripMenuItem;
 
@@ -2112,7 +2112,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CustomFilterLastFilterMenuItem_TextChanged(object sender, EventArgs e)
+        private void CustomFilterLastFilterMenuItem_TextChanged(object? sender, EventArgs e)
         {
             ((sender as ToolStripMenuItem)!).Available = true;
             ((sender as ToolStripMenuItem)!).TextChanged -= CustomFilterLastFilterMenuItem_TextChanged;
@@ -2123,7 +2123,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CheckTextFilterTextChangedTimer_Tick(object sender, EventArgs e)
+        private void CheckTextFilterTextChangedTimer_Tick(object? sender, EventArgs e)
         {
             Timer timer = (sender as Timer)!;
             if (timer == null)
@@ -2141,7 +2141,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CheckTextFilter_TextChanged(object sender, EventArgs e)
+        private void CheckTextFilter_TextChanged(object? sender, EventArgs e)
         {
             if (!_checkTextFilterChangedEnabled)
             {
@@ -2338,7 +2338,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CancelSortMenuItem_MouseEnter(object sender, EventArgs e)
+        private void CancelSortMenuItem_MouseEnter(object? sender, EventArgs e)
         {
             if (((ToolStripMenuItem)sender).Enabled)
             {
@@ -2461,7 +2461,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ResizeBoxControlHost_MouseDown(object sender, MouseEventArgs e)
+        private void ResizeBoxControlHost_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -2474,7 +2474,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ResizeBoxControlHost_MouseMove(object sender, MouseEventArgs e)
+        private void ResizeBoxControlHost_MouseMove(object? sender, MouseEventArgs e)
         {
             if (Visible)
             {
@@ -2516,7 +2516,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ResizeBoxControlHost_MouseUp(object sender, MouseEventArgs e)
+        private void ResizeBoxControlHost_MouseUp(object? sender, MouseEventArgs e)
         {
             if (_resizeEndPoint.X != -1)
             {
@@ -2543,7 +2543,7 @@ namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ResizeBoxControlHost_Paint(Object sender, PaintEventArgs e)
+        private void ResizeBoxControlHost_Paint(object? sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(Properties.Resources.MenuStrip_ResizeGrip, 0, 0);
         }

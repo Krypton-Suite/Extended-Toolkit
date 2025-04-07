@@ -224,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #region Methods
         #endregion
 
-        private void kbtnApply_Click(object sender, EventArgs e)
+        private void kbtnApply_Click(object? sender, EventArgs e)
         {
             _themeManager.ApplyTheme(kcmbPaletteMode.Text, _manager);
 
@@ -233,9 +233,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             EnableResetButton(true);
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e) => Hide();
+        private void kbtnCancel_Click(object? sender, EventArgs e) => Hide();
 
-        private void kbtnLoadTheme_Click(object sender, EventArgs e)
+        private void kbtnLoadTheme_Click(object? sender, EventArgs e)
         {
             _palette.Import();
 
@@ -248,13 +248,13 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             kbtnResetTheme.Enabled = true;
         }
 
-        private void kcmbPaletteMode_TextChanged(object sender, EventArgs e) => kbtnApply.Enabled = string.IsNullOrWhiteSpace(kcmbPaletteMode.Text);
+        private void kcmbPaletteMode_TextChanged(object? sender, EventArgs e) => kbtnApply.Enabled = string.IsNullOrWhiteSpace(kcmbPaletteMode.Text);
 
-        private void ThemeSelector_FormClosing(object sender, FormClosingEventArgs e) => _settingsManager.SaveSettings(_settingsManager.GetAskMe());
+        private void ThemeSelector_FormClosing(object? sender, FormClosingEventArgs e) => _settingsManager.SaveSettings(_settingsManager.GetAskMe());
 
-        private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e) => EnableApplyButton(true);
+        private void kcmbPaletteMode_SelectedIndexChanged(object? sender, EventArgs e) => EnableApplyButton(true);
 
-        private void kbtnResetTheme_Click(object sender, EventArgs e)
+        private void kbtnResetTheme_Click(object? sender, EventArgs e)
         {
             _settingsManager.SetSelectedTheme(PaletteMode.Microsoft365Blue);
 
@@ -271,14 +271,14 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             kbtnResetTheme.Enabled = false;
         }
 
-        private void kbtnOptions_Click(object sender, EventArgs e)
+        private void kbtnOptions_Click(object? sender, EventArgs e)
         {
             ThemeSwitcherOptions options = new(_manager, _palette);
 
             options.Show();
         }
 
-        private void ThemeSelector_Load(object sender, EventArgs e)
+        private void ThemeSelector_Load(object? sender, EventArgs e)
         {
             ThemeManager.SetPaletteTheme(_settingsManager.GetSelectedTheme(), kcmbPaletteMode);
 

@@ -236,17 +236,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
         #endregion
 
-        private void SettingsManagementOptions_Load(object sender, EventArgs e)
+        private void SettingsManagementOptions_Load(object? sender, EventArgs e)
         {
 
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        private void kbtnCancel_Click(object? sender, EventArgs e)
         {
             Hide();
         }
 
-        private void kbtnResetColourBlendingSettings_Click(object sender, EventArgs e)
+        private void kbtnResetColourBlendingSettings_Click(object? sender, EventArgs e)
         {
             _colourBlendingSettingsManager.ResetColourBlendingValues(kchkAskForConfirmation.Checked);
 
@@ -255,7 +255,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             kbtnResetColourBlendingSettings.Enabled = false;
         }
 
-        private void kbtnResetColourIntegerSettings_Click(object sender, EventArgs e)
+        private void kbtnResetColourIntegerSettings_Click(object? sender, EventArgs e)
         {
             _colourIntegerSettingsManager.ResetColourIntegerSettings(kchkAskForConfirmation.Checked);
 
@@ -264,7 +264,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             kbtnResetColourIntegerSettings.Enabled = false;
         }
 
-        private void kbtnResetColourSettings_Click(object sender, EventArgs e)
+        private void kbtnResetColourSettings_Click(object? sender, EventArgs e)
         {
             _colourSettingsManager.ResetToDefaults(); // (kchkAskForConfirmation.Checked);
 
@@ -273,7 +273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             kbtnResetColourSettings.Enabled = false;
         }
 
-        private void kbtnResetColourStringSettings_Click(object sender, EventArgs e)
+        private void kbtnResetColourStringSettings_Click(object? sender, EventArgs e)
         {
             _colourStringSettingsManager.ResetColourStringSettings(kchkAskForConfirmation.Checked);
 
@@ -282,7 +282,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             kbtnResetColourStringSettings.Enabled = false;
         }
 
-        private void kbtnResetGlobalBooleanSettings_Click(object sender, EventArgs e)
+        private void kbtnResetGlobalBooleanSettings_Click(object? sender, EventArgs e)
         {
             _globalBooleanSettingsManager.ResetSettings(kchkAskForConfirmation.Checked);
 
@@ -291,7 +291,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             kbtnResetGlobalBooleanSettings.Enabled = false;
         }
 
-        private void kbtnResetGlobalStringSettings_Click(object sender, EventArgs e)
+        private void kbtnResetGlobalStringSettings_Click(object? sender, EventArgs e)
         {
             _globalStringSettingsManager.ResetSettings(kchkAskForConfirmation.Checked);
 
@@ -300,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             kbtnResetGlobalStringSettings.Enabled = false;
         }
 
-        private void kbtnResetPaletteTypefaceSettings_Click(object sender, EventArgs e)
+        private void kbtnResetPaletteTypefaceSettings_Click(object? sender, EventArgs e)
         {
             _paletteTypefaceSettingsManager.ResetPaletteTypefaceSettings(kchkAskForConfirmation.Checked);
 
@@ -309,7 +309,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             kchkAskForConfirmation.Enabled = false;
         }
 
-        private void kbtnNukeAllSettings_Click(object sender, EventArgs e)
+        private void kbtnNukeAllSettings_Click(object? sender, EventArgs e)
         {
             NukeAllSettings(kchkAskForConfirmation.Checked);
         }

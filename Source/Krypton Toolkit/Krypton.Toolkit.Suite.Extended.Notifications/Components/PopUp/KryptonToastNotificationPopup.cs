@@ -419,7 +419,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmPopup_ContextMenuClosed(object sender, EventArgs e)
+        private void frmPopup_ContextMenuClosed(object? sender, EventArgs e)
         {
             DebugUtilities.WriteLine("Menu closed.");
             if (!_mouseIsOn)
@@ -437,7 +437,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmPopup_ContextMenuOpened(object sender, EventArgs e)
+        private void frmPopup_ContextMenuOpened(object? sender, EventArgs e)
         {
             DebugUtilities.WriteLine("Menu opened.");
             _tmrWait.Stop();
@@ -449,7 +449,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmPopup_LinkClick(object sender, EventArgs e)
+        private void frmPopup_LinkClick(object? sender, EventArgs e)
         {
             if (Click != null)
             {
@@ -463,7 +463,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmPopup_CloseClick(object sender, EventArgs e)
+        private void frmPopup_CloseClick(object? sender, EventArgs e)
         {
             Hide();
             if (Close != null)
@@ -477,7 +477,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmPopup_VisibleChanged(object sender, EventArgs e)
+        private void frmPopup_VisibleChanged(object? sender, EventArgs e)
         {
             if (_frmPopup.Visible)
             {
@@ -500,7 +500,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tmAnimation_Tick(object sender, EventArgs e)
+        private void tmAnimation_Tick(object? sender, EventArgs e)
         {
             long elapsed = _sw.ElapsedMilliseconds;
 
@@ -574,7 +574,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tmWait_Tick(object sender, EventArgs e)
+        private void tmWait_Tick(object? sender, EventArgs e)
         {
             DebugUtilities.WriteLine("Wait timer elapsed.");
             _tmrWait.Stop();
@@ -589,7 +589,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmPopup_MouseLeave(object sender, EventArgs e)
+        private void frmPopup_MouseLeave(object? sender, EventArgs e)
         {
             DebugUtilities.WriteLine("MouseLeave");
             if (_frmPopup.Visible && (OptionsMenu == null || !OptionsMenu.Visible))
@@ -606,7 +606,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmPopup_MouseEnter(object sender, EventArgs e)
+        private void frmPopup_MouseEnter(object? sender, EventArgs e)
         {
             DebugUtilities.WriteLine("MouseEnter");
             if (!_isAppearing)

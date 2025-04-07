@@ -1161,7 +1161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             return new Size(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
         }
 
-        private void AnyKeyDown(object sender, KeyEventArgs e)
+        private void AnyKeyDown(object? sender, KeyEventArgs e)
         {
             // Escape key kills the dialog if we allow it to be closed
             if (ControlBox
@@ -1210,7 +1210,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
         }
 
-        private void LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
@@ -1395,7 +1395,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             return messageBoxExtendedForm.kcbOptionalCheckBox.CheckState;
         }
 
-        private void OptionalCheckBox_CheckedChanged(object sender, EventArgs e) => _optionalCheckBoxChecked = kcbOptionalCheckBox.Checked;
+        private void OptionalCheckBox_CheckedChanged(object? sender, EventArgs e) => _optionalCheckBoxChecked = kcbOptionalCheckBox.Checked;
 
         private void UpdateCloseButtonVisibility(bool? visible) => CloseBox = visible ?? true;
 

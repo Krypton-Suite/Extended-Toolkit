@@ -439,7 +439,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
             base.OnMouseClick(e);
         }
-        private void this_MouseClick(object sender, MouseEventArgs e)
+        private void this_MouseClick(object? sender, MouseEventArgs e)
         {
             Point mouse;
             try
@@ -463,7 +463,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         }
 
-        private void this_ParentChanged(object sender, EventArgs e)
+        private void this_ParentChanged(object? sender, EventArgs e)
         {
             try
             {
@@ -493,7 +493,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         //bool FlagControl = false;
 
-        private void FlatTabControl_KeyDown(object sender, KeyEventArgs e)
+        private void FlatTabControl_KeyDown(object? sender, KeyEventArgs e)
         {
 
             if (e.KeyCode == Keys.Menu)
@@ -1028,20 +1028,20 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             FindUpDown();
             Invalidate();
         }
-        private void FlatTabControl_VisibleChanged(object sender, EventArgs e)
+        private void FlatTabControl_VisibleChanged(object? sender, EventArgs e)
         {
             FindUpDown();
             //UpdateUpDown();
             bFirtsLoad = true;
         }
-        private void FlatTabControl_ControlAdded(object sender, ControlEventArgs e)
+        private void FlatTabControl_ControlAdded(object? sender, ControlEventArgs e)
         {
             FindUpDown();
             //UpdateUpDown();
             bFirtsLoad = true;
         }
 
-        private void FlatTabControl_ControlRemoved(object sender, ControlEventArgs e)
+        private void FlatTabControl_ControlRemoved(object? sender, ControlEventArgs e)
         {
             FindUpDown();
             //UpdateUpDown();
@@ -1054,7 +1054,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             Update();
             Invalidate();	// we need to update border and background colors
         }
-        private void FlatTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        private void FlatTabControl_SelectedIndexChanged(object? sender, EventArgs e)
         {
             UpdateUpDown();
             Update();

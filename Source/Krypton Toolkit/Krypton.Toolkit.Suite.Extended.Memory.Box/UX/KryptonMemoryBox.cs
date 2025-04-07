@@ -258,15 +258,15 @@ namespace Krypton.Toolkit.Suite.Extended.Memory.Box
             }
         }
 
-        private void kbtnButtonOne_Click(object sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.Yes, DialogResult.Yes);
+        private void kbtnButtonOne_Click(object? sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.Yes, DialogResult.Yes);
 
-        private void kbtnButtonTwo_Click(object sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.YesToAll, DialogResult.Yes);
+        private void kbtnButtonTwo_Click(object? sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.YesToAll, DialogResult.Yes);
 
-        private void kbtnButtonThree_Click(object sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.No, DialogResult.No);
+        private void kbtnButtonThree_Click(object? sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.No, DialogResult.No);
 
-        private void kbtnButtonFour_Click(object sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.NoToAll, DialogResult.No);
+        private void kbtnButtonFour_Click(object? sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.NoToAll, DialogResult.No);
 
-        private void kbtnButtonFive_Click(object sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.Cancel, DialogResult.Cancel);
+        private void kbtnButtonFive_Click(object? sender, EventArgs e) => SetDialogResult(KryptonMemoryBoxDialogResult.Cancel, DialogResult.Cancel);
 
         private void SetDialogResult(KryptonMemoryBoxDialogResult memoryBoxDialogResult, DialogResult dialogResult)
         {

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -119,9 +119,9 @@
   </resheader>
   <data name="FreshFile" xml:space="preserve">
     <value>&lt;?xml version="1.0"?&gt;
-&lt;!--Created by exporting the settings of a KryptonPalette instance.--&gt;
-&lt;!--For more information about Krypton visit www.ComponentFactory.com--&gt;
-&lt;!--WARNING: Modifying this file may render it invalid for importing.--&gt;
+&lt;!--Creado mediante la exportación de la configuración de una instancia de KryptonPalette.--&gt;
+&lt;!--Para más información sobre Krypton, visita www.ComponentFactory.com--&gt;
+&lt;!--ADVERTENCIA: Modificar este archivo puede invalidar su posterior importación.--&gt;
 &lt;KryptonPalette Version="20" Generated="{0}"&gt;
   &lt;Properties&gt;
     &lt;ButtonStyles&gt;

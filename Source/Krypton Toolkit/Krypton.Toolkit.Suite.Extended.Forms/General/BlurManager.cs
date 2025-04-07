@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         #endregion Identity
 
-        private void KryptonFormOnClosing(object sender, /*Cancel*/EventArgs e) => RemoveBlur();
+        private void KryptonFormOnClosing(object? sender, /*Cancel*/EventArgs e) => RemoveBlur();
 
         private void RemoveBlur()
         {
@@ -153,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void BlurValuesOnOpacityChanged(object sender, EventArgs e)
+        private void BlurValuesOnOpacityChanged(object? sender, EventArgs e)
         {
             if (_visualBlur != null)
             {
@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void BlurValues_EnableBlurChanged(object sender, EventArgs e)
+        private void BlurValues_EnableBlurChanged(object? sender, EventArgs e)
         {
             if (!_blurValues.BlurWhenFocusLost)
             {
@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void DetectIsTopMost(object sender, EventArgs e)
+        private void DetectIsTopMost(object? sender, EventArgs e)
         {
             if (_visualBlur != null
                 && IsOverlapped()

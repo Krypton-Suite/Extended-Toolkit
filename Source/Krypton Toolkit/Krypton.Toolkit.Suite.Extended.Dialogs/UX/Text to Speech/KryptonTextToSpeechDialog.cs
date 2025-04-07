@@ -370,12 +370,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         #region Event Handlers
-        private void kbtnPreview_Click(object sender, EventArgs e)
+        private void kbtnPreview_Click(object? sender, EventArgs e)
         {
             Speak($"Hello World! This is {kcmbInstalledVoices.Text} speaking. Testing 1... 2... 3 ...", kcmbInstalledVoices.Text, _speechRate, _speechVolume);
         }
 
-        private void kcmbInstalledVoices_SelectedIndexChanged(object sender, EventArgs e)
+        private void kcmbInstalledVoices_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(kcmbInstalledVoices.Text))
             {
@@ -387,31 +387,31 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
 
-        private void ktrkRate_ValueChanged(object sender, EventArgs e)
+        private void ktrkRate_ValueChanged(object? sender, EventArgs e)
         {
             _speechRate = ktrkRate.Value;
 
             kwlRate.Text = _speechRate.ToString(CultureInfo.InvariantCulture);
         }
 
-        private void ktrkVolume_ValueChanged(object sender, EventArgs e)
+        private void ktrkVolume_ValueChanged(object? sender, EventArgs e)
         {
             _speechVolume = ktrkVolume.Value;
 
             kwlVolume.Text = _speechVolume.ToString(CultureInfo.InvariantCulture);
         }
 
-        private void krtbInput_TextChanged(object sender, EventArgs e)
+        private void krtbInput_TextChanged(object? sender, EventArgs e)
         {
             kbtnSpeak.Enabled = string.IsNullOrWhiteSpace(krtbInput.Text);
         }
 
-        private void kbtnSpeak_Click(object sender, EventArgs e)
+        private void kbtnSpeak_Click(object? sender, EventArgs e)
         {
             Speak(krtbInput.Text, kcmbInstalledVoices.Text, _speechRate, _speechVolume);
         }
 
-        private void KryptonTextToSpeechDialog_Load(object sender, EventArgs e)
+        private void KryptonTextToSpeechDialog_Load(object? sender, EventArgs e)
         {
             ktrkRate.Value = _speechRate;
 
@@ -422,7 +422,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             kwlVolume.Text = _speechVolume.ToString();
         }
 
-        private void kcmbInstalledVoices_TextChanged(object sender, EventArgs e)
+        private void kcmbInstalledVoices_TextChanged(object? sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(kcmbInstalledVoices.Text))
             {
@@ -434,7 +434,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        private void kbtnCancel_Click(object? sender, EventArgs e)
         {
             Hide();
         }

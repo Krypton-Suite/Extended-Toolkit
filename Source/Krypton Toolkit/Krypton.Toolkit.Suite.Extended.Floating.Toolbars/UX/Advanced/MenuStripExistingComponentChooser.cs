@@ -106,21 +106,21 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         }
         #endregion
 
-        private void KlblAvailable_SelectedIndexChanged(object sender, EventArgs e)
+        private void KlblAvailable_SelectedIndexChanged(object? sender, EventArgs e)
         {
             bool flag = klblAvailable.SelectedItems.Count > 0;
 
             kbtnAddSelected.Enabled = flag;
         }
 
-        private void KlbSelected_SelectedIndexChanged(object sender, EventArgs e)
+        private void KlbSelected_SelectedIndexChanged(object? sender, EventArgs e)
         {
             bool flag = klbSelected.SelectedItems.Count > 0;
 
             kbtnRemoveSelected.Enabled = flag;
         }
 
-        private void KbtnAddSelected_Click(object sender, EventArgs e)
+        private void KbtnAddSelected_Click(object? sender, EventArgs e)
         {
             if (klblAvailable.SelectedItem != null)
             {
@@ -130,7 +130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
-        private void KbtnAddAll_Click(object sender, EventArgs e)
+        private void KbtnAddAll_Click(object? sender, EventArgs e)
         {
             object[] allObjects = new string[klblAvailable.Items.Count];
 
@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             klbSelected.Items.AddRange(allObjects);
         }
 
-        private void KbtnRemoveSelected_Click(object sender, EventArgs e)
+        private void KbtnRemoveSelected_Click(object? sender, EventArgs e)
         {
             if (klbSelected.SelectedItem != null)
             {
@@ -151,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
-        private void KbtnRemoveAll_Click(object sender, EventArgs e)
+        private void KbtnRemoveAll_Click(object? sender, EventArgs e)
         {
             object[] allObjects = new string[klbSelected.Items.Count];
 

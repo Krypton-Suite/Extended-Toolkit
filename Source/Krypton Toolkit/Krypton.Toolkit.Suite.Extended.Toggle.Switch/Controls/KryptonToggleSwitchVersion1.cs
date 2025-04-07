@@ -32,11 +32,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
     {
         #region Delegate and Event declarations
 
-        public delegate void CheckedChangedDelegate(object sender, EventArgs e);
+        public delegate void CheckedChangedDelegate(object? sender, EventArgs e);
         [Description("Raised when the ToggleSwitch has changed state")]
         public event CheckedChangedDelegate CheckedChanged;
 
-        public delegate void BeforeRenderingDelegate(object sender, BeforeRenderingEventArgs e);
+        public delegate void BeforeRenderingDelegate(object? sender, BeforeRenderingEventArgs e);
         [Description("Raised when the ToggleSwitch renderer is changed")]
         public event BeforeRenderingDelegate BeforeRendering;
 
@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             }
         }
 
-        private void AnimationTimer_Tick(object sender, EventArgs e)
+        private void AnimationTimer_Tick(object? sender, EventArgs e)
         {
             _animationTimer.Enabled = false;
 

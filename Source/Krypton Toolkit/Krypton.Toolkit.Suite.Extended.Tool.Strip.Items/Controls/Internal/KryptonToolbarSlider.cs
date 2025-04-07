@@ -514,7 +514,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region "Events"
 
         //Key Mouse Events
-        private void KryptonSliderButton_MouseDown(object sender, MouseEventArgs e)
+        private void KryptonSliderButton_MouseDown(object? sender, MouseEventArgs e)
         {
             if (GetSliderBounds(GetSliderPosition()).Contains(e.Location))
             {
@@ -522,17 +522,17 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 Invalidate();
             }
         }
-        private void KryptonSliderButton_MouseEnter(object sender, EventArgs e)
+        private void KryptonSliderButton_MouseEnter(object? sender, EventArgs e)
         {
             m_highlight = true;
             Invalidate();
         }
-        private void KryptonSliderButton_MouseLeave(object sender, EventArgs e)
+        private void KryptonSliderButton_MouseLeave(object? sender, EventArgs e)
         {
             m_highlight = false;
             Invalidate();
         }
-        private void KryptonSlider_MouseMove(object sender, MouseEventArgs e)
+        private void KryptonSlider_MouseMove(object? sender, MouseEventArgs e)
         {
 
             //Repaint Flag
@@ -586,7 +586,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 Invalidate();
             }
         }
-        private void KryptonSliderButton_MouseUp(object sender, MouseEventArgs e)
+        private void KryptonSliderButton_MouseUp(object? sender, MouseEventArgs e)
         {
             m_down = false;
             if (!GetSliderBounds(GetSliderPosition()).Contains(e.Location))
@@ -608,15 +608,15 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
 
         //Krypton Paint Helpers
-        private void k_palette_BasePaletteChanged(object sender, EventArgs e)
+        private void k_palette_BasePaletteChanged(object? sender, EventArgs e)
         {
             Invalidate();
         }
-        private void k_palette_BaseRendererChanged(object sender, EventArgs e)
+        private void k_palette_BaseRendererChanged(object? sender, EventArgs e)
         {
             Invalidate();
         }
-        private void k_palette_PalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void k_palette_PalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             Invalidate();
         }
@@ -772,13 +772,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region "   Krypton Events   "
 
         //Krypton Palette Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             Invalidate();
         }
 
         //Krypton Palette Events
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             if (_palette != null)
             {

@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             using (StreamReader reader = new(stream))
             {
-                string header;
+                string? header;
                 int swatchIndex;
                 bool readingPalette;
 
@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 while (!reader.EndOfStream)
                 {
-                    string data;
+                    string? data;
 
                     data = reader.ReadLine();
 
@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                             int g;
                             int b;
                             string[] parts;
-                            string name;
+                            string? name;
 
                             // TODO: Optimize this a touch. Microoptimization? Maybe.
 

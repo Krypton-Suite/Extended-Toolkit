@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
         #endregion
 
-        private void KryptonNetworkDriveOptions_Load(object sender, EventArgs e)
+        private void KryptonNetworkDriveOptions_Load(object? sender, EventArgs e)
         {
             _utilities.GetAvailableDriveLetters(_validDriveLetters);
 
@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             ktxtShareAddress.Text = $@"\\\\{SystemInformation.ComputerName}\\C$";
         }
 
-        private void kbtnMapDrive_Click(object sender, EventArgs e)
+        private void kbtnMapDrive_Click(object? sender, EventArgs e)
         {
             UpdateStatus($"Mapping '{ktxtShareAddress.Text}' to drive '{kcmbDriveLetter.Text}'");
 
@@ -105,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             _networkDrives = null;
         }
 
-        private void kbtnDisconnect_Click(object sender, EventArgs e)
+        private void kbtnDisconnect_Click(object? sender, EventArgs e)
         {
             UpdateStatus("Disconnecting drive...");
 

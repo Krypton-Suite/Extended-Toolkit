@@ -930,7 +930,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         /// <param name="sender">Source of notification.</param>
         /// <param name="e">An EventArgs containing event data.</param>
-        protected virtual void OnButtonSpecChanged(object sender, EventArgs e)
+        protected virtual void OnButtonSpecChanged(object? sender, EventArgs e)
         {
         }
 
@@ -966,7 +966,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// </summary>
         /// <param name="sender">Source of the event.</param>
         /// <param name="e">An EventArgs containing the event data.</param>
-        protected virtual void OnAllowFormChromeChanged(object sender, EventArgs e)
+        protected virtual void OnAllowFormChromeChanged(object? sender, EventArgs e)
         {
         }
 
@@ -1693,7 +1693,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         #region Implementation
 
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             // We only care if we are using the global palette
             if (PaletteMode == PaletteMode.Global)
@@ -1710,7 +1710,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        private void OnUserPreferenceChanged(object? sender, UserPreferenceChangedEventArgs e)
         {
             // If a change has occurred that could effect the color table then it needs regenerating
             switch (e.Category)
@@ -1760,11 +1760,11 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
         }
 
-        protected virtual void OnUseThemeFormChromeBorderWidthChanged(object sender, EventArgs e)
+        protected virtual void OnUseThemeFormChromeBorderWidthChanged(object? sender, EventArgs e)
         {
         }
 
-        private void OnBaseChanged(object sender, EventArgs e)
+        private void OnBaseChanged(object? sender, EventArgs e)
         {
             // Change in base renderer or base palette require we fetch the latest renderer
             Renderer = _palette.GetRenderer();
@@ -1772,7 +1772,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         }
 
 #if !NET462
-        private void OnDpiChanged(object sender, DpiChangedEventArgs e)
+        private void OnDpiChanged(object? sender, DpiChangedEventArgs e)
         {
             UpdateDpiFactors();
         }

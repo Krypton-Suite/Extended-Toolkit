@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             }
         }
 
-        private void OnVerbPrev(object sender, EventArgs e)
+        private void OnVerbPrev(object? sender, EventArgs e)
         {
             if (!_wizard.WizardHasNoPages() && _wizard.IndexOfCurrentPage() > 0)
             {
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             }
         }
 
-        private void OnVerbNext(object sender, EventArgs e)
+        private void OnVerbNext(object? sender, EventArgs e)
         {
             if (((KryptonAdvancedWizard)Control).WizardPages.Count > 0)
             {
@@ -142,9 +142,9 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             }
         }
 
-        private static void OnVerbAbout(object sender, EventArgs e) => KryptonMessageBox.Show(@"Originally written by Steve Bate", "About AdvancedWizard", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
+        private static void OnVerbAbout(object? sender, EventArgs e) => KryptonMessageBox.Show(@"Originally written by Steve Bate", "About AdvancedWizard", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
 
-        private void OnVerbNew(object sender, EventArgs e)
+        private void OnVerbNew(object? sender, EventArgs e)
         {
             try
             {
@@ -197,7 +197,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             _wizard.Controls.Add(page);
         }
 
-        private void ChangeServiceComponentAdded(object sender, ComponentEventArgs e)
+        private void ChangeServiceComponentAdded(object? sender, ComponentEventArgs e)
         {
             if (((IDesignerHost)sender).Loading)
             {
@@ -219,7 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             UpdateWizard(page);
         }
 
-        private void ChangeServiceComponentRemoved(object sender, ComponentEventArgs e)
+        private void ChangeServiceComponentRemoved(object? sender, ComponentEventArgs e)
         {
             if (((IDesignerHost)sender).Loading)
             {

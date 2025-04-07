@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
 
         #region Implementation
 
-        private void OnClearRecentFiles_Click(object sender, EventArgs e)
+        private void OnClearRecentFiles_Click(object? sender, EventArgs e)
         {
             try
             {

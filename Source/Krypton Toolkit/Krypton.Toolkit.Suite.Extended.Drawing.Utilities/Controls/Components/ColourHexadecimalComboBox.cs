@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             SelectedIndexChanged += ColourHexadecimalComboBox_SelectedIndexChanged;
         }
 
-        private void ColourHexadecimalComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ColourHexadecimalComboBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (SelectedIndex != -1)
             {
@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void ColourHexadecimalComboBox_KeyDown(object sender, KeyEventArgs e)
+        private void ColourHexadecimalComboBox_KeyDown(object? sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void ColourHexadecimalComboBox_DropDown(object sender, EventArgs e)
+        private void ColourHexadecimalComboBox_DropDown(object? sender, EventArgs e)
         {
 #if !NETCOREAPP
             if (Items.Count == 0)
@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         }
 #endif
 
-        private void ColourHexadecimalComboBox_DrawItem(object sender, DrawItemEventArgs e)
+        private void ColourHexadecimalComboBox_DrawItem(object? sender, DrawItemEventArgs e)
         {
             if (e.Index != -1)
             {

@@ -9,7 +9,7 @@
             UpdateUI(colour);
         }
 
-        private void kbtnConvertToRGB_Click(object sender, EventArgs e)
+        private void kbtnConvertToRGB_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -29,7 +29,7 @@
             }
         }
 
-        private void kbtnConvertToHexadecimal_Click(object sender, EventArgs e)
+        private void kbtnConvertToHexadecimal_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -64,11 +64,11 @@
             }
         }
 
-        private void kcbtnSelectBaseColour_SelectedColorChanged(object sender, ColorEventArgs e) => UpdateUI(kcbtnSelectBaseColour.SelectedColor);
+        private void kcbtnSelectBaseColour_SelectedColorChanged(object? sender, ColorEventArgs e) => UpdateUI(kcbtnSelectBaseColour.SelectedColor);
 
-        private void kchkUpdateColourValues_CheckedChanged(object sender, EventArgs e) => tmrUpdateColourValues.Enabled = kchkUpdateColourValues.Checked;
+        private void kchkUpdateColourValues_CheckedChanged(object? sender, EventArgs e) => tmrUpdateColourValues.Enabled = kchkUpdateColourValues.Checked;
 
-        private void tmrUpdateColourValues_Tick(object sender, EventArgs e)
+        private void tmrUpdateColourValues_Tick(object? sender, EventArgs e)
         {
             ccpbxPreview.BackColor =
                 Color.FromArgb((int)knudRedValue.Value, (int)knudGreenValue.Value, (int)knudBlueValue.Value);

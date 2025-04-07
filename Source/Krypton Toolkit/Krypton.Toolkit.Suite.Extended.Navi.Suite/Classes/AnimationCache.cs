@@ -205,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         #region Event Handling
 
-        private void AnimationTick(object sender, EventArgs e)
+        private void AnimationTick(object? sender, EventArgs e)
         {
             Animate();
             this.control.Invalidate();

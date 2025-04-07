@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private readonly object _lock = new();
 
-        private IDictionary<int, int> _indexedLookup;
+        private IDictionary<int, int>? _indexedLookup;
 
         #endregion
 
@@ -133,7 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <exception cref="System.ArgumentException">Thrown if no <see cref="IPaletteSerialiser"/> is available for the file specified by <c>fileName</c>.</exception>
         public static ColourCollection LoadPalette(string fileName)
         {
-            IPaletteSerialiser serialiser;
+            IPaletteSerialiser? serialiser;
 
             if (string.IsNullOrEmpty(fileName))
             {
@@ -170,7 +170,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             base.ClearItems();
 
-            _indexedLookup = null;
+            lock (_lock)
+            {
+                _indexedLookup = null;
+            }
 
 #if USENAMEHACK
       this.SwatchNames.Clear();
@@ -391,7 +394,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="fileName">Name of the file to load.</param>
         /// <exception cref="System.ArgumentNullException">Thrown if the <c>fileName</c> argument is not specified.</exception>
         /// <exception cref="System.IO.FileNotFoundException">Thrown if the file specified by <c>fileName</c> cannot be found.</exception>
-        /// <exception cref="System.ArgumentException">Thrown if no <see cref="IPaletteSerializer"/> is available for the file specified by <c>fileName</c>.</exception>
+        // <exception cref="System.ArgumentException">Thrown if no <see cref="IPaletteSerializer"/> is available for the file specified by <c>fileName</c>.</exception>
         public void Load(string fileName)
         {
             ColourCollection palette;
@@ -407,7 +410,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="fileName">Name of the file to save.</param>
         /// <exception cref="System.ArgumentNullException">Thrown if the <c>fileName</c> argument is not specified.</exception>
-        /// <exception cref="System.ArgumentException">Thrown if no <see cref="IPaletteSerializer"/> is available for the file specified by <c>fileName</c>.</exception>
+        // <exception cref="System.ArgumentException">Thrown if no <see cref="IPaletteSerializer"/> is available for the file specified by <c>fileName</c>.</exception>
         public void Save<T>(string fileName) where T : IPaletteSerialiser, new()
         {
             IPaletteSerialiser serializer;
@@ -693,7 +696,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns><c>true</c> if the values of <paramref name="left"/> and <paramref name="right"/> are equal; otherwise, <c>false</c>.</returns>
         public static bool operator ==(ColourCollection? left, ColourCollection? right)
         {
-            return ReferenceEquals(left, right) || !((object)left == null || (object)right == null) && left.Equals(right);
+            return ReferenceEquals(left, right) || !((object)left! == null || (object)right! == null) && left.Equals(right);
         }
 
         /// <summary>
@@ -712,7 +715,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="obj">The <see cref="T:System.Object" /> to test.</param>
         /// <returns><c>true</c> if <paramref name="obj"/> is a <see cref="ColourCollection"/> and has the same values as this <see cref="ColourCollection"/>.</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return obj is ColourCollection && this.Equals((ColourCollection)obj);
         }
@@ -737,13 +740,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     Color expected;
                     Color actual;
 
-                    expected = other[i];
-                    actual = this[i];
-
-                    if (expected.ToArgb() != actual.ToArgb())
+                    if (other != null)
                     {
-                        result = false;
-                        break;
+                        expected = other[i];
+
+                        actual = this[i];
+
+                        if (expected.ToArgb() != actual.ToArgb())
+                        {
+                            result = false;
+                            break;
+                        }
                     }
                 }
             }

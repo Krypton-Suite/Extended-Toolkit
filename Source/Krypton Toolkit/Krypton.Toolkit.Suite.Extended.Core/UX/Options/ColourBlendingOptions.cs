@@ -765,72 +765,72 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
         #endregion
 
-        private void ColourBlendingOptions_Load(object sender, EventArgs e)
+        private void ColourBlendingOptions_Load(object? sender, EventArgs e)
         {
             InitialiseWindow();
         }
 
-        private void knumDarkColourIntensityValue_ValueChanged(object sender, EventArgs e)
+        private void knumDarkColourIntensityValue_ValueChanged(object? sender, EventArgs e)
         {
             UpdateFeedback(klblDarkColourIntensityValueOutput, knumDarkColourIntensityValue.Value);
         }
 
-        private void knumMiddleColourIntensityValue_ValueChanged(object sender, EventArgs e)
+        private void knumMiddleColourIntensityValue_ValueChanged(object? sender, EventArgs e)
         {
             ToggleButtons(true);
         }
 
-        private void knumLightColourIntensityValue_ValueChanged(object sender, EventArgs e)
+        private void knumLightColourIntensityValue_ValueChanged(object? sender, EventArgs e)
         {
             ToggleButtons(true);
         }
 
-        private void knumLightestColourIntensityValue_ValueChanged(object sender, EventArgs e)
+        private void knumLightestColourIntensityValue_ValueChanged(object? sender, EventArgs e)
         {
             ToggleButtons(true);
         }
 
-        private void kbtnDarkColourIntensityValueMinus_Click(object sender, EventArgs e)
+        private void kbtnDarkColourIntensityValueMinus_Click(object? sender, EventArgs e)
         {
             knumDarkColourIntensityValue.Increment = -1;
         }
 
-        private void kbtnMiddleColourIntensityValueMinus_Click(object sender, EventArgs e)
+        private void kbtnMiddleColourIntensityValueMinus_Click(object? sender, EventArgs e)
         {
             knumMiddleColourIntensityValue.Increment = -1;
         }
 
-        private void kbtnLightColourIntensityValueMinus_Click(object sender, EventArgs e)
+        private void kbtnLightColourIntensityValueMinus_Click(object? sender, EventArgs e)
         {
             knumLightColourIntensityValue.Increment = -1;
         }
 
-        private void kbtnLightestColourIntensityValueMinus_Click(object sender, EventArgs e)
+        private void kbtnLightestColourIntensityValueMinus_Click(object? sender, EventArgs e)
         {
             knumLightestColourIntensityValue.Increment = -1;
         }
 
-        private void kbnDarkestColourIntensityValuePlus_Click(object sender, EventArgs e)
+        private void kbnDarkestColourIntensityValuePlus_Click(object? sender, EventArgs e)
         {
             knumDarkColourIntensityValue.Increment = knumDarkColourIntensityValue.Value + 1;
         }
 
-        private void kbtnMiddleColourIntensityValuePlus_Click(object sender, EventArgs e)
+        private void kbtnMiddleColourIntensityValuePlus_Click(object? sender, EventArgs e)
         {
             knumMiddleColourIntensityValue.Increment = knumMiddleColourIntensityValue.Value + 1;
         }
 
-        private void kbtLightColourIntensityValuePlus_Click(object sender, EventArgs e)
+        private void kbtLightColourIntensityValuePlus_Click(object? sender, EventArgs e)
         {
             knumLightColourIntensityValue.Increment = knumLightColourIntensityValue.Value + 1;
         }
 
-        private void kbtnLightestColourIntensityValuePlus_Click(object sender, EventArgs e)
+        private void kbtnLightestColourIntensityValuePlus_Click(object? sender, EventArgs e)
         {
             knumLightestColourIntensityValue.Increment = knumLightestColourIntensityValue.Value + 1;
         }
 
-        private void kbtnResetValues_Click(object sender, EventArgs e)
+        private void kbtnResetValues_Click(object? sender, EventArgs e)
         {
             _colourBlendingSettingsManager.ResetColourBlendingValues(_globalBooleanSettingsManager.GetUsePromptFeedback());
 
@@ -842,7 +842,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             kmtxtFilePath.Text = $"{Environment.SpecialFolder.MyDocuments}\\Krypton Palettes";
         }
 
-        private void UpdateValues_Tick(object sender, EventArgs e)
+        private void UpdateValues_Tick(object? sender, EventArgs e)
         {
             ColourUtilities.GenerateColourShades(cbxDarkColourPreview, cbxMediumColourPreview, cbxLightColourPreview, cbxLightestColourPreview, Convert.ToSingle(knumDarkColourIntensityValue.Value), Convert.ToSingle(knumMiddleColourIntensityValue.Value), Convert.ToSingle(knumLightColourIntensityValue.Value), Convert.ToSingle(knumLightestColourIntensityValue.Value), kcbBaseColour.SelectedColor);
         }
@@ -891,7 +891,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
         #endregion
 
-        private void kbtnBrowse_Click(object sender, EventArgs e)
+        private void kbtnBrowse_Click(object? sender, EventArgs e)
         {
             CommonOpenFileDialog commonOpenFileDialog = new();
 
@@ -905,12 +905,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             ToggleButtons(true);
         }
 
-        private void kbtnRestore_Click(object sender, EventArgs e)
+        private void kbtnRestore_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void kmtxtFilePath_TextChanged(object sender, EventArgs e)
+        private void kmtxtFilePath_TextChanged(object? sender, EventArgs e)
         {
             kbtnResetValues.Enabled = true;
 
