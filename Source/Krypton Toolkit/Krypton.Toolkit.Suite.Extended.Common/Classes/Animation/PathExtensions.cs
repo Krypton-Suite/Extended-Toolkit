@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
         public static AnimationPath[] ContinueTo(this AnimationPath[] paths, float end, ulong duration,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
         {
             return paths.Concat([new AnimationPath(paths.Last().End, end, duration, function)]).ToArray();
         }
@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
         public static AnimationPath[] ContinueTo(this AnimationPath[] paths, float end, ulong duration, ulong delay,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
         {
             return paths.Concat([new AnimationPath(paths.Last().End, end, duration, delay, function)]).ToArray();
         }
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="duration">Duration of the animation</param>
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
-        public static AnimationPath[] ContinueTo(this AnimationPath path, float end, ulong duration, AnimationFunctions.Function function)
+        public static AnimationPath[] ContinueTo(this AnimationPath path, float end, ulong duration, AnimationFunctions.Function? function)
         {
             return path.ToArray().ContinueTo(end, duration, function);
         }
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
         public static AnimationPath[] ContinueTo(this AnimationPath path, float end, ulong duration, ulong delay,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
         {
             return path.ToArray().ContinueTo(end, duration, delay, function);
         }

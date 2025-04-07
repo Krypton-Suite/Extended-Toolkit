@@ -593,11 +593,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColourChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             this.UpdateFields(false);
 
-            handler = (EventHandler)this.Events[_eventColourChanged];
+            handler = (EventHandler)Events[_eventColourChanged];
 
             handler?.Invoke(this, e);
         }
@@ -936,9 +936,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
 #endif
 
-        private string AddSpaces(string text)
+        private string? AddSpaces(string text)
         {
-            string result;
+            string? result;
 
             //http://stackoverflow.com/a/272929/148962
 
@@ -1008,7 +1008,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void hexTextBox_DropDown(object sender, EventArgs e)
+        private void hexTextBox_DropDown(object? sender, EventArgs e)
         {
             if (hexTextBox.Items.Count == 0)
             {
@@ -1018,7 +1018,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void hexTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void hexTextBox_KeyDown(object? sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -1036,12 +1036,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void hexTextBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void hexTextBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (hexTextBox.SelectedIndex != -1)
             {
                 this.LockUpdates = true;
-                this.Colour = Color.FromName((string)hexTextBox.SelectedItem);
+                this.Colour = Color.FromName(((string)hexTextBox.SelectedItem!));
                 this.LockUpdates = false;
             }
         }
@@ -1080,7 +1080,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void ValueChangedHandler(object sender, EventArgs e)
+        private void ValueChangedHandler(object? sender, EventArgs e)
         {
             if (!this.LockUpdates)
             {

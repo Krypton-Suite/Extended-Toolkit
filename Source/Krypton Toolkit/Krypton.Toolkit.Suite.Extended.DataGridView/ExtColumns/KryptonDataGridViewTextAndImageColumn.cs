@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
     {
         #region Instance Fields
 
-        private Image imageValue;
+        private Image _imageValue;
 
         #endregion
 
@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             KryptonDataGridViewTextAndImageColumn? cloned = base.Clone() as KryptonDataGridViewTextAndImageColumn;
             if (cloned != null)
             {
-                cloned.imageValue = imageValue;
+                cloned._imageValue = _imageValue;
                 cloned.ImageSize = ImageSize;
                 // Move the button specs over to the new clone
                 foreach (ButtonSpec bs in ButtonSpecs)

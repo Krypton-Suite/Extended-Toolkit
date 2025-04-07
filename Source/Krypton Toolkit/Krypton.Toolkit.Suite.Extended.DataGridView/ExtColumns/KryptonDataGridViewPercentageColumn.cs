@@ -63,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// Overrides CellTemplate
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override DataGridViewCell CellTemplate
+        public override DataGridViewCell? CellTemplate
         {
             get => base.CellTemplate;
 
@@ -124,12 +124,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="cellStyle"></param>
         /// <param name="advancedBorderStyle"></param>
         /// <param name="paintParts"></param>
-        protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle,
-        DataGridViewPaintParts paintParts)
+        protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object? value, object? formattedValue, string? errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             //Draw the bar
             int barWidth;
-            if ((double)value >= 1.0)
+            if ((double)value! >= 1.0)
             {
                 barWidth = cellBounds.Width - 10;
             }

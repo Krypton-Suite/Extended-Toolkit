@@ -60,8 +60,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
                 orderby a.Name.ToLower()
                 select new AssemblyRef
                 {
-                    Name = a.Name,
-                    Version = a.Version.ToString()
+                    Name = a!.Name,
+                    Version = a!.Version.ToString()
                 };
     }
 }

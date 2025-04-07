@@ -154,11 +154,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="listBox">The list box.</param>
         public static void ImportContentFromFile(string filePath, KryptonListBox listBox)
         {
-            List<string> fileData = [];
+            List<string?> fileData = [];
 
             using (StreamReader reader = new StreamReader(filePath))
             {
-                string line;
+                string? line;
 
                 while ((line = reader.ReadLine()) != null)
                 {
@@ -168,9 +168,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             if (fileData.Count != 0)
             {
-                foreach (string item in fileData)
+                foreach (string? item in fileData)
                 {
-                    listBox.Items.Add(item);
+                    listBox.Items.Add(item!);
                 }
             }
         }

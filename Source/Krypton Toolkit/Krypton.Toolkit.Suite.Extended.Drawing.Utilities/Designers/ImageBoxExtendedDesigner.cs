@@ -34,9 +34,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
     {
         #region Instance Fields
 
-        private DesignerVerb _dockVerb;
+        private DesignerVerb? _dockVerb;
 
-        private DesignerVerb _undockVerb;
+        private DesignerVerb? _undockVerb;
 
         private DesignerVerbCollection _verbs;
 
@@ -86,15 +86,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="component">The <see cref="T:System.ComponentModel.IComponent" /> to associate with the designer.</param>
         public override void Initialize(IComponent component)
         {
-            IComponentChangeService changeService;
+            IComponentChangeService? changeService;
 
             base.Initialize(component);
 
             // attach an event to notify us of when a component has been modified
-            changeService = (IComponentChangeService)this.GetService(typeof(IComponentChangeService));
+            changeService = ((IComponentChangeService)GetService(typeof(IComponentChangeService))!);
             if (changeService != null)
             {
-                changeService.ComponentChanged += this.OnComponentChanged;
+                changeService.ComponentChanged += OnComponentChanged;
             }
         }
 
@@ -106,9 +106,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             if (disposing)
             {
-                IComponentChangeService changeService;
+                IComponentChangeService? changeService;
 
-                changeService = (IComponentChangeService)this.GetService(typeof(IComponentChangeService));
+                changeService = GetService(typeof(IComponentChangeService)) as IComponentChangeService;
                 if (changeService != null)
                 {
                     changeService.ComponentChanged -= this.OnComponentChanged;
@@ -126,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// Gets the TabList control currently being designed
         /// </summary>
         /// <value>The TabList control being designed.</value>
-        protected ImageBoxExtended ImageBoxControl => Component as ImageBoxExtended;
+        protected ImageBoxExtended? ImageBoxControl => Component as ImageBoxExtended;
 
         #endregion
 
@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void DockVerbHandler(object sender, EventArgs e)
+        private void DockVerbHandler(object? sender, EventArgs e)
         {
             this.SetDock(DockStyle.Fill);
         }
@@ -147,11 +147,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         private void SetDock(DockStyle dock)
         {
-            ImageBoxExtended control;
-            IDesignerHost host;
+            ImageBoxExtended? control;
+            IDesignerHost? host;
 
             control = this.ImageBoxControl;
-            host = (IDesignerHost)this.GetService(typeof(IDesignerHost));
+            host = GetService(typeof(IDesignerHost)) as IDesignerHost;
 
             if (control != null && host != null)
             {
@@ -159,7 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 {
                     try
                     {
-                        MemberDescriptor dockProperty;
+                        MemberDescriptor? dockProperty;
 
                         dockProperty = TypeDescriptor.GetProperties(control)["Dock"];
 
@@ -189,7 +189,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void UndockVerbHandler(object sender, EventArgs e)
+        private void UndockVerbHandler(object? sender, EventArgs e)
         {
             this.SetDock(DockStyle.None);
         }
@@ -203,15 +203,21 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ComponentChangedEventArgs" /> instance containing the event data.</param>
-        private void OnComponentChanged(object sender, ComponentChangedEventArgs e)
+        private void OnComponentChanged(object? sender, ComponentChangedEventArgs e)
         {
             if (_dockVerb != null)
             {
-                _dockVerb.Enabled = this.ImageBoxControl.Dock == DockStyle.None;
+                if (ImageBoxControl != null)
+                {
+                    _dockVerb.Enabled = ImageBoxControl.Dock == DockStyle.None;
+                }
             }
             if (_undockVerb != null)
             {
-                _undockVerb.Enabled = this.ImageBoxControl.Dock != DockStyle.None;
+                if (ImageBoxControl != null)
+                {
+                    _undockVerb.Enabled = ImageBoxControl.Dock != DockStyle.None;
+                }
             }
         }
 

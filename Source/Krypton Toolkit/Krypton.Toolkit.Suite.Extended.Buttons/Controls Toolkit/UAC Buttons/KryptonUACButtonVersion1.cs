@@ -44,7 +44,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private bool _elevateApplicationOnClick = true;
 
-        private string _processName = string.Empty, _extraArguments = string.Empty;
+        private string? _processName = string.Empty;
+        private string _extraArguments = string.Empty;
 
         private static bool? _isSystemAbleToLoadShield = null;
 
@@ -58,6 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Properties
         /// <summary>Gets or sets the process to elevate.</summary>
         /// <value>The process to elevate.</value>
+        [Category("Code"), Description("The process to elevate."), DefaultValue(null)]
         public Assembly AssemblyToElevate { get => _assemblyToElevate; set => _assemblyToElevate = value; }
 
         /// <summary>
@@ -67,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// Use 'Process.GetCurrentProcess().ProcessName;' as a start.
         /// </remarks>
         [Category("Code"), Description("The application assembly. Use 'Process.GetCurrentProcess().ProcessName;' as a start."), DefaultValue("")]
-        public string ProcessName { get => _processName; set => _processName = value; }
+        public string? ProcessName { get => _processName; set => _processName = value; }
         #endregion
 
         #region Events
@@ -159,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             base.OnClick(e);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             base.OnPaint(e);
         }

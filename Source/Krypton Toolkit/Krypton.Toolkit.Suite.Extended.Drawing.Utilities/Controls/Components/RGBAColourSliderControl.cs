@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         #region Fields
 
-        private Brush _cellBackgroundBrush;
+        private Brush? _cellBackgroundBrush;
 
         private RGBAChannel _channel;
 
@@ -224,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             type = typeof(RGBAColourSliderControl);
 
             using (Bitmap background = new Bitmap(type.Assembly.GetManifestResourceStream(
-                       $"{type.Namespace}.Resources.cellbackground.png")))
+                       $"{type.Namespace}.Resources.cellbackground.png")!))
             {
                 return new TextureBrush(background, WrapMode.Tile);
             }
@@ -249,12 +249,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnChannelChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             this.CreateScale();
             this.Invalidate();
 
-            handler = (EventHandler)this.Events[_eventChannelChanged];
+            handler = Events[_eventChannelChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -265,12 +265,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColorChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             this.CreateScale();
             this.Invalidate();
 
-            handler = (EventHandler)this.Events[_eventColourChanged];
+            handler = Events[_eventColourChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }

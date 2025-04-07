@@ -232,6 +232,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets or sets the Font of the Control
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Font Font
         {
             get => base.Font;
@@ -247,6 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets or sets the internal padding of items (Days, day names, month names)
         /// </summary>
+        [DefaultValue(0)]
         public Padding ItemPadding
         {
             get => _itemPadding;

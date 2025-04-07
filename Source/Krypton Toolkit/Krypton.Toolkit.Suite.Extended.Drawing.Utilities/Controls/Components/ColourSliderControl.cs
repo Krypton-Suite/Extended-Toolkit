@@ -118,18 +118,18 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         public ColourSliderControl()
         {
-            this.SetStyle(ControlStyles.SupportsTransparentBackColor | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.Selectable, true);
-            this.Orientation = Orientation.Horizontal;
-            this.Colour1 = Color.Black;
-            this.Colour2 = Color.FromArgb(127, 127, 127);
-            this.Colour3 = Color.White;
-            this.Minimum = 0;
-            this.Maximum = 100;
-            this.NubStyle = ColourSliderNubStyle.BottomRight;
-            this.NubSize = new Size(8, 8);
-            this.NubColour = Color.Black;
-            this.SmallChange = 1;
-            this.LargeChange = 10;
+            SetStyle(ControlStyles.SupportsTransparentBackColor | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.Selectable, true);
+            Orientation = Orientation.Horizontal;
+            Colour1 = Color.Black;
+            Colour2 = Color.FromArgb(127, 127, 127);
+            Colour3 = Color.White;
+            Minimum = 0;
+            Maximum = 100;
+            NubStyle = ColourSliderNubStyle.BottomRight;
+            NubSize = new Size(8, 8);
+            NubColour = Color.Black;
+            SmallChange = 1;
+            LargeChange = 10;
         }
 
         #endregion
@@ -139,127 +139,127 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler BarBoundsChanged
         {
-            add => this.Events.AddHandler(_eventBarBoundsChanged, value);
-            remove => this.Events.RemoveHandler(_eventBarBoundsChanged, value);
+            add => Events.AddHandler(_eventBarBoundsChanged, value);
+            remove => Events.RemoveHandler(_eventBarBoundsChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler BarPaddingChanged
         {
-            add => this.Events.AddHandler(_eventBarPaddingChanged, value);
-            remove => this.Events.RemoveHandler(_eventBarPaddingChanged, value);
+            add => Events.AddHandler(_eventBarPaddingChanged, value);
+            remove => Events.RemoveHandler(_eventBarPaddingChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler BarStyleChanged
         {
-            add => this.Events.AddHandler(_eventBarStyleChanged, value);
-            remove => this.Events.RemoveHandler(_eventBarStyleChanged, value);
+            add => Events.AddHandler(_eventBarStyleChanged, value);
+            remove => Events.RemoveHandler(_eventBarStyleChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler Colour1Changed
         {
-            add => this.Events.AddHandler(_eventColour1Changed, value);
-            remove => this.Events.RemoveHandler(_eventColour1Changed, value);
+            add => Events.AddHandler(_eventColour1Changed, value);
+            remove => Events.RemoveHandler(_eventColour1Changed, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler Colour2Changed
         {
-            add => this.Events.AddHandler(_eventColour2Changed, value);
-            remove => this.Events.RemoveHandler(_eventColour2Changed, value);
+            add => Events.AddHandler(_eventColour2Changed, value);
+            remove => Events.RemoveHandler(_eventColour2Changed, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler Colour3Changed
         {
-            add => this.Events.AddHandler(_eventColour3Changed, value);
-            remove => this.Events.RemoveHandler(_eventColour3Changed, value);
+            add => Events.AddHandler(_eventColour3Changed, value);
+            remove => Events.RemoveHandler(_eventColour3Changed, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler CustomColoursChanged
         {
-            add => this.Events.AddHandler(_eventCustomColoursChanged, value);
-            remove => this.Events.RemoveHandler(_eventCustomColoursChanged, value);
+            add => Events.AddHandler(_eventCustomColoursChanged, value);
+            remove => Events.RemoveHandler(_eventCustomColoursChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler DividerStyleChanged
         {
-            add => this.Events.AddHandler(_eventDividerStyleChanged, value);
-            remove => this.Events.RemoveHandler(_eventDividerStyleChanged, value);
+            add => Events.AddHandler(_eventDividerStyleChanged, value);
+            remove => Events.RemoveHandler(_eventDividerStyleChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler LargeChangeChanged
         {
-            add => this.Events.AddHandler(_eventLargeChangeChanged, value);
-            remove => this.Events.RemoveHandler(_eventLargeChangeChanged, value);
+            add => Events.AddHandler(_eventLargeChangeChanged, value);
+            remove => Events.RemoveHandler(_eventLargeChangeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler MaximumChanged
         {
-            add => this.Events.AddHandler(_eventMaximumChanged, value);
-            remove => this.Events.RemoveHandler(_eventMaximumChanged, value);
+            add => Events.AddHandler(_eventMaximumChanged, value);
+            remove => Events.RemoveHandler(_eventMaximumChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler MinimumChanged
         {
-            add => this.Events.AddHandler(_eventMinimumChanged, value);
-            remove => this.Events.RemoveHandler(_eventMinimumChanged, value);
+            add => Events.AddHandler(_eventMinimumChanged, value);
+            remove => Events.RemoveHandler(_eventMinimumChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler NubColourChanged
         {
-            add => this.Events.AddHandler(_eventNubColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventNubColourChanged, value);
+            add => Events.AddHandler(_eventNubColourChanged, value);
+            remove => Events.RemoveHandler(_eventNubColourChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler NubSizeChanged
         {
-            add => this.Events.AddHandler(_eventNubSizeChanged, value);
-            remove => this.Events.RemoveHandler(_eventNubSizeChanged, value);
+            add => Events.AddHandler(_eventNubSizeChanged, value);
+            remove => Events.RemoveHandler(_eventNubSizeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler NubStyleChanged
         {
-            add => this.Events.AddHandler(_eventNubStyleChanged, value);
-            remove => this.Events.RemoveHandler(_eventNubStyleChanged, value);
+            add => Events.AddHandler(_eventNubStyleChanged, value);
+            remove => Events.RemoveHandler(_eventNubStyleChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler OrientationChanged
         {
-            add => this.Events.AddHandler(_eventOrientationChanged, value);
-            remove => this.Events.RemoveHandler(_eventOrientationChanged, value);
+            add => Events.AddHandler(_eventOrientationChanged, value);
+            remove => Events.RemoveHandler(_eventOrientationChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowValueDividerChanged
         {
-            add => this.Events.AddHandler(_eventShowValueDividerChanged, value);
-            remove => this.Events.RemoveHandler(_eventShowValueDividerChanged, value);
+            add => Events.AddHandler(_eventShowValueDividerChanged, value);
+            remove => Events.RemoveHandler(_eventShowValueDividerChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler SmallChangeChanged
         {
-            add => this.Events.AddHandler(_eventSmallChangeChanged, value);
-            remove => this.Events.RemoveHandler(_eventSmallChangeChanged, value);
+            add => Events.AddHandler(_eventSmallChangeChanged, value);
+            remove => Events.RemoveHandler(_eventSmallChangeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ValueChanged
         {
-            add => this.Events.AddHandler(_eventValueChanged, value);
-            remove => this.Events.RemoveHandler(_eventValueChanged, value);
+            add => Events.AddHandler(_eventValueChanged, value);
+            remove => Events.RemoveHandler(_eventValueChanged, value);
         }
 
         #endregion
@@ -277,11 +277,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _barBounds;
             protected set
             {
-                if (this.BarBounds != value)
+                if (BarBounds != value)
                 {
                     _barBounds = value;
 
-                    this.OnBarBoundsChanged(EventArgs.Empty);
+                    OnBarBoundsChanged(EventArgs.Empty);
                 }
             }
         }
@@ -297,11 +297,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _barPadding;
             protected set
             {
-                if (this.BarPadding != value)
+                if (BarPadding != value)
                 {
                     _barPadding = value;
 
-                    this.OnBarPaddingChanged(EventArgs.Empty);
+                    OnBarPaddingChanged(EventArgs.Empty);
                 }
             }
         }
@@ -317,11 +317,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _barStyle;
             set
             {
-                if (this.BarStyle != value)
+                if (BarStyle != value)
                 {
                     _barStyle = value;
 
-                    this.OnBarStyleChanged(EventArgs.Empty);
+                    OnBarStyleChanged(EventArgs.Empty);
                 }
             }
         }
@@ -338,11 +338,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _colour1;
             set
             {
-                if (this.Colour1 != value)
+                if (Colour1 != value)
                 {
                     _colour1 = value;
 
-                    this.OnColour1Changed(EventArgs.Empty);
+                    OnColour1Changed(EventArgs.Empty);
                 }
             }
         }
@@ -359,11 +359,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _colour2;
             set
             {
-                if (this.Colour2 != value)
+                if (Colour2 != value)
                 {
                     _colour2 = value;
 
-                    this.OnColour2Changed(EventArgs.Empty);
+                    OnColour2Changed(EventArgs.Empty);
                 }
             }
         }
@@ -380,11 +380,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _colour3;
             set
             {
-                if (this.Colour3 != value)
+                if (Colour3 != value)
                 {
                     _colour3 = value;
 
-                    this.OnColour3Changed(EventArgs.Empty);
+                    OnColour3Changed(EventArgs.Empty);
                 }
             }
         }
@@ -401,11 +401,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _customColours;
             set
             {
-                if (this.CustomColours != value)
+                if (CustomColours != value)
                 {
                     _customColours = value;
 
-                    this.OnCustomColoursChanged(EventArgs.Empty);
+                    OnCustomColoursChanged(EventArgs.Empty);
                 }
             }
         }
@@ -447,11 +447,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _largeChange;
             set
             {
-                if (this.LargeChange != value)
+                if (LargeChange != value)
                 {
                     _largeChange = value;
 
-                    this.OnLargeChangeChanged(EventArgs.Empty);
+                    OnLargeChangeChanged(EventArgs.Empty);
                 }
             }
         }
@@ -468,12 +468,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             set
             {
                 // ReSharper disable CompareOfFloatsByEqualityOperator
-                if (this.Maximum != value)
+                if (Maximum != value)
                 // ReSharper restore CompareOfFloatsByEqualityOperator
                 {
                     _maximum = value;
 
-                    this.OnMaximumChanged(EventArgs.Empty);
+                    OnMaximumChanged(EventArgs.Empty);
                 }
             }
         }
@@ -490,12 +490,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             set
             {
                 // ReSharper disable CompareOfFloatsByEqualityOperator
-                if (this.Minimum != value)
+                if (Minimum != value)
                 // ReSharper restore CompareOfFloatsByEqualityOperator
                 {
                     _minimum = value;
 
-                    this.OnMinimumChanged(EventArgs.Empty);
+                    OnMinimumChanged(EventArgs.Empty);
                 }
             }
         }
@@ -511,11 +511,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _nubColour;
             set
             {
-                if (this.NubColour != value)
+                if (NubColour != value)
                 {
                     _nubColour = value;
 
-                    this.OnNubColourChanged(EventArgs.Empty);
+                    OnNubColourChanged(EventArgs.Empty);
                 }
             }
         }
@@ -531,11 +531,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _nubSize;
             set
             {
-                if (this.NubSize != value)
+                if (NubSize != value)
                 {
                     _nubSize = value;
 
-                    this.OnNubSizeChanged(EventArgs.Empty);
+                    OnNubSizeChanged(EventArgs.Empty);
                 }
             }
         }
@@ -551,11 +551,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _nubStyle;
             set
             {
-                if (this.NubStyle != value)
+                if (NubStyle != value)
                 {
                     _nubStyle = value;
 
-                    this.OnNubStyleChanged(EventArgs.Empty);
+                    OnNubStyleChanged(EventArgs.Empty);
                 }
             }
         }
@@ -571,11 +571,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _orientation;
             set
             {
-                if (this.Orientation != value)
+                if (Orientation != value)
                 {
                     _orientation = value;
 
-                    this.OnOrientationChanged(EventArgs.Empty);
+                    OnOrientationChanged(EventArgs.Empty);
                 }
             }
         }
@@ -591,11 +591,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _showValueDivider;
             set
             {
-                if (this.ShowValueDivider != value)
+                if (ShowValueDivider != value)
                 {
                     _showValueDivider = value;
 
-                    this.OnShowValueDividerChanged(EventArgs.Empty);
+                    OnShowValueDividerChanged(EventArgs.Empty);
                 }
             }
         }
@@ -611,11 +611,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _smallChange;
             set
             {
-                if (this.SmallChange != value)
+                if (SmallChange != value)
                 {
                     _smallChange = value;
 
-                    this.OnSmallChangeChanged(EventArgs.Empty);
+                    OnSmallChangeChanged(EventArgs.Empty);
                 }
             }
         }
@@ -644,22 +644,22 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _value;
             set
             {
-                if (value < this.Minimum)
+                if (value < Minimum)
                 {
-                    value = this.Minimum;
+                    value = Minimum;
                 }
-                if (value > this.Maximum)
+                if (value > Maximum)
                 {
-                    value = this.Maximum;
+                    value = Maximum;
                 }
 
                 // ReSharper disable CompareOfFloatsByEqualityOperator
-                if (this.Value != value)
+                if (Value != value)
                 // ReSharper restore CompareOfFloatsByEqualityOperator
                 {
                     _value = value;
 
-                    this.OnValueChanged(EventArgs.Empty);
+                    OnValueChanged(EventArgs.Empty);
                 }
             }
         }
@@ -668,7 +668,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// Gets or sets the selection glyph.
         /// </summary>
         /// <value>The selection glyph.</value>
-        protected Image SelectionGlyph { get; set; }
+        [DefaultValue(null)]
+        protected Image? SelectionGlyph { get; set; }
 
         #endregion
 
@@ -682,7 +683,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             Image image;
 
-            image = new Bitmap(this.NubSize.Width + 1, this.NubSize.Height + 1, PixelFormat.Format32bppArgb);
+            image = new Bitmap(NubSize.Width + 1, NubSize.Height + 1, PixelFormat.Format32bppArgb);
 
             using (Graphics g = Graphics.FromImage(image))
             {
@@ -691,34 +692,34 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 Point lastCorner;
                 Point tipCorner;
 
-                if (this.NubStyle == ColourSliderNubStyle.BottomRight)
+                if (NubStyle == ColourSliderNubStyle.BottomRight)
                 {
-                    lastCorner = new Point(this.NubSize.Width, this.NubSize.Height);
+                    lastCorner = new Point(NubSize.Width, NubSize.Height);
 
-                    if (this.Orientation == Orientation.Horizontal)
+                    if (Orientation == Orientation.Horizontal)
                     {
-                        firstCorner = new Point(0, this.NubSize.Height);
-                        tipCorner = new Point(this.NubSize.Width / 2, 0);
+                        firstCorner = new Point(0, NubSize.Height);
+                        tipCorner = new Point(NubSize.Width / 2, 0);
                     }
                     else
                     {
-                        firstCorner = new Point(this.NubSize.Width, 0);
-                        tipCorner = new Point(0, this.NubSize.Height / 2);
+                        firstCorner = new Point(NubSize.Width, 0);
+                        tipCorner = new Point(0, NubSize.Height / 2);
                     }
                 }
                 else
                 {
                     firstCorner = Point.Empty;
 
-                    if (this.Orientation == Orientation.Horizontal)
+                    if (Orientation == Orientation.Horizontal)
                     {
-                        lastCorner = new Point(this.NubSize.Width, 0);
-                        tipCorner = new Point(this.NubSize.Width / 2, this.NubSize.Height);
+                        lastCorner = new Point(NubSize.Width, 0);
+                        tipCorner = new Point(NubSize.Width / 2, NubSize.Height);
                     }
                     else
                     {
-                        lastCorner = new Point(0, this.NubSize.Height);
-                        tipCorner = new Point(this.NubSize.Width, this.NubSize.Height / 2);
+                        lastCorner = new Point(0, NubSize.Height);
+                        tipCorner = new Point(NubSize.Width, NubSize.Height / 2);
                     }
                 }
 
@@ -734,7 +735,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
                 g.SmoothingMode = SmoothingMode.AntiAlias;
 
-                using (Brush brush = new SolidBrush(this.NubColour))
+                using (Brush brush = new SolidBrush(NubColour))
                 {
                     g.FillPolygon(brush, outer);
                 }
@@ -748,14 +749,14 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         protected virtual void DefineBar()
         {
-            if (this.SelectionGlyph != null)
+            if (SelectionGlyph != null)
             {
-                this.SelectionGlyph.Dispose();
+                SelectionGlyph.Dispose();
             }
 
-            this.BarPadding = this.GetBarPadding();
-            this.BarBounds = this.GetBarBounds();
-            this.SelectionGlyph = this.NubStyle != ColourSliderNubStyle.None ? this.CreateNubGlyph() : null;
+            BarPadding = GetBarPadding();
+            BarBounds = GetBarBounds();
+            SelectionGlyph = NubStyle != ColourSliderNubStyle.None ? CreateNubGlyph() : null;
         }
 
         /// <summary>
@@ -764,9 +765,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && this.SelectionGlyph != null)
+            if (disposing && SelectionGlyph != null)
             {
-                this.SelectionGlyph.Dispose();
+                SelectionGlyph.Dispose();
             }
 
             base.Dispose(disposing);
@@ -781,8 +782,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             Rectangle clientRectangle;
             Padding padding;
 
-            clientRectangle = this.ClientRectangle;
-            padding = this.BarPadding + this.Padding;
+            clientRectangle = ClientRectangle;
+            padding = BarPadding + Padding;
 
             return new Rectangle(clientRectangle.Left + padding.Left, clientRectangle.Top + padding.Top, clientRectangle.Width - padding.Horizontal, clientRectangle.Height - padding.Vertical);
         }
@@ -803,33 +804,33 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             right = 0;
             bottom = 0;
 
-            switch (this.NubStyle)
+            switch (NubStyle)
             {
                 case ColourSliderNubStyle.BottomRight:
-                    if (this.Orientation == Orientation.Horizontal)
+                    if (Orientation == Orientation.Horizontal)
                     {
-                        bottom = this.NubSize.Height + 1;
-                        left = this.NubSize.Width / 2 + 1;
+                        bottom = NubSize.Height + 1;
+                        left = NubSize.Width / 2 + 1;
                         right = left;
                     }
                     else
                     {
-                        right = this.NubSize.Width + 1;
-                        top = this.NubSize.Height / 2 + 1;
+                        right = NubSize.Width + 1;
+                        top = NubSize.Height / 2 + 1;
                         bottom = top;
                     }
                     break;
                 case ColourSliderNubStyle.TopLeft:
-                    if (this.Orientation == Orientation.Horizontal)
+                    if (Orientation == Orientation.Horizontal)
                     {
-                        top = this.NubSize.Height + 1;
-                        left = this.NubSize.Width / 2 + 1;
+                        top = NubSize.Height + 1;
+                        left = NubSize.Width / 2 + 1;
                         right = left;
                     }
                     else
                     {
-                        left = this.NubSize.Width + 1;
-                        top = this.NubSize.Height / 2 + 1;
+                        left = NubSize.Width + 1;
+                        top = NubSize.Height / 2 + 1;
                         bottom = top;
                     }
                     break;
@@ -867,7 +868,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            handler = (EventHandler)this.Events[_eventBarBoundsChanged];
+            handler = (EventHandler)Events[_eventBarBoundsChanged];
 
             handler?.Invoke(this, e);
         }
@@ -880,9 +881,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventBarPaddingChanged];
+            handler = (EventHandler)Events[_eventBarPaddingChanged];
 
             handler?.Invoke(this, e);
         }
@@ -895,9 +896,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventBarStyleChanged];
+            handler = (EventHandler)Events[_eventBarStyleChanged];
 
             handler?.Invoke(this, e);
         }
@@ -910,9 +911,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventColour1Changed];
+            handler = (EventHandler)Events[_eventColour1Changed];
 
             handler?.Invoke(this, e);
         }
@@ -925,9 +926,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventColour2Changed];
+            handler = (EventHandler)Events[_eventColour2Changed];
 
             handler?.Invoke(this, e);
         }
@@ -940,9 +941,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventColour3Changed];
+            handler = (EventHandler)Events[_eventColour3Changed];
 
             handler?.Invoke(this, e);
         }
@@ -955,9 +956,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventCustomColoursChanged];
+            handler = (EventHandler)Events[_eventCustomColoursChanged];
 
             handler?.Invoke(this, e);
         }
@@ -970,10 +971,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.DefineBar();
-            this.Invalidate();
+            DefineBar();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventDividerStyleChanged];
+            handler = (EventHandler)Events[_eventDividerStyleChanged];
 
             handler?.Invoke(this, e);
         }
@@ -986,7 +987,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnGotFocus(e);
 
-            this.Invalidate();
+            Invalidate();
         }
 
         /// <summary>
@@ -998,8 +999,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             int step;
             float value;
 
-            step = e.Shift ? this.LargeChange : this.SmallChange;
-            value = this.Value;
+            step = e.Shift ? LargeChange : SmallChange;
+            value = Value;
 
             switch (e.KeyCode)
             {
@@ -1012,34 +1013,34 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     value -= step;
                     break;
                 case Keys.PageDown:
-                    value += this.LargeChange;
+                    value += LargeChange;
                     break;
                 case Keys.PageUp:
-                    value -= this.LargeChange;
+                    value -= LargeChange;
                     break;
                 case Keys.Home:
-                    value = this.Minimum;
+                    value = Minimum;
                     break;
                 case Keys.End:
-                    value = this.Maximum;
+                    value = Maximum;
                     break;
             }
 
-            if (value < this.Minimum)
+            if (value < Minimum)
             {
-                value = this.Minimum;
+                value = Minimum;
             }
 
-            if (value > this.Maximum)
+            if (value > Maximum)
             {
-                value = this.Maximum;
+                value = Maximum;
             }
 
             // ReSharper disable CompareOfFloatsByEqualityOperator
-            if (value != this.Value)
+            if (value != Value)
             // ReSharper restore CompareOfFloatsByEqualityOperator
             {
-                this.Value = value;
+                Value = value;
 
                 e.Handled = true;
             }
@@ -1055,7 +1056,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            handler = (EventHandler)this.Events[_eventLargeChangeChanged];
+            handler = (EventHandler)Events[_eventLargeChangeChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1068,7 +1069,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnLostFocus(e);
 
-            this.Invalidate();
+            Invalidate();
         }
 
         /// <summary>
@@ -1079,9 +1080,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventMaximumChanged];
+            handler = (EventHandler)Events[_eventMaximumChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1094,7 +1095,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            handler = (EventHandler)this.Events[_eventMinimumChanged];
+            handler = (EventHandler)Events[_eventMinimumChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1107,14 +1108,14 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnMouseDown(e);
 
-            if (!this.Focused && this.TabStop)
+            if (!Focused && TabStop)
             {
-                this.Focus();
+                Focus();
             }
 
             if (e.Button == MouseButtons.Left)
             {
-                this.PointToValue(e.Location);
+                PointToValue(e.Location);
             }
         }
 
@@ -1128,7 +1129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             if (e.Button == MouseButtons.Left)
             {
-                this.PointToValue(e.Location);
+                PointToValue(e.Location);
             }
         }
 
@@ -1142,19 +1143,19 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             base.OnMouseWheel(e);
 
-            value = this.Value + -(e.Delta / SystemInformation.MouseWheelScrollDelta * SystemInformation.MouseWheelScrollLines);
+            value = Value + -(e.Delta / SystemInformation.MouseWheelScrollDelta * SystemInformation.MouseWheelScrollLines);
 
-            if (value < this.Minimum)
+            if (value < Minimum)
             {
-                value = this.Minimum;
+                value = Minimum;
             }
 
-            if (value > this.Maximum)
+            if (value > Maximum)
             {
-                value = this.Maximum;
+                value = Maximum;
             }
 
-            this.Value = value;
+            Value = value;
         }
 
         /// <summary>
@@ -1165,9 +1166,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventNubColourChanged];
+            handler = (EventHandler)Events[_eventNubColourChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1180,10 +1181,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.DefineBar();
-            this.Invalidate();
+            DefineBar();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventNubSizeChanged];
+            handler = (EventHandler)Events[_eventNubSizeChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1196,10 +1197,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.DefineBar();
-            this.Invalidate();
+            DefineBar();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventNubStyleChanged];
+            handler = (EventHandler)Events[_eventNubStyleChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1212,10 +1213,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.DefineBar();
-            this.Invalidate();
+            DefineBar();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventOrientationChanged];
+            handler = (EventHandler)Events[_eventOrientationChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1228,7 +1229,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnPaddingChanged(e);
 
-            this.DefineBar();
+            DefineBar();
         }
 
         /// <summary>
@@ -1239,8 +1240,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnPaint(e);
 
-            this.PaintBar(e);
-            this.PaintAdornments(e);
+            PaintBar(e);
+            PaintAdornments(e);
         }
 
         /// <summary>
@@ -1251,7 +1252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnResize(e);
 
-            this.DefineBar();
+            DefineBar();
         }
 
         /// <summary>
@@ -1262,9 +1263,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventShowValueDividerChanged];
+            handler = (EventHandler)Events[_eventShowValueDividerChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1277,7 +1278,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             EventHandler handler;
 
-            handler = (EventHandler)this.Events[_eventSmallChangeChanged];
+            handler = (EventHandler)Events[_eventSmallChangeChanged];
 
             handler?.Invoke(this, e);
         }
@@ -1288,11 +1289,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnValueChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            this.Refresh();
+            Refresh();
 
-            handler = (EventHandler)this.Events[_eventValueChanged];
+            handler = Events[_eventValueChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -1305,7 +1306,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             Point point;
 
-            point = this.ValueToPoint(this.Value);
+            point = ValueToPoint(Value);
 
             // divider
             if (ShowValueDivider)
@@ -1316,13 +1317,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
                 if (Orientation == Orientation.Horizontal)
                 {
-                    start = new Point(point.X, this.BarBounds.Top);
-                    end = new Point(point.X, this.BarBounds.Bottom);
+                    start = new Point(point.X, BarBounds.Top);
+                    end = new Point(point.X, BarBounds.Bottom);
                 }
                 else
                 {
-                    start = new Point(this.BarBounds.Left, point.Y);
-                    end = new Point(this.BarBounds.Right, point.Y);
+                    start = new Point(BarBounds.Left, point.Y);
+                    end = new Point(BarBounds.Right, point.Y);
                 }
 
                 // draw a XOR'd line using Win32 API as this functionality isn't part of .NET
@@ -1334,43 +1335,43 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
 
             // drag nub
-            if (this.NubStyle != ColourSliderNubStyle.None && this.SelectionGlyph != null)
+            if (NubStyle != ColourSliderNubStyle.None && SelectionGlyph != null)
             {
                 int x;
                 int y;
 
-                if (this.Orientation == Orientation.Horizontal)
+                if (Orientation == Orientation.Horizontal)
                 {
-                    x = point.X - this.NubSize.Width / 2;
-                    if (this.NubStyle == ColourSliderNubStyle.BottomRight)
+                    x = point.X - NubSize.Width / 2;
+                    if (NubStyle == ColourSliderNubStyle.BottomRight)
                     {
-                        y = this.BarBounds.Bottom;
+                        y = BarBounds.Bottom;
                     }
                     else
                     {
-                        y = this.BarBounds.Top - this.NubSize.Height;
+                        y = BarBounds.Top - NubSize.Height;
                     }
                 }
                 else
                 {
-                    y = point.Y - this.NubSize.Height / 2;
-                    if (this.NubStyle == ColourSliderNubStyle.BottomRight)
+                    y = point.Y - NubSize.Height / 2;
+                    if (NubStyle == ColourSliderNubStyle.BottomRight)
                     {
-                        x = this.BarBounds.Right;
+                        x = BarBounds.Right;
                     }
                     else
                     {
-                        x = this.BarBounds.Left - this.NubSize.Width;
+                        x = BarBounds.Left - NubSize.Width;
                     }
                 }
 
-                e.Graphics.DrawImage(this.SelectionGlyph, x, y);
+                e.Graphics.DrawImage(SelectionGlyph, x, y);
             }
 
             // focus
-            if (this.Focused)
+            if (Focused)
             {
-                ControlPaint.DrawFocusRectangle(e.Graphics, Rectangle.Inflate(this.BarBounds, -2, -2));
+                ControlPaint.DrawFocusRectangle(e.Graphics, Rectangle.Inflate(BarBounds, -2, -2));
             }
         }
 
@@ -1382,24 +1383,24 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             float angle;
 
-            angle = this.Orientation == Orientation.Horizontal ? 0 : 90;
+            angle = Orientation == Orientation.Horizontal ? 0 : 90;
 
-            if (this.BarBounds.Height > 0 && this.BarBounds.Width > 0)
+            if (BarBounds.Height > 0 && BarBounds.Width > 0)
             {
                 ColorBlend blend;
 
                 // HACK: Inflating the brush rectangle by 1 seems to get rid of a odd issue where the last colour is drawn on the first pixel
 
                 blend = new ColorBlend();
-                using (LinearGradientBrush brush = new LinearGradientBrush(Rectangle.Inflate(this.BarBounds, 1, 1), Color.Empty, Color.Empty, angle, false))
+                using (LinearGradientBrush brush = new LinearGradientBrush(Rectangle.Inflate(BarBounds, 1, 1), Color.Empty, Color.Empty, angle, false))
                 {
-                    switch (this.BarStyle)
+                    switch (BarStyle)
                     {
                         case ColourBarStyle.TwoColour:
                             blend.Colors =
                             [
-                                this.Colour1,
-                               this.Colour2
+                                Colour1,
+                               Colour2
                             ];
                             blend.Positions =
                             [
@@ -1410,9 +1411,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         case ColourBarStyle.ThreeColour:
                             blend.Colors =
                             [
-                                this.Colour1,
-                               this.Colour2,
-                               this.Colour3
+                                Colour1,
+                               Colour2,
+                               Colour3
                             ];
                             blend.Positions =
                             [
@@ -1425,7 +1426,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                             ColourCollection custom;
                             int count;
 
-                            custom = this.CustomColours;
+                            custom = CustomColours;
                             count = custom?.Count ?? 0;
 
                             if (custom != null && count > 0)
@@ -1437,8 +1438,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                             {
                                 blend.Colors =
                                 [
-                                    this.Colour1,
-                                 this.Colour2
+                                    Colour1,
+                                 Colour2
                                 ];
                                 blend.Positions =
                                 [
@@ -1450,7 +1451,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     }
 
                     brush.InterpolationColors = blend;
-                    e.Graphics.FillRectangle(brush, this.BarBounds);
+                    e.Graphics.FillRectangle(brush, BarBounds);
                 }
             }
         }
@@ -1463,30 +1464,30 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             float value;
 
-            location.X += this.ClientRectangle.X - this.BarBounds.X;
-            location.Y += this.ClientRectangle.Y - this.BarBounds.Y;
+            location.X += ClientRectangle.X - BarBounds.X;
+            location.Y += ClientRectangle.Y - BarBounds.Y;
 
-            switch (this.Orientation)
+            switch (Orientation)
             {
                 case Orientation.Horizontal:
-                    value = this.Minimum + location.X / (float)this.BarBounds.Width * (this.Minimum + this.Maximum);
+                    value = Minimum + location.X / (float)BarBounds.Width * (Minimum + Maximum);
                     break;
                 default:
-                    value = this.Minimum + location.Y / (float)this.BarBounds.Height * (this.Minimum + this.Maximum);
+                    value = Minimum + location.Y / (float)BarBounds.Height * (Minimum + Maximum);
                     break;
             }
 
-            if (value < this.Minimum)
+            if (value < Minimum)
             {
-                value = this.Minimum;
+                value = Minimum;
             }
 
-            if (value > this.Maximum)
+            if (value > Maximum)
             {
-                value = this.Maximum;
+                value = Maximum;
             }
 
-            this.Value = value;
+            Value = value;
         }
 
         /// <summary>
@@ -1500,17 +1501,17 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             double y;
             Padding padding;
 
-            padding = this.BarPadding + this.Padding;
+            padding = BarPadding + Padding;
             x = 0;
             y = 0;
 
-            switch (this.Orientation)
+            switch (Orientation)
             {
                 case Orientation.Horizontal:
-                    x = this.BarBounds.Width / this.Maximum * value;
+                    x = BarBounds.Width / Maximum * value;
                     break;
                 default:
-                    y = this.BarBounds.Height / this.Maximum * value;
+                    y = BarBounds.Height / Maximum * value;
                     break;
             }
 

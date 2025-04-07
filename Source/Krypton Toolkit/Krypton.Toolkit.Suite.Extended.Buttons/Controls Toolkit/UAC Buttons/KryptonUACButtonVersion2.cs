@@ -51,6 +51,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Properties
+
+        /// <summary>Gets or sets a value indicating whether this instance is used as UAC elevated button.</summary>
+        [DefaultValue(false)]
         public bool UseAsUACElevatedButton
         {
             get => _useAsUACElevatedButton;
@@ -65,10 +68,15 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
         }
 
+        [DefaultValue(null)]
         public string PathToElevatedObject { get => _pathToElevatedObject; set => _pathToElevatedObject = value; }
 
+        /// <summary>Gets or sets the extra arguments.</summary>
+        [DefaultValue(null)]
         public string ExtraArguments { get => _extraArguments; set => _extraArguments = value; }
 
+        /// <summary>Gets or sets a value indicating whether to elevate on click.</summary>
+        [DefaultValue(0)]
         public Size CustomShieldSize { get => _customShieldSize; set { _customShieldSize = value; ShowUACShield(_useAsUACElevatedButton, UACShieldSize.Custom, value.Height, value.Width); UACShieldSize = UACShieldSize.Custom; } }
 
         [DefaultValue(typeof(UACShieldSize), "UACShieldSize.SMALL")]
@@ -79,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary></summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-        public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
+        public delegate void ExecuteProcessAsAdministratorEventHandler(object? sender, ExecuteProcessAsAdministratorEventArgs e);
 
         /// <summary>The execute process as administrator</summary>
         public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
@@ -87,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>Executes the process as an administrator.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
-        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
+        protected virtual void OnExecuteProcessAsAdministrator(object? sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
         #endregion
 
         #region Constructor
@@ -113,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                 if (shieldSize == UACShieldSize.Small)
                 {
-                    Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                    Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize)?.ToBitmap();
 
                     Invalidate();
                 }
@@ -150,7 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Overrides
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             //if (_useAsUACElevatedButton)
             //{

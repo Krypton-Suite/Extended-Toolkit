@@ -176,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         protected bool CollapseRow;
 
-        private void MasterDetailGridViewBase_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void MasterDetailGridViewBase_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
             if (SelectionMode == DataGridViewSelectionMode.FullRowSelect
                 && ExpandDetailsWhenFullRowSelectClicked
@@ -231,7 +231,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             Rows[rowIndex].Selected = true;
         }
 
-        private void MasterDetailGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void MasterDetailGridView_RowHeaderMouseClick(object? sender, DataGridViewCellMouseEventArgs e)
         {
             if (!RowCurrent.TryGetValue(e.RowIndex, out var refValues))
             {
@@ -259,17 +259,17 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         private protected abstract bool HasNoChildDetails(int rowIndex);
 
-        private protected abstract void MasterDetailGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e);
+        private protected abstract void MasterDetailGridView_RowPostPaint(object? sender, DataGridViewRowPostPaintEventArgs e);
 
-        private protected abstract void MasterDetailGridView_SelectionChanged(object sender, EventArgs e);
+        private protected abstract void MasterDetailGridView_SelectionChanged(object? sender, EventArgs e);
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         protected readonly Dictionary<int, (int Height, int divider)> RowCurrent = new();
 
-        private int rowExpandedHeight = 300;
+        private int _rowExpandedHeight = 300;
 
-        private void MasterDetailGridView_Scroll(object sender, ScrollEventArgs e)
+        private void MasterDetailGridView_Scroll(object? sender, ScrollEventArgs e)
         {
             if (RowCurrent.Count != 0)
             {
@@ -371,7 +371,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         [Description("Detail DataGridView MaxHeight, Min is 100")]
         public int DetailRowExpandedMaxHeight
         {
-            get => rowExpandedHeight;
+            get => _rowExpandedHeight;
             set
             {
                 if (value < 100)
@@ -379,7 +379,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                     throw new ArgumentOutOfRangeException(nameof(DetailRowExpandedMaxHeight));
                 }
 
-                rowExpandedHeight = value;
+                _rowExpandedHeight = value;
             }
         }
 

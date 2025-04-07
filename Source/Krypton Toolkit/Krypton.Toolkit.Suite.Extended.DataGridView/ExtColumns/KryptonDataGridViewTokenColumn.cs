@@ -149,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             int nextPosition = cellBounds.X + (int)(1 * factorX);
             if (KryptonManager.CurrentGlobalPalette != null)
             {
-                Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+                Font? f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
                 Token tok = (Token)Value;
                 if (tok != null)
@@ -184,7 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
             if (KryptonManager.CurrentGlobalPalette != null)
             {
-                Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+                Font? f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
                 int nextPosition = (int)(1 * factorX);
                 if (Value != null)
                 {
@@ -268,7 +268,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             int nextPosition = cellBounds.X + (int)(1 * factorX);
             if (KryptonManager.CurrentGlobalPalette != null)
             {
-                Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+                Font? f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
                 foreach (Token tok in (List<Token>)Value)
                 {
@@ -302,7 +302,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
             if (KryptonManager.CurrentGlobalPalette != null)
             {
-                Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+                Font? f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
                 int nextPosition = (int)(1 * factorX);
                 if (Value != null)
                 {

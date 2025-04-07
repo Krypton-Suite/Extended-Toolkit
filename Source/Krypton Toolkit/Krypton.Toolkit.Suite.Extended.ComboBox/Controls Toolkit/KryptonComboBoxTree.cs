@@ -71,7 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
         [Browsable(true), Description("Gets or sets the TreeView's Selected Node"), Category("TreeView")]
         public ImageList? Imagelist { get => _tvTreeView.ImageList; set => _tvTreeView.ImageList = value; }
 
-        [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Appearance")]
+        [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Appearance"), DefaultValue(true)]
         public string BranchSeparator
         {
             get => _branchSeparator;
@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
                 }
             }
         }
-        [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Behavior")]
+        [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Behavior"), DefaultValue(false)]
         public bool AbsoluteChildrenSelectableOnly { get => _absoluteChildrenSelectableOnly; set => _absoluteChildrenSelectableOnly = value; }
         #endregion
 
@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
         }
 
         #region Events
-        private void SizingGripMouseMove(object sender, MouseEventArgs e)
+        private void SizingGripMouseMove(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -221,12 +221,12 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
 
                 _frmTreeView.Size = new Size(tvWidth, tvHeight);
                 _pnlTree.Size = _frmTreeView.Size;
-                _tvTreeView.Size = new Size(_frmTreeView.Size.Width - _lblSizingGrip.Width, _frmTreeView.Size.Height - _lblSizingGrip.Width); ;
+                _tvTreeView.Size = new Size(_frmTreeView.Size.Width - _lblSizingGrip.Width, _frmTreeView.Size.Height - _lblSizingGrip.Width);
                 RelocateGrip();
             }
         }
 
-        private void SizingGripMouseDown(object sender, MouseEventArgs e)
+        private void SizingGripMouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -237,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             }
         }
 
-        private void TreeViewLostFocus(object sender, EventArgs e)
+        private void TreeViewLostFocus(object? sender, EventArgs e)
         {
             if (!IsDisposed && Created)
             {
@@ -281,11 +281,11 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             //
             Name = @"ComboBoxTree";
             _absoluteChildrenSelectableOnly = true;
-            Layout += new LayoutEventHandler(ComboBoxTree_Layout);
+            Layout += ComboBoxTree_Layout;
 
         }
 
-        private void ComboBoxTree_Layout(object sender, LayoutEventArgs e)
+        private void ComboBoxTree_Layout(object? sender, LayoutEventArgs e)
         {
             //Height = combobox.Height + 10;
             _pnlBack.Size = new Size(Width, Height - 2);

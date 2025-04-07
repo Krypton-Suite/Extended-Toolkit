@@ -59,14 +59,14 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <value>
         /// The minimum value.
         /// </value>
-        public double minValue { get; set; }
+        public double MinValue { get; set; }
         /// <summary>
         /// Gets or sets the maximum value.
         /// </summary>
         /// <value>
         /// The maximum value.
         /// </value>
-        public double maxValue { get; set; }
+        public double MaxValue { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConditionalFormatting"/> class.

@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
     public class KryptonCalendar : ScrollableControl
     {
         #region "Reload Palette"
-        private void Calendar_Invalidated(object sender, InvalidateEventArgs e)
+        private void Calendar_Invalidated(object? sender, InvalidateEventArgs e)
         {
             Renderer!.ReloadPalette();
         }
@@ -42,10 +42,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region ... Krypton ...
         private PaletteBase? _palette;
-        private PaletteRedirect _paletteRedirect;
+        private readonly PaletteRedirect _paletteRedirect;
 
         //Kripton Palette Events
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             if (_palette != null)
             {
@@ -1322,7 +1322,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        private void TextBox_KeyDown(object? sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {

@@ -54,53 +54,48 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
             e.DrawBackground();
-
             e.DrawFocusRectangle();
 
             if (e.Index < 0)
             {
                 // not an item, draw the text (indented)
-                e.Graphics.DrawString(this.Text, e.Font, new SolidBrush(e.ForeColor), e.Bounds.Left + _images.ImageSize.Width, e.Bounds.Top);
+                e.Graphics.DrawString(this.Text, e.Font ?? SystemFonts.DefaultFont, new SolidBrush(e.ForeColor), e.Bounds.Left + _images.ImageSize.Width, e.Bounds.Top);
             }
             else
             {
-
                 // check if item is an ImageComboItem
                 if (this.Items[e.Index].GetType() == typeof(ImageComboItem))
                 {
-
                     // get item to draw
-                    ImageComboItem item = (ImageComboItem)this.Items[e.Index];
+                    ImageComboItem? item = this.Items[e.Index] as ImageComboItem;
 
                     // get forecolor & font
-                    Color foreColour = item.ForeColour != Color.FromKnownColor(KnownColor.Transparent) ? item.ForeColour : e.ForeColor;
-
-                    Font font = item.Mark ? new Font(e.Font, FontStyle.Bold) : e.Font;
+                    Color foreColour = item != null && item.ForeColour != Color.FromKnownColor(KnownColor.Transparent) ? item.ForeColour : e.ForeColor;
+                    Font font = item != null && item.Mark ? new Font(e.Font ?? SystemFonts.DefaultFont, FontStyle.Bold) : e.Font ?? SystemFonts.DefaultFont;
 
                     // -1: no image
-                    if (item.ImageIndex != -1)
+                    if (item != null && item.ImageIndex != -1)
                     {
                         // draw image, then draw text next to it
-                        ImageList.Draw(e.Graphics, e.Bounds.Left, e.Bounds.Top, item.ImageIndex);
-
+                        ImageList?.Draw(e.Graphics, e.Bounds.Left, e.Bounds.Top, item.ImageIndex);
                         e.Graphics.DrawString(item.Text, font, new SolidBrush(foreColour), e.Bounds.Left + _images.ImageSize.Width, e.Bounds.Top);
                     }
                     else
                     {
                         // draw text (indented)
-                        e.Graphics.DrawString(item.Text, font, new SolidBrush(foreColour), e.Bounds.Left + _images.ImageSize.Width, e.Bounds.Top);
+                        e.Graphics.DrawString(item?.Text ?? string.Empty, font, new SolidBrush(foreColour), e.Bounds.Left + _images.ImageSize.Width, e.Bounds.Top);
                     }
                 }
                 else
                 {
-
                     // it is not an ImageComboItem, draw it
-                    e.Graphics.DrawString(this.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds.Left + _images.ImageSize.Width, e.Bounds.Top);
+                    e.Graphics.DrawString(this.Items[e.Index]?.ToString() ?? string.Empty, e.Font ?? SystemFonts.DefaultFont, new SolidBrush(e.ForeColor), e.Bounds.Left + _images.ImageSize.Width, e.Bounds.Top);
                 }
             }
 
             base.OnDrawItem(e);
         }
+
         #endregion
     }
 }

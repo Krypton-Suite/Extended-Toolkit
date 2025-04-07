@@ -139,11 +139,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Event
-        public delegate void SelectedColourChangedEventHandler(object sender, ColourChangedEventArgs e);
+        public delegate void SelectedColourChangedEventHandler(object? sender, ColourChangedEventArgs e);
 
         public event SelectedColourChangedEventHandler SelectedColourChanged;
 
-        protected virtual void OnSelectedColourChanged(object sender, ColourChangedEventArgs e) => SelectedColourChanged?.Invoke(sender, e);
+        protected virtual void OnSelectedColourChanged(object? sender, ColourChangedEventArgs e) => SelectedColourChanged?.Invoke(sender, e);
         #endregion
 
         #region Variables
@@ -200,27 +200,34 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         }
         #endregion
 
-        private void ColourGridDialog_Load(object sender, EventArgs e)
+        private void ColourGridDialog_Load(object? sender, EventArgs e)
         {
 
         }
 
-        private void cgColour_AutoAddColorsChanged(object sender, EventArgs e)
+        private void cgColour_AutoAddColorsChanged(object? sender, EventArgs e)
         {
             AdjustWindow();
         }
 
         private void AdjustWindow()
         {
-            Width = ColourGrid.Width;
+            if (ColourGrid != null)
+            {
+                Width = ColourGrid.Width;
 
-            Height = ColourGrid.Height;
+                Height = ColourGrid.Height;
+            }
         }
 
-        private void tsbSavePalette_Click(object sender, EventArgs e)
+        [Obsolete("Obsolete")]
+        private void tsbSavePalette_Click(object? sender, EventArgs e)
         {
-            using (FileDialog fd = new SaveFileDialog { Filter = PaletteSerializer.DefaultSaveFilter, DefaultExt = "pal", Title = "Save custom palette as:" })
+            using (FileDialog fd = new SaveFileDialog())
             {
+                fd.Filter = PaletteSerializer.DefaultSaveFilter;
+                fd.DefaultExt = "pal";
+                fd.Title = @"Save custom palette as:";
                 if (fd.ShowDialog(this) == DialogResult.OK)
                 {
                     Cyotek.Windows.Forms.IPaletteSerializer serializer;
@@ -239,7 +246,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     {
                         using (FileStream fs = File.OpenWrite(fd.FileName))
                         {
-                            serializer.Serialize(fs, cgColour.Colors);
+                            serializer?.Serialize(fs, cgColour?.Colors!);
                         }
                     }
                     catch (Exception exc)
@@ -254,15 +261,19 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void tsbLoadPalette_Click(object sender, EventArgs e)
+        [Obsolete("Obsolete")]
+        private void tsbLoadPalette_Click(object? sender, EventArgs e)
         {
-            using (FileDialog fd = new OpenFileDialog { Filter = PaletteSerializer.DefaultOpenFilter, DefaultExt = "pal", Title = "Open a custom palette file:" })
+            using (FileDialog fd = new OpenFileDialog())
             {
+                fd.Filter = PaletteSerializer.DefaultOpenFilter;
+                fd.DefaultExt = "pal";
+                fd.Title = @"Open a custom palette file:";
                 if (fd.ShowDialog(this) == DialogResult.OK)
                 {
                     try
                     {
-                        Cyotek.Windows.Forms.IPaletteSerializer serializer;
+                        Cyotek.Windows.Forms.IPaletteSerializer? serializer;
 
                         serializer = Cyotek.Windows.Forms.PaletteSerializer.GetSerializer(fd.FileName);
 
@@ -292,7 +303,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                                     colours.Add(Color.White);
                                 }
 
-                                cgColour.Colors = colours;
+                                cgColour!.Colors = colours;
                             }
                         }
                         else
@@ -308,9 +319,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void cgColour_ColorChanged(object sender, EventArgs e)
+        private void cgColour_ColorChanged(object? sender, EventArgs e)
         {
-            Colour = ColourGrid.Color;
+            Colour = ColourGrid!.Color;
         }
     }
 }

@@ -28,7 +28,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
-    public delegate void ValueChangedEventHandler(object sender, KnobValueChangedEventArgs e);
+    public delegate void ValueChangedEventHandler(object? sender, KnobValueChangedEventArgs e);
 
     [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(System.Windows.Forms.Timer)), ToolboxItem(false)]
     public class CommonKryptonKnobControlEnhanced : UserControl
@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         #endregion
 
         #region Designer Code
-        private Container components = null;
+        private Container? components = null;
         #endregion
 
         #region Variables
@@ -79,9 +79,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         private PaletteContentInheritRedirect _paletteContent;
 
-        private PaletteBase _palette;
+        private PaletteBase? _palette;
 
-        private PaletteRedirect _paletteRedirect;
+        private readonly PaletteRedirect _paletteRedirect;
         #endregion
 
         #endregion
@@ -97,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         // Invoke the ValueChanged event; called  when value     
         // is changed                                            
         //-------------------------------------------------------
-        protected virtual void OnValueChanged(object sender, KnobValueChangedEventArgs e) => ValueChanged?.Invoke(sender, e);
+        protected virtual void OnValueChanged(object? sender, KnobValueChangedEventArgs e) => ValueChanged?.Invoke(sender, e);
         #endregion
 
         #region Properties
@@ -106,6 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("Font of graduations")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(typeof(Font), "Segoe UI, 10pt, style=Regular")]
         public Font ScaleTypeface
         {
             get => _scaleTypeface;
@@ -186,6 +187,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("Set the style of the knob pointer: a circle or a line")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(KnobPointerStyles.CIRCLE)]
         public KnobPointerStyles PointerStyle
         {
             get => _pointerStyle;
@@ -246,6 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("Colour of graduations")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(typeof(Color), "Black")]
         public Color ScaleColour
         {
             get => _scaleColour;
@@ -262,6 +265,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("Colour of knob")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(typeof(Color), "LightGray")]
         public Color KnobBackColour
         {
             get => _knobBackColour;
@@ -281,6 +285,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("Set the number of intervals between minimum and maximum")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(11)]
         public int ScaleDivisions
         {
             get => _scaleDivisions;
@@ -300,6 +305,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("Set the number of subdivisions between main divisions of graduation.")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(4)]
         public int ScaleSubDivisions
         {
             get => _scaleSubDivisions;
@@ -319,6 +325,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("Show or hide subdivisions of graduations")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(false)]
         public bool ShowSmallScale
         {
             get => _showSmallScale;
@@ -347,6 +354,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("Show or hide graduations")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(true)]
         public bool ShowLargeScale
         {
             get => _showLargeScale;
@@ -365,6 +373,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("set the minimum value for the knob control")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(0)]
         public int Minimum
         {
             get => _minimum;
@@ -381,6 +390,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("set the maximum value for the knob control")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(100)]
         public int Maximum
         {
             get => _maximum;
@@ -408,6 +418,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("set the value for the large changes")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(5)]
         public int LargeChange
         {
             get => _largeChange;
@@ -424,6 +435,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("set the minimum value for the small changes")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(1)]
         public int SmallChange
         {
             get => _smallChange;
@@ -440,6 +452,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("set the current value of the knob control")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(0)]
         public int Value
         {
             get => _value;
@@ -464,6 +477,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         [Description("set the color of the pointer")]
         [Category("KryptonKnobControlEnhanced")]
+        [DefaultValue(0)]
         public Color PointerColour
         {
             get => _pointerColour;
@@ -534,7 +548,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
 
-            InitiliseColourScheme();
+            InitilizeColorScheme();
         }
         #endregion
 
@@ -1139,9 +1153,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         /// return 2 points of a line starting from the center of the knob to the periphery
         /// </summary>
+        /// <param name="g"></param>
         /// <param name="l"></param>
         /// <returns></returns>
-        private Point[] GetKnobLine(Graphics Gr, int l)
+        private Point[] GetKnobLine(Graphics g, int l)
         {
             Point[] pret = new Point[2];
 
@@ -1152,7 +1167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             float radius = (float)(_rKnob.Width / 2);
 
             // FAB: 21/08/18            
-            float degree = _deltaAngle * (this.Value - _minimum) / (_maximum - _minimum);
+            float degree = _deltaAngle * (Value - _minimum) / (_maximum - _minimum);
 
             degree = KryptonKnobUtilities.GetRadian(degree + _startAngle);
 
@@ -1165,7 +1180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             if (!_scaleTypefaceAutoSize)
             {
                 fSize = _scaleTypeface.Size;
-                strsize = Gr.MeasureString(str, _scaleTypeface);
+                strsize = g.MeasureString(str, _scaleTypeface);
             }
             else
             {
@@ -1176,7 +1191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 }
 
                 _knobTypeface = new Font(_scaleTypeface.FontFamily, fSize);
-                strsize = Gr.MeasureString(str, _knobTypeface);
+                strsize = g.MeasureString(str, _knobTypeface);
             }
 
             int strw = (int)strsize.Width;
@@ -1259,20 +1274,23 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             return v;
         }
 
-        private void InitiliseColourScheme()
+        private void InitilizeColorScheme()
         {
-            KnobBackColour = _palette.ColorTable.MenuStripGradientBegin;
+            if (_palette != null)
+            {
+                KnobBackColour = _palette.ColorTable.MenuStripGradientBegin;
 
-            PointerColour = _palette.ColorTable.OverflowButtonGradientMiddle;
+                PointerColour = _palette.ColorTable.OverflowButtonGradientMiddle;
 
-            ScaleColour = _palette.ColorTable.MenuItemText;
+                ScaleColour = _palette.ColorTable.MenuItemText;
 
-            BackColor = _palette.ColorTable.MenuStripGradientBegin;
+                BackColor = _palette.ColorTable.MenuStripGradientBegin;
+            }
         }
         #endregion
 
         #region Event Handlers
-        private void KryptonKnobControlEnhanced_Resize(object sender, EventArgs e)
+        private void KryptonKnobControlEnhanced_Resize(object? sender, EventArgs e)
         {
             // Control remains square
             Height = Width;
@@ -1282,7 +1300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             Invalidate();
         }
 
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        private void OnGlobalPaletteChanged(object? sender, EventArgs e)
         {
             if (_palette != null)
             {
@@ -1297,13 +1315,13 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             {
                 _palette.PalettePaint += OnPalettePaint;
 
-                InitiliseColourScheme();
+                InitilizeColorScheme();
             }
 
             Invalidate();
         }
 
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
         {
             Invalidate();
         }

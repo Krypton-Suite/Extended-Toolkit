@@ -691,7 +691,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="left">A <see cref="ColourCollection"/> to compare.</param>
         /// <param name="right">A <see cref="ColourCollection"/> to compare.</param>
         /// <returns><c>true</c> if the values of <paramref name="left"/> and <paramref name="right"/> are equal; otherwise, <c>false</c>.</returns>
-        public static bool operator ==(ColourCollection left, ColourCollection right)
+        public static bool operator ==(ColourCollection? left, ColourCollection? right)
         {
             return ReferenceEquals(left, right) || !((object)left == null || (object)right == null) && left.Equals(right);
         }
@@ -702,7 +702,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="left">A <see cref="ColourCollection"/> to compare.</param>
         /// <param name="right">A <see cref="ColourCollection"/> to compare.</param>
         /// <returns><c>true</c> if the values of <paramref name="left"/> and <paramref name="right"/> differ; otherwise, <c>false</c>.</returns>
-        public static bool operator !=(ColourCollection left, ColourCollection right)
+        public static bool operator !=(ColourCollection? left, ColourCollection? right)
         {
             return !(left == right);
         }
@@ -724,7 +724,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        public bool Equals(ColourCollection other)
+        public bool Equals(ColourCollection? other)
         {
             bool result;
 

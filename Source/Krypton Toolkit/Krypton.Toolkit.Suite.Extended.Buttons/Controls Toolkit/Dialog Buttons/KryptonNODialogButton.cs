@@ -30,16 +30,17 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     [ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonNODialogButton : KryptonButton
     {
-        private KryptonForm _parent;
+        private KryptonForm? _parent;
 
-        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new(this, value); OnParentWindowChanged(null, e); } }
+        [DefaultValue(null)]
+        public KryptonForm? ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new(this, value); OnParentWindowChanged(null, e); } }
 
         #region Custom Events
-        public delegate void ParentWindowChangedEventHandler(object sender, OwnerWindowChangedEventArgs e);
+        public delegate void ParentWindowChangedEventHandler(object? sender, OwnerWindowChangedEventArgs e);
 
         public event ParentWindowChangedEventHandler ParentWindowChanged;
 
-        protected virtual void OnParentWindowChanged(object sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
+        protected virtual void OnParentWindowChanged(object? sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged.Invoke(sender, e);
         #endregion
 
         public KryptonNODialogButton()
@@ -51,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             ParentChanged += KryptonNODialogButton_ParentChanged;
         }
 
-        private void KryptonNODialogButton_ParentChanged(object sender, EventArgs e)
+        private void KryptonNODialogButton_ParentChanged(object? sender, EventArgs e)
         {
             Control? parent = Parent;
 
@@ -68,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
         }
 
-        private void KryptonNODialogButton_TextChanged(object sender, EventArgs e)
+        private void KryptonNODialogButton_TextChanged(object? sender, EventArgs e)
         {
             if (Text == Name)
             {
@@ -76,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             if (ParentWindow != null)
             {

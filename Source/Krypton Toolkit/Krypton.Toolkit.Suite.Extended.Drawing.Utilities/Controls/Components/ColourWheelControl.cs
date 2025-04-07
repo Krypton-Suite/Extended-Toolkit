@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         #region Fields
 
-        private Brush _brush;
+        private Brush? _brush;
 
         private PointF _centerPoint;
 
@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private float _radius;
 
-        private Image _selectionGlyph;
+        private Image? _selectionGlyph;
 
         private int _selectionSize;
 
@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         public ColourWheelControl()
         {
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.Selectable | ControlStyles.StandardClick | ControlStyles.StandardDoubleClick | ControlStyles.SupportsTransparentBackColor | ControlStyles.UserPaint | ControlStyles.ResizeRedraw, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.Selectable | ControlStyles.StandardClick | ControlStyles.StandardDoubleClick | ControlStyles.SupportsTransparentBackColor | ControlStyles.UserPaint | ControlStyles.ResizeRedraw, true);
             _colour = Color.Black;
             _hslColour = new HSLColour(_colour);
             _colourStep = 4;
@@ -105,36 +105,36 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ColourStepChanged
         {
-            add => this.Events.AddHandler(_eventColourStepChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourStepChanged, value);
+            add => Events.AddHandler(_eventColourStepChanged, value);
+            remove => Events.RemoveHandler(_eventColourStepChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler HSLColourChanged
         {
-            add => this.Events.AddHandler(_eventHslColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventHslColourChanged, value);
+            add => Events.AddHandler(_eventHslColourChanged, value);
+            remove => Events.RemoveHandler(_eventHslColourChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler LargeChangeChanged
         {
-            add => this.Events.AddHandler(_eventLargeChangeChanged, value);
-            remove => this.Events.RemoveHandler(_eventLargeChangeChanged, value);
+            add => Events.AddHandler(_eventLargeChangeChanged, value);
+            remove => Events.RemoveHandler(_eventLargeChangeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler SelectionSizeChanged
         {
-            add => this.Events.AddHandler(_eventSelectionSizeChanged, value);
-            remove => this.Events.RemoveHandler(_eventSelectionSizeChanged, value);
+            add => Events.AddHandler(_eventSelectionSizeChanged, value);
+            remove => Events.RemoveHandler(_eventSelectionSizeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler SmallChangeChanged
         {
-            add => this.Events.AddHandler(_eventSmallChangeChanged, value);
-            remove => this.Events.RemoveHandler(_eventSmallChangeChanged, value);
+            add => Events.AddHandler(_eventSmallChangeChanged, value);
+            remove => Events.RemoveHandler(_eventSmallChangeChanged, value);
         }
 
         #endregion
@@ -155,14 +155,14 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             {
                 if (value is < 1 or > 359)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), value, "Value must be between 1 and 359");
+                    throw new ArgumentOutOfRangeException(nameof(value), value, @"Value must be between 1 and 359");
                 }
 
                 if (_colourStep != value)
                 {
                     _colourStep = value;
 
-                    this.OnColourStepChanged(EventArgs.Empty);
+                    OnColourStepChanged(EventArgs.Empty);
                 }
             }
         }
@@ -200,7 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 {
                     _hslColour = value;
 
-                    this.OnHSLColourChanged(EventArgs.Empty);
+                    OnHSLColourChanged(EventArgs.Empty);
                 }
             }
         }
@@ -220,7 +220,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 {
                     _largeChange = value;
 
-                    this.OnLargeChangeChanged(EventArgs.Empty);
+                    OnLargeChangeChanged(EventArgs.Empty);
                 }
             }
         }
@@ -240,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 {
                     _selectionSize = value;
 
-                    this.OnSelectionSizeChanged(EventArgs.Empty);
+                    OnSelectionSizeChanged(EventArgs.Empty);
                 }
             }
         }
@@ -260,17 +260,23 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 {
                     _smallChange = value;
 
-                    this.OnSmallChangeChanged(EventArgs.Empty);
+                    OnSmallChangeChanged(EventArgs.Empty);
                 }
             }
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override string Text
+        public override string? Text
         {
             get => base.Text;
-            set => base.Text = value;
+            set
+            {
+                if (value != null)
+                {
+                    base.Text = value;
+                }
+            }
         }
 
         /// <summary>
@@ -303,7 +309,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         }
 
         [Obsolete("Do not use. This property will be removed in a future update.")]
-        protected Image SelectionGlyph
+        protected Image? SelectionGlyph
         {
             get => _selectionGlyph;
             set => _selectionGlyph = value;
@@ -331,9 +337,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 _updateCount--;
             }
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -348,7 +354,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             points = [];
             colors = [];
-            size = this.ClientSize;
+            size = ClientSize;
 
             // Only define the points if the control is above a minimum size, otherwise if it's too small, you get an "out of memory" exceptions (of all things) when creating the brush
             if (size.Width > 16 && size.Height > 16)
@@ -360,7 +366,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 h = size.Height;
 
                 _centerPoint = new PointF(w / 2.0F, h / 2.0F);
-                _radius = this.GetRadius(_centerPoint);
+                _radius = GetRadius(_centerPoint);
 
                 for (double angle = 0; angle < 360; angle += _colourStep)
                 {
@@ -368,7 +374,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     PointF location;
 
                     angleR = angle * (Math.PI / 180);
-                    location = this.GetColourLocation(angleR, _radius);
+                    location = GetColourLocation(angleR, _radius);
 
                     points.Add(location);
                     colors.Add(new HSLColour(angle, 1, 0.5).ToRgbColour());
@@ -382,9 +388,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <summary>
         /// Creates the gradient brush used to paint the wheel.
         /// </summary>
-        protected virtual Brush CreateGradientBrush()
+        protected virtual Brush? CreateGradientBrush()
         {
-            Brush result;
+            Brush? result;
 
             if (_points.Length != 0 && _points.Length == _colours.Length)
             {
@@ -408,7 +414,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         protected virtual Image CreateSelectionGlyph()
         {
-            Image image;
+            Image? image;
             int halfSize;
 
             halfSize = _selectionSize / 2;
@@ -456,8 +462,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             if (disposing)
             {
-                this.DisposeOfWheelBrush();
-                this.DisposeOfSelectionGlyph();
+                DisposeOfWheelBrush();
+                DisposeOfSelectionGlyph();
             }
 
             base.Dispose(disposing);
@@ -469,7 +475,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="colour">The color.</param>
         protected PointF GetColourLocation(Color colour)
         {
-            return this.GetColourLocation(new HSLColour(colour));
+            return GetColourLocation(new HSLColour(colour));
         }
 
         /// <summary>
@@ -484,7 +490,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             angle = colour.H * Math.PI / 180;
             radius = _radius * colour.S;
 
-            return this.GetColourLocation(angle, radius);
+            return GetColourLocation(angle, radius);
         }
 
         protected PointF GetColourLocation(double angleR, double radius)
@@ -493,7 +499,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             double x;
             double y;
 
-            padding = this.Padding;
+            padding = Padding;
             x = padding.Left + _centerPoint.X + Math.Cos(angleR) * radius;
             y = padding.Top + _centerPoint.Y - Math.Sin(angleR) * radius;
 
@@ -504,7 +510,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             Padding padding;
 
-            padding = this.Padding;
+            padding = Padding;
 
             return Math.Min(centerPoint.X, centerPoint.Y) - (Math.Max(padding.Horizontal, padding.Vertical) + _selectionSize / 2);
         }
@@ -552,16 +558,16 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColourChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             if (!_lockUpdates)
             {
-                this.HSLColour = new HSLColour(_colour);
+                HSLColour = new HSLColour(_colour);
             }
 
-            this.Refresh();
+            Refresh();
 
-            handler = (EventHandler)this.Events[_eventColourChanged];
+            handler = Events[_eventColourChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -572,11 +578,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColourStepChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            this.RefreshWheel();
+            RefreshWheel();
 
-            handler = (EventHandler)this.Events[_eventColourStepChanged];
+            handler = Events[_eventColourStepChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -589,7 +595,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnGotFocus(e);
 
-            this.Invalidate();
+            Invalidate();
         }
 
         /// <summary>
@@ -598,16 +604,16 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnHSLColourChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             if (!_lockUpdates)
             {
-                this.Colour = _hslColour.ToRgbColour();
+                Colour = _hslColour.ToRgbColour();
             }
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventHslColourChanged];
+            handler = Events[_eventHslColourChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -662,8 +668,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 // As the Color and HslColor properties update each other, need to temporarily disable this and manually set both
                 // otherwise the wheel "sticks" due to imprecise conversion from RGB to HSL
                 _lockUpdates = true;
-                this.Colour = colour.ToRgbColour();
-                this.HSLColour = colour;
+                Colour = colour.ToRgbColour();
+                HSLColour = colour;
                 _lockUpdates = false;
 
                 e.Handled = true;
@@ -678,9 +684,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnLargeChangeChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            handler = (EventHandler)this.Events[_eventLargeChangeChanged];
+            handler = Events[_eventLargeChangeChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -693,7 +699,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnLostFocus(e);
 
-            this.Invalidate();
+            Invalidate();
         }
 
         /// <summary>
@@ -704,15 +710,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnMouseDown(e);
 
-            if (!this.Focused && this.TabStop)
+            if (!Focused && TabStop)
             {
-                this.Focus();
+                Focus();
             }
 
-            if (e.Button == MouseButtons.Left && this.IsPointInWheel(e.Location))
+            if (e.Button == MouseButtons.Left && IsPointInWheel(e.Location))
             {
                 _isDragging = true;
-                this.SetColour(e.Location);
+                SetColour(e.Location);
             }
         }
 
@@ -726,7 +732,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             if (_isDragging)
             {
-                this.SetColour(e.Location);
+                SetColour(e.Location);
             }
         }
 
@@ -749,7 +755,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnPaddingChanged(e);
 
-            this.RefreshWheel();
+            RefreshWheel();
         }
 
         /// <summary>
@@ -760,36 +766,36 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnPaint(e);
 
-            if (this.AllowPainting)
+            if (AllowPainting)
             {
-                Control parent;
+                Control? parent;
 
-                this.OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc
+                OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc
 
                 // if the parent is using a transparent color, it's likely to be something like a TabPage in a tab control
                 // so we'll draw the parent background instead, to avoid having an ugly solid color
-                parent = this.Parent;
-                if (this.BackgroundImage == null && parent != null && (this.BackColor == parent.BackColor || parent.BackColor.A != 255))
+                parent = Parent;
+                if (BackgroundImage == null && parent != null && (BackColor == parent.BackColor || parent.BackColor.A != 255))
                 {
-                    ButtonRenderer.DrawParentBackground(e.Graphics, this.DisplayRectangle, this);
+                    ButtonRenderer.DrawParentBackground(e.Graphics, DisplayRectangle, this);
                 }
 
                 if (_brush != null)
                 {
-                    e.Graphics.FillPie(_brush, this.ClientRectangle, 0, 360);
+                    e.Graphics.FillPie(_brush, ClientRectangle, 0, 360);
                 }
 
                 // HACK: smooth out the edge of the wheel.
                 // https://github.com/cyotek/Cyotek.Windows.Forms.ColorPicker/issues/1 - the linked source doesn't do this hack yet draws with a smoother edge
                 e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                using (Pen pen = new Pen(this.BackColor, 2))
+                using (Pen pen = new Pen(BackColor, 2))
                 {
                     e.Graphics.DrawEllipse(pen, new RectangleF(_centerPoint.X - _radius, _centerPoint.Y - _radius, _radius * 2, _radius * 2));
                 }
 
                 if (!_colour.IsEmpty)
                 {
-                    this.PaintCurrentColour(e);
+                    PaintCurrentColour(e);
                 }
             }
         }
@@ -802,7 +808,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnResize(e);
 
-            this.RefreshWheel();
+            RefreshWheel();
         }
 
         /// <summary>
@@ -811,13 +817,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnSelectionSizeChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            this.DisposeOfSelectionGlyph();
+            DisposeOfSelectionGlyph();
 
-            this.RefreshWheel();
+            RefreshWheel();
 
-            handler = (EventHandler)this.Events[_eventSelectionSizeChanged];
+            handler = Events[_eventSelectionSizeChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -828,23 +834,23 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnSmallChangeChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            handler = (EventHandler)this.Events[_eventSmallChangeChanged];
+            handler = Events[_eventSmallChangeChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
 
         protected void PaintColour(PaintEventArgs e, HSLColour colour)
         {
-            this.PaintColour(e, colour, false);
+            PaintColour(e, colour, false);
         }
 
         protected virtual void PaintColour(PaintEventArgs e, HSLColour colour, bool includeFocus)
         {
             PointF location;
 
-            location = this.GetColourLocation(colour);
+            location = GetColourLocation(colour);
 
             if (!float.IsNaN(location.X) && !float.IsNaN(location.Y))
             {
@@ -863,7 +869,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     e.Graphics.DrawImage(_selectionGlyph, x, y);
                 }
 
-                if (this.Focused && includeFocus)
+                if (Focused && includeFocus)
                 {
                     ControlPaint.DrawFocusRectangle(e.Graphics, new Rectangle(x - 1, y - 1, _selectionSize + 2, _selectionSize + 2));
                 }
@@ -872,7 +878,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         protected virtual void PaintCurrentColour(PaintEventArgs e)
         {
-            this.PaintColour(e, _hslColour, true);
+            PaintColour(e, _hslColour, true);
         }
 
         protected virtual void SetColour(Point point)
@@ -885,7 +891,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             Padding padding;
             HSLColour newColour;
 
-            padding = this.Padding;
+            padding = Padding;
             dx = Math.Abs(point.X - _centerPoint.X - padding.Left);
             dy = Math.Abs(point.Y - _centerPoint.Y - padding.Top);
             angle = Math.Atan(dy / dx) / Math.PI * 180;
@@ -907,8 +913,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             if (_hslColour != newColour)
             {
                 _lockUpdates = true;
-                this.HSLColour = newColour;
-                this.Colour = _hslColour.ToRgbColour();
+                HSLColour = newColour;
+                Colour = _hslColour.ToRgbColour();
                 _lockUpdates = false;
             }
         }
@@ -936,17 +942,17 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         private void RefreshWheel()
         {
-            this.CalculateWheel();
+            CalculateWheel();
 
-            this.DisposeOfWheelBrush();
-            _brush = this.CreateGradientBrush();
+            DisposeOfWheelBrush();
+            _brush = CreateGradientBrush();
 
             if (_selectionGlyph == null)
             {
-                _selectionGlyph = this.CreateSelectionGlyph();
+                _selectionGlyph = CreateSelectionGlyph();
             }
 
-            this.Invalidate();
+            Invalidate();
         }
 
         #endregion
@@ -956,8 +962,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add => this.Events.AddHandler(_eventColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourChanged, value);
+            add => Events.AddHandler(_eventColourChanged, value);
+            remove => Events.RemoveHandler(_eventColourChanged, value);
         }
 
         /// <summary>
@@ -975,7 +981,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 {
                     _colour = value;
 
-                    this.OnColourChanged(EventArgs.Empty);
+                    OnColourChanged(EventArgs.Empty);
                 }
             }
         }

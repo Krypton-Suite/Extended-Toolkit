@@ -31,14 +31,14 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     public class DevelopmentInformation
     {
         #region Variables
-        private Version _internalVersion = Assembly.GetExecutingAssembly().GetName().Version, _assemblyVersion;
-        private FileInfo _fileInfo;
+        private Version _assemblyVersion;
+        //private readonly FileInfo _fileInfo;
         #endregion
 
         #region Properties
         public Version AssemblyVersion { get => _assemblyVersion; set => _assemblyVersion = value; }
 
-        public Version InternalVersion => _internalVersion;
+        public Version InternalVersion { get; } = Assembly.GetExecutingAssembly().GetName().Version;
 
         #endregion
 

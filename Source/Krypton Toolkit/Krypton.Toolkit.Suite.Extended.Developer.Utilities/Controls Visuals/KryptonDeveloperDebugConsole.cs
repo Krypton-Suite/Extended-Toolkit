@@ -136,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            this.Icon = (((System.Drawing.Icon)resources.GetObject("$this.Icon")!)!);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonDeveloperDebugConsole";
@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
         #region Instance Fields
 
-        private FileDialogType _fileDialogType;
+        private readonly FileDialogType _fileDialogType = FileDialogType.Krypton;
 
         #endregion
 
@@ -164,7 +164,12 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         {
             InitializeComponent();
 
-            krtbDebugBox.Text = message;
+            _fileDialogType = FileDialogType.Krypton;
+
+            if (krtbDebugBox != null)
+            {
+                krtbDebugBox.Text = message;
+            }
         }
 
         public KryptonDeveloperDebugConsole(Exception exception, bool showMessageOnly = false, bool showInnerMessage = false, bool useStackTrace = false)
@@ -173,15 +178,24 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
             if (showMessageOnly)
             {
-                krtbDebugBox.Text = exception.Message;
+                if (krtbDebugBox != null)
+                {
+                    krtbDebugBox.Text = exception.Message;
+                }
             }
             else if (showInnerMessage)
             {
-                krtbDebugBox.Text = exception.InnerException.Message;
+                if (krtbDebugBox != null)
+                {
+                    krtbDebugBox.Text = exception.InnerException?.Message;
+                }
             }
             else if (useStackTrace)
             {
-                krtbDebugBox.Text = exception.StackTrace;
+                if (krtbDebugBox != null)
+                {
+                    krtbDebugBox.Text = exception.StackTrace;
+                }
             }
             else
             {
@@ -189,7 +203,10 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
                 builder.Append($"{exception.Message}\n\n{exception.StackTrace}");
 
-                krtbDebugBox.Text = builder.ToString();
+                if (krtbDebugBox != null)
+                {
+                    krtbDebugBox.Text = builder.ToString();
+                }
             }
         }
 
@@ -199,21 +216,24 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
             foreach (string item in content)
             {
-                krtbDebugBox.Text = item;
+                if (krtbDebugBox != null)
+                {
+                    krtbDebugBox.Text = item;
+                }
             }
         }
         #endregion
 
-        private void krtbDebugBox_TextChanged(object sender, EventArgs e) => kbtnClose.Enabled = string.IsNullOrWhiteSpace(krtbDebugBox.Text);
+        private void krtbDebugBox_TextChanged(object? sender, EventArgs e) => kbtnClose.Enabled = string.IsNullOrWhiteSpace(krtbDebugBox.Text);
 
-        private void kbtnCopy_Click(object sender, EventArgs e) => Clipboard.SetText(krtbDebugBox.Text);
+        private void kbtnCopy_Click(object? sender, EventArgs e) => Clipboard.SetText(krtbDebugBox.Text);
 
-        private void kbtnClose_Click(object sender, EventArgs e)
+        private void kbtnClose_Click(object? sender, EventArgs e)
         {
             Close();
         }
 
-        private void kbtnSaveToFile_Click(object sender, EventArgs e)
+        private void kbtnSaveToFile_Click(object? sender, EventArgs e)
         {
             switch (_fileDialogType)
             {
@@ -251,7 +271,10 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
                     if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
                     {
-                        krtbDebugBox.SaveFile(csfd.FileName);
+                        if (csfd.FileName != null)
+                        {
+                            krtbDebugBox.SaveFile(csfd.FileName);
+                        }
                     }
                     break;
                 default:

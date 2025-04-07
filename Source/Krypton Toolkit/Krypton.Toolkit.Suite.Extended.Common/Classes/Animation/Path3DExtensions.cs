@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
         public static Path3D[] ContinueTo(this Path3D[] paths, Float3D end, ulong duration,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
         {
             return paths.Concat([new Path3D(paths.Last().End, end, duration, function)]).ToArray();
         }
@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
         public static Path3D[] ContinueTo(this Path3D[] paths, Float3D end, ulong duration, ulong delay,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
         {
             return paths.Concat([new Path3D(paths.Last().End, end, duration, delay, function)]).ToArray();
         }
@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
         public static Path3D[] ContinueTo(this Path3D[] paths, float endX, float endY, float endZ, ulong duration,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
         {
             return
                 paths.Concat([new Path3D(paths.Last().End, new Float3D(endX, endY, endZ), duration, function)])
@@ -152,7 +152,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns>An array of paths including the newly created one</returns>
         public static Path3D[] ContinueTo(this Path3D[] paths, float endX, float endY, float endZ, ulong duration,
             ulong delay,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
         {
             return
                 paths.Concat([new Path3D(paths.Last().End, new Float3D(endX, endY, endZ), duration, delay, function)])
@@ -181,7 +181,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
         public static Path3D[] ContinueTo(this Path3D path, Float3D end, ulong duration,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
         {
             return path.ToArray().ContinueTo(end, duration, function);
         }
@@ -209,7 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
         public static Path3D[] ContinueTo(this Path3D path, Float3D end, ulong duration, ulong delay,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
         {
             return path.ToArray().ContinueTo(end, duration, delay, function);
         }
@@ -239,7 +239,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
         public static Path3D[] ContinueTo(this Path3D path, float endX, float endY, float endZ, ulong duration,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
         {
             return path.ToArray().ContinueTo(endX, endY, endZ, duration, function);
         }
@@ -273,7 +273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns>An array of paths including the newly created one</returns>
         public static Path3D[] ContinueTo(this Path3D path, float endX, float endY, float endZ, ulong duration,
             ulong delay,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
         {
             return path.ToArray().ContinueTo(endX, endY, endZ, duration, delay, function);
         }

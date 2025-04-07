@@ -401,8 +401,8 @@ namespace System
             {
                 return index switch
                 {
-                    0 => Item1,
-                    1 => Item2,
+                    0 => Item1!,
+                    1 => Item2!,
                     _ => throw new IndexOutOfRangeException()
                 };
             }

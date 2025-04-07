@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.IContainer? components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -194,10 +194,14 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             SetStyle(ControlStyles.SupportsTransparentBackColor | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint, true);
 
             //Set Back Color
-            this.BackColor = Color.Transparent;
+            BackColor = Color.Transparent;
 
             //Set Label Text
-            this.kcmdpercentage.Text = _percentageLabel;
+            var kryptonButton = this.kcmdpercentage;
+            if (kryptonButton != null)
+            {
+                kryptonButton.Text = _percentageLabel;
+            }
         }
     }
 }

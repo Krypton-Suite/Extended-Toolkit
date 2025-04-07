@@ -39,6 +39,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         #endregion
 
         #region Properties
+
+        [DefaultValue(false), Description("")]
         public bool UseBlur { get; set; }
 
         [DefaultValue(true), Description("")]

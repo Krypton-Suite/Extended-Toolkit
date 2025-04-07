@@ -127,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// Customized implementation of the GetFormattedValue function in order to include  the decimal and thousand separator 
         /// characters in the formatted representation of the cell value.
         /// </summary>
-        protected override object GetFormattedValue(object value, int rowIndex, ref DataGridViewCellStyle cellStyle,
+        protected override object? GetFormattedValue(object? value, int rowIndex, ref DataGridViewCellStyle cellStyle,
             TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter,
             DataGridViewDataErrorContexts context)
         {

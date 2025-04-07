@@ -68,15 +68,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="formattedValueTypeConverter"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        protected override object GetFormattedValue(object value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
+        protected override object? GetFormattedValue(object? value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter? valueTypeConverter, TypeConverter? formattedValueTypeConverter, DataGridViewDataErrorContexts context)
         {
             if (value == null)
             {
-                return null; //For example it is also the case for group row...
+                return null; //For example, it is also the case for group row...
             }
             else
             {
-                return starImages[(int)value];
+                return _starImages[(int)value];
             }
         }
 
@@ -103,14 +103,17 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="paintParts"></param>
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates elementState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
-            Image cellImage = (Image)formattedValue;
+            Image? cellImage = (Image)formattedValue;
             if (!ReadOnly)
             {
-                int starNumber = GetStarFromMouse(cellBounds, DataGridView.PointToClient(Control.MousePosition));
-
-                if (starNumber != -1)
+                if (DataGridView != null)
                 {
-                    cellImage = starHotImages[starNumber];
+                    int starNumber = GetStarFromMouse(cellBounds, DataGridView.PointToClient(Control.MousePosition));
+
+                    if (starNumber != -1)
+                    {
+                        cellImage = _starHotImages[starNumber];
+                    }
                 }
             }
             // suppress painting of selection 
@@ -126,11 +129,14 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             base.OnContentClick(e);
             if (!ReadOnly)
             {
-                int starNumber = GetStarFromMouse(DataGridView.GetCellDisplayRectangle(DataGridView.CurrentCellAddress.X, DataGridView.CurrentCellAddress.Y, false), DataGridView.PointToClient(Control.MousePosition));
-
-                if (starNumber != -1)
+                if (DataGridView != null)
                 {
-                    Value = starNumber;
+                    int starNumber = GetStarFromMouse(DataGridView.GetCellDisplayRectangle(DataGridView.CurrentCellAddress.X, DataGridView.CurrentCellAddress.Y, false), DataGridView.PointToClient(Control.MousePosition));
+
+                    if (starNumber != -1)
+                    {
+                        Value = starNumber;
+                    }
                 }
             }
         }
@@ -144,7 +150,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         protected override void OnMouseLeave(int rowIndex)
         {
             base.OnMouseLeave(rowIndex);
-            DataGridView.InvalidateCell(this);
+            if (DataGridView != null)
+            {
+                DataGridView.InvalidateCell(this);
+            }
         }
 
         /// <summary>
@@ -154,14 +163,17 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         protected override void OnMouseMove(DataGridViewCellMouseEventArgs e)
         {
             base.OnMouseMove(e);
-            DataGridView.InvalidateCell(this);
+            if (DataGridView != null)
+            {
+                DataGridView.InvalidateCell(this);
+            }
         }
         #endregion
 
         #region Private Implementation
 
-        static Image[] starImages;
-        static Image[] starHotImages;
+        static Image?[] _starImages;
+        static Image?[] _starHotImages;
         const int Imagewidth = 58;
 
         private int GetStarFromMouse(Rectangle cellBounds, Point mouseLocation)
@@ -196,20 +208,20 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         static RatingCell()
         {
-            starImages = new Image[11];
-            starHotImages = new Image[11];
+            _starImages = new Image?[11];
+            _starHotImages = new Image[11];
             var resources = new ComponentResourceManager(typeof(KryptonDataGridViewRatingColumn));
 
             // load normal stars 
             for (int i = 0; i <= 10; i++)
             {
-                starImages[i] = (Image)resources.GetObject($"star{i}");
+                _starImages[i] = resources.GetObject($"star{i}") as Image;
             }
 
             // load hot normal stars 
             for (int i = 0; i <= 10; i++)
             {
-                starHotImages[i] = (Image)resources.GetObject($"starhot{i}");
+                _starHotImages[i] = resources.GetObject($"starhot{i}") as Image;
             }
         }
         #endregion

@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         #region Fields
 
-        private Brush _cellBackgroundBrush;
+        private Brush? _cellBackgroundBrush;
 
         private RGBAChannel _channel;
 
@@ -223,7 +223,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             type = typeof(RGBAColourSliderControl);
 
             using (Bitmap background = new(type.Assembly.GetManifestResourceStream(
-                       $"{type.Namespace}.Resources.cellbackground.png")))
+                       $"{type.Namespace}.Resources.cellbackground.png")!))
             {
                 return new TextureBrush(background, WrapMode.Tile);
             }

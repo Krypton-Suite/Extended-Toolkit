@@ -41,11 +41,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>Extracts the binary icon.</summary>
         /// <param name="binaryFilePath">The binary file path.</param>
         /// <returns></returns>
-        public static Image ExtractBinaryIcon(string binaryFilePath) => Icon.ExtractAssociatedIcon(binaryFilePath).ToBitmap();
+        public static Image? ExtractBinaryIcon(string binaryFilePath) => Icon.ExtractAssociatedIcon(binaryFilePath)?.ToBitmap();
 
         public static void GrabFavIcon(PictureBox container, string url)
         {
-            container.ImageLocation = $"{url}/favicon.ico";
+            container.ImageLocation = @$"{url}/favicon.ico";
 
             container.SizeMode = PictureBoxSizeMode.CenterImage;
         }

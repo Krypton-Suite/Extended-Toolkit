@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #region Fields
         private Color _transparent, _selectedColour, _emptyBorderColour;
 
-        private Image _image;
+        private Image? _image;
         private Image? _sourceImage;
         private Image? _compositeImage;
 
@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private static readonly string _defaultExtraText = string.Empty;
 
-        private static readonly Image _defaultImage = Properties.Resources.ColourButton;
+        private static readonly Image? _defaultImage = Properties.Resources.ColourButton;
         #endregion
 
         #region Events        
@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Visuals")]
         [Description("Button image.")]
         [RefreshProperties(RefreshProperties.All)]
-        public Image Image
+        public Image? Image
         {
             get => _image;
 

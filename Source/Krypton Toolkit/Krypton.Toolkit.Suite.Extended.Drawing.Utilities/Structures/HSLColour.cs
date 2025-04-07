@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         #region Methods
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             bool result;
 

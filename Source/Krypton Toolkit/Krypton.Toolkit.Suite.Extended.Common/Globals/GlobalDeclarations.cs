@@ -40,6 +40,7 @@ global using System.Reflection;
 global using System.Runtime.InteropServices;
 global using System.Globalization;
 global using System.IO;
+global using System.Linq;
 global using System.Security.Principal;
 global using System.Media;
 global using System.Text;

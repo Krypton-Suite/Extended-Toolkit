@@ -276,7 +276,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Event Handlers
-        private void kbtnLoadPalette_Click(object sender, EventArgs e)
+
+        [Obsolete("Will be removed in future releases")]
+        private void kbtnLoadPalette_Click(object? sender, EventArgs e)
         {
             using (FileDialog fd = new OpenFileDialog { Filter = Cyotek.Windows.Forms.PaletteSerializer.DefaultOpenFilter, DefaultExt = "pal", Title = "Open a custom palette file:" })
             {
@@ -333,7 +335,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void kbtnSavePalette_Click(object sender, EventArgs e)
+        [Obsolete("Obsolete")]
+        private void kbtnSavePalette_Click(object? sender, EventArgs e)
         {
             using (FileDialog fd = new SaveFileDialog { Filter = Cyotek.Windows.Forms.PaletteSerializer.DefaultSaveFilter, DefaultExt = "pal", Title = "Save custom palette as:" })
             {
@@ -373,30 +376,30 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void kdbtnOk_Click(object sender, EventArgs e)
+        private void kdbtnOk_Click(object? sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
         }
 
-        private void kdbtnCancel_Click(object sender, EventArgs e)
+        private void kdbtnCancel_Click(object? sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
-        private void cem_ColourChanged(object sender, EventArgs e)
+        private void cem_ColourChanged(object? sender, EventArgs e)
         {
             Colour = cem.Colour;
 
             ViewColour(Colour);
         }
 
-        private void cem_ColorChanged(object sender, EventArgs e) => SetColour(cem.Colour);
+        private void cem_ColorChanged(object? sender, EventArgs e) => SetColour(cem.Colour);
 
-        private void cgColour_ColorChanged(object sender, EventArgs e) => cem.Colour = cgColour.Color;
+        private void cgColour_ColorChanged(object? sender, EventArgs e) => cem.Colour = cgColour.Color;
 
-        private void cgColour_EditingColor(object sender, EditColorCancelEventArgs e) => cem.Colour = e.Color;
+        private void cgColour_EditingColor(object? sender, EditColorCancelEventArgs e) => cem.Colour = e.Color;
 
-        private void cwColour_ColourChanged(object sender, EventArgs e) => cem.Colour = cwColour.Colour;
+        private void cwColour_ColourChanged(object? sender, EventArgs e) => cem.Colour = cwColour.Colour;
         #endregion
 
         #region Setters/Getters

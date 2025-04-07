@@ -493,11 +493,11 @@
 
         #region Tracking
 
-        void Handle_MouseHover(object sender, EventArgs e) => _startFloating = true;
+        void Handle_MouseHover(object? sender, EventArgs e) => _startFloating = true;
 
-        void Handle_MouseLeave(object sender, EventArgs e) => _startFloating = false;
+        void Handle_MouseLeave(object? sender, EventArgs e) => _startFloating = false;
 
-        void Handle_MouseMove(object sender, MouseEventArgs e)
+        void Handle_MouseMove(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && _startFloating)
             {

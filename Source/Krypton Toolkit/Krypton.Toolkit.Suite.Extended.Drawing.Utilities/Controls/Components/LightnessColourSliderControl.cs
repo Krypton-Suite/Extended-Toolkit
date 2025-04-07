@@ -46,8 +46,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         public LightnessColourSliderControl()
         {
-            this.BarStyle = ColourBarStyle.TwoColour;
-            this.Colour = Color.Black;
+            BarStyle = ColourBarStyle.TwoColour;
+            Colour = Color.Black;
             BackColor = Color.Transparent;
         }
 
@@ -125,13 +125,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             HSLColour color;
 
-            color = new HSLColour(this.Colour);
+            color = new HSLColour(Colour);
 
             color.L = 0;
-            this.Colour1 = color.ToRgbColour();
+            Colour1 = color.ToRgbColour();
 
             color.L = 1;
-            this.Colour2 = color.ToRgbColour();
+            Colour2 = color.ToRgbColour();
         }
 
         /// <summary>
@@ -140,12 +140,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColorChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            this.CreateScale();
-            this.Invalidate();
+            CreateScale();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventColourChanged];
+            handler = Events[_eventColourChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -156,16 +156,16 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected override void OnValueChanged(EventArgs e)
         {
-            if (!this.LockUpdates)
+            if (!LockUpdates)
             {
                 HSLColour color;
 
-                this.LockUpdates = true;
-                color = new HSLColour(this.Colour);
-                color.L = this.Value / 100D;
+                LockUpdates = true;
+                color = new HSLColour(Colour);
+                color.L = Value / 100D;
                 _colour = color.ToRgbColour();
-                this.OnColorChanged(e);
-                this.LockUpdates = false;
+                OnColorChanged(e);
+                LockUpdates = false;
             }
 
             base.OnValueChanged(e);
@@ -178,8 +178,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add => this.Events.AddHandler(_eventColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourChanged, value);
+            add => Events.AddHandler(_eventColourChanged, value);
+            remove => Events.RemoveHandler(_eventColourChanged, value);
         }
 
         [Category("Appearance")]
@@ -189,16 +189,16 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _colour;
             set
             {
-                if (this.Colour != value)
+                if (Colour != value)
                 {
                     _colour = value;
 
-                    if (!this.LockUpdates)
+                    if (!LockUpdates)
                     {
-                        this.LockUpdates = true;
-                        this.Value = (float)new HSLColour(value).L * 100;
-                        this.OnColorChanged(EventArgs.Empty);
-                        this.LockUpdates = false;
+                        LockUpdates = true;
+                        Value = (float)new HSLColour(value).L * 100;
+                        OnColorChanged(EventArgs.Empty);
+                        LockUpdates = false;
                     }
                 }
             }

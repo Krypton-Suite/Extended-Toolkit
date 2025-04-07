@@ -1380,9 +1380,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         }
 #endif
 
-        private string AddSpaces(string text)
+        private string? AddSpaces(string text)
         {
-            string result;
+            string? result;
 
             //http://stackoverflow.com/a/272929/148962
 
@@ -1464,11 +1464,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColourChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             this.UpdateFields(false);
 
-            handler = (EventHandler)this.Events[_eventColourChanged];
+            handler = this.Events[_eventColourChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -1479,11 +1479,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnOrientationChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             //ResizeComponents();
 
-            handler = (EventHandler)this.Events[_eventOrientationChanged];
+            handler = this.Events[_eventOrientationChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -1494,13 +1494,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnShowAlphaChannelChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             this.SetControlStates();
 
             //ResizeComponents();
 
-            handler = (EventHandler)this.Events[_eventShowAlphaChannelChanged];
+            handler = this.Events[_eventShowAlphaChannelChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -1511,13 +1511,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnShowColourSpaceLabelsChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             this.SetControlStates();
 
             //ResizeComponents();
 
-            handler = (EventHandler)this.Events[_eventShowColourSpaceLabelsChanged];
+            handler = this.Events[_eventShowColourSpaceLabelsChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }

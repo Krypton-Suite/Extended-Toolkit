@@ -37,11 +37,8 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
     {
         #region sourceItems
 
-        private IList<T> sourceItems;
-        private IList<T> SourceItems
-        {
-            get { return sourceItems ??= new List<T>(Items); }
-        }
+        private IList<T> _sourceItems;
+        private IList<T> SourceItems => _sourceItems ??= new List<T>(Items);
         // TODO: Have to deal with updates to the initial source list !
         #endregion sourceItems
 
@@ -51,15 +48,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         protected override bool SupportsSearchingCore => true;
 
         /// <inheritdoc />
-        protected override int FindCore(PropertyDescriptor prop, object key)
+        protected override int FindCore(PropertyDescriptor prop, object? key)
         {
             return FindCore(0, prop, key);
         }
 
-        private int FindCore(int startIndex, PropertyDescriptor prop, object key)
+        private int FindCore(int startIndex, PropertyDescriptor prop, object? key)
         {
             // Get the property info for the specified property.
-            PropertyInfo propInfo = typeof(T).GetProperty(prop.Name);
+            PropertyInfo? propInfo = typeof(T).GetProperty(prop.Name);
 
             if (key != null)
             {
@@ -68,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 for (int i = startIndex; i < SourceItems.Count; ++i)
                 {
                     var item = SourceItems[i];
-                    if (propInfo.GetValue(item, null).Equals(key))
+                    if (propInfo!.GetValue(item, null).Equals(key))
                     {
                         return i;
                     }
@@ -77,12 +74,12 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             return -1;
         }
 
-        private int Find(int startIndex, string property, object key)
+        private int Find(int startIndex, string? property, object? key)
         {
             // Check the properties for a property with the specified name.
             PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));
 
-            PropertyDescriptor prop = properties.Find(property, true);
+            PropertyDescriptor? prop = properties.Find(property!, true);
 
             // If there is not a match, return -1 otherwise pass search to
             // FindCore method.
@@ -105,28 +102,28 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         #region Sorting
 
-        private ArrayList sortedList;
-        private ArrayList unsortedItems;
-        private bool isSortedValue;
-        private ListSortDirection sortDirectionValue;
-        private PropertyDescriptor sortPropertyValue;
+        private ArrayList? _sortedList;
+        private ArrayList? _unsortedItems;
+        private bool _isSortedValue;
+        private ListSortDirection _sortDirectionValue;
+        private PropertyDescriptor? _sortPropertyValue;
 
         /// <inheritdoc />
         protected override bool SupportsSortingCore => true;
 
         /// <inheritdoc />
-        protected override bool IsSortedCore => isSortedValue;
+        protected override bool IsSortedCore => _isSortedValue;
 
         /// <inheritdoc />
-        protected override PropertyDescriptor SortPropertyCore => sortPropertyValue;
+        protected override PropertyDescriptor? SortPropertyCore => _sortPropertyValue;
 
         /// <inheritdoc />
-        protected override ListSortDirection SortDirectionCore => sortDirectionValue;
+        protected override ListSortDirection SortDirectionCore => _sortDirectionValue;
 
         public void ApplySort(string propertyName, ListSortDirection direction)
         {
             // Check the properties for a property with the specified name.
-            PropertyDescriptor prop = TypeDescriptor.GetProperties(typeof(T))[propertyName];
+            PropertyDescriptor? prop = TypeDescriptor.GetProperties(typeof(T))[propertyName];
             // If there is not a match, return -1 otherwise pass search to
             // FindCore method.
             if (prop == null)
@@ -144,38 +141,41 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         {
             RaiseListChangedEvents = false;
 
-            sortedList = new ArrayList();
+            _sortedList = new ArrayList();
 
             // Check to see if the property type we are sorting by implements
             // the IComparable interface.
 
-            Type interfaceType = prop.PropertyType.GetInterface("IComparable");
+            Type? interfaceType = prop.PropertyType.GetInterface("IComparable");
             if (interfaceType != null)
             {
                 // If so, set the SortPropertyValue and SortDirectionValue.
-                sortPropertyValue = prop;
-                sortDirectionValue = direction;
-                unsortedItems = new ArrayList(Count);
+                _sortPropertyValue = prop;
+                _sortDirectionValue = direction;
+                _unsortedItems = new ArrayList(Count);
 
-                // Loop through each item, adding it the the sortedItems ArrayList.
-                foreach (object item in SourceItems)
+                // Loop through each item, adding it the sortedItems ArrayList.
+                foreach (object? item in SourceItems)
                 {
-                    sortedList.Add(prop.GetValue(item));
-                    unsortedItems.Add(item);
+                    if (item != null)
+                    {
+                        _sortedList.Add(prop.GetValue(item));
+                        _unsortedItems.Add(item);
+                    }
                 }
 
                 // Call Sort on the ArrayList.
-                sortedList.Sort();
+                _sortedList.Sort();
 
                 // Check the sort direction and then copy the sorted items back into the list.
                 if (direction == ListSortDirection.Descending)
                 {
-                    sortedList.Reverse();
+                    _sortedList.Reverse();
                 }
 
                 for (int i = 0; i < Count; i++)
                 {
-                    int position = Find(0, prop.Name, sortedList[i]);
+                    int position = Find(0, prop.Name, _sortedList[i]);
                     if (position != i
                         && position > -1
                         && position < Count
@@ -189,7 +189,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
                 RaiseListChangedEvents = true;
 
-                isSortedValue = true;
+                _isSortedValue = true;
 
                 // Raise the ListChanged event so bound controls refresh their values.
                 OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
@@ -208,32 +208,37 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             RaiseListChangedEvents = false;
 
             // Ensure the list has been sorted.
-            if (unsortedItems != null)
+            if (_unsortedItems != null)
             {
                 // Loop through the unsorted items and reorder the list per the unsorted list.
-                for (int i = 0; i < unsortedItems.Count;)
+                for (int i = 0; i < _unsortedItems.Count;)
                 {
-                    var position = Find(0, SortPropertyCore.Name,
-                        unsortedItems[i].GetType().
-                            GetProperty(SortPropertyCore.Name).GetValue(unsortedItems[i], null)
+                    if (_unsortedItems[i] != null)
+                    {
+                        var position = Find(0, SortPropertyCore?.Name,
+                            _unsortedItems[i]!.GetType().
+                                GetProperty(SortPropertyCore?.Name!)
+                                ?.GetValue(_unsortedItems[i], null)
                         );
 
-                    if (position >= 0 && position != i)
-                    {
-                        object temp = this[i];
-                        this[i] = this[position];
-                        this[position] = (T)temp;
-                        i++;
+                        if (position >= 0 && position != i)
+                        {
+                            object? temp = this[i];
+                            this[i] = this[position];
+                            this[position] = ((T)temp!);
+                            i++;
+                        }
+                        else if (position == i)
+                        {
+                            i++;
+                        }
+                        else
+                        {
+                            // If an item in the unsorted list no longer exists, delete it.
+                            _unsortedItems.RemoveAt(i);
+                        }
                     }
-                    else if (position == i)
-                    {
-                        i++;
-                    }
-                    else
-                    {
-                        // If an item in the unsorted list no longer exists, delete it.
-                        unsortedItems.RemoveAt(i);
-                    }
+
                 }
 
                 RaiseListChangedEvents = true;
@@ -252,9 +257,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         {
             // Check to see if the item is added to the end of the list,
             // and if so, re-sort the list.
-            if (sortPropertyValue != null && itemIndex > 0 && itemIndex == Count - 1)
+            if (_sortPropertyValue != null && itemIndex > 0 && itemIndex == Count - 1)
             {
-                ApplySortCore(sortPropertyValue, sortDirectionValue);
+                ApplySortCore(_sortPropertyValue, _sortDirectionValue);
             }
 
             base.EndNew(itemIndex);
@@ -280,7 +285,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         #region Filtering
 
-        private List<T> UnfilteredList { get; } = [];
+        private List<T?> UnfilteredList { get; } = [];
 
         /// <inheritdoc />
         public bool SupportsFiltering => true;
@@ -297,30 +302,33 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <summary>
         /// Should be in the format columnName ='desiredValue'
         /// </summary>
-        private string FilterPropertyName { get; set; }
+        private string? FilterPropertyName { get; set; }
 
-        private object FilterCompare { get; set; }
+        private object? FilterCompare { get; set; }
 
-        private string filterValue = string.Empty;
+        private string? _filterValue = string.Empty;
         /// <inheritdoc />
-        public string Filter
+        public string? Filter
         {
-            get => filterValue;
+            get => _filterValue;
             set
             {
-                if (filterValue != value)
+                if (_filterValue != value)
                 {
                     RaiseListChangedEvents = false;
                     // If filter value is null, reset list.
                     if (value == null)
                     {
                         ClearItems();
-                        foreach (T t in UnfilteredList)
+                        foreach (T? t in UnfilteredList)
                         {
-                            Items.Add(t);
+                            if (t != null)
+                            {
+                                Items.Add(t);
+                            }
                         }
 
-                        filterValue = value;
+                        _filterValue = value;
                     }
 
                     // If the value is empty string, do nothing.
@@ -338,7 +346,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                         // If the filter is not set.
                         UnfilteredList.Clear();
                         UnfilteredList.AddRange(Items);
-                        filterValue = value;
+                        _filterValue = value;
                         GetFilterParts();
                         ApplyFilter();
                     }
@@ -380,30 +388,36 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             UnfilteredList.Clear();
             UnfilteredList.AddRange(SourceItems);
 
-            List<T> results = [];
+            List<T?> results = [];
 
-            PropertyDescriptor propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName];
-
-            if (propDesc != null)
+            if (FilterPropertyName != null)
             {
-                int tempResults = -1;
-                do
+                PropertyDescriptor? propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName];
+
+                if (propDesc != null)
                 {
-                    tempResults = FindCore(tempResults + 1, propDesc, FilterCompare);
-                    if (tempResults != -1)
+                    int tempResults = -1;
+                    do
                     {
-                        results.Add(SourceItems[tempResults]);
-                    }
-                } while (tempResults != -1);
+                        tempResults = FindCore(tempResults + 1, propDesc, FilterCompare);
+                        if (tempResults != -1)
+                        {
+                            results.Add(SourceItems[tempResults]);
+                        }
+                    } while (tempResults != -1);
+                }
             }
 
             ClearItems();
 
             if (results.Count > 0)
             {
-                foreach (T itemFound in results)
+                foreach (T? itemFound in results)
                 {
-                    Add(itemFound);
+                    if (itemFound != null)
+                    {
+                        Add(itemFound);
+                    }
                 }
             }
 
@@ -411,19 +425,19 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         private void GetFilterParts()
         {
-            string[] filterParts = Filter.Split(['='], StringSplitOptions.RemoveEmptyEntries);
-            FilterPropertyName = filterParts[0].Replace("[", string.Empty)
+            string[]? filterParts = Filter?.Split(['='], StringSplitOptions.RemoveEmptyEntries);
+            FilterPropertyName = filterParts?[0].Replace("[", string.Empty)
                                         .Replace("]", string.Empty)
                                         .Trim();
 
-            PropertyDescriptor propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName.ToString()];
+            PropertyDescriptor? propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName!];
 
             if (propDesc != null)
             {
                 try
                 {
                     TypeConverter converter = TypeDescriptor.GetConverter(propDesc.PropertyType);
-                    FilterCompare = converter.ConvertFromString(filterParts[1].Replace("'", string.Empty).Trim());
+                    FilterCompare = converter.ConvertFromString(filterParts?[1].Replace("'", string.Empty).Trim());
                 }
                 catch (NotSupportedException)
                 {

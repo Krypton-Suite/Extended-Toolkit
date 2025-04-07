@@ -444,6 +444,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="showToolTips"></param>
         private KryptonMessageBoxExtended(IWin32Window? showOwner, string? text, string caption,
                                           ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
                                           ExtendedMessageBoxIcon icon,
@@ -1899,7 +1900,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             return new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
         }
 
-        private void button_keyDown(object sender, KeyEventArgs e)
+        private void button_keyDown(object? sender, KeyEventArgs e)
         {
             // Escape key kills the dialog if we allow it to be closed
             if (e.KeyCode == Keys.Escape && ControlBox)
@@ -1941,9 +1942,9 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         #endregion
 
         #region Optional CheckBox
-        private void checkbox_CheckChanged(object sender, EventArgs e) => SetOptionalCheckBoxValue(_optionalCheckBox.Checked);
+        private void checkbox_CheckChanged(object? sender, EventArgs e) => SetOptionalCheckBoxValue(_optionalCheckBox.Checked);
 
-        private void checkBox_CheckStateChanged(object sender, EventArgs e) => SetOptionalCheckBoxCheckState(_optionalCheckBox.CheckState);
+        private void checkBox_CheckStateChanged(object? sender, EventArgs e) => SetOptionalCheckBoxCheckState(_optionalCheckBox.CheckState);
 
         /// <summary>Shows the optional CheckBox UI.</summary>
         /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
@@ -2012,7 +2013,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             _copyButton.Text = copyButtonText;
         }
 
-        private void copyButton_KeyDown(object sender, KeyEventArgs e) => Clipboard.SetText(_messageText.Text);
+        private void copyButton_KeyDown(object? sender, KeyEventArgs e) => Clipboard.SetText(_messageText.Text);
         #endregion
 
         #region Custom Button Text
@@ -2093,7 +2094,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         #endregion
 
         #region Fade
-        private void InternalKryptonMessageBoxExtended_FormClosing(object sender, FormClosingEventArgs e)
+        private void InternalKryptonMessageBoxExtended_FormClosing(object? sender, FormClosingEventArgs e)
         {
             if (_fade)
             {
@@ -2108,7 +2109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             }
         }
 
-        private void InternalKryptonMessageBoxExtended_Load(object sender, EventArgs e)
+        private void InternalKryptonMessageBoxExtended_Load(object? sender, EventArgs e)
         {
             if (_fade)
             {

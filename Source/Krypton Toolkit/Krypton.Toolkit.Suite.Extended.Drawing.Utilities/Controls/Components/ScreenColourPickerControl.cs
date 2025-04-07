@@ -53,11 +53,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         private Color _colour;
 
-        private Cursor _eyedropperCursor;
+        private Cursor? _eyedropperCursor;
 
         private Color _gridColour;
 
-        private Image _image;
+        private Image? _image;
 
         private bool _showGrid;
 
@@ -74,15 +74,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         public ScreenColourPickerControl()
         {
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            this.SetStyle(ControlStyles.Selectable | ControlStyles.StandardClick | ControlStyles.StandardDoubleClick, false);
-            this.Zoom = 8;
-            this.Colour = Color.Empty;
-            this.ShowTextWithSnapshot = false;
-            this.TabStop = false;
-            this.TabIndex = 0;
-            this.ShowGrid = true;
-            this.GridColour = SystemColors.ControlDark;
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.Selectable | ControlStyles.StandardClick | ControlStyles.StandardDoubleClick, false);
+            Zoom = 8;
+            Colour = Color.Empty;
+            ShowTextWithSnapshot = false;
+            TabStop = false;
+            TabIndex = 0;
+            ShowGrid = true;
+            GridColour = SystemColors.ControlDark;
         }
 
         #endregion
@@ -92,36 +92,36 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler GridColourChanged
         {
-            add => this.Events.AddHandler(_eventGridColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventGridColourChanged, value);
+            add => Events.AddHandler(_eventGridColourChanged, value);
+            remove => Events.RemoveHandler(_eventGridColourChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ImageChanged
         {
-            add => this.Events.AddHandler(_eventImageChanged, value);
-            remove => this.Events.RemoveHandler(_eventImageChanged, value);
+            add => Events.AddHandler(_eventImageChanged, value);
+            remove => Events.RemoveHandler(_eventImageChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowGridChanged
         {
-            add => this.Events.AddHandler(_eventShowGridChanged, value);
-            remove => this.Events.RemoveHandler(_eventShowGridChanged, value);
+            add => Events.AddHandler(_eventShowGridChanged, value);
+            remove => Events.RemoveHandler(_eventShowGridChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowTextWithSnapshotChanged
         {
-            add => this.Events.AddHandler(_eventShowTextWithSnapshotChanged, value);
-            remove => this.Events.RemoveHandler(_eventShowTextWithSnapshotChanged, value);
+            add => Events.AddHandler(_eventShowTextWithSnapshotChanged, value);
+            remove => Events.RemoveHandler(_eventShowTextWithSnapshotChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ZoomChanged
         {
-            add => this.Events.AddHandler(_eventZoomChanged, value);
-            remove => this.Events.RemoveHandler(_eventZoomChanged, value);
+            add => Events.AddHandler(_eventZoomChanged, value);
+            remove => Events.RemoveHandler(_eventZoomChanged, value);
         }
 
         #endregion
@@ -139,11 +139,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _gridColour;
             set
             {
-                if (this.GridColour != value)
+                if (GridColour != value)
                 {
                     _gridColour = value;
 
-                    this.OnGridColourChanged(EventArgs.Empty);
+                    OnGridColourChanged(EventArgs.Empty);
                 }
             }
         }
@@ -163,16 +163,16 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Appearance")]
         [DefaultValue(null)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual Image Image
+        public virtual Image? Image
         {
             get => _image;
             set
             {
-                if (this.Image != value)
+                if (Image != value)
                 {
                     _image = value;
 
-                    this.OnImageChanged(EventArgs.Empty);
+                    OnImageChanged(EventArgs.Empty);
                 }
             }
         }
@@ -188,11 +188,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _showGrid;
             set
             {
-                if (this.ShowGrid != value)
+                if (ShowGrid != value)
                 {
                     _showGrid = value;
 
-                    this.OnShowGridChanged(EventArgs.Empty);
+                    OnShowGridChanged(EventArgs.Empty);
                 }
             }
         }
@@ -208,11 +208,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _showTextWithSnapshot;
             set
             {
-                if (this.ShowTextWithSnapshot != value)
+                if (ShowTextWithSnapshot != value)
                 {
                     _showTextWithSnapshot = value;
 
-                    this.OnShowTextWithSnapshotChanged(EventArgs.Empty);
+                    OnShowTextWithSnapshotChanged(EventArgs.Empty);
                 }
             }
         }
@@ -256,11 +256,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _zoom;
             set
             {
-                if (this.Zoom != value)
+                if (Zoom != value)
                 {
                     _zoom = value;
 
-                    this.OnZoomChanged(EventArgs.Empty);
+                    OnZoomChanged(EventArgs.Empty);
                 }
             }
         }
@@ -281,7 +281,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// Gets or sets the snapshot image.
         /// </summary>
         /// <value>The snapshot image.</value>
-        protected Bitmap SnapshotImage { get; set; }
+        protected Bitmap? SnapshotImage { get; set; }
 
         #endregion
 
@@ -294,17 +294,17 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             Size size;
 
-            if (this.SnapshotImage != null)
+            if (SnapshotImage != null)
             {
-                this.SnapshotImage.Dispose();
-                this.SnapshotImage = null;
+                SnapshotImage.Dispose();
+                SnapshotImage = null;
             }
 
-            size = this.GetSnapshotSize();
+            size = GetSnapshotSize();
             if (!size.IsEmpty)
             {
-                this.SnapshotImage = new Bitmap(size.Width, size.Height, PixelFormat.Format32bppArgb);
-                this.Invalidate();
+                SnapshotImage = new Bitmap(size.Width, size.Height, PixelFormat.Format32bppArgb);
+                Invalidate();
             }
         }
 
@@ -321,9 +321,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     _eyedropperCursor.Dispose();
                 }
 
-                if (this.SnapshotImage != null)
+                if (SnapshotImage != null)
                 {
-                    this.SnapshotImage.Dispose();
+                    SnapshotImage.Dispose();
                 }
             }
 
@@ -338,8 +338,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             int x;
             int y;
 
-            x = this.ClientSize.Width / this.Zoom / 2;
-            y = this.ClientSize.Height / this.Zoom / 2;
+            x = ClientSize.Width / Zoom / 2;
+            y = ClientSize.Height / Zoom / 2;
 
             return new Point(x, y);
         }
@@ -352,8 +352,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             int snapshotWidth;
             int snapshotHeight;
 
-            snapshotWidth = (int)Math.Ceiling(this.ClientSize.Width / (double)this.Zoom);
-            snapshotHeight = (int)Math.Ceiling(this.ClientSize.Height / (double)this.Zoom);
+            snapshotWidth = (int)Math.Ceiling(ClientSize.Width / (double)Zoom);
+            snapshotHeight = (int)Math.Ceiling(ClientSize.Height / (double)Zoom);
 
             return snapshotHeight != 0 && snapshotWidth != 0 ? new Size(snapshotWidth, snapshotHeight) : Size.Empty;
         }
@@ -364,9 +364,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColourChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            handler = (EventHandler)this.Events[_eventColourChanged];
+            handler = Events[_eventColourChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -379,7 +379,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnFontChanged(e);
 
-            this.Invalidate();
+            Invalidate();
         }
 
         /// <summary>
@@ -390,7 +390,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnForeColorChanged(e);
 
-            this.Invalidate();
+            Invalidate();
         }
 
         /// <summary>
@@ -399,11 +399,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnGridColourChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventGridColourChanged];
+            handler = Events[_eventGridColourChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -414,11 +414,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnImageChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventImageChanged];
+            handler = Events[_eventImageChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -431,19 +431,20 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnMouseDown(e);
 
-            if (e.Button == MouseButtons.Left && !this.IsCapturing)
+            if (e.Button == MouseButtons.Left && !IsCapturing)
             {
                 if (_eyedropperCursor == null)
                 {
-                    // ReSharper disable AssignNullToNotNullAttribute
-                    _eyedropperCursor = new Cursor(this.GetType().Assembly.GetManifestResourceStream(
-                        $"{this.GetType().Namespace}.Resources.eyedropper.cur"));
+                    var stream = GetType().Assembly.GetManifestResourceStream($"{GetType().Namespace}.Resources.eyedropper.cur");
+                    if (stream != null)
+                    {
+                        _eyedropperCursor = new Cursor(stream);
+                    }
                 }
-                // ReSharper restore AssignNullToNotNullAttribute
 
-                this.Cursor = _eyedropperCursor;
-                this.IsCapturing = true;
-                this.Invalidate();
+                Cursor = _eyedropperCursor;
+                IsCapturing = true;
+                Invalidate();
             }
         }
 
@@ -455,9 +456,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnMouseMove(e);
 
-            if (this.IsCapturing)
+            if (IsCapturing)
             {
-                this.UpdateSnapshot();
+                UpdateSnapshot();
             }
         }
 
@@ -469,11 +470,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnMouseUp(e);
 
-            if (this.IsCapturing)
+            if (IsCapturing)
             {
-                this.Cursor = Cursors.Default;
-                this.IsCapturing = false;
-                this.Invalidate();
+                Cursor = Cursors.Default;
+                IsCapturing = false;
+                Invalidate();
             }
         }
 
@@ -485,18 +486,18 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnPaint(e);
 
-            this.OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc
+            OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc
 
             // draw the current snapshot, if present
-            if (this.SnapshotImage != null)
+            if (SnapshotImage != null)
             {
                 e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
                 e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-                e.Graphics.DrawImage(this.SnapshotImage, new Rectangle(0, 0, this.SnapshotImage.Width * this.Zoom, this.SnapshotImage.Height * this.Zoom), new Rectangle(Point.Empty, this.SnapshotImage.Size), GraphicsUnit.Pixel);
+                e.Graphics.DrawImage(SnapshotImage, new Rectangle(0, 0, SnapshotImage.Width * Zoom, SnapshotImage.Height * Zoom), new Rectangle(Point.Empty, SnapshotImage.Size), GraphicsUnit.Pixel);
             }
 
-            this.PaintAdornments(e);
+            PaintAdornments(e);
         }
 
         /// <summary>
@@ -507,7 +508,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnResize(e);
 
-            this.CreateSnapshotImage();
+            CreateSnapshotImage();
         }
 
         /// <summary>
@@ -516,11 +517,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnShowGridChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventShowGridChanged];
+            handler = Events[_eventShowGridChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -531,11 +532,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnShowTextWithSnapshotChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            this.Invalidate();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventShowTextWithSnapshotChanged];
+            handler = Events[_eventShowTextWithSnapshotChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -548,7 +549,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             base.OnTextChanged(e);
 
-            this.Invalidate();
+            Invalidate();
         }
 
         /// <summary>
@@ -557,11 +558,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnZoomChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            this.CreateSnapshotImage();
+            CreateSnapshotImage();
 
-            handler = (EventHandler)this.Events[_eventZoomChanged];
+            handler = Events[_eventZoomChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -573,27 +574,27 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         protected virtual void PaintAdornments(PaintEventArgs e)
         {
             // grid
-            if (this.ShowGrid)
+            if (ShowGrid)
             {
-                this.PaintGrid(e);
+                PaintGrid(e);
             }
 
             // center marker
-            if (this.HasSnapshot)
+            if (HasSnapshot)
             {
-                this.PaintCenterMarker(e);
+                PaintCenterMarker(e);
             }
 
             // image
-            if (this.Image != null && (!this.HasSnapshot || this.ShowTextWithSnapshot))
+            if (Image != null && (!HasSnapshot || ShowTextWithSnapshot))
             {
-                e.Graphics.DrawImage(this.Image, (this.ClientSize.Width - this.Image.Size.Width) / 2, (this.ClientSize.Height - this.Image.Size.Height) / 2);
+                e.Graphics.DrawImage(Image, (ClientSize.Width - Image.Size.Width) / 2, (ClientSize.Height - Image.Size.Height) / 2);
             }
 
             // draw text
-            if (!string.IsNullOrEmpty(this.Text) && (!this.HasSnapshot || this.ShowTextWithSnapshot))
+            if (!string.IsNullOrEmpty(Text) && (!HasSnapshot || ShowTextWithSnapshot))
             {
-                TextRenderer.DrawText(e.Graphics, this.Text, this.Font, this.ClientRectangle, this.ForeColor, this.BackColor, TextFormatFlags.ExpandTabs | TextFormatFlags.NoPrefix | TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter | TextFormatFlags.WordBreak | TextFormatFlags.WordEllipsis);
+                TextRenderer.DrawText(e.Graphics, Text, Font, ClientRectangle, ForeColor, BackColor, TextFormatFlags.ExpandTabs | TextFormatFlags.NoPrefix | TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter | TextFormatFlags.WordBreak | TextFormatFlags.WordEllipsis);
             }
         }
 
@@ -605,11 +606,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             Point center;
 
-            center = this.GetCenterPoint();
+            center = GetCenterPoint();
 
-            using (Pen pen = new Pen(this.ForeColor))
+            using (Pen pen = new Pen(ForeColor))
             {
-                e.Graphics.DrawRectangle(pen, center.X * this.Zoom, center.Y * this.Zoom, this.Zoom + 2, this.Zoom + 2);
+                e.Graphics.DrawRectangle(pen, center.X * Zoom, center.Y * Zoom, Zoom + 2, Zoom + 2);
             }
         }
 
@@ -622,14 +623,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             Rectangle viewport;
             int pixelSize;
 
-            pixelSize = this.Zoom;
-            viewport = this.ClientRectangle;
+            pixelSize = Zoom;
+            viewport = ClientRectangle;
 
-            using (Pen pen = new Pen(this.GridColour)
+            using (Pen pen = new Pen(GridColour))
             {
-                DashStyle = DashStyle.Dot
-            })
-            {
+                pen.DashStyle = DashStyle.Dot;
                 for (int x = viewport.Left + 1; x < viewport.Right; x += pixelSize)
                 {
                     e.Graphics.DrawLine(pen, x, viewport.Top, x, viewport.Bottom);
@@ -652,26 +651,29 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             Point cursor;
 
             cursor = MousePosition;
-            cursor.X -= this.SnapshotImage.Width / 2;
-            cursor.Y -= this.SnapshotImage.Height / 2;
-
-            using (Graphics graphics = Graphics.FromImage(this.SnapshotImage))
+            if (SnapshotImage != null)
             {
-                Point center;
+                cursor.X -= SnapshotImage.Width / 2;
+                cursor.Y -= SnapshotImage.Height / 2;
 
-                // clear the image first, in case the mouse is near the borders of the screen so there isn't enough copy content to fill the area
-                graphics.Clear(Color.Empty);
+                using (Graphics graphics = Graphics.FromImage(SnapshotImage))
+                {
+                    Point center;
 
-                // copy the image from the screen
-                graphics.CopyFromScreen(cursor, Point.Empty, this.SnapshotImage.Size);
+                    // clear the image first, in case the mouse is near the borders of the screen so there isn't enough copy content to fill the area
+                    graphics.Clear(Color.Empty);
 
-                // update the active colour
-                center = this.GetCenterPoint();
-                this.Colour = this.SnapshotImage.GetPixel(center.X, center.Y);
+                    // copy the image from the screen
+                    graphics.CopyFromScreen(cursor, Point.Empty, SnapshotImage.Size);
 
-                // force a redraw
-                this.HasSnapshot = true;
-                this.Refresh(); // just calling Invalidate isn't enough as the display will lag
+                    // update the active colour
+                    center = GetCenterPoint();
+                    Colour = SnapshotImage.GetPixel(center.X, center.Y);
+
+                    // force a redraw
+                    HasSnapshot = true;
+                    Refresh(); // just calling Invalidate isn't enough as the display will lag
+                }
             }
         }
 
@@ -682,8 +684,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add => this.Events.AddHandler(_eventColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourChanged, value);
+            add => Events.AddHandler(_eventColourChanged, value);
+            remove => Events.RemoveHandler(_eventColourChanged, value);
         }
 
         /// <summary>
@@ -697,11 +699,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _colour;
             set
             {
-                if (this.Colour != value)
+                if (Colour != value)
                 {
                     _colour = value;
 
-                    this.OnColourChanged(EventArgs.Empty);
+                    OnColourChanged(EventArgs.Empty);
                 }
             }
         }

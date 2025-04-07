@@ -137,12 +137,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         }
         #endregion
 
-        private void kbtnOpenPalette_Click(object sender, EventArgs e)
+        private void kbtnOpenPalette_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void kbtnSavePalette_Click(object sender, EventArgs e)
+        private void kbtnSavePalette_Click(object? sender, EventArgs e)
         {
 
         }

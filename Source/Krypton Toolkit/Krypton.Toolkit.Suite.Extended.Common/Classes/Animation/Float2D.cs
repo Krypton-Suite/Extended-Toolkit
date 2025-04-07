@@ -91,10 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     culture-specific formatting information.
         /// </param>
         /// <exception cref="InvalidCastException">This method is not supported</exception>
-        public bool ToBoolean(IFormatProvider provider)
-        {
-            throw new InvalidCastException();
-        }
+        public bool ToBoolean(IFormatProvider provider) => throw new InvalidCastException();
 
         /// <summary>
         ///     Converts the value of this instance to an equivalent 8-bit unsigned integer using the specified culture-specific
@@ -446,7 +443,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     otherwise, false.
         /// </returns>
         /// <param name="obj">The <see cref="T:System.Object" /> to compare with the current <see cref="T:System.Object" />. </param>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (ReferenceEquals(null, obj))
             {

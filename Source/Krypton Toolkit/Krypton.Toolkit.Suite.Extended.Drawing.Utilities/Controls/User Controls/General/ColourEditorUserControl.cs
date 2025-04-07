@@ -796,11 +796,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColourChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             this.UpdateFields(false);
 
-            handler = (EventHandler)this.Events[_eventColourChanged];
+            handler = this.Events[_eventColourChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -811,11 +811,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnOrientationChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             //ResizeComponents();
 
-            handler = (EventHandler)this.Events[_eventOrientationChanged];
+            handler = this.Events[_eventOrientationChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -826,13 +826,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnShowAlphaChannelChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             this.SetControlStates();
 
             //ResizeComponents();
 
-            handler = (EventHandler)this.Events[_eventShowAlphaChannelChanged];
+            handler = this.Events[_eventShowAlphaChannelChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -843,13 +843,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnShowColourSpaceLabelsChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
             this.SetControlStates();
 
             //ResizeComponents();
 
-            handler = (EventHandler)this.Events[_eventShowColourSpaceLabelsChanged];
+            handler = this.Events[_eventShowColourSpaceLabelsChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
@@ -1146,9 +1146,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         }
 #endif
 
-        private string AddSpaces(string text)
+        private string? AddSpaces(string? text)
         {
-            string result;
+            string? result;
 
             //http://stackoverflow.com/a/272929/148962
 
@@ -1156,7 +1156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             {
                 StringBuilder newText;
 
-                newText = new StringBuilder(text.Length * 2);
+                newText = new StringBuilder(text!.Length * 2);
                 newText.Append(text[0]);
                 for (int i = 1; i < text.Length; i++)
                 {
@@ -1188,20 +1188,20 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Event Handlers
-        private void kcmbHex_DrawItem(object sender, DrawItemEventArgs e)
+        private void kcmbHex_DrawItem(object? sender, DrawItemEventArgs e)
         {
             // TODO: Really, this should be another control - ColourComboBox or ColourListBox etc.
 
             if (e.Index != -1)
             {
                 Rectangle colourBox;
-                string name;
+                string? name;
                 Color colour;
 
                 e.DrawBackground();
 
-                name = (string)kcmbHex.Items[e.Index];
-                colour = Color.FromName(name);
+                name = kcmbHex.Items[e.Index] as string;
+                colour = Color.FromName(name!);
                 colourBox = new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Height - 3, e.Bounds.Height - 3);
 
                 using (Brush brush = new SolidBrush(colour))
@@ -1219,7 +1219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void kcmbHex_DropDown(object sender, EventArgs e)
+        private void kcmbHex_DropDown(object? sender, EventArgs e)
         {
 #if !NETCOREAPP
             if (kcmbHex.Items.Count == 0)
@@ -1229,7 +1229,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 #endif
         }
 
-        private void kcmbHex_KeyDown(object sender, KeyEventArgs e)
+        private void kcmbHex_KeyDown(object? sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -1247,12 +1247,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void kcmbHex_SelectedIndexChanged(object sender, EventArgs e)
+        private void kcmbHex_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (kcmbHex.SelectedIndex != -1)
             {
                 this.LockUpdates = true;
-                this.Colour = Color.FromName((string)kcmbHex.SelectedItem);
+                this.Colour = Color.FromName((kcmbHex.SelectedItem as string)!);
                 this.LockUpdates = false;
             }
         }
@@ -1293,7 +1293,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void ValueChangedHandler(object sender, EventArgs e)
+        private void ValueChangedHandler(object? sender, EventArgs e)
         {
             if (!this.LockUpdates)
             {
@@ -1509,7 +1509,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void ColourEditorUserControl_Load(object sender, EventArgs e)
+        private void ColourEditorUserControl_Load(object? sender, EventArgs e)
         {
 
         }

@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     Initializes a new instance of the <see cref="AnimationPath" /> class.
         /// </summary>
-        public AnimationPath() : this(default(float), default(float), default(ulong), 0, null)
+        public AnimationPath() : this(0, 0, 0, 0, null)
         {
         }
 
@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <exception cref="ArgumentOutOfRangeException">
         ///     Duration is less than zero
         /// </exception>
-        public AnimationPath(float start, float end, ulong duration, AnimationFunctions.Function function)
+        public AnimationPath(float start, float end, ulong duration, AnimationFunctions.Function? function)
             : this(start, end, duration, 0, function)
         {
         }
@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <exception cref="ArgumentOutOfRangeException">
         ///     Duration is less than zero
         /// </exception>
-        public AnimationPath(float start, float end, ulong duration, ulong delay, AnimationFunctions.Function function)
+        public AnimationPath(float start, float end, ulong duration, ulong delay, AnimationFunctions.Function? function)
         {
             Start = start;
             End = end;
@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     Gets or sets the animation function
         /// </summary>
-        public AnimationFunctions.Function Function { get; set; }
+        public AnimationFunctions.Function? Function { get; set; }
 
         /// <summary>
         ///     Gets or sets the starting value
@@ -168,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns>
         ///     A new <see cref="AnimationPath" /> which is the reverse of the current <see cref="AnimationPath" />
         /// </returns>
-        public AnimationPath Reverse()
+        public AnimationPath? Reverse()
         {
             return new AnimationPath(End, Start, Duration, Delay, Function);
         }

@@ -64,7 +64,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             [DllImport("shell32.dll")]
             public static extern IntPtr SHGetFileInfo(
-                string pszPath, uint dwFileAttributes, ref SHFILEINFO psfi,
+                string? pszPath, uint dwFileAttributes, ref SHFILEINFO psfi,
                 uint cbSizeFileInfo, uint uFlags
             );
 
@@ -90,16 +90,16 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         }
 
 
-        public static Icon GetSmallIcon(string fileName)
+        public static Icon GetSmallIcon(string? fileName)
         {
             return GetIcon(fileName, Win32.FILE_ATTRIBUTE_NORMAL, Win32.SHGFI_SMALLICON);
         }
 
 
-        public static Icon GetLargeIcon(string fileName) => GetIcon(fileName, Win32.FILE_ATTRIBUTE_NORMAL, Win32.SHGFI_LARGEICON);
+        public static Icon GetLargeIcon(string? fileName) => GetIcon(fileName, Win32.FILE_ATTRIBUTE_NORMAL, Win32.SHGFI_LARGEICON);
 
 
-        private static Icon GetIcon(string fileName, uint dwAttributes, uint flags)
+        private static Icon GetIcon(string? fileName, uint dwAttributes, uint flags)
         {
             SHFILEINFO shinfo = new SHFILEINFO();
             IntPtr hImgSmall = Win32.SHGetFileInfo(fileName, dwAttributes,

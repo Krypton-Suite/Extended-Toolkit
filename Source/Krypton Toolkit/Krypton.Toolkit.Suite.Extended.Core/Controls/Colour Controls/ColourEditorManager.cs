@@ -54,17 +54,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private Color _colour;
 
-        private ColourEditorControl _colourEditor;
+        private ColourEditorControl? _colourEditor;
 
-        private ColourGridControl _grid;
+        private ColourGridControl? _grid;
 
         private HSLColourStructure _hslColour;
 
-        private LightnessColourSliderControl _lightnessColourSlider;
+        private LightnessColourSliderControl? _lightnessColourSlider;
 
-        private ScreenColourPickerControl _screenColourPicker;
+        private ScreenColourPickerControl? _screenColourPicker;
 
-        private ColourWheelControl _wheel;
+        private ColourWheelControl? _wheel;
 
         #endregion
 
@@ -73,36 +73,36 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Property Changed")]
         public event EventHandler ColourEditorChanged
         {
-            add => this.Events.AddHandler(_eventColourEditorChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourEditorChanged, value);
+            add => Events.AddHandler(_eventColourEditorChanged, value);
+            remove => Events.RemoveHandler(_eventColourEditorChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ColourGridChanged
         {
-            add => this.Events.AddHandler(_eventColourGridChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourGridChanged, value);
+            add => Events.AddHandler(_eventColourGridChanged, value);
+            remove => Events.RemoveHandler(_eventColourGridChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ColourWheelChanged
         {
-            add => this.Events.AddHandler(_eventColourWheelChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourWheelChanged, value);
+            add => Events.AddHandler(_eventColourWheelChanged, value);
+            remove => Events.RemoveHandler(_eventColourWheelChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler LightnessColourSliderChanged
         {
-            add => this.Events.AddHandler(_eventLightnessColourSliderChanged, value);
-            remove => this.Events.RemoveHandler(_eventLightnessColourSliderChanged, value);
+            add => Events.AddHandler(_eventLightnessColourSliderChanged, value);
+            remove => Events.RemoveHandler(_eventLightnessColourSliderChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ScreenColourPickerChanged
         {
-            add => this.Events.AddHandler(_eventScreenColourPickerChanged, value);
-            remove => this.Events.RemoveHandler(_eventScreenColourPickerChanged, value);
+            add => Events.AddHandler(_eventScreenColourPickerChanged, value);
+            remove => Events.RemoveHandler(_eventScreenColourPickerChanged, value);
         }
 
         #endregion
@@ -113,17 +113,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets or sets the linked <see cref="ColourEditorControl"/>.
         /// </summary>
         [Category("Behavior")]
-        [DefaultValue(typeof(ColourEditorControl), null)]
-        public virtual ColourEditorControl ColourEditor
+        [DefaultValue(typeof(ColourEditorControl), null!)]
+        public virtual ColourEditorControl? ColourEditor
         {
             get => _colourEditor;
             set
             {
-                if (this.ColourEditor != value)
+                if (ColourEditor != value)
                 {
                     _colourEditor = value;
 
-                    this.OnColourEditorChanged(EventArgs.Empty);
+                    OnColourEditorChanged(EventArgs.Empty);
                 }
             }
         }
@@ -132,17 +132,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets or sets the linked <see cref="ColourGridControl"/>.
         /// </summary>
         [Category("Behavior")]
-        [DefaultValue(typeof(ColourGridControl), null)]
-        public virtual ColourGridControl ColourGrid
+        [DefaultValue(typeof(ColourGridControl), null!)]
+        public virtual ColourGridControl? ColourGrid
         {
             get => _grid;
             set
             {
-                if (this.ColourGrid != value)
+                if (ColourGrid != value)
                 {
                     _grid = value;
 
-                    this.OnColourGridChanged(EventArgs.Empty);
+                    OnColourGridChanged(EventArgs.Empty);
                 }
             }
         }
@@ -151,17 +151,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets or sets the linked <see cref="ColourWheelControl"/>.
         /// </summary>
         [Category("Behavior")]
-        [DefaultValue(typeof(ColourWheelControl), null)]
-        public virtual ColourWheelControl ColourWheel
+        [DefaultValue(typeof(ColourWheelControl), null!)]
+        public virtual ColourWheelControl? ColourWheel
         {
             get => _wheel;
             set
             {
-                if (this.ColourWheel != value)
+                if (ColourWheel != value)
                 {
                     _wheel = value;
 
-                    this.OnColourWheelChanged(EventArgs.Empty);
+                    OnColourWheelChanged(EventArgs.Empty);
                 }
             }
         }
@@ -177,12 +177,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             get => _hslColour;
             set
             {
-                if (this.HSLColour != value)
+                if (HSLColour != value)
                 {
                     _hslColour = value;
                     _colour = value.ToRgbColour();
 
-                    this.OnColourChanged(EventArgs.Empty);
+                    OnColourChanged(EventArgs.Empty);
                 }
             }
         }
@@ -191,17 +191,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets or sets the linked <see cref="LightnessColourSliderControl"/>.
         /// </summary>
         [Category("Behavior")]
-        [DefaultValue(typeof(LightnessColourSliderControl), null)]
-        public virtual LightnessColourSliderControl LightnessColourSlider
+        [DefaultValue(typeof(LightnessColourSliderControl), null!)]
+        public virtual LightnessColourSliderControl? LightnessColourSlider
         {
             get => _lightnessColourSlider;
             set
             {
-                if (this.LightnessColourSlider != value)
+                if (LightnessColourSlider != value)
                 {
                     _lightnessColourSlider = value;
 
-                    this.OnLightnessColourSliderChanged(EventArgs.Empty);
+                    OnLightnessColourSliderChanged(EventArgs.Empty);
                 }
             }
         }
@@ -210,17 +210,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets or sets the linked <see cref="ScreenColourPickerControl"/>.
         /// </summary>
         [Category("Behavior")]
-        [DefaultValue(typeof(ScreenColourPickerControl), null)]
-        public virtual ScreenColourPickerControl ScreenColourPicker
+        [DefaultValue(typeof(ScreenColourPickerControl), null!)]
+        public virtual ScreenColourPickerControl? ScreenColourPicker
         {
             get => _screenColourPicker;
             set
             {
-                if (this.ScreenColourPicker != value)
+                if (ScreenColourPicker != value)
                 {
                     _screenColourPicker = value;
 
-                    this.OnScreenColourPickerChanged(EventArgs.Empty);
+                    OnScreenColourPickerChanged(EventArgs.Empty);
                 }
             }
         }
@@ -241,7 +241,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="control">The <see cref="IColourEditor"/> to bind to.</param>
         protected virtual void BindEvents(IColourEditor control)
         {
-            control.ColourChanged += this.ColourChangedHandler;
+            control.ColourChanged += ColourChangedHandler;
         }
 
         /// <summary>
@@ -252,9 +252,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            this.Synchronise(this);
+            Synchronise(this);
 
-            handler = (EventHandler)this.Events[_eventColourChanged];
+            handler = (EventHandler)Events[_eventColourChanged];
 
             handler?.Invoke(this, e);
         }
@@ -267,12 +267,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            if (this.ColourEditor != null)
+            if (ColourEditor != null)
             {
-                this.BindEvents(this.ColourEditor);
+                BindEvents(ColourEditor);
             }
 
-            handler = (EventHandler)this.Events[_eventColourEditorChanged];
+            handler = (EventHandler)Events[_eventColourEditorChanged];
 
             handler?.Invoke(this, e);
         }
@@ -285,12 +285,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            if (this.ColourGrid != null)
+            if (ColourGrid != null)
             {
-                this.BindEvents(this.ColourGrid);
+                BindEvents(ColourGrid);
             }
 
-            handler = (EventHandler)this.Events[_eventColourGridChanged];
+            handler = (EventHandler)Events[_eventColourGridChanged];
 
             handler?.Invoke(this, e);
         }
@@ -303,12 +303,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            if (this.ColourWheel != null)
+            if (ColourWheel != null)
             {
-                this.BindEvents(this.ColourWheel);
+                BindEvents(ColourWheel);
             }
 
-            handler = (EventHandler)this.Events[_eventColourWheelChanged];
+            handler = (EventHandler)Events[_eventColourWheelChanged];
 
             handler?.Invoke(this, e);
         }
@@ -321,12 +321,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            if (this.LightnessColourSlider != null)
+            if (LightnessColourSlider != null)
             {
-                this.BindEvents(this.LightnessColourSlider);
+                BindEvents(LightnessColourSlider);
             }
 
-            handler = (EventHandler)this.Events[_eventLightnessColourSliderChanged];
+            handler = (EventHandler)Events[_eventLightnessColourSliderChanged];
 
             handler?.Invoke(this, e);
         }
@@ -339,12 +339,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             EventHandler handler;
 
-            if (this.ScreenColourPicker != null)
+            if (ScreenColourPicker != null)
             {
-                this.BindEvents(this.ScreenColourPicker);
+                BindEvents(ScreenColourPicker);
             }
 
-            handler = (EventHandler)this.Events[_eventScreenColourPickerChanged];
+            handler = (EventHandler)Events[_eventScreenColourPickerChanged];
 
             handler?.Invoke(this, e);
         }
@@ -354,7 +354,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <param name="control">The <see cref="IColourEditor"/> to update.</param>
         /// <param name="sender">The <see cref="IColourEditor"/> triggering the update.</param>
-        protected virtual void SetColour(IColourEditor control, IColourEditor sender)
+        protected virtual void SetColour(IColourEditor? control, IColourEditor sender)
         {
             if (control != null && control != sender)
             {
@@ -368,20 +368,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="sender">The <see cref="IColourEditor"/> triggering the update.</param>
         protected virtual void Synchronise(IColourEditor sender)
         {
-            if (!this.LockUpdates)
+            if (!LockUpdates)
             {
                 try
                 {
-                    this.LockUpdates = true;
-                    this.SetColour(this.ColourGrid, sender);
-                    this.SetColour(this.ColourWheel, sender);
-                    this.SetColour(this.ScreenColourPicker, sender);
-                    this.SetColour(this.ColourEditor, sender);
-                    this.SetColour(this.LightnessColourSlider, sender);
+                    LockUpdates = true;
+                    SetColour(ColourGrid, sender);
+                    SetColour(ColourWheel, sender);
+                    SetColour(ScreenColourPicker, sender);
+                    SetColour(ColourEditor, sender);
+                    SetColour(LightnessColourSlider, sender);
                 }
                 finally
                 {
-                    this.LockUpdates = false;
+                    LockUpdates = false;
                 }
             }
         }
@@ -393,16 +393,16 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ColourChangedHandler(object sender, EventArgs e)
         {
-            if (!this.LockUpdates)
+            if (!LockUpdates)
             {
                 IColourEditor source;
 
                 source = (IColourEditor)sender;
 
-                this.LockUpdates = true;
-                this.Colour = source.Colour;
-                this.LockUpdates = false;
-                this.Synchronise(source);
+                LockUpdates = true;
+                Colour = source.Colour;
+                LockUpdates = false;
+                Synchronise(source);
             }
         }
 
@@ -413,8 +413,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add => this.Events.AddHandler(_eventColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourChanged, value);
+            add => Events.AddHandler(_eventColourChanged, value);
+            remove => Events.RemoveHandler(_eventColourChanged, value);
         }
 
         /// <summary>
@@ -433,7 +433,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     _colour = value;
                     _hslColour = new(value);
 
-                    this.OnColourChanged(EventArgs.Empty);
+                    OnColourChanged(EventArgs.Empty);
                 }
             }
         }

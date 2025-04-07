@@ -81,10 +81,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <returns></returns>
         public override object Clone()
         {
-            KryptonDataGridViewBinaryColumn cloned = base.Clone() as KryptonDataGridViewBinaryColumn;
+            KryptonDataGridViewBinaryColumn? cloned = base.Clone() as KryptonDataGridViewBinaryColumn;
 
             // Move the button specs over to the new clone
-            cloned._editorType = _editorType;
+            cloned!._editorType = _editorType;
             return cloned;
         }
 
@@ -120,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override DataGridViewCell CellTemplate
+        public override DataGridViewCell? CellTemplate
         {
             get => base.CellTemplate;
 
@@ -180,7 +180,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         #region Private
 
-        private KryptonDataGridViewBinaryCell BinaryCellTemplate => (KryptonDataGridViewBinaryCell)CellTemplate;
+        private KryptonDataGridViewBinaryCell? BinaryCellTemplate => CellTemplate as KryptonDataGridViewBinaryCell;
 
         #endregion
 

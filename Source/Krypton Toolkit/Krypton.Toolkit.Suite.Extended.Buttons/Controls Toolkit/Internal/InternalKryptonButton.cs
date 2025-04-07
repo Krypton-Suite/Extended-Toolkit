@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IContentValues
     {
         #region Instance Fields
-        private readonly ViewDrawButton _drawButton;
+        private readonly ViewDrawButton? _drawButton;
         private ButtonStyle _style;
         private readonly ButtonController _buttonController;
         private VisualOrientation _orientation;
@@ -75,24 +75,24 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             Values.TextChanged += OnButtonTextChanged;
 
             // Create the palette storage
-            StateCommon = new(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
-            StateDisabled = new(StateCommon, NeedPaintDelegate);
-            StateNormal = new(StateCommon, NeedPaintDelegate);
-            StateTracking = new(StateCommon, NeedPaintDelegate);
-            StatePressed = new(StateCommon, NeedPaintDelegate);
-            OverrideDefault = new(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
-            OverrideFocus = new(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
+            StateCommon = new PaletteTripleRedirect(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
+            StateDisabled = new PaletteTriple(StateCommon, NeedPaintDelegate);
+            StateNormal = new PaletteTriple(StateCommon, NeedPaintDelegate);
+            StateTracking = new PaletteTriple(StateCommon, NeedPaintDelegate);
+            StatePressed = new PaletteTriple(StateCommon, NeedPaintDelegate);
+            OverrideDefault = new PaletteTripleRedirect(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
+            OverrideFocus = new PaletteTripleRedirect(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
 
             // Create the override handling classes
-            _overrideFocus = new(OverrideFocus, StateNormal, PaletteState.FocusOverride);
-            _overrideNormal = new(OverrideDefault, _overrideFocus, PaletteState.NormalDefaultOverride);
-            _overrideTracking = new(OverrideFocus, StateTracking, PaletteState.FocusOverride);
-            _overridePressed = new(OverrideFocus, StatePressed, PaletteState.FocusOverride);
+            _overrideFocus = new PaletteTripleOverride(OverrideFocus, StateNormal, PaletteState.FocusOverride);
+            _overrideNormal = new PaletteTripleOverride(OverrideDefault, _overrideFocus, PaletteState.NormalDefaultOverride);
+            _overrideTracking = new PaletteTripleOverride(OverrideFocus, StateTracking, PaletteState.FocusOverride);
+            _overridePressed = new PaletteTripleOverride(OverrideFocus, StatePressed, PaletteState.FocusOverride);
 
             // Create the view button instance
             if (Redirector != null)
             {
-                _drawButton = new(StateDisabled,
+                _drawButton = new ViewDrawButton(StateDisabled,
                     _overrideNormal,
                     _overrideTracking,
                     _overridePressed,
@@ -107,19 +107,22 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
 
             // Create a button controller to handle button style behaviour
-            _buttonController = new(_drawButton, NeedPaintDelegate);
+            _buttonController = new ButtonController(_drawButton!, NeedPaintDelegate);
 
             // Assign the controller to the view element to treat as a button
-            _drawButton.MouseController = _buttonController;
-            _drawButton.KeyController = _buttonController;
-            _drawButton.SourceController = _buttonController;
+            if (_drawButton != null)
+            {
+                _drawButton.MouseController = _buttonController;
+                _drawButton.KeyController = _buttonController;
+                _drawButton.SourceController = _buttonController;
 
-            // Need to know when user clicks the button view or mouse selects it
-            _buttonController.Click += OnButtonClick;
-            _buttonController.MouseSelect += OnButtonSelect;
+                // Need to know when user clicks the button view or mouse selects it
+                _buttonController.Click += OnButtonClick;
+                _buttonController.MouseSelect += OnButtonSelect;
 
-            // Create the view manager instance
-            ViewManager = new(this, _drawButton);
+                // Create the view manager instance
+                ViewManager = new ViewManager(this, _drawButton);
+            }
 
             _useAsDialogButton = false;
 
@@ -160,7 +163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// Gets or sets the text associated with this control. 
         /// </summary>
         [Editor(@"System.ComponentModel.Design.MultilineStringEditor", typeof(UITypeEditor))]
-        public override string Text
+        public override string? Text
         {
             get => Values.Text;
 
@@ -195,7 +198,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     _orientation = value;
 
                     // Update the associated visual elements that are effected
-                    _drawButton.Orientation = value;
+                    if (_drawButton != null)
+                    {
+                        _drawButton.Orientation = value;
+                    }
 
                     PerformNeedPaint(true);
                 }
@@ -343,7 +349,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         [Category(@"Behavior")]
         [Description(@"Command associated with the button.")]
         [DefaultValue(null)]
-        public virtual IKryptonCommand KryptonCommand
+        public virtual IKryptonCommand? KryptonCommand
         {
             get => _command;
 
@@ -383,7 +389,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <param name="value">true if the control should behave as a default button; otherwise false.</param>
         public void NotifyDefault(bool value)
         {
-            if (!ViewDrawButton.IsFixed && _isDefault != value)
+            if (ViewDrawButton != null && !ViewDrawButton.IsFixed && _isDefault != value)
             {
                 // Remember new default status
                 _isDefault = value;
@@ -422,7 +428,11 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 if (_useMnemonic != value)
                 {
                     _useMnemonic = value;
-                    _drawButton.UseMnemonic = value;
+                    if (_drawButton != null)
+                    {
+                        _drawButton.UseMnemonic = value;
+                    }
+
                     PerformNeedPaint(true);
                 }
             }
@@ -445,7 +455,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
 
             // Request fixed state from the view
-            _drawButton.FixedState = state;
+            if (_drawButton != null)
+            {
+                _drawButton.FixedState = state;
+            }
         }
 
         /// <summary>
@@ -453,6 +466,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new ImeMode ImeMode
         {
             get => base.ImeMode;
@@ -465,20 +479,20 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// Gets the content short text.
         /// </summary>
         /// <returns>String value.</returns>
-        public string GetShortText() => KryptonCommand.Text ?? Values.GetShortText();
+        public string GetShortText() => KryptonCommand?.Text ?? Values.GetShortText();
 
         /// <summary>
         /// Gets the content long text.
         /// </summary>
         /// <returns>String value.</returns>
-        public string GetLongText() => KryptonCommand.ExtraText ?? Values.GetLongText();
+        public string GetLongText() => KryptonCommand?.ExtraText ?? Values.GetLongText();
 
         /// <summary>
         /// Gets the content image.
         /// </summary>
         /// <param name="state">The state for which the image is needed.</param>
         /// <returns>Image value.</returns>
-        public Image? GetImage(PaletteState state) => KryptonCommand.ImageSmall ?? Values.GetImage(state);
+        public Image? GetImage(PaletteState state) => KryptonCommand?.ImageSmall ?? Values.GetImage(state);
 
         /// <summary>
         /// Gets the image colour that should be transparent.
@@ -519,7 +533,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected override void OnGotFocus(EventArgs e)
         {
-            if (!ViewDrawButton.IsFixed)
+            if (ViewDrawButton != null && !ViewDrawButton.IsFixed)
             {
                 // Apply the focus overrides
                 _overrideFocus.Apply = true;
@@ -540,7 +554,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected override void OnLostFocus(EventArgs e)
         {
-            if (!ViewDrawButton.IsFixed)
+            if (ViewDrawButton != null && !ViewDrawButton.IsFixed)
             {
                 // Apply the focus overrides
                 _overrideFocus.Apply = false;
@@ -575,7 +589,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             base.OnClick(e);
 
             // If we have an attached command then execute it
-            KryptonCommand.PerformExecute();
+            KryptonCommand?.PerformExecute();
 
             if (_useAsUACElevationButton)
             {
@@ -713,12 +727,16 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// </summary>
         /// <param name="sender">Source of the event.</param>
         /// <param name="e">A PropertyChangedEventArgs that contains the event data.</param>
-        protected virtual void OnCommandPropertyChanged(object sender, PropertyChangedEventArgs e)
+        protected virtual void OnCommandPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
                 case @"Enabled":
-                    Enabled = KryptonCommand.Enabled;
+                    if (KryptonCommand != null)
+                    {
+                        Enabled = KryptonCommand.Enabled;
+                    }
+
                     break;
                 case @"Text":
                 case @"ExtraText":
@@ -732,14 +750,14 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>
         /// Gets access to the view element for the button.
         /// </summary>
-        protected virtual ViewDrawButton ViewDrawButton => _drawButton;
+        protected virtual ViewDrawButton? ViewDrawButton => _drawButton;
         // ReSharper restore VirtualMemberNeverOverridden.Global
         #endregion
 
         #region Implementation
-        private void OnButtonTextChanged(object sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
+        private void OnButtonTextChanged(object? sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
 
-        private void OnButtonClick(object sender, MouseEventArgs e)
+        private void OnButtonClick(object? sender, MouseEventArgs e)
         {
             // Raise the standard click event
             OnClick(EventArgs.Empty);
@@ -748,7 +766,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             OnMouseClick(e);
         }
 
-        private void OnButtonSelect(object sender, MouseEventArgs e)
+        private void OnButtonSelect(object? sender, MouseEventArgs e)
         {
             // Take the focus if allowed
             if (CanFocus)
@@ -761,7 +779,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             if (showUACShield)
             {
-                Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize)?.ToBitmap();
 
                 Invalidate();
             }

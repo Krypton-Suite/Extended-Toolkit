@@ -40,12 +40,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         private readonly PaletteTripleOverride _overrideNormal;
         private readonly PaletteTripleOverride _overrideTracking;
         private readonly PaletteTripleOverride _overridePressed;
-        private KryptonCommand _command;
+        private KryptonCommand? _command;
         private Rectangle _selectedRect;
         private Color _selectedColour;
         private Color _emptyBorderColour;
         private readonly List<Color> _recentColours;
-        private Image _wasImage;
+        private Image? _wasImage;
         private bool _wasEnabled;
         private bool _isDefault;
         private bool _useMnemonic;
@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         //private ViewDrawButtonExtended vdbe = new ViewDrawButtonExtended(null, null, null, null, null, null, VisualOrientation.Top, true);
 
         // Context menu items
-        private readonly KryptonContextMenu _kryptonContextMenu;
+        private readonly KryptonContextMenu? _kryptonContextMenu;
         private readonly KryptonContextMenuSeparator _separatorTheme;
         private readonly KryptonContextMenuSeparator _separatorStandard;
         private readonly KryptonContextMenuSeparator _separatorRecent;
@@ -696,7 +696,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Behavior")]
         [Description("Command associated with the color button.")]
         [DefaultValue(null)]
-        public virtual KryptonCommand KryptonCommand
+        public virtual KryptonCommand? KryptonCommand
         {
             get => _command;
 
@@ -905,7 +905,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         protected override void OnClick(EventArgs e)
         {
             // Find the form this color button is on
-            Form owner = FindForm();
+            Form? owner = FindForm();
 
             // If we find a valid owner
             if (owner != null)
@@ -961,25 +961,25 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Protected Virtual
-        protected virtual void OnDropDown(ContextPositionMenuArgs e) => DropDown?.Invoke(this, e);
+        protected virtual void OnDropDown(ContextPositionMenuArgs e) => DropDown.Invoke(this, e);
 
         /// <summary>
         /// Raises the SelectedColorChanged event.
         /// </summary>
         /// <param name="selectedColour">New selected color.</param>
-        protected virtual void OnSelectedColourChanged(Color selectedColour) => SelectedColourChanged?.Invoke(this, new ColorEventArgs(selectedColour));
+        protected virtual void OnSelectedColourChanged(Color selectedColour) => SelectedColourChanged.Invoke(this, new ColorEventArgs(selectedColour));
 
         /// <summary>
         /// Raises the TrackingColor event.
         /// </summary>
         /// <param name="e">An ColorEventArgs that contains the event data.</param>
-        protected virtual void OnTrackingColour(ColorEventArgs e) => TrackingColour?.Invoke(this, e);
+        protected virtual void OnTrackingColour(ColorEventArgs e) => TrackingColour.Invoke(this, e);
 
         /// <summary>
         /// Raises the MoreColors event.
         /// </summary>
         /// <param name="e">An CancelEventArgs that contains the event data.</param>
-        protected virtual void OnMoreColours(CancelEventArgs e) => MoreColours?.Invoke(this, e);
+        protected virtual void OnMoreColours(CancelEventArgs e) => MoreColours.Invoke(this, e);
 
         /// <summary>
         /// Raises the KryptonCommandChanged event.
@@ -987,7 +987,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">An EventArgs containing the event data.</param>
         protected virtual void OnKryptonCommandChanged(EventArgs e)
         {
-            KryptonCommandChanged?.Invoke(this, e);
+            KryptonCommandChanged.Invoke(this, e);
 
             // Use the values from the new command
             if (KryptonCommand != null)
@@ -1005,15 +1005,19 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <param name="sender">Source of the event.</param>
         /// <param name="e">A PropertyChangedEventArgs that contains the event data.</param>
-        protected virtual void OnCommandPropertyChanged(object sender, PropertyChangedEventArgs e)
+        protected virtual void OnCommandPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
                 case "Enabled":
-                    Enabled = KryptonCommand.Enabled;
+                    if (KryptonCommand != null)
+                    {
+                        Enabled = KryptonCommand.Enabled;
+                    }
+
                     break;
                 case "ImageSmall":
-                    Values.Image = KryptonCommand.ImageSmall;
+                    Values.Image = KryptonCommand?.ImageSmall;
                     PerformNeedPaint(true);
                     break;
                 case "Text":
@@ -1049,9 +1053,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Implementation
-        private void OnButtonTextChanged(object sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
+        private void OnButtonTextChanged(object? sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
 
-        private void OnButtonClick(object sender, MouseEventArgs e)
+        private void OnButtonClick(object? sender, MouseEventArgs e)
         {
             bool showingContextMenu = false;
 
@@ -1134,7 +1138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                                 break;
                         }
 
-                        // We are showing a drop down
+                        // We are showing a drop-down
                         showingContextMenu = true;
 
                         // Decide which separators are needed
@@ -1145,7 +1149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         DecideOnVisible(_separatorMoreColours, _itemsMoreColours);
 
                         // Monitor relevant events inside the context menu
-                        HookContextMenuEvents(_kryptonContextMenu.Items, true);
+                        HookContextMenuEvents(_kryptonContextMenu?.Items, true);
 
                         // Show relative to the screen rectangle
                         cpma.KryptonContextMenu.Closed += OnKryptonContextMenuClosed;
@@ -1187,19 +1191,19 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void OnContextMenuClosed(object sender, EventArgs e) => ContextMenuClosed();
+        private void OnContextMenuClosed(object? sender, EventArgs e) => ContextMenuClosed();
 
-        private void OnKryptonContextMenuClosed(object sender, EventArgs e)
+        private void OnKryptonContextMenuClosed(object? sender, EventArgs e)
         {
             KryptonContextMenu kcm = (KryptonContextMenu)sender;
             kcm.Closed -= OnKryptonContextMenuClosed;
             ContextMenuClosed();
 
             // Unhook from item events
-            HookContextMenuEvents(_kryptonContextMenu.Items, false);
+            HookContextMenuEvents(_kryptonContextMenu?.Items, false);
         }
 
-        void OnButtonSelect(object sender, MouseEventArgs e)
+        void OnButtonSelect(object? sender, MouseEventArgs e)
         {
             // Take the focus if allowed
             if (CanFocus)
@@ -1208,25 +1212,28 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             }
         }
 
-        private void HookContextMenuEvents(KryptonContextMenuCollection collection, bool hook)
+        private void HookContextMenuEvents(KryptonContextMenuCollection? collection, bool hook)
         {
             // Search for items of interest
-            foreach (KryptonContextMenuItemBase item in collection)
+            if (collection != null)
             {
-                // Hook into color events
-                if (item is KryptonContextMenuColorColumns columns)
+                foreach (KryptonContextMenuItemBase item in collection)
                 {
-                    columns.SelectedColor = _selectedColour;
+                    // Hook into color events
+                    if (item is KryptonContextMenuColorColumns columns)
+                    {
+                        columns.SelectedColor = _selectedColour;
 
-                    if (hook)
-                    {
-                        columns.TrackingColor += OnColumnsTrackingColor;
-                        columns.SelectedColorChanged += OnColumnsSelectedColourChanged;
-                    }
-                    else
-                    {
-                        columns.TrackingColor -= OnColumnsTrackingColor;
-                        columns.SelectedColorChanged -= OnColumnsSelectedColourChanged;
+                        if (hook)
+                        {
+                            columns.TrackingColor += OnColumnsTrackingColor;
+                            columns.SelectedColorChanged += OnColumnsSelectedColourChanged;
+                        }
+                        else
+                        {
+                            columns.TrackingColor -= OnColumnsTrackingColor;
+                            columns.SelectedColorChanged -= OnColumnsSelectedColourChanged;
+                        }
                     }
                 }
             }
@@ -1238,24 +1245,27 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             if (AutoRecentColours)
             {
                 // We do not add to recent colors if it is inside another color columns 
-                foreach (KryptonContextMenuItemBase item in _kryptonContextMenu.Items)
+                if (_kryptonContextMenu != null)
                 {
-                    // Only interested in the non-recent colors color columns
-                    if (item != _coloursRecent && item is KryptonContextMenuColorColumns colors)
+                    foreach (KryptonContextMenuItemBase item in _kryptonContextMenu?.Items!)
                     {
-                        // Cast to correct type
-
-                        // We do not change the theme or standard entries if they are not to be used
-                        if ((item == _coloursTheme && !VisibleThemes) ||
-                            (item == _coloursStandard && !VisibleStandard))
+                        // Only interested in the non-recent colors' color columns
+                        if (item != _coloursRecent && item is KryptonContextMenuColorColumns colors)
                         {
-                            continue;
-                        }
+                            // Cast to correct type
 
-                        // If matching color found, do not add to recent colors
-                        if (colors.ContainsColor(color))
-                        {
-                            return;
+                            // We do not change the theme or standard entries if they are not to be used
+                            if ((item == _coloursTheme && !VisibleThemes) ||
+                                (item == _coloursStandard && !VisibleStandard))
+                            {
+                                continue;
+                            }
+
+                            // If matching color found, do not add to recent colors
+                            if (colors.ContainsColor(color))
+                            {
+                                return;
+                            }
                         }
                     }
                 }
@@ -1340,7 +1350,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             if (target.Visible)
             {
                 // Check all items before the target
-                foreach (KryptonContextMenuItemBase item in _kryptonContextMenu.Items)
+                foreach (KryptonContextMenuItemBase item in _kryptonContextMenu?.Items!)
                 {
                     // Finish when we reach the target
                     if (item == target)
@@ -1364,13 +1374,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             visible.Visible = previous;
         }
 
-        private void OnColumnsTrackingColor(object sender, ColorEventArgs e) => OnTrackingColour(new ColorEventArgs(e.Color));
+        private void OnColumnsTrackingColor(object? sender, ColorEventArgs e) => OnTrackingColour(new ColorEventArgs(e.Color));
 
-        private void OnColumnsSelectedColourChanged(object sender, ColorEventArgs e) => SelectedColour = e.Color;
+        private void OnColumnsSelectedColourChanged(object? sender, ColorEventArgs e) => SelectedColour = e.Color;
 
-        private void OnClickNoColour(object sender, EventArgs e) => SelectedColour = Color.Empty;
+        private void OnClickNoColour(object? sender, EventArgs e) => SelectedColour = Color.Empty;
 
-        private void OnClickMoreColours(object sender, EventArgs e)
+        private void OnClickMoreColours(object? sender, EventArgs e)
         {
             // Give user a chance to cancel showing the standard more colors dialog
             CancelEventArgs cea = new CancelEventArgs();

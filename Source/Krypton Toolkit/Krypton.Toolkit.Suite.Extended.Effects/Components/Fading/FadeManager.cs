@@ -33,15 +33,16 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         #region Variables
         private float _fadeSpeed;
 
-        private KryptonForm _windowToFade, _parentWindow;
+        private KryptonForm? _windowToFade;
+        private KryptonForm? _parentWindow;
         #endregion
 
         #region Properties
         public float FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
 
-        public KryptonForm WindowToFade { get => _windowToFade; set => _windowToFade = value; }
+        public KryptonForm? WindowToFade { get => _windowToFade; set => _windowToFade = value; }
 
-        public KryptonForm ParentWindow { get => _parentWindow; set => _parentWindow = value; }
+        public KryptonForm? ParentWindow { get => _parentWindow; set => _parentWindow = value; }
         #endregion
 
         #region Custom Events

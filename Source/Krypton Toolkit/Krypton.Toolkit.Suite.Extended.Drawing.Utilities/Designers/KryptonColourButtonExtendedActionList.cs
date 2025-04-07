@@ -30,9 +30,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
     internal class KryptonColourButtonExtendedActionList : DesignerActionList
     {
         #region Variables
-        private readonly KryptonColourButtonExtended _colourButton;
+        private readonly KryptonColourButtonExtended? _colourButton;
 
-        private readonly IComponentChangeService _service;
+        private readonly IComponentChangeService? _service;
         #endregion
 
         #region Constructor
@@ -40,20 +40,20 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             _colourButton = owner.Component as KryptonColourButtonExtended;
 
-            _service = (IComponentChangeService)GetService(typeof(IComponentChangeService));
+            _service = GetService(typeof(IComponentChangeService)) as IComponentChangeService;
         }
         #endregion
 
         #region Properties
         public ButtonStyle ButtonStyle
         {
-            get => _colourButton.ButtonStyle;
+            get => _colourButton!.ButtonStyle;
 
             set
             {
-                if (_colourButton.ButtonStyle != value)
+                if (_colourButton!.ButtonStyle != value)
                 {
-                    _service.OnComponentChanged(_colourButton, null, _colourButton.ButtonStyle, value);
+                    _service?.OnComponentChanged(_colourButton, null, _colourButton.ButtonStyle, value);
 
                     _colourButton.ButtonStyle = value;
                 }
@@ -62,13 +62,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         public VisualOrientation ButtonOrientation
         {
-            get => _colourButton.ButtonOrientation;
+            get => _colourButton!.ButtonOrientation;
 
             set
             {
-                if (_colourButton.ButtonOrientation != value)
+                if (_colourButton!.ButtonOrientation != value)
                 {
-                    _service.OnComponentChanged(_colourButton, null, _colourButton.ButtonOrientation, value);
+                    _service?.OnComponentChanged(_colourButton, null, _colourButton.ButtonOrientation, value);
 
                     _colourButton.ButtonOrientation = value;
                 }
@@ -76,51 +76,51 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         }
 
         /// <summary>
-        /// Gets and sets the visual drop down position.
+        /// Gets and sets the visual drop-down position.
         /// </summary>
         public VisualOrientation DropDownPosition
         {
-            get => _colourButton.DropDownPosition;
+            get => _colourButton!.DropDownPosition;
 
             set
             {
-                if (_colourButton.DropDownPosition != value)
+                if (_colourButton!.DropDownPosition != value)
                 {
-                    _service.OnComponentChanged(_colourButton, null, _colourButton.DropDownPosition, value);
+                    _service?.OnComponentChanged(_colourButton, null, _colourButton.DropDownPosition, value);
                     _colourButton.DropDownPosition = value;
                 }
             }
         }
 
         /// <summary>
-        /// Gets and sets the visual drop down orientation.
+        /// Gets and sets the visual drop-down orientation.
         /// </summary>
         public VisualOrientation DropDownOrientation
         {
-            get => _colourButton.DropDownOrientation;
+            get => _colourButton!.DropDownOrientation;
 
             set
             {
-                if (_colourButton.DropDownOrientation != value)
+                if (_colourButton!.DropDownOrientation != value)
                 {
-                    _service.OnComponentChanged(_colourButton, null, _colourButton.DropDownOrientation, value);
+                    _service?.OnComponentChanged(_colourButton, null, _colourButton.DropDownOrientation, value);
                     _colourButton.DropDownOrientation = value;
                 }
             }
         }
 
         /// <summary>
-        /// Gets and sets the splitter or drop down functionality.
+        /// Gets and sets the splitter or drop-down functionality.
         /// </summary>
         public bool Splitter
         {
-            get => _colourButton.Splitter;
+            get => _colourButton!.Splitter;
 
             set
             {
-                if (_colourButton.Splitter != value)
+                if (_colourButton!.Splitter != value)
                 {
-                    _service.OnComponentChanged(_colourButton, null, _colourButton.Splitter, value);
+                    _service?.OnComponentChanged(_colourButton, null, _colourButton.Splitter, value);
                     _colourButton.Splitter = value;
                 }
             }
@@ -131,13 +131,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         public string Text
         {
-            get => _colourButton.Values.Text;
+            get => _colourButton!.Values.Text;
 
             set
             {
-                if (_colourButton.Values.Text != value)
+                if (_colourButton!.Values.Text != value)
                 {
-                    _service.OnComponentChanged(_colourButton, null, _colourButton.Values.Text, value);
+                    _service?.OnComponentChanged(_colourButton, null, _colourButton.Values.Text, value);
                     _colourButton.Values.Text = value;
                 }
             }
@@ -148,13 +148,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         public string ExtraText
         {
-            get => _colourButton.Values.ExtraText;
+            get => _colourButton!.Values.ExtraText;
 
             set
             {
-                if (_colourButton.Values.ExtraText != value)
+                if (_colourButton!.Values.ExtraText != value)
                 {
-                    _service.OnComponentChanged(_colourButton, null, _colourButton.Values.ExtraText, value);
+                    _service?.OnComponentChanged(_colourButton, null, _colourButton.Values.ExtraText, value);
                     _colourButton.Values.ExtraText = value;
                 }
             }
@@ -163,15 +163,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <summary>
         /// Gets and sets the button image.
         /// </summary>
-        public Image Image
+        public Image? Image
         {
-            get => _colourButton.Values.Image;
+            get => _colourButton!.Values.Image;
 
             set
             {
-                if (_colourButton.Values.Image != value)
+                if (_colourButton!.Values.Image != value)
                 {
-                    _service.OnComponentChanged(_colourButton, null, _colourButton.Values.Image, value);
+                    _service?.OnComponentChanged(_colourButton, null, _colourButton.Values.Image, value);
                     _colourButton.Values.Image = value;
                 }
             }
@@ -182,13 +182,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         public PaletteMode PaletteMode
         {
-            get => _colourButton.PaletteMode;
+            get => _colourButton!.PaletteMode;
 
             set
             {
-                if (_colourButton.PaletteMode != value)
+                if (_colourButton!.PaletteMode != value)
                 {
-                    _service.OnComponentChanged(_colourButton, null, _colourButton.PaletteMode, value);
+                    _service?.OnComponentChanged(_colourButton, null, _colourButton.PaletteMode, value);
                     _colourButton.PaletteMode = value;
                 }
             }

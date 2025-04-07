@@ -61,40 +61,40 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         #endregion
 
         #region Private Constants
-        private const int DEFAULT_COLUMN_COUNT = 16;
-        private const int DEFAULT_ROW_COUNT = 25;
-        private const int COLUMN_COUNT = 16;
-        private const int BORDER_GAP = 2;
-        private const int INSET_GAP = 3;
-        private const int CELL_HEIGHT = 21;
-        private const int CELL_WIDTH = 25;
-        private const int CHAR_WIDTH = 8;
-        private const int ADDRESS_WIDTH = 69;
-        private const int HEX_WIDTH = 400;
-        private const int DUMP_WIDTH = 128;
-        private const int HEX_DUMP_GAP = 5;
-        private const int ADDRESS_START_X = 5;
-        private const int CLIENT_START_Y = 5;
-        private const int LINE_START_Y = 7;
-        private const int HEX_START_X = 74;
-        private const int DUMP_START_X = 479;
-        private const int SCROLLBAR_START_X = 612;
+        private const int DefaultColumnCount = 16;
+        private const int DefaultRowCount = 25;
+        private const int ColumnCount = 16;
+        private const int BorderGap = 2;
+        private const int InsetGap = 3;
+        private const int CellHeight = 21;
+        private const int CellWidth = 25;
+        private const int CharWidth = 8;
+        private const int AddressWidth = 69;
+        private const int HexWidth = 400;
+        private const int DumpWidth = 128;
+        private const int HexDumpGap = 5;
+        private const int AddressStartX = 5;
+        private const int ClientStartY = 5;
+        private const int LineStartY = 7;
+        private const int HexStartX = 74;
+        private const int DumpStartX = 479;
+        private const int ScrollbarStartX = 612;
         #endregion
 
         #region Static Fields
-        private static readonly Font ADDRESS_FONT = new("Microsoft Sans Serif", 8f);
-        private static readonly Font HEXDUMP_FONT = new("Consolas", 9.75f);
+        private static readonly Font _addressFont = new("Microsoft Sans Serif", 8f);
+        private static readonly Font _hexdumpFont = new("Consolas", 9.75f);
         #endregion
 
         #region Instance Fields
-        private readonly int SCROLLBAR_HEIGHT = SystemInformation.HorizontalScrollBarHeight;
-        private readonly int SCROLLBAR_WIDTH = SystemInformation.VerticalScrollBarWidth;
+        private readonly int _scrollbarHeight = SystemInformation.HorizontalScrollBarHeight;
+        private readonly int _scrollbarWidth = SystemInformation.VerticalScrollBarWidth;
 
-        private VScrollBarEx _scrollBar;
+        private VScrollBarEx? _scrollBar;
         private TextBox _edit;
         private readonly int _columnCount = 16;
         private int _rowCount = 25;
-        private byte[] _dataBuf;
+        private byte[]? _dataBuf;
         private int _startLine;
         private int _displayLinesCount;
         private int _linesCount;
@@ -109,11 +109,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         {
             SuspendLayout();
             CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
-            ColumnCount = 1;
+            base.ColumnCount = 1;
             ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
             RowCount = 1;
             RowStyles.Add(new RowStyle(SizeType.Percent, 100f));
-            InitUI();
+            InitUi();
             ResumeLayout();
             _displayMode = DisplayMode.Hexdump;
             DoubleBuffered = true;
@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         private byte[] ComposeLineBuffer(int startLine, int line)
         {
             int num = startLine * _columnCount;
-            byte[] array = num + (line + 1) * _columnCount <= _dataBuf.Length ? new byte[_columnCount] : new byte[_dataBuf.Length % _columnCount];
+            byte[] array = _dataBuf != null && num + (line + 1) * _columnCount <= _dataBuf.Length ? new byte[_columnCount] : new byte[_dataBuf!.Length % _columnCount];
             for (int i = 0; i < array.Length; i++)
             {
                 array[i] = _dataBuf[num + CellToIndex(i, line)];
@@ -146,11 +146,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             Brush brush = new SolidBrush(ForeColor);
             try
             {
-                g.DrawString(s, ADDRESS_FONT, brush, 5f, 7 + line * 21);
+                g.DrawString(s, _addressFont, brush, 5f, 7 + line * 21);
             }
             finally
             {
-                brush?.Dispose();
+                brush.Dispose();
             }
         }
 
@@ -191,11 +191,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             Brush brush = new SolidBrush(ForeColor);
             try
             {
-                g.DrawString(stringBuilder.ToString(), HEXDUMP_FONT, brush, 479f, 7 + line * 21);
+                g.DrawString(stringBuilder.ToString(), _hexdumpFont, brush, 479f, 7 + line * 21);
             }
             finally
             {
-                brush?.Dispose();
+                brush.Dispose();
             }
         }
 
@@ -215,11 +215,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             Brush brush = new SolidBrush(ForeColor);
             try
             {
-                g.DrawString(stringBuilder.ToString(), HEXDUMP_FONT, brush, 76f, 7 + line * 21);
+                g.DrawString(stringBuilder.ToString(), _hexdumpFont, brush, 76f, 7 + line * 21);
             }
             finally
             {
-                brush?.Dispose();
+                brush.Dispose();
             }
         }
 
@@ -236,18 +236,21 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         private void InitAnsi()
         {
-            int num = _dataBuf.Length;
-            char[] array = new char[num + 1];
-            num = MultiByteToWideChar(0, 0, _dataBuf, num, array, num);
-            array[num] = '\0';
-            for (int i = 0; i < num; i++)
+            if (_dataBuf != null)
             {
-                if (array[i] == '\0')
+                int num = _dataBuf.Length;
+                char[] array = new char[num + 1];
+                num = MultiByteToWideChar(0, 0, _dataBuf, num, array, num);
+                array[num] = '\0';
+                for (int i = 0; i < num; i++)
                 {
-                    array[i] = '\v';
+                    if (array[i] == '\0')
+                    {
+                        array[i] = '\v';
+                    }
                 }
+                _edit.Text = new string(array);
             }
-            _edit.Text = new string(array);
         }
 
         [DllImport(@"kernel32.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
@@ -257,22 +260,25 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         private void InitUnicode()
         {
-            char[] array = new char[_dataBuf.Length / 2 + 1];
-            Encoding.Unicode.GetChars(_dataBuf, 0, _dataBuf.Length, array, 0);
-            for (int i = 0; i < array.Length; i++)
+            if (_dataBuf != null)
             {
-                if (array[i] == '\0')
+                char[] array = new char[_dataBuf.Length / 2 + 1];
+                Encoding.Unicode.GetChars(_dataBuf, 0, _dataBuf.Length, array, 0);
+                for (int i = 0; i < array.Length; i++)
                 {
-                    array[i] = '\v';
+                    if (array[i] == '\0')
+                    {
+                        array[i] = '\v';
+                    }
                 }
+                array[array.Length - 1] = '\0';
+                _edit.Text = new string(array);
             }
-            array[array.Length - 1] = '\0';
-            _edit.Text = new string(array);
         }
 
-        private void InitUI()
+        private void InitUi()
         {
-            Size = new Size(612 + SCROLLBAR_WIDTH + 2 + 3, 10 + _rowCount * 21);
+            Size = new Size(612 + _scrollbarWidth + 2 + 3, 10 + _rowCount * 21);
             _scrollBar = new VScrollBarEx();
             _scrollBar.ValueChanged += ScrollChanged;
             _scrollBar.TabStop = false;
@@ -291,7 +297,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 Margin = Padding.Empty,
                 WordWrap = true,
                 Visible = false,
-                Font = HEXDUMP_FONT
+                Font = _hexdumpFont
             };
             Controls.Add(_scrollBar, 0, 0);
             Controls.Add(_edit, 0, 0);
@@ -299,25 +305,35 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         private void InitState()
         {
-            _linesCount = (_dataBuf.Length + _columnCount - 1) / _columnCount;
+            if (_dataBuf != null)
+            {
+                _linesCount = (_dataBuf.Length + _columnCount - 1) / _columnCount;
+            }
+
             _startLine = 0;
             if (_linesCount > _rowCount)
             {
                 _displayLinesCount = _rowCount;
-                _scrollBar.Hide();
-                _scrollBar.Maximum = _linesCount - 1;
-                _scrollBar.LargeChange = _rowCount;
-                _scrollBar.Show();
-                _scrollBar.Enabled = true;
+                _scrollBar?.Hide();
+                if (_scrollBar != null)
+                {
+                    _scrollBar.Maximum = _linesCount - 1;
+                    _scrollBar.LargeChange = _rowCount;
+                    _scrollBar.Show();
+                    _scrollBar.Enabled = true;
+                }
             }
             else
             {
                 _displayLinesCount = _linesCount;
-                _scrollBar.Hide();
-                _scrollBar.Maximum = _rowCount;
-                _scrollBar.LargeChange = _rowCount;
-                _scrollBar.Show();
-                _scrollBar.Enabled = false;
+                if (_scrollBar != null)
+                {
+                    _scrollBar.Hide();
+                    _scrollBar.Maximum = _rowCount;
+                    _scrollBar.LargeChange = _rowCount;
+                    _scrollBar.Show();
+                    _scrollBar.Enabled = false;
+                }
             }
             //            scrollBar.Select();
             // Select the panel instead so we can forward its Key and Mousewheel events
@@ -339,7 +355,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         protected override void OnKeyDown(KeyEventArgs e)
         {
             //         scrollBar.Select();
-            if (_scrollBar.Enabled)
+            if (_scrollBar != null && _scrollBar.Enabled)
             {
                 _scrollBar._OnKeyDown(e);
             }
@@ -354,7 +370,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         protected override void OnMouseWheel(MouseEventArgs e)
         {
             base.OnMouseWheel(e);
-            if (_scrollBar.Enabled)
+            if (_scrollBar != null && _scrollBar.Enabled)
             {
                 _scrollBar._OnMouseWheel(e);
             }
@@ -395,7 +411,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 case DisplayMode.Hexdump:
                     SuspendLayout();
                     _edit.Hide();
-                    _scrollBar.Show();
+                    _scrollBar?.Show();
                     ResumeLayout();
                     DrawClient(graphics);
                     DrawLines(graphics, _startLine, _displayLinesCount);
@@ -420,7 +436,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 _rowCount = num;
                 if (Dock == DockStyle.None)
                 {
-                    Size = new Size(612 + SCROLLBAR_WIDTH + 2 + 3, 10 + _rowCount * 21);
+                    Size = new Size(612 + _scrollbarWidth + 2 + 3, 10 + _rowCount * 21);
                 }
                 if (_scrollBar != null)
                 {
@@ -450,7 +466,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="e">A <see cref="T:System.EventArgs" /> that contains the event data. </param>
         protected virtual void ScrollChanged(object source, EventArgs e)
         {
-            _startLine = _scrollBar.Value;
+            if (_scrollBar != null)
+            {
+                _startLine = _scrollBar.Value;
+            }
+
             Invalidate();
         }
         #endregion
@@ -458,7 +478,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         #region Public Virtual
         /// <summary>Gets the bytes in the buffer.</summary>
         /// <returns>The unsigned byte array reference.</returns>
-        public virtual byte[] GetBytes()
+        public virtual byte[]? GetBytes()
         {
             return _dataBuf;
         }
@@ -507,7 +527,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             {
                 _dataBuf = null;
             }
-            _dataBuf = bytes ?? throw new ArgumentNullException("bytes");
+            _dataBuf = bytes ?? throw new ArgumentNullException(nameof(bytes));
             InitState();
             SetDisplayMode(_displayMode);
         }
@@ -519,7 +539,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         {
             if (!IsEnumValid(mode, (int)mode, 1, 4))
             {
-                throw new InvalidEnumArgumentException("mode", (int)mode, typeof(DisplayMode));
+                throw new InvalidEnumArgumentException(nameof(mode), (int)mode, typeof(DisplayMode));
             }
             _displayMode = mode;
             switch (_displayMode)
@@ -528,7 +548,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                     InitAnsi();
                     SuspendLayout();
                     _edit.Show();
-                    _scrollBar.Hide();
+                    _scrollBar?.Hide();
                     ResumeLayout();
                     Invalidate();
                     break;
@@ -536,7 +556,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                     InitUnicode();
                     SuspendLayout();
                     _edit.Show();
-                    _scrollBar.Hide();
+                    _scrollBar?.Hide();
                     ResumeLayout();
                     Invalidate();
                     break;
@@ -547,7 +567,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                     _edit.Hide();
                     if (_linesCount > _rowCount)
                     {
-                        if (!_scrollBar.Visible)
+                        if (_scrollBar != null && !_scrollBar.Visible)
                         {
                             _scrollBar.Show();
                             ResumeLayout();
@@ -601,7 +621,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <param name="line">The current line to display from. </param>
         public virtual void SetStartLine(int line)
         {
-            if (line < 0 || line >= _linesCount || line > _dataBuf.Length / _columnCount)
+            if (_dataBuf != null && (line < 0 || line >= _linesCount || line > _dataBuf.Length / _columnCount))
             {
                 _startLine = 0;
             }

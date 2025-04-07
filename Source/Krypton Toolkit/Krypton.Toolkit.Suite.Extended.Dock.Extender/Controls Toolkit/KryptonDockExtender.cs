@@ -23,7 +23,7 @@
         /// <param name="container"></param>
         public void Show(Control container)
         {
-            IFloatable f = _floaties.FindFloatables(container);
+            IFloatable? f = _floaties.FindFloatables(container);
             if (f != null)
             {
                 f.Show();
@@ -37,7 +37,7 @@
         /// <param name="container"></param>
         public void Hide(Control container)
         {
-            IFloatable f = _floaties.FindFloatables(container);
+            IFloatable? f = _floaties.FindFloatables(container);
             if (f != null)
             {
                 f.Hide();
@@ -74,7 +74,7 @@
         /// <param name="container">control to be dockable</param>
         /// <param name="handle">handle to be used to track the mouse movement (e.g. caption of the container)</param>
         /// <param name="splitter">splitter to resize the docked container (optional)</param>
-        public IFloatable Attach(ScrollableControl? container, Control? handle, KryptonSeparator splitter)
+        public IFloatable Attach(ScrollableControl? container, Control? handle, KryptonSeparator? splitter)
         {
             if (container == null)
             {
@@ -112,9 +112,10 @@
                 return c;
             }
 
-            foreach (KryptonFloatableForm f in Floaties)
+            foreach (var floatable in Floaties)
             {
-                if (f.DockState.Container.Visible && FormIsHit(f.DockState.Container, pt))
+                var f = (KryptonFloatableForm)floatable;
+                if (f.DockState.Container != null && f.DockState.Container.Visible && FormIsHit(f.DockState.Container, pt))
                 {
                     // add this line to dissallow docking inside floaties
                     //if (f.Visible) continue;

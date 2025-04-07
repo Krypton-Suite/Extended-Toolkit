@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private Rectangle _dropDownRectangle = new();
 
-        private string _processPath;
+        private string? _processPath;
         #endregion
 
         #region Readonly
@@ -47,7 +47,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Properties
-        public bool ShowSplitOption
+
+        /// <summary>Gets or sets a value indicating whether [show split option].</summary>
+        [DefaultValue(true)]
+        public new bool ShowSplitOption
         {
             get => _showSplitOption;
 
@@ -68,8 +71,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         }
 
         /// <summary>Gets or sets a value indicating whether [use uac elevation].</summary>
-        /// <value>
-        ///   <c>true</c> if [use uac elevation]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if [use uac elevation]; otherwise, <c>false</c>.</value>
+        [DefaultValue(false)]
         public bool UseUACElevation
         {
             get => _useUACElevation;
@@ -82,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                     if (_useUACElevation)
                     {
-                        Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                        Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize)?.ToBitmap();
                     }
                     else
                     {
@@ -92,14 +95,16 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
         }
 
-        public string ProcessPath { get => _processPath; set => _processPath = value; }
+        /// <summary>Gets or sets the process path.</summary>
+        [DefaultValue(null)]
+        public string? ProcessPath { get => _processPath; set => _processPath = value; }
         #endregion
 
         #region Events
         /// <summary></summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-        public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
+        public delegate void ExecuteProcessAsAdministratorEventHandler(object? sender, ExecuteProcessAsAdministratorEventArgs e);
 
         /// <summary>The execute process as administrator</summary>
         public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
@@ -107,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>Executes the process as an administrator.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
-        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
+        protected virtual void OnExecuteProcessAsAdministrator(object? sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
         #endregion
 
         #region Constructor
@@ -119,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             ShowSplitOption = true;
 
             // Default size
-            Size = new(90, 25);
+            Size = new Size(90, 25);
         }
         #endregion
 
@@ -191,7 +196,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             base.OnPaint(e);
 
@@ -200,25 +205,25 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 return;
             }
 
-            Graphics g = e.Graphics;
+            Graphics? g = e?.Graphics;
 
             Rectangle bounds = ClientRectangle;
 
-            _dropDownRectangle = new(bounds.Right - PUSH_BUTTON_WIDTH - 1, BORDER_SIZE, PUSH_BUTTON_WIDTH, bounds.Height - BORDER_SIZE * 2);
+            _dropDownRectangle = new Rectangle(bounds.Right - PUSH_BUTTON_WIDTH - 1, BORDER_SIZE, PUSH_BUTTON_WIDTH, bounds.Height - BORDER_SIZE * 2);
 
             int internalBorder = BORDER_SIZE;
 
             Rectangle focusRectangle = new(internalBorder, internalBorder, bounds.Width - _dropDownRectangle.Width - internalBorder, bounds.Height - internalBorder * 2);
 
-            PaletteBase palette = KryptonManager.CurrentGlobalPalette;
+            PaletteBase? palette = KryptonManager.CurrentGlobalPalette;
 
             Pen shadow = SystemPens.ButtonShadow, face = SystemPens.ButtonFace;
 
             if (palette != null)
             {
-                shadow = new(palette.ColorTable.GripDark);
+                shadow = new Pen(palette.ColorTable.GripDark);
 
-                face = new(palette.ColorTable.GripLight);
+                face = new Pen(palette.ColorTable.GripLight);
             }
 
             if (RightToLeft == RightToLeft.Yes)
@@ -227,16 +232,16 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                 focusRectangle.X = _dropDownRectangle.Right;
 
-                g.DrawLine(shadow, bounds.Left + PUSH_BUTTON_WIDTH, BORDER_SIZE, bounds.Left + PUSH_BUTTON_WIDTH, bounds.Bottom - BORDER_SIZE);
+                g?.DrawLine(shadow, bounds.Left + PUSH_BUTTON_WIDTH, BORDER_SIZE, bounds.Left + PUSH_BUTTON_WIDTH, bounds.Bottom - BORDER_SIZE);
 
-                g.DrawLine(face, bounds.Left + PUSH_BUTTON_WIDTH + 1, BORDER_SIZE, bounds.Left + PUSH_BUTTON_WIDTH + 1, bounds.Bottom - BORDER_SIZE);
+                g?.DrawLine(face, bounds.Left + PUSH_BUTTON_WIDTH + 1, BORDER_SIZE, bounds.Left + PUSH_BUTTON_WIDTH + 1, bounds.Bottom - BORDER_SIZE);
             }
             else
             {
                 // draw two lines at the edge of the dropdown button 
-                g.DrawLine(shadow, bounds.Right - PUSH_BUTTON_WIDTH, BORDER_SIZE, bounds.Right - PUSH_BUTTON_WIDTH, bounds.Bottom - BORDER_SIZE);
+                g?.DrawLine(shadow, bounds.Right - PUSH_BUTTON_WIDTH, BORDER_SIZE, bounds.Right - PUSH_BUTTON_WIDTH, bounds.Bottom - BORDER_SIZE);
 
-                g.DrawLine(face, bounds.Right - PUSH_BUTTON_WIDTH - 1, BORDER_SIZE, bounds.Right - PUSH_BUTTON_WIDTH - 1, bounds.Bottom - BORDER_SIZE);
+                g?.DrawLine(face, bounds.Right - PUSH_BUTTON_WIDTH - 1, BORDER_SIZE, bounds.Right - PUSH_BUTTON_WIDTH - 1, bounds.Bottom - BORDER_SIZE);
             }
 
             // Draw an arrow in the correct location 
@@ -257,7 +262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Methods
-        private static void PaintArrow(Graphics graphics, Rectangle rectangle)
+        private static void PaintArrow(Graphics? graphics, Rectangle rectangle)
         {
             Point midPoint = new(Convert.ToInt32(rectangle.Left + rectangle.Width / 2), Convert.ToInt32(rectangle.Top + rectangle.Height / 2));
 
@@ -266,7 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             Point[] arrow = [new(midPoint.X - 2, midPoint.Y - 1), new(midPoint.X + 3, midPoint.Y - 1), new(midPoint.X, midPoint.Y + 2)
             ];
 
-            graphics.FillPolygon(SystemBrushes.ControlText, arrow);
+            graphics?.FillPolygon(SystemBrushes.ControlText, arrow);
         }
 
         private void ShowContextMenuStrip()
@@ -282,7 +287,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             if (KryptonContextMenu != null)
             {
-                KryptonContextMenu.Show(FindForm().PointToScreen(Location) + new Size(0, Height));
+                KryptonContextMenu.Show(FindForm()!.PointToScreen(Location) + new Size(0, Height));
 
                 KryptonContextMenu.Closed += KryptonContextMenu_Closed;
             }
@@ -290,16 +295,15 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 ContextMenuStrip.Closing += ContextMenuStrip_Closing;
 
-                ContextMenuStrip.Show(this, new(0, Height), ToolStripDropDownDirection.BelowRight);
+                ContextMenuStrip.Show(this, new Point(0, Height), ToolStripDropDownDirection.BelowRight);
             }
         }
         #endregion
 
         #region Event Handlers
-        private void KryptonContextMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+        private void KryptonContextMenu_Closed(object? sender, ToolStripDropDownClosedEventArgs e)
         {
-            KryptonContextMenu kcm = sender as KryptonContextMenu;
-            if (kcm != null)
+            if (sender is KryptonContextMenu kcm)
             {
                 kcm.Closed -= KryptonContextMenu_Closed;
             }
@@ -310,10 +314,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             //} 
         }
 
-        private void ContextMenuStrip_Closing(object sender, ToolStripDropDownClosingEventArgs e)
+        private void ContextMenuStrip_Closing(object? sender, ToolStripDropDownClosingEventArgs e)
         {
-            ContextMenuStrip cms = sender as ContextMenuStrip;
-            if (cms != null)
+            if (sender is ContextMenuStrip cms)
             {
                 cms.Closing -= ContextMenuStrip_Closing;
             }

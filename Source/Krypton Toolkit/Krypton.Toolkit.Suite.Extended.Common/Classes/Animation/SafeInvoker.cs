@@ -34,10 +34,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     /// </summary>
     public class SafeInvoker
     {
-        private MethodInfo _invokeMethod;
+        private MethodInfo? _invokeMethod;
 
-        private PropertyInfo _invokeRequiredProperty;
-        private object _targetControl;
+        private PropertyInfo? _invokeRequiredProperty;
+        private object? _targetControl;
 
         /// <summary>
         ///     Initializes a new instance of the SafeInvoker class.
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="targetControl">
         ///     The control to be used to invoke the callback in UI thread
         /// </param>
-        public SafeInvoker(Action action, object targetControl) : this((Delegate)action, targetControl)
+        public SafeInvoker(Action action, object? targetControl) : this((Delegate)action, targetControl)
         {
         }
 
@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="targetControl">
         ///     The control to be used to invoke the callback in UI thread
         /// </param>
-        protected SafeInvoker(Delegate action, object targetControl)
+        protected SafeInvoker(Delegate action, object? targetControl)
         {
             UnderlyingDelegate = action;
             if (targetControl != null)
@@ -83,14 +83,14 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     Gets or sets the reference to the control thats going to be used to invoke the callback in UI thread
         /// </summary>
-        protected object TargetControl
+        protected object? TargetControl
         {
             get => _targetControl;
             set
             {
-                _invokeRequiredProperty = value.GetType()
+                _invokeRequiredProperty = value?.GetType()
                     .GetProperty("InvokeRequired", BindingFlags.Instance | BindingFlags.Public);
-                _invokeMethod = value.GetType()
+                _invokeMethod = value?.GetType()
                     .GetMethod(
                         "Invoke",
                         BindingFlags.Instance | BindingFlags.Public,
@@ -113,16 +113,13 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     Invoke the contained callback
         /// </summary>
-        public virtual void Invoke()
-        {
-            Invoke(null);
-        }
+        public virtual void Invoke() => Invoke(null);
 
         /// <summary>
         ///     Invoke the referenced callback
         /// </summary>
         /// <param name="value">The argument to send to the callback</param>
-        protected void Invoke(object value)
+        protected void Invoke(object? value)
         {
             try
             {
@@ -131,9 +128,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     {
                         try
                         {
-                            if (TargetControl != null && (bool)_invokeRequiredProperty.GetValue(TargetControl, null))
+                            if (TargetControl != null && (bool)_invokeRequiredProperty?.GetValue(TargetControl, null)!)
                             {
-                                _invokeMethod.Invoke(
+                                _invokeMethod?.Invoke(
                                     TargetControl,
                                     [
                                         new Action(

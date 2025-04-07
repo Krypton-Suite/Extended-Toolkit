@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         private bool _useAsUACElevatedButton;
         private Image _originalImage;
         private Size _uacShieldSize;
-        private string _processToElevate;
+        private string? _processToElevate;
         #endregion
 
         #region Properties
@@ -65,6 +65,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
         }
 
+        /// <summary>Gets or sets the original image.</summary>
+        [Category("Command Link"), Description("Gets or sets the original image of the command link."), DefaultValue(null)]
         public Image OriginalImage { get => _originalImage; private set => _originalImage = value; }
 
         /// <summary>Gets or sets the size of the UAC shield.</summary>
@@ -99,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>Gets or sets the process path to elevate.</summary>
         /// <value>The process to elevate.</value>
         [Category("Command Link"), Description("Gets or sets the process path to elevate."), DefaultValue("")]
-        public string ProcessToElevate { get => _processToElevate; set => _processToElevate = value; }
+        public string? ProcessToElevate { get => _processToElevate; set => _processToElevate = value; }
         #endregion
 
         #region Custom Events
@@ -182,7 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             base.OnClick(e);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             base.OnPaint(e);
         }

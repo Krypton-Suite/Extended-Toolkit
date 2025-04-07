@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             float endZ,
             ulong duration,
             ulong delay,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
             : this(
                 new AnimationPath(startX, endX, duration, delay, function),
                 new AnimationPath(startY, endY, duration, delay, function),
@@ -168,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             float startZ,
             float endZ,
             ulong duration,
-            AnimationFunctions.Function function)
+            AnimationFunctions.Function? function)
             : this(
                 new AnimationPath(startX, endX, duration, function),
                 new AnimationPath(startY, endY, duration, function),
@@ -236,7 +236,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <exception cref="ArgumentOutOfRangeException">
         ///     Duration is less than zero
         /// </exception>
-        public Path3D(Float3D start, Float3D end, ulong duration, ulong delay, AnimationFunctions.Function function)
+        public Path3D(Float3D start, Float3D end, ulong duration, ulong delay, AnimationFunctions.Function? function)
             : this(
                 new AnimationPath(start.X, end.X, duration, delay, function),
                 new AnimationPath(start.Y, end.Y, duration, delay, function),
@@ -288,7 +288,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <exception cref="ArgumentOutOfRangeException">
         ///     Duration is less than zero
         /// </exception>
-        public Path3D(Float3D start, Float3D end, ulong duration, AnimationFunctions.Function function)
+        public Path3D(Float3D start, Float3D end, ulong duration, AnimationFunctions.Function? function)
             : this(
                 new AnimationPath(start.X, end.X, duration, function),
                 new AnimationPath(start.Y, end.Y, duration, function),
@@ -331,7 +331,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="z">
         ///     The depth path.
         /// </param>
-        public Path3D(AnimationPath x, AnimationPath y, AnimationPath z)
+        public Path3D(AnimationPath? x, AnimationPath? y, AnimationPath? z)
         {
             HorizontalPath = x;
             VerticalPath = y;
@@ -341,17 +341,17 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     Gets the horizontal path
         /// </summary>
-        public AnimationPath HorizontalPath { get; }
+        public AnimationPath? HorizontalPath { get; }
 
         /// <summary>
         ///     Gets the vertical path
         /// </summary>
-        public AnimationPath VerticalPath { get; }
+        public AnimationPath? VerticalPath { get; }
 
         /// <summary>
         ///     Gets the depth path
         /// </summary>
-        public AnimationPath DepthPath { get; }
+        public AnimationPath? DepthPath { get; }
 
 
         /// <summary>

@@ -334,7 +334,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                                 if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
                                 {
-                                    _filePath = Path.GetFullPath(csfd.FileName);
+                                    _filePath = Path.GetFullPath(csfd.FileName!);
                                 }
                             }
                             break;

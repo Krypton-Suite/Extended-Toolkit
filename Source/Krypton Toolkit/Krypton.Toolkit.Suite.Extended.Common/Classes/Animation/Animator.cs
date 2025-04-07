@@ -26,10 +26,6 @@
  */
 #endregion
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
@@ -38,9 +34,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     public class Animator : IAnimator
     {
 
-        private readonly List<AnimationPath> _paths = [];
+        private readonly List<AnimationPath?> _paths = [];
 
-        private readonly List<AnimationPath> _tempPaths = [];
+        private readonly List<AnimationPath?>? _tempPaths = [];
 
         private readonly AnimationTimer _timer;
 
@@ -59,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     The target object to change the property of
         /// </summary>
-        protected object TargetObject;
+        protected object? TargetObject;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animator" /> class.
@@ -111,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="paths">
         ///     An array containing the list of paths of the animation
         /// </param>
-        public Animator(AnimationPath[] paths) : this(paths, FPSLimiterKnownValues.LimitThirty)
+        public Animator(AnimationPath?[] paths) : this(paths, FPSLimiterKnownValues.LimitThirty)
         {
         }
 
@@ -124,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="fpsLimiter">
         ///     Limits the maximum frames per seconds
         /// </param>
-        public Animator(AnimationPath[] paths, FPSLimiterKnownValues fpsLimiter)
+        public Animator(AnimationPath?[] paths, FPSLimiterKnownValues fpsLimiter)
         {
             CurrentStatus = AnimatorStatus.Stopped;
             _timer = new AnimationTimer(Elapsed, fpsLimiter);
@@ -135,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Gets or sets an array containing the list of paths of the animation
         /// </summary>
         /// <exception cref="InvalidOperationException">Animation is running</exception>
-        public AnimationPath[] Paths
+        public AnimationPath?[] Paths
         {
             get => _paths.ToArray();
             set
@@ -155,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     Gets the currently active path.
         /// </summary>
-        public AnimationPath ActivePath { get; private set; }
+        public AnimationPath? ActivePath { get; private set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether animator should repeat the animation after its ending
@@ -195,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="propertyName">
         ///     The name of the property to change
         /// </param>
-        public virtual void Play(object targetObject, string propertyName)
+        public virtual void Play(object? targetObject, string propertyName)
         {
             Play(targetObject, propertyName, null);
         }
@@ -212,10 +208,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="endCallback">
         ///     The callback to get invoked at the end of the animation
         /// </param>
-        public virtual void Play(object targetObject, string propertyName, SafeInvoker? endCallback)
+        public virtual void Play(object? targetObject, string propertyName, SafeInvoker? endCallback)
         {
             TargetObject = targetObject;
-            var prop = TargetObject.GetType()
+            var prop = TargetObject?.GetType()
                 .GetProperty(
                     propertyName,
                     BindingFlags.IgnoreCase | BindingFlags.Static | BindingFlags.Public | BindingFlags.Instance |
@@ -244,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <typeparam name="T">
         ///     Any object containing a property
         /// </typeparam>
-        public virtual void Play<T>(T targetObject, Expression<Func<T, object>>? propertySetter)
+        public virtual void Play<T>(T? targetObject, Expression<Func<T?, object>>? propertySetter)
         {
             Play(targetObject, propertySetter, null);
         }
@@ -265,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <typeparam name="T">
         ///     Any object containing a property
         /// </typeparam>
-        public virtual void Play<T>(T targetObject, Expression<Func<T, object>>? propertySetter, SafeInvoker? endCallback)
+        public virtual void Play<T>(T? targetObject, Expression<Func<T, object>>? propertySetter, SafeInvoker? endCallback)
         {
             if (propertySetter == null)
             {
@@ -306,10 +302,14 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public virtual void Stop()
         {
             _timer.Stop();
-            lock (_tempPaths)
+            if (_tempPaths != null)
             {
-                _tempPaths.Clear();
+                lock (_tempPaths)
+                {
+                    _tempPaths.Clear();
+                }
             }
+
             ActivePath = null;
             CurrentStatus = AnimatorStatus.Stopped;
             _tempReverseRepeat = false;
@@ -324,7 +324,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="property">
         ///     The property to change
         /// </param>
-        public virtual void Play(object targetObject, KnownProperties property)
+        public virtual void Play(object? targetObject, KnownProperties property)
         {
             Play(targetObject, property, null);
         }
@@ -342,7 +342,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="endCallback">
         ///     The callback to get invoked at the end of the animation
         /// </param>
-        public virtual void Play(object targetObject, KnownProperties property, SafeInvoker? endCallback)
+        public virtual void Play(object? targetObject, KnownProperties property, SafeInvoker? endCallback)
         {
             Play(targetObject, property.ToString(), endCallback);
         }
@@ -355,7 +355,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </param>
         public virtual void Play(SafeInvoker<float> frameCallback)
         {
-            Play(frameCallback, (SafeInvoker<float>)null);
+            Play(frameCallback, (SafeInvoker<float>)null!);
         }
 
 
@@ -374,10 +374,14 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             FrameCallback = frameCallback;
             EndCallback = endCallback;
             _timer.ResetClock();
-            lock (_tempPaths)
+            if (_tempPaths != null)
             {
-                _tempPaths.AddRange(_paths);
+                lock (_tempPaths)
+                {
+                    _tempPaths.AddRange(_paths);
+                }
             }
+
             _timer.Start();
         }
 
@@ -385,83 +389,110 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         {
             while (true)
             {
-                lock (_tempPaths)
-                {
-                    if (_tempPaths != null && ActivePath == null && _tempPaths.Count > 0)
-                    {
-                        while (ActivePath == null)
-                        {
-                            if (_tempReverseRepeat)
-                            {
-                                ActivePath = _tempPaths.LastOrDefault();
-                                _tempPaths.RemoveAt(_tempPaths.Count - 1);
-                            }
-                            else
-                            {
-                                ActivePath = _tempPaths.FirstOrDefault();
-                                _tempPaths.RemoveAt(0);
-                            }
-                            _timer.ResetClock();
-                            millSinceBeginning = 0;
-                        }
-                    }
-                    var ended = ActivePath == null;
-                    if (ActivePath != null)
-                    {
-                        if (!_tempReverseRepeat && millSinceBeginning < ActivePath.Delay)
-                        {
-                            CurrentStatus = AnimatorStatus.OnHold;
-                            return;
-                        }
-                        if (millSinceBeginning - (!_tempReverseRepeat ? ActivePath.Delay : 0) <= ActivePath.Duration)
-                        {
-                            if (CurrentStatus != AnimatorStatus.Playing)
-                            {
-                                CurrentStatus = AnimatorStatus.Playing;
-                            }
-                            var value = ActivePath.Function(_tempReverseRepeat ? ActivePath.Duration - millSinceBeginning : millSinceBeginning - ActivePath.Delay, ActivePath.Start, ActivePath.Change, ActivePath.Duration);
-                            FrameCallback.Invoke(value);
-                            return;
-                        }
-                        if (CurrentStatus == AnimatorStatus.Playing)
-                        {
-                            if (_tempPaths.Count == 0)
-                            {
-                                // For the last path, we make sure that control is in end point
-                                FrameCallback.Invoke(_tempReverseRepeat ? ActivePath.Start : ActivePath.End);
-                                ended = true;
-                            }
-                            else
-                            {
-                                if ((_tempReverseRepeat && ActivePath.Delay > 0) || !_tempReverseRepeat && _tempPaths.FirstOrDefault()?.Delay > 0)
-                                {
-                                    // Or if the next path or this one in revese order has a delay
-                                    FrameCallback.Invoke(_tempReverseRepeat ? ActivePath.Start : ActivePath.End);
-                                }
-                            }
-                        }
-                        if (_tempReverseRepeat && millSinceBeginning - ActivePath.Duration < ActivePath.Delay)
-                        {
-                            CurrentStatus = AnimatorStatus.OnHold;
-                            return;
-                        }
-                        ActivePath = null;
-                    }
-                    if (!ended)
-                    {
-                        return;
-                    }
-                }
-                if (Repeat)
+                if (_tempPaths != null)
                 {
                     lock (_tempPaths)
                     {
-                        _tempPaths.AddRange(_paths);
-                        _tempReverseRepeat = ReverseRepeat && !_tempReverseRepeat;
+                        if (_tempPaths != null && ActivePath == null && _tempPaths.Count > 0)
+                        {
+                            while (ActivePath == null)
+                            {
+                                if (_tempReverseRepeat)
+                                {
+                                    ActivePath = _tempPaths.LastOrDefault();
+                                    _tempPaths.RemoveAt(_tempPaths.Count - 1);
+                                }
+                                else
+                                {
+                                    ActivePath = _tempPaths.FirstOrDefault();
+                                    _tempPaths.RemoveAt(0);
+                                }
+
+                                _timer.ResetClock();
+                                millSinceBeginning = 0;
+                            }
+                        }
+
+                        var ended = ActivePath == null;
+                        if (ActivePath != null)
+                        {
+                            if (!_tempReverseRepeat && millSinceBeginning < ActivePath.Delay)
+                            {
+                                CurrentStatus = AnimatorStatus.OnHold;
+                                return;
+                            }
+
+                            if (millSinceBeginning - (!_tempReverseRepeat ? ActivePath.Delay : 0) <=
+                                ActivePath.Duration)
+                            {
+                                if (CurrentStatus != AnimatorStatus.Playing)
+                                {
+                                    CurrentStatus = AnimatorStatus.Playing;
+                                }
+
+                                if (ActivePath.Function != null)
+                                {
+                                    var value = ActivePath.Function(
+                                        _tempReverseRepeat
+                                            ? ActivePath.Duration - millSinceBeginning
+                                            : millSinceBeginning - ActivePath.Delay, ActivePath.Start, ActivePath.Change,
+                                        ActivePath.Duration);
+                                    FrameCallback.Invoke(value);
+                                }
+
+                                return;
+                            }
+
+                            if (CurrentStatus == AnimatorStatus.Playing)
+                            {
+                                if (_tempPaths != null && _tempPaths.Count == 0)
+                                {
+                                    // For the last path, we make sure that control is in end point
+                                    FrameCallback.Invoke(_tempReverseRepeat ? ActivePath.Start : ActivePath.End);
+                                    ended = true;
+                                }
+                                else
+                                {
+                                    if (_tempPaths != null && ((_tempReverseRepeat && ActivePath.Delay > 0) ||
+                                                               !_tempReverseRepeat && _tempPaths.FirstOrDefault()?.Delay > 0))
+                                    {
+                                        // Or if the next path or this one in revese order has a delay
+                                        FrameCallback.Invoke(_tempReverseRepeat ? ActivePath.Start : ActivePath.End);
+                                    }
+                                }
+                            }
+
+                            if (_tempReverseRepeat && millSinceBeginning - ActivePath.Duration < ActivePath.Delay)
+                            {
+                                CurrentStatus = AnimatorStatus.OnHold;
+                                return;
+                            }
+
+                            ActivePath = null;
+                        }
+
+                        if (!ended)
+                        {
+                            return;
+                        }
                     }
-                    millSinceBeginning = 0;
-                    continue;
+
+                    if (Repeat)
+                    {
+                        if (_tempPaths != null)
+                        {
+                            lock (_tempPaths)
+                            {
+                                _tempPaths.AddRange(_paths);
+                                _tempReverseRepeat = ReverseRepeat && !_tempReverseRepeat;
+                            }
+                        }
+
+                        millSinceBeginning = 0;
+                        continue;
+                    }
                 }
+
                 Stop();
                 EndCallback?.Invoke();
                 break;

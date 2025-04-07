@@ -49,10 +49,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         private readonly PaletteTripleOverride _overrideNormal;
         private readonly PaletteTripleOverride _overrideTracking;
         private readonly PaletteTripleOverride _overridePressed;
-        private IKryptonCommand _command;
+        private IKryptonCommand? _command;
         private bool _isDefault, _useMnemonic, _wasEnabled, _useAsUACElevatedButton;
-        private string _processToElevate;
-        private Image _originalImage;
+        private string? _processToElevate;
+        private Image? _originalImage;
         private Size _uacShieldSize;
         #endregion
 
@@ -201,11 +201,17 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         [Localizable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override string Text
+        public override string? Text
         {
-            get => CommandLinkTextValues.Heading;
+            get => CommandLinkTextValues?.Heading;
 
-            set => CommandLinkTextValues.Heading = value;
+            set
+            {
+                if (CommandLinkTextValues != null)
+                {
+                    CommandLinkTextValues.Heading = value;
+                }
+            }
         }
 
         private bool ShouldSerializeText()
@@ -219,7 +225,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// </summary>
         public override void ResetText()
         {
-            CommandLinkTextValues.ResetText();
+            CommandLinkTextValues?.ResetText();
         }
 
         /// <summary>
@@ -282,7 +288,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         [Category("CommandLink")]
         [Description("CommandLink Button Text")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public CommandLinkTextValues CommandLinkTextValues { get; }
+        public CommandLinkTextValues? CommandLinkTextValues { get; }
 
         /// <summary>
         /// Gets access to the button content.
@@ -402,7 +408,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         [Category("Behavior")]
         [Description("Command associated with the button.")]
         [DefaultValue(null)]
-        public virtual IKryptonCommand KryptonCommand
+        public virtual IKryptonCommand? KryptonCommand
         {
             get => _command;
 
@@ -512,13 +518,15 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new ImeMode ImeMode
         {
             get => base.ImeMode;
             set => base.ImeMode = value;
         }
 
-        public Image OriginalImage { get => _originalImage; private set => _originalImage = value; }
+        [DefaultValue(null)]
+        public Image? OriginalImage { get => _originalImage; private set => _originalImage = value; }
 
         /// <summary>Gets or sets a value indicating whether [use as uac elevated button].</summary>
         /// <value>
@@ -569,7 +577,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>Gets or sets the process path to elevate.</summary>
         /// <value>The process to elevate.</value>
         [Category("Command Link"), Description("Gets or sets the process path to elevate."), DefaultValue("")]
-        public string ProcessToElevate { get => _processToElevate; set => _processToElevate = value; }
+        public string? ProcessToElevate { get => _processToElevate; set => _processToElevate = value; }
         #endregion
 
         #region Protected Overrides
@@ -645,7 +653,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         protected override void OnClick(EventArgs e)
         {
             // Find the form this button is on
-            Form owner = FindForm();
+            Form? owner = FindForm();
 
             // If we find a valid owner
             if (owner != null)
@@ -691,7 +699,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             if (UseMnemonic && CanProcessMnemonic())
             {
                 // Does the button primary text contain the mnemonic?
-                if (IsMnemonic(charCode, CommandLinkTextValues.Heading))
+                if (IsMnemonic(charCode, CommandLinkTextValues?.Heading))
                 {
                     // Perform default action for a button, click it!
                     PerformClick();
@@ -711,7 +719,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             _buttonController.RemoveFixed();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs? e)
         {
             base.OnPaint(e);
         }
@@ -745,7 +753,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <param name="e">An EventArgs containing the event data.</param>
         protected virtual void OnKryptonCommandChanged(EventArgs e)
         {
-            KryptonCommandChanged?.Invoke(this, e);
+            KryptonCommandChanged.Invoke(this, e);
 
             // Use the values from the new command
             if (KryptonCommand != null)
@@ -762,12 +770,16 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// </summary>
         /// <param name="sender">Source of the event.</param>
         /// <param name="e">A PropertyChangedEventArgs that contains the event data.</param>
-        protected virtual void OnCommandPropertyChanged(object sender, PropertyChangedEventArgs e)
+        protected virtual void OnCommandPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
                 case "Enabled":
-                    Enabled = KryptonCommand.Enabled;
+                    if (KryptonCommand != null)
+                    {
+                        Enabled = KryptonCommand.Enabled;
+                    }
+
                     break;
                 case "Text":
                 case "ExtraText":
@@ -793,12 +805,12 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             return 1.0f; // Example value, replace with actual logic
         }
 
-        private void OnButtonTextChanged(object sender, EventArgs e)
+        private void OnButtonTextChanged(object? sender, EventArgs e)
         {
             OnTextChanged(EventArgs.Empty);
         }
 
-        private void OnButtonClick(object sender, MouseEventArgs e)
+        private void OnButtonClick(object? sender, MouseEventArgs e)
         {
             // Raise the standard click event
             OnClick(EventArgs.Empty);
@@ -807,7 +819,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             OnMouseClick(e);
         }
 
-        private void OnButtonSelect(object sender, MouseEventArgs e)
+        private void OnButtonSelect(object? sender, MouseEventArgs e)
         {
             // Take the focus if allowed
             if (CanFocus)

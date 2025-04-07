@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private bool _autoFit;
 
-        private Brush _cellBackgroundBrush;
+        private Brush? _cellBackgroundBrush;
 
         private Color _cellBorderColour;
 
@@ -101,11 +101,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private int _colorIndex;
 
-        private ColourCollection _colours;
+        private ColourCollection? _colours;
 
         private int _columns;
 
-        private ColourCollection _customColours;
+        private ColourCollection? _customColours;
 
         private ColourEditingMode _editMode;
 
@@ -125,7 +125,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private Size _spacing;
 
-        private ToolTip _toolTip;
+        private ToolTip? _toolTip;
 
         private int _updateCount;
 
@@ -379,7 +379,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
 
         [Category("Behavior")]
-        [DefaultValue(typeof(ContextMenuStrip), null)]
+        [DefaultValue(typeof(ContextMenuStrip), null!)]
         public ContextMenuStrip CellContextMenuStrip
         {
             get => _cellContextMenuStrip;
@@ -434,7 +434,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual ColourCollection Colours
+        public virtual ColourCollection? Colours
         {
             get => _colours;
             set
@@ -464,7 +464,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), value, "Number of columns cannot be less than zero.");
+                    throw new ArgumentOutOfRangeException(nameof(value), value, @"Number of columns cannot be less than zero.");
                 }
 
                 if (Columns != value)
@@ -482,7 +482,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual ColourCollection CustomColours
+        public virtual ColourCollection? CustomColours
         {
             get => _customColours;
             set
@@ -674,7 +674,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 if (AutoAddColours)
                 {
-                    CustomColours.Add(value);
+                    CustomColours?.Add(value);
                 }
                 else
                 {
@@ -734,7 +734,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </returns>
         public Rectangle GetCellBounds(int index)
         {
-            if (index < 0 || index > Colours.Count + CustomColours.Count - 1)
+            if (Colours != null && CustomColours != null && (index < 0 || index > Colours.Count + CustomColours.Count - 1))
             {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
@@ -757,7 +757,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else
             {
-                result = index > colorCount - 1 ? CustomColours[index - colorCount] : Colours[index];
+                result = index > colorCount - 1 ? CustomColours![index - colorCount] : Colours![index];
             }
 
             return result;
@@ -789,14 +789,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int index;
             ColourSource result;
 
-            index = Colours.IndexOf(colour);
+            index = Colours!.IndexOf(colour);
             if (index != InvalidIndex)
             {
                 result = ColourSource.Standard;
             }
             else
             {
-                index = CustomColours.IndexOf(colour);
+                index = CustomColours!.IndexOf(colour);
                 result = index != InvalidIndex ? ColourSource.Custom : ColourSource.None;
             }
 
@@ -825,7 +825,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             result.Index = colourIndex;
             if (colourIndex != InvalidIndex)
             {
-                result.Colour = colourIndex < Colours.Count + CustomColours.Count ? GetColour(colourIndex) : Color.White;
+                result.Colour = Colours != null && CustomColours != null && colourIndex < Colours.Count + CustomColours.Count ? GetColour(colourIndex) : Color.White;
                 result.Source = GetColourSource(colourIndex);
             }
             else
@@ -939,13 +939,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             type = typeof(ColourGridControl);
 
             using (Bitmap background = new(type.Assembly.GetManifestResourceStream(
-                       $"{type.Namespace}.Resources.cellbackground.png")))
+                       $"{type.Namespace}.Resources.cellbackground.png")!))
             {
                 return new TextureBrush(background, WrapMode.Tile);
             }
         }
 
-        protected void DefineColourRegions(ColourCollection colours, int rangeStart, int offset)
+        protected void DefineColourRegions(ColourCollection? colours, int rangeStart, int offset)
         {
             if (colours != null)
             {
@@ -1031,7 +1031,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 int lastStandardRowOffset;
 
-                lastStandardRowOffset = PrimaryRows * ActualColumns - Colours.Count;
+                lastStandardRowOffset = PrimaryRows * ActualColumns - Colours!.Count;
                 result = row * ActualColumns + column;
                 if (row == PrimaryRows - 1 && column >= ActualColumns - lastStandardRowOffset)
                 {
@@ -1042,7 +1042,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     result -= lastStandardRowOffset;
                 }
 
-                if (result > Colours.Count + CustomColours.Count - 1)
+                if (result > Colours.Count + CustomColours!.Count - 1)
                 {
                     result = InvalidIndex;
                 }
@@ -1067,7 +1067,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             int lastStandardRowOffset;
             int lastStandardRowLastColumn;
 
-            lastStandardRowOffset = PrimaryRows * ActualColumns - Colours.Count;
+            lastStandardRowOffset = PrimaryRows * ActualColumns - Colours!.Count;
             lastStandardRowLastColumn = ActualColumns - lastStandardRowOffset;
             column = cell.X + columnOffset;
             row = cell.Y + rowOffset;
@@ -1109,14 +1109,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 index = CustomColours.IndexOf(value);
                 if (index != InvalidIndex)
                 {
-                    index += Colours.Count;
+                    index += Colours!.Count;
                 }
             }
 
             return index;
         }
 
-        protected virtual ColourCollection GetPredefinedPalette()
+        protected virtual ColourCollection? GetPredefinedPalette()
         {
             return ColourPalettes.GetPalette(Palette);
         }
@@ -1321,7 +1321,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColorIndexChanged(EventArgs e)
         {
-            EventHandler handler = null;
+            EventHandler? handler;
 
             if (AllowPainting)
             {
@@ -1605,7 +1605,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 int colorCount;
 
-                colorCount = Colours.Count;
+                colorCount = Colours!.Count;
 
                 System.Diagnostics.Debug.Print(e.ClipRectangle.Size == ClientSize ? "Performing full paint!" : "Performing partial paint!");
 
@@ -1614,11 +1614,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 // draw a design time dotted grid
                 if (DesignMode)
                 {
-                    using (Pen pen = new(SystemColors.ButtonShadow)
+                    using (Pen pen = new Pen(SystemColors.ButtonShadow))
                     {
-                        DashStyle = DashStyle.Dot
-                    })
-                    {
+                        pen.DashStyle = DashStyle.Dot;
                         e.Graphics.DrawRectangle(pen, 0, 0, Width - 1, Height - 1);
                     }
                 }
@@ -1635,7 +1633,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     }
                 }
 
-                if (CustomColours.Count != 0 && ShowCustomColors)
+                if (CustomColours!.Count != 0 && ShowCustomColors)
                 {
                     // draw a separator
                     PaintSeparator(e);
@@ -1962,9 +1960,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             int colourCount;
 
-            colourCount = Colours.Count;
+            colourCount = Colours!.Count;
 
-            if (colourIndex < 0 || colourIndex > colourCount + CustomColours.Count)
+            if (colourIndex < 0 || colourIndex > colourCount + CustomColours!.Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(colourIndex));
             }
@@ -1979,7 +1977,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
         }
 
-        private void AddEventHandlers(ColourCollection value)
+        private void AddEventHandlers(ColourCollection? value)
         {
             if (value != null)
             {
@@ -2004,7 +2002,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             index = _colorIndex;
             if (index != InvalidIndex && ReferenceEquals(collection, CustomColours))
             {
-                index -= Colours.Count;
+                index -= Colours!.Count;
             }
 
             if (index >= 0 && index < collection.Count && collection[index] != Colour)
@@ -2029,7 +2027,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 row = -1;
                 column = -1;
             }
-            else if (index >= Colours.Count)
+            else if (index >= Colours!.Count)
             {
                 // custom color
                 index -= Colours.Count;
@@ -2047,7 +2045,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             return new(column, row);
         }
 
-        private void RemoveEventHandlers(ColourCollection value)
+        private void RemoveEventHandlers(ColourCollection? value)
         {
             if (value != null)
             {

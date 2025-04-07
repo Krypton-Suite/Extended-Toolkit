@@ -50,8 +50,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         public SaturationColourSliderControl()
         {
-            this.BarStyle = ColourBarStyle.TwoColour;
-            this.Colour = Color.Black;
+            BarStyle = ColourBarStyle.TwoColour;
+            Colour = Color.Black;
             BackColor = Color.Transparent;
         }
 
@@ -62,8 +62,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add => this.Events.AddHandler(_eventColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourChanged, value);
+            add => Events.AddHandler(_eventColourChanged, value);
+            remove => Events.RemoveHandler(_eventColourChanged, value);
         }
 
         #endregion
@@ -85,11 +85,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             get => _colour;
             set
             {
-                if (this.Colour != value)
+                if (Colour != value)
                 {
                     _colour = value;
 
-                    this.OnColorChanged(EventArgs.Empty);
+                    OnColorChanged(EventArgs.Empty);
                 }
             }
         }
@@ -150,13 +150,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         {
             HSLColour color;
 
-            color = new HSLColour(this.Colour);
+            color = new HSLColour(Colour);
 
             color.S = 0;
-            this.Colour1 = color.ToRgbColour();
+            Colour1 = color.ToRgbColour();
 
             color.S = 1;
-            this.Colour2 = color.ToRgbColour();
+            Colour2 = color.ToRgbColour();
         }
 
         /// <summary>
@@ -165,12 +165,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColorChanged(EventArgs e)
         {
-            EventHandler handler;
+            EventHandler? handler;
 
-            this.CreateScale();
-            this.Invalidate();
+            CreateScale();
+            Invalidate();
 
-            handler = (EventHandler)this.Events[_eventColourChanged];
+            handler = Events[_eventColourChanged] as EventHandler;
 
             handler?.Invoke(this, e);
         }
