@@ -38,11 +38,16 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         #endregion
 
         #region Properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public float FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public KryptonForm? WindowToFade { get => _windowToFade; set => _windowToFade = value; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public KryptonForm? ParentWindow { get => _parentWindow; set => _parentWindow = value; }
+
         #endregion
 
         #region Custom Events
@@ -72,7 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         public void FadeOutAndClose() => FadeController.FadeOutAndClose(_windowToFade, _fadeSpeed);
 
         /// <summary>Fades the dialog.</summary>
-        public void FadeDialog() => FadeController.ShowDialog(_windowToFade, _parentWindow, _fadeSpeed);
+        public async Task FadeDialogAsync() => await FadeController.ShowDialog(_windowToFade, _parentWindow, _fadeSpeed);
         #endregion
     }
 }
