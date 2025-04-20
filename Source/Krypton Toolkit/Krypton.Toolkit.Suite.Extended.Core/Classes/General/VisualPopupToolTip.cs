@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="renderer">Drawing renderer.</param>
         public VisualPopupToolTip(PaletteRedirect redirector,
                                   IContentValues contentValues,
-                                  IRenderer renderer)
+                                  IRenderer? renderer)
             : this(redirector, contentValues, renderer,
                    PaletteBackStyle.ControlToolTip,
                    PaletteBorderStyle.ControlToolTip,
@@ -68,11 +68,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="contentStyle">Style for the tooltip content.</param>
         public VisualPopupToolTip(PaletteRedirect redirector,
                                   IContentValues contentValues,
-                                  IRenderer renderer,
+                                  IRenderer? renderer,
                                   PaletteBackStyle backStyle,
                                   PaletteBorderStyle borderStyle,
                                   PaletteContentStyle contentStyle)
-            : base(renderer, true)
+            : base(renderer!, true)
         {
             System.Diagnostics.Debug.Assert(contentValues != null);
 
@@ -150,7 +150,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         // PlacementTarget or parent.
                         positionPlacementRectangle =
                             position.PlacementTarget?.ClientRectangle ?? target.ClientRectangle;
-                        positionPlacementRectangle = (position.PlacementTarget?.OwningControl ?? target.OwningControl).RectangleToScreen(positionPlacementRectangle);
+                        positionPlacementRectangle =
+                            ((position.PlacementTarget?.OwningControl ?? target.OwningControl)!).RectangleToScreen(
+                                positionPlacementRectangle);
                     }
                     else
                     {
@@ -160,57 +162,59 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
 
             // Get the size the popup would like to be
-            Size popupSize = ViewManager.GetPreferredSize(Renderer, Size.Empty);
-            Point popupLocation;
-
-            switch (position.PlacementMode)
+            if (ViewManager != null)
             {
-                case PlacementMode.Absolute:
-                case PlacementMode.AbsolutePoint:
-                case PlacementMode.MousePoint:
-                case PlacementMode.Relative:
-                case PlacementMode.RelativePoint:
-                    // The top-left corner of the target area.     The top-left corner of the Popup.
-                    popupLocation = positionPlacementRectangle.Location;
-                    if (positionPlacementRectangle.IntersectsWith(new(controlMousePosition, (Size)currentCursorHotSpot)))
-                    {
-                        // TODO: SKC: Should really get the HotSpot from the Icon and use that !
-                        popupLocation.X = controlMousePosition.X + 4; // Still might "Bounce back" due to offscreen location
-                    }
-                    break;
-                case PlacementMode.Bottom:
-                case PlacementMode.Mouse:
-                    // The bottom-left corner of the target area.     The top-left corner of the Popup.
-                    popupLocation = new(positionPlacementRectangle.Left, positionPlacementRectangle.Bottom);
-                    break;
-                case PlacementMode.Center:
-                    // The center of the target area.     The center of the Popup.
-                    popupLocation = positionPlacementRectangle.Location;
-                    popupLocation.Offset(popupSize.Width / 2, -popupSize.Height / 2);
-                    if (positionPlacementRectangle.IntersectsWith(new(controlMousePosition, (Size)currentCursorHotSpot)))
-                    {
-                        // TODO: SKC: Should really get the HotSpot from the Icon and use that !
-                        popupLocation.X = controlMousePosition.X + 4; // Still might "Bounce back" due to offscreen location
-                    }
-                    break;
-                case PlacementMode.Left:
-                    // The top-left corner of the target area.     The top-right corner of the Popup.
-                    popupLocation = new(positionPlacementRectangle.Left - popupSize.Width, positionPlacementRectangle.Top);
-                    break;
-                case PlacementMode.Right:
-                    // The top-right corner of the target area.     The top-left corner of the Popup.
-                    popupLocation = new(positionPlacementRectangle.Right, positionPlacementRectangle.Top);
-                    break;
-                case PlacementMode.Top:
-                    // The top-left corner of the target area.     The bottom-left corner of the Popup.
-                    popupLocation = new(positionPlacementRectangle.Left, positionPlacementRectangle.Top - popupSize.Height);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            // Show it now!
-            Show(popupLocation, popupSize);
+                Size popupSize = ViewManager.GetPreferredSize(Renderer, Size.Empty);
+                Point popupLocation;
 
+                switch (position.PlacementMode)
+                {
+                    case PlacementMode.Absolute:
+                    case PlacementMode.AbsolutePoint:
+                    case PlacementMode.MousePoint:
+                    case PlacementMode.Relative:
+                    case PlacementMode.RelativePoint:
+                        // The top-left corner of the target area.     The top-left corner of the Popup.
+                        popupLocation = positionPlacementRectangle.Location;
+                        if (positionPlacementRectangle.IntersectsWith(new(controlMousePosition, (Size)currentCursorHotSpot)))
+                        {
+                            // TODO: SKC: Should really get the HotSpot from the Icon and use that !
+                            popupLocation.X = controlMousePosition.X + 4; // Still might "Bounce back" due to offscreen location
+                        }
+                        break;
+                    case PlacementMode.Bottom:
+                    case PlacementMode.Mouse:
+                        // The bottom-left corner of the target area.     The top-left corner of the Popup.
+                        popupLocation = new(positionPlacementRectangle.Left, positionPlacementRectangle.Bottom);
+                        break;
+                    case PlacementMode.Center:
+                        // The center of the target area.     The center of the Popup.
+                        popupLocation = positionPlacementRectangle.Location;
+                        popupLocation.Offset(popupSize.Width / 2, -popupSize.Height / 2);
+                        if (positionPlacementRectangle.IntersectsWith(new(controlMousePosition, (Size)currentCursorHotSpot)))
+                        {
+                            // TODO: SKC: Should really get the HotSpot from the Icon and use that !
+                            popupLocation.X = controlMousePosition.X + 4; // Still might "Bounce back" due to offscreen location
+                        }
+                        break;
+                    case PlacementMode.Left:
+                        // The top-left corner of the target area.     The top-right corner of the Popup.
+                        popupLocation = new(positionPlacementRectangle.Left - popupSize.Width, positionPlacementRectangle.Top);
+                        break;
+                    case PlacementMode.Right:
+                        // The top-right corner of the target area.     The top-left corner of the Popup.
+                        popupLocation = new(positionPlacementRectangle.Right, positionPlacementRectangle.Top);
+                        break;
+                    case PlacementMode.Top:
+                        // The top-left corner of the target area.     The bottom-left corner of the Popup.
+                        popupLocation = new(positionPlacementRectangle.Left, positionPlacementRectangle.Top - popupSize.Height);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                // Show it now!
+                Show(popupLocation, popupSize);
+            }
         }
 
         /// <summary>
@@ -220,13 +224,16 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         public void ShowCalculatingSize(Point controlMousePosition)
         {
             // Get the size the popup would like to be
-            Size popupSize = ViewManager.GetPreferredSize(Renderer, Size.Empty);
+            if (ViewManager != null)
+            {
+                Size popupSize = ViewManager.GetPreferredSize(Renderer, Size.Empty);
 
-            // Find the screen position the popup will be relative to
-            Point currentCursorHotSpot = CommonHelper.CaptureCursor();
-            controlMousePosition.Offset(currentCursorHotSpot.X + 2, currentCursorHotSpot.Y + 2);
-            // Show it now!
-            Show(controlMousePosition, popupSize);
+                // Find the screen position the popup will be relative to
+                Point currentCursorHotSpot = CommonHelper.CaptureCursor();
+                controlMousePosition.Offset(currentCursorHotSpot.X + 2, currentCursorHotSpot.Y + 2);
+                // Show it now!
+                Show(controlMousePosition, popupSize);
+            }
         }
         #endregion
 

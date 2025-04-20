@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     {
         #region Static Field
-        private static MethodInfo _miPTB;
+        private static MethodInfo? _miPTB;
         #endregion
 
         #region Instance Fields
@@ -47,14 +47,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private bool _paintTransparent;
         private bool _evalTransparent;
         private bool _globalEvents;
-        private PaletteBase _localPalette;
-        private PaletteBase _palette;
+        private PaletteBase? _localPalette;
+        private PaletteBase? _palette;
         private PaletteMode _paletteMode;
         private readonly SimpleCall _refreshCall;
         private readonly SimpleCall _layoutCall;
-        private KryptonContextMenu _kryptonContextMenu;
-        protected VisualPopupToolTip _visualBasePopupToolTip;
-        private ToolTipManager _toolTipManager;
+        private KryptonContextMenu? _kryptonContextMenu;
+        protected VisualPopupToolTip? _visualBasePopupToolTip;
+        private readonly ToolTipManager _toolTipManager;
         #endregion
 
         #region Events
@@ -200,8 +200,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <returns>The <see cref="T:System.Windows.Forms.ContextMenuStrip" /> for this control, or <see langword="null" /> if there is no <see cref="T:System.Windows.Forms.ContextMenuStrip" />. The default is <see langword="null" />.</returns>
         [Category("Behavior")]
         [Description("Consider using KryptonContextMenu within the behaviors section.\nThe Winforms shortcut menu to show when the user right-clicks the page.\nNote: The ContextMenu will be rendered.")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [DefaultValue(null)]
-        public override ContextMenuStrip ContextMenuStrip
+        public override ContextMenuStrip? ContextMenuStrip
         {
             [DebuggerStepThrough]
             get => base.ContextMenuStrip;
@@ -228,12 +229,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
 
         /// <summary>
-        /// Gets and sets the KryptonContextMenu to show when right clicked.
+        /// Gets and sets the KryptonContextMenu to show when right-clicked.
         /// </summary>
         [Category("Behavior")]
         [Description("The KryptonContextMenu to show when the user right-clicks the Control.")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [DefaultValue(null)]
-        public virtual KryptonContextMenu KryptonContextMenu
+        public virtual KryptonContextMenu? KryptonContextMenu
         {
             get => _kryptonContextMenu;
 
@@ -293,8 +295,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         _layoutDirty = false;
 
                         // Ask the view to perform a layout
-                        ViewManager.Layout(Renderer);
-
+                        if (Renderer != null)
+                        {
+                            ViewManager.Layout(Renderer);
+                        }
                     } while (_layoutDirty && max-- > 0);
                 }
             }
@@ -359,7 +363,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Visuals")]
         [Description("Custom palette applied to drawing.")]
         [DefaultValue(null)]
-        public PaletteBase Palette
+        public PaletteBase? Palette
         {
             [DebuggerStepThrough]
             get => _localPalette;
@@ -370,7 +374,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 if (_localPalette != value)
                 {
                     // Remember the starting palette
-                    PaletteBase old = _localPalette;
+                    PaletteBase? old = _localPalette;
 
                     // Use the provided palette value
                     SetPalette(value);
@@ -419,7 +423,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IRenderer Renderer
+        public IRenderer? Renderer
         {
             [DebuggerStepThrough]
             get;
@@ -431,10 +435,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public ToolStripRenderer CreateToolStripRenderer()
-        {
-            return Renderer.RenderToolStrip(GetResolvedPalette());
-        }
+        public ToolStripRenderer? CreateToolStripRenderer() => Renderer?.RenderToolStrip(GetResolvedPalette()!);
 
         /// <summary>
         /// Gets or sets the background image displayed in the control.
@@ -442,7 +443,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Browsable(false)]
         [Bindable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override Image BackgroundImage
+        public override Image? BackgroundImage
         {
             get => base.BackgroundImage;
             set => base.BackgroundImage = value;
@@ -465,7 +466,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public ViewManager GetViewManager()
+        public ViewManager? GetViewManager()
         {
             return ViewManager;
         }
@@ -475,7 +476,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public PaletteBase GetResolvedPalette()
+        public PaletteBase? GetResolvedPalette()
         {
             return _palette;
         }
@@ -546,7 +547,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [EditorBrowsable(EditorBrowsableState.Never)]
         public void KryptonResetCounters()
         {
-            ViewManager.ResetCounters();
+            ViewManager?.ResetCounters();
         }
 
         /// <summary>
@@ -555,7 +556,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int KryptonLayoutCounter => ViewManager.LayoutCounter;
+        public int KryptonLayoutCounter => ViewManager!.LayoutCounter;
 
         /// <summary>
         /// Gets the number of paint cycles performed since last reset.
@@ -563,16 +564,16 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int KryptonPaintCounter => ViewManager.PaintCounter;
+        public int KryptonPaintCounter => ViewManager!.PaintCounter;
 
         /// <summary>
         /// Gets the view associated with the provided client location.
         /// </summary>
         /// <param name="pt">Point to lookup.</param>
         /// <returns>ViewBase associated with the point.</returns>
-        public ViewBase ViewFromPoint(Point pt)
+        public ViewBase? ViewFromPoint(Point pt)
         {
-            return ViewManager?.Root?.ViewFromPoint(pt);
+            return ViewManager?.Root.ViewFromPoint(pt);
         }
         #endregion
 
@@ -581,7 +582,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets and sets the ViewManager instance.
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ViewManager ViewManager
+        public ViewManager? ViewManager
         {
             [DebuggerStepThrough]
             get;
@@ -620,7 +621,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 if (ViewManager != null)
                 {
                     // Ask the view to perform a layout
-                    ViewManager.Layout(Renderer);
+                    if (Renderer != null)
+                    {
+                        ViewManager?.Layout(Renderer);
+                    }
 
                     return true;
                 }
@@ -712,11 +716,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Work out if this control needs to paint transparent areas.
         /// </summary>
         /// <returns>True if paint required; otherwise false.</returns>
-        protected virtual bool EvalTransparentPaint()
-        {
+        protected virtual bool EvalTransparentPaint() =>
             // Do we have a manager to use for asking about painting?
-            return ViewManager != null && ViewManager.EvalTransparentPaint(Renderer);
-        }
+            ViewManager != null && ViewManager.EvalTransparentPaint(Renderer!);
 
         /// <summary>
         /// Work out if this control needs to use Invoke to force a repaint.
@@ -726,7 +728,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <summary>
         /// Gets the control reference that is the parent for transparent drawing.
         /// </summary>
-        protected virtual Control TransparentParent => Parent;
+        protected virtual Control? TransparentParent => Parent;
 
         /// <summary>
         /// Processes a notification from palette storage of a button spec change.
@@ -760,7 +762,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // A new palette source means we need to layout and redraw
             OnNeedPaint(Palette, new(true));
 
-            PaletteChanged?.Invoke(this, e);
+            PaletteChanged.Invoke(this, e);
         }
 
         /// <summary>
@@ -894,8 +896,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         _layoutDirty = false;
 
                         // Ask the view to perform a layout
-                        ViewManager.Layout(Renderer);
-
+                        if (Renderer != null)
+                        {
+                            ViewManager.Layout(Renderer);
+                        }
                     } while (_layoutDirty && max-- > 0);
                 }
             }
@@ -939,7 +943,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     PaintTransparentBackground(e);
 
                     // Ask the view to repaint the visual structure
-                    ViewManager.Paint(Renderer, e);
+                    if (Renderer != null)
+                    {
+                        ViewManager.Paint(Renderer, e);
+                    }
 
                     // Request for a refresh has been serviced
                     _refresh = false;
@@ -1165,7 +1172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 // Must raise event to change palette in redirector
                 OnPaletteChanged(EventArgs.Empty);
 
-                GlobalPaletteChanged?.Invoke(sender, e);
+                GlobalPaletteChanged.Invoke(sender, e);
             }
         }
 
@@ -1255,7 +1262,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Implementation
-        private void SetPalette(PaletteBase palette)
+        private void SetPalette(PaletteBase? palette)
         {
             if (palette != _palette)
             {
@@ -1272,7 +1279,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 _palette = palette;
 
                 // Get the renderer associated with the palette
-                Renderer = _palette.GetRenderer();
+                Renderer = _palette?.GetRenderer();
 
                 // Hook to new palette events
                 if (_palette != null)
@@ -1288,13 +1295,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private void OnBaseChanged(object? sender, EventArgs e)
         {
             // Change in base renderer or base palette require we fetch the latest renderer
-            Renderer = _palette.GetRenderer();
+            Renderer = _palette?.GetRenderer();
         }
 
         private void PaintTransparentBackground(PaintEventArgs e)
         {
             // Get the parent control for transparent drawing purposes
-            Control parent = TransparentParent;
+            Control? parent = TransparentParent;
 
             // Do we have a parent control and we need to paint background?
             if (parent != null && NeedTransparentPaint)
@@ -1310,7 +1317,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                                                        null);
                 }
 
-                _miPTB.Invoke(this, [e, ClientRectangle, null]);
+                _miPTB?.Invoke(this, [e, ClientRectangle, null]);
             }
             else
             {
@@ -1357,10 +1364,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private void OnContextMenuStripOpening(object? sender, CancelEventArgs e)
         {
             // Get the actual strip instance
-            ContextMenuStrip cms = base.ContextMenuStrip;
+            ContextMenuStrip? cms = base.ContextMenuStrip;
 
             // Make sure it has the correct renderer
-            cms.Renderer = CreateToolStripRenderer();
+            cms!.Renderer = CreateToolStripRenderer();
         }
 
         private void OnKryptonContextMenuDisposed(object? sender, EventArgs e)
@@ -1419,10 +1426,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private void OnVisualPopupToolTipDisposed(object? sender, EventArgs e)
         {
             // Unhook events from the specific instance that generated event
-            VisualPopupToolTip popupToolTip = (VisualPopupToolTip)sender;
-            popupToolTip.Disposed -= OnVisualPopupToolTipDisposed;
+            VisualPopupToolTip? popupToolTip = sender as VisualPopupToolTip;
+            if (popupToolTip != null)
+            {
+                popupToolTip.Disposed -= OnVisualPopupToolTipDisposed;
+            }
 
-            // Not showing a popup page any more
+            // Not showing a popup page anymore
             _visualBasePopupToolTip = null;
         }
 
@@ -1436,7 +1446,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         #region Calls
         [DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
-        public static extern int SetWindowTheme(IntPtr hwnd, string pszSubAppName, string pszSubIdList);
+        public static extern int SetWindowTheme(IntPtr hwnd, string pszSubAppName, string? pszSubIdList);
         #endregion
     }
 }
