@@ -89,7 +89,7 @@
 
                 <When Condition="'$(Configuration)' == 'Release'">
                     <ItemGroup>
-                        <PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
+                        <PackageReference Include="Krypton.Toolkit" Version="90.25.2.55" />
                     </ItemGroup>
                 </When>
 

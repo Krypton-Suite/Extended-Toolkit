@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         private readonly ViewDrawButtonExtended _drawButton;
         private ButtonStyle _style;
         private readonly ButtonController _buttonController;
-        private readonly PaletteRedirectDropDownButton _paletteDropDownButtonImages;
+        //private readonly PaletteRedirectDropDownButton _paletteDropDownButtonImages;
         private readonly PaletteTripleOverride _overrideFocus;
         private readonly PaletteTripleOverride _overrideNormal;
         private readonly PaletteTripleOverride _overrideTracking;
@@ -163,10 +163,10 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             // Create content storage
             Values = CreateButtonValues(NeedPaintDelegate);
             Values.TextChanged += OnButtonTextChanged;
-            Images = new DropDownButtonImages(NeedPaintDelegate);
+            //Images = new DropDownButtonImages(NeedPaintDelegate);
 
             // Image need an extra redirector to check the local images first
-            _paletteDropDownButtonImages = new PaletteRedirectDropDownButton(Redirector, Images);
+            //_paletteDropDownButtonImages = new PaletteRedirectDropDownButton(Redirector, Images);
 
             // Create the palette storage
             Strings = new PaletteColorButtonStrings();
@@ -199,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 DropDown = true,
                 Splitter = true,
                 TestForFocusCues = true,
-                DropDownPalette = _paletteDropDownButtonImages
+                //DropDownPalette = null // _paletteDropDownButtonImages
             };
 
             // Create a color button controller to handle button style behaviour
@@ -564,19 +564,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         private bool ShouldSerializeValues()
         {
             return !Values.IsDefault;
-        }
-
-        /// <summary>
-        /// Gets access to the image value overrides.
-        /// </summary>
-        [Category("Visuals")]
-        [Description("Image value overrides.")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public DropDownButtonImages Images { get; }
-
-        private bool ShouldSerializeImages()
-        {
-            return !Images.IsDefault;
         }
 
         /// <summary>

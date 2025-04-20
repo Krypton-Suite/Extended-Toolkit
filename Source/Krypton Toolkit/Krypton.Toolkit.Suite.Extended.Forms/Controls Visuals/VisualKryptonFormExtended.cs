@@ -147,7 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _buttonSpecsFixed.AddRange(new ButtonSpecFormFixed[] { ButtonSpecMin, ButtonSpecMax, ButtonSpecClose });
 
             // Create the palette storage
-            StateCommon = new PaletteFormRedirect(Redirector, NeedPaintDelegate);
+            StateCommon = new PaletteFormRedirect(Redirector, NeedPaintDelegate, null);
             StateInactive = new PaletteForm(StateCommon, StateCommon.Header, NeedPaintDelegate);
             StateActive = new PaletteForm(StateCommon, StateCommon.Header, NeedPaintDelegate);
 
@@ -192,7 +192,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                                                        OnButtonManagerNeedPaint);
 
             // Create the manager for handling tooltips
-            ToolTipManager = new ToolTipManager(new(null));
+            ToolTipManager = new ToolTipManager(new(null, null));
             ToolTipManager.ShowToolTip += OnShowToolTip;
             ToolTipManager.CancelToolTip += OnCancelToolTip;
             _buttonManager.ToolTipManager = ToolTipManager;
@@ -752,7 +752,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 // Cache for future access
                 if (resizedBitmap != null)
                 {
-                    _cacheBitmap = CommonHelper.ScaleImageForSizedDisplay(resizedBitmap, currentWidth, currentHeight);
+                    _cacheBitmap = CommonHelper.ScaleImageForSizedDisplay(resizedBitmap, currentWidth, currentHeight, true);
                 }
             }
 

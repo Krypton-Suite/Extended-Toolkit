@@ -85,7 +85,7 @@
 
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
+						<PackageReference Include="Krypton.Toolkit" Version="90.25.2.55" />
 					</ItemGroup>
 				</When>
 
@@ -107,8 +107,8 @@
 	  <PackageReference Include="NETStandard.Library" Version="2.0.3" />
 	  <!--<PackageReference Include="OpenTK" Version="4.8.2" />
 	  <PackageReference Include="OpenTK.GLControl" Version="3.3.3" />-->
-	  <PackageReference Include="SkiaSharp" Version="2.88.8" />
-	  <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="2.88.8" />
+	  <PackageReference Include="SkiaSharp" Version="3.116.1" />
+	  <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="3.116.1" />
 	  <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
 	</ItemGroup>
 
