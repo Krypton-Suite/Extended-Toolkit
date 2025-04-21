@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         private const string _defaultDescription = @"Here be the ""Note Text""";
 
         public CommandLinkTextValues(NeedPaintHandler needPaint)
-            : base(needPaint)
+            : base(needPaint, null)
         {
         }
 

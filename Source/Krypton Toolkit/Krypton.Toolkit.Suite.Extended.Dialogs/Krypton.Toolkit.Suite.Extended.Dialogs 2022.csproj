@@ -85,7 +85,7 @@
 
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
+						<PackageReference Include="Krypton.Toolkit" Version="95.25.4.111" />
 					</ItemGroup>
 				</When>
 
@@ -111,8 +111,8 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-		<PackageReference Include="System.Speech" Version="9.0.0-rc.2.24473.5" />
-		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.5" />
+		<PackageReference Include="System.Speech" Version="9.0.4" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>

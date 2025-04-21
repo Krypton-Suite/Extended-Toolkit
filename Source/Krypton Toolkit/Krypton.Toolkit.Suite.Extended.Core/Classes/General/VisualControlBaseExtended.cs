@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             AttachGlobalEvents();
 
             // Do the Tooltip Magic
-            ToolTipValues = new(NeedPaintDelegate);
+            ToolTipValues = new(NeedPaintDelegate, null);
             // Create the manager for handling tooltips
             // ReSharper disable once UseObjectOrCollectionInitializer
             _toolTipManager = new();
