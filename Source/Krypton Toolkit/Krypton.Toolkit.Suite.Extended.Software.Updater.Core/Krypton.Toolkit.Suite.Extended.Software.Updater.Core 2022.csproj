@@ -118,13 +118,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="85.24.10.288" />
+				<PackageReference Include="Krypton.Docking.LTS" Version="85.25.4.111" />
 
-				<PackageReference Include="Krypton.Toolkit" Version="85.24.10.288" />
+				<PackageReference Include="Krypton.Toolkit.LTS" Version="85.25.4.111" />
 
-				<PackageReference Include="Krypton.Ribbon" Version="85.24.10.288" />
+				<PackageReference Include="Krypton.Ribbon.LTS" Version="85.25.4.111" />
 
-				<PackageReference Include="Krypton.Navigator" Version="85.24.10.288" />
+				<PackageReference Include="Krypton.Navigator.LTS" Version="85.25.4.111" />
 			</ItemGroup>
 		</When>
 
@@ -183,13 +183,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="85.24.10.288" />
+				<PackageReference Include="Krypton.Docking.LTS" Version="85.25.2.55" />
 
-				<PackageReference Include="Krypton.Toolkit" Version="85.24.10.288" />
+				<PackageReference Include="Krypton.Toolkit.LTS" Version="85.25.2.55" />
 
-				<PackageReference Include="Krypton.Ribbon" Version="85.24.10.288" />
+				<PackageReference Include="Krypton.Ribbon.LTS" Version="85.25.2.55" />
 
-				<PackageReference Include="Krypton.Navigator" Version="85.24.10.288" />
+				<PackageReference Include="Krypton.Navigator.LTS" Version="85.25.2.55" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
