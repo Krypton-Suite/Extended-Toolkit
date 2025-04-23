@@ -79,7 +79,7 @@
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.3.83-beta" />
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.4.112-beta" />
 					</ItemGroup>
 				</When>
 
@@ -107,8 +107,8 @@
 	  <PackageReference Include="NETStandard.Library" Version="2.0.3" />
 	  <!--<PackageReference Include="OpenTK" Version="4.8.2" />
 	  <PackageReference Include="OpenTK.GLControl" Version="3.3.3" />-->
-	  <PackageReference Include="SkiaSharp" Version="3.116.1" />
-	  <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="3.116.1" />
+	  <PackageReference Include="SkiaSharp" Version="3.119.0-preview.1.2" />
+	  <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="3.119.0-preview.1.2" />
 	  <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
 	</ItemGroup>
 
