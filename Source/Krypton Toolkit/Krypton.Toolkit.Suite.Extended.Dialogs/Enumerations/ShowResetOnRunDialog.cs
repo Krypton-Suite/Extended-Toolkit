@@ -26,11 +26,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs;
+
+public enum ShowResetOnRunDialog
 {
-    public enum ShowResetOnRunDialog
-    {
-        False = 0,
-        True = 1
-    }
+    False = 0,
+    True = 1
 }

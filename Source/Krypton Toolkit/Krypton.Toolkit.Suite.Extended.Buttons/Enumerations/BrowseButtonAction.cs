@@ -25,12 +25,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Buttons
+namespace Krypton.Toolkit.Suite.Extended.Buttons;
+
+public enum BrowseButtonAction
 {
-    public enum BrowseButtonAction
-    {
-        OpenFile = 0,
-        OpenDirectory = 1,
-        SaveFile = 2
-    }
+    OpenFile = 0,
+    OpenDirectory = 1,
+    SaveFile = 2
 }

@@ -1,27 +1,26 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+internal class HashTag : IMarker
 {
-    internal class HashTag : IMarker
+    public void Render(SKCanvas canvas, SKPaint paint, Pixel center, float size, FillStyle fill, LineStyle outline)
     {
-        public void Render(SKCanvas canvas, SKPaint paint, Pixel center, float size, FillStyle fill, LineStyle outline)
-        {
-            float sixthOffset = size / 6;
-            float halfOffset = size / 2;
+        float sixthOffset = size / 6;
+        float halfOffset = size / 2;
 
-            var path = new SKPath();
-            // Vertical Lines
-            path.MoveTo(center.X + sixthOffset, center.Y + halfOffset);
-            path.LineTo(center.X + sixthOffset, center.Y - halfOffset);
-            path.MoveTo(center.X - sixthOffset, center.Y + halfOffset);
-            path.LineTo(center.X - sixthOffset, center.Y - halfOffset);
+        var path = new SKPath();
+        // Vertical Lines
+        path.MoveTo(center.X + sixthOffset, center.Y + halfOffset);
+        path.LineTo(center.X + sixthOffset, center.Y - halfOffset);
+        path.MoveTo(center.X - sixthOffset, center.Y + halfOffset);
+        path.LineTo(center.X - sixthOffset, center.Y - halfOffset);
 
-            // Horizontal Lines
-            path.MoveTo(center.X + halfOffset, center.Y + sixthOffset);
-            path.LineTo(center.X - halfOffset, center.Y + sixthOffset);
-            path.MoveTo(center.X + halfOffset, center.Y - sixthOffset);
-            path.LineTo(center.X - halfOffset, center.Y - sixthOffset);
+        // Horizontal Lines
+        path.MoveTo(center.X + halfOffset, center.Y + sixthOffset);
+        path.LineTo(center.X - halfOffset, center.Y + sixthOffset);
+        path.MoveTo(center.X + halfOffset, center.Y - sixthOffset);
+        path.LineTo(center.X - halfOffset, center.Y - sixthOffset);
 
-            outline.ApplyToPaint(paint);
-            canvas.DrawPath(path, paint);
-        }
+        outline.ApplyToPaint(paint);
+        canvas.DrawPath(path, paint);
     }
 }

@@ -26,49 +26,48 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+public class ColourInformation
 {
-    public class ColourInformation
+    #region Constructor
+    public ColourInformation()
     {
-        #region Constructor
-        public ColourInformation()
-        {
 
-        }
-        #endregion
-
-        #region Methods
-        /// <summary>Returns the colour information.</summary>
-        /// <param name="colour">The colour.</param>
-        /// <param name="colourHeader">The colour header.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
-        public static string ReturnColourInformation(Color colour, string? colourHeader = null)
-        {
-            StringBuilder builder = new();
-
-            if (colourHeader != null)
-            {
-                builder.Append($"{colourHeader}:\nARGB: {colour.ToArgb()}\nRGB: {colour.R}, {colour.G}, {colour.B}\nHex: {ColorTranslator.ToHtml(colour)}"); //Known Name: { Color.FromKnownColor(colour) }")
-            }
-            else
-            {
-                builder.Append($"ARGB: {colour.ToArgb()}\nRGB: {colour.R}, {colour.G}, {colour.B}\nHex: {ColorTranslator.ToHtml(colour)}");
-            }
-
-            return builder.ToString();
-        }
-
-        /// <summary>Sets the tooltip.</summary>
-        /// <param name="control">The control.</param>
-        /// <param name="colourHeader">The colour header.</param>
-        public static void SetTooltip(Control control, string? colourHeader = null)
-        {
-            ToolTip temp = new();
-
-            temp.SetToolTip(control, ReturnColourInformation(control.BackColor, $"{colourHeader} Colour"));
-        }
-        #endregion
     }
+    #endregion
+
+    #region Methods
+    /// <summary>Returns the colour information.</summary>
+    /// <param name="colour">The colour.</param>
+    /// <param name="colourHeader">The colour header.</param>
+    /// <returns>
+    ///   <br />
+    /// </returns>
+    public static string ReturnColourInformation(Color colour, string? colourHeader = null)
+    {
+        StringBuilder builder = new();
+
+        if (colourHeader != null)
+        {
+            builder.Append($"{colourHeader}:\nARGB: {colour.ToArgb()}\nRGB: {colour.R}, {colour.G}, {colour.B}\nHex: {ColorTranslator.ToHtml(colour)}"); //Known Name: { Color.FromKnownColor(colour) }")
+        }
+        else
+        {
+            builder.Append($"ARGB: {colour.ToArgb()}\nRGB: {colour.R}, {colour.G}, {colour.B}\nHex: {ColorTranslator.ToHtml(colour)}");
+        }
+
+        return builder.ToString();
+    }
+
+    /// <summary>Sets the tooltip.</summary>
+    /// <param name="control">The control.</param>
+    /// <param name="colourHeader">The colour header.</param>
+    public static void SetTooltip(Control control, string? colourHeader = null)
+    {
+        ToolTip temp = new();
+
+        temp.SetToolTip(control, ReturnColourInformation(control.BackColor, $"{colourHeader} Colour"));
+    }
+    #endregion
 }

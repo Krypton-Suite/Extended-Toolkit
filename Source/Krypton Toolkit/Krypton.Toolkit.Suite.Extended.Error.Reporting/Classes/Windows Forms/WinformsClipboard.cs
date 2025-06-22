@@ -25,26 +25,25 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
+
+internal static class WinFormsClipboard
 {
-	internal static class WinFormsClipboard
+    /// <summary>
+    /// Copy text to clipboard
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns>whether the clipboard operation succeeded</returns>
+    public static bool CopyTo(string text)
     {
-        /// <summary>
-        /// Copy text to clipboard
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns>whether the clipboard operation succeeded</returns>
-        public static bool CopyTo(string text)
+        try
         {
-            try
-            {
-                Clipboard.SetDataObject(text, true);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            Clipboard.SetDataObject(text, true);
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
         }
     }
 }

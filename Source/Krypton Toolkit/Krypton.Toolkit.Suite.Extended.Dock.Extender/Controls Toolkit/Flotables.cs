@@ -1,22 +1,21 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dock.Extender
+﻿namespace Krypton.Toolkit.Suite.Extended.Dock.Extender;
+
+public class Flotables : List<IFloatable>
 {
-    public class Flotables : List<IFloatable>
+    #region Implementation
+
+    public IFloatable FindFloatables(Control control)
     {
-        #region Implementation
-
-        public IFloatable FindFloatables(Control control)
+        foreach (KryptonFloatableForm floatable in this)
         {
-            foreach (KryptonFloatableForm floatable in this)
+            if (floatable.DockState.Container.Equals(control))
             {
-                if (floatable.DockState.Container.Equals(control))
-                {
-                    return floatable;
-                }
+                return floatable;
             }
-
-            return null;
         }
 
-        #endregion
+        return null;
     }
+
+    #endregion
 }

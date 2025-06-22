@@ -26,22 +26,21 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+
+internal struct SPAUDIOSTATUS
 {
-    internal struct SPAUDIOSTATUS
-    {
-        internal int cbFreeBuffSpace;
+    internal int cbFreeBuffSpace;
 
-        internal uint cbNonBlockingIO;
+    internal uint cbNonBlockingIO;
 
-        internal SPAUDIOSTATE State;
+    internal SPAUDIOSTATE State;
 
-        internal ulong CurSeekPos;
+    internal ulong CurSeekPos;
 
-        internal ulong CurDevicePos;
+    internal ulong CurDevicePos;
 
-        internal uint dwAudioLevel;
+    internal uint dwAudioLevel;
 
-        internal uint dwReserved2;
-    }
+    internal uint dwReserved2;
 }

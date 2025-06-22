@@ -26,24 +26,23 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+
+internal class SpNotifySink : ISpNotifySink
 {
-    internal class SpNotifySink : ISpNotifySink
+    private WeakReference _eventNotifyReference;
+
+    public SpNotifySink(EventNotify eventNotify)
     {
-        private WeakReference _eventNotifyReference;
+        _eventNotifyReference = new WeakReference(eventNotify);
+    }
 
-        public SpNotifySink(EventNotify eventNotify)
+    void ISpNotifySink.Notify()
+    {
+        EventNotify eventNotify = (EventNotify)_eventNotifyReference.Target;
+        if (eventNotify != null)
         {
-            _eventNotifyReference = new WeakReference(eventNotify);
-        }
-
-        void ISpNotifySink.Notify()
-        {
-            EventNotify eventNotify = (EventNotify)_eventNotifyReference.Target;
-            if (eventNotify != null)
-            {
-                ThreadPool.QueueUserWorkItem(eventNotify.SendNotification);
-            }
+            ThreadPool.QueueUserWorkItem(eventNotify.SendNotification);
         }
     }
 }

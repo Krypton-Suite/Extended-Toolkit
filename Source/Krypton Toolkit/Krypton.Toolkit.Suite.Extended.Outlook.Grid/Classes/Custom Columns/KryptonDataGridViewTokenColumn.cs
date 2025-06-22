@@ -16,24 +16,23 @@
 //--------------------------------------------------------------------------------
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+
+/// <summary>
+/// Class for a rating column
+/// </summary>
+public class KryptonDataGridViewTokenColumn : KryptonDataGridViewTextBoxColumn
 {
     /// <summary>
-    /// Class for a rating column
+    /// Constructor
     /// </summary>
-    public class KryptonDataGridViewTokenColumn : KryptonDataGridViewTextBoxColumn
+    public KryptonDataGridViewTokenColumn()
+        : base()
     {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public KryptonDataGridViewTokenColumn()
-            : base()
-        {
-            CellTemplate = new TokenCell();
+        CellTemplate = new TokenCell();
             
-            DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             
-            ValueType = typeof(TokenCell);
-        }
+        ValueType = typeof(TokenCell);
     }
 }

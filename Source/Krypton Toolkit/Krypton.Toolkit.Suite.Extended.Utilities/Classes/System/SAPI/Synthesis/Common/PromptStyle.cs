@@ -26,53 +26,52 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+/// <filterpriority>2</filterpriority>
+[Serializable]
+public class PromptStyle
 {
-    /// <filterpriority>2</filterpriority>
-    [Serializable]
-    public class PromptStyle
+    private PromptRate _rate;
+
+    private PromptVolume _volume;
+
+    private PromptEmphasis _emphasis;
+
+    public PromptRate Rate
     {
-        private PromptRate _rate;
+        get => _rate;
+        set => _rate = value;
+    }
 
-        private PromptVolume _volume;
+    public PromptVolume Volume
+    {
+        get => _volume;
+        set => _volume = value;
+    }
 
-        private PromptEmphasis _emphasis;
+    public PromptEmphasis Emphasis
+    {
+        get => _emphasis;
+        set => _emphasis = value;
+    }
 
-        public PromptRate Rate
-        {
-            get => _rate;
-            set => _rate = value;
-        }
+    public PromptStyle()
+    {
+    }
 
-        public PromptVolume Volume
-        {
-            get => _volume;
-            set => _volume = value;
-        }
+    public PromptStyle(PromptRate rate)
+    {
+        Rate = rate;
+    }
 
-        public PromptEmphasis Emphasis
-        {
-            get => _emphasis;
-            set => _emphasis = value;
-        }
+    public PromptStyle(PromptVolume volume)
+    {
+        Volume = volume;
+    }
 
-        public PromptStyle()
-        {
-        }
-
-        public PromptStyle(PromptRate rate)
-        {
-            Rate = rate;
-        }
-
-        public PromptStyle(PromptVolume volume)
-        {
-            Volume = volume;
-        }
-
-        public PromptStyle(PromptEmphasis emphasis)
-        {
-            Emphasis = emphasis;
-        }
+    public PromptStyle(PromptEmphasis emphasis)
+    {
+        Emphasis = emphasis;
     }
 }

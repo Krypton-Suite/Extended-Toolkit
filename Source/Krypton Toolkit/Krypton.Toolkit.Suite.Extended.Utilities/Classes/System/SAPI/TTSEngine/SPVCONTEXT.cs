@@ -26,15 +26,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+[TypeLibType(16)]
+internal struct SPVCONTEXT
 {
-    [TypeLibType(16)]
-    internal struct SPVCONTEXT
-    {
-        public IntPtr pCategory;
+    public IntPtr pCategory;
 
-        public IntPtr pBefore;
+    public IntPtr pBefore;
 
-        public IntPtr pAfter;
-    }
+    public IntPtr pAfter;
 }

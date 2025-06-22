@@ -25,16 +25,15 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Networking
+namespace Krypton.Toolkit.Suite.Extended.Networking;
+
+internal class PingDetails
 {
-    internal class PingDetails
-    {
-        public string Address { set; get; }
+    public string Address { set; get; }
 
-        public string Length { set; get; }
+    public string Length { set; get; }
 
-        public string Time { set; get; }
+    public string Time { set; get; }
 
-        public string TTL { set; get; }
-    }
+    public string TTL { set; get; }
 }

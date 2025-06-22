@@ -26,13 +26,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
-{
-    [Serializable]
-    internal struct FILETIME
-    {
-        internal uint dwLowDateTime;
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
 
-        internal uint dwHighDateTime;
-    }
+[Serializable]
+internal struct FILETIME
+{
+    internal uint dwLowDateTime;
+
+    internal uint dwHighDateTime;
 }

@@ -26,35 +26,34 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding;
+
+internal class IdentifierCollection
 {
-    internal class IdentifierCollection
+    protected List<string> _identifiers;
+
+    internal IdentifierCollection()
     {
-        protected List<string> _identifiers;
+        _identifiers = [];
+        CreateNewIdentifier("_");
+    }
 
-        internal IdentifierCollection()
+    internal string CreateNewIdentifier(string id)
+    {
+        if (!_identifiers.Contains(id))
         {
-            _identifiers = [];
-            CreateNewIdentifier("_");
+            _identifiers.Add(id);
+            return id;
         }
-
-        internal string CreateNewIdentifier(string id)
+        int num = 1;
+        string text;
+        do
         {
-            if (!_identifiers.Contains(id))
-            {
-                _identifiers.Add(id);
-                return id;
-            }
-            int num = 1;
-            string text;
-            do
-            {
-                text = id + num;
-                num++;
-            }
-            while (_identifiers.Contains(text));
-            _identifiers.Add(text);
-            return text;
+            text = id + num;
+            num++;
         }
+        while (_identifiers.Contains(text));
+        _identifiers.Add(text);
+        return text;
     }
 }

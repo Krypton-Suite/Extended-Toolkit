@@ -26,36 +26,35 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+internal abstract class TtsEventMapper : ITtsEventSink
 {
-    internal abstract class TtsEventMapper : ITtsEventSink
+    private ITtsEventSink _sink;
+
+    internal TtsEventMapper(ITtsEventSink sink)
     {
-        private ITtsEventSink _sink;
+        _sink = sink;
+    }
 
-        internal TtsEventMapper(ITtsEventSink sink)
+    protected virtual void SendToOutput(TTSEvent evt)
+    {
+        if (_sink != null)
         {
-            _sink = sink;
+            _sink.AddEvent(evt);
         }
+    }
 
-        protected virtual void SendToOutput(TTSEvent evt)
-        {
-            if (_sink != null)
-            {
-                _sink.AddEvent(evt);
-            }
-        }
+    public virtual void AddEvent(TTSEvent evt)
+    {
+        SendToOutput(evt);
+    }
 
-        public virtual void AddEvent(TTSEvent evt)
+    public virtual void FlushEvent()
+    {
+        if (_sink != null)
         {
-            SendToOutput(evt);
-        }
-
-        public virtual void FlushEvent()
-        {
-            if (_sink != null)
-            {
-                _sink.FlushEvent();
-            }
+            _sink.FlushEvent();
         }
     }
 }

@@ -25,36 +25,35 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+/// <summary>
+/// Contains event information for a <see cref="T:PopupClosed"/> event.
+/// </summary>
+public class PopupClosedEventArgs : EventArgs
 {
     /// <summary>
-    /// Contains event information for a <see cref="T:PopupClosed"/> event.
+    /// The popup form.
     /// </summary>
-    public class PopupClosedEventArgs : EventArgs
-    {
-        /// <summary>
-        /// The popup form.
-        /// </summary>
-        private KryptonForm _popup = null;
-
-        /// <summary>
-        /// Gets the popup form which is being closed.
-        /// </summary>
-        public KryptonForm Popup => _popup;
-
-        /// <summary>
-        /// Constructs a new instance of this class for the specified
-        /// popup form.
-        /// </summary>
-        /// <param name="popup">Popup Form which is being closed.</param>
-        public PopupClosedEventArgs(KryptonForm popup)
-        {
-            _popup = popup;
-        }
-    }
+    private KryptonForm _popup = null;
 
     /// <summary>
-    /// Represents the method which responds to a <see cref="PopupClosedEventArgs"/> event.
+    /// Gets the popup form which is being closed.
     /// </summary>
-    public delegate void PopupClosedEventHandler(object sender, PopupClosedEventArgs e);
+    public KryptonForm Popup => _popup;
+
+    /// <summary>
+    /// Constructs a new instance of this class for the specified
+    /// popup form.
+    /// </summary>
+    /// <param name="popup">Popup Form which is being closed.</param>
+    public PopupClosedEventArgs(KryptonForm popup)
+    {
+        _popup = popup;
+    }
 }
+
+/// <summary>
+/// Represents the method which responds to a <see cref="PopupClosedEventArgs"/> event.
+/// </summary>
+public delegate void PopupClosedEventHandler(object sender, PopupClosedEventArgs e);

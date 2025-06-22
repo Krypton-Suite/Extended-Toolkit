@@ -26,33 +26,32 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+internal class LexiconEntry
 {
-    internal class LexiconEntry
+    internal Uri _uri;
+
+    internal string _mediaType;
+
+    internal LexiconEntry(Uri uri, string mediaType)
     {
-        internal Uri _uri;
+        _uri = uri;
+        _mediaType = mediaType;
+    }
 
-        internal string _mediaType;
-
-        internal LexiconEntry(Uri uri, string mediaType)
+    public override bool Equals(object obj)
+    {
+        LexiconEntry lexiconEntry = obj as LexiconEntry;
+        if (lexiconEntry != null)
         {
-            _uri = uri;
-            _mediaType = mediaType;
+            return _uri.Equals(lexiconEntry._uri);
         }
+        return false;
+    }
 
-        public override bool Equals(object obj)
-        {
-            LexiconEntry lexiconEntry = obj as LexiconEntry;
-            if (lexiconEntry != null)
-            {
-                return _uri.Equals(lexiconEntry._uri);
-            }
-            return false;
-        }
-
-        public override int GetHashCode()
-        {
-            return _uri.GetHashCode();
-        }
+    public override int GetHashCode()
+    {
+        return _uri.GetHashCode();
     }
 }

@@ -26,88 +26,87 @@
 #endregion
 
 #pragma warning disable CS0169
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+public class KryptonBlueValueNumericBox : KryptonNumericUpDown
 {
-    public class KryptonBlueValueNumericBox : KryptonNumericUpDown
+    #region Constants
+    private const int DEFAULT_VALUE = 0, MINIMUM_DEFAULT_VALUE = 0, MAXIMUM_DEFAULT_VALUE = 255;
+    #endregion 
+
+    #region Variables
+    private bool _useAccessibleUi;
+
+    private Color _backColour, _foreColour;
+
+    private Font _typeface;
+    #endregion
+
+    #region Properties
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public bool UseAccessibleUI { get => _useAccessibleUi; set { _useAccessibleUi = value; Invalidate(); } }
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Font Typeface { get => _typeface; set { _typeface = value; Invalidate(); } }
+
+    #endregion
+
+    #region Constructor
+    public KryptonBlueValueNumericBox()
     {
-        #region Constants
-        private const int DEFAULT_VALUE = 0, MINIMUM_DEFAULT_VALUE = 0, MAXIMUM_DEFAULT_VALUE = 255;
-        #endregion 
+        Minimum = MINIMUM_DEFAULT_VALUE;
 
-        #region Variables
-        private bool _useAccessibleUi;
+        Maximum = MAXIMUM_DEFAULT_VALUE;
 
-        private Color _backColour, _foreColour;
+        Value = DEFAULT_VALUE;
 
-        private Font _typeface;
-        #endregion
+        UseAccessibleUI = false;
 
-        #region Properties
+        StateCommon.Content.Font = Typeface;
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool UseAccessibleUI { get => _useAccessibleUi; set { _useAccessibleUi = value; Invalidate(); } }
+        ToolTipValues.Description = @"The blue value";
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Font Typeface { get => _typeface; set { _typeface = value; Invalidate(); } }
+        ToolTipValues.Heading = @"Blue Value";
 
-        #endregion
+        ToolTipValues.EnableToolTips = true;
 
-        #region Constructor
-        public KryptonBlueValueNumericBox()
-        {
-            Minimum = MINIMUM_DEFAULT_VALUE;
+        _backColour = Color.Empty;
 
-            Maximum = MAXIMUM_DEFAULT_VALUE;
+        _foreColour = Color.Empty;
 
-            Value = DEFAULT_VALUE;
-
-            UseAccessibleUI = false;
-
-            StateCommon.Content.Font = Typeface;
-
-            ToolTipValues.Description = @"The blue value";
-
-            ToolTipValues.Heading = @"Blue Value";
-
-            ToolTipValues.EnableToolTips = true;
-
-            _backColour = Color.Empty;
-
-            _foreColour = Color.Empty;
-
-            //ToolTipValues.Image = Properties.Resources.Blue;
-        }
-        #endregion
-
-        #region Methods
-        private void AlterAppearance(bool useAccessibleUi)
-        {
-            if (useAccessibleUi)
-            {
-                StateCommon.Back.Color1 = Color.Empty;
-
-                StateCommon.Content.Color1 = Color.Empty;
-            }
-            else
-            {
-                StateCommon.Back.Color1 = Color.Blue;
-
-                StateCommon.Content.Color1 = Color.White;
-            }
-        }
-
-        private void AlterTypeface(Font typeface) => StateCommon.Content.Font = typeface;
-        #endregion
-
-        #region Overrides
-        protected override void OnPaint(PaintEventArgs? e)
-        {
-            AlterAppearance(_useAccessibleUi);
-
-            AlterTypeface(_typeface);
-
-            base.OnPaint(e);
-        }
-        #endregion
+        //ToolTipValues.Image = Properties.Resources.Blue;
     }
+    #endregion
+
+    #region Methods
+    private void AlterAppearance(bool useAccessibleUi)
+    {
+        if (useAccessibleUi)
+        {
+            StateCommon.Back.Color1 = Color.Empty;
+
+            StateCommon.Content.Color1 = Color.Empty;
+        }
+        else
+        {
+            StateCommon.Back.Color1 = Color.Blue;
+
+            StateCommon.Content.Color1 = Color.White;
+        }
+    }
+
+    private void AlterTypeface(Font typeface) => StateCommon.Content.Font = typeface;
+    #endregion
+
+    #region Overrides
+    protected override void OnPaint(PaintEventArgs? e)
+    {
+        AlterAppearance(_useAccessibleUi);
+
+        AlterTypeface(_typeface);
+
+        base.OnPaint(e);
+    }
+    #endregion
 }

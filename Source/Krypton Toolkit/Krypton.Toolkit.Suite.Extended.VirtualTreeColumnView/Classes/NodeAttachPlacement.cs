@@ -25,13 +25,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
+namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView;
+
+public enum NodeAttachPlacement
 {
-    public enum NodeAttachPlacement
-    {
-        InsertAfter,
-        InsertBefore,
-        AddChildFirst,
-        AddChildLast
-    }
+    InsertAfter,
+    InsertBefore,
+    AddChildFirst,
+    AddChildLast
 }

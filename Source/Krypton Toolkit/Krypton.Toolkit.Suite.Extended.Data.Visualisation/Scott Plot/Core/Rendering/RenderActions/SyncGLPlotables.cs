@@ -1,14 +1,13 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class SyncGlPlotables : IRenderAction
 {
-    public class SyncGlPlotables : IRenderAction
+    public void Render(RenderPack rp)
     {
-        public void Render(RenderPack rp)
+        var glPlottables = rp.Plot.PlottableList.OfType<IPlottableGl>();
+        if (glPlottables.Any())
         {
-            var glPlottables = rp.Plot.PlottableList.OfType<IPlottableGl>();
-            if (glPlottables.Any())
-            {
-                glPlottables.First().GlFinish();
-            }
+            glPlottables.First().GlFinish();
         }
     }
 }

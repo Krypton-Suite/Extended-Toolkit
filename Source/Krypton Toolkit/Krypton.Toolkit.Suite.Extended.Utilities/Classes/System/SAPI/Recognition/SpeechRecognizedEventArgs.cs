@@ -26,14 +26,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
+
+[Serializable]
+public class SpeechRecognizedEventArgs : RecognitionEventArgs
 {
-    [Serializable]
-    public class SpeechRecognizedEventArgs : RecognitionEventArgs
+    internal SpeechRecognizedEventArgs(RecognitionResult result)
+        : base(result)
     {
-        internal SpeechRecognizedEventArgs(RecognitionResult result)
-            : base(result)
-        {
-        }
     }
 }

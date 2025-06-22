@@ -25,40 +25,39 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+/// <summary>
+/// Represents a Context Menu in the Office 2007 colors
+/// </summary>
+[ToolboxItem(false)]
+public class NaviContextMenu : ContextMenuStrip
 {
-    /// <summary>
-    /// Represents a Context Menu in the Office 2007 colors
-    /// </summary>
-    [ToolboxItem(false)]
-    public class NaviContextMenu : ContextMenuStrip
+    // Fields
+    private ToolStripRenderer renderer;
+    private ProfessionalColorTable colorTable;
+
+    #region Constructor
+
+    public NaviContextMenu()
+        : base()
     {
-        // Fields
-        private ToolStripRenderer renderer;
-        private ProfessionalColorTable colorTable;
-
-        #region Constructor
-
-        public NaviContextMenu()
-           : base()
-        {
-            Initialize();
-        }
-
-        #endregion
-
-        #region Methods
-
-        /// <summary>
-        /// Initializes the control for the first time
-        /// </summary>
-        private void Initialize()
-        {
-            colorTable = new NaviToolstripColourTable();
-            renderer = new NaviToolstripRenderer(colorTable);
-            base.Renderer = renderer;
-        }
-
-        #endregion
+        Initialize();
     }
+
+    #endregion
+
+    #region Methods
+
+    /// <summary>
+    /// Initializes the control for the first time
+    /// </summary>
+    private void Initialize()
+    {
+        colorTable = new NaviToolstripColourTable();
+        renderer = new NaviToolstripRenderer(colorTable);
+        base.Renderer = renderer;
+    }
+
+    #endregion
 }

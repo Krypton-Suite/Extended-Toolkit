@@ -26,27 +26,26 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+
+[StructLayout(LayoutKind.Sequential)]
+internal class SPWAVEFORMATEX
 {
-    [StructLayout(LayoutKind.Sequential)]
-    internal class SPWAVEFORMATEX
-    {
-        public uint cbUsed;
+    public uint cbUsed;
 
-        public Guid Guid;
+    public Guid Guid;
 
-        public ushort wFormatTag;
+    public ushort wFormatTag;
 
-        public ushort nChannels;
+    public ushort nChannels;
 
-        public uint nSamplesPerSec;
+    public uint nSamplesPerSec;
 
-        public uint nAvgBytesPerSec;
+    public uint nAvgBytesPerSec;
 
-        public ushort nBlockAlign;
+    public ushort nBlockAlign;
 
-        public ushort wBitsPerSample;
+    public ushort wBitsPerSample;
 
-        public ushort cbSize;
-    }
+    public ushort cbSize;
 }

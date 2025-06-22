@@ -26,15 +26,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common;
+
+public enum DevelopmentState
 {
-    public enum DevelopmentState
-    {
-        PreAlpha,
-        Alpha,
-        Beta,
-        ReleaseToManufacturing,
-        Current,
-        EndOfLife
-    }
+    PreAlpha,
+    Alpha,
+    Beta,
+    ReleaseToManufacturing,
+    Current,
+    EndOfLife
 }

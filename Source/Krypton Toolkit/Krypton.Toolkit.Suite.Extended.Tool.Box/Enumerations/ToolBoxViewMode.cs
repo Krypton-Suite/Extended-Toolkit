@@ -25,13 +25,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Box
+namespace Krypton.Toolkit.Suite.Extended.Tool.Box;
+
+[Serializable]
+public enum ToolBoxViewMode
 {
-    [Serializable]
-    public enum ToolBoxViewMode
-    {
-        LargeIcons,
-        SmallIcons,
-        List,
-    }
+    LargeIcons,
+    SmallIcons,
+    List,
 }

@@ -25,133 +25,132 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
+namespace Krypton.Toolkit.Suite.Extended.Controls;
+
+/// <summary>
+/// A Typed List of the CheckBox items.
+/// Simply a wrapper for the CheckBoxComboBox.Items. A list of CheckBoxComboBoxItem objects.
+/// This List is automatically synchronised with the Items of the ComboBox and extended to
+/// handle the additional boolean value. That said, do not Add or Remove using this List, 
+/// it will be lost or regenerated from the ComboBox.Items.
+/// </summary>
+[ToolboxItem(false)]
+public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
 {
-    /// <summary>
-    /// A Typed List of the CheckBox items.
-    /// Simply a wrapper for the CheckBoxComboBox.Items. A list of CheckBoxComboBoxItem objects.
-    /// This List is automatically synchronised with the Items of the ComboBox and extended to
-    /// handle the additional boolean value. That said, do not Add or Remove using this List, 
-    /// it will be lost or regenerated from the ComboBox.Items.
-    /// </summary>
-    [ToolboxItem(false)]
-    public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
+    #region CONSTRUCTORS
+
+    public KryptonCheckBoxComboBoxItemList(KryptonCheckBoxComboBox checkBoxComboBox)
     {
-        #region CONSTRUCTORS
+        _checkBoxComboBox = checkBoxComboBox;
+    }
 
-        public KryptonCheckBoxComboBoxItemList(KryptonCheckBoxComboBox checkBoxComboBox)
+    #endregion
+
+    #region PRIVATE FIELDS
+
+    private KryptonCheckBoxComboBox _checkBoxComboBox;
+
+    #endregion
+
+    #region EVENTS, This could be moved to the list control if needed
+
+    public event EventHandler CheckBoxCheckedChanged;
+
+    protected void OnCheckBoxCheckedChanged(object sender, EventArgs e)
+    {
+        EventHandler handler = CheckBoxCheckedChanged;
+        if (handler != null)
         {
-            _checkBoxComboBox = checkBoxComboBox;
+            handler(sender, e);
         }
+    }
 
-        #endregion
+    private void item_CheckedChanged(object sender, EventArgs e)
+    {
+        OnCheckBoxCheckedChanged(sender, e);
+    }
 
-        #region PRIVATE FIELDS
+    #endregion
 
-        private KryptonCheckBoxComboBox _checkBoxComboBox;
+    #region LIST MEMBERS & OBSOLETE INDICATORS
 
-        #endregion
+    [Obsolete("Do not add items to this list directly. Use the ComboBox items instead.", false)]
+    public new void Add(KryptonCheckBoxComboBoxItem item)
+    {
+        item.CheckedChanged += new EventHandler(item_CheckedChanged);
+        base.Add(item);
+    }
 
-        #region EVENTS, This could be moved to the list control if needed
-
-        public event EventHandler CheckBoxCheckedChanged;
-
-        protected void OnCheckBoxCheckedChanged(object sender, EventArgs e)
-        {
-            EventHandler handler = CheckBoxCheckedChanged;
-            if (handler != null)
-            {
-                handler(sender, e);
-            }
-        }
-
-        private void item_CheckedChanged(object sender, EventArgs e)
-        {
-            OnCheckBoxCheckedChanged(sender, e);
-        }
-
-        #endregion
-
-        #region LIST MEMBERS & OBSOLETE INDICATORS
-
-        [Obsolete("Do not add items to this list directly. Use the ComboBox items instead.", false)]
-        public new void Add(KryptonCheckBoxComboBoxItem item)
-        {
+    public new void AddRange(IEnumerable<KryptonCheckBoxComboBoxItem> collection)
+    {
+        foreach (KryptonCheckBoxComboBoxItem item in collection)
             item.CheckedChanged += new EventHandler(item_CheckedChanged);
-            base.Add(item);
-        }
+        base.AddRange(collection);
+    }
 
-        public new void AddRange(IEnumerable<KryptonCheckBoxComboBoxItem> collection)
-        {
-            foreach (KryptonCheckBoxComboBoxItem item in collection)
-                item.CheckedChanged += new EventHandler(item_CheckedChanged);
-            base.AddRange(collection);
-        }
-
-        public new void Clear()
-        {
-            foreach (KryptonCheckBoxComboBoxItem item in this)
-                item.CheckedChanged -= item_CheckedChanged;
-            base.Clear();
-        }
-
-        [Obsolete("Do not remove items from this list directly. Use the ComboBox items instead.", false)]
-        public new bool Remove(KryptonCheckBoxComboBoxItem item)
-        {
+    public new void Clear()
+    {
+        foreach (KryptonCheckBoxComboBoxItem item in this)
             item.CheckedChanged -= item_CheckedChanged;
-            return base.Remove(item);
-        }
+        base.Clear();
+    }
 
-        #endregion
+    [Obsolete("Do not remove items from this list directly. Use the ComboBox items instead.", false)]
+    public new bool Remove(KryptonCheckBoxComboBoxItem item)
+    {
+        item.CheckedChanged -= item_CheckedChanged;
+        return base.Remove(item);
+    }
 
-        #region DEFAULT PROPERTIES
+    #endregion
 
-        /// <summary>
-        /// Returns the item with the specified displayName or Text.
-        /// </summary>
-        public KryptonCheckBoxComboBoxItem this[string displayName]
+    #region DEFAULT PROPERTIES
+
+    /// <summary>
+    /// Returns the item with the specified displayName or Text.
+    /// </summary>
+    public KryptonCheckBoxComboBoxItem this[string displayName]
+    {
+        get
         {
-            get
+            int startIndex =
+                // An invisible item exists in this scenario to help 
+                // with the Text displayed in the TextBox of the Combo
+                _checkBoxComboBox.DropDownStyle == ComboBoxStyle.DropDownList
+                && _checkBoxComboBox.DataSource == null
+                    ? 1 // Ubiklou : 2008-04-28 : Ignore first item. (http://www.codeproject.com/KB/combobox/extending_combobox.aspx?fid=476622&df=90&mpp=25&noise=3&sort=Position&view=Quick&select=2526813&fr=1#xx2526813xx)
+                    : 0;
+            for (int index = startIndex; index <= Count - 1; index++)
             {
-                int startIndex =
-                    // An invisible item exists in this scenario to help 
-                    // with the Text displayed in the TextBox of the Combo
-                    _checkBoxComboBox.DropDownStyle == ComboBoxStyle.DropDownList
-                    && _checkBoxComboBox.DataSource == null
-                        ? 1 // Ubiklou : 2008-04-28 : Ignore first item. (http://www.codeproject.com/KB/combobox/extending_combobox.aspx?fid=476622&df=90&mpp=25&noise=3&sort=Position&view=Quick&select=2526813&fr=1#xx2526813xx)
-                        : 0;
-                for (int index = startIndex; index <= Count - 1; index++)
+                KryptonCheckBoxComboBoxItem item = this[index];
+
+                string text;
+                // The binding might not be active yet
+                if (string.IsNullOrEmpty(item.Text)
+                    // Ubiklou : 2008-04-28 : No databinding
+                    && item.DataBindings != null
+                    && item.DataBindings["Text"] != null
+                   )
                 {
-                    KryptonCheckBoxComboBoxItem item = this[index];
-
-                    string text;
-                    // The binding might not be active yet
-                    if (string.IsNullOrEmpty(item.Text)
-                        // Ubiklou : 2008-04-28 : No databinding
-                        && item.DataBindings != null
-                        && item.DataBindings["Text"] != null
-                       )
-                    {
-                        PropertyInfo propertyInfo
-                            = item.ComboBoxItem.GetType().GetProperty(
-                                item.DataBindings["Text"].BindingMemberInfo.BindingMember);
-                        text = (string)propertyInfo.GetValue(item.ComboBoxItem, null);
-                    }
-                    else
-                    {
-                        text = item.Text;
-                    }
-
-                    if (text.CompareTo(displayName) == 0)
-                    {
-                        return item;
-                    }
+                    PropertyInfo propertyInfo
+                        = item.ComboBoxItem.GetType().GetProperty(
+                            item.DataBindings["Text"].BindingMemberInfo.BindingMember);
+                    text = (string)propertyInfo.GetValue(item.ComboBoxItem, null);
+                }
+                else
+                {
+                    text = item.Text;
                 }
 
-                throw new ArgumentOutOfRangeException($"\"{displayName}\" does not exist in this combo box.");
+                if (text.CompareTo(displayName) == 0)
+                {
+                    return item;
+                }
             }
-        }
 
-        #endregion
+            throw new ArgumentOutOfRangeException($"\"{displayName}\" does not exist in this combo box.");
+        }
     }
+
+    #endregion
 }

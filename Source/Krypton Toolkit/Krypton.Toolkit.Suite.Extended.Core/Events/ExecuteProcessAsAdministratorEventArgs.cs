@@ -26,56 +26,55 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+public class ExecuteProcessAsAdministratorEventArgs : EventArgs
 {
-    public class ExecuteProcessAsAdministratorEventArgs : EventArgs
+    /// <summary>Gets or sets the process path.</summary>
+    /// <value>The process path.</value>
+    public string ProcessPath { get; set; }
+
+    /// <summary>Initializes a new instance of the <see cref="ExecuteProcessAsAdministratorEventArgs"/> class.</summary>
+    /// <param name="processPath">The process path.</param>
+    public ExecuteProcessAsAdministratorEventArgs(string processPath)
     {
-        /// <summary>Gets or sets the process path.</summary>
-        /// <value>The process path.</value>
-        public string ProcessPath { get; set; }
+        ProcessPath = processPath;
 
-        /// <summary>Initializes a new instance of the <see cref="ExecuteProcessAsAdministratorEventArgs"/> class.</summary>
-        /// <param name="processPath">The process path.</param>
-        public ExecuteProcessAsAdministratorEventArgs(string processPath)
+        ElevateProcessWithAdministrativeRights(ProcessPath);
+    }
+
+    /// <summary>Elevates the process with administrative rights.</summary>
+    /// <param name="processName">Name of the process.</param>
+    /// <exception cref="ArgumentNullException"></exception>
+    private void ElevateProcessWithAdministrativeRights(string processName)
+    {
+        WindowsPrincipal principal = new(WindowsIdentity.GetCurrent());
+
+        bool hasAdministrativeRights = principal.IsInRole(WindowsBuiltInRole.Administrator);
+
+        if (string.IsNullOrEmpty(processName))
         {
-            ProcessPath = processPath;
-
-            ElevateProcessWithAdministrativeRights(ProcessPath);
+            throw new ArgumentNullException();
         }
 
-        /// <summary>Elevates the process with administrative rights.</summary>
-        /// <param name="processName">Name of the process.</param>
-        /// <exception cref="ArgumentNullException"></exception>
-        private void ElevateProcessWithAdministrativeRights(string processName)
+        if (!hasAdministrativeRights)
         {
-            WindowsPrincipal principal = new(WindowsIdentity.GetCurrent());
+            ProcessStartInfo process = new();
 
-            bool hasAdministrativeRights = principal.IsInRole(WindowsBuiltInRole.Administrator);
+            process.Verb = "runas";
 
-            if (string.IsNullOrEmpty(processName))
+            process.FileName = processName;
+
+            try
             {
-                throw new ArgumentNullException();
+                Process.Start(process);
+            }
+            catch (Win32Exception e)
+            {
+                DebugUtilities.NotImplemented(e.ToString());
             }
 
-            if (!hasAdministrativeRights)
-            {
-                ProcessStartInfo process = new();
-
-                process.Verb = "runas";
-
-                process.FileName = processName;
-
-                try
-                {
-                    Process.Start(process);
-                }
-                catch (Win32Exception e)
-                {
-                    DebugUtilities.NotImplemented(e.ToString());
-                }
-
-                return;
-            }
+            return;
         }
     }
 }

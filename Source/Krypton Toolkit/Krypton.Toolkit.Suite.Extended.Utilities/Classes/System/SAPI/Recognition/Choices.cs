@@ -26,54 +26,53 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
+
+[DebuggerDisplay("{_oneOf.DebugSummary}")]
+public class Choices
 {
-    [DebuggerDisplay("{_oneOf.DebugSummary}")]
-    public class Choices
+    private OneOfElement _oneOf = new();
+
+    internal OneOfElement OneOf => _oneOf;
+
+    public Choices()
     {
-        private OneOfElement _oneOf = new();
+    }
 
-        internal OneOfElement OneOf => _oneOf;
+    public Choices(params string[] phrases)
+    {
+        Helpers.ThrowIfNull(phrases, "phrases");
+        Add(phrases);
+    }
 
-        public Choices()
+    public Choices(params GrammarBuilder[] alternateChoices)
+    {
+        Helpers.ThrowIfNull(alternateChoices, "alternateChoices");
+        Add(alternateChoices);
+    }
+
+    public void Add(params string[] phrases)
+    {
+        Helpers.ThrowIfNull(phrases, "phrases");
+        foreach (string text in phrases)
         {
+            Helpers.ThrowIfEmptyOrNull(text, "phrase");
+            _oneOf.Add(text);
         }
+    }
 
-        public Choices(params string[] phrases)
+    public void Add(params GrammarBuilder[] alternateChoices)
+    {
+        Helpers.ThrowIfNull(alternateChoices, "alternateChoices");
+        foreach (GrammarBuilder grammarBuilder in alternateChoices)
         {
-            Helpers.ThrowIfNull(phrases, "phrases");
-            Add(phrases);
+            Helpers.ThrowIfNull(grammarBuilder, "alternateChoice");
+            _oneOf.Items.Add(new ItemElement(grammarBuilder));
         }
+    }
 
-        public Choices(params GrammarBuilder[] alternateChoices)
-        {
-            Helpers.ThrowIfNull(alternateChoices, "alternateChoices");
-            Add(alternateChoices);
-        }
-
-        public void Add(params string[] phrases)
-        {
-            Helpers.ThrowIfNull(phrases, "phrases");
-            foreach (string text in phrases)
-            {
-                Helpers.ThrowIfEmptyOrNull(text, "phrase");
-                _oneOf.Add(text);
-            }
-        }
-
-        public void Add(params GrammarBuilder[] alternateChoices)
-        {
-            Helpers.ThrowIfNull(alternateChoices, "alternateChoices");
-            foreach (GrammarBuilder grammarBuilder in alternateChoices)
-            {
-                Helpers.ThrowIfNull(grammarBuilder, "alternateChoice");
-                _oneOf.Items.Add(new ItemElement(grammarBuilder));
-            }
-        }
-
-        public GrammarBuilder ToGrammarBuilder()
-        {
-            return new GrammarBuilder(this);
-        }
+    public GrammarBuilder ToGrammarBuilder()
+    {
+        return new GrammarBuilder(this);
     }
 }

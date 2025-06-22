@@ -26,154 +26,153 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+/// <summary>
+/// Represents a control for selecting the saturation of a color
+/// </summary>
+[ToolboxItem(false)]
+public class SaturationColourSliderControl : ColourSliderControl
 {
-    /// <summary>
-    /// Represents a control for selecting the saturation of a color
-    /// </summary>
-    [ToolboxItem(false)]
-    public class SaturationColourSliderControl : ColourSliderControl
+    #region Constants
+
+    private static readonly object _eventColourChanged = new();
+
+    #endregion
+
+    #region Fields
+
+    private Color _colour;
+
+    #endregion
+
+    #region Constructors
+
+    public SaturationColourSliderControl()
     {
-        #region Constants
+        this.BarStyle = ColourBarStyle.TwoColour;
+        this.Colour = Color.Black;
+    }
 
-        private static readonly object _eventColourChanged = new();
+    #endregion
 
-        #endregion
+    #region Events
 
-        #region Fields
+    [Category("Property Changed")]
+    public event EventHandler ColourChanged
+    {
+        add => this.Events.AddHandler(_eventColourChanged, value);
+        remove => this.Events.RemoveHandler(_eventColourChanged, value);
+    }
 
-        private Color _colour;
+    #endregion
 
-        #endregion
+    #region Properties
 
-        #region Constructors
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override ColourBarStyle BarStyle
+    {
+        get => base.BarStyle;
+        set => base.BarStyle = value;
+    }
 
-        public SaturationColourSliderControl()
+    [Category("Appearance")]
+    [DefaultValue(typeof(Color), "Black")]
+    public virtual Color Colour
+    {
+        get => _colour;
+        set
         {
-            this.BarStyle = ColourBarStyle.TwoColour;
-            this.Colour = Color.Black;
-        }
-
-        #endregion
-
-        #region Events
-
-        [Category("Property Changed")]
-        public event EventHandler ColourChanged
-        {
-            add => this.Events.AddHandler(_eventColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourChanged, value);
-        }
-
-        #endregion
-
-        #region Properties
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override ColourBarStyle BarStyle
-        {
-            get => base.BarStyle;
-            set => base.BarStyle = value;
-        }
-
-        [Category("Appearance")]
-        [DefaultValue(typeof(Color), "Black")]
-        public virtual Color Colour
-        {
-            get => _colour;
-            set
+            if (this.Colour != value)
             {
-                if (this.Colour != value)
-                {
-                    _colour = value;
+                _colour = value;
 
-                    this.OnColourChanged(EventArgs.Empty);
-                }
+                this.OnColourChanged(EventArgs.Empty);
             }
         }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override Color Colour1
-        {
-            get => base.Colour1;
-            set => base.Colour1 = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override Color Colour2
-        {
-            get => base.Colour2;
-            set => base.Colour2 = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override Color Colour3
-        {
-            get => base.Colour3;
-            set => base.Colour3 = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override float Maximum
-        {
-            get => base.Maximum;
-            set => base.Maximum = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override float Minimum
-        {
-            get => base.Minimum;
-            set => base.Minimum = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override float Value
-        {
-            get => base.Value;
-            set => base.Value = (int)value;
-        }
-
-        #endregion
-
-        #region Methods
-
-        protected virtual void CreateScale()
-        {
-            HSLColourStructure colour;
-
-            colour = new(this.Colour);
-
-            colour.S = 0;
-            this.Colour1 = colour.ToRgbColour();
-
-            colour.S = 1;
-            this.Colour2 = colour.ToRgbColour();
-        }
-
-        /// <summary>
-        /// Raises the <see cref="ColourChanged" /> event.
-        /// </summary>
-        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnColourChanged(EventArgs e)
-        {
-            EventHandler handler;
-
-            this.CreateScale();
-            this.Invalidate();
-
-            handler = (EventHandler)this.Events[_eventColourChanged];
-
-            handler?.Invoke(this, e);
-        }
-
-        #endregion
     }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override Color Colour1
+    {
+        get => base.Colour1;
+        set => base.Colour1 = value;
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override Color Colour2
+    {
+        get => base.Colour2;
+        set => base.Colour2 = value;
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override Color Colour3
+    {
+        get => base.Colour3;
+        set => base.Colour3 = value;
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override float Maximum
+    {
+        get => base.Maximum;
+        set => base.Maximum = value;
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override float Minimum
+    {
+        get => base.Minimum;
+        set => base.Minimum = value;
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override float Value
+    {
+        get => base.Value;
+        set => base.Value = (int)value;
+    }
+
+    #endregion
+
+    #region Methods
+
+    protected virtual void CreateScale()
+    {
+        HSLColourStructure colour;
+
+        colour = new(this.Colour);
+
+        colour.S = 0;
+        this.Colour1 = colour.ToRgbColour();
+
+        colour.S = 1;
+        this.Colour2 = colour.ToRgbColour();
+    }
+
+    /// <summary>
+    /// Raises the <see cref="ColourChanged" /> event.
+    /// </summary>
+    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+    protected virtual void OnColourChanged(EventArgs e)
+    {
+        EventHandler handler;
+
+        this.CreateScale();
+        this.Invalidate();
+
+        handler = (EventHandler)this.Events[_eventColourChanged];
+
+        handler?.Invoke(this, e);
+    }
+
+    #endregion
 }

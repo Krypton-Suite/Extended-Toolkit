@@ -25,58 +25,57 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+/// <summary>
+/// Indicates how a control is presented to the user. 
+/// </summary>
+public enum NaviLayoutStyle
 {
+    StyleFromOwner,
+
     /// <summary>
-    /// Indicates how a control is presented to the user. 
+    /// Presents the control in the Blue Office 2003 colour and layout style
     /// </summary>
-    public enum NaviLayoutStyle
-    {
-        StyleFromOwner,
+    Office2003Blue,
 
-        /// <summary>
-        /// Presents the control in the Blue Office 2003 colour and layout style
-        /// </summary>
-        Office2003Blue,
+    /// <summary>
+    /// Presents the control in the Green Office 2003 colour and layout style
+    /// </summary>
+    Office2003Green,
 
-        /// <summary>
-        /// Presents the control in the Green Office 2003 colour and layout style
-        /// </summary>
-        Office2003Green,
+    /// <summary>
+    /// Presents the control in the Silver Office 2003 colour and layout style
+    /// </summary>
+    Office2003Silver,
 
-        /// <summary>
-        /// Presents the control in the Silver Office 2003 colour and layout style
-        /// </summary>
-        Office2003Silver,
+    /// <summary>
+    /// Indicates that the control should be presented as the blue Ms Office 2007 Navigation pane
+    /// </summary>
+    Office2007Blue,
 
-        /// <summary>
-        /// Indicates that the control should be presented as the blue Ms Office 2007 Navigation pane
-        /// </summary>
-        Office2007Blue,
+    /// <summary>
+    /// Indicates that the control should be presented as the silver Ms Office 2007 Navigation pane
+    /// </summary>
+    Office2007Silver,
 
-        /// <summary>
-        /// Indicates that the control should be presented as the silver Ms Office 2007 Navigation pane
-        /// </summary>
-        Office2007Silver,
+    /// <summary>
+    /// Indicates that the control should be presented as the black Ms Office 2007 Navigation pane
+    /// </summary>
+    Office2007Black,
 
-        /// <summary>
-        /// Indicates that the control should be presented as the black Ms Office 2007 Navigation pane
-        /// </summary>
-        Office2007Black,
+    /// <summary>
+    /// Indicates that the control should be presented as the blue Ms Office 2010 Navigation pane
+    /// </summary>
+    Office2010Blue,
 
-        /// <summary>
-        /// Indicates that the control should be presented as the blue Ms Office 2010 Navigation pane
-        /// </summary>
-        Office2010Blue,
+    /// <summary>
+    /// Indicates that the control should be presented as the silver Ms Office 2010 Navigation pane
+    /// </summary>
+    Office2010Silver,
 
-        /// <summary>
-        /// Indicates that the control should be presented as the silver Ms Office 2010 Navigation pane
-        /// </summary>
-        Office2010Silver,
-
-        /// <summary>
-        /// Indicates that the control should be presented as the black Ms Office 2010 Navigation pane
-        /// </summary>
-        Office2010Black,
-    }
+    /// <summary>
+    /// Indicates that the control should be presented as the black Ms Office 2010 Navigation pane
+    /// </summary>
+    Office2010Black,
 }

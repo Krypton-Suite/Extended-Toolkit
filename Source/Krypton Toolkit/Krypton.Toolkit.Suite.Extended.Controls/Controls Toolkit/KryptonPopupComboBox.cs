@@ -25,143 +25,142 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
+namespace Krypton.Toolkit.Suite.Extended.Controls;
+
+[ToolboxBitmap(typeof(KryptonComboBox)), ToolboxItem(true), Description("Displays an editable text box with a drop-down list of permitted values.")]
+public partial class KryptonPopUpComboBox : KryptonComboBox
 {
-    [ToolboxBitmap(typeof(KryptonComboBox)), ToolboxItem(true), Description("Displays an editable text box with a drop-down list of permitted values.")]
-    public partial class KryptonPopUpComboBox : KryptonComboBox
+    #region Instance Fields
+
+    private Control _dropDownControl;
+
+    protected PopUp? _dropDown;
+
+    #endregion
+
+    #region Identity
+
+    public KryptonPopUpComboBox()
     {
-        #region Instance Fields
+        InitializeComponent();
 
-        private Control _dropDownControl;
+        base.DropDownHeight = base.DropDownWidth = 1;
 
-        protected PopUp? _dropDown;
+        IntegralHeight = false;
+    }
 
-        #endregion
+    #endregion
 
-        #region Identity
+    #region Public
 
-        public KryptonPopUpComboBox()
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Control DropDownControl
+    {
+        get => _dropDownControl;
+
+        set
         {
-            InitializeComponent();
-
-            base.DropDownHeight = base.DropDownWidth = 1;
-
-            IntegralHeight = false;
-        }
-
-        #endregion
-
-        #region Public
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Control DropDownControl
-        {
-            get => _dropDownControl;
-
-            set
+            if (_dropDownControl == value)
             {
-                if (_dropDownControl == value)
-                {
-                    return;
-                }
-
-                _dropDownControl = value;
-
-                _dropDown = new PopUp(value);
-            }
-        }
-
-        #endregion
-
-        #region Implementation
-
-        /// <summary>
-        /// Shows the drop down.
-        /// </summary>
-        public void ShowDropDown()
-        {
-            _dropDown?.Show(this);
-        }
-
-        /// <summary>
-        /// Hides the drop down.
-        /// </summary>
-        public void HideDropDown()
-        {
-            _dropDown?.Hide();
-        }
-
-        #endregion
-
-        #region Protected Overrides
-
-        protected override void WndProc(ref Message m)
-        {
-            if (NativeMethods.HIWORD(m.WParam) == NativeMethods.CBN_DROPDOWN)
-            {
-                // Blocks a redisplay when the user closes the control by clicking 
-                // on the combobox.
-                TimeSpan timeSpan = DateTime.Now.Subtract(_dropDown!.LastClosedTimeStamp);
-                if (timeSpan.TotalMilliseconds > 500)
-                {
-                    ShowDropDown();
-                }
-
                 return;
             }
 
-            base.WndProc(ref m);
+            _dropDownControl = value;
+
+            _dropDown = new PopUp(value);
         }
-
-        #endregion
-
-        #region Removed Designer
-
-        /// <summary>This property is not relevant for this class.</summary>
-        /// <returns>This property is not relevant for this class.</returns>
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never)]
-        public new int DropDownWidth
-        {
-            get => base.DropDownWidth;
-            set => base.DropDownWidth = value;
-        }
-
-        /// <summary>This property is not relevant for this class.</summary>
-        /// <returns>This property is not relevant for this class.</returns>
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never)]
-        public new int DropDownHeight
-        {
-            get => base.DropDownHeight;
-            set
-            {
-                _dropDown!.Height = value;
-                base.DropDownHeight = value;
-            }
-        }
-
-        /// <summary>This property is not relevant for this class.</summary>
-        /// <returns>This property is not relevant for this class.</returns>
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never)]
-        public new bool IntegralHeight
-        {
-            get => base.IntegralHeight;
-            set => base.IntegralHeight = value;
-        }
-
-        /// <summary>This property is not relevant for this class.</summary>
-        /// <returns>This property is not relevant for this class.</returns>
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never)]
-        public new ComboBox.ObjectCollection Items => base.Items;
-
-        /// <summary>This property is not relevant for this class.</summary>
-        /// <returns>This property is not relevant for this class.</returns>
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never)]
-        public new int ItemHeight
-        {
-            get => base.ItemHeight;
-            set => base.ItemHeight = value;
-        }
-
-        #endregion
     }
+
+    #endregion
+
+    #region Implementation
+
+    /// <summary>
+    /// Shows the drop down.
+    /// </summary>
+    public void ShowDropDown()
+    {
+        _dropDown?.Show(this);
+    }
+
+    /// <summary>
+    /// Hides the drop down.
+    /// </summary>
+    public void HideDropDown()
+    {
+        _dropDown?.Hide();
+    }
+
+    #endregion
+
+    #region Protected Overrides
+
+    protected override void WndProc(ref Message m)
+    {
+        if (NativeMethods.HIWORD(m.WParam) == NativeMethods.CBN_DROPDOWN)
+        {
+            // Blocks a redisplay when the user closes the control by clicking 
+            // on the combobox.
+            TimeSpan timeSpan = DateTime.Now.Subtract(_dropDown!.LastClosedTimeStamp);
+            if (timeSpan.TotalMilliseconds > 500)
+            {
+                ShowDropDown();
+            }
+
+            return;
+        }
+
+        base.WndProc(ref m);
+    }
+
+    #endregion
+
+    #region Removed Designer
+
+    /// <summary>This property is not relevant for this class.</summary>
+    /// <returns>This property is not relevant for this class.</returns>
+    [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never)]
+    public new int DropDownWidth
+    {
+        get => base.DropDownWidth;
+        set => base.DropDownWidth = value;
+    }
+
+    /// <summary>This property is not relevant for this class.</summary>
+    /// <returns>This property is not relevant for this class.</returns>
+    [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never)]
+    public new int DropDownHeight
+    {
+        get => base.DropDownHeight;
+        set
+        {
+            _dropDown!.Height = value;
+            base.DropDownHeight = value;
+        }
+    }
+
+    /// <summary>This property is not relevant for this class.</summary>
+    /// <returns>This property is not relevant for this class.</returns>
+    [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never)]
+    public new bool IntegralHeight
+    {
+        get => base.IntegralHeight;
+        set => base.IntegralHeight = value;
+    }
+
+    /// <summary>This property is not relevant for this class.</summary>
+    /// <returns>This property is not relevant for this class.</returns>
+    [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never)]
+    public new ComboBox.ObjectCollection Items => base.Items;
+
+    /// <summary>This property is not relevant for this class.</summary>
+    /// <returns>This property is not relevant for this class.</returns>
+    [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never)]
+    public new int ItemHeight
+    {
+        get => base.ItemHeight;
+        set => base.ItemHeight = value;
+    }
+
+    #endregion
 }

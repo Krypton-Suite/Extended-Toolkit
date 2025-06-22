@@ -25,356 +25,355 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs;
+
+/// <summary>Allows the user to browse for files.</summary>
+[ToolboxBitmap(typeof(KryptonTextBox)), Description(@"Allows the user to browse for files.")]
+public class KryptonBrowseComboBox : KryptonComboBox
 {
-    /// <summary>Allows the user to browse for files.</summary>
-    [ToolboxBitmap(typeof(KryptonTextBox)), Description(@"Allows the user to browse for files.")]
-    public class KryptonBrowseComboBox : KryptonComboBox
+    #region Instance Fields
+
+    private bool _useSaveDialog;
+
+    private bool _showResetButton;
+
+    private bool _isFolderPicker;
+
+    private bool _isExpandedMode;
+
+    private ButtonSpecAny _bsaBrowse;
+
+    private ButtonSpecAny _bsaReset;
+
+    private CommonFileDialogFilter _filter;
+
+    private CommonFileDialogFilterCollection _filterCollection;
+
+    private FileDialogType _fileDialogType;
+
+    private string _initialDirectory;
+
+    private string _resetText;
+
+    private string _resetTextToolTipHeading;
+
+    private string _resetTextToolTipDescription;
+
+    private string _standardFilter;
+
+    private Image _smallResetImage;
+
+    private Image _largeResetImage;
+
+    private KryptonCommand _kcBrowse;
+
+    private KryptonCommand _kcReset;
+
+    #endregion
+
+    #region Public
+
+    /// <summary>Gets or sets a value indicating whether [use save dialog].</summary>
+    /// <value><c>true</c> if [use save dialog]; otherwise, <c>false</c>.</value>
+    [DefaultValue(false), Description(@"Gets or sets a value indicating whether to use the 'CommonSaveFileDialog'.")]
+    public bool UseSaveDialog { get => _useSaveDialog; set => _useSaveDialog = value; }
+
+    /// <summary>Gets or sets a value indicating whether to show the reset button.</summary>
+    /// <value><c>true</c> if [show reset button]; otherwise, <c>false</c>.</value>
+    [DefaultValue(false), Description(@"Gets or sets a value indicating whether to show the reset button.")]
+    public bool ShowResetButton { get => _showResetButton; set { _showResetButton = value; Invalidate(); } }
+
+    /// <summary>Gets or sets a value indicating whether the open file dialog is a folder picker.</summary>
+    /// <value><c>true</c> if the open file dialog is a folder picker; otherwise, <c>false</c>.</value>
+    [DefaultValue(false), Description(@"Gets or sets a value indicating whether the open file dialog is a folder picker.")]
+    public bool IsFolderPicker { get => _isFolderPicker; set => _isFolderPicker = value; }
+
+    /// <summary>Gets or sets a value indicating whether the save file dialog is in expanded mode.</summary>
+    /// <value><c>true</c> if the save file dialog is in expanded mode; otherwise, <c>false</c>.</value>
+    [DefaultValue(false), Description(@"Gets or sets a value indicating whether the save file dialog is in expanded mode.")]
+    public bool IsExpandedMode { get => _isExpandedMode; set => _isExpandedMode = value; }
+
+    /// <summary>Gets or sets the file dialog filter. Please see <see cref="CommonFileDialogFilter"/> for more information.</summary>
+    /// <value> The file dialog filter.</value>
+    [DefaultValue(null), Description(@"Gets or sets the file dialog filter. Please see 'Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogFilter' for more information.")]
+    public CommonFileDialogFilter FileDialogFilter { get => _filter; set => _filter = value; }
+
+    /// <summary>Gets or sets the file dialog filter collection. Please see <see cref="CommonFileDialogFilterCollection"/> for more information.</summary>
+    /// <value>The file dialog filter collection.</value>
+    [DefaultValue(null), Description(@"Gets or sets the file dialog filter collection. Please see 'Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogFilterCollection' for more information.")]
+    public CommonFileDialogFilterCollection FileDialogFilterCollection { get => _filterCollection; set => _filterCollection = value; }
+
+    public FileDialogType FileDialogType { get => _fileDialogType; set => _fileDialogType = value; }
+
+    /// <summary>Gets or sets the initial directory.</summary>
+    /// <value>The initial directory.</value>
+    [DefaultValue(null), Description(@"Gets or sets the initial directory.")]
+    public string InitialDirectory { get => _initialDirectory; set => _initialDirectory = value; }
+
+    /// <summary>Gets or sets the reset text.</summary>
+    /// <value>The reset text.</value>
+    [DefaultValue(@"&Reset"), Description(@"Gets or sets the reset text.")]
+    public new string ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
+
+    /// <summary>Gets or sets the reset text tool tip heading.</summary>
+    /// <value>The reset text tool tip heading.</value>
+    [DefaultValue(@"Reset"), Description(@"Gets or sets the reset text tool tip heading.")]
+    public string ResetTextToolTipHeading { get => _resetTextToolTipHeading; set => _resetTextToolTipHeading = value; }
+
+    /// <summary>Gets or sets the reset text tool tip description.</summary>
+    /// <value>The reset text tool tip description.</value>
+    [DefaultValue(@"Resets the text of the text box."), Description(@">Gets or sets the reset text tool tip description.")]
+    public string ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
+
+    public string StandardFilter { get => _standardFilter; set => _standardFilter = value; }
+
+    /// <summary>Gets or sets the small reset image.</summary>
+    /// <value>The small reset image.</value>
+    [DefaultValue(typeof(Image), @"Properties.Resources.Reset_16_x_16"), Description(@"Gets or sets the small reset image.")]
+    public Image SmallResetImage { get => _smallResetImage; set => _smallResetImage = value; }
+
+    /// <summary>Gets or sets the large reset image.</summary>
+    /// <value>The large reset image.</value>
+    [DefaultValue(typeof(Image), @"Properties.Resources.Reset_32_x_32"), Description(@"Gets or sets the large reset image.")]
+    public Image LargeResetImage { get => _largeResetImage; set => _largeResetImage = value; }
+
+    #endregion
+
+    #region Identity
+
+    /// <summary>Initializes a new instance of the <see cref="KryptonBrowseComboBox" /> class.</summary>
+    public KryptonBrowseComboBox()
     {
-        #region Instance Fields
+        _bsaBrowse = new();
 
-        private bool _useSaveDialog;
+        _bsaReset = new();
 
-        private bool _showResetButton;
+        _kcBrowse = new();
 
-        private bool _isFolderPicker;
+        _kcReset = new();
 
-        private bool _isExpandedMode;
+        _smallResetImage = Image.FromFile("ImageResources.Reset_16_x_16.png");
 
-        private ButtonSpecAny _bsaBrowse;
+        _largeResetImage = Image.FromFile("ImageResources.Reset_32_x_32.png");
 
-        private ButtonSpecAny _bsaReset;
+        _bsaBrowse.Text = "...";
 
-        private CommonFileDialogFilter _filter;
+        _bsaBrowse.KryptonCommand = _kcBrowse;
 
-        private CommonFileDialogFilterCollection _filterCollection;
+        _kcBrowse.Text = "...";
 
-        private FileDialogType _fileDialogType;
+        _bsaReset.ToolTipImage = _smallResetImage;
 
-        private string _initialDirectory;
+        _bsaReset.ToolTipBody = _resetTextToolTipDescription;
 
-        private string _resetText;
+        _bsaReset.ToolTipTitle = _resetTextToolTipHeading;
 
-        private string _resetTextToolTipHeading;
+        _bsaReset.Text = _resetText;
 
-        private string _resetTextToolTipDescription;
+        _bsaReset.Image = _smallResetImage;
 
-        private string _standardFilter;
+        _bsaReset.KryptonCommand = _kcReset;
 
-        private Image _smallResetImage;
+        _kcReset.Text = _resetText;
 
-        private Image _largeResetImage;
+        _bsaReset.Enabled = ButtonEnabled.False;
 
-        private KryptonCommand _kcBrowse;
+        _kcBrowse.Execute += Browse_Execute;
 
-        private KryptonCommand _kcReset;
+        _kcReset.ImageLarge = _largeResetImage;
 
-        #endregion
+        _kcReset.ImageSmall = _smallResetImage;
 
-        #region Public
+        _kcReset.Execute += Reset_Execute;
 
-        /// <summary>Gets or sets a value indicating whether [use save dialog].</summary>
-        /// <value><c>true</c> if [use save dialog]; otherwise, <c>false</c>.</value>
-        [DefaultValue(false), Description(@"Gets or sets a value indicating whether to use the 'CommonSaveFileDialog'.")]
-        public bool UseSaveDialog { get => _useSaveDialog; set => _useSaveDialog = value; }
+        ButtonSpecs.AddRange([_bsaBrowse, _bsaReset]);
 
-        /// <summary>Gets or sets a value indicating whether to show the reset button.</summary>
-        /// <value><c>true</c> if [show reset button]; otherwise, <c>false</c>.</value>
-        [DefaultValue(false), Description(@"Gets or sets a value indicating whether to show the reset button.")]
-        public bool ShowResetButton { get => _showResetButton; set { _showResetButton = value; Invalidate(); } }
+        _fileDialogType = FileDialogType.Standard;
 
-        /// <summary>Gets or sets a value indicating whether the open file dialog is a folder picker.</summary>
-        /// <value><c>true</c> if the open file dialog is a folder picker; otherwise, <c>false</c>.</value>
-        [DefaultValue(false), Description(@"Gets or sets a value indicating whether the open file dialog is a folder picker.")]
-        public bool IsFolderPicker { get => _isFolderPicker; set => _isFolderPicker = value; }
+        _standardFilter = string.Empty;
+    }
 
-        /// <summary>Gets or sets a value indicating whether the save file dialog is in expanded mode.</summary>
-        /// <value><c>true</c> if the save file dialog is in expanded mode; otherwise, <c>false</c>.</value>
-        [DefaultValue(false), Description(@"Gets or sets a value indicating whether the save file dialog is in expanded mode.")]
-        public bool IsExpandedMode { get => _isExpandedMode; set => _isExpandedMode = value; }
+    #endregion
 
-        /// <summary>Gets or sets the file dialog filter. Please see <see cref="CommonFileDialogFilter"/> for more information.</summary>
-        /// <value> The file dialog filter.</value>
-        [DefaultValue(null), Description(@"Gets or sets the file dialog filter. Please see 'Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogFilter' for more information.")]
-        public CommonFileDialogFilter FileDialogFilter { get => _filter; set => _filter = value; }
+    #region Implementation
 
-        /// <summary>Gets or sets the file dialog filter collection. Please see <see cref="CommonFileDialogFilterCollection"/> for more information.</summary>
-        /// <value>The file dialog filter collection.</value>
-        [DefaultValue(null), Description(@"Gets or sets the file dialog filter collection. Please see 'Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogFilterCollection' for more information.")]
-        public CommonFileDialogFilterCollection FileDialogFilterCollection { get => _filterCollection; set => _filterCollection = value; }
-
-        public FileDialogType FileDialogType { get => _fileDialogType; set => _fileDialogType = value; }
-
-        /// <summary>Gets or sets the initial directory.</summary>
-        /// <value>The initial directory.</value>
-        [DefaultValue(null), Description(@"Gets or sets the initial directory.")]
-        public string InitialDirectory { get => _initialDirectory; set => _initialDirectory = value; }
-
-        /// <summary>Gets or sets the reset text.</summary>
-        /// <value>The reset text.</value>
-        [DefaultValue(@"&Reset"), Description(@"Gets or sets the reset text.")]
-        public new string ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
-
-        /// <summary>Gets or sets the reset text tool tip heading.</summary>
-        /// <value>The reset text tool tip heading.</value>
-        [DefaultValue(@"Reset"), Description(@"Gets or sets the reset text tool tip heading.")]
-        public string ResetTextToolTipHeading { get => _resetTextToolTipHeading; set => _resetTextToolTipHeading = value; }
-
-        /// <summary>Gets or sets the reset text tool tip description.</summary>
-        /// <value>The reset text tool tip description.</value>
-        [DefaultValue(@"Resets the text of the text box."), Description(@">Gets or sets the reset text tool tip description.")]
-        public string ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
-
-        public string StandardFilter { get => _standardFilter; set => _standardFilter = value; }
-
-        /// <summary>Gets or sets the small reset image.</summary>
-        /// <value>The small reset image.</value>
-        [DefaultValue(typeof(Image), @"Properties.Resources.Reset_16_x_16"), Description(@"Gets or sets the small reset image.")]
-        public Image SmallResetImage { get => _smallResetImage; set => _smallResetImage = value; }
-
-        /// <summary>Gets or sets the large reset image.</summary>
-        /// <value>The large reset image.</value>
-        [DefaultValue(typeof(Image), @"Properties.Resources.Reset_32_x_32"), Description(@"Gets or sets the large reset image.")]
-        public Image LargeResetImage { get => _largeResetImage; set => _largeResetImage = value; }
-
-        #endregion
-
-        #region Identity
-
-        /// <summary>Initializes a new instance of the <see cref="KryptonBrowseComboBox" /> class.</summary>
-        public KryptonBrowseComboBox()
+    /// <summary>Handles the Execute event of the Browse control.</summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+    private void Browse_Execute(object sender, EventArgs e)
+    {
+        switch (_fileDialogType)
         {
-            _bsaBrowse = new();
+            case FileDialogType.Krypton:
+                if (_useSaveDialog)
+                {
+                    KryptonSaveFileDialog saveFileDialog = new();
 
-            _bsaReset = new();
+                    if (!string.IsNullOrEmpty(_initialDirectory))
+                    {
+                        saveFileDialog.InitialDirectory = _initialDirectory;
+                    }
 
-            _kcBrowse = new();
+                    if (_standardFilter != null)
+                    {
+                        saveFileDialog.Filter = _standardFilter;
+                    }
 
-            _kcReset = new();
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        Text = Path.GetFullPath(saveFileDialog.FileName);
+                    }
+                }
+                else
+                {
+                    KryptonOpenFileDialog openFileDialog = new();
 
-            _smallResetImage = Image.FromFile("ImageResources.Reset_16_x_16.png");
+                    if (!string.IsNullOrWhiteSpace(_initialDirectory))
+                    {
+                        openFileDialog.InitialDirectory = _initialDirectory;
+                    }
 
-            _largeResetImage = Image.FromFile("ImageResources.Reset_32_x_32.png");
+                    if (_standardFilter != null)
+                    {
+                        openFileDialog.Filter = _standardFilter;
+                    }
 
-            _bsaBrowse.Text = "...";
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        Text = Path.GetFullPath(openFileDialog.FileName);
+                    }
+                }
+                break;
+            case FileDialogType.Standard:
+                if (_useSaveDialog)
+                {
+                    SaveFileDialog saveFileDialog = new();
 
-            _bsaBrowse.KryptonCommand = _kcBrowse;
+                    if (!string.IsNullOrEmpty(_initialDirectory))
+                    {
+                        saveFileDialog.InitialDirectory = _initialDirectory;
+                    }
 
-            _kcBrowse.Text = "...";
+                    if (_standardFilter != null)
+                    {
+                        saveFileDialog.Filter = _standardFilter;
+                    }
 
-            _bsaReset.ToolTipImage = _smallResetImage;
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        Text = Path.GetFullPath(saveFileDialog.FileName);
+                    }
+                }
+                else
+                {
+                    OpenFileDialog openFileDialog = new();
 
-            _bsaReset.ToolTipBody = _resetTextToolTipDescription;
+                    if (!string.IsNullOrWhiteSpace(_initialDirectory))
+                    {
+                        openFileDialog.InitialDirectory = _initialDirectory;
+                    }
 
-            _bsaReset.ToolTipTitle = _resetTextToolTipHeading;
+                    if (_standardFilter != null)
+                    {
+                        openFileDialog.Filter = _standardFilter;
+                    }
 
-            _bsaReset.Text = _resetText;
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        Text = Path.GetFullPath(openFileDialog.FileName);
+                    }
+                }
+                break;
+            case FileDialogType.WindowsAPICodePack:
+                if (_useSaveDialog)
+                {
+                    CommonSaveFileDialog saveFileDialog = new();
 
-            _bsaReset.Image = _smallResetImage;
+                    saveFileDialog.IsExpandedMode = _isExpandedMode;
 
-            _bsaReset.KryptonCommand = _kcReset;
+                    if (!string.IsNullOrEmpty(_initialDirectory))
+                    {
+                        saveFileDialog.InitialDirectory = _initialDirectory;
+                    }
 
-            _kcReset.Text = _resetText;
+                    if (_filter != null)
+                    {
+                        saveFileDialog.Filters.Add(_filter);
+                    }
+
+                    if (saveFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        Text = Path.GetFullPath(saveFileDialog.FileName);
+                    }
+                }
+                else
+                {
+                    CommonOpenFileDialog dialog = new();
+
+                    dialog.IsFolderPicker = _isFolderPicker;
+
+                    if (!string.IsNullOrEmpty(_initialDirectory))
+                    {
+                        dialog.InitialDirectory = _initialDirectory;
+                    }
+
+                    if (_filter != null)
+                    {
+                        dialog.Filters.Add(_filter);
+                    }
+
+                    if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        Text = Path.GetFullPath(dialog.FileName);
+                    }
+                }
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    /// <summary>Handles the Execute event of the Reset control.</summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+    private void Reset_Execute(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(Text))
+        {
+            Text = string.Empty;
 
             _bsaReset.Enabled = ButtonEnabled.False;
-
-            _kcBrowse.Execute += Browse_Execute;
-
-            _kcReset.ImageLarge = _largeResetImage;
-
-            _kcReset.ImageSmall = _smallResetImage;
-
-            _kcReset.Execute += Reset_Execute;
-
-            ButtonSpecs.AddRange([_bsaBrowse, _bsaReset]);
-
-            _fileDialogType = FileDialogType.Standard;
-
-            _standardFilter = string.Empty;
         }
-
-        #endregion
-
-        #region Implementation
-
-        /// <summary>Handles the Execute event of the Browse control.</summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void Browse_Execute(object sender, EventArgs e)
-        {
-            switch (_fileDialogType)
-            {
-                case FileDialogType.Krypton:
-                    if (_useSaveDialog)
-                    {
-                        KryptonSaveFileDialog saveFileDialog = new();
-
-                        if (!string.IsNullOrEmpty(_initialDirectory))
-                        {
-                            saveFileDialog.InitialDirectory = _initialDirectory;
-                        }
-
-                        if (_standardFilter != null)
-                        {
-                            saveFileDialog.Filter = _standardFilter;
-                        }
-
-                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                        {
-                            Text = Path.GetFullPath(saveFileDialog.FileName);
-                        }
-                    }
-                    else
-                    {
-                        KryptonOpenFileDialog openFileDialog = new();
-
-                        if (!string.IsNullOrWhiteSpace(_initialDirectory))
-                        {
-                            openFileDialog.InitialDirectory = _initialDirectory;
-                        }
-
-                        if (_standardFilter != null)
-                        {
-                            openFileDialog.Filter = _standardFilter;
-                        }
-
-                        if (openFileDialog.ShowDialog() == DialogResult.OK)
-                        {
-                            Text = Path.GetFullPath(openFileDialog.FileName);
-                        }
-                    }
-                    break;
-                case FileDialogType.Standard:
-                    if (_useSaveDialog)
-                    {
-                        SaveFileDialog saveFileDialog = new();
-
-                        if (!string.IsNullOrEmpty(_initialDirectory))
-                        {
-                            saveFileDialog.InitialDirectory = _initialDirectory;
-                        }
-
-                        if (_standardFilter != null)
-                        {
-                            saveFileDialog.Filter = _standardFilter;
-                        }
-
-                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                        {
-                            Text = Path.GetFullPath(saveFileDialog.FileName);
-                        }
-                    }
-                    else
-                    {
-                        OpenFileDialog openFileDialog = new();
-
-                        if (!string.IsNullOrWhiteSpace(_initialDirectory))
-                        {
-                            openFileDialog.InitialDirectory = _initialDirectory;
-                        }
-
-                        if (_standardFilter != null)
-                        {
-                            openFileDialog.Filter = _standardFilter;
-                        }
-
-                        if (openFileDialog.ShowDialog() == DialogResult.OK)
-                        {
-                            Text = Path.GetFullPath(openFileDialog.FileName);
-                        }
-                    }
-                    break;
-                case FileDialogType.WindowsAPICodePack:
-                    if (_useSaveDialog)
-                    {
-                        CommonSaveFileDialog saveFileDialog = new();
-
-                        saveFileDialog.IsExpandedMode = _isExpandedMode;
-
-                        if (!string.IsNullOrEmpty(_initialDirectory))
-                        {
-                            saveFileDialog.InitialDirectory = _initialDirectory;
-                        }
-
-                        if (_filter != null)
-                        {
-                            saveFileDialog.Filters.Add(_filter);
-                        }
-
-                        if (saveFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
-                        {
-                            Text = Path.GetFullPath(saveFileDialog.FileName);
-                        }
-                    }
-                    else
-                    {
-                        CommonOpenFileDialog dialog = new();
-
-                        dialog.IsFolderPicker = _isFolderPicker;
-
-                        if (!string.IsNullOrEmpty(_initialDirectory))
-                        {
-                            dialog.InitialDirectory = _initialDirectory;
-                        }
-
-                        if (_filter != null)
-                        {
-                            dialog.Filters.Add(_filter);
-                        }
-
-                        if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-                        {
-                            Text = Path.GetFullPath(dialog.FileName);
-                        }
-                    }
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        /// <summary>Handles the Execute event of the Reset control.</summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void Reset_Execute(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(Text))
-            {
-                Text = string.Empty;
-
-                _bsaReset.Enabled = ButtonEnabled.False;
-            }
-        }
-
-        #endregion
-
-        #region Protected
-
-        /// <summary>Raises the Paint event.</summary>
-        /// <param name="e">A PaintEventArgs containing the event data.</param>
-        protected override void OnPaint(PaintEventArgs? e)
-        {
-            _bsaReset.Visible = _showResetButton;
-
-            base.OnPaint(e);
-        }
-
-        /// <summary>Raises the <see cref="E:System.Windows.Forms.Control.TextChanged">TextChanged</see> event.</summary>
-        /// <param name="e">An <see cref="T:System.EventArgs">EventArgs</see> that contains the event data.</param>
-        protected override void OnTextChanged(EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(Text))
-            {
-                _bsaReset.Enabled = ButtonEnabled.True;
-            }
-            else
-            {
-                _bsaReset.Enabled = ButtonEnabled.False;
-            }
-
-            base.OnTextChanged(e);
-        }
-
-        #endregion
     }
+
+    #endregion
+
+    #region Protected
+
+    /// <summary>Raises the Paint event.</summary>
+    /// <param name="e">A PaintEventArgs containing the event data.</param>
+    protected override void OnPaint(PaintEventArgs? e)
+    {
+        _bsaReset.Visible = _showResetButton;
+
+        base.OnPaint(e);
+    }
+
+    /// <summary>Raises the <see cref="E:System.Windows.Forms.Control.TextChanged">TextChanged</see> event.</summary>
+    /// <param name="e">An <see cref="T:System.EventArgs">EventArgs</see> that contains the event data.</param>
+    protected override void OnTextChanged(EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(Text))
+        {
+            _bsaReset.Enabled = ButtonEnabled.True;
+        }
+        else
+        {
+            _bsaReset.Enabled = ButtonEnabled.False;
+        }
+
+        base.OnTextChanged(e);
+    }
+
+    #endregion
 }

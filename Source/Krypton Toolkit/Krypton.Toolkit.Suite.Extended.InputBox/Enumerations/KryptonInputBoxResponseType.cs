@@ -25,18 +25,17 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.InputBox
+namespace Krypton.Toolkit.Suite.Extended.InputBox;
+
+public enum KryptonInputBoxResponseType
 {
-    public enum KryptonInputBoxResponseType
-    {
-        None = 0,
-        ComboBox = 1,
-        DateTimePicker = 2,
-        TextBox = 3,
-        MaskedTextBox = 4,
-        PasswordBox = 5,
-        RichTextBox = 6,
-        NumericUpDown = 7,
-        DomainUpDown = 8,
-    }
+    None = 0,
+    ComboBox = 1,
+    DateTimePicker = 2,
+    TextBox = 3,
+    MaskedTextBox = 4,
+    PasswordBox = 5,
+    RichTextBox = 6,
+    NumericUpDown = 7,
+    DomainUpDown = 8,
 }

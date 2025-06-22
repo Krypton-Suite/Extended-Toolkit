@@ -25,12 +25,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Networking
-{
-    internal class PortState
-    {
-        public int Port { get; set; }
+namespace Krypton.Toolkit.Suite.Extended.Networking;
 
-        public bool IsOpen { get; set; }
-    }
+internal class PortState
+{
+    public int Port { get; set; }
+
+    public bool IsOpen { get; set; }
 }

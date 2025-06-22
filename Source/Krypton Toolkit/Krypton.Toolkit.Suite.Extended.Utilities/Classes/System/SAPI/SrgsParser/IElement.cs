@@ -26,10 +26,9 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+internal interface IElement
 {
-    internal interface IElement
-    {
-        void PostParse(IElement parent);
-    }
+    void PostParse(IElement parent);
 }

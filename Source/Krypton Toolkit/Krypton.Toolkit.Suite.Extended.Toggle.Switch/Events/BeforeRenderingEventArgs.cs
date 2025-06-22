@@ -25,12 +25,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
-{
-    public class BeforeRenderingEventArgs
-    {
-        public ToggleSwitchRendererBase Renderer { get; set; }
+namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch;
 
-        public BeforeRenderingEventArgs(ToggleSwitchRendererBase renderer) => Renderer = renderer;
-    }
+public class BeforeRenderingEventArgs
+{
+    public ToggleSwitchRendererBase Renderer { get; set; }
+
+    public BeforeRenderingEventArgs(ToggleSwitchRendererBase renderer) => Renderer = renderer;
 }

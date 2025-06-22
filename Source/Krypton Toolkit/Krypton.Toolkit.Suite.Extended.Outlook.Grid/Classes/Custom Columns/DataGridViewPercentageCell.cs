@@ -16,94 +16,93 @@
 //--------------------------------------------------------------------------------
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+
+/// <summary>
+/// Class for a DataGridViewPercentageCell
+/// </summary>
+public class DataGridViewPercentageCell : KryptonDataGridViewTextBoxCell
 {
     /// <summary>
-    /// Class for a DataGridViewPercentageCell
+    /// Constructor
     /// </summary>
-    public class DataGridViewPercentageCell : KryptonDataGridViewTextBoxCell
+    public DataGridViewPercentageCell()
     {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public DataGridViewPercentageCell()
+        Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+    }
+
+    /// <summary>
+    /// Specify the type of object used for editing. This is how the WinForms
+    /// framework figures out what type of edit control to make.
+    /// </summary>
+    public override Type EditType => typeof(PercentageEditingControl);
+
+    /// <summary>
+    /// Overrides TypeValue
+    /// </summary>
+    public override Type ValueType => typeof(double);
+
+    /// <summary>
+    /// Specify the default cell contents upon creation of a new cell.
+    /// </summary>
+    public override object DefaultNewRowValue => 0;
+
+    /// <summary>
+    /// Overrides Paint
+    /// </summary>
+    /// <param name="graphics"></param>
+    /// <param name="clipBounds"></param>
+    /// <param name="cellBounds"></param>
+    /// <param name="rowIndex"></param>
+    /// <param name="cellState"></param>
+    /// <param name="value"></param>
+    /// <param name="formattedValue"></param>
+    /// <param name="errorText"></param>
+    /// <param name="cellStyle"></param>
+    /// <param name="advancedBorderStyle"></param>
+    /// <param name="paintParts"></param>
+    protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle,
+        DataGridViewPaintParts paintParts)
+    {
+        //Draw the bar
+        int barWidth;
+        if ((double)value >= 1.0)
         {
-            Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            barWidth = (int)(cellBounds.Width - 10);
+        }
+        else
+        {
+            barWidth = (int)((cellBounds.Width - 10) * (double)value);
         }
 
-        /// <summary>
-        /// Specify the type of object used for editing. This is how the WinForms
-        /// framework figures out what type of edit control to make.
-        /// </summary>
-        public override Type EditType => typeof(PercentageEditingControl);
-
-        /// <summary>
-        /// Overrides TypeValue
-        /// </summary>
-        public override Type ValueType => typeof(double);
-
-        /// <summary>
-        /// Specify the default cell contents upon creation of a new cell.
-        /// </summary>
-        public override object DefaultNewRowValue => 0;
-
-        /// <summary>
-        /// Overrides Paint
-        /// </summary>
-        /// <param name="graphics"></param>
-        /// <param name="clipBounds"></param>
-        /// <param name="cellBounds"></param>
-        /// <param name="rowIndex"></param>
-        /// <param name="cellState"></param>
-        /// <param name="value"></param>
-        /// <param name="formattedValue"></param>
-        /// <param name="errorText"></param>
-        /// <param name="cellStyle"></param>
-        /// <param name="advancedBorderStyle"></param>
-        /// <param name="paintParts"></param>
-        protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle,
-                                      DataGridViewPaintParts paintParts)
+        if ((double)value > 0 && barWidth > 0)
         {
-            //Draw the bar
-            int barWidth;
-            if ((double)value >= 1.0)
+            Rectangle r = new(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
+
+            using (LinearGradientBrush linearBrush = new(r, KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), KryptonManager.CurrentGlobalPalette.GetBackColor2(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), LinearGradientMode.Vertical))
             {
-                barWidth = (int)(cellBounds.Width - 10);
-            }
-            else
-            {
-                barWidth = (int)((cellBounds.Width - 10) * (double)value);
+                graphics.FillRectangle(linearBrush, r);
             }
 
-            if ((double)value > 0 && barWidth > 0)
+            using (Pen pen = new(KryptonManager.CurrentGlobalPalette.GetBorderColor1(PaletteBorderStyle.GridHeaderColumnList, PaletteState.Normal)))
             {
-                Rectangle r = new(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
-
-                using (LinearGradientBrush linearBrush = new(r, KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), KryptonManager.CurrentGlobalPalette.GetBackColor2(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), LinearGradientMode.Vertical))
-                {
-                    graphics.FillRectangle(linearBrush, r);
-                }
-
-                using (Pen pen = new(KryptonManager.CurrentGlobalPalette.GetBorderColor1(PaletteBorderStyle.GridHeaderColumnList, PaletteState.Normal)))
-                {
-                    graphics.DrawRectangle(pen, r);
-                }
-
-                //TODO : implement customization like conditional formatting
-                //using (LinearGradientBrush linearBrush = new LinearGradientBrush(r, Color.FromArgb(255, 140, 197, 66), Color.FromArgb(255, 247, 251, 242), LinearGradientMode.Horizontal))
-                //{
-                //    graphics.FillRectangle(linearBrush, r);
-                //}
-
-                //using (Pen pen = new Pen(Color.FromArgb(255, 140, 197, 66)))
-                //{
-                //    graphics.DrawRectangle(pen, r);
-
-                //}
+                graphics.DrawRectangle(pen, r);
             }
 
-            base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle,
-                DataGridViewPaintParts.None | DataGridViewPaintParts.ContentForeground);
+            //TODO : implement customization like conditional formatting
+            //using (LinearGradientBrush linearBrush = new LinearGradientBrush(r, Color.FromArgb(255, 140, 197, 66), Color.FromArgb(255, 247, 251, 242), LinearGradientMode.Horizontal))
+            //{
+            //    graphics.FillRectangle(linearBrush, r);
+            //}
+
+            //using (Pen pen = new Pen(Color.FromArgb(255, 140, 197, 66)))
+            //{
+            //    graphics.DrawRectangle(pen, r);
+
+            //}
         }
+
+        base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle,
+            DataGridViewPaintParts.None | DataGridViewPaintParts.ContentForeground);
     }
 }

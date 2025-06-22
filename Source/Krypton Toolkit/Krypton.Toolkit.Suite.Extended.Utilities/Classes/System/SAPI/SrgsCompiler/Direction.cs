@@ -26,11 +26,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+
+internal enum Direction
 {
-    internal enum Direction
-    {
-        Left,
-        Right
-    }
+    Left,
+    Right
 }

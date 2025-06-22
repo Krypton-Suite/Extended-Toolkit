@@ -26,263 +26,262 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens;
+
+internal static class SAPICategories
 {
-    internal static class SAPICategories
+    private const string SpeechRegistryKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\";
+
+    internal const string CurrentUserVoices = "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Speech\\Voices";
+
+    internal const string Recognizers = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Recognizers";
+
+    internal const string Voices = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices";
+
+    internal const string AudioIn = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\AudioInput";
+
+    private const string _defaultTokenIdValueName = "DefaultTokenId";
+
+    private static readonly string[] asVersionDefault =
+    [
+        "VersionDefault"
+    ];
+
+    internal static ObjectToken DefaultToken(string category)
     {
-        private const string SpeechRegistryKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\";
-
-        internal const string CurrentUserVoices = "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Speech\\Voices";
-
-        internal const string Recognizers = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Recognizers";
-
-        internal const string Voices = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices";
-
-        internal const string AudioIn = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\AudioInput";
-
-        private const string _defaultTokenIdValueName = "DefaultTokenId";
-
-        private static readonly string[] asVersionDefault =
-        [
-            "VersionDefault"
-        ];
-
-        internal static ObjectToken DefaultToken(string category)
+        Helpers.ThrowIfEmptyOrNull(category, "category");
+        ObjectToken objectToken = null;
+        objectToken = DefaultToken($"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Speech\\{category}", "DefaultTokenId");
+        if (objectToken == null)
         {
-            Helpers.ThrowIfEmptyOrNull(category, "category");
-            ObjectToken objectToken = null;
-            objectToken = DefaultToken($"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Speech\\{category}", "DefaultTokenId");
-            if (objectToken == null)
-            {
-                objectToken = DefaultToken($"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\{category}", "DefaultTokenId");
-            }
-            return objectToken;
+            objectToken = DefaultToken($"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\{category}", "DefaultTokenId");
         }
+        return objectToken;
+    }
 
-        internal static int DefaultDeviceOut()
+    internal static int DefaultDeviceOut()
+    {
+        int result = -1;
+        using (ObjectTokenCategory objectTokenCategory = ObjectTokenCategory.Create("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Speech\\AudioOutput"))
         {
-            int result = -1;
-            using (ObjectTokenCategory objectTokenCategory = ObjectTokenCategory.Create("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Speech\\AudioOutput"))
+            if (objectTokenCategory == null)
             {
-                if (objectTokenCategory == null)
-                {
-                    return result;
-                }
-                string value;
-                if (!objectTokenCategory.TryGetString("DefaultTokenId", out value))
-                {
-                    return result;
-                }
-                int num = value.IndexOf('\\');
-                if (num <= 0)
-                {
-                    return result;
-                }
-                if (num < value.Length)
-                {
-                    using (RegistryDataKey registryDataKey = RegistryDataKey.Create(value.Substring(num + 1), Registry.LocalMachine))
-                    {
-                        if (registryDataKey != null)
-                        {
-                            return AudioDeviceOut.GetDevicedId(registryDataKey.Name);
-                        }
-                        return result;
-                    }
-                }
                 return result;
             }
-        }
-
-        private static ObjectToken DefaultToken(string category, string defaultTokenIdValueName)
-        {
-            ObjectToken objectToken = GetPreference(category, defaultTokenIdValueName);
-            if (objectToken != null)
+            string value;
+            if (!objectTokenCategory.TryGetString("DefaultTokenId", out value))
             {
-                using (ObjectTokenCategory objectTokenCategory = ObjectTokenCategory.Create(category))
+                return result;
+            }
+            int num = value.IndexOf('\\');
+            if (num <= 0)
+            {
+                return result;
+            }
+            if (num < value.Length)
+            {
+                using (RegistryDataKey registryDataKey = RegistryDataKey.Create(value.Substring(num + 1), Registry.LocalMachine))
                 {
-                    if (objectTokenCategory == null)
+                    if (registryDataKey != null)
                     {
-                        return objectToken;
+                        return AudioDeviceOut.GetDevicedId(registryDataKey.Name);
                     }
-                    if (objectToken != null)
-                    {
-                        foreach (ObjectToken item in (IEnumerable<ObjectToken>)objectTokenCategory)
-                        {
-                            objectToken = GetHighestTokenVersion(objectToken, item, asVersionDefault);
-                        }
-                        return objectToken;
-                    }
-                    string[] sAttributes =
-                    [
-                        string.Format(CultureInfo.InvariantCulture, "{0:x}", [
-                            CultureInfo.CurrentUICulture.LCID
-                        ])
-                    ];
-                    foreach (ObjectToken item2 in (IEnumerable<ObjectToken>)objectTokenCategory)
-                    {
-                        if (item2.MatchesAttributes(sAttributes))
-                        {
-                            objectToken = item2;
-                            break;
-                        }
-                    }
-                    if (objectToken == null)
-                    {
-                        using (IEnumerator<ObjectToken> enumerator3 = ((IEnumerable<ObjectToken>)objectTokenCategory).GetEnumerator())
-                        {
-                            if (enumerator3.MoveNext())
-                            {
-                                return enumerator3.Current;
-                            }
-                            return objectToken;
-                        }
-                    }
-                    return objectToken;
+                    return result;
                 }
             }
-            return objectToken;
+            return result;
         }
+    }
 
-        private static ObjectToken GetPreference(string category, string defaultLocation)
+    private static ObjectToken DefaultToken(string category, string defaultTokenIdValueName)
+    {
+        ObjectToken objectToken = GetPreference(category, defaultTokenIdValueName);
+        if (objectToken != null)
         {
-            ObjectToken result = null;
             using (ObjectTokenCategory objectTokenCategory = ObjectTokenCategory.Create(category))
             {
                 if (objectTokenCategory == null)
                 {
-                    return result;
+                    return objectToken;
                 }
-                string value;
-                if (objectTokenCategory.TryGetString(defaultLocation, out value))
+                if (objectToken != null)
                 {
-                    return objectTokenCategory.OpenToken(value);
+                    foreach (ObjectToken item in (IEnumerable<ObjectToken>)objectTokenCategory)
+                    {
+                        objectToken = GetHighestTokenVersion(objectToken, item, asVersionDefault);
+                    }
+                    return objectToken;
                 }
+                string[] sAttributes =
+                [
+                    string.Format(CultureInfo.InvariantCulture, "{0:x}", [
+                        CultureInfo.CurrentUICulture.LCID
+                    ])
+                ];
+                foreach (ObjectToken item2 in (IEnumerable<ObjectToken>)objectTokenCategory)
+                {
+                    if (item2.MatchesAttributes(sAttributes))
+                    {
+                        objectToken = item2;
+                        break;
+                    }
+                }
+                if (objectToken == null)
+                {
+                    using (IEnumerator<ObjectToken> enumerator3 = ((IEnumerable<ObjectToken>)objectTokenCategory).GetEnumerator())
+                    {
+                        if (enumerator3.MoveNext())
+                        {
+                            return enumerator3.Current;
+                        }
+                        return objectToken;
+                    }
+                }
+                return objectToken;
+            }
+        }
+        return objectToken;
+    }
+
+    private static ObjectToken GetPreference(string category, string defaultLocation)
+    {
+        ObjectToken result = null;
+        using (ObjectTokenCategory objectTokenCategory = ObjectTokenCategory.Create(category))
+        {
+            if (objectTokenCategory == null)
+            {
                 return result;
             }
-        }
-
-        private static int CompareTokenVersions(ObjectToken token1, ObjectToken token2, out bool pfDidCompare)
-        {
-            pfDidCompare = false;
-            RegistryDataKey registryDataKey = null;
-            RegistryDataKey registryDataKey2 = null;
-            registryDataKey = token1.Attributes;
-            registryDataKey2 = token2.Attributes;
-            if (registryDataKey != null)
+            string value;
+            if (objectTokenCategory.TryGetString(defaultLocation, out value))
             {
-                string value;
-                registryDataKey.TryGetString("Vendor", out value);
-                string value2;
-                registryDataKey.TryGetString("ProductLine", out value2);
-                string value3;
-                registryDataKey.TryGetString("Version", out value3);
-                string value4;
-                registryDataKey.TryGetString("Language", out value4);
-                if (registryDataKey2 != null)
-                {
-                    string value5;
-                    registryDataKey2.TryGetString("Vendor", out value5);
-                    string value6;
-                    registryDataKey2.TryGetString("ProductLine", out value6);
-                    string value7;
-                    registryDataKey2.TryGetString("Version", out value7);
-                    string value8;
-                    registryDataKey2.TryGetString("Language", out value8);
-                    if (((string.IsNullOrEmpty(value) && string.IsNullOrEmpty(value5)) || (!string.IsNullOrEmpty(value) && !string.IsNullOrEmpty(value5) && value == value5)) && ((string.IsNullOrEmpty(value2) && string.IsNullOrEmpty(value6)) || (!string.IsNullOrEmpty(value2) && !string.IsNullOrEmpty(value6) && value2 == value6)) && ((string.IsNullOrEmpty(value4) && string.IsNullOrEmpty(value8)) || (!string.IsNullOrEmpty(value4) && !string.IsNullOrEmpty(value8) && value4 == value8)))
-                    {
-                        pfDidCompare = true;
-                        return CompareVersions(value3, value7);
-                    }
-                    return -1;
-                }
-                return 1;
+                return objectTokenCategory.OpenToken(value);
             }
+            return result;
+        }
+    }
+
+    private static int CompareTokenVersions(ObjectToken token1, ObjectToken token2, out bool pfDidCompare)
+    {
+        pfDidCompare = false;
+        RegistryDataKey registryDataKey = null;
+        RegistryDataKey registryDataKey2 = null;
+        registryDataKey = token1.Attributes;
+        registryDataKey2 = token2.Attributes;
+        if (registryDataKey != null)
+        {
+            string value;
+            registryDataKey.TryGetString("Vendor", out value);
+            string value2;
+            registryDataKey.TryGetString("ProductLine", out value2);
+            string value3;
+            registryDataKey.TryGetString("Version", out value3);
+            string value4;
+            registryDataKey.TryGetString("Language", out value4);
+            if (registryDataKey2 != null)
+            {
+                string value5;
+                registryDataKey2.TryGetString("Vendor", out value5);
+                string value6;
+                registryDataKey2.TryGetString("ProductLine", out value6);
+                string value7;
+                registryDataKey2.TryGetString("Version", out value7);
+                string value8;
+                registryDataKey2.TryGetString("Language", out value8);
+                if (((string.IsNullOrEmpty(value) && string.IsNullOrEmpty(value5)) || (!string.IsNullOrEmpty(value) && !string.IsNullOrEmpty(value5) && value == value5)) && ((string.IsNullOrEmpty(value2) && string.IsNullOrEmpty(value6)) || (!string.IsNullOrEmpty(value2) && !string.IsNullOrEmpty(value6) && value2 == value6)) && ((string.IsNullOrEmpty(value4) && string.IsNullOrEmpty(value8)) || (!string.IsNullOrEmpty(value4) && !string.IsNullOrEmpty(value8) && value4 == value8)))
+                {
+                    pfDidCompare = true;
+                    return CompareVersions(value3, value7);
+                }
+                return -1;
+            }
+            return 1;
+        }
+        return -1;
+    }
+
+    private static int CompareVersions(string sV1, string sV2)
+    {
+        ushort[] array = new ushort[4];
+        ushort[] array2 = new ushort[4];
+        bool flag = ParseVersion(sV1, array);
+        bool flag2 = ParseVersion(sV2, array2);
+        if (!flag && !flag2)
+        {
+            return 0;
+        }
+        if (flag && !flag2)
+        {
+            return 1;
+        }
+        if (!flag && flag2)
+        {
             return -1;
         }
-
-        private static int CompareVersions(string sV1, string sV2)
+        for (int i = 0; i < 4; i++)
         {
-            ushort[] array = new ushort[4];
-            ushort[] array2 = new ushort[4];
-            bool flag = ParseVersion(sV1, array);
-            bool flag2 = ParseVersion(sV2, array2);
-            if (!flag && !flag2)
-            {
-                return 0;
-            }
-            if (flag && !flag2)
+            if (array[i] > array2[i])
             {
                 return 1;
             }
-            if (!flag && flag2)
+            if (array[i] < array2[i])
             {
                 return -1;
             }
+        }
+        return 0;
+    }
+
+    private static bool ParseVersion(string s, ushort[] Version)
+    {
+        bool flag = true;
+        ushort num;
+        Version[2] = num = Version[3] = 0;
+        Version[1] = num = num;
+        Version[0] = num;
+        if (string.IsNullOrEmpty(s))
+        {
+            flag = false;
+        }
+        else
+        {
+            int num2 = 0;
             for (int i = 0; i < 4; i++)
             {
-                if (array[i] > array2[i])
+                if (num2 >= s.Length)
                 {
-                    return 1;
+                    break;
                 }
-                if (array[i] < array2[i])
+                int num3 = s.IndexOf('.', num2);
+                string s2 = s.Substring(num2, num3);
+                ushort result;
+                if (!ushort.TryParse(s2, out result) || result > 9999)
                 {
-                    return -1;
+                    flag = false;
+                    break;
                 }
+                Version[i] = result;
+                num2 = num3 + 1;
             }
-            return 0;
-        }
-
-        private static bool ParseVersion(string s, ushort[] Version)
-        {
-            bool flag = true;
-            ushort num;
-            Version[2] = num = Version[3] = 0;
-            Version[1] = num = num;
-            Version[0] = num;
-            if (string.IsNullOrEmpty(s))
+            if (flag && num2 != s.Length)
             {
                 flag = false;
             }
-            else
-            {
-                int num2 = 0;
-                for (int i = 0; i < 4; i++)
-                {
-                    if (num2 >= s.Length)
-                    {
-                        break;
-                    }
-                    int num3 = s.IndexOf('.', num2);
-                    string s2 = s.Substring(num2, num3);
-                    ushort result;
-                    if (!ushort.TryParse(s2, out result) || result > 9999)
-                    {
-                        flag = false;
-                        break;
-                    }
-                    Version[i] = result;
-                    num2 = num3 + 1;
-                }
-                if (flag && num2 != s.Length)
-                {
-                    flag = false;
-                }
-            }
-            return flag;
         }
+        return flag;
+    }
 
-        private static ObjectToken GetHighestTokenVersion(ObjectToken token, ObjectToken tokenSeed, string[] criterias)
+    private static ObjectToken GetHighestTokenVersion(ObjectToken token, ObjectToken tokenSeed, string[] criterias)
+    {
+        if (tokenSeed.MatchesAttributes(criterias))
         {
-            if (tokenSeed.MatchesAttributes(criterias))
+            bool pfDidCompare;
+            int num = CompareTokenVersions(tokenSeed, token, out pfDidCompare);
+            if (pfDidCompare && num > 0)
             {
-                bool pfDidCompare;
-                int num = CompareTokenVersions(tokenSeed, token, out pfDidCompare);
-                if (pfDidCompare && num > 0)
-                {
-                    token = tokenSeed;
-                }
+                token = tokenSeed;
             }
-            return token;
         }
+        return token;
     }
 }

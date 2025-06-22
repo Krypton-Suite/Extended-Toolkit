@@ -26,12 +26,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs;
+
+public enum RunDialogStartPosition
 {
-    public enum RunDialogStartPosition
-    {
-        CentreScreen = 0,
-        BottomLeft = 1,
-        BottomRight = 2,
-    }
+    CentreScreen = 0,
+    BottomLeft = 1,
+    BottomRight = 2,
 }

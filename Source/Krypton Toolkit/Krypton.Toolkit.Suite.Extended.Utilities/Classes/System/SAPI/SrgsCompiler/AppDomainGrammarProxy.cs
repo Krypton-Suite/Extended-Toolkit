@@ -26,279 +26,278 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+
+internal class AppDomainGrammarProxy : MarshalByRefObject
 {
-    internal class AppDomainGrammarProxy : MarshalByRefObject
+    private struct NameValuePair
     {
-        private struct NameValuePair
+        internal string _name;
+
+        internal string _value;
+    }
+
+    private Grammar _grammar;
+
+    private Assembly _assembly;
+
+    private string _rule;
+
+    private Type _grammarType;
+
+    private PermissionSet _internetPermissionSet;
+
+    internal SrgsRule[] OnInit(string method, object[] parameters, string onInitParameters, out Exception exceptionThrown)
+    {
+        exceptionThrown = null;
+        try
         {
-            internal string _name;
-
-            internal string _value;
-        }
-
-        private Grammar _grammar;
-
-        private Assembly _assembly;
-
-        private string _rule;
-
-        private Type _grammarType;
-
-        private PermissionSet _internetPermissionSet;
-
-        internal SrgsRule[] OnInit(string method, object[] parameters, string onInitParameters, out Exception exceptionThrown)
-        {
-            exceptionThrown = null;
-            try
+            if (!string.IsNullOrEmpty(onInitParameters))
             {
-                if (!string.IsNullOrEmpty(onInitParameters))
-                {
-                    parameters = MatchInitParameters(method, onInitParameters, _rule, _rule);
-                }
-                Type[] array = new Type[parameters != null ? parameters.Length : 0];
-                if (parameters != null)
-                {
-                    for (int i = 0; i < parameters.Length; i++)
-                    {
-                        array[i] = parameters[i].GetType();
-                    }
-                }
-                MethodInfo method2 = _grammarType.GetMethod(method, array);
-                if (method2 == null)
-                {
-                    throw new InvalidOperationException(SR.Get(SRID.ArgumentMismatch));
-                }
-                SrgsRule[] result = null;
-                if (method2 != null)
-                {
-                    _internetPermissionSet.PermitOnly();
-                    result = (SrgsRule[])method2.Invoke(_grammar, parameters);
-                }
-                return result;
+                parameters = MatchInitParameters(method, onInitParameters, _rule, _rule);
             }
-            catch (Exception ex)
+            Type[] array = new Type[parameters != null ? parameters.Length : 0];
+            if (parameters != null)
             {
-                Exception ex2 = exceptionThrown = ex;
-                return null;
+                for (int i = 0; i < parameters.Length; i++)
+                {
+                    array[i] = parameters[i].GetType();
+                }
             }
-        }
-
-        internal object OnRecognition(string method, object[] parameters, out Exception exceptionThrown)
-        {
-            exceptionThrown = null;
-            try
+            MethodInfo method2 = _grammarType.GetMethod(method, array);
+            if (method2 == null)
             {
-                MethodInfo method2 = _grammarType.GetMethod(method, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                throw new InvalidOperationException(SR.Get(SRID.ArgumentMismatch));
+            }
+            SrgsRule[] result = null;
+            if (method2 != null)
+            {
                 _internetPermissionSet.PermitOnly();
-                return method2.Invoke(_grammar, parameters);
+                result = (SrgsRule[])method2.Invoke(_grammar, parameters);
             }
-            catch (Exception ex)
-            {
-                Exception ex2 = exceptionThrown = ex;
-            }
+            return result;
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = exceptionThrown = ex;
             return null;
         }
+    }
 
-        internal object OnParse(string rule, string method, object[] parameters, out Exception exceptionThrown)
+    internal object OnRecognition(string method, object[] parameters, out Exception exceptionThrown)
+    {
+        exceptionThrown = null;
+        try
         {
-            exceptionThrown = null;
-            try
-            {
-                MethodInfo onParse;
-                Grammar grammar;
-                GetRuleInstance(rule, method, out onParse, out grammar);
-                _internetPermissionSet.PermitOnly();
-                return onParse.Invoke(grammar, parameters);
-            }
-            catch (Exception ex)
-            {
-                Exception ex2 = exceptionThrown = ex;
-                return null;
-            }
+            MethodInfo method2 = _grammarType.GetMethod(method, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            _internetPermissionSet.PermitOnly();
+            return method2.Invoke(_grammar, parameters);
         }
-
-        internal void OnError(string rule, string method, object[] parameters, out Exception exceptionThrown)
+        catch (Exception ex)
         {
-            exceptionThrown = null;
-            try
-            {
-                MethodInfo onParse;
-                Grammar grammar;
-                GetRuleInstance(rule, method, out onParse, out grammar);
-                _internetPermissionSet.PermitOnly();
-                onParse.Invoke(grammar, parameters);
-            }
-            catch (Exception ex)
-            {
-                Exception ex2 = exceptionThrown = ex;
-            }
+            Exception ex2 = exceptionThrown = ex;
         }
+        return null;
+    }
 
-        internal void Init(string rule, byte[] il, byte[] pdb)
+    internal object OnParse(string rule, string method, object[] parameters, out Exception exceptionThrown)
+    {
+        exceptionThrown = null;
+        try
         {
-            _assembly = Assembly.Load(il, pdb);
-            _grammarType = GetTypeForRule(_assembly, rule);
-            if (_grammarType == null)
-            {
-                throw new FormatException(SR.Get(SRID.RecognizerRuleNotFoundStream, rule));
-            }
-            _rule = rule;
-            try
-            {
-                _grammar = (Grammar)_assembly.CreateInstance(_grammarType.FullName);
-            }
-            catch (MissingMemberException)
-            {
-                throw new ArgumentException(SR.Get(SRID.RuleScriptInvalidParameters, _grammarType.FullName, rule), "rule");
-            }
-            _internetPermissionSet = PolicyLevel.CreateAppDomainLevel().GetNamedPermissionSet("Internet");
-            _internetPermissionSet.AddPermission(new ReflectionPermission(PermissionState.Unrestricted));
+            MethodInfo onParse;
+            Grammar grammar;
+            GetRuleInstance(rule, method, out onParse, out grammar);
+            _internetPermissionSet.PermitOnly();
+            return onParse.Invoke(grammar, parameters);
         }
-
-        private void GetRuleInstance(string rule, string method, out MethodInfo onParse, out Grammar grammar)
+        catch (Exception ex)
         {
-            Type type = rule == _rule ? _grammarType : GetTypeForRule(_assembly, rule);
-            if (type == null || !type.IsSubclassOf(typeof(Grammar)))
-            {
-                throw new FormatException(SR.Get(SRID.RecognizerInvalidBinaryGrammar));
-            }
-            try
-            {
-                grammar = type == _grammarType ? _grammar : (Grammar)_assembly.CreateInstance(type.FullName);
-            }
-            catch (MissingMemberException)
-            {
-                throw new ArgumentException(SR.Get(SRID.RuleScriptInvalidParameters, type.FullName, rule), "rule");
-            }
-            onParse = grammar.MethodInfo(method);
-        }
-
-        private static Type GetTypeForRule(Assembly assembly, string rule)
-        {
-            Type[] types = assembly.GetTypes();
-            foreach (Type type in types)
-            {
-                if (type.Name == rule && type.IsPublic && type.IsSubclassOf(typeof(Grammar)))
-                {
-                    return type;
-                }
-            }
+            Exception ex2 = exceptionThrown = ex;
             return null;
         }
+    }
 
-        private object[] MatchInitParameters(string method, string onInitParameters, string grammar, string rule)
+    internal void OnError(string rule, string method, object[] parameters, out Exception exceptionThrown)
+    {
+        exceptionThrown = null;
+        try
         {
-            MethodInfo[] methods = _grammarType.GetMethods();
-            NameValuePair[] array = ParseInitParams(onInitParameters);
-            object[] array2 = new object[array.Length];
-            bool flag = false;
-            for (int i = 0; i < methods.Length; i++)
+            MethodInfo onParse;
+            Grammar grammar;
+            GetRuleInstance(rule, method, out onParse, out grammar);
+            _internetPermissionSet.PermitOnly();
+            onParse.Invoke(grammar, parameters);
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = exceptionThrown = ex;
+        }
+    }
+
+    internal void Init(string rule, byte[] il, byte[] pdb)
+    {
+        _assembly = Assembly.Load(il, pdb);
+        _grammarType = GetTypeForRule(_assembly, rule);
+        if (_grammarType == null)
+        {
+            throw new FormatException(SR.Get(SRID.RecognizerRuleNotFoundStream, rule));
+        }
+        _rule = rule;
+        try
+        {
+            _grammar = (Grammar)_assembly.CreateInstance(_grammarType.FullName);
+        }
+        catch (MissingMemberException)
+        {
+            throw new ArgumentException(SR.Get(SRID.RuleScriptInvalidParameters, _grammarType.FullName, rule), "rule");
+        }
+        _internetPermissionSet = PolicyLevel.CreateAppDomainLevel().GetNamedPermissionSet("Internet");
+        _internetPermissionSet.AddPermission(new ReflectionPermission(PermissionState.Unrestricted));
+    }
+
+    private void GetRuleInstance(string rule, string method, out MethodInfo onParse, out Grammar grammar)
+    {
+        Type type = rule == _rule ? _grammarType : GetTypeForRule(_assembly, rule);
+        if (type == null || !type.IsSubclassOf(typeof(Grammar)))
+        {
+            throw new FormatException(SR.Get(SRID.RecognizerInvalidBinaryGrammar));
+        }
+        try
+        {
+            grammar = type == _grammarType ? _grammar : (Grammar)_assembly.CreateInstance(type.FullName);
+        }
+        catch (MissingMemberException)
+        {
+            throw new ArgumentException(SR.Get(SRID.RuleScriptInvalidParameters, type.FullName, rule), "rule");
+        }
+        onParse = grammar.MethodInfo(method);
+    }
+
+    private static Type GetTypeForRule(Assembly assembly, string rule)
+    {
+        Type[] types = assembly.GetTypes();
+        foreach (Type type in types)
+        {
+            if (type.Name == rule && type.IsPublic && type.IsSubclassOf(typeof(Grammar)))
             {
-                if (flag)
+                return type;
+            }
+        }
+        return null;
+    }
+
+    private object[] MatchInitParameters(string method, string onInitParameters, string grammar, string rule)
+    {
+        MethodInfo[] methods = _grammarType.GetMethods();
+        NameValuePair[] array = ParseInitParams(onInitParameters);
+        object[] array2 = new object[array.Length];
+        bool flag = false;
+        for (int i = 0; i < methods.Length; i++)
+        {
+            if (flag)
+            {
+                break;
+            }
+            if (methods[i].Name != method)
+            {
+                continue;
+            }
+            ParameterInfo[] parameters = methods[i].GetParameters();
+            if (parameters.Length > array.Length)
+            {
+                continue;
+            }
+            flag = true;
+            for (int j = 0; j < array.Length && flag; j++)
+            {
+                NameValuePair nameValuePair = array[j];
+                if (nameValuePair._name == null)
                 {
-                    break;
-                }
-                if (methods[i].Name != method)
-                {
+                    array2[j] = nameValuePair._value;
                     continue;
                 }
-                ParameterInfo[] parameters = methods[i].GetParameters();
-                if (parameters.Length > array.Length)
+                bool flag2 = false;
+                for (int k = 0; k < parameters.Length; k++)
                 {
-                    continue;
-                }
-                flag = true;
-                for (int j = 0; j < array.Length && flag; j++)
-                {
-                    NameValuePair nameValuePair = array[j];
-                    if (nameValuePair._name == null)
+                    if (parameters[k].Name == nameValuePair._name)
                     {
-                        array2[j] = nameValuePair._value;
-                        continue;
-                    }
-                    bool flag2 = false;
-                    for (int k = 0; k < parameters.Length; k++)
-                    {
-                        if (parameters[k].Name == nameValuePair._name)
-                        {
-                            array2[k] = ParseValue(parameters[k].ParameterType, nameValuePair._value);
-                            flag2 = true;
-                            break;
-                        }
-                    }
-                    if (!flag2)
-                    {
-                        flag = false;
+                        array2[k] = ParseValue(parameters[k].ParameterType, nameValuePair._value);
+                        flag2 = true;
+                        break;
                     }
                 }
+                if (!flag2)
+                {
+                    flag = false;
+                }
             }
-            if (!flag)
-            {
-                throw new FormatException(SR.Get(SRID.CantFindAConstructor, grammar, rule, FormatConstructorParameters(methods, method)));
-            }
-            return array2;
         }
-
-        private static object ParseValue(Type type, string value)
+        if (!flag)
         {
-            if (type == typeof(string))
-            {
-                return value;
-            }
-            return type.InvokeMember("Parse", BindingFlags.InvokeMethod, null, null, [
-                value
-            ], CultureInfo.InvariantCulture);
+            throw new FormatException(SR.Get(SRID.CantFindAConstructor, grammar, rule, FormatConstructorParameters(methods, method)));
         }
+        return array2;
+    }
 
-        private static string FormatConstructorParameters(MethodInfo[] cis, string method)
+    private static object ParseValue(Type type, string value)
+    {
+        if (type == typeof(string))
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < cis.Length; i++)
-            {
-                if (!(cis[i].Name == method))
-                {
-                    continue;
-                }
-                stringBuilder.Append(stringBuilder.Length > 0 ? " or sapi:parms=\"" : "sapi:parms=\"");
-                ParameterInfo[] parameters = cis[i].GetParameters();
-                for (int j = 0; j < parameters.Length; j++)
-                {
-                    if (j > 0)
-                    {
-                        stringBuilder.Append(';');
-                    }
-                    ParameterInfo parameterInfo = parameters[j];
-                    stringBuilder.Append(parameterInfo.Name);
-                    stringBuilder.Append(':');
-                    stringBuilder.Append(parameterInfo.ParameterType.Name);
-                }
-                stringBuilder.Append("\"");
-            }
-            return stringBuilder.ToString();
+            return value;
         }
+        return type.InvokeMember("Parse", BindingFlags.InvokeMethod, null, null, [
+            value
+        ], CultureInfo.InvariantCulture);
+    }
 
-        private static NameValuePair[] ParseInitParams(string initParameters)
+    private static string FormatConstructorParameters(MethodInfo[] cis, string method)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < cis.Length; i++)
         {
-            string[] array = initParameters.Split([
-                ';'
-            ], StringSplitOptions.None);
-            NameValuePair[] array2 = new NameValuePair[array.Length];
-            for (int i = 0; i < array.Length; i++)
+            if (!(cis[i].Name == method))
             {
-                string text = array[i];
-                int num = text.IndexOf(':');
-                if (num >= 0)
-                {
-                    array2[i]._name = text.Substring(0, num);
-                    array2[i]._value = text.Substring(num + 1);
-                }
-                else
-                {
-                    array2[i]._value = text;
-                }
+                continue;
             }
-            return array2;
+            stringBuilder.Append(stringBuilder.Length > 0 ? " or sapi:parms=\"" : "sapi:parms=\"");
+            ParameterInfo[] parameters = cis[i].GetParameters();
+            for (int j = 0; j < parameters.Length; j++)
+            {
+                if (j > 0)
+                {
+                    stringBuilder.Append(';');
+                }
+                ParameterInfo parameterInfo = parameters[j];
+                stringBuilder.Append(parameterInfo.Name);
+                stringBuilder.Append(':');
+                stringBuilder.Append(parameterInfo.ParameterType.Name);
+            }
+            stringBuilder.Append("\"");
         }
+        return stringBuilder.ToString();
+    }
+
+    private static NameValuePair[] ParseInitParams(string initParameters)
+    {
+        string[] array = initParameters.Split([
+            ';'
+        ], StringSplitOptions.None);
+        NameValuePair[] array2 = new NameValuePair[array.Length];
+        for (int i = 0; i < array.Length; i++)
+        {
+            string text = array[i];
+            int num = text.IndexOf(':');
+            if (num >= 0)
+            {
+                array2[i]._name = text.Substring(0, num);
+                array2[i]._value = text.Substring(num + 1);
+            }
+            else
+            {
+                array2[i]._value = text;
+            }
+        }
+        return array2;
     }
 }

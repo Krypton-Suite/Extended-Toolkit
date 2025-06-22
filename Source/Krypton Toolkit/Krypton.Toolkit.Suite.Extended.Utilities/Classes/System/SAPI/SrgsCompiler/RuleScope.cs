@@ -26,11 +26,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+
+internal enum RuleScope
 {
-    internal enum RuleScope
-    {
-        PublicRule,
-        PrivateRule
-    }
+    PublicRule,
+    PrivateRule
 }

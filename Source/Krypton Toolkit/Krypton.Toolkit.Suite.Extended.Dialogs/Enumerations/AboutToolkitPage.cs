@@ -26,13 +26,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs;
+
+internal enum AboutToolkitPage
 {
-    internal enum AboutToolkitPage
-    {
-        GeneralInformation = 0,
-        Discord = 1,
-        DeveloperInformation = 2,
-        Versions = 3
-    }
+    GeneralInformation = 0,
+    Discord = 1,
+    DeveloperInformation = 2,
+    Versions = 3
 }

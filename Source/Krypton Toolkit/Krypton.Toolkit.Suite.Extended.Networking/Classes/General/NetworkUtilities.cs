@@ -25,62 +25,61 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Networking
-{
-    public class NetworkUtilities
-    {
+namespace Krypton.Toolkit.Suite.Extended.Networking;
 
-        #region Methods
-        /// <summary>Code from: https://stackoverflow.com/questions/30317761/populate-list-of-drives-available-for-mapping</summary>
-        public char[] GetAvailableDriveLetters()
+public class NetworkUtilities
+{
+
+    #region Methods
+    /// <summary>Code from: https://stackoverflow.com/questions/30317761/populate-list-of-drives-available-for-mapping</summary>
+    public char[] GetAvailableDriveLetters()
+    {
+        List<char> availableDriveLetters =
+        [
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z'
+        ];
+
+        DriveInfo[] drives = DriveInfo.GetDrives();
+
+        for (int i = 0; i < drives.Length; i++)
         {
-            List<char> availableDriveLetters =
+            availableDriveLetters.Remove(drives[i].Name.ToLower()[0]);
+        }
+
+        return availableDriveLetters.ToArray();
+    }
+
+    /// <summary>Gets a list of the available drive letters. Code from: https://hardforum.com/threads/c-getting-free-drive-letters.1208456/.</summary>
+    /// <param name="driveArray">The drive array.</param>
+    public void GetAvailableDriveLetters(char[] driveArray)
+    {
+        // Allocate space for alphabet
+        ArrayList driveLetters = new ArrayList(26);
+
+        // increment from ASCII values for A-Z
+        for (int i = 65; i < 91; i++)
+        {
+            // Add uppercase letters to possible drive letters
+            driveLetters.Add(Convert.ToChar(i));
+        }
+
+        foreach (var drive in Directory.GetLogicalDrives())
+        {
+            // removed used drive letters from possible drive letters
+            driveLetters.Remove(drive[0]);
+        }
+
+        foreach (char driveLetter in driveLetters)
+        {
+            // add unused drive letters to the array
+            List<char> temp =
             [
-                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
-                'v', 'w', 'x', 'y', 'z'
+                driveLetter
             ];
 
-            DriveInfo[] drives = DriveInfo.GetDrives();
-
-            for (int i = 0; i < drives.Length; i++)
-            {
-                availableDriveLetters.Remove(drives[i].Name.ToLower()[0]);
-            }
-
-            return availableDriveLetters.ToArray();
+            driveArray = temp.ToArray();
         }
-
-        /// <summary>Gets a list of the available drive letters. Code from: https://hardforum.com/threads/c-getting-free-drive-letters.1208456/.</summary>
-        /// <param name="driveArray">The drive array.</param>
-        public void GetAvailableDriveLetters(char[] driveArray)
-        {
-            // Allocate space for alphabet
-            ArrayList driveLetters = new ArrayList(26);
-
-            // increment from ASCII values for A-Z
-            for (int i = 65; i < 91; i++)
-            {
-                // Add uppercase letters to possible drive letters
-                driveLetters.Add(Convert.ToChar(i));
-            }
-
-            foreach (var drive in Directory.GetLogicalDrives())
-            {
-                // removed used drive letters from possible drive letters
-                driveLetters.Remove(drive[0]);
-            }
-
-            foreach (char driveLetter in driveLetters)
-            {
-                // add unused drive letters to the array
-                List<char> temp =
-                [
-                    driveLetter
-                ];
-
-                driveArray = temp.ToArray();
-            }
-        }
-        #endregion
     }
+    #endregion
 }

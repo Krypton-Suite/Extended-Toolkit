@@ -50,8 +50,8 @@
 	<Choose>
 		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.3.80-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.3.80-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.6.167-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.6.167-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
@@ -67,6 +67,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.CheckSum.Tools\Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj" />

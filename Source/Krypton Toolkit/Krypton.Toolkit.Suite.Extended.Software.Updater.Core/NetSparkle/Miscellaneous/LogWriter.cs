@@ -24,61 +24,60 @@
 
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core;
+
+/// <summary>
+/// A simple class to handle log information for NetSparkleUpdater.
+/// Make sure to do any setup for this class that you want
+/// to do before calling StartLoop on your <see cref="SparkleUpdater"/> object.
+/// </summary>
+public class LogWriter : ILogger
 {
     /// <summary>
-    /// A simple class to handle log information for NetSparkleUpdater.
-    /// Make sure to do any setup for this class that you want
-    /// to do before calling StartLoop on your <see cref="SparkleUpdater"/> object.
+    /// Tag to show before any log statements
     /// </summary>
-    public class LogWriter : ILogger
+    public static string _tag = "netsparkle:";
+
+    /// <summary>
+    /// Empty constructor -> sets PrintDiagnosticToConsole to false
+    /// </summary>
+    public LogWriter()
     {
-        /// <summary>
-        /// Tag to show before any log statements
-        /// </summary>
-        public static string _tag = "netsparkle:";
+        PrintDiagnosticToConsole = false;
+    }
 
-        /// <summary>
-        /// Empty constructor -> sets PrintDiagnosticToConsole to false
-        /// </summary>
-        public LogWriter()
+    /// <summary>
+    /// LogWriter constructor that takes a bool to determine
+    /// the value for printDiagnosticToConsole
+    /// </summary>
+    /// <param name="printDiagnosticToConsole">False to print to <seealso cref="Debug.WriteLine(string)"/>;
+    /// true to print to <seealso cref="Console.WriteLine(string)"/></param>
+    public LogWriter(bool printDiagnosticToConsole)
+    {
+        PrintDiagnosticToConsole = printDiagnosticToConsole;
+    }
+
+    #region Properties
+
+    /// <summary>
+    /// True if this class should print to <seealso cref="Console.WriteLine(string)"/>;
+    /// false if this object should print to <seealso cref="Debug.WriteLine(string)"/>.
+    /// Defaults to false.
+    /// </summary>
+    public bool PrintDiagnosticToConsole { get; set; }
+
+    #endregion
+
+    /// <inheritdoc/>
+    public virtual void PrintMessage(string message, params object[] arguments)
+    {
+        if (PrintDiagnosticToConsole)
         {
-            PrintDiagnosticToConsole = false;
+            Console.WriteLine(_tag + @" " + message, arguments);
         }
-
-        /// <summary>
-        /// LogWriter constructor that takes a bool to determine
-        /// the value for printDiagnosticToConsole
-        /// </summary>
-        /// <param name="printDiagnosticToConsole">False to print to <seealso cref="Debug.WriteLine(string)"/>;
-        /// true to print to <seealso cref="Console.WriteLine(string)"/></param>
-        public LogWriter(bool printDiagnosticToConsole)
+        else
         {
-            PrintDiagnosticToConsole = printDiagnosticToConsole;
-        }
-
-        #region Properties
-
-        /// <summary>
-        /// True if this class should print to <seealso cref="Console.WriteLine(string)"/>;
-        /// false if this object should print to <seealso cref="Debug.WriteLine(string)"/>.
-        /// Defaults to false.
-        /// </summary>
-        public bool PrintDiagnosticToConsole { get; set; }
-
-        #endregion
-
-        /// <inheritdoc/>
-        public virtual void PrintMessage(string message, params object[] arguments)
-        {
-            if (PrintDiagnosticToConsole)
-            {
-                Console.WriteLine(_tag + @" " + message, arguments);
-            }
-            else
-            {
-                Trace.WriteLine(string.Format(_tag + " " + message, arguments));
-            }
+            Trace.WriteLine(string.Format(_tag + " " + message, arguments));
         }
     }
 }

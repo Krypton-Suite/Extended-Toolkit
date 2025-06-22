@@ -25,16 +25,15 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Notifications
+namespace Krypton.Toolkit.Suite.Extended.Notifications;
+
+/// <summary>The <see cref="KryptonToastNotificationVersion1" /> action button type.</summary>
+public enum ActionType
 {
-    /// <summary>The <see cref="KryptonToastNotificationVersion1" /> action button type.</summary>
-    public enum ActionType
-    {
-        /// <summary>The default action.</summary>
-        Default,
-        /// <summary>Launches or starts a process.</summary>
-        LaunchProcess,
-        /// <summary>Opens a process.</summary>
-        Open
-    }
+    /// <summary>The default action.</summary>
+    Default,
+    /// <summary>Launches or starts a process.</summary>
+    LaunchProcess,
+    /// <summary>Opens a process.</summary>
+    Open
 }

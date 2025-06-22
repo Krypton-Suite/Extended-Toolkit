@@ -26,7 +26,6 @@
  */
 
 #endregion
-using System.Globalization;
 
 namespace Examples
 {

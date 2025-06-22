@@ -26,18 +26,17 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
-{
-    public partial class KryptonNuGetBrowser : KryptonForm
-    {
-        public KryptonNuGetBrowser()
-        {
-            InitializeComponent();
-        }
+namespace Krypton.Toolkit.Suite.Extended.Dialogs;
 
-        private void KryptonNuGetBrowser_Load(object sender, EventArgs e)
-        {
-            ApplicationUtilities.UnderConstruction();
-        }
+public partial class KryptonNuGetBrowser : KryptonForm
+{
+    public KryptonNuGetBrowser()
+    {
+        InitializeComponent();
+    }
+
+    private void KryptonNuGetBrowser_Load(object sender, EventArgs e)
+    {
+        ApplicationUtilities.UnderConstruction();
     }
 }

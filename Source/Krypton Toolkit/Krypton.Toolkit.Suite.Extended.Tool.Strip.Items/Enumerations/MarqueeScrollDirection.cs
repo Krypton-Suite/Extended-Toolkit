@@ -25,11 +25,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items;
+
+public enum MarqueeScrollDirection
 {
-    public enum MarqueeScrollDirection
-    {
-        RightToLeft,
-        LeftToRight
-    }
+    RightToLeft,
+    LeftToRight
 }

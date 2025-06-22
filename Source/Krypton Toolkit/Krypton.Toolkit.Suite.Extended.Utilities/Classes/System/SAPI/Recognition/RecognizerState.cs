@@ -26,13 +26,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
+
+public enum RecognizerState
 {
-	public enum RecognizerState
-	{
-		/// <summary />
-		Stopped,
-		/// <summary />
-		Listening
-	}
+    /// <summary />
+    Stopped,
+    /// <summary />
+    Listening
 }

@@ -6,6 +6,7 @@
 =======
 
 ## 2025-11-xx - Build 2511 - November 2025
+* Implemented [#536](https://github.com/Krypton-Suite/Extended-Toolkit/issues/536), Use `filescoped` namespaces
 * Implemented [#522](https://github.com/Krypton-Suite/Extended-Toolkit/issues/522), Support the new `slnx` format
 * Rollback [#514](https://github.com/Krypton-Suite/Standard-Toolkit/issues/514), Move `KryptonOutlookGrid` back to Extended ToolKit for further evaluation & development
 * Add support for .NET 10.0

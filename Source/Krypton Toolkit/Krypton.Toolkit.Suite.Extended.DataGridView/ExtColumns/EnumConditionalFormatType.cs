@@ -25,24 +25,23 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridView
+namespace Krypton.Toolkit.Suite.Extended.DataGridView;
+
+/// <summary>
+/// Conditional Formatting type
+/// </summary>
+public enum EnumConditionalFormatType
 {
     /// <summary>
-    /// Conditional Formatting type
+    /// Two scale color
     /// </summary>
-    public enum EnumConditionalFormatType
-    {
-        /// <summary>
-        /// Two scale color
-        /// </summary>
-        TwoColoursRange,
-        /// <summary>
-        /// Three scale color
-        /// </summary>
-        ThreeColoursRange,
-        /// <summary>
-        /// Bar
-        /// </summary>
-        Bar
-    }
+    TwoColoursRange,
+    /// <summary>
+    /// Three scale color
+    /// </summary>
+    ThreeColoursRange,
+    /// <summary>
+    /// Bar
+    /// </summary>
+    Bar
 }

@@ -26,17 +26,16 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+
+[Serializable]
+internal struct SPRECORESULTTIMES
 {
-    [Serializable]
-    internal struct SPRECORESULTTIMES
-    {
-        internal FILETIME ftStreamTime;
+    internal FILETIME ftStreamTime;
 
-        internal ulong ullLength;
+    internal ulong ullLength;
 
-        internal uint dwTickCount;
+    internal uint dwTickCount;
 
-        internal ulong ullStart;
-    }
+    internal ulong ullStart;
 }

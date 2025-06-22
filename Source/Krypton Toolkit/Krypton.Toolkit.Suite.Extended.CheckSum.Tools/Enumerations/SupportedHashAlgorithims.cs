@@ -25,8 +25,7 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
-{
+namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools;
 #if !NETCOREAPP3_1_OR_GREATER
     public enum SupportedHashAlgorithims
     {
@@ -38,4 +37,3 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         RIPEMD160
     }
 #endif
-}

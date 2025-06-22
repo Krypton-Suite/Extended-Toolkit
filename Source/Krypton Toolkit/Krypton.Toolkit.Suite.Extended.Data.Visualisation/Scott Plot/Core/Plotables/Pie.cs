@@ -1,86 +1,85 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class Pie : IPlottable
 {
-    public class Pie : IPlottable
+    public IList<PieSlice> Slices { get; set; }
+    public LineStyle LineStyle { get; set; } = new() { Width = 0 };
+    public bool IsVisible { get; set; } = true;
+    public double ExplodeFraction { get; set; } = 0;
+
+    public IAxes Axes { get; set; } = new Axes();
+
+    public Pie(IList<PieSlice> slices)
     {
-        public IList<PieSlice> Slices { get; set; }
-        public LineStyle LineStyle { get; set; } = new() { Width = 0 };
-        public bool IsVisible { get; set; } = true;
-        public double ExplodeFraction { get; set; } = 0;
+        Slices = slices;
+    }
 
-        public IAxes Axes { get; set; } = new Axes();
+    public AxisLimits GetAxisLimits()
+    {
+        double padding = .03;
+        return new AxisLimits(
+            left: -1 - ExplodeFraction - padding,
+            right: 1 + ExplodeFraction + padding,
+            bottom: -1 - ExplodeFraction - padding,
+            top: 1 + ExplodeFraction + padding);
+    }
 
-        public Pie(IList<PieSlice> slices)
+    public IEnumerable<LegendItem> LegendItems => EnumerableExtensions.One(
+        new LegendItem
         {
-            Slices = slices;
-        }
-
-        public AxisLimits GetAxisLimits()
-        {
-            double padding = .03;
-            return new AxisLimits(
-                left: -1 - ExplodeFraction - padding,
-                right: 1 + ExplodeFraction + padding,
-                bottom: -1 - ExplodeFraction - padding,
-                top: 1 + ExplodeFraction + padding);
-        }
-
-        public IEnumerable<LegendItem> LegendItems => EnumerableExtensions.One(
-            new LegendItem
+            Children = Slices.Select(slice => new LegendItem
             {
-                Children = Slices.Select(slice => new LegendItem
-                {
-                    Label = slice.Label,
-                    Fill = slice.Fill
-                })
-            });
+                Label = slice.Label,
+                Fill = slice.Fill
+            })
+        });
 
-        public void Render(RenderPack rp)
+    public void Render(RenderPack rp)
+    {
+        double total = Slices.Sum(s => s.Value);
+        float[] sweeps = Slices.Select(x => (float)(x.Value / total) * 360).ToArray();
+
+        Pixel origin = Axes.GetPixel(Coordinates.Origin);
+
+        float minX = Math.Abs(Axes.GetPixelX(1) - origin.X);
+        float minY = Math.Abs(Axes.GetPixelY(1) - origin.Y);
+        float radius = Math.Min(minX, minY);
+        float explosionRadius = (float)ExplodeFraction * radius;
+        SKRect rect = new(-radius, -radius, radius, radius);
+
+        using SKPath path = new();
+        using SKPaint paint = new() { IsAntialias = true };
+
+        float sweepStart = 0;
+        for (int i = 0; i < Slices.Count(); i++)
         {
-            double total = Slices.Sum(s => s.Value);
-            float[] sweeps = Slices.Select(x => (float)(x.Value / total) * 360).ToArray();
+            using var _ = new SKAutoCanvasRestore(rp.Canvas);
 
-            Pixel origin = Axes.GetPixel(Coordinates.Origin);
+            float rotation = sweepStart + sweeps[i] / 2;
+            rp.Canvas.Translate(origin.X, origin.Y);
+            rp.Canvas.RotateDegrees(rotation);
+            rp.Canvas.Translate(explosionRadius, 0);
 
-            float minX = Math.Abs(Axes.GetPixelX(1) - origin.X);
-            float minY = Math.Abs(Axes.GetPixelY(1) - origin.Y);
-            float radius = Math.Min(minX, minY);
-            float explosionRadius = (float)ExplodeFraction * radius;
-            SKRect rect = new(-radius, -radius, radius, radius);
-
-            using SKPath path = new();
-            using SKPaint paint = new() { IsAntialias = true };
-
-            float sweepStart = 0;
-            for (int i = 0; i < Slices.Count(); i++)
+            if (sweeps[i] != 360)
             {
-                using var _ = new SKAutoCanvasRestore(rp.Canvas);
-
-                float rotation = sweepStart + sweeps[i] / 2;
-                rp.Canvas.Translate(origin.X, origin.Y);
-                rp.Canvas.RotateDegrees(rotation);
-                rp.Canvas.Translate(explosionRadius, 0);
-
-                if (sweeps[i] != 360)
-                {
-                    path.MoveTo(0, 0);
-                    path.ArcTo(rect, -sweeps[i] / 2, sweeps[i], false);
-                    path.Close();
-                }
-                else
-                {
-                    path.AddOval(rect);
-                }
-
-                Slices[i].Fill.ApplyToPaint(paint);
-                paint.Shader = paint.Shader?.WithLocalMatrix(SKMatrix.CreateRotationDegrees(-rotation));
-                rp.Canvas.DrawPath(path, paint);
-
-                LineStyle.ApplyToPaint(paint);
-                rp.Canvas.DrawPath(path, paint);
-
-                path.Reset();
-                sweepStart += sweeps[i];
+                path.MoveTo(0, 0);
+                path.ArcTo(rect, -sweeps[i] / 2, sweeps[i], false);
+                path.Close();
             }
+            else
+            {
+                path.AddOval(rect);
+            }
+
+            Slices[i].Fill.ApplyToPaint(paint);
+            paint.Shader = paint.Shader?.WithLocalMatrix(SKMatrix.CreateRotationDegrees(-rotation));
+            rp.Canvas.DrawPath(path, paint);
+
+            LineStyle.ApplyToPaint(paint);
+            rp.Canvas.DrawPath(path, paint);
+
+            path.Reset();
+            sweepStart += sweeps[i];
         }
     }
 }

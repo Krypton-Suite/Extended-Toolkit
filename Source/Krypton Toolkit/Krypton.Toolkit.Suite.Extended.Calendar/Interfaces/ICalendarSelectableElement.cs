@@ -25,23 +25,22 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Calendar
+namespace Krypton.Toolkit.Suite.Extended.Calendar;
+
+/// <summary>
+/// Interface implemented by every selectable element of the calendar
+/// </summary>
+public interface ICalendarSelectableElement : ISelectableElement, IComparable<ICalendarSelectableElement>
 {
+
     /// <summary>
-    /// Interface implemented by every selectable element of the calendar
+    /// Gets the calendar this element belongs to
     /// </summary>
-    public interface ICalendarSelectableElement : ISelectableElement, IComparable<ICalendarSelectableElement>
-    {
+    KryptonCalendar Calendar { get; }
 
-        /// <summary>
-        /// Gets the calendar this element belongs to
-        /// </summary>
-        KryptonCalendar Calendar { get; }
+    /// <summary>
+    /// Gets the calendar
+    /// </summary>
+    DateTime Date { get; }
 
-        /// <summary>
-        /// Gets the calendar
-        /// </summary>
-        DateTime Date { get; }
-
-    }
 }

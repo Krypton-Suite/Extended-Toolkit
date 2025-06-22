@@ -26,26 +26,25 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+public class AssemblyInformation
 {
-    public class AssemblyInformation
-    {
-        #region Variables
-        private string _name, _version, _fullName;
-        #endregion
+    #region Variables
+    private string _name, _version, _fullName;
+    #endregion
 
-        #region Properties
-        public string Name { get => _name;
-            set => _name = value;
-        }
-
-        public string Version { get => _version;
-            set => _version = value;
-        }
-
-        public string FullName { get => _fullName;
-            set => _fullName = value;
-        }
-        #endregion
+    #region Properties
+    public string Name { get => _name;
+        set => _name = value;
     }
+
+    public string Version { get => _version;
+        set => _version = value;
+    }
+
+    public string FullName { get => _fullName;
+        set => _fullName = value;
+    }
+    #endregion
 }

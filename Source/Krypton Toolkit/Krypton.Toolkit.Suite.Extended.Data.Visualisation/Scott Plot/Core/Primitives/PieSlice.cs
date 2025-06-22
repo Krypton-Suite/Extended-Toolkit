@@ -1,34 +1,33 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class PieSlice
 {
-    public class PieSlice
+    public string? Label { get; set; }
+    public double Value { get; set; }
+    public FillStyle Fill { get; set; } = new();
+
+    public Color FillColor
     {
-        public string? Label { get; set; }
-        public double Value { get; set; }
-        public FillStyle Fill { get; set; } = new();
+        get => Fill.Color;
+        set => Fill.Color = value;
+    }
 
-        public Color FillColor
-        {
-            get => Fill.Color;
-            set => Fill.Color = value;
-        }
+    // TODO: deprecate constructors
 
-        // TODO: deprecate constructors
+    public PieSlice()
+    {
+    }
 
-        public PieSlice()
-        {
-        }
+    public PieSlice(double value, Color color)
+    {
+        Value = value;
+        Fill.Color = color;
+    }
 
-        public PieSlice(double value, Color color)
-        {
-            Value = value;
-            Fill.Color = color;
-        }
-
-        public PieSlice(double value, Color color, string label)
-        {
-            Value = value;
-            Label = label;
-            Fill.Color = color;
-        }
+    public PieSlice(double value, Color color, string label)
+    {
+        Value = value;
+        Label = label;
+        Fill.Color = color;
     }
 }

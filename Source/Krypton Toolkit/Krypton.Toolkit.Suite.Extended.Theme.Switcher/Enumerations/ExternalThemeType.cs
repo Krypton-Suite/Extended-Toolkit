@@ -25,11 +25,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher;
+
+public enum ExternalThemeType
 {
-    public enum ExternalThemeType
-    {
-        Binary = 0,
-        ExtensibleMarkupLanguage = 1
-    }
+    Binary = 0,
+    ExtensibleMarkupLanguage = 1
 }

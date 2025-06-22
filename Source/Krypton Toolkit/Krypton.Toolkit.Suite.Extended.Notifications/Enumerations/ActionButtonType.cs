@@ -25,11 +25,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Notifications
+namespace Krypton.Toolkit.Suite.Extended.Notifications;
+
+public enum ActionButtonType
 {
-    public enum ActionButtonType
-    {
-        Normal = 0,
-        UACElevated = 1
-    }
+    Normal = 0,
+    UACElevated = 1
 }

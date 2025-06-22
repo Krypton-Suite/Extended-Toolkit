@@ -25,226 +25,225 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher;
+
+public partial class KryptonExternalThemeSelectorForm : KryptonForm
 {
-    public partial class KryptonExternalThemeSelectorForm : KryptonForm
+    #region Instance Fields
+
+    private ExternalThemeType _externalThemeType;
+
+    private ExternalThemeViewerType _externalThemeViewerType;
+
+    private FileDialogType _fileDialogType;
+
+    #endregion
+
+    #region Identity
+
+    /// <summary>Initializes a new instance of the <see cref="KryptonExternalThemeSelectorForm" /> class.</summary>
+    /// <param name="externalThemeType">Type of the external theme.</param>
+    /// <param name="externalThemeViewerType">Type of the external theme viewer.</param>
+    public KryptonExternalThemeSelectorForm(ExternalThemeType? externalThemeType, ExternalThemeViewerType? externalThemeViewerType)
     {
-        #region Instance Fields
+        InitializeComponent();
 
-        private ExternalThemeType _externalThemeType;
+        _externalThemeType = externalThemeType ?? ExternalThemeType.ExtensibleMarkupLanguage;
 
-        private ExternalThemeViewerType _externalThemeViewerType;
+        _externalThemeViewerType = externalThemeViewerType ?? ExternalThemeViewerType.ListBox;
 
-        private FileDialogType _fileDialogType;
+        kbtnApply.Text = KryptonManager.Strings.CustomStrings.Apply;
 
-        #endregion
+        kbtnCancel.Text = KryptonManager.Strings.GeneralStrings.Cancel;
 
-        #region Identity
+        kbtnOk.Text = KryptonManager.Strings.GeneralStrings.OK;
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonExternalThemeSelectorForm" /> class.</summary>
-        /// <param name="externalThemeType">Type of the external theme.</param>
-        /// <param name="externalThemeViewerType">Type of the external theme viewer.</param>
-        public KryptonExternalThemeSelectorForm(ExternalThemeType? externalThemeType, ExternalThemeViewerType? externalThemeViewerType)
+        UpdateUI(externalThemeType, externalThemeViewerType);
+    }
+
+    #endregion
+
+    #region Implementation
+
+    /// <summary>Updates the UI.</summary>
+    /// <param name="externalThemeType">Type of the external theme.</param>
+    /// <param name="externalThemeViewerType">Type of the external theme viewer.</param>
+    /// <exception cref="ArgumentOutOfRangeException">externalThemeType - null or externalThemeViewerType - null</exception>
+    private void UpdateUI(ExternalThemeType? externalThemeType, ExternalThemeViewerType? externalThemeViewerType)
+    {
+        switch (externalThemeType)
         {
-            InitializeComponent();
+            case ExternalThemeType.Binary:
+                klblPath.Text = @"File Path:";
 
-            _externalThemeType = externalThemeType ?? ExternalThemeType.ExtensibleMarkupLanguage;
+                ktxtThemeLocation.CueHint.CueHintText = @"Enter a file path...";
+                break;
+            case ExternalThemeType.ExtensibleMarkupLanguage:
+                klblPath.Text = @"Directory Path:";
 
-            _externalThemeViewerType = externalThemeViewerType ?? ExternalThemeViewerType.ListBox;
+                ktxtThemeLocation.CueHint.CueHintText = @"Enter a directory path...";
+                break;
+            case null:
+                klblPath.Text = @"File Path:";
 
-            kbtnApply.Text = KryptonManager.Strings.CustomStrings.Apply;
-
-            kbtnCancel.Text = KryptonManager.Strings.GeneralStrings.Cancel;
-
-            kbtnOk.Text = KryptonManager.Strings.GeneralStrings.OK;
-
-            UpdateUI(externalThemeType, externalThemeViewerType);
+                ktxtThemeLocation.CueHint.CueHintText = @"Enter a file path...";
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(externalThemeType), externalThemeType, null);
         }
 
-        #endregion
-
-        #region Implementation
-
-        /// <summary>Updates the UI.</summary>
-        /// <param name="externalThemeType">Type of the external theme.</param>
-        /// <param name="externalThemeViewerType">Type of the external theme viewer.</param>
-        /// <exception cref="ArgumentOutOfRangeException">externalThemeType - null or externalThemeViewerType - null</exception>
-        private void UpdateUI(ExternalThemeType? externalThemeType, ExternalThemeViewerType? externalThemeViewerType)
+        switch (externalThemeViewerType)
         {
-            switch (externalThemeType)
-            {
-                case ExternalThemeType.Binary:
-                    klblPath.Text = @"File Path:";
+            case ExternalThemeViewerType.ListBox:
+                klbThemesList.Visible = true;
 
-                    ktxtThemeLocation.CueHint.CueHintText = @"Enter a file path...";
-                    break;
-                case ExternalThemeType.ExtensibleMarkupLanguage:
-                    klblPath.Text = @"Directory Path:";
+                klvThemesList.Visible = false;
+                break;
+            case ExternalThemeViewerType.ListView:
+                klbThemesList.Visible = false;
 
-                    ktxtThemeLocation.CueHint.CueHintText = @"Enter a directory path...";
-                    break;
-                case null:
-                    klblPath.Text = @"File Path:";
-
-                    ktxtThemeLocation.CueHint.CueHintText = @"Enter a file path...";
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(externalThemeType), externalThemeType, null);
-            }
-
-            switch (externalThemeViewerType)
-            {
-                case ExternalThemeViewerType.ListBox:
-                    klbThemesList.Visible = true;
-
-                    klvThemesList.Visible = false;
-                    break;
-                case ExternalThemeViewerType.ListView:
-                    klbThemesList.Visible = false;
-
-                    klvThemesList.Visible = true;
-                    break;
-                case null:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(externalThemeViewerType), externalThemeViewerType, null);
-            }
+                klvThemesList.Visible = true;
+                break;
+            case null:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(externalThemeViewerType), externalThemeViewerType, null);
         }
+    }
 
-        private void KryptonExternalThemeSelectorForm_Load(object sender, EventArgs e)
+    private void KryptonExternalThemeSelectorForm_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void bsaReset_Click(object sender, EventArgs e)
+    {
+        ktxtThemeLocation.Text = string.Empty;
+
+        bsaReset.Enabled = ButtonEnabled.False;
+    }
+
+    private void bsaBrowse_Click(object sender, EventArgs e)
+    {
+        switch (_fileDialogType)
         {
+            case FileDialogType.Krypton:
+                KryptonFolderBrowserDialog kfbd = new();
 
-        }
-
-        private void bsaReset_Click(object sender, EventArgs e)
-        {
-            ktxtThemeLocation.Text = string.Empty;
-
-            bsaReset.Enabled = ButtonEnabled.False;
-        }
-
-        private void bsaBrowse_Click(object sender, EventArgs e)
-        {
-            switch (_fileDialogType)
-            {
-                case FileDialogType.Krypton:
-                    KryptonFolderBrowserDialog kfbd = new();
-
-                    if (_externalThemeType == ExternalThemeType.Binary)
-                    {
-
-                    }
-                    else
-                    {
-                        kfbd.Title = @"Open themes directory:";
-
-                        if (kfbd.ShowDialog() == DialogResult.OK)
-                        {
-                            ktxtThemeLocation.Text = Path.GetFullPath(kfbd.SelectedPath);
-
-                            LoadThemesFromDirectory(Path.GetFullPath(kfbd.SelectedPath));
-                        }
-                    }
-                    break;
-                case FileDialogType.Standard:
-                    FolderBrowserDialog fbd = new();
-
-                    if (_externalThemeType == ExternalThemeType.Binary)
-                    {
-
-                    }
-                    else
-                    {
-                        fbd.Description = @"Open themes directory:";
-
-                        if (fbd.ShowDialog() == DialogResult.OK)
-                        {
-                            ktxtThemeLocation.Text = Path.GetFullPath(fbd.SelectedPath);
-
-                            LoadThemesFromDirectory(Path.GetFullPath(fbd.SelectedPath));
-                        }
-                    }
-                    break;
-                case FileDialogType.WindowsAPICodePack:
-                    CommonOpenFileDialog commonOpenFileDialog;
-
-                    if (_externalThemeType == ExternalThemeType.Binary)
-                    {
-
-                    }
-                    else
-                    {
-                        commonOpenFileDialog = new()
-                        {
-                            Title = @"Open themes directory:",
-                            IsFolderPicker = true
-                        };
-
-                        if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
-                        {
-                            ktxtThemeLocation.Text = Path.GetFullPath(commonOpenFileDialog.FileName);
-
-                            LoadThemesFromDirectory(Path.GetFullPath(commonOpenFileDialog.FileName));
-                        }
-                    }
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        /// <summary>Loads the themes from directory.</summary>
-        /// <param name="themeLocation">The theme location.</param>
-        private void LoadThemesFromDirectory(string themeLocation)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(themeLocation))
+                if (_externalThemeType == ExternalThemeType.Binary)
                 {
-                    // Get the information of the directory
-                    DirectoryInfo di = new(themeLocation);
 
-                    // Create an array of files listed in the selected directory
-                    FileInfo[] files = di.GetFiles();
+                }
+                else
+                {
+                    kfbd.Title = @"Open themes directory:";
 
-                    if (klbThemesList.Visible)
+                    if (kfbd.ShowDialog() == DialogResult.OK)
                     {
-                        foreach (FileInfo file in files)
-                        {
-                            klbThemesList.Items.Add(Path.GetFullPath(file.Name));
-                        }
+                        ktxtThemeLocation.Text = Path.GetFullPath(kfbd.SelectedPath);
+
+                        LoadThemesFromDirectory(Path.GetFullPath(kfbd.SelectedPath));
                     }
-                    else if (klvThemesList.Visible)
+                }
+                break;
+            case FileDialogType.Standard:
+                FolderBrowserDialog fbd = new();
+
+                if (_externalThemeType == ExternalThemeType.Binary)
+                {
+
+                }
+                else
+                {
+                    fbd.Description = @"Open themes directory:";
+
+                    if (fbd.ShowDialog() == DialogResult.OK)
                     {
-                        foreach (FileInfo file in files)
-                        {
-                            klvThemesList.Items.Add(Path.GetFullPath(file.Name));
-                        }
+                        ktxtThemeLocation.Text = Path.GetFullPath(fbd.SelectedPath);
+
+                        LoadThemesFromDirectory(Path.GetFullPath(fbd.SelectedPath));
+                    }
+                }
+                break;
+            case FileDialogType.WindowsAPICodePack:
+                CommonOpenFileDialog commonOpenFileDialog;
+
+                if (_externalThemeType == ExternalThemeType.Binary)
+                {
+
+                }
+                else
+                {
+                    commonOpenFileDialog = new()
+                    {
+                        Title = @"Open themes directory:",
+                        IsFolderPicker = true
+                    };
+
+                    if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        ktxtThemeLocation.Text = Path.GetFullPath(commonOpenFileDialog.FileName);
+
+                        LoadThemesFromDirectory(Path.GetFullPath(commonOpenFileDialog.FileName));
+                    }
+                }
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    /// <summary>Loads the themes from directory.</summary>
+    /// <param name="themeLocation">The theme location.</param>
+    private void LoadThemesFromDirectory(string themeLocation)
+    {
+        try
+        {
+            if (!string.IsNullOrEmpty(themeLocation))
+            {
+                // Get the information of the directory
+                DirectoryInfo di = new(themeLocation);
+
+                // Create an array of files listed in the selected directory
+                FileInfo[] files = di.GetFiles();
+
+                if (klbThemesList.Visible)
+                {
+                    foreach (FileInfo file in files)
+                    {
+                        klbThemesList.Items.Add(Path.GetFullPath(file.Name));
+                    }
+                }
+                else if (klvThemesList.Visible)
+                {
+                    foreach (FileInfo file in files)
+                    {
+                        klvThemesList.Items.Add(Path.GetFullPath(file.Name));
                     }
                 }
             }
-            catch (Exception e)
-            {
-                DebugUtilities.NotImplemented(e.ToString());
-            }
         }
-
-        private void klbThemesList_SelectedIndexChanged(object sender, EventArgs e)
+        catch (Exception e)
         {
-
+            DebugUtilities.NotImplemented(e.ToString());
         }
-
-        private void klvThemesList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            kcpbCustom.Import(klvThemesList.SelectedItems.ToString(), kchkSilent.Checked);
-
-            kmanCustom.GlobalPaletteMode = PaletteMode.Custom;
-
-            kmanCustom.GlobalCustomPalette = kcpbCustom;
-
-            kbtnApply.Enabled = true;
-        }
-
-        #endregion
     }
+
+    private void klbThemesList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void klvThemesList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        kcpbCustom.Import(klvThemesList.SelectedItems.ToString(), kchkSilent.Checked);
+
+        kmanCustom.GlobalPaletteMode = PaletteMode.Custom;
+
+        kmanCustom.GlobalCustomPalette = kcpbCustom;
+
+        kbtnApply.Enabled = true;
+    }
+
+    #endregion
 }

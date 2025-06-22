@@ -25,67 +25,66 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Buttons
+namespace Krypton.Toolkit.Suite.Extended.Buttons;
+
+[ToolboxBitmap(typeof(KryptonButton))]
+public class KryptonNODialogButton : KryptonButton
 {
-    [ToolboxBitmap(typeof(KryptonButton))]
-    public class KryptonNODialogButton : KryptonButton
+    private KryptonForm _parent;
+
+    public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new(this, value); OnParentWindowChanged(null, e); } }
+
+    #region Custom Events
+    public delegate void ParentWindowChangedEventHandler(object sender, OwnerWindowChangedEventArgs e);
+
+    public event ParentWindowChangedEventHandler ParentWindowChanged;
+
+    protected virtual void OnParentWindowChanged(object sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
+    #endregion
+
+    public KryptonNODialogButton()
     {
-        private KryptonForm _parent;
+        DialogResult = DialogResult.No;
 
-        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new(this, value); OnParentWindowChanged(null, e); } }
+        TextChanged += KryptonNODialogButton_TextChanged;
 
-        #region Custom Events
-        public delegate void ParentWindowChangedEventHandler(object sender, OwnerWindowChangedEventArgs e);
+        ParentChanged += KryptonNODialogButton_ParentChanged;
+    }
 
-        public event ParentWindowChangedEventHandler ParentWindowChanged;
+    private void KryptonNODialogButton_ParentChanged(object sender, EventArgs e)
+    {
+        Control? parent = Parent;
 
-        protected virtual void OnParentWindowChanged(object sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
-        #endregion
-
-        public KryptonNODialogButton()
+        while (!(Parent is KryptonForm) && parent != null)
         {
-            DialogResult = DialogResult.No;
-
-            TextChanged += KryptonNODialogButton_TextChanged;
-
-            ParentChanged += KryptonNODialogButton_ParentChanged;
+            parent = parent.Parent;
         }
 
-        private void KryptonNODialogButton_ParentChanged(object sender, EventArgs e)
+        if (parent is KryptonForm)
         {
-            Control? parent = Parent;
+            KryptonForm form = (KryptonForm)parent;
 
-            while (!(Parent is KryptonForm) && parent != null)
-            {
-                parent = parent.Parent;
-            }
+            form.CancelButton = this;
+        }
+    }
 
-            if (parent is KryptonForm)
-            {
-                KryptonForm form = (KryptonForm)parent;
+    private void KryptonNODialogButton_TextChanged(object sender, EventArgs e)
+    {
+        if (Text == Name)
+        {
+            Text = KryptonManager.Strings.GeneralStrings.No;
+        }
+    }
 
-                form.CancelButton = this;
-            }
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        if (ParentWindow != null)
+        {
+            OwnerWindowChangedEventArgs ev = new(this, ParentWindow);
+
+            ev.AssociateCancelButton(this);
         }
 
-        private void KryptonNODialogButton_TextChanged(object sender, EventArgs e)
-        {
-            if (Text == Name)
-            {
-                Text = KryptonManager.Strings.GeneralStrings.No;
-            }
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            if (ParentWindow != null)
-            {
-                OwnerWindowChangedEventArgs ev = new(this, ParentWindow);
-
-                ev.AssociateCancelButton(this);
-            }
-
-            base.OnPaint(e);
-        }
+        base.OnPaint(e);
     }
 }

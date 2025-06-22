@@ -16,63 +16,62 @@
 //--------------------------------------------------------------------------------
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+
+/// <summary>
+/// Handle localization (singleton)
+/// </summary>
+// Note: Overhaul this!
+public class LanguageManager
 {
-    /// <summary>
-    /// Handle localization (singleton)
-    /// </summary>
-    // Note: Overhaul this!
-    public class LanguageManager
+    private static LanguageManager? _mInstance = null;
+
+    private static readonly object _myLock = new();
+    private ResourceManager _rm;
+
+    private CultureInfo _ci;
+    //Used for blocking critical sections on updates
+    private object _locker = new();
+
+    private LanguageManager()
     {
-        private static LanguageManager? _mInstance = null;
+        _rm = new ResourceManager("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Resources.Language.Strings.en-Neutral", Assembly.GetExecutingAssembly());
+        _ci = Thread.CurrentThread.CurrentCulture; //CultureInfo.CurrentCulture;
+    }
 
-        private static readonly object _myLock = new();
-        private ResourceManager _rm;
+    /// <summary>
+    /// Gets or sets the P locker.
+    /// </summary>
+    /// <value>The P locker.</value>
+    public object PLocker { get => _locker; set => _locker = value; }
 
-        private CultureInfo _ci;
-        //Used for blocking critical sections on updates
-        private object _locker = new();
-
-        private LanguageManager()
+    /// <summary>
+    /// Gets the instance of the singleton.
+    /// </summary>
+    public static LanguageManager Instance
+    {
+        get
         {
-            _rm = new ResourceManager("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Resources.Language.Strings.en-Neutral", Assembly.GetExecutingAssembly());
-            _ci = Thread.CurrentThread.CurrentCulture; //CultureInfo.CurrentCulture;
-        }
-
-        /// <summary>
-        /// Gets or sets the P locker.
-        /// </summary>
-        /// <value>The P locker.</value>
-        public object PLocker { get => _locker; set => _locker = value; }
-
-        /// <summary>
-        /// Gets the instance of the singleton.
-        /// </summary>
-        public static LanguageManager Instance
-        {
-            get
+            if (_mInstance == null)
             {
-                if (_mInstance == null)
+                lock (_myLock)
                 {
-                    lock (_myLock)
+                    if (_mInstance == null)
                     {
-                        if (_mInstance == null)
-                        {
-                            _mInstance = new LanguageManager();
-                        }
+                        _mInstance = new LanguageManager();
                     }
                 }
-
-                return _mInstance;
             }
-        }
 
-        /// <summary>
-        /// Get localized string
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        public string GetString(string name) => _rm.GetString(name, _ci)!;
+            return _mInstance;
+        }
     }
+
+    /// <summary>
+    /// Get localized string
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    /// <remarks></remarks>
+    public string GetString(string name) => _rm.GetString(name, _ci)!;
 }

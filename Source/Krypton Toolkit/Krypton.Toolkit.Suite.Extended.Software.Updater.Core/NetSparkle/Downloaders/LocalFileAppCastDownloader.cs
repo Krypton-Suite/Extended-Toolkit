@@ -24,27 +24,26 @@
 
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core;
+
+/// <summary>
+/// Class that takes care of downloading data for an app cast, including the 
+/// app cast itself as well as the app cast signature (if available). Allows
+/// you to send extra JSON with your request for the app cast information.
+/// </summary>
+public class LocalFileAppCastDownloader : IAppCastDataDownloader
 {
     /// <summary>
-    /// Class that takes care of downloading data for an app cast, including the 
-    /// app cast itself as well as the app cast signature (if available). Allows
-    /// you to send extra JSON with your request for the app cast information.
+    /// Default constructor for the app cast data downloader. Basically
+    /// does nothing. :)
     /// </summary>
-    public class LocalFileAppCastDownloader : IAppCastDataDownloader
+    public LocalFileAppCastDownloader()
     {
-        /// <summary>
-        /// Default constructor for the app cast data downloader. Basically
-        /// does nothing. :)
-        /// </summary>
-        public LocalFileAppCastDownloader()
-        {
-        }
-
-        /// <inheritdoc/>
-        public string DownloadAndGetAppCastData(string url) => File.ReadAllText(url);
-
-        /// <inheritdoc/>
-        public Encoding GetAppCastEncoding() => Encoding.UTF8;
     }
+
+    /// <inheritdoc/>
+    public string DownloadAndGetAppCastData(string url) => File.ReadAllText(url);
+
+    /// <inheritdoc/>
+    public Encoding GetAppCastEncoding() => Encoding.UTF8;
 }

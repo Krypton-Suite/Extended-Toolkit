@@ -1,17 +1,16 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
-{
-    public sealed class MirroredXAxis : XAxisBase, IXAxis
-    {
-        private readonly Edge _edge;
-        private readonly IXAxis _axis;
-        public override Edge Edge => _edge;
-        public override CoordinateRangeMutable Range => new(_axis.Min, _axis.Max);
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
 
-        public MirroredXAxis(IXAxis axis, Edge? edge)
-        {
-            _axis = axis;
-            _edge = edge ?? axis.Edge;
-            TickGenerator = axis.TickGenerator;
-        }
+public sealed class MirroredXAxis : XAxisBase, IXAxis
+{
+    private readonly Edge _edge;
+    private readonly IXAxis _axis;
+    public override Edge Edge => _edge;
+    public override CoordinateRangeMutable Range => new(_axis.Min, _axis.Max);
+
+    public MirroredXAxis(IXAxis axis, Edge? edge)
+    {
+        _axis = axis;
+        _edge = edge ?? axis.Edge;
+        TickGenerator = axis.TickGenerator;
     }
 }
