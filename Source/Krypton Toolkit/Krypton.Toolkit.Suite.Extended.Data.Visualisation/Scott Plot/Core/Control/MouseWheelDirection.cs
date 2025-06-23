@@ -1,11 +1,10 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public enum MouseWheelDirection
 {
-    public enum MouseWheelDirection
-    {
-        Unknown,
-        Up,
-        Down,
-        Left,
-        Right,
-    }
+    Unknown,
+    Up,
+    Down,
+    Left,
+    Right,
 }

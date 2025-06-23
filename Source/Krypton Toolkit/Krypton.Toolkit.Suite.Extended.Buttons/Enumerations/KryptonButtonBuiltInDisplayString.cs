@@ -25,29 +25,28 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Buttons
+namespace Krypton.Toolkit.Suite.Extended.Buttons;
+
+public enum KryptonButtonBuiltInDisplayString
 {
-    public enum KryptonButtonBuiltInDisplayString
-    {
-        Abort = 0,
-        Apply = 1,
-        Cancel = 2,
-        Collapse = 3,
-        Continue = 4,
-        Close = 5,
-        Yes = 6,
-        No = 7,
-        Ok = 8,
-        Retry = 9,
-        Ignore = 10,
-        Help = 11,
-        TryAgain = 12,
-        Expand = 13,
-        Today = 14,
-        Back = 15,
-        Exit = 16,
-        Finish = 17,
-        Next = 18,
-        Previous = 19
-    }
+    Abort = 0,
+    Apply = 1,
+    Cancel = 2,
+    Collapse = 3,
+    Continue = 4,
+    Close = 5,
+    Yes = 6,
+    No = 7,
+    Ok = 8,
+    Retry = 9,
+    Ignore = 10,
+    Help = 11,
+    TryAgain = 12,
+    Expand = 13,
+    Today = 14,
+    Back = 15,
+    Exit = 16,
+    Finish = 17,
+    Next = 18,
+    Previous = 19
 }

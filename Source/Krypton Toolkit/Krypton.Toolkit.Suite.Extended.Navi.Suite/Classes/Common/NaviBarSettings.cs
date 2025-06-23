@@ -25,23 +25,22 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+[XmlRoot("settings")]
+public class NaviBarSettings
 {
-    [XmlRoot("settings")]
-    public class NaviBarSettings
+    [XmlElement("band")]
+    public List<NaviBandSetting> BandSettings { get; set; }
+
+    [XmlElement("visibleButtons")]
+    public int VisibleButtons { get; set; }
+
+    [XmlElement("collapsed")]
+    public bool Collapsed { get; set; }
+
+    public NaviBarSettings()
     {
-        [XmlElement("band")]
-        public List<NaviBandSetting> BandSettings { get; set; }
-
-        [XmlElement("visibleButtons")]
-        public int VisibleButtons { get; set; }
-
-        [XmlElement("collapsed")]
-        public bool Collapsed { get; set; }
-
-        public NaviBarSettings()
-        {
-            BandSettings = [];
-        }
+        BandSettings = [];
     }
 }

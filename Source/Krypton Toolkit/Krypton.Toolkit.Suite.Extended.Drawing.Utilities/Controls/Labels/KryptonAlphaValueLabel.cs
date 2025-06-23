@@ -25,149 +25,148 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+public class KryptonAlphaValueLabel : KryptonLabel
 {
-    public class KryptonAlphaValueLabel : KryptonLabel
+    #region Variables
+    private bool _showCurrentColourValue, _showColon;
+
+    private Font _textSize;
+
+    private int _value;
+
+    private string _extraText;
+    #endregion
+
+    #region Properties
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public bool ShowCurrentColourValue
     {
-        #region Variables
-        private bool _showCurrentColourValue, _showColon;
+        get => _showCurrentColourValue;
 
-        private Font _textSize;
-
-        private int _value;
-
-        private string _extraText;
-        #endregion
-
-        #region Properties
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool ShowCurrentColourValue
+        set
         {
-            get => _showCurrentColourValue;
-
-            set
-            {
-                _showCurrentColourValue = value;
+            _showCurrentColourValue = value;
                 
-                Invalidate();
-            }
+            Invalidate();
         }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool ShowColon
-        {
-            get => _showColon;
-            
-            set
-            {
-                _showColon = value; 
-                
-                Invalidate();
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Font Typeface
-        {
-            get => _textSize;
-
-            set
-            {
-                _textSize = value;
-                
-                Invalidate();
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int AlphaValue
-        {
-            get => _value;
-
-            set
-            {
-                _value = value;
-                
-                Invalidate();
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string ExtraText
-        {
-            get => _extraText;
-
-            set
-            {
-                _extraText = value;
-                
-                Invalidate();
-            }
-        }
-        #endregion
-
-        #region Constructor
-        public KryptonAlphaValueLabel()
-        {
-            Typeface = new Font("Microsoft Sans Serif", 11.25f, FontStyle.Bold);
-
-            AlphaValue = 0;
-
-            ExtraText = "Alpha Value";
-
-            ShowColon = false;
-        }
-        #endregion
-
-        #region Methods
-        private void ShowCurrentColourValueOnLabel(bool value, string text = "Alpha Value", bool showColon = false)
-        {
-            if (value)
-            {
-                Text = $"{text}: {AlphaValue}";
-            }
-            else if (_showColon)
-            {
-                Text = $"{text}";
-            }
-            else
-            {
-                Text = $"{text}:";
-            }
-        }
-
-        private void AlterLabelTypeface(Font typeface)
-        {
-            StateCommon.LongText.Font = typeface;
-
-            StateCommon.ShortText.Font = typeface;
-        }
-        #endregion
-
-        #region Overrides
-        protected override void OnPaint(PaintEventArgs? e)
-        {
-            string tmpText = Text;
-
-            ShowCurrentColourValueOnLabel(_showCurrentColourValue, _extraText, _showColon);
-
-            AlterLabelTypeface(_textSize);
-
-            if (ShowColon)
-            {
-                if (!tmpText.EndsWith(":"))
-                {
-                    Text = $"{tmpText}:";
-                }
-            }
-            else
-            {
-
-            }
-
-            base.OnPaint(e);
-        }
-        #endregion
     }
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public bool ShowColon
+    {
+        get => _showColon;
+            
+        set
+        {
+            _showColon = value; 
+                
+            Invalidate();
+        }
+    }
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Font Typeface
+    {
+        get => _textSize;
+
+        set
+        {
+            _textSize = value;
+                
+            Invalidate();
+        }
+    }
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public int AlphaValue
+    {
+        get => _value;
+
+        set
+        {
+            _value = value;
+                
+            Invalidate();
+        }
+    }
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public string ExtraText
+    {
+        get => _extraText;
+
+        set
+        {
+            _extraText = value;
+                
+            Invalidate();
+        }
+    }
+    #endregion
+
+    #region Constructor
+    public KryptonAlphaValueLabel()
+    {
+        Typeface = new Font("Microsoft Sans Serif", 11.25f, FontStyle.Bold);
+
+        AlphaValue = 0;
+
+        ExtraText = "Alpha Value";
+
+        ShowColon = false;
+    }
+    #endregion
+
+    #region Methods
+    private void ShowCurrentColourValueOnLabel(bool value, string text = "Alpha Value", bool showColon = false)
+    {
+        if (value)
+        {
+            Text = $"{text}: {AlphaValue}";
+        }
+        else if (_showColon)
+        {
+            Text = $"{text}";
+        }
+        else
+        {
+            Text = $"{text}:";
+        }
+    }
+
+    private void AlterLabelTypeface(Font typeface)
+    {
+        StateCommon.LongText.Font = typeface;
+
+        StateCommon.ShortText.Font = typeface;
+    }
+    #endregion
+
+    #region Overrides
+    protected override void OnPaint(PaintEventArgs? e)
+    {
+        string tmpText = Text;
+
+        ShowCurrentColourValueOnLabel(_showCurrentColourValue, _extraText, _showColon);
+
+        AlterLabelTypeface(_textSize);
+
+        if (ShowColon)
+        {
+            if (!tmpText.EndsWith(":"))
+            {
+                Text = $"{tmpText}:";
+            }
+        }
+        else
+        {
+
+        }
+
+        base.OnPaint(e);
+    }
+    #endregion
 }

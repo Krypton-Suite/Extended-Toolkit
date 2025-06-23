@@ -25,11 +25,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
+namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch;
+
+public enum ToggleValueState
 {
-    public enum ToggleValueState
-    {
-        Off = 0,
-        On = 1
-    }
+    Off = 0,
+    On = 1
 }

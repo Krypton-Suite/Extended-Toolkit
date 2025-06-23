@@ -47,23 +47,22 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class Category10 : IPalette
 {
-    public class Category10 : IPalette
-    {
-        public string Name { get; } = "Category 10";
+    public string Name { get; } = "Category 10";
 
-        public string Description { get; } = "A set of 10 unique colors used in " +
-                                             "many data visualization libraries such as Matplotlib, Vega, and Tableau";
+    public string Description { get; } = "A set of 10 unique colors used in " +
+                                         "many data visualization libraries such as Matplotlib, Vega, and Tableau";
 
-        public Color[] Colors { get; } = Color.FromHex(_hexColors);
+    public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] _hexColors =
-        [
-            "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
-            "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"
-        ];
+    private static readonly string[] _hexColors =
+    [
+        "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
+        "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"
+    ];
 
-        public Color GetColor(int index) => Colors[index % Colors.Length];
-    }
+    public Color GetColor(int index) => Colors[index % Colors.Length];
 }

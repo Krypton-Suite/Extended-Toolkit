@@ -25,10 +25,9 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
+namespace Krypton.Toolkit.Suite.Extended.Controls;
+
+[ToolboxItem(false)]
+public class KryptonScrollingLabel : KryptonLabel
 {
-    [ToolboxItem(false)]
-    public class KryptonScrollingLabel : KryptonLabel
-    {
-    }
 }

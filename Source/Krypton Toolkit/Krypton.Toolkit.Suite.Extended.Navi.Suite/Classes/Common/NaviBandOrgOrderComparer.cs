@@ -25,25 +25,24 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+public class NaviBandOrgOrderComparer : IComparer
 {
-    public class NaviBandOrgOrderComparer : IComparer
+    #region IComparer Members
+
+    public int Compare(object x, object y)
     {
-        #region IComparer Members
-
-        public int Compare(object x, object y)
+        if (!(x is NaviBand) || !(y is NaviBand))
         {
-            if (!(x is NaviBand) || !(y is NaviBand))
-            {
-                throw new ArgumentException("Both of the argument should be of type NaviBand");
-            }
-
-            NaviBand bandx = (NaviBand)x;
-            NaviBand bandy = (NaviBand)y;
-
-            return bandx.OriginalOrder.CompareTo(bandy.OriginalOrder);
+            throw new ArgumentException("Both of the argument should be of type NaviBand");
         }
 
-        #endregion
+        NaviBand bandx = (NaviBand)x;
+        NaviBand bandy = (NaviBand)y;
+
+        return bandx.OriginalOrder.CompareTo(bandy.OriginalOrder);
     }
+
+    #endregion
 }

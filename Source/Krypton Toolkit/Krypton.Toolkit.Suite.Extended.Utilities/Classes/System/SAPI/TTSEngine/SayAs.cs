@@ -26,48 +26,47 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+[StructLayout(LayoutKind.Sequential)]
+public class SayAs
 {
-    [StructLayout(LayoutKind.Sequential)]
-    public class SayAs
+    [MarshalAs(UnmanagedType.LPWStr)]
+    private string _interpretAs;
+
+    [MarshalAs(UnmanagedType.LPWStr)]
+    private string _format;
+
+    [MarshalAs(UnmanagedType.LPWStr)]
+    private string _detail;
+
+    public string InterpretAs
     {
-        [MarshalAs(UnmanagedType.LPWStr)]
-        private string _interpretAs;
-
-        [MarshalAs(UnmanagedType.LPWStr)]
-        private string _format;
-
-        [MarshalAs(UnmanagedType.LPWStr)]
-        private string _detail;
-
-        public string InterpretAs
+        get => _interpretAs;
+        set
         {
-            get => _interpretAs;
-            set
-            {
-                Helpers.ThrowIfEmptyOrNull(value, "value");
-                _interpretAs = value;
-            }
+            Helpers.ThrowIfEmptyOrNull(value, "value");
+            _interpretAs = value;
         }
+    }
 
-        public string Format
+    public string Format
+    {
+        get => _format;
+        set
         {
-            get => _format;
-            set
-            {
-                Helpers.ThrowIfEmptyOrNull(value, "value");
-                _format = value;
-            }
+            Helpers.ThrowIfEmptyOrNull(value, "value");
+            _format = value;
         }
+    }
 
-        public string Detail
+    public string Detail
+    {
+        get => _detail;
+        set
         {
-            get => _detail;
-            set
-            {
-                Helpers.ThrowIfEmptyOrNull(value, "value");
-                _detail = value;
-            }
+            Helpers.ThrowIfEmptyOrNull(value, "value");
+            _detail = value;
         }
     }
 }

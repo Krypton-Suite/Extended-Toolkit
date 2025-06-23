@@ -26,12 +26,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+internal enum RuleDynamic
 {
-    internal enum RuleDynamic
-    {
-        True,
-        False,
-        NotSet
-    }
+    True,
+    False,
+    NotSet
 }

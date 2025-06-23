@@ -26,48 +26,47 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding;
+
+internal abstract class GrammarBuilderBase
 {
-    internal abstract class GrammarBuilderBase
+    private int _count = 1;
+
+    private bool _marker;
+
+    private BuilderElements _parent;
+
+    internal virtual int Count
     {
-        private int _count = 1;
+        get => _count;
+        set => _count = value;
+    }
 
-        private bool _marker;
+    internal virtual bool Marked
+    {
+        get => _marker;
+        set => _marker = value;
+    }
 
-        private BuilderElements _parent;
+    internal virtual BuilderElements Parent
+    {
+        get => _parent;
+        set => _parent = value;
+    }
 
-        internal virtual int Count
-        {
-            get => _count;
-            set => _count = value;
-        }
+    internal abstract string DebugSummary
+    {
+        get;
+    }
 
-        internal virtual bool Marked
-        {
-            get => _marker;
-            set => _marker = value;
-        }
+    internal abstract GrammarBuilderBase Clone();
 
-        internal virtual BuilderElements Parent
-        {
-            get => _parent;
-            set => _parent = value;
-        }
+    internal abstract IElement CreateElement(IElementFactory elementFactory, IElement parent, IRule rule, IdentifierCollection ruleIds);
 
-        internal abstract string DebugSummary
-        {
-            get;
-        }
-
-        internal abstract GrammarBuilderBase Clone();
-
-        internal abstract IElement CreateElement(IElementFactory elementFactory, IElement parent, IRule rule, IdentifierCollection ruleIds);
-
-        internal virtual int CalcCount(BuilderElements parent)
-        {
-            Marked = false;
-            Parent = parent;
-            return Count;
-        }
+    internal virtual int CalcCount(BuilderElements parent)
+    {
+        Marked = false;
+        Parent = parent;
+        return Count;
     }
 }

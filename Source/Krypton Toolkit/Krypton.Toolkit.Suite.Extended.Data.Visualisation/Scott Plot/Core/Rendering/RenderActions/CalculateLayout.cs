@@ -1,10 +1,9 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class CalculateLayout : IRenderAction
 {
-    public class CalculateLayout : IRenderAction
+    public void Render(RenderPack rp)
     {
-        public void Render(RenderPack rp)
-        {
-            rp.CalculateLayout();
-        }
+        rp.CalculateLayout();
     }
 }

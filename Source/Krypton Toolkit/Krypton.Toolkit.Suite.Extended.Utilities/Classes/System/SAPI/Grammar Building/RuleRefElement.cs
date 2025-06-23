@@ -26,67 +26,66 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding;
+
+[DebuggerDisplay("{DebugSummary}")]
+internal sealed class RuleRefElement : GrammarBuilderBase
 {
-    [DebuggerDisplay("{DebugSummary}")]
-    internal sealed class RuleRefElement : GrammarBuilderBase
+    private readonly RuleElement _rule;
+
+    private readonly string _semanticKey;
+
+    internal RuleElement Rule => _rule;
+
+    internal override string DebugSummary => $"#{Rule.Name}{(_semanticKey != null ? ":" + _semanticKey : "")}";
+
+    internal RuleRefElement(RuleElement rule)
     {
-        private readonly RuleElement _rule;
+        _rule = rule;
+    }
 
-        private readonly string _semanticKey;
+    internal RuleRefElement(RuleElement rule, string semanticKey)
+    {
+        _rule = rule;
+        _semanticKey = semanticKey;
+    }
 
-        internal RuleElement Rule => _rule;
-
-        internal override string DebugSummary => $"#{Rule.Name}{(_semanticKey != null ? ":" + _semanticKey : "")}";
-
-        internal RuleRefElement(RuleElement rule)
+    public override bool Equals(object obj)
+    {
+        RuleRefElement ruleRefElement = obj as RuleRefElement;
+        if (ruleRefElement == null)
         {
-            _rule = rule;
-        }
-
-        internal RuleRefElement(RuleElement rule, string semanticKey)
-        {
-            _rule = rule;
-            _semanticKey = semanticKey;
-        }
-
-        public override bool Equals(object obj)
-        {
-            RuleRefElement ruleRefElement = obj as RuleRefElement;
-            if (ruleRefElement == null)
-            {
-                return false;
-            }
-            if (_semanticKey == ruleRefElement._semanticKey)
-            {
-                return _rule.Equals(ruleRefElement._rule);
-            }
             return false;
         }
-
-        public override int GetHashCode()
+        if (_semanticKey == ruleRefElement._semanticKey)
         {
-            return base.GetHashCode();
+            return _rule.Equals(ruleRefElement._rule);
         }
+        return false;
+    }
 
-        internal void Add(GrammarBuilderBase item)
-        {
-            _rule.Add(item);
-        }
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 
-        internal override GrammarBuilderBase Clone()
-        {
-            return new RuleRefElement(_rule, _semanticKey);
-        }
+    internal void Add(GrammarBuilderBase item)
+    {
+        _rule.Add(item);
+    }
 
-        internal void CloneItems(RuleRefElement builders)
-        {
-            _rule.CloneItems(builders._rule);
-        }
+    internal override GrammarBuilderBase Clone()
+    {
+        return new RuleRefElement(_rule, _semanticKey);
+    }
 
-        internal override IElement CreateElement(IElementFactory elementFactory, IElement parent, IRule rule, IdentifierCollection ruleIds)
-        {
-            return elementFactory.CreateRuleRef(parent, new Uri($"#{Rule.RuleName}", UriKind.Relative), _semanticKey, null);
-        }
+    internal void CloneItems(RuleRefElement builders)
+    {
+        _rule.CloneItems(builders._rule);
+    }
+
+    internal override IElement CreateElement(IElementFactory elementFactory, IElement parent, IRule rule, IdentifierCollection ruleIds)
+    {
+        return elementFactory.CreateRuleRef(parent, new Uri($"#{Rule.RuleName}", UriKind.Relative), _semanticKey, null);
     }
 }

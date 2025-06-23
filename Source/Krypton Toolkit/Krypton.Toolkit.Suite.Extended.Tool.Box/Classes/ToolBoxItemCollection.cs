@@ -27,51 +27,50 @@
 
 using System.Collections;
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Box
+namespace Krypton.Toolkit.Suite.Extended.Tool.Box;
+
+[Serializable]
+public class ToolBoxItemCollection : CollectionBase
 {
-    [Serializable]
-    public class ToolBoxItemCollection : CollectionBase
+    #region Constructor
+    public ToolBoxItemCollection()
     {
-        #region Constructor
-        public ToolBoxItemCollection()
-        {
-        }
-        #endregion //Constructor
-
-        #region Properties
-        public ToolBoxItem this[int index]
-        {
-            get => (ToolBoxItem)base.List[index];
-            set => base.List[index] = value;
-        }
-        #endregion //Properties
-
-        #region Public Methods
-        public int Add(ToolBoxItem item)
-        {
-            return base.InnerList.Add(item);
-        }
-
-        public void Insert(int index, ToolBoxItem item)
-        {
-            base.InnerList.Insert(index, item);
-        }
-
-        public void Remove(ToolBoxItem item)
-        {
-            base.InnerList.Remove(item);
-        }
-
-        public int IndexOf(ToolBoxItem item)
-        {
-            return base.InnerList.IndexOf(item);
-        }
-
-        public bool Contains(ToolBoxItem item)
-        {
-            return base.InnerList.Contains(item);
-        }
-
-        #endregion //Public Methods
     }
+    #endregion //Constructor
+
+    #region Properties
+    public ToolBoxItem this[int index]
+    {
+        get => (ToolBoxItem)base.List[index];
+        set => base.List[index] = value;
+    }
+    #endregion //Properties
+
+    #region Public Methods
+    public int Add(ToolBoxItem item)
+    {
+        return base.InnerList.Add(item);
+    }
+
+    public void Insert(int index, ToolBoxItem item)
+    {
+        base.InnerList.Insert(index, item);
+    }
+
+    public void Remove(ToolBoxItem item)
+    {
+        base.InnerList.Remove(item);
+    }
+
+    public int IndexOf(ToolBoxItem item)
+    {
+        return base.InnerList.IndexOf(item);
+    }
+
+    public bool Contains(ToolBoxItem item)
+    {
+        return base.InnerList.Contains(item);
+    }
+
+    #endregion //Public Methods
 }

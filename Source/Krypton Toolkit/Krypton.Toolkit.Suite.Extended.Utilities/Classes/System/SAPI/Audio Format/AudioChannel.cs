@@ -26,13 +26,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
+
+public enum AudioChannel
 {
-    public enum AudioChannel
-    {
-        /// <summary />
-        Mono = 1,
-        /// <summary />
-        Stereo
-    }
+    /// <summary />
+    Mono = 1,
+    /// <summary />
+    Stereo
 }

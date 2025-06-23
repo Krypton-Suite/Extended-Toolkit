@@ -26,11 +26,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens;
+
+internal enum VoiceCategory
 {
-    internal enum VoiceCategory
-    {
-        Default,
-        ScanSoft
-    }
+    Default,
+    ScanSoft
 }

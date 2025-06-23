@@ -1,12 +1,11 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
-{
-    public class BottomAxis : XAxisBase, IXAxis
-    {
-        public override Edge Edge => Edge.Bottom;
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
 
-        public BottomAxis()
-        {
-            TickGenerator = new NumericAutomatic();
-        }
+public class BottomAxis : XAxisBase, IXAxis
+{
+    public override Edge Edge => Edge.Bottom;
+
+    public BottomAxis()
+    {
+        TickGenerator = new NumericAutomatic();
     }
 }

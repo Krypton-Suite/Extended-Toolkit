@@ -25,20 +25,19 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+[ToolboxBitmap(typeof(KryptonTrackBar))]
+public class KryptonAlphaTrackBar : KryptonTrackBar
 {
-    [ToolboxBitmap(typeof(KryptonTrackBar))]
-    public class KryptonAlphaTrackBar : KryptonTrackBar
+    #region Constructor
+    public KryptonAlphaTrackBar()
     {
-        #region Constructor
-        public KryptonAlphaTrackBar()
-        {
-            Maximum = 255;
+        Maximum = 255;
 
-            TickStyle = TickStyle.None;
+        TickStyle = TickStyle.None;
 
-            Size = new Size(182, 27);
-        }
-        #endregion
+        Size = new Size(182, 27);
     }
+    #endregion
 }

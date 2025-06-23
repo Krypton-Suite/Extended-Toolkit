@@ -4,21 +4,20 @@
  * "The Indian Ocean" on https://evening-ridge-43372.herokuapp.com/
  */
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class SummerSplash : IPalette
 {
-    public class SummerSplash : IPalette
-    {
-        public string Name { get; } = "Summer Splash";
+    public string Name { get; } = "Summer Splash";
 
-        public string Description { get; } = string.Empty;
+    public string Description { get; } = string.Empty;
 
-        public Color[] Colors { get; } = Color.FromHex(_hexColors);
+    public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] _hexColors =
-        [
-            "#05445E", "#189AB4", "#75E6DA", "#D4F1F4"
-        ];
+    private static readonly string[] _hexColors =
+    [
+        "#05445E", "#189AB4", "#75E6DA", "#D4F1F4"
+    ];
 
-        public Color GetColor(int index) => Colors[index % Colors.Length];
-    }
+    public Color GetColor(int index) => Colors[index % Colors.Length];
 }

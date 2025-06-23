@@ -26,63 +26,62 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+internal class TtsProxySsml : ITtsEngineProxy
 {
-    internal class TtsProxySsml : ITtsEngineProxy
+    private TtsEngineSsml _ssmlEngine;
+
+    private ITtsEngineSite _site;
+
+    internal override AlphabetType EngineAlphabet => AlphabetType.Ipa;
+
+    internal TtsProxySsml(TtsEngineSsml ssmlEngine, ITtsEngineSite site, int lcid)
+        : base(lcid)
     {
-        private TtsEngineSsml _ssmlEngine;
+        _ssmlEngine = ssmlEngine;
+        _site = site;
+    }
 
-        private ITtsEngineSite _site;
+    internal override IntPtr GetOutputFormat(IntPtr targetFormat)
+    {
+        return _ssmlEngine.GetOutputFormat(SpeakOutputFormat.WaveFormat, targetFormat);
+    }
 
-        internal override AlphabetType EngineAlphabet => AlphabetType.Ipa;
+    internal override void AddLexicon(Uri lexicon, string mediaType)
+    {
+        _ssmlEngine.AddLexicon(lexicon, mediaType, _site);
+    }
 
-        internal TtsProxySsml(TtsEngineSsml ssmlEngine, ITtsEngineSite site, int lcid)
-            : base(lcid)
+    internal override void RemoveLexicon(Uri lexicon)
+    {
+        _ssmlEngine.RemoveLexicon(lexicon, _site);
+    }
+
+    internal override void Speak(List<TextFragment> frags, byte[] wfx)
+    {
+        GCHandle gCHandle = GCHandle.Alloc(wfx, GCHandleType.Pinned);
+        try
         {
-            _ssmlEngine = ssmlEngine;
-            _site = site;
+            IntPtr waveHeader = gCHandle.AddrOfPinnedObject();
+            _ssmlEngine.Speak(frags.ToArray(), waveHeader, _site);
         }
-
-        internal override IntPtr GetOutputFormat(IntPtr targetFormat)
+        finally
         {
-            return _ssmlEngine.GetOutputFormat(SpeakOutputFormat.WaveFormat, targetFormat);
+            gCHandle.Free();
         }
+    }
 
-        internal override void AddLexicon(Uri lexicon, string mediaType)
+    internal override char[] ConvertPhonemes(char[] phones, AlphabetType alphabet)
+    {
+        if (alphabet == AlphabetType.Ipa)
         {
-            _ssmlEngine.AddLexicon(lexicon, mediaType, _site);
+            return phones;
         }
+        return _alphabetConverter.SapiToIpa(phones);
+    }
 
-        internal override void RemoveLexicon(Uri lexicon)
-        {
-            _ssmlEngine.RemoveLexicon(lexicon, _site);
-        }
-
-        internal override void Speak(List<TextFragment> frags, byte[] wfx)
-        {
-            GCHandle gCHandle = GCHandle.Alloc(wfx, GCHandleType.Pinned);
-            try
-            {
-                IntPtr waveHeader = gCHandle.AddrOfPinnedObject();
-                _ssmlEngine.Speak(frags.ToArray(), waveHeader, _site);
-            }
-            finally
-            {
-                gCHandle.Free();
-            }
-        }
-
-        internal override char[] ConvertPhonemes(char[] phones, AlphabetType alphabet)
-        {
-            if (alphabet == AlphabetType.Ipa)
-            {
-                return phones;
-            }
-            return _alphabetConverter.SapiToIpa(phones);
-        }
-
-        internal override void ReleaseInterface()
-        {
-        }
+    internal override void ReleaseInterface()
+    {
     }
 }

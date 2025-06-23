@@ -25,7 +25,6 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.TreeGridView
-{
-    public delegate void CollapsedEventHandler(object sender, CollapsedEventArgs e);
-}
+namespace Krypton.Toolkit.Suite.Extended.TreeGridView;
+
+public delegate void CollapsedEventHandler(object sender, CollapsedEventArgs e);

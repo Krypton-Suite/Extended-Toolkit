@@ -25,11 +25,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher;
+
+public enum ExternalThemeViewerType
 {
-    public enum ExternalThemeViewerType
-    {
-        ListBox = 0,
-        ListView = 1
-    }
+    ListBox = 0,
+    ListView = 1
 }

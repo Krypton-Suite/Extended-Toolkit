@@ -25,141 +25,140 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
+namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars;
+
+public partial class MenuStripExistingComponentChooser : KryptonForm
 {
-    public partial class MenuStripExistingComponentChooser : KryptonForm
+    #region Variables
+    private List<MenuStripPanelExtended?> _srcComponentList = [];
+    #endregion
+
+    #region Properties
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Control? SourceComponentContainer
     {
-        #region Variables
-        private List<MenuStripPanelExtended?> _srcComponentList = [];
-        #endregion
-
-        #region Properties
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Control? SourceComponentContainer
+        set
         {
-            set
+            if (value != null)
             {
-                if (value != null)
+                foreach (Control item in value.Controls)
                 {
-                    foreach (Control item in value.Controls)
+                    if (item is MenuStripPanelExtended)
                     {
-                        if (item is MenuStripPanelExtended)
-                        {
-                            _srcComponentList.Add(item as MenuStripPanelExtended);
-                        }
-                    }
-
-                    InitialSettings();
-                }
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public List<MenuStripPanelExtended>? SelectedComponents
-        {
-            get
-            {
-                List<MenuStripPanelExtended>? tspe = [];
-
-                if (klbSelected.Items.Count > 0)
-                {
-                    foreach (MenuStripPanelExtended? toolStripPanel in _srcComponentList)
-                    {
-                        if (toolStripPanel != null && klbSelected.Items.Contains(toolStripPanel.Name))
-                        {
-                            tspe.Add(toolStripPanel);
-                        }
+                        _srcComponentList.Add(item as MenuStripPanelExtended);
                     }
                 }
 
-                return tspe;
+                InitialSettings();
             }
         }
-        #endregion
+    }
 
-        #region Constructor
-        public MenuStripExistingComponentChooser(List<MenuStripPanelExtended>? panels)
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public List<MenuStripPanelExtended>? SelectedComponents
+    {
+        get
         {
-            InitializeComponent();
+            List<MenuStripPanelExtended>? tspe = [];
 
-            if (panels != null)
+            if (klbSelected.Items.Count > 0)
             {
-                foreach (MenuStripPanelExtended item in panels)
+                foreach (MenuStripPanelExtended? toolStripPanel in _srcComponentList)
                 {
-                    klbSelected.Items.Add(item.Name);
+                    if (toolStripPanel != null && klbSelected.Items.Contains(toolStripPanel.Name))
+                    {
+                        tspe.Add(toolStripPanel);
+                    }
                 }
             }
-        }
-        #endregion
 
-        #region Methods
-        private void InitialSettings()
+            return tspe;
+        }
+    }
+    #endregion
+
+    #region Constructor
+    public MenuStripExistingComponentChooser(List<MenuStripPanelExtended>? panels)
+    {
+        InitializeComponent();
+
+        if (panels != null)
         {
-            foreach (MenuStripPanelExtended? menuStripPanel in _srcComponentList)
+            foreach (MenuStripPanelExtended item in panels)
             {
-                if (menuStripPanel != null && !klbSelected.Items.Contains(menuStripPanel.Name))
-                {
-                    klblAvailable.Items.Add(menuStripPanel.Name);
-                }
+                klbSelected.Items.Add(item.Name);
             }
         }
-        #endregion
+    }
+    #endregion
 
-        private void KlblAvailable_SelectedIndexChanged(object sender, EventArgs e)
+    #region Methods
+    private void InitialSettings()
+    {
+        foreach (MenuStripPanelExtended? menuStripPanel in _srcComponentList)
         {
-            bool flag = klblAvailable.SelectedItems.Count > 0;
-
-            kbtnAddSelected.Enabled = flag;
-        }
-
-        private void KlbSelected_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            bool flag = klbSelected.SelectedItems.Count > 0;
-
-            kbtnRemoveSelected.Enabled = flag;
-        }
-
-        private void KbtnAddSelected_Click(object sender, EventArgs e)
-        {
-            if (klblAvailable.SelectedItem != null)
+            if (menuStripPanel != null && !klbSelected.Items.Contains(menuStripPanel.Name))
             {
-                klbSelected.Items.Add(klblAvailable.SelectedItem);
-
-                klblAvailable.Items.Remove(klblAvailable.SelectedItem);
+                klblAvailable.Items.Add(menuStripPanel.Name);
             }
         }
+    }
+    #endregion
 
-        private void KbtnAddAll_Click(object sender, EventArgs e)
+    private void KlblAvailable_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        bool flag = klblAvailable.SelectedItems.Count > 0;
+
+        kbtnAddSelected.Enabled = flag;
+    }
+
+    private void KlbSelected_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        bool flag = klbSelected.SelectedItems.Count > 0;
+
+        kbtnRemoveSelected.Enabled = flag;
+    }
+
+    private void KbtnAddSelected_Click(object sender, EventArgs e)
+    {
+        if (klblAvailable.SelectedItem != null)
         {
-            object[] allObjects = new string[klblAvailable.Items.Count];
+            klbSelected.Items.Add(klblAvailable.SelectedItem);
 
-            klblAvailable.Items.CopyTo(allObjects, 0);
-
-            klblAvailable.Items.Clear();
-
-            klbSelected.Items.AddRange(allObjects);
+            klblAvailable.Items.Remove(klblAvailable.SelectedItem);
         }
+    }
 
-        private void KbtnRemoveSelected_Click(object sender, EventArgs e)
+    private void KbtnAddAll_Click(object sender, EventArgs e)
+    {
+        object[] allObjects = new string[klblAvailable.Items.Count];
+
+        klblAvailable.Items.CopyTo(allObjects, 0);
+
+        klblAvailable.Items.Clear();
+
+        klbSelected.Items.AddRange(allObjects);
+    }
+
+    private void KbtnRemoveSelected_Click(object sender, EventArgs e)
+    {
+        if (klbSelected.SelectedItem != null)
         {
-            if (klbSelected.SelectedItem != null)
-            {
-                klblAvailable.Items.Add(klbSelected.SelectedItem);
+            klblAvailable.Items.Add(klbSelected.SelectedItem);
 
-                klbSelected.Items.Remove(klbSelected.SelectedItem);
-            }
+            klbSelected.Items.Remove(klbSelected.SelectedItem);
         }
+    }
 
-        private void KbtnRemoveAll_Click(object sender, EventArgs e)
-        {
-            object[] allObjects = new string[klbSelected.Items.Count];
+    private void KbtnRemoveAll_Click(object sender, EventArgs e)
+    {
+        object[] allObjects = new string[klbSelected.Items.Count];
 
-            klbSelected.Items.CopyTo(allObjects, 0);
+        klbSelected.Items.CopyTo(allObjects, 0);
 
-            klbSelected.Items.Clear();
+        klbSelected.Items.Clear();
 
-            klblAvailable.Items.AddRange(allObjects);
-        }
+        klblAvailable.Items.AddRange(allObjects);
     }
 }

@@ -25,12 +25,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Notifications
+namespace Krypton.Toolkit.Suite.Extended.Notifications;
+
+public enum AlertAction
 {
-    public enum AlertAction
-    {
-        Start,
-        Wait,
-        Close
-    }
+    Start,
+    Wait,
+    Close
 }

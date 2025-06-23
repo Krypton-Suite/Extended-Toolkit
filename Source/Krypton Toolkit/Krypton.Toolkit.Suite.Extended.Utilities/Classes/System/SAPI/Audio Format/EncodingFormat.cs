@@ -26,15 +26,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
+
+public enum EncodingFormat
 {
-    public enum EncodingFormat
-    {
-        /// <summary />
-        Pcm = 1,
-        /// <summary />
-        ALaw = 6,
-        /// <summary />
-        ULaw = 7
-    }
+    /// <summary />
+    Pcm = 1,
+    /// <summary />
+    ALaw = 6,
+    /// <summary />
+    ULaw = 7
 }

@@ -26,21 +26,20 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+public enum ProsodyRange
 {
-	public enum ProsodyRange
-	{
-		/// <summary />
-		Default,
-		/// <summary />
-		ExtraLow,
-		/// <summary />
-		Low,
-		/// <summary />
-		Medium,
-		/// <summary />
-		High,
-		/// <summary />
-		ExtraHigh
-	}
+    /// <summary />
+    Default,
+    /// <summary />
+    ExtraLow,
+    /// <summary />
+    Low,
+    /// <summary />
+    Medium,
+    /// <summary />
+    High,
+    /// <summary />
+    ExtraHigh
 }

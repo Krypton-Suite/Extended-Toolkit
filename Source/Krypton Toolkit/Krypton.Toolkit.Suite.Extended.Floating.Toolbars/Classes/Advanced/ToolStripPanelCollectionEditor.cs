@@ -26,48 +26,47 @@
 #endregion
 
 #pragma warning disable CS8602, CS8765
-namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
+namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars;
+
+internal class ToolStripPanelCollectionEditor : UITypeEditor
 {
-    internal class ToolStripPanelCollectionEditor : UITypeEditor
+    #region Overrides
+    public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
     {
-        #region Overrides
-        public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
-        {
-            return base.GetEditStyle(context);
-        }
-
-        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
-        {
-            IWindowsFormsEditorService? service = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
-
-            FloatableToolStrip? floatableToolStrip = context.Instance as FloatableToolStrip;
-
-            ToolStripExistingComponentChooser ecc = new ToolStripExistingComponentChooser(floatableToolStrip.ToolStripPanelExtendedList);
-
-            ecc.Text = @"ToolStripPanelCollectionEditor";
-
-            if (floatableToolStrip.OriginalParent != null)
-            {
-                if (floatableToolStrip.OriginalParent is KryptonForm)
-                {
-                    ecc.SourceComponentContainer = floatableToolStrip.OriginalParent;
-                }
-                else
-                {
-                    ecc.SourceComponentContainer = floatableToolStrip.OriginalParent.Parent;
-                }
-            }
-
-            if (service != null)
-            {
-                if (service.ShowDialog(ecc) == DialogResult.OK)
-                {
-                    return ecc.SelectedComponents;
-                }
-            }
-
-            return floatableToolStrip.ToolStripPanelExtendedList;
-        }
-        #endregion
+        return base.GetEditStyle(context);
     }
+
+    public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
+    {
+        IWindowsFormsEditorService? service = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+
+        FloatableToolStrip? floatableToolStrip = context.Instance as FloatableToolStrip;
+
+        ToolStripExistingComponentChooser ecc = new ToolStripExistingComponentChooser(floatableToolStrip.ToolStripPanelExtendedList);
+
+        ecc.Text = @"ToolStripPanelCollectionEditor";
+
+        if (floatableToolStrip.OriginalParent != null)
+        {
+            if (floatableToolStrip.OriginalParent is KryptonForm)
+            {
+                ecc.SourceComponentContainer = floatableToolStrip.OriginalParent;
+            }
+            else
+            {
+                ecc.SourceComponentContainer = floatableToolStrip.OriginalParent.Parent;
+            }
+        }
+
+        if (service != null)
+        {
+            if (service.ShowDialog(ecc) == DialogResult.OK)
+            {
+                return ecc.SelectedComponents;
+            }
+        }
+
+        return floatableToolStrip.ToolStripPanelExtendedList;
+    }
+    #endregion
 }

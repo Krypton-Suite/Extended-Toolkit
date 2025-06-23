@@ -1,10 +1,9 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class ApplyAxisRulesAfterLayout : IRenderAction
 {
-    public class ApplyAxisRulesAfterLayout : IRenderAction
+    public void Render(RenderPack rp)
     {
-        public void Render(RenderPack rp)
-        {
-            rp.Plot.Axes.Rules.ForEach(x => x.Apply(rp, beforeLayout: false));
-        }
+        rp.Plot.Axes.Rules.ForEach(x => x.Apply(rp, beforeLayout: false));
     }
 }

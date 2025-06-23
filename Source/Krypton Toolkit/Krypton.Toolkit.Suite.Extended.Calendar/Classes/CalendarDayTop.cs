@@ -25,67 +25,66 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Calendar
+namespace Krypton.Toolkit.Suite.Extended.Calendar;
+
+/// <summary>
+/// Represents the top area of a day, where multiday and all day items are stored
+/// </summary>
+public class CalendarDayTop : CalendarSelectableElement
 {
+    #region Events
+
+    #endregion
+
+    #region Fields
+    private CalendarDay _day;
+    private List<CalendarItemAlternative> _passingItems;
+    #endregion
+
+    #region Ctor
+
     /// <summary>
-    /// Represents the top area of a day, where multiday and all day items are stored
+    /// Creates a new DayTop for the specified day
     /// </summary>
-    public class CalendarDayTop : CalendarSelectableElement
+    /// <param name="day"></param>
+    public CalendarDayTop(CalendarDay day) : base(day.Calendar)
     {
-        #region Events
-
-        #endregion
-
-        #region Fields
-        private CalendarDay _day;
-        private List<CalendarItemAlternative> _passingItems;
-        #endregion
-
-        #region Ctor
-
-        /// <summary>
-        /// Creates a new DayTop for the specified day
-        /// </summary>
-        /// <param name="day"></param>
-        public CalendarDayTop(CalendarDay day) : base(day.Calendar)
-        {
-            _day = day;
-            _passingItems = [];
-        }
-
-        #endregion
-
-        #region Properties
-
-        public override DateTime Date => new DateTime(Day.Date.Year, Day.Date.Month, Day.Date.Day);
-
-        /// <summary>
-        /// Gets the Day of this DayTop
-        /// </summary>
-        public CalendarDay Day => _day;
-
-
-        /// <summary>
-        /// Gets the list of items passing on this daytop
-        /// </summary>
-        public List<CalendarItemAlternative> PassingItems => _passingItems;
-
-        #endregion
-
-        #region Public Methods
-
-        #endregion
-
-        #region Private Methods
-
-        internal void AddPassingItem(CalendarItemAlternative item)
-        {
-            if (!PassingItems.Contains(item))
-            {
-                PassingItems.Add(item);
-            }
-        }
-
-        #endregion
+        _day = day;
+        _passingItems = [];
     }
+
+    #endregion
+
+    #region Properties
+
+    public override DateTime Date => new DateTime(Day.Date.Year, Day.Date.Month, Day.Date.Day);
+
+    /// <summary>
+    /// Gets the Day of this DayTop
+    /// </summary>
+    public CalendarDay Day => _day;
+
+
+    /// <summary>
+    /// Gets the list of items passing on this daytop
+    /// </summary>
+    public List<CalendarItemAlternative> PassingItems => _passingItems;
+
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
+
+    internal void AddPassingItem(CalendarItemAlternative item)
+    {
+        if (!PassingItems.Contains(item))
+        {
+            PassingItems.Add(item);
+        }
+    }
+
+    #endregion
 }

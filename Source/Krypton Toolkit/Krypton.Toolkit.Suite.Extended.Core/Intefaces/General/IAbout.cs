@@ -26,20 +26,19 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+public interface IAboutStripped
 {
-    public interface IAboutStripped
-    {
-        string ApplicationName { get; set; }
+    string ApplicationName { get; set; }
 
-        Icon ApplicationIcon { get; set; }
+    Icon ApplicationIcon { get; set; }
 
-        Bitmap ApplicationIconImage { get; set; }
+    Bitmap ApplicationIconImage { get; set; }
 
-        string AuthourName { get; set; }
+    string AuthourName { get; set; }
 
-        Version ApplicationVersion { get; set; }
+    Version ApplicationVersion { get; set; }
 
-        string InstallLocation { get; set; }
-    }
+    string InstallLocation { get; set; }
 }

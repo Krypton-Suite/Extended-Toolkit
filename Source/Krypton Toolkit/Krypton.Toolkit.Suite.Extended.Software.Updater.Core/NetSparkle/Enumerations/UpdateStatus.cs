@@ -24,28 +24,27 @@
 
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core;
+
+/// <summary>
+/// Possibilities for the status of an update request
+/// </summary>
+public enum UpdateStatus
 {
     /// <summary>
-    /// Possibilities for the status of an update request
+    /// An update is available
     /// </summary>
-    public enum UpdateStatus
-    {
-        /// <summary>
-        /// An update is available
-        /// </summary>
-        UpdateAvailable,
-        /// <summary>
-        /// No updates are available
-        /// </summary>
-        UpdateNotAvailable,
-        /// <summary>
-        /// An update is available, but the user has chosen to skip this version
-        /// </summary>
-        UserSkipped,
-        /// <summary>
-        /// There was a problem fetching the appcast
-        /// </summary>
-        CouldNotDetermine
-    }
+    UpdateAvailable,
+    /// <summary>
+    /// No updates are available
+    /// </summary>
+    UpdateNotAvailable,
+    /// <summary>
+    /// An update is available, but the user has chosen to skip this version
+    /// </summary>
+    UserSkipped,
+    /// <summary>
+    /// There was a problem fetching the appcast
+    /// </summary>
+    CouldNotDetermine
 }

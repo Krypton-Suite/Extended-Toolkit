@@ -26,17 +26,17 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Common
-{
-    public class PaletteColourDefinitions
-    {
-        #region Variables
-        private ArrayList _originalCustomPaletteColourDefinitionList, _newCustomPaletteColourDefinitionList;
+namespace Krypton.Toolkit.Suite.Extended.Common;
 
-        // TODO: Update arrays
-        private string[] _originalCustomPaletteColourDefinitions =
-            [
-                "Alternative Normal Text Colour",
+public class PaletteColourDefinitions
+{
+    #region Variables
+    private ArrayList _originalCustomPaletteColourDefinitionList, _newCustomPaletteColourDefinitionList;
+
+    // TODO: Update arrays
+    private string[] _originalCustomPaletteColourDefinitions =
+        [
+            "Alternative Normal Text Colour",
             "Border Colour",
             "Custom Colour One",
             "Custom Colour Two",
@@ -60,10 +60,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             "Pressed Text Colour",
             "Ribbon Tab Text Colour",
             "Status Text Colour"
-            ],
+        ],
         _newCustomPaletteColourDefinitions =
-            [
-                "Alternative Normal Text Colour",
+        [
+            "Alternative Normal Text Colour",
             "Border Colour",
             "Custom Colour One",
             "Custom Colour Two",
@@ -89,53 +89,52 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             "Pressed Text Colour",
             "Ribbon Tab Text Colour",
             "Status Text Colour"
-            ];
-        #endregion
+        ];
+    #endregion
 
-        #region Properties
-        public string[] OrignalCustomPaletteColourDefinitions => _originalCustomPaletteColourDefinitions;
+    #region Properties
+    public string[] OrignalCustomPaletteColourDefinitions => _originalCustomPaletteColourDefinitions;
 
-        public string[] NewCustomPaletteColourDefinitions => _newCustomPaletteColourDefinitions;
+    public string[] NewCustomPaletteColourDefinitions => _newCustomPaletteColourDefinitions;
 
-        #endregion
+    #endregion
 
-        #region Constructor
-        public PaletteColourDefinitions()
-        {
+    #region Constructor
+    public PaletteColourDefinitions()
+    {
 
-        }
-        #endregion
-
-        #region Methods
-        public void PropagateOriginalDefinitionsKryptonListBox(KryptonListBox target)
-        {
-            _originalCustomPaletteColourDefinitionList = new ArrayList(23);
-
-            foreach (string colourDefinition in OrignalCustomPaletteColourDefinitions)
-            {
-                _originalCustomPaletteColourDefinitionList.Add(colourDefinition);
-            }
-
-            foreach (string definition in _originalCustomPaletteColourDefinitionList)
-            {
-                target.Items.Add(definition);
-            }
-        }
-
-        public void PropagateOriginalDefinitionsKryptonComboBox(KryptonComboBox target)
-        {
-            _originalCustomPaletteColourDefinitionList = new ArrayList(23);
-
-            foreach (string colourDefinition in OrignalCustomPaletteColourDefinitions)
-            {
-                _originalCustomPaletteColourDefinitionList.Add(colourDefinition);
-            }
-
-            foreach (string definition in _originalCustomPaletteColourDefinitionList)
-            {
-                target.Items.Add(definition);
-            }
-        }
-        #endregion
     }
+    #endregion
+
+    #region Methods
+    public void PropagateOriginalDefinitionsKryptonListBox(KryptonListBox target)
+    {
+        _originalCustomPaletteColourDefinitionList = new ArrayList(23);
+
+        foreach (string colourDefinition in OrignalCustomPaletteColourDefinitions)
+        {
+            _originalCustomPaletteColourDefinitionList.Add(colourDefinition);
+        }
+
+        foreach (string definition in _originalCustomPaletteColourDefinitionList)
+        {
+            target.Items.Add(definition);
+        }
+    }
+
+    public void PropagateOriginalDefinitionsKryptonComboBox(KryptonComboBox target)
+    {
+        _originalCustomPaletteColourDefinitionList = new ArrayList(23);
+
+        foreach (string colourDefinition in OrignalCustomPaletteColourDefinitions)
+        {
+            _originalCustomPaletteColourDefinitionList.Add(colourDefinition);
+        }
+
+        foreach (string definition in _originalCustomPaletteColourDefinitionList)
+        {
+            target.Items.Add(definition);
+        }
+    }
+    #endregion
 }

@@ -25,22 +25,21 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Calendar
+namespace Krypton.Toolkit.Suite.Extended.Calendar;
+
+/// <summary>
+/// Represents a clickable element of <see cref="MonthView"/> control
+/// </summary>
+public interface ISelectableElement
 {
+
     /// <summary>
-    /// Represents a clickable element of <see cref="MonthView"/> control
+    /// Gets the bounds of the element
     /// </summary>
-    public interface ISelectableElement
-    {
+    Rectangle Bounds { get; }
 
-        /// <summary>
-        /// Gets the bounds of the element
-        /// </summary>
-        Rectangle Bounds { get; }
-
-        /// <summary>
-        /// Gets if the element is currently selected
-        /// </summary>
-        bool Selected { get; }
-    }
+    /// <summary>
+    /// Gets if the element is currently selected
+    /// </summary>
+    bool Selected { get; }
 }

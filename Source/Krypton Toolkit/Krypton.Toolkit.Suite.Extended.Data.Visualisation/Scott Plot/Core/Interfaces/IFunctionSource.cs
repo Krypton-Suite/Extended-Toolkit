@@ -1,9 +1,8 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public interface IFunctionSource
 {
-    public interface IFunctionSource
-    {
-        CoordinateRange RangeX { get; }
-        CoordinateRange GetRangeY(CoordinateRange rangeX);
-        double Get(double x);
-    }
+    CoordinateRange RangeX { get; }
+    CoordinateRange GetRangeY(CoordinateRange rangeX);
+    double Get(double x);
 }

@@ -25,100 +25,99 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Networking
+namespace Krypton.Toolkit.Suite.Extended.Networking;
+
+public partial class KryptonNetworkUtility : KryptonForm
 {
-    public partial class KryptonNetworkUtility : KryptonForm
+    #region Variables
+    private KryptonPanel _infoPanel;
+
+    private KryptonPanel _netStatPanel;
+
+    private KryptonPanel _pingPanel;
+
+    private KryptonPanel _portScanPanel;
+    #endregion
+
+    #region Constructor
+    public KryptonNetworkUtility()
     {
-        #region Variables
-        private KryptonPanel _infoPanel;
+        InitializeComponent();
+    }
+    #endregion
 
-        private KryptonPanel _netStatPanel;
+    private void KryptonNetworkUtility_Load(object sender, EventArgs e)
+    {
+        _infoPanel = new KryptonPanel();
 
-        private KryptonPanel _pingPanel;
+        _netStatPanel = new KryptonPanel();
 
-        private KryptonPanel _portScanPanel;
-        #endregion
+        _pingPanel = new KryptonPanel();
 
-        #region Constructor
-        public KryptonNetworkUtility()
+        _portScanPanel = new KryptonPanel();
+
+        Info info = new Info(_infoPanel);
+
+        ksc.Panel2.Controls.Add(_infoPanel);
+    }
+
+    private void klblNetStat_LinkClicked(object sender, EventArgs e)
+    {
+        SelectMenu(klblNetStat);
+
+        NetStat netStat = new NetStat(_netStatPanel, true);
+
+        netStat.Execute();
+    }
+
+    private void klblNetStatWithoutDNS_LinkClicked(object sender, EventArgs e)
+    {
+        SelectMenu(klblNetStatWithoutDNS);
+
+        NetStat netStat = new NetStat(_netStatPanel, false);
+
+        netStat.Execute();
+
+        ksc.Panel2.Controls.RemoveAt(0);
+
+        ksc.Panel2.Controls.Add(_netStatPanel);
+    }
+
+    private void klblPing_LinkClicked(object sender, EventArgs e)
+    {
+        SelectMenu(klblPing);
+
+        Pinger ping = new Pinger(_pingPanel);
+
+        ksc.Panel2.Controls.RemoveAt(0);
+
+        ksc.Panel2.Controls.Add(_pingPanel);
+    }
+
+    private void klblPortScan_LinkClicked(object sender, EventArgs e)
+    {
+        SelectMenu(klblPortScan);
+
+        PortScan scan = new PortScan(_portScanPanel);
+
+        ksc.Panel2.Controls.RemoveAt(0);
+
+        ksc.Panel2.Controls.Add(_portScanPanel);
+    }
+
+    private void SelectMenu(KryptonLinkLabel control)
+    {
+        Control.ControlCollection collecion = ksc.Panel1.Controls;
+
+        foreach (Control ctr in collecion)
         {
-            InitializeComponent();
-        }
-        #endregion
-
-        private void KryptonNetworkUtility_Load(object sender, EventArgs e)
-        {
-            _infoPanel = new KryptonPanel();
-
-            _netStatPanel = new KryptonPanel();
-
-            _pingPanel = new KryptonPanel();
-
-            _portScanPanel = new KryptonPanel();
-
-            Info info = new Info(_infoPanel);
-
-            ksc.Panel2.Controls.Add(_infoPanel);
-        }
-
-        private void klblNetStat_LinkClicked(object sender, EventArgs e)
-        {
-            SelectMenu(klblNetStat);
-
-            NetStat netStat = new NetStat(_netStatPanel, true);
-
-            netStat.Execute();
-        }
-
-        private void klblNetStatWithoutDNS_LinkClicked(object sender, EventArgs e)
-        {
-            SelectMenu(klblNetStatWithoutDNS);
-
-            NetStat netStat = new NetStat(_netStatPanel, false);
-
-            netStat.Execute();
-
-            ksc.Panel2.Controls.RemoveAt(0);
-
-            ksc.Panel2.Controls.Add(_netStatPanel);
-        }
-
-        private void klblPing_LinkClicked(object sender, EventArgs e)
-        {
-            SelectMenu(klblPing);
-
-            Pinger ping = new Pinger(_pingPanel);
-
-            ksc.Panel2.Controls.RemoveAt(0);
-
-            ksc.Panel2.Controls.Add(_pingPanel);
-        }
-
-        private void klblPortScan_LinkClicked(object sender, EventArgs e)
-        {
-            SelectMenu(klblPortScan);
-
-            PortScan scan = new PortScan(_portScanPanel);
-
-            ksc.Panel2.Controls.RemoveAt(0);
-
-            ksc.Panel2.Controls.Add(_portScanPanel);
-        }
-
-        private void SelectMenu(KryptonLinkLabel control)
-        {
-            Control.ControlCollection collecion = ksc.Panel1.Controls;
-
-            foreach (Control ctr in collecion)
+            try
             {
-                try
-                {
-                    KryptonLinkLabel linkControl = (KryptonLinkLabel)ctr;
-                    //linkControl.BackColor = Color.Transparent;
-                    //linkControl.LinkColor = Color.White;
-                }
-                catch { }
+                KryptonLinkLabel linkControl = (KryptonLinkLabel)ctr;
+                //linkControl.BackColor = Color.Transparent;
+                //linkControl.LinkColor = Color.White;
             }
+            catch { }
         }
     }
 }

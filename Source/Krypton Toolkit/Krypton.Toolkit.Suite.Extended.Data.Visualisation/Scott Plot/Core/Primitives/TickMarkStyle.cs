@@ -1,9 +1,8 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class TickMarkStyle
 {
-    public class TickMarkStyle
-    {
-        public float Length;
-        public float Width;
-        public Color Color;
-    }
+    public float Length;
+    public float Width;
+    public Color Color;
 }

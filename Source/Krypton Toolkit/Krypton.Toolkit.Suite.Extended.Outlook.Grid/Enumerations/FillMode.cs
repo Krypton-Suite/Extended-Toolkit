@@ -25,21 +25,20 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+
+/// <summary>
+/// Grid filling mode
+/// </summary>
+public enum FillMode
 {
     /// <summary>
-    /// Grid filling mode
+    /// The grid contains only groups (faster).
     /// </summary>
-    public enum FillMode
-    {
-        /// <summary>
-        /// The grid contains only groups (faster).
-        /// </summary>
-        GroupsOnly,
+    GroupsOnly,
 
-        /// <summary>
-        /// The grid contains groups and nodes (no choice, choose this one !)
-        /// </summary>
-        GroupsAndNodes
-    }
+    /// <summary>
+    /// The grid contains groups and nodes (no choice, choose this one !)
+    /// </summary>
+    GroupsAndNodes
 }

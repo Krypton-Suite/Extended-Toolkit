@@ -25,18 +25,17 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items;
+
+public class ToolStripControlHostFixed : ToolStripControlHost
 {
-    public class ToolStripControlHostFixed : ToolStripControlHost
+    public ToolStripControlHostFixed() : base(new Control())
     {
-        public ToolStripControlHostFixed() : base(new Control())
-        {
 
-        }
+    }
 
-        public ToolStripControlHostFixed(Control c) : base(c)
-        {
+    public ToolStripControlHostFixed(Control c) : base(c)
+    {
 
-        }
     }
 }

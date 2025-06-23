@@ -26,17 +26,16 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
+
+public class SpeechDetectedEventArgs : EventArgs
 {
-    public class SpeechDetectedEventArgs : EventArgs
+    private TimeSpan _audioPosition;
+
+    public TimeSpan AudioPosition => _audioPosition;
+
+    internal SpeechDetectedEventArgs(TimeSpan audioPosition)
     {
-        private TimeSpan _audioPosition;
-
-        public TimeSpan AudioPosition => _audioPosition;
-
-        internal SpeechDetectedEventArgs(TimeSpan audioPosition)
-        {
-            _audioPosition = audioPosition;
-        }
+        _audioPosition = audioPosition;
     }
 }

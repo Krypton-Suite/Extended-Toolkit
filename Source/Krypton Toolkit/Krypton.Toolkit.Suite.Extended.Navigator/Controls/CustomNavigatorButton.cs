@@ -25,45 +25,44 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator;
+
+[ToolboxBitmap(typeof(Button)), ToolboxItem(false)]
+public class CustomNavigatorButton : CustomButton
 {
-    [ToolboxBitmap(typeof(Button)), ToolboxItem(false)]
-    public class CustomNavigatorButton : CustomButton
+
+    public CustomNavigatorButton(Color BorderColour, Color GradientStartColour, Color GradientEndColour, Color TextColour)
     {
 
-        public CustomNavigatorButton(Color BorderColour, Color GradientStartColour, Color GradientEndColour, Color TextColour)
-        {
+        this.AutoSize = false;
 
-            this.AutoSize = false;
-
-            this.GradientBorderColour = BorderColour;
-            this.GradientTop = GradientStartColour;
-            this.GradientBottom = GradientEndColour;
-            this.Size = new System.Drawing.Size(23, 23);
-            this.ForeColor = TextColour;
-            this.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Font = new System.Drawing.Font("Marlett", 11.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)2);
-
-        }
-
-        public CustomNavigatorButton()
-        {
-            this.AutoSize = false;
-            this.Size = new System.Drawing.Size(23, 23);
-            this.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Font = new System.Drawing.Font("Marlett", 11.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)2);
-
-        }
-
-        protected override void OnPaint(PaintEventArgs pevent)
-        {
-            base.OnPaint(pevent);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-        }
+        this.GradientBorderColour = BorderColour;
+        this.GradientTop = GradientStartColour;
+        this.GradientBottom = GradientEndColour;
+        this.Size = new System.Drawing.Size(23, 23);
+        this.ForeColor = TextColour;
+        this.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        this.Font = new System.Drawing.Font("Marlett", 11.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)2);
 
     }
+
+    public CustomNavigatorButton()
+    {
+        this.AutoSize = false;
+        this.Size = new System.Drawing.Size(23, 23);
+        this.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        this.Font = new System.Drawing.Font("Marlett", 11.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)2);
+
+    }
+
+    protected override void OnPaint(PaintEventArgs pevent)
+    {
+        base.OnPaint(pevent);
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        base.Dispose(disposing);
+    }
+
 }

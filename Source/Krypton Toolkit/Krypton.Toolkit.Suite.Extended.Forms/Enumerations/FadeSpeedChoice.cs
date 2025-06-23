@@ -26,44 +26,43 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Forms
+namespace Krypton.Toolkit.Suite.Extended.Forms;
+
+/// <summary>
+/// Chooses the fading speed of a <see cref="KryptonFormExtended"/>
+/// </summary>
+public enum FadeSpeedChoice
 {
     /// <summary>
-    /// Chooses the fading speed of a <see cref="KryptonFormExtended"/>
+    /// Use the slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 1.
     /// </summary>
-    public enum FadeSpeedChoice
-    {
-        /// <summary>
-        /// Use the slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 1.
-        /// </summary>
-        Slowest = 0,
-        /// <summary>
-        /// Use the second slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 10.
-        /// </summary>
-        Slower = 1,
-        /// <summary>
-        /// Use the third slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 25.
-        /// </summary>
-        Slow = 2,
-        /// <summary>
-        /// Use a normal fade speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 50.
-        /// </summary>
-        Normal = 3,
-        /// <summary>
-        /// Use a fast fading speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 60.
-        /// </summary>
-        Fast = 4,
-        /// <summary>
-        /// Use a slightly faster fading speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 75.
-        /// </summary>
-        Faster = 5,
-        /// <summary>
-        /// Use the fastest fading speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 100.
-        /// </summary>
-        Fastest = 6,
-        /// <summary>
-        /// Define your own fading speed.
-        /// </summary>
-        Custom = 7
-    }
+    Slowest = 0,
+    /// <summary>
+    /// Use the second slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 10.
+    /// </summary>
+    Slower = 1,
+    /// <summary>
+    /// Use the third slowest fade speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 25.
+    /// </summary>
+    Slow = 2,
+    /// <summary>
+    /// Use a normal fade speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 50.
+    /// </summary>
+    Normal = 3,
+    /// <summary>
+    /// Use a fast fading speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 60.
+    /// </summary>
+    Fast = 4,
+    /// <summary>
+    /// Use a slightly faster fading speed. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 75.
+    /// </summary>
+    Faster = 5,
+    /// <summary>
+    /// Use the fastest fading speed possible. This is tied to the corresponding float value in <see cref="FadeSpeed"/>, which is 100.
+    /// </summary>
+    Fastest = 6,
+    /// <summary>
+    /// Define your own fading speed.
+    /// </summary>
+    Custom = 7
 }

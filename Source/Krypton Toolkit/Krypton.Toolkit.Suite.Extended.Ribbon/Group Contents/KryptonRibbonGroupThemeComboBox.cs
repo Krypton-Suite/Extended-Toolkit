@@ -25,99 +25,98 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Ribbon
+namespace Krypton.Toolkit.Suite.Extended.Ribbon;
+
+public class KryptonRibbonGroupThemeComboBox : KryptonRibbonGroupComboBox
 {
-    public class KryptonRibbonGroupThemeComboBox : KryptonRibbonGroupComboBox
+    #region Instance Fields
+
+    private readonly ICollection<string> _supportedThemesNames;
+    private int _selectedIndex;
+
+    #endregion
+
+    #region Public
+
+    /// <summary>
+    /// Helper, to return a new list of names
+    /// </summary>
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public List<string> SupportedThemesList => _supportedThemesNames.ToList();
+
+    /// <summary>
+    /// Gets and sets the ThemeSelectedIndex.
+    /// </summary>
+    [Category(@"Visuals")]
+    [Description(@"Theme Selected Index. (Default = `Office 365 - Blue`)")]
+    [DefaultValue(33)]
+    public int ThemeSelectedIndex
     {
-        #region Instance Fields
+        get => _selectedIndex;
 
-        private readonly ICollection<string> _supportedThemesNames;
-        private int _selectedIndex;
-
-        #endregion
-
-        #region Public
-
-        /// <summary>
-        /// Helper, to return a new list of names
-        /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public List<string> SupportedThemesList => _supportedThemesNames.ToList();
-
-        /// <summary>
-        /// Gets and sets the ThemeSelectedIndex.
-        /// </summary>
-        [Category(@"Visuals")]
-        [Description(@"Theme Selected Index. (Default = `Office 365 - Blue`)")]
-        [DefaultValue(33)]
-        public int ThemeSelectedIndex
-        {
-            get => _selectedIndex;
-
-            set => SelectedIndex = value;
-        }
-
-        private void ResetThemeSelectedIndex() => _selectedIndex = 33;
-
-        private bool ShouldSerializeThemeSelectedIndex() => _selectedIndex != 33;
-
-        /// <summary>
-        /// Gets and sets the ThemeSelectedIndex.
-        /// </summary>
-        [Category(@"Visuals")]
-        [Description(@"Custom Theme to use when `Custom` is selected")]
-        [DefaultValue(null)]
-        public KryptonCustomPaletteBase KryptonCustomPalette { get; set; }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public KryptonManager Manager
-        {
-            get;
-
-        } = new KryptonManager();
-
-        #endregion
-
-        #region Identity
-
-        /// <summary>Initializes a new instance of the <see cref="KryptonRibbonGroupThemeComboBox" /> class.</summary>
-        public KryptonRibbonGroupThemeComboBox()
-        {
-            DropDownStyle = ComboBoxStyle.DropDownList;
-
-            _supportedThemesNames = KryptonRibbonThemeManager.SupportedInternalThemeNames;
-
-            _selectedIndex = 33;
-        }
-
-        #endregion
-
-        #region Implementation
-
-        /// <summary>Returns the palette mode.</summary>
-        /// <returns>
-        ///   <br />
-        /// </returns>
-        public PaletteMode ReturnPaletteMode() => Manager.GlobalPaletteMode;
-
-        #endregion
-
-        #region Protected Overrides
-
-        protected override void OnSelectedIndexChanged(EventArgs e)
-        {
-            KryptonRibbonThemeManager.ApplyTheme(Text, Manager);
-
-            ThemeSelectedIndex = SelectedIndex;
-
-            base.OnSelectedIndexChanged(e);
-
-            if (KryptonRibbonThemeManager.GetThemeManagerMode(Text) == PaletteMode.Custom && KryptonCustomPalette != null)
-            {
-                Manager.GlobalCustomPalette = KryptonCustomPalette;
-            }
-        }
-
-        #endregion
+        set => SelectedIndex = value;
     }
+
+    private void ResetThemeSelectedIndex() => _selectedIndex = 33;
+
+    private bool ShouldSerializeThemeSelectedIndex() => _selectedIndex != 33;
+
+    /// <summary>
+    /// Gets and sets the ThemeSelectedIndex.
+    /// </summary>
+    [Category(@"Visuals")]
+    [Description(@"Custom Theme to use when `Custom` is selected")]
+    [DefaultValue(null)]
+    public KryptonCustomPaletteBase KryptonCustomPalette { get; set; }
+
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public KryptonManager Manager
+    {
+        get;
+
+    } = new KryptonManager();
+
+    #endregion
+
+    #region Identity
+
+    /// <summary>Initializes a new instance of the <see cref="KryptonRibbonGroupThemeComboBox" /> class.</summary>
+    public KryptonRibbonGroupThemeComboBox()
+    {
+        DropDownStyle = ComboBoxStyle.DropDownList;
+
+        _supportedThemesNames = KryptonRibbonThemeManager.SupportedInternalThemeNames;
+
+        _selectedIndex = 33;
+    }
+
+    #endregion
+
+    #region Implementation
+
+    /// <summary>Returns the palette mode.</summary>
+    /// <returns>
+    ///   <br />
+    /// </returns>
+    public PaletteMode ReturnPaletteMode() => Manager.GlobalPaletteMode;
+
+    #endregion
+
+    #region Protected Overrides
+
+    protected override void OnSelectedIndexChanged(EventArgs e)
+    {
+        KryptonRibbonThemeManager.ApplyTheme(Text, Manager);
+
+        ThemeSelectedIndex = SelectedIndex;
+
+        base.OnSelectedIndexChanged(e);
+
+        if (KryptonRibbonThemeManager.GetThemeManagerMode(Text) == PaletteMode.Custom && KryptonCustomPalette != null)
+        {
+            Manager.GlobalCustomPalette = KryptonCustomPalette;
+        }
+    }
+
+    #endregion
 }

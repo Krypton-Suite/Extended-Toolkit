@@ -26,202 +26,201 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+internal class ThemeManager
 {
-    internal class ThemeManager
+    #region Variables
+    private ArrayList _themeList;
+    private AutoCompleteStringCollection _themeCollection;
+    private PaletteThemeSettingsManager _themeSettingsManager = new();
+    #endregion
+
+    public ThemeManager()
     {
-        #region Variables
-        private ArrayList _themeList;
-        private AutoCompleteStringCollection _themeCollection;
-        private PaletteThemeSettingsManager _themeSettingsManager = new();
+
+    }
+
+    #region Methods
+    public void PropagateThemes(KryptonComboBox input)
+    {
+        InitialiseThemes();
+
+        input.AutoCompleteCustomSource = _themeCollection;
+
+        foreach (string theme in _themeList)
+        {
+            input.Items.Add(theme);
+        }
+    }
+
+    private void InitialiseThemes()
+    {
+        _themeCollection = new();
+
+        _themeList = new();
+
+        #region Autocomplete
+        _themeCollection.Add("Professional System");
+
+        _themeCollection.Add("Professional Office 2003");
+
+        _themeCollection.Add("Office 2007 Blue");
+
+        _themeCollection.Add("Office 2007 Silver");
+
+        _themeCollection.Add("Office 2007 Black");
+
+        _themeCollection.Add("Office 2010 Blue");
+
+        _themeCollection.Add("Office 2010 Silver");
+
+        _themeCollection.Add("Office 2010 Black");
+
+        _themeCollection.Add("Office 2013");
+
+        _themeCollection.Add("Office 2013 White");
+
+        _themeCollection.Add("Sparkle Blue");
+
+        _themeCollection.Add("Sparkle Orange");
+
+        _themeCollection.Add("Sparkle Purple");
+
+        _themeCollection.Add("Custom");
         #endregion
 
-        public ThemeManager()
-        {
+        #region ArrayList
+        _themeList = new();
 
-        }
+        _themeList.Add("Professional System");
 
-        #region Methods
-        public void PropagateThemes(KryptonComboBox input)
-        {
-            InitialiseThemes();
+        _themeList.Add("Professional Office 2003");
 
-            input.AutoCompleteCustomSource = _themeCollection;
+        _themeList.Add("Office 2007 Blue");
 
-            foreach (string theme in _themeList)
-            {
-                input.Items.Add(theme);
-            }
-        }
+        _themeList.Add("Office 2007 Silver");
 
-        private void InitialiseThemes()
-        {
-            _themeCollection = new();
+        _themeList.Add("Office 2007 Black");
 
-            _themeList = new();
+        _themeList.Add("Office 2010 Blue");
 
-            #region Autocomplete
-            _themeCollection.Add("Professional System");
+        _themeList.Add("Office 2010 Silver");
 
-            _themeCollection.Add("Professional Office 2003");
+        _themeList.Add("Office 2010 Black");
 
-            _themeCollection.Add("Office 2007 Blue");
+        _themeList.Add("Office 2013");
 
-            _themeCollection.Add("Office 2007 Silver");
+        _themeList.Add("Office 2013 White");
 
-            _themeCollection.Add("Office 2007 Black");
+        _themeList.Add("Sparkle Blue");
 
-            _themeCollection.Add("Office 2010 Blue");
+        _themeList.Add("Sparkle Orange");
 
-            _themeCollection.Add("Office 2010 Silver");
+        _themeList.Add("Sparkle Purple");
 
-            _themeCollection.Add("Office 2010 Black");
-
-            _themeCollection.Add("Office 2013");
-
-            _themeCollection.Add("Office 2013 White");
-
-            _themeCollection.Add("Sparkle Blue");
-
-            _themeCollection.Add("Sparkle Orange");
-
-            _themeCollection.Add("Sparkle Purple");
-
-            _themeCollection.Add("Custom");
-            #endregion
-
-            #region ArrayList
-            _themeList = new();
-
-            _themeList.Add("Professional System");
-
-            _themeList.Add("Professional Office 2003");
-
-            _themeList.Add("Office 2007 Blue");
-
-            _themeList.Add("Office 2007 Silver");
-
-            _themeList.Add("Office 2007 Black");
-
-            _themeList.Add("Office 2010 Blue");
-
-            _themeList.Add("Office 2010 Silver");
-
-            _themeList.Add("Office 2010 Black");
-
-            _themeList.Add("Office 2013");
-
-            _themeList.Add("Office 2013 White");
-
-            _themeList.Add("Sparkle Blue");
-
-            _themeList.Add("Sparkle Orange");
-
-            _themeList.Add("Sparkle Purple");
-
-            _themeList.Add("Custom");
-            #endregion
-        }
-
-        private void SetTheme(PaletteMode mode, KryptonManager manager)
-        {
-            manager.GlobalPaletteMode = mode;
-
-            _themeSettingsManager.SetTheme(mode);
-        }
-
-        public void SaveCurrentThemeSettings(bool askPermission = false)
-        {
-            _themeSettingsManager.SavePaletteThemeSettings(askPermission);
-        }
-        #endregion
-
-        #region Static Methods        
-        /// <summary>
-        /// Switches the theme.
-        /// </summary>
-        /// <param name="mode">The mode.</param>
-        /// <param name="manager">The manager.</param>
-        public static void SwitchTheme(PaletteMode mode, KryptonManager manager)
-        {
-            ThemeManager themeManager = new();
-
-            switch (mode)
-            {
-                case PaletteMode.ProfessionalSystem:
-                    manager.GlobalPaletteMode = PaletteMode.ProfessionalSystem;
-                    break;
-                case PaletteMode.ProfessionalOffice2003:
-                    manager.GlobalPaletteMode = PaletteMode.ProfessionalOffice2003;
-                    break;
-                case PaletteMode.Office2007Blue:
-                    manager.GlobalPaletteMode = PaletteMode.Office2007Blue;
-                    break;
-                case PaletteMode.Office2007Silver:
-                    manager.GlobalPaletteMode = PaletteMode.Office2007Silver;
-                    break;
-                case PaletteMode.Office2007Black:
-                    manager.GlobalPaletteMode = PaletteMode.Office2007Black;
-                    break;
-                case PaletteMode.Office2010Blue:
-                    manager.GlobalPaletteMode = PaletteMode.Office2010Blue;
-                    break;
-                case PaletteMode.Office2010Silver:
-                    manager.GlobalPaletteMode = PaletteMode.Office2010Silver;
-                    break;
-                case PaletteMode.Office2010Black:
-                    manager.GlobalPaletteMode = PaletteMode.Office2010Black;
-                    break;
-                case PaletteMode.Office2013White:
-                    manager.GlobalPaletteMode = PaletteMode.Office2013White;
-                    break;
-                case PaletteMode.SparkleBlue:
-                    manager.GlobalPaletteMode = PaletteMode.SparkleBlue;
-                    break;
-                case PaletteMode.SparkleOrange:
-                    manager.GlobalPaletteMode = PaletteMode.SparkleOrange;
-                    break;
-                case PaletteMode.SparklePurple:
-                    manager.GlobalPaletteMode = PaletteMode.SparklePurple;
-                    break;
-                case PaletteMode.Custom:
-                    manager.GlobalPaletteMode = PaletteMode.Custom;
-                    break;
-                default:
-                    manager.GlobalPaletteMode = PaletteMode.Office2010Blue;
-                    break;
-            }
-
-            themeManager.SetTheme(mode, manager);
-        }
-
-        /// <summary>
-        /// Sets the custom theme.
-        /// </summary>
-        /// <param name="manager">The manager.</param>
-        /// <param name="palette">The palette.</param>
-        /// <param name="paletteFileName">Name of the palette file.</param>
-        public static void SetCustomTheme(KryptonManager manager, KryptonCustomPaletteBase palette, string paletteFileName)
-        {
-            PaletteThemeSettingsManager paletteThemeSettingsManager = new();
-
-            ThemeManager themeManager = new();
-
-            themeManager.SetTheme(PaletteMode.Custom, manager);
-
-            palette.Import(paletteFileName);
-
-            paletteThemeSettingsManager.SetCustomThemeFilePath(paletteFileName);
-        }
-
-        internal static void EnableCustomThemeControls(KryptonLabel CustomTheme, KryptonTextBox CustomPath, KryptonButton ImportPalette, bool enabled)
-        {
-            CustomTheme.Enabled = enabled;
-
-            CustomPath.Enabled = enabled;
-
-            ImportPalette.Enabled = enabled;
-        }
+        _themeList.Add("Custom");
         #endregion
     }
+
+    private void SetTheme(PaletteMode mode, KryptonManager manager)
+    {
+        manager.GlobalPaletteMode = mode;
+
+        _themeSettingsManager.SetTheme(mode);
+    }
+
+    public void SaveCurrentThemeSettings(bool askPermission = false)
+    {
+        _themeSettingsManager.SavePaletteThemeSettings(askPermission);
+    }
+    #endregion
+
+    #region Static Methods        
+    /// <summary>
+    /// Switches the theme.
+    /// </summary>
+    /// <param name="mode">The mode.</param>
+    /// <param name="manager">The manager.</param>
+    public static void SwitchTheme(PaletteMode mode, KryptonManager manager)
+    {
+        ThemeManager themeManager = new();
+
+        switch (mode)
+        {
+            case PaletteMode.ProfessionalSystem:
+                manager.GlobalPaletteMode = PaletteMode.ProfessionalSystem;
+                break;
+            case PaletteMode.ProfessionalOffice2003:
+                manager.GlobalPaletteMode = PaletteMode.ProfessionalOffice2003;
+                break;
+            case PaletteMode.Office2007Blue:
+                manager.GlobalPaletteMode = PaletteMode.Office2007Blue;
+                break;
+            case PaletteMode.Office2007Silver:
+                manager.GlobalPaletteMode = PaletteMode.Office2007Silver;
+                break;
+            case PaletteMode.Office2007Black:
+                manager.GlobalPaletteMode = PaletteMode.Office2007Black;
+                break;
+            case PaletteMode.Office2010Blue:
+                manager.GlobalPaletteMode = PaletteMode.Office2010Blue;
+                break;
+            case PaletteMode.Office2010Silver:
+                manager.GlobalPaletteMode = PaletteMode.Office2010Silver;
+                break;
+            case PaletteMode.Office2010Black:
+                manager.GlobalPaletteMode = PaletteMode.Office2010Black;
+                break;
+            case PaletteMode.Office2013White:
+                manager.GlobalPaletteMode = PaletteMode.Office2013White;
+                break;
+            case PaletteMode.SparkleBlue:
+                manager.GlobalPaletteMode = PaletteMode.SparkleBlue;
+                break;
+            case PaletteMode.SparkleOrange:
+                manager.GlobalPaletteMode = PaletteMode.SparkleOrange;
+                break;
+            case PaletteMode.SparklePurple:
+                manager.GlobalPaletteMode = PaletteMode.SparklePurple;
+                break;
+            case PaletteMode.Custom:
+                manager.GlobalPaletteMode = PaletteMode.Custom;
+                break;
+            default:
+                manager.GlobalPaletteMode = PaletteMode.Office2010Blue;
+                break;
+        }
+
+        themeManager.SetTheme(mode, manager);
+    }
+
+    /// <summary>
+    /// Sets the custom theme.
+    /// </summary>
+    /// <param name="manager">The manager.</param>
+    /// <param name="palette">The palette.</param>
+    /// <param name="paletteFileName">Name of the palette file.</param>
+    public static void SetCustomTheme(KryptonManager manager, KryptonCustomPaletteBase palette, string paletteFileName)
+    {
+        PaletteThemeSettingsManager paletteThemeSettingsManager = new();
+
+        ThemeManager themeManager = new();
+
+        themeManager.SetTheme(PaletteMode.Custom, manager);
+
+        palette.Import(paletteFileName);
+
+        paletteThemeSettingsManager.SetCustomThemeFilePath(paletteFileName);
+    }
+
+    internal static void EnableCustomThemeControls(KryptonLabel CustomTheme, KryptonTextBox CustomPath, KryptonButton ImportPalette, bool enabled)
+    {
+        CustomTheme.Enabled = enabled;
+
+        CustomPath.Enabled = enabled;
+
+        ImportPalette.Enabled = enabled;
+    }
+    #endregion
 }

@@ -27,524 +27,523 @@
 
 using VisualStyleRender = System.Windows.Forms.VisualStyles;
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
+namespace Krypton.Toolkit.Suite.Extended.Controls;
+
+[ToolboxItem(false), CLSCompliant(true)]
+public partial class PopUp : ToolStripDropDown
 {
-    [ToolboxItem(false), CLSCompliant(true)]
-    public partial class PopUp : ToolStripDropDown
+    #region Instance Fields
+
+    private bool _fade;
+
+    private bool _focusOnOpen;
+
+    private bool _acceptAlt;
+
+    private bool _resizable;
+
+    private bool _resizableControl;
+
+    private bool _resizableTop;
+
+    private bool _resizableRight;
+
+    private Control _content;
+
+    private PopUp? _ownerPopup;
+
+    private PopUp _childPopup;
+
+    private ToolStripControlHost _host;
+
+    private Size _maximumSize;
+
+    private Size _minimumSize;
+
+    private VisualStyleRender.VisualStyleRenderer _sizeGripRenderer;
+
+    #endregion
+
+    #region Public
+
+    public bool UseFadeEffect
     {
-        #region Instance Fields
+        get => _fade;
 
-        private bool _fade;
-
-        private bool _focusOnOpen;
-
-        private bool _acceptAlt;
-
-        private bool _resizable;
-
-        private bool _resizableControl;
-
-        private bool _resizableTop;
-
-        private bool _resizableRight;
-
-        private Control _content;
-
-        private PopUp? _ownerPopup;
-
-        private PopUp _childPopup;
-
-        private ToolStripControlHost _host;
-
-        private Size _maximumSize;
-
-        private Size _minimumSize;
-
-        private VisualStyleRender.VisualStyleRenderer _sizeGripRenderer;
-
-        #endregion
-
-        #region Public
-
-        public bool UseFadeEffect
+        set
         {
-            get => _fade;
-
-            set
+            if (_fade != value)
             {
-                if (_fade != value)
-                {
-                    _fade = value;
-                }
-                else
-                {
-                    return;
-                }
+                _fade = value;
             }
-        }
-
-        public bool FocusOnOpen
-        {
-            get => _focusOnOpen;
-            set => _focusOnOpen = value;
-        }
-
-        public bool AcceptAlt
-        {
-            get => _acceptAlt;
-            set => _acceptAlt = value;
-        }
-
-        public bool ReSizable
-        {
-            get => _resizableControl && _resizable;
-            set => _resizableControl = value;
-        }
-
-        public Control Content => _content;
-
-        public DateTime LastClosedTimeStamp { get; set; }
-
-        public new Size MinimumSize
-        {
-            get => _minimumSize;
-            set => _minimumSize = value;
-        }
-
-        public new Size MaximumSize
-        {
-            get => _maximumSize;
-            set => _maximumSize = value;
-        }
-
-        #endregion
-
-        #region Identity
-
-        public PopUp(Control? content)
-        {
-            if (content == null)
+            else
             {
                 return;
             }
+        }
+    }
 
-            _content = content;
+    public bool FocusOnOpen
+    {
+        get => _focusOnOpen;
+        set => _focusOnOpen = value;
+    }
 
-            _fade = SystemInformation.IsMenuAnimationEnabled && SystemInformation.IsMenuFadeEnabled;
+    public bool AcceptAlt
+    {
+        get => _acceptAlt;
+        set => _acceptAlt = value;
+    }
 
-            _resizable = true;
-            
-            InitializeComponent();
-            
-            AutoSize = false;
-            
-            DoubleBuffered = true;
-            
-            ResizeRedraw = true;
-            
-            _host = new ToolStripControlHost(content);
-            
-            Padding = Margin = _host.Padding = _host.Margin = Padding.Empty;
+    public bool ReSizable
+    {
+        get => _resizableControl && _resizable;
+        set => _resizableControl = value;
+    }
 
-            MinimumSize = content.MinimumSize;
-            
-            content.MinimumSize = content.Size;
-            
-            MaximumSize = content.MaximumSize;
-            
-            content.MaximumSize = content.Size;
-            
-            Size = content.Size;
-            
-            content.Location = Point.Empty;
-            
-            Items.Add(_host);
+    public Control Content => _content;
 
-            content.Disposed += delegate (object sender, EventArgs e)
-            {
-                content = null;
-                Dispose(true);
-            };
+    public DateTime LastClosedTimeStamp { get; set; }
+
+    public new Size MinimumSize
+    {
+        get => _minimumSize;
+        set => _minimumSize = value;
+    }
+
+    public new Size MaximumSize
+    {
+        get => _maximumSize;
+        set => _maximumSize = value;
+    }
+
+    #endregion
+
+    #region Identity
+
+    public PopUp(Control? content)
+    {
+        if (content == null)
+        {
+            return;
+        }
+
+        _content = content;
+
+        _fade = SystemInformation.IsMenuAnimationEnabled && SystemInformation.IsMenuFadeEnabled;
+
+        _resizable = true;
+            
+        InitializeComponent();
+            
+        AutoSize = false;
+            
+        DoubleBuffered = true;
+            
+        ResizeRedraw = true;
+            
+        _host = new ToolStripControlHost(content);
+            
+        Padding = Margin = _host.Padding = _host.Margin = Padding.Empty;
+
+        MinimumSize = content.MinimumSize;
+            
+        content.MinimumSize = content.Size;
+            
+        MaximumSize = content.MaximumSize;
+            
+        content.MaximumSize = content.Size;
+            
+        Size = content.Size;
+            
+        content.Location = Point.Empty;
+            
+        Items.Add(_host);
+
+        content.Disposed += delegate (object sender, EventArgs e)
+        {
+            content = null;
+            Dispose(true);
+        };
   
-            content.RegionChanged += delegate (object sender, EventArgs e)
-            {
-                UpdateRegion();
-            };
-            
-            content.Paint += delegate (object sender, PaintEventArgs e)
-            {
-                PaintSizeGrip(e);
-            };
-            
+        content.RegionChanged += delegate (object sender, EventArgs e)
+        {
             UpdateRegion();
-        }
-
-        #endregion
-
-        #region Protected Overrides
-
-        protected override CreateParams CreateParams
+        };
+            
+        content.Paint += delegate (object sender, PaintEventArgs e)
         {
-            get
-            {
-                CreateParams cp = base.CreateParams;
+            PaintSizeGrip(e);
+        };
+            
+        UpdateRegion();
+    }
 
-                cp.ExStyle |= NativeMethods.WS_EX_NOACTIVATE;
+    #endregion
 
-                return cp;
-            }
-        }
+    #region Protected Overrides
 
-        protected override bool ProcessDialogKey(Keys keyData)
+    protected override CreateParams CreateParams
+    {
+        get
         {
-            if (_acceptAlt && (keyData & Keys.Alt) == Keys.Alt)
-            {
-                return false;
-            }
+            CreateParams cp = base.CreateParams;
 
-            return base.ProcessDialogKey(keyData);
+            cp.ExStyle |= NativeMethods.WS_EX_NOACTIVATE;
+
+            return cp;
         }
+    }
 
-        protected override void SetVisibleCore(bool visible)
+    protected override bool ProcessDialogKey(Keys keyData)
+    {
+        if (_acceptAlt && (keyData & Keys.Alt) == Keys.Alt)
         {
-            double opacity = Opacity;
-            if (visible && _fade && _focusOnOpen)
-            {
-                Opacity = 0;
-            }
-
-            base.SetVisibleCore(visible);
-            if (!visible || !_fade || !_focusOnOpen)
-            {
-                return;
-            }
-            for (int i = 1; i <= FRAMES; i++)
-            {
-                if (i > 1)
-                {
-                    System.Threading.Thread.Sleep(FRAMEDURATION);
-                }
-                Opacity = opacity * (double)i / (double)FRAMES;
-            }
-            Opacity = opacity;
-        }
-
-        protected override void OnSizeChanged(EventArgs e)
-        {
-            _content.MinimumSize = Size;
-            _content.MaximumSize = Size;
-            _content.Size = Size;
-            _content.Location = Point.Empty;
-
-            base.OnSizeChanged(e);
-        }
-
-        protected override void OnOpening(CancelEventArgs e)
-        {
-            if (_content.IsDisposed || _content.Disposing)
-            {
-                e.Cancel = true;
-                return;
-            }
-            UpdateRegion();
-
-            base.OnOpening(e);
-        }
-
-        protected override void OnOpened(EventArgs e)
-        {
-            if (_ownerPopup != null)
-            {
-                _ownerPopup._resizable = false;
-            }
-            if (_focusOnOpen)
-            {
-                _content.Focus();
-            }
-
-            base.OnOpened(e);
-        }
-
-        protected override void OnClosed(ToolStripDropDownClosedEventArgs e)
-        {
-            if (_ownerPopup != null)
-            {
-                _ownerPopup._resizable = true;
-            }
-
-            base.OnClosed(e);
-        }
-
-        protected override void OnVisibleChanged(EventArgs e)
-        {
-            if (!Visible)
-            {
-                LastClosedTimeStamp = DateTime.Now;
-            }
-
-            base.OnVisibleChanged(e);
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            if (InternalProcessResizing(ref m, false))
-            {
-                return;
-            }
-            base.WndProc(ref m);
-        }
-
-        #endregion
-
-        #region Implementation
-
-        /// <summary>
-        /// Updates the pop-up region.
-        /// </summary>
-        protected void UpdateRegion()
-        {
-            if (Region != null)
-            {
-                Region.Dispose();
-                Region = null;
-            }
-            if (_content.Region != null)
-            {
-                Region = _content.Region.Clone();
-            }
-        }
-
-        /// <summary>
-        /// Shows pop-up window below the specified control.
-        /// </summary>
-        /// <param name="control">The control below which the pop-up will be shown.</param>
-        /// <remarks>
-        /// When there is no space below the specified control, the pop-up control is shown above it.
-        /// </remarks>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="control"/> is <code>null</code>.</exception>
-        public void Show(Control control)
-        {
-            if (control == null)
-            {
-                throw new ArgumentNullException("control");
-            }
-            SetOwnerItem(control);
-            Show(control, control.ClientRectangle);
-        }
-
-        /// <summary>
-        /// Shows pop-up window below the specified area of specified control.
-        /// </summary>
-        /// <param name="control">The control used to compute screen location of specified area.</param>
-        /// <param name="area">The area of control below which the pop-up will be shown.</param>
-        /// <remarks>
-        /// When there is no space below specified area, the pop-up control is shown above it.
-        /// </remarks>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="control"/> is <code>null</code>.</exception>
-        public void Show(Control control, Rectangle area)
-        {
-            if (control == null)
-            {
-                throw new ArgumentNullException("control");
-            }
-            SetOwnerItem(control);
-            _resizableTop = _resizableRight = false;
-            Point location = control.PointToScreen(new Point(area.Left, area.Top + area.Height));
-            Rectangle screen = Screen.FromControl(control).WorkingArea;
-            if (location.X + Size.Width > screen.Left + screen.Width)
-            {
-                _resizableRight = true;
-                location.X = screen.Left + screen.Width - Size.Width;
-            }
-            if (location.Y + Size.Height > screen.Top + screen.Height)
-            {
-                _resizableTop = true;
-                location.Y -= Size.Height + area.Height;
-            }
-            location = control.PointToClient(location);
-            Show(control, location, ToolStripDropDownDirection.BelowRight);
-        }
-
-        private void SetOwnerItem(Control control)
-        {
-            if (control == null)
-            {
-                return;
-            }
-            if (control is PopUp)
-            {
-                PopUp? popupControl = control as PopUp;
-                _ownerPopup = popupControl;
-                _ownerPopup!._childPopup = this;
-                OwnerItem = popupControl?.Items[0];
-                return;
-            }
-            if (control.Parent != null)
-            {
-                SetOwnerItem(control.Parent);
-            }
-        }
-
-        public bool ProcessResizing(ref Message m)
-        {
-            return InternalProcessResizing(ref m, true);
-        }
-
-        private bool InternalProcessResizing(ref Message m, bool contentControl)
-        {
-            if (m.Msg == NativeMethods.WM_NCACTIVATE && m.WParam != IntPtr.Zero && _childPopup != null && _childPopup.Visible)
-            {
-                _childPopup.Hide();
-            }
-            if (!ReSizable)
-            {
-                return false;
-            }
-            if (m.Msg == NativeMethods.WM_NCHITTEST)
-            {
-                return OnNcHitTest(ref m, contentControl);
-            }
-            else if (m.Msg == NativeMethods.WM_GETMINMAXINFO)
-            {
-                return OnGetMinMaxInfo(ref m);
-            }
             return false;
         }
 
-        private bool OnGetMinMaxInfo(ref Message m)
+        return base.ProcessDialogKey(keyData);
+    }
+
+    protected override void SetVisibleCore(bool visible)
+    {
+        double opacity = Opacity;
+        if (visible && _fade && _focusOnOpen)
         {
-            NativeMethods.MINMAXINFO minmax = (NativeMethods.MINMAXINFO)Marshal.PtrToStructure(m.LParam, typeof(NativeMethods.MINMAXINFO));
-            minmax.MaximumTrackSize = this.MaximumSize;
-            minmax.MinimumTrackSize = this.MinimumSize;
-            Marshal.StructureToPtr(minmax, m.LParam, false);
+            Opacity = 0;
+        }
+
+        base.SetVisibleCore(visible);
+        if (!visible || !_fade || !_focusOnOpen)
+        {
+            return;
+        }
+        for (int i = 1; i <= FRAMES; i++)
+        {
+            if (i > 1)
+            {
+                System.Threading.Thread.Sleep(FRAMEDURATION);
+            }
+            Opacity = opacity * (double)i / (double)FRAMES;
+        }
+        Opacity = opacity;
+    }
+
+    protected override void OnSizeChanged(EventArgs e)
+    {
+        _content.MinimumSize = Size;
+        _content.MaximumSize = Size;
+        _content.Size = Size;
+        _content.Location = Point.Empty;
+
+        base.OnSizeChanged(e);
+    }
+
+    protected override void OnOpening(CancelEventArgs e)
+    {
+        if (_content.IsDisposed || _content.Disposing)
+        {
+            e.Cancel = true;
+            return;
+        }
+        UpdateRegion();
+
+        base.OnOpening(e);
+    }
+
+    protected override void OnOpened(EventArgs e)
+    {
+        if (_ownerPopup != null)
+        {
+            _ownerPopup._resizable = false;
+        }
+        if (_focusOnOpen)
+        {
+            _content.Focus();
+        }
+
+        base.OnOpened(e);
+    }
+
+    protected override void OnClosed(ToolStripDropDownClosedEventArgs e)
+    {
+        if (_ownerPopup != null)
+        {
+            _ownerPopup._resizable = true;
+        }
+
+        base.OnClosed(e);
+    }
+
+    protected override void OnVisibleChanged(EventArgs e)
+    {
+        if (!Visible)
+        {
+            LastClosedTimeStamp = DateTime.Now;
+        }
+
+        base.OnVisibleChanged(e);
+    }
+
+    protected override void WndProc(ref Message m)
+    {
+        if (InternalProcessResizing(ref m, false))
+        {
+            return;
+        }
+        base.WndProc(ref m);
+    }
+
+    #endregion
+
+    #region Implementation
+
+    /// <summary>
+    /// Updates the pop-up region.
+    /// </summary>
+    protected void UpdateRegion()
+    {
+        if (Region != null)
+        {
+            Region.Dispose();
+            Region = null;
+        }
+        if (_content.Region != null)
+        {
+            Region = _content.Region.Clone();
+        }
+    }
+
+    /// <summary>
+    /// Shows pop-up window below the specified control.
+    /// </summary>
+    /// <param name="control">The control below which the pop-up will be shown.</param>
+    /// <remarks>
+    /// When there is no space below the specified control, the pop-up control is shown above it.
+    /// </remarks>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="control"/> is <code>null</code>.</exception>
+    public void Show(Control control)
+    {
+        if (control == null)
+        {
+            throw new ArgumentNullException("control");
+        }
+        SetOwnerItem(control);
+        Show(control, control.ClientRectangle);
+    }
+
+    /// <summary>
+    /// Shows pop-up window below the specified area of specified control.
+    /// </summary>
+    /// <param name="control">The control used to compute screen location of specified area.</param>
+    /// <param name="area">The area of control below which the pop-up will be shown.</param>
+    /// <remarks>
+    /// When there is no space below specified area, the pop-up control is shown above it.
+    /// </remarks>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="control"/> is <code>null</code>.</exception>
+    public void Show(Control control, Rectangle area)
+    {
+        if (control == null)
+        {
+            throw new ArgumentNullException("control");
+        }
+        SetOwnerItem(control);
+        _resizableTop = _resizableRight = false;
+        Point location = control.PointToScreen(new Point(area.Left, area.Top + area.Height));
+        Rectangle screen = Screen.FromControl(control).WorkingArea;
+        if (location.X + Size.Width > screen.Left + screen.Width)
+        {
+            _resizableRight = true;
+            location.X = screen.Left + screen.Width - Size.Width;
+        }
+        if (location.Y + Size.Height > screen.Top + screen.Height)
+        {
+            _resizableTop = true;
+            location.Y -= Size.Height + area.Height;
+        }
+        location = control.PointToClient(location);
+        Show(control, location, ToolStripDropDownDirection.BelowRight);
+    }
+
+    private void SetOwnerItem(Control control)
+    {
+        if (control == null)
+        {
+            return;
+        }
+        if (control is PopUp)
+        {
+            PopUp? popupControl = control as PopUp;
+            _ownerPopup = popupControl;
+            _ownerPopup!._childPopup = this;
+            OwnerItem = popupControl?.Items[0];
+            return;
+        }
+        if (control.Parent != null)
+        {
+            SetOwnerItem(control.Parent);
+        }
+    }
+
+    public bool ProcessResizing(ref Message m)
+    {
+        return InternalProcessResizing(ref m, true);
+    }
+
+    private bool InternalProcessResizing(ref Message m, bool contentControl)
+    {
+        if (m.Msg == NativeMethods.WM_NCACTIVATE && m.WParam != IntPtr.Zero && _childPopup != null && _childPopup.Visible)
+        {
+            _childPopup.Hide();
+        }
+        if (!ReSizable)
+        {
+            return false;
+        }
+        if (m.Msg == NativeMethods.WM_NCHITTEST)
+        {
+            return OnNcHitTest(ref m, contentControl);
+        }
+        else if (m.Msg == NativeMethods.WM_GETMINMAXINFO)
+        {
+            return OnGetMinMaxInfo(ref m);
+        }
+        return false;
+    }
+
+    private bool OnGetMinMaxInfo(ref Message m)
+    {
+        NativeMethods.MINMAXINFO minmax = (NativeMethods.MINMAXINFO)Marshal.PtrToStructure(m.LParam, typeof(NativeMethods.MINMAXINFO));
+        minmax.MaximumTrackSize = this.MaximumSize;
+        minmax.MinimumTrackSize = this.MinimumSize;
+        Marshal.StructureToPtr(minmax, m.LParam, false);
+        return true;
+    }
+
+    private bool OnNcHitTest(ref Message m, bool contentControl)
+    {
+        int x = NativeMethods.LOWORD(m.LParam);
+        int y = NativeMethods.HIWORD(m.LParam);
+        Point clientLocation = PointToClient(new Point(x, y));
+
+        GripBounds gripBounds = new GripBounds(contentControl ? _content.ClientRectangle : ClientRectangle);
+        IntPtr transparent = new IntPtr(NativeMethods.HTTRANSPARENT);
+
+        if (_resizableTop)
+        {
+            if (_resizableRight && gripBounds.TopLeft.Contains(clientLocation))
+            {
+                m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTTOPLEFT;
+                return true;
+            }
+            if (!_resizableRight && gripBounds.TopRight.Contains(clientLocation))
+            {
+                m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTTOPRIGHT;
+                return true;
+            }
+            if (gripBounds.Top.Contains(clientLocation))
+            {
+                m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTTOP;
+                return true;
+            }
+        }
+        else
+        {
+            if (_resizableRight && gripBounds.BottomLeft.Contains(clientLocation))
+            {
+                m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTBOTTOMLEFT;
+                return true;
+            }
+            if (!_resizableRight && gripBounds.BottomRight.Contains(clientLocation))
+            {
+                m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTBOTTOMRIGHT;
+                return true;
+            }
+            if (gripBounds.Bottom.Contains(clientLocation))
+            {
+                m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTBOTTOM;
+                return true;
+            }
+        }
+        if (_resizableRight && gripBounds.Left.Contains(clientLocation))
+        {
+            m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTLEFT;
             return true;
         }
-
-        private bool OnNcHitTest(ref Message m, bool contentControl)
+        if (!_resizableRight && gripBounds.Right.Contains(clientLocation))
         {
-            int x = NativeMethods.LOWORD(m.LParam);
-            int y = NativeMethods.HIWORD(m.LParam);
-            Point clientLocation = PointToClient(new Point(x, y));
-
-            GripBounds gripBounds = new GripBounds(contentControl ? _content.ClientRectangle : ClientRectangle);
-            IntPtr transparent = new IntPtr(NativeMethods.HTTRANSPARENT);
-
-            if (_resizableTop)
-            {
-                if (_resizableRight && gripBounds.TopLeft.Contains(clientLocation))
-                {
-                    m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTTOPLEFT;
-                    return true;
-                }
-                if (!_resizableRight && gripBounds.TopRight.Contains(clientLocation))
-                {
-                    m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTTOPRIGHT;
-                    return true;
-                }
-                if (gripBounds.Top.Contains(clientLocation))
-                {
-                    m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTTOP;
-                    return true;
-                }
-            }
-            else
-            {
-                if (_resizableRight && gripBounds.BottomLeft.Contains(clientLocation))
-                {
-                    m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTBOTTOMLEFT;
-                    return true;
-                }
-                if (!_resizableRight && gripBounds.BottomRight.Contains(clientLocation))
-                {
-                    m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTBOTTOMRIGHT;
-                    return true;
-                }
-                if (gripBounds.Bottom.Contains(clientLocation))
-                {
-                    m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTBOTTOM;
-                    return true;
-                }
-            }
-            if (_resizableRight && gripBounds.Left.Contains(clientLocation))
-            {
-                m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTLEFT;
-                return true;
-            }
-            if (!_resizableRight && gripBounds.Right.Contains(clientLocation))
-            {
-                m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTRIGHT;
-                return true;
-            }
-            return false;
+            m.Result = contentControl ? transparent : (IntPtr)NativeMethods.HTRIGHT;
+            return true;
         }
-
-        public void PaintSizeGrip(PaintEventArgs e)
-        {
-            if (e == null || e.Graphics == null || !_resizable)
-            {
-                return;
-            }
-            Size clientSize = _content.ClientSize;
-            if (Application.RenderWithVisualStyles)
-            {
-                _sizeGripRenderer ??= new VisualStyleRender.VisualStyleRenderer(VisualStyleRender.VisualStyleElement.Status.Gripper.Normal);
-
-                _sizeGripRenderer.DrawBackground(e.Graphics, new Rectangle(clientSize.Width - 0x10, clientSize.Height - 0x10, 0x10, 0x10));
-            }
-            else
-            {
-                ControlPaint.DrawSizeGrip(e.Graphics, _content.BackColor, clientSize.Width - 0x10, clientSize.Height - 0x10, 0x10, 0x10);
-            }
-        }
-
-        private const int FRAMES = 1;
-        private const int TOTALDURATION = 0; // ML : 2007-11-05 : was 100 but caused a flicker.
-        private const int FRAMEDURATION = TOTALDURATION / FRAMES;
-
-        #endregion
-
-        #region Designer Code
-
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (components != null)
-                {
-                    components.Dispose();
-                }
-                if (_content != null)
-                {
-                    Control? content = _content;
-                    content = null;
-                    _content.Dispose();
-                }
-            }
-            base.Dispose(disposing);
-        }
-
-        #region Component Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            components = new System.ComponentModel.Container();
-        }
-
-        #endregion
-
-        #endregion
+        return false;
     }
+
+    public void PaintSizeGrip(PaintEventArgs e)
+    {
+        if (e == null || e.Graphics == null || !_resizable)
+        {
+            return;
+        }
+        Size clientSize = _content.ClientSize;
+        if (Application.RenderWithVisualStyles)
+        {
+            _sizeGripRenderer ??= new VisualStyleRender.VisualStyleRenderer(VisualStyleRender.VisualStyleElement.Status.Gripper.Normal);
+
+            _sizeGripRenderer.DrawBackground(e.Graphics, new Rectangle(clientSize.Width - 0x10, clientSize.Height - 0x10, 0x10, 0x10));
+        }
+        else
+        {
+            ControlPaint.DrawSizeGrip(e.Graphics, _content.BackColor, clientSize.Width - 0x10, clientSize.Height - 0x10, 0x10, 0x10);
+        }
+    }
+
+    private const int FRAMES = 1;
+    private const int TOTALDURATION = 0; // ML : 2007-11-05 : was 100 but caused a flicker.
+    private const int FRAMEDURATION = TOTALDURATION / FRAMES;
+
+    #endregion
+
+    #region Designer Code
+
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            if (components != null)
+            {
+                components.Dispose();
+            }
+            if (_content != null)
+            {
+                Control? content = _content;
+                content = null;
+                _content.Dispose();
+            }
+        }
+        base.Dispose(disposing);
+    }
+
+    #region Component Designer generated code
+
+    /// <summary>
+    /// Required method for Designer support - do not modify 
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+        components = new System.ComponentModel.Container();
+    }
+
+    #endregion
+
+    #endregion
 }

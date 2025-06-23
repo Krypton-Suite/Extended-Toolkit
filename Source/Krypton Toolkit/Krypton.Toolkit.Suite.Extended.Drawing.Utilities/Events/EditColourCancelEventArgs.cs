@@ -25,29 +25,28 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+public class EditColourCancelEventArgs : CancelEventArgs
 {
-    public class EditColourCancelEventArgs : CancelEventArgs
+    #region Constructors
+
+    public EditColourCancelEventArgs(Color colour, int colourIndex)
     {
-        #region Constructors
-
-        public EditColourCancelEventArgs(Color colour, int colourIndex)
-        {
-            this.Colour = colour;
-            this.ColourIndex = colourIndex;
-        }
-
-        protected EditColourCancelEventArgs()
-        { }
-
-        #endregion
-
-        #region Properties
-
-        public Color Colour { get; protected set; }
-
-        public int ColourIndex { get; protected set; }
-
-        #endregion
+        this.Colour = colour;
+        this.ColourIndex = colourIndex;
     }
+
+    protected EditColourCancelEventArgs()
+    { }
+
+    #endregion
+
+    #region Properties
+
+    public Color Colour { get; protected set; }
+
+    public int ColourIndex { get; protected set; }
+
+    #endregion
 }

@@ -25,14 +25,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items;
+
+/// <summary>
+/// Check mark display style. 
+/// </summary>
+public enum CheckMarkDisplayStyle
 {
-    /// <summary>
-    /// Check mark display style. 
-    /// </summary>
-    public enum CheckMarkDisplayStyle
-    {
-        CheckBox = 0,
-        RadioButton = 1
-    }
+    CheckBox = 0,
+    RadioButton = 1
 }

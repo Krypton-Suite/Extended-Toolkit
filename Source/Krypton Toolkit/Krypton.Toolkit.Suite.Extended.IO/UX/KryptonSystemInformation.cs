@@ -25,33 +25,32 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO;
+
+public partial class KryptonSystemInformation : KryptonForm
 {
-    public partial class KryptonSystemInformation : KryptonForm
+    #region Identity
+    public KryptonSystemInformation()
     {
-        #region Identity
-        public KryptonSystemInformation()
-        {
-            InitializeComponent();
-        }
-        #endregion
+        InitializeComponent();
+    }
+    #endregion
 
-        private void kbtnCopy_Click(object sender, EventArgs e)
+    private void kbtnCopy_Click(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(krtbSystemInformation.Text))
         {
-            if (!string.IsNullOrEmpty(krtbSystemInformation.Text))
-            {
-                Clipboard.SetText(krtbSystemInformation.Text);
-            }
+            Clipboard.SetText(krtbSystemInformation.Text);
         }
+    }
 
-        private void kbtnClose_Click(object sender, EventArgs e)
-        {
-            Hide();
-        }
+    private void kbtnClose_Click(object sender, EventArgs e)
+    {
+        Hide();
+    }
 
-        private void KryptonSystemInformation_Load(object sender, EventArgs e)
-        {
+    private void KryptonSystemInformation_Load(object sender, EventArgs e)
+    {
 
-        }
     }
 }

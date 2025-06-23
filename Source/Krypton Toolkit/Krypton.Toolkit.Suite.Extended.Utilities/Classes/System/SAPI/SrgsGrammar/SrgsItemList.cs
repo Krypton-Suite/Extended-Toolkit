@@ -26,15 +26,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
+
+[Serializable]
+internal class SrgsItemList : Collection<SrgsItem>
 {
-    [Serializable]
-    internal class SrgsItemList : Collection<SrgsItem>
+    protected override void InsertItem(int index, SrgsItem item)
     {
-        protected override void InsertItem(int index, SrgsItem item)
-        {
-            Helpers.ThrowIfNull(item, "item");
-            base.InsertItem(index, item);
-        }
+        Helpers.ThrowIfNull(item, "item");
+        base.InsertItem(index, item);
     }
 }

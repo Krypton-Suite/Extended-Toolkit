@@ -27,30 +27,29 @@
 
 // ReSharper disable AssignNullToNotNullAttribute
 #nullable enable
-namespace Krypton.Toolkit.Suite.Extended.TreeGridView
+namespace Krypton.Toolkit.Suite.Extended.TreeGridView;
+
+/// <summary>
+/// Just like a tree view, I wanted to have the concept of a node. 
+/// I made the nodes class derive from a DataGridViewRow since a node in the list is the same as a row, just with a bit more info
+/// </summary>
+public class KryptonTreeGridColumn : KryptonDataGridViewTextBoxColumn
 {
-    /// <summary>
-    /// Just like a tree view, I wanted to have the concept of a node. 
-    /// I made the nodes class derive from a DataGridViewRow since a node in the list is the same as a row, just with a bit more info
-    /// </summary>
-    public class KryptonTreeGridColumn : KryptonDataGridViewTextBoxColumn
+    public KryptonTreeGridColumn()
     {
-        public KryptonTreeGridColumn()
-        {
-            CellTemplate = new KryptonTreeGridCell();
-        }
-
-        /// <summary>
-        /// Need to override Clone for design-time support.
-        /// </summary>
-        /// <returns></returns>
-        public override object Clone()
-        {
-            var c = (KryptonTreeGridColumn)base.Clone();
-            c.DefaultNodeImage = DefaultNodeImage;
-            return c;
-        }
-
-        public Image? DefaultNodeImage { get; set; }
+        CellTemplate = new KryptonTreeGridCell();
     }
+
+    /// <summary>
+    /// Need to override Clone for design-time support.
+    /// </summary>
+    /// <returns></returns>
+    public override object Clone()
+    {
+        var c = (KryptonTreeGridColumn)base.Clone();
+        c.DefaultNodeImage = DefaultNodeImage;
+        return c;
+    }
+
+    public Image? DefaultNodeImage { get; set; }
 }

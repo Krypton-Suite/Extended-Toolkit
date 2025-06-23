@@ -26,84 +26,83 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+internal static class SsmlParserHelpers
 {
-    internal static class SsmlParserHelpers
+    private static readonly string[] _genderNames =
+    [
+        "female",
+        "male",
+        "neutral"
+    ];
+
+    private static readonly VoiceGender[] _genders =
+    [
+        VoiceGender.Female,
+        VoiceGender.Male,
+        VoiceGender.Neutral
+    ];
+
+    internal static bool TryConvertAge(string sAge, out VoiceAge age)
     {
-        private static readonly string[] _genderNames =
-        [
-            "female",
-            "male",
-            "neutral"
-        ];
-
-        private static readonly VoiceGender[] _genders =
-        [
-            VoiceGender.Female,
-            VoiceGender.Male,
-            VoiceGender.Neutral
-        ];
-
-        internal static bool TryConvertAge(string sAge, out VoiceAge age)
+        bool result = false;
+        age = VoiceAge.NotSet;
+        switch (sAge)
         {
-            bool result = false;
-            age = VoiceAge.NotSet;
-            switch (sAge)
-            {
-                case "child":
-                    age = VoiceAge.Child;
-                    break;
-                case "teenager":
-                case "teen":
-                    age = VoiceAge.Teen;
-                    break;
-                case "adult":
-                    age = VoiceAge.Adult;
-                    break;
-                case "elder":
-                case "senior":
-                    age = VoiceAge.Senior;
-                    break;
-            }
-            int result2;
-            if (age != 0)
-            {
-                result = true;
-            }
-            else if (int.TryParse(sAge, out result2))
-            {
-                if (result2 <= 12)
-                {
-                    age = VoiceAge.Child;
-                }
-                else if (result2 <= 22)
-                {
-                    age = VoiceAge.Teen;
-                }
-                else if (result2 <= 47)
-                {
-                    age = VoiceAge.Adult;
-                }
-                else
-                {
-                    age = VoiceAge.Senior;
-                }
-                result = true;
-            }
-            return result;
+            case "child":
+                age = VoiceAge.Child;
+                break;
+            case "teenager":
+            case "teen":
+                age = VoiceAge.Teen;
+                break;
+            case "adult":
+                age = VoiceAge.Adult;
+                break;
+            case "elder":
+            case "senior":
+                age = VoiceAge.Senior;
+                break;
         }
-
-        internal static bool TryConvertGender(string sGender, out VoiceGender gender)
+        int result2;
+        if (age != 0)
         {
-            bool result = false;
-            gender = VoiceGender.NotSet;
-            int num = Array.BinarySearch(_genderNames, sGender);
-            if (num >= 0)
-            {
-                gender = _genders[num];
-                result = true;
-            }
-            return result;
+            result = true;
         }
+        else if (int.TryParse(sAge, out result2))
+        {
+            if (result2 <= 12)
+            {
+                age = VoiceAge.Child;
+            }
+            else if (result2 <= 22)
+            {
+                age = VoiceAge.Teen;
+            }
+            else if (result2 <= 47)
+            {
+                age = VoiceAge.Adult;
+            }
+            else
+            {
+                age = VoiceAge.Senior;
+            }
+            result = true;
+        }
+        return result;
+    }
+
+    internal static bool TryConvertGender(string sGender, out VoiceGender gender)
+    {
+        bool result = false;
+        gender = VoiceGender.NotSet;
+        int num = Array.BinarySearch(_genderNames, sGender);
+        if (num >= 0)
+        {
+            gender = _genders[num];
+            result = true;
+        }
+        return result;
     }
 }

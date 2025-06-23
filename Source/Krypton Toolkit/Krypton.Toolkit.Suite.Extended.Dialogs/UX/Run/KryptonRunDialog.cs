@@ -1,163 +1,162 @@
 ﻿
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs;
+
+public partial class KryptonRunDialog : KryptonFormExtended
 {
-    public partial class KryptonRunDialog : KryptonFormExtended
+    #region Instance Fields
+
+    private bool _showApplicationIconPreview, _showOptionsButton, _showResetButton;
+
+    #endregion
+
+    public KryptonRunDialog(RunDialogStartPosition startPosition, bool showApplicationIconPreview = true, bool showOptionsButton = false, bool showResetButton = true)
     {
-        #region Instance Fields
+        InitializeComponent();
 
-        private bool _showApplicationIconPreview, _showOptionsButton, _showResetButton;
+        _showApplicationIconPreview = showApplicationIconPreview;
 
-        #endregion
+        _showOptionsButton = showOptionsButton;
 
-        public KryptonRunDialog(RunDialogStartPosition startPosition, bool showApplicationIconPreview = true, bool showOptionsButton = false, bool showResetButton = true)
+        _showResetButton = showResetButton;
+
+        Setup();
+
+        AdjustStartPosition(startPosition);
+    }
+
+    private void KryptonRunDialog_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    #region Implementation
+    private void Setup()
+    {
+        kwlHeader.Text = Properties.Resources.DefaultRunDialogContentText;
+
+        kryptonLabel1.Text = Properties.Resources.OpenDefaultText;
+
+        pictureBox1.Image = Properties.Resources.Run_481;
+
+        Icon = Properties.Resources.Run_48;
+
+        kbtnSettings.Values.Image = Properties.Resources.Settings_16_x_16;
+
+        bsReset.Image = Properties.Resources.Reset_16_x_16;
+
+        bsReset.Visible = _showResetButton;
+
+        kbtnSettings.Visible = _showOptionsButton;
+
+        kcmbFilePath.CueHint.CueHintText = Properties.Resources.InputBoxCueText;
+
+        kcmdOpenAsAdministrator.Text = Properties.Resources.OpenAsAdministratorCommandText;
+
+        kcmdOpenInExplorer.Text = Properties.Resources.OpenInExplorerCommandText;
+
+        kcmdOpenInExplorer.ImageLarge = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new(64, 64));
+
+        kcmdOpenInExplorer.ImageSmall = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new(16, 16));
+    }
+
+    private void bsBrowse_Click(object sender, EventArgs e)
+    {
+        kcmbFilePath.Text = Browse();
+    }
+
+    private void kcmbFilePath_TextChanged(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(kcmbFilePath.Text))
         {
-            InitializeComponent();
+            bsReset.Visible = true;
 
-            _showApplicationIconPreview = showApplicationIconPreview;
+            ksbRun.Enabled = true;
 
-            _showOptionsButton = showOptionsButton;
+            pbxProcessIcon.Image = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(kcmbFilePath.Text).ToBitmap(), new(32, 32));
 
-            _showResetButton = showResetButton;
+            FileVersionInfo? info = null;
 
-            Setup();
+            //info
 
-            AdjustStartPosition(startPosition);
+            FileInfo fi = new(kcmbFilePath.Text);
+
+            ttAppIcon.SetToolTip(pbxProcessIcon, $"Name: {Path.GetFileName(kcmbFilePath.Text)}");
         }
-
-        private void KryptonRunDialog_Load(object sender, EventArgs e)
+        else
         {
+            bsReset.Visible = false;
 
+            ksbRun.Enabled = false;
+
+            pbxProcessIcon.Image = null;
         }
+    }
 
-        #region Implementation
-        private void Setup()
+    private void AdjustStartPosition(RunDialogStartPosition startPosition)
+    {
+        switch (startPosition)
         {
-            kwlHeader.Text = Properties.Resources.DefaultRunDialogContentText;
-
-            kryptonLabel1.Text = Properties.Resources.OpenDefaultText;
-
-            pictureBox1.Image = Properties.Resources.Run_481;
-
-            Icon = Properties.Resources.Run_48;
-
-            kbtnSettings.Values.Image = Properties.Resources.Settings_16_x_16;
-
-            bsReset.Image = Properties.Resources.Reset_16_x_16;
-
-            bsReset.Visible = _showResetButton;
-
-            kbtnSettings.Visible = _showOptionsButton;
-
-            kcmbFilePath.CueHint.CueHintText = Properties.Resources.InputBoxCueText;
-
-            kcmdOpenAsAdministrator.Text = Properties.Resources.OpenAsAdministratorCommandText;
-
-            kcmdOpenInExplorer.Text = Properties.Resources.OpenInExplorerCommandText;
-
-            kcmdOpenInExplorer.ImageLarge = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new(64, 64));
-
-            kcmdOpenInExplorer.ImageSmall = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new(16, 16));
+            case RunDialogStartPosition.BottomLeft:
+                Location = new(0, Screen.PrimaryScreen.WorkingArea.Bottom - Height);
+                break;
+            case RunDialogStartPosition.BottomRight:
+                break;
+            case RunDialogStartPosition.CentreScreen:
+                StartPosition = FormStartPosition.CenterScreen;
+                break;
+            default:
+                StartPosition = FormStartPosition.Manual;
+                break;
         }
+    }
 
-        private void bsBrowse_Click(object sender, EventArgs e)
-        {
-            kcmbFilePath.Text = Browse();
-        }
+    private void pbxProcessIcon_MouseEnter(object sender, EventArgs e)
+    {
+    }
 
-        private void kcmbFilePath_TextChanged(object sender, EventArgs e)
+    private void kbtnSettings_Click(object sender, EventArgs e)
+    {
+        KryptonRunDialogOptions runDialogOptions = new();
+
+        runDialogOptions.ShowDialog();
+    }
+
+    private string Browse(bool isFolderPicker = false)
+    {
+        string result = string.Empty;
+
+        try
         {
-            if (!string.IsNullOrEmpty(kcmbFilePath.Text))
+            CommonOpenFileDialog cofd = new CommonOpenFileDialog()
             {
-                bsReset.Visible = true;
+                IsFolderPicker = isFolderPicker,
 
-                ksbRun.Enabled = true;
+                Title = @"Browse for a resource:"
+            };
 
-                pbxProcessIcon.Image = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(kcmbFilePath.Text).ToBitmap(), new(32, 32));
-
-                FileVersionInfo? info = null;
-
-                //info
-
-                FileInfo fi = new(kcmbFilePath.Text);
-
-                ttAppIcon.SetToolTip(pbxProcessIcon, $"Name: {Path.GetFileName(kcmbFilePath.Text)}");
-            }
-            else
+            if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                bsReset.Visible = false;
-
-                ksbRun.Enabled = false;
-
-                pbxProcessIcon.Image = null;
+                result = Path.GetFullPath(cofd.FileName);
             }
         }
-
-        private void AdjustStartPosition(RunDialogStartPosition startPosition)
+        catch (Exception e)
         {
-            switch (startPosition)
-            {
-                case RunDialogStartPosition.BottomLeft:
-                    Location = new(0, Screen.PrimaryScreen.WorkingArea.Bottom - Height);
-                    break;
-                case RunDialogStartPosition.BottomRight:
-                    break;
-                case RunDialogStartPosition.CentreScreen:
-                    StartPosition = FormStartPosition.CenterScreen;
-                    break;
-                default:
-                    StartPosition = FormStartPosition.Manual;
-                    break;
-            }
-        }
-
-        private void pbxProcessIcon_MouseEnter(object sender, EventArgs e)
-        {
-        }
-
-        private void kbtnSettings_Click(object sender, EventArgs e)
-        {
-            KryptonRunDialogOptions runDialogOptions = new();
-
-            runDialogOptions.ShowDialog();
-        }
-
-        private string Browse(bool isFolderPicker = false)
-        {
-            string result = string.Empty;
-
-            try
-            {
-                CommonOpenFileDialog cofd = new CommonOpenFileDialog()
-                {
-                    IsFolderPicker = isFolderPicker,
-
-                    Title = @"Browse for a resource:"
-                };
-
-                if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
-                {
-                    result = Path.GetFullPath(cofd.FileName);
-                }
-            }
-            catch (Exception e)
-            {
-                DebugUtilities.NotImplemented(e.ToString());
-
-                return result;
-            }
+            DebugUtilities.NotImplemented(e.ToString());
 
             return result;
         }
 
-        private void Reset()
-        {
-            kcmbFilePath.Text = string.Empty;
-
-            bsReset.Visible = false;
-
-            pbxProcessIcon.Image = null;
-        }
-
-        #endregion
+        return result;
     }
+
+    private void Reset()
+    {
+        kcmbFilePath.Text = string.Empty;
+
+        bsReset.Visible = false;
+
+        pbxProcessIcon.Image = null;
+    }
+
+    #endregion
 }

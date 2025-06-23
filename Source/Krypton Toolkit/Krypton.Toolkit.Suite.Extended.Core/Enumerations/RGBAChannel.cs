@@ -26,28 +26,27 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+/// <summary>
+/// The RGBA channel
+/// </summary>
+public enum RGBAChannel
 {
     /// <summary>
-    /// The RGBA channel
+    /// The red channel.
     /// </summary>
-    public enum RGBAChannel
-    {
-        /// <summary>
-        /// The red channel.
-        /// </summary>
-        Red = 0,
-        /// <summary>
-        /// The green channel.
-        /// </summary>
-        Green = 1,
-        /// <summary>
-        /// The blue channel.
-        /// </summary>
-        Blue = 2,
-        /// <summary>
-        /// The alpha channel.
-        /// </summary>
-        Alpha = 3,
-    }
+    Red = 0,
+    /// <summary>
+    /// The green channel.
+    /// </summary>
+    Green = 1,
+    /// <summary>
+    /// The blue channel.
+    /// </summary>
+    Blue = 2,
+    /// <summary>
+    /// The alpha channel.
+    /// </summary>
+    Alpha = 3,
 }

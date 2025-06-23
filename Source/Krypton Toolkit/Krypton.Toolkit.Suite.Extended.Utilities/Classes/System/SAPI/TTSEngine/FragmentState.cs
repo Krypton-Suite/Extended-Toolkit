@@ -26,124 +26,123 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+[ImmutableObject(true)]
+public struct FragmentState : IEquatable<FragmentState>
 {
-    [ImmutableObject(true)]
-    public struct FragmentState : IEquatable<FragmentState>
+    private TtsEngineAction _action;
+
+    private int _langId;
+
+    private int _emphasis;
+
+    private int _duration;
+
+    private SayAs _sayAs;
+
+    private Prosody _prosody;
+
+    private char[] _phoneme;
+
+    public TtsEngineAction Action
     {
-        private TtsEngineAction _action;
+        get => _action;
+        internal set => _action = value;
+    }
 
-        private int _langId;
+    public int LangId
+    {
+        get => _langId;
+        internal set => _langId = value;
+    }
 
-        private int _emphasis;
+    public int Emphasis
+    {
+        get => _emphasis;
+        internal set => _emphasis = value;
+    }
 
-        private int _duration;
+    public int Duration
+    {
+        get => _duration;
+        internal set => _duration = value;
+    }
 
-        private SayAs _sayAs;
-
-        private Prosody _prosody;
-
-        private char[] _phoneme;
-
-        public TtsEngineAction Action
+    public SayAs SayAs
+    {
+        get => _sayAs;
+        internal set
         {
-            get => _action;
-            internal set => _action = value;
+            Helpers.ThrowIfNull(value, "value");
+            _sayAs = value;
         }
+    }
 
-        public int LangId
+    public Prosody Prosody
+    {
+        get => _prosody;
+        internal set
         {
-            get => _langId;
-            internal set => _langId = value;
+            Helpers.ThrowIfNull(value, "value");
+            _prosody = value;
         }
+    }
 
-        public int Emphasis
+    public char[] Phoneme
+    {
+        get => _phoneme;
+        internal set
         {
-            get => _emphasis;
-            internal set => _emphasis = value;
+            Helpers.ThrowIfNull(value, "value");
+            _phoneme = value;
         }
+    }
 
-        public int Duration
+    public FragmentState(TtsEngineAction action, int langId, int emphasis, int duration, SayAs sayAs, Prosody prosody, char[] phonemes)
+    {
+        _action = action;
+        _langId = langId;
+        _emphasis = emphasis;
+        _duration = duration;
+        _sayAs = sayAs;
+        _prosody = prosody;
+        _phoneme = phonemes;
+    }
+
+    /// <filterpriority>2</filterpriority>
+    public static bool operator ==(FragmentState state1, FragmentState state2)
+    {
+        if (state1.Action == state2.Action && state1.LangId == state2.LangId && state1.Emphasis == state2.Emphasis && state1.Duration == state2.Duration && state1.SayAs == state2.SayAs && state1.Prosody == state2.Prosody)
         {
-            get => _duration;
-            internal set => _duration = value;
+            return object.Equals(state1.Phoneme, state2.Phoneme);
         }
+        return false;
+    }
 
-        public SayAs SayAs
-        {
-            get => _sayAs;
-            internal set
-            {
-                Helpers.ThrowIfNull(value, "value");
-                _sayAs = value;
-            }
-        }
+    /// <filterpriority>2</filterpriority>
+    public static bool operator !=(FragmentState state1, FragmentState state2)
+    {
+        return !(state1 == state2);
+    }
 
-        public Prosody Prosody
-        {
-            get => _prosody;
-            internal set
-            {
-                Helpers.ThrowIfNull(value, "value");
-                _prosody = value;
-            }
-        }
+    public bool Equals(FragmentState other)
+    {
+        return this == other;
+    }
 
-        public char[] Phoneme
+    public override bool Equals(object obj)
+    {
+        if (!(obj is FragmentState))
         {
-            get => _phoneme;
-            internal set
-            {
-                Helpers.ThrowIfNull(value, "value");
-                _phoneme = value;
-            }
-        }
-
-        public FragmentState(TtsEngineAction action, int langId, int emphasis, int duration, SayAs sayAs, Prosody prosody, char[] phonemes)
-        {
-            _action = action;
-            _langId = langId;
-            _emphasis = emphasis;
-            _duration = duration;
-            _sayAs = sayAs;
-            _prosody = prosody;
-            _phoneme = phonemes;
-        }
-
-        /// <filterpriority>2</filterpriority>
-        public static bool operator ==(FragmentState state1, FragmentState state2)
-        {
-            if (state1.Action == state2.Action && state1.LangId == state2.LangId && state1.Emphasis == state2.Emphasis && state1.Duration == state2.Duration && state1.SayAs == state2.SayAs && state1.Prosody == state2.Prosody)
-            {
-                return object.Equals(state1.Phoneme, state2.Phoneme);
-            }
             return false;
         }
+        return Equals((FragmentState)obj);
+    }
 
-        /// <filterpriority>2</filterpriority>
-        public static bool operator !=(FragmentState state1, FragmentState state2)
-        {
-            return !(state1 == state2);
-        }
-
-        public bool Equals(FragmentState other)
-        {
-            return this == other;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (!(obj is FragmentState))
-            {
-                return false;
-            }
-            return Equals((FragmentState)obj);
-        }
-
-        /// <filterpriority>2</filterpriority>
-        public override int GetHashCode()
-        {
-            return ((ValueType)this).GetHashCode();
-        }
+    /// <filterpriority>2</filterpriority>
+    public override int GetHashCode()
+    {
+        return ((ValueType)this).GetHashCode();
     }
 }

@@ -1,13 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+/// <summary>
+/// An axis manager contains logic to suggest axis limits given the current view and size of the data.
+/// </summary>
+public interface IAxisManager
 {
     /// <summary>
-    /// An axis manager contains logic to suggest axis limits given the current view and size of the data.
+    /// Return recommended axis limits given the current view and size of the data
     /// </summary>
-    public interface IAxisManager
-    {
-        /// <summary>
-        /// Return recommended axis limits given the current view and size of the data
-        /// </summary>
-        AxisLimits GetAxisLimits(AxisLimits viewLimits, AxisLimits dataLimits);
-    }
+    AxisLimits GetAxisLimits(AxisLimits viewLimits, AxisLimits dataLimits);
 }

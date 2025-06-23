@@ -27,11 +27,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard;
+
+public enum ButtonLayoutKind
 {
-    public enum ButtonLayoutKind
-    {
-        Default,
-        Office97
-    }
+    Default,
+    Office97
 }

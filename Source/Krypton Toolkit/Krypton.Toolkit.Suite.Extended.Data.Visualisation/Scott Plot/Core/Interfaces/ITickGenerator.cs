@@ -1,21 +1,20 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public interface ITickGenerator
 {
-    public interface ITickGenerator
-    {
-        /// <summary>
-        /// Ticks to display the next time the axis is rendered
-        /// </summary>
-        Tick[] Ticks { get; set; }
+    /// <summary>
+    /// Ticks to display the next time the axis is rendered
+    /// </summary>
+    Tick[] Ticks { get; set; }
 
-        /// <summary>
-        /// Do not automatically generate more ticks than this
-        /// </summary>
-        int MaxTickCount { get; set; }
+    /// <summary>
+    /// Do not automatically generate more ticks than this
+    /// </summary>
+    int MaxTickCount { get; set; }
 
-        /// <summary>
-        /// Logic for generating ticks automatically.
-        /// Generated ticks are stored in <see cref="Ticks"/>.
-        /// </summary>
-        void Regenerate(CoordinateRange range, Edge edge, PixelLength size);
-    }
+    /// <summary>
+    /// Logic for generating ticks automatically.
+    /// Generated ticks are stored in <see cref="Ticks"/>.
+    /// </summary>
+    void Regenerate(CoordinateRange range, Edge edge, PixelLength size);
 }

@@ -27,15 +27,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Wizard
-{
-    public class WizardPageEventArgs : EventArgs
-    {
-        public WizardPageEventArgs(KryptonAdvancedWizardPage page)
-        {
-            Page = page;
-        }
+namespace Krypton.Toolkit.Suite.Extended.Wizard;
 
-        public KryptonAdvancedWizardPage Page { get; }
+public class WizardPageEventArgs : EventArgs
+{
+    public WizardPageEventArgs(KryptonAdvancedWizardPage page)
+    {
+        Page = page;
     }
+
+    public KryptonAdvancedWizardPage Page { get; }
 }

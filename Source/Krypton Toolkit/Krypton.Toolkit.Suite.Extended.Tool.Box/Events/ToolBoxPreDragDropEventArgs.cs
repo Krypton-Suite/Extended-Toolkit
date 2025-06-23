@@ -25,28 +25,27 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Box
+namespace Krypton.Toolkit.Suite.Extended.Tool.Box;
+
+public class ToolBoxPreDragDropEventArgs : EventArgs
 {
-    public class ToolBoxPreDragDropEventArgs : EventArgs
+    #region Private Attributes
+    private DataObject _dataObject;
+    private object _object;
+    #endregion //Private Attributes
+
+    #region Properties
+
+    public DataObject DataObject => _dataObject;
+
+    public object DragObject => _object;
+
+    #endregion //Properties
+    #region Construction
+    public ToolBoxPreDragDropEventArgs(DataObject d, object o)
     {
-        #region Private Attributes
-        private DataObject _dataObject;
-        private object _object;
-        #endregion //Private Attributes
-
-        #region Properties
-
-        public DataObject DataObject => _dataObject;
-
-        public object DragObject => _object;
-
-        #endregion //Properties
-        #region Construction
-        public ToolBoxPreDragDropEventArgs(DataObject d, object o)
-        {
-            _dataObject = d;
-            _object = o;
-        }
-        #endregion //Construction
+        _dataObject = d;
+        _object = o;
     }
+    #endregion //Construction
 }

@@ -1,77 +1,76 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Core
+﻿namespace Krypton.Toolkit.Suite.Extended.Core;
+
+public partial class ColourConverter : KryptonForm
 {
-    public partial class ColourConverter : KryptonForm
+    public ColourConverter(Color colour)
     {
-        public ColourConverter(Color colour)
+        InitializeComponent();
+
+        UpdateUI(colour);
+    }
+
+    private void kbtnConvertToRGB_Click(object sender, EventArgs e)
+    {
+        try
         {
-            InitializeComponent();
+            int[] rgb = ConversionMethods.ConvertHexadecimalToRGBTest(ktxtHexValue.Text);
 
-            UpdateUI(colour);
+            knudRedValue.Value = rgb[0];
+
+            knudGreenValue.Value = rgb[1];
+
+            knudBlueValue.Value = rgb[2];
+
+            ccpbxPreview.BackColor = Color.FromArgb((int)knudRedValue.Value, (int)knudGreenValue.Value, (int)knudBlueValue.Value);
         }
-
-        private void kbtnConvertToRGB_Click(object sender, EventArgs e)
+        catch (Exception exception)
         {
-            try
-            {
-                int[] rgb = ConversionMethods.ConvertHexadecimalToRGBTest(ktxtHexValue.Text);
-
-                knudRedValue.Value = rgb[0];
-
-                knudGreenValue.Value = rgb[1];
-
-                knudBlueValue.Value = rgb[2];
-
-                ccpbxPreview.BackColor = Color.FromArgb((int)knudRedValue.Value, (int)knudGreenValue.Value, (int)knudBlueValue.Value);
-            }
-            catch (Exception exception)
-            {
-                DebugUtilities.NotImplemented(exception.ToString());
-            }
+            DebugUtilities.NotImplemented(exception.ToString());
         }
+    }
 
-        private void kbtnConvertToHexadecimal_Click(object sender, EventArgs e)
+    private void kbtnConvertToHexadecimal_Click(object sender, EventArgs e)
+    {
+        try
         {
-            try
-            {
-                ktxtHexValue.Text = ConversionMethods.FormatColourToHexadecimal(Color.FromArgb((int)knudRedValue.Value,
-                    (int)knudGreenValue.Value, (int)knudBlueValue.Value));
-            }
-            catch (Exception exception)
-            {
-                DebugUtilities.NotImplemented(exception.ToString());
-            }
+            ktxtHexValue.Text = ConversionMethods.FormatColourToHexadecimal(Color.FromArgb((int)knudRedValue.Value,
+                (int)knudGreenValue.Value, (int)knudBlueValue.Value));
         }
-
-        private void UpdateUI(Color colour, bool previewColour = false)
+        catch (Exception exception)
         {
-            if (previewColour)
-            {
-                ccpbxPreview.BackColor = colour;
-
-                knudRedValue.Value = colour.R;
-
-                knudGreenValue.Value = colour.G;
-
-                knudBlueValue.Value = colour.B;
-            }
-            else
-            {
-                knudRedValue.Value = colour.R;
-
-                knudGreenValue.Value = colour.G;
-
-                knudBlueValue.Value = colour.B;
-            }
+            DebugUtilities.NotImplemented(exception.ToString());
         }
+    }
 
-        private void kcbtnSelectBaseColour_SelectedColorChanged(object sender, ColorEventArgs e) => UpdateUI(kcbtnSelectBaseColour.SelectedColor);
-
-        private void kchkUpdateColourValues_CheckedChanged(object sender, EventArgs e) => tmrUpdateColourValues.Enabled = kchkUpdateColourValues.Checked;
-
-        private void tmrUpdateColourValues_Tick(object sender, EventArgs e)
+    private void UpdateUI(Color colour, bool previewColour = false)
+    {
+        if (previewColour)
         {
-            ccpbxPreview.BackColor =
-                Color.FromArgb((int)knudRedValue.Value, (int)knudGreenValue.Value, (int)knudBlueValue.Value);
+            ccpbxPreview.BackColor = colour;
+
+            knudRedValue.Value = colour.R;
+
+            knudGreenValue.Value = colour.G;
+
+            knudBlueValue.Value = colour.B;
         }
+        else
+        {
+            knudRedValue.Value = colour.R;
+
+            knudGreenValue.Value = colour.G;
+
+            knudBlueValue.Value = colour.B;
+        }
+    }
+
+    private void kcbtnSelectBaseColour_SelectedColorChanged(object sender, ColorEventArgs e) => UpdateUI(kcbtnSelectBaseColour.SelectedColor);
+
+    private void kchkUpdateColourValues_CheckedChanged(object sender, EventArgs e) => tmrUpdateColourValues.Enabled = kchkUpdateColourValues.Checked;
+
+    private void tmrUpdateColourValues_Tick(object sender, EventArgs e)
+    {
+        ccpbxPreview.BackColor =
+            Color.FromArgb((int)knudRedValue.Value, (int)knudGreenValue.Value, (int)knudBlueValue.Value);
     }
 }

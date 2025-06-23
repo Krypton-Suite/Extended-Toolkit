@@ -26,26 +26,25 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+[Serializable]
+internal class AudioException : Exception
 {
-    [Serializable]
-    internal class AudioException : Exception
+    internal AudioException()
     {
-        internal AudioException()
-        {
-        }
+    }
 
-        internal AudioException(MMSYSERR errorCode)
-            : base(string.Format(CultureInfo.InvariantCulture, "{0} - Error Code: 0x{1:x}", [
-                SR.Get(SRID.AudioDeviceError),
-                (int)errorCode
-            ]))
-        {
-        }
+    internal AudioException(MMSYSERR errorCode)
+        : base(string.Format(CultureInfo.InvariantCulture, "{0} - Error Code: 0x{1:x}", [
+            SR.Get(SRID.AudioDeviceError),
+            (int)errorCode
+        ]))
+    {
+    }
 
-        protected AudioException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
+    protected AudioException(SerializationInfo info, StreamingContext context)
+        : base(info, context)
+    {
     }
 }

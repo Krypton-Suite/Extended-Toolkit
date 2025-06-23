@@ -1,13 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+/// <summary>
+/// Holds a collection of bars which are all styled the same and have a common label
+/// </summary>
+[Obsolete("Temporarily not in use", true)]
+public class BarSeries
 {
-    /// <summary>
-    /// Holds a collection of bars which are all styled the same and have a common label
-    /// </summary>
-    [Obsolete("Temporarily not in use", true)]
-    public class BarSeries
-    {
-        public IList<Bar> Bars { get; set; } = Array.Empty<Bar>();
-        public string? Label { get; set; }
-        public Color Color { get; set; }
-    }
+    public IList<Bar> Bars { get; set; } = Array.Empty<Bar>();
+    public string? Label { get; set; }
+    public Color Color { get; set; }
 }
