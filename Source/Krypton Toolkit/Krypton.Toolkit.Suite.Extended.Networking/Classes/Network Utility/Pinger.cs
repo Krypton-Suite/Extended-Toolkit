@@ -92,7 +92,7 @@ internal class Pinger
     #endregion
 
     #region Event Handlers
-    void btnPing_Click(object sender, EventArgs e)
+    void btnPing_Click(object? sender, EventArgs e)
     {
         _pingView.Controls.Clear();
         string host = _txtPingHost.Text;
@@ -104,24 +104,30 @@ internal class Pinger
         }
     }
 
-    void _worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    void _worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs? e)
     {
         ListView statView = (ListView)_updateControl.Controls[0];
-        List<PingDetails> details = (List<PingDetails>)e.Result;
-
-        foreach (PingDetails detail in details)
+        if (e != null)
         {
-            ListViewItem list = new ListViewItem(detail.Address);
-            list.SubItems.Add(detail.Length);
-            list.SubItems.Add(detail.Time);
-            list.SubItems.Add(detail.TTL);
-            _pingView.Items.Add(list);
+            List<PingDetails>? details = e.Result as List<PingDetails>;
+
+            if (details != null)
+            {
+                foreach (PingDetails detail in details)
+                {
+                    ListViewItem list = new ListViewItem(detail.Address);
+                    list.SubItems.Add(detail.Length);
+                    list.SubItems.Add(detail.Time);
+                    list.SubItems.Add(detail.TTL);
+                    _pingView.Items.Add(list);
+                }
+            }
         }
     }
 
-    void _worker_DoWork(object sender, DoWorkEventArgs e)
+    void _worker_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string host = (string)e.Argument;
+        string? host = e.Argument as string;
 
         Ping pingSender = new Ping();
         PingOptions options = new PingOptions();
@@ -139,17 +145,18 @@ internal class Pinger
         {
             try
             {
-                PingReply? reply = pingSender.Send(host, timeout, buffer, options);
-
-                if (reply.Status == IPStatus.Success)
+                if (host != null)
                 {
-                    PingDetails details = new PingDetails();
-                    details.Address = reply.Address.ToString();
-                    details.Length = reply.Buffer.Length.ToString();
-                    details.Time = reply.RoundtripTime.ToString();
-                    details.TTL = reply.Options.Ttl.ToString();
+                    if (pingSender.Send(host, timeout, buffer, options) is { Status: IPStatus.Success } reply)
+                    {
+                        PingDetails details = new PingDetails();
+                        details.Address = reply.Address.ToString();
+                        details.Length = reply.Buffer.Length.ToString();
+                        details.Time = reply.RoundtripTime.ToString();
+                        details.TTL = reply.Options.Ttl.ToString();
 
-                    list.Add(details);
+                        list.Add(details);
+                    }
                 }
             }
             catch (Exception ex)

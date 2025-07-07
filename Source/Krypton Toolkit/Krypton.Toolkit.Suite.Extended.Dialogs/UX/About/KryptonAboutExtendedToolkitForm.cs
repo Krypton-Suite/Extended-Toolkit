@@ -337,12 +337,15 @@ internal partial class KryptonAboutExtendedToolkitForm : KryptonForm
         // Note: Can we use `FileVersionInfo`?
         AssemblyName[] satelliteAssemblies = currentAssembly.GetReferencedAssemblies();
 
-        foreach (AssemblyName assembly in satelliteAssemblies)
+        foreach (var assembly in satelliteAssemblies)
         {
             //FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(file);
 
             // Fill data grid view
-            kdgvVersions.Rows.Add(assembly.Name, assembly.Version.ToString());
+            if (assembly != null || assembly.Version != null)
+            {
+                kdgvVersions.Rows.Add(assembly.Name, assembly.Version.ToString());
+            }
         }
     }
 

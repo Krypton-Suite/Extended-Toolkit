@@ -26,6 +26,7 @@
 #endregion
 
 global using System;
+global using System.Collections.Generic;
 global using System.Collections.Specialized;
 global using System.ComponentModel;
 global using System.Diagnostics;
@@ -33,10 +34,12 @@ global using System.Drawing;
 global using System.Globalization;
 global using System.IO;
 global using System.Reflection;
+global using System.Runtime.InteropServices;
 global using System.Security.Principal;
 global using System.Text;
+global using System.Text.Json;
 global using System.Windows.Forms;
-
+global using System.Xml.Serialization;
 global using Krypton.Toolkit.Suite.Extended.Common;
 global using Krypton.Toolkit.Suite.Extended.Debug.Tools;
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
@@ -45,5 +48,5 @@ global using Krypton.Toolkit.Suite.Extended.Forms;
 global using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 global using Krypton.Toolkit.Suite.Extended.Settings;
 global using Krypton.Toolkit.Suite.Extended.Shared;
-
+global using Microsoft.Win32;
 global using Microsoft.WindowsAPICodePack.Dialogs;

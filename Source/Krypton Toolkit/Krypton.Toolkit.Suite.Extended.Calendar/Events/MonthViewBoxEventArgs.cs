@@ -50,9 +50,9 @@ public class MonthViewBoxEventArgs
         _graphics = g;
         _bounds = bounds;
         Text = text;
-        TextColour = textColor;
-        BackgroundColour = backColor;
-        BorderColour = borderColor;
+        TextColor = textColor;
+        BackgroundColor = backColor;
+        BorderColor = borderColor;
 
         switch (textAlign)
         {
@@ -114,7 +114,7 @@ public class MonthViewBoxEventArgs
     /// <summary>
     /// Gets or sets the border color of the box
     /// </summary>
-    public Color BorderColour
+    public Color BorderColor
     {
         get => _borderColor;
         set => _borderColor = value;
@@ -132,7 +132,7 @@ public class MonthViewBoxEventArgs
     /// <summary>
     /// Gets or sets the background color of the box
     /// </summary>
-    public Color BackgroundColour
+    public Color BackgroundColor
     {
         get => _backgroundColor;
         set => _backgroundColor = value;
@@ -141,7 +141,7 @@ public class MonthViewBoxEventArgs
     /// <summary>
     /// Gets or sets the text color of the box
     /// </summary>
-    public Color TextColour
+    public Color TextColor
     {
         get => _textColor;
         set => _textColor = value;

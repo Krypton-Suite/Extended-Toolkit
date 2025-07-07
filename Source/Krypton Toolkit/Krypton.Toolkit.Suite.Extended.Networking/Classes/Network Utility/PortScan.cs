@@ -131,9 +131,9 @@ internal class PortScan
     #endregion
 
     #region Event Handlers
-    void btnScan_Click(object sender, EventArgs e)
+    void btnScan_Click(object? sender, EventArgs e)
     {
-        Button btn = (Button)sender;
+        Button? btn = (Button)sender!;
 
         if (_txtStartPort.Text == string.Empty || _txtStopPort.Text == string.Empty)
         {
@@ -141,7 +141,7 @@ internal class PortScan
         }
         else
         {
-            if (btn.Text == "Scan")
+            if (btn?.Text == @"Scan")
             {
                 _worker = new BackgroundWorker();
                 _worker.WorkerReportsProgress = true;
@@ -161,31 +161,29 @@ internal class PortScan
             else
             {
                 _worker.CancelAsync();
-                btn.Text = "Scan";
+                if (btn != null)
+                {
+                    btn.Text = "Scan";
+                }
             }
         }
     }
 
-    void _worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    void _worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
     {
         MessageBox.Show("Port scan has completed");
     }
 
-    void _worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    void _worker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
     {
-        PortState state = (PortState)e.UserState;
+        PortState? state = e.UserState as PortState;
 
-        if (state.IsOpen)
-        {
-            _txtScanOutput.AppendText($"Port: {state.Port}, open{Environment.NewLine}");
-        }
-        else
-        {
-            _txtScanOutput.AppendText($"Port: {state.Port}, closed{Environment.NewLine}");
-        }
+        _txtScanOutput.AppendText(state is { IsOpen: true }
+            ? $"Port: {state.Port}, open{Environment.NewLine}"
+            : $"Port: {state?.Port}, closed{Environment.NewLine}");
     }
 
-    void _worker_DoWork(object sender, DoWorkEventArgs e)
+    void _worker_DoWork(object? Q, DoWorkEventArgs e)
     {
         try
         {

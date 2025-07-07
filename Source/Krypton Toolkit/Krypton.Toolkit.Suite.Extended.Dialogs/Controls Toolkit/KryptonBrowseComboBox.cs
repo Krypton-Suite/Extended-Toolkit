@@ -25,6 +25,9 @@
  */
 #endregion
 
+using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+
 namespace Krypton.Toolkit.Suite.Extended.Dialogs;
 
 /// <summary>Allows the user to browse for files.</summary>
@@ -55,9 +58,9 @@ public class KryptonBrowseComboBox : KryptonComboBox
 
     private string _resetText;
 
-    private string _resetTextToolTipHeading;
+    private string? _resetTextToolTipHeading;
 
-    private string _resetTextToolTipDescription;
+    private string? _resetTextToolTipDescription;
 
     private string _standardFilter;
 
@@ -118,12 +121,12 @@ public class KryptonBrowseComboBox : KryptonComboBox
     /// <summary>Gets or sets the reset text tool tip heading.</summary>
     /// <value>The reset text tool tip heading.</value>
     [DefaultValue(@"Reset"), Description(@"Gets or sets the reset text tool tip heading.")]
-    public string ResetTextToolTipHeading { get => _resetTextToolTipHeading; set => _resetTextToolTipHeading = value; }
+    public string? ResetTextToolTipHeading { get => _resetTextToolTipHeading; set => _resetTextToolTipHeading = value; }
 
     /// <summary>Gets or sets the reset text tool tip description.</summary>
     /// <value>The reset text tool tip description.</value>
     [DefaultValue(@"Resets the text of the text box."), Description(@">Gets or sets the reset text tool tip description.")]
-    public string ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
+    public string? ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
 
     public string StandardFilter { get => _standardFilter; set => _standardFilter = value; }
 
@@ -156,11 +159,11 @@ public class KryptonBrowseComboBox : KryptonComboBox
 
         _largeResetImage = Image.FromFile("ImageResources.Reset_32_x_32.png");
 
-        _bsaBrowse.Text = "...";
+        _bsaBrowse.Text = @"...";
 
         _bsaBrowse.KryptonCommand = _kcBrowse;
 
-        _kcBrowse.Text = "...";
+        _kcBrowse.Text = @"...";
 
         _bsaReset.ToolTipImage = _smallResetImage;
 

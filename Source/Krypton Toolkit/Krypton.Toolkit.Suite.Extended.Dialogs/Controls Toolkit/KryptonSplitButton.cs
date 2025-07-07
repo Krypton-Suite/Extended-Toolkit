@@ -48,7 +48,7 @@ public class KryptonSplitButton : KryptonButton
 
     #region Properties
     [DefaultValue(true)]
-    public bool ShowSplitOption
+    public new bool ShowSplitOption
     {
         get => _showSplitOption;
 
@@ -83,7 +83,7 @@ public class KryptonSplitButton : KryptonButton
 
                 if (_useUACElevation)
                 {
-                    Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                    Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize)?.ToBitmap();
                 }
                 else
                 {
@@ -196,7 +196,7 @@ public class KryptonSplitButton : KryptonButton
         }
     }
 
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
         base.OnPaint(e);
 
@@ -205,7 +205,7 @@ public class KryptonSplitButton : KryptonButton
             return;
         }
 
-        Graphics g = e.Graphics;
+        Graphics? g = e?.Graphics;
 
         Rectangle bounds = ClientRectangle;
 
@@ -232,16 +232,16 @@ public class KryptonSplitButton : KryptonButton
 
             focusRectangle.X = _dropDownRectangle.Right;
 
-            g.DrawLine(shadow, bounds.Left + PUSH_BUTTON_WIDTH, BORDER_SIZE, bounds.Left + PUSH_BUTTON_WIDTH, bounds.Bottom - BORDER_SIZE);
+            g?.DrawLine(shadow, bounds.Left + PUSH_BUTTON_WIDTH, BORDER_SIZE, bounds.Left + PUSH_BUTTON_WIDTH, bounds.Bottom - BORDER_SIZE);
 
-            g.DrawLine(face, bounds.Left + PUSH_BUTTON_WIDTH + 1, BORDER_SIZE, bounds.Left + PUSH_BUTTON_WIDTH + 1, bounds.Bottom - BORDER_SIZE);
+            g?.DrawLine(face, bounds.Left + PUSH_BUTTON_WIDTH + 1, BORDER_SIZE, bounds.Left + PUSH_BUTTON_WIDTH + 1, bounds.Bottom - BORDER_SIZE);
         }
         else
         {
             // draw two lines at the edge of the dropdown button 
-            g.DrawLine(shadow, bounds.Right - PUSH_BUTTON_WIDTH, BORDER_SIZE, bounds.Right - PUSH_BUTTON_WIDTH, bounds.Bottom - BORDER_SIZE);
+            g?.DrawLine(shadow, bounds.Right - PUSH_BUTTON_WIDTH, BORDER_SIZE, bounds.Right - PUSH_BUTTON_WIDTH, bounds.Bottom - BORDER_SIZE);
 
-            g.DrawLine(face, bounds.Right - PUSH_BUTTON_WIDTH - 1, BORDER_SIZE, bounds.Right - PUSH_BUTTON_WIDTH - 1, bounds.Bottom - BORDER_SIZE);
+            g?.DrawLine(face, bounds.Right - PUSH_BUTTON_WIDTH - 1, BORDER_SIZE, bounds.Right - PUSH_BUTTON_WIDTH - 1, bounds.Bottom - BORDER_SIZE);
         }
 
         // Draw an arrow in the correct location 
@@ -262,7 +262,7 @@ public class KryptonSplitButton : KryptonButton
     #endregion
 
     #region Methods
-    private static void PaintArrow(Graphics graphics, Rectangle rectangle)
+    private static void PaintArrow(Graphics? graphics, Rectangle rectangle)
     {
         Point midPoint = new(Convert.ToInt32(rectangle.Left + rectangle.Width / 2), Convert.ToInt32(rectangle.Top + rectangle.Height / 2));
 
@@ -271,7 +271,7 @@ public class KryptonSplitButton : KryptonButton
         Point[] arrow = [new(midPoint.X - 2, midPoint.Y - 1), new(midPoint.X + 3, midPoint.Y - 1), new(midPoint.X, midPoint.Y + 2)
         ];
 
-        graphics.FillPolygon(SystemBrushes.ControlText, arrow);
+        graphics?.FillPolygon(SystemBrushes.ControlText, arrow);
     }
 
     private void ShowContextMenuStrip()
@@ -287,7 +287,7 @@ public class KryptonSplitButton : KryptonButton
 
         if (KryptonContextMenu != null)
         {
-            KryptonContextMenu.Show(FindForm().PointToScreen(Location) + new Size(0, Height));
+            KryptonContextMenu.Show(FindForm()!.PointToScreen(Location) + new Size(0, Height));
 
             KryptonContextMenu.Closed += KryptonContextMenu_Closed;
         }
@@ -301,7 +301,7 @@ public class KryptonSplitButton : KryptonButton
     #endregion
 
     #region Event Handlers
-    private void KryptonContextMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+    private void KryptonContextMenu_Closed(object? sender, ToolStripDropDownClosedEventArgs e)
     {
         KryptonContextMenu? kcm = sender as KryptonContextMenu;
         if (kcm != null)
@@ -315,7 +315,7 @@ public class KryptonSplitButton : KryptonButton
         //} 
     }
 
-    private void ContextMenuStrip_Closing(object sender, ToolStripDropDownClosingEventArgs e)
+    private void ContextMenuStrip_Closing(object? sender, ToolStripDropDownClosingEventArgs e)
     {
         ContextMenuStrip? cms = sender as ContextMenuStrip;
         if (cms != null)

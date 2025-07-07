@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar;
 public class KryptonCalendar : ScrollableControl
 {
     #region "Reload Palette"
-    private void Calendar_Invalidated(object sender, InvalidateEventArgs e)
+    private void Calendar_Invalidated(object? sender, InvalidateEventArgs e)
     {
         Renderer!.ReloadPalette();
     }
@@ -42,10 +42,10 @@ public class KryptonCalendar : ScrollableControl
 
     #region ... Krypton ...
     private PaletteBase? _palette;
-    private PaletteRedirect _paletteRedirect;
+    private readonly PaletteRedirect _paletteRedirect;
 
     //Kripton Palette Events
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -132,28 +132,28 @@ public class KryptonCalendar : ScrollableControl
     /// </summary>
     /// <param name="sender">Sender of the event</param>
     /// <param name="e">Event Data</param>
-    public delegate void CalendarLoadEventHandler(object sender, CalendarLoadEventArgs e);
+    public delegate void CalendarLoadEventHandler(object? sender, CalendarLoadEventArgs e);
 
     /// <summary>
     /// Delegate that supports item-related events
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    public delegate void CalendarItemEventHandler(object sender, CalendarItemEventArgs e);
+    public delegate void CalendarItemEventHandler(object? sender, CalendarItemEventArgs e);
 
     /// <summary>
     /// Delegate that supports cancelable item-related events
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    public delegate void CalendarItemCancelEventHandler(object sender, CalendarItemCancelEventArgs e);
+    public delegate void CalendarItemCancelEventHandler(object? sender, CalendarItemCancelEventArgs e);
 
     /// <summary>
     /// Delegate that supports <see cref="CalendarDay"/>-related events
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    public delegate void CalendarDayEventHandler(object sender, CalendarDayEventArgs e);
+    public delegate void CalendarDayEventHandler(object? sender, CalendarDayEventArgs e);
 
     /// <summary>
     /// Occurs when items are load into view
@@ -259,7 +259,7 @@ public class KryptonCalendar : ScrollableControl
     private bool _finalizingEdition;
     private DayOfWeek _firstDayOfWeek;
     private CalendarHighlightRange[] _highlightRanges;
-    private CalendarItemCollection _items;
+    private readonly CalendarItemCollection _items;
     private string _itemsDateFormat;
     private string _itemsTimeFormat;
     private int _maximumFullDays;
@@ -273,7 +273,7 @@ public class KryptonCalendar : ScrollableControl
     private DateTime _viewEnd;
     private DateTime _viewStart;
     private CalendarWeek[] _weeks;
-    private List<CalendarSelectableElement?> _selectedElements;
+    private readonly List<CalendarSelectableElement?> _selectedElements;
     private ICalendarSelectableElement? _selectedElementEnd;
     private ICalendarSelectableElement? _selectedElementStart;
     private Rectangle _selectedElementSquare;
@@ -1322,7 +1322,7 @@ public class KryptonCalendar : ScrollableControl
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void TextBox_KeyDown(object sender, KeyEventArgs e)
+    private void TextBox_KeyDown(object? sender, KeyEventArgs e)
     {
         if (e.KeyCode == Keys.Escape)
         {

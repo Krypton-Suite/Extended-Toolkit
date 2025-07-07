@@ -92,18 +92,18 @@ public class MonthView
     private Size _monthSize;
     private MonthViewMonth[] _months;
     private Padding _itemPadding;
-    private Color _monthTitleColour;
-    private Color _monthTitleColourInactive;
-    private Color _monthTitleTextColour;
-    private Color _monthTitleTextColourInactive;
-    private Color _dayBackgroundColour;
-    private Color _daySelectedBackgroundColour;
-    private Color _dayTextColour;
-    private Color _daySelectedTextColour;
-    private Color _arrowsColour;
-    private Color _arrowsSelectedColour;
+    private Color _monthTitleColor;
+    private Color _monthTitleColorInactive;
+    private Color _monthTitleTextColor;
+    private Color _monthTitleTextColorInactive;
+    private Color _dayBackgroundColor;
+    private Color _daySelectedBackgroundColor;
+    private Color _dayTextColor;
+    private Color _daySelectedTextColor;
+    private Color _arrowsColor;
+    private Color _arrowsSelectedColor;
     private Color _dayGrayedText;
-    private Color _todayBorderColour;
+    private Color _todayBorderColor;
     private int _maxSelectionCount;
     private Rectangle _forwardButtonBounds;
     private bool _forwardButtonSelected;
@@ -137,18 +137,18 @@ public class MonthView
         _dayNamesLength = 2;
         _viewStart = DateTime.Now;
         _itemPadding = new Padding(2);
-        _monthTitleColour = SystemColors.ActiveCaption;
-        _monthTitleColourInactive = SystemColors.InactiveCaption;
-        _monthTitleTextColour = SystemColors.ActiveCaptionText;
-        _monthTitleTextColourInactive = SystemColors.InactiveCaptionText;
-        _dayBackgroundColour = Color.Empty;
-        _daySelectedBackgroundColour = SystemColors.Highlight;
-        _dayTextColour = SystemColors.WindowText;
-        _daySelectedTextColour = SystemColors.HighlightText;
-        _arrowsColour = SystemColors.Window;
-        _arrowsSelectedColour = Color.Gold;
+        _monthTitleColor = SystemColors.ActiveCaption;
+        _monthTitleColorInactive = SystemColors.InactiveCaption;
+        _monthTitleTextColor = SystemColors.ActiveCaptionText;
+        _monthTitleTextColorInactive = SystemColors.InactiveCaptionText;
+        _dayBackgroundColor = Color.Empty;
+        _daySelectedBackgroundColor = SystemColors.Highlight;
+        _dayTextColor = SystemColors.WindowText;
+        _daySelectedTextColor = SystemColors.HighlightText;
+        _arrowsColor = SystemColors.Window;
+        _arrowsSelectedColor = Color.Gold;
         _dayGrayedText = SystemColors.GrayText;
-        _todayBorderColour = Color.Maroon;
+        _todayBorderColor = Color.Maroon;
 
         UpdateMonthSize();
         UpdateMonths();
@@ -247,6 +247,7 @@ public class MonthView
     /// <summary>
     /// Gets or sets the internal padding of items (Days, day names, month names)
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Padding ItemPadding
     {
         get => _itemPadding;
@@ -257,6 +258,10 @@ public class MonthView
     /// Gets or sets the maximum selection count of days
     /// </summary>
     [DefaultValue(0)]
+    [Description("Maximum number of days that can be selected at once. 0 means no limit.")]
+    [Category("Behavior")]
+    [Browsable(true)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int MaxSelectionCount
     {
         get => _maxSelectionCount;
@@ -387,44 +392,45 @@ public class MonthView
 
     #region Color Properties
 
-    public Color ArrowsSelectedColour
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Color ArrowsSelectedColor
     {
-        get => _arrowsSelectedColour;
-        set => _arrowsSelectedColour = value;
+        get => _arrowsSelectedColor;
+        set => _arrowsSelectedColor = value;
     }
 
 
-    public Color ArrowsColour
+    public Color ArrowsColor
     {
-        get => _arrowsColour;
-        set => _arrowsColour = value;
+        get => _arrowsColor;
+        set => _arrowsColor = value;
     }
 
 
-    public Color DaySelectedTextColour
+    public Color DaySelectedTextColor
     {
-        get => _daySelectedTextColour;
-        set => _daySelectedTextColour = value;
+        get => _daySelectedTextColor;
+        set => _daySelectedTextColor = value;
     }
 
 
-    public Color DaySelectedColour
+    public Color DaySelectedColor
     {
-        get => _dayTextColour;
-        set => _dayTextColour = value;
+        get => _dayTextColor;
+        set => _dayTextColor = value;
     }
 
 
-    public Color DaySelectedBackgroundColour
+    public Color DaySelectedBackgroundColor
     {
-        get => _daySelectedBackgroundColour;
-        set => _daySelectedBackgroundColour = value;
+        get => _daySelectedBackgroundColor;
+        set => _daySelectedBackgroundColor = value;
     }
 
-    public Color DayBackgroundColour
+    public Color DayBackgroundColor
     {
-        get => _dayBackgroundColour;
-        set => _dayBackgroundColour = value;
+        get => _dayBackgroundColor;
+        set => _dayBackgroundColor = value;
     }
 
 
@@ -434,38 +440,38 @@ public class MonthView
         set => _dayGrayedText = value;
     }
 
-    public Color MonthTitleColour
+    public Color MonthTitleColor
     {
-        get => _monthTitleColour;
-        set => _monthTitleColour = value;
+        get => _monthTitleColor;
+        set => _monthTitleColor = value;
     }
 
-    public Color MonthTitleTextColourInactive
+    public Color MonthTitleTextColorInactive
     {
-        get => _monthTitleTextColourInactive;
-        set => _monthTitleTextColourInactive = value;
+        get => _monthTitleTextColorInactive;
+        set => _monthTitleTextColorInactive = value;
     }
 
-    public Color MonthTitleTextColour
+    public Color MonthTitleTextColor
     {
-        get => _monthTitleTextColour;
-        set => _monthTitleTextColour = value;
+        get => _monthTitleTextColor;
+        set => _monthTitleTextColor = value;
     }
 
 
-    public Color MonthTitleColourInactive
+    public Color MonthTitleColorInactive
     {
-        get => _monthTitleColourInactive;
-        set => _monthTitleColourInactive = value;
+        get => _monthTitleColorInactive;
+        set => _monthTitleColorInactive = value;
     }
 
     /// <summary>
     /// Gets or sets the color of the today day border color
     /// </summary>
-    public Color TodayBorderColour
+    public Color TodayBorderColor
     {
-        get => _todayBorderColour;
-        set => _todayBorderColour = value;
+        get => _todayBorderColor;
+        set => _todayBorderColor = value;
     }
 
 
@@ -595,22 +601,22 @@ public class MonthView
     /// <param name="e"></param>
     private void DrawBox(MonthViewBoxEventArgs e)
     {
-        if (!e.BackgroundColour.IsEmpty)
+        if (!e.BackgroundColor.IsEmpty)
         {
-            using (SolidBrush b = new SolidBrush(e.BackgroundColour))
+            using (SolidBrush b = new SolidBrush(e.BackgroundColor))
             {
                 e.Graphics.FillRectangle(b, e.Bounds);
             }
         }
 
-        if (!e.TextColour.IsEmpty && !string.IsNullOrWhiteSpace(e.Text))
+        if (!e.TextColor.IsEmpty && !string.IsNullOrWhiteSpace(e.Text))
         {
-            TextRenderer.DrawText(e.Graphics, e.Text, e.Font != null ? e.Font : Font, e.Bounds, e.TextColour, e.TextFlags);
+            TextRenderer.DrawText(e.Graphics, e.Text, e.Font != null ? e.Font : Font, e.Bounds, e.TextColor, e.TextFlags);
         }
 
-        if (!e.BorderColour.IsEmpty)
+        if (!e.BorderColor.IsEmpty)
         {
-            using (Pen p = new Pen(e.BorderColour))
+            using (Pen p = new Pen(e.BorderColor))
             {
                 Rectangle r = e.Bounds;
                 r.Width--; r.Height--;
@@ -842,8 +848,8 @@ public class MonthView
                 string title = Months[i].Date.ToString(MonthTitleFormat);
                 MonthViewBoxEventArgs evtTitle = new MonthViewBoxEventArgs(e.Graphics, Months[i].MonthNameBounds,
                     title,
-                    Focused ? MonthTitleTextColour : MonthTitleTextColourInactive,
-                    Focused ? MonthTitleColour : MonthTitleColourInactive);
+                    Focused ? MonthTitleTextColor : MonthTitleTextColorInactive,
+                    Focused ? MonthTitleColor : MonthTitleColorInactive);
 
                 DrawBox(evtTitle);
 
@@ -854,14 +860,14 @@ public class MonthView
                 for (int j = 0; j < Months[i].DayNamesBounds.Length; j++)
                 {
                     MonthViewBoxEventArgs evtDay = new MonthViewBoxEventArgs(e.Graphics, Months[i].DayNamesBounds[j], Months[i].DayHeaders[j],
-                        StringAlignment.Far, ForeColor, DayBackgroundColour);
+                        StringAlignment.Far, ForeColor, DayBackgroundColor);
 
                     DrawBox(evtDay);
                 }
 
                 if (Months[i].DayNamesBounds != null && Months[i].DayNamesBounds.Length != 0)
                 {
-                    using (Pen p = new Pen(MonthTitleColour))
+                    using (Pen p = new Pen(MonthTitleColor))
                     {
                         int y = Months[i].DayNamesBounds[0].Bottom;
                         e.Graphics.DrawLine(p, new Point(Months[i].Bounds.X, y), new Point(Months[i].Bounds.Right, y));
@@ -879,12 +885,12 @@ public class MonthView
 
                     MonthViewBoxEventArgs evtDay = new MonthViewBoxEventArgs(e.Graphics, day.Bounds, day.Date.Day.ToString(),
                         StringAlignment.Far,
-                        day.Grayed ? DayGrayedText : day.Selected ? DaySelectedTextColour : ForeColor,
-                        day.Selected ? DaySelectedBackgroundColour : DayBackgroundColour);
+                        day.Grayed ? DayGrayedText : day.Selected ? DaySelectedTextColor : ForeColor,
+                        day.Selected ? DaySelectedBackgroundColor : DayBackgroundColor);
 
                     if (day.Date.Equals(DateTime.Now.Date))
                     {
-                        evtDay.BorderColour = TodayBorderColour;
+                        evtDay.BorderColor = TodayBorderColor;
                     }
 
                     DrawBox(evtDay);
@@ -896,7 +902,7 @@ public class MonthView
                 if (i == 0)
                 {
                     Rectangle r = BackwardButtonBounds;
-                    using (Brush b = new SolidBrush(BackwardButtonSelected ? ArrowsSelectedColour : ArrowsColour))
+                    using (Brush b = new SolidBrush(BackwardButtonSelected ? ArrowsSelectedColor : ArrowsColor))
                     {
                         e.Graphics.FillPolygon(b, [
                             new Point(r.Right, r.Top),
@@ -909,7 +915,7 @@ public class MonthView
                 if (i == _forwardMonthIndex)
                 {
                     Rectangle r = ForwardButtonBounds;
-                    using (Brush b = new SolidBrush(ForwardButtonSelected ? ArrowsSelectedColour : ArrowsColour))
+                    using (Brush b = new SolidBrush(ForwardButtonSelected ? ArrowsSelectedColor : ArrowsColor))
                     {
                         e.Graphics.FillPolygon(b, [
                             new Point(r.X, r.Top),

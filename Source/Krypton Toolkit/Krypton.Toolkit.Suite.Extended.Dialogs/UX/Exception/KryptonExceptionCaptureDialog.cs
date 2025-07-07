@@ -25,6 +25,8 @@
  */
 #endregion
 
+using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
+
 namespace Krypton.Toolkit.Suite.Extended.Dialogs;
 
 /// <summary>
@@ -157,6 +159,8 @@ public class KryptonExceptionCaptureDialog : KryptonForm
     #endregion
 
     #region Properties
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Exception Exception { get => _exception; set => _exception = value; }
     #endregion
 
@@ -201,7 +205,7 @@ public class KryptonExceptionCaptureDialog : KryptonForm
         }
         else if (showInnerException)
         {
-            ktxtException.Text = exception.InnerException.ToString();
+            ktxtException.Text = exception.InnerException?.ToString();
         }
 
         if (showFullDetails)
@@ -249,7 +253,7 @@ public class KryptonExceptionCaptureDialog : KryptonForm
     }
     #endregion
 
-    private void kbtnExportException_Click(object sender, EventArgs e)
+    private void kbtnExportException_Click(object? sender, EventArgs e)
     {
         if (string.IsNullOrWhiteSpace(ktxtException.Text))
         {
@@ -257,11 +261,12 @@ public class KryptonExceptionCaptureDialog : KryptonForm
         }
         else
         {
-            SaveFileDialog csfd = new();
+            SaveFileDialog csfd = new()
+            {
+                FileName = "Exception Capture",
 
-            csfd.FileName = "Exception Capture";
-
-            csfd.Filter = @"Text Files|*.txt";
+                Filter = @"Text Files|*.txt"
+            };
 
             if (csfd.ShowDialog() == DialogResult.OK)
             {
@@ -285,12 +290,12 @@ public class KryptonExceptionCaptureDialog : KryptonForm
         }
     }
 
-    private void kbtnCancel_Click(object sender, EventArgs e)
+    private void kbtnCancel_Click(object? sender, EventArgs e)
     {
         Close();
     }
 
-    private void kchkDarkMode_CheckedChanged(object sender, EventArgs e)
+    private void kchkDarkMode_CheckedChanged(object? sender, EventArgs e)
     {
         ToggleDarkMode(kchkDarkMode.Checked);
     }
