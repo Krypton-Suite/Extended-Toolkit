@@ -228,16 +228,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PC {
-            get {
-                object obj = ResourceManager.GetObject("PC", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Reset_16_x_16 {
             get {
                 object obj = ResourceManager.GetObject("Reset_16_x_16", resourceCulture);
