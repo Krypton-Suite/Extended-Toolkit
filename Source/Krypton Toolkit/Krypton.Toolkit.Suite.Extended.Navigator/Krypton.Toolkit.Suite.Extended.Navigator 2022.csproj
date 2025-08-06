@@ -75,9 +75,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.7.202-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.7.209-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.7.202-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.7.209-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -185,7 +185,8 @@
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Navigator\</OutputPath>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
-	<ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
 		<Reference Include="Microsoft.VisualBasic" />
 	</ItemGroup>
   
