@@ -83,7 +83,7 @@
 
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="95.25.4.111" />
+						<PackageReference Include="Krypton.Toolkit" Version="95.25.6.174" />
 					</ItemGroup>
 				</When>
 
@@ -106,5 +106,8 @@
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Security\Krypton.Toolkit.Suite.Extended.Security.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Security\</OutputPath>
 	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.8.230-alpha" />
+	</ItemGroup>
 
 </Project>

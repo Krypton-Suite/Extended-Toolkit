@@ -74,13 +74,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.7.209-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.8.230-alpha" />
 
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.7.209-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.8.230-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.7.209-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.8.230-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.7.209-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.8.230-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -193,7 +193,7 @@
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
-		<PackageReference Include="WindowsAPICodePack" Version="8.0.6" />
+		<PackageReference Include="WindowsAPICodePack" Version="8.0.9" />
 		<!--<PackageReference Include="NSec.Cryptography" Version="23.5.0-preview.1" />-->
 	</ItemGroup>
 

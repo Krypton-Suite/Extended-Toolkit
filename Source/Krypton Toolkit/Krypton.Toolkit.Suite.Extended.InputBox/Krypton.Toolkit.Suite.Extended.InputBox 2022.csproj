@@ -73,7 +73,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.7.209-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.8.230-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -124,6 +124,9 @@
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" Link="Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="WindowsAPICodePack" Version="8.0.9" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
