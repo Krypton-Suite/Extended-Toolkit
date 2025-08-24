@@ -90,6 +90,35 @@ PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 
 
 =======
 
+# Build System
+
+The Krypton Extended Toolkit includes a comprehensive build automation system similar to the [Krypton Standard Toolkit](https://github.com/Krypton-Suite/Standard-Toolkit).
+
+## Quick Start
+
+```cmd
+# Interactive build menu (recommended)
+quick-build.cmd
+
+# Direct build commands
+Scripts\build.cmd Release AnyCPU net8.0-windows
+Scripts\test-build.cmd
+```
+
+## Build Configurations
+
+- **Debug** - Development builds with symbols
+- **Release** - Production builds with NuGet packages
+- **Canary** - Beta testing builds
+- **Nightly** - Continuous integration builds
+
+## Documentation
+
+- **Complete Guide**: [Scripts/BUILD_SYSTEM.md](Scripts/BUILD_SYSTEM.md)
+- **Scripts Directory**: [Scripts/](Scripts/)
+
+=======
+
 # Modules
 
 ## Main Modules

@@ -1,0 +1,187 @@
+name: Build Krypton Extended Toolkit
+
+on:
+  push:
+    branches: [ main, develop, alpha, nightly ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+    inputs:
+      configuration:
+        description: 'Build configuration'
+        required: true
+        default: 'Release'
+        type: choice
+        options:
+        - Debug
+        - Release
+        - Canary
+        - Nightly
+      target_framework:
+        description: 'Target framework'
+        required: true
+        default: 'net8.0-windows'
+        type: choice
+        options:
+        - net48
+        - net481
+        - net8.0-windows
+        - net9.0-windows
+
+env:
+  SOLUTION_FILE: Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln
+  SOLUTION_FILE_DEBUG: Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln
+  SCRIPTS_DIR: Scripts
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    strategy:
+      matrix:
+        configuration: [Debug, Release, Canary, Nightly]
+        target_framework: [net48, net481, net8.0-windows, net9.0-windows]
+        exclude:
+          # Exclude Debug builds for Canary/Nightly configurations
+          - configuration: Canary
+            target_framework: net48
+          - configuration: Canary
+            target_framework: net481
+          - configuration: Nightly
+            target_framework: net48
+          - configuration: Nightly
+            target_framework: net481
+          # Exclude .NET 9 for older configurations
+          - configuration: Debug
+            target_framework: net9.0-windows
+          - configuration: Release
+            target_framework: net9.0-windows
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Set solution file
+      id: set-solution
+      run: |
+        if ("${{ matrix.configuration }}" -eq "Debug" -or "${{ matrix.configuration }}" -eq "Release") {
+          echo "SOLUTION_FILE=${{ env.SOLUTION_FILE_DEBUG }}" >> $GITHUB_ENV
+        } else {
+          echo "SOLUTION_FILE=${{ env.SOLUTION_FILE }}" >> $GITHUB_ENV
+        }
+
+    - name: Restore dependencies
+      run: |
+        msbuild "${{ env.SOLUTION_FILE }}" /t:Restore /p:Configuration=${{ matrix.configuration }} /p:Platform=AnyCPU /p:TargetFramework=${{ matrix.target_framework }}
+
+    - name: Build solution
+      run: |
+        msbuild "${{ env.SOLUTION_FILE }}" /t:Build /p:Configuration=${{ matrix.configuration }} /p:Platform=AnyCPU /p:TargetFramework=${{ matrix.target_framework }} /p:BuildProjectReferences=true /m
+
+    - name: Build NuGet packages
+      if: matrix.configuration != 'Debug'
+      run: |
+        msbuild "${{ env.SOLUTION_FILE }}" /t:Pack /p:Configuration=${{ matrix.configuration }} /p:Platform=AnyCPU /p:TargetFramework=${{ matrix.target_framework }} /p:NoBuild=false /p:IncludeSymbols=false
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-${{ matrix.configuration }}-${{ matrix.target_framework }}
+        path: |
+          Bin/${{ matrix.configuration }}/${{ matrix.target_framework }}/
+          Bin/NuGet Packages/${{ matrix.configuration }}/
+        retention-days: 30
+
+    - name: Upload NuGet packages
+      if: matrix.configuration != 'Debug'
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuget-${{ matrix.configuration }}-${{ matrix.target_framework }}
+        path: Bin/NuGet Packages/${{ matrix.configuration }}/
+        retention-days: 30
+
+  test:
+    runs-on: windows-latest
+    needs: build
+    
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+        target_framework: [net8.0-windows]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: build-${{ matrix.configuration }}-${{ matrix.target_framework }}
+
+    - name: Run tests
+      run: |
+        # Add test execution here when test projects are available
+        echo "Tests not yet implemented"
+        # Example: dotnet test --configuration ${{ matrix.configuration }} --framework ${{ matrix.target_framework }}
+
+  package:
+    runs-on: windows-latest
+    needs: [build, test]
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download all build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: artifacts/
+
+    - name: Create release package
+      run: |
+        # Create a consolidated release package
+        $date = Get-Date -Format "yyyy-MM-dd"
+        $version = "100.25.01.001"  # This should come from your versioning system
+        
+        # Create release directory
+        New-Item -ItemType Directory -Path "release" -Force
+        
+        # Copy all build outputs
+        Copy-Item "artifacts/**/Bin/**" "release/" -Recurse -Force
+        
+        # Create version info file
+        @"
+Version: $version
+Build Date: $date
+Configuration: Release
+Target Frameworks: net48, net481, net8.0-windows, net9.0-windows
+"@ | Out-File "release/version.txt" -Encoding UTF8
+        
+        # Create ZIP archive
+        Compress-Archive -Path "release/*" -DestinationPath "Krypton-Extended-Toolkit-$version.zip" -Force
+
+    - name: Upload release package
+      uses: actions/upload-artifact@v4
+      with:
+        name: release-package
+        path: Krypton-Extended-Toolkit-*.zip
+        retention-days: 90

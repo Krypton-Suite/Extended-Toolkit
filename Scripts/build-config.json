@@ -1,0 +1,121 @@
+{
+  "buildSystem": {
+    "name": "Krypton Extended Toolkit Build System",
+    "version": "1.0.0",
+    "description": "Build configuration for Krypton Extended Toolkit projects"
+  },
+  "configurations": {
+    "Debug": {
+      "description": "Debug build for development",
+      "solutionFile": "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln",
+      "buildNuGetPackages": false,
+      "optimizeCode": false,
+      "includeSymbols": true,
+      "defineConstants": ["DEBUG", "TRACE"],
+      "outputPath": "Bin/Debug"
+    },
+    "Release": {
+      "description": "Release build for production",
+      "solutionFile": "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln",
+      "buildNuGetPackages": true,
+      "optimizeCode": true,
+      "includeSymbols": false,
+      "defineConstants": ["RELEASE", "TRACE"],
+      "outputPath": "Bin/Release"
+    },
+    "Canary": {
+      "description": "Canary build for testing new features",
+      "solutionFile": "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln",
+      "buildNuGetPackages": true,
+      "optimizeCode": true,
+      "includeSymbols": false,
+      "defineConstants": ["CANARY", "TRACE"],
+      "outputPath": "Bin/Canary",
+      "packageSuffix": "-beta"
+    },
+    "Nightly": {
+      "description": "Nightly build for continuous integration",
+      "solutionFile": "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln",
+      "buildNuGetPackages": true,
+      "optimizeCode": true,
+      "includeSymbols": false,
+      "defineConstants": ["NIGHTLY", "TRACE"],
+      "outputPath": "Bin/Nightly",
+      "packageSuffix": "-alpha"
+    }
+  },
+  "targetFrameworks": {
+    "net48": {
+      "description": ".NET Framework 4.8",
+      "supportedConfigurations": ["Debug", "Release"],
+      "msbuildVersion": "16.0",
+      "outputPath": "Bin/{Configuration}/net48"
+    },
+    "net481": {
+      "description": ".NET Framework 4.8.1",
+      "supportedConfigurations": ["Debug", "Release"],
+      "msbuildVersion": "16.0",
+      "outputPath": "Bin/{Configuration}/net481"
+    },
+    "net8.0-windows": {
+      "description": ".NET 8.0 Windows",
+      "supportedConfigurations": ["Debug", "Release", "Canary", "Nightly"],
+      "msbuildVersion": "17.0",
+      "outputPath": "Bin/{Configuration}/net8.0-windows"
+    },
+    "net9.0-windows": {
+      "description": ".NET 9.0 Windows",
+      "supportedConfigurations": ["Canary", "Nightly"],
+      "msbuildVersion": "17.0",
+      "outputPath": "Bin/{Configuration}/net9.0-windows"
+    }
+  },
+  "buildSettings": {
+    "parallelBuilds": true,
+    "maxCpuCount": 0,
+    "verbosity": "minimal",
+    "warningsAsErrors": false,
+    "treatWarningsAsErrors": false,
+    "enableDefaultCompileItems": true,
+    "generateDocumentationFile": true,
+    "nullable": "enable",
+    "defaultPlatform": "Any CPU"
+  },
+  "nuGetSettings": {
+    "packageOutputPath": "Bin/NuGet Packages/{Configuration}",
+    "includeSymbols": false,
+    "includeSource": false,
+    "repositoryType": "git",
+    "repositoryUrl": "https://github.com/Krypton-Suite/Extended-Toolkit",
+    "publishRepositoryUrl": true,
+    "embedUntrackedSources": true,
+    "authors": "Peter William Wagner & Simon Coghlan & Thomas Bolon",
+    "tags": "Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .NET Toolkit",
+    "projectUrl": "https://github.com/Krypton-Suite/Extended-Toolkit",
+    "licenseFile": "Documents/License/License.md",
+    "requireLicenseAcceptance": true
+  },
+  "versioning": {
+    "majorVersion": 100,
+    "versionFormat": "{Major}.{Minor}.{Build}.{Revision}",
+    "autoIncrement": true,
+    "useGitVersion": false,
+    "assemblyVersion": "{Major}.{Minor}.{Build}.{Revision}",
+    "fileVersion": "{Major}.{Minor}.{Build}.{Revision}",
+    "packageVersion": "{Major}.{Minor}.{Build}.{Revision}{Suffix}"
+  },
+  "cleanup": {
+    "cleanBinDirectory": true,
+    "cleanObjDirectories": true,
+    "cleanNuGetPackages": false,
+    "cleanIntermediateOutputs": true
+  },
+  "artifacts": {
+    "includeAssemblies": true,
+    "includeDocumentation": true,
+    "includeSymbols": false,
+    "includeSource": false,
+    "createZipArchive": true,
+    "archiveName": "Krypton-Extended-Toolkit-{Version}.zip"
+  }
+}
