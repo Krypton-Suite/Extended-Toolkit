@@ -17,7 +17,7 @@ echo 8. Update All Packages
 echo 9. Restore Packages
 echo.
 
-set /p choice="Enter your choice (1-8): "
+set /p choice="Enter your choice (1 - 9): "
 
 if "%choice%"=="1" (
     echo Building Debug configuration...
