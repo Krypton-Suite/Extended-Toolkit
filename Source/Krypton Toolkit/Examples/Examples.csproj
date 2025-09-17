@@ -50,8 +50,8 @@
 	<Choose>
 		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.6.167-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.6.167-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.9.244-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.9.244-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
