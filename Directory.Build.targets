@@ -1,0 +1,69 @@
+<Project>
+	<!-- 
+		This file is automatically imported by all projects in the solution.
+		It configures NuGet package generation to include referenced binaries.
+	-->
+	
+	<PropertyGroup>
+		<!-- Include all referenced assemblies in NuGet packages -->
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		
+		<!-- Include build output in packages -->
+		<IncludeBuildOutput>true</IncludeBuildOutput>
+		
+		<!-- Include referenced project outputs in packages -->
+		<IncludeReferencedProjects>true</IncludeReferencedProjects>
+		
+		<!-- Generate symbols packages in the modern format -->
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		
+		<!-- Embed all dependencies in the package lib folder -->
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+	</PropertyGroup>
+
+	<!-- 
+		This target ensures that project references are included in the NuGet package.
+		It copies all referenced project outputs to the package lib folder.
+	-->
+	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+		<ItemGroup>
+			<!-- Include all project reference outputs -->
+			<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+		</ItemGroup>
+	</Target>
+
+	<!-- 
+		Include all runtime dependencies in the package.
+		This ensures that consumers get all necessary DLLs.
+	-->
+	<PropertyGroup>
+		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeReferencedProjectInPackage</TargetsForTfmSpecificContentInPackage>
+	</PropertyGroup>
+
+	<Target Name="IncludeReferencedProjectInPackage">
+		<ItemGroup>
+			<!-- Include all referenced assemblies in the lib folder -->
+			<TfmSpecificPackageFile Include="@(ReferenceCopyLocalPaths)" PackagePath="lib/$(TargetFramework)/" />
+		</ItemGroup>
+	</Target>
+
+	<!-- 
+		Package metadata that applies to all projects.
+		Individual projects can override these by setting them in their .csproj files.
+	-->
+	<PropertyGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
+		<!-- Authors, Copyright, etc. can be set here if not already defined in individual projects -->
+		<Authors Condition="'$(Authors)' == ''">Peter Wagner (A.K.A Wagnerp) and Simon Coghlan (A.K.A Smurf-IV), Phil Wright (A.K.A ComponentFactory), et al.</Authors>
+		<Company Condition="'$(Company)' == ''">Krypton Suite</Company>
+		<Copyright Condition="'$(Copyright)' == ''">Copyright © 2017 - $([System.DateTime]::Now.Year), Krypton Suite</Copyright>
+		<PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+		<RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://github.com/Krypton-Suite/Extended-Toolkit.git</RepositoryUrl>
+		<RepositoryType Condition="'$(RepositoryType)' == ''">git</RepositoryType>
+		<PackageLicenseExpression Condition="'$(PackageLicenseExpression)' == '' and '$(PackageLicenseFile)' == ''">BSD-3-Clause</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance Condition="'$(PackageRequireLicenseAcceptance)' == ''">true</PackageRequireLicenseAcceptance>
+		<PackageTags Condition="'$(PackageTags)' == ''">Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core Extended</PackageTags>
+	</PropertyGroup>
+
+</Project>
+

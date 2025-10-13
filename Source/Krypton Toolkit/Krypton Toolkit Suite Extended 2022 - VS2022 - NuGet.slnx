@@ -197,4 +197,8 @@
     <File Path=".editorconfig" />
     <File Path=".nuspec" />
   </Folder>
+  <Folder Name="/Ultimate/">
+    <Project Path="Krypton.Toolkit.Suite.Extended.Ultimate.Lite/Krypton.Toolkit.Suite.Extended.Ultimate.Lite 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Ultimate/Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj" />
+  </Folder>
 </Solution>

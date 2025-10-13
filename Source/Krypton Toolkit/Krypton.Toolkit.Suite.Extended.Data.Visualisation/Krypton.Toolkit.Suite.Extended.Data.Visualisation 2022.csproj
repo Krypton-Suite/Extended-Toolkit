@@ -73,19 +73,19 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.7.202-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.286-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.7.200-beta" />
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="95.25.4.111" />
+						<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
 					</ItemGroup>
 				</When>
 
@@ -107,8 +107,8 @@
 	  <PackageReference Include="NETStandard.Library" Version="2.0.3" />
 	  <!--<PackageReference Include="OpenTK" Version="4.8.2" />
 	  <PackageReference Include="OpenTK.GLControl" Version="3.3.3" />-->
-	  <PackageReference Include="SkiaSharp" Version="3.119.0" />
-	  <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="3.119.0" />
+	  <PackageReference Include="SkiaSharp" Version="3.119.1" />
+	  <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="3.119.1" />
 	  <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
 	</ItemGroup>
 

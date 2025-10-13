@@ -5,7 +5,8 @@
 
 =======
 
-## 2025-11-xx - Build 2511 - November 2025
+## 2025-11-11 - Build 2511 - November 2025
+* Implemented [#550](https://github.com/Krypton-Suite/Extended-Toolkit/issues/550), Use workflows to build the toolkit
 * Implemented [#540](https://github.com/Krypton-Suite/Extended-Toolkit/issues/540), Set the baseline support to .NET Framework 4.7.2
 	- **Note:** This is the minimum supported version of .NET Framework for the Extended Toolkit is now .NET Framework 4.7.2
 * Implemented [#536](https://github.com/Krypton-Suite/Extended-Toolkit/issues/536), Use `filescoped` namespaces

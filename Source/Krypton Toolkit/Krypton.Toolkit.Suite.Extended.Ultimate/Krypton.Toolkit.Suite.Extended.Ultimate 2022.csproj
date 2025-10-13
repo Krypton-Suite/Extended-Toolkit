@@ -1,0 +1,215 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
+		<OutputType>library</OutputType>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.Ultimate</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.Ultimate</AssemblyName>
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Configurations>Debug;Release;Nightly;Canary</Configurations>
+		<LangVersion>preview</LangVersion>
+		<Nullable>enable</Nullable>
+		<WarningLevel>6</WarningLevel>
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+	</PropertyGroup>
+
+	<!--Package Data-->
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Release'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
+		<Description>
+			The Ultimate all-in-one package for Krypton Toolkit Suite Extended. 
+			This package includes ALL Extended Toolkit assemblies and dependencies bundled together for maximum convenience.
+			
+			Supports .NET Framework 4.7.2 - 4.8.1, .NET 8 - 10.
+			All libraries are included targeting each specific framework version for performance purposes.
+			
+			This package includes:
+			- All Extended Toolkit controls and components
+			- All shared utilities and tools
+			- All dependencies required for full functionality
+			- Support for all target frameworks
+			
+			Perfect for applications that need the complete Extended Toolkit without managing individual packages.
+			
+			To view all of the extended toolkit package latest version information, please visit: 
+			https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
+		</Description>
+		<PackageIcon>Krypton Stable.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<!-- Krypton Toolkit Dependencies -->
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.10.286-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.286-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.10.286-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.10.286-alpha" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking.Canary" Version="100.25.9.265-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
+				<PackageReference Include="Krypton.Ribbon.Canary" Version="100.25.9.265-beta" />
+				<PackageReference Include="Krypton.Navigator.Canary" Version="100.25.9.265-beta" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Release'">
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Ribbon" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Navigator" Version="95.25.8.235" />
+			</ItemGroup>
+		</When>
+
+		<Otherwise>
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Ribbon" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Navigator" Version="95.25.8.235" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
+	<!-- All Extended Toolkit Project References -->
+	<ItemGroup>
+		<!-- Core & Foundation -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
+		
+		<!-- Utilities -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.CheckSum.Tools\Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj" />
+		
+		<!-- Drawing & Effects -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\Krypton.Toolkit.Suite.Extended.Drawing.Utilities 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects 2022.csproj" />
+		
+		<!-- Settings & Configuration -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Suite.Extended.Resources 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Language.Model\Krypton.Toolkit.Suite.Extended.Language.Model 2022.csproj" />
+		
+		<!-- UI Controls -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.ComboBox\Krypton.Toolkit.Suite.Extended.ComboBox 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Toggle.Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Panels\Krypton.Toolkit.Suite.Extended.Panels 2022.csproj" />
+		
+		<!-- Data Visualization -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Outlook.Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Data.Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Gages\Krypton.Toolkit.Suite.Extended.Gages 2022.csproj" />-->
+		
+		<!-- Dialogs & Notifications -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.TaskDialogs\Krypton.Toolkit.Suite.Extended.TaskDialogs 2022.csproj" />-->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.InputBox\Krypton.Toolkit.Suite.Extended.InputBox 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Toast\Krypton.Toolkit.Suite.Extended.Toast 2022.csproj" />-->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.ToastNotification\Krypton.Toolkit.Suite.Extended.ToastNotification 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Notifications\Krypton.Toolkit.Suite.Extended.Notifications 2022.csproj" />
+		
+		<!-- Navigation & Layout -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Navi.Suite\Krypton.Toolkit.Suite.Extended.Navi.Suite 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Ribbon\Krypton.Toolkit.Suite.Extended.Ribbon 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tool.Box\Krypton.Toolkit.Suite.Extended.Tool.Box 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender 2022.csproj" />
+		
+		<!-- Themes & Appearance -->
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Themes\Krypton.Toolkit.Suite.Extended.Themes 2022.csproj" />-->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Palette.Selectors\Krypton.Toolkit.Suite.Extended.Palette.Selectors 2022.csproj" />-->
+		
+		<!-- Forms & Windows -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Forms\Krypton.Toolkit.Suite.Extended.Forms 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj" />
+		
+		<!-- File Operations -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Suite.Extended.IO 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.File.Explorer\Krypton.Toolkit.Suite.Extended.File.Explorer 2022.csproj" />-->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.File.Copier\Krypton.Toolkit.Suite.Extended.File.Copier 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Compression\Krypton.Toolkit.Suite.Extended.Compression 2022.csproj" />
+		
+		<!-- Networking & Updates -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Networking\Krypton.Toolkit.Suite.Extended.Networking 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater 2022.csproj" />-->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Software.Updater.Core\Krypton.Toolkit.Suite.Extended.Software.Updater.Core 2022.csproj" />
+		
+		<!-- Error Reporting & Debugging -->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Error.Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Debug.Tools\Krypton.Toolkit.Suite.Extended.Debug.Tools 2022.csproj" />
+		
+		<!-- Additional Components -->
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Scintilla.NET\Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022.csproj" />-->
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.PDF\Krypton.Toolkit.Suite.Extended.PDF 2022.csproj" />-->
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Memory.Box\Krypton.Toolkit.Suite.Extended.Memory.Box 2022.csproj" />
+	</ItemGroup>
+
+	<!-- Package Assets -->
+	<ItemGroup>
+		<None Include="..\..\..\Assets\PNG\NuGet Package Icons\Krypton Stable.png" Pack="true" PackagePath="\" />
+		<None Include="..\..\..\README.md" Pack="true" PackagePath="\" />
+		<None Include="License\License.txt" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Ultimate\Krypton.Toolkit.Suite.Extended.Ultimate.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Ultimate\</OutputPath>
+	</PropertyGroup>
+
+	<!-- Note: UltimatePackageInfo.cs is automatically included by the SDK -->
+
+</Project>
+
