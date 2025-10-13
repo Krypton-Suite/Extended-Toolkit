@@ -26,11 +26,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Forms
+namespace Krypton.Toolkit.Suite.Extended.Forms;
+
+public enum FadeDirection
 {
-    public enum FadeDirection
-    {
-        In = 0,
-        Out = 1
-    }
+    In = 0,
+    Out = 1
 }

@@ -25,104 +25,103 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items;
+
+[ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.StatusStrip), ToolboxBitmap(typeof(ToolStripProgressBar)), Description(@"")]
+public class ToolStripProgressBarWithValueText : ToolStripProgressBar
 {
-    [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.StatusStrip), ToolboxBitmap(typeof(ToolStripProgressBar)), Description(@"")]
-    public class ToolStripProgressBarWithValueText : ToolStripProgressBar
+    #region Instance Fields
+
+    private bool _displayValue;
+
+    private Color _displayTextColour;
+
+    // ReSharper disable PrivateFieldCanBeConvertedToLocalVariable
+    private readonly PaletteBase _palette;
+    // ReSharper restore PrivateFieldCanBeConvertedToLocalVariable
+
+    #endregion
+
+    #region Public
+
+    public bool DisplayValue { get => _displayValue; set { _displayValue = value; Invalidate(); } }
+
+    public Color DisplayTextColour { get => _displayTextColour; set => _displayTextColour = value; }
+
+    #endregion
+
+    #region Identity
+
+    public ToolStripProgressBarWithValueText(PaletteBase palette)
+    {
+        _palette = palette;
+        _displayTextColour = _palette.ColorTable.StatusStripText;
+
+        Font = _palette.ColorTable.StatusStripFont;
+
+        Control.HandleCreated += Control_HandleCreated;
+    }
+
+    #endregion
+
+    #region Implementation
+
+    private void Control_HandleCreated(object sender, EventArgs e)
+    {
+        var s = new ProgressBarHandler((ProgressBar)Control, _displayValue, _displayTextColour);
+    }
+
+    #endregion
+
+    #region ProgressBarHandler
+
+    public class ProgressBarHandler : NativeWindow
     {
         #region Instance Fields
 
-        private bool _displayValue;
+        private readonly bool _useDisplayText;
 
-        private Color _displayTextColour;
+        private readonly Color _displayTextColour;
 
-        // ReSharper disable PrivateFieldCanBeConvertedToLocalVariable
-        private readonly PaletteBase _palette;
-        // ReSharper restore PrivateFieldCanBeConvertedToLocalVariable
-
-        #endregion
-
-        #region Public
-
-        public bool DisplayValue { get => _displayValue; set { _displayValue = value; Invalidate(); } }
-
-        public Color DisplayTextColour { get => _displayTextColour; set => _displayTextColour = value; }
+        private readonly ProgressBar _progressBar;
 
         #endregion
 
         #region Identity
 
-        public ToolStripProgressBarWithValueText(PaletteBase palette)
+        public ProgressBarHandler(ProgressBar progressBar, bool useDisplayText, Color displayTextColour)
         {
-            _palette = palette;
-            _displayTextColour = _palette.ColorTable.StatusStripText;
+            _progressBar = progressBar;
 
-            Font = _palette.ColorTable.StatusStripFont;
+            _useDisplayText = useDisplayText;
 
-            Control.HandleCreated += Control_HandleCreated;
+            _displayTextColour = displayTextColour;
+
+            AssignHandle(_progressBar.Handle);
         }
 
         #endregion
 
-        #region Implementation
+        #region Protected
 
-        private void Control_HandleCreated(object sender, EventArgs e)
+        protected override void WndProc(ref Message m)
         {
-            var s = new ProgressBarHandler((ProgressBar)Control, _displayValue, _displayTextColour);
-        }
+            base.WndProc(ref m);
 
-        #endregion
-
-        #region ProgressBarHandler
-
-        public class ProgressBarHandler : NativeWindow
-        {
-            #region Instance Fields
-
-            private readonly bool _useDisplayText;
-
-            private readonly Color _displayTextColour;
-
-            private readonly ProgressBar _progressBar;
-
-            #endregion
-
-            #region Identity
-
-            public ProgressBarHandler(ProgressBar progressBar, bool useDisplayText, Color displayTextColour)
+            if (_useDisplayText)
             {
-                _progressBar = progressBar;
-
-                _useDisplayText = useDisplayText;
-
-                _displayTextColour = displayTextColour;
-
-                AssignHandle(_progressBar.Handle);
-            }
-
-            #endregion
-
-            #region Protected
-
-            protected override void WndProc(ref Message m)
-            {
-                base.WndProc(ref m);
-
-                if (_useDisplayText)
+                if (m.Msg == 0xF)
                 {
-                    if (m.Msg == 0xF)
+                    using (var g = _progressBar.CreateGraphics())
                     {
-                        using (var g = _progressBar.CreateGraphics())
-                        {
-                            TextRenderer.DrawText(g, $"{_progressBar.Value}", _progressBar.Font, _progressBar.ClientRectangle, _displayTextColour);
-                        }
+                        TextRenderer.DrawText(g, $"{_progressBar.Value}", _progressBar.Font, _progressBar.ClientRectangle, _displayTextColour);
                     }
                 }
             }
-
-            #endregion
         }
 
         #endregion
     }
+
+    #endregion
 }

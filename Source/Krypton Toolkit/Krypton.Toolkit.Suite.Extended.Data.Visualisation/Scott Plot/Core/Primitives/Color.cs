@@ -1,266 +1,265 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public readonly struct Color
 {
-    public readonly struct Color
+    public readonly byte Red;
+    public readonly byte Green;
+    public readonly byte Blue;
+    public readonly byte Alpha;
+
+    // TODO: benchmark if referencing these is slower
+    public byte R => Red;
+    public byte G => Green;
+    public byte B => Blue;
+    public byte A => Alpha;
+
+    public uint Argb =>
+        (uint)Alpha << 24 |
+        (uint)Red << 16 |
+        (uint)Green << 8 |
+        (uint)Blue << 0;
+
+    public Color(byte red, byte green, byte blue, byte alpha = 255)
     {
-        public readonly byte Red;
-        public readonly byte Green;
-        public readonly byte Blue;
-        public readonly byte Alpha;
+        Red = red;
+        Green = green;
+        Blue = blue;
+        Alpha = alpha;
+    }
 
-        // TODO: benchmark if referencing these is slower
-        public byte R => Red;
-        public byte G => Green;
-        public byte B => Blue;
-        public byte A => Alpha;
+    public Color(float red, float green, float blue, float alpha = 1)
+    {
+        Red = (byte)(red * 255);
+        Green = (byte)(green * 255);
+        Blue = (byte)(blue * 255);
+        Alpha = (byte)(alpha * 255);
+    }
 
-        public uint Argb =>
-            (uint)Alpha << 24 |
-            (uint)Red << 16 |
-            (uint)Green << 8 |
-            (uint)Blue << 0;
+    public static bool operator ==(Color a, Color b)
+    {
+        return a.Argb == b.Argb;
+    }
 
-        public Color(byte red, byte green, byte blue, byte alpha = 255)
+    public static bool operator !=(Color a, Color b)
+    {
+        return a.Argb != b.Argb;
+    }
+
+    public override int GetHashCode()
+    {
+        return (int)Argb;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is null)
         {
-            Red = red;
-            Green = green;
-            Blue = blue;
-            Alpha = alpha;
+            return false;
         }
 
-        public Color(float red, float green, float blue, float alpha = 1)
+        if (obj is not Color)
         {
-            Red = (byte)(red * 255);
-            Green = (byte)(green * 255);
-            Blue = (byte)(blue * 255);
-            Alpha = (byte)(alpha * 255);
+            return false;
         }
 
-        public static bool operator ==(Color a, Color b)
+        return ((Color)obj).Argb == Argb;
+    }
+
+    public readonly Color WithRed(byte red) => new(red, Green, Blue, Alpha);
+    public readonly Color WithGreen(byte green) => new(Red, green, Blue, Alpha);
+    public readonly Color WithBlue(byte blue) => new(Red, Green, blue, Alpha);
+
+    public readonly Color WithAlpha(byte alpha)
+    {
+        // If requesting a semitransparent black, make it slightly non-black
+        // to prevent SVG export from rendering the color as opaque.
+        // https://github.com/ScottPlot/ScottPlot/issues/3063
+        if (Red == 0 && Green == 0 && Blue == 0 && alpha < 255)
         {
-            return a.Argb == b.Argb;
+            return new Color(1, 1, 1, alpha);
         }
 
-        public static bool operator !=(Color a, Color b)
+        return new(Red, Green, Blue, alpha);
+    }
+
+    public readonly Color WithAlpha(double alpha) => WithAlpha((byte)(alpha * 255));
+
+    public readonly Color WithOpacity(double opacity = .5) => WithAlpha((byte)(opacity * 255));
+
+    public static Color Gray(byte value) => new(value, value, value);
+
+    public static Color FromArgb(uint argb)
+    {
+        byte alpha = (byte)(argb >> 24);
+        byte red = (byte)(argb >> 16);
+        byte green = (byte)(argb >> 8);
+        byte blue = (byte)(argb >> 0);
+        return new Color(red, green, blue, alpha);
+    }
+
+    public static Color FromHex(string hex)
+    {
+        if (hex[0] == '#')
         {
-            return a.Argb != b.Argb;
+            return FromHex(hex.Substring(1));
         }
 
-        public override int GetHashCode()
+        if (hex.Length == 6)
         {
-            return (int)Argb;
+            hex += "FF";
         }
 
-        public override bool Equals(object? obj)
+        if (!uint.TryParse(hex, NumberStyles.HexNumber, null, out uint rgba))
         {
-            if (obj is null)
+            return new Color(0, 0, 0);
+        }
+
+        uint argb = ((rgba & 0xFF) << 24) | (rgba >> 8);
+        return FromArgb(argb);
+    }
+
+    public static Color[] FromHex(string[] hex)
+    {
+        return hex.Select(x => FromHex(x)).ToArray();
+    }
+
+    public static Color FromSkColor(SKColor skcolor)
+    {
+        return new Color(skcolor.Red, skcolor.Green, skcolor.Blue, skcolor.Alpha);
+    }
+
+    public string ToStringRgb()
+    {
+        return "#" + Red.ToString("X2") + Green.ToString("X2") + Blue.ToString("X2");
+    }
+
+    public string ToStringRgba()
+    {
+        return "#" + Red.ToString("X2") + Green.ToString("X2") + Blue.ToString("X2") + Alpha.ToString("X2");
+    }
+
+    public SKColor ToSkColor()
+    {
+        return new SKColor(Red, Green, Blue, Alpha);
+    }
+
+    public (float h, float s, float l) ToHsl()
+    {
+        // adapted from Microsoft.Maui.Graphics/Color.cs (MIT license)
+
+        float v = Math.Max(Red, Green);
+        v = Math.Max(v, Blue);
+
+        float m = Math.Min(Red, Green);
+        m = Math.Min(m, Blue);
+
+        float h, s, l;
+        l = (m + v) / 2.0f;
+        if (l <= 0.0)
+        {
+            return (0, 0, 0);
+        }
+
+        float vm = v - m;
+        s = vm;
+        if (s <= 0.0)
+        {
+            return (0, 0, l);
+        }
+
+        s /= l <= 0.5f ? v + m : 2.0f - v - m;
+
+        float r2 = (v - Red) / vm;
+        float g2 = (v - Green) / vm;
+        float b2 = (v - Blue) / vm;
+
+        if (Red == v)
+        {
+            h = Green == m ? 5.0f + b2 : 1.0f - g2;
+        }
+        else if (Green == v)
+        {
+            h = Blue == m ? 1.0f + r2 : 3.0f - b2;
+        }
+        else
+        {
+            h = Red == m ? 3.0f + g2 : 5.0f - r2;
+        }
+
+        h /= 6.0f;
+
+        return (h, s, l);
+    }
+
+    public static Color FromHsl(float hue, float saturation, float luminosity)
+    {
+        // adapted from Microsoft.Maui.Graphics/Color.cs (MIT license)
+
+        if (luminosity == 0)
+        {
+            return new Color(0, 0, 0);
+        }
+
+        if (saturation == 0)
+        {
+            return new Color(luminosity, luminosity, luminosity);
+        }
+
+        float temp2 = luminosity <= 0.5f
+            ? luminosity * (1.0f + saturation)
+            : luminosity + saturation - luminosity * saturation;
+        float temp1 = 2.0f * luminosity - temp2;
+
+        var t3 = new[] { hue + 1.0f / 3.0f, hue, hue - 1.0f / 3.0f };
+        var clr = new float[] { 0, 0, 0 };
+        for (var i = 0; i < 3; i++)
+        {
+            if (t3[i] < 0)
             {
-                return false;
+                t3[i] += 1.0f;
             }
 
-            if (obj is not Color)
+            if (t3[i] > 1)
             {
-                return false;
+                t3[i] -= 1.0f;
             }
 
-            return ((Color)obj).Argb == Argb;
-        }
-
-        public readonly Color WithRed(byte red) => new(red, Green, Blue, Alpha);
-        public readonly Color WithGreen(byte green) => new(Red, green, Blue, Alpha);
-        public readonly Color WithBlue(byte blue) => new(Red, Green, blue, Alpha);
-
-        public readonly Color WithAlpha(byte alpha)
-        {
-            // If requesting a semitransparent black, make it slightly non-black
-            // to prevent SVG export from rendering the color as opaque.
-            // https://github.com/ScottPlot/ScottPlot/issues/3063
-            if (Red == 0 && Green == 0 && Blue == 0 && alpha < 255)
+            if (6.0 * t3[i] < 1.0)
             {
-                return new Color(1, 1, 1, alpha);
+                clr[i] = temp1 + (temp2 - temp1) * t3[i] * 6.0f;
             }
-
-            return new(Red, Green, Blue, alpha);
-        }
-
-        public readonly Color WithAlpha(double alpha) => WithAlpha((byte)(alpha * 255));
-
-        public readonly Color WithOpacity(double opacity = .5) => WithAlpha((byte)(opacity * 255));
-
-        public static Color Gray(byte value) => new(value, value, value);
-
-        public static Color FromArgb(uint argb)
-        {
-            byte alpha = (byte)(argb >> 24);
-            byte red = (byte)(argb >> 16);
-            byte green = (byte)(argb >> 8);
-            byte blue = (byte)(argb >> 0);
-            return new Color(red, green, blue, alpha);
-        }
-
-        public static Color FromHex(string hex)
-        {
-            if (hex[0] == '#')
+            else if (2.0 * t3[i] < 1.0)
             {
-                return FromHex(hex.Substring(1));
+                clr[i] = temp2;
             }
-
-            if (hex.Length == 6)
+            else if (3.0 * t3[i] < 2.0)
             {
-                hex += "FF";
-            }
-
-            if (!uint.TryParse(hex, NumberStyles.HexNumber, null, out uint rgba))
-            {
-                return new Color(0, 0, 0);
-            }
-
-            uint argb = ((rgba & 0xFF) << 24) | (rgba >> 8);
-            return FromArgb(argb);
-        }
-
-        public static Color[] FromHex(string[] hex)
-        {
-            return hex.Select(x => FromHex(x)).ToArray();
-        }
-
-        public static Color FromSkColor(SKColor skcolor)
-        {
-            return new Color(skcolor.Red, skcolor.Green, skcolor.Blue, skcolor.Alpha);
-        }
-
-        public string ToStringRgb()
-        {
-            return "#" + Red.ToString("X2") + Green.ToString("X2") + Blue.ToString("X2");
-        }
-
-        public string ToStringRgba()
-        {
-            return "#" + Red.ToString("X2") + Green.ToString("X2") + Blue.ToString("X2") + Alpha.ToString("X2");
-        }
-
-        public SKColor ToSkColor()
-        {
-            return new SKColor(Red, Green, Blue, Alpha);
-        }
-
-        public (float h, float s, float l) ToHsl()
-        {
-            // adapted from Microsoft.Maui.Graphics/Color.cs (MIT license)
-
-            float v = Math.Max(Red, Green);
-            v = Math.Max(v, Blue);
-
-            float m = Math.Min(Red, Green);
-            m = Math.Min(m, Blue);
-
-            float h, s, l;
-            l = (m + v) / 2.0f;
-            if (l <= 0.0)
-            {
-                return (0, 0, 0);
-            }
-
-            float vm = v - m;
-            s = vm;
-            if (s <= 0.0)
-            {
-                return (0, 0, l);
-            }
-
-            s /= l <= 0.5f ? v + m : 2.0f - v - m;
-
-            float r2 = (v - Red) / vm;
-            float g2 = (v - Green) / vm;
-            float b2 = (v - Blue) / vm;
-
-            if (Red == v)
-            {
-                h = Green == m ? 5.0f + b2 : 1.0f - g2;
-            }
-            else if (Green == v)
-            {
-                h = Blue == m ? 1.0f + r2 : 3.0f - b2;
+                clr[i] = temp1 + (temp2 - temp1) * (2.0f / 3.0f - t3[i]) * 6.0f;
             }
             else
             {
-                h = Red == m ? 3.0f + g2 : 5.0f - r2;
+                clr[i] = temp1;
             }
-
-            h /= 6.0f;
-
-            return (h, s, l);
         }
 
-        public static Color FromHsl(float hue, float saturation, float luminosity)
-        {
-            // adapted from Microsoft.Maui.Graphics/Color.cs (MIT license)
+        return new Color(clr[0], clr[1], clr[2]);
+    }
 
-            if (luminosity == 0)
-            {
-                return new Color(0, 0, 0);
-            }
+    public Color WithLightness(float lightness = .5f)
+    {
+        (float h, float s, float l) = ToHsl();
+        return FromHsl(h, s, lightness);
+    }
 
-            if (saturation == 0)
-            {
-                return new Color(luminosity, luminosity, luminosity);
-            }
+    public Color Lighten(float fraction = .5f)
+    {
+        (float h, float s, float l) = ToHsl();
+        return FromHsl(h, s, l + (1 - l) * fraction);
+    }
 
-            float temp2 = luminosity <= 0.5f
-                ? luminosity * (1.0f + saturation)
-                : luminosity + saturation - luminosity * saturation;
-            float temp1 = 2.0f * luminosity - temp2;
-
-            var t3 = new[] { hue + 1.0f / 3.0f, hue, hue - 1.0f / 3.0f };
-            var clr = new float[] { 0, 0, 0 };
-            for (var i = 0; i < 3; i++)
-            {
-                if (t3[i] < 0)
-                {
-                    t3[i] += 1.0f;
-                }
-
-                if (t3[i] > 1)
-                {
-                    t3[i] -= 1.0f;
-                }
-
-                if (6.0 * t3[i] < 1.0)
-                {
-                    clr[i] = temp1 + (temp2 - temp1) * t3[i] * 6.0f;
-                }
-                else if (2.0 * t3[i] < 1.0)
-                {
-                    clr[i] = temp2;
-                }
-                else if (3.0 * t3[i] < 2.0)
-                {
-                    clr[i] = temp1 + (temp2 - temp1) * (2.0f / 3.0f - t3[i]) * 6.0f;
-                }
-                else
-                {
-                    clr[i] = temp1;
-                }
-            }
-
-            return new Color(clr[0], clr[1], clr[2]);
-        }
-
-        public Color WithLightness(float lightness = .5f)
-        {
-            (float h, float s, float l) = ToHsl();
-            return FromHsl(h, s, lightness);
-        }
-
-        public Color Lighten(float fraction = .5f)
-        {
-            (float h, float s, float l) = ToHsl();
-            return FromHsl(h, s, l + (1 - l) * fraction);
-        }
-
-        public Color Darken(float fraction = .5f)
-        {
-            (float h, float s, float l) = ToHsl();
-            return FromHsl(h, s, l * fraction);
-        }
+    public Color Darken(float fraction = .5f)
+    {
+        (float h, float s, float l) = ToHsl();
+        return FromHsl(h, s, l * fraction);
     }
 }

@@ -26,15 +26,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+public enum SynthesizerState
 {
-	public enum SynthesizerState
-	{
-		/// <summary />
-		Ready,
-		/// <summary />
-		Speaking,
-		/// <summary />
-		Paused
-	}
+    /// <summary />
+    Ready,
+    /// <summary />
+    Speaking,
+    /// <summary />
+    Paused
 }

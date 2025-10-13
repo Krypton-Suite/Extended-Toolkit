@@ -25,47 +25,46 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
+
+///<summary>
+/// Map SysInfoResults to human-readable format
+///</summary>
+internal class SysInfoResultMapper : ISysInfoResultMapper
 {
-    ///<summary>
-    /// Map SysInfoResults to human-readable format
-    ///</summary>
-    internal class SysInfoResultMapper : ISysInfoResultMapper
+    private readonly IEnumerable<SysInfoResult> _sysInfoResults;
+
+    protected SysInfoResultMapper()
+    { }
+
+    public SysInfoResultMapper(IEnumerable<SysInfoResult> sysInfoResults)
     {
-        private readonly IEnumerable<SysInfoResult> _sysInfoResults;
+        _sysInfoResults = sysInfoResults;
+    }
 
-        protected SysInfoResultMapper()
-        { }
+    /// <summary>
+    /// create a string representation of a list of SysInfoResults, customised specifically (eg 2-level deep)
+    /// </summary>
+    public string SysInfoString()
+    {
+        var sb = new StringBuilder();
 
-        public SysInfoResultMapper(IEnumerable<SysInfoResult> sysInfoResults)
+        foreach (var result in _sysInfoResults)
         {
-            _sysInfoResults = sysInfoResults;
-        }
+            sb.AppendLine(result.Name);
 
-        /// <summary>
-        /// create a string representation of a list of SysInfoResults, customised specifically (eg 2-level deep)
-        /// </summary>
-        public string SysInfoString()
-        {
-            var sb = new StringBuilder();
-
-            foreach (var result in _sysInfoResults)
+            foreach (var nodeValueParent in result.Nodes)
             {
-                sb.AppendLine(result.Name);
+                sb.AppendLine($"-{nodeValueParent}");
 
-                foreach (var nodeValueParent in result.Nodes)
+                foreach (var nodeValue in result.ChildResults.SelectMany(childResult => childResult?.Nodes))
                 {
-                    sb.AppendLine($"-{nodeValueParent}");
-
-                    foreach (var nodeValue in result.ChildResults.SelectMany(childResult => childResult?.Nodes))
-                    {
-                        sb.AppendLine($"--{nodeValue}");        // the max no. of levels is 2, ie '--' is as deep as we go
-                    }
+                    sb.AppendLine($"--{nodeValue}");        // the max no. of levels is 2, ie '--' is as deep as we go
                 }
-                sb.AppendLine();
             }
-
-            return sb.ToString();
+            sb.AppendLine();
         }
+
+        return sb.ToString();
     }
 }

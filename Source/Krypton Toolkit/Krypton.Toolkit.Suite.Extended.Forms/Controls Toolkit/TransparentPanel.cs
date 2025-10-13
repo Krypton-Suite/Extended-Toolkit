@@ -25,35 +25,34 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Forms
+namespace Krypton.Toolkit.Suite.Extended.Forms;
+
+[ToolboxItem(false)]
+[EditorBrowsable(EditorBrowsableState.Never)]
+public class TransparentPanel : KryptonPanel
 {
-    [ToolboxItem(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public class TransparentPanel : KryptonPanel
+    #region Identity
+
+    public TransparentPanel()
     {
-        #region Identity
-
-        public TransparentPanel()
-        {
-            SetStyle(ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
-        }
-
-        #endregion
-
-        #region Protected
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-
-                cp.ExStyle |= 0x00000020; // WS_EX_TRANSPARENT
-
-                return cp;
-            }
-        }
-
-        #endregion
+        SetStyle(ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
     }
+
+    #endregion
+
+    #region Protected
+
+    protected override CreateParams CreateParams
+    {
+        get
+        {
+            CreateParams cp = base.CreateParams;
+
+            cp.ExStyle |= 0x00000020; // WS_EX_TRANSPARENT
+
+            return cp;
+        }
+    }
+
+    #endregion
 }

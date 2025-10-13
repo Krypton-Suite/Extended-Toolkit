@@ -25,10 +25,9 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+public class SelectedColourEventArgs : EventArgs
 {
-    public class SelectedColourEventArgs : EventArgs
-    {
-        public Color SelectedColour { get; set; }
-    }
+    public Color SelectedColour { get; set; }
 }

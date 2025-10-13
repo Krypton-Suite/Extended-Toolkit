@@ -25,17 +25,16 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items;
+
+[ToolboxBitmap(typeof(ToolStrip)), Description("A standard tool strip equipped with the Krypton theme."), ToolboxItem(true)]
+public class KryptonToolStrip : ToolStrip
 {
-    [ToolboxBitmap(typeof(ToolStrip)), Description("A standard tool strip equipped with the Krypton theme."), ToolboxItem(true)]
-    public class KryptonToolStrip : ToolStrip
+    #region Constructor
+    public KryptonToolStrip()
     {
-        #region Constructor
-        public KryptonToolStrip()
-        {
-            // Use Krypton
-            RenderMode = ToolStripRenderMode.ManagerRenderMode;
-        }
-        #endregion
+        // Use Krypton
+        RenderMode = ToolStripRenderMode.ManagerRenderMode;
     }
+    #endregion
 }

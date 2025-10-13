@@ -16,55 +16,53 @@
 //--------------------------------------------------------------------------------
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+
+/// <summary>
+/// Parameters for Bar formatting
+/// </summary>
+/// <seealso cref="IFormatParams" />
+public class BarParams : IFormatParams
 {
     /// <summary>
-    /// Parameters for Bar formatting
+    /// The bar color
     /// </summary>
-    /// <seealso cref="IFormatParams" />
-    public class BarParams : IFormatParams
+    public Color BarColour;
+    /// <summary>
+    /// The gradient fill
+    /// </summary>
+    public bool GradientFill;
+    /// <summary>
+    /// The proportion value
+    /// </summary>
+    public double ProportionValue;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BarParams"/> class.
+    /// </summary>
+    /// <param name="barColour">Color of the bar.</param>
+    /// <param name="gradientFill">if set to <c>true</c> [gradient fill].</param>
+    public BarParams(Color barColour, bool gradientFill)
     {
-        /// <summary>
-        /// The bar color
-        /// </summary>
-        public Color BarColour;
-        /// <summary>
-        /// The gradient fill
-        /// </summary>
-        public bool GradientFill;
-        /// <summary>
-        /// The proportion value
-        /// </summary>
-        public double ProportionValue;
+        BarColour = barColour;
+        GradientFill = gradientFill;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BarParams"/> class.
-        /// </summary>
-        /// <param name="barColour">Color of the bar.</param>
-        /// <param name="gradientFill">if set to <c>true</c> [gradient fill].</param>
-        public BarParams(Color barColour, bool gradientFill)
-        {
-            BarColour = barColour;
-            GradientFill = gradientFill;
-        }
+    /// <summary>
+    /// Crée un objet qui est une copie de l'instance actuelle.
+    /// </summary>
+    /// <returns>
+    /// Nouvel objet qui est une copie de cette instance.
+    /// </returns>
+    public object Clone() => MemberwiseClone();
 
-        /// <summary>
-        /// Crée un objet qui est une copie de l'instance actuelle.
-        /// </summary>
-        /// <returns>
-        /// Nouvel objet qui est une copie de cette instance.
-        /// </returns>
-        public object Clone() => MemberwiseClone();
-
-        /// <summary>
-        /// Persists the parameters.
-        /// </summary>
-        /// <param name="writer">The XML writer.</param>
-        void IFormatParams.Persist(XmlWriter writer)
-        {
-            writer.WriteElementString("BarColour", BarColour.ToArgb().ToString());
-            writer.WriteElementString("GradientFill", CommonHelper.BoolToString(GradientFill));
-        }
+    /// <summary>
+    /// Persists the parameters.
+    /// </summary>
+    /// <param name="writer">The XML writer.</param>
+    void IFormatParams.Persist(XmlWriter writer)
+    {
+        writer.WriteElementString("BarColour", BarColour.ToArgb().ToString());
+        writer.WriteElementString("GradientFill", CommonHelper.BoolToString(GradientFill));
     }
 }
-

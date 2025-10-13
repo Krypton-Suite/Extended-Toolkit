@@ -25,11 +25,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.TreeGridView
+namespace Krypton.Toolkit.Suite.Extended.TreeGridView;
+
+public class ExpandingEventArgs : CancelEventArgs
 {
-    public class ExpandingEventArgs : CancelEventArgs
-    {
-        public ExpandingEventArgs(KryptonTreeGridNodeRow node) => Node = node;
-        public KryptonTreeGridNodeRow Node { get; }
-    }
+    public ExpandingEventArgs(KryptonTreeGridNodeRow node) => Node = node;
+    public KryptonTreeGridNodeRow Node { get; }
 }

@@ -25,57 +25,55 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+public delegate void NaviBandEventHandler(object sender, NaviBandEventArgs e);
+
+/// <summary>
+/// Contains additional event info
+/// </summary>
+public class NaviBandEventArgs : EventArgs
 {
-    public delegate void NaviBandEventHandler(object sender, NaviBandEventArgs e);
+    #region Fields
+
+    private NaviBand _newActiveBand;
+    private bool _cancel = false;
+
+    #endregion
+
+    #region Constructor
 
     /// <summary>
-    /// Contains additional event info
+    /// Initializes a new instance of the NaviBandEventArgs class
     /// </summary>
-    public class NaviBandEventArgs : EventArgs
+    /// <param name="newActiveBand">The new active band</param>
+    public NaviBandEventArgs(NaviBand newActiveBand)
+        : base()
     {
-        #region Fields
-
-        private NaviBand _newActiveBand;
-        private bool _cancel = false;
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new instance of the NaviBandEventArgs class
-        /// </summary>
-        /// <param name="newActiveBand">The new active band</param>
-        public NaviBandEventArgs(NaviBand newActiveBand)
-           : base()
-        {
-            _newActiveBand = newActiveBand;
-        }
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Gets or sets the new active band
-        /// </summary>
-        public NaviBand NewActiveBand
-        {
-            get => _newActiveBand;
-            set => _newActiveBand = value;
-        }
-
-        /// <summary>
-        /// Gets or sets whether the event is canceled
-        /// </summary>
-        public bool Canceled
-        {
-            get => _cancel;
-            set => _cancel = value;
-        }
-
-        #endregion
+        _newActiveBand = newActiveBand;
     }
 
+    #endregion
+
+    #region Properties
+
+    /// <summary>
+    /// Gets or sets the new active band
+    /// </summary>
+    public NaviBand NewActiveBand
+    {
+        get => _newActiveBand;
+        set => _newActiveBand = value;
+    }
+
+    /// <summary>
+    /// Gets or sets whether the event is canceled
+    /// </summary>
+    public bool Canceled
+    {
+        get => _cancel;
+        set => _cancel = value;
+    }
+
+    #endregion
 }

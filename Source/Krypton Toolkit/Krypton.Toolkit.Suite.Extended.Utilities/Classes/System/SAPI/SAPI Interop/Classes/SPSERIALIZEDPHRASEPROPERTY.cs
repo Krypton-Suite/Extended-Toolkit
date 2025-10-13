@@ -26,31 +26,30 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+
+[StructLayout(LayoutKind.Sequential)]
+internal class SPSERIALIZEDPHRASEPROPERTY
 {
-    [StructLayout(LayoutKind.Sequential)]
-    internal class SPSERIALIZEDPHRASEPROPERTY
-    {
-        internal uint pszNameOffset;
+    internal uint pszNameOffset;
 
-        internal uint ulId;
+    internal uint ulId;
 
-        internal uint pszValueOffset;
+    internal uint pszValueOffset;
 
-        internal ushort vValue;
+    internal ushort vValue;
 
-        internal ulong SpVariantSubset;
+    internal ulong SpVariantSubset;
 
-        internal uint ulFirstElement;
+    internal uint ulFirstElement;
 
-        internal uint ulCountOfElements;
+    internal uint ulCountOfElements;
 
-        internal uint pNextSiblingOffset;
+    internal uint pNextSiblingOffset;
 
-        internal uint pFirstChildOffset;
+    internal uint pFirstChildOffset;
 
-        internal float SREngineConfidence;
+    internal float SREngineConfidence;
 
-        internal sbyte Confidence;
-    }
+    internal sbyte Confidence;
 }

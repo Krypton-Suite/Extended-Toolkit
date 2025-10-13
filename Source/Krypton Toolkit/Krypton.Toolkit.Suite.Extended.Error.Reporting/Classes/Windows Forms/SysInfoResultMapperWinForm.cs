@@ -25,31 +25,30 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
+
+///<summary>
+/// WinForms extension 
+///</summary>
+// ReSharper disable once ClassNeverInstantiated.Global
+internal class SysInfoResultMapperWinForm : SysInfoResultMapper
 {
-    ///<summary>
-    /// WinForms extension 
-    ///</summary>
-    // ReSharper disable once ClassNeverInstantiated.Global
-    internal class SysInfoResultMapperWinForm : SysInfoResultMapper
+    /// <summary>
+    /// Add a tree node to an existing parentNode, by passing the SysInfoResult
+    /// </summary>
+    public static void AddTreeViewNode(TreeNode parentNode, SysInfoResult result)
     {
-        /// <summary>
-        /// Add a tree node to an existing parentNode, by passing the SysInfoResult
-        /// </summary>
-        public static void AddTreeViewNode(TreeNode parentNode, SysInfoResult result)
+        var nodeRoot = new TreeNode(result.Name);
+
+        foreach (var nodeLeaf in result.Nodes.Select(nodeValueParent => new TreeNode(nodeValueParent)))
         {
-            var nodeRoot = new TreeNode(result.Name);
+            nodeRoot.Nodes.Add(nodeLeaf);
 
-            foreach (var nodeLeaf in result.Nodes.Select(nodeValueParent => new TreeNode(nodeValueParent)))
+            foreach (var nodeValue in result.ChildResults.SelectMany(childResult => childResult?.Nodes))
             {
-                nodeRoot.Nodes.Add(nodeLeaf);
-
-                foreach (var nodeValue in result.ChildResults.SelectMany(childResult => childResult?.Nodes))
-                {
-                    nodeLeaf.Nodes.Add(new TreeNode(nodeValue));
-                }
+                nodeLeaf.Nodes.Add(new TreeNode(nodeValue));
             }
-            parentNode.Nodes.Add(nodeRoot);
         }
+        parentNode.Nodes.Add(nodeRoot);
     }
 }

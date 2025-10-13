@@ -1,34 +1,33 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public interface IPlotInteraction
 {
-    public interface IPlotInteraction
-    {
-        IPlotControl PlotControl { get; }
+    IPlotControl PlotControl { get; }
 
-        /// <summary>
-        /// Disable all mouse interactivity
-        /// </summary>
-        void Disable();
+    /// <summary>
+    /// Disable all mouse interactivity
+    /// </summary>
+    void Disable();
 
-        /// <summary>
-        /// Enable mouse interactivity using the default mouse actions
-        /// </summary>
-        void Enable();
+    /// <summary>
+    /// Enable mouse interactivity using the default mouse actions
+    /// </summary>
+    void Enable();
 
-        /// <summary>
-        /// Enable mouse interactivity using custom mouse actions
-        /// </summary>
-        void Enable(PlotActions customActions);
+    /// <summary>
+    /// Enable mouse interactivity using custom mouse actions
+    /// </summary>
+    void Enable(PlotActions customActions);
 
-        void OnMouseMove(Pixel newPosition);
+    void OnMouseMove(Pixel newPosition);
 
-        void KeyUp(Key key);
-        void KeyDown(Key key);
+    void KeyUp(Key key);
+    void KeyDown(Key key);
 
-        void MouseDown(Pixel position, MouseButton button);
+    void MouseDown(Pixel position, MouseButton button);
 
-        void MouseUp(Pixel position, MouseButton button);
-        void DoubleClick();
+    void MouseUp(Pixel position, MouseButton button);
+    void DoubleClick();
 
-        void MouseWheelVertical(Pixel pixel, float delta);
-    }
+    void MouseWheelVertical(Pixel pixel, float delta);
 }

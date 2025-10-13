@@ -26,192 +26,191 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+
+internal class GrammarElement : ParseElement, IGrammar, IElement
 {
-    internal class GrammarElement : ParseElement, IGrammar, IElement
+    private Backend _backend;
+
+    private List<Rule> _undefRules = [];
+
+    private List<Rule> _rules = [];
+
+    private CustomGrammar _cg;
+
+    private string _sRoot;
+
+    private bool _hasRoot;
+
+    string IGrammar.Root
     {
-        private Backend _backend;
+        get => _sRoot;
+        set => _sRoot = value;
+    }
 
-        private List<Rule> _undefRules = [];
-
-        private List<Rule> _rules = [];
-
-        private CustomGrammar _cg;
-
-        private string _sRoot;
-
-        private bool _hasRoot;
-
-        string IGrammar.Root
+    Uri IGrammar.XmlBase
+    {
+        set
         {
-            get => _sRoot;
-            set => _sRoot = value;
-        }
-
-        Uri IGrammar.XmlBase
-        {
-            set
+            if (value != null)
             {
-                if (value != null)
-                {
-                    _backend.SetBasePath(value.ToString());
-                }
+                _backend.SetBasePath(value.ToString());
             }
         }
+    }
 
-        CultureInfo IGrammar.Culture
+    CultureInfo IGrammar.Culture
+    {
+        set
         {
-            set
+            Helpers.ThrowIfNull(value, "value");
+            _backend.LangId = value.LCID;
+        }
+    }
+
+    GrammarType IGrammar.Mode
+    {
+        set => _backend.GrammarMode = value;
+    }
+
+    AlphabetType IGrammar.PhoneticAlphabet
+    {
+        set => _backend.Alphabet = value;
+    }
+
+    SrgsTagFormat IGrammar.TagFormat
+    {
+        get => SrgsDocument.GrammarOptions2TagFormat(_backend.GrammarOptions);
+        set => _backend.GrammarOptions = SrgsDocument.TagFormat2GrammarOptions(value);
+    }
+
+    Collection<string> IGrammar.GlobalTags
+    {
+        get => _backend.GlobalTags;
+        set => _backend.GlobalTags = value;
+    }
+
+    internal List<Rule> UndefRules => _undefRules;
+
+    internal Backend Backend => _backend;
+
+    string IGrammar.Language
+    {
+        get => _cg._language;
+        set => _cg._language = value;
+    }
+
+    string IGrammar.Namespace
+    {
+        get => _cg._namespace;
+        set => _cg._namespace = value;
+    }
+
+    Collection<string> IGrammar.CodeBehind
+    {
+        get => _cg._codebehind;
+        set => _cg._codebehind = value;
+    }
+
+    bool IGrammar.Debug
+    {
+        set => _cg._fDebugScript = value;
+    }
+
+    Collection<string> IGrammar.ImportNamespaces
+    {
+        get => _cg._importNamespaces;
+        set => _cg._importNamespaces = value;
+    }
+
+    Collection<string> IGrammar.AssemblyReferences
+    {
+        get => _cg._assemblyReferences;
+        set => _cg._assemblyReferences = value;
+    }
+
+    internal CustomGrammar CustomGrammar => _cg;
+
+    internal GrammarElement(Backend backend, CustomGrammar cg)
+        : base(null)
+    {
+        _cg = cg;
+        _backend = backend;
+    }
+
+    IRule IGrammar.CreateRule(string id, RulePublic publicRule, RuleDynamic dynamic, bool hasScript)
+    {
+        SPCFGRULEATTRIBUTES sPCFGRULEATTRIBUTES = (SPCFGRULEATTRIBUTES)0;
+        if (id == _sRoot)
+        {
+            sPCFGRULEATTRIBUTES |= SPCFGRULEATTRIBUTES.SPRAF_TopLevel | SPCFGRULEATTRIBUTES.SPRAF_Active | SPCFGRULEATTRIBUTES.SPRAF_Root;
+            _hasRoot = true;
+        }
+        if (publicRule == RulePublic.True)
+        {
+            sPCFGRULEATTRIBUTES |= SPCFGRULEATTRIBUTES.SPRAF_TopLevel | SPCFGRULEATTRIBUTES.SPRAF_Export;
+        }
+        if (dynamic == RuleDynamic.True)
+        {
+            sPCFGRULEATTRIBUTES |= SPCFGRULEATTRIBUTES.SPRAF_Dynamic;
+        }
+        Rule rule = GetRule(id, sPCFGRULEATTRIBUTES);
+        if (publicRule == RulePublic.True || id == _sRoot || hasScript)
+        {
+            _cg._rules.Add(rule);
+        }
+        return rule;
+    }
+
+    void IElement.PostParse(IElement parent)
+    {
+        if (_sRoot != null && !_hasRoot)
+        {
+            XmlParser.ThrowSrgsException(SRID.RootNotDefined, _sRoot);
+        }
+        if (_undefRules.Count > 0)
+        {
+            Rule rule = _undefRules[0];
+            XmlParser.ThrowSrgsException(SRID.UndefRuleRef, rule.Name);
+        }
+        if ((((IGrammar)this).CodeBehind.Count > 0 || ((IGrammar)this).ImportNamespaces.Count > 0 || ((IGrammar)this).AssemblyReferences.Count > 0 || CustomGrammar._scriptRefs.Count > 0) && ((IGrammar)this).TagFormat != SrgsTagFormat.KeyValuePairs)
+        {
+            XmlParser.ThrowSrgsException(SRID.InvalidSemanticProcessingType);
+        }
+    }
+
+    internal void AddScript(string name, string code)
+    {
+        foreach (Rule rule in _cg._rules)
+        {
+            if (rule.Name == name)
             {
-                Helpers.ThrowIfNull(value, "value");
-                _backend.LangId = value.LCID;
+                rule.Script.Append(code);
+                break;
             }
         }
+    }
 
-        GrammarType IGrammar.Mode
+    private Rule GetRule(string sRuleId, SPCFGRULEATTRIBUTES dwAttributes)
+    {
+        Rule rule = _backend.FindRule(sRuleId);
+        if (rule != null)
         {
-            set => _backend.GrammarMode = value;
-        }
-
-        AlphabetType IGrammar.PhoneticAlphabet
-        {
-            set => _backend.Alphabet = value;
-        }
-
-        SrgsTagFormat IGrammar.TagFormat
-        {
-            get => SrgsDocument.GrammarOptions2TagFormat(_backend.GrammarOptions);
-            set => _backend.GrammarOptions = SrgsDocument.TagFormat2GrammarOptions(value);
-        }
-
-        Collection<string> IGrammar.GlobalTags
-        {
-            get => _backend.GlobalTags;
-            set => _backend.GlobalTags = value;
-        }
-
-        internal List<Rule> UndefRules => _undefRules;
-
-        internal Backend Backend => _backend;
-
-        string IGrammar.Language
-        {
-            get => _cg._language;
-            set => _cg._language = value;
-        }
-
-        string IGrammar.Namespace
-        {
-            get => _cg._namespace;
-            set => _cg._namespace = value;
-        }
-
-        Collection<string> IGrammar.CodeBehind
-        {
-            get => _cg._codebehind;
-            set => _cg._codebehind = value;
-        }
-
-        bool IGrammar.Debug
-        {
-            set => _cg._fDebugScript = value;
-        }
-
-        Collection<string> IGrammar.ImportNamespaces
-        {
-            get => _cg._importNamespaces;
-            set => _cg._importNamespaces = value;
-        }
-
-        Collection<string> IGrammar.AssemblyReferences
-        {
-            get => _cg._assemblyReferences;
-            set => _cg._assemblyReferences = value;
-        }
-
-        internal CustomGrammar CustomGrammar => _cg;
-
-        internal GrammarElement(Backend backend, CustomGrammar cg)
-            : base(null)
-        {
-            _cg = cg;
-            _backend = backend;
-        }
-
-        IRule IGrammar.CreateRule(string id, RulePublic publicRule, RuleDynamic dynamic, bool hasScript)
-        {
-            SPCFGRULEATTRIBUTES sPCFGRULEATTRIBUTES = (SPCFGRULEATTRIBUTES)0;
-            if (id == _sRoot)
+            int num = _undefRules.IndexOf(rule);
+            if (num != -1)
             {
-                sPCFGRULEATTRIBUTES |= SPCFGRULEATTRIBUTES.SPRAF_TopLevel | SPCFGRULEATTRIBUTES.SPRAF_Active | SPCFGRULEATTRIBUTES.SPRAF_Root;
-                _hasRoot = true;
-            }
-            if (publicRule == RulePublic.True)
-            {
-                sPCFGRULEATTRIBUTES |= SPCFGRULEATTRIBUTES.SPRAF_TopLevel | SPCFGRULEATTRIBUTES.SPRAF_Export;
-            }
-            if (dynamic == RuleDynamic.True)
-            {
-                sPCFGRULEATTRIBUTES |= SPCFGRULEATTRIBUTES.SPRAF_Dynamic;
-            }
-            Rule rule = GetRule(id, sPCFGRULEATTRIBUTES);
-            if (publicRule == RulePublic.True || id == _sRoot || hasScript)
-            {
-                _cg._rules.Add(rule);
-            }
-            return rule;
-        }
-
-        void IElement.PostParse(IElement parent)
-        {
-            if (_sRoot != null && !_hasRoot)
-            {
-                XmlParser.ThrowSrgsException(SRID.RootNotDefined, _sRoot);
-            }
-            if (_undefRules.Count > 0)
-            {
-                Rule rule = _undefRules[0];
-                XmlParser.ThrowSrgsException(SRID.UndefRuleRef, rule.Name);
-            }
-            if ((((IGrammar)this).CodeBehind.Count > 0 || ((IGrammar)this).ImportNamespaces.Count > 0 || ((IGrammar)this).AssemblyReferences.Count > 0 || CustomGrammar._scriptRefs.Count > 0) && ((IGrammar)this).TagFormat != SrgsTagFormat.KeyValuePairs)
-            {
-                XmlParser.ThrowSrgsException(SRID.InvalidSemanticProcessingType);
-            }
-        }
-
-        internal void AddScript(string name, string code)
-        {
-            foreach (Rule rule in _cg._rules)
-            {
-                if (rule.Name == name)
-                {
-                    rule.Script.Append(code);
-                    break;
-                }
-            }
-        }
-
-        private Rule GetRule(string sRuleId, SPCFGRULEATTRIBUTES dwAttributes)
-        {
-            Rule rule = _backend.FindRule(sRuleId);
-            if (rule != null)
-            {
-                int num = _undefRules.IndexOf(rule);
-                if (num != -1)
-                {
-                    _backend.SetRuleAttributes(rule, dwAttributes);
-                    _undefRules.RemoveAt(num);
-                }
-                else
-                {
-                    XmlParser.ThrowSrgsException(SRID.RuleRedefinition, sRuleId);
-                }
+                _backend.SetRuleAttributes(rule, dwAttributes);
+                _undefRules.RemoveAt(num);
             }
             else
             {
-                rule = _backend.CreateRule(sRuleId, dwAttributes);
+                XmlParser.ThrowSrgsException(SRID.RuleRedefinition, sRuleId);
             }
-            return rule;
         }
+        else
+        {
+            rule = _backend.CreateRule(sRuleId, dwAttributes);
+        }
+        return rule;
     }
 }

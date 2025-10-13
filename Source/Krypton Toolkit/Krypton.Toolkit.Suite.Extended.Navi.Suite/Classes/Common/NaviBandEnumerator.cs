@@ -25,56 +25,55 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+public class NaviBandEnumerator : IEnumerator<NaviBand>
 {
-    public class NaviBandEnumerator : IEnumerator<NaviBand>
+    private int curIndex;
+    private NaviBand current;
+    private NaviBandCollection collection;
+
+    public NaviBandEnumerator(NaviBandCollection collection)
     {
-        private int curIndex;
-        private NaviBand current;
-        private NaviBandCollection collection;
-
-        public NaviBandEnumerator(NaviBandCollection collection)
-        {
-            this.collection = collection;
-            curIndex = -1;
-            current = default(NaviBand);
-        }
-
-        #region IEnumerator<NaviBand> Members
-
-        public NaviBand Current => current;
-
-        #endregion
-
-        #region IDisposable Members
-
-        public void Dispose() { }
-
-        #endregion
-
-        #region IEnumerator Members
-
-        object System.Collections.IEnumerator.Current => current;
-
-        public bool MoveNext()
-        {
-            if (++curIndex >= collection.Count)
-            {
-                return false;
-            }
-            else
-            {
-                current = collection[curIndex];
-            }
-
-            return true;
-        }
-
-        public void Reset()
-        {
-            curIndex = -1;
-        }
-
-        #endregion
+        this.collection = collection;
+        curIndex = -1;
+        current = default(NaviBand);
     }
+
+    #region IEnumerator<NaviBand> Members
+
+    public NaviBand Current => current;
+
+    #endregion
+
+    #region IDisposable Members
+
+    public void Dispose() { }
+
+    #endregion
+
+    #region IEnumerator Members
+
+    object System.Collections.IEnumerator.Current => current;
+
+    public bool MoveNext()
+    {
+        if (++curIndex >= collection.Count)
+        {
+            return false;
+        }
+        else
+        {
+            current = collection[curIndex];
+        }
+
+        return true;
+    }
+
+    public void Reset()
+    {
+        curIndex = -1;
+    }
+
+    #endregion
 }

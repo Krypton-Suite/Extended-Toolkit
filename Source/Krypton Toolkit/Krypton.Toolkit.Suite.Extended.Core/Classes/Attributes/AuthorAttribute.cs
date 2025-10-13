@@ -26,15 +26,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
-{
-    public class AuthorAttribute : Attribute
-    {
-        #region Constructor
-        public AuthorAttribute(string authorName)
-        {
+namespace Krypton.Toolkit.Suite.Extended.Core;
 
-        }
-        #endregion
+public class AuthorAttribute : Attribute
+{
+    #region Constructor
+    public AuthorAttribute(string authorName)
+    {
+
     }
+    #endregion
 }

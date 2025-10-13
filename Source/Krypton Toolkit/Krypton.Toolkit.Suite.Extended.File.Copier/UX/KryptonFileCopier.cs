@@ -25,112 +25,111 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.File.Copier
+namespace Krypton.Toolkit.Suite.Extended.File.Copier;
+
+public partial class KryptonFileCopier : KryptonForm
 {
-    public partial class KryptonFileCopier : KryptonForm
+    #region Variables
+
+    private FileDialogType _fileDialogType;
+
+    private string _sourceDirectory, _targetDirectory;
+    #endregion
+
+    #region Properties
+    public string SourceDirectory { get => _sourceDirectory; set => _sourceDirectory = value; }
+
+    public string TargetDirectory { get => _targetDirectory; set => _targetDirectory = value; }
+    #endregion
+
+    #region Constructors
+    public KryptonFileCopier()
     {
-        #region Variables
+        InitializeComponent();
+    }
+    #endregion
 
-        private FileDialogType _fileDialogType;
-
-        private string _sourceDirectory, _targetDirectory;
-        #endregion
-
-        #region Properties
-        public string SourceDirectory { get => _sourceDirectory; set => _sourceDirectory = value; }
-
-        public string TargetDirectory { get => _targetDirectory; set => _targetDirectory = value; }
-        #endregion
-
-        #region Constructors
-        public KryptonFileCopier()
+    #region Methods
+    private void CopyFiles()
+    {
+        if (kflListing.FileListing.Items.Count > 0)
         {
-            InitializeComponent();
+            List<string> tempFiles = [];
+
+            foreach (string item in kflListing.FileListing.Items)
+            {
+                tempFiles.Add(item);
+            }
+
+            string? tempPath = null;
+
+            switch (_fileDialogType)
+            {
+                case FileDialogType.Krypton:
+                    KryptonFolderBrowserDialog kfbd = new();
+
+                    kfbd.Title = @"Select a Destination:";
+
+                    if (kfbd.ShowDialog() == DialogResult.OK)
+                    {
+                        tempPath = Path.GetFullPath(kfbd.SelectedPath);
+                    }
+                    break;
+                case FileDialogType.Standard:
+                    FolderBrowserDialog fbd = new();
+
+                    fbd.Description = @"Select a Destination:";
+
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        tempPath = Path.GetFullPath(fbd.SelectedPath);
+                    }
+                    break;
+                case FileDialogType.WindowsAPICodePack:
+                    CommonOpenFileDialog cofd = new();
+
+                    cofd.IsFolderPicker = true;
+
+                    cofd.Title = "Select a destination:";
+
+                    if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        tempPath = Path.GetFullPath(cofd.FileName);
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            CopyFiles copy = new(tempFiles, tempPath);
+
+            KryptonFileMonitor monitor = new();
+
+            monitor.SynchronizationObject = this;
+
+            copy.CopyAsync(monitor);
         }
-        #endregion
+    }
+    #endregion
 
-        #region Methods
-        private void CopyFiles()
+    private void kbtnCopyFiles_Click(object sender, EventArgs e)
+    {
+        if (kchkUseDebugConsole.Checked)
         {
-            if (kflListing.FileListing.Items.Count > 0)
+            List<string> files = [];
+
+            foreach (string item in kflListing.FileListing.Items)
             {
-                List<string> tempFiles = [];
-
-                foreach (string item in kflListing.FileListing.Items)
-                {
-                    tempFiles.Add(item);
-                }
-
-                string? tempPath = null;
-
-                switch (_fileDialogType)
-                {
-                    case FileDialogType.Krypton:
-                        KryptonFolderBrowserDialog kfbd = new();
-
-                        kfbd.Title = @"Select a Destination:";
-
-                        if (kfbd.ShowDialog() == DialogResult.OK)
-                        {
-                            tempPath = Path.GetFullPath(kfbd.SelectedPath);
-                        }
-                        break;
-                    case FileDialogType.Standard:
-                        FolderBrowserDialog fbd = new();
-
-                        fbd.Description = @"Select a Destination:";
-
-                        if (fbd.ShowDialog() == DialogResult.OK)
-                        {
-                            tempPath = Path.GetFullPath(fbd.SelectedPath);
-                        }
-                        break;
-                    case FileDialogType.WindowsAPICodePack:
-                        CommonOpenFileDialog cofd = new();
-
-                        cofd.IsFolderPicker = true;
-
-                        cofd.Title = "Select a destination:";
-
-                        if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
-                        {
-                            tempPath = Path.GetFullPath(cofd.FileName);
-                        }
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
-                CopyFiles copy = new(tempFiles, tempPath);
-
-                KryptonFileMonitor monitor = new();
-
-                monitor.SynchronizationObject = this;
-
-                copy.CopyAsync(monitor);
+                files.Add(item);
             }
+
+            KryptonDeveloperDebugConsole debugConsole = new(HelperUtilities.ReturnDirectoryListing(files));
+
+            debugConsole.Show();
         }
-        #endregion
-
-        private void kbtnCopyFiles_Click(object sender, EventArgs e)
+        else
         {
-            if (kchkUseDebugConsole.Checked)
-            {
-                List<string> files = [];
-
-                foreach (string item in kflListing.FileListing.Items)
-                {
-                    files.Add(item);
-                }
-
-                KryptonDeveloperDebugConsole debugConsole = new(HelperUtilities.ReturnDirectoryListing(files));
-
-                debugConsole.Show();
-            }
-            else
-            {
-                CopyFiles();
-            }
+            CopyFiles();
         }
     }
 }

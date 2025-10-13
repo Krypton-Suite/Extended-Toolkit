@@ -25,151 +25,150 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Forms
+namespace Krypton.Toolkit.Suite.Extended.Forms;
+
+public class KryptonFormExtended : VisualKryptonFormExtended
 {
-    public class KryptonFormExtended : VisualKryptonFormExtended
+    #region Instance Fields
+
+    #region Fade Items
+
+    private bool _useBlur, _useFade;
+
+    private float _fadeSpeed;
+
+    private FadeSpeedChoice _fadeSpeedChoice;
+
+    private int _sleepInterval;
+
+    #endregion
+
+    private KryptonFormTitleStyle _titleStyle;
+
+    #endregion
+
+    #region Public
+
+    #region Fading
+
+    [DefaultValue(false)]
+    public bool UseBlur { get => _useBlur; set => _useBlur = value; }
+
+    [DefaultValue(true), Description("")]
+    public bool UseFade { get => _useFade; set => _useBlur = value; }
+
+    [DefaultValue(50), Description("")]
+    public int SleepInterval { get => _sleepInterval; set => _sleepInterval = value; }
+
+    [DefaultValue(0), Description("")]
+    public float FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
+
+    [DefaultValue(typeof(FadeSpeedChoice), "FadeSpeedChoice.Normal"), Description("")]
+    public FadeSpeedChoice FadeSpeedChoice { get => _fadeSpeedChoice; set => _fadeSpeedChoice = value; }
+
+    #endregion
+
+    [Category(@"Appearance"), DefaultValue(typeof(KryptonFormTitleStyle), "KryptonFormTitleStyle.Inherit"), Description(@"Arranges the current window title.")]
+    public KryptonFormTitleStyle TitleStyle { get => _titleStyle; set { _titleStyle = value; UpdateTitleStyle(value); } }
+
+    public static GlobalStrings Strings { get; } = new();
+
+    /// <summary>
+    /// Gets a set of global strings used by Krypton that can be localized.
+    /// </summary>
+    [Category(@"Visuals")]
+    [Description(@"Collection of global strings.")]
+    [MergableProperty(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    [Localizable(true)]
+    public GlobalStrings GlobalStrings => Strings;
+
+    private bool ShouldSerializeGlobalStrings() => !Strings.IsDefault;
+
+    /// <summary>
+    /// Resets the GlobalStrings property to its default value.
+    /// </summary>
+    public void ResetGlobalStrings() => Strings.Reset();
+
+    #endregion
+
+    #region Identity
+
+    public KryptonFormExtended()
     {
-        #region Instance Fields
+        _useFade = false;
 
-        #region Fade Items
+        _fadeSpeed = 50;
 
-        private bool _useBlur, _useFade;
+        _useBlur = false;
 
-        private float _fadeSpeed;
+        _sleepInterval = 50;
 
-        private FadeSpeedChoice _fadeSpeedChoice;
+        _fadeSpeedChoice = FadeSpeedChoice.Normal;
 
-        private int _sleepInterval;
+        _titleStyle = KryptonFormTitleStyle.Inherit;
+    }
 
-        #endregion
+    #endregion
 
-        private KryptonFormTitleStyle _titleStyle;
+    #region Implementation
 
-        #endregion
-
-        #region Public
-
-        #region Fading
-
-        [DefaultValue(false)]
-        public bool UseBlur { get => _useBlur; set => _useBlur = value; }
-
-        [DefaultValue(true), Description("")]
-        public bool UseFade { get => _useFade; set => _useBlur = value; }
-
-        [DefaultValue(50), Description("")]
-        public int SleepInterval { get => _sleepInterval; set => _sleepInterval = value; }
-
-        [DefaultValue(0), Description("")]
-        public float FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
-
-        [DefaultValue(typeof(FadeSpeedChoice), "FadeSpeedChoice.Normal"), Description("")]
-        public FadeSpeedChoice FadeSpeedChoice { get => _fadeSpeedChoice; set => _fadeSpeedChoice = value; }
-
-        #endregion
-
-        [Category(@"Appearance"), DefaultValue(typeof(KryptonFormTitleStyle), "KryptonFormTitleStyle.Inherit"), Description(@"Arranges the current window title.")]
-        public KryptonFormTitleStyle TitleStyle { get => _titleStyle; set { _titleStyle = value; UpdateTitleStyle(value); } }
-
-        public static GlobalStrings Strings { get; } = new();
-
-        /// <summary>
-        /// Gets a set of global strings used by Krypton that can be localized.
-        /// </summary>
-        [Category(@"Visuals")]
-        [Description(@"Collection of global strings.")]
-        [MergableProperty(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        [Localizable(true)]
-        public GlobalStrings GlobalStrings => Strings;
-
-        private bool ShouldSerializeGlobalStrings() => !Strings.IsDefault;
-
-        /// <summary>
-        /// Resets the GlobalStrings property to its default value.
-        /// </summary>
-        public void ResetGlobalStrings() => Strings.Reset();
-
-        #endregion
-
-        #region Identity
-
-        public KryptonFormExtended()
+    /// <summary>Updates the title style.</summary>
+    /// <param name="titleStyle">The title style.</param>
+    private void UpdateTitleStyle(KryptonFormTitleStyle titleStyle)
+    {
+        switch (titleStyle)
         {
-            _useFade = false;
-
-            _fadeSpeed = 50;
-
-            _useBlur = false;
-
-            _sleepInterval = 50;
-
-            _fadeSpeedChoice = FadeSpeedChoice.Normal;
-
-            _titleStyle = KryptonFormTitleStyle.Inherit;
+            case KryptonFormTitleStyle.Inherit:
+                FormTitleAlign = PaletteRelativeAlign.Inherit;
+                break;
+            case KryptonFormTitleStyle.Classic:
+                FormTitleAlign = PaletteRelativeAlign.Near;
+                break;
+            case KryptonFormTitleStyle.Modern:
+                FormTitleAlign = PaletteRelativeAlign.Center;
+                break;
         }
+    }
 
-        #endregion
+    #endregion
 
-        #region Implementation
+    #region Protected Overrides
 
-        /// <summary>Updates the title style.</summary>
-        /// <param name="titleStyle">The title style.</param>
-        private void UpdateTitleStyle(KryptonFormTitleStyle titleStyle)
+    protected override void OnLoad(EventArgs e)
+    {
+        if (UseFade)
         {
-            switch (titleStyle)
-            {
-                case KryptonFormTitleStyle.Inherit:
-                    FormTitleAlign = PaletteRelativeAlign.Inherit;
-                    break;
-                case KryptonFormTitleStyle.Classic:
-                    FormTitleAlign = PaletteRelativeAlign.Near;
-                    break;
-                case KryptonFormTitleStyle.Modern:
-                    FormTitleAlign = PaletteRelativeAlign.Center;
-                    break;
-            }
-        }
-
-        #endregion
-
-        #region Protected Overrides
-
-        protected override void OnLoad(EventArgs e)
-        {
-            if (UseFade)
-            {
 #if NETCOREAPP3_1_OR_GREATER
-                FadeControllerNETCoreSafe.FadeWindowInExtended(this, SleepInterval);
+            FadeControllerNETCoreSafe.FadeWindowInExtended(this, SleepInterval);
 #else
                 FadeController.FadeIn(this, FadeSpeedChoice, FadeSpeed);
 #endif
-            }
-
-            BlurValues.BlurWhenFocusLost = UseBlur;
-
-            base.OnLoad(e);
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
+        BlurValues.BlurWhenFocusLost = UseBlur;
+
+        base.OnLoad(e);
+    }
+
+    protected override void OnFormClosing(FormClosingEventArgs e)
+    {
+        if (UseFade)
         {
-            if (UseFade)
-            {
 #if NETCOREAPP3_1_OR_GREATER
-                FadeControllerNETCoreSafe.FadeWindowOutExtended(this, SleepInterval);
+            FadeControllerNETCoreSafe.FadeWindowOutExtended(this, SleepInterval);
 #else
                 FadeController.FadeOutAndClose(this, _fadeSpeedChoice);
 #endif
-            }
-
-            base.OnFormClosing(e);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-        }
-
-        #endregion
+        base.OnFormClosing(e);
     }
+
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        base.OnPaint(e);
+    }
+
+    #endregion
 }

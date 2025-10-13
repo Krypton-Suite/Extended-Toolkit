@@ -28,89 +28,88 @@
 
 using Krypton.Toolkit.Suite.Extended.Effects;
 
-namespace Krypton.Toolkit.Suite.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common;
+
+public class CommonExtendedKryptonForm : KryptonForm
 {
-    public class CommonExtendedKryptonForm : KryptonForm
+    #region Variables
+    private float _fadeSpeed;
+
+    private FadeSpeedChoice _fadeSpeedChoice;
+    #endregion
+
+    #region Properties
+    public bool UseBlur { get; set; }
+
+    [DefaultValue(true), Description("")]
+    public bool UseFade { get; set; }
+
+    [DefaultValue(50), Description("")]
+    public int SleepInterval { get; set; }
+
+    [DefaultValue(0), Description("")]
+    public float FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
+
+    [DefaultValue(typeof(FadeSpeedChoice), "FadeSpeedChoice.Normal"), Description("")]
+    public FadeSpeedChoice FadeSpeedChoice { get => _fadeSpeedChoice; set => _fadeSpeedChoice = value; }
+    #endregion
+
+    #region Identity
+    public CommonExtendedKryptonForm()
     {
-        #region Variables
-        private float _fadeSpeed;
+        UseBlur = false;
 
-        private FadeSpeedChoice _fadeSpeedChoice;
-        #endregion
+        UseFade = true;
 
-        #region Properties
-        public bool UseBlur { get; set; }
+        SleepInterval = 50;
 
-        [DefaultValue(true), Description("")]
-        public bool UseFade { get; set; }
+        _fadeSpeedChoice = FadeSpeedChoice.Normal;
+    }
+    #endregion
 
-        [DefaultValue(50), Description("")]
-        public int SleepInterval { get; set; }
-
-        [DefaultValue(0), Description("")]
-        public float FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
-
-        [DefaultValue(typeof(FadeSpeedChoice), "FadeSpeedChoice.Normal"), Description("")]
-        public FadeSpeedChoice FadeSpeedChoice { get => _fadeSpeedChoice; set => _fadeSpeedChoice = value; }
-        #endregion
-
-        #region Identity
-        public CommonExtendedKryptonForm()
+    #region Overrides
+    protected override void OnLoad(EventArgs e)
+    {
+        if (UseFade)
         {
-            UseBlur = false;
-
-            UseFade = true;
-
-            SleepInterval = 50;
-
-            _fadeSpeedChoice = FadeSpeedChoice.Normal;
-        }
-        #endregion
-
-        #region Overrides
-        protected override void OnLoad(EventArgs e)
-        {
-            if (UseFade)
-            {
 #if NETCOREAPP3_1_OR_GREATER
                 FadeControllerNETCoreSafe.FadeWindowInExtended(this, SleepInterval);
 #else
-                FadeController.FadeIn(this, FadeSpeed);
+            FadeController.FadeIn(this, FadeSpeed);
 #endif
-            }
-
-            BlurValues.BlurWhenFocusLost = UseBlur;
-
-            base.OnLoad(e);
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
+        BlurValues.BlurWhenFocusLost = UseBlur;
+
+        base.OnLoad(e);
+    }
+
+    protected override void OnFormClosing(FormClosingEventArgs e)
+    {
+        if (UseFade)
         {
-            if (UseFade)
-            {
 #if NETCOREAPP3_1_OR_GREATER
                 FadeControllerNETCoreSafe.FadeWindowOutExtended(this, SleepInterval);
 #else
-                FadeController.FadeOutAndClose(this, _fadeSpeed);
+            FadeController.FadeOutAndClose(this, _fadeSpeed);
 #endif
-            }
-
-            base.OnFormClosing(e);
         }
-        #endregion
 
-        private void FadeInComplete() { }
+        base.OnFormClosing(e);
+    }
+    #endregion
 
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // CommonExtendedKryptonForm
-            // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "CommonExtendedKryptonForm";
-            this.ResumeLayout(false);
+    private void FadeInComplete() { }
 
-        }
+    private void InitializeComponent()
+    {
+        this.SuspendLayout();
+        // 
+        // CommonExtendedKryptonForm
+        // 
+        this.ClientSize = new System.Drawing.Size(284, 261);
+        this.Name = "CommonExtendedKryptonForm";
+        this.ResumeLayout(false);
+
     }
 }

@@ -26,12 +26,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common;
+
+public enum ToolkitType
 {
-    public enum ToolkitType
-    {
-        Canary = 0,
-        Stable = 1,
-        Nightly = 2
-    }
+    Canary = 0,
+    Stable = 1,
+    Nightly = 2
 }

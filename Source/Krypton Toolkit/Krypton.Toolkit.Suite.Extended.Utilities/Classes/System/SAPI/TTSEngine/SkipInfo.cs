@@ -26,34 +26,33 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+public class SkipInfo
 {
-	public class SkipInfo
-	{
-		private int _type;
+    private int _type;
 
-		private int _count;
+    private int _count;
 
-		public int Type
-		{
-			get => _type;
-            set => _type = value;
-        }
+    public int Type
+    {
+        get => _type;
+        set => _type = value;
+    }
 
-		public int Count
-		{
-			get => _count;
-            set => _count = value;
-        }
+    public int Count
+    {
+        get => _count;
+        set => _count = value;
+    }
 
-		internal SkipInfo(int type, int count)
-		{
-			_type = type;
-			_count = count;
-		}
+    internal SkipInfo(int type, int count)
+    {
+        _type = type;
+        _count = count;
+    }
 
-		public SkipInfo()
-		{
-		}
-	}
+    public SkipInfo()
+    {
+    }
 }

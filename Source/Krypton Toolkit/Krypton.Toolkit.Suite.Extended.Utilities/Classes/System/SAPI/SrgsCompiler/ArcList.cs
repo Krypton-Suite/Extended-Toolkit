@@ -26,38 +26,37 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+
+internal class ArcList : RedBackList
 {
-    internal class ArcList : RedBackList
+    internal new Arc First => (Arc)base.First;
+
+    internal List<Arc> ToList()
     {
-        internal new Arc First => (Arc)base.First;
-
-        internal List<Arc> ToList()
+        List<Arc> list = [];
+        IEnumerator enumerator = GetEnumerator();
+        try
         {
-            List<Arc> list = [];
-            IEnumerator enumerator = GetEnumerator();
-            try
+            while (enumerator.MoveNext())
             {
-                while (enumerator.MoveNext())
-                {
-                    Arc item = (Arc)enumerator.Current;
-                    list.Add(item);
-                }
-                return list;
+                Arc item = (Arc)enumerator.Current;
+                list.Add(item);
             }
-            finally
+            return list;
+        }
+        finally
+        {
+            IDisposable disposable = enumerator as IDisposable;
+            if (disposable != null)
             {
-                IDisposable disposable = enumerator as IDisposable;
-                if (disposable != null)
-                {
-                    disposable.Dispose();
-                }
+                disposable.Dispose();
             }
         }
+    }
 
-        protected override int CompareTo(object arc1, object arc2)
-        {
-            return Arc.CompareContentForKey((Arc)arc1, (Arc)arc2);
-        }
+    protected override int CompareTo(object arc1, object arc2)
+    {
+        return Arc.CompareContentForKey((Arc)arc1, (Arc)arc2);
     }
 }

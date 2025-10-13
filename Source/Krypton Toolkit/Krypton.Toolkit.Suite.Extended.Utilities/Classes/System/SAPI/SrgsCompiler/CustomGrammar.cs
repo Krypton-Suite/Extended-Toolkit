@@ -26,577 +26,576 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+
+internal class CustomGrammar
 {
-    internal class CustomGrammar
+    internal class CfgResource
     {
-        internal class CfgResource
+        internal string name;
+
+        internal byte[] data;
+    }
+
+    internal string _language = "C#";
+
+    internal string _namespace;
+
+    internal List<Rule> _rules = [];
+
+    internal Collection<string> _codebehind = [];
+
+    internal bool _fDebugScript;
+
+    internal Collection<string> _assemblyReferences = [];
+
+    internal Collection<string> _importNamespaces = [];
+
+    internal string _keyFile;
+
+    internal Collection<ScriptRef> _scriptRefs = [];
+
+    internal List<string> _types = [];
+
+    internal StringBuilder _script = new();
+
+    private const string _preambuleMarker = "<Does Not Exist>";
+
+    internal bool HasScript
+    {
+        get
         {
-            internal string name;
-
-            internal byte[] data;
-        }
-
-        internal string _language = "C#";
-
-        internal string _namespace;
-
-        internal List<Rule> _rules = [];
-
-        internal Collection<string> _codebehind = [];
-
-        internal bool _fDebugScript;
-
-        internal Collection<string> _assemblyReferences = [];
-
-        internal Collection<string> _importNamespaces = [];
-
-        internal string _keyFile;
-
-        internal Collection<ScriptRef> _scriptRefs = [];
-
-        internal List<string> _types = [];
-
-        internal StringBuilder _script = new();
-
-        private const string _preambuleMarker = "<Does Not Exist>";
-
-        internal bool HasScript
-        {
-            get
+            bool flag = _script.Length > 0 || _codebehind.Count > 0;
+            if (!flag)
             {
-                bool flag = _script.Length > 0 || _codebehind.Count > 0;
-                if (!flag)
+                foreach (Rule rule in _rules)
                 {
-                    foreach (Rule rule in _rules)
+                    if (rule.Script.Length > 0)
                     {
-                        if (rule.Script.Length > 0)
-                        {
-                            return true;
-                        }
+                        return true;
                     }
-                    return flag;
                 }
                 return flag;
             }
+            return flag;
         }
+    }
 
-        internal CustomGrammar()
+    internal CustomGrammar()
+    {
+    }
+
+    internal string CreateAssembly(int iCfg, string outputFile, CultureInfo culture)
+    {
+        string text = null;
+        FileHelper.DeleteTemporaryFile(outputFile);
+        try
         {
+            CreateAssembly(outputFile, false, null);
+            CheckValidAssembly(iCfg, ExtractCodeGenerated(outputFile));
+            return GenerateCode(true, culture);
         }
-
-        internal string CreateAssembly(int iCfg, string outputFile, CultureInfo culture)
+        finally
         {
-            string text = null;
             FileHelper.DeleteTemporaryFile(outputFile);
-            try
+        }
+    }
+
+    internal void CreateAssembly(out byte[] il, out byte[] pdb)
+    {
+        string filePath;
+        using (FileHelper.CreateAndOpenTemporaryFile(out filePath, FileAccess.Write, FileOptions.DeleteOnClose, "dll"))
+        {
+        }
+        try
+        {
+            CreateAssembly(filePath, _fDebugScript, null);
+            il = ExtractCodeGenerated(filePath);
+            pdb = null;
+            if (_fDebugScript)
             {
-                CreateAssembly(outputFile, false, null);
-                CheckValidAssembly(iCfg, ExtractCodeGenerated(outputFile));
-                return GenerateCode(true, culture);
+                string text = $"{filePath.Substring(0, filePath.LastIndexOf('.'))}.pdb";
+                pdb = ExtractCodeGenerated(text);
+                FileHelper.DeleteTemporaryFile(text);
             }
-            finally
+            CheckValidAssembly(0, il);
+        }
+        finally
+        {
+            FileHelper.DeleteTemporaryFile(filePath);
+        }
+    }
+
+    internal void CreateAssembly(string path, List<CfgResource> cfgResources)
+    {
+        CreateAssembly(path, _fDebugScript, cfgResources);
+    }
+
+    internal void Combine(CustomGrammar cg, string innerCode)
+    {
+        if (_rules.Count == 0)
+        {
+            _language = cg._language;
+        }
+        else if (_language != cg._language)
+        {
+            XmlParser.ThrowSrgsException(SRID.IncompatibleLanguageProperties);
+        }
+        if (_namespace == null)
+        {
+            _namespace = cg._namespace;
+        }
+        else if (_namespace != cg._namespace)
+        {
+            XmlParser.ThrowSrgsException(SRID.IncompatibleNamespaceProperties);
+        }
+        _fDebugScript |= cg._fDebugScript;
+        foreach (string item in cg._codebehind)
+        {
+            if (!_codebehind.Contains(item))
             {
-                FileHelper.DeleteTemporaryFile(outputFile);
+                _codebehind.Add(item);
             }
         }
-
-        internal void CreateAssembly(out byte[] il, out byte[] pdb)
+        foreach (string assemblyReference in cg._assemblyReferences)
         {
-            string filePath;
-            using (FileHelper.CreateAndOpenTemporaryFile(out filePath, FileAccess.Write, FileOptions.DeleteOnClose, "dll"))
+            if (!_assemblyReferences.Contains(assemblyReference))
             {
-            }
-            try
-            {
-                CreateAssembly(filePath, _fDebugScript, null);
-                il = ExtractCodeGenerated(filePath);
-                pdb = null;
-                if (_fDebugScript)
-                {
-                    string text = $"{filePath.Substring(0, filePath.LastIndexOf('.'))}.pdb";
-                    pdb = ExtractCodeGenerated(text);
-                    FileHelper.DeleteTemporaryFile(text);
-                }
-                CheckValidAssembly(0, il);
-            }
-            finally
-            {
-                FileHelper.DeleteTemporaryFile(filePath);
+                _assemblyReferences.Add(assemblyReference);
             }
         }
-
-        internal void CreateAssembly(string path, List<CfgResource> cfgResources)
+        foreach (string importNamespace in cg._importNamespaces)
         {
-            CreateAssembly(path, _fDebugScript, cfgResources);
+            if (!_importNamespaces.Contains(importNamespace))
+            {
+                _importNamespaces.Add(importNamespace);
+            }
         }
-
-        internal void Combine(CustomGrammar cg, string innerCode)
+        _keyFile = cg._keyFile;
+        _types.AddRange(cg._types);
+        foreach (Rule rule in cg._rules)
         {
-            if (_rules.Count == 0)
+            if (_types.Contains(rule.Name))
             {
-                _language = cg._language;
+                XmlParser.ThrowSrgsException(SRID.RuleDefinedMultipleTimes2, rule.Name);
             }
-            else if (_language != cg._language)
-            {
-                XmlParser.ThrowSrgsException(SRID.IncompatibleLanguageProperties);
-            }
-            if (_namespace == null)
-            {
-                _namespace = cg._namespace;
-            }
-            else if (_namespace != cg._namespace)
-            {
-                XmlParser.ThrowSrgsException(SRID.IncompatibleNamespaceProperties);
-            }
-            _fDebugScript |= cg._fDebugScript;
-            foreach (string item in cg._codebehind)
-            {
-                if (!_codebehind.Contains(item))
-                {
-                    _codebehind.Add(item);
-                }
-            }
-            foreach (string assemblyReference in cg._assemblyReferences)
-            {
-                if (!_assemblyReferences.Contains(assemblyReference))
-                {
-                    _assemblyReferences.Add(assemblyReference);
-                }
-            }
-            foreach (string importNamespace in cg._importNamespaces)
-            {
-                if (!_importNamespaces.Contains(importNamespace))
-                {
-                    _importNamespaces.Add(importNamespace);
-                }
-            }
-            _keyFile = cg._keyFile;
-            _types.AddRange(cg._types);
-            foreach (Rule rule in cg._rules)
-            {
-                if (_types.Contains(rule.Name))
-                {
-                    XmlParser.ThrowSrgsException(SRID.RuleDefinedMultipleTimes2, rule.Name);
-                }
-            }
-            _script.Append(innerCode);
         }
+        _script.Append(innerCode);
+    }
 
-        private void CreateAssembly(string outputFile, bool debug, List<CfgResource> cfgResources)
+    private void CreateAssembly(string outputFile, bool debug, List<CfgResource> cfgResources)
+    {
+        if (_language == null)
         {
-            if (_language == null)
+            XmlParser.ThrowSrgsException(SRID.NoLanguageSet);
+        }
+        string text = GenerateCode(false, null);
+        string filePath = null;
+        string[] array = null;
+        try
+        {
+            if (_codebehind.Count > 0)
             {
-                XmlParser.ThrowSrgsException(SRID.NoLanguageSet);
-            }
-            string text = GenerateCode(false, null);
-            string filePath = null;
-            string[] array = null;
-            try
-            {
-                if (_codebehind.Count > 0)
+                int num = _codebehind.Count + (text != null ? 1 : 0);
+                array = new string[num];
+                for (int i = 0; i < _codebehind.Count; i++)
                 {
-                    int num = _codebehind.Count + (text != null ? 1 : 0);
-                    array = new string[num];
-                    for (int i = 0; i < _codebehind.Count; i++)
+                    array[i] = _codebehind[i];
+                }
+                if (text != null)
+                {
+                    using (FileStream stream = FileHelper.CreateAndOpenTemporaryFile(out filePath))
                     {
-                        array[i] = _codebehind[i];
-                    }
-                    if (text != null)
-                    {
-                        using (FileStream stream = FileHelper.CreateAndOpenTemporaryFile(out filePath))
+                        array[array.Length - 1] = filePath;
+                        using (StreamWriter streamWriter = new StreamWriter(stream))
                         {
-                            array[array.Length - 1] = filePath;
-                            using (StreamWriter streamWriter = new StreamWriter(stream))
-                            {
-                                streamWriter.Write(text);
-                            }
+                            streamWriter.Write(text);
                         }
                     }
                 }
-                CompileScript(outputFile, debug, text, array, cfgResources);
             }
-            finally
+            CompileScript(outputFile, debug, text, array, cfgResources);
+        }
+        finally
+        {
+            FileHelper.DeleteTemporaryFile(filePath);
+        }
+    }
+
+    private void CompileScript(string outputFile, bool debug, string code, string[] codeFiles, List<CfgResource> cfgResouces)
+    {
+        using (CodeDomProvider codeDomProvider = CodeProvider())
+        {
+            CompilerParameters compilerParameters = GetCompilerParameters(outputFile, cfgResouces, debug, _assemblyReferences, _keyFile);
+            CompilerResults compilerResults = codeFiles == null ? codeDomProvider.CompileAssemblyFromSource(compilerParameters, code) : codeDomProvider.CompileAssemblyFromFile(compilerParameters, codeFiles);
+            if (compilerResults.Errors.Count > 0)
             {
-                FileHelper.DeleteTemporaryFile(filePath);
+                ThrowCompilationErrors(compilerResults);
+            }
+            if (compilerResults.NativeCompilerReturnValue != 0)
+            {
+                XmlParser.ThrowSrgsException(SRID.UnexpectedError, compilerResults.NativeCompilerReturnValue);
             }
         }
+    }
 
-        private void CompileScript(string outputFile, bool debug, string code, string[] codeFiles, List<CfgResource> cfgResouces)
+    private CodeDomProvider CodeProvider()
+    {
+        CodeDomProvider result = null;
+        string language = _language;
+        if (!(language == "C#"))
         {
-            using (CodeDomProvider codeDomProvider = CodeProvider())
+            if (language == "VB.Net")
             {
-                CompilerParameters compilerParameters = GetCompilerParameters(outputFile, cfgResouces, debug, _assemblyReferences, _keyFile);
-                CompilerResults compilerResults = codeFiles == null ? codeDomProvider.CompileAssemblyFromSource(compilerParameters, code) : codeDomProvider.CompileAssemblyFromFile(compilerParameters, codeFiles);
-                if (compilerResults.Errors.Count > 0)
-                {
-                    ThrowCompilationErrors(compilerResults);
-                }
-                if (compilerResults.NativeCompilerReturnValue != 0)
-                {
-                    XmlParser.ThrowSrgsException(SRID.UnexpectedError, compilerResults.NativeCompilerReturnValue);
-                }
-            }
-        }
-
-        private CodeDomProvider CodeProvider()
-        {
-            CodeDomProvider result = null;
-            string language = _language;
-            if (!(language == "C#"))
-            {
-                if (language == "VB.Net")
-                {
-                    result = CreateVBCompiler();
-                }
-                else
-                {
-                    XmlParser.ThrowSrgsException(SRID.UnsupportedLanguage, _language);
-                }
+                result = CreateVBCompiler();
             }
             else
             {
-                result = CreateCSharpCompiler();
+                XmlParser.ThrowSrgsException(SRID.UnsupportedLanguage, _language);
             }
-            return result;
         }
-
-        private string GenerateCode(bool classDefinitionOnly, CultureInfo culture)
+        else
         {
-            string result = string.Empty;
-            string language = _language;
-            if (!(language == "C#"))
+            result = CreateCSharpCompiler();
+        }
+        return result;
+    }
+
+    private string GenerateCode(bool classDefinitionOnly, CultureInfo culture)
+    {
+        string result = string.Empty;
+        string language = _language;
+        if (!(language == "C#"))
+        {
+            if (language == "VB.Net")
             {
-                if (language == "VB.Net")
-                {
-                    result = WrapScriptVB(classDefinitionOnly, culture);
-                }
-                else
-                {
-                    XmlParser.ThrowSrgsException(SRID.UnsupportedLanguage, _language);
-                }
+                result = WrapScriptVB(classDefinitionOnly, culture);
             }
             else
             {
-                result = WrapScriptCSharp(classDefinitionOnly, culture);
+                XmlParser.ThrowSrgsException(SRID.UnsupportedLanguage, _language);
             }
-            return result;
         }
-
-        private string WrapScriptCSharp(bool classDefinitionOnly, CultureInfo culture)
+        else
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            foreach (Rule rule in _rules)
-            {
-                if (rule.Script != null)
-                {
-                    WrapClassCSharp(stringBuilder, rule.Name, rule.BaseClass, culture, rule.Script.ToString(), rule.Constructors.ToString());
-                }
-            }
-            if (_script.Length > 0)
-            {
-                stringBuilder.Append(_script);
-            }
-            if (stringBuilder.Length <= 0)
-            {
-                return null;
-            }
-            if (classDefinitionOnly)
-            {
-                return stringBuilder.ToString();
-            }
-            return WrapScriptOuterCSharp(stringBuilder.ToString());
+            result = WrapScriptCSharp(classDefinitionOnly, culture);
         }
+        return result;
+    }
 
-        private string WrapScriptVB(bool classDefinitionOnly, CultureInfo culture)
+    private string WrapScriptCSharp(bool classDefinitionOnly, CultureInfo culture)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        foreach (Rule rule in _rules)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            foreach (Rule rule in _rules)
+            if (rule.Script != null)
             {
-                if (rule.Script != null)
-                {
-                    WrapClassVB(stringBuilder, rule.Name, rule.BaseClass, culture, rule.Script.ToString(), rule.Constructors.ToString());
-                }
+                WrapClassCSharp(stringBuilder, rule.Name, rule.BaseClass, culture, rule.Script.ToString(), rule.Constructors.ToString());
             }
-            if (_script.Length > 0)
-            {
-                stringBuilder.Append(_script);
-            }
-            if (stringBuilder.Length <= 0)
-            {
-                return null;
-            }
-            if (classDefinitionOnly)
-            {
-                return stringBuilder.ToString();
-            }
-            return WrapScriptOuterVB(stringBuilder.ToString());
         }
-
-        private static CodeDomProvider CreateCSharpCompiler()
+        if (_script.Length > 0)
         {
-            return new CSharpCodeProvider();
+            stringBuilder.Append(_script);
         }
-
-        private string WrapScriptOuterCSharp(string innerCode)
+        if (stringBuilder.Length <= 0)
         {
-            if (!string.IsNullOrEmpty(innerCode))
-            {
-                int num = 0;
-                foreach (string importNamespace in _importNamespaces)
-                {
-                    num += importNamespace.Length;
-                }
-                SRID sRID = SRID.ArrayOfNullIllegal;
-                string @namespace = sRID.GetType().Namespace;
-                string text = string.Format(CultureInfo.InvariantCulture, "#line 1 \"{0}\"\nusing System;\nusing System.Collections.Generic;\nusing System.Diagnostics;\nusing {1};\nusing {1}.Recognition;\nusing {1}.Recognition.SrgsGrammar;\n",
-                [
-                    "<Does Not Exist>",
-                    @namespace
-                ]);
-                StringBuilder stringBuilder = new StringBuilder(_script.Length + text.Length + 200);
-                stringBuilder.Append(text);
-                foreach (string importNamespace2 in _importNamespaces)
-                {
-                    stringBuilder.Append("using ");
-                    stringBuilder.Append(importNamespace2);
-                    stringBuilder.Append(";\n");
-                }
-                if (_namespace != null)
-                {
-                    stringBuilder.Append("namespace ");
-                    stringBuilder.Append(_namespace);
-                    stringBuilder.Append("\n{\n");
-                }
-                stringBuilder.Append(innerCode);
-                if (_namespace != null)
-                {
-                    stringBuilder.Append("}\n");
-                }
-                return stringBuilder.ToString();
-            }
             return null;
         }
-
-        private static void WrapClassCSharp(StringBuilder sb, string classname, string baseclass, CultureInfo culture, string script, string constructor)
+        if (classDefinitionOnly)
         {
-            sb.Append("public partial class ");
-            sb.Append(classname);
-            sb.Append(" : ");
-            sb.Append(!string.IsNullOrEmpty(baseclass) ? baseclass : "Grammar");
-            sb.Append(" \n {\n");
-            if (culture != null)
-            {
-                sb.Append("[DebuggerBrowsable (DebuggerBrowsableState.Never)]public static string __cultureId = \"");
-                sb.Append(culture.LCID.ToString(CultureInfo.InvariantCulture));
-                sb.Append("\";\n");
-            }
-            sb.Append(constructor);
-            sb.Append(script);
-            sb.Append("override protected bool IsStg { get { return true; }}\n\n");
-            sb.Append("\n}\n");
+            return stringBuilder.ToString();
         }
+        return WrapScriptOuterCSharp(stringBuilder.ToString());
+    }
 
-        private static CodeDomProvider CreateVBCompiler()
+    private string WrapScriptVB(bool classDefinitionOnly, CultureInfo culture)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        foreach (Rule rule in _rules)
         {
-            return new VBCodeProvider();
-        }
-
-        private string WrapScriptOuterVB(string innerCode)
-        {
-            if (!string.IsNullOrEmpty(innerCode))
+            if (rule.Script != null)
             {
-                int num = 0;
-                foreach (string importNamespace in _importNamespaces)
-                {
-                    num += importNamespace.Length;
-                }
-                SRID sRID = SRID.ArrayOfNullIllegal;
-                string @namespace = sRID.GetType().Namespace;
-                string text = string.Format(CultureInfo.InvariantCulture, "#ExternalSource (\"{0}\", 1)\nImports System\nImports System.Collections.Generic\nImports System.Diagnostics\nImports {1}\nImports {1}.Recognition\nImports {1}.Recognition.SrgsGrammar\n",
-                [
-                    "<Does Not Exist>",
-                    @namespace
-                ]);
-                StringBuilder stringBuilder = new StringBuilder(_script.Length + text.Length + 200);
-                stringBuilder.Append(text);
-                foreach (string importNamespace2 in _importNamespaces)
-                {
-                    stringBuilder.Append("Imports ");
-                    stringBuilder.Append(importNamespace2);
-                    stringBuilder.Append("\n");
-                }
-                if (_namespace != null)
-                {
-                    stringBuilder.Append("Namespace ");
-                    stringBuilder.Append(_namespace);
-                    stringBuilder.Append("\n");
-                }
-                stringBuilder.Append("#End ExternalSource\n");
-                stringBuilder.Append(innerCode);
-                if (_namespace != null)
-                {
-                    stringBuilder.Append("End Namespace\n");
-                }
-                return stringBuilder.ToString();
+                WrapClassVB(stringBuilder, rule.Name, rule.BaseClass, culture, rule.Script.ToString(), rule.Constructors.ToString());
             }
+        }
+        if (_script.Length > 0)
+        {
+            stringBuilder.Append(_script);
+        }
+        if (stringBuilder.Length <= 0)
+        {
             return null;
         }
-
-        private static void WrapClassVB(StringBuilder sb, string classname, string baseclass, CultureInfo culture, string script, string constructor)
+        if (classDefinitionOnly)
         {
-            sb.Append("Public Partial class ");
-            sb.Append(classname);
-            sb.Append("\n Inherits ");
-            sb.Append(!string.IsNullOrEmpty(baseclass) ? baseclass : "Grammar");
-            sb.Append(" \n");
-            if (culture != null)
-            {
-                sb.Append("<DebuggerBrowsable (DebuggerBrowsableState.Never)>Public Shared __cultureId as String = \"");
-                sb.Append(culture.LCID.ToString(CultureInfo.InvariantCulture));
-                sb.Append("\"\n");
-            }
-            sb.Append(constructor);
-            sb.Append(script);
-            sb.Append("Protected Overrides ReadOnly Property IsStg() As Boolean\nGet\nReturn True\nEnd Get\nEnd Property\n");
-            sb.Append("\nEnd Class\n");
+            return stringBuilder.ToString();
         }
+        return WrapScriptOuterVB(stringBuilder.ToString());
+    }
 
-        private static void ThrowCompilationErrors(CompilerResults results)
+    private static CodeDomProvider CreateCSharpCompiler()
+    {
+        return new CSharpCodeProvider();
+    }
+
+    private string WrapScriptOuterCSharp(string innerCode)
+    {
+        if (!string.IsNullOrEmpty(innerCode))
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            foreach (CompilerError error in results.Errors)
+            int num = 0;
+            foreach (string importNamespace in _importNamespaces)
             {
-                if (stringBuilder.Length > 0)
-                {
-                    stringBuilder.Append("\n");
-                }
-                if (error.FileName.IndexOf("<Does Not Exist>", StringComparison.Ordinal) == -1)
-                {
-                    stringBuilder.Append(error.FileName);
-                    stringBuilder.Append("(");
-                    stringBuilder.Append(error.Line);
-                    stringBuilder.Append(",");
-                    stringBuilder.Append(error.Column);
-                    stringBuilder.Append("): ");
-                }
-                stringBuilder.Append("error ");
-                stringBuilder.Append(error.ErrorNumber);
-                stringBuilder.Append(": ");
-                stringBuilder.Append(error.ErrorText);
+                num += importNamespace.Length;
             }
-            XmlParser.ThrowSrgsException(SRID.GrammarCompilerError, stringBuilder.ToString());
+            SRID sRID = SRID.ArrayOfNullIllegal;
+            string @namespace = sRID.GetType().Namespace;
+            string text = string.Format(CultureInfo.InvariantCulture, "#line 1 \"{0}\"\nusing System;\nusing System.Collections.Generic;\nusing System.Diagnostics;\nusing {1};\nusing {1}.Recognition;\nusing {1}.Recognition.SrgsGrammar;\n",
+            [
+                "<Does Not Exist>",
+                @namespace
+            ]);
+            StringBuilder stringBuilder = new StringBuilder(_script.Length + text.Length + 200);
+            stringBuilder.Append(text);
+            foreach (string importNamespace2 in _importNamespaces)
+            {
+                stringBuilder.Append("using ");
+                stringBuilder.Append(importNamespace2);
+                stringBuilder.Append(";\n");
+            }
+            if (_namespace != null)
+            {
+                stringBuilder.Append("namespace ");
+                stringBuilder.Append(_namespace);
+                stringBuilder.Append("\n{\n");
+            }
+            stringBuilder.Append(innerCode);
+            if (_namespace != null)
+            {
+                stringBuilder.Append("}\n");
+            }
+            return stringBuilder.ToString();
         }
+        return null;
+    }
 
-        private static CompilerParameters GetCompilerParameters(string outputFile, List<CfgResource> cfgResources, bool debug, Collection<string> assemblyReferences, string keyfile)
+    private static void WrapClassCSharp(StringBuilder sb, string classname, string baseclass, CultureInfo culture, string script, string constructor)
+    {
+        sb.Append("public partial class ");
+        sb.Append(classname);
+        sb.Append(" : ");
+        sb.Append(!string.IsNullOrEmpty(baseclass) ? baseclass : "Grammar");
+        sb.Append(" \n {\n");
+        if (culture != null)
         {
-            CompilerParameters compilerParameters = new CompilerParameters();
-            StringBuilder stringBuilder = new StringBuilder();
-            compilerParameters.GenerateInMemory = false;
-            compilerParameters.OutputAssembly = outputFile;
-            if (compilerParameters.IncludeDebugInformation = debug)
+            sb.Append("[DebuggerBrowsable (DebuggerBrowsableState.Never)]public static string __cultureId = \"");
+            sb.Append(culture.LCID.ToString(CultureInfo.InvariantCulture));
+            sb.Append("\";\n");
+        }
+        sb.Append(constructor);
+        sb.Append(script);
+        sb.Append("override protected bool IsStg { get { return true; }}\n\n");
+        sb.Append("\n}\n");
+    }
+
+    private static CodeDomProvider CreateVBCompiler()
+    {
+        return new VBCodeProvider();
+    }
+
+    private string WrapScriptOuterVB(string innerCode)
+    {
+        if (!string.IsNullOrEmpty(innerCode))
+        {
+            int num = 0;
+            foreach (string importNamespace in _importNamespaces)
             {
-                stringBuilder.Append("/define:DEBUG ");
+                num += importNamespace.Length;
             }
-            if (keyfile != null)
+            SRID sRID = SRID.ArrayOfNullIllegal;
+            string @namespace = sRID.GetType().Namespace;
+            string text = string.Format(CultureInfo.InvariantCulture, "#ExternalSource (\"{0}\", 1)\nImports System\nImports System.Collections.Generic\nImports System.Diagnostics\nImports {1}\nImports {1}.Recognition\nImports {1}.Recognition.SrgsGrammar\n",
+            [
+                "<Does Not Exist>",
+                @namespace
+            ]);
+            StringBuilder stringBuilder = new StringBuilder(_script.Length + text.Length + 200);
+            stringBuilder.Append(text);
+            foreach (string importNamespace2 in _importNamespaces)
             {
-                stringBuilder.Append("/keyfile:");
-                stringBuilder.Append(keyfile);
+                stringBuilder.Append("Imports ");
+                stringBuilder.Append(importNamespace2);
+                stringBuilder.Append("\n");
             }
-            compilerParameters.CompilerOptions = stringBuilder.ToString();
-            compilerParameters.ReferencedAssemblies.Add("System.dll");
-            Assembly executingAssembly = Assembly.GetExecutingAssembly();
-            compilerParameters.ReferencedAssemblies.Add(executingAssembly.Location);
-            foreach (string assemblyReference in assemblyReferences)
+            if (_namespace != null)
             {
-                compilerParameters.ReferencedAssemblies.Add(assemblyReference);
+                stringBuilder.Append("Namespace ");
+                stringBuilder.Append(_namespace);
+                stringBuilder.Append("\n");
             }
-            if (cfgResources != null)
+            stringBuilder.Append("#End ExternalSource\n");
+            stringBuilder.Append(innerCode);
+            if (_namespace != null)
             {
-                foreach (CfgResource cfgResource in cfgResources)
+                stringBuilder.Append("End Namespace\n");
+            }
+            return stringBuilder.ToString();
+        }
+        return null;
+    }
+
+    private static void WrapClassVB(StringBuilder sb, string classname, string baseclass, CultureInfo culture, string script, string constructor)
+    {
+        sb.Append("Public Partial class ");
+        sb.Append(classname);
+        sb.Append("\n Inherits ");
+        sb.Append(!string.IsNullOrEmpty(baseclass) ? baseclass : "Grammar");
+        sb.Append(" \n");
+        if (culture != null)
+        {
+            sb.Append("<DebuggerBrowsable (DebuggerBrowsableState.Never)>Public Shared __cultureId as String = \"");
+            sb.Append(culture.LCID.ToString(CultureInfo.InvariantCulture));
+            sb.Append("\"\n");
+        }
+        sb.Append(constructor);
+        sb.Append(script);
+        sb.Append("Protected Overrides ReadOnly Property IsStg() As Boolean\nGet\nReturn True\nEnd Get\nEnd Property\n");
+        sb.Append("\nEnd Class\n");
+    }
+
+    private static void ThrowCompilationErrors(CompilerResults results)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        foreach (CompilerError error in results.Errors)
+        {
+            if (stringBuilder.Length > 0)
+            {
+                stringBuilder.Append("\n");
+            }
+            if (error.FileName.IndexOf("<Does Not Exist>", StringComparison.Ordinal) == -1)
+            {
+                stringBuilder.Append(error.FileName);
+                stringBuilder.Append("(");
+                stringBuilder.Append(error.Line);
+                stringBuilder.Append(",");
+                stringBuilder.Append(error.Column);
+                stringBuilder.Append("): ");
+            }
+            stringBuilder.Append("error ");
+            stringBuilder.Append(error.ErrorNumber);
+            stringBuilder.Append(": ");
+            stringBuilder.Append(error.ErrorText);
+        }
+        XmlParser.ThrowSrgsException(SRID.GrammarCompilerError, stringBuilder.ToString());
+    }
+
+    private static CompilerParameters GetCompilerParameters(string outputFile, List<CfgResource> cfgResources, bool debug, Collection<string> assemblyReferences, string keyfile)
+    {
+        CompilerParameters compilerParameters = new CompilerParameters();
+        StringBuilder stringBuilder = new StringBuilder();
+        compilerParameters.GenerateInMemory = false;
+        compilerParameters.OutputAssembly = outputFile;
+        if (compilerParameters.IncludeDebugInformation = debug)
+        {
+            stringBuilder.Append("/define:DEBUG ");
+        }
+        if (keyfile != null)
+        {
+            stringBuilder.Append("/keyfile:");
+            stringBuilder.Append(keyfile);
+        }
+        compilerParameters.CompilerOptions = stringBuilder.ToString();
+        compilerParameters.ReferencedAssemblies.Add("System.dll");
+        Assembly executingAssembly = Assembly.GetExecutingAssembly();
+        compilerParameters.ReferencedAssemblies.Add(executingAssembly.Location);
+        foreach (string assemblyReference in assemblyReferences)
+        {
+            compilerParameters.ReferencedAssemblies.Add(assemblyReference);
+        }
+        if (cfgResources != null)
+        {
+            foreach (CfgResource cfgResource in cfgResources)
+            {
+                using (FileStream output = new FileStream(cfgResource.name, FileMode.Create, FileAccess.Write))
                 {
-                    using (FileStream output = new FileStream(cfgResource.name, FileMode.Create, FileAccess.Write))
+                    using (BinaryWriter binaryWriter = new BinaryWriter(output))
                     {
-                        using (BinaryWriter binaryWriter = new BinaryWriter(output))
-                        {
-                            binaryWriter.Write(cfgResource.data, 0, cfgResource.data.Length);
-                            compilerParameters.EmbeddedResources.Add(cfgResource.name);
-                        }
+                        binaryWriter.Write(cfgResource.data, 0, cfgResource.data.Length);
+                        compilerParameters.EmbeddedResources.Add(cfgResource.name);
                     }
                 }
-                return compilerParameters;
             }
             return compilerParameters;
         }
+        return compilerParameters;
+    }
 
-        private void CheckValidAssembly(int iCfg, byte[] il)
+    private void CheckValidAssembly(int iCfg, byte[] il)
+    {
+        Assembly executingAssembly = Assembly.GetExecutingAssembly();
+        AppDomain appDomain = null;
+        try
         {
-            Assembly executingAssembly = Assembly.GetExecutingAssembly();
-            AppDomain appDomain = null;
-            try
+            appDomain = AppDomain.CreateDomain("Loading Domain");
+            AppDomainCompilerProxy appDomainCompilerProxy = (AppDomainCompilerProxy)appDomain.CreateInstanceFromAndUnwrap(executingAssembly.GetName().CodeBase, "System.Speech.Internal.SrgsCompiler.AppDomainCompilerProxy");
+            int count = _scriptRefs.Count;
+            string[] array = new string[count];
+            string[] array2 = new string[count];
+            int[] array3 = new int[count];
+            for (int i = 0; i < count; i++)
             {
-                appDomain = AppDomain.CreateDomain("Loading Domain");
-                AppDomainCompilerProxy appDomainCompilerProxy = (AppDomainCompilerProxy)appDomain.CreateInstanceFromAndUnwrap(executingAssembly.GetName().CodeBase, "System.Speech.Internal.SrgsCompiler.AppDomainCompilerProxy");
-                int count = _scriptRefs.Count;
-                string[] array = new string[count];
-                string[] array2 = new string[count];
-                int[] array3 = new int[count];
-                for (int i = 0; i < count; i++)
-                {
-                    ScriptRef scriptRef = _scriptRefs[i];
-                    array[i] = scriptRef._rule;
-                    array2[i] = scriptRef._sMethod;
-                    array3[i] = (int)scriptRef._method;
-                }
-                Exception ex = appDomainCompilerProxy.CheckAssembly(il, iCfg, _language, _namespace, array, array2, array3);
-                if (ex != null)
-                {
-                    throw ex;
-                }
-                AssociateConstructorsWithRules(appDomainCompilerProxy, array, _rules, iCfg, _language);
+                ScriptRef scriptRef = _scriptRefs[i];
+                array[i] = scriptRef._rule;
+                array2[i] = scriptRef._sMethod;
+                array3[i] = (int)scriptRef._method;
             }
-            finally
+            Exception ex = appDomainCompilerProxy.CheckAssembly(il, iCfg, _language, _namespace, array, array2, array3);
+            if (ex != null)
             {
-                if (appDomain != null)
-                {
-                    AppDomain.Unload(appDomain);
-                    appDomain = null;
-                }
+                throw ex;
+            }
+            AssociateConstructorsWithRules(appDomainCompilerProxy, array, _rules, iCfg, _language);
+        }
+        finally
+        {
+            if (appDomain != null)
+            {
+                AppDomain.Unload(appDomain);
+                appDomain = null;
             }
         }
+    }
 
-        private static void AssociateConstructorsWithRules(AppDomainCompilerProxy proxy, string[] names, List<Rule> rules, int iCfg, string language)
+    private static void AssociateConstructorsWithRules(AppDomainCompilerProxy proxy, string[] names, List<Rule> rules, int iCfg, string language)
+    {
+        string[] array = proxy.Constructors();
+        foreach (Rule rule in rules)
         {
-            string[] array = proxy.Constructors();
-            foreach (Rule rule in rules)
+            int num = 0;
+            while (num < names.Length && (num = Array.IndexOf(names, rule.Name, num)) >= 0)
             {
-                int num = 0;
-                while (num < names.Length && (num = Array.IndexOf(names, rule.Name, num)) >= 0)
+                if (array[num] != null)
                 {
-                    if (array[num] != null)
-                    {
-                        rule.Constructors.Append(array[num]);
-                    }
-                    num++;
+                    rule.Constructors.Append(array[num]);
                 }
-                if (rule.Constructors.Length == 0)
-                {
-                    rule.Constructors.Append(proxy.GenerateConstructor(iCfg, [], language, rule.Name));
-                }
+                num++;
+            }
+            if (rule.Constructors.Length == 0)
+            {
+                rule.Constructors.Append(proxy.GenerateConstructor(iCfg, [], language, rule.Name));
             }
         }
+    }
 
-        private static byte[] ExtractCodeGenerated(string path)
+    private static byte[] ExtractCodeGenerated(string path)
+    {
+        byte[] result = null;
+        if (!string.IsNullOrEmpty(path))
         {
-            byte[] result = null;
-            if (!string.IsNullOrEmpty(path))
+            using (FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                using (FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
-                {
-                    return Helpers.ReadStreamToByteArray(fileStream, (int)fileStream.Length);
-                }
+                return Helpers.ReadStreamToByteArray(fileStream, (int)fileStream.Length);
             }
-            return result;
         }
+        return result;
     }
 }

@@ -25,12 +25,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
+namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch;
+
+public enum ToggleSwitchAlignment
 {
-    public enum ToggleSwitchAlignment
-    {
-        Near,
-        Center,
-        Far
-    }
+    Near,
+    Center,
+    Far
 }

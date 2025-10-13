@@ -26,13 +26,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+public enum SpeakOutputFormat
 {
-	public enum SpeakOutputFormat
-	{
-		/// <summary />
-		WaveFormat,
-		/// <summary />
-		Text
-	}
+    /// <summary />
+    WaveFormat,
+    /// <summary />
+    Text
 }

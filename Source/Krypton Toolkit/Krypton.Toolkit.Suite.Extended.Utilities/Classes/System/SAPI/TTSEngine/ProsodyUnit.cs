@@ -26,15 +26,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+public enum ProsodyUnit
 {
-	public enum ProsodyUnit
-	{
-		/// <summary />
-		Default,
-		/// <summary />
-		Hz,
-		/// <summary />
-		Semitone
-	}
+    /// <summary />
+    Default,
+    /// <summary />
+    Hz,
+    /// <summary />
+    Semitone
 }

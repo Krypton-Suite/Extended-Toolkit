@@ -1,33 +1,32 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+internal class Diamond : IMarker
 {
-    internal class Diamond : IMarker
+    public void Render(SKCanvas canvas, SKPaint paint, Pixel center, float size, FillStyle fill, LineStyle outline)
     {
-        public void Render(SKCanvas canvas, SKPaint paint, Pixel center, float size, FillStyle fill, LineStyle outline)
+        float offset = size / 2;
+
+        fill.ApplyToPaint(paint);
+
+        // 4 corners
+        SKPoint[] pointsList =
+        [
+            new SKPoint(center.X + offset, center.Y),
+            new SKPoint(center.X, center.Y + offset),
+            new SKPoint(center.X - offset, center.Y),
+            new SKPoint(center.X, center.Y - offset)
+
+        ];
+
+        var path = new SKPath();
+        path.AddPoly(pointsList);
+
+        canvas.DrawPath(path, paint);
+
+        if (outline.Width > 0)
         {
-            float offset = size / 2;
-
-            fill.ApplyToPaint(paint);
-
-            // 4 corners
-            SKPoint[] pointsList =
-            [
-                new SKPoint(center.X + offset, center.Y),
-                new SKPoint(center.X, center.Y + offset),
-                new SKPoint(center.X - offset, center.Y),
-                new SKPoint(center.X, center.Y - offset)
-
-            ];
-
-            var path = new SKPath();
-            path.AddPoly(pointsList);
-
+            outline.ApplyToPaint(paint);
             canvas.DrawPath(path, paint);
-
-            if (outline.Width > 0)
-            {
-                outline.ApplyToPaint(paint);
-                canvas.DrawPath(path, paint);
-            }
         }
     }
 }

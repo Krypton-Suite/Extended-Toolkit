@@ -26,43 +26,42 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
+
+[Serializable]
+[DebuggerDisplay("SrgsElement Children:[{_items.Count}]")]
+[DebuggerTypeProxy(typeof(SrgsElementDebugDisplay))]
+public abstract class SrgsElement : MarshalByRefObject, IElement
 {
-    [Serializable]
-    [DebuggerDisplay("SrgsElement Children:[{_items.Count}]")]
-    [DebuggerTypeProxy(typeof(SrgsElementDebugDisplay))]
-    public abstract class SrgsElement : MarshalByRefObject, IElement
+    internal class SrgsElementDebugDisplay
     {
-        internal class SrgsElementDebugDisplay
+        private SrgsElement[] _elements;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
+        public SrgsElement[] AKeys => _elements;
+
+        public SrgsElementDebugDisplay(SrgsElement element)
         {
-            private SrgsElement[] _elements;
-
-            [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-            public SrgsElement[] AKeys => _elements;
-
-            public SrgsElementDebugDisplay(SrgsElement element)
-            {
-                _elements = element.Children;
-            }
+            _elements = element.Children;
         }
+    }
 
-        internal virtual SrgsElement[] Children => [];
+    internal virtual SrgsElement[] Children => [];
 
-        internal abstract void WriteSrgs(XmlWriter writer);
+    internal abstract void WriteSrgs(XmlWriter writer);
 
-        internal abstract string DebuggerDisplayString();
+    internal abstract string DebuggerDisplayString();
 
-        internal virtual void Validate(SrgsGrammar grammar)
+    internal virtual void Validate(SrgsGrammar grammar)
+    {
+        SrgsElement[] children = Children;
+        foreach (SrgsElement srgsElement in children)
         {
-            SrgsElement[] children = Children;
-            foreach (SrgsElement srgsElement in children)
-            {
-                srgsElement.Validate(grammar);
-            }
+            srgsElement.Validate(grammar);
         }
+    }
 
-        void IElement.PostParse(IElement parent)
-        {
-        }
+    void IElement.PostParse(IElement parent)
+    {
     }
 }

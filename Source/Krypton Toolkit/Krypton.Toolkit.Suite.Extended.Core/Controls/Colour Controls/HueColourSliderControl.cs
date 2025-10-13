@@ -26,80 +26,79 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+[ToolboxItem(false)]
+public class HueColourSliderControl : ColourSliderControl
 {
-    [ToolboxItem(false)]
-    public class HueColourSliderControl : ColourSliderControl
+    #region Constructors
+
+    public HueColourSliderControl()
     {
-        #region Constructors
-
-        public HueColourSliderControl()
-        {
-            this.BarStyle = ColourBarStyle.Custom;
-            this.Maximum = 359;
-            this.CustomColours = new(Enumerable.Range(0, 359).Select(h => new HSLColourStructure(h, 1, 0.5).ToRgbColour()));
-        }
-
-        #endregion
-
-        #region Properties
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override ColourBarStyle BarStyle
-        {
-            get => base.BarStyle;
-            set => base.BarStyle = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override Color Colour1
-        {
-            get => base.Colour1;
-            set => base.Colour1 = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override Color Colour2
-        {
-            get => base.Colour2;
-            set => base.Colour2 = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override Color Colour3
-        {
-            get => base.Colour3;
-            set => base.Colour3 = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override float Maximum
-        {
-            get => base.Maximum;
-            set => base.Maximum = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override float Minimum
-        {
-            get => base.Minimum;
-            set => base.Minimum = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override float Value
-        {
-            get => base.Value;
-            set => base.Value = (int)value;
-        }
-
-        #endregion
+        this.BarStyle = ColourBarStyle.Custom;
+        this.Maximum = 359;
+        this.CustomColours = new(Enumerable.Range(0, 359).Select(h => new HSLColourStructure(h, 1, 0.5).ToRgbColour()));
     }
+
+    #endregion
+
+    #region Properties
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override ColourBarStyle BarStyle
+    {
+        get => base.BarStyle;
+        set => base.BarStyle = value;
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override Color Colour1
+    {
+        get => base.Colour1;
+        set => base.Colour1 = value;
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override Color Colour2
+    {
+        get => base.Colour2;
+        set => base.Colour2 = value;
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override Color Colour3
+    {
+        get => base.Colour3;
+        set => base.Colour3 = value;
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override float Maximum
+    {
+        get => base.Maximum;
+        set => base.Maximum = value;
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override float Minimum
+    {
+        get => base.Minimum;
+        set => base.Minimum = value;
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override float Value
+    {
+        get => base.Value;
+        set => base.Value = (int)value;
+    }
+
+    #endregion
 }

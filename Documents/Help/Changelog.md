@@ -6,6 +6,9 @@
 =======
 
 ## 2025-11-xx - Build 2511 - November 2025
+* Implemented [#540](https://github.com/Krypton-Suite/Extended-Toolkit/issues/540), Set the baseline support to .NET Framework 4.7.2
+	- **Note:** This is the minimum supported version of .NET Framework for the Extended Toolkit is now .NET Framework 4.7.2
+* Implemented [#536](https://github.com/Krypton-Suite/Extended-Toolkit/issues/536), Use `filescoped` namespaces
 * Implemented [#522](https://github.com/Krypton-Suite/Extended-Toolkit/issues/522), Support the new `slnx` format
 * Rollback [#514](https://github.com/Krypton-Suite/Standard-Toolkit/issues/514), Move `KryptonOutlookGrid` back to Extended ToolKit for further evaluation & development
 * Add support for .NET 10.0

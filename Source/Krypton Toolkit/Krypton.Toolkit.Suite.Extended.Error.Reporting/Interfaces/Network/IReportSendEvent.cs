@@ -25,21 +25,20 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
+
+/// <summary>
+/// Represents the events required of a report sender
+/// </summary>
+public interface IReportSendEvent
 {
     /// <summary>
-    /// Represents the events required of a report sender
+    /// send completed
     /// </summary>
-    public interface IReportSendEvent
-    {
-        /// <summary>
-        /// send completed
-        /// </summary>
-        void Completed(bool success);
+    void Completed(bool success);
 
-        /// <summary>
-        /// show an error
-        /// </summary>
-        void ShowError(string message, Exception exception);
-    }
+    /// <summary>
+    /// show an error
+    /// </summary>
+    void ShowError(string message, Exception exception);
 }

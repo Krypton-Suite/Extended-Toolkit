@@ -25,14 +25,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Memory.Box
+namespace Krypton.Toolkit.Suite.Extended.Memory.Box;
+
+public enum KryptonMemoryBoxDialogResult
 {
-    public enum KryptonMemoryBoxDialogResult
-    {
-        Yes,
-        YesToAll,
-        No,
-        NoToAll,
-        Cancel
-    }
+    Yes,
+    YesToAll,
+    No,
+    NoToAll,
+    Cancel
 }

@@ -26,45 +26,44 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+
+internal static class SapiAttributeParser
 {
-    internal static class SapiAttributeParser
+    internal static CultureInfo GetCultureInfoFromLanguageString(string valueString)
     {
-        internal static CultureInfo GetCultureInfoFromLanguageString(string valueString)
+        string[] array = valueString.Split(';');
+        string text = array[0].Trim();
+        if (!string.IsNullOrEmpty(text))
         {
-            string[] array = valueString.Split(';');
-            string text = array[0].Trim();
+            try
+            {
+                return new CultureInfo(int.Parse(text, NumberStyles.HexNumber, CultureInfo.InvariantCulture), false);
+            }
+            catch (ArgumentException)
+            {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    internal static List<SpeechAudioFormatInfo> GetAudioFormatsFromString(string valueString)
+    {
+        List<SpeechAudioFormatInfo> list = [];
+        string[] array = valueString.Split(';');
+        for (int i = 0; i < array.Length; i++)
+        {
+            string text = array[i].Trim();
             if (!string.IsNullOrEmpty(text))
             {
-                try
+                SpeechAudioFormatInfo speechAudioFormatInfo = AudioFormatConverter.ToSpeechAudioFormatInfo(text);
+                if (speechAudioFormatInfo != null)
                 {
-                    return new CultureInfo(int.Parse(text, NumberStyles.HexNumber, CultureInfo.InvariantCulture), false);
-                }
-                catch (ArgumentException)
-                {
-                    return null;
+                    list.Add(speechAudioFormatInfo);
                 }
             }
-            return null;
         }
-
-        internal static List<SpeechAudioFormatInfo> GetAudioFormatsFromString(string valueString)
-        {
-            List<SpeechAudioFormatInfo> list = [];
-            string[] array = valueString.Split(';');
-            for (int i = 0; i < array.Length; i++)
-            {
-                string text = array[i].Trim();
-                if (!string.IsNullOrEmpty(text))
-                {
-                    SpeechAudioFormatInfo speechAudioFormatInfo = AudioFormatConverter.ToSpeechAudioFormatInfo(text);
-                    if (speechAudioFormatInfo != null)
-                    {
-                        list.Add(speechAudioFormatInfo);
-                    }
-                }
-            }
-            return list;
-        }
+        return list;
     }
 }

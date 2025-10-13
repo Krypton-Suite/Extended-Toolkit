@@ -25,53 +25,52 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+/// <summary>
+/// This class contains additional info about an add or remove operation
+/// For more information see <see cref="T:ChildControlCollection"/>
+/// </summary>
+public class ExtCollectionEventArgs : EventArgs
 {
+    #region Fields
+
+    private Object m_item;
+
+    #endregion
+
+    #region Constructor
+
     /// <summary>
-    /// This class contains additional info about an add or remove operation
-    /// For more information see <see cref="T:ChildControlCollection"/>
+    /// Initializes a new instance of the CollectionEventArgs class
     /// </summary>
-    public class ExtCollectionEventArgs : EventArgs
+    public ExtCollectionEventArgs()
     {
-        #region Fields
-
-        private Object m_item;
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new instance of the CollectionEventArgs class
-        /// </summary>
-        public ExtCollectionEventArgs()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the CollectionEventArgs class
-        /// </summary>
-        /// <param name="item">Item which changed the collection</param>
-        public ExtCollectionEventArgs(object item)
-        {
-            m_item = item;
-        }
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Gets the item which changed the collection
-        /// </summary>
-        public Object Item
-        {
-            get => m_item;
-            set => m_item = value;
-        }
-
-        #endregion
     }
 
-    public delegate void CollectionEventHandler(object sender, ExtCollectionEventArgs e);
+    /// <summary>
+    /// Initializes a new instance of the CollectionEventArgs class
+    /// </summary>
+    /// <param name="item">Item which changed the collection</param>
+    public ExtCollectionEventArgs(object item)
+    {
+        m_item = item;
+    }
+
+    #endregion
+
+    #region Properties
+
+    /// <summary>
+    /// Gets the item which changed the collection
+    /// </summary>
+    public Object Item
+    {
+        get => m_item;
+        set => m_item = value;
+    }
+
+    #endregion
 }
+
+public delegate void CollectionEventHandler(object sender, ExtCollectionEventArgs e);

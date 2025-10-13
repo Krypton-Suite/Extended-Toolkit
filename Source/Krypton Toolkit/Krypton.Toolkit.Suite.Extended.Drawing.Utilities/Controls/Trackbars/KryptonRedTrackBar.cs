@@ -25,27 +25,64 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+[ToolboxBitmap(typeof(KryptonTrackBar))]
+public class KryptonRedTrackBar : KryptonTrackBar
 {
-    [ToolboxBitmap(typeof(KryptonTrackBar))]
-    public class KryptonRedTrackBar : KryptonTrackBar
+    #region Variables
+    private bool _useAccessibleUI;
+    #endregion
+
+    #region Properties
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public bool UseAccessibleUI { get => _useAccessibleUI; set { _useAccessibleUI = value; Invalidate(); } }
+
+    #endregion
+
+    #region Constructor
+    public KryptonRedTrackBar()
     {
-        #region Variables
-        private bool _useAccessibleUI;
-        #endregion
+        Maximum = 255;
 
-        #region Properties
+        StateCommon.Tick.Color1 = Color.Red;
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool UseAccessibleUI { get => _useAccessibleUI; set { _useAccessibleUI = value; Invalidate(); } }
+        StateCommon.Track.Color1 = Color.Red;
 
-        #endregion
+        StateCommon.Track.Color2 = Color.Red;
 
-        #region Constructor
-        public KryptonRedTrackBar()
+        StateCommon.Track.Color3 = Color.Red;
+
+        StateCommon.Track.Color4 = Color.Red;
+
+        StateCommon.Track.Color5 = Color.Red;
+
+        TickStyle = TickStyle.None;
+
+        Size = new Size(182, 27);
+    }
+    #endregion
+
+    #region Methods
+    private void AlterTrackbarUI(bool useAccessibleUI)
+    {
+        if (useAccessibleUI)
         {
-            Maximum = 255;
+            StateCommon.Tick.Color1 = Color.Empty;
 
+            StateCommon.Track.Color1 = Color.Empty;
+
+            StateCommon.Track.Color2 = Color.Empty;
+
+            StateCommon.Track.Color3 = Color.Empty;
+
+            StateCommon.Track.Color4 = Color.Empty;
+
+            StateCommon.Track.Color5 = Color.Empty;
+        }
+        else
+        {
             StateCommon.Tick.Color1 = Color.Red;
 
             StateCommon.Track.Color1 = Color.Red;
@@ -57,54 +94,16 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             StateCommon.Track.Color4 = Color.Red;
 
             StateCommon.Track.Color5 = Color.Red;
-
-            TickStyle = TickStyle.None;
-
-            Size = new Size(182, 27);
         }
-        #endregion
-
-        #region Methods
-        private void AlterTrackbarUI(bool useAccessibleUI)
-        {
-            if (useAccessibleUI)
-            {
-                StateCommon.Tick.Color1 = Color.Empty;
-
-                StateCommon.Track.Color1 = Color.Empty;
-
-                StateCommon.Track.Color2 = Color.Empty;
-
-                StateCommon.Track.Color3 = Color.Empty;
-
-                StateCommon.Track.Color4 = Color.Empty;
-
-                StateCommon.Track.Color5 = Color.Empty;
-            }
-            else
-            {
-                StateCommon.Tick.Color1 = Color.Red;
-
-                StateCommon.Track.Color1 = Color.Red;
-
-                StateCommon.Track.Color2 = Color.Red;
-
-                StateCommon.Track.Color3 = Color.Red;
-
-                StateCommon.Track.Color4 = Color.Red;
-
-                StateCommon.Track.Color5 = Color.Red;
-            }
-        }
-        #endregion
-
-        #region Overrides
-        protected override void OnPaint(PaintEventArgs? e)
-        {
-            AlterTrackbarUI(_useAccessibleUI);
-
-            base.OnPaint(e);
-        }
-        #endregion
     }
+    #endregion
+
+    #region Overrides
+    protected override void OnPaint(PaintEventArgs? e)
+    {
+        AlterTrackbarUI(_useAccessibleUI);
+
+        base.OnPaint(e);
+    }
+    #endregion
 }

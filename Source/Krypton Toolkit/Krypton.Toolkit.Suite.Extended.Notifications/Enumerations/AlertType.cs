@@ -25,14 +25,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Notifications
+namespace Krypton.Toolkit.Suite.Extended.Notifications;
+
+public enum AlertType
 {
-    public enum AlertType
-    {
-        Success,
-        Information,
-        Warning,
-        Error,
-        Custom
-    }
+    Success,
+    Information,
+    Warning,
+    Error,
+    Custom
 }

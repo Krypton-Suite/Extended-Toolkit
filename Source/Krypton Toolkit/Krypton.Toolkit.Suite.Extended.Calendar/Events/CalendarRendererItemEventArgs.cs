@@ -25,35 +25,34 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Calendar
+namespace Krypton.Toolkit.Suite.Extended.Calendar;
+
+/// <summary>
+/// Contains information to render an item
+/// </summary>
+public class CalendarRendererItemEventArgs : CalendarRendererEventArgs
 {
-    /// <summary>
-    /// Contains information to render an item
-    /// </summary>
-    public class CalendarRendererItemEventArgs : CalendarRendererEventArgs
+    #region Fields
+    private CalendarItemAlternative? _item;
+    #endregion
+
+    #region Ctor
+
+
+    public CalendarRendererItemEventArgs(CalendarRendererEventArgs original, CalendarItemAlternative? item)
+        : base(original)
     {
-        #region Fields
-        private CalendarItemAlternative? _item;
-        #endregion
-
-        #region Ctor
-
-
-        public CalendarRendererItemEventArgs(CalendarRendererEventArgs original, CalendarItemAlternative? item)
-            : base(original)
-        {
-            _item = item;
-        }
-
-        #endregion
-
-        #region Props
-
-        /// <summary>
-        /// Gets the Item being rendered
-        /// </summary>
-        public CalendarItemAlternative? Item => _item;
-
-        #endregion
+        _item = item;
     }
+
+    #endregion
+
+    #region Props
+
+    /// <summary>
+    /// Gets the Item being rendered
+    /// </summary>
+    public CalendarItemAlternative? Item => _item;
+
+    #endregion
 }

@@ -26,125 +26,124 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
+
+[Serializable]
+[DebuggerDisplay("{DebuggerDisplayString ()}")]
+[DebuggerTypeProxy(typeof(OneOfDebugDisplay))]
+public class SrgsOneOf : SrgsElement, IOneOf, IElement
 {
-    [Serializable]
-    [DebuggerDisplay("{DebuggerDisplayString ()}")]
-    [DebuggerTypeProxy(typeof(OneOfDebugDisplay))]
-    public class SrgsOneOf : SrgsElement, IOneOf, IElement
+    internal class OneOfDebugDisplay
     {
-        internal class OneOfDebugDisplay
-        {
-            private Collection<SrgsItem> _items;
+        private Collection<SrgsItem> _items;
 
-            [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-            public SrgsItem[] AKeys
-            {
-                get
-                {
-                    SrgsItem[] array = new SrgsItem[_items.Count];
-                    for (int i = 0; i < _items.Count; i++)
-                    {
-                        array[i] = _items[i];
-                    }
-                    return array;
-                }
-            }
-
-            public OneOfDebugDisplay(SrgsOneOf oneOf)
-            {
-                _items = oneOf._items;
-            }
-        }
-
-        private SrgsItemList _items = [];
-
-        public Collection<SrgsItem> Items => _items;
-
-        internal override SrgsElement[] Children
+        [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
+        public SrgsItem[] AKeys
         {
             get
             {
-                SrgsElement[] array = new SrgsElement[_items.Count];
-                int num = 0;
-                foreach (SrgsItem item in _items)
+                SrgsItem[] array = new SrgsItem[_items.Count];
+                for (int i = 0; i < _items.Count; i++)
                 {
-                    array[num++] = item;
+                    array[i] = _items[i];
                 }
                 return array;
             }
         }
 
-        public SrgsOneOf()
+        public OneOfDebugDisplay(SrgsOneOf oneOf)
         {
+            _items = oneOf._items;
         }
+    }
 
-        public SrgsOneOf(params string[] items)
-            : this()
+    private SrgsItemList _items = [];
+
+    public Collection<SrgsItem> Items => _items;
+
+    internal override SrgsElement[] Children
+    {
+        get
         {
-            Helpers.ThrowIfNull(items, "items");
+            SrgsElement[] array = new SrgsElement[_items.Count];
             int num = 0;
-            while (true)
-            {
-                if (num < items.Length)
-                {
-                    if (items[num] == null)
-                    {
-                        break;
-                    }
-                    _items.Add(new SrgsItem(items[num]));
-                    num++;
-                    continue;
-                }
-                return;
-            }
-            throw new ArgumentNullException("items", SR.Get(SRID.ParamsEntryNullIllegal));
-        }
-
-        public SrgsOneOf(params SrgsItem[] items)
-            : this()
-        {
-            Helpers.ThrowIfNull(items, "items");
-            int num = 0;
-            while (true)
-            {
-                if (num < items.Length)
-                {
-                    SrgsItem srgsItem = items[num];
-                    if (srgsItem == null)
-                    {
-                        break;
-                    }
-                    _items.Add(srgsItem);
-                    num++;
-                    continue;
-                }
-                return;
-            }
-            throw new ArgumentNullException("items", SR.Get(SRID.ParamsEntryNullIllegal));
-        }
-
-        public void Add(SrgsItem item)
-        {
-            Helpers.ThrowIfNull(item, "item");
-            Items.Add(item);
-        }
-
-        internal override void WriteSrgs(XmlWriter writer)
-        {
-            writer.WriteStartElement("one-of");
             foreach (SrgsItem item in _items)
             {
-                item.WriteSrgs(writer);
+                array[num++] = item;
             }
-            writer.WriteEndElement();
+            return array;
         }
+    }
 
-        internal override string DebuggerDisplayString()
+    public SrgsOneOf()
+    {
+    }
+
+    public SrgsOneOf(params string[] items)
+        : this()
+    {
+        Helpers.ThrowIfNull(items, "items");
+        int num = 0;
+        while (true)
         {
-            StringBuilder stringBuilder = new StringBuilder("SrgsOneOf Count = ");
-            stringBuilder.Append(_items.Count);
-            return stringBuilder.ToString();
+            if (num < items.Length)
+            {
+                if (items[num] == null)
+                {
+                    break;
+                }
+                _items.Add(new SrgsItem(items[num]));
+                num++;
+                continue;
+            }
+            return;
         }
+        throw new ArgumentNullException("items", SR.Get(SRID.ParamsEntryNullIllegal));
+    }
+
+    public SrgsOneOf(params SrgsItem[] items)
+        : this()
+    {
+        Helpers.ThrowIfNull(items, "items");
+        int num = 0;
+        while (true)
+        {
+            if (num < items.Length)
+            {
+                SrgsItem srgsItem = items[num];
+                if (srgsItem == null)
+                {
+                    break;
+                }
+                _items.Add(srgsItem);
+                num++;
+                continue;
+            }
+            return;
+        }
+        throw new ArgumentNullException("items", SR.Get(SRID.ParamsEntryNullIllegal));
+    }
+
+    public void Add(SrgsItem item)
+    {
+        Helpers.ThrowIfNull(item, "item");
+        Items.Add(item);
+    }
+
+    internal override void WriteSrgs(XmlWriter writer)
+    {
+        writer.WriteStartElement("one-of");
+        foreach (SrgsItem item in _items)
+        {
+            item.WriteSrgs(writer);
+        }
+        writer.WriteEndElement();
+    }
+
+    internal override string DebuggerDisplayString()
+    {
+        StringBuilder stringBuilder = new StringBuilder("SrgsOneOf Count = ");
+        stringBuilder.Append(_items.Count);
+        return stringBuilder.ToString();
     }
 }

@@ -1,7 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+internal interface INamedColors
 {
-    internal interface INamedColors
-    {
-        Color[] GetAllColors();
-    }
+    Color[] GetAllColors();
 }

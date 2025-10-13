@@ -1,10 +1,9 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public enum Key
 {
-    public enum Key
-    {
-        Unknown,
-        Ctrl,
-        Alt,
-        Shift
-    }
+    Unknown,
+    Ctrl,
+    Alt,
+    Shift
 }

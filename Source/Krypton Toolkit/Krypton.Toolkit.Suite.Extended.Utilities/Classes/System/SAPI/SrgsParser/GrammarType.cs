@@ -26,11 +26,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+internal enum GrammarType
 {
-    internal enum GrammarType
-    {
-        VoiceGrammar,
-        DtmfGrammar
-    }
+    VoiceGrammar,
+    DtmfGrammar
 }

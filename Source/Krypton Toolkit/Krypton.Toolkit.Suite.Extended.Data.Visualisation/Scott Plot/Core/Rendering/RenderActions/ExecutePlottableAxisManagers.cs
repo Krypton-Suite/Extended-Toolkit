@@ -1,14 +1,13 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+internal class ExecutePlottableAxisManagers : IRenderAction
 {
-    internal class ExecutePlottableAxisManagers : IRenderAction
+    public void Render(RenderPack rp)
     {
-        public void Render(RenderPack rp)
-        {
-            rp.Plot.PlottableList
-                .OfType<IManagesAxisLimits>()
-                .Where(x => x.ManageAxisLimits)
-                .ToList()
-                .ForEach(x => x.UpdateAxisLimits(rp.Plot));
-        }
+        rp.Plot.PlottableList
+            .OfType<IManagesAxisLimits>()
+            .Where(x => x.ManageAxisLimits)
+            .ToList()
+            .ForEach(x => x.UpdateAxisLimits(rp.Plot));
     }
 }

@@ -47,25 +47,24 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class Category20 : IPalette
 {
-    public class Category20 : IPalette
-    {
-        public string Name { get; } = "Category 20";
+    public string Name { get; } = "Category 20";
 
-        public string Description { get; } = "A set of 20 unique colors used in " +
-                                             "many data visualization libraries such as Matplotlib, Vega, and Tableau";
+    public string Description { get; } = "A set of 20 unique colors used in " +
+                                         "many data visualization libraries such as Matplotlib, Vega, and Tableau";
 
-        public Color[] Colors { get; } = Color.FromHex(_hexColors);
+    public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] _hexColors =
-        [
-            "#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c",
-            "#98df8a", "#d62728", "#ff9896", "#9467bd", "#c5b0d5",
-            "#8c564b", "#c49c94", "#e377c2", "#f7b6d2", "#7f7f7f",
-            "#c7c7c7", "#bcbd22", "#dbdb8d", "#17becf", "#9edae5"
-        ];
+    private static readonly string[] _hexColors =
+    [
+        "#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c",
+        "#98df8a", "#d62728", "#ff9896", "#9467bd", "#c5b0d5",
+        "#8c564b", "#c49c94", "#e377c2", "#f7b6d2", "#7f7f7f",
+        "#c7c7c7", "#bcbd22", "#dbdb8d", "#17becf", "#9edae5"
+    ];
 
-        public Color GetColor(int index) => Colors[index % Colors.Length];
-    }
+    public Color GetColor(int index) => Colors[index % Colors.Length];
 }

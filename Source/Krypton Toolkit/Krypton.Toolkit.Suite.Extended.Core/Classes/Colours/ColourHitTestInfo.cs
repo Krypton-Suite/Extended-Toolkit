@@ -26,18 +26,17 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+public class ColourHitTestInfo
 {
-    public class ColourHitTestInfo
-    {
-        #region Properties
+    #region Properties
 
-        public Color Colour { get; set; }
+    public Color Colour { get; set; }
 
-        public int Index { get; set; }
+    public int Index { get; set; }
 
-        public ColourSource Source { get; set; }
+    public ColourSource Source { get; set; }
 
-        #endregion
-    }
+    #endregion
 }

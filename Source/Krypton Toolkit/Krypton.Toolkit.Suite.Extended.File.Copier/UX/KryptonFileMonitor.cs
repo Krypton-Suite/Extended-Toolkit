@@ -25,59 +25,58 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.File.Copier
+namespace Krypton.Toolkit.Suite.Extended.File.Copier;
+
+public partial class KryptonFileMonitor : KryptonForm, ICopyFileDetails
 {
-    public partial class KryptonFileMonitor : KryptonForm, ICopyFileDetails
+    #region ICopyFileDetails Implementation
+    public ISynchronizeInvoke SynchronizationObject { get; set; }
+
+    public event CopyFiles.DEL_cancelCopy EN_cancelCopy;
+
+    public void Update(int totalFiles, int copiedFiles, long totalBytes, long copiedBytes, string currentFilename)
     {
-        #region ICopyFileDetails Implementation
-        public ISynchronizeInvoke SynchronizationObject { get; set; }
+        pbTotalFiles.Maximum = totalFiles;
 
-        public event CopyFiles.DEL_cancelCopy EN_cancelCopy;
+        pbTotalFiles.Value = copiedFiles;
 
-        public void Update(int totalFiles, int copiedFiles, long totalBytes, long copiedBytes, string currentFilename)
+        pbCurrentFile.Maximum = 100;
+
+        if (totalFiles != 0)
         {
-            pbTotalFiles.Maximum = totalFiles;
-
-            pbTotalFiles.Value = copiedFiles;
-
-            pbCurrentFile.Maximum = 100;
-
-            if (totalFiles != 0)
-            {
-                pbCurrentFile.Value = Convert.ToInt32(100f / (totalFiles / 1024f) * (copiedBytes / 1024f));
-            }
-
-            klblTotalFiles.Text = $"Total Files: ({copiedFiles} / {totalFiles})";
-
-            klblCurrentFile.Text = $"Current File: {currentFilename}";
-        }
-        #endregion
-
-        #region Constructor
-        public KryptonFileMonitor()
-        {
-            InitializeComponent();
-        }
-        #endregion
-
-        #region Methods
-        private void RaiseCancel()
-        {
-            if (EN_cancelCopy != null)
-            {
-                EN_cancelCopy();
-            }
-        }
-        #endregion
-
-        private void KryptonFileMonitor_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            RaiseCancel();
+            pbCurrentFile.Value = Convert.ToInt32(100f / (totalFiles / 1024f) * (copiedBytes / 1024f));
         }
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
+        klblTotalFiles.Text = $"Total Files: ({copiedFiles} / {totalFiles})";
+
+        klblCurrentFile.Text = $"Current File: {currentFilename}";
+    }
+    #endregion
+
+    #region Constructor
+    public KryptonFileMonitor()
+    {
+        InitializeComponent();
+    }
+    #endregion
+
+    #region Methods
+    private void RaiseCancel()
+    {
+        if (EN_cancelCopy != null)
         {
-            RaiseCancel();
+            EN_cancelCopy();
         }
+    }
+    #endregion
+
+    private void KryptonFileMonitor_FormClosed(object sender, FormClosedEventArgs e)
+    {
+        RaiseCancel();
+    }
+
+    private void kbtnCancel_Click(object sender, EventArgs e)
+    {
+        RaiseCancel();
     }
 }

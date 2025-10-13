@@ -26,19 +26,18 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+public enum EventParameterType
 {
-	public enum EventParameterType
-	{
-		/// <summary />
-		Undefined,
-		/// <summary />
-		Token,
-		/// <summary />
-		Object,
-		/// <summary />
-		Pointer,
-		/// <summary />
-		String
-	}
+    /// <summary />
+    Undefined,
+    /// <summary />
+    Token,
+    /// <summary />
+    Object,
+    /// <summary />
+    Pointer,
+    /// <summary />
+    String
 }

@@ -25,36 +25,35 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+
+/// <summary>
+/// Enum of Date interval for the OutlookGridDateTimeGroup
+/// </summary>
+public enum DateInterval
 {
     /// <summary>
-    /// Enum of Date interval for the OutlookGridDateTimeGroup
+    /// Day
     /// </summary>
-    public enum DateInterval
-    {
-        /// <summary>
-        /// Day
-        /// </summary>
-        Day,
+    Day,
 
-        /// <summary>
-        /// Month
-        /// </summary>
-        Month,
+    /// <summary>
+    /// Month
+    /// </summary>
+    Month,
 
-        /// <summary>
-        /// Quarter
-        /// </summary>
-        Quarter,
+    /// <summary>
+    /// Quarter
+    /// </summary>
+    Quarter,
 
-        /// <summary>
-        /// Year
-        /// </summary>
-        Year,
+    /// <summary>
+    /// Year
+    /// </summary>
+    Year,
 
-        /// <summary>
-        /// Smart : intelligent grouping like Outlook for dates
-        /// </summary>
-        Smart
-    }
+    /// <summary>
+    /// Smart : intelligent grouping like Outlook for dates
+    /// </summary>
+    Smart
 }

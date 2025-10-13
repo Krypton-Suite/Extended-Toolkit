@@ -25,22 +25,21 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Language.Model
+namespace Krypton.Toolkit.Suite.Extended.Language.Model;
+
+/// <summary>The type of buttons.</summary>
+public enum DialogButtonsType
 {
-    /// <summary>The type of buttons.</summary>
-    public enum DialogButtonsType
-    {
-        /// <summary>Ok button only.</summary>
-        OK,
-        /// <summary>A ok/cancel button.</summary>
-        OKCancel,
-        /// <summary>A yes/no button.</summary>
-        YesNo,
-        /// <summary>A yes/no/cancel button.</summary>
-        YesNoCancel,
-        /// <summary>A retry/cancel button.</summary>
-        RetryCancel,
-        /// <summary>A abort/retry/ignore button.</summary>
-        AbortRetryIgnore
-    }
+    /// <summary>Ok button only.</summary>
+    OK,
+    /// <summary>A ok/cancel button.</summary>
+    OKCancel,
+    /// <summary>A yes/no button.</summary>
+    YesNo,
+    /// <summary>A yes/no/cancel button.</summary>
+    YesNoCancel,
+    /// <summary>A retry/cancel button.</summary>
+    RetryCancel,
+    /// <summary>A abort/retry/ignore button.</summary>
+    AbortRetryIgnore
 }

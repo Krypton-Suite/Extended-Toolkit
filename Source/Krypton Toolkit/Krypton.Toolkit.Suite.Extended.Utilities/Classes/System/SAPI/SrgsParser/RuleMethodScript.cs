@@ -26,13 +26,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+internal enum RuleMethodScript
 {
-    internal enum RuleMethodScript
-    {
-        onInit = 1,
-        onParse,
-        onRecognition,
-        onError
-    }
+    onInit = 1,
+    onParse,
+    onRecognition,
+    onError
 }

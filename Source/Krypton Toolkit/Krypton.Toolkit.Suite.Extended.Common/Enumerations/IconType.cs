@@ -26,32 +26,31 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common;
+
+/// <summary>
+/// The icon type.
+/// </summary>
+public enum IconType
 {
     /// <summary>
-    /// The icon type.
+    /// The warning
     /// </summary>
-    public enum IconType
-    {
-        /// <summary>
-        /// The warning
-        /// </summary>
-        Warning = 101,
-        /// <summary>
-        /// The help
-        /// </summary>
-        Help = 102,
-        /// <summary>
-        /// The error
-        /// </summary>
-        Error = 103,
-        /// <summary>
-        /// The information
-        /// </summary>
-        Info = 104,
-        /// <summary>
-        /// The shield
-        /// </summary>
-        Shield = 106
-    }
+    Warning = 101,
+    /// <summary>
+    /// The help
+    /// </summary>
+    Help = 102,
+    /// <summary>
+    /// The error
+    /// </summary>
+    Error = 103,
+    /// <summary>
+    /// The information
+    /// </summary>
+    Info = 104,
+    /// <summary>
+    /// The shield
+    /// </summary>
+    Shield = 106
 }

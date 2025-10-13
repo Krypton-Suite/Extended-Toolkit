@@ -26,14 +26,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+internal enum MatchMode
 {
-    internal enum MatchMode
-    {
-        AllWords = 0,
-        Subsequence = 1,
-        OrderedSubset = 3,
-        SubsequenceContentRequired = 5,
-        OrderedSubsetContentRequired = 7
-    }
+    AllWords = 0,
+    Subsequence = 1,
+    OrderedSubset = 3,
+    SubsequenceContentRequired = 5,
+    OrderedSubsetContentRequired = 7
 }

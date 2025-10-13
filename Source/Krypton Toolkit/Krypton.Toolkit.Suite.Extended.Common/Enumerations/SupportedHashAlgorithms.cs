@@ -26,15 +26,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common;
+
+public enum SupportedHashAlgorithms
 {
-    public enum SupportedHashAlgorithms
-    {
-        MessageDigest5 = 0,
-        SecureHashAlgorithim1 = 1,
-        SecureHashAlgorithim256 = 2,
-        SecureHashAlgorithim384 = 3,
-        SecureHashAlgorithim512 = 4,
-        RaceIntegrityPrimitivesEvaluationMessageDigest = 5
-    }
+    MessageDigest5 = 0,
+    SecureHashAlgorithim1 = 1,
+    SecureHashAlgorithim256 = 2,
+    SecureHashAlgorithim384 = 3,
+    SecureHashAlgorithim512 = 4,
+    RaceIntegrityPrimitivesEvaluationMessageDigest = 5
 }

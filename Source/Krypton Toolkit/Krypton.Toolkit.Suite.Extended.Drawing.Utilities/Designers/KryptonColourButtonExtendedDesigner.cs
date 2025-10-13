@@ -25,30 +25,29 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+internal class KryptonColourButtonExtendedDesigner : ControlDesigner
 {
-    internal class KryptonColourButtonExtendedDesigner : ControlDesigner
+    #region Constructor
+    public KryptonColourButtonExtendedDesigner()
     {
-        #region Constructor
-        public KryptonColourButtonExtendedDesigner()
-        {
-            AutoResizeHandles = true;
-        }
-        #endregion
-
-        #region Overrides
-        public override DesignerActionListCollection ActionLists
-        {
-            get
-            {
-                DesignerActionListCollection listCollection = new DesignerActionListCollection
-                {
-                    new KryptonColourButtonExtendedActionList(this)
-                };
-
-                return listCollection;
-            }
-        }
-        #endregion
+        AutoResizeHandles = true;
     }
+    #endregion
+
+    #region Overrides
+    public override DesignerActionListCollection ActionLists
+    {
+        get
+        {
+            DesignerActionListCollection listCollection = new DesignerActionListCollection
+            {
+                new KryptonColourButtonExtendedActionList(this)
+            };
+
+            return listCollection;
+        }
+    }
+    #endregion
 }

@@ -25,81 +25,80 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items;
+
+[ToolboxBitmap(typeof(KryptonTextBox)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All)]
+public class KryptonToolStripTextBox : ToolStripControlHost
 {
-    [ToolboxBitmap(typeof(KryptonTextBox)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All)]
-    public class KryptonToolStripTextBox : ToolStripControlHost
+    #region Properties
+    public KryptonTextBox? KryptonTextBox => Control as KryptonTextBox;
+
+    #endregion
+
+    #region Constructor
+    public KryptonToolStripTextBox() : base(CreateControlInstance())
     {
-        #region Properties
-        public KryptonTextBox? KryptonTextBox => Control as KryptonTextBox;
 
-        #endregion
-
-        #region Constructor
-        public KryptonToolStripTextBox() : base(CreateControlInstance())
-        {
-
-        }
-        #endregion
-
-        #region Overrides
-        protected override void OnSubscribeControlEvents(Control control)
-        {
-            var kryptonTextBox = control as KryptonTextBox;
-
-            kryptonTextBox!.TextAlignChanged += TextAlignChanged;
-
-            kryptonTextBox.TextChanged += Text_Changed;
-
-            kryptonTextBox.FontChanged += FontChanged;
-
-            base.OnSubscribeControlEvents(control);
-        }
-
-        protected override void OnUnsubscribeControlEvents(Control control)
-        {
-            var kryptonTextBox = control as KryptonTextBox;
-
-            kryptonTextBox!.TextAlignChanged -= TextAlignChanged;
-
-            kryptonTextBox.TextChanged -= Text_Changed;
-
-            kryptonTextBox.FontChanged -= FontChanged;
-
-            base.OnUnsubscribeControlEvents(control);
-        }
-        #endregion
-
-        #region Methods
-        private static Control CreateControlInstance()
-        {
-            KryptonTextBox kryptonTextBox = new KryptonTextBox();
-
-            //TODO: Add other initialization code here.
-
-
-            return kryptonTextBox;
-        }
-        #endregion
-
-        #region Event Handlers
-        private void Text_Changed(object sender, EventArgs e)
-        {
-            //if (KryptonTextBox.TextChanged)
-            //{
-
-            //}
-        }
-
-        private void TextAlignChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void FontChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
     }
+    #endregion
+
+    #region Overrides
+    protected override void OnSubscribeControlEvents(Control control)
+    {
+        var kryptonTextBox = control as KryptonTextBox;
+
+        kryptonTextBox!.TextAlignChanged += TextAlignChanged;
+
+        kryptonTextBox.TextChanged += Text_Changed;
+
+        kryptonTextBox.FontChanged += FontChanged;
+
+        base.OnSubscribeControlEvents(control);
+    }
+
+    protected override void OnUnsubscribeControlEvents(Control control)
+    {
+        var kryptonTextBox = control as KryptonTextBox;
+
+        kryptonTextBox!.TextAlignChanged -= TextAlignChanged;
+
+        kryptonTextBox.TextChanged -= Text_Changed;
+
+        kryptonTextBox.FontChanged -= FontChanged;
+
+        base.OnUnsubscribeControlEvents(control);
+    }
+    #endregion
+
+    #region Methods
+    private static Control CreateControlInstance()
+    {
+        KryptonTextBox kryptonTextBox = new KryptonTextBox();
+
+        //TODO: Add other initialization code here.
+
+
+        return kryptonTextBox;
+    }
+    #endregion
+
+    #region Event Handlers
+    private void Text_Changed(object sender, EventArgs e)
+    {
+        //if (KryptonTextBox.TextChanged)
+        //{
+
+        //}
+    }
+
+    private void TextAlignChanged(object sender, EventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void FontChanged(object sender, EventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+    #endregion
 }
