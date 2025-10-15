@@ -143,3 +143,62 @@ PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 
 
 
 ***Note:*** Some packages may install third-party libraries in order to make them function correctly.
+
+=======
+
+# Building from Source
+
+The Krypton Extended Toolkit can be built using several methods:
+
+## Using Build.proj (Recommended for Releases)
+
+The fastest way to build the entire toolkit:
+
+```bash
+# Build Release (for master branch)
+msbuild Build.proj /t:CI /p:Configuration=Release
+
+# Build Canary (for canary branch - beta packages)
+msbuild Build.proj /t:CI /p:Configuration=Canary
+
+# Build Nightly (for alpha branch - alpha packages)
+msbuild Build.proj /t:CI /p:Configuration=Nightly
+
+# Build all release channels at once
+msbuild Build.proj /t:CIAll
+
+# Show help
+msbuild Build.proj /t:Help
+```
+
+**Build outputs:**
+- Compiled assemblies: `Bin/{Configuration}/`
+- NuGet packages: `Bin/NuGet Packages/{Configuration}/`
+
+**Documentation:**
+- [Quick Start Guide](QUICK_START_BUILD.md) - Get building in 5 minutes
+- [Build System Documentation](BUILD_SYSTEM.md) - Complete reference
+- [Build.proj Summary](BUILD_PROJ_SUMMARY.md) - Overview of the build system
+
+## Using Visual Studio
+
+For daily development:
+1. Open `Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln`
+2. Build using Visual Studio's standard build commands
+
+## Release Channels
+
+| Configuration | Branch | Package Suffix | Purpose |
+|--------------|--------|----------------|---------|
+| Release | `master` | _(none)_ | Stable production releases |
+| Canary | `canary` | `-beta` | Beta pre-releases |
+| Nightly | `alpha` | `-alpha` | Alpha nightly builds |
+
+## Prerequisites
+
+- Windows (required for .NET Framework and WinForms)
+- Visual Studio 2022 or later
+- .NET SDK 8.0 or later
+- MSBuild (included with Visual Studio)
+
+For more details, see the [build documentation](BUILD_SYSTEM.md).

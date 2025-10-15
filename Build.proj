@@ -1,0 +1,184 @@
+<!-- 
+  Krypton Extended Toolkit - Master Build Project
+  
+  This MSBuild project orchestrates building the entire toolkit across all configurations
+  and release channels.
+  
+  Release Channels:
+  - Release (master)  : Stable production releases
+  - Canary (canary)   : Beta pre-releases (-beta suffix)
+  - Nightly (alpha)   : Alpha pre-releases (-alpha suffix)
+-->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Property Definitions -->
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+    <Platform Condition="'$(Platform)' == ''">Any CPU</Platform>
+    
+    <!-- Paths -->
+    <RootDir>$(MSBuildProjectDirectory)</RootDir>
+    <SourceDir>$(RootDir)\Source\Krypton Toolkit</SourceDir>
+    <BinDir>$(RootDir)\Bin</BinDir>
+    <OutputDir>$(BinDir)\$(Configuration)</OutputDir>
+    <NuGetPackagesDir>$(BinDir)\NuGet Packages\$(Configuration)</NuGetPackagesDir>
+    
+    <!-- Solution Files -->
+    <MainSolution>$(SourceDir)\Krypton Toolkit Suite Extended 2022 - VS2022.sln</MainSolution>
+    <NuGetSolution>$(SourceDir)\Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln</NuGetSolution>
+    <DevSolution>$(SourceDir)\Krypton Toolkit Suite Extended 2022 - VS2022 - Dev.sln</DevSolution>
+    
+    <!-- Ultimate Package Projects -->
+    <UltimateProject>$(SourceDir)\Krypton.Toolkit.Suite.Extended.Ultimate\Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj</UltimateProject>
+    <UltimateLiteProject>$(SourceDir)\Krypton.Toolkit.Suite.Extended.Ultimate.Lite\Krypton.Toolkit.Suite.Extended.Ultimate.Lite 2022.csproj</UltimateLiteProject>
+    
+    <!-- Build Properties -->
+    <BuildInParallel>true</BuildInParallel>
+    <MaxCpuCount>0</MaxCpuCount>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <ContinueOnError>false</ContinueOnError>
+  </PropertyGroup>
+
+  <!-- Release Channel Information -->
+  <PropertyGroup>
+    <IsReleaseBuild Condition="'$(Configuration)' == 'Release' or '$(Configuration)' == 'Stable'">true</IsReleaseBuild>
+    <IsCanaryBuild Condition="'$(Configuration)' == 'Canary'">true</IsCanaryBuild>
+    <IsNightlyBuild Condition="'$(Configuration)' == 'Nightly' or '$(Configuration)' == 'Alpha'">true</IsNightlyBuild>
+    
+    <!-- Package Suffix -->
+    <PackageSuffix Condition="'$(IsCanaryBuild)' == 'true'">-beta</PackageSuffix>
+    <PackageSuffix Condition="'$(IsNightlyBuild)' == 'true'">-alpha</PackageSuffix>
+    <PackageSuffix Condition="'$(IsReleaseBuild)' == 'true'"></PackageSuffix>
+    
+    <!-- Branch Names -->
+    <TargetBranch Condition="'$(IsReleaseBuild)' == 'true'">master</TargetBranch>
+    <TargetBranch Condition="'$(IsCanaryBuild)' == 'true'">canary</TargetBranch>
+    <TargetBranch Condition="'$(IsNightlyBuild)' == 'true'">alpha</TargetBranch>
+  </PropertyGroup>
+
+  <!-- Target: Restore -->
+  <Target Name="Restore">
+    <Message Text="🔄 Restoring NuGet packages..." Importance="high" />
+    <Exec Command="dotnet restore &quot;$(MainSolution)&quot;" WorkingDirectory="$(RootDir)" />
+    <Message Text="✅ NuGet packages restored successfully" Importance="high" />
+  </Target>
+
+  <!-- Target: Clean -->
+  <Target Name="Clean">
+    <Message Text="🧹 Cleaning $(Configuration) configuration..." Importance="high" />
+    
+    <!-- Delete Bin folder -->
+    <RemoveDir Directories="$(BinDir)" Condition="Exists('$(BinDir)')" />
+    <Message Text="Deleted Bin folder" Importance="high" />
+    
+    <!-- Delete obj folders -->
+    <ItemGroup>
+      <ObjFolders Include="$(SourceDir)\**\obj" />
+    </ItemGroup>
+    <RemoveDir Directories="@(ObjFolders)" Condition="Exists('%(ObjFolders.Identity)')" />
+    <Message Text="Deleted obj folders" Importance="high" />
+    
+    <!-- Delete log files -->
+    <Delete Files="$(RootDir)\build.log" Condition="Exists('$(RootDir)\build.log')" />
+    <Delete Files="$(RootDir)\Logs\*.*" Condition="Exists('$(RootDir)\Logs')" />
+    
+    <Message Text="✅ Clean completed" Importance="high" />
+  </Target>
+
+  <!-- Target: Build -->
+  <Target Name="Build" DependsOnTargets="Restore">
+    <Message Text="🔨 Building $(Configuration) configuration..." Importance="high" />
+    
+    <MSBuild Projects="$(MainSolution)"
+             Properties="Configuration=$(Configuration);Platform=$(Platform)"
+             Targets="Build"
+             BuildInParallel="$(BuildInParallel)"
+             ContinueOnError="$(ContinueOnError)" />
+    
+    <Message Text="✅ Build completed successfully" Importance="high" />
+  </Target>
+
+  <!-- Target: BuildNuGet -->
+  <Target Name="BuildNuGet" DependsOnTargets="Build">
+    <Message Text="📦 Building NuGet solution ($(Configuration))..." Importance="high" />
+    
+    <MSBuild Projects="$(NuGetSolution)"
+             Properties="Configuration=$(Configuration);Platform=$(Platform)"
+             Targets="Build"
+             BuildInParallel="$(BuildInParallel)"
+             ContinueOnError="$(ContinueOnError)" />
+    
+    <Message Text="✅ NuGet solution built successfully" Importance="high" />
+  </Target>
+
+  <!-- Target: BuildUltimate -->
+  <Target Name="BuildUltimate" DependsOnTargets="BuildNuGet">
+    <Message Text="⭐ Building Ultimate packages ($(Configuration))..." Importance="high" />
+    
+    <!-- Build Ultimate Package -->
+    <MSBuild Projects="$(UltimateProject)"
+             Properties="Configuration=$(Configuration);Platform=$(Platform)"
+             Targets="Build"
+             BuildInParallel="false"
+             ContinueOnError="$(ContinueOnError)" 
+             Condition="Exists('$(UltimateProject)')" />
+    
+    <!-- Build Ultimate Lite Package -->
+    <MSBuild Projects="$(UltimateLiteProject)"
+             Properties="Configuration=$(Configuration);Platform=$(Platform)"
+             Targets="Build"
+             BuildInParallel="false"
+             ContinueOnError="$(ContinueOnError)"
+             Condition="Exists('$(UltimateLiteProject)')" />
+    
+    <Message Text="✅ Ultimate packages built successfully" Importance="high" />
+  </Target>
+
+  <!-- Target: Pack -->
+  <Target Name="Pack" DependsOnTargets="BuildUltimate">
+    <Message Text="📦 Creating NuGet packages ($(Configuration))..." Importance="high" />
+    <Message Text="Package Suffix: $(PackageSuffix)" Importance="high" />
+    
+    <!-- Ensure output directory exists -->
+    <MakeDir Directories="$(NuGetPackagesDir)" Condition="!Exists('$(NuGetPackagesDir)')" />
+    
+    <!-- Pack Ultimate packages -->
+    <Exec Command="dotnet pack &quot;$(UltimateProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build"
+          WorkingDirectory="$(RootDir)"
+          ContinueOnError="true" 
+          Condition="Exists('$(UltimateProject)')" />
+    
+    <Exec Command="dotnet pack &quot;$(UltimateLiteProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build"
+          WorkingDirectory="$(RootDir)"
+          ContinueOnError="true"
+          Condition="Exists('$(UltimateLiteProject)')" />
+    
+    <Message Text="✅ NuGet packages created in: $(NuGetPackagesDir)" Importance="high" />
+  </Target>
+
+  <!-- Target: Rebuild -->
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build">
+    <Message Text="✅ Rebuild completed" Importance="high" />
+  </Target>
+
+  <!-- Target: CI -->
+  <Target Name="CI" DependsOnTargets="Clean;Build;BuildNuGet;BuildUltimate;Pack">
+    <Message Text="✅ CI Build Completed Successfully!" Importance="high" />
+    <Message Text="Configuration : $(Configuration)" Importance="high" />
+    <Message Text="Target Branch : $(TargetBranch)" Importance="high" />
+    <Message Text="Packages Dir  : $(NuGetPackagesDir)" Importance="high" />
+  </Target>
+
+  <!-- Target: Debug -->
+  <Target Name="Debug" DependsOnTargets="Clean">
+    <Message Text="🐛 Running Debug build..." Importance="high" />
+    
+    <MSBuild Projects="$(MSBuildProjectFile)"
+             Properties="Configuration=Debug;Platform=$(Platform)"
+             Targets="Build"
+             BuildInParallel="$(BuildInParallel)" />
+    
+    <Message Text="✅ Debug build completed" Importance="high" />
+  </Target>
+
+</Project>

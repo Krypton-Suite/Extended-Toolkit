@@ -203,17 +203,55 @@ Add this secret to your repository (Settings → Secrets and variables → Actio
   - Get it from: https://www.nuget.org/account/apikeys
   - Permissions needed: Push new packages and package versions
 
-## 📝 Workflow Files
+## 📝 Build System Files
 
 ### File Structure
 
 ```
-.github/
-└── workflows/
-    ├── build.yml       # Continuous Integration
-    ├── release.yml     # Release & Publishing
-    └── codeql.yml      # Security Analysis (existing)
+Extended-Toolkit/
+├── Build.proj                        # Master MSBuild project (NEW!)
+├── BUILD_SYSTEM.md                   # Build system documentation (NEW!)
+├── Directory.Build.props             # Version configuration
+├── Directory.Build.targets           # NuGet packaging configuration
+└── .github/
+    └── workflows/
+        ├── build.yml                 # Continuous Integration
+        ├── release.yml               # Release & Publishing
+        └── codeql.yml                # Security Analysis (existing)
 ```
+
+### Build.proj - Master Build Orchestration
+
+**Purpose:** Provides a scriptable, consistent way to build the entire toolkit across all configurations and release channels.
+
+**Key Features:**
+- ✅ Single command to build entire toolkit
+- ✅ Supports all three release channels (Release/Canary/Nightly)
+- ✅ Orchestrates multiple solutions (.sln files)
+- ✅ Automates NuGet package creation
+- ✅ Parallel builds for performance
+- ✅ Clean, rebuild, and pack targets
+- ✅ Comprehensive help and status display
+
+**Release Channel Mapping:**
+```
+Configuration → Branch  → Package Suffix
+─────────────────────────────────────────
+Release       → master  → (none)
+Canary        → canary  → -beta
+Nightly       → alpha   → -alpha
+```
+
+**Available Targets:**
+- `Build` - Build main solution
+- `BuildNuGet` - Build NuGet solution
+- `BuildUltimate` - Build Ultimate packages
+- `Pack` - Create all NuGet packages
+- `CI` - Complete CI pipeline
+- `CIAll` - CI for all release channels
+- `Help` - Show usage information
+
+See **[BUILD_SYSTEM.md](BUILD_SYSTEM.md)** for complete documentation.
 
 ### Workflow Permissions
 
@@ -249,21 +287,41 @@ Edit `Directory.Build.targets` to change what gets included in **all** packages,
 
 ## 🧪 Testing Locally
 
-### Test Build
+### Using Build.proj (Recommended)
+
+The toolkit now includes a master MSBuild project file that orchestrates all builds:
 
 ```bash
+# Complete CI pipeline for Release
+msbuild Build.proj /t:CI /p:Configuration=Release
+
+# Complete CI pipeline for Canary
+msbuild Build.proj /t:CI /p:Configuration=Canary
+
+# Complete CI pipeline for Nightly
+msbuild Build.proj /t:CI /p:Configuration=Nightly
+
+# Build all configurations
+msbuild Build.proj /t:CIAll
+
+# Show help
+msbuild Build.proj /t:Help
+```
+
+See **[BUILD_SYSTEM.md](BUILD_SYSTEM.md)** for complete documentation.
+
+### Manual Build Commands
+
+If you prefer to build manually:
+
+```bash
+# Test Build
 msbuild "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln" /p:Configuration=Release /p:Platform="Any CPU"
-```
 
-### Test NuGet Pack
-
-```bash
+# Test NuGet Pack
 dotnet pack "Source/Krypton Toolkit/YourProject/YourProject.csproj" --configuration Release
-```
 
-### Test Ultimate Package
-
-```bash
+# Test Ultimate Package
 dotnet build "Source/Krypton Toolkit/Krypton.Toolkit.Suite.Extended.Ultimate/Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj" --configuration Release
 dotnet pack "Source/Krypton Toolkit/Krypton.Toolkit.Suite.Extended.Ultimate/Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj" --configuration Release
 ```
@@ -354,7 +412,46 @@ Developers now have three options for consuming the Extended Toolkit:
 ✅ Automatic NuGet package publishing to nuget.org  
 ✅ Referenced binaries included in all packages  
 ✅ **Bonus: Ultimate all-in-one package created**  
-✅ **Bonus: Ultimate.Lite package created**
+✅ **Bonus: Ultimate.Lite package created**  
+✅ **Bonus: Master Build.proj for scriptable builds**
 
 The toolkit now has a professional, automated build and release pipeline with flexible packaging options!
+
+## 🚀 Quick Reference
+
+### For Developers
+
+```bash
+# Build everything (Release)
+msbuild Build.proj /t:CI
+
+# Build specific channel
+msbuild Build.proj /t:CI /p:Configuration=Canary
+msbuild Build.proj /t:CI /p:Configuration=Nightly
+
+# Build all channels at once
+msbuild Build.proj /t:CIAll
+
+# Get help
+msbuild Build.proj /t:Help
+```
+
+### For CI/CD
+
+Use the workflows in `.github/workflows/`:
+- **build.yml** - Runs on every push/PR
+- **release.yml** - Runs on tags or manual trigger
+
+Or integrate `Build.proj` directly:
+
+```yaml
+- name: Build with Build.proj
+  run: msbuild Build.proj /t:CI /p:Configuration=${{ matrix.configuration }}
+```
+
+### Three Ways to Build
+
+1. **Visual Studio** - Open `.sln` files (recommended for development)
+2. **Build.proj** - Use `msbuild Build.proj` (recommended for releases/CI)
+3. **Direct MSBuild** - Use `msbuild *.sln` (manual control)
 
