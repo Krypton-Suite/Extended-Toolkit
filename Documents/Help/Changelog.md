@@ -6,13 +6,61 @@
 =======
 
 ## 2025-11-11 - Build 2511 - November 2025
+
+### **Major Build System Overhaul**
 * Implemented [#550](https://github.com/Krypton-Suite/Extended-Toolkit/issues/550), Use workflows to build the toolkit
+* **New Centralized Build System** - Complete rewrite of build infrastructure
+  - Centralized Target Framework Monikers (TFMs) configuration in `Directory.Build.props`
+  - Global dependency inclusion system in `Directory.Build.targets`
+  - Automated version management across all 70 projects
+  - Smart framework assembly filtering (excludes System.*, Microsoft.*, etc.)
+  - Automatic NuGet warning suppression (NU1012, NU5128)
+
+### **New Build Configurations**
+* **7 Build Configurations** now available (was 4):
+  - `Debug` - Development
+  - `Release` - Stable, Full framework support (6 TFMs)
+  - `ReleaseLite` - Stable, Modern frameworks (5 TFMs, excludes net472)
+  - `Canary` - Beta, Full framework support (6 TFMs)
+  - `CanaryLite` - Beta, Modern frameworks (5 TFMs, excludes net472)
+  - `Nightly` - Alpha, Full framework support (6 TFMs)
+  - `NightlyLite` - Alpha, Modern frameworks (5 TFMs, excludes net472)
+
+### **Package Variants**
+* **366 possible package variants** (61 projects × 6 release configurations)
+* **Lite packages** are 15-20% smaller than Full packages
+* **Package naming convention**:
+  - Full: `PackageName`, `PackageName.Canary`, `PackageName.Nightly`
+  - Lite: `PackageName.Lite`, `PackageName.Lite.Canary`, `PackageName.Lite.Nightly`
+
+### **Build System Features**
+* **Single-point TFM management** - Update framework versions in one place, affects all 61+ projects
+* **Automatic dependency inclusion** - All packages include proper dependencies without framework assemblies
+* **Dynamic TFM switching** - Projects automatically use Full or Lite TFMs based on configuration
+* **Professional package quality** - Clean, consistent packages across entire toolkit
+
+### **Build Scripts & Tools**
+* `build-all-packages.cmd` - Build all 366 package variants
+* `build-release-all.cmd` - Build both Release and ReleaseLite packages
+* `build-canary-all.cmd` - Build both Canary and CanaryLite packages  
+* `build-nightly-all.cmd` - Build both Nightly and NightlyLite packages
+* Full Visual Studio Batch Build support for all configurations
+
+### **Documentation**
+* `CENTRALIZED_BUILD_SYSTEM.md` - Complete build system architecture
+* `CENTRALIZED_TFM_CONFIGURATION.md` - Framework targeting strategy
+* `GLOBAL_DEPENDENCY_INCLUSION.md` - Dependency management details
+* `LITE_CONFIGURATION.md` - Lite package configuration guide
+* `VISUAL_STUDIO_BUILD_GUIDE.md` - Building from Visual Studio
+* `BUILD_ALL_PACKAGES.md` - Building all package variants
+
+### **Other Updates**
 * Implemented [#540](https://github.com/Krypton-Suite/Extended-Toolkit/issues/540), Set the baseline support to .NET Framework 4.7.2
-	- **Note:** This is the minimum supported version of .NET Framework for the Extended Toolkit is now .NET Framework 4.7.2
+	- **Note:** The minimum supported version of .NET Framework for the Extended Toolkit is now .NET Framework 4.7.2
 * Implemented [#536](https://github.com/Krypton-Suite/Extended-Toolkit/issues/536), Use `filescoped` namespaces
 * Implemented [#522](https://github.com/Krypton-Suite/Extended-Toolkit/issues/522), Support the new `slnx` format
 * Rollback [#514](https://github.com/Krypton-Suite/Standard-Toolkit/issues/514), Move `KryptonOutlookGrid` back to Extended ToolKit for further evaluation & development
-* Add support for .NET 10.0
+* Add support for .NET 10.0 across all projects with platform-specific TFMs (`net10.0-windows7.0`)
 * Updated standard toolkit to build `2511`
 
 =======

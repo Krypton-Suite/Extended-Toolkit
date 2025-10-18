@@ -1,17 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
 			<PropertyGroup>
 				<!-- Use centralized TFM configuration from Directory.Build.props -->
-		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
+		<TargetFrameworks>$(ActiveExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<!--If all else fails-->
 			<PropertyGroup>
 				<!-- Use centralized TFM configuration from Directory.Build.props -->
-		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
+		<TargetFrameworks>$(ActiveExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>

@@ -155,20 +155,19 @@ The Krypton Extended Toolkit can be built using several methods:
 The fastest way to build the entire toolkit:
 
 ```bash
-# Build Release (for master branch)
-msbuild Build.proj /t:CI /p:Configuration=Release
+# Standard configurations (Full TFMs - includes net472)
+dotnet build -c Release         # Stable, 6 frameworks
+dotnet build -c Canary          # Beta, 6 frameworks
+dotnet build -c Nightly         # Alpha, 6 frameworks
 
-# Build Canary (for canary branch - beta packages)
-msbuild Build.proj /t:CI /p:Configuration=Canary
+# Lite configurations (Smaller packages - excludes net472)
+dotnet build -c ReleaseLite     # Stable, 5 frameworks
+dotnet build -c CanaryLite      # Beta, 5 frameworks
+dotnet build -c NightlyLite     # Alpha, 5 frameworks
 
-# Build Nightly (for alpha branch - alpha packages)
-msbuild Build.proj /t:CI /p:Configuration=Nightly
-
-# Build all release channels at once
-msbuild Build.proj /t:CIAll
-
-# Show help
-msbuild Build.proj /t:Help
+# Create NuGet packages
+dotnet pack -c Release          # Create Release packages
+dotnet pack -c ReleaseLite      # Create Lite packages
 ```
 
 **Build outputs:**
@@ -178,6 +177,7 @@ msbuild Build.proj /t:Help
 **Documentation:**
 - [Global Dependency Inclusion](GLOBAL_DEPENDENCY_INCLUSION.md) - Smart dependency management for all projects
 - [Centralized TFM Configuration](CENTRALIZED_TFM_CONFIGURATION.md) - Framework targeting strategy
+- [Lite Configuration](LITE_CONFIGURATION.md) - Build smaller packages for modern frameworks
 - [Workflow Implementation](WORKFLOW_IMPLEMENTATION.md) - GitHub Actions CI/CD workflows
 
 ## Using Visual Studio
@@ -188,11 +188,19 @@ For daily development:
 
 ## Release Channels
 
-| Configuration | Branch | Package Suffix | Purpose |
-|--------------|--------|----------------|---------|
-| Release | `master` | _(none)_ | Stable production releases |
-| Canary | `canary` | `-beta` | Beta pre-releases |
-| Nightly | `alpha` | `-alpha` | Alpha nightly builds |
+### **Standard Configurations (Full Framework Support)**
+| Configuration | Branch | Package Suffix | Version Suffix | TFMs |
+|--------------|--------|----------------|----------------|------|
+| Release | `master` | _(none)_ | _(none)_ | 6 (includes net472) |
+| Canary | `canary` | `.Canary` | `-beta` | 6 (includes net472) |
+| Nightly | `alpha` | `.Nightly` | `-alpha` | 6 (includes net472) |
+
+### **Lite Configurations (Smaller Packages)**
+| Configuration | Branch | Package Suffix | Version Suffix | TFMs |
+|--------------|--------|----------------|----------------|------|
+| ReleaseLite | `master` | `.Lite` | _(none)_ | 5 (excludes net472) |
+| CanaryLite | `canary` | `.Lite.Canary` | `-beta` | 5 (excludes net472) |
+| NightlyLite | `alpha` | `.Lite.Nightly` | `-alpha` | 5 (excludes net472) |
 
 ## Prerequisites
 
