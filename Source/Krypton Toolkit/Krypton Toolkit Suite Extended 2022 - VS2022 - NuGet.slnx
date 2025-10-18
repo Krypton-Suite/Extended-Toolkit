@@ -1,9 +1,12 @@
 <Solution>
   <Configurations>
     <BuildType Name="Canary" />
+    <BuildType Name="CanaryLite" />
     <BuildType Name="Debug" />
     <BuildType Name="Nightly" />
+    <BuildType Name="NightlyLite" />
     <BuildType Name="Release" />
+    <BuildType Name="ReleaseLite" />
   </Configurations>
   <Folder Name="/Applications/">
     <Project Path="AutoUpdateCreator/AutoUpdateCreator.csproj" />

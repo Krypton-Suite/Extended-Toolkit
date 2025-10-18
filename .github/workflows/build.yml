@@ -18,7 +18,7 @@ jobs:
     
     strategy:
       matrix:
-        configuration: [Debug, Release, Canary, Nightly]
+        configuration: [Debug, Release, ReleaseLite, Canary, CanaryLite, Nightly, NightlyLite]
     
     steps:
     - name: Checkout repository
@@ -52,7 +52,7 @@ jobs:
       run: msbuild "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln" /p:Configuration=${{ matrix.configuration }} /p:Platform="Any CPU" /m /v:minimal
     
     - name: Upload build artifacts
-      if: matrix.configuration == 'Release' || matrix.configuration == 'Canary' || matrix.configuration == 'Nightly'
+      if: matrix.configuration != 'Debug'
       uses: actions/upload-artifact@v4
       with:
         name: Build-${{ matrix.configuration }}

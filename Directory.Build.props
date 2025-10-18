@@ -1,7 +1,53 @@
  <Project>
 	 <!-- 
+		 Centralized Build Configurations
+		 All Extended Toolkit projects use these configurations
+	 -->
+	 <PropertyGroup>
+		 <Configurations>Debug;Release;ReleaseLite;ReleaseAll;Canary;CanaryLite;CanaryAll;Nightly;NightlyLite;NightlyAll</Configurations>
+	 </PropertyGroup>
+	 
+	 <!-- 
 		 Centralized Target Framework Monikers (TFMs) Configuration
 		 All Extended Toolkit projects use these TFMs unless explicitly overridden
+	 -->
+	 <!-- 
+		 Target Framework Monikers (TFMs) Configuration
+		 Dynamic TFM selection based on build configuration using Choose pattern
+	 -->
+	 <Choose>
+		 <!-- Full framework support for Release, Nightly, Canary, and Debug configurations -->
+		 <When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Debug'">
+			 <PropertyGroup>
+				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ActiveExtendedToolkitTFMs>
+			 </PropertyGroup>
+		 </When>
+		 
+		 <!-- Lite framework support for ReleaseLite, CanaryLite, and NightlyLite configurations -->
+		 <When Condition="'$(Configuration)' == 'ReleaseLite' Or '$(Configuration)' == 'CanaryLite' Or '$(Configuration)' == 'NightlyLite'">
+			 <PropertyGroup>
+				 <ActiveExtendedToolkitTFMs>net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ActiveExtendedToolkitTFMs>
+			 </PropertyGroup>
+		 </When>
+		 
+		 <!-- All configurations (Full+Lite) - Uses Full TFMs, but helper scripts build both -->
+		 <When Condition="'$(Configuration)' == 'ReleaseAll' Or '$(Configuration)' == 'CanaryAll' Or '$(Configuration)' == 'NightlyAll'">
+			 <PropertyGroup>
+				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ActiveExtendedToolkitTFMs>
+			 </PropertyGroup>
+		 </When>
+		 
+		 <!-- Default: Full framework support for any other configurations -->
+		 <Otherwise>
+			 <PropertyGroup>
+				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ActiveExtendedToolkitTFMs>
+			 </PropertyGroup>
+		 </Otherwise>
+	 </Choose>
+	 
+	 <!-- 
+		 Legacy TFM properties for backward compatibility and reference
+		 These can be used by projects that need explicit TFM sets
 	 -->
 	 <PropertyGroup>
 		 <!-- Full framework support (all projects by default) -->
@@ -15,10 +61,6 @@
 		 
 		 <!-- Legacy frameworks only (net4x) -->
 		 <ExtendedToolkitLegacyTFMs>net472;net48;net481</ExtendedToolkitLegacyTFMs>
-		 
-		 <!-- Active TFM set based on configuration (defaults to Full) -->
-		 <ActiveExtendedToolkitTFMs Condition="'$(Configuration)' == 'ReleaseLite' OR '$(Configuration)' == 'CanaryLite' OR '$(Configuration)' == 'NightlyLite'">$(ExtendedToolkitLiteTFMs)</ActiveExtendedToolkitTFMs>
-		 <ActiveExtendedToolkitTFMs Condition="'$(ActiveExtendedToolkitTFMs)' == ''">$(ExtendedToolkitTFMs)</ActiveExtendedToolkitTFMs>
 	 </PropertyGroup>
 
 	 <!-- 
@@ -27,7 +69,7 @@
 	 -->
 	 <Choose>
 		 <!-- Canary configurations (beta releases) -->
-		 <When Condition="'$(Configuration)' == 'Canary' OR '$(Configuration)' == 'CanaryLite'">
+		 <When Condition="'$(Configuration)' == 'Canary' OR '$(Configuration)' == 'CanaryLite' OR '$(Configuration)' == 'CanaryAll'">
 			 <PropertyGroup>
 				 <Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
 				 <Build>$([System.DateTime]::Now.ToString(MM))</Build>
@@ -48,7 +90,7 @@
 		 </When>
 
 		 <!-- Nightly configurations (alpha releases) -->
-		 <When Condition="'$(Configuration)' == 'Nightly' OR '$(Configuration)' == 'NightlyLite'">
+		 <When Condition="'$(Configuration)' == 'Nightly' OR '$(Configuration)' == 'NightlyLite' OR '$(Configuration)' == 'NightlyAll'">
 			 <PropertyGroup>
 				 <Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
 				 <Build>$([System.DateTime]::Now.ToString(MM))</Build>
@@ -69,45 +111,46 @@
 			 </PropertyGroup>
 		 </When>
 
-		 <!-- Release Lite configuration (stable but smaller package) -->
-		 <When Condition="'$(Configuration)' == 'ReleaseLite'">
-			 <PropertyGroup>
-				 <Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
-				 <Build>$([System.DateTime]::Now.ToString(MM))</Build>
-				 <Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
+		<!-- Release configurations (stable releases) -->
+		<When Condition="'$(Configuration)' == 'Release' OR '$(Configuration)' == 'ReleaseLite' OR '$(Configuration)' == 'ReleaseAll'">
+			<PropertyGroup>
+				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
+				<Build>$([System.DateTime]::Now.ToString(MM))</Build>
+				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
 
-				 <!--Version layout schema:
+				<!--Version layout schema:
 				80 = Major
 				23 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-->
-				 <LibraryVersion>80.$(Minor).$(Build).$(Revision)</LibraryVersion>
-				 <!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
+				<LibraryVersion>80.$(Minor).$(Build).$(Revision)</LibraryVersion>
+				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 
-				 <!--ReleaseLite (stable but smaller package size)-->
-				 <PackageVersion>80.$(Minor).$(Build).$(Revision)</PackageVersion>
-			 </PropertyGroup>
-		 </When>
+				<!--Release/ReleaseLite/ReleaseAll (stable packages)-->
+				<PackageVersion>80.$(Minor).$(Build).$(Revision)</PackageVersion>
+			</PropertyGroup>
+		</When>
 
-		 <Otherwise>
-			 <PropertyGroup>
-				 <Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
-				 <Build>$([System.DateTime]::Now.ToString(MM))</Build>
-				 <Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
+		<!-- Default: Same as Release for Debug and any other configurations -->
+		<Otherwise>
+			<PropertyGroup>
+				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
+				<Build>$([System.DateTime]::Now.ToString(MM))</Build>
+				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
 
-				 <!--Version layout schema:
+				<!--Version layout schema:
 				80 = Major
 				23 = Minor - Year of release
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-->
-				 <LibraryVersion>80.$(Minor).$(Build).$(Revision)</LibraryVersion>
-				 <!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
+				<LibraryVersion>80.$(Minor).$(Build).$(Revision)</LibraryVersion>
+				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 
-				 <!--Stable/Signed-->
-				 <PackageVersion>80.$(Minor).$(Build).$(Revision)</PackageVersion>
-			 </PropertyGroup>
-		 </Otherwise>
+				<!--Debug and other configurations-->
+				<PackageVersion>80.$(Minor).$(Build).$(Revision)</PackageVersion>
+			</PropertyGroup>
+		</Otherwise>
 	 </Choose>
 </Project>

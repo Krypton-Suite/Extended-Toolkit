@@ -24,9 +24,7 @@
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
-		<UseWindowsForms>true</UseWindowsForms>
-		<Configurations>Debug;Release;Nightly;Canary</Configurations>
-		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+		<UseWindowsForms>true</UseWindowsForms>		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<LangVersion>preview</LangVersion>
 	</PropertyGroup>
 

@@ -2,6 +2,8 @@
 
 	<PropertyGroup>
 		<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<!-- TargetFrameworks is now set dynamically in Directory.Build.props based on Configuration -->
+		<!-- This project will inherit the TargetFrameworks from Directory.Build.props -->
 		<TargetFrameworks>$(ActiveExtendedToolkitTFMs)</TargetFrameworks>
 		<OutputType>library</OutputType>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.Ultimate</RootNamespace>
@@ -10,9 +12,7 @@
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<UseWindowsForms>true</UseWindowsForms>
-		<Configurations>Debug;Release;Nightly;Canary</Configurations>
-		<LangVersion>preview</LangVersion>
+		<UseWindowsForms>true</UseWindowsForms>		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>

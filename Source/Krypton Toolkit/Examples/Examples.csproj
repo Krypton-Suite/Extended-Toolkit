@@ -1,12 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFrameworks>net481;net8.0-windows</TargetFrameworks>
 		<Nullable>enable</Nullable>
-		<UseWindowsForms>true</UseWindowsForms>
-		<Configurations>Debug;Release;Nightly;Canary</Configurations>
-		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWindowsForms>true</UseWindowsForms>		<ImplicitUsings>enable</ImplicitUsings>
 		<BaseOutputPath>..\..\..\Bin\Examples\</BaseOutputPath>
 		<LangVersion>preview</LangVersion>
 	</PropertyGroup>

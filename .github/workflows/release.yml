@@ -13,8 +13,11 @@ on:
         type: choice
         options:
           - Release
+          - ReleaseLite
           - Canary
+          - CanaryLite
           - Nightly
+          - NightlyLite
       publish_nuget:
         description: 'Publish to NuGet.org'
         required: true

@@ -25,9 +25,7 @@
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
-		<NeutralLanguage>en</NeutralLanguage>
-		<Configurations>Debug;Release;Nightly;Canary</Configurations>
-		<LangVersion>preview</LangVersion>
+		<NeutralLanguage>en</NeutralLanguage>		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>

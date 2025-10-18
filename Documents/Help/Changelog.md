@@ -46,14 +46,6 @@
 * `build-nightly-all.cmd` - Build both Nightly and NightlyLite packages
 * Full Visual Studio Batch Build support for all configurations
 
-### **Documentation**
-* `CENTRALIZED_BUILD_SYSTEM.md` - Complete build system architecture
-* `CENTRALIZED_TFM_CONFIGURATION.md` - Framework targeting strategy
-* `GLOBAL_DEPENDENCY_INCLUSION.md` - Dependency management details
-* `LITE_CONFIGURATION.md` - Lite package configuration guide
-* `VISUAL_STUDIO_BUILD_GUIDE.md` - Building from Visual Studio
-* `BUILD_ALL_PACKAGES.md` - Building all package variants
-
 ### **Other Updates**
 * Implemented [#540](https://github.com/Krypton-Suite/Extended-Toolkit/issues/540), Set the baseline support to .NET Framework 4.7.2
 	- **Note:** The minimum supported version of .NET Framework for the Extended Toolkit is now .NET Framework 4.7.2

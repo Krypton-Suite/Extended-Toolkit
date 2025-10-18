@@ -34,9 +34,7 @@
 		<OutputType>library</OutputType>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.Shared</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.Shared</AssemblyName>
-		<UseWindowsForms>true</UseWindowsForms>
-		<Configurations>Debug;Release;Nightly;Canary</Configurations>
-	</PropertyGroup>
+		<UseWindowsForms>true</UseWindowsForms>	</PropertyGroup>
 
 	<!--Package Data-->
 	<Choose>
