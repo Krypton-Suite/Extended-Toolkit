@@ -1,4 +1,7 @@
 <Project>
+	<!-- Import root Directory.Build.targets for global dependency inclusion system -->
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../../'))" />
+	
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>

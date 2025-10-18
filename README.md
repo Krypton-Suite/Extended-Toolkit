@@ -176,9 +176,9 @@ msbuild Build.proj /t:Help
 - NuGet packages: `Bin/NuGet Packages/{Configuration}/`
 
 **Documentation:**
-- [Quick Start Guide](QUICK_START_BUILD.md) - Get building in 5 minutes
-- [Build System Documentation](BUILD_SYSTEM.md) - Complete reference
-- [Build.proj Summary](BUILD_PROJ_SUMMARY.md) - Overview of the build system
+- [Global Dependency Inclusion](GLOBAL_DEPENDENCY_INCLUSION.md) - Smart dependency management for all projects
+- [Centralized TFM Configuration](CENTRALIZED_TFM_CONFIGURATION.md) - Framework targeting strategy
+- [Workflow Implementation](WORKFLOW_IMPLEMENTATION.md) - GitHub Actions CI/CD workflows
 
 ## Using Visual Studio
 

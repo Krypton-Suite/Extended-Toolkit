@@ -1,4 +1,26 @@
  <Project>
+	 <!-- 
+		 Centralized Target Framework Monikers (TFMs) Configuration
+		 All Extended Toolkit projects use these TFMs unless explicitly overridden
+	 -->
+	 <PropertyGroup>
+		 <!-- Full framework support (all projects by default) -->
+		 <ExtendedToolkitTFMs>net472;net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ExtendedToolkitTFMs>
+		 
+		 <!-- Lite framework support (excludes net472 for smaller packages) -->
+		 <ExtendedToolkitLiteTFMs>net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ExtendedToolkitLiteTFMs>
+		 
+		 <!-- Modern frameworks only (net8+) -->
+		 <ExtendedToolkitModernTFMs>net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ExtendedToolkitModernTFMs>
+		 
+		 <!-- Legacy frameworks only (net4x) -->
+		 <ExtendedToolkitLegacyTFMs>net472;net48;net481</ExtendedToolkitLegacyTFMs>
+	 </PropertyGroup>
+
+	 <!-- 
+		 Version Configuration
+		 Dynamic versioning based on build configuration
+	 -->
 	 <Choose>
 		 <When Condition="'$(Configuration)' == 'Canary'">
 			 <PropertyGroup>

@@ -3,13 +3,15 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
 			<PropertyGroup>
-				<TargetFrameworks>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<!--If all else fails-->
 			<PropertyGroup>
-				<TargetFrameworks>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>

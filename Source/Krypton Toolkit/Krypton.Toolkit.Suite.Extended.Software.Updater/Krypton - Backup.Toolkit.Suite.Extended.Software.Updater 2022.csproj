@@ -1,27 +1,31 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<TargetFrameworks>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<TargetFrameworks>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
-				<TargetFrameworks>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<!--If all else fails-->
 			<PropertyGroup>
-				<TargetFrameworks>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>

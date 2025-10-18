@@ -1,15 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Choose>
 		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
 			<PropertyGroup>
-				<TargetFrameworks>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<!--If all else fails-->
 			<PropertyGroup>
-				<TargetFrameworks>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
@@ -71,7 +73,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.286-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.290-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -102,9 +104,9 @@
 	</Choose>
 
 	<ItemGroup>
-		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.9" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.11" />
 
-		<PackageReference Include="WindowsAPICodePackShellExtensions" Version="8.0.9" />
+		<PackageReference Include="WindowsAPICodePackShellExtensions" Version="8.0.11" />
 	</ItemGroup>
 
 	<ItemGroup>

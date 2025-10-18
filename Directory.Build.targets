@@ -8,8 +8,8 @@
 		<!-- Include all referenced assemblies in NuGet packages -->
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		
-		<!-- Include build output in packages -->
-		<IncludeBuildOutput>true</IncludeBuildOutput>
+		<!-- Include build output in packages (can be overridden by individual projects) -->
+		<IncludeBuildOutput Condition="'$(IncludeBuildOutput)' == ''">true</IncludeBuildOutput>
 		
 		<!-- Include referenced project outputs in packages -->
 		<IncludeReferencedProjects>true</IncludeReferencedProjects>
@@ -20,32 +20,93 @@
 		
 		<!-- Embed all dependencies in the package lib folder -->
 		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+		
+		<!-- Suppress common NuGet warnings for all projects -->
+		<NoWarn Condition="'$(NoWarn)' == ''">$(NoWarn);NU1012;NU5128</NoWarn>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+		<WarningsAsErrors />
+		<WarningsNotAsErrors>NU1012;NU5128</WarningsNotAsErrors>
 	</PropertyGroup>
 
 	<!-- 
-		This target ensures that project references are included in the NuGet package.
-		It copies all referenced project outputs to the package lib folder.
+		Smart dependency inclusion for all Extended Toolkit projects.
+		This target ensures that only necessary dependencies are included in NuGet packages,
+		excluding framework assemblies while including all Extended Toolkit and third-party dependencies.
 	-->
 	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
 		<ItemGroup>
-			<!-- Include all project reference outputs -->
-			<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+			<!-- Include all referenced assemblies -->
+			<_AllReferences Include="@(ReferenceCopyLocalPaths)" />
+			
+			<!-- Filter out framework assemblies (System.*, Microsoft.*, WindowsBase, etc.) -->
+			<_FrameworkAssemblies Include="@(_AllReferences)" 
+				Condition="$([System.String]::new('%(Filename)').StartsWith('System.')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.VisualBasic')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.Win32.')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.CSharp')) OR 
+						   '%(Filename)' == 'mscorlib' OR 
+						   '%(Filename)' == 'netstandard' OR 
+						   '%(Filename)' == 'WindowsBase' OR 
+						   '%(Filename)' == 'PresentationCore' OR 
+						   '%(Filename)' == 'PresentationFramework' OR 
+						   $([System.String]::new('%(Filename)').StartsWith('PresentationFramework.')) OR 
+						   '%(Filename)' == 'PresentationUI' OR 
+						   '%(Filename)' == 'ReachFramework' OR 
+						   '%(Filename)' == 'UIAutomationClient' OR 
+						   '%(Filename)' == 'UIAutomationClientSideProviders' OR 
+						   '%(Filename)' == 'UIAutomationProvider' OR 
+						   '%(Filename)' == 'UIAutomationTypes' OR 
+						   '%(Filename)' == 'Accessibility'" />
+			
+			<!-- Include only non-framework assemblies -->
+			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies)" />
+			
+			<!-- Include filtered dependencies in package -->
+			<BuildOutputInPackage Include="@(_NonFrameworkAssemblies)" />
 		</ItemGroup>
+		
+		<Message Text="Including dependency: %(_NonFrameworkAssemblies.Identity)" Importance="low" />
 	</Target>
 
 	<!-- 
 		Include all runtime dependencies in the package.
-		This ensures that consumers get all necessary DLLs.
+		This ensures that consumers get all necessary DLLs (excluding framework assemblies).
 	-->
 	<PropertyGroup>
 		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeReferencedProjectInPackage</TargetsForTfmSpecificContentInPackage>
 	</PropertyGroup>
 
-	<Target Name="IncludeReferencedProjectInPackage">
+	<Target Name="IncludeReferencedProjectInPackage" DependsOnTargets="ResolveReferences">
 		<ItemGroup>
-			<!-- Include all referenced assemblies in the lib folder -->
-			<TfmSpecificPackageFile Include="@(ReferenceCopyLocalPaths)" PackagePath="lib/$(TargetFramework)/" />
+			<!-- Include all referenced assemblies -->
+			<_AllReferences Include="@(ReferenceCopyLocalPaths)" />
+			
+			<!-- Filter out framework assemblies -->
+			<_FrameworkAssemblies Include="@(_AllReferences)" 
+				Condition="$([System.String]::new('%(Filename)').StartsWith('System.')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.VisualBasic')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.Win32.')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.CSharp')) OR 
+						   '%(Filename)' == 'mscorlib' OR 
+						   '%(Filename)' == 'netstandard' OR 
+						   '%(Filename)' == 'WindowsBase' OR 
+						   '%(Filename)' == 'PresentationCore' OR 
+						   '%(Filename)' == 'PresentationFramework' OR 
+						   $([System.String]::new('%(Filename)').StartsWith('PresentationFramework.')) OR 
+						   '%(Filename)' == 'PresentationUI' OR 
+						   '%(Filename)' == 'ReachFramework' OR 
+						   '%(Filename)' == 'UIAutomationClient' OR 
+						   '%(Filename)' == 'UIAutomationClientSideProviders' OR 
+						   '%(Filename)' == 'UIAutomationProvider' OR 
+						   '%(Filename)' == 'UIAutomationTypes' OR 
+						   '%(Filename)' == 'Accessibility'" />
+			
+			<!-- Include only non-framework assemblies in the lib folder -->
+			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies)" />
+			<TfmSpecificPackageFile Include="@(_NonFrameworkAssemblies)" PackagePath="lib/$(TargetFramework)/" />
 		</ItemGroup>
+		
+		<Message Text="Including in package: %(_NonFrameworkAssemblies.Identity)" Importance="low" />
 	</Target>
 
 	<!-- 

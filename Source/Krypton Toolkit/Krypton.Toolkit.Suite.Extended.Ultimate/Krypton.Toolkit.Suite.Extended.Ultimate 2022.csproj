@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
+		<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
 		<OutputType>library</OutputType>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.Ultimate</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.Ultimate</AssemblyName>
@@ -15,6 +16,12 @@
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+		
+		<!-- Suppress NuGet pack validation warning NU1012 (TFMs missing platform version) -->
+		<NoWarn>$(NoWarn);NU1012</NoWarn>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+		<WarningsAsErrors />
+		<WarningsNotAsErrors>NU1012</WarningsNotAsErrors>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -64,16 +71,17 @@
 		</Description>
 		<PackageIcon>Krypton Stable.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		
 	</PropertyGroup>
 
 	<!-- Krypton Toolkit Dependencies -->
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.10.286-alpha" />
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.286-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.10.286-alpha" />
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.10.286-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.10.290-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.290-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.10.290-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.10.290-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -207,6 +215,66 @@
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Ultimate\Krypton.Toolkit.Suite.Extended.Ultimate.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Ultimate\</OutputPath>
+	</PropertyGroup>
+
+	<!-- Ensure all dependencies are included in the package -->
+	<PropertyGroup>
+		<!-- Force inclusion of all dependencies -->
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<IncludeBuildOutput>true</IncludeBuildOutput>
+		<IncludeReferencedProjects>true</IncludeReferencedProjects>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		
+		<!-- Suppress NuGet pack validation warning NU1012 (TFMs missing platform version) -->
+		<NoWarn>$(NoWarn);NU1012</NoWarn>
+		<_SuppressTfmSupportBuildWarnings>true</_SuppressTfmSupportBuildWarnings>
+		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+		
+		<!-- Custom targets to include all dependencies -->
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeAllDependenciesInPackage</TargetsForTfmSpecificBuildOutput>
+		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeAllDependenciesInPackage</TargetsForTfmSpecificContentInPackage>
+	</PropertyGroup>
+
+	<!-- Custom target to include ALL dependencies in the package -->
+	<Target Name="IncludeAllDependenciesInPackage" DependsOnTargets="ResolveReferences">
+		<ItemGroup>
+			<!-- Include ONLY non-framework assemblies (exclude System.*, Microsoft.VisualBasic.*, mscorlib, netstandard, WindowsBase, etc.) -->
+			<_AllReferences Include="@(ReferenceCopyLocalPaths)" />
+			
+			<!-- Filter out framework assemblies -->
+			<_FrameworkAssemblies Include="@(_AllReferences)" 
+				Condition="$([System.String]::new('%(Filename)').StartsWith('System.')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.VisualBasic')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.Win32.')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.CSharp')) OR 
+						   '%(Filename)' == 'mscorlib' OR 
+						   '%(Filename)' == 'netstandard' OR 
+						   '%(Filename)' == 'WindowsBase' OR 
+						   '%(Filename)' == 'PresentationCore' OR 
+						   '%(Filename)' == 'PresentationFramework' OR 
+						   $([System.String]::new('%(Filename)').StartsWith('PresentationFramework.')) OR 
+						   '%(Filename)' == 'PresentationUI' OR 
+						   '%(Filename)' == 'ReachFramework' OR 
+						   '%(Filename)' == 'UIAutomationClient' OR 
+						   '%(Filename)' == 'UIAutomationClientSideProviders' OR 
+						   '%(Filename)' == 'UIAutomationProvider' OR 
+						   '%(Filename)' == 'UIAutomationTypes' OR 
+						   '%(Filename)' == 'Accessibility'" />
+			
+			<!-- Include only non-framework assemblies -->
+			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies)" />
+			
+			<BuildOutputInPackage Include="@(_NonFrameworkAssemblies)" />
+			<TfmSpecificPackageFile Include="@(_NonFrameworkAssemblies)" PackagePath="lib/$(TargetFramework)/" />
+		</ItemGroup>
+		
+		<Message Text="Including %(TfmSpecificPackageFile.Identity) in package" Importance="low" />
+	</Target>
+	
+	<!-- Exclude the Ultimate project's own output from the package -->
+	<PropertyGroup>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
 	</PropertyGroup>
 
 	<!-- Note: UltimatePackageInfo.cs is automatically included by the SDK -->

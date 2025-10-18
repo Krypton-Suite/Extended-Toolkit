@@ -143,12 +143,12 @@
     <MakeDir Directories="$(NuGetPackagesDir)" Condition="!Exists('$(NuGetPackagesDir)')" />
     
     <!-- Pack Ultimate packages -->
-    <Exec Command="dotnet pack &quot;$(UltimateProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build"
+    <Exec Command="dotnet pack &quot;$(UltimateProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build /p:NoWarn=NU1012"
           WorkingDirectory="$(RootDir)"
           ContinueOnError="true" 
           Condition="Exists('$(UltimateProject)')" />
     
-    <Exec Command="dotnet pack &quot;$(UltimateLiteProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build"
+    <Exec Command="dotnet pack &quot;$(UltimateLiteProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build /p:NoWarn=NU1012"
           WorkingDirectory="$(RootDir)"
           ContinueOnError="true"
           Condition="Exists('$(UltimateLiteProject)')" />

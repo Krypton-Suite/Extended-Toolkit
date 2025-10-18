@@ -57,11 +57,12 @@ echo 4. Build and Pack Toolkit
 echo 5. Debug project
 echo 6. Rebuild project
 echo 7. NuGet Package Manager
-echo 8. Show build information
-echo 9. Create Archives (ZIP/TAR)
-echo 10. End
+echo 8. Ultimate Package Diagnostic
+echo 9. Show build information
+echo 10. Create Archives (ZIP/TAR)
+echo 11. End
 echo:
-set /p answer="Enter number (1 - 10): "
+set /p answer="Enter number (1 - 11): "
 if %answer%==1 (goto cleanproject)
 if %answer%==2 (goto buildproject)
 if %answer%==3 (goto createnugetpackages)
@@ -69,9 +70,10 @@ if %answer%==4 (goto buildandpacktoolkit)
 if %answer%==5 (goto debugproject)
 if %answer%==6 (goto rebuildproject)
 if %answer%==7 (goto nugetmanager)
-if %answer%==8 (goto showbuildinfo)
-if %answer%==9 (goto createarchives)
-if %answer%==10 (goto exitbuildsystem)
+if %answer%==8 (goto ultimatediagnostic)
+if %answer%==9 (goto showbuildinfo)
+if %answer%==10 (goto createarchives)
+if %answer%==11 (goto exitbuildsystem)
 
 @echo Invalid input, please try again.
 pause
@@ -93,11 +95,12 @@ echo 4. Build and Pack Toolkit
 echo 5. Debug project
 echo 6. Rebuild project
 echo 7. NuGet Package Manager
-echo 8. Show build information
-echo 9. Create Archives (ZIP/TAR)
-echo 10. End
+echo 8. Ultimate Package Diagnostic
+echo 9. Show build information
+echo 10. Create Archives (ZIP/TAR)
+echo 11. End
 echo:
-set /p answer="Enter number (1 - 10): "
+set /p answer="Enter number (1 - 11): "
 if %answer%==1 (goto cleanproject)
 if %answer%==2 (goto buildproject)
 if %answer%==3 (goto createnugetpackages)
@@ -105,9 +108,10 @@ if %answer%==4 (goto buildandpacktoolkit)
 if %answer%==5 (goto debugproject)
 if %answer%==6 (goto rebuildproject)
 if %answer%==7 (goto nugetmanager)
-if %answer%==8 (goto showbuildinfo)
-if %answer%==9 (goto createarchives)
-if %answer%==10 (goto exitbuildsystem)
+if %answer%==8 (goto ultimatediagnostic)
+if %answer%==9 (goto showbuildinfo)
+if %answer%==10 (goto createarchives)
+if %answer%==11 (goto exitbuildsystem)
 
 @echo Invalid input, please try again.
 pause
@@ -298,6 +302,26 @@ if exist "update-nuget.cmd" (
     echo ❌ Error: update-nuget.cmd not found!
     echo:
     echo Please ensure update-nuget.cmd is in the same directory as run.cmd
+    echo:
+    pause
+    goto mainmenu
+)
+
+:ultimatediagnostic
+cls
+echo ========================================================================
+echo   Launching Ultimate Package Diagnostic Tool
+echo ========================================================================
+echo:
+
+if exist "ultimate-diagnostic.cmd" (
+    call ultimate-diagnostic.cmd
+    cls
+    goto mainmenu
+) else (
+    echo ❌ Error: ultimate-diagnostic.cmd not found!
+    echo:
+    echo Please ensure ultimate-diagnostic.cmd is in the same directory as run.cmd
     echo:
     pause
     goto mainmenu
