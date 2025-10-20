@@ -1,9 +1,12 @@
 <Solution>
   <Configurations>
     <BuildType Name="Canary" />
+    <BuildType Name="CanaryLite" />
     <BuildType Name="Debug" />
     <BuildType Name="Nightly" />
+    <BuildType Name="NightlyLite" />
     <BuildType Name="Release" />
+    <BuildType Name="ReleaseLite" />
   </Configurations>
   <Folder Name="/Applications/">
     <Project Path="AutoUpdateCreator/AutoUpdateCreator.csproj" />
@@ -196,5 +199,9 @@
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
     <File Path=".nuspec" />
+  </Folder>
+  <Folder Name="/Ultimate/">
+    <Project Path="Krypton.Toolkit.Suite.Extended.Ultimate.Lite/Krypton.Toolkit.Suite.Extended.Ultimate.Lite 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Ultimate/Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj" />
   </Folder>
 </Solution>
