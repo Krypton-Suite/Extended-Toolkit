@@ -1,0 +1,199 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger on version tags like v80.25.10.286
+  workflow_dispatch:  # Allow manual triggering
+    inputs:
+      configuration:
+        description: 'Build Configuration'
+        required: true
+        default: 'Release'
+        type: choice
+        options:
+          - Release
+          - ReleaseLite
+          - Canary
+          - CanaryLite
+          - Nightly
+          - NightlyLite
+      publish_nuget:
+        description: 'Publish to NuGet.org'
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  build-and-release:
+    name: Build and Release Toolkit
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for versioning
+    
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: |
+          10.0.x
+          9.0.x
+          8.0.x
+          6.0.x
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+      with:
+        vs-version: 'latest'
+    
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v2
+      with:
+        nuget-version: 'latest'
+    
+    - name: Determine Configuration
+      id: config
+      shell: pwsh
+      run: |
+        if ("${{ github.event_name }}" -eq "workflow_dispatch") {
+          $config = "${{ inputs.configuration }}"
+        } else {
+          # For tag pushes, determine configuration from tag name or default to Release
+          $config = "Release"
+        }
+        echo "configuration=$config" >> $env:GITHUB_OUTPUT
+        echo "Building with configuration: $config"
+    
+    - name: Restore NuGet packages (Main Solution)
+      run: nuget restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln"
+    
+    - name: Build Main Solution
+      run: msbuild "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln" /p:Configuration=${{ steps.config.outputs.configuration }} /p:Platform="Any CPU" /m /v:minimal
+    
+    - name: Restore NuGet packages (NuGet Solution)
+      run: nuget restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln"
+    
+    - name: Build NuGet Solution
+      run: msbuild "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln" /p:Configuration=${{ steps.config.outputs.configuration }} /p:Platform="Any CPU" /m /v:minimal
+    
+    - name: Build and Pack Ultimate Packages
+      shell: pwsh
+      run: |
+        $config = "${{ steps.config.outputs.configuration }}"
+        $outputDir = "Bin/NuGet Packages/$config"
+        
+        # Ultimate Package
+        $ultimateProject = "Source/Krypton Toolkit/Krypton.Toolkit.Suite.Extended.Ultimate/Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj"
+        if (Test-Path $ultimateProject) {
+          Write-Host "Building and packing Ultimate package..."
+          dotnet pack $ultimateProject --configuration $config --output $outputDir /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg
+        } else {
+          Write-Warning "Ultimate package project not found at: $ultimateProject"
+        }
+        
+        # Ultimate.Lite Package  
+        $ultimateLiteProject = "Source/Krypton Toolkit/Krypton.Toolkit.Suite.Extended.Ultimate.Lite/Krypton.Toolkit.Suite.Extended.Ultimate.Lite 2022.csproj"
+        if (Test-Path $ultimateLiteProject) {
+          Write-Host "Building and packing Ultimate.Lite package..."
+          dotnet pack $ultimateLiteProject --configuration $config --output $outputDir /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg
+        } else {
+          Write-Warning "Ultimate.Lite package project not found at: $ultimateLiteProject"
+        }
+    
+    - name: Pack NuGet packages
+      shell: pwsh
+      run: |
+        $config = "${{ steps.config.outputs.configuration }}"
+        
+        # Find all .csproj files and pack them
+        # Note: Directory.Build.targets automatically configures all projects to include referenced binaries
+        Get-ChildItem -Path "Source/Krypton Toolkit" -Filter "*.csproj" -Recurse | ForEach-Object {
+          $project = $_.FullName
+          $projectName = $_.Name
+          
+          # Skip application projects (not libraries) and Ultimate packages (already packed)
+          if ($projectName -like "*Examples*" -or 
+              $projectName -like "*ZipExtractor*" -or 
+              $projectName -like "*AutoUpdateCreator*" -or
+              $projectName -like "*Ultimate*") {
+            Write-Host "Skipping: $projectName"
+            return
+          }
+          
+          Write-Host "Packing: $project"
+          
+          # Pack (settings are applied from Directory.Build.targets)
+          dotnet pack $project --configuration $config --no-build --output "Bin/NuGet Packages/$config"
+        }
+        
+        # Verify the Ultimate packages were created
+        $ultimatePackages = Get-ChildItem -Path "Bin/NuGet Packages/$config" -Filter "*Ultimate*.nupkg" -Exclude "*.symbols.nupkg"
+        if ($ultimatePackages) {
+          Write-Host "`n✅ Ultimate packages created successfully:"
+          foreach ($pkg in $ultimatePackages) {
+            Write-Host "   - $($pkg.Name) ($([math]::Round($pkg.Length / 1MB, 2)) MB)"
+          }
+        } else {
+          Write-Warning "⚠️ No Ultimate packages were found!"
+        }
+    
+    - name: List NuGet packages
+      shell: pwsh
+      run: |
+        $config = "${{ steps.config.outputs.configuration }}"
+        $nugetDir = "Bin/NuGet Packages/$config"
+        if (Test-Path $nugetDir) {
+          Write-Host "NuGet packages in $nugetDir:"
+          Get-ChildItem -Path $nugetDir -Filter "*.nupkg" | ForEach-Object {
+            Write-Host "  - $($_.Name)"
+          }
+        } else {
+          Write-Host "No NuGet packages directory found at: $nugetDir"
+        }
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: Release-${{ steps.config.outputs.configuration }}
+        path: |
+          Bin/${{ steps.config.outputs.configuration }}/
+          Bin/NuGet Packages/${{ steps.config.outputs.configuration }}/
+        retention-days: 30
+    
+    - name: Publish to NuGet.org
+      if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch' && inputs.publish_nuget)
+      shell: pwsh
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      run: |
+        $config = "${{ steps.config.outputs.configuration }}"
+        $nugetDir = "Bin/NuGet Packages/$config"
+        
+        if (-not (Test-Path $nugetDir)) {
+          Write-Error "NuGet packages directory not found: $nugetDir"
+          exit 1
+        }
+        
+        # Push all .nupkg files (excluding symbol packages which are uploaded automatically)
+        Get-ChildItem -Path $nugetDir -Filter "*.nupkg" -Exclude "*.symbols.nupkg" | ForEach-Object {
+          $package = $_.FullName
+          Write-Host "Publishing: $package"
+          dotnet nuget push $package --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+        }
+    
+    - name: Create GitHub Release
+      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          Bin/NuGet Packages/${{ steps.config.outputs.configuration }}/*.nupkg
+          Bin/NuGet Packages/${{ steps.config.outputs.configuration }}/*.snupkg
+        draft: false
+        prerelease: ${{ contains(steps.config.outputs.configuration, 'Canary') || contains(steps.config.outputs.configuration, 'Nightly') }}
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

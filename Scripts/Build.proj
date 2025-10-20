@@ -1,0 +1,455 @@
+<!-- 
+  Krypton Extended Toolkit - Master Build Project
+  
+  This MSBuild project orchestrates building the entire toolkit across all configurations
+  and release channels.
+  
+  Release Channels:
+  - Release (master)  : Stable production releases
+  - Canary (canary)   : Beta pre-releases (-beta suffix)
+  - Nightly (alpha)   : Alpha pre-releases (-alpha suffix)
+  
+  Usage:
+    msbuild Build.proj                                    # Build Release configuration
+    msbuild Build.proj /p:Configuration=Canary            # Build Canary configuration
+    msbuild Build.proj /p:Configuration=Nightly           # Build Nightly configuration
+    msbuild Build.proj /t:BuildAll                        # Build all configurations
+    msbuild Build.proj /t:CI                              # Full CI pipeline
+    msbuild Build.proj /t:Pack                            # Pack NuGet packages
+    msbuild Build.proj /t:Rebuild                         # Clean and rebuild
+-->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- ============================================
+       Property Definitions
+       ============================================ -->
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+    <Platform Condition="'$(Platform)' == ''">Any CPU</Platform>
+    
+    <!-- Paths -->
+    <RootDir>$(MSBuildProjectDirectory)</RootDir>
+    <SourceDir>$(RootDir)\Source\Krypton Toolkit</SourceDir>
+    <BinDir>$(RootDir)\Bin</BinDir>
+    <OutputDir>$(BinDir)\$(Configuration)</OutputDir>
+    <NuGetPackagesDir>$(BinDir)\NuGet Packages\$(Configuration)</NuGetPackagesDir>
+    
+    <!-- Solution Files -->
+    <MainSolution>$(SourceDir)\Krypton Toolkit Suite Extended 2022 - VS2022.sln</MainSolution>
+    <NuGetSolution>$(SourceDir)\Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln</NuGetSolution>
+    <DevSolution>$(SourceDir)\Krypton Toolkit Suite Extended 2022 - VS2022 - Dev.sln</DevSolution>
+    
+    <!-- Ultimate Package Projects -->
+    <UltimateProject>$(SourceDir)\Krypton.Toolkit.Suite.Extended.Ultimate\Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj</UltimateProject>
+    <UltimateLiteProject>$(SourceDir)\Krypton.Toolkit.Suite.Extended.Ultimate.Lite\Krypton.Toolkit.Suite.Extended.Ultimate.Lite 2022.csproj</UltimateLiteProject>
+    
+    <!-- Build Properties -->
+    <BuildInParallel>true</BuildInParallel>
+    <MaxCpuCount>0</MaxCpuCount>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <ContinueOnError>false</ContinueOnError>
+    
+    <!-- Verbosity: quiet, minimal, normal, detailed, diagnostic -->
+    <BuildVerbosity Condition="'$(BuildVerbosity)' == ''">minimal</BuildVerbosity>
+  </PropertyGroup>
+
+  <!-- Release Channel Information -->
+  <PropertyGroup>
+    <IsReleaseBuild Condition="'$(Configuration)' == 'Release' or '$(Configuration)' == 'Stable'">true</IsReleaseBuild>
+    <IsCanaryBuild Condition="'$(Configuration)' == 'Canary'">true</IsCanaryBuild>
+    <IsNightlyBuild Condition="'$(Configuration)' == 'Nightly' or '$(Configuration)' == 'Alpha'">true</IsNightlyBuild>
+    
+    <!-- Package Suffix (from Directory.Build.props) -->
+    <PackageSuffix Condition="'$(IsCanaryBuild)' == 'true'">-beta</PackageSuffix>
+    <PackageSuffix Condition="'$(IsNightlyBuild)' == 'true'">-alpha</PackageSuffix>
+    <PackageSuffix Condition="'$(IsReleaseBuild)' == 'true'"></PackageSuffix>
+    
+    <!-- Branch Names -->
+    <TargetBranch Condition="'$(IsReleaseBuild)' == 'true'">master</TargetBranch>
+    <TargetBranch Condition="'$(IsCanaryBuild)' == 'true'">canary</TargetBranch>
+    <TargetBranch Condition="'$(IsNightlyBuild)' == 'true'">alpha</TargetBranch>
+  </PropertyGroup>
+
+  <!-- ============================================
+       Item Groups - Projects to Pack
+       ============================================ -->
+  <ItemGroup>
+    <!-- Core Libraries -->
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2022.csproj" />
+    
+    <!-- UI Components -->
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Panels\Krypton.Toolkit.Suite.Extended.Panels 2022.csproj" />
+    
+    <!-- Dialogs -->
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.InputBox\Krypton.Toolkit.Suite.Extended.InputBox 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.MessageDialog\Krypton.Toolkit.Suite.Extended.MessageDialog.csproj" />
+    
+    <!-- Data Visualization -->
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView\Krypton.Toolkit.Suite.Extended.AdvancedDataGridView 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Outlook.Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Data.Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation 2022.csproj" />
+    
+    <!-- Additional Components -->
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.ComboBox\Krypton.Toolkit.Suite.Extended.ComboBox 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Notifications\Krypton.Toolkit.Suite.Extended.Notifications 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Navi.Suite\Krypton.Toolkit.Suite.Extended.Navi.Suite 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Ribbon\Krypton.Toolkit.Suite.Extended.Ribbon 2022.csproj" />
+    
+    <!-- Drawing & Design -->
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\Krypton.Toolkit.Suite.Extended.Drawing.Utilities 2022.csproj" />
+    
+    <!-- Utilities -->
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Suite.Extended.IO 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Compression\Krypton.Toolkit.Suite.Extended.Compression 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.CheckSum.Tools\Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Error.Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Suite.Extended.Resources 2022.csproj" />
+    
+    <!-- Advanced Features -->
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Forms\Krypton.Toolkit.Suite.Extended.Forms 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.File.Copier\Krypton.Toolkit.Suite.Extended.File.Copier 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Memory.Box\Krypton.Toolkit.Suite.Extended.Memory.Box 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Networking\Krypton.Toolkit.Suite.Extended.Networking 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Software.Updater.Core\Krypton.Toolkit.Suite.Extended.Software.Updater.Core 2022.csproj" />
+    <LibraryProject Include="$(SourceDir)\Krypton.Toolkit.Suite.Extended.Language.Model\Krypton.Toolkit.Suite.Extended.Language.Model 2022.csproj" />
+    
+    <!-- Ultimate Packages (All-in-One) -->
+    <UltimatePackage Include="$(UltimateProject)" />
+    <UltimatePackage Include="$(UltimateLiteProject)" />
+  </ItemGroup>
+
+  <!-- All Configurations for BuildAll target -->
+  <ItemGroup>
+    <BuildConfiguration Include="Release" />
+    <BuildConfiguration Include="Canary" />
+    <BuildConfiguration Include="Nightly" />
+    <BuildConfiguration Include="Debug" />
+  </ItemGroup>
+
+  <!-- ============================================
+       Target: ShowConfiguration
+       Displays current build configuration
+       ============================================ -->
+  <Target Name="ShowConfiguration">
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+    <Message Text="  Krypton Extended Toolkit - Build Configuration" Importance="high" />
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+    <Message Text="Configuration : $(Configuration)" Importance="high" />
+    <Message Text="Platform      : $(Platform)" Importance="high" />
+    <Message Text="Target Branch : $(TargetBranch)" Importance="high" />
+    <Message Text="Package Suffix: $(PackageSuffix)" Importance="high" />
+    <Message Text="Output Dir    : $(OutputDir)" Importance="high" />
+    <Message Text="NuGet Dir     : $(NuGetPackagesDir)" Importance="high" />
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: Restore
+       Restores NuGet packages for all solutions
+       ============================================ -->
+  <Target Name="Restore">
+    <Message Text="🔄 Restoring NuGet packages..." Importance="high" />
+    
+    <Exec Command="dotnet restore &quot;$(MainSolution)&quot;" 
+          WorkingDirectory="$(RootDir)" />
+    
+    <Message Text="✅ NuGet packages restored successfully" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: Clean
+       Cleans build output
+       ============================================ -->
+  <Target Name="Clean">
+    <Message Text="🧹 Cleaning $(Configuration) configuration..." Importance="high" />
+    
+    <MSBuild Projects="$(MainSolution)"
+             Properties="Configuration=$(Configuration);Platform=$(Platform)"
+             Targets="Clean"
+             BuildInParallel="$(BuildInParallel)"
+             ContinueOnError="$(ContinueOnError)" />
+    
+    <Message Text="✅ Clean completed" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: Build
+       Builds the main solution
+       ============================================ -->
+  <Target Name="Build" DependsOnTargets="ShowConfiguration;Restore">
+    <Message Text="🔨 Building $(Configuration) configuration..." Importance="high" />
+    
+    <MSBuild Projects="$(MainSolution)"
+             Properties="Configuration=$(Configuration);Platform=$(Platform)"
+             Targets="Build"
+             BuildInParallel="$(BuildInParallel)"
+             ContinueOnError="$(ContinueOnError)" />
+    
+    <Message Text="✅ Build completed successfully" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: BuildNuGet
+       Builds the NuGet solution
+       ============================================ -->
+  <Target Name="BuildNuGet" DependsOnTargets="Build">
+    <Message Text="📦 Building NuGet solution ($(Configuration))..." Importance="high" />
+    
+    <MSBuild Projects="$(NuGetSolution)"
+             Properties="Configuration=$(Configuration);Platform=$(Platform)"
+             Targets="Build"
+             BuildInParallel="$(BuildInParallel)"
+             ContinueOnError="$(ContinueOnError)" />
+    
+    <Message Text="✅ NuGet solution built successfully" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: BuildDev
+       Builds the development solution
+       ============================================ -->
+  <Target Name="BuildDev" DependsOnTargets="Build">
+    <Message Text="🔧 Building Dev solution ($(Configuration))..." Importance="high" />
+    
+    <MSBuild Projects="$(DevSolution)"
+             Properties="Configuration=$(Configuration);Platform=$(Platform)"
+             Targets="Build"
+             BuildInParallel="$(BuildInParallel)"
+             ContinueOnError="$(ContinueOnError)" />
+    
+    <Message Text="✅ Dev solution built successfully" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: BuildUltimate
+       Builds the Ultimate all-in-one packages
+       ============================================ -->
+  <Target Name="BuildUltimate" DependsOnTargets="BuildNuGet">
+    <Message Text="⭐ Building Ultimate packages ($(Configuration))..." Importance="high" />
+    
+    <!-- Build Ultimate Package -->
+    <MSBuild Projects="$(UltimateProject)"
+             Properties="Configuration=$(Configuration);Platform=$(Platform)"
+             Targets="Build"
+             BuildInParallel="false"
+             ContinueOnError="$(ContinueOnError)" />
+    
+    <!-- Build Ultimate Lite Package -->
+    <MSBuild Projects="$(UltimateLiteProject)"
+             Properties="Configuration=$(Configuration);Platform=$(Platform)"
+             Targets="Build"
+             BuildInParallel="false"
+             ContinueOnError="$(ContinueOnError)" />
+    
+    <Message Text="✅ Ultimate packages built successfully" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: Pack
+       Creates NuGet packages for all libraries
+       ============================================ -->
+  <Target Name="Pack" DependsOnTargets="BuildUltimate">
+    <Message Text="📦 Creating NuGet packages ($(Configuration))..." Importance="high" />
+    <Message Text="Package Suffix: $(PackageSuffix)" Importance="high" />
+    
+    <!-- Ensure output directory exists -->
+    <MakeDir Directories="$(NuGetPackagesDir)" Condition="!Exists('$(NuGetPackagesDir)')" />
+    
+    <!-- Pack individual library projects -->
+    <MSBuild Projects="@(LibraryProject)"
+             Properties="Configuration=$(Configuration);PackageOutputPath=$(NuGetPackagesDir);NoBuild=true"
+             Targets="Pack"
+             BuildInParallel="$(BuildInParallel)"
+             ContinueOnError="true" />
+    
+    <!-- Pack Ultimate packages -->
+    <Exec Command="dotnet pack &quot;$(UltimateProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build"
+          WorkingDirectory="$(RootDir)"
+          ContinueOnError="false" />
+    
+    <Exec Command="dotnet pack &quot;$(UltimateLiteProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build"
+          WorkingDirectory="$(RootDir)"
+          ContinueOnError="false" />
+    
+    <Message Text="✅ NuGet packages created in: $(NuGetPackagesDir)" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: PackUltimateOnly
+       Creates only the Ultimate packages
+       ============================================ -->
+  <Target Name="PackUltimateOnly" DependsOnTargets="BuildUltimate">
+    <Message Text="⭐ Creating Ultimate packages only ($(Configuration))..." Importance="high" />
+    
+    <!-- Ensure output directory exists -->
+    <MakeDir Directories="$(NuGetPackagesDir)" Condition="!Exists('$(NuGetPackagesDir)')" />
+    
+    <Exec Command="dotnet pack &quot;$(UltimateProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build"
+          WorkingDirectory="$(RootDir)" />
+    
+    <Exec Command="dotnet pack &quot;$(UltimateLiteProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build"
+          WorkingDirectory="$(RootDir)" />
+    
+    <Message Text="✅ Ultimate packages created" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: Rebuild
+       Clean and rebuild
+       ============================================ -->
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build">
+    <Message Text="✅ Rebuild completed" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: BuildAll
+       Builds all configurations
+       ============================================ -->
+  <Target Name="BuildAll">
+    <Message Text="🚀 Building all configurations..." Importance="high" />
+    
+    <MSBuild Projects="$(MSBuildProjectFile)"
+             Properties="Configuration=%(BuildConfiguration.Identity);Platform=$(Platform)"
+             Targets="Build"
+             BuildInParallel="false" />
+    
+    <Message Text="✅ All configurations built successfully" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: CI
+       Complete CI pipeline
+       ============================================ -->
+  <Target Name="CI" DependsOnTargets="ShowConfiguration;Clean;Build;BuildNuGet;BuildUltimate;Pack">
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+    <Message Text="  ✅ CI Build Completed Successfully!" Importance="high" />
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+    <Message Text="Configuration : $(Configuration)" Importance="high" />
+    <Message Text="Target Branch : $(TargetBranch)" Importance="high" />
+    <Message Text="Packages Dir  : $(NuGetPackagesDir)" Importance="high" />
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: CIAll
+       Complete CI pipeline for all configurations
+       ============================================ -->
+  <Target Name="CIAll">
+    <Message Text="🚀 Running CI for all release channels..." Importance="high" />
+    
+    <!-- Build Release (master) -->
+    <MSBuild Projects="$(MSBuildProjectFile)"
+             Properties="Configuration=Release;Platform=$(Platform)"
+             Targets="CI"
+             BuildInParallel="false" />
+    
+    <!-- Build Canary (canary) -->
+    <MSBuild Projects="$(MSBuildProjectFile)"
+             Properties="Configuration=Canary;Platform=$(Platform)"
+             Targets="CI"
+             BuildInParallel="false" />
+    
+    <!-- Build Nightly (alpha) -->
+    <MSBuild Projects="$(MSBuildProjectFile)"
+             Properties="Configuration=Nightly;Platform=$(Platform)"
+             Targets="CI"
+             BuildInParallel="false" />
+    
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+    <Message Text="  ✅ All CI Builds Completed Successfully!" Importance="high" />
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+    <Message Text="Release (master) : $(BinDir)\Release" Importance="high" />
+    <Message Text="Canary (canary)  : $(BinDir)\Canary" Importance="high" />
+    <Message Text="Nightly (alpha)  : $(BinDir)\Nightly" Importance="high" />
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: ListPackages
+       Lists all generated NuGet packages
+       ============================================ -->
+  <Target Name="ListPackages">
+    <ItemGroup>
+      <NuGetPackage Include="$(NuGetPackagesDir)\*.nupkg" Exclude="$(NuGetPackagesDir)\*.symbols.nupkg" />
+      <SymbolPackage Include="$(NuGetPackagesDir)\*.snupkg" />
+    </ItemGroup>
+    
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+    <Message Text="  NuGet Packages ($(Configuration))" Importance="high" />
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+    <Message Text="Location: $(NuGetPackagesDir)" Importance="high" />
+    <Message Text="" Importance="high" />
+    <Message Text="📦 Packages (@(NuGetPackage->Count())):" Importance="high" />
+    <Message Text="  %(NuGetPackage.Filename)%(NuGetPackage.Extension)" Importance="high" />
+    <Message Text="" Importance="high" />
+    <Message Text="🔍 Symbol Packages (@(SymbolPackage->Count())):" Importance="high" />
+    <Message Text="  %(SymbolPackage.Filename)%(SymbolPackage.Extension)" Importance="high" />
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+  </Target>
+
+  <!-- ============================================
+       Target: Help
+       Displays usage information
+       ============================================ -->
+  <Target Name="Help">
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+    <Message Text="  Krypton Extended Toolkit - Build System Help" Importance="high" />
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+    <Message Text="" Importance="high" />
+    <Message Text="📋 Available Targets:" Importance="high" />
+    <Message Text="" Importance="high" />
+    <Message Text="  Build              : Build main solution" Importance="high" />
+    <Message Text="  BuildNuGet         : Build NuGet solution" Importance="high" />
+    <Message Text="  BuildDev           : Build Dev solution" Importance="high" />
+    <Message Text="  BuildUltimate      : Build Ultimate packages" Importance="high" />
+    <Message Text="  Pack               : Create all NuGet packages" Importance="high" />
+    <Message Text="  PackUltimateOnly   : Create only Ultimate packages" Importance="high" />
+    <Message Text="  Clean              : Clean build output" Importance="high" />
+    <Message Text="  Rebuild            : Clean and rebuild" Importance="high" />
+    <Message Text="  BuildAll           : Build all configurations" Importance="high" />
+    <Message Text="  CI                 : Complete CI pipeline" Importance="high" />
+    <Message Text="  CIAll              : CI for all release channels" Importance="high" />
+    <Message Text="  ListPackages       : List generated packages" Importance="high" />
+    <Message Text="  Help               : Show this help" Importance="high" />
+    <Message Text="" Importance="high" />
+    <Message Text="⚙️  Configuration Options:" Importance="high" />
+    <Message Text="" Importance="high" />
+    <Message Text="  /p:Configuration=Release   : Stable release (master)" Importance="high" />
+    <Message Text="  /p:Configuration=Canary    : Beta release (canary)" Importance="high" />
+    <Message Text="  /p:Configuration=Nightly   : Alpha release (alpha)" Importance="high" />
+    <Message Text="  /p:Configuration=Debug     : Debug build" Importance="high" />
+    <Message Text="" Importance="high" />
+    <Message Text="📝 Usage Examples:" Importance="high" />
+    <Message Text="" Importance="high" />
+    <Message Text="  msbuild Build.proj" Importance="high" />
+    <Message Text="  msbuild Build.proj /t:CI /p:Configuration=Canary" Importance="high" />
+    <Message Text="  msbuild Build.proj /t:CIAll" Importance="high" />
+    <Message Text="  msbuild Build.proj /t:Pack /p:Configuration=Nightly" Importance="high" />
+    <Message Text="  msbuild Build.proj /t:ListPackages /p:Configuration=Release" Importance="high" />
+    <Message Text="" Importance="high" />
+    <Message Text="🌿 Release Channels:" Importance="high" />
+    <Message Text="" Importance="high" />
+    <Message Text="  Release (master)  : Stable production releases" Importance="high" />
+    <Message Text="  Canary (canary)   : Beta pre-releases (-beta)" Importance="high" />
+    <Message Text="  Nightly (alpha)   : Alpha pre-releases (-alpha)" Importance="high" />
+    <Message Text="" Importance="high" />
+    <Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+  </Target>
+
+</Project>
+

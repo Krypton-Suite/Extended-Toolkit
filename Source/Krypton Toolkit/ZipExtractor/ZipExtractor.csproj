@@ -1,13 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFrameworks>net481;net8.0-windows</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Configurations>Debug;Release;Nightly;Canary</Configurations>
-		<LangVersion>preview</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
@@ -19,19 +17,19 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.7.202-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.290-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.7.200-beta" />
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="95.25.4.111" />
+						<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
 					</ItemGroup>
 				</When>
 
