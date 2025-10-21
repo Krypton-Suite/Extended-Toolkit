@@ -25,20 +25,19 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
+
+/// <summary>
+/// An implementation of IScreenshooter that does nothing
+/// </summary>
+public class NoScreenShot : IScreenShooter
 {
     /// <summary>
-    /// An implementation of IScreenshooter that does nothing
+    /// Do nothing
     /// </summary>
-    public class NoScreenShot : IScreenShooter
+    /// <returns>an empty string</returns>
+    public string TakeScreenShot()
     {
-        /// <summary>
-        /// Do nothing
-        /// </summary>
-        /// <returns>an empty string</returns>
-        public string TakeScreenShot()
-        {
-            return "";
-        }
+        return "";
     }
 }

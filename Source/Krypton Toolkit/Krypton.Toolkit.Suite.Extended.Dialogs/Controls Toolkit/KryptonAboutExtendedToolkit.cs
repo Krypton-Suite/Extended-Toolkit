@@ -26,32 +26,31 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs;
+
+/// <summary>The public interface to the <see cref="KryptonAboutExtendedToolkitData"/> class.</summary>
+[ToolboxItem(false)]
+[DesignerCategory(@"code")]
+public class KryptonAboutExtendedToolkit
 {
-    /// <summary>The public interface to the <see cref="KryptonAboutExtendedToolkitData"/> class.</summary>
-    [ToolboxItem(false)]
-    [DesignerCategory(@"code")]
-    public class KryptonAboutExtendedToolkit
+    #region Public
+
+    /// <summary>Shows the specified about extended toolkit data.</summary>
+    /// <param name="aboutExtendedToolkitData">The about extended toolkit data.</param>
+    /// <returns></returns>
+    public static DialogResult Show(KryptonAboutExtendedToolkitData aboutExtendedToolkitData) =>
+        ShowCore(aboutExtendedToolkitData);
+
+    #endregion
+
+    #region Implementation
+
+    private static DialogResult ShowCore(KryptonAboutExtendedToolkitData aboutExtendedToolkitData)
     {
-        #region Public
+        using var kaet = new KryptonAboutExtendedToolkitForm(aboutExtendedToolkitData);
 
-        /// <summary>Shows the specified about extended toolkit data.</summary>
-        /// <param name="aboutExtendedToolkitData">The about extended toolkit data.</param>
-        /// <returns></returns>
-        public static DialogResult Show(KryptonAboutExtendedToolkitData aboutExtendedToolkitData) =>
-            ShowCore(aboutExtendedToolkitData);
-
-        #endregion
-
-        #region Implementation
-
-        private static DialogResult ShowCore(KryptonAboutExtendedToolkitData aboutExtendedToolkitData)
-        {
-            using var kaet = new KryptonAboutExtendedToolkitForm(aboutExtendedToolkitData);
-
-            return kaet.ShowDialog();
-        }
-
-        #endregion
+        return kaet.ShowDialog();
     }
+
+    #endregion
 }

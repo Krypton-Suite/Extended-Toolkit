@@ -25,39 +25,38 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridView
+namespace Krypton.Toolkit.Suite.Extended.DataGridView;
+
+public class SingleDetailView : KryptonDataGridView, IDetailView<KryptonDataGridView>
 {
-    public class SingleDetailView : KryptonDataGridView, IDetailView<KryptonDataGridView>
+    /// <inheritdoc />
+    public Dictionary<KryptonDataGridView, string> ChildGrids { get; } = new();
+
+    public SingleDetailView()
     {
-        /// <inheritdoc />
-        public Dictionary<KryptonDataGridView, string> ChildGrids { get; } = new();
+        Visible = false;
+    }
 
-        public SingleDetailView()
-        {
-            Visible = false;
-        }
+    /// <inheritdoc />
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public DataGridViewCell DetailsCurrentCell
+    {
+        get => CurrentCell;
+        set => CurrentCell = value;
+    }
 
-        /// <inheritdoc />
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public DataGridViewCell DetailsCurrentCell
-        {
-            get => CurrentCell;
-            set => CurrentCell = value;
-        }
+    /// <inheritdoc />
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public DataGridViewRow DetailsCurrentRow => CurrentRow;
 
-        /// <inheritdoc />
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public DataGridViewRow DetailsCurrentRow => CurrentRow;
-
-        /// <inheritdoc />
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public event DataGridViewCellMouseEventHandler DetailsCellMouseClick
-        {
-            add => CellMouseClick += value;
-            remove => CellMouseClick -= value;
-        }
+    /// <inheritdoc />
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public event DataGridViewCellMouseEventHandler DetailsCellMouseClick
+    {
+        add => CellMouseClick += value;
+        remove => CellMouseClick -= value;
     }
 }

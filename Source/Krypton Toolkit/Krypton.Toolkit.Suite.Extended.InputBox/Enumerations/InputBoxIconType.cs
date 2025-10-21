@@ -25,36 +25,35 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.InputBox
+namespace Krypton.Toolkit.Suite.Extended.InputBox;
+
+/// <summary>Specifies the input box icon type.</summary>
+public enum InputBoxIconType
 {
-    /// <summary>Specifies the input box icon type.</summary>
-    public enum InputBoxIconType
-    {
-        /// <summary>No icon.</summary>
-        None = 0,
-        /// <summary>Specifies a custom icon.</summary>
-        Custom = 1,
-        /// <summary>Specifies the critical icon.</summary>
-        Critical = 2,
-        /// <summary>Specifies a hand icon.</summary>
-        Hand = 3,
-        /// <summary>Specifies a information icon.</summary>
-        Information = 4,
-        /// <summary>Specifies a ok icon.</summary>
-        Ok = 5,
-        /// <summary>Specifies a question icon.</summary>
-        Question = 6,
-        /// <summary>Specifies a stop icon.</summary>
-        Stop = 7,
-        /// <summary>Specifies a error icon.</summary>
-        Error = 8,
-        /// <summary>Specifies a warning icon.</summary>
-        Exclamation = 9,
-        /// <summary>Specifies the asterisk icon.</summary>
-        Asterisk = 10,
-        /// <summary>Specifies the UAC shield icon.</summary>
-        Shield = 11,
-        /// <summary>Specifies the Windows logo icon.</summary>
-        WindowsLogo = 12
-    }
+    /// <summary>No icon.</summary>
+    None = 0,
+    /// <summary>Specifies a custom icon.</summary>
+    Custom = 1,
+    /// <summary>Specifies the critical icon.</summary>
+    Critical = 2,
+    /// <summary>Specifies a hand icon.</summary>
+    Hand = 3,
+    /// <summary>Specifies a information icon.</summary>
+    Information = 4,
+    /// <summary>Specifies a ok icon.</summary>
+    Ok = 5,
+    /// <summary>Specifies a question icon.</summary>
+    Question = 6,
+    /// <summary>Specifies a stop icon.</summary>
+    Stop = 7,
+    /// <summary>Specifies a error icon.</summary>
+    Error = 8,
+    /// <summary>Specifies a warning icon.</summary>
+    Exclamation = 9,
+    /// <summary>Specifies the asterisk icon.</summary>
+    Asterisk = 10,
+    /// <summary>Specifies the UAC shield icon.</summary>
+    Shield = 11,
+    /// <summary>Specifies the Windows logo icon.</summary>
+    WindowsLogo = 12
 }

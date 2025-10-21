@@ -26,14 +26,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+
+internal interface IAsyncDispatch
 {
-    internal interface IAsyncDispatch
-    {
-        void Post(object evt);
+    void Post(object evt);
 
-        void Post(object[] evt);
+    void Post(object[] evt);
 
-        void PostOperation(Delegate callback, params object[] parameters);
-    }
+    void PostOperation(Delegate callback, params object[] parameters);
 }

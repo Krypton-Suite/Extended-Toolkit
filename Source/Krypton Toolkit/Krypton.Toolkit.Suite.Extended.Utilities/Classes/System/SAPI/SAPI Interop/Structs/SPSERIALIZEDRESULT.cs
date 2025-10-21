@@ -26,10 +26,9 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+
+internal struct SPSERIALIZEDRESULT
 {
-    internal struct SPSERIALIZEDRESULT
-    {
-        internal uint ulSerializedSize;
-    }
+    internal uint ulSerializedSize;
 }

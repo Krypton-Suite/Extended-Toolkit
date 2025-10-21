@@ -26,27 +26,26 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+
+internal sealed class SemanticTag : ParseElement, ISemanticTag, IElement
 {
-    internal sealed class SemanticTag : ParseElement, ISemanticTag, IElement
+    private CfgGrammar.CfgProperty _propInfo = new();
+
+    internal SemanticTag(ParseElement parent, Backend backend)
+        : base(parent._rule)
     {
-        private CfgGrammar.CfgProperty _propInfo = new();
+    }
 
-        internal SemanticTag(ParseElement parent, Backend backend)
-            : base(parent._rule)
+    void ISemanticTag.Content(IElement parentElement, string sTag, int iLine)
+    {
+        sTag = sTag.Trim(Helpers._achTrimChars);
+        if (!string.IsNullOrEmpty(sTag))
         {
-        }
-
-        void ISemanticTag.Content(IElement parentElement, string sTag, int iLine)
-        {
-            sTag = sTag.Trim(Helpers._achTrimChars);
-            if (!string.IsNullOrEmpty(sTag))
-            {
-                _propInfo._ulId = (uint)iLine;
-                _propInfo._comValue = sTag;
-                ParseElementCollection parseElementCollection = (ParseElementCollection)parentElement;
-                parseElementCollection.AddSemanticInterpretationTag(_propInfo);
-            }
+            _propInfo._ulId = (uint)iLine;
+            _propInfo._comValue = sTag;
+            ParseElementCollection parseElementCollection = (ParseElementCollection)parentElement;
+            parseElementCollection.AddSemanticInterpretationTag(_propInfo);
         }
     }
 }

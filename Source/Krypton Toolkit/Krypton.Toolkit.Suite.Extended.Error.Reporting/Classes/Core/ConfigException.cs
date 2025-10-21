@@ -25,13 +25,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
+
+internal class ConfigException : Exception
 {
-    internal class ConfigException : Exception
+    public ConfigException(string message) : base(message)
     {
-        public ConfigException(string message) : base(message)
-        {
             
-        }
     }
 }

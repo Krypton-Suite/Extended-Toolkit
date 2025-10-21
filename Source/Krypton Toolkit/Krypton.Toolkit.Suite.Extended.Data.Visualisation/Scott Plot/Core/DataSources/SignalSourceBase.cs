@@ -1,67 +1,66 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public abstract class SignalSourceBase
 {
-    public abstract class SignalSourceBase
+    public double Period { get; set; }
+    public abstract int Length { get; }
+
+    public int MinimumIndex { get; set; } = 0;
+    public int MaximumIndex { get; set; } = int.MaxValue;
+
+    public int MinRenderIndex => Math.Max(0, MinimumIndex);
+    public int MaxRenderIndex => Math.Min(Length - 1, MaximumIndex);
+
+    public double XOffset { get; set; }
+    public double YOffset { get; set; }
+
+    public int GetIndex(double x, bool visibleDataOnly)
     {
-        public double Period { get; set; }
-        public abstract int Length { get; }
+        int i = (int)((x - XOffset) / Period);
 
-        public int MinimumIndex { get; set; } = 0;
-        public int MaximumIndex { get; set; } = int.MaxValue;
-
-        public int MinRenderIndex => Math.Max(0, MinimumIndex);
-        public int MaxRenderIndex => Math.Min(Length - 1, MaximumIndex);
-
-        public double XOffset { get; set; }
-        public double YOffset { get; set; }
-
-        public int GetIndex(double x, bool visibleDataOnly)
+        if (visibleDataOnly)
         {
-            int i = (int)((x - XOffset) / Period);
-
-            if (visibleDataOnly)
-            {
-                i = Math.Max(i, MinRenderIndex);
-                i = Math.Min(i, MaxRenderIndex);
-            }
-
-            return i;
+            i = Math.Max(i, MinRenderIndex);
+            i = Math.Min(i, MaxRenderIndex);
         }
 
-        public bool RangeContainsSignal(double xMin, double xMax)
-        {
-            int xMinIndex = GetIndex(xMin, false);
-            int xMaxIndex = GetIndex(xMax, false);
-            return xMaxIndex >= MinRenderIndex && xMinIndex <= MaxRenderIndex;
-        }
+        return i;
+    }
 
-        public double GetX(int index)
-        {
-            return index * Period + XOffset;
-        }
+    public bool RangeContainsSignal(double xMin, double xMax)
+    {
+        int xMinIndex = GetIndex(xMin, false);
+        int xMaxIndex = GetIndex(xMax, false);
+        return xMaxIndex >= MinRenderIndex && xMinIndex <= MaxRenderIndex;
+    }
 
-        public CoordinateRange GetLimitsX()
-        {
-            CoordinateRect rect = GetLimits().Rect;
-            return new CoordinateRange(rect.Left, rect.Left);
-        }
+    public double GetX(int index)
+    {
+        return index * Period + XOffset;
+    }
 
-        public CoordinateRange GetLimitsY()
-        {
-            CoordinateRect rect = GetLimits().Rect;
-            return new CoordinateRange(rect.Bottom, rect.Bottom);
-        }
+    public CoordinateRange GetLimitsX()
+    {
+        CoordinateRect rect = GetLimits().Rect;
+        return new CoordinateRange(rect.Left, rect.Left);
+    }
 
-        public abstract SignalRangeY GetLimitsY(int firstIndex, int lastIndex);
+    public CoordinateRange GetLimitsY()
+    {
+        CoordinateRect rect = GetLimits().Rect;
+        return new CoordinateRange(rect.Bottom, rect.Bottom);
+    }
 
-        public AxisLimits GetLimits()
-        {
-            SignalRangeY rangeY = GetLimitsY(MinRenderIndex, MaxRenderIndex);
+    public abstract SignalRangeY GetLimitsY(int firstIndex, int lastIndex);
 
-            return new AxisLimits(
-                left: XOffset + MinRenderIndex * Period,
-                right: XOffset + MaxRenderIndex * Period,
-                bottom: rangeY.Min + YOffset,
-                top: rangeY.Max + YOffset);
-        }
+    public AxisLimits GetLimits()
+    {
+        SignalRangeY rangeY = GetLimitsY(MinRenderIndex, MaxRenderIndex);
+
+        return new AxisLimits(
+            left: XOffset + MinRenderIndex * Period,
+            right: XOffset + MaxRenderIndex * Period,
+            bottom: rangeY.Min + YOffset,
+            top: rangeY.Max + YOffset);
     }
 }

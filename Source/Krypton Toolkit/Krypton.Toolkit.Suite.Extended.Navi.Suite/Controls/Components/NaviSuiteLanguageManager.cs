@@ -25,54 +25,53 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+public class NaviSuiteLanguageManager : Component
 {
-    public class NaviSuiteLanguageManager : Component
+    #region Public
+
+    /// <summary>Gets the navi suite strings.</summary>
+    /// <value>The navi suite strings.</value>
+    [Category(@"Visuals")]
+    [Description(@"Collection of navi suite strings.")]
+    [MergableProperty(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    [Localizable(true)]
+    public NaviSuiteStrings NaviSuiteStrings => SuiteStrings;
+
+    private bool ShouldSerializeNaviSuiteStrings() => !SuiteStrings.IsDefault;
+
+    public void ResetNaviSuiteStrings() => SuiteStrings.Reset();
+
+    #endregion
+
+    #region Static Strings
+
+    public static NaviSuiteStrings SuiteStrings
+    { get; } = new();
+
+    #endregion
+
+    #region Identity
+
+    public NaviSuiteLanguageManager()
     {
-        #region Public
 
-        /// <summary>Gets the navi suite strings.</summary>
-        /// <value>The navi suite strings.</value>
-        [Category(@"Visuals")]
-        [Description(@"Collection of navi suite strings.")]
-        [MergableProperty(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        [Localizable(true)]
-        public NaviSuiteStrings NaviSuiteStrings => SuiteStrings;
-
-        private bool ShouldSerializeNaviSuiteStrings() => !SuiteStrings.IsDefault;
-
-        public void ResetNaviSuiteStrings() => SuiteStrings.Reset();
-
-        #endregion
-
-        #region Static Strings
-
-        public static NaviSuiteStrings SuiteStrings
-        { get; } = new();
-
-        #endregion
-
-        #region Identity
-
-        public NaviSuiteLanguageManager()
-        {
-
-        }
-
-        #endregion
-
-        #region Implementation
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool IsDefault => !ShouldSerializeNaviSuiteStrings();
-
-        public void Reset()
-        {
-            ResetNaviSuiteStrings();
-        }
-
-        #endregion
     }
+
+    #endregion
+
+    #region Implementation
+
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public bool IsDefault => !ShouldSerializeNaviSuiteStrings();
+
+    public void Reset()
+    {
+        ResetNaviSuiteStrings();
+    }
+
+    #endregion
 }

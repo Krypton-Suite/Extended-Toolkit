@@ -1,74 +1,73 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class TitlePanel : IPanel
 {
-    public class TitlePanel : IPanel
+    public bool IsVisible { get; set; } = true;
+
+    public Edge Edge => Edge.Top;
+
+    public bool ShowDebugInformation { get; set; } = false;
+    public float MinimumSize { get; set; } = 0;
+    public float MaximumSize { get; set; } = float.MaxValue;
+
+    public TitlePanel()
     {
-        public bool IsVisible { get; set; } = true;
+        Label.Rotation = 0;
+    }
 
-        public Edge Edge => Edge.Top;
+    public Label Label { get; } = new()
+    {
+        Text = string.Empty,
+        FontSize = 16,
+        Bold = true,
+        Alignment = Alignment.LowerCenter,
+    };
 
-        public bool ShowDebugInformation { get; set; } = false;
-        public float MinimumSize { get; set; } = 0;
-        public float MaximumSize { get; set; } = float.MaxValue;
+    /// <summary>
+    /// Extra space to add above the title text so the title does not touch the edge of the image
+    /// </summary>
+    public float VerticalPadding = 10;
 
-        public TitlePanel()
+    public PixelRect GetPanelRect(PixelRect dataRect, float size, float offset)
+    {
+        return new PixelRect(
+            left: dataRect.Left,
+            right: dataRect.Right,
+            bottom: dataRect.Top - offset,
+            top: dataRect.Top - offset - size);
+    }
+
+    public float Measure()
+    {
+        if (!IsVisible)
         {
-            Label.Rotation = 0;
+            return 0;
         }
 
-        public Label Label { get; } = new()
+        if (string.IsNullOrWhiteSpace(Label.Text))
         {
-            Text = string.Empty,
-            FontSize = 16,
-            Bold = true,
-            Alignment = Alignment.LowerCenter,
-        };
-
-        /// <summary>
-        /// Extra space to add above the title text so the title does not touch the edge of the image
-        /// </summary>
-        public float VerticalPadding = 10;
-
-        public PixelRect GetPanelRect(PixelRect dataRect, float size, float offset)
-        {
-            return new PixelRect(
-                left: dataRect.Left,
-                right: dataRect.Right,
-                bottom: dataRect.Top - offset,
-                top: dataRect.Top - offset - size);
+            return 0;
         }
 
-        public float Measure()
+        return Label.Measure().Height + VerticalPadding;
+    }
+
+    public void Render(RenderPack rp, float size, float offset)
+    {
+        if (!IsVisible)
         {
-            if (!IsVisible)
-            {
-                return 0;
-            }
-
-            if (string.IsNullOrWhiteSpace(Label.Text))
-            {
-                return 0;
-            }
-
-            return Label.Measure().Height + VerticalPadding;
+            return;
         }
 
-        public void Render(RenderPack rp, float size, float offset)
+        PixelRect panelRect = GetPanelRect(rp.DataRect, size, offset);
+
+        Pixel labelPoint = new(panelRect.HorizontalCenter, panelRect.Bottom);
+
+        if (ShowDebugInformation)
         {
-            if (!IsVisible)
-            {
-                return;
-            }
-
-            PixelRect panelRect = GetPanelRect(rp.DataRect, size, offset);
-
-            Pixel labelPoint = new(panelRect.HorizontalCenter, panelRect.Bottom);
-
-            if (ShowDebugInformation)
-            {
-                Drawing.DrawDebugRectangle(rp.Canvas, panelRect, labelPoint, Label.ForeColor);
-            }
-
-            Label.Render(rp.Canvas, labelPoint);
+            Drawing.DrawDebugRectangle(rp.Canvas, panelRect, labelPoint, Label.ForeColor);
         }
+
+        Label.Render(rp.Canvas, labelPoint);
     }
 }

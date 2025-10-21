@@ -25,28 +25,27 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Buttons
+namespace Krypton.Toolkit.Suite.Extended.Buttons;
+
+public class SubscriptTextValue : NullContentValues
 {
-    public class SubscriptTextValue : NullContentValues
-    {
-        #region Instance Fields
+    #region Instance Fields
 
-        #endregion
+    #endregion
 
-        #region Identity
-        /// <summary>
-        /// Gets and sets the short text value to use.
-        /// </summary>
-        public string LongText { get; set; }
+    #region Identity
+    /// <summary>
+    /// Gets and sets the short text value to use.
+    /// </summary>
+    public string LongText { get; set; }
 
-        #endregion
+    #endregion
 
-        #region IContentValues
-        /// <summary>
-        /// Gets the content short text.
-        /// </summary>
-        /// <returns>String value.</returns>
-        public override string GetLongText() => LongText;
-        #endregion
-    }
+    #region IContentValues
+    /// <summary>
+    /// Gets the content short text.
+    /// </summary>
+    /// <returns>String value.</returns>
+    public override string GetLongText() => LongText;
+    #endregion
 }

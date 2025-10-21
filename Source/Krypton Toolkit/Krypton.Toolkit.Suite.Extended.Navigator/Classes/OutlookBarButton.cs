@@ -25,192 +25,189 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator;
+
+[DesignTimeVisible(false), DefaultProperty("Text")]
+public class OutlookBarButton : IDisposable
 {
-    [DesignTimeVisible(false), DefaultProperty("Text")]
-    public class OutlookBarButton : IDisposable
+
+    #region " Constructors "
+
+    //Includes a constructor without parameters so the control can be configured during design-time.
+
+    public OutlookBarButton()
     {
+        Owner = new OutlookBar();
+    }
 
-        #region " Constructors "
+    public OutlookBarButton(string text, Icon image)
+    {
+        Owner = new OutlookBar();
+        Text = text;
+        Image = image;
+    }
 
-        //Includes a constructor without parameters so the control can be configured during design-time.
+    internal OutlookBarButton(OutlookBar owner)
+    {
+        Owner = owner;
+    }
 
-        public OutlookBarButton()
+    #endregion
+
+    #region " Destructor "
+
+    //The ButtonClass is not inheriting from Control, so I need this destructor...
+
+    // To detect redundant calls
+    private bool _disposedValue = false;
+    // IDisposable
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposedValue)
         {
-            Owner = new OutlookBar();
-        }
-
-        public OutlookBarButton(string text, Icon image)
-        {
-            Owner = new OutlookBar();
-            Text = text;
-            Image = image;
-        }
-
-        internal OutlookBarButton(OutlookBar owner)
-        {
-            Owner = owner;
-        }
-
-        #endregion
-
-        #region " Destructor "
-
-        //The ButtonClass is not inheriting from Control, so I need this destructor...
-
-        // To detect redundant calls
-        private bool _disposedValue = false;
-        // IDisposable
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposedValue)
+            if (disposing)
             {
-                if (disposing)
-                {
-                    // TODO: free unmanaged resources when explicitly called
-                }
-                //string EmptyLineVar = null;
-                // TODO: free shared unmanaged resources
+                // TODO: free unmanaged resources when explicitly called
             }
-            _disposedValue = true;
+            //string EmptyLineVar = null;
+            // TODO: free shared unmanaged resources
         }
+        _disposedValue = true;
+    }
 
-        #region " IDisposable Support "
-        // This code added by Visual Basic to correctly implement the disposable pattern.
-        public void Dispose()
+    #region " IDisposable Support "
+    // This code added by Visual Basic to correctly implement the disposable pattern.
+    public void Dispose()
+    {
+        // Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+    #endregion
+
+    #endregion
+
+
+    //This field lets us react with the parent control.
+    internal OutlookBar Owner;
+
+    internal ButtonState State = ButtonState.Passive;
+
+    private string _text;
+    private bool _visible = true;
+    private bool _allowed = true;
+    private Icon? _image = Properties.Resources.DefaultIcon;
+    internal Rectangle Rectangle;
+    internal bool IsLarge;
+    private bool _selected;
+    private string _tag1;
+    private string _tag2;
+    private string? _buddyPage1;
+    private string? _buddyPage2;
+
+    [DefaultValue(typeof(string), ""), Browsable(true)]
+    public string Tag1
+    {
+        get => _tag1;
+        set => _tag1 = value;
+    }
+
+    [DefaultValue(typeof(string), ""), Browsable(true)]
+    public string Tag2
+    {
+        get => _tag2;
+        set => _tag2 = value;
+    }
+
+    [DefaultValue(typeof(string), ""), Browsable(true)]
+    public string BuddyPage1
+    {
+        get => _buddyPage1 ?? string.Empty;
+        set => _buddyPage1 = value;
+    }
+
+    [DefaultValue(typeof(string), ""), Browsable(true)]
+    public string BuddyPage2
+    {
+        get => _buddyPage2 ?? string.Empty;
+        set => _buddyPage2 = value;
+    }
+
+    public string Text
+    {
+        get => _text;
+        set => _text = value;
+    }
+
+    [DefaultValue(typeof(bool), "True")]
+    public bool Visible
+    {
+        get => _visible;
+        set
         {
-            // Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        #endregion
-
-        #endregion
-
-
-        //This field lets us react with the parent control.
-        internal OutlookBar Owner;
-
-        internal ButtonState State = ButtonState.Passive;
-
-        private string _text;
-        private bool _visible = true;
-        private bool _allowed = true;
-        private Icon? _image = Properties.Resources.DefaultIcon;
-        internal Rectangle Rectangle;
-        internal bool IsLarge;
-        private bool _selected;
-        private string _tag1;
-        private string _tag2;
-        private string? _buddyPage1;
-        private string? _buddyPage2;
-
-        [DefaultValue(typeof(string), ""), Browsable(true)]
-        public string Tag1
-        {
-            get => _tag1;
-            set => _tag1 = value;
-        }
-
-        [DefaultValue(typeof(string), ""), Browsable(true)]
-        public string Tag2
-        {
-            get => _tag2;
-            set => _tag2 = value;
-        }
-
-        [DefaultValue(typeof(string), ""), Browsable(true)]
-        public string BuddyPage1
-        {
-            get => _buddyPage1 ?? string.Empty;
-            set => _buddyPage1 = value;
-        }
-
-        [DefaultValue(typeof(string), ""), Browsable(true)]
-        public string BuddyPage2
-        {
-            get => _buddyPage2 ?? string.Empty;
-            set => _buddyPage2 = value;
-        }
-
-        public string Text
-        {
-            get => _text;
-            set => _text = value;
-        }
-
-        [DefaultValue(typeof(bool), "True")]
-        public bool Visible
-        {
-            get => _visible;
-            set
+            _visible = value;
+            if (!value)
             {
-                _visible = value;
-                if (!value)
-                {
-                    Rectangle = new Rectangle();
-                }
+                Rectangle = new Rectangle();
             }
-
-        }
-
-        [DefaultValue(typeof(bool), "False"), Browsable(true)]
-        public bool Selected
-        {
-            get => _selected;
-            set
-            {
-                _selected = value;
-                switch (value)
-                {
-                    case true:
-                        Owner._SelectedButton = this;
-                        break;
-                    case false:
-                        Owner._SelectedButton = null;
-                        break;
-                }
-                Owner.SetSelectionChanged(this);
-            }
-        }
-
-        [DefaultValue(typeof(bool), "True")]
-        public bool Allowed
-        {
-            get => _allowed;
-            set
-            {
-                _allowed = value;
-                if (value == false)
-                {
-                    Visible = false;
-                }
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public Icon Image
-        {
-            get
-            {
-                if (_image == null)
-                {
-                    return Properties.Resources.DefaultIcon;
-                }
-                else
-                {
-                    return _image;
-                }
-            }
-            set => _image = value;
-        }
-
-        public override string ToString()
-        {
-            return Text;
         }
 
     }
 
+    [DefaultValue(typeof(bool), "False"), Browsable(true)]
+    public bool Selected
+    {
+        get => _selected;
+        set
+        {
+            _selected = value;
+            switch (value)
+            {
+                case true:
+                    Owner._SelectedButton = this;
+                    break;
+                case false:
+                    Owner._SelectedButton = null;
+                    break;
+            }
+            Owner.SetSelectionChanged(this);
+        }
+    }
+
+    [DefaultValue(typeof(bool), "True")]
+    public bool Allowed
+    {
+        get => _allowed;
+        set
+        {
+            _allowed = value;
+            if (value == false)
+            {
+                Visible = false;
+            }
+        }
+    }
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    public Icon Image
+    {
+        get
+        {
+            if (_image == null)
+            {
+                return Properties.Resources.DefaultIcon;
+            }
+            else
+            {
+                return _image;
+            }
+        }
+        set => _image = value;
+    }
+
+    public override string ToString()
+    {
+        return Text;
+    }
 
 }

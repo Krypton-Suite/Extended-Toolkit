@@ -1,113 +1,106 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Krypton.Toolkit.Suite.Extended.Controls;
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
+internal struct GripBounds
 {
-    internal struct GripBounds
+    private const int GripSize = 6;
+    private const int CornerGripSize = GripSize << 1;
+
+    public GripBounds(Rectangle clientRectangle)
     {
-        private const int GripSize = 6;
-        private const int CornerGripSize = GripSize << 1;
+        _clientRectangle = clientRectangle;
+    }
 
-        public GripBounds(Rectangle clientRectangle)
+    private Rectangle _clientRectangle;
+    public Rectangle ClientRectangle => _clientRectangle;
+
+    //set { clientRectangle = value; }
+    public Rectangle Bottom
+    {
+        get
         {
-            _clientRectangle = clientRectangle;
+            Rectangle rect = ClientRectangle;
+            rect.Y = rect.Bottom - GripSize + 1;
+            rect.Height = GripSize;
+            return rect;
         }
+    }
 
-        private Rectangle _clientRectangle;
-        public Rectangle ClientRectangle => _clientRectangle;
-
-        //set { clientRectangle = value; }
-        public Rectangle Bottom
+    public Rectangle BottomRight
+    {
+        get
         {
-            get
-            {
-                Rectangle rect = ClientRectangle;
-                rect.Y = rect.Bottom - GripSize + 1;
-                rect.Height = GripSize;
-                return rect;
-            }
+            Rectangle rect = ClientRectangle;
+            rect.Y = rect.Bottom - CornerGripSize + 1;
+            rect.Height = CornerGripSize;
+            rect.X = rect.Width - CornerGripSize + 1;
+            rect.Width = CornerGripSize;
+            return rect;
         }
+    }
 
-        public Rectangle BottomRight
+    public Rectangle Top
+    {
+        get
         {
-            get
-            {
-                Rectangle rect = ClientRectangle;
-                rect.Y = rect.Bottom - CornerGripSize + 1;
-                rect.Height = CornerGripSize;
-                rect.X = rect.Width - CornerGripSize + 1;
-                rect.Width = CornerGripSize;
-                return rect;
-            }
+            Rectangle rect = ClientRectangle;
+            rect.Height = GripSize;
+            return rect;
         }
+    }
 
-        public Rectangle Top
+    public Rectangle TopRight
+    {
+        get
         {
-            get
-            {
-                Rectangle rect = ClientRectangle;
-                rect.Height = GripSize;
-                return rect;
-            }
+            Rectangle rect = ClientRectangle;
+            rect.Height = CornerGripSize;
+            rect.X = rect.Width - CornerGripSize + 1;
+            rect.Width = CornerGripSize;
+            return rect;
         }
+    }
 
-        public Rectangle TopRight
+    public Rectangle Left
+    {
+        get
         {
-            get
-            {
-                Rectangle rect = ClientRectangle;
-                rect.Height = CornerGripSize;
-                rect.X = rect.Width - CornerGripSize + 1;
-                rect.Width = CornerGripSize;
-                return rect;
-            }
+            Rectangle rect = ClientRectangle;
+            rect.Width = GripSize;
+            return rect;
         }
+    }
 
-        public Rectangle Left
+    public Rectangle BottomLeft
+    {
+        get
         {
-            get
-            {
-                Rectangle rect = ClientRectangle;
-                rect.Width = GripSize;
-                return rect;
-            }
+            Rectangle rect = ClientRectangle;
+            rect.Width = CornerGripSize;
+            rect.Y = rect.Height - CornerGripSize + 1;
+            rect.Height = CornerGripSize;
+            return rect;
         }
+    }
 
-        public Rectangle BottomLeft
+    public Rectangle Right
+    {
+        get
         {
-            get
-            {
-                Rectangle rect = ClientRectangle;
-                rect.Width = CornerGripSize;
-                rect.Y = rect.Height - CornerGripSize + 1;
-                rect.Height = CornerGripSize;
-                return rect;
-            }
+            Rectangle rect = ClientRectangle;
+            rect.X = rect.Right - GripSize + 1;
+            rect.Width = GripSize;
+            return rect;
         }
+    }
 
-        public Rectangle Right
+    public Rectangle TopLeft
+    {
+        get
         {
-            get
-            {
-                Rectangle rect = ClientRectangle;
-                rect.X = rect.Right - GripSize + 1;
-                rect.Width = GripSize;
-                return rect;
-            }
-        }
-
-        public Rectangle TopLeft
-        {
-            get
-            {
-                Rectangle rect = ClientRectangle;
-                rect.Width = CornerGripSize;
-                rect.Height = CornerGripSize;
-                return rect;
-            }
+            Rectangle rect = ClientRectangle;
+            rect.Width = CornerGripSize;
+            rect.Height = CornerGripSize;
+            return rect;
         }
     }
 }

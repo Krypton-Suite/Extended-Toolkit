@@ -1,8 +1,7 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public interface IHasColorAxis
 {
-    public interface IHasColorAxis
-    {
-        Range GetRange();
-        IColormap Colormap { get; }
-    }
+    Range GetRange();
+    IColormap Colormap { get; }
 }

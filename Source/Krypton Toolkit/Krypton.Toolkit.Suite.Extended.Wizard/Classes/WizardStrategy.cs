@@ -22,33 +22,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2023.
+ * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2025.
  *
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard;
+
+public abstract class WizardStrategy
 {
-    public abstract class WizardStrategy
+    public abstract void Loading();
+    public abstract void SetButtonStates();
+    public abstract void Cancel();
+    public abstract void Help();
+    public abstract void Finish();
+    public abstract void Next(ISelectionService? selection);
+    public abstract void Back(ISelectionService? selection);
+    public abstract void GoToPage(int pageIndex);
+    public abstract void GoToPage(KryptonAdvancedWizardPage page);
+
+    public static WizardStrategy CreateWizard(bool designMode, KryptonAdvancedWizard wizard)
     {
-        public abstract void Loading();
-        public abstract void SetButtonStates();
-        public abstract void Cancel();
-        public abstract void Help();
-        public abstract void Finish();
-        public abstract void Next(ISelectionService? selection);
-        public abstract void Back(ISelectionService? selection);
-        public abstract void GoToPage(int pageIndex);
-        public abstract void GoToPage(KryptonAdvancedWizardPage page);
-
-        public static WizardStrategy CreateWizard(bool designMode, KryptonAdvancedWizard wizard)
+        if (designMode)
         {
-            if (designMode)
-            {
-                return new DesignTimeWizardStrategy(wizard);
-            }
-
-            return new RuntimeWizardStrategy(wizard);
+            return new DesignTimeWizardStrategy(wizard);
         }
+
+        return new RuntimeWizardStrategy(wizard);
     }
 }

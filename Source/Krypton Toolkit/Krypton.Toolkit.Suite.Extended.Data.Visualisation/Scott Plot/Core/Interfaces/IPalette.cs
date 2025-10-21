@@ -1,25 +1,24 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public interface IPalette
 {
-    public interface IPalette
-    {
-        /// <summary>
-        /// All colors in this palette
-        /// </summary>
-        public Color[] Colors { get; }
+    /// <summary>
+    /// All colors in this palette
+    /// </summary>
+    public Color[] Colors { get; }
 
-        /// <summary>
-        /// Display name
-        /// </summary>
-        public string Name { get; }
+    /// <summary>
+    /// Display name
+    /// </summary>
+    public string Name { get; }
 
-        /// <summary>
-        /// Additional information such as the source of this palette
-        /// </summary>
-        public string Description { get; }
+    /// <summary>
+    /// Additional information such as the source of this palette
+    /// </summary>
+    public string Description { get; }
 
-        /// <summary>
-        /// Return the Nth color (wrapping around if N is larger than the number of colors)
-        /// </summary>
-        public Color GetColor(int index);
-    }
+    /// <summary>
+    /// Return the Nth color (wrapping around if N is larger than the number of colors)
+    /// </summary>
+    public Color GetColor(int index);
 }

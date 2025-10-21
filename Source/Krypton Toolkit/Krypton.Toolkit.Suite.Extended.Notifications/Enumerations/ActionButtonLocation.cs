@@ -25,14 +25,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Notifications
+namespace Krypton.Toolkit.Suite.Extended.Notifications;
+
+/// <summary>Defines the <see cref="KryptonToastNotificationVersion1"/> action button location.</summary>
+public enum ActionButtonLocation
 {
-    /// <summary>Defines the <see cref="KryptonToastNotificationVersion1"/> action button location.</summary>
-    public enum ActionButtonLocation
-    {
-        /// <summary>Place the action button to the left.</summary>
-        Left,
-        /// <summary>Place the action button to the right.</summary>
-        Right
-    }
+    /// <summary>Place the action button to the left.</summary>
+    Left,
+    /// <summary>Place the action button to the right.</summary>
+    Right
 }

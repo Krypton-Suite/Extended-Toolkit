@@ -25,17 +25,16 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Notifications
+namespace Krypton.Toolkit.Suite.Extended.Notifications;
+
+/// <summary>Defines the <see cref="KryptonToastNotificationVersion1"/> default button.</summary>
+// TODO: Implement this feature into `KryptonToastNotification`
+public enum DefaultNotificationButton
 {
-    /// <summary>Defines the <see cref="KryptonToastNotificationVersion1"/> default button.</summary>
-    // TODO: Implement this feature into `KryptonToastNotification`
-    public enum DefaultNotificationButton
-    {
-        /// <summary>Use the 'action' button as the default button.</summary>
-        ActionButton,
-        /// <summary>Use the 'dismiss' button as the default button.</summary>
-        DismissButton,
-        /// <summary>Use neither button as the default button.</summary>
-        None
-    }
+    /// <summary>Use the 'action' button as the default button.</summary>
+    ActionButton,
+    /// <summary>Use the 'dismiss' button as the default button.</summary>
+    DismissButton,
+    /// <summary>Use neither button as the default button.</summary>
+    None
 }

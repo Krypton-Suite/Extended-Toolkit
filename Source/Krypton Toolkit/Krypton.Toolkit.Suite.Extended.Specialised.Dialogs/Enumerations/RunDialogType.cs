@@ -25,19 +25,18 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
-{
-    /// <summary>The run dialog UI type.</summary>
-    public enum RunDialogType
-    {
-        /// <summary>
-        /// Show a combobox on the run dialog.
-        /// </summary>
-        Combobox = 0,
+namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs;
 
-        /// <summary>
-        /// Show a textbox on the run dialog.
-        /// </summary>
-        Textbox = 1
-    }
+/// <summary>The run dialog UI type.</summary>
+public enum RunDialogType
+{
+    /// <summary>
+    /// Show a combobox on the run dialog.
+    /// </summary>
+    Combobox = 0,
+
+    /// <summary>
+    /// Show a textbox on the run dialog.
+    /// </summary>
+    Textbox = 1
 }

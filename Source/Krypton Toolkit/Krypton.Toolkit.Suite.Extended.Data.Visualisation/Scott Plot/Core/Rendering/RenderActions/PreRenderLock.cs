@@ -1,10 +1,9 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class PreRenderLock : IRenderAction
 {
-    public class PreRenderLock : IRenderAction
+    public void Render(RenderPack rp)
     {
-        public void Render(RenderPack rp)
-        {
-            rp.Plot.RenderManager.PreRenderLock.Invoke(this, EventArgs.Empty);
-        }
+        rp.Plot.RenderManager.PreRenderLock.Invoke(this, EventArgs.Empty);
     }
 }

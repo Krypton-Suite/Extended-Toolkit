@@ -25,9 +25,8 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Calendar
+namespace Krypton.Toolkit.Suite.Extended.Calendar;
+
+public class MonthViewMontEventArgs
 {
-    public class MonthViewMontEventArgs
-    {
-    }
 }

@@ -25,26 +25,25 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+/// <summary>
+/// Indicates what input has been given to the control
+/// </summary>
+public enum InputState
 {
     /// <summary>
-    /// Indicates what input has been given to the control
+    /// Indicates that no input has been given
     /// </summary>
-    public enum InputState
-    {
-        /// <summary>
-        /// Indicates that no input has been given
-        /// </summary>
-        Normal,
+    Normal,
 
-        /// <summary>
-        /// Indicates that the user is currently clicking on the control
-        /// </summary>
-        Clicked,
+    /// <summary>
+    /// Indicates that the user is currently clicking on the control
+    /// </summary>
+    Clicked,
 
-        /// <summary>
-        /// Indicates that the user is currently hovering the control with the mouse
-        /// </summary>
-        Hovered
-    }
+    /// <summary>
+    /// Indicates that the user is currently hovering the control with the mouse
+    /// </summary>
+    Hovered
 }

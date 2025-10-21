@@ -4,22 +4,21 @@
  * suggested background: #2e3440
  */
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class Nord : IPalette
 {
-    public class Nord : IPalette
-    {
-        public string Name { get; } = "Nord";
+    public string Name { get; } = "Nord";
 
-        public string Description => "From the Nord " +
-                                     "ConEmu color scheme: https://github.com/arcticicestudio/nord-conemu";
+    public string Description => "From the Nord " +
+                                 "ConEmu color scheme: https://github.com/arcticicestudio/nord-conemu";
 
-        public Color[] Colors { get; } = Color.FromHex(_hexColors);
+    public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] _hexColors =
-        [
-            "#bf616a", "#a3be8c", "#ebcb8b", "#81a1c1", "#b48ead", "#88c0d0", "#e5e9f0"
-        ];
+    private static readonly string[] _hexColors =
+    [
+        "#bf616a", "#a3be8c", "#ebcb8b", "#81a1c1", "#b48ead", "#88c0d0", "#e5e9f0"
+    ];
 
-        public Color GetColor(int index) => Colors[index % Colors.Length];
-    }
+    public Color GetColor(int index) => Colors[index % Colors.Length];
 }

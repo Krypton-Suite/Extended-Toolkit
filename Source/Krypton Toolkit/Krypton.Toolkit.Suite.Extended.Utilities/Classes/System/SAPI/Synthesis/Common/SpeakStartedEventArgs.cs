@@ -26,13 +26,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+public class SpeakStartedEventArgs : PromptEventArgs
 {
-	public class SpeakStartedEventArgs : PromptEventArgs
-	{
-		internal SpeakStartedEventArgs(Prompt prompt)
-			: base(prompt)
-		{
-		}
-	}
+    internal SpeakStartedEventArgs(Prompt prompt)
+        : base(prompt)
+    {
+    }
 }

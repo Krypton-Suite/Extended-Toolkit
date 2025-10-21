@@ -1,9 +1,8 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public enum LocationUnit
 {
-    public enum LocationUnit
-    {
-        Unspecified,
-        Coordinates,
-        Pixel,
-    }
+    Unspecified,
+    Coordinates,
+    Pixel,
 }

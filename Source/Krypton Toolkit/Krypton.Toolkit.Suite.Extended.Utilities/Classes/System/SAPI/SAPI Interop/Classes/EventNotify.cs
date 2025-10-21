@@ -26,68 +26,67 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+
+internal class EventNotify
 {
-    internal class EventNotify
+    private IAsyncDispatch _dispatcher;
+
+    private WeakReference _sapiEventSourceReference;
+
+    private bool _additionalSapiFeatures;
+
+    private SpeechAudioFormatInfo _audioFormat;
+
+    private ISpNotifySink _notifySink;
+
+    internal SpeechAudioFormatInfo AudioFormat
     {
-        private IAsyncDispatch _dispatcher;
+        set => _audioFormat = value;
+    }
 
-        private WeakReference _sapiEventSourceReference;
+    internal EventNotify(ISpEventSource sapiEventSource, IAsyncDispatch dispatcher, bool additionalSapiFeatures)
+    {
+        _sapiEventSourceReference = new WeakReference(sapiEventSource);
+        _dispatcher = dispatcher;
+        _additionalSapiFeatures = additionalSapiFeatures;
+        _notifySink = new SpNotifySink(this);
+        sapiEventSource.SetNotifySink(_notifySink);
+    }
 
-        private bool _additionalSapiFeatures;
-
-        private SpeechAudioFormatInfo _audioFormat;
-
-        private ISpNotifySink _notifySink;
-
-        internal SpeechAudioFormatInfo AudioFormat
+    internal void Dispose()
+    {
+        lock (this)
         {
-            set => _audioFormat = value;
-        }
-
-        internal EventNotify(ISpEventSource sapiEventSource, IAsyncDispatch dispatcher, bool additionalSapiFeatures)
-        {
-            _sapiEventSourceReference = new WeakReference(sapiEventSource);
-            _dispatcher = dispatcher;
-            _additionalSapiFeatures = additionalSapiFeatures;
-            _notifySink = new SpNotifySink(this);
-            sapiEventSource.SetNotifySink(_notifySink);
-        }
-
-        internal void Dispose()
-        {
-            lock (this)
+            if (_sapiEventSourceReference != null)
             {
-                if (_sapiEventSourceReference != null)
+                ISpEventSource spEventSource = (ISpEventSource)_sapiEventSourceReference.Target;
+                if (spEventSource != null)
                 {
-                    ISpEventSource spEventSource = (ISpEventSource)_sapiEventSourceReference.Target;
-                    if (spEventSource != null)
-                    {
-                        spEventSource.SetNotifySink(null);
-                        _notifySink = null;
-                    }
+                    spEventSource.SetNotifySink(null);
+                    _notifySink = null;
                 }
-                _sapiEventSourceReference = null;
             }
+            _sapiEventSourceReference = null;
         }
+    }
 
-        internal void SendNotification(object ignored)
+    internal void SendNotification(object ignored)
+    {
+        lock (this)
         {
-            lock (this)
+            if (_sapiEventSourceReference != null)
             {
-                if (_sapiEventSourceReference != null)
+                ISpEventSource spEventSource = (ISpEventSource)_sapiEventSourceReference.Target;
+                if (spEventSource != null)
                 {
-                    ISpEventSource spEventSource = (ISpEventSource)_sapiEventSourceReference.Target;
-                    if (spEventSource != null)
+                    List<SpeechEvent> list = [];
+                    SpeechEvent item;
+                    while ((item = SpeechEvent.TryCreateSpeechEvent(spEventSource, _additionalSapiFeatures, _audioFormat)) != null)
                     {
-                        List<SpeechEvent> list = new List<SpeechEvent>();
-                        SpeechEvent item;
-                        while ((item = SpeechEvent.TryCreateSpeechEvent(spEventSource, _additionalSapiFeatures, _audioFormat)) != null)
-                        {
-                            list.Add(item);
-                        }
-                        _dispatcher.Post(list.ToArray());
+                        list.Add(item);
                     }
+                    _dispatcher.Post(list.ToArray());
                 }
             }
         }

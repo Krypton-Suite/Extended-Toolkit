@@ -26,9 +26,8 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+internal interface IRuleRef : IElement
 {
-    internal interface IRuleRef : IElement
-    {
-    }
 }

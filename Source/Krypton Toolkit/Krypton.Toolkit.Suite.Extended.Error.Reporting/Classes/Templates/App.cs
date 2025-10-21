@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
 public class App
 {
     public string Name { get; set; }
-    public string Version { get; set; }
+    public string? Version { get; set; }
     public string Region { get; set; } = CultureInfo.CurrentCulture.DisplayName;
 
     /// <summary> eg used in HTML lang attribute </summary>

@@ -25,11 +25,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Calendar
+namespace Krypton.Toolkit.Suite.Extended.Calendar;
+
+public class CalendarTimeSpan
 {
-    public class CalendarTimeSpan
-    {
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
-    }
+    public DateTime Start { get; set; }
+    public DateTime End { get; set; }
 }

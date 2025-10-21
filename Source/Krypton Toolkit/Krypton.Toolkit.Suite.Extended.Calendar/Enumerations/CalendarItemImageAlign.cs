@@ -25,31 +25,30 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Calendar
+namespace Krypton.Toolkit.Suite.Extended.Calendar;
+
+/// <summary>
+/// Possible alignment for <see cref="CalendarItemAlternative"/> images
+/// </summary>
+public enum CalendarItemImageAlign
 {
     /// <summary>
-    /// Possible alignment for <see cref="CalendarItemAlternative"/> images
+    /// Image is drawn at north of text
     /// </summary>
-    public enum CalendarItemImageAlign
-    {
-        /// <summary>
-        /// Image is drawn at north of text
-        /// </summary>
-        North,
+    North,
 
-        /// <summary>
-        /// Image is drawn at south of text
-        /// </summary>
-        South,
+    /// <summary>
+    /// Image is drawn at south of text
+    /// </summary>
+    South,
 
-        /// <summary>
-        /// Image is drawn at east of text
-        /// </summary>
-        East,
+    /// <summary>
+    /// Image is drawn at east of text
+    /// </summary>
+    East,
 
-        /// <summary>
-        /// Image is drawn at west of text
-        /// </summary>
-        West,
-    }
+    /// <summary>
+    /// Image is drawn at west of text
+    /// </summary>
+    West,
 }

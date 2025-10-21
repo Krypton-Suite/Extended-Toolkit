@@ -1,112 +1,111 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class LegendItem
 {
-    public class LegendItem
+    public string? Label { get; set; }
+    public LineStyle Line { get; set; } = new();
+
+    public Color LineColor
     {
-        public string? Label { get; set; }
-        public LineStyle Line { get; set; } = new();
+        get => Line.Color;
+        set => Line.Color = value;
+    }
 
-        public Color LineColor
+    public float LineWidth
+    {
+        get => Line.Width;
+        set => Line.Width = value;
+    }
+
+    public MarkerStyle Marker { get; set; } = MarkerStyle.Default;
+
+    public Color MarkerColor
+    {
+        get => Marker.Fill.Color;
+        set
         {
-            get => Line.Color;
-            set => Line.Color = value;
+            Marker.Fill.Color = value;
+            Marker.Outline.Color = value;
         }
+    }
 
-        public float LineWidth
+    public FillStyle Fill { get; set; } = new() { Color = Colors.Transparent };
+
+    public Color FillColor
+    {
+        get => Fill.Color;
+        set => Fill.Color = value;
+    }
+
+    public IEnumerable<LegendItem> Children { get; set; } = Array.Empty<LegendItem>();
+    public bool HasSymbol => Line.Width > 0 || Marker.IsVisible || Fill.HasValue;
+    public bool IsVisible => !string.IsNullOrEmpty(Label);
+
+    public static IEnumerable<LegendItem> None => Array.Empty<LegendItem>();
+
+    public static IEnumerable<LegendItem> Single(LegendItem item)
+    {
+        return [item];
+    }
+
+    public static IEnumerable<LegendItem> Single(string label, MarkerStyle markerStyle)
+    {
+        LegendItem item = new()
         {
-            get => Line.Width;
-            set => Line.Width = value;
-        }
+            Label = label,
+            Marker = markerStyle,
+            Line = LineStyle.None,
+        };
 
-        public MarkerStyle Marker { get; set; } = MarkerStyle.Default;
+        return Single(item);
+    }
 
-        public Color MarkerColor
+    public static IEnumerable<LegendItem> Single(string label, LineStyle lineStyle)
+    {
+        LegendItem item = new()
         {
-            get => Marker.Fill.Color;
-            set
-            {
-                Marker.Fill.Color = value;
-                Marker.Outline.Color = value;
-            }
-        }
+            Label = label,
+            Marker = MarkerStyle.None,
+            Line = lineStyle,
+        };
 
-        public FillStyle Fill { get; set; } = new() { Color = Colors.Transparent };
+        return Single(item);
+    }
 
-        public Color FillColor
+    public static IEnumerable<LegendItem> Single(string label, FillStyle fillStyle)
+    {
+        LegendItem item = new()
         {
-            get => Fill.Color;
-            set => Fill.Color = value;
-        }
+            Label = label,
+            Marker = MarkerStyle.None,
+            Fill = fillStyle,
+        };
 
-        public IEnumerable<LegendItem> Children { get; set; } = Array.Empty<LegendItem>();
-        public bool HasSymbol => Line.Width > 0 || Marker.IsVisible || Fill.HasValue;
-        public bool IsVisible => !string.IsNullOrEmpty(Label);
+        return Single(item);
+    }
 
-        public static IEnumerable<LegendItem> None => Array.Empty<LegendItem>();
-
-        public static IEnumerable<LegendItem> Single(LegendItem item)
+    public static IEnumerable<LegendItem> Single(string label, FillStyle fillStyle, LineStyle lineStyle)
+    {
+        LegendItem item = new()
         {
-            return new LegendItem[] { item };
-        }
+            Label = label,
+            Marker = MarkerStyle.None,
+            Fill = fillStyle,
+            Line = lineStyle,
+        };
 
-        public static IEnumerable<LegendItem> Single(string label, MarkerStyle markerStyle)
+        return Single(item);
+    }
+
+    public static IEnumerable<LegendItem> Single(string label, LineStyle lineStyle, MarkerStyle markerStyle)
+    {
+        LegendItem item = new()
         {
-            LegendItem item = new()
-            {
-                Label = label,
-                Marker = markerStyle,
-                Line = LineStyle.None,
-            };
+            Label = label,
+            Marker = markerStyle,
+            Line = lineStyle,
+        };
 
-            return Single(item);
-        }
-
-        public static IEnumerable<LegendItem> Single(string label, LineStyle lineStyle)
-        {
-            LegendItem item = new()
-            {
-                Label = label,
-                Marker = MarkerStyle.None,
-                Line = lineStyle,
-            };
-
-            return Single(item);
-        }
-
-        public static IEnumerable<LegendItem> Single(string label, FillStyle fillStyle)
-        {
-            LegendItem item = new()
-            {
-                Label = label,
-                Marker = MarkerStyle.None,
-                Fill = fillStyle,
-            };
-
-            return Single(item);
-        }
-
-        public static IEnumerable<LegendItem> Single(string label, FillStyle fillStyle, LineStyle lineStyle)
-        {
-            LegendItem item = new()
-            {
-                Label = label,
-                Marker = MarkerStyle.None,
-                Fill = fillStyle,
-                Line = lineStyle,
-            };
-
-            return Single(item);
-        }
-
-        public static IEnumerable<LegendItem> Single(string label, LineStyle lineStyle, MarkerStyle markerStyle)
-        {
-            LegendItem item = new()
-            {
-                Label = label,
-                Marker = markerStyle,
-                Line = lineStyle,
-            };
-
-            return Single(item);
-        }
+        return Single(item);
     }
 }

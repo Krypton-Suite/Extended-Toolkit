@@ -25,83 +25,82 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO;
+
+[ToolboxBitmap(typeof(KryptonTreeView)), Description("A directory and file browser.")]
+public class KryptonFileSystemTreeView : KryptonTreeView
 {
-    [ToolboxBitmap(typeof(KryptonTreeView)), Description("A directory and file browser.")]
-    public class KryptonFileSystemTreeView : KryptonTreeView
+    #region Variables
+    private bool _showFiles = true;
+
+    private DriveInfo[] _drives;
+
+    private ImageList _imageList = new ImageList();
+
+    private Hashtable _systemIcons = new Hashtable();
+
+    private Icon _folderIcon = null;
+
+    private static readonly int Folder = 0;
+    #endregion
+
+    #region Property
+    public DriveInfo[] Drives { get => _drives; set => _drives = value; }
+
+    public Icon FolderIcon { get => _folderIcon; set => _folderIcon = value; }
+    #endregion
+
+    #region Constructor
+    public KryptonFileSystemTreeView()
     {
-        #region Variables
-        private bool _showFiles = true;
+        Drives = DriveInfo.GetDrives();
 
-        private DriveInfo[] _drives;
+        ImageList = _imageList;
 
-        private ImageList _imageList = new ImageList();
+        MouseDown += KryptonFileSystemTreeView_MouseDown;
 
-        private Hashtable _systemIcons = new Hashtable();
+        BeforeExpand += KryptonFileSystemTreeView_BeforeExpand;
 
-        private Icon _folderIcon = null;
-
-        private static readonly int Folder = 0;
-        #endregion
-
-        #region Property
-        public DriveInfo[] Drives { get => _drives; set => _drives = value; }
-
-        public Icon FolderIcon { get => _folderIcon; set => _folderIcon = value; }
-        #endregion
-
-        #region Constructor
-        public KryptonFileSystemTreeView()
+        try
         {
-            Drives = DriveInfo.GetDrives();
+            string localFolderIcon = "Icons\\Folder.ico";
 
-            ImageList = _imageList;
+            //Icon folderIcon = Icon.ExtractAssociatedIcon(@"C:\\Windows"), 
 
-            MouseDown += KryptonFileSystemTreeView_MouseDown;
+            Icon applicationIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
-            BeforeExpand += KryptonFileSystemTreeView_BeforeExpand;
-
-            try
+            if (File.Exists(localFolderIcon))
             {
-                string localFolderIcon = "Icons\\Folder.ico";
-
-                //Icon folderIcon = Icon.ExtractAssociatedIcon(@"C:\\Windows"), 
-
-                Icon applicationIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-
-                if (File.Exists(localFolderIcon))
-                {
-                    FolderIcon = new Icon(localFolderIcon);
-                }
-                else
-                {
-                    FolderIcon = applicationIcon;
-                }
-
-                //FolderIcon = folderIcon;
+                FolderIcon = new Icon(localFolderIcon);
             }
-            catch (Exception exc)
+            else
             {
-                throw new Exception(exc.Message);
-            }
-        }
-        #endregion
-
-        #region Event Handlers
-        private void KryptonFileSystemTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
-        {
-            if (e.Node is KryptonTreeNode)
-            {
-                return;
+                FolderIcon = applicationIcon;
             }
 
-            //KryptonDirectoryNode
+            //FolderIcon = folderIcon;
         }
-
-        private void KryptonFileSystemTreeView_MouseDown(object sender, MouseEventArgs e)
+        catch (Exception exc)
         {
-            throw new System.NotImplementedException();
+            throw new Exception(exc.Message);
         }
-        #endregion
     }
+    #endregion
+
+    #region Event Handlers
+    private void KryptonFileSystemTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+    {
+        if (e.Node is KryptonTreeNode)
+        {
+            return;
+        }
+
+        //KryptonDirectoryNode
+    }
+
+    private void KryptonFileSystemTreeView_MouseDown(object sender, MouseEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+    #endregion
 }

@@ -26,10 +26,9 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+internal interface IScript : IElement
 {
-    internal interface IScript : IElement
-    {
-        IScript Create(string rule, RuleMethodScript onInit);
-    }
+    IScript Create(string rule, RuleMethodScript onInit);
 }

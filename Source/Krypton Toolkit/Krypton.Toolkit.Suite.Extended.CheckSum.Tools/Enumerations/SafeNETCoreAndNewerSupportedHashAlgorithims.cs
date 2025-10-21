@@ -25,16 +25,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
-{
+namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools;
 #if NETCOREAPP3_1_OR_GREATER
-    public enum SafeNETCoreAndNewerSupportedHashAlgorithims
-    {
-        MD5,
-        SHA1,
-        SHA256,
-        SHA384,
-        SHA512
-    }
-#endif
+public enum SafeNETCoreAndNewerSupportedHashAlgorithims
+{
+    MD5,
+    SHA1,
+    SHA256,
+    SHA384,
+    SHA512
 }
+#endif

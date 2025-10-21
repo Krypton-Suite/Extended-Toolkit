@@ -22,23 +22,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2023.
+ * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2025.
  *
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard;
+
+public class WizardPageChangedEventArgs : EventArgs
 {
-    public class WizardPageChangedEventArgs : EventArgs
+    public WizardPageChangedEventArgs(KryptonAdvancedWizardPage page, int pageIndex)
     {
-        public WizardPageChangedEventArgs(KryptonAdvancedWizardPage page, int pageIndex)
-        {
-            Page = page;
-            PageIndex = pageIndex;
-        }
-
-        public KryptonAdvancedWizardPage Page { get; set; }
-
-        public int PageIndex { get; }
+        Page = page;
+        PageIndex = pageIndex;
     }
+
+    public KryptonAdvancedWizardPage Page { get; set; }
+
+    public int PageIndex { get; }
 }

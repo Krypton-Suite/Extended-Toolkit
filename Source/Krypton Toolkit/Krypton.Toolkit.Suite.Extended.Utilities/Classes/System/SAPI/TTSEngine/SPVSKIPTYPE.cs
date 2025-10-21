@@ -26,10 +26,9 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+internal enum SPVSKIPTYPE
 {
-	internal enum SPVSKIPTYPE
-	{
-		SPVST_SENTENCE = 1
-	}
+    SPVST_SENTENCE = 1
 }

@@ -1,24 +1,23 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class Month : ITimeUnit
 {
-    public class Month : ITimeUnit
+    public IReadOnlyList<int> Divisors => StandardDivisors.Months;
+
+    public TimeSpan MinSize => TimeSpan.FromDays(28);
+
+    public DateTime Snap(DateTime dt)
     {
-        public IReadOnlyList<int> Divisors => StandardDivisors.Months;
+        return new DateTime(dt.Year, dt.Month, 1);
+    }
 
-        public TimeSpan MinSize => TimeSpan.FromDays(28);
+    public string GetDateTimeFormatString()
+    {
+        return $"d";
+    }
 
-        public DateTime Snap(DateTime dt)
-        {
-            return new DateTime(dt.Year, dt.Month, 1);
-        }
-
-        public string GetDateTimeFormatString()
-        {
-            return $"d";
-        }
-
-        public DateTime Next(DateTime dateTime, int increment = 1)
-        {
-            return dateTime.AddMonths(increment);
-        }
+    public DateTime Next(DateTime dateTime, int increment = 1)
+    {
+        return dateTime.AddMonths(increment);
     }
 }

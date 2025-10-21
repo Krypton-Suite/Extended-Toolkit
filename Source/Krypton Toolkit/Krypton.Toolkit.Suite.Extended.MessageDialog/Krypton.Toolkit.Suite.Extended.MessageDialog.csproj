@@ -1,15 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<!--If all else fails-->
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;net8.0-windows;net9.0-windows</TargetFrameworks>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
+		<TargetFrameworks>$(ExtendedToolkitTFMs)</TargetFrameworks>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
@@ -23,9 +25,7 @@
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
-		<NeutralLanguage>en</NeutralLanguage>
-		<Configurations>Debug;Release;Nightly;Canary</Configurations>
-		<LangVersion>preview</LangVersion>
+		<NeutralLanguage>en</NeutralLanguage>		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
@@ -59,9 +59,9 @@
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9. This package implements the KryptonMessageDialog, which is similar to a KryptonMessageBox, but adds additional functionality.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 8 - 10. This package implements the KryptonMessageDialog, which is similar to a KryptonMessageBox, but adds additional functionality.
 
-			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 6, 8 and 9.
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 8 - 10.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
 
 			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
@@ -73,19 +73,19 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.24.10.295-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.290-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="90.24.10.296-beta" />
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
+						<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
 					</ItemGroup>
 				</When>
 

@@ -25,18 +25,17 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Memory.Box
+namespace Krypton.Toolkit.Suite.Extended.Memory.Box;
+
+public enum KryptonMemoryBoxIcon
 {
-    public enum KryptonMemoryBoxIcon
-    {
-        Custom,
-        OK,
-        Error,
-        Exclamation,
-        Information,
-        Question,
-        None,
-        Stop,
-        Hand
-    }
+    Custom,
+    OK,
+    Error,
+    Exclamation,
+    Information,
+    Question,
+    None,
+    Stop,
+    Hand
 }

@@ -25,141 +25,140 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items;
+
+/// <summary>
+/// A standard tool strip menu item control with UAC shield.
+/// Modified from the AeroSuite project.
+/// </summary>
+/// <remarks>
+/// The shield is extracted from the system with LoadImage if possible. Otherwise the shield will be enabled by sending the BCM_SETSHIELD Message to the control.
+/// If the operating system is not Windows Vista or higher, no shield will be displayed as there's no such thing as UAC on the target system -> the shield is obsolete.
+/// </remarks>
+[DisplayName("ToolStrip UAC Shield Menu Item")]
+[ToolboxBitmap(typeof(ToolStripMenuItem)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All)]
+public partial class ToolStripMenuItemUACSheld : ToolStripMenuItem
 {
+    #region Variables
+    private bool _elevateApplicationOnClick = true;
+
+    private string _processName = string.Empty;
+
+    private static bool? _isSystemAbleToLoadShield = null;
+
+    private const int BCM_SETSHIELD = 0x160C;
+
+    private GlobalMethods _globalMethods = new GlobalMethods();
+
+    private UtilityMethods _utilityMethods = new UtilityMethods();
+    #endregion
+
+    #region Properties
     /// <summary>
-    /// A standard tool strip menu item control with UAC shield.
-    /// Modified from the AeroSuite project.
+    /// Elevates the current running application to administrator level when button is clicked.
     /// </summary>
     /// <remarks>
-    /// The shield is extracted from the system with LoadImage if possible. Otherwise the shield will be enabled by sending the BCM_SETSHIELD Message to the control.
-    /// If the operating system is not Windows Vista or higher, no shield will be displayed as there's no such thing as UAC on the target system -> the shield is obsolete.
+    /// The application/process will restart when clicked.
     /// </remarks>
-    [DisplayName("ToolStrip UAC Shield Menu Item")]
-    [ToolboxBitmap(typeof(ToolStripMenuItem)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All)]
-    public partial class ToolStripMenuItemUACSheld : ToolStripMenuItem
+    [Category("Code")]
+    [Description("Elevates the current running application to administrator level when button is clicked. The application/process will restart when clicked.")]
+    [DefaultValue(true)]
+    public bool ElevateApplicationOnClick
     {
-        #region Variables
-        private bool _elevateApplicationOnClick = true;
+        get => _elevateApplicationOnClick;
 
-        private string _processName = string.Empty;
+        set => _elevateApplicationOnClick = value;
+    }
 
-        private static bool? _isSystemAbleToLoadShield = null;
+    /// <summary>
+    /// The application assembly.
+    /// </summary>
+    /// <remarks>
+    /// Use 'Process.GetCurrentProcess().ProcessName;' as a start.
+    /// </remarks>
+    [Category("Code")]
+    [Description("The application assembly. Use 'Process.GetCurrentProcess().ProcessName;' as a start.")]
+    [DefaultValue("")]
+    public string ProcessName
+    {
+        get => _processName;
 
-        private const int BCM_SETSHIELD = 0x160C;
+        set => _processName = value;
+    }
+    #endregion
 
-        private GlobalMethods _globalMethods = new GlobalMethods();
+    #region Events
+    /// <summary></summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
+    public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
 
-        private UtilityMethods _utilityMethods = new UtilityMethods();
-        #endregion
+    /// <summary>The execute process as administrator</summary>
+    public ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
+    #endregion
 
-        #region Properties
-        /// <summary>
-        /// Elevates the current running application to administrator level when button is clicked.
-        /// </summary>
-        /// <remarks>
-        /// The application/process will restart when clicked.
-        /// </remarks>
-        [Category("Code")]
-        [Description("Elevates the current running application to administrator level when button is clicked. The application/process will restart when clicked.")]
-        [DefaultValue(true)]
-        public bool ElevateApplicationOnClick
+    #region Constructor
+    /// <summary>
+    /// Initialises a new instance of the <see cref="ToolStripMenuItemUACSheld"/> class.
+    /// </summary>
+    public ToolStripMenuItemUACSheld() : base()
+    {
+        _globalMethods.CheckIfTargetPlatformIsSupported(true);
+
+        if (_globalMethods.GetIsTargetPlatformSupported())
         {
-            get => _elevateApplicationOnClick;
-
-            set => _elevateApplicationOnClick = value;
-        }
-
-        /// <summary>
-        /// The application assembly.
-        /// </summary>
-        /// <remarks>
-        /// Use 'Process.GetCurrentProcess().ProcessName;' as a start.
-        /// </remarks>
-        [Category("Code")]
-        [Description("The application assembly. Use 'Process.GetCurrentProcess().ProcessName;' as a start.")]
-        [DefaultValue("")]
-        public string ProcessName
-        {
-            get => _processName;
-
-            set => _processName = value;
-        }
-        #endregion
-
-        #region Events
-        /// <summary></summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-        public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
-
-        /// <summary>The execute process as administrator</summary>
-        public ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
-        #endregion
-
-        #region Constructor
-        /// <summary>
-        /// Initialises a new instance of the <see cref="ToolStripMenuItemUACSheld"/> class.
-        /// </summary>
-        public ToolStripMenuItemUACSheld() : base()
-        {
-            _globalMethods.CheckIfTargetPlatformIsSupported(true);
-
-            if (_globalMethods.GetIsTargetPlatformSupported())
+            if (!_isSystemAbleToLoadShield.HasValue || _isSystemAbleToLoadShield.Value)
             {
-                if (!_isSystemAbleToLoadShield.HasValue || _isSystemAbleToLoadShield.Value)
+                try
                 {
-                    try
+                    var _icon = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize);
+
+                    if (_icon != null)
                     {
-                        var _icon = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize);
+                        Image = _icon.ToBitmap();
 
-                        if (_icon != null)
-                        {
-                            Image = _icon.ToBitmap();
+                        TextImageRelation = TextImageRelation.ImageBeforeText;
 
-                            TextImageRelation = TextImageRelation.ImageBeforeText;
+                        ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
 
-                            ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                        _isSystemAbleToLoadShield = true;
 
-                            _isSystemAbleToLoadShield = true;
-
-                            return;
-                        }
-                        else
-                        {
-                            _isSystemAbleToLoadShield = false;
-                        }
+                        return;
                     }
-                    catch (Exception exc)
+                    else
                     {
-                        KryptonMessageBox.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: {_globalMethods.GetOSFriendlyName()}.\nException message: {exc.Message}.", "Unsupported Software", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
-
                         _isSystemAbleToLoadShield = false;
                     }
                 }
+                catch (Exception exc)
+                {
+                    KryptonMessageBox.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: {_globalMethods.GetOSFriendlyName()}.\nException message: {exc.Message}.", "Unsupported Software", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
 
-                //NativeMethods.SendMessage(Handle, BCM_SETSHIELD, IntPtr.Zero, new IntPtr(1));
+                    _isSystemAbleToLoadShield = false;
+                }
             }
+
+            //NativeMethods.SendMessage(Handle, BCM_SETSHIELD, IntPtr.Zero, new IntPtr(1));
         }
-        #endregion
+    }
+    #endregion
 
-        #region Overrides
-        protected override void OnClick(EventArgs e)
-        {
-            ExecuteProcessAsAdministratorEventArgs evt = new ExecuteProcessAsAdministratorEventArgs(ProcessName);
+    #region Overrides
+    protected override void OnClick(EventArgs e)
+    {
+        ExecuteProcessAsAdministratorEventArgs evt = new ExecuteProcessAsAdministratorEventArgs(ProcessName);
 
-            OnExecuteProcessAsAdministrator(this, evt);
+        OnExecuteProcessAsAdministrator(this, evt);
 
-            base.OnClick(e);
-        }
-        #endregion
+        base.OnClick(e);
+    }
+    #endregion
 
-        /// <summary>Called when [execute process as administrator].</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e)
-        {
-            ExecuteProcessAsAdministrator?.Invoke(sender, e);
-        }
+    /// <summary>Called when [execute process as administrator].</summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
+    protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e)
+    {
+        ExecuteProcessAsAdministrator?.Invoke(sender, e);
     }
 }

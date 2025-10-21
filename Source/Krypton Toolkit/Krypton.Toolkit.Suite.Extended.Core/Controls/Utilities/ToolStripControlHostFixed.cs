@@ -26,18 +26,17 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+public class ToolStripControlHostFixed : ToolStripControlHost
 {
-    public class ToolStripControlHostFixed : ToolStripControlHost
+    public ToolStripControlHostFixed() : base(new())
     {
-        public ToolStripControlHostFixed() : base(new())
-        {
 
-        }
+    }
 
-        public ToolStripControlHostFixed(Control control) : base(control)
-        {
+    public ToolStripControlHostFixed(Control control) : base(control)
+    {
 
-        }
     }
 }

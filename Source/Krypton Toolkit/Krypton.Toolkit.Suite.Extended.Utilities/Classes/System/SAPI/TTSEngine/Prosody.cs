@@ -26,81 +26,80 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+[StructLayout(LayoutKind.Sequential)]
+public class Prosody
 {
-    [StructLayout(LayoutKind.Sequential)]
-    public class Prosody
+    internal ProsodyNumber _pitch;
+
+    internal ProsodyNumber _range;
+
+    internal ProsodyNumber _rate;
+
+    internal int _duration;
+
+    internal ProsodyNumber _volume;
+
+    internal ContourPoint[] _contourPoints;
+
+    public ProsodyNumber Pitch
     {
-        internal ProsodyNumber _pitch;
+        get => _pitch;
+        set => _pitch = value;
+    }
 
-        internal ProsodyNumber _range;
+    public ProsodyNumber Range
+    {
+        get => _range;
+        set => _range = value;
+    }
 
-        internal ProsodyNumber _rate;
+    public ProsodyNumber Rate
+    {
+        get => _rate;
+        set => _rate = value;
+    }
 
-        internal int _duration;
+    public int Duration
+    {
+        get => _duration;
+        set => _duration = value;
+    }
 
-        internal ProsodyNumber _volume;
+    public ProsodyNumber Volume
+    {
+        get => _volume;
+        set => _volume = value;
+    }
 
-        internal ContourPoint[] _contourPoints;
+    public ContourPoint[] GetContourPoints()
+    {
+        return _contourPoints;
+    }
 
-        public ProsodyNumber Pitch
-        {
-            get => _pitch;
-            set => _pitch = value;
-        }
+    public void SetContourPoints(ContourPoint[] points)
+    {
+        Helpers.ThrowIfNull(points, "points");
+        _contourPoints = (ContourPoint[])points.Clone();
+    }
 
-        public ProsodyNumber Range
-        {
-            get => _range;
-            set => _range = value;
-        }
+    public Prosody()
+    {
+        Pitch = new ProsodyNumber(0);
+        Range = new ProsodyNumber(0);
+        Rate = new ProsodyNumber(0);
+        Volume = new ProsodyNumber(-1);
+    }
 
-        public ProsodyNumber Rate
-        {
-            get => _rate;
-            set => _rate = value;
-        }
-
-        public int Duration
-        {
-            get => _duration;
-            set => _duration = value;
-        }
-
-        public ProsodyNumber Volume
-        {
-            get => _volume;
-            set => _volume = value;
-        }
-
-        public ContourPoint[] GetContourPoints()
-        {
-            return _contourPoints;
-        }
-
-        public void SetContourPoints(ContourPoint[] points)
-        {
-            Helpers.ThrowIfNull(points, "points");
-            _contourPoints = (ContourPoint[])points.Clone();
-        }
-
-        public Prosody()
-        {
-            Pitch = new ProsodyNumber(0);
-            Range = new ProsodyNumber(0);
-            Rate = new ProsodyNumber(0);
-            Volume = new ProsodyNumber(-1);
-        }
-
-        internal Prosody Clone()
-        {
-            Prosody prosody = new Prosody();
-            prosody._pitch = _pitch;
-            prosody._range = _range;
-            prosody._rate = _rate;
-            prosody._duration = _duration;
-            prosody._volume = _volume;
-            return prosody;
-        }
+    internal Prosody Clone()
+    {
+        Prosody prosody = new Prosody();
+        prosody._pitch = _pitch;
+        prosody._range = _range;
+        prosody._rate = _rate;
+        prosody._duration = _duration;
+        prosody._volume = _volume;
+        return prosody;
     }
 }

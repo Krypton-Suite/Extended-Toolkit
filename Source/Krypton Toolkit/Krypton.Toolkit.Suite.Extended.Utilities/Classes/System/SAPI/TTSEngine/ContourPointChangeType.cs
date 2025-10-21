@@ -26,13 +26,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+public enum ContourPointChangeType
 {
-	public enum ContourPointChangeType
-	{
-		/// <summary />
-		Hz,
-		/// <summary />
-		Percentage
-	}
+    /// <summary />
+    Hz,
+    /// <summary />
+    Percentage
 }

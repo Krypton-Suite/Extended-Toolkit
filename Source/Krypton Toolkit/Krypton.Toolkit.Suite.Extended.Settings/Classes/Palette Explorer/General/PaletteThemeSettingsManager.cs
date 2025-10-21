@@ -26,106 +26,105 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Settings
+namespace Krypton.Toolkit.Suite.Extended.Settings;
+
+public class PaletteThemeSettingsManager
 {
-    public class PaletteThemeSettingsManager
+    #region Variables
+    private PaletteThemeSettings _paletteThemeSettings = new();
+    #endregion
+
+    #region Constructor
+    public PaletteThemeSettingsManager()
     {
-        #region Variables
-        private PaletteThemeSettings _paletteThemeSettings = new();
-        #endregion
 
-        #region Constructor
-        public PaletteThemeSettingsManager()
+    }
+    #endregion
+
+    #region Setters / Getters
+    /// <summary>
+    /// Sets the Theme to the value of themeValue.
+    /// </summary>
+    /// <param name="themeValue">The value of themeValue.</param>
+    public void SetTheme(PaletteMode themeValue)
+    {
+        _paletteThemeSettings.CurrentTheme = themeValue;
+    }
+
+    /// <summary>
+    /// Gets the Theme value.
+    /// </summary>
+    /// <returns>The value of themeValue.</returns>
+    public PaletteMode GetTheme()
+    {
+        return _paletteThemeSettings.CurrentTheme;
+    }
+
+    /// <summary>
+    /// Sets the CustomThemeFilePath to the value of value.
+    /// </summary>
+    /// <param name="value">The value of value.</param>
+    public void SetCustomThemeFilePath(string value)
+    {
+        _paletteThemeSettings.CustomThemeFilePath = value;
+    }
+
+    /// <summary>
+    /// Gets the CustomThemeFilePath value.
+    /// </summary>
+    /// <returns>The value of value.</returns>
+    public string GetCustomThemeFilePath()
+    {
+        return _paletteThemeSettings.CustomThemeFilePath;
+    }
+    #endregion
+
+    #region Methods
+    public void SavePaletteThemeSettings(bool usePrompt = false)
+    {
+        if (usePrompt)
         {
+            DialogResult result = KryptonMessageBox.Show("Do you want to save the current palette theme settings?", "Save Confirmation", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
-        }
-        #endregion
-
-        #region Setters / Getters
-        /// <summary>
-        /// Sets the Theme to the value of themeValue.
-        /// </summary>
-        /// <param name="themeValue">The value of themeValue.</param>
-        public void SetTheme(PaletteMode themeValue)
-        {
-            _paletteThemeSettings.CurrentTheme = themeValue;
-        }
-
-        /// <summary>
-        /// Gets the Theme value.
-        /// </summary>
-        /// <returns>The value of themeValue.</returns>
-        public PaletteMode GetTheme()
-        {
-            return _paletteThemeSettings.CurrentTheme;
-        }
-
-        /// <summary>
-        /// Sets the CustomThemeFilePath to the value of value.
-        /// </summary>
-        /// <param name="value">The value of value.</param>
-        public void SetCustomThemeFilePath(string value)
-        {
-            _paletteThemeSettings.CustomThemeFilePath = value;
-        }
-
-        /// <summary>
-        /// Gets the CustomThemeFilePath value.
-        /// </summary>
-        /// <returns>The value of value.</returns>
-        public string GetCustomThemeFilePath()
-        {
-            return _paletteThemeSettings.CustomThemeFilePath;
-        }
-        #endregion
-
-        #region Methods
-        public void SavePaletteThemeSettings(bool usePrompt = false)
-        {
-            if (usePrompt)
-            {
-                DialogResult result = KryptonMessageBox.Show("Do you want to save the current palette theme settings?", "Save Confirmation", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    _paletteThemeSettings.Save();
-                }
-                else
-                {
-                    ResetPaletteThemeSettings(usePrompt);
-                }
-            }
-            else
+            if (result == DialogResult.Yes)
             {
                 _paletteThemeSettings.Save();
             }
-        }
-
-        public void ResetPaletteThemeSettings(bool usePrompt = false)
-        {
-            if (usePrompt)
+            else
             {
-                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to reset the current palette theme settings back to their defaults?", "Reset Palette Theme Settings", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    ResetPaletteThemeSettings();
-                }
-                else
-                {
-                    ResetPaletteThemeSettings();
-                }
+                ResetPaletteThemeSettings(usePrompt);
             }
-
-            SavePaletteThemeSettings(usePrompt);
         }
-
-        private void ResetPaletteThemeSettings()
+        else
         {
-            SetTheme(PaletteMode.Microsoft365Blue);
-
-            SetCustomThemeFilePath("");
+            _paletteThemeSettings.Save();
         }
-        #endregion
     }
+
+    public void ResetPaletteThemeSettings(bool usePrompt = false)
+    {
+        if (usePrompt)
+        {
+            DialogResult result = KryptonMessageBox.Show("Are you sure that you want to reset the current palette theme settings back to their defaults?", "Reset Palette Theme Settings", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                ResetPaletteThemeSettings();
+            }
+            else
+            {
+                ResetPaletteThemeSettings();
+            }
+        }
+
+        SavePaletteThemeSettings(usePrompt);
+    }
+
+    private void ResetPaletteThemeSettings()
+    {
+        SetTheme(PaletteMode.Microsoft365Blue);
+
+        SetCustomThemeFilePath("");
+    }
+    #endregion
 }

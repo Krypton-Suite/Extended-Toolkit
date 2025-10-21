@@ -25,37 +25,36 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher;
+
+public class UploadThemeBrowser : KryptonForm
 {
-    public class UploadThemeBrowser : KryptonForm
+    #region Design Code
+    private void InitializeComponent()
     {
-        #region Design Code
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // UploadThemeBrowser
-            // 
-            this.ClientSize = new System.Drawing.Size(1055, 631);
-            this.Name = "UploadThemeBrowser";
-            this.Load += new System.EventHandler(this.UploadThemeBrowser_Load);
-            this.ResumeLayout(false);
+        this.SuspendLayout();
+        // 
+        // UploadThemeBrowser
+        // 
+        this.ClientSize = new System.Drawing.Size(1055, 631);
+        this.Name = "UploadThemeBrowser";
+        this.Load += new System.EventHandler(this.UploadThemeBrowser_Load);
+        this.ResumeLayout(false);
 
-        }
-        #endregion
+    }
+    #endregion
 
-        #region Constructor
-        public UploadThemeBrowser()
-        {
-            InitializeComponent();
-        }
-        #endregion
+    #region Constructor
+    public UploadThemeBrowser()
+    {
+        InitializeComponent();
+    }
+    #endregion
 
-        private void UploadThemeBrowser_Load(object sender, EventArgs e)
-        {
-            DebugUtilities.NotImplemented(@"This feature has not been implemented yet.");
+    private void UploadThemeBrowser_Load(object sender, EventArgs e)
+    {
+        DebugUtilities.NotImplemented(@"This feature has not been implemented yet.");
 
-            Hide();
-        }
+        Hide();
     }
 }

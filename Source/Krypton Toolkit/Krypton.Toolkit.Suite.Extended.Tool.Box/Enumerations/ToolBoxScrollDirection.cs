@@ -25,20 +25,18 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Box
-{
-    // The value of the enumerations are the char values
-    // of marlett font which will be used to draw scroll arrow
-    // for each direction. Only up and down directions are used now.
-    //
-    // 01/10/2005 - Marlett font is no longer used for scroll buttons.
+namespace Krypton.Toolkit.Suite.Extended.Tool.Box;
+// The value of the enumerations are the char values
+// of marlett font which will be used to draw scroll arrow
+// for each direction. Only up and down directions are used now.
+//
+// 01/10/2005 - Marlett font is no longer used for scroll buttons.
 
-    [Serializable]
-    public enum ToolBoxScrollDirection
-    {
-        Left = 3,
-        Right = 4,
-        Up = 5,
-        Down = 6,
-    }
+[Serializable]
+public enum ToolBoxScrollDirection
+{
+    Left = 3,
+    Right = 4,
+    Up = 5,
+    Down = 6,
 }

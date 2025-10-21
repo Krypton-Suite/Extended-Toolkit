@@ -25,52 +25,51 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Calendar
+namespace Krypton.Toolkit.Suite.Extended.Calendar;
+
+/// <summary>
+/// Holds data of a Calendar Loading Items of certain date range
+/// </summary>
+public class CalendarLoadEventArgs : EventArgs
 {
-    /// <summary>
-    /// Holds data of a Calendar Loading Items of certain date range
-    /// </summary>
-    public class CalendarLoadEventArgs : EventArgs
+    #region Fields
+    private KryptonCalendar _calendar;
+    private DateTime _dateStart;
+    private DateTime _dateEnd;
+
+    #endregion
+
+    #region Ctor
+
+    public CalendarLoadEventArgs(KryptonCalendar calendar, DateTime dateStart, DateTime dateEnd)
     {
-        #region Fields
-        private KryptonCalendar _calendar;
-        private DateTime _dateStart;
-        private DateTime _dateEnd;
-
-        #endregion
-
-        #region Ctor
-
-        public CalendarLoadEventArgs(KryptonCalendar calendar, DateTime dateStart, DateTime dateEnd)
-        {
-            _calendar = calendar;
-            _dateEnd = dateEnd;
-            _dateStart = dateStart;
-        }
-
-        #endregion
-
-        #region Props
-
-        /// <summary>
-        /// Gets the calendar that originated the event
-        /// </summary>
-        public KryptonCalendar Calendar => _calendar;
-
-        /// <summary>
-        /// Gets the start date of the load
-        /// </summary>
-        public DateTime DateStart
-        {
-            get => _dateStart;
-            set => _dateStart = value;
-        }
-
-        /// <summary>
-        /// Gets the end date of the load
-        /// </summary>
-        public DateTime DateEnd => _dateEnd;
-
-        #endregion
+        _calendar = calendar;
+        _dateEnd = dateEnd;
+        _dateStart = dateStart;
     }
+
+    #endregion
+
+    #region Props
+
+    /// <summary>
+    /// Gets the calendar that originated the event
+    /// </summary>
+    public KryptonCalendar Calendar => _calendar;
+
+    /// <summary>
+    /// Gets the start date of the load
+    /// </summary>
+    public DateTime DateStart
+    {
+        get => _dateStart;
+        set => _dateStart = value;
+    }
+
+    /// <summary>
+    /// Gets the end date of the load
+    /// </summary>
+    public DateTime DateEnd => _dateEnd;
+
+    #endregion
 }

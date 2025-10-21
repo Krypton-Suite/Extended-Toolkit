@@ -26,10 +26,9 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+internal interface ISemanticTag : IElement
 {
-    internal interface ISemanticTag : IElement
-    {
-        void Content(IElement parent, string value, int line);
-    }
+    void Content(IElement parent, string value, int line);
 }

@@ -1,42 +1,41 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+/// <summary>
+/// Show the entire range of data, changing the axis limits only
+/// when the data extends otuside the current view.
+/// </summary>
+public class Full : IAxisManager
 {
     /// <summary>
-    /// Show the entire range of data, changing the axis limits only
-    /// when the data extends otuside the current view.
+    /// Defines the amount of whitespace added to the right of the data when data runs outside the current view.
+    /// 1.0 for a view that tightly fits the data and is always changing.
+    /// 2.0 for a view that doubles the horizontal span when new data runs outside the current view.
     /// </summary>
-    public class Full : IAxisManager
+    public double ExpansionRatio { get; set; } = .25;
+
+    public AxisLimits GetAxisLimits(AxisLimits viewLimits, AxisLimits dataLimits)
     {
-        /// <summary>
-        /// Defines the amount of whitespace added to the right of the data when data runs outside the current view.
-        /// 1.0 for a view that tightly fits the data and is always changing.
-        /// 2.0 for a view that doubles the horizontal span when new data runs outside the current view.
-        /// </summary>
-        public double ExpansionRatio { get; set; } = .25;
+        bool rightEdgeIsTooClose = viewLimits.Right < dataLimits.Right;
+        bool rightEdgeIsTooFar = viewLimits.Right > dataLimits.Right + dataLimits.HorizontalSpan;
+        var replaceRight = rightEdgeIsTooClose || rightEdgeIsTooFar;
+        var xMax = replaceRight
+            ? dataLimits.Right + dataLimits.HorizontalSpan * ExpansionRatio
+            : viewLimits.Right;
 
-        public AxisLimits GetAxisLimits(AxisLimits viewLimits, AxisLimits dataLimits)
-        {
-            bool rightEdgeIsTooClose = viewLimits.Right < dataLimits.Right;
-            bool rightEdgeIsTooFar = viewLimits.Right > dataLimits.Right + dataLimits.HorizontalSpan;
-            var replaceRight = rightEdgeIsTooClose || rightEdgeIsTooFar;
-            var xMax = replaceRight
-                ? dataLimits.Right + dataLimits.HorizontalSpan * ExpansionRatio
-                : viewLimits.Right;
+        bool topEdgeIsTooClose = viewLimits.Top < dataLimits.Top;
+        bool topEdgeIsTooFar = viewLimits.Top < dataLimits.Top + dataLimits.VerticalSpan;
+        var replaceTop = topEdgeIsTooClose || topEdgeIsTooFar;
+        var yMax = replaceTop
+            ? dataLimits.Top + dataLimits.VerticalSpan * ExpansionRatio
+            : viewLimits.Top;
 
-            bool topEdgeIsTooClose = viewLimits.Top < dataLimits.Top;
-            bool topEdgeIsTooFar = viewLimits.Top < dataLimits.Top + dataLimits.VerticalSpan;
-            var replaceTop = topEdgeIsTooClose || topEdgeIsTooFar;
-            var yMax = replaceTop
-                ? dataLimits.Top + dataLimits.VerticalSpan * ExpansionRatio
-                : viewLimits.Top;
+        bool bottomEdgeIsTooClose = viewLimits.Bottom > dataLimits.Bottom;
+        bool bottomEdgeIsTooFar = viewLimits.Bottom > dataLimits.Bottom - dataLimits.VerticalSpan;
+        var replaceBottom = bottomEdgeIsTooClose || bottomEdgeIsTooFar;
+        var yMin = replaceBottom
+            ? dataLimits.Bottom - dataLimits.VerticalSpan * ExpansionRatio
+            : viewLimits.Bottom;
 
-            bool bottomEdgeIsTooClose = viewLimits.Bottom > dataLimits.Bottom;
-            bool bottomEdgeIsTooFar = viewLimits.Bottom > dataLimits.Bottom - dataLimits.VerticalSpan;
-            var replaceBottom = bottomEdgeIsTooClose || bottomEdgeIsTooFar;
-            var yMin = replaceBottom
-                ? dataLimits.Bottom - dataLimits.VerticalSpan * ExpansionRatio
-                : viewLimits.Bottom;
-
-            return new AxisLimits(dataLimits.Left, xMax, yMin, yMax);
-        }
+        return new AxisLimits(dataLimits.Left, xMax, yMin, yMax);
     }
 }

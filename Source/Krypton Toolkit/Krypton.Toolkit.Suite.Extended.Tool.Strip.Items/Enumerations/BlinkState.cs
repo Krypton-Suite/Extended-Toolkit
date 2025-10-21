@@ -25,11 +25,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items;
+
+public enum BlinkState
 {
-    public enum BlinkState
-    {
-        NormalBlink = 0,
-        SoftBlink = 1
-    }
+    NormalBlink = 0,
+    SoftBlink = 1
 }

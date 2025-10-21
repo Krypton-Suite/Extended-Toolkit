@@ -26,23 +26,22 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+internal interface IToken : IElement
 {
-    internal interface IToken : IElement
+    string Text
     {
-        string Text
-        {
-            set;
-        }
+        set;
+    }
 
-        string Display
-        {
-            set;
-        }
+    string Display
+    {
+        set;
+    }
 
-        string Pronunciation
-        {
-            set;
-        }
+    string Pronunciation
+    {
+        set;
     }
 }

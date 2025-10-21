@@ -25,36 +25,35 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Notifications
+namespace Krypton.Toolkit.Suite.Extended.Notifications;
+
+/// <summary>Specifies the icon shown on the <see cref="KryptonToastNotificationVersion1"/>.</summary>
+public enum IconType
 {
-    /// <summary>Specifies the icon shown on the <see cref="KryptonToastNotificationVersion1"/>.</summary>
-    public enum IconType
-    {
-        /// <summary>Specify no icon.</summary>
-        None = 0,
-        /// <summary>Specify a hand icon.</summary>
-        Hand = 1,
-        /// <summary>Specify a question icon.</summary>
-        Question = 2,
-        /// <summary>Specify a exclamation icon.</summary>
-        Exclamation = 3,
-        /// <summary>Specify a asterisk icon.</summary>
-        Asterisk = 4,
-        /// <summary>Specify a stop icon.</summary>
-        Stop = 5,
-        /// <summary>Specify a error icon.</summary>
-        Error = 6,
-        /// <summary>Specify a warning icon.</summary>
-        Warning = 7,
-        /// <summary>Specify a information icon.</summary>
-        Information = 8,
-        /// <summary>Specify a UAC shield icon.</summary>
-        Shield = 9,
-        /// <summary>Specify a Windows logo icon.</summary>
-        WindowsLogo = 10,
-        /// <summary>Use a custom icon.</summary>
-        Custom = 11,
-        /// <summary>Use a Ok icon.</summary>
-        Ok = 12
-    }
+    /// <summary>Specify no icon.</summary>
+    None = 0,
+    /// <summary>Specify a hand icon.</summary>
+    Hand = 1,
+    /// <summary>Specify a question icon.</summary>
+    Question = 2,
+    /// <summary>Specify a exclamation icon.</summary>
+    Exclamation = 3,
+    /// <summary>Specify a asterisk icon.</summary>
+    Asterisk = 4,
+    /// <summary>Specify a stop icon.</summary>
+    Stop = 5,
+    /// <summary>Specify a error icon.</summary>
+    Error = 6,
+    /// <summary>Specify a warning icon.</summary>
+    Warning = 7,
+    /// <summary>Specify a information icon.</summary>
+    Information = 8,
+    /// <summary>Specify a UAC shield icon.</summary>
+    Shield = 9,
+    /// <summary>Specify a Windows logo icon.</summary>
+    WindowsLogo = 10,
+    /// <summary>Use a custom icon.</summary>
+    Custom = 11,
+    /// <summary>Use a Ok icon.</summary>
+    Ok = 12
 }

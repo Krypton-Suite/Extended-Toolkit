@@ -26,15 +26,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
+
+public enum AudioState
 {
-    public enum AudioState
-    {
-        /// <summary />
-        Stopped,
-        /// <summary />
-        Silence,
-        /// <summary />
-        Speech
-    }
+    /// <summary />
+    Stopped,
+    /// <summary />
+    Silence,
+    /// <summary />
+    Speech
 }

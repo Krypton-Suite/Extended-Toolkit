@@ -25,16 +25,15 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Language.Model
+namespace Krypton.Toolkit.Suite.Extended.Language.Model;
+
+public enum DialogButtonType
 {
-    public enum DialogButtonType
-    {
-        Abort = 0,
-        Cancel = 1,
-        Ignore = 2,
-        No = 3,
-        OK = 4,
-        Retry = 5,
-        Yes = 6
-    }
+    Abort = 0,
+    Cancel = 1,
+    Ignore = 2,
+    No = 3,
+    OK = 4,
+    Retry = 5,
+    Yes = 6
 }

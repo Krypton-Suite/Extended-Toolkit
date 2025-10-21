@@ -26,102 +26,101 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+[DebuggerDisplay("{_text}")]
+public class Prompt
 {
-    [DebuggerDisplay("{_text}")]
-    public class Prompt
+    internal string _text;
+
+    internal Uri _audio;
+
+    internal SynthesisMediaType _media;
+
+    internal bool _syncSpeak;
+
+    internal Exception _exception;
+
+    private bool _completed;
+
+    private object _synthesizer;
+
+    private static ResourceLoader _resourceLoader = new();
+
+    public bool IsCompleted
     {
-        internal string _text;
+        get => _completed;
+        internal set => _completed = value;
+    }
 
-        internal Uri _audio;
-
-        internal SynthesisMediaType _media;
-
-        internal bool _syncSpeak;
-
-        internal Exception _exception;
-
-        private bool _completed;
-
-        private object _synthesizer;
-
-        private static ResourceLoader _resourceLoader = new();
-
-        public bool IsCompleted
+    internal object Synthesizer
+    {
+        set
         {
-            get => _completed;
-            internal set => _completed = value;
-        }
-
-        internal object Synthesizer
-        {
-            set
+            if (value != null && (_synthesizer != null || _completed))
             {
-                if (value != null && (_synthesizer != null || _completed))
+                throw new ArgumentException(SR.Get(SRID.SynthesizerPromptInUse), "value");
+            }
+            _synthesizer = value;
+        }
+    }
+
+    public Prompt(string textToSpeak)
+        : this(textToSpeak, SynthesisTextFormat.Text)
+    {
+    }
+
+    public Prompt(PromptBuilder promptBuilder)
+    {
+        Helpers.ThrowIfNull(promptBuilder, "promptBuilder");
+        _text = promptBuilder.ToXml();
+        _media = SynthesisMediaType.Ssml;
+    }
+
+    public Prompt(string textToSpeak, SynthesisTextFormat media)
+    {
+        Helpers.ThrowIfNull(textToSpeak, "textToSpeak");
+        if ((uint)(_media = (SynthesisMediaType)media) <= 1u)
+        {
+            _text = textToSpeak;
+            return;
+        }
+        throw new ArgumentException(SR.Get(SRID.SynthesizerUnknownMediaType), "media");
+    }
+
+    internal Prompt(Uri promptFile, SynthesisMediaType media)
+    {
+        Helpers.ThrowIfNull(promptFile, "promptFile");
+        switch (_media = media)
+        {
+            case SynthesisMediaType.Text:
+            case SynthesisMediaType.Ssml:
+            {
+                string mimeType;
+                Uri baseUri;
+                string localPath;
+                using (Stream stream = _resourceLoader.LoadFile(promptFile, out mimeType, out baseUri, out localPath))
                 {
-                    throw new ArgumentException(SR.Get(SRID.SynthesizerPromptInUse), "value");
-                }
-                _synthesizer = value;
-            }
-        }
-
-        public Prompt(string textToSpeak)
-            : this(textToSpeak, SynthesisTextFormat.Text)
-        {
-        }
-
-        public Prompt(PromptBuilder promptBuilder)
-        {
-            Helpers.ThrowIfNull(promptBuilder, "promptBuilder");
-            _text = promptBuilder.ToXml();
-            _media = SynthesisMediaType.Ssml;
-        }
-
-        public Prompt(string textToSpeak, SynthesisTextFormat media)
-        {
-            Helpers.ThrowIfNull(textToSpeak, "textToSpeak");
-            if ((uint)(_media = (SynthesisMediaType)media) <= 1u)
-            {
-                _text = textToSpeak;
-                return;
-            }
-            throw new ArgumentException(SR.Get(SRID.SynthesizerUnknownMediaType), "media");
-        }
-
-        internal Prompt(Uri promptFile, SynthesisMediaType media)
-        {
-            Helpers.ThrowIfNull(promptFile, "promptFile");
-            switch (_media = media)
-            {
-                case SynthesisMediaType.Text:
-                case SynthesisMediaType.Ssml:
+                    try
                     {
-                        string mimeType;
-                        Uri baseUri;
-                        string localPath;
-                        using (Stream stream = _resourceLoader.LoadFile(promptFile, out mimeType, out baseUri, out localPath))
+                        using (TextReader textReader = new StreamReader(stream))
                         {
-                            try
-                            {
-                                using (TextReader textReader = new StreamReader(stream))
-                                {
-                                    _text = textReader.ReadToEnd();
-                                }
-                            }
-                            finally
-                            {
-                                _resourceLoader.UnloadFile(localPath);
-                            }
+                            _text = textReader.ReadToEnd();
                         }
-                        break;
                     }
-                case SynthesisMediaType.WaveAudio:
-                    _text = promptFile.ToString();
-                    _audio = promptFile;
-                    break;
-                default:
-                    throw new ArgumentException(SR.Get(SRID.SynthesizerUnknownMediaType), "media");
+                    finally
+                    {
+                        _resourceLoader.UnloadFile(localPath);
+                    }
+                }
+                break;
             }
+            case SynthesisMediaType.WaveAudio:
+                _text = promptFile.ToString();
+                _audio = promptFile;
+                break;
+            default:
+                throw new ArgumentException(SR.Get(SRID.SynthesizerUnknownMediaType), "media");
         }
     }
 }

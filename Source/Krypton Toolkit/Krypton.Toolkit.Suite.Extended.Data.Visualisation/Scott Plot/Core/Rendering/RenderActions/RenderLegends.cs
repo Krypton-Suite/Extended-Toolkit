@@ -1,10 +1,9 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class RenderLegends : IRenderAction
 {
-    public class RenderLegends : IRenderAction
+    public void Render(RenderPack rp)
     {
-        public void Render(RenderPack rp)
-        {
-            rp.Plot.Legend.Render(rp);
-        }
+        rp.Plot.Legend.Render(rp);
     }
 }

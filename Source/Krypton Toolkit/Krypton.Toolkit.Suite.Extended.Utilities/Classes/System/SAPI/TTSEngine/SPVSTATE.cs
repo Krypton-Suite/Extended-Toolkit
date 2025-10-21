@@ -26,32 +26,31 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+
+[ComConversionLoss]
+[TypeLibType(16)]
+internal struct SPVSTATE
 {
-    [ComConversionLoss]
-    [TypeLibType(16)]
-    internal struct SPVSTATE
-    {
-        public SPVACTIONS eAction;
+    public SPVACTIONS eAction;
 
-        public short LangID;
+    public short LangID;
 
-        public short wReserved;
+    public short wReserved;
 
-        public int EmphAdj;
+    public int EmphAdj;
 
-        public int RateAdj;
+    public int RateAdj;
 
-        public int Volume;
+    public int Volume;
 
-        public SPVPITCH PitchAdj;
+    public SPVPITCH PitchAdj;
 
-        public int SilenceMSecs;
+    public int SilenceMSecs;
 
-        public IntPtr pPhoneIds;
+    public IntPtr pPhoneIds;
 
-        public SPPARTOFSPEECH ePartOfSpeech;
+    public SPPARTOFSPEECH ePartOfSpeech;
 
-        public SPVCONTEXT Context;
-    }
+    public SPVCONTEXT Context;
 }

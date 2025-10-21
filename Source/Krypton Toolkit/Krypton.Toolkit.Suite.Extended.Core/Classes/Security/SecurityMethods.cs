@@ -26,30 +26,29 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+public class SecurityMethods
 {
-    public class SecurityMethods
+    /// <summary>
+    /// Creates the password. Code from: https://stackoverflow.com/questions/54991/generating-random-passwords
+    /// </summary>
+    /// <param name="length">The length.</param>
+    /// <returns></returns>
+    public static string CreatePassword(int length)
     {
-        /// <summary>
-        /// Creates the password. Code from: https://stackoverflow.com/questions/54991/generating-random-passwords
-        /// </summary>
-        /// <param name="length">The length.</param>
-        /// <returns></returns>
-        public static string CreatePassword(int length)
+        const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder res = new();
+
+
+        RNGCryptoServiceProvider rnd = new();
+
+        Random random = new();
+
+        while (0 < length--)
         {
-            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            StringBuilder res = new();
-
-
-            RNGCryptoServiceProvider rnd = new();
-
-            Random random = new();
-
-            while (0 < length--)
-            {
-                res.Append(valid[random.Next(valid.Length)]);
-            }
-            return res.ToString();
+            res.Append(valid[random.Next(valid.Length)]);
         }
+        return res.ToString();
     }
 }

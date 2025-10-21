@@ -1,10 +1,9 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class ClearCanvas : IRenderAction
 {
-    public class ClearCanvas : IRenderAction
+    public void Render(RenderPack rp)
     {
-        public void Render(RenderPack rp)
-        {
-            rp.Canvas.Clear(rp.Plot.FigureBackground.ToSkColor());
-        }
+        rp.Canvas.Clear(rp.Plot.FigureBackground.ToSkColor());
     }
 }

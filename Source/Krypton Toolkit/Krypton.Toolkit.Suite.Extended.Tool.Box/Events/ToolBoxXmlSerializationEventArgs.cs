@@ -25,39 +25,38 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Box
+namespace Krypton.Toolkit.Suite.Extended.Tool.Box;
+
+public class ToolBoxXmlSerializationEventArgs : EventArgs
 {
-    public class ToolBoxXmlSerializationEventArgs : EventArgs
+    #region Private Attributes
+    private bool _isLoading;
+    private object _object;
+    private XmlNode _xmlNode;
+    #endregion //Private Attributes
+
+    #region Properties
+    public bool IsLoading => _isLoading;
+
+    public bool IsSaving => !_isLoading;
+
+    public XmlNode Node => _xmlNode;
+
+    public object Object
     {
-        #region Private Attributes
-        private bool _isLoading;
-        private object _object;
-        private XmlNode _xmlNode;
-        #endregion //Private Attributes
-
-        #region Properties
-        public bool IsLoading => _isLoading;
-
-        public bool IsSaving => !_isLoading;
-
-        public XmlNode Node => _xmlNode;
-
-        public object Object
-        {
-            get => _object;
-            set => _object = value;
-        }
-
-        #endregion //Properties
-
-        #region Construction
-        public ToolBoxXmlSerializationEventArgs(object o, XmlNode node, bool isLoading)
-        {
-            _object = o;
-            _xmlNode = node;
-            _isLoading = isLoading;
-        }
-        #endregion //Construction
-
+        get => _object;
+        set => _object = value;
     }
+
+    #endregion //Properties
+
+    #region Construction
+    public ToolBoxXmlSerializationEventArgs(object o, XmlNode node, bool isLoading)
+    {
+        _object = o;
+        _xmlNode = node;
+        _isLoading = isLoading;
+    }
+    #endregion //Construction
+
 }

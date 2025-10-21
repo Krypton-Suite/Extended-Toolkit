@@ -26,37 +26,36 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+internal class SpeechSeg
 {
-    internal class SpeechSeg
+    private TTSVoice _voice;
+
+    private List<TextFragment> _textFragments = [];
+
+    private AudioData _audio;
+
+    internal List<TextFragment> FragmentList => _textFragments;
+
+    internal AudioData Audio => _audio;
+
+    internal TTSVoice Voice => _voice;
+
+    internal bool IsText => _audio == null;
+
+    internal SpeechSeg(TTSVoice voice, AudioData audio)
     {
-        private TTSVoice _voice;
+        _voice = voice;
+        _audio = audio;
+    }
 
-        private List<TextFragment> _textFragments = new();
-
-        private AudioData _audio;
-
-        internal List<TextFragment> FragmentList => _textFragments;
-
-        internal AudioData Audio => _audio;
-
-        internal TTSVoice Voice => _voice;
-
-        internal bool IsText => _audio == null;
-
-        internal SpeechSeg(TTSVoice voice, AudioData audio)
+    internal void AddFrag(TextFragment textFragment)
+    {
+        if (_audio != null)
         {
-            _voice = voice;
-            _audio = audio;
+            throw new InvalidOperationException();
         }
-
-        internal void AddFrag(TextFragment textFragment)
-        {
-            if (_audio != null)
-            {
-                throw new InvalidOperationException();
-            }
-            _textFragments.Add(textFragment);
-        }
+        _textFragments.Add(textFragment);
     }
 }

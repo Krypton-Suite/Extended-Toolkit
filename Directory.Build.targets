@@ -1,0 +1,130 @@
+<Project>
+	<!-- 
+		This file is automatically imported by all projects in the solution.
+		It configures NuGet package generation to include referenced binaries.
+	-->
+	
+	<PropertyGroup>
+		<!-- Include all referenced assemblies in NuGet packages -->
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		
+		<!-- Include build output in packages (can be overridden by individual projects) -->
+		<IncludeBuildOutput Condition="'$(IncludeBuildOutput)' == ''">true</IncludeBuildOutput>
+		
+		<!-- Include referenced project outputs in packages -->
+		<IncludeReferencedProjects>true</IncludeReferencedProjects>
+		
+		<!-- Generate symbols packages in the modern format -->
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		
+		<!-- Embed all dependencies in the package lib folder -->
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+		
+		<!-- Suppress common NuGet warnings for all projects -->
+		<NoWarn Condition="'$(NoWarn)' == ''">$(NoWarn);NU1012;NU5128</NoWarn>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+		<WarningsAsErrors />
+		<WarningsNotAsErrors>NU1012;NU5128</WarningsNotAsErrors>
+	</PropertyGroup>
+
+	<!-- 
+		Smart dependency inclusion for all Extended Toolkit projects.
+		This target ensures that only necessary dependencies are included in NuGet packages,
+		excluding framework assemblies while including all Extended Toolkit and third-party dependencies.
+	-->
+	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+		<ItemGroup>
+			<!-- Include all referenced assemblies -->
+			<_AllReferences Include="@(ReferenceCopyLocalPaths)" />
+			
+			<!-- Filter out framework assemblies (System.*, Microsoft.*, WindowsBase, etc.) -->
+			<_FrameworkAssemblies Include="@(_AllReferences)" 
+				Condition="$([System.String]::new('%(Filename)').StartsWith('System.')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.VisualBasic')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.Win32.')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.CSharp')) OR 
+						   '%(Filename)' == 'mscorlib' OR 
+						   '%(Filename)' == 'netstandard' OR 
+						   '%(Filename)' == 'WindowsBase' OR 
+						   '%(Filename)' == 'PresentationCore' OR 
+						   '%(Filename)' == 'PresentationFramework' OR 
+						   $([System.String]::new('%(Filename)').StartsWith('PresentationFramework.')) OR 
+						   '%(Filename)' == 'PresentationUI' OR 
+						   '%(Filename)' == 'ReachFramework' OR 
+						   '%(Filename)' == 'UIAutomationClient' OR 
+						   '%(Filename)' == 'UIAutomationClientSideProviders' OR 
+						   '%(Filename)' == 'UIAutomationProvider' OR 
+						   '%(Filename)' == 'UIAutomationTypes' OR 
+						   '%(Filename)' == 'Accessibility'" />
+			
+			<!-- Include only non-framework assemblies -->
+			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies)" />
+			
+			<!-- Include filtered dependencies in package -->
+			<BuildOutputInPackage Include="@(_NonFrameworkAssemblies)" />
+		</ItemGroup>
+		
+		<Message Text="Including dependency: %(_NonFrameworkAssemblies.Identity)" Importance="low" />
+	</Target>
+
+	<!-- 
+		Include all runtime dependencies in the package.
+		This ensures that consumers get all necessary DLLs (excluding framework assemblies).
+	-->
+	<PropertyGroup>
+		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeReferencedProjectInPackage</TargetsForTfmSpecificContentInPackage>
+	</PropertyGroup>
+
+	<Target Name="IncludeReferencedProjectInPackage" DependsOnTargets="ResolveReferences">
+		<ItemGroup>
+			<!-- Include all referenced assemblies -->
+			<_AllReferences Include="@(ReferenceCopyLocalPaths)" />
+			
+			<!-- Filter out framework assemblies -->
+			<_FrameworkAssemblies Include="@(_AllReferences)" 
+				Condition="$([System.String]::new('%(Filename)').StartsWith('System.')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.VisualBasic')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.Win32.')) OR 
+						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.CSharp')) OR 
+						   '%(Filename)' == 'mscorlib' OR 
+						   '%(Filename)' == 'netstandard' OR 
+						   '%(Filename)' == 'WindowsBase' OR 
+						   '%(Filename)' == 'PresentationCore' OR 
+						   '%(Filename)' == 'PresentationFramework' OR 
+						   $([System.String]::new('%(Filename)').StartsWith('PresentationFramework.')) OR 
+						   '%(Filename)' == 'PresentationUI' OR 
+						   '%(Filename)' == 'ReachFramework' OR 
+						   '%(Filename)' == 'UIAutomationClient' OR 
+						   '%(Filename)' == 'UIAutomationClientSideProviders' OR 
+						   '%(Filename)' == 'UIAutomationProvider' OR 
+						   '%(Filename)' == 'UIAutomationTypes' OR 
+						   '%(Filename)' == 'Accessibility'" />
+			
+			<!-- Include only non-framework assemblies in the lib folder -->
+			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies)" />
+			<TfmSpecificPackageFile Include="@(_NonFrameworkAssemblies)" PackagePath="lib/$(TargetFramework)/" />
+		</ItemGroup>
+		
+		<Message Text="Including in package: %(_NonFrameworkAssemblies.Identity)" Importance="low" />
+	</Target>
+
+	<!-- 
+		Package metadata that applies to all projects.
+		Individual projects can override these by setting them in their .csproj files.
+	-->
+	<PropertyGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
+		<!-- Authors, Copyright, etc. can be set here if not already defined in individual projects -->
+		<Authors Condition="'$(Authors)' == ''">Peter Wagner (A.K.A Wagnerp) and Simon Coghlan (A.K.A Smurf-IV), Phil Wright (A.K.A ComponentFactory), et al.</Authors>
+		<Company Condition="'$(Company)' == ''">Krypton Suite</Company>
+		<Copyright Condition="'$(Copyright)' == ''">Copyright © 2017 - $([System.DateTime]::Now.Year), Krypton Suite</Copyright>
+		<PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+		<RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://github.com/Krypton-Suite/Extended-Toolkit.git</RepositoryUrl>
+		<RepositoryType Condition="'$(RepositoryType)' == ''">git</RepositoryType>
+		<PackageLicenseExpression Condition="'$(PackageLicenseExpression)' == '' and '$(PackageLicenseFile)' == ''">BSD-3-Clause</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance Condition="'$(PackageRequireLicenseAcceptance)' == ''">true</PackageRequireLicenseAcceptance>
+		<PackageTags Condition="'$(PackageTags)' == ''">Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core Extended</PackageTags>
+	</PropertyGroup>
+
+</Project>
+

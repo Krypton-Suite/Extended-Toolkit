@@ -1,10 +1,9 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public enum StripeDirection
 {
-    public enum StripeDirection
-    {
-        DiagonalUp,
-        DiagonalDown,
-        Horizontal,
-        Vertical
-    }
+    DiagonalUp,
+    DiagonalDown,
+    Horizontal,
+    Vertical
 }

@@ -25,27 +25,26 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
+
+/// <summary>
+/// A fake/slient version of the events responding to sending
+/// </summary>
+public class SilentSendEvent : IReportSendEvent
 {
     /// <summary>
-    /// A fake/slient version of the events responding to sending
+    /// silent complete
     /// </summary>
-    public class SilentSendEvent : IReportSendEvent
+    public void Completed(bool success)
     {
-        /// <summary>
-        /// silent complete
-        /// </summary>
-        public void Completed(bool success)
-        {
-            // silent
-        }
+        // silent
+    }
 
-        /// <summary>
-        /// silent error
-        /// </summary>
-        public void ShowError(string message, Exception exception)
-        {
-            // silent
-        }
+    /// <summary>
+    /// silent error
+    /// </summary>
+    public void ShowError(string message, Exception exception)
+    {
+        // silent
     }
 }

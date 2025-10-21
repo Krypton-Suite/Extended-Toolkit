@@ -26,27 +26,26 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+
+[Serializable]
+[StructLayout(LayoutKind.Sequential)]
+internal class SPPHRASERULE
 {
-    [Serializable]
-    [StructLayout(LayoutKind.Sequential)]
-    internal class SPPHRASERULE
-    {
-        [MarshalAs(UnmanagedType.LPWStr)]
-        internal string pszName;
+    [MarshalAs(UnmanagedType.LPWStr)]
+    internal string pszName;
 
-        internal uint ulId;
+    internal uint ulId;
 
-        internal uint ulFirstElement;
+    internal uint ulFirstElement;
 
-        internal uint ulCountOfElements;
+    internal uint ulCountOfElements;
 
-        internal IntPtr pNextSibling;
+    internal IntPtr pNextSibling;
 
-        internal IntPtr pFirstChild;
+    internal IntPtr pFirstChild;
 
-        internal float SREngineConfidence;
+    internal float SREngineConfidence;
 
-        internal byte Confidence;
-    }
+    internal byte Confidence;
 }

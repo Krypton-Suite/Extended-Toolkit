@@ -26,14 +26,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+
+internal struct CfgScriptRef
 {
-    internal struct CfgScriptRef
-    {
-        internal int _idRule;
+    internal int _idRule;
 
-        internal int _idMethod;
+    internal int _idMethod;
 
-        internal RuleMethodScript _method;
-    }
+    internal RuleMethodScript _method;
 }
