@@ -39,15 +39,33 @@
 			</PropertyGroup>
 		</When>
 
+		<When Condition="'$(Configuration)' == 'CanaryLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.MessageDialog.Lite.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.MessageDialog.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
 
+		<When Condition="'$(Configuration)' == 'NightlyLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.MessageDialog.Lite.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.MessageDialog</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'ReleaseLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.MessageDialog.Lite</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -91,7 +109,7 @@
 
 				<Otherwise>
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="80.24.3.64" />
+						<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
 					</ItemGroup>
 				</Otherwise>
 			</Choose>

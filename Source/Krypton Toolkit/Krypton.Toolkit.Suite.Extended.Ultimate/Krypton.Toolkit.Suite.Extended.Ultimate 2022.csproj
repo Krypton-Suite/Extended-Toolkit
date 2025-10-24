@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<!-- Use centralized TFM configuration from Directory.Build.props -->
@@ -12,7 +12,8 @@
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<UseWindowsForms>true</UseWindowsForms>		<LangVersion>preview</LangVersion>
+		<UseWindowsForms>true</UseWindowsForms>		
+		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
@@ -76,16 +77,16 @@
 
 	<!-- Krypton Toolkit Dependencies -->
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Nightly'">
+		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.10.290-alpha" />
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.290-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.10.290-alpha" />
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.10.290-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.10.293-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.293-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.10.293-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.10.293-alpha" />
 			</ItemGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Canary'">
+		<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 			<ItemGroup>
 				<PackageReference Include="Krypton.Docking.Canary" Version="100.25.9.265-beta" />
 				<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
@@ -103,12 +104,21 @@
 			</ItemGroup>
 		</When>
 
+		<When Condition="'$(Configuration)' == 'ReleaseLite'">
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking.Lite" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Ribbon.Lite" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Navigator.Lite" Version="95.25.10.293" />
+			</ItemGroup>
+		</When>
+
 		<Otherwise>
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Ribbon" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Navigator" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Docking" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Ribbon" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Navigator" Version="95.25.10.293" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -243,24 +253,7 @@
 			<_AllReferences Include="@(ReferenceCopyLocalPaths)" />
 			
 			<!-- Filter out framework assemblies -->
-			<_FrameworkAssemblies Include="@(_AllReferences)" 
-				Condition="$([System.String]::new('%(Filename)').StartsWith('System.')) OR 
-						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.VisualBasic')) OR 
-						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.Win32.')) OR 
-						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.CSharp')) OR 
-						   '%(Filename)' == 'mscorlib' OR 
-						   '%(Filename)' == 'netstandard' OR 
-						   '%(Filename)' == 'WindowsBase' OR 
-						   '%(Filename)' == 'PresentationCore' OR 
-						   '%(Filename)' == 'PresentationFramework' OR 
-						   $([System.String]::new('%(Filename)').StartsWith('PresentationFramework.')) OR 
-						   '%(Filename)' == 'PresentationUI' OR 
-						   '%(Filename)' == 'ReachFramework' OR 
-						   '%(Filename)' == 'UIAutomationClient' OR 
-						   '%(Filename)' == 'UIAutomationClientSideProviders' OR 
-						   '%(Filename)' == 'UIAutomationProvider' OR 
-						   '%(Filename)' == 'UIAutomationTypes' OR 
-						   '%(Filename)' == 'Accessibility'" />
+			<_FrameworkAssemblies Include="@(_AllReferences)" Condition="$([System.String]::new('%(Filename)').StartsWith('System.')) OR &#xD;&#xA;						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.VisualBasic')) OR &#xD;&#xA;						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.Win32.')) OR &#xD;&#xA;						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.CSharp')) OR &#xD;&#xA;						   '%(Filename)' == 'mscorlib' OR &#xD;&#xA;						   '%(Filename)' == 'netstandard' OR &#xD;&#xA;						   '%(Filename)' == 'WindowsBase' OR &#xD;&#xA;						   '%(Filename)' == 'PresentationCore' OR &#xD;&#xA;						   '%(Filename)' == 'PresentationFramework' OR &#xD;&#xA;						   $([System.String]::new('%(Filename)').StartsWith('PresentationFramework.')) OR &#xD;&#xA;						   '%(Filename)' == 'PresentationUI' OR &#xD;&#xA;						   '%(Filename)' == 'ReachFramework' OR &#xD;&#xA;						   '%(Filename)' == 'UIAutomationClient' OR &#xD;&#xA;						   '%(Filename)' == 'UIAutomationClientSideProviders' OR &#xD;&#xA;						   '%(Filename)' == 'UIAutomationProvider' OR &#xD;&#xA;						   '%(Filename)' == 'UIAutomationTypes' OR &#xD;&#xA;						   '%(Filename)' == 'Accessibility'" />
 			
 			<!-- Include only non-framework assemblies -->
 			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies)" />
@@ -281,3 +274,4 @@
 
 </Project>
 
+ 

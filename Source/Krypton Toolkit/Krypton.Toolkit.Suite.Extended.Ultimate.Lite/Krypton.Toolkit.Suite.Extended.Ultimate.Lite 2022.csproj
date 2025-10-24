@@ -11,7 +11,8 @@
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<UseWindowsForms>true</UseWindowsForms>		<LangVersion>preview</LangVersion>
+		<UseWindowsForms>true</UseWindowsForms>		
+		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
@@ -79,7 +80,7 @@
 
 	<!-- Krypton Toolkit Dependencies -->
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Nightly'">
+		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 			<ItemGroup>
 				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.10.290-alpha" />
 				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.290-alpha" />
@@ -88,7 +89,7 @@
 			</ItemGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Canary'">
+		<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 			<ItemGroup>
 				<PackageReference Include="Krypton.Docking.Canary" Version="100.25.9.265-beta" />
 				<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
@@ -99,19 +100,28 @@
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Ribbon" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Navigator" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Docking" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Navigator" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Ribbon" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'ReleaseLite'">
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking.Lite" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Navigator.Lite" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Ribbon.Lite" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="95.25.10.293" />
 			</ItemGroup>
 		</When>
 
 		<Otherwise>
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Ribbon" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Navigator" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Docking" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Navigator" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Ribbon" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

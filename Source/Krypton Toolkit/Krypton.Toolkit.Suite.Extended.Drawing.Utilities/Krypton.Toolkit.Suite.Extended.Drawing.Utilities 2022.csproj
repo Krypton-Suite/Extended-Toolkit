@@ -39,15 +39,35 @@
 			</PropertyGroup>
 		</When>
 
+		<When Condition="'$(Configuration)' == 'CanaryLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Lite.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
 
+		<When Condition="'$(Configuration)' == 'NightlyLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Lite.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+
+
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Drawing.Utilities</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'ReleaseLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Lite</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -77,15 +97,35 @@
 					</ItemGroup>
 				</When>
 
+			<When Condition="'$(Configuration)' == 'NightlyLite'">
+				<ItemGroup>
+					<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.293-alpha" />
+				</ItemGroup>
+			</When>
+
+
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
 						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
 					</ItemGroup>
 				</When>
 
+			<When Condition="'$(Configuration)' == 'CanaryLite'">
+				<ItemGroup>
+					<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
+				</ItemGroup>
+			</When>
+
+
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
 						<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
+					</ItemGroup>
+				</When>
+
+				<When Condition="'$(Configuration)' == 'ReleaseLite'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Toolkit.Lite" Version="95.25.10.293" />
 					</ItemGroup>
 				</When>
 

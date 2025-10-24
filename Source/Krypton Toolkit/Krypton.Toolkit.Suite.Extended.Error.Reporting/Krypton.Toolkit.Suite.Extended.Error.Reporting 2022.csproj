@@ -39,15 +39,34 @@
 			</PropertyGroup>
 		</When>
 
+		<When Condition="'$(Configuration)' == 'CanaryLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting.Lite.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
 
+		<When Condition="'$(Configuration)' == 'NightlyLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting.Lite.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+
+
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'ReleaseLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting.Lite</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -148,9 +167,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="90.25.2.55" />
+				<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
 
-				<PackageReference Include="Krypton.Navigator" Version="90.25.2.55" />
+				<PackageReference Include="Krypton.Navigator" Version="95.25.10.293" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
