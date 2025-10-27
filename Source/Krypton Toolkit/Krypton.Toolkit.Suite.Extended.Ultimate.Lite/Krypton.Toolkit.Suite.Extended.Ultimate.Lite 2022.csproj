@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<!-- TargetFrameworks is now set dynamically in Directory.Build.props based on Configuration -->
@@ -82,10 +82,10 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.10.290-alpha" />
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.290-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.10.290-alpha" />
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.10.290-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.10.300-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.300-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.10.300-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.10.300-alpha" />
 			</ItemGroup>
 		</When>
 

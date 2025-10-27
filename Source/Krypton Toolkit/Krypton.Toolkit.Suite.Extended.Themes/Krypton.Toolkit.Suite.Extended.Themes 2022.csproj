@@ -36,35 +36,15 @@
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'CanaryLite'">
-			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Themes.Lite.Canary</PackageId>
-			</PropertyGroup>
-		</When>
-
-
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Themes.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'NightlyLite'">
-			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Themes.Lite.Nightly</PackageId>
-			</PropertyGroup>
-		</When>
-
-
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Themes</PackageId>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'ReleaseLite'">
-			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Themes.Lite</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -76,12 +56,11 @@
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 8 - 10. This package implements theme utilities for use with KryptonFormExtended.
+			$(DescriptionPrefix) This package implements theme utilities for use with KryptonFormExtended.
 
-			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 8 - 10.
-			Also, all libraries are included targeting each specific framework version for performance purposes.
+			$(DescriptionFrameworkSupport)
 
-			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
+			$(DescriptionFooter)
 		</Description>
 	</PropertyGroup>
 
@@ -94,35 +73,15 @@
 					</ItemGroup>
 				</When>
 
-			<When Condition="'$(Configuration)' == 'NightlyLite'">
-				<ItemGroup>
-					<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.6.167-alpha" />
-				</ItemGroup>
-			</When>
-
-
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
 						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.6.171-beta" />
 					</ItemGroup>
 				</When>
 
-			<When Condition="'$(Configuration)' == 'CanaryLite'">
-				<ItemGroup>
-					<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.6.171-beta" />
-				</ItemGroup>
-			</When>
-
-
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
 						<PackageReference Include="Krypton.Toolkit" Version="95.25.4.111" />
-					</ItemGroup>
-				</When>
-
-				<When Condition="'$(Configuration)' == 'ReleaseLite'">
-					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Lite" Version="95.25.4.111" />
 					</ItemGroup>
 				</When>
 

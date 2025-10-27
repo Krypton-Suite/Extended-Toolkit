@@ -34,6 +34,7 @@ jobs:
           9.0.x
           8.0.x
           6.0.x
+        continue-on-error: true
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2

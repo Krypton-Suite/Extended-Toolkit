@@ -43,6 +43,7 @@ jobs:
           9.0.x
           8.0.x
           6.0.x
+        continue-on-error: true
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
@@ -181,7 +182,7 @@ jobs:
         Get-ChildItem -Path $nugetDir -Filter "*.nupkg" -Exclude "*.symbols.nupkg" | ForEach-Object {
           $package = $_.FullName
           Write-Host "Publishing: $package"
-          dotnet nuget push $package --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push $package --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate --timeout 80000
         }
     
     - name: Create GitHub Release
@@ -196,4 +197,160 @@ jobs:
         generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    # Discord Notifications
+    - name: Announce Release on Discord
+      if: success() && ((github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch' && inputs.publish_nuget)) && (steps.config.outputs.configuration == 'Release' || steps.config.outputs.configuration == 'Canary' || steps.config.outputs.configuration == 'Nightly')
+      shell: pwsh
+      run: |
+        $config = "${{ steps.config.outputs.configuration }}"
+        $version = "${{ github.ref_name || 'Manual Build' }}"
+        
+        # Determine webhook and notification details based on configuration
+        $webhookVar = switch ($config) {
+          "Release" { $env:DISCORD_WEBHOOK_RELEASE }
+          "Canary" { $env:DISCORD_WEBHOOK_CANARY }
+          "Nightly" { $env:DISCORD_WEBHOOK_NIGHTLY }
+          default { $null }
+        }
+        
+        if (-not $webhookVar) {
+          Write-Warning "DISCORD_WEBHOOK_$config not set - skipping Discord notification"
+          exit 0
+        }
+        
+        # Set notification details based on configuration
+        $title = switch ($config) {
+          "Release" { "🚀 Krypton Extended Toolkit Release" }
+          "Canary" { "🔥 Krypton Extended Toolkit Canary Release" }
+          "Nightly" { "🌙 Krypton Extended Toolkit Nightly Release" }
+        }
+        
+        $description = switch ($config) {
+          "Release" { "A new stable release is now available!" }
+          "Canary" { "A new canary build is now available for early testing!" }
+          "Nightly" { "A new nightly build is now available for bleeding-edge testing!" }
+        }
+        
+        $color = switch ($config) {
+          "Release" { 65280 }    # Green
+          "Canary" { 16776960 }  # Yellow  
+          "Nightly" { 10181046 } # Purple
+        }
+        
+        $payload = @{
+          embeds = @(
+            @{
+              title = $title
+              description = $description
+              color = $color
+              fields = @(
+                @{
+                  name = "📌 Version"
+                  value = "``$version``"
+                  inline = $true
+                }
+                @{
+                  name = "⚙️ Configuration"
+                  value = "``$config``"
+                  inline = $true
+                }
+                @{
+                  name = "📦 Extended Toolkit Packages"
+                  value = "- Krypton.Toolkit.Suite.Extended.Ultimate`n- Krypton.Toolkit.Suite.Extended.Ultimate.Lite`n- Krypton.Toolkit.Suite.Extended.Base`n- Krypton.Toolkit.Suite.Extended.Common.Base`n- Krypton.Toolkit.Suite.Extended.Controls"
+                  inline = $false
+                }
+                @{
+                  name = "🎯 Target Frameworks"
+                  value = "• .NET Framework 4.7.2`n• .NET Framework 4.8`n• .NET Framework 4.8.1`n• .NET 8.0`n• .NET 9.0`n• .NET 10.0"
+                  inline = $false
+                }
+                @{
+                  name = "🔗 NuGet Packages"
+                  value = "• [Ultimate Package](https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate)`n• [Ultimate Lite](https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate.Lite)`n• [Extended Base](https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Base)`n• [Common Base](https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Common.Base)`n• [Controls](https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Controls)"
+                  inline = $false
+                }
+              )
+              footer = @{
+                text = "Released"
+              }
+              timestamp = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+            }
+          )
+        } | ConvertTo-Json -Depth 10
+        
+        try {
+          Invoke-RestMethod -Uri $webhookVar -Method Post -Body $payload -ContentType "application/json"
+          Write-Host "✅ Discord notification sent successfully for $config release"
+        }
+        catch {
+          Write-Warning "Failed to send Discord notification: $($_.Exception.Message)"
+        }
+      env:
+        DISCORD_WEBHOOK_RELEASE: ${{ secrets.DISCORD_WEBHOOK_RELEASE }}
+        DISCORD_WEBHOOK_CANARY: ${{ secrets.DISCORD_WEBHOOK_CANARY }}
+        DISCORD_WEBHOOK_NIGHTLY: ${{ secrets.DISCORD_WEBHOOK_NIGHTLY }}
+    
+    - name: Announce Build Failure on Discord
+      if: failure() && ((github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch' && inputs.publish_nuget)) && (steps.config.outputs.configuration == 'Release' || steps.config.outputs.configuration == 'Canary' || steps.config.outputs.configuration == 'Nightly')
+      shell: pwsh
+      run: |
+        $config = "${{ steps.config.outputs.configuration }}"
+        $version = "${{ github.ref_name || 'Manual Build' }}"
+        
+        # Determine webhook based on configuration
+        $webhookVar = switch ($config) {
+          "Release" { $env:DISCORD_WEBHOOK_RELEASE }
+          "Canary" { $env:DISCORD_WEBHOOK_CANARY }
+          "Nightly" { $env:DISCORD_WEBHOOK_NIGHTLY }
+          default { $null }
+        }
+        
+        if (-not $webhookVar) {
+          Write-Warning "DISCORD_WEBHOOK_$config not set - skipping Discord notification"
+          exit 0
+        }
+        
+        $payload = @{
+          embeds = @(
+            @{
+              title = "❌ Krypton Extended Toolkit - Build Failed"
+              description = "The $config build has failed during processing."
+              color = 16711680  # Red
+              fields = @(
+                @{
+                  name = "📌 Version"
+                  value = "``$version``"
+                  inline = $true
+                }
+                @{
+                  name = "⚙️ Configuration"
+                  value = "``$config``"
+                  inline = $true
+                }
+                @{
+                  name = "🔍 Workflow Run"
+                  value = "[View Logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+                  inline = $false
+                }
+              )
+              footer = @{
+                text = "Build Failed"
+              }
+              timestamp = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+            }
+          )
+        } | ConvertTo-Json -Depth 10
+        
+        try {
+          Invoke-RestMethod -Uri $webhookVar -Method Post -Body $payload -ContentType "application/json"
+          Write-Host "✅ Discord failure notification sent for $config build"
+        }
+        catch {
+          Write-Warning "Failed to send Discord failure notification: $($_.Exception.Message)"
+        }
+      env:
+        DISCORD_WEBHOOK_RELEASE: ${{ secrets.DISCORD_WEBHOOK_RELEASE }}
+        DISCORD_WEBHOOK_CANARY: ${{ secrets.DISCORD_WEBHOOK_CANARY }}
+        DISCORD_WEBHOOK_NIGHTLY: ${{ secrets.DISCORD_WEBHOOK_NIGHTLY }}
 

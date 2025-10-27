@@ -64,6 +64,35 @@
 	 </PropertyGroup>
 
 	 <!-- 
+		 Centralized Package Description Components
+		 These can be used to build consistent package descriptions across all projects
+	 -->
+	 <PropertyGroup>
+		 <!-- Framework version strings -->
+		 <FrameworkVersionsShort>.NET Framework 4.7.2 - 4.8.1, .NET 8 - 10</FrameworkVersionsShort>
+		 <FrameworkVersionsLite>.NET Framework 4.8 - 4.8.1, .NET 8 - 10</FrameworkVersionsLite>
+		 
+		 <!-- Common description prefix -->
+		 <DescriptionPrefix>An extension to the Standard Toolkit, which supports $(FrameworkVersionsShort).</DescriptionPrefix>
+		 
+		 <!-- Common framework support paragraph -->
+		 <DescriptionFrameworkSupport>This package supports all .NET Framework versions starting $(FrameworkVersionsShort).
+			Also, all libraries are included targeting each specific framework version for performance purposes.</DescriptionFrameworkSupport>
+		 
+		 <!-- Common footer with version dashboard link -->
+		 <DescriptionFooter>To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md</DescriptionFooter>
+
+		 <!-- README configuration for NuGet packages (only if not already set and file is not empty) -->
+		 <PackageReadmeFile Condition="'$(PackageReadmeFile)' == '' And Exists('$(MSBuildProjectDirectory)\Readme.md') And '$([System.IO.File]::ReadAllText(`$(MSBuildProjectDirectory)\Readme.md`).Trim())' != ''">Readme.md</PackageReadmeFile>
+		 <PackageReadmeFile Condition="'$(PackageReadmeFile)' == '' And Exists('$(MSBuildProjectDirectory)\README.md') And '$([System.IO.File]::ReadAllText(`$(MSBuildProjectDirectory)\README.md`).Trim())' != ''">README.md</PackageReadmeFile>
+	 </PropertyGroup>
+
+	 <!-- Include README file in NuGet package if PackageReadmeFile is set and file is not empty -->
+	 <ItemGroup Condition="'$(PackageReadmeFile)' != ''">
+		 <None Include="$(PackageReadmeFile)" Pack="true" PackagePath="\" />
+	 </ItemGroup>
+
+	 <!-- 
 		 Version Configuration
 		 Dynamic versioning based on build configuration
 	 -->
