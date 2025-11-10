@@ -5,7 +5,7 @@
 
 =======
 
-## 2025-11-11 - Build 2511 - November 2025
+## 2025-11-24 - Build 2511 - November 2025
 
 ### **Major Build System Overhaul**
 * Implemented [#550](https://github.com/Krypton-Suite/Extended-Toolkit/issues/550), Use workflows to build the toolkit

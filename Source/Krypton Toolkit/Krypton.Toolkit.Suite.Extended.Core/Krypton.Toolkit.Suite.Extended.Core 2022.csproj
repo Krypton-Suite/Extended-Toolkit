@@ -74,13 +74,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.10.290-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.11.313-alpha" />
 
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.290-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.313-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.10.290-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.11.313-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.10.290-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.11.313-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -90,13 +90,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Canary" Version="100.25.9.265-beta" />
+				<PackageReference Include="Krypton.Docking.Canary" Version="100.25.10.304-beta" />
 
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.10.304-beta" />
 
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="100.25.9.265-beta" />
+				<PackageReference Include="Krypton.Ribbon.Canary" Version="100.25.10.304-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="100.25.9.265-beta" />
+				<PackageReference Include="Krypton.Navigator.Canary" Version="100.25.10.304-beta" />
 			</ItemGroup>
 		</When>
 
@@ -193,7 +193,7 @@
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
-		<PackageReference Include="WindowsAPICodePack" Version="8.0.11" />
+		<PackageReference Include="WindowsAPICodePack" Version="8.0.12" />
 		<!--<PackageReference Include="NSec.Cryptography" Version="23.5.0-preview.1" />-->
 	</ItemGroup>
 

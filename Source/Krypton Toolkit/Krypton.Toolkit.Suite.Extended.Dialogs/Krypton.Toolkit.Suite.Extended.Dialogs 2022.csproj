@@ -73,13 +73,13 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.290-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.313-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.10.304-beta" />
 					</ItemGroup>
 				</When>
 
@@ -112,7 +112,7 @@
 	<ItemGroup>
 		<Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
 		<PackageReference Include="System.Speech" Version="10.0.0-rc.2.25502.107" />
-		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.11" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.12" />
 	</ItemGroup>
 
 	<ItemGroup>
