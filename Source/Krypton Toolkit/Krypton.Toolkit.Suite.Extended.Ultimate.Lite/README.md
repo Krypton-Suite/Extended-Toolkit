@@ -189,10 +189,10 @@ Version matching is automatic based on your build configuration.
 Simply replace the package reference:
 ```xml
 <!-- Before -->
-<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate" Version="80.25.10.286" />
+<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate" Version="100.25.10.286" />
 
 <!-- After -->
-<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate.Lite" Version="80.25.10.286" />
+<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate.Lite" Version="100.25.10.286" />
 ```
 
 **Important:** Only migrate if you don't need .NET Framework 4.7.2 support!
