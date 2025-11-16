@@ -68,11 +68,11 @@ internal sealed class VoiceSynthesis : IDisposable
         }
     }
 
-    internal EventHandler<StateChangedEventArgs> _stateChanged;
+    internal EventHandler<StateChangedEventArgs>? _stateChanged;
 
-    internal EventHandler<SpeakStartedEventArgs> _speakStarted;
+    internal EventHandler<SpeakStartedEventArgs>? _speakStarted;
 
-    internal EventHandler<SpeakCompletedEventArgs> _speakCompleted;
+    internal EventHandler<SpeakCompletedEventArgs>? _speakCompleted;
 
     internal EventHandler<SpeakProgressEventArgs> _speakProgress;
 
@@ -474,7 +474,7 @@ internal sealed class VoiceSynthesis : IDisposable
         }
     }
 
-    internal void SetOutput(Stream stream, SpeechAudioFormatInfo formatInfo, bool headerInfo)
+    internal void SetOutput(Stream? stream, SpeechAudioFormatInfo? formatInfo, bool headerInfo)
     {
         lock (_pendingSpeakQueue)
         {
@@ -638,13 +638,13 @@ internal sealed class VoiceSynthesis : IDisposable
         }
     }
 
-    internal TTSVoice GetEngine(string name, CultureInfo culture, VoiceGender gender, VoiceAge age, int variant, bool switchContext)
+    internal TTSVoice GetEngine(string? name, CultureInfo culture, VoiceGender gender, VoiceAge age, int variant, bool switchContext)
     {
         TTSVoice defaultVoice = _currentVoice != null ? _currentVoice : GetVoice(switchContext);
         return GetEngineWithVoice(defaultVoice, null, name, culture, gender, age, variant, switchContext);
     }
 
-    internal ReadOnlyCollection<InstalledVoice> GetInstalledVoices(CultureInfo culture)
+    internal ReadOnlyCollection<InstalledVoice> GetInstalledVoices(CultureInfo? culture)
     {
         if (culture == null || culture == CultureInfo.InvariantCulture)
         {

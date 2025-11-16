@@ -370,6 +370,7 @@ internal class KryptonMessageBoxExtended : KryptonForm
         /// <summary>
         /// Gets and sets the ignoring of Alt+F4
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IgnoreAltF4 { get; set; }
 
         #endregion
@@ -444,6 +445,7 @@ internal class KryptonMessageBoxExtended : KryptonForm
     /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
     /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
     /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+    /// <param name="showToolTips"></param>
     private KryptonMessageBoxExtended(IWin32Window? showOwner, string? text, string caption,
         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
         ExtendedMessageBoxIcon icon,
@@ -1766,8 +1768,8 @@ internal class KryptonMessageBoxExtended : KryptonForm
         using (Graphics g = CreateGraphics())
         {
             // Find size of the label, with a max of 2/3 screen width
-            Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
-            SizeF scaledMonitorSize = screen.Bounds.Size;
+            Screen? screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
+            SizeF scaledMonitorSize = screen!.Bounds.Size;
             scaledMonitorSize.Width *= 2 / 3.0f;
             scaledMonitorSize.Height *= 0.95f;
             _messageText.UpdateFont();
@@ -1899,7 +1901,7 @@ internal class KryptonMessageBoxExtended : KryptonForm
         return new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
     }
 
-    private void button_keyDown(object sender, KeyEventArgs e)
+    private void button_keyDown(object? sender, KeyEventArgs e)
     {
         // Escape key kills the dialog if we allow it to be closed
         if (e.KeyCode == Keys.Escape && ControlBox)
@@ -1941,9 +1943,9 @@ internal class KryptonMessageBoxExtended : KryptonForm
     #endregion
 
     #region Optional CheckBox
-    private void checkbox_CheckChanged(object sender, EventArgs e) => SetOptionalCheckBoxValue(_optionalCheckBox.Checked);
+    private void checkbox_CheckChanged(object? sender, EventArgs e) => SetOptionalCheckBoxValue(_optionalCheckBox.Checked);
 
-    private void checkBox_CheckStateChanged(object sender, EventArgs e) => SetOptionalCheckBoxCheckState(_optionalCheckBox.CheckState);
+    private void checkBox_CheckStateChanged(object? sender, EventArgs e) => SetOptionalCheckBoxCheckState(_optionalCheckBox.CheckState);
 
     /// <summary>Shows the optional CheckBox UI.</summary>
     /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
@@ -2012,7 +2014,7 @@ internal class KryptonMessageBoxExtended : KryptonForm
         _copyButton.Text = copyButtonText;
     }
 
-    private void copyButton_KeyDown(object sender, KeyEventArgs e) => Clipboard.SetText(_messageText.Text);
+    private void copyButton_KeyDown(object? sender, KeyEventArgs e) => Clipboard.SetText(_messageText.Text);
     #endregion
 
     #region Custom Button Text
@@ -2093,7 +2095,7 @@ internal class KryptonMessageBoxExtended : KryptonForm
     #endregion
 
     #region Fade
-    private void InternalKryptonMessageBoxExtended_FormClosing(object sender, FormClosingEventArgs e)
+    private void InternalKryptonMessageBoxExtended_FormClosing(object? sender, FormClosingEventArgs e)
     {
         if (_fade)
         {
@@ -2108,7 +2110,7 @@ internal class KryptonMessageBoxExtended : KryptonForm
         }
     }
 
-    private void InternalKryptonMessageBoxExtended_Load(object sender, EventArgs e)
+    private void InternalKryptonMessageBoxExtended_Load(object? sender, EventArgs e)
     {
         if (_fade)
         {

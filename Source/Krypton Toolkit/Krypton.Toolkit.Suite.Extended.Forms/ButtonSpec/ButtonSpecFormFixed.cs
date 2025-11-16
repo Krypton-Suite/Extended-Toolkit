@@ -68,7 +68,7 @@ public abstract class ButtonSpecFormFixed : ButtonSpec
     /// <summary>
     /// Gets access to the owning krypton form.
     /// </summary>
-    protected VisualKryptonFormExtended KryptonForm { get; }
+    protected VisualKryptonFormExtended? KryptonForm { get; }
 
     #endregion
 

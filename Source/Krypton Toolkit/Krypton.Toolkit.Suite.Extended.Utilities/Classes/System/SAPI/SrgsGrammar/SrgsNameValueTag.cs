@@ -32,17 +32,17 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
 [DebuggerDisplay("{DebuggerDisplayString ()}")]
 public class SrgsNameValueTag : SrgsElement, IPropertyTag, IElement
 {
-    private string _name;
+    private string? _name;
 
-    private object _value;
+    private object? _value;
 
-    public string Name
+    public string? Name
     {
         get => _name;
         set => _name = GetTrimmedName(value, "value");
     }
 
-    public object Value
+    public object? Value
     {
         get => _value;
         set
@@ -94,7 +94,7 @@ public class SrgsNameValueTag : SrgsElement, IPropertyTag, IElement
             }
             else
             {
-                stringBuilder.Append(Value.ToString());
+                stringBuilder.Append(Value);
             }
         }
         writer.WriteString(stringBuilder.ToString());
@@ -140,7 +140,7 @@ public class SrgsNameValueTag : SrgsElement, IPropertyTag, IElement
             }
             else
             {
-                stringBuilder.Append(_value.ToString());
+                stringBuilder.Append(_value);
             }
         }
         else
@@ -154,10 +154,10 @@ public class SrgsNameValueTag : SrgsElement, IPropertyTag, IElement
         return stringBuilder.ToString();
     }
 
-    private static string GetTrimmedName(string name, string parameterName)
+    private static string? GetTrimmedName(string? name, string parameterName)
     {
         Helpers.ThrowIfEmptyOrNull(name, parameterName);
-        name = name.Trim(Helpers._achTrimChars);
+        name = name?.Trim(Helpers._achTrimChars);
         Helpers.ThrowIfEmptyOrNull(name, parameterName);
         return name;
     }

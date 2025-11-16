@@ -853,7 +853,7 @@ public class AllMergedColourSettingsManager
     #endregion
 
     #region IO Stuff
-    public static void WriteARGBColoursToFile(string colourConfigurationFilePath)
+    public static void WriteARGBColoursToFile(string? colourConfigurationFilePath)
     {
         AllMergedColourSettingsManager manager = new();
 
@@ -942,7 +942,7 @@ public class AllMergedColourSettingsManager
         }
     }
 
-    public static void WriteRGBColoursToFile(string colourConfigurationFilePath)
+    public static void WriteRGBColoursToFile(string? colourConfigurationFilePath)
     {
         AllMergedColourSettingsManager manager = new();
 
@@ -1104,7 +1104,7 @@ public class AllMergedColourSettingsManager
         }
         catch (Exception exc)
         {
-            ExceptionHandler.CaptureException(exc, icon: KryptonMessageBoxIcon.Error, methodSignature: MethodHelpers.GetCurrentMethod());
+            KryptonExceptionDialog.Show(exc, null, null);
         }
     }
 
@@ -1175,7 +1175,7 @@ public class AllMergedColourSettingsManager
         }
         catch (Exception exc)
         {
-            ExceptionHandler.CaptureException(exc, icon: KryptonMessageBoxIcon.Error, methodSignature: MethodHelpers.GetCurrentMethod());
+            KryptonExceptionDialog.Show(exc, null, null);
         }
     }
     #endregion

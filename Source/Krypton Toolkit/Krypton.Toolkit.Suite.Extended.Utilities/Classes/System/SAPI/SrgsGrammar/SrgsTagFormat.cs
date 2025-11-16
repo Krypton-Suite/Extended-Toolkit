@@ -28,6 +28,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
 
+[Flags]
 internal enum SrgsTagFormat
 {
     Default,

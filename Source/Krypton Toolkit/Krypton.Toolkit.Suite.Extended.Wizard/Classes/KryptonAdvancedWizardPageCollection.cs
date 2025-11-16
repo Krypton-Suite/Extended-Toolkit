@@ -40,7 +40,7 @@ public class KryptonAdvancedWizardPageCollection : IList
 
     bool IList.Contains(object wizardPage) => _items.Contains(wizardPage);
 
-    public bool Contains(KryptonAdvancedWizardPage page) => _items.Contains(page);
+    public bool Contains(KryptonAdvancedWizardPage? page) => _items.Contains(page);
 
     public int Count => _items.Count;
 

@@ -40,7 +40,7 @@ internal static class Helpers
 
     internal const int _sizeOfChar = 2;
 
-    internal static void ThrowIfEmptyOrNull(string s, string paramName)
+    internal static void ThrowIfEmptyOrNull(string? s, string paramName)
     {
         if (string.IsNullOrEmpty(s))
         {
@@ -52,7 +52,7 @@ internal static class Helpers
         }
     }
 
-    internal static void ThrowIfNull(object value, string paramName)
+    internal static void ThrowIfNull(object? value, string paramName)
     {
         if (value == null)
         {

@@ -72,19 +72,19 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.313-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.318-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.10.304-beta" />
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.11.318-beta" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
+						<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
 					</ItemGroup>
 				</When>
 

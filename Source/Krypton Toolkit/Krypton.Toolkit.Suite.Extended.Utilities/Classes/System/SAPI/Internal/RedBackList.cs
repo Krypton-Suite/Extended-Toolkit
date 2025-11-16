@@ -177,7 +177,7 @@ internal abstract class RedBackList : IEnumerable
         }
     }
 
-    internal object First
+    internal object? First
     {
         get
         {

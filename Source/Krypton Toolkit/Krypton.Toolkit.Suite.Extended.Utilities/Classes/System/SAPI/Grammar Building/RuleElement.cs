@@ -34,7 +34,7 @@ internal sealed class RuleElement : BuilderElements
 
     private string _ruleName;
 
-    private IRule _rule;
+    private IRule? _rule;
 
     internal override string DebugSummary => $"{_name}={base.DebugSummary}";
 
@@ -55,7 +55,7 @@ internal sealed class RuleElement : BuilderElements
 
     public override bool Equals(object obj)
     {
-        RuleElement ruleElement = obj as RuleElement;
+        RuleElement? ruleElement = obj as RuleElement;
         if (ruleElement == null)
         {
             return false;

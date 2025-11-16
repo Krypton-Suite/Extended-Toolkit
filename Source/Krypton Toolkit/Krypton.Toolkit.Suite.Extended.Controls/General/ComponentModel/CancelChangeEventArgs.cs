@@ -117,7 +117,7 @@ public class CancelChangeEventArgs<T> : CancelEventArgs
             throw new ArgumentNullException(nameof(callEventRaisingMethod));
         }
 
-        return Event.DoIf(sender, @event, delegate
+        return Event.DoIf(sender, @event!, delegate
         {
             var eventArgs = new CancelChangeEventArgs<T>(oldValue, newValue);
             callEventRaisingMethod(eventArgs);
@@ -175,7 +175,7 @@ public class CancelChangeEventArgs<T> : CancelEventArgs
         return Equals(other as CancelChangeEventArgs<T>);
     }
 
-    public bool Equals(CancelChangeEventArgs<T> other)
+    public bool Equals(CancelChangeEventArgs<T>? other)
     {
         if (ReferenceEquals(null, other)) return false;
 

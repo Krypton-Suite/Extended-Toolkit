@@ -74,7 +74,7 @@ public class CustomColourSettingsManager
         AlwaysUsePrompt = value;
     }
 
-    public static void WriteRGBColoursToFile(string path)
+    public static void WriteRGBColoursToFile(string? path)
     {
         throw new NotImplementedException();
     }
@@ -286,11 +286,16 @@ public class CustomColourSettingsManager
         }
     }
 
-    public static void WriteARGBColoursToFile(string colourFilePath)
+    public static void WriteARGBColoursToFile(string? colourFilePath)
     {
         CustomColourSettingsManager manager = new();
 
-        StreamWriter writer = new(colourFilePath);
+        if (colourFilePath != null)
+        {
+            StreamWriter writer = new(colourFilePath);
+
+            writer.WriteLine($"Colour One ARGB: {manager.GetCustomColourOne().ToArgb()}");
+        }
     }
     #endregion
 
@@ -350,7 +355,7 @@ public class CustomColourSettingsManager
         }
         catch (Exception exc)
         {
-            ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+            KryptonExceptionDialog.Show(exc, null, null);
         }
     }
 
@@ -393,7 +398,7 @@ public class CustomColourSettingsManager
         }
         catch (Exception exc)
         {
-            ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+            KryptonExceptionDialog.Show(exc, null, null);
         }
     }
     #endregion

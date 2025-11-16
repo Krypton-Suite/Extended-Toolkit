@@ -38,8 +38,9 @@ public partial class KryptonNetworkDriveOptions : KryptonForm
     #endregion
 
     #region Constructors
-    public KryptonNetworkDriveOptions()
+    public KryptonNetworkDriveOptions(char[] validDriveLetters)
     {
+        _validDriveLetters = validDriveLetters;
         InitializeComponent();
     }
 

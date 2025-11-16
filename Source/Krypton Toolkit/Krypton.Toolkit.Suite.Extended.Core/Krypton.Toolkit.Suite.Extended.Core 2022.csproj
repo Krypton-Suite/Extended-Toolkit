@@ -74,13 +74,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.11.313-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.11.318-alpha" />
 
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.313-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.318-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.11.313-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.11.318-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.11.313-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.11.318-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -90,13 +90,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Canary" Version="100.25.10.304-beta" />
+				<PackageReference Include="Krypton.Docking.Canary" Version="100.25.11.318-beta" />
 
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.10.304-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.11.318-beta" />
 
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="100.25.10.304-beta" />
+				<PackageReference Include="Krypton.Ribbon.Canary" Version="100.25.11.318-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="100.25.10.304-beta" />
+				<PackageReference Include="Krypton.Navigator.Canary" Version="100.25.11.318-beta" />
 			</ItemGroup>
 		</When>
 
@@ -106,13 +106,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Docking" Version="95.25.10.293" />
 
-				<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
 
-				<PackageReference Include="Krypton.Ribbon" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Ribbon" Version="95.25.10.293" />
 
-				<PackageReference Include="Krypton.Navigator" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Navigator" Version="95.25.10.293" />
 			</ItemGroup>
 		</When>
 

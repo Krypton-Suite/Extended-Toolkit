@@ -39,7 +39,8 @@ public class ToolTipManager
 
     private Timer _startTimer, _stopTimer;
 
-    private ViewBase _currentTarget, _startTarget;
+    private ViewBase? _currentTarget;
+    private ViewBase? _startTarget;
 
     #endregion
     #region Events
@@ -120,7 +121,7 @@ public class ToolTipManager
     /// </summary>
     /// <param name="targetElement">Target element for the mouse message.</param>
     /// <param name="c">Reference to the source control instance.</param>
-    public void MouseEnter(ViewBase targetElement, Control c)
+    public void MouseEnter(ViewBase? targetElement, Control c)
     {
         // Remember the current target
         _currentTarget = targetElement;
@@ -164,7 +165,7 @@ public class ToolTipManager
     /// <param name="targetElement">Target element for the mouse message.</param>
     /// <param name="c">Reference to the source control instance.</param>
     /// <param name="pt">Mouse position relative to control.</param>
-    public void MouseMove(ViewBase targetElement, Control c, Point pt)
+    public void MouseMove(ViewBase? targetElement, Control c, Point pt)
     {
     }
 
@@ -175,7 +176,7 @@ public class ToolTipManager
     /// <param name="c">Reference to the source control instance.</param>
     /// <param name="pt">Mouse position relative to control.</param>
     /// <param name="button">Mouse button pressed down.</param>
-    public void MouseDown(ViewBase targetElement,
+    public void MouseDown(ViewBase? targetElement,
         Control c,
         Point pt,
         MouseButtons button)
@@ -203,7 +204,7 @@ public class ToolTipManager
     /// <param name="c">Reference to the source control instance.</param>
     /// <param name="pt">Mouse position relative to control.</param>
     /// <param name="button">Mouse button released.</param>
-    public void MouseUp(ViewBase targetElement,
+    public void MouseUp(ViewBase? targetElement,
         Control c,
         Point pt,
         MouseButtons button)
@@ -216,7 +217,7 @@ public class ToolTipManager
     /// <param name="targetElement">Target element for the mouse message.</param>
     /// <param name="c">Reference to the source control instance.</param>
     /// <param name="next">Reference to view that is next to have the mouse.</param>
-    public void MouseLeave(ViewBase targetElement, Control c, ViewBase next)
+    public void MouseLeave(ViewBase? targetElement, Control c, ViewBase? next)
     {
         // No longer have a current target
         _currentTarget = null;
@@ -230,7 +231,10 @@ public class ToolTipManager
                 _stopTimer.Stop();
                 _stopTimer.Start();
             }
-            catch { }
+            catch (Exception e)
+            {
+                KryptonExceptionDialog.Show(e, null, null);
+            }
         }
     }
 
@@ -239,7 +243,7 @@ public class ToolTipManager
     /// </summary>
     /// <param name="targetElement">Target element for the mouse message.</param>
     /// <param name="pt">Mouse position relative to control.</param>
-    public void DoubleClick(ViewBase targetElement, Point pt)
+    public void DoubleClick(ViewBase? targetElement, Point pt)
     {
     }
     #endregion
@@ -249,17 +253,17 @@ public class ToolTipManager
     /// Raises the ShowTooltip event.
     /// </summary>
     /// <param name="e">A TooltipEventArgs that contains the event data.</param>
-    protected virtual void OnShowToolTip(ToolTipEventArgs e) => ShowToolTip?.Invoke(this, e);
+    protected virtual void OnShowToolTip(ToolTipEventArgs e) => ShowToolTip.Invoke(this, e);
 
     /// <summary>
     /// Raises the CancelTooltip event.
     /// </summary>
-    protected virtual void OnCancelToolTip() => CancelToolTip?.Invoke(this, EventArgs.Empty);
+    protected virtual void OnCancelToolTip() => CancelToolTip.Invoke(this, EventArgs.Empty);
 
     #endregion
 
     #region Implementation
-    private void OnStartTimerTick(object sender, EventArgs e)
+    private void OnStartTimerTick(object? sender, EventArgs e)
     {
         // One tick timer, so always stop
         _startTimer.Stop();
@@ -280,7 +284,7 @@ public class ToolTipManager
         }
     }
 
-    private void OnStopTimerTick(object sender, EventArgs e)
+    private void OnStopTimerTick(object? sender, EventArgs e)
     {
         // One tick timer, so always stop
         _stopTimer.Stop();

@@ -3938,7 +3938,7 @@ No 	                    No 	                    Show text only
     }
 
     // Constant "FieldInfo" for getting the nativeImage from the Bitmap
-    private static readonly FieldInfo FIELD_INFO_NATIVE_IMAGE = typeof(Bitmap).GetField(@"nativeImage", BindingFlags.GetField | BindingFlags.Instance | BindingFlags.NonPublic);
+    private static readonly FieldInfo? FIELD_INFO_NATIVE_IMAGE = typeof(Bitmap).GetField(@"nativeImage", BindingFlags.GetField | BindingFlags.Instance | BindingFlags.NonPublic);
     /// <summary>
     /// Get the nativeImage field from the bitmap
     /// </summary>
@@ -4008,7 +4008,7 @@ No 	                    No 	                    Show text only
 
     [DllImport(@"uxtheme.dll", CharSet = CharSet.Unicode)]
     [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
-    public static extern int SetWindowTheme(IntPtr hWnd, string subAppName, string subIdList);
+    public static extern int SetWindowTheme(IntPtr hWnd, string? subAppName, string? subIdList);
     #endregion
 
     #region Static Kernel32

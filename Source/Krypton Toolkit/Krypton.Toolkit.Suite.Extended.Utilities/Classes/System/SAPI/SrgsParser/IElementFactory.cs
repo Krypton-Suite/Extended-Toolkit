@@ -52,9 +52,9 @@ internal interface IElementFactory
 
     void RemoveAllRules();
 
-    IElementText CreateText(IElement parent, string value);
+    IElementText? CreateText(IElement parent, string value);
 
-    IToken CreateToken(IElement parent, string content, string pronumciation, string display, float reqConfidence);
+    IToken? CreateToken(IElement parent, string content, string pronumciation, string display, float reqConfidence);
 
     IPropertyTag CreatePropertyTag(IElement parent);
 
@@ -64,7 +64,7 @@ internal interface IElementFactory
 
     IRuleRef CreateRuleRef(IElement parent, Uri srgsUri);
 
-    IRuleRef CreateRuleRef(IElement parent, Uri srgsUri, string semanticKey, string parameters);
+    IRuleRef CreateRuleRef(IElement parent, Uri srgsUri, string? semanticKey, string? parameters);
 
     void InitSpecialRuleRef(IElement parent, IRuleRef special);
 
