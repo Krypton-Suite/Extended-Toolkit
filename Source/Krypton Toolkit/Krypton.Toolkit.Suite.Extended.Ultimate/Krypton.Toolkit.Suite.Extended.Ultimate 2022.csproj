@@ -96,19 +96,19 @@
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="95.25.10.293" />
-				<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
-				<PackageReference Include="Krypton.Ribbon" Version="95.25.10.293" />
-				<PackageReference Include="Krypton.Navigator" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Docking" Version="100.25.11.328" />
+				<PackageReference Include="Krypton.Toolkit" Version="100.25.11.328" />
+				<PackageReference Include="Krypton.Ribbon" Version="100.25.11.328" />
+				<PackageReference Include="Krypton.Navigator" Version="100.25.11.328" />
 			</ItemGroup>
 		</When>
 
 		<Otherwise>
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Ribbon" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Navigator" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Docking" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Ribbon" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Navigator" Version="95.25.10.293" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
