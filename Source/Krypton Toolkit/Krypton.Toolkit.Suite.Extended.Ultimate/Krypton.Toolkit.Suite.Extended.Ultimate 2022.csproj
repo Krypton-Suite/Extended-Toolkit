@@ -10,7 +10,7 @@
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.Ultimate</AssemblyName>
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
-		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile>..\_shared-assets\StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<UseWindowsForms>true</UseWindowsForms>		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
@@ -206,9 +206,8 @@
 
 	<!-- Package Assets -->
 	<ItemGroup>
-		<None Include="..\..\..\Assets\PNG\NuGet Package Icons\Krypton Stable.png" Pack="true" PackagePath="\" />
 		<None Include="..\..\..\README.md" Pack="true" PackagePath="\" />
-		<None Include="License\License.txt" Pack="true" PackagePath="" />
+		<None Include="..\_shared-assets\License.txt" Pack="true" PackagePath="" Link="License\License.txt" />
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->
